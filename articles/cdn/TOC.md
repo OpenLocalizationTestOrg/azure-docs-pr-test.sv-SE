@@ -6,11 +6,11 @@
 
 # Gör så här för att
 ## Integrera
-### [Web Apps](../app-service-web/app-service-web-tutorial-content-delivery-network.md?toc=%2fazure%2fcdn%2ftoc.json)
+### [Web Apps](../app-service/app-service-web-tutorial-content-delivery-network.md?toc=%2fazure%2fcdn%2ftoc.json)
 ### [Cloud Services](cdn-cloud-service-with-cdn.md)
 ### [Storage](cdn-create-a-storage-account-with-cdn.md)
 ### [Cross-origin resource sharing (CORS)](cdn-cors.md)
-### [Mappa en anpassad domän tooCDN](cdn-map-content-to-custom-domain.md)
+### [Mappa en anpassad domän till CDN](cdn-map-content-to-custom-domain.md)
 ### [Aktivera HTTPS på en anpassad domän](cdn-custom-ssl.md)
 ## Optimera innehåll
 ### [Optimeringsöversikt](cdn-optimization-overview.md)
@@ -19,7 +19,7 @@
 ####[Acceleration av dynamisk webbplats](cdn-dynamic-site-acceleration.md)
  
 ## Hantera
-### [Hantera med PowerShell](cdn-manage-powershell.md)
+### [Hantera med Azure PowerShell](cdn-manage-powershell.md)
 ### Konfigurera livslängd
 #### [Web Apps/Cloud Services, ASP.NET eller IIS-innehåll](cdn-manage-expiration-of-cloud-service-content.md)
 #### [Storage Blob Service-innehåll](cdn-manage-expiration-of-blob-content.md)
@@ -37,11 +37,13 @@
 ### [Stöd för HTTP/2](cdn-http2.md)
 
 ## Analysera
-### [Analysera användningsmönster](cdn-analyze-usage-patterns.md)
-### [Generera avancerade HTTP-rapporter](cdn-advanced-http-reports.md)
-### [Visa statistik i realtid](cdn-real-time-stats.md)
-### [Analysera gränsnodsprestanda](cdn-edge-performance.md)
-### [Exportera mått med diagnostikloggar](cdn-log-analysis.md)
+### [Analysera användningsmönster för Azure CDN](cdn-log-analysis.md)
+#### [Core-rapporter från Verizon](cdn-analyze-usage-patterns.md)
+#### [Azure-diagnostikloggar](cdn-azure-diagnostic-logs.md)
+### Analysverktyg för Azure CDN från Verizon
+#### [Generera avancerade HTTP-rapporter](cdn-advanced-http-reports.md)
+#### [Visa statistik i realtid](cdn-real-time-stats.md)
+#### [Analysera gränsnodsprestanda](cdn-edge-performance.md)
 
 ## Utveckla
 ### [.NET](cdn-app-dev-net.md)
@@ -53,7 +55,7 @@
 
 # Referens
 ## [Kodexempel](https://azure.microsoft.com/en-us/resources/samples/?service=cdn)
-## [PowerShell](/powershell/module/azurerm.cdn)
+## [Azure PowerShell](/powershell/module/azurerm.cdn)
 ## [.NET](/dotnet/api/microsoft.azure.management.cdn)
 ## [Java](/java/api/com.microsoft.azure.management.cdn)
 ## [REST](/rest/api/cdn/)

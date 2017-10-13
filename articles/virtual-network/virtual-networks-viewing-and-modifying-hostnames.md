@@ -1,6 +1,6 @@
 ---
-title: "aaaViewing och ändra värdnamn | Microsoft Docs"
-description: "Hur tooview och ändra värdnamn för Azure-datorer, webb- och arbetsroller för namnmatchning"
+title: "Visa och ändra värdnamn | Microsoft Docs"
+description: "Hur du visa och ändra värdnamn för virtuella Azure-datorer, webb- och arbetsroller för namnmatchning"
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -14,48 +14,48 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2016
 ms.author: jdial
-ms.openlocfilehash: 17d0dd7911754a94db3f37b924b4687da1c70aca
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 9a3a1e1b58dcb828e2d2d09c18f1aab6d46051aa
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="viewing-and-modifying-hostnames"></a>Visa och ändra värdnamn
-tooallow din roll instanser toobe refereras av värdnamn, måste du ange hello värde för hello värdnamn i hello tjänstkonfigurationsfilen för varje roll. Det gör du genom att lägga till hello önskade värden namnet toohello **vmName** attribut för hello **rollen** element. Hej värdet för hello **vmName** attributet används som bas för hello värdnamnet för varje rollinstans. Till exempel om **vmName** är *webrole* och det finns tre instanser av rollen, hello värdnamn hello instanser *webrole0*, *webrole1 *, och *webrole2*. Du behöver inte toospecify ett värdnamn för virtuella datorer i hello konfigurationsfilen eftersom hello värdnamnet för en virtuell dator har fyllts i baserat på hello namn på virtuell dator. Mer information om hur du konfigurerar en Microsoft Azure-tjänst finns [Konfigurationsschemat för Azure-tjänsten (.cscfg-filen)](https://msdn.microsoft.com/library/azure/ee758710.aspx)
+Om du vill att dina rollinstanser refereras efter värdnamn, måste du ange värde för värddatorns namn i tjänstkonfigurationsfilen för varje roll. Det gör du genom att lägga till önskade värdnamnet som den **vmName** attribut för den **rollen** element. Värdet för den **vmName** attributet används som bas för värdnamnet för varje rollinstans. Till exempel om **vmName** är *webrole* och det finns tre instanser av rollen, värdnamn av instanserna blir *webrole0*, *webrole1*, och *webrole2*. Du behöver inte ange ett värdnamn för virtuella datorer i konfigurationsfilen, eftersom värdnamnet för en virtuell dator har fyllts i baserat på namnet på virtuella datorn. Mer information om hur du konfigurerar en Microsoft Azure-tjänst finns [Konfigurationsschemat för Azure-tjänsten (.cscfg-filen)](https://msdn.microsoft.com/library/azure/ee758710.aspx)
 
 ## <a name="viewing-hostnames"></a>Visa värdnamn
-Du kan visa hello värdnamn för virtuella datorer och rollinstanser i en molntjänst med hjälp av hello verktygen nedan.
+Du kan visa värdnamn för virtuella datorer och rollinstanser i en molntjänst med hjälp av verktygen nedan.
 
 ### <a name="azure-portal"></a>Azure Portal
-Du kan använda hello [Azure-portalen](http://portal.azure.com) tooview hello värdnamn för virtuella datorer på hello översikt bladet för en virtuell dator. Tänk på att hello bladet visar ett värde för **namn** och **värdnamn**. Trots att de ursprungligen hello samma ändra hello värdnamnet inte att ändra hello namnet på hello virtuell dator eller rollinstans.
+Du kan använda den [Azure-portalen](http://portal.azure.com) visa värdnamn för virtuella datorer på bladet översikt för en virtuell dator. Tänk på att bladet visar ett värde för **namn** och **värdnamn**. Även om de är från början samma, ändrar ändra värdnamnet inte namnet på den virtuella datorn eller instansen.
 
-Rollinstanser kan även visas i hello Azure-portalen, men när du listar hello-instanser i en molnbaserad tjänst hello värdnamn visas inte. Du ser ett namn för varje instans, men det här namnet representerar inte hello värdnamn.
+Rollinstanser kan även visas i Azure-portalen, men när du listar instanser i en molnbaserad tjänst värdnamnet visas inte. Du ser ett namn för varje instans, men det här namnet representerar inte värdnamnet.
 
 ### <a name="service-configuration-file"></a>Tjänstkonfigurationsfil
-Du kan hämta hello tjänstkonfigurationsfilen för en distribuerad tjänst från hello **konfigurera** bladet hello tjänsterna i hello Azure-portalen. Du kan sedan söka efter hello **vmName** attribut för hello **rollnamn** elementet toosee hello värdnamn. Tänk på att det här värdnamnet används som bas för hello värdnamnet för varje rollinstans. Till exempel om **vmName** är *webrole* och det finns tre instanser av rollen, hello värdnamn hello instanser *webrole0*, *webrole1 *, och *webrole2*.
+Du kan hämta tjänstkonfigurationsfilen för en distribuerad tjänst från den **konfigurera** bladet för tjänsten i Azure-portalen. Du kan sedan söka efter den **vmName** attributet för den **rollnamn** element att se värdnamnet. Tänk på att det här värdnamnet används som bas för värdnamnet för varje rollinstans. Till exempel om **vmName** är *webrole* och det finns tre instanser av rollen, värdnamn av instanserna blir *webrole0*, *webrole1*, och *webrole2*.
 
 ### <a name="remote-desktop"></a>Fjärrskrivbord
-När du aktiverar fjärrskrivbord (Windows), Windows PowerShell-fjärrkommunikation (Windows) eller SSH (Linux och Windows) anslutningar tooyour virtuella datorer eller rollinstanser, kan du visa hello värdnamn från en aktiv anslutning till fjärrskrivbord på olika sätt:
+När du aktiverar fjärrskrivbord (Windows), Windows PowerShell-fjärrkommunikation (Windows) eller SSH (Linux och Windows)-anslutningar till dina virtuella datorer eller rollinstanser, kan du visa värdnamnet från en aktiv anslutning till fjärrskrivbord på olika sätt:
 
-* Skriv värdnamn vid hello kommandotolk eller SSH-terminal.
-* Skriv ipconfig/alla i hello kommandot Kommandotolken (endast Windows).
-* Visa hello datornamn i hello system inställningar (Windows).
+* Ange värdnamnet i Kommandotolken eller SSH-terminal.
+* Skriv ipconfig/alla vid Kommandotolken (endast Windows).
+* Visa namnet på datorn i Systeminställningar (endast Windows).
 
 ### <a name="azure-service-management-rest-api"></a>Azure Service Management REST API
 Följ dessa instruktioner från en REST-klient:
 
-1. Se till att du har en klient certifikat tooconnect toohello Azure-portalen. tooobtain ett klientcertifikat gör hello presenteras i [så här: hämta och importera Publiceringsinställningar och prenumerationsinformation](https://msdn.microsoft.com/library/dn385850.aspx). 
+1. Se till att du har ett klientcertifikat för att ansluta till Azure-portalen. För att erhålla ett klientcertifikat följer du stegen som visas i [så här: hämta och importera Publiceringsinställningar och prenumerationsinformation](https://msdn.microsoft.com/library/dn385850.aspx). 
 2. Ange en rubrikpost med namnet x-ms-version med värdet 2013-11-01.
-3. Skicka en begäran i hello följande format: https://management.core.windows.net/\<subscrition-id\>/services/hostedservices/\<Tjänstenamn\>? bädda in detail = true
-4. Leta efter hello **värdnamn** element för varje **RoleInstance** element.
+3. Skicka en begäran i följande format: https://management.core.windows.net/\<subscrition-id\>/services/hostedservices/\<Tjänstenamn\>? bädda in detail = true
+4. Leta efter den **värdnamn** element för varje **RoleInstance** element.
 
 > [!WARNING]
-> Du kan också visa hello interna domänsuffixet för din molntjänst från hello REST-anrop svar genom att kontrollera hello **InternalDnsSuffix** elementet eller genom att köra ipconfig/allt från en kommandotolk i en fjärrskrivbordssession (Windows) eller genom att köra cat /etc/resolv.conf från en SSH-terminal (Linux).
+> Du kan också visa interna domänsuffixet för din molntjänst från svaret för REST-anrop genom att kontrollera den **InternalDnsSuffix** elementet eller genom att köra ipconfig/alla från Kommandotolken i en fjärrskrivbordssession (Windows) eller genom att Kör cat /etc/resolv.conf från en terminal SSH (Linux).
 > 
 > 
 
 ## <a name="modifying-a-hostname"></a>Ändra ett värdnamn
-Du kan ändra hello värdnamn för virtuell dator eller rollinstans genom att ladda upp en ändrade tjänstkonfigurationsfilen eller genom att byta namn på hello dator från en fjärrskrivbordssession.
+Du kan ändra värdnamnet för en virtuell dator eller rollinstans genom att ladda upp en ändrade tjänstkonfigurationsfilen eller genom att byta namn på datorn från en fjärrskrivbordssession.
 
 ## <a name="next-steps"></a>Nästa steg
 [Namnmatchning (DNS)](virtual-networks-name-resolution-for-vms-and-role-instances.md)

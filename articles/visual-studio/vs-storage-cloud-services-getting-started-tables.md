@@ -1,6 +1,6 @@
 ---
-title: "aaaGet igång med tabellagring och Visual Studio anslutna tjänster (molntjänster) | Microsoft Docs"
-description: "Hur tooget igång med Azure Table storage i ett molntjänstprojekt i Visual Studio när ansluter tooa lagringskonto med hjälp av Visual Studio anslutna tjänster"
+title: "Kom igång med tabellagring och Visual Studio anslutna tjänster (molntjänster) | Microsoft Docs"
+description: "Hur du kommer igång med Azure Table-lagring i en cloud service-projekt i Visual Studio efter anslutning till ett lagringskonto med hjälp av Visual Studio anslutna tjänster"
 services: storage
 documentationcenter: 
 author: kraigb
@@ -14,23 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: kraigb
-ms.openlocfilehash: 36da6ed4a12a3595e7234482e3040ecee8c33b8a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 51b71d783806d9b0d58d4473b8c07f77441dadd8
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="getting-started-with-azure-table-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Komma igång med Azure-tabellagring och Visual Studio anslutna tjänster (cloud services-projekt)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
 
 ## <a name="overview"></a>Översikt
-Den här artikeln beskriver hur tooget igång med Azure-tabellagring i Visual Studio när du har skapat eller refererar till ett Azure storage-konto i cloud services-projekt med hjälp av hello Visual Studio **Lägg till anslutna tjänster** dialogrutan . Hej **Lägg till anslutna tjänster** åtgärden installerar hello lämpligt NuGet-paket tooaccess Azure-lagring i ditt projekt och lägger till hello anslutningssträngen för hello lagring kontot tooyour konfigurationsfiler för projektet.
+Den här artikeln beskriver hur du kommer igång med Azure-tabellagring i Visual Studio när du har skapat eller refererar till ett Azure storage-konto i cloud services-projekt med hjälp av Visual Studio **Lägg till anslutna tjänster** dialogrutan. Den **Lägg till anslutna tjänster** åtgärden installerar lämpligt NuGet-paket för att komma åt Azure-lagring i ditt projekt och lägger till anslutningssträngen för lagringskontot konfigurationsfilerna projektet.
 
-hello Azure Table storage-tjänst kan du toostore stora mängder strukturerade data. hello-tjänsten är en NoSQL-datalager som tar emot autentiserade anrop inuti och utanför hello Azure-molnet. Azure-tabeller passar utmärkt för att lagra strukturerade, icke-relationella data.
+Tjänsten Azure Table storage kan du lagra stora mängder strukturerade data. Tjänsten är en NoSQL-datalager som tar emot autentiserade anrop inuti och utanför Azure-molnet. Azure-tabeller passar utmärkt för att lagra strukturerade, icke-relationella data.
 
-tooget igång, måste du först toocreate en tabell i ditt lagringskonto. Vi lära dig hur toocreate en Azure table i koden och även hur tooperform Standardtabell och entiteten åtgärder, till exempel lägga till, ändra, läsa och läsa tabell entiteter. hello prover är skrivna i C\# code och använda hello [Microsoft Azure Storage-klientbibliotek för .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx).
+Om du vill komma igång, måste du först skapa en tabell i ditt lagringskonto. Vi lära dig hur du skapar en Azure-tabellen i koden och hur du utför grundläggande tabell och entiteten åtgärder, till exempel lägga till, ändra, läsa och läsa tabellentiteter. Exemplen är skrivna i C\# code och använda den [Microsoft Azure Storage-klientbibliotek för .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx).
 
-**Obs:** vissa hello API: er som utför anrop ut tooAzure lagring är asynkron. Se [asynkron programmering med Async och Await](http://msdn.microsoft.com/library/hh191443.aspx) för mer information. hello koden nedan förutsätter asynkrona programming metoder som används.
+**Obs:** några av de API: er som utför anrop ut till Azure storage är asynkron. Se [asynkron programmering med Async och Await](http://msdn.microsoft.com/library/hh191443.aspx) för mer information. Koden nedan förutsätter asynkrona programming metoder som används.
 
 * Se [komma igång med Azure Table storage med hjälp av .NET](../storage/storage-dotnet-how-to-use-tables.md) mer information om programmässigt arbete i tabeller.
 * Se [Storage-dokumentation](https://azure.microsoft.com/documentation/services/storage/) allmän information om Azure Storage.
@@ -38,41 +38,41 @@ tooget igång, måste du först toocreate en tabell i ditt lagringskonto. Vi lä
 * Se [ASP.NET](http://www.asp.net) för mer information om programmering i ASP.NET-program.
 
 ## <a name="access-tables-in-code"></a>Åtkomst till tabeller i koden
-tooaccess tabeller i molntjänstprojekt, behöver du tooinclude hello följande objekt tooany C#-källfiler som åt Azure table storage.
+Om du vill komma åt tabeller i molntjänstprojekt, måste du inkludera följande för att inga C# källfiler som kan komma åt Azure table storage.
 
-1. Se till att hello namnrymdsdeklarationer överst hello i hello C#-filen med dessa **med** instruktioner.
+1. Se till att namnrymdsdeklarationer överst i C#-filen med dessa **med** instruktioner.
    
         using Microsoft.Framework.Configuration;
         using Microsoft.WindowsAzure.Storage;
         using Microsoft.WindowsAzure.Storage.Table;
         using System.Threading.Tasks;
         using LogLevel = Microsoft.Framework.Logging.LogLevel;
-2. Hämta en **CloudStorageAccount** objekt som representerar din kontoinformation för lagring. Använd följande kod tooget hello anslutning sträng och lagring information om lagringskonto från hello Azure tjänstkonfiguration hello.
+2. Hämta en **CloudStorageAccount** objekt som representerar din kontoinformation för lagring. Använda följande kod för att hämta anslutningssträngen för lagring och information om lagringskonto från Azure tjänstkonfigurationen.
    
          CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
            CloudConfigurationManager.GetSetting("<storage account name>
          _AzureStorageConnectionString"));
    > [!NOTE]
-   > Använda alla hello ovan kod framför hello koden i hello följande exempel.
+   > Du kan använda alla koden ovan framför koden i följande exempel.
    > 
    > 
-3. Hämta en **CloudTableClient** objekt tooreference hello tabellobjekt i ditt lagringskonto.
+3. Hämta en **CloudTableClient** objektet att referera till tabellen objekten i ditt lagringskonto.
    
-         // Create hello table client.
+         // Create the table client.
          CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
-4. Hämta en **CloudTable** refererar till objektet tooreference en viss tabell och enheter.
+4. Hämta en **CloudTable** referensobjekt att referera till en viss tabell och enheter.
    
-        // Get a reference tooa table named "peopleTable".
+        // Get a reference to a table named "peopleTable".
         CloudTable peopleTable = tableClient.GetTableReference("peopleTable");
 
 ## <a name="create-a-table-in-code"></a>Skapa en tabell i koden
-toocreate hello Azure-tabellen, Lägg till ett anrop för**CreateIfNotExistsAsync** toohello när du har fått en **CloudTable** objekt enligt beskrivningen i avsnittet för hello ”åtkomst tabeller i kod”.
+Om du vill skapa Azure-tabellen, Lägg till ett anrop till **CreateIfNotExistsAsync** till den när du har fått en **CloudTable** objekt enligt beskrivningen i avsnittet ”kommer åt tabeller i kod”.
 
-    // Create hello CloudTable if it does not exist.
+    // Create the CloudTable if it does not exist.
     await peopleTable.CreateIfNotExistsAsync();
 
-## <a name="add-an-entity-tooa-table"></a>Lägg till en entitet tooa tabell
-tooadd en entitet tooa tabell, skapa en klass som definierar hello egenskaperna för entiteten. hello följande kod definierar en entitetsklass kallas **CustomerEntity** som använder hello kundens förnamn som radnyckel hello och hello efternamn som partitionsnyckel hello.
+## <a name="add-an-entity-to-a-table"></a>Lägga till en entitet i en tabell
+Om du vill lägga till en entitet i en tabell skapar du en klass som definierar egenskaperna för entiteten. Följande kod definierar en entitetsklass som kallas **CustomerEntity** som använder kundens förnamn som Radnyckeln och efternamn som partitionsnyckel.
 
     public class CustomerEntity : TableEntity
     {
@@ -89,51 +89,51 @@ tooadd en entitet tooa tabell, skapa en klass som definierar hello egenskaperna 
         public string PhoneNumber { get; set; }
     }
 
-Tabellåtgärder som rör entiteter utförs med hjälp av hello **CloudTable** objekt som du skapade tidigare i ”åtkomst tabeller i kod”. Hej **TableOperation** -objektet representerar hello åtgärden toobe är klar. Hej följande exempel visas hur toocreate en **CloudTable** objekt och en **CustomerEntity** objekt. tooprepare hello åtgärden en **TableOperation** skapas tooinsert hello kundentiteten i hello-tabellen. Slutligen hello-åtgärden körs genom att anropa **CloudTable.ExecuteAsync**.
+Tabellåtgärder som rör entiteter utförs med hjälp av den **CloudTable** objekt som du skapade tidigare i ”åtkomst tabeller i kod”. Den **TableOperation** -objektet representerar åtgärden görs. Följande kodexempel visar hur du skapar en **CloudTable** objekt och en **CustomerEntity** objekt. Att förbereda åtgärden skapas en **TableOperation** skapas som infogar kundentiteten i tabellen. Slutligen körs åtgärden genom att anropa **CloudTable.ExecuteAsync**.
 
     // Create a new customer entity.
     CustomerEntity customer1 = new CustomerEntity("Harp", "Walter");
     customer1.Email = "Walter@contoso.com";
     customer1.PhoneNumber = "425-555-0101";
 
-    // Create hello TableOperation that inserts hello customer entity.
+    // Create the TableOperation that inserts the customer entity.
     TableOperation insertOperation = TableOperation.Insert(customer1);
 
-    // Execute hello insert operation.
+    // Execute the insert operation.
     await peopleTable.ExecuteAsync(insertOperation);
 
 
 ## <a name="insert-a-batch-of-entities"></a>Infoga en batch med entiteter
-Du kan infoga flera entiteter i en tabell i en enda skrivning. hello följande kodexempel skapar två entitetsobjekt (”Jeff Smith” och ”Ben Smith”), lägger till dem tooa **TableBatchOperation** objekt med hello infogning och sedan startar hello igen genom att anropa  **CloudTable.ExecuteBatchAsync**.
+Du kan infoga flera entiteter i en tabell i en enda skrivning. Följande exempel skapar två entitetsobjekt (”Jeff Smith” och ”Ben Smith”), läggs till i en **TableBatchOperation** objekt med metoden Insert och startar sedan åtgärden genom att anropa  **CloudTable.ExecuteBatchAsync**.
 
-    // Create hello batch operation.
+    // Create the batch operation.
     TableBatchOperation batchOperation = new TableBatchOperation();
 
-    // Create a customer entity and add it toohello table.
+    // Create a customer entity and add it to the table.
     CustomerEntity customer1 = new CustomerEntity("Smith", "Jeff");
     customer1.Email = "Jeff@contoso.com";
     customer1.PhoneNumber = "425-555-0104";
 
-    // Create another customer entity and add it toohello table.
+    // Create another customer entity and add it to the table.
     CustomerEntity customer2 = new CustomerEntity("Smith", "Ben");
     customer2.Email = "Ben@contoso.com";
     customer2.PhoneNumber = "425-555-0102";
 
-    // Add both customer entities toohello batch insert operation.
+    // Add both customer entities to the batch insert operation.
     batchOperation.Insert(customer1);
     batchOperation.Insert(customer2);
 
-    // Execute hello batch operation.
+    // Execute the batch operation.
     await peopleTable.ExecuteBatchAsync(batchOperation);
 
-## <a name="get-all-of-hello-entities-in-a-partition"></a>Hämta alla hello entiteter i en partition
-tooquery en tabell för alla hello entiteter i en partition, Använd en **TableQuery** objekt. hello anges följande kodexempel ett filter för entiteter där Partitionsnyckeln hello är ”Smith”. Det här exemplet skriver ut hello fälten för varje entitet i hello frågan resultat toohello-konsolen.
+## <a name="get-all-of-the-entities-in-a-partition"></a>Hämta alla enheter i en partition
+Om du vill fråga en tabell efter alla entiteter i en partition använder en **TableQuery** objekt. I följande kodexempel anges ett filter för entiteter där partitionsnyckeln är ”Smith”. Det här exemplet skriver ut fälten för varje entitet i frågeresultatet till konsolen.
 
-    // Construct hello query operation for all customer entities where PartitionKey="Smith".
+    // Construct the query operation for all customer entities where PartitionKey="Smith".
     TableQuery<CustomerEntity> query = new TableQuery<CustomerEntity>()
         .Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, "Smith"));
 
-    // Print hello fields for each customer.
+    // Print the fields for each customer.
     TableContinuationToken token = null;
     do
     {
@@ -151,45 +151,45 @@ tooquery en tabell för alla hello entiteter i en partition, Använd en **TableQ
 
 
 ## <a name="get-a-single-entity"></a>Hämta en enda entitet
-Du kan skriva en fråga tooget en enda, specifik entitet. hello följande kod används en **TableOperation** objekt toospecify en kund som heter ”Ben Smith”. Den här metoden returnerar endast en entitet i stället för en samling och hello returneras värdet i **TableResult.Result** är en **CustomerEntity** objekt. Ange både partitions- och nycklar i en fråga är hello snabbaste sättet tooretrieve en enda entitet från hello **tabell** service.
+Du kan skriva en fråga om du vill ha en enda, specifik entitet. I följande kod används en **TableOperation** objekt för att ange en kund som heter ”Ben Smith”. Den här metoden returnerar endast en entitet i stället för en samling och det returnerade värdet i **TableResult.Result** är en **CustomerEntity** objekt. Ange både partitions- och nycklar i en fråga är det snabbaste sättet att hämta en enda entitet från den **tabell** service.
 
     // Create a retrieve operation that takes a customer entity.
     TableOperation retrieveOperation = TableOperation.Retrieve<CustomerEntity>("Smith", "Ben");
 
-    // Execute hello retrieve operation.
+    // Execute the retrieve operation.
     TableResult retrievedResult = await peopleTable.ExecuteAsync(retrieveOperation);
 
-    // Print hello phone number of hello result.
+    // Print the phone number of the result.
     if (retrievedResult.Result != null)
        Console.WriteLine(((CustomerEntity)retrievedResult.Result).PhoneNumber);
     else
-       Console.WriteLine("hello phone number could not be retrieved.");
+       Console.WriteLine("The phone number could not be retrieved.");
 
 ## <a name="delete-an-entity"></a>Ta bort en entitet
-Du kan ta bort en enhet när du har hittat. hello följande kod söker efter en kundentitet med namnet ”Ben Smith”, och om den hittar det tar bort den.
+Du kan ta bort en enhet när du har hittat. Följande kod söker efter en kundentitet med namnet ”Ben Smith”, och om den hittar det tar bort den.
 
     // Create a retrieve operation that expects a customer entity.
     TableOperation retrieveOperation = TableOperation.Retrieve<CustomerEntity>("Smith", "Ben");
 
-    // Execute hello operation.
+    // Execute the operation.
     TableResult retrievedResult = peopleTable.Execute(retrieveOperation);
 
-    // Assign hello result tooa CustomerEntity object.
+    // Assign the result to a CustomerEntity object.
     CustomerEntity deleteEntity = (CustomerEntity)retrievedResult.Result;
 
-    // Create hello Delete TableOperation and then execute it.
+    // Create the Delete TableOperation and then execute it.
     if (deleteEntity != null)
     {
        TableOperation deleteOperation = TableOperation.Delete(deleteEntity);
 
-       // Execute hello operation.
+       // Execute the operation.
        await peopleTable.ExecuteAsync(deleteOperation);
 
        Console.WriteLine("Entity deleted.");
     }
 
     else
-       Console.WriteLine("Couldn't delete hello entity.");
+       Console.WriteLine("Couldn't delete the entity.");
 
 ## <a name="next-steps"></a>Nästa steg
 [!INCLUDE [vs-storage-dotnet-tables-next-steps](../../includes/vs-storage-dotnet-tables-next-steps.md)]

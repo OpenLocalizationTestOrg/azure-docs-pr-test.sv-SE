@@ -1,11 +1,11 @@
-Det här avsnittet visas hur tooconnect app toohello Mobile Engagement-serverdelen med hjälp av hello Mobile Engagement är realtid övervakningsfunktion. 
+Det här avsnittet visar hur du ansluter din app till Mobile Engagement-serverdelen med hjälp av funktionen för realtidsövervakning i Mobile Engagement. 
 
-1. I din **Azure Mobile Engagement** konto måste du kontrollera att du väljer hello app du vill toomonitor och hantera i hello **Mobile Engagement** portal. Navigera tooyour Mobile Engagement-portalen genom att klicka på hello **starta** knappen längst ned hello. 
+1. I ditt **Azure Mobile Engagement**-konto ser du till att du har valt den app som du vill övervaka och hantera i **Mobile Engagement**-portalen. Gå till din Mobile Engagement-portal genom att klicka på **Starta**-knappen längst ned. 
    
      ![](./media/mobile-engagement-connect-app-with-monitor/engage-button.png)
-2. Du hamnar på hello Mobile Engagement-portalen. Om hello övervakningsfliken inte är markerat klickar du på hello **övervakaren**.
-3. hello övervakaren är redo tooshow du varje enhet i realtid, vilket startar din app.
-4. Starta din app nu. Du bör se en session i övervakaren hello om integreringen är korrekt vilket innebär att appen är nu ansluten toohello Mobile Engagement-serverdelen och skickar data tooit.  
+2. Du tas till Mobile Engagement-portalen. Om övervakningsfliken inte är vald, klickar du på **Övervakaren**.
+3. Övervakaren är redo att visa dig valfri enhet i realtid, vilket startar din app.
+4. Starta din app nu. Om integreringen är korrekt, bör du se en session i övervakaren, vilket innebär att din app nu är ansluten till Mobile Engagement-serverdelen och skickar data till den.  
    
      ![](./media/mobile-engagement-connect-app-with-monitor/monitor.png)
 

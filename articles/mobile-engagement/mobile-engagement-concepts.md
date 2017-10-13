@@ -1,5 +1,5 @@
 ---
-title: koncept i aaaMobile Engagement | Microsoft Docs
+title: Koncept i Mobile Engagement | Microsoft Docs
 description: Koncept i Azure Mobile Engagement
 services: mobile-engagement
 documentationcenter: mobile
@@ -14,72 +14,72 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 5aa7f28c00cd641a36a6e040c6b13d802ea6ae41
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 8450651528007b4527366b89a6ad7615169f93c0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-mobile-engagement-concepts"></a>Koncept i Azure Mobile Engagement
-Mobile Engagement har definierat några koncept gemensamt tooall stöds plattformar. I den här artikeln beskrivs koncepten kortfattat.
+Mobile Engagement har definierat några koncept som är gemensamma för alla plattformar som stöds. I den här artikeln beskrivs koncepten kortfattat.
 
-Den här artikeln är ett bra ställe att börja om du är ny tooMobile Engagement. Kontrollera också att tooread hello dokumentationen specifika toohello plattform som du använder, eftersom den vidareutvecklar resonemangen kring hello begrepp som beskrivs i denna artikel med mer information och exempel samt eventuella begränsningar.
+Den här artikeln är ett bra ställe att börja på om du är nybörjare på Mobile Engagement. Läs även igenom dokumentationen för den specifika plattform som du använder eftersom den vidareutvecklar resonemangen kring de koncept som beskrivs i denna artikel med mer information, fler exempel och eventuella begränsningar.
 
 ## <a name="devices-and-users"></a>Enheter och användare
-Mobile Engagement identifierar användare genom att generera ett unikt ID för varje enhet. Detta ID kallas enhets-ID för hello (eller `deviceid`). Det genereras så att alla program som körs av hello samma enhet resursen hello samma enhets-ID.
+Mobile Engagement identifierar användare genom att generera ett unikt ID för varje enhet. Detta ID kallas enhets-ID (eller `deviceid`). Alla appar som körs på samma enhet delar samma enhets-ID.
 
-Implicit, innebär det att Mobile Engagement kopplar en enhet toobelong tooexactly en användare och användare och enhet är alltså likvärdiga koncept.
+Detta innebär med andra ord att Mobile Engagement kopplar ihop enheten med en viss användare. Användare och enhet är alltså likvärdiga koncept i det här sammanhanget.
 
 ## <a name="sessions-and-activities"></a>Sessioner och aktiviteter
-En session är användningen av hello-program som utförs av en användare från hello tid hello användaren börjar använda, tills hello upphör.
+En session kan definieras som ett användningstillfälle som sträcker sig över en viss tidsperiod, vanligen från den tidpunkt då användaren börjar använda ett program fram till den tidpunkt då användningen upphör.
 
-En aktivitet är användningen av en viss underordnad del av hello-program som utförs av en användare (det är vanligtvis en skärm, men det kan vara något lämpligt toohello program).
+En aktivitet är den användning av en viss underordnad del av appen som genomförs av en användare (utgörs vanligen av en skärm, men det kan vara vad som helst i appen).
 
 En användare kan bara utföra en aktivitet i taget.
 
-En aktivitet identifieras med ett namn (begränsat too64 tecken) och kan även välja att bädda in extra data (hello högst 1 024 byte).
+En aktivitet identifieras med ett namn (begränsat till 64 tecken) och du kan även välja att bädda in extra data (högst 1 024 byte).
 
-Sessioner beräknas automatiskt utifrån hello sekvensen av aktiviteter som utförs av användare. Sessionen startar när hello användaren startar den första aktiviteten och slutar när användarens sista aktivitet är klar. Det innebär att en session inte behöver toobe startas eller stoppas. Istället är det aktiviteterna som uttryckligen startas eller stoppas. Om ingen aktivitet rapporteras så rapporteras heller ingen session.
+Sessioner beräknas automatiskt utifrån sekvensen av aktiviteter som utförs av användarna. Sessionen startar när användaren startar den första aktiviteten och slutar när användarens sista aktivitet är klar. Det innebär att en session inte behöver startas eller stoppas. Istället är det aktiviteterna som uttryckligen startas eller stoppas. Om ingen aktivitet rapporteras så rapporteras heller ingen session.
 
 ## <a name="events"></a>Händelser
-Händelser är används tooreport omedelbara åtgärder (till exempel knappen är nedtryckt eller artiklar som läses av användare).
+Händelser som används för att rapportera omedelbara åtgärder (till exempel när en användare har tryckt på en tangent eller läst en artikel).
 
-En händelse kan vara relaterade toohello aktuell session tooa köra jobb, eller det kan vara en fristående händelse.
+En händelse kan vara relaterad till den aktuella sessionen eller ett jobb som körs, eller också kan det vara en fristående händelse.
 
-En händelse identifieras med ett namn (begränsat too64 tecken) och kan även välja att bädda in extra data (hello högst 1 024 byte).
+En händelse identifieras med ett namn (begränsat till 64 tecken) och du kan även välja att bädda in extra data (högst 1 024 byte).
 
 ## <a name="error"></a>Fel
-Fel är att använda tooreport problem som identifieras av programmet hello (till exempel felaktiga användaråtgärder eller misslyckade API-anrop).
+Fel används för att rapportera problem som identifieras av programmet (till exempel felaktiga användaråtgärder eller misslyckade API-anrop).
 
-Ett fel kan vara relaterade toohello aktuell session tooa köra jobb, eller det kan vara ett fristående fel.
+Ett fel kan vara relaterat till den aktuella sessionen, ett jobb som körs eller också kan det vara ett fristående fel.
 
-Ett fel identifieras med ett namn (begränsat too64 tecken) och kan även välja att bädda in extra data (hello högst 1 024 byte).
+Ett fel identifieras med ett namn (begränsat till 64 tecken) och du kan även välja att bädda in extra data (högst 1 024 byte).
 
 ## <a name="job"></a>Jobb
-Jobb är används tooreport åtgärder som har en varaktighet (som varaktighet för API-anrop, visa för annonser, varaktighet för bakgrundsaktiviteter eller varaktighet för användaråtgärder).
+Jobb används för att rapportera åtgärder som har en varaktighet (som varaktighet för API-anrop, visningstid för annonser, varaktighet för uppgifter som körs i bakgrunden eller varaktighet för användaråtgärder).
 
-Ett jobb är inte relaterade tooa session eftersom en uppgift kan köras i bakgrunden hello utan någon användarinteraktion.
+Ett jobb är inte relaterat till en session eftersom en uppgift kan köras i bakgrunden utan interaktion med användaren.
 
-Ett jobb identifieras med ett namn (begränsat too64 tecken) och kan även välja att bädda in extra data (hello högst 1 024 byte).
+Ett jobb identifieras med ett namn (begränsat till 64 tecken) och du kan även välja att bädda in extra data (högst 1 024 byte).
 
 ## <a name="crash"></a>Krascher
-Krascher utfärdas automatiskt av hello Mobile Engagement SDK tooreport program fel där problem som inte identifieras av programmet hello gör det krascha.
+Krascher utfärdas automatiskt av Mobile Engagement SDK för att rapportera programfel när problem som inte identifierats av programmet får det att krascha.
 
 ## <a name="application-information"></a>Programinformation
-Programinformation (eller appinfo) är används tootag användare, det vill säga tooassociate vissa data toohello använder ett program (detta är liknande tooweb cookies, förutom att appinfo lagras på hello på serversidan på plattformen för hello Azure Mobile Engagement).
+Programinformation (eller appinfo) används för att tagga användare, det vill säga för att koppla vissa data till användare av ett program (detta liknar cookies i webbläsarna, men med undantag för att appinfo lagras på serversidan på plattformen Azure Mobile Engagement).
 
-Appinfo kan registreras med hjälp av hello Mobile Engagement SDK API eller genom att använda hello Mobile Engagement-plattformen Device API.
+Appinfo kan registreras med Mobile Engagement SDK API eller genom att använda enhets-API för Mobile Engagement-plattformen.
 
-Appinfo utgörs av en nyckel/värde-par kopplade tooa enhet. hello nyckel är hello namn hello appinfon (begränsat too64 ASCII-bokstäver [a-öA-Ö], siffror [0-9] och understreck [_]). hello-värdet (begränsat too1024 tecken) kan vara en sträng, heltal, datum (åååå-MM-dd) eller booleskt värde (SANT eller FALSKT).
+Appinfo utgörs av ett nyckel-/värdepar som är kopplade till en enhet. Nyckeln är namnet på appinfon (begränsat till 64 ASCII-bokstäver [a–z, A–Z], siffror [0–9] och understreck [_]). Värdet (begränsat till 1 024 tecken) kan vara en sträng, ett heltal, ett datum (ÅÅÅÅ-MM-DD) eller ett booleskt värde (sant eller falskt).
 
-Valfritt antal appinfo kan vara associerade tooa enhet inom hello gränser som definierats av hello Mobile Engagement prisnivå villkoren. För en nyckel Mobile Engagement håller bara reda på senaste värdeuppsättningen för hello (ingen historik). Ange eller ändra hello-värdet för en appinfo tvingas Mobile Engagement toore-utvärdera målgruppen villkor som anges på den här appen info (eventuella) vilket innebär att appinfo kan vara används tootrigger realtid push-meddelanden.
+Valfritt antal appinformationsvärden kan kopplas till en enhet inom de gränser som definierats av villkoren för den specifika prisnivån i Mobile Engagement. Mobile Engagement håller bara reda på den senaste värdeuppsättningen för en nyckel (ingen historik). Om ett värde anges eller ändras tvingas Mobile Engagement att omvärdera målgruppskriterierna för appinfon (om sådan finns), vilket innebär att appinfo kan användas för att utlösa push-meddelanden i realtid.
 
 ## <a name="extra-data"></a>Extra data
-Extra data (eller extra information) utgörs av diverse uppgifter som kan vara anslutna tooevents, fel, aktiviteter och jobb.
+Extra data (eller extra information) utgörs av diverse uppgifter som kan kopplas till händelser, fel, aktiviteter och jobb.
 
-Extra data är strukturerade på samma sätt tooJSON objekt: de består av ett träd med nyckel/värde-par. Nycklarna är begränsade too64 ASCII-bokstäver [a-öA-Ö], siffror [0-9] och understreck [_]) och hello tillägg totala storlek är begränsad too1024 tecken (efter kodning i JSON av hello Mobile Engagement SDK).
+Extra data är strukturerade på ungefär samma sätt som JSON-objekt – de består av ett träd med nyckel-/värdepar. Nycklarna är begränsade till 64 ASCII-bokstäver [a–z, A–Z], siffror [0–9] och understreck [_]) och den totala storleken för extra information är max 1 024 tecken (efter kodning i JSON av Mobile Engagement SDK).
 
-hello hela trädet med nyckel-/ värdepar lagras som ett JSON-objekt. Dock endast hello första nivån av nycklar/värden är uppdelade toobe direkt tillgänglig toosome avancerade funktioner såsom segment (till exempel, du kan enkelt definiera ett segment som kallas ”SciFi-fans” som består av alla användare som har skickat minst 10 gånger hello händelse med namnet ”visat_innehåll” med hello extra nyckeln ”innehållstyp” set toohello värdet ”scifi” i hello senaste månaden). Därför rekommenderas toosend endast tillägg av enkla listor med nyckel/värde-par med skalära värden (till exempel strängar, datum, heltal eller booleska).
+Hela trädet med nyckel-/värdepar lagras som ett JSON-objekt. Endast den första nivån av nycklar/värden delas upp och görs direkt tillgänglig för avancerade funktioner såsom Segment (du kan till exempel enkelt definiera ett segment som kallas ”SciFi-fans” som består av alla användare som har skickat händelsen med namnet ”visat_innehåll” med den extra nyckeln ”innehållstyp” och värdet ”scifi” minst tio gånger under den senaste månaden). Därför rekommenderar vi att du endast skickar extra information som utgörs av enkla listor med nyckel-/värdepar bestående av skalära värden (till exempel strängar, datum, heltal eller booleska värden).
 
 ## <a name="next-steps"></a>Nästa steg
 * [Översikt över Windows Universal SDK för Azure Mobile Engagement](mobile-engagement-windows-store-sdk-overview.md)

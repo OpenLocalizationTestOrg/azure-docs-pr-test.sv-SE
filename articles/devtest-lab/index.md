@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure Devtest Labs-dokumentation – självstudier | Microsoft Docs"
-description: "Lär dig hur tooquickly skapa programmet testmiljöer med hjälp av återanvändbara artefakter. Visar självstudier och videor hur toocreate, hantera och säkra övningar."
+title: "Dokumentation om Azure Devtest Labs – Självstudier | Microsoft Docs"
+description: "Lär dig att snabbt skapa apptestmiljöer med hjälp av återanvändbara artefakter. Självstudier, videor och mycket mer visar hur du skapar, hanterar och skyddar labb."
 services: devtest-lab
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: b403eeda791425bc8f74ee4430224479e39d727c
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 92aab190dfba196d48feacbfcc81a0097102b810
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 #<a name="devtest-labs-documentation"></a>Dokumentation för Devtest Labs
 
-Lär dig hur toouse Devtest Labs tooquickly skapa programmet testmiljöer med hjälp av återanvändbara artefakter. Visar självstudier, videor och övrig dokumentation hur toocreate, hantera och skydda labs, och lägga till och hantera artefakter.
+Lär dig att använda Devtest Labs för att snabbt skapa apptestmiljöer med hjälp av återanvändbara artefakter. Självstudier, videor och annan dokumentationen visar hur du skapar, hanterar och skyddar labb samt lägger till och hanterar artefakter.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -70,7 +70,7 @@ Lär dig hur toouse Devtest Labs tooquickly skapa programmet testmiljöer med hj
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Kom igång med Azure DevTest Labs med hello Azure-portalen</h3>
+                        <h3>Kom igång med Azure DevTest Labs med hjälp av Azure Portal</h3>
                     </div>
                 </div>
             </div>

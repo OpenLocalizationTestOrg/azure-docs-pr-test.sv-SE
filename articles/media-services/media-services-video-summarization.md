@@ -1,6 +1,6 @@
 ---
-title: aaaUse Azure Media Video-miniatyrer tooCreate en Videosammanfattning | Microsoft Docs
-description: "Sammanfattning av video kan hjälpa dig skapa sammanfattningar av långa videor automatiskt genom att intressanta kodavsnitt från hello källa video. Detta är användbart när du vill tooprovide en snabb överblick över vilka tooexpect i en lång video."
+title: "Använd Azure Media Video-miniatyrer för att skapa en sammanfattning av Video | Microsoft Docs"
+description: "Sammanfattning av video kan hjälpa dig skapa sammanfattningar av långa videor automatiskt genom att intressanta kodavsnitt från källvideo. Detta är användbart när du vill ge en snabb överblick över vad som händer i en lång video."
 services: media-services
 documentationcenter: 
 author: juliako
@@ -14,26 +14,26 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: milanga;juliako;
-ms.openlocfilehash: 0a8f0bba6c12a948b940114fe4937e675688a8c7
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 5d5afdaf22ffea8f3b77a154acb5d0a8dda74405
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="use-azure-media-video-thumbnails-toocreate-a-video-summarization"></a>Använd Azure Media Video-miniatyrer tooCreate en Videosammanfattning
+# <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>Använd Azure Media Video-miniatyrer för att skapa en sammanfattning av Video
 ## <a name="overview"></a>Översikt
-Hej **Azure Media Video-miniatyrer** medieprocessor (HP) kan du toocreate en sammanfattning av en video som är användbara toocustomers som bara vill toopreview en sammanfattning av en lång video. Kunder kan exempelvis vilja toosee en kort ”sammanfattning video” när de hovra över en miniatyrbild. Genom att modifiera hello parametrarna för **Azure Media Video-miniatyrer** via en förinställd konfiguration kan du använda hello MP kraftfulla som identifiering och sammanfogning teknik tooalgorithmically generera ett beskrivande underklipp.  
+Den **Azure Media Video-miniatyrer** medieprocessor (HP) kan du skapa en sammanfattning av en video som är användbar för kunder som vill förhandsgranska en sammanfattning av en lång video. Till exempel kunder kanske vill se en kort ”sammanfattning av video” när de hovra över en miniatyrbild. Genom att modifiera parametrarna för **Azure Media Video-miniatyrer** via en konfiguration förinställning tekniken kan användas av MP kraftfulla som identifiering och sammanfogning algoritmiskt generera ett beskrivande underklipp.  
 
-Hej **Azure Media Video miniatyr** MP är för närvarande under förhandsgranskning.
+Den **Azure Media Video miniatyr** MP är för närvarande under förhandsgranskning.
 
-Det här avsnittet innehåller information om **Azure Media Video miniatyr** och visar hur toouse med Media Services SDK för .NET.
+Det här avsnittet innehåller information om **Azure Media Video miniatyr** och visar hur du använder det med Media Services SDK för .NET.
 
 ## <a name="limitations"></a>Begränsningar
 
-I vissa fall, om videon inte består av olika i bakgrunden ska hello utdata en enda som visar.
+I vissa fall, om videon inte består av olika i bakgrunden blir utdata endast en enskild som visar.
 
 ## <a name="video-summary-example"></a>Video sammanfattning exempel
-Här följer några exempel på vilka hello Azure Media Video-miniatyrer medieprocessor kan göra:
+Här följer några exempel på vad Azure Media Video-miniatyrer medieprocessor kan göra:
 
 ### <a name="original-video"></a>Ursprungliga video
 [Ursprungliga video](http://ampdemo.azureedge.net/azuremediaplayer.html?url=https%3A%2F%2Fnimbuscdn-nimbuspm.streaming.mediaservices.windows.net%2Faed33834-ec2d-4788-88b5-a4505b3d032c%2FMicrosoft%27s%20HoloLens%20Live%20Demonstration.ism%2Fmanifest)
@@ -42,26 +42,26 @@ Här följer några exempel på vilka hello Azure Media Video-miniatyrer mediepr
 [Video miniatyr resultat](http://ampdemo.azureedge.net/azuremediaplayer.html?url=http%3A%2F%2Fnimbuscdn-nimbuspm.streaming.mediaservices.windows.net%2Ff5c91052-4232-41d4-b531-062e07b6a9ae%2FHololens%2520Demo_VideoThumbnails_MotionThumbnail.mp4)
 
 ## <a name="task-configuration-preset"></a>Uppgiftskonfigurationen (förinställda)
-När du skapar en video miniatyr uppgift med **Azure Media Video-miniatyrer**, måste du ange en konfiguration förinställning. hello ovan miniatyr exemplet skapades med hello följande grundläggande JSON-konfiguration:
+När du skapar en video miniatyr uppgift med **Azure Media Video-miniatyrer**, måste du ange en konfiguration förinställning. Miniatyrer exemplet ovan har skapats med följande grundläggande JSON-konfiguration:
 
     {"version":"1.0"}
 
-För närvarande kan du ändra hello följande parametrar:
+För närvarande kan du ändra följande parametrar:
 
 | Param | Beskrivning |
 | --- | --- |
-| outputAudio |Anger huruvida hello gällande video innehåller något ljud. <br/>Tillåtna värden är: SANT eller FALSKT. Standardvärdet är True. |
-| fadeInFadeOut |Anger huruvida Tona övergångar används mellan hello separat rörelse miniatyrerna.  <br/>Tillåtna värden är: SANT eller FALSKT.  Standardvärdet är True. |
-| maxMotionThumbnailDurationInSecs |Heltal som anger hur länge hello hela gällande videon vara.  Standard är beroende av ursprungliga video varaktighet. |
+| outputAudio |Anger huruvida gällande videon innehåller något ljud. <br/>Tillåtna värden är: SANT eller FALSKT. Standardvärdet är True. |
+| fadeInFadeOut |Anger huruvida Tona övergångar används mellan separat rörelse miniatyrbilderna.  <br/>Tillåtna värden är: SANT eller FALSKT.  Standardvärdet är True. |
+| maxMotionThumbnailDurationInSecs |Heltal som anger hur länge en hel gällande video vara.  Standard är beroende av ursprungliga video varaktighet. |
 
-hello följande tabell beskrivs hello standardlängden när **maxMotionThumbnailInSecs** används inte.
+I följande tabell beskrivs standardlängden när **maxMotionThumbnailInSecs** används inte.
 
 |  |  |  |
 | --- | --- | --- | --- | --- |
 | Video varaktighet |d < 3 min |3 min < d < 15 min |
 | Miniatyrer varaktighet |15 sek (2-3 i bakgrunden) |30 sekunder (3-5 i bakgrunden) |
 
-hello anger följande JSON tillgängliga parametrar.
+Följande JSON anger tillgängliga parametrar.
 
     {
         "version": "1.0",
@@ -74,10 +74,10 @@ hello anger följande JSON tillgängliga parametrar.
 
 ## <a name="net-sample-code"></a>Exempelkod för .NET
 
-hello följande program visar hur du:
+Följande program visar hur du:
 
-1. Skapa en tillgång och överför en mediefil till hello tillgång.
-2. Skapar ett jobb med en video miniatyr aktivitet baserat på en konfigurationsfil som innehåller hello följande json förinställda. 
+1. Skapa en tillgång och överför en mediefil till tillgången.
+2. Skapar ett jobb med en video miniatyr aktivitet baserat på en konfigurationsfil som innehåller följande json-förinställning. 
    
         {                
             "version": "1.0",
@@ -87,11 +87,11 @@ hello följande program visar hur du:
                 "fadeInFadeOut": "false"
             }
         }
-3. Hämtar hello utdatafilerna. 
+3. Hämtar utdatafilerna. 
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>Skapa och konfigurera ett Visual Studio-projekt
 
-Konfigurera utvecklingsmiljön och fylla hello app.config-fil med anslutningsinformation, enligt beskrivningen i [Media Services-utveckling med .NET](media-services-dotnet-how-to-use.md). 
+Konfigurera utvecklingsmiljön och fyll i filen app.config med anslutningsinformation, enligt beskrivningen i [Media Services-utveckling med .NET](media-services-dotnet-how-to-use.md). 
 
 #### <a name="example"></a>Exempel
 
@@ -107,7 +107,7 @@ Konfigurera utvecklingsmiljön och fylla hello app.config-fil med anslutningsinf
     {
         class Program
         {
-            // Read values from hello App.config file.
+            // Read values from the App.config file.
             private static readonly string _AADTenantDomain =
                 ConfigurationManager.AppSettings["AADTenantDomain"];
             private static readonly string _RESTAPIEndpoint =
@@ -124,17 +124,17 @@ Konfigurera utvecklingsmiljön och fylla hello app.config-fil med anslutningsinf
                 _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
 
 
-                // Run hello thumbnail job.
+                // Run the thumbnail job.
                 var asset = RunVideoThumbnailJob(@"C:\supportFiles\VideoThumbnail\BigBuckBunny.mp4",
                                             @"C:\supportFiles\VideoThumbnail\config.json");
 
-                // Download hello job output asset.
+                // Download the job output asset.
                 DownloadAsset(asset, @"C:\supportFiles\VideoThumbnail\Output");
             }
 
             static IAsset RunVideoThumbnailJob(string inputMediaFilePath, string configurationFile)
             {
-                // Create an asset and upload hello input media file toostorage.
+                // Create an asset and upload the input media file to storage.
                 IAsset asset = CreateAssetAndUploadSingleFile(inputMediaFilePath,
                     "My Video Thumbnail Input Asset",
                     AssetCreationOptions.None);
@@ -142,38 +142,38 @@ Konfigurera utvecklingsmiljön och fylla hello app.config-fil med anslutningsinf
                 // Declare a new job.
                 IJob job = _context.Jobs.Create("My Video Thumbnail Job");
 
-                // Get a reference tooAzure Media Video Thumbnails.
+                // Get a reference to Azure Media Video Thumbnails.
                 string MediaProcessorName = "Azure Media Video Thumbnails";
 
                 var processor = GetLatestMediaProcessorByName(MediaProcessorName);
 
-                // Read configuration from hello specified file.
+                // Read configuration from the specified file.
                 string configuration = File.ReadAllText(configurationFile);
 
-                // Create a task with hello encoding details, using a string preset.
+                // Create a task with the encoding details, using a string preset.
                 ITask task = job.Tasks.AddNew("My Video Thumbnail Task",
                     processor,
                     configuration,
                     TaskOptions.None);
 
-                // Specify hello input asset.
+                // Specify the input asset.
                 task.InputAssets.Add(asset);
 
-                // Add an output asset toocontain hello results of hello job.
+                // Add an output asset to contain the results of the job.
                 task.OutputAssets.AddNew("My Video Thumbnail Output Asset", AssetCreationOptions.None);
 
-                // Use hello following event handler toocheck job progress.  
+                // Use the following event handler to check job progress.  
                 job.StateChanged += new EventHandler<JobStateChangedEventArgs>(StateChanged);
 
-                // Launch hello job.
+                // Launch the job.
                 job.Submit();
 
-                // Check job execution and wait for job toofinish.
+                // Check job execution and wait for job to finish.
                 Task progressJobTask = job.GetExecutionProgressTask(CancellationToken.None);
 
                 progressJobTask.Wait();
 
-                // If job state is Error, hello event handling
+                // If job state is Error, the event handling
                 // method for job progress should log errors.  Here we check
                 // for error state and exit if needed.
                 if (job.State == JobState.Error)

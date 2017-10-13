@@ -1,6 +1,6 @@
 ---
 title: "Snabbstart: Skapa Azure-databas för MySQL-server – Azure Portal | Microsoft Docs"
-description: "Den här artikeln steg som du använder hello Azure portal tooquickly skapa ett exempel på Azure-databas för MySQL-servern om fem minuter."
+description: "Den här artikeln beskriver hur du använder Azure Portal för att snabbt skapa ett exempel på en Azure-databas för MySQL-server på fem minuter."
 services: mysql
 author: v-chenyh
 ms.author: v-chenyh
@@ -10,117 +10,126 @@ ms.service: mysql-database
 ms.custom: mvc
 ms.topic: hero-article
 ms.date: 08/15/2017
-ms.openlocfilehash: d5754fe7a6f0f0f4b3fa19d456c4e15e64ca396c
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 46aee37a00a923addc08dd185ce0326a64ccb48c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="create-an-azure-database-for-mysql-server-using-azure-portal"></a>Skapa en Azure Database för MySQL med Azure Portal
-Azure MySQL-databas är en hanterad tjänst som gör att du toorun, hantera och skala högtillgänglig MySQL-databaser i hello molnet. Den här snabbstarten visar hur toocreate en Azure-databas för MySQL-server med hello Azure-portalen om fem minuter. 
+# <a name="create-an-azure-database-for-mysql-server-by-using-the-azure-portal"></a>Skapa en Azure Database för MySQL-server med Azure Portal
+Azure Database för MySQL är en hanterad tjänst som du använder för att köra, hantera och skala högtillgängliga MySQL-databaser i molnet. Den här snabbstarten visar hur du skapar en Azure Database för MySQL-server på ungefär fem minuter med Azure Portal.  
 
-Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt](https://azure.microsoft.com/free/) konto innan du börjar.
+Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt Azure-konto](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="log-in-tooazure"></a>Logga in tooAzure
-Öppna webbläsaren och gå toohello [Microsoft Azure-portalen](https://portal.azure.com/). Ange dina autentiseringsuppgifter toosign toohello-portalen. hello standardvyn är instrumentpanelen service.
+## <a name="sign-in-to-azure"></a>Logga in på Azure
+Öppna webbläsaren och gå sedan till [Azure Portal](https://portal.azure.com/). Ange dina autentiseringsuppgifter och logga in på portalen. Standardvyn är instrumentpanelen.
 
-## <a name="create-azure-database-for-mysql-server"></a>Skapa en Azure-databas för MySQL-servern
-En Azure Database för MySQL-server skapas med en definierad uppsättning [compute- och lagringsresurser](./concepts-compute-unit-and-storage.md). hello server skapas inom en [Azure-resursgrupp](../azure-resource-manager/resource-group-overview.md).
+## <a name="create-an-azure-database-for-mysql-server"></a>Skapa en Azure Database för MySQL-server
+Du skapar en Azure Database för MySQL-server med en definierad uppsättning [Compute- och Storage-resurser](./concepts-compute-unit-and-storage.md). Du skapar servern i en [Azure-resursgrupp](../azure-resource-manager/resource-group-overview.md).
 
-Följ dessa steg toocreate en Azure-databas för MySQL-server:
+Följ de här stegen för att skapa en Azure Database för MySQL-server:
 
-1. Klicka på hello **ny** knappen (+) finns på hello övre vänstra hörnet av hello Azure-portalen.
+1. Klicka på knappen **Nytt** (+) i det övre vänstra hörnet i portalen.
 
-2. Välj **databaser** från hello **ny** och väljer **Azure-databas för MySQL** från hello **databaser** sidan. Du kan också skriva **MySQL** i hello ny sida rutan toofind hello söktjänsten.
-![Azure Portal – ny – databas – MySQL](./media/quickstart-create-mysql-server-database-using-azure-portal/2_navigate-to-mysql.png)
+2. Välj **Databaser** > **Azure-databas för MySQL**. Du kan också skriva **MySQL** i sökrutan och leta reda på tjänsten.
 
-3. Fyll i formuläret om hello nya servern information med hello följande information som visas i föregående bild hello:
+    ![Alternativet Azure-databas för MySQL](./media/quickstart-create-mysql-server-database-using-azure-portal/2_navigate-to-mysql.png)
+
+4. Fyll i detaljformuläret för den nya servern med följande information (se föregående bild):
 
     **Inställning** | **Föreslaget värde** | **Fältbeskrivning** 
     ---|---|---
-    servernamn | myserver4demo | Välj ett unikt namn för Azure Database för MySQL-server. hello domännamn *mysql.database.azure.com* är tillagda toohello servernamn som du anger för program tooconnect till. hello servernamnet får innehålla endast små bokstäver, siffror och hello bindestreck (-) och det måste innehålla mellan 3 och 63 tecken.
-    Prenumeration | Din prenumeration | hello Azure-prenumeration som du vill toouse för servern. Om du har flera prenumerationer, Välj hello lämpliga prenumeration där hello resurs debiteras för.
-    Resursgrupp | myresourcegroup | Du kan skapa ett nytt resursgruppnamn eller använda ett befintligt namn i prenumerationen.
-    inloggning för serveradministratör | myadmin | Se egna inloggningen konto toouse när du ansluter toohello server. Hej administratör inloggningsnamnet får inte vara 'azure_superuser', ”admin”, 'administratör', 'rot', 'gäst' eller 'public'.
-    Lösenord | *Ditt val* | Skapa ett nytt lösenord för administratörskontot för hello-server. Måste innehålla från 8 too128 tecken. Lösenordet måste innehålla tecken från tre av hello följande kategorier-engelska versala bokstäver, engelska gemena bokstäver, siffror (0-9) och icke-alfanumeriska tecken (!, $, #, % osv.).
-    Bekräfta lösenord | *Ditt val*| Bekräfta hello admin kontolösenord.
-    Plats | *hello region närmaste tooyour användare*| Välj hello-plats som är närmast tooyour användare eller andra Azure-program.
-    Version | *Välj hello senaste version*| Välj hello senaste versionen om du inte har särskilda krav.
-    Prisnivå | **Basic**, **50 Compute-enheter** **50 GB** | Klicka på **prisnivå** toospecify hello tjänstnivå och prestandanivå servicenivå för den nya databasen. Välj **grundläggande nivån** hello fliken hello överst. Klicka på hello vänstra ände hello **Compute enheter** skjutreglaget tooadjust hello värdet toohello minst belopp tillgängliga för denna Snabbstart. Klicka på **Ok** toosave hello priser för val av. Se hello följande skärmbild.
-    PIN-kod toodashboard | Markera | Kontrollera hello **PIN-kod toodashboard** alternativet tooallow enkel spårning av din server på hello främre instrumentpanelssida på Azure-portalen.
+    servernamn | myserver4demo | Ett unikt namn för Azure Database för MySQL-server. Domännamnet *mysql.database.azure.com* läggs till i det servernamn du anger. Ditt servernamn får bara innehålla gemener, siffror och bindestreck. Det måste innehålla mellan 3 och 63 tecken.
+    Prenumeration | Din prenumeration | Den Azure-prenumeration som ska användas för servern. Om du har flera prenumerationer väljer du den prenumeration som resursen ska debiteras till.
+    Resursgrupp | myresourcegroup | Ett nytt eller ett befintligt resursgruppnamn.
+    inloggning för serveradministratör | myadmin | Ett inloggningskonto som du använder när du ansluter till servern. Inloggningsnamnet för administratören får inte vara **azure_superuser**, **admin**, **administrator**, **root**, **guest** eller **public**.
+    Lösenord | *Ditt val* | Ett nytt lösenord för serverns administratörskonto. Det måste innehålla mellan 8 och 128 tecken. Lösenordet måste innehålla tecken från tre av följande kategorier: engelska versala bokstäver, engelska gemena bokstäver, siffror (0-9) och icke-alfanumeriska tecken (!, $, #, % osv).
+    Bekräfta lösenord | *Ditt val*| Det bekräftade administratörslösenordet.
+    Plats | *Regionen som ligger närmast dina användare*| Den plats som är närmast dina användare eller andra Azure-program.
+    Version | *Den senaste versionen*| Välj den senaste versionen (om du inte har särskilda behov som gör att du måste ha en annan version).
+    Prisnivå | **Basic**, **50 Compute-enheter**, **50 GB** | Tjänstnivå och prestandanivå för den nya databasen. Välj **Basic-nivån** på fliken längst upp. Välj den vänstra änden av skjutreglaget för **Compute-enheter** och justera värdet till minsta tillgängliga mängd för den här snabbstarten. Spara den valda prisnivån genom att välja **OK**. Mer information finns på följande skärmbild.
+    Fäst vid instrumentpanelen | Markera | Gör att du enkelt kan spåra servern på den främre instrumentpanelen på Azure Portal.
 
     > [!IMPORTANT]
-    > hello inloggning för serveradministratör och lösenord som du anger här är nödvändig toolog i toohello server och dess databaser senare i den här snabbstarten. Kom ihåg eller skriv ned den här informationen så att du kan använda den senare.
+    > Det användarnamn och lösenord för serveradministration du anger här krävs för inloggning på servern och databaserna senare i den här snabbstarten. Kom ihåg eller skriv ned den här informationen så att du kan använda den senare.
     > 
 
-    ![Azure portal – skapa MySQL genom att tillhandahålla hello krävs formulärindata](./media/quickstart-create-mysql-server-database-using-azure-portal/3_create-server.png)
+    ![Azure Portal – skapa MySQL genom att tillhandahålla de formuläruppgifter som krävs](./media/quickstart-create-mysql-server-database-using-azure-portal/3_create-server.png)
 
-4.  Klicka på **skapa** tooprovision hello server. Etablering tar några minuter, in too20 minuter maximalt.
+4.  Välj **Skapa** för att etablera servern. Etableringen kan ta upp till 20 minuter.
    
-5.  På verktygsfältet hello **meddelanden** (klockikonen) toomonitor hello distributionsprocessen.
+5.  Välj **Aviseringar** (klockikonen) i verktygsfältet för att övervaka distributionsprocessen.
 
 ## <a name="configure-a-server-level-firewall-rule"></a>Konfigurera en brandväggsregel på servernivå
 
-hello Azure-databas för MySQL-tjänst som skapar en brandvägg på servernivå för hello. Den här brandväggen förhindrar externa program och verktyg ansluter toohello server och alla databaser på servern hello, såvida inte en brandväggsregel skapas tooopen hello-brandväggen för specifika IP-adresser. 
+Azure Database för MySQL-tjänsten skapar en brandvägg på servernivå. Den förhindrar att externa program och verktyg ansluter till servern eller databaser på servern, om inte en brandväggsregel konfigureras som öppnar brandväggen för specifika IP-adresser. 
 
-1.  Leta upp din server när hello distributionen är klar. Om det behövs kan du söka efter den. Klicka till exempel **alla resurser** från hello vänstra menyn och Skriv hello servernamn (till exempel hello exempel *myserver4demo*) toosearch för den nya servern. Klicka på namnet på servern som anges i hello sökresultatet. Hej **översikt** sidan för servern öppnas och visar alternativ för ytterligare konfiguration.
+1.   Leta upp servern när distributionen är klar. Om det behövs kan du söka efter den. Välj exempelvis **Alla resurser** på menyn till vänster. Skriv in servernamnet (till exempel **myserver4demo**) för att söka efter den nya servern. Välj servernamnet i sökresultatlistan. **Översikt**-sidan för din server öppnas och innehåller alternativ ytterligare konfiguration.
 
-2. Hello server på sidan Välj **anslutningssäkerhet**.
+2. På serversidan väljer du **Anslutningssäkerhet**.
 
-3.  Under hello **regler i brandväggen** rubrik, klicka i hello tom textruta i hello **Regelnamn** kolumnen toobegin skapar hello brandväggsregel. 
+3.  Under **Brandväggsregler** väljer du den tomma textrutan i kolumnen **Regelnamn** och börjar skapa brandväggsregeln. 
 
-    Denna Snabbstart vi tillåter alla IP-adresser i hello-servern genom att fylla i hello textruta i varje kolumn med hello följande värden:
+    I den här snabbstartsguiden ska vi tillåta alla IP-adresser till servern genom att fylla i rutorna i varje kolumn med följande värden:
 
     Regelnamn | Start-ip | Slut-ip 
     ---|---|---
     AllowAllIps |  0.0.0.0 | 255.255.255.255
 
-4. Hello övre verktygsfältet för hello **anslutningssäkerhet** klickar du på **spara**. Vänta en stund och meddelande hello-meddelande visar att uppdatera anslutningssäkerhet har slutförts innan du fortsätter.
+4. Välj **Spara** i det övre verktygsfältet på sidan **Anslutningssäkerhet**. Vänta tills meddelandet visas som talar om att uppdateringen har slutförts innan du fortsätter. 
 
     > [!NOTE]
-    > Anslutningar tooAzure för MySQL-databas kommunicerar via port 3306. Om du försöker tooconnect från ett företagsnätverk, tillåtas utgående trafik via port 3306 inte av ditt nätverks brandvägg. I så fall, blir inte kan tooconnect tooyour server om din IT-avdelning öppnar port 3306.
+    > Anslutningar till Azure Database för MySQL kommunicerar via port 3306. Om du försöker ansluta inifrån ett företagsnätverk kanske utgående trafik via port 3306 inte tillåts. I så fall kan du inte ansluta till servern om inte IT-avdelningen öppnar port 3306.
     > 
 
-## <a name="get-hello-connection-information"></a>Hämta hello anslutningsinformation
-tooconnect tooyour databasserver, behöver du tooremember hello fullständig server name och admin inloggningsuppgifter. Du kan märka dessa värden i hello Quickstart ovan. Om du inte gjorde du lätt kan hitta hello server name och logga in information från hello server **översikt** sida eller hello **egenskaper** sida i hello Azure-portalen.
+## <a name="get-the-connection-information"></a>Hämta anslutningsinformationen
+Du behöver det fullständiga servernamnet och inloggningsuppgifterna för administratör för att ansluta till databasservern. Du kan ha antecknat de här värdena tidigare i snabbstartsartikeln. I annat fall hittar du enkelt servernamnet och inloggningsuppgifterna på sidan **Översikt** eller **Egenskaper** för servern på Azure Portal.
 
-1. Öppna serverns **Översikt**-sida. Anteckna hello **servernamn** och **serverinloggningsnamnet för admin**. 
-    Håller markören över varje fält och hello kopiera-ikonen visas toohello höger hello text. Klicka på hello kopiera-ikonen som behövs toocopy hello värden.
+Så här hittar du dem: 
 
-    I det här exemplet hello servernamnet är *myserver4demo.mysql.database.azure.com*, och hello inloggning för serveradministratör är  *myadmin@myserver4demo* .
+1. Öppna serverns **Översikt**-sida. Anteckna **servernamn** och **inloggningsnamnet för serveradministratören**. 
 
-## <a name="connect-toomysql-using-mysql-command-line-tool"></a>Ansluta med hjälp av kommandoradsverktyget för mysql tooMySQL
-Det finns flera program kan du använda tooconnect tooyour Azure-databas för MySQL-servern. Först ska vi använda hello [mysql](https://dev.mysql.com/doc/refman/5.7/en/mysql.html) kommandoradsverktyget verktyget tooillustrate hur tooconnect toohello server.  Du kan använda en webbläsare och hello Azure Cloud Shell som beskrivs här utan hello måste tooinstall ytterligare programvara. Om du har installerats lokalt på din egen dator hello mysql-verktyget kan ansluta du samt i därifrån.
+2. Håll markören över varje fält så att kopieringssymbolen visas till höger om texten. Välj kopieringssymbolen för att kopiera värdena.
 
-1. Starta hello Azure Cloud Shell via terminal hello-ikonen (> _) på hello uppifrån höger om hello Azure portal webbsida.
+I det här exemplet är servernamnet **myserver4demo.mysql.database.azure.com** och inloggningen för serveradministratören är **myadmin@myserver4demo**.
 
-2. hello Azure Cloud Shell öppnas i webbläsaren, vilket gör att du tootype bash shell-kommandon.
+## <a name="connect-to-mysql-by-using-the-mysql-command-line-tool"></a>Ansluta till MySQL med mysql-kommandoradsverktyget
+Det finns ett antal program du kan använda för att ansluta till Azure Database för MySQL-servern. 
+
+Först använder vi [mysql](https://dev.mysql.com/doc/refman/5.7/en/mysql.html)-kommandoradsverktyget för att visa hur man ansluter till servern. Du kan också använda en webbläsare och Azure Cloud Shell enligt nedan utan att installera ytterligare programvara. Om mysql-verktyget är installerat lokalt kan du ansluta därifrån också.
+
+1. Starta Azure Cloud Shell via terminalikonen (**>_**) överst till höger på Azure Portal.
+
+2.  Azure Cloud Shell öppnas i webbläsaren så att du kan skriva bash shell-kommandon.
 
     ![Kommandotolk – exempel på mysql-kommandorad](./media/quickstart-create-mysql-server-database-using-azure-portal/7_connect-to-server.png)
 
-3. I Kommandotolken hello molnet Shell ansluta tooyour Azure-databas för MySQL-servern genom att ange hello mysql-kommandoraden hello grön i Kommandotolken.
+3. I Cloud Shell-prompten ansluter du till din Azure Database för MySQL-server genom att skriva in mysql-kommandoraden.
 
-    hello följande format är används tooconnect tooan Azure-databas för MySQL-server med hello mysql-verktyget:
+    Använd följande format för att ansluta till en Azure Database för MySQL-server med mysql-verktyget:
+
     ```bash
     mysql --host <yourserver> --user <server admin login> --password
     ```
 
-    Till exempel ansluter följande kommando hello tooour exempel server:
+    Till exempel ansluter följande kommando till vår exempelserver:
+
     ```azurecli-interactive
     mysql --host myserver4demo.mysql.database.azure.com --user myadmin@myserver4demo --password
     ```
 
     mysql-parameter |Föreslaget värde|Beskrivning
     ---|---|---
-    --host | *servernamn* | Ange hello server namn-värde som används när du skapade hello Azure-databas för MySQL tidigare. Exempelservern som visas är myserver4demo.mysql.database.azure.com. Använd hello fullständigt kvalificerade domännamnet (\*. mysql.database.azure.com) enligt hello exempel. Åtgärderna hello i hello föregående avsnitt tooget hello anslutningsinformationen om du inte kommer ihåg namnet på servern. 
-    --användare | *inloggning för serveradministratör* |Skriv i hello server inloggningen administratörsanvändarnamnet angavs när du skapade hello Azure-databas för MySQL tidigare. Åtgärderna hello i hello föregående avsnitt tooget hello anslutningsinformationen om du inte kommer ihåg hello användarnamn.  hello-formatet är  *username@servername* .
-    --lösenord | *vänta på uppmaning* | Du uppmanas att för ”ange lösenord” när du anger hello-kommandot. När du uppmanas ange hello samma lösenord som du angav när du skapade hello-server.  Obs hello angett tecken inte visas på hello bash fråga när du skriver dem lösenord. Tryck på RETUR när du har angett alla hello tecken tooauthenticate och ansluta.
+    --host | *Servernamn* | Värdet för servernamn som användes när du tidigare skapade Azure Database för MySQL-server. Exempelservern är **myserver4demo.mysql.database.azure.com**. Använd det fullständiga domännamnet (**\*.mysql.database.azure.com**) som i det här exemplet. Om du inte kommer ihåg namnet på servern följer du anvisningarna i föregående avsnitt för att hitta anslutningsinformation. 
+    --användare | *Inloggning för serveradministratör* |Ange det användarnamn för serveradministratörsinloggning som du angav tidigare när du skapade Azure Database för MySQL-server. Om du inte kommer ihåg användarnamnet följer du anvisningarna i föregående avsnitt för att hitta anslutningsinformation. Formatet är *username@servername*.
+    --lösenord | *Vänta på uppmaning* |Det här är samma lösenord som du angav när du skapade servern. Observera att det angivna lösenordet inte visas i bash-kommandotolken när du skriver. Välj **Retur** när du har angett lösenordet.
 
-   När du är ansluten, hello mysql-verktyget visar en `mysql>` fråga efter du tootype kommandon. 
+   När du är ansluten visar mysql-verktyget en `mysql>`-kommandotolk där du kan skriva kommandon. 
 
-    Exempel på mysql-utdata:
+   Exempel på mysql-utdata:
+
     ```bash
-    Welcome toohello MySQL monitor.  Commands end with ; or \g.
+    Welcome to the MySQL monitor.  Commands end with ; or \g.
     Your MySQL connection id is 65505
     Server version: 5.6.26.0 MySQL Community Server (GPL)
     
@@ -130,18 +139,19 @@ Det finns flera program kan du använda tooconnect tooyour Azure-databas för My
     affiliates. Other names may be trademarks of their respective
     owners.
 
-    Type 'help;' or '\h' for help. Type '\c' tooclear hello current input statement.
+    Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
     
     mysql>
     ```
     > [!TIP]
-    > Om hello-brandväggen inte är konfigurerad tooallow hello IP-adressen för hello Azure Cloud Shell hello följande fel inträffar:
+    > Om brandväggen inte är konfigurerad att tillåta IP-adressen för Azure Cloud Shell uppstår följande fel:
     >
-    > FEL 2003 (28000): Klienten med IP-adressen 123.456.789.0 tillåts inte tooaccess hello server.
+    > ERROR 2003 (28000): Client with IP address 123.456.789.0 is not allowed to access the server. (Klienten med IP-adress 123.456.789.0 har inte tillstånd att ansluta till servern.)
     >
-    > tooresolve hello fel, kontrollera att hello server configuration matchar hello stegen i hello *konfigurera en brandväggsregel på servernivå* i hello artikeln.
+    > Lös felet genom att se till att serverkonfigurationen matchar stegen i avsnittet Konfigurera en brandväggsregel på servernivå i artikeln.
 
-4. Visa status tooensure hello serveranslutning fungerar. Typen `status` på hello mysql > fråga när den är ansluten.
+4. Du kan kontrollera att anslutningen fungerar genom att granska serverstatus genom att skriva `status` i kommandotolken mysql>.
+
     ```sql
     status
     ```
@@ -149,63 +159,69 @@ Det finns flera program kan du använda tooconnect tooyour Azure-databas för My
    > [!TIP]
    > Fler kommandon finns i [referenshandboken för MySQL 5.7 – kapitel 4.5.1](https://dev.mysql.com/doc/refman/5.7/en/mysql.html).
 
-5.  Skapa en tom databas på hello mysql > fråga genom att skriva följande kommando hello:
+5.  Skapa en tom databas i kommandotolken **mysql>** genom att skriva följande kommando:
     ```sql
     CREATE DATABASE quickstartdb;
     ```
-    hello-kommandot kan ta några ögonblick toocomplete. 
+    Kommandot kan ta en stund att slutföra. 
 
-    Du kan skapa en eller flera databaser på en Azure Database för MySQL-server. Du kan välja toocreate en enskild databas per server tooutilize alla hello resurser eller skapa flera databaser tooshare hello resurser. Det finns ingen gräns toohello antalet databaser som kan skapas, men flera databaser dela hello resurser på samma server. 
+    Du kan skapa en eller flera databaser på en Azure Database för MySQL-server. Du kan välja att skapa en databas per server om du vill använda dig av samtliga resurser, eller skapa flera databaser som får dela på resurserna. Det finns ingen gräns för hur många databaser du kan skapa, men flera databaser delar samma serverresurser. 
 
-6. Lista hello databaser på hello mysql > fråga genom att skriva följande kommando hello:
+6. Visa en lista med databaserna i kommandotolken **mysql>** genom att skriva följande kommando:
 
     ```sql
     SHOW DATABASES;
     ```
 
-7.  Typen `\q` och tryck sedan på RETUR tooquit hello mysql-verktyget. När du är klar kan du stänga hello Azure Cloud-gränssnittet.
+7.  Skriv `\q` och välj sedan **Retur** för att avsluta mysql-verktyget. När du är klar kan du stänga Azure Cloud Shell.
 
-Du har nu anslutna toohello Azure-databas för MySQL och skapat en tom databas. Fortsätta toohello nästa avsnitt toorepeat en liknande Övning tooconnect toohello samma server med ett annat gemensamma verktyg, MySQL-arbetsstationen.
+Nu har du anslutit till Azure Database för MySQL-server och skapat en tom användardatabas. Fortsätt till nästa avsnitt för en liknande övning. I nästa övning ansluter vi till samma server med ett annat vanligt verktyg, MySQL Workbench.
 
-## <a name="connect-toohello-server-using-hello-mysql-workbench-gui-tool"></a>Ansluta toohello servern med hjälp av hello MySQL arbetsstationen GUI-verktyg
-tooconnect tooAzure MySQL server verktyget hello GUI MySQL arbetsstationen:
+## <a name="connect-to-the-server-by-using-the-mysql-workbench-gui-tool"></a>Ansluta till servern med användargränssnittsverktyget MySQL Workbench
+Gör så här om du vill ansluta till servern med användargränssnittsverktyget MySQL Workbench:
 
-1.  Starta hello MySQL arbetsstationen programmet på klientdatorn. Du kan ladda ned och installera MySQL Workbench [här](https://dev.mysql.com/downloads/workbench/).
+1.  Öppna programmet MySQL Workbench på klientdatorn. Du kan ladda ned och installera MySQL Workbench [här](https://dev.mysql.com/downloads/workbench/).
 
-2.  I **installera ny anslutning** dialogrutan Ange följande information hello **parametrar** fliken:
+2.  I dialogrutan **Konfigurera ny anslutning** anger du följande information på fliken **Parametrar**:
 
-    ![konfigurera ny anslutning](./media/quickstart-create-mysql-server-database-using-azure-portal/setup-new-connection.png)
+    ![Skapa en ny anslutning](./media/quickstart-create-mysql-server-database-using-azure-portal/setup-new-connection.png)
 
-    | **Inställning** | **Föreslaget värde** | **Fältbeskrivning** |
+    |Inställning |Föreslaget värde|Fältbeskrivning|
     |---|---|---|
-    |   Anslutningsnamn | Demoanslutning | Ange ett namn på anslutningen. |
-    | Anslutningsmetod | Standard (TCP/IP) | Standard (TCP/IP) är tillräckligt. |
-    | Värdnamn | *servernamn* | Ange hello server namn-värde som används när du skapade hello Azure-databas för MySQL tidigare. Exempelservern som visas är myserver4demo.mysql.database.azure.com. Använd hello fullständigt kvalificerade domännamnet (\*. mysql.database.azure.com) enligt hello exempel. Åtgärderna hello i hello föregående avsnitt tooget hello anslutningsinformationen om du inte kommer ihåg namnet på servern.  |
-    | Port | 3306 | Använd alltid port 3306 vid anslutning tooAzure databas för MySQL. |
-    | Användarnamn |  *inloggning för serveradministratör* | Skriv i hello server inloggningen administratörsanvändarnamnet angavs när du skapade hello Azure-databas för MySQL tidigare. Vår användarnamn i exemplet är myadmin@myserver4demo. Åtgärderna hello i hello föregående avsnitt tooget hello anslutningsinformationen om du inte kommer ihåg hello användarnamn. hello-formatet är  *username@servername* .
-    | Lösenord | ditt lösenord | Klicka i valvet... knappen toosave hello lösenordet lagras. |
+     Anslutningsnamn | Demoanslutning | En etikett för anslutningen. |
+    Anslutningsmetod | Standard (TCP/IP) | Standard (TCP/IP) är tillräckligt. |
+    Värdnamn | *Servernamn* | Det värde för servernamn som du använde tidigare när du skapade Azure Database för MySQL-server. Exempelservern är **myserver4demo.mysql.database.azure.com**. Använd det fullständiga domännamnet (**\*.mysql.database.azure.com**) som i det här exemplet. Om du inte kommer ihåg namnet på servern följer du anvisningarna i föregående avsnitt för att hitta anslutningsinformation.|
+     Port | 3306 | Den port som ska användas vid anslutning till din Azure Database för MySQL-server. |
+    Användarnamn |  *Inloggning för serveradministratör* | Den inloggningsinformation för serveradministratör som du uppgav tidigare när du skapade Azure Database för MySQL-server. Exempelanvändarnamnet är **myadmin@myserver4demo**. Om du inte kommer ihåg användarnamnet följer du anvisningarna i föregående avsnitt för att hitta anslutningsinformation. Formatet är *username@servername*.
+    Lösenord | *Ditt lösenord* | Välj knappen **Spara i valvet...** för att spara lösenordet. |
 
-    Klicka på **Testanslutningen** tootest om alla parametrar är korrekt konfigurerade. Klicka på OK toosave hello anslutning. 
+3. Välj **Testanslutning** för att testa om alla parametrar är rätt konfigurerade. Välj **OK** för att spara anslutningen. 
 
     > [!NOTE]
-    > SSL används som standard på din server och kräver ytterligare konfiguration i ordning tooconnect har. Se [Konfigurera SSL-anslutning i ditt program toosecurely ansluta tooAzure databas för MySQL](./howto-configure-ssl.md).  Om du vill toodisable SSL för den här snabbstarten finns hello Azure-portalen och klicka hello anslutning säkerhet sidan toodisable hello framtvinga SSL-anslutning växla.
+    > SSL tillämpas som standard på din server vilket kräver extra konfiguration av anslutningar. Se [Konfigurera SSL-anslutning i din app för säker anslutning till Azure Database för MySQL](./howto-configure-ssl.md) för mer information. Gå till Azure Portal om du vill inaktivera SSL för den här snabbstarten. Välj sedan sidan Anslutningssäkerhet och inaktivera **Framtvinga SSL-anslutning**.
 
 ## <a name="clean-up-resources"></a>Rensa resurser
-Rensa hello-resurser som du skapade i hello quickstart antingen genom att ta bort hello [Azure-resursgrupp](../azure-resource-manager/resource-group-overview.md), som innehåller alla hello resurser i hello resursgruppen eller resursen hello en server om du vill använda tookeep hello andra resurser är intakt.
+Du kan rensa de resurser som du skapade i snabbstarten på två sätt. Du kan ta bort den [Azure-resursgrupp](../azure-resource-manager/resource-group-overview.md) som innehåller alla resurser i resursgruppen. Om du vill bevara alla andra resurser tar du bara bort en serverresurs.
 
 > [!TIP]
-> De andra snabbstarterna i den här samlingen bygger på den här snabbstarten. Om du tänker toocontinue toowork med efterföljande hello Snabbstart, vill inte rensa resurser som skapats i denna Snabbstart. Om du inte planerar toocontinue använda hello efter steg toodelete alla resurser som skapats av denna Snabbstart i hello Azure-portalen.
+> De andra snabbstarterna i den här samlingen bygger på den här snabbstarten. Rensa inte upp resurserna som du skapade i den här snabbstarten om du tänker fortsätta att arbeta med efterföljande snabbstarter. Om du inte planerar att fortsätta kan du använda följande steg för att ta bort alla resurser som du skapade i den här snabbstarten.
 >
 
-toodelete hello hela resursgruppen inklusive hello nyskapad server:
-1.  Leta upp din resursgrupp i hello Azure-portalen. Hello vänstra menyn i hello Azure-portalen klickar du på **resursgrupper** och klicka sedan på hello namnet på resursgruppen, till exempel vårt exempel **myresourcegroup**.
-2.  Klicka på **Ta bort** på din resursgruppssida. Sedan hello-typnamn för resursgruppen, till exempel vårt exempel **myresourcegroup**i hello text rutan tooconfirm tas bort och klicka sedan på **ta bort**.
+Så här tar du bort hela resursgruppen, inklusive den nya servern:
 
-Eller i stället toodelete hello nyskapad server:
-1.  Leta upp din server i hello Azure-portalen om du inte har öppnat. Hello vänstra menyn i Azure-portalen klickar du på **alla resurser**, och sök sedan efter hello-server som du skapade.
-2.  På hello **översikt** klickar du på hello **ta bort** hello övre fönstret-knappen.
-![Azure Database för MySQL – Ta bort server](./media/quickstart-create-mysql-server-database-using-azure-portal/delete-server.png)
-3.  Bekräfta hello servernamnet du vill toodelete och visa hello databaserna under den som påverkas. Skriv namnet på servern hello i textrutan, till exempel vårt exempel **myserver4demo**, och klicka sedan på **ta bort**.
+1.  Leta reda på resursgruppen på Azure Portal. Klicka på **Resursgrupper** på den vänstra menyn och sedan på namnet på resursgruppen (**myresourcegroup** i vårt exempel).
+
+2.  Välj **Ta bort** på din resursgruppssida. Skriv sedan namnet på resursgruppen (**myresourcegroup** i vårt exempel) i rutan för att bekräfta borttagningen och klicka sedan på **Ta bort**.
+
+Gör så här om du vill ta bort den nyligen skapade servern:
+
+1.  Leta upp din server i Azure Portal om du inte redan har den öppen. Välj **Alla resurser** på menyn på vänster sida av Azure Portal. Sök sedan efter den server som du skapade.
+
+2.  Välj **Ta bort** på sidan **Översikt**. 
+
+    ![Azure Database för MySQL – Ta bort server](./media/quickstart-create-mysql-server-database-using-azure-portal/delete-server.png)
+
+3.  Bekräfta namnet på den server som du vill ta bort och visa de databaser under den som påverkas. Skriv namnet på servern i rutan (**myserver4demo**i vårt exempel). Välj **Ta bort**.
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -1,5 +1,5 @@
 ---
-title: aaaHybrid utformning av DRM subsystem(s) med Azure Media Services | Microsoft Docs
+title: Hybridutformning av DRM subsystem(s) med Azure Media Services | Microsoft Docs
 description: "Det här avsnittet beskrivs hybridutformning av DRM subsystem(s) med Azure Media Services."
 services: media-services
 documentationcenter: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: willzhan;juliako
-ms.openlocfilehash: 4206248420ccd4dbfc9a87a86f4763534c6254a1
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 841b1164db6fd1a2c029b98392509c15f23158e2
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="hybrid-design-of-drm-subsystems"></a>Hybridutformning av DRM subsystem(s)
 
@@ -26,26 +26,26 @@ Det här avsnittet beskrivs hybridutformning av DRM subsystem(s) med Azure Media
 
 ## <a name="overview"></a>Översikt
 
-Azure Media Services tillhandahåller support för hello följande tre DRM-systemet:
+Azure Media Services tillhandahåller support för följande tre DRM-systemet:
 
 * PlayReady
 * Widevine (modulära)
 * FairPlay
 
-hello DRM stödet ingår DRM-kryptering (dynamisk kryptering) och licensleverans med Azure Media Player stöder alla 3 DRMs som en webbläsare spelare SDK.
+DRM-stödet ingår DRM-kryptering (dynamisk kryptering) och licensleverans med Azure Media Player stöder alla 3 DRMs som en webbläsare spelare SDK.
 
-En detaljerad behandling av DRM/CENC undersystemet design och implementering finns i dokumentet hello [CENC med Multi-DRM och Access Control](media-services-cenc-with-multidrm-access-control.md).
+En detaljerad behandling av DRM/CENC undersystemet design och implementering, finns i dokumentet med titeln [CENC med Multi-DRM och Access Control](media-services-cenc-with-multidrm-access-control.md).
 
-Även om vi har fullt stöd för tre DRM-system, måste ibland kunder toouse olika delar av sin egen infrastruktur/delsystem i tillägg tooAzure Media Services toobuild hybrid DRM-undersystemet.
+Även om vi har fullt stöd för tre DRM-system, måste ibland kunder använda olika delar av sin egen infrastruktur/undersystem utöver Azure Media Services för att skapa en hybrid DRM-undersystemet.
 
 Nedan är några vanliga frågor och svar av kunder:
 
 * ”Kan jag använda min egen DRM licensservrar”? (I det här fallet kunder har investerat i DRM-licens serverkluster med inbäddade affärslogik).
 * ”Kan jag använda bara din leverans för DRM-licens i Azure Media Services utan värd för innehållet i AMS”?
 
-## <a name="modularity-of-hello-ams-drm-platform"></a>Modularitet av hello DRM AMS-plattformen
+## <a name="modularity-of-the-ams-drm-platform"></a>Modularitet AMS DRM-plattform
 
-Som en del av en omfattande video molnplattform har Azure Media Services DRM en design med flexibiliteten och modulariteten i åtanke. Du kan använda Azure Media Services med någon av hello efter olika kombinationer som beskrivs i hello nedan (följer en förklaring av hello notation som används i hello tabell). 
+Som en del av en omfattande video molnplattform har Azure Media Services DRM en design med flexibiliteten och modulariteten i åtanke. Du kan använda Azure Media Services med någon av följande olika kombinationer som beskrivs i tabellen nedan (en förklaring av notation som används i tabellen nedan). 
 
 |**Värd för innehåll & ursprung**|**Innehåll kryptering**|**DRM-licensleverans**|
 |---|---|---|
@@ -74,24 +74,24 @@ Som en del av en omfattande video molnplattform har Azure Media Services DRM en 
 
 ### <a name="content-key"></a>Innehållsnyckel
 
-Du kan styra följande attribut för både AMS dynamisk kryptering och AMS-Licenstjänsten leverans hello genom konfigurationen av en innehållsnyckel:
+Du kan styra följande attribut för både AMS dynamisk kryptering och AMS-Licenstjänsten leverans genom konfigurationen av en innehållsnyckel:
 
-* hello innehållsnyckeln används för dynamisk DRM-kryptering.
-* DRM-licens innehåll toobe levereras av licensleveranstjänster: rättigheter, innehållsnyckeln och begränsningar.
+* Innehållsnyckeln används för dynamisk DRM-kryptering.
+* DRM-licens innehåll som ska levereras av licensleveranstjänster: rättigheter, innehållsnyckeln och begränsningar.
 * Typ av **innehåll begränsning för auktorisering av innehållsnyckel princip**: Öppna IP- eller tokenbegränsningar.
-* Om **token** typ av **begränsning för auktorisering av innehållsnyckel principen används**, hello **innehåll begränsning för auktorisering av innehållsnyckel princip** måste vara uppfyllda innan en licens utfärdas.
+* Om **token** typ av **begränsning för auktorisering av innehållsnyckel principen används**, **innehåll begränsning för auktorisering av innehållsnyckel princip** måste vara uppfyllda innan en licens utfärdas.
 
 ### <a name="asset-delivery-policy"></a>Principen för tillgångsleverans
 
-Du kan styra hello följande attribut som används av AMS dynamiska Paketeraren och dynamisk kryptering av ett AMS strömmande slutpunkten genom konfigurationen av en tillgångsleveransprincip:
+Du kan styra följande attribut används av AMS dynamiska Paketeraren och dynamisk kryptering för en strömmande slutpunkt AMS genom konfigurationen av en tillgångsleveransprincip:
 
 * Direktuppspelning DRM kryptering kombinationen och protokoll, till exempel STRECK under CENC (PlayReady och Widevine), jämna strömning under PlayReady HLS under Widevine eller PlayReady.
-* hello standard/inbäddade licens leverans URL: er för varje hello berörda DRMs.
+* Standard/inbäddat licens leverans URL: er för varje ingår DRMs.
 * Licens om förvärv URL: er (LA_URLs) i DASH MPD eller HLS spelningslista innehåller frågesträngen nyckel (KID) för Widevine och FairPlay, respektive.
 
 ## <a name="scenarios-and-samples"></a>Scenarier och exempel
 
-Baserat på hello förklaringar hello föregående avsnitt, hello följande fem hybridscenarion använda respektive **innehållsnyckeln**-**tillgångsleveransprincip** configuration kombinationer (hello exempel som nämns i hello sista kolumnen så hello tabell):
+Utifrån beskrivningarna i det föregående avsnittet följande fem hybridscenarion använda respektive **innehållsnyckeln**-**tillgångsleveransprincip** configuration kombinationer (exemplen anges i den sista kolumnen Följ tabellen):
 
 |**Värd för innehåll & ursprung**|**DRM-kryptering**|**DRM-licensleverans**|**Konfigurera innehållsnyckeln**|**Konfigurera tillgångsleveransprincip**|**Exempel**|
 |---|---|---|---|---|---|
@@ -101,7 +101,7 @@ Baserat på hello förklaringar hello föregående avsnitt, hello följande fem 
 |AMS|Från tredje part|Utanför|Nej|Nej|Exempel 4|
 |Från tredje part|Från tredje part|AMS|Ja|Nej|    
 
-I hello prover PlayReady skydd fungerar för både DASH och smooth streaming. hello video adresserna nedan är smooth streaming URL: er. tooget Hej motsvarande DASH URL: er, bara lägga till ”(format = mpd-tid-csf)”. Du kan använda hello [azure media testa player](http://aka.ms/amtest) tootest i en webbläsare. Det gör att du tooconfigure som strömning protokollet toouse under vilka teknisk. Stöder PlayReady via EME IE11 och MS-Edge på Windows 10. Mer information finns i [information om hello testa verktyget](https://blogs.msdn.microsoft.com/playready4/2016/02/28/azure-media-test-tool/).
+I prover, PlayReady skydd fungerar för både DASH och smooth streaming. Video adresserna nedan är smooth streaming URL: er. För att få motsvarande DASH URL: er kan bara lägga till ”(format = mpd-tid-csf)”. Du kan använda den [azure media testa player](http://aka.ms/amtest) att testa i en webbläsare. Det gör att du kan konfigurera vilka strömningsprotokoll som ska användas under vilka teknisk. Stöder PlayReady via EME IE11 och MS-Edge på Windows 10. Mer information finns i [information om testverktyget](https://blogs.msdn.microsoft.com/playready4/2016/02/28/azure-media-test-tool/).
 
 ### <a name="sample-1"></a>Exempel 1
 

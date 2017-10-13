@@ -1,5 +1,5 @@
-1. I din **app** projekt, öppna hello fil `AndroidManifest.xml`. Ersätt i hello kod i hello nästa två steg,  *`**my_app_package**`*  med hello hello app-paket för projektet. Detta är hello värdet för hello `package` attribut för hello `manifest` tagg.
-2. Lägg till följande nya behörigheter efter hello befintliga hello `uses-permission` element:
+1. I din **app** projekt, öppna filen `AndroidManifest.xml`. Ersätt i koden i följande två steg  *`**my_app_package**`*  med namnet på app-paket för projektet. Detta är värdet för den `package` attribut för den `manifest` tagg.
+2. Lägg till följande nya behörigheter efter den befintliga `uses-permission` element:
 
         <permission android:name="**my_app_package**.permission.C2D_MESSAGE"
             android:protectionLevel="signature" />
@@ -7,7 +7,7 @@
         <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
         <uses-permission android:name="android.permission.GET_ACCOUNTS" />
         <uses-permission android:name="android.permission.WAKE_LOCK" />
-3. Lägg till följande kod efter hello hello `application` startkoden:
+3. Lägg till följande kod efter den `application` startkoden:
 
         <receiver android:name="com.microsoft.windowsazure.notifications.NotificationsBroadcastReceiver"
                                          android:permission="com.google.android.c2dm.permission.SEND">
@@ -16,24 +16,24 @@
                 <category android:name="**my_app_package**" />
             </intent-filter>
         </receiver>
-4. Öppna hello filen *ToDoActivity.java*, och Lägg till följande importuttryck hello:
+4. Öppna filen *ToDoActivity.java*, och Lägg till följande importuttryck:
 
         import com.microsoft.windowsazure.notifications.NotificationsManager;
-5. Lägg till hello följande privata variabeln toohello klass. Ersätt  *`<PROJECT_NUMBER>`*  med hello-projektnummer som tilldelats av Google tooyour app i hello föregående procedur.
+5. Lägg till följande privata variabeln i klassen. Ersätt  *`<PROJECT_NUMBER>`*  med projektnumret Google har tilldelats din app i föregående procedur.
 
         public static final String SENDER_ID = "<PROJECT_NUMBER>";
-6. Ändra hello definitionen av *MobileServiceClient* från **privata** för**offentliga statiska**, så det nu ser ut så här:
+6. Ändra definitionen av *MobileServiceClient* från **privata** till **offentliga statiska**, så det nu ser ut så här:
 
         public static MobileServiceClient mClient;
-7. Lägg till en ny klass toohandle meddelanden. Öppna hello i Projektutforskaren **src** > **huvudsakliga** > **java** noder och högerklicka på hello paketet namn nod. Klicka på **ny**, och klicka sedan på **Java-klass**.
+7. Lägg till en ny klass för att hantera meddelanden. Öppna i Projektutforskaren den **src** > **huvudsakliga** > **java** noder och högerklicka på noden paket namn. Klicka på **ny**, och klicka sedan på **Java-klass**.
 8. I **namn**, typen `MyHandler`, och klicka sedan på **OK**.
 
     ![](./media/app-service-mobile-android-configure-push/android-studio-create-class.png)
 
-9. Ersätt hello klassdeklarationen med i hello MyHandler fil:
+9. Ersätt klassdeklarationen med i filen MyHandler:
 
         public class MyHandler extends NotificationsHandler {
-10. Lägg till följande importuttryck för hello hello `MyHandler` klass:
+10. Lägg till följande importuttryck för den `MyHandler` klass:
 
         import com.microsoft.windowsazure.notifications.NotificationsHandler;
         import android.app.NotificationManager;
@@ -43,10 +43,10 @@
         import android.os.AsyncTask;
         import android.os.Bundle;
         import android.support.v4.app.NotificationCompat;
-11. Lägg till den här medlemmen toohello bredvid `MyHandler` klass:
+11. Sedan till den här medlemmen till den `MyHandler` klass:
 
         public static final int NOTIFICATION_ID = 1;
-12. I hello `MyHandler` klassen och Lägg till följande kod toooverride hello hello **onRegistered** metod som registrerar enheten med hello Mobiltjänst notification hub.
+12. I den `MyHandler` klassen och Lägg till följande kod för att åsidosätta den **onRegistered** metod som registrerar din enhet med meddelandehubben mobiltjänst.
 
         @Override
         public void onRegistered(Context context,  final String gcmRegistrationId) {
@@ -66,7 +66,7 @@
                }
            }.execute();
        }
-13. I hello `MyHandler` klassen och Lägg till följande kod toooverride hello hello **onReceive** metod, vilket gör hello meddelande toodisplay när den tas emot.
+13. I den `MyHandler` klassen och Lägg till följande kod för att åsidosätta den **onReceive** metod, vilket gör meddelandet ska visas när den tas emot.
 
         @Override
         public void onReceive(Context context, Bundle bundle) {
@@ -89,8 +89,8 @@
                        context.getSystemService(Context.NOTIFICATION_SERVICE);
                notificationManager.notify(NOTIFICATION_ID, notification);
        }
-14. Uppdatera hello tillbaka i TodoActivity.java-filen för hello **onCreate** metod för hello *ToDoActivity* klassen tooregister hello notification hanterare klass. Se till att tooadd koden efter hello *MobileServiceClient* instansieras.
+14. Uppdatera tillbaka i TodoActivity.java-filen i **onCreate** metod för den *ToDoActivity* klassen för att registrera meddelande hanterare klassen. Se till att lägga till den här koden efter den *MobileServiceClient* instansieras.
 
         NotificationsManager.handleNotifications(this, SENDER_ID, MyHandler.class);
 
-    Appen är nu uppdaterade toosupport push-meddelanden.
+    Appen har uppdaterats för att stödja push-meddelanden.

@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure belastningen belastningsutjämnaren-dokumentation – självstudier, API-referens | Microsoft Docs"
-description: "Lär dig hur toouse belastningsutjämnare för nätverksprestanda av appar. Hantera trafik för virtuella datorer och molnresurser och mellan lokala virtuella nätverk på plats."
+title: "Dokumentation om Azure Load Balancer – Självstudier, API-referens | Microsoft Docs"
+description: "Lär dig använda Load Balancer för nätverksprestanda hos appar. Hantera trafik för virtuella datorer och molnresurser och mellan lokala virtuella nätverk på plats."
 services: load-balancer
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 877aef347f9d6f97da1562944676c2e95ddba470
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 169ca89ccd80e5a70f3e9ab07b3c34358c154be7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 #<a name="load-balancer-documentation"></a>Dokumentation om belastningsutjämnare
 
-Lär dig hur tooconfigure belastningsutjämnaren toodeliver hög tillgänglighet och nätverkets prestanda tooyour program. Dokumentationen visar hur tooload Utjämna trafiken tooand från virtuella datorer och molnresurser och i anslutningar mellan lokala virtuella nätverk.
+Lär dig hur du konfigurerar Load Balancer för att leverera hög tillgänglighet och nätverksprestanda till dina program. Dokumentation som visar hur du kan lastbalansera trafik till och från virtuella datorer och molnresurser och mellan lokala virtuella nätverk på plats.
 
 <ul class="panelContent cardsFTitle">
     <li>

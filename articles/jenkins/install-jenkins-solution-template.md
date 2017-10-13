@@ -1,6 +1,6 @@
 ---
-title: "aaaCreate en Jenkins server på Azure"
-description: "Installera Jenkins på en virtuell dator i Azure Linux från hello Jenkins lösningsmall och skapa ett exempelprogram för Java."
+title: Skapa en Jenkins-server i Azure
+description: "Installera Jenkins på en virtuell Azure Linux-dator från Jenkins-lösningsmappen och skapa ett Java-exempelprogram."
 author: mlearned
 manager: douge
 ms.service: multiple
@@ -10,102 +10,102 @@ ms.topic: hero-article
 ms.date: 08/21/2017
 ms.author: mlearned
 ms.custom: Jenkins
-ms.openlocfilehash: 82ab2ac52594acba131414b449b608978591d4b8
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 7bb74f297d52fb25171817175cce64187b397c38
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="create-a-jenkins-server-on-an-azure-linux-vm-from-hello-azure-portal"></a>Skapa en Jenkins-server på en Azure Linux-VM från hello Azure-portalen
+# <a name="create-a-jenkins-server-on-an-azure-linux-vm-from-the-azure-portal"></a>Skapa en Jenkins-server på en virtuell Azure Linux-dator från Azure Portal
 
-Den här snabbstarten visar hur tooinstall [Jenkins](https://jenkins.io) på en Ubuntu Linux VM hello verktyg och toowork plugin-program som har konfigurerats med Azure. När du är klar körs en Jenkins-server i Azure och skapar en Java-exempelapp från [GitHub](https://github.com).
+Den här snabbstarten visar hur du installerar [Jenkins](https://jenkins.io) på en virtuell Ubuntu Linux-dator med verktygen och plugin-programmen som är konfigurerade för att fungera med Azure. När du är klar körs en Jenkins-server i Azure och skapar en Java-exempelapp från [GitHub](https://github.com).
 
 ## <a name="prerequisites"></a>Krav
 
 * En Azure-prenumeration
-* Åtkomst tooSSH på kommandoraden för din dator (till exempel hello Bash shell eller [PuTTY](http://www.putty.org/))
+* Åtkomst till SSH på datorns kommandorad (som Bash-gränssnitt eller [PuTTY](http://www.putty.org/))
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-hello-jenkins-vm-from-hello-solution-template"></a>Skapa hello Jenkins VM från hello lösningsmall
+## <a name="create-the-jenkins-vm-from-the-solution-template"></a>Skapa den virtuella Jenkins-datorn från lösningsmallen
 
-Öppna hello [marketplace-avbildning för Jenkins](https://azuremarketplace.microsoft.com/marketplace/apps/azure-oss.jenkins?tab=Overview) i webbläsaren och välj **hämta IT nu** från hello vänster sida av hello-sidan. Granska hello priser information och välj **Fortsätt**och välj **skapa** tooconfigure hello Jenkins server i hello Azure-portalen. 
+Öppna [marketplace-avbildningen för Jenkins](https://azuremarketplace.microsoft.com/marketplace/apps/azure-oss.jenkins?tab=Overview) i webbläsaren och välj **HÄMTA NU** till vänster på sidan. Granska prisinformationen och välj **Fortsätt** och välj **Skapa** för att konfigurera Jenkins-servern i Azure Portal. 
    
 ![Dialogruta i Azure Portal](./media/install-jenkins-solution-template/ap-create.png)
 
-I hello **Konfigurera grundläggande inställningar** fliken, Fyll i hello följande fält:
+På fliken **Konfigurera grundläggande inställningar** fyller du i följande fält:
 
 ![Konfigurera grundläggande inställningar](./media/install-jenkins-solution-template/ap-basic.png)
 
 * Använd **Jenkins** som **namn**.
-* Ange ett **användarnamn**. hello användarnamn måste uppfylla [specifika krav](/azure/virtual-machines/linux/faq#what-are-the-username-requirements-when-creating-a-vm).
-* Välj **lösenord** som hello **autentiseringstyp** och ange ett lösenord. hello lösenordet måste innehålla en versal bokstav, en siffra och ett specialtecken.
-* Använd **myJenkinsResourceGroup** för hello **resursgruppen**.
-* Välj hello **östra USA** [Azure-region](https://azure.microsoft.com/regions/) från hello **plats** listrutan.
+* Ange ett **användarnamn**. Användarnamnet måste uppfylla [specifika krav](/azure/virtual-machines/linux/faq#what-are-the-username-requirements-when-creating-a-vm).
+* Välj **Lösenord** som **Autentiseringstyp** och ange ett lösenord. Lösenordet måste innehålla en versal, en siffra och ett specialtecken.
+* Använd **myJenkinsResourceGroup** för **resursgruppen**.
+* Välj **USA, östra** som [Azure-region](https://azure.microsoft.com/regions/) från listrutan **Plats**.
 
-Välj **OK** tooproceed toohello **konfigurera ytterligare alternativ** fliken. Ange ett unikt namn tooidentify hello Jenkins domänserver och välj **OK**.
+Välj **OK** och fortsätt till fliken **Konfigurera ytterligare alternativ**. Ange ett unikt domännamn för att identifiera Jenkins-servern och välj **OK**.
 
 ![Ställ in ytterligare alternativ](./media/install-jenkins-solution-template/ap-addtional.png)  
 
- När valideringen lyckas, välja **OK** igen från hello **sammanfattning** fliken. Välj slutligen **inköp** toocreate hello Jenkins VM. När servern är klar kan få du ett meddelande i hello Azure-portalen:   
+ När valideringen är godkänd väljer du **OK** igen på fliken **Sammanfattning**. Välj till sist **Köp** för att skapa den virtuella Jenkins-datorn. När servern är klar kan få du ett meddelande i Azure Portal:   
 
 ![Meddelande om att Jenkins är klar](./media/install-jenkins-solution-template/jenkins-deploy-notification-ready.png)
 
-## <a name="connect-toojenkins"></a>Ansluta tooJenkins
+## <a name="connect-to-jenkins"></a>Ansluta till Jenkins
 
-Navigera tooyour virtuella datorn (till exempel http://jenkins2517454.eastus.cloudapp.azure.com/) i webbläsaren. Hej Jenkins konsolen inte är tillgänglig via osäker HTTP så anvisningar finns på hello sidan tooaccess hello Jenkins konsolen på ett säkert sätt från datorn med hjälp av en SSH-tunnel.
+Navigera till din virtuella dator (exempelvis http://jenkins2517454.eastus.cloudapp.azure.com/) i webbläsaren. Jenkins-konsolen går inte att komma åt via osäker HTTP så det medföljer anvisningar på sidan om hur du får åtkomst till Jenkins-konsolen säkert från datorn med hjälp av en SSH-tunnel.
 
 ![Låsa upp Jenkins](./media/install-jenkins-solution-template/jenkins-ssh-instructions.png)
 
-Ställ in hello tunneln med hello `ssh` på hello sida från kommandoraden hello ersätter `username` med hello namnet hello virtuella administratörsanvändare valt tidigare när du ställer in hello virtuell dator från hello lösningsmall.
+Konfigurera tunneln med kommandot `ssh` på sidan från kommandoraden. Detta ersätter `username` med namnet på den virtuella datorns administratörsanvändare som valdes tidigare när den virtuella datorn skapades från lösningsmallen.
 
 ```bash
 ssh -L 127.0.0.1:8080:localhost:8080 jenkinsadmin@jenkins2517454.eastus.cloudapp.azure.com
 ```
 
-När du har startat hello tunnel, navigera toohttp://localhost:8080 / på den lokala datorn. 
+När du har startat tunneln navigerar du till http://localhost:8080/ på den lokala datorn. 
 
-Hämta hello initialt lösenord genom att köra följande kommando på kommandoraden hello medan du är ansluten via SSH toohello Jenkins VM hello.
+Skaffa det initiala lösenordet genom att köra följande kommando på kommandoraden när du är ansluten via SSH till den virtuella Jenkins-datorn.
 
 ```bash
 `sudo cat /var/lib/jenkins/secrets/initialAdminPassword`.
 ```
 
-Låsa upp hello Jenkins instrumentpanel för hello första gången du använder den här initialt lösenord.
+Första gången låser du upp Jenkins-instrumentpanelen med det här initiala lösenordet.
 
 ![Låsa upp Jenkins](./media/install-jenkins-solution-template/jenkins-unlock.png)
 
-Välj **installera plugin-program för föreslagna** på hello nästa sida och sedan skapa en Jenkins admin används tooaccess hello Jenkins instrumentpanel för användare.
+Välj **Install suggested plugins** (Installera föreslagna plugin-program) på nästa sida och skapa en Jenkins-administratörsanvändare för att få åtkomst till Jenkins-instrumentpanelen.
 
 ![Jenkins är redo!](./media/install-jenkins-solution-template/jenkins-welcome.png)
 
-Hej Jenkins servern är nu redo toobuild kod.
+Nu kan Jenkins-servern skapa kod.
 
 ## <a name="create-your-first-job"></a>Skapa ditt första virtuella jobb
 
-Välj **skapa nya jobb** hello Jenkins konsolen namnge den **mySampleApp** och välj **Freestyle projektet**och välj **OK**.
+Välj **Skapa nya jobb** från Jenkins-konsolen, använd namnet **mySampleApp** och välj **Freestyle-projekt**. Välj sedan **OK**.
 
 ![Skapa ett nytt jobb](./media/install-jenkins-solution-template/jenkins-new-job.png) 
 
-Välj hello **källa kod Management** fliken, aktivera **Git**, och ange följande URL i hello **databasen URL** fält:`https://github.com/spring-guides/gs-spring-boot.git`
+Markera fliken **Source Code Management** (Källkodshantering), aktivera **Git** och ange följande URL i fältet **Repository URL** (Centrallagrets URL): `https://github.com/spring-guides/gs-spring-boot.git`
 
-![Definiera hello Git repo](./media/install-jenkins-solution-template/jenkins-job-git-configuration.png) 
+![Definiera Git-lagringsplatsen](./media/install-jenkins-solution-template/jenkins-job-git-configuration.png) 
 
-Välj hello **skapa** fliken och markera sedan **Lägg till build steg**, **anropa Gradle skriptet**. Välj **Use Gradle Wrapper** (Använd Gradle-omslutning) och ange `complete` i **Wrapper location** (Omslutningsplats) och `build` för **Tasks** (Uppgifter).
+Välj fliken **Build** (Bygg) och sedan **Add build step** (Lägg till byggsteg), **Invoke Gradle script** (Anropa Gradle-skript). Välj **Use Gradle Wrapper** (Använd Gradle-omslutning) och ange `complete` i **Wrapper location** (Omslutningsplats) och `build` för **Tasks** (Uppgifter).
 
-![Använd hello Gradle wrapper toobuild](./media/install-jenkins-solution-template/jenkins-job-gradle-config.png) 
+![Använda Gradle-omslutning för att bygga](./media/install-jenkins-solution-template/jenkins-job-gradle-config.png) 
 
-Välj **Avancerat..** och ange sedan `complete` i hello **rot skapa skript** fältet. Välj **Spara**.
+Välj **Avancerat..** och ange sedan `complete` i fältet **Root Build script** (Rotbuildskript). Välj **Spara**.
 
-![Ange avancerade inställningar i hello Gradle wrapper build steg](./media/install-jenkins-solution-template/jenkins-job-gradle-advances.png) 
+![Ange avancerade inställningar i steget för att bygga Gradle-omslutning](./media/install-jenkins-solution-template/jenkins-job-gradle-advances.png) 
 
-## <a name="build-hello-code"></a>Skapa hello kod
+## <a name="build-the-code"></a>Skapa koden
 
-Välj **skapa nu** toocompile hello kod och paketet hello sample-appen. När din build är klar väljer du hello **arbetsytan** länk för hello-projekt.
+Select **Build Now** (Skapa nu) för att kompilera koden och paketera exempelappen. När din version är klar markerar du länken **Arbetsyta** för projektet.
 
-![Bläddra toohello arbetsytan tooget hello JAR-filen från hello build](./media/install-jenkins-solution-template/jenkins-access-workspace.png) 
+![Gå till arbetsytan för att hämta JAR-filen från versionen](./media/install-jenkins-solution-template/jenkins-access-workspace.png) 
 
-Navigera för`complete/build/libs` och kontrollera hello `gs-spring-boot-0.1.0.jar` finns det tooverify att din build lyckades. Din Jenkins servern är nu redo toobuild projekt i Azure.
+Gå till `complete/build/libs` och kontrollera att `gs-spring-boot-0.1.0.jar` finns där och att din version har skapats. Jenkins-servern är nu klar att skapa egna projekt i Azure.
 
 ## <a name="next-steps"></a>Nästa steg
 

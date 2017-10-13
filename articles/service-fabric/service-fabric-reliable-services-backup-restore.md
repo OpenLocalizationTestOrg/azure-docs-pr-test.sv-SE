@@ -1,5 +1,5 @@
 ---
-title: "aaaService Fabric säkerhetskopiering och återställning | Microsoft Docs"
+title: "Service Fabric-säkerhetskopiering och återställning | Microsoft Docs"
 description: "Konceptuell dokumentationen för Service Fabric-säkerhetskopiering och återställning"
 services: service-fabric
 documentationcenter: .net
@@ -14,57 +14,57 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: mcoskun
-ms.openlocfilehash: e502b59c84999c3fe825167383f00a5ebd70c9b5
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 4242962e7e03053ef25f198a0b2f6c8012e693eb
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="back-up-and-restore-reliable-services-and-reliable-actors"></a>Säkerhetskopiera och återställa Reliable Services och Reliable Actors
-Azure Service Fabric är en plattform för hög tillgänglighet som replikerar hello tillstånd över flera noder toomaintain hög tillgänglighet.  Även om en nod i klustret hello misslyckas, fortsätter hello tjänster därför toobe som är tillgängliga. Den här inbyggda redundans som tillhandahålls av hello plattformen kan vara tillräcklig för vissa, i vissa fall är det lämpligt att hello service tooback data (tooan externa store).
+Azure Service Fabric är en plattform för hög tillgänglighet som replikerar tillståndet över flera noder för att upprätthålla hög tillgänglighet.  Även om en nod i klustret misslyckas därför fortsätter tjänster att vara tillgängliga. Den här inbyggda redundans som tillhandahålls av plattformen kan vara tillräcklig för vissa, i vissa fall är det lämpligt att tjänsten för att säkerhetskopiera data (till en extern butik).
 
 > [!NOTE]
-> Den kritiska toobackup och återställa dina data (och kontrollera att den fungerar som förväntat) så att du kan återställa från data går förlorade.
+> Det är viktigt att säkerhetskopiera och återställa dina data (och testa att det fungerar som förväntat) så att du kan återställa från data går förlorade.
 > 
 > 
 
-En tjänst kan exempelvis vilja tooback upp data i ordning tooprotect från hello följande scenarier:
+En tjänst kan till exempel vill säkerhetskopiera data för att skydda mot följande scenarier:
 
-- Hej för händelsen hello permanent förlorade en hela Service Fabric-klustret.
-- Permanent förlorade en majoritet av hello repliker för en partition för tjänsten
-- Administrativa fel där hello tillstånd hämtar eller förstörs. T.ex, kan detta inträffa om en administratör med tillräcklig behörighet för felaktigt tar bort hello tjänst.
-- Programfel i hello service som orsakar att data skadas. T.ex, kan det hända när en tjänst koduppgradering startas skrivning felaktiga data tooa tillförlitliga samling. I sådana fall hello både koden och hello data kan ha toobe återställs tooan tidigare tillstånd.
-- Offline databearbetning. Det kan vara praktiskt toohave offline bearbetning av data för business intelligence som sker separat från hello-tjänsten som genererar hello data.
+- Om en hel Service Fabric-klustret permanent förlorade.
+- Permanent förlorade en majoritet av replikerna för en partition för tjänsten
+- Administrativa fel där tillståndet hämtar eller förstörs. T.ex, kan detta inträffa om en administratör med tillräcklig behörighet för felaktigt tar bort tjänsten.
+- Programfel i tjänsten som kan orsakar att data skadas. Det kan till exempel hända när en tjänst koduppgradering startas felaktiga data skrivs till en tillförlitlig samling. I sådana fall kanske både koden och data återställas till ett tidigare tillstånd.
+- Offline databearbetning. Det kan vara praktiskt att ha offline bearbetning av data för business intelligence som sker separat från den tjänst som genererar data.
 
-hello säkerhetskopiering/återställning funktionen tillåter tjänster som bygger på hello Reliable Services API toocreate och återställning av säkerhetskopior. hello att säkerhetskopiering API: er som tillhandahålls av hello plattform säkerhetskopiorna av en tjänst partition tillstånd, utan blockerar Läs- eller skrivåtgärder. hello återställning API: er kan en tjänst partition tillstånd toobe återställts från en säkerhetskopia av valda.
+Funktionen säkerhetskopiering/återställning kan tjänster som bygger på tillförlitliga Services-API för att skapa och återställa säkerhetskopior. Säkerhetskopiering API: erna som tillhandahålls av plattformens Tillåt säkerhetskopiorna av en tjänst partition tillstånd, utan blockerar Läs- eller skrivåtgärder. Återställningen API: er kan en tjänst partition tillstånd och kan inte återställas från en säkerhetskopia av valda.
 
 ## <a name="types-of-backup"></a>Typer av säkerhetskopiering
 Det finns två alternativ för säkerhetskopiering: fullständig och inkrementell.
-En fullständig säkerhetskopia är en säkerhetskopia som innehåller alla hello data som krävs för toorecreate hello status hello replik: kontrollpunkter och alla loggposter.
-Eftersom den har hello kontrollpunkter och hello loggen kan du återställa en fullständig säkerhetskopia ensamt.
+En fullständig säkerhetskopia är en säkerhetskopia som innehåller de data som krävs för att återskapa tillståndet för repliken: kontrollpunkter och alla loggposter.
+Eftersom den har kontrollpunkter och loggfilen, kan du återställa en fullständig säkerhetskopia ensamt.
 
-hello problem med fullständiga säkerhetskopieringar uppstår när hello kontrollpunkter är stora.
-En replik som har 16 GB tillstånd har till exempel kontrollpunkter som utgör cirka too16 GB.
-Om vi har ett mål för återställningspunkt fem minuter behöver hello replica toobe säkerhetskopieras var femte minut.
-Varje gång den säkerhetskopierar måste toocopy 16 GB kontrollpunkter dessutom too50 MB (kan konfigureras med hjälp av `CheckpointThresholdInMB`) med loggar.
+Problem med fullständiga säkerhetskopieringar uppstår när kontrollpunkter är stora.
+Till exempel en replik som har 16 GB tillstånd har kontrollpunkter som lägga upp cirka till 16 GB.
+Om vi har ett mål för återställningspunkt fem minuter måste repliken säkerhetskopieras var femte minut.
+Varje gång den säkerhetskopierar som behövs för att kopiera 16 GB kontrollpunkter förutom 50 MB (kan konfigureras med hjälp av `CheckpointThresholdInMB`) med loggar.
 
 ![Fullständig säkerhetskopiering exempel.](media/service-fabric-reliable-services-backup-restore/FullBackupExample.PNG)
 
-hello lösning toothis problemet är inkrementella säkerhetskopieringar där säkerhetskopian bara innehåller loggposter hello ändrats sedan den senaste säkerhetskopieringen av hello.
+Lösning på problemet är inkrementella säkerhetskopieringar där säkerhetskopian innehåller endast de ändrade posterna sedan den senaste säkerhetskopieringen.
 
 ![Exempel för inkrementell säkerhetskopiering.](media/service-fabric-reliable-services-backup-restore/IncrementalBackupExample.PNG)
 
-Eftersom säkerhetskopior är endast ändringar sedan hello senaste säkerhetskopieringen (inte omfattar hello kontrollpunkter) är de tenderar toobe snabbare, men de kan inte återställas på egen hand.
-toorestore en inkrementell säkerhetskopia hello hela loggsäkerhetskopieringssekvensen krävs.
+Eftersom säkerhetskopior är endast ändringar sedan den senaste säkerhetskopieringen (inte omfattar kontrollpunkter) är de brukar gå snabbare, men kan inte återställas på egen hand.
+Om du vill återställa en inkrementell krävs säkerhetskopiering hela kedjan.
 En säkerhetskopiering kedja följt av ett antal sammanhängande inkrementella säkerhetskopieringar är en kedja av säkerhetskopior som börjar med en fullständig säkerhetskopia.
 
 ## <a name="backup-reliable-services"></a>Säkerhetskopiering Reliable Services
-hello service författare har fullständig kontroll över när toomake säkerhetskopieringar och där säkerhetskopiorna lagras.
+Tjänsten författaren har fullständig kontroll över när säkerhetskopior och där säkerhetskopiorna lagras.
 
-toostart en säkerhetskopia hello-tjänsten måste tooinvoke hello ärvda medlemmen funktionen `BackupAsync`.  
-Säkerhetskopieringar kan göras från primära repliker och de behöver skriva status toobe beviljas.
+Om du vill starta en säkerhetskopiering tjänsten måste anropa funktionen ärvda medlemmen `BackupAsync`.  
+Säkerhetskopieringar kan göras från primära repliker och de behöver skrivstatus för att beviljas åtkomst.
 
-Enligt nedan, `BackupAsync` tar in en `BackupDescription` objekt, där en kan ange en fullständig eller inkrementell säkerhetskopiering, samt en Återanropsfunktionen, `Func<< BackupInfo, CancellationToken, Task<bool>>>` som anropas när hello säkerhetskopieringsmappen har skapats lokalt och flyttas redo toobe ut toosome extern lagring.
+Enligt nedan, `BackupAsync` tar in en `BackupDescription` objekt, där en kan ange en fullständig eller inkrementell säkerhetskopiering, samt en Återanropsfunktionen, `Func<< BackupInfo, CancellationToken, Task<bool>>>` som anropas när mappen har skapats lokalt och är redo att flytta till vissa extern lagring.
 
 ```csharp
 
@@ -74,19 +74,19 @@ await this.BackupAsync(myBackupDescription);
 
 ```
 
-Begäran tootake en inkrementell säkerhetskopia kan misslyckas med `FabricMissingFullBackupException`. Det här undantaget anger att en av följande saker hello sker:
+Begäran om att få en inkrementell säkerhetskopia kan misslyckas med `FabricMissingFullBackupException`. Det här undantaget anger att en av följande händer:
 
-- hello replik har aldrig tagit en fullständig säkerhetskopiering eftersom det har blivit primära,
-- Vissa av hello loggposter eftersom hello senaste säkerhetskopieringen har trunkerats eller
-- replik skickades hello `MaxAccumulatedBackupLogSizeInMB` gränsen.
+- repliken har aldrig tagit en fullständig säkerhetskopiering eftersom det har blivit primära,
+- Vissa av loggposter sedan den senaste säkerhetskopieringen har trunkerats eller
+- repliken som skickades i `MaxAccumulatedBackupLogSizeInMB` gränsen.
 
-Användare kan öka hello sannolikheten för att kunna toodo inkrementella säkerhetskopieringar genom att konfigurera `MinLogSizeInMB` eller `TruncationThresholdFactor`.
-Observera att om du ökar värdena ökas hello per replik diskanvändning.
+Användare kan öka sannolikheten för att kunna göra inkrementella säkerhetskopieringar genom att konfigurera `MinLogSizeInMB` eller `TruncationThresholdFactor`.
+Observera att öka dessa värden ökar den per replik diskanvändning.
 Mer information finns i [Reliable Services-konfiguration](service-fabric-reliable-services-configuration.md)
 
-`BackupInfo`innehåller information om hello säkerhetskopiering, inklusive hello platsen för hello mappen där hello runtime sparade hello säkerhetskopiering (`BackupInfo.Directory`). hello Återanropsfunktionen kan flytta hello `BackupInfo.Directory` tooan extern butik eller en annan plats.  Den här funktionen returnerar också bool som anger om det var kan toosuccessfully flytta hello tooits mål mapp för säkerhetskopiering.
+`BackupInfo`innehåller information om säkerhetskopiering, inklusive sökvägen till mappen där körningsmiljön sparade säkerhetskopieringen (`BackupInfo.Directory`). Återanropsfunktionen kan flytta den `BackupInfo.Directory` till en annan plats eller en extern butik.  Den här funktionen returnerar också bool som anger om kunde för att flytta säkerhetskopieringsmappen till dess målplats.
 
-hello följande kod visar hur hello `BackupCallbackAsync` metoden kan vara används tooupload hello säkerhetskopiering tooAzure lagring:
+Följande kod visar hur `BackupCallbackAsync` metoden kan användas för att ladda upp säkerhetskopian till Azure Storage:
 
 ```csharp
 private async Task<bool> BackupCallbackAsync(BackupInfo backupInfo, CancellationToken cancellationToken)
@@ -99,34 +99,34 @@ private async Task<bool> BackupCallbackAsync(BackupInfo backupInfo, Cancellation
 }
 ```
 
-I exemplet som föregår hello `ExternalBackupStore` är hello exempel klass som används toointerface med Azure Blob storage och `UploadBackupFolderAsync` är hello-metod som komprimerar hello mapp och placerar den i hello Azure Blob store.
+I det föregående exemplet `ExternalBackupStore` är exempel klass som används för gränssnittet med Azure Blob storage och `UploadBackupFolderAsync` är den metod som komprimerar mappen och placerar den i Azure Blob store.
 
 Tänk på följande:
 
-  - Det kan finnas endast en säkerhetskopiering relä per replikering vid en given tidpunkt. Mer än en `BackupAsync` samtal i taget genereras `FabricBackupInProgressException` toolimit inflight säkerhetskopieringar tooone.
-  - Om en replik misslyckas över när en säkerhetskopiering pågår kanske hello-säkerhetskopiering inte har slutförts. Därför när hello växling vid fel är klar, är det hello service ansvar toorestart hello säkerhetskopiering genom att anropa `BackupAsync` efter behov.
+  - Det kan finnas endast en säkerhetskopiering relä per replikering vid en given tidpunkt. Mer än en `BackupAsync` samtal i taget genereras `FabricBackupInProgressException` att begränsa inflight säkerhetskopieringar till en.
+  - Om en replik misslyckas över när en säkerhetskopiering pågår kan säkerhetskopieringen inte har slutförts. Därför när redundansväxlingen är klar, är det tjänstens ansvar för att starta om säkerhetskopieringen genom att anropa `BackupAsync` efter behov.
 
 ## <a name="restore-reliable-services"></a>Återställa Reliable Services
-I allmänhet indelas Hej då du kan behöva tooperform en återställningsåtgärd i dessa kategorier:
+I allmänhet indelas fall när du kan behöva utföra återställningsåtgärder i dessa kategorier:
 
-  - hello service partitionera förlorade data. Hello disk för två av tre repliker för en partition (inklusive hello primära repliken) hämtar skadad eller rensas. hello nya primära behöva toorestore data från en säkerhetskopia.
-  - hello hela tjänsten går förlorad. Till exempel en administratör tar bort hello hela tjänsten och hello-tjänsten och hello data måste därför toobe återställs.
-  - hello service replikerade skadad programdata (t.ex. på grund av ett fel i programmet). I det här fallet hello-tjänsten har toobe uppgraderas eller återställts tooremove hello orsaken till hello skador och icke-skadade data har återställts toobe.
+  - Tjänsten partitionera förlorade data. Disken för två av tre repliker för en partition (inklusive den primära repliken) hämtar skadad eller rensas. Den nya primärt kan behöva återställa data från en säkerhetskopia.
+  - Hela tjänsten går förlorad. Till exempel en administratör tar bort hela tjänsten och därmed tjänsten och data ska återställas.
+  - Tjänsten replikerade skadad programdata (t.ex. på grund av ett fel i programmet). I det här fallet har tjänsten ska uppgraderas eller för att ta bort orsaken till felet har återställts och icke skadade data måste återställas.
 
-Medan flera metoder är möjligt, vi erbjuder några exempel på med `RestoreAsync` toorecover från hello ovan scenarier.
+Medan flera metoder är möjligt, vi erbjuder några exempel på med `RestoreAsync` att återställa från ovannämnda scenarier.
 
 ## <a name="partition-data-loss-in-reliable-services"></a>Partitionen dataförlust i Reliable Services
-I det här fallet hello runtime skulle automatiskt identifiera hello dataförlust och anropa hello `OnDataLossAsync` API.
+I det här fallet körningsmiljön skulle automatiskt identifiera data går förlorade och anropa den `OnDataLossAsync` API.
 
-hello service författare måste tooperform hello följande toorecover:
+Tjänsten författare behöver för att utföra följande för att återställa:
 
-  - Åsidosätt hello virtuella basklassmetoden `OnDataLossAsync`.
-  - Hitta hello senaste säkerhetskopiering hello externa platsen som innehåller säkerhetskopior hello-tjänsten.
-  - Hämta senaste säkerhetskopian av hello (och packa hello säkerhetskopiering i hello säkerhetskopieringsmappen om den har komprimerats).
-  - Hej `OnDataLossAsync` metoden ger ett `RestoreContext`. Anropa hello `RestoreAsync` API på hello tillhandahålls `RestoreContext`.
-  - Returnera true om hello återställningen lyckades.
+  - Åsidosätta metoden virtuella basklass `OnDataLossAsync`.
+  - Hitta den senaste säkerhetskopian i den externa platsen som innehåller säkerhetskopior av tjänsten.
+  - Hämta den senaste säkerhetskopian (och packa säkerhetskopieringen i mappen om den har komprimerats).
+  - Den `OnDataLossAsync` metoden ger ett `RestoreContext`. Anropa den `RestoreAsync` API på angiven `RestoreContext`.
+  - Returnera true om återställningen lyckades.
 
-Följande är exempel på implementering av hello `OnDataLossAsync` metoden:
+Följande är exempel på implementering av den `OnDataLossAsync` metoden:
 
 ```csharp
 protected override async Task<bool> OnDataLossAsync(RestoreContext restoreCtx, CancellationToken cancellationToken)
@@ -141,44 +141,44 @@ protected override async Task<bool> OnDataLossAsync(RestoreContext restoreCtx, C
 }
 ```
 
-`RestoreDescription`skickade toohello `RestoreContext.RestoreAsync` anrop innehåller en medlem som kallas `BackupFolderPath`.
-När du återställer en fullständig säkerhetskopia, detta `BackupFolderPath` ska anges toohello lokal sökväg till hello-mapp som innehåller en fullständig säkerhetskopiering.
-När du återställer en fullständig säkerhetskopia och ett antal inkrementella säkerhetskopieringar `BackupFolderPath` ska anges toohello lokal sökväg på hello-mapp som innehåller inte bara hello fullständig säkerhetskopia, men även alla hello inkrementella säkerhetskopieringar.
-`RestoreAsync`Anropet kan utlösa `FabricMissingFullBackupException` om hello `BackupFolderPath` som inte innehåller en fullständig säkerhetskopia.
+`RestoreDescription`skickade till den `RestoreContext.RestoreAsync` anrop innehåller en medlem som kallas `BackupFolderPath`.
+När du återställer en fullständig säkerhetskopia, detta `BackupFolderPath` ska anges till den lokala sökvägen till den mapp som innehåller en fullständig säkerhetskopiering.
+När du återställer en fullständig säkerhetskopia och ett antal inkrementella säkerhetskopieringar `BackupFolderPath` ska anges till den lokala sökvägen till den mapp som inte bara innehåller en fullständig säkerhetskopiering, men även alla de inkrementella säkerhetskopiorna.
+`RestoreAsync`Anropet kan utlösa `FabricMissingFullBackupException` om den `BackupFolderPath` som inte innehåller en fullständig säkerhetskopia.
 Den kan också ge `ArgumentException` om `BackupFolderPath` har brutits kedja för säkerhetskopior.
-Om den innehåller hello fullständig säkerhetskopiering hello först inkrementell och hello tredje inkrementell säkerhetskopiering men ingen hälsningspaket andra inkrementell säkerhetskopiering.
+Om den innehåller en fullständig säkerhetskopiering, till exempel först inkrementell och tredje inkrementell säkerhetskopiering men inga andra inkrementell säkerhetskopiering.
 
 > [!NOTE]
-> Hej RestorePolicy är tooSafe som standard.  Det innebär att hello `RestoreAsync` API misslyckas med ArgumentException om den identifierar hello säkerhetskopiering mappen innehåller ett tillstånd som är äldre än eller lika med toohello tillstånd som finns i den här repliken.  `RestorePolicy.Force`kan vara används tooskip säkerhet kontrollen. Det har angetts som en del av `RestoreDescription`.
+> RestorePolicy anges till säkra som standard.  Detta innebär att den `RestoreAsync` API misslyckas med ArgumentException om den upptäcker att mappen innehåller ett tillstånd som är äldre än eller lika med det tillstånd som finns i den här repliken.  `RestorePolicy.Force`kan användas för att hoppa över kontrollen säkerhet. Det har angetts som en del av `RestoreDescription`.
 > 
 
 ## <a name="deleted-or-lost-service"></a>Borttagna eller förlorade service
-Om en tjänst har tagits bort, måste du först återskapa hello-tjänsten innan hello data kan återställas.  Det är viktigt toocreate hello tjänst med samma konfiguration, t.ex. partitioneringsschema så som hello data kan återställas sömlöst hello.  När hello-tjänsten är igång, hello API toorestore data (`OnDataLossAsync` ovan) har toobe anropas för varje partition för den här tjänsten. Ett sätt att uppnå detta är med hjälp av `[FabricClient.TestManagementClient.StartPartitionDataLossAsync](https://msdn.microsoft.com/library/mt693569.aspx)` för varje partition.  
+Om en tjänst har tagits bort, måste du först återskapa tjänsten innan data kan återställas.  Det är viktigt att skapa tjänsten med samma konfiguration, t.ex. partitioneringsschema så att data kan återställas utan problem.  När tjänsten är igång API för att återställa data (`OnDataLossAsync` ovan) måste anropas för varje partition för den här tjänsten. Ett sätt att uppnå detta är med hjälp av `[FabricClient.TestManagementClient.StartPartitionDataLossAsync](https://msdn.microsoft.com/library/mt693569.aspx)` för varje partition.  
 
-Från och med nu, är implementeringen hello samma som hello ovan scenario. Varje partition måste toorestore hello senaste relevanta säkerhetskopiering från hello extern butik. Ett villkor är hello partitionen ID kan ha nu ändrats, eftersom hello runtime skapar partitions-ID: N dynamiskt. Hello-tjänsten måste därför toostore hello lämplig partitionsinformation och service name tooidentify hello rätt senaste säkerhetskopiering toorestore från för varje partition.
+Från och med nu är implementering samma som scenariot ovan. Varje partition måste återställa den senaste relevanta säkerhetskopieringen från extern butik. En begränsning är att partitions-ID kan ha nu ändrats, eftersom partition ID: N skapas dynamiskt i körningsmiljön. Tjänsten måste därför att lagra lämplig information och tjänsten partitionsnamnet att identifiera den senaste korrekta säkerhetskopian att återställa från en för varje partition.
 
 > [!NOTE]
-> Det rekommenderas inte toouse `FabricClient.ServiceManager.InvokeDataLossAsync` på varje partition toorestore hello hela tjänsten, eftersom som kan skada din klustertillstånd.
+> Det rekommenderas inte att använda `FabricClient.ServiceManager.InvokeDataLossAsync` på varje partition för att återställa hela tjänsten eftersom som kan skada din klustertillstånd.
 > 
 
 ## <a name="replication-of-corrupt-application-data"></a>Replikering av skadade programdata
-Om uppgradering av hello nyligen distribuerade programmet har ett programfel, som kan orsaka skadade data. Till exempel kan en uppgradering av programmet starta tooupdate alla telefonpost i en tillförlitlig ordlista med ett ogiltigt riktnummer.  I det här fallet replikeras hello ogiltiga telefonnummer sedan Service Fabric inte är medveten om hello slags hello data som lagras.
+Om uppgraderingen nyligen distribuerade program har ett fel som kan medföra att data skadas. En uppgradering av programmet kan till exempel börja uppdatera alla phone antalet poster i en tillförlitlig ordlista med ett ogiltigt riktnummer.  I det här fallet replikeras ogiltiga telefonnummer sedan Service Fabric inte är medveten om vilka slags data som lagras.
 
-hello först öppna toodo när du identifiera sådana en flagranta programfel som gör att data skadas är toofreeze hello-tjänst på programnivå hello och, om möjligt uppgradera toohello version av hello programkod som saknar hello programfel.  Även efter hello service-koden är fast, hello data kan fortfarande vara skadade och därmed data måste toobe återställs.  I sådana fall kan kanske det inte tillräckligt toorestore hello senaste säkerhetskopiering, eftersom hello senaste säkerhetskopieringar kan också vara skadad.  Du har alltså toofind hello senaste säkerhetskopia som togs innan hello data har skadats.
+Det första du ska göra när du identifiera sådana ett flagranta fel som orsakar skadade data är att låsa tjänsten på programnivå och, om möjligt, uppgradera till version av den programkod som inte har programfelet.  Även efter kod som har åtgärdats, data kan fortfarande vara skadad och därmed data kan behöva återställas.  I sådana fall kan det inte räcker för att återställa den senaste säkerhetskopian eftersom de senaste säkerhetskopiorna kan också vara skadad.  Du har alltså att hitta den senaste säkerhetskopieringen gjordes innan data har skadats.
 
-Om du inte är säker på vilken säkerhetskopior är skadade kan du distribuera ett nytt Service Fabric-kluster och återställa hello säkerhetskopior av berörda partitioner precis som hello ovan ”Borttaget eller förlorade service” scenario.  Börja återställa hello säkerhetskopior från hello senaste toohello minst för varje partition. När du har hittat en säkerhetskopiering som inte har hello skadade flytta/ta bort alla säkerhetskopior för den här partitionen som var (än att säkerhetskopiering). Upprepa proceduren för varje partition. Nu när `OnDataLossAsync` anropas på hello partitionen i hello produktionskluster hello senaste säkerhetskopia finns hello externa arkivet ska vara hello en utvald av hello ovan processen.
+Om du inte är säker på vilken säkerhetskopior är skadade kan du distribuera ett nytt Service Fabric-kluster och återställa säkerhetskopior av berörda partitioner precis som anges ovan ”Deleted eller förlorade service” scenario.  För varje partition startar återställa säkerhetskopior från den senaste till minst. När du har hittat en säkerhetskopiering som inte har fel flyttning/ta bort alla säkerhetskopior för den här partitionen som var (än att säkerhetskopiering). Upprepa proceduren för varje partition. Nu när `OnDataLossAsync` anropas på partitionen i produktion klustret den senaste säkerhetskopian finns i arkivet för externa blir en utvald av ovanstående procedur.
 
-Nu hello stegen i hello ”Deleted eller förlorade service” kan vara användas toorestore hello tillstånd hello Tjänststatus toohello innan hello buggy kod skadad hello tillstånd.
+Nu steg ”Deleted eller förlorade service” avsnitt kan användas för att återställa status för tjänsten till läget innan buggy kod skadad tillståndet.
 
 Tänk på följande:
 
-  - När du återställer är det används en risk att hello säkerhetskopia återställs äldre än hello tillståndet för hello partitionen innan hello data gick förlorade. Därför bör du återställa endast som en sista utväg toorecover så mycket data som möjligt.
-  - hello sträng som representerar hello säkerhetskopiering mappsökvägen och hello sökvägar för filer i hello säkerhetskopieringsmappen kan vara större än 255 tecken, beroende på hello FabricDataRoot sökväg och programtyp namnlängd. Detta kan orsaka vissa .NET-metoder som `Directory.Move`, toothrow hello `PathTooLongException` undantag. En lösning är toodirectly anropa kernel32 API: er, som `CopyFile`.
+  - När du återställer finns det en risk att säkerhetskopian som återställs är äldre än tillståndet för partitionen innan data gick förlorade. Därför bör du återställa endast som en sista utväg återställa så mycket som möjligt av informationen.
+  - Den sträng som representerar sökvägen till säkerhetskopian och sökvägar för filer i mappen kan vara större än 255 tecken, beroende på FabricDataRoot sökvägen och programtyp namnlängd. Detta kan orsaka vissa .NET-metoder som `Directory.Move`, för att utlösa den `PathTooLongException` undantag. En lösning som direkt anropar kernel32 API: er, som `CopyFile`.
 
 ## <a name="backup-and-restore-reliable-actors"></a>Säkerhetskopiering och återställning Reliable Actors
 
 
-Tillförlitliga aktörer Framework bygger på Reliable Services. Hej ActorService som är värd för hello actor(s) är en tillståndskänslig tillförlitlig tjänst. Därför måste alla hello säkerhetskopiering och återställning tillgängliga funktioner i Reliable Services är också tillgängliga tooReliable aktörer (utom beteenden som är specifika för tillståndsprovidern). Eftersom säkerhetskopior kommer att vidtas på grundval av per partition, tillstånd för alla aktörer i att partition ska säkerhetskopieras (och återställningen liknar och sker på grundval av per partition). tooperform säkerhetskopiering/återställning hello tjänstens ägare ska skapa en anpassad aktören service-klass som härleds från klassen ActorService och sedan säkerhetskopiering/återställning liknande tooReliable tjänster enligt beskrivningen ovan i föregående avsnitt.
+Tillförlitliga aktörer Framework bygger på Reliable Services. ActorService som är värd för actor(s) är en tillståndskänslig tillförlitlig tjänst. Därför måste är alla säkerhetskopiering och återställning av tillgängliga funktioner i Reliable Services också tillgänglig för Reliable Actors (utom beteenden som är specifika för tillståndsprovidern). Eftersom säkerhetskopior kommer att vidtas på grundval av per partition, tillstånd för alla aktörer i att partition ska säkerhetskopieras (och återställningen liknar och sker på grundval av per partition). Om du vill utföra säkerhetskopiering/återställning med tjänstens ägare ska skapa en anpassad aktören service-klass som härleds från klassen ActorService och gör sedan säkerhetskopiering/återställning liknar Reliable Services enligt beskrivningen ovan i föregående avsnitt.
 
 ```csharp
 class MyCustomActorService : ActorService
@@ -194,14 +194,14 @@ class MyCustomActorService : ActorService
 }
 ```
 
-När du skapar en anpassad aktören tjänsteklass måste tooregister som också när du registrerar hello aktören.
+När du skapar en anpassad aktören tjänstklass som du behöver registrera som samt när du registrerar aktören.
 
 ```csharp
 ActorRuntime.RegisterActorAsync<MyActor>(
    (context, typeInfo) => new MyCustomActorService(context, typeInfo)).GetAwaiter().GetResult();
 ```
 
-hello tillstånd standardprovidern för Reliable Actors är `KvsActorStateProvider`. Inkrementell säkerhetskopiering är inte aktiverad som standard för `KvsActorStateProvider`. Du kan aktivera inkrementell säkerhetskopiering genom att skapa `KvsActorStateProvider` med hello lämpliga inställningen i sin konstruktor och sedan överföra tooActorService konstruktorn enligt följande kodavsnitt:
+Standardprovidern för tillstånd för Reliable Actors är `KvsActorStateProvider`. Inkrementell säkerhetskopiering är inte aktiverad som standard för `KvsActorStateProvider`. Du kan aktivera inkrementell säkerhetskopiering genom att skapa `KvsActorStateProvider` med lämplig inställning i sin konstruktor och skicka den till ActorService konstruktorn enligt följande kodavsnitt:
 
 ```csharp
 class MyCustomActorService : ActorService
@@ -217,50 +217,50 @@ class MyCustomActorService : ActorService
 }
 ```
 
-När inkrementell säkerhetskopiering har aktiverats, tar en inkrementell säkerhetskopia kan misslyckas med FabricMissingFullBackupException av något av följande skäl och tootake en fullständig säkerhetskopiering behöver innan du tar inkrementella säkerhetskopiorna:
+När inkrementell säkerhetskopiering har aktiverats, tar en inkrementell säkerhetskopia kan misslyckas med FabricMissingFullBackupException av något av följande skäl och du behöver utföra en fullständig säkerhetskopiering innan du tar inkrementella säkerhetskopiorna:
 
-  - hello replik har aldrig tagit en fullständig säkerhetskopiering eftersom den blev primära.
-  - Vissa av hello loggposter trunkerades eftersom senaste säkerhetskopian skapades.
+  - Repliken har aldrig tagit en fullständig säkerhetskopiering eftersom den blev primära.
+  - Vissa av posterna loggen har trunkerats eftersom senaste säkerhetskopian skapades.
 
-När inkrementell säkerhetskopiering är aktiverad `KvsActorStateProvider` använder inte cirkulär buffert toomanage loggen innehåller information och trunkerar den regelbundet. Om ingen säkerhetskopia är upptaget av användaren under 45 minuter, trunkerar hello system automatiskt hello loggposter. Intervallet kan konfigureras genom att ange `logTrunctationIntervalInMinutes` i `KvsActorStateProvider` konstruktor (liknande toowhen aktiverar inkrementell säkerhetskopiering). också kan hämta trunkerade hello loggposter om primära repliken behöver toobuild en annan replik genom att skicka alla data.
+När inkrementell säkerhetskopiering är aktiverad `KvsActorStateProvider` använder inte cirkulär buffert för att hantera dess loggposter och trunkerar den regelbundet. Om ingen säkerhetskopia är upptaget av användaren under 45 minuter, trunkerar loggposter automatiskt i systemet. Intervallet kan konfigureras genom att ange `logTrunctationIntervalInMinutes` i `KvsActorStateProvider` konstruktor (liknar när du aktiverar inkrementell säkerhetskopiering). Loggposter kan också hämta trunkeras om primära repliken behöver för att skapa en annan replik genom att skicka alla data.
 
-När du gör återställningen från en säkerhetskopiering kedja liknande tooReliable tjänster ska hello BackupFolderPath innehålla underkataloger med en underkatalog med fullständig säkerhetskopiering och andra underkataloger som innehåller inkrementella säkerhetskopiorna. hello återställning API genereras FabricException med ett meddelande om hello loggsäkerhetskopieringssekvensen valideringen misslyckas. 
+När du gör återställningen från en säkerhetskopiering kedja liknar Reliable Services BackupFolderPath ska innehålla underkataloger med en underkatalog med fullständig säkerhetskopiering och andra underkataloger som innehåller inkrementella säkerhetskopiorna. Återställ API genereras FabricException med ett meddelande om loggsäkerhetskopieringssekvensen verifieringen misslyckas. 
 
 > [!NOTE]
-> `KvsActorStateProvider`ignorerar för tillfället hello alternativet RestorePolicy.Safe. Stöd för den här funktionen är planerad i en kommande version.
+> `KvsActorStateProvider`ignorerar för tillfället alternativet RestorePolicy.Safe. Stöd för den här funktionen är planerad i en kommande version.
 > 
 
 ## <a name="testing-backup-and-restore"></a>Testa säkerhetskopiering och återställning
-Det är viktigt tooensure som kritiska data säkerhetskopieras och återställas från. Detta kan göras genom att anropa hello `Start-ServiceFabricPartitionDataLoss` cmdlet i PowerShell som kan orsaka dataförlust i en viss partition tootest om hello data säkerhetskopiera och återställa funktioner för tjänsten fungerar som förväntat.  Det är också möjligt tooprogrammatically anropa förlust av data och återställa från händelsen samt.
+Det är viktigt att säkerställa att viktiga data säkerhetskopieras och återställas från. Detta kan göras genom att anropa den `Start-ServiceFabricPartitionDataLoss` cmdlet i PowerShell som kan orsaka dataförlust i en viss partition för att kontrollera om data säkerhetskopiera och återställa funktioner för tjänsten fungerar som förväntat.  Det är också möjligt att anropa förlust av data och återställa från händelsen samt programmässigt.
 
 > [!NOTE]
-> Du kan hitta ett exempel på implementering av säkerhetskopiering och återställning av funktioner i hello referens webbprogrammet på GitHub. Tittar du på hello `Inventory.Service` tjänsten för mer information.
+> Du kan hitta ett exempel på implementering av säkerhetskopiering och återställning av funktioner i referens webbprogrammet på GitHub. Tittar du på den `Inventory.Service` tjänsten för mer information.
 > 
 > 
 
-## <a name="under-hello-hood-more-details-on-backup-and-restore"></a>Under huven hello: Mer information om säkerhetskopiering och återställning
+## <a name="under-the-hood-more-details-on-backup-and-restore"></a>Under huven: Mer information om säkerhetskopiering och återställning
 Här är några mer information om säkerhetskopiering och återställning.
 
 ### <a name="backup"></a>Säkerhetskopiering
-hello tillförlitliga Tillståndshanterare ger hello möjlighet toocreate konsekvent säkerhetskopieringar utan att blockera alla läsa eller skrivåtgärder. toodo så, den använder en mekanism för datapersistence kontrollpunkts- och loggfiler.  hello tillförlitliga Tillståndshanterare tar fuzzy (lightweight) kontrollpunkter vid vissa punkter toorelieve tryck från hello transaktionella loggen och förbättra återställningstiden.  När `BackupAsync` anropas, hello tillförlitliga Tillståndshanterare instruerar alla tillförlitliga objekt toocopy deras senaste kontrollpunkten tooa lokala backup-mappen.  Hello tillförlitliga Tillståndshanterare kopierar sedan alla loggposter från hello ”start pekaren” toohello senaste loggpost till hello säkerhetskopieringsmappen.  Eftersom alla hello loggposter in toohello senaste loggpost ingår i hello säkerhetskopiering och hello tillförlitliga Tillståndshanterare bevarar write-ahead loggning, hello tillförlitliga Tillståndshanterare garanterar att alla transaktioner som genomförs (`CommitAsync` returnerade har) ingår i hello säkerhetskopiering.
+Tillförlitliga Tillståndshanterarens ger möjlighet att skapa konsekvent säkerhetskopieringar utan att blockera alla läs- eller skrivåtgärder. Om du vill göra det, använder den en mekanism för datapersistence kontrollpunkts- och loggfiler.  Tillförlitliga Tillståndshanterarens tar fuzzy (lightweight) kontrollpunkter vid vissa tidpunkter för att avlasta trycket från transaktionella loggen och förbättra återställningstiden.  När `BackupAsync` anropas, tillförlitlig Tillståndshanterarens instruerar alla tillförlitliga objekt för att kopiera sina senaste kontrollpunktsfiler till en lokal mapp.  Tillförlitliga Tillståndshanterarens kopierar sedan alla loggposter från ”start pekaren” till den senaste loggposten i säkerhetskopieringsmappen.  Eftersom alla loggposter upp till den senaste loggposten ingår i säkerhetskopieringen och tillförlitlig Tillståndshanterarens bevarar write-ahead loggning, tillförlitlig Tillståndshanterarens garanterar att alla transaktioner som genomförs (`CommitAsync` har returnerat har) ingår i säkerhetskopian.
 
-En transaktion som sparar efter `BackupAsync` har anropats kanske eller kanske inte hello säkerhetskopiering.  När hello lokala säkerhetskopieringsmappen har fyllts av hello-plattformen (d.v.s. lokal säkerhetskopiering har slutförts av hello runtime) hello service säkerhetskopiering återanropet anropas.  Den här återanrop ansvarar för att flytta hello säkerhetskopieringsmappen tooan extern plats, till exempel Azure Storage.
+En transaktion som sparar efter `BackupAsync` har anropats kanske eller kanske inte i säkerhetskopian.  När den lokala mappen för säkerhetskopiering har fyllts av plattformen (d.v.s. lokal säkerhetskopia har avslutats av körningen), tjänstens säkerhetskopiering återanropet anropas.  Den här återanrop ansvarar för att flytta säkerhetskopieringsmappen till en extern plats, till exempel Azure Storage.
 
 ### <a name="restore"></a>Återställ
-hello tillförlitliga Tillståndshanterare innehåller hello möjlighet toorestore från en säkerhetskopia med hello `RestoreAsync` API.  
-Hej `RestoreAsync` metod på `RestoreContext` kan endast anropas inuti hello `OnDataLossAsync` metod.
-Hej bool som returneras av `OnDataLossAsync` anger om hello tjänsten återställd dess tillstånd från en extern källa.
-Om hello `OnDataLossAsync` returnerar true, Service Fabric återskapar alla andra repliker från denna primära Server. Service Fabric säkerställer att repliker som tar emot `OnDataLossAsync` anropa första övergången toohello primära rollen men inte beviljas läses status eller skriva status.
+Tillförlitliga Tillståndshanterarens ger dig möjlighet att återställa från en säkerhetskopia med hjälp av den `RestoreAsync` API.  
+Den `RestoreAsync` metod på `RestoreContext` kan endast anropas inuti den `OnDataLossAsync` metoden.
+Bool som returneras av `OnDataLossAsync` anger om tjänsten har återställts dess tillstånd från en extern källa.
+Om den `OnDataLossAsync` returnerar true, Service Fabric återskapar alla andra repliker från denna primära Server. Service Fabric säkerställer att repliker som tar emot `OnDataLossAsync` anropa första övergången till den primära rollen men inte beviljas läses status eller skriva status.
 Detta innebär att för StatefulService implementerare `RunAsync` inte anropas förrän `OnDataLossAsync` har slutförts.
-Sedan `OnDataLossAsync` kommer att anropas på hello nya primära.
-Tills en tjänst är slutförd detta API har (genom att returnera true eller false) och är klar hello relevanta omkonfiguration, kommer hello API att anropas i taget.
+Sedan `OnDataLossAsync` kommer att anropas på den nya primärt.
+Tills en tjänst är slutförd detta API har (genom att returnera true eller false) och är klar relevanta omkonfiguration, kommer API: et hålla som anropas i taget.
 
-`RestoreAsync`först utelämnar alla befintliga tillstånd i hello primära repliken som den anropades på.  
-Hello tillförlitliga Tillståndshanterare skapar sedan alla tillförlitliga hello-objekt som finns i hello säkerhetskopieringsmappen.  
-Hello tillförlitliga objekt är sedan instrueras toorestore från deras kontrollpunkter i hello säkerhetskopieringsmappen.  
-Slutligen hello tillförlitliga Tillståndshanterare återställer dess egna tillstånd från hello loggposter i hello säkerhetskopieringsmappen och utför återställningen.  
-Som en del av återställningsprocessen hello är åtgärder från hello ”startpunkt” som har commit loggposter i hello säkerhetskopieringsmappen upprepat toohello tillförlitliga objekt.  
-Det här steget säkerställer att hello återställda är konsekvent.
+`RestoreAsync`först utelämnar alla befintliga tillstånd i den primära repliken som den anropades på.  
+Sedan skapar tillförlitliga Tillståndshanterarens alla tillförlitliga objekt som finns i mappen.  
+Sedan instrueras tillförlitliga objekt att återställa från deras kontrollpunkter i mappen.  
+Slutligen tillförlitliga Tillståndshanterarens återställer dess egna tillstånd från loggposter i mappen och utför återställningen.  
+Som en del av återställningsprocessen spelas åtgärder som startar från ”Start” som har commit loggposter i mappen tillförlitliga objekt.  
+Det här steget säkerställer att den återställda är konsekvent.
 
 ## <a name="next-steps"></a>Nästa steg
   - [Tillförlitliga samlingar](service-fabric-work-with-reliable-collections.md)

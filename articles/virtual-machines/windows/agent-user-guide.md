@@ -1,5 +1,5 @@
 ---
-title: "aaaAzure översikt över virtuella | Microsoft Docs"
+title: "Översikt över Azure-dator | Microsoft Docs"
 description: "Översikt över Azure-dator"
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,45 +15,45 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 11/17/2016
 ms.author: nepeters
-ms.openlocfilehash: b03542b9a9c711000fab18ed82e9b17ee5510bbf
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 24ad2c2d2872f844e32d3fae559683c3d992bd00
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Översikt över Azure virtuella datorns Agent
 
-hello virtuella Microsoft Azure-agenten (AM Agent) är en säker, enkel process som hanterar VM interaktion med hello Azure-Infrastrukturkontrollanten. hello VM-agenten har en primär roll i att aktivera och köra tillägg för virtuell dator i Azure. VM-tillägg som aktiverar efter distributionskonfigurationen av virtuella datorer, till exempel installera och konfigurera programvara. Tillägg för virtuell dator kan du även aktivera återställningsfunktioner, till exempel återställer hello administratörslösenord för en virtuell dator. Tillägg för virtuell dator utan hello Azure VM-agenten kan inte köras.
+Den virtuella datorns Agent för Microsoft Azure (AM Agent) är en säker, enkel process som hanterar VM interaktion med Azure-Infrastrukturkontrollanten. Den Virtuella Datoragenten har en primär roll i att aktivera och köra tillägg för virtuell dator i Azure. VM-tillägg som aktiverar efter distributionskonfigurationen av virtuella datorer, till exempel installera och konfigurera programvara. Tillägg för virtuell dator kan du även aktivera återställningsfunktioner, till exempel när du återställer lösenordet för administratörer för en virtuell dator. Tillägg för virtuell dator utan Azure VM-agenten kan inte köras.
 
-Det här dokumentet beskriver installation, identifiering och borttagning av hello Azure Virtual Machine-agenten.
+Det här dokumentet beskriver installation, identifiering och borttagning av virtuella Azure-agenten.
 
-## <a name="install-hello-vm-agent"></a>Installera hello VM-Agent
+## <a name="install-the-vm-agent"></a>Installera den Virtuella Datoragenten
 
 ### <a name="azure-gallery-image"></a>Bild av Azure-galleriet
 
-hello Azure VM-agenten installeras som standard på alla Windows-dator som distribueras från en avbildning i Azure-galleriet. När du distribuerar en Azure-galleriet bild från hello Portal, PowerShell, kommandoradsgränssnittet eller en Azure Resource Manager-mall installeras hello Azure VM-agenten är också. 
+Azure VM-agenten installeras som standard på alla Windows-dator som distribueras från en avbildning i Azure-galleriet. När du distribuerar en Azure-galleriet bild från portalen, PowerShell, kommandoradsgränssnittet eller en Azure Resource Manager-mall, installeras även Azure VM-agenten. 
 
 ### <a name="manual-installation"></a>Manuell installation
 
-hello Windows VM-agenten kan installeras manuellt med hjälp av Windows installer-paket. Manuell installation kan vara nödvändigt när du skapar en virtuell datoravbildning som ska distribueras i Azure. toomanually installera hello Windows VM-agenten, hämta installationsprogrammet för hello VM-agenten från den här platsen [Windows Azure VM-agenten hämta](http://go.microsoft.com/fwlink/?LinkID=394789). 
+Windows VM-agenten kan installeras manuellt med hjälp av Windows installer-paket. Manuell installation kan vara nödvändigt när du skapar en virtuell datoravbildning som ska distribueras i Azure. Installera Windows VM-agenten manuellt genom att hämta installationsprogrammet för VM-agenten från den här platsen [Windows Azure VM-agenten hämta](http://go.microsoft.com/fwlink/?LinkID=394789). 
 
-hello VM-agenten kan installeras genom att dubbelklicka på hello windows installer-filen. Kör hello följande kommando för en automatiserad eller obevakad installation av hello VM-agenten.
+VM-agenten kan installeras genom att dubbelklicka på den windows installer-fil. Kör följande kommando för en automatiserad eller obevakad installation av VM-agenten.
 
 ```cmd
 msiexec.exe /i WindowsAzureVmAgent.2.7.1198.778.rd_art_stable.160617-1120.fre /quiet
 ```
 
-## <a name="detect-hello-vm-agent"></a>Identifiera hello VM-Agent
+## <a name="detect-the-vm-agent"></a>Identifiera den Virtuella Datoragenten
 
 ### <a name="powershell"></a>PowerShell
 
-hello Azure Resource Manager PowerShell-modulen kan vara används tooretrieve information om Azure virtuella datorer. Kör `Get-AzureRmVM` returnerar lite inklusive hello Etableringsstatus för hello Azure VM-agenten.
+Azure Resource Manager PowerShell-modulen kan användas för att hämta information om Azure virtuella datorer. Kör `Get-AzureRmVM` returnerar lite inklusive etableringsstatusen för Azure VM-agenten.
 
 ```PowerShell
 Get-AzureRmVM
 ```
 
-hello följande är bara en delmängd av hello `Get-AzureRmVM` utdata. Meddelande hello `ProvisionVMAgent` egenskapen inuti `OSProfile`, den här egenskapen kan vara används toodetermine om hello VM-agenten har distribuerade toohello virtuella datorn.
+Följande är bara en delmängd av den `Get-AzureRmVM` utdata. Observera den `ProvisionVMAgent` egenskapen inuti `OSProfile`, den här egenskapen kan användas för att avgöra om den Virtuella datoragenten har distribuerats till den virtuella datorn.
 
 ```PowerShell
 OSProfile                  :
@@ -64,7 +64,7 @@ OSProfile                  :
     EnableAutomaticUpdates : True
 ```
 
-Följande skript hello kan vara används tooreturn en kortfattad lista över namn på virtuella datorer och hello tillståndet för hello VM-agenten.
+Följande skript kan användas för att returnera en kortfattad lista över namn på virtuella datorer och tillståndet för den Virtuella Datoragenten.
 
 ```PowerShell
 $vms = Get-AzureRmVM
@@ -77,8 +77,8 @@ foreach ($vm in $vms) {
 
 ### <a name="manual-detection"></a>Manuell identifiering
 
-När du loggade in tooa Windows Azure VM vara Aktivitetshanteraren används tooexamine processer som körs. toocheck för hello Azure VM-agenten, öppna Aktivitetshanteraren > Klicka på fliken för hello information och leta efter ett processnamn `WindowsAzureGuestAgent.exe`. hello förekomst av den här processen anger den hello VM-agenten är installerad.
+När inloggad på en Windows Azure VM, kan du använda Aktivitetshanteraren för att granska processer som körs. För att kontrollera Azure VM-agenten, öppna Aktivitetshanteraren > Klicka på informationsfliken och leta efter ett processnamn `WindowsAzureGuestAgent.exe`. Förekomst av den här processen anger att den Virtuella datoragenten är installerad.
 
-## <a name="upgrade-hello-vm-agent"></a>Uppgradera hello VM-Agent
+## <a name="upgrade-the-vm-agent"></a>Uppgradera den Virtuella Datoragenten
 
-hello Azure VM-agenten för Windows uppgraderas automatiskt. Nya virtuella datorer är distribuerade tooAzure, kan de få hello senaste VM-agenten. Anpassade VM-avbildningar ska vara uppdaterade tooinclude hello nya VM-agenten.
+Azure VM-agenten för Windows uppgraderas automatiskt. Allteftersom nya virtuella datorer distribueras till Azure, kan de få den senaste VM-agenten. Anpassade VM-avbildningar ska uppdateras för att inkludera den nya VM-agenten manuellt.

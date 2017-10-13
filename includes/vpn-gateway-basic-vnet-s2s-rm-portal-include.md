@@ -1,17 +1,17 @@
-toocreate ett VNet i hello Resource Manager-distributionsmodellen med hjälp av hello Azure-portalen gör hello nedan. Använd hello [exempelvärden](#values) om du använder de här stegen som en vägledning. Om du inte genomför de här stegen som en vägledning är du säker på att tooreplace hello värden med dina egna. Mer information om hur du arbetar med virtuella nätverk finns hello [översikt över virtuella nätverk](../articles/virtual-network/virtual-networks-overview.md).
+Följ stegen nedan för att skapa en VNet i Resource Manager-distributionsmodellen med hjälp av Azure Portal. Använd [exempelvärden](#values) om du använder de här stegen som en vägledning. Om du inte genomför de här stegen som en vägledning, bör du ersätter värdena med dina egna. Mer information om hur du arbetar med virtuella nätverk finns i [Översikt över virtuella nätverk](../articles/virtual-network/virtual-networks-overview.md).
 
-1. Från en webbläsare, navigerar du toohello [Azure-portalen](http://portal.azure.com) och logga in med ditt Azure-konto.
-2. Klicka på **Ny**. I hello **Sök hello marketplace** skriver du ”virtuella nätverk”. Leta upp **virtuellt nätverk** från hello returnerade listan och klicka på tooopen hello **virtuellt nätverk** bladet.
-3. Hello nedre delen av hello virtuellt nätverk-bladet, från hello **Välj en distributionsmodell** väljer **Resource Manager**, och klicka sedan på **skapa**. Då öppnas bladet för hello skapa virtuellt nätverk.
+1. Öppna en webbläsare, navigera till [Azure Portal](http://portal.azure.com) och logga in med ditt Azure-konto.
+2. Klicka på **Ny**. Skriv ”Virtuella nätverk” i fältet **Sök på marketplace**. Leta upp **Virtuellt nätverk** bland sökresultaten och klicka för att öppna bladet **Virtuellt nätverk**.
+3. Nästan längst ned på Virtuellt nätverk-bladet, från **Välj en distributionsmodell**-listan, väljer du **Resource Manager** och klickar sedan på **Skapa**. Detta öppnar bladet ”Skapa virtuell nätverksgateway”.
 
     ![Bladet Skapa virtuellt nätverk](./media/vpn-gateway-basic-vnet-s2s-rm-portal-include/createvnet.png "Bladet Skapa virtuellt nätverk")
-4. På hello **skapa virtuellt nätverk** bladet konfigurera hello VNet-inställningarna. När du fyller i hello fält blir hello rött utropstecken en grön bock när hello tecken i hello fältet är giltiga.
+4. Konfigurera VNet-inställningarna på bladet **Skapa virtuellt nätverk**. När du fyller i fälten blir det röda utropstecknet en grön bock om tecknen som anges i fältet är giltiga.
 
-  - **Namnet**: Ange hello namn för det virtuella nätverket. I det här exemplet använder vi TestVNet1.
-  - **Adressutrymmet**: Ange hello-adressutrymme. Om du har flera adress blanksteg tooadd, lägger du till ditt första adressutrymme. Du kan lägga till extra adressutrymmen senare, när du har skapat hello virtuella nätverk. Se till att hello-adressutrymmet som du anger inte överlappa hello adressutrymmet för den lokala platsen.
-  - **Undernätnamnet**: lägga till hello första undernätet namn och undernät adressintervall. Du kan lägga till ytterligare undernät och gateway-undernätet hello senare, när du har skapat detta virtuella nätverk. 
-  - **Prenumerationen**: Verifiera att hello visad prenumeration är hello korrekt. Du kan ändra prenumerationer med hjälp av hello i listrutan.
-  - **Resursgrupp**: Välj en befintlig resursgrupp eller skapa en ny genom att skriva ett namn för en ny resursgrupp. Om du skapar en ny grupp planerade namnet hello resursgruppen enligt tooyour konfigurationsvärden. Mer information om resursgrupper finns i [Översikt över Azure Resource Manager](../articles/azure-resource-manager/resource-group-overview.md#resource-groups).
-  - **Plats**: Välj hello plats för din VNet. hello platsen avgör var hello resurser som du distribuerar toothis VNet kommer att finnas.
+  - **Namn**: Namnge ditt virtuella nätverk. I det här exemplet använder vi TestVNet1.
+  - **Adressutrymme**: Ange adressutrymmet. Om du vill lägga till flera adressutrymme anger du ditt första adressutrymme. Du kan lägga till ytterligare adressutrymmen senare när du har skapat det virtuella nätverket. Kontrollera att adressutrymmet som du anger inte överlappar adressutrymmet för din lokala plats.
+  - **Undernätsnamn**: Lägg till det första undernätsnamnet och adressintervall för undernätet. Du kan lägga till ytterligare undernät och gateway-undernätet senare när du har skapat detta virtuella nätverk. 
+  - **Prenumeration**: Verifiera att prenumerationen som visas är korrekt. Du kan ändra prenumerationer i listrutan.
+  - **Resursgrupp**: Välj en befintlig resursgrupp eller skapa en ny genom att skriva ett namn för en ny resursgrupp. Om du skapar en ny grupp, bör du kalla resursgruppen efter dina planerade konfigurationsvärden. Mer information om resursgrupper finns i [Översikt över Azure Resource Manager](../articles/azure-resource-manager/resource-group-overview.md#resource-groups).
+  - **Plats**: Välj plats för ditt VNet. Platsen avgör var resurserna som du distribuerar till detta VNet kommer att placeras.
 
-5. Välj **PIN-kod toodashboard** om du vill toobe kan toofind ditt VNet enkelt på hello instrumentpanelen och klicka sedan på **skapa**. När du klickar på **skapa**, visas en panel på instrumentpanelen som visar hello förloppet för ditt VNet. hello panelen ändringar som hello VNet skapas.
+5. Välj **Fäst vid instrumentpanelen** om du vill kunna hitta ditt VNet på ett enkelt sätt på instrumentpanelen och klicka sedan på **Skapa**. När du klickar på **Skapa** visas en panel i din instrumentpanel som visar förloppet för VNet. Panelen ändras när VNet skapas.

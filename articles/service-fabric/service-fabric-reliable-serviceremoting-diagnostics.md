@@ -1,6 +1,6 @@
 ---
-title: "aaaAzure ServiceFabric diagnostik och övervakning | Microsoft Docs"
-description: "Den här artikeln beskriver hello prestanda övervakningsfunktionerna i hello tillförlitliga ServiceRemoting för Service Fabric runtime som prestandaräknare som sänds av den."
+title: "Azure ServiceFabric diagnostik- och övervakning | Microsoft Docs"
+description: "Den här artikeln beskriver övervakningsfunktioner för programprestanda i tillförlitliga ServiceRemoting för Service Fabric-körningsmiljön som prestandaräknare som sänds av den."
 services: service-fabric
 documentationcenter: .net
 author: suchiagicha
@@ -14,89 +14,89 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2017
 ms.author: suchiagicha
-ms.openlocfilehash: 64db9a890bd59a1326e587d14b89c007b71a9059
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: f54e157654fb15d2f7ff48ddc666c6c8803c75a2
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-service-remoting"></a>Diagnostik- och prestandaövervakning för tillförlitlig tjänst fjärrkommunikation
-hello tillförlitliga ServiceRemoting runtime avger [prestandaräknare](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx). Dessa ger insikter om hur hello ServiceRemoting fungerar och hjälp med felsökning och övervakning av programprestanda.
+Tillförlitliga ServiceRemoting runtime avger [prestandaräknare](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx). Dessa ger insikter om hur ServiceRemoting fungerar och hjälp med felsökning och övervakning av programprestanda.
 
 
 ## <a name="performance-counters"></a>Prestandaräknare
-hello tillförlitliga ServiceRemoting runtime definierar hello följande prestandaräknarkategorier:
+Tillförlitliga ServiceRemoting runtime definierar följande prestandaräknarkategorier:
 
 | Kategori | Beskrivning |
 | --- | --- |
-| Fabric-tjänsten |Räknare för specifika tooAzure fjärrkommunikation med Service Fabric-tjänsten, till exempel Genomsnittlig tid tooprocess begäran |
-| Metod för Service Fabric-tjänst |Räknare specifika toomethods implementeras av Service Fabric-fjärranslutningstjänsten, till exempel hur ofta en Servicemetoden har anropats |
+| Fabric-tjänsten |Räknare som är specifika för fjärrkommunikation med Azure Service Fabric-tjänsten, till exempel Genomsnittlig tid det tar att bearbeta begäran |
+| Metod för Service Fabric-tjänst |Räknare som är specifika för metoder implementeras av Service Fabric-fjärranslutningstjänsten, till exempel hur ofta en Servicemetoden har anropats |
 
-Varje hello föregående kategorier har en eller flera räknare.
+Var och en av ovanstående kategorier har en eller flera räknare.
 
-Hej [Windows Prestandaövervakaren](https://technet.microsoft.com/library/cc749249.aspx) program som är tillgängligt som standard i hello Windows operativsystem kan vara används toocollect och visa information om prestandaräknare. [Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics.md) är ett annat alternativ för att samla in prestandaräknardata och överföra den tooAzure tabeller.
+Den [Windows Prestandaövervakaren](https://technet.microsoft.com/library/cc749249.aspx) program som är tillgängligt som standard i Windows-operativsystemet kan användas för att samla in och visa information om prestandaräknare. [Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics.md) är ett annat alternativ för att samla in prestandaräknardata och överföra den till Azure-tabeller.
 
 ### <a name="performance-counter-instance-names"></a>Namn på prestandaräknarinstanser
-Ett kluster med ett stort antal ServiceRemoting tjänster eller partitioner har ett stort antal instanser för räknaren av prestanda. Hej prestandaräknarinstans namn hjälper dig identifiera hello specifik partition och metod för tjänst (om tillämpligt) som hello prestandaräknarinstans är associerad med.
+Ett kluster med ett stort antal ServiceRemoting tjänster eller partitioner har ett stort antal instanser för räknaren av prestanda. Namn på prestandaräknarinstanser hjälper dig identifiera specifik partition och metod för tjänst (om tillämpligt) som prestandaräknarinstans är kopplad till.
 
 #### <a name="service-fabric-service-category"></a>Fabric-tjänsten kategori
-För hello kategori `Service Fabric Service`, hello namn på prestandaräknarinstanser finns i hello följande format:
+För kategori `Service Fabric Service`, instansnamn räknaren finns i följande format:
 
 `ServiceFabricPartitionID_ServiceReplicaOrInstanceId_ServiceRuntimeInternalID`
 
-*ServiceFabricPartitionID* är hello strängrepresentation av hello Service Fabric partitions-ID som hello prestandaräknarinstans är associerad med. hello partitions-ID är ett GUID och dess strängrepresentation genereras via hello [ `Guid.ToString` ](https://msdn.microsoft.com/library/97af8hh4.aspx) metod med Formatspecificeraren ”D”.
+*ServiceFabricPartitionID* är strängrepresentation av Service Fabric partitions-ID som prestandaräknarinstans är kopplad till. Partitions-ID är ett GUID och dess strängrepresentation genereras via den [ `Guid.ToString` ](https://msdn.microsoft.com/library/97af8hh4.aspx) metod med Formatspecificeraren ”D”.
 
-*ServiceReplicaOrInstanceId* är hello strängrepresentation av hello Service Fabric repliken/instans-ID som hello prestandaräknarinstans är associerad med.
+*ServiceReplicaOrInstanceId* är strängrepresentation av Service Fabric repliken/instansen ID som prestandaräknarinstans är kopplad till.
 
-*ServiceRuntimeInternalID* är hello strängrepresentation av ett 64-bitars heltal som genereras av hello Fabric Service runtime för intern användning. Detta ingår i hello prestandaräknarinstans namn tooensure dess unika och undvika konflikter med andra namn på prestandaräknarinstanser. Användarna bör inte försöka toointerpret den här delen av hello namn på prestandaräknare instans.
+*ServiceRuntimeInternalID* är strängrepresentation av ett 64-bitars heltal som genereras av Service Fabric runtime för intern användning. Detta ingår i instansen prestandaräknarnamnet att säkerställa dess unika och undvika konflikter med andra namn på prestandaräknarinstanser. Användare försöka inte tolka den här delen av prestandaräknarnamnet för instansen.
 
-hello följande är ett exempel på ett räknaren instansnamn för en räknare som tillhör toohello `Service Fabric Service` kategori:
+Följande är ett exempel på ett räknaren instansnamn för en räknare som tillhör den `Service Fabric Service` kategori:
 
 `2740af29-78aa-44bc-a20b-7e60fb783264_635650083799324046_5008379932`
 
-I föregående exempel hello `2740af29-78aa-44bc-a20b-7e60fb783264` är hello strängrepresentation av hello Service Fabric partitions-ID, `635650083799324046` är strängrepresentation av repliken/InstanceId och `5008379932` är hello 64-bitars-ID som genereras för hello runtime internt Använd.
+I föregående exempel `2740af29-78aa-44bc-a20b-7e60fb783264` är strängrepresentation av Service Fabric partitions-ID `635650083799324046` är strängrepresentation av repliken/InstanceId och `5008379932` är 64-bitars-ID som genereras för körningsmiljön internt använder.
 
 #### <a name="service-fabric-service-method-category"></a>Service Fabric-tjänsten metoden kategori
-För hello kategori `Service Fabric Service Method`, hello namn på prestandaräknarinstanser finns i hello följande format:
+För kategori `Service Fabric Service Method`, instansnamn räknaren finns i följande format:
 
 `MethodName_ServiceRuntimeMethodId_ServiceFabricPartitionID_ServiceReplicaOrInstanceId_ServiceRuntimeInternalID`
 
-*MethodName* hello metodens namn hello-tjänsten som hello prestandaräknarinstans associeras med. hello format för metodnamn hello bestäms baserat på vissa logiken i hello Fabric Service runtime som balanserar hello läsbarhet hello namn med begränsningar på hello högst hello namn på prestandaräknarinstanser i Windows.
+*MethodName* är namnet på metoden tjänsten som prestandaräknarinstans är kopplad till. Formatet för metodnamnet bestäms baserat på viss logik i Fabric Service körningsmiljön som balanserar läsbarhet på namn med begränsningar på den maximala längden på namn på prestandaräknarinstanser i Windows.
 
-*ServiceRuntimeMethodId* är hello strängrepresentation av en 32-bitars heltal som genereras av hello Fabric Service runtime för intern användning. Detta ingår i hello prestandaräknarinstans namn tooensure dess unika och undvika konflikter med andra namn på prestandaräknarinstanser. Användarna bör inte försöka toointerpret den här delen av hello namn på prestandaräknare instans.
+*ServiceRuntimeMethodId* är strängrepresentation av en 32-bitars heltal som genereras av Service Fabric runtime för intern användning. Detta ingår i instansen prestandaräknarnamnet att säkerställa dess unika och undvika konflikter med andra namn på prestandaräknarinstanser. Användare försöka inte tolka den här delen av prestandaräknarnamnet för instansen.
 
-*ServiceFabricPartitionID* är hello strängrepresentation av hello Service Fabric partitions-ID som hello prestandaräknarinstans är associerad med. hello partitions-ID är ett GUID och dess strängrepresentation genereras via hello [ `Guid.ToString` ](https://msdn.microsoft.com/library/97af8hh4.aspx) metod med Formatspecificeraren ”D”.
+*ServiceFabricPartitionID* är strängrepresentation av Service Fabric partitions-ID som prestandaräknarinstans är kopplad till. Partitions-ID är ett GUID och dess strängrepresentation genereras via den [ `Guid.ToString` ](https://msdn.microsoft.com/library/97af8hh4.aspx) metod med Formatspecificeraren ”D”.
 
-*ServiceReplicaOrInstanceId* är hello strängrepresentation av hello Service Fabric repliken/instans-ID som hello prestandaräknarinstans är associerad med.
+*ServiceReplicaOrInstanceId* är strängrepresentation av Service Fabric repliken/instansen ID som prestandaräknarinstans är kopplad till.
 
-*ServiceRuntimeInternalID* är hello strängrepresentation av ett 64-bitars heltal som genereras av hello Fabric Service runtime för intern användning. Detta ingår i hello prestandaräknarinstans namn tooensure dess unika och undvika konflikter med andra namn på prestandaräknarinstanser. Användarna bör inte försöka toointerpret den här delen av hello namn på prestandaräknare instans.
+*ServiceRuntimeInternalID* är strängrepresentation av ett 64-bitars heltal som genereras av Service Fabric runtime för intern användning. Detta ingår i instansen prestandaräknarnamnet att säkerställa dess unika och undvika konflikter med andra namn på prestandaräknarinstanser. Användare försöka inte tolka den här delen av prestandaräknarnamnet för instansen.
 
-hello följande är ett exempel på ett räknaren instansnamn för en räknare som tillhör toohello `Service Fabric Service Method` kategori:
+Följande är ett exempel på ett räknaren instansnamn för en räknare som tillhör den `Service Fabric Service Method` kategori:
 
 `ivoicemailboxservice.leavemessageasync_2_89383d32-e57e-4a9b-a6ad-57c6792aa521_635650083804480486_5008380`
 
-I föregående exempel hello `ivoicemailboxservice.leavemessageasync` är hello metodnamnet `2` är hello 32-bitars-ID som genererades för hello runtime internt använder `89383d32-e57e-4a9b-a6ad-57c6792aa521` är hello strängrepresentation av hello Service Fabric partitions-ID,`635650083804480486` hello sträng representation av hello Service Fabric-replik-/ instans-ID och `5008380` är hello 64-bitars-ID som genererades för hello runtime internt använder.
+I föregående exempel `ivoicemailboxservice.leavemessageasync` är metodnamnet på `2` är 32-bitars-ID som genererades för intern användning av den runtime, `89383d32-e57e-4a9b-a6ad-57c6792aa521` är strängrepresentation av Service Fabric partitions-ID`635650083804480486` är strängrepresentation av Service Fabric-replik-/ instans-ID och `5008380` är 64-bitars-ID som genererades för körningsmiljön internt använder.
 
 ## <a name="list-of-performance-counters"></a>Lista över prestandaräknare
 ### <a name="service-method-performance-counters"></a>Prestandaräknare för tjänsten metod
 
-hello tillförlitlig tjänst runtime publicerar hello efter Prestandaräknare relaterade toohello Webbtjänstmetoder.
+Tillförlitlig tjänst runtime publicerar följande prestandaräknare som rör körning av tjänstmetoder.
 
 | Kategorinamn | Räknarens namn | Beskrivning |
 | --- | --- | --- |
-| Metod för Service Fabric-tjänst |Anrop/sek |Antalet gånger som hello service-metoden har anropats per sekund |
-| Metod för Service Fabric-tjänst |Genomsnittlig tid i millisekunder per anrop |Tid tooexecute hello webbtjänstmetoden i millisekunder |
-| Metod för Service Fabric-tjänst |Undantag/sek |Antalet gånger som hello webbtjänstmetoden utlöste ett undantag per sekund |
+| Metod för Service Fabric-tjänst |Anrop/sek |Antalet gånger som Servicemetoden har anropats per sekund |
+| Metod för Service Fabric-tjänst |Genomsnittlig tid i millisekunder per anrop |Åtgången tid för att köra Servicemetoden i millisekunder |
+| Metod för Service Fabric-tjänst |Undantag/sek |Antal gånger som metoden tjänsten utlöste ett undantag per sekund |
 
 ### <a name="service-request-processing-performance-counters"></a>Prestandaräknare för tjänsten begäran bearbetning
-När en klient anropar en metod via en proxy webbtjänstobjektet, resulterar det i ett meddelande om begäran som skickas via hello nätverkstjänsten toohello fjärrkommunikation. hello-tjänsten bearbetar begäran hello-meddelande och skickar en svar tillbaka toohello klient. hello tillförlitliga ServiceRemoting runtime publicerar hello efter Prestandaräknare relaterade tooservice behandling.
+När en klient anropar en metod via en proxy webbtjänstobjektet, resulterar det i ett meddelande om begäran som skickas över nätverket till remoting service. Tjänsten bearbetar meddelandet med begäran och skickar tillbaka ett svar till klienten. Tillförlitliga ServiceRemoting runtime publicerar följande Prestandaräknare relaterade till behandling av begäranden för tjänsten.
 
 | Kategorinamn | Räknarens namn | Beskrivning |
 | --- | --- | --- |
-| Fabric-tjänsten |Antal väntande förfrågningar |Antalet begäranden som bearbetas i hello-tjänsten |
-| Fabric-tjänsten |Genomsnittlig tid i millisekunder per begäran |Tid (i millisekunder) som hello service tooprocess en begäran |
-| Fabric-tjänsten |Genomsnittlig tid i millisekunder för deserialiseringsbegäran |Tid vidtas (i millisekunder) toodeserialize service begärandemeddelandet när den tas emot med hello-tjänsten |
-| Fabric-tjänsten |Genomsnittlig tid i millisekunder för serialiseringssvar |Svarsmeddelandet för tid vidtas (i millisekunder) tooserialize hello-tjänsten på hello-tjänsten innan hello svar skickas toohello klienten |
+| Fabric-tjänsten |Antal väntande förfrågningar |Antalet begäranden som bearbetas i tjänsten |
+| Fabric-tjänsten |Genomsnittlig tid i millisekunder per begäran |Tid (i millisekunder av tjänsten för att bearbeta en begäran) |
+| Fabric-tjänsten |Genomsnittlig tid i millisekunder för deserialiseringsbegäran |Tid (i millisekunder) att avserialisera begärandemeddelandet tjänsten när den tas emot med tjänsten |
+| Fabric-tjänsten |Genomsnittlig tid i millisekunder för serialiseringssvar |Tid (i millisekunder) att serialisera svarsmeddelandet tjänst i tjänsten innan svaret skickas till klienten |
 
 ## <a name="next-steps"></a>Nästa steg
 * [Exempelkod](https://github.com/Azure/servicefabric-samples)

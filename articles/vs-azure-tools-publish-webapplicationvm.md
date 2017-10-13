@@ -1,6 +1,6 @@
 ---
-title: aaaPublish WebApplicationVM | Microsoft Docs
-description: "Lär dig hur toodeploy en web application tooa virtuell dator. Det här skriptet skapar hello krävs resurser i din Azure-prenumeration om de inte redan finns."
+title: Publicera WebApplicationVM | Microsoft Docs
+description: "Lär dig hur du distribuerar ett webbprogram till en virtuell dator. Det här skriptet skapar resurserna som krävs i din Azure-prenumeration om de inte redan finns."
 services: visual-studio-online
 documentationcenter: na
 author: kraigb
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/11/2016
 ms.author: kraigb
-ms.openlocfilehash: e4b52b620bebf44b87ddfc3b19c155bb65111814
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 2738fc1dff50a177a227ae2c7719bd9a192d82ad
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="publish-webapplicationvm-windows-powershell-script"></a>Publicera-WebApplicationVM (Windows PowerShell-skript)
-Distribuerar en web application tooa virtuell dator. hello skriptet skapar hello krävs resurser i din Azure-prenumeration om de inte redan finns.
+Distribuerar ett webbprogram till en virtuell dator. Skriptet skapar resurserna som krävs i din Azure-prenumeration om de inte redan finns.
 
 ```
 Publish-WebApplicationVM
@@ -35,7 +35,7 @@ Publish-WebApplicationVM
 ```
 
 ### <a name="configuration"></a>Konfiguration
-hello sökvägen toohello JSON konfigurationsfil som beskriver hello information om hello distributionen.
+Sökvägen till JSON-konfigurationsfil som innehåller information om distributionen.
 
 | Alias | Ingen |
 | --- | --- |
@@ -46,18 +46,18 @@ hello sökvägen toohello JSON konfigurationsfil som beskriver hello information
 | Acceptera jokertecken? |FALSKT |
 
 ### <a name="subscriptionname"></a>SubscriptionName
-hello namnet på hello Azure-prenumeration som du vill toocreate hello virtuell dator.
+Namnet på den Azure-prenumeration som du vill skapa den virtuella datorn.
 
 | Alias | Ingen |
 | --- | --- |
 | Krävs? |FALSKT |
 | Position |Med namnet |
-| Standardvärde |Använder hello första prenumeration i hello prenumerationsfilen |
+| Standardvärde |Använder den första prenumerationen i prenumerationsfilen |
 | Acceptera indata från pipeline? |FALSKT |
 | Acceptera jokertecken? |FALSKT |
 
 ### <a name="webdeploypackage"></a>WebDeployPackage
-hello sökvägen toohello distribution paketet toopublish toohello virtuella datorn på webbservern. Du kan skapa det här paketet med hjälp av guiden för hello Publicera webbplats i Visual Studio. Se [så här: skapa ett Webbdistributionspaket i Visual Studio](https://msdn.microsoft.com/library/dd465323.aspx).
+Sökvägen till distributionspaketets att publicera till den virtuella datorn. Du kan skapa det här paketet med hjälp av guiden Publicera webbplats i Visual Studio. Se [så här: skapa ett Webbdistributionspaket i Visual Studio](https://msdn.microsoft.com/library/dd465323.aspx).
 
 | Alias | Ingen |
 | --- | --- |
@@ -68,7 +68,7 @@ hello sökvägen toohello distribution paketet toopublish toohello virtuella dat
 | Acceptera jokertecken? |FALSKT |
 
 ### <a name="allowuntrusted"></a>AllowUntrusted
-Om värdet är true Tillåt hello användning av certifikat som inte är signerat av en betrodd rotcertifikatutfärdare.
+Tillåt användning av certifikat som inte är signerat av en betrodd rotcertifikatutfärdare om värdet är true.
 
 | Alias | Ingen |
 | --- | --- |
@@ -79,7 +79,7 @@ Om värdet är true Tillåt hello användning av certifikat som inte är signera
 | Acceptera jokertecken? |FALSKT |
 
 ### <a name="vmpassword"></a>VMPassword
-hello autentiseringsuppgifterna för kontot för hello virtuell dator. Exempel: - VMPassword @{Name = ”admin”; Lösenord = ”password”}
+Autentiseringsuppgifterna för kontot för virtuell dator. Exempel: - VMPassword @{Name = ”admin”; Lösenord = ”password”}
 
 | Alias | Ingen |
 | --- | --- |
@@ -90,7 +90,7 @@ hello autentiseringsuppgifterna för kontot för hello virtuell dator. Exempel: 
 | Acceptera jokertecken? |FALSKT |
 
 ### <a name="databaseserverpassword"></a>DatabaseServerPassword
-hello autentiseringsuppgifter för hello SQL-databas i Azure. Exempel: - DatabaseServerPassword @{Name = ”admin”; Lösenord = ”password”}
+Autentiseringsuppgifterna för SQL-databas i Azure. Exempel: - DatabaseServerPassword @{Name = ”admin”; Lösenord = ”password”}
 
 | Alias | Ingen |
 | --- | --- |
@@ -101,7 +101,7 @@ hello autentiseringsuppgifter för hello SQL-databas i Azure. Exempel: - Databas
 | Acceptera jokertecken? |FALSKT |
 
 ### <a name="sendhostmessagestooutput"></a>SendHostMessagesToOutput
-Om värdet är true utdata ut meddelanden från hello skriptet toohello dataströmmen.
+Om värdet är true, Skriv ut meddelanden från skriptet till utdataströmmen.
 
 | Alias | Ingen |
 | --- | --- |
@@ -112,9 +112,9 @@ Om värdet är true utdata ut meddelanden från hello skriptet toohello datastr�
 | Acceptera jokertecken? |FALSKT |
 
 ## <a name="remarks"></a>Kommentarer
-En fullständig förklaring av hur toouse hello skriptet toocreate utvecklings- och testmiljöer, se [med hjälp av Windows PowerShell-skript tooPublish tooDev och testmiljöer](vs-azure-tools-publishing-using-powershell-scripts.md).
+En fullständig förklaring av hur du använder skriptet för att skapa utvecklings- och testmiljöer finns [med hjälp av Windows PowerShell-skript för publicera utvecklings-och testmiljöer](vs-azure-tools-publishing-using-powershell-scripts.md).
 
-hello JSON-konfigurationsfil anger hello information om vad är toobe distribueras. Den omfattar hello information som du angav när du skapade hello projekt, till exempel hello namn, tillhörighetsgrupp, VHD-avbildningen och storleken på hello virtuella datorn. Dessutom innehåller hello slutpunkter på hello databaser tooprovision hello virtuell dator, och web distributionsparametrarna. hello följande kod visar ett exempel JSON-konfigurationsfil:
+JSON-konfigurationsfil anger information om vad som distribueras. Den innehåller den information som du angav när du har skapat projektet, till exempel namn, tillhörighetsgrupp, VHD-avbildningen och storleken på den virtuella datorn. Dessutom innehåller slutpunkter på den virtuella datorn, databaser att etablera, om sådana finns, och web distributionsparametrarna. Följande kod visar ett exempel JSON-konfigurationsfil:
 
 ```
 {
@@ -183,5 +183,5 @@ hello JSON-konfigurationsfil anger hello information om vad är toobe distribuer
 }
 ```
 
-Du kan redigera hello JSON configuration file toochange vad etableras. En virtuell dator och en molnbaserad tjänst som krävs, men hello databasen avsnittet är valfritt.
+Du kan redigera JSON-konfigurationsfil om du vill ändra vilka etableras. En virtuell dator och en molnbaserad tjänst som krävs, men databasen-avsnittet är valfritt.
 

@@ -1,5 +1,5 @@
 ---
-title: "aaaMonitor Resource Manager distribuerade virtuella datorsäkerhetskopieringar | Microsoft Docs"
+title: "Övervakaren Resource Manager distribuerade virtuella datorsäkerhetskopieringar | Microsoft Docs"
 description: "Övervaka händelser och aviseringar från säkerhetskopiering för Resource Manager distribuerade virtuella datorer. Skicka e-post baserat på aviseringar."
 services: backup
 documentationcenter: dev-center-name
@@ -14,57 +14,57 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2016
 ms.author: markgal;trinadhk;giridham;
-ms.openlocfilehash: bf45cbaa05621b2365c26bafa1bd8223a444c1fb
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: b9dc3f52e5fc275bc56b9964f2115833f2dde42e
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="monitor-alerts-for-azure-virtual-machine-backups"></a>Övervaka varningar vid säkerhetskopiering av virtuella Azure-datorer
-Aviseringar är svar från hello-tjänsten att ett tröskelvärde för händelsen har uppnåtts eller överskridits. Att veta när problem start kan vara viktiga tookeeping business kostnader ned. Aviseringar, vanligtvis sker inte enligt ett schema och det är därför användbart tooknow så snart som möjligt efter aviseringar. När en säkerhetskopiering eller återställning av jobbet misslyckas, till exempel visas en varning inom fem minuter efter hello-fel. Hello valvet instrumentpanelen visar hello ikonen säkerhetskopiering aviseringar kritiskt och varningsnivå händelser. Du kan visa alla händelser i inställningarna för hello säkerhetskopiering aviseringar. Men vad gör du om en varning visas när du arbetar på ett separat problem? Om du inte vet när hello avisering inträffar, kan det bero på en mindre besvär eller det kan äventyra data. toomake att hello rätt personer är medvetna om en avisering - när det uppstår, konfigurera hello service toosend aviseringar via e-post. Mer information om hur du konfigurerar e-postaviseringar finns [konfigurera meddelanden](backup-azure-monitor-vms.md#configure-notifications).
+Aviseringar är svar från tjänsten för att en händelse tröskelvärdet har uppnåtts eller överskridits. Att veta när problem start kan vara viktigt att som företag kostnaderna hålls nere. Aviseringar, vanligtvis sker inte enligt ett schema och därför är det bra att känna så snart som möjligt efter aviseringar. När en säkerhetskopiering eller återställning av jobbet misslyckas, till exempel visas en varning inom fem minuter till felet. I instrumentpanelen för valvet visas panelen Backup aviseringar kritiskt och varningsnivå händelser. Du kan visa alla händelser i inställningarna för säkerhetskopiering aviseringar. Men vad gör du om en varning visas när du arbetar på ett separat problem? Om du inte vet när aviseringen händer, kan det bero på en mindre besvär eller det kan äventyra data. Kontrollera att rätt personer är medvetna om en avisering - när det uppstår genom att konfigurera tjänsten för att skicka aviseringar via e-post. Mer information om hur du konfigurerar e-postaviseringar finns [konfigurera meddelanden](backup-azure-monitor-vms.md#configure-notifications).
 
-## <a name="how-do-i-find-information-about-hello-alerts"></a>Hur hittar jag information om hello aviseringar?
-tooview information om hello händelse som utlöste en avisering, måste du öppna hello säkerhetskopiering aviseringar bladet. Det finns två sätt tooopen hello säkerhetskopiering bladet med säkerhetsaviseringar: från hello ikonen säkerhetskopiering aviseringar i hello valvet instrumentpanelen eller från hello aviseringar och händelser bladet.
+## <a name="how-do-i-find-information-about-the-alerts"></a>Hur hittar jag information om aviseringar?
+Om du vill visa information om den händelse som utlöste en avisering, måste du öppna bladet säkerhetskopiering aviseringar. Det finns två sätt att öppna bladet säkerhetskopiering aviseringar: antingen från säkerhetskopia aviseringar panelen i valvet instrumentpanelen eller från bladet aviseringar och händelser.
 
-tooopen hello säkerhetskopiering aviseringar bladet från säkerhetskopia aviseringar panelen:
+Öppna bladet säkerhetskopiering aviseringar från panelen Backup aviseringar:
 
-* På hello **säkerhetskopiering aviseringar** panelen på hello valvet instrumentpanelen klickar du på **kritisk** eller **varning** tooview hello operativa händelser för den allvarlighetsgraden.
+* På den **säkerhetskopiering aviseringar** panelen på valvet instrumentpanelen klickar du på **kritisk** eller **varning** operativa händelser för den allvarlighetsgraden.
 
     ![Aviseringar om säkerhetskopiering panelen](./media/backup-azure-monitor-vms/backup-alerts-tile.png)
 
-tooopen hello säkerhetskopiering bladet med säkerhetsaviseringar från bladet för hello aviseringar och händelser:
+Öppna bladet säkerhetskopiering aviseringar från bladet aviseringar och händelser:
 
-1. Hello valvet instrumentpanelen, klicka på **alla inställningar**. ![Alla inställningar för](./media/backup-azure-monitor-vms/all-settings-button.png)
-2. På hello **inställningar** bladet, klickar du på **aviseringar och händelser**. ![Aviseringar och händelser](./media/backup-azure-monitor-vms/alerts-and-events-button.png)
-3. På hello **aviseringar och händelser** bladet, klickar du på **säkerhetskopiering aviseringar**. ![Säkerhetskopiera aviseringar knappen](./media/backup-azure-monitor-vms/backup-alerts.png)
+1. Från instrumentpanelen valvet klickar du på **alla inställningar**. ![Alla inställningar för](./media/backup-azure-monitor-vms/all-settings-button.png)
+2. På den **inställningar** bladet, klickar du på **aviseringar och händelser**. ![Aviseringar och händelser](./media/backup-azure-monitor-vms/alerts-and-events-button.png)
+3. På den **aviseringar och händelser** bladet, klickar du på **säkerhetskopiering aviseringar**. ![Säkerhetskopiera aviseringar knappen](./media/backup-azure-monitor-vms/backup-alerts.png)
 
-    Hej **säkerhetskopiering aviseringar** blad öppnas och visar hello filtrerade aviseringar.
+    Den **säkerhetskopiering aviseringar** blad öppnas och visar de filtrerade varningarna.
 
     ![Aviseringar om säkerhetskopiering panelen](./media/backup-azure-monitor-vms/backup-alerts-critical.png)
-4. tooview detaljerad information om en viss avisering hello listan över händelser, klickar du på hello avisering tooopen dess **information** bladet.
+4. Om du vill visa detaljerad information om en viss avisering i listan över händelser, klickar du på aviseringen för att öppna dess **information** bladet.
 
     ![Händelsebeskrivning](./media/backup-azure-monitor-vms/audit-logs-event-detail.png)
 
-    toocustomize hello attribut som visas i listan hello finns [visa ytterligare händelse attribut](backup-azure-monitor-vms.md#view-additional-event-attributes)
+    Om du vill anpassa de attribut som visas i listan finns [visa ytterligare händelse attribut](backup-azure-monitor-vms.md#view-additional-event-attributes)
 
 ## <a name="configure-notifications"></a>Konfigurera meddelanden
- Du kan konfigurera hello service toosend e-postaviseringar hello som inträffat över hello efter timme eller när vissa typer av händelser inträffar.
+ Du kan konfigurera tjänsten för att skicka e-postmeddelanden för aviseringar som uppstod under den senaste timmen eller när vissa typer av händelser inträffar.
 
-tooset in e-postmeddelanden för aviseringar
+Att ställa in e-postmeddelanden för aviseringar
 
-1. På menyn säkerhetskopiering aviseringar hello **konfigurera meddelanden**
+1. Klicka på menyn säkerhetskopiering aviseringar **konfigurera meddelanden**
 
     ![Säkerhetskopiera aviseringar-menyn](./media/backup-azure-monitor-vms/backup-alerts-menu.png)
 
-    hello konfigurera meddelanden blad öppnas.
+    Konfigurera meddelanden blad öppnas.
 
     ![Konfigurera meddelanden bladet](./media/backup-azure-monitor-vms/configure-notifications.png)
-2. Klicka på hello konfigurera meddelanden bladet för e-postmeddelanden **på**.
+2. Klicka på bladet konfigurera aviseringar för e-postmeddelanden **på**.
 
-    hello mottagare och allvarlighetsgrad dialogrutor har en stjärna nästa toothem eftersom den informationen som krävs. Ange minst en e-postadress och Välj minst en allvarlighetsgrad.
-3. I hello **mottagarna (e-post)** dialogrutan typen hello e-postadresser för som hello meddelas. Använd hello format: username@domainname.com. Avgränsa flera e-postadresser med semikolon (;).
-4. I hello **Avisera** området, Välj **Per avisering** toosend meddelande när hello angetts avisering inträffar eller **timvis sammanfattad** toosend en sammanfattning för hello senaste timmen.
-5. I hello **allvarlighetsgrad** dialogrutan Välj en eller flera nivåer som du vill tootrigger e-postavisering.
+    Mottagarna och allvarlighetsgrad dialogrutor har en stjärna bredvid dem, eftersom denna information krävs. Ange minst en e-postadress och Välj minst en allvarlighetsgrad.
+3. I den **mottagarna (e-post)** dialogrutan Skriv e-postadresserna för som ta emot meddelanden. Använd formatet: username@domainname.com. Avgränsa flera e-postadresser med semikolon (;).
+4. I den **Avisera** området, Välj **Per avisering** att skicka meddelande när den angivna signalen eller **timvis sammanfattad** att skicka en sammanfattning för den senaste timmen.
+5. I den **allvarlighetsgrad** dialogrutan Välj en eller flera nivåer som du vill ska utlösa e-postmeddelande.
 6. Klicka på **Spara**.
 
    ### <a name="what-alert-types-are-available-for-azure-iaas-vm-backup"></a>Vilka aviseringstyper är tillgängliga för Azure IaaS-VM säkerhetskopiering?
@@ -75,98 +75,98 @@ tooset in e-postmeddelanden för aviseringar
    | Information |Ingen |
 
 ### <a name="are-there-situations-where-email-isnt-sent-even-if-notifications-are-configured"></a>Finns det situationer där det inte skickas någon e-post, även om konfigurationen anger att avisering ska skickas?
-Det finns situationer där en avisering inte skickas, trots att hello meddelanden har konfigurerats korrekt. Följande situationer e-postmeddelanden skickas inte tooavoid avisering brus i hello:
+Det finns situationer där en avisering inte skickas, trots att meddelanden har konfigurerats korrekt. I följande situationer e-postmeddelande skickas inte meddelanden att undvika avisering brus:
 
-* Om meddelanden är konfigurerade tooHourly sammanfattad och en avisering aktiveras som lösts inom hello timme.
-* hello avbryts.
+* Om meddelanden har konfigurerats för varje timme sammanfattad och en avisering aktiveras som lösts inom en timme.
+* Jobbet har avbrutits.
 * Ett säkerhetskopieringsjobb utlöses och misslyckas och en annan säkerhetskopiering pågår.
-* En schemalagd säkerhetskopiering för en Resource Manager-aktiverad virtuell startar, men hello VM finns inte längre.
+* En schemalagd säkerhetskopiering för en Resource Manager-aktiverad virtuell startar, men den virtuella datorn finns inte längre.
 
 ## <a name="customize-your-view-of-events"></a>Anpassa visningen av händelser
-Hej **granskningsloggar** inställningen levereras med en fördefinierad uppsättning filter och kolumner visar operativa händelseinformation. Du kan anpassa hello vyn så att när hello **händelser** blad öppnas, den visar hello information som du vill.
+Den **granskningsloggar** inställningen levereras med en fördefinierad uppsättning filter och kolumner visar operativa händelseinformation. Du kan anpassa vyn så att om den **händelser** blad öppnas, den visar den information du vill.
 
-1. I hello [valvet instrumentpanelen](backup-azure-manage-vms.md#open-a-recovery-services-vault-in-the-dashboard), klicka på Bläddra-tooand **granskningsloggar** tooopen hello **händelser** bladet.
+1. I den [valvet instrumentpanelen](backup-azure-manage-vms.md#open-a-recovery-services-vault-in-the-dashboard), bläddra till och klickar på **granskningsloggar** att öppna den **händelser** bladet.
 
     ![Granskningsloggar](./media/backup-azure-monitor-vms/audit-logs-1606-1.png)
 
-    Hej **händelser** toohello Funktionshändelser filtreras för hello aktuella valvet öppnas i blad.
+    Den **händelser** blad öppnas Funktionshändelser filtreras för aktuella valvet.
 
     ![Granskningsfiltret för loggar](./media/backup-azure-monitor-vms/audit-logs-filter.png)
 
-    hello bladet visar hello lista över kritisk, fel, varning och informationshändelser som uppstått i hello gångna veckan. hello tidsintervallet är standardvärdet i hello **Filter**. Hej **händelser** bladet visar också ett stapeldiagram spårning när hello händelser inträffat. Om du inte vill toosee hello stapeldiagram i hello **händelser** -menyn klickar du på **Dölj diagram** tootoggle av hello diagram. hello standardvyn händelser visas information om åtgärden, nivå, Status, resurser och tid. Information om exponera ytterligare händelse attribut i avsnittet hello [expanderande händelseinformation](backup-azure-monitor-vms.md#view-additional-event-attributes).
-2. Mer information om en arbetsloggen i hello **åtgärden** kolumn, klicka på en arbetsloggen tooopen dess bladet. hello bladet innehåller detaljerad information om hello händelser. Händelser grupperas efter deras Korrelations-ID och en lista över hello händelser som inträffade i hello tidsintervallet.
+    Bladet visar en lista över kritiska, fel, varning och informationshändelser som uppstod under den senaste veckan. Tidsintervallet är standardvärdet i den **Filter**. Den **händelser** bladet visar också ett stapeldiagram spårning när de inträffade. Om du inte vill se stapeldiagram i den **händelser** -menyn klickar du på **Dölj diagram** att växla ut diagrammet. Standardvyn för händelser visar information om åtgärden, nivå, Status, resurser och tid. Information om exponera ytterligare händelse attribut finns i avsnittet [expanderande händelseinformation](backup-azure-monitor-vms.md#view-additional-event-attributes).
+2. Mer information om en arbetsloggen i den **åtgärden** kolumnen, klickar du på ett arbetsloggen för att öppna dess bladet. Bladet innehåller detaljerad information om händelser. Händelser grupperas efter deras Korrelations-ID och en lista över de händelser som inträffade i tidsintervallet.
 
     ![Åtgärdsinformation](./media/backup-azure-monitor-vms/audit-logs-details-window.png)
-3. tooview detaljerad information om en viss händelse hello listan över händelser, klickar du på hello händelse tooopen dess **information** bladet.
+3. Om du vill visa detaljerad information om en viss händelse i listan över händelser, klickar du på händelsen för att öppna dess **information** bladet.
 
     ![Händelsebeskrivning](./media/backup-azure-monitor-vms/audit-logs-details-window-deep.png)
 
-    hello Händelsenivå information är detaljerad hello information hämtar. Om du hellre vill visa det här mycket information om varje händelse och vill tooadd detta mycket detaljerat toohello **händelser** bladet hello i avsnittet [expanderande händelseinformation](backup-azure-monitor-vms.md#view-additional-event-attributes).
+    Händelsenivå informationen är detaljerad informationen hämtar. Om du hellre vill visa det här mycket information om varje händelse och vill lägga till det här mycket information till den **händelser** bladet finns i avsnittet [expanderande händelseinformation](backup-azure-monitor-vms.md#view-additional-event-attributes).
 
-## <a name="customize-hello-event-filter"></a>Anpassa hello händelsefilter
-Använd hello **Filter** tooadjust eller välj hello informationen som visas i ett visst blad. toofilter hello händelseinformation:
+## <a name="customize-the-event-filter"></a>Anpassa händelsefilter
+Använd den **Filter** justera eller Välj den information som visas i ett visst blad. Så här filtrerar händelseinformationen:
 
-1. I hello [valvet instrumentpanelen](backup-azure-manage-vms.md#open-a-recovery-services-vault-in-the-dashboard), klicka på Bläddra-tooand **granskningsloggar** tooopen hello **händelser** bladet.
+1. I den [valvet instrumentpanelen](backup-azure-manage-vms.md#open-a-recovery-services-vault-in-the-dashboard), bläddra till och klickar på **granskningsloggar** att öppna den **händelser** bladet.
 
     ![Granskningsloggar](./media/backup-azure-monitor-vms/audit-logs-1606-1.png)
 
-    Hej **händelser** toohello Funktionshändelser filtreras för hello aktuella valvet öppnas i blad.
+    Den **händelser** blad öppnas Funktionshändelser filtreras för aktuella valvet.
 
     ![Granskningsfiltret för loggar](./media/backup-azure-monitor-vms/audit-logs-filter.png)
-2. På hello **händelser** -menyn klickar du på **Filter** tooopen det bladet.
+2. På den **händelser** -menyn klickar du på **Filter** att öppna det bladet.
 
     ![Öppna bladet](./media/backup-azure-monitor-vms/audit-logs-filter-button.png)
-3. På hello **Filter** bladet justera hello **nivå**, **tidsintervallet**, och **anroparen** filter. hello är filter inte tillgängliga eftersom de har ställts in tooprovide hello aktuell information för hello Recovery Services-valvet.
+3. På den **Filter** bladet justera de **nivå**, **tidsintervallet**, och **anroparen** filter. Andra filter är inte tillgängliga eftersom de har ställts in för att ange den aktuella informationen för Recovery Services-valvet.
 
     ![Granska informationen i loggarna frågan](./media/backup-azure-monitor-vms/filter-blade.png)
 
-    Du kan ange hello **nivå** av händelse: kritisk, fel, varning eller information. Du kan välja valfri kombination av händelsenivåerna, men du måste ha minst ett valt nivån. Aktivera hello nivå eller inaktivera. Hej **tidsintervallet** filter kan du toospecify hello lång tid för att samla in händelser. Om du använder en anpassad tidsrymd kan du ange hello start och sluttider.
-4. När du är klar tooquery hello operations loggar med filtret klickar du på **uppdatering**. hello resultat visas i hello **händelser** bladet.
+    Du kan ange den **nivå** av händelse: kritisk, fel, varning eller information. Du kan välja valfri kombination av händelsenivåerna, men du måste ha minst ett valt nivån. Aktivera nivån eller inaktivera. Den **tidsintervallet** filter kan du ange hur lång tid för att samla in händelser. Om du använder en anpassad tidsrymd, anger du start- och sluttider.
+4. När du är redo att fråga efter operations loggarna använder du filtret, klickar du på **uppdatering**. Resultatet visas i den **händelser** bladet.
 
     ![Åtgärdsinformation](./media/backup-azure-monitor-vms/edited-list-of-events.png)
 
 ### <a name="view-additional-event-attributes"></a>Visa ytterligare händelse attribut
-Med hjälp av hello **kolumner** knapp och du kan aktivera ytterligare händelse attribut tooappear under hello på hello **händelser** bladet. hello standardlista över händelser som visar information för åtgärden, nivå, Status, resurser och tid. tooenable ytterligare attribut:
+Med hjälp av den **kolumner** knappen, kan du aktivera ytterligare händelse attribut som ska visas i listan på den **händelser** bladet. Listan över händelser visar information för åtgärden, nivå, Status, resurser och tid. Aktivera ytterligare attribut:
 
-1. På hello **händelser** bladet, klickar du på **kolumner**.
+1. På den **händelser** bladet, klickar du på **kolumner**.
 
     ![Öppna kolumner](./media/backup-azure-monitor-vms/audi-logs-column-button.png)
 
-    Hej **Välj kolumner** blad öppnas.
+    Den **Välj kolumner** blad öppnas.
 
     ![Bladet för kolumner](./media/backup-azure-monitor-vms/columns-blade.png)
-2. tooselect hello attributet klickar du på kryssrutan hello. hello attributet kryssrutan kopplar på och av.
-3. Klicka på **återställa** tooreset hello listan med attribut i hello **händelser** bladet. När du lägger till eller ta bort attribut hello listan, använda **återställa** tooview hello ny lista över händelse attribut.
-4. Klicka på **uppdatering** tooupdate hello data i hello händelse attribut. hello följande tabell innehåller information om varje attribut.
+2. Klicka på kryssrutan för att välja attributet. Attributet kryssrutan kopplar på och av.
+3. Klicka på **återställa** att återställa listan med attribut i den **händelser** bladet. När du lägger till eller ta bort attribut i listan, använda **återställa** att visa den nya listan över händelse attribut.
+4. Klicka på **uppdatera** att uppdatera data i attribut. Följande tabell innehåller information om varje attribut.
 
 | Kolumnnamn | Beskrivning |
 | --- | --- |
-| Åtgärd |hello namn på hello åtgärd |
-| Nivå |Hej nivå av hello åtgärden värdena kan vara: information, varning, fel eller kritiskt |
-| Status |Beskrivande hello åtgärdens status |
-| Resurs |URL-adress som identifierar hello resurs. kallas även hello resurs-ID |
-| Tid |Tid, mätt från hello aktuell tid, när hello händelsen inträffade |
-| Anropare |Vem eller vad kallas eller utlöst hello händelse. kan vara hello system eller en användare |
-| tidsstämpel |hello tid när hello händelse utlöstes |
-| Resursgrupp |hello associerade resursgrupp |
-| Resurstyp |hello interna resurstyp som används av Resource Manager |
-| Prenumerations-ID:t |hello associerade prenumerations-ID |
-| Kategori |Kategori av hello-händelse |
+| Åtgärd |Namnet på åtgärden |
+| Nivå |Nivån av åtgärden värdena kan vara: information, varning, fel eller kritiskt |
+| Status |Beskrivande tillstånd för åtgärden |
+| Resurs |URL-adress som identifierar resursen. kallas även resurs-ID |
+| Tid |Tid, mätt från den aktuella tiden när händelsen inträffade |
+| Anropare |Vem eller vad kallas eller utlöste händelsen; kan vara systemet eller en användare |
+| tidsstämpel |Den tid när händelsen har utlösts |
+| Resursgrupp |Associerade resursgruppen. |
+| Resurstyp |Den interna resurstyp som används av Resource Manager |
+| Prenumerations-ID:t |Associerade prenumerations-ID |
+| Kategori |Kategori av händelsen |
 | Korrelations-ID |Vanliga ID för relaterade händelser |
 
-## <a name="use-powershell-toocustomize-alerts"></a>Använd PowerShell toocustomize aviseringar
-Du kan hämta anpassade aviseringar för hello jobb i hello-portalen. tooget dessa jobb, definiera PowerShell-baserade avisering regler på hello operativa händelser som loggas. Använd *PowerShell version 1.3.0 eller senare*.
+## <a name="use-powershell-to-customize-alerts"></a>Använd PowerShell för att anpassa aviseringar
+Du kan hämta anpassade aviseringar för jobben i portalen. Definiera PowerShell-baserade Varningsregler operativa loggar händelser för att få dessa jobb. Använd *PowerShell version 1.3.0 eller senare*.
 
-toodefine ett anpassat meddelande tooalert för Säkerhetskopieringsfel, Använd ett kommando som hello följande skript:
+Om du vill definiera ett anpassat meddelande för att varna för Säkerhetskopieringsfel, använder du ett kommando som följande skript:
 
 ```
 PS C:\> $actionEmail = New-AzureRmAlertRuleEmail -CustomEmail contoso@microsoft.com
 PS C:\> Add-AzureRmLogAlertRule -Name backupFailedAlert -Location "East US" -ResourceGroup RecoveryServices-DP2RCXUGWS3MLJF4LKPI3A3OMJ2DI4SRJK6HIJH22HFIHZVVELRQ-East-US -OperationName Microsoft.RecoveryServices/recoveryServicesVault/Backup -Status Failed -TargetResourceId /subscriptions/86eeac34-eth9a-4de3-84db-7a27d121967e/resourceGroups/RecoveryServices-DP2RCXUGWS3MLJF4LKPI3A3OMJ2DI4SRJK6HIJH22HFIHZVVELRQ-East-US/providers/Microsoft.RecoveryServices/vaults/trinadhVault -Actions $actionEmail
 ```
 
-**ResourceId** : du kan hämta ResourceId från hello granskningsloggar. hello ResourceId är en URL som anges i hello resurskolumn i hello åtgärdsloggar.
+**ResourceId** : du kan hämta ResourceId från granskningsloggarna. Resurs-ID är en URL som anges i kolumnen resurs åtgärden loggar.
 
-**OperationName** : OperationName har formatet hello ”Microsoft.RecoveryServices/recoveryServicesVault/*EventName*” där *EventName* kan vara:<br/>
+**OperationName** : OperationName är i formatet ”Microsoft.RecoveryServices/recoveryServicesVault/*EventName*” där *EventName* kan vara:<br/>
 
 * Registrera dig <br/>
 * Avregistrera <br/>
@@ -181,23 +181,23 @@ PS C:\> Add-AzureRmLogAlertRule -Name backupFailedAlert -Location "East US" -Res
 
 **Status för** : värden som stöds är igång, lyckades eller misslyckades.
 
-**ResourceGroup** : Detta är hello resursgruppen toowhich hello resurs tillhör. Du kan lägga till hello resursgruppen kolumnen toohello genererade loggar. Resursgruppen är en av hello tillgängliga typer av händelseinformation.
+**ResourceGroup** : Detta är den resursgrupp som resursen tillhör. Du kan lägga till kolumnen resursgruppen genererade loggar. Resursgruppen är en av de tillgängliga typerna av händelseinformation.
 
-**Namnet** : namnet på hello varningsregel.
+**Namnet** : namnet på regeln.
 
-**CustomEmail** : Ange hello anpassade e-postadress toowhich du vill toosend aviseringsmeddelanden
+**CustomEmail** : Ange anpassade e-postadressen som du vill skicka en avisering
 
-**SendToServiceOwners** : det här alternativet skickar varningsmeddelanden tooall administratörer och medadministratörer för hello prenumeration. Den kan användas i **ny AzureRmAlertRuleEmail** cmdlet
+**SendToServiceOwners** : det här alternativet skickar varningsmeddelanden till alla administratörer och medadministratörer i prenumerationen. Den kan användas i **ny AzureRmAlertRuleEmail** cmdlet
 
 ### <a name="limitations-on-alerts"></a>Begränsningar för aviseringar
-Händelsebaserat aviseringar är ämne toohello följande begränsningar:
+Händelsebaserat aviseringar regleras följande begränsningar:
 
-1. Aviseringar aktiveras på alla virtuella datorer i hello Recovery Services-valvet. Du kan anpassa hello varning för en delmängd av virtuella datorer i en Recovery Services-valvet.
+1. Aviseringar aktiveras på alla virtuella datorer i Recovery Services-valvet. Du kan anpassa varningen för en delmängd av virtuella datorer i en Recovery Services-valvet.
 2. Den här funktionen är i förhandsgranskningen. [Läs mer](../monitoring-and-diagnostics/insights-powershell-samples.md#create-metric-alerts)
-3. Aviseringar skickas från ”alerts-noreply@mail.windowsazure.com”. För närvarande kan du ändra hello e-avsändaren.
+3. Aviseringar skickas från ”alerts-noreply@mail.windowsazure.com”. För närvarande kan du ändra avsändarens e-post.
 
 ## <a name="next-steps"></a>Nästa steg
-Händelseloggar aktivera bra post före och gransknings-och stöd för hello säkerhetskopieringsåtgärder. följande åtgärder hello loggas:
+Händelseloggar aktivera bra post före och gransknings-och stöd för säkerhetskopieringsåtgärder. Följande åtgärder loggas:
 
 * Registrera dig
 * Avregistrera
@@ -211,6 +211,6 @@ Händelseloggar aktivera bra post före och gransknings-och stöd för hello sä
 * Uppdatera principen
 * Avbryta jobb
 
-Azure-tjänster, finns i en bred förklaring av händelser, åtgärder och granskningsloggar över hello hello artikel [visa händelser och granskningsloggar](../monitoring-and-diagnostics/insights-debugging-with-events.md).
+En bred beskrivning av händelser och åtgärder och granskningsloggar i Azure-tjänster finns i artikeln [visa händelser och granskningsloggar](../monitoring-and-diagnostics/insights-debugging-with-events.md).
 
-Information om hur du skapar en virtuell dator från en återställningspunkt igen kolla [återställa virtuella Azure-datorer](backup-azure-restore-vms.md). Om du behöver information om hur du skyddar virtuella datorer, se [förhandstitt: Säkerhetskopiera virtuella datorer tooa Recovery Services-valvet](backup-azure-vms-first-look-arm.md). Lär dig mer om hello hanteringsaktiviteter för VM-säkerhetskopieringar i hello artikeln [hantera Azure-säkerhetskopiering för virtuella datorer](backup-azure-manage-vms.md).
+Information om hur du skapar en virtuell dator från en återställningspunkt igen kolla [återställa virtuella Azure-datorer](backup-azure-restore-vms.md). Om du behöver information om hur du skyddar virtuella datorer, se [förhandstitt: Säkerhetskopiera virtuella datorer till ett Recovery Services-valv](backup-azure-vms-first-look-arm.md). Lär dig mer om hanteringsaktiviteter för VM-säkerhetskopieringar i artikeln [hantera Azure-säkerhetskopiering för virtuella datorer](backup-azure-manage-vms.md).

@@ -1,6 +1,6 @@
 ---
-title: aaaAzure Linux VM-storlekar - Storage | Microsoft Docs
-description: "Visar hello olika storage optimerat storlekar som finns tillgängliga för Linux virtuella datorer i Azure."
+title: Azure Linux VM-storlekar - Storage | Microsoft Docs
+description: "Listar de olika optimerade lagringsstorlekar tillgängligt för Linux virtuella datorer i Azure."
 services: virtual-machines-linux
 documentationcenter: 
 author: jonbeck7
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/28/2017
 ms.author: jonbeck
-ms.openlocfilehash: 6e73b8cdf995b43c01881e792d67899233ec06b1
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 1403c6deb3a9892ff5e310038c0f4b289c0aa84b
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="storage-optimized-linux-vm-sizes"></a>Storage optimerat Linux VM-storlekar
 

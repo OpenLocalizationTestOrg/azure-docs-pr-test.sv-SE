@@ -1,6 +1,6 @@
 ---
-title: "aaaHow tooinstall en Linux-huvudmålserver för redundans från Azure tooon lokala | Microsoft Docs"
-description: "Innan du skydda en Linux-dator, måste en Linux-huvudmålserver. Lär dig hur tooinstall en."
+title: "Så här installerar du en Linux-huvudmålserver för redundans från Azure till lokala | Microsoft Docs"
+description: "Innan du skydda en Linux-dator, måste en Linux-huvudmålserver. Lär dig hur du installerar en."
 services: site-recovery
 documentationcenter: 
 author: ruturaj
@@ -14,61 +14,61 @@ ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 08/11/2017
 ms.author: ruturajd
-ms.openlocfilehash: d7c55d115712b9862414979f89efb1f177c5f0dd
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 5341e3e56e0c366079958dd9a885f6ee3e8436cb
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="install-a-linux-master-target-server"></a>Installera en Linux-huvudmålsserver
-När du växlar över dina virtuella datorer kan du växla tillbaka hello virtuella datorer toohello lokal plats. tillbaka toofail måste tooreprotect hello virtuell dator från Azure toohello lokal plats. För den här processen behöver du en lokal huvudmålservern server tooreceive hello-trafik. 
+När du växlar över dina virtuella datorer kan du växla tillbaka de virtuella datorerna till den lokala platsen. För att växla tillbaka måste att skydda den virtuella datorn från Azure till den lokala platsen. För den här processen behöver du en lokal huvudmålservern för att ta emot trafiken. 
 
-Om den skydda virtuella datorn är en Windows-dator, måste en Windows-huvudmålserver. För en virtuell Linux-dator behöver du en Linux-huvudmålserverns. Läs hello följande steg toolearn hur toocreate och installera en Linux master-mål.
+Om den skydda virtuella datorn är en Windows-dator, måste en Windows-huvudmålserver. För en virtuell Linux-dator behöver du en Linux-huvudmålserverns. Läs följande information om hur du skapar och installerar en Linux-huvudmålserverns.
 
 > [!IMPORTANT]
-> Från och med lanseringen av hello 9.10.0 huvudmålservern kan hello senaste huvudmålservern endast installeras på en 16.04 Ubuntu server. Nya installationer är inte tillåtna på CentOS6.6 servrar. Du kan dock fortsätta tooupgrade ditt gamla huvudnyckeln målservrar med hello 9.10.0 version.
+> Från och med lanseringen av 9.10.0 huvudmålservern, senaste huvudmålservern kan endast installeras på en 16.04 Ubuntu server. Nya installationer är inte tillåtna på CentOS6.6 servrar. Du kan dock fortsätta att uppgradera din gamla huvudnyckeln målservrar med hjälp av 9.10.0 version.
 
 ## <a name="overview"></a>Översikt
-Den här artikeln innehåller anvisningar för hur tooinstall en Linux master-mål.
+Den här artikeln innehåller anvisningar för hur du installerar en Linux-huvudmålserverns.
 
-Skicka kommentarer eller frågor hello slutet av den här artikeln eller på hello [Azure Recovery Services-forumet](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
+Skicka kommentarer eller frågor i slutet av den här artikeln eller på den [Azure Recovery Services-forumet](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
 
 ## <a name="prerequisites"></a>Krav
 
-* toochoose hello värden på vilka toodeploy hello Huvudmålet, avgör om hello återställning kommer toobe tooan befintlig lokal virtuell dator eller tooa ny virtuell dator. 
-    * Hello värden för hello huvudmålservern ska ha åtkomst toohello datalager för hello virtuell dator för en befintlig virtuell dator.
-    * Om hello lokala virtuella datorn inte finns, skapas hello återställning av virtuell dator på hello samma värden som hello huvudmålservern. Du kan välja valfri ESXi-värd tooinstall hello huvudmålservern.
-* Hej huvudmålservern ska vara i ett nätverk som kan kommunicera med hello processervern och konfigurationsservern hello.
-* hello måste hello huvudmålservern vara lika tooor tidigare än hello versioner av hello processervern och konfigurationsservern hello. Till exempel om hello version av hello konfigurationsservern 9.4 hello versionen av hello huvudmålservern kan vara 9.4 eller 9.3 men inte 9.5.
-* Hej huvudmålservern kan bara finnas en virtuell VMware-dator och inte en fysisk server.
+* Avgör om återställningen kommer att vara till en befintlig lokal virtuell dator eller till en ny virtuell dator för att välja den värd som du vill distribuera huvudmålservern. 
+    * För en befintlig virtuell dator ska värden på Huvudmålet ha åtkomst till datalager på den virtuella datorn.
+    * Om den lokala virtuella datorn inte finns, skapas den virtuella datorn för återställning efter fel på samma värddator som huvudmålservern. Du kan välja alla ESXi-värd för att installera huvudmålservern.
+* Huvudmålservern ska vara i ett nätverk som kan kommunicera med processervern och konfigurationsservern.
+* Versionen av huvudmålservern måste vara lika med eller tidigare versioner av processervern och konfigurationsservern. Till exempel om versionen av konfigurationsservern är 9.4, kan versionen av huvudmålservern vara 9.4 eller 9.3 men inte 9.5.
+* Huvudmålservern kan bara finnas en virtuell VMware-dator och inte en fysisk server.
 
-## <a name="create-hello-master-target-according-toohello-sizing-guidelines"></a>Skapa hello huvudmålservern enligt toohello storlek riktlinjer
+## <a name="create-the-master-target-according-to-the-sizing-guidelines"></a>Skapa huvudmålservern enligt riktlinjerna som storlek
 
-Skapa hello huvudmålservern i enlighet med hello följa riktlinjerna för storlek:
+Skapa huvudmålservern i enlighet med riktlinjerna nedan storlek:
 - **RAM-minne**: 6 GB eller mer
-- **OS-diskstorlek**: 100 GB eller mer (tooinstall CentOS6.6)
+- **OS-diskstorlek**: 100 GB eller mer (för att installera CentOS6.6)
 - **Ytterligare diskstorleken för kvarhållningsenhetens**: 1 TB
 - **CPU-kärnor**: 4 kärnor eller mer
 
-hello följande stöd för Ubuntu kärnor stöds.
+Följande stöds Ubuntu kärnor stöds.
 
 
-|Kernel-serien  |Stöd för upp |
+|Kernel-serien  |Stöd för upp till  |
 |---------|---------|
 |4.4      |4.4.0-81-Generic         |
 |4.8      |4.8.0-56-Generic         |
 |4.10     |4.10.0-24-Generic        |
 
 
-## <a name="deploy-hello-master-target-server"></a>Distribuera hello huvudmålservern
+## <a name="deploy-the-master-target-server"></a>Distribuera huvudmålservern
 
 ### <a name="install-ubuntu-16042-minimal"></a>Installera Ubuntu 16.04.2 Minimal
 
-Ta hello följande hello steg tooinstall hello Ubuntu 16.04.2 64-bitars operativsystem.
+Vidta följande steg för att installera Ubuntu 16.04.2 64-bitars operativsystem.
 
-**Steg 1:** gå toohello [Hämta länk](https://www.ubuntu.com/download/server/thank-you?version=16.04.2&architecture=amd64) och välj hello närmaste spegling från som hämtar en Ubuntu 16.04.2 minimal 64-bitars ISO.
+**Steg 1:** går du till den [Hämta länk](https://www.ubuntu.com/download/server/thank-you?version=16.04.2&architecture=amd64) och välj den närmaste spegling från vilka hämta en Ubuntu 16.04.2 minimal 64-bitars ISO.
 
-Behåll en Ubuntu 16.04.2 minimal 64-bitars ISO i hello DVD-enheten och starta hello system.
+Behåll en Ubuntu 16.04.2 minimal 64-bitars ISO i DVD-enheten och starta systemet.
 
 **Steg 2:** Välj **engelska** som önskat språk och välj sedan **RETUR**.
 
@@ -82,237 +82,237 @@ Behåll en Ubuntu 16.04.2 minimal 64-bitars ISO i hello DVD-enheten och starta h
 
 ![Välj engelska som ditt språk](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image3.png)
 
-**Steg 5:** Välj hello lämpligt alternativ från hello **tidszon** alternativ, och välj **RETUR**.
+**Steg 5:** Välj lämpligt alternativ från den **tidszon** alternativ, och välj **RETUR**.
 
-![Välj hello tidszon](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image4.png)
+![Välj rätt tidszon](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image4.png)
 
-**Steg 6:** Välj **nr** (hello standardalternativet), och välj sedan **RETUR**.
+**Steg 6:** Välj **nr** (standardalternativet) och välj sedan **RETUR**.
 
 
-![Konfigurera hello tangentbord](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image5.png)
+![Konfigurera tangentbordet](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image5.png)
 
-**Steg 7:** Välj **engelska (USA)** som hello land för hello tangentbord och välj sedan **RETUR**.
+**Steg 7:** Välj **engelska (USA)** som land för tangentbord och välj sedan **RETUR**.
 
-![Välj USA som hello land för ursprung](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image6.png)
+![Välj USA som land för ursprung](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image6.png)
 
-**Steg 8:** Välj **engelska (USA)** som hello tangentbordslayout och välj sedan **RETUR**.
+**Steg 8:** Välj **engelska (USA)** som tangentbordslayout och välj sedan **RETUR**.
 
-![Välj amerikansk engelska som hello tangentbordslayout](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image7.png)
+![Välj amerikansk engelska som tangentbordslayout](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image7.png)
 
-**Steg 9:** ange hello värdnamn för servern i hello **värdnamn** och välj sedan **Fortsätt**.
+**Steg 9:** ange värdnamnet för servern i den **värdnamn** och välj sedan **Fortsätt**.
 
-![Ange hello värdnamn för servern](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image8.png)
+![Ange värdnamnet för servern](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image8.png)
 
-**Steg 10:** toocreate ett användarkonto, ange hello användarnamn och välj sedan **Fortsätt**.
+**Steg 10:** ange användarnamnet om du vill skapa ett användarkonto, och välj sedan **Fortsätt**.
 
 ![Skapa ett användarkonto](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image9.png)
 
-**Steg 11:** ange hello lösenord för hello nytt användarkonto och välj sedan **Fortsätt**.
+**Steg 11:** ange lösenordet för det nya användarkontot och välj sedan **Fortsätt**.
 
-![Ange hello lösenord](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image10.png)
+![Ange lösenordet](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image10.png)
 
-**Steg 12:** bekräfta hello lösenord för hello nya användaren och välj sedan **Fortsätt**.
+**Steg 12:** bekräftar du lösenordet för den nya användaren och välj sedan **Fortsätt**.
 
-![Bekräfta hello lösenord](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image11.png)
+![Bekräfta lösenord](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image11.png)
 
-**Steg 13:** Välj **nr** (hello standardalternativet), och välj sedan **RETUR**.
+**Steg 13:** Välj **nr** (standardalternativet) och välj sedan **RETUR**.
 
 ![Konfigurera användare och lösenord](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image12.png)
 
-**Steg 14:** om hello tidszon som visas är korrekt, Välj **Ja** (hello standardalternativet), och välj sedan **RETUR**.
+**Steg 14:** om tidszonen som visas är korrekt, Välj **Ja** (standardalternativet) och välj sedan **RETUR**.
 
-tooreconfigure din tidszon, Välj **nr**.
+Om du vill konfigurera om tidszonen, Välj **nr**.
 
-![Konfigurera hello klockan](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image13.png)
+![Konfigurera klockan](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image13.png)
 
-**Steg 15:** hello partitionering metoden alternativ, Välj **interaktiv - använder hela disken**, och välj sedan **RETUR**.
+**Steg 15:** alternativen partitionering metoden Välj **interaktiv - använder hela disken**, och välj sedan **RETUR**.
 
-![Välj hello partitionering metodalternativet](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image14.png)
+![Välj metodalternativet partitionering](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image14.png)
 
-**Steg 16:** Välj hello lämplig disk från hello **Välj disk toopartition** alternativ och välj sedan **RETUR**.
+**Steg 16:** välja en lämplig disk från den **väljer disk till partition** alternativ och välj sedan **RETUR**.
 
 
-![Välj hello disk](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image15.png)
+![Välj disken](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image15.png)
 
-**Steg 17:** Välj **Ja** toowrite hello ändringar toodisk och välj sedan **RETUR**.
+**Steg 17:** Välj **Ja** att skriva ändringar till disk och välj sedan **RETUR**.
 
-![Skriva hello ändringar toodisk](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image16.png)
+![För att skriva ändringar till disk](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image16.png)
 
-**Steg 18:** väljer hello standardalternativet, väljer **Fortsätt**, och välj sedan **RETUR**.
+**Steg 18:** väljer standardalternativet, väljer **Fortsätt**, och välj sedan **RETUR**.
 
-![Välj hello standardalternativet](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image17.png)
+![Välj alternativet](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image17.png)
 
-**Steg 19:** Välj hello lämpligt alternativ för att hantera uppgraderingar på datorn och välj sedan **RETUR**.
+**Steg 19:** Välj lämpligt alternativ för att hantera uppgraderingar på datorn och välj sedan **RETUR**.
 
-![Välj hur toomanage uppgraderas](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image18.png)
+![Välj hur du hanterar uppgraderingar](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image18.png)
 
 > [!WARNING]
-> Eftersom Azure Site Recovery hello huvudmålservern kräver en särskild version av hello Ubuntu, behöver du tooensure som hello kernel uppgraderingar har inaktiverats för hello virtuell dator. Om de är aktiverade kan orsaka reguljära uppgraderingar hello huvudmålservern server toomalfunction. Kontrollera att du väljer hello **inga automatiska uppdateringar** alternativet.
+> Eftersom Azure Site Recovery huvudmålservern kräver en särskild version av Ubuntu, måste du se till att kernel uppgraderingar har inaktiverats för den virtuella datorn. Om de är aktiverade kan orsaka reguljära uppgraderingar huvudmålservern inte fungerar korrekt. Kontrollera att du väljer den **inga automatiska uppdateringar** alternativet.
 
 
-**Steg 20:** Välj standardalternativen. Om du vill openSSH för SSH ansluta, Välj hello **OpenSSH server** alternativet och välj sedan **Fortsätt**.
+**Steg 20:** Välj standardalternativen. Om du vill openSSH för SSH ansluta, Välj den **OpenSSH server** alternativet och välj sedan **Fortsätt**.
 
 ![Välj program](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image19.png)
 
 **Steg 21:** Välj **Ja**, och välj sedan **RETUR**.
 
-![Startprogram för installationen hello GRUB](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image20.png)
+![Installationen GRUB startprogram](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image20.png)
 
-**Steg 22:** Välj hello lämplig enhet för hello Start inläsaren installation (helst **/dev/sda**), och välj sedan **RETUR**.
+**Steg 22:** väljer enheten för start inläsaren installation (helst **/dev/sda**), och välj sedan **RETUR**.
 
 ![Välj en enhet för start inläsaren installation](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image21.png)
 
-**Steg 23:** Välj **Fortsätt**, och välj sedan **RETUR** toofinish hello installation.
+**Steg 23:** Välj **Fortsätt**, och välj sedan **RETUR** att slutföra installationen.
 
-![Slut hello installationen](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image22.png)
+![Slut installationen](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image22.png)
 
-När hello installationen är klar, logga in toohello VM med hello nya autentiseringsuppgifterna för användaren. (Se för**steg 10** för mer information.)
+När installationen är klar kan du logga in på den virtuella datorn med de nya användarautentiseringsuppgifterna för. (Se **steg 10** för mer information.)
 
-Ta hello stegen som beskrivs i följande skärmbild tooset hello rot hello användarens lösenord. Logga in som rotanvändare.
+Vidta de åtgärder som beskrivs i följande skärmbild att ange rotlösenordet för användaren. Logga in som rotanvändare.
 
-![Ange hello rot användarlösenord](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image23.png)
+![Ange ROTEN användarlösenord](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image23.png)
 
 
-### <a name="prepare-hello-machine-for-configuration-as-a-master-target-server"></a>Förbered hello datorn för konfigurationen som en huvudmålserver
-Förbered hello datorn för konfigurationen som en huvudmålserver.
+### <a name="prepare-the-machine-for-configuration-as-a-master-target-server"></a>Förbered datorn för konfigurationen som en huvudmålserver
+Förbered datorn för konfigurationen som en huvudmålserver.
 
-tooget hello-ID för varje SCSI-hårddisk i en virtuell Linux-dator, aktivera hello **disk. EnableUUID = TRUE** parameter.
+Om du vill hämta ID för varje SCSI-hårddisk på en virtuell Linux-dator, aktivera den **disk. EnableUUID = TRUE** parameter.
 
-tooenable den här parametern tar hello följande steg:
+Om du vill aktivera den här parametern, gör du följande:
 
 1. Stäng av den virtuella datorn.
 
-2. Högerklicka hello posten för hello virtuell dator i hello till vänster och välj sedan **redigera inställningar för**.
+2. Högerklicka på posten för den virtuella datorn i den vänstra rutan och välj sedan **redigera inställningar för**.
 
-3. Välj hello **alternativ** fliken.
+3. Välj den **alternativ** fliken.
 
-4. I hello vänster och välj **Avancerat** > **allmänna**, och välj sedan hello **konfigurationsparametrar** knappen hello nedre högra tillhör hello-skärmen.
+4. I den vänstra rutan, Välj **Avancerat** > **allmänna**, och välj sedan den **konfigurationsparametrar** -knappen i den nedre högra delen av skärmen.
 
     ![Alternativfliken](./media/site-recovery-how-to-install-linux-master-target/media/image20.png)
 
-    Hej **konfigurationsparametrar** alternativet är inte tillgängligt när hello datorn körs. toomake på den här fliken är aktiv, Stäng hello virtuella datorn.
+    Den **konfigurationsparametrar** alternativet är inte tillgängligt när datorn körs. Stäng av den virtuella datorn om du vill aktivera den här fliken.
 
 5. Se om en rad med **disk. EnableUUID** finns redan.
 
-    - Om värdet för hello finns och har angetts för**FALSKT**, ändrar hello-värdet för**SANT**. (hello värden är inte skiftlägeskänsligt.)
+    - Om värdet finns och är inställd på **FALSKT**, ändra värdet till **SANT**. (Värdena är inte skiftlägeskänsligt.)
 
-    - Om värdet för hello finns och har angetts för**SANT**väljer **Avbryt**.
+    - Om värdet finns och är inställd på **SANT**väljer **Avbryt**.
 
-    - Om hello värdet inte finns, väljer **Lägg till rad**.
+    - Om värdet inte finns, väljer **Lägg till rad**.
 
-    - Hello namnkolumnen lägga till **disk. EnableUUID**, och sedan ange hello värdet för**SANT**.
+    - Lägg till i namnkolumnen **disk. EnableUUID**, och ange värdet **SANT**.
 
     ![Kontrollerar om disken. EnableUUID finns redan](./media/site-recovery-how-to-install-linux-master-target/media/image21.png)
 
 #### <a name="disable-kernel-upgrades"></a>Inaktivera kernel-uppgraderingar
 
-Azure Site Recovery-huvudmålservern kräver en särskild version av hello Ubuntu, se till att hello kernel uppgraderingar är inaktiverat för hello virtuell dator.
+Azure Site Recovery-huvudmålservern kräver en särskild version av Ubuntu, se till att kernel-uppgraderingar är inaktiverat för den virtuella datorn.
 
-Om kernel uppgraderingar är aktiverade kan orsaka reguljära uppgraderingar hello huvudmålservern server toomalfunction.
+Om kernel uppgraderingar är aktiverade kan orsaka reguljära uppgraderingar huvudmålservern inte fungerar korrekt.
 
 #### <a name="download-and-install-additional-packages"></a>Hämta och installera ytterligare paket
 
 > [!NOTE]
-> Kontrollera att du har toodownload för Internet-anslutning och installera ytterligare paket. Om du inte har anslutning till Internet, måste toomanually hitta dessa RPM-paket och installera dem.
+> Kontrollera att du har Internetanslutning att hämta och installera ytterligare paket. Om du inte har Internetanslutning, måste du söka efter dessa RPM-paket och installera dem manuellt.
 
 ```
 apt-get install -y multipath-tools lsscsi python-pyasn1 lvm2 kpartx
 ```
 
-### <a name="get-hello-installer-for-setup"></a>Hämta hello installer för installationen
+### <a name="get-the-installer-for-setup"></a>Hämta installationsprogrammet för installation
 
-Om din huvudmålservern har Internetanslutning, kan du använda följande steg toodownload hello installer hello. Annars kan du kopiera hello installationsprogrammet från hello processervern och installera den.
+Om din huvudmålservern har Internetanslutning, kan du använda följande steg för att hämta installationsprogrammet. Annars kan du kopiera installationsprogrammet från processervern och installera den.
 
-#### <a name="download-hello-master-target-installation-packages"></a>Hämta hello huvudmålservern-paket
+#### <a name="download-the-master-target-installation-packages"></a>Hämta huvudmålservern-paket
 
-[Hämta hello senaste Linux huvudmålservern installation bits](https://aka.ms/latestlinuxmobsvc).
+[Hämta den senaste Linux huvudmålserver installation bits](https://aka.ms/latestlinuxmobsvc).
 
-toodownload den med hjälp av Linux, typ:
+Om du vill hämta den med hjälp av Linux, skriver du:
 
 ```
 wget https://aka.ms/latestlinuxmobsvc -O latestlinuxmobsvc.tar.gz
 ```
 
-Kontrollera att du hämtar och packa hello installer i arbetskatalogen. Om du packa för**/usr/lokal**, misslyckas hello-installationen.
+Kontrollera att du hämtar och packa installationsprogrammet i arbetskatalogen. Om du packa upp till **/usr/lokal**, misslyckas installationen.
 
 
-#### <a name="access-hello-installer-from-hello-process-server"></a>Åtkomst hello installer från hello processervern
+#### <a name="access-the-installer-from-the-process-server"></a>Åtkomst till installationsprogrammet från processervern
 
-1. Hej processervern gå för**C:\Program Files (x86) \Microsoft Azure Site Recovery\home\svsystems\pushinstallsvc\repository**.
+1. På processervern, gå till **C:\Program Files (x86) \Microsoft Azure Site Recovery\home\svsystems\pushinstallsvc\repository**.
 
-2. Kopiera hello krävs installer-fil från hello processervern och sparar den som **latestlinuxmobsvc.tar.gz** i arbetskatalogen.
+2. Kopiera den nödvändiga installer-fil från processervern och spara den som **latestlinuxmobsvc.tar.gz** i arbetskatalogen.
 
 
 ### <a name="apply-custom-configuration-changes"></a>Använd anpassad konfigurationsändringar
 
-tooapply anpassade konfigurationsändringar, Använd hello följande steg:
+Om du vill använda anpassade konfigurationsändringar, använder du följande steg:
 
 
-1. Kör hello efter kommandot toountar hello binary.
+1. Kör följande kommando för att untar binärfilen.
     ```
     tar -zxvf latestlinuxmobsvc.tar.gz
     ```
-    ![Skärmbild av hello kommandot toorun](./media/site-recovery-how-to-install-linux-master-target/image16.png)
+    ![Skärmbild av kommandot ska köras](./media/site-recovery-how-to-install-linux-master-target/image16.png)
 
-2. Kör följande kommando toogive behörighet hello.
+2. Kör följande kommando för att ge behörighet.
     ```
     chmod 755 ./ApplyCustomChanges.sh
     ```
 
-3. Kör följande kommandoskript toorun hello hello.
+3. Kör följande kommando för att köra skriptet.
     ```
     ./ApplyCustomChanges.sh
     ```
 > [!NOTE]
-> Kör hello skriptet en gång på hello-servern. Stäng hello-servern. Starta sedan om hello server när du lägger till en disk, enligt beskrivningen i nästa avsnitt om hello.
+> Kör skriptet en gång på servern. Stänga av servern. Starta om servern när du lägger till en disk, enligt beskrivningen i nästa avsnitt.
 
-### <a name="add-a-retention-disk-toohello-linux-master-target-virtual-machine"></a>Lägg till en kvarhållning disk toohello Linux huvudmålservern virtuell dator
+### <a name="add-a-retention-disk-to-the-linux-master-target-virtual-machine"></a>Lägg till en disk för kvarhållning Linux huvudmålservern virtuell dator
 
-Använd följande steg toocreate en kvarhållningsdisken hello:
+Använd följande steg för att skapa en kvarhållningsdisken:
 
-1. Koppla en ny virtuella för 1 TB-disk toohello Linux huvudmålservern och starta sedan hello-datorn.
+1. Koppla en ny disk 1 TB till Linux huvudmålservern virtuell dator och sedan starta datorn.
 
-2. Använd hello **multipath -lla** kommando toolearn hello multipath-ID för hello kvarhållningsdisken.
+2. Använd den **multipath -lla** kommandot Läs multipath ID för kvarhållningsdisken.
 
     ```
     multipath -ll
     ```
-    ![hello multipath ID hello kvarhållningsdisken](./media/site-recovery-how-to-install-linux-master-target/media/image22.png)
+    ![Flera sökvägar kvarhållningsdisken-ID](./media/site-recovery-how-to-install-linux-master-target/media/image22.png)
 
-3. Formatera hello enhet och sedan skapa ett filsystem i hello ny enhet.
+3. Formatera hårddisken och sedan skapa ett filsystem i den nya enheten.
 
     ```
     mkfs.ext4 /dev/mapper/<Retention disk's multipath id>
     ```
-    ![Skapa ett filsystem på hello-enhet](./media/site-recovery-how-to-install-linux-master-target/media/image23.png)
+    ![Skapa ett filsystem på enheten](./media/site-recovery-how-to-install-linux-master-target/media/image23.png)
 
-4. När du har skapat hello filsystemet montera hello kvarhållningsdisken.
+4. När du har skapat filsystemet montera kvarhållningsdisken.
     ```
     mkdir /mnt/retention
     mount /dev/mapper/<Retention disk's multipath id> /mnt/retention
     ```
-    ![Montering hello kvarhållningsdisken](./media/site-recovery-how-to-install-linux-master-target/media/image24.png)
+    ![Montera kvarhållningsdisken](./media/site-recovery-how-to-install-linux-master-target/media/image24.png)
 
-5. Skapa hello **fstab** post toomount hello kvarhållningsenhetens varje gång hello systemet startar.
+5. Skapa den **fstab** post att montera kvarhållningsenhetens varje gång systemet startar.
     ```
     vi /etc/fstab
     ```
-    Välj **infoga** toobegin hello Filredigering. Skapa en ny rad och infoga hello efter texten. Redigera hello disk multipath ID baserat på hello markerat multipath ID från hello föregående kommando.
+    Välj **infoga** att börja redigera filen. Skapa en ny rad och Lägg till följande text. Redigera disk multipath-ID baserat på den markerade multipath ID från det föregående kommandot.
 
      **/dev/mapper/ <Retention disks multipath id> /mnt/kvarhållning ext4 rw 0 0**
 
-    Välj **Esc**, och skriv sedan **: wq** (skriva och avsluta) tooclose hello editor-fönstret.
+    Välj **Esc**, och skriv sedan **: wq** (skriva och avsluta) att stänga fönstret redigeraren.
 
-### <a name="install-hello-master-target"></a>Installera hello huvudmålservern
+### <a name="install-the-master-target"></a>Installera huvudmålservern
 
 > [!IMPORTANT]
-> hello måste hello huvudmålservern vara lika tooor tidigare än hello versioner av hello processervern och konfigurationsservern hello. Om detta inte är uppfyllt, skyddar lyckas, men kan slutföras inte.
+> Versionen av huvudmålservern måste vara lika med eller tidigare versioner av processervern och konfigurationsservern. Om detta inte är uppfyllt, skyddar lyckas, men kan slutföras inte.
 
 
 > [!NOTE]
-> Kontrollera att hello innan du installerar hello huvudmålservern **/etc/hosts** filen på hello virtuell dator innehåller poster som mappar hello lokala värdnamnet toohello IP-adresser som är associerade med alla nätverkskort.
+> Innan du installerar huvudmålservern måste du kontrollera att den **/etc/hosts** filen på den virtuella datorn innehåller poster som motsvarar IP-adresser som är associerade med alla nätverkskort för det lokala värdnamnet.
 
-1. Kopiera hello lösenfras från **C:\ProgramData\Microsoft Azure plats Recovery\private\connection.passphrase** på hello konfigurationsservern. Spara den som **passphrase.txt** i hello hello samma lokala katalog genom att köra följande kommando:
+1. Kopiera lösenfras från **C:\ProgramData\Microsoft Azure plats Recovery\private\connection.passphrase** på konfigurationsservern. Spara den som **passphrase.txt** i samma lokala katalog genom att köra följande kommando:
 
     ```
     echo <passphrase> >passphrase.txt
@@ -323,9 +323,9 @@ Använd följande steg toocreate en kvarhållningsdisken hello:
     echo itUx70I47uxDuUVY >passphrase.txt
     ```
 
-2. Observera hello configuration serverns IP-adress. Du behöver det i hello nästa steg.
+2. Observera configuration-serverns IP-adress. Du behöver den i nästa steg.
 
-3. Kör följande kommando tooinstall hello huvudmålservern hello och registrera hello-servern med hello konfigurationsservern.
+3. Kör följande kommando för att installera huvudmålservern och registrera servern med konfigurationsservern.
 
     ```
     ./install -q -d /usr/local/ASR -r MT -v VmWare
@@ -338,26 +338,26 @@ Använd följande steg toocreate en kvarhållningsdisken hello:
     /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i 104.40.75.37 -P passphrase.txt
     ```
 
-    Vänta tills hello skriptet har körts. Om hello huvudmålservern registrerar konfigurationsändringarna, hello huvudmålservern visas på hello **Site Recovery-infrastruktur** sidan hello-portalen.
+    Vänta tills skriptet har slutförts. Om huvudmålservern registrerar konfigurationsändringarna, huvudmålservern finns på den **Site Recovery-infrastruktur** i portalen.
 
 
-#### <a name="install-hello-master-target-by-using-interactive-installation"></a>Installera hello huvudmålservern genom att använda interaktiv installation
+#### <a name="install-the-master-target-by-using-interactive-installation"></a>Installera huvudmålservern genom att använda interaktiv installation
 
-1. Kör följande kommando tooinstall hello huvudmålservern hello. Hello agent roll, Välj **Huvudmålservern**.
+1. Kör följande kommando för att installera huvudmålservern. Rollen agent väljer **Huvudmålservern**.
 
     ```
     ./install
     ```
 
-2. Välj hello standardplatsen för installation och välj sedan **RETUR** toocontinue.
+2. Välj standardplatsen för installation och välj sedan **RETUR** att fortsätta.
 
     ![Om du väljer en standardplatsen för installation av huvudmålservern](./media/site-recovery-how-to-install-linux-master-target/image17.png)
 
-Registrera hello konfigurationsservern med hjälp av kommandoraden hello efter hello-installationen har slutförts.
+När installationen är klar kan du registrera konfigurationsservern med hjälp av kommandoraden.
 
-1. Observera hello hello configuration serverns IP-adress. Du behöver det i hello nästa steg.
+1. Observera IP-adress för konfigurationsservern. Du behöver den i nästa steg.
 
-2. Kör följande kommando tooinstall hello huvudmålservern hello och registrera hello-servern med hello konfigurationsservern.
+2. Kör följande kommando för att installera huvudmålservern och registrera servern med konfigurationsservern.
 
     ```
     ./install -q -d /usr/local/ASR -r MT -v VmWare
@@ -369,34 +369,34 @@ Registrera hello konfigurationsservern med hjälp av kommandoraden hello efter h
     /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i 104.40.75.37 -P passphrase.txt
     ```
 
-   Vänta tills hello skriptet har körts. Om hello huvudmålservern är registrerade har, hello huvudmålservern finns på hello **Site Recovery-infrastruktur** sidan hello-portalen.
+   Vänta tills skriptet har slutförts. Om huvudmålservern är registrerade har, huvudmålservern finns på den **Site Recovery-infrastruktur** i portalen.
 
 
-### <a name="upgrade-hello-master-target"></a>Uppgradera hello huvudmålservern
+### <a name="upgrade-the-master-target"></a>Uppgradera huvudmålservern
 
-Kör installationsprogrammet för hello. Den identifierar automatiskt den hello-agenten är installerad på hello Huvudmålet. tooupgrade, Välj **Y**.  När hello-installationen har slutförts, kontrollera hello version av hello huvudmålservern installeras med hjälp av följande kommando hello.
+Kör installationsprogrammet. Den upptäcker automatiskt att agenten är installerad på huvudmålservern. Om du vill uppgradera, Välj **Y**.  När installationen har slutförts, kontrollerar du vilken version av huvudmålservern installeras med hjälp av följande kommando.
 
     ```
     cat /usr/local/.vx_version
     ```
 
-Du kan se att hello **Version** fältet ger hello versionsnumret för hello huvudmålservern.
+Kan du se att den **Version** fältet visar versionsnumret på Huvudmålet.
 
-### <a name="install-vmware-tools-on-hello-master-target-server"></a>Installera VMware-verktyg på hello huvudmålservern
+### <a name="install-vmware-tools-on-the-master-target-server"></a>Installera VMware-verktyg på huvudmålservern
 
-Du måste tooinstall VMware-verktyg på hello Huvudmålet så att den kan identifiera hello datalager. Om hello tools inte är installerat, visas skyddar hello-skärmen inte i hello datalager. Efter installationen av hello VMware-verktyg behöver du toorestart.
+Du måste installera VMware-verktyg på huvudmålservern så att den kan identifiera datalager. Om inte verktygen är installerade, visas skyddar skärmen inte i datalager. Du måste starta om efter installationen av VMware-verktyg.
 
 ## <a name="next-steps"></a>Nästa steg
-När hello installation och registrering av hello huvudmålservern har finsihed, kan du se hello huvudmålservern visas på hello **Huvudmålservern** i avsnittet **Site Recovery-infrastruktur**, under hello Översikt över konfigurationen.
+Efter installation och registrering av huvudmålservern har finsihed, du kan se huvudmålservern visas på den **Huvudmålservern** i avsnittet **Site Recovery-infrastruktur**, under Konfigurationsöversikt för servern.
 
 Du kan nu fortsätta med [återaktivera skydd](site-recovery-how-to-reprotect.md), följt av återställning efter fel.
 
 ## <a name="common-issues"></a>Vanliga problem
 
-* Kontrollera att du inte aktiverar Storage vMotion på alla management-komponenter, till exempel en huvudmålserver. Om hello huvudmålservern flyttas efter en lyckad skyddar, kan hello virtuella diskar (VMDKs) inte frånkopplas. I det här fallet misslyckas återställning efter fel.
+* Kontrollera att du inte aktiverar Storage vMotion på alla management-komponenter, till exempel en huvudmålserver. Om huvudmålservern flyttas efter en lyckad skyddar, kan virtuella diskar (VMDKs) inte frånkopplas. I det här fallet misslyckas återställning efter fel.
 
-* hello huvudmålservern ska inte ha några ögonblicksbilder på hello virtuella datorn. Om det finns ögonblicksbilder, misslyckas återställning efter fel.
+* Huvudmålservern ska inte ha några ögonblicksbilder på den virtuella datorn. Om det finns ögonblicksbilder, misslyckas återställning efter fel.
 
-* På grund av toosome anpassade NIC konfigurationer med vissa kunder hello nätverksgränssnittet inaktiveras under start och hello huvudmålservern agent kan inte initieras. Kontrollera att hello följande egenskaper är korrekt inställda. Kontrollera de här egenskaperna i hello Ethernet-kort filens /etc/sysconfig/network-scripts/ifcfg-eth *.
+* På grund av vissa anpassade NIC-konfigurationer med vissa kunder nätverksgränssnittet inaktiveras under start och huvudmålservern-agenten gick inte att initiera. Kontrollera att följande egenskaper är korrekt inställda. Kontrollera de här egenskaperna i Ethernet-kort filens /etc/sysconfig/network-scripts/ifcfg-eth *.
     * BOOTPROTO = dhcp
     * ONBOOT = Ja

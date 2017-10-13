@@ -1,6 +1,6 @@
 ---
 title: "Självstudier: Azure Active Directory-integrering med Zscaler Beta | Microsoft Docs"
-description: "Lär dig hur tooconfigure enkel inloggning mellan Azure Active Directory och Zscaler Beta."
+description: "Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Zscaler Beta."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,110 +13,110 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 1471c2b51ca5684a11acd40f4e450521605bb786
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 72b4efc6b3bb58e63a399ab26c42984f070d9307
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-beta"></a>Självstudier: Azure Active Directory-integrering med Zscaler Beta
 
-I kursen får du lära dig hur toointegrate Zscaler Beta med Azure Active Directory (AD Azure).
+I kursen får lära du att integrera Zscaler Beta med Azure Active Directory (AD Azure).
 
-Integrera Zscaler Beta med Azure AD ger dig hello följande fördelar:
+Integrera Zscaler Beta med Azure AD ger dig följande fördelar:
 
-- Du kan styra i Azure AD som har åtkomst tooZscaler Beta
-- Du kan aktivera din användare tooautomatically get inloggade tooZscaler Beta (Single Sign-On) med sina Azure AD-konton
-- Du kan hantera dina konton i en central plats - hello Azure-portalen
+- Du kan styra i Azure AD som har åtkomst till Zscaler Beta
+- Du kan aktivera användarna att automatiskt hämta loggat in på Zscaler Beta (Single Sign-On) med sina Azure AD-konton
+- Du kan hantera dina konton i en central plats - Azure-portalen
 
-Om du vill tooknow mer information om integrering av SaaS-app med Azure AD, se [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Om du vill veta mer information om integrering av SaaS-app med Azure AD finns [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Krav
 
-tooconfigure Azure AD-integrering med Zscaler Beta, behöver du hello följande objekt:
+För att konfigurera Azure AD-integrering med Zscaler Beta, behöver du följande:
 
 - En Azure AD-prenumeration
 - En Zscaler Beta enkel inloggning aktiverad prenumeration
 
 > [!NOTE]
-> tootest hello stegen i den här självstudiekursen, rekommenderas inte med hjälp av en produktionsmiljö.
+> Om du vill testa stegen i den här kursen rekommenderar vi inte med hjälp av en produktionsmiljö.
 
-tootest hello steg i den här självstudiekursen, bör du följa dessa rekommendationer:
+Om du vill testa stegen i den här självstudiekursen, bör du följa dessa rekommendationer:
 
 - Använd inte i produktionsmiljön, om det är nödvändigt.
 - Om du inte har en utvärderingsversion Azure AD-miljö kan du hämta en utvärderingsversion för en månad här: [utvärderingsversion erbjudande](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Scenariobeskrivning
-I kursen får testa du Azure AD enkel inloggning i en testmiljö. hello-scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
+I kursen får testa du Azure AD enkel inloggning i en testmiljö. Det scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
 
-1. Att lägga till Zscaler Beta från hello-galleriet
+1. Att lägga till Zscaler Beta från galleriet
 2. Konfigurera och testa Azure AD enkel inloggning
 
-## <a name="adding-zscaler-beta-from-hello-gallery"></a>Att lägga till Zscaler Beta från hello-galleriet
-tooconfigure hello integrering av Zscaler Beta i Azure AD, behöver du tooadd Zscaler Beta hello galleriet tooyour listan över hanterade SaaS-appar.
+## <a name="adding-zscaler-beta-from-the-gallery"></a>Att lägga till Zscaler Beta från galleriet
+Du måste lägga till Zscaler Beta från galleriet i listan över hanterade SaaS-appar för att konfigurera integrering av Zscaler Beta i Azure AD.
 
-**tooadd Zscaler Beta från galleriet hello utför hello följande steg:**
+**Utför följande steg för att lägga till Zscaler Beta från galleriet:**
 
-1. I hello  **[Azure-portalen](https://portal.azure.com)**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon. 
+1. I den  **[Azure-portalen](https://portal.azure.com)**, klicka på den vänstra navigeringspanelen **Azure Active Directory** ikon. 
 
     ![Active Directory][1]
 
-2. Navigera för**företagsprogram**. Gå sedan för**alla program**.
+2. Gå till **företagsprogram**. Gå till **alla program**.
 
     ![Program][2]
     
-3. tooadd nya program, klickar du på **nytt program** hello längst upp i dialogrutan.
+3. Om du vill lägga till nya programmet, klickar du på **nytt program** knappen överst i dialogrutan.
 
     ![Program][3]
 
-4. Skriv i sökrutan hello **Zscaler Beta**.
+4. I sökrutan skriver **Zscaler Beta**.
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-zscaler-beta-tutorial/tutorial_zscalerbeta_search.png)
 
-5. Markera hello resultat på panelen **Zscaler Beta**, och klicka sedan på **Lägg till** knappen tooadd hello program.
+5. Välj i resultatpanelen **Zscaler Beta**, och klicka sedan på **Lägg till** för att lägga till programmet.
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-zscaler-beta-tutorial/tutorial_zscalerbeta_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurera och testa Azure AD enkel inloggning
 Du konfigurera och testa Azure AD enkel inloggning med Zscaler Beta baserat på en testanvändare som kallas ”Britta Simon” i det här avsnittet.
 
-För enkel inloggning toowork måste Azure AD tooknow vilka hello motsvarighet användaren i betaversionen av Zscaler är tooa i Azure AD. Med andra ord måste en länk relationen mellan en Azure AD-användare och hello relaterade användaren i betaversionen av Zscaler toobe upprättas.
+Azure AD måste du känna till användaren i Zscaler Beta motsvarighet till en användare i Azure AD för enkel inloggning ska fungera. Med andra ord måste en länk förhållandet mellan en Azure AD-användare och relaterade användaren i Zscaler Beta upprättas.
 
-Tilldela hello värdet hello i betaversionen av Zscaler **användarnamn** i Azure AD som hello värde för hello **användarnamn** tooestablish hello länken relationen.
+I Zscaler Beta, tilldela värdet för den **användarnamn** i Azure AD som värde för den **användarnamn** etablera länken relationen.
 
-tooconfigure och testa Azure AD enkel inloggning med Zscaler Beta, behöver du toocomplete hello följande byggblock:
+Om du vill konfigurera och testa Azure AD enkel inloggning med Zscaler Beta, måste du utföra följande byggblock:
 
-1. **[Konfigurera Azure AD enkel inloggning](#configuring-azure-ad-single-sign-on)**  -tooenable användare-toouse den här funktionen.
-2. **[Konfigurera proxyinställningar](#configuring-proxy-settings)**  -tooconfigure hello proxyinställningarna i Internet Explorer
-3. **[Skapa en Azure AD-testanvändare](#creating-an-azure-ad-test-user)**  -tootest Azure AD enkel inloggning med Britta Simon.
-4. **[Skapa en testanvändare Zscaler Beta](#creating-a-zscaler-beta-test-user)**  -toohave en motsvarighet för Britta Simon i betaversionen av Zscaler som är länkade toohello Azure AD-representation av användaren.
-5. **[Tilldela hello Azure AD-testanvändare](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD enkel inloggning.
-6. **[Testa enkel inloggning](#testing-single-sign-on)**  -tooverify hello om konfigurationen fungerar.
+1. **[Konfigurera Azure AD enkel inloggning](#configuring-azure-ad-single-sign-on)**  - om du vill att användarna kan använda den här funktionen.
+2. **[Konfigurera proxyinställningar](#configuring-proxy-settings)**  - om du vill konfigurera proxyinställningarna i Internet Explorer
+3. **[Skapa en Azure AD-testanvändare](#creating-an-azure-ad-test-user)**  - om du vill testa Azure AD enkel inloggning med Britta Simon.
+4. **[Skapa en testanvändare Zscaler Beta](#creating-a-zscaler-beta-test-user)**  – du har en motsvarighet för Britta Simon i betaversionen av Zscaler som är kopplad till Azure AD-representation av användaren.
+5. **[Tilldela Azure AD-testanvändare](#assigning-the-azure-ad-test-user)**  - om du vill aktivera Britta Simon att använda Azure AD enkel inloggning.
+6. **[Testa enkel inloggning](#testing-single-sign-on)**  - om du vill kontrollera om konfigurationen fungerar.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurera Azure AD enkel inloggning
 
-I det här avsnittet Aktivera Azure AD enkel inloggning i hello Azure-portalen och konfigurera enkel inloggning i ditt Zscaler Beta-program.
+I det här avsnittet Aktivera Azure AD enkel inloggning i Azure-portalen och konfigurera enkel inloggning i ditt Zscaler Beta-program.
 
-**Utför följande steg hello tooconfigure Azure AD enkel inloggning med Zscaler Beta:**
+**Utför följande steg för att konfigurera Azure AD enkel inloggning med Zscaler Beta:**
 
-1. I hello Azure-portalen på hello **Zscaler Beta** integreringssidan för programmet, klickar du på **enkel inloggning**.
+1. I Azure-portalen på den **Zscaler Beta** integreringssidan för programmet, klickar du på **enkel inloggning**.
 
     ![Konfigurera enkel inloggning][4]
 
-2. På hello **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** tooenable enkel inloggning.
+2. På den **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** att aktivera enkel inloggning.
  
     ![Konfigurera enkel inloggning](./media/active-directory-saas-zscaler-beta-tutorial/tutorial_zscalerbeta_samlbase.png)
 
-3. På hello **Zscaler Beta domän och URL: er** avsnittet, utföra hello följande steg:
+3. På den **Zscaler Beta domän och URL: er** avsnittet, utför följande steg:
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-zscaler-beta-tutorial/tutorial_zscalerbeta_url.png)
 
-    Ange hello-URL som används av dina användare toosign på tooyour Zscaler Beta-programmet i hello inloggning URL: en textruta.
+    Skriv den URL som används av dina användare logga in i tillämpningsprogrammet Zscaler Beta i textrutan inloggnings-URL.
 
     > [!NOTE] 
-    > Du har tooupdate värdet med hello faktiska inloggnings-URL. Kontakta [Zscaler Betaklienten supportteamet](https://www.zscaler.com/company/contact) tooget det här värdet. 
+    > Du måste uppdatera det här värdet med det faktiska inloggnings-URL. Kontakta [Zscaler Betaklienten supportteamet](https://www.zscaler.com/company/contact) att hämta det här värdet. 
 
-4. På hello **SAML-signeringscertifikat** klickar du på **Certificate(Base64)** och spara sedan hello certifikat på datorn.
+4. På den **SAML-signeringscertifikat** klickar du på **Certificate(Base64)** och spara certifikatfilen på datorn.
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-zscaler-beta-tutorial/tutorial_zscalerbeta_certificate.png) 
 
@@ -124,13 +124,13 @@ I det här avsnittet Aktivera Azure AD enkel inloggning i hello Azure-portalen o
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-zscaler-beta-tutorial/tutorial_general_400.png)
 
-6. På hello **Zscaler Beta Configuration** klickar du på **konfigurera Zscaler Beta** tooopen **konfigurera inloggning** fönster. Kopiera hello **SAML enkel inloggning Tjänstwebbadress** från hello **Snabbreferens avsnitt.**
+6. På den **Zscaler Beta Configuration** klickar du på **konfigurera Zscaler Beta** att öppna **konfigurera inloggning** fönster. Kopiera den **SAML enkel inloggning Tjänstwebbadress** från den **Snabbreferens avsnitt.**
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-zscaler-beta-tutorial/tutorial_zscalerbeta_configure.png) 
 
-7. I en annan webbläsarfönster logga in tooyour Zscaler Beta företagets webbplats som administratör.
+7. I en annan webbläsarfönster loggar du in på webbplatsen Zscaler Beta företag som administratör.
 
-8. Hello-menyn överst hello **Administration**.
+8. Klicka på menyn högst upp **Administration**.
    
     ![Administration](./media/active-directory-saas-zscaler-beta-tutorial/ic800206.png "Administration")
 
@@ -138,7 +138,7 @@ I det här avsnittet Aktivera Azure AD enkel inloggning i hello Azure-portalen o
             
     ![Hantera användare och autentisering](./media/active-directory-saas-zscaler-beta-tutorial/ic800207.png "hantera användare och autentisering")
 
-10. I hello **Välj autentiseringsalternativ för din organisation** avsnittet, utföra hello följande steg:   
+10. I den **Välj autentiseringsalternativ för din organisation** avsnittet, utför följande steg:   
                 
     ![Autentisering](./media/active-directory-saas-zscaler-beta-tutorial/ic800208.png "autentisering")
    
@@ -146,19 +146,19 @@ I det här avsnittet Aktivera Azure AD enkel inloggning i hello Azure-portalen o
 
     b. Klicka på **konfigureras SAML enkel inloggning**.
 
-11. På hello **konfigurera SAML enkel inloggning parametrar** dialogrutan sida, utför följande steg hello och klicka sedan på **klar**
+11. På den **konfigurera SAML enkel inloggning parametrar** dialogrutan sida, utför följande steg och klicka sedan på **klar**
 
     ![Enkel inloggning](./media/active-directory-saas-zscaler-beta-tutorial/ic800209.png "enkel inloggning")
     
-    a. Klistra in hello **SAML enkel inloggning Tjänstwebbadress** -värde som du har kopierat från hello Azure-portalen i hello **URL för hello SAML toowhich portalanvändare skickas för autentisering** textruta.
+    a. Klistra in den **SAML inloggning tjänst-URL för enkel** -värde som du har kopierat från Azure-portalen i den **URL för SAML-portalen som användare om autentisering skickas** textruta.
     
-    b. I hello **attributet som innehåller inloggningsnamnet** textruta typen **NameID**.
+    b. I den **attributet som innehåller inloggningsnamnet** textruta typen **NameID**.
     
-    c. tooupload hämtade certifikatet, klicka på **Zscaler pem**.
+    c. Om du vill överföra din hämtat certifikat klickar du på **Zscaler pem**.
     
     d. Välj **aktivera etablering av SAML-automatiskt**.
 
-12. På hello **konfigurera användarautentisering** dialogrutan utför hello följande steg:
+12. På den **konfigurera användarautentisering** dialogrutan utför följande steg:
 
     ![Administration](./media/active-directory-saas-zscaler-beta-tutorial/ic800210.png "Administration")
     
@@ -167,78 +167,78 @@ I det här avsnittet Aktivera Azure AD enkel inloggning i hello Azure-portalen o
     b. Klicka på **aktivera nu**.
 
 ## <a name="configuring-proxy-settings"></a>Konfigurera proxyinställningar
-### <a name="tooconfigure-hello-proxy-settings-in-internet-explorer"></a>tooconfigure hello proxyinställningarna i Internet Explorer
+### <a name="to-configure-the-proxy-settings-in-internet-explorer"></a>Konfigurera proxyinställningarna i Internet Explorer
 
 1. Starta **Internet Explorer**.
 
-2. Välj **Internetalternativ** från hello **verktyg** menyn för öppna hello **Internetalternativ** dialogrutan.   
+2. Välj **Internetalternativ** från den **verktyg** menyn för att öppna den **Internetalternativ** dialogrutan.   
     
      ![Internet-alternativ](./media/active-directory-saas-zscaler-beta-tutorial/ic769492.png "Internet-alternativ")
 
-3. Klicka på hello **anslutningar** fliken.   
+3. Klicka på den **anslutningar** fliken.   
   
      ![Anslutningar](./media/active-directory-saas-zscaler-beta-tutorial/ic769493.png "anslutningar")
 
-4. Klicka på **LAN-inställningar** tooopen hello **LAN-inställningar** dialogrutan.
+4. Klicka på **LAN-inställningar** att öppna den **LAN-inställningar** dialogrutan.
 
-5. I hello avsnittet för Proxy-server, utför hello följande steg:   
+5. Utför följande steg i avsnittet Proxy-server:   
    
     ![Proxyserver](./media/active-directory-saas-zscaler-beta-tutorial/ic769494.png "proxyserver")
 
     a. Välj **använder en proxyserver för nätverket**.
 
-    b. Skriv i hello adress textruta **gateway.zscalerbeta.net**.
+    b. Ange i textrutan adress **gateway.zscalerbeta.net**.
 
-    c. Skriv i hello Port textruta **80**.
+    c. Ange i textrutan Port **80**.
 
     d. Välj **Använd ingen proxyserver för lokala adresser**.
 
-    e. Klicka på **OK** tooclose hello **inställningar för lokalt nätverk (LAN)** dialogrutan.
+    e. Klicka på **OK** att stänga den **inställningar för lokalt nätverk (LAN)** dialogrutan.
 
-6. Klicka på **OK** tooclose hello **Internetalternativ** dialogrutan.
+6. Klicka på **OK** att stänga den **Internetalternativ** dialogrutan.
 
 > [!TIP]
-> Du kan nu läsa en kortare version av dessa anvisningar i hello [Azure-portalen](https://portal.azure.com), medan du ställer in hello appen!  När du lägger till den här appen från hello **Active Directory > företagsprogram** avsnittet, klicka bara på hello **enkel inloggning** flik och åtkomst hello inbäddade dokumentationen via hello  **Konfigurationen** avsnittet längst ned hello. Du kan läsa mer om hello inbäddade dokumentationen funktionen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Du kan nu läsa en kortare version av instruktionerna i den [Azure-portalen](https://portal.azure.com), medan du installerar appen!  När du lägger till den här appen från den **Active Directory > företagsprogram** avsnittet, klickar du på den **enkel inloggning** fliken och få åtkomst till den inbäddade dokumentationen via den **Configuration** avsnittet längst ned. Du kan läsa mer om funktionen inbäddade dokumentationen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Skapa en testanvändare i Azure AD
-hello syftet med det här avsnittet är toocreate en testanvändare i hello Azure-portalen kallas Britta Simon.
+Syftet med det här avsnittet är att skapa en testanvändare i Azure-portalen kallas Britta Simon.
 
 ![Skapa Azure AD-användare][100]
 
-**toocreate en testanvändare i Azure AD kan utföra hello följande steg:**
+**Utför följande steg för att skapa en testanvändare i Azure AD:**
 
-1. I hello **Azure-portalen**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon.
+1. I den **Azure-portalen**, klicka på det vänstra navigeringsfönstret **Azure Active Directory** ikon.
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-zscaler-beta-tutorial/create_aaduser_01.png) 
 
-2. toodisplay hello lista över användare, gå för**användare och grupper** och på **alla användare**.
+2. Om du vill visa en lista över användare, gå till **användare och grupper** och på **alla användare**.
     
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-zscaler-beta-tutorial/create_aaduser_02.png) 
 
-3. tooopen hello **användare** dialogrutan klickar du på **Lägg till** på hello överkant hello dialogrutan.
+3. Öppna den **användare** dialogrutan klickar du på **Lägg till** överst i dialogrutan.
  
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-zscaler-beta-tutorial/create_aaduser_03.png) 
 
-4. På hello **användaren** dialogrutan utför hello följande steg:
+4. På den **användaren** dialogrutan utför följande steg:
  
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-zscaler-beta-tutorial/create_aaduser_04.png) 
 
-    a. I hello **namn** textruta typen **BrittaSimon**.
+    a. I den **namn** textruta typen **BrittaSimon**.
 
-    b. I hello **användarnamn** textruta typen hello **e-postadress** av BrittaSimon.
+    b. I den **användarnamn** textruta typ av **e-postadress** av BrittaSimon.
 
-    c. Välj **visa lösenordet** och Skriv ned hello värdet för hello **lösenord**.
+    c. Välj **visa lösenordet** och anteckna värdet för den **lösenord**.
 
     d. Klicka på **Skapa**.
  
 ### <a name="creating-a-zscaler-beta-test-user"></a>Skapa en testanvändare Zscaler Beta
 
-tooenable Azure AD-användare toolog i tooZscaler Beta, måste de vara etablerade tooZscaler Beta. Hello gäller Zscaler Beta är etablering en manuell aktivitet.
+Om du vill aktivera Azure AD-användare kan logga in på Zscaler Beta, måste de etableras Zscaler Beta. När det gäller Zscaler Beta är etablering en manuell aktivitet.
 
-### <a name="tooconfigure-user-provisioning-perform-hello-following-steps"></a>tooconfigure användaretablering, utför följande steg hello:
+### <a name="to-configure-user-provisioning-perform-the-following-steps"></a>Utför följande steg för att konfigurera användaretablering:
 
-1. Logga in tooyour **Zscaler Beta** klient.
+1. Logga in på ditt **Zscaler Beta** klient.
 
 2. Klicka på **Administration**.   
    
@@ -248,38 +248,38 @@ tooenable Azure AD-användare toolog i tooZscaler Beta, måste de vara etablerad
         
      ![Lägg till](./media/active-directory-saas-zscaler-beta-tutorial/ic781036.png "Lägg till")
 
-4. I hello **användare** klickar du på **Lägg till**.
+4. I den **användare** klickar du på **Lägg till**.
       
     ![Lägg till](./media/active-directory-saas-zscaler-beta-tutorial/ic781037.png "Lägg till")
 
-5. I hello lägga till användare, utföra hello följande steg:
+5. Utför följande steg i avsnittet Lägg till användare:
         
     ![Lägg till användare](./media/active-directory-saas-zscaler-beta-tutorial/ic781038.png "lägga till användare")
    
-    a. Typen hello **UserID**, **användarens visningsnamn**, **lösenord**, **Bekräfta lösenord**, och välj sedan **grupper**och hello **avdelning** av ett giltigt Azure AD-kontot som du vill tooprovision.
+    a. Typ av **användar-ID**, **användarens visningsnamn**, **lösenord**, **Bekräfta lösenord**, och välj sedan **grupper** och **avdelning** av ett giltigt Azure AD-kontot som du vill etablera.
 
     b. Klicka på **Spara**.
 
 > [!NOTE]
-> Du kan använda något annat Zscaler Beta användarens konto skapas verktyg eller API: er som tillhandahålls av Zscaler Beta tooprovision användarkonton i Azure AD.
+> Du kan använda andra Zscaler Beta användare skapa verktyg eller tillhandahålls av Zscaler Beta-API: er för att etablera Azure AD-användarkonton.
 
-### <a name="assigning-hello-azure-ad-test-user"></a>Tilldela användare hello Azure AD
+### <a name="assigning-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändare
 
-I det här avsnittet kan aktivera du Britta Simon toouse Azure enkel inloggning genom att bevilja åtkomst tooZscaler Beta.
+I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inloggning genom att bevilja åtkomst till Zscaler Beta.
 
 ![Tilldela användare][200] 
 
-**tooassign Britta Simon tooZscaler Beta, utför följande steg hello:**
+**Om du vill tilldela Zscaler Beta Britta Simon utför du följande steg:**
 
-1. I hello Azure-portalen, öppna hello program visa och navigera toohello directory vy och gå för**företagsprogram** Klicka **alla program**.
+1. Öppna vyn program i Azure-portalen och gå till vyn directory och gå till **företagsprogram** Klicka **alla program**.
 
     ![Tilldela användare][201] 
 
-2. Välj i listan med program hello **Zscaler Beta**.
+2. Välj i listan med program **Zscaler Beta**.
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-zscaler-beta-tutorial/tutorial_zscalerbeta_app.png) 
 
-3. Hello-menyn hello vänster **användare och grupper**.
+3. Klicka på menyn till vänster **användare och grupper**.
 
     ![Tilldela användare][202] 
 
@@ -287,7 +287,7 @@ I det här avsnittet kan aktivera du Britta Simon toouse Azure enkel inloggning 
 
     ![Tilldela användare][203]
 
-5. På **användare och grupper** markerar **Britta Simon** i hello användarlistan.
+5. På **användare och grupper** markerar **Britta Simon** på listan användare.
 
 6. Klicka på **Välj** knappen på **användare och grupper** dialogrutan.
 
@@ -295,14 +295,14 @@ I det här avsnittet kan aktivera du Britta Simon toouse Azure enkel inloggning 
     
 ### <a name="testing-single-sign-on"></a>Testa enkel inloggning
 
-I det här avsnittet kan testa du Azure AD enkel inloggning konfigurationen med hello åtkomstpanelen.
+I det här avsnittet kan du testa Azure AD enkel inloggning konfigurationen med hjälp av panelen åtkomst.
 
-När du klickar på hello Zscaler Beta-panelen i hello åtkomstpanelen får automatiskt inloggade tooyour Zscaler Beta-programmet.
-Läs mer om hello åtkomstpanelen [introduktion toohello åtkomstpanelen](active-directory-saas-access-panel-introduction.md).
+När du klickar på panelen Zscaler Beta på åtkomstpanelen du bör få automatiskt loggat in på ditt Zscaler Beta-program.
+Läs mer om åtkomstpanelen [introduktion till åtkomstpanelen](active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-* [Lista över självstudier om hur tooIntegrate SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Vad är programåtkomst och enkel inloggning med Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->

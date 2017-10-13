@@ -1,6 +1,6 @@
 ---
-title: "aaaGet igång med queue storage- och Visual Studio anslutna tjänster (ASP.NET Core) | Microsoft Docs"
-description: "Hur tooget igång med Azure queue storage i ASP.NET Core-projekt i Visual Studio"
+title: "Kom igång med queue storage- och Visual Studio anslutna tjänster (ASP.NET Core) | Microsoft Docs"
+description: "Hur du kommer igång med Azure queue storage i ASP.NET Core-projekt i Visual Studio"
 services: storage
 documentationcenter: 
 author: kraigb
@@ -14,23 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: kraigb
-ms.openlocfilehash: 90c1ebcb6a2eac6bc4f6b69133bdf3135d359a72
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 394344c0e126472b97c2e8f721c8c8d6514a17dc
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="get-started-with-queue-storage-and-visual-studio-connected-services-aspnet-core"></a>Kom igång med queue storage- och Visual Studio anslutna tjänster (ASP.NET kärnor)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
 
 ## <a name="overview"></a>Översikt
-Den här artikeln beskriver hur tooget igång med Azure Queue storage i Visual Studio när du har skapat eller refererar till ett Azure storage-konto i ASP.NET Core-projekt med hjälp av hello Visual Studio **Lägg till anslutna tjänster** dialogrutan. Hej **Lägg till anslutna tjänster** åtgärden installerar hello lämpligt NuGet-paket tooaccess Azure-lagring i ditt projekt och lägger till hello anslutningssträngen för hello lagring kontot tooyour konfigurationsfiler för projektet.
+Den här artikeln beskriver hur du kommer igång med Azure Queue storage i Visual Studio när du har skapat eller refererar till ett Azure storage-konto i ASP.NET Core-projekt med hjälp av Visual Studio **Lägg till anslutna tjänster** dialogrutan. Den **Lägg till anslutna tjänster** åtgärden installerar lämpligt NuGet-paket för att komma åt Azure-lagring i ditt projekt och lägger till anslutningssträngen för lagringskontot konfigurationsfilerna projektet.
 
-Azure queue storage är en tjänst för att lagra stora mängder meddelanden som kan nås från var som helst i Hej världen via autentiserade anrop med HTTP eller HTTPS. Ett enda kömeddelande kan vara upp too64 kilobyte (KB) i storlek och en kö kan innehålla miljontals meddelanden, upp toohello totala kapacitetsgränsen för ett lagringskonto.
+Azure queue storage är en tjänst för att lagra stora mängder meddelanden som kan nås från var som helst i världen via autentiserade anrop med HTTP eller HTTPS. Ett enda kömeddelande kan vara upp till 64 kilobyte (KB) och en kö kan innehålla miljontals meddelanden, upp till den totala kapacitetsgränsen för ett lagringskonto.
 
-tooget igång, måste du först toocreate en Azure-kö på ditt lagringskonto. Får du lära dig hur toocreate en kö i koden. Vi också lära dig hur tooperform basic kö åtgärder, till exempel lägga till, ändra, läsa och tar bort Kömeddelanden. hello prover är skrivna i C\# code och använda hello Azure Storage-klientbibliotek för .NET. Läs mer om ASP.NET [ASP.NET](http://www.asp.net).
+Om du vill komma igång, måste du först skapa en Azure-kö på ditt lagringskonto. Vi ska visa dig hur du skapar en kö i koden. Vi också lära dig hur du utför grundläggande kön åtgärder, till exempel att lägga till, ändra, läsa och tar bort Kömeddelanden. Exemplen är skrivna i C\# code och använda Azure Storage-klientbiblioteket för .NET. Läs mer om ASP.NET [ASP.NET](http://www.asp.net).
 
-**Obs:** vissa hello API: er som utför anrop tooAzure lagring i ASP.NET Core är asynkron. Se [asynkron programmering med Async och Await](http://msdn.microsoft.com/library/hh191443.aspx) för mer information. hello koden nedan förutsätter asynkrona programming metoder som används.
+**Obs:** några av de API: er som utför anrop till Azure-lagring i ASP.NET Core är asynkron. Se [asynkron programmering med Async och Await](http://msdn.microsoft.com/library/hh191443.aspx) för mer information. Koden nedan förutsätter asynkrona programming metoder som används.
 
 * Se [komma igång med Azure Queue storage med hjälp av .NET](../storage/queues/storage-dotnet-how-to-use-queues.md) mer information om programmässigt manipulering köer.
 * Se [Storage-dokumentation](https://azure.microsoft.com/documentation/services/storage/) allmän information om Azure Storage.
@@ -38,73 +38,73 @@ tooget igång, måste du först toocreate en Azure-kö på ditt lagringskonto. F
 * Se [ASP.NET](http://www.asp.net) för mer information om programmering i ASP.NET-program.
 
 ## <a name="access-queues-in-code"></a>Ha åtkomst till serviceköer i koden
-tooaccess köer i ASP.NET Core projekt, behöver du tooinclude hello följande objekt tooany C#-källfilen som har åtkomst till Azure queue storage.
+Om du vill komma åt köer i ASP.NET Core projekt måste du inkludera följande objekt till en C# som har åtkomst till Azure queue storage.
 
-1. Se till att hello namnrymdsdeklarationer överst hello i hello C#-filen med dessa **med** instruktioner.
+1. Se till att namnrymdsdeklarationer överst i C#-filen med dessa **med** instruktioner.
    
         using Microsoft.Framework.Configuration;
         using Microsoft.WindowsAzure.Storage;
         using Microsoft.WindowsAzure.Storage.Queue;
         using System.Threading.Tasks;
         using LogLevel = Microsoft.Framework.Logging.LogLevel;
-2. Hämta en **CloudStorageAccount** objekt som representerar din kontoinformation för lagring. Använd hello följande kod tooget hello dina anslutningssträngen för lagring och information om lagringskonto från hello Azure tjänstkonfiguration.
+2. Hämta en **CloudStorageAccount** objekt som representerar din kontoinformation för lagring. Använd följande kod för att få den dina anslutningssträngen för lagring och information om lagringskonto från Azure tjänstkonfiguration.
    
          CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
            CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
-3. Hämta en **CloudQueueClient** objekt tooreference hello köobjekt i ditt lagringskonto.  
+3. Hämta en **CloudQueueClient** objektet att referera till köobjekt i ditt lagringskonto.  
    
-        // Create hello CloudQueueClient object for hello storage account.
+        // Create the CloudQueueClient object for the storage account.
         CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
-4. Hämta en **CloudQueue** objekt tooreference en särskild kö.
+4. Hämta en **CloudQueue** objektet att referera till en särskild kö.
    
-        // Get a reference toohello CloudQueue named "messageQueue"
+        // Get a reference to the CloudQueue named "messageQueue"
         CloudQueue messageQueue = queueClient.GetQueueReference("messageQueue");
 
-**Obs:** använda alla hello ovan kod framför hello koden i hello följande exempel.
+**Obs:** använda alla koden ovan framför koden i följande exempel.
 
 ### <a name="create-a-queue-in-code"></a>Skapa en kö i koden
-toocreate hello Azure kön i koden, Lägg till ett anrop för**CreateIfNotExistsAsync**.
+Om du vill skapa Azure kön i koden, Lägg till ett anrop till **CreateIfNotExistsAsync**.
 
-    // Create hello CloudQueue if it does not exist.
+    // Create the CloudQueue if it does not exist.
     await messageQueue.CreateIfNotExistsAsync();
 
-## <a name="add-a-message-tooa-queue"></a>Lägg till en meddelandekö tooa
-tooinsert ett meddelande i en befintlig kö, skapa en ny **CloudQueueMessage** objektet och sedan anropa hello **AddMessageAsync** metod.
+## <a name="add-a-message-to-a-queue"></a>Lägga till ett meddelande till en kö
+Om du vill infoga ett meddelande i en befintlig kö, skapa en ny **CloudQueueMessage** objekt och sedan anropa den **AddMessageAsync** metod.
 
 En **CloudQueueMessage** objekt kan skapas från en sträng (i UTF-8-format) eller en byte-matris.
 
-Här är ett exempel som infogar hello-meddelande ”Hello World”.
+Här är ett exempel som infogar meddelandet ”Hello World”.
 
-    // Create a message and add it toohello queue.
+    // Create a message and add it to the queue.
     CloudQueueMessage message = new CloudQueueMessage("Hello, World");
     await messageQueue.AddMessageAsync(message);
 
 ## <a name="read-a-message-in-a-queue"></a>Läs ett meddelande i en kö
-Du kan kika på hello-meddelande i hello framför en kö utan att ta bort den från hello kö genom att anropa hello **PeekMessageAsync** metod.
+Du kan kika på meddelandet först i en kö utan att ta bort det från kön genom att anropa den **PeekMessageAsync** metod.
 
-    // Peek hello next message in hello queue. 
+    // Peek the next message in the queue. 
     CloudQueueMessage peekedMessage = await messageQueue.PeekMessageAsync();
 
 
 ## <a name="read-and-remove-a-message-in-a-queue"></a>Läsa och ta bort ett meddelande i en kö
 Koden kan ta bort (status Created) ett meddelande från en kö i två steg.
 
-1. Anropa **GetMessageAsync** tooget hello nästa meddelande i en kö. Ett meddelande som returneras från **GetMessageAsync** blir osynligt tooany annan kod läsa meddelanden från den här kön. Som standard är det här meddelandet osynligt i 30 sekunder.
-2. toofinish ta bort hello-meddelande från hello kö, anropet **DeleteMessageAsync**.
+1. Anropa **GetMessageAsync** att hämta nästa meddelande i en kö. Ett meddelande som returneras från **GetMessageAsync** blir osynligt för andra koder som läsa meddelanden från den här kön. Som standard är det här meddelandet osynligt i 30 sekunder.
+2. Om du vill slutföra borttagningen av meddelandet från kön, anropa **DeleteMessageAsync**.
 
-Den här tvåstegsprocessen för att ta bort ett meddelande säkerställer som om din kod inte tooprocess får ett meddelande på grund av fel toohardware eller programvara, en annan instans av koden hello samma meddelande och försök igen. hello följande koden anropar **DeleteMessageAsync** direkt efter hello-meddelande har bearbetats.
+Den här tvåstegsprocessen för att ta bort ett meddelande säkerställer att om din kod inte kan bearbeta ett meddelande på grund av ett maskin- eller programvarufel så kan en annan instans av koden hämta samma meddelande och försöka igen. Följande koden anropar **DeleteMessageAsync** direkt efter att meddelandet har bearbetats.
 
-    // Get hello next message in hello queue.
+    // Get the next message in the queue.
     CloudQueueMessage retrievedMessage = await messageQueue.GetMessageAsync();
 
-    // Process hello message in less than 30 seconds.
+    // Process the message in less than 30 seconds.
 
-    // Then delete hello message.
+    // Then delete the message.
     await messageQueue.DeleteMessageAsync(retrievedMessage);
 
 ## <a name="leverage-additional-options-for-dequeuing-messages"></a>Använda fler alternativ för mellan köer meddelanden
 Det finns två metoder som du kan använda för att anpassa meddelandehämtningen från en kö.
-Först får du en grupp med meddelanden (upp too32). Andra, du kan ange en tidsgräns för osynlighet längre eller kortare för att ge koden mer eller mindre tid toofully bearbeta varje meddelande. hello följande kodexempel används den **GetMessage** metoden tooget 20 meddelanden i ett anrop. Sedan bearbetas varje meddelande med hjälp av en **foreach**-loop. Den anger också hello osynlighet timeout too5 minuter för varje meddelande. Observera att hello 5 minuter start för alla meddelanden på hello samma tid, så efter 5 minuter efter hello-anropet för**GetMessage**, alla meddelanden som inte har tagits bort blir synliga igen.
+För det första kan du hämta en grupp med meddelanden (upp till 32). För det andra kan du ange en längre eller kortare tidsgräns för osynlighet för att ge koden mer eller mindre tid att bearbeta klart varje meddelande. I följande kodexempel används metoden **GetMessage** för att hämta 20 meddelanden i ett anrop. Sedan bearbetas varje meddelande med hjälp av en **foreach**-loop. Den anger också tidsgränsen för osynlighet till 5 minuter för varje meddelande. Observera att 5 minuter startar för alla meddelanden samtidigt, efter 5 minuter har gått efter anropet till **GetMessage**, alla meddelanden som inte har tagits bort blir synliga igen.
 
     // Retrieve 20 messages at a time, keeping those messages invisible for 5 minutes, 
     //   delete each message after processing.
@@ -115,39 +115,39 @@ Först får du en grupp med meddelanden (upp too32). Andra, du kan ange en tidsg
         queue.DeleteMessage(message);
     }
 
-## <a name="get-hello-queue-length"></a>Hämta hello Kölängd
-Du kan få en uppskattning av hello antal meddelanden i en kö. Den **FetchAttributes** metoden ber hello kötjänsten att hämta hello köattributen, inklusive antal för hello-meddelande. Hej **ApproximateMethodCount** -egenskap returnerar hello senaste värdet som hämtas av den **FetchAttributes** metoden, utan att kötjänsten hello.
+## <a name="get-the-queue-length"></a>Hämta kölängden
+Du kan hämta en uppskattning av antalet meddelanden i en kö. Den **FetchAttributes** metoden ber kötjänsten att hämta köattributen, inklusive antalet meddelanden. Den **ApproximateMethodCount** egenskapen returnerar det sista värdet som hämtas av den **FetchAttributes** metoden, utan att kötjänsten.
 
-    // Fetch hello queue attributes.
+    // Fetch the queue attributes.
     messageQueue.FetchAttributes();
 
-    // Retrieve hello cached approximate message count.
+    // Retrieve the cached approximate message count.
     int? cachedMessageCount = messageQueue.ApproximateMessageCount;
 
-    // Display hello number of messages.
+    // Display the number of messages.
     Console.WriteLine("Number of messages in queue: " + cachedMessageCount);
 
-## <a name="use-hello-async-await-pattern-with-common-queue-apis"></a>Använd hello Async-Await-mönstret med vanliga queue API: er
-Det här exemplet visar hur toouse hello Async-Await-mönstret med vanliga queue API: er. hello exempel anrop hello asynkrona versionen av var och en av hello anges metoder. Detta kan ses av hello asynkrona efter korrigering för varje metod. När en asynkron metod används pausar hello Async-Await-mönstret lokala körningen tills hello anropet har slutförts. Det här innebär att hello aktuella tråden toodo annat arbete som hjälper till att undvika flaskhalsar och förbättrar hello övergripande svarstiden för programmet. Mer information om hur du använder hello Async-Await-mönstret i .NET, finns [Async och Await (C# och Visual Basic)](https://msdn.microsoft.com/library/hh191443.aspx)
+## <a name="use-the-async-await-pattern-with-common-queue-apis"></a>Använda Async-Await-mönstret med vanliga queue API: er
+Det här exemplet visar hur du använder Async-Await-mönstret med vanliga queue API: er. Exemplet anropar den asynkron versionen av var och en av de angivna metoderna. Detta kan ses av asynkrona efter korrigering för varje metod. När en asynkron metod används pausar Async-Await-mönstret lokala körningen tills anropet har slutförts. Det här innebär att den aktuella tråden utföra annat arbete som hjälper till att undvika flaskhalsar och förbättrar den övergripande svarstiden för programmet. Mer information om hur du använder Async-Await-mönstret i .NET finns [Async och Await (C# och Visual Basic)](https://msdn.microsoft.com/library/hh191443.aspx)
 
-    // Create a message tooadd toohello queue.
+    // Create a message to add to the queue.
     CloudQueueMessage cloudQueueMessage = new CloudQueueMessage("My message");
 
-    // Async enqueue hello message.
+    // Async enqueue the message.
     await messageQueue.AddMessageAsync(cloudQueueMessage);
     Console.WriteLine("Message added");
 
-    // Async dequeue hello message.
+    // Async dequeue the message.
     CloudQueueMessage retrievedMessage = await messageQueue.GetMessageAsync();
     Console.WriteLine("Retrieved message with content '{0}'", retrievedMessage.AsString);
 
-    // Async delete hello message.
+    // Async delete the message.
     await messageQueue.DeleteMessageAsync(retrievedMessage);
     Console.WriteLine("Deleted message");
 ## <a name="delete-a-queue"></a>Ta bort en kö
-toodelete en kö och alla hälsningsmeddelande finns i den, anropa den **ta bort** metoden för köobjektet hello.
+Om du vill ta bort en kö och alla meddelanden i den anropar du **Delete**-metoden för köobjektet.
 
-    // Delete hello queue.
+    // Delete the queue.
     messageQueue.Delete();
 
 

@@ -1,5 +1,5 @@
 ---
-title: "aaaDelegate inbjudningar för Azure Active Directory B2B-samarbete | Microsoft Docs"
+title: "Delegera inbjudningar för Azure Active Directory B2B-samarbete | Microsoft Docs"
 description: "Azure Active Directory B2B-samarbete användaregenskaper kan konfigureras"
 services: active-directory
 documentationcenter: 
@@ -15,20 +15,20 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 05/23/2017
 ms.author: sasubram
-ms.openlocfilehash: c0122d6f60d494c6e251c41d947dc254ea887620
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 78613cc978b585a98d235245194c02371f7f3849
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="delegate-invitations-for-azure-active-directory-b2b-collaboration"></a>Delegera inbjudningar för Azure Active Directory B2B-samarbete
 
-Med Azure Active Directory (AD Azure) business-to-business (B2B) samarbete har du inte toobe en global administratör toosend inbjudningar. Du kan i stället använda principer och delegera inbjudningar toousers vars roller att de toosend inbjudningar. Ett viktigt nytt sätt toodelegate gästen användaren inbjudningar är via hello gäst bjuder in roll.
+Du behöver inte vara en global administratör för att skicka inbjudningar med Azure Active Directory (AD Azure) business-to-business (B2B) samarbete. Du kan i stället använda principer och delegera inbjudningar till användare vars roller tillåta dem att skicka inbjudningar. Det är ett viktigt nytt sätt att delegera gästen användaren inbjudningar via rollen gäst bjuder in.
 
 ## <a name="guest-inviter-role"></a>Gästen bjuder in roll
-Vi kan tilldela hello användaren tooGuest bjuder in rollen toosend inbjudningar. Du har inte toobe tillhör hello global administratör rollen toosend inbjudningar. Som standard anropa vanliga användare hello inbjudan API en global administratör inaktiverat inbjudningar för vanliga användare. En användare kan även anropa hello API: et med hello Azure-portalen eller PowerShell.
+Vi kan tilldela användaren rollen gäst bjuder in skicka inbjudningar. Du behöver inte vara medlem i rollen global administratör för att skicka inbjudningar. Som standard anropa vanliga användare API för inbjudan en global administratör inaktiverat inbjudningar för vanliga användare. En användare kan även anropa API: et med Azure-portalen eller PowerShell.
 
-Här är ett exempel som visar hur toouse PowerShell tooadd en användarroll toohello gäst bjuder in:
+Här är ett exempel som visar hur du använder PowerShell för att lägga till en användare i rollen gäst bjuder in:
 
 ```
 Add-MsolRoleMember -RoleObjectId 95e79109-95c0-4d8e-aee3-d01accf2d47b -RoleMemberEmailAddress <RoleMemberEmailAddress>
@@ -36,16 +36,16 @@ Add-MsolRoleMember -RoleObjectId 95e79109-95c0-4d8e-aee3-d01accf2d47b -RoleMembe
 
 ## <a name="control-who-can-invite"></a>Kontrollera vem som kan bjuda in
 
-![Kontrollera hur tooinvite](media/active-directory-b2b-delegate-invitations/control-who-to-invite.png)
+![Styra hur att bjuda in](media/active-directory-b2b-delegate-invitations/control-who-to-invite.png)
 
-En klientadministratör kan ange hello efter inbjudan principer med Azure AD B2B-samarbete:
+En klientadministratör kan ange följande inbjudan principer med Azure AD B2B-samarbete:
 
 - Inaktivera inbjudningar
-- Bara administratörer och användare i hello gäst bjuder in roll kan bjuda in
-- Administratörer, hello gäst bjuder in roll och medlemmar kan bjuda in
+- Bara administratörer och användare med rollen gäst bjuder in bjuda in
+- Administratörer, Gäst bjuder in roll och medlemmar kan bjuda in
 - Alla användare, inklusive gäster, kan bjuda in
 
-Klienter är som standard för #4. (Alla användare, inklusive gäster, erbjuda B2B-användare.)
+Klienter är som standard #4. (Alla användare, inklusive gäster, erbjuda B2B-användare.)
 
 ## <a name="next-steps"></a>Nästa steg
 
@@ -53,7 +53,7 @@ Läs andra artiklar om Azure AD B2B-samarbete:
 
 * [Vad är Azure AD B2B-samarbete?](active-directory-b2b-what-is-azure-ad-b2b.md)
 * [Egenskaper för användare av B2B-samarbete](active-directory-b2b-user-properties.md)
-* [Lägga till en B2B-samarbete tooa användarroll](active-directory-b2b-add-guest-to-role.md)
+* [Lägger till en B2B-samarbete användare till en roll](active-directory-b2b-add-guest-to-role.md)
 * [Dynamiska grupper och B2B-samarbete](active-directory-b2b-dynamic-groups.md)
 * [B2B-samarbete kod och PowerShell-exempel](active-directory-b2b-code-samples.md)
 * [Konfigurera SaaS-appar för B2B-samarbete](active-directory-b2b-configure-saas-apps.md)

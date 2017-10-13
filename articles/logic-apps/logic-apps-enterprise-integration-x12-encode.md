@@ -1,6 +1,6 @@
 ---
-title: aaaEncode X12 meddelanden - Azure Logic Apps | Microsoft Docs
-description: "Validera EDI och konvertera XML-kodade meddelanden med X12 meddelande kodare i hello Enterprise-Integrationspaket för Logikappar i Azure"
+title: Koda X12 meddelanden - Azure Logic Apps | Microsoft Docs
+description: "Validera EDI och konvertera XML-kodade meddelanden med X12 meddelande kodare i Enterprise-Integrationspaket för Logikappar i Azure"
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: padmavc
@@ -14,23 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 785dbd2c7c82463154732921e07e3586d2307840
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 29d19364b9a98e351c95f13e68a2e63b9f6439f8
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="encode-x12-messages-for-azure-logic-apps-with-hello-enterprise-integration-pack"></a>Koda X12 meddelanden för Logikappar i Azure med hello Enterprise-Integrationspaket
+# <a name="encode-x12-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Koda X12 meddelanden för Azure Logikappar med Enterprise-Integrationspaket
 
-Med hello koda X12 meddelande-anslutningen kan du verifiera EDI och partner-specifika egenskaper, konvertera XML-kodade meddelanden till EDI transaktion uppsättningar i hello utbyte och begär en teknisk bekräftelse eller den funktionella bekräftelse.
-toouse den här kopplingen måste du lägga till hello connector tooan befintliga utlösaren i din logikapp.
+Med koda X12 meddelande-anslutningen kan du verifiera EDI och partner-specifika egenskaper, konvertera XML-kodade meddelanden till uppsättningar för EDI-transaktion i utbyte och begär en teknisk bekräftelse eller den funktionella bekräftelse.
+Om du vill använda denna anslutning måste du lägga till anslutningen till en befintlig utlösare i din logikapp.
 
 ## <a name="before-you-start"></a>Innan du börjar
 
-Här är hello-objekt som du behöver:
+Här är de objekt som du behöver:
 
 * Ett Azure-konto; Du kan skapa en [kostnadsfritt konto](https://azure.microsoft.com/free)
-* En [integrering konto](logic-apps-enterprise-integration-create-integration-account.md) som redan har definierat och som är associerade med din Azure-prenumeration. Du måste ha en integration konto toouse hello koda X12 meddelande-koppling.
+* En [integrering konto](logic-apps-enterprise-integration-create-integration-account.md) som redan har definierat och som är associerade med din Azure-prenumeration. Du måste ha ett integration konto att använda anslutningstjänsten koda X12 meddelande.
 * Minst två [partners](logic-apps-enterprise-integration-partners.md) som redan har definierats i ditt konto för integrering
 * En [X12 avtal](logic-apps-enterprise-integration-x12.md) som redan har definierats i ditt konto för integrering
 
@@ -38,13 +38,13 @@ Här är hello-objekt som du behöver:
 
 1. [Skapa en logikapp](logic-apps-create-a-logic-app.md).
 
-2. hello koda X12 meddelande connector har utlösare, så måste du lägga till en utlösare för att starta logikappen som en utlösare för begäran. Lägg till en utlösare hello logik App Designer, och sedan lägga till en åtgärd tooyour logikapp.
+2. Koda X12 meddelande kopplingen har utlösare, så måste du lägga till en utlösare för att starta logikappen som en utlösare för begäran. Lägg till en utlösare i logik App Designer och sedan lägga till en åtgärd i din logikapp.
 
-3.  Ange ”x12” i sökrutan hello för filtret. Välj antingen **X12-koda tooX12 meddelande av avtalsnamn** eller **X12-koda tooX12 meddelande av identiteter**.
+3.  I sökrutan anger du ”x12” för filtret. Välj antingen **X12-koda till X12 meddelandet genom avtalsnamn** eller **X12-koda till X12 meddelandet genom identiteter**.
    
     ![Sök efter ”x12”](./media/logic-apps-enterprise-integration-x12-encode/x12decodeimage1.png) 
 
-3. Om du tidigare inte har skapat alla anslutningar tooyour integrering konto uppmanas du toocreate anslutningen nu. Namnge din anslutning och välj hello integration konto som du vill tooconnect. 
+3. Om du inte tidigare skapade alla anslutningar till ditt konto integration, uppmanas du att skapa anslutningen nu. Namnge din anslutning och välj integration kontot som du vill ansluta till. 
    
     ![Integration konto anslutning](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage1.png)
 
@@ -53,9 +53,9 @@ Här är hello-objekt som du behöver:
     | Egenskap | Information |
     | --- | --- |
     | Anslutningsnamn * |Ange ett namn för anslutningen. |
-    | Integration konto * |Ange ett namn för ditt konto för integrering. Se till att appen integration konto och logik finns i hello samma Azure-plats. |
+    | Integration konto * |Ange ett namn för ditt konto för integrering. Se till att appen integration konto och logik finns i samma Azure-plats. |
 
-5.  När du är klar din innehållet bör se ut liknande toothis exempel. toofinish skapa din anslutning och välj **skapa**.
+5.  När du är klar bör din anslutningsinformation likna exemplet. Slutför din anslutning väljer **skapa**.
 
     ![Integration konto anslutning som skapats](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage2.png)
 
@@ -65,36 +65,36 @@ Här är hello-objekt som du behöver:
 
 #### <a name="encode-x12-messages-by-agreement-name"></a>Koda X12 meddelanden efter avtalsnamn
 
-Om du har valt tooencode X12 meddelanden av avtalsnamn öppna hello **namnet på X12 avtal** listan, ange eller välj en befintlig X12 avtal. Ange hello XML-meddelande tooencode.
+Om du väljer att koda X12 meddelanden efter avtalsnamn, öppna den **namnet på X12 avtal** listan, ange eller välj en befintlig X12 avtal. Ange den XML-meddelanden om att koda.
 
-![Ange X12 avtal namn och en XML-meddelandet tooencode](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage4.png)
+![Ange X12 avtalets namn och XML-meddelande att koda](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage4.png)
 
 #### <a name="encode-x12-messages-by-identities"></a>Koda X12 meddelanden med identiteter
 
-Om du väljer tooencode X12 meddelanden av identiteter ange hello ingen avsändaridentifierare, kvalificerare avsändaren, mottagaren identifierare och mottagaren kvalificerare som konfigurerats i din X12 avtal. Välj hello XML-meddelande tooencode.
+Om du väljer att koda X12 meddelanden med identiteter, ange ingen avsändaridentifierare, kvalificerare avsändaren, mottagaren identifierare och mottagaren kvalificeraren som konfigurerats i din X12 avtal. Välj XML-meddelandet för att koda.
    
-![Ange identiteter för avsändare och mottagare, Välj XML-meddelandet tooencode](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage5.png) 
+![Ange identiteter för avsändare och mottagare, Välj XML-meddelande att koda](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage5.png) 
 
 ## <a name="x12-encode-details"></a>X12 koda information
 
-Hej X12 koda connector utför dessa uppgifter:
+X12 koda connector utför dessa uppgifter:
 
 * Avtalet lösning genom att matcha avsändare och mottagare kontextegenskaper.
-* Serialiserar hello EDI interchange, konvertera XML-kodade meddelanden till EDI transaktion uppsättningar i hello utbyte.
+* Serialiserar EDI-utbyte, konvertera XML-kodade meddelanden till uppsättningar för EDI-transaktion i utbyte.
 * Gäller transaktion set-huvudet och trailern segment
 * Genererar ett utbyte kontrollen Antal, gruppnumret kontroll och en uppsättning kontrollen transaktionsnumret för varje utgående utbyte
-* Ersätter avgränsare i hello nyttolasten
+* Ersätter avgränsare i nyttolasten
 * Verifierar EDI och partner-specifika egenskaper
-  * Schemavalideringen hello transaktion set dataelement mot hello-meddelande schemat för
+  * Schemavalideringen av transaktionen set dataelement mot meddelandet Schema
   * EDI-verifiering utförs på dataelement för transaktionen uppsättningen.
   * Utökad verifiering utförs på transaktion set dataelement
 * Begär en tekniska och/eller funktionella bekräftelse (om konfigurerad).
-  * En teknisk bekräftelse genererar på grund av huvud-verifiering. hello tekniska bekräftelse rapporter hello status med hello bearbetning av ett utbyte huvudet och trailern av hello adress mottagare
-  * En funktionell bekräftelse genererar på grund av brödtext validering. hello rapporterar funktionella bekräftelse varje fel uppstod under bearbetning av hello emot dokumentet
+  * En teknisk bekräftelse genererar på grund av huvud-verifiering. Tekniska bekräftelsen rapporterar status för bearbetning av ett utbyte huvudet och trailern av adress-mottagare
+  * En funktionell bekräftelse genererar på grund av brödtext validering. Funktionella bekräftelsen rapporterar varje fel uppstod under bearbetning av Mottaget dokument
 
-## <a name="view-hello-swagger"></a>Visa hello swagger
-Se hello [swagger information](/connectors/x12/). 
+## <a name="view-the-swagger"></a>Visa swagger
+Finns det [swagger information](/connectors/x12/). 
 
 ## <a name="next-steps"></a>Nästa steg
-[Mer information om hello Enterprise-Integrationspaket](logic-apps-enterprise-integration-overview.md "Lär dig mer om Enterprise-Integrationspaket") 
+[Mer information om Enterprise-Integrationspaket](logic-apps-enterprise-integration-overview.md "Lär dig mer om Enterprise-Integrationspaket") 
 

@@ -1,6 +1,6 @@
 ---
-title: "aaaHow toogive åtkomst tooPrivileged Identity Management - Azure | Microsoft Docs"
-description: "Lär dig hur tooadd roller toousers med hello Azure Active Directory Privileged Identity Management-tillägget så att de kan hantera PIM."
+title: "Ge åtkomst till Privileged Identity Management - Azure | Microsoft Docs"
+description: "Lär dig mer om att lägga till roller för användare med Azure Active Directory Privileged Identity Management-tillägget så att de kan hantera PIM."
 services: active-directory
 documentationcenter: 
 author: billmath
@@ -15,14 +15,14 @@ ms.workload: identity
 ms.date: 06/06/2017
 ms.author: billmath
 ms.custom: pim
-ms.openlocfilehash: 5d99589af4af766e430d7cecd743ace752f63768
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: aeaefb484b29da6e89c2c3c650a79a881b3fa5b6
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="giving-access-toomanage-azure-ad-privileged-identity-management"></a>Ge åtkomst toomanage Azure AD Privileged Identity Management
-hello globala administratören som aktiverar Azure AD Privileged Identity Management (PIM) för en organisation automatiskt hämta rolltilldelningar och komma åt tooPIM. Ingen annan får skrivåtkomst som standard, men även andra globala administratörer. Andra globala administratörer, säkerhetsadministratörer och säkerhet läsare har skrivskyddad åtkomst tooAzure AD PIM. toogive åtkomst tooPIM hello första användaren kan tilldela andra toohello **administratör av Privilegierade roller** roll. Den här tilldelningen måste göras i PIM sig själv och kan inte ändras via PowerShell eller andra portaler.
+# <a name="giving-access-to-manage-azure-ad-privileged-identity-management"></a>Ger tillgång till att hantera Azure AD Privileged Identity Management
+Den globala administratören som aktiverar Azure AD Privileged Identity Management (PIM) för en organisation automatiskt få rolltilldelningar och åtkomst till PIM. Ingen annan får skrivåtkomst som standard, men även andra globala administratörer. Andra globala administratörer, säkerhetsadministratörer och säkerhet läsare har skrivskyddad åtkomst till Azure AD PIM. Om du vill ge åtkomst till PIM, kan den första användaren tilldela andra användare till den **administratör av Privilegierade roller** roll. Den här tilldelningen måste göras i PIM sig själv och kan inte ändras via PowerShell eller andra portaler.
 
 > [!NOTE]
 > Hantera Azure AD PIM kräver Azure MFA. Eftersom Microsoft-konton inte kan registrera dig för Azure MFA, när en användare loggar in med ett Microsoft-konto kan inte komma åt Azure AD PIM.
@@ -31,29 +31,29 @@ hello globala administratören som aktiverar Azure AD Privileged Identity Manage
 
 Kontrollera att det finns alltid minst två användare i en privilegierad roll administratörsroll om en användare är utelåst eller deras kontot har tagits bort.
 
-## <a name="give-another-user-access-toomanage-pim"></a>Ge en annan användare åtkomst toomanage PIM
-1. Logga in toohello [Azure-portalen](https://portal.azure.com/) och välj hello **Azure AD Privileged Identity Management** app på hello instrumentpanel.
+## <a name="give-another-user-access-to-manage-pim"></a>Ge en annan användare tillgång till att hantera PIM
+1. Logga in på den [Azure-portalen](https://portal.azure.com/) och välj den **Azure AD Privileged Identity Management** app på instrumentpanelen.
 2. Välj **hantera Privilegierade roller** > **administratör av Privilegierade roller** > **Lägg till**.
    
     ![Lägg till Privilegierade rollen administratörer – skärmbild][1]
-3. Steg 1 har redan slutförts på hello Lägg till hanterade användare bladet. Välj steg 2, **Välj användare** och Sök hello användare du vill ha tooadd.
+3. Steg 1 har redan slutförts på bladet Lägg till hanterade användare. Välj steg 2, **Välj användare** och Sök efter den användare som du vill lägga till.
    
     ![Välj användare – skärmbild][2]
-4. Välj hello användare hello sökresultaten och på **klar**.
-5. Klicka på **OK** toosave valet. hello-användare som du har valt visas i hello listan över Privilegierade rollen administratörer.
+4. Välj användaren i sökresultaten och på **klar**.
+5. Klicka på **OK** att spara ditt val. Användare som du har valt visas i listan över Privilegierade rollen administratörer.
    
-   * När du tilldelar en ny roll toosomeone konfigureras de automatiskt som berättigade tooactivate hello roll. Om du vill toomake dem permanent i hello rollen klickar du på hello användare i hello-listan. Välj **Se behörighet** hello användaren information-menyn.
-6. Skicka hello användaren en länk för[komma igång med Azure AD Privileged Identity Management](active-directory-privileged-identity-management-getting-started.md).
+   * När du tilldelar en ny roll till någon konfigureras de automatiskt som kvalificerade att aktivera rollen. Klicka på användare i listan om du vill göra dem permanent i rollen. Välj **Se behörighet** i menyn användaren information.
+6. Skicka till användarna en länk till [komma igång med Azure AD Privileged Identity Management](active-directory-privileged-identity-management-getting-started.md).
 
 ## <a name="remove-another-users-access-rights-for-managing-pim"></a>Ta bort en annan användare behörighet som krävs för att hantera PIM
-Innan du tar bort någon från hello Privilegierade roller administratörsroll du alltid kontrollera kommer fortfarande att två användare som är tilldelade tooit.
+Innan du tar bort någon från en administratör för privilegierade roller du alltid kontrollera kommer fortfarande att två användare som är tilldelade till den.
 
-1. I hello PIM-instrumentpanelen, klickar du på hello rollen **administratör av Privilegierade roller**.  hello lista över användare för närvarande i rollen visas.
-2. Klicka på hello användare i hello användarlistan.
+1. I PIM-instrumentpanelen, klickar du på rollen **administratör av Privilegierade roller**.  Listan över användare för närvarande i rollen visas.
+2. Klicka på användare i användarlistan.
 3. Klicka på **ta bort**.  Visas ett bekräftelsemeddelande.
-4. Klicka på **Ja** tooremove hello användaren från hello roll.
+4. Klicka på **Ja** att ta bort användaren från rollen.
 
-<!--Every topic should have next steps and links toohello next logical set of content tookeep hello customer engaged-->
+<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>Nästa steg
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 

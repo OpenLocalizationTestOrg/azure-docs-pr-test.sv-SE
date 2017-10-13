@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 12/06/2016
 ms.author: saeedakhter-msft
-ms.openlocfilehash: abfd742e710458de3193dc5051de7818a112376c
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 44d5d31d49c375c802a67511d1f962df20656559
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-b2c-focus-on-your-app-let-us-worry-about-sign-up-and-sign-in"></a>Azure AD B2C: Fokusera på din app och låt oss ta hand om registrering och inloggning
 
-Azure AD-B2C är en molntjänst för att hantera identiteter för webbappar och mobilappar. Det är en global tjänst med hög tillgänglighet som kan skalas toohundreds miljoner identiteter. Azure AD B2C bygger på en säker plattform i företagsklass och ser till att dina program, ditt företag och dina användare är skyddade.
+Azure AD-B2C är en molntjänst för att hantera identiteter för webbappar och mobilappar. Det är en global tjänst med hög tillgänglighet som kan skalas till flera hundra miljoner identiteter. Azure AD B2C bygger på en säker plattform i företagsklass och ser till att dina program, ditt företag och dina användare är skyddade.
 
-Azure AD B2C kan dina program tooauthenticate med minimal konfiguration:
+Med Azure AD B2C kan du använda autentisering i din app med minimal konfiguration:
 
 * **Sociala konton** (till exempel Facebook, Google, LinkedIn med mera)
 * **Företagskonton** (med öppna standardprotokoll, OpenID Connect eller SAML)
@@ -32,7 +32,7 @@ Azure AD B2C kan dina program tooauthenticate med minimal konfiguration:
 
 ## <a name="get-started"></a>Kom igång
 
-Skaffa först en egen klient genom att använda hello steg som beskrivs i [skapa en Azure AD B2C-klient](active-directory-b2c-get-started.md).
+Skaffa först en egen klient genom att följa stegen i [Skapa en Azure AD B2C-klient](active-directory-b2c-get-started.md).
 
 Välj ditt apputvecklingsscenario:
 
@@ -45,38 +45,38 @@ Välj ditt apputvecklingsscenario:
 
 ## <a name="whats-new"></a>Nyheter
 
-Kom tillbaka ofta toolearn om framtida ändringar toohello Azure Active Directory B2C. Vi kommer även att twittra om eventuella uppdateringar med @AzureAD.
+Kom tillbaka ofta om du är nyfiken på framtida förändringar i Azure Active Directory B2C. Vi kommer även att twittra om eventuella uppdateringar med @AzureAD.
 
-* Dessutom för (allmän tillgänglighet) ”inbyggda principer” Hej [”anpassade principer”](active-directory-b2c-overview-custom.md) funktion är nu tillgänglig som förhandsversion.  Anpassade principer är för identity-tekniker som behöver kontroll över hello sammansättning av deras identitet.
-* Hej [åtkomst-Token](https://azure.microsoft.com/en-us/blog/azure-ad-b2c-access-tokens-now-in-public-preview) funktion är nu tillgänglig som förhandsversion.
+* Förutom Inbyggda principer (allmän tillgänglighet) är nu funktionen [Anpassade principer](active-directory-b2c-overview-custom.md) tillgänglig i den allmänt tillgängliga förhandsversionen.  Anpassade principer är avsedda för experter som behöver mer kontroll över identitetsfunktionen.
+* Funktionen [Åtkomsttoken](https://azure.microsoft.com/en-us/blog/azure-ad-b2c-access-tokens-now-in-public-preview) är nu tillgänglig i den allmänt tillgängliga förhandsversionen.
 * [Allmän tillgänglighet för Europabaserade Azure AD B2C](https://azure.microsoft.com/en-us/blog/azuread-b2c-ga-eu/)-kataloger har tillkännagetts.
 * Kolla in vårt ständigt växande bibliotek med [kodexempel på Github](https://github.com/Azure-Samples?q=b2c)!
 
-## <a name="how-tooarticles"></a>Hur tooarticles
+## <a name="how-to-articles"></a>Instruktionsartiklar
 
-Lär dig hur toouse specifika funktioner i Azure Active Directory B2C:
+Lär dig hur du använder specifika funktioner i Azure Active Directory B2C:
 
 * Konfigurera [Facebook-](active-directory-b2c-setup-fb-app.md), [Google+-](active-directory-b2c-setup-goog-app.md), [Microsoft-](active-directory-b2c-setup-msa-app.md), [Amazon-](active-directory-b2c-setup-amzn-app.md) och [LinkedIn-](active-directory-b2c-setup-li-app.md)konton för användning i dina konsumentinriktade program.
-* [Använd anpassade attribut toocollect information om dina användare](active-directory-b2c-reference-custom-attr.md).
+* [Använd anpassade attribut för att samla in information om dina användare](active-directory-b2c-reference-custom-attr.md).
 * [Aktivera Azure Multi-Factor Authentication i dina konsumentinriktade program](active-directory-b2c-reference-mfa.md).
 * [Konfigurera lösenordsåterställning via självbetjäning för dina användare](active-directory-b2c-reference-sspr.md).
-* [Anpassa hello utseende och känslan av registrering, logga in och andra konsumentinriktade sidor](active-directory-b2c-reference-ui-customization.md) som hanteras av Azure Active Directory B2C.
-* [Använd hello Azure Active Directory Graph API tooprogrammatically skapa, läsa, uppdatera och ta bort användare](active-directory-b2c-devquickstarts-graph-dotnet.md) i Azure Active Directory B2C-klient.
+* [Anpassa utseendet på registrerings- och inloggningssidorna och på andra konsumentinriktade sidor](active-directory-b2c-reference-ui-customization.md) som hanteras av Azure Active Directory B2C.
+* [Använd Azure Active Directory Graph API för att skapa, läsa, uppdatera och ta bort användare via programmering](active-directory-b2c-devquickstarts-graph-dotnet.md) i din Azure Active Directory B2C-klient.
 
 ## <a name="next-steps"></a>Nästa steg
 
-Dessa länkar är användbara för att utforska hello tjänsten i mer detalj:
+Använd dessa länkar om du vill utforska tjänsten mer i detalj:
 
-* Se hello [Azure Active Directory B2C-prisinformation](https://azure.microsoft.com/pricing/details/active-directory-b2c/).
+* Ta del av [Azure Active Directory B2C-prisinformation](https://azure.microsoft.com/pricing/details/active-directory-b2c/).
 * Granska våra [kodexempel](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory&term=b2c) för Azure Active Directory B2C. 
-* Få hjälp på Stack Overflow genom att använda hello [azure-ad-b2c](http://stackoverflow.com/questions/tagged/azure-ad-b2c) tagg.
-* Ge oss dina synpunkter med hjälp av [User Voice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c), vi vill toohear dem!
-* Granska hello [Protokollreferens för Azure AD B2C](active-directory-b2c-reference-protocols.md).
-* Granska hello [Azure AD B2C tokenreferens](active-directory-b2c-reference-tokens.md).
-* Läs hello [Azure Active Directory B2C vanliga frågor och svar](active-directory-b2c-faqs.md).
+* Få hjälp på Stack Overflow genom att använda taggen [azure-ad-b2c](http://stackoverflow.com/questions/tagged/azure-ad-b2c).
+* Lämna feedback via [User Voice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c) – vi vill veta vad du tycker!
+* Granska [protokollreferens för Azure AD B2C](active-directory-b2c-reference-protocols.md).
+* Granska [tokenreferens för Azure AD B2C](active-directory-b2c-reference-tokens.md).
+* Läs [vanliga frågor och svar om Azure Active Directory B2C](active-directory-b2c-faqs.md).
 * [Skapa supportförfrågningar för Azure Active Directory B2C](active-directory-b2c-support.md).
 
 ## <a name="get-security-updates-for-our-products"></a>Hämta säkerhetsuppdateringar för våra produkter
 
-Vi rekommenderar att du tooget meddelanden om när säkerhetsincidenter genom att besöka [den här sidan](https://technet.microsoft.com/security/dd252948) och prenumerera tooSecurity Advisory-aviseringar.
+Vi rekommenderar att du aktiverar aviseringar om säkerhetsincidenter genom att gå till [den här sidan](https://technet.microsoft.com/security/dd252948) och prenumerera på Microsoft Security Advisory-aviseringar.
 

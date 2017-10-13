@@ -6,7 +6,7 @@
 | Redis-Cache repliker (för hög tillgänglighet) |1 |
 | Delar i premium-cache med kluster |10 |
 
-Azure Redis-Cache begränsar och storlekar är olika för varje prisnivå. toosee hello priser nivåer och deras associerade storlek finns [priser för Azure Redis-Cache](https://azure.microsoft.com/pricing/details/cache/).
+Azure Redis-Cache begränsar och storlekar är olika för varje prisnivå. Alla prisnivåer och deras associerade storlek finns [priser för Azure Redis-Cache](https://azure.microsoft.com/pricing/details/cache/).
 
 Mer information om Azure Redis-Cache konfiguration begränsar finns [standard Redis serverkonfiguration](../articles/redis-cache/cache-configure.md#default-redis-server-configuration).
 

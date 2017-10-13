@@ -1,29 +1,46 @@
 ---
-Rubrik: aaa ”Azure Analysis Services självstudiekursen kompletterande lektionen: ojämn hierarkier | Microsoft Docs ”beskrivning: Beskriver hur toofix ojämn hierarkier i hello Azure Analysis Services-kursen.
-tjänster: analysis services dokumentationcenter: '' författare: minewiskan manager: erikre editor: '' taggar: ''
-
-MS.AssetID: ms.service: analysis services ms.devlang: NA ms.topic: get-started-article ms.tgt_pltfrm: NA ms.workload: na ms.date: 2017-05/26 ms.author: owend
+title: "Kompletterande lektion i Azure Analysis Services-självstudiekurs: Ojämna hierarkier | Microsoft Docs"
+description: "Beskriver hur du åtgärdar ojämna hierarkier i Azure Analysis Services-självstudiekursen."
+services: analysis-services
+documentationcenter: 
+author: Minewiskan
+manager: erikre
+editor: 
+tags: 
+ms.assetid: 
+ms.service: analysis-services
+ms.devlang: NA
+ms.topic: get-started-article
+ms.tgt_pltfrm: NA
+ms.workload: na
+ms.date: 05/26/2017
+ms.author: owend
+ms.openlocfilehash: d34b2123153406640cf03bc9f57efa557af4cfaa
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: sv-SE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="supplemental-lesson---ragged-hierarchies"></a>Kompletterande lektion – Ojämna hierarkier
 
 [!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
-I den här kompletterande lektionen löser du ett vanligt problem vid pivotering i hierarkier som innehåller tomma värden (medlemmar) på olika nivåer. Det kan till exempel förekomma i en organisation där en chef på hög nivå har både avdelningschefer och personer som inte är chefer som direkt underställda. Eller i geografiska hierarkier som består av land-region-ort, där vissa orter saknar en överordnad delstat eller provins, till exempel Washington D.C. och Vatikanstaten. När en hierarki har tomt medlemmar, det ofta är underordnad toodifferent eller ojämn nivåer.
+I den här kompletterande lektionen löser du ett vanligt problem vid pivotering i hierarkier som innehåller tomma värden (medlemmar) på olika nivåer. Det kan till exempel förekomma i en organisation där en chef på hög nivå har både avdelningschefer och personer som inte är chefer som direkt underställda. Eller i geografiska hierarkier som består av land-region-ort, där vissa orter saknar en överordnad delstat eller provins, till exempel Washington D.C. och Vatikanstaten. När en hierarki har tomma medlemmar har den ofta olika, eller ojämna, underordnade nivåer.
 
 ![aas-lesson-detail-ragged-hierarchies-table](../tutorials/media/aas-lesson-detail-ragged-hierarchies-table.png)
 
-Tabellmodeller på hello 1400 kompatibilitetsnivå har ytterligare **dölja medlemmar** -egenskapen för hierarkier. Hej **standard** inställningen förutsätter att det finns inga tomma medlemmar på alla nivåer. Hej **dölja tomma medlemmar** undantar tomma medlemmar från hello hierarkin när de läggs tooa pivottabell eller rapporten.  
+Tabellmodeller på kompatibilitetsnivån 1400 har en extra **Dölj medlemmar**-egenskap för hierarkier. **Standardinställningen** utgår ifrån att det inte finns några tomma medlemmar på någon nivå. Inställningen **Dölj tomma medlemmar** exkluderar tomma medlemmar från hierarkin när den läggs till i en pivottabell eller rapport.  
   
-Uppskattad tid toocomplete lektionen: **20 minuter**  
+Uppskattad tidsåtgång för den här lektionen: **20 minuter**  
   
 ## <a name="prerequisites"></a>Krav  
-Den här kompletterande lektionen ingår i en självstudiekurs om tabellmodeller. Innan du utför hello uppgifter i den här kompletterande lektionen bör du slutfört alla tidigare erfarenheter eller har en slutförd Adventure Works Internet försäljning modellen exempelprojektet. 
+Den här kompletterande lektionen ingår i en självstudiekurs om tabellmodeller. Innan du utför uppgifterna i den här kompletterande lektionen måste du ha slutfört alla föregående lektioner eller ha ett slutfört Adventure Works Internet Sales-exempelmodellprojekt. 
 
-Om du har skapat hello AW Internet försäljnings-projekt som en del av hello kursen, innehåller din modell ännu inte några data eller ojämna hierarkier. toocomplete kursen kompletterande du först ha toocreate Hej problemet genom att lägga till vissa ytterligare tabeller, skapa relationer, beräknade kolumner, ett mått och en ny organisationshierarki. Det tar cirka 15 minuter. Sedan kan du hämta toosolve i bara några minuter.  
+Om du har skapat projektet AW Internet Sales som en del i självstudiekursen innehåller inte din modell några data eller ojämna hierarkier ännu. För att slutföra den här kompletterande lektionen måste du först skapa problemet genom att lägga till ytterligare tabeller, skapa relationer, beräknade kolumner, ett mått och en ny organisationshierarki. Det tar cirka 15 minuter. Sedan tar det bara några minuter att lösa problemet.  
 
 ## <a name="add-tables-and-objects"></a>Lägga till tabeller och objekt
   
-### <a name="tooadd-new-tables-tooyour-model"></a>tooadd nya tabeller tooyour modellen
+### <a name="to-add-new-tables-to-your-model"></a>Så här lägger du till nya tabeller i din modell
   
 1.  I tabellmodellutforskaren expanderar du **Datakällor**. Sedan högerklickar du på din anslutning och väljer **Importera nya tabeller**.
   
@@ -31,7 +48,7 @@ Om du har skapat hello AW Internet försäljnings-projekt som en del av hello ku
 
 3.  Klicka på **Importera** i frågeredigeraren
 
-4.  Skapa följande hello [relationer](../tutorials/aas-lesson-4-create-relationships.md):
+4.  Skapa följande [relationer](../tutorials/aas-lesson-4-create-relationships.md):
 
     | Tabell 1           | Kolumn       | Filterriktning   | Tabell 2     | Kolumn      | Active |
     |-------------------|--------------|--------------------|-------------|-------------|--------|
@@ -39,9 +56,9 @@ Om du har skapat hello AW Internet försäljnings-projekt som en del av hello ku
     | FactResellerSales | DueDate      | Standard            | DimDate     | Date        | Nej     |
     | FactResellerSales | ShipDateKey  | Standard            | DimDate     | Date        | Nej     |
     | FactResellerSales | ProductKey   | Standard            | DimProduct  | ProductKey  | Ja    |
-    | FactResellerSales | EmployeeKey  | tooBoth tabeller | DimEmployee | EmployeeKey | Ja    |
+    | FactResellerSales | EmployeeKey  | Till båda tabellerna | DimEmployee | EmployeeKey | Ja    |
 
-5. I hello **DimEmployee** tabell, skapar hello följande [beräknade kolumner](../tutorials/aas-lesson-5-create-calculated-columns.md): 
+5. Skapa följande [beräknade kolumner](../tutorials/aas-lesson-5-create-calculated-columns.md) i tabellen **DimEmployee**: 
 
     **Sökväg** 
     ```
@@ -78,23 +95,23 @@ Om du har skapat hello AW Internet försäljnings-projekt som en del av hello ku
     =LOOKUPVALUE(DimEmployee[FullName],DimEmployee[EmployeeKey],PATHITEM([Path],1,5)) 
     ```
 
-6.  I hello **DimEmployee** tabell, skapa en [hierarkin](../tutorials/aas-lesson-9-create-hierarchies.md) med namnet **organisation**. Lägg till följande kolumner i ordning hello: **Level1**, **nivå 2**, **Level3**, **Level4**, **Level5**.
+6.  I tabellen **DimEmployee** skapar du en [hierarki](../tutorials/aas-lesson-9-create-hierarchies.md) med namnet **Organisation**. Lägg till följande kolumner i ordning: **Level1**, **Level2**, **Level3**, **Level4**, **Level5**.
 
-7.  I hello **FactResellerSales** tabell, skapar hello följande [mått](../tutorials/aas-lesson-6-create-measures.md):
+7.  Skapa följande [mått](../tutorials/aas-lesson-6-create-measures.md) i tabellen **FactResellerSales**:
 
     ```
     ResellerTotalSales:=SUM([SalesAmount])
     ```
 
-8.  Använd [analysera i Excel](../tutorials/aas-lesson-12-analyze-in-excel.md) tooopen Excel och automatiskt skapa en pivottabell.
+8.  Använd [Analysera i Excel](../tutorials/aas-lesson-12-analyze-in-excel.md) för att öppna Excel och automatiskt skapa en pivottabell.
 
-9.  I **PivotTable-Fields**, lägga till hello **organisation** hierarkin från hello **DimEmployee** tabell för**rader**, och hello **ResellerTotalSales** måttet från hello **FactResellerSales** tabell för**värden**.
+9.  I **Pivottabellfält** lägger du till hierarkin **Organisation** från tabellen **DimEmployee** i **Rader** och måttet **ResellerTotalSales** från tabellen **FactResellerSales** i **Värden**.
 
     ![aas-lesson-detail-ragged-hierarchies-pivottable](../tutorials/media/aas-lesson-detail-ragged-hierarchies-pivottable.png)
 
-    Som du ser i hello pivottabell visar rader som är ojämna hello-hierarkin. Det finns flera rader med tomma medlemmar.
+    Som du ser i pivottabellen visas ojämna rader i hierarkin. Det finns flera rader med tomma medlemmar.
 
-## <a name="toofix-hello-ragged-hierarchy-by-setting-hello-hide-members-property"></a>toofix hello ojämn hierarki med egenskapen hello Dölj medlemmar
+## <a name="to-fix-the-ragged-hierarchy-by-setting-the-hide-members-property"></a>Åtgärda den ojämna hierarkin genom att ange egenskapen Dölj medlemmar
 
 1.  I **tabellmodellutforskaren** expanderar du **Tabeller** > **DimEmployee** > **Hierarkier** > **Organisation**.
 
@@ -102,7 +119,7 @@ Om du har skapat hello AW Internet försäljnings-projekt som en del av hello ku
 
     ![aas-lesson-detail-ragged-hierarchies-hidemembers](../tutorials/media/aas-lesson-detail-ragged-hierarchies-hidemembers.png)
 
-3.  Uppdatera hello pivottabell i Excel. 
+3.  Gå tillbaka till Excel och uppdatera pivottabellen. 
 
     ![aas-lesson-detail-ragged-hierarchies-pivottable-refresh](../tutorials/media/aas-lesson-detail-ragged-hierarchies-pivottable-refresh.png)
 

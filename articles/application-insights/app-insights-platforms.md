@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/01/2016
 ms.author: bwren
-ms.openlocfilehash: 14b363c934a018ce72be97d1a0b74a6c2210656e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: d49ad2ff584f42c0e4732a5cff60d23cdf631512
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="developer-analytics-languages-platforms-and-integrations"></a>Utvecklaranalys: språk, plattformar och integreringar
 Dessa objekt är implementeringar av [Application Insights](app-insights-overview.md) som vi har hört talas om, inklusive vissa av tredje parter.
@@ -26,9 +26,9 @@ Dessa objekt är implementeringar av [Application Insights](app-insights-overvie
 * [C#|VB (.NET)](app-insights-asp-net.md)
 * [Java](app-insights-java-get-started.md)
 * [JavaScript-webbsidor](app-insights-javascript.md)
+* [Node.js](app-insights-nodejs.md)
 
 ## <a name="languages---community-supported"></a>Språk – som stöds av vårt community
-* [Node.js](https://github.com/Microsoft/ApplicationInsights-node.js)
 * [PHP](https://github.com/Microsoft/ApplicationInsights-PHP)
 * [Python](https://pypi.python.org/pypi/applicationinsights/0.1.0)
 * [Ruby](https://rubygems.org/gems/application_insights)
@@ -82,4 +82,4 @@ Dessa objekt är implementeringar av [Application Insights](app-insights-overvie
 * [Stream Analytics](app-insights-export-power-bi.md)
 
 ## <a name="projects"></a> Skapa ditt eget SDK
-Om det inte finns ännu en SDK för din plattform eller språk kanske vill toobuild något? Ta en titt på hello koden för hello befintliga SDK: er som listas i hello [Application Insights SDK-projektet på GitHub](https://github.com/Microsoft/AppInsights-Home).
+Om det inte finns något SDK för ditt språk eller din plattform än kanske du vill skapa ett? Ta en titt på koden för befintliga SDK:er i [Application Insights SDK-projekt på GitHub](https://github.com/Microsoft/AppInsights-Home).

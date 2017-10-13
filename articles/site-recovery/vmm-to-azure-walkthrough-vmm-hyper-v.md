@@ -1,6 +1,6 @@
 ---
-title: "aaaPrepare System Center VMM för Hyper-V-replikering tooAzure | Microsoft Docs"
-description: "Beskriver hur tooprepare System Center VMM-servern för Hyper-V-replikering tooAzure, med hjälp av Azure Site Recovery"
+title: "Förbereda VMM för System Center för Hyper-V-replikering till Azure | Microsoft Docs"
+description: "Beskriver hur du förbereder System Center VMM-servern för Hyper-V-replikering till Azure med Azure Site Recovery"
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
@@ -14,37 +14,37 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 07/23/2017
 ms.author: raynew
-ms.openlocfilehash: 773b06afaf7d3eea1fe64f050bf3970943cf466a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: ec118ed837dbf140083b3ae1e4ecd41c81562018
+ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/29/2017
 ---
-# <a name="step-6-prepare-vmm-servers-and-hyper-v-hosts-for-hyper-v-replication-tooazure"></a>Steg 6: Förbereda VMM-servrar och Hyper-V-värdar för tooAzure för Hyper-V-replikering
+# <a name="step-6-prepare-vmm-servers-and-hyper-v-hosts-for-hyper-v-replication-to-azure"></a>Steg 6: Förbereda VMM-servrar och Hyper-V-värdar för Hyper-V-replikering till Azure
 
-När du har installerat [Azure komponenter](vmm-to-azure-walkthrough-prepare-azure.md) hello distribution kan använda hello instruktionerna i den här artikeln tooprepare lokal VMM-servrar och Hyper-V-värdar toointeract med Azure Site Recovery.
+När du har installerat [Azure komponenter](vmm-to-azure-walkthrough-prepare-azure.md) för distributionen, följ instruktionerna i den här artikeln förbereda lokal VMM-servrar och Hyper-V-värdar att interagera med Azure Site Recovery.
 
-När du har läst den här artikeln efter eventuella kommentarer längst ned hello eller tekniska frågor om hello [Azure Recovery Services-forumet](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
+När du har läst den här artikeln efter eventuella kommentarer längst ned eller tekniska frågor om den [Azure Recovery Services-forumet](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
 
 
 ## <a name="prepare-vmm-servers"></a>Förbereda VMM-servrar
 
-- Du behöver minst en VMM-server som uppfyller hello stöd för Site Recovery replikering (site-recovery-support-matrix-to-azure.md#support-for-datacenter-management-servers).
-- Kontrollera att du har skapat hello VMM-server för [nätverksmappning](vmm-to-azure-walkthrough-network.md#network-mapping-for-replication-to-azure).
-- Se till att hello VMM-servern kan komma åt dessa URL: er
+- Du behöver minst en VMM-server som uppfyller kraven för stöd för Site Recovery replikering (site-recovery-support-matrix-to-azure.md#support-for-datacenter-management-servers).
+- Kontrollera att du har förberett VMM-server för [nätverksmappning](vmm-to-azure-walkthrough-network.md#network-mapping-for-replication-to-azure).
+- Kontrollera att VMM-servern kan komma åt dessa URL: er
 
     [!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]
     
-- Om du har IP-adressbaserade brandväggsregler, se till att de tillåter kommunikation tooAzure.
-- Tillåt hello [IP-intervall för Azure-Datacenter](https://www.microsoft.com/download/confirmation.aspx?id=41653), och hello HTTPS (443)-port.
-- Tillåt IP-adressintervall för hello Azure-regionen för din prenumeration och för USA, västra (används för åtkomstkontroll och Identity Management).
+- Om du har IP-adressbaserade brandväggsregler ontrollerar du att de tillåter kommunikation till Azure.
+- Tillåt [Azure Datacenter IP Ranges](https://www.microsoft.com/download/confirmation.aspx?id=41653) (IP-intervall för Azures datacenter) och HTTPS-port 443.
+- Tillåt IP-adressintervall för Azure-regionen för din prenumeration och för USA, västra (används för åtkomstkontroll och identitetshantering).
 
-Under distributionen av Site Recovery hämta hello Site Recovery-providern och installera den på varje VMM-server. hello VMM-servern registreras i hello Recovery Services-valvet.
+Under distributionen av Site Recovery hämta Site Recovery-providern och installera den på varje VMM-server. VMM-servern registreras i Recovery Services-valvet.
 
 
 
 
 ## <a name="next-steps"></a>Nästa steg
 
-Gå för[steg 7: skapa ett valv](vmm-to-azure-walkthrough-create-vault.md)
+Gå till [steg 7: skapa ett valv](vmm-to-azure-walkthrough-create-vault.md)
 

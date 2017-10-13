@@ -1,6 +1,6 @@
 ---
-title: aaaValidate XML - Azure Logic Apps | Microsoft Docs
-description: "Validera XML med scheman för Logikappar i Azure och B2B-scenarier med hjälp av hello Enterprise-Integrationspaket"
+title: Validera XML - Azure Logikappar | Microsoft Docs
+description: "Validera XML med scheman för Logikappar i Azure och B2B-scenarier med hjälp av Enterprise-Integrationspaket"
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: msftman
@@ -14,39 +14,39 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2016
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 81f662d0ddf908657b54de8af0a75fff55782ef7
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 8558efffa354cc4bb93820c837077ee997924c95
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="validate-xml-for-enterprise-integration"></a>Validera XML för företagsintegration
 
-Ofta i B2B-scenarier måste hello partners i ett avtal se till att hello meddelanden som är giltiga för databearbetning ska kunna starta. Du kan validera dokument mot ett fördefinierat schema genom att använda hello Använd hello XML-verifiering connector i hello Enterprise-Integrationspaket.
+Ofta i B2B-scenarier måste partners i ett avtal se till att de meddelanden som är giltiga för databearbetning ska kunna starta. Du kan validera dokument mot ett fördefinierat schema genom att använda Använd XML-verifiering kopplingen i Enterprise-Integrationspaket.
 
-## <a name="validate-a-document-with-hello-xml-validation-connector"></a>Validera ett dokument med hello XML-verifiering connector
+## <a name="validate-a-document-with-the-xml-validation-connector"></a>Validera ett dokument med XML-verifiering connector
 
-1. Skapa en logikapp och [länka hello app toohello integrering konto](../logic-apps/logic-apps-enterprise-integration-accounts.md "Läs toolink en logikapp integrering konto tooa") som har hello-schema som du vill använda toouse vid verifiering av XML-data.
+1. Skapa en logikapp och [koppla appen till kontot integration](../logic-apps/logic-apps-enterprise-integration-accounts.md "Lär dig hur du länkar ett integration konto till en logikapp") som har det schema som du vill använda för att validera XML-data.
 
-2. Lägg till en **begäran - när en HTTP-begäran tas emot** utlösaren tooyour logikapp.
+2. Lägg till en **begäran - när en HTTP-begäran tas emot** utlösaren till din logikapp.
 
     ![](./media/logic-apps-enterprise-integration-xml/xml-1.png)
 
-3. tooadd hello **XML-verifiering** åtgärd, Välj **lägga till en åtgärd**.
+3. Att lägga till den **XML-verifiering** åtgärd, Välj **lägga till en åtgärd**.
 
-4. toofilter alla hello toohello för åtgärder som du vill ange *xml* i hello sökrutan. Välj **XML-verifiering**.
+4. Om du vill filtrera alla åtgärder som du vill ange *xml* i sökrutan. Välj **XML-verifiering**.
 
     ![](./media/logic-apps-enterprise-integration-xml/xml-2.png)
 
-5. toospecify hello XML-innehåll som du vill toovalidate, Välj **innehåll**.
+5. Välj för att ange XML-innehåll som du vill validera **innehåll**.
 
     ![](./media/logic-apps-enterprise-integration-xml/xml-1-5.png)
 
-6. Välj hello body-tagg som hello innehåll som du vill toovalidate.
+6. Välj body-tagg som det innehåll som du vill validera.
 
     ![](./media/logic-apps-enterprise-integration-xml/xml-3.png)
 
-7. toospecify hello schema som du vill använda toouse för att validera hello tidigare *innehåll* indata, Välj **SCHEMANAMNET**.
+7. Ange schemat som du vill använda för att validera den tidigare *innehåll* indata, Välj **SCHEMANAMNET**.
 
     ![](./media/logic-apps-enterprise-integration-xml/xml-4.png)
 
@@ -54,10 +54,10 @@ Ofta i B2B-scenarier måste hello partners i ett avtal se till att hello meddela
 
     ![](./media/logic-apps-enterprise-integration-xml/xml-5.png)
 
-Du är nu klar med att konfigurera validering-anslutningen. Du kanske vill toostore hello verifiera data i en line-of-business (LOB)-app som SalesForce i ett verkligt program. toosend Hej verifierade utdata tooSalesforce, lägga till en åtgärd.
+Du är nu klar med att konfigurera validering-anslutningen. I ett verkligt program kanske du vill lagra validerade data i en line-of-business (LOB)-app som SalesForce. Lägg till en åtgärd för att skicka verifierade utdata till Salesforce.
 
-tootest åtgärden verifiering, gör en begäran toohello HTTP-slutpunkt.
+Gör en begäran om du vill testa åtgärden verifiering för HTTP-slutpunkten.
 
 ## <a name="next-steps"></a>Nästa steg
-[Mer information om hello Enterprise-Integrationspaket](../logic-apps/logic-apps-enterprise-integration-overview.md "Lär dig mer om Enterprise-Integrationspaket")   
+[Mer information om Enterprise-Integrationspaket](../logic-apps/logic-apps-enterprise-integration-overview.md "Lär dig mer om Enterprise-Integrationspaket")   
 

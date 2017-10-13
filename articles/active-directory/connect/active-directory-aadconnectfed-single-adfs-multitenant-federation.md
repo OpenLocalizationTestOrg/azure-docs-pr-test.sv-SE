@@ -1,6 +1,6 @@
 ---
-title: aaaFederating flera Azure AD med enda AD FS | Microsoft Docs
-description: "I det här dokumentet får du lära dig hur toofederate flera Azure AD med en enda AD FS."
+title: Federera flera Azure AD-instanser med en enda AD FS-instans | Microsoft Docs
+description: "I det här dokumentet lär du dig hur du federerar flera Azure AD-instanser med en enda AD FS-instans."
 keywords: federate, ADFS, AD FS, multiple tenants, single AD FS, one ADFS, multi-tenant federation, multi-forest adfs, aad connect, federation, cross-tenant federation
 services: active-directory
 documentationcenter: 
@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.author: anandy; billmath
-ms.openlocfilehash: 442192896b3b13f7bf9388396cd3769e194329d4
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 436bf5905d2b203dc4cceea97f4fb90593df7111
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 #<a name="federate-multiple-instances-of-azure-ad-with-single-instance-of-ad-fs"></a>Federera flera instanser av Azure AD med en enda instans av AD FS
 
-En enda AD FS-servergrupp med hög tillgänglighet kan federera flera skogar om de har ett dubbelriktat förtroende. Dessa flera skogar kanske eller kanske inte stämmer överens toohello samma Azure Active Directory. Den här artikeln innehåller anvisningar för hur tooconfigure federation mellan en enskild AD FS-distribution och flera skogar som synkronisering toodifferent Azure AD.
+En enda AD FS-servergrupp med hög tillgänglighet kan federera flera skogar om de har ett dubbelriktat förtroende. Dessa skogar kan men måste inte vara associerade med samma Azure Active Directory. Den här artikeln beskriver hur du konfigurerar federation mellan en enskild AD FS-distribution och mer än en skog som synkroniserar med en annan Azure AD.
 
 ![Federation med flera innehavare med en enda AD FS](media/active-directory-aadconnectfed-single-adfs-multitenant-federation/concept.png)
  
@@ -31,36 +31,36 @@ En enda AD FS-servergrupp med hög tillgänglighet kan federera flera skogar om 
 > Tillbakaskrivning av enheter och automatisk enhetskoppling stöds inte i det här scenariot.
 
 > [!NOTE]
-> Azure AD Connect kan inte vara används tooconfigure federation i det här scenariot som Azure AD Connect kan konfigurera federation för domäner i en enda Azure AD.
+> Azure AD Connect kan inte användas för att konfigurera federation i det här scenariot eftersom Azure AD Connect kan konfigurera federation för domäner i en enda Azure AD.
 
 ##<a name="steps-for-federating-ad-fs-with-multiple-azure-ad"></a>Steg för att federera AD FS med flera Azure AD-instanser
 
-Överväg att en domänen contoso.com i Azure Active Directory contoso.onmicrosoft.com redan är federerat med hello AD FS lokalt installerade på contoso.com lokala Active Directory-miljö. Fabrikam.com är en domän i Azure Active Directory fabrikam.onmicrosoft.com.
+Tänk på att en contoso.com-domän i Azure Active Directory contoso.onmicrosoft.com redan är federerad med den lokala AD FS-instansen som är installerad i den lokala Active Directory-miljön contoso.com. Fabrikam.com är en domän i Azure Active Directory fabrikam.onmicrosoft.com.
 
 ##<a name="step-1-establish-a-two-way-trust"></a>Steg 1: Upprätta ett dubbelriktat förtroende
  
-För AD FS i contoso.com toobe kan tooauthenticate användare i fabrikam.com krävs ett dubbelriktat förtroende mellan contoso.com och fabrikam.com. Följ hello riktlinje i det här [artikel](https://technet.microsoft.com/library/cc816590.aspx) toocreate hello dubbelriktat förtroende.
+För att AD FS i contoso.com ska kunna autentisera användare i fabrikam.com krävs ett dubbelriktat förtroende mellan contoso.com och fabrikam.com. Följ riktlinjerna i den här [artikeln](https://technet.microsoft.com/library/cc816590.aspx) för att skapa det dubbelriktade förtroendet.
  
 ##<a name="step-2-modify-contosocom-federation-settings"></a>Steg 2: Ändra federationsinställningarna för contoso.com 
  
-hello standard utfärdaren som angetts för en enda domän federerad tooAD FS är ”http://ADFSServiceFQDN/adfs/services/trust”, till exempel ”http://fs.contoso.com/adfs/services/trust”. Azure Active Directory kräver en unik utfärdare för varje federerad domän. Eftersom hello samma AD FS kommer toofederate två domäner, måste värdet för hello utfärdaren toobe ändras så att den är unik för varje domän som AD FS federates med Azure Active Directory. 
+Standardutfärdaren för en enskild domän som federeras till AD FS är ”http://ADFSServiceFQDN/adfs/services/trust”, t.ex. ”http://fs.contoso.com/adfs/services/trust”. Azure Active Directory kräver en unik utfärdare för varje federerad domän. Eftersom samma AD FS ska federera två domäner måste utfärdarens värde ändras så att det är unikt för varje domän som AD FS federerar med Azure Active Directory. 
  
-Öppna Azure AD PowerShell på hello AD FS-servern och utföra hello följande steg:
+Öppna Azure AD PowerShell på AD FS-servern och utför följande steg:
  
-Ansluta toohello Azure Active Directory som innehåller hello domänen contoso.com Anslut MsolService hello federation uppdateringsinställningar för contoso.com uppdatering MsolFederatedDomain - DomainName contoso.com – SupportMultipleDomain
+Anslut till den Azure Active Directory som innehåller domänen contoso.com Connect-MsolService Uppdatera federationsinställningarna för contoso.com Update-MsolFederatedDomain -DomainName contoso.com –SupportMultipleDomain
  
-Utfärdare i hello domänfederationsinställningen kommer att ändras för ”http://contoso.com/adfs/services/trust” och en utgivningsprinciper anspråk regeln ska läggas till för hello Azure AD förlitande part tooissue hello rätt issuerId värde baserat på hello UPN-suffix.
+Utfärdaren i inställningen för domänfederation ändras till ”http://contoso.com/adfs/services/trust” och en anspråksregel för utfärdande läggs till så att den förlitande Azure AD-parten kan utfärda rätt issuerId-värde baserat på UPN-suffixet.
  
 ##<a name="step-3-federate-fabrikamcom-with-ad-fs"></a>Steg 3: Federera fabrikam.com med AD FS
  
-I Azure AD powershell utföras sessionen hello följande: Anslut tooAzure Active Directory som innehåller hello domän fabrikam.com
+Utför följande steg i Azure AD PowerShell-sessionen: Anslut till Azure Active Directory som innehåller domänen fabrikam.com
 
     Connect-MsolService
-Konvertera hello fabrikam.com hanterade domänen toofederated:
+Konvertera den hanterade domänen fabrikam.com till federerad:
 
     Convert-MsolDomainToFederated -DomainName anandmsft.com -Verbose -SupportMultipleDomain
  
-hello ovan åtgärden kommer federera hello domän fabrikam.com med hello samma AD FS. Du kan kontrollera hello Domäninställningar med hjälp av Get-MsolDomainFederationSettings för båda domänerna.
+Åtgärden ovan federerar domänen fabrikam.com med samma AD FS. Du kan kontrollera domäninställningarna genom att använda Get-MsolDomainFederationSettings för båda domänerna.
 
 ## <a name="next-steps"></a>Nästa steg
 [Ansluta Active Directory med Azure Active Directory](active-directory-aadconnect.md)

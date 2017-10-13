@@ -4,7 +4,7 @@
 ## [Datasäkerhet](security-center-data-security.md)
 ## Scenarier
 ### [Incidenthantering](security-center-incident-response.md)
-### [Använda rekommendationer tooenhance säkerhet](security-center-using-recommendations.md)
+### [Använd rekommendationer för att förbättra säkerheten](security-center-using-recommendations.md)
 ## [Plattformsmigrering](security-center-platform-migration.md)
 ### [Vanliga frågor och svar om plattformsmigrering](security-center-platform-migration-faq.md)
 
@@ -18,11 +18,19 @@
 
 # Gör så här för att
 
-## Förebygga
-### [Ange säkerhetsprinciper](security-center-policies.md)
-### [Just-in-time-åtkomst](security-center-just-in-time.md)
-### [Implementera säkerhetsrekommendationer](security-center-recommendations.md)
+## Säkerhetsprincip
+### [Översikt](security-center-policies-overview.md)
+### [Datainsamling](security-center-enable-data-collection.md)
+### [Säkerhetsprincip](security-center-policies.md)
+### [E-postmeddelanden](security-center-provide-security-contact-details.md)
+### [prisnivå](security-center-pricing.md)
 
+## [Publicering](security-center-onboarding.md)
+## [Händelser](security-center-events-dashboard.md)
+## [Sök](security-center-search.md)
+
+## Förebygga
+### [Implementera säkerhetsrekommendationer](security-center-recommendations.md)
 ### [Programrekommendationer](security-center-application-recommendations.md)
 #### [Lägga till en brandvägg för webbappar](security-center-add-web-application-firewall.md)
 #### [Slutför programskydd](security-center-add-web-application-firewall.md#finalize-application-protection)
@@ -41,19 +49,16 @@
 ### [Rekommendationer för virtuella datorer](security-center-virtual-machine-recommendations.md)
 #### [Tillämpa diskkryptering](security-center-apply-disk-encryption.md)
 #### [Tillämpa systemuppdateringar](security-center-apply-system-updates.md)
-#### [Aktivera datainsamling](security-center-enable-data-collection.md)
 #### [Aktivera kryptering för lagringskonto](security-center-enable-encryption-for-storage-account.md)
 #### [Aktivera VM-Agent](security-center-enable-vm-agent.md)
 #### [Installera slutpunktsskydd](security-center-install-endpoint-protection.md)
-#### [Ange säkerhetskontaktinformation](security-center-provide-security-contact-details.md)
 #### [Starta om datorn efter uppdateringarna](security-center-apply-system-updates.md#reboot-after-system-updates)
 #### [Åtgärda sårbarheter i operativsystem](security-center-remediate-os-vulnerabilities.md)
-#### [Lösa slutpunktsskydd för hälsovarningar](security-center-resolve-endpoint-protection-health-alerts.md)
 #### [Uppdatera OS-versionen](security-center-update-os-version.md)
 #### [Sårbarhetsbedömning inte installerad](security-center-vulnerability-assessment-recommendations.md)
-
 ### [Övervaka säkerhetshälsa](security-center-monitoring.md)
 ### [Övervaka partnerlösningar](security-center-partner-solutions.md)
+### [Identitet och åtkomst](security-center-identity-access.md)
 
 ## Identifiera och åtgärda
 ### [Identifieringskapacitet](security-center-detection-capabilities.md)
@@ -62,7 +67,17 @@
 ### [Aviseringsvalidering](security-center-alert-validation.md)
 ### [Hantera säkerhetsincidenter](security-center-incident.md)
 ### [Azure-loggintegrering](security-center-integrating-alerts-with-log-integration.md)
+### [Karta för hotinformation](security-center-threat-intel.md)
 ### [Hotinformationsrapport](security-center-threat-report.md)
+### [Anpassade aviseringar](security-center-custom-alert.md)
+### [Undersökning](security-center-investigation.md)
+
+## Molnskydd
+### [Just-in-time-åtkomst](security-center-just-in-time.md)
+### [Anpassningsbara programkontroller](security-center-adaptive-application.md)
+
+## Automatisering och orkestrering
+### [Strategiböcker](security-center-playbooks.md)
 
 ## Felsöka
 ### [Felsökningsguide](security-center-troubleshooting-guide.md)
@@ -76,7 +91,6 @@
 # Resurser
 ## [Azure-översikt](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [Blogg om säkerhet, sekretess och efterlevnad i Azure](http://blogs.msdn.com/b/azuresecurity/)
-## [Prissättning](security-center-pricing.md)
 ## [Priskalkylator](https://azure.microsoft.com/pricing/calculator/)
 ## [Tjänstöversikt](https://azure.microsoft.com/services/security-center/)
 ## [Tjänstuppdateringar](https://azure.microsoft.com/updates/?product=security-center)

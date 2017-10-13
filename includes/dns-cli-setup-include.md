@@ -2,14 +2,14 @@
 
 ### <a name="before-you-begin"></a>Innan du börjar
 
-Kontrollera att du har hello följande objekt innan du börjar din konfiguration.
+Kontrollera att du har följande innan du påbörjar konfigurationen.
 
 * En Azure-prenumeration. Om du inte har någon Azure-prenumeration kan du aktivera dina [MSDN-prenumerantförmåner](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) eller registrera dig för ett [kostnadsfritt konto](https://azure.microsoft.com/pricing/free-trial/).
-* Installera hello senaste versionen av hello Azure CLI, tillgänglig för Windows, Linux och MAC. Mer information finns på [installera hello Azure CLI](../articles/cli-install-nodejs.md).
+* Installera den senaste versionen av Azure CLI. Den finns tillgänglig för Windows, Linux och MAC. Mer information finns på [Installera Azure CLI](../articles/cli-install-nodejs.md).
 
-### <a name="sign-in-tooyour-azure-account"></a>Logga in tooyour Azure-konto
+### <a name="sign-in-to-your-azure-account"></a>Logga in på ditt Azure-konto
 
-Öppna ett konsolfönster och autentisera med dina autentiseringsuppgifter. Mer information finns i [logga in tooAzure från hello Azure CLI](../articles/xplat-cli-connect.md)
+Öppna ett konsolfönster och autentisera med dina autentiseringsuppgifter. Mer information finns i [Logga in i Azure från Azure CLI](../articles/xplat-cli-connect.md)
 
 ```azurecli
 azure login
@@ -17,21 +17,21 @@ azure login
 
 ### <a name="switch-cli-mode"></a>Växla CLI-läge
 
-Azure DNS använder Azure Resource Manager. Kontrollera att du växla CLI läge toouse Azure Resource Manager-kommandon.
+Azure DNS använder Azure Resource Manager. Se till att du byter CLI-läge så att du kan använda Azure Resource Manager-kommandon.
 
 ```azurecli
 azure config mode arm
 ```
 
-### <a name="select-hello-subscription"></a>Välj hello-prenumeration
+### <a name="select-the-subscription"></a>Välja prenumerationen
 
-Kontrollera hello prenumerationer för hello-kontot.
+Kontrollera prenumerationerna för kontot.
 
 ```azurecli
 azure account list
 ```
 
-Välj vilka av dina Azure-prenumerationer toouse.
+Välj vilka av dina Azure-prenumerationer som du vill använda.
 
 ```azurecli
 azure account set "subscription name"
@@ -39,7 +39,7 @@ azure account set "subscription name"
 
 ### <a name="create-a-resource-group"></a>Skapa en resursgrupp
 
-Azure Resource Manager kräver att alla resursgrupper anger en plats. Detta används som hello standardplatsen för resurser i resursgruppen. Men eftersom alla DNS-resurser är globala, inte regional, har hello valet av resursgruppens plats ingen inverkan på Azure DNS.
+Azure Resource Manager kräver att alla resursgrupper anger en plats. Detta används som standardplatsen för resurser i resursgruppen. Men eftersom alla DNS-resurser är globala, inte regionala, så påverkar inte valet av resursgruppens plats Azure DNS.
 
 Du kan hoppa över det här steget om du använder en befintlig resursgrupp.
 
@@ -49,7 +49,7 @@ azure group create -n myresourcegroup --location "West US"
 
 ### <a name="register-resource-provider"></a>Registrera resursprovider
 
-hello Azure DNS-tjänst som hanteras av hello Microsoft.Network-resursprovidern. Din Azure-prenumeration måste vara registrerade toouse den här resursprovidern innan du kan använda Azure DNS. Det här är en engångsåtgärd för varje prenumeration.
+Azure DNS-tjänsten hanteras av Microsoft.Network-resursprovidern. Din Azure-prenumeration måste vara registrerad att använda den här resursprovidern innan du kan använda Azure DNS. Det här är en engångsåtgärd för varje prenumeration.
 
 ```azurecli
 azure provider register --namespace Microsoft.Network

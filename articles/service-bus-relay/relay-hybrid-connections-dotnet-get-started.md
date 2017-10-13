@@ -1,5 +1,5 @@
 ---
-title: "aaaGet igång med Azure Relay Hybridanslutningar i .NET | Microsoft Docs"
+title: "Komma igång med Azure Relay-hybridanslutningar i .NET | Microsoft Docs"
 description: "Skriv ett C#-konsolprogram för Azure Relay-hybridanslutningar."
 services: service-bus-relay
 documentationcenter: .net
@@ -14,58 +14,58 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 07/07/2017
 ms.author: sethm
-ms.openlocfilehash: 1e4af28e7cd4393c8ca965a149a0b83ebcc44f22
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 1af23bfd46dd7d3781505473f7c1d86e65ea9bc7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-relay-hybrid-connections"></a>Kom igång med Relay hybridanslutningar
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
 
-Den här självstudiekursen innehåller en introduktion för[Azure Relay Hybridanslutningar](relay-what-is-it.md#hybrid-connections), och visar hur toouse .NET toocreate ett klientprogram som skickar meddelanden tooa motsvarande lyssnarprogram. 
+I den här självstudien får du en introduktion till [Azure Relay-hybridanslutningar](relay-what-is-it.md#hybrid-connections), och du får se hur du skapar ett klientprogram med .NET som skickar meddelanden till motsvarande lyssnarprogram. 
 
 ## <a name="what-will-be-accomplished"></a>Detta kommer att utföras
-Eftersom Hybridanslutningar kräver både en klient och en serverkomponent, skapar hello självstudiekursen två konsolprogram. Här är hello steg:
+Eftersom hybridanslutningar kräver både en klient- och en serverkomponent kommer vi att skapa två konsolprogram i den här självstudien. Här är stegen:
 
-1. Skapa en Relay-namnområde med hello Azure-portalen.
-2. Skapa en hybridanslutning i detta namnområde med hello Azure-portalen.
-3. Skriva serverkonsolen (lyssnare) tooreceive programmeddelanden.
-4. Skriva klientkonsolen (avsändare) toosend programmeddelanden.
+1. Skapa ett Relay-namnområde med Azure Portal.
+2. Skapa en hybridanslutning i det namnområdet med Azure Portal.
+3. Skriva ett serverkonsolprogram (lyssnare) för att ta emot meddelanden.
+4. Skriva ett klientkonsolprogram (avsändare) för att ta emot meddelanden.
 
 ## <a name="prerequisites"></a>Krav
 
-toocomplete den här kursen behöver du hello följande krav:
+För att kunna slutföra den här självstudien behöver du följande:
 
-1. [Visual Studio 2015 eller senare](http://www.visualstudio.com). hello exemplen i den här självstudiekursen använder Visual Studio 2017.
+1. [Visual Studio 2015 eller senare](http://www.visualstudio.com). I exemplen i den här självstudiekursen används Visual Studio 2017.
 2. En Azure-prenumeration.
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-## <a name="1-create-a-namespace-using-hello-azure-portal"></a>1. Skapa ett namnområde med hello Azure-portalen
-Om du redan har skapat en Relay-namnrymd hoppa toohello [skapa en hybridanslutning med hello Azure-portalen](#2-create-a-hybrid-connection-using-the-azure-portal) avsnitt.
+## <a name="1-create-a-namespace-using-the-azure-portal"></a>1. Skapa ett namnområde med Azure Portal
+Om du redan har skapat ett Relay-namnområde går du vidare till avsnittet [Skapa en hybridanslutning med Azure Portal](#2-create-a-hybrid-connection-using-the-azure-portal).
 
 [!INCLUDE [relay-create-namespace-portal](../../includes/relay-create-namespace-portal.md)]
 
-## <a name="2-create-a-hybrid-connection-using-hello-azure-portal"></a>2. Skapa en hybridanslutning med hello Azure-portalen
-Om du redan har skapat en hybridanslutning hoppa toohello [skapa ett serverprogram](#3-create-a-server-application-listener) avsnitt.
+## <a name="2-create-a-hybrid-connection-using-the-azure-portal"></a>2. Skapa en hybridanslutning med Azure Portal
+Om du redan har skapat en hybridanslutning går du vidare till avsnittet [Skapa ett serverprogram](#3-create-a-server-application-listener).
 
 [!INCLUDE [relay-create-hybrid-connection-portal](../../includes/relay-create-hybrid-connection-portal.md)]
 
 ## <a name="3-create-a-server-application-listener"></a>3. Skapa ett serverprogram (lyssnare)
-toolisten och ta emot meddelanden från hello Relay, kommer vi att skriva en C#-konsolapp med Visual Studio.
+För att lyssna på och ta emot meddelanden från Relay skriver du ett C#-konsolprogram med Visual Studio.
 
 [!INCLUDE [relay-hybrid-connections-dotnet-get-started-server](../../includes/relay-hybrid-connections-dotnet-get-started-server.md)]
 
 ## <a name="4-create-a-client-application-sender"></a>4. Skapa ett klientprogram (avsändare)
-toosend meddelanden toohello vidarebefordra vi kommer att skriva en C#-konsolapp med Visual Studio.
+För att skicka meddelanden till Relay skriver du ett C#-konsolprogram med Visual Studio.
 
 [!INCLUDE [relay-hybrid-connections-dotnet-get-started-client](../../includes/relay-hybrid-connections-dotnet-get-started-client.md)]
 
-## <a name="5-run-hello-applications"></a>5. Köra hello program
-1. Kör hello-serverprogram.
-2. Kör hello klientprogrammet och skriva in text.
-3. Se till att servern hello programmet konsolen utdata hello text som angetts i hello-klientprogrammet.
+## <a name="5-run-the-applications"></a>5. Köra programmen
+1. Kör serverprogrammet.
+2. Kör klientprogrammet och skriv in lite text.
+3. Se till att serverprogramkonsolen matar ut den text som angavs i klientprogrammet.
 
 ![running-applications](./media/relay-hybrid-connections-dotnet-get-started/running-applications.png)
 

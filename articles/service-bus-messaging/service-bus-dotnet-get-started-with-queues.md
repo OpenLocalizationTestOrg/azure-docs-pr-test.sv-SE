@@ -1,5 +1,5 @@
 ---
-title: "aaaGet igång med Azure Service Bus-köer | Microsoft Docs"
+title: "Komma igång med Azure Service Bus-köer | Microsoft Docs"
 description: "Skriv ett C#-konsolprogram som använder meddelandeköer i Service Bus."
 services: service-bus-messaging
 documentationcenter: .net
@@ -14,59 +14,59 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 06/26/2017
 ms.author: sethm
-ms.openlocfilehash: eaa362ab0eabd2427977398c1deab5dc00105ae9
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 99a377db6341d90d263b98e14227db61dd9beabd
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="get-started-with-service-bus-queues"></a>Komma igång med Service Bus-köer
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
 ## <a name="what-will-be-accomplished"></a>Detta kommer att utföras
-Den här kursen ingår hello följande steg:
+Den här självstudien omfattar följande steg:
 
-1. Skapa ett namnområde för Service Bus använder hello Azure-portalen.
-2. Skapa en Service Bus-kö med hello Azure-portalen.
-3. Skriva en konsol programmet toosend ett meddelande.
-4. Skriv en konsol programmet tooreceive hello skickade meddelanden i hello föregående steg.
+1. Skapa ett Service Bus-namnområde med Azure Portal.
+2. Skapa en Service Bus-kö med Azure Portal.
+3. Skriv ett konsolprogram för att skicka ett meddelande.
+4. Skriv ett konsolprogram som hämtar meddelandet som skickades i föregående steg.
 
 ## <a name="prerequisites"></a>Krav
-1. [Visual Studio 2015 eller senare](http://www.visualstudio.com). hello exemplen i den här självstudiekursen använder Visual Studio 2017.
+1. [Visual Studio 2015 eller senare](http://www.visualstudio.com). I exemplen i den här självstudiekursen används Visual Studio 2017.
 2. En Azure-prenumeration.
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-## <a name="1-create-a-namespace-using-hello-azure-portal"></a>1. Skapa ett namnområde med hello Azure-portalen
-Om du redan har skapat ett namnområde för Service Bus-meddelanden hoppa toohello [skapar en kö med hello Azure-portalen](#2-create-a-queue-using-the-azure-portal) avsnitt.
+## <a name="1-create-a-namespace-using-the-azure-portal"></a>1. Skapa ett namnområde med Azure Portal
+Om du redan har skapat ett namnområde för Service Bus-meddelanden går du vidare till avsnittet [Skapa en kö med hjälp av Azure Portal](#2-create-a-queue-using-the-azure-portal).
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
-## <a name="2-create-a-queue-using-hello-azure-portal"></a>2. Skapa en kö med hello Azure-portalen
-Om du redan har skapat en Service Bus-kö hoppa toohello [överföringskön meddelanden toohello](#3-send-messages-to-the-queue) avsnitt.
+## <a name="2-create-a-queue-using-the-azure-portal"></a>2. Skapa en kö med hjälp av Azure Portal
+Om du redan har skapat en Service Bus-kö går du vidare till avsnittet [Skicka meddelanden till kön](#3-send-messages-to-the-queue).
 
 [!INCLUDE [service-bus-create-queue-portal](../../includes/service-bus-create-queue-portal.md)]
 
-## <a name="3-send-messages-toohello-queue"></a>3. Skicka meddelanden toohello kön
-toosend toohello kön, vi skriva en C#-konsolapp med Visual Studio.
+## <a name="3-send-messages-to-the-queue"></a>3. Skicka meddelanden till kön
+Vi skriver ett C#-konsolprogram med Visual Studio för att skicka meddelanden till kön.
 
 ### <a name="create-a-console-application"></a>Skapa ett konsolprogram
 
 Starta Visual Studio och skapa ett nytt projekt: **Konsolprogram (.NET Framework)**.
 
-### <a name="add-hello-service-bus-nuget-package"></a>Lägg till hello Service Bus-NuGet-paketet
-1. Högerklicka på hello nyskapad projektet och välj **hantera NuGet-paket**.
-2. Klicka på hello **Bläddra** fliken, söka efter **Microsoft Azure Service Bus**, och välj sedan hello **WindowsAzure.ServiceBus** objekt. Klicka på **installera** toocomplete hello installationen och sedan stänga den här dialogrutan.
+### <a name="add-the-service-bus-nuget-package"></a>Lägga till Service Bus-NuGet-paketet
+1. Högerklicka på det nyskapade projektet och välj **Hantera Nuget-paket**.
+2. Klicka på fliken **Bläddra**, sök efter **Microsoft Azure Service Bus** och markera posten **WindowsAzure.ServiceBus**. Klicka på **Installera** för att slutföra installationen och stäng sedan den här dialogrutan.
    
     ![Välj ett NuGet-paket][nuget-pkg]
 
-### <a name="write-some-code-toosend-a-message-toohello-queue"></a>Skriva vissa koden toosend en meddelandekö toohello
-1. Lägg till följande hello `using` instruktionen toohello överkant hello Program.cs-filen.
+### <a name="write-some-code-to-send-a-message-to-the-queue"></a>Skriva kod för att skicka ett meddelande till kön
+1. Lägg till följande `using`-instruktion högst upp i filen Program.cs.
    
     ```csharp
     using Microsoft.ServiceBus.Messaging;
     ```
-2. Lägg till följande kod toohello hello `Main` metod. Ange hello `connectionString` variabeln toohello anslutningssträngen som du fick när du skapar hello namnområde och ange `queueName` toohello kön namn som du använde när du skapar hello kön.
+2. Lägg till följande kod i metoden `Main`. Ställ in variabeln `connectionString` på den anslutningssträng du fick när du skapade namnområdet, och ställ in `queueName` på namnet du använde när du skapade kön.
    
     ```csharp
     var connectionString = "<your connection string>";
@@ -79,7 +79,7 @@ Starta Visual Studio och skapa ett nytt projekt: **Konsolprogram (.NET Framework
 
     client.Send(message);
 
-    Console.WriteLine("Message successfully sent! Press ENTER tooexit program");
+    Console.WriteLine("Message successfully sent! Press ENTER to exit program");
     Console.ReadLine();
     ```
    
@@ -109,25 +109,25 @@ Starta Visual Studio och skapa ett nytt projekt: **Konsolprogram (.NET Framework
 
                 client.Send(message);
 
-                Console.WriteLine("Message successfully sent! Press ENTER tooexit program");
+                Console.WriteLine("Message successfully sent! Press ENTER to exit program");
                 Console.ReadLine();
             }
         }
     }
     ```
-3. Kör programmet hello och kontrollera hello Azure-portalen: hello namnet på kön i hello namnområdet **översikt** bladet. hello kön **Essentials** bladet visas. Observera att hello **Active Meddelandemängd** värdet ska nu vara 1. Varje gång du kör hello avsändarprogrammet utan att hämta hälsningsmeddelande, ökar detta värde med 1. Observera att hello aktuell storlek för hello kön ökar varje gång hello app lägger också till en meddelandekö toohello.
+3. Kör programmet och kontrollera Azure Portal: klicka på köns namn på bladet **Översikt** för namnområdet. Bladet **Grundläggande** för kön visas. Observera att värdet för **Antal aktiva meddelanden** nu bör vara 1. Varje gång du kör sändningsprogrammet utan att hämta meddelanden ökar detta värde med 1. Observera också att den aktuella storleken för kön ökar varje gång programmet lägger till ett meddelande i kön.
    
       ![Meddelandestorlek][queue-message]
 
-## <a name="4-receive-messages-from-hello-queue"></a>4. Ta emot meddelanden från kön hello
+## <a name="4-receive-messages-from-the-queue"></a>4. Ta emot meddelanden från kön
 
-1. tooreceive hälsningsmeddelande som du har skickat skapa ett nytt konsolprogram och lägga till en referens toohello Service Bus-NuGet-paketet, liknande toohello tidigare avsändarprogrammet.
-2. Lägg till följande hello `using` instruktionen toohello överkant hello Program.cs-filen.
+1. Om du vill ta emot de meddelanden du nyss skickade skapar du ett nytt konsolprogram och lägger till en referens till Service Bus NuGet-paketet, ungefär som i det tidigare sändningsprogrammet.
+2. Lägg till följande `using`-instruktion högst upp i filen Program.cs.
    
     ```csharp
     using Microsoft.ServiceBus.Messaging;
     ```
-3. Lägg till följande kod toohello hello `Main` metod. Ange hello `connectionString` variabeln toohello anslutningssträngen som har fått när du skapar hello namnområde och ange `queueName` toohello kön namn som du använde när du skapar hello kön.
+3. Lägg till följande kod i metoden `Main`. Ställ in variabeln `connectionString` på den anslutningssträng du fick när du skapade namnområdet, och ställ in `queueName` på namnet du använde när du skapade kön.
    
     ```csharp
     var connectionString = "<your connection string>";
@@ -141,7 +141,7 @@ Starta Visual Studio och skapa ett nytt projekt: **Konsolprogram (.NET Framework
       Console.WriteLine(String.Format("Message id: {0}", message.MessageId));
     });
    
-    Console.WriteLine("Press ENTER tooexit program");
+    Console.WriteLine("Press ENTER to exit program");
     Console.ReadLine();
     ```
    
@@ -168,13 +168,13 @@ Starta Visual Studio och skapa ett nytt projekt: **Konsolprogram (.NET Framework
             Console.WriteLine(String.Format("Message id: {0}", message.MessageId));
           });
 
-          Console.WriteLine("Press ENTER tooexit program");   
+          Console.WriteLine("Press ENTER to exit program");   
           Console.ReadLine();
         }
       }
     }
     ```
-4. Kör programmet hello och kontrollera hello portal igen. Observera att hello **Active Meddelandemängd** och **aktuella** värden är nu 0.
+4. Kör programmet och kontrollera portalen igen. Observera att värdena för **Antal aktiva meddelanden** och **Aktuell** nu är 0.
    
     ![Kölängd][queue-message-receive]
 
@@ -182,7 +182,7 @@ Grattis! Nu har du skapat en kö, skickat ett meddelande och tagit emot ett medd
 
 ## <a name="next-steps"></a>Nästa steg
 
-Kolla in våra [GitHub-lagret med exempel](https://github.com/Azure/azure-service-bus/tree/master/samples) som demonstrerar några av hello mer avancerade funktioner för Service Bus-meddelanden.
+Kolla in våra [GitHub-databaser med exempel](https://github.com/Azure/azure-service-bus/tree/master/samples) som visar några av de mer avancerade funktionerna i meddelandetjänsten i Service Bus.
 
 <!--Image references-->
 

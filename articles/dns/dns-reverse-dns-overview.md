@@ -1,5 +1,5 @@
 ---
-title: "aaaOverview av omvänd DNS i Azure | Microsoft Docs"
+title: "Översikt över omvänd DNS i Azure | Microsoft Docs"
 description: "Lär dig hur omvänd DNS fungerar och hur den kan användas i Azure"
 services: dns
 documentationcenter: na
@@ -12,38 +12,38 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: jonatul
-ms.openlocfilehash: 687663fb83469ab8e696bb714649d0856915bad6
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 70a1ad070e812951fca3d2b19da12c67f0725dd0
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="overview-of-reverse-dns-and-support-in-azure"></a>Översikt över omvänd DNS- och support i Azure
 
-Den här artikeln ger en översikt över hur omvänd DNS fungerar och hello omvänd DNS-scenarier som stöds i Azure.
+Den här artikeln ger en översikt över hur omvänd DNS fungerar och omvänd DNS-scenarier som stöds i Azure.
 
 ## <a name="what-is-reverse-dns"></a>Vad är omvänd DNS?
 
-Vanliga DNS-poster aktiverar mappning från en DNS-namnet (t.ex 'www.contoso.com) tooan IP-adress (till exempel 64.4.6.100).  Omvänd DNS gör hello översättning av en IP-adress (64.4.6.100) tillbaka tooa namnet ('www.contoso.com).
+Vanliga DNS-poster aktiverar en mappning från en DNS-namn (t.ex 'www.contoso.com) till en IP-adress (till exempel 64.4.6.100).  Omvänd DNS gör översättningen av IP-adress (64.4.6.100) till ett namn ('www.contoso.com).
 
-Omvänd DNS-poster används i en mängd olika situationer. Omvänd DNS-poster används ofta för att bekämpa skräppost e-post genom att verifiera hello avsändaren av ett e-postmeddelande.  hello mottagande e-server hämtar hello omvänd DNS-post för hello skickar serverns IP-adress och verifierar om som värd är auktoriserade toosend e-post från hello ursprung domän. 
+Omvänd DNS-poster används i en mängd olika situationer. Omvänd DNS-poster används ofta för att bekämpa skräppost e-post genom att verifiera avsändaren av ett e-postmeddelande.  Ta emot e-postservern hämtar omvänd DNS-posten för skicka-serverns IP-adress och kontrollerar om värden har behörighet att skicka e-post från den ursprungliga domänen. 
 
 ## <a name="how-reverse-dns-works"></a>Hur omvänd DNS fungerar
 
-Omvänd DNS-poster finns i särskilda DNS-zoner, kallas ”ARPA-zoner.  Dessa zoner bildar en separat DNS parallellt med hello vanliga hierarkin som är värd för domäner, till exempel ”contoso.com”.
+Omvänd DNS-poster finns i särskilda DNS-zoner, kallas ”ARPA-zoner.  Dessa zoner bildar en separat DNS parallellt med vanliga hierarkin värd domäner, till exempel ”contoso.com”.
 
-Till exempel implementeras hello DNS-posten ”www.contoso.com” med en post i DNS ”A” med hello namnet www om du i hello zonen ”contoso.com”.  Den här A-posten pekar toohello motsvarande IP-adress i det här fallet 64.4.6.100.  hello omvänd sökning implementeras separat, med hjälp av en 'PTR-post med namnet '100' i hello zon '6.4.64.in-addr.arpa' (Observera att IP-adresser återförs i ARPA-zoner.)  Den här PTR-post pekar om den har konfigurerats korrekt toohello namnet ”www.contoso.com”.
+Till exempel implementeras DNS-poster ”www.contoso.com” med hjälp av DNS-A-post med namnet www i zonen contoso.com.  Den här A-posten pekar på den motsvarande IP-adressen i det här fallet 64.4.6.100.  Omvänd sökning implementeras separat, med hjälp av en 'PTR-post med namnet '100' i zonen '6.4.64.in-addr.arpa' (Observera att IP-adresser återförs i ARPA-zoner.)  Den här PTR-post pekar om den har konfigurerats på rätt sätt, på namnet www.contoso.com.
 
-När en organisation tilldelas ett IP-Adressblock måste hämta de också hello rätt toomanage hello motsvarande ARPA zon. Hej ARPA-zoner som motsvarande toohello IP-adress-block som används av Azure på och hanteras av Microsoft. Leverantören kan vara värd för hello ARPA zon för din egen IP-adresser som du eller tillåta tooyou värden hello ARPA zon i en DNS-tjänsten du väljer, till exempel Azure DNS.
+När en organisation tilldelas ett IP-Adressblock måste hämta de också behörighet för att hantera motsvarande ARPA-zon. ARPA-zoner som motsvarar IP-Adressblock som används av Azure på och hanteras av Microsoft. Leverantören kan vara värd för zonen ARPA för din egen IP-adresser som du eller kan tillåta att du vara värd för zonen ARPA i en DNS-tjänsten du väljer, till exempel Azure DNS.
 
 > [!NOTE]
-> Vanliga DNS-sökningar och omvänd DNS-sökning implementeras i separata, parallella DNS-hierarkier. hello omvänd sökning för ”www.contoso.com” är **inte** finns i hello zonen ”contoso.com”, i stället den finns i hello ARPA zon för hello motsvarande IP-adressintervall. Separata zoner används för IPv4 och IPv6-Adressblock.
+> Vanliga DNS-sökningar och omvänd DNS-sökning implementeras i separata, parallella DNS-hierarkier. Omvänd sökning för ”www.contoso.com” är **inte** finns i zonen ”contoso.com”, i stället den finns i zonen ARPA för motsvarande IP-adressintervall. Separata zoner används för IPv4 och IPv6-Adressblock.
 
 ### <a name="ipv4"></a>IPv4
 
-hello namnet på en IPv4 zon för omvänd sökning måste vara i hello följande format: `<IPv4 network prefix in reverse order>.in-addr.arpa`.
+Namnet på en IPv4 zon för omvänd sökning bör vara i följande format: `<IPv4 network prefix in reverse order>.in-addr.arpa`.
 
-Till exempel när du skapar en zon för omvänd toohost poster för värdar med IP-adresser som finns i hello 192.0.2.0/24 prefix, skapas hello zonnamnet genom att isolera hello nätverksprefixet av hello adress (192.0.2) och sedan återföra hello ordning (2.0.192) och lägger till hello suffix `.in-addr.arpa`.
+Till exempel när du skapar en zon för omvänd till värdposter för värdar med IP-adresser som finns i prefixet 192.0.2.0/24 skapas zonnamnet genom att isolera nätverksprefixet adress (192.0.2) och återföra ordning (2.0.192) och lägga till suffix `.in-addr.arpa`.
 
 |Undernät-klass|Nätverksprefixet  |Inverterad nätverksprefixet  |Standard-suffix  |Zonnamn på för omvänd |
 |-------|----------------|------------|-----------------|---------------------------|
@@ -53,13 +53,13 @@ Till exempel när du skapar en zon för omvänd toohost poster för värdar med 
 
 ### <a name="classless-ipv4-delegation"></a>Classless IPv4-delegering
 
-I vissa fall hello IP-adressintervallet allokerade tooan organisation är mindre än en klass C (/ 24) intervall. I det här fallet hello IP-adressintervall hamnar inte på en zon gräns inom hello `.in-addr.arpa` zonen hierarki och därför kan inte delegeras som en underordnad zon.
+I vissa fall kan det IP-adressintervall som allokerats till en organisation som är mindre än en klass C (/ 24) intervall. I detta fall faller inte IP-intervallet på en zon gräns inom den `.in-addr.arpa` zonen hierarki och därför kan inte delegeras som en underordnad zon.
 
-I stället en annan mekanism används tootransfer kontroll av enskilda omvänd sökning (PTR) poster tooa dedikerad DNS-zon. Den här mekanismen delegerar en underordnad zon för varje IP-adressintervall och maps varje IP-adressen i hello vara individuellt toothat underordnade zonen med CNAME-poster.
+I stället används en annan mekanism för att överföra kontroll av enskilda omvänd sökning (PTR) poster till en dedikerad DNS-zon. Den här mekanismen delegerar en underordnad zon för varje IP-adressintervall och mappar varje IP-adress i intervallet individuellt till den underordnade zonen med CNAME-poster.
 
-Anta exempelvis att en organisation beviljas hello IP-intervallet 192.0.2.128/26 av dess Internetleverantör. Detta representerar 64 IP-adresser från 192.0.2.128 too192.0.2.191. Omvänd DNS för det här intervallet implementeras på följande sätt:
-- hello organisation skapar en zon för omvänd sökning som kallas 128-26.2.0.192.in-addr.arpa. hello prefixet ' 128-26' representerar hello nätverket segment tilldelat toohello organisation inom hello klass C (/ 24) intervall.
-- hello ISP skapar NS-poster tooset in hello DNS-delegering för hello ovan zonen från hello klass C överordnade zonen. Det skapar också CNAME-poster i hello överordnad (klass C) zon för omvänd sökning mappning varje IP-adress i hello IP-intervallet toohello nya zonen som skapas av hello organisation:
+Anta exempelvis att en organisation beviljas IP-intervallet 192.0.2.128/26 av dess Internetleverantör. Detta representerar 64 IP-adresser från 192.0.2.128 till 192.0.2.191. Omvänd DNS för det här intervallet implementeras på följande sätt:
+- Organisationen skapar en zon för omvänd sökning som kallas 128-26.2.0.192.in-addr.arpa. Prefixet ' 128-26' representerar det nätverkssegment som tilldelats organisationen inom klass C (/ 24) intervall.
+- Internetleverantören skapar NS-poster att ställa in DNS-delegering för zonen senare från den överordnade zonen klass C. Det skapar också CNAME-poster i zonen för omvänd sökning av överordnad (klass C) mappning av varje IP-adress i IP-adressintervall till den nya zonen som skapats av organisationen:
 
 ```
 $ORIGIN 2.0.192.in-addr.arpa
@@ -72,7 +72,7 @@ $ORIGIN 2.0.192.in-addr.arpa
 131       CNAME    131.128-26.2.0.192.in-addr.arpa
 ; etc
 ```
-- sedan hello organisation hanterar hello enskilda PTR-poster i sina underordnade zonen.
+- Organisation sedan hanterar enskilda PTR-poster i sina underordnade zonen.
 
 ```
 $ORIGIN 128-26.2.0.192.in-addr.arpa
@@ -82,13 +82,13 @@ $ORIGIN 128-26.2.0.192.in-addr.arpa
 131      PTR    partners.contoso.com
 ; etc
 ```
-En omvänd sökning för hello IP-adressen '192.0.2.129' för en PTR-post med namnet '129.2.0.192.in-addr.arpa'. Den här frågan matchas via hello CNAME i hello överordnade zonen toohello PTR-post i hello underordnad zon.
+En omvänd sökning för IP-adressen '192.0.2.129' frågor för en PTR-post med namnet '129.2.0.192.in-addr.arpa'. Den här frågan matchas via CNAME i den överordnade zonen till PTR-post i den underordnade zonen.
 
 ### <a name="ipv6"></a>IPv6
 
-hello namnet på en zon för omvänd sökning av IPv6-bör vara i hello följande format:`<IPv6 network prefix in reverse order>.ip6.arpa`
+Namnet på en zon för omvänd sökning IPv6 bör vara i följande format:`<IPv6 network prefix in reverse order>.ip6.arpa`
 
-Till exempel. När du skapar en zon för omvänd toohost poster för värdar med IP-adresser som finns i hello 2001:db8:1000:abdc:: / 64 prefix hello zonnamnet skapas genom att isolera hello nätverksprefixet hello adress (2001:db8:abdc::). Expandera bredvid hello IPv6 nätverket prefixet tooremove [noll komprimering](https://technet.microsoft.com/library/cc781672(v=ws.10).aspx), om den har använt tooshorten hello IPv6-adressprefix (2001:0db8:abdc:0000::). Omvänd hello ordning, med en period som hello mellan varje hexadecimalt värde hello prefix, toobuild hello omvänd nätverksprefixet (`0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2`) och lägga till suffix för hello `.ip6.arpa`.
+Till exempel. Skapa en zon för omvänd till värdposter för värdar med IP-adresser som finns i 2001:db8:1000:abdc när:: / 64 prefix zonnamnet skapas genom att isolera nätverksprefixet av adressen (2001:db8:abdc::). Expandera bredvid IPv6-prefix för nätverket att ta bort [noll komprimering](https://technet.microsoft.com/library/cc781672(v=ws.10).aspx), om den används för att korta ned IPv6-adressprefix (2001:0db8:abdc:0000::). I omvänd ordning med en period som avgränsare mellan varje hexadecimalt värde prefix, skapa inverterad nätverksprefixet (`0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2`) och lägger till suffixet `.ip6.arpa`.
 
 
 |Nätverksprefixet  |Utökade och inverterad nätverksprefixet |Standard-suffix |Zonnamn på för omvänd  |
@@ -99,18 +99,18 @@ Till exempel. När du skapar en zon för omvänd toohost poster för värdar med
 
 ## <a name="azure-support-for-reverse-dns"></a>Azure-stöd för omvänd DNS
 
-Azure stöder två separata scenarier som rör tooreverse DNS:
+Azure stöder två separata scenarier som gäller för omvänd DNS:
 
-**Värd för hello omvänd sökning zonen motsvarande tooyour IP-adressintervall.**
-Azure DNS kan användas för[värd zoner för omvänd sökning och hantera hello PTR-poster för varje omvänd DNS-sökning](dns-reverse-dns-hosting.md), för både IPv4 och IPv6.  Hej skapar hello (ARPA) zon för omvänd sökning, ställa in hello delegering och konfigurera PTR poster är hello samma som för vanliga DNS-zoner.  hello är bara skillnaderna att hello delegering måste vara konfigurerat via din Internetleverantör i stället för DNS-registratorns och endast hello PTR posttyp ska användas.
+**Värd för zon för omvänd sökning som motsvarar IP-adressintervall.**
+Azure DNS kan användas för att [värd zoner för omvänd sökning och hantera PTR-poster för varje omvänd DNS-sökning](dns-reverse-dns-hosting.md), för både IPv4 och IPv6.  Processen för att skapa en zon för omvänd sökning (ARPA), konfigurera delegeringen och konfigurera PTR-poster är desamma som för vanliga DNS-zoner.  Endast skillnaderna är att delegeringen måste konfigureras via din Internetleverantör i stället för DNS-registratorns och endast posttyp PTR ska användas.
 
-**Konfigurera hello omvänd DNS-post för hello IP-adress som tilldelats tooyour Azure-tjänsten.** Azure gör det möjligt för[konfigurera hello omvänd sökning för hello IP-adresser tilldelas tooyour Azure-tjänsten](dns-reverse-dns-for-azure-services.md).  Den här omvänd sökning har konfigurerats i Azure som en PTR-post i hello motsvarande ARPA zon.  Dessa ARPA-zoner, motsvarande tooall hello IP-adressintervall som används av Azure, hanteras av Microsoft
+**Konfigurera omvänd DNS-posten för IP-adress som tilldelats till din Azure-tjänsten.** Azure kan du [konfigurera omvänd sökning för IP-adresser som allokerats till Azure-tjänstens](dns-reverse-dns-for-azure-services.md).  Den här omvänd sökning har konfigurerats i Azure som en PTR-post i zonen motsvarande ARPA.  Dessa ARPA-zoner som motsvarar alla IP-adressintervall som används av Azure, hanteras av Microsoft
 
 ## <a name="next-steps"></a>Nästa steg
 
 Läs mer om omvänd DNS [omvänd DNS-sökning på Wikipedia](http://en.wikipedia.org/wiki/Reverse_DNS_lookup).
 <br>
-Lär dig hur för[värden hello zon för omvänd sökning för din ISP-tilldelad IP-adressintervall i Azure DNS](dns-reverse-dns-for-azure-services.md).
+Lär dig hur du [värd zon för omvänd sökning för din ISP-tilldelad IP-adressintervall i Azure DNS](dns-reverse-dns-for-azure-services.md).
 <br>
-Lär dig hur för[hantera omvänd DNS-posterna för din Azure-tjänster](dns-reverse-dns-for-azure-services.md).
+Lär dig hur du [hantera omvänd DNS-posterna för din Azure-tjänster](dns-reverse-dns-for-azure-services.md).
 

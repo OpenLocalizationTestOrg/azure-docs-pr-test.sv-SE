@@ -1,6 +1,6 @@
 ---
-title: aaaConnect tooAzure Analysis Services med Excel | Microsoft Docs
-description: "Lär dig hur tooconnect tooan Azure Analysis Services-servern med hjälp av Excel."
+title: Anslut till Azure Analysis Services med Excel | Microsoft Docs
+description: "Lär dig hur du ansluter till en Azure Analysis Services-server med hjälp av Excel."
 services: analysis-services
 documentationcenter: 
 author: minewiskan
@@ -15,30 +15,30 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 08/15/2017
 ms.author: owend
-ms.openlocfilehash: 175b83e7d936716a626aa4b3bf22b5598bb983d2
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: d51b6980120f1cf9bc8d053d463a73ac600b915f
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="connect-with-excel"></a>Anslut till Excel
 
-När du har skapat en server i Azure och distribuerat en tabellmodell tooit, du är klar tooconnect och utforska data.
+När du har skapat en server i Azure och distribuerat en tabellmodell till den, är du redo att ansluta och utforska data.
 
 
 ## <a name="connect-in-excel"></a>Ansluta i Excel
 
-Ansluter tooa server i Excel stöds med hämta Data i Excel 2016. Anslutning med hjälp av hello av guiden Importera tabell i Power Pivot stöds inte. 
+Ansluter till en server i Excel stöds med hämta Data i Excel 2016. Det går inte att ansluta med hjälp av guiden Importera tabell i Power Pivot. 
 
-**tooconnect i Excel 2016**
+**Ansluta Excel 2016**
 
-1. I Excel 2016 på hello **Data** band klickar du på **hämta externa Data** > **från andra källor** > **från Analysis Services** .
+1. I Excel 2016, på den **Data** band klickar du på **hämta externa Data** > **från andra källor** > **från Analysis Services**.
 
-2. I hello guiden i **servernamn**, ange hello servernamn inklusive protokoll och URI. I **logga in autentiseringsuppgifter**väljer **Använd hello följande användarnamn och lösenord**, och skriv sedan hello organisationens namn, till exempel nancy@adventureworks.com, och lösenord.
+2. I guiden Dataanslutning i **servernamn**, ange namnet på servern inklusive protokoll och URI. I **logga in autentiseringsuppgifter**väljer **använder följande användarnamn och lösenord**, och skriv sedan organisationens användarnamnet, till exempel nancy@adventureworks.com, och lösenord.
 
     ![Ansluta från Excel-inloggning](./media/analysis-services-connect-excel/aas-connect-excel-logon.png)
 
-3. I **Välj databas och tabell**välja hello databas och modell eller perspektiv och klicka sedan på **Slutför**.
+3. I **Välj databas och tabell**, väljer du databasen och modellen eller perspektiv och klicka sedan på **Slutför**.
    
     ![Ansluta från Excel väljer modellen](./media/analysis-services-connect-excel/aas-connect-excel-select.png)
 

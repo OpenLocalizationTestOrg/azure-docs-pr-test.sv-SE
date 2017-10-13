@@ -1,26 +1,26 @@
 ---
-title: "aaaAzure Mobile Apps-dokumentation – självstudier, API-referens | Microsoft Docs"
-description: "Lär dig hur toouse Mobile Apps i Azure App Service toobuild och värden interna iOS, Android eller Windows-appar eller plattformsoberoende appar med Xamarin- eller Cordova."
-services: app-service\mobile
-author: carolz
+title: "Dokumentation om Azure Mobile Apps – Självstudier, API-referens | Microsoft Docs"
+description: "Lär dig hur du använder Mobile Apps i Azure App Service för att bygga och hantera interna iOS-, Android-, Windows- eller plattformsoberoende appar med hjälp av Xamarin eller Cordova."
+services: app-service-mobile
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
-ms.service: app-service\mobile
+ms.service: app-service-mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 09b103b274c66f515d9a34bbdcb54cf0ff3a035a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: d602d833286d1906a2e9bd38d3e99d737146310b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="mobile-apps-documentation"></a>Dokumentation om Mobile Apps
 
-Lär dig hur toouse Mobile Apps i Azure App Service toobuild interna iOS, Android eller Windows-appar eller plattformsoberoende appar med Xamarin- eller Cordova. Självstudier, videor, klient-SDK-dokumentationen och mer visar hur toobuild och värden hello serverdelen för alla mobila appar.
+Lär dig hur du använder Mobile Apps i Azure App Service för att bygga interna iOS-, Android-, Windows- eller plattformsoberoende appar med hjälp av Xamarin eller Cordova. Självstudier, videor, klient-SDK-dokumentation och mycket mer visar hur du bygger och hanterar serverdelen för alla sorters mobilappar.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -142,7 +142,7 @@ Lär dig hur toouse Mobile Apps i Azure App Service toobuild interna iOS, Androi
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Kom igång med att skapa en xamarin.Android-app</h3>
+                        <h3>Kom igång med att skapa en Xamarin.Android-app</h3>
                     </div>
                 </div>
             </div>
@@ -160,7 +160,7 @@ Lär dig hur toouse Mobile Apps i Azure App Service toobuild interna iOS, Androi
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Kom igång med att skapa en xamarin.Forms-app</h3>
+                        <h3>Kom igång med att skapa en Xamarin.Forms-app</h3>
                     </div>
                 </div>
             </div>

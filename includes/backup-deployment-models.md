@@ -1,4 +1,4 @@
-hello Azure Backup-tjänsten har två typer av valv - hello Backup-valvet och hello Recovery Services-valvet. först kom hello Backup-valvet. Hello Recovery Services-valvet Kom sedan längs toosupport hello expanderas Resource Manager distributioner. Microsoft rekommenderar att använda Resource Manager-distributioner, såvida du inte måste ha en klassisk distribution.
+Azure Backup-tjänsten har två typer av valv – Backup-valvet och Recovery Services-valvet. Först kom Backup-valvet. Recovery Services-valvet tillkom senare som stöd för utökade Resource Manager-distributioner. Microsoft rekommenderar att använda Resource Manager-distributioner, såvida du inte måste ha en klassisk distribution.
 
 | **Distribution** | **Portal** | **Valv** |
 | --- | --- | --- |
@@ -6,7 +6,7 @@ hello Azure Backup-tjänsten har två typer av valv - hello Backup-valvet och he
 | Resource Manager |[Azure](https://portal.azure.com) |Recovery Services |
 
 > [!NOTE]
-> Backup-valvet kan inte skydda Resource Manager-distribuerade lösningar. Du kan dock använda en återställningstjänster valvet tooprotect classically distribuerade servrar och virtuella datorer.  
+> Backup-valvet kan inte skydda Resource Manager-distribuerade lösningar. Du kan dock använda ett Recovery Services-valv för att skydda servrar och virtuella datorer som distribuerats klassiskt.  
 > 
 > 
 

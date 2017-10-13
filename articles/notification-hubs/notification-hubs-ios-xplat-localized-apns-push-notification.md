@@ -1,6 +1,6 @@
 ---
-title: "aaaNotification lokaliserade bryta nyheter kurs om Händelsehubbar för iOS"
-description: "Lär dig hur toouse Azure Service Bus Notification Hubs toosend lokaliserade senaste nyheterna meddelanden (iOS)."
+title: "Notification Hubs lokaliserade bryta nyheter kursen för iOS"
+description: "Lär dig hur du använder Azure Service Bus Notification Hubs för att skicka lokaliserade senaste nyheterna meddelanden (iOS)."
 services: notification-hubs
 documentationcenter: ios
 author: ysxu
@@ -14,13 +14,13 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 10/03/2016
 ms.author: yuaxu
-ms.openlocfilehash: 9fe88c0440e93b72d349574160ddcd85a7ba0be0
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: fd2b7d9dfd4f432bbcbaa3ed76f8bec0b9677e17
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="use-notification-hubs-toosend-localized-breaking-news-tooios-devices"></a>Använda Notification Hubs toosend lokaliserade senaste nyheterna tooiOS enheter
+# <a name="use-notification-hubs-to-send-localized-breaking-news-to-ios-devices"></a>Använda Notification Hubs för att skicka lokaliserade senaste nyheterna till iOS-enheter
 > [!div class="op_single_selector"]
 > * [Windows Store C#](notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md)
 > * [iOS](notification-hubs-ios-xplat-localized-apns-push-notification.md)
@@ -28,26 +28,26 @@ ms.lasthandoff: 10/06/2017
 > 
 
 ## <a name="overview"></a>Översikt
-Det här avsnittet beskrivs hur du toouse hello [mallar](notification-hubs-templates-cross-platform-push-messages.md) funktion i Azure Notification Hubs toobroadcast bryter nyheter meddelanden som har översatts av språk och enheten. I den här kursen börjar du med hello iOS-app som skapats i [använda Notification Hubs toosend senaste nytt]. När du är klar, kommer du att kunna tooregister kategorier som du är intresserad av att ange ett språk i vilka tooreceive hello meddelanden och ta emot endast push-meddelanden för hello valda kategorier på det språket.
+Det här avsnittet visar hur du använder den [mallar](notification-hubs-templates-cross-platform-push-messages.md) funktion i Azure Notification Hubs för att sända senaste nyheterna meddelanden som har översatts av språk och enheten. I den här kursen börjar du med iOS-app som skapats i [använda Notification Hubs för att skicka de senaste nyheterna]. När du är klar kommer du att kunna registrera för kategorier som du vill, ange ett språk som ska ta emot meddelanden och får endast push-meddelanden i valda kategorier på det språket.
 
-Det finns två delar toothis scenariot:
+Det finns två delar i det här scenariot:
 
-* iOS-app kan klienten enheter toospecify ett språk och toosubscribe toodifferent bryter nyhetskategorier.
-* hello backend-sänder hello-meddelanden med hjälp av hello **taggen** och **mallen** feautres i Azure Notification Hubs.
+* iOS-app kan klienten enheter för att ange ett språk och prenumerera på olika senaste nyheterna kategorier.
+* backend-skickar meddelanden med hjälp av den **taggen** och **mallen** feautres i Azure Notification Hubs.
 
 ## <a name="prerequisites"></a>Krav
-Du måste redan har slutfört hello [använda Notification Hubs toosend senaste nytt] självstudier och ha hello-kod som är tillgängliga, eftersom den här kursen bygger direkt på koden.
+Du måste redan har slutfört den [använda Notification Hubs för att skicka de senaste nyheterna] självstudier och har kod som är tillgängliga, eftersom den här kursen bygger direkt på koden.
 
 Visual Studio 2012 eller senare är valfritt.
 
 ## <a name="template-concepts"></a>Mall-begrepp
-I [använda Notification Hubs toosend senaste nytt] du skapat en app som används för **taggar** toosubscribe toonotifications för olika nyhetskategorier.
-Många appar dock mål flera marknader och kräver lokalisering. Detta innebär att hello hello meddelanden själva innehållet har toobe lokaliserade och levererat toohello korrigera uppsättning enheter.
-I det här avsnittet visas hur toouse hello **mallen** funktion i Notification Hubs tooeasily leverera lokaliserade senaste nyheterna meddelanden.
+I [använda Notification Hubs för att skicka de senaste nyheterna] du skapat en app som används för **taggar** att prenumerera på meddelanden om nyheterna i olika kategorier.
+Många appar dock mål flera marknader och kräver lokalisering. Detta innebär att innehållet i meddelandena själva måste lokaliserade och levereras till rätt uppsättning enheter.
+I det här avsnittet visar vi hur du använder den **mallen** funktion i Notification Hubs för att leverera enkelt lokaliserade senaste nyheterna meddelanden.
 
-Obs: enkelriktade toosend lokaliserade meddelanden är toocreate flera versioner av varje tagg. Till exempel toosupport engelska, franska och Mandarin kan vi behöver tre olika taggar för world news: ”world_en”, ”world_fr” och ”world_ch”. Vi har sedan toosend en lokaliserad version av hello world news tooeach taggar. I det här avsnittet använder vi mallar tooavoid hello spridning av taggar och hello krav flera meddelanden.
+Obs: ett sätt att skicka lokaliserade meddelanden är att skapa flera versioner av varje tagg. Till exempel för att stödja engelska, franska och Mandarin, vi behöver tre olika taggar för world news: ”world_en”, ”world_fr” och ”world_ch”. Vi har sedan skicka en lokaliserad version av world nyheter till var och en av dessa taggar. Vi använder mallar för att undvika alltför många taggar och kravet flera meddelanden i det här avsnittet.
 
-På en hög nivå mallar är ett sätt toospecify hur en specifik enhet bör få ett meddelande. hello mallen anger hello exakt nyttolastformatet genom att referera tooproperties som ingår i hello-meddelande som skickas av din appens serverdel. I vårt fall skickar vi ett språkvariant-oberoende meddelande som innehåller alla språk som stöds:
+Mallar är ett sätt att ange hur en specifik enhet bör få ett meddelande på en hög nivå. Mallen anger exakt nyttolastformatet genom att referera till egenskaper som ingår i meddelandet som skickas av din appens serverdel. I vårt fall skickar vi ett språkvariant-oberoende meddelande som innehåller alla språk som stöds:
 
     {
         "News_English": "...",
@@ -55,7 +55,7 @@ På en hög nivå mallar är ett sätt toospecify hur en specifik enhet bör få
         "News_Mandarin": "..."
     }
 
-Vi kommer sedan att säkerställa att registrera enheter med en mall som refererar rätt toohello-egenskapen. Till exempel registrerar en iOS-app som vill tooregister för franska nyheter hello följande:
+Vi kommer sedan att säkerställa att registrera enheter med en mall som refererar till egenskapen korrekt. Exempelvis kan registrera en iOS-app som du vill registrera för franska nyheter följande:
 
     {
         aps:{
@@ -65,19 +65,19 @@ Vi kommer sedan att säkerställa att registrera enheter med en mall som referer
 
 Mallar är en mycket kraftfull funktion kan du läsa mer om i vår [mallar](notification-hubs-templates-cross-platform-push-messages.md) artikel.
 
-## <a name="hello-app-user-interface"></a>användargränssnittet för hello app
-Vi kommer nu att ändra hello bryta nyheter app som du skapade i avsnittet hello [använda Notification Hubs toosend senaste nytt] toosend lokaliserade senaste nyheterna med hjälp av mallar.
+## <a name="the-app-user-interface"></a>Användargränssnittet för app
+Vi kommer nu att ändra bryta nyheter appen som du skapade i avsnittet [använda Notification Hubs för att skicka de senaste nyheterna] att skicka lokaliserade senaste nytt med hjälp av mallar.
 
-Lägga till en segmenterade kontroll med hello tre språk som vi stöder din MainStoryboard_iPhone.storyboard: engelska, franska och Mandarin.
+Lägga till en segmenterade kontroll med de tre språken som vi stöder din MainStoryboard_iPhone.storyboard: engelska, franska och Mandarin.
 
 ![][13]
 
-Gör att tooadd en IBOutlet i din ViewController.h enligt nedan:
+Kontrollera sedan att lägga till en IBOutlet i din ViewController.h enligt nedan:
 
 ![][14]
 
-## <a name="building-hello-ios-app"></a>Skapa hello iOS-app
-1. Lägg till hello i din Notification.h *retrieveLocale* -metoden och ändra hello store och prenumerera metoder som visas nedan:
+## <a name="building-the-ios-app"></a>Skapa iOS-app
+1. Lägg till i din Notification.h den *retrieveLocale* -metoden och ändra arkivet och prenumerera metoder som visas nedan:
    
         - (void) storeCategoriesAndSubscribeWithLocale:(int) locale categories:(NSSet*) categories completion: (void (^)(NSError* error))completion;
    
@@ -87,7 +87,7 @@ Gör att tooadd en IBOutlet i din ViewController.h enligt nedan:
    
         - (int) retrieveLocale;
    
-    Ändra hello i din Notification.m *storeCategoriesAndSubscribe* metoden genom att lägga till hello språkvariantparameter och lagra den i hello användarens standardinställningar:
+    Ändra i din Notification.m den *storeCategoriesAndSubscribe* metoden genom att lägga till parametern språk och lagrar den i användarens standardinställningar:
    
         - (void) storeCategoriesAndSubscribeWithLocale:(int) locale categories:(NSSet *)categories completion:(void (^)(NSError *))completion {
             NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
@@ -98,7 +98,7 @@ Gör att tooadd en IBOutlet i din ViewController.h enligt nedan:
             [self subscribeWithLocale: locale categories:categories completion:completion];
         }
    
-    Ändra hello *prenumerera* metoden tooinclude hello språk:
+    Ändrar den *prenumerera* metod för att inkludera språkinställningen:
    
         - (void) subscribeWithLocale: (int) locale categories:(NSSet *)categories completion:(void (^)(NSError *))completion{
             SBNotificationHub* hub = [[SBNotificationHub alloc] initWithConnectionString:@"<connection string>" notificationHubPath:@"<hub name>"];
@@ -121,9 +121,9 @@ Gör att tooadd en IBOutlet i din ViewController.h enligt nedan:
             [hub registerTemplateWithDeviceToken:self.deviceToken name:@"localizednewsTemplate" jsonBodyTemplate:template expiryTemplate:@"0" tags:categories completion:completion];
         }
    
-    Observera hur vi använder hello metoden *registerTemplateWithDeviceToken*, i stället för *registerNativeWithDeviceToken*. När vi registrerar för en mall har vi tooprovide hello json-mall och ett namn för mallen hello (som vår app kanske vill tooregister olika mallar). Se till att tooregister kategorier som taggar, som vi vill toomake att tooreceive hello notifciations för dessa nyheter.
+    Observera hur vi använder metoden *registerTemplateWithDeviceToken*, i stället för *registerNativeWithDeviceToken*. När vi registrerar för en mall behöver vi json-mall och ett namn för mallen (som vår app kanske vill registrera olika mallar). Se till att registrera din kategorier som taggar, som vi vill se till att ta emot notifciations för dessa nyheter.
    
-    Lägg till en metod tooretrieve hello språkinställning från hello standardinställningar för användare:
+    Lägg till en metod för att hämta språkinställningen från standardinställningar för användare:
    
         - (int) retrieveLocale {
             NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
@@ -132,11 +132,11 @@ Gör att tooadd en IBOutlet i din ViewController.h enligt nedan:
    
             return locale < 0?0:locale;
         }
-2. Nu när vi ändrade vår meddelanden klass har vi till att vår ViewController gör toomake användning av hello nya UISegmentControl. Lägg till följande rad i hello hello *viewDidLoad* metoden toomake att tooshow hello språk som är markerade:
+2. Nu när vi ändrade vår meddelanden klass har vi se till att vår ViewController gör användning av den nya UISegmentControl. Lägg till följande rad i den *viewDidLoad* metod för att se till att visa det språk som är markerade:
    
         self.Locale.selectedSegmentIndex = [notifications retrieveLocale];
    
-    I din *prenumerera* metod, ändra anrop-toohello *storeCategoriesAndSubscribe* toohello följande:
+    I din *prenumerera* metod, ändra anrop till den *storeCategoriesAndSubscribe* till följande:
    
         [notifications storeCategoriesAndSubscribeWithLocale: self.Locale.selectedSegmentIndex categories:[NSSet setWithArray:categories] completion: ^(NSError* error) {
             if (!error) {
@@ -148,7 +148,7 @@ Gör att tooadd en IBOutlet i din ViewController.h enligt nedan:
                 NSLog(@"Error subscribing: %@", error);
             }
         }];
-3. Slutligen har du tooupdate hello *didRegisterForRemoteNotificationsWithDeviceToken* metod i din AppDelegate.m så att registreringen kan uppdateras korrekt när appen startar. Ändra din anropet toohello *prenumerera* metod för meddelanden med hello följande:
+3. Slutligen kan du behöva uppdatera den *didRegisterForRemoteNotificationsWithDeviceToken* metod i din AppDelegate.m så att registreringen kan uppdateras korrekt när appen startar. Ändra anrop till den *prenumerera* metod för meddelanden med följande:
    
         NSSet* categories = [self.notifications retrieveCategories];
         int locale = [self.notifications retrieveLocale];
@@ -161,8 +161,8 @@ Gör att tooadd en IBOutlet i din ViewController.h enligt nedan:
 ## <a name="optional-send-localized-template-notifications-from-net-console-app"></a>(valfritt) Skicka meddelanden om lokaliserade mallar från .NET-konsolapp.
 [!INCLUDE [notification-hubs-localized-back-end](../../includes/notification-hubs-localized-back-end.md)]
 
-## <a name="optional-send-localized-template-notifications-from-hello-device"></a>(valfritt) Skicka meddelanden om lokaliserade mallar från hello enhet
-Om du inte har åtkomst tooVisual Studio eller vill toojust testa att skicka meddelanden om hello lokaliserade mallar direkt från hello appen på hello enhet.  Du kan enkelt lägga till hello lokaliserade mallen parametrar toohello `SendNotificationRESTAPI` metod som du definierade i hello tidigare kursen.
+## <a name="optional-send-localized-template-notifications-from-the-device"></a>(valfritt) Skicka meddelanden om lokaliserade mallar från enheten
+Om du inte har åtkomst till Visual Studio eller bara testa skicka lokaliserade mall-meddelanden direkt från appen på enheten.  Du kan enkelt lägga till lokaliserade mallens parametrar för att den `SendNotificationRESTAPI` metod som du definierade i föregående kursen.
 
         - (void)SendNotificationRESTAPI:(NSString*)categoryTag
         {
@@ -171,18 +171,18 @@ Om du inte har åtkomst tooVisual Studio eller vill toojust testa att skicka med
 
             NSString *json;
 
-            // Construct hello messages REST endpoint
+            // Construct the messages REST endpoint
             NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@/messages/%@", HubEndpoint,
                                                HUBNAME, API_VERSION]];
 
-            // Generated hello token toobe used in hello authorization header.
+            // Generated the token to be used in the authorization header.
             NSString* authorizationToken = [self generateSasToken:[url absoluteString]];
 
-            //Create hello request tooadd hello template notification message toohello hub
+            //Create the request to add the template notification message to the hub
             NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
             [request setHTTPMethod:@"POST"];
 
-            // Add hello category as a tag
+            // Add the category as a tag
             [request setValue:categoryTag forHTTPHeaderField:@"ServiceBusNotification-Tags"];
 
             // Template notification
@@ -201,13 +201,13 @@ Om du inte har åtkomst tooVisual Studio eller vill toojust testa att skicka med
             // JSON Content-Type
             [request setValue:@"application/json;charset=utf-8" forHTTPHeaderField:@"Content-Type"];
 
-            //Authenticate hello notification message POST request with hello SaS token
+            //Authenticate the notification message POST request with the SaS token
             [request setValue:authorizationToken forHTTPHeaderField:@"Authorization"];
 
-            //Add hello notification message body
+            //Add the notification message body
             [request setHTTPBody:[json dataUsingEncoding:NSUTF8StringEncoding]];
 
-            // Send hello REST request
+            // Send the REST request
             NSURLSessionDataTask* dataTask = [session dataTaskWithRequest:request
                        completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
                {
@@ -248,7 +248,7 @@ Mer information om hur du använder mallar finns:
 
 <!-- URLs. -->
 [How To: Service Bus Notification Hubs (iOS Apps)]: http://msdn.microsoft.com/library/jj927168.aspx
-[använda Notification Hubs toosend senaste nytt]: /manage/services/notification-hubs/breaking-news-ios
+[använda Notification Hubs för att skicka de senaste nyheterna]: /manage/services/notification-hubs/breaking-news-ios
 [Mobile Service]: /develop/mobile/tutorials/get-started
 [Meddela användare med Notification Hubs: ASP.NET]: /manage/services/notification-hubs/notify-users-aspnet
 [Meddela användare med Notification Hubs: Mobile Services]: /manage/services/notification-hubs/notify-users
@@ -259,11 +259,11 @@ Mer information om hur du använder mallar finns:
 [Get started with data]: /develop/mobile/tutorials/get-started-with-data-ios
 [Get started with authentication]: /develop/mobile/tutorials/get-started-with-users-ios
 [Get started with push notifications]: /develop/mobile/tutorials/get-started-with-push-ios
-[Push notifications tooapp users]: /develop/mobile/tutorials/push-notifications-to-users-ios
+[Push notifications to app users]: /develop/mobile/tutorials/push-notifications-to-users-ios
 [Authorize users with scripts]: /develop/mobile/tutorials/authorize-users-in-scripts-ios
 [JavaScript and HTML]: ../get-started-with-push-js.md
 
 [Windows Developer Preview registration steps for Mobile Services]: ../mobile-services-windows-developer-preview-registration.md
 [wns object]: http://go.microsoft.com/fwlink/p/?LinkId=260591
 [Notification Hubs Guidance]: http://msdn.microsoft.com/library/jj927170.aspx
-[Notification Hubs How-toofor iOS]: http://msdn.microsoft.com/library/jj927168.aspx
+[Notification Hubs How-To for iOS]: http://msdn.microsoft.com/library/jj927168.aspx

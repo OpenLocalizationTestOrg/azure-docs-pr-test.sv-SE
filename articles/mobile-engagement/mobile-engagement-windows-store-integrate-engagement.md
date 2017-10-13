@@ -1,6 +1,6 @@
 ---
-title: aaaWindows universella appar Engagement SDK-Integration
-description: Hur tooIntegrate Azure Mobile Engagement med universella Windows-appar
+title: Windows Universal-appar Engagement SDK-Integration
+description: Integrera Azure Mobile Engagement med universella Windows-appar
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 18543798099c233dbe55cc387ba0216e369c8596
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 898160814304fa8ec65622056a77ca9d4caf2c99
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="windows-universal-apps-engagement-sdk-integration"></a>Windows Universal-appar Engagement SDK-Integration
 > [!div class="op_single_selector"]
@@ -29,12 +29,12 @@ ms.lasthandoff: 10/06/2017
 > 
 > 
 
-Den här proceduren beskriver hello enklaste sättet tooactivate Engagement analyser och övervakningsfunktionerna i ditt universella Windows-program.
+Den här proceduren beskriver det enklaste sättet att aktivera Engagement analyser och övervakningsfunktionerna i ditt universella Windows-program.
 
-hello följande är tillräckligt med tooactivate hello loggar behövs en rapport för toocompute all statistik om användare, sessioner, aktiviteter, krascher och Technicals. hello loggar behövs en rapport toocompute annan statistik som händelser, fel och jobb måste göras manuellt med hjälp av hello Engagement API (se [hur toouse hello avancerade Mobile Engagement API-märkning i appen Windows Universal](mobile-engagement-windows-store-use-engagement-api.md) eftersom statistiken är programberoende.
+Följande steg är tillräckligt för att aktivera rapporten i loggar som behövs för att beräkna all statistik om användare, sessioner, aktiviteter, krascher och Technicals. Rapporten loggar som behövs för att beräkna andra statistik som händelser, fel och jobb måste göras manuellt med hjälp av Engagement-API (se [hur du använder avancerade Mobile Engagement API-märkning i appen Windows Universal](mobile-engagement-windows-store-use-engagement-api.md) eftersom dessa statistik är programberoende.
 
 ## <a name="supported-versions"></a>Versioner som stöds
-hello Mobile Engagement SDK för universella Windows-appar kan endast integreras i Windows Runtime och Uwp-tillämpningar för:
+Mobile Engagement SDK för Windows universella appar kan endast integreras i Windows Runtime och Uwp-tillämpningar för:
 
 * Windows 8
 * Windows 8.1
@@ -42,63 +42,63 @@ hello Mobile Engagement SDK för universella Windows-appar kan endast integreras
 * Windows 10 (familjer stationär dator och mobil)
 
 > [!NOTE]
-> Om du utvecklar för Windows Phone Silverlight finns toohello [Windows Phone Silverlight-integrering proceduren](mobile-engagement-windows-phone-integrate-engagement.md).
+> Om du utvecklar för Windows Phone Silverlight sedan referera till den [Windows Phone Silverlight-integrering proceduren](mobile-engagement-windows-phone-integrate-engagement.md).
 > 
 > 
 
-## <a name="install-hello-mobile-engagement-universal-apps-sdk"></a>Installera hello Mobile Engagement-SDK Universal-appar
+## <a name="install-the-mobile-engagement-universal-apps-sdk"></a>Installera Mobile Engagement-SDK för universella appar
 ### <a name="all-platforms"></a>Alla plattformar
-hello Mobile Engagement SDK för Windows Universal-appen är tillgänglig som ett Nuget-paket som kallas *MicrosoftAzure.MobileEngagement*. Du kan installera den från hello Pakethanteraren Nuget för Visual Studio.
+Mobile Engagement SDK för Windows Universal appen är tillgänglig som ett Nuget-paket som kallas *MicrosoftAzure.MobileEngagement*. Du kan installera den från Visual Studio Nuget Package Manager.
 
 ### <a name="windows-8x-and-windows-phone-81"></a>Windows 8.x och Windows Phone 8.1
-NuGet automatiskt distribuerar hello SDK resurser i hello `Resources` hello rotmapp från projektet program.
+NuGet automatiskt distribuerar SDK-resurser i den `Resources` mapp i roten av projektet program.
 
 ### <a name="windows-10-universal-windows-platform-applications"></a>Windows 10 Universal Windows Platform program
-NuGet distribuerar inte automatiskt hello SDK-resurser i ditt program för UWP ännu. Du har det manuellt tills resursdistribution sätts in i NuGet toodo:
+NuGet distribuerar inte automatiskt SDK-resurser i UWP-appen ännu. Du behöver göra det manuellt tills resursdistribution sätts in i NuGet:
 
 1. Öppna i Utforskaren.
-2. Navigera toohello följande plats (**x.x.x** är hello version av Engagement som du installerar): *% USERPROFILE %\\.nuget\packages\MicrosoftAzure.MobileEngagement\\*  *x.x.x**\\content\win81*
-3. Dra och släpp hello **resurser** mapp från hello file explorer toohello roten för ditt projekt i Visual Studio.
-4. Välj ditt projekt i Visual Studio och aktivera hello **visa alla filer** ikonen ovanpå hello **Solution Explorer**.
-5. Vissa filer ingår inte i hello-projekt. tooimport dem på samma gång högerklickar du på hello **resurser** mappen **undantas från projektet** och sedan en annan högerklickar du på hello **resurser** mappen **inkludera i projektet** toore-inkludera hello hela mappen. Alla filer från hello **resurser** mappen ingår nu i ditt projekt.
+2. Navigera till följande plats (**x.x.x** är version av Engagement som du installerar): *% USERPROFILE %\\.nuget\packages\MicrosoftAzure.MobileEngagement\\*  *x.x.x**\\content\win81*
+3. Dra och släpp den **resurser** mappen från Utforskaren till roten för ditt projekt i Visual Studio.
+4. Välj ditt projekt i Visual Studio och aktivera den **visa alla filer** ikonen ovanpå det **Solution Explorer**.
+5. Vissa filer inte längre ingår i projektet. Importera dem på samma gång högerklickar du på den **resurser** mappen **undantas från projektet** och sedan en annan högerklickar du på den **resurser** mappen **inkludera i projektet** till nytt omfattar hela mappen. Alla filer från den **resurser** mappen ingår nu i ditt projekt.
 
-## <a name="add-hello-capabilities"></a>Lägger till hello-funktioner
-Hej Engagement SDK måste vissa funktioner i hello Windows SDK i ordning toowork korrekt.
+## <a name="add-the-capabilities"></a>Lägg till funktioner
+Engagement-SDK måste vissa funktioner i Windows SDK för att fungera korrekt.
 
-Öppna din `Package.appxmanifest` fil- och måste deklareras som hello följande funktioner:
+Öppna din `Package.appxmanifest` filen och se till att följande funktioner har deklarerats:
 
 * `Internet (Client)`
 
-## <a name="initialize-hello-engagement-sdk"></a>Initiera hello Engagement SDK
+## <a name="initialize-the-engagement-sdk"></a>Initiera Engagement SDK
 ### <a name="engagement-configuration"></a>Engagement konfiguration
-Hej Engagement configuration centraliserad i hello `Resources\EngagementConfiguration.xml` filen i projektet.
+Konfigurationen av Engagement centraliserad i den `Resources\EngagementConfiguration.xml` filen i projektet.
 
-Redigera den här filen toospecify:
+Redigera den här filen för att ange:
 
 * Anslutningssträngen program mellan taggarna `<connectionString>` och `<\connectionString>`.
 
-Om du vill toospecify den vid körning i stället kan du anropa hello följande metod innan hello Engagement agentinitieringen:
+Om du vill ange vid körning i stället kan du anropa metoden följande innan Engagement agentinitieringen:
 
           /* Engagement configuration. */
           EngagementConfiguration engagementConfiguration = new EngagementConfiguration();
 
-          /* Set hello Engagement connection string. */
+          /* Set the Engagement connection string. */
           engagementConfiguration.Agent.ConnectionString = "Endpoint={appCollection}.{domain};AppId={appId};SdkKey={sdkKey}";
 
           /* Initialize Engagement angent with above configuration. */
           EngagementAgent.Instance.Init(e, engagementConfiguration);
 
-hello anslutningssträngen för ditt program visas på hello klassiska Azure-portalen.
+Anslutningssträngen för ditt program visas på den klassiska Azure-portalen.
 
 ### <a name="engagement-initialization"></a>Initieringen av engagement
-När du skapar ett nytt projekt, en `App.xaml.cs` -filen har genererats. Den här klassen som ärver från `Application` och innehåller många viktiga metoder. Det kommer även att använda tooinitialize hello Engagement SDK.
+När du skapar ett nytt projekt, en `App.xaml.cs` -filen har genererats. Den här klassen som ärver från `Application` och innehåller många viktiga metoder. Den också används för att initiera Engagement SDK.
 
-Ändra hello `App.xaml.cs`:
+Ändra den `App.xaml.cs`:
 
-* Lägg till tooyour `using` instruktioner:
+* Lägg till din `using` instruktioner:
   
       using Microsoft.Azure.Engagement;
-* Definiera metoden tooshare hello Engagement initiera en gång för alla samtal:
+* Definiera en metod för att dela Engagement initieringen en gång för alla samtal:
   
       private void InitEngagement(IActivatedEventArgs e)
       {
@@ -108,13 +108,13 @@ När du skapar ett nytt projekt, en `App.xaml.cs` -filen har genererats. Den hä
   
         EngagementAgent.Instance.Init(e, engagementConfiguration);
       }
-* Anropa `InitEngagement` i hello `OnLaunched` metoden:
+* Anropa `InitEngagement` i den `OnLaunched` metoden:
   
       protected override void OnLaunched(LaunchActivatedEventArgs e)
       {
         InitEngagement(e);
       }
-* När programmet startas med ett anpassat schema, ett annat program eller hello kommandoraden sedan hello `OnActivated` metoden anropas. Du måste också tooinitiate hello Engagement SDK när appen är aktiverad. toodo så åsidosätta `OnActivated` metoden:
+* När programmet startas med ett anpassat schema, ett annat program eller kommandoraden sedan `OnActivated` metoden anropas. Du måste också starta Engagement SDK när appen har aktiverats. Det gör du genom att åsidosätta `OnActivated` metoden:
   
       protected override void OnActivated(IActivatedEventArgs args)
       {
@@ -122,20 +122,20 @@ När du skapar ett nytt projekt, en `App.xaml.cs` -filen har genererats. Den hä
       }
 
 > [!IMPORTANT]
-> Vi avråder du tooadd hello Engagement initiering på en annan plats för ditt program.
+> Vi avråder dig för att lägga till initiering av Engagement på en annan plats för ditt program.
 > 
 > 
 
 ## <a name="basic-reporting"></a>Grundläggande reporting
 ### <a name="recommended-method-overload-your-page-classes"></a>Rekommenderad metod: överlagra din `Page` klasser
-I ordning tooactivate hello rapport med alla hello-loggar som krävs av Engagement toocompute användare, sessioner, aktiviteter, krascher och tekniska statistik, kan du bara göra alla dina `Page` underordnade klasser ärver från hello `EngagementPage` klasser.
+För att aktivera rapporten i alla loggar som krävs av Engagement att beräkna användare, sessioner, aktiviteter, krascher och tekniska statistik, kan du bara göra alla dina `Page` underordnade klasser ärver från den `EngagementPage` klasser.
 
-Här är ett exempel på hur toodo för en sida i ditt program. Du kan göra hello detsamma för alla sidor i ditt program.
+Här är ett exempel på hur du gör detta för en sida i ditt program. Du kan göra samma sak för alla sidor i ditt program.
 
 #### <a name="c-source-file"></a>C# källfilen
 Ändra sidan `.xaml.cs` fil:
 
-* Lägg till tooyour `using` instruktioner:
+* Lägg till din `using` instruktioner:
   
       using Microsoft.Azure.Engagement;
 * Ersätt `Page` med `EngagementPage`:
@@ -163,14 +163,14 @@ Här är ett exempel på hur toodo för en sida i ditt program. Du kan göra hel
         }
 
 > [!IMPORTANT]
-> Om sidan åsidosätter hello `OnNavigatedTo` metoden vara säker på att toocall `base.OnNavigatedTo(e)`. Annars hello aktivitet rapporteras inte (hello `EngagementPage` anrop `StartActivity` i dess `OnNavigatedTo` metod).
+> Om sidan åsidosätter metoden `OnNavigatedTo` ska du anropa `base.OnNavigatedTo(e)`. Annars rapporteras inte aktiviteten (`EngagementPage` anropar `StartActivity` i tillhörande `OnNavigatedTo`-metod).
 > 
 > 
 
 #### <a name="xaml-file"></a>XAML-fil
 Ändra sidan `.xaml` fil:
 
-* Lägg till tooyour namnområden deklarationer:
+* Lägg till följande i namnområdesdeklarationerna:
   
       xmlns:engagement="using:Microsoft.Azure.Engagement"
 * Ersätt `Page` med `engagement:EngagementPage`:
@@ -190,33 +190,33 @@ Här är ett exempel på hur toodo för en sida i ditt program. Du kan göra hel
             ...
         </engagement:EngagementPage >
 
-#### <a name="override-hello-default-behaviour"></a>Åsidosätt hello standard beteende
-Som standard rapporteras hello klassnamnet för hello sida som hello aktivitetsnamn med utan extra. Om hello klassen använder hello ”Page” suffix, tas Engagement också bort.
+#### <a name="override-the-default-behaviour"></a>Åsidosätta beteenden som standard
+Klassnamnet för sidan har rapporterats som aktivitetsnamn med utan extra som standard. Om klassen använder suffixet ”Page”, tas Engagement också bort.
 
-Om du vill toooverride hello standard beteendet för hello namn kan bara lägga till tooyour koden:
+Om du vill åsidosätta standard beteendet för namn, lägger du till detta i koden:
 
-        // in hello .xaml.cs file
+        // in the .xaml.cs file
         protected override string GetEngagementPageName()
         {
           /* your code */
           return "new name";
         }
 
-Om du vill tooreport vissa extra information med dina aktiviteter, kan du lägga till tooyour koden:
+Om du vill rapportera vissa extra information med dina aktiviteter kan du lägga till detta koden:
 
-        // in hello .xaml.cs file
+        // in the .xaml.cs file
         protected override Dictionary<object,object> GetEngagementPageExtra()
         {
           /* your code */
           return extra;
         }
 
-De här metoderna anropas från inom hello `OnNavigatedTo` metod på sidan.
+De här metoderna anropas inifrån den `OnNavigatedTo` metoden på sidan.
 
 ### <a name="alternate-method-call-startactivity-manually"></a>Alternativ metod: anropa `StartActivity()` manuellt
-Om du inte kan eller inte vill att toooverload din `Page` klasser, i stället kan du starta dina aktiviteter genom att anropa `EngagementAgent` metoder direkt.
+Om du inte kan eller inte vill överlagra din `Page` klasser, i stället kan du starta dina aktiviteter genom att anropa `EngagementAgent` metoder direkt.
 
-Vi rekommenderar att toocall `StartActivity` i din `OnNavigatedTo` metod på sidan.
+Vi rekommenderar för att anropa `StartActivity` i din `OnNavigatedTo` metod på sidan.
 
             protected override void OnNavigatedTo(NavigationEventArgs e)
             {
@@ -227,31 +227,31 @@ Vi rekommenderar att toocall `StartActivity` i din `OnNavigatedTo` metod på sid
 > [!IMPORTANT]
 > Se till att du kan avsluta sessionen på rätt sätt.
 > 
-> hello Windows Universal SDK automatiskt anropar hello `EndActivity` metod när hello programmet stängs. Därför är det **hög** rekommenderas toocall hello `StartActivity` metod när hello aktiviteten hos hello användaren ändrar och för**aldrig** anrop hello `EndActivity` -metoden den här metoden skickar tooEngagement servern att aktuell användare har lämna hello program, då påverkar alla programloggar.
+> Windows Universal SDK automatiskt anropar den `EndActivity` metoden när programmet stängs. Därför är det **hög** rekommenderas att anropa den `StartActivity` metod när aktiviteten användaren ändrar och **aldrig** anropa den `EndActivity` metoden den här metoden skickar till servern för Engagement som aktuell användare har lämnar programmet, då påverkar alla programloggar.
 > 
 > 
 
 ## <a name="advanced-reporting"></a>Avancerad rapportering
-Alternativt kan du tooreport programmet specifika händelser, fel och jobb, toodo så, Använd hello andra metoder hittades i hello `EngagementAgent` klass. Hej Engagement API kan toouse alla Engagement avancerade funktioner.
+Du kanske vill rapporten programmet specifika händelser, fel och jobb, gör du genom använda andra metoder hittades i den `EngagementAgent` klass. Engagement API kan använda alla Engagement avancerade funktioner.
 
-Mer information finns i [hur toouse hello avancerade Mobile Engagement API-märkning i appen Windows Universal](mobile-engagement-windows-store-use-engagement-api.md).
+Mer information finns i [hur du använder avancerade Mobile Engagement API-märkning i appen Windows Universal](mobile-engagement-windows-store-use-engagement-api.md).
 
 ## <a name="advanced-configuration"></a>Avancerad konfiguration
 ### <a name="disable-automatic-crash-reporting"></a>Inaktivera automatisk rapportering om krasch
-Du kan inaktivera hello automatisk krascher reporting-funktionen i Engagement. Sedan, när ett ohanterat undantag inträffar, Engagement inte göra något.
+Du kan inaktivera automatisk kraschen reporting-funktionen i Engagement. Sedan, när ett ohanterat undantag inträffar, Engagement inte göra något.
 
 > [!WARNING]
-> Om du planerar toodisable funktionen, Tänk på att när en ohanterad krasch sker i din app Engagement inte kommer att skicka hello krascher **och** inte och kommer att avslutas sessionen hello jobb.
+> Om du planerar att inaktivera den här funktionen måste vara medveten om att när en ohanterad krasch sker i din app Engagement inte kommer att skicka kraschen **och** kommer inte att stänga sessionen och jobb.
 > 
 > 
 
-toodisable automatisk krascher rapportering, helt enkelt anpassa konfigurationen beroende på hello sätt som du har deklarerats:
+Om du vill inaktivera automatisk rapportering om krasch du bara anpassa konfigurationen beroende på hur du har deklarerats:
 
 #### <a name="from-engagementconfigurationxml-file"></a>Från `EngagementConfiguration.xml` fil
-Ställa in rapporten krasch också`false` mellan `<reportCrash>` och `</reportCrash>` taggar.
+Ange rapport-krascher till `false` mellan `<reportCrash>` och `</reportCrash>` taggar.
 
 #### <a name="from-engagementconfiguration-object-at-run-time"></a>Från `EngagementConfiguration` objekt vid körning.
-Ange rapporten krascher toofalse med EngagementConfiguration-objektet.
+Ange rapport-krascher till false med EngagementConfiguration-objektet.
 
         /* Engagement configuration. */
         EngagementConfiguration engagementConfiguration = new EngagementConfiguration();
@@ -261,18 +261,18 @@ Ange rapporten krascher toofalse med EngagementConfiguration-objektet.
         engagementConfiguration.Agent.ReportCrash = false;
 
 ### <a name="burst-mode"></a>Burst-läge
-Som standard loggas hello Engagement service-rapporter i realtid. Om ditt program rapporterar loggar väldigt ofta, är det bättre toobuffer hello loggar och tooreport dem samtidigt på en återkommande tid för grundläggande (Detta kallas hello ”burst-läget”).
+Som standard loggas Engagement service-rapporter i realtid. Om ditt program rapporterar loggar väldigt ofta, är det bättre att buffra loggarna och rapportera dem samtidigt på en vanlig tiden som bas (Detta kallas ”burst-läge”).
 
-toodo anropa så hello-metoden:
+Det gör du genom att anropa metoden:
 
         EngagementAgent.Instance.SetBurstThreshold(int everyMs);
 
-hello-argumentet är ett värde i **millisekunder**. När som helst om du vill tooreactivate hello realtid loggning kan bara anropa hello metod utan någon parameter eller med hello 0-värde.
+Argumentet är ett värde i **millisekunder**. När som helst om du vill återaktivera realtid loggning bara att anropa metoden utan någon parameter eller med värdet 0.
 
-hello burst läge öka något hello batteri livslängd men påverkar hello Engagement-Övervakare: alla sessioner och jobb kommer att vara avrundade toohello burst tröskelvärdet (alltså sessioner och jobb som är kortare än hello burst tröskelvärdet inte kanske visas). Det är rekommenderat toouse ett tröskelvärde i burst 30000 (30s). Du har toobe medveten sparade loggarna är begränsad too300 objekt. Om det är för lång tid att skicka förlora du vissa loggar.
+Burst-läge något öka för batterilivslängd men påverkar Engagement-Övervakare: varaktighet för alla sessioner och jobb ska avrundas till burst tröskelvärdet (alltså sessioner och jobb som är kortare än tröskelvärdet burst inte kanske visas). Det rekommenderas att använda ett tröskelvärde i burst 30000 (30s). Du måste vara medveten om sparade loggarna är begränsade till 300 objekt. Om det är för lång tid att skicka förlora du vissa loggar.
 
 > [!WARNING]
-> hello burst tröskelvärdet kan inte konfigureras tooa perioden som är mindre än 1s. Om du försöker toodo så återställa toohello standardvärdet, dvs 0s hello SDK visas en spårning med hello fel och automatiskt. Detta utlöser hello SDK tooreport hello-loggar i realtid.
+> Tröskelvärdet burst kan inte konfigureras för en period som är mindre än 1s. Om du försöker göra det, visas en spårning med fel SDK och återställer automatiskt till standardvärdet, dvs 0s. Detta utlöser SDK om du vill rapportera loggar i realtid.
 > 
 > 
 

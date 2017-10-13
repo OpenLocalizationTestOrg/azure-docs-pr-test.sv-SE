@@ -1,14 +1,14 @@
-En DNS-zon är används toohost hello DNS-poster för en viss domän. toostart som värd för din domän i Azure DNS, behöver du toocreate en DNS-zon för domännamnet. Varje DNS-post för din domän skapas sedan i den här DNS-zonen.
+En DNS-zon används som värd åt DNS-posterna för en viss domän. Om du vill låta Azure DNS vara värd för din domän så måste du skapa en DNS-zon för det domännamnet. Varje DNS-post för din domän skapas sedan i den här DNS-zonen.
 
-Hello domänen ”contoso.com” kan till exempel innehålla flera DNS-poster, till exempel ”mail.contoso.com” (för en e-postserver) och ”www.contoso.com” (för en webbplats).
+Domänen contoso.com kan t.ex. innehålla flera DNS-poster, som mail.contoso.com (för en e-postserver) och www.contoso.com (för en webbplats).
 
 När du skapar en DNS-zon i Azure DNS:
 
-* hello namnet på hello zonen måste vara unika inom hello resursgruppen och hello zonen får inte redan finnas. Annars misslyckas hello åtgärden.
-* hello samma zonnamn kan återanvändas i en annan resursgrupp eller Azure-prenumeration.
-* Där flera zoner delar hello samma namn och varje instans tilldelas olika adresser. Endast en uppsättning adresser kan konfigureras med hello domännamnsregistratorn.
+* Namnet på zonen måste vara unikt inom resursgruppen och zonen får inte redan finnas. Annars misslyckas åtgärden.
+* Samma zonnamn kan återanvändas i en annan resursgrupp eller Azure-prenumeration.
+* Om flera zoner som delar samma namn, tilldelas varje instans sin egen namnserveradress. Endast en uppsättning adresser kan konfigureras hos domänamnsregistratorn.
 
 > [!NOTE]
-> Du har inte tooown en domain name toocreate en DNS-zon med det domännamnet i Azure DNS. Du behöver dock tooown hello domän tooconfigure hello Azure DNS-namnservrar som hello rätt namnservrar för hello domännamnet med hello domännamnsregistratorn.
+> Du behöver inte äga ett domännamn för att kunna skapa en DNS-zon med det domännamnet i Azure DNS. Du måste dock äga domänen för att kunna konfigurera Azure DNS-namnservrarna som rätt namnservrar för domännamnet hos domännamnsregistratorn.
 > 
-> Mer information finns i [delegera en domän tooAzure DNS](../articles/dns/dns-domain-delegation.md).
+> Mer information finns i [Delegera en domän till Azure DNS](../articles/dns/dns-domain-delegation.md).

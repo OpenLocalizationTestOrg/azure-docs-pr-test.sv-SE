@@ -1,6 +1,6 @@
 ---
-title: "aaaH264 Multibithastighet 4 x 3 för iOS | Microsoft Docs"
-description: "hello avsnittet ger en översikt över hello ** H264 Multibithastighet 4 x 3 för iOS ** uppgiften förinställda."
+title: "H264 Multibithastighet 4 x 3 för iOS | Microsoft Docs"
+description: "Avsnittet ger en översikt över de ** H264 Multibithastighet 4 x 3 för iOS ** uppgiften förinställda."
 author: Juliako
 manager: cfowler
 editor: 
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: juliako
-ms.openlocfilehash: 0f28e5a51bf62c8d2b42d0cfc7a306d3b885c7de
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 0f7c07f504b5ca4461a93c31a85b632d37fc328d
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="h264-multiple-bitrate-4x3-for-ios"></a>H264 Multibithastighet 4 x 3 för iOS
-`Media Encoder Standard`definierar en uppsättning kodning förinställningar som du kan använda när du skapar kodning jobb. Du kan använda en `preset name` toospecify i vilket format du vill att tooencode media-fil. Du kan också skapa egna JSON eller XML-baserade förinställningar (med hjälp av UTF-8- eller UTF-16-kodning. Du skulle sedan överföra hello anpassade förinställda toohello kodare. Hello lista över alla hello förinställningen namn som stöds av det här `Media Encoder Standard` kodare, se [aktivitet förinställningar för Media Encoder Standard](media-services-mes-presets-overview.md).  
+`Media Encoder Standard`definierar en uppsättning kodning förinställningar som du kan använda när du skapar kodning jobb. Du kan använda en `preset name` att ange i vilket format du vill koda media-fil. Du kan också skapa egna JSON eller XML-baserade förinställningar (med hjälp av UTF-8- eller UTF-16-kodning. Du skulle sedan överföra anpassad förinställning på kodaren. Lista över alla förvalda namn som stöds av det här `Media Encoder Standard` kodare, se [aktivitet förinställningar för Media Encoder Standard](media-services-mes-presets-overview.md).  
   
- Det här avsnittet visar hello `H264 Multiple Bitrate 4x3 for iOS` förinställda XML och JSON-format.  
+ Det här avsnittet beskrivs de `H264 Multiple Bitrate 4x3 for iOS` förinställda XML och JSON-format.  
   
- Den här förinställningen producerar en uppsättning 8 GOP-justerad MP4-filer från 8500 kbit/s too200 kbit/s och AAC stereoljud. Detaljerad information om profilen bithastighet, provtagning hastighet, etc. Om detta förinställda ska undersöka hello XML- eller JSON som anges nedan. Förklaringar av vad varje element i dessa förinställda innebär och hello giltiga värden för varje element finns hello [Media Encoder Standard schemat](media-services-mes-schema.md) avsnittet.  
+ Den här förinställningen producerar en uppsättning 8 GOP-justerad MP4-filer, allt från 8500 kbit/s till 200 kbit/s och AAC stereoljud. Detaljerad information om profilen bithastighet, provtagning hastighet, etc. Om detta förinställda ska undersöka XML- eller JSON som anges nedan. Förklaringar av vad varje element i dessa förinställda innebär och giltiga värden för varje element finns i [Media Encoder Standard schemat](media-services-mes-schema.md) avsnittet.  
   
 > [!NOTE]
->  När du ändrar hello `Width` och `Height` värden i lager, se till att hello proportionerna förblir konsekvent. Till exempel: 1 920 x 1 080, minst 1 280 x 720, 1080 x 576 640 x 360. Du bör inte använda en blandning av proportioner, exempelvis: minst 1 280 x 720, 720 x 480, 640 x 360.  
+>  När du ändrar den `Width` och `Height` värden i lager, se till att proportionerna förblir konsekvent. Till exempel: 1 920 x 1 080, minst 1 280 x 720, 1080 x 576 640 x 360. Du bör inte använda en blandning av proportioner, exempelvis: minst 1 280 x 720, 720 x 480, 640 x 360.  
   
  XML  
   

@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure tid serien insikter-dokumentation – självstudier, API-referens | Microsoft Docs"
-description: "Lär dig hur toorun IoT analyser i hello cloud med fullständigt hanterade händelsebearbetning. Analysera data i realtid från program, sensorer, enheter och många fler."
+title: "Dokumentation om Azure Time Series Insights – självstudier, API-referens | Microsoft Docs"
+description: "Lär dig hur du kör IoT-analys i molnet med fullständigt hanterad händelsebearbetning. Analysera data i realtid från program, sensorer, enheter och många fler."
 services: time-series-insights
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 04/13/2017
 ms.author: carolz
-ms.openlocfilehash: 2301d20aa2fb685279e2efc657ffcd41571af0c0
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: ca41dab4f1488c0d172513e61b1960f236c7ebf0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-time-series-insights-documentation"></a>Dokumentation om Azure Time Series Insights 
  
-Lär dig hur tooset in tid serien insikter miljö, utforska och analysera tid series-data för din IoT-lösningar eller ansluten saker. Dokumentationen delar hello förutsättningar, hur till API refererar till och andra dokumentationen toohelp du tooget startas i minuter. 
+Lär dig hur du ställer in Time Series Insights-miljön, utforska och analysera time series-data i IoT-lösningarna eller anslutna objekt. I dokumentationen finns information om förhandskrav, anvisningar, API-referenser och annan dokumentation som hjälper dig att komma igång på några minuter. 
  
 <ul class="panelContent cardsFTitle"> 
     <li> 

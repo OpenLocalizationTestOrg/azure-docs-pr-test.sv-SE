@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure SQL Data Warehouse-dokumentation – självstudier, API-referens | Microsoft Docs"
-description: "Lär dig hur toouse SQL Data Warehouse, kombinera SQL Server med massivt parallell bearbetning. Dokumentationen visar hur tooload, analysera, hantera och exportera data."
+title: "Dokumentation om Azure SQL Data Warehouse – Självstudier, API-referens | Microsoft Docs"
+description: "Lär dig hur du använder SQL Data Warehouse, som kombinerar SQL Server med massivt parallell bearbetning (MPP). Dokumentationen visar hur du läser in, analyserar, hanterar och exporterar data."
 services: sql-data-warehouse
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: a3deb9fe2dbd29cdc250510ca7368b4d71422658
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: fea8cd403cbf21acee2194e8e3888e4001663cdd
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sql-data-warehouse-documentation"></a>Dokumentation om SQL Data Warehouse
 
-Lär dig hur toouse SQL Data Warehouse, vilket kombinerar hello SQL Server-relationsdatabas med massivt parallell bearbetning. Självstudiekurser och andra dokumentationen visar hur tooload data till hello warehouse sedan analysera, hantera och exportera den.
+Lär dig hur du använder SQL Data Warehouse, som kombinerar relationsdatabasen i SQL Server med massivt parallell bearbetning (Massively Parallel Processing, MPP). Självstudiekurser och annan dokumentationen visar hur du läser in data i datalagret och sedan analyserar, hanterar och exporterar den.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -71,7 +71,7 @@ Lär dig hur toouse SQL Data Warehouse, vilket kombinerar hello SQL Server-relat
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Kom igång med att skapa ett SQL Data Warehouse med hjälp av hello Azure-portalen</h3>
+                        <h3>Kom igång med att skapa ett SQL Data Warehouse med Azure Portal</h3>
                     </div>
                 </div>
             </div>

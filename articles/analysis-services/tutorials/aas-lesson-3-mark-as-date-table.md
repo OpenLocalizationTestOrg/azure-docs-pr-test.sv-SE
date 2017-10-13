@@ -1,7 +1,25 @@
 ---
-Rubrik: aaa ”Azure Analysis Services självstudiekursen lektionen 3: Markera som Datumtabell | Microsoft Docs ”beskrivning: Beskriver hur toomark ett datum tabell i självstudiekursen hello Azure Analysis Services-projekt. tjänster: analysis services dokumentationcenter: '' författare: minewiskan manager: erikre editor: '' taggar: ''
-
-MS.AssetID: ms.service: analysis services ms.devlang: NA ms.topic: get-started-article ms.tgt_pltfrm: NA ms.workload: na ms.date: 06/01/2017 ms.author: owend
+title: "Azure Analysis Services självstudiekurs 3: Markera som datumtabell | Microsoft Docs"
+description: "Beskriver hur du markerar en datumtabell i Azure Analysis Services-självstudiekursprojektet."
+services: analysis-services
+documentationcenter: 
+author: Minewiskan
+manager: erikre
+editor: 
+tags: 
+ms.assetid: 
+ms.service: analysis-services
+ms.devlang: NA
+ms.topic: get-started-article
+ms.tgt_pltfrm: NA
+ms.workload: na
+ms.date: 09/20/2017
+ms.author: owend
+ms.openlocfilehash: 94ea44091c8a7befaf0c82349c47dce7a36c1fd8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: sv-SE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="lesson-3-mark-as-date-table"></a>Lektion 3: Markera som datumtabell
 
@@ -11,29 +29,29 @@ I ”lektion 2: Hämta data” importerade du en dimensionstabell med namnet Dim
   
 När du använder funktioner för DAX-tidsinformation, till exempel när du skapar mått senare, måste du ange egenskaper som innehåller en *datumtabell* och en unik *datumkolumn*-identifierare i tabellen.
   
-Nu bör du markera hello DimDate tabellen som hello *datumtabell* och hello datumkolumnen (i hello datumtabell) som hello *datumkolumnen* (unik identifierare).  
+Under den här lektionen markerar du DimDate-tabellen som *datumtabell* och datumkolumnen (i datumtabellen) som *datumkolumn* (unik identifierare).  
 
-Innan du markera hello tabell och datum datumkolumnen är ett bra tillfälle toodo lite housekeeping toomake din modell enklare toounderstand. I hello DimDate tabellen ser du en kolumn med namnet **FullDateAlternateKey**. Den här kolumnen innehåller en rad för varje dag i varje kalenderår som ingår i hello tabell. Du använder ofta den här kolumnen i måttformler och i rapporter. Men FullDateAlternateKey är inte så bra identifierare för den här kolumnen. Du byter namn på den för**datum**, vilket gör det enklare tooidentify och inkludera i formler. När det är möjligt, är det en bra idé toorename objekt som tabeller och kolumner toomake dem lättare tooidentify i SSDT och rapportering programmen Power BI och Excel-klienten. 
+Innan du markerar datumtabellen och datumkolumnen är det dags att göra några ändringar så att det blir enklare att förstå din modell. Observera att det finns en kolumn med namnet **FullDateAlternateKey** i tabellen DimDate. Den här kolumnen innehåller en rad för varje dag i varje kalenderår som ingår i tabellen. Du använder ofta den här kolumnen i måttformler och i rapporter. Men FullDateAlternateKey är inte så bra identifierare för den här kolumnen. Du döper om den till **Datum** så att den blir enklare att identifiera och ta med i formler. Om det går är det en god idé att byta namn på objekt som tabeller och kolumner så att de blir enklare att identifiera i SSDT och klientrapporteringsprogram som Power BI och Excel. 
   
-Uppskattad tid toocomplete lektionen: **tre minuter**  
+Uppskattad tidsåtgång för den här lektionen: **Tre minuter**  
   
 ## <a name="prerequisites"></a>Krav  
-Det här avsnittet ingår i självstudiekursen för tabellmodellering som bör slutföras i rätt ordning. Innan du utför hello uppgifter i den här lektionen bör du slutfört hello föregående lektionen: [lektionen 2: hämta data](../tutorials/aas-lesson-2-get-data.md). 
+Det här avsnittet ingår i självstudiekursen för tabellmodellering som bör slutföras i rätt ordning. Innan du utför uppgifterna under den här lektionen bör du ha slutfört föregående lektion: [Lektion 2: Hämta data](../tutorials/aas-lesson-2-get-data.md). 
 
-### <a name="toorename-hello-fulldatealternatekey-column"></a>toorename hello FullDateAlternateKey kolumn
+### <a name="to-rename-the-fulldatealternatekey-column"></a>Byta namn på kolumnen FullDateAlternateKey
 
-1.  Klicka på hello i hello modellen designer **DimDate** tabell.
+1.  Klicka på tabellen **DimDate** i modelldesignern.
 
-2.  Dubbelklicka på hello-huvud för hello **FullDateAlternateKey** kolumn, och Byt sedan för**datum**.
+2.  Dubbelklicka på rubriken för kolumnen **FullDateAlternateKey** och byt sedan namn till **Datum**.
 
   
-### <a name="tooset-mark-as-date-table"></a>tooset Markera som Datumtabell  
+### <a name="to-set-mark-as-date-table"></a>Markera som datumtabell  
   
-1.  Välj hello **datum** kolumn, och klicka sedan på hello **egenskaper** fönstret under **datatyp**, kontrollera **datum** är markerad.  
+1.  Välj kolumnen **Datum** och kontrollera sedan att **Datum** är markerat under **Datatyp** i fönstret **Egenskaper**.  
   
-2.  Klicka på hello **tabell** menyn Klicka **datum**, och klicka sedan på **Markera som Datumtabell**.  
+2.  Klicka på **Tabell**-menyn, klicka på **Datum** och klicka sedan på **Markera som datumtabell**.  
   
-3.  I hello **Markera som Datumtabell** i dialogrutan hello **datum** listbox, Välj hello **datum** enligt hello Unik identifierare. Den är vanligtvis markerad som standard. Klicka på **OK**. 
+3.  I dialogrutan **Markera som datumtabell** väljer du kolumnen **Datum** som unik identifierare i listrutan **Datum**. Den är vanligtvis markerad som standard. Klicka på **OK**. 
 
     ![aas-lesson3-date-table](../tutorials/media/aas-lesson3-date-table.png)
   

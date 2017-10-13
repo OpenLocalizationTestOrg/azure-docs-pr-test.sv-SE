@@ -1,5 +1,5 @@
 ---
-title: aaaAzure AD Connect-synkronisering service funktioner och konfiguration | Microsoft Docs
+title: "Azure AD Connect sync tjänstens funktioner och konfiguration | Microsoft Docs"
 description: "Beskriver funktioner för tjänsten på klientsidan för Azure AD Connect-synkroniseringstjänsten."
 services: active-directory
 documentationcenter: 
@@ -14,59 +14,59 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: 7ad05c45bb6b5fd5deaa3466e2936b19d3d9eabb
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: c2873510c280a2683c235cfdce3d2617c3b665cd
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Azure AD Connect sync-tjänsten-funktioner
-hello synkroniseringsfunktionen av Azure AD Connect har två komponenter:
+Synkroniseringsfunktionen av Azure AD Connect har två komponenter:
 
-* hello lokalt komponenten **Azure AD Connect-synkronisering**, även kallat **Synkroniseringsmotorn**.
-* hello-tjänst som finns i Azure AD så kallade **Azure AD Connect-synkroniseringstjänsten**
+* Lokala komponenten **Azure AD Connect-synkronisering**, även kallat **Synkroniseringsmotorn**.
+* Tjänsten som finns i Azure AD så kallade **Azure AD Connect-synkroniseringstjänsten**
 
-Det här avsnittet beskrivs hur hello följande funktioner för hello **Azure AD Connect-synkroniseringstjänsten** fungerar och hur du kan konfigurera dem med hjälp av Windows PowerShell.
+Det här avsnittet beskrivs hur följande funktioner i den **Azure AD Connect-synkroniseringstjänsten** fungerar och hur du kan konfigurera dem med hjälp av Windows PowerShell.
 
-De här inställningarna är konfigurerade med hello [Azure Active Directory-modulen för Windows PowerShell](http://aka.ms/aadposh). Hämta och installera det separat från Azure AD Connect. hello-cmdletarna som beskrivs i det här avsnittet har introducerats i hello [2016 mars-versionen (build 9031.1)](http://social.technet.microsoft.com/wiki/contents/articles/28552.microsoft-azure-active-directory-powershell-module-version-release-history.aspx#Version_9031_1). Om du inte har hello-cmdletarna som beskrivs i det här avsnittet eller de inte producerar hello samma resultera och sedan kontrollera att kör du hello senaste versionen.
+De här inställningarna är konfigurerade med den [Azure Active Directory-modulen för Windows PowerShell](http://aka.ms/aadposh). Hämta och installera det separat från Azure AD Connect. De cmdlets som beskrivs i det här avsnittet har introducerats i den [2016 mars-versionen (build 9031.1)](http://social.technet.microsoft.com/wiki/contents/articles/28552.microsoft-azure-active-directory-powershell-module-version-release-history.aspx#Version_9031_1). Om du inte har de cmdlets som beskrivs i det här avsnittet eller om de inte ger samma resultat, se till att du kör den senaste versionen.
 
-toosee hello konfigurationen i Azure AD-katalogen, kör `Get-MsolDirSyncFeatures`.  
+Om du vill se konfigurationen i Azure AD-katalogen kör `Get-MsolDirSyncFeatures`.  
 ![Get-MsolDirSyncFeatures resultat](./media/active-directory-aadconnectsyncservice-features/getmsoldirsyncfeatures.png)
 
 Många av dessa inställningar kan bara ändras av Azure AD Connect.
 
-hello följande inställningar kan konfigureras med `Set-MsolDirSyncFeature`:
+Följande inställningar kan konfigureras med `Set-MsolDirSyncFeature`:
 
 | DirSyncFeature | Kommentar |
 | --- | --- |
-| [EnableSoftMatchOnUpn](#userprincipalname-soft-match) |Tillåter objekt toojoin på userPrincipalName i tillägg tooprimary SMTP-adress. |
-| [SynchronizeUpnForManagedUsers](#synchronize-userprincipalname-updates) |Tillåter hello sync motorn tooupdate-hello attributet userPrincipalName hanteras/licensierade (ofedererad) användare. |
+| [EnableSoftMatchOnUpn](#userprincipalname-soft-match) |Gör att objekt som ska delta i userPrincipalName utöver primära SMTP-adress. |
+| [SynchronizeUpnForManagedUsers](#synchronize-userprincipalname-updates) |Gör att Synkroniseringsmotorn att uppdatera attributet userPrincipalName för hanterade/licensierade (ofedererad) användare. |
 
 När du har aktiverat en funktion kan inaktiveras det inte igen.
 
 > [!NOTE]
-> Hej funktionen från 24 augusti 2016 *duplicera attribut återhämtning* är aktiverad som standard för nya Azure AD-kataloger. Den här funktionen kommer även distribuerat och aktiverad på kataloger som skapats före detta datum. Du får ett e-postmeddelande när din katalog kommer tooget den här funktionen är aktiverad.
+> Från 24 augusti 2016 funktionen *duplicera attribut återhämtning* är aktiverad som standard för nya Azure AD-kataloger. Den här funktionen kommer även distribuerat och aktiverad på kataloger som skapats före detta datum. Du får ett e-postmeddelande när din katalog kommer att få den här funktionen aktiverad.
 > 
 > 
 
-hello följande inställningar konfigureras med Azure AD Connect och kan inte ändras av `Set-MsolDirSyncFeature`:
+Följande inställningar konfigureras med Azure AD Connect och kan inte ändras av `Set-MsolDirSyncFeature`:
 
 | DirSyncFeature | Kommentar |
 | --- | --- |
 | DeviceWriteback |[Azure AD Connect: Aktivera tillbakaskrivning av enheter](active-directory-aadconnect-feature-device-writeback.md) |
 | DirectoryExtensions |[Azure AD Connect-synkronisering: katalogtillägg](active-directory-aadconnectsync-feature-directory-extensions.md) |
-| [DuplicateProxyAddressResiliency<br/>DuplicateUPNResiliency](#duplicate-attribute-resiliency) |Gör en attributet toobe i karantän när det är en dubblett av ett annat objekt i stället misslyckas hello hela objektet under exporten. |
+| [DuplicateProxyAddressResiliency<br/>DuplicateUPNResiliency](#duplicate-attribute-resiliency) |Tillåter ett attribut som ska placeras i karantän när det är en dubblett av ett annat objekt i stället misslyckas hela objektet under exporten. |
 | PasswordSync |[Implementera Lösenordssynkronisering med Azure AD Connect-synkronisering](active-directory-aadconnectsync-implement-password-synchronization.md) |
 | UnifiedGroupWriteback |[Förhandsversion: Tillbakaskrivning av grupp](active-directory-aadconnect-feature-preview.md#group-writeback) |
 | UserWriteback |Stöds inte för närvarande. |
 
 ## <a name="duplicate-attribute-resiliency"></a>Duplicerat attribut återhämtning
-I stället för misslyckas tooprovision-objekt med dubblerade UPN-namn / proxyAddresses, hello duplicerade attributet ”i karantän” och ett tillfälligt värde är tilldelad. När hello konflikten löses hello tillfälligt UPN-namnet är rätt toohello-värdet har ändrats automatiskt. Mer information finns i [identitet synkronisering och dubblett attributet återhämtning](active-directory-aadconnectsyncservice-duplicate-attribute-resiliency.md).
+I stället för misslyckas att etablera objekt med dubblerade UPN-namn / proxyAddresses, duplicerade attributet ”i karantän” och ett tillfälligt värde är tilldelad. När konflikten löses ändras tillfälliga UPN automatiskt till rätt värde. Mer information finns i [identitet synkronisering och dubblett attributet återhämtning](active-directory-aadconnectsyncservice-duplicate-attribute-resiliency.md).
 
 ## <a name="userprincipalname-soft-match"></a>UserPrincipalName mjuka matchning
-När den här funktionen är aktiverad, mjuk-matcha är aktiverat för UPN i tillägg toohello [primära SMTP-adress](https://support.microsoft.com/kb/2641663), som alltid är aktiverat. Soft-matcha är används toomatch befintliga molnanvändare i Azure AD med lokala användare.
+När den här funktionen är aktiverad, mjuk-matcha är aktiverad för UPN förutom den [primära SMTP-adress](https://support.microsoft.com/kb/2641663), som alltid är aktiverat. Soft-matcha används för att matcha befintliga molnanvändare i Azure AD med lokala användare.
 
-Om du behöver toomatch lokala AD-konton med befintliga konton som skapats i hello molnet och du använder inte Exchange Online och sedan den här funktionen är användbart. I detta scenario du normalt inte attributet orsak tooset hello SMTP i hello molnet.
+Om du behöver matcha lokala AD-konton med befintliga konton som skapats i molnet och du använder inte Exchange Online och sedan den här funktionen är användbart. I det här scenariot kan du vanligtvis inte en orsak till att ange SMTP-attributet i molnet.
 
 Den här funktionen är på skapas som standard för nya Azure AD-kataloger. Du kan se om den här funktionen är aktiverad för du genom att köra:  
 
@@ -81,14 +81,14 @@ Set-MsolDirSyncFeature -Feature EnableSoftMatchOnUpn -Enable $true
 ```
 
 ## <a name="synchronize-userprincipalname-updates"></a>Synkronisera userPrincipalName uppdateringar
-Tidigare har uppdateringar toohello attributet UserPrincipalName med hello synkroniseringstjänsten från lokala blockerats, om bägge dessa villkor är uppfyllda:
+Tidigare uppdateringar för attributet UserPrincipalName med synkroniseringstjänsten från lokala har blockerats, om bägge dessa villkor är uppfyllda:
 
-* hello användaren hanteras (ofedererad).
-* hello användaren har inte tilldelats en licens.
+* Användaren hanteras (ofedererad).
+* Användaren har inte tilldelats en licens.
 
-Mer information finns i [användarens namn i Office 365, Azure eller Intune inte matchar hello lokal UPN eller alternativ inloggnings-ID](https://support.microsoft.com/kb/2523192).
+Mer information finns i [användarnamnen i Office 365, Azure eller Intune matchar inte lokal UPN eller alternativ inloggnings-ID](https://support.microsoft.com/kb/2523192).
 
-Den här funktionen aktiveras kan hello sync motorn tooupdate hello userPrincipalName när den har ändrats lokalt och du använder Lösenordssynkronisering. Den här funktionen stöds inte om du använder federation.
+Den här funktionen aktiveras kan Synkroniseringsmotorn att uppdatera userPrincipalName när den har ändrats lokalt och du använder Lösenordssynkronisering. Den här funktionen stöds inte om du använder federation.
 
 Den här funktionen är på skapas som standard för nya Azure AD-kataloger. Du kan se om den här funktionen är aktiverad för du genom att köra:  
 
@@ -102,7 +102,7 @@ Om den här funktionen inte har aktiverats för din Azure AD-katalog, kan du akt
 Set-MsolDirSyncFeature -Feature SynchronizeUpnForManagedUsers -Enable $true
 ```
 
-När den här funktionen, befintliga userPrincipalName värden förblir-är. På Nästa ändring av hello userPrincipalName attributet lokal uppdaterar hello normal Deltasynkronisering på användare hello UPN.  
+När den här funktionen, befintliga userPrincipalName värden förblir-är. På Nästa ändring av userPrincipalName attributet lokal uppdaterar normal Deltasynkronisering på användare UPN.  
 
 ## <a name="see-also"></a>Se även
 * [Azure AD Connect-synkronisering](active-directory-aadconnectsync-whatis.md)

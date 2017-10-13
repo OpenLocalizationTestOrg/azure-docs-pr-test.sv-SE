@@ -1,6 +1,6 @@
 ---
-title: "Azure AD Connect: Nästa steg och hur toomanage Azure AD Connect | Microsoft Docs"
-description: "Lär dig hur tooextend hello standardkonfigurationen och operativa uppgifter för Azure AD Connect."
+title: "Azure AD Connect: Nästa steg och hur du hanterar Azure AD Connect | Microsoft Docs"
+description: "Lär dig hur du utökar standardkonfigurationen och operativa uppgifter för Azure AD Connect."
 services: active-directory
 documentationcenter: 
 author: billmath
@@ -14,61 +14,61 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: 4404aaff24d54d76b83baca3b331a6a250ba4c03
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: beace24fa00c85a5038a3c39ae8f76af5fd12111
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="next-steps-and-how-toomanage-azure-ad-connect"></a>Nästa steg och hur toomanage Azure AD Connect
-Använd hello operativa procedurer i den här artikeln toocustomize Azure Active Directory (AD Azure) Anslut toomeet din organisations behov och krav.  
+# <a name="next-steps-and-how-to-manage-azure-ad-connect"></a>Nästa steg och hur du hanterar Azure AD Connect
+Använd operativa procedurer i den här artikeln för att anpassa Azure Active Directory (AD Azure) Anslut för att uppfylla organisationens behov och krav.  
 
 ## <a name="add-additional-sync-admins"></a>Lägg till ytterligare sync-administratörer
-Som standard är endast hello-användaren som hello installation och lokala administratörer kan toomanage hello installerat Synkroniseringsmotorn. För andra personer toobe kan tooaccess och hantera hello Synkroniseringsmotorn, leta upp hello-gruppen ADSyncAdmins på hello lokala servern och lägga till dem toothis grupp.
+Som standard bara användaren som gjorde installationen och lokala administratörer kan hantera installerade Synkroniseringsmotorn. För ytterligare användare kan komma åt och hantera Synkroniseringsmotorn, leta upp gruppen ADSyncAdmins på den lokala servern och lägga till dem i den här gruppen.
 
-## <a name="assign-licenses-tooazure-ad-premium-and-enterprise-mobility-suite-users"></a>Tilldela licenser tooAzure AD Premium och Enterprise Mobility Suite-användare
-Nu när användarna har synkroniserats toohello moln, behöver du tooassign dem en licens så att de kan komma igång med molnappar som Office 365.
+## <a name="assign-licenses-to-azure-ad-premium-and-enterprise-mobility-suite-users"></a>Tilldela licenser till användare i Azure AD Premium och Enterprise Mobility Suite
+Nu när användarna har synkroniserats till molnet, måste du tilldela dem en licens så att de kan komma igång med molnappar som Office 365.
 
-### <a name="tooassign-an-azure-ad-premium-or-enterprise-mobility-suite-license"></a>tooassign en Azure AD Premium eller Enterprise Mobility Suite-licens
+### <a name="to-assign-an-azure-ad-premium-or-enterprise-mobility-suite-license"></a>Så här tilldelar du en Azure AD Premium eller Enterprise Mobility Suite-licens
 
-1. Logga in toohello Azure-portalen som en administratör.
-2. Hello vänster markerar **Active Directory**.
-3. På hello **Active Directory** dubbelklickar hello directory som har hello-användare som du vill att tooset.
-4. Överst hello i hello katalogsidan, Välj **licenser**.
-5. På hello **licenser** väljer **Active Directory Premium** eller **Enterprise Mobility Suite**, och klicka sedan på **tilldela**.
-6. Välj hello användare tooassign licenser till, och klicka sedan på hello markerat ikonen toosave hello ändringar hello i dialogrutan.
+1. Logga in på Azure-portalen som en administratör.
+2. Välj **Active Directory** till vänster.
+3. På den **Active Directory** sidan genom att dubbelklicka på katalogen som har användare som du vill konfigurera.
+4. Överst på katalogsidan väljer du **Licenser**.
+5. På den **licenser** väljer **Active Directory Premium** eller **Enterprise Mobility Suite**, och klicka sedan på **tilldela**.
+6. I dialogrutan väljer du de användare som du vill tilldela licenser till och klickar sedan på bockmarkeringen för att spara ändringarna.
 
-## <a name="verify-hello-scheduled-synchronization-task"></a>Verifiera hello schemalagd synkroniseringsaktiviteten
-Använd hello Azure portal toocheck hello status för en synkronisering.
+## <a name="verify-the-scheduled-synchronization-task"></a>Kontrollera aktiviteten schemalagd synkronisering
+Använda Azure portal för att kontrollera status för en synkronisering.
 
-### <a name="tooverify-hello-scheduled-synchronization-task"></a>tooverify hello schemalagd synkronisering aktivitet
-1. Logga in toohello Azure-portalen som en administratör.
-2. Hello vänster markerar **Active Directory**.
-3. På hello **Active Directory** dubbelklickar hello directory som har hello-användare som du vill att tooset.
-4. Överst hello i hello katalogsidan, Välj **katalogintegrering**.
-5. Under **integrering med lokala active directory**, Observera hello tid för senaste synkronisering.
+### <a name="to-verify-the-scheduled-synchronization-task"></a>Att verifiera aktiviteten schemalagd synkronisering
+1. Logga in på Azure-portalen som en administratör.
+2. Välj **Active Directory** till vänster.
+3. På den **Active Directory** sidan genom att dubbelklicka på katalogen som har användare som du vill konfigurera.
+4. Markera överst på sidan directory **katalogintegrering**.
+5. Under **integrering med lokala active directory**, Observera tid för senaste synkronisering.
 
 <center>![Tid för Directory-synkronisering](./media/active-directory-aadconnect-whats-next/verify.png)</center>
 
 ## <a name="start-a-scheduled-synchronization-task"></a>Starta en schemalagd synkronisering-aktivitet
-Om du behöver toorun en synkroniseringsuppgiften kan göra du detta genom att köra hello Azure AD Connect-guiden igen.  Du måste tooprovide dina autentiseringsuppgifter för Azure AD.  Hello i guiden väljer du hello **anpassa synkroniseringsalternativ** och på **nästa** toomove hello guiden. Se till att hello i slutet av hello **startar hello synkroniseringsprocessen så snart hello initiala konfigurationen är klar** är markerad.
+Om du behöver köra en aktivitet för synkronisering kan du göra detta genom att köra Azure AD Connect-guiden igen.  Du måste ange dina autentiseringsuppgifter för Azure AD.  I guiden väljer du den **anpassa synkroniseringsalternativ** och på **nästa** att flytta via guiden. Se till att i slutet av **starta synkroniseringsprocessen så snart som den initiala konfigurationen är klar** är markerad.
 
 <center>![Starta synkroniseringen](./media/active-directory-aadconnect-whats-next/startsynch.png)</center>
 
-Mer information om hello Azure AD Connect sync Scheduler finns [Azure AD Connect Scheduler](active-directory-aadconnectsync-feature-scheduler.md).
+Mer information om Azure AD Connect sync Scheduler finns [Azure AD Connect Scheduler](active-directory-aadconnectsync-feature-scheduler.md).
 
 ## <a name="additional-tasks-available-in-azure-ad-connect"></a>Ytterligare uppgifter som är tillgängliga i Azure AD Connect
-Efter den inledande installationen av Azure AD Connect, kan du alltid starta hello guiden igen från hello Azure AD Connect start sida eller fjärrskrivbord snabbmenyn.  Du kommer att märka att gå igenom guiden hello igen ger nya alternativ i hello form av ytterligare uppgifter.  
+Efter den inledande installationen av Azure AD Connect, kan du alltid starta guiden igen från Azure AD Connect start sidan eller skrivbord genväg.  Du kommer att märka att gå igenom guiden igen ger nya alternativ i form av ytterligare uppgifter.  
 
-hello följande tabell innehåller en sammanfattning av dessa uppgifter och en kort beskrivning av varje aktivitet.
+Följande tabell innehåller en sammanfattning av dessa uppgifter och en kort beskrivning av varje aktivitet.
 
 ![Lista över ytterligare aktiviteter](./media/active-directory-aadconnect-whats-next/addtasks.png)
 
 | Ytterligare uppgifter | Beskrivning |
 | --- | --- |
-| **Visa hello valda scenario** |Visa din aktuella Azure AD Connect-lösning.  Detta inkluderar allmänna inställningar synkroniseras kataloger och synkroniseringsinställningar. |
-| **Anpassa synkroniseringsalternativ** |Ändra hello aktuella konfigurationen som lägger till ytterligare Active Directory-skogar toohello konfiguration eller aktivera synkroniseringsalternativ, till exempel användare, grupp, enhet eller tillbakaskrivning av lösenord. |
-| **Aktivera Mellanlagringsläge** |Steg-information som synkroniseras inte omedelbart och kan inte exporteras tooAzure AD eller lokala Active Directory.  Med den här funktionen kan du förhandsgranska hello synkroniseringar innan de inträffar. |
+| **Visa det valda scenariot** |Visa din aktuella Azure AD Connect-lösning.  Detta inkluderar allmänna inställningar synkroniseras kataloger och synkroniseringsinställningar. |
+| **Anpassa synkroniseringsalternativ** |Ändra den aktuella konfigurationen som att lägga till ytterligare Active Directory-skogar konfigurationen eller aktivera synkroniseringsalternativ, till exempel användare, grupp, enhet eller tillbakaskrivning av lösenord. |
+| **Aktivera Mellanlagringsläge** |Steg-information som synkroniseras inte omedelbart och kan inte exporteras till Azure AD eller lokala Active Directory.  Med den här funktionen kan du förhandsgranska synkroniseringar innan de inträffar. |
 
 ## <a name="next-steps"></a>Nästa steg
 Lär dig mer om [integrera dina lokala identiteter med Azure Active Directory](active-directory-aadconnect.md).

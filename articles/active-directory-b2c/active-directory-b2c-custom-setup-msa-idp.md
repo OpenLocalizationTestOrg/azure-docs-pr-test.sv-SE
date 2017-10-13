@@ -14,33 +14,33 @@ ms.topic: article
 ms.devlang: na
 ms.date: 08/04/2017
 ms.author: yoelh
-ms.openlocfilehash: 577ac612f69015e6790f2fa9f2cfb42c2b524b55
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 8c981046ff41d3927ff60d6dc4f40366ae25ba74
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="azure-active-directory-b2c-add-microsoft-account-msa-as-an-identity-provider-using-custom-policies"></a>Azure Active Directory B2C: Lägga till Microsoft-konto (Hanterade) som en identitetsleverantör anpassade principer
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Den här artikeln lär du dig hur tooenable inloggning för användare från Microsoft-konto (MSA) via hello [anpassade principer](active-directory-b2c-overview-custom.md).
+Den här artikeln visar hur du aktiverar inloggning för användare från Microsoft-konto (MSA) med [anpassade principer](active-directory-b2c-overview-custom.md).
 
 ## <a name="prerequisites"></a>Krav
-Fullständig hello stegen i hello [komma igång med anpassade principer](active-directory-b2c-get-started-custom.md) artikel.
+Utför stegen i den [komma igång med anpassade principer](active-directory-b2c-get-started-custom.md) artikel.
 
 De här stegen innefattar:
 
 1.  Skapa ett program för Microsoft-konto.
-2.  Lägga till hello Microsoft-konto programmet viktiga tooAzure AD B2C
-3.  Lägga till anspråk tooa principen
-4.  Registrera hello Account anspråk providern tooa användaren resa
-5.  Överför hello princip tooan Azure AD B2C-klient och testa den
+2.  Lägga till nyckeln programmet Microsoft-konto i Azure AD B2C
+3.  Att lägga till anspråksprovidern för en princip
+4.  Registrera Account anspråksprovidern för en användare resa
+5.  Ladda upp principen till en Azure AD B2C-klient och testa den
 
 ## <a name="create-a-microsoft-account-application"></a>Skapa ett program för Microsoft-konto
-toouse Microsoft-kontot som en identitetsleverantör i Azure Active Directory (AD Azure) B2C kan du behöver toocreate ett program för Microsoft-konto och lämna hello rätt parametrar. Du behöver ett microsoftkonto. Om du inte har någon besöker [https://www.live.com/](https://www.live.com/).
+Om du vill använda Microsoft-konto som en identitetsleverantör i Azure Active Directory (AD Azure) B2C måste du skapa ett program för Microsoft-konto och ange rätt parametrar. Du behöver ett microsoftkonto. Om du inte har någon besöker [https://www.live.com/](https://www.live.com/).
 
-1.  Gå toohello [Microsoft Programregistreringsportalen](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) och logga in med ditt Microsoft-kontouppgifter.
+1.  Gå till den [Microsoft Programregistreringsportalen](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) och logga in med ditt Microsoft-kontouppgifter.
 2.  Klicka på **Lägg till en app**.
 
     ![Microsoft-konto – Lägg till en app](media/active-directory-b2c-custom-setup-ms-account-idp/msa-add-new-app.png)
@@ -49,54 +49,54 @@ toouse Microsoft-kontot som en identitetsleverantör i Azure Active Directory (A
 
     ![Microsoft-konto - registrera ditt program](media/active-directory-b2c-custom-setup-ms-account-idp/msa-app-name.png)
 
-4.  Kopiera hello värdet för **program-Id**. Du behöver den tooconfigure Microsoft-konto som en identitetsleverantör i din klient.
+4.  Kopiera värdet för **program-Id**. Du behöver det för att konfigurera Microsoft-konto som en identitetsleverantör i din klient.
 
-    ![Microsoft-konto – kopiera hello värdet för program-Id](media/active-directory-b2c-custom-setup-ms-account-idp/msa-app-id.png)
+    ![Microsoft-konto – Kopiera värdet för program-Id](media/active-directory-b2c-custom-setup-ms-account-idp/msa-app-id.png)
 
 5.  Klicka på **Lägg till plattformen**
 
     ![Microsoft-konto – Lägg till plattformen](media/active-directory-b2c-custom-setup-ms-account-idp/msa-add-platform.png)
 
-6.  Hello plattformslistan och väljer **Web**.
+6.  Plattformslistan och väljer **Web**.
 
-    ![Microsoft-konto - hello plattformslistan väljer Web](media/active-directory-b2c-custom-setup-ms-account-idp/msa-web.png)
+    ![Microsoft-konto - plattformslistan väljer Web](media/active-directory-b2c-custom-setup-ms-account-idp/msa-web.png)
 
-7.  Ange `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp` i hello **omdirigerings-URI: er** fältet. Ersätt **{klient}** med din klient namn (till exempel contosob2c.onmicrosoft.com).
+7.  Ange `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp` i den **omdirigerings-URI: er** fältet. Ersätt **{klient}** med din klient namn (till exempel contosob2c.onmicrosoft.com).
 
     ![Microsoft-konto - uppsättningen omdirigerings-URL: er](media/active-directory-b2c-custom-setup-ms-account-idp/msa-redirect-url.png)
 
-8.  Klicka på **generera nya lösenord** under hello **programmet hemligheter** avsnitt. Kopiera hello nytt lösenord visas på skärmen. Du behöver den tooconfigure Microsoft-konto som en identitetsleverantör i din klient. Lösenordet är en viktig säkerhetsuppgift för autentisering.
+8.  Klicka på **generera nya lösenord** under den **programmet hemligheter** avsnitt. Kopiera det nya lösenordet som visas på skärmen. Du behöver det för att konfigurera Microsoft-konto som en identitetsleverantör i din klient. Lösenordet är en viktig säkerhetsuppgift för autentisering.
 
     ![Microsoft-konto – Skapa nytt lösenord](media/active-directory-b2c-custom-setup-ms-account-idp/msa-generate-new-password.png)
 
-    ![Microsoft-konto – kopiera hello nya lösenord](media/active-directory-b2c-custom-setup-ms-account-idp/msa-new-password.png)
+    ![Microsoft-konto – kopiera det nya lösenordet](media/active-directory-b2c-custom-setup-ms-account-idp/msa-new-password.png)
 
-9.  Hello kryssrutan som anger att kontrollsumman **Live SDK stöd** under hello **avancerade alternativ** avsnitt. Klicka på **Spara**.
+9.  Markera kryssrutan som säger **Live SDK stöd** under den **avancerade alternativ** avsnitt. Klicka på **Spara**.
 
     ![Microsoft-konto - stöd för Live SDK](media/active-directory-b2c-custom-setup-ms-account-idp/msa-live-sdk-support.png)
 
-## <a name="add-hello-microsoft-account-application-key-tooazure-ad-b2c"></a>Lägg till hello Microsoft-konto programmet viktiga tooAzure AD B2C
-Federation med Microsoft-konton kräver en klienthemlighet för Microsoft-konto tootrust Azure AD B2C uppdrag hello program. Du behöver toostore Microsoft-konto programmet secert i Azure AD B2C-klient:   
+## <a name="add-the-microsoft-account-application-key-to-azure-ad-b2c"></a>Lägg till program-tangenten Microsoft-konto i Azure AD B2C
+Federation med Microsoft-konton kräver en klienthemlighet för Microsoft-konto för Azure AD B2C-förtroende för programmet. Du måste lagra secert för programmet ditt Microsoft-konto i Azure AD B2C-klient:   
 
-1.  Gå tooyour Azure AD B2C-klient och använda **B2C inställningar** > **identitet upplevelse Framework**
-2.  Välj **princip nycklar** tooview hello-nycklar som är tillgängliga i din klient.
+1.  Gå till din Azure AD B2C-klient och välj **B2C inställningar** > **identitet upplevelse Framework**
+2.  Välj **princip nycklar** att visa nycklarna som är tillgängliga i din klient.
 3.  Klicka på **+ Lägg till**.
 4.  För **alternativ**, använda **manuell**.
 5.  För **namn**, Använd `MSASecret`.  
-    hello prefixet `B2C_1A_` kan läggas till automatiskt.
-6.  I hello **hemlighet** ange ditt hemliga för Microsoft-program från https://apps.dev.microsoft.com
+    Prefixet `B2C_1A_` kan läggas till automatiskt.
+6.  I den **hemlighet** ange ditt hemliga för Microsoft-program från https://apps.dev.microsoft.com
 7.  För **nyckelanvändning**, använda **signatur**.
 8.  Klicka på **Skapa**
-9.  Bekräfta att du har skapat hello nyckeln `B2C_1A_MSASecret`.
+9.  Bekräfta att du har skapat nyckeln `B2C_1A_MSASecret`.
 
 ## <a name="add-a-claims-provider-in-your-extension-policy"></a>Lägg till en anspråksprovider i din princip för tillägg
-Om du vill användare toosign i med hjälp av Account måste toodefine Account som en anspråksprovider. Du behöver med andra ord toospecify en slutpunkt som Azure AD B2C kommunicerar med. hello endpoint innehåller en uppsättning anspråk som används av Azure AD B2C-tooverify som en specifik användare har autentiserats.
+Om du vill att användarna att logga in med hjälp av Account måste du definiera Account som en anspråksprovider. Med andra ord, måste du ange en slutpunkt som Azure AD B2C kommunicerar med. Slutpunkten innehåller en uppsättning anspråk som används av Azure AD B2C för att verifiera att en specifik användare har autentiserats.
 
 Definiera Account som en anspråksprovider genom att lägga till `<ClaimsProvider>` nod i tillägget-principfil:
 
-1.  Öppna hello princip tilläggsfilen (TrustFrameworkExtensions.xml) från arbetskatalogen. Om du behöver en XML-redigerare [försök Visual Studio Code](https://code.visualstudio.com/download), en enkel plattformsoberoende redigerare.
-2.  Hitta hello `<ClaimsProviders>` avsnitt
-3.  Lägg till följande XML-kodstycke under hello `ClaimsProviders` element:
+1.  Öppna filen för princip för tillägg (TrustFrameworkExtensions.xml) från arbetskatalogen. Om du behöver en XML-redigerare [försök Visual Studio Code](https://code.visualstudio.com/download), en enkel plattformsoberoende redigerare.
+2.  Hitta de `<ClaimsProviders>` avsnitt
+3.  Lägg till följande XML-kodstycke under den `ClaimsProviders` element:
 
     ```xml
 <ClaimsProvider>
@@ -140,36 +140,36 @@ Definiera Account som en anspråksprovider genom att lägga till `<ClaimsProvide
 
 4.  Ersätt `client_id` värdet med Account programklienten Id
 
-5.  Spara hello-filen.
+5.  Spara filen.
 
-## <a name="register-hello-microsoft-account-claims-provider-toosign-up-or-sign-in-user-journey"></a>Registrera hello Account anspråk providern tooSign upp eller logga in användaren resa
+## <a name="register-the-microsoft-account-claims-provider-to-sign-up-or-sign-in-user-journey"></a>Registrera Account anspråk leverantör för att logga in eller logga in användaren resa
 
-Nu hello identitetsleverantören har ställts in, men den är inte tillgänglig i någon av hello sign-upp/inloggning skärmar. Nu måste tooadd hello Microsoft Account identitet providern tooyour user `SignUpOrSignIn` användaren resa. toomake det tillgängliga, skapar vi en dubblett av en befintlig mall användaren resa.  Vi Lägg sedan till hello Account identitetsleverantör:
+Nu identitetsleverantören har ställts in, men den är inte tillgänglig i alla skärmar sign-upp/inloggning. Nu måste du lägga till identitetsleverantören Account användaren `SignUpOrSignIn` användaren resa. Om du vill göra den tillgänglig, kan vi skapa en dubblett av en befintlig mall användaren resa.  Vi Lägg sedan till identitetsleverantören Account:
 
 > [!NOTE]
 >
->Om du tidigare kopierade hello `<UserJourneys>` element från bas-filen för din princip toohello tilläggsfilen `TrustFrameworkExtensions.xml`, kan du hoppa över toothis avsnittet.
+>Om du tidigare har kopierat den `<UserJourneys>` element från bas-filen för din princip för tilläggsfilen `TrustFrameworkExtensions.xml`, du kan hoppa till det här avsnittet.
 
-1.  Öppna grundläggande hello-filen för principen (till exempel TrustFrameworkBase.xml).
-2.  Hitta hello `<UserJourneys>` element och kopiera hela hello-innehållet i `<UserJourneys>` nod.
-3.  Öppna filen hello-tillägg (till exempel TrustFrameworkExtensions.xml) och hitta hello `<UserJourneys>` element. Lägg till ett om hello elementet inte finns.
-4.  Klistra in hello hela innehållet i `<UserJournesy>` nod som du kopierade som underordnad till hello `<UserJourneys>` element.
+1.  Öppna filen grundläggande av principen (till exempel TrustFrameworkBase.xml).
+2.  Hitta de `<UserJourneys>` element och kopiera hela innehållet i `<UserJourneys>` nod.
+3.  Öppna tilläggsfilen (till exempel TrustFrameworkExtensions.xml) och Sök efter den `<UserJourneys>` element. Om elementet inte finns, kan du lägga till en.
+4.  Klistra in hela innehållet i `<UserJournesy>` nod som du kopierade som underordnad till den `<UserJourneys>` element.
 
-### <a name="display-hello-button"></a>Visa hello-knappen
-Hej `<ClaimsProviderSelections>` elementet definierar hello lista med alternativ för val av anspråk providern och deras inbördes ordning.  `<ClaimsProviderSelection>`elementet är detsamma tooan identitet provider-knappen en sign-upp/inloggningssidan. Om du lägger till en `<ClaimsProviderSelection>` element för Microsoft-konto, en ny knapp visas när en användare de hamnar på hello-sidan. tooadd det här elementet:
+### <a name="display-the-button"></a>Visa knappen
+Den `<ClaimsProviderSelections>` elementet definierar en lista över alternativ för val av anspråk providern och deras inbördes ordning.  `<ClaimsProviderSelection>`elementet är detsamma som knappen identity-providern på en sign-upp/inloggningssidan. Om du lägger till en `<ClaimsProviderSelection>` element för Microsoft-konto, en ny knapp visas när en användare de hamnar på sidan. Lägg till det här elementet:
 
-1.  Hitta hello `<UserJourney>` nod som innehåller `Id="SignUpOrSignIn"` i hello användaren resa som du kopierade.
-2.  Leta upp hello `<OrchestrationStep>` nod som innehåller`Order="1"`
+1.  Hitta de `<UserJourney>` nod som innehåller `Id="SignUpOrSignIn"` i transporten användare som du kopierade.
+2.  Leta upp den `<OrchestrationStep>` nod som innehåller`Order="1"`
 3.  Lägg till följande XML-kodstycke under `<ClaimsProviderSelections>` nod:
 
 ```xml
 <ClaimsProviderSelection TargetClaimsExchangeId="MSAExchange" />
 ```
 
-### <a name="link-hello-button-tooan-action"></a>Länken hello tooan åtgärd
-Nu när du har en knapp på plats måste toolink den tooan åtgärd. hello åtgärd i det här fallet är för Azure AD B2C toocommunicate med Account tooreceive en token. Länka hello tooan åtgärd genom att länka tekniska hello-profil för din Account anspråksleverantör:
+### <a name="link-the-button-to-an-action"></a>Länka knappen till en åtgärd
+Nu när du har en knapp på plats måste länka till en åtgärd. Åtgärden är i det här fallet för Azure AD B2C att kommunicera med Account ta emot en token. Länka knappen till en åtgärd genom att länka tekniska profilen för din Account anspråksleverantör:
 
-1.  Hitta hello `<OrchestrationStep>` som innehåller `Order="2"` i hello `<UserJourney>` nod.
+1.  Hitta de `<OrchestrationStep>` som innehåller `Order="2"` i den `<UserJourney>` nod.
 2.  Lägg till följande XML-kodstycke under `<ClaimsExchanges>` nod:
 
 ```xml
@@ -178,51 +178,51 @@ Nu när du har en knapp på plats måste toolink den tooan åtgärd. hello åtg�
 
 > [!NOTE]
 >
->   * Se till att hello `Id` har samma värde som hello `TargetClaimsExchangeId` i föregående avsnitt hello
->   * Se till att `TechnicalProfileReferenceId` -ID har angetts toohello tekniska profilen du skapade tidigare (MSA-OIDC).
+>   * Se till att den `Id` har samma värde som `TargetClaimsExchangeId` i föregående avsnitt
+>   * Se till att `TechnicalProfileReferenceId` -ID har angetts för teknisk profilen du skapade tidigare (MSA-OIDC).
 
-## <a name="upload-hello-policy-tooyour-tenant"></a>Överför hello princip tooyour klient
-1.  I hello [Azure-portalen](https://portal.azure.com), växla till hello [kontext för din Azure AD B2C-klient](active-directory-b2c-navigate-to-b2c-context.md), och öppna hello **Azure AD B2C** bladet.
+## <a name="upload-the-policy-to-your-tenant"></a>Ladda upp principen till din klient
+1.  I den [Azure-portalen](https://portal.azure.com), växla till den [kontext för din Azure AD B2C-klient](active-directory-b2c-navigate-to-b2c-context.md), och öppna den **Azure AD B2C** bladet.
 2.  Välj **identitet upplevelse Framework**.
-3.  Öppna hello **alla principer** bladet.
+3.  Öppna den **alla principer** bladet.
 4.  Välj **överföra princip**.
-5.  Kontrollera **skriva över hello principen om den finns** rutan.
-6.  **Överför** TrustFrameworkExtensions.xml och se till att inte misslyckas verifieringen hello
+5.  Kontrollera **skriva över principen om den finns** rutan.
+6.  **Överför** TrustFrameworkExtensions.xml och se till att inte misslyckas verifieringen
 
-## <a name="test-hello-custom-policy-by-using-run-now"></a>Testa hello anpassad princip med Kör nu
+## <a name="test-the-custom-policy-by-using-run-now"></a>Testa den anpassade principen genom att använda Kör nu
 
-1.  Öppna **Azure AD B2C inställningar** och gå för**identitet upplevelse Framework**.
+1.  Öppna **Azure AD B2C inställningar** och gå till **identitet upplevelse Framework**.
 > [!NOTE]
 >
->**Kör nu** kräver minst ett program toobe preregistered hello innehavaren. toolearn hur tooregister program finns hello Azure AD B2C [Kom igång](active-directory-b2c-get-started.md) artikel eller hello [appregistrering](active-directory-b2c-app-registration.md) artikel.
-2.  Öppna **B2C_1A_signup_signin**, hello förlitande part (RP) anpassad princip som du överfört. Välj **kör nu**.
-3.  Du ska kunna toosign in med Microsoft-konto.
+>**Kör nu** kräver minst ett program till preregistered för innehavaren. Om du vill lära dig mer om att registrera program, finns i Azure AD B2C [Kom igång](active-directory-b2c-get-started.md) artikel eller [appregistrering](active-directory-b2c-app-registration.md) artikel.
+2.  Öppna **B2C_1A_signup_signin**, förlitande part (RP) anpassade principer som du har överfört. Välj **kör nu**.
+3.  Du ska kunna logga in med Microsoft-konto.
 
-## <a name="optional-register-hello-microsoft-account-claims-provider-tooprofile-edit-user-journey"></a>[Valfritt] Registrera hello Account anspråk providern tooProfile Redigera användare resa
-Vill du kanske tooadd hello Account identitetsleverantör också tooyour användaren `ProfileEdit` användaren resa. toomake den är tillgänglig, vi Upprepa hello senaste två steg:
+## <a name="optional-register-the-microsoft-account-claims-provider-to-profile-edit-user-journey"></a>[Valfritt] Registrera Account anspråksprovidern för profil-Redigera användare resa
+Du kanske vill lägga till identitetsleverantören Account också till dina användare `ProfileEdit` användare resa. Vi Upprepa de två sista stegen för att göra den tillgänglig:
 
-### <a name="display-hello-button"></a>Visa hello-knappen
-1.  Öppna filen för hello tillägg av principen (till exempel TrustFrameworkExtensions.xml).
-2.  Hitta hello `<UserJourney>` nod som innehåller `Id="ProfileEdit"` i hello användaren resa som du kopierade.
-3.  Leta upp hello `<OrchestrationStep>` nod som innehåller`Order="1"`
+### <a name="display-the-button"></a>Visa knappen
+1.  Öppna filen för tillägg av principen (till exempel TrustFrameworkExtensions.xml).
+2.  Hitta de `<UserJourney>` nod som innehåller `Id="ProfileEdit"` i transporten användare som du kopierade.
+3.  Leta upp den `<OrchestrationStep>` nod som innehåller`Order="1"`
 4.  Lägg till följande XML-kodstycke under `<ClaimsProviderSelections>` nod:
 
 ```xml
 <ClaimsProviderSelection TargetClaimsExchangeId="MSAExchange" />
 ```
 
-### <a name="link-hello-button-tooan-action"></a>Länken hello tooan åtgärd
-1.  Hitta hello `<OrchestrationStep>` som innehåller `Order="2"` i hello `<UserJourney>` nod.
+### <a name="link-the-button-to-an-action"></a>Länka knappen till en åtgärd
+1.  Hitta de `<OrchestrationStep>` som innehåller `Order="2"` i den `<UserJourney>` nod.
 2.  Lägg till följande XML-kodstycke under `<ClaimsExchanges>` nod:
 
 ```xml
 <ClaimsExchange Id="MSAExchange" TechnicalProfileReferenceId="MSA-OIDC" />
 ```
 
-### <a name="test-hello-custom-profile-edit-policy-by-using-run-now"></a>Testa hello anpassad profil-Redigera princip genom att använda Kör nu
-1.  Öppna **Azure AD B2C inställningar** och gå för**identitet upplevelse Framework**.
-2.  Öppna **B2C_1A_ProfileEdit**, hello förlitande part (RP) anpassad princip som du överfört. Välj **kör nu**.
-3.  Du ska kunna toosign in med Microsoft-konto.
+### <a name="test-the-custom-profile-edit-policy-by-using-run-now"></a>Testa en anpassad profil-Redigera princip genom att använda Kör nu
+1.  Öppna **Azure AD B2C inställningar** och gå till **identitet upplevelse Framework**.
+2.  Öppna **B2C_1A_ProfileEdit**, förlitande part (RP) anpassade principer som du har överfört. Välj **kör nu**.
+3.  Du ska kunna logga in med Microsoft-konto.
 
-## <a name="download-hello-complete-policy-files"></a>Hämta hello fullständig principfiler
-Valfritt: Vi rekommenderar att du skapar ditt scenario med din egen anpassade principfiler när du har slutfört hello komma igång med anpassade principer igenom istället för att använda dessa exempelfiler.  [Exempelfiler för principen för referens](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-setup-msa-app)
+## <a name="download-the-complete-policy-files"></a>Hämta de fullständiga principfilerna
+Valfritt: Vi rekommenderar att du skapar ditt scenario med en egen anpassad princip för filer när du har slutfört komma igång med principer för anpassade igenom istället för att använda dessa exempelfiler.  [Exempelfiler för principen för referens](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-setup-msa-app)

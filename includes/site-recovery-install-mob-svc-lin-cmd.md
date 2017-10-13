@@ -1,14 +1,14 @@
-1. Kopiera hello installer tooa lokal mapp (till exempel /tmp) på hello-server som du vill tooprotect. Kör följande kommandon hello i en terminal:
+1. Kopiera installationsprogrammet till en lokal mapp (till exempel /tmp) på den server som du vill skydda. Kör följande kommandon i en terminal:
   ```
   cd /tmp
   tar -xvzf Microsoft-ASR_UA*release.tar.gz
   ```
-2. tooinstall Mobilitetstjänsten, kör hello följande kommando:
+2. För att installera Mobilitetstjänsten, kör du följande kommando:
 
   ```
   sudo ./install -d <Install Location> -r MS -v VmWare -q
   ```
-3. När installationen är klar måste hello Mobilitetstjänsten tooget registrerade toohello konfigurationsservern. Kör följande kommando tooregister hello Mobilitetstjänsten med konfigurationsservern hello.
+3. När installationen är klar, måste Mobilitetstjänsten registreras på konfigurationsservern. Kör följande kommando för att registrera Mobilitetstjänsten med konfigurationsservern.
 
   ```
   /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i <CSIP> -P /var/passphrase.txt
@@ -25,8 +25,8 @@ Usage:
 |-|-|-|-|
 |-r |Obligatorisk|Anger om Mobility Service (MS) som ska installeras eller MasterTarget(MT) ska installeras|MS </br> HUVUDMÅLSERVERN|
 |-d |Valfri|Plats där Mobilitetstjänsten kommer att installeras|/usr/local/ASR|
-|-v|Obligatorisk|Anger hello plattform på vilken hello Mobilitetstjänsten komma installeras </br> </br>- **VMware** : Använd det här värdet om du installerar mobilitetstjänsten på en virtuell dator som körs på *vSphere VMware ESXi-värdar*, *Hyper-V-värdar* och *Phsyical servrar* </br> - **Azure** : Använd det här värdet om du installerar agenten på en Azure IaaS-VM| VMware </br> Azure|
-|-q|Valfri|Anger toorun installer i tyst läge| Saknas|
+|-v|Obligatorisk|Anger plattformen där Mobilitetstjänsten komma installeras </br> </br>- **VMware** : Använd det här värdet om du installerar mobilitetstjänsten på en virtuell dator som körs på *vSphere VMware ESXi-värdar*, *Hyper-V-värdar* och *Phsyical servrar* </br> - **Azure** : Använd det här värdet om du installerar agenten på en Azure IaaS-VM| VMware </br> Azure|
+|-q|Valfri|Anger om du vill köra installer i tyst läge| Saknas|
 
 
 #### <a name="mobility-service-configuration-command-line"></a>Mobility tjänstkonfiguration kommandoraden
@@ -39,5 +39,5 @@ UnifiedAgentConfigurator.sh -i <CSIP> -P <PassphraseFilePath>
 
 |Parameter|Typ|Beskrivning|Möjliga värden|
 |-|-|-|-|
-|-i |Obligatorisk|Hello konfigurationsservern IP|Vilken giltig IP-adress som helst|
-|-P |Obligatorisk|Fullständig sökväg hello fil där hello anslutning lösenfras sparas|En giltig mapp|
+|-i |Obligatorisk|Konfigurationsservern IP|Vilken giltig IP-adress som helst|
+|-P |Obligatorisk|Fullständig sökväg där anslutning lösenfrasen sparas filen|En giltig mapp|

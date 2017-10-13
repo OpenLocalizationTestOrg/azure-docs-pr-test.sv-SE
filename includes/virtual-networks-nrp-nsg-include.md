@@ -1,28 +1,28 @@
 ## <a name="network-security-group"></a>Nätverkssäkerhetsgrupp
-NSG-resurs gör det möjligt för hello skapa säkerhetsgräns för arbetsbelastningar, genom att implementera Tillåt och neka regler. Dessa regler kan tillämpas tooa VM, ett nätverkskort eller ett undernät.
+NSG-resurs kan skapa säkerhetsgräns för arbetsbelastningar, genom att implementera Tillåt och neka regler. Dessa regler kan tillämpas på en virtuell dator, ett nätverkskort eller ett undernät.
 
 | Egenskap | Beskrivning | Exempelvärden |
 | --- | --- | --- |
-| **undernät** |Lista med undernät-ID: n hello NSG tillämpas. |/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-XXXXXXXXXXXX/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet/Subnets/FrontEnd |
-| **securityRules** |Lista över säkerhetsregler som utgör hello NSG |Se [säkerhetsregeln](#Security-rule) nedan |
+| **undernät** |Lista över undernät-ID NSG: N används. |/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-XXXXXXXXXXXX/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet/Subnets/FrontEnd |
+| **securityRules** |Lista över säkerhetsregler som utgör NSG: N |Se [säkerhetsregeln](#Security-rule) nedan |
 | **defaultSecurityRules** |Lista över säkerhet standardregler finns i varje NSG |Se [standard säkerhetsregler](#Default-security-rules) nedan |
 
 * **Säkerhetsregeln** -en NSG kan ha flera säkerhetsregler som definierats. Varje regel kan tillåta eller neka olika typer av trafik.
 
 ### <a name="security-rule"></a>Säkerhetsregeln
-En säkerhetsregel är en underordnad resurs som tillhör en NSG som innehåller hello egenskaper nedan.
+En säkerhetsregel är en underordnad resurs som tillhör en NSG som innehåller egenskaperna nedan.
 
 | Egenskap | Beskrivning | Exempelvärden |
 | --- | --- | --- |
-| **Beskrivning** |Beskrivning för hello regel |Tillåt inkommande trafik för alla virtuella datorer i undernät X |
-| **protokollet** |Protokollet toomatch för hello regel |TCP, UDP eller * |
-| **sourcePortRange** |Källan port intervallet toomatch för hello regel |80, 100-200, * |
-| **destinationPortRange** |Mål-port intervallet toomatch för hello regel |80, 100-200, * |
-| **sourceAddressPrefix** |Källan adress prefixet toomatch för hello regel |10.10.10.1 10.10.10.0/24 VirtualNetwork |
-| **destinationAddressPrefix** |Mål-adress prefixet toomatch för hello regel |10.10.10.1 10.10.10.0/24 VirtualNetwork |
-| **riktning** |Riktningen för trafik toomatch för hello regel |inkommande eller utgående |
-| **prioritet** |Prioritet för hello regeln. Reglerna kontrolleras i prioritsordning, när en regel testas inga fler regler för matchning. |10, 100, 65000 |
-| **åtkomst** |Typ av åtkomst tooapply om hello regeln matchar |tillåt eller neka |
+| **Beskrivning** |Beskrivning av regeln |Tillåt inkommande trafik för alla virtuella datorer i undernät X |
+| **protokollet** |Protokoll att matcha för regeln |TCP, UDP eller * |
+| **sourcePortRange** |Källportintervall att matcha för regeln |80, 100-200, * |
+| **destinationPortRange** |Målportintervall att matcha för regeln |80, 100-200, * |
+| **sourceAddressPrefix** |Källadress-prefix för att matcha för regeln |10.10.10.1 10.10.10.0/24 VirtualNetwork |
+| **destinationAddressPrefix** |Måladress-prefix att matcha för regeln |10.10.10.1 10.10.10.0/24 VirtualNetwork |
+| **riktning** |Trafikriktning att matcha för regeln |inkommande eller utgående |
+| **prioritet** |Prioritet för regeln. Reglerna kontrolleras i prioritsordning, när en regel testas inga fler regler för matchning. |10, 100, 65000 |
+| **åtkomst** |Typ av åtkomst som ska tillämpas om regeln matchar |tillåt eller neka |
 
 Exempel NSG i JSON-format:
 
@@ -67,11 +67,11 @@ Exempel NSG i JSON-format:
         }
     }
 
-### <a name="default-security-rules"></a>Standardsäkerhetsregler
+### <a name="default-security-rules"></a>Standardregler för säkerhet
 
-Standardregler för säkerhet har hello samma egenskaper som är tillgängliga i säkerhetsregler. De finns tooprovide grundläggande anslutning mellan resurser som har toothem NSG: er som används. Kontrollera att du vet vilken [standard säkerhetsregler](../articles/virtual-network/virtual-networks-nsg.md#default-rules) finns.
+Standard säkerhetsregler ha samma egenskaper som är tillgängliga i säkerhetsregler. De finns för att ge grundläggande anslutning mellan resurser som har NSG: er som tillämpas på. Kontrollera att du vet vilken [standard säkerhetsregler](../articles/virtual-network/virtual-networks-nsg.md#default-rules) finns.
 
 ### <a name="additional-resources"></a>Ytterligare resurser
 * Hämta mer information [NSG: er](../articles/virtual-network/virtual-networks-nsg.md).
-* Läs hello [REST API-referensdokumentation](https://msdn.microsoft.com/library/azure/mt163615.aspx) för NSG: er.
-* Läs hello [REST API-referensdokumentation](https://msdn.microsoft.com/library/azure/mt163580.aspx) för säkerhetsregler.
+* Läs den [REST API-referensdokumentation](https://msdn.microsoft.com/library/azure/mt163615.aspx) för NSG: er.
+* Läs den [REST API-referensdokumentation](https://msdn.microsoft.com/library/azure/mt163580.aspx) för säkerhetsregler.

@@ -1,6 +1,6 @@
 ---
-title: "aaaDeploy en dockerbehållare kluster i Azure | Microsoft Docs"
-description: "Distribuera en lösning för Kubernetes, DC/OS eller Docker Swarm i Azure Container Service med hello Azure-portalen eller en Resource Manager-mall."
+title: "Distribuera ett Docker-behållarkluster i Azure | Microsoft Docs"
+description: "Distribuera en Kubernetes-, DC/OS- eller Docker Swarm lösning i Azure Container Service med hjälp av Azure Portal eller en Resource Manager-mall."
 services: container-service
 documentationcenter: 
 author: rgardler
@@ -16,19 +16,19 @@ ms.workload: na
 ms.date: 03/01/2017
 ms.author: rogardle
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 26e3a7d0af9d71acd8b5c85fd667fcf7d84cef66
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 0ef256537bf095e2a5d582bd345a9c8dcede2095
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
-# <a name="deploy-a-docker-container-hosting-solution-using-hello-azure-portal"></a>Distribuera en dockerbehållare som värd-lösning med hjälp av hello Azure-portalen
+# <a name="deploy-a-docker-container-hosting-solution-using-the-azure-portal"></a>Distribuera en värdlösning med en Docker-behållare via Azure Portal
 
 
 
-Azure Container Service ger snabb distribution av populär behållarklustring med öppen källkod och orchestration-lösningar. Det här dokumentet vägleder dig genom att distribuera ett Azure Container Service-kluster med hjälp av hello Azure-portalen eller en mall för Azure Resource Manager-Snabbstart. 
+Azure Container Service ger snabb distribution av populär behållarklustring med öppen källkod och orchestration-lösningar. Det här dokumentet innehåller anvisningar för att distribuera ett Azure Container Service-kluster via Azure Portal eller en snabbstartsmall för Azure Resource Manager. 
 
-Du kan också distribuera ett Azure Container Service-kluster med hjälp av hello [Azure CLI 2.0](container-service-create-acs-cluster-cli.md) eller hello Azure Container Service API: er.
+Du kan även distribuera ett Azure Container Service-kluster med hjälp av [Azure CLI 2.0](container-service-create-acs-cluster-cli.md) eller Azure Container Service-API:erna.
 
 Bakgrundsinformation finns i [Introduktion till Azure Container Service](../container-service-intro.md).
 
@@ -38,167 +38,167 @@ Bakgrundsinformation finns i [Introduktion till Azure Container Service](../cont
 * **Azure-prenumeration**: Om du inte har någon kan du registrera dig för en [kostnadsfri utvärderingsversion](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AA4C1C935). Överväg en prenumeration utan fast avgift eller andra alternativ för ett större kluster.
 
     > [!NOTE]
-    > Din användning av Azure-prenumeration och [resurskvoter](../../azure-subscription-service-limits.md), till exempel kärnor kvoter kan begränsa hello storleken på hello-kluster som du distribuerar. toorequest ökad kvot, öppna ett [online kundsupport](../../azure-supportability/how-to-create-azure-support-request.md) utan kostnad.
+    > Din användning av din Azure-prenumeration och dina [resurskvoter](../../azure-subscription-service-limits.md), till exempel kärnkvoter, kan begränsa storleken på det kluster som du distribuerar. Om du vill begära en ökning av kvoten kan du öppna ett [kundsupportärende online](../../azure-supportability/how-to-create-azure-support-request.md) utan kostnad.
     >
 
-* **Offentlig SSH-RSA-nyckel**: när du distribuerar via hello-portalen eller en av hello Azure quickstart mallar, måste tooprovide hello offentlig nyckel för autentisering mot Azure Container Service virtuella datorer. toocreate SSH (Secure Shell) RSA-nycklar, se hello [OS X- och Linux](../../virtual-machines/linux/mac-create-ssh-keys.md) eller [Windows](../../virtual-machines/linux/ssh-from-windows.md) vägledning. 
+* **Offentlig SSH RSA-nyckel**: När du distribuerar via portalen eller en av Azures snabbstartsmallar måste du ange den offentliga nyckeln för autentisering mot virtuella datorer i Azure Container Service. Information om hur du skapar SSH (Secure Shell) RSA-nycklar finns i hjälpartiklarna för [OS X och Linux](../../virtual-machines/linux/mac-create-ssh-keys.md) eller [Windows](../../virtual-machines/linux/ssh-from-windows.md). 
 
-* **Service principal klient-ID och Hemlig** (Kubernetes): Mer information och vägledning toocreate ett Azure Active Directory-tjänstens huvudnamn, se [om hello tjänstens huvudnamn för ett kluster med Kubernetes](../kubernetes/container-service-kubernetes-service-principal.md).
+* **Klient-ID och hemlighet för tjänstens huvudnamn** (endast Kubernetes): Mer information och vägledning om hur du skapar ett Azure Active Directory-huvudnamn finns i [Om tjänstens huvudnamn för ett Kubernetes-kluster](../kubernetes/container-service-kubernetes-service-principal.md).
 
 
 
-## <a name="create-a-cluster-by-using-hello-azure-portal"></a>Skapa ett kluster med hjälp av hello Azure-portalen
-1. Logga in toohello Azure-portalen, Välj **ny**, och Sök hello Azure Marketplace för **Azure Container Service**.
+## <a name="create-a-cluster-by-using-the-azure-portal"></a>Skapa ett kluster med Azure Portal
+1. Logga in på Azure Portal, välj **Ny** och sök på Azure Marketplace efter **Azure Container Service**.
 
     ![Azure Container Service i Marketplace](./media/container-service-deployment/acs-portal1.png)  <br />
 
 2. Klicka på **Azure Container Service** och klicka på **Skapa**.
 
-3. På hello **grunderna** bladet ange hello följande information:
+3. Ange följande information i bladet **Grundläggande inställningar**:
 
-    * **Orchestrator**: Välj något av hello behållaren orchestrators toodeploy på hello klustret.
+    * **Orchestrator**: Välj något av behållardirigeringsverktygen för att distribuera klustret.
         * **DC/OS**: distribuerar ett DC/OS-kluster.
         * **Swarm**: distribuerar ett Docker Swarm-kluster.
         * **Kubernetes**: Distribuerar ett Kubernetes-kluster.
     * **Prenumeration**: Välj en Azure-prenumeration.
-    * **Resursgruppen**: Anger hello namnet på en ny resursgrupp för hello-distribution.
-    * **Plats**: Välj en Azure-region för hello Azure Container Service-distributionen. Om du vill kontrollera tillgänglighet läser du [Produkttillgänglighet per region](https://azure.microsoft.com/regions/services/).
+    * **Resursgrupp**: Ange namnet på en ny resursgrupp för distributionen.
+    * **Plats**: Välj en Azure-region för Azure Container Service-distributionen. Om du vill kontrollera tillgänglighet läser du [Produkttillgänglighet per region](https://azure.microsoft.com/regions/services/).
     
     ![Grundläggande inställningar](./media/container-service-deployment/acs-portal3.png)  <br />
     
-    Klicka på **OK** när du är klar tooproceed.
+    Klicka på **OK** när du är redo att gå vidare.
 
-4. På hello **Master configuration** bladet ange hello följande inställningar för hello Linux huvudnoden eller noder i klustret för hello (vissa inställningar är särskilda tooeach orchestrator):
+4. På bladet **Konfiguration av huvudservrar** anger du följande inställningar för den överordnade Linux-noden eller -noderna i klustret (vissa inställningar är specifika för varje orchestrator):
 
-    * **Master DNS-namnet**: hello prefix används toocreate ett unikt fullständigt kvalificerade domännamnet (FQDN) för hello master. hello master FQDN är hello formatet *prefix*hanteringsdata*plats*. cloudapp.azure.com.
-    * **Användarnamnet**: hello användarnamn för ett konto på varje hello virtuella Linux-datorer i hello kluster.
-    * **Offentlig SSH-RSA-nyckel**: Lägg till hello offentliga nyckel toobe används för autentisering mot hello Linux virtuella datorer. Det är viktigt att den här nyckeln innehåller några radbrytningar och innehåller hello `ssh-rsa` prefix. Hej `username@domain` username@Domain är valfritt. hello nyckel ska se ut ungefär hello följande: **ssh-rsa AAAAB3Nz... <>...... UcyupgH azureuser@linuxvm** . 
-    * **Tjänstens huvudnamn**: Ange ett Azure Active Directory om du har valt hello Kubernetes orchestrator **Service principal klient-ID** (kallas även hello appId) och **Service principal klienthemlighet** (lösenord). Mer information finns i [om hello tjänstens huvudnamn för ett kluster med Kubernetes](../kubernetes/container-service-kubernetes-service-principal.md).
-    * **Master-antal**: hello antal huvudservrar i hello klustret.
-    * **Diagnostik för Virtuella datorer**: för vissa orchestrators kan du aktivera diagnostik för Virtuella datorer på hello huvudservrar.
+    * **Huvud-DNS-namn**: Prefixet som används för att skapa ett unikt fullständigt kvalificerat domännamn (FQDN) för huvudservern. Det fullständiga domännamnet är i formatet *prefix*mgmt.*location*.cloudapp.azure.com.
+    * **Användarnamn**: Användarkontot för ett konto på varje virtuell Linux-dator i klustret.
+    * **Offentlig SSH RSA-nyckel**: Lägg till den offentliga nyckel som ska användas för autentisering mot virtuella datorer i Linux. Det är viktigt att den här nyckeln inte innehåller några radbrytningar och att den innehåller prefixet `ssh-rsa`. Postfixen `username@domain` är valfri. Nyckeln bör vara lik följande: **ssh-rsa AAAAB3Nz...<...>...UcyupgH azureuser@linuxvm**. 
+    * **Tjänstens huvudnamn**: Om du valde Kubernetes-orchestrator anger du ett Azure Active Directory-**klient-ID för tjänstens huvudnamn** (kallas även appId) och en **klienthemlighet för tjänstens huvudnamn** (lösenord). Mer information finns i [Om tjänstens huvudnamn för ett Kubernetes-kluster](../kubernetes/container-service-kubernetes-service-principal.md).
+    * **Antal huvudservrar**: antal huvudservrar i klustret.
+    * **VM-diagnostik**: För vissa orchestrators kan du aktivera VM-diagnostik för huvudservrarna.
 
     ![Konfiguration av huvudservrar](./media/container-service-deployment/acs-portal4.png)  <br />
 
-    Klicka på **OK** när du är klar tooproceed.
+    Klicka på **OK** när du är redo att gå vidare.
 
-5. På hello **agentkonfiguration** bladet ange hello följande information:
+5. Ange följande information i bladet **Agentkonfiguration**:
 
-    * **Agentantal**: det här värdet är för Docker Swarm och Kubernetes hello inledande antalet agenter i agentskalningsuppsättningen hello. DC/OS är det hello inledande antalet agenter i en privat skalningsuppsättning. Dessutom skapas en offentlig skalningsuppsättning för DC/OS som innehåller ett förinställt antal agenter. hello antalet agenter i den här offentliga skalningsuppsättningen avgörs av hello antal huvudservrar i klustret hello: en offentlig agent för en överordnad och två offentliga agenter för tre eller fem huvudservrar.
-    * **Agenten virtuella datorstorleken**: hello storleken på hello agentens virtuella datorer.
-    * **Operativsystemet**: den här inställningen är för närvarande endast tillgängligt om du har valt hello Kubernetes orchestrator. Välj en Linux-distribution eller en Windows Server operativsystem toorun på hello agenter. Den här inställningen bestämmer om ditt kluster kan köra Linux- eller Windows-behållarappar. 
+    * **Antal agenter**: För Docker Swarm och Kubernetes är det här värdet det inledande antalet agenter i agentskalningsuppsättningen. När det gäller DC/OS utgör det här det inledande antalet agenter i en privat skalningsuppsättning. Dessutom skapas en offentlig skalningsuppsättning för DC/OS som innehåller ett förinställt antal agenter. Antalet agenter i den här offentliga skalningsuppsättningen bestäms av antalet huvudservrar i klustret. En offentlig agent för en huvudserver och två offentliga agenter för tre eller fem huvudservrar.
+    * **Storlek på agentens virtuella dator**: storleken på agentens virtuella datorer.
+    * **Operativsystem**: Den här inställningen är för närvarande endast tillgänglig om du har valt Kubernetes-orchestratorn. Välj antingen en Linux-distribution eller ett Windows Server-operativsystem som ska köras på agenterna. Den här inställningen bestämmer om ditt kluster kan köra Linux- eller Windows-behållarappar. 
 
         > [!NOTE]
         > Stöd för Windows-behållare finns i förhandsgranskningen för Kubernetes-kluster. På DC-/OS- och Swarm-kluster stöds för närvarande endast Linux-agenter i Azure Container Service.
 
-    * **Autentiseringsuppgifter för agenten**: Ange en administratör om du har valt hello Windows-operativsystemet **användarnamn** och **lösenord** för hello agent virtuella datorer. 
+    * **Agentautentiseringsuppgifter**: Om du valde Windows-operativsystemet anger du ett **administratörsanvändarnamn** och **lösenord** för VM-agenten. 
 
     ![Agentkonfiguration](./media/container-service-deployment/acs-portal5.png)  <br />
 
-    Klicka på **OK** när du är klar tooproceed.
+    Klicka på **OK** när du är redo att gå vidare.
 
 6. Klicka på **OK** när tjänsteverifieringen är klar.
 
     ![Validering](./media/container-service-deployment/acs-portal6.png)  <br />
 
-7. Granska hello villkoren. Distributionsprocess för toostart hello, klickar du på **skapa**.
+7. Granska villkoren. Klicka på **Skapa** för att starta distributionsprocessen.
 
-    Om du har valt toopin hello distribution toohello Azure-portalen kan du se hello distributionens status.
+    Om du har valt att fästa distributionen på Azure Portal, visas distributionsstatusen.
 
     ![Status för distribution](./media/container-service-deployment/acs-portal8.png)  <br />
 
-hello distributionen tar flera minuter toocomplete. Hello Azure Container Service-kluster är redo för användning.
+Distributionen tar normalt flera minuter för att slutföras. Sedan kan Azure Container Service-klustret användas.
 
 
 ## <a name="create-a-cluster-by-using-a-quickstart-template"></a>Skapa ett kluster med en snabbstartsmall
-Azure quickstart mallar är tillgängliga toodeploy ett kluster i Azure Container Service. hello angiven snabbstartsmallar kan vara ändrade tooinclude ytterligare eller avancerade Azure-konfiguration. toocreate ett Azure Container Service-kluster med hjälp av en mall för Azure quickstart du behöver en Azure-prenumeration. Om du inte har någon kan du registrera dig för en [kostnadsfri utvärderingsversion](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AA4C1C935). 
+Azure-snabbstartsmallar är tillgängliga för att distribuera ett kluster i Azure Container Service. De tillhandahållna snabbstartsmallarna kan ändras så att de inkluderar ytterligare eller avancerad Azure-konfiguration. Du måste ha en Azure-prenumeration för att kunna skapa ett Azure Container Service-kluster med en Azure-snabbstartsmall. Om du inte har någon kan du registrera dig för en [kostnadsfri utvärderingsversion](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AA4C1C935). 
 
-Följ dessa steg toodeploy ett kluster med en mall och hello Azure CLI 2.0 (se [installations- och instruktioner](/cli/azure/install-az-cli2)).
+Följ stegen nedan för att distribuera ett kluster med hjälp av en mall och Azure CLI 2.0 (se [installations- och konfigurationsanvisningarna](/cli/azure/install-az-cli2)).
 
 > [!NOTE] 
-> Om du är på en Windows-dator kan använda du liknande steg toodeploy en mall med hjälp av Azure PowerShell. Se anvisningarna senare i det här avsnittet. Du kan också distribuera en mall med hello [portal](../../azure-resource-manager/resource-group-template-deploy-portal.md) eller andra metoder.
+> Du kan använda liknande steg för att distribuera en mall med Azure PowerShell om du är på ett Windows-system. Se anvisningarna senare i det här avsnittet. Du kan även distribuera en mall genom [Portalen](../../azure-resource-manager/resource-group-template-deploy-portal.md) eller genom andra metoder.
 
-1. toodeploy ett DC/OS, Docker Swarm eller Kubernetes kluster, Välj en av hello tillgängliga quickstart mallar från GitHub. En ofullständig lista finns nedan. hello DC/OS och Swarm mallar är hello samma förutom hello standardvalet av orchestrator.
+1. Om du vill distribuera ett DC/OS-, Docker Swarm- eller Kubernetes-kluster väljer du någon av de tillgängliga snabbstartsmallarna från GitHub. En ofullständig lista finns nedan. DC/OS- och Swarm-mallarna är likadana, med undantag för standardvalet av orchestrator.
 
     * [DC/OS-mall](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-dcos)
     * [Swarm-mall](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-swarm)
     * [Kubernetes-mall](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-kubernetes)
 
-2. Logga in tooyour Azure-konto (`az login`), och kontrollera att hello Azure CLI är anslutna tooyour Azure-prenumeration. Du kan se hello standard prenumeration med hjälp av hello följande kommando:
+2. Logga in på ditt Azure-konto (`az login`) och kontrollera att Azure CLI är anslutet till din Azure-prenumeration. Du kan se standard-prenumerationen med hjälp av följande kommando:
 
     ```azurecli
     az account show
     ```
     
-    Om du har mer än en prenumeration och behöver tooset en annan standard prenumeration kör `az account set --subscription` och ange hello prenumerations-ID eller namn.
+    Om du har fler än en prenumeration och måste ange en annan standard-prenumeration kör du `az account set --subscription` och anger prenumerationens ID eller namn.
 
-3. Ett bra tips är att använda en ny resursgrupp för hello-distribution. toocreate en resursgrupp, använda hello `az group create` kommando anger resursgruppens namn och plats: 
+3. Du bör använda en ny resursgrupp för distributionen. Skapa en resursgrupp genom att använda kommandot `az group create` och ange ett resursgruppnamn och en plats: 
 
     ```azurecli
     az group create --name "RESOURCE_GROUP" --location "LOCATION"
     ```
 
-4. Skapa en JSON-fil som innehåller hello nödvändiga parametrar. Hämta hello parameterfil som heter `azuredeploy.parameters.json` som medföljer hello Azure Container Service-mallen `azuredeploy.json` i GitHub. Ange de parametervärden som krävs för klustret. 
+4. Skapa en JSON-fil som innehåller nödvändiga mallparametrarna. Hämta parameterfilen som heter `azuredeploy.parameters.json` som kommer med Azure Container Service-mallarna `azuredeploy.json` i GitHub. Ange de parametervärden som krävs för klustret. 
 
-    Till exempel toouse hello [DC/OS-mall](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-dcos), ange parametervärden för `dnsNamePrefix` och `sshRSAPublicKey`. Se hello beskrivningar i `azuredeploy.json` och alternativ för andra parametrar.  
+    För att till exempel använda [DC/OS-mallen](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-dcos) anger du parametervärden för `dnsNamePrefix` och `sshRSAPublicKey`. Se beskrivningarna i `azuredeploy.json` och alternativ för andra parametrar.  
  
 
-5. Skapa ett Container Service-kluster genom att skicka hello distribution parameterfilen med hello följande kommando, där:
+5. Skapa ett Container Service-kluster genom att skicka filen med parametrarna för distribution med följande kommando, där:
 
-    * **RESOURCE_GROUP** är hello resursgrupp som du skapade i föregående steg i hello hello namn.
-    * **DEPLOYMENT_NAME** (valfritt) är ett namn som du ger toohello distribution.
-    * **TEMPLATE_URI** är hello platsen för distributionsfilen hello `azuredeploy.json`. Den här URI måste vara hello Raw-filen, inte en pekare toohello GitHub UI. toofind URI: N, väljer hello `azuredeploy.json` filen i GitHub och på hello **Raw** knappen.  
+    * **RESOURCE_GROUP** är namnet på resursgruppen som du skapade i det föregående steget.
+    * **DEPLOYMENT_NAME** (valfritt) är namnet du ger distributionen.
+    * **TEMPLATE_URI** är platsen för distributionsfilen `azuredeploy.json`. Den här URI:n måste vara rådatafilen, inte en pekare till GitHub-gränssnittet. Du kan hitta den här URI:en genom att markera filen `azuredeploy.json` i GitHub och klicka på **Raw**-knappen.  
 
     ```azurecli
     az group deployment create -g RESOURCE_GROUP -n DEPLOYMENT_NAME --template-uri TEMPLATE_URI --parameters @azuredeploy.parameters.json
     ```
 
-    Du kan också ange parametrar som en JSON-formaterad sträng på hello kommandoraden. Använd ett kommando liknande toohello följande:
+    Du kan även ange parametrar som en JSON-formaterad sträng i kommandoraden. Använd ett kommando som liknar följande:
 
     ```azurecli
     az group deployment create -g RESOURCE_GROUP -n DEPLOYMENT_NAME --template-uri TEMPLATE_URI --parameters "{ \"param1\": {\"value1\"} … }"
     ```
 
     > [!NOTE]
-    > hello distributionen tar flera minuter toocomplete.
+    > Distributionen tar normalt flera minuter för att slutföras.
     > 
 
 ### <a name="equivalent-powershell-commands"></a>Motsvarande PowerShell-kommandon
-Du kan även distribuera en mall för ett Azure Container Service-kluster med PowerShell. Det här dokumentet är baserad på hello version 1.0 [Azure PowerShell-modulen](https://azure.microsoft.com/blog/azps-1-0/).
+Du kan även distribuera en mall för ett Azure Container Service-kluster med PowerShell. Det här dokumentet utgår från version 1.0 av [Azure PowerShell-modulen](https://azure.microsoft.com/blog/azps-1-0/).
 
-1. toodeploy ett DC/OS, Docker Swarm eller Kubernetes kluster, Välj en av hello tillgängliga quickstart mallar från GitHub. En ofullständig lista finns nedan. Observera att hello DC/OS och Swarm mallar är hello detsamma, med undantag för hello av hello standardvalet av orchestrator.
+1. Om du vill distribuera ett DC/OS-, Docker Swarm- eller Kubernetes-kluster väljer du någon av de tillgängliga snabbstartsmallarna från GitHub. En ofullständig lista finns nedan. Observera att DC/OS- och Swarm-mallarna är likadana, med undantag för standardvalet av orchestrator.
 
     * [DC/OS-mall](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-dcos)
     * [Swarm-mall](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-swarm)
     * [Kubernetes-mall](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-kubernetes)
 
-2. Kontrollera att PowerShell-sessionen har loggats in tooAzure innan du skapar ett kluster i Azure-prenumeration. Du kan göra detta med hello `Get-AzureRMSubscription` kommando:
+2. Innan du skapar ett kluster i din Azure-prenumeration måste du kontrollera att PowerShell-sessionen har loggats in på Azure. Det kan du göra med kommandot `Get-AzureRMSubscription`:
 
     ```powershell
     Get-AzureRmSubscription
     ```
 
-3. Om du behöver toosign i tooAzure använder hello `Login-AzureRMAccount` kommando:
+3. Om du behöver logga in på Azure kan du använda kommandot `Login-AzureRMAccount`:
 
     ```powershell
     Login-AzureRmAccount
     ```
 
-4. Ett bra tips är att använda en ny resursgrupp för hello-distribution. toocreate en resursgrupp, använda hello `New-AzureRmResourceGroup` kommando och ange en resurs grupp namn och mål region:
+4. Du bör använda en ny resursgrupp för distributionen. Skapa en resursgrupp genom att använda kommandot `New-AzureRmResourceGroup` och ange ett resursgruppnamn och en målregion:
 
     ```powershell
     New-AzureRmResourceGroup -Name GROUP_NAME -Location REGION
     ```
 
-5. När du har skapat en resursgrupp kan du skapa klustret med hello följande kommando. hello-URI för hello önskade mallen anges med hello `-TemplateUri` parameter. När du kör det här kommandot uppmanar PowerShell dig att ange parametervärden för distributionen.
+5. När du har skapat en resursgrupp kan du skapa klustret med nedanstående kommando. URI:n för den önskade mallen anges för parametern `-TemplateUri`. När du kör det här kommandot uppmanar PowerShell dig att ange parametervärden för distributionen.
 
     ```powershell
     New-AzureRmResourceGroupDeployment -Name DEPLOYMENT_NAME -ResourceGroupName RESOURCE_GROUP_NAME -TemplateUri TEMPLATE_URI
     ```
 
 #### <a name="provide-template-parameters"></a>Ange mallparametrar
-Om du är bekant med PowerShell vet du att du kan gå igenom hello tillgängliga parametrar för en cmdlet genom att skriva ett minustecken (-) och sedan trycka på TABB-tangenten hello. Den här metoden går även att använda med parametrar som du anger i mallen. Så snart du skriver hello mallnamn hello cmdlet hämtar hello mallen, Parsar hello parametrar och lägger till hello mallen parametrar toohello kommandot dynamiskt. Detta gör det enkelt toospecify hello parametervärden för mallen. Och om du glömmer ett nödvändigt parametervärde efterfrågar PowerShell hello värde.
+Om du är bekant med PowerShell vet du att du kan gå igenom tillgängliga parametrar för en cmdlet genom att skriva ett minustecken (-) och sedan trycka på TABB-tangenten. Den här metoden går även att använda med parametrar som du anger i mallen. När du anger mallnamnet hämtar cmdleten mallen, parsar parametrarna och lägger dynamiskt till mallparametrarna i kommandot. På så sätt är det enkelt att ange parametervärden för mallen. Och om du glömmer ett nödvändigt parametervärde efterfrågar PowerShell värdet.
 
-Här är hello fullständiga kommandot inklusive parametrar. Ange egna värden för hello namnen på de hello resurser.
+Här visas det fullständiga kommandot inklusive parametrar. Ange egna värden för resursnamnen.
 
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName RESOURCE_GROUP_NAME-TemplateURI TEMPLATE_URI -adminuser value1 -adminpassword value2 ....
@@ -207,7 +207,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName RESOURCE_GROUP_NAME-Templa
 ## <a name="next-steps"></a>Nästa steg
 Nu när du har ett fungerande kluster kan du visa dessa dokument för anslutnings- och hanteringsinformation:
 
-* [Ansluta tooan Azure Container Service-kluster](../container-service-connect.md)
+* [Ansluta till ett Azure Container Service-kluster](../container-service-connect.md)
 * [Arbeta med Azure Container Service och DC/OS](container-service-mesos-marathon-rest.md)
 * [Arbeta med Azure Container Service och Docker Swarm](container-service-docker-swarm.md)
 * [Arbeta med Azure Container Service och Kubernetes](../kubernetes/container-service-kubernetes-walkthrough.md)

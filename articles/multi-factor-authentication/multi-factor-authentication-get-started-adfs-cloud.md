@@ -1,6 +1,6 @@
 ---
-title: aaaSecure molnresurser med Azure MFA och AD FS | Microsoft Docs
-description: "Det här är hello Azure Multi-Factor authentication sida som beskriver hur tooget igång med Azure MFA och AD FS i hello molnet."
+title: Skydda molnresurser med Azure MFA och AD FS | Microsoft Docs
+description: "Det här är sidan om Azure Multi-Factor Authentication som beskriver hur du kommer igång med Azure MFA och AD FS i molnet."
 services: multi-factor-authentication
 documentationcenter: 
 author: kgremban
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/29/2017
 ms.author: kgremban
-ms.openlocfilehash: 8d38d6a4af63ddcaf0fefded0b73d82d5178aa36
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 6cf4ec4f777ea1f2b852945ab82da2547946f378
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="securing-cloud-resources-with-azure-multi-factor-authentication-and-ad-fs"></a>Skydda molnresurser med Azure Multi-Factor Authentication och AD FS
-Om din organisation är federerat med Azure Active Directory, använder du Azure Multi-Factor Authentication eller Active Directory Federation Services (AD FS) toosecure resurser som kan nås av Azure AD. Använd följande procedurer toosecure Azure Active Directory-resurser med Azure Multi-Factor Authentication eller Active Directory Federation Services hello.
+Om din organisation är federerad med Azure Active Directory använder du Azure Multi-Factor Authentication eller Active Directory Federation Services (AD FS) för att skydda dessa resurser. Skydda dina resurser i Azure Active Directory med Azure Multi-Factor Authentication eller Active Directory Federation Services genom att använda följa steg.
 
 ## <a name="secure-azure-ad-resources-using-ad-fs"></a>Skydda Azure AD-resurser med hjälp av AD FS
-toosecure din molnresursen, konfigurera en regel för anspråk så att Active Directory Federation Services avger hello multipleauthn anspråk när en användare utför tvåstegsverifiering har. Denna begäran har skickats på tooAzure AD. Följ den här proceduren toowalk hello stegen:
+Ställ in en anspråksregel så att Active Directory Federation Services genererar multipleauthn-kravet när en användare utför tvåstegsverifiering om du vill skydda din molnresurs. Det här anspråket överförs till Azure AD. Följ dessa steg:
 
 
 1. Öppna AD FS-hantering.
-2. Hello vänster markerar **förtroende för förlitande part**.
+2. Välj **Förlitande partsförtroenden** till vänster.
 3. Högerklicka på **Microsoft Office 365 Identity Platform** och välj **Redigera anspråksregler**.
 
    ![Molnet](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip1.png)
@@ -37,40 +37,40 @@ toosecure din molnresursen, konfigurera en regel för anspråk så att Active Di
 
    ![Molnet](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip2.png)
 
-5. På Hej guiden Lägg till transformera anspråk, Välj **släpp igenom eller filtrera ett inkommande anspråk** hello listrutan och klicka på **nästa**.
+5. I guiden Lägg till anspråksregel för transformering väljer du **Släpp igenom eller Filtrera ett inkommande anspråk** i listrutan och klickar sedan på **Nästa**.
 
    ![Molnet](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip3.png)
 
 6. Namnge din regel. 
-7. Välj **autentiseringsmetodernas referenser** hello inkommande anspråkstyp.
+7. Välj **Autentiseringsmetodreferenser** som den inkommande anspråkstypen.
 8. Välj **Släpp igenom alla anspråksvärden**.
     ![Guiden Lägg till anspråksregel för transformering](./media/multi-factor-authentication-get-started-adfs-cloud/configurewizard.png)
-9. Klicka på **Slutför**. Stäng hello AD FS-hanteringskonsol.
+9. Klicka på **Slutför**. Stäng AD FS-hanteringskonsolen.
 
 ## <a name="trusted-ips-for-federated-users"></a>Tillförlitliga IP-adresser för federerade användare
-Tillförlitliga IP-adresser kan administratörer tooby pass tvåstegsverifiering för specifika IP-adresser eller externa användare som har begäranden från inom sin egen intranät. hello följande avsnitt beskrivs hur tooconfigure Azure Multi-Factor Authentication tillförlitliga IP-adresser med externa användare och hoppa över tvåstegsverifiering när en begäran kommer från inom en federerad användare intranät. Detta uppnås genom att konfigurera AD FS toouse en direktlagringsdisk eller filtrera ett inkommande anspråk mallen med hello inuti företagsnätverket anspråkstyp.
+Tillförlitliga IP-adresser gör att administratörer kan kringgå tvåstegsverifiering för specifika IP-adresser eller federerade användare som har förfrågningar som kommer inifrån det egna intranätet. Följande avsnitt beskriver hur du konfigurerar tillförlitliga IP-adresser för Azure Multi-Factor Authentication med federerade användare och hur du kringgår tvåstegsverifiering när en begäran kommer inifrån en federerad användares intranät. Du gör detta genom att konfigurera AD FS att släppa igenom eller filtrera en mall för inkommande anspråk med anspråkstypen I företagsnätverket.
 
 I det här exemplet används Office 365 för våra förlitande partsförtroenden.
 
-### <a name="configure-hello-ad-fs-claims-rules"></a>Konfigurera regler för hello AD FS-anspråk
-hello första vi behöver toodo är tooconfigure hello AD FS-anspråk. Skapa två anspråksregler, en för hello inuti företagsnätverket Anspråkstypen och ytterligare en för att hålla våra användare som har loggat in.
+### <a name="configure-the-ad-fs-claims-rules"></a>Konfigurera anspråksreglerna för AD FS
+Det första vi måste göra är att konfigurera AD FS-anspråken. Skapa två anspråksregler, en för anspråkstypen inom företagsnätverket och ytterligare en som gör att våra användare förblir inloggade.
 
 1. Öppna AD FS-hantering.
-2. Hello vänster markerar **förtroende för förlitande part**.
+2. Välj **Förlitande partsförtroenden** till vänster.
 3. Högerklicka på **Microsoft Office 365-identitetsplattform** och välj **Redigera anspråksregler...**
    ![Molnet](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip1.png)
 4. För Utfärdande av transformeringsregler klickar du på **Lägg till regel.**
    ![Molnet](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip2.png)
-5. På Hej guiden Lägg till transformera anspråk, Välj **släpp igenom eller filtrera ett inkommande anspråk** hello listrutan och klicka på **nästa**.
+5. I guiden Lägg till anspråksregel för transformering väljer du **Släpp igenom eller Filtrera ett inkommande anspråk** i listrutan och klickar sedan på **Nästa**.
    ![Molnet](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip3.png)
-6. Hello rutan nästa tooClaim Regelnamn, ge regeln ett namn. Exempel: InsideCorpNet.
-7. Från hello nedrullningsbara nästa tooIncoming Anspråkstyp, Välj **inuti företagsnätverket**.
+6. I rutan bredvid Anspråksregelns namn ger du regeln ett namn. Exempel: InsideCorpNet.
+7. Välj **Inom företagsnätverket** i listrutan bredvid Typ av inkommande anspråk.
    ![Molnet](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip4.png)
 8. Klicka på **Slutför**.
 9. För Utfärdande av transformeringsregler klickar du på **Lägg till regel**.
-10. På Hej guiden Lägg till transformera anspråk, Välj **skicka anspråk med en anpassad regel** hello listrutan och klicka på **nästa**.
-11. I rutan hello under Regelnamn för anspråk: Ange *hålla användare inloggad i*.
-12. Skriv följande i hello anpassad regel:
+10. I guiden Lägg till anspråksregel för transformering väljer du **Skicka anspråk med hjälp av en anpassad regel** i listrutan och klickar sedan på **Nästa**.
+11. I rutan under Anspråksregelns namn skriver du *Håll användarna inloggade*.
+12. I rutan Anpassad regel anger du:
 
         c:[Type == "http://schemas.microsoft.com/2014/03/psso"]
             => issue(claim = c);
@@ -81,18 +81,18 @@ hello första vi behöver toodo är tooconfigure hello AD FS-anspråk. Skapa tv�
 16. Stäng AD FS-hantering.
 
 ### <a name="configure-azure-multi-factor-authentication-trusted-ips-with-federated-users"></a>Konfigurera tillförlitliga IP-adresser med federerade användare i Azure Multi-Factor Authentication
-Nu när hello anspråk är på plats kan konfigurera vi tillförlitliga IP-adresser.
+När nu anspråken är på plats kan vi konfigurera tillförlitliga IP-adresser.
 
-1. Logga in toohello [klassiska Azure-portalen](https://manage.windowsazure.com).
-2. Klicka på vänster hello **Active Directory**.
-3. Välj hello katalog där du vill tooset in tillförlitliga IP-adresser under katalog.
-4. Klicka på hello katalog som du har valt, **konfigurera**.
-5. På hello multifaktorautentisering under **hantera tjänstinställningar**.
-6. Hello-tjänsten på sidan Inställningar under tillförlitliga IP-adresser, Välj **hoppa över flera-factor-autentisering för förfrågningar från externa användare i intranätet**.  
+1. Logga in på den [klassiska Azure-portalen](https://manage.windowsazure.com).
+2. Klicka på **Active Directory** till vänster.
+3. Under Katalog väljer du den katalog där du vill ställa in tillförlitliga IP-adresser.
+4. Klicka på **Konfigurera** för den katalog som du har valt.
+5. Klicka på **Hantera tjänstinställningar** i avsnittet Multi-Factor Authentication.
+6. På sidan Tjänstinställningar väljer du **Hoppa över multi-factor authentication för förfrågningar från federerade användare som kommer från mitt intranät**.  
 
    ![Molnet](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip6.png)
    
 7. Klicka på **Spara**.
-8. När hello-uppdateringarna har tillämpats, klickar du på **Stäng**.
+8. Klicka på **Stäng**när uppdateringarna har tillämpats.
 
-Klart! Federerade Office 365-användare ska nu endast ha toouse MFA när ett anspråk som kommer från utanför hello företagets intranät.
+Klart! I det här läget behöver federerade Office 365-användare endast  använda MFA när ett anspråk kommer utifrån företagets intranät.

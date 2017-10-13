@@ -1,32 +1,32 @@
 <!--author=alkohli last changed: 07/05/2017-->
 
 > [!NOTE] 
-> Du kan inte ändra hello krypteringsinställningar och hello storage-kontot autentiseringsuppgifter som är associerade med en volymbehållare när den har skapats.
+> Du kan inte ändra krypteringsinställningar för och autentiseringsuppgifterna för ett lagringskonto som är associerade med en volymbehållare när den har skapats.
 
-#### <a name="toomodify-a-volume-container"></a>toomodify en volymbehållare
+#### <a name="to-modify-a-volume-container"></a>Att ändra en volymbehållare
 
-1. Gå tooyour StorSimple enheten Manager-tjänsten och sedan navigera för**Management > volymbehållare**.
+1. Gå till Enhetshanteraren för StorSimple-tjänsten och gå sedan till **Management > volymbehållare**.
 
-2. Välj hello volymbehållare som du vill toomodify hello tabular listan av volymbehållare. På hello **enheter** sidan Välj hello enheten, dubbelklicka på den, och klicka sedan på hello **volymbehållare** fliken.
+2. Välj volymbehållare som du vill ändra i tabellform listan över volymbehållare. På den **enheter** sidan, Välj enheten, dubbelklicka på den och klicka sedan på den **volymbehållare** fliken.
 
-2. Välj hello volymbehållare som du vill toomodify i hello tabular lista över hello volymbehållare. I hello bladet som öppnas, klickar du på **ändra** från hello kommandofältet.
+2. Välj volymbehållaren som du vill ändra i tabellform listan med volymbehållarna. I bladet som öppnas, klickar du på **ändra** från kommandofältet.
 
     ![Ändra volymbehållare](./media/storsimple-8000-modify-volume-container/modify-vol-container1.png)
 
-3. I hello **ändra volymbehållare** bladet hello följande steg:
+3. I den **ändra volymbehållare** bladet gör du följande:
    
-   1. hello kan namn, krypteringsnyckeln och storage-konto som är associerade med hello volymbehållare inte ändras efter att de har angetts. Ändra hello associerade inställningen bandbredd.
+   1. Namn, krypteringsnyckeln och storage-konto som är associerade med volymbehållaren kan inte ändras efter att de har angetts. Ändra inställningen för associerade bandbredd.
       
        ![Ändra inställningen för bandbredd](./media/storsimple-8000-modify-volume-container/modify-vol-container2.png)
 
    2.  Klicka på **OK**.
-4. Hello nästa sida i hello **ändra Volymbehållare** dialogrutan:
+4. I nästa sida i den **ändra Volymbehållare** dialogrutan:
    
-   1. Hello listrutan, Välj en befintlig bandbreddsmall för.
-   2. Granska hello schemainställningar för hello angivna bandbreddsmall.
-   3. Klicka på **spara** och bekräfta hello ändringar.
+   1. Listrutan, Välj en befintlig bandbreddsmall för.
+   2. Kontrollera schemainställningarna för för den angivna bandbreddsmall.
+   3. Klicka på **spara** och bekräfta ändringarna.
       
        ![Bekräfta ändringar](./media/storsimple-8000-modify-volume-container/modify-vol-container3.png)
 
-   3. Hej **volymbehållare** bladet är uppdaterade tooreflect hello ändringar.
+   3. Den **volymbehållare** bladet har uppdaterats för att återspegla ändringarna.
 

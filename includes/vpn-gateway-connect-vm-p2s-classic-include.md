@@ -1,16 +1,16 @@
-Du kan ansluta tooa virtuell dator som är distribuerade tooyour VNet genom att skapa en anslutning till fjärrskrivbord tooyour VM. hello bästa sätt tooinitially Kontrollera att du kan ansluta tooyour VM är tooconnect genom att använda sin privata IP-adress i stället för datornamn. På så sätt kan du testar toosee om du kan ansluta inte om namnmatchning är korrekt konfigurerat. 
+Du kan ansluta till en virtuell dator som är distribuerad till ditt VNet genom att skapa en anslutning till fjärrskrivbord till den virtuella datorn. Det bästa sättet att först kontrollera att du kan ansluta till den virtuella datorn är att ansluta via dess privata IP-adress snarare än datornamnet. På så sätt kan du testa om du kan ansluta, men inte om namnmatchningen är korrekt konfigurerad. 
 
-1. Hitta hello privata IP-adressen för den virtuella datorn. Du hittar hello privata IP-adressen för en virtuell dator genom att antingen studera hello egenskaper för hello VM i hello Azure-portalen eller med hjälp av PowerShell.
-2. Kontrollera att du är ansluten tooyour VNet med hello punkt-till-plats VPN anslutning. 
-3. Öppna anslutning till fjärrskrivbord genom att skriva ”RDP” eller ”anslutning till fjärrskrivbord” i sökrutan för hello hello verktygsfältet och välj sedan anslutning till fjärrskrivbord. Du kan också öppna anslutning till fjärrskrivbord använda hello 'mstsc'-kommando i PowerShell. 
-3. Ange hello privata IP-adressen för hello VM i anslutning till fjärrskrivbord. Du kan klicka på ”Visa alternativ” tooadjust ytterligare inställningar och sedan ansluta.
+1. Leta upp den privata IP-adressen för den virtuella datorn. Du kan hitta privata IP-adressen för en virtuell dator genom att antingen granska egenskaperna för den virtuella datorn i Azure Portal eller med hjälp av PowerShell.
+2. Kontrollera att du är ansluten till ditt VNet med en punkt-till-plats-anslutning via VPN. 
+3. Öppna fjärrskrivbordsanslutningen genom att skriva "RDP" eller "Remote Desktop Connection" (fjärrskrivbordsanslutning) i sökrutan i aktivitetsfältet och välj sedan fjärrskrivbordsanslutning. Du kan även öppna Anslutning till fjärrskrivbord med hjälp av kommandot ”mstsc” i PowerShell. 
+3. I fjärrskrivbordsanslutningen anger du den virtuella datorns privata IP-adress. Du kan klicka på "Visa alternativ" för att justera inställningar och sedan ansluta.
 
-### <a name="tootroubleshoot-an-rdp-connection-tooa-vm"></a>tootroubleshoot en RDP-anslutning tooa VM
+### <a name="to-troubleshoot-an-rdp-connection-to-a-vm"></a>Felsöka en RDP-anslutning till en virtuell dator
 
-Om du har problem när du ansluter tooa virtuella datorn via VPN-anslutning, finns det några saker du kan kontrollera. Mer information om felsökning finns i [Felsöka fjärrskrivbord anslutningar tooa VM](../articles/virtual-machines/windows/troubleshoot-rdp-connection.md).
+Om du har problem med att ansluta till en virtuell dator via VPN-anslutningen finns det några saker som du kan kontrollera. Mer felsökningsinformation finns i [Felsöka fjärrskrivbordsanslutningar till en virtuell dator](../articles/virtual-machines/windows/troubleshoot-rdp-connection.md).
 
 - Kontrollera att VPN-anslutningen har genomförts.
-- Kontrollera att du ansluter toohello privata IP-adress för hello VM.
-- Använd 'ipconfig' toocheck hello IPv4-adress som tilldelats toohello Ethernet-nätverkskort på hello-dator som du ansluter. Om hello IP-adressen ligger inom hello adressintervall hello virtuella nätverk som du ansluter till eller hello-adressintervallet för din VPNClientAddressPool detta kallas tooas som en överlappande adressutrymmen. När adressutrymmet överlappar på detta sätt, hello nätverkstrafik nå inte Azure, förblir den i hello lokala nätverket.
-- Om du kan ansluta toohello VM använder hello privat IP-adress, men inte hello datornamn, kontrollera att du har konfigurerat DNS korrekt. Mer information om hur namnmatchningen fungerar för virtuella datorer finns i [Namnmatchning för virtuella datorer](../articles/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
-- Kontrollera konfigurationspaket för VPN-klienten att hello genererades när hello DNS-serveradresser har angetts för hello virtuella nätverk. Om du har uppdaterat hello DNS-serveradresser generera och installera ett nytt konfigurationspaket för VPN-klienten.
+- Kontrollera att du ansluter till den virtuella datorns privata IP-adress.
+- Använd ”ipconfig” för att kontrollera vilken IPv4-adress som har tilldelats till Ethernet-adaptern på den dator som du ansluter från. Om IP-adressen ligger inom adressintervallet för det virtuella nätverk som du ansluter till eller inom adressintervallet för din VPNClientAddressPool, kallas detta för ett överlappande adressutrymme. När ditt adressutrymme överlappar på det här sättet når inte nätverkstrafiken Azure, utan stannar i det lokala nätverket.
+- Om du kan ansluta till den virtuella datorn med hjälp av den privata IP-adressen, men inte med namnet på datorn, kontrollerar du att du har konfigurerat DNS korrekt. Mer information om hur namnmatchningen fungerar för virtuella datorer finns i [Namnmatchning för virtuella datorer](../articles/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
+- Kontrollera att paketet för VPN-klientkonfiguration har skapats efter att IP-adresser för DNS-server har angetts för VNet. Om du uppdaterade IP-adresserna för DNS-servern skapar och installerar du ett nytt paket för VPN-klientkonfiguration.

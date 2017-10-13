@@ -1,5 +1,5 @@
 ---
-title: "aaaReceive händelser från Azure Event Hubs använder Apache Storm | Microsoft Docs"
+title: "Ta emot händelser från Azure Event Hubs använder Apache Storm | Microsoft Docs"
 description: "Börja ta emot från Event Hubs använder Apache Storm"
 services: event-hubs
 documentationcenter: 
@@ -14,25 +14,25 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: sethm
-ms.openlocfilehash: a0ab860ee8d504a28aac380c504c928f0d6dbc1e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 3e15370c7602276ef323708632b324fe05497f41
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="receive-events-from-event-hubs-using-apache-storm"></a>Ta emot händelser från Event Hubs använder Apache Storm
 
-[Apache Storm](https://storm.incubator.apache.org) är ett system för distribuerade beräkningar i realtid som förenklar tillförlitliga bearbetningen av unbounded dataströmmar. Det här avsnittet visar hur toouse ett Azure Event Hubs Storm prata tooreceive händelser från Event Hubs. Med Apache Storm kan du dela upp händelser över flera processer som ligger på olika noder. Hej Händelsehubbar integrering med Storm förenklar händelsekonsumtion genom att transparent kontrollpunkter förloppet använder Storm's Zookeeper installation, hantera permanenta kontrollpunkter och parallella mottaganden från Event Hubs.
+[Apache Storm](https://storm.incubator.apache.org) är ett system för distribuerade beräkningar i realtid som förenklar tillförlitliga bearbetningen av unbounded dataströmmar. Det här avsnittet visar hur du använder en Azure Event Hubs Storm-kanal för att ta emot händelser från Event Hubs. Med Apache Storm kan du dela upp händelser över flera processer som ligger på olika noder. Händelsehubbar integrering med Storm förenklar händelsekonsumtion genom att transparent kontrollpunkter förloppet använder Storm's Zookeeper installation, hantera permanenta kontrollpunkter och parallella mottaganden från Event Hubs.
 
-Mer information om Händelsehubbar får mönster, se hello [översikt av Händelsehubbar][Event Hubs overview].
+Mer information om Händelsehubbar får mönster, finns det [översikt av Händelsehubbar][Event Hubs overview].
 
 ## <a name="create-project-and-add-code"></a>Skapa projektet och Lägg till kod
 
-Den här kursen använder en [HDInsight Storm] [ HDInsight Storm] installation som levereras med hello Händelsehubbar kanal som redan är tillgängliga.
+Den här kursen använder en [HDInsight Storm] [ HDInsight Storm] installation som medföljer den Händelsehubbar kanal som redan finns.
 
-1. Följ hello [HDInsight Storm - komma igång](../hdinsight/hdinsight-storm-overview.md) proceduren toocreate nya HDInsight-kluster och ansluta tooit via fjärrskrivbord.
-2. Kopiera hello `%STORM_HOME%\examples\eventhubspout\eventhubs-storm-spout-0.9-jar-with-dependencies.jar` filen tooyour lokala utvecklingsmiljö. Innehåller hello händelser-storm-kanal.
-3. Använd följande kommando tooinstall hello paketet till hello lokala Maven Arkiv hello. Detta gör att du tooadd den som en referens i hello Storm-projekt i ett senare steg.
+1. Följ den [HDInsight Storm - komma igång](../hdinsight/hdinsight-storm-overview.md) proceduren för att skapa ett nytt HDInsight-kluster och ansluta till den via fjärrskrivbord.
+2. Kopiera den `%STORM_HOME%\examples\eventhubspout\eventhubs-storm-spout-0.9-jar-with-dependencies.jar` filen till din lokala utvecklingsmiljö. Innehåller händelser-storm-kanal.
+3. Använd följande kommando för att installera paketet i det lokala arkivet Maven. På så sätt kan du lägga till den som en referens i projektet Storm i ett senare steg.
 
     ```shell
     mvn install:install-file -Dfile=target\eventhubs-storm-spout-0.9-jar-with-dependencies.jar -DgroupId=com.microsoft.eventhubs -DartifactId=eventhubs-storm-spout -Dversion=0.9 -Dpackaging=jar
@@ -41,9 +41,9 @@ Den här kursen använder en [HDInsight Storm] [ HDInsight Storm] installation s
    
     ![][12]
 5. Välj **använda standardplatsen för arbetsytan**, klicka på **nästa**
-6. Välj hello **maven-archetype-Snabbstart** archetype, klicka på **nästa**
+6. Välj den **maven-archetype-Snabbstart** archetype, klicka på **nästa**
 7. Infoga en **GroupId** och **artefakt-ID**, klicka på **Slutför**
-8. I **pom.xml**, Lägg till följande beroenden i hello hello `<dependency>` nod.
+8. I **pom.xml**, Lägg till följande beroenden i den `<dependency>` nod.
 
     ```xml  
     <dependency>
@@ -75,7 +75,7 @@ Den här kursen använder en [HDInsight Storm] [ HDInsight Storm] installation s
     </dependency>
     ```
 
-9. I hello **src** mapp, skapa en fil med namnet **Config.properties** och kopiera hello efter innehåll, ersätter hello `receive rule key` och `event hub name` värden:
+9. I den **src** mapp, skapa en fil med namnet **Config.properties** och kopiera följande innehåll, ersätter den `receive rule key` och `event hub name` värden:
 
     ```java
     eventhubspout.username = ReceiveRule
@@ -90,8 +90,8 @@ Den här kursen använder en [HDInsight Storm] [ HDInsight Storm] installation s
     eventhubspout.checkpoint.interval = 10
     eventhub.receiver.credits = 10
     ```
-    Hej värde för **eventhub.receiver.credits** avgör hur många händelser grupperas innan du släpper dem toohello Storm pipeline. Det här exemplet anger det här värdet too10 för hello dig ut av enkelhet. I produktion, vara det vanligtvis konfigurerat toohigher värden. till exempel 1024.
-10. Skapa en ny klass med namnet **LoggerBolt** med hello följande kod:
+    Värdet för **eventhub.receiver.credits** avgör hur många händelser grupperas innan du lanserar Storm-pipeline. För enkelhetens skull anger det här exemplet du värdet till 10. I produktion sättas det vanligtvis till högre värden. till exempel 1024.
+10. Skapa en ny klass med namnet **LoggerBolt** med följande kod:
     
     ```java
     import java.util.Map;
@@ -130,8 +130,8 @@ Den här kursen använder en [HDInsight Storm] [ HDInsight Storm] installation s
     }
     ```
     
-    Storm bulten loggar hello innehåll hello emot händelser. Detta kan enkelt utökas toostore tupplar i en storage-tjänst. Hej [HDInsight sensor analys kursen] använder samma metod toostore data i HBase.
-11. Skapa en klass med namnet **LogTopology** med hello följande kod:
+    Storm bulten loggar innehållet i de mottagna händelserna. Detta kan enkelt utökas för att lagra tupplar i en storage-tjänst. Den [HDInsight sensor analys kursen] använder samma metod för att lagra data i HBase.
+11. Skapa en klass med namnet **LogTopology** med följande kod:
     
     ```java
     import java.io.FileReader;
@@ -182,9 +182,9 @@ Den här kursen använder en [HDInsight Storm] [ HDInsight Storm] installation s
                     namespaceName, entityPath, partitionCount, zkEndpointAddress,
                     checkpointIntervalInSeconds, receiverCredits);
         
-            // set hello number of workers toobe hello same as partition number.
-            // hello idea is toohave a spout and a logger bolt co-exist in one
-            // worker tooavoid shuffling messages across workers in storm cluster.
+            // set the number of workers to be the same as partition number.
+            // the idea is to have a spout and a logger bolt co-exist in one
+            // worker to avoid shuffling messages across workers in storm cluster.
             numWorkers = spoutConfig.getPartitionCount();
         
             if (args.length > 0) {
@@ -235,10 +235,10 @@ Den här kursen använder en [HDInsight Storm] [ HDInsight Storm] installation s
     }
     ```
 
-    Den här klassen skapas en ny kanal för Händelsehubbar, med hjälp av hello egenskaper i hello configuration file tooinstantiate den. Det är viktigt toonote som det här exemplet skapar så många spouts uppgifter som hello antalet partitioner i hello händelsehubb, i ordning toouse hello maximala parallellitet tillåts av den händelsehubben.
+    Den här klassen skapas en ny kanal för Händelsehubbar, med hjälp av egenskaperna i konfigurationsfilen för att skapa en instans av den. Det är viktigt att Observera att det här exemplet skapar så många aktiviteter för kanaler som antalet partitioner i händelsehubben, för att kunna använda maximala parallellitet tillåts av den händelsehubben.
 
 ## <a name="next-steps"></a>Nästa steg
-Mer information om Händelsehubbar genom att besöka hello följande länkar:
+Du kan lära dig mer om Event Hubs genom att gå till följande länkar:
 
 * [Översikt av händelsehubbar][Event Hubs overview]
 * [Skapa en Event Hub](event-hubs-create.md)

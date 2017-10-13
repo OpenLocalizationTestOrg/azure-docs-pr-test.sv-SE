@@ -1,6 +1,6 @@
 ---
-title: "aaaGet igång med Azure Data Lake Analytics med hjälp av Azure PowerShell | Microsoft Docs"
-description: "Använda Azure PowerShell toocreate ett Data Lake Analytics-konto, skapa ett Data Lake Analytics-jobb med hjälp av U-SQL och skicka hello-jobbet. "
+title: "Kom igång med Azure Data Lake Analytics med hjälp av Azure PowerShell | Microsoft Docs"
+description: "Skapa ett Data Lake Analytics-konto med hjälp av Azure PowerShell, hur du skapar ett Data Lake Analytics-jobb med hjälp av U-SQL och hur du skickar jobbet. "
 services: data-lake-analytics
 documentationcenter: 
 author: saveenr
@@ -14,41 +14,41 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 05/04/2017
 ms.author: edmaca
-ms.openlocfilehash: cb9b35352d1cc9a78337448b1d6835875a212e08
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 4f73e27c733edae658d1ea3bdabe48076328279b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-powershell"></a>Kom igång med Azure Data Lake Analytics med hjälp av Azure PowerShell
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
-Lär dig hur toouse Azure PowerShell toocreate Azure Data Lake Analytics-konton och sedan skicka och köra U-SQL-jobb. Mer information om Data Lake Analytics finns i [Översikt över Azure Data Lake Analytics](data-lake-analytics-overview.md).
+Lär dig hur du använder Azure PowerShell för att skapa Azure Data Lake Analytics-konton och sedan skicka och köra U-SQL-jobb. Mer information om Data Lake Analytics finns i [Översikt över Azure Data Lake Analytics](data-lake-analytics-overview.md).
 
 ## <a name="prerequisites"></a>Krav
 
-Innan du påbörjar den här självstudien måste du ha hello följande information:
+Innan du börjar den här självstudiekursen behöver du följande information:
 
 * **Ett Azure Data Lake Analytics-konto**. Se [Kom igång med Data Lake Analytics](https://docs.microsoft.com/en-us/azure/data-lake-analytics/data-lake-analytics-get-started-portal).
-* **En arbetsstation med Azure PowerShell**. Se [hur tooinstall och konfigurera Azure PowerShell](/powershell/azure/overview).
+* **En arbetsstation med Azure PowerShell**. Se [Så här installerar och konfigurerar du Azure PowerShell](/powershell/azure/overview).
 
-## <a name="log-in-tooazure"></a>Logga in tooAzure
+## <a name="log-in-to-azure"></a>Logga in på Azure
 
-Den här kursen förutsätter att du redan är bekant med Azure PowerShell. I synnerhet måste tooknow hur toolog i tooAzure. Se hello [Kom igång med Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/get-started-azureps) om du behöver hjälp.
+Den här kursen förutsätter att du redan är bekant med Azure PowerShell. Framför allt behöver du veta hur du loggar in på Azure. Läs [Kom igång med Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/get-started-azureps) om du behöver hjälp.
 
-toolog in med ett prenumerationsnamn:
+Logga in med ett prenumerationsnamn:
 
 ```
 Login-AzureRmAccount -SubscriptionName "ContosoSubscription"
 ```
 
-Du kan också använda en prenumerations-id toolog i i stället för hello prenumerationsnamn:
+Du kan också använda ett prenumerations-id för att logga in i stället för prenumerationsnamnet:
 
 ```
 Login-AzureRmAccount -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 ```
 
-Om detta lyckas hello utdata från kommandot ser ut så hello följande text:
+Om detta lyckas ser kommandots utdata ut som följande text:
 
 ```
 Environment           : AzureCloud
@@ -59,9 +59,9 @@ SubscriptionName      : ContosoSubscription
 CurrentStorageAccount :
 ```
 
-## <a name="preparing-for-hello-tutorial"></a>Förbereda hello genomgång
+## <a name="preparing-for-the-tutorial"></a>Förbereda för självstudier
 
-hello PowerShell kodavsnitt i den här kursen använder dessa variabler toostore informationen:
+PowerShell-kodfragmenten i den här självstudien använder dessa variabler för att lagra informationen:
 
 ```
 $rg = "<ResourceGroupName>"
@@ -78,7 +78,7 @@ Get-AdlAnalyticsAccount -ResourceGroupName $rg -Name $adla
 
 ## <a name="submit-a-u-sql-job"></a>Skicka ett U-SQL-jobb
 
-Skapa ett PowerShell variabeln toohold hello U-SQL-skript.
+Skapa en PowerShell-variabel för att lagra U-SQL-skript.
 
 ```
 $script = @"
@@ -90,19 +90,19 @@ $script = @"
         ) AS 
               D( customer, amount );
 OUTPUT @a
-    too"/data.csv"
+    TO "/data.csv"
     USING Outputters.Csv();
 
 "@
 ```
 
-Skicka hello skript.
+Skicka jobbet.
 
 ```
 $job = Submit-AdlJob -AccountName $adla –Script $script
 ```
 
-Du kan också spara hello skript som en fil och skicka med hello följande kommando:
+Du kan också spara skriptet som en fil och skicka med följande kommando:
 
 ```
 $filename = "d:\test.usql"
@@ -111,25 +111,25 @@ $job = Submit-AdlJob -AccountName $adla –ScriptPath $filename
 ```
 
 
-Hämta hello status för ett visst jobb. Fortsätta att använda denna cmdlet tills du ser hello jobbet är klart.
+Hämta status för ett specifikt jobb. Fortsätta att använda denna cmdlet tills jobbet är klart.
 
 ```
 $job = Get-AdlJob -AccountName $adla -JobId $job.JobId
 ```
 
-Du kan använda hello vänta AdlJob cmdlet i stället för att anropa Get-AdlAnalyticsJob flera gånger tills ett jobb har slutförts.
+Istället för att anropa Get-AdlAnalyticsJob om och om igen tills ett jobb blir klart kan du använda cmdleten Wait-AdlJob.
 
 ```
 Wait-AdlJob -Account $adla -JobId $job.JobId
 ```
 
-Hämta hello utdatafilen.
+Hämta utdatafilen.
 
 ```
 Export-AdlStoreItem -AccountName $adls -Path "/data.csv" -Destination "C:\data.csv"
 ```
 
 ## <a name="see-also"></a>Se även
-* toosee hello samma självstudier med andra verktyg klickar du på hello flikväljarna överst hello hello-sidan.
-* toolearn U-SQL finns [Kom igång med Azure Data Lake Analytics U-SQL-språket](data-lake-analytics-u-sql-get-started.md).
+* Klicka på flikväljarna överst på sidan om du vill se samma självstudier med andra verktyg.
+* Information om U-SQL finns i [Kom igång med U-SQL-språk i Azure Data Lake Analytics](data-lake-analytics-u-sql-get-started.md).
 * Information om hanteringsuppgifter finns i [Hantera Azure Data Lake Analytics med hjälp av Azure Portal](data-lake-analytics-manage-use-portal.md).

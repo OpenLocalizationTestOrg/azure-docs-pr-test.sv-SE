@@ -1,5 +1,5 @@
 ---
-title: "aaaThe element i e-postinbjudan för hello Azure Active Directory B2B-samarbete | Microsoft Docs"
+title: Elementen i e-postinbjudan Azure Active Directory B2B-samarbete | Microsoft Docs
 description: Azure Active Directory B2B-samarbete inbjudan e-postmall
 services: active-directory
 documentationcenter: 
@@ -15,60 +15,60 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 05/23/2017
 ms.author: sasubram
-ms.openlocfilehash: f4908014d71a63442bbdca2182f54c7a79675a82
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 458a2cab13b7e83f120e0926a95d454070181dfb
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="hello-elements-of-hello-b2b-collaboration-invitation-email"></a>hello-element i hello e-postinbjudan för B2B-samarbete
+# <a name="the-elements-of-the-b2b-collaboration-invitation-email"></a>Elementen i e-postinbjudan B2B-samarbete
 
-Inbjudan e-post är en kritisk komponent toobring partners på tåget som B2B-samarbete användare i Azure AD. Du kan använda dem tooincrease hello mottagaren förtroende. Du kan lägga till är giltiga och sociala bevis toohello e-post, toomake att hello mottagaren känns bekväm med att välja hello **Kom igång** knappen tooaccept hello inbjudan. Det här förtroendet är en nyckel innebär tooreduce delning friktion. Och du bör också toomake hello e-utseende bra!
+E-postmeddelanden för inbjudan är en kritisk komponent återinföra partners på tåget som B2B-samarbete användare i Azure AD. Du kan använda dem för att öka mottagarens förtroende. Du kan lägga till är giltiga och sociala bevis till e-post, se till mottagaren känns bekväm med att välja den **Kom igång** för att tacka ja till inbjudan. Förtroendet är en nyckel som innebär att minska delning friktion. Och du vill se e-postmeddelandet ser bra ut!
 
 ![Azure AD B2b inbjudan e-post](media/active-directory-b2b-invitation-email/invitation-email.png)
 
-## <a name="explaining-hello-email"></a>Förklarar hello e-post
-Nu ska vi titta på några få av hello e-post så att du vet hur bästa toouse deras funktioner.
+## <a name="explaining-the-email"></a>Förklarar e-postmeddelandet
+Nu ska vi titta på några elementen i e-postmeddelandet så att du vet hur du bäst för att använda deras funktioner.
 
 ### <a name="subject"></a>Ämne
-hello ämnet för e-post hello följer hello följer mönstret: du är inbjuden toohello &lt;tenantname&gt; organisation
+Ämnet för e-postmeddelandet efter följande mönster: du inbjuds att den &lt;tenantname&gt; organisation
 
 ### <a name="from-address"></a>Från-adress
-Vi använder ett LinkedIn-liknande mönster för hello från-adress.  Du bör vara Rensa som hello bjuder in är och som företagets och även tydliggöra att hello e-kommer från en Microsoft e-postadress. hello-formatet är: &lt;visningsnamnet för bjuder in&gt; från &lt;tenantname&gt; (via Microsoft) <invites@microsoft.com&gt;
+Vi använder ett LinkedIn-liknande mönster för från-adressen.  Du bör vara tydlig som avsändaren av inbjudan och e-postadress som företagets och även tydliggöra att e-postmeddelandet kommer från Microsoft. Formatet är: &lt;visningsnamnet för bjuder in&gt; från &lt;tenantname&gt; (via Microsoft) <invites@microsoft.com&gt;
 
 ### <a name="reply-to"></a>Svara på
-hello reply-tooemail anges toohello bjuder in e-post när det är tillgängligt, så att svara toohello e-post skickar ett e-post tillbaka toohello bjuder in.
+Svara till e-postmeddelandet har angetts till den bjuder in e-post när det är tillgängligt, så att svara på e-postmeddelandet skickar ett e-postmeddelande till avsändaren av inbjudan.
 
 ### <a name="branding"></a>Anpassning
-hello inbjudan e-post från din klient använder hello företagsanpassning som du kanske har lagt upp för din klient. Om du vill tootake nytta av den här funktionen [här](https://docs.microsoft.com/azure/active-directory/active-directory-branding-custom-signon-azure-portal) är hello information om hur tooconfigure den. Hej banderollslogotyp visas i hello e-post. Följ hello avbildningens storlek och kvalitet instruktioner [här](https://docs.microsoft.com/azure/active-directory/active-directory-branding-custom-signon-azure-portal) för bästa resultat. Dessutom visas hello företagsnamn även i hello anropet tooaction.
+E-postmeddelanden för inbjudan från din klient användning företagsanpassning som du kanske har ställt in för din klient. Om du vill dra nytta av den här funktionen [här](https://docs.microsoft.com/azure/active-directory/active-directory-branding-custom-signon-azure-portal) finns information om hur du konfigurerar den. Banderollslogotypen visas i e-postmeddelandet. Följ bildstorleken och kvalitet instruktioner [här](https://docs.microsoft.com/azure/active-directory/active-directory-branding-custom-signon-azure-portal) för bästa resultat. Dessutom visas företagsnamnet även i anropet till åtgärd.
 
-### <a name="call-tooaction"></a>Anropa tooaction
-Hej anropet tooaction består av två delar: förklarar varför hello mottagaren har tagit emot hello e-post och vilka hello mottagaren uppmanas toodo om den.
-- Hej ”varför” avsnittet kan åtgärdas med hello följer mönstret: du har inbjudna tooaccess program i hello &lt;tenantname&gt; organisation
+### <a name="call-to-action"></a>Anrop till åtgärd
+Anropet till åtgärd består av två delar: förklarar varför mottagaren har tagit emot e-postmeddelandet och vad mottagaren blir ombedd att göra om den.
+- Avsnittet ”Varför” kan åtgärdas med följande mönster: du har bjudits komma åt program i den &lt;tenantname&gt; organisation
 
-- Och hello ”vad du ska ange toodo” avsnittet anges av hello förekomst av hello **Kom igång** knappen. När hello mottagaren har lagts utan hello behöva inbjudningar kan visas den här knappen inte.
+- Och den ”vad du att uppmanas att göra” avsnittet anges av förekomst av den **Kom igång** knappen. När mottagaren har lagts utan att behöva inbjudningar kan visas den här knappen inte.
 
 ### <a name="inviters-information"></a>Bjuder INS information
-hello bjuder in visningsnamn ingår i hello e-post. Och dessutom om du har konfigurerat en profilbild för Azure AD-kontot hello bjuda in e-post tas samt bilden. Båda är avsedda tooincrease mottagarens förtroendet hello e-post.
+Visningsnamn för den bjuder in ingår i e-postmeddelandet. Och dessutom om du har konfigurerat en profilbild för Azure AD-kontot, bjuda in e-postmeddelandet tas samt bilden. Båda är avsedda att öka mottagarens förtroende för e-postmeddelandet.
 
-Om du ännu inte har konfigurerat din profilbild visas en ikon med hello bjuder in initialer i stället för hello bild:
+Om du ännu inte har konfigurerat din profilbild visas en ikon med den bjuder in initialer i stället för bilden:
 
-  ![Visa hello bjuder in initialer](media/active-directory-b2b-invitation-email/inviters-initials.png)
+  ![Visa den bjuder in initialer](media/active-directory-b2b-invitation-email/inviters-initials.png)
 
 ### <a name="body"></a>Innehåll
-hello innehåller hello-meddelande som hello bjuder in composes eller skickas via hello inbjudan API. Det är ett textområde så inte bearbetar HTML-taggar av säkerhetsskäl.
+Texten innehåller meddelandet som avsändaren av inbjudan composes eller skickas via inbjudan API. Det är ett textområde så inte bearbetar HTML-taggar av säkerhetsskäl.
 
 ### <a name="footer-section"></a>Sidfotsavsnittet
-hello sidfot kan hello mottagare vet om hello e-postmeddelandet skickades meddelandet innehåller hello Microsoft företags varumärke. Särskilda fall:
+Sidfoten innehåller Microsoft företags varumärke och gör att mottagaren om e-postmeddelandet skickades från meddelandet. Särskilda fall:
 
-- hello bjuder in har inte en e-postadress i hello bjuda in innehavare
+- Avsändaren av inbjudan har inte en e-postadress i bjuda in innehavare
 
-  ![Bild av bjuder in har inte en e-postadress i hello bjuda in innehavare](media/active-directory-b2b-invitation-email/inviter-no-email.png)
+  ![Bild av bjuder in har inte en e-postadress i bjuda in innehavare](media/active-directory-b2b-invitation-email/inviter-no-email.png)
 
 
-- hello mottagaren behöver inte tooredeem hello inbjudan
+- Mottagaren behöver inte lösa inbjudan
 
-  ![När mottagaren inte behöver tooredeem inbjudan](media/active-directory-b2b-invitation-email/when-recipient-doesnt-redeem.png)
+  ![När mottagaren inte behöver lösa inbjudan](media/active-directory-b2b-invitation-email/when-recipient-doesnt-redeem.png)
 
 
 ## <a name="next-steps"></a>Nästa steg

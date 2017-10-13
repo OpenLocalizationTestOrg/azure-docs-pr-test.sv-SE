@@ -1,6 +1,6 @@
 ---
-title: "aaaCreate en Linux-miljö med hello Azure CLI 2.0 | Microsoft Docs"
-description: "Skapa lagring, en Linux VM, ett virtuellt nätverk och undernät, belastningsutjämning, ett nätverkskort, en offentlig IP-adress och en nätverkssäkerhetsgrupp allt från hello bakgrund med hjälp av hello Azure CLI 2.0."
+title: "Skapa en Linux-miljö med Azure CLI 2.0 | Microsoft Docs"
+description: "Skapa lagring, en Linux VM, ett virtuellt nätverk och undernät, belastningsutjämning, ett nätverkskort, en offentlig IP-adress och en nätverkssäkerhetsgrupp alla från grunden med hjälp av Azure CLI 2.0."
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -15,27 +15,27 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/06/2017
 ms.author: iainfou
-ms.openlocfilehash: 7287ea178e76001b84dade628ead04a59dc27f40
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: e5c4785428b2150e951923e98079e00808a82d87
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="create-a-complete-linux-virtual-machine-with-hello-azure-cli"></a>Skapa en fullständig Linux-dator med hello Azure CLI
-tooquickly skapa en virtuell dator (VM) i Azure, kan du använda ett enda Azure CLI-kommando som använder standard värden toocreate alla nödvändiga stöder resurser. Resurser, till exempel ett virtuellt nätverk, offentlig IP-adress och regler för nätverkssäkerhetsgrupper skapas automatiskt. Mer kontroll över din miljö i produktionen använder, kan du skapa dessa resurser i förväg och Lägg sedan till din toothem för virtuella datorer. Den här artikeln guidar dig genom hur toocreate en virtuell dator och de olika hello stödresurser i taget.
+# <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>Skapa en fullständig Linux-dator med Azure CLI
+För att snabbt skapa en virtuell dator (VM) i Azure, kan du använda ett enda Azure CLI-kommando som använder standardvärden för att skapa alla nödvändiga stödfiler resurser. Resurser, till exempel ett virtuellt nätverk, offentlig IP-adress och regler för nätverkssäkerhetsgrupper skapas automatiskt. Mer kontroll över din miljö i produktionen använder, du kan skapa dessa resurser i förväg och sedan lägga till dina virtuella datorer till dem. Den här artikeln hjälper dig att skapa en virtuell dator och varje stödjande resurs i taget.
 
-Kontrollera att du har installerat hello senaste [Azure CLI 2.0](/cli/azure/install-az-cli2) och loggade tooan Azure-konto med [az inloggningen](/cli/azure/#login).
+Kontrollera att du har installerat senast [Azure CLI 2.0](/cli/azure/install-az-cli2) och loggas på en Azure-konto med [az inloggningen](/cli/azure/#login).
 
-Följande exempel Ersätt exempel parameternamn i hello med egna värden. Exempel parameternamn inkluderar *myResourceGroup*, *myVnet*, och *myVM*.
+Ersätt exempel parameternamn med egna värden i följande exempel. Exempel parameternamn inkluderar *myResourceGroup*, *myVnet*, och *myVM*.
 
 ## <a name="create-resource-group"></a>Skapa resursgrupp
-En Azure-resursgrupp är en logisk behållare där Azure-resurser distribueras och hanteras. En resursgrupp måste skapas innan en virtuell dator och stödresurser för virtuellt nätverk. Skapa hello resursgrupp med [az gruppen skapa](/cli/azure/group#create). hello följande exempel skapar en resursgrupp med namnet *myResourceGroup* i hello *eastus* plats:
+En Azure-resursgrupp är en logisk behållare där Azure-resurser distribueras och hanteras. En resursgrupp måste skapas innan en virtuell dator och stödresurser för virtuellt nätverk. Skapa en resursgrupp med [az gruppen skapa](/cli/azure/group#create). I följande exempel skapas en resursgrupp med namnet *myResourceGroup* i den *eastus* plats:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-Som standard är hello utdata från Azure CLI-kommandona i JSON (JavaScript Object Notation). toochange hello standard utdata tooa tabellposter, till exempel använda [az konfigurera--utdata](/cli/azure/#configure). Du kan också lägga till `--output` tooany kommandot för en gång ändra i utdataformatet. hello följande exempel visar hello JSON-utdata från hello `az group create` kommando:
+Som standard är resultatet av Azure CLI-kommandona i JSON (JavaScript Object Notation). Om du vill ändra standardvärdet för utdata till en lista eller tabell, till exempel använda [az konfigurera--utdata](/cli/azure/#configure). Du kan också lägga till `--output` ändra i utdataformatet till ett kommando för en gång. I följande exempel visas JSON-utdata från den `az group create` kommando:
 
 ```json                       
 {
@@ -50,7 +50,7 @@ Som standard är hello utdata från Azure CLI-kommandona i JSON (JavaScript Obje
 ```
 
 ## <a name="create-a-virtual-network-and-subnet"></a>Skapa ett virtuellt nätverk och undernät
-Sedan du skapar ett virtuellt nätverk i Azure och ett undernät i toowhich som du kan skapa dina virtuella datorer. Använd [az network vnet skapa](/cli/azure/network/vnet#create) toocreate ett virtuellt nätverk med namnet *myVnet* med hello *192.168.0.0/16* adressprefix. Du också lägga till ett undernät med namnet *mySubnet* med hello adressprefixet *192.168.1.0/24*:
+Nästa du skapar ett virtuellt nätverk i Azure och ett undernät i som du kan skapa dina virtuella datorer. Använd [az network vnet skapa](/cli/azure/network/vnet#create) att skapa ett virtuellt nätverk med namnet *myVnet* med den *192.168.0.0/16* adressprefix. Du också lägga till ett undernät med namnet *mySubnet* med adressprefixet för *192.168.1.0/24*:
 
 ```azurecli
 az network vnet create \
@@ -61,7 +61,7 @@ az network vnet create \
     --subnet-prefix 192.168.1.0/24
 ```
 
-hello utdata visar hello undernät logiskt skapas i hello virtuellt nätverk:
+Utdata visar undernätet logiskt skapas i det virtuella nätverket:
 
 ```json
 {
@@ -102,7 +102,7 @@ hello utdata visar hello undernät logiskt skapas i hello virtuellt nätverk:
 
 
 ## <a name="create-a-public-ip-address"></a>Skapa en offentlig IP-adress
-Nu skapar vi en offentlig IP-adress med [az nätverket offentliga IP-skapa](/cli/azure/network/public-ip#create). Den här offentliga IP-adressen kan du tooconnect tooyour virtuella datorer från hello Internet. Eftersom hello standardadressen är dynamiska, vi också skapa en namngiven DNS-post med hello `--domain-name-label` alternativet. hello följande exempel skapas en offentlig IP-adress med namnet *myPublicIP* med hello DNS-namnet för *mypublicdns*. Eftersom hello DNS-namnet måste vara unikt, ange ditt eget unikt DNS-namn:
+Nu skapar vi en offentlig IP-adress med [az nätverket offentliga IP-skapa](/cli/azure/network/public-ip#create). Den här offentliga IP-adressen kan du ansluta till dina virtuella datorer från Internet. Eftersom standardadressen är dynamisk kan vi också skapa en namngiven DNS-post med den `--domain-name-label` alternativet. I följande exempel skapas en offentlig IP-adress med namnet *myPublicIP* med DNS-namnet på *mypublicdns*. Eftersom DNS-namnet måste vara unikt, ange ditt eget unikt DNS-namn:
 
 ```azurecli
 az network public-ip create \
@@ -141,7 +141,7 @@ Resultat:
 
 
 ## <a name="create-a-network-security-group"></a>Skapa en säkerhetsgrupp för nätverk
-toocontrol hello flödet av trafik till och från dina virtuella datorer, skapa en säkerhetsgrupp för nätverk. En nätverkssäkerhetsgrupp kan vara tillämpade tooa nätverkskort eller ett undernät. hello följande exempel används [az nätverket nsg skapa](/cli/azure/network/nsg#create) toocreate en nätverkssäkerhetsgrupp med namnet *myNetworkSecurityGroup*:
+Skapa en säkerhetsgrupp för nätverk för att styra flödet av trafik till och från dina virtuella datorer. En nätverkssäkerhetsgrupp kan tillämpas på ett nätverkskort eller ett undernät. I följande exempel används [az nätverket nsg skapa](/cli/azure/network/nsg#create) om du vill skapa en säkerhetsgrupp för nätverk med namnet *myNetworkSecurityGroup*:
 
 ```azurecli
 az network nsg create \
@@ -149,7 +149,7 @@ az network nsg create \
     --name myNetworkSecurityGroup
 ```
 
-Du kan definiera regler som tillåter eller nekar hello viss trafik. tooallow inkommande anslutningar på port 22 (toosupport SSH), skapa en inkommande regel för hello nätverkssäkerhetsgrupp med [az nätverket nsg regeln skapa](/cli/azure/network/nsg/rule#create). hello följande exempel skapas en regel med namnet *myNetworkSecurityGroupRuleSSH*:
+Du kan definiera regler som tillåter eller nekar viss trafik. För att tillåta inkommande anslutningar på port 22 (till stöd för SSH), skapa en inkommande regel för nätverkssäkerhetsgruppen med [az nätverket nsg regeln skapa](/cli/azure/network/nsg/rule#create). I följande exempel skapas en regel med namnet *myNetworkSecurityGroupRuleSSH*:
 
 ```azurecli
 az network nsg rule create \
@@ -162,7 +162,7 @@ az network nsg rule create \
     --access allow
 ```
 
-tooallow inkommande anslutningar på port 80 (toosupport webbtrafik), Lägg till grupp ett annat nätverkssäkerhetsregeln. hello följande exempel skapas en regel med namnet *myNetworkSecurityGroupRuleHTTP*:
+Lägg till grupp ett annat nätverkssäkerhetsregeln för att tillåta inkommande anslutningar på port 80 (för att stödja webbtrafik). I följande exempel skapas en regel med namnet *myNetworkSecurityGroupRuleHTTP*:
 
 ```azurecli
 az network nsg rule create \
@@ -175,7 +175,7 @@ az network nsg rule create \
     --access allow
 ```
 
-Granska hello nätverkssäkerhetsgruppen och regler med [az nätverket nsg visa](/cli/azure/network/nsg#show):
+Granska nätverkssäkerhetsgruppen och regler med [az nätverket nsg visa](/cli/azure/network/nsg#show):
 
 ```azurecli
 az network nsg show --resource-group myResourceGroup --name myNetworkSecurityGroup
@@ -236,7 +236,7 @@ Resultat:
     },
     {
       "access": "Allow",
-      "description": "Allow outbound traffic from all VMs tooall VMs in VNET",
+      "description": "Allow outbound traffic from all VMs to all VMs in VNET",
       "destinationAddressPrefix": "VirtualNetwork",
       "destinationPortRange": "*",
       "direction": "Outbound",
@@ -252,7 +252,7 @@ Resultat:
     },
     {
       "access": "Allow",
-      "description": "Allow outbound traffic from all VMs tooInternet",
+      "description": "Allow outbound traffic from all VMs to Internet",
       "destinationAddressPrefix": "Internet",
       "destinationPortRange": "*",
       "direction": "Outbound",
@@ -332,7 +332,7 @@ Resultat:
 ```
 
 ## <a name="create-a-virtual-nic"></a>Skapa ett virtuellt nätverkskort
-Virtuella nätverkskort (NIC) är tillgängliga via programmering eftersom du kan använda regler tootheir användning. Du kan också ha fler än en. I följande hello [az nätverket nic skapa](/cli/azure/network/nic#create) kommando du skapar ett nätverkskort med namnet *myNic* och koppla den till hello nätverkssäkerhetsgruppen. Hej offentliga IP-adressen *myPublicIP* är även associerat med hello virtuellt nätverkskort.
+Virtuella nätverkskort (NIC) är tillgängliga via programmering eftersom du kan använda regler för deras användning. Du kan också ha fler än en. I följande [az nätverket nic skapa](/cli/azure/network/nic#create) kommando du skapar ett nätverkskort med namnet *myNic* och koppla den till nätverkssäkerhetsgruppen. Den offentliga IP-adressen *myPublicIP* är även associerat med det virtuella nätverkskortet.
 
 ```azurecli
 az network nic create \
@@ -436,15 +436,15 @@ Resultat:
 
 
 ## <a name="create-an-availability-set"></a>Skapa en tillgänglighetsuppsättning
-Tillgänglighetsuppsättningar hjälp spridning din virtuella dator över feldomäner och update-domäner. Även om du bara skapa en virtuell dator just nu, är det bästa praxis toouse tillgänglighet anger toomake den enklare tooexpand i hello framtida. 
+Tillgänglighetsuppsättningar hjälp spridning din virtuella dator över feldomäner och update-domäner. Även om du bara skapa en virtuell dator just nu, är det bäst att använda tillgänglighetsuppsättningar för att göra det lättare att expandera i framtiden. 
 
-Feldomäner definiera en gruppering av virtuella datorer som delar en gemensam käll- och strömbrytare. Som standard separeras hello virtuella datorer som har konfigurerats i din tillgänglighetsuppsättning över in toothree feldomäner. Maskinvaruproblem i något av dessa feldomäner påverkar inte varje virtuell dator som kör din app.
+Feldomäner definiera en gruppering av virtuella datorer som delar en gemensam käll- och strömbrytare. Som standard är de virtuella datorer som har konfigurerats i din tillgänglighetsuppsättning åtskilda över upp till tre feldomäner. Maskinvaruproblem i något av dessa feldomäner påverkar inte varje virtuell dator som kör din app.
 
-Uppdatera domäner ange grupper av virtuella datorer och underliggande fysiska maskinvara som kan startas på hello samtidigt. Hello ordning i vilken uppdatering domäner startas om är kanske inte sekventiell under planerat underhåll, men bara en uppdateringsdomän startas i taget.
+Uppdatera domäner ange grupper av virtuella datorer och underliggande fysiska maskinvara som kan startas på samma gång. Den ordning i vilken uppdatering domäner startas om är kanske inte sekventiell under planerat underhåll, men bara en uppdateringsdomän startas i taget.
 
-Azure distribuerar automatiskt virtuella datorer över hello fel- och update domäner när de placeras i en tillgänglighetsuppsättning. Mer information finns i [hantera hello tillgängligheten för virtuella datorer](manage-availability.md).
+Azure distribuerar automatiskt virtuella datorer i domäner fel- och update när de placeras i en tillgänglighetsuppsättning. Mer information finns i [hantera tillgängligheten för virtuella datorer](manage-availability.md).
 
-Skapa en tillgänglighetsuppsättning för den virtuella datorn med [az vm tillgänglighetsuppsättning skapa](/cli/azure/vm/availability-set#create). hello följande exempel skapas en tillgänglighetsuppsättning namngivna *myAvailabilitySet*:
+Skapa en tillgänglighetsuppsättning för den virtuella datorn med [az vm tillgänglighetsuppsättning skapa](/cli/azure/vm/availability-set#create). I följande exempel skapas en tillgänglighetsuppsättning namngivna *myAvailabilitySet*:
 
 ```azurecli
 az vm availability-set create \
@@ -452,7 +452,7 @@ az vm availability-set create \
     --name myAvailabilitySet
 ```
 
-Hej feldomäner för utdata anteckningar och uppdatera domäner:
+Feldomäner för utdata anteckningar och uppdatera domäner:
 
 ```json
 {
@@ -476,12 +476,12 @@ Hej feldomäner för utdata anteckningar och uppdatera domäner:
 ```
 
 
-## <a name="create-hello-linux-vms"></a>Skapa hello virtuella Linux-datorer
-Du har skapat hello nätverket resurser toosupport Internet-tillgängliga virtuella datorer. Nu skapa en virtuell dator och skydda den med en SSH-nyckel. I det här fallet ska vi toocreate en Ubuntu VM baserat på hello senaste LTS. Du kan hitta ytterligare bilder med [az vm bildlista](/cli/azure/vm/image#list), enligt beskrivningen i [söker Azure VM-bilder](cli-ps-findimage.md).
+## <a name="create-the-linux-vms"></a>Skapa de virtuella Linux-datorerna
+Du har skapat nätverksresurser för att stödja Internet-tillgängliga virtuella datorer. Nu skapa en virtuell dator och skydda den med en SSH-nyckel. I det här fallet är det dags att skapa en Ubuntu VM baserat på senaste LTS. Du kan hitta ytterligare bilder med [az vm bildlista](/cli/azure/vm/image#list), enligt beskrivningen i [söker Azure VM-bilder](cli-ps-findimage.md).
 
-Vi kan även ange en SSH-nyckel toouse för autentisering. Om du inte har en offentlig nyckel SSH kan du [skapa dem](mac-create-ssh-keys.md) eller använda hello `--generate-ssh-keys` parametern toocreate dem åt dig. Om du redan ett nyckelpar, den här parametern används befintliga nycklar i `~/.ssh`.
+Vi kan även ange en SSH-nyckel ska användas för autentisering. Om du inte har en offentlig nyckel SSH kan du [skapa dem](mac-create-ssh-keys.md) eller använda den `--generate-ssh-keys` parameter till skapa dem åt dig. Om du redan ett nyckelpar, den här parametern används befintliga nycklar i `~/.ssh`.
 
-Skapa hello VM genom att våra resurser och information tillsammans med hello [az vm skapa](/cli/azure/vm#create) kommando. hello följande exempel skapas en virtuell dator med namnet *myVM*:
+Skapa den virtuella datorn genom att våra resurser och information tillsammans med den [az vm skapa](/cli/azure/vm#create) kommando. I följande exempel skapas en virtuell dator med namnet *myVM*:
 
 ```azurecli
 az vm create \
@@ -495,7 +495,7 @@ az vm create \
     --generate-ssh-keys
 ```
 
-SSH tooyour VM med hello DNS-posten som du angav när du skapade hello offentlig IP-adress. Detta `fqdn` visas i hello utdata som du skapar den virtuella datorn:
+SSH till den virtuella datorn med DNS-posten som du angav när du skapade den offentliga IP-adressen. Detta `fqdn` visas i utdata som du skapar den virtuella datorn:
 
 ```json
 {
@@ -517,11 +517,11 @@ ssh azureuser@mypublicdns.eastus.cloudapp.azure.com
 Resultat:
 
 ```bash
-hello authenticity of host 'mypublicdns.eastus.cloudapp.azure.com (13.90.94.252)' can't be established.
+The authenticity of host 'mypublicdns.eastus.cloudapp.azure.com (13.90.94.252)' can't be established.
 ECDSA key fingerprint is SHA256:SylINP80Um6XRTvWiFaNz+H+1jcrKB1IiNgCDDJRj6A.
-Are you sure you want toocontinue connecting (yes/no)? yes
-Warning: Permanently added 'mypublicdns.eastus.cloudapp.azure.com,13.90.94.252' (ECDSA) toohello list of known hosts.
-Welcome tooUbuntu 16.04.2 LTS (GNU/Linux 4.4.0-81-generic x86_64)
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added 'mypublicdns.eastus.cloudapp.azure.com,13.90.94.252' (ECDSA) to the list of known hosts.
+Welcome to Ubuntu 16.04.2 LTS (GNU/Linux 4.4.0-81-generic x86_64)
 
  * Documentation:  https://help.ubuntu.com
  * Management:     https://landscape.canonical.com
@@ -534,39 +534,39 @@ Welcome tooUbuntu 16.04.2 LTS (GNU/Linux 4.4.0-81-generic x86_64)
 0 updates are security updates.
 
 
-hello programs included with hello Ubuntu system are free software;
-hello exact distribution terms for each program are described in the
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
 individual files in /usr/share/doc/*/copyright.
 
-Ubuntu comes with ABSOLUTELY NO WARRANTY, toohello extent permitted by
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
 applicable law.
 
-toorun a command as administrator (user "root"), use "sudo <command>".
+To run a command as administrator (user "root"), use "sudo <command>".
 See "man sudo_root" for details.
 
 azureuser@myVM:~$
 ```
 
-Du kan installera NGINX och se hello trafik flödet toohello VM. Installera NGINX på följande sätt:
+Du kan installera NGINX och se att trafiken flödar till den virtuella datorn. Installera NGINX på följande sätt:
 
 ```bash
 sudo apt-get install -y nginx
 ```
 
-toosee hello NGINX-standardwebbplats i åtgärden, öppna webbläsaren och ange fullständigt domännamn:
+Om du vill se NGINX standardwebbplatsen i åtgärden, öppna webbläsaren och ange fullständigt domännamn:
 
 ![Standard NGINX-platsen på den virtuella datorn](media/create-cli-complete/nginx.png)
 
 ## <a name="export-as-a-template"></a>Exportera som en mall
-Vad händer om du nu vill toocreate en ytterligare utvecklingsmiljö med hello samma parametrar eller en produktionsmiljö som matchar det? Hanteraren för filserverresurser använder JSON-mallar som definierar alla hello parametrar för din miljö. Du bygga ut hela miljöer genom att referera till den här JSON-mallen. Du kan [skapa JSON-mallarna manuellt](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) eller exportera en befintlig miljö toocreate hello JSON-mall. Använd [az exportera](/cli/azure/group#export) tooexport din resursgrupp på följande sätt:
+Vad händer om du vill nu skapa en ytterligare utvecklingsmiljö med samma parametrar eller en produktionsmiljö som matchar det? Hanteraren för filserverresurser använder JSON-mallar som definierar alla parametrar för din miljö. Du bygga ut hela miljöer genom att referera till den här JSON-mallen. Du kan [skapa JSON-mallarna manuellt](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) eller exportera en befintlig miljö för att skapa JSON-mallen för dig. Använd [az exportera](/cli/azure/group#export) att exportera resursgruppens namn på följande sätt:
 
 ```azurecli
 az group export --name myResourceGroup > myResourceGroup.json
 ```
 
-Det här kommandot skapar hello `myResourceGroup.json` fil i den aktuella arbetskatalogen. När du skapar en miljö med den här mallen kan uppmanas du alla hello resursnamn. Du kan fylla i dessa namn i mallfilen genom att lägga till hello `--include-parameter-default-value` parametern toohello `az group export` kommando. Redigera din JSON mallen toospecify hello resursnamn, eller [skapa en fil med parameters.json](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) som anger hello resursnamn.
+Det här kommandot skapar den `myResourceGroup.json` filen i din aktuella arbetskatalogen. När du skapar en miljö med den här mallen kan uppmanas du alla resursnamn. Du kan fylla i dessa namn i mallfilen genom att lägga till den `--include-parameter-default-value` parametern till den `az group export` kommando. Redigera JSON-mall om du vill ange resursnamn, eller [skapa en fil med parameters.json](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) som anger resursnamnen.
 
-toocreate en miljö med din mall, Använd [az distribution skapa](/cli/azure/group/deployment#create) på följande sätt:
+Så här skapar du en miljö med din mall [az distribution skapa](/cli/azure/group/deployment#create) på följande sätt:
 
 ```azurecli
 az group deployment create \
@@ -574,7 +574,7 @@ az group deployment create \
     --template-file myResourceGroup.json
 ```
 
-Du kanske vill tooread [mer om hur toodeploy från mallar](../../resource-group-template-deploy-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Läs mer om hur tooincrementally uppdatering miljöer, använda hello parameterfilen och komma åt mallar från en enda lagringsplats.
+Du kanske vill läsa [mer om hur du distribuerar från mallar](../../resource-group-template-deploy-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Läs mer om hur du uppdaterar miljöer, använda parameterfilen och komma åt mallar från en enda lagringsplats inkrementellt.
 
 ## <a name="next-steps"></a>Nästa steg
-Nu är du redo toobegin arbeta med flera nätverkskomponenter och virtuella datorer. Du kan använda det här exemplet miljö toobuild ut ditt program med hjälp av hello kärnkomponenter introduceras här.
+Nu är du redo att börja arbeta med flera nätverkskomponenter och virtuella datorer. Du kan använda det här exemplet miljö för att bygga ut ditt program med hjälp av de kärnkomponenter som introducerades här.

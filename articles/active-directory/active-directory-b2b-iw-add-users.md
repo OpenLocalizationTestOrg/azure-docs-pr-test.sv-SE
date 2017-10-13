@@ -1,6 +1,6 @@
 ---
-title: "information Worker lägger till B2B-samarbete användare tooAzure Active Directory för aaaHow? | Microsoft Docs"
-description: "B2B-samarbete ger information Worker tooadd användare från deras organisation tooAzure AD för åtkomst | Microsoft Docs"
+title: "Hur lägger informationsarbetare till B2B-samarbete användare till Azure Active Directory? | Microsoft Docs"
+description: "B2B-samarbete kan IT-anställda lägga till användare i Azure AD för åtkomst från organisationen | Microsoft Docs"
 services: active-directory
 documentationcenter: 
 author: sasubram
@@ -15,26 +15,26 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 05/23/2017
 ms.author: sasubram
-ms.openlocfilehash: efe9eab852ec93986f9d777f200f8f7dbfd18ad9
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: c6ca561d1a02e283c7932f08f53b8dd590208835
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="how-do-information-workers-add-b2b-collaboration-users-tooazure-active-directory"></a>Hur lägger informationsarbetare till B2B-samarbete användare tooAzure Active Directory?
+# <a name="how-do-information-workers-add-b2b-collaboration-users-to-azure-active-directory"></a>Hur lägger informationsarbetare till B2B-samarbete användare till Azure Active Directory?
 
-Informationsanställda kan använda hello [programmet åtkomstpanelen](http://myapps.microsoft.com) tooadd B2B collaboration användare toogroups och program som de administrerar.
+Informationsanställda kan använda den [programmet åtkomstpanelen](http://myapps.microsoft.com) lägger B2B-samarbete användare till grupper och program som de administrerar.
 
-## <a name="information-workers-adding-b2b-collaboration-users-tooan-application"></a>IT-anställda lägga till B2B-samarbete användare tooan program
-Tilldela B2B-samarbete användare tooan appen som en informationsanställd i en organisation, enligt följande hello video:
+## <a name="information-workers-adding-b2b-collaboration-users-to-an-application"></a>IT-anställda lägga till B2B-samarbete användare till ett program
+Tilldela B2B-samarbete användare till en app som en informationsanställd i en partnerorganisation som visas i följande video:
 
 >[!VIDEO https://channel9.msdn.com/Blogs/Azure/information-worker-assign-to-apps/Player]
 
-## <a name="information-workers-adding-b2b-collaboration-users-tooa-group"></a>Informationsarbetare att lägga till B2B-samarbete tooa användargruppen
+## <a name="information-workers-adding-b2b-collaboration-users-to-a-group"></a>Lägga till B2B-samarbete användare till en grupp informationsanställda
 
-Informationsanställda kan lägga till B2B-samarbete tooan som tilldelats användargruppen som är aktiverad för grupphantering via självbetjäning.
+Informationsanställda kan lägga till B2B-samarbete användare till en grupp som är aktiverad för grupphantering via självbetjäning.
 > [!NOTE]
-> Du kan inte lägga till B2B-samarbete användare tooa dynamisk grupp eller tooa grupp som är synkroniserad med lokala Active Directory.
+> Du kan inte lägga till B2B-samarbete användare till en dynamisk grupp eller en grupp som är synkroniserad med lokala Active Directory.
 
 
 ## <a name="next-steps"></a>Nästa steg
@@ -43,7 +43,7 @@ Läs andra artiklar om Azure AD B2B-samarbete:
 
 * [Vad är Azure AD B2B-samarbete?](active-directory-b2b-what-is-azure-ad-b2b.md)
 * [Hur lägger Azure Active Directory-administratörer till B2B-samarbete användare?](active-directory-b2b-admin-add-users.md)
-* [hello-element i hello e-postinbjudan för B2B-samarbete](active-directory-b2b-invitation-email.md)
+* [Elementen i e-postinbjudan B2B-samarbete](active-directory-b2b-invitation-email.md)
 * [B2B-samarbete inbjudan inlösning](active-directory-b2b-redemption-experience.md)
 * [Azure AD B2B-samarbete och licensiering](active-directory-b2b-licensing.md)
 * [Felsökning av Azure Active Directory B2B-samarbete](active-directory-b2b-troubleshooting.md)

@@ -1,6 +1,6 @@
 ---
-title: "aaaHow tooUse hello Engagement API på Android"
-description: "Senaste Android SDK - hur tooUse hello Engagement API på Android"
+title: "Hur du använder Engagement API på Android"
+description: "Senaste Android SDK - hur du använder Engagement API på Android"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
@@ -14,55 +14,55 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2016
 ms.author: piyushjo;ricksal
-ms.openlocfilehash: e0b2d484616c0c7874e77c5283d94c3063949ed2
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: d353cd2fe47c54a0282cc5bb1b22b4a56e0cd82c
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="how-toouse-hello-engagement-api-on-android"></a>Hur tooUse hello Engagement API på Android
-Det här dokumentet är tillägg toohello [Reporting avancerade alternativ för Android Mobile Engagement SDK](mobile-engagement-android-advanced-reporting.md). Det ger i djup information om hur hello toouse Engagement API tooreport programstatistik.
+# <a name="how-to-use-the-engagement-api-on-android"></a>Hur du använder Engagement API på Android
+Det här dokumentet är ett tillägg till dokumentet [Reporting avancerade alternativ för Android Mobile Engagement SDK](mobile-engagement-android-advanced-reporting.md). Det ger i djup information om hur du använder Engagement API för att rapportera programmet-statistik.
 
-Tänk på att om du bara vill Engagement tooreport programmets sessioner, aktiviteter, krascher och teknisk information sedan hello enklaste sättet är toomake alla dina `Activity` underordnade klasser ärver från hello motsvarande `EngagementActivity` klass.
+Kom ihåg att om du bara vill Engagement att rapportera programmets sessioner, aktiviteter, krascher och teknisk information sedan det enklaste sättet är att se alla dina `Activity` underordnade klasser ärver från motsvarande `EngagementActivity` klass.
 
-Om du vill toodo mer, till exempel om du behöver tooreport programmet specifika händelser, fel och jobb, eller om du har tooreport ditt programs aktiviteter i ett annat sätt än hello en implementeras i hello `EngagementActivity` klasser måste toouse hello Engagement API.
+Om du vill göra mer, till exempel om du behöver rapportera programmet specifika händelser, fel och jobb, eller om du vill rapportera ditt programs aktiviteter i ett annat sätt än den som implementerats i den `EngagementActivity` klasser, måste du använda Engagement-API.
 
-Hej Engagement API tillhandahålls av hello `EngagementAgent` klass. En instans av den här klassen kan hämtas genom att anropa hello `EngagementAgent.getInstance(Context)` statisk metod (Observera att hello `EngagementAgent` objektet som returnerades är en singleton).
+Engagement-API som tillhandahålls av den `EngagementAgent` klass. En instans av den här klassen kan hämtas genom att anropa den `EngagementAgent.getInstance(Context)` statisk metod (Observera att den `EngagementAgent` objektet som returnerades är en singleton).
 
 ## <a name="engagement-concepts"></a>Koncept i engagement
-hello följande delar förfina hello vanliga [koncept i Mobile Engagement](mobile-engagement-concepts.md), för hello Android-plattformen.
+Följande delar förfina vanliga [koncept i Mobile Engagement](mobile-engagement-concepts.md), för Android-plattformen.
 
 ### <a name="session-and-activity"></a>`Session` och `Activity`
-Om hello användaren är fler än några få sekunder inaktiv mellan två *aktiviteter*, sedan hans sekvens av *aktiviteter* är uppdelad i två olika *sessioner*. Dessa några sekunder kallas hello ”sessionstidsgränsen”.
+Om användaren är fler än några få sekunder inaktiv mellan två *aktiviteter*, sedan hans sekvens av *aktiviteter* är uppdelad i två olika *sessioner*. Dessa några sekunder kallas ”sessionstidsgränsen”.
 
-En *aktiviteten* är ofta kopplade till en skärm på hello-program som är toosay hello *aktiviteten* när hello-skärmen visas och stoppas när hello-skärmen stängs: Detta är hello fall när Hej Engagement SDK är integrerad med hjälp av hello `EngagementActivity` klasser.
+En *aktiviteten* är ofta kopplade till en skärm för programmet, det vill säga den *aktiviteten* när skärmen visas och stoppas när skärmen stängs: så är fallet när Engagement-SDK är integrerad med hjälp av den `EngagementActivity` klasser.
 
-Men *aktiviteter* kan också kontrolleras manuellt med hjälp av hello Engagement API. Detta gör toosplit en viss skärm i flera sub delar tooget mer information om hello användning av den här skärmen (till exempel hur ofta tooknown och hur länge dialogrutor används i den här skärmen).
+Men *aktiviteter* kan också kontrolleras manuellt med hjälp av Engagement-API. Detta gör för att dela en viss skärm i flera sub delar för att få mer information om användning av den här skärmen (till exempel hur ofta kända och hur länge dialogrutor används i den här skärmen).
 
 ## <a name="reporting-activities"></a>Rapportering
 > [!IMPORTANT]
-> Du behöver inte tooreport aktiviteter som beskrivs i det här avsnittet om du använder hello `EngagementActivity` klassen och dess varianter enligt beskrivningen i hello hur tooIntegrate Engagement för Android-dokument.
+> Du behöver inte rapporten aktiviteter som beskrivs i det här avsnittet om du använder den `EngagementActivity` klassen och dess varianter enligt beskrivningen i hur du integrerar Engagement för Android-dokument.
 > 
 > 
 
 ### <a name="user-starts-a-new-activity"></a>Användaren startar en ny aktivitet
             EngagementAgent.getInstance(this).startActivity(this, "MyUserActivity", null);
-            // Passing hello current activity is required for Reach toodisplay in-app notifications, passing null will postpone such announcements and polls.
+            // Passing the current activity is required for Reach to display in-app notifications, passing null will postpone such announcements and polls.
 
-Du behöver toocall `startActivity()` varje gång hello användaraktivitet ändras. hello första anropet toothis funktionen startar en ny session.
+Du måste anropa `startActivity()` varje gång aktiviteten användarändringar. Det första anropet till funktionen startar en ny session.
 
-Hej bästa plats toocall den här funktionen finns på varje aktivitet `onResume` återanrop.
+Den bästa platsen för att anropa den här funktionen finns på varje aktivitet `onResume` återanrop.
 
 ### <a name="user-ends-his-current-activity"></a>Användaren avslutar sin aktuella aktiviteten
             EngagementAgent.getInstance(this).endActivity();
 
-Du behöver toocall `endActivity()` minst en gång när hello användaren är klar användarens sista aktivitet. Det informerar hello Engagement SDK att hello användare är för närvarande inaktiv och att hello användarsession måste toobe stängd när hello sessionstidsgränsen upphör att gälla (om du anropar `startActivity()` innan hello sessionstidsgränsen upphör att gälla hello-sessionen återupptas bara).
+Du måste anropa `endActivity()` minst en gång när användaren är klar användarens sista aktivitet. Det informerar Engagement SDK att användaren är för närvarande inaktiv och användarsessionen måste stängas när tidsgränsen för sessionen upphör att gälla (om du anropar `startActivity()` innan tidsgränsen för sessionen upphör sessionen bara återupptas).
 
-Hej bästa plats toocall den här funktionen finns på varje aktivitet `onPause` återanrop.
+Den bästa platsen för att anropa den här funktionen finns på varje aktivitet `onPause` återanrop.
 
 ## <a name="reporting-events"></a>Rapporteringshändelser
 ### <a name="session-events"></a>Sessionshändelser
-Sessionshändelser är oftast används tooreport hello åtgärder som utförs av en användare under sin session.
+Sessionshändelser används vanligtvis för att rapportera åtgärder som utförs av en användare under sin session.
 
 **Exempel utan extra data:**
 
@@ -89,11 +89,11 @@ Sessionshändelser är oftast används tooreport hello åtgärder som utförs av
             }
 
 ### <a name="standalone-events"></a>Fristående händelser
-Motstridiga toosession händelser, fristående händelser kan inträffa utanför hello kontexten för en session.
+Strider mot Sessionshändelser, kan det ske fristående händelser utanför ramen för en session.
 
 **Exempel:**
 
-Anta att du vill tooreport händelser som inträffar när en broadcast mottagare utlöses:
+Anta att du vill rapporten händelser som inträffar när en broadcast mottagare utlöses:
 
             /** Triggered by Intent.ACTION_BATTERY_LOW */
             public BatteryLowReceiver extends BroadcastReceiver {
@@ -107,16 +107,16 @@ Anta att du vill tooreport händelser som inträffar när en broadcast mottagare
 
 ## <a name="reporting-errors"></a>Rapporterat fel
 ### <a name="session-errors"></a>Sessionen fel
-Sessionen felen är oftast används tooreport hello fel påverkar hello användaren under sin session.
+Sessionen fel används vanligtvis för att rapportera fel som påverkar användaren under sin session.
 
 **Exempel:**
 
-            /** hello user has entered invalid data in a form */
+            /** The user has entered invalid data in a form */
             public MyActivity extends EngagementActivity {
               [...]
               public void onMyFormSubmitted(MyForm form) {
                 [...]
-                /* hello user has entered an invalid email address */
+                /* The user has entered an invalid email address */
                 getEngagementAgent().sendSessionError("sign_up_email", null);
                 [...]
               }
@@ -124,11 +124,11 @@ Sessionen felen är oftast används tooreport hello fel påverkar hello använda
             }
 
 ### <a name="standalone-errors"></a>Fristående fel
-Motstridiga toosession fel, fristående kan det uppstå fel utanför hello kontexten för en session.
+Strider mot session fel inträffa fristående fel utanför ramen för en session.
 
 **Exempel:**
 
-hello följande exempel visas hur tooreport ett fel när hello minne blir låg på hello telefon när programmet processen körs.
+I följande exempel visas hur du rapporterar ett fel när minnet blir låg på telefonen medan programmet processen körs.
 
             public MyApplication extends EngagementApplication {
 
@@ -140,12 +140,12 @@ hello följande exempel visas hur tooreport ett fel när hello minne blir låg p
 
 ## <a name="reporting-jobs"></a>Rapportering av jobb
 ### <a name="example"></a>Exempel
-Anta att du vill tooreport hello varaktighet logga in:
+Anta att du vill rapportera varaktighet logga in:
 
             [...]
             public void signIn(Context context, ...) {
 
-              /* We need an Android context toocall hello Engagement API, if you are extending Activity, Service, you can pass "this" */
+              /* We need an Android context to call the Engagement API, if you are extending Activity, Service, you can pass "this" */
               EngagementAgent engagementAgent = EngagementAgent.getInstance(context);
 
               /* Report sign in job has started */
@@ -159,28 +159,28 @@ Anta att du vill tooreport hello varaktighet logga in:
             [...]
 
 ### <a name="report-errors-during-a-job"></a>Rapportera fel under ett jobb
-Fel kan vara relaterade tooa köra jobb i stället för som relaterade toohello aktuella användarsessionen.
+Fel kan vara relaterad till ett jobb som körs i stället för som rör den aktuella användarsessionen.
 
 **Exempel:**
 
-Anta att du vill tooreport ett fel under du logga in processen:
+Anta att du vill rapportera ett fel under du logga in processen:
 
 [...] offentliga void inloggning (kontexten kontext,...) {
 
-              /* We need an Android context toocall hello Engagement API, if you are extending Activity, Service, you can pass "this" */
+              /* We need an Android context to call the Engagement API, if you are extending Activity, Service, you can pass "this" */
               EngagementAgent engagementAgent = EngagementAgent.getInstance(context);
 
               /* Report sign in job has been started */
               engagementAgent.startJob("sign_in", null);
 
-              /* Try toosign in */
+              /* Try to sign in */
               while(true)
                 try {
                   trySignin();
                   break;
                 }
                 catch(Exception e) {
-                  /* Report hello error tooEngagement */
+                  /* Report the error to Engagement */
                   engagementAgent.sendJobError("sign_in_error", "sign_in", null);
 
                   /* Retry after a moment */
@@ -193,13 +193,13 @@ Anta att du vill tooreport ett fel under du logga in processen:
             [...]
 
 ### <a name="reporting-events-during-a-job"></a>Rapporteringshändelser under ett jobb
-Händelser kan vara relaterade tooa köra jobb i stället för som relaterade toohello aktuella användarsessionen.
+Händelser kan vara relaterad till ett jobb som körs i stället för som rör den aktuella användarsessionen.
 
 **Exempel:**
 
-Anta att vi har ett sociala nätverk och vi använder en jobbet tooreport hello total tid under vilken hello användare är anslutna toohello server. hello användaren kan vara ansluten i bakgrunden även när han använder ett annat program eller hello telefon är i viloläge, så det finns ingen session.
+Anta att vi har ett sociala nätverk och vi använder ett jobb att rapportera den totala tiden under vilken användaren är ansluten till servern. Användaren kan vara ansluten i bakgrunden även när han använder ett annat program eller när telefonen är i viloläge, så det finns ingen session.
 
-hello användare kan ta emot meddelanden från sina vänner, detta är en jobbhändelse.
+Användaren kan ta emot meddelanden från sina vänner, detta är en jobbhändelse.
 
             [...]
             public void signin(Context context, ...) {
@@ -219,12 +219,12 @@ hello användare kan ta emot meddelanden från sina vänner, detta är en jobbh�
             [...]
 
 ## <a name="extra-parameters"></a>Extra parametrar
-Godtycklig data kan vara anslutna tooevents, fel, aktiviteter och jobb.
+Diverse uppgifter kan kopplas till händelser, fel, aktiviteter och jobb.
 
 Dessa data kan vara strukturerad, används Androids paket klass (faktiskt, den fungerar som extra parametrar i Android avsikter). Observera att ett paket kan innehålla matriser eller ett annat paket instanser.
 
 > [!IMPORTANT]
-> Om du lägger till i parcelable eller serializable parametrar, kontrollerar du att deras `toString()` metoden är implementerad tooreturn läsbart sträng. Serialiserbara klasser som innehåller icke tillfälligt fält som inte kan serialiseras gör Android kraschar när du anropar`bundle.putSerializable("key",value);`
+> Om du lägger till i parcelable eller serializable parametrar, kontrollerar du att deras `toString()` metoden implementeras för att returnera en läsbar sträng. Serialiserbara klasser som innehåller icke tillfälligt fält som inte kan serialiseras gör Android kraschar när du anropar`bundle.putSerializable("key",value);`
 > 
 > [!WARNING]
 > Glesa matriser i extra parametrar stöds inte, det vill säga den kommer inte att serialisera som en matris. Du måste konvertera dem till standard matriser innan den används i extra parametrar.
@@ -239,28 +239,28 @@ Dessa data kan vara strukturerad, används Androids paket klass (faktiskt, den f
 
 ### <a name="limits"></a>Begränsningar
 #### <a name="keys"></a>Nycklar
-Varje nyckel i hello `Bundle` måste matcha hello följande reguljära uttryck:
+Varje nyckel i den `Bundle` måste överensstämma med följande reguljära uttryck:
 
 `^[a-zA-Z][a-zA-Z_0-9]*`
 
 Det innebär att nycklar måste börja med minst en bokstav, följt av bokstäver, siffror eller understreck (\_).
 
 #### <a name="size"></a>Storlek
-Tillägg är begränsad för**1024** tecken per anrop (efter kodning i JSON av hello Engagement service).
+Tillägg är begränsade till **1024** tecken per anrop (efter kodning i JSON av tjänsten Engagement).
 
-I hello är 58 tecken i föregående exempel hello JSON skickas toohello server:
+I exemplet ovan är JSON som skickas till servern 58 tecken:
 
             {"ref_click":"http:\/\/foobar.com\/blog","video_id":"123"}
 
 ## <a name="reporting-application-information"></a>Rapportering programinformation
-Du kan manuellt rapportera spåra information (eller andra program specifik information) med hjälp av hello `sendAppInfo()` funktion.
+Du kan manuellt rapportera spåra information (eller andra program specifik information) med hjälp av den `sendAppInfo()` funktion.
 
-Observera att denna information kan skickas inkrementellt: endast hello senaste värdet för en viss nyckel sparas för en viss enhet.
+Observera att denna information kan skickas inkrementellt: endast det senaste värdet för en viss nyckel sparas för en viss enhet.
 
-Hello paket klass är används tooabstract programinformation som händelsen tillägg, Observera att matriser eller underordnad paketerar behandlas som flat strängar (med JSON-serialisering).
+Som händelsen tillägg används paket klassen för att abstrahera information om programmet, Observera att matriser eller underordnade paket kommer att behandlas som flat strängar (med JSON-serialisering).
 
 ### <a name="example"></a>Exempel
-Här är en kod exempel toosend användaren kön och födelsedatum:
+Här är ett kodexempel för att skicka användaren kön och födelsedatum:
 
             Bundle appInfo = new Bundle();
             appInfo.putString("status", "premium");
@@ -269,15 +269,15 @@ Här är en kod exempel toosend användaren kön och födelsedatum:
 
 ### <a name="limits"></a>Begränsningar
 #### <a name="keys"></a>Nycklar
-Varje nyckel i hello `Bundle` måste matcha hello följande reguljära uttryck:
+Varje nyckel i den `Bundle` måste överensstämma med följande reguljära uttryck:
 
 `^[a-zA-Z][a-zA-Z_0-9]*`
 
 Det innebär att nycklar måste börja med minst en bokstav, följt av bokstäver, siffror eller understreck (\_).
 
 #### <a name="size"></a>Storlek
-Information om programmet är begränsad för**1024** tecken per anrop (efter kodning i JSON av hello Engagement service).
+Information om programmet är begränsade till **1024** tecken per anrop (efter kodning i JSON av tjänsten Engagement).
 
-I hello är 44 tecken i föregående exempel hello JSON skickas toohello server:
+I exemplet ovan är JSON som skickas till servern 44 tecken:
 
             {"expiration":"2016-12-07","status":"premium"}

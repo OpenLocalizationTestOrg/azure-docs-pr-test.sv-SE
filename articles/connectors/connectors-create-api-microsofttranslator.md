@@ -1,6 +1,6 @@
 ---
-title: aaaAdd hello Microsoft Translator i logikappar | Microsoft Docs
-description: "Översikt över hello Microsoft Translator koppling med REST API-parametrar"
+title: "Lägg till Microsoft Translator i logikappar | Microsoft Docs"
+description: "Översikt över Microsoft Translator anslutningen med REST API-parametrar"
 services: 
 suite: 
 documentationcenter: 
@@ -16,28 +16,28 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/07/2016
 ms.author: mandia; ladocs
-ms.openlocfilehash: 598405dfbc13b340f34923157dfb967da5e7d55a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: f36cd801a0572d671977e2e48a7f1e743e38e768
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="get-started-with-hello-microsoft-translator-connector"></a>Kom igång med hello Microsoft Translator connector
-Anslut tooMicrosoft översättare tootranslate text kan identifiera ett språk och mycket mer. Med Microsoft Translator kan du: 
+# <a name="get-started-with-the-microsoft-translator-connector"></a>Kom igång med Microsoft Translator connector
+Ansluta till Microsoft Translator att översätta text, identifiera ett språk och mycket mer. Med Microsoft Translator kan du: 
 
-* Skapa ditt företag flödet baserat på hello data du får från Microsoft Translator. 
-* Använd åtgärder tootranslate text, identifiera ett språk och mycket mer. De här åtgärderna få svar och hello utdata gör tillgängligt för andra åtgärder. Du kan exempelvis översätta hello text på hello filen tooanother språk med hjälp av Microsoft Translator när en ny fil skapas i Dropbox.
+* Skapa ditt företag flödet som baseras på de data som du får från Microsoft Translator. 
+* Använd åtgärder för att översätta text, identifiera ett språk och mycket mer. De här åtgärderna få svar och utdata gör tillgängligt för andra åtgärder. Du kan till exempel översätta text i filen till ett annat språk med hjälp av Microsoft Translator när en ny fil skapas i Dropbox.
 
 Du kan komma igång genom att skapa en logikapp nu, se [skapa en logikapp](../logic-apps/logic-apps-create-a-logic-app.md).
 
-## <a name="create-a-connection-toomicrosoft-translator"></a>Skapa en anslutning tooMicrosoft översättare
-> [!INCLUDE [Steps toocreate a connection tooMicrosoft Translator](../../includes/connectors-create-api-microsofttranslator.md)]
+## <a name="create-a-connection-to-microsoft-translator"></a>Skapa en anslutning till Microsoft Translator
+> [!INCLUDE [Steps to create a connection to Microsoft Translator](../../includes/connectors-create-api-microsofttranslator.md)]
 > 
 > 
 
 ## <a name="connector-specific-details"></a>Connector-specifik information
 
-Visa alla utlösare och åtgärder som definierats i hello swagger och även se några gränser i hello [connector information](/connectors/microsofttranslator/).
+Visa alla utlösare och åtgärder som definierats i swagger och även se några gränser i den [connector information](/connectors/microsofttranslator/).
 
 ## <a name="more-connectors"></a>Flera kopplingar
-Gå tillbaka toohello [API: er listan](apis-list.md).
+Gå tillbaka till den [API: er listan](apis-list.md).

@@ -1,6 +1,6 @@
 ---
-title: "Felsöka: Saknar data i aktivitetsloggen för hello Azure Active Directory | Microsoft Docs"
-description: "Visar hello olika tillgängliga rapporterna för Azure Active Directory"
+title: "Felsökning: Saknade data i aktivitetsloggen för Azure Active Directory | Microsoft Docs"
+description: "Visar de olika tillgängliga rapporterna i Azure Active Directory"
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -15,31 +15,31 @@ ms.workload: identity
 ms.date: 07/15/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 7bbec94ab42eb5b54a7e65e124060d057b4a1a34
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 47617f8f727027de113a0f503308c8accc58859e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="i-cant-find-some-actions-that-i-performed-in-hello-azure-active-directory-activity-log"></a>Du kan inte hitta vissa åtgärder som jag utföras i aktivitetsloggen för hello Azure Active Directory
+# <a name="i-cant-find-some-actions-that-i-performed-in-the-azure-active-directory-activity-log"></a>Det går inte att hitta vissa åtgärder som jag utförde i aktivitetsloggen för Azure Active Directory
 
 
 ## <a name="symptoms"></a>Symtom
 
-Jag utföra vissa åtgärder i hello Azure-portalen och förväntas toosee hello granskningsloggar för dessa åtgärder i hello `Activity logs > Audit Logs` bladet, men det går inte att hitta dem.
+Jag utförde vissa åtgärder i Azure Portal och förväntade att se granskningsloggarna för dessa åtgärder på bladet `Activity logs > Audit Logs`, men det går inte att hitta dem.
 
  ![Rapportering](./media/active-directory-reporting-troubleshoot-missing-audit-data/01.png)
  
 
 ## <a name="cause"></a>Orsak
 
-Åtgärder visas inte direkt i hello aktivitet granskningslogg. Det kan ta 15 minuter tooan timme toosee hello granskningsloggar i hello portal från hello tid hello åtgärden utförs.
+Åtgärder visas inte direkt i granskningsloggen för aktiviteten. Det kan ta någonstans mellan 15 minuter och en timme att visa granskningsloggarna i portalen från den tidpunkt då åtgärden utförs.
 
 ## <a name="resolution"></a>Lösning
 
-Vänta i 15 minuter tooan timme och om hello åtgärder visas i hello loggen. Om du fortfarande inte ser dem skapar du ett supportärende hos oss så tittar vi på det.
+Vänta i mellan 15 minuter och en timme och se om åtgärderna visas i loggen. Om du fortfarande inte ser dem skapar du ett supportärende hos oss så tittar vi på det.
 
 
 ## <a name="next-steps"></a>Nästa steg
-Se hello [Azure Active Directory reporting vanliga frågor och svar](active-directory-reporting-faq.md).
+Se guiden med [vanliga frågor om Azure Active Directory-rapportering](active-directory-reporting-faq.md).
 

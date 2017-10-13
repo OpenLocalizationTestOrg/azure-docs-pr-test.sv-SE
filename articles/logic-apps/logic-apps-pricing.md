@@ -1,5 +1,5 @@
 ---
-title: aaaPricing & fakturering - Azure Logic Apps | Microsoft Docs
+title: Priser och fakturering - Azure Logic Apps | Microsoft Docs
 description: "Lär dig hur priser och fakturering fungerar för Logikappar i Azure."
 author: kevinlam1
 manager: anneta
@@ -14,45 +14,45 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: LADocs; klam
-ms.openlocfilehash: fa10cbbf7657afba7fadb7c76817b7a5e4af7b42
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 63784c5e3af360b2f3f8cb330a9df8b27a85d859
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="logic-apps-pricing-model"></a>Prissättningsmodell för Logic Apps
-Med Azure Logikappar kan du tooscale och köra integration arbetsflöden i hello molnet.  Nedan visas information om hello fakturering och priser planer för Logic Apps.
+Med Azure Logikappar kan du skala och köra integration arbetsflöden i molnet.  Nedan visas information om fakturering och priser planer för Logic Apps.
 ## <a name="consumption-pricing"></a>Priser för förbrukning
-Logic Apps använder nyskapad en plan för användning. Med hello Logic Apps förbrukning prismodellen betalar du bara för det du använder.  Logic Apps är inte begränsas när du använder en plan för användning.
+Logic Apps använder nyskapad en plan för användning. Med Logic Apps förbrukning priserna betalar du bara för det du använder.  Logic Apps är inte begränsas när du använder en plan för användning.
 Alla åtgärder som utförs i en körning av en logik app-instansen är avgiftsbelagda.
 ### <a name="what-are-action-executions"></a>Vad är åtgärden körningar?
-Varje steg i en definition av logik app är en åtgärd som innehåller utlösare, kontroll flödet steg som villkor, scope för varje slingor gör tills slingor, anropar tooconnectors och anropar toonative åtgärder.
-Utlösare är särskilda åtgärder som är utformad tooinstantiate en ny instans av logikappen när en viss händelse inträffar.  Det finns flera olika beteenden för utlösare som kan påverka hur hello logikapp mäts.
-* **Avsökningen utlösaren** – den här utlösaren kontinuerligt avsöker en slutpunkt tills den får ett meddelande som uppfyller hello kriterier för att skapa en instans av logikappen.  hello avsökningsintervallet kan konfigureras i hello utlösaren i hello logik App Designer.  Varje avsökning begäran, räknas även om det inte att skapa en instans av en logikapp som en körning av åtgärden.
-* **Webhook-utlösare** – den här utlösaren väntar på att en klient toosend den en begäran om på en viss slutpunkt.  Varje begäran skickas toohello webhook endpoint räknas som en körning av åtgärden. hello begäran och hello HTTP Webhook-utlösare är båda webhook-utlösare.
-* **Återkommande utlösaren** – den här utlösaren skapas en instans av hello logikapp baserat på hello Upprepningsintervall som konfigurerats i hello utlösaren.  En upprepning utlösare kan till exempel vara konfigurerade toorun alla tre dagar eller även varje minut.
+Varje steg i en definition av logik app är en åtgärd som innehåller utlösare, Kontrollflöde steg som villkor, scope för varje slingor gör tills slingor, anrop till kopplingar och anrop till interna åtgärder.
+Utlösare är särskilda åtgärder som är utformade för att skapa en instans av en ny instans av logikappen när en viss händelse inträffar.  Det finns flera olika beteenden för utlösare som kan påverka hur logikappen mäts.
+* **Avsökningen utlösaren** – den här utlösaren kontinuerligt avsöker en slutpunkt tills den får ett meddelande som uppfyller villkoren för att skapa en instans av logikappen.  Avsökningsintervallet kan konfigureras i utlösaren i logik App Designer.  Varje avsökning begäran, räknas även om det inte att skapa en instans av en logikapp som en körning av åtgärden.
+* **Webhook-utlösare** – den här utlösaren väntar på att en klient kan skicka en begäran om en viss slutpunkt.  Varje begäran som skickas till slutpunkten webhook räknas som en körning av åtgärden. Begäran och HTTP-Webhook-utlösare är båda webhook-utlösare.
+* **Återkommande utlösaren** – den här utlösaren skapas en instans av logikappen baserat på Upprepningsintervall som konfigurerats i utlösaren.  Till exempel kan en upprepning utlösare konfigureras för att köra alla tre dagar eller även varje minut.
 
-Utlösaren körningar kan ses i resursbladet för hello Logic Apps i hello utlösaren historik del.
+Utlösaren körningar kan ses i resursbladet Logic Apps utlösaren historik del.
 
-Alla åtgärder som utfördes, om de hade lyckades eller misslyckades är avgiftsbelagda som en körning av åtgärden.  Åtgärder som hoppades över på grund av tooa villkor inte uppfylls eller åtgärder som inte köras eftersom hello logikapp avslutas innan räknas inte som åtgärden körningar.
+Alla åtgärder som utfördes, om de hade lyckades eller misslyckades är avgiftsbelagda som en körning av åtgärden.  Åtgärder som hoppades över på grund av ett villkor inte uppfylls eller åtgärder som inte köras eftersom logikappen avslutas innan räknas inte som åtgärden körningar.
 
-Åtgärder som utförs i slingor räknas per iteration av hello loop.  Till exempel en enda åtgärd i ett för varje loop söka igenom en lista med 10 objekt räknas som hello antal objekt i listan hello (10) multiplicerat med hello antal åtgärder i hello loop (1) plus en för hello inleda hello loop , som i det här exemplet skulle vara (10 * 1) + 1 = 11 åtgärd körningar.
-Inaktiverad Logic Apps kan inte ha nya instanser instansieras och därför vid inaktiveras debiteras inte.  Tänk på att det kan ta lite tid för hello instanser tooquiesce innan helt inaktiverad när du har inaktiverat en logikapp.
+Åtgärder som utförs i slingor räknas per upprepning av loopen.  Till exempel en enda åtgärd i ett för varje loop söka igenom en lista över 10 objekt som ska räknas som antalet objekt i listan (10) multiplicerat med antalet åtgärder i en slinga (1) plus en för initiering av loopen , som i det här exemplet skulle vara (10 * 1) + 1 = 11 åtgärd körningar.
+Inaktiverad Logic Apps kan inte ha nya instanser instansieras och därför vid inaktiveras debiteras inte.  Tänk på att det kan ta lite tid för instanserna som du vill inaktivera innan helt inaktiverad när du har inaktiverat en logikapp.
 ### <a name="integration-account-usage"></a>Användningen av integration konton
-Ingår i förbrukningsbaserad användning är en [integrering konto](logic-apps-enterprise-integration-create-integration-account.md) för undersökning, utveckling och testning så att du toouse hello [B2B/EDI](logic-apps-enterprise-integration-b2b.md) och [XML-bearbetning](logic-apps-enterprise-integration-xml.md)funktioner i Logic Apps utan extra kostnad. Du kan toocreate högst ett konto per region och lagra too10 avtal och 25 maps. Scheman, certifikat och partners har inga begränsningar och du kan ladda upp så många som du behöver.
+Ingår i förbrukningsbaserad användning är en [integrering konto](logic-apps-enterprise-integration-create-integration-account.md) för undersökning, utveckling och testning så att du kan använda den [B2B/EDI](logic-apps-enterprise-integration-b2b.md) och [XML-bearbetning](logic-apps-enterprise-integration-xml.md)funktioner i Logic Apps utan extra kostnad. Du kan skapa maximalt ett konto per region och lagra upp till 10 avtal och 25 maps. Scheman, certifikat och partners har inga begränsningar och du kan ladda upp så många som du behöver.
 
-Dessutom toohello inkludering av integrationskonton med förbrukning, du kan också skapa standard integrationskonton med våra standard Logic Apps SLA och utan begränsningar. Mer information finns i [priser för Azure](https://azure.microsoft.com/pricing/details/logic-apps).
+Du kan också skapa standard integrationskonton utan dessa begränsningar och med vår standard Logic Apps SLA förutom inkludering av integrationskonton med förbrukning. Mer information finns i [priser för Azure](https://azure.microsoft.com/pricing/details/logic-apps).
 
 ## <a name="app-service-plans"></a>App Service-planer
-Logikappar som tidigare har skapat refererar till en App Service-Plan fortsätter toobehave som innan. Beroende på hello planen valt har begränsats efter hello föreskrivna dagliga körningar överskrids men debiteras med hello åtgärd körning mätaren.
-EA-kunder som har en Apptjänstplan i sin prenumeration som inte har uttryckligen associerat med hello Logikapp toobe kan få hello ingår kvantiteter förmånen.  Om du har en Standard App Service-Plan i prenumerationen EA och en Logikapp i hello samma prenumeration och du debiteras inte för 10 000 åtgärder körningar per dag (se följande tabell). 
+Logikappar som tidigare har skapat refererar till en App Service-Plan fortsätter att fungera som tidigare. Beroende på den valda planen har begränsats efter föreskrivna dagliga körningar överskrids men debiteras med hjälp av åtgärden körning mätaren.
+EA-kunder som har en Apptjänstplan i sin prenumeration som inte har uttryckligen kopplas till Logikappen, få förmånen inkluderade kvantiteter.  Till exempel om du har en Standard App Service-Plan i prenumerationen EA och en Logikapp i samma prenumeration debiteras sedan du inte för 10 000 åtgärder körningar per dag (se följande tabell). 
 
 App Service-planer och deras dagliga körningar tillåten åtgärd:
 |  | Kostnadsfri/delad/enkel | Standard | Premium |
 | --- | --- | --- | --- |
 | Åtgärden körningar per dag |200 |10 000 |50,000 |
-### <a name="convert-from-app-service-plan-pricing-tooconsumption"></a>Konvertera från Apptjänstplan priser tooConsumption
-toochange en Logikapp som har en App Service-Plan som är associerade med den tooa förbrukning modellen, ta bort hello referens toohello App Service-Plan i hello logkappsdefinitionen.  Den här ändringen kan du göra med en anropet tooa PowerShell-cmdlet:`Set-AzureRmLogicApp -ResourceGroupName ‘rgname’ -Name ‘wfname’ –UseConsumptionModel -Force`
+### <a name="convert-from-app-service-plan-pricing-to-consumption"></a>Konvertera från Apptjänstplan priser till förbrukning
+Ta bort referensen till den App Service-Plan i logkappsdefinitionen om du vill ändra en Logikapp som har en App Service-Plan som är kopplade till den till en modell för användning.  Den här ändringen kan utföras med ett anrop till en PowerShell-cmdlet:`Set-AzureRmLogicApp -ResourceGroupName ‘rgname’ -Name ‘wfname’ –UseConsumptionModel -Force`
 ## <a name="pricing"></a>Prissättning
 Information om priser, se [Logic Apps priser](https://azure.microsoft.com/pricing/details/logic-apps).
 

@@ -1,8 +1,8 @@
 <!--alkohli 02/21/2017 cloud appliance security-->
 
-Behåll hello följande säkerhetsaspekter i åtanke när du använder hello StorSimple-enhet för molnet:
+Ha följande säkerhetsöverväganden i åtanke när du använder StorSimple Cloud Appliance:
 
-* hello molnet enheten skyddas via Microsoft Azure-prenumerationen. Det innebär att om du använder hello molnet installation och Azure-prenumerationen komprometteras, hello data som lagras på din enhet i molnet även mottagliga.
-* hello offentliga nyckeln för hello certifikatet som används för tooencrypt data som lagras i StorSimple på ett säkert sätt är gjort tillgängliga toohello Azure-portalen och hello privata nyckeln sparas med hello StorSimple-enhet för molnet. På hello StorSimple-enhet för moln lagras både hello offentliga och privata nycklar i Azure.
-* hello molnet installation finns i hello Microsoft Azure-datacenter.
+* Molninstallationen skyddas via din Microsoft Azure-prenumeration. Det innebär att om du använder molninstallationen och din Azure-prenumeration komprometteras, så blir även de data som lagras i molninstallationen sårbara.
+* Den offentliga nyckeln för certifikatet som används för att kryptera data som lagras i StorSimple görs tillgänglig för Azure Portal på ett säkert sätt, och den privata nyckeln sparas i StorSimple Cloud Appliance. Med StorSimple Cloud Appliance lagras både den offentliga och privata nyckeln i Azure.
+* Molninstallationen finns på Microsoft Azure-datacentret.
 

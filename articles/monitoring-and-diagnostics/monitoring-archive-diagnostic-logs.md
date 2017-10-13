@@ -1,6 +1,6 @@
 ---
-title: aaaArchive Azure diagnostikloggar | Microsoft Docs
-description: "Lär dig hur tooarchive din Azure diagnostikloggar för långsiktig kvarhållning i ett lagringskonto."
+title: Arkivera Azure diagnostikloggar | Microsoft Docs
+description: "Lär dig mer om att arkivera dina Azure diagnostikloggar för långsiktig kvarhållning i ett lagringskonto."
 author: johnkemnetz
 manager: orenr
 editor: 
@@ -14,43 +14,43 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/21/2017
 ms.author: johnkem
-ms.openlocfilehash: bc9edbd3a649023a728b7fe77130dba2b6e6370d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: dbc5f89001dcb6cd1ab061cb0a9632e4e5d2c1c7
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="archive-azure-diagnostic-logs"></a>Arkivera Azure diagnostikloggar
-I den här artikeln visar vi hur du kan använda hello Azure-portalen PowerShell-Cmdlets, CLI eller REST API tooarchive din [Azure diagnostikloggar](monitoring-overview-of-diagnostic-logs.md) i ett lagringskonto. Det här alternativet är användbart om du vill att tooretain diagnostikloggar med ett valfritt bevarandeprincipen för granskning, statiska analys eller säkerhetskopiering. hello storage-konto har inte toobe i hello samma prenumeration som hello resurs avger loggar så länge hello användare som konfigurerar hello inställningen har lämplig RBAC åtkomst tooboth prenumerationer.
+I den här artikeln visar vi hur du kan använda Azure-portalen, PowerShell-Cmdlets, CLI eller REST API för att arkivera dina [Azure diagnostikloggar](monitoring-overview-of-diagnostic-logs.md) i ett lagringskonto. Det här alternativet är användbart om du vill behålla dina diagnostikloggar med ett valfritt bevarandeprincipen för granskning, statiska analys eller säkerhetskopiering. Storage-konto behöver inte finnas i samma prenumeration som resursen avger loggar så länge som den användare som konfigurerar inställningen har lämplig RBAC åtkomst till båda prenumerationer.
 
 ## <a name="prerequisites"></a>Krav
-Innan du börjar behöver du för[skapa ett lagringskonto](../storage/storage-create-storage-account.md) toowhich som du kan arkivera dina diagnostikloggar. Vi rekommenderar starkt att du inte använder ett befintligt lagringskonto som har andra, icke-övervakning data som lagras i den så att du bättre kan styra åtkomst till toomonitoring data. Men om du arkiverar även dina aktivitetsloggen och diagnostik mått tooa storage-konto, kan det vara klokt toouse detta lagringskonto för dina diagnostikloggar samt tookeep alla övervakningsdata på en central plats. hello storage-konto du använder måste vara ett allmänt lagringskonto inte ett blob storage-konto.
+Innan du börjar måste du [skapa ett lagringskonto](../storage/storage-create-storage-account.md) som du kan arkivera dina diagnostikloggar. Vi rekommenderar starkt att du inte använder ett befintligt lagringskonto som har andra, icke-övervakning data som lagras i den så att du bättre kan styra åtkomsten till övervakningsdata. Men om du arkiverar även din aktivitetsloggen och diagnostik mått till ett lagringskonto, kan det vara bra att använda detta lagringskonto för dina diagnostikloggar för att hålla alla övervakningsdata på en central plats. Storage-konto som du använder måste vara ett allmänt lagringskonto inte ett blob storage-konto.
 
 ## <a name="diagnostic-settings"></a>Diagnostikinställningar
-tooarchive dina diagnostikloggar med hjälp av hello metoderna nedan, som du ställer in en **diagnostikinställningen** för en viss resurs. Diagnostikinställningen för en resurs definierar hello kategorier av loggar och mätvärden skickas tooa destination (storage-konto, Händelsehubbar namnområde eller logganalys). Den definierar även hello bevarandeprincip (antal dagar tooretain) för händelser för varje logg kategori och mått data som lagras i ett lagringskonto. Om en bevarandeprincip anges toozero lagras händelser för log kategorin på obestämd tid (d.v.s. toosay, oändligt). En bevarandeprincip kan annars vara valfritt antal dagar mellan 1 och 2147483647. [Du kan läsa mer om diagnostikinställningar här](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings). Bevarandeprinciper är tillämpade per dag, så vid hello slutet på dagen (UTC) loggar från hello dag som inte har nu hello bevarandeprincip kommer att tas bort. Till exempel om du har en bevarandeprincip på en dag, skulle hello början av hello dagen idag hello loggar från hello dag före igår tas bort
+Om du vill arkivera dina diagnostikloggar med någon av metoderna nedan kan du ange en **diagnostikinställningen** för en viss resurs. Diagnostikinställningen för en resurs definierar kategorier av loggar och mått data som skickas till ett mål (storage-konto, Händelsehubbar namnområde eller logganalys). Den definierar även bevarandeprincip (antal dagar att behålla) för händelser för varje logg kategori och mått data som lagras i ett lagringskonto. Om en bevarandeprincip har angetts till noll lagras händelser för den logg kategorin på obestämd tid (dvs, oändligt). En bevarandeprincip kan annars vara valfritt antal dagar mellan 1 och 2147483647. [Du kan läsa mer om diagnostikinställningar här](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings). Bevarandeprinciper är tillämpade per dag, så i slutet av dagen (UTC) loggar från den dagen är nu utöver kvarhållning princip kommer att tas bort. Till exempel om du har en bevarandeprincip på en dag skulle i början av dagen idag loggar från dag före igår tas bort
 
-## <a name="archive-diagnostic-logs-using-hello-portal"></a>Arkivera diagnostikloggar med hello-portalen
-1. Navigera tooAzure Övervakare i hello-portalen och klicka på **diagnostikinställningar**
+## <a name="archive-diagnostic-logs-using-the-portal"></a>Arkivera diagnostikloggar med hjälp av portalen
+1. Gå till Azure-Monitor i portalen och klicka på **diagnostikinställningar**
 
     ![Avsnittet av Azure-Monitor övervakning](media/monitoring-archive-diagnostic-logs/diagnostic-settings-blade.png)
 
-2. Du kan också hello-filterlista av resursgruppen eller resursen, och klicka sedan på hello resursen som du vill att tooset en diagnostikinställningen.
+2. Om du vill filtrera listan efter resursgrupp eller resurstyp, och klicka sedan på resursen som du vill ange en diagnostikinställningen.
 
-3. Om det finns inga inställningar på hello resursen som du har valt, kan du ange toocreate en inställning. Klicka på ”Aktivera diagnostik”.
+3. Om det finns inga inställningar på resursen har du valt, uppmanas du för att skapa en inställning. Klicka på ”Aktivera diagnostik”.
 
    ![Lägg till diagnostikinställningen - inga befintliga inställningar](media/monitoring-archive-diagnostic-logs/diagnostic-settings-none.png)
 
-   Om det finns befintliga inställningarna på hello resurs, visas en lista över inställningar som redan har konfigurerats på den här resursen. Klicka på ”Lägg till diagnostikinställningen”.
+   Om det finns befintliga inställningarna på resursen, visas en lista över inställningar som redan har konfigurerats på den här resursen. Klicka på ”Lägg till diagnostikinställningen”.
 
    ![Lägg till diagnostikinställningen - befintliga inställningar](media/monitoring-archive-diagnostic-logs/diagnostic-settings-multiple.png)
 
-3. Ge ange ett namn och kryssrutan för hello **exportera tooStorage konto**, Välj ett lagringskonto. Du kan också ange ett antal dagar tooretain loggarna för med hello **bevarande (dagar)** skjutreglagen. En kvarhållning av noll dagar lagrar hello loggar under obestämd tid.
+3. Ge din ange ett namn och markera kryssrutan för **exportera till Lagringskontot**, Välj ett lagringskonto. Du kan också ange ett antal dagar att behålla dessa loggar med hjälp av den **bevarande (dagar)** skjutreglagen. En kvarhållning av noll dagar lagrar loggarna på obestämd tid.
    
    ![Lägg till diagnostikinställningen - befintliga inställningar](media/monitoring-archive-diagnostic-logs/diagnostic-settings-configure.png)
     
 4. Klicka på **Spara**.
 
-Efter en liten stund hello nya inställningen som visas i din lista över inställningar för den här resursen och diagnostikloggar är arkiverade toothat lagring kontot så snart nya händelsedata genereras.
+Den nya inställningen visas i din lista över inställningar för den här resursen efter en liten stund och diagnostikloggar arkiveras till att lagringskontot när nya händelsedata genereras.
 
 ## <a name="archive-diagnostic-logs-via-azure-powershell"></a>Arkivera diagnostikloggar via Azure PowerShell
 ```
@@ -59,30 +59,30 @@ Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/s1id1234-5679-0123-4567-
 
 | Egenskap | Krävs | Beskrivning |
 | --- | --- | --- |
-| Resurs-ID |Ja |Resurs-ID för hello resursen som du vill tooset en diagnostikinställningen. |
-| StorageAccountId |Nej |Resurs-ID för hello Lagringskonto toowhich diagnostikloggar ska sparas. |
-| Kategorier |Nej |Kommaavgränsad lista över loggen kategorier tooenable. |
+| Resurs-ID |Ja |Resurs-ID för den resurs som du vill ange en diagnostikinställningen. |
+| StorageAccountId |Nej |Resurs-ID för det Lagringskonto där diagnostikloggar ska sparas. |
+| Kategorier |Nej |Kommaavgränsad lista över loggen kategorier för att aktivera. |
 | Enabled |Ja |Booleskt värde som anger om diagnostik är aktiverade eller inaktiverade på den här resursen. |
 | RetentionEnabled |Nej |Booleskt värde som anger om en bevarandeprincip är aktiverade på den här resursen. |
-| retentionInDays |Nej |Antal dagar som händelser ska behållas mellan 1 och 2147483647. Värdet noll lagrar hello loggar under obestämd tid. |
+| retentionInDays |Nej |Antal dagar som händelser ska behållas mellan 1 och 2147483647. Värdet noll lagrar loggarna på obestämd tid. |
 
-## <a name="archive-diagnostic-logs-via-hello-cross-platform-cli"></a>Arkivera diagnostikloggar via hello plattformsoberoende CLI
+## <a name="archive-diagnostic-logs-via-the-cross-platform-cli"></a>Arkivera diagnostikloggar via plattformsoberoende CLI
 ```
 azure insights diagnostic set --resourceId /subscriptions/s1id1234-5679-0123-4567-890123456789/resourceGroups/testresourcegroup/providers/Microsoft.Network/networkSecurityGroups/testnsg --storageId /subscriptions/s1id1234-5679-0123-4567-890123456789/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage –categories networksecuritygroupevent,networksecuritygrouprulecounter --enabled true
 ```
 
 | Egenskap | Krävs | Beskrivning |
 | --- | --- | --- |
-| resourceId |Ja |Resurs-ID för hello resursen som du vill tooset en diagnostikinställningen. |
-| storageId |Nej |Resurs-ID för Lagringskontot hello toowhich diagnostikloggar ska sparas. |
-| Kategorier |Nej |Kommaavgränsad lista över loggen kategorier tooenable. |
+| resourceId |Ja |Resurs-ID för den resurs som du vill ange en diagnostikinställningen. |
+| storageId |Nej |Resurs-ID för det Lagringskonto där diagnostikloggar ska sparas. |
+| Kategorier |Nej |Kommaavgränsad lista över loggen kategorier för att aktivera. |
 | aktiverad |Ja |Booleskt värde som anger om diagnostik är aktiverade eller inaktiverade på den här resursen. |
 
-## <a name="archive-diagnostic-logs-via-hello-rest-api"></a>Arkivera diagnostikloggar via hello REST API
-[Det här dokumentet finns](https://docs.microsoft.com/rest/api/monitor/servicediagnosticsettings) information om hur du ställer in en diagnostikinställningen med hello Azure övervakaren REST API.
+## <a name="archive-diagnostic-logs-via-the-rest-api"></a>Arkivera diagnostikloggar via REST API
+[Det här dokumentet finns](https://docs.microsoft.com/rest/api/monitor/servicediagnosticsettings) information om hur du ställer in en diagnostikinställningen med hjälp av REST API för Azure-Monitor.
 
-## <a name="schema-of-diagnostic-logs-in-hello-storage-account"></a>Schemat för diagnostikloggar i hello storage-konto
-När du har konfigurerat arkivering, skapas en lagringsbehållare i hello storage-konto när en händelse inträffar i en av hello loggen kategorier som du har aktiverat. Hej blobbar i behållaren hello följa hello samma format över diagnostikloggar och hello aktivitetsloggen. hello strukturen för de här blobbar är:
+## <a name="schema-of-diagnostic-logs-in-the-storage-account"></a>Schemat för diagnostikloggar i storage-konto
+När du har konfigurerat arkivering, skapas en lagringsbehållare i lagringskontot när en händelse inträffar i en av logg-kategorier som du har aktiverat. Blobbar i behållaren följer samma format över diagnostikloggar och aktivitetsloggen. Strukturen för de här blobbar är:
 
 > insikter - loggar-{kategori loggnamn} / resourceId = / PRENUMERATIONER / {prenumerations-ID} /RESOURCEGROUPS/ {resursgruppens namn} /PROVIDERS/ {resurs providernamn} / {resurstyp} / {resursnamn} / y = {numeriskt årtal} / m = {tvåsiffrig numeriska month} / d = {tvåsiffrig kalenderdag} / tim = {tvåsiffrig 24-timmarsklocka hour}/m=00/PT1H.json
 > 
@@ -100,9 +100,9 @@ Till exempel kan en blobbnamnet vara:
 > 
 > 
 
-Varje PT1H.json blobb innehåller en JSON-blob av händelser som inträffade inom hello timme som anges i hello blob-URL (till exempel h = 12). Under hello finns timme är händelser tillagda toohello PT1H.json filen när de inträffar. Hej minuten (m = 00) är alltid 00, eftersom diagnostiska logghändelser delas upp i enskilda blobbar per timme.
+Varje PT1H.json blobb innehåller en JSON-blob av händelser som inträffade inom en timme som anges i blob-URL (till exempel h = 12). Under den aktuella timman läggs händelser till filen PT1H.json när de inträffar. Minuten (m = 00) är alltid 00, eftersom diagnostiska logghändelser delas upp i enskilda blobbar per timme.
 
-I hello PT1H.json filen lagras varje händelse i hello ”innehåller” matris, efter det här formatet:
+Varje händelse lagras i filen PT1H.json i matrisen ”innehåller” följa det här formatet:
 
 ```
 {
@@ -129,18 +129,18 @@ I hello PT1H.json filen lagras varje händelse i hello ”innehåller” matris,
 
 | Elementnamn | Beskrivning |
 | --- | --- |
-| time |Tidsstämpel när hello händelse har genererats av hello Azure service bearbetning hello begära motsvarande hello-händelse. |
-| resourceId |Resurs-ID för hello påverkas resurs. |
-| operationName |Namnet på hello igen. |
-| category |Loggen kategori hello-händelse. |
-| properties |En uppsättning `<Key, Value>` par (d.v.s. ordlista) som beskriver hello information om hello-händelse. |
+| time |Tidsstämpel när händelsen skapades av tjänsten Azure motsvarande händelsen begäran bearbetades. |
+| resourceId |Resurs-ID för resursen påverkas. |
+| operationName |Namnet på åtgärden. |
+| category |Loggen kategori för händelsen. |
+| properties |En uppsättning `<Key, Value>` par (d.v.s. ordlista) som beskriver information om händelsen. |
 
 > [!NOTE]
-> hello egenskaper och användning av dessa egenskaper kan variera beroende på hello resurs.
+> Egenskaper och användning av dessa egenskaper kan variera beroende på resursen.
 > 
 > 
 
 ## <a name="next-steps"></a>Nästa steg
 * [Ladda ned blobbar för analys](../storage/storage-dotnet-how-to-use-blobs.md)
-* [Dataströmmen diagnostiska loggar tooan Händelsehubbar namnområde](monitoring-stream-diagnostic-logs-to-event-hubs.md)
+* [Dataströmmen diagnostiska loggar till ett namnområde för Händelsehubbar](monitoring-stream-diagnostic-logs-to-event-hubs.md)
 * [Läs mer om diagnostikloggar](monitoring-overview-of-diagnostic-logs.md)

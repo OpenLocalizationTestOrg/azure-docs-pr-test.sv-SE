@@ -1,5 +1,5 @@
 ---
-title: "aaaSite Recovery gränser tabell"
+title: "Site Recovery begränsar tabell"
 description: "Beskriver system begränsningarna för Site Recovery."
 services: site recovery
 documentationcenter: NA
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/06/2015
 ms.author: lauraa
-ms.openlocfilehash: 0a9f9e4e5f8a8d7d21abd9ba1d31704b351445fd
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: e0694aa8c5226b794be59358e73751cc493a7e95
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-hello följande begränsningar gäller tooAzure Site Recovery:
+Följande begränsningar gäller för Azure Site Recovery:
 
 | GRÄNSEN IDENTIFIERARE | STANDARDGRÄNS |
 | --- | --- | --- | --- |

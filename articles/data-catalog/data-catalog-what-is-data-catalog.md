@@ -1,6 +1,6 @@
 ---
-title: aaaIntroduction tooAzure Data Catalog | Microsoft Docs
-description: "Den här artikeln innehåller en översikt över Microsoft Azure Data Catalog, inklusive dess funktioner och hello problem den adresser. Data Catalog gör att alla användare tooregister, identifiera, förstå och använda datakällor."
+title: Introduktion till Azure Data Catalog | Microsoft Docs
+description: "Den här artikeln innehåller en översikt över Microsoft Azure Data Catalog, inklusive funktioner och vilka problem den är tänkt att lösa. Data Catalog låter alla användare registrera, identifiera, förstå och använda datakällor."
 services: data-catalog
 documentationcenter: 
 author: steelanddata
@@ -15,63 +15,63 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 08/15/2017
 ms.author: maroche
-ms.openlocfilehash: 82144c440b5692d3608af08208f36ee8e6dfdc93
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: a28a7679831201fcf3a9d1c15497ff706c2752a1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="what-is-azure-data-catalog"></a>Vad är Azure Data Catalog?
-Azure Data Catalog är en helt hanterad molntjänst vars användare kan identifiera hello datakällor de behöver och förstå hello datakällorna de identifierar. Vid hello samma tid, Data Catalog hjälper organisationer get mer värde av sina befintliga investeringar. 
+Azure Data Catalog är en helt hanterad molntjänst vars användare kan identifiera datakällor de behöver och förstå datakällorna de identifierar. På samma gång hjälper Data Catalog organisationer att få ut mer av sina befintliga investeringar. 
 
-Med Data Catalog kan alla användare (analytiker, IT-forskare eller utvecklare) identifiera, förstå och använda datakällor. Data Catalog innehåller en gemensam modell för metadata och kommentarer. Det är en gemensam, central plats för alla organisationens användare toocontribute sina kunskaper och skapa en databaserad gemenskap och kultur för data.
+Med Data Catalog kan alla användare (analytiker, IT-forskare eller utvecklare) identifiera, förstå och använda datakällor. Data Catalog innehåller en gemensam modell för metadata och kommentarer. Det är en gemensam, central plats där hela organisationens användare kan bidra med sina kunskaper och skapa en databaserad gemenskap och kultur för data.
 
 ## <a name="discovery-challenges-for-data-consumers"></a>Det är svårt för datakonsumenterna att hitta rätt
-Traditionellt har man identifierat företagets datakällor genom en organisk process baserad på gruppens kunskaper. Den här metoden medför stora utmaningar för företag som vill tooget hello så mycket som möjligt av sina informationstillgångar:
+Traditionellt har man identifierat företagets datakällor genom en organisk process baserad på gruppens kunskaper. Detta medför stora utmaningar för företag som vill få ut största möjliga värde av sina informationstillgångar:
 
 * Användare kan vara omedvetna om att en datakälla finns om de stöter på den som en del av en annan process. Det finns ingen central plats där datakällorna registreras.
-* Om användarna vet hello platsen för en datakälla, kan inte de ansluta toohello data med hjälp av ett klientprogram. Data-förbrukning upplevelser kräver användare tooknow hello anslutningssträngen eller sökvägen.
-* Om användarna vet hello platsen för en datakälla dokumentation, förstår inte de hello avsedd använder hello data. Datakällor och dokumentation kanske befinner sig på olika platser och används via en mängd olika upplevelser.
-* Om användare har frågor om en informationstillgång måste de hitta hello experten eller teamet som ansvarar för hello data och Använd dem offline. Det finns ingen direkt koppling mellan data och personer med expertkunskaper om hur de används.
-* Om inte användare att förstå hello processen för att begära åtkomst toohello datakällan, hjälper identifiera hello datakälla och dess dokumentation ändå inte dem åtkomst till hello data.
+* Om användarna vet platsen för en datakälla, kan de inte ansluta till data med hjälp av ett klientprogram. Dataförbrukningsupplevelser gör att användarna måste känner till anslutningssträngen eller sökvägen.
+* Om användarna inte känner till datakällans plats kan de inte förstå dess avsedda användningsområde. Datakällor och dokumentation kanske befinner sig på olika platser och används via en mängd olika upplevelser.
+* Om användare har frågor om en informationsresurs måste de hitta experten eller teamet som ansvarar för data och prata med dem offline. Det finns ingen direkt koppling mellan data och personer med expertkunskaper om hur de används.
+* Om användare inte känner till hur man begär åtkomst till datakällan, kan de inte komma åt de data som behövs trots att de har identifierat datakällan och dess dokumentation.
 
 ## <a name="discovery-challenges-for-data-producers"></a>Det är svårt för dataproducenterna att hitta rätt
-Även om data konsumenter ansikte hello tidigare nämnts utmaningar användare som ansvarar för att producera och upprätthålla informationstillgångar står inför andra svårigheter sina egna:
+Datakonsumenterna står inför vissa svårigheter, medan användarna som ansvarar för att producera och upprätthålla informationstillgångar står inför andra svårigheter:
 
-* Det är ofta en onödig ansträngning att kommentera datakällor med beskrivande metadata. Klientprogram vanligen ignorerar beskrivningar som lagrats i hello-datakälla.
+* Det är ofta en onödig ansträngning att kommentera datakällor med beskrivande metadata. Klientprogram ignorerar vanligtvis beskrivningar som lagrats i datakällan.
 * Det är ofta en onödig ansträngning att skapa dokumentation för datakällor. Det är ett ständigt ansvar att synkronisera dokumentationen med datakällorna och användarna saknar förtroende för dokumentation som uppfattas som föråldrad.
-* Det är komplicerat och tidskrävande att skapa och upprätthålla dokumentationen för en datakälla. Den dokumentation tillgänglig tooeveryone som använder hello-datakällan kan vara blir ännu större.
-* Begränsa åtkomst toodata källor och se till att datakonsumenterna vet hur toorequest åtkomst är en ständig utmaning.
+* Det är komplicerat och tidskrävande att skapa och upprätthålla dokumentationen för en datakälla. Det är ofta ännu svårare att göra dokumentationen lättillgänglig för alla som använder datakällan.
+* Det är en ständig utmaning att begränsa tillgången till datakällan och samtidigt se till att datakonsumenterna vet hur de begär tillgång.
 
-När sådana utmaningar kombineras utgör de ett stort hinder för företag som vill tooencourage och främja hello användning och förståelse av företagsdata.
+I kombination utgör dessa svårigheter ett stort hinder för företag som vill uppmuntra och främja användning och förståelse av företagsdata.
 
 ## <a name="azure-data-catalog-can-help"></a>Azure Data Catalog kan hjälpa dig
-Data Catalog är utformad tooaddress dessa problem och toohelp företag get hello mest värdet från sina befintliga informationstillgångar. Data Catalog är datakällor enkelt identifiera och förstå hello användare som hanterar hello data.
+Data Catalog är utformad för att åtgärda dessa problem och hjälpa företagen att få ut så mycket som möjligt av sina befintliga informationstillgångar. Data Catalog underlättar genom att göra det enkelt för användare som behöver data att identifiera och förstå datakällorna.
 
-Data Catalog är en molnbaserad tjänst där du kan registrera datakällor. hello data finns kvar i den befintliga platsen, men en kopia av dess metadata läggs tooData katalog, tillsammans med en referensplats toohello datakälla. Hej metadata är också indexerade toomake varje datakälla som enkelt kan identifieras via Sök och förstå toohello användare som identifierar den.
+Data Catalog är en molnbaserad tjänst där du kan registrera datakällor. Dina data blir kvar där du har dem, men en kopia av deras metadata läggs till i Data Catalog tillsammans med en referens till platsen där datakällan finns. Dessa metadata indexeras också för att det ska bli enkelt att identifiera alla datakällor och för att användare som identifierar dem ska förstå dem.
 
-När en datakälla har registrerats kan utökas dess metadata, av hello användare som registrerat den eller av andra användare i hello enterprise. Alla användare kan kommentera en datakälla genom att ange beskrivningar, taggar eller andra metadata, till exempel dokumentation och processer för att begära åtkomst till datakällan. Dessa beskrivande metadata kompletterar hello strukturella metadata (till exempel namn och data kolumntyper) som registrerats från hello-datakälla.
+När en datakälla har registrerats kan dess metadata utökas, antingen av användaren som registrerade källan eller av andra användare i företaget. Alla användare kan kommentera en datakälla genom att ange beskrivningar, taggar eller andra metadata, till exempel dokumentation och processer för att begära åtkomst till datakällan. Dessa beskrivande metadata kompletterar strukturella metadata (till exempel kolumnnamn och datatyper) som registrerats från datakällan.
 
-Identifiera och förstå datakällor och deras användning är hello Huvudsyftet med registrering hello källor. Företagsanvändare behöver data för business intelligence, programutveckling, datavetenskap eller andra uppgifter där hello rätt data krävs. De kan använda Data Catalog hello identifiering upplevelse tooquickly hitta data som motsvarar deras behov och förstå hello data tooevaluate hello dess lämplighet och använda hello data genom att öppna hello-datakällan i önskat verktyg. 
+Huvudsyftet med registrering av källorna är att identifiera och förstå datakällor och deras användningsområden. Företagsanvändare behöver data för business intelligence, programutveckling, datavetenskap eller andra uppgifter där rätt data krävs. De kan använda sökfunktionen i Data Catalog för att snabbt hitta data som motsvarar deras behov, förstå datakällan för att utvärdera dess lämplighet och använda data genom att öppna datakällan i önskat verktyg. 
 
-AT hello samma tid användare kan bidra toohello katalog genom att tagga, dokumentera och kommentera datakällor som redan har registrerats. De kan också registrera nya datakällor som kan sedan identifieras, förstås, och används av hello kataloganvändare.
+På samma gång kan användarna bidra till katalogen genom att tagga, dokumentera och kommentera datakällor som redan har registrerats. De kan också registrera nya datakällor som kan sedan identifieras, förstås och användas av kataloganvändare.
 
 ![Funktioner i Data Catalog](./media/data-catalog-what-is-data-catalog/data-catalog-capabilities.png)
 
 ## <a name="learn-more-about-data-catalog"></a>Mer information om Data Catalog
-toolearn mer om hello funktionerna i Data Catalog, se:
+Här finns mer information om funktionerna i Data Catalog:
 
-* [Hur tooregister datakällor](data-catalog-how-to-register.md)
-* [Hur toodiscover datakällor](data-catalog-how-to-discover.md)
-* [Hur tooannotate datakällor](data-catalog-how-to-annotate.md)
-* [Hur toodocument datakällor](data-catalog-how-to-documentation.md)
-* [Hur tooconnect toodata källor](data-catalog-how-to-connect.md)
-* [Hur toowork med stordata](data-catalog-how-to-big-data.md)
-* [Hur toomanage datatillgångar](data-catalog-how-to-manage.md)
-* [Hur tooset in hello Företagsordlista](data-catalog-how-to-business-glossary.md)
+* [Så här registrerar du datakällor](data-catalog-how-to-register.md)
+* [Så här upptäcker du datakällor](data-catalog-how-to-discover.md)
+* [Så här skapar du anteckningar om datakällor](data-catalog-how-to-annotate.md)
+* [Så här dokumenterar du datakällor](data-catalog-how-to-documentation.md)
+* [Så här skapar ansluter du till datakällor](data-catalog-how-to-connect.md)
+* [Så här arbetar du med stordata](data-catalog-how-to-big-data.md)
+* [Hantera datatillgångar](data-catalog-how-to-manage.md)
+* [Så här konfigurerar du företagsordlistan](data-catalog-how-to-business-glossary.md)
 * [Vanliga frågor och svar](data-catalog-frequently-asked-questions.md)
 
 ## <a name="next-steps"></a>Nästa steg
-tooget igång med Data Catalog, gå till:
+För att komma igång med Data Catalog, gå till:
 * [Microsoft Azure Data Catalog](https://www.azuredatacatalog.com)
 * [Kom igång med Azure Data Catalog](data-catalog-get-started.md)

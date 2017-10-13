@@ -1,9 +1,9 @@
 ---
-title: "aaaCreate en intern belastningsutjämnare för Azure-molntjänster | Microsoft Docs"
-description: "Lär dig hur toocreate en intern belastningsutjämnare med PowerShell i hello klassiska distributionsmodellen"
+title: "Skapa en intern belastningsutjämnare för Azure Cloud Services | Microsoft Docs"
+description: "Lär dig hur du skapar en intern belastningsutjämnare med hjälp av PowerShell i den klassiska distributionsmodellen"
 services: load-balancer
 documentationcenter: na
-author: kumudd
+author: KumudD
 manager: timlt
 tags: azure-service-management
 ms.assetid: 57966056-0f46-4f95-a295-483ca1ad135d
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: kumud
-ms.openlocfilehash: fe7975bca7bec3248626b0ad0fad6823e278ade2
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 6616c26ede13919b94a098dc38bdd6e2f0fc0b5b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-creating-an-internal-load-balancer-classic-for-cloud-services"></a>Komma igång med att skapa en intern belastningsutjämnare (klassisk) för molntjänster
 
@@ -28,32 +28,32 @@ ms.lasthandoff: 10/06/2017
 > * [Molntjänster](../load-balancer/load-balancer-get-started-ilb-classic-cloud.md)
 
 > [!IMPORTANT]
-> Azure har två olika distributionsmodeller för att skapa och arbeta med resurser: [Resource Manager och klassisk](../azure-resource-manager/resource-manager-deployment-model.md).  Den här artikeln täcker hello klassiska distributionsmodellen. Microsoft rekommenderar att de flesta nya distributioner använder hello Resource Manager-modellen. Lär dig hur för[utföra dessa steg med hello Resource Manager-modellen](load-balancer-get-started-ilb-arm-ps.md).
+> Azure har två olika distributionsmodeller för att skapa och arbeta med resurser: [Resource Manager och klassisk](../azure-resource-manager/resource-manager-deployment-model.md).  Den här artikeln beskriver den klassiska distributionsmodellen. Microsoft rekommenderar att de flesta nya distributioner använder Resource Manager-modellen. Lär dig hur du [utför dessa steg med hjälp av Resource Manager-modellen](load-balancer-get-started-ilb-arm-ps.md).
 
 ## <a name="configure-internal-load-balancer-for-cloud-services"></a>Konfigurera en intern belastningsutjämnare för molntjänster
 
-Interna belastningsutjämnare stöds för både virtuella datorer och molntjänster. En intern belastningsutjämnare slutpunkt som skapats i en molnbaserad tjänst som ligger utanför ett regionalt virtuellt nätverk ska vara tillgänglig endast inom hello-Molntjänsten.
+Interna belastningsutjämnare stöds för både virtuella datorer och molntjänster. Slutpunkten för en intern belastningsutjämnare som skapas i en molntjänst som finns utanför ett regionalt virtuellt nätverk kan endast nås i molntjänsten.
 
-hello interna belastningsutjämningskonfigurationen har toobe ange under hello skapandet av hello första distributionen i hello Molntjänsten, som visas i hello exemplet nedan.
+Du måste konfigurera interna belastningsutjämnare när du skapar den första distributionen i molntjänsten, som du ser i exemplet nedan.
 
 > [!IMPORTANT]
-> En nödvändig toorun hello stegen nedan är toohave ett virtuellt nätverk som redan har skapats för distribution av hello moln. Du behöver hello virtuellt nätverk namn och undernät namn toocreate hello intern belastningsutjämning.
+> Innan du kör stegen nedan måste du ha ett virtuellt nätverk för molndistributionen. Du behöver namnet på det virtuella nätverket och undernätet för att kunna skapa den interna belastningsutjämningen.
 
 ### <a name="step-1"></a>Steg 1
 
-Öppna hello tjänstekonfigurationsfilen (.cscfg) för din molndistribution i Visual Studio och Lägg till följande avsnitt toocreate hello intern belastningsutjämning under hello senast hello ”`</Role>`” hello nätverkskonfigurationen-objekt.
+Öppna tjänstkonfigurationsfilen (.cscfg) för din distribution i Visual Studio och lägg till följande avsnitt för att skapa den interna belastningsutjämningen under det sista ”`</Role>`”-objektet för nätverkskonfigurationen.
 
 ```xml
 <NetworkConfiguration>
     <LoadBalancers>
-    <LoadBalancer name="name of hello load balancer">
+    <LoadBalancer name="name of the load balancer">
         <FrontendIPConfiguration type="private" subnet="subnet-name" staticVirtualNetworkIPAddress="static-IP-address"/>
     </LoadBalancer>
     </LoadBalancers>
 </NetworkConfiguration>
 ```
 
-Lägg till hello värden för hello network configuration file tooshow hur den ser ut. I exemplet hello förutsätter att du har skapat ett virtuellt nätverk kallas ”test_vnet” med ett undernät 10.0.0.0/24 kallas test_subnet och en statisk IP-adress 10.0.0.4. hello belastningsutjämnaren namnges testLB.
+Nu ska vi lägga till värdena för nätverkskonfigurationsfilen så att du ser hur det ser ut. I det här exemplet antar vi att du har skapat ett VNet med namnet ”test_vnet” och undernätet 10.0.0.0/24 med namnet test_subnet och den statiska IP-adressen 10.0.0.4. Belastningsutjämnaren ges namnet testLB.
 
 ```xml
 <NetworkConfiguration>
@@ -65,11 +65,11 @@ Lägg till hello värden för hello network configuration file tooshow hur den s
 </NetworkConfiguration>
 ```
 
-Mer information om hello belastningen belastningsutjämnaren schemat finns [Lägg till belastningsutjämnare](https://msdn.microsoft.com/library/azure/dn722411.aspx).
+Mer information om belastningsutjämningsschemat finns i [Add load balancer](https://msdn.microsoft.com/library/azure/dn722411.aspx) (Lägga till en belastningsutjämnare).
 
 ### <a name="step-2"></a>Steg 2
 
-Ändra hello service definition (.csdef) filen tooadd slutpunkter toohello intern belastningsutjämning. hello nu skapa en rollinstans av, hello tjänstdefinitionsfilen läggs hello rollen instanser toohello intern belastningsutjämning.
+Ändra tjänstdefinitionsfilen (.csdef) för att lägga till slutpunkter för den interna belastningsutjämningen. Så fort en rollinstans skapas lägger tjänstdefinitionsfilen till rollinstansen i den interna belastningsutjämningen.
 
 ```xml
 <WorkerRole name="worker-role-name" vmsize="worker-role-size" enableNativeCodeExecution="[true|false]">
@@ -79,7 +79,7 @@ Mer information om hello belastningen belastningsutjämnaren schemat finns [Läg
 </WorkerRole>
 ```
 
-Följande hello samma värden från hello-exemplet ovan, Lägg till hello värden toohello tjänstdefinitionsfilen.
+Vi använder värdena i exemplet ovan och lägger till dem i tjänstdefinitionsfilen.
 
 ```xml
 <WorkerRole name="WorkerRole1" vmsize="A7" enableNativeCodeExecution="[true|false]">
@@ -89,7 +89,7 @@ Följande hello samma värden från hello-exemplet ovan, Lägg till hello värde
 </WorkerRole>
 ```
 
-hello nätverkstrafik blir belastningsutjämnas med hjälp av hello testLB belastningsutjämnare använder port 80 för inkommande begäranden, skickar tooworker rollinstanser även på port 80.
+Nätverkstrafiken kommer att belastningsutjämnas med belastningsutjämnaren testLB. Port 80 används för inkommande förfrågningar och samma port används för att skicka trafik till arbetsrollinstanser.
 
 ## <a name="next-steps"></a>Nästa steg
 

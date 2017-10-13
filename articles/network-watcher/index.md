@@ -1,15 +1,26 @@
 ---
+title: "Dokumentation om Azure Network Watcher – självstudier, API-referens | Microsoft Docs"
+description: "Lär dig hur du använder Network Watcher för att övervaka och diagnostisera villkor på nätverksnivå."
+services: network-watcher
+author: czeumault
+manager: carolz
 layout: LandingPage
-description: "Lär dig hur toouse Nätverksbevakaren toomonitor och diagnostisera villkor på en nätverksnivå."
-ms.openlocfilehash: 6c5fcdb2e5095eaceb759e45ae3d35875a0c3fc7
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.assetid: 
+ms.service: network-watcher
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
+ms.openlocfilehash: 897f526801dc94f6f370dfa253f321f7b8f765e9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-network-watcher-documentation"></a>Dokumentation för Azure Network Watcher
 
-Lär dig hur toouse Nätverksbevakaren, en tjänst som gör att du toomonitor och diagnostisera villkor på en nivå för scenariot. Självstudier, API-referenserna och andra dokumentationen visar hur för få insikter om din Azure-nätverk med verktyg som paketinsamling och topologi.
+Lär dig hur du använder Network Watcher, en tjänst som du kan använda för att övervaka och diagnostisera villkor på nätverksscenarienivå. Självstudier, API-referenser och övrig dokumentation visar hur du får kunskaper om ditt Azure-nätverk som infångade paket, topologi med mera.
 
 <ul class="panelContent cardsFTitle">
     <li>

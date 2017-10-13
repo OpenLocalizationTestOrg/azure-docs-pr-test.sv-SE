@@ -1,6 +1,6 @@
 ---
-title: "aaaAnalyze dataanvändning i Log Analytics | Microsoft Docs"
-description: "Använd instrumentpanelen för användning av hello i logganalys tooview hur mycket data skickas toohello logganalys-tjänsten och felsöka anledningen till att stora mängder data skickas."
+title: "Analysera dataanvändning i Log Analytics| Microsoft Docs"
+description: "Använd instrumentpanelen i Log Analytics för att visa hur mycket data som skickas till tjänsten Log Analytics och felsöka anledningen till att stora mängder data skickas."
 services: log-analytics
 documentationcenter: 
 author: MGoedtel
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/21/2017
 ms.author: magoedte
-ms.openlocfilehash: c30373dd6edbe3ff900fbebc865575fee61ce14c
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 9a4709f298131722e9c473a19f7eee0aebf7e1e6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>Analysera dataanvändning i Log Analytics
-Logganalys innehåller information om hello mängden data som samlas in, som datorer skickas hello data och hello olika typer av data som skickas.  Använd hello **Log Analytics användning** instrumentpanelen toosee hello mängden data skickas toohello logganalys-tjänsten. hello instrumentpanelen visar hur mycket data som samlas in av varje lösning och hur mycket data datorer skickar.
+Log Analytics innehåller information om hur mycket data som samlas in, vilka datorer som skickade data och vilka typer av data som skickas.  Använd instrumentpanelen för **Log Analytics-användning** för att se hur mycket data som skickas till Log Analytics-tjänsten. Instrumentpanelen visar hur mycket data som samlas in av varje lösning och hur mycket data som skickas av dina datorer.
 
-## <a name="understand-hello-usage-dashboard"></a>Förstå hello användning instrumentpanelen
-Hej **logganalys användning** instrumentpanelen visar hello följande information:
+## <a name="understand-the-usage-dashboard"></a>Förstå instrumentpanelen för användning
+Instrumentpanelen **Log Analytics usage** (Log Analytics-användning) innehåller följande information:
 
 - Datavolym
     - Datavolymen över tid (baserat på ditt aktuella tidsomfång)
@@ -38,94 +38,94 @@ Hej **logganalys användning** instrumentpanelen visar hello följande informati
     - Automatiserings- och styrningsnoder
     - Säkerhetsnoder
 - Prestanda
-    - Tidsåtgång toocollect och index data
+    - Hur lång tid det tar att samla in och indexera data
 - Lista med frågor
 
 ![instrumentpanelen användning](./media/log-analytics-usage/usage-dashboard01.png)
 
-### <a name="toowork-with-usage-data"></a>toowork med användningsdata
-1. Om du inte redan har gjort det loggar du in toohello [Azure-portalen](https://portal.azure.com) med din Azure-prenumeration.
-2. På hello **hubb** -menyn klickar du på **fler tjänster** och Skriv i hello lista över resurser, **logganalys**. När du börjar skriva in hello listan filtreras baserat på dina indata. Klicka på **Log Analytics**.  
+### <a name="to-work-with-usage-data"></a>Att arbeta med användningsdata
+1. Om du inte redan gjort det loggar du in på [Azure Portal](https://portal.azure.com) med din Azure-prenumeration.
+2. På **navmenyn** klickar du på **Fler tjänster** och skriver **Log Analytics** i listan med resurser. När du börjar skriva filtreras listan baserat på det du skriver. Klicka på **Log Analytics**.  
     ![Azure-hubb](./media/log-analytics-usage/hub.png)
-3. Hej **logganalys** instrumentpanelen visar en lista över dina arbetsytor. Välj en arbetsyta.
-4. I hello *arbetsytan* instrumentpanelen, klickar du på **logganalys användning**.
-5. På hello **Analytics Logganvändning** instrumentpanelen, klickar du på **tid: senaste 24 timmarna** toochange hello tidsintervall.  
+3. Instrumentpanelen för **Log Analytics** visar en lista över dina arbetsytor. Välj en arbetsyta.
+4. På instrumentpanelen för *arbetsytan* klickar du på **Log Analytics usage** (Log Analytics-användning).
+5. På instrumentpanelen **Log Analytics Usage** (Log Analytics-användning) klickar du på **Tid: Senaste 24 timmarna** om du vill ändra tidsintervallet.  
     ![tidsintervall](./media/log-analytics-usage/time.png)
-6. Visa hello användning kategori blad som visar områden du är intresserad av. Välj ett blad och klicka på ett objekt i den tooview mer information finns i [loggen Sök](log-analytics-log-searches.md).  
+6. Öppna de blad för användningskategori som visar de områden som du är intresserad av. Välj ett blad och klicka sedan på ett objekt på det om du vill visa mer information i [Loggsökning](log-analytics-log-searches.md).  
     ![användningsblad med exempeldata](./media/log-analytics-usage/blade.png)
-7. Granska hello resultat som returneras från hello sökning på hello loggen Sök instrumentpanelen.  
+7. Granska resultaten som returneras från sökningen på instrumentpanelen Loggsökning.  
     ![exempel på loggsökning för användning](./media/log-analytics-usage/usage-log-search.png)
 
 ## <a name="create-an-alert-when-data-collection-is-higher-than-expected"></a>Skapa en avisering när datainsamlingen är högre än väntat
-Det här avsnittet beskrivs hur toocreate en avisering om:
+I det här avsnittet beskrivs hur du skapar en avisering om:
 - Datavolymen överskrider en angiven mängd.
-- Datavolym är förväntade tooexceed en angiven mängd.
+- Datavolymen förväntas överskrida en angiven mängd.
 
-Log Analytics-[aviseringar](log-analytics-alerts-creating.md) använder sökfrågor. hello har följande fråga ett resultat när det finns fler än 100 GB data som samlas in i hello senaste 24 timmarna:
+Log Analytics-[aviseringar](log-analytics-alerts-creating.md) använder sökfrågor. Följande fråga har ett resultat när det finns fler än 100 GB data som har samlats in under de senaste 24 timmarna:
 
 `Type=Usage QuantityUnit=MBytes IsBillable=true | measure sum(div(Quantity,1024)) as DataGB by Type | where DataGB > 100`
 
-hello följande frågan använder en enkel formeln toopredict när mer än 100 GB data skickas i en dag: 
+Följande fråga använder en enkel formel för att förutsäga när mer än 100 GB data skickas under en dag: 
 
 `Type=Usage QuantityUnit=MBytes IsBillable=true | measure sum(div(mul(Quantity,8),1024)) as EstimatedGB by Type | where EstimatedGB > 100`
 
-tooalert på en annan volym, ändra hello 100 hello frågor toohello antal GB som du vill använda tooalert på.
+Ändra 100 i frågan till antalet GB som du vill ange som gräns för att skicka en datavolymavisering.
 
-Använd hello stegen som beskrivs i [skapa en aviseringsregel](log-analytics-alerts-creating.md#create-an-alert-rule) toobe avisering när datainsamlingen är högre än förväntat.
+Använd stegen som beskrivs i [skapa en aviseringsregel](log-analytics-alerts-creating.md#create-an-alert-rule) om du vill meddelas när datainsamlingen är högre än förväntat.
 
-Ange när du skapar hello varning för hello första frågan--när det finns fler än 100 GB data i 24 timmar på:
-- **Namnet** för*datavolym som är större än 100 GB i 24 timmar*
-- **Allvarlighetsgrad** för*varning*
-- **Sökfråga** för`Type=Usage QuantityUnit=MBytes IsBillable=true | measure sum(div(Quantity,1024)) as DataGB by Type | where DataGB > 100`
-- **Tidsfönstret** för*24 timmar*.
-- **Varna frekvens** toobe en timme sedan hello användningsdata uppdateras bara en gång i timmen.
-- **Generera en avisering baserat på** toobe *antal resultat*
-- **Antalet resultat** toobe *större än 0*
+När du skapar aviseringen för den första frågan--när det finns fler än 100 GB data på 24 timmar, ange:
+- **Namnet** till *Datavolym är större än 100 GB på 24 timmar*
+- **Allvarlighetsgrad** till *varning*
+- **Sökfråga** till`Type=Usage QuantityUnit=MBytes IsBillable=true | measure sum(div(Quantity,1024)) as DataGB by Type | where DataGB > 100`
+- **Tidsfönster** till *24 timmar*.
+- **Varningsfrekvens** till en timme, eftersom användningsdata uppdateras en gång i timmen.
+- **Skapa en avisering baserat på** som *antal resultat*
+- **Antalet resultat** som *större än 0*
 
-Använd hello stegen som beskrivs i [Lägg till åtgärder tooalert regler](log-analytics-alerts-actions.md) konfigurerar en åtgärd för hello varningsregeln att e-post, webhook eller runbook.
+Använd stegen som beskrivs i [Lägga till åtgärder i varningsregler](log-analytics-alerts-actions.md) för att konfigurera e-post, webhook eller runbook-åtgärd för regeln.
 
-När skapar hello varning för hello andra frågan--när prognoser kommer att mer än 100 GB data i 24 timmar, ange den:
-- **Namnet** för*datavolym förväntas toogreater än 100 GB i 24 timmar*
-- **Allvarlighetsgrad** för*varning*
-- **Sökfråga** för`Type=Usage QuantityUnit=MBytes IsBillable=true | measure sum(div(mul(Quantity,8),1024)) as EstimatedGB by Type | where EstimatedGB > 100`
-- **Tidsfönstret** för*3 timmar*.
-- **Varna frekvens** toobe en timme sedan hello användningsdata uppdateras bara en gång i timmen.
-- **Generera en avisering baserat på** toobe *antal resultat*
-- **Antalet resultat** toobe *större än 0*
+När du skapar aviseringen för den andra frågan--när mer än 100 GB data på 24 timmar förväntas, ange:
+- **Namnet** till *Datavolym förväntas vara större än 100 GB på 24 timmar*
+- **Allvarlighetsgrad** till *varning*
+- **Sökfråga** till`Type=Usage QuantityUnit=MBytes IsBillable=true | measure sum(div(mul(Quantity,8),1024)) as EstimatedGB by Type | where EstimatedGB > 100`
+- **Tidsfönster** till *3 timmar*.
+- **Varningsfrekvens** till en timme, eftersom användningsdata uppdateras en gång i timmen.
+- **Skapa en avisering baserat på** som *antal resultat*
+- **Antalet resultat** som *större än 0*
 
-När du får en avisering kan använda hello steg i hello följande avsnitt tootroubleshoot varför användningen är högre än väntat.
+När du får en avisering kan du använda stegen i följande avsnitt för att felsöka varför användningen är högre än förväntat.
 
 ## <a name="troubleshooting-why-usage-is-higher-than-expected"></a>Felsökning varför användningen är större än förväntat
-hello användning instrumentpanelen kan du tooidentify varför användning (och därför kostnad) är högre än vad du förväntar dig.
+På användningsinstrumentpanelen kan du identifiera varför användningen (och därmed kostnaden) är högre än vad du förväntat dig.
 
 Högre användning orsakas av en eller båda:
-- Mer data än förväntat skickas tooLog Analytics
-- Fler noder än förväntat att skicka data tooLog Analytics
+- Mer data än förväntat skickas till Log Analytics
+- Mer noder än förväntat som skickar data till Log Analytics
 
 ### <a name="check-if-there-is-more-data-than-expected"></a>Kontrollera om datamängden är större än förväntat 
-Det finns två viktiga avsnitt på sidan för användning av hello som hjälper dig att identifiera vad som orsakar hello toobe för de flesta data som samlas in.
+Det finns två viktiga avsnitt på sidan för användning som hjälper dig att identifiera vad som orsakar den största datavolymen.
 
-Hej *datavolym över tid* diagrammet visar hello totala mängden data som skickas och hello datorer skickar hello de flesta data. hello diagrammet överst hello kan toosee om din övergripande dataanvändning blir kvar oförändrad eller minskande. hello listan över datorer som visar hello 10-datorer som de flesta data skickas hello.
+Diagrammet *Datavolym över tid* visar den totala mängden data som skickas och de datorer som skickar mest data. Diagrammet överst visar om din övergripande dataanvändning ökar, förblir oförändrad eller minskar. Listan över datorer som innehåller de 10 datorerna som skickar mest data.
 
-Hej *datavolym per lösning* diagrammet visar hello mängden data som skickas av varje lösning och hello lösningar och skicka hello de flesta data. hello diagrammet överst hello visar hello totala mängden data som skickas av varje lösning över tid. Den här informationen kan du tooidentify om en lösning skickar mer information om hello samma belopp av data eller mindre data över tid. lösningar hello lista visar hello 10 lösningar och skicka hello de flesta data. 
+Diagrammet *datavolym per lösning* visar mängden data som skickas av varje lösning och lösningar som skickar mest data. Diagrammet längst upp visar den totala mängden data som skickas av varje lösning över tid. Med den här informationen kan du identifiera om en lösning skickar mer data, samma datamängd eller mindre data över en längre tid. Listan med lösningar visar de 10 lösningar som skickar mest data. 
 
-I de här två diagrammen visas alla data. Vissa data är fakturerbara och andra är kostnadsfria. toofocus endast på data som fakturerbar ändra hello frågan på hello Sök sidan tooinclude `IsBillable=true`.  
+I de här två diagrammen visas alla data. Vissa data är fakturerbara och andra är kostnadsfria. Om du vill fokusera endast på data som fakturerbara ändrar du frågan på söksidan och tar med `IsBillable=true`.  
 
 ![datavolymdiagram](./media/log-analytics-usage/log-analytics-usage-data-volume.png)
 
-Titta på hello *datavolym över tid* diagram. toosee hello lösningar och datatyper som skickar hello de flesta data för en viss dator, klicka på hello namnet på hello-dator. Klicka på hello namnet på hello första dator i hello-listan.
+Titta på diagrammet *Datavolym över tid*. Klicka på namnet på datorn för att visa de lösningar och datatyper som skickar de mest data för en specifik dator. Klicka på namnet på den första datorn i listan.
 
-I följande skärmbild hello, hello *hantering / Perf* datatyp skickar hello de flesta data för hello-datorn. 
+I följande skärmbild skickar datatypen *Log Management/Perf* mest data för datorn. 
 
 ![datavolym för en dator](./media/log-analytics-usage/log-analytics-usage-data-volume-computer.png)
 
-Gå sedan tillbaka toohello *användning* instrumentpanel och titta på hello *datavolym per lösning* diagram. toosee hello datorer skickar hello de flesta data för en lösning, klicka på hello namn i hello lösning i hello-listan. Klicka på hello namn i hello första lösning i hello-listan. 
+Gå sedan tillbaka till instrumentpanelen *Användning* och titta på diagrammet *Datavolym per lösning*. Klicka på namnet på lösningen i listan om du vill se de datorer som skickar mest data för en lösning. Klicka på namnet på den första lösningen i listan. 
 
-I följande skärmbild hello, bekräftar det att hello *acmetomcat* datorn skickar hello de flesta data för hello loggen hanteringslösning.
+I följande skärmbild bekräftas att datorn *acmetomcat* skickar mest data för Log Management-lösningen.
 
 ![datavolymen för en lösning](./media/log-analytics-usage/log-analytics-usage-data-volume-solution.png)
 
-Om det behövs, utför ytterligare analys tooidentify stora volymer av samma typ av lösning eller data. Exempelfrågor omfattar:
+Vid behov kan du utföra ytterligare analyser för att identifiera stora volymer inom en lösning eller datatyp. Exempelfrågor omfattar:
 
 + **Security**-lösningen
   - `Type=SecurityEvent | measure count() by EventID`
@@ -143,31 +143,31 @@ Om det behövs, utför ytterligare analys tooidentify stora volymer av samma typ
 + Datatypen **AzureDiagnostics**
   - `Type=AzureDiagnostics | measure count() by ResourceProvider, ResourceId`
 
-Använd följande steg tooreduce hello volym loggar samlas in hello:
+Använd följande steg för att minska mängden på de loggar som samlats in:
 
-| Källan för hög datavolym | Hur tooreduce datavolym |
+| Källan för hög datavolym | Hur du minskar datavolym |
 | -------------------------- | ------------------------- |
-| Säkerhetshändelser            | Välj [vanliga eller minimala säkerhetshändelser](https://blogs.technet.microsoft.com/msoms/2016/11/08/filter-the-security-events-the-oms-security-collects/) <br> Ändra hello princip toocollect behövs endast säkerhetsgranskningshändelser. I synnerhet granska hello måste toocollect händelser för <br> - [granska filtreringplattform](https://technet.microsoft.com/library/dd772749(WS.10).aspx) <br> - [granska register](https://docs.microsoft.com/windows/device-security/auditing/audit-registry)<br> - [granska filsystem](https://docs.microsoft.com/windows/device-security/auditing/audit-file-system)<br> - [granska kernelobjekt](https://docs.microsoft.com/windows/device-security/auditing/audit-kernel-object)<br> - [granska hantering av manipulering](https://docs.microsoft.com/windows/device-security/auditing/audit-handle-manipulation)<br> - [granska flyttbara lagringsmedia](https://docs.microsoft.com/windows/device-security/auditing/audit-removable-storage) |
-| Prestandaräknare       | Ändra [prestandaräknarens konfiguration](log-analytics-data-sources-performance-counters.md) för att: <br> -Minska hello frekvensen för samlingen <br> - Minska antalet prestandaräknare |
-| Händelseloggar                 | Ändra [händelseloggens konfiguration](log-analytics-data-sources-windows-events.md) för att: <br> -Minska hello antalet händelseloggar samlas in <br> - Endast samla in obligatoriska händelsenivåer. Till exempel, samla inte in händelser på *Informationsnivå* |
-| Syslog                     | Ändra [systemloggkonfigurationen](log-analytics-data-sources-syslog.md) för att: <br> -Minska hello antalet verksamhet samlas in <br> - Endast samla in obligatoriska händelsenivåer. Till exempel, samla inte in händelser på *Informations-* eller *Felsökningsnivå* |
-| AzureDiagnostics           | Ändra logginsamlingen för resurser för att: <br> -Minska hello antalet resurser skicka loggar tooLog Analytics <br> – Endast samla in nödvändiga loggar |
-| Lösning data från datorer som inte behöver hello lösning | Använd [lösning riktad](../operations-management-suite/operations-management-suite-solution-targeting.md) toocollect data från endast obligatoriska grupper med datorer. |
+| Säkerhetshändelser            | Välj [vanliga eller minimala säkerhetshändelser](https://blogs.technet.microsoft.com/msoms/2016/11/08/filter-the-security-events-the-oms-security-collects/) <br> Ändra principen för säkerhetsgranskning för att endast samla in händelser som behövs. Du kan särskilt se över behovet att samla in händelser för att <br> - [granska filtreringplattform](https://technet.microsoft.com/library/dd772749(WS.10).aspx) <br> - [granska register](https://docs.microsoft.com/windows/device-security/auditing/audit-registry)<br> - [granska filsystem](https://docs.microsoft.com/windows/device-security/auditing/audit-file-system)<br> - [granska kernelobjekt](https://docs.microsoft.com/windows/device-security/auditing/audit-kernel-object)<br> - [granska hantering av manipulering](https://docs.microsoft.com/windows/device-security/auditing/audit-handle-manipulation)<br> - [granska flyttbara lagringsmedia](https://docs.microsoft.com/windows/device-security/auditing/audit-removable-storage) |
+| Prestandaräknare       | Ändra [prestandaräknarens konfiguration](log-analytics-data-sources-performance-counters.md) för att: <br> - Minska insamlingsfrekvensen <br> - Minska antalet prestandaräknare |
+| Händelseloggar                 | Ändra [händelseloggens konfiguration](log-analytics-data-sources-windows-events.md) för att: <br> - Minska antalet händelseloggar som samlas in <br> - Endast samla in obligatoriska händelsenivåer. Till exempel, samla inte in händelser på *Informationsnivå* |
+| Syslog                     | Ändra [systemloggkonfigurationen](log-analytics-data-sources-syslog.md) för att: <br> - Minska antalet anläggningar som samlas in <br> - Endast samla in obligatoriska händelsenivåer. Till exempel, samla inte in händelser på *Informations-* eller *Felsökningsnivå* |
+| AzureDiagnostics           | Ändra logginsamlingen för resurser för att: <br> – Minska antalet resursloggar som skickas till Log Analytics <br> – Endast samla in nödvändiga loggar |
+| Lösningsdata från datorer som inte behöver lösningen | Använd [lösningsriktning](../operations-management-suite/operations-management-suite-solution-targeting.md) för att endast samla in data från obligatoriska grupper med datorer. |
 
 ### <a name="check-if-there-are-more-nodes-than-expected"></a>Kontrollera om det finns fler noder än förväntat
-Om du är på hello *per nod (OMS)* prisnivån och sedan du debiteras baserat på hello antal noder och lösningar som du använder. Du kan se hur många noder i varje erbjudande som används i hello *erbjudanden* avsnittet hello användning instrumentpanelen.
+Om du har prisnivån *per nod (OMS)* debiteras du därefter baserat på antalet noder och lösningar som du använder. Du kan se hur många noder i varje erbjudande som används i avsnittet *erbjudanden* på instrumentpanelen för användning.
 
 ![instrumentpanelen användning](./media/log-analytics-usage/log-analytics-usage-offerings.png)
 
-Klicka på **visas alla...**  tooview hello fullständig lista över datorer som skickar data för valda hello-erbjudandet.
+Klicka på **Visa alla...**  för att visa en fullständig lista över datorer som skickar data för det valda erbjudandet.
 
-Använd [lösning riktad](../operations-management-suite/operations-management-suite-solution-targeting.md) toocollect data från endast obligatoriska grupper med datorer.
+Använd [lösningsriktning](../operations-management-suite/operations-management-suite-solution-targeting.md) för att endast samla in data från obligatoriska grupper med datorer.
 
 
 ## <a name="next-steps"></a>Nästa steg
-* Se [logga sökningar i logganalys](log-analytics-log-searches.md) toolearn hur toouse hello söka språk. Du kan använda Sök frågor tooperform ytterligare analys på hello användningsdata.
-* Använd hello stegen som beskrivs i [skapa en aviseringsregel](log-analytics-alerts-creating.md#create-an-alert-rule) toobe meddelas när ett sökvillkor uppfylls
-* Använd [lösning riktad](../operations-management-suite/operations-management-suite-solution-targeting.md) toocollect data från endast obligatoriska grupper av datorer
+* Se [Loggsökningar i Log analytics](log-analytics-log-searches.md) för information om hur du använder sökspråket. Du kan använda sökfrågor för att utföra ytterligare analys på användningsdata.
+* Använd stegen som beskrivs i [Skapa en aviseringsregel](log-analytics-alerts-creating.md#create-an-alert-rule) om du vill meddelas när ett sökvillkor har uppfyllts
+* Använd [lösningsmål](../operations-management-suite/operations-management-suite-solution-targeting.md) för att endast samla in data från obligatoriska grupper med datorer
 * Välj [vanliga eller minimala säkerhetshändelser](https://blogs.technet.microsoft.com/msoms/2016/11/08/filter-the-security-events-the-oms-security-collects/)
 * Ändra [prestandaräknarens konfiguration](log-analytics-data-sources-performance-counters.md)
 * Ändra [händelseloggens konfiguration](log-analytics-data-sources-windows-events.md)

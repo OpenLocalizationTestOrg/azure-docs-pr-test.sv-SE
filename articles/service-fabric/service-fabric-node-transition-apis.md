@@ -1,6 +1,6 @@
 ---
-title: "aaaStart och stoppa klustret noder tootest Azure mikrotjänster | Microsoft Docs"
-description: "Lär dig hur toouse fault injection tootest ett Service Fabric-program genom att starta och stoppa klusternoder."
+title: "Starta och stoppa klusternoder för att testa Azure mikrotjänster | Microsoft Docs"
+description: "Lär dig hur du använder fel injection för att testa ett Service Fabric-program genom att starta och stoppa klusternoder."
 services: service-fabric
 documentationcenter: .net
 author: LMWF
@@ -14,57 +14,57 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 6/12/2017
 ms.author: lemai
-ms.openlocfilehash: 7d3f5147328e6233a67533fbfb2a525aa5fc060e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 850fbc0c74811ec942292da64064dec867cd1b9e
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="replacing-hello-start-node-and-stop-node-apis-with-hello-node-transition-api"></a>Ersätta hello noden starta och stoppa nod API: er med hello nod övergången API
+# <a name="replacing-the-start-node-and-stop-node-apis-with-the-node-transition-api"></a>Ersätta noden starta och stoppa noden API: er med API: T för noden övergång
 
-## <a name="what-do-hello-stop-node-and-start-node-apis-do"></a>Vad hello stoppa nod och starta nod API: er använda?
+## <a name="what-do-the-stop-node-and-start-node-apis-do"></a>Vad stoppa nod och starta nod API: er?
 
-hello stoppa noden API (hanterade: [StopNodeAsync()][stopnode], PowerShell: [stoppa ServiceFabricNode][stopnodeps]) stoppar en Service Fabric-nod.  En Service Fabric-nod är inte en virtuell dator eller datorn – hello VM eller datorn fortfarande körs.  Hello resten av dokumentet hello betyder ”nod” Service Fabric-noden.  Stoppa en nod placeras i en *stoppats* tillstånd där den inte är medlem i hello kluster och kan inte vara värd för tjänster, vilket simulera en *ned* nod.  Detta är användbart för fel i hello system tootest ditt program.  hello starta nod API (hanterade: [StartNodeAsync()][startnode], PowerShell: [Start ServiceFabricNode][startnodeps]]) omvänd hello stoppa noden API  som ger hello nod tillbaka tooa normala tillståndet.
+Stoppa nod-API (hanterade: [StopNodeAsync()][stopnode], PowerShell: [stoppa ServiceFabricNode][stopnodeps]) stoppar en Service Fabric-nod.  En Service Fabric-nod är process, inte en virtuell dator eller en dator – den virtuella datorn eller datorn fortfarande körs.  För resten av dokumentet innebär ”nod” Service Fabric-noden.  Stoppa en nod placeras i en *stoppats* tillstånd där den inte är medlem i klustret och kan inte vara värd för tjänster, vilket simulera en *ned* nod.  Detta är användbart för fel i systemet för att testa ditt program.  Starta nod-API (hanterade: [StartNodeAsync()][startnode], PowerShell: [Start ServiceFabricNode][startnodeps]]) ångrar stoppa noden API, som ger noden till normalt läge.
 
 ## <a name="why-are-we-replacing-these"></a>Varför Vi ersätter dessa?
 
-Enligt beskrivningen tidigare, en *stoppats* Service Fabric-noden är en nod som avsiktligt mål med hello stoppa noden API.  En *ned* nod är en nod som anges av någon annan anledning (t.ex. hello VM eller datorn är inaktiverat).  Med hello stoppa noden API, visar inte hello system information toodifferentiate mellan *stoppats* noder och *ned* noder.
+Enligt beskrivningen tidigare, en *stoppats* Service Fabric-noden är en nod som avsiktligt mål med stoppa noden API.  En *ned* nod är en nod som anges av någon annan anledning (t.ex. den virtuella datorn eller datorn är inaktiverat).  Med API stoppa noden systemet inte avslöja information att skilja mellan *stoppats* noder och *ned* noder.
 
-Dessutom kan är vissa fel som returneras av API: erna inte så beskrivande de kunde vara.  Till exempel anropar hello stoppa noden API på en redan *stoppats* hello fel returneras nod *InvalidAddress*.  Det här upplevelsen kan förbättras.
+Dessutom kan är vissa fel som returneras av API: erna inte så beskrivande de kunde vara.  Till exempel anropar API: et för stoppa nod på en redan *stoppats* nod returneras felet *InvalidAddress*.  Det här upplevelsen kan förbättras.
 
-Hello varaktighet som en nod har stoppats för är också ”oändlig” tills hello starta nod API anropas.  Vi har hittat detta kan orsaka problem och kan vara problematiskt.  Till exempel har vi sett problem där en användare anropas hello stoppa noden API på en nod och sedan glömt om den.  Var senare oklart om hello nod *ned* eller *stoppats*.
+En nod har stoppats för varaktighet är också ”oändlig” tills starta nod-API anropas.  Vi har hittat detta kan orsaka problem och kan vara problematiskt.  Till exempel har vi sett problem där en användare anropas stoppa noden API: N på en nod och sedan glömt om den.  Var senare oklart om noden var *ned* eller *stoppats*.
 
 
-## <a name="introducing-hello-node-transition-apis"></a>Introduktion till hello nod övergången API: er
+## <a name="introducing-the-node-transition-apis"></a>Introduktion till API: er för noden övergång
 
-Vi har åtgärdas problemen ovan i en ny uppsättning API: er.  hello nya nod övergången API (hanterade: [StartNodeTransitionAsync()][snt]) kanske används tootransition tooa ett Service Fabric-noden *stoppats* tillstånd eller tootransition den från en *stoppats* tillstånd tooa normala tillstånd.  Observera att hello ”Start” i hello namnet på hello API inte refererar toostarting en nod.  Den hänvisar toobeginning en asynkron åtgärd hello system körs tootransition hello nod tooeither *stoppats* eller startat tillstånd.
+Vi har åtgärdas problemen ovan i en ny uppsättning API: er.  Den nya noden övergången API (hanterade: [StartNodeTransitionAsync()][snt]) kan användas för att överföra en Service Fabric-nod en *stoppats* tillstånd, eller att överföra den från en *stoppats* till en normal tillstånd.  Observera att ”Start” i namnet API: et inte refererar till början av en nod.  Den hänvisar till början av en asynkron åtgärd som systemet ska köras för att övergå till antingen noden *stoppats* eller startat tillstånd.
 
 **Användning**
 
-Om hello nod övergången API inget genereras ett undantag vid aktivering hello system har accepterat hello asynkron åtgärd och sedan körs den.  Lyckade anrop innebär inte hello-åtgärden har slutförts ännu.  tooget information om hello hello åtgärdens, anrop hello nod övergången förlopp API aktuella status (hanterade: [GetNodeTransitionProgressAsync()][gntp]) med hello guid som används när du anropar nod Övergången API för den här åtgärden.  hello nod övergången förlopp API returnerar ett NodeTransitionProgress-objekt.  Det här objektet tillstånd egenskapen anger hello hello åtgärdens aktuella status.  Om hello tillståndet ”körs” körs hello-åtgärden.  Om den är klar hello åtgärden slutförts utan fel.  Om det är fel, ett problem uppstod hello åtgärden.  hello resultatet egenskapen undantaget egenskapen visar vilka hello utfärda var.  Se https://docs.microsoft.com/dotnet/api/system.fabric.testcommandprogressstate för mer information om hello tillstånd egenskapen och hello ”exempel” nedan för kodexempel.
+Om noden övergången API inget genereras ett undantag när den anropas sedan systemet har godkänt den asynkrona åtgärden och körs den.  Lyckade anrop innebär inte åtgärden har slutförts ännu.  Anropa API: T för noden övergången förlopp för att få information om det aktuella tillståndet för åtgärden (hanterade: [GetNodeTransitionProgressAsync()][gntp]) med guid som används när du anropar API: T för noden övergången för den här åtgärden.  API: T för noden övergången förlopp returnerar ett NodeTransitionProgress-objekt.  Det här objektet tillstånd egenskapen anger det aktuella tillståndet för åtgärden.  Om tillståndet ”körs” körs igen.  Om den är slutförd, avslutad igen utan fel.  Om det är fel, ett problem uppstod när åtgärden.  Egenskapen resultatet Undantagsegenskapen visar vad problemet är.  Se https://docs.microsoft.com/dotnet/api/system.fabric.testcommandprogressstate för mer information om egenskapen State och avsnittet ”exempel” nedan kodexempel.
 
 
-**Skilja mellan en stoppad nod och en inaktiv nod** om en nod *stoppats* med hello nod övergången API, hello utdata från en nod-fråga (hanterade: [GetNodeListAsync()] [ nodequery], PowerShell: [Get-ServiceFabricNode][nodequeryps]) visar att den här noden har en *IsStopped* egenskapsvärdet true.  Observera att detta skiljer sig från värdet hello hello *NodeStatus* -egenskap som talar om *ned*.  Om hello *NodeStatus* egenskap har ett värde av *ned*, men *IsStopped* är FALSKT hello nod inte har stoppats med hello nod övergången API och är  *Ned* på grund av någon anledning.  Om hello *IsStopped* egenskapen är true och hello *NodeStatus* egenskapen är *ned*, sedan den stoppades med hello nod övergången API.
+**Skilja mellan en stoppad nod och en inaktiv nod** om en nod *stoppats* med hjälp av noden övergången API, resultatet av en nod-fråga (hanterade: [GetNodeListAsync()][nodequery], PowerShell: [Get-ServiceFabricNode][nodequeryps]) visar att den här noden har en *IsStopped* egenskapsvärdet true.  Observera att detta skiljer sig från värdet för den *NodeStatus* -egenskap som talar om *ned*.  Om den *NodeStatus* egenskap har ett värde av *ned*, men *IsStopped* är false, och sedan noden inte har stoppats med hjälp av noden övergången API och *ned* på grund av någon anledning.  Om den *IsStopped* egenskapen är true, och *NodeStatus* egenskapen är *ned*, sedan den stoppades med hjälp av noden övergången API.
 
-Starta en *stoppats* noden med hello nod övergången API returnerar den toofunction som en normal medlem hello klustret igen.  hello utdata av hello noden frågan API visar *IsStopped* som FALSKT och *NodeStatus* som något som inte är nere (t.ex. upp).
+Starta en *stoppats* nod med hjälp av noden övergången API returneras den så att den fungerar som en normal medlem i klustret igen.  Visar resultatet av frågan nod API *IsStopped* som FALSKT och *NodeStatus* som något som inte är nere (t.ex. upp).
 
 
-**Begränsat varaktighet** när du använder hello nod övergången API toostop en nod, en hello obligatoriska parametrar, *stopNodeDurationInSeconds*, representerar hello tid i sekunder tookeep hello noden  *stoppats*.  Det här värdet måste vara i hello tillåtet intervall som har minst 600 och högst 14400.  När denna tid har löpt ut startas hello nod om sig själv i tillstånd automatiskt.  Läs tooSample 1 nedan ett exempel på användning.
-
-> [!WARNING]
-> Undvika nod övergången API: er och hello stoppa nod och starta nod API: er.  hello rekommendation är att använda hello nod övergången API för.  > Om en nod har redan har slutat använda hello stoppa noden API, den ska startas först med hello starta nod API innan du använder hello > noden övergången API: er.
+**Begränsat varaktighet** när noden övergången API för att stoppa en nod, en av de obligatoriska parametrarna *stopNodeDurationInSeconds*, representerar hur lång tid i sekunder som noden *stoppats*.  Det här värdet måste vara i det tillåtna intervallet som har minst 600 och högst 14400.  När denna tid har löpt ut startas noden om sig själv i tillstånd automatiskt.  Finns i exempel 1 nedan ett exempel på användning.
 
 > [!WARNING]
-> Flera nod övergången API-anrop kan göras på hello samma nod parallellt.  I en sådan situation hello nod övergången API kommer > utlösa en FabricException med ett ErrorCode egenskapsvärde för NodeTransitionInProgress.  När en nod övergång på en viss nod har > är igång kan du vänta tills hello åtgärden når ett avslutat tillstånd (slutförd, Faulted eller ForceCancelled) innan du startar en > Ny övergång på hello samma nod.  Parallel-nod övergången anrop på olika noder är tillåtna.
+> Undvik att noden övergången API: er och stoppa nod och starta nod API: er.  Rekommendationen är att använda den nod övergång endast API.  > Om en nod har redan har stoppats med hjälp av noden API stoppa den ska startas med starta nod API innan du börjar använda den > noden övergången API: er.
+
+> [!WARNING]
+> Flera nod övergången API-anrop kan göras på samma nod parallellt.  I en sådan situation nod övergången API kommer > utlösa en FabricException med ett ErrorCode egenskapsvärde för NodeTransitionInProgress.  När en nod övergång på en viss nod har > är igång kan du vänta tills åtgärden når ett avslutat tillstånd (slutförd, Faulted eller ForceCancelled) innan du startar en > Ny övergång på samma nod.  Parallel-nod övergången anrop på olika noder är tillåtna.
 
 
 #### <a name="sample-usage"></a>Exempel på användning
 
 
-**Exempel 1** -hello följande exempel använder hello nod övergången API toostop en nod.
+**Exempel 1** -i följande exempel används nod övergången API för att stoppa en nod.
 
 ```csharp
-        // Helper function tooget information about a node
+        // Helper function to get information about a node
         static Node GetNodeInfo(FabricClient fc, string node)
         {
             NodeList n = null;
@@ -105,7 +105,7 @@ Starta en *stoppats* noden med hello nod övergången API returnerar den toofunc
 
                     if (progress.State == TestCommandProgressState.Faulted)
                     {
-                        // Inspect hello progress object's Result.Exception.HResult tooget hello error code.
+                        // Inspect the progress object's Result.Exception.HResult to get the error code.
                         Console.WriteLine("'{0}' failed with: {1}, HResult: {2}", operationId, progress.Result.Exception, progress.Result.Exception.HResult);
 
                         // ...additional logic as required
@@ -125,7 +125,7 @@ Starta en *stoppats* noden med hello nod övergången API returnerar den toofunc
 
         static async Task StopNodeAsync(FabricClient fc, string nodeName, int durationInSeconds)
         {
-            // Uses hello GetNodeListAsync() API tooget information about hello target node
+            // Uses the GetNodeListAsync() API to get information about the target node
             Node n = GetNodeInfo(fc, nodeName);
 
             // Create a Guid
@@ -140,7 +140,7 @@ Starta en *stoppats* noden med hello nod övergången API returnerar den toofunc
             {
                 try
                 {
-                    // Invoke StartNodeTransitionAsync with hello NodeStopDescription from above, which will stop hello target node.  Retry transient errors.
+                    // Invoke StartNodeTransitionAsync with the NodeStopDescription from above, which will stop the target node.  Retry transient errors.
                     await fc.TestManager.StartNodeTransitionAsync(description, TimeSpan.FromMinutes(1), CancellationToken.None).ConfigureAwait(false);
                     wasSuccessful = true;
                 }
@@ -163,12 +163,12 @@ Starta en *stoppats* noden med hello nod övergången API returnerar den toofunc
         }
 ```
 
-**Exempel 2** - hello följande exempel startar en *stoppats* nod.  Vissa hjälpmetoder från hello första exemplet används.
+**Exempel 2** -följande exempel startar en *stoppats* nod.  Vissa hjälpmetoder från det första exemplet används.
 
 ```csharp
         static async Task StartNodeAsync(FabricClient fc, string nodeName)
         {
-            // Uses hello GetNodeListAsync() API tooget information about hello target node
+            // Uses the GetNodeListAsync() API to get information about the target node
             Node n = GetNodeInfo(fc, nodeName);
 
             Guid guid = Guid.NewGuid();
@@ -183,7 +183,7 @@ Starta en *stoppats* noden med hello nod övergången API returnerar den toofunc
             {
                 try
                 {
-                    // Invoke StartNodeTransitionAsync with hello NodeStartDescription from above, which will start hello target stopped node.  Retry transient errors.
+                    // Invoke StartNodeTransitionAsync with the NodeStartDescription from above, which will start the target stopped node.  Retry transient errors.
                     await fc.TestManager.StartNodeTransitionAsync(description, TimeSpan.FromMinutes(1), CancellationToken.None).ConfigureAwait(false);
                     wasSuccessful = true;
                 }
@@ -206,7 +206,7 @@ Starta en *stoppats* noden med hello nod övergången API returnerar den toofunc
         }
 ```
 
-**Exempel 3** - hello följande exempel visar felaktig användning.  Denna användning är felaktigt eftersom hello *stopDurationInSeconds* ger är större än hello tillåtet intervall.  Eftersom StartNodeTransitionAsync() misslyckas med ett allvarligt fel hello åtgärden accepteras inte och hello förlopp API ska inte anropas.  Det här exemplet använder vissa hjälpmetoder från hello första exemplet.
+**Exempel 3** -följande exempel visar felaktig användning.  Denna användning är felaktig eftersom den *stopDurationInSeconds* ger är större än det tillåtna intervallet.  Eftersom StartNodeTransitionAsync() misslyckas med ett allvarligt fel accepterades inte igen och förloppet API ska inte anropas.  Det här exemplet använder vissa hjälpmetoder från det första exemplet.
 
 ```csharp
         static async Task StopNodeWithOutOfRangeDurationAsync(FabricClient fc, string nodeName)
@@ -215,7 +215,7 @@ Starta en *stoppats* noden med hello nod övergången API returnerar den toofunc
 
             Guid guid = Guid.NewGuid();
 
-            // Use an out of range value for stopDurationInSeconds toodemonstrate error
+            // Use an out of range value for stopDurationInSeconds to demonstrate error
             NodeStopDescription description = new NodeStopDescription(guid, n.NodeName, n.NodeInstanceId, 99999);
 
             try
@@ -237,7 +237,7 @@ Starta en *stoppats* noden med hello nod övergången API returnerar den toofunc
         }
 ```
 
-**Exempel 4** - hello följande exempel visas information om hello fel som returneras från hello nod övergången förlopp API när hello-åtgärden initierades av hello nod övergången API har godkänts, men inte senare vid körning.  I fallet hello misslyckas eftersom hello nod övergången API försöker toostart en nod som inte finns.  Det här exemplet använder vissa hjälpmetoder från hello första exemplet.
+**Exempel 4** -i följande exempel visas information om felet som returneras från API: et för noden övergången pågår när åtgärden som initierats av API: T för noden övergången har godkänts, men inte senare vid körning.  I fallet kan misslyckas eftersom API: T för noden övergången försöker starta en nod som inte finns.  Det här exemplet använder vissa hjälpmetoder från det första exemplet.
 
 ```csharp
         static async Task StartNodeWithNonexistentNodeAsync(FabricClient fc)
@@ -254,7 +254,7 @@ Starta en *stoppats* noden med hello nod övergången API returnerar den toofunc
             {
                 try
                 {
-                    // Invoke StartNodeTransitionAsync with hello NodeStartDescription from above, which will start hello target stopped node.  Retry transient errors.
+                    // Invoke StartNodeTransitionAsync with the NodeStartDescription from above, which will start the target stopped node.  Retry transient errors.
                     await fc.TestManager.StartNodeTransitionAsync(description, TimeSpan.FromMinutes(1), CancellationToken.None).ConfigureAwait(false);
                     wasSuccessful = true;
                 }
@@ -272,8 +272,8 @@ Starta en *stoppats* noden med hello nod övergången API returnerar den toofunc
             }
             while (!wasSuccessful);
 
-            // Now call StartNodeTransitionProgressAsync() until hello desired state is reached.  In this case, it will end up in hello Faulted state since hello node does not exist.
-            // When StartNodeTransitionProgressAsync()'s returned progress object has a State if Faulted, inspect hello progress object's Result.Exception.HResult tooget hello error code.
+            // Now call StartNodeTransitionProgressAsync() until the desired state is reached.  In this case, it will end up in the Faulted state since the node does not exist.
+            // When StartNodeTransitionProgressAsync()'s returned progress object has a State if Faulted, inspect the progress object's Result.Exception.HResult to get the error code.
             // In this case, it will be NodeNotFound.
             await WaitForStateAsync(fc, guid, TestCommandProgressState.Faulted).ConfigureAwait(false);
         }

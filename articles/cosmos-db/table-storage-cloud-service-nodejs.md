@@ -1,6 +1,6 @@
 ---
-title: aaaWeb app med table storage (Node.js) | Microsoft Docs
-description: "En självstudiekurs som bygger på hello Web App med en snabb genomgång genom att lägga till Azure Storage-tjänster och hello Azure-modulen."
+title: Webbprogram med tabellagring (Node.js) | Microsoft Docs
+description: "En självstudiekurs som bygger på webbprogram med snabb kursen genom att lägga till Azure Storage-tjänster och Azure-modulen."
 services: cosmos-db
 documentationcenter: nodejs
 author: mimig1
@@ -14,77 +14,77 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: mimig
-ms.openlocfilehash: 7eefc09baab61cf44c98183135abe572b11812e9
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: b802f880c1131abb7eb9ba00dd8f2e65017bc802
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="nodejs-web-application-using-storage"></a>Node.js-Webbapp som använder lagring
 ## <a name="overview"></a>Översikt
-I den här självstudiekursen hello program som du skapade i den [Node.js-Webbapp med hjälp av] kursen utökas med hello Microsoft Azure-klientbibliotek för Node.js toowork med data management-tjänster. Du kan utöka ditt program genom att skapa ett webbaserat-uppgiftslista program som du distribuerar tooAzure. hello uppgiftslista kan användaren hämta uppgifter, lägga till nya aktiviteter och markera aktiviteter som slutförda.
+I den här självstudiekursen programmet du skapade i den [Node.js-Webbapp med hjälp av] kursen utökas som arbetar med data management-tjänster med Microsoft Azure-klientbibliotek för Node.js. Du kan utöka ditt program genom att skapa en webbaserad-uppgiftslista program som du kan distribuera till Azure. Listan kan användaren hämta uppgifter, lägga till nya aktiviteter och markera aktiviteter som slutförda.
 
-hello uppgiftsobjekt lagras i Azure Storage. Azure Storage tillhandahåller lagring av Ostrukturerade data som är feltolerant och hög tillgänglighet. Azure Storage innehåller flera datastrukturer där du kan lagra och komma åt data. Du kan använda hello lagringstjänster från hello API: er som ingår i hello Azure SDK för Node.js eller via REST API: er. Mer information finns i [lagring och åtkomst till Data i Azure].
+Uppgiftsobjekt lagras i Azure Storage. Azure Storage tillhandahåller lagring av Ostrukturerade data som är feltolerant och hög tillgänglighet. Azure Storage innehåller flera datastrukturer där du kan lagra och komma åt data. Du kan använda lagringstjänsterna från API: er som ingår i Azure SDK för Node.js eller via REST API: er. Mer information finns i [lagring och åtkomst till Data i Azure].
 
-Den här kursen förutsätter att du har slutfört hello [Node.js-Webbapp] och [Node.js med snabb][Node.js-Webbapp med hjälp av] självstudier.
+Den här kursen förutsätter att du har slutfört den [Node.js-Webbapp] och [Node.js med snabb][Node.js-Webbapp med hjälp av] självstudier.
 
-Den innehåller hello följande information:
+Det innehåller följande information:
 
-* Hur toowork med hello Jade mall-motorn
-* Hur toowork med Azure Data Management-tjänster
+* Hur du arbetar med motorn Jade mall
+* Hur du arbetar med Azure Data Management services
 
-hello följande skärmbild visar hello slutförts program:
+Följande skärmbild visar den färdiga appen:
 
-![hello slutförts webbsida i internet explorer](./media/table-storage-cloud-service-nodejs/getting-started-1.png)
+![Slutförda webbsida i internet explorer](./media/table-storage-cloud-service-nodejs/getting-started-1.png)
 
 ## <a name="setting-storage-credentials-in-webconfig"></a>Ange autentiseringsuppgifter för lagring i Web.Config
-Du måste överföra i lagring autentiseringsuppgifter tooaccess Azure Storage. Detta görs genom att använda hello web.config Programinställningar.
-hello web.config inställningar skickas miljö variabler tooNode som läses sedan av hello Azure SDK.
+Du måste överföra i lagring autentiseringsuppgifter för åtkomst till Azure Storage. Detta görs genom att använda inställningarna för web.config-programmet.
+Inställningarna för web.config skickas som miljövariabler till noden, som läses sedan av Azure SDK.
 
 > [!NOTE]
-> Lagring autentiseringsuppgifter används bara när programmet hello är distribuerade tooAzure. När du kör i hello-emulatorn använder hello programmet hello storage-emulatorn.
+> Lagring autentiseringsuppgifter används bara när programmet distribueras till Azure. När du kör i emulatorn använder programmet storage-emulatorn.
 >
 >
 
-Utför följande steg tooretrieve hello lagringskontouppgifter hello och Lägg till dem toohello web.config-inställningar:
+Utför följande steg för att hämta autentiseringsuppgifter för lagringskonto och lägga till dem i web.config-inställningar:
 
-1. Om den inte redan är öppen, starta hello Azure PowerShell från hello **starta** menyn genom att expandera **alla program, Azure**, högerklicka på **Azure PowerShell**, och välj sedan  **Kör som administratör**.
-2. Ändra kataloger toohello mapp som innehåller programmet. Till exempel C:\\nod\\tasklist\\WebRole1.
-3. Ange följande cmdlet tooretrieve hello lagring kontoinformation hello från hello Azure Powershell-fönstret:
+1. Om den inte redan är öppen start av Azure PowerShell från den **starta** menyn genom att expandera **alla program, Azure**, högerklicka på **Azure PowerShell**, och välj sedan  **Kör som administratör**.
+2. Ändra sökvägen till mappen som innehåller programmet. Till exempel C:\\nod\\tasklist\\WebRole1.
+3. Ange följande cmdlet för att hämta kontoinformationen för lagring i Azure Powershell-fönstret:
 
     ```powershell
     PS C:\node\tasklist\WebRole1> Get-AzureStorageAccounts
     ```
 
-   hello hämtar föregående cmdlet hello lista över storage-konton och nycklar som är associerade med din värdbaserade tjänst.
+   Föregående cmdlet hämtar listan över storage-konton och konto nycklar som hör till din värdbaserade tjänst.
 
    > [!NOTE]
-   > Eftersom hello Azure SDK om du skapar ett lagringskonto när du distribuerar en tjänst, ska ett lagringskonto redan finnas från att distribuera ditt program i hello tidigare guider.
+   > Eftersom Azure SDK om du skapar ett lagringskonto när du distribuerar en tjänst, ska ett lagringskonto redan finnas från att distribuera ditt program i föregående guider.
    >
    >
-4. Öppna hello **ServiceDefinition.csdef** -fil som innehåller hello miljöinställningar som används när programmet hello är distribuerade tooAzure:
+4. Öppna den **ServiceDefinition.csdef** -fil som innehåller miljöinställningar som används när programmet distribueras till Azure:
 
     ```powershell
     PS C:\node\tasklist> notepad ServiceDefinition.csdef
     ```
 
-5. Infoga hello följande blockera **miljö** element, ersätter {LAGRINGSKONTO} och {LAGRINGSÅTKOMSTNYCKEL} med hello kontonamn och hello primärnyckeln för hello storage-konto som du vill använda toouse för distributionen:
+5. Infoga följande kodblock under **miljö** element, ersätter {LAGRINGSKONTO} och {LAGRINGSÅTKOMSTNYCKEL} med namnet på kontot och den primära nyckeln för lagringskontot som du vill använda för distribution:
 
   <Variable name="AZURE_STORAGE_ACCOUNT" value="{STORAGE ACCOUNT}" />
   <Variable name="AZURE_STORAGE_ACCESS_KEY" value="{STORAGE ACCESS KEY}" />
 
-   ![Hej web.cloud.config filinnehåll](./media/table-storage-cloud-service-nodejs/node37.png)
+   ![Filinnehållet web.cloud.config](./media/table-storage-cloud-service-nodejs/node37.png)
 
-6. Spara hello-filen och stäng Anteckningar.
+6. Spara filen och stäng Anteckningar.
 
 ### <a name="install-additional-modules"></a>Installera ytterligare moduler
-1. Använd hello efter kommandot tooinstall hello [azure], [nod-uuid], [nconf] och [asynkrona] moduler lokalt samt toosave en post för dem toohello **package.json** fil:
+1. Använd följande kommando för att installera [azure], [nod-uuid] [nconf] och [asynkrona] moduler lokalt samt att spara en post för att den **package.json** fil:
 
   ```powershell
   PS C:\node\tasklist\WebRole1> npm install azure-storage node-uuid async nconf --save
   ```
 
-  hello utdata från kommandot ska se ut ungefär toohello följande:
+  Kommandots utdata ska se ut ungefär så här:
 
   ```
   node-uuid@1.4.1 node_modules\node-uuid
@@ -105,13 +105,13 @@ Utför följande steg tooretrieve hello lagringskontouppgifter hello och Lägg t
   └── request@2.27.0 (json-stringify-safe@5.0.0, tunnel-agent@0.3.0, aws-sign@0.3.0, forever-agent@0.5.2, qs@0.6.6, oauth-sign@0.3.0, cookie-jar@0.3.0, hawk@1.0.0, form-data@0.1.3, http-signature@0.10.0)
   ```
 
-## <a name="using-hello-table-service-in-a-node-application"></a>Använda hello tabelltjänsten i en node-App
-I det här avsnittet hello grundläggande program som skapats av hello **express** kommandot utökas genom att lägga till en **task.js** -fil som innehåller hello modell för dina uppgifter. Ändra befintliga hello **app.js** filen och skapa en ny **tasklist.js** fil som använder hello modellen.
+## <a name="using-the-table-service-in-a-node-application"></a>Med hjälp av tjänsten tabellen i en node-App
+I det här avsnittet grundläggande program som skapats av den **express** kommandot utökas genom att lägga till en **task.js** -fil som innehåller modellen för dina uppgifter. Ändra den befintliga **app.js** filen och skapa en ny **tasklist.js** fil som används i modellen.
 
-### <a name="create-hello-model"></a>Skapa hello modell
-1. I hello **WebRole1** directory, skapa en ny katalog med namnet **modeller**.
-2. I hello **modeller** directory, skapa en ny fil med namnet **task.js**. Den här filen innehåller hello modellen för hello aktiviteter som skapats av programmet.
-3. Hello början av hello **task.js** lägger du till följande kod tooreference krävs bibliotek hello:
+### <a name="create-the-model"></a>Skapa modellen
+1. I den **WebRole1** directory, skapa en ny katalog med namnet **modeller**.
+2. I den **modeller** directory, skapa en ny fil med namnet **task.js**. Den här filen innehåller modellen för de aktiviteter som skapats av programmet.
+3. I början av den **task.js** lägger du till följande kod för att referera till bibliotek som krävs:
 
     ```nodejs
     var azure = require('azure-storage');
@@ -119,7 +119,7 @@ I det här avsnittet hello grundläggande program som skapats av hello **express
     var entityGen = azure.TableUtilities.entityGenerator;
     ```
 
-4. Sedan lägger du till kod toodefine och exportera hello Task-objekt. hello aktivitetsobjektet ansvarar för att ansluta toohello tabell.
+4. Lägg till kod för att definiera och exportera aktivitetsobjektet. Aktivitetsobjektet ansvarar för att ansluta till tabellen.
 
     ```nodejs
     module.exports = Task;
@@ -136,7 +136,7 @@ I det här avsnittet hello grundläggande program som skapats av hello **express
     };
     ```
 
-5. Lägg till hello följande kod toodefine fler metoder på hello aktivitetsobjektet som tillåter samverkan med data som lagras i tabellen hello:
+5. Lägg till följande kod för att definiera ytterligare metoder för aktivitetsobjektet som tillåter samverkan med data som lagras i tabellen:
 
     ```nodejs
     Task.prototype = {
@@ -153,7 +153,7 @@ I det här avsnittet hello grundläggande program som skapats av hello **express
 
       addItem: function(item, callback) {
         self = this;
-        // use entityGenerator tooset types
+        // use entityGenerator to set types
         // NOTE: RowKey must be a string type, even though
         // it contains a GUID in this example.
         var itemDescriptor = {
@@ -190,11 +190,11 @@ I det här avsnittet hello grundläggande program som skapats av hello **express
     }
     ```
 
-6. Spara och Stäng hello **task.js** fil.
+6. Spara och Stäng den **task.js** fil.
 
-### <a name="create-hello-controller"></a>Skapa hello-styrenhet
-1. I hello **WebRole1/vägar** directory, skapa en ny fil med namnet **tasklist.js** och öppna den i en textredigerare.
-2. Lägg till följande kod för hello**tasklist.js**. Den här koden läser in hello azure och async-moduler som används av **tasklist.js** och definierar hello **TaskList** funktion, som mottar en instans av hello **aktivitet** objekt vi definierade tidigare:
+### <a name="create-the-controller"></a>Skapa styrningen
+1. I den **WebRole1/vägar** directory, skapa en ny fil med namnet **tasklist.js** och öppna den i en textredigerare.
+2. Lägg till följande kod i **tasklist.js**. Den här koden läser in i azure och async-moduler som används av **tasklist.js** och definierar de **TaskList** funktion, som mottar en instans av den **aktivitet** objekt vi definierade tidigare:
 
     ```nodejs
     var azure = require('azure-storage');
@@ -207,7 +207,7 @@ I det här avsnittet hello grundläggande program som skapats av hello **express
     }
     ```
 
-3. Fortsätt att lägga till toohello **tasklist.js** filen genom att lägga till hello-metoder som används för**showTasks**, **addTask**, och **completeTasks**:
+3. Fortsätta att lägga till den **tasklist.js** filen genom att lägga till de metoder som används för att **showTasks**, **addTask**, och **completeTasks**:
 
     ```nodejs
     TaskList.prototype = {
@@ -253,11 +253,11 @@ I det här avsnittet hello grundläggande program som skapats av hello **express
     }
     ```
 
-4. Spara hello **tasklist.js** fil.
+4. Spara den **tasklist.js** fil.
 
 ### <a name="modify-appjs"></a>Ändra app.js
-1. I hello **WebRole1** katalog, öppna hello **app.js** i en textredigerare.
-2. Lägg till hello följande tooload hello azure modulen hello början av hello-filen, och ange hello namn och partition tabellnyckel:
+1. I den **WebRole1** katalog, öppna den **app.js** i en textredigerare.
+2. Lägg till följande för att läsa in modulen för azure och ange namn och partition tabellnyckel i början av filen:
 
     ```nodejs
     var azure = require('azure-storage');
@@ -265,14 +265,14 @@ I det här avsnittet hello grundläggande program som skapats av hello **express
     var partitionKey = 'hometasks';
     ```
 
-3. Rulla ned toowhere som du ser i filen app.js hello hello följande rad:
+3. Rulla ned till där du ser följande rad i filen app.js:
 
     ```nodejs
     app.use('/', routes);
     app.use('/users', users);
     ```
 
-    Ersätt hello föregående rader med hello följande kod. Den här koden initierar en instans av <strong>aktivitet</strong> med en anslutning tooyour storage-konto. Hej <strong>aktivitet</strong> skickas toohello <strong>TaskList</strong>, som använder den toocommunicate med hello tabelltjänsten:
+    Ersätt de föregående raderna med följande kod. Den här koden initierar en instans av <strong>aktivitet</strong> med en anslutning till ditt lagringskonto. Den <strong>aktivitet</strong> har överförts till den <strong>TaskList</strong>, som används för att kommunicera med tjänsten tabell:
 
     ```nodejs
     var TaskList = require('./routes/tasklist');
@@ -285,11 +285,11 @@ I det här avsnittet hello grundläggande program som skapats av hello **express
     app.post('/completetask', taskList.completeTask.bind(taskList));
     ```
 
-4. Spara hello **app.js** fil.
+4. Spara den **app.js** fil.
 
-### <a name="modify-hello-index-view"></a>Ändra hello indexvy
-1. Ändra kataloger toohello **vyer** katalog och öppna hello **index.jade** i en textredigerare.
-2. Ersätt hello innehållet i hello **index.jade** fil med hello följande kod. Den här koden definierar hello vy för visning av befintliga aktiviteter och definierar ett formulär för att lägga till nya aktiviteter och markera befintliga som slutförts.
+### <a name="modify-the-index-view"></a>Ändra indexvyn
+1. Ändra sökvägen till den **vyer** katalog och öppna den **index.jade** i en textredigerare.
+2. Ersätt innehållet i den **index.jade** med följande kod. Den här koden definierar vyn för att visa befintliga aktiviteter och definierar ett formulär för att lägga till nya aktiviteter och markera befintliga som slutförts.
 
     ```
     extends layout
@@ -332,48 +332,48 @@ I det här avsnittet hello grundläggande program som skapats av hello **express
 
 3. Spara och Stäng **index.jade** fil.
 
-### <a name="modify-hello-global-layout"></a>Ändra hello globala layout
-Hej **layout.jade** filen i hello **vyer** directory används som en global mall för andra **.jade** filer. I det här steget ändrar hello **layout.jade** filen toouse [Twitter Bootstrap](https://github.com/twbs/bootstrap), vilket är en verktygslåda som gör det enkelt toodesign en snygg webbplats.
+### <a name="modify-the-global-layout"></a>Ändra globala layouten
+Filen **layout.jade** i katalogen **views** används som en global mall för andra **.jade**-filer. I det här steget kan du ändra den **layout.jade** fil som ska användas [Twitter Bootstrap](https://github.com/twbs/bootstrap), vilket är en verktygslåda som gör det enkelt att utforma en snygg webbplats.
 
-1. Ladda ned och extrahera hello filer för [Twitter Bootstrap](http://getbootstrap.com/). Kopiera hello **bootstrap.min.css** filen från hello **bootstrap\\dist\\css** mappen toohello **offentliga\\matmallar** katalogen för tillämpningsprogrammet tasklist.
-2. Från hello **vyer** mapp, öppna hello **layout.jade** filen i en textredigerare och Ersätt hello innehållet med hello följande:
+1. Ladda ned och extrahera filerna för [Twitter Bootstrap](http://getbootstrap.com/). Kopiera den **bootstrap.min.css** filen från den **bootstrap\\dist\\css** mappen till den **offentliga\\matmallar** katalogen för tillämpningsprogrammet tasklist.
+2. Från den **vyer** mapp, öppna den **layout.jade** filen i en textredigerare och Ersätt innehållet med följande:
 
     doctype html html head rubrik = Rubriklänk (rel = 'stylesheet', href='/stylesheets/bootstrap.min.css') länk (rel = 'stylesheet', href='/stylesheets/style.css') body.app nav.navbar.navbar standard div.navbar huvud a.navbar-brand(href='/') min  Uppgifter blockera innehåll
 
-3. Spara hello **layout.jade** fil.
+3. Spara den **layout.jade** fil.
 
-### <a name="running-hello-application-in-hello-emulator"></a>Kör hello programmet hello emulatorn
-Använd hello följande kommando toostart hello program i hello-emulatorn.
+### <a name="running-the-application-in-the-emulator"></a>Kör programmet i emulatorn
+Använd följande kommando för att starta programmet i emulatorn.
 
 ```powershell
 PS C:\node\tasklist\WebRole1> start-azureemulator -launch
 ```
 
-hello webbläsaren öppnas och visar hello följande sida:
+Webbläsaren öppnas och visar följande sida:
 
-![En webbplats som växlingsbart systemminne heter uppgiftslistan med en tabell som innehåller uppgifter och fält tooadd en ny uppgift.](./media/table-storage-cloud-service-nodejs/node44.png)
+![En webbplats som växlingsbart systemminne med titeln uppgiftslistan med en tabell som innehåller uppgifter och för att lägga till en ny uppgift.](./media/table-storage-cloud-service-nodejs/node44.png)
 
-Använd hello formuläret tooadd objekt eller ta bort befintliga objekt genom att markera dem som slutförda.
+Använd formuläret för att lägga till objekt eller ta bort befintliga objekt genom att markera dem som slutförda.
 
-## <a name="publishing-hello-application-tooazure"></a>Publishing hello programmet tooAzure
-Anropa hello följande cmdlet tooredeploy värdtjänsten-tooAzure i hello Windows PowerShell-fönster.
+## <a name="publishing-the-application-to-azure"></a>Publicera program till Azure
+Anropa följande cmdlet om du vill distribuera dina värdbaserade tjänsten till Azure i Windows PowerShell-fönstret.
 
 ```powershell
 PS C:\node\tasklist\WebRole1> Publish-AzureServiceProject -name myuniquename -location datacentername -launch
 ```
 
-Ersätt **myuniquename** med ett unikt namn för det här programmet. Ersätt **datacentername** med hello namnet på ett Azure-datacenter som **västra USA**.
+Ersätt **myuniquename** med ett unikt namn för det här programmet. Ersätt **datacentername** med namnet på ett Azure-datacenter som **västra USA**.
 
-När hello distributionen är klar, bör du se ett svar liknande toohello följande:
+När distributionen är klar bör du se ett svar som liknar följande:
 
 ```
   PS C:\node\tasklist> publish-azureserviceproject -servicename tasklist -location "West US"
-  WARNING: Publishing tasklist tooMicrosoft Azure. This may take several minutes...
+  WARNING: Publishing tasklist to Microsoft Azure. This may take several minutes...
   WARNING: 2:18:42 PM - Preparing runtime deployment for service 'tasklist'
   WARNING: 2:18:42 PM - Verifying storage account 'tasklist'...
   WARNING: 2:18:43 PM - Preparing deployment for tasklist with Subscription ID: 65a1016d-0f67-45d2-b838-b8f373d6d52e...
   WARNING: 2:19:01 PM - Connecting...
-  WARNING: 2:19:02 PM - Uploading Package toostorage service larrystore...
+  WARNING: 2:19:02 PM - Uploading Package to storage service larrystore...
   WARNING: 2:19:40 PM - Upgrading...
   WARNING: 2:22:48 PM - Created Deployment ID: b7134ab29b1249ff84ada2bd157f296a.
   WARNING: 2:22:48 PM - Initializing...
@@ -381,35 +381,35 @@ När hello distributionen är klar, bör du se ett svar liknande toohello följa
   WARNING: 2:22:50 PM - Created Website URL: http://tasklist.cloudapp.net/.
 ```
 
-Genom att ange hello **-starta** alternativet i hello tidigare cmdleten hello webbläsaren öppnas och visar programmet körs i Azure när publiceringen är klar.
+Genom att ange den **-starta** alternativ i föregående cmdlet webbläsaren öppnas och visar programmet körs i Azure när publiceringen är klar.
 
-![Ett webbläsarfönster som visar hello uppgiftslistan sidan. hello URL: en anger hello sidan finns nu på Azure.](./media/table-storage-cloud-service-nodejs/getting-started-1.png)
+![Ett webbläsarfönster som visar sidan uppgiftslistan. URL: en anger sidan finns nu på Azure.](./media/table-storage-cloud-service-nodejs/getting-started-1.png)
 
 ## <a name="stopping-and-deleting-your-application"></a>Stoppa och ta bort programmet
-Du kanske vill toodisable den så att du kan undvika kostnader eller skapa och distribuera andra program inom hello kostnadsfri utvärderingsversion tidsperiod när du distribuerar ditt program.
+När du distribuerar ditt program, kan du vill inaktivera den så att du kan undvika kostnader eller skapa och distribuera andra program inom den kostnadsfria utvärderingsversionen tidsperioden.
 
 Azure fakturerar webbrollsinstanser per timme förbrukad servertid.
-Servertid förbrukas när programmet har distribuerats, även om instanserna inte körs och är i hello stoppats tillstånd.
+Servertid förbrukas när programmet har distribuerats, även om instanserna inte körs och är i stoppat tillstånd.
 
-hello följande steg visar hur toostop och ta bort programmet.
+Följande steg visar hur du stoppar och ta bort programmet.
 
-1. Stoppa hello tjänstdistributionen som skapades i föregående avsnitt i hello med hello följande cmdlet i Windows PowerShell-fönstret hello:
+1. Stoppa tjänstdistributionen som skapades i föregående avsnitt med följande cmdlet i Windows PowerShell-fönstret:
 
     ```powershell
     PS C:\node\tasklist\WebRole1> Stop-AzureService
     ```
 
-   Hello-tjänsten stoppas kan det ta flera minuter. När hello har stoppats, kan du få ett meddelande som anger att den har stoppats.
+   Det kan ta flera minuter att stoppa tjänsten. När tjänsten har stoppats får du ett meddelande som anger att den har stoppats.
 
-2. toodelete hello service, anrop hello följande cmdlet:
+2. Ta bort tjänsten genom att anropa följande cmdlet:
 
     ```powershell
     PS C:\node\tasklist\WebRole1> Remove-AzureService contosotasklist
     ```
 
-   När du uppmanas, anger **Y** toodelete hello-tjänsten.
+   När du uppmanas, anger du **Y** för att ta bort tjänsten.
 
-   Om du tar bort hello service kan ta några minuter. När hello-tjänsten har tagits bort, visas ett meddelande som anger att hello-tjänsten har tagits bort.
+   Det kan ta flera minuter att ta bort tjänsten. När tjänsten har tagits bort, visas ett meddelande som anger att tjänsten har tagits bort.
 
 [Node.js-Webbapp med hjälp av]: http://azure.microsoft.com/develop/nodejs/tutorials/web-app-with-express/
 [lagring och åtkomst till Data i Azure]: http://msdn.microsoft.com/library/azure/gg433040.aspx

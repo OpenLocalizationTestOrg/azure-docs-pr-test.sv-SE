@@ -1,6 +1,6 @@
 ---
-title: aaaUnderstand hello Azure Marketplace beloppet reporting | Microsoft Docs
-description: "Lär dig hur tooreview och mata in hello Azure Marketplace beloppet rapporten."
+title: "Förstå Azure Marketplace beloppet reporting | Microsoft Docs"
+description: "Lär dig hur du granskar och mata in Azure Marketplace beloppet rapporten."
 services: marketplace-publishing
 documentationcenter: na
 author: v-jeana
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/16/2017
 ms.author: v-jeana; hascipio; v-dabosl
-ms.openlocfilehash: 2bc21fad1805c0ead80c3f8a56128c789e17798e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 5a89e9ba4376d0c4f49feb3783692e28a28902a2
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="understand-your-azure-marketplace-payout-reports"></a>Förstå Azure Marketplace beloppet rapporter
 ## <a name="access-and-view-your-payout-reports"></a>Komma åt och visa beloppet
-Medan vi övergång tooDev Center kan vissa av dina beloppet rapporter finnas i hello Dev Center på https://dev.windows.com/en-us medan andra kan fortfarande finns i Publishing Portal på https://publish.windowsazure.com.
+Medan vi övergång till Dev Center kan vissa av dina beloppet rapporter finnas i Dev Center på https://dev.windows.com/en-us medan andra kan fortfarande finns i Publishing Portal på https://publish.windowsazure.com.
 
 Beloppet reporting att vara tillgängliga i **Dev Center** för Marketplace-erbjudanden som är associerade med moderna utbetalningar; just nu inkluderar detta:
 
@@ -32,12 +32,12 @@ Beloppet reporting att vara tillgängliga i **Dev Center** för Marketplace-erbj
 
 Beloppet kommer fortfarande att i **Publiceringsportal** för:
 
-* Data och Dev tjänster som erbjuds under Web direkt (som fortfarande använder hello äldre beloppet system).
+* Data och Dev tjänster som erbjuds under Web direkt (som fortfarande använder äldre beloppet system).
 
-Rapporter är tillgängliga 45 dagar efter hello Stäng av hello kvartal och beräknas när återbetalningar.
+Rapporter är tillgängliga 45 dagar efter kvartalet och beräknas när återbetalningar.
 
 ### <a name="access-payout-reports-in-dev-center"></a>Beloppet Rapportåtkomst i Dev Center
-1. Navigera tooDev Center på https://dev.windows.com/en-us.
+1. Gå till Dev Center på https://dev.windows.com/en-us.
 2. Klicka på **instrumentpanelen**.
 
     ![LandingPageDashboardHighlight][1]
@@ -46,34 +46,34 @@ Rapporter är tillgängliga 45 dagar efter hello Stäng av hello kvartal och ber
     ![DashboardPayoutSummary][2]
 
 ## <a name="view-your-payout-reports-in-dev-center"></a>Visa beloppet i Dev Center
-hello beloppet rapport för varje kvartal registrerar alla transaktioner som inträffat inom det kvartalet.
+Rapporten beloppet för varje kvartal registrerar alla transaktioner som inträffat inom det kvartalet.
 
-* hello reserverat belopp anger betalningar som uppstår utanför hello kommande betalning cykel (t.ex. den här mängden flyttar tooupcoming betalning hello efter månad).  Den här mängden blir vanligtvis $0 (om en kund betalar väl i förväg).
-* Klicka på hello Upcoming betalning eller den senaste betalningen **Visa detaljer** länkar toosee en anteckning om dessa utbetalningar.
-* Klicka på **betalning instruktioner** tooview hello information under fortsätter efter app/produkt.
-* Klicka på hello **visa** länka toosee enskilda uttryck.
+* Reserverat belopp anger betalningar som uppstår utanför den kommande betalning cykeln (t.ex. den här mängden flyttas till kommande betalning efter månaden).  Den här mängden blir vanligtvis $0 (om en kund betalar väl i förväg).
+* Klicka på Upcoming betalningen eller den senaste betalningen **Visa detaljer** länkar till en anteckning om dessa utbetalningar finns.
+* Klicka på **betalning instruktioner** att visa detaljer under fortsätter efter app/produkt.
+* Klicka på den **visa** länk för att visa enskilda uttryck.
 
     ![PayoutSummaryUpcomingMostRecentLinksStatement][3]
-* Använd hello **fortsätter uppdelning** filtrera längst hello hello enskilda instruktionen tooview flera appar-produkter om de finns.
+* Använd den **fortsätter uppdelning** filter längst ned i instruktionen enskilda att visa flera appar-produkter, om de finns.
 
     ![PayoutSummaryPaymentStatementsFilterControl][4]
 
 ## <a name="view-your-payout-reports-in-publishing-portal"></a>Visa beloppet i Publishing Portal
-hello beloppet rapport för varje kvartal registrerar alla transaktioner som inträffat inom det kvartalet.
+Rapporten beloppet för varje kvartal registrerar alla transaktioner som inträffat inom det kvartalet.
 
-1. Navigera toohello publishing portal på https://publish.windowsazure.com.
-2. Från hello **utgivare** klickar du på **beloppet rapporter**.
-3. Klicka på hello nedrullningsbara toodisplay alla tillgängliga kvartalsvis beloppet rapporter.
+1. Gå till publishing portal på https://publish.windowsazure.com.
+2. Från den **utgivare** klickar du på **beloppet rapporter**.
+3. Klicka på listrutan om du vill visa alla tillgängliga kvartalsvis beloppet rapporter.
 
     ![accessingpayoutreport][5]
 
 ### <a name="read-your-payout-reports"></a>Läsa dina beloppet rapporter
-hello beloppet rapport för varje kvartal registrerar alla transaktioner som inträffat inom det kvartalet.
+Rapporten beloppet för varje kvartal registrerar alla transaktioner som inträffat inom det kvartalet.
 
-* Om du letar efter transaktioner som handlar om tooa specifika kvartalet, väljer du hello beloppet rapporten för att kvartal från hello listrutan. Om du är intresserad av transaktioner för tooJune April 2015, väljer du exempelvis att datumintervall hello i listrutan.
-* Om du letar efter information om utbetalningar som handlar om tooa specifika kvartalet Välj hello beloppet rapport för hello efterföljande kvartal. Om du är intresserad av hello utbetalningar för tooJune April 2015 visas till exempel beloppen i hello efterföljande beloppet rapport för tooSeptember juli 2015.
+* Om du letar efter transaktioner som relaterar till ett visst kvartal, väljer du rapporten beloppet för det kvartalet från listrutan. Om du är intresserad av transaktioner för April-juni 2015, väljer du exempelvis tidsperioden från listrutan.
+* Om du letar efter information om utbetalningar som relaterar till ett visst kvartal, väljer du rapporten beloppet för efterföljande kvartal. Till exempel om du är intresserad av utbetalningar för April-juni 2015 visas beloppen i rapporten efterföljande beloppet för juli-September 2015.
   ![readingpayoutreport][6]
-* hello finansiella sammanfattning panelen visas saldon, krediter och debiteringar efter kategori.
+* Finansiella på panelen Sammanfattning visar saldon, krediter och debiteringar efter kategori.
 * Transaktioner Visa enskilda transaktioner.
 
 ## <a name="definitions"></a>Definitioner
@@ -86,11 +86,11 @@ hello beloppet rapport för varje kvartal registrerar alla transaktioner som int
 ![ledgerdefinitions][8]
 
 ## <a name="payout-questions"></a>Beloppet frågor
-Om du har en fråga relaterade tooyour utbetalningar Kontakta supportteamet.
+Om du har en fråga som rör ditt utbetalningar Kontakta supportteamet.
 
 ![payoutquestions][9]
 
-1. Navigera toohello stöd sidor.
+1. Gå till sidan support.
 2. Välj **utbetalningar**.
 3. Välj **beloppet relaterade frågor**.
 4. Klicka på **startbegäran**.

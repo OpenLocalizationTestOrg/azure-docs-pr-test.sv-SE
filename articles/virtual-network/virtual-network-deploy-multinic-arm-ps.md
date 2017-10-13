@@ -1,6 +1,6 @@
 ---
-title: "aaaCreate en virtuell dator med flera nätverkskort – Azure PowerShell | Microsoft Docs"
-description: "Lär dig hur toocreate en virtuell dator med flera nätverkskort med hjälp av PowerShell."
+title: "Skapa en virtuell dator med flera nätverkskort – Azure PowerShell | Microsoft Docs"
+description: "Lär dig hur du skapar en virtuell dator med flera nätverkskort med hjälp av PowerShell."
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 507a413510da3ee69aefed324977ee40e442268b
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: f3a11afd8fbd6a5e6b94cf1ebee7ea20665421bd
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="create-a-vm-with-multiple-nics-using-powershell"></a>Skapa en virtuell dator med flera nätverkskort med hjälp av PowerShell
 
@@ -34,19 +34,19 @@ ms.lasthandoff: 10/06/2017
 [!INCLUDE [virtual-network-deploy-multinic-intro-include.md](../../includes/virtual-network-deploy-multinic-intro-include.md)]
 
 > [!NOTE]
-> Azure har två olika distributionsmodeller för att skapa och arbeta med resurser: [Resource Manager och klassisk](../resource-manager-deployment-model.md).  Den här artikeln täcker hello Resource Manager-distributionsmodellen, som Microsoft rekommenderar för de flesta nya distributioner i stället för hello [klassiska distributionsmodellen](virtual-network-deploy-multinic-classic-ps.md).
+> Azure har två olika distributionsmodeller för att skapa och arbeta med resurser: [Resource Manager och klassisk](../resource-manager-deployment-model.md).  Den här artikeln beskriver Resource Manager-distributionsmodellen, som Microsoft rekommenderar för de flesta nya distributioner i stället för [den klassiska distributionsmodellen](virtual-network-deploy-multinic-classic-ps.md).
 >
 
 [!INCLUDE [virtual-network-deploy-multinic-scenario-include.md](../../includes/virtual-network-deploy-multinic-scenario-include.md)]
 
-hello så här använder du en resursgrupp med namnet *IaaSStory* för hello webbservrar och en resursgrupp med namnet *IaaSStory BackEnd* för hello DB-servrar.
+Följande steg använder en resursgrupp med namnet *IaaSStory* för webbservrar och en resursgrupp med namnet *IaaSStory BackEnd* för DB-servrar.
 
 ## <a name="prerequisites"></a>Krav
-Innan du kan skapa hello DB-servrar, behöver du toocreate hello *IaaSStory* resursgrupp med alla hello nödvändiga resurser för det här scenariot. toocreate dessa resurser, Slutför hello följande steg:
+Innan du kan skapa DB-servrar, måste du skapa den *IaaSStory* resursgrupp med alla nödvändiga resurser för det här scenariot. För att skapa dessa resurser, gör du följande:
 
-1. Navigera för[hello mallsidan](https://github.com/Azure/azure-quickstart-templates/tree/master/IaaS-Story/11-MultiNIC).
-2. Hello mallen sidan toohello höger i **överordnade resursgruppen**, klickar du på **distribuera tooAzure**.
-3. Om det behövs, ändra hello parametervärden sedan gör hello i hello Azure preview portal toodeploy hello resursgruppen.
+1. Gå till [på mallsidan](https://github.com/Azure/azure-quickstart-templates/tree/master/IaaS-Story/11-MultiNIC).
+2. På mallsidan till höger om **överordnade resursgruppen**, klickar du på **till Azure**.
+3. Om det behövs, ändra parametervärden och följ stegen i Azure preview portal för att distribuera resursgruppen.
 
 > [!IMPORTANT]
 > Kontrollera att din lagringskontonamn är unika. Du kan inte ha dubbla lagringskontonamn i Azure.
@@ -54,17 +54,17 @@ Innan du kan skapa hello DB-servrar, behöver du toocreate hello *IaaSStory* res
 
 [!INCLUDE [azure-ps-prerequisites-include.md](../../includes/azure-ps-prerequisites-include.md)]
 
-## <a name="create-hello-back-end-vms"></a>Skapa hello backend-virtuella datorer
-hello beror backend-VMs på hello skapande av hello följande resurser:
+## <a name="create-the-back-end-vms"></a>Skapa de virtuella datorerna serverdel
+Backend-VMs beror på att skapa följande resurser:
 
-* **Storage-konto för datadiskar**. För bättre prestanda använder hello datadiskar på hello databasservrar Solid-State-hårddisk (SSD)-teknik som kräver ett premiumlagringskonto. Se till att hello Azure-plats som du distribuerar toosupport premium-lagring.
+* **Storage-konto för datadiskar**. För bättre prestanda använder datadiskar på databasservrarna Solid-State-hårddisk (SSD)-teknik som kräver ett premiumlagringskonto. Kontrollera att den Azure-plats som du distribuerar för att stödja premium-lagring.
 * **Nätverkskort**. Varje virtuell dator har två nätverkskort, ett för åtkomst till databasen, och en för hantering.
-* **Tillgänglighetsuppsättningen**. Alla databasservrar läggs tooa enda tillgänglighetsuppsättning, tooensure minst en av hello virtuella datorer är igång och körs under underhåll.  
+* **Tillgänglighetsuppsättningen**. Alla databasservrar läggs till en enda tillgänglighet ange att se till att minst en av de virtuella datorerna är igång och körs under underhåll.  
 
 ### <a name="step-1---start-your-script"></a>Steg 1 – starta skriptet
-Du kan hämta hello fullständig PowerShell-skript används [här](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/arm/virtual-network-deploy-multinic-arm-ps.ps1). Följ hello steg nedan toochange hello skriptet toowork i din miljö.
+Du kan hämta den fullständiga PowerShell-skript som används [här](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/arm/virtual-network-deploy-multinic-arm-ps.ps1). Följ stegen nedan för att ändra skriptet fungerar i din miljö.
 
-1. Ändra hello värdena för hello variabler nedan baserat på en befintlig resursgrupp distribuerade ovan i [krav](#Prerequisites).
+1. Ändra värdena för variablerna nedan baserat på en befintlig resursgrupp distribuerade ovan i [krav](#Prerequisites).
 
     ```powershell
     $existingRGName        = "IaaSStory"
@@ -75,7 +75,7 @@ Du kan hämta hello fullständig PowerShell-skript används [här](https://raw.g
     $stdStorageAccountName = "wtestvnetstoragestd"
     ```
 
-2. Ändra hello värden hello variabler nedan baserat på hello värden som du vill toouse för backend-distribution.
+2. Ändra värdena för variabler nedan baserat på de värden som du vill använda för backend-distribution.
 
     ```powershell
     $backendRGName         = "IaaSStory-Backend"
@@ -94,7 +94,7 @@ Du kan hämta hello fullständig PowerShell-skript används [här](https://raw.g
     $ipAddressPrefix       = "192.168.2."
     $numberOfVMs           = 2
     ```
-3. Hämta hello befintliga resurser som krävs för din distribution.
+3. Hämta de befintliga resurser som krävs för din distribution.
 
     ```powershell
     $vnet                  = Get-AzureRmVirtualNetwork -Name $vnetName -ResourceGroupName $existingRGName
@@ -104,14 +104,14 @@ Du kan hämta hello fullständig PowerShell-skript används [här](https://raw.g
     ```
 
 ### <a name="step-2---create-necessary-resources-for-your-vms"></a>Steg 2 – skapa nödvändiga resurser för din virtuella datorer
-Behöver du toocreate en ny resursgrupp i ett lagringskonto för hello datadiskar och en tillgänglighetsuppsättning för alla virtuella datorer. Alos måste hello autentiseringsuppgifter för lokal administratör för varje virtuell dator. toocreate dessa resurser, köra hello följande steg.
+Du måste skapa en ny resursgrupp, ett lagringskonto för datadiskar och en tillgänglighetsuppsättning för alla virtuella datorer. Alos måste autentiseringsuppgifter för lokala administratörskontot för varje virtuell dator. Utför följande steg för att skapa dessa resurser.
 
 1. Skapa en ny resursgrupp.
 
     ```powershell
     New-AzureRmResourceGroup -Name $backendRGName -Location $location
     ```
-2. Skapa ett nytt premium-lagringskonto i hello resursgruppen skapade ovan.
+2. Skapa ett nytt premium-lagringskonto i resursgruppen skapade ovan.
 
     ```powershell
     $prmStorageAccount = New-AzureRmStorageAccount -Name $prmStorageAccountName `
@@ -122,22 +122,22 @@ Behöver du toocreate en ny resursgrupp i ett lagringskonto för hello datadiska
     ```powershell
     $avSet = New-AzureRmAvailabilitySet -Name $avSetName -ResourceGroupName $backendRGName -Location $location
     ```
-4. Hämta hello lokal administratör konto autentiseringsuppgifter toobe används för varje virtuell dator.
+4. Hämta den lokala administratören kontoautentiseringsuppgifter som ska användas för varje virtuell dator.
 
     ```powershell
-    $cred = Get-Credential -Message "Type hello name and password for hello local administrator account."
+    $cred = Get-Credential -Message "Type the name and password for the local administrator account."
     ```
 
-### <a name="step-3---create-hello-nics-and-back-end-vms"></a>Steg 3 – skapa hello nätverkskort och backend-virtuella datorer
-Du måste toouse toocreate en loop som många virtuella datorer som du vill och skapa hello nödvändiga nätverkskort och virtuella datorer i hello loop. toocreate hello nätverkskort och virtuella datorer kan du köra hello följande steg.
+### <a name="step-3---create-the-nics-and-back-end-vms"></a>Steg 3 – skapa nätverkskort och backend-virtuella datorer
+Du måste använda en loop skapa så många virtuella datorer som du vill och skapa de nödvändiga nätverkskort och virtuella datorer inom loopen. Utför följande steg för att skapa nätverkskort och virtuella datorer.
 
-1. Starta en `for` loop toorepeat hello kommandon toocreate en virtuell dator och två nätverkskort så många gånger som behövs, beroende på hello värde hello `$numberOfVMs` variabeln.
+1. Starta en `for` slinga om du vill upprepa kommandona för att skapa en virtuell dator och två nätverkskort så många gånger som behövs, baserat på värdet för den `$numberOfVMs` variabeln.
    
     ```powershell
     for ($suffixNumber = 1; $suffixNumber -le $numberOfVMs; $suffixNumber++){
     ```
 
-2. Skapa hello nätverkskort används för åtkomst till databasen.
+2. Skapa det nätverkskort som används för åtkomst till databasen.
 
     ```powershell
     $nic1Name = $nicNamePrefix + $suffixNumber + "-DA"
@@ -146,7 +146,7 @@ Du måste toouse toocreate en loop som många virtuella datorer som du vill och 
     -Location $location -SubnetId $backendSubnet.Id -PrivateIpAddress $ipAddress1
     ```
 
-3. Skapa hello nätverkskort används för fjärråtkomst. Observera hur det här nätverkskortet har en NSG som kopplats tooit.
+3. Skapa det nätverkskort som används för fjärråtkomst. Observera hur det här nätverkskortet har en NSG som kopplats till den.
 
     ```powershell
     $nic2Name = $nicNamePrefix + $suffixNumber + "-RA"
@@ -163,7 +163,7 @@ Du måste toouse toocreate en loop som många virtuella datorer som du vill och 
     $vmConfig = New-AzureRmVMConfig -VMName $vmName -VMSize $vmSize -AvailabilitySetId $avSet.Id
     ```
 
-5. Skapa två hårddiskar per virtuell dator. Lägg märke till att hello datadiskar hello premiumlagringskonto skapade tidigare.
+5. Skapa två hårddiskar per virtuell dator. Observera att datadiskar som finns i premium storage-konto som skapades tidigare.
 
     ```powershell
     $dataDisk1Name = $vmName + "-" + $osDiskPrefix + "-1"
@@ -177,21 +177,21 @@ Du måste toouse toocreate en loop som många virtuella datorer som du vill och 
     -VhdUri $data2VhdUri -CreateOption empty -Lun 1
     ```
 
-6. Konfigurera hello operativsystem och avbildning toobe används för hello VM.
+6. Konfigurera operativsystemet och bild som ska användas för den virtuella datorn.
 
     ```powershell
     $vmConfig = Set-AzureRmVMOperatingSystem -VM $vmConfig -Windows -ComputerName $vmName -Credential $cred -ProvisionVMAgent -EnableAutoUpdate
     $vmConfig = Set-AzureRmVMSourceImage -VM $vmConfig -PublisherName $publisher -Offer $offer -Skus $sku -Version $version
     ```
 
-7. Lägga till hello två nätverkskort som skapade ovan toohello `vmConfig` objekt.
+7. Lägg till de två nätverkskorten skapade ovan till den `vmConfig` objekt.
 
     ```powershell
     $vmConfig = Add-AzureRmVMNetworkInterface -VM $vmConfig -Id $nic1.Id -Primary
     $vmConfig = Add-AzureRmVMNetworkInterface -VM $vmConfig -Id $nic2.Id
     ```
 
-8. Skapa hello OS-disken och skapa hello VM. Meddelande hello `}` slutar hello `for` loop.
+8. Skapa OS-disken och skapa den virtuella datorn. Observera den `}` slutar den `for` loop.
 
     ```powershell
     $osDiskName = $vmName + "-" + $osDiskSuffix
@@ -201,10 +201,10 @@ Du måste toouse toocreate en loop som många virtuella datorer som du vill och 
     }
     ```
 
-### <a name="step-4---run-hello-script"></a>Steg 4 – kör hello skript
-Nu när du hämtade och ändrade utifrån hello skript dina behov, runt han skript toocreate hello serverdel databasen virtuella datorer med flera nätverkskort.
+### <a name="step-4---run-the-script"></a>Steg 4 – kör skriptet
+Nu när du har hämtat och ändra skriptet baserat på dina behov runt han använda skript för att skapa serverdelen databasen virtuella datorer med flera nätverkskort.
 
-1. Spara skriptet och kör det från hello **PowerShell** Kommandotolken eller **PowerShell ISE**. Visas hello inledande utgående, enligt följande:
+1. Spara skriptet och kör det från den **PowerShell** Kommandotolken eller **PowerShell ISE**. Visas första utdata, enligt följande:
 
         ResourceGroupName : IaaSStory-Backend
         Location          : westus
@@ -217,7 +217,7 @@ Nu när du hämtade och ändrade utifrån hello skript dina behov, runt han skri
 
         ResourceId        : /subscriptions/[Subscription ID]/resourceGroups/IaaSStory-Backend
 
-2. Efter några minuter att fylla i hello autentiseringsuppgifter efterfrågas och klicka på **OK**. hello utdata nedan representerar en enda virtuell dator. Meddelande hello hela processen tog 8 minuter toocomplete.
+2. Efter några minuter att fylla i fråga om autentiseringsuppgifterna och klicka på **OK**. Utdata nedan representerar en enda virtuell dator. Observera att hela processen tog 8 minuter att slutföra.
 
         ResourceGroupName            :
         Id                           :

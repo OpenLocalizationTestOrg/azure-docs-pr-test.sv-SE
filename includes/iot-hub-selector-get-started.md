@@ -7,15 +7,15 @@
 > 
 
 ## <a name="introduction"></a>Introduktion
-Azure IoT Hub är en helt hanterad tjänst som möjliggör tillförlitlig och säker dubbelriktad kommunikation mellan flera miljoner IoT-enheter och som tillhandahåller serverdelen för lösningar av den här typen. En av hello största utmaningarna att IoT-projekt står inför är hur tooreliably och på ett säkert sätt ansluta enheter toohello lösningens serverdel. tooaddress denna utmaning har, IoT-hubb:
+Azure IoT Hub är en helt hanterad tjänst som möjliggör tillförlitlig och säker dubbelriktad kommunikation mellan flera miljoner IoT-enheter och som tillhandahåller serverdelen för lösningar av den här typen. En av de största utmaningarna i ett IoT-projekt är att på ett tillförlitligt och säkert sätt kunna ansluta enheter till lösningens serverdel. IoT Hub löser detta problem genom att:
 
 * Erbjuda tillförlitlig meddelandehantering i hög skala från enhet till moln och från moln till enhet.
 * Skydda kommunikationen med autentiseringsuppgifter och åtkomstkontroll för varje enhet.
-* Innehåller enhetsbibliotek för hello mest populära språk och plattformar.
+* Tillhandahålla enhetsbibliotek för de mest populära språken och plattformarna.
 
 I den här självstudiekursen lär du dig att:
 
-* Använd hello Azure portal toocreate en IoT-hubb.
+* Använda Azure-portalen för att skapa en IoT-hubb.
 * Skapa en enhetsidentitet i din IoT-hubb.
-* Skapa en simulerad enhetsapp som skickar telemetri tooyour lösningens serverdel.
+* Skapa en simulerad enhetsapp som skickar telemetri till serverdelen i lösningen.
 

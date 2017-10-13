@@ -1,5 +1,5 @@
 > [!IMPORTANT]
-> Du kan inte använda program som är registrerade i hello **program** fliken på hello klassiska [Azure-hanteringsportalen](https://manage.windowsazure.com/) för den här.
+> Du kan inte använda program som är registrerade i **Program**-fliken i den klassiska [Azure-hanteringsportalen](https://manage.windowsazure.com/) för det här.
 > 
 > 
 

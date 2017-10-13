@@ -1,13 +1,13 @@
 
-1. Logga in tooyour Azure-prenumeration med hjälp av stegen i hello [ansluta tooAzure från hello Azure CLI 1.0](../articles/xplat-cli-connect.md).
+1. Logga in på din Azure-prenumeration med hjälp av anvisningarna i [Connect to Azure from the Azure CLI 1.0](../articles/xplat-cli-connect.md) (Ansluta till Azure från Azure CLI 1.0).
 
-2. Kontrollera att du är i hello klassisk distribution läge på följande sätt:
+2. Se till att du använder läget för klassisk distribution:
 
     ```azurecli
     azure config mode asm
     ```
 
-3. Ta reda på hello Linux bilden som du vill tooload från hello tillgängliga avbildningar på följande sätt:
+3. Ta reda på den Linux-avbildning som du vill läsa in från de tillgängliga avbildningarna på följande sätt:
 
    ```azurecli   
     azure vm image list | grep "Linux"
@@ -15,7 +15,7 @@
    
     I ett kommandotolksfönster i Windows använder du **söka** i stället för grep.
    
-4. Använd `azure vm create` toocreate en virtuell dator med hello Linux-avbildning från hello föregående lista. I det här steget skapas en molntjänst och ett lagringskonto. Du kan också ansluta den här Virtuella tooan befintlig molntjänst med en `-c` alternativet. Skapa en SSH-slutpunkten toolog i toohello virtuell Linux-dator med hello `-e` alternativet. hello följande exempel skapas en virtuell dator med namnet `myVM` med hello `Ubuntu-14_04_4-LTS` bilden i hello `West US` plats, och lägger till ett användarnamn `ops`:
+4. Använd `azure vm create` för att skapa en virtuell dator med Linux-avbildningen från föregående lista. I det här steget skapas en molntjänst och ett lagringskonto. Du kan också ansluta den virtuella datorn till en befintlig molntjänst med alternativet `-c`. Skapa en SSH-slutpunkt för att logga in på den virtuella Linux-datorn med alternativet `-e`. I följande exempel skapas en virtuell dator med namnet `myVM` med hjälp av avbildningen `Ubuntu-14_04_4-LTS` på platsen `West US`, och lägger till ett användarnamn `ops`:
    
     ```azurecli
     azure vm create myVM \
@@ -23,7 +23,7 @@
         -g ops -p P@ssw0rd! -z "Small" -e -l "West US"
     ```
 
-    hello utdata är liknande toohello följande exempel:
+    Utdata ser ut ungefär så här:
 
     ```azurecli
     info:    Executing command vm create
@@ -37,20 +37,20 @@
     ```
    
    > [!NOTE]
-   > För en virtuell Linux-dator, måste du ange hello `-e` alternativet i `vm create`. Det är inte möjligt tooenable SSH efter hello virtuella datorn har skapats. Mer information om SSH läsa [hur tooUse SSH med Linux på Azure](../articles/virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+   > För en virtuell Linux-dator måste du ange alternativet `-e` i `vm create`. Det går inte att aktivera SSH när den virtuella datorn har skapats. Mer information om SSH finns i [Så här använder du SSH med Linux på Azure](../articles/virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-5. Du kan verifiera hello attribut för hello VM med hjälp av hello `azure vm show` kommando. hello följande exempel visar information för hello virtuella datorn med namnet `myVM`:
+5. Du kan verifiera attribut för den virtuella datorn med hjälp av kommandot `azure vm show`. I följande exempel visas information för den virtuella datorn med namnet `myVM`:
 
     ```azurecli   
     azure vm show myVM
     ```
 
-6. Starta den virtuella datorn med hello `azure vm start` kommandot på följande sätt:
+6. Starta den virtuella datorn med kommandot `azure vm start` enligt följande:
 
     ```azurecli
     azure vm start myVM
     ```
 
 ## <a name="next-steps"></a>Nästa steg
-Mer information om alla Azure CLI 1.0 virtuella kommandona läsa hello [Using hello Azure CLI 1.0 med hello klassisk distribution API](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2).
+Mer information om alla dessa Azure CLI 1.0-kommandon för virtuella datorer finns i [Using the Azure CLI 1.0 with the Classic deployment API](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) (Använda Azure CLI 1.0 med klassisk API-distribution).
 

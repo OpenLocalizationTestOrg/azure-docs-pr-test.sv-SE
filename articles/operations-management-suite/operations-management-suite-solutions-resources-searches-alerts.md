@@ -1,6 +1,6 @@
 ---
-title: "aaaSaved sökningar och aviseringar i OMS-lösningar | Microsoft Docs"
-description: "Lösningar i OMS inkluderar vanligtvis sparade sökningar i logganalys tooanalyze data som samlas in av hello-lösning.  De kan också definiera aviseringar toonotify hello användaren eller automatiskt utföra åtgärder i svaret tooa kritiska problem.  Den här artikeln beskriver hur toodefine logganalys sparade sökningar och aviseringar i en ARM-mall så att de kan tas med i hanteringslösningar."
+title: "Sparade sökningar och aviseringar i OMS-lösningar | Microsoft Docs"
+description: "Lösningar i OMS inkluderar vanligtvis sparade sökningar i logganalys att analysera data som samlas in av lösningen.  De kan också definiera varningar som meddelar användaren eller automatiskt utföra åtgärder som svar på ett allvarligt problem.  Den här artikeln beskriver hur du definierar logganalys sparade sökningar och aviseringar i en ARM-mall så att de kan tas med i hanteringslösningar."
 services: operations-management-suite
 documentationcenter: 
 author: bwren
@@ -14,39 +14,39 @@ ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 93d7c5bbf061473833ca6c0a8e4d8e10d923f3ed
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 21c42a747a08c5386c65d10190baf0054a7adef8
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="adding-log-analytics-saved-searches-and-alerts-toooms-management-solution-preview"></a>Lägga till logganalys sparade sökningar och aviseringar tooOMS lösning (förhandsgranskning)
+# <a name="adding-log-analytics-saved-searches-and-alerts-to-oms-management-solution-preview"></a>Lägga till logganalys sparade sökningar och aviseringar till OMS-hanteringslösning (förhandsgranskning)
 
 > [!NOTE]
-> Den här är dokumentationen preliminär för att skapa lösningar för hantering i OMS som för närvarande finns i förhandsgranskningen. Ett schema som beskrivs nedan är ämne toochange.   
+> Den här är dokumentationen preliminär för att skapa lösningar för hantering i OMS som för närvarande finns i förhandsgranskningen. Ett schema som beskrivs nedan kan ändras.   
 
 
-[Lösningar för hantering i OMS](operations-management-suite-solutions.md) inkluderar vanligtvis [sparade sökningar](../log-analytics/log-analytics-log-searches.md) i logganalys tooanalyze data som samlas in av hello-lösning.  De kan också definiera [aviseringar](../log-analytics/log-analytics-alerts.md) toonotify hello användaren eller automatiskt utföra åtgärder i svaret tooa kritiska problem.  Den här artikeln beskriver hur toodefine logganalys sparade sökningar och aviseringar i en [resurshantering mallen](../resource-manager-template-walkthrough.md) så att de kan tas med i [hanteringslösningar](operations-management-suite-solutions-creating.md).
+[Lösningar för hantering i OMS](operations-management-suite-solutions.md) inkluderar vanligtvis [sparade sökningar](../log-analytics/log-analytics-log-searches.md) i logganalys att analysera data som samlas in av lösningen.  De kan också definiera [aviseringar](../log-analytics/log-analytics-alerts.md) att meddela användaren eller automatiskt utföra åtgärder som svar på ett allvarligt problem.  Den här artikeln beskriver hur du definierar logganalys sparade sökningar och aviseringar i en [resurshantering mallen](../resource-manager-template-walkthrough.md) så att de kan tas med i [hanteringslösningar](operations-management-suite-solutions-creating.md).
 
 > [!NOTE]
-> hello exempel i den här artikeln använder parametrar och variabler är antingen obligatorisk eller vanliga toomanagement lösningar som beskrivs i [och skapa lösningar för hantering i Operations Management Suite (OMS)](operations-management-suite-solutions-creating.md)  
+> Exemplen i den här artikeln använder parametrar och variabler som är obligatoriska eller vanligt att hanteringslösningar och beskrivs i [och skapa lösningar för hantering i Operations Management Suite (OMS)](operations-management-suite-solutions-creating.md)  
 
 ## <a name="prerequisites"></a>Krav
-Den här artikeln förutsätter att du redan är bekant med för[skapar en lösning för](operations-management-suite-solutions-creating.md) och hello struktur för ett [ARM-mallen](../resource-group-authoring-templates.md) och lösningsfilen.
+Den här artikeln förutsätter att du redan är bekant med [skapar en lösning för](operations-management-suite-solutions-creating.md) och struktur för ett [ARM-mallen](../resource-group-authoring-templates.md) och lösningsfilen.
 
 
 ## <a name="log-analytics-workspace"></a>Log Analytics-arbetsyta
-Alla resurser i logganalys finns i en [arbetsytan](../log-analytics/log-analytics-manage-access.md).  Enligt beskrivningen i [OMS arbetsytan och Automation-konto](operations-management-suite-solutions.md#oms-workspace-and-automation-account) hello arbetsytan ingår inte i hello hanteringslösning men det måste finnas innan hello lösningen är installerad.  Hello lösning installationen misslyckas om den inte är tillgänglig.
+Alla resurser i logganalys finns i en [arbetsytan](../log-analytics/log-analytics-manage-access.md).  Enligt beskrivningen i [OMS arbetsytan och Automation-konto](operations-management-suite-solutions.md#oms-workspace-and-automation-account) arbetsytan ingår inte i hanteringslösningen men det måste finnas innan lösningen är installerad.  Lösning installationen misslyckas om det inte är tillgänglig.
 
-hello heter hello arbetsytan i hello namn för varje logganalys-resurs.  Detta görs i hello lösningen med hello **arbetsytan** parameter som hello följande exempel på en savedsearch resurs.
+Namnet på arbetsytan är namnet på varje logganalys-resurs.  Detta görs i lösningen med den **arbetsytan** parameter som i följande exempel på en savedsearch resurs.
 
     "name": "[concat(parameters('workspaceName'), '/', variables('SavedSearchId'))]"
 
 
 ## <a name="saved-searches"></a>Sparade sökningar
-Inkludera [sparade sökningar](../log-analytics/log-analytics-log-searches.md) i en lösning tooallow användare tooquery data som samlas in av din lösning.  Sparade sökningar visas under **Favoriter** i hello OMS-portalen och **sparade sökningar** i hello Azure-portalen.  En sparad sökning krävs också för varje avisering.   
+Inkludera [sparade sökningar](../log-analytics/log-analytics-log-searches.md) i en lösning för att tillåta användare att fråga efter data som samlas in av din lösning.  Sparade sökningar visas under **Favoriter** i OMS-portalen och **sparade sökningar** i Azure-portalen.  En sparad sökning krävs också för varje avisering.   
 
-[Logganalys sparad sökning](../log-analytics/log-analytics-log-searches.md) resurser har en typ av `Microsoft.OperationalInsights/workspaces/savedSearches` och ha hello följande struktur.  Detta inkluderar vanliga parametrarna och variablerna så att du kan kopiera och klistra in det här kodstycket i din lösningsfilen och ändra hello parameternamn. 
+[Logganalys sparad sökning](../log-analytics/log-analytics-log-searches.md) resurser har en typ av `Microsoft.OperationalInsights/workspaces/savedSearches` och har följande struktur.  Detta inkluderar vanliga parametrarna och variablerna så att du kan kopiera och klistra in det här kodstycket i din lösningsfilen och ändra parameternamn. 
 
     {
         "name": "[concat(parameters('workspaceName'), '/', variables('SavedSearch').Name)]",
@@ -65,33 +65,33 @@ Inkludera [sparade sökningar](../log-analytics/log-analytics-log-searches.md) i
 
 
 
-Var och en av hello egenskaperna för en sparad sökning beskrivs i hello i den följande tabellen. 
+Var och en av egenskaperna för en sparad sökning beskrivs i följande tabell. 
 
 | Egenskap | Beskrivning |
 |:--- |:--- |
-| category | hello kategori för hello sparad sökning.  Alla sparade sökningar i hello som delar samma lösning ofta en enda kategori så att de grupperas tillsammans i hello-konsolen. |
-| visningsnamn | Namnet toodisplay för hello sparad sökning i hello-portalen. |
-| DocumentDB | Fråga toorun. |
+| category | Kategorin för den sparade sökningen.  Alla sparade sökningar i samma lösning kommer ofta att dela en enda kategori så att de grupperas tillsammans i konsolen. |
+| visningsnamn | Namnet som visas för den sparade sökningen i portalen. |
+| DocumentDB | Frågan ska köras. |
 
 > [!NOTE]
-> Du kan behöva toouse escape-tecken i hello fråga om den innehåller tecken som kan tolkas som JSON.  Om din fråga var till exempel **typ: AzureActivity OperationName:"Microsoft.Compute/virtualMachines/write”**, bör vara skriven i hello lösningsfilen som **typ: AzureActivity OperationName:\" Microsoft.Compute/virtualMachines/write\"**.
+> Du kan behöva använda escape-tecken i fråga om den innehåller tecken som kan tolkas som JSON.  Om din fråga var till exempel **typ: AzureActivity OperationName:"Microsoft.Compute/virtualMachines/write”**, bör vara skriven i lösningsfilen som **typ: AzureActivity OperationName:\"Microsoft.Compute/virtualMachines/write\"**.
 
 ## <a name="alerts"></a>Aviseringar
-[Logga Analytics varningar](../log-analytics/log-analytics-alerts.md) skapas av Varningsregler som kör en sparad sökning med regelbundna intervall.  Om hello resultaten av hello-frågan matchar angivet villkor, skapas en avisering post och en eller flera åtgärder körs.  
+[Logga Analytics varningar](../log-analytics/log-analytics-alerts.md) skapas av Varningsregler som kör en sparad sökning med regelbundna intervall.  Om resultatet av frågan matchar de angivna villkoren, skapas en avisering post och en eller flera åtgärder körs.  
 
-Varningsregler i en hanteringslösning består av följande tre olika resurser hello.
+Varningsregler i en hanteringslösning består av följande tre olika resurser.
 
-- **Sparad sökning.**  Definierar hello loggen sökning som ska köras.  Flera Varningsregler kan dela en sparad sökning.
-- **Schema.**  Definierar hur ofta hello loggen sökningen ska köras.  Varje varningsregeln ska ha ett och endast ett schema.
-- **Åtgärd för aviseringen.**  Varje regel för varning har en åtgärd resurs med en typ av **avisering** som definierar hello information om hello aviseringen, till exempel hello kriterier för när en avisering ska skapas och hello aviseringens allvarlighetsgrad.  hello åtgärd resursen kommer du även definiera ett e-post och runbook-svar.
-- **Webhook-åtgärd (valfritt).**  Om hello varningsregeln ska anropa en webhook, så det krävs en ytterligare åtgärd resurs med en typ av **Webhook**.    
+- **Sparad sökning.**  Definierar sökningen loggen som ska köras.  Flera Varningsregler kan dela en sparad sökning.
+- **Schema.**  Definierar hur ofta loggen sökningen ska köras.  Varje varningsregeln ska ha ett och endast ett schema.
+- **Åtgärd för aviseringen.**  Varje regel för varning har en åtgärd resurs med en typ av **avisering** som definierar information om aviseringen, till exempel kriterier för när en avisering post skapas och den avisering allvarlighetsgrad.  Åtgärden resursen kommer du även definiera ett e-post och runbook-svar.
+- **Webhook-åtgärd (valfritt).**  Om varningsregeln ska anropa en webhook, så det krävs en ytterligare åtgärd resurs med en typ av **Webhook**.    
 
-Sparad sökning resurser som beskrivs ovan.  hello beskrivs andra resurser som nedan.
+Sparad sökning resurser som beskrivs ovan.  De andra resurserna beskrivs nedan.
 
 
 ### <a name="schedule-resource"></a>Schema för resurs
 
-En sparad sökning kan ha en eller flera scheman med ett schema som representerar en separat avisering regel. hello definierar schema hur ofta hello sökning körs och hello tidsintervall under vilka hello data hämtas.  Schemalägga resurser har en typ av `Microsoft.OperationalInsights/workspaces/savedSearches/schedules/` och ha hello följande struktur. Detta inkluderar vanliga parametrarna och variablerna så att du kan kopiera och klistra in det här kodstycket i din lösningsfilen och ändra hello parameternamn. 
+En sparad sökning kan ha en eller flera scheman med ett schema som representerar en separat avisering regel. Schemat definierar hur ofta sökningen ska köras och det tidsintervall under vilken data ska hämtas.  Schemalägga resurser har en typ av `Microsoft.OperationalInsights/workspaces/savedSearches/schedules/` och har följande struktur. Detta inkluderar vanliga parametrarna och variablerna så att du kan kopiera och klistra in det här kodstycket i din lösningsfilen och ändra parameternamn. 
 
 
     {
@@ -111,27 +111,27 @@ En sparad sökning kan ha en eller flera scheman med ett schema som representera
 
 
 
-hello egenskaper för schema resurser beskrivs i hello i den följande tabellen.
+I följande tabell beskrivs egenskaperna för schemalägga resurser.
 
 | Elementnamn | Krävs | Beskrivning |
 |:--|:--|:--|
-| aktiverad       | Ja | Anger om hello avisering aktiveras när den skapas. |
-| interval      | Ja | Hur ofta hello fråga körs i minuter. |
-| QueryTimeSpan | Ja | Lång tid i minuter under vilka tooevaluate resultat. |
+| aktiverad       | Ja | Anger om aviseringen är aktiverad när den skapas. |
+| intervall      | Ja | Hur ofta frågan körs i minuter. |
+| QueryTimeSpan | Ja | Lång tid i minuter som ska utvärdera resultaten över. |
 
-hello schema resursen ska beror på hello sparad sökning så att den har skapats innan hello schema.
+Resursen schema ska beror på den sparade sökningen så att den har skapats innan schemat.
 
 
 ### <a name="actions"></a>Åtgärder
-Det finns två typer av åtgärden resursen som anges av hello **typen** egenskapen.  Ett schema kräver en **avisering** åtgärd som definierar hello information om hello varningsregeln och vilka åtgärder som vidtas när en avisering skapas.  Det kan också innehålla en **Webhook** åtgärd om en webhook ska anropas från hello avisering.  
+Det finns två typer av åtgärden resursen som anges av den **typen** egenskapen.  Ett schema kräver en **avisering** åtgärd som definierar varningsregeln och vilka åtgärder som vidtas när en avisering skapas.  Det kan också innehålla en **Webhook** åtgärd om en webhook ska anropas från aviseringen.  
 
 Åtgärden resurser har en typ av `Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions`.  
 
 #### <a name="alert-actions"></a>Aviseringsåtgärder
 
-Varje schemat har en **avisering** åtgärd.  Detta definierar hello information om hello aviseringen och eventuellt meddelande- och reparationsloggarna åtgärder.  Ett meddelande skickas ett e-tooone eller flera adresser.  En startar en runbook i Azure Automation tooattempt tooremediate hello identifierat problemet.
+Varje schemat har en **avisering** åtgärd.  Detta definierar information om aviseringen och eventuellt meddelande- och reparationsloggarna åtgärder.  Ett meddelande skickas ett e-postmeddelande till en eller flera adresser.  En startar en runbook i Azure Automation för att försöka åtgärda identifierade problem.
 
-Aviseringsåtgärder har hello följande struktur.  Detta inkluderar vanliga parametrarna och variablerna så att du kan kopiera och klistra in det här kodstycket i din lösningsfilen och ändra hello parameternamn. 
+Aviseringsåtgärder har följande struktur.  Detta inkluderar vanliga parametrarna och variablerna så att du kan kopiera och klistra in det här kodstycket i din lösningsfilen och ändra parameternamn. 
 
 
 
@@ -170,23 +170,23 @@ Aviseringsåtgärder har hello följande struktur.  Detta inkluderar vanliga par
         }
     }
 
-hello egenskaper för Aviseringsåtgärd resurser beskrivs i följande tabeller hello.
+Egenskaper för Aviseringsåtgärd resurser beskrivs i följande tabeller.
 
 | Elementnamn | Krävs | Beskrivning |
 |:--|:--|:--|
-| Typ | Ja | Typ av hello-åtgärd.  Detta blir **avisering** för aviseringsåtgärder. |
-| Namn | Ja | Visningsnamn för hello aviseringen.  Detta är hello-namnet som visas i hello varningsregeln hello-konsolen. |
-| Beskrivning | Nej | Valfri beskrivning av hello avisering. |
-| Allvarsgrad | Ja | Allvarlighetsgrad för aviseringen hello-posten från hello följande värden:<br><br> **Kritiska**<br>**Varning**<br>**Information** |
+| Typ | Ja | Typ av åtgärd.  Detta blir **avisering** för aviseringsåtgärder. |
+| Namn | Ja | Visningsnamn för aviseringen.  Detta är det namn som visas i konsolen för regeln. |
+| Beskrivning | Nej | Valfri beskrivning av aviseringen. |
+| Allvarsgrad | Ja | Allvarlighetsgrad för aviseringen posten från följande värden:<br><br> **Kritiska**<br>**Varning**<br>**Information** |
 
 
 ##### <a name="threshold"></a>Tröskelvärde
-Det här avsnittet krävs.  Den definierar hello egenskaper för hello tröskelvärde.
+Det här avsnittet krävs.  Den definierar egenskaperna för tröskelvärde.
 
 | Elementnamn | Krävs | Beskrivning |
 |:--|:--|:--|
-| Operatorn | Ja | Operatorn hello jämförelse från hello följande värden:<br><br>**gt = större än<br>lt = mindre än** |
-| Värde | Ja | hello värdet toocompare hello resultat. |
+| Operatorn | Ja | Operator för jämförelse från följande värden:<br><br>**gt = större än<br>lt = mindre än** |
+| Värde | Ja | Värde att jämföra resultatet. |
 
 
 ##### <a name="metricstrigger"></a>MetricsTrigger
@@ -197,41 +197,41 @@ Det här avsnittet är valfritt.  Inkludera det för ett mått mätning aviserin
 
 | Elementnamn | Krävs | Beskrivning |
 |:--|:--|:--|
-| TriggerCondition | Ja | Anger om hello tröskelvärde för totala antalet överträdelser eller på varandra följande överträdelser från hello följande värden:<br><br>**Totalt antal<br>i följd** |
-| Operatorn | Ja | Operatorn hello jämförelse från hello följande värden:<br><br>**gt = större än<br>lt = mindre än** |
-| Värde | Ja | Antalet hello tider hello villkor måste vara uppfyllda tootrigger hello avisering. |
+| TriggerCondition | Ja | Anger om tröskelvärdet för totala antalet överträdelser eller på varandra följande överträdelser från följande värden:<br><br>**Totalt antal<br>i följd** |
+| Operatorn | Ja | Operator för jämförelse från följande värden:<br><br>**gt = större än<br>lt = mindre än** |
+| Värde | Ja | Antal gånger som villkoret måste uppfyllas för att utlösa en avisering. |
 
 ##### <a name="throttling"></a>Begränsning
-Det här avsnittet är valfritt.  Inkludera det här avsnittet om du vill toosuppress aviseringar från hello samma regel för vissa tidsperiod när en avisering har skapats.
+Det här avsnittet är valfritt.  Inkludera det här avsnittet om du vill undertrycka aviseringar från samma regel för vissa tidsperiod när en avisering har skapats.
 
 | Elementnamn | Krävs | Beskrivning |
 |:--|:--|:--|
-| DurationInMinutes | Ja om begränsning element som ingår | Antal minuter toosuppress aviseringar efter en från hello samma varningsregeln har skapats. |
+| DurationInMinutes | Ja om begränsning element som ingår | Antal minuter för att undertrycka aviseringar när en från samma varningsregeln har skapats. |
 
 ##### <a name="emailnotification"></a>EmailNotification
- Det här avsnittet är valfria inkludera den om du vill att hello avisering toosend e tooone eller flera mottagare.
+ Det här avsnittet är valfritt att inkludera det om du vill att aviseringen ska skicka e-post till en eller flera mottagare.
 
 | Elementnamn | Krävs | Beskrivning |
 |:--|:--|:--|
-| mottagare | Ja | Kommaavgränsad lista med e-adresser toosend meddelande när en avisering skapas som i följande exempel hello.<br><br>**[ "recipient1@contoso.com", "recipient2@contoso.com" ]** |
-| Ämne | Ja | Ämnesrad hello e-post. |
+| mottagare | Ja | Kommaavgränsad lista över e-postadresser för att skicka en avisering när en avisering skapas som i följande exempel.<br><br>**[ "recipient1@contoso.com", "recipient2@contoso.com" ]** |
+| Ämne | Ja | Ämnesrad i e-postmeddelandet. |
 | Bifogad fil | Nej | Bifogade filer stöds inte för närvarande.  Om det här elementet finns det ska vara **ingen**. |
 
 
 ##### <a name="remediation"></a>Reparation
-Det här avsnittet är valfritt att inkludera det om du vill att en runbook toostart i svaret toohello avisering. |
+Det här avsnittet är valfritt att inkludera det om du vill att en runbook att starta som svar på aviseringen. |
 
 | Elementnamn | Krävs | Beskrivning |
 |:--|:--|:--|
-| RunbookName | Ja | Namnet på hello runbook toostart. |
-| WebhookUri | Ja | URI för hello webhook för hello runbook. |
-| Förfallodatum | Nej | Datum och tid då hello reparation upphör att gälla. |
+| RunbookName | Ja | Namnet på runbook att starta. |
+| WebhookUri | Ja | URI för webhook för runbook. |
+| Förfallodatum | Nej | Datum och tid då reparationen upphör att gälla. |
 
 #### <a name="webhook-actions"></a>Webhook-åtgärder
 
-Webhook-åtgärder kan du starta en process genom att anropa en URL och du kan också tillhandahålla en nyttolast toobe skickas. De är liknande tooRemediation åtgärder förutom de är avsedda för webhooks som kan anropa processer än Azure Automation-runbooks. De ger också hello ytterligare alternativ för att tillhandahålla en nyttolast toobe levereras toohello fjärrprocess.
+Webhook-åtgärder kan du starta en process genom att anropa en URL och du kan också tillhandahålla en nyttolast som ska skickas. De liknar reparationsåtgärder förutom de är avsedda för webhooks som kan anropa processer än Azure Automation-runbooks. De ger också ytterligare alternativ för att tillhandahålla en nyttolast som ska levereras till fjärrprocessen.
 
-Om aviseringen ska anropa en webhook, så den behöver en åtgärd resurs med en typ av **Webhook** i tillägg toohello **avisering** åtgärd resurs.  
+Om aviseringen ska anropa en webhook, så den behöver en åtgärd resurs med en typ av **Webhook** förutom den **avisering** åtgärd resurs.  
 
     {
       "name": "name": "[concat(parameters('workspaceName'), '/', variables('SavedSearch').Name, '/', variables('Schedule').Name, '/', variables('Webhook').Name)]",
@@ -249,28 +249,28 @@ Om aviseringen ska anropa en webhook, så den behöver en åtgärd resurs med en
       }
     }
 
-hello egenskaper för Webhook åtgärd resurser beskrivs i följande tabeller hello.
+Egenskaper för Webhook åtgärd resurser beskrivs i följande tabeller.
 
 | Elementnamn | Krävs | Beskrivning |
 |:--|:--|:--|
-| typ | Ja | Typ av hello-åtgärd.  Detta blir **Webhook** för webhook-åtgärder. |
-| namn | Ja | Visningsnamn för hello-åtgärd.  Detta visas inte i hello-konsolen. |
-| wehookUri | Ja | URI för hello webhooken. |
-| CustomPayload | Nej | Anpassad nyttolast toobe skickas toohello webhooken. hello format beror på vilken hello webhook förväntas. |
+| typ | Ja | Typ av åtgärd.  Detta blir **Webhook** för webhook-åtgärder. |
+| namn | Ja | Visningsnamn för åtgärden.  Detta visas inte i konsolen. |
+| wehookUri | Ja | URI för webhooken. |
+| CustomPayload | Nej | Anpassad nyttolast skickas till webhooken. Formatet beror på vad webhooken förväntas. |
 
 
 
 
 ## <a name="sample"></a>Exempel
 
-Följande är ett exempel på en lösning som omfattar som innehåller hello följande resurser:
+Följande är ett exempel på en lösning som omfattar som innehåller följande resurser:
 
 - Sparad sökning
 - Schema
 - Aviseringsåtgärden
 - Webhook-åtgärd
 
-Hej exempel använder [standardlösningen parametrar](operations-management-suite-solutions-solution-file.md#parameters) variabler som ofta används i en lösning som motsats toohardcoding värdena i resursdefinitionerna hello.
+Används [standardlösningen parametrar](operations-management-suite-solutions-solution-file.md#parameters) variabler som ofta används i en lösning i stället för hardcoding värden i resursdefinitionerna.
 
     {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -309,7 +309,7 @@ Hej exempel använder [standardlösningen parametrar](operations-management-suit
           "recipients": {
             "type": "string",
             "metadata": {
-              "Description": "List of recipients for hello email alert separated by semicolon"
+              "Description": "List of recipients for the email alert separated by semicolon"
             }
           }
         },
@@ -477,7 +477,7 @@ Hej exempel använder [standardlösningen parametrar](operations-management-suit
     }
 
 
-hello följande parameterfilen ger exempel värden för den här lösningen.
+Följande parameterfilen innehåller exempel värden för den här lösningen.
 
     {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
@@ -506,6 +506,6 @@ hello följande parameterfilen ger exempel värden för den här lösningen.
 
 
 ## <a name="next-steps"></a>Nästa steg
-* [Lägga till vyer](operations-management-suite-solutions-resources-views.md) tooyour hanteringslösning.
-* [Lägg till Automation-runbooks och andra resurser](operations-management-suite-solutions-resources-automation.md) tooyour hanteringslösning.
+* [Lägga till vyer](operations-management-suite-solutions-resources-views.md) att din lösning för hantering.
+* [Lägg till Automation-runbooks och andra resurser](operations-management-suite-solutions-resources-automation.md) att din lösning för hantering.
 

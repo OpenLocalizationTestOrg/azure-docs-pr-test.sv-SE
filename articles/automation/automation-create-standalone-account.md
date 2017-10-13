@@ -1,9 +1,9 @@
 ---
-title: "aaaCreate fristående Azure Automation-konto | Microsoft Docs"
-description: "Självstudiekurs som vägleder dig genom hello skapa, testa och exempel användningen av primära autentiseringsmetod för nätverkssäkerhet i Azure Automation."
+title: "Skapa ett fristående Azure Automation-konto | Microsoft Docs"
+description: "Självstudie som steg för steg beskriver hur du skapar, testar och använder autentisering med säkerhetsobjekt i Azure Automation."
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: carmonm
 editor: 
 ms.assetid: 2f783441-15c7-4ea0-ba27-d7daa39b1dd3
@@ -14,76 +14,79 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/18/2017
 ms.author: magoedte
-ms.openlocfilehash: 1500d25d9565d4082768933834303a17c5e84234
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: e3c18c7886c8338efc6168464b63a9557909a769
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Skapa ett fristående Azure Automation-konto
-Det här avsnittet visar hur toocreate ett Automation-konto från hello Azure-portalen om du vill tooevaluate och Läs Azure Automation utan att inkludera hello ytterligare hanteringslösningarna eller integrering med OMS logganalys tooprovide avancerad övervakning av runbook-jobb.  Du kan lägga till dessa hanteringslösningar eller integrera med logganalys när som helst hello framtida.  Med hello Automation-konto är du kan tooauthenticate runbooks hantera resurser i Azure Resource Manager eller i Azure klassiska distributionen.
+I det här avsnittet beskrivs hur du skapar ett Automation-konto på Azure Portal om du vill utvärdera och lära dig mer om Azure Automation utan de ytterligare hanteringslösningarna eller integreringen med OMS Log Analytics för avancerad övervakning av runbook-jobb.  Du kan när som helst lägga till de här hanteringslösningarna eller integrera med Log Analytics senare.  Med Automation-kontot kan du autentisera runbookflöden som hanterar resurser i Azure Resource Manager eller klassiska Azure.
 
-När du skapar ett Automation-konto i hello Azure-portalen, skapas automatiskt:
+När du skapar ett Automation-konto på Azure Portal skapas följande automatiskt:
 
-* Kör som-konto som skapar ett nytt huvudnamn för tjänsten i Azure Active Directory, ett certifikat och tilldelar hello deltagare rollbaserad åtkomstkontroll (RBAC) som används för toomanage Resource Manager-resurser med hjälp av runbooks.   
-* Klassiska kör som-konto genom att ladda upp ett hanteringscertifikat som används för toomanage klassiska resurser med hjälp av runbooks.  
+* Kör som-kontot som skapar ett nytt namn för tjänstobjektet i Azure Active Directory och ett certifikat samt tilldelar rollen som deltagare med rollbaserad åtkomstkontroll (RBAC), som används för att hantera Resource Manager-resurser med hjälp av runbooks.   
+* Ett klassiskt Kör som-konto genom att överföra ett hanteringscertifikat, som används för att hantera klassiska resurser med hjälp av runbooks.  
 
-Detta förenklar hello du och hjälper dig att snabbt börja skapa och distribuera runbooks toosupport ditt automation måste ha.  
+Detta gör processen enklare för dig och hjälper dig att snabbt börja skapa och distribuera runbooks för dina automatiseringsbehov.  
 
-## <a name="permissions-required-toocreate-automation-account"></a>Behörigheter som krävs toocreate Automation-konto
-toocreate eller uppdatera ett Automation-konto måste du ha följande specifika privilegier hello och behörigheter krävs toocomplete det här avsnittet.   
+## <a name="permissions-required-to-create-automation-account"></a>Behörighet som krävs för att skapa Automation-konton
+För att kunna skapa eller uppdatera Automation-kontot och slutföra det här avsnittet måste du ha vissa behörigheter.   
  
-* I ordning toocreate ett Automation-konto, din AD-användarkontot måste toobe tillagda tooa roll med behörigheter motsvarande toohello ägarrollen för Microsoft.Automation resurser som beskrivs i artikel [rollbaserad åtkomstkontroll i Azure Automation ](automation-role-based-access-control.md).  
-* Om hello App registreringar inställning har angetts för**Ja**, icke-administratörer i din Azure AD-klient kan [registrera AD-program](../azure-resource-manager/resource-group-create-service-principal-portal.md#check-azure-subscription-permissions).  Om hello app registreringar inställning har angetts för**nr**, hello-användaren som utför den här åtgärden måste vara en global administratör i Azure AD. 
+* Om du ska kunna skapa ett Automation-konto måste ditt AD-användarkonto tilldelas en roll med behörigheter motsvarande ägarrollen för Microsoft.Automation-resurser enligt beskrivningen i artikeln [Rollbaserad åtkomstkontroll i Azure Automation](automation-role-based-access-control.md).  
+* Om **Ja** har angetts för inställningen Appregistreringar kan användare som inte är administratörer i din Azure AD-klient [registrera AD-program](../azure-resource-manager/resource-group-create-service-principal-portal.md#check-azure-subscription-permissions).  Om **Nej** har angetts för inställningen Appregistreringar måste användaren som utför den här åtgärden vara global administratör i Azure AD. 
 
-Om du inte är medlem i Active Directory-instans för hello prenumeration innan du läggs toohello global administratör/co-administrator roll hello prenumeration, läggs tooActive Directory som en gäst. I så fall kan få du en ”du har inte behörighet toocreate...” varning för hello **lägga till Automation-konto** bladet. Användare som har lagts till toohello global administratör/co-administrator rollen först kan tas bort från hello prenumeration Active Directory-instans och läggs till igen toomake dem en fullständig användare i Active Directory. tooverify i den här situationen från hello **Azure Active Directory** rutan i hello Azure portal, Välj **användare och grupper**väljer **alla användare** och, när du har valt hello specifik användare, markerar du **profil**. Hej värdet för hello **användartyp** attributet under hello användare profil ska inte vara lika med **gäst**.
+Om du inte är medlem i prenumerationens Active Directory-instans innan du läggs till i rollen som global administratör/medadministratör för prenumerationen läggs du till i Active Directory som gäst. I så fall visas varningen ”Du har inte behörighet att skapa ...” på bladet **Lägg till Automation-konto**. Användare som har tilldelats rollen som global administratör/medadministratör kan tas bort från prenumerationens Active Directory-instans och sedan läggas till igen så att de blir fullständiga användare i Active Directory. Du kan kontrollera detta i rutan **Azure Active Directory** på Azure Portal genom att välja **Användare och grupper**, välja **Alla användare**, välja den specifika användaren och sedan välja **Profil**. Värdet för attributet **Användartyp** under användarens profil bör inte vara lika med **Gäst**.
 
-## <a name="create-a-new-automation-account-from-hello-azure-portal"></a>Skapa ett nytt Automation-konto från hello Azure-portalen
-I det här avsnittet, utföra hello följande steg toocreate ett Azure Automation-konto i hello Azure-portalen.    
+## <a name="create-a-new-automation-account-from-the-azure-portal"></a>Skapa ett nytt Automation-konto från Azure Portal
+I det här avsnittet ska du utföra följande steg för att skapa ett Azure Automation-konto från Azure Portal.    
 
-1. Logga in toohello Azure-portalen med ett konto som är medlem i rollen för hello Prenumerationsadministratörer och medadministratör för hello prenumeration.
+1. Logga in på Azure Portal med ett konto som är medlem i rollen Prenumerationsadministratörer och som är medadministratör för prenumerationen.
 2. Klicka på **Ny**.<br><br> ![Välj alternativet Ny på Azure Portal](media/automation-offering-get-started/automation-portal-martketplacestart.png)<br>  
-3. Sök efter **Automation** och sedan i hello sökresultat väljer **Automation- och kontrollservern***.<br><br> ![Sök efter och välj Automation från Marketplace](media/automation-create-standalone-account/automation-marketplace-select-create-automationacct.png)<br> 
-3. I bladet för hello Automation-konton klickar du på **Lägg till**.<br><br>![Lägga till ett Automation-konto](media/automation-create-standalone-account/automation-create-automationacct-properties.png)
-   
+3. Sök efter **Automation** och välj sedan **Automatisering och kontroll*** i sökresultaten.<br><br> ![Sök efter och välj Automation från Marketplace](media/automation-create-standalone-account/automation-marketplace-select-create-automationacct.png)<br> 
+3. Klicka på **Lägg till** på bladet Automation-konton.<br><br>![Lägga till ett Automation-konto](media/automation-create-standalone-account/automation-create-automationacct-properties.png)
+
+
    > [!NOTE]
-   > Om du ser följande varning i hello hello **lägga till Automation-konto** bladet beror det på ditt konto inte är medlem i rollen för hello Prenumerationsadministratörer och medadministratör för prenumerationen hello.<br><br>![Varningsmeddelande för Lägga till ett Automation-konto](media/automation-create-standalone-account/create-account-without-perms.png)
+   > Om du ser följande varning i bladet **Lägg till Automation-konto** beror det på att ditt konto inte är medlem i rollerna administratör eller medadministratör för prenumerationen.<br><br>![Varningsmeddelande för Lägga till ett Automation-konto](media/automation-create-standalone-account/create-account-without-perms.png)
    > 
    > 
-4. I hello **lägga till Automation-konto** bladet i hello **namnet** skriver ett namn på det nya Automation-kontot.
-5. Om du har mer än en prenumeration kan du ange en hello nytt konto, en ny eller befintlig **resursgruppen** och ett Azure-datacenter **plats**.
-6. Verifiera hello värdet **Ja** har valts för hello **skapa kör som-kontot Azure** alternativ och klickar på hello **skapa** knappen.  
+4. På bladet **Lägg till Automation-konto** skriver du namnet på det nya Automation-kontot i rutan **Namn**.
+5. Om du har mer än en prenumeration anger du den prenumeration som du vill använda för det nya kontot, en ny eller befintlig **resursgrupp** och en **plats** för Azure-datacentret.
+6. Kontrollera att värdet **Ja** har valts för **Skapa Kör som-konto i Azure** och klicka på knappen **Skapa**.  
    
    > [!NOTE]
-   > Om du vill skapa toonot hello-kör som-konto genom att välja alternativet hello **nr**, visas ett varningsmeddelande i hello **lägga till Automation-konto** bladet.  Medan hello kontot skapas i hello Azure-portalen, saknar en motsvarande autentiseringsidentitet inom din klassiska eller Resource Manager prenumeration katalogtjänst och därför ingen åtkomst tooresources i din prenumeration.  Detta förhindrar alla runbooks som refererar till det här kontot från att kunna tooauthenticate och utföra åtgärder mot resurser i dessa distributionsmodeller.
+   > Om du väljer att inte skapa ”Kör som”-kontot genom att välja alternativet **Nej** visas ett varningsmeddelande på bladet **Lägg till Automation-konto**.  Kontot skapas på Azure-portalen, men har inte motsvarande autentiseringsidentitet i den klassiska prenumerationskatalogtjänsten eller Resource Manager-prenumerationskatalogtjänsten och har därför inte åtkomst till resurser i din prenumeration.  Det här innebär att runbooks som refererar till det här kontot inte kan autentisera och utföra åtgärder mot resurser i dessa distributionsmodeller.
    > 
    > ![Varningsmeddelande för Lägga till ett Automation-konto](media/automation-create-standalone-account/create-account-decline-create-runas-msg.png)<br>
-   > Hello deltagarrollen tilldelas när hello tjänstens huvudnamn inte har skapats.
+   > Om tjänstobjektnamnet inte skapas tilldelas inte rollen Deltagare.
    > 
 
-7. Medan Azure skapar hello Automation-konto, du kan följa förloppet för hello under **meddelanden** hello-menyn.
+7. Medan Azure skapar Automation-kontot kan du följa förloppet under **Meddelanden** på menyn.
 
 ### <a name="resources-included"></a>Resurser som ingår
-När hello Automation-konto har skapats, skapas flera resurser automatiskt åt dig.  hello följande tabell sammanfattas resurser för hello kör som-konto.<br>
+När Automation-kontot har skapats skapas flera resurser automatiskt.  I följande tabell sammanfattas resurserna för Kör som-kontot.<br>
 
 | Resurs | Beskrivning |
 | --- | --- |
-| AzureAutomationTutorial-runbook |Ett exempel grafisk runbook som visar hur tooauthenticate med hello kör som-konto och hämtar alla hello Resource Manager-resurser. |
-| AzureAutomationTutorialScript-runbook |Ett exempel PowerShell-runbook som visar hur tooauthenticate med hello kör som-konto och hämtar alla hello Resource Manager-resurser. |
-| AzureRunAsCertificate |Certifikattillgång automatiskt skapas under skapandet av Automation-konto eller använda hello PowerShell-skriptet nedan för ett befintligt konto.  Det gör du tooauthenticate med Azure så att du kan hantera Azure Resource Manager-resurser från runbooks.  Det här certifikatet har en livslängd på ett år. |
-| AzureRunAsConnection |Anslutningstillgång automatiskt skapas under skapandet av Automation-konto eller använda hello PowerShell-skriptet nedan för ett befintligt konto. |
+| AzureAutomationTutorial-runbook |Ett exempel på en grafisk runbook som visar hur du autentiserar med hjälp av Kör som-kontot och hur du hämtar alla Resource Manager-resurser. |
+| AzureAutomationTutorialScript-runbook |Ett exempel på en PowerShell-runbook som visar hur du autentiserar med hjälp av Kör som-kontot och hur du hämtar alla Resource Manager-resurser. |
+| AzureAutomationTutorialPython2 Runbook |En python-exempelrunbook som visar hur man autentiserar med Kör som-konto och anger sedan de resursgrupper som finns i den angivna prenumerationen. |
+| AzureRunAsCertificate |Certifikattillgång som skapas automatiskt när Automation-kontot genereras eller med hjälp av PowerShell-skriptet nedan för ett befintligt konto.  Den gör att du kan autentisera med Azure så att du kan hantera Azure Resource Manager-resurser från runbooks.  Det här certifikatet har en livslängd på ett år. |
+| AzureRunAsConnection |Anslutningstillgång som skapas automatiskt när Automation-kontot genereras eller med hjälp av PowerShell-skriptet nedan för ett befintligt konto. |
 
-hello följande tabell sammanfattas resurser för hello klassiska kör som-konto.<br>
+I följande tabell sammanfattas resurserna för det klassiska Kör som-kontot.<br>
 
 | Resurs | Beskrivning |
 | --- | --- |
-| AzureClassicAutomationTutorial-runbook |Ett exempel grafisk runbook, som hämtar alla hello klassiska virtuella datorer i en prenumeration med hjälp av hello klassiska kör som-konto (certifikat) och sedan anger hello VM namn och status. |
-| AzureClassicAutomationTutorial Script-runbook |Ett exempel PowerShell-runbook, som hämtar alla hello klassiska virtuella datorer i en prenumeration med hjälp av hello klassiska kör som-konto (certifikat) och sedan anger hello VM namn och status. |
-| AzureClassicRunAsCertificate |Certifikattillgång skapas automatiskt som används tooauthenticate med Azure så att du kan hantera Azure klassiska resurser från runbooks.  Det här certifikatet har en livslängd på ett år. |
-| AzureClassicRunAsConnection |Anslutningstillgång skapas automatiskt som används tooauthenticate med Azure så att du kan hantera Azure klassiska resurser från runbooks. |
+| AzureClassicAutomationTutorial-runbook |Ett exempel på en grafisk runbook som hämtar alla klassiska virtuella datorer i en prenumeration med hjälp av det klassiska Kör som-kontot (certifikat) och som sedan returnerar den virtuella datorns namn och status. |
+| AzureClassicAutomationTutorial Script-runbook |Ett exempel på en PowerShell-runbook som hämtar alla klassiska virtuella datorer i en prenumeration med hjälp av det klassiska Kör som-kontot (certifikat) och som sedan returnerar den virtuella datorns namn och status. |
+| AzureClassicRunAsCertificate |Certifikattillgång som skapas automatiskt och som används för att autentisera med Azure så att du kan hantera klassiska Azure-resurser från runbooks.  Det här certifikatet har en livslängd på ett år. |
+| AzureClassicRunAsConnection |Anslutningstillgång som skapas automatiskt och som används för att autentisera med Azure så att du kan hantera klassiska Azure-resurser från runbooks. |
 
 
 ## <a name="next-steps"></a>Nästa steg
-* toolearn mer information om hur du grafiskt redigering finns [grafiska redigering i Azure Automation](automation-graphical-authoring-intro.md).
-* tooget igång med PowerShell-runbooks, se [min första PowerShell-runbook](automation-first-runbook-textual-powershell.md).
-* tooget igång med PowerShell arbetsflöde runbooks finns [min första PowerShell-arbetsflödesrunbook](automation-first-runbook-textual.md).
+* Läs mer om grafisk redigering i [Grafisk redigering i Azure Automation](automation-graphical-authoring-intro.md).
+* Information om hur du kommer igång med PowerShell-runbooks finns i [Min första PowerShell-runbook](automation-first-runbook-textual-powershell.md).
+* Se hur du kommer igång med runbooks baserade på PowerShell-arbetsflöden i [Min första PowerShell-arbetsflödesbaserade runbook](automation-first-runbook-textual.md).
+* Läs [My first Python2 runbook](automation-first-runbook-textual-python2.md) (Min första Python2-runbook) för att komma igång med Python2-runbooks.

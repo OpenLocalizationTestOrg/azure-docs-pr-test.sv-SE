@@ -1,6 +1,6 @@
 ---
-title: "aaaCreate och hantera Azure virtuella datorer med hjälp av Java | Microsoft Docs"
-description: "Använd Java och Azure Resource Manager toodeploy en virtuell dator och alla dess stödfiler resurser."
+title: Skapa och hantera en virtuell Azure-dator med Java | Microsoft Docs
+description: "Använd Java och Azure Resource Manager för att distribuera en virtuell dator och alla dess stödfiler resurser."
 services: virtual-machines-windows
 documentationcenter: 
 author: davidmu1
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: davidmu
-ms.openlocfilehash: 31ac8d59f92ecff887e64906940933dd6fd50815
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: b9e739a07c5863577285fb3a221b372b385c6762
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>Skapa och hantera virtuella Windows-datorer i Azure som använder Java
 
@@ -32,15 +32,15 @@ En [Azure virtuella](overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc
 > * Skapa resurser
 > * Utföra administrativa uppgifter
 > * Ta bort resurser
-> * Kör programmet hello
+> * Köra programmet
 
-Det tar cirka 20 minuter toodo dessa steg.
+Det tar ungefär 20 minuter för att utföra de här stegen.
 
 ## <a name="create-a-maven-project"></a>Skapa ett Maven-projekt
 
 1. Om du inte redan har gjort det installerar [Java](http://www.oracle.com/technetwork/java/javase/downloads/index.html).
 2. Installera [Maven](http://maven.apache.org/download.cgi).
-3. Skapa en ny mapp och hello projektet:
+3. Skapa en ny mapp och projektet:
     
     ```
     mkdir java-azure-test
@@ -51,7 +51,7 @@ Det tar cirka 20 minuter toodo dessa steg.
 
 ## <a name="add-dependencies"></a>Lägga till beroenden
 
-1. Under hello `testAzureApp` mapp, öppna hello `pom.xml` och Lägg till hello versionskonfiguration för&lt;projekt&gt; tooenable hello bygga i ditt program:
+1. Under den `testAzureApp` mapp, öppna den `pom.xml` och Lägg till versionskonfiguration till &lt;projekt&gt; att aktivera programmet:
 
     ```xml
     <build>
@@ -67,7 +67,7 @@ Det tar cirka 20 minuter toodo dessa steg.
     </build>
     ```
 
-2. Lägg till hello beroenden som är nödvändiga tooaccess hello Azure Java SDK.
+2. Lägga till beroenden som behövs för att komma åt Azure Java SDK.
 
     ```xml
     <dependency>
@@ -112,15 +112,15 @@ Det tar cirka 20 minuter toodo dessa steg.
     </dependency>
     ```
 
-3. Spara hello-filen.
+3. Spara filen.
 
 ## <a name="create-credentials"></a>Skapa autentiseringsuppgifter
 
-Innan du startar det här steget, se till att du har åtkomst tooan [Active Directory-tjänstens huvudnamn](../../azure-resource-manager/resource-group-create-service-principal-portal.md). Du bör anteckna hello program-ID och autentiseringsnyckel hello hello klient-ID som du behöver i ett senare steg.
+Innan du startar det här steget, se till att du har åtkomst till en [Active Directory-tjänstens huvudnamn](../../azure-resource-manager/resource-group-create-service-principal-portal.md). Du bör anteckna det program-ID, autentiseringsnyckeln och klient-ID som du behöver i ett senare steg.
 
-### <a name="create-hello-authorization-file"></a>Skapa hello auktoriseringsfilen
+### <a name="create-the-authorization-file"></a>Skapa auktoriseringsfilen
 
-1. Skapa en fil med namnet `azureauth.properties` och lägga till dessa egenskaper tooit:
+1. Skapa en fil med namnet `azureauth.properties` och Lägg till följande egenskaper:
 
     ```
     subscription=<subscription-id>
@@ -133,20 +133,20 @@ Innan du startar det här steget, se till att du har åtkomst tooan [Active Dire
     graphURL=https://graph.windows.net/
     ```
 
-    Ersätt  **&lt;prenumerations-id&gt;**  med prenumerations-ID  **&lt;program-id&gt;**  med hello Active Directory-program identifierare,  **&lt;autentiseringsnyckel&gt;**  med hello programmet nyckel och  **&lt;klient-id&gt;**  med hello-klient identifierare.
+    Ersätt  **&lt;prenumerations-id&gt;**  med prenumerations-ID  **&lt;program-id&gt;**  med programidentifierare Active Directory  **&lt;autentiseringsnyckel&gt;**  med nyckeln för programmet och  **&lt;klient-id&gt;**  med klient-ID.
 
-2. Spara hello-filen.
-3. Ange miljövariabeln AZURE_AUTH_LOCATION i gränssnittet med hello fullständig sökväg toohello autentiseringsfilen.
+2. Spara filen.
+3. Ange miljövariabeln AZURE_AUTH_LOCATION i gränssnittet med den fullständiga sökvägen till autentiseringsfilen.
 
-### <a name="create-hello-management-client"></a>Skapa hello management-klienten
+### <a name="create-the-management-client"></a>Skapa management-klienten
 
-1. Öppna hello `App.java` filen `src\main\java\com\fabrikam` och kontrollera att det här paketet instruktionen är överst hello:
+1. Öppna den `App.java` filen `src\main\java\com\fabrikam` och kontrollera att det här paketet-instruktionen är längst upp:
 
     ```java
     package com.fabrikam.testAzureApp;
     ```
 
-2. Lägg till dessa under hello paketet instruktionen importera instruktioner:
+2. Lägg till dessa under instruktionen paketet importera instruktioner:
    
     ```java
     import com.microsoft.azure.management.Azure;
@@ -168,7 +168,7 @@ Innan du startar det här steget, se till att du har åtkomst tooan [Active Dire
     import java.util.Scanner;
     ```
 
-2. toocreate hello Active Directory-autentiseringsuppgifter som du behöver toomake begäranden, lägger du till den här koden toohello main-metoden för hello App klass:
+2. Lägg till den här koden main-metoden i klassen App för att skapa Active Directory-autentiseringsuppgifter som du behöver göra begäranden:
    
     ```java
     try {    
@@ -186,11 +186,11 @@ Innan du startar det här steget, se till att du har åtkomst tooan [Active Dire
 
 ## <a name="create-resources"></a>Skapa resurser
 
-### <a name="create-hello-resource-group"></a>Skapa hello resursgrupp
+### <a name="create-the-resource-group"></a>Skapa en resursgrupp
 
 Alla resurser måste finnas i en [resursgruppen](../../azure-resource-manager/resource-group-overview.md).
 
-toospecify som värden för hello programmet och skapa hello resursgrupp, lägga till den här koden toohello try-block i hello main-metoden:
+Ange värden för programmet och skapa resursgruppen genom att lägga till den här koden i try-block i main-metoden:
 
 ```java
 System.out.println("Creating resource group...");
@@ -200,11 +200,11 @@ ResourceGroup resourceGroup = azure.resourceGroups()
     .create();
 ```
 
-### <a name="create-hello-availability-set"></a>Skapa hello tillgänglighetsuppsättning
+### <a name="create-the-availability-set"></a>Skapa tillgänglighetsuppsättningen
 
-[Tillgänglighetsuppsättningar](tutorial-availability-sets.md) gör det enklare för dig toomaintain hello virtuella datorer som används av ditt program.
+[Tillgänglighetsuppsättningar](tutorial-availability-sets.md) gör det enklare att underhålla de virtuella datorerna som används av ditt program.
 
-toocreate hello tillgänglighet ange, lägga till den här koden toohello try-block i hello main-metoden:
+Lägg till den här koden try-block i main-metoden för att skapa tillgänglighetsuppsättningen:
 
 ```java
 System.out.println("Creating availability set...");
@@ -215,11 +215,11 @@ AvailabilitySet availabilitySet = azure.availabilitySets()
     .withSku(AvailabilitySetSkuTypes.MANAGED)
     .create();
 ```
-### <a name="create-hello-public-ip-address"></a>Skapa hello offentlig IP-adress
+### <a name="create-the-public-ip-address"></a>Skapa offentlig IP-adress
 
-En [offentliga IP-adressen](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) är nödvändiga toocommunicate med hello virtuell dator.
+En [offentliga IP-adressen](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) behövs för att kommunicera med den virtuella datorn.
 
-toocreate hello offentliga IP-adressen för hello virtuell dator, lägger du till den här koden toohello try-block i hello main-metoden:
+Lägg till den här koden try-block i main-metoden för att skapa den offentliga IP-adressen för den virtuella datorn:
 
 ```java
 System.out.println("Creating public IP address...");
@@ -231,11 +231,11 @@ PublicIPAddress publicIPAddress = azure.publicIPAddresses()
     .create();
 ```
 
-### <a name="create-hello-virtual-network"></a>Skapa hello virtuellt nätverk
+### <a name="create-the-virtual-network"></a>Skapa virtuella nätverk
 
 En virtuell dator måste vara i ett undernät för en [för virtuella nätverk](../../virtual-network/virtual-networks-overview.md).
 
-toocreate ett undernät och virtuella nätverk, kan du lägga till den här koden toohello try-block på hello main-metoden:
+Lägg till den här koden try-block i main-metoden för att skapa ett undernät och ett virtuellt nätverk:
 
 ```java
 System.out.println("Creating virtual network...");
@@ -248,11 +248,11 @@ Network network = azure.networks()
     .create();
 ```
 
-### <a name="create-hello-network-interface"></a>Skapa hello nätverksgränssnittet
+### <a name="create-the-network-interface"></a>Skapa nätverksgränssnittet
 
-En virtuell dator måste en network interface toocommunicate hello virtuella nätverket.
+En virtuell dator måste ett nätverksgränssnitt för att kommunicera på det virtuella nätverket.
 
-toocreate nätverksgränssnitt, lägga till den här koden toohello try-block på hello main-metoden:
+Lägg till den här koden try-block i main-metoden för att skapa ett nätverksgränssnitt:
 
 ```java
 System.out.println("Creating network interface...");
@@ -267,11 +267,11 @@ NetworkInterface networkInterface = azure.networkInterfaces()
     .create();
 ```
 
-### <a name="create-hello-virtual-machine"></a>Skapa hello virtuell dator
+### <a name="create-the-virtual-machine"></a>Skapa den virtuella datorn
 
-Nu när du har skapat alla hello stöder resurser kan du skapa en virtuell dator.
+Nu när du har skapat alla stödresurser kan du skapa en virtuell dator.
 
-toocreate Hej virtuell dator, lägger du till den här koden toohello try-block i hello main-metoden:
+Lägg till den här koden try-block i main-metoden för att skapa den virtuella datorn:
 
 ```java
 System.out.println("Creating virtual machine...");
@@ -288,16 +288,16 @@ VirtualMachine virtualMachine = azure.virtualMachines()
     .withSize("Standard_DS1")
     .create();
 Scanner input = new Scanner(System.in);
-System.out.println("Press enter tooget information about hello VM...");
+System.out.println("Press enter to get information about the VM...");
 input.nextLine();
 ```
 
 > [!NOTE]
-> Den här guiden skapar en virtuell dator som kör en version av operativsystemet Windows Server för hello. toolearn mer information om hur du väljer andra bilder, se [analysera och välja avbildningar för virtuell Azure-dator med Windows PowerShell och hello Azure CLI](../linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+> Den här guiden skapar en virtuell dator som kör en version av operativsystemet Windows Server. Läs mer om att välja andra bilder i [analysera och välja avbildningar för virtuell Azure-dator med Windows PowerShell och Azure CLI](../linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 > 
 >
 
-Om du vill toouse en befintlig disk i stället för en marketplace-avbildning, använder du den här koden: 
+Om du vill använda en befintlig disk i stället för en marketplace-avbildning, Använd den här koden: 
 
 ```java
 ManagedDisk managedDisk = azure.disks.define("myosdisk") 
@@ -320,17 +320,17 @@ azure.virtualMachines.define("myVM")
 
 ## <a name="perform-management-tasks"></a>Utföra administrativa uppgifter
 
-Du kanske vill toorun hanteringsuppgifter, till exempel starta, stoppa eller ta bort en virtuell dator under hello livscykeln för en virtuell dator. Dessutom kan du toocreate kod tooautomate repetitiva och komplicerade uppgifter.
+Under livscykeln för en virtuell dator kan du vill köra hanteringsuppgifter, till exempel starta, stoppa eller ta bort en virtuell dator. Dessutom kanske du vill skapa kod för att automatisera repetitiva och komplicerade uppgifter.
 
-När du behöver toodo något med hello VM, behöver du tooget en instans av den. Lägg till den här koden toohello try-block av hello main-metoden:
+När du behöver göra något med den virtuella datorn måste du hämta en instans av den. Lägg till den här koden try-block av main-metoden:
 
 ```java
 VirtualMachine vm = azure.virtualMachines().getByResourceGroup("myResourceGroup", "myVM");
 ```
 
-### <a name="get-information-about-hello-vm"></a>Hämta information om hello VM
+### <a name="get-information-about-the-vm"></a>Hämta information om den virtuella datorn
 
-tooget information om hello virtuella datorn, Lägg till den här koden toohello try-block i hello main-metoden:
+Lägg till den här koden try-block i main-metoden för att få information om den virtuella datorn:
 
 ```java
 System.out.println("hardwareProfile");
@@ -382,94 +382,94 @@ for(InstanceViewStatus status : vm.instanceView().statuses()) {
     System.out.println("  code: " + status.code());
     System.out.println("  displayStatus: " + status.displayStatus());
 }
-System.out.println("Press enter toocontinue...");
+System.out.println("Press enter to continue...");
 input.nextLine();   
 ```
 
-### <a name="stop-hello-vm"></a>Stoppa hello VM
+### <a name="stop-the-vm"></a>Stoppa den virtuella datorn
 
-Du kan stoppa en virtuell dator och behålla alla inställningar, men fortsätta toobe debiteras för den eller stoppa en virtuell dator och frigör den. När en virtuell dator har frigjorts alla resurser som är associerade med den är också frigjord och fakturering avslutas för den.
+Du kan stoppa en virtuell dator och behålla alla inställningar, men fortsätter att debiteras för den eller stoppa en virtuell dator och frigör den. När en virtuell dator har frigjorts alla resurser som är associerade med den är också frigjord och fakturering avslutas för den.
 
-toostop hello virtuell dator utan att det har frigjorts, lägga till den här koden toohello try-block på hello main-metoden:
+Lägg till den här koden try-block i main-metoden för att stoppa den virtuella datorn utan att det har frigjorts den:
 
 ```java
 System.out.println("Stopping vm...");
 vm.powerOff();
-System.out.println("Press enter toocontinue...");
+System.out.println("Press enter to continue...");
 input.nextLine();
 ```
 
-Om du vill toodeallocate hello virtuella datorn, ändra hello avstängningsläge anropet toothis koden:
+Om du vill ta bort den virtuella datorn ändra avstängningsläge anrop till den här koden:
 
 ```java
 vm.deallocate();
 ```
 
-### <a name="start-hello-vm"></a>Starta hello VM
+### <a name="start-the-vm"></a>Starta den virtuella datorn
 
-toostart Hej virtuell dator, lägger du till den här koden toohello try-block i hello main-metoden:
+Lägg till den här koden try-block i main-metoden för att starta den virtuella datorn:
 
 ```java
 System.out.println("Starting vm...");
 vm.start();
-System.out.println("Press enter toocontinue...");
+System.out.println("Press enter to continue...");
 input.nextLine();
 ```
 
-### <a name="resize-hello-vm"></a>Ändra storlek på hello VM
+### <a name="resize-the-vm"></a>Ändra storlek på den virtuella datorn
 
 Många aspekter av distributionen bör övervägas när du funderar över en storlek för den virtuella datorn. Mer information finns i [VM-storlekar](sizes.md).  
 
-toochange storleken på hello virtuella datorn, Lägg till den här koden toohello try-block i hello main-metoden:
+Lägg till den här koden try-block i main-metoden om du vill ändra storleken på den virtuella datorn:
 
 ```java
 System.out.println("Resizing vm...");
 vm.update()
     .withSize(VirtualMachineSizeTypes.STANDARD_DS2)
     .apply();
-System.out.println("Press enter toocontinue...");
+System.out.println("Press enter to continue...");
 input.nextLine();
 ```
 
-### <a name="add-a-data-disk-toohello-vm"></a>Lägg till en data disk toohello VM
+### <a name="add-a-data-disk-to-the-vm"></a>Lägg till en datadisk till den virtuella datorn
 
-tooadd en data disk toohello virtuell dator som är 2 GB i storlek, har ett LUN 0 och en cachelagring typ av ReadWrite, lägga till den här koden toohello try-block på hello main-metoden:
+Lägg till den här koden try-block i main-metoden för att lägga till en datadisk till den virtuella datorn som är 2 GB i storlek, har ett LUN 0 och en cachelagring typ av ReadWrite:
 
 ```java
 System.out.println("Adding data disk...");
 vm.update()
     .withNewDataDisk(2, 0, CachingTypes.READ_WRITE)
     .apply();
-System.out.println("Press enter toodelete resources...");
+System.out.println("Press enter to delete resources...");
 input.nextLine();
 ```
 
 ## <a name="delete-resources"></a>Ta bort resurser
 
-Eftersom debiteras du för resurser som används i Azure, men det är alltid bra toodelete resurser som inte längre behövs. Om du vill toodelete hello virtuella datorer och alla hello stöder resurser, alla har toodo är delete hello resursgruppen.
+Eftersom du debiteras för de resurser som används i Azure, men det är alltid bra att ta bort resurser som inte längre behövs. Om du vill ta bort de virtuella datorerna och alla stödresurser är allt du behöver göra resursgruppen.
 
-1. toodelete hello resurs och lägga till den här koden toohello try-block i hello main-metoden:
+1. Lägg till den här koden try-block i main-metoden för att ta bort resursgruppen:
    
 ```java
 System.out.println("Deleting resources...");
 azure.resourceGroups().deleteByName("myResourceGroup");
 ```
 
-2. Spara hello App.java filen.
+2. Spara filen App.java.
 
-## <a name="run-hello-application"></a>Kör programmet hello
+## <a name="run-the-application"></a>Köra programmet
 
-Det bör ta ungefär fem minuter för den här konsolen programmet toorun helt från start toofinish.
+Det bör ta ungefär fem minuter för den här konsolen programmet helt från början till slut.
 
-1. toorun Hej program, använder du följande Maven-kommando:
+1. Använd följande Maven-kommando för att köra programmet:
 
     ```
     mvn compile exec:java
     ```
 
-2. Innan du trycker på **RETUR** toostart ta bort resurser, du kan ta några minuter tooverify hello skapandet av hello resurser i hello Azure-portalen. Klicka på hello toosee information om Distributionsstatus om hello-distribution.
+2. Innan du trycker på **ange** om du vill börja ta bort resurser, du kan ta några minuter för att verifiera att skapa resurser i Azure-portalen. Klicka på Distributionsstatus för att visa information om hur du distribuerar.
 
 
 ## <a name="next-steps"></a>Nästa steg
-* Lär dig mer om hur du använder hello [Azure-bibliotek för Java](https://docs.microsoft.com/en-us/java/azure/java-sdk-azure-overview).
+* Lär dig mer om hur du använder den [Azure-bibliotek för Java](https://docs.microsoft.com/en-us/java/azure/java-sdk-azure-overview).
 

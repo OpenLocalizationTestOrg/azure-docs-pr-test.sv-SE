@@ -1,6 +1,6 @@
 ---
-title: "aaaPlan nätverksmappningen för Hyper-V VM-replikering med Site Recovery | Microsoft Docs"
-description: "Konfigurera nätverksmappning för replikering av Hyper-V virtuella datorer från ett lokalt datacenter tooAzure eller tooa sekundär plats."
+title: "Planera nätverksmappningen för Hyper-V VM-replikering med Site Recovery | Microsoft Docs"
+description: "Konfigurera nätverksmappning för Hyper-V replikering av virtuella datorer från ett lokalt datacenter till Azure eller till en sekundär plats."
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
@@ -14,71 +14,71 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 05/23/2017
 ms.author: raynew
-ms.openlocfilehash: 86199b5840ea10fd33630bcc75d14340a49e01bd
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: b1b8b1ebc013a5dfb69528f9353369e18f84e61f
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="plan-network-mapping-for-hyper-v-vm-replication-with-site-recovery"></a>Planera nätverksmappningen för Hyper-V VM-replikering med Site Recovery
 
 
 
-Den här artikeln hjälper dig att toounderstand och planera för nätverk mappning vid replikering av Hyper-V VMs tooAzure eller tooa sekundär plats, med hello [Azure Site Recovery-tjänsten](site-recovery-overview.md).
+Den här artikeln hjälper dig att förstå och planera för nätverk mappning vid replikering av Hyper-V virtuella datorer till Azure eller till en sekundär plats, med hjälp av [Azure Site Recovery-tjänsten](site-recovery-overview.md).
 
-När du har läst den här artikeln efter eventuella kommentarer längst ned hello i den här artikeln eller tekniska frågor om hello [Azure Recovery Services-forumet](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
+När du har läst den här artikeln efter eventuella kommentarer längst ned i den här artikeln eller tekniska frågor om den [Azure Recovery Services-forumet](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
 
-## <a name="network-mapping-for-replication-tooazure"></a>Nätverksmappningen för replikering tooAzure
+## <a name="network-mapping-for-replication-to-azure"></a>Nätverksmappningen för replikering till Azure
 
-Nätverksmappning används vid replikering av Hyper-V virtuella datorer (hanteras i VMM) tooAzure. Mappningar för mappning mellan Virtuella nätverk på en VMM-källservern för nätverk och Azure-målnätverken. Mappningen hello följande:
+Nätverksmappning används vid replikering av Hyper-V virtuella datorer (hanteras i VMM) till Azure. Mappningar för mappning mellan Virtuella nätverk på en VMM-källservern för nätverk och Azure-målnätverken. Mappning gör följande:
 
-- **Nätverksanslutning**– säkerställer att replikerade virtuella Azure-datorer är anslutna toohello mappade nätverksenheter. Alla datorer som redundansväxlas hello samma nätverk kan ansluta tooeach andra, även om de har redundansväxlats i olika återställningsplaner.
-- **Nätverksgateway**– om en nätverksgateway har konfigurerats på hello Azure-målnätverket kan virtuella datorer kan ansluta tooother lokala virtuella datorer.
-
-Tänk på följande:
-
-- Du kan mappa en källa VMM VM nätverket tooan virtuella Azure-nätverket.
-- Efter redundans virtuella Azure-datorer i hello blir Källnätverk anslutna toohello mappade mål virtuellt nätverk.
-- Nya virtuella datorer läggs toohello källnätverket ansluts toohello mappade Azure-nätverket när replikeringen sker.
-- Om hello målnätverket har flera undernät och ett av dessa undernät har hello samma namn som undernätet som hello källa virtual machine finns så hello replikerade virtuella datorn ansluter toothat målundernätverket efter en redundansväxling.
-- Om det inte finns något målundernät med ett matchande namn, ansluter hello virtuella toohello första undernätet i hello nätverk.
-
-
-## <a name="network-mapping-for-replication-tooa-secondary-datacenter"></a>Nätverksmappningen för replikering tooa sekundärt datacenter
-
-Nätverksmappning används vid replikering av Hyper-V virtuella datorer (hanteras i System Center Virtual Machine Manager (VMM)) tooa sekundärt datacenter. Nätverksmappningen mappar mellan VM-nätverk på en VMM-källservern och Virtuella datornätverk på en VMM-målservern. Mappningen hello följande:
-
-- **Nätverksanslutning**– ansluter VMs tooappropriate nätverk efter redundansväxling. hello replikerade virtuella datorn kommer att vara anslutna toohello målnätverket som är mappade toohello Källnätverk.
-- **Optimal placering**– optimalt platser hello Replikdatorerna på Hyper-V-värdservrar. Replikdatorerna placeras på värdar som kan åtkomst hello mappa Virtuella datornätverk.
-- **Inga nätverksmappning**– om du inte konfigurerar nätverksmappning replikering VMs kommer inte att anslutna tooany VM-nätverk efter redundansväxling.
+- **Nätverksanslutning**– säkerställer att replikerade virtuella Azure-datorer är anslutna till den mappade nätverksenheten. Alla datorer som redundansväxlar i samma nätverk kan ansluta till varandra, även om de har redundansväxlats i olika återställningsplaner.
+- **Nätverksgateway**– om en nätverksgateway har konfigurerats på Azure-målnätverket kan virtuella datorer kan ansluta till andra lokala virtuella datorer.
 
 Tänk på följande:
 
-- Nätverksmappning kan konfigureras mellan Virtuella nätverk på två VMM-servrar eller på en VMM-server om två platser hanteras av hello samma server.
-- När mappningen är korrekt konfigurerad och replikering har aktiverats, en virtuell dator på hello primära platsen kommer att vara anslutna tooa nätverk och repliken på målplatsen hello ansluts mappas tooits nätverk.
+- Du kan mappa en källa VMM VM-nätverk till ett Azure virtual network.
+- Efter redundans virtuella Azure-datorer i källan ansluts nätverk till det virtuella nätverket mappade mål.
+- Nya virtuella datorer läggs till källnätverket ansluts till det mappade Azure-nätverket när replikeringen sker.
+- Om målnätverket har flera undernät och ett av dessa undernät har samma namn som undernätet där den virtuella källdatorn finns så ansluts den virtuella replikdatorn till det målundernätverket efter en redundansväxling.
+- Om det inte finns något målundernät med ett matchande namn ansluts den virtuella datorn till det första undernätet i nätverket.
+
+
+## <a name="network-mapping-for-replication-to-a-secondary-datacenter"></a>Nätverksmappningen för replikering till ett sekundärt datacenter
+
+Nätverksmappning används vid replikering av Hyper-V virtuella datorer (hanteras i System Center Virtual Machine Manager (VMM)) till ett sekundärt datacenter. Nätverksmappningen mappar mellan VM-nätverk på en VMM-källservern och Virtuella datornätverk på en VMM-målservern. Mappning gör följande:
+
+- **Nätverksanslutning**– ansluter virtuella datorer till lämpliga nätverk efter redundansväxling. Replikerade virtuella datorn ansluts till målnätverket som är mappad till källnätverket.
+- **Optimal placering**– optimalt placerar repliken virtuella datorer på Hyper-V-värdservrar. Replikdatorerna placeras på värdar som kan komma åt mappade VM-nätverk.
+- **Inga nätverksmappning**– om du inte konfigurerar nätverksmappning replikering VMs ansluts inte till något VM-nätverk efter redundansväxling.
+
+Tänk på följande:
+
+- Du kan konfigurera nätverksmappning mellan Virtuella nätverk på två VMM-servrar eller på en VMM-server om två platser hanteras av samma server.
+- När mappningen är korrekt konfigurerad och replikering har aktiverats, en virtuell dator på den primära platsen ska anslutas till ett nätverk och dess replik på målplatsen ansluts till dess mappade nätverksenheter.
 -
-- Om nätverk har konfigurerats korrekt i VMM när du väljer ett mål Virtuellt datornätverk under nätverksmappning, visas hello VMM källa moln som använder hello källnätverket, tillsammans med hello tillgängliga målservrar Virtuella datornätverk på hello mål moln som används för skydd.
-- Om hello målnätverket har flera undernät och ett av dessa undernät har samma namn som hello undernätet på vilka hello virtuella källdatorn finns, sedan hello hello blir replikerade virtuella datorn anslutna toothat målundernätverket efter en redundansväxling. Om det inte finns något målundernät med ett matchande namn, att hello virtuella datorn anslutna toohello första undernätet i hello nätverk.
+- Om nätverk har konfigurerats korrekt i VMM när du väljer ett mål Virtuellt datornätverk under nätverksmappning, visas källa VMM-moln som använder källnätverket, tillsammans med tillgängliga målservrar Virtuella datornätverk på mål-moln som används för skydd.
+- Om målnätverket har flera undernät och ett av dessa undernät har samma namn som undernätet där den virtuella källdatorn finns, sedan ansluts den replikerade virtuella datorn till det målundernätverket efter en redundansväxling. Om det inte finns något målundernät med ett matchande namn ansluts den virtuella datorn till det första undernätet i nätverket.
 
 
 
 ### <a name="example"></a>Exempel
 
-Här är ett exempel tooillustrate denna mekanism. Låt oss ta en organisation med två platser i New York och Chicago.
+Här är ett exempel som illustrerar den här mekanismen. Låt oss ta en organisation med två platser i New York och Chicago.
 
 **Plats** | **VMM-server** | **Virtuella datornätverk** | **Mappas till**
 ---|---|---|---
-New York | VMM-NewYork| VMNetwork1 NewYork | Mappade tooVMNetwork1 Chicago
+New York | VMM-NewYork| VMNetwork1 NewYork | Mappas till VMNetwork1 Chicago
  |  | VMNetwork2 NewYork | Inte mappad
-Chicago | VMM-Chicago| VMNetwork1 Chicago | Mappade tooVMNetwork1 NewYork
+Chicago | VMM-Chicago| VMNetwork1 Chicago | Mappas till VMNetwork1 NewYork
  | | VMNetwork1 Chicago | Inte mappad
 
 I det här exemplet:
 
-- När en replikerad virtuell dator har skapats för alla virtuella datorer som är anslutna tooVMNetwork1 NewYork kommer att vara anslutna tooVMNetwork1 Chicago.
-- När en replikerad virtuell dator har skapats för VMNetwork2 NewYork eller VMNetwork2 Chicago, blir inte ansluten tooany nätverk.
+- När en replikerad virtuell dator skapas för en virtuell dator som är ansluten till VMNetwork1 NewYork ansluts till VMNetwork1 Chicago.
+- När en replikerad virtuell dator har skapats för VMNetwork2 NewYork eller VMNetwork2 Chicago kan ansluten den inte till något nätverk.
 
-Här är hur VMM-moln ställs in i vårt exempelorganisation och hello logiska nätverk som är associerade med hello moln.
+Här är hur VMM-moln ställs in i vårt exempelorganisation och logiska nätverk som är associerade med molnen.
 
 #### <a name="cloud-protection-settings"></a>Skyddsinställningarna för molnet
 
@@ -99,7 +99,7 @@ Chicago | LogicalNetwork1 Chicago | VMNetwork1 Chicago
 
 #### <a name="target-network-settings"></a>Nätverksinställningar för mål
 
-Baserat på dessa inställningar när du väljer hello målnätverket VM, visar hello följande tabell hello-alternativ som är tillgängliga.
+I följande tabell visas baserat på dessa inställningar när du väljer VM målnätverket, alternativen som är tillgängliga.
 
 **Välj** | **Skyddade moln** | **Skydda molnet** | **Målnätverket som är tillgängliga**
 ---|---|---|---
@@ -109,15 +109,15 @@ VMNetwork2 Chicago | SilverCloud1 | SilverCloud2 | Inte tillgänglig
  | GoldCloud1 | GoldCloud2 | Tillgänglig
 
 
-Om hello målnätverket har flera undernät och ett av dessa undernät har samma namn som hello undernätet på vilka hello virtuella källdatorn finns, sedan hello hello blir replikerade virtuella datorn anslutna toothat målundernätverket efter en redundansväxling. Om det inte finns något målundernät med ett matchande namn, att hello virtuella datorn anslutna toohello första undernätet i hello nätverk.
+Om målnätverket har flera undernät och ett av dessa undernät har samma namn som undernätet där den virtuella källdatorn finns, sedan ansluts den replikerade virtuella datorn till det målundernätverket efter en redundansväxling. Om det inte finns något målundernät med ett matchande namn ansluts den virtuella datorn till det första undernätet i nätverket.
 
 
 #### <a name="failback-behavior"></a>Beteende för återställning efter fel
 
-vad som händer i hello skiftläget för återställning efter fel (omvänd replikering) toosee vi antar att VMNetwork1 NewYork är mappade tooVMNetwork1-Chicago, med hello följande inställningar.
+Om du vill se vad som händer vid återställning (omvänd replikering), anta att VMNetwork1 NewYork är mappad till VMNetwork1 Chicago med följande inställningar.
 
 
-**Virtuell dator** | **Anslutna tooVM nätverk**
+**Virtuell dator** | **Ansluten till nätverket**
 ---|---
 VM1 | VMNetwork1 nätverk
 VM2 (replik av VM1) | VMNetwork1 Chicago
@@ -126,13 +126,13 @@ Med dessa inställningar nu ska vi se vad som händer på några möjliga scenar
 
 **Scenario** | **Resultatet**
 ---|---
-Ingen ändring i hello-egenskaper för VM-2 efter växling vid fel. | VM-1 förblir anslutna toohello Källnätverk.
+Ingen ändring i Nätverksegenskaper för VM-2 efter växling vid fel. | VM-1 fortfarande är ansluten till nätverket källa.
 Nätverksegenskaper för VM-2 har ändrats efter växling vid fel och har kopplats från. | VM-1 är frånkopplad.
-Nätverksegenskaper för VM-2 har ändrats efter växling vid fel och är anslutna tooVMNetwork2 Chicago. | Om VMNetwork2 Chicago har inte mappats, kopplas VM-1.
-Nätverksmappningen för VMNetwork1 Chicago ändras. | VM-1 blir anslutna toohello nu mappat nätverk tooVMNetwork1-Chicago.
+Nätverksegenskaper för VM-2 har ändrats efter växling vid fel och är ansluten till VMNetwork2 Chicago. | Om VMNetwork2 Chicago har inte mappats, kopplas VM-1.
+Nätverksmappningen för VMNetwork1 Chicago ändras. | VM-1 ansluts till nätverket nu mappat till VMNetwork1 Chicago.
 
 
 
 ## <a name="next-steps"></a>Nästa steg
 
-Lär dig mer om [planera hello nätverksinfrastruktur](site-recovery-network-design.md).
+Lär dig mer om [planera nätverksinfrastrukturen](site-recovery-network-design.md).

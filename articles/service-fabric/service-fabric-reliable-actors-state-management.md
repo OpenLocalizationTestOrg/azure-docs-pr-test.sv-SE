@@ -1,5 +1,5 @@
 ---
-title: "aaaReliable aktörer tillstånd management | Microsoft Docs"
+title: "Reliable Actors tillstånd management | Microsoft Docs"
 description: "Beskriver hur Reliable Actors tillstånd hanteras, beständiga och replikeras för hög tillgänglighet."
 services: service-fabric
 documentationcenter: .net
@@ -14,25 +14,25 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2017
 ms.author: vturecek
-ms.openlocfilehash: 346d92426b1890617d108a9504afb179e463bded
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: aca8cf2b94e8b746a5cac6af021c7221a29b7345
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="reliable-actors-state-management"></a>Tillförlitliga aktörer tillståndshantering
-Reliable Actors är enkeltrådad objekt som kan kapsla både logik och tillstånd. Eftersom aktörer körs på Reliable Services, de upprätthålla tillstånd på ett tillförlitligt sätt med hjälp av hello samma beständighet och replikering mekanismer som Reliable Services använder. Det här sättet aktörer förlorar inte deras tillstånd efter fel på återaktivering efter skräpinsamling eller när de flyttas mellan noder i ett kluster på grund av tooresource NLB eller uppgraderingar.
+Reliable Actors är enkeltrådad objekt som kan kapsla både logik och tillstånd. Eftersom aktörer körs på Reliable Services, upprätthålla de tillstånd på ett tillförlitligt sätt med hjälp av samma beständiga och replikeringsmekanismer Reliable Services använder. Det här sättet aktörer förlorar inte deras tillstånd efter fel på återaktivering efter skräpinsamling eller när de flyttas mellan noder i ett kluster på grund av resursen NLB eller uppgraderingar.
 
 ## <a name="state-persistence-and-replication"></a>Tillstånd beständighet och replikering
-Alla Reliable Actors anses *stateful* eftersom varje instans aktören mappar tooa unikt ID. Det innebär att upprepade anrop toohello samma aktörs-ID är dirigeras toohello samma aktören-instans. I ett system med tillståndslös däremot klientanrop är inte garanterat toobe dirigeras toohello samma server varje gång. Därför är aktörstjänster alltid tillståndskänsliga tjänster.
+Alla Reliable Actors anses *stateful* eftersom varje instans aktören mappas till ett unikt ID. Det innebär att upprepade anrop till samma aktörs-ID dirigeras till samma aktören-instans. I ett system med tillståndslös däremot är klientanrop inte säkert att dirigeras till samma server varje gång. Därför är aktörstjänster alltid tillståndskänsliga tjänster.
 
-Även om stateful som de måste lagra tillstånd på ett tillförlitligt sätt inte innebär betraktas som aktörer. Aktörer kan välja hello beständighet och replikering baserat på deras data lagringskraven:
+Även om stateful som de måste lagra tillstånd på ett tillförlitligt sätt inte innebär betraktas som aktörer. Aktörer kan välja vilken beständighet och replikering baserat på deras data lagringskraven:
 
-* **Beständiga tillståndet**: tillstånd är beständiga toodisk och replikerade too3 eller flera repliker. Detta är hello mest beständiga tillståndet lagringsalternativ, där tillståndet kan spara genom hela klustret avbrott.
-* **Temporära tillstånd**: tillstånd är replikerade too3 eller flera repliker och endast lagras i minnet. Detta ger återhämtning mot nodfel och aktören fel, och under uppgraderingar och resursen belastningsutjämning. Dock är tillstånd inte beständiga toodisk. Så om alla repliker går förlorade på samma gång, går hello tillstånd förlorad samt.
-* **Inga beständiga tillståndet**: tillstånd är inte replikeras eller skrivs toodisk. Den här nivån är för aktörer som bara behöver toomaintain tillstånd på ett tillförlitligt sätt.
+* **Beständiga tillståndet**: tillstånd sparat på disken och replikeras till 3 eller fler repliker. Detta är det mest beständiga tillståndet lagringsalternativet där tillstånd kan spara genom hela klustret avbrott.
+* **Temporära tillstånd**: tillstånd replikeras till 3 eller fler repliker och endast lagras i minnet. Detta ger återhämtning mot nodfel och aktören fel, och under uppgraderingar och resursen belastningsutjämning. Dock tillstånd sparas inte till disk. Så om alla repliker går förlorade på samma gång, tillståndet förloras samt.
+* **Inga beständiga tillståndet**: tillstånd är inte replikerade eller skrivits till disk. Den här nivån är för aktörer som bara inte behöver upprätthålla tillstånd på ett tillförlitligt sätt.
 
-Varje nivå av beständiga är helt enkelt en annan *tillståndsprovidern* och *replikering* konfigurationen av din tjänst. Oavsett om tillståndet är skriven beroende toodisk hello tillståndsprovidern--hello-komponenten i en tillförlitlig tjänst som lagrar tillstånd. Replikeringen beror på hur många repliker för en tjänst har distribuerats med. Precis som med Reliable Services både hello tillståndsprovidern och kan enkelt ställas in replikantalet manuellt. hello aktören framework innehåller ett attribut att när används på en aktör väljer automatiskt en standardprovider för tillstånd och inställningar för replik antal tooachieve någon av dessa tre beständiga inställningar genereras automatiskt. Hej StatePersistence attributet ärvs inte av härledd klass, varje aktören måste tillhandahålla StatePersistence nivån.
+Varje nivå av beständiga är helt enkelt en annan *tillståndsprovidern* och *replikering* konfigurationen av din tjänst. Om tillståndet skrivs till disk är beroende av tillståndsprovidern - komponenten i en tillförlitlig tjänst som lagrar tillstånd. Replikeringen beror på hur många repliker för en tjänst har distribuerats med. Precis som med Reliable Services kan både tillståndsprovidern och replikantalet enkelt ställas in manuellt. Aktören framework innehåller ett attribut som, när används på en aktör, väljs automatiskt en standardprovider för tillstånd och genererar automatiskt inställningarna för replikantalet för att uppnå ett av dessa tre beständiga inställningar. Attributet StatePersistence ärvs inte av härledd klass, varje aktören måste tillhandahålla StatePersistence nivån.
 
 ### <a name="persisted-state"></a>Beständiga tillståndet
 ```csharp
@@ -47,7 +47,7 @@ class MyActorImpl  extends FabricActor implements MyActor
 {
 }
 ```  
-Inställningen använder en tillståndsprovidern som lagrar data på disken och anger hello service replik antal too3 automatiskt.
+Inställningen använder en tillståndsprovidern som lagrar data på disken och anger automatiskt replikantalet tjänsten till 3.
 
 ### <a name="volatile-state"></a>Temporära tillstånd
 ```csharp
@@ -62,7 +62,7 @@ class MyActorImpl extends FabricActor implements MyActor
 {
 }
 ```
-Den här inställningen använder en provider i minne – endast och anger hello replik antal too3.
+Den här inställningen används en provider i minne – endast och replikantalet till 3.
 
 ### <a name="no-persisted-state"></a>Inga sparade tillstånd
 ```csharp
@@ -77,12 +77,12 @@ class MyActorImpl extends FabricActor implements MyActor
 {
 }
 ```
-Den här inställningen använder en provider i minne – endast och anger hello replik antal too1.
+Den här inställningen används en provider i minne – endast och replikantalet till 1.
 
 ### <a name="defaults-and-generated-settings"></a>Standardvärden och genererade inställningar
-När du använder hello `StatePersistence` attribut, en tillståndsprovidern väljs automatiskt för dig vid körning när hello aktören-tjänsten startas. Hej replikantalet dock anges vid kompilering av hello Visual Studio aktören verktyg. hello verktyg automatiskt generera ett *standardtjänst* hello aktören tjänst i ApplicationManifest.xml. Parametrar skapas för **min replikuppsättningen storlek** och **mål replikuppsättningen storlek**.
+När du använder den `StatePersistence` attribut, en tillståndsprovidern väljs automatiskt för dig vid körning när tjänsten aktören startar. Replikantalet dock anges vid kompilering av Visual Studio aktören build tools. Build-verktyg automatiskt generera ett *standardtjänst* för tjänsten aktören i ApplicationManifest.xml. Parametrar skapas för **min replikuppsättningen storlek** och **mål replikuppsättningen storlek**.
 
-Du kan ändra parametrarna manuellt. Men varje gång hello `StatePersistence` attribut ändras, hello har angetts toohello replik set storlek standardvärden för hello valt `StatePersistence` attribut, åsidosätter eventuella tidigare värden. Med andra ord hello värdena som du anger i ServiceManifest.xml är *endast* åsidosättas vid byggning när du ändrar hello `StatePersistence` attributvärdet.
+Du kan ändra parametrarna manuellt. Men varje gång den `StatePersistence` attribut ändras, parametrarna är inställda på replik set storlek standardvärden för den valda `StatePersistence` attribut, åsidosätter eventuella tidigare värden. Med andra ord värdena som du anger i ServiceManifest.xml är *endast* åsidosättas vid byggning när du ändrar den `StatePersistence` attributvärdet.
 
 ```xml
 <ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="Application12Type" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
@@ -105,20 +105,20 @@ Du kan ändra parametrarna manuellt. Men varje gång hello `StatePersistence` at
 ```
 
 ## <a name="state-manager"></a>Tillstånd manager
-Varje instans aktören har sin egen tillståndshanterare: en ordlista-liknande datastruktur som lagras på ett tillförlitligt sätt nyckel/värde-par. hello tillstånd manager är en omslutning runt en tillståndsprovidern. Du kan använda den toostore data oavsett vilken beständiga inställning används. Det ger inte några garantier att en aktiv tjänst aktören kan ändras från en temporär (i minnet-endast) tillstånd inställningen tooa beständiga tillståndsinställningen via en löpande uppgradering och behålla data. Det är dock möjligt toochange replikantalet för en tjänst som körs.
+Varje instans aktören har sin egen tillståndshanterare: en ordlista-liknande datastruktur som lagras på ett tillförlitligt sätt nyckel/värde-par. Tillståndshanterarens är en omslutning runt en tillståndsprovidern. Du kan använda den för att lagra data oavsett vilket beständiga inställningen används. Den ger inte några garantier att en pågående tjänst aktören kan ändras från en inställning för temporär (i minnet-endast) tillstånd till en inställning för beständiga tillståndet med en rullande uppgradering och behålla data. Det är dock möjligt att ändra replikantalet för en tjänst som körs.
 
-Tillstånd manager nycklar måste vara strängar. Värden är generisk och kan ha olika typer, inklusive anpassade typer. Värden som lagras i hello tillståndshanterare måste vara datakontrakt serialiserbara eftersom de kan komma att överföras hello tooother nätverksnoder vid replikering och kan skrivas toodisk, beroende på en aktör tillståndsinställningen persistence.
+Tillstånd manager nycklar måste vara strängar. Värden är generisk och kan ha olika typer, inklusive anpassade typer. Värden som lagras i tillståndshanterarens måste vara datakontrakt serialiserbara eftersom de kan överföras via nätverket till andra noder vid replikering och kan skrivas till disk, beroende på en aktör tillståndsinställningen persistence.
 
-Hej tillståndshanterare exponerar vanliga ordlista metoder för att hantera tillstånd, liknande toothose hittades i tillförlitliga ordlistan.
+Tillståndshanterarens visar vanliga ordlista metoder för att hantera tillstånd, liknar de som finns i tillförlitliga ordlistan.
 
 ### <a name="accessing-state"></a>Åtkomst till tillstånd
-Tillstånd kan nås via hello tillståndshanterare av nyckeln. Tillstånd manager metoder är alla asynkrona eftersom de kan kräva disk-i/o när aktörer beständiga tillstånd. Vid första åtkomst cachelagras tillstånd objekt i minnet. Upprepa åtkomst operations access-objekt direkt från minnet och returnera synkront utan att det medför i/o eller asynkrona kontexten-växla omkostnader. Ett tillstånd objekt tas bort från hello-cache i hello följande fall:
+Tillstånd kan nås via tillståndshanterarens av nyckeln. Tillstånd manager metoder är alla asynkrona eftersom de kan kräva disk-i/o när aktörer beständiga tillstånd. Vid första åtkomst cachelagras tillstånd objekt i minnet. Upprepa åtkomst operations access-objekt direkt från minnet och returnera synkront utan att det medför i/o eller asynkrona kontexten-växla omkostnader. Ett tillstånd objekt tas bort från cachen i följande fall:
 
-* En aktörsmetod utlöser ett undantag när det hämtar ett objekt från hello tillståndshanterare.
+* En aktörsmetod utlöser ett undantag när det hämtar ett objekt från hanteraren tillstånd.
 * En aktör återaktiveras när de har inaktiverats eller efter fel.
-* hello tillstånd providern sidor tillstånd toodisk. Det här problemet beror på hello tillstånd providerns implementering. hello tillstånd standardprovidern för hello `Persisted` har problemet.
+* Tillstånd providern sidor status till disk. Det här problemet beror på tillstånd providerns implementering. Standardprovidern för tillstånd för den `Persisted` har problemet.
 
-Du kan hämta tillstånd genom att använda ett standard- *hämta* åtgärden utlöser `KeyNotFoundException`(C#) eller `NoSuchElementException`(Java) om det inte finns en post för hello nyckeln:
+Du kan hämta tillstånd genom att använda ett standard- *hämta* åtgärden utlöser `KeyNotFoundException`(C#) eller `NoSuchElementException`(Java) om det inte finns en post för nyckeln:
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -194,9 +194,9 @@ class MyActorImpl extends FabricActor implements  MyActor
 ```
 
 ### <a name="saving-state"></a>Sparar tillstånd
-metoder för hämtning av hello tillstånd manager returnera ett referensobjekt tooan i lokalt minne. Ändra det här objektet i lokala minnet enbart orsakar inte den toobe sparade varaktigt. När ett objekt som hämtats från hello tillståndshanterare och ändras, måste den igen i hello tillstånd manager toobe sparade varaktigt.
+Tillstånd manager hämtning metoder returnerar en referens till ett objekt i lokalt minne. Ändra det här objektet i lokala minnet enbart orsakar inte den sparas varaktigt. När ett objekt som hämtats från tillståndshanterarens och ändras, måste den igen i tillståndshanterarens sparas varaktigt.
 
-Du kan infoga tillstånd med hjälp av en ovillkorlig *ange*, vilket är hello motsvarar hello `dictionary["key"] = value` syntax:
+Du kan infoga tillstånd med hjälp av en ovillkorlig *ange*, som motsvarar den `dictionary["key"] = value` syntax:
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -229,7 +229,7 @@ class MyActorImpl extends FabricActor implements  MyActor
 }
 ```
 
-Du kan lägga till tillstånd med hjälp av en *Lägg till* metod. Den här metoden genererar `InvalidOperationException`(C#) eller `IllegalStateException`(Java) när den försöker tooadd en nyckel som redan finns.
+Du kan lägga till tillstånd med hjälp av en *Lägg till* metod. Den här metoden genererar `InvalidOperationException`(C#) eller `IllegalStateException`(Java) vid försök att lägga till en nyckel som redan finns.
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -262,7 +262,7 @@ class MyActorImpl extends FabricActor implements  MyActor
 }
 ```
 
-Du kan också lägga till tillstånd med hjälp av en *TryAdd* metod. Den här metoden genereras inget när den försöker tooadd en nyckel som redan finns.
+Du kan också lägga till tillstånd med hjälp av en *TryAdd* metod. Den här metoden genereras inget när den försöker lägga till en nyckel som redan finns.
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -305,9 +305,9 @@ class MyActorImpl extends FabricActor implements  MyActor
 }
 ```
 
-Hello slutet av en aktörsmetod sparar hello tillståndshanterare automatiskt alla värden som har lagts till eller ändrats av en insert eller update-åtgärd. ”Spara” kan innehålla bestående toodisk och replikering, beroende på inställningarna för hello används. Värden som inte har ändrats beständiga eller replikeras inte. Om inga värden har ändrats, ingenting hello åtgärden för att spara. Om du sparar misslyckas hello ändrade tillstånd ignoreras och läsas in igen hello ursprungliga tillstånd.
+I slutet av en aktörsmetod sparar tillståndshanterarens automatiskt alla värden som har lagts till eller ändrats av en insert eller update-åtgärd. ”Spara” kan innehålla beständighet till disk och replikering, beroende på inställningarna som används. Värden som inte har ändrats beständiga eller replikeras inte. Om inga värden har ändrats, spara åtgärden händer ingenting. Om du sparar misslyckas ändringstillstånd ignoreras och det ursprungliga tillståndet läses.
 
-Du kan också spara tillstånd manuellt genom att anropa hello `SaveStateAsync` metoden på hello aktören bas:
+Du kan också spara tillstånd manuellt genom att anropa den `SaveStateAsync` metod i basen aktören:
 
 ```csharp
 async Task IMyActor.SetCountAsync(int count)
@@ -329,7 +329,7 @@ interface MyActor {
 ```
 
 ### <a name="removing-state"></a>Ta bort tillstånd
-Du kan ta bort tillstånd permanent från en aktör tillstånd manager genom att anropa hello *ta bort* metod. Den här metoden genererar `KeyNotFoundException`(C#) eller `NoSuchElementException`(Java) när den försöker tooremove en nyckel som inte finns.
+Du kan ta bort tillstånd permanent från en aktör tillstånd manager genom att anropa den *ta bort* metod. Den här metoden genererar `KeyNotFoundException`(C#) eller `NoSuchElementException`(Java) vid försök att ta bort en nyckel som inte finns.
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -362,7 +362,7 @@ class MyActorImpl extends FabricActor implements  MyActor
 }
 ```
 
-Du kan också ta bort tillstånd permanent med hello *TryRemove* metod. Den här metoden genereras inget när den försöker tooremove en nyckel som inte finns.
+Du kan också ta bort tillstånd permanent med hjälp av den *TryRemove* metod. Den här metoden genereras inget när den försöker ta bort en nyckel som inte finns.
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -407,6 +407,6 @@ class MyActorImpl extends FabricActor implements  MyActor
 
 ## <a name="next-steps"></a>Nästa steg
 
-Tillstånd som är lagrad i Reliable Actors måste serialiseras innan dess skriftliga toodisk och replikeras för hög tillgänglighet. Lär dig mer om [aktören typserialiseringen](service-fabric-reliable-actors-notes-on-actor-type-serialization.md).
+Tillstånd som är lagrad i Reliable Actors måste serialiseras innan dess skrivits till disk och replikeras för hög tillgänglighet. Lär dig mer om [aktören typserialiseringen](service-fabric-reliable-actors-notes-on-actor-type-serialization.md).
 
 Därefter lär dig mer om [aktören diagnostik- och prestandaövervakning](service-fabric-reliable-actors-diagnostics.md).

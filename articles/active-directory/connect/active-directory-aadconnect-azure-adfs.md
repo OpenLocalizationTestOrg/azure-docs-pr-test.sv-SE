@@ -1,7 +1,7 @@
 ---
-title: aaaActive Directory Federation Services i Azure | Microsoft Docs
-description: "I det här dokumentet får du lära dig hur toodeploy AD FS i Azure för hög tillgänglighet."
-keywords: Distribuera AD FS i azure, distribuera azure AD FS, azure AD FS, azure ad fs, distribuera AD FS, distribuera ad fs, AD FS i azure, distribuera AD FS i azure, distribuera AD FS i azure, azure AD FS, introduktion tooAD FS, Azure, AD FS i Azure, flytta iaas, ADFS, adfs tooazure
+title: Active Directory Federation Services i Azure | Microsoft Docs
+description: "I det här dokumentet lär du dig hur du distribuerar AD FS i Azure för hög tillgänglighet."
+keywords: distribuera AD FS i azure, distribuera azure adfs, azure adfs, azure ad fs, distribuera adfs, distribuera ad fs, adfs i azure, distribuera adfs i azure, distribuera AD FS i azure, adfs azure, introduktion till AD FS, Azure, AD FS i Azure, iaas, ADFS, flytta adfs till azure
 services: active-directory
 documentationcenter: 
 author: anandyadavmsft
@@ -16,103 +16,103 @@ ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.author: anandy; billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2c39271f7569b9ce395dce2f53f5ba5a4897b132
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: ddd29a1230286de8999175498ee793f3b3ea24e2
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploying-active-directory-federation-services-in-azure"></a>Distribuera Active Directory Federation Services i Azure
-AD FS tillhandahåller förenklad, säker identitetsfederation och funktioner för enkel inloggning (SSO). Federation med Azure AD eller O365 kan användare tooauthenticate med lokala autentiseringsuppgifter och åtkomst till alla resurser i molnet. Därför är det viktigare toohave en högtillgänglig AD FS-infrastrukturen tooensure åt tooresources både lokalt och i hello molnet. Distribuera AD FS i Azure kan du få hello hög tillgänglighet som krävs med minimalt arbete.
+AD FS tillhandahåller förenklad, säker identitetsfederation och funktioner för enkel inloggning (SSO). Federation med Azure AD eller O365 gör att användarna kan autentiseras med lokala autentiseringsuppgifter och få åtkomst till alla resurser i molnet. Därför är det viktigt att du har en AD FS-infrastruktur med hög tillgänglighet för att säkerställa åtkomsten till resurser både lokalt och i molnet. Genom att distribuera AD FS i Azure kan du uppnå den höga tillgänglighet som krävs med minimalt arbete.
 Det finns flera fördelar med att distribuera AD FS i Azure, några av dem anges nedan:
 
-* **Hög tillgänglighet** -med hello kraften i Azure-Tillgänglighetsuppsättningar är du säkerställa att en infrastruktur med hög tillgänglighet.
-* **Enkelt tooScale** – behöver bättre prestanda? Enkelt migrera toomore kraftfulla datorer med ett par klick i Azure
-* **Mellan Geo-redundans** – med Azure Geo-redundans du vara säker på att din infrastruktur har hög tillgänglighet över hela världen hello
-* **Enkelt tooManage** – med hög förenklad hanteringsalternativ i Azure-portalen, hanteringen av din infrastruktur är det mycket enkelt och problemfri 
+* **Hög tillgänglighet** – Med kraften i Azures tillgänglighetsuppsättningar säkerställer du en infrastruktur med hög tillgänglighet.
+* **Lätt att skala** – Behöver du bättre prestanda? Migrera enkelt till kraftfullare datorer med bara några klick i Azure
+* **Global geo-redundans** – med Azure Geo Redundancy kan du vara säker på att din infrastruktur har hög tillgänglighet i hela världen.
+* **Lätt att hantera** – Med mycket förenklade hanteringsalternativ på Azure-portalen är det väldigt lätt och okomplicerat att hantera infrastrukturen. 
 
 ## <a name="design-principles"></a>Designprinciper
 ![Distributionsdesign](./media/active-directory-aadconnect-azure-adfs/deployment.png)
 
-hello diagrammet ovan visar hello rekommenderas grundläggande topologi toostart Distribuera AD FS-infrastrukturen i Azure. hello principerna bakom hello olika komponenter i hello topologin visas nedan:
+Diagrammet ovan illustrerar den rekommenderade grundläggande topologin för distribution av en AD FS-infrastruktur i Azure. Principerna bakom de olika komponenterna i topologin anges nedan:
 
-* **DC/ADFS-servrar**: Om du har färre än 1 000 användare behöver du bara installera AD FS-rollen på domänkontrollanterna. Om du inte vill att alla prestandapåverkan på hello domänkontrollanter eller om du har fler än 1 000 användare kan sedan distribuera AD FS på separata servrar.
-* **Server för WAP** – det är nödvändigt toodeploy webbprogramproxyservrar, så att användare kan nå hello AD FS när de inte är på företagsnätverket hello också.
-* **DMZ**: hello webbprogramproxyservrarna placeras i hello DMZ och endast TCP/443 åtkomst tillåts mellan hello DMZ och hello interna undernätet.
-* **Belastningsutjämnare**: tooensure hög tillgänglighet av AD FS och Webbprogramproxy-servrar, bör du använda en intern belastningsutjämnare för AD FS-servrarna och Azure belastningsutjämnare för Web Application Proxy-servrar.
-* **Tillgänglighetsuppsättningar**: tooprovide redundans tooyour AD FS-distribution, rekommenderas att du grupperar två eller flera virtuella datorer i en Tillgänglighetsuppsättning för liknande arbetsbelastningar. Den här konfigurationen garanterar att minst en virtuell dator är tillgänglig under planerat eller oplanerat underhåll.
-* **Storage-konton**: rekommenderas toohave två storage-konton. Med ett enda storage-konto kan leda till toocreation av en enskild felpunkt och kan orsaka hello distribution toobecome är inte tillgänglig i ett troligt scenario där hello lagringskonto kraschar. Två lagringskonton innebär att ett lagringskonto kan associeras med varje felrad.
-* **Nätverkssegregering**: WAP-servrar bör distribueras i ett separat DMZ-nätverk. Du kan dela upp ett virtuellt nätverk i två undernät och därefter distribuera hello Web Application Proxy-servrar i ett isolerat undernät. Bara kan du konfigurera hello grupp för nätverkssäkerhet för varje undernät och tillåta endast obligatoriska kommunikation mellan hello två undernät. Mer information finns i distributionsscenarierna nedan.
+* **DC/ADFS-servrar**: Om du har färre än 1 000 användare behöver du bara installera AD FS-rollen på domänkontrollanterna. Om du vill undvika en prestandaförsämring på domänkontrollanterna eller om du har fler än 1 000 användare distribuerar du AD FS på separata servrar.
+* **WAP-server** – Du måste distribuera WAP-servrar (webbprogramproxyservrar) så att användarna kan nå AD FS även när de inte är anslutna till företagets nätverk.
+* **DMZ**: WAP-servrarna placeras i DMZ och endast TCP/443-åtkomst tillåts mellan DMZ och det interna undernätet.
+* **Belastningsutjämnare**: Om du vill garantera hög tillgänglighet för AD FS- och WAP-servrar rekommenderar vi att du använder en intern belastningsutjämnare för AD FS-servrar och Azure Load Balancer för WAP-servrar.
+* **Tillgänglighetsuppsättningar**: Om du vill tillhandahålla redundans i AD FS-distributionen rekommenderar vi att du grupperar två eller flera virtuella datorer i en tillgänglighetsuppsättning för liknande arbetsbelastningar. Den här konfigurationen garanterar att minst en virtuell dator är tillgänglig under planerat eller oplanerat underhåll.
+* **Lagringskonton**: Vi rekommenderar att du har två lagringskonton. Om du bara har ett lagringskonto kan det ge upphov till en felkritisk systemdel och göra att distributionen blir otillgänglig i det osannolika scenariot att lagringskontot skulle krascha. Två lagringskonton innebär att ett lagringskonto kan associeras med varje felrad.
+* **Nätverkssegregering**: WAP-servrar bör distribueras i ett separat DMZ-nätverk. Du kan dela upp ett virtuellt nätverk i två undernät och sedan distribuera WAP-servrarna i ett isolerat undernät. Konfigurera bara inställningar för nätverkssäkerhetsgrupper för varje undernät och tillåt endast nödvändig kommunikation mellan de två undernäten. Mer information finns i distributionsscenarierna nedan.
 
-## <a name="steps-toodeploy-ad-fs-in-azure"></a>Steg toodeploy AD FS i Azure
-hello anvisningarna i det här avsnittet disposition hello guiden toodeploy hello nedan beskrivs AD FS-infrastrukturen i Azure.
+## <a name="steps-to-deploy-ad-fs-in-azure"></a>Steg för att distribuera AD FS i Azure
+Stegen i det här avsnittet beskriver hur AD FS-infrastrukturen nedan distribueras i Azure.
 
-### <a name="1-deploying-hello-network"></a>1. Distribuera hello nätverk
-Som vi nämnt ovan kan du antingen skapa två undernät i ett enda virtuellt nätverk eller skapa två olika virtuella nätverk (VNet). I den här artikeln fokuserar vi på distributionen av ett virtuellt nätverk som delas in i två undernät. Det här är en enklare metod som två separata Vnet kräver en gateway för virtuellt nätverk tooVNet för kommunikation.
+### <a name="1-deploying-the-network"></a>1. Distribuera nätverket
+Som vi nämnt ovan kan du antingen skapa två undernät i ett enda virtuellt nätverk eller skapa två olika virtuella nätverk (VNet). I den här artikeln fokuserar vi på distributionen av ett virtuellt nätverk som delas in i två undernät. Den här metoden är enklare eftersom två separata virtuella nätverk kräver en ”VNet till VNet”-gateway för kommunikation.
 
 **1.1 Skapa det virtuella nätverket**
 
 ![Skapa det virtuella nätverket](./media/active-directory-aadconnect-azure-adfs/deploynetwork1.png)
 
-I hello Azure-portalen, kan Välj virtuella nätverk och du distribuera hello virtuella nätverk och ett undernät omedelbart med ett enda klick. INT-undernätet har definierats och är nu klar för virtuella datorer toobe lagts till.
-hello nästa steg är tooadd ett annat undernät toohello nätverk, d.v.s. hello DMZ undernät. toocreate hello DMZ undernät, bara
+Välj alternativet för virtuella nätverk på Azure-portalen så kan du distribuera det virtuella nätverket och ett undernät direkt med ett enkelt klick. INT-undernätet definieras också och är nu redo att ta emot virtuella datorer.
+Nu ska du lägga till ett till undernät i nätverket, dvs. DMZ-undernätet. Så här skapar du DMZ-undernätet:
 
-* Välj hello nyskapad nätverk
-* Välj undernät i hello egenskaper
-* I hello undernät Kontrollpanelen klickar du på hello knappen Lägg till
-* Ange hello undernät namn och adress utrymme information toocreate hello undernät
+* Välj det nya nätverket.
+* Välj Undernät i egenskaperna.
+* Klicka på knappen Lägg till på panelen för undernätet.
+* Ange undernätets namn och information om adressutrymmet för att skapa undernätet.
 
 ![Undernät](./media/active-directory-aadconnect-azure-adfs/deploynetwork2.png)
 
 ![DMZ-undernät](./media/active-directory-aadconnect-azure-adfs/deploynetwork3.png)
 
-**1.2. Skapa hello nätverk säkerhetsgrupper**
+**1.2. Skapa nätverkssäkerhetsgrupper**
 
-En nätverkssäkerhetsgrupp (NSG) innehåller en lista över regler för åtkomstkontrollistan (ACL) som tillåter eller nekar nätverkstrafik tooyour VM-instanser i ett virtuellt nätverk. NSG:er kan antingen associeras med undernät eller individuella VM-instanser inom det undernätet. När en NSG är associerad med ett undernät, gäller hello ACL-regler tooall hello VM-instanser i det undernätet.
-För hello syftet med den här vägledningen, skapar vi två NSG: er: en för ett internt nätverk och en DMZ. De tilldelas namnen NSG_INT och NSG_DMZ.
+En nätverkssäkerhetsgrupp (NSG) innehåller en lista över regler för åtkomstkontrollistan (ACL) som tillåter eller nekar nätverkstrafik till dina VM-instanser i ett virtuellt nätverk. NSG:er kan antingen associeras med undernät eller individuella VM-instanser inom det undernätet. När en NSG är associerad med ett undernät, tillämpas ACL-reglerna på alla VM-instanser i det undernätet.
+I den här guiden skapar vi två nätverkssäkerhetsgrupper: en var för ett internt nätverk och en DMZ. De tilldelas namnen NSG_INT och NSG_DMZ.
 
 ![Skapa en nätverkssäkerhetsgrupp](./media/active-directory-aadconnect-azure-adfs/creatensg1.png)
 
-Efter hello NSG har skapats, kan det finnas 0 inkommande och 0 utgående regler. När hello roller på respektive hello-servrar är installerat och fungerar, kan sedan hello inkommande och utgående regler göras bl.a toohello önskad nivå av säkerhet.
+När nätverkssäkerhetsgruppen skapas finns det inga regler för inkommande eller utgående trafik. När rollerna på respektive server har installerats och fungerar som de ska kan reglerna för inkommande och utgående trafik skapas utifrån kraven på säkerhetsnivån.
 
 ![Initiera nätverkssäkerhetsgruppen](./media/active-directory-aadconnect-azure-adfs/nsgint1.png)
 
-När hello NSG: er har skapats kan du associera NSG_INT med undernät INT och NSG_DMZ med undernät DMZ. Här är ett skärmbildsexempel:
+När nätverkssäkerhetsgrupperna har skapats associerar du NSG_INT med INT-undernätet och NSG_DMZ med DMZ-undernätet. Här är ett skärmbildsexempel:
 
 ![Konfigurera nätverkssäkerhetsgruppen](./media/active-directory-aadconnect-azure-adfs/nsgconfigure1.png)
 
-* Klicka på undernät tooopen hello panelen för undernät
-* Välj hello undernätet tooassociate med hello NSG 
+* Öppna panelen för undernät genom att klicka på Undernät.
+* Välj undernätet som ska associeras med nätverkssäkerhetsgruppen. 
 
-Efter konfigurationen kan hello panelen för undernät bör se ut som nedan:
+Efter konfigurationen bör panelen för undernät se ut så här:
 
 ![Undernät efter NSG](./media/active-directory-aadconnect-azure-adfs/nsgconfigure2.png)
 
-**1.3. Skapa anslutning tooon lokala**
+**1.3. Skapa anslutning till den lokala infrastrukturen**
 
-Vi behöver en anslutning tooon lokala i ordning toodeploy hello-domänkontrollant (DC) i azure. Azure erbjuder olika anslutningen alternativ tooconnect din lokala infrastruktur tooyour Azure-infrastrukturen.
+Vi behöver en anslutning till den lokala infrastrukturen för att distribuera domänkontrollanten (DC) i Azure. Azure erbjuder olika anslutningsmöjligheter för att ansluta den lokala infrastrukturen till Azure-infrastrukturen.
 
 * Punkt-till-plats
 * Plats-till-plats för Virtual Network
 * ExpressRoute
 
-Det rekommenderas toouse ExpressRoute. Med ExpressRoute kan du skapa privata anslutningar mellan Azures datacenter och infrastruktur som finns lokalt eller i en samplaceringsmiljö. ExpressRoute-anslutningar inte överskrider hello offentliga Internet. De erbjuder flera tillförlitlighet, högre hastighet, lägre latens och högre säkerhet än vanliga anslutningar över hello Internet.
-Du kan välja alla anslutningsmetod som passar bäst för din organisation medan toouse ExpressRoute rekommenderas. Mer information om ExpressRoute- och hello toolearn olika anslutningsalternativ med ExpressRoute, läsa [teknisk översikt för ExpressRoute](https://aka.ms/Azure/ExpressRoute).
+Vi rekommenderar att du använder ExpressRoute. Med ExpressRoute kan du skapa privata anslutningar mellan Azures datacenter och infrastruktur som finns lokalt eller i en samplaceringsmiljö. ExpressRoute-anslutningar går inte via offentligt Internet. De ger bättre tillförlitlighet, snabbare hastigheter, kortare svarstider och högre säkerhet än vanliga anslutningar över Internet.
+Vi rekommenderar att du använder ExpressRoute, men du kan välja valfri anslutningsmetod beroende på vad som passar bäst för din organisation. Om du vill veta mer om ExpressRoute och de olika anslutningsalternativen när du använder ExpressRoute läser du [Teknisk översikt över ExpressRoute](https://aka.ms/Azure/ExpressRoute).
 
 ### <a name="2-create-storage-accounts"></a>2. Skapa lagringskonton
-I ordning toomaintain hög tillgänglighet och undvika beroende av ett enda storage-konto kan du skapa två storage-konton. Dela hello datorer i varje tillgänglighetsuppsättning i två grupper och tilldelar sedan varje grupp ett separat lagringskonto.
+För att upprätthålla hög tillgänglighet och undvika beroende av ett enda lagringskonto kan du skapa två lagringskonton. Dela in datorerna i varje tillgänglighetsuppsättning i två grupper och tilldela sedan varje grupp ett separat lagringskonto.
 
 ![Skapa lagringskonton](./media/active-directory-aadconnect-azure-adfs/storageaccount1.png)
 
 ### <a name="3-create-availability-sets"></a>3. Skapa tillgänglighetsuppsättningar
-Skapa tillgänglighetsuppsättningar som innehåller 2 datorer varje hello minsta för varje roll (DC/AD FS och WAP). På så sätt kan du uppnå högre tillgänglighet för varje roll. Skapa hello tillgänglighetsuppsättningar, men det är viktigt toodecide hello följande:
+För varje roll (DC/AD FS och WAP) skapar du tillgänglighetsuppsättningar som ska innehålla minst två datorer var. På så sätt kan du uppnå högre tillgänglighet för varje roll. När du skapar tillgänglighetsuppsättningarna måste du fatta beslut om följande:
 
-* **Fault domäner**: virtuella datorer i hello samma fel domän delar hello samma kraftkälla och fysisk nätverksväxel. Minst två feldomäner rekommenderas. hello standardvärdet är 3 och du kan lämna den som den är hello syftet med den här distributionen
-* **Uppdatera domäner**: datorer som tillhör toohello samma uppdateringsdomän startas om tillsammans under en uppdatering. Vill du toohave minst 2 uppdatering domäner. hello standardvärdet är 5 och du kan lämna den som den är hello syftet med den här distributionen
+* **Feldomäner**: Virtuella datorer i samma feldomän delar samma strömkälla och fysiska nätverksväxel. Minst två feldomäner rekommenderas. Standardvärdet är 3 och du kan lämna det som det är i den här distributionen.
+* **Uppdateringsdomäner**: Datorer som tillhör samma uppdateringsdomän startas om tillsammans under en uppdatering. Du bör ha minst två uppdateringsdomäner. Standardvärdet är 5 och du kan lämna det som det är i den här distributionen.
 
 ![Tillgänglighetsuppsättningar](./media/active-directory-aadconnect-azure-adfs/availabilityset1.png)
 
-Skapa hello efter tillgänglighetsuppsättningar
+Skapa följande tillgänglighetsuppsättningar
 
 | Tillgänglighetsuppsättning | Roll | Feldomäner | Uppdateringsdomäner |
 |:---:|:---:|:---:|:--- |
@@ -120,7 +120,7 @@ Skapa hello efter tillgänglighetsuppsättningar
 | contosowapset |WAP |3 |5 |
 
 ### <a name="4-deploy-virtual-machines"></a>4. Distribuera virtuella datorer
-hello nästa steg är toodeploy virtuella datorer som är värd för hello olika roller i din infrastruktur. Minst två datorer rekommenderas i varje tillgänglighetsuppsättning. Skapa fyra virtuella datorer för grundläggande hello-distribution.
+Nästa steg är att distribuera virtuella datorer som ska vara värdar för de olika rollerna i infrastrukturen. Minst två datorer rekommenderas i varje tillgänglighetsuppsättning. Skapa fyra virtuella datorer för den grundläggande distributionen.
 
 | Dator | Roll | Undernät | Tillgänglighetsuppsättning | Lagringskonto | IP-adress |
 |:---:|:---:|:---:|:---:|:---:|:---:|
@@ -129,116 +129,116 @@ hello nästa steg är toodeploy virtuella datorer som är värd för hello olika
 | contosowap1 |WAP |DMZ |contosowapset |contososac1 |Statisk |
 | contosowap2 |WAP |DMZ |contosowapset |contososac2 |Statisk |
 
-Som du kanske har märkt har ingen nätverkssäkerhetsgrupp (NSG) angetts. Det beror på att azure kan du använda NSG på hello undernätverksnivå. Sedan kan du styra nätverkstrafiken för datorn med hjälp av hello enskilda NSG tillhör antingen hello undernät annars hello NIC-objekt. Läs mer i [Vad är en nätverkssäkerhetsgrupp (NSG)?](https://aka.ms/Azure/NSG)
-Statisk IP-adress rekommenderas om du hanterar hello DNS. Du kan använda Azure DNS och i stället referera toohello nya datorer med sina Azure FQDN: er i hello DNS-poster för din domän.
-Virtuell dator-fönstret bör se ut som nedan när hello distributionen är klar:
+Som du kanske har märkt har ingen nätverkssäkerhetsgrupp (NSG) angetts. Det beror på att du kan använda NSG på undernätverksnivån i Azure. Sedan kan du styra datorns nätverkstrafik med den enskilda nätverkssäkerhetsgruppen som är associerad antingen med undernätet eller med NIC-objektet. Läs mer i [Vad är en nätverkssäkerhetsgrupp (NSG)?](https://aka.ms/Azure/NSG)
+En statisk IP-adress rekommenderas om du hanterar DNS. Du kan använda Azure DNS och i stället referera till de nya datorerna i DNS-posterna för din domän med deras fullständiga domännamn i Azure.
+Fönstret för din virtuella dator bör se ut så här när distributionen är klar:
 
 ![Distribuerade virtuella datorer](./media/active-directory-aadconnect-azure-adfs/virtualmachinesdeployed_noadfs.png)
 
-### <a name="5-configuring-hello-domain-controller--ad-fs-servers"></a>5. Konfigurera hello domänkontrollant / AD FS-servrar
- I ordning tooauthenticate behöver varje inkommande begäran, AD FS toocontact hello-domänkontrollant. toosave hello kostsamma resa från Azure tooon lokal Domänkontrollant för autentisering, rekommenderas toodeploy en replik av hello domänkontrollanten i Azure. I ordning tooattain hög tillgänglighet rekommenderas toocreate en tillgänglighetsuppsättning minst 2-domänkontrollanter.
+### <a name="5-configuring-the-domain-controller--ad-fs-servers"></a>5. Konfigurera domänkontrollanten/AD FS-servrar
+ För att kunna autentisera en inkommande begäran måste AD FS kontakta domänkontrollanten. Om du vill spara kostsamma turer från Azure till den lokala domänkontrollanten för autentisering rekommenderar vi att du distribuerar en replik av domänkontrollanten i Azure. För att uppnå hög tillgänglighet rekommenderar vi att du skapar en tillgänglighetsuppsättning på minst två domänkontrollanter.
 
 | Domänkontrollant | Roll | Lagringskonto |
 |:---:|:---:|:---:|
 | contosodc1 |Replik |contososac1 |
 | contosodc2 |Replik |contososac2 |
 
-* Flytta upp hello två servrar som domänkontrollanter för repliken med DNS
-* Konfigurera hello AD FS-servrar genom att installera hello AD FS-serverrollen med hjälp av Serverhanteraren hello.
+* Flytta upp de två servrarna som replikeringsdomänkontrollanter med DNS
+* Konfigurera AD FS-servrarna genom att installera AD FS-rollen med hjälp av Serverhanteraren.
 
 ### <a name="6-deploying-internal-load-balancer-ilb"></a>6. Distribuera en intern belastningsutjämnare (ILB)
-**6.1. Skapa hello ILB**
+**6.1. Skapa den interna belastningsutjämnaren**
 
-toodeploy en ILB väljer belastningsutjämnare i hello Azure-portalen och klicka på Lägg till (+).
+Om du vill distribuera en intern belastningsutjämnare väljer du Belastningsutjämning på Azure-portalen och klickar på Lägg till (+).
 
 > [!NOTE]
-> Om du inte ser **belastningsutjämnare** i din-menyn klickar du på **Bläddra** i hello nedre vänstra hello-portalen och Bläddra tills du ser **belastningsutjämnare**.  Klicka på hello gul stjärna tooadd den tooyour-menyn. Nu välja hello ny ikon tooopen hello panelen toobegin belastningsutjämnarkonfiguration av hello belastningsutjämnare.
+> Om du inte ser **Belastningsutjämning** på menyn klickar du på **Bläddra** längst ned till vänster på portalen och rullar tills du ser **Belastningsutjämning**.  Sedan klickar du på den gula stjärnan för att lägga till den på menyn. Välj sedan ikonen för den nya belastningsutjämnaren för att öppna panelen och börja konfigurera belastningsutjämningen.
 > 
 > 
 
 ![Bläddra till belastningsutjämnaren](./media/active-directory-aadconnect-azure-adfs/browseloadbalancer.png)
 
-* **Namnet**: ge alla lämpligt namn toohello belastningsutjämnare
-* **Schemat**: eftersom den här belastningsutjämnaren placeras framför hello AD FS-servrar och är avsett för internt nätverksanslutningar endast kan du välja ”interna”
-* **Virtuellt nätverk**: Välj hello virtuellt nätverk där du distribuerar AD FS
-* **Undernät**: Välj hello här internt undernät
+* **Namn**: Ge belastningsutjämnaren ett lämpligt namn.
+* **Schema**: Eftersom den här belastningsutjämnaren ska placeras framför AD FS-servrarna och är avsedd ENDAST för interna nätverksanslutningar så väljer du ”Intern”.
+* **Virtual Network**: Välj det virtuella nätverket där du distribuerar AD FS.
+* **Undernät**: Välj det interna undernätet.
 * **IP-adresstilldelning**: Statisk
 
 ![Intern belastningsutjämnare](./media/active-directory-aadconnect-azure-adfs/ilbdeployment1.png)
 
-När du klickar på Skapa och hello ILB har distribuerats, bör du se den i hello lista över belastningsutjämnare:
+När du klickar på Skapa och när den interna belastningsutjämnaren har distribuerats bör du se den i listan med belastningsutjämnare:
 
 ![Belastningsutjämnare efter ILB](./media/active-directory-aadconnect-azure-adfs/ilbdeployment2.png)
 
-Nästa steg är tooconfigure hello serverdelspool och hello backend-avsökning.
+Nästa steg är att konfigurera serverdelspoolen och serverdelsavsökningen.
 
 **6.2. Konfigurera serverdelspoolen för den interna belastningsutjämnaren**
 
-Välj hello nyskapad ILB hello belastningsutjämnare Kontrollpanelen. Hello Inställningar Kontrollpanelen öppnas. 
+Välj den nya interna belastningsutjämnaren på panelen Belastningsutjämning. Nu öppnas inställningspanelen. 
 
-1. Välj serverdelspooler hello inställningar panelen
-2. Lägg till backend-pool-panelen i hello, klicka på Lägg till virtuell dator
+1. Välj Serverdelspooler från inställningspanelen.
+2. Klicka på Lägg till virtuell dator på panelen Lägg till serverdelspool.
 3. Nu visas en panel där du kan välja tillgänglighetsuppsättning.
-4. Välj hello AD FS tillgänglighetsuppsättning
+4. Välj AD FS-tillgänglighetsuppsättningen.
 
 ![Konfigurera serverdelspoolen för den interna belastningsutjämnaren](./media/active-directory-aadconnect-azure-adfs/ilbdeployment3.png)
 
 **6.3. Konfigurera avsökning**
 
-Markera avsökningar hello ILB inställningar på panelen.
+Välj Avsökningar på panelen för ILB-inställningar.
 
 1. Klicka på Lägg till.
-2. Ange information för avsökningen a. **Namn**: Avsökningens namn. b. **Protokoll**: TCP. c. **Port**: 443 (HTTPS). d. **Intervallet**: 5 (standardvärdet) – detta är hello intervallet då ILB ska söka hello datorer i serverdelspoolen hello e. **Tröskelvärde för ohälsosamt värde gränsen**: 2 (standard val ue) – detta är avsökningsfel efter vilken ILB deklarerar en dator i hello backend poolen inte svarar och stoppa skicka trafik tooit hello tröskelvärdet.
+2. Ange information för avsökningen a. **Namn**: Avsökningens namn. b. **Protokoll**: TCP. c. **Port**: 443 (HTTPS). d. **Intervall**: 5 (standardvärde) – Den interna belastningsutjämnaren söker av datorerna i serverdelspoolen enligt detta intervall. e. **Tröskelvärde för ohälsosamt tillstånd**: 2 (standardvärde) – Det här är tröskelvärdet för upprepade avsökningsfel, varefter den interna belastningsutjämnaren deklarerar att en dator i serverdelspoolen inte svarar och slutar att skicka trafik till den.
 
 ![Konfigurera ILB-avsökning](./media/active-directory-aadconnect-azure-adfs/ilbdeployment4.png)
 
 **6.4. Skapa regler för belastningsutjämning**
 
-Hej ILB ska konfigureras med regler för belastningsutjämning i ordning tooeffectively Utjämna hello trafiken. I ordning toocreate en belastningsutjämningsregel 
+För att effektivt belastningsutjämna trafiken bör belastningsutjämnaren konfigureras med belastningsutjämningsregler. Så här skapar du en belastningsutjämningsregel: 
 
-1. Välj regel hello inställningar panelen av hello ILB för belastningsutjämning
-2. Klicka på Lägg till i hello belastningen belastningsutjämning regeln Kontrollpanelen
-3. Läsa in belastningsutjämning regeln panelen i hello Lägg till en. **Namnet**: Ange ett namn för regeln hello b. **Protokoll**: Välj TCP. c. **Port**: 443. d. **Serverport**: 443. e. **Serverdelspool**: Välj hello-pool som du skapade för hello AD FS tidigare f. **Avsökningen**: Välj hello avsökningen skapade tidigare för AD FS-servrar
+1. Välj Belastningsutjämningsregel från panelen för ILB-inställningar.
+2. Klicka på Lägg till på panelen Belastningsutjämningsregel.
+3. På panelen Lägg till belastningsutjämningsregel: a. **Namn**: Ange ett namn för regeln. b. **Protokoll**: Välj TCP. c. **Port**: 443. d. **Serverport**: 443. e. **Serverdelspool**: Välj poolen som du tidigare skapade för AD FS-klustret. f. **Avsökning**: Välj avsökningen som du tidigare skapade för AD FS-servrar.
 
 ![Konfigurera ILB-belastningsutjämningsregler](./media/active-directory-aadconnect-azure-adfs/ilbdeployment5.png)
 
 **6.5. Uppdatera DNS med ILB**
 
-Gå tooyour DNS-servern och skapa en CNAME-post för hello ILB. hello CNAME ska vara för hello federationstjänsten med hello IP-adress som pekar toohello hello ILB IP-adress. Till exempel om hello ILB DIP-adressen är 10.3.0.8 och hello federationstjänsten som installeras är fs.contoso.com, skapar du en CNAME-post för fs.contoso.com pekar too10.3.0.8.
-Se till att alla kommunikation angående fs.contoso.com hamnar på hello ILB och är korrekt vidare.
+Gå till din DNS-server och skapa en CNAME-post för den interna belastningsutjämnaren. CNAME ska anges för federationstjänsten och IP-adressen ska peka på den interna belastningsutjämnarens IP-adress. Om den interna belastningsutjämnarens DIP till exempel är 10.3.0.8 och den installerade federationstjänsten är fs.contoso.com skapar du en CNAME-post för fs.contoso.com som pekar på 10.3.0.8.
+På så sätt säkerställer du att alla kommunikation relaterad till fs.contoso.com kommer till den interna belastningsutjämnaren och dirigeras korrekt.
 
-### <a name="7-configuring-hello-web-application-proxy-server"></a>7. Konfigurera hello webbprogramproxyservern
-**7.1. Konfigurera hello Web Application Proxy-servrar tooreach AD FS-servrar**
+### <a name="7-configuring-the-web-application-proxy-server"></a>7. Konfigurera WAP-servern (webbprogramproxyserver)
+**7.1. Konfigurera WAP-servrarna så att de kan nå AD FS-servrar**
 
-I ordning tooensure som webbprogramproxyservrarna skapa kan tooreach hello AD FS-servrar bakom hello ILB, en post i hello %systemroot%\system32\drivers\etc\hosts för hello ILB. Observera att hello unikt namn (DN) ska hello federationstjänstens namn, till exempel fs.contoso.com. Och hello IP-post ska vara som hello ILB IP-adress (10.3.0.8 som hello exempel).
+Säkerställ att WAP-servrarna kan nå AD FS-servarna bakom den interna belastningsutjämnaren genom att skapa en post i %systemroot%\system32\drivers\etc\hosts för den interna belastningsutjämnaren. Observera att det unika namnet (DN) ska vara federationstjänstnamnet, till exempel fs.contoso.com. Och IP-posten ska vara den för den interna belastningsutjämnarens IP-adress (10.3.0.8 som i exemplet).
 
-**7.2. Installera rollen för hello Web Application Proxy**
+**7.2. Installera WAP-rollen**
 
-När du har kontrollerat att webbprogramproxyservrarna är kan tooreach hello AD FS-servrar bakom ILB kan du sedan installera hello Web Application Proxy-servrar. Web Application Proxy-servrar behöver inte vara domänansluten toohello domän. Installera hello Web Application Proxy roller på hello två Web Application Proxy-servrar genom att välja hello fjärråtkomst-rollen. hello Serverhanteraren vägleder dig toocomplete hello WAP installation.
-Mer information om hur toodeploy WAP, läsa [installera och konfigurera hello Webbprogramproxyservern](https://technet.microsoft.com/library/dn383662.aspx).
+När du har kontrollerat att WAP-servrarna kan nå AD FS-servarna bakom den interna belastningsutjämnaren kan du gå vidare och installera WAP-servrarna. WAP-servarna ska inte anslutas till domänen. Installera WAP-rollerna på två WAP-servrar genom att välja fjärråtkomstrollen. Serverhanteraren vägleder dig genom WAP-installationen.
+Mer information om hur du distribuerar WAP finns i [Installera och konfigurera WAP (webbprogramproxyserver)](https://technet.microsoft.com/library/dn383662.aspx).
 
-### <a name="8--deploying-hello-internet-facing-public-load-balancer"></a>8.  Distribuera hello Internet Facing (offentlig) belastningsutjämnare
+### <a name="8--deploying-the-internet-facing-public-load-balancer"></a>8.  Distribuera den Internetuppkopplade (offentliga) belastningsutjämnaren
 **8.1.  Skapa en Internetuppkopplad (offentlig) belastningsutjämnare**
 
-Välj belastningsutjämnare i hello Azure-portalen, och klicka sedan på Lägg till. Ange hello följande information i hello skapa belastningen belastningsutjämnaren Kontrollpanelen
+Välj Belastningsutjämning på Azure-portalen och klicka sedan på Lägg till. Ange följande information på panelen Skapa belastningsutjämnare:
 
-1. **Namnet**: namn för hello belastningsutjämnare
+1. **Namn**: Belastningsutjämnarens namn.
 2. **Schema**: Offentligt – det här alternativet anger att belastningsutjämnaren behöver en offentlig adress.
 3. **IP-adress**: Skapa en ny IP-adress (dynamisk).
 
 ![Internetuppkopplad belastningsutjämnare](./media/active-directory-aadconnect-azure-adfs/elbdeployment1.png)
 
-Efter distributionen visas hello belastningsutjämnare i hello belastningen belastningsutjämnare lista.
+Efter distributionen visas belastningsutjämnaren i listan över belastningsutjämnare.
 
 ![Lista med belastningsutjämnare](./media/active-directory-aadconnect-azure-adfs/elbdeployment2.png)
 
-**8.2. Tilldela en DNS-etikett toohello offentliga IP-adress**
+**8.2. Ange en DNS-etikett för den offentliga IP-adressen**
 
-Klicka på hello nyskapad belastningen belastningsutjämnaren post i hello belastningen belastningsutjämnare panelen toobring in hello panelen för konfigurationen. Följ under steg tooconfigure hello DNS-etikett för hello offentlig IP-adress:
+Öppna konfigurationspanelen genom att klicka på den nya posten för belastningsutjämnaren på panelen Belastningsutjämning. Konfigurera DNS-etiketten för den offentliga IP-adressen genom att följa stegen nedan:
 
-1. Klicka på hello offentlig IP-adress. Då öppnas hello panelen för hello offentlig IP-adress och dess inställningar
+1. Klicka på den offentliga IP-adressen. Nu öppnas panelen för den offentliga IP-adressen och dess inställningar.
 2. Klicka på Konfiguration.
-3. Ange en DNS-etikett. Detta blir hello offentliga DNS-etikett som du kan komma åt från var som helst, till exempel contosofs.westus.cloudapp.azure.com. Du kan lägga till en post i hello extern DNS för hello federationstjänsten (till exempel fs.contoso.com) som löser toohello DNS-etikett hello extern belastningsutjämnare (contosofs.westus.cloudapp.azure.com).
+3. Ange en DNS-etikett. Den här etiketten blir den offentliga DNS-etiketten som du kan komma åt överallt, till exempel contosofs.westus.cloudapp.azure.com. Du kan lägga till en post i externa DNS för federationstjänsten (t.ex. fs.contoso.com) som matchar DNS-etiketten för den externa belastningsutjämnaren (contosofs.westus.cloudapp.azure.com).
 
 ![Konfigurera en Internetuppkopplad belastningsutjämnare](./media/active-directory-aadconnect-azure-adfs/elbdeployment3.png) 
 
@@ -246,42 +246,42 @@ Klicka på hello nyskapad belastningen belastningsutjämnaren post i hello belas
 
 **8.3. Konfigurera serverdelspoolen för den Internetuppkopplade (offentliga) belastningsutjämnaren** 
 
-Följ hello samma steg som skapar hello intern belastningsutjämnare tooconfigure hello serverdelspool för Internet Facing (offentlig) belastningsutjämnare som hello tillgänglighet som angetts för hello WAP-servrar. Till exempel contosowapset.
+Följ samma steg som när du skapade den interna belastningsutjämnaren för att konfigurera serverdelspoolen för den Internetuppkopplade (offentliga) belastningsutjämnaren som tillgänglighetsuppsättningen för WAP-servrarna. Till exempel contosowapset.
 
 ![Konfigurera serverdelspoolen för den Internetuppkopplade belastningsutjämnaren](./media/active-directory-aadconnect-azure-adfs/elbdeployment5.png)
 
 **8.4. Konfigurera avsökning**
 
-Följ samma steg som konfigurerar hello interna tooconfigure hello belastningsutjämningsavsökning för hello serverdelspool för WAP-servrar hello.
+Följ samma steg som när du konfigurerade den interna belastningsutjämnaren för att konfigurera avsökningen för serverdelspoolen för WAP-servrar.
 
 ![Konfigurera avsökningen för den Internetuppkopplade belastningsutjämnaren](./media/active-directory-aadconnect-azure-adfs/elbdeployment6.png)
 
 **8.5. Skapa belastningsutjämningsregler**
 
-Följ samma steg som ILB tooconfigure hello belastningsutjämning regel för TCP 443 hello.
+Följ samma steg som när du konfigurerade den interna belastningsutjämnaren för att konfigurera belastningsutjämningsregeln för TCP 443.
 
 ![Konfigurera belastningsutjämningsregler för den Internetuppkopplade belastningsutjämnaren](./media/active-directory-aadconnect-azure-adfs/elbdeployment7.png)
 
-### <a name="9-securing-hello-network"></a>9. Säkra hello nätverk
-**9.1. Att säkra hello internt undernät**
+### <a name="9-securing-the-network"></a>9. Skydda nätverket
+**9.1. Skydda det interna undernätet**
 
-Generellt sett måste hello enligt reglerna för tooefficiently skydda din interna undernätet (i hello ordning enligt nedan)
+Du behöver följande regler för att effektivt skydda det interna undernätet (i den ordning som anges nedan)
 
 | Regel | Beskrivning | Flöde |
 |:--- |:--- |:---:|
-| AllowHTTPSFromDMZ |Tillåt hello HTTPS-kommunikation från DMZ |Inkommande |
-| DenyInternetOutbound |Ingen åtkomst toointernet |Utgående |
+| AllowHTTPSFromDMZ |Tillåt HTTPS-kommunikation från DMZ |Inkommande |
+| DenyInternetOutbound |Ingen åtkomst till Internet |Utgående |
 
 ![INT-åtkomstregler (inkommande)](./media/active-directory-aadconnect-azure-adfs/nsg_int.png)
 
 [kommentar]: <> (![INT-åtkomstregler (inkommande)](./media/active-directory-aadconnect-azure-adfs/nsgintinbound.png)) [kommentar]: <> (![INT-åtkomstregler (utgående)](./media/active-directory-aadconnect-azure-adfs/nsgintoutbound.png))
 
-**9.2. Skydda hello DMZ undernät**
+**9.2. Skydda DMZ-undernätet**
 
 | Regel | Beskrivning | Flöde |
 |:--- |:--- |:---:|
-| AllowHTTPSFromInternet |Tillåt HTTPS från internet toohello DMZ |Inkommande |
-| DenyInternetOutbound |Något annat än HTTPS toointernet är blockerad |Utgående |
+| AllowHTTPSFromInternet |Tillåt HTTPS från Internet till DMZ |Inkommande |
+| DenyInternetOutbound |Allt utom HTTPS till Internet blockeras |Utgående |
 
 ![EXT-åtkomstregler (inkommande)](./media/active-directory-aadconnect-azure-adfs/nsg_dmz.png)
 
@@ -292,13 +292,13 @@ Generellt sett måste hello enligt reglerna för tooefficiently skydda din inter
 > 
 > 
 
-### <a name="10-test-hello-ad-fs-sign-in"></a>10. Testa hello AD FS-inloggning
-hello enklast tootest AD FS är hello IdpInitiatedSignon.aspx sidan. Hej IdpInitiatedSignOn i ordning toobe kan toodo att det är obligatoriskt tooenable för hello AD FS-egenskaper. Gör hello nedan tooverify din AD FS-konfiguration
+### <a name="10-test-the-ad-fs-sign-in"></a>10. Testa AD FS-inloggningen
+Det enklaste sättet är att testa AD FS med hjälp av sidan IdpInitiatedSignon.aspx. För att kunna göra det måste IdpInitiatedSignOn vara aktiverat i AD FS-egenskaperna. Kontrollera din AD FS-konfiguration genom att följa stegen nedan.
 
-1. Kör hello nedan cmdlet hello AD FS-servern med hjälp av PowerShell tooset som tooenabled.
+1. Kör cmdleten nedan på AD FS-servern med hjälp av PowerShell för att aktivera egenskapen.
    Set-AdfsProperties -EnableIdPInitiatedSignonPage $true 
 2. Gå till https://adfs.thecloudadvocate.com/adfs/ls/IdpInitiatedSignon.aspx från valfri extern dator.  
-3. Du bör se hello AD FS-sidan som nedan:
+3. Du bör se en AD FS-sida som den här:
 
 ![Testa inloggningssidan](./media/active-directory-aadconnect-azure-adfs/test1.png)
 
@@ -307,39 +307,39 @@ Om inloggningen lyckas visas ett meddelande som det nedan:
 ![Lyckat test](./media/active-directory-aadconnect-azure-adfs/test2.png)
 
 ## <a name="template-for-deploying-ad-fs-in-azure"></a>Mall för att distribuera AD FS i Azure
-hello mallen distribuerar en installation av 6 machine, 2 för domänkontrollanter, AD FS och WAP.
+Mallen distribuerar en konfiguration för 6 maskiner, 2 vardera för domänkontrollanter, AD FS och WAP.
 
 [Distributionsmall för AD FS i Azure](https://github.com/paulomarquesc/adfs-6vms-regular-template-based)
 
-Du kan använda ett befintligt virtuellt nätverk eller skapa ett nytt VNET när du distribuerar här mallen. hello olika parametrar som är tillgängliga för att anpassa hello distribution nedan med hello beskrivning av användning av hello-parametern i hello distributionsprocessen. 
+Du kan använda ett befintligt virtuellt nätverk eller skapa ett nytt VNET när du distribuerar här mallen. De olika parametrarna för att anpassa distributionen listas nedan med beskrivning av parameterns användning vid distributionsprocessen. 
 
 | Parameter | Beskrivning |
 |:--- |:--- |
-| Plats |hello region toodeploy hello resurser till, t.ex. östra USA. |
-| StorageAccountType |hello typ av hello Lagringskonto som skapats |
+| Plats |Regionen att distribuera resurserna till, exempelvis USA, östra. |
+| StorageAccountType |Typ av lagringskonto som skapas |
 | VirtualNetworkUsage |Anger om ett nytt virtuellt nätverk ska skapas eller om ett befintligt ska användas |
-| VirtualNetworkName |hello namnet på hello virtuellt nätverk tooCreate, obligatorisk på både befintliga eller nya användning av virtuellt nätverk |
-| VirtualNetworkResourceGroupName |Anger hello hello resursgruppen där hello befintligt virtuellt nätverk finns. När du använder ett befintligt virtuellt nätverk kan blir detta en obligatorisk parameter så hello distribution kan hitta hello-ID för hello befintligt virtuellt nätverk |
-| VirtualNetworkAddressRange |Hej adressintervall hello nya VNET, obligatoriska om att skapa ett nytt virtuellt nätverk |
-| InternalSubnetName |hello namnet på hello internt undernät, obligatorisk på båda användningsalternativ för virtuella nätverk (ny eller befintlig) |
-| InternalSubnetAddressRange |hello adressintervall hello internt undernät, som innehåller hello domänkontrollanter och ADFS-servrar, obligatorisk om att skapa ett nytt virtuellt nätverk. |
-| DMZSubnetAddressRange |hello adressintervall hello dmz undernät som innehåller hello Windows application proxy-servrar, om hur du skapar ett nytt virtuellt nätverk. |
-| DMZSubnetName |hello namnet på hello internt undernät, obligatorisk på båda användningsalternativ för virtuella nätverk (ny eller befintlig). |
-| ADDC01NICIPAddress |hello interna IP-adress Hej första domänkontrollant, IP-adressen ska tilldelas statiskt toohello DC och måste vara en giltig ip-adress inom hello internt undernät |
-| ADDC02NICIPAddress |hello interna IP-adress Hej andra domänkontrollanten, IP-adressen ska tilldelas statiskt toohello DC och måste vara en giltig ip-adress inom hello internt undernät |
-| ADFS01NICIPAddress |hello interna IP-adressen hello första AD FS-servern, IP-adressen ska tilldelas statiskt toohello AD FS-servern och måste vara en giltig ip-adress inom hello internt undernät |
-| ADFS02NICIPAddress |hello interna IP-adressen hello andra AD FS-servern, IP-adressen ska tilldelas statiskt toohello AD FS-servern och måste vara en giltig ip-adress inom hello internt undernät |
-| WAP01NICIPAddress |hello interna IP-adress hello första WAP servern denna IP-adress ska tilldelas statiskt toohello WAP servern och måste vara en giltig ip-adress inom hello DMZ undernät |
-| WAP02NICIPAddress |hello interna IP-adressen för hello andra WAP servern denna IP-adress ska tilldelas statiskt toohello WAP servern och måste vara en giltig ip-adress inom hello DMZ undernät |
-| ADFSLoadBalancerPrivateIPAddress |hello interna IP-adress hello ADFS belastningsutjämnare, IP-adressen ska tilldelas statiskt toohello belastningsutjämnare och måste vara en giltig ip-adress inom hello internt undernät |
+| VirtualNetworkName |Namnet på det virtuella nätverket som ska skapas, obligatoriskt både vid användning av ett befintligt och nytt virtuellt nätverk |
+| VirtualNetworkResourceGroupName |Anger namnet på resursgruppen där det befintliga virtuella nätverket finns. När du använder ett befintligt virtuellt nätverk blir det här en obligatorisk parameter så att distributionen kan hitta ID:t för det befintliga virtuella nätverket |
+| VirtualNetworkAddressRange |Adressintervallet för det nya VNET, är obligatoriskt vid skapande av ett nytt virtuellt nätverk |
+| InternalSubnetName |Namnet på det interna undernätet, obligatoriskt för bägge användningsalternativen för det virtuella nätverket (nytt eller befintligt) |
+| InternalSubnetAddressRange |Adressintervallet för det interna undernätet, som innehåller domänkontrollanter och AD FS-servrar, obligatoriskt om du skapar ett nytt virtuellt nätverk. |
+| DMZSubnetAddressRange |Adressintervallet för DMZ-undernätet, som innehåller Windows-programproxyservrar, obligatoriskt om du skapar ett nytt virtuellt nätverk. |
+| DMZSubnetName |Namnet på det interna undernätet, obligatoriskt för bägge användningsalternativen för det virtuella nätverket (nytt eller befintligt). |
+| ADDC01NICIPAddress |Den interna IP-adressen för den första domänkontrollanten, den här IP-adressen kommer att statiskt tilldelas till domänkontrollanten och måste vara en giltig IP-adress inom det interna undernätet |
+| ADDC02NICIPAddress |Den interna IP-adressen för den andra domänkontrollanten, den här IP-adressen kommer att statiskt tilldelas till domänkontrollanten och måste vara en giltig IP-adress inom det interna undernätet |
+| ADFS01NICIPAddress |Den interna IP-adressen för den första AD FS-servern, den här IP-adressen kommer att statiskt tilldelas till AD FS-servern och måste vara en giltig IP-adress inom det interna undernätet |
+| ADFS02NICIPAddress |Den interna IP-adressen för den andra AD FS-servern, den här IP-adressen kommer att statiskt tilldelas till AD FS-servern och måste vara en giltig IP-adress inom det interna undernätet |
+| WAP01NICIPAddress |Den interna IP-adressen för den första WAP-servern, den här IP-adressen kommer att statiskt tilldelas till WAP-servern och måste vara en giltig IP-adress inom DMZ-undernätet |
+| WAP02NICIPAddress |Den interna IP-adressen för den andra WAP-servern, den här IP-adressen kommer att statiskt tilldelas till WAP-servern och måste vara en giltig IP-adress inom DMZ-undernätet |
+| ADFSLoadBalancerPrivateIPAddress |Den interna IP-adressen för AD FS-belastningsutjämnaren, den här IP-adressen kommer att statiskt tilldelas till belastningsutjämnaren och måste vara en giltig IP-adress inom det interna undernätet |
 | ADDCVMNamePrefix |Virtual Machine-namnprefixet för domänkontrollanter |
 | ADFSVMNamePrefix |Virtual Machine-namnprefixet för AD FS-servrar |
 | WAPVMNamePrefix |Virtual Machine-namnprefixet för WAP-servrar |
-| ADDCVMSize |hello vm-storlek för hello-domänkontrollanter |
-| ADFSVMSize |hello vm-storlek för hello ADFS-servrar |
-| WAPVMSize |hello vm-storlek för hello WAP-servrar |
-| AdminUserName |hello namnet på hello lokal administratör hello virtuella datorer |
-| AdminPassword |hello lösenordet för hello lokala administratörskontot för hello virtuella datorer |
+| ADDCVMSize |VM-storleken för domänkontrollanterna |
+| ADFSVMSize |VM-storleken för AD FS-servrarna |
+| WAPVMSize |VM-storleken för WAP-servrarna |
+| AdminUserName |Namnet på den lokala administratören för de virtuella datorerna |
+| AdminPassword |Lösenordet för det lokala administratörskontot för de virtuella datorerna |
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 * [Tillgänglighetsuppsättningar](https://aka.ms/Azure/Availability) 

@@ -1,6 +1,6 @@
 ---
-title: "aaaHow tooconfigure självbetjäning programmet tilldelning | Microsoft Docs"
-description: "Aktivera självbetjäning programmet åtkomst tooallow användare toofind sina egna program"
+title: "Konfigurera självbetjäning programmet tilldelning | Microsoft Docs"
+description: "Aktivera självbetjäning programåtkomst så att användarna kan hitta sina egna program"
 services: active-directory
 documentationcenter: 
 author: ajamess
@@ -13,76 +13,76 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: d25a0146c4c8cebf9c2ae8c516f094a8eccb4570
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 7991dc19d41c5eb8e149c3ee08069e1a162929cc
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="how-tooconfigure-self-service-application-assignment"></a>Hur tooconfigure självbetjäning programmet tilldelning
+# <a name="how-to-configure-self-service-application-assignment"></a>Konfigurera självbetjäning programmet tilldelning
 
-Innan användarna kan själva identifiera program från deras åtkomstpanelen, behöver du tooenable **självbetjäning programåtkomst** tooany program som du vill tooallow användare tooself-identifiera och begära åtkomst till.
+Innan användarna kan själva identifiera program från deras åtkomstpanelen, måste du aktivera **självbetjäning programåtkomst** för program som du vill tillåta användare att identifiera själv och begära åtkomst till.
 
-Den här funktionen är ett bra sätt du toosave tid och pengar som IT-grupp och rekommenderas som en del av en distribution för moderna program med Azure Active Directory.
+Den här funktionen är ett bra sätt att spara tid och pengar som IT-grupp och rekommenderas som en del av en distribution för moderna program med Azure Active Directory.
 
 Den här funktionen kan du:
 
--   Användarna själva identifiera program från hello [programmet åtkomstpanelen](https://myapps.microsoft.com/) utan stör hello IT-gruppen.
+-   Användarna själva identifiera program från den [programmet åtkomstpanelen](https://myapps.microsoft.com/) utan stör IT-grupp.
 
--   Lägg till dessa tooa förkonfigurerade användargruppen så att du kan se vem som har begärt åtkomst, ta bort åtkomst och hantera hello toothem för roller.
+-   Lägga till användare i en förkonfigurerad så att du kan se vem som har begärt åtkomst, ta bort åtkomst och hantera roller som tilldelats.
 
--   Om du vill tillåta en business godkännare tooapprove programmet åtkomstbegäranden så hello IT-grupp inte behöver.
+-   Alternativt kan en business godkännare godkänna programförfrågningar så att IT-grupp inte behöver.
 
--   Du kan också konfigurera in too10 personer som kan godkänna åtkomst toothis program.
+-   Du kan också konfigurera upp till 10 personer som kan godkänna åtkomst till det här programmet.
 
--   Om du vill att en business godkännare tooset hello lösenord dessa användare kan använda toosign i toohello program direkt från hello business godkännare [programmet åtkomstpanelen](https://myapps.microsoft.com/).
+-   Om du vill tillåta ett företag godkännare och ange sedan lösenorden dessa användare kan använda för att logga in på programmet, direkt från godkännaren företag [programmet åtkomstpanelen](https://myapps.microsoft.com/).
 
--   Du kan också automatiskt tilldela tilldelade Självbetjäningsanvändare tooan programrollen direkt.
+-   Du kan också automatiskt tilldela självbetjäning tilldelade användare till en roll för programmet direkt.
 
-## <a name="enable-self-service-application-access-tooallow-users-toofind-their-own-applications"></a>Aktivera självbetjäning programmet åtkomst tooallow användare toofind sina egna program
+## <a name="enable-self-service-application-access-to-allow-users-to-find-their-own-applications"></a>Aktivera självbetjäning programåtkomst så att användarna kan hitta sina egna program
 
-Självbetjäning programåtkomst är ett bra sätt tooallow användare tooself-identifiera program, eventuellt tillåter hello business tooapprove toothose program. Du kan tillåta hello business grupp toomanage hello autentiseringsuppgifter tilldelade toothose användare för lösenord enkel inloggning på program direkt från deras åtkomst paneler.
+Självbetjäning programåtkomst är ett bra sätt att tillåta användarna att identifiera program, automatisk låta affärsgruppen att godkänna åtkomst till dessa program. Du kan tillåta affärsgruppen att hantera de autentiseringsuppgifter som tilldelats till användare för höger lösenord enkel inloggning på program från deras åtkomst paneler.
 
-tooenable självbetjäning åtkomst tooan program, följ hello stegen nedan:
+Följ stegen nedan om du vill aktivera självbetjäning programmet åtkomst till ett program:
 
-1.  Öppna hello [ **Azure Portal** ](https://portal.azure.com/) och logga in som en **Global administratör.**
+1.  Öppna den [ **Azure Portal** ](https://portal.azure.com/) och logga in som en **Global administratör.**
 
-2.  Öppna hello **Azure Active Directory-tillägget** genom att klicka på **fler tjänster** längst hello hello huvudsakliga vänstra navigeringsmenyn.
+2.  Öppna den **Azure Active Directory-tillägget** genom att klicka på **fler tjänster** längst ned i den huvudsakliga vänstra navigeringsmenyn.
 
-3.  Skriv i **”Azure Active Directory**” i sökrutan för hello filter och väljer hello **Azure Active Directory** objekt.
+3.  Skriv i **”Azure Active Directory**” i sökrutan för filter och välj den **Azure Active Directory** objekt.
 
-4.  Klicka på **företagsprogram** från hello Azure Active Directory vänstra navigeringsmenyn.
+4.  Klicka på **företagsprogram** från Azure Active Directory vänstra navigeringsmenyn.
 
-5.  Klicka på **alla program** tooview en lista över alla program.
+5.  Klicka på **alla program** att visa en lista över alla program.
 
-  * Om du inte ser hello-program som du vill visa här använder du hello **Filter** kontroll hello överst i hello **listan med alla program** och ange hello **visa** alternativ för **Alla program.**
+  * Om du inte ser programmet som du vill visa här använder du den **Filter** kontrollen längst upp i den **listan med alla program** och ange den **visa** att **alla program.**
 
-6.  Välj hello-program som du vill tooenable självbetjäning toofrom hello åtkomstlista.
+6.  Välj det program som du vill aktivera självbetjäning åtkomst till i listan.
 
-7.  När programmet hello läses in klickar du på **självbetjäning** från hello programmet vänstra navigeringsmenyn.
+7.  När programmet läses in klickar du på **självbetjäning** från programmets vänstra navigeringsmenyn.
 
-8.  tooenable självbetjäning programåtkomst för det här programmet stänga hello **toorequest åtkomst toothis program för användarna?** växla för**Ja.**
+8.  Om du vill aktivera självbetjäning programåtkomst för det här programmet, aktivera den **Tillåt användare att begära åtkomst till det här programmet?** växla till **Ja.**
 
-9.  Klicka sedan tooselect hello grupp toowhich användare som begär åtkomst toothis program bör läggas på hello selector nästa toohello etikett **toowhich grupp ska tilldelas användare läggas?** och välja en grupp.
+9.  Klicka sedan på selector bredvid etiketten för att välja gruppen till vilken användare som begär åtkomst till det här programmet ska läggas till, **vilken grupp ska tilldelade användare läggas?** och välja en grupp.
 
-10. **Valfritt:** om du vill toorequire ett företag godkännande innan användarna får åtkomst måste du ange hello **kräver godkännande innan du beviljar åtkomst toothis program?** växla för**Ja**.
+10. **Valfritt:** om du vill kräva en business godkännande innan användare tillåts åtkomst genom att ange den **kräver godkännande innan åtkomst beviljas till det här programmet?** växla till **Ja**.
 
-11. **Valfritt: för program som använder enkel inloggning för lösenord på endast** om du vill tooallow dessa företag godkännare toospecify hello lösenord som skickas toothis program för godkända användare måste ange hello **Tillåt godkännare tooset användarens lösenord för det här programmet?**  växla för**Ja**.
+11. **Valfritt: för program som använder enkel inloggning för lösenord på endast** om du vill att dessa företag godkännare att ange de lösenord som skickas till det här programmet för godkända användare måste ange den **Tillåt godkännare att ange användarens lösenord för det här programmet?** växla till **Ja**.
 
-12. **Valfritt:** toospecify hello business godkännare som tooapprove åtkomst toothis program tillåts på hello selector nästa toohello etikett **vem som får tooapprove åtkomst toothis program?** tooselect in too10 enskilda företag godkännare.
+12. **Valfritt:** om du vill ange godkännare för företag som har behörighet att godkänna åtkomst till det här programmet, klickar du på väljaren bredvid etiketten **som har tillåtelse att godkänna åtkomst till det här programmet?** att välja upp till 10 enskilda företag godkännare.
 
    >[!NOTE]
    >Grupper stöds inte.
    >
    >
 
-13. **Valfritt:** **för program som exponera roller**, om du inte vill tooassign godkända Självbetjäningsanvändare tooa roll, klicka på nästa hello selector-toohello **toowhich roll ska tilldelas användare i den här programmet?**  tooselect hello rollen toowhich dessa användare ska tilldelas.
+13. **Valfritt:** **för program som exponera roller**, om du vill tilldela en roll godkända Självbetjäningsanvändare, klickar du på väljaren bredvid den **vilken roll ska användare tilldelas i det här programmet?** att välja rollen som användarna ska tilldelas.
 
-14. Klicka på hello **spara** knappen hello överst i hello bladet toofinish.
+14. Klicka på den **spara** längst upp på bladet för att avsluta.
 
-När du har slutfört självbetjäning programkonfigurationen användare kan navigera tootheir [programmet åtkomstpanelen](https://myapps.microsoft.com/) och klicka på hello **+ Lägg till** knappen toofind hello appar toowhich du har aktiverat Självbetjäning åtkomst. Företag godkännare också se ett meddelande i sina [programmet åtkomstpanelen](https://myapps.microsoft.com/). Du kan aktivera ett e-postmeddelande till dem när en användare har begärt åtkomst tooan program som kräver godkännande. 
+När du har slutfört självbetjäning programkonfigurationen användare kan navigera till deras [programmet åtkomstpanelen](https://myapps.microsoft.com/) och klicka på den **+ Lägg till** för att hitta de appar som du har aktiverat självbetjäning åtkomst. Företag godkännare också se ett meddelande i sina [programmet åtkomstpanelen](https://myapps.microsoft.com/). Du kan aktivera ett e-postmeddelande till dem när en användare har begärt åtkomst till ett program som kräver godkännande. 
 
-Dessa godkännanden stöder godkännandearbetsflöden, vilket innebär att om du anger flera godkännare alla godkännare kan godkännare åtkomst toohello program.
+Dessa godkännanden stöder godkännandearbetsflöden, vilket innebär att om du anger flera godkännare alla godkännare kan godkännare åtkomst till programmet.
 
 ## <a name="next-steps"></a>Nästa steg
 [Konfigurera Azure Active Directory för grupphantering via självbetjäning](active-directory-accessmanagement-self-service-group-management.md)

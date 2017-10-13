@@ -1,8 +1,8 @@
-### <a name="gwipnoconnection"></a>toomodify hello lokal nätverksgateway GatewayIpAddress - ingen gateway-anslutningen
+### <a name="gwipnoconnection"></a> Ändra ”GatewayIpAddress” för den lokala nätverksgatewayen – ingen gatewayanslutning
 
-Om hello VPN-enhet som du vill tooconnect toohas ändras dess offentliga IP-adress, måste toomodify hello lokala nätverket gateway tooreflect som ändras. Använd hello exempel toomodify en lokal nätverksgateway som inte har en gateway-anslutningen.
+Om VPN-enheten som du vill ansluta till har bytt offentlig IP-adress måste du ändra den lokala nätverksgatewayen så att den återspeglar den ändringen. Använd exemplet för att ändra en lokal nätverksgateway som inte har någon gatewayanslutning.
 
-När du ändrar det här värdet kan du också ändra hello adressprefix på hello samtidigt. Vara säker på att toouse hello befintliga namnet på din lokala nätverksgateway toooverwrite hello aktuella inställningar. Om du använder ett annat namn, skapa en ny lokal nätverksgateway, i stället för att skriva över hello befintlig.
+När du ändrar det här värdet kan du också ändra adressprefixen på samma gång. Se till att använda det befintliga namnet på din lokala nätverksgateway för att skriva över de aktuella inställningarna. Om du inte gör det skapar du en ny lokal nätverksgateway i stället för att skriva över den som redan finns.
 
 ```powershell
 New-AzureRmLocalNetworkGateway -Name MyLocalNetworkGWName `
@@ -10,34 +10,34 @@ New-AzureRmLocalNetworkGateway -Name MyLocalNetworkGWName `
 -GatewayIpAddress "5.4.3.2" -ResourceGroupName MyRGName
 ```
 
-### <a name="gwipwithconnection"></a>toomodify hello lokal nätverksgateway GatewayIpAddress - befintlig gateway-anslutningen
+### <a name="gwipwithconnection"></a> Ändra ”GatewayIpAddress” för den lokala nätverksgatewayen – ingen befintlig gatewayanslutning
 
-Om hello VPN-enhet som du vill tooconnect toohas ändras dess offentliga IP-adress, måste toomodify hello lokala nätverket gateway tooreflect som ändras. Om det finns redan en gatewayanslutning, måste du först tooremove hello anslutning. Du kan ändra hello gateway IP-adress och skapa en ny anslutning när hello anslutningen tas bort. Du kan också ändra hello adressprefix på hello samtidigt. Det medför en del avbrott för din VPN-anslutning. När du ändrar hello IP-adressen för gateway, behöver du inte toodelete hello VPN-gateway. Du behöver bara tooremove hello anslutning.
+Om VPN-enheten som du vill ansluta till har bytt offentlig IP-adress måste du ändra den lokala nätverksgatewayen så att den återspeglar den ändringen. Om det redan finns en gatewayanslutning, måste du först ta bort anslutningen. När anslutningen har tagits bort kan du ändra IP-adressen till gatewayen och skapa en ny anslutning. Du kan också ändra adressprefixen på samma gång. Det medför en del avbrott för din VPN-anslutning. När du ändrar IP-adressen för gatewayen behöver du inte ta bort VPN-gatewayen. Du måste bara ta bort anslutningen.
  
 
-1. Ta bort hello anslutningen. Du hittar hello namnet på anslutningen genom att använda hello 'Get-AzureRmVirtualNetworkGatewayConnection-cmdlet.
+1. Ta bort anslutningen. Du kan ta reda på namnet på anslutningen med hjälp av cmdleten Get-AzureRmVirtualNetworkGatewayConnection.
 
   ```powershell
   Remove-AzureRmVirtualNetworkGatewayConnection -Name MyGWConnectionName `
   -ResourceGroupName MyRGName
   ```
-2. Ändra hello 'GatewayIpAddress'-värde. Du kan också ändra hello adressprefix på hello samtidigt. Vara säker på att toouse hello befintliga namnet på din lokala gateway toooverwrite hello aktuella nätverksinställningar. Om du inte skapa en ny lokal nätverksgateway, i stället för att skriva över hello befintlig.
+2. Ändra värdet för GatewayIpAddress. Du kan också ändra adressprefixen på samma gång. Se till att använda det befintliga namnet på din lokala nätverksgateway. Om du inte gör det skapar du en ny lokal nätverksgateway i stället för att skriva över den som redan finns.
 
   ```powershell
   New-AzureRmLocalNetworkGateway -Name MyLocalNetworkGWName `
   -Location "West US" -AddressPrefix @('10.0.0.0/24','20.0.0.0/24','30.0.0.0/24') `
   -GatewayIpAddress "104.40.81.124" -ResourceGroupName MyRGName
   ```
-3. Skapa hello-anslutning. I det här exemplet konfigurerar vi en IPsec-anslutningstyp. När du återskapa din anslutning Använd hello anslutningstyp som har angetts för din konfiguration. Ytterligare anslutningstyper finns hello [PowerShell-cmdleten](https://msdn.microsoft.com/library/mt603611.aspx) sidan.  Du kan köra hello 'Get-AzureRmVirtualNetworkGateway' cmdlet tooobtain hello VirtualNetworkGateway namn.
+3. Skapa anslutningen. I det här exemplet konfigurerar vi en IPsec-anslutningstyp. När du återskapar anslutningen kan du använda den anslutningstyp som har angetts för din konfiguration. Ytterligare anslutningar finns på sidan [PowerShell-cmdlet](https://msdn.microsoft.com/library/mt603611.aspx).  För att få VirtualNetworkGateway-namnet kan du köra cmdlet:en Get-AzureRmVirtualNetworkGateway.
    
-    Ange hello variabler.
+    Ange variablerna.
 
   ```powershell
   $local = Get-AzureRMLocalNetworkGateway -Name MyLocalNetworkGWName -ResourceGroupName MyRGName `
   $vnetgw = Get-AzureRmVirtualNetworkGateway -Name RMGateway -ResourceGroupName MyRGName
   ```
    
-    Skapa hello-anslutning.
+    Skapa anslutningen.
 
   ```powershell 
   New-AzureRmVirtualNetworkGatewayConnection -Name MyGWConnectionName -ResourceGroupName MyRGName `

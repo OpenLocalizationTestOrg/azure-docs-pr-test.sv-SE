@@ -1,9 +1,9 @@
 ---
-title: "aaa ”Azure Analysis Services Adventure Works kursen | Microsoft Docs ”"
-description: "Introducerar hello Adventure Works självstudiekurs för Azure Analysis Services"
+title: "Azure Analysis Services – Självstudiekurs för Adventure Works | Microsoft Docs"
+description: "Presentation av självstudiekursen för Adventure Works för Azure Analysis Services"
 services: analysis-services
 documentationcenter: 
-author: minewiskan
+author: Minewiskan
 manager: erikre
 editor: 
 tags: 
@@ -15,67 +15,67 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 06/01/2017
 ms.author: owend
-ms.openlocfilehash: 2df8b3ab4e8c4ffbe0086418d60fd2e2abd35e7d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 81a378c6b1a15cc240ca30fa19b557312ca54922
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-analysis-services---adventure-works-tutorial"></a>Azure Analysis Services – Självstudiekurs för Adventure Works
 
 [!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
-Den här självstudiekursen innehåller erfarenheter toocreate och distribuera en tabellmodell på hello 1400 kompatibilitetsnivå med hjälp av [SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt).  
+Den här självstudien tillhandahåller lektioner om hur du skapar och distribuerar en tabellmodell på kompatibilitetsnivån 1400 genom att använda [SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt).  
 
-Om du är den nya tooAnalysis tjänster och tabular modellering kan den här kursen är hello snabbaste sättet toolearn hur toocreate och distribuera en grundläggande tabellmodell. När du har hello krav på plats bör ta mellan två toothree timmar toocomplete.  
+Om du inte har använt Analysis Services eller tabellmodellering tidigare är den här självstudien det snabbaste sättet att lära dig hur du skapar och distribuerar en grundläggande tabellmodell. Om du uppfyller förhandskraven bör det ta mellan två och tre timmar att slutföra självstudien.  
   
 ## <a name="what-you-learn"></a>Detta får du får lära dig   
   
--   Hur toocreate en ny tabellmodell projektet på hello **1400 kompatibilitetsnivå** i SSDT.
+-   Hur du skapar ett nytt projekt för tabellmodeller på **kompatibilitetsnivån 1400** i SSDT.
   
--   Hur tooimport data från en relationsdatabas i en tabellmodell-projekt.  
+-   Hur du importerar data från en relationsdatabas till ett tabellmodellprojekt.  
   
--   Hur toocreate och hantera relationer mellan tabeller i hello modellen.  
+-   Hur du skapar och hanterar relationer mellan tabeller i modellen.  
   
--   Hur beräknas toocreate kolumner, mått och prestationsindikatorer som hjälper användarna att analysera viktiga affärsmått.  
+-   Hur du skapar beräknade kolumner, mått och KPI:er som hjälper användarna att analysera viktiga affärsmått.  
   
--   Hur toocreate och hantera perspektiv och hierarkier som hjälper användarna att enkelt bläddra modelldata genom att tillhandahålla business och programspecifika synpunkter.  
+-   Hur du skapar och hanterar perspektiv och hierarkier som hjälper användarna att enkelt bläddra i modelldata genom att tillhandahålla affärs- och programspecifika översikter.  
   
--   Hur toocreate partitioner som delar upp tabelldata i mindre logiska delar som kan bearbetas oberoende av andra partitioner.  
+-   Hur du skapar partitioner som delar upp tabelldata i mindre, logiska delar som kan bearbetas oberoende av andra partitioner.  
   
--   Hur modellen toosecure objekt och data genom att skapa roller med användaren medlemmar.  
+-   Hur du skyddar modellobjekt och data genom att skapa roller med användarmedlemmar.  
   
--   Hur toodeploy en tabellmodell tooan **Azure Analysis Services** servern eller en lokal SQL Server 2017 Analysis Services-server.  
+-   Hur du distribuerar en tabellmodell till en **Azure Analysis Services**-server eller en lokal SQL Server 2017 Analysis Services-server.  
   
 ## <a name="prerequisites"></a>Krav  
-toocomplete den här kursen behöver du:  
+För att slutföra den här kursen behöver du:  
   
--   En Azure Analysis Services eller SQL Server 2017 Analysis Services-instansen toodeploy din modell till. Registrera dig för en kostnadsfri [utvärderingsversion av Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) och [skapa en server](../analysis-services-create-server.md). Eller registrera dig och ladda ned [SQL Server 2017 Community Technology Preview](https://www.microsoft.com/evalcenter/evaluate-sql-server-vnext-ctp). 
+-   En Azure Analysis Services- eller SQL Server 2017 Analysis Services-instans att distribuera modellen till. Registrera dig för en kostnadsfri [utvärderingsversion av Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) och [skapa en server](../analysis-services-create-server.md). Eller registrera dig och ladda ned [SQL Server 2017 Community Technology Preview](https://www.microsoft.com/evalcenter/evaluate-sql-server-vnext-ctp). 
 
--   Ett informationslager för SQL Server eller Azure SQL Data Warehouse med hello [AdventureWorksDW2014 exempeldatabasen](http://go.microsoft.com/fwlink/?LinkID=335807). Den här exempeldatabasen innehåller hello data nödvändiga toocomplete den här kursen. Ladda ned [kostnadsfria versioner av SQL Server Data Tools](https://www.microsoft.com/sql-server/sql-server-downloads). Eller registrera dig för en kostnadsfri [Azure SQL Database-utvärderingsversion](https://azure.microsoft.com/services/sql-database/). 
+-   SQL Server Data Warehouse eller Azure SQL Data Warehouse med [AdventureWorksDW2014-exempeldatabasen](http://go.microsoft.com/fwlink/?LinkID=335807). Den här exempeldatabasen omfattar alla data som behövs för att slutföra den här självstudien. Ladda ned [kostnadsfria versioner av SQL Server Data Tools](https://www.microsoft.com/sql-server/sql-server-downloads). Eller registrera dig för en kostnadsfri [Azure SQL Database-utvärderingsversion](https://azure.microsoft.com/services/sql-database/). 
 
-    **Viktigt:** om du installerar hello exempeldatabasen på en lokal SQL Server och du distribuerar din modell tooan Azure Analysis Services-server, en [lokala datagateway](../analysis-services-gateway.md) krävs.
+    **Viktigt:** Om du installerar exempeldatabasen på en lokal SQL-server och distribuerar din modell till en Azure Analysis Services-server så krävs en [lokal datagateway](../analysis-services-gateway.md).
 
--   hello senaste versionen av [SQL Server Data Tools (SSDT)](https://msdn.microsoft.com/library/mt204009.aspx).
+-   Den senaste versionen av [SQL Server Data Tools (SSDT)](https://msdn.microsoft.com/library/mt204009.aspx).
 
--   hello senaste versionen av [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms).    
+-   Den senaste versionen av [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms).    
 
 -   Ett klientprogram som till exempel [Power BI Desktop](https://powerbi.microsoft.com/desktop/) eller Excel. 
 
 ## <a name="scenario"></a>Scenario  
-Den här självstudien är baserad på Adventure Works Cycles, ett fiktivt företag. Adventure Works är en stor, flerspråkig tillverkningsföretag som producerar och distribuerar cyklar, delar och tillbehör toocommercial marknader i Nordamerika, Europa och Asien. hello företaget använder 500 anställda. Dessutom har Adventure Works flera regionala försäljningsteam inom sitt marknadsområde. Projektet är toocreate en tabellmodell för försäljning och marknadsföring användare tooanalyze Internet försäljningsinformation i hello AdventureWorksDW-databasen.  
+Den här självstudien är baserad på Adventure Works Cycles, ett fiktivt företag. Adventure Works är ett stort, multinationellt företag som tillverkar och distribuerar cyklar, delar och tillbehör till kommersiella marknader i Nordamerika, Europa och Asien. Företaget har 500 anställda. Dessutom har Adventure Works flera regionala försäljningsteam inom sitt marknadsområde. Ditt projekt är att skapa en tabellmodell för försäljnings- och marknadsföringsanvändare som analyserar Internetförsäljningsdata i AdventureWorksDW-databasen.  
   
-Du måste slutföra olika erfarenheter toocomplete hello kursen. Varje lektion innehåller olika uppgifter. Varje uppgift i ordning är nödvändigt för att slutföra hello lektionen. En viss lektion kan innehålla flera uppgifter som leder till samma resultat, men tillvägagångssättet för att slutföra uppgifterna skiljer sig åt. Den här metoden visar är det ofta mer än ett sätt toocomplete en aktivitet och toochallenge du med hjälp av kunskaper som du har lärt dig i tidigare erfarenheter och uppgifter.  
+För att slutföra den här självstudien måste du slutföra ett antal lektioner. Varje lektion innehåller olika uppgifter. Du måste slutföra alla uppgifter i rätt ordning för att slutföra lektionen. En viss lektion kan innehålla flera uppgifter som leder till samma resultat, men tillvägagångssättet för att slutföra uppgifterna skiljer sig åt. Den här metoden visar att det ofta finns fler än ett sätt att slutföra en uppgift och fungerar även som en utmaning eftersom du måste använda kunskaper som du har lärt dig under tidigare lektioner och uppgifter.  
   
-hello syftar hello erfarenheter tooguide dig genom att redigera en grundläggande tabellmodell genom att använda många av funktionerna hello ingår i SSDT. Eftersom varje lektionen bygger på hello föregående lektionen, bör du genomföra hello erfarenheter i ordning.
+Syftet med lektionerna är att lära dig att redigera en grundläggande tabellmodell med hjälp av många av funktionerna i SSDT. Eftersom varje lektion bygger på den föregående lektionen bör du genomföra lektionerna i rätt ordning.
   
-Den här kursen ger inte några erfarenheter om att hantera en server i Azure-portalen, hantera en server eller databas med hjälp av SSMS eller med hjälp av en klient programdata toobrowse modell. 
+Den här självstudiekursen innehåller inte lektioner om att hantera en server i Azure Portal, hantera en server eller databas med hjälp av SSMS eller att använda ett klientprogram för att bläddra i modelldata. 
 
 
 ## <a name="lessons"></a>Lektioner  
-Vägledningen innehåller följande erfarenheter hello:  
+Den här självstudien innehåller följande uppgifter:  
   
-|Lektion|Beräknad tid toocomplete|  
+|Lektion|Uppskattad tidsåtgång|  
 |----------|------------------------------|  
 |[1 - Skapa ett nytt projekt för tabellmodeller](../tutorials/aas-lesson-1-create-a-new-tabular-model-project.md)|10 minuter|  
 |[2 - Hämta data](../tutorials/aas-lesson-2-get-data.md)|10 minuter|  
@@ -92,9 +92,9 @@ Vägledningen innehåller följande erfarenheter hello:
 |[13 - Distribuera](../tutorials/aas-lesson-13-deploy.md)|5 minuter|  
   
 ## <a name="supplemental-lessons"></a>Kompletterande lektioner  
-Dessa erfarenheter är inte obligatoriska toocomplete hello kursen, men kan vara användbart i bättre förstå avancerade tabellmodell funktioner för redigering.  
+Du måste inte slutföra de här lektionerna för att slutföra självstudien, men de kan hjälpa dig att bättre förstå avancerade funktioner för redigering av tabellmodeller.  
   
-|Lektion|Beräknad tid toocomplete|  
+|Lektion|Uppskattad tidsåtgång|  
 |----------|------------------------------|  
 |[Detaljrader](../tutorials/aas-supplemental-lesson-detail-rows.md)|10 minuter|
 |[Dynamisk säkerhet](../tutorials/aas-supplemental-lesson-dynamic-security.md)|30 minuter|
@@ -102,7 +102,7 @@ Dessa erfarenheter är inte obligatoriska toocomplete hello kursen, men kan vara
 
   
 ## <a name="next-steps"></a>Nästa steg  
-tooget igång, se [lektionen 1: skapa en ny modell Tabellprojekt](../tutorials/aas-lesson-1-create-a-new-tabular-model-project.md).  
+Gå till [Lektion 1: Skapa ett nytt projekt för tabellmodeller](../tutorials/aas-lesson-1-create-a-new-tabular-model-project.md) för att komma igång.  
   
   
   

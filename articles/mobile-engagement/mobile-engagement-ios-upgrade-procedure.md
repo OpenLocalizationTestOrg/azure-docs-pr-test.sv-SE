@@ -1,5 +1,5 @@
 ---
-title: aaaAzure Mobile Engagement iOS SDK uppgradera proceduren | Microsoft Docs
+title: Azure Mobile Engagement iOS SDK uppgradera proceduren | Microsoft Docs
 description: "Senaste uppdateringarna och procedurer för iOS SDK för Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: mobile
@@ -14,23 +14,23 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 12/13/2016
 ms.author: piyushjo
-ms.openlocfilehash: 5a81bcaaec72aec665b3334e6400d520454d56a7
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 37c7f133d079186f828d58cabce0d2a259efd085
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="upgrade-procedures"></a>Uppgraderingsprocesser
-Om du redan har integrerat en äldre version av Engagement i ditt program, har du tooconsider hello följande punkter när du uppgraderar hello SDK.
+Om du redan har integrerat en äldre version av Engagement till programmet, måste du Tänk på följande när du uppgraderar SDK.
 
-För varje ny version av hello SDK måste du först ersätta (ta bort och importera på nytt i xcode) hello EngagementSDK och EngagementReach mappar.
+För varje ny version av SDK måste du först ersätta (ta bort och importera på nytt i xcode) mapparna EngagementSDK och EngagementReach.
 
-## <a name="from-300-too400"></a>Från 3.0.0 too4.0.0
+## <a name="from-300-to-400"></a>Från 3.0.0 till 4.0.0
 ### <a name="xcode-8"></a>XCode 8
-XCode 8 är obligatoriskt från version 4.0.0 av hello SDK.
+XCode 8 är obligatoriskt från version 4.0.0 av SDK.
 
 > [!NOTE]
-> Om du verkligen är beroende av XCode 7 så att du kan använda hello [iOS Engagement SDK v3.2.4](https://aka.ms/r6oouh). Det finns ett känt fel på hello reach-modulen för den här tidigare version när du kör på iOS 10-enheter: systemmeddelanden är inte åtgärdade. toofix detta behöver tooimplement hello föråldrad API `application:didReceiveRemoteNotification:` i din app delegera på följande sätt:
+> Om du verkligen är beroende av XCode 7 så att du kan använda den [iOS Engagement SDK v3.2.4](https://aka.ms/r6oouh). Det finns ett känt fel på reach-modulen för den här tidigare version när du kör på iOS 10-enheter: systemmeddelanden är inte åtgärdade. Åtgärda detta måste du implementera föråldrad API `application:didReceiveRemoteNotification:` i din app delegera på följande sätt:
 > 
 > 
 
@@ -41,22 +41,22 @@ XCode 8 är obligatoriskt från version 4.0.0 av hello SDK.
     }
 
 > [!IMPORTANT]
-> **Vi rekommenderar inte den här lösningen** som detta beteende kan ändras i kommande (även mindre) iOS version uppgraderar eftersom den här iOS API är inaktuell. Du bör växla tooXCode 8 så snart som möjligt.
+> **Vi rekommenderar inte den här lösningen** som detta beteende kan ändras i kommande (även mindre) iOS version uppgraderar eftersom den här iOS API är inaktuell. Du måste växla till XCode 8 så snart som möjligt.
 > 
 > 
 
 ### <a name="usernotifications-framework"></a>UserNotifications framework
-Du behöver tooadd hello `UserNotifications` ramverk i din Build Phases.
+Du måste lägga till den `UserNotifications` ramverk i din Build Phases.
 
-Öppna projektet-fönstret och välj hello rätt mål i hello Projektutforskaren. Öppna hello **”Build-faser”** fliken och i hello **”länka binär med bibliotek”** menyn Lägg till framework `UserNotifications.framework` -uppsättningen hello länka som`Optional`
+Öppna ditt projekt i Projektutforskaren, och välj rätt mål. Öppna den **”Build-faser”** fliken och i den **”länka binär med bibliotek”** menyn Lägg till framework `UserNotifications.framework` -ange länken som`Optional`
 
 ### <a name="application-push-capability"></a>Programmet push-funktion
-XCode 8 kan återställa din app push-funktion, kontrollera den i hello `capability` fliken i ditt valda målet.
+XCode 8 kan återställa din app push-funktion, kontrollera den den `capability` fliken i ditt valda målet.
 
-### <a name="add-hello-new-ios-10-notification-registration-code"></a>Lägg till hello nya iOS 10 registrering Meddelandekod
-hello äldre kodfragment tooregister hello app toonotifications fungerar fortfarande men använder föråldrad API: er när du kör på iOS 10.
+### <a name="add-the-new-ios-10-notification-registration-code"></a>Lägg till den nya iOS 10 registrering Meddelandekoden
+Äldre kodfragmentet att registrera app för meddelanden fungerar fortfarande men använder föråldrad API: er när du kör på iOS 10.
 
-Importera hello `User Notification` framework:
+Importera den `User Notification` framework:
 
         #import <UserNotifications/UserNotifications.h> 
 
@@ -93,11 +93,11 @@ av:
 
 *Om varken ditt program eller en av tredjeparts-biblioteken implementerar en `UNUserNotificationCenterDelegate` och sedan kan du hoppa över den här delen.*
 
-En `UNUserNotificationCenter` delegat som används av hello SDK toomonitor hello livscykel Engagement meddelanden på enheter som kör IOS 10 eller senare. hello SDK har sin egen implementering av hello `UNUserNotificationCenterDelegate` protokoll, men det kan bara finnas ett `UNUserNotificationCenter` delegera per program. Andra ombud läggs toohello `UNUserNotificationCenter` objekt står i konflikt med hello Engagement en. Om hello SDK upptäcker din eller någon annan tredje parts ombud kommer det inte att använda sin egen implementering toogive hello du en chans tooresolve konflikter. Du måste tooadd hello Engagement logik tooyour äger en delegat i ordning tooresolve hello konflikter.
+En `UNUserNotificationCenter` ombud används av SDK för att övervaka livscykeln för Engagement meddelanden på enheter som kör IOS 10 eller senare. SDK har sin egen implementering av den `UNUserNotificationCenterDelegate` protokoll, men det kan bara finnas ett `UNUserNotificationCenter` delegera per program. Andra ombud som lagts till i `UNUserNotificationCenter` objekt står i konflikt med en Engagement. Om SDK upptäcker din eller någon annan tredje parts ombud kommer den inte använda sin egen implementering som ger dig möjlighet att lösa konflikter. Du måste lägga till Engagement-kod till din egen ombud för att lösa konflikter.
 
-Det finns två sätt tooachieve detta.
+Det finns två sätt att göra detta.
 
-Förslag 1, genom att helt enkelt vidarebefordra ombudet anropar toohello SDK:
+Förslag 1, genom att vidarebefordra ombudet anrop till SDK:
 
     #import <UIKit/UIKit.h>
     #import "EngagementAgent.h"
@@ -124,7 +124,7 @@ Förslag 1, genom att helt enkelt vidarebefordra ombudet anropar toohello SDK:
     }
     @end
 
-Eller förslag 2, med arv från hello `AEUserNotificationHandler` klass
+Eller förslag 2, som ärver från den `AEUserNotificationHandler` klass
 
     #import "AEUserNotificationHandler.h"
     #import "EngagementAgent.h"
@@ -151,10 +151,10 @@ Eller förslag 2, med arv från hello `AEUserNotificationHandler` klass
     @end
 
 > [!NOTE]
-> Du kan fastställa om ett meddelande kommer från Engagement eller inte genom att ange dess `userInfo` ordlista toohello Agent `isEngagementPushPayload:` klassen metoden.
+> Du kan fastställa om ett meddelande kommer från Engagement eller inte genom att ange dess `userInfo` ordlista till agenten `isEngagementPushPayload:` klassen metoden.
 
-Kontrollera att hello `UNUserNotificationCenter` objektets ombud anges tooyour ombud inom antingen hello `application:willFinishLaunchingWithOptions:` eller hello `application:didFinishLaunchingWithOptions:` metod för programdelegaten.
-Till exempel om du har implementerat hello ovan förslag 1:
+Se till att den `UNUserNotificationCenter` objektets ombud är inställd på ombudet i antingen den `application:willFinishLaunchingWithOptions:` eller `application:didFinishLaunchingWithOptions:` -metoden i programdelegaten.
+Till exempel om du har implementerat ovan förslag 1:
 
       - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
         // Any other code
@@ -163,30 +163,30 @@ Till exempel om du har implementerat hello ovan förslag 1:
         return YES;
       }
 
-## <a name="from-200-too300"></a>Från 2.0.0 too3.0.0
-Bort stöd för iOS 4.X. Från och med den här versionen hello distributionsmålet för ditt program måste vara minst iOS 6.
+## <a name="from-200-to-300"></a>Från 2.0.0 till 3.0.0
+Bort stöd för iOS 4.X. Startar från den här versionen av distributionsmålet för ditt program måste vara minst iOS 6.
 
-Om du använder Reach i ditt program, måste du lägga till `remote-notification` värdet toohello `UIBackgroundModes` matris i filen Info.plist i ordning tooreceive remote meddelanden.
+Om du använder Reach i ditt program, måste du lägga till `remote-notification` värde till den `UIBackgroundModes` matris i filen Info.plist för att kunna ta emot meddelanden för fjärråtkomst.
 
-Hej metoden `application:didReceiveRemoteNotification:` måste ersättas med toobe `application:didReceiveRemoteNotification:fetchCompletionHandler:` i programdelegaten.
+Metoden `application:didReceiveRemoteNotification:` måste ersättas med `application:didReceiveRemoteNotification:fetchCompletionHandler:` i programdelegaten.
 
-”AEPushDelegate.h” är föråldrad gränssnitt och du behöver tooremove alla referenser. Detta inbegriper att ta bort `[[EngagementAgent shared] setPushDelegate:self]` och hello delegera metoder från programdelegaten:
+”AEPushDelegate.h” är föråldrad gränssnitt och du måste ta bort alla referenser. Detta inbegriper att ta bort `[[EngagementAgent shared] setPushDelegate:self]` och delegatmetoder från programdelegaten:
 
     -(void)willRetrieveLaunchMessage;
     -(void)didFailToRetrieveLaunchMessage;
     -(void)didReceiveLaunchMessage:(AEPushMessage*)launchMessage;
 
-## <a name="from-1160-too200"></a>Från 1.16.0 too2.0.0
-hello beskrivs nedan hur toomigrate SDK-integration från hello Capptain tjänsten erbjuds av Capptain SAS i en app med Azure Mobile Engagement.
-Om du migrerar från en tidigare version finns hello Capptain webbplats toomigrate too1.16 först sedan tillämpa hello nedan.
+## <a name="from-1160-to-200"></a>Från 1.16.0 till 2.0.0
+Nedan beskrivs hur du migrerar en SDK-integration från tjänsten Capptain som erbjuds av Capptain SAS i en app med Azure Mobile Engagement.
+Kontakta Capptain webbplats om du vill migrera till 1.16 först och sedan använda följande procedur om du migrerar från en tidigare version.
 
 > [!IMPORTANT]
-> Capptain och Mobile Engagement hello inte samma tjänster och hello proceduren endast anges nedan visar hur toomigrate hello-klientappen. Migrera hello SDK i hello app kommer inte att migrera data från hello Capptain servrar toohello Mobile Engagement-servrar
+> Capptain och Mobile Engagement är inte samma tjänster och proceduren nedan visar hur du migrerar klientappen endast. Migrera SDK i appen kommer inte migrera dina data från servrar som Capptain till Mobile Engagement-servrar
 > 
 > 
 
 ### <a name="agent"></a>Agent
-Hej metoden `registerApp:` har ersatts av hello nya metoden `init:`. Programdelegaten måste uppdateras och Använd anslutningssträng:
+Metoden `registerApp:` har ersatts av den nya metoden `init:`. Programdelegaten måste uppdateras och Använd anslutningssträng:
 
             - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
             {
@@ -195,23 +195,23 @@ Hej metoden `registerApp:` har ersatts av hello nya metoden `init:`. Programdele
               [...]
             }
 
-SmartAd spårning har tagits bort från SDK som du precis har tooremove alla instanser av `AETrackModule` klass
+SmartAd spårning har tagits bort från SDK som du behöver bara ta bort alla förekomster av `AETrackModule` klass
 
 ### <a name="class-name-changes"></a>Klassen namnändringar
-Som en del av hello rebranding, finns det några klassen/filnamn som behöver toobe ändras.
+Som en del av den rebranding finns det några klassen/filnamn som behöver ändras.
 
 Alla klasser prefixet ”CP” ändras med ”AE” prefix.
 
 Exempel:
 
-* `CPModule.h`har bytt namn för`AEModule.h`.
+* `CPModule.h`har bytt namn till `AEModule.h`.
 
 Alla klasser prefixet ”Capptain” ändras med prefixet ”Engagement”.
 
 Exempel:
 
-* Hej klassen `CapptainAgent` har bytt namn för`EngagementAgent`.
-* Hej klassen `CapptainTableViewController` har bytt namn för`EngagementTableViewController`.
-* Hej klassen `CapptainUtils` har bytt namn för`EngagementUtils`.
-* Hej klassen `CapptainViewController` har bytt namn för`EngagementViewController`.
+* Klassen `CapptainAgent` ändras till `EngagementAgent`.
+* Klassen `CapptainTableViewController` ändras till `EngagementTableViewController`.
+* Klassen `CapptainUtils` ändras till `EngagementUtils`.
+* Klassen `CapptainViewController` ändras till `EngagementViewController`.
 

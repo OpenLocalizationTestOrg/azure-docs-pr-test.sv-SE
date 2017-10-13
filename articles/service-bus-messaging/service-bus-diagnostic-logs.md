@@ -1,6 +1,6 @@
 ---
-title: aaaAzure Service Bus diagnostikloggar | Microsoft Docs
-description: "Lär dig hur tooset in diagnostikloggar för Service Bus i Azure."
+title: Azure Service Bus-diagnostikloggar | Microsoft Docs
+description: "Lär dig hur du ställer in diagnostikloggar för Service Bus i Azure."
 keywords: 
 documentationcenter: .net
 services: service-bus-messaging
@@ -15,27 +15,27 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 06/27/2017
 ms.author: babanisa;sethm
-ms.openlocfilehash: e48d6eaba6e865ae39f5b07ed6cd53d74c92e2ff
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 72e18444c83b84c5191a0aab3dc6983517167dd1
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="service-bus-diagnostic-logs"></a>Service Bus diagnostikloggar
 
 Du kan visa två typer av loggar för Azure Service Bus:
-* **[Aktivitetsloggar](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)**. Dessa loggar innehåller information om åtgärder som utförs på ett annat jobb. hello loggar är alltid aktiverat.
-* **[Diagnostikloggar](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)**. Du kan konfigurera diagnostiska loggar för bättre information om allt som händer i ett jobb. Diagnostikloggar omfattar aktiviteter från hello att hello jobb skapas tills hello jobbet tas bort, inklusive uppdateringar och aktiviteter som sker när hello jobbet körs.
+* **[Aktivitetsloggar](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)**. Dessa loggar innehåller information om åtgärder som utförs på ett annat jobb. Loggarna är alltid aktiverat.
+* **[Diagnostikloggar](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)**. Du kan konfigurera diagnostiska loggar för bättre information om allt som händer i ett jobb. Diagnostikloggar omfattar aktiviteter från den tidpunkt då jobbet skapades tills jobbet tas bort, inklusive uppdateringar och aktiviteter som inträffar när jobbet körs.
 
 ## <a name="turn-on-diagnostic-logs"></a>Aktivera diagnostikloggar
 
-Diagnostik loggar är inaktiverade som standard. tooenable diagnostikloggar, utför följande steg hello:
+Diagnostik loggar är inaktiverade som standard. Utför följande steg om du vill aktivera diagnostikloggar:
 
-1.  I hello [Azure-portalen](https://portal.azure.com)under **övervakning + Management**, klickar du på **diagnostik loggar**.
+1.  I den [Azure-portalen](https://portal.azure.com)under **övervakning + Management**, klickar du på **diagnostik loggar**.
 
-    ![bladet navigering toodiagnostic loggar](./media/service-bus-diagnostic-logs/image1.png)
+    ![Bladet navigering till diagnostikloggar](./media/service-bus-diagnostic-logs/image1.png)
 
-2. Klicka på hello resursen toomonitor.  
+2. Klicka på resursen som du vill övervaka.  
 
 3.  Klicka på **aktivera diagnostiken**.
 
@@ -45,23 +45,23 @@ Diagnostik loggar är inaktiverade som standard. tooenable diagnostikloggar, utf
 
     ![Ändra status diagnostikloggar](./media/service-bus-diagnostic-logs/image3.png)
 
-5.  Ange hello Arkiv mål som du vill; till exempel ett lagringskonto, en Händelsehubb eller Azure logganalys.
+5.  Ange Arkiv-mål som du vill. till exempel ett lagringskonto, en Händelsehubb eller Azure logganalys.
 
-6.  Spara hello nya diagnostikinställningar.
+6.  Spara de nya diagnostikinställningarna för.
 
-Nya inställningar börjar gälla i cirka 10 minuter. Efter det loggar visas i hello konfigurerats arkivering mål på hello **diagnostik loggar** bladet.
+Nya inställningar börjar gälla i cirka 10 minuter. Efter det loggarna visas i det konfigurerade arkivering målet på den **diagnostik loggar** bladet.
 
-Mer information om hur du konfigurerar diagnostik finns hello [översikt över Azure diagnostikloggar](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md).
+Mer information om hur du konfigurerar diagnostik finns i [översikt över Azure diagnostikloggar](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md).
 
 ## <a name="diagnostic-logs-schema"></a>Diagnostikloggar schema
 
-Alla loggar lagras i JavaScript Object Notation (JSON)-format. Varje post innehåller strängfält som använder hello-format som beskrivs i följande avsnitt hello.
+Alla loggar lagras i JavaScript Object Notation (JSON)-format. Varje post innehåller strängfält som använder det format som beskrivs i följande avsnitt.
 
 ## <a name="operational-logs-schema"></a>Operativa loggar schema
 
-Loggar in hello **OperationalLogs** kategori avbilda vad som händer under Service Bus-åtgärder. Mer specifikt loggarna avbilda hello åtgärdstyp, inklusive kön skapas, resurser som används, och hello status för hello-åtgärd.
+Loggar in på **OperationalLogs** kategori avbilda vad som händer under Service Bus-åtgärder. Dessa loggar avbilda specifikt typ av åtgärd, inklusive kön skapas, resurser och status för åtgärden.
 
-Arbetsloggen JSON strängar innehålla element som anges i följande tabell hello:
+Arbetsloggen JSON strängar innehålla element som visas i följande tabell:
 
 Namn | Beskrivning
 ------- | -------
@@ -93,7 +93,7 @@ Här är ett exempel på en arbetsloggen JSON-sträng:
 
 ## <a name="next-steps"></a>Nästa steg
 
-Finns följande länkar toolearn mer om Service Bus hello:
+Finns följande länkar för att lära dig mer om Service Bus:
 
-* [Introduktion tooService Bus](service-bus-messaging-overview.md)
+* [Introduktion till Service Bus](service-bus-messaging-overview.md)
 * [Kom igång med Service Bus](service-bus-dotnet-get-started-with-queues.md)

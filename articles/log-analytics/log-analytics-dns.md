@@ -1,6 +1,6 @@
 ---
-title: "aaaDNS Analytics lösning i Azure Log Analytics | Microsoft Docs"
-description: "Konfigurera och använda hello DNS Analytics lösning i logganalys toogather insikter om DNS-infrastrukturen på säkerhet, prestanda och åtgärder."
+title: "DNS-Analytics lösning i Azure Log Analytics | Microsoft Docs"
+description: "Konfigurera och använda DNS-Analytics-lösning i logganalys att samla in insikter om DNS-infrastrukturen på säkerhet, prestanda och åtgärder."
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
@@ -14,169 +14,169 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2017
 ms.author: banders
-ms.openlocfilehash: be7982c54b65ba0c4b1c15ae7516d02eced313f8
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 0e8fc0ffb8e0d0bdf00bea46594fe050c00b6c8e
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="gather-insights-about-your-dns-infrastructure-with-hello-dns-analytics-preview-solution"></a>Samla in insikter om din DNS-infrastruktur med hello DNS Analytics Preview lösning
+# <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>Samla in insikter om din DNS-infrastruktur med DNS-Analytics Preview-lösning
 
 ![DNS-Analytics symbol](./media/log-analytics-dns/dns-analytics-symbol.png)
 
-Den här artikeln beskriver hur tooset in och använda hello Azure DNS Analytics lösning i Azure Log Analytics toogather insikter om DNS-infrastrukturen på säkerhet, prestanda och åtgärder.
+Den här artikeln beskriver hur du ställer in och använda Azure DNS Analytics-lösning i Azure Log Analytics för att samla in insikter om DNS-infrastrukturen på säkerhet, prestanda och åtgärder.
 
 DNS-analyser kan du:
 
-- Identifiera klienter som försöker tooresolve skadliga domännamn.
+- Identifiera klienter som försöker matcha skadliga domännamn.
 - Identifiera inaktuella poster.
 - Identifiera ofta efterfrågade domännamn och talkative DNS-klienter.
 - Visa belastningen på DNS-servrar.
 - Visa dynamiska DNS-registreringsfel.
 
-hello lösningen samlar in, analyseras och korrelerar Windows DNS analytiska och granskningsloggar och andra relaterade data från DNS-servrar.
+Lösningen samlar in, analyseras och korrelerar Windows DNS analytiska och granskningsloggar och andra relaterade data från DNS-servrar.
 
 ## <a name="connected-sources"></a>Anslutna källor
 
-hello i den följande tabellen beskrivs hello anslutna källor som stöds av den här lösningen:
+I följande tabell beskrivs de anslutna källor som stöds av den här lösningen:
 
 | **Ansluten datakälla** | **Support** | **Beskrivning** |
 | --- | --- | --- |
-| [Windows-agenter](log-analytics-windows-agents.md) | Ja | hello lösningen samlar in DNS-information från Windows-agenter. |
-| [Linux-agenter](log-analytics-linux-agents.md) | Nej | hello lösningen inte samlar in DNS-information direkt Linux-agenter. |
-| [System Center Operations Manager-hanteringsgruppen](log-analytics-om-agents.md) | Ja | hello lösningen samlar in DNS-information från agenter i en ansluten hanteringsgrupp för Operations Manager. En direkt anslutning från hello Operations Manager-agenten toohello Operations Management Suite krävs inte. Data vidarebefordras från hello management group toohello Operations Management Suite-databasen. |
-| [Azure Storage-konto](log-analytics-azure-storage.md) | Nej | Azure-lagring används inte av hello-lösning. |
+| [Windows-agenter](log-analytics-windows-agents.md) | Ja | Lösningen samlar in DNS-information från Windows-agenter. |
+| [Linux-agenter](log-analytics-linux-agents.md) | Nej | Lösningen inte samlar in DNS-information direkt Linux-agenter. |
+| [System Center Operations Manager-hanteringsgruppen](log-analytics-om-agents.md) | Ja | Lösningen samlar in DNS-information från agenter i en ansluten hanteringsgrupp för Operations Manager. En direkt anslutning från Operations Manager-agenten till Operations Management Suite krävs inte. Data skickas från hanteringsgruppen till Operations Management Suite-databasen. |
+| [Azure Storage-konto](log-analytics-azure-storage.md) | Nej | Azure-lagring används inte av lösningen. |
 
 ### <a name="data-collection-details"></a>Information om samlingen
 
-hello lösningen samlar in DNS-inventerings- och DNS-händelse-relaterade data från hello DNS-servrar där en Log Analytics-agent har installerats. Dessa data och sedan överföra tooLog Analytics och visas i instrumentpanelen för hello-lösning. Lager-relaterad data, till exempel hello antal DNS-servrar, zoner och resursposter, samlas in genom att köra hello DNS-PowerShell-cmdlets. hello uppdateras en gång var två dagar. hello händelse-relaterad data samlas in nära realtid från hello [analytiska och granskningsloggar](https://technet.microsoft.com/library/dn800669.aspx#enhanc) tillhandahålls av utökade DNS-loggning och diagnostik i Windows Server 2012 R2.
+Lösningen samlar in DNS-inventerings- och DNS-händelse-relaterade data från DNS-servrar där en Log Analytics-agent har installerats. Dessa data överförs till logganalys sedan och visas i instrumentpanelen för lösningen. Lager-relaterad data, till exempel antal DNS-servrar, zoner och resursposter, samlas in genom att köra DNS-PowerShell-cmdlets. Data uppdateras en gång var två dagar. Händelse-relaterade data samlas in nära realtid från den [analytiska och granskningsloggar](https://technet.microsoft.com/library/dn800669.aspx#enhanc) tillhandahålls av utökade DNS-loggning och diagnostik i Windows Server 2012 R2.
 
 ## <a name="configuration"></a>Konfiguration
 
-Använd följande information tooconfigure hello lösning hello:
+Använd följande information för att konfigurera lösningen:
 
-- Du måste ha en [Windows](log-analytics-windows-agents.md) eller [Operations Manager](log-analytics-om-agents.md) agenten på varje DNS-server som du vill toomonitor.
-- Du kan lägga till hello DNS Analytics lösning tooyour Operations Management Suite-arbetsyta från hello [Azure Marketplace](https://aka.ms/dnsanalyticsazuremarketplace). Du kan också använda hello process som beskrivs i [lägga till logganalys lösningar från hello lösningar galleriet](log-analytics-add-solutions.md).
+- Du måste ha en [Windows](log-analytics-windows-agents.md) eller [Operations Manager](log-analytics-om-agents.md) agenten på varje DNS-server som du vill övervaka.
+- Du kan lägga till DNS-Analytics lösningen till Operations Management Suite-arbetsyta från den [Azure Marketplace](https://aka.ms/dnsanalyticsazuremarketplace). Du kan också använda processen som beskrivs i [lägga till logganalys lösningar från galleriet lösningar](log-analytics-add-solutions.md).
 
-hello lösning börjar samla in data utan hello behovet av ytterligare konfiguration. Du kan dock använda hello följande konfiguration toocustomize datainsamling.
+Lösningen börjar samla in data utan behov av ytterligare konfiguration. Du kan dock använda följande konfiguration för att anpassa datainsamling.
 
-### <a name="configure-hello-solution"></a>Konfigurera hello lösning
+### <a name="configure-the-solution"></a>Konfigurera lösningen
 
-Hello lösning instrumentpanelen, klicka på **Configuration** tooopen hello konfiguration av DNS-sidan. Det finns två typer av konfigurationsändringar som du kan göra:
+Klicka på instrumentpanelen i lösningen **Configuration** att öppna sidan DNS-konfiguration. Det finns två typer av konfigurationsändringar som du kan göra:
 
-- **Listan över godkända domännamn**. hello-lösning bearbetar inte alla hello sökning-frågor. Det finns en godkänd lista över namnsuffix. hello sökning-frågor som matchar toohello domännamn som matchar namnsuffix i den här listan över godkända bearbetas inte av hello-lösning. Icke-bearbetning av listan över godkända domännamn hjälper toooptimize hello data som skickas tooLog Analytics. hello standard godkända innehåller populära offentliga domännamn, till exempel www.google.com och www.facebook.com. Du kan visa hello fullständig standardlistan genom att bläddra.
+- **Listan över godkända domännamn**. Lösningen bearbetar inte sökning-frågor. Det finns en godkänd lista över namnsuffix. Sökning-frågor som matchar de domännamn som matchar namnsuffix i den här listan över godkända bearbetas inte av lösningen. Icke-bearbetning av listan över godkända domännamn hjälper till att optimera data som skickas till logganalys. Standard-listan innehåller populära offentliga domännamn, till exempel www.google.com och www.facebook.com. Du kan visa den fullständiga listan genom att bläddra.
 
- Du kan ändra hello listan tooadd alla domänens namnsuffix som du vill tooview sökning insikter för. Du kan också ta bort alla domänens namnsuffix som du inte vill tooview sökning insikter för.
+ Du kan ändra listan för att lägga till alla domänsuffix namn som du vill visa sökning insikter för. Du kan också ta bort alla domänens namnsuffix som du inte vill visa sökning insikter för.
 
-- **Tröskelvärdet för talkative klienter**. DNS-klienter som överskrider hello tröskelvärdet för hello antalet sökningsbegäranden är markerade i hello **DNS-klienter** bladet. hello standardtröskelvärdet är 1 000. Du kan redigera hello tröskelvärdet.
+- **Tröskelvärdet för talkative klienter**. DNS-klienter som överskrider tröskelvärdet för antalet sökningsbegäranden är markerade i den **DNS-klienter** bladet. Standardtröskeln är 1 000. Du kan redigera tröskelvärdet.
 
     ![Listan över godkända domännamn](./media/log-analytics-dns/dns-config.png)
 
 ## <a name="management-packs"></a>Hanteringspaket
 
-Om du använder hello Microsoft Monitoring Agent tooconnect tooyour Operations Management Suite-arbetsyta är hello följande hanteringspaket installerad:
+Om du använder Microsoft Monitoring Agent för att ansluta till Operations Management Suite-arbetsyta installeras följande hanteringspaket:
 
 - Microsoft DNS-Data Collector informationspaketet (Microsft.IntelligencePacks.Dns)
 
-Om din Operations Manager-hanteringsgrupp är anslutna tooyour Operations Management Suite-arbetsyta, är hello följande hanteringspaket installerade i Operations Manager när du lägger till den här lösningen. Det finns ingen konfiguration eller underhåll av dessa hanteringspaket:
+Om din Operations Manager-hanteringsgrupp är ansluten till Operations Management Suite-arbetsyta, installeras följande hanteringspaket i Operations Manager när du lägger till den här lösningen. Det finns ingen konfiguration eller underhåll av dessa hanteringspaket:
 
 - Microsoft DNS-Data Collector informationspaketet (Microsft.IntelligencePacks.Dns)
 - Microsoft System Center Advisor DNS-konfiguration (Microsoft.IntelligencePack.Dns.Configuration)
 
-Mer information om hur lösningen hanteringspaketen är uppdaterade finns [ansluta Operations Manager tooLog Analytics](log-analytics-om-agents.md).
+Mer information om hur lösningens hanteringspaket uppdateras finns i [Anslut Operations Manager till Log Analytics](log-analytics-om-agents.md).
 
-## <a name="use-hello-dns-analytics-solution"></a>Använda hello DNS Analytics lösning
+## <a name="use-the-dns-analytics-solution"></a>Använda DNS-Analytics-lösning
 
-Det här avsnittet beskriver alla hello instrumentpanelen funktioner och hur toouse dem.
+Det här avsnittet beskriver alla instrumentpanelen funktioner och hur de används.
 
-När du har lagt till hello lösning tooyour arbetsytan ger hello lösning panelen på hello Operations Management Suite översiktssidan en snabb översikt över DNS-infrastrukturen. Den innehåller hello antal DNS-servrar där hello data samlas in. Den innehåller också hello antalet förfrågningar som görs av klienter tooresolve skadliga domäner i hello senaste 24 timmarna. När du klickar på panelen hello öppnas hello lösning instrumentpanelen.
+När du har lagt till lösningen till din arbetsyta, ger panelen lösning på översiktssidan Operations Management Suite en snabb översikt över DNS-infrastrukturen. Den innehåller antalet DNS-servrar där data som samlas in. Den innehåller också antalet begäranden som görs av klienter för att matcha skadliga domäner under de senaste 24 timmarna. När du klickar på ikonen öppnas lösning instrumentpanelen.
 
 ![DNS-Analytics sida vid sida](./media/log-analytics-dns/dns-tile.png)
 
 ### <a name="solution-dashboard"></a>Instrumentpanel för lösningen
 
-hello lösning instrumentpanelen visar sammanfattningsinformation för hello olika funktioner i hello lösning. Den innehåller också länkar toohello detaljerad vy för kriminalteknisk analys och diagnos. Som standard visas hello data för hello senaste sju dagarna. Du kan ändra intervallet för hello datum och tid genom att använda hello **tid markering**som visas i följande bild hello:
+Lösning instrumentpanelen visar sammanfattningsinformation för de olika funktionerna i lösningen. Den innehåller också länkar till den detaljerade vyn för kriminalteknisk analys och diagnos. Som standard visas data för de senaste sju dagarna. Du kan ändra intervallet datum och tid genom att använda den **tid markering**, enligt följande bild:
 
 ![Tid markering](./media/log-analytics-dns/dns-time.png)
 
-hello lösning instrumentpanelen visar hello följande blad:
+Lösning instrumentpanelen visar följande blad:
 
-**DNS-säkerhet**. Rapporter hello DNS-klienter som försöker toocommunicate med skadliga domäner. Med hjälp av Microsoft threat intelligence feeds identifiera DNS Analytics klientens IP-adresser som försöker tooaccess skadliga domäner. I många fall hello enheter som infekterats av skadlig kod ”uppringning” toohello ”kommando- och” mittpunkt hello skadliga domänen genom att lösa domännamn för skadlig kod.
+**DNS-säkerhet**. Rapporter om DNS-klienter som försöker kommunicera med skadliga domäner. Med hjälp av Microsoft threat intelligence feeds identifiera DNS Analytics klientens IP-adresser som försöker komma åt skadliga domäner. I många fall uppringning enheter som infekterats av skadlig kod ”” till ”kommando- och” mitten av skadliga domänen genom att lösa domännamn skadlig kod.
 
 ![DNS-säkerhet bladet](./media/log-analytics-dns/dns-security-blade.png)
 
-När du klickar på en klient IP-adress i listan hello loggen sökning öppnas och visar hello sökning detaljerad information om respektive hello-fråga. I följande exempel hello, DNS-Analytics upptäckte att hello kommunikation har utförts med en [IRCbot](https://www.microsoft.com/security/portal/threat/encyclopedia/entry.aspx?Name=Win32/IRCbot):
+När du klickar på en klient-IP-adress i listan loggen sökning öppnas och visar information om respektive frågan sökning. I följande exempel visas DNS Analytics upptäckte att kommunikationen har utförts med en [IRCbot](https://www.microsoft.com/security/portal/threat/encyclopedia/entry.aspx?Name=Win32/IRCbot):
 
 ![Loggen sökresultat visar ircbot](./media/log-analytics-dns/ircbot.png)
 
-hello information hjälper dig att tooidentify den:
+Informationen hjälper dig att identifiera den:
 
-- Klientens IP-adress som initierade hello-meddelande.
-- Domännamnet som löser toohello skadliga IP.
-- IP-adresser som hello domännamn matchar.
+- Klientens IP-adress som initierade kommunikationen.
+- Domännamnet som matchas till skadliga IP-Adressen.
+- IP-adresser som motsvarar namnet på en domän.
 - Skadliga IP-adress.
-- Allvarlighetsgraden hello problemet.
-- Orsak till att godkänna hello skadliga IP.
+- Problemets allvarlighetsgrad.
+- Orsak till att godkänna skadliga IP-Adressen.
 - Identifieringstiden.
 
-**Domäner som efterfrågas**. Ger hello vanligaste domännamn efterfrågas av hello DNS-klienter i din miljö. Du kan visa hello lista över alla hello domännamn som efterfrågas. Du kan också öka detaljnivån hello sökning begäran detaljer om ett visst domännamn i loggen sökningen.
+**Domäner som efterfrågas**. Innehåller de vanligaste domännamn som efterfrågas av DNS-klienter i din miljö. Du kan visa listan över alla domännamn som efterfrågas. Du kan också öka detaljnivån sökning begäran detaljer om ett visst domännamn i loggen sökningen.
 
 ![Domäner sökt bladet](./media/log-analytics-dns/domains-queried-blade.png)
 
-**DNS-klienter**. Rapporter hello klienter *överträdelse hello tröskelvärdet* för antal frågor i hello valt tidsperiod. Du kan visa hello lista över alla hello DNS-klienter och hello information hello frågor som dem i loggen sökningen.
+**DNS-klienter**. Rapporterar klienter *brott mot tröskelvärdet* för antal frågor i den valda tidsperioden. Du kan visa listan över DNS-klienter och detaljerna för de frågor som gjorts av dem i loggen sökningen.
 
 ![Bladet för DNS-klienter](./media/log-analytics-dns/dns-clients-blade.png)
 
-**Dynamiska DNS-registreringar**. Rapporter namnge registreringsfel. Alla registreringsfel för adress [resursposter](https://en.wikipedia.org/wiki/List_of_DNS_record_types) (typ A och AAAA) markeras tillsammans med hello klientens IP-adresser som gjort hello förfrågningar om klientregistrering. Du kan sedan använda denna information toofind hello grundorsaken till hello registreringsfel genom att följa dessa steg:
+**Dynamiska DNS-registreringar**. Rapporter namnge registreringsfel. Alla registreringsfel för adress [resursposter](https://en.wikipedia.org/wiki/List_of_DNS_record_types) (typ A och AAAA) markeras tillsammans med klienten IP-adresser som gjort registrerings-begäranden. Du kan sedan använda den här informationen för att hitta orsaken till felet registreringen genom att följa dessa steg:
 
-1. Hitta hello zoner som är auktoritära för hello namn som hello klienten försöker tooupdate.
+1. Hitta zonen som är auktoritär för namnet som klienten försöker uppdatera.
 
-2. Använd inventeringsinformation för hello lösning toocheck hello av zonen.
+2. Använda lösningen för att kontrollera inventeringsinformation för zonen.
 
-3. Kontrollera att hello dynamisk uppdatering för hello zonen är aktiverat.
+3. Kontrollera att dynamisk uppdatering för zonen är aktiverad.
 
-4. Kontrollera om hello zonen har konfigurerats för säker dynamisk uppdatering eller inte.
+4. Kontrollera om zonen är konfigurerat för säkra dynamiska uppdateringar eller inte.
 
     ![Bladet för dynamisk DNS-registrering](./media/log-analytics-dns/dynamic-dns-reg-blade.png)
 
-**Namnge förfrågningar om klientregistrering**. hello övre panelen visas en trendlinje för lyckade och misslyckade DNS dynamisk uppdatering. hello nedre panelen visar hello topp 10 klienter som skickar toohello DNS-servrar, sorterade efter hello antalet fel misslyckade begäranden för DNS-uppdatering.
+**Namnge förfrågningar om klientregistrering**. Den övre panelen visas en trendlinje för lyckade och misslyckade DNS dynamisk uppdatering. Den nedre panelen visas de översta 10 klienter som skickar misslyckade DNS-uppdatering begäranden till DNS-servrar, sorterade efter antalet fel.
 
 ![Namnet registrering begäranden bladet ](./media/log-analytics-dns/name-reg-req-blade.png)
 
-**Exempel på DDI Analytics frågor**. Innehåller en lista över hello vanligaste sökfrågor som hämta rådata analysdata direkt.
+**Exempel på DDI Analytics frågor**. Innehåller en lista över de vanligaste sökfrågor som hämta rådata analysdata direkt.
 
 [!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 ![Exempelfrågor](./media/log-analytics-dns/queries.png)
 
-Du kan använda de här frågorna som utgångspunkt för att skapa egna frågor för anpassad rapportering. hello frågor länka toohello DNS Analytics loggen söksidan där resultat visas:
+Du kan använda de här frågorna som utgångspunkt för att skapa egna frågor för anpassad rapportering. Länken frågor till DNS-Analytics loggen söksidan där resultat visas:
 
 - **Lista över DNS-servrar**. Visar en lista över alla DNS-servrar med deras associerade FQDN, domännamn, skogsnamnet och servern IP-adresser.
-- **Lista över DNS-zoner**. Visar en lista över alla DNS-zoner med hello associerade zonnamnet, status för dynamisk uppdatering, namnservrar och DNSSEC-signering.
-- **Oanvända resursposter**. Visar en lista över alla hello oanvända/föråldrade-resursposter. Den här listan innehåller hello resurs postens namn, typ av resurspost, hello associerade DNS-server, registrera Genereringstid och zonnamnet. Du kan använda den här listan tooidentify hello DNS-resursposter som inte längre används. Baserat på den här informationen kan du kan sedan ta bort dessa poster från hello DNS-servrar.
-- **DNS-servrar fråga belastningen**. Visar information så att du kan få ett perspektiv för hello DNS läsa in på DNS-servrar. Denna information kan hjälpa dig att planera hello kapacitet för hello-servrar. Du kan gå toohello **mått** fliken toochange hello visa tooa grafiska visualiseringen. Den här vyn hjälper dig att förstå hur hello DNS ladda distribueras över DNS-servrar. DNS-fråga visar trender i frekvensen för varje server.
+- **Lista över DNS-zoner**. Visar en lista över alla DNS-zoner med associerade zonnamnet, status för dynamisk uppdatering, namnservrar och DNSSEC-signering.
+- **Oanvända resursposter**. Visar en lista över alla oanvända/inaktuell resursposterna. Den här listan innehåller resurs postens namn, typ av resurspost, associerade DNS-server, registrera Genereringstid och zonnamnet. Du kan använda den här listan för att identifiera de DNS-poster som inte längre används. Baserat på den här informationen kan du kan sedan ta bort dessa poster från DNS-servrar.
+- **DNS-servrar fråga belastningen**. Visar information så att du kan få ett perspektiv DNS-belastningen på din DNS-servrar. Den här informationen kan hjälpa dig att planera kapaciteten för servrarna. Du kan gå till den **mått** att ändra vyn till en grafisk visualisering. Den här vyn hjälper dig att förstå hur DNS belastningen distribueras över DNS-servrar. DNS-fråga visar trender i frekvensen för varje server.
 
     ![Sökresultat för DNS-servrar frågan logg](./media/log-analytics-dns/dns-servers-query-load.png)
 
-- **DNS-zoner fråga belastningen**. Visar hello DNS-zonen frågan per sekund statistik över alla zoner för hello på hello DNS-servrar som hanteras av hello-lösning. Klicka på hello **mått** fliken toochange hello vyn från detaljerade poster tooa grafiska visualisering av hello resultat.
-- **Konfigurationshändelser**. Visar alla hello DNS konfigurationsändringshändelserna och associerade meddelanden. Därefter kan du filtrera händelserna baserat på tiden på hello händelse, händelse-ID, DNS-server eller aktivitetskategori. med hjälp av hello data kan du granska ändringar toospecific DNS-servrar vid specifika tidpunkter.
-- **DNS-analytiska loggen**. Visar alla hello analytiska händelser på alla hello DNS-servrar som hanteras av hello-lösning. Därefter kan du filtrera händelserna baserat på tiden på hello händelse, händelse-ID, DNS-server klientens IP-Adressen som gjorts hello sökning frågan och fråga kategori för aktiviteten. DNS-server-analyshändelser aktivera Aktivitetsspårning på hello DNS-server. En analytiska händelse loggas varje gång hello servern skickar eller tar emot DNS-information.
+- **DNS-zoner fråga belastningen**. Visar DNS-zonen frågan per sekund statistik över alla zoner på DNS-servrar som hanteras av lösningen. Klicka på den **mått** att ändra vyn från detaljerad poster till en grafisk visualisering av resultaten.
+- **Konfigurationshändelser**. Visar alla DNS-konfigurationsändringshändelserna och associerade meddelanden. Därefter kan du filtrera händelserna baserat på tid för händelse, händelse-ID, DNS-servern eller aktivitetskategori. Med hjälp av data kan du granska ändringar som gjorts i specifika DNS-servrar vid specifika tidpunkter.
+- **DNS-analytiska loggen**. Visar alla händelser som analytiska på alla DNS-servrar som hanteras av lösningen. Därefter kan du filtrera händelserna baserat på tid för händelse, händelse-ID, DNS-servern klientens IP-Adressen som gjorts sökning frågan och fråga kategori för aktiviteten. DNS-server-analyshändelser aktivera Aktivitetsspårning på DNS-servern. En analytiska händelse loggas varje gång servern skickar och tar emot DNS-information.
 
 ### <a name="search-by-using-dns-analytics-log-search"></a>Sök med hjälp av DNS-Analytics loggen sökning
 
-Du kan skapa en fråga på hello loggen söksidan. Du kan filtrera sökresultaten genom att använda aspekten kontroller. Du kan också skapa avancerade frågor tootransform, filter och rapporten på dina resultat. Starta med hello följande frågor:
+På sidan Logga, kan du skapa en fråga. Du kan filtrera sökresultaten genom att använda aspekten kontroller. Du kan också skapa avancerade frågor för att transformera, filter och rapporten på dina resultat. Starta med hjälp av följande frågor:
 
-1. I hello **frågan sökrutan**, typen `Type=DnsEvents` tooview alla hello DNS-händelser som genererats av hello DNS-servrar hanteras av hello-lösning. hello resultatlistan hello loggdata för alla händelser relaterade toolookup frågor, dynamiska registreringar och konfigurationsändringar.
+1. I den **frågan sökrutan**, typen `Type=DnsEvents` att visa alla DNS-händelser som genererats av DNS-servrar som hanteras av lösningen. Loggdata för alla händelser relaterade till sökning-frågor, dynamiska registreringar och konfigurationsändringar resultatlistan.
 
     ![DnsEvents loggen Sök](./media/log-analytics-dns/log-search-dnsevents.png)  
 
-    a. tooview hello loggdata för sökning-frågor, Välj **LookUpQuery** som hello **undertyp** filter från hello aspekten kontrollen hello vänster. En tabell som visar en lista över alla hello sökning frågan händelser för hello tidsperioden visas.
+    a. Om du vill visa loggdata för sökning-frågor, Välj **LookUpQuery** som den **undertyp** filter från aspekten kontrollen till vänster. En tabell som visar alla händelser för sökning-frågan för den valda tidsperioden visas.
 
-    b. Välj tooview hello loggdata för dynamiska registreringar **DynamicRegistration** som hello **undertyp** filter från hello aspekten kontrollen hello vänster. En tabell som innehåller alla händelser som hello dynamisk registrering för hello tidsperioden visas.
+    b. Om du vill visa loggdata för dynamiska registreringar **DynamicRegistration** som den **undertyp** filter från aspekten kontrollen till vänster. En tabell som visar alla händelser som dynamisk registrering för den valda tidsperioden visas.
 
-    c. tooview hello loggdata för konfigurationsändringar, Välj **ConfigurationChange** som hello **undertyp** filter från hello aspekten kontrollen hello vänster. En tabell med alla hello konfigurationsändringshändelserna för hello tidsperiod visas.
+    c. Om du vill visa loggdata för konfigurationsändringar **ConfigurationChange** som den **undertyp** filter från aspekten kontrollen till vänster. En tabell som listar alla konfigurationsändringshändelserna för den valda tidsperioden visas.
 
-2. I hello **frågan sökrutan**, typen `Type=DnsInventory` tooview alla hello DNS-inventeringsrelaterade data för hello DNS-servrar hanteras av hello-lösning. hello resultatlistan hello loggdata för DNS-servrar, DNS-zoner och resursposter.
+2. I den **frågan sökrutan**, typen `Type=DnsInventory` att visa alla DNS-inventeringsrelaterade data för de DNS-servrar som hanteras av lösningen. Loggdata för DNS-servrar, DNS-zoner och resursposter resultatlistan.
 
     ![DnsInventory loggen Sök](./media/log-analytics-dns/log-search-dnsinventory.png)
 
@@ -184,9 +184,9 @@ Du kan skapa en fråga på hello loggen söksidan. Du kan filtrera sökresultate
 
 Det finns två sätt kan du ge feedback:
 
-- **UserVoice**. Bokför idéer för DNS-Analytics funktioner toowork på. Besök hello [Operations Management Suite UserVoice sidan](https://aka.ms/dnsanalyticsuservoice).
-- **Ansluta till vår kommittén**. Vi vill alltid med nya kunder ansluta till vår kohorter tooget tidig toonew åtkomstfunktioner och hjälp oss att förbättra DNS Analytics. Om du vill ansluta till vår kohorter fylla [snabb undersökningen](https://aka.ms/dnsanalyticssurvey).
+- **UserVoice**. Bokför idéer för DNS-Analytics funktioner fungerar på. Besök den [Operations Management Suite UserVoice sidan](https://aka.ms/dnsanalyticsuservoice).
+- **Ansluta till vår kommittén**. Vi vill alltid med nya kunder ansluta till vår kohorter för att få snabb åtkomst till nya funktioner och hjälp oss att förbättra DNS Analytics. Om du vill ansluta till vår kohorter fylla [snabb undersökningen](https://aka.ms/dnsanalyticssurvey).
 
 ## <a name="next-steps"></a>Nästa steg
 
-[Söka i loggar](log-analytics-log-searches.md) tooview detaljerad DNS-poster.
+[Söka i loggar](log-analytics-log-searches.md) att visa detaljerad DNS-poster.

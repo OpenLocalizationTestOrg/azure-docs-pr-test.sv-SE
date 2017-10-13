@@ -1,6 +1,6 @@
 ---
-title: "aaaUser användardefinierade vägar och IP-vidarebefordran i Azure | Microsoft Docs"
-description: "Lär dig hur tooconfigure användardefinierade vägar (UDR) och IP-vidarebefordran tooforward trafik toonetwork virtuella installationer i Azure."
+title: "Användardefinierade vägar och IP-vidarebefordran i Azure | Microsoft Docs"
+description: "Lär dig hur du använder användardefinierade vägar (UDR) och IP-vidarebefordran till att vidarebefordra trafik till nätverks-virtuella installationer i Azure."
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -15,50 +15,50 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f1f1d46166d5a7c776f472b7ade1354d943ece10
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 6274e0101f6fb0864c8d1efaef7fcde78b8760c3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="user-defined-routes-and-ip-forwarding"></a>Användardefinierade vägar och IP-vidarebefordran
 
-När du lägger till virtuella datorer (VM) tooa virtuella nätverk (VNet) i Azure, ser du att hello är kan toocommunicate med varandra över hello nätverk automatiskt. Du behöver inte toospecify en gateway, även om hello virtuella datorer i olika undernät. hello samma sak gäller för kommunikation från hello VMs toohello offentliga Internet och även tooyour lokala nätverk när en hybridanslutning från Azure tooyour eget datacenter finns.
+När du lägger till virtuella datorer (VM:ar) till ett virtuellt nätverk (VNet) i Azure, märker du att VM:arna kan kommunicera automatiskt med varandra över nätverket. Du behöver inte ange någon gateway, även om VM:arna befinner sig på olika undernät. Samma sak gäller för kommunikation från VM:arna till det offentliga Internet samt till ditt lokala nätverk när det finns en hybridanslutning från Azure till ditt eget datacenter.
 
-Det här flödet av kommunikation är möjligt eftersom Azure använder en uppsättning system vägar toodefine hur IP-trafiken flödar. Systemvägar kontrollerar hello kommunikationsflödet i hello följande scenarier:
+Det här flödet av kommunikation är möjligt eftersom Azure använder en uppsättning systemvägar för att definiera hur IP-trafiken flödar. Systemvägar kontrollerar kommunikationsflödet i följande scenarier:
 
-* Inifrån hello i samma undernät.
-* Från ett undernät tooanother inom ett VNet.
-* Från virtuella datorer toohello Internet.
-* Från ett VNet tooanother virtuella nätverk via en VPN-gateway.
-* Från ett VNet tooanother virtuella nätverk via VNet-Peering (Service länkning).
-* Från ett VNet tooyour lokalt nätverk via en VPN-gateway.
+* Från inom samma undernät.
+* Från ett undernät till ett annat inom ett VNet.
+* Från VM:ar till Internet.
+* Från ett VNet till ett annat VNet via en VPN-gateway.
+* Från ett VNet till ett annat VNet via VNet Peering (tjänstlänkning).
+* Från ett VNet till ditt lokala nätverk via en VPN-gateway.
 
-hello bilden nedan visar en enkel installation med ett VNet, två undernät och ett fåtal virtuella datorer tillsammans med hello systemvägar som låter IP-trafik tooflow.
+Bilden nedan visar en enkel installation med ett VNet, två undernät och några VM:ar, samt de systemvägar som låter IP-trafiken flöda.
 
 ![Systemvägar i Azure](./media/virtual-networks-udr-overview/Figure1.png)
 
-Även om hello användningen av systemvägar förenklar trafik automatiskt för din distribution, finns det fall där du vill toocontrol hello routning av paket via en virtuell installation. Du kan därför genom att skapa användardefinierade vägar som anger hello next hop för paket som flödar tooa undernätverk toogo tooyour virtuell installation i stället och aktivera IP-vidarebefordring för hello VM som körs som hello virtuell installation.
+Även om användningen av systemvägar förenklar trafik automatiskt för din distribution så finns det fall där du kan vilja kontrollera routingen för paket genom en virtuell installation. Du kan göra det genom att skapa användardefinierade vägar som anger next hop för paket som flödar till ett specifikt undernät så att de istället går till din virtuella installation och som aktiverar IP-vidarebefordring för VM:en som kör den virtuella installationen.
 
-hello bilden nedan visar ett exempel på användardefinierade vägar och IP-vidarebefordring tooforce paket skickas tooone undernät från en annan toogo via en virtuell installation på ett tredje undernät.
+Bilden nedan visar ett exempel på användardefinierade vägar och IP-vidarebefordran för att tvinga paket som skickas till ett undernät från ett annat att gå via en virtuell installation på ett tredje undernät.
 
 ![Systemvägar i Azure](./media/virtual-networks-udr-overview/Figure2.png)
 
 > [!IMPORTANT]
-> Användardefinierade vägar är tillämpade tootraffic lämnar ett undernät från alla resurser (t.ex. nätverksgränssnitt ansluten tooVMs) i hello undernät. Du kan inte skapa vägar toospecify hur trafik försätts i ett undernät från hello Internet, t.ex. hello-enheten som du vidarebefordrar trafik toocannot finnas i hello samma undernät där hello trafiken kommer från. Skapa alltid ett separat undernät för dina installationer. 
+> Användardefinierade vägar tillämpas till trafik som lämnar ett undernät (som nätverksgränssnitt som är anslutna till den virtuella datorn) i undernätet. Du kan till exempel inte skapa flöden för att ange hur trafiken går i ett undernät från Internet. Den enhet som du vidarebefordrar trafik till får inte finnas i samma undernät som trafiken kommer ifrån. Skapa alltid ett separat undernät för dina installationer. 
 > 
 > 
 
 ## <a name="route-resource"></a>Routeresurs
-Paketen dirigeras över ett TCP/IP-nätverk baserat på en routingtabell som definierats vid varje nod i hello fysiska nätverk. En routingtabell är en samling individuella vägare används toodecide där tooforward paket utifrån hello mål IP-adress. En väg består av hello följande:
+Paketen dirigeras över ett TCP/IP-nätverk som baseras på en routingtabell som definierats vid varje nod på det fysiska nätverket. En routingtabell är en samling individuella vägare som används för att bestämma var paket ska vidarebefordras baserat på mål-IP-adress. En väg består av följande:
 
 | Egenskap | Beskrivning | Villkor | Överväganden |
 | --- | --- | --- | --- |
-| Adressprefix |hello CIDR toowhich hello målvägen gäller till exempel 10.1.0.0/16. |Måste vara ett giltigt CIDR-intervall som representerar adresser på hello offentliga Internet, Azure-nätverk eller lokala datacenter. |Se till att hello **adressprefixet** innehåller inte hello-adress för hello **för nästa hopp**, annars hamnar dina paket i en evig loop från källan hello toohello nexthop utan att någonsin nå hello mål. |
-| Nexthop-typ |hello typ av Azure-hop hello paketet ska skickas till. |Måste vara något av följande värden hello: <br/> **Virtuellt nätverk**. Representerar hello lokala virtuella nätverket. Till exempel om du har två undernät, 10.1.0.0/16 och 10.2.0.0/16 i hello samma virtuella nätverk måste hello vägen för varje undernät i vägtabellen hello nexthop-värdet för *virtuellt nätverk*. <br/> **Virtuell nätverksgateway**. Representerar en Azure S2S VPN-gateway. <br/> **Internet**. Representerar hello Internet standardgateway som tillhandahålls av hello Azure-infrastrukturen. <br/> **Virtuell installation**. Representerar en virtuell installation som du har lagt till tooyour virtuella Azure-nätverket. <br/> **Ingen**. Representerar ett svart hål. Paket som vidarebefordras tooa svart hål vidarebefordras inte alls. |Överväg att använda **virtuell installation** toodirect trafik tooa VM eller Azure belastningsutjämnare interna IP-adress.  Den här typen kan hello specificering av en IP-adress som beskrivs nedan. Överväg att använda en **ingen** skriver toostop paket från flödet tooa givet mål. |
-| Nexthop-adress |hello nästa hoppadress innehåller hello IP-adressen som paket ska vidarebefordras till. Nexthop-värden tillåts bara i vägar där hello nästa hopptyp är *virtuell installation*. |Måste vara en IP-adress som kan nås i hello virtuellt nätverk där hello användardefinierad väg används, utan att gå via en **virtuell nätverksgateway**. hello IP-adress har toobe på hello samma virtuella nätverk där den används, eller på ett peered virtuellt nätverk. |Om hello IP-adressen representerar en virtuell dator, kontrollera att du aktiverar [IP-vidarebefordring](#IP-forwarding) i Azure för hello VM. Om hello IP-adress representerar hello interna IP-adressen för Azure belastningsutjämnare, kontrollera att du har en matchande regel för varje port för belastningsutjämning vill tooload saldo.|
+| Adressprefix |Mål-CIDR som vägen gäller för, till exempel 10.1.0.0/16. |Måste vara ett giltigt CIDR-intervall som representerar adresser på det offentliga Internet, Azure-virtuella nätverk eller lokala datacenter. |Kontrollera att **Adressprefix** inte innehåller adressen för **Nexthop-adress**, annars hamnar dina paket i en evig loop från källan till nexthop utan att någonsin nå målet. |
+| Nexthop-typ |Den typ av Azure-hop som paketet ska skickas till. |Måste vara ett av följande värden: <br/> **Virtuellt nätverk**. Representerar det lokala virtuella nätverket. Om du till exempel har två undernät, 10.1.0.0/16 och 10.2.0.0/16 i samma virtuella nätverk, kommer vägen för varje undernät i routingtabellen att ha nexthop-värdet *Virtuellt nätverk*. <br/> **Virtuell nätverksgateway**. Representerar en Azure S2S VPN-gateway. <br/> **Internet**. Representerar standard Internet-gatewayen från Azure-infrastrukturen. <br/> **Virtuell installation**. Representerar en virtuell installation som du lagt till i ditt Azure-virtuella nätverk. <br/> **Ingen**. Representerar ett svart hål. Paket som vidarebefordras till en svart hål, vidarebefordras inte alls. |Med **virtuella installationer** kan du dirigera trafik till en intern IP-adress för en VM eller Azure Load Balancer.  Med den här typen kan du ange en IP-adress på det sätt som beskrivs nedan. Du kan använda en **Ingen**-typ för att stoppa paket från att flöda till ett givet mål. |
+| Nexthop-adress |Nexthop-adressen innehåller IP-adressen som paket ska vidarebefordras till. Nexthop-värden tillåts bara i vägar där nexthop-typen är *virtuell installation*. |Det måste vara en IP-adress som kan nås i det virtuella nätverk där den användardefinierade vägen används. Den får inte gå via en **virtuell nätverksgateway**. IP-adressen måste vara i samma virtuella nätverk som den används i, eller i ett peerkopplat virtuellt nätverk. |Om IP-adressen representerar en VM, bör du se till att aktivera [IP-vidarebefordring](#IP-forwarding) i Azure för den VM:n. Om IP-adressen representerar den interna IP-adressen för Azure Load Balancer måste du se till att du har en matchande regel för belastningsutjämning för varje port du vill utjämna.|
 
-Vissa hello ”NextHopType” värden har olika namn i Azure PowerShell:
+I Azure PowerShell har vissa "NextHopType"-värden har olika namn:
 
 * Virtuellt nätverk är VnetLocal
 * Virtuell nätverksgateway är VirtualNetworkGateway
@@ -67,47 +67,47 @@ Vissa hello ”NextHopType” värden har olika namn i Azure PowerShell:
 * Ingen är Ingen
 
 ### <a name="system-routes"></a>Systemvägar
-Varje undernät som skapats i ett virtuellt nätverk ansluts automatiskt till en routingtabell som innehåller hello följande regler för systemvägar:
+Varje undernät som skapats i ett virtuellt nätverk, kopplas automatiskt till en routingtabell som innehåller följande regler för systemvägar:
 
-* **Lokal VNet-regel**: Den här regeln skapas automatiskt för varje undernät i ett virtuellt nätverk. Det anger att det finns en direktlänk mellan hello virtuella datorer i hello VNet och det inte finns något mellanliggande nexthop.
-* **Lokal regel**: den här regeln gäller tooall trafik toohello lokala adressintervallet och använder VPN-gateway som hello nästa hopp-mål.
-* **Regel för Internet**: den här regeln hanterar all trafik toohello offentliga Internet (adress prefixet 0.0.0.0/0) och använder hello infrastrukturens internet-gateway som hello nästa hopp för all trafik toohello Internet.
+* **Lokal VNet-regel**: Den här regeln skapas automatiskt för varje undernät i ett virtuellt nätverk. Det anger att det finns en direktlänk mellan VM:arna på VNet och att det inte finns något mellanliggande nexthop.
+* **Lokal regel**: Den här regeln gäller för all trafik till det lokala adressintervallet och använder VPN-gatewayer som nexthop-mål.
+* **Internetregel**: Den här regeln hanterar all trafik mot det offentliga Internet (address prefix 0.0.0.0/0) och använder sig av infrastrukturens Internet-gateway som nexthop för all trafik mot Internet.
 
 ### <a name="user-defined-routes"></a>Användardefinierade vägar
-I de flesta miljöer behöver du bara hello systemvägarna som definierats av Azure. Du kan dock behöver toocreate en routingtabell och lägga till en eller flera vägar i vissa fall, som:
+För de flesta miljöer behöver du bara systemvägarna som definierats i Azure. Du kan dock behöva skapa en routingtabell och lägga till en eller flera vägar i vissa fall, som när du vill:
 
-* Tvingad tunneltrafik toohello Internet via ditt lokala nätverk.
+* Tvinga tunneling till Internet via ditt lokala nätverk.
 * Använda virtuella installationer i din Azure-miljö.
 
-I ovanstående hello scenarier, du har toocreate en routingtabell och lägga till användardefinierade vägar tooit. Du kan ha flera vägtabeller och hello samma routingtabell kan vara associerade tooone eller flera undernät. Och varje undernät kan bara vara associerad tooa enda vägtabell. Alla virtuella datorer och molntjänster i ett undernät kan du använda hello flödet tabellen associerad toothat undernätet.
+I ovanstående scenarier, behöver du skapa en routingtabell och lägga till användardefinierade vägar till den. Du kan ha tabeller med flera vägar och samma routingtabell kan vara kopplad till en eller flera undernät. Varje undernät kan bara vara kopplat till en enda vägtabell. Alla VM:ar och molntjänster i ett undernät använder routingtabellen som är kopplad till det undernätet.
 
-Undernät förlitar sig på systemvägar tills en routingtabell är associerade toohello undernät. När det finns en koppling, så sköts routningen baserat på längsta prefix-matchning (LPM) bland användardefinierade vägar och systemvägar. Om det finns baserat fler än en väg med samma LPM matchar sedan väljs en väg hello på dess ursprung i hello följande ordning:
+Undernät förlitar sig på systemvägar tills att en routingtabell kopplas till undernätet. När det finns en koppling, så sköts routningen baserat på längsta prefix-matchning (LPM) bland användardefinierade vägar och systemvägar. Om det finns fler än en väg med samma LPM-matchning så väljs en väg baserat på dess ursprung i följande ordning:
 
 1. Användardefinierad väg
 2. BGP-väg (när ExpressRoute används)
 3. Systemväg
 
-toolearn hur toocreate användardefinierade vägar finns [hur tooCreate vägar och aktiverar IP-vidarebefordran i Azure](virtual-network-create-udr-arm-template.md).
+Information om hur man skapar användardefinierade vägar finns i [Så här skapar du vägar och aktiverar IP-vidarebefordran i Azure](virtual-network-create-udr-arm-template.md).
 
 > [!IMPORTANT]
-> Användardefinierade vägar är endast tillämpade tooAzure virtuella datorer och molntjänster. Till exempel om du vill tooadd en virtuell brandväggsinstallation mellan ditt lokala nätverk och Azure, behöver toocreate en användardefinierad väg för dina Azure-routningstabeller som vidarebefordrar all trafik toohello lokal adressutrymme toohello virtuella installation. Du kan också lägga till en användardefinierad väg (UDR) toohello GatewaySubnet tooforward all trafik från lokala tooAzure via hello virtuell installation. Det här är ett nytt tillägg.
+> Användardefinierade vägar tillämpas endast på virtuella Azure-datorer och Azure-molntjänster. Om du till exempel vill lägga till en virtuell brandväggsinstallation mellan ditt lokala nätverk och Azure behöver du skapa en användardefinierad väg för dina Azure-routningstabeller som vidarebefordrar all trafik till det lokala adressutrymmet till den virtuella installationen. Du kan också lägga till en användardefinierad väg (UDR) GatewaySubnet för att vidarebefordra all lokal trafik till Azure via den virtuella tillämpningen. Det här är ett nytt tillägg.
 > 
 > 
 
 ### <a name="bgp-routes"></a>BGP-vägar
-Om du har en ExpressRoute-anslutning mellan ditt lokala nätverk och Azure, kan du aktivera toopropagate BGP-vägar från ditt lokala nätverk tooAzure. BGP-vägarna används i hello samma sätt som systemvägar och användaren definierats vägar i varje Azure-undernät. Mer information finns i [Introduktion till ExpressRoute](../expressroute/expressroute-introduction.md).
+Om du har en ExpressRoute-anslutning mellan ditt lokala nätverk och Azure, kan du aktivera BGP för att sprida väga från ditt lokala nätverk till Azure. BGP-vägarna används på samma sätt som systemvägar och användardefinierade vägar på varje Azure-undernät. Mer information finns i [Introduktion till ExpressRoute](../expressroute/expressroute-introduction.md).
 
 > [!IMPORTANT]
-> Du kan konfigurera din Azure-miljön toouse Tvingad tunneltrafik via ditt lokala nätverk genom att skapa en användardefinierad väg för undernätet 0.0.0.0/0 som använder hello VPN-gateway som hello nästa hopp. Det fungerar dock bara om du använder en VPN-gateway, inte ExpressRoute. Tvingad tunneling med ExpressRoute konfigureras via BGP.
+> Du kan konfigurera Azure-miljön att använda sig av tvingad tunneling genom ditt lokala nätverk genom att skapa en användardefinierad väg för undernätet 0.0.0.0/0 som använder VPN-gatewayen som nexthop. Det fungerar dock bara om du använder en VPN-gateway, inte ExpressRoute. Tvingad tunneling med ExpressRoute konfigureras via BGP.
 > 
 > 
 
 ## <a name="ip-forwarding"></a>IP-vidarebefordran
-Som beskrivs ovan, en hello huvudsakliga skälen toocreate är en användardefinierad väg tooforward trafik tooa virtuell installation. En virtuell installation finns inget mer än en virtuell dator som kör ett program som används för toohandle nätverkstrafik på något sätt, till exempel en brandvägg eller NAT-enhet.
+Som det beskrivs ovan, är en av de huvudsakliga skälen att skapa en användardefinierad väg att vidarebefordra trafik till en virtuell installation. En virtuell installation är helt enkelt en VM som kör ett program som används för att hantera nätverkstrafik på något sätt, som en brandvägg eller en NAT-enhet.
 
-Den här virtuella installations VM måste vara kan tooreceive inkommande trafik som är adresserad inte tooitself. tooallow en tooreceive VM-trafik adresserad tooother mål, måste du aktivera IP-vidarebefordring för hello VM. Det här är en Azure-inställning, inte en inställning i hello gästoperativsystemet.
+Den här virtuella installations-VM:en måste kunna ta emot inkommande trafik som inte är adresserad till den. För att låta en VM ta emot trafik som är adresserad till andra mål, behöver du aktivera IP-vidarebefordran för VM:en. Det är en Azure-inställning, inte en inställning i gästoperativsystemet.
 
 ## <a name="next-steps"></a>Nästa steg
-* Lär dig hur för[skapar vägar i Resource Manager-modellen hello](virtual-network-create-udr-arm-template.md) och kopplar dem till toosubnets. 
-* Lär dig hur för[skapar vägar i hello klassiska distributionsmodellen](virtual-network-create-udr-classic-ps.md) och kopplar dem till toosubnets.
+* Lär dig hur du [skapar vägar i Resource Manager-distributionsmodellen](virtual-network-create-udr-arm-template.md) och kopplar dem till undernät. 
+* Lär dig hur du [skapar vägar i den klassiska distributionsmodellen](virtual-network-create-udr-classic-ps.md) och kopplar dem till undernät.
 

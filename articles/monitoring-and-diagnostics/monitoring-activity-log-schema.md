@@ -1,6 +1,6 @@
 ---
-title: "aaaAzure händelse för aktivitetslogg | Microsoft Docs"
-description: "Förstå hello Händelseschema för data som sänds till hello aktivitetsloggen"
+title: "Azure händelse för aktivitetslogg | Microsoft Docs"
+description: "Förstå Händelseschema för data som sänds till aktivitetsloggen"
 author: johnkemnetz
 manager: robb
 services: monitoring-and-diagnostics
@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: johnkem
-ms.openlocfilehash: dfece949a20a4d9b4e8a4d488c1c34842d87d586
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: a4ceb822e0ec3e1c1dc31ece1db761834e795f6c
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure aktivitetsloggen Händelseschema
-Hej **Azure-aktivitetsloggen** är en logg som ger inblick i prenumerationsnivån händelser som har inträffat i Azure. Den här artikeln beskriver hello Händelseschema per kategori av data.
+Den **Azure-aktivitetsloggen** är en logg som ger inblick i prenumerationsnivån händelser som har inträffat i Azure. Den här artikeln beskriver Händelseschema per kategori av data.
 
 ## <a name="administrative"></a>Administrativa
-Den här kategorin innehåller hello post för alla skapa, uppdatera, ta bort och åtgärden åtgärder utföras via Resource Manager. Exempel på typer av händelser som visas i den här kategorin omfattar hello ”Skapa virtuell dator” och ”ta bort nätverkssäkerhetsgruppen” varje åtgärd som en användare eller program med hjälp av hanteraren för filserverresurser modelleras som en åtgärd på en viss resurstyp. Om hello åtgärd av typen skriva, ta bort eller åtgärden hello-poster för både hello start- och lyckas eller misslyckas av åtgärden registreras i hello administrativa kategorin. hello administrativa kategorin omfattar även eventuella ändringar toorole-baserad åtkomstkontroll i en prenumeration.
+Den här kategorin innehåller posten för alla skapa, uppdatera, ta bort och åtgärden åtgärder utföras via Resource Manager. Exempel på vilka typer av händelser som visas i den här kategorin är ”Skapa virtuell dator” och ”ta bort nätverkssäkerhetsgrupp” varje åtgärd som en användare eller program med hjälp av hanteraren för filserverresurser modelleras som en åtgärd på en viss resurstyp. Om åtgärdstypen är Write-, Delete- eller åtgärd, är start-och lyckas eller misslyckas för denna åtgärd registrerade i den administrativa kategorin. Den administrativa kategorin omfattar även ändringar rollbaserad åtkomstkontroll i en prenumeration.
 
 ### <a name="sample-event"></a>Exempelhändelse
 ```json
@@ -102,29 +102,29 @@ Den här kategorin innehåller hello post för alla skapa, uppdatera, ta bort oc
 ### <a name="property-descriptions"></a>Egenskapsbeskrivningar
 | Elementnamn | Beskrivning |
 | --- | --- |
-| Auktorisering |BLOB RBAC egenskaper för hello-händelse. Normalt innehåller hello ””, ”roll” och ”omfattning” egenskaper. |
-| Anroparen |E-postadress för hello-användare som har utfört hello operation, UPN-anspråk eller SPN-anspråk baserat på tillgänglighet. |
-| kanaler |En av hello följande värden: ”Admin”, ”åtgärden” |
-| Anspråk |Hej JWT-token som används av Active Directory tooauthenticate hello användaren eller programmet tooperform åtgärden i hanteraren för filserverresurser. |
-| correlationId |Vanligtvis ett GUID i hello-strängformat. Händelser som delar en correlationId tillhör toohello samma uber åtgärd. |
-| description |Statisk textbeskrivning av en händelse. |
+| Auktorisering |BLOB RBAC egenskaper för händelsen. Inkluderar vanligtvis egenskaperna ””, ”roll” och ”omfattning”. |
+| Anroparen |E-postadressen för användaren som utförde åtgärden, UPN-anspråk eller SPN-anspråk baserat på tillgänglighet. |
+| kanaler |Ett av följande värden: ”Admin”, ”åtgärden” |
+| Anspråk |Detta JWT-token som används av Active Directory för att autentisera användaren eller programmet att utföra åtgärden i hanteraren för filserverresurser. |
+| correlationId |Vanligtvis ett GUID i strängformatet. Händelser som delar en correlationId tillhöra samma uber åtgärd. |
+| Beskrivning |Statisk textbeskrivning av en händelse. |
 | eventDataId |Unik identifierare för en händelse. |
-| httpRequest |BLOB som beskriver hello Http-begäran. Inkluderar vanligtvis hello ”clientRequestId”, ”clientIpAddress” och ”metod” (HTTP-metod. Till exempel PLACERA). |
-| nivå |Nivå av hello-händelse. En av hello följande värden: ”kritiska”, ”Error”, ”varning”, ”information” och ”utförlig” |
-| resourceGroupName |Namnet på resursgruppen hello för hello påverkas resurs. |
-| resourceProviderName |Namnet på hello resource provider för hello påverkas resurs |
-| resourceId |Resurs-id för hello påverkas resurs. |
-| Åtgärds-ID |Ett GUID som delas med hello händelser som motsvarar tooa enda åtgärd. |
-| operationName |Namnet på hello igen. |
-| properties |En uppsättning `<Key, Value>` par (det vill säga en ordlista) som beskriver hello information om hello-händelse. |
-| status |Sträng som beskriver hello status för hello-åtgärd. Vissa vanliga värden: startas i pågår, slutfört, misslyckades, aktiv, löst. |
-| subStatus |Vanligtvis hello HTTP-statuskoden hello motsvarande REST-anrop, men kan även innehålla andra strängar som beskriver en sådan, till exempel värdena vanliga: OK (HTTP-statuskod: 200), skapade (HTTP-statuskod: 201), godkända (HTTP-statuskod: 202), Nej innehåll (HTTP Statuskod: 204), felaktig begäran (HTTP-statuskod: 400) inte hittades (HTTP-statuskod: 404), konflikt (HTTP-statuskod: 409), internt serverfel (HTTP-statuskod: 500), tjänsten inte tillgänglig (HTTP-statuskod: 503), Gateway-Timeout (HTTP-statuskod: 504). |
-| eventTimestamp |Tidsstämpel när hello händelse har genererats av hello Azure service bearbetning hello begära motsvarande hello-händelse. |
-| submissionTimestamp |Tidsstämpel när hello händelse blev tillgängliga för frågor. |
+| httpRequest |BLOB som beskriver Http-begäran. Inkluderar vanligtvis ”clientRequestId”, ”clientIpAddress” och ”metod” (HTTP-metod. Till exempel PLACERA). |
+| nivå |Nivå av händelsen. Ett av följande värden: ”kritiska”, ”Error”, ”varning”, ”information” och ”utförlig” |
+| resourceGroupName |Namnet på resursgruppen för resursen påverkas. |
+| resourceProviderName |Namnet på resursprovidern för resursen påverkas |
+| resourceId |Resurs-id för resursen påverkas. |
+| Åtgärds-ID |Ett GUID som delas mellan de händelser som motsvarar en enda åtgärd. |
+| operationName |Namnet på åtgärden. |
+| properties |En uppsättning `<Key, Value>` par (det vill säga en ordlista) som beskriver information om händelsen. |
+| status |Sträng som beskriver status för åtgärden. Vissa vanliga värden: startas i pågår, slutfört, misslyckades, aktiv, löst. |
+| subStatus |Vanligtvis HTTP-statuskoden motsvarande rest anropa, men kan även innehålla andra strängar som beskriver en sådan, till exempel värdena vanliga: OK (HTTP-statuskod: 200), skapade (HTTP-statuskod: 201), godkända (HTTP-statuskod: 202), inte innehåll (HTTP-statuskod: 204), felaktig begäran (HTTP-statuskod: 400), det gick inte att hitta (HTTP-statuskod: 404), konflikt (HTTP-statuskod : 409), internt serverfel (HTTP-statuskod: 500), tjänsten inte tillgänglig (HTTP-statuskod: 503), Gateway-Timeout (HTTP-statuskod: 504). |
+| eventTimestamp |Tidsstämpel när händelsen skapades av tjänsten Azure motsvarande händelsen begäran bearbetades. |
+| submissionTimestamp |Tidsstämpel när händelsen blev tillgängliga för frågor. |
 | subscriptionId |Azure prenumerations-Id. |
 
 ## <a name="service-health"></a>Tjänstens hälsa
-Den här kategorin innehåller hello post för varje service hälsa incidenter som har inträffat i Azure. Ett exempel på hello typen av händelse visas i den här kategorin är ”SQL Azure i östra USA upplever driftstopp”. Hälsa av tjänsten-händelser finns i fem sorter: åtgärd krävs stödd återställning, Incident, underhåll, Information eller säkerhet, och visas endast om du har en resurs i hello-prenumeration som skulle påverkas av hello-händelse.
+Den här kategorin innehåller post för varje service hälsa incidenter som har inträffat i Azure. Ett exempel på typen av händelse visas i den här kategorin är ”SQL Azure i östra USA upplever driftstopp”. Hälsa av tjänsten-händelser finns i fem sorter: åtgärd krävs stödd återställning, Incident, underhåll, Information eller säkerhet, och visas endast om du har en resurs i den prenumeration som skulle påverkas av händelsen.
 
 ### <a name="sample-event"></a>Exempelhändelse
 ```json
@@ -168,13 +168,13 @@ Den här kategorin innehåller hello post för varje service hälsa incidenter s
     "title": "Network Infrastructure - UK South",
     "service": "Service Fabric",
     "region": "UK South",
-    "communication": "Starting at approximately 21:41 UTC on 20 Jul 2017, a subset of customers in UK South may experience degraded performance, connectivity drops or timeouts when accessing their Azure resources hosted in this region. Engineers are investigating underlying Network Infrastructure issues in this region. Impacted services may include, but are not limited tooApp Services, Automation, Service Bus, Log Analytics, Key Vault, SQL Database, Service Fabric, Event Hubs, Stream Analytics, Azure Data Movement, API Management, and Azure Search. Multiple engineering teams are engaged in multiple workflows toomitigate hello impact. hello next update will be provided in 60 minutes, or as events warrant.",
+    "communication": "Starting at approximately 21:41 UTC on 20 Jul 2017, a subset of customers in UK South may experience degraded performance, connectivity drops or timeouts when accessing their Azure resources hosted in this region. Engineers are investigating underlying Network Infrastructure issues in this region. Impacted services may include, but are not limited to App Services, Automation, Service Bus, Log Analytics, Key Vault, SQL Database, Service Fabric, Event Hubs, Stream Analytics, Azure Data Movement, API Management, and Azure Search. Multiple engineering teams are engaged in multiple workflows to mitigate the impact. The next update will be provided in 60 minutes, or as events warrant.",
     "incidentType": "Incident",
     "trackingId": "NA0F-BJG",
     "impactStartTime": "2017-07-20T21:41:00.0000000Z",
     "impactedServices": "[{\"ImpactedRegions\":[{\"RegionName\":\"UK South\"}],\"ServiceName\":\"Service Fabric\"}]",
     "defaultLanguageTitle": "Network Infrastructure - UK South",
-    "defaultLanguageContent": "Starting at approximately 21:41 UTC on 20 Jul 2017, a subset of customers in UK South may experience degraded performance, connectivity drops or timeouts when accessing their Azure resources hosted in this region. Engineers are investigating underlying Network Infrastructure issues in this region. Impacted services may include, but are not limited tooApp Services, Automation, Service Bus, Log Analytics, Key Vault, SQL Database, Service Fabric, Event Hubs, Stream Analytics, Azure Data Movement, API Management, and Azure Search. Multiple engineering teams are engaged in multiple workflows toomitigate hello impact. hello next update will be provided in 60 minutes, or as events warrant.",
+    "defaultLanguageContent": "Starting at approximately 21:41 UTC on 20 Jul 2017, a subset of customers in UK South may experience degraded performance, connectivity drops or timeouts when accessing their Azure resources hosted in this region. Engineers are investigating underlying Network Infrastructure issues in this region. Impacted services may include, but are not limited to App Services, Automation, Service Bus, Log Analytics, Key Vault, SQL Database, Service Fabric, Event Hubs, Stream Analytics, Azure Data Movement, API Management, and Azure Search. Multiple engineering teams are engaged in multiple workflows to mitigate the impact. The next update will be provided in 60 minutes, or as events warrant.",
     "stage": "Active",
     "communicationId": "636361902146035247",
     "version": "0.1.1"
@@ -185,34 +185,34 @@ Den här kategorin innehåller hello post för varje service hälsa incidenter s
 ### <a name="property-descriptions"></a>Egenskapsbeskrivningar
 Elementnamn | Beskrivning
 -------- | -----------
-kanaler | Är en av hello följande värden: ”Admin”, ”åtgärden”
-correlationId | Är vanligtvis ett GUID i hello-strängformat. Händelser med som tillhör toohello vanligtvis delar samma uber åtgärd hello samma correlationId.
-description | Beskrivning av hello-händelse.
-eventDataId | hello Unik identifierare för en händelse.
-EventName | hello titel hello-händelse.
-nivå | Nivå av hello-händelse. En av hello följande värden: ”kritiska”, ”Error”, ”varning”, ”information” och ”utförlig”
-resourceProviderName | Namnet på hello resource provider för hello påverkas resurs. Detta kan vara null om det är inte känt.
-resourceType| hello typ av resurs av hello påverkas resurs. Detta kan vara null om det är inte känt.
+kanaler | Är ett av följande värden: ”Admin”, ”åtgärden”
+correlationId | Är vanligtvis ett GUID i strängformatet. Händelser med som tillhör samma uber åtgärd vanligtvis delar samma correlationId.
+Beskrivning | Beskrivning av händelsen.
+eventDataId | Den unika identifieraren för en händelse.
+EventName | Rubrik på händelsen.
+nivå | Nivå av händelsen. Ett av följande värden: ”kritiska”, ”Error”, ”varning”, ”information” och ”utförlig”
+resourceProviderName | Namnet på resursprovidern för resursen påverkas. Detta kan vara null om det är inte känt.
+resourceType| Typ av resurs för resursen påverkas. Detta kan vara null om det är inte känt.
 subStatus | Vanligtvis är null för händelser för Hälsotjänst.
-eventTimestamp | Tidsstämpel när hello logga en händelse har genererats och skickats toohello aktivitetsloggen.
-submissionTimestamp |   Tidsstämpel när hello händelse blev tillgängliga i hello aktivitetsloggen.
-subscriptionId | hello Azure-prenumeration som den här händelsen loggades.
-status | Sträng som beskriver hello status för hello-åtgärd. Vissa vanliga värden: aktiva, löst.
-operationName | Namnet på hello igen. Vanligtvis Microsoft.ServiceHealth/incident/action.
+eventTimestamp | Tidsstämpel när händelselogg har genererats och skickats till aktivitetsloggen.
+submissionTimestamp |   Tidsstämpel när händelsen blev tillgängliga i aktivitetsloggen.
+subscriptionId | Azure-prenumerationen som den här händelsen loggades.
+status | Sträng som beskriver status för åtgärden. Vissa vanliga värden: aktiva, löst.
+operationName | Namnet på åtgärden. Vanligtvis Microsoft.ServiceHealth/incident/action.
 category | ”ServiceHealth”
-resourceId | Resurs-id för hello påverkas resurs, om den är känd. Prenumerations-ID har angetts på annat sätt.
-Properties.title | hello lokaliserade rubrik för den här kommunikationen. Engelska är standardspråk för hello.
-Properties.Communication | hello lokaliserad information hello-kommunikation med HTML-kod. Engelska är hello som standard.
+resourceId | Resurs-id för påverkas resursen, om den är känd. Prenumerations-ID har angetts på annat sätt.
+Properties.title | Lokaliserade rubriken för den här kommunikationen. Engelska är standardspråk.
+Properties.Communication | Lokaliserad information om kommunikationen med HTML-kod. Engelska är standard.
 Properties.incidentType | Möjliga värden: AssistedRecovery, ActionRequired, Information, incidenter, underhåll, säkerhet
-Properties.trackingId | Identifierar hello incident som den här händelsen är associerad med. Använd den här toocorrelate hello händelser relaterade tooan incidenten.
-Properties.impactedServices | En ESC JSON-blob som beskriver hello tjänster och områden som påverkas av hello incident. En lista över tjänster, som har en ServiceName och en lista över ImpactedRegions, som har en RegionName.
-Properties.defaultLanguageTitle | hello-kommunikation på engelska
-Properties.defaultLanguageContent | hello-kommunikation på engelska som HTML-kod eller oformaterad text
+Properties.trackingId | Identifierar den här händelsen är associerad med incidenten. Används för att korrelera händelser relaterade till en incident.
+Properties.impactedServices | En ESC JSON-blob som beskriver de tjänster och regioner som påverkas av incidenten. En lista över tjänster, som har en ServiceName och en lista över ImpactedRegions, som har en RegionName.
+Properties.defaultLanguageTitle | Kommunikation på engelska
+Properties.defaultLanguageContent | Kommunikation på engelska som HTML-kod eller oformaterad text
 Properties.Stage | Möjliga värden för AssistedRecovery, ActionRequired, Information, incidenter, säkerhet: är aktiv, löst. De är för underhåll: aktiv, planerad, InProgress, Avbruten, Rescheduled, löst, Slutför
-Properties.communicationId | hello kommunikation den här händelsen är kopplat.
+Properties.communicationId | Kommunikationen den här händelsen är kopplat.
 
 ## <a name="alert"></a>Varning
-Den här kategorin innehåller hello post för alla aktiveringar av Azure-aviseringar. Ett exempel på hello typen av händelse visas i den här kategorin är ”processor på myVM har över 80 för hello senaste 5 minuter”. En mängd Azure system har en aviseringar begrepp – du kan definiera en regel av något slag och ett meddelande när villkor matchar regeln. Varje gång en stöds Azure aviseringstyp 'aktiveras,' eller hello villkor är uppfyllda toogenerate ett meddelande, en post för hello aktiveringen skickas också hello aktivitetsloggen toothis kategori.
+Den här kategorin innehåller posten för alla aktiveringar av Azure-aviseringar. Ett exempel på typen av händelse visas i den här kategorin är ”processor på myVM har varit över 80 under de senaste fem minuterna”. En mängd Azure system har en aviseringar begrepp – du kan definiera en regel av något slag och ett meddelande när villkor matchar regeln. Varje gång en stöds Azure aviseringstyp 'aktiveras,' eller villkoren är uppfyllda för att generera ett meddelande, en post på aktiveringen skickas även till den här kategorin för aktivitetsloggen.
 
 ### <a name="sample-event"></a>Exempelhändelse
 
@@ -224,7 +224,7 @@ Den här kategorin innehåller hello post för alla aktiveringar av Azure-aviser
     "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/spn": "Microsoft.Insights/alertRules"
   },
   "correlationId": "/subscriptions/mySubscriptionID/resourceGroups/myResourceGroup/providers/microsoft.insights/alertrules/myalert/incidents/L3N1YnNjcmlwdGlvbnMvZGY2MDJjOWMtN2FhMC00MDdkLWE2ZmItZWIyMGM4YmQxMTkyL3Jlc291cmNlR3JvdXBzL0NzbUV2ZW50RE9HRk9PRC1XZXN0VVMvcHJvdmlkZXJzL21pY3Jvc29mdC5pbnNpZ2h0cy9hbGVydHJ1bGVzL215YWxlcnQwNjM2MzYyMjU4NTM1MjIxOTIw",
-  "description": "'Disk read LessThan 100000 ([Count]) in hello last 5 minutes' has been resolved for CloudService: myResourceGroup/Production/Event.BackgroundJobsWorker.razzle (myResourceGroup)",
+  "description": "'Disk read LessThan 100000 ([Count]) in the last 5 minutes' has been resolved for CloudService: myResourceGroup/Production/Event.BackgroundJobsWorker.razzle (myResourceGroup)",
   "eventDataId": "149d4baf-53dc-4cf4-9e29-17de37405cd9",
   "eventName": {
     "value": "Alert",
@@ -280,52 +280,52 @@ Den här kategorin innehåller hello post för alla aktiveringar av Azure-aviser
 | --- | --- |
 | Anroparen | Alltid Microsoft.Insights/alertRules |
 | kanaler | Alltid ”Admin, åtgärden” |
-| Anspråk | JSON-blob med hello SPN (service principal name) eller resurs typ, varning hello-motorn. |
-| correlationId | Ett GUID i hello-strängformat. |
-| description |Statisk textbeskrivning av hello varning avisering. |
-| eventDataId |Unik identifierare för hello varning avisering. |
-| nivå |Nivå av hello-händelse. En av hello följande värden: ”kritiska”, ”Error”, ”varning”, ”information” och ”utförlig” |
-| resourceGroupName |Namnet på resursgruppen hello för hello påverkas resursen om den här varningen är mått. För andra aviseringstyper är hello namnet hello resursgruppen som innehåller hello avisering sig själv. |
-| resourceProviderName |Namnet på hello resource provider för hello påverkas resursen om den här varningen är mått. För andra aviseringstyper är hello namnet på hello resource provider för hello aviseringen sig själv. |
-| resourceId | Namnet på hello resurs-ID för hello påverkas resursen om den här varningen är mått. För andra aviseringstyper är hello resurs-ID för hello avisering resurs sig själv. |
-| Åtgärds-ID |Ett GUID som delas med hello händelser som motsvarar tooa enda åtgärd. |
-| operationName |Namnet på hello igen. |
-| properties |En uppsättning `<Key, Value>` par (det vill säga en ordlista) som beskriver hello information om hello-händelse. |
-| status |Sträng som beskriver hello status för hello-åtgärd. Vissa vanliga värden: startas i pågår, slutfört, misslyckades, aktiv, löst. |
+| Anspråk | JSON-blob med typen SPN (service principal name) eller resurs varning-motorn. |
+| correlationId | Ett GUID i strängformatet. |
+| Beskrivning |Statisk textbeskrivning av händelsen avisering. |
+| eventDataId |Unik identifierare för varning avisering. |
+| nivå |Nivå av händelsen. Ett av följande värden: ”kritiska”, ”Error”, ”varning”, ”information” och ”utförlig” |
+| resourceGroupName |Namnet på resursgruppen för resursen påverkas om det är en avisering om mått. För andra aviseringstyper är namnet på resursgruppen som innehåller aviseringen sig själv. |
+| resourceProviderName |Namnet på resursprovidern för resursen påverkas om det är en avisering om mått. För andra aviseringstyper kan är det här namnet på resursprovidern för aviseringen sig själv. |
+| resourceId | Namnet på resurs-ID för resursen påverkas om det är en avisering om mått. För andra aviseringstyper är resurs-ID för avisering resursen sig själv. |
+| Åtgärds-ID |Ett GUID som delas mellan de händelser som motsvarar en enda åtgärd. |
+| operationName |Namnet på åtgärden. |
+| properties |En uppsättning `<Key, Value>` par (det vill säga en ordlista) som beskriver information om händelsen. |
+| status |Sträng som beskriver status för åtgärden. Vissa vanliga värden: startas i pågår, slutfört, misslyckades, aktiv, löst. |
 | subStatus | Vanligtvis är null för aviseringar. |
-| eventTimestamp |Tidsstämpel när hello händelse har genererats av hello Azure service bearbetning hello begära motsvarande hello-händelse. |
-| submissionTimestamp |Tidsstämpel när hello händelse blev tillgängliga för frågor. |
+| eventTimestamp |Tidsstämpel när händelsen skapades av tjänsten Azure motsvarande händelsen begäran bearbetades. |
+| submissionTimestamp |Tidsstämpel när händelsen blev tillgängliga för frågor. |
 | subscriptionId |Azure prenumerations-Id. |
 
 ### <a name="properties-field-per-alert-type"></a>Egenskapsfältet per typ av avisering
-hello innehåller egenskaper fältet olika värden beroende på hello källan för hello varning avisering. Två vanliga varning avisering providers är aktivitetsloggen aviseringar och mått aviseringar.
+Egenskapsfältet innehåller olika värden beroende på aviseringen händelsens källa. Två vanliga varning avisering providers är aktivitetsloggen aviseringar och mått aviseringar.
 
 #### <a name="properties-for-activity-log-alerts"></a>Egenskaper för aktivitetsloggen aviseringar
 | Elementnamn | Beskrivning |
 | --- | --- |
-| properties.subscriptionId | hello prenumerations-ID från hello aktivitet logga en händelse som orsakat den här aktiviteten loggen varningsregeln toobe aktiveras. |
-| properties.eventDataId | hello händelse data-ID från hello aktivitet logga en händelse som orsakat den här aktiviteten loggen varningsregeln toobe aktiveras. |
-| properties.resourceGroup | hello resursgrupp från hello aktivitet logga en händelse som orsakat den här aktiviteten loggen varningsregeln toobe aktiveras. |
-| properties.resourceId | hello resurs-ID från hello aktivitet logga en händelse som orsakat den här aktiviteten loggen varningsregeln toobe aktiveras. |
-| properties.eventTimestamp | hello händelse tidsstämpel hello aktivitet logga en händelse som orsakat den här aktiviteten loggen varningsregeln toobe aktiveras. |
-| properties.operationName | hello åtgärdsnamn från hello aktivitet logga en händelse som orsakat den här aktiviteten loggen varningsregeln toobe aktiveras. |
-| Properties.status | hello status från hello aktivitet logga en händelse som orsakat den här aktiviteten loggen varningsregeln toobe aktiveras.|
+| properties.subscriptionId | Prenumerations-ID från den aktivitet logga en händelse som orsakat den här aktiviteten loggen varningsregeln ska aktiveras. |
+| properties.eventDataId | Händelse data-ID från den aktivitet logga en händelse som orsakat den här aktiviteten loggen varningsregeln ska aktiveras. |
+| properties.resourceGroup | Resursgruppen från den aktivitet logga en händelse som orsakat den här aktiviteten loggen varningsregeln ska aktiveras. |
+| properties.resourceId | Resurs-ID från den aktivitet logga en händelse som orsakat den här aktiviteten loggen varningsregeln ska aktiveras. |
+| properties.eventTimestamp | Händelsen tidsstämpel för den aktiviteten logga en händelse som orsakat den här aktiviteten loggen varningsregeln ska aktiveras. |
+| properties.operationName | Åtgärdsnamnet från den aktivitet logga en händelse som orsakat den här aktiviteten loggen varningsregeln ska aktiveras. |
+| Properties.status | Status från den aktivitet logga en händelse som orsakat den här aktiviteten loggen varningsregeln ska aktiveras.|
 
 #### <a name="properties-for-metric-alerts"></a>Egenskaper för mått aviseringar
 | Elementnamn | Beskrivning |
 | --- | --- |
-| Egenskaper. RuleUri | Resurs-ID för hello mått varningsregeln sig själv. |
-| Egenskaper. Regelnamn | hello namnet hello mått varningsregel. |
-| Egenskaper. RuleDescription | hello beskrivning av hello mått varningsregeln (enligt definitionen i hello varningsregeln). |
-| Egenskaper. Tröskelvärde | hello tröskelvärdet används i hello utvärdering av hello mått varningsregel. |
-| Egenskaper. WindowSizeInMinutes | hello fönsterstorlek används i hello utvärdering av hello mått varningsregel. |
-| Egenskaper. Aggregeringen | hello Aggregeringstyp har definierats i hello mått varningsregel. |
-| Egenskaper. Operatorn | hello villkorsstyrd operatör används i hello utvärdering av hello mått varningsregel. |
-| Egenskaper. MetricName | hello måttnamnet av hello mått används i hello utvärdering av hello mått varningsregel. |
-| Egenskaper. MetricUnit | hello mått enhet för hello måttet används i hello utvärdering av hello mått varningsregel. |
+| Egenskaper. RuleUri | Resurs-ID för mått varningsregeln sig själv. |
+| Egenskaper. Regelnamn | Namnet på regeln mått. |
+| Egenskaper. RuleDescription | Beskrivning av mått varningsregeln (enligt definitionen i varningsregeln). |
+| Egenskaper. Tröskelvärde | Tröskelvärdet används i utvärderingen av mått varningsregeln. |
+| Egenskaper. WindowSizeInMinutes | Fönsterstorleken användas vid utvärderingen av mått varningsregeln. |
+| Egenskaper. Aggregeringen | Sammansättningstyp som definierats i regeln mått. |
+| Egenskaper. Operatorn | Villkorsstyrd operatör som används i utvärderingen av mått varningsregeln. |
+| Egenskaper. MetricName | Måttnamnet av måttet används i utvärderingen av mått varningsregeln. |
+| Egenskaper. MetricUnit | Mått enhet för måttet används i utvärderingen av mått varningsregeln. |
 
 ## <a name="autoscale"></a>Automatisk skalning
-Den här kategorin innehåller hello post för varje händelser relaterade toohello användning av hello Autoskala motorn baserat på automatiska inställningar du har definierat i din prenumeration. Ett exempel på hello typen av händelse visas i den här kategorin är ”Autoskala skalas upp misslyckades”. Använda autoskalning kan du automatiskt skala ut eller skala i hello antalet instanser i en stöds resurstyp baserat på tid på dagen och/eller belastningen (mått) data med hjälp av en autoskalningsinställning. När hello villkor är uppfyllda tooscale uppåt eller nedåt hello start och lyckades eller registreras misslyckade händelser i den här kategorin.
+Den här kategorin innehåller en förteckning över alla händelser relaterade till åtgärden Autoskala motorns baserat på automatiska inställningar du har definierat i din prenumeration. Ett exempel på typen av händelse visas i den här kategorin är ”Autoskala skalas upp misslyckades”. Använda autoskalning kan du automatiskt skala ut eller skala antalet instanser i en stöds resurstyp baserat på tid på dagen och/eller belastningen (mått) data med hjälp av en autoskalningsinställning. När villkoren är uppfyllda skala upp eller ned början och lyckades eller registreras misslyckade händelser i den här kategorin.
 
 ### <a name="sample-event"></a>Exempelhändelse
 ```json
@@ -336,7 +336,7 @@ Den här kategorin innehåller hello post för varje händelser relaterade toohe
     "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/spn": "Microsoft.Insights/autoscaleSettings"
   },
   "correlationId": "fc6a7ff5-ff68-4bb7-81b4-3629212d03d0",
-  "description": "hello autoscale engine attempting tooscale resource '/subscriptions/mySubscriptionID/resourceGroups/myResourceGroup/providers/Microsoft.ClassicCompute/domainNames/myResourceGroup/slots/Production/roles/myResource' from 3 instances count too2 instances count.",
+  "description": "The autoscale engine attempting to scale resource '/subscriptions/mySubscriptionID/resourceGroups/myResourceGroup/providers/Microsoft.ClassicCompute/domainNames/myResourceGroup/slots/Production/roles/myResource' from 3 instances count to 2 instances count.",
   "eventDataId": "a5b92075-1de9-42f1-b52e-6f3e4945a7c7",
   "eventName": {
     "value": "AutoscaleAction",
@@ -364,7 +364,7 @@ Den här kategorin innehåller hello post för varje händelser relaterade toohe
     "localizedValue": "Microsoft.Insights/AutoscaleSettings/Scaledown/Action"
   },
   "properties": {
-    "Description": "hello autoscale engine attempting tooscale resource '/subscriptions/mySubscriptionID/resourceGroups/myResourceGroup/providers/Microsoft.ClassicCompute/domainNames/myResourceGroup/slots/Production/roles/myResource' from 3 instances count too2 instances count.",
+    "Description": "The autoscale engine attempting to scale resource '/subscriptions/mySubscriptionID/resourceGroups/myResourceGroup/providers/Microsoft.ClassicCompute/domainNames/myResourceGroup/slots/Production/roles/myResource' from 3 instances count to 2 instances count.",
     "ResourceName": "/subscriptions/mySubscriptionID/resourceGroups/myResourceGroup/providers/Microsoft.ClassicCompute/domainNames/myResourceGroup/slots/Production/roles/myResource",
     "OldInstancesCount": "3",
     "NewInstancesCount": "2",
@@ -389,28 +389,28 @@ Den här kategorin innehåller hello post för varje händelser relaterade toohe
 | --- | --- |
 | Anroparen | Alltid Microsoft.Insights/autoscaleSettings |
 | kanaler | Alltid ”Admin, åtgärden” |
-| Anspråk | JSON-blob med hello SPN (service principal name) eller resurs typ av hello Autoskala motorn. |
-| correlationId | Ett GUID i hello-strängformat. |
-| description |Statisk textbeskrivning av hello Autoskala händelse. |
-| eventDataId |Unik identifierare för hello Autoskala händelse. |
-| nivå |Nivå av hello-händelse. En av hello följande värden: ”kritiska”, ”Error”, ”varning”, ”information” och ”utförlig” |
-| resourceGroupName |Namnet på resursgruppen hello för hello autoskalningsinställning. |
-| resourceProviderName |Namnet på hello resource provider för hello autoskalningsinställning. |
-| resourceId |Resurs-id för hello autoskalningsinställning. |
-| Åtgärds-ID |Ett GUID som delas med hello händelser som motsvarar tooa enda åtgärd. |
-| operationName |Namnet på hello igen. |
-| properties |En uppsättning `<Key, Value>` par (det vill säga en ordlista) som beskriver hello information om hello-händelse. |
-| Egenskaper. Beskrivning | Detaljerad beskrivning av vad hello Autoskala motorn utfördes. |
-| Egenskaper. ResourceName | Resurs-ID för hello påverkas resurs (hello resurs på vilka hello skalningsåtgärd utfördes) |
-| Egenskaper. OldInstancesCount | hello antal instanser före hello Autoskala åtgärden tog effekt. |
-| Egenskaper. NewInstancesCount | hello antalet instanser när hello Autoskala åtgärden tog effekt. |
-| Egenskaper. LastScaleActionTime | hello tidsstämpel när hello Autoskala åtgärd utfördes. |
-| status |Sträng som beskriver hello status för hello-åtgärd. Vissa vanliga värden: startas i pågår, slutfört, misslyckades, aktiv, löst. |
+| Anspråk | JSON-blob med typen SPN (service principal name) eller resurs Autoskala-motorn. |
+| correlationId | Ett GUID i strängformatet. |
+| Beskrivning |Statisk textbeskrivning av händelsen Autoskala. |
+| eventDataId |Unik identifierare för händelsen Autoskala. |
+| nivå |Nivå av händelsen. Ett av följande värden: ”kritiska”, ”Error”, ”varning”, ”information” och ”utförlig” |
+| resourceGroupName |Namnet på resursgruppen för autoskalningsinställningen. |
+| resourceProviderName |Namnet på resursprovidern för autoskalningsinställningen. |
+| resourceId |Resurs-id autoskalningsinställningens. |
+| Åtgärds-ID |Ett GUID som delas mellan de händelser som motsvarar en enda åtgärd. |
+| operationName |Namnet på åtgärden. |
+| properties |En uppsättning `<Key, Value>` par (det vill säga en ordlista) som beskriver information om händelsen. |
+| Egenskaper. Beskrivning | Detaljerad beskrivning av vad Autoskala motorn gör. |
+| Egenskaper. ResourceName | Resurs-ID för resursen påverkas (den resurs där skalningsåtgärden utfördes) |
+| Egenskaper. OldInstancesCount | Antalet instanser innan åtgärden Autoskala tog effekt. |
+| Egenskaper. NewInstancesCount | Antalet instanser efter åtgärden Autoskala tog effekt. |
+| Egenskaper. LastScaleActionTime | Tidsstämpel när Autoskala åtgärden utfördes. |
+| status |Sträng som beskriver status för åtgärden. Vissa vanliga värden: startas i pågår, slutfört, misslyckades, aktiv, löst. |
 | subStatus | Vanligtvis är null för Autoskala. |
-| eventTimestamp |Tidsstämpel när hello händelse har genererats av hello Azure service bearbetning hello begära motsvarande hello-händelse. |
-| submissionTimestamp |Tidsstämpel när hello händelse blev tillgängliga för frågor. |
+| eventTimestamp |Tidsstämpel när händelsen skapades av tjänsten Azure motsvarande händelsen begäran bearbetades. |
+| submissionTimestamp |Tidsstämpel när händelsen blev tillgängliga för frågor. |
 | subscriptionId |Azure prenumerations-Id. |
 
 ## <a name="next-steps"></a>Nästa steg
-* [Mer information om hello aktivitetsloggen (tidigare granskningsloggar)](monitoring-overview-activity-logs.md)
-* [Strömma hello Azure-aktivitetsloggen tooEvent hubbar](monitoring-stream-activity-logs-event-hubs.md)
+* [Mer information om aktivitetsloggen (tidigare granskningsloggar)](monitoring-overview-activity-logs.md)
+* [Dataströmmen Azure aktivitetsloggen i Händelsehubbar](monitoring-stream-activity-logs-event-hubs.md)

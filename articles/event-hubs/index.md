@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure händelse NAV-dokumentation – självstudier, API-referens | Microsoft Docs"
-description: "Lär dig hur toouse Händelsehubbar tooingest miljontals händelser per sekund från anslutna IoT-enheter och program på en bred uppsättning plattformar."
+title: "Dokumentation om Azure Event Hubs – Självstudier, API-referens | Microsoft Docs"
+description: "Lär dig hur du använder Event Hubs för att mata in miljontals händelser per sekund från anslutna IoT-enheter och appar på en bred uppsättning plattformar."
 services: event-hubs
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: b75a4f958f66afdbca2fc612e2359df241164818
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: d24139de04b36044bbb88d0e9b9a1feb6d8edfa8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="event-hubs-documentation"></a>Dokumentation om Event Hubs
 
-Lär dig hur toouse Händelsehubbar toocollect och hantera miljontals händelser per sekund från anslutna IoT-enheter och program. Självstudier, API-referenser och annan dokumentation visar hur du konfigurerar skalbar inmatning för händelser på en bred uppsättning plattformar.
+Lär dig hur du använder Event Hubs för att samla och hantera miljontals händelser per sekund från anslutna IoT-enheter och appar. Självstudier, API-referenser och annan dokumentation visar hur du konfigurerar skalbar inmatning för händelser på en bred uppsättning plattformar.
 
 <ul class="panelContent cardsFTitle">
      <li>
@@ -70,7 +70,7 @@ Lär dig hur toouse Händelsehubbar toocollect och hantera miljontals händelser
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Kom igång med hello Programmeringsguide för Händelsehubbar</h3>
+                        <h3>Komma igång med programmeringsguiden för Event Hubs</h3>
                     </div>
                 </div>
             </div>
@@ -88,7 +88,7 @@ Lär dig hur toouse Händelsehubbar toocollect och hantera miljontals händelser
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Kom igång med Händelsehubbar med hello Azure-portalen</h3>
+                        <h3>Komma igång med Event Hubs med hjälp av Azure Portal</h3>
                     </div>
                 </div>
             </div>

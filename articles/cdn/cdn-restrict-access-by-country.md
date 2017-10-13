@@ -1,6 +1,6 @@
 ---
-title: "aaaRestrict Azure CDN innehåll efter land | Microsoft Docs"
-description: "Lär dig hur toorestrict tooyour Azure CDN innehåll med hjälp av hello filtrering av Geo-funktionen."
+title: "Begränsa Azure CDN innehåll efter land | Microsoft Docs"
+description: "Lär dig hur du begränsar åtkomsten till ditt Azure CDN-innehåll med hjälp av funktionen Geo-filtrering."
 services: cdn
 documentationcenter: 
 author: lichard
@@ -14,29 +14,29 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: rli
-ms.openlocfilehash: ffdd994612b6c9cfbf1a6e29d260709b4afa86e1
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 30160088d9c770400f342e67527e1cf1cabc4f6b
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="restrict-azure-cdn-content-by-country"></a>Begränsa Azure CDN innehåll efter land
 
 ## <a name="overview"></a>Översikt
-När en användare begär innehåll, som standard, hanteras hello innehållet oavsett om hello användare gjort denna begäran från. I vissa fall kan kanske du vill toorestrict åtkomst till tooyour innehåll efter land. Det här avsnittet beskrivs hur toouse hello **Geo-filtrering** funktion i ordning tooconfigure hello service tooallow eller blockera åtkomst av land.
+När en användare begär innehåll, som standard, hanteras innehållet oavsett om användaren har gjort denna begäran från. I vissa fall kanske du vill begränsa åtkomsten till ditt innehåll efter land. Det här avsnittet beskriver hur du använder den **Geo-filtrering** funktionen för att konfigurera tjänsten om du vill tillåta eller blockera åtkomst efter land.
 
 > [!IMPORTANT]
-> hello Verizon och Akamai produkter har hello samma funktioner för filtrering av geo men har en liten skillnad i te landskoder som de stöder. Se steg3 för en länk toohello skillnader.
+> Verizon och Akamai produkter ge samma funktioner för filtrering av geo men har en liten skillnad i te landskoder som de stöder. En länk till skillnaderna finns i steg3.
 
 
-Den här typen av begränsning finns information om saker som gäller tooconfiguring hello [överväganden](cdn-restrict-access-by-country.md#considerations) avsnittet hello slutet av hello-avsnittet.  
+Information om saker som gäller för att konfigurera den här typen av begränsning finns på [överväganden](cdn-restrict-access-by-country.md#considerations) avsnittet i slutet av ämnet.  
 
 ![Landsfiltrering](./media/cdn-filtering/cdn-country-filtering-akamai.png)
 
-## <a name="step-1-define-hello-directory-path"></a>Steg 1: Definiera hello sökväg
-Välj din slutpunkt i hello-portalen och hitta hello Geo-filtrering fliken på hello vänstra navigeringsfönstret toofind den här funktionen.
+## <a name="step-1-define-the-directory-path"></a>Steg 1: Definiera katalogsökvägen
+Välj din slutpunkt i portalen och hitta fliken Geo-filtrering på det vänstra navigeringsfönstret att hitta den här funktionen.
 
-När du konfigurerar land-filtret, måste du ange hello relativ sökväg toohello plats toowhich användare ska tillåtas eller nekas åtkomst. Du kan använda geo-filtrering för alla filer med ”/” eller valda mappar genom att ange katalogsökvägar ”/ bilder /”. Du kan också använda filtrering av geo tooa en fil genom att ange hello-fil och lämnar hello avslutande snedstreck ”/ pictures/city.png”.
+När du konfigurerar land-filtret, måste du ange den relativa sökvägen till den plats som användare beviljas eller nekas åtkomst. Du kan använda geo-filtrering för alla filer med ”/” eller valda mappar genom att ange katalogsökvägar ”/ bilder /”. Du kan också använda filtrering av geo-replikering till en enda fil genom att ange filen och lämnar ut avslutande snedstreck ”/ pictures/city.png”.
 
 Exempel directory sökvägen filter:
 
@@ -45,26 +45,26 @@ Exempel directory sökvägen filter:
     /Photos/Strasbourg/
       /Photos/Strasbourg/city.png
 
-## <a name="step-2-define-hello-action-block-or-allow"></a>Steg 2: Definiera hello åtgärd: blockera eller tillåta
-**Blockering:** användare från hello angivna länder kommer att nekas åtkomst tooassets begärs från den rekursiva sökvägen. Om inga andra land filtreringsalternativ har konfigurerats för den platsen, sedan får alla andra användare åtkomst.
+## <a name="step-2-define-the-action-block-or-allow"></a>Steg 2: Definiera åtgärden: blockera eller tillåta
+**Blockering:** användare från de angivna länderna nekas åtkomst till tillgångar som begärs från den rekursiva sökvägen. Om inga andra land filtreringsalternativ har konfigurerats för den platsen, sedan får alla andra användare åtkomst.
 
-**Tillåt:** endast användare från hello angivna länder tillåts åtkomst tooassets begärs från den rekursiva sökvägen.
+**Tillåt:** endast användare från de angivna länderna får åtkomst till tillgångar som begärs från den rekursiva sökvägen.
 
-## <a name="step-3-define-hello-countries"></a>Steg 3: Definiera hello länder
-Välj hello länder du vill tooblock eller tillåta hello sökväg. 
+## <a name="step-3-define-the-countries"></a>Steg 3: Definiera länderna
+Välj land som du vill blockera eller tillåta för sökvägen. 
 
-Till exempel filtrerar hello regeln för blockeringen /Photos/Strasbourg/filer, inklusive:
+Regeln för blockeringen /Photos/Strasbourg/kommer till exempel filtrera filer, inklusive:
 
     http://<endpoint>.azureedge.net/Photos/Strasbourg/1000.jpg
     http://<endpoint>.azureedge.net/Photos/Strasbourg/Cathedral/1000.jpg
 
 
 ### <a name="country-codes"></a>Landskoder
-Hej **Geo-filtrering** funktionen använder land koder toodefine hello länder där en begäran ska tillåtas eller blockeras för en skyddad katalog. Du hittar hello landskoder i [Azure CDN landskoder](https://msdn.microsoft.com/library/mt761717.aspx). 
+Den **Geo-filtrering** funktionen använder landskoder för att definiera de länder där en begäran ska tillåtas eller blockeras för en skyddad katalog. Du hittar landskoder i [Azure CDN landskoder](https://msdn.microsoft.com/library/mt761717.aspx). 
 
 ## <a id="considerations"></a>Överväganden
-* Det kan ta upp too90 minuter för Verizon, eller ett par minuter med Akamai, för ändringar tooyour land filtrering configuration tootake effekt.
+* Det kan ta upp till 90 minuter för Verizon eller ett par minuter med Akamai, ändringar i ditt land filtrering konfigurationen ska börja gälla.
 * Den här funktionen har inte stöd för jokertecken (till exempel ' *').
-* hello geo-filtrering konfiguration som är associerad med hello relativa sökvägen kommer att tillämpas rekursivt toothat sökväg.
-* Endast en regel kan vara tillämpade toohello samma relativa sökväg (du kan inte skapa flera land filter som punkt toohello samma relativa sökväg. En mapp kan dock ha flera land filter. Detta är på grund av toohello rekursiv uppbyggnad land filter. Med andra ord en undermapp till en tidigare konfigurerade mapp som kan tilldelas ett annat land filter.
+* Geo-filtrering konfigurationen som är associerade med den relativa sökvägen ska tillämpas rekursivt till denna sökväg.
+* Endast en regel kan tillämpas på samma relativa sökväg (du kan skapa flera land filter som pekar på samma relativa sökväg. En mapp kan dock ha flera land filter. Detta beror på den rekursiva natur land filter. Med andra ord en undermapp till en tidigare konfigurerade mapp som kan tilldelas ett annat land filter.
 

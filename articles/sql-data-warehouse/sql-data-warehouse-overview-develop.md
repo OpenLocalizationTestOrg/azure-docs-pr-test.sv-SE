@@ -1,5 +1,5 @@
 ---
-title: "aaaResources för att utveckla ett data warehouse i Azure | Microsoft Docs"
+title: "Resurser för att utveckla ett data warehouse i Azure | Microsoft Docs"
 description: "Begrepp för utveckling, designbeslut, rekommendationer och kodning tekniker för SQL Data Warehouse."
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,17 +15,17 @@ ms.workload: data-services
 ms.custom: develop
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
-ms.openlocfilehash: 67e3a6a3e2664919c3445ea5d5eba251054de020
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: b85a4f09e561e429aa5bf46ec680014487fb40c7
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="design-decisions-and-coding-techniques-for-sql-data-warehouse"></a>Designbeslut och kodning tekniker för SQL Data Warehouse
-Titta igenom dessa development artiklar toobetter förstå viktiga designbeslut, rekommendationer och kodning tekniker för SQL Data Warehouse.
+Titta igenom dessa development artiklar för att bättre förstå viktiga designbeslut, rekommendationer och kodning tekniker för SQL Data Warehouse.
 
 ## <a name="key-design-decisions"></a>Viktiga designbeslut
-hello beskrivs följande artiklar några av hello viktiga begrepp och designbeslut som du behöver toounderstand för hello utvecklingen av ditt distribuerade data warehouse med hjälp av SQL Data Warehouse:
+I följande artiklar beskrivs några av de viktiga begrepp och designbeslut som du behöver förstå för utveckling av ditt distribuerade data warehouse med hjälp av SQL Data Warehouse:
 
 * [anslutningar][connections]
 * [concurrency][concurrency]
@@ -50,7 +50,7 @@ Dessa artiklar markera specifika kodning tekniker, tips och rekommendationer fö
 * [variabeltilldelning][variable assignment]
 
 ## <a name="next-steps"></a>Nästa steg
-När du har gått igenom hello development artiklar ta en titt på hello [Transact-SQL referens] [ Transact-SQL reference] ha mer information om hello stöds syntax för SQL Data Warehouse.
+När du har gått igenom development artiklar ta en titt på den [Transact-SQL referens] [ Transact-SQL reference] för mer information om syntaxen stöds för SQL Data Warehouse.
 
 <!--Image references-->
 

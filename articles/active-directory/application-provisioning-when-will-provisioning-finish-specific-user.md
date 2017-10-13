@@ -1,6 +1,6 @@
 ---
-title: "aaaFind ut när en viss användare kommer att kunna tooaccess ett program | Microsoft Docs"
-description: "Hur toofind ut när en ytterst viktigt användare vara kan tooaccess ett program du har konfigurerat för användaretablering med Azure AD"
+title: "Ta reda på när en viss användare kommer att kunna komma åt ett program | Microsoft Docs"
+description: "Ta reda på när en ytterst viktigt användare komma åt ett program som du har konfigurerat för användaretablering med Azure AD"
 services: active-directory
 documentationcenter: 
 author: ajamess
@@ -13,37 +13,37 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: bb9520499dcc8bbbe6fae05c5238c8852815ea0a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: fcefb31904cfb77022db0358e9feee6a0479db81
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="find-out-when-a-specific-user-will-be-able-tooaccess-an-application"></a>Ta reda på när en viss användare kommer att kunna tooaccess ett program
+# <a name="find-out-when-a-specific-user-will-be-able-to-access-an-application"></a>Ta reda på när en viss användare kommer att kunna komma åt ett program
 När du använder automatisk användaretablering med ett program, Azure AD automatiskt etablera och uppdatera användarkonton i en app baserat på sådant som [användar- och tilldelning](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) vid en schemalagd tid intervall, vanligtvis var 10 minuter.
 
 ## <a name="how-long-does-it-take"></a>Hur lång tid tar det?
 
-hello tid det tar för en viss användare toobe etablerats beror huvudsakligen på huruvida en inledande ”full” sync redan har inträffat.
+Den tid det tar för en användare som ska etableras beror huvudsakligen på huruvida en inledande ”full” sync redan har inträffat.
 
-Hej första synkronisering mellan Azure AD och en app kan ta allt från 20 minuter tooseveral timmar, beroende på hello storleken på hello Azure AD-katalogen och hello antalet användare i omfånget för etablering. 
+Den första synkroniseringen mellan Azure AD och en app kan ta allt från 20 minuter till flera timmar, beroende på storleken på Azure AD-katalog och antalet användare i omfånget för etablering. 
 
-Efterföljande synkroniseringar efter hello inledande synkronisering vara snabbare (t.ex. inom 10 minuter) som hello Etablerar tjänsten lagrar vattenstämplar som representerar hello tillståndet för båda systemen efter hello inledande synkronisering, förbättra prestanda för efterföljande synkronisering.
+Efterföljande synkroniseringar efter den första synkroniseringen vara snabbare (t.ex. inom 10 minuter) som tjänsten etablering lagrar vattenstämplar som representerar tillståndet för båda systemen efter den första synkroniseringen, förbättra prestanda för efterföljande synkronisering.
 
-## <a name="how-toocheck-hello-status-of-a-user"></a>Hur toocheck hello status för en användare
+## <a name="how-to-check-the-status-of-a-user"></a>Så här kontrollerar du statusen för en användare
 
-toosee hello Etableringsstatus för en vald användare se hello granskningsloggar i Azure AD.
+Om du vill se Etableringsstatus för en vald användare finns i granskningsloggarna i Azure AD.
 
-hello etablering granskningsloggar kan nås i hello Azure-portalen i hello **Azure Active Directory &gt; Företagsappar &gt; \[programnamn\] &gt; granskningsloggarna**fliken. Filter hello loggar in hello **Kontoetablering** kategori tooonly finns hello etablering händelser för appen. Du kan söka efter användare baserat på hello ”matchande ID” som konfigurerats för dem i hello attributmappning. 
+Etablering granskningsloggarna kan nås i Azure-portalen i den **Azure Active Directory &gt; Företagsappar &gt; \[programnamn\] &gt; granskningsloggarna** fliken. Filtrera loggarna på den **Kontoetablering** kategori bara ser de etablering händelserna för appen. Du kan söka efter användare baserat på ”matchande ID” som konfigurerats för dem i attributet avbildningar. 
 
-Om du har konfigurerat hello ”huvudnamn” eller ”e-postadress” som hello matchar attributet på hello Azure AD-sidan och hello användaren inte etablering har värdet till exempel ”audrey@contoso.com”, sedan Sök hello granskningsloggar för ”audrey@contoso.com” och granska sedan poster som returneras.
+Om du har konfigurerat ”huvudnamn” eller ”e-postadress” som matchar attributet på Azure AD-sida och användaren inte etablering har värdet till exempel ”audrey@contoso.com”, söka granskningsloggarna för ”audrey@contoso.com” och sedan granska poster returnerade.
 
-hello etablering audit loggar register alla hello åtgärder som utförs av hello etableras, inklusive:
+Etablering granskningsloggarna registrera alla åtgärder som utförs av tjänsten etablering, inklusive:
 
 * Hämta Azure AD för tilldelade användare som ingår i omfånget för etablering
-* Frågar hello mål app hello befintliga användare
-* Jämföra hello användarobjekt mellan hello system
-* Lägga till, uppdatera eller inaktivera hello användarkonto i hello målsystemet baserat på hello jämförelse
+* Frågar appen mål förekomsten av användare
+* Jämförelse mellan användarobjekt mellan systemet
+* Lägga till, uppdatera eller inaktivera användarkontot i målsystemet baserat på jämförelsen
 
 ## <a name="next-steps"></a>Nästa steg
-[Automatisera Användaretablering och avetablering tooSaaS program med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-app-provisioning)''
+[Automatisera användaren etablering och avetablering för SaaS-program med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-app-provisioning)''

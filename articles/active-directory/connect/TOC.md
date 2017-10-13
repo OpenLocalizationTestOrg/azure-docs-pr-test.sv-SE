@@ -16,7 +16,7 @@
 ### [Anpassade inställningar](active-directory-aadconnect-get-started-custom.md)
 ### [Uppgradera från DirSync](active-directory-aadconnect-dirsync-upgrade-get-started.md)
 ### [Uppgradera från en tidigare version](active-directory-aadconnect-upgrade-previous-version.md)
-
+### [Installera med hjälp av en befintlig ADSync-databas](active-directory-aadconnect-existing-database.md)
 
 # Gör så här för att
 ## Planera och designa
@@ -27,6 +27,7 @@
 ### [När du redan har Azure AD](active-directory-aadconnect-existing-tenant.md)
 ## [Hantera Azure AD Connect](active-directory-aadconnect-whats-next.md)
 ### [Förnya certifikat för O365 och Azure AD](active-directory-aadconnect-o365-certs.md)
+### [Uppdatera SSL-certifikatet för en AD FS-servergrupp (Active Directory Federation Services)](active-directory-aadconnectfed-ssl-update.md)
 ### [Aktivera tillbakaskrivning av enheter](active-directory-aadconnect-feature-device-writeback.md)
 ### [Alternativ för användarinloggning](active-directory-aadconnect-user-signin.md)
 #### [Smidig enkel inloggning](active-directory-aadconnect-sso.md)
@@ -42,6 +43,7 @@
 ##### [Smart Lockout](active-directory-aadconnect-pass-through-authentication-smart-lockout.md)
 ##### [Vanliga frågor och svar](active-directory-aadconnect-pass-through-authentication-faq.md)
 ##### [Felsöka](active-directory-aadconnect-troubleshoot-pass-through-authentication.md)
+##### [Djupgående om säkerhet](active-directory-aadconnect-pass-through-authentication-security-deep-dive.md)
 ### [Stöd för flera domäner vid federering](active-directory-aadconnect-multiple-domains.md)
 ### [Automatisk uppgradering](active-directory-aadconnect-feature-automatic-upgrade.md)
 ### [Använda en SAML 2.0-identitetsprovider (IdP) för enkel inloggning](active-directory-aadconnect-federation-saml-idp.md)
@@ -53,13 +55,13 @@
 ### [Lösenordssynkronisering](active-directory-aadconnectsync-implement-password-synchronization.md)
 ### [Azure AD-tjänstkonto](active-directory-aadconnectsync-howto-azureadaccount.md)
 ### [Installationsguide](active-directory-aadconnectsync-installation-wizard.md)
-### [Ändra hello standardkonfigurationen](active-directory-aadconnectsync-best-practices-changing-default-configuration.md)
+### [Ändra standardkonfigurationen](active-directory-aadconnectsync-best-practices-changing-default-configuration.md)
 ### [Konfigurera filtrering](active-directory-aadconnectsync-configure-filtering.md)
 ### [Scheduler](active-directory-aadconnectsync-feature-scheduler.md)
 ### [Katalogtillägg](active-directory-aadconnectsync-feature-directory-extensions.md)
 
-### [Ändra kontolösenord hello Azure AD Sync](active-directory-aadconnectsync-change-serviceacct-pass.md)
-### [Ändra lösenordet för hello AD DS-konto](active-directory-aadconnectsync-change-addsacct-pass.md)
+### [Ändra lösenordet för Azure AD Sync-tjänstkontot](active-directory-aadconnectsync-change-serviceacct-pass.md)
+### [Ändra AD DS-kontolösenordet](active-directory-aadconnectsync-change-addsacct-pass.md)
 ### [Aktivera AD-papperskorgen](active-directory-aadconnectsync-recycle-bin.md)
 
 ### [Synchronization Service Manager](active-directory-aadconnectsync-service-manager-ui.md)
@@ -80,7 +82,7 @@
 ### [Objektet har inte synkroniserats](active-directory-aadconnectsync-troubleshoot-object-not-syncing.md)
 ### [Lösenordssynkronisering](active-directory-aadconnectsync-troubleshoot-password-synchronization.md)
 ### [LargeObject-fel som orsakats av userCertificate](active-directory-aadconnectsync-largeobjecterror-usercertificate.md)
-### [Hur toorecover från LocalDB 10 GB gränsen](active-directory-aadconnect-recover-from-localdb-10gb-limit.md)
+### [Så här återställer du från LocalDB med en gräns på 10 GB](active-directory-aadconnect-recover-from-localdb-10gb-limit.md)
 
 # Referens
 ## [Kodexempel](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory)
@@ -91,7 +93,7 @@
 ## [Konton och behörigheter](active-directory-aadconnect-accounts-permissions.md)
 
 ## Azure AD Connect Sync
-### [Attribut synkroniserade tooAzure Active Directory](active-directory-aadconnectsync-attributes-synchronized.md)
+### [Attribut som synkroniseras till Azure Active Directory](active-directory-aadconnectsync-attributes-synchronized.md)
 ### [Versionshistorik för anslutningsappen](active-directory-aadconnectsync-connector-version-history.md)
 ### [Referens för funktioner](active-directory-aadconnectsync-functions-reference.md)
 ### [Driftåtgärder och saker att tänka på](active-directory-aadconnectsync-operations.md)
@@ -103,7 +105,7 @@
 
 
 # Relaterat
-## [Övervaka din lokala identitet infrastruktur och synkroniseringstjänster i molnet hello](../connect-health/active-directory-aadconnect-health.md)
+## [Övervaka den lokala identitetsinfrastrukturen och synkroniseringstjänster i molnet](../connect-health/active-directory-aadconnect-health.md)
 ## [Designguide för hybrididentitet](https://azure.microsoft.com/documentation/articles/active-directory-hybrid-identity-design-considerations-overview/)
 
 

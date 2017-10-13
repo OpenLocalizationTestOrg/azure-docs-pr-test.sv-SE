@@ -1,9 +1,9 @@
 ---
-title: "aaaCreate en Internetriktade belastningsutjämnare - Azure CLI klassiska | Microsoft Docs"
-description: "Lär dig hur toocreate ett Internet belastningsutjämnare i den klassiska modellen med hello Azure CLI"
+title: "Skapa en Internetaktiverad belastningsutjämnare – klassiska Azure CLI | Microsoft Docs"
+description: "Lär dig hur du skapar en Internetuppkopplad belastningsutjämnare i den klassiska distributionsmodellen med hjälp av Azure CLI"
 services: load-balancer
 documentationcenter: na
-author: kumudd
+author: KumudD
 manager: timlt
 tags: azure-service-management
 ms.assetid: e433a824-4a8a-44d2-8765-a74f52d4e584
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: kumud
-ms.openlocfilehash: e6070cbc574f74bca0cccb960ff192847d6511bc
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 0813cb0ccf976b7e47420b33ec65714fd8e60ac1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="get-started-creating-an-internet-facing-load-balancer-classic-in-hello-azure-cli"></a>Komma igång med en Internetuppkopplad belastningsutjämnare (klassisk) i hello Azure CLI
+# <a name="get-started-creating-an-internet-facing-load-balancer-classic-in-the-azure-cli"></a>Komma igång med att skapa en Internetuppkopplad belastningsutjämnare (klassisk) i Azure CLI
 
 > [!div class="op_single_selector"]
 > * [Klassisk Azure-portal](../load-balancer/load-balancer-get-started-internet-classic-portal.md)
@@ -31,16 +31,16 @@ ms.lasthandoff: 10/06/2017
 [!INCLUDE [load-balancer-get-started-internet-intro-include.md](../../includes/load-balancer-get-started-internet-intro-include.md)]
 
 > [!IMPORTANT]
-> Innan du börjar arbeta med Azure-resurser, är det viktigt toounderstand att Azure har två distributionsmodeller: Azure Resource Manager och klassisk. Se till att du förstår [distributionsmodeller och verktyg](../azure-classic-rm.md) innan du börjar arbeta med Azure-resurser. Du kan visa hello dokumentationen för olika verktyg genom att klicka på flikarna hello hello överst i den här artikeln. Den här artikeln beskriver hello klassiska distributionsmodellen. Du kan också [Lär dig hur toocreate Internet-riktade belastningsutjämnaren med Azure Resource Manager](load-balancer-get-started-internet-arm-ps.md).
+> Innan du börjar arbeta med Azure-resurser är det viktigt att du vet att Azure för närvarande har två distributionsmodeller: Azure Resource Manager och klassisk. Se till att du förstår [distributionsmodeller och verktyg](../azure-classic-rm.md) innan du börjar arbeta med Azure-resurser. Du kan granska dokumentationen för olika verktyg genom att klicka på flikarna överst i den här artikeln. Den här artikeln beskriver hur du gör om du använder den klassiska distributionsmodellen. Du kan också läsa artikeln om [hur du skapar en Internetuppkopplad belastningsutjämnare med hjälp av Azure Resource Manager](load-balancer-get-started-internet-arm-ps.md).
 
 [!INCLUDE [load-balancer-get-started-internet-scenario-include.md](../../includes/load-balancer-get-started-internet-scenario-include.md)]
 
-## <a name="step-by-step-creating-an-internet-facing-load-balancer-using-cli"></a>Stegvisa anvisningar som beskriver hur du skapar en Internetuppkopplad belastningsutjämnare med CLI
+## <a name="create-an-internet-facing-load-balancer-using-cli"></a>Skapa en Internetuppkopplad belastningsutjämnare med CLI
 
-Den här guiden visar hur toocreate en Internet-belastningsutjämnare baserat på hello scenariot ovan.
+Den här guiden beskriver hur du skapar en Internetuppkopplad belastningsutjämnare baserat på scenariot ovan.
 
-1. Om du aldrig har använt Azure CLI, se [installera och konfigurera hello Azure CLI](../cli-install-nodejs.md) och följer instruktionerna för hello in toohello punkt där du väljer Azure-konto och prenumeration.
-2. Kör hello **azure config mode** kommandot tooswitch tooclassic läge, som visas nedan.
+1. Om du aldrig har använt Azure CLI, se [installera och konfigurera Azure CLI](../cli-install-nodejs.md) och följ instruktionerna upp till den punkt där du väljer Azure-konto och prenumeration.
+2. Kör kommandot **azure config mode** för att växla till klassiskt läge, som du ser nedan.
 
     ```azurecli
     azure config mode asm
@@ -52,34 +52,34 @@ Den här guiden visar hur toocreate en Internet-belastningsutjämnare baserat p�
 
 ## <a name="create-endpoint-and-load-balancer-set"></a>Skapa slutpunkt och belastningsutjämningsuppsättning
 
-hello scenariot förutsätter hello virtuella datorer ”web1” och ”web2” har skapats.
-I den här guiden skapar vi en belastningsutjämningsuppsättning som använder port 80 som offentlig port och port 80 som lokal port. En avsökningsport konfigureras också på port 80 och namngivna hello belastningsutjämnaren ange ”lbset”.
+I det här scenariot förutsätter vi att de virtuella datorerna ”web1” och ”web2” har skapats.
+I den här guiden skapar vi en belastningsutjämningsuppsättning som använder port 80 som offentlig port och port 80 som lokal port. En avsökningsport konfigureras också på port 80 och belastningsutjämningsuppsättningen tilldelas namnet ”lbset”.
 
 ### <a name="step-1"></a>Steg 1
 
-Skapa hello första slutpunkt och belastningsutjämnare som anges med `azure network vm endpoint create` för den virtuella datorn ”web1”.
+Skapa den första slutpunkten och belastningsutjämningsuppsättningen med hjälp av `azure network vm endpoint create` för den virtuella datorn ”web1”.
 
 ```azurecli
 azure vm endpoint create web1 80 --local-port 80 --protocol tcp --probe-port 80 --load-balanced-set-name lbset
 ```
 
-## <a name="step-2"></a>Steg 2
+### <a name="step-2"></a>Steg 2
 
-Lägg till en annan virtuell dator ”web2” toohello belastningen belastningsutjämnaren mängd.
+Lägg till en andra virtuell dator, ”web2”, i belastningsutjämningsuppsättningen.
 
 ```azurecli
 azure vm endpoint create web2 80 --local-port 80 --protocol tcp --probe-port 80 --load-balanced-set-name lbset
 ```
 
-## <a name="step-3"></a>Steg 3
+### <a name="step-3"></a>Steg 3
 
-Kontrollera hello belastningen belastningsutjämnaren konfiguration av `azure vm show` .
+Kontrollera belastningsutjämnarens konfiguration med hjälp av `azure vm show` .
 
 ```azurecli
 azure vm show web1
 ```
 
-hello utdata blir:
+Följande utdata returneras:
 
     data:    DNSName "contoso.cloudapp.net"
     data:    Location "East US"
@@ -125,7 +125,7 @@ hello utdata blir:
 
 ## <a name="create-a-remote-desktop-endpoint-for-a-virtual-machine"></a>Skapa en fjärrskrivbordsslutpunkt för en virtuell dator
 
-Du kan skapa en stationär fjärrslutpunkten tooforward nätverkstrafik från en offentlig port tooa lokal port för en specifik virtuell dator med hjälp av `azure vm endpoint create`.
+Du kan skapa en fjärrskrivbordsslutpunkt för att vidarebefordra nätverkstrafik från en offentlig port till en lokal port för en specifik virtuell dator med hjälp av `azure vm endpoint create`.
 
 ```azurecli
 azure vm endpoint create web1 54580 -k 3389
@@ -133,16 +133,16 @@ azure vm endpoint create web1 54580 -k 3389
 
 ## <a name="remove-virtual-machine-from-load-balancer"></a>Ta bort en virtuell dator från belastningsutjämnaren
 
-Du har toodelete hello slutpunkten som är associerad toohello läsa in belastningsutjämning set från hello virtuell dator. När hello slutpunkt har tagits bort, hör inte toohello belastningsutjämningsuppsättning längre hello virtuell dator.
+Du måste ta bort slutpunkten som är kopplad till belastningsutjämningsuppsättningen från den virtuella datorn. När slutpunkten har tagits bort tillhör inte den virtuella datorn belastningsutjämningsuppsättningen längre.
 
-Med hello-exemplet ovan kan du ta bort hello-slutpunkt skapas för den virtuella datorn ”web1” från belastningsutjämnaren ”lbset” hello kommandot `azure vm endpoint delete`.
+I ovanstående exempel kan du ta bort slutpunkten som skapades för den virtuella datorn ”web1” från belastningsutjämnaren ”lbset” med hjälp av kommandot `azure vm endpoint delete`.
 
 ```azurecli
 azure vm endpoint delete web1 tcp-80-80
 ```
 
 > [!NOTE]
-> Du kan utforska fler alternativ toomanage slutpunkter hello kommandot`azure vm endpoint --help`
+> Du kan utforska fler alternativ för hantering av slutpunkter med hjälp av kommandot `azure vm endpoint --help`
 
 ## <a name="next-steps"></a>Nästa steg
 

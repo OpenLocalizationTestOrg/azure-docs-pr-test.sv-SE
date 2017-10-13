@@ -1,5 +1,5 @@
 ## <a name="scenario"></a>Scenario
-En virtuell dator med en enda nätverkskort är virtuella nätverk som skapats och anslutna tooa. hello VM kräver tre olika *privata* IP-adresser och två *offentliga* IP-adresser. hello IP-adresser tilldelas toohello efter IP-konfigurationer:
+En virtuell dator med en enda nätverkskort skapas och ansluten till ett virtuellt nätverk. Den virtuella datorn kräver tre olika *privata* IP-adresser och två *offentliga* IP-adresser. IP-adresser tilldelas följande IP-konfigurationer:
 
 * **IPConfig-1:** tilldelar en *statiska* privat IP-adress och en *statiska* offentlig IP-adress.
 * **IPConfig-2:** tilldelar en *statiska* privat IP-adress och en *statiska* offentlig IP-adress.
@@ -7,7 +7,7 @@ En virtuell dator med en enda nätverkskort är virtuella nätverk som skapats o
   
     ![Flera IP-adresser](./media/virtual-network-multiple-ip-addresses-scenario/multiple-ipconfigs.png)
 
-hello IP-konfigurationer är associerade toohello NIC när hello NIC skapas och hello NIC bifogade toohello VM när hello VM skapas. hello typer av IP-adresser som används för hello scenariot är för bilden. Du kan tilldela IP-adress och tilldelning av typer som du behöver.
+IP-konfigurationer har associerats med nätverkskortet när NIC skapas och nätverkskortet som är kopplad till den virtuella datorn när den virtuella datorn skapas. Typerna av IP-adresser som används för scenariot är illustration. Du kan tilldela IP-adress och tilldelning av typer som du behöver.
 
 > [!NOTE]
-> Även om hello stegen i den här artikeln tilldelar alla IP-konfigurationer tooa nätverkskort, kan du också tilldela flera IP-konfigurationer tooany NIC på en virtuell dator flera nätverkskort. toolearn hur toocreate en virtuell dator med flera nätverkskort, läsa hello [skapa en virtuell dator med flera nätverkskort](../articles/virtual-network/virtual-network-deploy-multinic-arm-ps.md) artikel.
+> Om stegen i den här artikeln tilldelar alla IP-konfigurationer till ett enda nätverkskort, kan du också tilldela flera IP-konfigurationer till alla NIC på en virtuell dator flera nätverkskort. Information om hur du skapar en virtuell dator med flera nätverkskort, läsa den [skapa en virtuell dator med flera nätverkskort](../articles/virtual-network/virtual-network-deploy-multinic-arm-ps.md) artikel.

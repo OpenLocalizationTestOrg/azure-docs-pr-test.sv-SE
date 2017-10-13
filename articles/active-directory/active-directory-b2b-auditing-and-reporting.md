@@ -1,5 +1,5 @@
 ---
-title: "aaaAuditing och rapportering av en Azure Active Directory B2B-samarbete användare | Microsoft Docs"
+title: "Granskning och rapportering av en Azure Active Directory B2B-samarbete användare | Microsoft Docs"
 description: "Gästen användaregenskaper kan konfigureras i Azure Active Directory B2B-samarbete"
 services: active-directory
 documentationcenter: 
@@ -15,22 +15,22 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 04/12/2017
 ms.author: sasubram
-ms.openlocfilehash: 24ee5f7a2e9585a5edcdd795ec0ffc7124756c11
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: ba782270f3280e52235bc13148d232284b55762a
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="auditing-and-reporting-a-b2b-collaboration-user"></a>Granskning och rapportering en B2B-samarbete användare
-Med gästanvändare har du granskning funktioner användare liknande toowith. Här är ett exempel på hello inbjudan och inlösning historik över bjudits in Sam Oogle:
+Med gästanvändare har du granskningsfunktioner liknar med användare. Här är ett exempel av honom eller henne Sam Oogle inbjudan och inlösning tidigare:
 
 ![granskningslogg](./media/active-directory-b2b-auditing-and-reporting/audit-log.png)
 
-Du kan ta en titt på var och en av dessa händelser tooget hello information. Till exempel känna till hur hello godkännande information.
+Du kan ta en titt på var och en av dessa händelser för att hämta information. Till exempel känna till hur detaljerna för godkännande.
 
 ![Information om datoraktivitet](./media/active-directory-b2b-auditing-and-reporting/activity-details.png)
 
-Du kan också exportera dessa loggar från Azure AD och Använd hello verktyg för din choice tooget anpassade rapporter.
+Du kan också exportera dessa loggar från Azure AD och använda verktyget reporting du väljer för att hämta anpassade rapporter.
 
 ### <a name="next-steps"></a>Nästa steg
 
@@ -38,7 +38,7 @@ Läs andra artiklar om Azure AD B2B-samarbete:
 
 * [Vad är Azure AD B2B-samarbete?](active-directory-b2b-what-is-azure-ad-b2b.md)
 * [Egenskaper för användare av B2B-samarbete](active-directory-b2b-user-properties.md)
-* [Lägga till en B2B-samarbete tooa användarroll](active-directory-b2b-add-guest-to-role.md)
+* [Lägger till en B2B-samarbete användare till en roll](active-directory-b2b-add-guest-to-role.md)
 * [Delegera B2bB samarbete inbjudningar](active-directory-b2b-delegate-invitations.md)
 * [Dynamiska grupper och B2B-samarbete](active-directory-b2b-dynamic-groups.md)
 * [B2B-samarbete kod och PowerShell-exempel](active-directory-b2b-code-samples.md)

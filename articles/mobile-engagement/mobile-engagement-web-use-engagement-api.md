@@ -1,6 +1,6 @@
 ---
-title: 'aaaAzure API: er Mobile Engagement Web SDK | Microsoft Docs'
-description: "Hej senaste uppdateringarna och procedurer för hello Web SDK för Azure Mobile Engagement"
+title: 'Azure Mobile Engagement Web API: er SDK | Microsoft Docs'
+description: "De senaste uppdateringarna och procedurer för webbtjänst-SDK för Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
@@ -14,48 +14,48 @@ ms.devlang: js
 ms.topic: article
 ms.date: 06/07/2016
 ms.author: piyushjo
-ms.openlocfilehash: ec1261d6ad573b8c3ad6d5f616ab7bbe560d6fe2
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 54c22ce6a03e382b1bbde102bccc97deec249b30
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="use-hello-azure-mobile-engagement-api-in-a-web-application"></a>Använd hello Azure Mobile Engagement API i ett webbprogram
-Det här dokumentet är ett tillägg toohello dokument som anger hur för[Mobile Engagement ska integreras i ett webbprogram](mobile-engagement-web-integrate-engagement.md). Det ger detaljerad information om hur toouse hello Azure Mobile Engagement API tooreport programstatistik.
+# <a name="use-the-azure-mobile-engagement-api-in-a-web-application"></a>Använd Azure Mobile Engagement-API: et i ett webbprogram
+Det här dokumentet är ett tillägg till det dokument som får du veta hur till [Mobile Engagement ska integreras i ett webbprogram](mobile-engagement-web-integrate-engagement.md). Det ger detaljerad information om hur du använder Azure Mobile Engagement-API: et för att rapportera programmet-statistik.
 
-hello Mobile Engagement API tillhandahålls av hello `engagement.agent` objekt. hello Azure Mobile Engagement Web SDK alias är standard `engagement`. Du kan ändra detta alias från hello SDK-konfigurationen.
+Mobile Engagement-API som tillhandahålls av den `engagement.agent` objekt. Standard Azure Mobile Engagement Web SDK alias är `engagement`. Du kan ändra detta alias från SDK-konfigurationen.
 
 ## <a name="mobile-engagement-concepts"></a>Koncept i Mobile Engagement
-hello följande delar förfina vanliga [koncept i Mobile Engagement](mobile-engagement-concepts.md) för hello webbplattform.
+Följande delar förfina vanliga [koncept i Mobile Engagement](mobile-engagement-concepts.md) för webbplattformen.
 
 ### <a name="session-and-activity"></a>`Session` och `Activity`
-Om hello användaren är inaktiv under mer än ett par sekunder mellan två aktiviteter, är hello användarens sekvensen av aktiviteter uppdelad i två olika sessioner. Dessa några sekunder kallas hello-sessions Time-out.
+Om användaren är inaktiv i mer än ett par sekunder mellan två aktiviteter, är användarens sekvensen av aktiviteter uppdelad i två olika sessioner. Dessa några sekunder kallas tidsgränsen för sessionen.
 
-Om ditt webbprogram inte deklarera hello slutet av användaraktiviteter ensamt (genom att anropa hello `engagement.agent.endActivity` funktionen), hello Mobile Engagement server upphör automatiskt hello användarsession inom tre minuter efter hello appen på sidan är stängd. Detta kallas hello server sessions Time-out.
+Om ditt webbprogram inte deklarera slutet av användaraktiviteter ensamt (genom att anropa den `engagement.agent.endActivity` funktionen), Mobile Engagement-servern automatiskt upphör att gälla inom tre minuter efter appen på sidan stängs sessionen. Detta kallas för sessionstidsgränsen server.
 
 ### `Crash`
-Automatisk rapporter om undantagsfel utan felhantering JavaScript skapas inte som standard. Dock kan du rapportera krascher manuellt med hjälp av hello `sendCrash` fungera (se avsnittet hello reporting krascher).
+Automatisk rapporter om undantagsfel utan felhantering JavaScript skapas inte som standard. Dock kan du rapportera krascher manuellt med hjälp av den `sendCrash` fungera (se avsnittet reporting krascher).
 
 ## <a name="reporting-activities"></a>Rapportering
-Rapportering av användaraktivitet inkluderar när en användare startar en ny aktivitet och när hello användaren slutar hello aktuella aktiviteten.
+Rapportering av användaraktivitet inkluderar när en användare startar en ny aktivitet och när användaren slutar den aktuella aktiviteten.
 
 ### <a name="user-starts-a-new-activity"></a>Användaren startar en ny aktivitet
     engagement.agent.startActivity("MyUserActivity");
 
-Du behöver toocall `startActivity()` varje gång användaraktivitet ändras. hello första anropet toothis funktionen startar en ny session.
+Du måste anropa `startActivity()` varje gång användaraktivitet ändras. Det första anropet till funktionen startar en ny session.
 
-### <a name="user-ends-hello-current-activity"></a>Användaren slutar hello aktuell aktivitet
+### <a name="user-ends-the-current-activity"></a>Användaren slutar den aktuella aktiviteten
     engagement.agent.endActivity();
 
-Du behöver toocall `endActivity()` minst en gång när hello användaren är klar deras senaste aktivitet. Det informerar hello Mobile Engagement Web SDK hello användare är för närvarande inaktiv, och att hello användarsession måste toobe stängs när hello sessionstidsgränsen upphör att gälla. Om du anropar `startActivity()` innan hello sessionstidsgränsen upphör att gälla hello sessionen är helt enkelt återupptas.
+Du måste anropa `endActivity()` minst en gång när användaren är klar deras senaste aktivitet. Det informerar Mobile Engagement Web SDK att användaren är för närvarande inaktiv och att användarsessionen måste stängas när tidsgränsen för sessionen upphör att gälla. Om du anropar `startActivity()` innan tidsgränsen för sessionen upphör sessionen bara återupptas.
 
-Eftersom det finns ingen tillförlitlig anrop för när hello navigator fönstret stängs, är det ofta svårt eller omöjligt toocatch hello slutet av användaraktiviteter inuti en webbmiljö. Som är varför hello Mobile Engagement server upphör automatiskt hello användarsession inom tre minuter efter hello appen på sidan är stängd.
+Eftersom det finns ingen tillförlitlig anrop för när navigator fönstret stängs, är det ofta svårt eller omöjligt att fånga slutet av användaraktiviteter inuti en webbmiljö. Det är därför Mobile Engagement-servern automatiskt upphör att gälla inom tre minuter efter appen på sidan stängs sessionen.
 
 ## <a name="reporting-events"></a>Rapporteringshändelser
 Rapportering av händelser som täcker Sessionshändelser och fristående händelser.
 
 ### <a name="session-events"></a>Sessionshändelser
-Sessionshändelser är oftast används tooreport hello åtgärder som utförs av en användare under hello användarens session.
+Sessionshändelser används normalt att rapportera åtgärder som utförs av en användare under användarens session.
 
 **Exempel utan extra data:**
 
@@ -72,7 +72,7 @@ Sessionshändelser är oftast används tooreport hello åtgärder som utförs av
     }
 
 ### <a name="standalone-events"></a>Fristående händelser
-Till skillnad från Sessionshändelser, kan det ske fristående händelser utanför hello kontexten för en session.
+Till skillnad från Sessionshändelser, kan det ske fristående händelser utanför en session.
 
 För att använda ``engagement.agent.sendEvent`` i stället för ``engagement.agent.sendSessionEvent``.
 
@@ -80,7 +80,7 @@ För att använda ``engagement.agent.sendEvent`` i stället för ``engagement.ag
 Rapportering om felen omfattar session fel och fristående fel.
 
 ### <a name="session-errors"></a>Sessionen fel
-Sessionen felen är oftast används tooreport hello fel som kan påverkar hello användaren under hello användarsession.
+Sessionen fel används oftast för att rapportera fel som kan påverkar användaren under användarens session.
 
 **Exempel utan extra data:**
 
@@ -103,7 +103,7 @@ Sessionen felen är oftast används tooreport hello fel som kan påverkar hello 
     }
 
 ### <a name="standalone-errors"></a>Fristående fel
-Till skillnad från sessionen fel inträffa fristående fel utanför hello kontexten för en session.
+Till skillnad från sessionen fel inträffa fristående fel utanför en session.
 
 För att använda `engagement.agent.sendError` i stället för `engagement.agent.sendSessionError`.
 
@@ -112,7 +112,7 @@ Rapportering av jobb omfattar rapportera fel och händelser som inträffar när 
 
 **Exempel:**
 
-Om du vill toomonitor en begäran om AJAX använder hello följande:
+Om du vill övervaka en AJAX-begäran, använder du följande:
 
     // [...]
     xhr.onreadystatechange = function() {
@@ -126,11 +126,11 @@ Om du vill toomonitor en begäran om AJAX använder hello följande:
     // [...]
 
 ### <a name="reporting-errors-during-a-job"></a>Rapporterat fel under ett jobb
-Fel kan vara relaterade tooa köra jobb i stället för toohello aktuella användarsessionen.
+Fel kan vara relaterad till ett jobb som körs i stället för att den aktuella användarsessionen.
 
 **Exempel:**
 
-Om du vill tooreport ett fel om en begäran om AJAX misslyckas:
+Om du vill rapportera ett fel om en begäran om AJAX misslyckas:
 
     // [...]
     xhr.onreadystatechange = function() {
@@ -147,22 +147,22 @@ Om du vill tooreport ett fel om en begäran om AJAX misslyckas:
     // [...]
 
 ### <a name="reporting-events-during-a-job"></a>Rapporteringshändelser under ett jobb
-Händelser kan vara relaterade tooa köra jobb i stället för toohello aktuella användarsessionen, tack vare toohello `engagement.agent.sendJobEvent` funktion.
+Händelser kan vara relaterad till ett jobb som körs i stället för att den aktuella användarsessionen tack till den `engagement.agent.sendJobEvent` funktion.
 
 Den här funktionen fungerar på samma sätt som `engagement.agent.sendJobError`.
 
 ### <a name="reporting-crashes"></a>Rapportering krascher
-Använd hello `sendCrash` funktionen tooreport kraschar manuellt.
+Använd den `sendCrash` funktionen rapporten kraschar manuellt.
 
-Hej `crashid` argumentet är en sträng som identifierar hello typ av krascher.
-Hej `crash` argumentet är vanligtvis hello stackspårning hello havererade som en sträng.
+Den `crashid` argumentet är en sträng som identifierar typ av krascher.
+Den `crash` argumentet är vanligtvis stackspårning av krascher som en sträng.
 
     engagement.agent.sendCrash(crashid, crash);
 
 ## <a name="extra-parameters"></a>Extra parametrar
-Du kan koppla godtyckliga data tooan händelse, fel, aktivitet eller jobb.
+Du kan koppla godtyckliga data till en händelse, fel, aktiviteter eller jobb.
 
-hello data kan vara ett JSON-objekt (men inte en matris eller primitiv typ).
+Data kan vara ett JSON-objekt (men inte en matris eller primitiv typ).
 
 **Exempel:**
 
@@ -170,48 +170,48 @@ hello data kan vara ett JSON-objekt (men inte en matris eller primitiv typ).
     engagement.agent.sendEvent("video_clicked", extras);
 
 ### <a name="limits"></a>Begränsningar
-Gränser som gäller tooextra parametrar har hello områden i reguljära uttryck för nycklar, värdetyper och storlek.
+Gränser som gäller för extra parametrar har områden i reguljära uttryck för nycklar, värdetyper och storlek.
 
 #### <a name="keys"></a>Nycklar
-Varje nyckel i hello-objekt måste matcha hello följande reguljära uttryck:
+Varje nyckel i objektet måste matcha följande reguljära uttryck:
 
     ^[a-zA-Z][a-zA-Z_0-9]*
 
 Detta innebär att nycklar måste börja med minst en bokstav följt av bokstäver, siffror eller understreck (\_).
 
 #### <a name="values"></a>Värden
-Värden är begränsad toostring, antal och typer av boolesk.
+Värden är begränsade till sträng, siffra och booleskt typer.
 
 #### <a name="size"></a>Storlek
-Tillägg är begränsad too1, 024 tecken per anrop (efter hello Mobile Engagement Web SDK kodar den i JSON).
+Tillägg är begränsade till 1 024 tecken per anrop (efter Mobile Engagement Web SDK kodar den i JSON).
 
 ## <a name="reporting-application-information"></a>Rapportering programinformation
-Du kan manuellt rapportera spåra information (eller programspecifik information) med hjälp av hello `sendAppInfo()` funktion.
+Du kan manuellt rapportera spåra information (eller programspecifik information) med hjälp av den `sendAppInfo()` funktion.
 
-Observera att denna information kan skickas inkrementellt. Endast hello senaste värdet för en viss nyckel sparas för en specifik enhet.
+Observera att denna information kan skickas inkrementellt. Det senaste värdet för en viss nyckel sparas för en specifik enhet.
 
-Du kan använda en JSON-objekt tooabstract programinformation som händelsen tillägg. Observera att matriser eller underordnade objekt behandlas som flat strängar (med JSON-serialisering).
+Du kan använda en JSON-objekt för att abstrahera information om programmet som händelsen tillägg. Observera att matriser eller underordnade objekt behandlas som flat strängar (med JSON-serialisering).
 
 **Exempel:**
 
-Här följer ett exempel på koden för att skicka hello användarens kön och födelsedatum:
+Här följer ett exempel på koden för att skicka användarens kön och födelsedatum:
 
     var appInfos = {"birthdate":"1983-12-07","gender":"female"};
     engagement.agent.sendAppInfo(appInfos);
 
 ### <a name="limits"></a>Begränsningar
-Gränser som gäller tooapplication information finns i hello områden i reguljära uttryck för nycklar och storlek.
+Gränserna som gäller för information om programmet är i områden som reguljära uttryck för nycklar och storlek.
 
 #### <a name="keys"></a>Nycklar
-Varje nyckel i hello-objekt måste matcha hello följande reguljära uttryck:
+Varje nyckel i objektet måste matcha följande reguljära uttryck:
 
     ^[a-zA-Z][a-zA-Z_0-9]*
 
 Detta innebär att nycklar måste börja med minst en bokstav följt av bokstäver, siffror eller understreck (\_).
 
 #### <a name="size"></a>Storlek
-Information om programmet är begränsad too1, 024 tecken per anrop (efter hello Mobile Engagement Web SDK kodar den i JSON).
+Information om programmet är begränsat till 1 024 tecken per anrop (efter Mobile Engagement Web SDK kodar den i JSON).
 
-I föregående exempel hello, skickas hello JSON toohello servern är 44 tecken:
+I föregående exempel är JSON som skickas till servern 44 tecken:
 
     {"birthdate":"1983-12-07","gender":"female"}

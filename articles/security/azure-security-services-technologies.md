@@ -1,6 +1,6 @@
 ---
-title: "aaaAzure tjänster och teknik | Microsoft Docs"
-description: "hello får en granskad lista över Azure-säkerhet tjänster och teknik."
+title: "Säkerheten i Azure-tjänster och teknik | Microsoft Docs"
+description: "Artikeln innehåller en granskad lista över Azure-säkerhet tjänster och teknik."
 services: security
 documentationcenter: na
 author: TomShinder
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2016
 ms.author: yurid
-ms.openlocfilehash: 100b7bba46dce5f989bde2f6d930f298beb901a1
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 0bea62a43cf6cac9132fe64f2d6c54e52def4c55
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="azure-security-services-and-technologies"></a>Säkerheten i Azure-tjänster och teknik
-I vår diskussioner med aktuella och framtida Azure-kunder uppmanas vi ofta ”har du en lista över alla hello säkerhet relaterade tjänster och teknik som Azure har toooffer”?
+I vår diskussioner med aktuella och framtida Azure-kunder uppmanas vi ofta ”har du en lista över alla relaterade tjänster och teknik som Azure har att erbjuda”?
 
-Vi förstår att när du utvärderar cloud service provider tekniska alternativen är användbara toohave sådan lista tillgängliga som du kan använda toodig ned djupare när hello tid är rätt för dig.
+Vi förstår att när du utvärderar cloud service provider tekniska alternativen är det bra att ha en sådan lista kan användas för att sätta igång ned djupare när tiden är rätt för dig.
 
-hello följer vårt första arbete med att tillhandahålla en lista. Över tiden, den här listan ändrar och växer, precis som Azure. hello listan kategoriseras och hello lista över kategorier kommer också att växa med tiden. Se till att toocheck den här sidan på ett regelbundet toostay uppdaterad på vår säkerhetsrelaterade tjänster och teknik.
+Följande är vårt första arbete med att tillhandahålla en lista. Över tiden, den här listan ändrar och växer, precis som Azure. Kategoriseras i listan och listan över kategorier kommer också att växa med tiden. Se till att markera den här sidan med jämna mellanrum att hålla dig uppdaterad på vår säkerhetsrelaterade tjänster och teknik.
 
 ## <a name="azure-security---general"></a>Azure Security - Allmänt
 * [Azure Security Center](https://azure.microsoft.com/documentation/services/security-center/)

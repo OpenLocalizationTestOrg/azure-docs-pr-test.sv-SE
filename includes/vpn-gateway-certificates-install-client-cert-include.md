@@ -1,7 +1,7 @@
-Om du vill toocreate en P2S-anslutning från en klientdator än hello du används klientcertifikat för toogenerate hello måste du tooinstall ett klientcertifikat. När du installerar ett klientcertifikat, måste hello lösenordet som skapades när hello klientcertifikat exporterades.
+Om du vill skapa en P2S-anslutning från en annan klientdator än den som du använde för att generera klientcertifikat, måste du installera ett klientcertifikat. När du installerar ett klientcertifikat behöver du lösenordet som skapades när klientcertifikatet exporterades.
 
-1. Leta upp och kopiera hello *.pfx* filen toohello klientdatorn. Dubbelklicka på hello klientdatorn hello *.pfx* filen tooinstall. Lämna hello **lagringsplatsen** som **aktuell användare**, och klicka sedan på **nästa**.
-2. På hello **filen** tooimport inte gör några ändringar. Klicka på **Nästa**.
-3. På hello **skydd av privat nyckel** sidan, ange hello lösenordet för hello certifikatet, eller kontrollera att hello säkerhetsobjekt är korrekt och klicka på **nästa**.
-4. På hello **certifikatarkiv** , lämna hello standardplatsen, och klickar sedan på **nästa**.
-5. Klicka på **Slutför**. På hello **Säkerhetsvarning** hello certifikatinstallation klickar du på **Ja**. Du kan känna sig fria att att klicka på ”Ja” eftersom du skapade hello certifikatet. hello certifikat nu importerats har.
+1. Leta upp och kopiera *.pfx*-filen till klientdatorn. Installera *.pfx*-filen genom att dubbelklicka på den på klientdatorn. Lämna **Lagringsplats** som **Aktuell användare** och klicka sedan på **Nästa**.
+2. Gör inga ändringar på sidan för den **Fil** som ska importeras. Klicka på **Nästa**.
+3. På den **skydd av privat nyckel** sidan, ange ett lösenord för certifikatet, eller kontrollera att säkerhetsobjektet är korrekt och klicka på **nästa**.
+4. På sidan **Certifikatarkiv** låter du standardplatsen stå kvar och klickar sedan på **Nästa**.
+5. Klicka på **Slutför**. På sidan **Säkerhetsvarning** för certifikatinstallationen klickar du på **Ja**. Eftersom du har genererat certifikatet kan du klicka på ”Ja” utan att oroa dig. Certifikatet har nu importerats.

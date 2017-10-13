@@ -1,6 +1,6 @@
 ---
-title: "aaa ”fråga ett index (portal - Azure Search) | Microsoft Docs ”"
-description: "Utfärda en sökfråga i hello Azure Portal Sök Explorer."
+title: "Köra frågor mot ett index (Portal – Azure Search) | Microsoft Docs"
+description: "Skicka en sökfråga i Sökutforskaren på Azure Portal."
 services: search
 manager: jhubbard
 documentationcenter: 
@@ -13,13 +13,13 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 07/10/2017
 ms.author: ashmaka
-ms.openlocfilehash: 56bab3ef8a66eeb053fbbeb6d322acb6824fb34b
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: dd68d8ed073bf7b8666ddef35a2f1f84df690b4b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="query-an-azure-search-index-using-search-explorer-in-hello-azure-portal"></a>Fråga en Azure Search-index med Sök Explorer i hello Azure-portalen
+# <a name="query-an-azure-search-index-using-search-explorer-in-the-azure-portal"></a>Köra frågor mot ett Azure Search-index med Sökutforskaren i Azure Portal
 > [!div class="op_single_selector"]
 > * [Översikt](search-query-overview.md)
 > * [Portalen](search-explorer.md)
@@ -28,41 +28,41 @@ ms.lasthandoff: 10/06/2017
 > 
 > 
 
-Den här artikeln visar hur tooquery ett Azure Search index med **Sök Explorer** i hello Azure-portalen. Du kan använda Sök Explorer toosubmit enkla eller fullständig Lucene frågan strängar tooany befintligt index i din tjänst.
+Den här artikeln beskriver hur du kör frågor mot ett Azure Search-index med hjälp av **Sökutforskaren** i Azure Portal. Med Sökutforskaren kan du skicka enkla frågor eller fullständiga Lucene-frågesträngar till befintliga index i din tjänst.
 
-## <a name="open-hello-service-dashboard"></a>Öppna hello service instrumentpanelen
-1. Klicka på **alla resurser** i hello hopp stapel på vänster sida av hello hello [Azure-portalen](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices).
+## <a name="open-the-service-dashboard"></a>Öppna instrumentpanelen
+1. Klicka på **Alla resurser** i snabbåtkomstfältet på vänster sida av [Azure Portal](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices).
 2. Välj din Azure Search-tjänst.
 
 ## <a name="select-an-index"></a>Välj ett index
 
-Välj hello index som toosearch från hello **index** panelen.
+Välj det index som du vill söka i från panelen **Index**.
 
    ![](./media/search-explorer/pick-index.png)
 
 ## <a name="open-search-explorer"></a>Öppna Sökutforskaren
 
-Klicka på hello Sök Explorer panelen tooslide öppna hello sökfältet och resultatfönstret.
+Klicka på panelen Sökutforskaren för att öppna sökfältet och resultatfönstret.
 
    ![](./media/search-explorer/search-explorer-tile.png)
 
 ## <a name="start-searching"></a>Starta sökningen
 
-När du använder hello Sök Explorer kan du ange [fråga parametrar](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) tooformulate hello frågan.
+När du använder Sökutforskaren kan du formulera frågan genom att ange valfria [frågeparametrar](https://docs.microsoft.com/rest/api/searchservice/Search-Documents).
 
 1. Skriv en fråga i **Frågesträng** och tryck sedan på **Sök**. 
 
-   hello frågesträngen är automatiskt parsas till hello rätt begäran URL toosubmit en HTTP-begäran mot hello Azure Search REST API.   
+   Frågesträngen parsas automatiskt till rätt fråge-URL för att sedan skicka en HTTP-begäran mot REST-API:et för Azure Search.   
    
-   Du kan använda någon giltig enkla eller fullständig Lucene syntax toocreate hello fråga. Hej `*` tecken är likvärdiga tooan tom eller ospecificerad sökning som returnerar alla dokument i bokstavsordning.
+   Du kan skapa begäran med valfri enkel frågesyntax eller en fullständig Lucene-frågesyntax. Tecknet `*` motsvarar en tom eller ospecificerad sökning som returnerar alla dokument (inte i någon särskild ordning).
 
-2. I **resultat**, frågans resultat visas i raw JSON identiska toohello nyttolast som returneras i en HTTP-svarstexten vid utfärdande av begäranden via programmering.
+2. I **Resultat** visas frågeresultat i oformaterad JSON. Dessa data är identiska med nyttolasten som returneras i en HTTP-svarstext när begäranden görs via programmering.
 
    ![](./media/search-explorer/search-bar.png)
 
 ## <a name="next-steps"></a>Nästa steg
 
-hello följande resurser ger information om ytterligare fråga syntax och exempel.
+Följande resurser innehåller ytterligare information om och exempel på frågesyntax.
 
  + [Enkel frågesyntax](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) 
  + [Lucene-frågesyntax](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) 

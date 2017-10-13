@@ -1,5 +1,5 @@
 ---
-title: "aaaPlan nätverksfunktioner för VMware tooAzure replikeringen med Site Recovery | Microsoft Docs"
+title: "Planera nätverk för VMware Azure replikeringen med Site Recovery | Microsoft Docs"
 description: "Den här artikeln beskrivs planering av krävs vid replikering av virtuella datorer i Azure med Azure Site Recovery"
 services: site-recovery
 documentationcenter: 
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 08/01/2017
 ms.author: sujayt
-ms.openlocfilehash: e4036351ca707bd4966cf2a855d4a162f88153e8
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 7b37e853f6b97ba313111f9201f877846a28fae9
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="step-3-plan-networking-for-azure-vm-replication"></a>Steg 3: Planera nätverk för Virtuella Azure-replikering
 
-När du har kontrollerat hello [kraven för distribution av](azure-to-azure-walkthrough-prerequisites.md), läsa den här artikeln toounderstand hello-nätverk att tänka på när replikera och återställa virtuella Azure-datorer (VM) från en Azure-region tooanother med hello Azure Site Recovery-tjänsten. 
+När du har bekräftat att den [kraven för distribution av](azure-to-azure-walkthrough-prerequisites.md), den här artikeln för att förstå nätverk överväganden när replikering och återställa virtuella Azure-datorer (VM) från en Azure-region till en annan, med hjälp av Azure Site Recovery-tjänsten. 
 
-- När du är klar hello artikeln bör du ha en Rensa förståelse av hur tooset in utgående åtkomst för virtuella Azure-datorer du vill tooreplicate och hur tooconnect från din lokala plats toothose virtuella datorer.
-- Skicka kommentarer längst ned hello i den här artikeln eller ställa frågor i hello [Azure Recovery Services-forumet](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
+- När du är klar artikeln bör du ha en förståelse för hur du ställer in utgående åtkomst för Azure virtuella datorer du vill replikera och hur du ansluter från den lokala platsen till dessa virtuella datorer.
+- Skriv dina kommentarer eller frågor längst ned i den här artikeln eller i [Azure Recovery Services-forumet](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
 
 >[!NOTE]
 > Azure VM-replikeringen med Site Recovery är för närvarande under förhandsgranskning.
@@ -34,48 +34,48 @@ När du har kontrollerat hello [kraven för distribution av](azure-to-azure-walk
 
 ## <a name="network-overview"></a>Översikt över nätverk
 
-Vanligtvis ditt virtuella Azure-datorer finns i ett Azure virtual network/undernät och det finns en anslutning från din lokala plats tooAzure med hjälp av Azure ExpressRoute eller en VPN-anslutning.
+Vanligtvis ditt virtuella Azure-datorer finns i ett Azure virtual network/undernät och det finns en anslutning från den lokala platsen till Azure med hjälp av Azure ExpressRoute eller en VPN-anslutning.
 
-Nätverk skyddas vanligtvis använder brandväggar och/eller nätverkssäkerhetsgrupper (NSG: er). Brandväggar kan använda URL-baserade på IP-baserade listor toocontrol nätverksanslutning. NSG: er använda IP-intervallet-baserade regler. 
-
-
-För Site Recovery toowork förväntades, behöver du toomake några ändringar i utgående nätverksanslutningen, från virtuella datorer som du vill tooreplicate. Site Recovery stöder inte användning av en nätverksanslutning för autentisering proxy toocontrol. Om du har en autentiseringsproxy går inte att aktivera replikering. 
+Nätverk skyddas vanligtvis använder brandväggar och/eller nätverkssäkerhetsgrupper (NSG: er). Brandväggar kan använda URL-baserade på IP-baserade listor, att nätverksanslutningen för kontrollen. NSG: er använda IP-intervallet-baserade regler. 
 
 
-hello visar följande diagram en normal miljö för ett program som körs på virtuella Azure-datorer.
+Site Recovery fungerar som förväntat, måste du göra några ändringar i utgående nätverksanslutningen, från virtuella datorer som du vill replikera. Site Recovery stöder inte användning av en autentiseringsproxy till kontrollen nätverksanslutning. Om du har en autentiseringsproxy går inte att aktivera replikering. 
+
+
+Följande diagram visar en normal miljö för ett program som körs på virtuella Azure-datorer.
 
 ![kund-miljö](./media/azure-to-azure-walkthrough-network/source-environment.png)
 
 **Azure VM-miljön**
 
-Du kan också ha en anslutning tooAzure konfigurera från din lokala plats med hjälp av Azure ExpressRoute eller en VPN-anslutning. 
+Du kan också ha en anslutning till Azure från din lokala plats med hjälp av Azure ExpressRoute eller en VPN-anslutning. 
 
 ![kund-miljö](./media/azure-to-azure-walkthrough-network/source-environment-expressroute.png)
 
-**Lokal anslutning tooAzure**
+**Lokal anslutning till Azure**
 
 
 
 ## <a name="outbound-connectivity-for-urls"></a>Utgående anslutning för URL: er
 
-Om du använder en utgående anslutning för URL-baserade brandväggen proxy toocontrol, kontrollera att du tillåter dessa URL: er som används av Site Recovery
+Om du använder en URL-baserade brandväggen proxy för att styra utgående anslutning, kontrollerar du att dessa URL: er som används av Site Recovery
 
 **URL: EN** | **Detaljer**  
 --- | ---
-*.blob.core.windows.net | Kan data toobe skrivs från hello VM, toohello cache storage-konto i hello källa region.
-login.microsoftonline.com | Innehåller autentiseringen och auktoriseringen av tooSite Recovery-webbadresser.
-*.hypervrecoverymanager.windowsazure.com | Tillåter kommunikation med hello Site Recovery-tjänsten från hello VM.
-*. servicebus.windows.net | Krävs för att hello Site Recovery övervakning och diagnostik data kan skrivas från hello VM.
+*.blob.core.windows.net | Gör att data skrivs från den virtuella datorn till cache lagringskonto i regionen källa.
+login.microsoftonline.com | Tillhandahåller autentiseringen och auktoriseringen till Site Recovery-webbadresser.
+*.hypervrecoverymanager.windowsazure.com | Tillåter kommunikation med Site Recovery-tjänsten från den virtuella datorn.
+*. servicebus.windows.net | Krävs för att Site Recovery övervakning och diagnostik data kan skrivas från den virtuella datorn.
 
 ## <a name="outbound-connectivity-for-ip-address-ranges"></a>Utgående anslutning för IP-adressintervall
 
-- Du kan automatiskt skapa regler för hello krävs på hello NSG genom att hämta och kör [skriptet](https://gallery.technet.microsoft.com/Azure-Recovery-script-to-0c950702).
-- Vi rekommenderar att du skapar hello krävs NSG-regler på ett test NSG och kontrollera att det inte finns några problem innan du skapar hello regler på en NSG för produktion.
-- toocreate hello krävs antalet NSG-regler, se till att prenumerationen är godkända. Kontakta supporten tooincrease hello NSG regeln gräns i din prenumeration.
-Om du använder någon IP-baserade brandväggen proxy- eller NSG-regler toocontrol utgående anslutning måste hello följande IP-adressintervall toobe godkända, beroende på hello käll- och målplatserna hello virtuella datorer:
+- Du kan automatiskt skapa regler som krävs på NSG: N genom att hämta och kör [skriptet](https://gallery.technet.microsoft.com/Azure-Recovery-script-to-0c950702).
+- Vi rekommenderar att du skapar nödvändiga NSG-regler på ett test NSG och kontrollera att det inte finns några problem innan du skapar regler på en NSG för produktion.
+- Se till att prenumerationen är godkända för att skapa antalet NSG-regler som krävs. Kontakta supporten om du vill öka antalet NSG regeln i din prenumeration.
+Om du använder någon IP-baserade brandväggen proxy eller NSG-regler för att styra utgående anslutning måste följande IP-intervall vara godkända, beroende på käll- och målplatserna för virtuella datorer:
 
-    - Alla IP-adressintervall som motsvarar toohello källplats. Hämta hello [intervall](https://www.microsoft.com/download/confirmation.aspx?id=41653).) Vitlistning krävs, så att data kan skrivas toohello cache storage-konto från hello VM.
-    - Alla IP-adressintervall som motsvarar tooOffice 365 [autentisering och identitet IP V4-slutpunkter](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity). Om nya IP-adresser läggs tooOffice 365 IP-adressintervall, måste toocreate ny NSG-regler.
+    - Alla IP-adressintervall som motsvarar källplatsen. Hämta den [intervall](https://www.microsoft.com/download/confirmation.aspx?id=41653).) Vitlistning krävs, så att data kan skrivas till cache storage-konto från den virtuella datorn.
+    - Alla IP-adressintervall som motsvarar Office 365 [autentisering och identitet IP V4-slutpunkter](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity). Om nya IP-adresser läggs till Office 365 IP-adressintervall, måste du skapa nya NSG-regler.
 -     Site Recovery-tjänsten endpoint IP-adresser ([tillgängliga i en XML-fil](https://aka.ms/site-recovery-public-ips)), som beror på din målplats: 
 
    **Målplats** | **Site Recovery-tjänsten IP-adresser** |  **Site Recovery övervakning IP**
@@ -106,18 +106,18 @@ Om du använder någon IP-baserade brandväggen proxy- eller NSG-regler toocontr
 
 ## <a name="example-nsg-configuration"></a>NSG exempelkonfiguration
 
-Det här avsnittet visar hur tooconfigure NSG regler så att replikeringar fungerar för en virtuell dator. Om du använder NSG-regler toocontrol utgående anslutning kan du använda ”Tillåt HTTPS utgående” regler för alla hello som krävs för IP-adressintervall.
+Det här avsnittet visar hur du konfigurerar NSG-regler så att replikeringar fungerar för en virtuell dator. Om du använder NSG-regler för att styra utgående anslutning kan du använda ”Tillåt utgående HTTPS” regler för alla IP-adressintervall som krävs.
 
-I det här exemplet är hello VM källplats ”östra USA”. målplatsen för hello replikering är centrala USA.
+I det här exemplet är VM-källplats ”östra USA”. Målplatsen för replikering är centrala USA.
 
 
 ### <a name="example"></a>Exempel
 
 #### <a name="east-us"></a>Östra USA
 
-1. Skapa regler som motsvarar för[östra USA IP-intervall](https://www.microsoft.com/download/confirmation.aspx?id=41653). Detta krävs så att data kan skrivas toohello cache storage-konto från hello VM.
-2. Skapa regler för alla IP-adressintervall som motsvarar tooOffice 365 [autentisering och identitet IP V4-slutpunkter](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity).
-3. Skapa regler som motsvarar toohello målplatsen:
+1. Skapa regler som motsvarar [östra USA IP-intervall](https://www.microsoft.com/download/confirmation.aspx?id=41653). Detta krävs så att data kan skrivas till cache storage-konto från den virtuella datorn.
+2. Skapa regler för alla IP-adressintervall som motsvarar Office 365 [autentisering och identitet IP V4-slutpunkter](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity).
+3. Skapa regler som motsvarar målplatsen:
 
    **Plats** | **Site Recovery-tjänsten IP-adresser** |  **Site Recovery övervakning IP**
     --- | --- | ---
@@ -125,11 +125,11 @@ I det här exemplet är hello VM källplats ”östra USA”. målplatsen för h
 
 #### <a name="central-us"></a>Centrala USA
 
-Reglerna krävs så att replikering kan aktiveras från hello region toohello källa målregionen, efter växling vid fel.
+Reglerna krävs så att replikering från målregionen som för käll-regionen efter växling vid fel.
 
-1. Skapa regler som motsvarar för[centrala USA IP-intervall](https://www.microsoft.com/download/confirmation.aspx?id=41653).
-2. Skapa regler för alla IP-adressintervall som motsvarar tooOffice 365 [autentisering och identitet IP V4-slutpunkter](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity).
-3. Skapa regler som motsvarar toohello källplats:
+1. Skapa regler som motsvarar [centrala USA IP-intervall](https://www.microsoft.com/download/confirmation.aspx?id=41653).
+2. Skapa regler för alla IP-adressintervall som motsvarar Office 365 [autentisering och identitet IP V4-slutpunkter](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity).
+3. Skapa regler som motsvarar källplatsen:
 
    **Plats** | **Site Recovery-tjänsten IP-adresser** |  **Site Recovery övervakning IP**
     --- | --- | ---
@@ -138,18 +138,18 @@ Reglerna krävs så att replikering kan aktiveras från hello region toohello k�
 
 ## <a name="existing-on-premises-connection"></a>Befintlig lokal anslutning
 
-Om du har en ExpressRoute- eller VPN-anslutningen mellan din lokala plats och hello källplats i Azure, Följ dessa riktlinjer:
+Om du har en ExpressRoute- eller VPN-anslutning mellan lokal plats och källplatsen i Azure, Följ dessa riktlinjer:
 
 **Konfiguration** | **Detaljer**
 --- | ---
-**Tvingad tunneltrafik** | Vanligtvis tvingar en standardväg (0.0.0.0/0) utgående internet-trafik tooflow via hello lokal plats. Vi rekommenderar inte. Replikeringstrafik och Site Recovery kommunikation ska hålla sig inom Azure.<br/><br/> Lägga till användardefinierade vägar (udr: er) som en lösning för [dessa IP-adressintervall](#outbound-connectivity-for-azure-site-recovery-ip-ranges), så att hello-trafik inte går lokalt.
-**Anslutning** | Om appar behöver tooconnect tooon lokala datorer eller lokala klienter ansluter toohello app över lokala via VPN/ExpressRoute, kontrollera att du har minst en [plats-till-plats-anslutning](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md), mellan hello mål Azure-region och hello lokal plats.<br/><br/> Om trafikvolymer är högt mellan hello mål Azure-region och hello lokal plats, kan du skapa en ny [ExpressRoute-anslutning](../expressroute/expressroute-introduction.md), mellan hello målregionen och lokalt.<br/><br/> Om du vill tooretain IP-adresser för virtuella datorer efter redundans, Behåll hello mål region plats-till-plats/ExpressRoute-anslutning i frånkopplat tillstånd. Detta säkerställer att det finns inga intervall konflikt mellan hello käll- och IP-adressintervall.
-**ExpressRoute** | Skapa en ExpressRoute-krets i hello käll- och regioner.<br/><br/> Skapa en anslutning mellan hello källnätverket och hello ExpressRoute-krets och mellan hello målnätverket och hello krets.<br/><br/> Vi rekommenderar att du använder olika IP-adressintervall i käll- och områden. hello krets kommer inte att kunna tooconnect toomore än en Azure-nätverk med hello samma IP-adressintervall på hello samtidigt.<br/><br/> Du kan skapa virtuella nätverk med hello samma IP-intervall i båda regioner och sedan skapa ExpressRoute-kretsar i båda regioner. Koppla hello krets från hello källa virtuella nätverket för växling vid fel, och Anslut hello krets i hello mål virtuella nätverk.<br/><br/> Om hello primära regionen är helt nedåt hello koppla från åtgärden misslyckas. I det här fallet kommer hello virtuella målnätverket inte ExpressRoute-anslutning.
-**ExpressRoute Premium** | Du kan skapa kretsar i hello samma geopolitiska region.<br/><br/> toocreate kretsar i olika geopolitiska regioner, och du behöver Azure ExpressRoute Premium.<br/><br/> Hello kostnaden är inkrementell med Premium. Om du redan använder den, är det utan extra kostnad.<br/><br/> Lär dig mer om [platser](../expressroute/expressroute-locations.md#azure-regions-to-expressroute-locations-within-a-geopolitical-region) och [priser](https://azure.microsoft.com/pricing/details/expressroute/).
+**Tvingad tunneltrafik** | Vanligtvis tvingar en standardväg (0.0.0.0/0) utgående internet-trafiken flöda via den lokala platsen. Vi rekommenderar inte. Replikeringstrafik och Site Recovery kommunikation ska hålla sig inom Azure.<br/><br/> Lägga till användardefinierade vägar (udr: er) som en lösning för [dessa IP-adressintervall](#outbound-connectivity-for-azure-site-recovery-ip-ranges), så att trafiken inte gå lokalt.
+**Anslutning** | Om appar som behöver ansluta till lokala datorer eller lokala klienter ansluter till appen över lokala via VPN/ExpressRoute, kontrollera att du har minst en [plats-till-plats-anslutning](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md), mellan aktuella Azure-region och den lokala platsen.<br/><br/> Om trafikvolymer är högt mellan aktuella Azure-region och den lokala platsen, kan du skapa en ny [ExpressRoute-anslutning](../expressroute/expressroute-introduction.md), mellan målregionen och lokalt.<br/><br/> Om du vill behålla IP-adresser för virtuella datorer efter redundans hålla den målregionen plats-till-plats/ExpressRoute-anslutning i frånkopplat tillstånd. Detta säkerställer att det finns inga intervall konflikt mellan käll- och IP-adressintervall.
+**ExpressRoute** | Skapa en ExpressRoute-krets i käll- och områden.<br/><br/> Skapa en anslutning mellan källnätverket och ExpressRoute-kretsen och mellan målnätverket och kretsen.<br/><br/> Vi rekommenderar att du använder olika IP-adressintervall i käll- och områden. Kretsen kan inte ansluta till mer än en Azure-nätverk med samma IP-intervall på samma gång.<br/><br/> Du kan skapa virtuella nätverk med samma IP-adressintervall i båda regioner och sedan skapa ExpressRoute-kretsar i båda regioner. Koppla bort kretsen från det virtuella nätverket källa för växling vid fel, och Anslut krets i det virtuella målnätverket.<br/><br/> Om den primära regionen inte är helt kan koppla från åtgärden misslyckas. I det här fallet kommer det virtuella nätverket målet inte ExpressRoute-anslutning.
+**ExpressRoute Premium** | Du kan skapa kretsar i samma geopolitiska region.<br/><br/> För att skapa kretsar i olika geopolitiska regioner, behöver du Azure ExpressRoute Premium.<br/><br/> Kostnaden är inkrementell med Premium. Om du redan använder den, är det utan extra kostnad.<br/><br/> Lär dig mer om [platser](../expressroute/expressroute-locations.md#azure-regions-to-expressroute-locations-within-a-geopolitical-region) och [priser](https://azure.microsoft.com/pricing/details/expressroute/).
 
 
 
 ## <a name="next-steps"></a>Nästa steg
 
-Gå för[steg 4: skapa ett valv](azure-to-azure-walkthrough-vault.md)
+Gå till [steg 4: skapa ett valv](azure-to-azure-walkthrough-vault.md)
 

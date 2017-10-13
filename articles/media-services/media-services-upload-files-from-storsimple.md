@@ -1,6 +1,6 @@
 ---
-title: "aaaUpload filer till ett Azure Media Services-konto från Azure StorSimple | Microsoft Docs"
-description: "I den här artikeln finns en kort översikt över Azure StorSimple Data Manager. hello artikeln innehåller också länkar tootutorials som visar hur tooextract data från StorSimple och ladda upp det som tillgångar tooan Azure Media Services-konto."
+title: "Ladda upp filer till ett Azure Media Services-konto från Azure StorSimple | Microsoft Docs"
+description: "I den här artikeln finns en kort översikt över Azure StorSimple Data Manager. Artikeln innehåller också länkar till självstudier om hur du kan extrahera data från StorSimple och ladda upp dem som tillgångar till ett Azure Media Services-konto."
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/27/2017
 ms.author: juliako
-ms.openlocfilehash: 7e9712aa480106bbd5fcc63eaecf0418b24a8bef
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 636d55c15aa383208ffb39d5224123831af962c9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="upload-files-into-an-azure-media-services-account-from-azure-storsimple"></a>Ladda upp filer till ett Azure Media Services-konto från Azure StorSimple
 
-I den här artikeln finns en kort översikt över Azure StorSimple Data Manager. hello artikeln innehåller också länkar tootutorials som visar hur tooextract data från StorSimple och ladda upp data som tillgångar tooan konto i Azure Media Services (AMS).
+I den här artikeln finns en kort översikt över Azure StorSimple Data Manager. Artikeln innehåller också länkar till självstudier om hur du kan extrahera data från StorSimple och ladda upp dem som tillgångar till ett Azure Media Services-konto (AMS).
 
 > 
 > [!NOTE]
@@ -31,22 +31,22 @@ I den här artikeln finns en kort översikt över Azure StorSimple Data Manager.
 
 ## <a name="overview"></a>Översikt
 
-I Media Services överför du dina digitala filer till en tillgång. hello tillgång kan innehålla video, ljud, bilder, miniatyrsamlingar, text spår och textning filer (och hello metadata om dessa filer.) När hello filerna har överförts lagras innehållet på ett säkert sätt i hello molnet för ytterligare bearbetning och strömning.
+I Media Services överför du dina digitala filer till en tillgång. Tillgång kan innehålla video, ljud, bilder, miniatyrsamlingar, textspår och filer med dold textning (samt metadata om dessa filer.) När filerna har överförts lagras innehållet på ett säkert sätt i molnet för ytterligare bearbetning och strömning.
 
-[Azure StorSimple](https://docs.microsoft.com/azure/storsimple/) använder molnlagring som ett tillägg av hello lokalt lösning och automatiskt nivåer data över hello lokal lagring och lagringsutrymmet i molnet. Hej StorSimple-enhet dedupes och komprimerar data innan du skickar den toohello moln, vilket gör det mycket effektivt för att skicka stora filer toohello moln. Hej [StorSimple Data Manager](../storsimple/storsimple-data-manager-overview.md) service ger API: er som aktiverar du tooextract data från StorSimple och visa AMS tillgångar.
+[Azure StorSimple](https://docs.microsoft.com/azure/storsimple/) använder lagringsutrymmet i molnet som ett tillägg till den lokala lösningen och fördelar automatiskt data mellan det lokala lagringsutrymmet och lagringsutrymmet i molnet. StorSimple-enheten deduplicerar och komprimerar data innan du skickar dem till molnet, vilket gör det mycket effektivt för att skicka stora filer till molnet. Tjänsten [StorSimple Data Manager](../storsimple/storsimple-data-manager-overview.md) innehåller API: er som gör det möjligt att extrahera data från StorSimple och presentera dem som AMS-tillgångar.
 
 ## <a name="get-started"></a>Kom igång
 
-1. [Skapa ett Media Services-konto](media-services-portal-create-account.md) som du vill tootransfer hello tillgångar.
-2. Registrera dig för förhandsversionen av Data Manager, enligt beskrivningen i hello [StorSimple Data Manager](../storsimple/storsimple-data-manager-overview.md) artikel.
+1. [Skapa ett Media Services-konto](media-services-portal-create-account.md) som du vill överföra tillgångarna till.
+2. Registrera dig för förhandsutgåvan av Data Manager på det sätt som beskrivs i artikeln [StorSimple Data Manager](../storsimple/storsimple-data-manager-overview.md).
 3. Skapa ett StorSimple Data Manager-konto.
 4. Skapa ett omvandlingsjobb som när det körs hämtar data från en StorSimple-enhet och överför dem till ett AMS-konto som tillgångar. 
 
-    När hello jobb börjar köras, skapas en storage-kö. Den här kön fylls med meddelanden om transformerade blobbar i takt med att de är klara. hello namnet på den här kön är hello samma som hello namnet på hello jobbdefinitionen. Du kan använda den här kön toodetermine när tillgången är klar och anropa din önskade toorun för Media Services-åtgärden på den. Du kan till exempel använda den här kön tootrigger en Azure-funktion som innehåller hello nödvändig Media Services-kod.
+    När jobbet börjar köras skapas en lagringskö. Den här kön fylls med meddelanden om transformerade blobbar i takt med att de är klara. Namnet på den här kön är detsamma som namnet på jobbdefinitionen. Du kan använda den här kön för att avgöra när tillgången är klar och anropa önskad Media Services-åtgärd som ska köras på den. Du kan till exempel använda den här kön för att utlösa en Azure-funktion som innehåller den nödvändiga Media Services-koden.
 
 ## <a name="see-also"></a>Se även
 
-[Använd hello .net SDK tootrigger jobb i hello Data Manager](../storsimple/storsimple-data-manager-dotnet-jobs.md)
+[Använd .Net SDK för att utlösa jobb i Data Manager](../storsimple/storsimple-data-manager-dotnet-jobs.md)
 
 ## <a name="media-services-learning-paths"></a>Sökvägar för Media Services-utbildning
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

@@ -1,6 +1,6 @@
 ---
-title: "aaaGroup principen och MDM-inställningar | Microsoft Docs"
-description: "Innehåller information om grupprinciper och mobila enheter (MDM) inställningar som ska användas på företagsägda enheter. Dessa principer är tillämpade toohello hela enheten."
+title: "Principen och MDM-inställningar | Microsoft Docs"
+description: "Innehåller information om grupprinciper och mobila enheter (MDM) inställningar som ska användas på företagsägda enheter. Dessa principer som tillämpas på användarens hela enheten."
 services: active-directory
 keywords: "Vad är grupp princip och MDM-inställningar för Enterprise tillstånd Roaming, Enterprise tillstånd Roaming, windows molnet"
 documentationcenter: 
@@ -15,35 +15,35 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/08/2017
 ms.author: markvi
-ms.openlocfilehash: 762419b47014b1fb4d92ac528785e20078afe689
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 71dd5281a618fe7367eab3e97daac069f77ab491
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="group-policy-and-mdm-settings"></a>Inställningar för Grupprincip och MDM
-Dessa Grupprincip och hanteringsinställningar för mobila enheter (MDM) endast användas på företagsägda enheter eftersom dessa principer används toohello hela enheten. Använda en MDM-princip toodisable synkronisera inställningar för en personlig ska enhet som ägs av användare påverka hello användning av enheten. Dessutom påverkas även andra konton på hello enhet av hello princip.
+Dessa Grupprincip och hanteringsinställningar för mobila enheter (MDM) endast användas på företagsägda enheter eftersom dessa principer tillämpas på användarens hela enheten. Använda en MDM-princip för att inaktivera synkronisering av inställningar för en personlig ska enhet som ägs av användare påverka användningen av enheten. Andra konton på enheten kommer dessutom också att påverkas av principen.
 
-Företag som vill toomanage roaming för personliga (ohanterade) enheter kan använda hello Azure portal tooenable eller inaktivera centrala i stället för att använda en grupprincip eller MDM.
-hello följande tabeller beskrivs hello principinställningar som är tillgängliga.
+Företag som vill hantera centrala för personliga (ohanterade) enheter kan använda Azure-portalen för att aktivera eller inaktivera centrala i stället för att använda en grupprincip eller MDM.
+I följande tabeller beskrivs de tillgängliga inställningarna.
 
 ## <a name="mdm-settings"></a>MDM-inställningar
-hello MDM principinställningarna gäller tooboth Windows 10 och Windows 10 Mobile.  Det finns stöd för Windows 10 Mobile endast för Microsoft-konto baserat centrala via användarens OneDrive-konto.  Se för avsnittet ”enheter och slutpunkter” mer information om vilka enheter som stöds för Azure AD baseras synkroniseras.
+MDM-principinställningar gäller för både Windows 10 och Windows 10 Mobile.  Det finns stöd för Windows 10 Mobile endast för Microsoft-konto baserat centrala via användarens OneDrive-konto.  Se avsnittet ”enheter och slutpunkter” mer information om vilka enheter som stöds för Azure AD-baserade synkronisering.
 
 | Namn | Beskrivning |
 | --- | --- |
-| Tillåt Microsoft-konto-anslutning |Tillåter användare tooauthenticate med ett Microsoft-konto på hello-enhet |
-| Tillåt synkronisering av Mina inställningar |Gör inställningar för Windows-användare tooroam och appdata. Om du inaktiverar den här principen inaktiverar synkronisering samt säkerhetskopieringar på mobila enheter |
+| Tillåt Microsoft-konto-anslutning |Tillåter användare att autentisera med ett Microsoft-konto på enheten |
+| Tillåt synkronisering av Mina inställningar |Tillåter användare att flytta Windows-inställningar och data i appen. Om du inaktiverar den här principen inaktiverar synkronisering samt säkerhetskopieringar på mobila enheter |
 
 ## <a name="group-policy-settings"></a>Grupprincipinställningar
-hello grupprincipinställningar tillämpas tooWindows 10-enheter som är kopplade tooan Active Directory-domän. hello tabellen innehåller också äldre inställningar som visas toomanage synkroniseringsinställningar, men som inte arbetar för Enterprise tillstånd Roaming för Windows 10, som är märkta med ”Använd inte” i hello beskrivning.
+Inställningarna för grupprinciper gäller för Windows 10-enheter som är anslutna till en Active Directory-domän. Tabellen innehåller också äldre inställningar som visas för att hantera synkroniseringsinställningar för, men som inte arbetar för Enterprise tillstånd Roaming för Windows 10, som är märkta med ”Använd inte” i beskrivningen.
 
 | Namn | Beskrivning |
 | --- | --- |
 | Konton: Blockera Microsoft-konton |Den här inställningen förhindrar att användare lägger till nya Microsoft-konton på den här datorn |
-| Är inte synkroniserade |Förhindrar att användare tooroam Windows-inställningar och AppData |
-| Synkroniserar inte anpassa |Inaktiverar synkroniseringen av hello teman grupp |
-| Synkronisera inte inställningar för webbläsaren |Inaktiverar synkroniseringen av hello Internet Explorer-grupp |
+| Är inte synkroniserade |Förhindrar användare att flytta Windows-inställningar och AppData |
+| Synkroniserar inte anpassa |Inaktiverar synkroniseringen av gruppen teman |
+| Synkronisera inte inställningar för webbläsaren |Inaktiverar synkroniseringen av Internet Explorer-grupp |
 | Synkronisera inte lösenord |Inaktiverar synkronisering av lösenord grupp |
 | Synkronisera inte andra Windows-inställningar |Inaktiverar synkroniseringen av gruppen för andra Windows-inställningar |
 | Synkronisera inte skrivbordsanpassning |Använd inte; har ingen effekt |

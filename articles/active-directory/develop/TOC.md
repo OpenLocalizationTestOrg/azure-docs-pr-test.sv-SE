@@ -26,7 +26,7 @@
 ### [Översikt](active-directory-authentication-scenarios.md#web-application-to-web-api)
 ### [ASP.NET](active-directory-devquickstarts-webapi-dotnet.md)
 ### [NodeJS](active-directory-devquickstarts-webapi-nodejs.md)
-## Tjänsten tooService
+## Tjänst till tjänst
 ### [Översikt](active-directory-authentication-scenarios.md#daemon-or-server-application-to-web-api)
 ### [.NET](active-directory-code-samples.md#server-or-daemon-application-to-web-api)
 ### [Autentiseringsuppgifter för OAuth 2.0-klient](active-directory-protocols-oauth-service-to-service.md)
@@ -59,7 +59,7 @@
 ### [Kom igång med Visual Studio-anslutna tjänster](vs-active-directory-dotnet-getting-started.md)
 ### [Fel vid identifiering av autentisering](vs-active-directory-error.md)
 ### [Kom igång med WebApi](vs-active-directory-webapi-getting-started.md)
-### [Vad hände toomy webb-API-projekt](vs-active-directory-webapi-what-happened.md)
+### [Vad hände med mitt projekt för webb-API?](vs-active-directory-webapi-what-happened.md)
 ## [Windows Server ADFS](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/overview/ad-fs-scenarios-for-developers)
 # Referens
 ## [Kodexempel](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory)
@@ -69,7 +69,7 @@
 ## [Autentiseringsprotokoll](active-directory-authentication-protocols.md)
 ### [OpenID Connect](active-directory-protocols-openid-connect-code.md)
 ### [Oauth](active-directory-protocols-oauth-code.md)
-### [Tooservice-anrop](active-directory-protocols-oauth-service-to-service.md)
+### [Tjänst-till-tjänst-anrop](active-directory-protocols-oauth-service-to-service.md)
 ### [On-Behalf-Of-flöde](active-directory-protocols-oauth-on-behalf-of.md)
 ### [Token och anspråkstyper som stöds](active-directory-token-and-claims.md)
 ### [Förnyelse av signeringsnyckel](active-directory-signing-key-rollover.md)

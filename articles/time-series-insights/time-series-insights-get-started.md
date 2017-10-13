@@ -1,6 +1,6 @@
 ---
-title: "aaaCreate en Azure tid serien Insights miljö | Microsoft Docs"
-description: "I kursen får du lära dig hur toocreate serie miljön, ansluter du det tooan händelsekälla och klara tooanalyze din händelsedata i minuter."
+title: "Skapa en Azure Time Series Insights-miljö | Microsoft Docs"
+description: "I den här självstudien får du lära dig att skapa en Time Series-miljö, ansluta den till en händelsekälla och redo att analysera dina händelsedata på några minuter."
 keywords: 
 services: time-series-insights
 documentationcenter: 
@@ -8,49 +8,49 @@ author: op-ravi
 manager: santoshb
 editor: cgronlun
 ms.assetid: 
-ms.service: time-series-insights
+ms.service: tsi
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 04/21/2017
 ms.author: omravi
-ms.openlocfilehash: 7120fc9a6e4d4a4972f8cb37e4d9945cfb746fd2
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 5a159ed0ba38899b21212518d41ff995895904ef
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="create-a-new-time-series-insights-environment-in-hello-azure-portal"></a>Skapa en ny tid serien insikter miljö i hello Azure-portalen
+# <a name="create-a-new-time-series-insights-environment-in-the-azure-portal"></a>Skapa en ny Time Series Insights-miljö i Azure Portal
 
-Time Series Insights-miljön är en Azure-resurs med ingångs- och lagringskapacitet. Kunder etablera miljöer via hello Azure-portalen med hello krävs kapacitet.
+Time Series Insights-miljön är en Azure-resurs med ingångs- och lagringskapacitet. Kunder etablerar miljöer via Azure Portal med den kapacitet som krävs.
 
-## <a name="steps-toocreate-hello-environment"></a>Steg toocreate hello miljö
+## <a name="steps-to-create-the-environment"></a>Anvisningar för att skapa miljön
 
-Följ dessa steg toocreate din miljö:
+Följ de här anvisningarna för att skapa en miljö:
 
-1.  Logga in toohello [Azure-portalen](https://portal.azure.com).
-2.  Klicka hello plustecken (”+”) i hello övre vänstra hörnet.
-3.  Sök efter ”tid serien insikter” i sökrutan för hello.
+1.  Logga in på [Azure Portal](https://portal.azure.com).
+2.  Klicka på plustecknet (”+”) i det övre vänstra hörnet.
+3.  Sök efter ”Time Series Insights” i sökrutan.
 
-  ![Skapa hello tid serien insikter miljö](media/get-started/getstarted-create-environment1.png)
+  ![Skapa Time Series Insights-miljön](media/get-started/getstarted-create-environment1.png)
 
 4.  Välj ”Time Series Insights”, klicka på ”Skapa”.
 
-  ![Skapa hello tid serien insikter resursgrupp](media/get-started/getstarted-create-environment2.png)
+  ![Skapa Time Series Insights-resursgruppen](media/get-started/getstarted-create-environment2.png)
 
-5.  Ange ett namn på miljön. Det här namnet representerar hello-miljö i [tid serien explorer](https://insights.timeseries.azure.com).
-6.  Välj en prenumeration. Välj ett namn som innehåller din händelsekälla. Tid serien insikter kan automatisk identifiering av Azure IoT Hub och Event Hub-resurser finns i hello samma prenumeration.
+5.  Ange ett namn på miljön. Namnet representerar miljön i [time series explorer](https://insights.timeseries.azure.com).
+6.  Välj en prenumeration. Välj ett namn som innehåller din händelsekälla. Time Series Insights kan automatiskt identifiera Azure IoT Hub- och Event Hub-resurser som existerar i samma prenumeration.
 7.  Välj eller skapa en Resursgrupp. En resursgrupp är en samling med Azure-resurser som används tillsammans.
-8.  Välj en värdplats. tooavoid flytta över data datacenter, välj platsen som innehåller din händelsekälla.
+8.  Välj en värdplats. Välj en plats som innehåller din källa för att undvika att flytta data mellan datacenter.
 9.  Välj en prisnivå.
 10. Välj kapacitet. Du kan ändra kapacitet för en miljö när den har skapats.
-11. Skapa din miljö. Du kan även fästa miljö toohello instrumentpanelen för enkel åtkomst när du loggar in.
+11. Skapa din miljö. Du kan också fästa miljön på instrumentpanelen för enkel åtkomst när du loggar in.
 
-  ![Skapa hello tid serien insikter PIN-kod toodashboard](media/get-started/getstarted-create-environment3.png)
+  ![Fäst Time Series Insights vid instrumentpanelen](media/get-started/getstarted-create-environment3.png)
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Definiera principer för åtkomst av data](time-series-insights-data-access.md) tooaccess miljön i [tid serien Insights-portalen](https://insights.timeseries.azure.com)
+* [Definiera dataåtkomstprinciper](time-series-insights-data-access.md) för att få åtkomst till miljön i [Time Series Insights-portalen](https://insights.timeseries.azure.com)
 * [Skapa en händelsekälla](time-series-insights-add-event-source.md)
-* [Skicka händelser](time-series-insights-send-events.md) toohello händelsekälla
+* [Skicka händelser](time-series-insights-send-events.md) till händelsekällan

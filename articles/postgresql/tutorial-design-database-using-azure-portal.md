@@ -1,6 +1,6 @@
 ---
 title: "Utforma din första Azure-databas för PostgreSQL med hjälp av Azure portal | Microsoft Docs"
-description: "Den här kursen visar hur tooDesign ditt första Azure-databas för PostgreSQL med hello Azure-portalen."
+description: "Den här kursen visar hur du utformar din första Azure-databas för PostgreSQL med Azure-portalen."
 services: postgresql
 author: SaloniSonpal
 ms.author: salonis
@@ -10,21 +10,21 @@ ms.service: postgresql
 ms.custom: tutorial, mvc
 ms.topic: tutorial
 ms.date: 05/10/2017
-ms.openlocfilehash: fde7e9d1ae2bad4291d18bebd3356f4f8a2ac86a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 2aa9d10749b54537495ad3e09566c43718f67a9e
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="design-your-first-azure-database-for-postgresql-using-hello-azure-portal"></a>Utforma din första Azure-databas för PostgreSQL med hello Azure-portalen
+# <a name="design-your-first-azure-database-for-postgresql-using-the-azure-portal"></a>Utforma din första Azure-databas för PostgreSQL med Azure-portalen
 
-Azure PostgreSQL-databas är en hanterad tjänst som gör att du toorun, hantera och skala högtillgänglig PostgreSQL-databaser i hello molnet. Med hello Azure-portalen kan du enkelt hantera servern och skapar en databas.
+Azure Database för PostgreSQL är en hanterad tjänst som låter dig köra, hantera och skala högtillgängliga PostgreSQL-databaser i molnet. Med Azure-portalen kan du enkelt hantera servern och utforma en databas.
 
-I den här kursen använder du hello Azure portal toolearn hur till:
+I kursen får du använder Azure-portalen att lära dig hur du:
 > [!div class="checklist"]
 > * Skapa en Azure Database för PostgreSQL
-> * Konfigurera hello serverbrandvägg
-> * Använd [ **psql** ](https://www.postgresql.org/docs/9.6/static/app-psql.html) toocreate verktyget en databas
+> * Konfigurera server-brandväggen
+> * Använd [ **psql** ](https://www.postgresql.org/docs/9.6/static/app-psql.html) verktyg för att skapa en databas
 > * Läs in exempeldata
 > * Frågedata
 > * Uppdatera data
@@ -33,110 +33,110 @@ I den här kursen använder du hello Azure portal toolearn hur till:
 ## <a name="prerequisites"></a>Krav
 Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt](https://azure.microsoft.com/free/) konto innan du börjar.
 
-## <a name="log-in-toohello-azure-portal"></a>Logga in toohello Azure-portalen
-Logga in toohello [Azure-portalen](https://portal.azure.com).
+## <a name="log-in-to-the-azure-portal"></a>Logga in på Azure Portal
+Logga in på [Azure-portalen](https://portal.azure.com).
 
 ## <a name="create-an-azure-database-for-postgresql"></a>Skapa en Azure Database för PostgreSQL
 
-En Azure Database för PostgreSQL-server skapas med en definierad uppsättning [compute- och lagringsresurser](./concepts-compute-unit-and-storage.md). hello server skapas inom en [Azure-resursgrupp](../azure-resource-manager/resource-group-overview.md).
+En Azure Database för PostgreSQL-server skapas med en definierad uppsättning [compute- och lagringsresurser](./concepts-compute-unit-and-storage.md). Servern skapas inom en [Azure-resursgrupp](../azure-resource-manager/resource-group-overview.md).
 
-Följ dessa steg toocreate en Azure-databas för PostgreSQL-server:
-1.  Klicka på hello **+ ny** knappen hittades på hello övre vänstra hörnet av hello Azure-portalen.
-2.  Välj **databaser** från hello **ny** och väljer **Azure-databas för PostgreSQL** från hello **databaser** sidan.
- ![Azure-databas för PostgreSQL - skapa hello-databas](./media/tutorial-design-database-using-azure-portal/1-create-database.png)
+Följ de här stegen för att skapa en Azure Database för PostgreSQL-server:
+1.  Klicka på den **+ ny** knapp hittades i det övre vänstra hörnet i Azure-portalen.
+2.  Välj **databaser** från sidan **Nytt** och välj **Azure Database för PostgreSQL** från sidan **databaser**.
+ ![Azure Database för PostgreSQL – Skapa databasen](./media/tutorial-design-database-using-azure-portal/1-create-database.png)
 
-3.  Fyll i formuläret om hello nya servern information med hello följande information som visas i föregående bild hello:
-    - Servernamn: **mypgserver 20170401** (namnet på en server mappar tooDNS namn och är därför krävs toobe globalt unik) 
-    - Prenumerationen: Om du har flera prenumerationer, Välj hello lämpliga prenumeration där hello resursen finns eller faktureras för.
+3.  Fyll i detaljformuläret för den nya server med följande information, som det visas i föregående bil:
+    - Servernamn: **mypgserver-20170401** (namnet på en server mappar till DNS-namnet och behöver därför vara globalt unikt) 
+    - Prenumeration: Om du har flera prenumerationer, väljer du lämplig prenumeration där resursen ska finnas eller debiteras till.
     - Resursgrupp: **myresourcegroup**
     - Valfritt inloggningsnamn och lösenord för serveradministratören
     - Plats
     - PostgreSQL-version
 
   > [!IMPORTANT]
-  > hello server admin inloggningsnamn och lösenord som du anger här är nödvändig toolog i toohello server och databaserna senare i den här snabbstartsguide. Kom ihåg eller skriv ned den här informationen så att du kan använda den senare.
+  > Det användarnamn och lösenord för serveradministration du anger här krävs för inloggning på servern och databaserna senare i den här snabbstarten. Kom ihåg eller skriv ned den här informationen så att du kan använda den senare.
 
-4.  Klicka på **prisnivå** toospecify hello tjänstnivå och prestandanivå servicenivå för den nya databasen. I den här snabbstarten väljer du **Basic**-nivå **50 compute-enheter** och **50 GB** lagringsutrymme.
- ![Azure-databas för PostgreSQL - Välj hello tjänstnivå](./media/tutorial-design-database-using-azure-portal/2-service-tier.png)
+4.  Klicka på **Prisnivå** för att ange tjänstenivå och prestandanivå för den nya databasen. I den här snabbstarten väljer du **Basic**-nivå **50 compute-enheter** och **50 GB** lagringsutrymme.
+ ![Azure Database för PostgreSQL – välj tjänstnivå](./media/tutorial-design-database-using-azure-portal/2-service-tier.png)
 5.  Klicka på **OK**.
-6.  Klicka på **skapa** tooprovision hello server. Etableringen tar några minuter.
+6.  Klicka på **Skapa** för att etablera servern. Etableringen tar några minuter.
 
   > [!TIP]
-  > Kontrollera hello **PIN-kod toodashboard** alternativet tooallow enkel spårning av dina distributioner.
+  > Markera alternativet **Fäst på instrumentpanelen** för att enkelt kunna spåra dina distributioner.
 
-7.  På verktygsfältet hello **meddelanden** toomonitor hello distributionsprocessen.
+7.  Klicka på **Aviseringar** i verktygsfältet för att övervaka distributionsprocessen.
  ![Azure Database för PostgreSQL – se meddelanden](./media/tutorial-design-database-using-azure-portal/3-notifications.png)
    
-  Som standard skapas **postgres**-databasen under din server. Hej [postgres](https://www.postgresql.org/docs/9.6/static/app-initdb.html) databasen är en standarddatabas som är avsedd för användning av användare, verktyg och program från tredje part. 
+  Som standard skapas **postgres**-databasen under din server. [Postgres](https://www.postgresql.org/docs/9.6/static/app-initdb.html)-databasen är en standarddatabas som är avsedd för användare, verktyg och tredje parts program. 
 
 ## <a name="configure-a-server-level-firewall-rule"></a>Konfigurera en brandväggsregel på servernivå
 
-hello Azure-databas för PostgreSQL-tjänsten skapar en brandvägg på servernivå för hello. Den här brandväggen förhindrar externa program och verktyg ansluter toohello server och alla databaser på servern hello såvida inte en brandväggsregel skapas tooopen hello-brandväggen för specifika IP-adresser. 
+Azure Database för PostgreSQL-tjänsten skapar en brandvägg på server-nivå. Brandväggen förhindrar att externa program och verktyg ansluter till servern eller databaser på servern, om inte en brandväggsregel konfigureras som öppnar brandväggen för specifika IP-adresser. 
 
-1.  När hello distributionen är klar klickar du på **alla resurser** från hello vänstra menyn och Skriv hello namn **mypgserver 20170401** toosearch för den nya servern. Klicka på hello servernamn som anges i hello sökresultatet. Hej **översikt** sidan för servern öppnas och visar alternativ för ytterligare konfiguration.
+1.  När distributionen är klar, klickar du på **alla resurser** från den vänstra menyn och skriver in namnet **mypgserver-20170401** för att söka efter din nyskapade server. Klicka på servernamnet som listas i sökresultatet. **Översikt**-sidan för din server öppnas och innehåller alternativ ytterligare konfiguration.
  
  ![Azure Database för PostgreSQL – sök efter server ](./media/tutorial-design-database-using-azure-portal/4-locate.png)
 
-2.  Markera i hello serverblad **anslutningssäkerhet**. 
-3.  Klicka i hello textruta under **Regelnamn** och lägga till en ny brandvägg regeln toowhitelist hello IP-intervall för anslutningen. För den här självstudiekursen kommer vi att alla IP-adresser genom att skriva in **Regelnamnet = AllowAllIps**, **första IP-= 0.0.0.0** och **sista IP = 255.255.255.255** och klicka sedan på **spara** . Du kan ange en brandväggsregel som omfattar en IP-intervallet toobe kan tooconnect från nätverket.
+2.  I serverbladet, väljer du **anslutningssäkerhet**. 
+3.  Klicka i textrutan under **regelnamn** och lägg till en ny brandväggsregel som vitlistar IP-adressintervallet för anslutningen. För den här självstudiekursen kommer vi att alla IP-adresser genom att skriva in **Regelnamnet = AllowAllIps**, **första IP-= 0.0.0.0** och **sista IP = 255.255.255.255** och klicka sedan på **spara** . Du kan ställa in en brandväggsregel som omfattar ett IP-intervall för att kunna ansluta från ditt nätverk.
  
  ![Azure Database för PostgreSQL – Skapa brandväggsregel](./media/tutorial-design-database-using-azure-portal/5-firewall-2.png)
 
-4.  Klicka på **spara** och klicka sedan på hello **X** tooclose hello **anslutningssäkerhet** sidan.
+4.  Klicka på **spara** och klicka sedan på **X** för att stänga sidan **anslutningssäkerhet**.
 
   > [!NOTE]
-  > Azure PostgreSQL-servern kommunicerar via port 5432. Om du försöker tooconnect från ett företagsnätverk, tillåtas utgående trafik via port 5432 inte av ditt nätverks brandvägg. I så fall, blir inte kan tooconnect tooyour Azure SQL Database-server om din IT-avdelning öppnar port 5432.
+  > Azure PostgreSQL-servern kommunicerar via port 5432. Om du försöker ansluta inifrån ett företagsnätverk, kan utgående trafik via port 5432 bli nekad av nätverkets brandvägg. I så fall kommer du inte att kunna ansluta till din Azure SQL Database-server om inte din IT-avdelning öppnar port 5432.
   >
 
 
-## <a name="get-hello-connection-information"></a>Hämta hello anslutningsinformation
+## <a name="get-the-connection-information"></a>Hämta anslutningsinformationen
 
-När vi skapade vår Azure-databas för PostgreSQL server hello standard **postgres** databasen dessutom hämtar skapas. tooconnect tooyour databasserver, behöver du tooprovide värden information och åtkomst-autentiseringsuppgifter.
+När vi skapade vår Azure Database för PostgreSQL-server, skapades även standard-**postgres**-databasen. För att ansluta till din databasserver, måste du ange värddatorinformation och autentiseringsuppgifter för åtkomst.
 
-1. Hello vänstra menyn i Azure-portalen klickar du på **alla resurser** och Sök efter hello-server som du just har skapat **mypgserver 20170401**.
+1. I den vänstra menyn i Azure-portalen, klickar du på **Alla resurser** och söker efter den server som du nyss skapade **mypgserver-20170401**.
 
   ![Azure Database för PostgreSQL – sök efter server ](./media/tutorial-design-database-using-azure-portal/4-locate.png)
 
-3. Klicka på servernamnet för hello **mypgserver 20170401**.
-4. Välj hello server **översikt** sidan. Anteckna hello **servernamn** och **serverinloggningsnamnet för admin**.
+3. Klicka på servernamnet **mypgserver-20170401**.
+4. Välj serverns **översikt**-sida. Anteckna **servernamn** och **inloggningsnamnet för serveradministratören**.
 
  ![Azure Database för PostgreSQL – inloggning för serveradministratör](./media/tutorial-design-database-using-azure-portal/6-server-name.png)
 
 
-## <a name="connect-toopostgresql-database-using-psql-in-cloud-shell"></a>Ansluta tooPostgreSQL databasen med hjälp av psql i molnet Shell
+## <a name="connect-to-postgresql-database-using-psql-in-cloud-shell"></a>Anslut till PostgreSQL-databasen med psql i Cloud Shell
 
-Vi använder nu hello psql kommandoradsverktyget tooconnect toohello Azure-databas för PostgreSQL-server. 
-1. Starta hello Azure Cloud Shell via hello terminal ikon på hello övre navigeringsfönstret.
+Nu använder vi psql-kommandoradsverktyget för att ansluta till Azure Database för PostgreSQL-servern. 
+1. Starta Azure Cloud Shell via terminalikonen överst i navigeringsfönstret.
 
    ![Azure Database för PostgreSQL – Azure Cloud Shell-terminalikonen](./media/tutorial-design-database-using-azure-portal/7-cloud-shell.png)
 
-2. hello Azure Cloud Shell öppnas i webbläsaren, vilket gör att du tootype bash-kommandon.
+2. Azure Cloud Shell öppnas i din webbläsare så att du kan skriva bash-kommandon.
 
    ![Azure Database för PostgreSQL – Azure Shell Bash-prompten](./media/tutorial-design-database-using-azure-portal/8-bash.png)
 
-3. Ansluta tooyour Azure-databas för PostgreSQL-server med hello psql kommandon i Kommandotolken hello molnet Shell. hello följande format är används tooconnect tooan Azure-databas för PostgreSQL-server med hello [psql](https://www.postgresql.org/docs/9.6/static/app-psql.html) verktyget:
+3. I Cloud Shell-prompten ansluter du till din Azure Database för PostgreSQL-server med psql-kommandona. Följande format används för att ansluta till en Azure Database för PostgreSQL-server med [psql](https://www.postgresql.org/docs/9.6/static/app-psql.html)-verktyget:
    ```bash
    psql --host=<myserver> --port=<port> --username=<server admin login> --dbname=<database name>
    ```
 
-   Till exempel följande kommando hello ansluter toohello standarddatabasen kallas **postgres** på servern PostgreSQL **mypgserver 20170401.postgres.database.azure.com** hjälp av autentiseringsuppgifter. Ange ditt lösenord för serveradministratören när du uppmanas till detta.
+   Följande kommando till exempel, ansluter till standarddatabasen som heter **postgres** på din PostgreSQL-server **mypgserver-20170401.postgres.database.azure.com** med hjälp av autentiseringsuppgifter. Ange ditt lösenord för serveradministratören när du uppmanas till detta.
 
    ```bash
    psql --host=mypgserver-20170401.postgres.database.azure.com --port=5432 --username=mylogin@mypgserver-20170401 --dbname=postgres
    ```
 
 ## <a name="create-a-new-database"></a>Skapa en ny databas
-När du är ansluten toohello server kan du skapa en tom databas hello i Kommandotolken.
+När du är ansluten till servern, skapar du en blank databas i prompten.
 ```bash
 CREATE DATABASE mypgsqldb;
 ```
 
-I Kommandotolken hello köra hello efter kommandot tooswitch toohello nyskapad databas **mypgsqldb**.
+I prompten kör du följande kommando för att växla anslutning till den nyligen skapade databasen **mypgsqldb**.
 ```bash
 \c mypgsqldb
 ```
-## <a name="create-tables-in-hello-database"></a>Skapa tabeller i hello-databas
-Nu när du vet hur tooconnect toohello Azure-databas för PostgreSQL vi kan gå igenom hur toocomplete vissa grundläggande uppgifter.
+## <a name="create-tables-in-the-database"></a>Skapa tabeller i databasen
+Nu när du vet hur du ansluter till Azure-databasen för PostgreSQL gå vi igenom hur du utför några grundläggande uppgifter.
 
 Vi kan först skapa en tabell och läsa in den med vissa data. Nu ska vi skapa en tabell som spårar inventeringsinformation.
 ```sql
@@ -147,59 +147,59 @@ CREATE TABLE inventory (
 );
 ```
 
-Du kan se hello nyligen skapade tabellen i hello lista över tabvles nu genom att skriva:
+Du kan se den nyligen skapade tabellen i listan över tabvles nu genom att skriva:
 ```sql
 \dt
 ```
 
-## <a name="load-data-into-hello-tables"></a>Läs in data till hello tabeller
-Nu när vi har en tabell kan vi infoga vissa data i den. Kör följande fråga tooinsert hello vissa rader med data vid hello öppna Kommandotolkens fönster
+## <a name="load-data-into-the-tables"></a>Läser in data i tabeller
+Nu när vi har en tabell kan vi infoga vissa data i den. Kör följande fråga för att infoga vissa rader med data i öppna en kommandotolk-fönster
 ```sql
 INSERT INTO inventory (id, name, quantity) VALUES (1, 'banana', 150); 
 INSERT INTO inventory (id, name, quantity) VALUES (2, 'orange', 154);
 ```
 
-Du har nu två rader med exempeldata till hello-tabell som du skapade tidigare.
+Du har nu två rader med exempeldata i tabellen som du skapade tidigare.
 
-## <a name="query-and-update-hello-data-in-hello-tables"></a>Fråga efter och uppdatera hello data i hello tabeller
-Kör följande fråga tooretrieve information från hello databastabell hello. 
+## <a name="query-and-update-the-data-in-the-tables"></a>Fråga efter och uppdatera data i tabeller
+Kör följande fråga för att hämta information från databastabellen. 
 ```sql
 SELECT * FROM inventory;
 ```
 
-Du kan också uppdatera hello data i hello tabeller
+Du kan också uppdatera data i tabeller
 ```sql
 UPDATE inventory SET quantity = 200 WHERE name = 'banana';
 ```
 
-hello rad uppdateras i enlighet med detta när du hämtar data.
+Raden uppdateras i enlighet med detta när du hämtar data.
 ```sql
 SELECT * FROM inventory;
 ```
 
-## <a name="restore-data-tooa-previous-point-in-time"></a>Återställa data tooa tidigare punkt i tiden
-Anta att du av misstag har tagit bort den här tabellen. Den här situationen är något som du lätt kan återställa från. Azure PostgreSQL-databas kan du toogo tillbaka tooany i tidpunkt (i hello senast too7 dagar (grundläggande) och 35 dagar (Standard)) och återställa den här nya tooa point-in-time-servern. Du kan använda den här nya servern toorecover dina data. hello följande steg hello exempel server tooa återställningspunkt innan hello tabell har lagts till.
+## <a name="restore-data-to-a-previous-point-in-time"></a>Återställa data till en tidigare tidpunkt
+Anta att du av misstag har tagit bort den här tabellen. Den här situationen är något som du lätt kan återställa från. Azure-databas för PostgreSQL kan du gå tillbaka till någon punkt i tid (i det senaste upp till 7 dagar (grundläggande) och 35 dagar (Standard)) och återställa den här i tidpunkt till en ny server. Du kan använda den här nya servern för att återställa dina data. Följande steg återställa exempelserver till en innan tabellen har lagts till.
 
-1.  Klicka på hello Azure-databas för PostgreSQL-sidan för servern, **återställa** hello i verktygsfältet. Hej **återställa** öppnas.
+1.  Klicka på Azure-databasen för PostgreSQL-sidan för servern **återställa** i verktygsfältet. Den **återställa** öppnas.
   ![Azure portal – återställningsalternativ för formulär](./media/tutorial-design-database-using-azure-portal/9-azure-portal-restore.png)
-2.  Fyll i hello **återställa** formulär med hello krävs information:
+2.  Fyll i den **återställa** formulär med informationen som krävs:
 
   ![Azure portal – återställningsalternativ för formulär](./media/tutorial-design-database-using-azure-portal/10-azure-portal-restore.png)
-  - **Återställningspunkt**: Välj en i tidpunkt som inträffar innan hello-servern har ändrats
-  - **Målservern**: Ange ett nytt servernamn som du vill toorestore till
-  - **Plats**: du kan inte välja hello region, som standard är det samma som källservern hello
-  - **Prisnivån**: du kan inte ändra det här värdet när du återställer en server. Det är samma som hello källservern. 
-3.  Klicka på **OK** toorestore hello server för[återställa tooa i tidpunkt](./howto-restore-server-portal.md) innan hello tabeller har tagits bort. Återställa en server tooa olika punkt i tiden skapar en ny server dubbla som hello originalservern av hello tidpunkt du anger, förutsatt att den är i hello kvarhållningsperiod för din [tjänstnivån](./concepts-service-tiers.md).
+  - **Återställningspunkt**: Välj en i tidpunkt som inträffar innan servern har ändrats
+  - **Målservern**: Ange ett nytt servernamn som du vill återställa till
+  - **Plats**: du kan inte välja regionen, som standard är det samma som källservern
+  - **Prisnivån**: du kan inte ändra det här värdet när du återställer en server. Det är samma som källservern. 
+3.  Klicka på **OK** att återställa servern till [återställa till point-in-time](./howto-restore-server-portal.md) innan tabellerna har tagits bort. Återställa en server till en annan tidpunkt skapar en dubblett ny server som den ursprungliga servern från och med punkten tidpunkt du anger under förutsättning att det är inom kvarhållningsperioden för din [tjänstnivån](./concepts-service-tiers.md).
 
 ## <a name="next-steps"></a>Nästa steg
-I kursen får du lärt dig hur toouse hello Azure-portalen och andra verktyg för att:
+I kursen får du har lärt dig hur du använder Azure-portalen och andra verktyg för att:
 > [!div class="checklist"]
 > * Skapa en Azure Database för PostgreSQL
-> * Konfigurera hello serverbrandvägg
-> * Använd [ **psql** ](https://www.postgresql.org/docs/9.6/static/app-psql.html) toocreate verktyget en databas
+> * Konfigurera server-brandväggen
+> * Använd [ **psql** ](https://www.postgresql.org/docs/9.6/static/app-psql.html) verktyg för att skapa en databas
 > * Läs in exempeldata
 > * Frågedata
 > * Uppdatera data
 > * Återställa data
 
-Lär dig sedan hur toouse Azure CLI toodo liknande uppgifter, granska den här självstudiekursen: [utforma din första Azure-databas för PostgreSQL med Azure CLI](tutorial-design-database-using-azure-cli.md)
+Därefter beskrivs hur du använder Azure CLI gör liknande uppgifter genom att granska den här självstudiekursen: [utforma din första Azure-databas för PostgreSQL med Azure CLI](tutorial-design-database-using-azure-cli.md)

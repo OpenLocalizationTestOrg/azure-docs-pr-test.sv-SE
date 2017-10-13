@@ -1,6 +1,6 @@
 ---
-title: "aaaExclude diskar från skydd med hjälp av Azure Site Recovery | Microsoft Docs"
-description: "Beskriver hur och varför tooexclude Virtuella diskar från replikeringen för scenarier av VMware tooAzure och Hyper-V tooAzure."
+title: "Utesluta en disk från skydd med Azure Site Recovery | Microsoft Docs"
+description: "I den här artikeln beskrivs varför och hur du undantar VM-diskar från replikering för scenarier med VMware till Azure och Hyper-V till Azure."
 services: site-recovery
 documentationcenter: 
 author: nsoneji
@@ -14,129 +14,129 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 06/05/2017
 ms.author: nisoneji
-ms.openlocfilehash: f47146bc57aeab3fce90123d0894fa86dde93417
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: fccbe88e3c0c2b2f3e9958f5f2f27adc017e4d03
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="exclude-disks-from-replication"></a>Undanta diskar från replikering
-Den här artikeln beskriver hur tooexclude diskar från replikeringen. Detta undantag kan optimera hello används replikering bandbredd eller optimera hello målsidan resurser som använder dessa diskar. hello stöds för scenarier med VMware tooAzure och Hyper-V tooAzure.
+Den här artikeln beskriver hur du undantar diskar från replikering. Det här undantaget kan optimera replikeringsbandbredden som används eller optimera resurser som används av dessa diskar på målsidan. Funktionen stöds för scenarier med VMware till Azure och Hyper-V till Azure.
 
 ## <a name="prerequisites"></a>Krav
 
-Som standard replikeras alla diskar på en dator. tooexclude en disk från replikeringen, måste du manuellt installera hello mobilitetstjänsten på hello datorn innan du aktiverar replikering om du replikerar från VMware tooAzure.
+Som standard replikeras alla diskar på en dator. Om du vill undanta en disk från replikeringen måste du manuellt installera mobilitetstjänsten på datorn innan du aktiverar replikering om du replikerar från VMware till Azure.
 
 
 ## <a name="why-exclude-disks-from-replication"></a>Varför ska jag undanta en disk från replikering?
 Vanliga orsaker till att diskar undantas från replikering:
 
-- hello-data som churned på hello exkluderade disk är inte viktigt eller behöver inte toobe replikeras.
+- Data på den undantagna disken var inte viktiga eller behövde inte replikeras.
 
-- Vill du toosave lagring och nätverksresurser genom att inte replikera den här omsättning.
+- Du kan spara lagrings- och nätverksresurser genom att inte replikera dataomsättningen.
 
-## <a name="what-are-hello-typical-scenarios"></a>Vad är vanliga scenarier för hello?
-Du kan identifiera specifika exempel på dataomsättning som är bra kandidater för uteslutning. Bland exemplen finns skriver tooa växlingsfilen (pagefile.sys) och skriver toohello tempdb-filen för Microsoft SQL Server. Beroende på hello arbetsbelastning och hello underlagringssystemet registrera hello växlingsfilen mycket omsättning. Replikering av data från hello primär plats tooAzure skulle dock vara resurskrävande. Därför kan du använda följande steg toooptimize replikering av en virtuell dator med en enda virtuell disk som har både hello operativsystem och hello växlingsfilen hello:
+## <a name="what-are-the-typical-scenarios"></a>Vilka är de typiska scenarierna?
+Du kan identifiera specifika exempel på dataomsättning som är bra kandidater för uteslutning. Exemplen kan inkludera att skriva till en växlingsfil (pagefile.sys) och skriva till tempdb-filen för Microsoft SQL Server. Beroende på arbetsbelastningen och underlagringssystemet kan växlingsfilen registrera en stor dataomsättning. Men att replikera data från den primära platsen till Azure skulle vara resurskrävande. Du kan därför gå igenom följande steg för att optimera replikeringen för en virtuell dator med en enda virtuell disk som har både operativsystemet och växlingsfilen:
 
-1. Dela hello enskild virtuell disk i två virtuella diskar. En virtuell disk har hello operativsystemet och andra hello har hello växlingsfilen.
-2. Exkludera hello sidindelning disken från replikering.
+1. Dela upp den enda virtuella hårddisken på två virtuella diskar. En virtuell disk har operativsystemet och den andra har växlingsfilen.
+2. Undanta växlingsfilen från replikering.
 
-På samma sätt använder du följande steg toooptimize en disk som har båda hello Microsoft SQL Server tempdb Fä hello och hello system databasfilen:
+På samma sätt kan du följa stegen nedan för att optimera en disk som har både Microsoft SQL Server tempdb-filen och systemdatabasfilen:
 
-1. Håll hello-databas och tempdb på två olika diskar.
-2. Exkludera hello tempdb disk från replikering.
+1. Förvara systemdatabasen och tempdb på två olika diskar.
+2. Undanta tempdb-disken från replikeringen.
 
-## <a name="how-tooexclude-disks-from-replication"></a>Hur tooexclude diskar från replikeringen?
+## <a name="how-to-exclude-disks-from-replication"></a>Hur undantar jag en disk från replikering?
 
-### <a name="vmware-tooazure"></a>VMware tooAzure
-Följ hello [Aktivera replikering](site-recovery-vmware-to-azure.md) arbetsflöde tooprotect en virtuell dator från hello Azure Site Recovery-portalen. I hello fjärde steget i hello arbetsflöde, använder du hello **DISK tooREPLICATE** kolumnen tooexclude diskar från replikeringen. Som standard är alla diskar markerade för replikering. Avmarkera kryssrutan för hello diskar som du vill tooexclude från replikering och sedan utför hello steg tooenable replikering.
+### <a name="vmware-to-azure"></a>VMware till Azure
+Följ arbetsflödet i [Aktivera replikering](site-recovery-vmware-to-azure.md) för att skydda en virtuell dator med hjälp av Azure Site Recovery-portalen. I det fjärde steget i arbetsflödet ska du använda kolumnen **DISK TO REPLICATE** (DISK ATT REPLIKERA) för att exkludera diskar från replikering. Som standard är alla diskar markerade för replikering. Avmarkera den disk som du vill undanta från replikeringen och följ stegen för att aktivera replikering.
 
-![Exkludera diskar från replikering och aktivera replikering för VMware tooAzure återställning efter fel](./media/site-recovery-exclude-disk/v2a-enable-replication-exclude-disk1.png)
+![Exkludera diskar från replikering och aktivera replikering för VMware till Azure-återställning efter fel](./media/site-recovery-exclude-disk/v2a-enable-replication-exclude-disk1.png)
 
 
 >[!NOTE]
 >
-> * Du kan exkludera diskar som redan har hello mobilitetstjänsten installerad. Du behöver toomanually installera hello mobilitetstjänsten, eftersom hello mobilitetstjänsten installeras bara med hello push mekanism efter replikering har aktiverats.
+> * Du kan endast utesluta diskar som mobilitetstjänsten har installerats på. Du måste installera mobilitetstjänsten manuellt eftersom den endast installeras med push-mekanismen när replikering har aktiverats.
 > * Endast standarddiskar kan undantas från replikering. Du kan inte undanta operativsystemdiskar eller dynamiska diskar.
-> * När du har aktiverat replikering kan du inte lägga till eller ta bort diskar för replikering. Om du vill tooadd eller utesluta en disk, behöver toodisable skydd för hello datorn och aktivera det sedan igen.
-> * Om du undantar en disk som behövs för ett program toooperate efter redundans tooAzure måste toocreate hello disk manuellt i Azure så att hello replikeras program kan köras. Alternativt kan du integrera Azure automation i en plan toocreate hello återställningsdisk under växling vid fel för hello-datorn.
-> * Virtuell Windows-dator: Diskar som du skapar manuellt i Azure växlas inte tillbaka igen. Om du till exempel växlar över tre diskar och skapar två diskar direkt i Azure Virtual Machines kommer endast tre diskar som växlades över att växlas tillbaka. Du kan inte innehålla diskar som du har skapat manuellt i återställning efter fel eller skydda igen från lokala tooAzure.
+> * När du har aktiverat replikering kan du inte lägga till eller ta bort diskar för replikering. Om du vill lägga till eller undanta en disk måste du inaktivera skyddet för datorn och sedan aktivera det igen.
+> * Om du undantar en disk som behövs för att ett program ska fungera efter redundansväxlingen till Azure måste du skapa disken manuellt i Azure så att det replikerade programmet kan köras. Du kan också integrera Azure Automation i en återställningsplan för att skapa disken under en redundansväxling av datorn.
+> * Virtuell Windows-dator: Diskar som du skapar manuellt i Azure växlas inte tillbaka igen. Om du till exempel växlar över tre diskar och skapar två diskar direkt i Azure Virtual Machines kommer endast tre diskar som växlades över att växlas tillbaka. Du kan inte ta med diskar som har skapats manuellt i redundansväxlingar eller vars skydd har återaktiverats från en lokal plats till Azure.
 > * Virtuell Linux-dator: Diskar som du skapar manuellt i Azure växlas tillbaka igen. Om du till exempel växlar över tre diskar och skapar två diskar direkt i Azure Virtual Machines kommer alla fem diskar att växlas tillbaka. Du kan inte undanta diskar som har skapats manuellt från återställningen.
 >
 
-### <a name="hyper-v-tooazure"></a>Hyper-V tooAzure
-Följ hello [Aktivera replikering](site-recovery-hyper-v-site-to-azure.md) arbetsflöde tooprotect en virtuell dator från hello Azure Site Recovery-portalen. I hello fjärde steget i hello arbetsflöde, använder du hello **DISK tooREPLICATE** kolumnen tooexclude diskar från replikeringen. Som standard är alla diskar markerade för replikering. Avmarkera kryssrutan för hello diskar som du vill tooexclude från replikering och sedan utför hello steg tooenable replikering.
+### <a name="hyper-v-to-azure"></a>Hyper-V till Azure
+Följ arbetsflödet i [Aktivera replikering](site-recovery-hyper-v-site-to-azure.md) för att skydda en virtuell dator med hjälp av Azure Site Recovery-portalen. I det fjärde steget i arbetsflödet ska du använda kolumnen **DISK TO REPLICATE** (DISK ATT REPLIKERA) för att exkludera diskar från replikering. Som standard är alla diskar markerade för replikering. Avmarkera den disk som du vill undanta från replikeringen och följ stegen för att aktivera replikering.
 
-![Exkludera diskar från replikering och aktivera replikering för Hyper-V tooAzure återställning efter fel](./media/site-recovery-vmm-to-azure/enable-replication6-with-exclude-disk.png)
+![Exkludera diskar från replikering och aktivera replikering för Hyper-V till Azure-återställning efter fel](./media/site-recovery-vmm-to-azure/enable-replication6-with-exclude-disk.png)
 
 >[!NOTE]
 >
-> * Du kan endast undanta standarddiskar från replikering. Du kan inte undanta operativsystemdiskar. Vi rekommenderar att du inte undantar dynamiska diskar. Azure Site Recovery kan inte identifiera vilken virtuell hårddisk (VHD) som är vanliga eller dynamiska i hello virtuella gästdatorn.  Om alla diskar för beroende dynamisk volym inte är undantagna hello skyddade dynamisk disk blir fel på en disk på en virtuell dator för växling vid fel och hello data på disken är inte tillgänglig.
-> * När du har aktiverat replikering kan du inte lägga till eller ta bort diskar för replikering. Om du vill tooadd eller utesluta en disk, behöver toodisable skydd för hello virtuella datorn och aktivera det sedan igen.
-> * Om du undantar en disk som behövs för ett program toooperate efter redundans tooAzure behöver du toocreate hello disk manuellt i Azure så att hello replikeras program kan köras. Alternativt kan du integrera Azure automation i en plan toocreate hello återställningsdisk under växling vid fel för hello-datorn.
-> * Diskar som du skapar manuellt i Azure växlas inte tillbaka igen. Om du misslyckas under tre diskar och skapa två diskar direkt i Azure Virtual Machines misslyckades exempelvis endast tre diskar som har växlats över tillbaka från Azure tooHyper-V. Du kan inte innehålla diskar som har skapats manuellt i återställning efter fel eller omvända replikeringen från Hyper-V tooAzure.
+> * Du kan endast undanta standarddiskar från replikering. Du kan inte undanta operativsystemdiskar. Vi rekommenderar att du inte undantar dynamiska diskar. Azure Site Recovery kan inte identifiera vilken virtuell hårddisk (VHD) som är en standarddisk eller dynamisk disk på den virtuella gästdatorn.  Om alla beroende dynamiska volymdiskar inte undantas identifieras en skyddad dynamisk disk som felaktig på den virtuella datorn vid redundansväxlingen och data på disken kan inte nås.
+> * När du har aktiverat replikering kan du inte lägga till eller ta bort diskar för replikering. Om du vill lägga till eller undanta en disk måste du inaktivera skyddet för den virtuella datorn och sedan aktivera det igen.
+> * Om du undantar en disk som behövs för att ett program ska fungera efter redundansväxlingen till Azure måste du skapa disken manuellt i Azure så att det replikerade programmet kan köras. Du kan också integrera Azure Automation i en återställningsplan för att skapa disken under en redundansväxling av datorn.
+> * Diskar som du skapar manuellt i Azure växlas inte tillbaka igen. Om du till exempel växlar över tre diskar och skapar två diskar direkt i Azure Virtual Machines kommer endast tre diskar som växlades över att växlas tillbaka från Azure till Hyper-V. Du kan inte ta med diskar som har skapats manuellt i redundansväxlingar eller omvända replikeringar från Hyper-V till Azure.
 
 
 
 ## <a name="end-to-end-scenarios-of-exclude-disks"></a>Undanta diskar i olika scenarier från slutpunkt till slutpunkt
-Nu ska vi titta två scenarier toounderstand hello utelämna disk funktionen:
+Vi beskriver två scenarier för att du ska förstå hur undantag av diskar fungerar:
 
 - SQL Server tempdb-disk
 - Växlingsfildisk (pagefile.sys)
 
-### <a name="exclude-hello-sql-server-tempdb-disk"></a>Exkludera hello SQL Server tempdb-disk
+### <a name="exclude-the-sql-server-tempdb-disk"></a>Undanta en SQL Server tempdb-disk
 Anta att du har en virtuell dator som kör SQL Server och som har en tmpdb som kan undantas.
 
-hello heter hello virtuell disk SalesDB.
+Namnet på den virtuella disken är SalesDB.
 
-Diskar på hello virtuella källdatorn är följande:
+Diskarna på den virtuella källdatorn är följande:
 
 
-**Disknamn** | **Antal gästoperativsystem** | **Enhetsbeteckning** | **Datatyp av på hello disk**
+**Disknamn** | **Antal gästoperativsystem** | **Enhetsbeteckning** | **Datatyp på disken**
 --- | --- | --- | ---
 DB-Disk0-OS | DISK0 | C:\ | Operativsystemdisk
 DB-Disk1| Disk1 | D:\ | SQL-systemdatabas och användardatabas1
-DB-Disk2 (exkluderade hello disk från skydd) | Disk2 | E:\ | Tillfälliga filer
-DB-Disk3 (exkluderade hello disk från skydd) | Disk3 | F:\ | SQL-tempdb-databasen (mappsökvägen (F:\MSSQL\Data\) < /br/>< /br/> Skriv ned hello mappsökväg före redundans.
+DB-Disk2 (disken har undantagits från skydd) | Disk2 | E:\ | Tillfälliga filer
+DB-Disk3 (disken har undantagits från skydd) | Disk3 | F:\ | SQL tempdb-databas (mappsökväg(F:\MSSQL\Data\) </br /> </br />Notera mappsökvägen före redundansväxling.
 DB-Disk4 | Disk4 |G:\ |Användardatabas2
 
-Eftersom dataomsättningen på två diskar för hello virtuella datorn är tillfällig, samtidigt som du skyddar hello SalesDB virtuella datorn, undanta Disk2 och Disk3 från replikering. Azure Site Recovery replikerar inte diskarna. Vid redundans, dessa diskar inte finns på hello redundans virtuell dator på Azure.
+Eftersom dataomsättning på två diskar i den virtuella datorn är tillfällig ska du undanta Disk2 och Disk3 från replikering när du skyddar den virtuella SalesDB-datorn. Azure Site Recovery replikerar inte diskarna. Vid redundansväxlingen visas inte dessa diskar på den virtuella datorn som redundansväxlas på Azure.
 
-Diskar på hello virtuella Azure-datorn efter växling vid fel är följande:
+Diskar på virtuella Azure-datorer efter redundansväxling är följande:
 
-**Antal gästoperativsystem** | **Enhetsbeteckning** | **Datatyp av på hello disk**
+**Antal gästoperativsystem** | **Enhetsbeteckning** | **Datatyp på disken**
 --- | --- | ---
 DISK0 | C:\ | Operativsystemdisk
-Disk1 | E:\ | Tillfällig lagring < /br / >< /br / > Azure lägger till den här disken och tilldelar hello första tillgängliga enhetsbeteckning.
+Disk1 | E:\ | Temporär lagring</br /> </br />Azure lägger till den här disken och tilldelar den första tillgängliga enhetsbeteckningen.
 Disk2 | D:\ | SQL-systemdatabas och användardatabas1
 Disk3 | G:\ | Användardatabas2
 
-Eftersom Disk2 och Disk3 har undantagits från hello SalesDB virtuell dator, är E: hello första enhetsbeteckningen hello tillgängliga listan. Azure tilldelar E: toohello temporära lagringsvolymen. För alla hello replikeras diskar hello hello enhet bokstäver förblir samma.
+Eftersom Disk2 och Disk 3 undantogs från den virtuella SalesDB-datorn är E: den första tillgängliga enhetsbeteckningen i listan. Azure tilldelar E: till den tillfälliga lagringsvolymen. Alla replikerade diskar har kvar samma enhetsbeteckning.
 
-Disk3 som var hello SQL tempdb disk (tempdb mappsökväg F:\MSSQL\Data\), har exkluderats från repliken. hello disken är inte tillgänglig på hello redundans virtuella datorn. Därför hello SQL-tjänsten i ett stoppat tillstånd och den måste hello F:\MSSQL\Data sökväg.
+Disk3, som var SQL tempdb-disken (tempdb-mappsökvägen F:\MSSQL\Data\), undantogs från replikering. Disken är inte tillgänglig på den redundansväxlade virtuella datorn. Därför är SQL-tjänsten i stoppat tillstånd och behöver sökvägen F:\MSSQL\Data.
 
-Det finns två sätt toocreate sökvägen:
+Det finns två sätt att skapa den här sökvägen:
 
 - Lägga till en ny disk och tilldela tempdb-mappsökvägen.
-- Använd en befintlig disk för tillfällig lagring för hello tempdb mappsökväg.
+- Använda den befintliga tillfälliga lagringsdisken för tempdb-mappsökvägen.
 
 #### <a name="add-a-new-disk"></a>Lägga till en ny disk:
 
-1. Skriv ned hello sökvägar för SQL tempdb.mdf och tempdb.ldf före redundans.
-2. Hello Azure-portalen, lägga till en ny disk toohello redundans virtuell dator med hello samma eller mer storlek som hello SQL tempdb källdisken (Disk3).
-3. Logga in toohello virtuella Azure-datorn. Från hello (diskmgmt.msc) Diskhanteringskonsolen tillagda initiera och formatera hello nyligen disk.
-4. Tilldela hello samma enhetsbeteckning som användes av hello SQL tempdb disk (F:).
-5. Skapa en tempdb-mapp på hello volym F: (F:\MSSQL\Data).
-6. Starta hello SQL-tjänsten från hello service-konsolen.
+1. Notera sökvägarna till SQL tempdb.mdf och tempdb.ldf före redundansväxlingen.
+2. Lägg till en ny disk till den virtuella datorn som redundansväxlas med samma eller större storlek än SQL tempdb-disken (Disk3) med hjälp av Azure Portal.
+3. Logga in på den virtuella Azure-datorn. Initiera och formatera den nytillagda disken från diskhanteringskonsolen (diskmgmt.msc).
+4. Tilldela samma enhetsbeteckning som användes av SQL tempdb-disken (F:).
+5. Skapa en tempdb-mapp på volym F: (F:\MSSQL\Data).
+6. Starta SQL-tjänsten från tjänstkonsolen.
 
-#### <a name="use-an-existing-temporary-storage-disk-for-hello-sql-tempdb-folder-path"></a>Använd en befintlig disk för tillfällig lagring för hello SQL tempdb mappsökväg:
+#### <a name="use-an-existing-temporary-storage-disk-for-the-sql-tempdb-folder-path"></a>Använd den befintliga tillfälliga lagringsdisken för SQL tempdb-mappsökvägen:
 
 1. Öppna en kommandotolk.
-2. Kör SQL Server i återställningsläge från hello kommandotolk.
+2. Kör SQL Server i återställningsläge från kommandotolken.
 
         Net start MSSQLSERVER /f / T3608
 
-3. Kör hello följande sqlcmd toochange hello tempdb sökvägen toohello nya sökvägen.
+3. Kör följande sqlcmd för att ändra tempdb-sökvägen till en ny sökväg.
 
         sqlcmd -A -S SalesDB        **Use your SQL DBname**
         USE master;     
@@ -149,50 +149,50 @@ Det finns två sätt toocreate sökvägen:
         GO
 
 
-4. Stoppa hello Microsoft SQL Server-tjänsten.
+4. Stoppa Microsoft SQL Server-tjänsten.
 
         Net stop MSSQLSERVER
-5. Starta hello Microsoft SQL Server-tjänsten.
+5. Starta Microsoft SQL Server-tjänsten.
 
         Net start MSSQLSERVER
 
-Se toohello följande Azure riktlinjer för tillfällig Lagringsdisken:
+Se följande Azure-riktlinjer för tillfällig lagringsdisk:
 
-* [Med hjälp av SSD-enheter i Azure Virtual Machines toostore SQL Server TempDB-bufferten poolen tillägg](https://blogs.technet.microsoft.com/dataplatforminsider/2014/09/25/using-ssds-in-azure-vms-to-store-sql-server-tempdb-and-buffer-pool-extensions/)
+* [Använda SSD:er i virtuella Azure-datorer för att lagra SQL Server TempDB och buffertpooltillägg](https://blogs.technet.microsoft.com/dataplatforminsider/2014/09/25/using-ssds-in-azure-vms-to-store-sql-server-tempdb-and-buffer-pool-extensions/)
 * [Prestandametodtips för SQL Server i Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-performance)
 
-### <a name="failback-from-azure-tooan-on-premises-host"></a>Återställning (från Azure tooan lokal värd)
-Nu ska vi förstå hello diskar som är replikerade när du redundansväxlar från Azure tooyour lokal VMware eller Hyper-V-värden. De diskar som du skapar manuellt i Azure replikeras inte. Om du till exempel växlar över tre diskar och skapar två diskar direkt i Azure Virtual Machines kommer endast tre diskar som växlades över att växlas tillbaka. Du kan inte innehålla diskar som har skapats manuellt i återställning efter fel eller skydda igen från lokala tooAzure. Även replikerar inte hello tillfällig lagring disk tooon lokala värdar.
+### <a name="failback-from-azure-to-an-on-premises-host"></a>Redundansväxling (från Azure till lokal värd)
+Låt oss se vilka diskar som replikeras när du redundansväxlar från Azure till din lokala VMware- eller Hyper-V-värd. De diskar som du skapar manuellt i Azure replikeras inte. Om du till exempel växlar över tre diskar och skapar två diskar direkt i Azure Virtual Machines kommer endast tre diskar som växlades över att växlas tillbaka. Du kan inte ta med diskar som har skapats manuellt i redundansväxlingar eller vars skydd har återaktiverats från en lokal plats till Azure. Den tillfälliga lagringsdisken replikeras inte heller till lokala värdar.
 
-#### <a name="failback-toooriginal-location-recovery"></a>Återställning för återställning efter fel toooriginal plats
+#### <a name="failback-to-original-location-recovery"></a>Redundansväxling till ursprungsplatsen
 
-I föregående exempel hello är hello diskkonfigurationen för virtuella Azure-datorn följande:
+I föregående exempel är diskkonfigurationen av den virtuella Azure-datorn följande:
 
-**Antal gästoperativsystem** | **Enhetsbeteckning** | **Datatyp av på hello disk**
+**Antal gästoperativsystem** | **Enhetsbeteckning** | **Datatyp på disken**
 --- | --- | ---
 DISK0 | C:\ | Operativsystemdisk
-Disk1 | E:\ | Tillfällig lagring < /br / >< /br / > Azure lägger till den här disken och tilldelar hello första tillgängliga enhetsbeteckning.
+Disk1 | E:\ | Temporär lagring</br /> </br />Azure lägger till den här disken och tilldelar den första tillgängliga enhetsbeteckningen.
 Disk2 | D:\ | SQL-systemdatabas och användardatabas1
 Disk3 | G:\ | Användardatabas2
 
 
-#### <a name="vmware-tooazure"></a>VMware tooAzure
-När återställningen är klar toohello ursprungsplatsen saknar hello diskkonfigurationen för återställning av virtuell dator exkluderade diskar. Diskar som har undantagits från VMware tooAzure blir inte tillgängliga på hello återställning av virtuell dator.
+#### <a name="vmware-to-azure"></a>VMware till Azure
+När återställningen till den ursprungliga platsen är klar finns inte den undantagna disken i diskkonfigurationen för den virtuella datorn. Diskar som undantogs från VMware till Azure är inte tillgängliga på den virtuella datorn som redundansväxlas.
 
-Efter planerad redundans från Azure tooon lokal VMware är diskar på hello virtuell VMWare-dator (ursprungsplatsen) följande:
+Diskar på den virtuella VMWare-datorn (ursprunglig plats) efter planerad redundansväxling från Azure till lokalt VMware är följande:
 
-**Antal gästoperativsystem** | **Enhetsbeteckning** | **Datatyp av på hello disk**
+**Antal gästoperativsystem** | **Enhetsbeteckning** | **Datatyp på disken**
 --- | --- | ---
 DISK0 | C:\ | Operativsystemdisk
 Disk1 | D:\ | SQL-systemdatabas och användardatabas1
 Disk2 | G:\ | Användardatabas2
 
-#### <a name="hyper-v-tooazure"></a>Hyper-V tooAzure
-När återställning efter fel toohello ursprungsplatsen hello hello återställning virtuell disk konfigurationen förblir samma som den ursprungliga diskkonfiguration av virtuell dator för Hyper-V. Diskar som har undantagits från tooAzure för Hyper-V-platsen är tillgängliga på hello återställning av virtuell dator.
+#### <a name="hyper-v-to-azure"></a>Hyper-V till Azure
+När återställningen till den ursprungliga platsen är klar är diskkonfigurationen för den virtuella datorn densamma som den ursprungliga diskkonfigurationen för den virtuella datorn för Hyper-V. Diskar som undantogs från Hyper-V-plats till Azure är inte tillgängliga på den virtuella datorn som redundansväxlas.
 
-Efter en planerad redundansväxling från Azure tooon lokala Hyper-V är-diskar på hello Hyper-V virtuell dator (ursprungsplatsen) följande:
+Diskar på den virtuella Hyper-V-datorn (ursprunglig plats) efter planerad redundansväxling från Azure till lokalt Hyper-V är följande:
 
-**Disknamn** | **Antal gästoperativsystem** | **Enhetsbeteckning** | **Datatyp av på hello disk**
+**Disknamn** | **Antal gästoperativsystem** | **Enhetsbeteckning** | **Datatyp på disken**
 --- | --- | --- | ---
 DB-Disk0-OS | DISK0 |   C:\ | Operativsystemdisk
 DB-Disk1 | Disk1 | D:\ | SQL-systemdatabas och användardatabas1
@@ -201,69 +201,69 @@ DB-Disk3 (utesluten disk) | Disk3 | F:\ | SQL tempdb-databasen (mappsökväg (F:
 DB-Disk4 | Disk4 | G:\ | Användardatabas2
 
 
-#### <a name="exclude-hello-paging-file-pagefilesys-disk"></a>Exkludera hello sidindelning fil (pagefile.sys) disk
+#### <a name="exclude-the-paging-file-pagefilesys-disk"></a>Undanta växlingsfildisken (pagefile.sys)
 
 Anta att du har en virtuell dator som har en växlingsdisk som kan undantas.
 Det finns två fall.
 
-#### <a name="case-1-hello-paging-file-is-configured-on-hello-d-drive"></a>Fall 1: hello växlingsfilen är konfigurerad på hello D: enhet
-Här är hello diskkonfigurationen:
+#### <a name="case-1-the-paging-file-is-configured-on-the-d-drive"></a>Fall 1: Växlingsfilen är konfigurerad på enheten D:
+Här är diskkonfigurationen:
 
 
-**Disknamn** | **Antal gästoperativsystem** | **Enhetsbeteckning** | **Datatyp av på hello disk**
+**Disknamn** | **Antal gästoperativsystem** | **Enhetsbeteckning** | **Datatyp på disken**
 --- | --- | --- | ---
 DB-Disk0-OS | DISK0 | C:\ | Operativsystemdisk
-DB-disk 1 (exkluderade hello disk från hello skydd) | Disk1 | D:\ | pagefile.sys
+DB-Disk1 (disken har undantagits från skydd) | Disk1 | D:\ | pagefile.sys
 DB-Disk2 | Disk2 | E:\ | Användardata 1
 DB-Disk3 | Disk3 | F:\ | Användardata 2
 
-Här följer hello inställningar för växlingsfiler på hello virtuella källdatorn:
+Här följer inställningarna för växlingsfiler på den virtuella källdatorn:
 
 ![Inställningar för växlingsfiler på den virtuella källdatorn](./media/site-recovery-exclude-disk/pagefile-on-d-drive-sourceVM.png)
 
 
-Efter en redundansväxling av hello virtuell dator från VMware tooAzure eller Hyper-V tooAzure är diskar på hello Azure-dator följande:
+Efter redundansväxlingen av den virtuella datorn från VMware till Azure eller Hyper-V till Azure är diskarna på den virtuella Azure-datorn följande:
 
-**Disknamn** | **Antal gästoperativsystem** | **Enhetsbeteckning** | **Datatyp av på hello disk**
+**Disknamn** | **Antal gästoperativsystem** | **Enhetsbeteckning** | **Datatyp på disken**
 --- | --- | --- | ---
 DB-Disk0-OS | DISK0 | C:\ | Operativsystemdisk
 DB-Disk1 | Disk1 | D:\ | Temporär lagring</br /> </br />pagefile.sys
 DB-Disk2 | Disk2 | E:\ | Användardata 1
 DB-Disk3 | Disk3 | F:\ | Användardata 2
 
-Eftersom disk 1 (D:) uteslöts är D: hello första enhetsbeteckningen hello tillgängliga listan. Azure tilldelar D: toohello temporära lagringsvolymen. Eftersom D: är tillgänglig på hello Azure virtuella hello samma hello inställningen växlingsfil hello virtuella finns kvar.
+Eftersom Disk1 (D:) har undantagits är D: den första tillgängliga enhetsbeteckningen i listan. Azure tilldelar enhetsbeteckningen D: till den tillfälliga lagringsvolymen. Eftersom D: är tillgänglig på den virtuella Azure-datorn förblir inställningen för växlingsfilen densamma.
 
-Här följer hello inställningar för växlingsfiler på hello virtuella Azure-datorn:
+Här följer inställningarna för växlingsfiler på den virtuella Azure-källdatorn:
 
 ![Inställningar för växlingsfiler på den virtuella Azure-datorn](./media/site-recovery-exclude-disk/pagefile-on-Azure-vm-after-failover.png)
 
-#### <a name="case-2-hello-paging-file-is-configured-on-another-drive-other-than-d-drive"></a>Fall 2: hello växlingsfilen har konfigurerats på en annan enhet (än D:)
+#### <a name="case-2-the-paging-file-is-configured-on-another-drive-other-than-d-drive"></a>Fall 2: Växlingsfilen är konfigurerad på en annan enhet (än D:)
 
-Här är hello källdatorns virtuell diskkonfiguration:
+Här är diskkonfigurationen av den virtuella källdatorn:
 
-**Disknamn** | **Antal gästoperativsystem** | **Enhetsbeteckning** | **Datatyp av på hello disk**
+**Disknamn** | **Antal gästoperativsystem** | **Enhetsbeteckning** | **Datatyp på disken**
 --- | --- | --- | ---
 DB-Disk0-OS | DISK0 | C:\ | Operativsystemdisk
-DB-disk 1 (exklusive hello disk från skydd) | Disk1 | G:\ | pagefile.sys
+DB-Disk1 (disken har undantagits från skydd) | Disk1 | G:\ | pagefile.sys
 DB-Disk2 | Disk2 | E:\ | Användardata 1
 DB-Disk3 | Disk3 | F:\ | Användardata 2
 
-Här följer hello inställningar för växlingsfiler på hello lokala virtuella datorn:
+Här följer inställningarna för växlingsfiler på den lokala virtuella datorn:
 
-![Växlingsfilens på hello lokala virtuella datorn](./media/site-recovery-exclude-disk/pagefile-on-g-drive-sourceVM.png)
+![Inställningar för växlingsfiler på den lokala virtuella datorn](./media/site-recovery-exclude-disk/pagefile-on-g-drive-sourceVM.png)
 
-Efter en redundansväxling av hello virtuell dator från VMware/Hyper-V tooAzure är diskar på hello Azure-dator följande:
+Efter redundansväxlingen av den virtuella datorn från VMware/Hyper-V till Azure är diskarna på den virtuella Azure-datorn följande:
 
-**Disknamn**| **Antal gästoperativsystem**| **Enhetsbeteckning** | **Datatyp av på hello disk**
+**Disknamn**| **Antal gästoperativsystem**| **Enhetsbeteckning** | **Datatyp på disken**
 --- | --- | --- | ---
 DB-Disk0-OS | DISK0  |C:\ |Operativsystemdisk
 DB-Disk1 | Disk1 | D:\ | Temporär lagring</br /> </br />pagefile.sys
 DB-Disk2 | Disk2 | E:\ | Användardata 1
 DB-Disk3 | Disk3 | F:\ | Användardata 2
 
-Eftersom D: hello första enhetsbeteckningen tillgängliga hello listan tilldelar Azure D: toohello temporära lagringsvolymen. För alla hello replikeras diskar hello hello enhet bokstav förblir densamma. Eftersom hello G: disken inte är tillgänglig används hello hello C:-enheten för hello växlingsfil.
+Eftersom D: är den första tillgängliga enhetsbeteckningen i listan tilldelar Azure enhetsbeteckningen D: till den tillfälliga lagringsvolymen. Alla replikerade diskar har kvar samma enhetsbeteckning. Eftersom disk G: inte är tillgänglig använder systemet enhet C: för växlingsfilen.
 
-Här följer hello inställningar för växlingsfiler på hello virtuella Azure-datorn:
+Här följer inställningarna för växlingsfiler på den virtuella Azure-källdatorn:
 
 ![Inställningar för växlingsfiler på den virtuella Azure-datorn](./media/site-recovery-exclude-disk/pagefile-on-Azure-vm-after-failover-2.png)
 

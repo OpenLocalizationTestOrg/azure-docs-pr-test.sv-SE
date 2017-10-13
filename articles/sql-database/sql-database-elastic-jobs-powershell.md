@@ -1,6 +1,6 @@
 ---
-title: "aaaCreate och hantera elastiska jobb med hjälp av PowerShell | Microsoft Docs"
-description: "PowerShell används toomanage Azure SQL Database-pooler"
+title: "Skapa och hantera elastiska jobb med hjälp av PowerShell | Microsoft Docs"
+description: "PowerShell som används för att hantera Azure SQL Database-pooler"
 services: sql-database
 documentationcenter: 
 manager: jhubbard
@@ -14,31 +14,31 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
-ms.openlocfilehash: f6c18aecfa7e8c0b102a3b7cd2f266f5542ae400
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: b4c97e8f51581f9a3f7c5a8d8e82562255fe7b48
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="create-and-manage-sql-database-elastic-jobs-using-powershell-preview"></a>Skapa och hantera SQL Database: elastiska jobb med hjälp av PowerShell (förhandsgranskning)
 
-hello PowerShell APIs för **elastisk databas jobb** (under förhandsgranskning) gör att du kan definiera en grupp databaser mot vilken skript körs. Den här artikeln visar hur toocreate och hantera **elastisk databas jobb** med PowerShell-cmdlets. Se [elastiska jobb översikt](sql-database-elastic-jobs-overview.md). 
+PowerShell-APIs för **elastisk databas jobb** (under förhandsgranskning) gör att du kan definiera en grupp databaser mot vilken skript körs. Den här artikeln visar hur du skapar och hanterar **elastisk databas jobb** med PowerShell-cmdlets. Se [elastiska jobb översikt](sql-database-elastic-jobs-overview.md). 
 
 ## <a name="prerequisites"></a>Krav
 * En Azure-prenumeration. För en kostnadsfri utvärderingsversion finns [kostnadsfri utvärderingsversion för en månad](https://azure.microsoft.com/pricing/free-trial/).
-* En uppsättning databaser som skapats med hello elastisk Databasverktyg. Se [Kom igång med elastiska Databasverktyg](sql-database-elastic-scale-get-started.md).
-* Azure PowerShell. Detaljerad information finns i [hur tooinstall och konfigurera Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview).
+* En uppsättning databaser som skapats med elastiska Databasverktyg. Se [Kom igång med elastiska Databasverktyg](sql-database-elastic-scale-get-started.md).
+* Azure PowerShell. Mer information finns i [Så här installerar och konfigurerar du Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview).
 * **Den elastiska databasen jobb** PowerShell paket: finns [jobb installerar elastisk databas](sql-database-elastic-jobs-service-installation.md)
 
 ### <a name="select-your-azure-subscription"></a>Välj din Azure-prenumeration
-tooselect hello prenumeration som du behöver ditt prenumerations-Id (**- SubscriptionId**) eller prenumerationsnamn (**- SubscriptionName**). Om du har flera prenumerationer kan du köra hello **Get-AzureRmSubscription** cmdlet och kopiera hello önskad prenumerationsinformation hello resultatmängden. När du har din prenumerationsinformation kör följande cmdlet tooset hello prenumerationen som hello standard, nämligen hello mål för att skapa och hantera jobb:
+Välj prenumerationen du behöver ditt prenumerations-Id (**- SubscriptionId**) eller prenumerationsnamn (**- SubscriptionName**). Om du har flera prenumerationer kan du köra den **Get-AzureRmSubscription** cmdlet och kopiera önskade prenumerationsinformation från resultatet anges. När du har din prenumerationsinformation kör du följande cmdlet för att ange den här prenumerationen som standard, nämligen mål för att skapa och hantera jobb:
 
     Select-AzureRmSubscription -SubscriptionId {SubscriptionID}
 
-Hej [PowerShell ISE](https://technet.microsoft.com/library/dd315244.aspx) rekommenderas för användning toodevelop och köra PowerShell-skript mot hello elastisk databas jobb.
+Den [PowerShell ISE](https://technet.microsoft.com/library/dd315244.aspx) rekommenderas att utveckla och köra PowerShell-skript mot jobb för elastisk databas.
 
 ## <a name="elastic-database-jobs-objects"></a>Elastiska jobb databasobjekt
-Hej följande tabell visar ut alla hello objekttyper för **elastisk databas jobb** tillsammans med dess beskrivning och relevanta PowerShell APIs.
+I följande tabell visas ut alla objekttyper för **elastisk databas jobb** tillsammans med dess beskrivning och relevanta PowerShell APIs.
 
 <table style="width:100%">
   <tr>
@@ -48,14 +48,14 @@ Hej följande tabell visar ut alla hello objekttyper för **elastisk databas job
   </tr>
   <tr>
     <td>Autentiseringsuppgift</td>
-    <td>Användarnamn och lösenord toouse när du ansluter toodatabases för körning av skript eller ett program av DACPACs. <p>hello lösenord krypteras innan det skickas tooand lagra i hello elastiska databasen jobb databas.  hello lösenord dekrypteras av hello elastiska databasen jobb tjänsten via hello autentiseringsuppgifter skapas och som överförts från hello installationsskript.</td>
+    <td>Användarnamn och lösenord för att ansluta till databaser för körning av skript eller ett program av DACPACs. <p>Lösenordet krypteras innan du skickar till och lagra i databasen för den elastiska databasen jobb.  Lösenordet dekrypteras av tjänsten elastiska databasen jobb via autentiseringsuppgifter skapas och som överförts från ett installationsskript.</td>
     <td><p>Get-AzureSqlJobCredential</p>
     <p>Ny AzureSqlJobCredential</p><p>Ange AzureSqlJobCredential</p></td></td>
   </tr>
 
   <tr>
     <td>Skript</td>
-    <td>Transact-SQL-skript toobe används för att köras över databaser.  hello skript ska vara idempotent skapade toobe eftersom hello tjänsten kommer att försöka köra hello skriptet vid fel.
+    <td>Transact-SQL-skript som ska användas för körning över databaser.  Skriptet ska skapas för att vara idempotent eftersom tjänsten kommer att försöka körningen av skriptet vid fel.
     </td>
     <td>
     <p>Get-AzureSqlJobContent</p>
@@ -67,7 +67,7 @@ Hej följande tabell visar ut alla hello objekttyper för **elastisk databas job
 
   <tr>
     <td>DACPAC</td>
-    <td><a href="https://msdn.microsoft.com/library/ee210546.aspx">Programmet på datanivå </a> paketet toobe används över flera databaser.
+    <td><a href="https://msdn.microsoft.com/library/ee210546.aspx">Programmet på datanivå </a> paket som ska tillämpas över databaser.
 
     </td>
     <td>
@@ -78,7 +78,7 @@ Hej följande tabell visar ut alla hello objekttyper för **elastisk databas job
   </tr>
   <tr>
     <td>Databasen mål</td>
-    <td>Databas- och name peka tooan Azure SQL Database.
+    <td>Namn för databasen och pekar på en Azure SQL Database.
 
     </td>
     <td>
@@ -88,7 +88,7 @@ Hej följande tabell visar ut alla hello objekttyper för **elastisk databas job
   </tr>
   <tr>
     <td>Fragmentera kartan mål</td>
-    <td>Kombinationen av target databas och en autentiseringsuppgift toobe används toodetermine information som lagras i en elastisk databas Fragmentera mappning.
+    <td>Kombinationen av target databas och autentiseringsuppgifter som används för att avgöra information som lagras i en elastisk databas Fragmentera mappning.
     </td>
     <td>
     <p>Get-AzureSqlJobTarget</p>
@@ -98,7 +98,7 @@ Hej följande tabell visar ut alla hello objekttyper för **elastisk databas job
   </tr>
 <tr>
     <td>Mål för anpassad insamling</td>
-    <td>Angiven grupp databaser toocollectively använda för körning.</td>
+    <td>Angiven grupp databaser som ska användas tillsammans för att köras.</td>
     <td>
     <p>Get-AzureSqlJobTarget</p>
     <p>Ny AzureSqlJobTarget</p>
@@ -116,7 +116,7 @@ Hej följande tabell visar ut alla hello objekttyper för **elastisk databas job
 <tr>
     <td>Jobb</td>
     <td>
-    <p>Definition av parametrar för ett jobb som kan använda tootrigger körning eller toofulfill ett schema.</p>
+    <p>Definition av parametrar för ett jobb som kan användas för att starta körningen eller för att uppfylla ett schema.</p>
     </td>
     <td>
     <p>Get-AzureSqlJob</p>
@@ -128,7 +128,7 @@ Hej följande tabell visar ut alla hello objekttyper för **elastisk databas job
 <tr>
     <td>Jobbkörningen</td>
     <td>
-    <p>Behållare för aktiviteter nödvändiga toofulfill antingen köra ett skript eller använda DACPAC tooa mål med autentiseringsuppgifter för databasanslutningar med fel hanteras i enlighet tooan körningsprincipen.</p>
+    <p>Behållare för aktiviteter som krävs för att uppfylla antingen köra ett skript eller använda en DACPAC till ett mål med autentiseringsuppgifter för databasanslutningar med fel hanteras i enlighet med en körningsprincip.</p>
     </td>
     <td>
     <p>Get-AzureSqlJobExecution</p>
@@ -140,8 +140,8 @@ Hej följande tabell visar ut alla hello objekttyper för **elastisk databas job
 <tr>
     <td>Jobb för körning av aktiviteten</td>
     <td>
-    <p>Enhet för arbete toofulfill ett jobb.</p>
-    <p>Om en projektaktivitet inte kan toosuccessfully köra, hello resulterande Undantagsmeddelande loggas och en ny matchande projektaktivitet skapas och körs i enlighet toohello angetts körningsprincipen.</p></p>
+    <p>Arbetsenhet att slutföra ett jobb.</p>
+    <p>Om en projektaktivitet inte kan har köra, resulterande Undantagsmeddelande loggas och en ny matchande projektaktivitet skapas och körs i enlighet med angiven körningsprincipen.</p></p>
     </td>
     <td>
     <p>Get-AzureSqlJobExecution</p>
@@ -166,7 +166,7 @@ Hej följande tabell visar ut alla hello objekttyper för **elastisk databas job
 <tr>
     <td>Schema</td>
     <td>
-    <p>Tid baserat specifikationen för körning av tootake plats på ett reoccurring intervall eller på en gång.</p>
+    <p>Tid baserat specifikationen för körning ska ske på ett reoccurring intervall eller på en gång.</p>
     </td>
     <td>
     <p>Get-AzureSqlJobSchedule</p>
@@ -178,7 +178,7 @@ Hej följande tabell visar ut alla hello objekttyper för **elastisk databas job
 <tr>
     <td>Jobbet utlöser</td>
     <td>
-    <p>En mappning mellan ett jobb och ett schema tootrigger jobbkörningen enligt toohello schema.</p>
+    <p>En mappning mellan ett jobb och ett schema för att utlösaren jobb enligt schemat.</p>
     </td>
     <td>
     <p>Ny AzureSqlJobTrigger</p>
@@ -188,50 +188,50 @@ Hej följande tabell visar ut alla hello objekttyper för **elastisk databas job
 </table>
 
 ## <a name="supported-elastic-database-jobs-group-types"></a>Stöds för elastisk databas jobb gruppera typer
-hello jobbet kör Transact-SQL (T-SQL)-skript eller ett program av DACPACs över flera databaser. När ett jobb är skickade toobe utförs över begärde en grupp av databaser, hello jobbet ”expanderas” Hej till underordnade jobb där varje utför hello körning mot en enskild databas i hello grupp. 
+Jobbet körs Transact-SQL (T-SQL)-skript eller ett program av DACPACs över flera databaser. När ett jobb skickas för att köra över en grupp databaser jobbet ”utökar” den till underordnade jobb där varje utför begärda körning mot en enskild databas i gruppen. 
 
 Det finns två typer av grupper som du kan skapa: 
 
-* [Fragmentera kartan](sql-database-elastic-scale-shard-map-management.md) grupp: när ett jobb är skickade tootarget en Fragmentera karta, hello jobbet frågar hello Fragmentera kartan toodetermine aktuell uppsättning shards och skapar sedan underordnade jobb för varje Fragmentera hello Fragmentera kartan.
-* Samlingsgruppen för anpassade: en anpassad definierad uppsättning databaser. När ett jobb riktar sig till en anpassad samling, skapar den underordnade jobb för varje databas för närvarande i hello anpassad samling.
+* [Fragmentera kartan](sql-database-elastic-scale-shard-map-management.md) grupp: när ett jobb skickas för att rikta en Fragmentera karta jobbet frågar Fragmentera kartan för att fastställa den aktuella mängden shards och skapar sedan underordnade jobb för varje Fragmentera i kartan Fragmentera.
+* Samlingsgruppen för anpassade: en anpassad definierad uppsättning databaser. När ett jobb riktar sig till en anpassad samling, skapar den underordnade jobb för varje databas för närvarande i anpassade samlingar.
 
-## <a name="tooset-hello-elastic-database-jobs-connection"></a>tooset hello elastiska jobb databasanslutning
-En anslutning måste toobe set toohello jobb *databasen* tidigare toousing hello jobb API: er. Kör denna cmdlet utlöser en autentiseringsuppgift fönstret toopop in begär hello användarnamn och lösenord som skapas när du installerar elastisk databas jobb. Alla exemplen i det här avsnittet förutsätter att det här första steget redan har utförts.
+## <a name="to-set-the-elastic-database-jobs-connection"></a>Om du vill ange den elastiska databasen jobb anslutning
+En anslutning måste anges till jobben *databasen* innan du använder jobb API: er. Kör denna cmdlet utlöser ett fönster för autentiseringsuppgifter att popup-begär användarnamn och lösenord som skapas när du installerar elastisk databas jobb. Alla exemplen i det här avsnittet förutsätter att det här första steget redan har utförts.
 
-Öppna en anslutning toohello elastisk databas jobb:
+Öppna en anslutning till elastisk databas jobb:
 
     Use-AzureSqlJobConnection -CurrentAzureSubscription 
 
-## <a name="encrypted-credentials-within-hello-elastic-database-jobs"></a>Krypterade autentiseringsuppgifter i jobb för hello elastisk databas
-Databasautentiseringsuppgifter kan infogas i hello jobb *databasen* med dess lösenord krypteras. Det är nödvändigt toostore autentiseringsuppgifter tooenable jobb toobe körs vid ett senare tillfälle (med jobbscheman).
+## <a name="encrypted-credentials-within-the-elastic-database-jobs"></a>Krypterade autentiseringsuppgifter i jobb för elastisk databas
+Databasautentiseringsuppgifter kan infogas i jobben *databasen* med dess lösenord krypteras. Det är nödvändigt att lagra autentiseringsuppgifter för att aktivera jobb som ska utföras vid ett senare tillfälle (med jobbscheman).
 
-Kryptering fungerar via ett certifikat som skapats som en del av hello installationsskript. hello installationsskriptet skapar och överföringar hello certifikatet till hello Azure Cloud Service för dekryptering av hello lagras krypterade lösenord. hello Azure Cloud Service senare lagrar hello offentlig nyckel i hello jobb *databasen* som aktiverar hello PowerShell API eller klassiska Azure-portalen gränssnittet tooencrypt angivna lösenord utan hello certifikat toobe har installerats lokalt.
+Kryptering fungerar via ett certifikat som skapas som en del av installationen. Installationsskriptet skapar och laddar upp certifikatet i Azure Cloud Service för dekryptering av lagrade krypterade lösenord. Azure Cloud Service senare lagrar den offentliga nyckeln i jobben *databasen* som gör det möjligt för gränssnittet PowerShell API eller klassiska Azure-portalen att kryptera en lösenordet utan att certifikatet ska vara lokalt installerad.
 
-hello autentiseringsuppgifter lösenord är krypterad och säker från användare med läsåtkomst tooElastic jobb databasobjekt. Men det är möjligt för en obehörig användare med läs-/ skrivåtkomst tooElastic databasen jobb objekt tooextract ett lösenord. Autentiseringsuppgifterna är utformad toobe återanvänds över jobb körningar. Autentiseringsuppgifter skickas tootarget databaser när anslutningar upprättas. Det finns för närvarande inga begränsningar för hello måldatabaserna används för varje autentiseringsuppgifter, obehörig användare kan lägga till ett mål för databasen för en databas under hello angripare kontroll. hello användare kan sedan starta ett jobb som målobjekt för den här databasen toogain hello-referensens lösenord.
+Autentiseringsuppgifter lösenord är krypterad och säkra från användare med läsåtkomst till elastiska jobb databasobjekt. Men det är möjligt för en obehörig användare med skrivskyddad åtkomst till den elastiska databasen jobb objekt att extrahera ett lösenord. Autentiseringsuppgifterna är avsedda att återanvändas i jobbet körningar. Autentiseringsuppgifter skickas till måldatabaserna när anslutningar upprättas. Det finns för närvarande inga begränsningar för måldatabaserna används för varje autentiseringsuppgifter, obehörig användare kan lägga till databasen mål för en databas med skadliga användarkontrollen. Användaren kan sedan starta ett jobb som den här databasen för att få lösenord för de autentiseringsuppgifter som mål.
 
 Rekommenderade säkerhetsmetoder för elastisk databas jobb är:
 
-* Begränsa användning av hello-API: er tootrusted enskilda användare.
-* Autentiseringsuppgifter ska ha hello minst privilegier krävs tooperform hello projektaktivitet.  Mer information kan ses i detta [auktoriserings- och behörigheter](https://msdn.microsoft.com/library/bb669084.aspx) SQL Server MSDN-artikel.
+* Begränsa användning av API: er till betrodda personer.
+* Autentiseringsuppgifter bör ha minst behörighet att utföra åtgärden för jobbet.  Mer information kan ses i detta [auktoriserings- och behörigheter](https://msdn.microsoft.com/library/bb669084.aspx) SQL Server MSDN-artikel.
 
-### <a name="toocreate-an-encrypted-credential-for-job-execution-across-databases"></a>toocreate en krypterade autentiseringsuppgifter för jobbkörningen över databaser
-toocreate en ny krypterade autentiseringsuppgifter, hello [ **cmdlet Get-Credential** ](https://technet.microsoft.com/library/hh849815.aspx) uppmanas att ange ett användarnamn och lösenord som kan skickas toohello [ **ny AzureSqlJobCredential cmdlet**](/powershell/module/elasticdatabasejobs/new-azuresqljobcredential).
+### <a name="to-create-an-encrypted-credential-for-job-execution-across-databases"></a>Så här skapar du en krypterade autentiseringsuppgifter för jobbkörningen över databaser
+Så här skapar du en ny krypterade autentiseringsuppgifter i [ **cmdlet Get-Credential** ](https://technet.microsoft.com/library/hh849815.aspx) uppmanas att ange ett användarnamn och lösenord som kan skickas till den [ **cmdlet New-AzureSqlJobCredential** ](/powershell/module/elasticdatabasejobs/new-azuresqljobcredential).
 
     $credentialName = "{Credential Name}"
     $databaseCredential = Get-Credential
     $credential = New-AzureSqlJobCredential -Credential $databaseCredential -CredentialName $credentialName
     Write-Output $credential
 
-### <a name="tooupdate-credentials"></a>tooupdate autentiseringsuppgifter
-När du ändrar lösenord, använda hello [ **cmdlet Set-AzureSqlJobCredential** ](/powershell/module/elasticdatabasejobs/set-azuresqljobcredential) och ange hello **CredentialName** parameter.
+### <a name="to-update-credentials"></a>Uppdatera autentiseringsuppgifterna
+När du ändrar lösenord, använda den [ **cmdlet Set-AzureSqlJobCredential** ](/powershell/module/elasticdatabasejobs/set-azuresqljobcredential) och ange den **CredentialName** parameter.
 
     $credentialName = "{Credential Name}"
     Set-AzureSqlJobCredential -CredentialName $credentialName -Credential $credential 
 
-## <a name="toodefine-an-elastic-database-shard-map-target"></a>toodefine ett mål för elastisk databas Fragmentera karta
-tooexecute ett jobb för alla databaser i en Fragmentera (skapat med hjälp av [klientbibliotek för elastisk databas](sql-database-elastic-database-client-library.md)), Använd en Fragmentera som mål för hello-databasen. Det här exemplet kräver ett delat program som skapats med hjälp av hello klientbibliotek för elastisk databas. Se [komma igång med elastisk databas verktyg exempel](sql-database-elastic-scale-get-started.md).
+## <a name="to-define-an-elastic-database-shard-map-target"></a>Definiera ett mål för elastisk databas Fragmentera karta
+Att köra ett jobb för alla databaser i en Fragmentera (skapat med hjälp av [klientbibliotek för elastisk databas](sql-database-elastic-database-client-library.md)), Använd en Fragmentera som mål för databasen. Det här exemplet kräver ett delat program som skapats med hjälp av klientbiblioteket för elastisk databas. Se [komma igång med elastisk databas verktyg exempel](sql-database-elastic-scale-get-started.md).
 
-hello Fragmentera kartan manager-databasen måste anges som ett mål för databasen och sedan hello specifika Fragmentera mappning måste anges som mål.
+Fragmentera kartan manager-databasen måste anges som ett mål för databasen och sedan kartan specifika Fragmentera måste anges som mål.
 
     $shardMapCredentialName = "{Credential Name}"
     $shardMapDatabaseName = "{ShardMapDatabaseName}" #example: ElasticScaleStarterKit_ShardMapManagerDb
@@ -242,9 +242,9 @@ hello Fragmentera kartan manager-databasen måste anges som ett mål för databa
     Write-Output $shardMapTarget
 
 ## <a name="create-a-t-sql-script-for-execution-across-databases"></a>Skapa ett T-SQL-skript för körning på databaser
-När du skapar T-SQL-skript för körning, rekommenderas toobuild dem toobe [idempotent](https://en.wikipedia.org/wiki/Idempotence) och motståndskraftiga mot fel. Den elastiska databasen jobb kommer att försöka körningen av ett skript när körningen påträffar ett fel, oavsett hello klassificering av hello-fel.
+När du skapar T-SQL-skript för körning, rekommenderas att skapa dem för att vara [idempotent](https://en.wikipedia.org/wiki/Idempotence) och motståndskraftiga mot fel. Den elastiska databasen jobb kommer att försöka körningen av ett skript när körningen påträffar ett fel, oavsett klassificeringen av felet.
 
-Använd hello [ **cmdlet New-AzureSqlJobContent** ](/powershell/module/elasticdatabasejobs/new-azuresqljobcontent) toocreate och sparat ett skript för körning och ange hello **- ContentName** och **- CommandText**parametrar.
+Använd den [ **cmdlet New-AzureSqlJobContent** ](/powershell/module/elasticdatabasejobs/new-azuresqljobcontent) att skapa och spara ett skript för körning och ange den **- ContentName** och **- CommandText** parametrar.
 
     $scriptName = "Create a TestTable"
 
@@ -264,21 +264,21 @@ Använd hello [ **cmdlet New-AzureSqlJobContent** ](/powershell/module/elasticda
     Write-Output $script
 
 ### <a name="create-a-new-script-from-a-file"></a>Skapa ett nytt skript från en fil
-Om hello T-SQL-skript har definierats i en fil, använder du skriptet tooimport hello:
+Om T-SQL-skript har definierats i en fil, använder du detta för att importera skriptet:
 
     $scriptName = "My Script Imported from a File"
-    $scriptPath = "{Path tooSQL File}"
+    $scriptPath = "{Path to SQL File}"
     $scriptCommandText = Get-Content -Path $scriptPath
     $script = New-AzureSqlJobContent -ContentName $scriptName -CommandText $scriptCommandText
     Write-Output $script
 
-### <a name="tooupdate-a-t-sql-script-for-execution-across-databases"></a>tooupdate T-SQL-skript för körning över databaser
-Den här PowerShell-skript uppdateringar hello T-SQL kommandotexten för ett befintligt skript.
+### <a name="to-update-a-t-sql-script-for-execution-across-databases"></a>Uppdatera ett T-SQL-skript för körning över databaser
+Det här PowerShell-skriptet uppdaterar T-SQL-kommandotexten för ett befintligt skript.
 
-Ange hello följande variabler tooreflect hello önskad skript definition toobe set:
+Ange följande variabler återspeglar önskade skript definition anges:
 
     $scriptName = "Create a TestTable"
-    $scriptUpdateComment = "Adding AdditionalInformation column tooTestTable"
+    $scriptUpdateComment = "Adding AdditionalInformation column to TestTable"
     $scriptCommandText = "
     IF NOT EXISTS (SELECT name FROM sys.tables WHERE name = 'TestTable')
     BEGIN
@@ -299,13 +299,13 @@ Ange hello följande variabler tooreflect hello önskad skript definition toobe 
     INSERT INTO TestTable(InsertionTime, AdditionalInformation) VALUES (sysutcdatetime(), 'test');
     GO"
 
-### <a name="tooupdate-hello-definition-tooan-existing-script"></a>tooupdate hello definition tooan befintligt skript
+### <a name="to-update-the-definition-to-an-existing-script"></a>Uppdatera definitionen till ett befintligt skript
     Set-AzureSqlJobContentDefinition -ContentName $scriptName -CommandText $scriptCommandText -Comment $scriptUpdateComment 
 
-## <a name="toocreate-a-job-tooexecute-a-script-across-a-shard-map"></a>toocreate jobbet-tooexecute ett skript i en Fragmentera karta
+## <a name="to-create-a-job-to-execute-a-script-across-a-shard-map"></a>Att skapa ett jobb för att köra ett skript på en Fragmentera karta
 Detta PowerShell-skript startar ett jobb för körning av ett skript på varje Fragmentera i en elastisk skalbarhet Fragmentera mappning.
 
-Ange hello följande variabler tooreflect hello önskad skript och mål:
+Ange följande variabler återspeglar önskade skript och mål:
 
     $jobName = "{Job Name}"
     $scriptName = "{Script Name}"
@@ -317,30 +317,30 @@ Ange hello följande variabler tooreflect hello önskad skript och mål:
     $job = New-AzureSqlJob -ContentName $scriptName -CredentialName $credentialName -JobName $jobName -TargetId $shardMapTarget.TargetId
     Write-Output $job
 
-## <a name="tooexecute-a-job"></a>tooexecute ett jobb
+## <a name="to-execute-a-job"></a>Att köra ett jobb
 Det här PowerShell-skriptet körs ett befintligt jobb:
 
-Uppdatera hello variabeln tooreflect hello önskad jobbet namn toohave utförs följande:
+Uppdatera följande variabel för att återspegla önskade Jobbnamnet som har köras:
 
     $jobName = "{Job Name}"
     $jobExecution = Start-AzureSqlJobExecution -JobName $jobName 
     Write-Output $jobExecution
 
-## <a name="tooretrieve-hello-state-of-a-single-job-execution"></a>tooretrieve hello tillståndet för en enskild jobbkörningen
-Använd hello [ **cmdlet Get-AzureSqlJobExecution** ](/powershell/module/elasticdatabasejobs/get-azuresqljobexecution) och ange hello **JobExecutionId** parametern tooview hello tillståndet för jobbkörningen.
+## <a name="to-retrieve-the-state-of-a-single-job-execution"></a>Att hämta tillståndet för en enskild jobbkörningen
+Använd den [ **cmdlet Get-AzureSqlJobExecution** ](/powershell/module/elasticdatabasejobs/get-azuresqljobexecution) och ange den **JobExecutionId** parametern för att visa status för jobbkörningen.
 
     $jobExecutionId = "{Job Execution Id}"
     $jobExecution = Get-AzureSqlJobExecution -JobExecutionId $jobExecutionId
     Write-Output $jobExecution
 
-Använd hello samma **Get-AzureSqlJobExecution** med hello **IncludeChildren** parametern tooview hello tillstånd för underordnad jobbet körningar, nämligen hello specifikt tillstånd för varje jobbkörningen mot varje databasen som mål för hello jobb.
+Använda samma **Get-AzureSqlJobExecution** med den **IncludeChildren** parametern för att visa status för underordnade jobbet körningar, nämligen ett visst tillstånd för varje jobbkörningen mot varje databas som mål för jobbet.
 
     $jobExecutionId = "{Job Execution Id}"
     $jobExecutions = Get-AzureSqlJobExecution -JobExecutionId $jobExecutionId -IncludeChildren
     Write-Output $jobExecutions 
 
-## <a name="tooview-hello-state-across-multiple-job-executions"></a>tooview hello tillstånd över flera jobb körningar
-Hej [ **cmdlet Get-AzureSqlJobExecution** ](/powershell/module/elasticdatabasejobs/new-azuresqljob) har flera valfria parametrar som kan använda toodisplay flera jobb körningar, filtreras via hello angivna parametrar. hello nedan visar några av hello möjliga sätt toouse Get-AzureSqlJobExecution:
+## <a name="to-view-the-state-across-multiple-job-executions"></a>Visa status över flera jobb körningar
+Den [ **cmdlet Get-AzureSqlJobExecution** ](/powershell/module/elasticdatabasejobs/new-azuresqljob) flera valfria parametrar som kan användas för att visa flera jobb körningar, filtreras via de angivna parametrarna. Följande visar några av de möjliga sätt att använda Get-AzureSqlJobExecution:
 
 Hämta alla aktiva översta nivå jobbet körningar:
 
@@ -375,7 +375,7 @@ Hämta alla jobb som mål för en angiven anpassad samling, inklusive inaktiva j
     $target = Get-AzureSqlJobTarget -CustomCollectionName $customCollectionName
     Get-AzureSqlJobExecution -TargetId $target.TargetId -IncludeInactive
 
-Hämta hello lista över jobb uppgiften körningar inom en specifik jobbkörningen:
+Hämta listan över jobb uppgiften körningar inom en specifik jobbkörningen:
 
     $jobExecutionId = "{Job Execution Id}"
     $jobTaskExecutions = Get-AzureSqlJobTaskExecution -JobExecutionId $jobExecutionId
@@ -383,14 +383,14 @@ Hämta hello lista över jobb uppgiften körningar inom en specifik jobbkörning
 
 Hämta jobb aktivitetsinformation körning:
 
-hello följande PowerShell-skript kan vara används tooview hello information om ett jobb för körning av aktiviteten, vilket är särskilt användbart när körningen felsökningsändamål.
+Följande PowerShell-skript kan användas för att visa information om ett jobb för körning av aktiviteten, vilket är särskilt användbart när körningen felsökningsändamål.
 
     $jobTaskExecutionId = "{Job Task Execution Id}"
     $jobTaskExecution = Get-AzureSqlJobTaskExecution -JobTaskExecutionId $jobTaskExecutionId
     Write-Output $jobTaskExecution
 
-## <a name="tooretrieve-failures-within-job-task-executions"></a>tooretrieve fel i jobb uppgiften körningar
-Hej **JobTaskExecution objekt** innehåller en egenskap för hello livscykeln för hello uppgiften tillsammans med en meddelandeegenskap. Om ett jobb för körning av aktiviteten misslyckades hello livscykel kommer att ange egenskapen för*misslyckades* och kommer att anges hello meddelandeegenskap toohello resulterande Undantagsmeddelande och dess stacken. Om ett jobb misslyckades, är det viktigt tooview hello information om jobbuppgifter som misslyckades för ett visst jobb.
+## <a name="to-retrieve-failures-within-job-task-executions"></a>Att hämta fel i jobb uppgiften körningar
+Den **JobTaskExecution objekt** innehåller en egenskap för livscykeln för uppgiften tillsammans med en meddelandeegenskap. Om ett jobb för körning av aktiviteten misslyckades livscykel egenskap anges *misslyckades* och meddelandeegenskapen kommer att anges till det resulterande Undantagsmeddelandet och dess stacken. Om ett jobb misslyckades, är det viktigt att visa information om jobbuppgifter som misslyckades för ett visst jobb.
 
     $jobExecutionId = "{Job Execution Id}"
     $jobTaskExecutions = Get-AzureSqlJobTaskExecution -JobExecutionId $jobExecutionId
@@ -402,8 +402,8 @@ Hej **JobTaskExecution objekt** innehåller en egenskap för hello livscykeln f�
             }
         }
 
-## <a name="toowait-for-a-job-execution-toocomplete"></a>toowait för en toocomplete för körning av jobbet
-hello följande PowerShell-skript kan vara används toowait för ett jobb uppgiften toocomplete:
+## <a name="to-wait-for-a-job-execution-to-complete"></a>Vänta på ett jobbkörning ska slutföras
+Följande PowerShell-skript kan användas för att vänta på en projektaktivitet att slutföra:
 
     $jobExecutionId = "{Job Execution Id}"
     Wait-AzureSqlJobExecution -JobExecutionId $jobExecutionId 
@@ -413,14 +413,14 @@ Den elastiska databasen jobb kan du skapa anpassade körningsprinciper som kan a
 
 Körningsprinciper tillåter för närvarande för att definiera:
 
-* Namn: Identifierare för hello körningsprincipen.
+* Namn: Identifierare för körningsprincipen.
 * Tidsgräns för jobb: Total tid innan ett jobb kommer att avbrytas av elastiska databasen jobb.
-* Inledande återförsöksintervall: Intervall toowait innan nytt försök görs.
-* Maximal återförsöksintervall: Locket försök intervall toouse.
-* Försök intervall Backoff värde: Värde används toocalculate hello nästa intervall mellan försök.  hello används följande formel: (första försök intervall) * Math.pow ((intervall Backoff värde) (antal nya försök) - 2). 
-* Maximalt antal försök: hello maximalt antal försök försök tooperform inom ett jobb.
+* Inledande återförsöksintervall: Intervall ska vänta innan nytt försök görs.
+* Maximal återförsöksintervall: Locket återförsöksintervall ska användas.
+* Försök intervall Backoff värde: Värde används för att beräkna nästa intervall mellan försök.  Följande formel används: (första försök intervall) * Math.pow ((intervall Backoff värde) (antal nya försök) - 2). 
+* Maximalt antal försök: Maximalt antal försök försöker utföra inom ett jobb.
 
-hello standard körningsprincipen använder hello följande värden:
+Standard-körningsprincipen används följande värden:
 
 * Namn: Standardprincipen för körning
 * Tidsgräns för jobb: 1 vecka
@@ -429,7 +429,7 @@ hello standard körningsprincipen använder hello följande värden:
 * Försök intervall värde: 2
 * Maximalt antal försök: 2 147 483 647
 
-Skapa hello önskad körningsprincipen:
+Skapa önskade körningsprincipen:
 
     $executionPolicyName = "{Execution Policy Name}"
     $initialRetryInterval = New-TimeSpan -Seconds 10
@@ -442,7 +442,7 @@ Skapa hello önskad körningsprincipen:
     Write-Output $executionPolicy
 
 ### <a name="update-a-custom-execution-policy"></a>Uppdatera en anpassad körningsprincip
-Uppdatera hello önskad körning princip tooupdate:
+Uppdatera önskade körningsprincipen att uppdatera:
 
     $executionPolicyName = "{Execution Policy Name}"
     $initialRetryInterval = New-TimeSpan -Seconds 15
@@ -454,65 +454,65 @@ Uppdatera hello önskad körning princip tooupdate:
     Write-Output $updatedExecutionPolicy
 
 ## <a name="cancel-a-job"></a>Avbryta ett jobb
-Den elastiska databasen jobb stöder förfrågningar om annullering av jobb.  Om den elastiska databasen jobb upptäcker en begäran om att avbryta ett jobb som körs, försöker den toostop hello jobb.
+Den elastiska databasen jobb stöder förfrågningar om annullering av jobb.  Om den elastiska databasen jobb upptäcker en begäran om att avbryta ett jobb som körs, försöker den att stoppa jobbet.
 
 Det finns två olika sätt att elastiska databasen jobb kan utföra en annullering:
 
-1. Avbryt aktiviteter som körs: om en annullering identifieras när en aktivitet körs för närvarande en annullering görs inom hello aspekt av hello aktivitet som körs.  Exempel: om det finns en tidskrävande fråga som för närvarande utförs när en annullering görs, är en försök toocancel hello-fråga.
-2. Om du avbryter återförsök för aktiviteten: om en annullering identifieras av hello kontrollen tråd innan en uppgift startas för körning hello kontrollen tråd ska undvika starta hello aktivitet och deklarera hello begäran som avbruten.
+1. Avbryt aktiviteter som körs: om en annullering identifieras när en aktivitet körs för närvarande en annullering görs inom körs aspekt av aktiviteten.  Exempel: om det finns en tidskrävande fråga som för närvarande utförs när en annullering görs, är ett försök att avbryta frågan.
+2. Om du avbryter återförsök för aktiviteten: om en annullering identifieras av kontrollen tråd innan en uppgift startas för körning tråden kontrollen ska undvika starta uppgiften och deklarera begäran som avbruten.
 
-Om det krävs en annullering av jobbet för överordnade jobb respekteras hello avbrottsbegäran för hello överordnade jobb och alla dess underordnade jobb.
+Om det krävs en annullering av jobbet för överordnade jobb respekteras begäran om att avbryta för överordnade jobb och alla dess underordnade jobb.
 
-toosubmit en begäran om att avbryta, använda hello [ **cmdlet Stop AzureSqlJobExecution** ](/powershell/module/elasticdatabasejobs/stop-azuresqljobexecution) och ange hello **JobExecutionId** parameter.
+För att skicka en begäran om att avbryta, Använd den [ **cmdlet Stop AzureSqlJobExecution** ](/powershell/module/elasticdatabasejobs/stop-azuresqljobexecution) och ange den **JobExecutionId** parameter.
 
     $jobExecutionId = "{Job Execution Id}"
     Stop-AzureSqlJobExecution -JobExecutionId $jobExecutionId
 
-## <a name="toodelete-a-job-and-job-history-asynchronously"></a>toodelete ett jobb och Jobbhistorik asynkront
-Den elastiska databasen jobb stöder asynkrona borttagning av jobb. Ett jobb kan vara markerad för borttagning och hello tas bort hello jobb och alla dess jobbhistorik när alla jobb körningar har slutförts för hello jobb. hello system Avbryt inte automatiskt aktiva jobb körningar.  
+## <a name="to-delete-a-job-and-job-history-asynchronously"></a>Ta bort ett jobb och Jobbhistorik asynkront
+Den elastiska databasen jobb stöder asynkrona borttagning av jobb. Ett jobb kan vara markerad för borttagning och tas bort jobbet och alla dess jobbhistorik när alla jobb körningar har slutförts för jobbet. Systemet Avbryt inte automatiskt aktiva jobb körningar.  
 
-Anropa [ **stoppa AzureSqlJobExecution** ](/powershell/module/elasticdatabasejobs/stop-azuresqljobexecution) toocancel aktiva jobb körningar.
+Anropa [ **stoppa AzureSqlJobExecution** ](/powershell/module/elasticdatabasejobs/stop-azuresqljobexecution) att avbryta aktiva jobb körningar.
 
-tootrigger jobbet borttagning, Använd hello [ **cmdlet Remove-AzureSqlJob** ](/powershell/module/elasticdatabasejobs/remove-azuresqljob) och ange hello **jobbnamn** parameter.
+Utlös borttagning av jobbet genom att använda den [ **cmdlet Remove-AzureSqlJob** ](/powershell/module/elasticdatabasejobs/remove-azuresqljob) och ange den **jobbnamn** parameter.
 
     $jobName = "{Job Name}"
     Remove-AzureSqlJob -JobName $jobName
 
-## <a name="toocreate-a-custom-database-target"></a>toocreate mål för en anpassad databas
-Du kan definiera anpassade databasen mål för att köra en direkt eller som ska ingå i en anpassad databas-grupp. Till exempel eftersom **elastiska pooler** är stöds inte än direkt med hjälp av PowerShell APIs, kan du skapa en anpassad databas mål och anpassad databas samling mål som omfattar alla hello-databaser i hello pool.
+## <a name="to-create-a-custom-database-target"></a>Så här skapar du en anpassad databas mål
+Du kan definiera anpassade databasen mål för att köra en direkt eller som ska ingå i en anpassad databas-grupp. Till exempel eftersom **elastiska pooler** är stöds inte än direkt med hjälp av PowerShell APIs, kan du skapa en anpassad databas mål och anpassad databas samling mål som omfattar alla databaser i poolen.
 
-Ange följande variabler tooreflect hello önskad databasinformation hello:
+Ange följande variabler återspeglar den önskade databasinformationen:
 
     $databaseName = "{Database Name}"
     $databaseServerName = "{Server Name}"
     New-AzureSqlJobDatabaseTarget -DatabaseName $databaseName -ServerName $databaseServerName 
 
-## <a name="toocreate-a-custom-database-collection-target"></a>toocreate en anpassad databas samling mål
-Använd hello [ **ny AzureSqlJobTarget** ](/powershell/module/elasticdatabasejobs/new-azuresqljobtarget) cmdlet toodefine en anpassad samling mål tooenable databaskörning över flera definierade databasen mål. När du har skapat en databasgrupp kan databaser vara associerat med hello anpassad samling mål.
+## <a name="to-create-a-custom-database-collection-target"></a>Så här skapar du en anpassad databas samling mål
+Använd den [ **ny AzureSqlJobTarget** ](/powershell/module/elasticdatabasejobs/new-azuresqljobtarget) för att definiera en anpassad databas samling mål för att aktivera körningen över flera definierade databasen mål. När du har skapat en databasgrupp vara databaser kopplat till målet för anpassad insamling.
 
-Ange hello följande variabler tooreflect hello önskade anpassade samlingar mål konfiguration:
+Ange följande variabler önskade anpassade samlingar mål konfiguration:
 
     $customCollectionName = "{Custom Database Collection Name}"
     New-AzureSqlJobTarget -CustomCollectionName $customCollectionName 
 
-### <a name="tooadd-databases-tooa-custom-database-collection-target"></a>tooadd databaser tooa anpassad databas samling mål
-tooadd en databas tooa specifika anpassad samling använda hello [ **Lägg till AzureSqlJobChildTarget** ](/powershell/module/elasticdatabasejobs/add-azuresqljobchildtarget) cmdlet.
+### <a name="to-add-databases-to-a-custom-database-collection-target"></a>Att lägga till databaser till en anpassad databas samling mål
+Att lägga till en databas till en specifik egen samling använder den [ **Lägg till AzureSqlJobChildTarget** ](/powershell/module/elasticdatabasejobs/add-azuresqljobchildtarget) cmdlet.
 
     $databaseServerName = "{Database Server Name}"
     $databaseName = "{Database Name}"
     $customCollectionName = "{Custom Database Collection Name}"
     Add-AzureSqlJobChildTarget -CustomCollectionName $customCollectionName -DatabaseName $databaseName -ServerName $databaseServerName 
 
-#### <a name="review-hello-databases-within-a-custom-database-collection-target"></a>Granska hello databaser i en anpassad databas samling målet
-Använd hello [ **Get-AzureSqlJobTarget** ](/powershell/module/elasticdatabasejobs/new-azuresqljobtarget) cmdlet tooretrieve hello underordnade databaser i en anpassad databas samling målet. 
+#### <a name="review-the-databases-within-a-custom-database-collection-target"></a>Granska databaser i en anpassad databas samling målet
+Använd den [ **Get-AzureSqlJobTarget** ](/powershell/module/elasticdatabasejobs/new-azuresqljobtarget) för att hämta underordnade databaser i en anpassad databas samling målet. 
 
     $customCollectionName = "{Custom Database Collection Name}"
     $target = Get-AzureSqlJobTarget -CustomCollectionName $customCollectionName
     $childTargets = Get-AzureSqlJobTarget -ParentTargetId $target.TargetId
     Write-Output $childTargets
 
-### <a name="create-a-job-tooexecute-a-script-across-a-custom-database-collection-target"></a>Skapa ett skript i ett jobb tooexecute över en anpassad databas samling mål
-Använd hello [ **ny AzureSqlJob** ](/powershell/module/elasticdatabasejobs/new-azuresqljob) cmdlet toocreate ett jobb mot en grupp databaser som definieras av en anpassad databas samling mål. Den elastiska databasen jobb kommer att expandera hello jobbet till flera underordnade jobb varje motsvarande tooa-databas som är associerade med hello anpassad databas samling mål och se till att hello skriptet körs mot varje databas. Igen, är det viktigt att skripten är idempotent toobe flexibel tooretries.
+### <a name="create-a-job-to-execute-a-script-across-a-custom-database-collection-target"></a>Skapa ett jobb för att köra ett skript i en anpassad databas samling mål
+Använd den [ **ny AzureSqlJob** ](/powershell/module/elasticdatabasejobs/new-azuresqljob) för att skapa ett jobb mot en grupp databaser som definieras av en anpassad databas samling mål. Elastiska databasen jobb kommer Expandera jobbet till flera underordnade jobb varje motsvarar en databas som är associerade med samlingen målet anpassad databas och se till att skriptet körs mot varje databas. Igen, är det viktigt att skripten har idempotent för att hantera att återförsök.
 
     $jobName = "{Job Name}"
     $scriptName = "{Script Name}"
@@ -523,13 +523,13 @@ Använd hello [ **ny AzureSqlJob** ](/powershell/module/elasticdatabasejobs/new-
     Write-Output $job
 
 ## <a name="data-collection-across-databases"></a>Insamling av data över databaser
-Du kan använda en jobbet tooexecute en fråga i en grupp med databaser och skicka hello tooa specifika resultattabellen. hello tabellen kan efterfrågas efter hello fakta toosee hello frågans resultat från varje databas. Detta ger en asynkron metod tooexecute en fråga över flera databaser. Misslyckade försök hanteras automatiskt via återförsök.
+Du kan använda ett jobb för att köra en fråga i en grupp med databaser och skicka resultaten till en viss tabell. Tabellen kan efterfrågas efter faktumet att se resultatet av frågan från varje databas. Detta ger en asynkron metod för att köra en fråga över flera databaser. Misslyckade försök hanteras automatiskt via återförsök.
 
-hello angivna måltabellen skapas automatiskt om det inte finns ännu. hello ny tabell matchar hello schemat för hello returnerade en resultatuppsättning. Om ett skript som returnerar flera resultatmängder, skickas endast elastisk databas jobb hello första toohello måltabellen.
+Den angivna tabellen skapas automatiskt om det inte finns ännu. Den nya tabellen matchar schemat för den returnerade resultatuppsättningen. Om ett skript som returnerar flera resultatmängder elastisk databas jobb bara att skicka först till måltabellen.
 
-hello följande PowerShell-skript körs ett skript och samlar in resultaten i en angiven tabell. Det här skriptet förutsätter att ett T-SQL-skript har skapats som matar ut en enda resultatmängd och ett mål för insamling av anpassad databas har skapats.
+Följande PowerShell-skript körs ett skript och samlar in resultaten i en angiven tabell. Det här skriptet förutsätter att ett T-SQL-skript har skapats som matar ut en enda resultatmängd och ett mål för insamling av anpassad databas har skapats.
 
-Det här skriptet använder hello [ **Get-AzureSqlJobTarget** ](/powershell/module/elasticdatabasejobs/new-azuresqljobtarget) cmdlet. Ange hello parametrar för skriptet, autentiseringsuppgifter och körning av mål:
+Det här skriptet använder den [ **Get-AzureSqlJobTarget** ](/powershell/module/elasticdatabasejobs/new-azuresqljobtarget) cmdlet. Ange parametrar för skriptet, autentiseringsuppgifter och körning av mål:
 
     $jobName = "{Job Name}"
     $scriptName = "{Script Name}"
@@ -542,8 +542,8 @@ Det här skriptet använder hello [ **Get-AzureSqlJobTarget** ](/powershell/modu
     $destinationTableName = "{Destination Table Name}"
     $target = Get-AzureSqlJobTarget -CustomCollectionName $customCollectionName
 
-### <a name="toocreate-and-start-a-job-for-data-collection-scenarios"></a>toocreate och starta ett jobb för scenarion för insamling av data
-Det här skriptet använder hello [ **Start AzureSqlJobExecution** ](/powershell/module/elasticdatabasejobs/start-azuresqljobexecution) cmdlet.
+### <a name="to-create-and-start-a-job-for-data-collection-scenarios"></a>Skapa och starta ett jobb för scenarion för insamling av data
+Det här skriptet använder den [ **Start AzureSqlJobExecution** ](/powershell/module/elasticdatabasejobs/start-azuresqljobexecution) cmdlet.
 
     $job = New-AzureSqlJob -JobName $jobName 
     -CredentialName $executionCredentialName 
@@ -558,8 +558,8 @@ Det här skriptet använder hello [ **Start AzureSqlJobExecution** ](/powershell
     $jobExecution = Start-AzureSqlJobExecution -JobName $jobName
     Write-Output $jobExecution
 
-## <a name="tooschedule-a-job-execution-trigger"></a>tooschedule en utlösare för körning av jobbet
-hello följande PowerShell-skript kan vara används toocreate ett återkommande schema. Det här skriptet använder ett minuters intervall, men [ **ny AzureSqlJobSchedule** ](/powershell/module/elasticdatabasejobs/new-azuresqljobschedule) stöder också - DayInterval, - HourInterval, - MonthInterval, och WeekInterval - parametrar. Scheman som kör en gång kan skapas med skicka - görs.
+## <a name="to-schedule-a-job-execution-trigger"></a>Så här schemalägger du en utlösare för körning av jobbet
+Följande PowerShell-skript kan användas för att skapa ett återkommande schema. Det här skriptet använder ett minuters intervall, men [ **ny AzureSqlJobSchedule** ](/powershell/module/elasticdatabasejobs/new-azuresqljobschedule) stöder också - DayInterval, - HourInterval, - MonthInterval, och WeekInterval - parametrar. Scheman som kör en gång kan skapas med skicka - görs.
 
 Skapa ett nytt schema:
 
@@ -572,10 +572,10 @@ Skapa ett nytt schema:
     -StartTime $startTime 
     Write-Output $schedule
 
-### <a name="tootrigger-a-job-executed-on-a-time-schedule"></a>tootrigger ett jobb som körs på en tidsplan
-En utlösare för jobb kan vara definierade toohave ett jobb körs bl.a tooa tid schema. hello följande PowerShell-skript kan vara används toocreate en utlösare för jobbet.
+### <a name="to-trigger-a-job-executed-on-a-time-schedule"></a>Att utlösa ett jobb som körs på en tidsplan
+En utlösare för jobbet kan definieras om du vill att ett jobb som körs enligt ett schema med tiden. Följande PowerShell-skript kan användas för att skapa en utlösare för jobbet.
 
-Använd [ny AzureSqlJobTrigger](/powershell/module/elasticdatabasejobs/new-azuresqljobtrigger) och ange hello följande variabler toocorrespond toohello önskade jobbet och schema:
+Använd [ny AzureSqlJobTrigger](/powershell/module/elasticdatabasejobs/new-azuresqljobtrigger) och ange följande variabler som motsvarar den önskade jobbet och schema:
 
     $jobName = "{Job Name}"
     $scheduleName = "{Schedule Name}"
@@ -584,8 +584,8 @@ Använd [ny AzureSqlJobTrigger](/powershell/module/elasticdatabasejobs/new-azure
     -JobName $jobName
     Write-Output $jobTrigger
 
-### <a name="tooremove-a-scheduled-association-toostop-job-from-executing-on-schedule"></a>tooremove ett schemalagda association toostop jobb körs enligt schema
-toodiscontinue igen jobbkörningen via jobb utlösare hello jobbet utlösare kan tas bort. Ta bort ett jobb utlösaren toostop ett jobb från utförs bl.a tooa schema med hello [ **cmdlet Remove-AzureSqlJobTrigger**](/powershell/module/elasticdatabasejobs/remove-azuresqljobtrigger).
+### <a name="to-remove-a-scheduled-association-to-stop-job-from-executing-on-schedule"></a>Ta bort en schemalagd association att avbryta jobbet körs enligt schema
+Jobbet utlösaren kan tas bort för att avbryta igen jobbkörningen via en utlösare för jobbet. Ta bort utlösaren jobbet om du vill stoppa ett jobb från utförs enligt ett schema som använder den [ **cmdlet Remove-AzureSqlJobTrigger**](/powershell/module/elasticdatabasejobs/remove-azuresqljobtrigger).
 
     $jobName = "{Job Name}"
     $scheduleName = "{Schedule Name}"
@@ -593,38 +593,38 @@ toodiscontinue igen jobbkörningen via jobb utlösare hello jobbet utlösare kan
     -ScheduleName $scheduleName 
     -JobName $jobName
 
-### <a name="retrieve-job-triggers-bound-tooa-time-schedule"></a>Hämta jobbschemat utlösare bundna tooa tid
-hello följande PowerShell-skript kan använda tooobtain och visa hello utlösare registrerade tooa viss tid jobbschemat.
+### <a name="retrieve-job-triggers-bound-to-a-time-schedule"></a>Hämta jobb utlösare som är bunden till en tidsplan
+Följande PowerShell-skript kan användas för att hämta och visa jobb utlösare som har registrerats för en viss tidsplan.
 
     $scheduleName = "{Schedule Name}"
     $jobTriggers = Get-AzureSqlJobTrigger -ScheduleName $scheduleName
     Write-Output $jobTriggers
 
-### <a name="tooretrieve-job-triggers-bound-tooa-job"></a>tooretrieve jobb utlösare bundna tooa jobb
-Använd [Get-AzureSqlJobTrigger](/powershell/module/elasticdatabasejobs/get-azuresqljobtrigger) tooobtain och visa scheman som innehåller ett registrerade jobb.
+### <a name="to-retrieve-job-triggers-bound-to-a-job"></a>Om du vill hämta jobb utlösare som är bunden till ett jobb
+Använd [Get-AzureSqlJobTrigger](/powershell/module/elasticdatabasejobs/get-azuresqljobtrigger) att hämta och visa scheman som innehåller ett registrerade jobb.
 
     $jobName = "{Job Name}"
     $jobTriggers = Get-AzureSqlJobTrigger -JobName $jobName
     Write-Output $jobTriggers
 
-## <a name="toocreate-a-data-tier-application-dacpac-for-execution-across-databases"></a>toocreate datanivå-program (DACPAC) för körning över databaser
-toocreate en DACPAC finns [-datanivåprogram](https://msdn.microsoft.com/library/ee210546.aspx). toodeploy DACPAC, använda hello [cmdlet New-AzureSqlJobContent](/powershell/module/elasticdatabasejobs/new-azuresqljobcontent). Hej DACPAC måste vara tillgänglig toohello tjänst. Det är rekommenderat tooupload en skapade DACPAC tooAzure lagring och skapa en [signatur för delad åtkomst](../storage/common/storage-dotnet-shared-access-signature-part-1.md) för hello DACPAC.
+## <a name="to-create-a-data-tier-application-dacpac-for-execution-across-databases"></a>Skapa ett program för datanivå (DACPAC) för körning över databaser
+Om du vill skapa en DACPAC finns [-datanivåprogram](https://msdn.microsoft.com/library/ee210546.aspx). Om du vill distribuera en DACPAC använder den [cmdlet New-AzureSqlJobContent](/powershell/module/elasticdatabasejobs/new-azuresqljobcontent). DACPAC måste vara tillgänglig för tjänsten. Det rekommenderas att överföra en skapade DACPAC till Azure Storage och skapa en [signatur för delad åtkomst](../storage/common/storage-dotnet-shared-access-signature-part-1.md) för DACPAC.
 
     $dacpacUri = "{Uri}"
     $dacpacName = "{Dacpac Name}"
     $dacpac = New-AzureSqlJobContent -DacpacUri $dacpacUri -ContentName $dacpacName 
     Write-Output $dacpac
 
-### <a name="tooupdate-a-data-tier-application-dacpac-for-execution-across-databases"></a>tooupdate datanivå-program (DACPAC) för körning över databaser
-Befintliga DACPACs som registrerats i den elastiska databasen jobb kan vara uppdaterade toopoint toonew URI: er. Använd hello [ **cmdlet Set-AzureSqlJobContentDefinition** ](/powershell/module/elasticdatabasejobs/set-azuresqljobcontentdefinition) tooupdate hello DACPAC URI på en befintlig registrerad DACPAC:
+### <a name="to-update-a-data-tier-application-dacpac-for-execution-across-databases"></a>Uppdatera data-tier application (DACPAC) för körning över databaser
+Befintliga DACPACs som registrerats i den elastiska databasen jobb kan uppdateras för att peka mot nya URI: er. Använd den [ **cmdlet Set-AzureSqlJobContentDefinition** ](/powershell/module/elasticdatabasejobs/set-azuresqljobcontentdefinition) uppdatera DACPAC URI på en befintlig registrerade DACPAC:
 
     $dacpacName = "{Dacpac Name}"
     $newDacpacUri = "{Uri}"
     $updatedDacpac = Set-AzureSqlJobDacpacDefinition -ContentName $dacpacName -DacpacUri $newDacpacUri
     Write-Output $updatedDacpac
 
-## <a name="toocreate-a-job-tooapply-a-data-tier-application-dacpac-across-databases"></a>toocreate jobbet-tooapply datanivå-program (DACPAC) över databaser
-När en DACPAC har skapats i den elastiska databasen jobb, kan ett jobb skapas tooapply hello DACPAC över flera databaser. hello följande PowerShell-skript kan vara används toocreate ett DACPAC-jobb över en anpassad samling med databaser:
+## <a name="to-create-a-job-to-apply-a-data-tier-application-dacpac-across-databases"></a>Att skapa ett jobb för att tillämpa en dataskiktsprogrammet (DACPAC) över databaser
+När en DACPAC har skapats i den elastiska databasen jobb, kan du skapa ett jobb för att tillämpa DACPAC över flera databaser. Följande PowerShell-skript kan användas för att skapa ett DACPAC-jobb över en anpassad samling med databaser:
 
     $jobName = "{Job Name}"
     $dacpacName = "{Dacpac Name}"

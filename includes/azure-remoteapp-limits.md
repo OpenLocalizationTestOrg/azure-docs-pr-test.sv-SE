@@ -13,7 +13,7 @@
 | Tidsgränsen för inaktivitet |4 timmar |
 | Frånkopplade timeout |4 timmar |
 
-hello antalet användare som bestäms av hello antal virtuella datorer som används för samlingen:
+Antalet användare som baseras på antalet virtuella datorer som används för samlingen:
 
 * Grundläggande = 16 användare per VM
 * Standard = 10 användare per VM

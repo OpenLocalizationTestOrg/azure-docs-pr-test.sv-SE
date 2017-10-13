@@ -1,6 +1,6 @@
 ---
-title: aaaProtect Active Directory och DNS med Azure Site Recovery | Microsoft Docs
-description: "Den här artikeln beskriver hur tooimplement en lösning för katastrofåterställning för Active Directory med Azure Site Recovery."
+title: Skydda Active Directory och DNS med Azure Site Recovery | Microsoft Docs
+description: "Den här artikeln beskriver hur du implementerar en lösning för katastrofåterställning för Active Directory med Azure Site Recovery."
 services: site-recovery
 documentationcenter: 
 author: prateek9us
@@ -14,59 +14,59 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 7/20/2017
 ms.author: pratshar
-ms.openlocfilehash: 49903e54f6d6e1839b0571b7a852c6d7517f0aa1
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 197441fc24c178695d4eada6db59f503b21672ad
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="protect-active-directory-and-dns-with-azure-site-recovery"></a>Skydda Active Directory och DNS med Azure Site Recovery
-Företagsprogram som SharePoint, Dynamics AX och SAP beror på Active Directory och en DNS-infrastruktur toofunction korrekt. När du skapar en lösning för katastrofåterställning för program, är det viktigt tooremember som du behöver tooprotect och återställa Active Directory och DNS innan hello andra programkomponenter, tooensure saker fungera korrekt när katastrof inträffar.
+Företagsprogram som SharePoint, Dynamics AX och SAP är beroende av Active Directory och DNS-infrastrukturen ska fungera korrekt. När du skapar en lösning för katastrofåterställning för program, är det viktigt att komma ihåg att du behöver skydda och återställa Active Directory och DNS innan andra programkomponenter, så att saker fungerar korrekt när en olycka inträffar.
 
-Site Recovery är en Azure-tjänst som tillhandahåller katastrofåterställning genom att samordna replikering, redundans och återställning av virtuella datorer. Site Recovery stöder ett antal replikeringarna tooconsistently skydda och sömlöst redundans virtuella datorer och program tooprivate offentliga eller hoster moln.
+Site Recovery är en Azure-tjänst som tillhandahåller katastrofåterställning genom att samordna replikering, redundans och återställning av virtuella datorer. Site Recovery stöder ett antal replikeringarna konsekvent skydda och sömlöst redundans virtuella datorer och program till privata eller offentliga hoster moln.
 
-Du kan använda Site Recovery för att skapa en fullständig automatiserad haveriberedskapsplan för Active Directory. När avbrott inträffar kan du påbörja en växling inom några sekunder från var som helst och få Active Directory igång på några minuter. Om du har distribuerat Active Directory för flera program, till exempel SharePoint och SAP på din primära plats och du vill ha toofail över hello fullständig webbplats, kan du växla över Active Directory först använda Site Recovery och sedan redundans hello andra program med hjälp av programspecifika återställningsplaner.
+Du kan använda Site Recovery för att skapa en fullständig automatiserad haveriberedskapsplan för Active Directory. När avbrott inträffar kan du påbörja en växling inom några sekunder från var som helst och få Active Directory igång på några minuter. Om du har distribuerat Active Directory för flera program, till exempel SharePoint och SAP på din primära plats och du vill växla över fullständig webbplats, kan du växla över Active Directory först använda Site Recovery och växlar sedan över de andra programmen med programspecifika återställningsplaner.
 
-Den här artikeln förklarar hur toocreate en lösning för katastrofåterställning för Active Directory, hur tooperform planerad och oplanerad och testa redundans med en återställningsplan med ett klick hello konfigurationer som stöds och krav.  Du bör känna till Active Directory och Azure Site Recovery innan du börjar.
+Den här artikeln förklarar hur du skapar en lösning för katastrofåterställning för Active Directory och hur du utför planerade, oplanerade redundanstestning med hjälp av en återställningsplan med ett klick, konfigurationer som stöds och förutsättningar.  Du bör känna till Active Directory och Azure Site Recovery innan du börjar.
 
 ## <a name="replicating-domain-controller"></a>Replikering av domänkontrollant
 
-Du behöver toosetup [Site Recovery replikering](#enable-protection-using-site-recovery) på minst en virtuell dator som värd för en domänkontrollant och DNS. Om du har [flera domänkontrollanter](#environment-with-multiple-domain-controllers) i din miljö dessutom tooreplicating hello domain controller virtuell dator med Site Recovery har du också tooset upp en [ytterligare en domänkontrollant](#protect-active-directory-with-active-directory-replication) på målplatsen hello (Azure eller ett sekundärt lokalt datacenter). 
+Du behöver installationsprogrammet [Site Recovery replikering](#enable-protection-using-site-recovery) på minst en virtuell dator som värd för en domänkontrollant och DNS. Om du har [flera domänkontrollanter](#environment-with-multiple-domain-controllers) i miljön, utöver replikerar domain controller virtuell dator med Site Recovery skulle också har du ställa in en [ytterligare en domänkontrollant](#protect-active-directory-with-active-directory-replication) på målplatsen (Azure eller ett sekundärt lokalt datacenter). 
 
 ### <a name="single-domain-controller-environment"></a>Enkel domänkontrollantmiljö
-Om du har några program och bara en enda domänkontrollant, och du vill ha toofail över hello hela webbplatsen tillsammans och sedan bör du använda Site Recovery tooreplicate hello domänkontrollant toohello sekundära platsen (om du växlar över tooAzure eller tooa sekundär plats). hello samma replikerade domain controller/DNS-virtuella datorn kan användas för [redundanstestningen](#test-failover-considerations) samt.
+Om du har några program och en enda domänkontrollant och du vill redundansväxla hela platsen, sedan bör du använda Site Recovery replikera domänkontrollanten till den sekundära platsen (om du växlar över till Azure eller till en sekundär plats). Samma replikerade domain controller/DNS-virtuella datorn kan användas för [redundanstestningen](#test-failover-considerations) samt.
 
 ### <a name="environment-with-multiple-domain-controllers"></a>Miljö med flera domänkontrollanter
-Om du har många program och det finns fler än en domänkontrollant i hello miljö eller om du planerar toofail över några program samtidigt, rekommenderar vi dessutom att tooreplicating hello domänkontrollant virtuella datorn med Site Recovery du också Konfigurera en [ytterligare en domänkontrollant](#protect-active-directory-with-active-directory-replication) på målplatsen hello (Azure eller ett sekundärt lokalt datacenter). För [redundanstestningen](#test-failover-considerations), domänkontrollant som replikeras av Site Recovery och växling vid fel, hello ytterligare en domänkontrollant på målplatsen hello användas. 
+Om du har många program och det finns fler än en domänkontrollant i miljön eller om du planerar att växla över några program samtidigt, rekommenderar vi att förutom att replikera domain controller virtuell dator med Site Recovery du också ställa in en [ytterligare en domänkontrollant](#protect-active-directory-with-active-directory-replication) på målplatsen (Azure eller ett sekundärt lokalt datacenter). För [redundanstestningen](#test-failover-considerations), du använda domänkontrollant replikeras av Site Recovery och växling vid fel, ytterligare en domänkontrollant på målplatsen. 
 
 
-hello följande avsnitt beskrivs hur tooenable skydd för en domänkontrollant i Site Recovery och hur tooset upp en domänkontrollant i Azure.
+I följande avsnitt beskrivs hur du aktiverar skyddet för en domänkontrollant i Site Recovery och hur du konfigurerar en domänkontrollant i Azure.
 
 ## <a name="prerequisites"></a>Krav
 * En lokal distribution av Active Directory och DNS-server.
 * Ett Azure Site Recovery Services-valv i en Microsoft Azure-prenumeration.
-* Om du replikerar tooAzure, köra hello Azure virtuella Readiness Assessment tool på virtuella datorer tooensure är de kompatibla med virtuella Azure-datorer och Azure Site Recovery Services.
+* Om du replikerar till Azure, kör du verktyget Azure virtuella Readiness Assessment på virtuella datorer för att säkerställa att de är kompatibla med virtuella Azure-datorer och Azure Site Recovery Services.
 
 ## <a name="enable-protection-using-site-recovery"></a>Aktivera skydd med Site Recovery
-### <a name="protect-hello-virtual-machine"></a>Skydda hello virtuell dator
-Aktivera skydd för hello domain controller/DNS-virtuell dator i Site Recovery. Konfigurera Site Recovery-inställningar baserat på hello typ av virtuell dator (Hyper-V eller VMware). hello domänkontrollanten replikeras med Site Recovery används för [redundanstestningen](#test-failover-considerations). Kontrollera att den uppfyller hello följande krav:
+### <a name="protect-the-virtual-machine"></a>Skydda den virtuella datorn
+Aktivera skyddet för virtuella domänen domänkontrollantens/DNS i Site Recovery. Konfigurera Site Recovery-inställningar baserat på typ av virtuell dator (Hyper-V eller VMware). Domänkontrollanten replikeras med Site Recovery används för [redundanstestningen](#test-failover-considerations). Kontrollera att den uppfyller följande krav:
 
-1. hello domänkontrollanten är en global katalogserver
-2. hello domänkontrollanten ska vara hello FSMO-rollägare för roller som krävs under ett redundanstest (annars dessa roller måste toobe [beslag](http://aka.ms/ad_seize_fsmo) efter hello växling vid fel)
+1. Domänkontrollanten är en global katalogserver
+2. Domänkontrollanten bör vara FSMO-rollägare för roller som krävs under ett redundanstest (annars dessa roller måste vara [beslag](http://aka.ms/ad_seize_fsmo) efter växling vid fel)
 
 ### <a name="configure-virtual-machine-network-settings"></a>Konfigurera inställningar för virtuell dator
-Konfigurera nätverksinställningar i Site Recovery för hello domain controller/DNS-virtuella datorn så att hello virtuella bifogade toohello rätt nätverket efter redundans. 
+Konfigurera nätverksinställningar i Site Recovery för domain controller/DNS-virtuella datorn så att den virtuella datorn ska anslutas till rätt nätverk efter redundansväxling. 
 
 ![Nätverksinställningar för Virtuella datorer](./media/site-recovery-active-directory/DNS-Target-IP.png)
 
 ## <a name="protect-active-directory-with-active-directory-replication"></a>Skydda Active Directory med Active Directory-replikering
 ### <a name="site-to-site-protection"></a>Plats-till-plats-skydd
-Skapa en domänkontrollant på hello sekundär plats. När du befordrar hello server tooa domänkontrollant, ange hello namnet på hello samma domän som används på hello primär plats. Du kan använda hello **Active Directory-platser och tjänster** snapin-modulen tooconfigure inställningar på hello platslänk objekt toowhich hello platser har lagts till. Genom att konfigurera inställningar på en platslänk, du kan styra när replikeringen sker mellan två eller flera platser och hur ofta. Mer information finns i [schemalägga replikering mellan platser](https://technet.microsoft.com/library/cc731862.aspx).
+Skapa en domänkontrollant på den sekundära platsen. När du befordrar servern till en domänkontrollant, ange namnet på samma domän som används på den primära platsen. Du kan använda den **Active Directory-platser och tjänster** snapin-modulen att konfigurera inställningar på platslänkobjekt som platserna ska läggas till. Genom att konfigurera inställningar på en platslänk, du kan styra när replikeringen sker mellan två eller flera platser och hur ofta. Mer information finns i [schemalägga replikering mellan platser](https://technet.microsoft.com/library/cc731862.aspx).
 
 ### <a name="site-to-azure-protection"></a>Plats till Azure-skydd
-Följ instruktionerna för hello för[skapa en domänkontrollant i en Azure-nätverket](../active-directory/active-directory-install-replica-active-directory-domain-controller.md). När du befordrar hello server tooa domänkontrollant, ange hello samma domännamn som används på hello primär plats.
+Följ instruktionerna för att [skapa en domänkontrollant i en Azure-nätverket](../active-directory/active-directory-install-replica-active-directory-domain-controller.md). När du befordrar servern till en domänkontrollant, kan du ange samma domännamn som används på den primära platsen.
 
-Sedan [omkonfigurera hello DNS-server för virtuellt nätverk för hello](../active-directory/active-directory-install-replica-active-directory-domain-controller.md#reconfigure-dns-server-for-the-virtual-network), toouse hello DNS-server i Azure.
+Sedan [konfigurera DNS-servern för det virtuella nätverket](../active-directory/active-directory-install-replica-active-directory-domain-controller.md#reconfigure-dns-server-for-the-virtual-network), för att använda DNS-server i Azure.
 
 ![Azure-nätverk](./media/site-recovery-active-directory/azure-network.png)
 
@@ -75,11 +75,11 @@ Sedan [omkonfigurera hello DNS-server för virtuellt nätverk för hello](../act
 ## <a name="test-failover-considerations"></a>Redundanstestning
 Testa redundans inträffar i ett nätverk som är isolerat från produktionsnätverket så att det finns ingen inverkan på produktionsarbetsbelastningar.
 
-De flesta program kräver också hello förekomsten av en domänkontrollant och en DNS-server toofunction. Därför måste en domänkontrollant toobe som skapats i hello isolerade nätverk toobe används för att testa redundans innan programmet hello har redundansväxlats. Hej enklaste sättet toodo är tooreplicate en domän domänkontrollantens/DNS virtuell dator med Site Recovery. Kör ett redundanstest av hello domain controller virtuella datorn innan du kör ett redundanstest av hello återställningsplan för hello program. Här visas hur du gör det:
+De flesta program kräver också förekomsten av en domänkontrollant och en DNS-server ska fungera. Därför innan programmet har redundansväxlats måste en domänkontrollant skapas i isolerat nätverk som ska användas för att testa redundans. Det enklaste sättet att göra detta är att replikera en domän domänkontrollantens/DNS virtuell dator med Site Recovery. Kör ett redundanstest för den domain controller virtuella datorn innan du kör ett redundanstest av återställningsplan för programmet. Här visas hur du gör det:
 
-1. [Replikera](site-recovery-replicate-vmware-to-azure.md) hello domain controller/DNS-virtuell dator med Site Recovery.
-1. Skapa ett isolerat nätverk. Alla virtuella nätverk som skapats i Azure som standard är isolerad från andra nätverk. Vi rekommenderar att hello IP-adressintervall för det här nätverket är samma som produktionsnätverket. Aktivera inte plats-till-plats-anslutning i nätverket.
-1. Ange ett DNS-IP-adress i hello-nätverk som skapats som du förväntar dig hello DNS virtuella tooget hello IP-adress. Om du replikerar tooAzure ange hello IP-adress för hello VM som används på redundans i **mål-IP** i **beräknings- och nätverksinställningar** inställningar. 
+1. [Replikera](site-recovery-replicate-vmware-to-azure.md) domain controller/DNS-virtuell dator med Site Recovery.
+1. Skapa ett isolerat nätverk. Alla virtuella nätverk som skapats i Azure som standard är isolerad från andra nätverk. Vi rekommenderar att IP-adressintervall för det här nätverket är samma som produktionsnätverket. Aktivera inte plats-till-plats-anslutning i nätverket.
+1. Ange en DNS-IP-adress i nätverket som skapats som IP-adressen som du förväntar dig att den virtuella datorn i DNS-få. Om du replikerar till Azure, ange IP-adressen för den virtuella datorn som används på redundans i **mål-IP** i **beräknings- och nätverksinställningar** inställningar. 
 
     ![Mål-IP](./media/site-recovery-active-directory/DNS-Target-IP.png) **mål-IP**
 
@@ -88,35 +88,35 @@ De flesta program kräver också hello förekomsten av en domänkontrollant och 
     **DNS i Azure Testnätverket**
 
 > [!TIP]
-> Site Recovery försöker toocreate test virtuella datorer i ett undernät med samma namn och använder hello samma IP-adress som som angetts i **beräknings- och nätverksinställningar** inställningarna för hello virtuell dator. Om undernät med samma namn inte finns i hello Azure-nätverket för testning av redundans, och sedan testa virtuell dator skapas i hello första undernätet i alfabetisk ordning. Om IP-Adressen hello mål är en del av hello valt undernät, försöker Site Recovery toocreate hello testa redundans virtuell dator använder hello mål-IP-adress. Om IP-Adressen hello mål inte är del av hello valt undernät, hämtar testa redundans virtuell dator skapas använder alla tillgängliga IP-adresser i hello valt undernät. 
+> Site Recovery försöker skapa virtuella testdatorer i ett undernät med samma namn och använder samma IP-Adressen som angetts i **beräknings- och nätverksinställningar** inställningarna för den virtuella datorn. Om undernät med samma namn inte finns i virtuella Azure-nätverket för testning av redundans, skapas testa virtuell dator i det första undernätet i alfabetisk ordning. Om mål-IP är en del av det valda undernätet, försöker Site Recovery skapa testa redundans virtuell dator med hjälp av mål-IP. Om mål-IP inte är en del av det valda undernätet skapas testa redundans virtuell dator med alla tillgängliga IP-adresser i det valda undernätet. 
 >
 >
 
 
-1. Om du replikerar tooanother lokal plats och du använder DHCP, följ instruktionerna för hello för[konfigurera DNS och DHCP för att testa redundans](site-recovery-test-failover-vmm-to-vmm.md#prepare-dhcp)
-1. Göra ett redundanstest för hello domain controller virtuell dator körs i hello isolerat nätverk. Använd senaste tillgängliga **programmet konsekvent** återställningspunkt hello domain controller virtuella toodo hello testningen. 
-1. Köra ett redundanstest för hello återställningsplan som innehåller virtuella datorer av programmet hello. 
-1. När testningen är klar, **Rensa redundanstestet** på hello domain controller virtuella datorn. Det här steget tar bort hello domänkontrollanten som skapades för redundanstestningen.
+1. Om du replikerar till en annan lokal plats och du använder DHCP, följ instruktionerna för att [konfigurera DNS och DHCP för att testa redundans](site-recovery-test-failover-vmm-to-vmm.md#prepare-dhcp)
+1. Göra ett redundanstest för domain controller virtuell dator körs i isolerat nätverk. Använd senaste tillgängliga **programmet konsekvent** återställningspunkt domain controller virtuell dator om du vill testa redundans. 
+1. Köra ett redundanstest för återställningsplanen innehåller virtuella datorer av programmet. 
+1. När testningen är klar, **Rensa redundanstestet** på domain controller virtuella datorn. Det här steget tar bort den domänkontrollant som skapades för redundanstestningen.
 
 
-### <a name="removing-reference-tooother-domain-controllers"></a>Ta bort referensen tooother-domänkontrollanter
-När du gör ett redundanstest sätta inte du alla hello-domänkontrollanter i hello testnätverket. tooremove hello referensen till andra domänkontrollanter som finns i din produktionsmiljö, måste du kanske för[överta FSMO Active Directory-roller](http://aka.ms/ad_seize_fsmo) och gör [rensning av metadata](https://technet.microsoft.com/library/cc816907.aspx) för saknar domän domänkontrollanter. 
+### <a name="removing-reference-to-other-domain-controllers"></a>Ta bort referensen till andra domänkontrollanter
+När du gör ett redundanstest sätta inte du alla domänkontrollanter i testnätverket. Om du vill ta bort referensen till andra domänkontrollanter som finns i produktionsmiljön, du kan behöva [överta FSMO Active Directory-roller](http://aka.ms/ad_seize_fsmo) och gör [rensning av metadata](https://technet.microsoft.com/library/cc816907.aspx) för saknar domän domänkontrollanter. 
 
 
 
 > [!IMPORTANT]
-> Vissa av hello konfigurationerna som beskrivs i följande avsnitt hello är inte hello standard/domän-styrenhet standardkonfigurationer. Om du inte vill toomake dessa ändringar tooa produktion domänkontrollant och sedan skapa en domain controller dedikerade toobe som används för att testa redundans för Site Recovery och gör dessa ändringar toothat.  
+> Vissa av konfigurationerna som beskrivs i följande avsnitt är inte standard/domain controller standardkonfigurationerna. Om du inte vill att göra dessa ändringar till en domänkontrollant för produktion, kan du skapa en domänkontrollant dedikerade som ska användas för att testa redundans för Site Recovery och göra dessa ändringar som.  
 >
 >
 
 ### <a name="issues-because-of-virtualization-safeguards"></a>Problem på grund av virtualiseringsskydd 
 
-Från och med Windows Server 2012 [ytterligare skydd har skapats i Active Directory Domain Services](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100). Dessa skydd skydda virtualiserade domänkontrollanter mot USN-återställning, så länge hello underliggande hypervisor-plattformen stöder VM-Generationsid. Azure stöder VM-Generationsid, vilket innebär att domänkontrollanter som kör Windows Server 2012 eller senare på Azure virtuella datorer har hello ytterligare skydd. 
+Från och med Windows Server 2012 [ytterligare skydd har skapats i Active Directory Domain Services](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100). Dessa skydd skydda virtualiserade domänkontrollanter mot USN-återställning, så länge den underliggande hypervisor-plattformen stöder VM-Generationsid. Azure stöder VM-Generationsid, vilket innebär att domänkontrollanter som kör Windows Server 2012 eller senare på Azure virtuella datorer har fler skyddsmekanismer. 
 
 
-När hello VM-GenerationID återställs hello invocationID för hello AD DS-databasen återställs även, hello RID-poolen förkastas och SYSVOL är markerad som icke-auktoritativ. Mer information finns i [introduktion tooActive virtualisering Directory Domain Services](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100) och [säker virtualisering av DFSR](https://blogs.technet.microsoft.com/filecab/2013/04/05/safely-virtualizing-dfsr/)
+När VM-GenerationID återställs invocationID för AD DS-databasen återställs även, RID-poolen förkastas och SYSVOL är markerad som icke-auktoritativ. Mer information finns i [introduktion till Active Directory DS-virtualisering](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100) och [säker virtualisering av DFSR](https://blogs.technet.microsoft.com/filecab/2013/04/05/safely-virtualizing-dfsr/)
 
-Kanske inte körs tooAzure återställning av VM-GenerationID och som aktiveras hello ytterligare skydd när hello domain controller virtuella datorn startar i Azure. Det kan resultera i en **betydande fördröjning** i användare som kan toologin toohello domain controller virtuell dator. Eftersom den här domänkontrollanten kan endast användas i ett redundanstest, behövs inte skyddsmekanismerna för virtualisering. tooensure som VM-GenerationID för hello domain controller virtuella datorn inte ändras, kan du ändra hello värdet för följande DWORD-too4 i domänkontrollanten för hello lokalt.
+Misslyckande till Azure kan orsaka återställning av VM-GenerationID och som aktiveras ytterligare skydd när domain controller virtuella datorn startar i Azure. Det kan resultera i en **betydande fördröjning** i användare som kan logga in på domänen controller virtuell dator. Eftersom den här domänkontrollanten kan endast användas i ett redundanstest, behövs inte skyddsmekanismerna för virtualisering. För att säkerställa att VM-GenerationID för domain controller virtuella datorn inte ändrar kan du ändra värdet för följande DWORD till 4 i den lokala domänkontrollanten.
 
         
         HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\gencounter\Start
@@ -146,7 +146,7 @@ DFSR-databaser har tagits bort
 
 
 > [!IMPORTANT]
-> Vissa av hello konfigurationerna som beskrivs i följande avsnitt hello är inte hello standard/domän-styrenhet standardkonfigurationer. Om du inte vill toomake dessa ändringar tooa produktion domänkontrollant och sedan skapa en domain controller dedikerade toobe som används för att testa redundans för Site Recovery och gör dessa ändringar toothat.  
+> Vissa av konfigurationerna som beskrivs i följande avsnitt är inte standard/domain controller standardkonfigurationerna. Om du inte vill att göra dessa ändringar till en domänkontrollant för produktion, kan du skapa en domänkontrollant dedikerade som ska användas för att testa redundans för Site Recovery och göra dessa ändringar som.  
 >
 >
 
@@ -154,52 +154,52 @@ DFSR-databaser har tagits bort
 ### <a name="troubleshooting-domain-controller-issues-during-test-failover"></a>Domain controller felsökningsproblem under redundanstestningen
 
 
-Kör följande kommando toocheck om SYSVOL och NETLOGON mappar delas hello på en kommandotolk:
+Kör följande kommando för att kontrollera om SYSVOL och NETLOGON mappar delas på en kommandotolk:
 
     NET SHARE
 
-Kör följande kommando tooensure som hello domänkontrollanten fungerar hello på hello Kommandotolken.
+Kör följande kommando för att kontrollera att domänkontrollanten fungerar korrekt på kommandoraden.
 
     dcdiag /v > dcdiag.txt
 
-I loggen för hello utdata fungerar leta efter följande text tooconfirm som hello domänkontrollanten. 
+Leta efter följande text för att bekräfta att domänkontrollanten fungerar bra i utdataloggen. 
 
 * ”Anslutningen skickade test”
 * ”Annonserar skickade test”
 * ”MachineAccount skickade test”
 
-Om hello föregående villkoren uppfylls, är det troligt att hello domänkontrollanten fungerar väl. Annars kan du prova följande steg.
+Om föregående villkoren uppfylls är det troligt att domänkontrollanten fungerar väl. Annars kan du prova följande steg.
 
 
-* Göra en auktoritativ återställning av hello-domänkontrollant.
-    * Även om det är [rekommenderas inte toouse FRS replikering](https://blogs.technet.microsoft.com/filecab/2014/06/25/the-end-is-nigh-for-frs/), men om du använder fortfarande den och följer stegen hello [här](https://support.microsoft.com/kb/290762) toodo en auktoritativ återställning. Du kan läsa mer om Burflags diskuterats i hello föregående länk [här](https://blogs.technet.microsoft.com/janelewis/2006/09/18/d2-and-d4-what-is-it-for/).
-    * Om du använder DFSR replication sedan gör hello tillgängliga [här](https://support.microsoft.com/kb/2218556) toodo en auktoritativ återställning. Du kan också använda Powershell-funktioner som är tillgängliga på den här [länken](https://blogs.technet.microsoft.com/thbouche/2013/08/28/dfsr-sysvol-authoritative-non-authoritative-restore-powershell-functions/) för detta ändamål. 
+* Göra en auktoritativ återställning på domänkontrollanten.
+    * Även om det är [bör inte använda FRS replikering](https://blogs.technet.microsoft.com/filecab/2014/06/25/the-end-is-nigh-for-frs/), men om du använder fortfarande den och följer stegen [här](https://support.microsoft.com/kb/290762) att göra en auktoritativ återställning. Du kan läsa mer om Burflags diskuterats i föregående länk [här](https://blogs.technet.microsoft.com/janelewis/2006/09/18/d2-and-d4-what-is-it-for/).
+    * Om du använder DFSR replication, och följ sedan anvisningarna tillgängliga [här](https://support.microsoft.com/kb/2218556) att göra en auktoritativ återställning. Du kan också använda Powershell-funktioner som är tillgängliga på den här [länken](https://blogs.technet.microsoft.com/thbouche/2013/08/28/dfsr-sysvol-authoritative-non-authoritative-restore-powershell-functions/) för detta ändamål. 
     
-* Kringgå synkroniseringskrav genom att ange följande registret viktiga too0 i hello lokal domänkontrollant. Om den här DWORD inte finns, kan du skapa det under noden-parametrar'. Du kan läsa mer om den [här](https://support.microsoft.com/kb/2001093)
+* Kringgå synkroniseringskrav genom att ange följande registernyckel till 0 på den lokala domänkontrollanten. Om den här DWORD inte finns, kan du skapa det under noden-parametrar'. Du kan läsa mer om den [här](https://support.microsoft.com/kb/2001093)
 
         HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NTDS\Parameters\Repl Perform Initial Synchronizations
 
-* Inaktivera hello kravet på att en global katalogserver är tillgängliga toovalidate användarinloggning genom att ange följande registret viktiga too1 i domänkontrollanten för hello lokalt. Om den här DWORD inte finns kan du skapa det under noden 'Lsa. Du kan läsa mer om den [här](http://support.microsoft.com/kb/241789)
+* Inaktivera kravet på att en global katalogserver är tillgänglig för att verifiera användaren loggar in genom att ange följande registernyckel till 1 i den lokala domänkontrollanten. Om den här DWORD inte finns kan du skapa det under noden 'Lsa. Du kan läsa mer om den [här](http://support.microsoft.com/kb/241789)
 
         HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa\IgnoreGCFailures
 
 
 
 ### <a name="dns-and-domain-controller-on-different-machines"></a>DNS- och domänkontrollant på olika datorer
-Om DNS inte på hello samma virtuella dator som hello domänkontrollant, behöver du toocreate en DNS VM för hello testa redundans. Om de är Hej samma virtuella dator, kan du hoppa över det här avsnittet.
+Om DNS inte på samma virtuella dator som domänkontrollant, måste du skapa en DNS VM för att testa redundans. Om de finns på samma virtuella dator kan du hoppa över det här avsnittet.
 
-Du kan använda en ny DNS-server och skapa alla zoner för hello krävs. Om Active Directory-domänen är contoso.com kan skapa du en DNS-zon med hello namnet contoso.com. hello posterna motsvarande tooActive Directory uppdateras i DNS, enligt följande:
+Du kan använda en ny DNS-server och skapa zonerna som krävs. Om Active Directory-domänen är contoso.com kan skapa du en DNS-zon med namnet contoso.com. Poster som motsvarar Active Directory måste uppdateras i DNS, enligt följande:
 
-1. Kontrollera de här inställningarna är uppfyllda innan någon annan virtuell dator i hello återställningsplan medföljer:
+1. Kontrollera de här inställningarna är uppfyllda innan någon annan virtuell dator i återställningsplanen kommer:
    
-   * hello zonen måste ha namnet efter hello namn för skogsrotsdomänen.
-   * hello zonen måste vara filbaserat.
-   * hello zonen måste vara aktiverat för säker och icke-säker uppdateringar.
-   * hello-matchare för hello domain controller virtuell dator ska peka toohello IP-adressen för hello DNS virtuell dator.
-2. Kör hello följande kommando på domain controller virtuell dator:
+   * Zonen måste ha namnet efter skogsrotens namn.
+   * Zonen måste vara filbaserat.
+   * Zonen måste vara aktiverat för säker och icke-säker uppdateringar.
+   * Matcharen för domain controller virtuell dator ska peka på IP-adressen för den virtuella datorn i DNS.
+2. Kör följande kommando på domain controller virtuell dator:
    
     `nltest /dsregdns`
-3. Lägg till en zon på hello DNS-servern, tillåter inte är säkra uppdateringar och lägga till en post för den tooDNS:
+3. Lägga till en zon på DNS-servern, tillåter inte är säkra uppdateringar och lägga till en post för DNS:
    
         dnscmd /zoneadd contoso.com  /Primary
         dnscmd /recordadd contoso.com  contoso.com. SOA %computername%.contoso.com. hostmaster. 1 15 10 1 1
@@ -207,5 +207,5 @@ Du kan använda en ny DNS-server och skapa alla zoner för hello krävs. Om Acti
         dnscmd /config contoso.com /allowupdate 1
 
 ## <a name="next-steps"></a>Nästa steg
-Läs [vilka arbetsbelastningar kan jag skydda?](site-recovery-workload.md) toolearn mer om hur du skyddar arbetsbelastningar på företag med Azure Site Recovery.
+Läs [vilka arbetsbelastningar kan jag skydda?](site-recovery-workload.md) att lära dig mer om hur du skyddar arbetsbelastningar på företag med Azure Site Recovery.
 

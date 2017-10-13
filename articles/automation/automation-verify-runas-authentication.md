@@ -1,9 +1,9 @@
 ---
-title: aaaValidate Azure Automation-kontokonfigurationen | Microsoft Docs
-description: "Den här artikeln beskriver hur tooconfirm hello av ditt Automation-konto har konfigurerats korrekt."
+title: Verifiera konfiguration av Azure Automation-konto | Microsoft Docs
+description: "Den här artikeln beskriver hur du bekräftar att konfigurationen av ditt Automation-konto har gjorts på korrekt sätt."
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: carmonm
 editor: 
 ms.assetid: 
@@ -14,25 +14,25 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/07/2017
 ms.author: magoedte
-ms.openlocfilehash: 3a990dcc6661cf67c4b62592ce03d55a3791053a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 55f5d5524019ac63565e5ddd1f47dbdd65f05065
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="test-azure-automation-run-as-account-authentication"></a>Testa Kör som-kontoautentisering för Azure Automation
-När ett Automation-konto har skapats, du kan utföra en enkel test tooconfirm kan toosuccessfully autentiseras i Azure Resource Manager eller Azure klassisk distribution med ditt nyligen skapats eller uppdaterats Automation kör som-konto.    
+När ett Automation-konto har skapats kan du utföra ett enkelt test för att bekräfta att du kan autentisera i Azure Resource Manager eller den klassiska Azure-distributionen med ditt nyskapade eller uppdaterade Automation Kör som-konto.    
 
 ## <a name="automation-run-as-authentication"></a>Automation Kör som-autentisering
-Använd hello exempelkoden nedan för[skapa en PowerShell-runbook](automation-creating-importing-runbook.md) tooverify autentisering med hjälp av hello kör som-konto och i din anpassade runbooks tooauthenticate och hantera Resource Manager-resurser med ditt Automation-konto.   
+Använd exempelkoden nedan för att [skapa en PowerShell-runbook](automation-creating-importing-runbook.md) och verifiera autentisering med hjälp av Kör som-kontot och även i dina anpassade runbookflöden för att autentisera och hantera Resource Manager-resurser med Automation-kontot.   
 
     $connectionName = "AzureRunAsConnection"
     try
     {
-        # Get hello connection "AzureRunAsConnection "
+        # Get the connection "AzureRunAsConnection "
         $servicePrincipalConnection=Get-AutomationConnection -Name $connectionName         
 
-        "Logging in tooAzure..."
+        "Logging in to Azure..."
         Add-AzureRmAccount `
            -ServicePrincipal `
            -TenantId $servicePrincipalConnection.TenantId `
@@ -64,50 +64,50 @@ Använd hello exempelkoden nedan för[skapa en PowerShell-runbook](automation-cr
        Write-Output ("")
     } 
 
-Lägg märke till hello cmdlet som används för att autentisera i hello runbook - **Add-AzureRmAccount**, använder hello *ServicePrincipalCertificate* parameteruppsättning.  Den autentiserar med hjälp av tjänstobjektets certifikat, inte autentiseringsuppgifter.  
+Observera cmdleten som används för autentisering i runbooken – **Add-AzureRmAccount** använder *ServicePrincipalCertificate*-parameteruppsättningen.  Den autentiserar med hjälp av tjänstobjektets certifikat, inte autentiseringsuppgifter.  
 
-När du [köra hello runbook](automation-starting-a-runbook.md#starting-a-runbook-with-the-azure-portal) toovalidate din kör som-konto en [runbook-jobbet](automation-runbook-execution.md) har skapats hello jobbet bladet visas och hello jobbstatus visas i hello **jobbsammanfattning**panelen. hello jobbstatus startar som *i kö* som anger att den väntar på en runbook worker i hello molnet toobecome tillgängliga. Sedan flyttas för*Start* när en arbetsprocess anspråk hello jobb, och sedan *kör* när hello runbook faktiskt börjar köras.  När hello runbook-jobbet är slutfört, vi bör du se statusen **slutförd**.
+När du [kör en runbook](automation-starting-a-runbook.md#starting-a-runbook-with-the-azure-portal) för att verifiera ditt Kör som-konto skapas ett [runbook-jobb](automation-runbook-execution.md), bladet för jobbet öppnas och jobbstatusen visas på panelen **Jobbsammanfattning**. Jobbets första status är *I kö* vilket betyder att det väntar på att en Runbook Worker i molnet ska bli tillgänglig. Därefter ändras statusen till *Startar* när en Runbook Worker gör anspråk på jobbet, och sedan till *Körs* när runbook-jobbet börjar köras.  När runbook-jobbet har slutförts bör du se statusen **Slutfört**.
 
-toosee Hej detaljerade resultat för hello runbook, klicka på hello **utdata** panelen.  På hello **utdata** bladet bör du se den har autentiserats och returnerar en lista över alla resurser i alla resursgrupper i din prenumeration.  
+Om du vill visa ett detaljerat resultat av runbook-jobbet klickar du på panelen **Utdata**.  På bladet **Utdata** bör du se att autentiseringen har lyckats samt en lista över alla resurser i alla resursgrupper i prenumerationen.  
 
-Men kom ihåg tooremove hello kodblock börjar med hello kommentar `#Get all ARM resources from all resource groups` när du återanvända hello kod för dina runbooks.
+Kom bara ihåg att ta bort blockeringen av kod med början med kommentaren `#Get all ARM resources from all resource groups` när du återanvänder koden för dina runbookflöden.
 
 ## <a name="classic-run-as-authentication"></a>Klassisk Kör som-autentisering
-Använd hello exempelkoden nedan för[skapa en PowerShell-runbook](automation-creating-importing-runbook.md) tooverify autentisering med hello klassisk kör som-konto och i din anpassade runbooks tooauthenticate och hantera resurser i hello klassiska distributionsmodellen.  
+Använd exempelkoden nedan för att [skapa en PowerShell-runbook](automation-creating-importing-runbook.md) och verifiera autentisering med hjälp av det klassiska Kör som-kontot och även i dina anpassade runbookflöden för att autentisera och hantera resurser i den klassiska distributionsmodellen.  
 
     $ConnectionAssetName = "AzureClassicRunAsConnection"
-    # Get hello connection
+    # Get the connection
     $connection = Get-AutomationConnection -Name $connectionAssetName        
 
-    # Authenticate tooAzure with certificate
+    # Authenticate to Azure with certificate
     Write-Verbose "Get connection asset: $ConnectionAssetName" -Verbose
     $Conn = Get-AutomationConnection -Name $ConnectionAssetName
     if ($Conn -eq $null)
     {
-       throw "Could not retrieve connection asset: $ConnectionAssetName. Assure that this asset exists in hello Automation account."
+       throw "Could not retrieve connection asset: $ConnectionAssetName. Assure that this asset exists in the Automation account."
     }
 
     $CertificateAssetName = $Conn.CertificateAssetName
-    Write-Verbose "Getting hello certificate: $CertificateAssetName" -Verbose
+    Write-Verbose "Getting the certificate: $CertificateAssetName" -Verbose
     $AzureCert = Get-AutomationCertificate -Name $CertificateAssetName
     if ($AzureCert -eq $null)
     {
-       throw "Could not retrieve certificate asset: $CertificateAssetName. Assure that this asset exists in hello Automation account."
+       throw "Could not retrieve certificate asset: $CertificateAssetName. Assure that this asset exists in the Automation account."
     }
 
-    Write-Verbose "Authenticating tooAzure with certificate." -Verbose
+    Write-Verbose "Authenticating to Azure with certificate." -Verbose
     Set-AzureSubscription -SubscriptionName $Conn.SubscriptionName -SubscriptionId $Conn.SubscriptionID -Certificate $AzureCert
     Select-AzureSubscription -SubscriptionId $Conn.SubscriptionID
     
-    #Get all VMs in hello subscription and return list with name of each
+    #Get all VMs in the subscription and return list with name of each
     Get-AzureVM | ft Name
 
-När du [köra hello runbook](automation-starting-a-runbook.md#starting-a-runbook-with-the-azure-portal) toovalidate din kör som-konto en [runbook-jobbet](automation-runbook-execution.md) har skapats hello jobbet bladet visas och hello jobbstatus visas i hello **jobbsammanfattning**panelen. hello jobbstatus startar som *i kö* som anger att den väntar på en runbook worker i hello molnet toobecome tillgängliga. Sedan flyttas för*Start* när en arbetsprocess anspråk hello jobb, och sedan *kör* när hello runbook faktiskt börjar köras.  När hello runbook-jobbet är slutfört, vi bör du se statusen **slutförd**.
+När du [kör en runbook](automation-starting-a-runbook.md#starting-a-runbook-with-the-azure-portal) för att verifiera ditt Kör som-konto skapas ett [runbook-jobb](automation-runbook-execution.md), bladet för jobbet öppnas och jobbstatusen visas på panelen **Jobbsammanfattning**. Jobbets första status är *I kö* vilket betyder att det väntar på att en Runbook Worker i molnet ska bli tillgänglig. Därefter ändras statusen till *Startar* när en Runbook Worker gör anspråk på jobbet, och sedan till *Körs* när runbook-jobbet börjar köras.  När runbook-jobbet har slutförts bör du se statusen **Slutfört**.
 
-toosee Hej detaljerade resultat för hello runbook, klicka på hello **utdata** panelen.  På hello **utdata** bladet bör du se den har autentiserats och returnerar en lista över alla virtuella Azure-datorer med VMName som har distribuerats i din prenumeration.  
+Om du vill visa ett detaljerat resultat av runbook-jobbet klickar du på panelen **Utdata**.  På bladet **Utdata** bör du se att autentiseringen har lyckats samt en lista över alla resurser i alla virtuella Azure-datorer efter virtuellt datornamn som har distribuerats i prenumerationen.  
 
-Men kom ihåg tooremove hello cmdlet **Get-AzureVM** när du återanvända hello kod för dina runbooks.
+Kom bara ihåg att ta bort cmdlet **Get-AzureVM** när du återanvänder koden för dina runbooflöden.
 
 ## <a name="next-steps"></a>Nästa steg
-* tooget igång med PowerShell-runbooks, se [min första PowerShell-runbook](automation-first-runbook-textual-powershell.md).
-* toolearn mer information om hur du grafiskt redigering finns [grafiska redigering i Azure Automation](automation-graphical-authoring-intro.md).
+* Information om hur du kommer igång med PowerShell-runbooks finns i [Min första PowerShell-runbook](automation-first-runbook-textual-powershell.md).
+* Läs mer om grafisk redigering i [Grafisk redigering i Azure Automation](automation-graphical-authoring-intro.md).

@@ -1,6 +1,6 @@
 ---
-title: aaaUsing Azure AD Connect Health med synkronisering | Microsoft Docs
-description: "Detta är hello Azure AD Connect Health sida som innehåller information om hur toomonitor Azure AD Connect synkroniserar."
+title: "Använda Azure AD Connect Health med synkronisering | Microsoft Docs"
+description: "Den här sidan om Azure AD Connect Health innehåller information om hur du övervakar Azure AD Connect-synkronisering."
 services: active-directory
 documentationcenter: 
 author: karavar
@@ -14,97 +14,97 @@ ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 56f0582be30e664026cedf15350bc23501998bfd
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 4b06338cb62cc458e7b097db36023f0746d4e969
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-azure-ad-connect-sync-with-azure-ad-connect-health"></a>Övervaka Azure AD Connect-synkronisering med Azure AD Connect Health
-hello följande dokumentation är specifik toomonitoring Azure AD Connect (synkronisering) med Azure AD Connect Health.  Information om övervakning av AD FS med Azure AD Connect Health finns i [Använda Azure AD Connect Health med AD FS](active-directory-aadconnect-health-adfs.md). Mer information om övervakning av Active Directory Domain Services med Azure AD Connect Health finns i [Använda Azure AD Connect Health med AD DS](active-directory-aadconnect-health-adds.md).
+Följande dokumentation är specifik för övervakning av Azure AD Connect (Sync) med Azure AD Connect Health.  Information om övervakning av AD FS med Azure AD Connect Health finns i [Använda Azure AD Connect Health med AD FS](active-directory-aadconnect-health-adfs.md). Mer information om övervakning av Active Directory Domain Services med Azure AD Connect Health finns i [Använda Azure AD Connect Health med AD DS](active-directory-aadconnect-health-adds.md).
 
 ![Azure AD Connect Health för synkronisering](./media/active-directory-aadconnect-health-sync/sync-blade.png)
 
 ## <a name="alerts-for-azure-ad-connect-health-for-sync"></a>Aviseringar för Azure AD Connect Health för synkronisering
-hello Azure AD Connect Health-aviseringar för synkronisering tillhandahåller du hello lista över aktiva aviseringar. Varje avisering innehåller relevant information, Lösningssteg och länkar toorelated dokumentation. Genom att välja en aktiv eller åtgärdad avisering visas ett nytt blad med ytterligare information, samt vad du kan göra tooresolve hello aviseringen och länkar tooadditional dokumentation. Du kan också visa historiska data om aviseringar som har lösts i hello tidigare.
+Avsnittet om Azure AD Connect Health-aviseringar för synkronisering innehåller en lista över aktiva aviseringar. Varje avisering innehåller relevant information, lösningssteg och länkar till relaterad dokumentation. Om du väljer en aktiv eller åtgärdad avisering visas ett nytt blad med ytterligare information, samt de steg som du kan utföra för att åtgärda aviseringen liksom länkar till ytterligare dokumentation. Du kan också visa historiska data för tidigare åtgärdade aviseringar.
 
-Genom att markera en avisering som levereras med ytterligare information, samt steg kan du ta tooresolve hello aviseringen liksom länkar tooadditional dokumentation.
+Om du väljer en avisering visas ytterligare information samt de steg som du kan utföra för att åtgärda aviseringen liksom länkar till ytterligare dokumentation.
 
 ![Azure AD Connect-synkroniseringsfel](./media/active-directory-aadconnect-health-sync/alert.png)
 
 ### <a name="limited-evaluation-of-alerts"></a>Begränsad utvärdering av aviseringar
-Om Azure AD Connect inte använder standardkonfigurationen för hello (till exempel om Attributfiltrering ändras från hello standard tooa anpassad konfiguration), sedan hello Azure AD Connect Health-agenten kommer inte att överföra hello fel händelser relaterade tooAzure AD Connect.
+Om Azure AD Connect INTE använder standardkonfigurationen (till exempel om attributfiltrering ändras från standardkonfigurationen till en anpassad konfiguration) överför inte Azure AD Connect Health-agenten felhändelser relaterade till Azure AD Connect.
 
-Detta begränsar hello utvärdering av aviseringar av hello-tjänsten. Visas en banderoll som anger det här villkoret i hello Azure Portal under din tjänst.
+Detta begränsar tjänstens utvärdering av aviseringar. En banderoll visas som anger det här tillståndet på Azure Portal under din tjänst.
 
 ![Azure AD Connect Health för synkronisering](./media/active-directory-aadconnect-health-sync/banner.png)
 
-Du kan ändra detta genom att klicka på ”inställningar” och låta Azure AD Connect Health agent tooupload alla felloggarna.
+Du kan ändra detta genom att klicka på Inställningar och låta Azure AD Connect Health-agenten överföra alla felloggarna.
 
 ![Azure AD Connect Health för synkronisering](./media/active-directory-aadconnect-health-sync/banner2.png)
 
 ## <a name="sync-insight"></a>Synkronisera Insight
-Administratörer ofta vill tooknow om hello tid det tar toosync ändringar tooAzure AD och hello mängd ändringar äger rum. Den här funktionen ger ett enkelt sätt toovisualize detta med hjälp av hello nedan diagram:   
+Administratörer vill ofta veta hur lång tid det tar att synkronisera ändringar av Azure AD och mängden ändringar som sker. Den här funktionen innehåller ett enkelt sätt att visualisera detta med hjälp av diagrammet nedan:   
 
 * Svarstiden för synkroniseringsåtgärder
 * Objektändringstrend
 
 ### <a name="sync-latency"></a>Synkronisera svarstider
-Denna funktion tillhandahåller en grafisk trend över svarstiderna för hello synkroniseringsåtgärder (import, export osv.) för kopplingar.  Detta ger en snabb och enkelt sätt toounderstand hello inte bara svarstiderna för dina åtgärder (större om du har en stor mängd ändringar äger rum), utan också ett sätt toodetect avvikelser i hello latens som kan kräva ytterligare utredning.
+Den här funktionen visar en grafisk trend över svarstiderna för synkroniseringsåtgärder (import, export osv.) för anslutningsappar.  Detta är ett snabbt och enkelt sätt att förstå inte bara svarstiderna för dina åtgärder (vilket är bra om många ändringar äger rum), men är också ett sätt att identifiera avvikelser i svarstiderna som kan kräva ytterligare utredning.
 
 ![Synkronisera svarstider](./media/active-directory-aadconnect-health-sync/synclatency02.png)
 
-Som standard visas endast hello fördröjning av hello ”Export” för hello Azure AD-koppling.  toosee flera åtgärder på hello koppling eller tooview åtgärder från andra anslutningsappar högerklickar du på hello diagram, väljer Redigera diagram eller klicka på ”Redigera latens diagram” Hej och välj hello specifika åtgärden och kopplingar.
+Som standard visas endast svarstider för exportåtgärden för Azure AD-anslutningsappen.  Om du vill visa fler åtgärder för anslutningsappen eller om du vill visa åtgärder från andra anslutningsappar högerklickar du på diagrammet, välj Redigera diagram eller klicka på knappen ”Redigera svarstidsdiagram” och välj den specifika åtgärden och anslutningsapparna.
 
 ### <a name="sync-object-changes"></a>Synkronisera objektändringar
-Denna funktion tillhandahåller en grafisk trend över hello antalet ändringar som utvärderas och exporteras tooAzure AD.  Idag, när toogather är den här informationen från synkroniseringsloggarna hello svårt.  hello diagrammet innehåller inte bara ett enklare sätt att övervaka hello antalet ändringar som äger rum i din miljö, utan också en visuell översikt över hello-fel som uppstår.
+Den här funktion visar en grafisk trend över antalet ändringar som utvärderas och exporteras till Azure AD.  I dag är det svårt att försöka samla in den här informationen från synkroniseringsloggarna.  Diagrammet är inte bara ett enklare sätt att övervaka antalet ändringar som äger rum i din miljö, utan tillhandahåller också en visuell översikt över de fel som uppstår.
 
 ![Synkronisera svarstider](./media/active-directory-aadconnect-health-sync/syncobjectchanges02.png)
 
 ## <a name="object-level-synchronization-error-report-preview"></a>Felrapport för synkronisering på objektnivå (förhandsgranskning)
 Denna funktion tillhandahåller en rapport om synkroniseringsfel som kan uppstå när identitetsdata synkroniseras mellan Windows Server AD och Azure AD med Azure AD Connect.
 
-* hello rapporten täcker fel som har registrerats av hello synkroniseringsklient (Azure AD Connect version 1.1.281.0 eller senare)
-* Hello senaste synkroniseringen på hello Synkroniseringsmotorn innehåller hello-fel som uppstått. (”Export” på hello Azure AD-koppling.)
-* Azure AD Connect Health agent för synkronisering måste ha utgående anslutning toohello krävs slutpunkter för hello tooinclude hello senaste rapportdata.
-* hello rapporten är **uppdaterade efter var 30: e minut** med hello data har laddats upp av Azure AD Connect Health agent för synkronisering. Det ger hello följande viktiga funktioner
+* Rapporten avser fel registrerade av synkroniseringsklienten (Azure AD Connect version 1.1.281.0 eller senare)
+* Den innehåller de fel som uppstod under den senaste synkroniseringen på synkroniseringsmotorn. (”Export” i Azure AD Connector.)
+* Azure AD Connect Health-agenten för synkronisering måste ha en utgående anslutning till de nödvändiga slutpunkterna för rapporten för att inkludera den senaste informationen.
+* Rapporten **uppdateras efter var 30:e minut** med hjälp av data som överförts av Azure AD Connect Health-agenten för synkronisering. Det ger följande viktiga funktioner
 
   * Kategorisering av fel
   * Lista över objekt med fel per kategori
-  * Alla hello data om hello fel på samma ställe
-  * Sida vid sida-jämförelse av objekt med fel på grund av tooa konflikt
-  * Hämta hello felrapport som en CVS (kommer snart)
+  * Alla data om felen på en plats
+  * Jämförelse sida vid sida av objekt med fel på grund av en konflikt
+  * Hämta felrapporten som en CVS-fil (kommer snart)
 
 ### <a name="categorization-of-errors"></a>Kategorisering av fel
-hello rapporten kategoriserar hello befintliga synkroniseringsfel i hello följande kategorier:
+Rapporten kategoriserar befintliga synkroniseringsfel i följande kategorier:
 
 | Kategori | Beskrivning |
 | --- | --- |
 | Duplicerat attribut |Fel när Azure AD Connect försöker skapa eller uppdatera objekt med dubblerade värden av ett eller flera attribut i Azure AD som måste vara unika i en klient, till exempel proxyAddresses, UserPrincipalName. |
-| Felmatchning av data |Fel uppstod när hello soft-matchar inte toomatch objekt som resulterar i synkroniseringsfel. |
-| Verifieringsfel för data |Fel på grund av tooinvalid data, till exempel tecken som inte stöds i viktiga attribut, till exempel UserPrincipalName, formatera fel som inte kan valideras innan de skrivs i Azure AD. |
-| Stora attribut |Fel när en eller flera attribut är större än hello tillåten storlek, längd eller antal. |
-| Annat |Alla andra fel som inte får plats i hello ovanför kategorier. Baserat på feedback, kommer den här kategorin att delas upp i underkategorier. |
+| Felmatchning av data |Fel när en ungefärlig matchning inte matchar objekt som kan leda till problem med synkronisering. |
+| Verifieringsfel för data |Fel på grund av ogiltiga data, till exempel tecken som inte stöds i viktiga attribut såsom UserPrincipalName, formatfel som inte kan valideras innan de skrivs i Azure AD. |
+| Stora attribut |Fel när ett eller flera attribut är större än den tillåtna storleken, längden eller antalet. |
+| Annat |Alla andra fel som inte passar in i ovanstående kategorier. Baserat på feedback, kommer den här kategorin att delas upp i underkategorier. |
 
 ![ Rapportsammanfattning för synkroniseringsfel](./media/active-directory-aadconnect-health-sync/errorreport01.png)
 ![Rapportkategorier för synkroniseringsfel](./media/active-directory-aadconnect-health-sync/errorreport02.png)
 
 ### <a name="list-of-objects-with-error-per-category"></a>Lista över objekt med fel per kategori
-Vidaresökning i varje kategori får hello listan med objekt med hello fel i den kategorin.
+Att gå djupare in i varje kategori kommer att ge listan över objekt som har fel i kategorin.
 ![Rapportlista för synkroniseringsfel](./media/active-directory-aadconnect-health-sync/errorreport03.png)
 
 ### <a name="error-details"></a>Information om fel
-Följande data är tillgängliga i hello detaljerad vy för varje fel
+Följande data är tillgängliga i den detaljerade vyn för varje fel
 
-* Identifierare för hello *AD-objekt* ingår
-* Identifierare för hello *Azure AD-objekt* inblandade (som är tillämpligt)
-* Felbeskrivning och hur toofix
+* Identifierare för inblandade *AD-objekt*
+* Identifierare för inblandade *Azure AD-objekt* (som tillämpligt)
+* Felbeskrivning och hur du åtgärdar
 * Relaterade artiklar
 
 ![Rapportdetaljer för synkroniseringsfel](./media/active-directory-aadconnect-health-sync/errorreport04.png)
 
-### <a name="download-hello-error-report-as-csv"></a>Hämta hello felrapport som CSV-fil
-Genom att välja hello ”Export” knapp som du kan ladda ned en CSV-fil med alla hello detaljer om alla hello-fel.
+### <a name="download-the-error-report-as-csv"></a>Hämta felrapporten som CSV
+Du kan hämta en CSV-fil med all information om felen genom att klicka på Exportera.
 
 ## <a name="related-links"></a>Relaterade länkar
 * [Felsöka fel under synkronisering](../connect/active-directory-aadconnect-troubleshoot-sync-errors.md)

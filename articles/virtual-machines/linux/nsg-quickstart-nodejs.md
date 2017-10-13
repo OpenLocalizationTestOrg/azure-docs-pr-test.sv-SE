@@ -1,6 +1,6 @@
 ---
-title: aaaOpen portarna tooa Linux VM med Azure CLI 1.0 | Microsoft Docs
-description: "Lär dig hur tooopen en port / skapa en slutpunkt tooyour Linux VM använder hello Azure resource manager distribution modell och hello Azure CLI 1.0"
+title: "Öppna portar till en Linux-VM med Azure CLI 1.0 | Microsoft Docs"
+description: "Lär dig hur du öppnar en port / skapa en slutpunkt för ditt Linux-VM med hjälp av Azure resource manager-distributionsmodellen och Azure CLI 1.0"
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
@@ -13,33 +13,33 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/11/2017
 ms.author: iainfou
-ms.openlocfilehash: 337c37d151f527b43d4852291159b2f70a00accc
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 847bc76c37ed929851712ba1c12463a01032e267
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="opening-ports-and-endpoints-tooa-linux-vm-in-azure-using-hello-azure-cli-10"></a>Öppna portar och slutpunkter tooa Linux VM i Azure med hjälp av hello Azure CLI 1.0
-Du öppnar en port eller skapa en slutpunkt tooa virtuell dator (VM) i Azure genom att skapa ett filter för nätverk på ett undernät eller Virtuella datorns nätverksgränssnitt. Du placera dessa filter som styr både inkommande och utgående trafik på en Nätverkssäkerhetsgrupp kopplad toohello resurs som tar emot hello trafik. Nu ska vi använda ett vanligt exempel på Internet-trafik på port 80. Den här artikeln visar hur tooopen som använder en port tooa VM hello Azure CLI 1.0.
+# <a name="opening-ports-and-endpoints-to-a-linux-vm-in-azure-using-the-azure-cli-10"></a>Öppna portar och slutpunkter till en Linux-VM i Azure med hjälp av Azure CLI 1.0
+Du öppnar en port eller skapa en slutpunkt för en virtuell dator (VM) i Azure genom att skapa ett filter för nätverk på ett undernät eller Virtuella datorns nätverksgränssnitt. Du kan placera dessa filter som styr både inkommande och utgående trafik på en Nätverkssäkerhetsgrupp kopplad till den resurs som tar emot trafiken. Nu ska vi använda ett vanligt exempel på Internet-trafik på port 80. Den här artikeln visar hur du öppnar en port till en virtuell dator med hjälp av Azure CLI 1.0.
 
 
-## <a name="cli-versions-toocomplete-hello-task"></a>CLI versioner toocomplete hello aktivitet
-Du kan göra hello med hjälp av något av följande versioner av CLI hello:
+## <a name="cli-versions-to-complete-the-task"></a>CLI-versioner för att slutföra uppgiften
+Du kan slutföra uppgiften med någon av följande CLI-versioner:
 
-- [Azure CLI 1.0](#quick-commands) – våra CLI för hello klassisk och resurs management distributionsmodeller (den här artikeln)
-- [Azure CLI 2.0](nsg-quickstart.md) -vår nästa generations CLI för hello resursdistributionsmodell för hantering
+- [Azure CLI 1.0](#quick-commands) – våra CLI för klassisk och resurs management på distributionsmodeller (den här artikeln)
+- [Azure CLI 2.0](nsg-quickstart.md) – vår nästa generations CLI för distributionsmodellen resurshantering
 
 
 ## <a name="quick-commands"></a>Snabbkommandon
-toocreate en Nätverkssäkerhetsgrupp och regler du behöver [hello Azure CLI 1.0](../../cli-install-nodejs.md) installerad och med hjälp av Resource Manager-läge:
+Så här skapar du en säkerhetsgrupp för nätverk och regler som du behöver [Azure CLI 1.0](../../cli-install-nodejs.md) installerad och med hjälp av Resource Manager-läge:
 
 ```azurecli
 azure config mode arm
 ```
 
-Följande exempel Ersätt exempel parameternamn i hello med egna värden. Exempel parameternamn ingår *myResourceGroup*, *myNetworkSecurityGroup*, och *myVnet*.
+Ersätt exempel parameternamn med egna värden i följande exempel. Exempel parameternamn ingår *myResourceGroup*, *myNetworkSecurityGroup*, och *myVnet*.
 
-Skapa din Nätverkssäkerhetsgruppen att ange egna namn och plats på lämpligt sätt. hello följande exempel skapar en Nätverkssäkerhetsgrupp med namnet *myNetworkSecurityGroup* i hello *eastus* plats:
+Skapa din Nätverkssäkerhetsgruppen att ange egna namn och plats på lämpligt sätt. I följande exempel skapas en Nätverkssäkerhetsgrupp med namnet *myNetworkSecurityGroup* i den *eastus* plats:
 
 ```azurecli
 azure network nsg create \
@@ -48,7 +48,7 @@ azure network nsg create \
     --name myNetworkSecurityGroup
 ```
 
-Lägg till en regel tooallow HTTP-trafik tooyour webbserver (eller justera för egna scenario, till exempel SSH åtkomst eller database connectivity). hello följande exempel skapas en regel med namnet *myNetworkSecurityGroupRule* tooallow TCP-trafik på port 80:
+Lägg till en regel för att tillåta HTTP-trafik till en webbserver (eller justera för egna scenario, till exempel SSH åtkomst eller database connectivity). I följande exempel skapas en regel med namnet *myNetworkSecurityGroupRule* som tillåter TCP-trafik på port 80:
 
 ```azurecli
 azure network nsg rule create \
@@ -62,7 +62,7 @@ azure network nsg rule create \
     --access allow
 ```
 
-Associera hello säkerhetsgrupp för nätverk med den Virtuella datorns nätverksgränssnitt (NIC). hello följande exempel associerar en befintlig NIC som heter *myNic* med hello säkerhetsgrupp för nätverk med namnet *myNetworkSecurityGroup*:
+Koppla Nätverkssäkerhetsgruppen till den Virtuella datorns nätverksgränssnitt (NIC). I följande exempel associerar en befintlig NIC som heter *myNic* med Nätverkssäkerhetsgruppen med namnet *myNetworkSecurityGroup*:
 
 ```azurecli
 azure network nic set \
@@ -71,7 +71,7 @@ azure network nic set \
     --name myNic
 ```
 
-Du kan också associera säkerhetsgrupp för nätverk med ett undernät för virtuellt nätverk i stället för bara toohello nätverksgränssnittet på en enda virtuell dator. hello följande exempel associerar ett befintligt undernät med namnet *mySubnet* i hello *myVnet* virtuellt nätverk med hello säkerhetsgrupp för nätverk med namnet *myNetworkSecurityGroup*:
+Du kan också associera säkerhetsgrupp för nätverk med ett undernät för virtuellt nätverk i stället för bara till nätverksgränssnittet på en enda virtuell dator. I följande exempel associerar ett befintligt undernät med namnet *mySubnet* i den *myVnet* virtuellt nätverk med säkerhetsgruppen nätverk med namnet *myNetworkSecurityGroup*:
 
 ```azurecli
 azure network vnet subnet set \
@@ -81,14 +81,14 @@ azure network vnet subnet set \
 ```
 
 ## <a name="more-information-on-network-security-groups"></a>Mer information om Nätverkssäkerhetsgrupper
-hello här snabb kommandon kan du tooget upp och körs med trafiken flödar tooyour VM. Nätverkssäkerhetsgrupper ger många bra funktioner och granularitet för styra åtkomst tooyour resurser. Du kan läsa mer om [skapar en säkerhetsgrupp för nätverk och ACL-regler här](../../virtual-network/virtual-networks-create-nsg-arm-cli.md).
+Snabb kommandon här kan du komma igång med trafik som flödar till den virtuella datorn. Nätverkssäkerhetsgrupper ger många bra funktioner och granularitet för att styra åtkomst till resurser. Du kan läsa mer om [skapar en säkerhetsgrupp för nätverk och ACL-regler här](../../virtual-network/virtual-networks-create-nsg-arm-cli.md).
 
 Du kan definiera Nätverkssäkerhetsgrupper och ACL-regler som en del av Azure Resource Manager-mallar. Läs mer om [skapa Nätverkssäkerhetsgrupper med mallar](../../virtual-network/virtual-networks-create-nsg-arm-template.md).
 
-Om du behöver toouse vidarebefordrade portar toomap en unik externa porten tooan Intern port på den virtuella datorn Använd belastningsutjämning och NAT (Network Address Translation)-regler. Du kan till exempel vill tooexpose TCP-port 8080 externt och har trafik dirigeras tooTCP port 80 på en virtuell dator. Du kan lära dig om [skapar en Internetriktade belastningsutjämnare](../../load-balancer/load-balancer-get-started-internet-arm-cli.md).
+Om du behöver använda port-vidarebefordran för att mappa en unik extern port till en intern port på den virtuella datorn Använd belastningsutjämning och NAT (Network Address Translation)-regler. Du kanske vill exponera TCP-port 8080 externt och har trafik dirigeras till TCP-port 80 på en virtuell dator. Du kan lära dig om [skapar en Internetriktade belastningsutjämnare](../../load-balancer/load-balancer-get-started-internet-arm-cli.md).
 
 ## <a name="next-steps"></a>Nästa steg
-I det här exemplet skapas en enkel regel tooallow HTTP-trafik. Du kan hitta information om hur du skapar mer detaljerad miljöer i hello följande artiklar:
+I det här exemplet skapas en enkel regel för att tillåta HTTP-trafik. Du kan hitta information om hur du skapar mer detaljerad miljöer i följande artiklar:
 
 * [Översikt över Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md)
 * [Vad är en nätverkssäkerhetsgrupp (NSG)?](../../virtual-network/virtual-networks-nsg.md)

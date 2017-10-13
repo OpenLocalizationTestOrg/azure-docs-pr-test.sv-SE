@@ -1,6 +1,6 @@
 ---
-title: "aaaConfiguring principerna för tillgångsleverans med hjälp av Media Services REST API | Microsoft Docs"
-description: "Det här avsnittet visar hur tooconfigure olika principerna för tillgångsleverans med hjälp av Media Services REST API."
+title: "Konfigurera principerna för tillgångsleverans med hjälp av Media Services REST API | Microsoft Docs"
+description: "Det här avsnittet visar hur du konfigurerar olika principerna för tillgångsleverans med hjälp av Media Services REST API."
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -14,31 +14,31 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: juliako
-ms.openlocfilehash: 8203230d570935e17382c598820dbfe42f83f8d8
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 7ffbde11b943961dd3a3b5edebd0cfd52429e845
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="configuring-asset-delivery-policies"></a>Konfigurera principerna för tillgångsleverans
 [!INCLUDE [media-services-selector-asset-delivery-policy](../../includes/media-services-selector-asset-delivery-policy.md)]
 
-Om du planerar toodeliver dynamiskt krypterad tillgångar, steg ett av hello i hello Media Services content delivery arbetsflödet konfigurera leveransprinciperna för tillgångar. Hej tillgångsleveransprincip talar om för Media Services hur du vill använda för din tillgång toobe levereras: i vilket strömningsprotokoll bör din tillgång dynamiskt paketeras (till exempel MPEG DASH, HLS, Smooth Streaming eller alla), oavsett om du vill toodynamically kryptera din tillgång och hur (envelope eller vanliga kryptering).
+Om du planerar att leverera dynamiskt krypterade tillgångar ett av stegen i Media Services innehållsleverans arbetsflödet konfigurera leveransprinciperna för tillgångar. Anger tillgångsleveransprincip Media Services hur du vill använda för din tillgång som ska levereras: till vilka streaming-protokollet bör din tillgång dynamiskt paketeras (till exempel MPEG DASH, HLS, Smooth Streaming eller alla), oavsett om du vill kryptera dynamiskt din tillgång och hur (envelope eller vanliga kryptering).
 
-Det här avsnittet beskrivs hur och varför toocreate och konfigurera leveransprinciperna för tillgången.
+Det här avsnittet beskriver varför och hur du skapar och konfigurerar principerna för tillgångsleverans.
 
 >[!NOTE]
->När AMS-kontot skapas en **standard** strömningsslutpunkt har lagts till tooyour konto i hello **stoppad** tillstånd. toostart strömning ditt innehåll och dra nytta av dynamisk paketering och dynamisk kryptering hello strömningsslutpunkt som du vill toostream innehåll har toobe i hello **kör** tillstånd. 
+>När ditt AMS-konto skapas läggs en **standard**-slutpunkt för direktuppspelning till på ditt konto med tillståndet **Stoppad**. Om du vill starta direktuppspelning av innehåll och dra nytta av dynamisk paketering och dynamisk kryptering måste slutpunkten för direktuppspelning som du vill spela upp innehåll från ha tillståndet **Körs**. 
 >
->Dessutom toobe kan toouse dynamisk paketering och dynamisk kryptering din tillgång måste innehålla en uppsättning MP4s med anpassningsbar bithastighet eller Smooth Streaming-filer.
+>Dessutom måste din tillgång för att kunna använda dynamisk paketering och dynamisk kryptering innehåller en uppsättning MP4s med anpassningsbar bithastighet eller Smooth Streaming-filer.
 
-Du kan använda olika principer toohello samma tillgång. Du kan till exempel använda PlayReady-kryptering tooSmooth Streaming och AES Envelope kryptering tooMPEG DASH och HLS. Alla protokoll som inte har definierats i en leveransprincip (exempelvis du lägga till en enda princip som endast anger HLS som hello protokoll) kommer att blockeras från strömning. hello undantag toothis är om du har någon tillgångsleveransprincip alls definierats. Sedan tillåts alla protokoll i hello Rensa.
+Du kan tillämpa olika principer för samma tillgång. Du kan till exempel tillämpa PlayReady-kryptering till kryptering för Smooth Streaming- och AES Envelope MPEG DASH och HLS. Alla protokoll som inte har definierats i en leveransprincip (exempelvis kan du lägga till en enskild princip som endast anger HLS som protokoll) kommer att blockeras från strömning. Ett undantag till detta är om du inte har definierat någon tillgångsleveransprincip alls. Därefter tillåts alla protokoll fritt.
 
-Om du vill toodeliver en krypterad tillgång för lagring, måste du konfigurera hello tillgångsleveransprincip. Innan din tillgång kan strömmas angetts hello streaming server tar bort hello lagringskryptering och dataströmmar innehåll med hello principen för tillgångsleverans. Till exempel toodeliver din tillgång krypteras med Advanced Encryption Standard (AES) kuvert krypteringsnyckeln genom att ange hello principtypen för**DynamicEnvelopeEncryption**. tooremove lagringskryptering och dataströmmen hello tillgångar i hello rensa, ange hello princip för**NoDynamicEncryption**. Exempel som visar hur tooconfigure dessa principtyper följer.
+Om du vill leverera en krypterad tillgång lagring måste du konfigurera den tillgångsleveransprincip. Innan din tillgång kan strömmas strömmande server tar du bort krypteringen lagring och strömmar ditt innehåll med hjälp av angivna leveransprincipen. Till exempel för att leverera din tillgång som krypterats med Advanced Encryption Standard (AES) kuvert krypteringsnyckeln anger du principtypen **DynamicEnvelopeEncryption**. Om du vill ta bort lagringskryptering och strömma tillgången i klartext, anger du principtypen **NoDynamicEncryption**. Exempel som visar hur du konfigurerar dessa principtyper följer.
 
-Beroende på hur du konfigurerar hello tillgångsleveransprincip du skulle kunna toodynamically paketet, dynamiskt kryptera och strömma hello följande strömningsprotokoll: Smooth Streaming, HLS, MPEG DASH-dataströmmar.
+Beroende på hur du konfigurerar tillgångsleveransprincip du skulle kunna dynamiskt paketera dynamiskt kryptera och strömma följande protokoll för dataströmmar: Smooth Streaming, HLS, MPEG DASH-dataströmmar.
 
-följande lista visar hello hello formaterar du använder toostream Smooth, HLS, DASH.
+I följande lista visas format för att du använder att dataströmmen Smooth, HLS, DASH.
 
 Smooth Streaming:
 
@@ -53,30 +53,30 @@ MPEG DASH
 {strömmande slutpunkten namn media services-konto name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=mpd-time-csf)
 
 
-Anvisningar för hur toopublish en tillgång och skapa en strömnings-URL, se [skapa en strömnings-URL](media-services-deliver-streaming-content.md).
+Anvisningar för hur du publicerar en tillgång och skapar en strömnings-URL finns i [Skapa en strömnings-URL](media-services-deliver-streaming-content.md).
 
 ## <a name="considerations"></a>Överväganden
-* Du kan inte ta bort en AssetDeliveryPolicy som är associerade med en tillgång, medan det finns en (streaming) positionerare för tillgången. hello rekommendation är tooremove hello principen från hello tillgångsinformation innan du tar bort hello princip.
-* En strömningslokaliserare kan inte skapas på en krypterad tillgång lagring när någon tillgångsleveransprincip anges.  Om inte hello tillgången är lagringskrypterad, kan hello system du skapa en positionerare och dataströmmen hello tillgång i hello Rensa utan en tillgångsleveransprincip.
-* Du kan ha flera principerna för tillgångsleverans som är associerade med en enda resurs, men du kan bara ange ett sätt toohandle angivna AssetDeliveryProtocol.  Vilket innebär att om du toolink två leveransprinciperna som anger hello AssetDeliveryProtocol.SmoothStreaming protokoll som resulterar i ett fel eftersom hello system inte vet vilken vill du tooapply när en klient gör en Smooth Streaming-begäran.
-* Om du har en tillgång med en befintlig strömningslokaliserare kan inte länka en ny princip toohello tillgång, Avlänka en befintlig princip från hello tillgång eller uppdatera en leveransprincip som är associerade med hello tillgången.  Du först har tooremove hello strömningslokaliserare, justera hello principer och återskapa hello strömning lokaliserare.  Du kan använda samma locatorId när du skapar nytt hello strömning lokaliserare, men du bör kontrollera hello som inte orsakar problem för klienter eftersom innehållet kan cachelagras av hello ursprung eller en underordnad CDN.
+* Du kan inte ta bort en AssetDeliveryPolicy som är associerade med en tillgång, medan det finns en (streaming) positionerare för tillgången. Det rekommenderas att ta bort principen från tillgången innan du tar bort principen.
+* En strömningslokaliserare kan inte skapas på en krypterad tillgång lagring när någon tillgångsleveransprincip anges.  Om tillgången är lagringskrypterad, kan systemet du skapa en positionerare och strömma tillgången i klartext utan en tillgångsleveransprincip.
+* Du kan ha flera principerna för tillgångsleverans som är associerade med en enda resurs, men du kan bara ange ett sätt att hantera en viss AssetDeliveryProtocol.  Vilket innebär att om du försöker länka två leveransprinciperna som anger protokollet AssetDeliveryProtocol.SmoothStreaming som leder till ett fel eftersom systemet inte vet vilken du vill att det ska tillämpas när en klient gör en begäran om Smooth Streaming.
+* Om du har en tillgång med en befintlig strömningslokaliserare kan inte länka en ny princip till tillgången, Avlänka en befintlig princip från tillgången eller uppdatera en leveransprincip som är kopplade till tillgången.  Du måste först ta bort strömningspositioneraren, justera principerna och sedan återskapa strömningspositioneraren.  Du kan använda samma locatorId när du återskapa strömningslokaliseraren men du bör se till att den orsakar problem för klienter eftersom innehållet kan cachelagras av ursprung eller en underordnad CDN.
 
 >[!NOTE]
 
 >Vid åtkomst till entiteter i Media Services måste du ange specifika namn på huvudfält och värden i HTTP-begäranden. Mer information finns i [installationsprogrammet för Media Services REST API-utveckling](media-services-rest-how-to-use.md).
 
-## <a name="connect-toomedia-services"></a>Ansluta tooMedia tjänster
+## <a name="connect-to-media-services"></a>Ansluta till Media Services
 
-Mer information om hur tooconnect toohello AMS API, se [åtkomst hello Azure Media Services API med Azure AD authentication](media-services-use-aad-auth-to-access-ams-api.md). 
+Information om hur du ansluter till AMS API: et finns [åtkomst till Azure Media Services-API med Azure AD authentication](media-services-use-aad-auth-to-access-ams-api.md). 
 
 >[!NOTE]
->När du har anslutit toohttps://media.windows.net, får du en 301 omdirigering att ange en annan Media Services-URI. Du måste göra följande anrop toohello ny URI.
+>När du har anslutit till https://media.windows.net, får du en 301 omdirigering att ange en annan Media Services-URI. Du måste göra följande anrop till en ny URI.
 
 ## <a name="clear-asset-delivery-policy"></a>Rensa tillgångsleveransprincip
 ### <a id="create_asset_delivery_policy"></a>Skapa tillgångsleveransprincip
-hello följande HTTP-begäran skapar en tillgångsleveransprincip som anger toonot använda dynamisk kryptering och toodeliver hello dataström i någon av hello följande protokoll: MPEG DASH, HLS och Smooth Streaming-protokoll. 
+Följande HTTP-begäran skapar en tillgångsleveransprincip som anger att inte använda dynamisk kryptering och för att leverera dataströmmen i något av följande protokoll: MPEG DASH, HLS och Smooth Streaming-protokoll. 
 
-Information om vilka värden som du anger när du skapar en AssetDeliveryPolicy finns hello [typer som används när du definierar AssetDeliveryPolicy](#types) avsnitt.   
+Information om vilka värden du kan ange när du skapar en AssetDeliveryPolicy finns i [typer som används när du definierar AssetDeliveryPolicy](#types) avsnitt.   
 
 Begäran:
 
@@ -123,7 +123,7 @@ Svar:
     "LastModified":"2015-02-08T06:21:27.6908329Z"}
 
 ### <a id="link_asset_with_asset_delivery_policy"></a>Länken tillgång med tillgångsleveransprincip
-hello efter HTTP-begäran länkar hello angetts toohello tillgången tillgångsleveransprincip till.
+Följande HTTP-begäran länkar den angivna tillgången till tillgångsleveransprincip till.
 
 Begäran:
 
@@ -146,13 +146,13 @@ Svar:
 
 
 ## <a name="dynamicenvelopeencryption-asset-delivery-policy"></a>DynamicEnvelopeEncryption tillgångsleveransprincip
-### <a name="create-content-key-of-hello-envelopeencryption-type-and-link-it-toohello-asset"></a>Skapa innehållsnyckeln av hello EnvelopeEncryption typ och länka det toohello tillgångsinformation
-När du anger DynamicEnvelopeEncryption leveransprincip måste toomake att toolink din tillgång tooa innehållsnyckeln av hello EnvelopeEncryption typen. Mer information finns: [att skapa en innehållsnyckel](media-services-rest-create-contentkey.md)).
+### <a name="create-content-key-of-the-envelopeencryption-type-and-link-it-to-the-asset"></a>Skapa innehållsnyckeln av typen EnvelopeEncryption och länka det till tillgången
+När du anger DynamicEnvelopeEncryption leveransprincip måste se till att länka din tillgång till en innehållsnyckel av typen EnvelopeEncryption. Mer information finns: [att skapa en innehållsnyckel](media-services-rest-create-contentkey.md)).
 
 ### <a id="get_delivery_url"></a>Hämta URL för leverans
-Get hello leverans URL för hello angetts leveransmetod av hello innehållsnyckeln som skapats i hello föregående steg. En klient använder hello returnerade URL toorequest AES-nyckel eller en PlayReady-licens i ordning tooplayback hello skyddat innehåll.
+Hämta leverans URL för den angivna leveransmetoden för innehållsnyckeln skapade i föregående steg. En klient använder returnerade URL: en för att begära en AES-nyckel eller en PlayReady-licenser för att spela upp det skyddade innehållet.
 
-Ange hello hello URL tooget i hello brödtext hello HTTP-begäran. Om du skyddar ditt innehåll med PlayReady Media Services PlayReady licens förvärv URL-begäran med 1 för hello keyDeliveryType: {”keyDeliveryType”: 1}. Om du skyddar ditt innehåll med hello kuvert kryptering URL-begäran en nyckel förvärv genom att ange 2 för keyDeliveryType: {”keyDeliveryType”: 2}.
+Ange vilken typ av URL: en för att hämta i brödtexten för HTTP-begäran. Om du skyddar ditt innehåll med PlayReady Media Services PlayReady licens förvärv URL-begäran med 1 för keyDeliveryType: {”keyDeliveryType”: 1}. Om du skyddar ditt innehåll med kuvert kryptering URL-begäran en nyckel förvärv genom att ange 2 för keyDeliveryType: {”keyDeliveryType”: 2}.
 
 Begäran:
 
@@ -188,9 +188,9 @@ Svar:
 
 
 ### <a name="create-asset-delivery-policy"></a>Skapa tillgångsleveransprincip
-hello följande HTTP-begäran skapar hello **AssetDeliveryPolicy** som är konfigurerade tooapply dynamiska kryptering (**DynamicEnvelopeEncryption**) toohello **HLS**protocol (i det här exemplet andra protokoll kommer att blockeras från strömning). 
+Följande HTTP-begäran skapas i **AssetDeliveryPolicy** som är konfigurerad för att använda dynamiska kryptering (**DynamicEnvelopeEncryption**) till den **HLS** protokollet (i det här exemplet andra protokoll kommer att blockeras från strömning). 
 
-Information om vilka värden som du anger när du skapar en AssetDeliveryPolicy finns hello [typer som används när du definierar AssetDeliveryPolicy](#types) avsnitt.   
+Information om vilka värden du kan ange när du skapar en AssetDeliveryPolicy finns i [typer som används när du definierar AssetDeliveryPolicy](#types) avsnitt.   
 
 Begäran:
 
@@ -232,16 +232,16 @@ Svar:
 Se [länk tillgång med tillgångsleveransprincip](#link_asset_with_asset_delivery_policy)
 
 ## <a name="dynamiccommonencryption-asset-delivery-policy"></a>DynamicCommonEncryption tillgångsleveransprincip
-### <a name="create-content-key-of-hello-commonencryption-type-and-link-it-toohello-asset"></a>Skapa innehållsnyckeln av hello CommonEncryption typ och länka det toohello tillgångsinformation
-När du anger DynamicCommonEncryption leveransprincip måste toomake att toolink din tillgång tooa innehållsnyckeln av hello CommonEncryption typen. Mer information finns: [att skapa en innehållsnyckel](media-services-rest-create-contentkey.md)).
+### <a name="create-content-key-of-the-commonencryption-type-and-link-it-to-the-asset"></a>Skapa innehållsnyckeln av typen CommonEncryption och länka det till tillgången
+När du anger DynamicCommonEncryption leveransprincip måste se till att länka din tillgång till en innehållsnyckel av typen CommonEncryption. Mer information finns: [att skapa en innehållsnyckel](media-services-rest-create-contentkey.md)).
 
 ### <a name="get-delivery-url"></a>Hämta URL för leverans
-Hämta hello leverans URL för hello PlayReady leveransmetod av hello innehållsnyckeln som skapats i hello föregående steg. En klient använder hello returnerade URL toorequest en PlayReady-licens i ordning tooplayback hello skyddat innehåll. Mer information finns i [Hämta leverans URL](#get_delivery_url).
+Hämta leverans URL för PlayReady leveransmetod för innehållsnyckeln skapade i föregående steg. En klient använder returnerade URL: en för att begära en PlayReady-licens för att spela upp skyddat innehåll. Mer information finns i [Hämta leverans URL](#get_delivery_url).
 
 ### <a name="create-asset-delivery-policy"></a>Skapa tillgångsleveransprincip
-hello följande HTTP-begäran skapar hello **AssetDeliveryPolicy** som är konfigurerade tooapply dynamisk vanliga kryptering (**DynamicCommonEncryption**) toohello **Smooth Streaming**  protocol (i det här exemplet andra protokoll kommer att blockeras från strömning). 
+Följande HTTP-begäran skapas i **AssetDeliveryPolicy** som är konfigurerad för att använda dynamisk vanliga kryptering (**DynamicCommonEncryption**) till den **Smooth Streaming**protocol (i det här exemplet andra protokoll kommer att blockeras från strömning). 
 
-Information om vilka värden som du anger när du skapar en AssetDeliveryPolicy finns hello [typer som används när du definierar AssetDeliveryPolicy](#types) avsnitt.   
+Information om vilka värden du kan ange när du skapar en AssetDeliveryPolicy finns i [typer som används när du definierar AssetDeliveryPolicy](#types) avsnitt.   
 
 Begäran:
 
@@ -260,14 +260,14 @@ Begäran:
     {"Name":"AssetDeliveryPolicy","AssetDeliveryProtocol":1,"AssetDeliveryPolicyType":4,"AssetDeliveryConfiguration":"[{\"Key\":2,\"Value\":\"https:\\/\\/amsaccount1.keydelivery.mediaservices.windows.net\/PlayReady\/"}]"}
 
 
-Om du vill tooprotect innehåll med Widevine DRM, uppdatera hello AssetDeliveryConfiguration värden toouse WidevineLicenseAcquisitionUrl (som har hello värdet 7) och ange hello-URL för en licensleveranstjänst. Du kan använda följande AMS-partner toohelp du leverera Widevine-licenser hello: [Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/), [EZDRM](http://ezdrm.com/), [castLabs](http://castlabs.com/company/partners/azure/).
+Om du vill skydda innehåll med Widevine DRM uppdatera AssetDeliveryConfiguration värden om du vill använda WidevineLicenseAcquisitionUrl (som har värdet 7) och ange Webbadressen till en licensleveranstjänst. Du kan använda följande AMS-partner som hjälper dig att leverera Widevine-licenser: [Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/), [EZDRM](http://ezdrm.com/), [castLabs](http://castlabs.com/company/partners/azure/).
 
 Exempel: 
 
     {"Name":"AssetDeliveryPolicy","AssetDeliveryProtocol":2,"AssetDeliveryPolicyType":4,"AssetDeliveryConfiguration":"[{\"Key\":7,\"Value\":\"https:\\/\\/example.net\/WidevineLicenseAcquisition\/"}]"}
 
 > [!NOTE]
-> Vid kryptering med Widevine, skulle du bara att kunna toodeliver med bindestreck. Se till att toospecify STRECK (2) i hello protokollet för tillgångsleverans.
+> Vid kryptering med Widevine, skulle du bara att kunna leverera med bindestreck. Se till att ange STRECK (2) i protokollet för tillgångsleverans.
 > 
 > 
 
@@ -278,7 +278,7 @@ Se [länk tillgång med tillgångsleveransprincip](#link_asset_with_asset_delive
 
 ### <a name="assetdeliveryprotocol"></a>AssetDeliveryProtocol
 
-hello beskrivs följande enum värden som du kan ange för hello protokollet för tillgångsleverans.
+Följande enum beskrivs värden som du kan ange för protokollet för tillgångsleverans.
 
     [Flags]
     public enum AssetDeliveryProtocol
@@ -313,7 +313,7 @@ hello beskrivs följande enum värden som du kan ange för hello protokollet fö
 
 ### <a name="assetdeliverypolicytype"></a>AssetDeliveryPolicyType
 
-hello beskriver följande enum värden som du kan ange för hello tillgångstyp leverans princip.  
+Följande enum beskriver värden som du kan ange för tillgångstyp leverans princip.  
 
     public enum AssetDeliveryPolicyType
     {
@@ -323,12 +323,12 @@ hello beskriver följande enum värden som du kan ange för hello tillgångstyp 
         None,
 
         /// <summary>
-        /// hello Asset should not be delivered via this AssetDeliveryProtocol. 
+        /// The Asset should not be delivered via this AssetDeliveryProtocol. 
         /// </summary>
         Blocked, 
 
         /// <summary>
-        /// Do not apply dynamic encryption toohello asset.
+        /// Do not apply dynamic encryption to the asset.
         /// </summary>
         /// 
         NoDynamicEncryption,  
@@ -346,7 +346,7 @@ hello beskriver följande enum värden som du kan ange för hello tillgångstyp 
 
 ### <a name="contentkeydeliverytype"></a>ContentKeyDeliveryType
 
-hello beskriver följande enum värden som du kan använda tooconfigure hello leveransmetod av hello innehåll viktiga toohello-klienten.
+Följande enum beskrivs värden som du kan använda för att konfigurera leveransmetod för innehållsnyckeln till klienten.
     
     public enum ContentKeyDeliveryType
     {
@@ -379,7 +379,7 @@ hello beskriver följande enum värden som du kan använda tooconfigure hello le
 
 ### <a name="assetdeliverypolicyconfigurationkey"></a>AssetDeliveryPolicyConfigurationKey
 
-hello följande enum beskrivs värden som du kan ange tooconfigure nycklar som används tooget specifik konfiguration för en tillgångsleveransprincip.
+Följande enum beskrivs värden som du kan ange för att konfigurera nycklar som används för att få specifik konfiguration för en tillgångsleveransprincip.
 
     public enum AssetDeliveryPolicyConfigurationKey
     {
@@ -399,22 +399,22 @@ hello följande enum beskrivs värden som du kan ange tooconfigure nycklar som a
         EnvelopeBaseKeyAcquisitionUrl,
 
         /// <summary>
-        /// hello initialization vector toouse for envelope encryption in Base64 format.
+        /// The initialization vector to use for envelope encryption in Base64 format.
         /// </summary>
         EnvelopeEncryptionIVAsBase64,
 
         /// <summary>
-        /// hello PlayReady License Acquisition Url toouse for common encryption.
+        /// The PlayReady License Acquisition Url to use for common encryption.
         /// </summary>
         PlayReadyLicenseAcquisitionUrl,
 
         /// <summary>
-        /// hello PlayReady Custom Attributes tooadd toohello PlayReady Content Header
+        /// The PlayReady Custom Attributes to add to the PlayReady Content Header
         /// </summary>
         PlayReadyCustomAttributes,
 
         /// <summary>
-        /// hello initialization vector toouse for envelope encryption.
+        /// The initialization vector to use for envelope encryption.
         /// </summary>
         EnvelopeEncryptionIV,
 

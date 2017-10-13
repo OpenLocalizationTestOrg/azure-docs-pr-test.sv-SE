@@ -1,6 +1,6 @@
 ---
-title: aaaIntegrate Azure Active Directory enkel inloggning med SaaS-appar | Microsoft Docs
-description: "Aktivera enkel inloggning, autentisering och centraliserad hantering av SaaS-appar i Azure Active Directory för användaretablering. En översikt över hur toointegrate Azure Active Directory tooSaaS appar."
+title: Integrera Azure Active Directory enkel inloggning med SaaS-appar | Microsoft Docs
+description: "Aktivera enkel inloggning, autentisering och centraliserad hantering av SaaS-appar i Azure Active Directory för användaretablering. En översikt över hur du integrerar Azure Active Directory till SaaS-appar."
 services: active-directory
 keywords: integrera Azure AD med SaaS-appar
 documentationcenter: 
@@ -16,11 +16,11 @@ ms.workload: identity
 ms.date: 08/17/2017
 ms.author: curtand
 ms.reviewer: aaronsm
-ms.openlocfilehash: fe621a30429c81c32470635d105ae3e95184efa1
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: fc0d297598c334ca8f6f8a2bd3ae948c87956342
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="integrate-azure-active-directory-single-sign-on-with-saas-apps"></a>Integrera Azure Active Directory enkel inloggning med SaaS-appar
 > [!div class="op_single_selector"]
@@ -31,49 +31,49 @@ ms.lasthandoff: 10/06/2017
 
 [!INCLUDE [active-directory-sso-use-case-intro](../../includes/active-directory-sso-use-case-intro.md)]
 
-tooget igång konfigurerar enkel inloggning för en app som du tillämpar i din organisation, du kommer att använda en befintlig katalog i Azure Active Directory (AD Azure). Du kan använda en Azure AD-katalog som du har fått via Microsoft Azure, Office 365 eller Windows Intune. Om du har två eller flera av dessa, se [administrera Azure AD-katalogen](active-directory-administer.md) toodetermine som en toouse.
+Om du vill komma igång konfigurerar enkel inloggning för en app som du tillämpar i din organisation, kommer du att använda en befintlig katalog i Azure Active Directory (AD Azure). Du kan använda en Azure AD-katalog som du har fått via Microsoft Azure, Office 365 eller Windows Intune. Om du har två eller flera av dessa, se [administrera Azure AD-katalogen](active-directory-administer.md) att avgöra vilket som ska användas.
 
 > [!IMPORTANT]
-> Microsoft rekommenderar att du hanterar Azure AD med hjälp av hello [administrationscentret för Azure AD](https://aad.portal.azure.com) i hello Azure-portalen istället för att använda hello klassiska Azure-portalen som hänvisas till i den här artikeln. Hur tooassign administratörsroller i hello Azure AD admin center finns [Tilldela administratörsroller i Azure Active Directory](active-directory-enterprise-apps-manage-sso.md).
+> Microsoft rekommenderar att du hanterar Azure AD via [Azure AD administratörscenter](https://aad.portal.azure.com) på Azure Portal istället för via den klassiska Azure-portalen som nämns i den här artikeln. Att tilldela administratörsroller i Azure AD-administrationscentret, se [Tilldela administratörsroller i Azure Active Directory](active-directory-enterprise-apps-manage-sso.md).
 
 ## <a name="authentication"></a>Autentisering
-För program som stöder hello SAML 2.0 WS-Federation, eller OpenID Connect protokoll, Azure Active Directory använder signering certifikat tooestablish betrodda relationer. Mer information om detta finns [hantera certifikat för federerad enkel inloggning](active-directory-sso-certs.md).
+För program som stöder WS-Federation, SAML 2.0 eller OpenID Connect protokoll, Azure Active Directory använder signeringscertifikatet du etablerar förtroenderelationer. Mer information om detta finns [hantera certifikat för federerad enkel inloggning](active-directory-sso-certs.md).
 
-Förtroenden i Azure Active Directory använder 'lösenordsvalv' tooestablish för program som stöder endast HTML-formulär för inloggning. Det här kan hello användare i din organisation toobe loggas in automatiskt tooa SaaS-program med Azure AD med hjälp av hello-kontoinformation från hello SaaS-program. Azure AD samlar in och hello-kontoinformation och hello relaterade lösenord lagras på ett säkert sätt. Mer information finns i [lösenordsbaserade enkel inloggning](active-directory-appssoaccess-whatis.md#password-based-single-sign-on).
+För program som stöder endast HTML-formulär för inloggning i Azure Active Directory använder 'lösenordsvalv' upprätta betrodda relationer. Detta gör att användare i din organisation kan loggas in automatiskt till ett SaaS-program med Azure AD med hjälp av informationen om användarkontot från SaaS-program. Azure AD samlar in och lagrar informationen om användarkontot och relaterade lösenordet på ett säkert sätt. Mer information finns i [lösenordsbaserade enkel inloggning](active-directory-appssoaccess-whatis.md#password-based-single-sign-on).
 
 ## <a name="authorization"></a>Auktorisering
-Ett etablerade konto kan en användare behörighet toobe toouse ett program när de har autentiserats via enkel inloggning. Användaretablering kan göras manuellt eller i vissa fall kan du lägga till och ta bort användarinformation från hello SaaS app baserat på ändringar som gjorts i Azure Active Directory. Läs mer om hur du använder befintliga Azure AD-kopplingar för automatiserad etablering av [automatisk användaretablering och avetablering för SaaS-program](active-directory-saas-app-provisioning.md).
+Ett etablerade konto används att ha behörighet att använda ett program när de har autentiserats via enkel inloggning. Användaretablering kan göras manuellt eller i vissa fall kan du lägga till och ta bort användarinformation från SaaS appen baserat på ändringar som gjorts i Azure Active Directory. Läs mer om hur du använder befintliga Azure AD-kopplingar för automatiserad etablering av [automatisk användaretablering och avetablering för SaaS-program](active-directory-saas-app-provisioning.md).
 
-Annars kan kan du manuellt lägga till användaren information tooan app eller använda andra etablering lösningar som är tillgängliga i hello marketplace.
+Annars kan kan du manuellt lägga till användare i en app eller använda andra etablering lösningar som är tillgängliga på marknaden.
 
 ## <a name="access"></a>Åtkomst
-Azure AD innehåller flera anpassningsbara sätt toodeploy program tooend användare i din organisation. Du är inte låst i en viss distribution eller en lösning för åtkomst. Du kan använda [hello lösning som bäst passar dina behov](active-directory-appssoaccess-whatis.md#deploying-azure-ad-integrated-applications-to-users).
+Azure AD innehåller flera anpassningsbara sätt att distribuera program till användare i din organisation. Du är inte låst i en viss distribution eller en lösning för åtkomst. Du kan använda [den lösning som bäst passar dina behov](active-directory-appssoaccess-whatis.md#deploying-azure-ad-integrated-applications-to-users).
 
 ## <a name="additional-considerations-for-applications-already-in-use"></a>Ytterligare överväganden för program som redan används
-Konfigurera enkel inloggning på för ett program som använder din organisation redan har en annan process från hello processen att skapa nya konton för ett nytt program. Det finns några förberedande steg, inklusive: mappning av användaridentiteter i hello programmet tooAzure AD identiteter och förstå hur användare får logga in tooan programmet när det har integrerats.
+Konfigurera enkel inloggning på för ett program som använder din organisation redan är en annan process från processen att skapa nya konton för ett nytt program. Det finns några förberedande steg, inklusive: mappning av användaridentiteter i programmet till Azure AD identiteter och förstå hur användare får logga in på ett program när det har integrerats.
 
 > [!NOTE]
-> tooset in SSO för ett befintligt program du behöver toohave globala administratörsrättigheter i både Azure AD och hello SaaS-program.
+> Om du vill konfigurera enkel inloggning för ett befintligt program måste du ha behörighet som global administratör i både Azure AD och SaaS-program.
 >
 >
 
 ### <a name="mapping-user-accounts"></a>Mappning av användarkonton
-Användarens identitet har oftast en unik identifierare som kan vara en e-postadress eller användarens huvudnamn (UPN). Du behöver toolink (mappar) varje användares Programidentitet identitet tootheir respektive Azure AD. Det finns ett par sätt tooaccomplish detta beroende på hur hello krav på program-autentisering.
+Användarens identitet har oftast en unik identifierare som kan vara en e-postadress eller användarens huvudnamn (UPN). Behöver du länken (mappar) programidentitet för varje användare till deras respektive Azure AD-identitet. Det finns ett par olika sätt att åstadkomma detta beroende på hur krav på program-autentisering.
 
-Mer information om hur du mappar programmet identiteter med Azure AD-identiteter finns [anpassa anspråk som utfärdats i SAML-token för hello](http://social.technet.microsoft.com/wiki/contents/articles/31257.azure-active-directory-customizing-claims-issued-in-the-saml-token-for-pre-integrated-apps.aspx) och [anpassa attributmappning för att etablera](active-directory-saas-customizing-attribute-mappings.md).
+Mer information om hur du mappar programmet identiteter med Azure AD-identiteter finns [anpassa anspråk som utfärdats i SAML-token](http://social.technet.microsoft.com/wiki/contents/articles/31257.azure-active-directory-customizing-claims-issued-in-the-saml-token-for-pre-integrated-apps.aspx) och [anpassa attributmappning för att etablera](active-directory-saas-customizing-attribute-mappings.md).
 
-### <a name="understanding-hello-users-log-in-experience"></a>Förstå hello användarens inloggning
-När du integrerar SSO för ett program som redan används, är det viktigt toorealize som hello användarupplevelsen påverkas. För alla program startar användarna använder sina Azure AD autentiseringsuppgifter toosign i. Det kan också bero på att de måste använda en annan portal tooaccess hello-program.
+### <a name="understanding-the-users-log-in-experience"></a>Förstå användarens inloggning
+När du integrerar SSO för ett program som redan används, är det viktigt att förstå att användarupplevelsen påverkas. För alla program startar användare med sina Azure AD-autentiseringsuppgifter för inloggning. Det kan också bero på att de måste använda en annan portal åt programmen.
 
-Enkel inloggning för vissa program kan göras på hello program loggar i gränssnittet, men andra program, hello användaren har toogo via en central portal som ([Mina appar](http://myapps.microsoft.com) eller [Office365](http://portal.office.com/myapps)) toosign i. Mer information om hello olika typer av enkel inloggning och deras användarupplevelser i [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Enkel inloggning för vissa program kan göras på programmets tecken i gränssnittet, men för andra program användaren måste gå via en central portal som ([Mina appar](http://myapps.microsoft.com) eller [Office365](http://portal.office.com/myapps)) att logga in. Mer information om de olika typerna av enkel inloggning och deras användarupplevelser i [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
-En annan viktig resurs är *utelämna användargodkännande* i hello [Guiding utvecklare](active-directory-applications-guiding-developers-for-lob-applications.md) artikel.
+En annan viktig resurs är *utelämna användargodkännande* i den [Guiding utvecklare](active-directory-applications-guiding-developers-for-lob-applications.md) artikel.
 
 ## <a name="next-steps"></a>Nästa steg
-För SaaS-appar som du hittar i hello App galleriet Azure AD innehåller ett antal [självstudier om hur toointegrate SaaS-appar](active-directory-saas-tutorial-list.md).
+För SaaS-appar som du hittar i Appgalleriet för Azure AD innehåller ett antal [självstudier om hur man integrerar SaaS-appar](active-directory-saas-tutorial-list.md).
 
-Om appen inte är i App-galleriet, kan du [Lägg till den toohello Azure AD App-galleriet som ett anpassat program](http://blogs.technet.com/b/ad/archive/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-gt-now-in-preview.aspx).
+Om appen inte är i App-galleriet, kan du [lägga till den i Appgalleriet för Azure AD som ett anpassat program](http://blogs.technet.com/b/ad/archive/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-gt-now-in-preview.aspx).
 
-Det finns mycket mer information om samtliga av dessa fel i hello Azure.com bibliotek, från och med [vad är programåtkomst och enkel inloggning med Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Det finns mycket mer information om samtliga av dessa fel i biblioteket Azure.com från och med [vad är programåtkomst och enkel inloggning med Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
-Dessutom kan du inte missa hello [Artikelindex för programhantering i Azure Active Directory](active-directory-apps-index.md).
+Dessutom kan du inte missar i [Artikelindex för programhantering i Azure Active Directory](active-directory-apps-index.md).

@@ -1,6 +1,6 @@
 ---
-title: "aaaManage datatillgångar i Azure Data Catalog | Microsoft Docs"
-description: "hello artikeln visar hur toocontrol synlighet och ägarskapet för datatillgångar som är registrerade i Azure Data Catalog."
+title: "Hantera datatillgångar i Azure Data Catalog | Microsoft Docs"
+description: "Artikeln visar hur du styr synligheten och ägarskapet för datatillgångar som har registrerats i Azure Data Catalog."
 services: data-catalog
 documentationcenter: 
 author: steelanddata
@@ -15,61 +15,61 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 08/15/2017
 ms.author: maroche
-ms.openlocfilehash: 48a634b92d7da19c32c9e551f295eec257f54f1d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 8b9159b7bc4f7b2dac12d9012c6c903e75a6ac16
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="manage-data-assets-in-azure-data-catalog"></a>Hantera datatillgångar i Azure Data Catalog
 ## <a name="introduction"></a>Introduktion
-Azure Data Catalog är utformad för identifiering av datakällan, så att du lätt kan identifiera och förstå hello datakällor du behöver tooperform analyser och fatta beslut. Dessa funktioner för identifiering av gör hello största effekten när du och andra användare kan hitta och förstå hello mycket stort antal typer av datakällor. Med de här elementen i åtanke är hello standardbeteendet för Data Catalog för alla registrerade datakällor toobe synliga tooand kan upptäckas av alla användare i katalogen.
+Azure Data Catalog är utformad för identifiering av datakällan, så att du lätt kan identifiera och förstå datakällorna måste du utföra analyser och fatta beslut. Dessa funktioner för identifiering av få den största effekten när du och andra användare kan hitta och förstå mycket stort antal typer av datakällor. Med de här elementen i åtanke är standardbeteendet för Data Catalog för alla registrerade datakällor ska vara synlig för och kan identifieras av alla användare i katalogen.
 
-Data Catalog inte ge dig åtkomst till data i toohello sig själv. Dataåtkomst styrs av hello ägare hello-datakälla. Du kan identifiera datakällor och visa hello metadata som är relaterade toohello källor som är registrerade i hello-katalogen med Data Catalog.
+Data Catalog ger inte dig tillgång till själva informationen. Dataåtkomst styrs av ägaren till datakällan. Du kan identifiera datakällor och visa de metadata som är relaterade till datakällor som är registrerade i katalogen med Data Catalog.
 
-Det kan finnas situationer, men där datakällor ska bara synliga toospecific användare eller toomembers för specifika grupper. I sådana fall kan användare bli ägare till registrerade datatillgångar hello Catalog och sedan kontrollera hello visning av hello tillgångar som de äger.
+Det kan finnas situationer, men var datakällor bara ska visas för specifika användare eller medlemmar i specifika grupper. I sådana fall kan användarna bli ägare till registrerade datatillgångar i katalogen och styra visningen av de resurser som de äger.
 
 > [!NOTE]
-> hello-funktioner som beskrivs i den här artikeln är endast tillgänglig i hello Standard Edition av Azure Data Catalog. hello ger Free Edition inte några funktioner för ägare och begränsa datatillgång synlighet.
+> Funktioner som beskrivs i den här artikeln är endast tillgänglig i Standard Edition av Azure Data Catalog. Den kostnadsfria versionen ger inte några funktioner för ägare och begränsning datatillgång synlighet.
 >
 >
 
 ## <a name="manage-ownership-of-data-assets"></a>Hantera ägarskapet för datatillgångar
-Som standard är datatillgångar som är registrerade i Data Catalog oägd. Alla användare med behörighet tooaccess hello katalog kan identifiera och kommentera dessa tillgångar. Användare kan bli ägare till oägd datatillgångar och begränsar hello synligheten för hello tillgångar som de äger.
+Som standard är datatillgångar som är registrerade i Data Catalog oägd. En användare med behörighet att få åtkomst till katalogen kan identifiera och kommentera dessa tillgångar. Användare kan bli ägare till oägd datatillgångar och begränsar synligheten för de resurser som de äger.
 
-När en datatillgång i Data Catalog ägs endast användare som är godkända av hello ägare kan identifiera hello tillgången och visa dess metadata och endast hello ägare kan ta bort hello tillgång hello-katalogen.
+När en datatillgång i Data Catalog ägs endast användare som är godkända av ägarna kan identifiera tillgången och visa dess metadata och endast ägare kan ta bort tillgången från katalogen.
 
 > [!NOTE]
-> Ägarskap i Data Catalog påverkar endast hello metadata som lagras i hello-katalogen. Ägarskap ger inte några behörigheter på hello underliggande data.
+> Ägarskap i Data Catalog påverkar endast de metadata som lagras i katalogen. Ägarskap ger inte några behörigheter på den underliggande datakällan.
 >
 >
 
 ### <a name="take-ownership"></a>Bli ägare
-Användare kan ta över ägarskapet för datatillgångar genom att välja hello **bli ägare** alternativ i hello Data Catalog-portalen. Inga särskilda behörigheter är obligatoriska tootake ägarskap för en datatillgång oägd. Alla användare kan bli ägare för en datatillgång oägd.
+Användare kan ta över ägarskapet för datatillgångar genom att välja den **bli ägare** alternativ i Data Catalog-portalen. Inga särskilda behörigheter krävs för att överta ägarskapet för en datatillgång oägd. Alla användare kan bli ägare för en datatillgång oägd.
 
 ### <a name="add-owners-and-co-owners"></a>Lägg till ägare och Medägare
 Om en datatillgång ägs redan, kan inte andra användare bara bli ägare. De måste läggas till som delägare av en befintlig ägare. Alla ägare kan lägga till fler användare eller säkerhetsgrupper som delägare.
 
 > [!NOTE]
-> Det är en bästa praxis toohave minst två personer som ägare för någon ägs datatillgång.
+> Det är bäst att ha minst två personer som ägare för alla företagsägda datatillgångar.
 >
 >
 
 ### <a name="remove-owners"></a>Ta bort ägare
 Precis som alla tillgångens ägare kan lägga till delägare måste alla tillgångens ägare kan ta bort alla Medägare.
 
-En tillgångsägare som tar bort honom eller sig själv som ägare kan inte längre hantera hello tillgången. Om hello tillgångens ägare tar bort honom eller sig själv som en ägare och det finns inga andra delägare, återgår hello tillgången tooan Ej ägd tillstånd.
+En tillgångsägare som tar bort honom eller sig själv som ägare kan inte längre hantera tillgången. Om tillgångens ägare tar bort honom eller sig själv som en ägare och det finns inga andra delägare, återgår tillgången till oägd status.
 
 ## <a name="control-visibility"></a>Kontrollen synlighet
-Datatillgång ägare kan styra hello synlighet för hello datatillgångar som de äger. toorestrict synlighet som hello standard, där alla Data Catalog användare kan identifiera och visa hello datatillgång, hello tillgångens ägare kan växla hello inställningar från **alla** för**ägare och dessa användare** i hello egenskaper för hello tillgång. Ägare kan sedan lägga till specifika användare och säkerhetsgrupper.
+Datatillgång ägare kan styra visningen av datatillgångar som de äger. Om du vill begränsa synligheten som standard, där alla Data Catalog-användare kan identifiera och visa data tillgången, tillgångens ägare kan växla mellan inställningar från **alla** till **ägare och dessa användare** i Egenskaper för tillgången. Ägare kan sedan lägga till specifika användare och säkerhetsgrupper.
 
 > [!NOTE]
-> När det är möjligt ska tillgången ägarskap och synlighet behörigheter tilldelas toosecurity grupper och inte tooindividual användare.
+> När det är möjligt ska tillgången ägarskap och synlighet behörigheter tilldelas till säkerhetsgrupper och inte till enskilda användare.
 >
 >
 
 ## <a name="catalog-administrators"></a>Katalogadministratörer
-Data Catalog administratörer är implicit delägare av alla tillgångar i hello-katalogen. Tillgångsinformation ägare kan inte ta bort synlighet från administratörer och administratörer kan hantera ägarskap och synlighet för alla datatillgångar i hello-katalogen.
+Data Catalog administratörer är implicit delägare av alla tillgångar i katalogen. Tillgångsinformation ägare kan inte ta bort synlighet från administratörer och administratörer kan hantera ägarskap och synlighet för alla datatillgångar i katalogen.
 
 ## <a name="summary"></a>Sammanfattning
-hello Data Catalog gemensamt skapade modellen toometadata och data tillgången discovery gör att alla toocontribute för användare av katalogen och identifiera. hello Standard Edition av Data Catalog är utformad för ägare och ledning toolimit hello synlighet och användning av specifika datatillgångar.
+Data Catalog gemensam modell för metadata och data tillgången identifiering kan alla katalogens användare bidra och identifiera. I Standard Edition av Data Catalog är utformad för ägare och hantering att begränsa synlighet och användning av specifika datatillgångar.

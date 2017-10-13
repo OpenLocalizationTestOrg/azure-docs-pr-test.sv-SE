@@ -1,6 +1,6 @@
 ---
-title: aaaHow toouse hello service management API (Python) - Funktionsguide
-description: "Lär dig hur tooprogrammatically utföra vanliga hanteringsåtgärder för tjänsten från Python."
+title: "Hur du använder service management API (Python) - Funktionsguide"
+description: "Lär dig hur du programmässigt utföra vanliga hanteringsuppgifter för tjänsten från Python."
 services: cloud-services
 documentationcenter: python
 author: lmazuel
@@ -14,48 +14,48 @@ ms.devlang: python
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: lmazuel
-ms.openlocfilehash: b59622203470e1586484cec4033515edb39ca4d1
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 13249ba9a4b317a3154776b411ce0bb1f316b3bb
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="how-toouse-service-management-from-python"></a>Hur toouse Service Management från Python
-Den här guiden visar hur tooprogrammatically utföra vanliga hanteringsåtgärder för tjänsten från Python. Hej **ServiceManagementService** klassen i hello [Azure SDK för Python](https://github.com/Azure/azure-sdk-for-python) stöder Programmeringsåtkomst toomuch hello service management-relaterade funktioner som är tillgängliga i hello [Klassiska azure-portalen] [ management-portal] (exempelvis **skapa, uppdatera och ta bort molntjänster, distributioner, tjänster för data och virtuella datorer**). Den här funktionen kan vara användbar vid utveckling av program som behöver Programmeringsåtkomst tooservice management.
+# <a name="how-to-use-service-management-from-python"></a>Hur du använder Service Management från Python
+Den här guiden visar hur du programmässigt utföra vanliga hanteringsuppgifter för tjänsten från Python. Den **ServiceManagementService** klassen i den [Azure SDK för Python](https://github.com/Azure/azure-sdk-for-python) stöder Programmeringsåtkomst till stor del av service management-relaterade funktioner som är tillgängliga i den [Azure klassiska portalen] [ management-portal] (exempelvis **skapa, uppdatera och ta bort molntjänster, distributioner, tjänster för data och virtuella datorer**). Den här funktionen kan vara användbar vid utveckling av program som behöver programmatisk åtkomst till service management.
 
 ## <a name="WhatIs"></a>Vad är Service Management
-hello Service Management API ger Programmeringsåtkomst toomuch hello service management-funktioner tillgängliga via hello [klassiska Azure-portalen][management-portal]. hello Azure SDK för Python kan du toomanage dina molntjänster och storage-konton.
+Service Management API som ger programmatisk åtkomst till stor del av hanteringsfunktioner för tjänsten via den [klassiska Azure-portalen][management-portal]. Azure SDK för Python kan du hantera dina molntjänster och storage-konton.
 
-toouse hello Service Management API du behöver för[skapa ett Azure-konto](https://azure.microsoft.com/pricing/free-trial/).
+Service Management API du vill använda, [skapa ett Azure-konto](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="Concepts"></a>Begrepp
-hello Azure SDK för Python radbryts hello [Azure Service Management API][svc-mgmt-rest-api], vilket är en REST-API. Alla API-operationer utförs över SSL och autentiserar varandra med X.509 v3-certifikat. hello management-tjänsten kan nås inifrån en tjänst som körs i Azure, eller direkt via hello Internet från alla program som kan skicka en HTTPS-begäran och ett svar för HTTPS.
+Azure SDK för Python radbryts i [Azure Service Management API][svc-mgmt-rest-api], vilket är en REST-API. Alla API-operationer utförs över SSL och autentiserar varandra med X.509 v3-certifikat. Hanteringstjänsten kan nås inifrån en tjänst som körs i Azure eller direkt över Internet från alla program som kan skicka en HTTPS-begäran och ta emot HTTPS-svar.
 
 ## <a name="Installation"></a>Installation
-Alla hello-funktioner som beskrivs i den här artikeln är tillgängliga i hello `azure-servicemanagement-legacy` paket som du kan installera med hjälp av pip. Mer information om installation (till exempel om du är ny tooPython) finns i den här artikeln: [installerar Python och hello Azure SDK](../python-how-to-install.md)
+De funktioner som beskrivs i den här artikeln är tillgängliga i den `azure-servicemanagement-legacy` paket som du kan installera med hjälp av pip. Mer information om installation (till exempel om du har använt Python) finns i den här artikeln: [installerar Python och Azure SDK](../python-how-to-install.md)
 
-## <a name="Connect"></a>Så här: ansluta tooservice management
-tooconnect toohello Service Management slutpunkt måste Azure prenumerations-ID och ett giltigt certifikat. Du kan hämta ditt prenumerations-ID via hello [klassiska Azure-portalen][management-portal].
+## <a name="Connect"></a>Så här: ansluta till service-hantering
+Om du vill ansluta till Service Management-slutpunkten måste Azure prenumerations-ID och ett giltigt certifikat. Du kan hämta ditt prenumerations-ID via den [klassiska Azure-portalen][management-portal].
 
 > [!NOTE]
-> Det är nu möjligt toouse certifikat som skapas med OpenSSL när de körs på Windows.  Det krävs Python 2.7.4 eller senare. Vi rekommenderar användare toouse OpenSSL i stället för PFX, eftersom stöd för PFX-certifikat kommer troligen att tas bort i framtiden hello.
+> Nu är det möjligt att använda certifikat som skapas med OpenSSL när de körs på Windows.  Det krävs Python 2.7.4 eller senare. Vi rekommenderar att användarna kan använda OpenSSL i stället för PFX, eftersom stöd för PFX-certifikat kommer troligen att tas bort i framtiden.
 >
 >
 
 ### <a name="management-certificates-on-windowsmaclinux-openssl"></a>Management-certifikat på Windows-/ Mac/Linux (OpenSSL)
-Du kan använda [OpenSSL](http://www.openssl.org/) toocreate hanteringscertifikatet.  Behöver du faktiskt toocreate två certifikat, en för hello server (en `.cer` filen) och en för hello klienten (en `.pem` fil). toocreate hello `.pem` fil, kör:
+Du kan använda [OpenSSL](http://www.openssl.org/) att skapa management-certifikat.  Faktiskt måste du skapa två certifikat, en för servern (en `.cer` filen) och en för klienten (en `.pem` fil). Att skapa den `.pem` fil, kör:
 
     openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout mycert.pem -out mycert.pem
 
-toocreate hello `.cer` certifikat, kör:
+Att skapa den `.cer` certifikat, kör:
 
     openssl x509 -inform pem -in mycert.pem -outform der -out mycert.cer
 
-Läs mer om Azure certifikat [certifikat översikt för Azure Cloud Services](cloud-services-certs-create.md). En fullständig beskrivning av OpenSSL parametrar finns hello dokumentationen på [http://www.openssl.org/docs/apps/openssl.html](http://www.openssl.org/docs/apps/openssl.html).
+Läs mer om Azure certifikat [certifikat översikt för Azure Cloud Services](cloud-services-certs-create.md). En fullständig beskrivning av OpenSSL parametrar finns i dokumentationen på [http://www.openssl.org/docs/apps/openssl.html](http://www.openssl.org/docs/apps/openssl.html).
 
-När du har skapat de här filerna måste tooupload hello `.cer` filen tooAzure med hello ”överför” åtgärd av hello ”inställningar” fliken hello [klassiska Azure-portalen][management-portal], och du behöver toomake anteckna där du sparade hello `.pem` fil.
+När du har skapat de här filerna måste du ladda upp den `.cer` filen till Azure via ”överför”-åtgärd på fliken ”Inställningar” i den [klassiska Azure-portalen][management-portal], och du behöver anteckna var du Spara den `.pem` filen.
 
-När du har fått ditt prenumerations-ID, skapas ett certifikat och överföra hello `.cer` filen tooAzure du kan ansluta toohello Azure hanteringsslutpunkten genom att skicka hello prenumerations-id och hello sökvägen toohello `.pem` filen för**ServiceManagementService**:
+När du har fått ditt prenumerations-ID, skapas ett certifikat och överföra den `.cer` filen till Azure, som du kan ansluta till Azure management-slutpunkten genom att skicka prenumerations-id och sökvägen till den `.pem` filen till  **ServiceManagementService**:
 
     from azure import *
     from azure.servicemanagement import *
@@ -65,18 +65,18 @@ När du har fått ditt prenumerations-ID, skapas ett certifikat och överföra h
 
     sms = ServiceManagementService(subscription_id, certificate_path)
 
-I föregående exempel hello `sms` är en **ServiceManagementService** objekt. Hej **ServiceManagementService** klass är hello primära klassen används toomanage Azure-tjänster.
+I föregående exempel `sms` är en **ServiceManagementService** objekt. Den **ServiceManagementService** klassen är den primära klassen som används för att hantera Azure-tjänster.
 
 ### <a name="management-certificates-on-windows-makecert"></a>Hanteringscertifikat i Windows (MakeCert)
-Du kan skapa ett självsignerat certifikat på datorn med hjälp av `makecert.exe`.  Öppna en **Kommandotolken Visual Studio** som en **administratör** och använda hello följande kommando, där du ersätter *AzureCertificate* med hello certifikatnamnet som toouse.
+Du kan skapa ett självsignerat certifikat på datorn med hjälp av `makecert.exe`.  Öppna en **Kommandotolken Visual Studio** som en **administratör** och använder du följande kommando ersätter *AzureCertificate* med certifikatets namn som du vill använda.
 
     makecert -sky exchange -r -n "CN=AzureCertificate" -pe -a sha1 -len 2048 -ss My "AzureCertificate.cer"
 
-hello-kommando skapar hello `.cer` filen och installerar den i hello **personliga** certifikatarkiv. Mer information finns i [certifikat översikt för Azure Cloud Services](cloud-services-certs-create.md).
+Kommandot skapar den `.cer` filen och installerar den i den **personliga** certifikatarkiv. Mer information finns i [certifikat översikt för Azure Cloud Services](cloud-services-certs-create.md).
 
-När du har skapat hello certifikat måste tooupload hello `.cer` filen tooAzure med hello ”överför” åtgärd av hello ”inställningar” fliken hello [klassiska Azure-portalen][management-portal].
+När du har skapat certifikatet, måste du ladda upp den `.cer` filen till Azure via ”överför”-åtgärd på fliken ”Inställningar” i den [klassiska Azure-portalen][management-portal].
 
-När du har fått ditt prenumerations-ID, skapas ett certifikat och överföra hello `.cer` filen tooAzure du kan ansluta toohello Azure hanteringsslutpunkten genom att skicka hello prenumerations-id och hello platsen för hello certifikatet i din **Personliga** certifikatarkivet för**ServiceManagementService** (igen och Ersätt *AzureCertificate* med hello namnet på ditt certifikat):
+När du har fått ditt prenumerations-ID, skapas ett certifikat och överföra den `.cer` filen till Azure, som du kan ansluta till Azure management-slutpunkten genom att skicka prenumerations-id och platsen för certifikatet i din **personliga**  certifikatarkiv **ServiceManagementService** (igen och Ersätt *AzureCertificate* med namnet på ditt certifikat):
 
     from azure import *
     from azure.servicemanagement import *
@@ -86,10 +86,10 @@ När du har fått ditt prenumerations-ID, skapas ett certifikat och överföra h
 
     sms = ServiceManagementService(subscription_id, certificate_path)
 
-I föregående exempel hello `sms` är en **ServiceManagementService** objekt. Hej **ServiceManagementService** klass är hello primära klassen används toomanage Azure-tjänster.
+I föregående exempel `sms` är en **ServiceManagementService** objekt. Den **ServiceManagementService** klassen är den primära klassen som används för att hantera Azure-tjänster.
 
 ## <a name="ListAvailableLocations"></a>Så här: visa en lista över tillgängliga platser
-toolist hello platser som är tillgängliga för värdtjänster, använda hello **lista\_platser** metoden:
+Om du vill visa de platser som är tillgängliga för värdtjänster använder den **lista\_platser** metoden:
 
     from azure import *
     from azure.servicemanagement import *
@@ -100,7 +100,7 @@ toolist hello platser som är tillgängliga för värdtjänster, använda hello 
     for location in result:
         print(location.name)
 
-När du skapar en tjänst i molnet eller lagringstjänsten måste tooprovide en giltig plats. Hej **lista\_platser** -metoden returnerar alltid en aktuell lista över hello tillgängliga platser. När detta skrivs är hello tillgängliga platser:
+När du skapar en tjänst i molnet eller storage-tjänst som du måste ange en giltig plats. Den **lista\_platser** -metoden returnerar alltid en aktuell lista över tillgängliga platser. När detta skrivs är tillgängliga platser:
 
 * Västra Europa
 * Norra Europa
@@ -118,7 +118,7 @@ När du skapar en tjänst i molnet eller lagringstjänsten måste tooprovide en 
 * Sydöstra Australien
 
 ## <a name="CreateCloudService"></a>Så här: skapa en tjänst i molnet
-När du skapar ett program och kör det i Azure, hello koden och konfigurationen tillsammans kallas en Azure [Molntjänsten] [ cloud service] (kallas även en *värdtjänsten* i tidigare Azure versioner). Hej **skapa\_finns\_service** metod kan du toocreate en ny värdbaserad tjänst genom att tillhandahålla värdbaserad tjänstnamn (som måste vara unikt i Azure), en etikett (automatiskt kodade toobase64), en Beskrivning och en plats.
+När du skapar ett program och kör det i Azure, koden och konfigurationen tillsammans kallas för en Azure [Molntjänsten] [ cloud service] (kallas även en *värdtjänsten* i tidigare Azure versioner). Den **skapa\_finns\_service** metod kan du skapa en ny värdbaserad tjänst genom att tillhandahålla en värdtjänst namnet (måste vara unikt i Azure), en etikett (kodad automatiskt till base64), en beskrivning och en plats.
 
     from azure import *
     from azure.servicemanagement import *
@@ -132,7 +132,7 @@ När du skapar ett program och kör det i Azure, hello koden och konfigurationen
 
     sms.create_hosted_service(name, label, desc, location)
 
-Du kan visa en lista med alla hello värdbaserade tjänster för din prenumeration med hello **lista\_finns\_services** metoden:
+Du kan visa en lista med alla värdbaserade tjänster för din prenumeration med den **lista\_finns\_services** metoden:
 
     result = sms.list_hosted_services()
 
@@ -142,7 +142,7 @@ Du kan visa en lista med alla hello värdbaserade tjänster för din prenumerati
         print('Location: ' + hosted_service.hosted_service_properties.location)
         print('')
 
-Om du vill tooget information om en viss värdbaserad tjänst kan du göra det genom att skicka hello värdbaserade tjänsten namnet toohello **hämta\_finns\_service\_egenskaper** metoden:
+Om du vill få information om en viss värdbaserad tjänst du göra detta genom att skicka värdbaserade tjänstens namn till den **hämta\_finns\_service\_egenskaper** metoden:
 
     hosted_service = sms.get_hosted_service_properties('myhostedservice')
 
@@ -150,17 +150,17 @@ Om du vill tooget information om en viss värdbaserad tjänst kan du göra det g
     print('Management URL: ' + hosted_service.url)
     print('Location: ' + hosted_service.hosted_service_properties.location)
 
-När du har skapat en tjänst i molnet, kan du distribuera din kod toohello tjänst med hello **skapa\_distribution** metod.
+När du har skapat en tjänst i molnet, kan du distribuera din kod till tjänsten med den **skapa\_distribution** metod.
 
 ## <a name="DeleteCloudService"></a>Så här: ta bort en tjänst i molnet
-Du kan ta bort en tjänst i molnet genom att skicka hello service name toohello **ta bort\_finns\_service** metoden:
+Du kan ta bort en tjänst i molnet genom att skicka tjänstnamnet som ska den **ta bort\_finns\_service** metoden:
 
     sms.delete_hosted_service('myhostedservice')
 
-Innan du kan ta bort en tjänst, måste alla distributioner för hello tjänsten först tas bort. (Se [så här: ta bort en distribution](#DeleteDeployment) mer information.)
+Innan du kan ta bort en tjänst måste du först bort alla distributioner för tjänsten. (Se [så här: ta bort en distribution](#DeleteDeployment) mer information.)
 
 ## <a name="DeleteDeployment"></a>Så här: ta bort en distribution
-toodelete en distribution kan använda hello **ta bort\_distribution** metod. hello följande exempel visas hur toodelete en distribution med namnet `v1`.
+Ta bort en distribution genom att använda den **ta bort\_distribution** metod. I följande exempel visas hur du tar bort en distribution med namnet `v1`.
 
     from azure import *
     from azure.servicemanagement import *
@@ -170,7 +170,7 @@ toodelete en distribution kan använda hello **ta bort\_distribution** metod. he
     sms.delete_deployment('myhostedservice', 'v1')
 
 ## <a name="CreateStorageService"></a>Så här: skapa en storage-tjänst
-En [lagringstjänsten](../storage/common/storage-create-storage-account.md) ger dig åtkomst tooAzure [Blobbar](../storage/blobs/storage-python-how-to-use-blob-storage.md), [tabeller](../cosmos-db/table-storage-how-to-use-python.md), och [köer](../storage/queues/storage-python-how-to-use-queue-storage.md). toocreate storage-tjänst som du behöver ett namn för hello service (mellan 3 och 24 gemener och unikt i Azure), en beskrivning, en etikett (upp too100 tecken, automatiskt kodade toobase64) och en plats. hello som följande exempel visar hur toocreate en tjänst genom att ange en plats.
+En [lagringstjänsten](../storage/common/storage-create-storage-account.md) ger dig åtkomst till Azure [Blobbar](../storage/blobs/storage-python-how-to-use-blob-storage.md), [tabeller](../cosmos-db/table-storage-how-to-use-python.md), och [köer](../storage/queues/storage-python-how-to-use-queue-storage.md). Om du vill skapa en lagringstjänsten, behöver du ett namn för tjänsten (mellan 3 och 24 gemener och unikt i Azure), en beskrivning, en etikett (upp till 100 tecken, kodade automatiskt till base64) och en plats. I följande exempel visas hur du skapar en storage-tjänst genom att ange en plats.
 
     from azure import *
     from azure.servicemanagement import *
@@ -187,9 +187,9 @@ En [lagringstjänsten](../storage/common/storage-create-storage-account.md) ger 
     operation_result = sms.get_operation_status(result.request_id)
     print('Operation status: ' + operation_result.status)
 
-Observera i föregående exempel hello hello statusen på hello **skapa\_lagring\_konto** åtgärden kan hämtas genom att skicka hello resultatet som returneras av **skapa\_lagring \_konto** toohello **hämta\_åtgärden\_status** metod.  
+Observera i föregående exempel som status för den **skapa\_lagring\_konto** åtgärden kan hämtas genom att skicka resultatet som returneras av **skapa\_lagring\_konto** till den **hämta\_åtgärden\_status** metod.  
 
-Du kan visa dina lagringskonton och deras egenskaper med hello **lista\_lagring\_konton** metoden:
+Du kan visa dina lagringskonton och deras egenskaper med den **lista\_lagring\_konton** metoden:
 
     from azure import *
     from azure.servicemanagement import *
@@ -203,7 +203,7 @@ Du kan visa dina lagringskonton och deras egenskaper med hello **lista\_lagring\
         print('')
 
 ## <a name="DeleteStorageService"></a>Så här: ta bort storage-tjänst
-Du kan ta bort storage-tjänst genom att skicka hello storage service name toohello **ta bort\_lagring\_konto** metod. Tar bort en lagringstjänsten alla data som lagras i hello-tjänsten (blobbar, tabeller och köer).
+Du kan ta bort storage-tjänst genom att skicka namnet på lagring till det **ta bort\_lagring\_konto** metoden. Tar bort en lagringstjänsten alla data som lagras i tjänsten (blobbar, tabeller och köer).
 
     from azure import *
     from azure.servicemanagement import *
@@ -213,7 +213,7 @@ Du kan ta bort storage-tjänst genom att skicka hello storage service name toohe
     sms.delete_storage_account('mystorageaccount')
 
 ## <a name="ListOperatingSystems"></a>Så här: visa en lista över tillgängliga operativsystem
-toolist hello-operativsystem som är tillgängliga för värdtjänster, använder hello **lista\_operativsystem\_system** metoden:
+Om du vill visa en lista över de operativsystem som är tillgängliga för värdtjänster, Använd den **lista\_operativsystem\_system** metoden:
 
     from azure import *
     from azure.servicemanagement import *
@@ -227,7 +227,7 @@ toolist hello-operativsystem som är tillgängliga för värdtjänster, använde
         print('Family: ' + os.family_label)
         print('Active: ' + str(os.is_active))
 
-Du kan också använda hello **lista\_operativsystem\_system\_familjer** metoden vilka grupper hello-system med familj:
+Du kan också använda den **lista\_operativsystem\_system\_familjer** metoden vilka grupper som operativsystem som familj:
 
     result = sms.list_operating_system_families()
 
@@ -240,7 +240,7 @@ Du kan också använda hello **lista\_operativsystem\_system\_familjer** metoden
         print('')
 
 ## <a name="CreateVMImage"></a>Så här: skapa en operativsystemavbildning
-tooadd ett operativsystem avbildningen toohello avbildningslagringsplatsen, använda hello **lägga till\_os\_bild** metoden:
+Lägg till en operativsystemavbildning avbildningslagringsplatsen genom att använda den **lägga till\_os\_bild** metoden:
 
     from azure import *
     from azure.servicemanagement import *
@@ -257,7 +257,7 @@ tooadd ett operativsystem avbildningen toohello avbildningslagringsplatsen, anv�
     operation_result = sms.get_operation_status(result.request_id)
     print('Operation status: ' + operation_result.status)
 
-toolist hello avbildningar av operativsystem som är tillgängliga, använda hello **lista\_os\_bilder** metod. Det innehåller alla plattform bilder och användaren bilder:
+Om du vill visa de operativsystemsavbildningar som är tillgängliga att använda den **lista\_os\_bilder** metod. Det innehåller alla plattform bilder och användaren bilder:
 
     result = sms.list_os_images()
 
@@ -272,7 +272,7 @@ toolist hello avbildningar av operativsystem som är tillgängliga, använda hel
         print('')
 
 ## <a name="DeleteVMImage"></a>Så här: ta bort en operativsystemavbildning
-toodelete en användaravbildning använda hello **ta bort\_os\_bild** metoden:
+Ta bort en användaravbildning genom att använda den **ta bort\_os\_bild** metoden:
 
     from azure import *
     from azure.servicemanagement import *
@@ -285,7 +285,7 @@ toodelete en användaravbildning använda hello **ta bort\_os\_bild** metoden:
     print('Operation status: ' + operation_result.status)
 
 ## <a name="CreateVM"></a>Så här: skapa en virtuell dator
-toocreate en virtuell dator, måste du först toocreate en [Molntjänsten](#CreateCloudService).  Skapa hello distribution av virtuella datorer med hjälp av hello **skapa\_virtuella\_datorn\_distribution** metoden:
+Om du vill skapa en virtuell dator, måste du först skapa en [Molntjänsten](#CreateCloudService).  Skapa sedan den virtuella datorn med den **skapa\_virtuella\_datorn\_distribution** metoden:
 
     from azure import *
     from azure.servicemanagement import *
@@ -295,7 +295,7 @@ toocreate en virtuell dator, måste du först toocreate en [Molntjänsten](#Crea
     name = 'myvm'
     location = 'West US'
 
-    #Set hello location
+    #Set the location
     sms.create_hosted_service(service_name=name,
         label=name,
         location=location)
@@ -303,7 +303,7 @@ toocreate en virtuell dator, måste du först toocreate en [Molntjänsten](#Crea
     # Name of an os image as returned by list_os_images
     image_name = 'OpenLogic__OpenLogic-CentOS-62-20120531-en-us-30GB.vhd'
 
-    # Destination storage account container/blob where hello VM disk
+    # Destination storage account container/blob where the VM disk
     # will be created
     media_link = 'url_to_target_storage_blob_for_vm_hd'
 
@@ -323,7 +323,7 @@ toocreate en virtuell dator, måste du först toocreate en [Molntjänsten](#Crea
         role_size='Small')
 
 ## <a name="DeleteVM"></a>Så här: ta bort en virtuell dator
-toodelete en virtuell dator du först ta bort hello-distribution med hello **ta bort\_distribution** metoden:
+Om du vill ta bort en virtuell dator måste du först ta bort en distribution med hjälp av den **ta bort\_distribution** metoden:
 
     from azure import *
     from azure.servicemanagement import *
@@ -333,19 +333,19 @@ toodelete en virtuell dator du först ta bort hello-distribution med hello **ta 
     sms.delete_deployment(service_name='myvm',
         deployment_name='myvm')
 
-Hej Molntjänsten kan sedan tas bort med hello **ta bort\_finns\_service** metoden:
+Molntjänsten kan sedan tas bort med den **ta bort\_finns\_service** metoden:
 
     sms.delete_hosted_service(service_name='myvm')
 
 ## <a name="how-to-create-a-virtual-machine-from-a-captured-virtual-machine-image"></a>Så här: Skapa en virtuell dator från en avbildning av den fångade virtuell dator
-toocapture en VM-avbildning du först anropa hello **avbilda\_vm\_bild** metoden:
+Om du vill göra en VM-avbildning måste du först anropa den **avbilda\_vm\_bild** metoden:
 
     from azure import *
     from azure.servicemanagement import *
 
     sms = ServiceManagementService(subscription_id, certificate_path)
 
-    # replace hello below three parameters with actual values
+    # replace the below three parameters with actual values
     hosted_service_name = 'hs1'
     deployment_name = 'dep1'
     vm_name = 'vm1'
@@ -365,11 +365,11 @@ toocapture en VM-avbildning du först anropa hello **avbilda\_vm\_bild** metoden
             image
         )
 
-Därefter går du till att du har har avbildats hello avbildning, använder hello toomake **lista\_vm\_bilder** api, och kontrollera att bilden visas i resultaten för hello:
+Kontrollera att du har sparat avbildningen, Använd den **listan\_vm\_bilder** api, och kontrollera att bilden visas i resultaten:
 
     images = sms.list_vm_images()
 
-toofinally skapar hello virtuell dator med hello avbildningen använder hello **skapa\_virtuella\_datorn\_distribution** metod som tidigare, men nu skicka in hello vm_image_name i stället
+Använd för att skapa den virtuella datorn med avbildningen slutligen den **skapa\_virtuella\_datorn\_distribution** metod som tidigare, men nu skicka in vm_image_name i stället
 
     from azure import *
     from azure.servicemanagement import *
@@ -379,7 +379,7 @@ toofinally skapar hello virtuell dator med hello avbildningen använder hello **
     name = 'myvm'
     location = 'West US'
 
-    #Set hello location
+    #Set the location
     sms.create_hosted_service(service_name=name,
         label=name,
         location=location)
@@ -394,18 +394,18 @@ toofinally skapar hello virtuell dator med hello avbildningen använder hello **
         role_size='Small',
         vm_image_name = image_name)
 
-toolearn mer om hur toocapture en virtuell Linux-dator, se [hur tooCapture en Linux-dator.](../virtual-machines/linux/classic/capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
+Mer information om hur du skapar en Linux-dator finns [så här skapar du en virtuell Linux-dator.](../virtual-machines/linux/classic/capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 
-toolearn mer om hur toocapture Windows-dator, se [hur tooCapture Windows-dator.](../virtual-machines/windows/classic/capture-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+Mer information om hur du skapar en Windows-dator finns [så här skapar du en virtuell Windows-dator.](../virtual-machines/windows/classic/capture-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
 ## <a name="What's Next"> </a>Nästa steg
-Nu när du har lärt dig hello grunderna i service management kan du komma åt hello [fullständig API-referensdokumentationen för hello Azure Python SDK](http://azure-sdk-for-python.readthedocs.org/) och utföra komplexa uppgifter enkelt toomanage python-programmet.
+Nu när du har lärt dig grunderna om service-hantering, kan du komma åt den [fullständig API-referensdokumentationen för Azure Python SDK](http://azure-sdk-for-python.readthedocs.org/) och utföra komplicerade uppgifter enkelt om du vill hantera python-programmet.
 
-Mer information finns i hello [Python Developer Center](/develop/python/).
+Mer information finns i [Python Developer Center](/develop/python/).
 
 [What is Service Management]: #WhatIs
 [Concepts]: #Concepts
-[How to: Connect tooservice management]: #Connect
+[How to: Connect to service management]: #Connect
 [How to: List available locations]: #ListAvailableLocations
 [How to: Create a cloud service]: #CreateCloudService
 [How to: Delete a cloud service]: #DeleteCloudService

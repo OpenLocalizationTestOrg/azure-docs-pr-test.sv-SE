@@ -1,6 +1,6 @@
 ---
-title: "aaaGet igång med Azure IoT Hub (Python) | Microsoft Docs"
-description: "Lär dig hur toosend enhet till moln meddelanden tooAzure IoT-hubb med IoT-SDK för Python. Skapa simulerade enheten och tjänsten appar tooregister enheten, skicka meddelanden och läsa meddelanden från IoT-hubb."
+title: "Komma igång med Azure IoT Hub (Python) | Microsoft Docs"
+description: "Lär dig hur du skickar meddelanden från enheten till molnet i Azure IoT Hub med IoT SDK:er för Python. Skapa appar för simulerade enheter och tjänster för att registrera din enhet, skicka meddelanden och läsa meddelanden från IoT Hub."
 services: iot-hub
 author: dsk-2015
 manager: timlt
@@ -13,56 +13,56 @@ ms.workload: na
 ms.date: 08/25/2017
 ms.author: dkshir
 ms.custom: na
-ms.openlocfilehash: aa23e792fb144202e121274723bcfaeae0c04723
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 7ebbac4464d793717f68a4cb7905c53d1f5c051a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="connect-your-simulated-device-tooyour-iot-hub-using-python"></a>Ansluta din simulerade enhet tooyour IoT-hubb som använder Python
+# <a name="connect-your-simulated-device-to-your-iot-hub-using-python"></a>Anslut din simulerade enhet till IoT Hub med hjälp av Python
 [!INCLUDE [iot-hub-selector-get-started](../../includes/iot-hub-selector-get-started.md)]
 
-Hello slutet av den här självstudiekursen, kommer du har två Python-appar:
+När du är klar med den här självstudiekursen har du två Python-appar:
 
-* **CreateDeviceIdentity.py**, vilket skapar en enhetsidentitet och tillhörande nyckeln tooconnect appen simulerade enheten.
-* **SimulatedDevice.py**, som ansluter tooyour IoT-hubb med hello enhetsidentitet skapade tidigare och skickar en telemetri meddelande regelbundet med hello MQTT-protokollet.
+* **CreateDeviceIdentity.py**, som skapar en enhetsidentitet och en associerad säkerhetsnyckel för att ansluta din app för simulerade enheter.
+* **SimulatedDevice.py**, som ansluter till din IoT Hub med enhetsidentiteten som skapades tidigare och som regelbundet skickar ett telemetrimeddelande med hjälp av MQTT-protokollet.
 
 > [!NOTE]
-> hello artikel [Azure IoT SDK] [ lnk-hub-sdks] innehåller information om hello Azure IoT-SDK: er som du kan använda toobuild toorun både program på enheter och din lösningens serverdel.
+> Artikeln om [Azure IoT SDK:er][lnk-hub-sdks] innehåller information om Azure IoT SDK:er som du kan använda för att skapa båda apparna så att de kan köras på enheter och på lösningens backend-servrar.
 > 
 > 
 
-toocomplete den här kursen behöver du hello följande:
+För att kunna genomföra den här kursen behöver du följande:
 
-* [Python 2.x eller 3.x][lnk-python-download]. Se till att toouse hello 32-bitars eller 64-bitars installation som krävs av din konfiguration. När du uppmanas till detta under installationen av hello se till att tooadd Python tooyour plattformsspecifika miljövariabeln. Om du använder Python 2.x kan du behöva för[installera eller uppgradera *pip*, hello Python paketet hanteringssystemet][lnk-install-pip].
-* Om du använder Windows-Operativsystemet sedan [Visual C++ redistributable package] [ lnk-visual-c-redist] tooallow hello användning av ursprungliga DLLs från Python.
-* [Node.js 4.0 eller senare][lnk-node-download]. Se till att toouse hello 32-bitars eller 64-bitars installation som krävs av din konfiguration. Det här är nödvändig tooinstall hello [för IoT-hubb Explorer][lnk-iot-hub-explorer].
+* [Python 2.x eller 3.x][lnk-python-download]. Se till att använda en 32-bitars eller 64-bitars installation beroende på vad som krävs för din konfiguration. Se till att du lägger till Python i den plattformsspecifika miljövariabeln när du uppmanas att göra det under installationen. Om du använder Python 2.x kan du behöva [installera eller uppgradera *PIP* (pakethanteringssystemet för Python)][lnk-install-pip].
+* Om du använder Windows OS installerar du [Visual C++ redistributable package][lnk-visual-c-redist] så att du kan använda native-DLL:er från Python.
+* [Node.js 4.0 eller senare][lnk-node-download]. Se till att använda en 32-bitars eller 64-bitars installation beroende på vad som krävs för din konfiguration. Detta krävs för att installera [IoT Hub Explorer-verktyget][lnk-iot-hub-explorer].
 * Ett aktivt Azure-konto. Om du inte har något konto kan du skapa ett [kostnadsfritt konto][lnk-free-trial] på bara några minuter.
 
 > [!NOTE]
-> Hej *pip* paket för `azure-iothub-service-client` och `azure-iothub-device-client` är endast tillgänglig för Windows-Operativsystemet. Linux/Mac OS x finns toohello Linux och Mac OS-specifika avsnitt på hello [förbereda din utvecklingsmiljö för Python] [ lnk-python-devbox] efter.
+> *Pip*-paketet för `azure-iothub-service-client` och `azure-iothub-device-client` är endast tillgänglig för Windows-Operativsystemet. Information om Linux/Mac OS x finns i Linux- och Mac OS-specifika avsnitt på posten [Förbered din utvecklingsmiljö för Python][lnk-python-devbox] .
 > 
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
-Nu har du skapat din IoT Hub. Använd hello IoT Hub-värdnamnet och hello IoT-hubb anslutningssträngen i hello resten av den här kursen.
+Nu har du skapat din IoT Hub. Använd IoT Hub-värdnamnet och IoT Hub-anslutningssträngen i resten av den här självstudiekursen.
 
 > [!NOTE]
-> Du kan också enkelt skapa din IoT-hubb på en kommandorad med hello Python eller Node.js baserad Azure CLI. hello artikel [skapar en IoT-hubb med hello Azure CLI 2.0] [ lnk-azure-cli-hub] visar du hello snabbsteg toodo så. 
+> Du kan också enkelt skapa din IoT Hub på en kommandorad med hjälp av Python- eller Node.js-baserad Azure CLI. Artikeln [Create an IoT hub using the Azure CLI 2.0] [ lnk-azure-cli-hub] (Skapa en IoT Hub med Azure CLI 2.0) innehåller korta instruktioner för hur du gör. 
 > 
 
 ## <a name="create-a-device-identity"></a>Skapa en enhetsidentitet
-Det här avsnittet innehåller hello steg toocreate en Python-konsolapp som skapar en enhetsidentitet i hello identitetsregistret för din IoT-hubb. En enhet kan bara ansluta tooIoT hubb om det finns en post i registret för hello identitet. Mer information finns i hello **Identitetsregistret** avsnitt i hello [IoT-hubb Utvecklarhandbok][lnk-devguide-identity]. När du kör den här konsolen appen genereras ett unikt enhets-ID och nyckel att enheten kan använda tooidentify själva när den skickar enhet till moln meddelanden tooIoT hubb.
+Det här avsnittet visar hur du skapar en Python-konsolapp som skapar en enhetsidentitet i identitetsregistret för din IoT Hub. En enhet kan endast ansluta till IoT Hub om den har en post i identitetsregistret. Mer information finns i avsnittet om **identitetsregistret** i [utvecklarhandboken för IoT Hub][lnk-devguide-identity]. När du kör den här konsolappen genererar det ett unikt enhets-ID och en nyckel som din enhet kan använda för att identifiera sig själv när den skickar ”enhet-till-molnet”-meddelanden till IoT Hub.
 
-1. Öppna en kommandotolk och installera hello **Azure IoT-hubb Service SDK för Python**. Stäng kommandotolken hello när du har installerat hello SDK.
+1. Öppna en kommandotolk och installera **Azure IoT Hub Service SDK för Python**. Stäng kommandotolken när du har installerat SDK.
 
     ```
     pip install azure-iothub-service-client
     ```
 
-2. Skapa en Python-fil med namnet **CreateDeviceIdentity.py**. Öppna den i [en Python-redigeraren/IDE önskat][lnk-python-ide-list], till exempel hello standard [INAKTIVT][lnk-idle].
+2. Skapa en Python-fil med namnet **CreateDeviceIdentity.py**. Öppna filen i [valfri Python-redigerare/IDE][lnk-python-ide-list], till exempel [IDLE][lnk-idle].
 
-3. Lägg till följande kodmoduler tooimport hello krävs från hello service SDK hello:
+3. Lägg till följande kod för att importera de moduler som krävs från SDK:n:
 
     ```python
     import sys
@@ -70,7 +70,7 @@ Det här avsnittet innehåller hello steg toocreate en Python-konsolapp som skap
     from iothub_service_client import IoTHubRegistryManager, IoTHubRegistryManagerAuthMethod
     from iothub_service_client import IoTHubDeviceStatus, IoTHubError
     ```
-2. Lägg till hello följande kod, ersätter hello platshållare för `[IoTHub Connection String]` med hello anslutningssträng för hello IoT-hubb som du skapade i föregående avsnitt i hello. Du kan använda ett namn som hello `DEVICE_ID`.
+2. Lägg till följande kod och ersätt platshållarvärdet för `[IoTHub Connection String]` med anslutningssträngen för IoT Hub som du skapade i föregående avsnitt. Du kan använda ett valfritt namn som `DEVICE_ID`.
    
     ```python
     CONNECTION_STRING = "[IoTHub Connection String]"
@@ -78,7 +78,7 @@ Det här avsnittet innehåller hello steg toocreate en Python-konsolapp som skap
     ```
    [!INCLUDE [iot-hub-pii-note-naming-device](../../includes/iot-hub-pii-note-naming-device.md)]
 
-3. Lägg till hello följande funktion tooprint vissa hello enhetsinformation.
+3. Lägg till följande funktion om du vill skriva ut en del av enhetsinformationen.
 
     ```python
     def print_device_info(title, iothub_device):
@@ -94,7 +94,7 @@ Det här avsnittet innehåller hello steg toocreate en Python-konsolapp som skap
         print ( "iothubDevice.authMethod                  = {0}".format(iothub_device.authMethod) )
         print ( "" )
     ```
-3. Lägg till följande funktion toocreate hello enheten identifiering med hjälp av hello registret Manager hello. 
+3. Lägg till följande funktion om du vill skapa enhetsidentifieringen med Registry Manager. 
 
     ```python
     def iothub_createdevice():
@@ -110,45 +110,45 @@ Det här avsnittet innehåller hello steg toocreate en Python-konsolapp som skap
         except KeyboardInterrupt:
             print ( "iothub_createdevice stopped" )
     ```
-4. Slutligen lägger du till hello huvudsakliga funktion på följande sätt och spara hello-filen.
+4. Slutligen lägger du till huvudfunktionen enligt följande och sparar filen.
 
     ```python
     if __name__ == '__main__':
         print ( "" )
         print ( "Python {0}".format(sys.version) )
-        print ( "Creating device using hello Azure IoT Hub Service SDK for Python" )
+        print ( "Creating device using the Azure IoT Hub Service SDK for Python" )
         print ( "" )
         print ( "    Connection string = {0}".format(CONNECTION_STRING) )
         print ( "    Device ID         = {0}".format(DEVICE_ID) )
 
         iothub_createdevice()
     ```
-5. Hello Kommandotolken kör hello **CreateDeviceIdentity.py** på följande sätt:
+5. Kör **CreateDeviceIdentity.py** i kommandotolken enligt följande:
 
     ```python
     python CreateDeviceIdentity.py
     ```
-6. Du bör se hello simulerade enheten komma skapas. Skriv ner hello **deviceId** och hello **primaryKey** för den här enheten. Du måste dessa värden senare när du skapar ett program som ansluter tooIoT hubb som en enhet.
+6. Du bör se att den simulerade enheten skapas. Notera **deviceId** och **primaryKey** för enheten. Du behöver dessa värden senare när du skapar ett program som ansluter till IoT Hub som en enhet.
 
     ![Enheten har skapats][1]
 
 > [!NOTE]
-> Hej IoT-hubb identitetsregistret lagrar bara enheten identiteter tooenable säker åtkomst toohello IoT-hubb. Enheten ID och nycklar toouse lagras som säkerhetsreferenser och en aktiverat/inaktiverat flagga som du kan använda toodisable åtkomst för en enskild enhet. Om ditt program måste toostore andra enhetsspecifika metadata, använder den en programspecifika butik. Mer information finns i hello [IoT-hubb Utvecklarhandbok][lnk-devguide-identity].
+> IoT Hub-identitetsregistret lagrar bara enhetsidentiteter för att skydda åtkomsten till IoT Hub. Registret lagrar enhets-ID:n och enhetsnycklar som ska användas som säkerhetsreferenser och en aktiverad/inaktiverad-flagga som du kan använda för att inaktivera åtkomst för en enskild enhet. Om ditt program behöver lagra andra enhetsspecifika metadata bör det använda ett programspecifikt datalager. Mer information finns i [utvecklarhandboken för IoT Hub][lnk-devguide-identity].
 > 
 > 
 
 
 ## <a name="create-a-simulated-device-app"></a>Skapa en simulerad enhetsapp
-Det här avsnittet innehåller hello steg toocreate en Python-konsolapp som simulerar en enhet och skickar meddelanden från enhet till moln tooyour IoT-hubb.
+I det här avsnittet visas hur du skapar en Python-konsolapp som simulerar en enhet och skickar ”enhet-till-molnet”-meddelanden från enheten till din IoT Hub.
 
-1. Öppna en ny kommandotolk och installera hello Azure IoT Hub-enhet SDK för Python på följande sätt. Stäng kommandotolken hello efter hello-installationen.
+1. Öppna en kommandotolk och installera Azure IoT Hub Device SDK för Python enligt följande. Stäng kommandotolken efter installationen.
 
     ```
     pip install azure-iothub-device-client
     ```
 2. Skapa en fil med namnet **SimulatedDevice.py**. Öppna filen i valfri Python-redigerare/IDE (till exempel IDLE).
 
-3. Lägg till hello följande kodmoduler tooimport hello krävs från hello enheten SDK.
+3. Lägg till följande kod för att importera de moduler som krävs från enhets-SDK:n.
 
     ```python
     import random
@@ -158,10 +158,10 @@ Det här avsnittet innehåller hello steg toocreate en Python-konsolapp som simu
     from iothub_client import IoTHubClient, IoTHubClientError, IoTHubTransportProvider, IoTHubClientResult
     from iothub_client import IoTHubMessage, IoTHubMessageDispositionResult, IoTHubError, DeviceMethodReturnValue
     ```
-4. Lägg till hello följande kod och Ersätt hello platshållare för `[IoTHub Device Connection String]` med hello anslutningssträng för din enhet. anslutningssträngen för hello enhet är vanligtvis i hello-format för `HostName=<hostName>;DeviceId=<deviceId>;SharedAccessKey=<primaryKey>`. Använd hello **deviceId** och **primaryKey** av hello-enhet som du skapade i hello föregående avsnitt tooreplace hello `<deviceId>` och `<primaryKey>` respektive. Ersätt `<hostName>` med värdnamnet för IoT Hub, vanligtvis är det `<IoT hub name>.azure-devices.net`.
+4. Lägg till följande kod och ersätt platshållaren för `[IoTHub Device Connection String]` med anslutningssträngen för din enhet. Anslutningssträngen har vanligtvis formatet `HostName=<hostName>;DeviceId=<deviceId>;SharedAccessKey=<primaryKey>`. Använd **deviceId** och **primaryKey** som du skapade i föregående avsnitt när du ersätter `<deviceId>` respektive `<primaryKey>`. Ersätt `<hostName>` med värdnamnet för IoT Hub, vanligtvis är det `<IoT hub name>.azure-devices.net`.
 
     ```python
-    # String containing Hostname, Device Id & Device Key in hello format
+    # String containing Hostname, Device Id & Device Key in the format
     CONNECTION_STRING = "[IoTHub Device Connection String]"
     # choose HTTP, AMQP or MQTT as transport protocol
     PROTOCOL = IoTHubTransportProvider.MQTT
@@ -170,7 +170,7 @@ Det här avsnittet innehåller hello steg toocreate en Python-konsolapp som simu
     SEND_CALLBACKS = 0
     MSG_TXT = "{\"deviceId\": \"MyFirstPythonDevice\",\"windSpeed\": %.2f}"    
     ```
-5. Lägg till följande kod toodefine skicka bekräftelse återanrop hello. 
+5. Lägg till följande kod för att definiera ett återanrop för sändningsbekräftelse. 
 
     ```python
     def send_confirmation_callback(message, result, user_context):
@@ -184,25 +184,25 @@ Det här avsnittet innehåller hello steg toocreate en Python-konsolapp som simu
         SEND_CALLBACKS += 1
         print ( "    Total calls confirmed: %d" % SEND_CALLBACKS )
     ```
-6. Lägg till följande kod tooinitialize hello klientenheter hello.
+6. Lägg till följande kod för att initiera enhetsklienten.
 
     ```python
     def iothub_client_init():
         # prepare iothub client
         client = IoTHubClient(CONNECTION_STRING, PROTOCOL)
-        # set hello time until a message times out
+        # set the time until a message times out
         client.set_option("messageTimeout", MESSAGE_TIMEOUT)
         client.set_option("logtrace", 0)
         return client
     ```
-7. Lägg till följande hello fungera tooformat och skicka ett meddelande från din simulerade enhet tooyour IoT-hubb.
+7. Lägg till följande funktion för att formatera och skicka ett meddelande från den simulerade enheten till din IoT Hub.
 
     ```python
     def iothub_client_telemetry_sample_run():
 
         try:
             client = iothub_client_init()
-            print ( "IoT Hub device sending periodic messages, press Ctrl-C tooexit" )
+            print ( "IoT Hub device sending periodic messages, press Ctrl-C to exit" )
             message_counter = 0
 
             while True:
@@ -221,7 +221,7 @@ Det här avsnittet innehåller hello steg toocreate en Python-konsolapp som simu
                 prop_map.add("Property", prop_text)
 
                 client.send_event_async(message, send_confirmation_callback, message_counter)
-                print ( "IoTHubClient.send_event_async accepted message [%d] for transmission tooIoT Hub." % message_counter )
+                print ( "IoTHubClient.send_event_async accepted message [%d] for transmission to IoT Hub." % message_counter )
 
                 status = client.get_send_status()
                 print ( "Send status: %s" % status )
@@ -238,61 +238,61 @@ Det här avsnittet innehåller hello steg toocreate en Python-konsolapp som simu
         except KeyboardInterrupt:
             print ( "IoTHubClient sample stopped" )
     ```
-8. Slutligen lägger du till hello huvudsakliga funktion. 
+8. Slutligen lägger du till huvudfunktionen. 
 
     ```python
     if __name__ == '__main__':
-        print ( "Simulating a device using hello Azure IoT Hub Device SDK for Python" )
+        print ( "Simulating a device using the Azure IoT Hub Device SDK for Python" )
         print ( "    Protocol %s" % PROTOCOL )
         print ( "    Connection string=%s" % CONNECTION_STRING )
 
         iothub_client_telemetry_sample_run()
     ```
-9. Spara och Stäng hello **SimulatedDevice.py** fil. Du är nu redo toorun den här appen.
+9. Spara och stäng filen **SimulatedDevice.py**. Nu är du redo att köra appen.
 
 > [!NOTE]
-> enkel tookeep saker, den här självstudiekursen implementerar inte några återförsöksprincip. I produktionskod, bör du implementera försök principer (till exempel en exponentiell backoff) enligt förslaget i hello MSDN-artikel [hantering av tillfälliga fel][lnk-transient-faults].
+> För att göra det så enkelt som möjligt implementerar vi ingen princip för omförsök i den här självstudiekursen. I produktionskoden bör du implementera principer för omförsök (till exempel en exponentiell backoff), vilket rekommenderas i MSDN-artikeln om [hantering av tillfälliga fel][lnk-transient-faults].
 > 
 > 
 
 ## <a name="receive-messages-from-your-simulated-device"></a>Ta emot meddelanden från den simulerade enheten
-tooreceive telemetri meddelanden från enheten, behöver du toouse en [Händelsehubbar][lnk-event-hubs-overview]-kompatibel slutpunkt som exponeras av hello IoT-hubb som läser hello meddelanden från enhet till moln. Läs hello [Kom igång med Händelsehubbar] [ lnk-eventhubs-tutorial] självstudiekursen information om hur tooprocess meddelanden från Händelsehubbar för slutpunkten för din IoT-hubb Event Hub-kompatibel. Händelsehubbar har inte stöd för telemetri i Python ännu, så du kan antingen skapa en [Node.js](iot-hub-node-node-getstarted.md#D2C_node) eller en [.NET](iot-hub-csharp-csharp-getstarted.md#D2C_csharp) Händelsehubbar-baserade konsolen tooread hello enhet till moln meddelanden från IoT-hubb. Den här kursen visar hur du kan använda hello [för IoT-hubb Explorer] [ lnk-iot-hub-explorer] tooread dessa meddelanden.
+För att kunna ta emot telemetrimeddelanden från enheten måste du använda en [Event Hubs][lnk-event-hubs-overview]-kompatibel slutpunkt som exponeras av IoT Hub, som läser ”enhet-till-molnet”-meddelanden. Läs självstudiekursen [Komma igång med Event Hubs][lnk-eventhubs-tutorial] för information om hur du bearbetar meddelanden från Event Hubs för din IoT Hubs Event Hub-kompatibla slutpunkt. Event Hubs har inte stöd för telemetri i Python ännu, så du kan antingen skapa en [Node.js](iot-hub-node-node-getstarted.md#D2C_node)- eller [.NET](iot-hub-csharp-csharp-getstarted.md#D2C_csharp) Event Hubs-baserad konsolapp för att läsa ”enhet-till-molnet”-meddelanden från IoT Hub. Den här kursen visar hur du kan använda [IoT Hub Explorer-verktyget][lnk-iot-hub-explorer] för att läsa dessa enhetsmeddelanden.
 
-1. Öppna en kommandotolk och installera hello IoT-hubb Explorer. 
+1. Öppna en kommandotolk och installera IoT Hub Explorer. 
 
     ```
     npm install -g iothub-explorer
     ```
 
-2. Kör följande kommando i Kommandotolken för hello hello toobegin övervakning hello meddelanden från enhet till moln från enheten. Använd din IoT-hubb anslutningssträngen i hello platshållare efter `--login`.
+2. Kör följande kommando i kommandotolken för att börja övervaka ”enhet-till-molnet”-meddelanden från enheten. Använd din IoT Hubs anslutningssträng i platshållaren efter `--login`.
 
     ```
     iothub-explorer monitor-events MyFirstPythonDevice --login "[IoTHub connection string]"
     ```
 
-3. Öppna en ny kommandotolk och gå toohello katalog som innehåller hello **SimulatedDevice.py** fil.
+3. Öppna en ny kommandotolk och gå till den katalog som innehåller filen **SimulatedDevice.py**.
 
-4. Kör hello **SimulatedDevice.py** fil som skickar regelbundet telemetri data tooyour IoT-hubb. 
+4. Kör filen **SimulatedDevice.py** som regelbundet skickar telemetridata till din IoT Hub. 
    
     ```
     python SimulatedDevice.py
     ```
-5. Se hälsningsmeddelande för enheten på hello Kommandotolken kör hello IoT-hubb Explorer från hello föregående avsnitt. 
+5. Se enhetsmeddelanden på kommandotolken som kör IoT Hub Explorer från det föregående avsnittet. 
 
     ![Meddelanden från enheten till molnet (Python)][2]
 
 ## <a name="next-steps"></a>Nästa steg
-I den här självstudiekursen konfigurerade en ny IoT-hubb i hello Azure-portalen och sedan skapa en enhetsidentitet i hello IoT hub identitetsregistret. Du har använt den här enhetens identitet tooenable hello simulerade enheten app toosend meddelanden från enhet till moln toohello IoT-hubb. Du har sett hello som tagits emot av hello IoT-hubb med hjälp av hello hello IoT-hubb Explorer-verktyget. 
+I den här självstudiekursen konfigurerade du en ny IoT Hub på Azure Portal och skapade sedan en enhetsidentitet i IoT-hubbens identitetsregister. Du använde den här enhetsidentiteten så att den simulerade enhetsappen kunde skicka ”enhet till molnet”-meddelanden till IoT Hub. Du såg meddelandena som mottogs av IoT Hub med hjälp av IoT Hub Explorer-verktyget. 
 
-tooexplore hello Python SDK för Azure IoT Hub-användning i djup, besök [den här hubb för Git-lagringsplatsen][lnk-python-github]. tooreview hello meddelandefunktioner för hello Azure IoT-hubb Service SDK för Python, som du kan hämta och köra [iothub_messaging_sample.py][lnk-messaging-sample]. För enheten på klientsidan simuleringen med hello Azure IoT Hub-enhet SDK för Python, som du kan hämta och köra hello [iothub_client_sample.py][lnk-client-sample].
+Om du vill utforska Python SDK för Azure IoT Hub-användning mer i detalj kan du gå till [denna Git Hub-repo][lnk-python-github]. Om du vill granska meddelandefunktionerna i Azure IoT Hub Service SDK för Python kan du ladda ned och köra [iothub_messaging_sample.py][lnk-messaging-sample]. Om du vill använda simulering på enheten med Azure IoT Hub Device SDK för Python kan du ladda ned och köra [iothub_client_sample.py][lnk-client-sample].
 
-toocontinue komma igång med IoT-hubb och tooexplore finns i andra IoT-scenarier:
+Mer information om hur du kan komma igång med IoT Hub och utforska andra IoT-scenarier finns här:
 
 * [Connecting your device][lnk-connect-device] (Ansluta din enhet)
 * [Connecting your device][lnk-device-management] (Komma igång med enhetshantering)
 * [Komma igång med Azure IoT Edge][lnk-iot-edge]
 
-toolearn hur tooextend IoT-lösningen och processen enhet till moln meddelandena i skala, se hello [bearbeta meddelanden från enhet till moln] [ lnk-process-d2c-tutorial] kursen.
+Självstudiekursen [Bearbeta meddelanden från enhet till moln][lnk-process-d2c-tutorial] beskriver hur du utökar din IoT-lösning och bearbetar ”enhet till molnet”-meddelanden i hög skala.
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]
 
 <!-- Images. -->

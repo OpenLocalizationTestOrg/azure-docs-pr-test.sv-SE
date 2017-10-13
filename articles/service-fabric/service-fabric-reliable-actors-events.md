@@ -1,6 +1,6 @@
 ---
-title: "aaaEvents i aktören-baserad Azure mikrotjänster | Microsoft Docs"
-description: "Introduktion tooevents för Service Fabric Reliable Actors."
+title: "Händelser i aktören-baserad Azure mikrotjänster | Microsoft Docs"
+description: "Introduktion till händelser för Service Fabric Reliable Actors."
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/13/2017
 ms.author: amanbha
-ms.openlocfilehash: a51e41c35441a5fea508138968b36a35f0ba6699
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: d936670c548ff709fc2e935d3f28d94e4bde8a04
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="actor-events"></a>Aktören händelser
-Aktören händelser ger ett sätt toosend bästa meddelanden från hello aktören toohello klienter. Aktören händelser är utformade för aktören till klientkommunikation och ska inte användas för aktören – aktören kommunikation.
+Aktören händelser är ett sätt att skicka meddelanden för bästa prestanda från aktören till klienterna. Aktören händelser är utformade för aktören till klientkommunikation och ska inte användas för aktören – aktören kommunikation.
 
-hello följande kod kodavsnitt visar hur toouse aktören händelser i ditt program.
+Följande kodavsnitt visar hur du använder aktören händelser i ditt program.
 
-Definiera ett gränssnitt som beskriver hello händelser som publicerats av hello aktören. Det här gränssnittet måste härledas från hello `IActorEvents` gränssnitt. hello argument av hello-metoder måste vara [data minimera serialiserbara](service-fabric-reliable-actors-notes-on-actor-type-serialization.md). hello-metoder måste returnera void, som händelse-meddelanden är ett sätt och bästa prestanda.
+Definiera ett gränssnitt som beskrivs de händelser som publicerats av den. Det här gränssnittet måste härledas från den `IActorEvents` gränssnitt. Argument av metoder måste vara [data minimera serialiserbara](service-fabric-reliable-actors-notes-on-actor-type-serialization.md). Metoderna måste returnera void, som händelse-meddelanden är ett sätt och bästa prestanda.
 
 ```csharp
 public interface IGameEvents : IActorEvents
@@ -39,7 +39,7 @@ public interface GameEvents implements ActorEvents
     void gameScoreUpdated(UUID gameId, String currentScore);
 }
 ```
-Deklarera hello händelser som publicerats av hello aktören i hello aktören gränssnitt.
+Deklarera händelser som publicerats av aktören i gränssnittet aktören.
 
 ```csharp
 public interface IGameActor : IActor, IActorEventPublisher<IGameEvents>
@@ -57,7 +57,7 @@ public interface GameActor extends Actor, ActorEventPublisherE<GameEvents>
     CompletableFuture<String> getGameScore();
 }
 ```
-Implementera hello händelsehanterare på klientsidan hello.
+Implementera händelsehanteraren på klienten.
 
 ```csharp
 class GameEventsHandler : IGameEvents
@@ -78,7 +78,7 @@ class GameEventsHandler implements GameEvents {
 }
 ```
 
-Skapa en proxy toohello aktören som publicerar hello händelse och prenumerera tooits händelser på hello-klienten.
+Skapa en proxy för aktören som publicerar händelsen och prenumerera på händelser på klienten.
 
 ```csharp
 var proxy = ActorProxy.Create<IGameActor>(
@@ -93,9 +93,9 @@ GameActor actorProxy = ActorProxyBase.create<GameActor>(GameActor.class, new Act
 return ActorProxyEventUtility.subscribeAsync(actorProxy, new GameEventsHandler());
 ```
 
-I hello händelse av växling vid fel misslyckas hello aktören över tooa annan process eller nod. hello aktören proxy hanterar hello aktiva prenumerationer och igen prenumererar automatiskt dem. Du kan styra hello ny prenumeration intervall via hello `ActorProxyEventExtensions.SubscribeAsync<TEvent>` API. toounsubscribe, Använd hello `ActorProxyEventExtensions.UnsubscribeAsync<TEvent>` API.
+Vid växling vid fel, kan aktören växlas över till en annan process eller en nod. Aktören proxy hanterar de aktiva prenumerationerna och igen prenumererar automatiskt dem. Du kan styra intervallet för ny prenumerationen via den `ActorProxyEventExtensions.SubscribeAsync<TEvent>` API. Om du vill avbryta prenumerationen, använder den `ActorProxyEventExtensions.UnsubscribeAsync<TEvent>` API.
 
-Aktören hello, bara publicera på hello händelser när de inträffar. Om det finns prenumeranter toohello händelse, skickar hello aktörer runtime dem hello-meddelande.
+Publicera händelser på aktören, när de görs. Om det finns prenumeranter att händelsen, skickar aktörer runtime dem meddelandet.
 
 ```csharp
 var ev = GetEvent<IGameEvents>();

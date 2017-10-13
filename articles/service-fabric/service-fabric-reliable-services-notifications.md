@@ -1,5 +1,5 @@
 ---
-title: aaaReliable Services-meddelanden | Microsoft Docs
+title: Reliable Services-meddelanden | Microsoft Docs
 description: "Konceptuell dokumentationen för Service Fabric Reliable Services meddelanden"
 services: service-fabric
 documentationcenter: .net
@@ -14,24 +14,24 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 6/29/2017
 ms.author: mcoskun
-ms.openlocfilehash: 8c43190d31dbe82d1dc7fa1c228128bdcc3684f6
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: c6a53d851510ed5e6eec1f3ac0f636ad034a6d4c
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="reliable-services-notifications"></a>Reliable Services-meddelanden
-Meddelanden tillåter klienter tootrack hello ändringar som görs tooan objekt som de är intresserad av. Två typer av objekt som stöder meddelanden: *tillförlitliga Tillståndshanterare* och *tillförlitliga ordlista*.
+Meddelanden tillåter klienter att spåra ändringar som görs i ett objekt som de är intresserad av. Två typer av objekt som stöder meddelanden: *tillförlitliga Tillståndshanterare* och *tillförlitliga ordlista*.
 
 Vanliga orsaker till med hjälp av meddelanden är:
 
-* Skapa materialiserade vyer, till exempel sekundärindex eller aggregeras filtrerade datavyer hello replikens tillstånd. Ett exempel är en sorterade index över alla nycklar i tillförlitliga ordlistan.
-* Skicka övervakningsdata, till exempel hello antalet användare som lagts till i hello senaste timmen.
+* Skapa materialiserade vyer, till exempel sekundärindex eller aggregeras filtrerade datavyer repliken tillstånd. Ett exempel är en sorterade index över alla nycklar i tillförlitliga ordlistan.
+* Skicka övervakningsdata, till exempel hur många användare som lagts till i den senaste timmen.
 
 Meddelanden skickas som en del av åtgärder. På grund av att ska meddelanden hanteras så snabbt som möjligt och synkron händelser inte får innehåller några kostsamma åtgärder.
 
 ## <a name="reliable-state-manager-notifications"></a>Tillstånd för tillförlitlig Manager meddelanden
-Tillförlitlig Tillståndshanterare visar meddelanden för hello följande händelser:
+Tillförlitlig Tillståndshanterare visar meddelanden för följande händelser:
 
 * Transaktionen
   * Checka in
@@ -40,16 +40,16 @@ Tillförlitlig Tillståndshanterare visar meddelanden för hello följande händ
   * Lägga till en tillförlitlig tillstånd
   * Borttagning av en tillförlitlig tillstånd
 
-Tillförlitlig Tillståndshanterare spårar hello aktuella inflight transaktioner. hello enda förändringen i transaktionstillstånd som orsakar en avisering toobe utlöses är en transaktion som allokeras.
+Tillförlitlig Tillståndshanterare spårar de aktuella inflight transaktionerna. Den enda förändringen i transaktionstillstånd som orsakar en avisering till att utlösa är en transaktion som allokeras.
 
-Tillförlitlig Tillståndshanterare upprätthåller en samling av tillförlitliga tillstånd som tillförlitliga ordlista och tillförlitlig kön. Tillförlitlig Tillståndshanterare utlöses meddelanden när den här samlingen ändras: tillståndet tillförlitliga läggs till eller tas bort eller återskapas hello hela samlingen.
-hello tillförlitliga Tillståndshanterare samling återskapas i tre fall:
+Tillförlitlig Tillståndshanterare upprätthåller en samling av tillförlitliga tillstånd som tillförlitliga ordlista och tillförlitlig kön. Tillförlitlig Tillståndshanterare utlöses meddelanden när den här samlingen ändras: tillståndet tillförlitliga läggs till eller tas bort eller återskapas hela samlingen.
+Samlingen tillförlitliga Tillståndshanterare återskapas i tre fall:
 
-* Återställning: När en replik startar den återställer dess tidigare tillstånd från hello disken. Hello slutet av återställning, används **NotifyStateManagerChangedEventArgs** toofire en händelse som innehåller hello återställda tillförlitliga tillstånd.
-* Fullständig kopia: innan en replik kan ansluta till hello konfigurationsuppsättning, den har inbyggda toobe. Ibland kan kräver detta en fullständig kopia av tillförlitliga Tillståndshanterare tillstånd från hello primära repliken toobe tillämpade toohello inaktiv sekundär replik. Tillförlitlig Tillståndshanterare på hello sekundär replik använder **NotifyStateManagerChangedEventArgs** toofire en händelse som innehåller hello tillförlitliga tillstånd som det har fått från hello primära repliken.
-* Återställ: I scenarier med haveriberedskap hello replikens tillstånd kan återställas från en säkerhetskopia via **RestoreAsync**. I sådana fall tillförlitliga Tillståndshanterare på hello primära repliken använder **NotifyStateManagerChangedEventArgs** toofire en händelse som innehåller hello tillförlitliga tillstånd som den har återställts från hello säkerhetskopian.
+* Återställning: När en replik startar den återställer dess tidigare tillstånd från disken. I slutet av recovery används **NotifyStateManagerChangedEventArgs** eller en händelse som innehåller de återställda tillförlitliga tillstånd.
+* Fullständig kopia: innan konfigurationen kan delta i en replik, den har skapas. Ibland kan kräver detta en fullständig kopia av tillförlitliga Tillståndshanterare tillstånd från den primära repliken ska tillämpas på den sekundära repliken som inaktiv. Tillstånd för tillförlitlig Manager på den sekundära repliken använder **NotifyStateManagerChangedEventArgs** eller en händelse som innehåller de tillförlitliga tillstånd som det har fått från den primära repliken.
+* Återställ: I scenarier med haveriberedskap repliken kan återställas från en säkerhetskopia via **RestoreAsync**. I sådana fall kan den tillförlitliga tillstånd Manager på den primära repliken använder **NotifyStateManagerChangedEventArgs** eller en händelse som innehåller de tillförlitliga tillstånd som den har återställts från säkerhetskopian.
 
-tooregister för meddelanden och/eller tillstånd manager meddelanden behöver du tooregister med hello **TransactionChanged** eller **StateManagerChanged** händelser på tillförlitliga Tillståndshanterare. En gemensam plats tooregister med dessa händelsehanterare är hello konstruktorn för tillståndskänsliga tjänsten. När du registrerar på hello-konstruktorn kan du inte missar alla aviseringar som orsakas av en ändring under hello livstid **IReliableStateManager**.
+För att registrera för meddelanden och/eller tillstånd manager meddelanden måste du registrera den **TransactionChanged** eller **StateManagerChanged** händelser på tillförlitliga Tillståndshanterare. En gemensam plats att registrera med dessa händelsehanterare är konstruktören för tillståndskänsliga tjänsten. När du registrerar på konstruktorn kan du inte missar alla aviseringar som orsakas av en ändring under livslängden för **IReliableStateManager**.
 
 ```C#
 public MyService(StatefulServiceContext context)
@@ -60,10 +60,10 @@ public MyService(StatefulServiceContext context)
 }
 ```
 
-Hej **TransactionChanged** händelsehanteraren använder **NotifyTransactionChangedEventArgs** tooprovide information om hello-händelse. Den innehåller hello Åtgärdsegenskap (till exempel **NotifyTransactionChangedAction.Commit**) som anger hello typ av ändring. Den innehåller också hello transaktionsegenskap som ger en referens toohello transaktion som har ändrats.
+Den **TransactionChanged** händelsehanteraren använder **NotifyTransactionChangedEventArgs** att ge information om händelsen. Den innehåller egenskapen action (till exempel **NotifyTransactionChangedAction.Commit**) som anger vilken typ av ändring. Den innehåller också transaktionsegenskapen som ger en referens till den transaktion som har ändrats.
 
 > [!NOTE]
-> Idag **TransactionChanged** händelser aktiveras bara om genomförs hello transaktionen. hello åtgärd är lika för**NotifyTransactionChangedAction.Commit**. Men i hello framtida, händelser kan aktiveras för andra typer av tillståndsändringar för transaktionen. Vi rekommenderar kontrollerar hello åtgärd och bearbetning av hello-händelse endast om det är något som du förväntar dig.
+> Idag **TransactionChanged** händelser aktiveras bara om genomförs transaktionen. Åtgärden är lika med **NotifyTransactionChangedAction.Commit**. Men i framtiden, händelser kan aktiveras för andra typer av tillståndsändringar för transaktionen. Vi rekommenderar att kontroll av åtgärden och bearbetar händelsen endast om det är något som du förväntar dig.
 > 
 > 
 
@@ -82,9 +82,9 @@ private void OnTransactionChangedHandler(object sender, NotifyTransactionChanged
 }
 ```
 
-Hej **StateManagerChanged** händelsehanteraren använder **NotifyStateManagerChangedEventArgs** tooprovide information om hello-händelse.
+Den **StateManagerChanged** händelsehanteraren använder **NotifyStateManagerChangedEventArgs** att ge information om händelsen.
 **NotifyStateManagerChangedEventArgs** har två underklasser: **NotifyStateManagerRebuildEventArgs** och **NotifyStateManagerSingleEntityChangedEventArgs**.
-Du använder hello Åtgärdsegenskap i **NotifyStateManagerChangedEventArgs** toocast **NotifyStateManagerChangedEventArgs** toohello rätt underklass:
+Du använder egenskapen action i **NotifyStateManagerChangedEventArgs** att omvandla **NotifyStateManagerChangedEventArgs** till rätt underklass:
 
 * **NotifyStateManagerChangedAction.Rebuild**: **NotifyStateManagerRebuildEventArgs**
 * **NotifyStateManagerChangedAction.Add** och **NotifyStateManagerChangedAction.Remove**: **NotifyStateManagerSingleEntityChangedEventArgs**
@@ -106,16 +106,16 @@ public void OnStateManagerChangedHandler(object sender, NotifyStateManagerChange
 ```
 
 ## <a name="reliable-dictionary-notifications"></a>Tillförlitliga ordlista meddelanden
-Tillförlitliga ordlistan innehåller meddelanden för hello följande händelser:
+Tillförlitliga ordlista visar meddelanden för följande händelser:
 
 * Återskapa: Anropas om **ReliableDictionary** dess tillstånd har återställts från en återställda eller kopierade lokala tillstånd eller säkerhetskopiering.
-* Rensa: Anropas om hello tillståndet för **ReliableDictionary** har rensats via hello **ClearAsync** metod.
-* Lägg till: Anropas när ett objekt har lagts till för**ReliableDictionary**.
+* Rensa: Anropas om tillståndet för **ReliableDictionary** har rensats via den **ClearAsync** metod.
+* Lägg till: Anropas när ett objekt har lagts till **ReliableDictionary**.
 * Uppdatering: Anropas när ett objekt i **IReliableDictionary** har uppdaterats.
 * Ta bort: Anropas när ett objekt i **IReliableDictionary** har tagits bort.
 
-tooget tillförlitliga ordlista meddelanden behöver du tooregister med hello **DictionaryChanged** händelsehanteraren på **IReliableDictionary**. En gemensam plats tooregister med dessa händelsehanterare är i hello **ReliableStateManager.StateManagerChanged** lägga till meddelanden.
-Registrera när **IReliableDictionary** har lagts till för**IReliableStateManager** garanterar att du inte missar eventuella meddelanden.
+För att få tillförlitliga ordlista meddelanden, måste du registrera med den **DictionaryChanged** händelsehanteraren på **IReliableDictionary**. En gemensam plats att registrera med dessa händelsehanterare är i den **ReliableStateManager.StateManagerChanged** lägga till meddelanden.
+Registrera när **IReliableDictionary** har lagts till i **IReliableStateManager** garanterar att du inte missar eventuella meddelanden.
 
 ```C#
 private void ProcessStateManagerSingleEntityNotification(NotifyStateManagerChangedEventArgs e)
@@ -136,11 +136,11 @@ private void ProcessStateManagerSingleEntityNotification(NotifyStateManagerChang
 ```
 
 > [!NOTE]
-> **ProcessStateManagerSingleEntityNotification** är hello exempelmetoden den föregående hello **OnStateManagerChangedHandler** exempel anrop.
+> **ProcessStateManagerSingleEntityNotification** är exempelmetoden som den föregående **OnStateManagerChangedHandler** exempel anrop.
 > 
 > 
 
-hello föregående kod anger hello **IReliableNotificationAsyncCallback** gränssnitt, tillsammans med **DictionaryChanged**. Eftersom **NotifyDictionaryRebuildEventArgs** innehåller en **IAsyncEnumerable** gränssnitt--som måste toobe räknas upp asynkront--återskapa meddelanden skickas via  **RebuildNotificationAsyncCallback** i stället för **OnDictionaryChangedHandler**.
+Föregående koduppsättningar den **IReliableNotificationAsyncCallback** gränssnitt, tillsammans med **DictionaryChanged**. Eftersom **NotifyDictionaryRebuildEventArgs** innehåller en **IAsyncEnumerable** gränssnitt--som behöver räknas asynkront--återskapa meddelanden skickas via  **RebuildNotificationAsyncCallback** i stället för **OnDictionaryChangedHandler**.
 
 ```C#
 public async Task OnDictionaryRebuildNotificationHandlerAsync(
@@ -158,12 +158,12 @@ public async Task OnDictionaryRebuildNotificationHandlerAsync(
 ```
 
 > [!NOTE]
-> I föregående kod, som en del av bearbetning hello återskapa meddelande hello underhålls första hello sammansatt tillstånd rensas. Eftersom hello tillförlitliga samling återskapas med ett nytt tillstånd, är alla tidigare meddelanden irrelevanta.
+> I föregående kod, som en del av meddelandet återskapa är först behålla sammansatt tillstånd avmarkerad. Eftersom samlingen tillförlitliga återskapas med ett nytt tillstånd, är alla tidigare meddelanden irrelevanta.
 > 
 > 
 
-Hej **DictionaryChanged** händelsehanteraren använder **NotifyDictionaryChangedEventArgs** tooprovide information om hello-händelse.
-**NotifyDictionaryChangedEventArgs** har fem underklasser. Använd hello Åtgärdsegenskap i **NotifyDictionaryChangedEventArgs** toocast **NotifyDictionaryChangedEventArgs** toohello rätt underklass:
+Den **DictionaryChanged** händelsehanteraren använder **NotifyDictionaryChangedEventArgs** att ge information om händelsen.
+**NotifyDictionaryChangedEventArgs** har fem underklasser. Använda egenskapen action i **NotifyDictionaryChangedEventArgs** att omvandla **NotifyDictionaryChangedEventArgs** till rätt underklass:
 
 * **NotifyDictionaryChangedAction.Rebuild**: **NotifyDictionaryRebuildEventArgs**
 * **NotifyDictionaryChangedAction.Clear**: **NotifyDictionaryClearEventArgs**
@@ -205,15 +205,15 @@ public void OnDictionaryChangedHandler(object sender, NotifyDictionaryChangedEve
 ## <a name="recommendations"></a>Rekommendationer
 * *Gör* slutföra meddelandehändelser så snabbt som möjligt.
 * *Inte* köra alla kostsamma åtgärder (till exempel i/o-operationer) som en del av synkron händelser.
-* *Gör* Kontrollera hello åtgärdstyp innan du bearbetar hello-händelse. Nya åtgärdstyper kan läggas till i hello framtida.
+* *Gör* Kontrollera åtgärdstypen innan du bearbetar händelsen. Nya åtgärdstyper kan läggas till i framtiden.
 
-Här följer några saker tookeep i åtanke:
+Här följer några saker att tänka på:
 
-* Meddelanden skickas som en del av hello körningen av en åtgärd. Till exempel utlöses ett meddelande om återställning som hello sista steget i en återställning. En återställning slutförs inte förrän händelsen för hello-meddelande bearbetas.
-* Eftersom meddelanden skickas som en del av hello tillämpa operations Se klienter bara meddelanden för lokalt allokerat åtgärder. Och eftersom åtgärder är garanterat endast toobe lokalt allokerat (med andra ord inloggad), de kan eller inte kan ångras i hello framtida.
-* I hello gör om sökvägen utlöses ett enda meddelande för varje tillämpade åtgärd. Det innebär att om transaktionen T1 omfattar Create(X), Delete(X) och Create(X), får du en avisering för hello skapandet av X, ett för hello borttagning och ett för att skapa en hello igen, i den ordningen.
-* Operations tillämpas för transaktioner som innehåller flera åtgärder i hello ordning som de togs emot på hello primära repliken från hello användare.
-* Som en del av FALSKT pågår, kan vissa åtgärder att ångra. Meddelanden har aktiverats för dessa ångra-åtgärder, rullande hello tillstånd hello replik tillbaka tooa stabil punkt. En viktig skillnad Ångra meddelanden är att händelser som har dubblettnycklar aggregeras. Till exempel om är som ångras transaktionen T1, visas ett enda meddelande tooDelete(X).
+* Meddelanden skickas som en del av en åtgärd. Till exempel utlöses ett meddelande om återställning som det sista steget i en återställning. En återställning slutförs inte förrän händelsen meddelande bearbetas.
+* Eftersom meddelanden skickas som en del av åtgärderna använder finns klienter endast meddelanden för lokalt allokerat åtgärder. Och eftersom åtgärder garanterat bara genomföras lokalt (med andra ord inloggad), de kan eller kan inte ångras i framtiden.
+* Gör om, för utlöses ett enda meddelande för varje tillämpade åtgärd. Det innebär att om transaktionen T1 omfattar Create(X), Delete(X) och Create(X), får du en avisering för att skapa X, en för borttagning och en för att skapa igen, i den ordningen.
+* Åtgärder tillämpas för transaktioner som innehåller flera åtgärder i den ordning som de togs emot på den primära repliken från användaren.
+* Som en del av FALSKT pågår, kan vissa åtgärder att ångra. Aviseringar genereras för dessa ångra-åtgärder, återställer tillståndet för repliken till en stabil. En viktig skillnad Ångra meddelanden är att händelser som har dubblettnycklar aggregeras. Till exempel om är som ångras transaktionen T1, visas ett enda meddelande Delete(X).
 
 ## <a name="next-steps"></a>Nästa steg
 * [Tillförlitliga samlingar](service-fabric-work-with-reliable-collections.md)

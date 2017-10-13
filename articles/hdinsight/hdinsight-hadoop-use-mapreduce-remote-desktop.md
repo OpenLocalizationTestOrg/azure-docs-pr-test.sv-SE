@@ -1,6 +1,6 @@
 ---
-title: "aaaMapReduce och Fjärrskrivbord med Hadoop i HDInsight - Azure | Microsoft Docs"
-description: "Lär dig hur toouse fjärrskrivbord tooconnect tooHadoop på HDInsight och kör MapReduce-jobb."
+title: "MapReduce och Fjärrskrivbord med Hadoop i HDInsight - Azure | Microsoft Docs"
+description: "Lär dig hur du använder Fjärrskrivbord för att ansluta till Hadoop i HDInsight och kör MapReduce-jobb."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -16,71 +16,71 @@ ms.workload: big-data
 ms.date: 01/12/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
-ms.openlocfilehash: bdbbcf59ca86dd1b170471aa9e12334a04c23667
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: b56674857b013f9bb3d4dd4b6e97b34e0a97b1b2
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="use-mapreduce-in-hadoop-on-hdinsight-with-remote-desktop"></a>Använda MapReduce i Hadoop i HDInsight med fjärrskrivbord
 [!INCLUDE [mapreduce-selector](../../includes/hdinsight-selector-use-mapreduce.md)]
 
-I den här artikeln kommer du lär dig hur tooconnect tooa Hadoop på HDInsight-kluster med hjälp av fjärrskrivbord och kör sedan MapReduce-jobb med hello Hadoop-kommando.
+I den här artikeln får lära du dig att ansluta till en Hadoop på HDInsight-kluster med hjälp av fjärrskrivbord och kör sedan MapReduce-jobb med hjälp av kommandot Hadoop.
 
 > [!IMPORTANT]
-> Fjärrskrivbord är bara tillgänglig på Windows-baserade HDInsight-kluster. Linux är hello endast operativsystem på HDInsight version 3.4 eller senare. Mer information finns i [HDInsight-avveckling på Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+> Fjärrskrivbord är bara tillgänglig på Windows-baserade HDInsight-kluster. Linux är det enda operativsystemet som används med HDInsight version 3.4 och senare. Mer information finns i [HDInsight-avveckling på Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 >
-> För HDInsight 3.4 eller större finns [använda MapReduce med SSH](hdinsight-hadoop-use-mapreduce-ssh.md) för information om hur du ansluter toohello HDInsight-kluster och kör MapReduce-jobb.
+> För HDInsight 3.4 eller större finns [använda MapReduce med SSH](hdinsight-hadoop-use-mapreduce-ssh.md) för information om hur du ansluter till HDInsight-kluster och kör MapReduce-jobb.
 
 ## <a id="prereq"></a>Förhandskrav
-toocomplete hello stegen i den här artikeln, behöver du hello följande:
+Du behöver följande för att slutföra stegen i den här artikeln:
 
 * Ett kluster med Windows-baserade HDInsight (Hadoop på HDInsight)
 * En klientdator som kör Windows 10, Windows 8 eller Windows 7
 
 ## <a id="connect"></a>Ansluta med fjärrskrivbord
-Aktivera Fjärrskrivbord för hello HDInsight-kluster och sedan ansluta tooit genom att följa anvisningarna hello på [ansluta tooHDInsight kluster med RDP](hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp).
+Aktivera Fjärrskrivbord för HDInsight-klustret och sedan ansluta till den genom att följa anvisningarna i [Anslut till HDInsight-kluster med RDP](hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp).
 
-## <a id="hadoop"></a>Använd hello Hadoop-kommando
-När du är ansluten toohello desktop för hello HDInsight-kluster, Använd hello följande steg toorun ett MapReduce-jobb med hello Hadoop-kommando:
+## <a id="hadoop"></a>Använd kommandot Hadoop
+När du är ansluten till skrivbordet för HDInsight-kluster kan du använda följande steg för att köra ett MapReduce-jobb med hjälp av Hadoop-kommando:
 
-1. Starta från hello HDInsight desktop hello **Hadoop kommandoraden**. Då öppnas en ny kommandotolk i hello **c:\apps\dist\hadoop-&lt;versionsnummer >** directory.
+1. HDInsight-skrivbordet och starta den **Hadoop kommandoraden**. Då öppnas en ny kommandotolk i den **c:\apps\dist\hadoop-&lt;versionsnummer >** directory.
 
    > [!NOTE]
-   > hello versionsnumret ändras när Hadoop uppdateras. Hej **HADOOP_HOME** miljövariabeln kan vara används toofind hello sökväg. Till exempel `cd %HADOOP_HOME%` ändringar kataloger toohello Hadoop katalog, utan att du tooknow hello-versionsnumret.
+   > Versionsnumret ändras när Hadoop uppdateras. Den **HADOOP_HOME** miljövariabeln kan användas för att hitta sökvägen. Till exempel `cd %HADOOP_HOME%` ändrar kataloger till Hadoop-katalogen utan att du behöver veta versionsnumret.
    >
    >
-2. toouse hello **Hadoop** kommandot toorun ett exempel MapReduce-jobb, använda hello följande kommando:
+2. Att använda den **Hadoop** kommando för att köra ett exempel MapReduce-jobb, använder du följande kommando:
 
         hadoop jar hadoop-mapreduce-examples.jar wordcount wasb:///example/data/gutenberg/davinci.txt wasb:///example/data/WordCountOutput
 
-    Detta startar hello **wordcount** -klassen, som ingår i hello **hadoop-mapreduce-examples.jar** filen i hello aktuell katalog. Som indata, används hello **wasb://example/data/gutenberg/davinci.txt** dokument och utdata är lagrade på: **wasb: / / / exempel/data/WordCountOutput**.
+    Detta startar den **wordcount** -klassen, som ingår i den **hadoop-mapreduce-examples.jar** fil i den aktuella katalogen. Som indata, används den **wasb://example/data/gutenberg/davinci.txt** dokument och utdata är lagrade på: **wasb: / / / exempel/data/WordCountOutput**.
 
    > [!NOTE]
-   > Mer information om den här MapReduce-jobb och hello exempeldata finns <a href="hdinsight-use-mapreduce.md">använda MapReduce i HDInsight Hadoop</a>.
+   > Läs mer om MapReduce-jobb och exempeldata <a href="hdinsight-use-mapreduce.md">använda MapReduce i HDInsight Hadoop</a>.
    >
    >
-3. hello jobbet sänder ut information när den bearbetas och returnerar information liknande toohello följande när hello jobbet har slutförts:
+3. Jobbet sänder ut information när den bearbetas och returnerar informationen liknar när jobbet har slutförts:
 
         File Input Format Counters
         Bytes Read=1395666
         File Output Format Counters
         Bytes Written=337623
-4. När hello jobbet har slutförts, kan du använda hello följande kommando toolist hello utgående filer lagras på **wasb://example/data/WordCountOutput**:
+4. När jobbet är klart, använder du följande kommando för att visa utdatafiler som lagras på **wasb://example/data/WordCountOutput**:
 
         hadoop fs -ls wasb:///example/data/WordCountOutput
 
-    Visas två filer, **_SUCCESS** och **del-r-00000**. Hej **del-r-00000** filen innehåller hello utdata för jobbet.
+    Visas två filer, **_SUCCESS** och **del-r-00000**. Den **del-r-00000** filen innehåller utdata för jobbet.
 
    > [!NOTE]
-   > Vissa MapReduce-jobb kan delas upp hello resultat över flera **del-r-###** filer. I så fall använder hello ### suffix tooindicate hello ordning hello-filer.
+   > Vissa MapReduce-jobb kan delas upp resultaten över flera **del-r-###** filer. I så fall använder den ### suffix för att ange ordningen för filerna.
    >
    >
-5. tooview hello utdata, Använd hello följande kommando:
+5. Om du vill visa utdata, använder du följande kommando:
 
         hadoop fs -cat wasb:///example/data/WordCountOutput/part-r-00000
 
-    Detta visar en lista över hello ord som ingår i hello **wasb://example/data/gutenberg/davinci.txt** fil och hello antal varje ord inträffade. hello följande är ett exempel på hello data som ska ingå i hello-filen:
+    Detta visar en lista över de ord som finns i den **wasb://example/data/gutenberg/davinci.txt** fil och hur många gånger varje ord inträffade. Följande är ett exempel på de data som ska ingå i filen:
 
         wreathed        3
         wreathing       1
@@ -91,7 +91,7 @@ När du är ansluten toohello desktop för hello HDInsight-kluster, Använd hell
         wriggling       1
 
 ## <a id="summary"></a>Sammanfattning
-Som du ser ger hello Hadoop-kommandot ett enkelt sätt toorun MapReduce-jobb på ett HDInsight-kluster och sedan visa hello jobbutdata.
+Som du ser ger kommandot Hadoop ett enkelt sätt att köra MapReduce-jobb på ett HDInsight-kluster och sedan visa jobbutdata.
 
 ## <a id="nextsteps"></a>Nästa steg
 Allmän information om MapReduce-jobb i HDInsight:

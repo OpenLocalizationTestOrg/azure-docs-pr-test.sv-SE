@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure API Management-dokumentationen – självstudier, API-referens | Microsoft Docs"
-description: "Lär dig hur toouse API Management toopublish API: er på ett säkert sätt och i större skala. Dokumentationen visar hur toocreate moderna API-gatewayer för befintliga backend-tjänster."
+title: "Dokumentation om Azure API Management – Självstudier, API-referens | Microsoft Docs"
+description: "Lär dig hur du använder API Management för att publicera API:er på ett säkert sätt och i större skala. Dokumentation visar hur du skapar moderna API-gatewayer för befintliga serverdelstjänster."
 services: api-management
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: c2bd5d7dc7c6df3ad01a704fdd28c9437d39a04b
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: de56e8b5fb7866183b0f06c4ac877d7b80a282f9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="api-management-documentation"></a>Dokumentation om API Management
 
-Lär dig hur toouse API Management toopublish API: er tooexternal, partner och anställda utvecklare på ett säkert sätt och i större skala. Självstudier, API-referenserna och andra dokumentationen visar hur toocreate och hantera moderna API-gateways för befintliga backend-tjänster finnas var som helst.
+Lär dig hur du använder API Management för att publicera API:er till externa, partner och anställda utvecklare säkert och i större skala. Självstudier, API-referenser och annan dokumentation visar hur du skapar och hanterar moderna API-gatewayer för befintliga serverdelstjänster var som helst.
 
 <ul class="panelContent cardsFTitle">
     <li>

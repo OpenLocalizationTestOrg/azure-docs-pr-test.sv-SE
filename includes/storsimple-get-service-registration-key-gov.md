@@ -1,19 +1,19 @@
 <!--author=SharS last changed: 9/17/15-->
 
 
-#### <a name="tooget-hello-storsimple-service-registration-key"></a>tooget hello StorSimple tjänstens registreringsnyckel
-1. På hello **StorSimple Manager-tjänsten** klickar du på hello-tjänsten som du skapade. Detta tar du toohello **Snabbstart** sidan. (Du kan klicka på snabbstartsikonen för hello ![StorSimple-snabbstartsikon ](./media/storsimple-get-service-registration-key-gov/HCS_QuickStartIcon-include.png) tooaccess hello **Snabbstart** sida när som helst.)
+#### <a name="to-get-the-storsimple-service-registration-key"></a>Hämta StorSimple-nyckel för tjänstregistrering
+1. På sidan **StorSimple Manager-tjänst**, klickar du på tjänsten som du skapade. Då kommer du till **Snabbstart**-sidan. (Du kan när som helst klicka på snabbstartsikonen ![StorSimple-snabbstartsikon ](./media/storsimple-get-service-registration-key-gov/HCS_QuickStartIcon-include.png) för att få åtkomst till **Snabbstart**-sidan.)
    
      ![StorSimple-snabbstartsida](./media/storsimple-get-service-registration-key-gov/HCS_ServiceQuickStart-gov-include.png)
-2. Klicka på **Hämta nyckel för tjänstregistrering**. Du kan också klicka på **registreringsnyckel** på hello hello sidans nederkant. Du kommer att ha toowait om en stund medan hello nyckeln hämtas. Hej **nyckel för tjänstregistrering** dialogrutan visas.
+2. Klicka på **Hämta nyckel för tjänstregistrering**. Du kan också klicka på **Registreringsnyckel** längst ned på sidan. Du får vänta några minuter medan nyckeln hämtas. Dialogrutan **Nyckel för tjänstregistrering** visas.
    
      ![Dialogrutan Nyckel för tjänstregistrering](./media/storsimple-get-service-registration-key-gov/HCS_ServiceRegistrationKey-gov-include.png)
-3. Leta upp hello nyckel för tjänstregistrering.
-4. Klicka på hello kopiera-ikonen ![Kopiera-ikonen i StorSimple](./media/storsimple-get-service-registration-key-gov/HCS_CopyIcon-include.png) toocopy hello nyckeln och spara den för senare användning.
-5. Klicka på kryssikonen hello ![StorSimple-kryssikon](./media/storsimple-get-service-registration-key-gov/HCS_CheckIcon-include.png) tooclose den här dialogrutan och returnera toohello **Snabbstart** sidan.
+3. Hitta nyckeln för tjänstregistrering.
+4. Klicka på Kopiera-ikonen ![Kopiera-ikonen i StorSimple](./media/storsimple-get-service-registration-key-gov/HCS_CopyIcon-include.png) för att kopiera nyckeln och spara den för senare användning.
+5. Klicka på kryssikonen ![StorSimple-kryssikon](./media/storsimple-get-service-registration-key-gov/HCS_CheckIcon-include.png) för att stänga dialogrutan och återgå till **Snabbstart**-sidan.
 
 > [!NOTE]
-> hello nyckel för tjänstregistrering är används tooregister alla hello enheter som behöver tooregister med StorSimple Manager-tjänsten.
+> Nyckeln för tjänstregistrering används för att registrera alla enheter som behöver registreras med din StorSimple Manager-tjänst.
 > 
 > 
 

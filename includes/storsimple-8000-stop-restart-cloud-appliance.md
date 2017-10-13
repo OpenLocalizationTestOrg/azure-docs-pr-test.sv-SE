@@ -1,9 +1,9 @@
-#### <a name="toostop-and-start-a-cloud-appliance"></a>toostop och starta en moln-installation
+#### <a name="to-stop-and-start-a-cloud-appliance"></a>Så här stoppar och startar du en molninstallation
 
-1. toostop en moln-enhet går toohello VM för din enhet i molnet.
+1. Om du vill stoppa en molninstallation går du till den virtuella datorn för molninstallationen.
     ![Virtuell dator i StorSimple Cloud Appliance](./media/storsimple-8000-stop-restart-cloud-appliance/sca-stop-restart1.png)
 
-2. Hello kommandofältet klickar du på **stoppa**.
+2. Klicka på **Stoppa** i kommandofältet.
 
     ![Virtuell dator i StorSimple Cloud Appliance](./media/storsimple-8000-stop-restart-cloud-appliance/sca-stop-restart2.png)
 
@@ -11,27 +11,27 @@
 
     ![Virtuell dator i StorSimple Cloud Appliance](./media/storsimple-8000-stop-restart-cloud-appliance/sca-stop-restart3.png)
 
-4. När du stoppar en virtuell dator avallokeras den. Hello molnet installation stoppas dess status är **Deallocating**. När hello molnet installation har avbrutits dess status är **Stoppad (frigjord)**.
+4. När du stoppar en virtuell dator avallokeras den. När molninstallationen håller på att stoppas visas statusen **Frigör**. När molninstallationen har stoppats visas statusen **Stoppad (frigjord)**.
 
     ![Virtuell dator i StorSimple Cloud Appliance](./media/storsimple-8000-stop-restart-cloud-appliance/sca-stop-restart4.png)
 
-5. När en virtuell dator har stoppats, klickar du på **starta** (knappen blir tillgänglig) toostart hello VM. När hello molnet enheten har startats dess status är **igång**.
+5. När en virtuell dator har stoppats startar du den genom att klicka på **Starta** (knappen blir tillgänglig). När molninstallationen har startats visas statusen **Startad**.
 
     ![Virtuell dator i StorSimple Cloud Appliance](./media/storsimple-8000-stop-restart-cloud-appliance/sca-stop-restart5.png)
 
-Använd följande cmdlet: ar toostop hello och starta en moln-installation.
+Du kan stoppa och starta en molninstallation med följande cmdlets.
 
 `Stop-AzureVM -ServiceName "MyStorSimpleservice1" -Name "MyStorSimpleDevice"`
 
 `Start-AzureVM -ServiceName "MyStorSimpleservice1" -Name "MyStorSimpleDevice"`
 
-#### <a name="toorestart-a-cloud-appliance"></a>toorestart en moln-installation
+#### <a name="to-restart-a-cloud-appliance"></a>Så här startar du om en molninstallation
 
-toorestart en moln-enhet går toohello VM för din enhet i molnet. Hello kommandofältet klickar du på **starta om**. När du uppmanas bekräfta hello omstart. När hello molnet installation är klar för du toouse, är dess status **kör**.
+Om du vill starta om en molninstallation går du till den virtuella datorn för molninstallationen. Klicka på **Starta om** i kommandofältet. Bekräfta omstarten när du uppmanas att göra det. När molninstallationen är redo att användas visas statusen **Körs**.
 
 ![Virtuell dator i StorSimple Cloud Appliance](./media/storsimple-8000-stop-restart-cloud-appliance/sca-stop-restart6.png)
 
-Använd hello följande cmdlet toorestart en moln-installation.
+Du kan starta om en molninstallation med följande cmdlet.
 
 `Restart-AzureVM -ServiceName "MyStorSimpleservice1" -Name "MyStorSimpleDevice"`
 

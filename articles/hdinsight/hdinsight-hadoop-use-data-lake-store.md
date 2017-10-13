@@ -1,6 +1,6 @@
 ---
-title: aaaUse Data Lake Store med Hadoop i Azure HDInsight | Microsoft Docs
-description: "Lär dig hur tooquery data från Azure Data Lake Store och toostore resultatet av dina analyser."
+title: "Använda Data Lake Store med Hadoop i Azure HDInsight | Microsoft Docs"
+description: "Lär dig mer om hur du frågar efter data från Azure Data Lake Store och lagrar resultatet av dina analyser."
 keywords: blob storage,hdfs,structured data,unstructured data, data lake store
 services: hdinsight,storage
 documentationcenter: 
@@ -16,17 +16,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/03/2017
 ms.author: jgao
-ms.openlocfilehash: 89633218a37a2fe05043e05d61199dcc0252d7f0
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 28a836aff65636ef0031ac63f633d746436d7e4a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-data-lake-store-with-azure-hdinsight-clusters"></a>Använda Data Lake Store med Azure HDInsight-kluster
 
-tooanalyze data i HDInsight-kluster, du kan lagra data hello antingen i [Azure Storage](../storage/common/storage-introduction.md), [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md), eller båda. Båda lagringsalternativ aktivera toosafely ta bort HDInsight-kluster som används för beräkning utan att förlora användardata.
+När du ska analysera data i HDInsight-kluster kan du lagra data i antingen [Azure Storage](../storage/common/storage-introduction.md), [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md) eller bådadera. Båda lagringsalternativen låter dig ta bort HDInsight-kluster som används för beräkning utan att förlora användardata.
 
-I den här artikeln får du lära dig hur Data Lake Store fungerar med HDInsight-kluster. toolearn hur Azure Storage fungerar med HDInsight-kluster finns i [använda Azure Storage med Azure HDInsight-kluster](hdinsight-hadoop-use-blob-storage.md). Mer information om hur du skapar ett HDInsight-kluster finns i [Create Hadoop clusters in HDInsight](hdinsight-hadoop-provision-linux-clusters.md) (Skapa Hadoop-kluster i HDInsight).
+I den här artikeln får du lära dig hur Data Lake Store fungerar med HDInsight-kluster. Om du vill lära dig hur Azure Storage fungerar med HDInsight-kluster kan du läsa [Use Azure Storage with Azure HDInsight clusters](hdinsight-hadoop-use-blob-storage.md) (Använda Azure Storage med Azure HDInsight-kluster). Mer information om hur du skapar ett HDInsight-kluster finns i [Create Hadoop clusters in HDInsight](hdinsight-hadoop-provision-linux-clusters.md) (Skapa Hadoop-kluster i HDInsight).
 
 > [!NOTE]
 > Data Lake Store alltid är tillgängligt via en säker kanal så det finns inget `adls`-filsystemsschemanamn. Du använder alltid `adl`.
@@ -35,59 +35,59 @@ I den här artikeln får du lära dig hur Data Lake Store fungerar med HDInsight
 
 ## <a name="availabilities-for-hdinsight-clusters"></a>Tillgänglighet för HDInsight-kluster
 
-Hadoop stöder begreppet standardfilsystem hello. Hej standardfilsystemet kräver ett standardschema och utfärdare. Det kan också vara används tooresolve relativa sökvägar. Under skapandeprocessen hello HDInsight-kluster, kan du ange en blob-behållare i Azure Storage som hello standardfilsystem eller med HDInsight 3.5 och nyare versioner, kan du välja Azure Storage eller Azure Data Lake Store som hello standard filer system med en få undantag. 
+Hadoop stöder begreppet standardfilsystem. Standardfilsystemet kräver att ett standardschema och en utfärdare används. Det kan också användas för att matcha relativa sökvägar. Du kan ange en blobbehållare i Azure Storage som standardfilsystem när du skapar HDInsight-kluster. Med HDInsight 3.5 eller senare kan du välja antingen Azure Storage eller Azure Data Lake Store som standardfilsystem, med några undantag. 
 
 HDInsight-kluster kan använda Data Lake Store på två sätt:
 
-* Som standard hello
+* Som standardlagring
 * Som ytterligare lagringsutrymme med Azure Storage Blob som standardlagringsutrymme.
 
-Från och med nu endast en del av hello HDInsight klusterstöd typer-versioner med Data Lake Store som standardlagring och ytterligare storage-konton:
+Från och med nu har endast vissa typer/versioner av HDInsight-kluster stöd för Data Lake Store som konton för standardlagring och ytterligare lagring:
 
 | Typ av HDInsight-kluster | Data Lake Store som standardlagring | Data Lake Store som ytterligare lagring| Anteckningar |
 |------------------------|------------------------------------|---------------------------------------|------|
 | HDInsight version 3.6 | Ja | Ja | |
-| HDInsight version 3.5 | Ja | Ja | Med undantag för hello av HBase|
+| HDInsight version 3.5 | Ja | Ja | Förutom HBase|
 | HDInsight version 3.4 | Nej | Ja | |
 | HDInsight version 3.3 | Nej | Nej | |
 | HDInsight version 3.2 | Nej | Ja | |
 | HDInsight Premium (nivå)| Nej | Nej | |
-| Storm | | |Du kan använda Data Lake Store toowrite data från en Storm-topologi. Du kan också använda Data Lake Store för referensdata som sedan kan läsas av en Storm-topologi.|
+| Storm | | |Du kan använda Data Lake Store till att skriva data från en Storm-topologi. Du kan också använda Data Lake Store för referensdata som sedan kan läsas av en Storm-topologi.|
 
-Med Data Lake Store som ett ytterligare storage-konto inte påverka prestanda eller hello möjlighet tooread eller skriva tooAzure lagring från hello kluster.
+När du använder Data Lake Store som ett ytterligare lagringskonto påverkas inte prestanda eller möjligheten att läsa eller skriva till Azure-lagring från klustret.
 
 
 ## <a name="use-data-lake-store-as-default-storage"></a>Använda Data Lake Store som standardlagring
 
-När HDInsight har distribuerats med Data Lake Store som standardlagring, lagras hello kluster-relaterade filer i Data Lake Store i hello följande plats:
+När HDInsight distribueras med Azure Data Lake Store som standardlagringsutrymme lagras klusterrelaterade filer i Data Lake Store på följande plats:
 
     adl://mydatalakestore/<cluster_root_path>/
 
-där `<cluster_root_path>` är hello namnet på en mapp som du skapar i Data Lake Store. Genom att ange en rotsökväg för varje kluster kan du använda hello samma Data Lake Store-konto för flera kluster. Så du kan ha en konfiguration enligt följande:
+där `<cluster_root_path>` är namnet på en mapp du skapar i Data Lake Store. Du kan använda samma Data Lake Store-konto för flera kluster genom att ange en rotsökväg för varje kluster. Så du kan ha en konfiguration enligt följande:
 
-* Cluster1 kan använda hello sökväg`adl://mydatalakestore/cluster1storage`
-* Cluster2 kan använda hello sökväg`adl://mydatalakestore/cluster2storage`
+* Cluster1 kan använda sökvägen `adl://mydatalakestore/cluster1storage`
+* Cluster2 kan använda sökvägen `adl://mydatalakestore/cluster2storage`
 
-Meddelande både hello kluster Använd hello samma Data Lake Store-konto **mydatalakestore**. Varje kluster har åtkomst tooits äger rot filsystem i Data Lake Store. hello Azure portal distributionsupplevelse särskilt efterfrågar toouse ett mappnamn som **/clusters/\<klusternamn >** för hello rotsökvägen.
+Observera att samma Data Lake Store-konto används för båda klustren **mydatalakestore**. Varje kluster har åtkomst till sitt egen rotfilsystem i Data Lake Store. I synnerhet i Azure-portaldistributionen uppmanas du att använda ett mappnamn som **/kluster/\<klusternamn >** för rotsökvägen.
 
-toobe kan toouse ett Data Lake Store som standardlagring, måste du bevilja hello service principal åtkomst toohello följande sökvägar:
+Om du vill kunna använda Data Lake Store som standardlagring måste du ge tjänstens huvudnamn åtkomst till följande sökvägar:
 
-- hello roten för Data Lake Store-konto.  Till exempel: adl://mydatalakestore/.
-- hello mapp för alla mappar för klustret.  Till exempel: adl://mydatalakestore/clusters.
-- hello mapp för hello klustret.  Till exempel: adl://mydatalakestore/clusters/cluster1storage.
+- Roten för Data Lake Store-kontot.  Till exempel: adl://mydatalakestore/.
+- Mappen för alla klustermappar.  Till exempel: adl://mydatalakestore/clusters.
+- Mappen för klustret.  Till exempel: adl://mydatalakestore/clusters/cluster1storage.
 
 Mer information om att skapa tjänstens huvudnamn och bevilja åtkomst finns i [Konfigurera åtkomst till Data Lake Store](#configure-data-lake-store-access).
 
 
 ## <a name="use-data-lake-store-as-additional-storage"></a>Använda Data Lake Store som ytterligare lagring
 
-Du kan använda Data Lake Store som ytterligare lagringsutrymme för hello-kluster. I sådana fall kan hello standard klusterlagringen vara en Azure Storage Blob eller ett Data Lake Store-konto. Om du använder HDInsight jobb mot hello data som lagras i Data Lake Store som ytterligare lagringsutrymme måste du använda hello fullständig sökväg toohello filer. Exempel:
+Du kan även använda Data Lake Store som ytterligare lagringsutrymme för klustret. I sådana fall kan standardlagringsutrymmet för klustret vara ett konto för antingen Azure Storage Blob eller Data Lake Store. Om du kör HDInsight-jobb mot data som finns lagrade i Data Lake Store som ytterligare lagringsutrymme måste du använda den fullständiga sökvägen till filerna. Exempel:
 
     adl://mydatalakestore.azuredatalakestore.net/<file_path>
 
-Observera att det finns inga **cluster_root_path** i nu hello-URL. Det beror på att Data Lake Store inte är en standardlagring i det här fallet så behöver du toodo hello sökvägen toohello filer.
+Observera att det inte finns någon **cluster_root_path** i URL-adressen nu. Det beror på att Data Lake Store inte är ett standardlagringsutrymme i det här fallet, så allt du behöver göra är att ange sökvägen till filerna.
 
-toobe kan toouse ett Data Lake Store som ytterligare lagringsutrymme, behöver du bara toogrant hello service principal åtkomst toohello sökvägar där filerna lagras.  Exempel:
+För att kunna använda ett Data Lake Store som ytterligare lagringsutrymme behöver du bara ge tjänstens huvudnamn åtkomst till de sökvägar där filerna lagras.  Exempel:
 
     adl://mydatalakestore.azuredatalakestore.net/<file_path>
 
@@ -96,39 +96,39 @@ Mer information om att skapa tjänstens huvudnamn och bevilja åtkomst finns i [
 
 ## <a name="use-more-than-one-data-lake-store-accounts"></a>Använda fler än ett Data Lake Store-konto
 
-Lägger till ett Data Lake Store-konto som ytterligare och lägga till fler än en Data Lake Store erhålla konton genom att ge behörighet för hello HDInsight-kluster på data i en eller flera datasjölagerkonton. Läs mer i [Konfigurera åtkomst till Data Lake Store](#configure-data-lake-store-access).
+Du kan lägga till ett Data Lake Store-konto som ytterligare lagring och lägga till fler än ett Data Lake Store-konto genom att ge HDInsight-klustret behörighet till data i ett eller flera Data Lake Store-konton. Läs mer i [Konfigurera åtkomst till Data Lake Store](#configure-data-lake-store-access).
 
 ## <a name="configure-data-lake-store-access"></a>Konfigurera åtkomst till Data Lake Store
 
-Du måste ha en Azure Active directory (AD Azure) tjänstens huvudnamn tooconfigure Data Lake store-åtkomst från ditt HDInsight-kluster. Det är bara Azure AD-administratörer som kan vara tjänstens huvudnamn. hello tjänstens huvudnamn måste skapas med ett certifikat. Mer information finns i [Konfigurera åtkomst till Data Lake Store](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md#configure-data-lake-store-access) och [Create service principal with self-signed-certificate](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-self-signed-certificate) (Skapa tjänstens huvudnamn med självsignerat certifikat).
+Om du vill konfigurera åtkomst till Data Lake Store från ditt HDInsight-kluster måste tjänstens huvudnamn komma från Azure AD (Active Directory). Det är bara Azure AD-administratörer som kan vara tjänstens huvudnamn. Tjänstens huvudnamn måste skapas med ett certifikat. Mer information finns i [Konfigurera åtkomst till Data Lake Store](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md#configure-data-lake-store-access) och [Create service principal with self-signed-certificate](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-self-signed-certificate) (Skapa tjänstens huvudnamn med självsignerat certifikat).
 
 > [!NOTE]
-> Om du ska toouse Azure Data Lake Store som ytterligare lagringsutrymme för HDInsight-kluster, rekommenderar vi att du gör detta när du skapar klustret hello som beskrivs i den här artikeln. Lägga till Azure Data Lake Store som ytterligare lagringsutrymme tooan är befintligt HDInsight-kluster en komplicerad process och felbenägna tooerrors.
+> Om du ska använda Azure Data Lake Store som ytterligare lagringsutrymme för HDInsight-kluster rekommenderar vi starkt att du gör detta när du skapar klustret, enligt beskrivningen i den här artikeln. Att lägga till Azure Data Lake Store som ytterligare lagringsutrymme för ett befintligt HDInsight-kluster är en komplicerad process där det är lätt att göra fel.
 >
 
-## <a name="access-files-from-hello-cluster"></a>Komma åt filer från hello kluster
+## <a name="access-files-from-the-cluster"></a>Åtkomst till filer från klustret
 
-Det finns flera sätt som du kan komma åt hello filer i Data Lake Store från ett HDInsight-kluster.
+Du kan komma åt filer i Data Lake Store från ett HDInsight-kluster på flera olika sätt.
 
-* **Hello fullständigt kvalificerade namnet**. Med den här metoden ger du hello fullständig sökväg toohello filen som du vill tooaccess.
+* **Via det fullständiga namnet**. Med den här metoden kan du ange den fullständiga sökvägen till filen som du vill öppna.
 
         adl://mydatalakestore.azuredatalakestore.net/<cluster_root_path>/<file_path>
 
-* **Formatet för hello kortare sökväg**. Med den här metoden ersätts hello sökväg in toohello kluster roten adl: / / /. Så i hello-exemplet ovan kan du ersätta `adl://mydatalakestore.azuredatalakestore.net/<cluster_root_path>/` med `adl:///`.
+* **Via det förkortade sökvägsformatet**. Med den här metoden ersätts sökvägen fram till klusterroten med adl: ///. Så i exemplet ovan kan du ersätta `adl://mydatalakestore.azuredatalakestore.net/<cluster_root_path>/` med `adl:///`.
 
         adl:///<file path>
 
-* **Med hjälp av hello relativa sökvägen**. Med den här metoden du bara ange hello relativ sökväg toohello filen som du vill tooaccess. Om exempelvis hello fullständig sökväg toohello filen är:
+* **Med den relativa sökvägen**. Med den här metoden anger du bara den relativa sökvägen till den fil som du vill öppna. Till exempel, om den fullständiga sökvägen till filen är:
 
         adl://mydatalakestore.azuredatalakestore.net/<cluster_root_path>/example/data/sample.log
 
-    Du kan komma åt hello samma sample.log-fil med hjälp av den här relativ sökväg istället.
+    Du kan komma åt samma sample.log-fil via den här relativa sökvägen i stället.
 
         /example/data/sample.log
 
-## <a name="create-hdinsight-clusters-with-access-toodata-lake-store"></a>Skapa HDInsight-kluster med att komma åt tooData Datasjölager
+## <a name="create-hdinsight-clusters-with-access-to-data-lake-store"></a>Skapa HDInsight-kluster med åtkomst till Data Lake Store
 
-Använd hello efter länkar till detaljerade instruktioner om hur toocreate HDInsight-kluster med åt tooData Lake Store.
+Använd länkarna nedan om du vill ha mer detaljerade instruktioner om hur du skapar HDInsight-kluster med åtkomst till Data Lake Store.
 
 * [Använda portalen](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)
 * [Använda PowerShell (med Data Lake Store som standardlagringsutrymme)](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
@@ -137,16 +137,16 @@ Använd hello efter länkar till detaljerade instruktioner om hur toocreate HDIn
 
 
 ## <a name="next-steps"></a>Nästa steg
-I den här artikeln har du lärt dig hur toouse HDFS-kompatibla Azure Data Lake Store med HDInsight. Detta gör att du toobuild skalbara, långsiktiga, arkivering lösningar för datainsamling och använda HDInsight toounlock hello information i hello lagrade strukturerade och Ostrukturerade data.
+I den här artikeln fick du lära dig hur du använder det HDFS-kompatibla Azure Data Lake Storage med HDInsight. Du kan skapa skalbara, långsiktiga lösningar för arkivering av insamlade data samt HDInsight för att få tillgång till informationen i lagrade strukturerade och ostrukturerade data.
 
 Mer information finns i:
 
 * [Kom igång med Azure HDInsight][hdinsight-get-started]
 * [Kom igång med Azure Data Lake Store](../data-lake-store/data-lake-store-get-started-portal.md)
-* [Ladda upp data tooHDInsight][hdinsight-upload-data]
+* [Överföra data till HDInsight][hdinsight-upload-data]
 * [Använda Hive med HDInsight][hdinsight-use-hive]
 * [Använda Pig med HDInsight][hdinsight-use-pig]
-* [Använda Azure Storage signaturer för delad åtkomst toorestrict åtkomst toodata med HDInsight][hdinsight-use-sas]
+* [Använda signaturer för delad åtkomst i Azure Storage för att begränsa åtkomsten till data med HDInsight][hdinsight-use-sas]
 
 [hdinsight-use-sas]: hdinsight-storage-sharedaccesssignature-permissions.md
 [powershell-install]: /powershell/azureps-cmdlets-docs

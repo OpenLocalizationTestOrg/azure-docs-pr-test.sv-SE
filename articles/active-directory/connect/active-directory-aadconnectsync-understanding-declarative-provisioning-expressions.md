@@ -1,6 +1,6 @@
 ---
 title: "Azure AD Connect: Uttryck för deklarativ etablering | Microsoft Docs"
-description: "Förklarar hello-uttryck för deklarativ etablering."
+description: "Beskrivs uttryck för deklarativ etablering."
 services: active-directory
 documentationcenter: 
 author: andkjell
@@ -14,59 +14,59 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 516bcf1991c608d33aefc19551254d8b2bfc024f
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: e3a03a97b10e04fb85261620879b2102e1db8465
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Azure AD Connect-synkronisering: Förstå uttryck för deklarativ etablering
-Azure AD Connect-synkronisering bygger på deklarativ etablering introducerades i Forefront Identity Manager 2010. Det gör att du tooimplement affärslogik fullständig identity integration utan hello måste toowrite kompilerad kod.
+Azure AD Connect-synkronisering bygger på deklarativ etablering introducerades i Forefront Identity Manager 2010. På så sätt kan du implementera affärslogik fullständig identity integration utan att behöva skriva koden.
 
-En väsentlig del av deklarativ etablering är hello Uttrycksspråk som används i attributflöden. hello-språk som används är en delmängd av Microsoft® Visual Basic for Applications (VBA). Det här språket används i Microsoft Office och användarna har erfarenhet av VBScript tolkar även. hello deklarativ etablering Expression Language endast med hjälp av funktioner och är inte ett strukturerade språk. Det finns inga metoder eller instruktioner. Funktioner i stället är kapslade tooexpress programmet flödet.
+En väsentlig del av deklarativ etablering är språket för uttryck som används i attributflöden. Språket är en delmängd av Microsoft® Visual Basic for Applications (VBA). Det här språket används i Microsoft Office och användarna har erfarenhet av VBScript tolkar även. Deklarativ etablering Uttrycksspråk endast med hjälp av funktioner och är inte ett strukturerade språk. Det finns inga metoder eller instruktioner. Funktioner kapslas i stället för snabb programflöde.
 
-Mer information finns i [Välkommen toohello Visual Basic för program Språkreferens för Office 2013](https://msdn.microsoft.com/library/gg264383.aspx).
+Mer information finns i [Välkommen till Visual Basic for Applications Språkreferens för Office 2013](https://msdn.microsoft.com/library/gg264383.aspx).
 
-hello attribut har strikt typkontroll. En funktion accepterar endast attribut för hello rätt typ. Det är också skiftlägeskänsligt. Både funktionsnamnen och attributnamn måste ha rätt skiftläge eller ett felmeddelande.
+Attribut har strikt typkontroll. En funktion accepterar endast attribut av typen korrekt. Det är också skiftlägeskänsligt. Både funktionsnamnen och attributnamn måste ha rätt skiftläge eller ett felmeddelande.
 
 ## <a name="language-definitions-and-identifiers"></a>Språk definitioner och identifierare
 * Funktioner har ett namn följt av argument inom parentes: FunctionName (argumentet 1, argumentet N).
 * Attribut som identifieras av hakparenteser: [attributeName]
 * Parametrar som identifieras av procenttecken: % ParameterName %
 * Strängkonstanter omges av citattecken: till exempel ”Contoso” (Obs: måste använda enkla citattecken ”” och inte typografiska citattecken ””)
-* Numeriska värden anges utan citattecken och förväntade toobe decimal. Hexadecimala värden föregås av & H. Till exempel 98052 & HFF
+* Numeriska värden anges utan citattecken och förväntas vara decimal. Hexadecimala värden föregås av & H. Till exempel 98052 & HFF
 * Booleska värden uttrycks med konstanter: SANT, FALSKT.
 * Inbyggda konstanter och literaler uttrycks med endast deras namn: NULL, CRLF, IgnoreThisFlow
 
 ### <a name="functions"></a>Funktioner
-Deklarativ etablering använder många funktioner tooenable hello möjligheten tootransform attributvärden. Dessa funktioner kan kapslas så hello resultatet från en funktion som du har angett tooanother funktion.
+Deklarativ etablering använder många funktioner för att aktivera möjligheten att omvandla attributvärden. Dessa funktioner kan kapslas så resultatet från en funktion som skickas till en annan funktion.
 
 `Function1(Function2(Function3()))`
 
-hello fullständig lista över funktioner finns i hello [fungerar referens](active-directory-aadconnectsync-functions-reference.md).
+En fullständig lista över funktioner finns i den [fungerar referens](active-directory-aadconnectsync-functions-reference.md).
 
 ### <a name="parameters"></a>Parametrar
-En parameter har definierats av en koppling eller av en administratör med hjälp av PowerShell. Parametrarna innehåller vanligtvis värden som skiljer sig från system toosystem, till exempel hello namnet på hello domänanvändare hello finns i. Dessa parametrar kan användas i attributflöden.
+En parameter har definierats av en koppling eller av en administratör med hjälp av PowerShell. Parametrar som vanligtvis innehåller värden som skiljer sig från ett system till, till exempel namnet på domänen användaren finns i. Dessa parametrar kan användas i attributflöden.
 
-hello Active Directory-kopplingen angivna hello följande parametrar för regler för inkommande synkronisering:
+Active Directory-koppling avses regler för inkommande synkronisering följande parametrar:
 
 | Parameternamn | Kommentar |
 | --- | --- |
-| Domain.Netbios |NetBIOS-format i hello-domän som importerats, till exempel FABRIKAMSALES |
-| Domain.FQDN |FQDN-format i hello-domän som importerats, till exempel sales.fabrikam.com |
-| Domain.LDAP |LDAP-format för hello domän som importerats, till exempel DC = försäljning, DC = fabrikam, DC = com |
-| Forest.Netbios |NetBIOS-format för hello skogsnamnet som importerats, till exempel FABRIKAMCORP |
-| Forest.FQDN |Hello skogsnamnet som importerats, till exempel fabrikam.com FQDN-format |
-| Forest.LDAP |LDAP-format för hello skogsnamnet som importerats, till exempel DC = fabrikam, DC = com |
+| Domain.Netbios |NetBIOS-format för den domän som för närvarande importeras, till exempel FABRIKAMSALES |
+| Domain.FQDN |FQDN-format i domänen som importerats, till exempel sales.fabrikam.com |
+| Domain.LDAP |LDAP-format för den domän som för närvarande importeras, till exempel DC = försäljning, DC = fabrikam, DC = com |
+| Forest.Netbios |Skogens namn för närvarande importeras, till exempel FABRIKAMCORP NetBIOS-format |
+| Forest.FQDN |Skogens namn för närvarande importeras, till exempel fabrikam.com FQDN-format |
+| Forest.LDAP |LDAP-format för skogsnamnet som för närvarande importeras, till exempel DC = fabrikam, DC = com |
 
-hello system ger hello följande parameter, vilket används tooget hello identifierare för hello Connector körs:  
+Systemet innehåller följande parameter som används för att hämta ID för koppling som för närvarande körs:  
 `Connector.ID`
 
-Här är ett exempel som fyller på hello metaversum attributdomän med hello netbios-namnet på hello domän där hello användaren finns:  
+Här är ett exempel som fyller på domänen metaversum-attribut med netbios-namnet på den domän där användaren:  
 `domain` <- `%Domain.Netbios%`
 
 ### <a name="operators"></a>Operatorer
-Du kan använda hello följande operatorer:
+Du kan använda följande operatorer:
 
 * **Jämförelse**: <, < =, <>, =, >, > =
 * **Matematik**: +, -, \*, -
@@ -74,20 +74,20 @@ Du kan använda hello följande operatorer:
 * **Logisk**: & & (och). (eller)
 * **Utvärderingsordningen**:)
 
-Operatörer utvärderade vänstra tooright och hello har samma prioritet för utvärdering. Det vill säga hello \* (multiplikator) utvärderas inte innan - (subtraktion). 2\*(5 + 3) inte är hello samma som 2\*5 + 3. hello hakparenteser () används toochange hello utvärdering ordning när lämnas tooright utvärderingsordning inte är lämpligt.
+Operatorer utvärderas vänster till höger och har samma prioritet för utvärdering. Det vill säga den \* (multiplikator) utvärderas inte innan - (subtraktion). 2\*(5 + 3) inte är samma som 2\*5 + 3. Hakparenteser () används för att ändra utvärderingsordningen när vänster till höger utvärderingsordning inte är lämpligt.
 
 ## <a name="multi-valued-attributes"></a>Flera värden attribut
-hello funktioner fungerar med både enstaka och flera värden. För flera värden attribut hello-funktionen fungerar över varje värde och tillämpar hello samma fungera tooevery värde.
+Funktionerna fungerar med både enstaka och flera värden. Funktionen fungerar över varje värde för flera värden attribut och gäller samma funktion för varje värde.
 
 Exempel:  
-`Trim([proxyAddresses])`Göra en Trimning av varje värde i hello proxyAddress attributet.  
-`Word([proxyAddresses],1,"@") & "@contoso.com"`För varje värde med en @-sign, Ersätt hello domän med @contoso.com.  
-`IIF(InStr([proxyAddresses],"SIP:")=1,NULL,[proxyAddresses])`Leta efter hello SIP-adress och ta bort den från hello värden.
+`Trim([proxyAddresses])`Göra en Trimning av varje värde i attributet proxyAddress.  
+`Word([proxyAddresses],1,"@") & "@contoso.com"`För varje värde med en @-sign, Ersätt den med @contoso.com.  
+`IIF(InStr([proxyAddresses],"SIP:")=1,NULL,[proxyAddresses])`Leta efter SIP-adress och ta bort den från värden.
 
 ## <a name="next-steps"></a>Nästa steg
-* Läs mer om hello Konfigurationsmodell i [förstå deklarativ etablering](active-directory-aadconnectsync-understanding-declarative-provisioning.md).
-* Se hur deklarativ etablering är att använda out-of-box i [förstå hello standardkonfigurationen](active-directory-aadconnectsync-understanding-default-configuration.md).
-* Se hur toomake en praktisk ändras med hjälp av deklarativ etablering i [hur toomake en ändring toohello standard configuration](active-directory-aadconnectsync-change-the-configuration.md).
+* Läs mer om Konfigurationsmodell i [förstå deklarativ etablering](active-directory-aadconnectsync-understanding-declarative-provisioning.md).
+* Se hur deklarativ etablering är att använda out-of-box i [förstå standardkonfigurationen](active-directory-aadconnectsync-understanding-default-configuration.md).
+* Se hur du ändrar något praktiska med deklarativ etablering i [hur du gör en ändring i standardkonfigurationen](active-directory-aadconnectsync-change-the-configuration.md).
 
 **Översiktsavsnitt**
 

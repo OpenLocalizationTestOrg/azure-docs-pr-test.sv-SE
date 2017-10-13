@@ -1,6 +1,6 @@
 ---
-title: aaaIIS autentisering och Azure MFA-Server | Microsoft Docs
-description: "Det här är hello Azure Multi-Factor authentication sida som hjälper distribuerar IIS-autentisering och Azure Multi-Factor Authentication-servern."
+title: IIS-autentisering och Azure MFA Server | Microsoft Docs
+description: "Det här är sidan om Azure Multi-Factor Authentication som hjälper dig att distribuera IIS-autentisering och Azure Multi-Factor Authentication Server."
 services: multi-factor-authentication
 documentationcenter: 
 author: kgremban
@@ -15,64 +15,64 @@ ms.date: 06/16/2017
 ms.author: kgremban
 ms.reviewer: yossib
 ms.custom: H1Hack27Feb2017,it-pro
-ms.openlocfilehash: 74bd39c2644e2bca0880baea3824cad4c9215111
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: ab6f9110dccd3cfc15092f535650e8d8cb1af13c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-iis-web-apps"></a>Konfigurera Azure Multi-Factor Authentication Server för IIS-webbappar
 
-Använd hello IIS-autentisering avsnitt i hello Azure Multi-Factor Authentication (MFA) Server tooenable och konfigurera IIS-autentisering för integrering med Microsoft IIS-webbprogram. hello Azure MFA-servern installerar ett plugin-program som kan filtrera begäranden som gjorts toohello IIS web server tooadd Azure Multi-Factor Authentication. hello IIS plugin-program har stöd för formulärbaserad autentisering och integrerad Windows-HTTP-autentisering. Betrodda IP-adresser kan också vara konfigurerade tooexempt interna IP-adresser från tvåfaktorsautentisering.
+Via IIS-autentisering på Azure Multi-Factor Authentication-servern kan du aktivera och konfigurera IIS-autentisering för integrering med Microsoft IIS-webbprogram. Azure MFA Server installerar ett plugin-program som kan filtrera begäranden som görs till IIS-webbservern för att lägga till Azure Multi-Factor Authentication. IIS-plugin-programmet har stöd för formulärbaserad autentisering och integrerad Windows-HTTP-autentisering. Betrodda IP-adresser kan även konfigureras att undanta interna IP-adresser från tvåfaktorsautentisering.
 
 ![IIS-autentisering](./media/multi-factor-authentication-get-started-server-iis/iis.png)
 
 ## <a name="using-form-based-iis-authentication-with-azure-multi-factor-authentication-server"></a>Använda formulärbaserad IIS-autentisering med Azure Multi-Factor Authentication Server
-toosecure en IIS-webbprogram som använder formulärbaserad autentisering, installera hello Azure Multi-Factor Authentication-servern på hello IIS-webbserver och konfigurera hello Server per hello nedan:
+Om du ska skydda en IIS-webbapp som använder formulärbaserad autentisering installerar du Azure Multi-Factor Authentication Server på IIS-webbservern och konfigurerar servern genom att följa stegen nedan:
 
-1. Klicka på hello IIS-autentisering ikonen hello vänstra menyn i hello Azure Multi-Factor Authentication-servern.
-2. Klicka på hello **formulärbaserad** fliken.
+1. Klicka på ikonen för IIS-autentisering på den vänstra menyn i Azure Multi-Factor Authentication Server.
+2. Klicka på fliken **Formulärbaserad**.
 3. Klicka på **Lägg till**.
-4. toodetect användarnamn, lösenord och domän variabler automatiskt, ange hello inloggnings-URL (t.ex. https://localhost/contoso/auth/login.aspx) i dialogrutan för hello Konfigurera automatiskt formulärbaserad webbplats och klicka på **OK**.
-5. Kontrollera hello **Multi-Factor Authentication-användarmatchning** om alla användare har eller importeras till hello Server och ämne toomulti-factor-autentisering. Om ett stort antal användare inte har ännu importerats till hello Server och/eller undantas från Multi-Factor authentication, lämnar du hello kryssrutan avmarkerad.
-6. Om hello sidvariablerna inte kan identifieras automatiskt, klickar du på **ange manuellt** hello Konfigurera automatiskt formulärbaserad webbplats i dialogrutan.
-7. Hello Lägg till formulärbaserad webbplats i dialogrutan Ange hello URL toohello inloggningssidan i hello överförings-URL för fältet och ange ett programnamn (valfritt). hello programnamn i Azure Multi-Factor Authentication-rapporter och kan visas i autentiseringsmeddelanden SMS eller Mobilapp.
-8. Välj hello rätt format för förfrågan. Detta är inställt för**POST eller GET** för de flesta webbprogram.
-9. Ange hello variabel för användarnamn, lösenordsvariabeln och domän variabel (om det visas på inloggningssidan för hello). toofind hello namnen på hello indata rutor, navigera toohello inloggningssidan i en webbläsare, högerklicka på hello sida och välj **Visa källa**.
-10. Kontrollera hello **Azure Multi-Factor Authentication-användarmatchning** om alla användare har eller importeras till hello Server och ämne toomulti-factor-autentisering. Om ett stort antal användare inte har ännu importerats till hello Server och/eller undantas från Multi-Factor authentication, lämnar du hello kryssrutan avmarkerad.
-11. Klicka på **Avancerat** tooreview avancerade inställningar, inklusive:
+4. Om du vill identifiera användarnamn, lösenord och domänvariabler automatiskt anger du inloggnings-URL:en (t.ex. https://localhost/contoso/auth/login.aspx) i dialogrutan Konfigurera formulärbaserad webbplats automatiskt och klickar på **OK**.
+5. Markera rutan om att **Multi-Factor Authentication-användarmatchning krävs** om alla användare har importerats eller ska importeras till servern och om multifaktorautentisering används. Om ett stort antal användare inte har importerats till servern än, eller om de ska undantas från multifaktorautentisering, lämnar du rutan avmarkerad.
+6. Om sidvariablerna inte kan identifieras automatiskt klickar du på **Ange manuellt** i dialogrutan Konfigurera formulärbaserad webbplats automatiskt.
+7. I dialogrutan Lägg till formulärbaserad webbplats anger du URL:en till inloggningssidan i fältet Skicka URL och anger ett programnamn (valfritt). Programnamnet visas i Azure Multi-Factor Authentication-rapporter och kan visas i autentiseringsmeddelanden i SMS- eller mobilappar.
+8. Välj rätt format för begäran. Detta är inställt på **POST eller GET** för de flesta webbprogram.
+9. Ange variabeln Användarnamn, Lösenord och Domän (om den visas på inloggningssidan). Du kan behöva gå till inloggningssidan i en webbläsare, högerklicka på sidan och välja **Visa källa** för att hitta namnen på inmatningsrutorna.
+10. Markera rutan om att **Multi-Factor Authentication-användarmatchning krävs** om alla användare har importerats eller ska importeras till servern och om multifaktorautentisering används. Om ett stort antal användare inte har importerats till servern än, eller om de ska undantas från multifaktorautentisering, lämnar du rutan avmarkerad.
+11. Klicka på **Avancerat** för att granska avancerade inställningar, inklusive:
 
   - Välj en anpassad nekandeväxlingsfil
-  - Cache lyckade autentiseringar toohello webbplats för en viss tidsperiod med hjälp av cookies
-  - Välj om tooauthenticate hello primära autentiseringsuppgifter mot en Windows-domän, LDAP-katalogen. eller RADIUS-servern.
+  - Cachelagra lyckade autentiseringar på webbplatsen under en period med hjälp av cookies
+  - Välj om du vill autentisera primära autentiseringsuppgifter mot en Windows-domän, LDAP-katalogen eller RADIUS-servern.
 
-12. Klicka på **OK** tooreturn toohello i dialogrutan Lägg till formulärbaserad webbplats.
+12. Klicka på **OK** så visas dialogrutan Lägg till formulärbaserad webbplats igen.
 13. Klicka på **OK**.
-14. En gång hello URL och sidvariabler har identifierats eller angett, hello webbplats data som visas i hello formulärbaserad panelen.
+14. När URL- och sidvariablerna har identifierats eller angetts visas webbplatsdata på panelen Formulärbaserad.
 
 ## <a name="using-integrated-windows-authentication-with-azure-multi-factor-authentication-server"></a>Använda integrerad Windows-autentisering med Azure Multi-Factor Authentication Server
-toosecure en IIS-webbprogram som använder integrerad Windows-HTTP-autentisering, installera hello Azure MFA-Server på hello IIS-webbserver och sedan konfigurera hello Server med hello följande steg:
+Om du ska skydda en IIS-webbapp som använder integrerad Windows HTTP-autentisering installerar du Azure MFA Server på IIS-webbservern och konfigurerar servern genom att följa stegen nedan:
 
-1. Klicka på hello IIS-autentisering ikonen hello vänstra menyn i hello Azure Multi-Factor Authentication-servern.
-2. Klicka på hello **HTTP** fliken.
+1. Klicka på ikonen för IIS-autentisering på den vänstra menyn i Azure Multi-Factor Authentication Server.
+2. Klicka på fliken **HTTP**.
 3. Klicka på **Lägg till**.
-4. Ange hello URL för hello webbplats där HTTP-autentisering utförs (till exempel http://localhost/owa) i hello dialogruta för Lägg till grundläggande Webbadress, och ange ett programnamn (valfritt). hello programnamn i Azure Multi-Factor Authentication-rapporter och kan visas i autentiseringsmeddelanden SMS eller Mobilapp.
-5. Justera hello timeout för inaktivitet och maximalt tidsgränsen om hello standard inte är tillräcklig.
-6. Kontrollera hello **Multi-Factor Authentication-användarmatchning** om alla användare har eller importeras till hello Server och ämne toomulti-factor-autentisering. Om ett stort antal användare inte har ännu importerats till hello Server och/eller undantas från Multi-Factor authentication, lämnar du hello kryssrutan avmarkerad.
-7. Kontrollera hello **Cookie cache** rutan om du vill.
+4. I dialogrutan Lägg till grundläggande webbadress anger du URL:en för den webbplats där HTTP-autentiseringen utförs (t.ex. http://localhost/owa) och anger sedan ett programnamn (valfritt). Programnamnet visas i Azure Multi-Factor Authentication-rapporter och kan visas i autentiseringsmeddelanden i SMS- eller mobilappar.
+5. Justera tiderna för Timeout vid inaktivitet och Längsta session om standardvärdet inte räcker.
+6. Markera rutan om att **Multi-Factor Authentication-användarmatchning krävs** om alla användare har importerats eller ska importeras till servern och om multifaktorautentisering används. Om ett stort antal användare inte har importerats till servern än, eller om de ska undantas från multifaktorautentisering, lämnar du rutan avmarkerad.
+7. Markera kryssrutan för **cachelagring av cookies** om du vill det.
 8. Klicka på **OK**.
 
 ## <a name="enable-iis-plug-ins-for-azure-multi-factor-authentication-server"></a>Aktivera IIS plugin-program för Azure Multi-Factor Authentication Server
-När du har konfigurerat hello formulärbaserad eller URL: er för HTTP-autentisering och inställningar, väljer hello platser där hello Azure Multi-Factor Authentication IIS plugin-program ska läsas in och aktiverat i IIS. Använd hello nedan:
+När du har konfigurerat URL:erna och inställningarna för formulärbaserad autentisering eller HTTP-autentisering måste du välja de platser där Azure Multi-Factor Authentication IIS plugin-programmen ska läsas in och aktiveras i IIS. Följ dessa steg:
 
-1. Om körs på IIS 6, klickar du på hello **ISAPI** fliken. Välj hello-webbplats som hello webbprogram körs under (t.ex. standardwebbplats) tooenable hello Azure Multi-Factor Authentication ISAPI-filtret plugin-program för platsen.
-2. Om körs på IIS 7 eller senare, klickar du på hello **ursprunglig modul** fliken. Välj hello server, webbplatser eller program tooenable hello IIS plugin-programmet på hello önskad nivåer.
-3. Klicka på hello **aktivera IIS-autentisering** rutan hello överst i hello-skärmen. Azure Multi-Factor Authentication är nu att säkra hello valt IIS-program. Se till att användarna har importerats till hello Server.
+1. Om du kör på IIS 6 klickar du på fliken **ISAPI**. Välj den webbplats som webbappen körs under (t.ex. standardwebbplatsen) om du vill aktivera plugin-programmet för ISAPI-filter för Azure Multi-Factor Authentication för platsen i fråga.
+2. Om den körs på IIS 7 eller senare, klickar du på fliken **Ursprunglig modul**. Välj den server, de webbplatser eller de program som ska användas för att aktivera IIS-plugin-programmet på de önskade nivåerna.
+3. Klicka på rutan **Aktivera IIS-autentisering** överst på skärmen. Nu skyddar Azure Multi-Factor Authentication det valda IIS-programmet. Kontrollera att användarna har importerats till servern.
 
 ## <a name="trusted-ips"></a>Tillförlitliga IP-adresser
-hello kan tillförlitliga IP-adresser användare toobypass Azure Multi-Factor Authentication för webbplatsförfrågningar som kommer från särskilda IP-adresser eller undernät. Exempelvis kanske tooexempt användare från Azure Multi-Factor Authentication under inloggningen från hello office. För det här kan du ange hello office undernät som en betrodd IP-adresser. tooconfigure tillförlitliga IP-adresser, Använd hello nedan:
+Tillförlitliga IP-adresser låter användarna kringgå Azure Multi-Factor Authentication för webbplatsförfrågningar som kommer från specifika IP-adresser eller undernät. Du kanske till exempel vill undanta användare från Azure Multi-Factor Authentication när de loggar in från kontoret. För att göra det anger du kontorets undernät som en tillförlitlig IP-adress. Följ dessa steg om du vill konfigurera tillförlitliga IP-adresser:
 
-1. I hello IIS-autentisering-avsnittet, klickar du på hello **tillförlitliga IP-adresser** fliken.
+1. Klicka på fliken **Tillförlitliga IP-adresser** i avsnittet IIS-autentisering.
 2. Klicka på **Lägg till**.
-3. När dialogrutan Lägg till tillförlitliga IP-adresser för hello visas väljer du hello **enda IP**, **IP-intervall**, eller **undernät** knappen.
-4. Ange hello IP-adressen, IP-adressintervall eller undernät som ska vara godkända. Om att ange ett undernät, Välj hello lämpliga nätmask och klicka på **OK**. hello godkända har nu lagts till.
+3. När dialogrutan för att lägga till tillförlitliga IP-adresser visas väljer du alternativknappen **Enkel IP**, **IP-intervall** eller **Undernät**.
+4. Ange IP-adressen, IP-adressintervallet eller undernätet som ska vitlistas. Om du anger ett undernät väljer du lämplig nätmask och klickar på **OK**. Nu har vitlistan lagts till.

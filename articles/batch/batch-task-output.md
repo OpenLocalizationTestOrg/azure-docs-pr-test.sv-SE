@@ -1,6 +1,6 @@
 ---
-title: "slutföra jobb och uppgifter tooa data aaaPersist resultat eller loggar från store - Azure Batch | Microsoft Docs"
-description: "Lär dig mer om olika alternativ för bestående av utdata från batchuppgifter och jobb. Du kan spara data tooAzure lagring eller tooanother data lagras."
+title: "Spara resultaten eller loggar från slutförda jobb och aktiviteter i ett datalager - Azure Batch | Microsoft Docs"
+description: "Lär dig mer om olika alternativ för bestående av utdata från batchuppgifter och jobb. Du kan spara data till Azure Storage, eller ett annat datalager."
 services: batch
 author: tamram
 manager: timlt
@@ -14,11 +14,11 @@ ms.workload: big-compute
 ms.date: 06/16/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f0b11e387f1694e1ce3e9573db7f6013f0154cad
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 3ca93e823f02b1483ed290cf89de191937d1e2c3
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="persist-job-and-task-output"></a>Bevara jobb- och uppgiftsutdata
 
@@ -26,102 +26,102 @@ ms.lasthandoff: 10/06/2017
 
 Vissa vanliga exempel på utdata för aktiviteten:
 
-- Filer som skapas när hello uppgiften processer indata.
+- Filer som skapas när indata för aktivitet processer.
 - Loggfiler som är associerade med körning av aktiviteten. 
 
-Den här artikeln beskrivs olika alternativ för bestående uppgiften utdata och hello som varje alternativ passar bäst.   
+Den här artikeln beskrivs olika alternativ för bestående uppgiftens utdata och scenarier där varje alternativ passar bäst.   
 
-## <a name="about-hello-batch-file-conventions-standard"></a>Om hello Batch filen konventioner standard
+## <a name="about-the-batch-file-conventions-standard"></a>Om filen konventioner för Batch-standarden
 
-Batch definierar en valfri uppsättning namnkonventionerna för aktiviteten utdatafilerna i Azure Storage. Hej [Batch filen konventioner standard](https://github.com/Azure/azure-sdk-for-net/tree/vs17Dev/src/SDKs/Batch/Support/FileConventions#conventions) beskriver dessa regler. hello filen konventioner standard avgör hello namnen på hello-behållaren och blob målsökväg i Azure Storage för en given utdatafilen baserat på hello namnen på hello projekt- och.
+Batch definierar en valfri uppsättning namnkonventionerna för aktiviteten utdatafilerna i Azure Storage. Den [Batch filen konventioner standard](https://github.com/Azure/azure-sdk-for-net/tree/vs17Dev/src/SDKs/Batch/Support/FileConventions#conventions) beskriver dessa regler. Filen konventioner standard anger namnen på behållaren och blob målsökvägen i Azure Storage för en given utdatafilen baserat på namnen på jobbet och aktivitet.
 
-Är det upp tooyou om du bestämmer dig för toouse hello filen konventioner standard för namngivning av datafilerna utdata. Du kan också namnge hello målbehållare och blob, men du vill. Om du använder hello filen konventioner standard för namngivning av filer och utgående filer är tillgängliga för visning i hello [Azure-portalen][portal].
+Det är upp till dig om du väljer att använda filen konventioner standard för att namnge datafilerna utdata. Du kan också namnge målbehållare och blob men du vill. Om du använder filen konventioner standard för namngivning av filer och utgående filer är tillgängliga för visning i den [Azure-portalen][portal].
 
-Det finns några olika sätt som du kan använda hello filen konventioner standard:
+Det finns några olika sätt som du kan använda filen konventioner standard:
 
-- Om du använder hello service API toopersist utdata kommandofiler du tooname mål behållare och blobbar enligt toohello filen konventioner som standard. hello API för Batch-tjänsten kan du toopersist utdatafilerna från klientkoden, utan att ändra tillämpningsprogrammet aktivitet.
-- Om du utvecklar med .NET, kan du använda hello [filen konventioner för Azure Batch-biblioteket för .NET][nuget_package]. En fördel med det här biblioteket är att den stöder fråga din utdatafilerna enligt tootheir ID eller syfte. hello inbyggd frågar funktion gör det enkelt tooaccess utdatafilerna från ett klientprogram eller andra uppgifter. Tillämpningsprogrammet uppgiften måste dock vara ändrade toocall filen konventioner bibliotek. Mer information finns i hello referens för hello [filen konventioner biblioteket för .NET](https://msdn.microsoft.com/library/microsoft.azure.batch.conventions.files.aspx).
-- Om du utvecklar med ett annat språk än .NET, kan du implementera hello filen konventioner som standard i ditt program.
+- Om du använder API för Batch-tjänsten för att bevara utdatafilerna du namn på målet behållare och blobbar enligt filen konventioner standard. API för Batch-tjänsten kan du bevara utdatafilerna från klientkoden, utan att ändra tillämpningsprogrammet aktivitet.
+- Om du utvecklar med .NET, kan du använda den [filen konventioner för Azure Batch-biblioteket för .NET][nuget_package]. En fördel med det här biblioteket är att den stöder fråga din utdatafilerna enligt deras ID eller syfte. Inbyggda funktioner för frågor gör det enkelt att komma åt filer från ett klientprogram eller andra uppgifter. Men måste tillämpningsprogrammet uppgiften ändras för att anropa filen konventioner bibliotek. Mer information finns i referensen för den [filen konventioner biblioteket för .NET](https://msdn.microsoft.com/library/microsoft.azure.batch.conventions.files.aspx).
+- Om du utvecklar med ett annat språk än .NET måste implementera du filen konventioner standard i ditt program.
 
 ## <a name="design-considerations-for-persisting-output"></a>Designöverväganden för att spara utdata 
 
-När du skapar Batch-lösning bör överväga hello följande faktorer relaterade toojob och resultat av åtgärder.
+När du skapar Batch-lösning bör du beakta följande faktorer relaterade till projekt- och utdata.
 
-* **Compute-nod livstid**: Compute-noder är ofta övergående, särskilt i Autoskala-aktiverade pooler. Utdata från en aktivitet som körs på en nod är bara tillgänglig när hello noden finns och endast inom kvarhållningsperioden för hello-filen som har angetts för hello-aktivitet. Om en aktivitet producerar utdata som kan behövas när hello åtgärden är klar, överför hello uppgiften utgående filer tooa beständiga arkivet, t.ex Azure Storage.
+* **Compute-nod livstid**: Compute-noder är ofta övergående, särskilt i Autoskala-aktiverade pooler. Utdata från en aktivitet som körs på en nod är bara tillgänglig när noden finns och endast inom kvarhållningsperioden för filen som har angetts för uppgiften. Om en aktivitet producerar utdata som kan behövas när uppgiften har slutförts, uppgiften måste ladda upp dess utdatafilerna till en beständig store, till exempel Azure Storage.
 
-* **Utdata lagring**: Azure Storage rekommenderas som ett datalager för uppgiftens utdata, men du kan använda alla beständig lagring. Skriva uppgiften utdata tooAzure är lagring integrerad i hello API för Batch-tjänsten. Om du använder en annan form av beständiga lagring måste toowrite hello programmet logik toopersist uppgiftens utdata själv.   
+* **Utdata lagring**: Azure Storage rekommenderas som ett datalager för uppgiftens utdata, men du kan använda alla beständig lagring. Skrivning uppgiftens utdata till Azure Storage är integrerad i API för Batch-tjänsten. Om du använder en annan form av beständiga lagringsutrymme behöver du skriva programlogiken för att bevara uppgiften utdata själv.   
 
-* **Utdata hämtning**: du kan hämta uppgiftens utdata direkt från hello beräkningsnoder i din pool eller från Azure Storage eller ett annat datalager om du har sparat uppgiftens utdata. tooretrieve en uppgift utdata direkt från en beräkningsnod behöver du hello filnamnet och dess platsen på hello-nod. Om du bevara uppgiften utdata tooAzure lagring måste hello fullständig sökväg toohello filen i Azure Storage toodownload hello utdatafilerna med hello Azure Storage SDK: N.
+* **Utdata hämtning**: du kan hämta uppgiftens utdata direkt från beräkningsnoder i din pool eller från Azure Storage eller ett annat datalager om du har sparat uppgiftens utdata. Om du vill hämta en uppgiftens utdata direkt från en beräkningsnod behöver du filnamnet och dess platsen på noden. Om du bevara uppgiftens utdata till Azure Storage, måste den fullständiga sökvägen till filen i Azure Storage för att hämta utdatafiler med Azure Storage SDK: N.
 
-* **Visa utdata**: när du navigerar tooa batchaktiviteten i hello Azure portal och välj **filer på noden**, visas alla filer som hör till hello aktivitet, inte bara hello utdatafiler som du är intresserad av. Filer på datornoderna finns igen, medan hello noden finns och endast inom kvarhållningstiden för hello-fil som har angetts för hello-aktivitet. tooview aktivitet utdata som du har sparat tooAzure lagring, kan du använda hello Azure-portalen eller ett Azure Storage client-program, till exempel hello [Azure Lagringsutforskaren][storage_explorer]. tooview utdata i Azure Storage med hello portal eller något annat verktyg, måste du veta hello filens plats och navigera tooit direkt.
+* **Visa utdata**: när du navigerar till en Batch-aktivitet i Azure portal och välj **filer på noden**, visas alla filer som hör till aktiviteten, inte bara utgående filer du är intresserad av. Filer på datornoderna igen, är tillgängliga när noden finns och endast inom kvarhållningstiden fil som har angetts för uppgiften. Om du vill visa uppgiftens utdata som du har sparat till Azure Storage, du kan använda Azure-portalen eller ett Azure Storage client-program som de [Azure Lagringsutforskaren][storage_explorer]. Om du vill visa utdata i Azure Storage med portalen eller något annat verktyg, måste du känner till filens plats och navigera till den direkt.
 
 ## <a name="options-for-persisting-output"></a>Alternativ för att spara utdata
 
-Det finns flera olika metoder som du kan vidta toopersist uppgiftsutdata beroende på ditt scenario:
+Det finns flera olika metoder som du kan vidta för att bevara uppgiftsutdata beroende på ditt scenario:
 
-- Använd API för hello Batch-tjänsten.  
-- Använd hello Batch filen konventioner biblioteket för .NET.  
-- Implementera hello Batch filen konventioner standard i ditt program.
+- Använd API för Batch-tjänsten.  
+- Använd filen konventioner för Batch-biblioteket för .NET.  
+- Implementera Batch filen konventioner standard i ditt program.
 - Implementera en lösning för flytt av anpassade filen.
 
-hello följande avsnitt beskrivs varje metod i detalj.
+I följande avsnitt beskrivs varje metod i detalj.
 
-### <a name="use-hello-batch-service-api"></a>Använd API för hello Batch-tjänsten
+### <a name="use-the-batch-service-api"></a>Använd API för Batch-tjänsten
 
-Med version 2017-05-01 hello Batch-tjänsten lägger till stöd för att ange utdatafilerna i Azure Storage för aktivitetsdata när du [lägga till ett jobb för aktiviteten tooa](https://docs.microsoft.com/rest/api/batchservice/add-a-task-to-a-job) eller [lägga till en samling aktiviteter tooa jobbet](https://docs.microsoft.com/rest/api/batchservice/add-a-collection-of-tasks-to-a-job).
+Med versionen 2017-05-01, Batch-tjänsten lägger till stöd för att ange utdatafilerna i Azure Storage för aktivitetsdata när du [lägger till ett jobb](https://docs.microsoft.com/rest/api/batchservice/add-a-task-to-a-job) eller [lägga till en samling aktiviteter i ett jobb](https://docs.microsoft.com/rest/api/batchservice/add-a-collection-of-tasks-to-a-job).
 
-hello API för Batch-tjänsten stöder bestående aktivitet data tooan Azure Storage-konto från poolen som skapats med hello konfiguration av virtuell dator. Med hello API för Batch-tjänsten bevara du aktivitetsdata utan att ändra hello-program som uppgiften körs. Alternativt kan du följa toohello [Batch filen konventioner standard](https://github.com/Azure/azure-sdk-for-net/tree/vs17Dev/src/SDKs/Batch/Support/FileConventions#conventions) för namngivning av hello filer som du bevara tooAzure lagring. 
+API för Batch-tjänsten stöder bestående aktivitetsdata till ett Azure Storage-konto från poolen som skapats med konfigurationen av virtuella datorn. Med API: et för Batch-tjänsten bevara du aktivitetsdata utan att ändra de program som uppgiften körs. Du kan alternativt följer den [Batch filen konventioner standard](https://github.com/Azure/azure-sdk-for-net/tree/vs17Dev/src/SDKs/Batch/Support/FileConventions#conventions) för namngivning av filer som du bevara till Azure Storage. 
 
-Använd hello API för Batch-tjänsten toopersist aktiviteten utdata när:
+Använd API för Batch-tjänsten för att bevara utdata när uppgiften:
 
-- Vill du toopersist data från Batch-aktiviteter och jobb manager aktiviteter i pooler som har skapats med hello konfiguration av virtuell dator.
-- Vill du toopersist data tooan Azure Storage-behållare med ett godtyckligt namn.
-- Du vill toopersist data tooan Azure Storage-behållare med namnet bl.a toohello [Batch filen konventioner standard](https://github.com/Azure/azure-sdk-for-net/tree/vs17Dev/src/SDKs/Batch/Support/FileConventions#conventions). 
+- Du vill bevara data från Batch-aktiviteter och jobb manager aktiviteter i pooler som har skapats med den virtuella datorkonfigurationen.
+- Vill du spara data till en Azure Storage-behållare med ett godtyckligt namn.
+- Vill du spara data till en Azure Storage-behållare med namnet enligt den [Batch filen konventioner standard](https://github.com/Azure/azure-sdk-for-net/tree/vs17Dev/src/SDKs/Batch/Support/FileConventions#conventions). 
 
 > [!NOTE]
-> hello API för Batch-tjänsten stöder inte bestående data från aktiviteter som körs i pooler som har skapats med hello cloud service configuration. Information om bestående uppgiften utdata från pooler kör hello cloud services-konfigurering finns [spara projekt- och data tooAzure lagring med hello Batch filen konventioner biblioteket för .NET toopersist](batch-task-output-file-conventions.md)
+> API för Batch-tjänsten stöder inte bestående data från aktiviteter som körs i pooler som har skapats med tjänsten molnkonfigurationen. Information om bestående uppgiften utdata från pooler med cloud services-konfigurering finns [spara projekt- och data till Azure Storage med Batch filen konventioner biblioteket för .NET att bevara](batch-task-output-file-conventions.md)
 > 
 > 
 
-Mer information om bestående uppgiftens utdata med hello API för Batch-tjänsten finns [spara aktiviteten data tooAzure lagring med hello API för Batch-tjänsten](batch-task-output-files.md). Se även hello [PersistOutputs] [github_persistoutputs] exempel projekt på GitHub, som visar hur toouse hello Batch-klientbibliotek för .NET toopersist aktivitet utdata toodurable lagring.
+Mer information om bestående uppgiftens utdata med API för Batch-tjänsten finns [spara aktivitetsdata till Azure Storage med Batch-tjänsten API](batch-task-output-files.md). Se även [PersistOutputs] [github_persistoutputs] exempelprojektet på GitHub, som visar hur du använder Batch-klientbibliotek för .NET för att bevara uppgiftens utdata till beständig lagring.
 
-### <a name="use-hello-batch-file-conventions-library-for-net"></a>Använd hello Batch filen konventioner biblioteket för .NET
+### <a name="use-the-batch-file-conventions-library-for-net"></a>Använda filen konventioner för Batch-biblioteket för .NET
 
-Skapa Batch lösningar med C# och .NET-utvecklare kan använda hello [filen konventioner biblioteket för .NET] [ nuget_package] toopersist aktivitet data tooan Azure Storage-konto, enligt toohello [kommandofil Konventioner standard](https://github.com/Azure/azure-sdk-for-net/tree/vs17Dev/src/SDKs/Batch/Support/FileConventions#conventions). hello filen konventioner biblioteket hanterar glidande utgående filer tooAzure lagring och namngivning mål behållare och blobbar på kända sätt.
+Skapa Batch lösningar med C# och .NET-utvecklare kan använda den [filen konventioner biblioteket för .NET] [ nuget_package] för att spara uppgiftsdata till ett Azure Storage-konto bl.a till den [Batch filen konventioner standard](https://github.com/Azure/azure-sdk-for-net/tree/vs17Dev/src/SDKs/Batch/Support/FileConventions#conventions). Filen konventioner biblioteket hanterar glidande utdatafilerna till Azure Storage och namnge mål behållare och blobbar på kända sätt.
 
-hello filen konventioner biblioteket har stöd för frågor utdatafilerna efter ID eller syfte, slutföra vilket gör det enkelt toolocate dem utan att behöva hello filen URI: er. 
+Filen konventioner biblioteket stöder frågar utdatafilerna efter ID eller ändamål, vilket gör det enkelt att hitta dem utan att behöva filen fullständiga URI: er. 
 
-Använd hello Batch filen konventioner biblioteket för .NET toopersist aktivitet utdata när:
+Använd filen konventioner för Batch-biblioteket för .NET för att bevara utdata när uppgiften:
 
-- Du vill toostream data tooAzure lagring medan hello aktivitet körs.
-- Vill du toopersist data från poolen som skapats med hello molnet tjänstkonfiguration eller hello konfiguration av virtuell dator.
-- Klientprogrammet eller andra uppgifter i hello jobb behov toolocate och hämta utdata aktivitetsfiler genom ID eller syfte. 
-- Vill du tooperform Kontrollera pekar eller tidig överföring av första resultaten.
-- Vill du tooview uppgiftens utdata i hello Azure-portalen.
+- Vill du dataströmmen data till Azure Storage medan uppgiften körs.
+- Du vill bevara data från poolen som skapats med molnkonfigurationen för tjänsten eller konfigurationen av virtuella datorn.
+- Klientprogrammet eller andra uppgifter i jobbet måste leta upp och hämta utdata aktivitetsfiler genom ID eller syfte. 
+- Du vill utföra kontroll pekar eller tidig överföring av första resultaten.
+- Du vill visa uppgiftens utdata i Azure-portalen.
 
-Mer information om bestående uppgiftens utdata med hello filen konventioner bibliotek för .NET finns [spara projekt- och data tooAzure lagring med hello Batch filen konventioner biblioteket för .NET-toopersist ](batch-task-output-file-conventions.md). Se även hello [PersistOutputs] [github_persistoutputs] exempel projekt på GitHub, som visar hur toouse hello filen konventioner biblioteket för .NET toopersist aktivitet utdata toodurable lagring.
+Mer information om bestående uppgiftens utdata med filen konventioner-biblioteket för .NET finns [spara projekt- och data till Azure Storage med Batch filen konventioner biblioteket för .NET att bevara ](batch-task-output-file-conventions.md). Se även [PersistOutputs] [github_persistoutputs] exempelprojektet på GitHub, som visar hur du använder filen konventioner-biblioteket för .NET för att bevara uppgiftens utdata till beständig lagring.
 
-Hej visar [PersistOutputs] [github_persistoutputs] exempelprojektet på GitHub hur toouse hello Batch-klientbibliotek för .NET toopersist aktivitet utdata toodurable lagring.
+[PersistOutputs] [github_persistoutputs] exempelprojektet på GitHub visar hur du använder Batch-klientbibliotek för .NET för att bevara uppgiftens utdata till beständig lagring.
 
-### <a name="implement-hello-batch-file-conventions-standard"></a>Implementera hello Batch filen konventioner standard
+### <a name="implement-the-batch-file-conventions-standard"></a>Implementera Batch filen konventioner standard
 
-Om du använder ett annat språk än .NET, kan du implementera hello [Batch filen konventioner standard](https://github.com/Azure/azure-sdk-for-net/tree/vs17Dev/src/SDKs/Batch/Support/FileConventions#conventions) i ditt eget program. 
+Om du använder ett annat språk än .NET, kan du implementera den [Batch filen konventioner standard](https://github.com/Azure/azure-sdk-for-net/tree/vs17Dev/src/SDKs/Batch/Support/FileConventions#conventions) i ditt eget program. 
 
-Du kanske vill tooimplement hello filen konventioner namngivningsstandarden själv om du vill ha en beprövad namngivningsschemat, eller om du vill tooview uppgiftens utdata i hello Azure-portalen.
+Du kanske vill implementera filen konventioner namngivningsstandarden själv när du vill använda en beprövad namngivningsschemat, eller när du vill visa uppgiftens utdata i Azure-portalen.
 
 ### <a name="implement-a-custom-file-movement-solution"></a>Implementera en lösning för flytt av anpassad fil
 
 Du kan också implementera din egen lösning för flytt av hela filen. Använd detta närmar sig när:
 
-- Vill du toopersist aktivitet tooa data dataarkiv än Azure Storage. tooupload tooa data som lagras som Azure SQL- eller Azure DataLake, kan du skapa ett anpassat skript eller körbara tooupload toothat plats. Du kan sedan anropa den på hello kommandorad när du har kört din primära körbar fil. Till exempel på en Windows-nod, kan du anropa dessa två kommandon:`doMyWork.exe && uploadMyFilesToSql.exe`
-- Vill du tooperform Kontrollera pekar eller tidig överföring av första resultaten.
-- Du vill toomaintain detaljerad kontroll över felhantering. Du kanske till exempel tooimplement din egen lösning om du vill toouse uppgiften beroende åtgärder tootake vissa överför åtgärder baserat på en viss uppgift slutkoder. Mer information om aktiviteten beroende åtgärder finns i [och skapa aktiviteten beroenden toorun uppgifter som är beroende av andra aktiviteter](batch-task-dependencies.md). 
+- Vill du spara aktivitetsdata till ett annat dataarkiv än Azure Storage. Du kan skapa ett anpassat skript eller en körbar fil att ladda upp till platsen för att ladda upp filer till ett dataarkiv som Azure SQL- eller Azure DataLake. Du kan sedan anropa den på kommandoraden när du har kört din primära körbar fil. Till exempel på en Windows-nod, kan du anropa dessa två kommandon:`doMyWork.exe && uploadMyFilesToSql.exe`
+- Du vill utföra kontroll pekar eller tidig överföring av första resultaten.
+- Du vill behålla granulär kontroll över felhantering. Du kanske vill implementera din egen lösning om du vill använda-beroende åtgärder för att vidta vissa överför åtgärder baserat på en viss uppgift slutkoder. Mer information om aktiviteten beroende åtgärder finns i [Skapa uppgift beroenden för att köra uppgifter som är beroende av andra aktiviteter](batch-task-dependencies.md). 
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Utforska använda hello nya funktioner i hello API för Batch-tjänsten toopersist aktivitetsdata i [spara aktiviteten data tooAzure lagring med hello API för Batch-tjänsten](batch-task-output-files.md).
-- Lär dig mer om hur du använder hello Batch filen konventioner biblioteket för .NET i [spara projekt- och data tooAzure lagring med hello Batch filen konventioner biblioteket för .NET-toopersist ](batch-task-output-file-conventions.md).
-- Se hello [PersistOutputs] [github_persistoutputs] exempelprojektet på GitHub, som visar hur toouse både hello Batch-klientbibliotek för .NET och hello filen konventioner bibliotek för .NET toopersist aktivitet utdata toodurable lagring.
+- Börja använda nya funktioner i API för Batch-tjänsten för att spara uppgiftsdata i [spara aktivitetsdata till Azure Storage med Batch-tjänsten API](batch-task-output-files.md).
+- Lär dig mer om hur du använder filen konventioner för Batch-biblioteket för .NET i [spara projekt- och data till Azure Storage med Batch filen konventioner biblioteket för .NET att bevara ](batch-task-output-file-conventions.md).
+- Se [PersistOutputs] [github_persistoutputs] exempelprojektet på GitHub, som visar hur du använder både Batch klientbiblioteket för .NET och filen konventioner-biblioteket för .NET för att bevara uppgiftens utdata till beständig lagring.
 
 [nuget_package]: https://www.nuget.org/packages/Microsoft.Azure.Batch.Conventions.Files
 [portal]: https://portal.azure.com

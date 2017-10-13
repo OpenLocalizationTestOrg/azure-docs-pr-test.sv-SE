@@ -1,6 +1,6 @@
 ---
 title: " Hantera en Server för Process som körs i Azure(Classic) | Microsoft Docs"
-description: "Den här artikeln beskriver hur tooset in återställning processen Server(Classic) i Azure."
+description: "Den här artikeln beskriver hur du ställer in en återställning efter fel processen Server(Classic) i Azure."
 services: site-recovery
 documentationcenter: 
 author: AnoopVasudavan
@@ -14,21 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/29/2017
 ms.author: anoopkv
-ms.openlocfilehash: eadcc0236c77c9ebbbc885c4a7ee81098f1f4e72
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 479bbd207bcf715138c340f9e4d2634120bab85c
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="manage-a-process-server-running-in-azure-classic"></a>Hantera en Server för Process som körs i Azure (klassisk)
 > [!div class="op_single_selector"]
 > * [Klassiska Azure-portalen](./site-recovery-vmware-setup-azure-ps-classic.md)
 > * [Resource Manager](./site-recovery-vmware-setup-azure-ps-resource-manager.md)
 
-Bör toodeploy Processerver i Azure under återställning efter fel, om det är fördröjningar mellan hello Azure Virtual Network och ditt lokala nätverk. Den här artikeln beskriver hur du kan skapa, konfigurera och hantera hello servrar körs i Azure.
+Under återställning efter fel rekommenderas att distribuera Processerver i Azure om det är fördröjningar mellan det virtuella Azure-nätverket och ditt lokala nätverk. Den här artikeln beskriver hur du kan skapa, konfigurera och hantera processen-servrar som körs i Azure.
 
 > [!NOTE]
-> Den här artikeln är toobe används om du använde klassisk som hello distributionsmodell för hello virtuella datorer under växling vid fel. Om du använde Resource Manager som hello modellen Följ hello distributionsstegen i [hur tooset upp och konfigurera en Processerver (Resource Manager)](./site-recovery-vmware-setup-azure-ps-resource-manager.md)
+> Den här artikeln som ska användas om du använde klassisk som distributionsmodell för de virtuella datorerna under växling vid fel. Om du använde Resource Manager som distributionsmodell följer du stegen i [hur du ställer in och konfigurera en Processerver (Resource Manager)](./site-recovery-vmware-setup-azure-ps-resource-manager.md)
 
 ## <a name="prerequisites"></a>Krav
 
@@ -36,27 +36,27 @@ Bör toodeploy Processerver i Azure under återställning efter fel, om det är 
 
 ## <a name="deploy-a-process-server-on-azure"></a>Distribuera en Processerver i Azure
 
-1. Skapa en virtuell dator med hello i Azure Marketplace **Microsoft Azure Site Recovery Process Server V2** </br>
+1. I Azure Marketplace, skapar du en virtuell dator med hjälp av den **Microsoft Azure Site Recovery Process Server V2** </br>
     ![Marketplace_image_1](./media/site-recovery-vmware-setup-azure-ps-classic/marketplace-ps-image.png)
-2. Se till att du väljer hello distributionsmodell som **klassiska** </br>
+2. Se till att du väljer distributionsmodellen som **klassiska** </br>
   ![Marketplace_image_2](./media/site-recovery-vmware-setup-azure-ps-classic/marketplace-ps-image-classic.png)
-3. I guiden för hello Skapa virtuell dator > grundläggande inställningar, se till att du väljer hello prenumerationen och platsen toowhere du redundansväxlade hello virtuella datorer.</br>
+3. I guiden Skapa virtuell dator > grundläggande inställningar, se till att du väljer prenumeration och plats där du misslyckades för virtuella datorer.</br>
   ![create_image_1](./media/site-recovery-vmware-setup-azure-ps-classic/azureps-classic-basic-info.png)
-4. Se till att hello den virtuella datorn är ansluten toohello Azure Virtual Network toowhich hello redundansväxlade virtuella datorn är ansluten.</br>
+4. Kontrollera att den virtuella datorn är ansluten till det virtuella Azure-nätverket som den redundansväxlade virtuella datorn är ansluten.</br>
   ![create_image_2](./media/site-recovery-vmware-setup-azure-ps-classic/azureps-classic-settings.png)
-5. När hello Processervern virtuella datorn har etablerats måste toolog i och registrera den med hello konfigurationsservern.
+5. När den virtuella datorn på Processervern har etablerats måste du logga in och registrera den med konfigurationsservern.
 
 > [!NOTE]
-> toobe kan toouse denna Process-Server för återställning efter fel, behöver du tooregister med hello lokalt konfigurationsservern.
+> För att kunna använda den här Processerver för återställning efter fel, måste du registrera den med konfigurationsservern lokalt.
 
-## <a name="registering-hello-process-server-running-in-azure-tooa-configuration-server-running-on-premises"></a>Registrera hello (som körs i Azure) Processervern tooa konfigurationsservern (som körs lokalt)
+## <a name="registering-the-process-server-running-in-azure-to-a-configuration-server-running-on-premises"></a>Registrera Processervern (som körs i Azure) till en Server för konfiguration (som körs lokalt)
 
 [!INCLUDE [site-recovery-vmware-register-process-server](../../includes/site-recovery-vmware-register-process-server.md)]
 
-## <a name="upgrading-hello-process-server-toolatest-version"></a>Uppgradera hello processen toolatest serverversionen.
+## <a name="upgrading-the-process-server-to-latest-version"></a>Uppgradera Processervern till senaste versionen.
 
 [!INCLUDE [site-recovery-vmware-upgrade-process-server](../../includes/site-recovery-vmware-upgrade-process-server.md)]
 
-## <a name="unregistering-hello-process-server-running-in-azure-from-a-configuration-server-running-on-premises"></a>Avregistrerar hello Processervern (som körs i Azure) från en Server för konfiguration (som körs lokalt)
+## <a name="unregistering-the-process-server-running-in-azure-from-a-configuration-server-running-on-premises"></a>Avregistrera Processervern (som körs i Azure) från en Server för konfiguration (som körs lokalt)
 
 [!INCLUDE [site-recovery-vmware-upgrade-process-server](../../includes/site-recovery-vmware-unregister-process-server.md)]

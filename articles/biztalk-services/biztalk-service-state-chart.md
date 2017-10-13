@@ -1,6 +1,6 @@
 ---
-title: "aaaTasks tillåts i olika tillstånd eller status i BizTalk-tjänst | Microsoft Docs"
-description: "Hej åtgärder/operationer som tillåts i olika MABS status: stoppa, starta, starta om, pausa, återuppta, ta bort, skala, uppdatera konfigurationen och säkerhetskopiera upp"
+title: "Uppgifter som tillåts i olika tillstånd eller status i BizTalk-tjänst | Microsoft Docs"
+description: "Åtgärder/operationer som tillåts i olika MABS status: stoppa, starta, starta om, pausa, återuppta, ta bort, skala, uppdatera konfigurationen och säkerhetskopiera upp"
 services: biztalk-services
 documentationcenter: 
 author: MandiOhlinger
@@ -14,25 +14,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/08/2016
 ms.author: mandia
-ms.openlocfilehash: 643307ba6fa9b05c82b867912feab249c42b65dd
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 918154852cf4ee1b80792eaddb588f5b0237da7c
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="what-you-can-and-cant-do-using-hello-biztalk-service-state"></a>Vad du kan och inte kan göra med hello BizTalk Service tillstånd
+# <a name="what-you-can-and-cant-do-using-the-biztalk-service-state"></a>Vad du kan och inte kan göra med BizTalk Service-tillstånd
 
 > [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
 
-Beroende på hello aktuell status för hello BizTalk-tjänst finns som du kan eller inte kan utföra på hello BizTalk-tjänst.
+Beroende på aktuell status för BizTalk-tjänst finns som du kan eller inte kan utföra på BizTalk-tjänst.
 
-Exempelvis kan du etablera en ny BizTalk-tjänst i hello klassiska Azure-portalen. När den är klar hello BizTalk-tjänst finns i `active` tillstånd. Hello aktiv, stoppa, pausa och ta bort hello BizTalk-tjänst. Om du stoppar hello BizTalk-tjänst och stoppa misslyckas och hello BizTalk-tjänst går sedan tooa `StopFailed` tillstånd. I hello `StopFailed` tillstånd, kan du starta om hello BizTalk-tjänst. Om du försöker en åtgärd som inte tillåts, t.ex. återuppta, inträffar hello följande fel:
+Exempelvis kan du etablera en ny BizTalk-tjänst i den klassiska Azure-portalen. När den har slutförts, BizTalk-tjänst finns i `active` tillstånd. I aktivt läge kan du stoppa, pausa och ta bort BizTalk-tjänst. Om du stoppar tjänsten BizTalk och stoppa misslyckas och BizTalk-tjänst går sedan till en `StopFailed` tillstånd. I den `StopFailed` tillståndet kan du starta om BizTalk-tjänst. Om du försöker en åtgärd som inte tillåts, t.ex. återuppta, inträffar följande fel:
 
 `Operation not allowed`
 
-## <a name="view-hello-possible-states"></a>Visa hello möjliga tillstånd
+## <a name="view-the-possible-states"></a>Visa möjliga tillstånd
 
-hello följande tabeller hello Liståtgärder eller åtgärder som kan göras när hello BizTalk Service är i ett visst tillstånd. En ✔ innebär hello åtgärden tillåts i det aktuella tillståndet. En tom post innebär hello-åtgärden inte kan utföras under det aktuella tillståndet.
+I följande tabeller beskrivs åtgärder eller de åtgärder som kan göras när BizTalk Service är i ett visst tillstånd. En ✔ innebär åtgärden tillåts i det aktuella tillståndet. En tom post innebär inte att utföra åtgärden i det aktuella tillståndet.
 
 | Tillstånd för tjänsten | Start | Stoppa | Starta om | Pausa | Återuppta | Ta bort | Skala | Uppdatering <br/> Konfiguration | Säkerhetskopiering |
 | --- | --- | --- | --- | --- | --- | --- |--- | --- | --- |
@@ -52,11 +52,11 @@ hello följande tabeller hello Liståtgärder eller åtgärder som kan göras n�
 
 
 ## <a name="see-also"></a>Se även
-* [Skapa en BizTalk Service med hjälp av hello klassiska Azure-portalen](http://go.microsoft.com/fwlink/p/?LinkID=302280)<br/>
-* [Vad du kan göra på hello instrumentpanelen, övervaka och skala flikar i BizTalk-tjänst](http://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
-* [Vad du får med hello utvecklare, Basic, Standard och Premium Edition i BizTalk-tjänst](http://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
-* [Hur tooback upp och återställa en BizTalk Service](http://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>
+* [Skapa en BizTalk Service med hjälp av den klassiska Azure-portalen](http://go.microsoft.com/fwlink/p/?LinkID=302280)<br/>
+* [Vad du kan göra på instrumentpanelen, övervaka och skala flikar i BizTalk-tjänst](http://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
+* [Vad du får med utvecklare, Basic, Standard och Premium-versioner i BizTalk-tjänst](http://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
+* [Säkerhetskopiera och återställa en BizTalk Service](http://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>
 * [Begränsning förklaras i BizTalk-tjänst](http://go.microsoft.com/fwlink/p/?LinkID=302282)<br/>
-* [Hämta hello Service Bus och åtkomstkontroll Utfärdarens namn och utfärdaren nyckelvärden för BizTalk Service](http://go.microsoft.com/fwlink/p/?LinkID=303941)<br/>
-* [Hur jag börja använda hello Azure BizTalk Services SDK](http://go.microsoft.com/fwlink/p/?LinkID=302335)
+* [Hämta Service Bus och åtkomstkontroll Utfärdarens namn och utfärdaren nyckelvärdena för BizTalk Service](http://go.microsoft.com/fwlink/p/?LinkID=303941)<br/>
+* [Hur gör jag för att börja använda Azure BizTalk Services SDK?](http://go.microsoft.com/fwlink/p/?LinkID=302335)
 

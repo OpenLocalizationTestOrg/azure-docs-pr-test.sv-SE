@@ -1,66 +1,84 @@
 ---
-Rubrik: aaa ”Azure Analysis Services självstudiekursen lektionen 1: skapa ett nytt projekt tabellmodell | Microsoft Docs ”beskrivning: Beskriver hur toocreate en ny Azure Analysis Services-självstudiekurs projektet. tjänster: analysis services dokumentationcenter: '' författare: minewiskan manager: erikre editor: '' taggar: ''
-
-MS.AssetID: ms.service: analysis services ms.devlang: NA ms.topic: get-started-article ms.tgt_pltfrm: NA ms.workload: na ms.date: 06/01/2017 ms.author: owend
+title: "Azure Analysis Services självstudiekurs 1: Skapa ett nytt projekt för tabellmodeller | Microsoft Docs"
+description: "Beskriver hur du skapar ett nytt Azure Analysis Services-självstudieprojektet."
+services: analysis-services
+documentationcenter: 
+author: Minewiskan
+manager: erikre
+editor: 
+tags: 
+ms.assetid: 
+ms.service: analysis-services
+ms.devlang: NA
+ms.topic: get-started-article
+ms.tgt_pltfrm: NA
+ms.workload: na
+ms.date: 06/01/2017
+ms.author: owend
+ms.openlocfilehash: d523e3e103b4c351d01af6f1eb3c396f9a63016a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: sv-SE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="lesson-1-create-a-tabular-model-project"></a>Lektion 1: Skapa ett projekt för tabellmodeller
 
 [!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
-Nu bör använder du SQL Server Data Tools (SSDT) toocreate ett nytt projekt tabellmodell på hello 1400 kompatibilitetsnivå. När det nya projektet har skapats kan du börja lägga till data och redigera din modell. Den här lektionen ger dig också en kort introduktion toohello tabellmodell redigeringsmiljön i SSDT.  
+Under den här lektionen använder du SQL Server Data Tools (SSDT) för att skapa ett nytt projekt för tabellmodeller på kompatibilitetsnivå 1400. När det nya projektet har skapats kan du börja lägga till data och redigera din modell. Den här lektionen ger dig också en kort introduktion till redigeringsmiljön för tabellmodeller i SSDT.  
   
-Uppskattad tid toocomplete lektionen: **10 minuter**  
+Uppskattad tidsåtgång för den här lektionen: **10 minuter**  
   
 ## <a name="prerequisites"></a>Krav  
-Det här avsnittet är hello första lektionen i en tabellmodell redigering av kursen. toocomplete detta lektion, det finns flera krav som du behöver toohave på plats. Det finns fler toolearn [Azure Analysis Services - Adventure Works kursen](../tutorials/aas-adventure-works-tutorial.md).  
+Det här avsnittet är den första lektionen i en självstudie om redigering av tabellmodeller. Det finns flera förutsättningar som måste uppfyllas för att slutföra den här lektionen. Läs mer i [Azure Analysis Services – Självstudiekurs för Adventure Works](../tutorials/aas-adventure-works-tutorial.md).  
   
 ## <a name="create-a-new-tabular-model-project"></a>Skapa ett nytt projekt för tabellmodeller  
   
-#### <a name="toocreate-a-new-tabular-model-project"></a>toocreate ett nytt tabellmodell-projekt  
+#### <a name="to-create-a-new-tabular-model-project"></a>Så här skapar du ett nytt projekt för tabellmodeller  
   
-1.  I SSDT på hello **filen** -menyn klickar du på **ny** > **projekt**.  
+1.  På **Arkiv**-menyn i SSDT klickar du på **Nytt** > **Projekt**.  
   
-2.  I hello **nytt projekt** dialogrutan Expandera **installerad** > **Business Intelligence** > **Analysis Services**, och klicka sedan på **Analysis Services-Tabellprojekt**.  
+2.  I dialogrutan **Nytt projekt** expanderar du **Installerad** > **Business Intelligence** > **Analysis Services**, och klickar sedan på **Analysis Services-tabellprojekt**.  
   
-3.  I **namn**, typen **AW Internet försäljning**, och sedan ange en plats för hello projektfiler.  
+3.  Under **Namn** anger du **AW Internet Sales** och sedan anger du en plats för projektfilerna.  
   
-    Som standard **lösningsnamn** hello är samma som hello projektnamn; men du kan ange en annan lösningsnamn.  
+    Som standard är **Lösningsnamn** samma som projektnamnet men du kan ange ett annat lösningsnamn.  
   
 4.  Klicka på **OK**.  
   
-5.  I hello **tabellmodell designer** dialogrutan **integrerade arbetsytan**.  
+5.  I dialogrutan **Tabellmodelldesigner** väljer du **Integrerad arbetsyta**.  
   
-    hello arbetsytan värd för en tabellmodelldatabas med hello samma namn som hello projekt under redigering av modellen. Integrerad arbetsytan innebär SSDT använder en inbyggd instans eliminera hello måste tooinstall en separat server-instans för Analysis Services för redigering av modellen.
+    Arbetsytan har en databas för tabellmodeller med samma namn som projektet under redigeringen av modellen. Integrerad arbetsyta innebär att SSDT använder en inbyggd instans vilket eliminerar behovet att installera en separat Analysis Services-serverinstans för redigering av modellen.
       
 6.  I **Kompatibilitetsnivå** väljer du **SQL Server 2017 / Azure Analysis Services (1400)**.   
  
     ![aas-lesson1-tmd](../tutorials/media/aas-lesson1-tmd.png)
       
-    Om du inte ser SQL Server 2017 / Azure Analysis Services (1400) i hello kompatibilitet nivån listbox, använder inte hello senaste versionen av SQL Server Data Tools. tooget hello senaste versionen, se [installera SQL Server Data tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt).  
+    Om du inte ser SQL Server 2017 / Azure Analysis Services (1400) i listrutan Kompatibilitetsnivå så använder du inte den senaste versionen av SQL Server Data Tools. För att hämta den senaste versionen går du till [Installera SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt).  
       
   
-## <a name="understanding-hello-ssdt-tabular-model-authoring-environment"></a>Förstå hello SSDT tabellmodell redigeringsmiljön  
-Nu när du har skapat ett nytt projekt tabellmodell kan ta en stund tooexplore hello tabellmodell redigeringsmiljön i SSDT.  
+## <a name="understanding-the-ssdt-tabular-model-authoring-environment"></a>Tolka redigeringsmiljön för SSDT-tabellmodellen  
+Nu när du har skapat ett nytt projekt för tabellmodeller kan vi börja utforska redigeringsmiljön för tabellmodellen i SSDT.  
   
-När projektet har skapats öppnas det i SSDT. På vänster sida i hello **Tabular modellen Explorer**, visas en trädvy över hello objekt i modellen. Eftersom du ännu inte har importerat data, är hello mappar tom. Du kan högerklicka på ett objekt mappen tooperform åtgärder, liknande toohello menyraden. Eftersom du gå igenom den här kursen kan du använda hello Tabular modellen Explorer toonavigate olika objekt i projektet modellen.
+När projektet har skapats öppnas det i SSDT. Till höger i **Tabellmodellutforskaren** visas en trädvy över objekten i modellen. Eftersom du inte har importerat data ännu är mapparna tomma. Du kan högerklicka på en mapp för objekt för att utföra åtgärder, precis som på menyraden. När du går igenom den här självstudien kan du använda tabellmodellutforskaren för att navigera mellan olika objekt i ditt modellprojekt.
 
 ![aas-lesson1-tme](../tutorials/media/aas-lesson1-tme.png)
 
-Klicka på hello **Solution Explorer** fliken. Här kan du se filen **Model.bim**. Om du inte ser hello designer-fönstret toohello vänster (hello tomt fönster med hello Model.bim fliken), i **Solution Explorer**under **AW Internet försäljnings projekt**, dubbelklicka på hello  **Model.bim** fil. Hej Model.bim filen innehåller hello metadata för ditt modellprojekt. 
+Klicka på fliken **Solution Explorer**. Här kan du se filen **Model.bim**. Om du inte ser designer-fönstret till vänster (det tomma fönstret med fliken Model.bim) i **Solution Explorer** dubbelklickar du på filen **Model.bim** under **AW Internet Sales-projekt**. Filen Model.bim innehåller metadata för ditt modellprojekt. 
 
 ![aas-lesson1-se](../tutorials/media/aas-lesson1-se.png)
   
-Klicka på **Model.bim**. I hello **egenskaper** visas hello modellegenskaper, de viktigaste som är hello **DirectQuery-läge** egenskapen. Denna egenskap anger om hello modellen har distribuerats i InMemory-läge (av) eller DirectQuery-läge (på). I den här självstudien skapar och distribuerar du din modell i InMemory-läge.
+Klicka på **Model.bim**. I fönstret **Egenskaper** visas modellegenskaper, varav den viktigaste är egenskapen **DirectQuery-läge**. Den här egenskapen anger om modellen är distribuerad i InMemory-läge (av) eller DirectQuery-läge (på). I den här självstudien skapar och distribuerar du din modell i InMemory-läge.
 
 ![aas-lesson1-properties](../tutorials/media/aas-lesson1-properties.png)
   
-När du skapar en modellprojekt vissa modellegenskaper konfigureras automatiskt enligt toohello Data Modeling inställningar som kan anges i hello **verktyg** menyn > **alternativ** dialogrutan. Egenskaper för säkerhetskopiering, bevarande av arbetsytan och arbetsyteserver ange hur och var hello arbetsytan databas (din modell redigering databasen) har säkerhetskopierats, bevaras i minnet och inbyggda. Du kan ändra de här inställningarna senare om det behövs, men lämna dem som de är för tillfället.  
+När du skapar ett modellprojekt ställs vissa modellegenskaper in automatiskt enligt de datamodellinställningar som kan anges på menyn **Verktyg** > dialogrutan **Alternativ**. Egenskaper för säkerhetskopiering av data, kvarhållning av arbetsyta och arbetsyteservern anger hur och var arbetsyteservern (modellredigeringsdatabasen) är säkerhetskopierad, bevarad minnesinternt och skapas. Du kan ändra de här inställningarna senare om det behövs, men lämna dem som de är för tillfället.  
 
-Högerklicka på **AW Internet Sales** (projektet) i **Solution Explorer** och sedan på **Egenskaper**. Hej **AW Internet försäljning egenskapssidor** dialogrutan visas. Du ställer in några av de här egenskaperna senare när du distribuerar modellen.  
+Högerklicka på **AW Internet Sales** (projektet) i **Solution Explorer** och sedan på **Egenskaper**. Dialogrutan **AW Internet Sales Property Pages** (AW Internet Sales egenskapssidor) visas. Du ställer in några av de här egenskaperna senare när du distribuerar modellen.  
   
-När du installerade SSDT har flera nya menyalternativ lagts toohello Visual Studio-miljön. Klicka på hello **modellen** menyn. Från den här du importerar data, uppdatera data i arbetsytan, bläddra din modell i Excel, skapa perspektiv och roller, Välj hello modellen visa och ange beräkningsalternativ. Klicka på hello **tabell** menyn. Härifrån kan du skapa och hantera relationer, ange inställningar för datumtabell, skapa partitioner och redigera tabellegenskaper. Om du klickar på hello **kolumnen** -menyn kan du lägga till och ta bort kolumner i en tabell, Lås kolumner och ange sorteringsordning. SSDT lägger också till vissa knappar toohello-fältet. Mest användbara är hello Autosumma funktionen toocreate standard aggregering mått för en markerad kolumn. Andra knappar ger snabb åtkomst toofrequently använda funktioner och kommandon.  
+När du installerade SSDT lades flera nya menyalternativ till i Visual Studio-miljön. Klicka på menyn **Modell**. Härifrån kan du importera data, uppdatera data i arbetsytan, bläddra i din modell i Excel, skapa perspektiv och roller, välja modellvyn och ange beräkningsalternativ. Klicka på menyn **Tabell**. Härifrån kan du skapa och hantera relationer, ange inställningar för datumtabell, skapa partitioner och redigera tabellegenskaper. Om du klickar på menyn **Kolumn** kan du lägga till och ta bort kolumner i en tabell, låsa kolumner och ange sorteringsordning. SSDT lägger även till några knappar i fältet. En mycket användbar funktion är Autosumma som används för att skapa ett vanligt sammansatt mått för en markerad kolumn. Andra knappar i verktygsfältet ger snabb åtkomst till vanliga funktioner och kommandon.  
   
-Utforska några av hello dialogrutor och platser för olika funktioner specifika tooauthoring tabellmodeller. När vissa objekt inte är aktiv ännu, får du en bättre uppfattning om hello tabellmodell redigeringsmiljön.  
+Utforska några dialogrutor och platser för olika funktioner som är specifika för redigering av tabellmodeller. Även om vissa objekt inte är aktiva ännu så får du en bra uppfattning om redigeringsmiljön för tabellmodeller.  
   
 
 ## <a name="whats-next"></a>Nästa steg

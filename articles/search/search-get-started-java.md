@@ -1,6 +1,6 @@
 ---
-title: "aaaGet igång med Azure Search i Java | Microsoft Docs"
-description: "Hur toobuild ett värdbaserat moln Sök program på Azure med hjälp av Java som du programmeringsspråk."
+title: "Komma igång med Azure Search i Java| Microsoft Docs"
+description: "Här lär du dig hur du skapar ett värdbaserat sökprogram i molnet med Azure och Java som programmeringsspråk."
 services: search
 documentationcenter: 
 author: EvanBoyle
@@ -14,67 +14,67 @@ ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.date: 07/14/2016
 ms.author: evboyle
-ms.openlocfilehash: 5476a2103f3b60fe6ec78ff3d3fdba9fcff55c37
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: f6ca06a0349def97b38a1bf6d0d8f36236077e92
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-search-in-java"></a>Komma igång med Azure Search i Java
 > [!div class="op_single_selector"]
 > * [Portal](search-get-started-portal.md)
-> * [.NET](search-howto-dotnet-sdk.md)
+> * [NET](search-howto-dotnet-sdk.md)
 > 
 > 
 
-Lär dig hur toobuild en anpassad Java söka program som använder Azure Search för dess sökinställningar. Den här kursen använder hello [Azure Söktjänsts-REST API](https://msdn.microsoft.com/library/dn798935.aspx) tooconstruct hello objekt och åtgärder som används i den här övningen.
+Lär dig hur du skapar ett anpassat Java-sökprogram som använder Azure Search som sökmiljö. I den här självstudiekursen används [REST-API:et för tjänsten Azure Search](https://msdn.microsoft.com/library/dn798935.aspx) för att skapa de objekt och åtgärder som används i den här övningen.
 
-toorun det här exemplet måste du ha en Azure Search-tjänst som du kan registrera dig för i hello [Azure Portal](https://portal.azure.com). Se [skapa en Azure Search-tjänst i hello portal](search-create-service-portal.md) stegvisa instruktioner.
+Om du vill köra det här exemplet måste du ha en Azure Search-tjänst, som du kan registrera dig för på [Azure Portal](https://portal.azure.com). Stegvisa instruktioner finns i [Skapa en Azure Search-tjänst på portalen](search-create-service-portal.md).
 
-Vi används hello följande programvara toobuild och testa det här exemplet:
+Vi använde följande programvara när vi skapade och testade det här exemplet:
 
-* [Eclipse IDE för Java EE-utvecklare](https://eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/lunar). Vara att toodownload hello EE version. En av hello verifieringssteg kräver en funktion som bara finns i den här versionen.
+* [Eclipse IDE för Java EE-utvecklare](https://eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/lunar). Var noga med att ladda ned EE-versionen. Ett av verifieringsstegen kräver en funktion som bara finns i den här versionen.
 * [JDK 8u40](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 * [Apache Tomcat 8.0](http://tomcat.apache.org/download-80.cgi)
 
-## <a name="about-hello-data"></a>Om hello data
-Det här exempelprogrammet använder data från hello [USA geologiska tjänster (USGS)](http://geonames.usgs.gov/domestic/download_data.htm), filtrerad på hello tillstånd Rhode dataö tooreduce hello dataset storlek. Vi använder den här data toobuild ett sökprogram som returnerar Landmärke byggnader, till exempel sjukhus och skolorna samt geologiska funktioner som dataströmmar, sjöar och toppmöten.
+## <a name="about-the-data"></a>Om de data som används
+Det här exempelprogrammet använder data från [United States Geological Services (USGS)](http://geonames.usgs.gov/domestic/download_data.htm), som har filtrerats på delstaten Rhode Island för att minska datauppsättningens storlek. Vi ska använda dessa data för att skapa ett sökprogram som returnerar viktiga byggnader som sjukhus och skolor, samt geologiska element som vattendrag, sjöar och bergstoppar.
 
-I det här programmet hello **SearchServlet.java** programmet skapar och belastningar hello index med hjälp av en [indexeraren](https://msdn.microsoft.com/library/azure/dn798918.aspx) konstruktion, hämtar hello filtrerade USGS datamängd från en offentlig Azure SQL-databas. Fördefinierade autentiseringsuppgifter och anslutningen information toohello online-datakälla finns i hello programkod. Ingen ytterligare konfiguration krävs vad gäller dataåtkomsten.
+I det här programmet bygger och läser programmet **SearchServlet.java** in indexet med hjälp av en [indexeringskonstruktion](https://msdn.microsoft.com/library/azure/dn798918.aspx) och hämtar den filtrerade USGS-datauppsättningen från en offentlig Azure SQL-databas. Fördefinierade autentiseringsuppgifter och anslutningsinformation för onlinedatakällan finns i programkoden. Ingen ytterligare konfiguration krävs vad gäller dataåtkomsten.
 
 > [!NOTE]
-> Vi har använt ett filter på den här datauppsättningen toostay under hello 10 000 dokumentet gränsen på hello kostnadsfria prisnivån. Den här begränsningen gäller inte om du använder hello standardnivån och du kan ändra den här koden toouse en större datamängd. Mer information om kapaciteten för varje prisnivå finns i [Gränser och begränsningar](search-limits-quotas-capacity.md).
+> Vi har använt ett filter för den här datauppsättningen för att hålla oss under gränsen på 10 000 dokument för den kostnadsfria prisnivån. Om du använder standardnivån så gäller inte den här gränsen och du kan ändra koden om du vill använda en större datauppsättning. Mer information om kapaciteten för varje prisnivå finns i [Gränser och begränsningar](search-limits-quotas-capacity.md).
 > 
 > 
 
-## <a name="about-hello-program-files"></a>Om hello programfiler
-hello beskrivs följande lista hello-filer som är relevanta toothis exempel.
+## <a name="about-the-program-files"></a>Om programfilerna
+Följande lista beskriver de filer som är relevanta för det här exemplet.
 
-* Search.JSP: Innehåller hello användargränssnitt
-* SearchServlet.java: Tillhandahåller metoder (liknande tooa styrenhet i MVC)
+* Search.JSP: Tillhandahåller användargränssnittet
+* SearchServlet.java: Tillhandahåller metoder (påminner om en kontrollant i MVC)
 * SearchServiceClient.java: Hanterar HTTP-begäranden
 * SearchServiceHelper.java: En hjälparklass som tillhandahåller statiska metoder
-* Document.Java: Ger hello-datamodell
-* Config.Properties: Anger hello Sök URL: en och api-nyckel
+* Document.Java: Tillhandahåller datamodellen
+* Config.Properties: Anger URL:en och API-nyckeln för Search-tjänsten
 * Pom.XML: Ett Maven-beroende
 
 <a id="sub-2"></a>
 
-## <a name="find-hello-service-name-and-api-key-of-your-azure-search-service"></a>Hitta hello tjänstnamn och api-nyckel för Azure Search-tjänst
-REST API-anrop i Azure Search kräva att du anger hello URL: en och en api-nyckel. 
+## <a name="find-the-service-name-and-api-key-of-your-azure-search-service"></a>Leta upp tjänstnamnet och API-nyckeln för Azure Search-tjänsten
+Alla REST API-anrop till Azure Search kräver att du anger tjänstens URL och en API-nyckel. 
 
-1. Logga in toohello [Azure Portal](https://portal.azure.com).
-2. Klicka på hello hopp-fältet **söktjänsten** toolist alla hello Azure Search-tjänster har etablerats för din prenumeration.
-3. Välj hello-tjänster som du vill toouse.
-4. På instrumentpanelen för hello-tjänsten ser du paneler för viktig information samt hello nyckelikonen för att komma åt hello admin nycklar.
+1. Logga in på [Azure Portal](https://portal.azure.com).
+2. I snabbåtkomstfältet klickar du på **Söktjänst** för att visa en lista över Azure Search-tjänsterna som har etablerats för din prenumeration.
+3. Markera den tjänst som du vill använda.
+4. På instrumentpanelen för tjänsten ser du paneler för viktig information samt nyckelikonen för att komma åt administatörsnycklarna.
    
       ![][3]
-5. Kopiera hello URL: en och en administrationsnyckel. Du behöver dem senare, när du lägger till dem toohello **config.properties** fil.
+5. Kopiera tjänstens URL och en administratörsnyckel. Du behöver dem senare när du lägger till dem i filen **config.properties**.
 
-## <a name="download-hello-sample-files"></a>Hämta hello exempelfilerna
-1. Gå för[AzureSearchJavaDemo](https://github.com/AzureSearch/AzureSearchJavaIndexerDemo) på GitHub.
-2. Klicka på **hämta ZIP**, spara hello ZIP-filen toodisk och sedan extrahera alla hello filer den innehåller. Överväg att extrahera hello-filer i dina Java arbetsytan toomake som enklare toofind hello projektet senare.
-3. hello exempelfiler är skrivskyddade. Högerklicka på mappegenskaper och avmarkerar hello skrivskyddsattributet.
+## <a name="download-the-sample-files"></a>Ladda ned exempelfilerna
+1. Gå till [AzureSearchJavaDemo](https://github.com/AzureSearch/AzureSearchJavaIndexerDemo) på GitHub.
+2. Klicka på **Ladda ned ZIP**, spara ZIP-filen på disk och extrahera sedan alla filer som den innehåller. Om du vill kan du extrahera filerna till Java-arbetsytan så att det blir lättare att hitta projektet senare.
+3. Exempelfilerna är skrivskyddade. Högerklicka på Mappegenskaper och ta bort skrivskyddet.
 
 Alla efterföljande filändringar och körningsinstruktioner görs mot filer i den här mappen.  
 
@@ -82,74 +82,74 @@ Alla efterföljande filändringar och körningsinstruktioner görs mot filer i d
 1. I Eclipse väljer du **File** > **Import** > **General** > **Existing Projects into Workspace**.
    
     ![][4]
-2. I **väljer rotkatalogen**, bläddra toohello mapp som innehåller exempel på filer. Välj hello-mappen som innehåller hello .project mappen. hello projektet ska visas i hello **projekt** listan som det markerade objektet.
+2. I **Select root directory** bläddrar du till mappen som innehåller exempelfilerna. Välj mappen som innehåller mappen .project. Projektet bör visas i listan **Projects** som ett markerat objekt.
    
     ![][12]
-3. Klicka på **Slutför**.
-4. Använd **Projektutforskaren** tooview och redigera hello-filer. Om den inte redan är öppen klickar du på **fönstret** > **visa** > **Projektutforskaren** eller använda hello genvägen tooopen den.
+3. Klicka på **Finish**.
+4. Använd **Project Explorer** för att visa och redigera filerna. Om den inte redan är öppen klickar du på **Window** > **Show view** > **Project Explorer** eller använder genvägen för att öppna den.
 
-## <a name="configure-hello-service-url-and-api-key"></a>Konfigurera hello URL: en och api-nyckel
-1. I **Projektutforskaren**, dubbelklicka på **config.properties** tooedit hello konfigurationsinställningar som innehåller hello servernamn och api-nyckel.
-2. Se toohello anvisningarna tidigare i den här artikeln, där du hittade hello URL: en och api-nyckel i hello [Azure Portal](https://portal.azure.com), tooget hello värden som du kommer nu att träda i **config.properties**.
-3. I **config.properties**, Ersätt ”Api-nyckeln” med hello api-nyckel för din tjänst. Därefter tjänstnamn (hello första delen av hello URL http://servicename.search.windows.net) ersätter ”Tjänstenamn” i hello samma fil.
+## <a name="configure-the-service-url-and-api-key"></a>Konfigurera tjänstens URL och API-nyckel
+1. I **Project Explorer** dubbelklickar du på **config.properties** för att redigera konfigurationsinställningarna som innehåller servernamnet och API-nyckeln.
+2. Följ stegen ovan i den här artikeln, där du letade upp tjänstens URL och API-nyckeln på [Azure Portal](https://portal.azure.com), för att hämta de värden som du nu ska ange i **config.properties**.
+3. I **config.properties** ersätter du ”Api Key” med API-nyckeln för tjänsten. Därefter ska tjänstnamnet (den första delen av URL:en http://servicename.search.windows.net) ersätta ”service name” i samma fil.
    
     ![][5]
 
-## <a name="configure-hello-project-build-and-runtime-environments"></a>Konfigurera hello projekt, bygga och runtime-miljöer
-1. Högerklicka på hello-projektet i Eclipse i Projektutforskaren > **egenskaper** > **Projektfasetter**.
+## <a name="configure-the-project-build-and-runtime-environments"></a>Konfigurera projektet, versionen och runtime-miljöerna
+1. I Eclipse högerklickar du på projektet i Project Explorer > **Properties** > **Project Facets**.
 2. Välj **Dynamic Web Module**, **Java** och **JavaScript**.
    
     ![][6]
 3. Klicka på **Apply**.
 4. Välj **Window** > **Preferences** > **Server** > **Runtime Environments** > **Add**.
-5. Visa Apache och välj hello version av hello Apache Tomcat-server som du tidigare har installerat. I vårt system installerade vi version 8.
+5. Expandera Apache och välj den version av Apache Tomcat-servern som du installerade tidigare. I vårt system installerade vi version 8.
    
     ![][7]
-6. Ange hello Tomcat-installationskatalogen på hello nästa sida. På en Windows-dator är detta antagligen C:\Program\Apache Software Foundation\Tomcat *version*.
+6. Ange installationskatalogen för Tomcat på nästa sida. På en Windows-dator är detta antagligen C:\Program\Apache Software Foundation\Tomcat *version*.
 7. Klicka på **Finish**.
 8. Välj **Window** > **Preferences** > **Java** > **Installed JREs** > **Add**.
 9. Välj **Standard VM**i **Add JRE**.
 10. Klicka på **Nästa**.
 11. Klicka på **Directory** i JRE Definition på JRE-startsidan.
-12. Navigera för**programfiler** > **Java** och välj hello JDK som du tidigare har installerat. Det är viktigt tooselect hello JDK som hello JRE.
-13. Välj hello i installerat JREs **JDK**. Inställningarna bör se ut ungefär toohello följande skärmbild.
+12. Gå till **Program Files** > **Java** och välj den JDK som du installerade tidigare. Det är viktigt att du väljer JDK som JRE.
+13. Välj **JDK** i Installed JREs. Inställningarna bör se ut som i följande skärmbild.
     
     ![][9]
-14. Alternativt, Välj **fönstret** > **webbläsare** > **Internet Explorer** tooopen hello programmet i en extern webbläsarfönster. En extern webbläsare ger dig en bättre webbupplevelse.
+14. Du kan också välja **Window** > **Web Browser** > **Internet Explorer** om du vill öppna programmet i ett externt webbläsarfönster. En extern webbläsare ger dig en bättre webbupplevelse.
     
     ![][8]
 
-Du har nu slutfört hello konfigurationsåtgärder. Därefter du skapa och köra hello-projektet.
+Nu har du slutfört konfigurationsåtgärderna. Nu är det dags att bygga och köra projektet.
 
-## <a name="build-hello-project"></a>Skapa hello-projekt
-1. Högerklicka på hello projektnamn i Projektutforskaren, och välj **kör som** > **Maven build...**  tooconfigure hello projektet.
+## <a name="build-the-project"></a>Bygga projektet
+1. Högerklicka på projektets namn i Project Explorer och välj **Run as** > **Maven build** för att konfigurera projektet.
    
     ![][10]
 2. I Goals i Edit Configuration skriver du ”clean install” och klickar på **Run**.
 
-Statusmeddelanden är utdata toohello konsolfönstret. Du bör se Skapa lyckade som anger hello-projektet skapats utan fel.
+Statusmeddelanden visas i konsolfönstret. Meddelandet BUILD SUCCESS bör visas som anger att projektet har skapats utan fel.
 
-## <a name="run-hello-app"></a>Kör hello-appen
-I det sista steget körs hello program i en lokal server-körningsmiljön.
+## <a name="run-the-app"></a>Kör appen
+I det sista steget ska du köra programmet i körningsmiljön för en lokal server.
 
-Om du inte har angett en server körningsmiljö ännu i Eclipse, behöver du toodo som först.
+Om du inte har angett serverkörningsmiljön i Eclipse än så måste du göra det först.
 
 1. Expandera **WebContent** i Project Explorer.
-2. Högerklicka på **Search.jsp** > **Run As** > **Run on Server**. Välj hello Apache Tomcat server och klicka sedan på **kör**.
+2. Högerklicka på **Search.jsp** > **Run As** > **Run on Server**. Välj Apache Tomcat-servern och klicka på **Run**.
 
 > [!TIP]
-> Om du använder en icke-förvalt arbetsytan toostore projektet, behöver du toomodify **kör konfiguration** toopoint toohello projekt plats tooavoid ett serverfel uppstart. I Project Explorer högerklickar du på **Search.jsp** > **Run As** > **Run Configurations**. Välj hello Apache Tomcat-server. Klicka på **Arguments**. Klicka på **arbetsytan** eller **filsystemet** tooset hello mapp som innehåller hello-projekt.
+> Om du använder en annan arbetsyta än en standardarbetsyta för att lagra projektet måste du ändra **Run Configuration** så att det pekar på projektets plats för att undvika fel när servern startar. I Project Explorer högerklickar du på **Search.jsp** > **Run As** > **Run Configurations**. Välj Apache Tomcat-servern. Klicka på **Arguments**. Klicka på **Workspace** eller **File System** för att ange mappen som innehåller projektet.
 > 
 > 
 
-När du kör programmet hello bör du se ett webbläsarfönster sökrutan för att ange villkoren.
+När du kör programmet bör du se ett webbläsarfönster med en sökruta där du kan ange söktermer.
 
-Vänta ungefär en minut innan du klickar på **Sök** toogive hello service tid toocreate och Läs in hello index. Om du får en HTTP 404-fel, måste du bara toowait lite längre innan du försöker igen.
+Vänta ungefär en minut innan du klickar på **Search** så att tjänsten får tid på sig att skapa och läsa in indexet. Om ett HTTP 404-fel returneras väntar du bara lite längre innan du försöker igen.
 
 ## <a name="search-on-usgs-data"></a>Söka i USGS-data
-Hej USGS datauppsättningen innehåller poster som är relevanta toohello tillstånd Rhode dataö. Om du klickar på **Sök** för en tom sökrutan visas hello upp 50 poster som är hello standard.
+USGS-datauppsättningen innehåller poster som är relevanta för delstaten Rhode Island. Om du klickar på **Search** i en tom sökrutan returneras 50 poster, vilket är standard.
 
-Ange en sökterm ger hello sökmotor något toogo på. Prova att skriva namnet på någon från regionen. ”Roger Williams” var hello första resursstyrningen av Rhode dataö. Många parker, byggnader och skolor bär hans namn.
+Om du skriver en sökterm ger du sökmotorn något att gå på. Prova att skriva namnet på någon från regionen. ”Roger Williams” var Rhode Islands första guvernör. Många parker, byggnader och skolor bär hans namn.
 
 ![][11]
 
@@ -160,11 +160,11 @@ Du kan också prova någon av dessa söktermer:
 * goose +cape
 
 ## <a name="next-steps"></a>Nästa steg
-Detta är hello första Azure Search-självstudierna baserat på Java och hello USGS dataset. Över tiden, kommer vi utöka den här självstudiekursen toodemonstrate ytterligare sökfunktioner som du kanske vill toouse i din anpassade lösningar.
+Det här är den första Azure Search-självstudiekursen som baseras på Java och USGS-datauppsättningen. Med tiden kommer vi att utöka den här självstudiekursen och demonstrera ytterligare sökfunktioner som du kanske vill använda i dina anpassade lösningar.
 
-Om du redan har vissa bakgrunden i Azure Search kan du kan använda det här exemplet som en springboard för ytterligare undersökningar kanske höja hello [söksidan](search-pagination-page-layout.md), eller implementera [fasetterad navigering](search-faceted-navigation.md). Du kan också förbättra vid hello sökresultatsidan genom att lägga till antal och batchbearbetning dokument så att användare kan bläddra igenom hello resultat.
+Om du redan har viss erfarenhet av Azure Search kan du använda det här exemplet som en utgångspunkt för ytterligare experiment och kanske utöka [söksidan](search-pagination-page-layout.md) eller implementera [aspektbaserad navigering](search-faceted-navigation.md). Du kan även förbättra sidan med sökresultat genom att lägga till antal och batchbearbeta dokument så att användarna kan bläddra igenom resultaten.
 
-Nya tooAzure sökningen? Vi rekommenderar att du försöker andra självstudiekurser toodevelop förstå vad du kan skapa. Besök vår [dokumentationssidan](https://azure.microsoft.com/documentation/services/search/) toofind mer resurser. Du kan också visa hello länkar i vår [Video-och kursen](search-video-demo-tutorial-list.md) tooaccess mer information.
+Har du inte provat Azure Search än? Vi rekommenderar att du går andra självstudiekurser så att du ser vad du kan skapa. Vår [dokumentationssida](https://azure.microsoft.com/documentation/services/search/) innehåller fler resurser. Mer information finns också på länkarna i [listan med videoklipp och självstudiekurser](search-video-demo-tutorial-list.md).
 
 <!--Image references-->
 [1]: ./media/search-get-started-java/create-search-portal-1.PNG

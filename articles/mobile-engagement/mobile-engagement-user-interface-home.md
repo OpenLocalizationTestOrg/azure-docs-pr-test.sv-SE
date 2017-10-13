@@ -1,6 +1,6 @@
 ---
-title: "aaaAzure användargränssnitt för Mobile Engagement - startsida"
-description: "Lär dig hur toomanage ditt befintliga program och projekt med hjälp av Azure Mobile Engagement"
+title: "Azure Mobile Engagement användargränssnittet - Start"
+description: "Lär dig att hantera dina befintliga program och projekt med hjälp av Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: 
 author: piyushjo
@@ -14,53 +14,53 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 727dad188c5876d09db84634a17e10b280039c49
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 0f15cb975f57f6f5cab12d5118ff50a6fab14388
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="how-toomanage-your-existing-application-and-projects"></a>Hur toomanage ditt befintliga program och projekt
-Den här artikeln beskriver hello **Start** sidan hello **Mobile Engagement** portal. Du använder hello **Mobile Engagement** portal toomonitor och hantera dina mobila appar. Observera att toostart med hello-portalen måste du först toocreate en **Azure Mobile Engagement** konto. 
+# <a name="how-to-manage-your-existing-application-and-projects"></a>Så här hanterar du ditt befintliga program och projekt
+Den här artikeln beskriver den **Start** sida av den **Mobile Engagement** portal. Du använder den **Mobile Engagement** portalen för att övervaka och hantera dina mobila appar. Observera att börja använda portalen måste du först skapa en **Azure Mobile Engagement** konto. 
 
-startsidan för tooget toohello, klickar du på **hem** på hello upp till vänster på sidan hello. Den innehåller hello lista över alla program som ingår i hello valt samling. På den här sidan se du bara en snabb överblick över dina program.
+Gå till startsidan, klicka på **hem** på upp till vänster på sidan. Den innehåller en lista över alla program som ingår i den valda samlingen. På den här sidan se du bara en snabb överblick över dina program.
 
-hello-startsidan innehåller även alla projekt som kan innehålla alla program som finns i ditt konto. Observera att alla kan komma åt hello startsida hello Användargränssnittet genom att skapa ett konto, men du behöver toogrant behörighet tooother användare för att de toohave åtkomst tooyour anpassade program i **Mina projekt**.
+Sidan innehåller även alla projekt som kan innehålla alla program som finns i ditt konto. Observera att alla kan komma åt sidan av Gränssnittet genom att skapa ett konto, men du behöver ge behörighet till andra användare för att de ska ha åtkomst till dina anpassade program i **Mina projekt**.
 
-Du kan också visa hello jämförelsetabell för hello valt program. Eller välj tooview hello jämförelsetabell för valda program i ett projekt.
+Du kan också visa adressutrymmet för de valda programmen. Eller välj att visa adressutrymmet för valda program i ett projekt.
 
 ![Home1][0]
 
 ## <a name="my-applications"></a>Mina program
-hello snabb överblick över dina program kan du tooselect vilket program som du vill att tooopen tooview hello detaljerad menyfliksområdet alternativ. Du kan klicka hello namnet på programmet tooreturn toohello senast besökta menyfliksområdet plats i ditt program, eller klicka hello växeln ikonen toogo direkt toohello ”inställningar” sidan i ditt program. Du kan söka, filtrera eller sortera hello information som visas på hello program tabeller. Du kan också dra och släpp hello huvuden toochange hello kolumnordning.
+Snabb överblick över dina program kan du välja vilka program som du vill öppna om du vill visa detaljerad menyfliksområdet. Du kan klicka på namnet på ditt program för att återgå till den senast besökta menyfliksområdet platsen i ditt program, eller klicka på ikonen växeln gå direkt till sidan ”Inställningar” i ditt program. Du kan söka, filtrera eller sortera informationen som visas i program-tabeller. Du kan också dra och släpp kolumnrubrikerna Om du vill ändra ordningen.
 
-Hello översikt över dina program innehåller bland annat:
+Översikt över dina program innehåller bland annat:
 
-* **Ny användare trend**: utvecklingen av nya användare över hello senaste två veckorna.
-* **Aktiva användare**: antal aktiva användare under hello senaste 30 dagarna.
-* **Aktiva användare trend**: utvecklingen av aktiva användare under hello senaste två veckorna.
-* **Sessioner**: en session är användningen av hello-program som utförs av en användare, från hello tid hello användaren börjar använda, tills hello användaren slutar.
-* **Sessionen trender**: utvecklingen av sessioner över hello senaste två veckorna.
+* **Ny användare trend**: utvecklingen av nya användare under de senaste två veckorna.
+* **Aktiva användare**: antal aktiva användare under de senaste 30 dagarna.
+* **Aktiva användare trend**: utvecklingen av aktiva användare under de senaste två veckorna.
+* **Sessioner**: en session är en användning av programmet som utförs av en användare, från tidpunkten då användaren startar med hjälp av det, tills upphör.
+* **Sessionen trender**: utvecklingen av sessioner under de senaste två veckorna.
 
-När du klickar på ett program kan starta du övervakning och hantering av dina appar via hello Användargränssnittet. Exempel:    
+När du klickar på ett program kan börja du övervaka och hantera dina appar via Användargränssnittet. Exempel:    
 
 * [Övervaka realtidsdata för appen](mobile-engagement-user-interface-monitor.md)
 * [Analysera historiska data för appen](mobile-engagement-user-interface-analytics.md)
-* [Skapa och hantera segment av användare tooidentify användningsmönster](mobile-engagement-user-interface-segments.md)
-* [Nå ut toohello användare av ditt program med push-meddelanden](mobile-engagement-user-interface-reach.md)
+* [Skapa och hantera användarsegment för att identifiera användningsmönster](mobile-engagement-user-interface-segments.md)
+* [Nå ut till appanvändarna med push-meddelanden](mobile-engagement-user-interface-reach.md)
 
 ## <a name="my-projects"></a>Mina projekt
-Du kan använda projekt toogroup dina program och ge behörighet tooother användare tooaccess dina program. Du ger behörighet tooother användare genom att ange e-postadress. Hej **nytt projekt** knappen kan du toocreate ett nytt projekt genom att bara ange ”namn” och ”beskrivning” det nya projektet. När projektet har skapats kan du klicka på hello projekt namnet tooedit hello namn och en beskrivning av din produkt och tooselect alla hello-program som du vill använda toosee i det här projektet.
+Du kan använda projekt för att gruppera dina program och ge behörighet till andra användare att komma åt dina program. Du kan ge behörighet till andra användare genom att ange e-postadress. Den **nytt projekt** knappen om du vill skapa ett nytt projekt genom att bara ange ”namn” och ”beskrivning” det nya projektet. När projektet har skapats kan klicka du på projektnamnet att redigera namn och beskrivning av produkten och välj de program som du vill visa i det här projektet.
 
 ![Home6][60]
 
 Roller är:
 
-* **Visningsprogrammet**: A Viewer är en användare kan bara visa hello program associerade tooa projekt. Ett visningsprogram kan komma åt analytics och övervaka data och titta på Reach resultat. Ett visningsprogram kan inte ändra någon information eller hantera program eller användare. Ett visningsprogram kan inte skapa eller ändra Reach kampanjstatus.
+* **Visningsprogrammet**: A Viewer är en användare kan bara visa program som hör till ett projekt. Ett visningsprogram kan komma åt analytics och övervaka data och titta på Reach resultat. Ett visningsprogram kan inte ändra någon information eller hantera program eller användare. Ett visningsprogram kan inte skapa eller ändra Reach kampanjstatus.
 * **Utvecklare**: A utvecklare är en användare som kan göra allt ett visningsprogram kan göra, samt hantera program. En utvecklare kan aktivera och inaktivera program, ändra programinformationen (till exempel och signaturmappar) och skapa Reach-kampanjer. En utvecklare kan inte hantera användare.
-* **Administratören**: en administratör är en användare som kan göra allt en utvecklare kan göra, samt hantera användare. En administratör kan bjuda in användare toojoin ett projekt kan ändra användarroller och ändra projektets information. Behörighet på användarnivå kan också anges i ”inställningar”.
+* **Administratören**: en administratör är en användare som kan göra allt en utvecklare kan göra, samt hantera användare. En administratör kan erbjuda användare att ansluta till ett projekt kan ändra användarroller och ändra projektets information. Behörighet på användarnivå kan också anges i ”inställningar”.
 
-Klicka på ett projekt tooview alla hello-program som ingår i det här projektet. hello följande bild visar hello jämförelsetabell för hello valt program.
+Klicka på ett projekt för att visa alla program som ingår i det här projektet. Följande bild visar adressutrymmet för de valda programmen.
 
 ![(Bostad2)][3]
 

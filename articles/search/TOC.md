@@ -29,8 +29,8 @@
 
 ## Utveckla
 ### [API-versioner](search-api-versions.md)
-### [Uppgradera hello SDK](search-dotnet-sdk-migration.md)
-### [Uppgradera hello REST API](search-api-migration.md)
+### [Uppgradera SDK](search-dotnet-sdk-migration.md)
+### [Uppgradera REST API](search-api-migration.md)
 ### [Skapa modeller över komplexa datatyper](search-howto-complex-data-types.md)
 ### [Hantera samtidiga uppdateringar](search-howto-concurrency.md)
 ### [Kodexempel](https://azure.microsoft.com/resources/samples/?service=search)
@@ -38,7 +38,7 @@
 ## Hantera
 ### Administrera Azure Search
 #### [Azure Portal](search-manage.md)
-#### [PowerShell](search-manage-powershell.md)
+#### Azure [Azure PowerShell](search-manage-powershell.md)
 ### [Övervaka användning och statistik](search-monitor-usage.md)
 ### [Söktrafikanalys](search-traffic-analytics.md)
 ### [Prestanda och optimering](search-performance-optimization.md)
@@ -50,7 +50,7 @@
 ### [Azure Cosmos DB-indexeraren](search-howto-index-documentdb.md)
 ### [Index CSV-blobar](search-howto-index-csv-blobs.md)
 ### [Index JSON-blobar](search-howto-index-json-blobs.md)
-### [Konfigurera indexeraren anslutningar tooSQL Server på Azure VM](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
+### [Konfigurera indexerarens anslutningar till SQL Server på Azure VM](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
 ### [Fältmappningar i indexerare](search-indexer-field-mappings.md)
 ##  Search
 ### [Så här fungerar fulltextsökning](search-lucene-query-architecture.md)
@@ -59,7 +59,8 @@
 #### [Lucene-frågesyntax](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
 #### [Exempel på Lucene-syntaxfråga](search-query-lucene-examples.md)
 #### [Filtrera uttryckssyntax](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)
-### Anpassad sökning
+### Analysverktyg i Azure Search
+#### [Översikt](search-analyzers.md)
 #### [Språkanalysverktyg](https://docs.microsoft.com/rest/api/searchservice/language-support)
 #### [Anpassade analysverktyg](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)
 ### [Växla resultat](search-pagination-page-layout.md)

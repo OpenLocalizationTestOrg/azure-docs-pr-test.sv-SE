@@ -1,6 +1,6 @@
 ---
-title: "aaaReceive händelser från Azure Event Hubs använder hello .NET Framework | Microsoft Docs"
-description: "Följ den här självstudiekursen tooreceive händelser från Azure Event Hubs med hello .NET Framework."
+title: "Ta emot händelser från Azure Event Hubs med .NET Framework| Microsoft Docs"
+description: "Följ den här självstudien för att ta emot händelser från Azure Event Hubs med .NET Framework."
 services: event-hubs
 documentationcenter: 
 author: sethmanheim
@@ -12,73 +12,73 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/12/2017
+ms.date: 10/10/2017
 ms.author: sethm
-ms.openlocfilehash: a88c3feeacfd3de9622dbb86e25222e861750204
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 5d2f6f53af182a8ac0430de0ca3701a9a30e0bf4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="receive-events-from-azure-event-hubs-using-hello-net-framework"></a>Ta emot händelser från Azure Event Hubs med hello .NET Framework
+# <a name="receive-events-from-azure-event-hubs-using-the-net-framework"></a>Ta emot händelser från Azure Event Hubs med .NET Framework
 
 ## <a name="introduction"></a>Introduktion
 
-Händelsehubbar är en tjänst som bearbetar stora mängder händelsedata (telemetri) från anslutna enheter och program. När du samlar in data i Händelsehubbar kan du lagra hello data med ett lagringskluster eller omvandla dem med hjälp av en leverantör av realtidsanalys. Den här storskaliga händelse och bearbetningsfunktionen är en viktig komponent inom moderna programarkitekturer inklusive hello Sakernas Internet (IoT).
+Händelsehubbar är en tjänst som bearbetar stora mängder händelsedata (telemetri) från anslutna enheter och program. När du har samlat in data i händelsehubbar kan du lagra dem med ett lagringskluster eller omvandla dem med hjälp av en leverantör av realtidsanalys. Den här storskaliga händelseinsamlingen och bearbetningsfunktionen är en viktig komponent inom moderna programarkitekturer som t.ex. sakernas internet.
 
-Den här kursen visar hur toowrite ett .NET Framework-konsolapp som tar emot meddelanden från en händelsehubb med hjälp av hello  **[värd för händelsebearbetning][EventProcessorHost]**. toosend händelser med hjälp av hello .NET Framework finns hello [skicka händelser tooAzure Händelsehubbar med hello .NET Framework](event-hubs-dotnet-framework-getstarted-send.md) artikel, eller klicka på hello skicka språket i hello vänstra innehållsförteckning.
+I den här självstudien får du lära dig att skriva ett .NET Framework-konsolprogram som tar emot meddelanden från en Event Hub med **[värden för händelsebearbetning][EventProcessorHost]**. För att skicka händelser med .NET Framework kan du läsa artikeln [Skicka händelser till Azure Event Hubs med .NET Framework](event-hubs-dotnet-framework-getstarted-send.md) eller klicka på ditt avsändarspråk till vänster i innehållsförteckningen.
 
-Hej [värd för händelsebearbetning] [ EventProcessorHost] är en .NET-klass som förenklar mottagandet av händelser från event hubs genom att hantera permanenta kontrollpunkter och parallella mottaganden från event hubs. Med hjälp av hello [värd för händelsebearbetning][Event Processor Host], du kan dela upp händelser på flera olika mottagare, även när de ligger på olika noder. Det här exemplet illustrerar hur toouse hello [värd för händelsebearbetning] [ EventProcessorHost] för en enda mottagare. Hej [skala ut händelsebearbetning] [ Scale out Event Processing with Event Hubs] exempel visar hur toouse hello [värd för händelsebearbetning] [ EventProcessorHost] med flera mottagare.
+[EventProcessorHost][EventProcessorHost] är en .NET-klass som förenklar mottagandet av händelser från händelsehubbar genom att hantera permanenta kontrollpunkter och parallella mottaganden från händelsehubbar. Med hjälp av [EventProcessorHost][Event Processor Host] kan du dela upp händelser över flera olika mottagare, även när de ligger på olika noder. Det här exemplet visas hur man använder [EventProcessorHost][EventProcessorHost] för en enda mottagare. Exemplet på att [skala ut händelsebearbetning][Scale out Event Processing with Event Hubs] visar hur man använder [EventProcessorHost][EventProcessorHost] med flera mottagare.
 
 ## <a name="prerequisites"></a>Krav
 
-toocomplete den här kursen behöver du hello följande krav:
+För att slutföra den här självstudien, finns följande förhandskrav:
 
-* [Microsoft Visual Studio 2015 eller senare](http://visualstudio.com). hello skärmdumpar i den här självstudiekursen använder Visual Studio 2017.
+* [Microsoft Visual Studio 2015 eller senare](http://visualstudio.com). För skärmdumparna i de här självstudierna används Visual Studio 2017.
 * Ett aktivt Azure-konto. Om du inte har något konto kan du skapa ett utan kostnad på ett par minuter. Mer information om den [kostnadsfria utvärderingsversionen av Azure](https://azure.microsoft.com/free/).
 
 ## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Skapa ett namnområde för Event Hubs och en händelsehubb
 
-hello första steget är toouse hello [Azure-portalen](https://portal.azure.com) toocreate en namnrymd Skriv Händelsehubbar och hämta hello management-autentiseringsuppgifter som programmet behöver toocommunicate med hello händelsehubb. toocreate ett namnområde och händelsehubb, följer du proceduren hello i [i den här artikeln](event-hubs-create.md), fortsätt sedan med hello följa stegen i den här självstudiekursen.
+Det första steget är att använda [Azure Portal](https://portal.azure.com) till att skapa ett namnområde av typen Event Hubs och hämta de autentiseringsuppgifter för hantering som programmet behöver för att kommunicera med händelsehubben. Om du vill skapa ett namnområde och en händelsehubb följer du anvisningarna i [den här artikeln](event-hubs-create.md) och fortsätter sedan enligt följande steg i den här självstudien.
 
 ## <a name="create-an-azure-storage-account"></a>Skapa ett Azure Storage-konto
 
-toouse hello [värd för händelsebearbetning][EventProcessorHost], måste du ha en [Azure Storage-konto][Azure Storage account]:
+För att kunna använda [EventProcessorHost][EventProcessorHost] behöver du ett [Azure Storage-konto][Azure Storage account]:
 
-1. Logga in toohello [Azure-portalen][Azure portal], och klicka på **ny** på hello upp till vänster i hello-skärmen.
+1. Logga in på [Azure Portal][Azure portal] och klicka på **Ny** högst upp till vänster på skärmen.
 2. Klicka på **Lagring** och sedan på **Lagringskonto**.
    
     ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage1.png)
-3. I hello **skapa lagringskonto** bladet, ange ett namn för hello storage-konto. Välj en Azure-prenumeration, resursgrupp och plats i vilken toocreate hello-resurs. Klicka sedan på **Skapa**.
+3. På bladet **Skapa lagringskonto** anger du ett namn för lagringskontot. Välj en Azure-prenumeration, resursgrupp och plats där du vill skapa resursen. Klicka sedan på **Skapa**.
    
     ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage2.png)
-4. Hello listan med lagringskonton, på hello nyligen skapade lagringskontot.
-5. I hello lagring-kontoblad klickar du på **åtkomstnycklar**. Kopiera hello värdet för **key1** toouse senare i den här kursen.
+4. Klicka på det nyligen skapade lagringskontot i listan över lagringskonton.
+5. På bladet för lagringskontot klickar du på **Åtkomstnycklar**. Kopiera värdet för **nyckel1** och använd det senare i de här självstudierna.
    
     ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage3.png)
 
 ## <a name="create-a-receiver-console-application"></a>Skapa ett mottagarkonsolprogram
 
-1. I Visual Studio skapar du ett nytt Visual C#-Skrivbordsapprojekt-projekt med hello **konsolprogram** projektmall. Namnet hello projektet **mottagare**.
+1. I Visual Studio skapar du ett nytt Visual C#-skrivbordsapprojekt med hjälp av projektmallen **Konsolprogram**. Namnge projektet **Mottagare**.
    
     ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-receiver-csharp1.png)
-2. I Solution Explorer högerklickar du på hello **mottagare** projektet och klicka sedan på **hantera NuGet-paket för lösningen**.
-3. Klicka på hello **Bläddra** fliken, och sök sedan efter `Microsoft Azure Service Bus Event Hub - EventProcessorHost`. Klicka på **installera**, och Godkänn hello villkor för användning.
+2. Högerklicka på projektet **Mottagare** i Solution Explorer och klicka sedan på **Hantera NuGet-paket för lösningen**.
+3. Klicka på **Bläddra**-fliken och sök sedan efter `Microsoft Azure Service Bus Event Hub - EventProcessorHost`. Klicka på **Installera** och godkänn användningsvillkoren.
    
     ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-eph-csharp1.png)
    
-    Visual Studio hämtar, installerar och lägger till en referens toohello [Azure Service Bus Event Hub - EventProcessorHost NuGet-paketet](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost), med dess beroenden.
-4. Högerklicka på hello **mottagare** projektet, klicka på **Lägg till**, och klicka sedan på **klassen**. Namnge hello nya klassen **SimpleEventProcessor**, och klicka sedan på **Lägg till** toocreate hello-klassen.
+    Visual Studio laddar ned, installerar och lägger till en referens till [Azure Service Bus Event Hub –EventProcessorHost NuGet-paket ](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost), med alla sina beroenden.
+4. Högerklicka på **Mottagare**-projektet, klicka på **Lägg till** och klicka sedan på **Klass**. Kalla den nya klassen för **SimpleEventProcessor** och klicka sedan på **Lägg till** för att skapa klassen.
    
     ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-receiver-csharp2.png)
-5. Lägg till följande instruktioner överst hello i hello SimpleEventProcessor.cs filen hello:
+5. Lägg till följande uttryck överst i filen SimpleEventProcessor.cs:
     
   ```csharp
   using Microsoft.ServiceBus.Messaging;
   using System.Diagnostics;
   ```
     
-  Ersätt sedan hello följande kod för hello hello klass:
+  Ersätt sedan följande kod för innehållet i klassen:
     
   ```csharp
   class SimpleEventProcessor : IEventProcessor
@@ -122,14 +122,14 @@ toouse hello [värd för händelsebearbetning][EventProcessorHost], måste du ha
   }
   ```
     
-  Den här klassen anropas av hello **EventProcessorHost** tooprocess händelser som tagits emot från hello händelsehubb. Hej `SimpleEventProcessor` klassen använder ett stoppur tooperiodically hello kontrollpunkt telefonsamtalsmetoden på hello **EventProcessorHost** kontext. Denna bearbetning gör att, om hello mottagaren startas förlorar högst fem minuters bearbetningsarbete.
-6. I hello **programmet** klassen och Lägg till följande hello `using` instruktionen hello överst i filen hello:
+  Den här klassen kommer att anropas av **EventProcessorHost** för att bearbeta händelser som tagits emot från händelsehubben. Observera att `SimpleEventProcessor`-klassen använder sig av ett stoppur för att regelbundet anropa kontrollpunktsmetoden i **EventProcessorHost**-kontexten. Detta garanterar att högst fem minuters bearbetningsarbete försvinner om mottagaren startas om.
+6. I **Program**-klassen lägger du till följande `using`-uttryck överst i filen:
     
   ```csharp
   using Microsoft.ServiceBus.Messaging;
   ```
     
-  Ersätt sedan hello `Main` metod i hello `Program` klassen med följande kod hello, ersätter hello händelsehubbens namn och hello namnområdesnivå anslutning sträng som du sparade tidigare och hello lagringskontot och nyckeln som du kopierade i hello föregående avsnitt. 
+  Ersätt sedan metoden `Main` i klassen `Program` med följande kod, och ersätt namnet på händelsehubben och anslutningssträngen på namnområdesnivå som du sparade tidigare, samt lagringskontot och nyckeln som du kopierade i föregående avsnitt. 
     
   ```csharp
   static void Main(string[] args)
@@ -147,25 +147,25 @@ toouse hello [värd för händelsebearbetning][EventProcessorHost], måste du ha
     options.ExceptionReceived += (sender, e) => { Console.WriteLine(e.Exception); };
     eventProcessorHost.RegisterEventProcessorAsync<SimpleEventProcessor>(options).Wait();
     
-    Console.WriteLine("Receiving. Press enter key toostop worker.");
+    Console.WriteLine("Receiving. Press enter key to stop worker.");
     Console.ReadLine();
     eventProcessorHost.UnregisterEventProcessorAsync().Wait();
   }
   ```
 
-7. Kör programmet hello och kontrollera att det inte finns några fel.
+7. Kör programmet och kontrollera att det inte finns några fel.
   
-Grattis! Du har nu fått meddelanden från en händelsehubb med hjälp av hello värd för händelsebearbetning.
+Grattis! Du har nu fått meddelanden från en händelsehubb med värden för händelsebearbetning.
 
 
 > [!NOTE]
-> Den här guiden använder en enda instans av [EventProcessorHost][EventProcessorHost]. tooincrease genomströmning rekommenderas att du kör flera instanser av [EventProcessorHost][EventProcessorHost]som visas i hello [skala ut händelsebearbetning] [skala ut händelsebearbetning] exempel. I sådana fall sinsemellan hello olika instanserna automatiskt tooload saldo hello emot händelser. Om du vill att flera mottagare tooeach processen *alla* hello händelser, måste du använda hello **ConsumerGroup** begrepp. När du tar emot händelser från olika datorer, kan det vara användbart toospecify namn för [EventProcessorHost] [ EventProcessorHost] instanser baserat på hello datorer (eller roller) i som de har distribuerats. Mer information om de här ämnena finns hello [översikt av Händelsehubbar] [ Event Hubs overview] och hello [Programmeringsguide för Händelsehubbar] [ Event Hubs Programming Guide] avsnitt.
+> Den här guiden använder en enda instans av [EventProcessorHost][EventProcessorHost]. För att öka dataflödet rekommenderas att du kör flera instanser av [EventProcessorHost][EventProcessorHost], enligt exemplet [Utskalad händelsebearbetning][Utskalad händelsebearbetning]. I de fallen koordineras de olika instanserna automatiskt sinsemellan för att kunna belastningsutjämna de mottagna händelserna. Om du vill att flera mottagare bearbetar *alla* händelser, måste du använda konceptet **ConsumerGroup**. När du tar emot händelser från olika datorer, kan det vara praktiskt att ange namn för [EventProcessorHost][EventProcessorHost]-instanser baserat på de datorer (eller roller) som de har distribuerats i. Mer information om de här ämnena finns i [Översikt över Event Hubs][Event Hubs overview] och [Programmeringsguide för Event Hubs][Event Hubs Programming Guide].
 > 
 > 
 
 ## <a name="next-steps"></a>Nästa steg
 
-Nu när du har skapat ett fungerande program som skapar en händelsehubb och skickar och tar emot data, kan du lära dig mer genom att besöka hello följande länkar:
+Nu när du har skapat ett fungerande program som skapar en händelsehubb och skickar och tar emot data kan du lära dig mer genom att besöka följande länkar:
 
 * [Värd för händelsebearbetning][Event Processor Host]
 * [Översikt av händelsehubbar][Event Hubs overview]

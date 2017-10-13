@@ -1,5 +1,3 @@
-Redigera Sipi.
+Om du vill växla till Azure AD B2C-klientorganisationen väljer du B2C-katalogen längst upp till höger i portalen.
 
-tooswitch tooyour Azure AD B2C-klient, Välj hello B2C-katalog i hello övre högra hörnet av hello-portalen.
-
-![Växla tooyour Azure AD B2C-klient](./media/active-directory-b2c-switch-b2c-tenant/switch-to-b2c-tenant.png)
+![Växla till Azure AD B2C-klientorganisationen](./media/active-directory-b2c-switch-b2c-tenant/switch-to-b2c-tenant.png)

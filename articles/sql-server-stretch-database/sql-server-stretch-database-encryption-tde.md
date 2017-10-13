@@ -1,5 +1,5 @@
 ---
-title: "aaaEnable Transparent datakryptering för Stretch Database - Azure | Microsoft Docs"
+title: "Aktivera Transparent datakryptering för Stretch Database – Azure | Microsoft Docs"
 description: "Aktivera Transparent datakryptering (TDE) för SQL Server Stretch Database på Azure"
 services: sql-server-stretch-database
 documentationcenter: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2016
 ms.author: douglasl
-ms.openlocfilehash: 1d6bff455030ac8851b2184c1e8097afd61361d9
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: ceb355d2ba872ed5d3886c6dc82ca75b1854db0a
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="enable-transparent-data-encryption-tde-for-stretch-database-on-azure"></a>Aktivera Transparent datakryptering (TDE) för Stretch Database på Azure
 > [!div class="op_single_selector"]
@@ -27,26 +27,26 @@ ms.lasthandoff: 10/06/2017
 >
 >
 
-Transparent Data kryptering (TDE) skyddar mot hello hotet att skadlig aktivitet genom att utföra realtid kryptering och dekryptering av hello databas, tillhörande säkerhetskopior och transaktionsloggfiler vilande utan ändringar toohello programmet.
+Transparent Data kryptering (TDE) skyddar mot hot från skadlig aktivitet genom att utföra realtid kryptering och dekryptering av databasen, tillhörande säkerhetskopior och transaktionsloggfiler vilande utan ändringar i programmet.
 
-TDE krypterar hello lagring av en hel databas med en symmetrisk nyckel kallas hello krypteringsnyckeln för databasen. Hej databaskrypteringsnyckeln skyddas av en inbyggd servercertifikat. hello inbyggda servercertifikatet är unikt för varje Azure-servern. Microsoft roteras automatiskt dessa certifikat minst var 90: e dag. En allmän beskrivning av TDE finns [Transparent Data kryptering (TDE)].
+TDE krypterar lagring av en hel databas med hjälp av en symmetrisk nyckel som heter databaskrypteringsnyckeln. Databaskrypteringsnyckeln skyddas av en inbyggd servercertifikat. Inbyggda certifikatet är unikt för varje Azure-servern. Microsoft roteras automatiskt dessa certifikat minst var 90: e dag. En allmän beskrivning av TDE finns [Transparent Data kryptering (TDE)].
 
 ## <a name="enabling-encryption"></a>Aktivera kryptering
-tooenable TDE för en Azure-databas som lagrar data som migrerats från en Stretch-aktiverade SQL Server-databas, hello hello följande saker:
+Om du vill aktivera TDE för en Azure-databas som lagrar data som migrerats från en Stretch-aktiverade SQL Server-databas måste du göra följande:
 
-1. Öppna hello databasen i hello [Azure-portalen](https://portal.azure.com)
-2. Klicka på hello i hello databasbladet **inställningar** knappen
-3. Välj hello **Transparent datakryptering** alternativet![][1]
-4. Välj hello **på** inställningen och välj sedan **spara**
+1. Öppna databasen i den [Azure-portalen](https://portal.azure.com)
+2. I databasbladet klickar du på den **inställningar** knappen
+3. Välj den **Transparent datakryptering** alternativet![][1]
+4. Välj den **på** inställningen och välj sedan **spara**
    ![][2]
 
 ## <a name="disabling-encryption"></a>Om du inaktiverar kryptering
-toodisable TDE för en Azure-databas som lagrar data som migrerats från en Stretch-aktiverade SQL Server-databas, hello hello följande saker:
+Om du vill inaktivera TDE för en Azure-databas som lagrar data som migrerats från en Stretch-aktiverade SQL Server-databas måste du göra följande:
 
-1. Öppna hello databasen i hello [Azure-portalen](https://portal.azure.com)
-2. Klicka på hello i hello databasbladet **inställningar** knappen
-3. Välj hello **Transparent datakryptering** alternativet
-4. Välj hello **av** inställningen och välj sedan **spara**
+1. Öppna databasen i den [Azure-portalen](https://portal.azure.com)
+2. I databasbladet klickar du på den **inställningar** knappen
+3. Välj den **Transparent datakryptering** alternativet
+4. Välj den **av** inställningen och välj sedan **spara**
 
 <!--Anchors-->
 [Transparent Data kryptering (TDE)]: https://msdn.microsoft.com/library/bb934049.aspx

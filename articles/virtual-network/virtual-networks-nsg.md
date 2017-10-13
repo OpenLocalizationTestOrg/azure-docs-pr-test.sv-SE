@@ -1,6 +1,6 @@
 ---
-title: "aaaNetwork säkerhetsgrupper i Azure | Microsoft Docs"
-description: "Lär dig hur tooisolate och kontroll trafiken inom dina virtuella nätverk som använder hello distribuerade brandväggen i Azure med Nätverkssäkerhetsgrupper."
+title: "Nätverkssäkerhetsgrupper i Azure | Microsoft Docs"
+description: "Lär dig mer om hur du isolerar och styr trafikflödet i dina virtuella nätverk med hjälp av den distribuerade brandväggen i Azure genom att använda nätverkssäkerhetsgrupper."
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -14,68 +14,68 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: jdial
-ms.openlocfilehash: 3528ce833dab17977327c3c9ae0e78316e5e6a05
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: fac6ee69b5f0377e0515ac9abeb28788cbef9b79
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="filter-network-traffic-with-network-security-groups"></a>Filtrera nätverkstrafik med nätverkssäkerhetsgrupper
 
-En nätverkssäkerhetsgrupp (NSG) innehåller en lista över säkerhetsregler som tillåter eller nekar nätverket trafik tooresources anslutna tooAzure virtuella nätverk (VNet). NSG: er kan vara associerade toosubnets, enskilda virtuella datorer (klassisk) eller enskilda nätverksgränssnitt (NIC) kopplade tooVMs (Resource Manager). När en NSG är associerad tooa undernät, tillämpas hello reglerna tooall resurser anslutna toohello undernät. Trafik kan ytterligare begränsas av också koppla en NSG tooa VM eller nätverkskort.
+En nätverkssäkerhetsgrupp (NSG) innehåller en lista över säkerhetsregler som tillåter eller nekar nätverkstrafik till resurser som är anslutna till virtuella Azure-nätverk (VNet). Nätverkssäkerhetsgrupper kan kopplas till undernät, enskilda virtuella datorer (klassisk) eller enskilda nätverkskort (NIC) som är anslutna till virtuella datorer (Resource Manager). När en nätverkssäkerhetsgrupp är kopplad till ett undernät gäller reglerna för alla resurser som är anslutna till undernätet. Trafiken kan begränsas ytterligare genom att en nätverkssäkerhetsgrupp associeras med en virtuell dator eller ett nätverkskort.
 
 > [!NOTE]
-> Azure har två olika distributionsmodeller för att skapa och arbeta med resurser: [Resource Manager och klassisk](../resource-manager-deployment-model.md). Den här artikeln täcker bägge modellerna, men Microsoft rekommenderar att de flesta nya distributioner använder hello Resource Manager-modellen.
+> Azure har två olika distributionsmodeller för att skapa och arbeta med resurser: [Resource Manager och klassisk](../resource-manager-deployment-model.md). Den här artikeln täcker bägge modellerna, men Microsoft rekommenderar de flesta nya distributioner att använda Resource Manager-modellen.
 
 ## <a name="nsg-resource"></a>NSG-resurs
-NSG: er innehåller hello följande egenskaper:
+Nätverkssäkerhetsgrupper har följande egenskaper:
 
 | Egenskap | Beskrivning | Villkor | Överväganden |
 | --- | --- | --- | --- |
-| Namn |Namn för hello NSG |Måste vara unikt inom hello region.<br/>Kan innehålla bokstäver, siffror, understreck, punkter och bindestreck.<br/>Måste börja med en bokstav eller en siffra.<br/>Måste sluta med en bokstav, en siffra eller understreck.<br/>Får inte vara längre än 80 tecken. |Eftersom du kan behöva toocreate flera NSG: er, kontrollera att du har en namngivningskonvention som gör det enkelt tooidentify hello-funktionen för din NSG. |
-| Region |Azure [region](https://azure.microsoft.com/regions) där hello NSG skapas. |NSG: er kan bara vara associerad tooresources inom hello samma region som hello NSG. |toolearn om hur många NSG: er som du kan ha per region, läsa hello [Azure begränsar](../azure-subscription-service-limits.md#virtual-networking-limits-classic) artikel.|
-| Resursgrupp |Hej [resursgruppen](../azure-resource-manager/resource-group-overview.md#resource-groups) hello NSG finns i. |Även om en NSG finns i en resursgrupp, det kan vara associerade tooresources i valfri resursgrupp, så länge hello resursen är en del av hello samma Azure-region som hello NSG. |Resursgrupper är används toomanage flera resurser tillsammans som en distributionsenhet.<br/>Du kan gruppera hello NSG med resurser som den är kopplad till. |
-| Regler |Inkommande eller utgående regler som definierar vilken trafik som tillåts eller nekas. | |Se hello [NSG-regler](#Nsg-rules) i den här artikeln. |
+| Namn |Namn för NSG:n |Måste vara unikt i regionen.<br/>Kan innehålla bokstäver, siffror, understreck, punkter och bindestreck.<br/>Måste börja med en bokstav eller en siffra.<br/>Måste sluta med en bokstav, en siffra eller understreck.<br/>Får inte vara längre än 80 tecken. |Eftersom du kan behöva skapa flera nätverkssäkerhetsgrupper bör du se till att du har en namngivningskonvention som gör det lätt att identifiera nätverkssäkerhetsgruppernas funktion. |
+| Region |Den Azure-[region](https://azure.microsoft.com/regions) som nätverkssäkerhetsgruppen skapas i. |Nätverkssäkerhetsgrupper kan bara vara kopplade till resurser i samma region som nätverkssäkerhetsgruppen. |Information om hur många nätverkssäkerhetsgrupper du kan skapa per region finns i artikeln om [Azure-begränsningar](../azure-subscription-service-limits.md#virtual-networking-limits-classic).|
+| Resursgrupp |Den [resursgrupp](../azure-resource-manager/resource-group-overview.md#resource-groups) som nätverkssäkerhetsgruppen finns i. |Även om en nätverkssäkerhetsgrupp finns i en viss resursgrupp kan den vara kopplad till resurser i valfri resursgrupp, förutsatt att resursen tillhör samma Azure-region som nätverkssäkerhetsgruppen. |Resursgrupper används för att hantera flera resurser tillsammans, som en distributionsenhet.<br/>Om du vill kan du gruppera nätverkssäkerhetsgruppen med resurser som den är associerad med. |
+| Regler |Inkommande eller utgående regler som definierar vilken trafik som tillåts eller nekas. | |Mer information finns i avsnittet om [NSG-regler](#Nsg-rules) i den här artikeln. |
 
 > [!NOTE]
-> Slutpunktsbaserade ACL: er och nätverkssäkerhet grupper inte stöds på hello samma VM-instans. Om du vill toouse en NSG och redan har en slutpunkts-ACL på plats måste du först ta bort hello slutpunkts-ACL. toolearn hur tooremove en ACL läsa hello [hantera åtkomstkontrollistor (ACL) för slutpunkter med hjälp av PowerShell](virtual-networks-acl-powershell.md) artikel.
+> Slutpunktsbaserade ACL:er och nätverkssäkerhetsgrupper stöds inte på samma VM-instans. Om du vill använda en NSG och redan har en slutpunkts-ACL på plats så kan du först ta bort slutpunkts-ACL:n. Information om hur du tar bort en åtkomstkontrollista finns i artikeln [Managing Access Control Lists (ACLs) for Endpoints by using PowerShell](virtual-networks-acl-powershell.md) (Hantera åtkomstkontrollistor (ACL:er) för slutpunkter med hjälp av PowerShell).
 > 
 
 ### <a name="nsg-rules"></a>NSG-regler
-NSG-regler har hello följande egenskaper:
+NSG-regler har följande egenskaper:
 
 | Egenskap | Beskrivning | Villkor | Överväganden |
 | --- | --- | --- | --- |
-| **Namn** |Namn för hello regel. |Måste vara unikt inom hello region.<br/>Kan innehålla bokstäver, siffror, understreck, punkter och bindestreck.<br/>Måste börja med en bokstav eller en siffra.<br/>Måste sluta med en bokstav, en siffra eller understreck.<br/>Får inte vara längre än 80 tecken. |Du kan ha flera regler inom en NSG, så se till att du följer en namngivningskonvention som gör att du tooidentify hello-funktionen för din regel. |
-| **Protokoll** |Protokollet toomatch för hello regeln. |TCP, UDP eller * |Använda * som ett protokoll inkluderar ICMP (enbart öst-väst-trafik), som samt UDP och TCP och kan minska hello antalet regler du behöver.<br/>AT hello samma tid med * kanske för bred lösning, det rekommenderas att du använder * bara när det behövs. |
-| **Källportintervall** |Källan port intervallet toomatch för hello regeln. |Enskilda portnummer mellan 1 too65535, portintervall (exempel: 1-65535), eller * (för alla portar). |Källportar kan vara tillfälliga. Såvida inte klientprogrammet använder en viss port bör du använda * i de flesta fall.<br/>Försök toouse portintervall så mycket som möjligt tooavoid hello behöver för flera regler.<br/>Flera portar eller portintervall kan inte grupperas med kommatecken. |
-| **Målportintervall** |Mål-port intervallet toomatch för hello regeln. |Enskilda portnummer mellan 1 too65535, portintervall (exempel: 1-65535), eller \* (för alla portar). |Försök toouse portintervall så mycket som möjligt tooavoid hello behöver för flera regler.<br/>Flera portar eller portintervall kan inte grupperas med kommatecken. |
-| **Källadress-prefix** |Källan adress prefix eller tagg toomatch för hello regeln. |Enskild IP-adress (exempel: 10.10.10.10), IP-undernät (exempel: 192.168.1.0/24), [standardtagg](#default-tags) eller * (för alla adresser). |Överväg att använda intervall, standardtaggar och * tooreduce hello antal regler. |
-| **Måladress-prefix** |Mål-adress prefix eller tagg toomatch för hello regeln. | Enskild IP-adress (exempel: 10.10.10.10), IP-undernät (exempel: 192.168.1.0/24), [standardtagg](#default-tags) eller * (för alla adresser). |Överväg att använda intervall, standardtaggar och * tooreduce hello antal regler. |
-| **Riktning** |Riktningen på trafik toomatch för hello regeln. |Inkommande eller utgående. |Regler för inkommande och utgående bearbetas separat, baserat på riktning. |
-| **Prioritet** |Reglerna kontrolleras i hello prioritetsordning. När villkoren för en regel uppfylls testas inga fler regler. | Tal mellan 100 och 4096. | Överväg att skapa regler som hoppar prioritet med 100 för varje regel tooleave utrymme för nya regler som du kan skapa i hello framtida. |
-| **Åtkomst** |Typ av åtkomst tooapply om hello regeln matchar. | Tillåt eller neka. | Tänk på att om en regel för Tillåt inte hittas för ett paket, släpps hello-paketet. |
+| **Namn** |Regelns namn. |Måste vara unikt i regionen.<br/>Kan innehålla bokstäver, siffror, understreck, punkter och bindestreck.<br/>Måste börja med en bokstav eller en siffra.<br/>Måste sluta med en bokstav, en siffra eller understreck.<br/>Får inte vara längre än 80 tecken. |Eftersom du kan ha flera regler i en nätverkssäkerhetsgrupp är det bra om du följer en namngivningskonvention som gör det lätt att identifiera regelns funktion. |
+| **Protokoll** |Protokoll att matcha för regeln. |TCP, UDP eller * |Användningen av * som protokoll innefattar ICMP (enbart öst-väst-trafik), samt UDP och TCP, och kan minska antalet regler som du behöver.<br/>Användningen av * kan dock bli för bred, och därför rekommenderar vi endast att du använder * om det verkligen behövs. |
+| **Källportintervall** |Källportintervall att matcha för regeln. |Enskilda portnummer mellan 1 och 65535, portintervall (exempel: 1-65535) eller * (för alla portar). |Källportar kan vara tillfälliga. Såvida inte klientprogrammet använder en viss port bör du använda * i de flesta fall.<br/>Försök att använda portintervall i så stor utsträckning som möjligt för att undvika att använda flera regler.<br/>Flera portar eller portintervall kan inte grupperas med kommatecken. |
+| **Målportintervall** |Målportintervall att matcha för regeln. |Enskilda portnummer mellan 1 och 65535, portintervall (exempel: 1-65535) eller \* (för alla portar). |Försök att använda portintervall i så stor utsträckning som möjligt för att undvika att använda flera regler.<br/>Flera portar eller portintervall kan inte grupperas med kommatecken. |
+| **Källadress-prefix** |Källadressprefix eller tagg att matcha för regeln. |Enskild IP-adress (exempel: 10.10.10.10), IP-undernät (exempel: 192.168.1.0/24), [standardtagg](#default-tags) eller * (för alla adresser). |Överväg att använda intervall, standardtaggar och * för att minska antalet regler. |
+| **Måladress-prefix** |Måladressprefix eller tagg att matcha för regeln. | Enskild IP-adress (exempel: 10.10.10.10), IP-undernät (exempel: 192.168.1.0/24), [standardtagg](#default-tags) eller * (för alla adresser). |Överväg att använda intervall, standardtaggar och * för att minska antalet regler. |
+| **Riktning** |Trafikriktning att matcha för regeln. |Inkommande eller utgående. |Regler för inkommande och utgående bearbetas separat, baserat på riktning. |
+| **Prioritet** |Regler kontrolleras enligt prioritetsordning. När villkoren för en regel uppfylls testas inga fler regler. | Tal mellan 100 och 4096. | Överväg att skapa regler som hoppar mellan prioriteter i steg om 100 för varje regel så att det finns plats för nya regler som du kanske skapar senare. |
+| **Åtkomst** |Typ av åtkomst som ska tillämpas om regeln matchar. | Tillåt eller neka. | Tänk på att paketet ignoreras om ingen ”tillåt”-regel hittas för ett paket. |
 
-Nätverkssäkerhetsgrupper innehåller två regeluppsättningar: inkommande och utgående. hello prioritet för en regel måste vara unika inom varje uppsättning. 
+Nätverkssäkerhetsgrupper innehåller två regeluppsättningar: inkommande och utgående. En regels prioritet måste vara unik inom varje uppsättning. 
 
 ![NSG-regelbearbetning](./media/virtual-network-nsg-overview/figure3.png) 
 
-hello föregående bild visar hur NSG-regler bearbetas.
+Föregående bild visar hur NSG-regler bearbetas.
 
 ### <a name="default-tags"></a>Standardtaggar
-Standardtaggar är systemdefinierade identifierare tooaddress en kategori av IP-adresser. Du kan använda standardtaggar i hello **källadress-prefix** och **måladress-prefix** egenskaper för alla regler. Det finns tre standardtaggar som du kan använda:
+Standardtaggar är systemdefinierade identifierare för en viss kategori av IP-adresser. Du kan använda standardtaggar i egenskaperna för **källadress-prefix** och **måladress-prefix** för alla regler. Det finns tre standardtaggar som du kan använda:
 
-* **VirtualNetwork** (Resource Manager) (**VIRTUAL_NETWORK** för klassisk): den här taggen innehåller hello virtuella nätverkets adressutrymme (CIDR-intervallen som definieras i Azure), alla anslutna lokala adressutrymmen och anslutna Azure Vnet (lokala nätverk).
-* **AzureLoadBalancer** (Resource Manager) (**AZURE_LOADBALANCER** för klassisk): Den här taggen anger belastningsutjämnaren för Azures infrastruktur. hello taggen översätter tooan IP för Azure-datacenter där Azures-hälsoavsökning kommer.
-* **Internet** (Resource Manager) (**INTERNET** för klassisk): den här taggen anger hello IP-adressutrymmet som är utanför hello virtuellt nätverk och kan nås via offentligt Internet. hello området inkluderar hello [Azure-ägt offentligt IP-adressutrymme](https://www.microsoft.com/download/details.aspx?id=41653).
+* **VirtualNetwork** (Resource Manager) (**VIRTUAL_NETWORK** för klassisk): Den här taggen innehåller adressutrymmet för det virtuella nätverket (CIDR-intervall definierade i Azure), alla anslutna lokala adressutrymmen och anslutna virtuella Azure-nätverk (lokala nätverk).
+* **AzureLoadBalancer** (Resource Manager) (**AZURE_LOADBALANCER** för klassisk): Den här taggen anger belastningsutjämnaren för Azures infrastruktur. Taggen översätts till en IP-adress för Azure-datacentret som Azures hälsoavsökning kommer från.
+* **Internet** (Resource Manager) (**INTERNET** för klassisk): Den här taggen anger IP-adressutrymmet som är utanför det virtuella nätverket och som kan nås av det offentliga Internet. Intervallet omfattar det [offentliga IP-adressutrymmet som ägs av Azure](https://www.microsoft.com/download/details.aspx?id=41653).
 
 ### <a name="default-rules"></a>Standardregler
-Alla NSG:er har en uppsättning standardregler. hello standardreglerna kan inte tas bort, men eftersom de har tilldelats lägst prioritet för hello, de kan åsidosättas med hello regler som du skapar. 
+Alla NSG:er har en uppsättning standardregler. Standardreglerna kan inte tas bort, men eftersom de tilldelas lägst prioritet så kan de överskridas av de reglerna du själv skapar. 
 
-hello standardregler Tillåt och neka trafik på följande sätt:
+Standardreglerna tillåter och nekar trafik på följande sätt:
 - **Virtuellt nätverk:** Trafik som kommer från eller som går till ett virtuellt nätverk tillåts både i inkommande och utgående riktning.
 - **Internet:** Utgående trafik tillåts, men inkommande trafik blockeras.
-- **Belastningsutjämnare:** Tillåt Azure belastningen belastningsutjämnaren tooprobe hello hälsotillståndet för dina virtuella datorer och rollinstanser. Du kan åsidosätta den här regeln om du inte använder en belastningsutjämnad uppsättning.
+- **Belastningsutjämnare:** Tillåt att Azures belastningsutjämnare avsöker hälsotillståndet för dina virtuella datorer och rollinstanser. Du kan åsidosätta den här regeln om du inte använder en belastningsutjämnad uppsättning.
 
 **Inkommande standardregler**
 
@@ -94,32 +94,32 @@ hello standardregler Tillåt och neka trafik på följande sätt:
 | DenyAllOutBound | 65500 | * | * | * | * | * | Neka |
 
 ## <a name="associating-nsgs"></a>Koppla NSG:er
-Du kan koppla en NSG tooVMs, nätverkskort och undernät, beroende på hello distributionsmodell du använder, enligt följande:
+Du kan koppla en nätverkssäkerhetsgrupp till virtuella datorer, nätverkskort och undernät, beroende på vilken distributionsmodell du använder, enligt följande:
 
-* **VM (klassisk):** säkerhetsregler används tooall trafik till/från hello VM. 
-* **Nätverkskort (enbart Resource Manager):** säkerhetsregler används tooall trafik till/från hello NIC hello NSG är kopplad till. På en virtuell dator i flera nätverkskort, kan du tillämpa olika (eller hello samma) NSG tooeach NIC individuellt. 
-* **Undernät (Resource Manager och klassisk):** säkerhetsregler används tooany trafik till/från alla resurser anslutna toohello VNet.
+* **VM (endast klassisk):** Säkerhetsregler används för all trafik till/från den virtuella datorn. 
+* **Nätverkskort (endast Resource Manager):** Säkerhetsregler används för all trafik till/från nätverkskortet som nätverkssäkerhetsgruppen är kopplad till. På en virtuell dator med flera nätverkskort kan du använda olika (eller samma) nätverkssäkerhetsgrupp för varje nätverkskort. 
+* **Undernät (Resource Manager och klassisk):** Säkerhetsregler används för all trafik till/från resurser som är anslutna till det virtuella nätverket.
 
-Du kan koppla olika NSG: er tooa VM (eller nätverkskort, beroende på hello distributionsmodell) och hello undernät som ett nätverkskort eller virtuella datorn är ansluten till. Säkerhetsregler används toohello trafiken efter prioritet i varje NSG, i hello följer ordning:
+Du kan koppla olika nätverkssäkerhetsgrupper till en virtuell dator (eller ett nätverkskort, beroende på distributionsmodell) och det undernät som ett nätverkskort eller en virtuell dator är ansluten till. Säkerhetsregler används för trafiken, efter prioritet, i varje nätverkssäkerhetsgrupp, i följande ordning:
 
 - **Inkommande trafik**
 
-  1. **NSG tillämpas toosubnet:** om ett undernät NSG har en matchande regel toodeny trafik, släpps hello-paketet.
+  1. **NSG som tillämpas på undernät:** Om en nätverkssäkerhetsgrupp för ett undernät har en matchande regel som nekar trafik, ignoreras paketet.
 
-  2. **NSG tillämpas tooNIC** (Resource Manager) eller VM (klassisk): om VM\NIC NSG har en matchande regel som nekar trafik, paket tappas på hello VM\NIC, även om ett undernät NSG har en matchande regel som tillåter trafik.
+  2. **NSG som tillämpas på nätverkskort** (Resource Manager) eller virtuell dator (klassisk): Om en nätverkssäkerhetsgrupp för en virtuell dator eller ett nätverkskort har en matchande regel som nekar trafik, ignoreras paket på den virtuella datorn/nätverkskortet även om en undernäts-NSG har en matchande regel som tillåter trafik.
 
 - **Utgående trafik**
 
-  1. **NSG tillämpas tooNIC** (Resource Manager) eller VM (klassisk): om en VM\NIC NSG har en matchande regel som nekar trafik, paket tappas.
+  1. **NSG som tillämpas på nätverkskort** (Resource Manager) eller virtuell dator (klassisk): Om en nätverkssäkerhetsgrupp för en virtuell dator eller ett nätverkskort har en matchande regel som nekar trafik, ignoreras paketet.
 
-  2. **NSG tillämpas toosubnet:** om ett undernät NSG har en matchande regel som nekar trafik, paket tappas, även om en VM\NIC NSG har en matchande regel som tillåter trafik.
+  2. **NSG som tillämpas på undernät:** Om en nätverkssäkerhetsgrupp för ett undernät har en matchande regel som nekar trafik, ignoreras paket även om en nätverkssäkerhetsgrupp för den virtuella datorn/nätverkskortet har en matchande regel som tillåter trafik.
 
 > [!NOTE]
-> Även om du kan bara koppla en enda NSG tooa undernät, VM eller NIC; Du kan associera hello samma NSG tooas många resurser som du vill.
+> Även om du kan bara koppla en enda NSG till ett undernät, VM eller NIC så kan du koppla samma NSG till hur många resurser du vill.
 >
 
 ## <a name="implementation"></a>Implementering
-Du kan implementera NSG: er i hello Resource Manager och klassiska distributionsmodeller med hjälp av följande verktyg hello:
+Du kan implementera nätverkssäkerhetsgrupper i Resource Manager-distributionsmodellen eller i den klassiska distributionsmodellen med hjälp av följande verktyg:
 
 | Distributionsverktyg | Klassisk | Resource Manager |
 | --- | --- | --- |
@@ -130,65 +130,65 @@ Du kan implementera NSG: er i hello Resource Manager och klassiska distributions
 | Azure Resource Manager-mall   | Nej  | [Ja](virtual-networks-create-nsg-arm-template.md) |
 
 ## <a name="planning"></a>Planering
-Innan du implementerar NSG: er måste tooanswer hello följande frågor:
+Innan du implementerar nätverkssäkerhetsgrupper måste du besvara följande frågor:
 
-1. Vilka typer av resurser vill du toofilter trafik tooor från? Du kan ansluta resurser, t.ex nätverkskort (Resource Manager), virtuella datorer (klassisk), molntjänster, programtjänstmiljöer och skalningsuppsättningar för virtuella datorer. 
-2. Är hello-resurser som du vill toofilter trafik till och från anslutna toosubnets i befintliga Vnet?
+1. Vilka typer av resurser vill du filtrera trafik till och från? Du kan ansluta resurser, t.ex nätverkskort (Resource Manager), virtuella datorer (klassisk), molntjänster, programtjänstmiljöer och skalningsuppsättningar för virtuella datorer. 
+2. Är de resurser som du vill filtrera trafik till/från anslutna till undernät i befintliga virtuella nätverk?
 
-Mer information om planering för nätverkssäkerhet i Azure finns hello [molntjänster och nätverkssäkerhet](../best-practices-network-security.md) artikel. 
+Mer information om hur du planerar nätverkssäkerheten i Azure finns i artikeln om [molntjänster och nätverkssäkerhet](../best-practices-network-security.md). 
 
 ## <a name="design-considerations"></a>Designöverväganden
-När du väl vet svaren hello toohello frågor i hello [planera](#Planning) avsnittet kan du granska följande avsnitt innan du definierar dina NSG: er hello:
+När du vet svaren på frågorna i avsnittet [Planering](#Planning) går du igenom följande avsnitt innan du definierar dina nätverkssäkerhetsgrupper:
 
 ### <a name="limits"></a>Begränsningar
-Det finns begränsningar toohello antalet NSG: er som du kan ha en prenumeration och antalet regler per NSG. Mer om hello gränser, läsa hello toolearn [Azure begränsar](../azure-subscription-service-limits.md#networking-limits) artikel.
+Det finns gränser för hur många nätverkssäkerhetsgrupper du kan ha i en prenumeration och antalet regler per NSG. Mer information om gränserna finns i artikeln om [Azure-begränsningar](../azure-subscription-service-limits.md#networking-limits).
 
 ### <a name="vnet-and-subnet-design"></a>Utformning av VNet och undernät
-Eftersom NSG: er kan vara tillämpade toosubnets, kan du minimera hello antalet NSG: er genom att gruppera dina resurser efter undernät och tillämpa NSG: er toosubnets.  Om du tooapply NSG: er toosubnets kan det hända att befintliga Vnet och undernät som du har inte har definierats med NSG: er i åtanke. Du kanske behöver toodefine nya Vnet och undernät toosupport din NSG-utformning och distribuera dina nya resurser tooyour nya undernät. Sedan kan du definiera en migrering strategi toomove befintliga resurser toohello nya undernät. 
+Eftersom NSG:er kan tillämpas på undernät, kan du minimera antalet NSG:er genom att gruppera dina resurser efter undernät och tillämpa NSG:er på undernätet.  Om du bestämmer dig att tillämpa NSG:er på undernät kan du upptäcka att befintliga VNet och undernät inte har definierats med NSG:er i åtanke. Du kan behöva definiera nya virtuella datorer och undernät beroende på nätverkssäkerhetsgruppens design och distribuera nya resurser till dina nya undernät. Sedan kan du definiera en migreringsstrategi för att flytta befintliga resurser till de nya undernäten. 
 
 ### <a name="special-rules"></a>Särskilda regler
-Om du blockerar trafik som tillåts av hello enligt reglerna för inte kan din infrastruktur kommunicera med grundläggande Azure-tjänster:
+Om du blockerar trafik som tillåts av följande regler kan din infrastruktur inte kommunicera med viktiga Azure-tjänster:
 
-* **Virtuella IP-Adressen för hello värdnoden:** grundläggande infrastrukturtjänster som DHCP, DNS och hälsoövervakning sker via hello virtualiserade värd IP-adressen 168.63.129.16. Den här offentliga IP-adressen hör tooMicrosoft och hello endast virtualiserade IP-adress som används i alla regioner för det här ändamålet. Den här IP-adressen mappar toohello fysiska IP-adressen för serverdatorn (värdnoden) för hello värd hello VM. Hej värdnoden agerar som hello DHCP-relä, rekursiv hello DNS-matchare och hello avsökningskälla för hello ladda belastningsutjämnaren, hälsoavsökningen och datorhälsoavsökningen hello. Kommunikation toothis IP-adress är inte en attack.
-* **Licensiering (nyckelhanteringstjänst):** Windows-avbildningar som körs på virtuella datorer måste vara licensierade. tooensure licensiering, en begäran skickas toohello nyckelhanteringstjänst värdservrar för fjärrskrivbordssessioner som hanterar sådana frågor. hello-begäran har gjorts utgående via port 1688.
+* **Värdnodens virtuella IP-adress:** Grundläggande infrastrukturtjänster som DHCP, DNS och hälsoövervakning tillhandahålls via den virtualiserade värd-IP-adressen 168.63.129.16. Den här offentliga IP-adressen tillhör Microsoft och är den enda virtualiserade IP-adressen som används i alla regioner för det här ändamålet. Den här IP-adressen mappar till den fysiska IP-adressen för serverdatorn (värdnoden) som är värd för den virtuella datorn. Värdnoden agerar som ett DHCP-relä, rekursiv DNS-matchare och avsökningskälla för belastningsutjämnaren, hälsoavsökningen och datorhälsoavsökningen. Kommunikation till den här IP-adressen är inte ett angrepp.
+* **Licensiering (nyckelhanteringstjänst):** Windows-avbildningar som körs på virtuella datorer måste vara licensierade. Licensieringen kontrolleras genom att en begäran skickas till nyckelhanteringstjänstens värdservrar som hanterar sådana frågor. Begäran är en utgående begäran via port 1688.
 
 ### <a name="icmp-traffic"></a>ICMP-trafik
-hello nuvarande NSG-reglerna tillåter bara protokollen *TCP* eller *UDP*. Det finns ingen specifik tagg för *ICMP*. ICMP-trafik tillåts dock inom ett VNet av hello AllowVNetInBound standardregel som tillåter trafik tooand från alla portar och protokoll inom hello virtuella nätverk.
+De nuvarande NSG-reglerna tillåter bara protokollen *TCP* eller *UDP*. Det finns ingen specifik tagg för *ICMP*. ICMP-trafik tillåts dock inom ett virtuellt nätverk av standardregeln AllowVNetInBound, som tillåter trafik till och från alla portar och protokoll i det virtuella nätverket.
 
 ### <a name="subnets"></a>Undernät
-* Fundera över hello många nivåer din arbetsbelastning behöver. Varje nivå kan isoleras med ett undernät med en NSG tillämpas toohello undernät. 
-* Om du måste tooimplement ett undernät för en VPN-gateway eller ExpressRoute-krets **inte** tillämpa ett NSG toothat undernät. Om du gör det kan anslutningar mellan virtuella nätverk eller i det lokala systemet misslyckas. 
-* Om du behöver tooimplement en virtuell nätverksenhet (NVA) kan ansluta hello NVA tooits egna undernät och skapa användardefinierade vägar (UDR) tooand från hello NVA. Du kan implementera ett undernätverksnivå NSG toofilter trafik till och från det här undernätet. Mer om udr: er, läsa hello toolearn [användardefinierade vägar](virtual-networks-udr-overview.md) artikel.
+* Tänk över hur många nivåer din arbetsbelastning behöver. Varje nivå kan isoleras med ett undernät, med en NSG tillämpad på undernätet. 
+* Om du behöver implementera ett undernät för en VPN-gateway, eller en ExpressRoute-krets, tilldelar du **inte** en nätverkssäkerhetsgrupp till det undernätet. Om du gör det kan anslutningar mellan virtuella nätverk eller i det lokala systemet misslyckas. 
+* Om du behöver implementera en virtuell nätverksenhet (NVA) ansluter du den till dess eget undernät och skapar användardefinierade vägar (UDR) till och från enheten. Du kan implementera en NSG på undernätsnivå för att filtrera trafik in eller ut från det undernätet. Mer information om UDR:er finns i artikeln om [användardefinierade vägar](virtual-networks-udr-overview.md).
 
 ### <a name="load-balancers"></a>Belastningsutjämnare
-* Överväg att hello belastningsutjämning och network adress translation (NAT) regler för varje belastningsutjämnare som används av varje arbetsbelastning. NAT-regler är bundna tooa backend-pool som innehåller nätverkskort (Resource Manager) eller virtuella datorer/molntjänster rollinstanser (klassiska). Överväg att skapa en NSG för varje backend-poolen, så att endast trafik som mappats genom hello regeln implementeras i hello belastningsutjämnare. Skapa en NSG för varje backend-pool garanterar filtreras även trafik som kommer toohello backend-adresspool direkt (i stället via hello belastningsutjämnare).
-* I klassiska distributioner skapar du slutpunkter som mappar portar på en belastningen belastningsutjämnaren tooports på VM: ar eller rollinstanser. Du kan också skapa din egen separata offentliga belastningsutjämnare via Resource Manager. hälsning målporten för inkommande trafik är hello faktiska porten i hello VM eller rollinstans inte hello port som exponeras av belastningsutjämning. hello källport och adress för hello anslutning toohello VM är en port och adress på hello fjärrdator i hello Internet, inte hello porten och adressen som exponeras av belastningsutjämnaren hello.
-* När du skapar NSG: er toofilter trafik via en intern belastningsutjämnare (ILB), är hello källa port och adressintervallet som appliceras från hello kommer datorn, inte hello belastningsutjämnaren. hello mål och adressintervallet är de hello-måldatorn inte hello belastningsutjämnaren.
+* Ha i åtanke belastningsutjämnings- och NAT-reglerna (Network Address Translation) för varje belastningsutjämnare som används av var och en av dina arbetsbelastningar. NAT-regler är bundna till en backend-pool som innehåller nätverkskort (Resource Manager) eller rollinstanser för virtuella datorer/molntjänster (klassisk). Överväg att skapa en nätverkssäkerhetsgrupp för varje serverdelspool så att endast trafik som mappas genom regeln implementeras i belastningsutjämnarna. Genom att skapa en nätverkssäkerhetsgrupp för varje serverdelspool ser du till att trafik som kommer direkt till serverdelspoolen (i stället för via belastningsutjämnaren) filtreras.
+* I klassiska distributioner skapar du slutpunkter som mappar portar på en belastningsutjämnare till portar på dina VM:ar eller rollinstanser. Du kan också skapa din egen separata offentliga belastningsutjämnare via Resource Manager. Målporten för inkommande trafik är själva porten på den virtuella datorn eller rollinstansen, inte porten som exponeras av en belastningsutjämnare. Källporten och adressen för anslutningen till den virtuella datorn är en port och en adress på fjärrdatorn på Internet, inte porten och adressen som exponeras av belastningsutjämnaren.
+* När du skapar nätverkssäkerhetsgrupper för att filtrera trafik via en intern belastningsutjämnare (ILB) kommer källporten och källadressintervallet som tillämpas från den ursprungliga datorn, inte belastningsutjämnaren. Målporten och måladressutrymmet kommer från måldatorn, inte belastningsutjämnaren.
 
 ### <a name="other"></a>Annat
-* Slutpunktsbaserade åtkomstkontrollistor (ACL) och NSG: er stöds inte på hello samma VM-instans. Om du vill toouse en NSG och redan har en slutpunkts-ACL på plats måste du först ta bort hello slutpunkts-ACL. Information om hur tooremove en slutpunkts-ACL, se hello [hantera slutpunkts-ACL:](virtual-networks-acl-powershell.md) artikel.
-* I hanteraren för filserverresurser, du kan använda en NSG som kopplats tooa nätverkskort för virtuella datorer med flera nätverkskort tooenable hantering (fjärråtkomst) på grundval av per nätverkskort. Associera unika NSG: er tooeach NIC kan uppdelning av trafiktyper på nätverkskort.
-* Liknande toohello användning av belastningsutjämnare, när du filtrerar trafik från andra Vnet, måste du använda hello källadressintervallet från hello fjärrdatorn inte hello gateway ansluter hello Vnet.
-* Många Azure-tjänster kan inte vara anslutna tooVNets. Om en Azure-resurs inte är anslutna tooa VNet, kan du inte använda en NSG toofilter trafik toohello resurs.  Dokumentationen hello hello tjänster använder du toodetermine om hello-tjänsten kan vara anslutna tooa VNet.
+* Slutpunktsbaserade åtkomstkontrollistor (ACL) och nätverkssäkerhetsgrupper stöds inte på samma VM-instans. Om du vill använda en NSG och redan har en slutpunkts-ACL på plats så kan du först ta bort slutpunkts-ACL:n. Information om hur du tar bort en slutpunkts-ACL finns i artikeln [Manage endpoint ACLs](virtual-networks-acl-powershell.md) (Hantera slutpunkts-ACL:er).
+* I Resource Manager kan du använda en nätverkssäkerhetsgrupp som är kopplad till ett nätverkskort för virtuella datorer med flera nätverkskort för att aktivera hantering (fjärråtkomst) för varje enskilt nätverkskort. Genom att koppla unika nätverkssäkerhetsgrupper till varje nätverkskort kan du avgränsa trafiktyperna mellan nätverkskort.
+* Precis som med belastningsutjämnare, när du filtrerar trafik från andra VNet, måste du använda källadressintervallet från fjärrdatorn och inte gatewayen som ansluter till VNet:en.
+* Många Azure-tjänster kan inte anslutas till virtuella nätverk. Om en Azure-resurs inte är ansluten till ett virtuellt nätverk kan du inte använda en nätverkssäkerhetsgrupp för att filtrera trafik till resursen.  Läs dokumentationen för de tjänster som du använder för att avgöra om tjänsten kan anslutas till ett virtuellt nätverk.
 
 ## <a name="sample-deployment"></a>Exempeldistribution
-tooillustrate hello programmet hello information i den här artikeln, Överväg ett vanligt scenario i ett program för två nivåer som visas i följande bild hello:
+I den här artikeln ska vi illustrera hur informationen används med hjälp av ett vanligt scenario med ett program med två nivåer, som du ser i följande bild:
 
 ![NSG:er](./media/virtual-network-nsg-overview/figure1.png)
 
-I hello diagram visas hello *Web1* och *Web2* virtuella datorer som är anslutna toohello *klientdel* undernät och hello *DB1* och *DB2* virtuella datorer som är anslutna toohello *BackEnd* undernät.  Båda undernäten är en del av hello *TestVNet* VNet. hello programkomponenter varje körs i en virtuell Azure-dator ansluten tooa VNet. hello scenariot har hello följande krav:
+Som du ser i diagrammet är de virtuella datorerna *Web1* och *Web2* anslutna till undernätet *FrontEnd*, och de virtuella datorerna *DB1* och *DB2* är anslutna till undernätet *BackEnd*.  Båda undernäten är en del av VNet:et *TestVNet*. Varje programkomponent körs på en virtuell Azure-dator som är ansluten till ett virtuellt nätverk. Scenariot har följande krav:
 
-1. Avgränsning av trafiken mellan hello WEB och DB-servrar.
-2. Belastningsutjämning regler vidarebefordra trafik från webbservrar för hello load balancer tooall på port 80.
-3. Läsa in belastningsutjämning NAT-regler vidarebefordra trafik kommer i hello belastningsutjämnare på port 50001 tooport 3389 på hello WEB1 VM.
-4. Ingen åtkomst toohello frontend- eller virtuella datorer från hello Internet, utom krav 2 och 3.
-5. Inga utgående Internetåtkomst från hello webb- eller DB-servrar.
-6. Åtkomst från hello klientdel undernät tillåts tooport 3389 för alla webbservrar.
-7. Åtkomst från hello klientdel undernät tillåts tooport 3389 på DB-servern.
-8. Tooport 1433 för alla servrar som DB tillåts åtkomst från hello Klientdelens undernät.
+1. Avgränsning av trafik mellan WEB- och DB-servrar.
+2. Regler för belastningsutjämning vidarebefordrar trafik från belastningsutjämnaren till alla webbservrar på port 80.
+3. NAT-regler för belastningsutjämnaren vidarebefordrar trafik som kommer till belastningsutjämnaren på port 50001 till port 3389 på den virtuella datorn WEB1.
+4. Ingen åtkomst till de virtuella datorerna på klient- eller serversidan från Internet, förutom krav 2 och 3.
+5. Ingen utgående Internetåtkomst från WEB- eller DB-servrarna.
+6. Åtkomst från undernätet på klientsidan tillåts till port 3389 för alla webbservrar.
+7. Åtkomst från undernätet på klientsidan tillåts till port 3389 för alla databasservrar.
+8. Åtkomst från undernätet på klientsidan tillåts till port 1433 för alla databasservrar.
 9. Avgränsning av hanteringstrafik (port 3389) och databastrafik (1433) på olika nätverkskort på DB-servrar.
 
-Krav 1 – 6 (utom krav 3 och 4) är alla slutna toosubnet blanksteg. hello uppfylla följande NSG: er hello tidigare krav, och minimerar hello antalet NSG: er som krävs:
+Krav 1–6 (utom krav 3 och 4) är alla begränsade till undernätsutrymmen. Följande nätverkssäkerhetsgrupper uppfyller föregående krav och minimerar antalet nätverkssäkerhetsgrupper som krävs:
 
 ### <a name="frontend"></a>FrontEnd
 **Regler för inkommande trafik**
@@ -218,7 +218,7 @@ Krav 1 – 6 (utom krav 3 och 4) är alla slutna toosubnet blanksteg. hello uppf
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Deny-Internet-All | Neka | 100 | * | * | Internet | * | * |
 
-hello följande NSG: er skapas och tillhörande tooNICs i hello följande virtuella datorer:
+Följande nätverkssäkerhetsgrupper skapas och associeras med nätverkskort på följande virtuella datorer:
 
 ### <a name="web1"></a>WEB1
 **Regler för inkommande trafik**
@@ -229,7 +229,7 @@ hello följande NSG: er skapas och tillhörande tooNICs i hello följande virtue
 | Allow-Inbound-HTTP-Internet | Tillåt | 200 | Internet | * | * | 80 | TCP |
 
 > [!NOTE]
-> hello källadress-intervallet för hello tidigare regler är **Internet**, inte hello virtuella IP-adresser för hello belastningsutjämnaren. hello källporten är *, inte 500001. NAT-regler för belastningsutjämning är inte hello samma som NSG säkerhetsregler. NSG säkerhetsregler är alltid relaterade toohello ursprungliga källan och slutdestinationen för trafiken, **inte** hello belastningsutjämnaren mellan hello två. 
+> Källadressintervallet för föregående regler är **Internet**, inte den virtuella IP-adressen för belastningsutjämnaren. Källporten är *, inte 500001. NAT-regler för belastningsutjämnare är inte samma som NSG-säkerhetsregler. NSG-säkerhetsreglerna är alltid relaterade till den ursprungliga källan och slutdestinationen för trafiken, **inte** belastningsutjämnaren mellan de två. 
 > 
 > 
 
@@ -255,7 +255,7 @@ hello följande NSG: er skapas och tillhörande tooNICs i hello följande virtue
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Allow-Inbound-SQL-Front-end | Tillåt | 100 | 192.168.1.0/24 | * | * | 1433 | TCP |
 
-Eftersom vissa av hello NSG: er är associerade tooindividual nätverkskort är hello regler för resurser som har distribuerats via Resource Manager. Regler kombineras för undernät och nätverkskort, beroende på hur de är associerade. 
+Eftersom vissa nätverkssäkerhetsgrupper är kopplade till enskilda nätverkskort är reglerna avsedda för resurser som distribueras via Resource Manager. Regler kombineras för undernät och nätverkskort, beroende på hur de är associerade. 
 
 ## <a name="next-steps"></a>Nästa steg
 * [Distribuera nätverkssäkerhetsgrupper (Resource Manager)](virtual-networks-create-nsg-arm-pportal.md).

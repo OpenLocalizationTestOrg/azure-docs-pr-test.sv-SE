@@ -1,6 +1,6 @@
 ---
-title: "aaaEnabling end tooend SSL på Azure Programgateway | Microsoft Docs"
-description: "Den här sidan innehåller en översikt över hello Programgateway slutet tooend stöd för SSL."
+title: "Aktivera slutpunkt-till-slutpunkt-SSL på Azure Application Gateway | Microsoft Docs"
+description: "Den här sidan ger en översikt över slutpunkt-till-slutpunkt SSL-stöd för Application Gateway."
 documentationcenter: na
 services: application-gateway
 author: amsriva
@@ -15,33 +15,33 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 07/19/2017
 ms.author: amsriva
-ms.openlocfilehash: c5cb398a1e7d9a08662a3120baad98edb5575917
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 689ee54dc1db2ea371b08270718278fd98c65bb5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="overview-of-end-tooend-ssl-with-application-gateway"></a>Översikt över slutet tooend SSL med Programgateway
+# <a name="overview-of-end-to-end-ssl-with-application-gateway"></a>Översikt över slutpunkt-till-slutpunkt-SSL på Application Gateway
 
-Programgateway stöder SSL-avslutning vid hello gateway, efter vilken trafiken flödar vanligtvis okrypterade toohello backend-servrar. Den här funktionen tillåter web servrar toobe unburdened från kostsamma kryptering och dekryptering kostnader. Men för vissa kunder okrypterad kommunikation toohello backend-servrarna är inte en godkänd alternativ. Den här okrypterade kommunikationen kan bero på att toosecurity krav, krav på efterlevnad eller hello program kan endast ha en säker anslutning. För sådana program stöder Programgateway slutet tooend SSL kryptering.
+Application Gateway stöder SSL-terminering vid gatewayen. Därefter flödar trafiken vanligtvis okrypterat fram till serverdels-servrarna. Den här funktionen bidrar till att befria webbservrarna från kostsam kryptering och dekryptering. För en del kunder är dock inte okrypterad kommunikation till serverdels-servrarna en acceptabel lösning. Denna dekrypterade kommunikation kan bero på säkerhets och kompatibilitetskrav eller på att programmet bara accepterar säkra anslutningar. För den typen av program, stöder Application Gateway nu slutpunkt-till-slutpunkt SSL-kryptering.
 
 ## <a name="overview"></a>Översikt
 
-End tooend SSL kan du toosecurely överföra känsliga data toohello backend krypterade medan fortfarande dra nytta av hello fördelarna med funktioner för belastningsutjämning Layer 7 vilka Programgateway innehåller. Vissa av dessa funktioner är cookie-baserad session tillhörighet, URL-baserade routning, stöd för routning baserat på webbplatser eller möjlighet tooinject X - vidarebefordrad-* huvuden.
+Slutpunkt-till-slutpunkt-SSL låter dig skicka krypterade känsliga data säkert till serverdelen samt dra nytta av de fördelar med Layer 7-belastningsutjämningsfunktioner som Application Gateway tillhandahåller. Vissa av dessa funktioner är cookiebaserad-tillhörighet, URL-baserad routning, stöd för routning baserat på platser eller möjligheten att injicera X-Forwarded-*-huvuden.
 
-När konfigurerad med end tooend SSL-kommunikation läge, avslutas hello SSL-sessioner på hello gateway Programgateway och dekrypterar användaraktiviteten. Den gäller sedan hello konfigurerade regler tooselect en lämplig backend poolen instans tooroute trafik till. Programgateway sedan initierar en ny SSL-anslutning toohello backend-server och krypterar data med hjälp av hello backend-serverns offentliga nyckelcertifikat innan de överförs hello begäran toohello backend. End tooend SSL är aktiverat genom att ange protokollinställningen i BackendHTTPSetting tooHTTPS, som sedan tillämpas tooa serverdelspool. Varje backend-servern i hello serverdelspool med end tooend SSL aktiverat måste konfigureras med en certifikat tooallow säker kommunikation.
+När den konfigurerats med slutpunkt-till-slutpunkt SSL-kommunikationsläge, terminerar Application Gateway användarens SSL-sessioner vid gatewayen och avkrypterar användartrafiken. Därefter appliceras de konfigurerade reglerna för att välja en lämplig serverdels-serverpoolinstans att dirigera trafiken till. Application Gateway startar sedan en ny SSL-anslutning till serverdels-servern och återkrypterar data med hjälp av serverdels-serverns offentliga nyckelcertifikat innan begäran skickas till serverdelen. Slutpunkt-till-slutpunkt SSL aktiveras genom att ställa in protokollinställningen i BackendHTTPSetting till HTTPS, som sedan appliceras till en serverdelspool. Varje serverdels-server i serverdels-poolen som har slutpunkt-till-slutpunkt SSL aktiverat måste konfigureras med ett certifikat för att tillåta säker kommunikation.
 
-![tooend ssl scenariot][1]
+![slutpunkt till slutpunkt ssl-scenario][1]
 
-I det här exemplet är begäranden som använder TLS1.2 routade toobackend servrar i Pool1 med end tooend SSL.
+I det här exemplet dirigeras begäranden med TLS1.2 till backend-servrarna i Pool1 med hjälp av slutpunkt till slutpunkt-SSL.
 
-## <a name="end-tooend-ssl-and-whitelisting-of-certificates"></a>Avsluta tooend SSL och vitlistning av certifikat
+## <a name="end-to-end-ssl-and-whitelisting-of-certificates"></a>Slutpunkt till slutpunkt-SSL och vitlistning av certifikat
 
-Programgateway kommunicerar endast med kända backend-instanser som har godkända sina certifikat med hello Programgateway. tooenable vitlistning av certifikat, måste du överföra hello offentliga nyckeln för backend-servern certifikat toohello Programgateway (inte hello rotcertifikat). Endast anslutningar tooknown och listan över godkända serverdelar tillåts sedan. hello återstående serverdelar resulterar i en gateway-fel. Självsignerade certifikat är enbart för testningsändamål och rekommenderas inte för produktions-arbetsbelastningar. Dessa certifikat har toobe godkända med hello Programgateway enligt beskrivningen i föregående steg innan de kan användas hello.
+Application Gateway kommunicerar bara med kända serverdelsinstanser som har vitlistat sina certifikat med Application Gateway. För att aktivera vitlistning av certifikat så behöver du överföra den offentliga nyckeln för serverdels-serverns certifikat till Application Gateway (inte rotcertifikatet). Endast anslutningar till kända och vitlistade serverdelar tillåts sedan. De återstående serverdelar resulterar i ett gateway-fel. Självsignerade certifikat är enbart för testningsändamål och rekommenderas inte för produktions-arbetsbelastningar. Sådana certifikat måste också vitlistas med Application Gateway, så som beskrivs i föregående steg, innan de kan användas.
 
 ## <a name="next-steps"></a>Nästa steg
 
-När du lära dig mer om slutet tooend SSL, gå för[aktivera slutet tooend SSL på Programgateway](application-gateway-end-to-end-ssl-powershell.md) toocreate som en gateway som använder avslutas tooend SSL.
+När du läst om slutpunkt-till-slutpunkts-SSL kan du gå till [Aktivera slutpunkt-till-slutpunkts-SSL på Application Gateway](application-gateway-end-to-end-ssl-powershell.md) om du vill skapa en Application Gateway med hjälp av slutpunkt-till-slutpunkts-SSL.
 
 <!--Image references-->
 

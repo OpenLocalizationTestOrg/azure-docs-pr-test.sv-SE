@@ -1,5 +1,5 @@
 ---
-title: "aaaApplication eller användarspecifik Marathon-tjänst | Microsoft Docs"
+title: "Program- eller användarspecifik Marathon-tjänst | Microsoft Docs"
 description: "Skapa en program- eller användarspecifik Marathon-tjänst"
 services: container-service
 documentationcenter: 
@@ -16,45 +16,45 @@ ms.workload: na
 ms.date: 04/12/2016
 ms.author: rogardle
 ms.custom: mvc
-ms.openlocfilehash: 1e6f69ed64e113a3a059788a71ddb57b6d3ad8da
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: b265763fb5dad240edd710cd8d0fb1079e3a7b51
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="create-an-application-or-user-specific-marathon-service"></a>Skapa en program- eller användarspecifik Marathon-tjänst
-Genom Azure Container Service tillhandahålls en uppsättning huvudservrar där Apache Mesos och Marathon förkonfigureras. Det kan vara används tooorchestrate dina program på hello kluster, men det är bästa inte toouse hello huvudservrarna för det här ändamålet. Till exempel modifiera hello konfigurationen av Marathon kräver logga in på hello huvudservrar sig själva och göra ändringar--detta uppmanar unika huvudservrar som är lite annorlunda från hello som standard och måste toobe få och hanterade oberoende av varandra. Dessutom kanske inte hello-konfiguration som krävs av ett team hello bästa konfigurationen för ett annat team.
+Genom Azure Container Service tillhandahålls en uppsättning huvudservrar där Apache Mesos och Marathon förkonfigureras. Servrarna kan användas för att dirigera dina program i klustret, men det är bäst att inte använda huvudservrarna för det här ändamålet. Om du till exempel vill justera konfigurationen av Marathon måste du logga in på själva huvudservrarna och göra ändringar. Det leder lätt till att du får unika huvudservrar som skiljer sig lite från standarden, vilket betyder att de måste skötas och hanteras var för sig. Dessutom kanske konfigurationen som krävs av ett team inte är den bästa konfigurationen för ett annat team.
 
-I den här artikeln förklarar vi hur tooadd en program- eller användarspecifik Marathon-tjänst.
+I den här artikeln förklarar vi hur du lägger till en användar- eller programspecifik Marathon-tjänst.
 
-Eftersom den här tjänsten kommer att tillhöra tooa användare eller grupp, de är kostnadsfria tooconfigure den på något sätt som de önskar. Dessutom säkerställer Azure Container Service att hello tjänsten fortsätter toorun. Om det inte går att hello-tjänsten, Azure Container Service startar om den åt dig. De flesta hello tid märker du inte ens det varit driftstopp.
+Eftersom den här tjänsten tillhör en enskild användare eller ett enskilt team kan den konfigureras på önskat sätt. Azure Container Service säkerställer också att tjänsten fortsätter att köras. Om tjänsten slutar att fungera, startar Azure Container Service om den åt dig. I de flesta fall märker du inte ens att det varit driftstopp.
 
 ## <a name="prerequisites"></a>Krav
-[Distribuera en instans av Azure Container Service](container-service-deployment.md) orchestrator Skriv DC/OS och [se till att klienten kan ansluta tooyour klustret](../container-service-connect.md). Dessutom hello följande steg.
+[Distribuera en instans av Azure Container Service](container-service-deployment.md) med orchestrator-typ DC/OS och [kontrollera att klienten kan ansluta till klustret](../container-service-connect.md). Utför följande steg.
 
-[!INCLUDE [install hello DC/OS CLI](../../../includes/container-service-install-dcos-cli-include.md)]
+[!INCLUDE [install the DC/OS CLI](../../../includes/container-service-install-dcos-cli-include.md)]
 
 ## <a name="create-an-application-or-user-specific-marathon-service"></a>Skapa en program- eller användarspecifik Marathon-tjänst
-Börja med att skapa en JSON-konfigurationsfil som definierar hello programtjänsten som du vill toocreate hello namn. Vi använder här `marathon-alice` som hello framework namn. Spara hello-fil med något som liknar `marathon-alice.json`:
+Börja med att skapa en JSON-konfigurationsfil som definierar namnet på den programtjänst du vill skapa. I det här exemplet använder vi `marathon-alice` som ramverksnamn. Spara filen med något som liknar `marathon-alice.json`:
 
 ```json
 {"marathon": {"framework-name": "marathon-alice" }}
 ```
 
-Använd sedan hello DC/OS CLI tooinstall hello Marathon-instansen med hello-alternativ som har angetts i konfigurationsfilen:
+Använd sedan DC/OS CLI för att installera Marathon-instansen med alternativen som anges i konfigurationsfilen:
 
 ```bash
 dcos package install --options=marathon-alice.json marathon
 ```
 
-Du bör nu se ditt `marathon-alice` tjänsten som körs i hello tjänstefliken i DC/OS-Gränssnittet. hello Gränssnittet är `http://<hostname>/service/marathon-alice/` om du vill tooaccess den direkt.
+Nu bör du kunna se att tjänsten `marathon-alice` körs på tjänstefliken i DC/OS-gränssnittet. Gränssnittet är `http://<hostname>/service/marathon-alice/` om du vill komma åt det direkt.
 
-## <a name="set-hello-dcos-cli-tooaccess-hello-service"></a>Ange hello DC/OS CLI tooaccess hello-tjänsten
-Du kan också konfigurera den här tjänsten för DC/OS CLI-tooaccess genom att ange hello `marathon.url` egenskapen toopoint toohello `marathon-alice` instans enligt följande:
+## <a name="set-the-dcos-cli-to-access-the-service"></a>Ställa in DC/OS CLI för att komma åt tjänsten
+Du kan även konfigurera DC/OS CLI för att komma åt den här nya tjänsten genom att ange att egenskapen `marathon.url` ska peka på instansen `marathon-alice` enligt följande:
 
 ```bash
 dcos config set marathon.url http://<hostname>/service/marathon-alice/
 ```
 
-Du kan kontrollera vilken instans av Marathon som CLI fungerar med hello `dcos config show` kommando. Du kan återställa toousing Marathon-huvudtjänsten med kommandot hello `dcos config unset marathon.url`.
+Du kan kontrollera vilken instans av Marathon som din CLI arbetar mot med `dcos config show`-kommandot. Du kan återgå till att använda din huvudsakliga Marathon-tjänst med kommandot `dcos config unset marathon.url`.
 

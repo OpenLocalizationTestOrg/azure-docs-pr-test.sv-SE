@@ -1,57 +1,75 @@
 ---
-Rubrik: aaa ”Azure Analysis Services självstudiekursen lektionen 10: skapa partitioner | Microsoft Docs ”beskrivning: Beskriver hur toocreate partitioner i självstudiekursen hello Azure Analysis Services-projekt. tjänster: analysis services dokumentationcenter: '' författare: minewiskan manager: erikre editor: '' taggar: ''
-
-MS.AssetID: ms.service: analysis services ms.devlang: NA ms.topic: get-started-article ms.tgt_pltfrm: NA ms.workload: na ms.date: 2017-05/26 ms.author: owend
+title: "Azure Analysis Services självstudiekurs 10: Skapa partitioner | Microsoft Docs"
+description: "Beskriver hur du skapar partitioner i Azure Analysis Services-självstudieprojektet."
+services: analysis-services
+documentationcenter: 
+author: Minewiskan
+manager: erikre
+editor: 
+tags: 
+ms.assetid: 
+ms.service: analysis-services
+ms.devlang: NA
+ms.topic: get-started-article
+ms.tgt_pltfrm: NA
+ms.workload: na
+ms.date: 09/20/2017
+ms.author: owend
+ms.openlocfilehash: b6b5bcd1d766376bd0af71e1fa91f8f2f96b9605
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: sv-SE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="lesson-10-create-partitions"></a>Lektion 10: Skapa partitioner
 
 [!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
-Nu bör skapa du partitioner toodivide hello FactInternetSales tabellen i mindre logiska delar som kan vara bearbetade (uppdateras) oberoende av andra partitioner. Som standard har alla tabeller som du inkludera i din modell en partition som innehåller alla hello tabellens kolumner och rader. Tabellen FactInternetSales hello vill vi toodivide hello data per år; en partition för varje hello tabell fem år. Varje partition kan sedan bearbetas separat. Det finns fler toolearn [partitioner](https://docs.microsoft.com/sql/analysis-services/tabular-models/partitions-ssas-tabular). 
+Under den här lektionen skapar du partitioner för att dela upp tabellen FactInternetSales i mindre, logiska delar som kan bearbetas (uppdateras) oberoende av andra partitioner. Som standard har alla tabeller som du tar med i din modell en partition som innehåller alla kolumner och rader i tabellen. I tabellen FactInternetSales vill vi dela upp data efter år, en partition för var och en av tabellens fem år. Varje partition kan sedan bearbetas separat. Läs mer i [Partitioner](https://docs.microsoft.com/sql/analysis-services/tabular-models/partitions-ssas-tabular). 
   
-Uppskattad tid toocomplete lektionen: **15 minuter**  
+Uppskattad tidsåtgång för den här lektionen: **15 minuter**  
   
 ## <a name="prerequisites"></a>Krav  
-Det här avsnittet ingår i självstudiekursen för tabellmodellering som bör slutföras i rätt ordning. Innan du utför hello uppgifter i den här lektionen bör du slutfört hello föregående lektionen: [lektionen 9: skapa hierarkier](../tutorials/aas-lesson-9-create-hierarchies.md).  
+Det här avsnittet ingår i självstudiekursen för tabellmodellering som bör slutföras i rätt ordning. Innan du utför uppgifterna under den här lektionen bör du ha slutfört föregående lektion: [Lektion 9: Skapa hierarkier](../tutorials/aas-lesson-9-create-hierarchies.md).  
   
 ## <a name="create-partitions"></a>Skapa partitioner  
   
-#### <a name="toocreate-partitions-in-hello-factinternetsales-table"></a>toocreate partitioner i hello FactInternetSales tabell  
+#### <a name="to-create-partitions-in-the-factinternetsales-table"></a>Skapa ytterligare partitioner i tabellen FactInternetSales  
   
 1.  Expandera **Tabeller** i tabellmodellutforskaren och högerklicka på **FactInternetSales** > **Partitioner**.  
   
-2.  I Partitionshanteraren klickar du på **kopiera**, och sedan ändrar hello namn för**FactInternetSales2010**.
+2.  I partitionshanteraren klickar du på **Kopiera** och sedan ändrar du namnet till **FactInternetSales2010**.
   
-    Eftersom du vill hello partition tooinclude bara de raderna i en viss tid för hello år 2010, måste du ändra hello frågeuttryck.
+    Eftersom du vill att partitionen endast ska innehålla de här raderna under en viss period så måste du ändra frågeuttrycket för år 2010.
   
-4.  Klicka på **Design** tooopen fråga redigeraren och klicka sedan på hello **FactInternetSales2010** frågan.
+4.  Klicka på **Design** för att öppna frågeredigeraren och klicka sedan på frågan **FactInternetSales2010**.
 
-5.  I Förhandsgranska klickar du på hello NEDPIL i hello **OrderDate** kolumnrubriken och klicka sedan på **tidsvärdet filter** > **mellan**.
+5.  I förhandsgranskningen klickar du på nedpilen i kolumnrubriken **OrderDate** och sedan klickar du på **Filter för datum/tid** > **Mellan**.
 
     ![aas-lesson10-query-editor](../tutorials/media/aas-lesson10-query-editor.png)
 
-6.  Hello Filtrera rader i dialogrutan i **visa rader där: OrderDate**, lämna **infaller efter eller är lika med**, och ange sedan i hello datumfält **2010-1-1**. Lämna hello **och** operatör som valts, välj sedan **innan**, ange i hello datumfält **2011-1-1**, och klicka sedan på **OK**.
+6.  I dialogrutan Filtrera rader i **Show rows where: OrderDate** (Visa rader där: OrderDate) lämnar du **is after or equal to** (infaller efter eller är lika med) som det är och anger **2010-1-1** i datafältet. Lämna operatorn **And** (Och) markerad och välj sedan **is before** (infaller innan). Ange sedan **2011-1-1** i datafältet och klicka på **OK**.
 
     ![aas-lesson10-filter-rows](../tutorials/media/aas-lesson10-filter-rows.png)
     
-    Observera att ytterligare ett steg med namnet filtrerade rader finns i frågeredigeraren, i TILLÄMPADE STEG. Det här filtret är tooselect endast datum från 2010.
+    Observera att ytterligare ett steg med namnet filtrerade rader finns i frågeredigeraren, i TILLÄMPADE STEG. Det här filtret väljer endast beställningsdatum från 2010.
 
 8.  Klicka på **Importera**.
 
-    I Partitionshanteraren Observera hello fråga uttryck nu har en ytterligare filtrerade rader-instruktion.
+    Observera att frågeuttrycket i partitionshanteraren nu har ytterligare en filtrerade rader-sats.
 
     ![aas-lesson10-query](../tutorials/media/aas-lesson10-query.png)
   
-    Den här instruktionen anger den här partitionen bör inkludera endast hello data i de rader där hello OrderDate är i hello 2010 kalenderåret som angetts i hello filtrerade rader satsen.  
+    Åtgärdssatsen anger att den här partitionen endast ska ta med data i de rader där OrderDate är i kalenderåret 2010 i enlighet med filtrerade rader-satsen.  
   
   
-#### <a name="toocreate-a-partition-for-hello-2011-year"></a>toocreate en partition för hello 2011 år  
+#### <a name="to-create-a-partition-for-the-2011-year"></a>Så här skapar du en partition för år 2011  
   
-1.  Klicka på hello i hello partitioner **FactInternetSales2010** partition som du skapade och klicka sedan på **kopiera**.  Ändra hello partitionsnamnet för**FactInternetSales2011**. 
+1.  I listan över partitioner klickar du på partitionen **FactInternetSales2010** som du skapade och sedan på **Kopiera**.  Ändra partitionsnamnet till **FactInternetSales2011**. 
 
-    Du behöver inte toouse frågeredigeraren toocreate en ny filtrerade rader-instruktion. Eftersom du har skapat en kopia av hello frågan för 2010 är allt du behöver toodo göra små ändringar i hello frågan 2011.
+    Du behöver inte använda frågeredigeraren för att skapa en ny filtrerade rader-sats. Eftersom du skapade en kopia av frågan för 2010 behöver du bara göra en liten ändring i frågan för 2011.
   
-2.  I **frågeuttryck**, i ordning för den här partitionen tooinclude bara de raderna för hello 2011 år, Ersätt hello år i hello filtrerade rader-sats med **2011** och **2012**, t.ex.:  
+2.  För att den här partitionen endast ska innehålla raderna för året 2011 ersätter du åren i filtrerade rader-satsen i **frågeuttrycket** med **2011** respektive **2012**, så här:  
   
     ```  
     let
@@ -64,39 +82,39 @@ Det här avsnittet ingår i självstudiekursen för tabellmodellering som bör s
    
     ```  
   
-#### <a name="toocreate-partitions-for-2012-2013-and-2014"></a>toocreate partitioner för 2012, 2013 och 2014.  
+#### <a name="to-create-partitions-for-2012-2013-and-2014"></a>Så här skapar du partitioner för 2012, 2013 och 2014.  
   
-- Följ hello föregående steg är att skapa partitioner för 2012, 2013 och 2014, ändra hello år i hello filtrerade rader satsen tooinclude endast rader för det aktuella året. 
+- Följ de tidigare stegen och skapa partitioner för 2012, 2013 och 2014 genom att ändra åren i filtrerade rader-satsen så att den endast tar med rader för det aktuella året. 
   
 
-## <a name="delete-hello-factinternetsales-partition"></a>Ta bort hello FactInternetSales partition
-Nu när du har partitioner för varje år kan du ta bort hello FactInternetSales partition. förhindra överlappning när du väljer alla processen vid bearbetning av partitioner.
+## <a name="delete-the-factinternetsales-partition"></a>Ta bort partitionen FactInternetSales
+Nu när du har partitioner för varje år kan du ta bort partitionen FactInternetSales, vilket förhindrar överlappning när du väljer Bearbeta alla när du bearbetar partitioner.
 
-#### <a name="toodelete-hello-factinternetsales-partition"></a>toodelete hello FactInternetSales partition
--  Klicka på hello FactInternetSales partition och klicka sedan på **ta bort**.
+#### <a name="to-delete-the-factinternetsales-partition"></a>Så här gör du för att ta bort partitionen FactInternetSales
+-  Klicka på partitionen FactInternetSales och sedan på **Ta bort**.
 
 
 
 ## <a name="process-partitions"></a>Bearbeta partitioner  
-I Partitionshanteraren Observera hello **sista bearbetade** kolumn för varje hello nya partitioner som du har skapat visas dessa partitioner inte har bearbetats. När du skapar partitioner, bör du köra en Process partitioner eller processen igen toorefresh hello tabelldata i dessa partitioner.  
+Observera att varje ny partition du skapat inte har bearbetats, vilket visas i kolumnen **Senast bearbetad** i partitionshanteraren. När du skapar partitioner bör du köra en Bearbeta partitioner- eller Bearbeta tabell-åtgärd för att uppdatera data i dessa partitioner.  
   
-#### <a name="tooprocess-hello-factinternetsales-partitions"></a>tooprocess hello FactInternetSales partitioner  
+#### <a name="to-process-the-factinternetsales-partitions"></a>Så här gör du för att bearbeta FactInternetSales-partitionerna  
   
-1.  Klicka på **OK** tooclose Partitionshanteraren.  
+1.  Stäng partitionshanteraren genom att klicka på **OK**.  
   
-2.  Klicka på hello **FactInternetSales** tabell och klicka sedan på hello **modellen** menyn > **processen** > **processen partitioner**.  
+2.  Klicka på tabellen **FactInternetSales** och sedan på menyn **Modell** > **Bearbeta** > **Bearbeta partitioner**.  
   
-3.  Hello processen partitioner i dialogrutan Kontrollera **läge** har angetts för**processen standard**.  
+3.  Kontrollera att **Läge** är inställt på **Bearbeta: Standard** i dialogrutan Bearbeta partitioner.  
   
-4.  Markera kryssrutan för hello i hello **processen** kolumn för varje hello fem partitionerar du skapade och klicka sedan på **OK**.  
+4.  Markera kryssrutan i kolumnen **Bearbeta** för var och en av de fem partitionerna du skapade och klicka sedan på **OK**.  
 
     ![aas-lesson10-process-partitions](../tutorials/media/aas-lesson10-process-partitions.png)
   
-    Om du uppmanas att ange autentiseringsuppgifter för personifiering ange hello Windows-användarnamn och lösenord som du angav i lektionen 2.  
+    Ange det Windows-användarnamn och lösenord som du angav i lektion 2 om du uppmanas att ange autentiseringsuppgifter för personifiering.  
   
-    Hej **databearbetning** dialogrutan visas och visar information om processen för varje partition. Observera att olika antal rader överförs för varje partition. Varje partition innehåller bara de raderna för hello år som anges i hello WHERE-satsen i hello SQL-instruktionen. När bearbetningen är klar kan du gå vidare och stänga dialogrutan för hello databearbetning.  
+    Dialogrutan **Databearbetning** visas med information om bearbetningen av varje partition. Observera att olika antal rader överförs för varje partition. Varje partition innehåller endast de rader för året som anges i WHERE-satsen i SQL-instruktionen. När bearbetningen är klar kan du stänga dialogrutan Databearbetning.  
   
     ![aas-lesson10-process-complete](../tutorials/media/aas-lesson10-process-complete.png)
   
  ## <a name="whats-next"></a>Nästa steg
-Gå toohello kursen: [lektionen 11: skapa roller](../tutorials/aas-lesson-11-create-roles.md). 
+Gå till nästa lektion: [Lektion 11: Skapa roller](../tutorials/aas-lesson-11-create-roles.md). 

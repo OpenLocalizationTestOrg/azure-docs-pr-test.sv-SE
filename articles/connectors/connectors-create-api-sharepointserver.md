@@ -1,6 +1,6 @@
 ---
-title: aaaUse hello SharePoint Server-anslutningen i dina Logic Apps | Microsoft Docs
-description: "Komma igång med hello hello SharePoint Server-anslutningen i dina Logic apps"
+title: "Använda SharePoint Server-anslutningen i dina Logic Apps | Microsoft Docs"
+description: "Komma igång med den SharePoint-Server-anslutningen i dina Logic apps"
 services: logic-apps
 documentationcenter: 
 author: MandiOhlinger
@@ -15,46 +15,46 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2016
 ms.author: mandia; ladocs
-ms.openlocfilehash: 3b814f42611e4971ff5c94ae3b021829217911dc
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 0f3274816e279a1aa57febaa2f8294914900799a
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="get-started-with-hello-sharepoint-connector"></a>Kom igång med hello SharePoint-koppling
-hello SharePoint Connector ger ett sätt toowork med listor i SharePoint.
+# <a name="get-started-with-the-sharepoint-connector"></a>Kom igång med SharePoint-koppling
+SharePoint-kopplingen innehåller ett sätt att arbeta med listor i SharePoint.
 
 Kom igång genom att skapa en logikapp; Se [skapa en logikapp](../logic-apps/logic-apps-create-a-logic-app.md).
 
-## <a name="create-a-connection-toosharepoint"></a>Skapa en anslutning tooSharePoint
-toouse Hej SharePoint Connector, du först skapa en **anslutning** ange hello information för dessa egenskaper: 
+## <a name="create-a-connection-to-sharepoint"></a>Skapa en anslutning till SharePoint
+Om du vill använda SharePoint-anslutningstjänsten måste du först skapa en **anslutning** ange detaljer för dessa egenskaper: 
 
 | Egenskap | Krävs | Beskrivning |
 | --- | --- | --- |
 | Token |Ja |Ange autentiseringsuppgifter för SharePoint |
 
-tooconnect för**SharePoint**, ange din identitet (användarnamn och lösenord, autentiseringsuppgifter för smartkort, etc.) tooSharePoint. När du har autentiserats, kan du fortsätta toouse hello SharePoint connector i din logikapp. 
+Att ansluta till **SharePoint**, ange din identitet (användarnamn och lösenord, smartkort autentiseringsuppgifter osv) till SharePoint. När du har autentiserats, kan du fortsätta att använda SharePoint-kopplingen i din logikapp. 
 
-Följ dessa steg toosign i SharePoint toocreate hello-anslutning när på hello designer av din logikapp, **anslutning** för användning i din logikapp:
+Följ dessa steg att logga in på SharePoint att skapa anslutningen på designer av din logikapp **anslutning** för användning i din logikapp:
 
-1. Ange SharePoint i sökrutan hello och vänta tills hello Sök tooreturn alla poster med SharePoint i hello namn:   
+1. Ange SharePoint i sökrutan och vänta tills sökning för att returnera alla poster med SharePoint i namnet:   
    ![Konfigurera SharePoint][1]  
 2. Välj **SharePoint - när en fil har skapats**   
-3. Välj **logga in tooSharePoint**:   
+3. Välj **logga in på SharePoint**:   
    ![Konfigurera SharePoint][2]    
-4. Ge din SharePoint-autentiseringsuppgifter toosign i tooauthenticate SharePoint   
+4. Ange din SharePoint-autentiseringsuppgifter för att logga in att autentisera med SharePoint   
    ![Konfigurera SharePoint][3]     
-5. När hello autentisering har slutförts kommer du att omdirigerade tooyour logik app toocomplete den genom att konfigurera SharePoint- **när en fil skapas** dialogrutan.          
+5. När autentiseringen har slutförts ska du omdirigeras till din logikapp för att slutföra den genom att konfigurera SharePoint- **när en fil skapas** dialogrutan.          
    ![Konfigurera SharePoint][4]  
-6. Du kan sedan lägga till andra utlösare och åtgärder som du behöver toocomplete din logikapp.   
-7. Spara ditt arbete genom att välja **spara** hello menyraden ovan.  
+6. Du kan sedan lägga till andra utlösare och åtgärder som behövs för att slutföra din logikapp.   
+7. Spara ditt arbete genom att välja **spara** på menyraden ovan.  
 
 ## <a name="connector-specific-details"></a>Connector-specifik information
 
-Visa alla utlösare och åtgärder som definierats i hello swagger och även se några gränser i hello [connector information](/connectors/sharepoint/).
+Visa alla utlösare och åtgärder som definierats i swagger och även se några gränser i den [connector information](/connectors/sharepoint/).
 
 ## <a name="more-connectors"></a>Flera kopplingar
-Gå tillbaka toohello [API: er listan](apis-list.md).
+Gå tillbaka till den [API: er listan](apis-list.md).
 
 [1]: ../../includes/media/connectors-create-api-sharepointonline/connectionconfig1.png  
 [2]: ../../includes/media/connectors-create-api-sharepointonline/connectionconfig2.png 

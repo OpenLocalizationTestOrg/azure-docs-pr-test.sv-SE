@@ -1,6 +1,6 @@
 ---
-title: aaaAzure Media Services inkommande metadataschema | Microsoft Docs
-description: "hello avsnittet ger en översikt över Azure Media Services inkommande metadataschema."
+title: Azure Media Services inkommande metadataschema | Microsoft Docs
+description: "Avsnittet ger en översikt över Azure Media Services inkommande metadataschema."
 author: Juliako
 manager: cfowler
 editor: 
@@ -14,28 +14,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: juliako
-ms.openlocfilehash: 9b72c6ff317aa98451ea75548465dc6023b44a55
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 4787e4033e1afda6339b0b917263ecc165e400ad
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="input-metadata"></a>Ange Metadata
-Ett kodningsjobb är associerad med en inkommande tillgång (eller tillgångar) som du vill tooperform vissa kodning uppgifter.  En utdatatillgången skapas vid slutförandet av uppgiften.  Hej utdatatillgången innehåller video, ljud, miniatyrbilder manifestet, etc. hello utdatatillgången innehåller också en fil med metadata om hello inkommande tillgången. hello namnet på XML-filen för hello metadata har hello följande format: &lt;asset_id&gt;_metadata.xml (till exempel 41114ad3-eb5e - 4c 57 8d 92-5354e2b7d4a4_metadata.xml), där &lt;asset_id&gt; är hello AssetId värdet för hello inkommande tillgång.  
+Ett kodningsjobb är associerad med en inkommande tillgång (eller tillgångar) om du vill utföra vissa uppgifter som kodning.  En utdatatillgången skapas vid slutförandet av uppgiften.  Utdatatillgången innehåller video, ljud, miniatyrer, manifestet osv. Utdatatillgången innehåller också en fil med metadata om inkommande tillgången. Namnet på XML-metadatafilen har följande format: &lt;asset_id&gt;_metadata.xml (till exempel 41114ad3-eb5e - 4c 57 8d 92-5354e2b7d4a4_metadata.xml), där &lt;asset_id&gt; AssetId värdet för den inkommande tillgången.  
 
-Om du vill tooexamine hello metadatafil, kan du skapa en **SAS** positionerare och hämta hello filen tooyour lokal dator. Du hittar ett exempel på hur toocreate en SAS-positionerare och hämta en fil [med hello Media Services .NET SDK-tilläggen](media-services-dotnet-get-started.md).  
+Om du vill undersöka metadatafilen kan du skapa en **SAS** positionerare och hämta filen till den lokala datorn. Du hittar ett exempel på hur du skapar en SAS-positionerare och hämta en fil [med hjälp av Media Services .NET SDK-tilläggen](media-services-dotnet-get-started.md).  
 
-Det här avsnittet beskrivs hello element och typer av hello XML-schemat på vilka hello inkommande metada (&lt;asset_id&gt;_metadata.xml) är baserad.  Information om hello-fil som innehåller metadata om hello utdatatillgången finns [utdata Metadata](media-services-output-metadata-schema.md).  
+Det här avsnittet beskrivs de element och typer av XML-schemat som den inkommande metada (&lt;asset_id&gt;_metadata.xml) är baserad.  Information om den fil som innehåller metadata om utdatatillgången finns [utdata Metadata](media-services-output-metadata-schema.md).  
 
 > [!NOTE]
-> Du kan hitta hello [schemat kod](media-services-input-metadata-schema.md#code) en [XML-exempel](media-services-input-metadata-schema.md#xml) hello slutet av det här avsnittet.  
+> Du hittar den [schemat kod](media-services-input-metadata-schema.md#code) en [XML-exempel](media-services-input-metadata-schema.md#xml) i slutet av det här avsnittet.  
 > 
 > 
 
 ## <a name="AssetFiles"></a>AssetFiles element (rotelementet)
-Innehåller en samling [AssetFile elementet](media-services-input-metadata-schema.md#AssetFile)s för hello kodningsjobbet.  
+Innehåller en samling [AssetFile elementet](media-services-input-metadata-schema.md#AssetFile)s för kodningsjobbet.  
 
-Se ett XML-exempel hello slutet av det här avsnittet: [XML-exempel](media-services-input-metadata-schema.md#xml).  
+Se ett XML-exempel i slutet av det här avsnittet: [XML-exempel](media-services-input-metadata-schema.md#xml).  
 
 | Namn | Beskrivning |
 | --- | --- |
@@ -44,40 +44,40 @@ Se ett XML-exempel hello slutet av det här avsnittet: [XML-exempel](media-servi
 ## <a name="AssetFile"></a>AssetFile element
  Innehåller attribut och element som beskriver en resursfil.  
 
- Se ett XML-exempel hello slutet av det här avsnittet: [XML-exempel](media-services-input-metadata-schema.md#xml).  
+ Se ett XML-exempel i slutet av det här avsnittet: [XML-exempel](media-services-input-metadata-schema.md#xml).  
 
 ### <a name="attributes"></a>Attribut
 | Namn | Typ | Beskrivning |
 | --- | --- | --- |
 | **Namn**<br /><br /> Krävs |**Xs:String** |Filnamnet för tillgången. |
-| **Storlek**<br /><br /> Krävs |**Xs:Long** |Storleken på hello tillgångsfil i byte. |
+| **Storlek**<br /><br /> Krävs |**Xs:Long** |Storleken på resursfilen i byte. |
 | **Varaktighet**<br /><br /> Krävs |**Duration** |Innehåll play tillbaka varaktighet. Exempel: Duration = ”PT25M37.757S”. |
-| **NumberOfStreams**<br /><br /> Krävs |**Xs:int** |Antal dataströmmar i hello resursfil. |
+| **NumberOfStreams**<br /><br /> Krävs |**Xs:int** |Antal dataströmmar i resursfilen. |
 | **FormatNames**<br /><br /> Krävs |**Xs:String** |Formatnamn. |
 | **FormatVerboseNames**<br /><br /> Krävs |**Xs:String** |Utförlig formatnamn. |
 | **StartTime** |**Duration** |Starttid för innehåll. Exempel: StartTime = ”PT2.669S”. |
-| **OverallBitRate** |**Xs:int** |Genomsnittlig bithastighet hello tillgången filen i kbit/s. |
+| **OverallBitRate** |**Xs:int** |Genomsnittlig bithastighet i resursfilen i kbit/s. |
 
 > [!NOTE]
-> hello följande 4 underordnade element måste visas i en sekvens.  
+> Följande 4 underordnade element måste visas i en sekvens.  
 > 
 > 
 
 ### <a name="child-elements"></a>Underordnade element
 | Namn | Typ | Beskrivning |
 | --- | --- | --- |
-| **Program**<br /><br /> minOccurs = ”0” | |Samling av alla [program elementet](media-services-input-metadata-schema.md#Programs) när hello resursfilen har MPEG-TS-format. |
-| **VideoTracks**<br /><br /> minOccurs = ”0” | |Varje fysisk tillgång-fil kan innehålla noll eller flera video spårar överlagrat till en lämplig behållare format. Det här elementet innehåller en samling med alla [VideoTracks elementet](media-services-input-metadata-schema.md#VideoTracks) som ingår i hello resursfil. |
-| **AudioTracks**<br /><br /> minOccurs = ”0” | |Varje fysisk tillgång-fil kan innehålla noll eller flera ljud spårar överlagrat till en lämplig behållare format. Det här elementet innehåller en samling med alla [AudioTracks elementet](media-services-input-metadata-schema.md#AudioTracks) som ingår i hello resursfil. |
+| **Program**<br /><br /> minOccurs = ”0” | |Samling av alla [program elementet](media-services-input-metadata-schema.md#Programs) när resursfilen har MPEG-TS-format. |
+| **VideoTracks**<br /><br /> minOccurs = ”0” | |Varje fysisk tillgång-fil kan innehålla noll eller flera video spårar överlagrat till en lämplig behållare format. Det här elementet innehåller en samling med alla [VideoTracks elementet](media-services-input-metadata-schema.md#VideoTracks) som ingår i resursfilen. |
+| **AudioTracks**<br /><br /> minOccurs = ”0” | |Varje fysisk tillgång-fil kan innehålla noll eller flera ljud spårar överlagrat till en lämplig behållare format. Det här elementet innehåller en samling med alla [AudioTracks elementet](media-services-input-metadata-schema.md#AudioTracks) som ingår i resursfilen. |
 | **Metadata**<br /><br /> minOccurs = ”0” maxOccurs = ”unbounded” |[MetadataType](media-services-input-metadata-schema.md#MetadataType) |Tillgångsinformation filens metadata representeras som key\value strängar. Exempel:<br /><br /> **&lt;Metadatanyckel = ”språk” value = ”eng” /&gt;** |
 
 ## <a name="TrackType"></a>TrackType
-Se ett XML-exempel hello slutet av det här avsnittet: [XML-exempel](media-services-input-metadata-schema.md#xml).  
+Se ett XML-exempel i slutet av det här avsnittet: [XML-exempel](media-services-input-metadata-schema.md#xml).  
 
 ### <a name="attributes"></a>Attribut
 | Namn | Typ | Beskrivning |
 | --- | --- | --- |
-| **ID**<br /><br /> Krävs |**Xs:int** |Nollbaserade indexet för den här ljud- och spåra.<br /><br /> Detta är inte nödvändigtvis att hello TrackID som används i en MP4-fil. |
+| **ID**<br /><br /> Krävs |**Xs:int** |Nollbaserade indexet för den här ljud- och spåra.<br /><br /> Detta är inte nödvändigtvis att TrackID som används i en MP4-fil. |
 | **Codec** |**Xs:String** |Video spåra codec sträng. |
 | **CodecLongName** |**Xs:String** |Ljud- och spåra codec långt namn. |
 | **Tidsvärde**<br /><br /> Krävs |**Xs:String** |Bas. Exempel: Tidsvärde = ”1/48000” |
@@ -86,7 +86,7 @@ Se ett XML-exempel hello slutet av det här avsnittet: [XML-exempel](media-servi
 | **Varaktighet** |**Duration** |Spåra varaktighet. Exempel: Duration = ”PTSampleFormat M37.757S”. |
 
 > [!NOTE]
-> hello efter 2 underordnade element måste visas i en sekvens.  
+> Följande 2 underordnade element måste visas i en sekvens.  
 > 
 > 
 
@@ -94,14 +94,14 @@ Se ett XML-exempel hello slutet av det här avsnittet: [XML-exempel](media-servi
 | Namn | Typ | Beskrivning |
 | --- | --- | --- |
 | **Disposition**<br /><br /> minOccurs = ”0” maxOccurs = ”1” |[StreamDispositionType](media-services-input-metadata-schema.md#StreamDispositionType) |Innehåller information om presentation (till exempel om en viss ljud spåra är för personer med nedsatt). |
-| **Metadata**<br /><br /> minOccurs = ”0” maxOccurs = ”unbounded” |[MetadataType](media-services-input-metadata-schema.md#MetadataType) |Allmän nyckel/värde-strängar som kan använda toohold en mängd information. Till exempel nyckel = ”språk”, och värdet = ”eng”. |
+| **Metadata**<br /><br /> minOccurs = ”0” maxOccurs = ”unbounded” |[MetadataType](media-services-input-metadata-schema.md#MetadataType) |Allmän nyckel/värde-strängar som kan användas för att lagra en mängd information. Till exempel nyckel = ”språk”, och värdet = ”eng”. |
 
 ## <a name="AudioTrackType"></a>AudioTrackType (ärver från TrackType)
  **AudioTrackType** är en global komplex typ som ärver från [TrackType](media-services-input-metadata-schema.md#TrackType).  
 
- hello-typen motsvarar en viss ljud spår i hello resursfil.  
+ Typen representerar ett visst ljud spår i resursfilen.  
 
- Se ett XML-exempel hello slutet av det här avsnittet: [XML-exempel](media-services-input-metadata-schema.md#xml).  
+ Se ett XML-exempel i slutet av det här avsnittet: [XML-exempel](media-services-input-metadata-schema.md#xml).  
 
 ### <a name="attributes"></a>Attribut
 | Namn | Typ | Beskrivning |
@@ -110,15 +110,15 @@ Se ett XML-exempel hello slutet av det här avsnittet: [XML-exempel](media-servi
 | **ChannelLayout** |**Xs:String** |Kanal layout. |
 | **Kanaler**<br /><br /> Krävs |**Xs:int** |Antal (0 eller fler) ljud kanaler. |
 | **SamplingRate**<br /><br /> Krävs |**Xs:int** |I prover per sekund eller Hz ljud samplingsfrekvensen. |
-| **Bithastighet** |**Xs:int** |Genomsnittlig ljud bithastighet i bitar per sekund som beräknas från hello resursfil. Endast hello elementära dataströmmen nyttolast räknas och hello paketering kostnader ingår inte i det här antalet. |
-| **BitsPerSample** |**Xs:int** |Bitar per prov för hello wFormatTag formatet typ. |
+| **Bithastighet** |**Xs:int** |Genomsnittlig ljud bithastighet i bitar per sekund som beräknas från resursfilen. Grundläggande dataströmmen nyttolasten räknas och paketering kostnader ingår inte i det här antalet. |
+| **BitsPerSample** |**Xs:int** |Bitar per prov för formatet wFormatTag typ. |
 
 ## <a name="VideoTrackType"></a>VideoTrackType (ärver från TrackType)
 **VideoTrackType** är en global komplex typ som ärver från [TrackType](media-services-input-metadata-schema.md#TrackType).  
 
-hello-typen motsvarar en viss video spår i hello resursfil.  
+Typen representerar ett specifikt video spår i resursfilen.  
 
-Se ett XML-exempel hello slutet av det här avsnittet: [XML-exempel](media-services-input-metadata-schema.md#xml).  
+Se ett XML-exempel i slutet av det här avsnittet: [XML-exempel](media-services-input-metadata-schema.md#xml).  
 
 ### <a name="attributes"></a>Attribut
 | Namn | Typ | Beskrivning |
@@ -135,20 +135,20 @@ Se ett XML-exempel hello slutet av det här avsnittet: [XML-exempel](media-servi
 | **SampleAspectRatioNumerator** |**Xs:Double** |Video exempel proportionerna täljaren. |
 | **SampleAspectRatioNumerator** |**Xs:Double** |Video exempel proportionerna nämnare. |
 | **Ramhastighet**<br /><br /> Krävs |**Xs:decimal** |Mätt video bildfrekvens .3f format. |
-| **Bithastighet** |**Xs:int** |Genomsnittlig video bithastighet i kilobit per sekund som beräknas från hello resursfil. Endast hello elementära dataströmmen nyttolast räknas och hello paketering kostnader ingår inte. |
+| **Bithastighet** |**Xs:int** |Genomsnittlig video bithastighet i kilobit per sekund som beräknas från resursfilen. Grundläggande dataströmmen nyttolasten räknas och paketering kostnader ingår inte. |
 | **MaxGOPBitrate** |**Xs:int** |Max GOP genomsnittlig bithastighet för den här videon spår i kilobit per sekund. |
 | **HasBFrames** |**Xs:int** |Video spåra antalet B ramar. |
 
 ## <a name="MetadataType"></a>MetadataType
 **MetadataType** är en global komplex typ som beskriver metadata för en resursfil som nyckel/värde-strängar. Till exempel nyckel = ”språk”, och värdet = ”eng”.  
 
-Se ett XML-exempel hello slutet av det här avsnittet: [XML-exempel](media-services-input-metadata-schema.md#xml).  
+Se ett XML-exempel i slutet av det här avsnittet: [XML-exempel](media-services-input-metadata-schema.md#xml).  
 
 ### <a name="attributes"></a>Attribut
 | Namn | Typ | Beskrivning |
 | --- | --- | --- |
-| **nyckel**<br /><br /> Krävs |**Xs:String** |hello nyckeln i hello nyckel/värde-par. |
-| **värdet**<br /><br /> Krävs |**Xs:String** |hello värdet i hello nyckel/värde-par. |
+| **nyckel**<br /><br /> Krävs |**Xs:String** |Nyckeln i nyckel/värde-par. |
+| **värdet**<br /><br /> Krävs |**Xs:String** |Värdet i nyckel/värde-par. |
 
 ## <a name="ProgramType"></a>ProgramType
 **ProgramType** är en global komplex typ som beskriver ett program.  
@@ -164,24 +164,24 @@ Se ett XML-exempel hello slutet av det här avsnittet: [XML-exempel](media-servi
 | **EndPTS** |**Xs: lång** |Avslutas presentation tidsstämpel. |
 
 ## <a name="StreamDispositionType"></a>StreamDispositionType
-**StreamDispositionType** är en global komplex typ som beskriver hello dataströmmen.  
+**StreamDispositionType** är en global komplex typ som beskriver dataströmmen.  
 
-Se ett XML-exempel hello slutet av det här avsnittet: [XML-exempel](media-services-input-metadata-schema.md#xml).  
+Se ett XML-exempel i slutet av det här avsnittet: [XML-exempel](media-services-input-metadata-schema.md#xml).  
 
 ### <a name="attributes"></a>Attribut
 | Namn | Typ | Beskrivning |
 | --- | --- | --- |
-| **Standard**<br /><br /> Krävs |**Xs:int** |Ange det här attributet too1 tooindicate är hello standardpresentationen. |
-| **Dub**<br /><br /> Krävs |**Xs:int** |Ställ in det här attributet too1 tooindicate är hello dubbat presentation. |
-| **Ursprungliga**<br /><br /> Krävs |**Xs:int** |Ange det här attributet too1 tooindicate är hello ursprungliga presentationen. |
-| **Kommentar**<br /><br /> Krävs |**Xs:int** |Ställ in det här attributet too1 tooindicate spåra innehåller kommentar. |
-| **Texter**<br /><br /> Krävs |**Xs:int** |Ställ in det här attributet too1 tooindicate spåra innehåller texter. |
-| **Karaoke**<br /><br /> Krävs |**Xs:int** |Ställ in det här attributet too1 tooindicate representerar hello karaoke spåra (bakgrundsmusik, ingen sångrösten). |
-| **Tvingad**<br /><br /> Krävs |**Xs:int** |Ange det här attributet too1 tooindicate är hello tvingas presentation. |
-| **HearingImpaired**<br /><br /> Krävs |**Xs:int** |Ange det här attributet too1 tooindicate spåret avser hello hörsel försämras. |
-| **VisualImpaired**<br /><br /> Krävs |**Xs:int** |Ange det här attributet too1 tooindicate spåret är för personer med nedsatt syn hello. |
-| **CleanEffects**<br /><br /> Krävs |**Xs:int** |Ange det här attributet too1 tooindicate spåret har ren effekter. |
-| **AttachedPic**<br /><br /> Krävs |**Xs:int** |Ange det här attributet too1 tooindicate spåret har bilder. |
+| **Standard**<br /><br /> Krävs |**Xs:int** |Ange det här attributet 1 för att ange detta är standardpresentationen. |
+| **Dub**<br /><br /> Krävs |**Xs:int** |Ange det här attributet 1 för att ange detta är går under benämningen presentationen. |
+| **Ursprungliga**<br /><br /> Krävs |**Xs:int** |Ange det här attributet 1 för att ange detta är den ursprungliga presentationen. |
+| **Kommentar**<br /><br /> Krävs |**Xs:int** |Ange det här attributet 1 för att ange den här spåra innehåller kommentar. |
+| **Texter**<br /><br /> Krävs |**Xs:int** |Ange det här attributet 1 för att ange den här spåra innehåller texter. |
+| **Karaoke**<br /><br /> Krävs |**Xs:int** |Värdet 1 för att ange karaoke spåra (bakgrundsmusik, ingen sångrösten) representerar det här attributet. |
+| **Tvingad**<br /><br /> Krävs |**Xs:int** |Ange det här attributet 1 för att ange detta är framtvingad presentationen. |
+| **HearingImpaired**<br /><br /> Krävs |**Xs:int** |Ange det här attributet 1 för att ange spåret gäller för den nedsatt hörsel. |
+| **VisualImpaired**<br /><br /> Krävs |**Xs:int** |Ange det här attributet 1 för att ange spåret gäller för den nedsatt. |
+| **CleanEffects**<br /><br /> Krävs |**Xs:int** |Ange det här attributet 1 för att ange spåret har ren effekter. |
+| **AttachedPic**<br /><br /> Krävs |**Xs:int** |Ange det här attributet 1 för att ange spåret har bilder. |
 
 ## <a name="Programs"></a>Program-element
 -Elementet innehåller flera **programmet** element.  
@@ -189,27 +189,27 @@ Se ett XML-exempel hello slutet av det här avsnittet: [XML-exempel](media-servi
 ### <a name="child-elements"></a>Underordnade element
 | Namn | Typ | Beskrivning |
 | --- | --- | --- |
-| **Programmet**<br /><br /> minOccurs = ”0” maxOccurs = ”unbounded” |[ProgramType](media-services-input-metadata-schema.md#ProgramType) |Innehåller information om program i hello resursfilen för tillgångsfiler i MPEG-TS-format. |
+| **Programmet**<br /><br /> minOccurs = ”0” maxOccurs = ”unbounded” |[ProgramType](media-services-input-metadata-schema.md#ProgramType) |Innehåller information om program i resursfilen för tillgångsfiler i MPEG-TS-format. |
 
 ## <a name="VideoTracks"></a>VideoTracks element
  -Elementet innehåller flera **VideoTrack** element.  
 
- Se ett XML-exempel hello slutet av det här avsnittet: [XML-exempel](media-services-input-metadata-schema.md#xml).  
+ Se ett XML-exempel i slutet av det här avsnittet: [XML-exempel](media-services-input-metadata-schema.md#xml).  
 
 ### <a name="child-elements"></a>Underordnade element
 | Namn | Typ | Beskrivning |
 | --- | --- | --- |
-| **VideoTrack**<br /><br /> minOccurs = ”0” maxOccurs = ”unbounded” |[VideoTrackType (ärver från TrackType)](media-services-input-metadata-schema.md#VideoTrackType) |Innehåller information om video spår i hello resursfil. |
+| **VideoTrack**<br /><br /> minOccurs = ”0” maxOccurs = ”unbounded” |[VideoTrackType (ärver från TrackType)](media-services-input-metadata-schema.md#VideoTrackType) |Innehåller information om video spår i resursfilen. |
 
 ## <a name="AudioTracks"></a>AudioTracks element
  -Elementet innehåller flera **AudioTrack** element.  
 
- Se ett XML-exempel hello slutet av det här avsnittet: [XML-exempel](media-services-input-metadata-schema.md#xml).  
+ Se ett XML-exempel i slutet av det här avsnittet: [XML-exempel](media-services-input-metadata-schema.md#xml).  
 
 ### <a name="elements"></a>Element
 | Namn | Typ | Beskrivning |
 | --- | --- | --- |
-| **AudioTrack**<br /><br /> minOccurs = ”0” maxOccurs = ”unbounded” |[AudioTrackType (ärver från TrackType)](media-services-input-metadata-schema.md#AudioTrackType) |Innehåller information om ljud spår i hello resursfil. |
+| **AudioTrack**<br /><br /> minOccurs = ”0” maxOccurs = ”unbounded” |[AudioTrackType (ärver från TrackType)](media-services-input-metadata-schema.md#AudioTrackType) |Innehåller information om ljud spår i resursfilen. |
 
 ## <a name="code"></a>Schemat kod
     <?xml version="1.0" encoding="utf-8"?>  
@@ -277,7 +277,7 @@ Se ett XML-exempel hello slutet av det här avsnittet: [XML-exempel](media-servi
         </xs:sequence>  
         <xs:attribute name="Id" use="required">  
           <xs:annotation>  
-            <xs:documentation>zero-based index of this video track. Note: this is not necessarily hello TrackID as used in an MP4 file</xs:documentation>  
+            <xs:documentation>zero-based index of this video track. Note: this is not necessarily the TrackID as used in an MP4 file</xs:documentation>  
           </xs:annotation>  
           <xs:simpleType>  
             <xs:restriction base="xs:int">  
@@ -324,7 +324,7 @@ Se ett XML-exempel hello slutet av det här avsnittet: [XML-exempel](media-servi
 
       <xs:complexType name="VideoTrackType">  
         <xs:annotation>  
-          <xs:documentation>A specific video track in hello parent AssetFile</xs:documentation>  
+          <xs:documentation>A specific video track in the parent AssetFile</xs:documentation>  
         </xs:annotation>  
         <xs:complexContent>  
           <xs:extension base="TrackType">  
@@ -421,7 +421,7 @@ Se ett XML-exempel hello slutet av det här avsnittet: [XML-exempel](media-servi
             </xs:attribute>  
             <xs:attribute name="Bitrate">  
               <xs:annotation>  
-                <xs:documentation>average video bit rate in kilobits per second, as calculated from hello AssetFile. Counts only hello elementary stream payload, and does not include hello packaging overhead</xs:documentation>  
+                <xs:documentation>average video bit rate in kilobits per second, as calculated from the AssetFile. Counts only the elementary stream payload, and does not include the packaging overhead</xs:documentation>  
               </xs:annotation>  
               <xs:simpleType>  
                 <xs:restriction base="xs:int">  
@@ -450,7 +450,7 @@ Se ett XML-exempel hello slutet av det här avsnittet: [XML-exempel](media-servi
 
       <xs:complexType name="AudioTrackType">  
         <xs:annotation>  
-          <xs:documentation>a specific audio track in hello parent AssetFile</xs:documentation>  
+          <xs:documentation>a specific audio track in the parent AssetFile</xs:documentation>  
         </xs:annotation>  
         <xs:complexContent>  
           <xs:extension base="TrackType">  
@@ -486,7 +486,7 @@ Se ett XML-exempel hello slutet av det här avsnittet: [XML-exempel](media-servi
             </xs:attribute>  
             <xs:attribute name="Bitrate">  
               <xs:annotation>  
-                <xs:documentation>average audio bit rate in bits per second, as calculated from hello AssetFile. Counts only hello elementary stream payload, and does not include hello packaging overhead</xs:documentation>  
+                <xs:documentation>average audio bit rate in bits per second, as calculated from the AssetFile. Counts only the elementary stream payload, and does not include the packaging overhead</xs:documentation>  
               </xs:annotation>  
               <xs:simpleType>  
                 <xs:restriction base="xs:int">  
@@ -496,7 +496,7 @@ Se ett XML-exempel hello slutet av det här avsnittet: [XML-exempel](media-servi
             </xs:attribute>  
             <xs:attribute name="BitsPerSample">  
               <xs:annotation>  
-                <xs:documentation>Bits per sample for hello wFormatTag format type</xs:documentation>  
+                <xs:documentation>Bits per sample for the wFormatTag format type</xs:documentation>  
               </xs:annotation>  
               <xs:simpleType>  
                 <xs:restriction base="xs:int">  
@@ -510,7 +510,7 @@ Se ett XML-exempel hello slutet av det här avsnittet: [XML-exempel](media-servi
 
       <xs:element name="AssetFiles">  
         <xs:annotation>  
-          <xs:documentation>Collection of AssetFile entries for hello encoding job</xs:documentation>  
+          <xs:documentation>Collection of AssetFile entries for the encoding job</xs:documentation>  
         </xs:annotation>  
         <xs:complexType>  
           <xs:sequence>  
@@ -522,7 +522,7 @@ Se ett XML-exempel hello slutet av det här avsnittet: [XML-exempel](media-servi
                 <xs:sequence>  
                   <xs:element name="Programs" minOccurs="0">  
                     <xs:annotation>  
-                      <xs:documentation>This is hello collection of all programs when file is MPEG-TS</xs:documentation>  
+                      <xs:documentation>This is the collection of all programs when file is MPEG-TS</xs:documentation>  
                     </xs:annotation>  
                     <xs:complexType>  
                       <xs:sequence>  
@@ -532,7 +532,7 @@ Se ett XML-exempel hello slutet av det här avsnittet: [XML-exempel](media-servi
                   </xs:element>  
                   <xs:element name="VideoTracks" minOccurs="0">  
                     <xs:annotation>  
-                      <xs:documentation>Each physical AssetFile can contain in it zero or more video tracks interleaved into an appropriate container format. This is hello collection of all those video tracks</xs:documentation>  
+                      <xs:documentation>Each physical AssetFile can contain in it zero or more video tracks interleaved into an appropriate container format. This is the collection of all those video tracks</xs:documentation>  
                     </xs:annotation>  
                     <xs:complexType>  
                       <xs:sequence>  
@@ -542,7 +542,7 @@ Se ett XML-exempel hello slutet av det här avsnittet: [XML-exempel](media-servi
                   </xs:element>  
                   <xs:element name="AudioTracks" minOccurs="0">  
                     <xs:annotation>  
-                      <xs:documentation>each physical AssetFile can contain in it zero or more audio tracks interleaved into an appropriate container format. This is hello collection of all those audio tracks</xs:documentation>  
+                      <xs:documentation>each physical AssetFile can contain in it zero or more audio tracks interleaved into an appropriate container format. This is the collection of all those audio tracks</xs:documentation>  
                     </xs:annotation>  
                     <xs:complexType>  
                       <xs:sequence>  
@@ -554,7 +554,7 @@ Se ett XML-exempel hello slutet av det här avsnittet: [XML-exempel](media-servi
                 </xs:sequence>  
                 <xs:attribute name="Name" type="xs:string" use="required">  
                   <xs:annotation>  
-                    <xs:documentation>hello media asset file name</xs:documentation>  
+                    <xs:documentation>the media asset file name</xs:documentation>  
                   </xs:annotation>  
                 </xs:attribute>  
                 <xs:attribute name="Size" use="required">  
@@ -594,7 +594,7 @@ Se ett XML-exempel hello slutet av det här avsnittet: [XML-exempel](media-servi
                 </xs:attribute>  
                 <xs:attribute name="OverallBitRate">  
                   <xs:annotation>  
-                    <xs:documentation>average bitrate of hello asset file in kbps</xs:documentation>  
+                    <xs:documentation>average bitrate of the asset file in kbps</xs:documentation>  
                   </xs:annotation>  
                   <xs:simpleType>  
                     <xs:restriction base="xs:int">  
@@ -611,7 +611,7 @@ Se ett XML-exempel hello slutet av det här avsnittet: [XML-exempel](media-servi
 
 
 ## <a name="xml"></a>XML-exempel
-hello följande är ett exempel på hello indata metadatafil.  
+Följande är ett exempel på indata-metadatafil.  
 
     <?xml version="1.0" encoding="utf-8"?>  
     <AssetFiles xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/windowsazure/mediaservices/2014/07/mediaencoder/inputmetadata">  

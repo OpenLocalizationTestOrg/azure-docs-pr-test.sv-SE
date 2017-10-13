@@ -1,6 +1,6 @@
 ---
-title: "aaaConfigure nätverksmappningen för att replikera virtuella Hyper-V-datorer i VMM-moln tooAzure med Azure Site Recovery | Microsoft Docs"
-description: "Beskriver hur tooconfigure nätverksmappning vid replikering av Hyper-V virtuella datorer i VMM moln tooAzure med Azure Site Recovery"
+title: "Konfigurera nätverksmappning för att replikera virtuella Hyper-V-datorer i VMM-moln till Azure med Azure Site Recovery | Microsoft Docs"
+description: "Beskriver hur du konfigurerar nätverksmappning vid replikering av Hyper-V virtuella datorer i VMM-moln till Azure med Azure Site Recovery"
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
@@ -14,47 +14,47 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2017
 ms.author: raynew
-ms.openlocfilehash: 081a9fdb0ffa4114099e9bcb9c1b1e43ad26ecbb
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: ed6f73d8baea5af0d2aa5f0ae885f305911ccc82
+ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/29/2017
 ---
-# <a name="step-9-configure-network-mapping-for-hyper-v-replication-with-vmm-tooazure"></a>Steg 9: Konfigurera nätverksmappning för tooAzure för Hyper-V-replikering (med VMM)
+# <a name="step-9-configure-network-mapping-for-hyper-v-replication-with-vmm-to-azure"></a>Steg 9: Konfigurera nätverksmappning för Hyper-V-replikering (med VMM) till Azure
 
-När du har skapat hello [käll- och replikeringsinställningarna](vmm-to-azure-walkthrough-source-target.md), Använd den här artikeln tooconfigure nätverk mappning toomap mellan lokala nätverk för virtuell dator i VMM och Azure-nätverk.
+När du har skapat den [käll- och replikeringsinställningarna](vmm-to-azure-walkthrough-source-target.md), Använd den här artikeln för att konfigurera nätverksmappning att mappa mellan lokala nätverk för virtuell dator i VMM och Azure-nätverk.
 
-Publicera kommentarer och frågor längst ned hello i den här artikeln eller i hello [Azure Recovery Services-forumet](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
+Publicera kommentarer och frågor längst ned i den här artikeln eller i den [Azure Recovery Services-forumet](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
 
 ## <a name="before-you-start"></a>Innan du börjar
 
 - Lär dig mer om [nätverksmappning](vmm-to-azure-walkthrough-network.md#network-mapping-for-replication-to-azure).
 - [Förbereda VMM för nätverksmappning](vmm-to-azure-walkthrough-network.md#prepare-vmm-for-network-mapping). 
-- Kontrollera att virtuella datorer på hello VMM-servern är ansluten tooa Virtuellt datornätverk och att du har skapat minst ett virtuellt Azure-nätverk. Flera Virtuella datornätverk kan vara mappade tooa enda Azure-nätverk.
+- Kontrollera att virtuella datorer på VMM-servern är anslutna till ett virtuellt datornätverk och att du har skapat minst ett virtuellt Azure-nätverk. Flera virtuella datornätverk kan mappas till ett enda Azure-nätverk.
 
 ## <a name="configure-mapping"></a>Konfigurera mappning
 
 Konfigurera mappning på följande sätt:
 
-1. I **Site Recovery-infrastruktur** > **nätverksmappningar** > **nätverksmappning**, klicka på hello **+ nätverksmappning**  ikon.
+1. Under **Site Recovery-infrastruktur** > **Nätverksmappningar** > **Nätverksmappning** klickar du på ikonen **+Nätverksmappning**.
 
     ![Nätverksmappning](./media/vmm-to-azure-walkthrough-network-mapping/network-mapping1.png)
-2. I **Lägg till nätverksmappning**väljer hello VMM-källservern och **Azure** som hello mål.
-3. Kontrollera hello prenumeration och hello distributionsmodell efter växling vid fel.
-4. I **Källnätverk**väljer hello lokala VM-källnätverket önskade toomap hello listan som är associerade med hello VMM-servern.
-5. I **målnätverket**, Välj hello Azure-nätverk i vilka replik virtuella Azure-datorer kommer att finnas när de skapas. Klicka sedan på **OK**.
+2. På **Lägg till nätverksmappning** väljer du VMM-källservern och **Azure** som mål.
+3. Kontrollera prenumerationen och distributionsmodellen efter redundansväxling.
+4. I **Källnätverk** väljer du det lokala VM-källnätverk som du vill mappa från listan som är associerad med VMM-servern.
+5. I **Målnätverk** väljer du det Azure-nätverk som de virtuella Azure-replikdatorerna ska anslutas till när de skapas. Klicka sedan på **OK**.
 
     ![Nätverksmappning](./media/vmm-to-azure-walkthrough-network-mapping/network-mapping2.png)
 
 Det här händer när nätverksmappningen börjar:
 
-* Befintliga virtuella datorer i VM-källnätverket hello är anslutna toohello målnätverket när mappningen börjar. Nya virtuella datorer anslutna toohello källnätverket ansluts toohello mappade Azure-nätverket när replikeringen sker.
-* Om du ändrar en befintlig nätverksmappning ansluts virtuella replikdatorer med hello nya inställningar.
-* Om hello målnätverket har flera undernät och ett av dessa undernät har hello samma namn som undernätet som hello källa virtual machine finns så hello replikerade virtuella datorn ansluter toothat målundernätverket efter en redundansväxling.
-* Om det inte finns något målundernät med ett matchande namn, ansluter hello virtuella toohello första undernätet i hello nätverk.
+* Befintliga virtuella datorerna i VM-källnätverket ansluts till målnätverket när mappningen börjar. Nya virtuella datorer som är anslutna till VM-källnätverket ansluts till det mappade Azure-nätverket när replikeringen sker.
+* Om du ändrar en befintlig nätverksmappning ansluts virtuella replikdatorer med hjälp av de nya inställningarna.
+* Om målnätverket har flera undernät och ett av dessa undernät har samma namn som undernätet där den virtuella källdatorn finns så ansluts den virtuella replikdatorn till det målundernätverket efter en redundansväxling.
+* Om det inte finns något målundernät med ett matchande namn ansluts den virtuella datorn till det första undernätet i nätverket.
 
 
 
 ## <a name="next-steps"></a>Nästa steg
 
-Gå för[steg 10: skapa en replikeringsprincip](vmm-to-azure-walkthrough-replication.md)
+Gå till [steg 10: skapa en replikeringsprincip](vmm-to-azure-walkthrough-replication.md)

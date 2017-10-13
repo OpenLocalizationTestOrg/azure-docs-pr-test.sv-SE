@@ -1,6 +1,6 @@
 ---
-title: "aaaGet igång med Data Lake Analytics med hjälp av REST API | Microsoft Docs"
-description: "Använd WebHDFS REST API: er tooperform åtgärder på Data Lake Analytics"
+title: "Kom igång med Data Lake Analytics med hjälp av REST API| Microsoft Docs"
+description: "Använd WebHDFS REST API:er för att utföra åtgärder på Data Lake Analytics"
 services: data-lake-analytics
 documentationcenter: 
 author: saveenr
@@ -14,43 +14,43 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/03/2017
 ms.author: jgao
-ms.openlocfilehash: a0b13d521821fd2d74716cc52485585feb7c51b2
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 332d7af2539eea8890745005104ac5b0921c2b7f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-rest-apis"></a>Kom igång med Azure Data Lake Analytics med hjälp av REST API:er | Azure
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
-Lär dig hur toouse WebHDFS REST API: er och Data Lake Analytics REST API: er toomanage Data Lake Analytics-konton, jobb och katalogen. 
+Ta reda på hur du använder WebHDFS REST API: er och Data Lake Analytics REST API: er för att hantera Data Lake Analytics-konton, -jobb och -kataloger. 
 
 ## <a name="prerequisites"></a>Krav
 * **En Azure-prenumeration**. Se [Hämta en kostnadsfri utvärderingsversion av Azure](https://azure.microsoft.com/pricing/free-trial/).
-* **Skapa ett program i Azure Active Directory**. Du kan använda hello Azure AD application tooauthenticate hello Data Lake Analytics-program med Azure AD. Det finns olika sätt tooauthenticate med Azure AD, som är **slutanvändarens autentisering** eller **tjänst-till-tjänst autentisering**. Anvisningar och mer information om hur tooauthenticate, se [autentisera med Data Lake Analytics med hjälp av Azure Active Directory](../data-lake-store/data-lake-store-authenticate-using-active-directory.md).
-* [cURL](http://curl.haxx.se/). Den här artikeln använder cURL toodemonstrate hur toomake REST API-anrop mot ett Data Lake Analytics-konto.
+* **Skapa ett program i Azure Active Directory**. Du kan använda Azure AD-programmet för att autentisera Data Lake Analytics-programmet med Azure AD. Det finns olika sätt att autentisera med Azure AD: **slutanvändarens autentisering** eller **serviceautentisering**. Instruktioner och mer information om hur du autentiserar finns i [Autentisera med Data Lake Analytics med Azure Active Directory](../data-lake-store/data-lake-store-authenticate-using-active-directory.md).
+* [cURL](http://curl.haxx.se/). Den här artikeln använder cURL för att demonstrera hur du gör REST API-anrop mot ett Data Lake Analytics-konto.
 
 ## <a name="authenticate-with-azure-active-directory"></a>Autentisera med hjälp av Azure Active Directory
 Det finns två metoder för hur du autentiserar med Azure Active Directory.
 
 ### <a name="end-user-authentication-interactive"></a>Slutanvändarautentisering (interaktiv)
-Med den här metoden uppmanar programmet hello användaren toolog i och alla hello åtgärder utförs i hello hello användarens kontext. 
+När du använder den här metoden blir användaren uppmanad att logga in och alla åtgärder utförs i användarkontexten. 
 
 Följ de här stegen för interaktiv autentisering:
 
-1. Omdirigera hello användaren toohello följande URL: en via ditt program:
+1. Omdirigera användaren via ditt program till följande URL:
    
         https://login.microsoftonline.com/<TENANT-ID>/oauth2/authorize?client_id=<CLIENT-ID>&response_type=code&redirect_uri=<REDIRECT-URI>
    
    > [!NOTE]
-   > \<OMDIRIGERINGS-URI > måste toobe kodad för användning i en URL. Alltså ska `https%3A%2F%2Flocalhost` användas för https://localhost)
+   > \<REDIRECT-URI> måste kodas för användning i en URL. Alltså ska `https%3A%2F%2Flocalhost` användas för https://localhost)
    > 
    > 
    
-    För hello syftet med den här självstudiekursen, du ersätta hello platshållarvärdena i URL: en för hello ovan och klistra in den i webbläsarens adressfält. Du kommer att omdirigerade tooauthenticate med Azure-autentiseringsuppgifter. När du har loggat in visas svaret hello i hello webbläsarens adressfält. hello svaret ska ha hello följande format:
+    För självstudierna kan du ersätta platshållarvärdena i URL-adressen ovan och klistra in den i webbläsarens adressfält. Du omdirigeras för att autentisera med Azure-autentiseringsuppgifter. När du har loggat in visas svaret i webbläsarens adressfält. Svaret ska ha följande format:
    
         http://localhost/?code=<AUTHORIZATION-CODE>&session_state=<GUID>
-2. Avbilda hello Auktoriseringskoden från hello svar. För den här självstudiekursen kan du kopiera hello Auktoriseringskoden från adressfältet i hello av hello webbläsare och skicka den i hello POST-begäran toohello tokenslutpunkten, enligt nedan:
+2. Avbilda auktoriseringskoden från svaret. För de här självstudierna kan du kopiera auktoriseringskoden från adressfältet i webbläsaren och skicka den i POST-begäran till tokenslutpunkten, enligt nedan:
    
         curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token \
         -F redirect_uri=<REDIRECT-URI> \
@@ -60,13 +60,13 @@ Följ de här stegen för interaktiv autentisering:
         -F code=<AUTHORIZATION-CODE>
    
    > [!NOTE]
-   > I det här fallet hello \<OMDIRIGERINGS-URI > måste inte vara kodad.
+   > I det här fallet behöver \<REDIRECT-URI> inte vara kodad.
    > 
    > 
-3. hello svaret är ett JSON-objekt som innehåller en åtkomsttoken (t.ex. `"access_token": "<ACCESS_TOKEN>"`) och en uppdateringstoken (t.ex. `"refresh_token": "<REFRESH_TOKEN>"`). Programmet använder hello åtkomsttoken vid åtkomst till Azure Data Lake Store och hello uppdatera token tooget en annan åtkomsttoken när en åtkomst-token upphör att gälla.
+3. Svaret är ett JSON-objekt som innehåller en åtkomsttoken (t.ex. `"access_token": "<ACCESS_TOKEN>"`) och en uppdateringstoken (t.ex. `"refresh_token": "<REFRESH_TOKEN>"`). Programmet använder åtkomsttoken vid åtkomst till Azure Data Lake Store och uppdateringstoken för att få en annan åtkomsttoken när en åtkomst-token upphör att gälla.
    
         {"token_type":"Bearer","scope":"user_impersonation","expires_in":"3599","expires_on":"1461865782","not_before":    "1461861882","resource":"https://management.core.windows.net/","access_token":"<REDACTED>","refresh_token":"<REDACTED>","id_token":"<REDACTED>"}
-4. När hello åtkomst-token upphör att gälla, kan du begära en ny åtkomsttoken med hjälp av hello uppdateringstoken som visas nedan:
+4. När åtkomsttoken upphört att gälla kan du begära en ny åtkomsttoken med hjälp av den uppdateringstoken som visas nedan:
    
         curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token  \
              -F grant_type=refresh_token \
@@ -77,7 +77,7 @@ Följ de här stegen för interaktiv autentisering:
 Mer information om interaktiv användarautentisering finns i [Flöde beviljat med auktoriseringskod](https://msdn.microsoft.com/library/azure/dn645542.aspx).
 
 ### <a name="service-to-service-authentication-non-interactive"></a>Tjänst-till-tjänst-autentisering (icke-interaktivt)
-Programmet tillhandahåller använder den här metoden egna autentiseringsuppgifter tooperform hello åtgärder. För att göra detta måste du skicka en POST-begäran som hello som visas nedan: 
+När du använder den här metoden tillhandahåller programmet sina egna autentiseringsuppgifter för att utföra åtgärderna. När du väljer den här metoden måste du skicka en POST-begäran som den som visas nedan: 
 
     curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token  \
       -F grant_type=client_credentials \
@@ -85,20 +85,20 @@ Programmet tillhandahåller använder den här metoden egna autentiseringsuppgif
       -F client_id=<CLIENT-ID> \
       -F client_secret=<AUTH-KEY>
 
-hello utdata för begäran innehåller en autentiseringstoken (betecknas med `access-token` i hello utdata nedan) som du sedan skickar med REST API-anrop. Spara den här autentiseringstoken i en textfil; du behöver den senare i den här artikeln.
+Utdata för begäran innehåller en autentiseringstoken (betecknas med `access-token` i utdata nedan) som du sedan skickar med REST API-anrop. Spara den här autentiseringstoken i en textfil; du behöver den senare i den här artikeln.
 
     {"token_type":"Bearer","expires_in":"3599","expires_on":"1458245447","not_before":"1458241547","resource":"https://management.core.windows.net/","access_token":"<REDACTED>"}
 
-Den här artikeln använder hello **icke-interaktiv** metod. Mer information om icke-interaktivt (service to service anrop) finns [tjänsten tooservice anrop med autentiseringsuppgifter](https://msdn.microsoft.com/library/azure/dn645543.aspx).
+I den här artikeln används metoden **icke-interaktivt**. Mer information om icke-interaktivt (serviceartikel) finns i [Serviceartikelanrop med autentiseringsuppgifter](https://msdn.microsoft.com/library/azure/dn645543.aspx).
 
 ## <a name="create-a-data-lake-analytics-account"></a>Skapa ett Data Lake Analytics-konto
 Du måste skapa en Azure-resursgrupp och ett Data Lake Store-konto innan du kan skapa ett Data Lake Analytics-konto.  Se [Skapa ett Data Lake Store-konto](../data-lake-store/data-lake-store-get-started-rest-api.md#create-a-data-lake-store-account).
 
-Hej följande Curl-kommando visar hur toocreate ett konto:
+Följande Curl-kommando visar hur du skapar ett konto:
 
     curl -i -X PUT -H "Authorization: Bearer <REDACTED>" -H "Content-Type: application/json" https://management.azure.com/subscriptions/<AzureSubscriptionID>/resourceGroups/<AzureResourceGroupName>/providers/Microsoft.DataLakeAnalytics/accounts/<NewAzureDataLakeAnalyticsAccountName>?api-version=2016-11-01 -d@"C:\tutorials\adla\CreateDataLakeAnalyticsAccountRequest.json"
 
-Ersätt \< `REDACTED` \> med hello autentiseringstoken \< `AzureSubscriptionID` \> med ditt prenumerations-ID \< `AzureResourceGroupName` \> med en befintlig Azure-resurs Gruppnamn och \< `NewAzureDataLakeAnalyticsAccountName` \> med ett nytt namn för Data Lake Analytics-konto. Hej begärannyttolast för det här kommandot finns i hello **CreateDatalakeAnalyticsAccountRequest.json** fil som har angetts för hello `-d` parametern ovan. hello innehållet i input.json-filen för hello likna hello följande:
+Ersätt \<`REDACTED`\> med autentiseringstoken, \<`AzureSubscriptionID`\> med ditt prenumerations-ID, \<`AzureResourceGroupName`\> med ett befintligt namn på en Azure-resursgrupp och \<`NewAzureDataLakeAnalyticsAccountName`\> med ett nytt namn för Data Lake Analytics-kontot. Nyttolasten för begäran för det här kommandot finns i den **CreateDatalakeAnalyticsAccountRequest.json**-fil som har angetts för parametern `-d` ovan. Innehållet i input.json-filen liknar följande:
 
     {  
         "location": "East US 2",  
@@ -116,11 +116,11 @@ Ersätt \< `REDACTED` \> med hello autentiseringstoken \< `AzureSubscriptionID` 
 
 
 ## <a name="list-data-lake-analytics-accounts-in-a-subscription"></a>Lista över Data Lake Analytics-konton i en prenumeration
-hello följande Curl-kommando visar hur toolist konton i en prenumeration:
+Följande Curl-kommando visar hur du skapar en lista med konton i en prenumeration:
 
     curl -i -X GET -H "Authorization: Bearer <REDACTED>" https://management.azure.com/subscriptions/<AzureSubscriptionID>/providers/Microsoft.DataLakeAnalytics/Accounts?api-version=2016-11-01
 
-Ersätt \< `REDACTED` \> med hello autentiseringstoken \< `AzureSubscriptionID` \> med ditt prenumerations-ID. hello utdata liknar:
+Ersätt \<`REDACTED`\> med autentiseringstoken, \<`AzureSubscriptionID`\> med ditt prenumerations-ID. Utdatan liknar följande:
 
     {
         "value": [
@@ -158,11 +158,11 @@ Ersätt \< `REDACTED` \> med hello autentiseringstoken \< `AzureSubscriptionID` 
     }
 
 ## <a name="get-information-about-a-data-lake-analytics-account"></a>Hämta information om ett Data Lake Analytics-konto
-Hej följande Curl-kommando visar hur tooget en kontoinformation:
+Följande Curl-kommando visar hur du hämtar kontoinformation:
 
     curl -i -X GET -H "Authorization: Bearer <REDACTED>" https://management.azure.com/subscriptions/<AzureSubscriptionID>/resourceGroups/<AzureResourceGroupName>/providers/Microsoft.DataLakeAnalytics/accounts/<DataLakeAnalyticsAccountName>?api-version=2015-11-01
 
-Ersätt \< `REDACTED` \> med hello autentiseringstoken \< `AzureSubscriptionID` \> med ditt prenumerations-ID \< `AzureResourceGroupName` \> med en befintlig Azure-resurs Gruppnamn och \< `DataLakeAnalyticsAccountName` \> med hello namnet på ett befintligt Data Lake Analytics-konto. hello utdata liknar:
+Ersätt \<`REDACTED`\> med autentiseringstoken, \<`AzureSubscriptionID`\> med ditt prenumerations-ID \<`AzureResourceGroupName`\> med ett befintligt namn på en Azure-resursgrupp och \<`DataLakeAnalyticsAccountName`\> med ett nytt namn för Data Lake Analytics-kontot. Utdatan liknar följande:
 
     {
         "properties": {
@@ -190,11 +190,11 @@ Ersätt \< `REDACTED` \> med hello autentiseringstoken \< `AzureSubscriptionID` 
     }
 
 ## <a name="list-data-lake-stores-of-a-data-lake-analytics-account"></a>Ange Data Lake Stores för ett Data Lake Analytics-konto i en lista
-hello följande Curl-kommando visar hur toolist Data Lake lagrar för ett konto:
+Följande Curl-kommando visar hur du anger Data Lake Stores för ett konto:
 
     curl -i -X GET -H "Authorization: Bearer <REDACTED>" https://management.azure.com/subscriptions/<AzureSubscriptionID>/resourceGroups/<AzureResourceGroupName>/providers/Microsoft.DataLakeAnalytics/accounts/<DataLakeAnalyticsAccountName>/DataLakeStoreAccounts/?api-version=2016-11-01
 
-Ersätt \< `REDACTED` \> med hello autentiseringstoken \< `AzureSubscriptionID` \> med ditt prenumerations-ID \< `AzureResourceGroupName` \> med en befintlig Azure-resurs Gruppnamn och \< `DataLakeAnalyticsAccountName` \> med hello namnet på ett befintligt Data Lake Analytics-konto. hello utdata liknar:
+Ersätt \<`REDACTED`\> med autentiseringstoken, \<`AzureSubscriptionID`\> med ditt prenumerations-ID \<`AzureResourceGroupName`\> med ett befintligt namn på en Azure-resursgrupp och \<`DataLakeAnalyticsAccountName`\> med ett nytt namn för Data Lake Analytics-kontot. Utdatan liknar följande:
 
     {
         "value": [
@@ -210,11 +210,11 @@ Ersätt \< `REDACTED` \> med hello autentiseringstoken \< `AzureSubscriptionID` 
     }
 
 ## <a name="submit-u-sql-jobs"></a>Skicka U-SQL-jobb
-Hej följande Curl-kommando visar hur toosubmit U-SQL-jobb:
+Följande Curl-kommando visar hur du skapar ett U-SQL-jobb:
 
     curl -i -X PUT -H "Authorization: Bearer <REDACTED>" https://<DataLakeAnalyticsAccountName>.azuredatalakeanalytics.net/Jobs/<NewGUID>?api-version=2016-03-20-preview -d@"C:\tutorials\adla\SubmitADLAJob.json"
 
-Ersätt \< `REDACTED` \> med hello autentiseringstoken \< `DataLakeAnalyticsAccountName` \> med hello namnet på ett befintligt Data Lake Analytics-konto. Hej begärannyttolast för det här kommandot finns i hello **SubmitADLAJob.json** fil som har angetts för hello `-d` parametern ovan. hello innehållet i input.json-filen för hello likna hello följande:
+Ersätt \<`REDACTED`\> med autentiseringstoken, \<`DataLakeAnalyticsAccountName`\> med namnet på ett befintligt Data Lake Analytics-konto. Nyttolasten i begäran för det här kommandot finns i den **SubmitADLAJob.json**-fil som har angetts för parametern `-d` ovan. Innehållet i input.json-filen liknar följande:
 
     {
         "jobId": "8f8ebf8c-4b63-428a-ab46-a03d2cc5b65a",
@@ -226,11 +226,11 @@ Ersätt \< `REDACTED` \> med hello autentiseringstoken \< `DataLakeAnalyticsAcco
             "type": "USql",
             "script": "@searchlog =\n    EXTRACT UserId          int,\n            Start           DateTime,\n            Region          string,\n            Query          
         string,\n            Duration        int?,\n            Urls            string,\n            ClickedUrls     string\n    FROM \"/Samples/Data/SearchLog.tsv\"\n    US
-        ING Extractors.Tsv();\n\nOUTPUT @searchlog   \n    too\"/Output/SearchLog-from-Data-Lake.csv\"\nUSING Outputters.Csv();"
+        ING Extractors.Tsv();\n\nOUTPUT @searchlog   \n    TO \"/Output/SearchLog-from-Data-Lake.csv\"\nUSING Outputters.Csv();"
         }
     }
 
-hello utdata liknar:
+Utdatan liknar följande:
 
     {
         "jobId": "8f8ebf8c-4b63-428a-ab46-a03d2cc5b65a",
@@ -267,13 +267,13 @@ hello utdata liknar:
 
 
 ## <a name="list-u-sql-jobs"></a>Lista U-SQL-jobb
-Hej följande Curl-kommando visar hur toolist U-SQL-jobb:
+Följande Curl-kommando visar hur du anger U-SQL-jobb i en lista:
 
     curl -i -X GET -H "Authorization: Bearer <REDACTED>" https://<DataLakeAnalyticsAccountName>.azuredatalakeanalytics.net/Jobs?api-version=2016-11-01 
 
-Ersätt \< `REDACTED` \> med hello autentiseringstoken och \< `DataLakeAnalyticsAccountName` \> med hello namnet på ett befintligt Data Lake Analytics-konto. 
+Ersätt \<`REDACTED`\> med autentiseringstoken, och \<`DataLakeAnalyticsAccountName`\> med namnet på ett befintligt Data Lake Analytics-konto. 
 
-hello utdata liknar:
+Utdatan liknar följande:
 
     {
     "value": [
@@ -322,11 +322,11 @@ hello utdata liknar:
 
 
 ## <a name="get-catalog-items"></a>Hämta katalogobjekt
-hello följande Curl-kommando visar hur tooget hello databaser från hello katalog:
+Följande Curl-kommando visar hur du hämtar databaserna från katalogen:
 
     curl -i -X GET -H "Authorization: Bearer <REDACTED>" https://<DataLakeAnalyticsAccountName>.azuredatalakeanalytics.net/catalog/usql/databases?api-version=2016-11-01
 
-hello utdata liknar:
+Utdatan liknar följande:
 
     {
     "@odata.context":"https://myadla0831.azuredatalakeanalytics.net/sqlip/$metadata#databases","value":[
@@ -339,10 +339,10 @@ hello utdata liknar:
     }
 
 ## <a name="see-also"></a>Se även
-* toosee en mer komplex fråga, se [analysera webbplatsloggar med hjälp av Azure Data Lake Analytics](data-lake-analytics-analyze-weblogs.md).
-* tooget utveckla U-SQL-program, se [utveckla U-SQL-skript med hjälp av Data Lake-verktyg för Visual Studio](data-lake-analytics-data-lake-tools-get-started.md).
-* toolearn U-SQL finns [Kom igång med Azure Data Lake Analytics U-SQL-språket](data-lake-analytics-u-sql-get-started.md).
+* Om du vill se en mer komplex fråga, se [Analysera webbplatsloggar med hjälp av Azure Data Lake Analytics](data-lake-analytics-analyze-weblogs.md).
+* Information om att utveckla U-SQL-program finns i [Utveckla U-SQL-skript med hjälp av Data Lake-verktyg för Visual Studio](data-lake-analytics-data-lake-tools-get-started.md).
+* Information om U-SQL finns i [Kom igång med U-SQL-språk i Azure Data Lake Analytics](data-lake-analytics-u-sql-get-started.md).
 * Information om hanteringsuppgifter finns i [Hantera Azure Data Lake Analytics med hjälp av Azure Portal](data-lake-analytics-manage-use-portal.md).
-* tooget en översikt över Data Lake Analytics finns [översikt över Azure Data Lake Analytics](data-lake-analytics-overview.md).
-* toosee hello samma självstudier med andra verktyg klickar du på hello flikväljarna överst hello hello-sidan.
+* Om du vill få en översikt över Data Lake Analytics, se [Översikt över Azure Data Lake Analytics](data-lake-analytics-overview.md).
+* Klicka på flikväljarna överst på sidan om du vill se samma självstudier med andra verktyg.
 

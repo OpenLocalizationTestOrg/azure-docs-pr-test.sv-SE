@@ -9,10 +9,7 @@
 ## [Hantera inställningar](multi-factor-authentication-end-user-manage-settings.md)
 ## [Felsöka](multi-factor-authentication-end-user-troubleshoot.md)
 ## [Konfigurera applösenord](multi-factor-authentication-end-user-app-passwords.md)
-## Använd hello Microsoft Authenticator-appen
-### [Kom igång med hello app](microsoft-authenticator-app-how-to.md)
+## Använd Microsoft Authenticator-appen
+### [Kom igång med appen](microsoft-authenticator-app-how-to.md)
 ### [Logga in med telefonen](microsoft-authenticator-app-phone-signin-faq.md)
 ### [Vanliga frågor och svar](microsoft-authenticator-app-faq.md)
-# Resurser
-## [Azure-översikt](https://azure.microsoft.com/roadmap/?category=security-identity)
-## [Priskalkylator](https://azure.microsoft.com/pricing/calculator/)

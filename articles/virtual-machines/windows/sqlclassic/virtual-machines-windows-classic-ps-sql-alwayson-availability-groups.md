@@ -1,6 +1,6 @@
 ---
-title: "aaaConfigure hello Always On-tillgänglighetsgruppen på en virtuell Azure-dator med hjälp av PowerShell | Microsoft Docs"
-description: "Den här kursen använder resurser som har skapats med hello klassiska distributionsmodellen. Du kan använda PowerShell toocreate en Always On-tillgänglighetsgrupp i Azure."
+title: "Konfigurera Always On-tillgänglighetsgrupp på en virtuell dator i Azure med hjälp av PowerShell | Microsoft Docs"
+description: "Den här kursen använder resurser som har skapats med den klassiska distributionsmodellen. Du kan använda PowerShell för att skapa en tillgänglighetsgrupp alltid på i Azure."
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
-ms.openlocfilehash: d4a27e203b2ff299adebec2b010c03422459b3c3
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: b99cf767fb931d3f7fe14fcbe7990126244613ed
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="configure-hello-always-on-availability-group-on-an-azure-vm-with-powershell"></a>Konfigurera hello Always On-tillgänglighetsgrupp på en virtuell Azure-dator med PowerShell
+# <a name="configure-the-always-on-availability-group-on-an-azure-vm-with-powershell"></a>Konfigurera Always On-tillgänglighetsgrupp på en virtuell Azure-dator med PowerShell
 > [!div class="op_single_selector"]
 > * [Klassiska: UI](../classic/portal-sql-alwayson-availability-groups.md)
 > * [Klassiska: PowerShell](../classic/ps-sql-alwayson-availability-groups.md)
@@ -30,37 +30,37 @@ ms.lasthandoff: 10/06/2017
 Innan du börjar bör du överväga att du kan nu slutföra den här aktiviteten i Azure resource manager-modellen. Vi rekommenderar Azure resource manager-modellen för nya distributioner. Se [SQL Server Always On-Tillgänglighetsgrupper på Azure virtual machines](../sql/virtual-machines-windows-portal-sql-availability-group-overview.md).
 
 > [!IMPORTANT]
-> Vi rekommenderar att de flesta nya distributioner använder hello Resource Manager-modellen. Azure har två olika distributionsmodeller för att skapa och arbeta med resurser: [Resource Manager och klassisk](../../../azure-resource-manager/resource-manager-deployment-model.md). Den här artikeln täcker hello klassiska distributionsmodellen.
+> Vi rekommenderar att de flesta nya distributioner använder Resource Manager-modellen. Azure har två olika distributionsmodeller för att skapa och arbeta med resurser: [Resource Manager och klassisk](../../../azure-resource-manager/resource-manager-deployment-model.md). Den här artikeln beskriver den klassiska distributionsmodellen.
 
-Virtuella Azure-datorer (VM) kan hjälpa administratörer toolower hello databaskostnader av ett SQL Server-system med hög tillgänglighet. Den här kursen visar hur tooimplement tillgänglighet gruppen med hjälp av SQL Server alltid aktiverad slutpunkt till slutpunkt i en Azure-miljö. Hello slutet av hello kursen består SQL Server alltid på lösningen i Azure av hello följande element:
+Virtuella Azure-datorer (VM) kan hjälpa databasadministratörer att för att sänka kostnaderna för ett SQL Server-system med hög tillgänglighet. Den här kursen visar hur du implementerar en tillgänglighetsgrupp med hjälp av SQL Server alltid aktiverad slutpunkt till slutpunkt i en Azure-miljö. I slutet av kursen består lösningen SQL Server alltid aktiverad i Azure av följande element:
 
 * Ett virtuellt nätverk som innehåller flera undernät, inklusive en frontend- och ett backend-undernät.
 * En domänkontrollant med en Active Directory-domän.
-* Två SQL Server-datorer som är distribuerade toohello backend-undernät och kopplade toohello Active Directory-domän.
-* Ett tre Windows redundanskluster med hello Nodmajoritet kvorummodellen.
+* Två SQL Server-datorer som har distribuerats till backend-undernät och anslutna till Active Directory-domän.
+* Ett tre Windows redundanskluster med Nodmajoritet kvorummodellen.
 * En tillgänglighetsgrupp med två replikerna med synkront genomförande av en tillgänglighetsdatabas.
 
-Det här scenariot är ett bra alternativ för dess enkelhet på Azure, inte för kostnadseffektivitet eller andra faktorer. Exempelvis kan du minimera hello antal virtuella datorer för en två-replik tillgänglighet grupp toosave på beräkningstimmar i Azure med hjälp av hello domänkontrollant som filresursvittne i hello kvorum i ett kluster med två noder. Den här metoden minskar hello VM antal med ett från hello senare konfiguration.
+Det här scenariot är ett bra alternativ för dess enkelhet på Azure, inte för kostnadseffektivitet eller andra faktorer. Du kan till exempel minimera antalet virtuella datorer för en tillgänglighetsgrupp med två-replik att spara på beräkningstimmar i Azure med hjälp av domänkontrollanten som filresursvittne för kvorum i ett kluster med två noder. Den här metoden minskar antalet VM med en i konfigurationen ovan.
 
-Den här kursen är avsedd tooshow du hello steg som är nödvändiga tooset in hello beskrivs lösningen ovan, utan utarbeta hello detaljer för varje steg. Därför steg i stället för under förutsättning att hello GUI konfigurationssteg använder PowerShell scripting tootake du snabbt via varje. Den här självstudiekursen förutsätts hello följande:
+Den här kursen är avsedd att visa de steg som krävs för att skapa lösningen som beskrivs ovan, utan utarbeta på information om varje steg. I stället för att tillhandahålla konfigurationssteg GUI används därför PowerShell-skript för att ta dig snabbt igenom varje steg. Den här kursen förutsätter följande:
 
-* Du har redan ett Azure-konto med hello virtuella prenumeration.
-* Du har installerat hello [Azure PowerShell-cmdlets](/powershell/azure/overview).
+* Du har redan ett Azure-konto med den virtuella dator prenumerationen.
+* Du har installerat den [Azure PowerShell-cmdlets](/powershell/azure/overview).
 * Du har redan en god förståelse av Always On-Tillgänglighetsgrupper för lokala lösningar. Mer information finns i [Always On-Tillgänglighetsgrupper (SQL Server)](https://msdn.microsoft.com/library/hh510230.aspx).
 
-## <a name="connect-tooyour-azure-subscription-and-create-hello-virtual-network"></a>Anslut tooyour Azure-prenumeration och skapa hello virtuellt nätverk
-1. Importera hello Azure-modulen i PowerShell-fönstret på den lokala datorn, hämtar hello publicering inställningar filen tooyour datorn och ansluta din PowerShell-session tooyour Azure-prenumeration genom att importera hello hämtas publiceringsinställningarna.
+## <a name="connect-to-your-azure-subscription-and-create-the-virtual-network"></a>Anslut till din Azure-prenumeration och skapa det virtuella nätverket
+1. Importera modulen för Azure i PowerShell-fönstret på den lokala datorn, ladda ned filen publishing till din dator och ansluta din PowerShell-session till din Azure-prenumeration genom att importera de hämta publiceringsinställningarna.
 
         Import-Module "C:\Program Files (x86)\Microsoft SDKs\Azure\PowerShell\Azure\Azure.psd1"
         Get-AzurePublishSettingsFile
         Import-AzurePublishSettingsFile <publishsettingsfilepath>
 
-    Hej **Get-AzurePublishSettingsFile** kommandot genererar ett certifikat med Azure och hämtar den tooyour datorn automatiskt. En webbläsare öppnas automatiskt och du kan ange tooenter hello Microsoft-kontouppgifter för din Azure-prenumeration. hello hämtas **.publishsettings** filen innehåller alla hello information du behöver toomanage din Azure-prenumeration. När du sparar filen tooa lokala katalogen kan du importera det med hello **importera AzurePublishSettingsFile** kommando.
+    Den **Get-AzurePublishSettingsFile** kommandot automatiskt genererar ett certifikat med Azure och hämtas till din dator. En webbläsare öppnas automatiskt och du uppmanas att ange autentiseringsuppgifterna för Microsoft-konto för din Azure-prenumeration. Den hämtade **.publishsettings** filen innehåller all information du behöver hantera Azure-prenumerationen. När du har sparat filen till en lokal katalog, importerar du den med hjälp av den **importera AzurePublishSettingsFile** kommando.
 
    > [!NOTE]
-   > Hej .publishsettings-fil innehåller dina autentiseringsuppgifter (ej kodade) som används tooadminister dina Azure-prenumerationer och tjänster. hello rekommenderade säkerhetsmetoder för den här filen är toostore den tillfälligt utanför katalogerna källa (till exempel i hello Libraries\Documents mappen), och tas bort när hello importen är klar. En obehörig användare som får åtkomst till toohello .publishsettings-fil kan du redigera, skapa och ta bort Azure-tjänster.
+   > .Publishsettings-filen innehåller dina autentiseringsuppgifter (ej kodade) som används för att administrera dina Azure-prenumerationer och tjänster. Rekommenderade säkerhetsmetoder för den här filen är att lagra den tillfälligt utanför katalogerna källa (till exempel i mappen Libraries\Documents) och tas bort när importen är klar. En obehörig användare som får åtkomst till .publishsettings-fil kan du redigera, skapa och ta bort Azure-tjänster.
 
-2. Definiera ett antal variabler när du ska använda toocreate ditt moln IT-infrastruktur.
+2. Definiera ett antal variabler som du använder för att skapa ditt moln IT-infrastruktur.
 
         $location = "West US"
         $affinityGroupName = "ContosoAG"
@@ -80,12 +80,12 @@ Den här kursen är avsedd tooshow du hello steg som är nödvändiga tooset in 
         $vmAdminPassword = "Contoso!000"
         $workingDir = "c:\scripts\"
 
-    Betala uppmärksamhet toohello följande tooensure dina kommandon lyckas senare:
+    Ta hänsyn till följande för att se till att dina kommandon lyckas senare:
 
-   * Variabler **$storageAccountName** och **$dcServiceName** måste vara unikt eftersom de används tooidentify ditt lagringskonto för molnet och moln-servern, på hello Internet.
-   * Hej namn som du anger för variabler **$affinityGroupName** och **$virtualNetworkName** konfigureras i hello virtuellt nätverk configuration dokument som du vill använda senare.
-   * **$sqlImageName** anger hello uppdateras för hello VM-avbildning som innehåller SQL Server 2012 Service Pack 1 Enterprise Edition.
-   * För enkelhetens skull **Contoso! 000** är hello samma lösenord som används i hela hello hela kursen.
+   * Variabler **$storageAccountName** och **$dcServiceName** måste vara unikt eftersom de används att identifiera moln konto och molnet lagringsservern, respektive på Internet.
+   * De namn som du anger för variabler **$affinityGroupName** och **$virtualNetworkName** konfigureras i virtuella nätverk configuration dokumentet som du vill använda senare.
+   * **$sqlImageName** uppdaterade namnet på VM-avbildning som innehåller SQL Server 2012 Service Pack 1 Enterprise Edition.
+   * För enkelhetens skull **Contoso! 000** är samma lösenord som ska användas i hela kursen.
 
 3. Skapa en tillhörighetsgrupp.
 
@@ -100,7 +100,7 @@ Den här kursen är avsedd tooshow du hello steg som är nödvändiga tooset in 
         Set-AzureVNetConfig `
             -ConfigurationPath $networkConfigPath
 
-    hello konfigurationsfilen innehåller hello följande XML-dokument. I korthet det anger ett virtuellt nätverk kallas **ContosoNET** i hello tillhörighetsgrupp kallas **ContosoAG**. Den har hello adressutrymme **10.10.0.0/16** och har två undernät **10.10.1.0/24** och **10.10.2.0/24**, vilket är hello främre undernät och bakre undernät respektive. hello främre undernät är där du kan placera klientprogram, till exempel Microsoft SharePoint. hello tillbaka undernät är där du ska placera hello SQL Server-datorer. Om du ändrar hello **$affinityGroupName** och **$virtualNetworkName** variabler tidigare, måste du också ändra hello som motsvarar namnen nedan.
+    Konfigurationsfilen innehåller följande XML-dokumentet. I korthet det anger ett virtuellt nätverk kallas **ContosoNET** i tillhörighetsgruppen kallas **ContosoAG**. Den har adressutrymmet **10.10.0.0/16** och har två undernät **10.10.1.0/24** och **10.10.2.0/24**, vilket är främre undernätet och bakre undernät respektive. Främre undernätet är där du kan placera klientprogram, till exempel Microsoft SharePoint. Den bakre undernätet är där du ska placera SQL Server-datorer. Om du ändrar den **$affinityGroupName** och **$virtualNetworkName** variabler tidigare, måste du också ändra motsvarande namn nedan.
 
         <NetworkConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
           <VirtualNetworkConfiguration>
@@ -123,7 +123,7 @@ Den här kursen är avsedd tooshow du hello steg som är nödvändiga tooset in 
           </VirtualNetworkConfiguration>
         </NetworkConfiguration>
 
-5. Skapa ett lagringskonto som är kopplad till hello tillhörighetsgrupp som du skapat och ange den som hello aktuella storage-konto i din prenumeration.
+5. Skapa ett lagringskonto som är kopplad till den tillhörighetsgrupp som du skapat och ange den som det aktuella storage-kontot i din prenumeration.
 
         New-AzureStorageAccount `
             -StorageAccountName $storageAccountName `
@@ -133,7 +133,7 @@ Den här kursen är avsedd tooshow du hello steg som är nödvändiga tooset in 
             -SubscriptionName (Get-AzureSubscription).SubscriptionName `
             -CurrentStorageAccount $storageAccountName
 
-6. Skapa hello Domänkontrollantservern i hello nya cloud service och tillgänglighet uppsättningen.
+6. Skapa Domänkontrollantservern i den nya cloud service och tillgänglighet uppsättningen.
 
         New-AzureVMConfig `
             -Name $dcServerName `
@@ -151,14 +151,14 @@ Den här kursen är avsedd tooshow du hello steg som är nödvändiga tooset in 
                     –AffinityGroup $affinityGroupName `
                     -VNetName $virtualNetworkName
 
-    Kommandona via rörledningar hello följande saker:
+    Kommandona via rörledningar göra följande:
 
    * **Nya AzureVMConfig** skapar en VM-konfiguration.
-   * **Lägg till AzureProvisioningConfig** ger hello konfigurationsparametrar för en fristående Windows server.
-   * **Lägg till AzureDataDisk** lägger till hello datadisk som du vill använda för att lagra Active Directory-data med hello cachelagring alternativet set tooNone.
-   * **Nya AzureVM** skapar en ny molntjänst och skapar hello nya Azure VM i hello ny molntjänst.
+   * **Lägg till AzureProvisioningConfig** ger konfigurationsparametrar för en fristående Windows server.
+   * **Lägg till AzureDataDisk** lägger till datadisk som du vill använda för att lagra Active Directory-data med alternativet cachelagring inställd på None.
+   * **Nya AzureVM** skapar en ny molntjänst och skapar den nya Azure VM i ny molntjänst.
 
-7. Vänta tills hello nya VM toobe helt etablerad och hämta hello skrivbord fjärrfil tooyour arbetskatalogen. Eftersom hello nya Azure VM tar en lång tid tooprovision, hello `while` slingan fortsätter toopoll hello ny virtuell dator tills den är redo för användning.
+7. Vänta tills den nya VM att helt etablerad och hämta filen för remote desktop till arbetskatalogen. Eftersom den nya Azure VM tar lång tid att etablera, den `while` slingan fortsätter att avsöka den nya virtuella datorn tills den är redo för användning.
 
         $VMStatus = Get-AzureVM -ServiceName $dcServiceName -Name $dcServerName
 
@@ -174,12 +174,12 @@ Den här kursen är avsedd tooshow du hello steg som är nödvändiga tooset in 
             -Name $dcServerName `
             -LocalPath "$workingDir$dcServerName.rdp"
 
-hello Domänkontrollantservern nu etablerats. Du måste konfigurera hello Active Directory-domän på den här Domänkontrollantservern. Låt hello PowerShell-fönstret öppet på den lokala datorn. Du kommer att använda det igen senare toocreate hello två virtuella SQL Server-datorer.
+Domänkontrollantservern nu etablerats. Du måste konfigurera Active Directory-domänen på den här Domänkontrollantservern. Lämna fönstret PowerShell öppen på den lokala datorn. Du använder det igen för att skapa två SQL Server-datorer.
 
-## <a name="configure-hello-domain-controller"></a>Konfigurera hello-domänkontrollant
-1. Ansluta toohello Domänkontrollantservern genom att starta hello remote desktop-fil. Använd hello datorn administratörens användarnamn AzureAdmin lösenord **Contoso! 000**, som du angav när du skapade hello ny virtuell dator.
+## <a name="configure-the-domain-controller"></a>Konfigurera en domänkontrollant
+1. Ansluta till Domänkontrollantservern genom att starta remote desktop fil. Använd datorn administratörens användarnamn AzureAdmin lösenord **Contoso! 000**, som du angav när du skapade den nya virtuella datorn.
 2. Öppna ett PowerShell-fönster i administratörsläge.
-3. Kör följande hello **DCPROMO. EXE** kommandot tooset in hello **corp.contoso.com** domän, med hello datakataloger på enhet M.
+3. Kör följande **DCPROMO. EXE** kommando för att ställa in den **corp.contoso.com** domän, med datakataloger på enhet M.
 
         dcpromo.exe `
             /unattend `
@@ -197,14 +197,14 @@ hello Domänkontrollantservern nu etablerats. Du måste konfigurera hello Active
             /SYSVOLPath:"C:\Windows\SYSVOL" `
             /SafeModeAdminPassword:"Contoso!000"
 
-    Startar om automatiskt när hello-kommandot har slutförts hello VM.
+    När kommandot har slutförts startas den virtuella datorn om automatiskt.
 
-4. Ansluta toohello Domänkontrollantservern igen genom att starta hello remote desktop-fil. Den här tiden kan logga in som **CORP\Administrator**.
-5. Öppna ett PowerShell-fönster i administratörsläge och importera hello Active Directory PowerShell-modulen med hjälp av hello följande kommando:
+4. Ansluta till Domänkontrollantservern igen genom att starta remote desktop fil. Den här tiden kan logga in som **CORP\Administrator**.
+5. Öppna ett PowerShell-fönster i administratörsläge och importera Active Directory PowerShell-modulen med hjälp av följande kommando:
 
         Import-Module ActiveDirectory
 
-6. Kör följande kommandon tooadd tre användare toohello domän hello.
+6. Kör följande kommandon för att lägga till tre användare i domänen.
 
         $pwd = ConvertTo-SecureString "Contoso!000" -AsPlainText -Force
         New-ADUser `
@@ -226,8 +226,8 @@ hello Domänkontrollantservern nu etablerats. Du måste konfigurera hello Active
             -ChangePasswordAtLogon $false `
             -Enabled $true
 
-    **CORP\Install** är används tooconfigure allt relaterade toohello SQL Server-tjänstinstanser hello failover-kluster och hello-tillgänglighetsgruppen. **CORP\SQLSvc1** och **CORP\SQLSvc2** används som hello SQL Server-tjänstkontona för hello två SQL Server-datorer.
-7. Hello nästa, kör följande kommandon toogive **CORP\Install** hello behörigheter toocreate datorobjekt i hello domän.
+    **CORP\Install** används för att konfigurera allt relaterade till SQL Server-tjänstinstanser, failover-kluster och tillgänglighetsgruppen. **CORP\SQLSvc1** och **CORP\SQLSvc2** används som SQL Server-tjänstkontona för två SQL Server-datorer.
+7. Kör följande kommandon för att ge **CORP\Install** behörigheter att skapa datorobjekt i domänen.
 
         Cd ad:
         $sid = new-object System.Security.Principal.SecurityIdentifier (Get-ADUser "Install").SID
@@ -238,12 +238,12 @@ hello Domänkontrollantservern nu etablerats. Du måste konfigurera hello Active
         $acl.AddAccessRule($ace1)
         Set-Acl -Path "DC=corp,DC=contoso,DC=com" -AclObject $acl
 
-    hello GUID som anges ovan är hello GUID för hello objekttypen för datorn. Hej **CORP\Install** kontot måste hello **läsa alla egenskaper** och **skapa datorobjekt** behörighet toocreate hello Active direkt objekt för hello redundans kluster. Hej **läsa alla egenskaper** behörigheter redan ges tooCORP\Install som standard, så du inte behöver toogrant det explicit. För mer information om behörigheter som är nödvändiga toocreate hello failover-kluster, se [stegvis Guide för Failover-kluster: Konfigurera konton i Active Directory](https://technet.microsoft.com/library/cc731002%28v=WS.10%29.aspx).
+    Det GUID som anges ovan är GUID för typ av objekt. Den **CORP\Install** konto måste den **läsa alla egenskaper** och **skapa datorobjekt** behörighet att skapa Active direkt objekt för failover-kluster. Den **läsa alla egenskaper** behörigheter har redan tilldelats CORP\Install som standard, så du inte behöver bevilja explicit. Mer information om behörigheter som krävs för att skapa kluster för växling vid fel finns [stegvis Guide för Failover-kluster: Konfigurera konton i Active Directory](https://technet.microsoft.com/library/cc731002%28v=WS.10%29.aspx).
 
-    Nu när du är klar med att konfigurera Active Directory och hello användarobjekt du skapa två virtuella SQL Server-datorer och Anslut dem toothis domän.
+    Nu när du är klar med att konfigurera Active Directory och användarobjekt kan du skapa två virtuella SQL Server-datorer och Anslut dem till den här domänen.
 
-## <a name="create-hello-sql-server-vms"></a>Skapa hello SQL Server-datorer
-1. Fortsätt toouse hello PowerShell-fönster som är öppna på den lokala datorn. Definiera hello följande ytterligare variabler:
+## <a name="create-the-sql-server-vms"></a>Skapa SQL Server-datorer
+1. Fortsätta att använda PowerShell-fönster som är öppna på den lokala datorn. Definiera följande ytterligare variabler:
 
         $domainName= "corp"
         $FQDN = "corp.contoso.com"
@@ -256,8 +256,8 @@ hello Domänkontrollantservern nu etablerats. Du måste konfigurera hello Active
         $dataDiskSize = 100
         $dnsSettings = New-AzureDns -Name "ContosoBackDNS" -IPAddress "10.10.0.4"
 
-    Hej IP-adress **10.10.0.4** normalt tilldelas toohello första virtuella dator som du skapar i hello **10.10.0.0/16** undernätet för din virtuella Azure-nätverket. Du bör kontrollera att det här är din Domänkontrollantservern hello-adress genom att köra **IPCONFIG**.
-2. Kör hello följande via rörledningar kommandon toocreate hello först VM i hello failover-kluster med namnet **ContosoQuorum**:
+    IP-adressen **10.10.0.4** vanligtvis har tilldelats den första virtuella dator som du skapar i den **10.10.0.0/16** undernätet för din virtuella Azure-nätverket. Du bör kontrollera att det här är adressen till din Domänkontrollantservern genom att köra **IPCONFIG**.
+2. Kör följande skickas kommandon för att skapa den första virtuella datorn i failover-kluster med namnet **ContosoQuorum**:
 
         New-AzureVMConfig `
             -Name $quorumServerName `
@@ -283,13 +283,13 @@ hello Domänkontrollantservern nu etablerats. Du måste konfigurera hello Active
                         -VNetName $virtualNetworkName `
                         -DnsSettings $dnsSettings
 
-    Observera följande hello om hello ovanstående kommando:
+    Observera följande om ovanstående kommando:
 
-   * **Nya AzureVMConfig** skapar en VM-konfiguration med hello önskade tillgänglighetsuppsättningen. hello senare virtuella datorer kommer att skapas med hello samma namn på tillgänglighetsuppsättning så att de är anslutna toohello samma tillgänglighetsuppsättning.
-   * **Lägg till AzureProvisioningConfig** kopplingar hello VM toohello Active Directory-domän som du skapade.
-   * **Ange AzureSubnet** platser hello VM i hello tillbaka undernät.
-   * **Nya AzureVM** skapar en ny molntjänst och skapar hello nya Azure VM i hello ny molntjänst. Hej **DnsSettings** parametern anger hello DNS-servern för hello servrar i hello ny molntjänst har hello IP-adress **10.10.0.4**. Detta är hello hello Domänkontrollantservern IP-adress. Den här parametern krävs tooenable hello nya virtuella datorer i hello cloud service toojoin toohello Active Directory-domän har. Utan den här parametern måste du manuellt ange hello IPv4-inställningar i din VM toouse hello Domänkontrollantservern som hello primära DNS-server när hello VM etableras och sedan ansluta hello VM toohello Active Directory-domän.
-3. Kör hello följande via rörledningar kommandon toocreate hello SQL Server-datorer med namnet **ContosoSQL1** och **ContosoSQL2**.
+   * **Nya AzureVMConfig** skapar en VM-konfiguration med önskad tillgänglighetsuppsättningen. Följande virtuella datorer kommer att skapas med samma tillgänglighetsuppsättningen så att de är anslutna till samma tillgänglighetsuppsättning.
+   * **Lägg till AzureProvisioningConfig** ansluter till den virtuella datorn i Active Directory-domänen som du skapade.
+   * **Ange AzureSubnet** placerar den virtuella datorn i den bakre undernät.
+   * **Nya AzureVM** skapar en ny molntjänst och skapar den nya Azure VM i ny molntjänst. Den **DnsSettings** parametern anger att DNS-servern för servrar i en ny molntjänst har IP-adressen **10.10.0.4**. Det här är IP-adressen för Domänkontrollantservern. Den här parametern krävs för att aktivera de nya virtuella datorerna i Molntjänsten att ansluta till Active Directory-domänen har. Utan den här parametern måste du manuellt ange IPv4-inställningar i den virtuella datorn att använda Domänkontrollantservern som den primära DNS-servern efter den virtuella datorn har etablerats och sedan ansluta den virtuella datorn till Active Directory-domänen.
+3. Kör följande skickas kommandon för att skapa SQL Server-VMs, med namnet **ContosoSQL1** och **ContosoSQL2**.
 
         # Create ContosoSQL1...
         New-AzureVMConfig `
@@ -347,20 +347,20 @@ hello Domänkontrollantservern nu etablerats. Du måste konfigurera hello Active
                         New-AzureVM `
                             -ServiceName $sqlServiceName
 
-    Observera följande hello om hello kommandona ovan:
+    Observera följande om kommandona ovan:
 
-   * **Nya AzureVMConfig** använder hello samma tillgänglighetsuppsättningen som hello Domänkontrollantservern och använder hello SQL Server 2012 Service Pack 1 Enterprise Edition bilden i hello galleriet för virtuella datorer. Den anger också hello fungerar system disk tooread cachelagring endast (ingen skrivcache). Vi rekommenderar att du migrerar hello databasen filer tooa separat datadisk att bifoga toohello VM, och konfigurera den med ingen läs eller skrivcache. Hello bästa alternativet är dock tooremove skrivcache på hello operativsystemdisk eftersom du inte ta bort läsa cachelagring på hello operativsystemdisken.
-   * **Lägg till AzureProvisioningConfig** kopplingar hello VM toohello Active Directory-domän som du skapade.
-   * **Ange AzureSubnet** platser hello VM i hello tillbaka undernät.
-   * **Lägg till AzureEndpoint** lägger till slutpunkter för åtkomst så att klientprogram kan komma åt dessa tjänster SQL Server-instanser på hello Internet. Olika portar ges tooContosoSQL1 och ContosoSQL2.
-   * **Nya AzureVM** skapar hello nya SQL Server-VM i hello samma molntjänst som ContosoQuorum. Du måste placera hello virtuella datorer i samma molntjänst om du vill att de toobe i hello hello samma tillgänglighetsuppsättning.
-4. Vänta för varje VM-toobe helt etablerad och varje VM-toodownload dess skrivbord fjärrfil tooyour arbetskatalogen. Hej `for` loop går igenom hello tre nya virtuella datorer och utför hello kommandon i hello översta klammerparenteser för dem.
+   * **Nya AzureVMConfig** använder samma tillgänglighetsuppsättningen som Domänkontrollantservern och använder SQL Server 2012 Service Pack 1 Enterprise Edition bilden i galleriet för virtuella datorer. Anger också operativsystemets disk till Läs-cacheservrar (ingen skrivcache). Vi rekommenderar att du migrerar databasfilerna till en separat disk som du ansluter till den virtuella datorn och konfigurera utan läsning eller skrivning till cacheminnet. Dock är det bästa alternativet att ta bort skrivcache på operativsystemets disk eftersom du inte ta bort skrivskyddade cachelagring på operativsystemets disk.
+   * **Lägg till AzureProvisioningConfig** ansluter till den virtuella datorn i Active Directory-domänen som du skapade.
+   * **Ange AzureSubnet** placerar den virtuella datorn i den bakre undernät.
+   * **Lägg till AzureEndpoint** lägger till slutpunkter för åtkomst så att klientprogram kan komma åt dessa tjänster SQL Server-instanser på Internet. Olika portar ges till ContosoSQL1 och ContosoSQL2.
+   * **Nya AzureVM** skapar den nya SQL Server-VM i samma molntjänst som ContosoQuorum. Du måste placera de virtuella datorerna i samma molntjänst om du vill att de ska vara i samma tillgänglighetsuppsättning.
+4. Vänta varje virtuell dator för att helt etablerad och varje virtuell dator för att hämta dess remote desktop-fil till arbetskatalogen. Den `for` loop går igenom de tre nya virtuella datorerna och kör kommandon i de översta klammerparenteser för dem.
 
         Foreach ($VM in $VMs = Get-AzureVM -ServiceName $sqlServiceName)
         {
             write-host "Waiting for " $VM.Name "..."
 
-            # Loop until hello VM status is "ReadyRole"
+            # Loop until the VM status is "ReadyRole"
             While ($VM.InstanceStatus -ne "ReadyRole")
             {
                 write-host "  Current Status = " $VM.InstanceStatus
@@ -374,28 +374,28 @@ hello Domänkontrollantservern nu etablerats. Du måste konfigurera hello Active
             Get-AzureRemoteDesktopFile -ServiceName $VM.ServiceName -Name $VM.InstanceName -LocalPath "$workingDir$($VM.InstanceName).rdp"
         }
 
-    hello SQL Server-datorer har nu etablerats och körs, men de är installerade med SQL Server med standardalternativ.
+    SQL Server-datorer har nu etablerats och körs, men de är installerade med SQL Server med standardalternativ.
 
-## <a name="initialize-hello-failover-cluster-vms"></a>Initiera hello redundanskluster virtuella datorer
-I det här avsnittet måste toomodify hello tre servrar som du vill använda i hello failover-kluster och hello SQL Server-installation. Närmare bestämt:
+## <a name="initialize-the-failover-cluster-vms"></a>Initiera redundanskluster virtuella datorer
+I det här avsnittet måste du ändra de tre servrarna som du vill använda i klustret och SQL Server-installationen. Närmare bestämt:
 
-* Alla servrar: du behöver tooinstall hello **redundanskluster** funktion.
-* Alla servrar: du behöver tooadd **CORP\Install** som hello dator **administratör**.
-* ContosoSQL1 och ContosoSQL2 endast: du behöver tooadd **CORP\Install** som en **sysadmin** roll i hello standarddatabas.
-* ContosoSQL1 och ContosoSQL2 endast: du behöver tooadd **NT AUTHORITY\System** som loggar in med hello följande behörigheter:
+* Alla servrar: du måste installera den **redundanskluster** funktion.
+* Alla servrar: du måste lägga till **CORP\Install** som datorn **administratör**.
+* ContosoSQL1 och ContosoSQL2 endast: du måste lägga till **CORP\Install** som en **sysadmin** roll i standarddatabasen.
+* ContosoSQL1 och ContosoSQL2 endast: du måste lägga till **NT AUTHORITY\System** som en inloggning med följande behörigheter:
 
   * ALTER någon tillgänglighetsgrupp
   * Ansluta SQL
   * Visa-Servertillstånd
-* ContosoSQL1 och ContosoSQL2 endast: hello **TCP** protokollet är redan aktiverat på hello SQL Server-VM. Behöver du dock fortfarande tooopen hello Brandvägg för fjärråtkomst av SQL Server.
+* ContosoSQL1 och ContosoSQL2 endast: den **TCP** protokollet är redan aktiverat på SQL Server-VM. Du behöver dock fortfarande öppna brandväggen för fjärråtkomst av SQL Server.
 
-Nu är du redo toostart. Från och med **ContosoQuorum**, hello följande sätt:
+Nu är du redo att börja. Från och med **ContosoQuorum**, Följ stegen nedan:
 
-1. Ansluta för**ContosoQuorum** genom att starta hello remote desktop-filer. Använda hello datorn administratörens användarnamn **AzureAdmin** och lösenord **Contoso! 000**, som du angav när du skapade hello virtuella datorer.
-2. Kontrollera att hello datorer har anslutits för**corp.contoso.com**.
-3. Vänta tills hello SQL Server-installation toofinish kör hello automatisk initiering uppgifter innan du fortsätter.
+1. Ansluta till **ContosoQuorum** genom att starta remote desktop-filer. Använd datorn administratörsanvändarnamn **AzureAdmin** och lösenord **Contoso! 000**, som du angav när du skapade de virtuella datorerna.
+2. Kontrollera att datorerna har anslutit till **corp.contoso.com**.
+3. Vänta på att SQL Server-installationen ska slutföras kör initieringen av automatiserade uppgifter innan du fortsätter.
 4. Öppna ett PowerShell-fönster i administratörsläge.
-5. Installera redundanskluster i Windows hello-funktionen.
+5. Installera funktionen redundanskluster i Windows.
 
         Import-Module ServerManager
         Add-WindowsFeature Failover-Clustering
@@ -406,46 +406,46 @@ Nu är du redo toostart. Från och med **ContosoQuorum**, hello följande sätt:
 
         logoff.exe
 
-Därefter initiera **ContosoSQL1** och **ContosoSQL2**. Åtgärderna hello nedan, som är identiska för både SQL Server-datorer.
+Därefter initiera **ContosoSQL1** och **ContosoSQL2**. Följ stegen nedan, som är identiska för både SQL Server-datorer.
 
-1. Ansluta toohello två SQL Server-datorer genom att starta hello remote desktop-filer. Använda hello datorn administratörens användarnamn **AzureAdmin** och lösenord **Contoso! 000**, som du angav när du skapade hello virtuella datorer.
-2. Kontrollera att hello datorer har anslutits för**corp.contoso.com**.
-3. Vänta tills hello SQL Server-installation toofinish kör hello automatisk initiering uppgifter innan du fortsätter.
+1. Ansluta till de två SQL Server-datorer genom att starta remote desktop-filer. Använd datorn administratörsanvändarnamn **AzureAdmin** och lösenord **Contoso! 000**, som du angav när du skapade de virtuella datorerna.
+2. Kontrollera att datorerna har anslutit till **corp.contoso.com**.
+3. Vänta på att SQL Server-installationen ska slutföras kör initieringen av automatiserade uppgifter innan du fortsätter.
 4. Öppna ett PowerShell-fönster i administratörsläge.
-5. Installera redundanskluster i Windows hello-funktionen.
+5. Installera funktionen redundanskluster i Windows.
 
         Import-Module ServerManager
         Add-WindowsFeature Failover-Clustering
 6. Lägg till **CORP\Install** som lokal administratör.
 
         net localgroup administrators "CORP\Install" /Add
-7. Importera hello PowerShell-providern för SQL Server.
+7. Importera PowerShell-providern för SQL Server.
 
         Set-ExecutionPolicy -Execution RemoteSigned -Force
         Import-Module -Name "sqlps" -DisableNameChecking
-8. Lägg till **CORP\Install** som hello sysadmin-rollen för hello standardinstansen för SQL Server.
+8. Lägg till **CORP\Install** som rollen sysadmin för standardinstansen för SQL Server.
 
         net localgroup administrators "CORP\Install" /Add
         Invoke-SqlCmd -Query "EXEC sp_addsrvrolemember 'CORP\Install', 'sysadmin'" -ServerInstance "."
-9. Lägg till **NT AUTHORITY\System** som loggar in med hello tre behörigheterna som beskrivs ovan.
+9. Lägg till **NT AUTHORITY\System** som loggar in med de tre behörigheter som beskrivs ovan.
 
         Invoke-SqlCmd -Query "CREATE LOGIN [NT AUTHORITY\SYSTEM] FROM WINDOWS" -ServerInstance "."
-        Invoke-SqlCmd -Query "GRANT ALTER ANY AVAILABILITY GROUP too[NT AUTHORITY\SYSTEM] AS SA" -ServerInstance "."
-        Invoke-SqlCmd -Query "GRANT CONNECT SQL too[NT AUTHORITY\SYSTEM] AS SA" -ServerInstance "."
-        Invoke-SqlCmd -Query "GRANT VIEW SERVER STATE too[NT AUTHORITY\SYSTEM] AS SA" -ServerInstance "."
-10. Öppna hello-brandväggen för fjärråtkomst av SQL Server.
+        Invoke-SqlCmd -Query "GRANT ALTER ANY AVAILABILITY GROUP TO [NT AUTHORITY\SYSTEM] AS SA" -ServerInstance "."
+        Invoke-SqlCmd -Query "GRANT CONNECT SQL TO [NT AUTHORITY\SYSTEM] AS SA" -ServerInstance "."
+        Invoke-SqlCmd -Query "GRANT VIEW SERVER STATE TO [NT AUTHORITY\SYSTEM] AS SA" -ServerInstance "."
+10. Öppna i brandväggen för fjärråtkomst av SQL Server.
 
          netsh advfirewall firewall add rule name='SQL Server (TCP-In)' program='C:\Program Files\Microsoft SQL Server\MSSQL11.MSSQLSERVER\MSSQL\Binn\sqlservr.exe' dir=in action=allow protocol=TCP
 11. Logga ut från både virtuella datorer.
 
          logoff.exe
 
-Slutligen är du redo tooconfigure hello-tillgänglighetsgruppen. Du kommer att använda hello PowerShell-providern för SQL Server tooperform all hello fungera i **ContosoSQL1**.
+Slutligen är du redo att konfigurera tillgänglighetsgruppen. Du använder PowerShell-providern för SQL Server för att utföra allt arbete på **ContosoSQL1**.
 
-## <a name="configure-hello-availability-group"></a>Konfigurera hello-tillgänglighetsgrupp
-1. Ansluta för**ContosoSQL1** igen genom att starta hello remote desktop-filer. I stället för att logga in med hjälp av hello datorkonto, logga in med hjälp av **CORP\Install**.
+## <a name="configure-the-availability-group"></a>Konfigurera tillgänglighetsgruppen
+1. Ansluta till **ContosoSQL1** igen genom att starta remote desktop-filer. I stället för att logga in med hjälp av datorkontot kan logga in med hjälp av **CORP\Install**.
 2. Öppna ett PowerShell-fönster i administratörsläge.
-3. Definiera hello följande variabler:
+3. Definiera följande variabler:
 
         $server1 = "ContosoSQL1"
         $server2 = "ContosoSQL2"
@@ -459,11 +459,11 @@ Slutligen är du redo tooconfigure hello-tillgänglighetsgruppen. Du kommer att 
         $backupShare = "\\$server1\backup"
         $quorumShare = "\\$server1\quorum"
         $ag = "AG1"
-4. Importera hello PowerShell-providern för SQL Server.
+4. Importera PowerShell-providern för SQL Server.
 
         Set-ExecutionPolicy RemoteSigned -Force
         Import-Module "sqlps" -DisableNameChecking
-5. Ändra hello SQL Server-tjänstkontot för ContosoSQL1 tooCORP\SQLSvc1.
+5. Ändra SQL Server-tjänstkontot för ContosoSQL1 till CORP\SQLSvc1.
 
         $wmi1 = new-object ("Microsoft.SqlServer.Management.Smo.Wmi.ManagedComputer") $server1
         $wmi1.services | where {$_.Type -eq 'SqlServer'} | foreach{$_.SetServiceAccount($acct1,$password)}
@@ -472,7 +472,7 @@ Slutligen är du redo tooconfigure hello-tillgänglighetsgruppen. Du kommer att 
         $svc1.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Stopped,$timeout)
         $svc1.Start();
         $svc1.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Running,$timeout)
-6. Ändra hello SQL Server-tjänstkontot för ContosoSQL2 tooCORP\SQLSvc2.
+6. Ändra SQL Server-tjänstkontot för ContosoSQL2 till CORP\SQLSvc2.
 
         $wmi2 = new-object ("Microsoft.SqlServer.Management.Smo.Wmi.ManagedComputer") $server2
         $wmi2.services | where {$_.Type -eq 'SqlServer'} | foreach{$_.SetServiceAccount($acct2,$password)}
@@ -481,12 +481,12 @@ Slutligen är du redo tooconfigure hello-tillgänglighetsgruppen. Du kommer att 
         $svc2.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Stopped,$timeout)
         $svc2.Start();
         $svc2.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Running,$timeout)
-7. Hämta **CreateAzureFailoverCluster.ps1** från [Skapa kluster för växling vid fel för Always On-Tillgänglighetsgrupper i Azure VM](http://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a) toohello lokala arbetskatalogen. Du ska använda det här skriptet toohelp som du skapar ett fungerande kluster. Viktig information om hur Windows-redundanskluster samverkar med hello Azure nätverk, se [hög tillgänglighet och katastrofåterställning återställning för SQL Server i Azure Virtual Machines](../sql/virtual-machines-windows-sql-high-availability-dr.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json).
-8. Ändra tooyour arbetskatalog och skapa hello redundanskluster med hello hämtas skript.
+7. Hämta **CreateAzureFailoverCluster.ps1** från [Skapa kluster för växling vid fel för Always On-Tillgänglighetsgrupper i Azure VM](http://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a) till lokala arbetskatalogen. För att skapa ett fungerande kluster ska du använda det här skriptet. Viktig information om hur Windows-redundanskluster samverkar med Azure-nätverk finns i [hög tillgänglighet och katastrofåterställning återställning för SQL Server i Azure Virtual Machines](../sql/virtual-machines-windows-sql-high-availability-dr.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json).
+8. Ändra till arbetskatalogen och skapa klustret med det hämta skriptet.
 
         Set-ExecutionPolicy Unrestricted -Force
         .\CreateAzureFailoverCluster.ps1 -ClusterName "$clusterName" -ClusterNode "$server1","$server2","$serverQuorum"
-9. Aktivera Always On-Tillgänglighetsgrupper för hello standard SQL Server-instanser på **ContosoSQL1** och **ContosoSQL2**.
+9. Aktivera Always On-Tillgänglighetsgrupper för SQL Server-standardinstanser på **ContosoSQL1** och **ContosoSQL2**.
 
         Enable-SqlAlwaysOn `
             -Path SQLSERVER:\SQL\$server1\Default `
@@ -498,20 +498,20 @@ Slutligen är du redo tooconfigure hello-tillgänglighetsgruppen. Du kommer att 
         $svc2.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Stopped,$timeout)
         $svc2.Start();
         $svc2.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Running,$timeout)
-10. Skapa en katalog och bevilja hello SQL Server-tjänstkonton åtkomstbehörigheter. Du ska använda den här tillgänglighetsdatabasen directory tooprepare hello på hello sekundär replik.
+10. Skapa en katalog och bevilja behörighet för SQL Server-tjänstkonton. Du använder den här katalogen för att förbereda tillgänglighetsdatabasen på den sekundära repliken.
 
          $backup = "C:\backup"
          New-Item $backup -ItemType directory
          net share backup=$backup "/grant:$acct1,FULL" "/grant:$acct2,FULL"
          icacls.exe "$backup" /grant:r ("$acct1" + ":(OI)(CI)F") ("$acct2" + ":(OI)(CI)F")
-11. Skapa en databas på **ContosoSQL1** kallas **MyDB1**ta både en fullständig säkerhetskopia och en säkerhetskopia och återställa dem på **ContosoSQL2** med hello **WITH NORECOVERY** alternativet.
+11. Skapa en databas på **ContosoSQL1** kallas **MyDB1**ta både en fullständig säkerhetskopia och en säkerhetskopia och återställa dem på **ContosoSQL2** med den **WITH NORECOVERY** alternativet.
 
          Invoke-SqlCmd -Query "CREATE database $db"
          Backup-SqlDatabase -Database $db -BackupFile "$backupShare\db.bak" -ServerInstance $server1
          Backup-SqlDatabase -Database $db -BackupFile "$backupShare\db.log" -ServerInstance $server1 -BackupAction Log
          Restore-SqlDatabase -Database $db -BackupFile "$backupShare\db.bak" -ServerInstance $server2 -NoRecovery
          Restore-SqlDatabase -Database $db -BackupFile "$backupShare\db.log" -ServerInstance $server2 -RestoreAction Log -NoRecovery
-12. Skapa hello tillgänglighet grupp slutpunkter på hello virtuella SQL Server-datorer och ange hello rätt behörigheter på hello slutpunkter.
+12. Skapa tillgängligheten grupp slutpunkterna på SQL Server-datorer och ange åtkomstbehörighet för slutpunkter.
 
          $endpoint =
              New-SqlHadrEndpoint MyMirroringEndpoint `
@@ -529,10 +529,10 @@ Slutligen är du redo tooconfigure hello-tillgänglighetsgruppen. Du kommer att 
              -State "Started"
 
          Invoke-SqlCmd -Query "CREATE LOGIN [$acct2] FROM WINDOWS" -ServerInstance $server1
-         Invoke-SqlCmd -Query "GRANT CONNECT ON ENDPOINT::[MyMirroringEndpoint] too[$acct2]" -ServerInstance $server1
+         Invoke-SqlCmd -Query "GRANT CONNECT ON ENDPOINT::[MyMirroringEndpoint] TO [$acct2]" -ServerInstance $server1
          Invoke-SqlCmd -Query "CREATE LOGIN [$acct1] FROM WINDOWS" -ServerInstance $server2
-         Invoke-SqlCmd -Query "GRANT CONNECT ON ENDPOINT::[MyMirroringEndpoint] too[$acct1]" -ServerInstance $server2
-13. Skapa hello tillgänglighetsrepliker.
+         Invoke-SqlCmd -Query "GRANT CONNECT ON ENDPOINT::[MyMirroringEndpoint] TO [$acct1]" -ServerInstance $server2
+13. Skapa tillgänglighetsrepliker.
 
          $primaryReplica =
              New-SqlAvailabilityReplica `
@@ -550,7 +550,7 @@ Slutligen är du redo tooconfigure hello-tillgänglighetsgruppen. Du kommer att 
              -FailoverMode "Automatic" `
              -Version 11 `
              -AsTemplate
-14. Skapa slutligen hello tillgänglighetsgruppen och koppling hello sekundär replik toohello tillgänglighetsgruppen.
+14. Slutligen skapar tillgänglighetsgruppen och ansluter till sekundär replik i tillgänglighetsgruppen.
 
          New-SqlAvailabilityGroup `
              -Name $ag `
@@ -565,6 +565,6 @@ Slutligen är du redo tooconfigure hello-tillgänglighetsgruppen. Du kommer att 
              -Database $db
 
 ## <a name="next-steps"></a>Nästa steg
-Du har nu har implementerat SQL Server alltid aktiverad genom att skapa en tillgänglighetsgrupp i Azure. tooconfigure en lyssnare för den här tillgänglighetsgruppen finns [konfigurera en ILB-lyssnare för Always On-Tillgänglighetsgrupper i Azure](../classic/ps-sql-int-listener.md).
+Du har nu har implementerat SQL Server alltid aktiverad genom att skapa en tillgänglighetsgrupp i Azure. Om du vill konfigurera en lyssnare för den här tillgänglighetsgruppen finns [konfigurera en ILB-lyssnare för Always On-Tillgänglighetsgrupper i Azure](../classic/ps-sql-int-listener.md).
 
 Annan information om hur du använder SQL Server i Azure, se [SQL Server på Azure virtual machines](../sql/virtual-machines-windows-sql-server-iaas-overview.md).

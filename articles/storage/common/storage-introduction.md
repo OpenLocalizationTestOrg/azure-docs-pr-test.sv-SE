@@ -1,9 +1,9 @@
 ---
-title: aaaIntroduction tooAzure Storage | Microsoft Docs
-description: Introduktion tooAzure lagring, Microsofts datalagring i hello molnet.
+title: Introduktion till Azure Storage | Microsoft Docs
+description: Introduktion till Azure Storage, Microsofts datalagring i molnet.
 services: storage
 documentationcenter: 
-author: robinsh
+author: tamram
 manager: timlt
 editor: tysonn
 ms.assetid: a4a1bc58-ea14-4bf5-b040-f85114edc1f1
@@ -13,89 +13,82 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/09/2017
-ms.author: robinsh
-ms.openlocfilehash: f61324f98d0a8eb24023e4344acdb4ca58bb27f8
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.author: tamram
+ms.openlocfilehash: e7b32aa2de5d6501e8d7894a936e9ab8b2f4f42f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-<!-- this is hello same version that is in hello MVC branch -->
-# <a name="introduction-toomicrosoft-azure-storage"></a>Introduktion tooMicrosoft Azure Storage
+# <a name="introduction-to-microsoft-azure-storage"></a>Introduktion till Microsoft Azure Storage
 
 Microsoft Azure Storage är en Microsoft-hanterad molntjänst som tillhandahåller lagring som är mycket tillgänglig, säker, beständig, skalbar och redundant. Microsoft tar hand om underhåll och hanterar kritiska problem åt dig. 
 
-Azure Storage består av tre datatjänster: Blob Storage, File Storage och Queue Storage. BLOB storage stöder både standard- och premium-lagring med premium-lagring med hjälp av endast SSD för hello snabbaste prestanda möjligt. En annan funktion är lågfrekvent, så att du toostorage stora mängder data som sällan används för en lägre kostnad.
+Azure Storage består av tre datatjänster: Blob Storage, File Storage och Queue Storage. Blob Storage stöder både standard- och premiumlagring. För premiumlagring används endast SSD för snabbaste möjliga prestanda. En annan funktion är lågfrekvent lagring, som gör att du kan lagra stora mängder data som sällan används till en lägre kostnad.
 
-I den här artikeln får du lära dig om hello följande:
-* hello Azure Storage-tjänster
-* hello typerna av lagringskonton
+I den här artikeln får du veta mer om följande:
+* Azure Storage-tjänsterna
+* typerna av lagringskonton
 * åtkomst till dina blobar, köer och filer
 * kryptering
 * replikering 
 * överföring av data till och från lagring
-* Hej många lagringsklientbiblioteken tillgängliga. 
+* de många lagringsklientbiblioteken som finns tillgängliga. 
 
+Om du vill komma igång med Azure Storage snabbt kan du ta en titt på någon av följande snabbstartsguider:
+* [Skapa ett lagringskonto med PowerShell](storage-quickstart-create-storage-account-powershell.md)
+* [Skapa ett lagringskonto med CLI](storage-quickstart-create-storage-account-cli.md)
 
-<!-- RE-ENABLE THESE AFTER MVC GOES LIVE 
-tooget up and running with Azure Storage quickly, check out one of hello following Quickstarts:
-* [Create a storage account using PowerShell](storage-quick-create-storage-account-powershell.md)
-* [Create a storage account using CLI](storage-quick-create-storage-account-cli.md)
--->
+## <a name="introducing-the-azure-storage-services"></a>Introduktion till Azure Storage-tjänsterna
 
-
-## <a name="introducing-hello-azure-storage-services"></a>Introduktion till hello Azure Storage-tjänster
-
-toouse någon av hello tjänster som tillhandahålls av Azure Storage - Blob storage File storage och Queue storage--du först skapa ett lagringskonto och du kan sedan överföra data till och från en specifik tjänst i detta lagringskonto. 
+Om du vill använda någon av de tjänster som tillhandahålls av Azure Storage – Blob Storage, File Storage och Queue Storage – skapar du först ett lagringskonto och sedan kan du överföra data till/från en specifik tjänst i det lagringskontot. 
 
 ## <a name="blob-storage"></a>Blob Storage
 
-Blobbar är i princip filer som de du lagrar på en dator (eller surfplatta, mobil enhet och så vidare). De kan vara bilder, Microsoft Excel-filer, HTML-filer, virtuella hårddiskar (VHD), stordata, till exempel loggar, databassäkerhetskopior – nästan allt. Blobbar som lagras i behållare som är liknande toofolders. 
+Blobbar är i princip filer som de du lagrar på en dator (eller surfplatta, mobil enhet och så vidare). De kan vara bilder, Microsoft Excel-filer, HTML-filer, virtuella hårddiskar (VHD), stordata, till exempel loggar, databassäkerhetskopior – nästan allt. Blobbar lagras i behållare som liknar mappar. 
 
-När du lagrar filer i Blob storage, du kan komma åt dem från valfri plats i hello world med hjälp av URL: er, hello REST-gränssnittet eller en av lagringsklientbiblioteken för hello Azure SDK. Det finns lagringsklientbibliotek för flera språk, bland annat Node.js, Java, PHP, Ruby, Python och .NET. 
+När du lagrar filer i Blob Storage kan du komma åt dem var som helst i världen med hjälp av URL:er, REST-gränssnittet eller något av Azure SDK-lagringsklientbiblioteken. Det finns lagringsklientbibliotek för flera språk, bland annat Node.js, Java, PHP, Ruby, Python och .NET. 
 
-Det finns tre typer av blobbar – blockblobbar, tilläggsblobbar och sidblobbar (används för VHD-filer).
+Det finns tre typer av blobbar – blockblobbar, sidblobbar (används för VHD-filer) och tilläggsblobbar.
 
-* Blockblobbar är används toohold vanliga filer upp tooabout 4,7 TB. 
-* Sidblobbar är filer som används toohold direktåtkomst in too8 TB i storlek. Dessa används för hello VHD-filer som stöder virtuella datorer.
-* Lägg till BLOB består av block som hello blockblobbar, men är optimerade för tilläggsåtgärder. Dessa används för sådant som att logga information toohello samma blob från flera virtuella datorer.
+* Blockblobbar används för att lagra vanliga filer upp till ungefär 4,7 TB. 
+* Sidblobbar används för att lagra filer med slumpmässig åtkomst upp till 8 TB. De används för VHD-filerna som stöder virtuella datorer.
+* Tilläggsblobbar består av block precis som blockblobbarna, men är optimerade för tilläggsåtgärder. De används till exempel för att logga information till samma blob från flera virtuella datorer.
 
-För mycket stora datamängder där nätverksbegränsningar gör att överföra eller hämta tooBlob datalagring över hello överföring orealistiskt du levererar en uppsättning hårddiskar tooMicrosoft tooimport eller exportera data direkt från hello datacenter. Se [använda hello Microsoft Azure Import/Export Service tooTransfer Data tooBlob lagring](../storage-import-export-service.md).
+För mycket stora datamängder där nätverksbegränsningar gör det orealistiskt att överföra eller hämta data till Blob Storage via kabel kan du skicka en uppsättning hårddiskar till Microsoft för att importera eller exportera data direkt från datacentret. Mer information finns i [Använda tjänsten Microsoft Azure Import/Export för att överföra data till Blob Storage](../storage-import-export-service.md).
 
-## <a name="file-storage"></a>File Storage
+## <a name="azure-files"></a>Azure Files
+Med [Azure Files](../files/storage-files-introduction.md) kan du konfigurera nätverksfilresurser med hög tillgänglighet som kan nås via SMB-standardprotokollet (Server Message Block). Det innebär att flera virtuella datorer kan dela samma filer med både läs- och skrivbehörighet. Du kan också läsa filerna med hjälp av REST-gränssnittet eller klientbiblioteken för lagring. 
 
-hello Azure Files service kan du tooset in högtillgänglig nätverksfilresurser som kan nås via Server Message Block (SMB) hello standardprotokoll. Att hello innebär att flera virtuella datorer kan dela samma filer med läs- och skrivbehörighet. Du kan också läsa hello filer hello REST-gränssnittet eller hello storage, klientbiblioteken. 
-
-En sak som särskiljer Azure File storage från filer på en filresurs som företagets är att du kan komma åt hello filer överallt i hello world med en URL som pekar toohello filen och innehåller en signatur (SAS) delad åtkomst-token. Du kan generera SAS-token de kan specifika tooa privata tillgång för en viss tidsperiod. 
+En sak som skiljer Azure Files från filer på en företagsfilresurs är att du kan komma åt filerna var som helst i världen med en URL som pekar på filen och som innehåller en SAS-token (signatur för delad åtkomst). Du kan generera SAS-token, som ger specifik åtkomst till en privat resurs under en viss tidsperiod. 
 
 Filresurser kan användas för många vanliga scenarier: 
 
-* Många lokala program använder filresurser. Den här funktionen gör det enklare toomigrate programmen som delar data tooAzure. Om du monterar hello filen resursen toohello samma enhetsbeteckning som hello lokalt program använder, hello en del av ditt program som har åtkomst till filresursen för hello bör arbeta tillsammans med minimala eventuella ändringar.
+* Många lokala program använder filresurser. Den här funktionen gör det enklare att migrera program som delar data till Azure. Om du monterar filresursen med samma enhetsbeteckning som det lokala programmet använder, bör den del av programmet som använder filresursen fungera med minimala, om några, ändringar.
 
-* Konfigurationsfiler kan lagras på en filresurs och nås från flera virtuella datorer. Verktyg och hjälpmedel som används av flera utvecklare i en grupp kan lagras på en filresurs, se till att alla kan hitta dem, och att de använder hello samma version.
+* Konfigurationsfiler kan lagras på en filresurs och nås från flera virtuella datorer. Verktyg och hjälpmedel som används av flera utvecklare i ett team kan lagras på en filresurs, så att alla enkelt kan hitta dem och för att säkerställa att alla använder samma version.
 
-* Diagnostiska loggar, mätvärden och krascher Dumpar är tre exempel på data som kan skrivas tooa filresursen och bearbetas eller analyseras senare.
+* Diagnostikloggar, mätvärden och kraschdumpar är bara tre exempel på data som kan skrivas till en filresurs och bearbetas eller analyseras senare.
 
-Vid denna tidpunkt, Active Directory-baserad autentisering och åtkomstkontroll-listorna (ACL) stöds inte, men de kommer att någon gång hello framtida. Hej lagringskontouppgifter är används tooprovide autentisering för åtkomst toohello filresurs. Detta innebär att vem som helst med hello resurs monterade har fullständig läsning och skrivning åtkomst toohello resursen.
+För närvarande stöds inte Active Directory-baserad autentisering och åtkomstkontrollistor (ACL:er). Detta kommer dock att implementeras i en framtida utgåva. Autentiseringsuppgifterna för lagringskontot används för att tillhandahålla autentisering för åtkomst till filresursen. Det betyder att alla som har resursen monterad har fullständig skriv- och läsåtkomst till resursen.
 
 ## <a name="queue-storage"></a>Queue Storage
 
-hello Azure-kötjänsten är används toostore och hämta meddelanden. Kömeddelanden kan vara upp too64 KB i storlek och en kö kan innehålla miljontals meddelanden. Köer är vanligen används toostore listor över meddelanden toobe bearbetas asynkront. 
+Azure-kötjänsten används för att lagra och hämta meddelanden. Kömeddelanden kan vara upp till 64 kB och en kö kan innehålla miljontals meddelanden. Köer används vanligtvis för att lagra listor med meddelanden som ska bearbetas asynkront. 
 
-Anta exempelvis att du vill att kunder toobe kan tooupload bilder, och du vill toocreate miniatyrbilder för varje bild. Du kan ha kunden vänta tills du toocreate hello miniatyrer under överföring hello bilder. Ett alternativ är toouse en kö. Skriva en meddelandekö toohello när hello kunden har slutförts hans överföringen. Sedan har en Azure-funktion hämta hello-meddelande från kön hello och skapa hello miniatyrerna. Var och en av hello delar av denna bearbetning kan skalas separat, vilket ger dig större kontroll när inställningen för din användning.
+Anta exempelvis att du vill att kunderna ska kunna ladda upp bilder och du vill skapa miniatyrer för varje bild. Du kan låta kunden vänta på att du skapar miniatyrerna medan bilderna laddas upp. Ett alternativ är att använda en kö. När kunden är klar med uppladdningen skrivs ett meddelande till kön. Sedan hämtar en Azure-funktion meddelandet från kön och skapar miniatyrerna. Alla delar av bearbetningen kan skalas separat, vilket ger dig större kontroll när du anpassar den för din användning.
 
-<!-- this bookmark is used by other articles; you'll need tooupdate them before this goes into production ROBIN-->
 ## <a name="table-storage"></a>Table Storage
-<!-- add a link toohello old table storage toothis paragraph once it's moved -->
-Standard Azure Table Storage är nu en del av Cosmos DB. Dessutom finns Premium Tables för Azure Table Storage, som erbjuder tabeller för optimerat dataflöde, global distribution och automatiska sekundära index. toolearn mer och prova hello nya bästa upplevelsen checka ut [Azure Cosmos DB: tabellen API](https://aka.ms/premiumtables).
+
+Standard Azure Table Storage är nu en del av Cosmos DB. Du hittar den dokumentationen i [Översikt över Azure Table Storage](../../cosmos-db/table-storage-overview.md). Dessutom finns Premium Tables för Azure Table Storage, som erbjuder tabeller för optimerat dataflöde, global distribution och automatiska sekundära index. Om du vill veta mer om och prova den nya premiumtjänsten går du till avsnittet [Table-API:et för Azure Cosmos DB](https://aka.ms/premiumtables).
 
 ## <a name="disk-storage"></a>Disklagring
 
-hello Azure Storage team även äger diskar, som innehåller alla hello hanterade och ohanterade disk funktioner som används av virtuella datorer. Mer information om dessa funktioner finns i hello [dokumentation för Compute tjänsten](https://docs.microsoft.com/azure/#pivot=services&panel=Compute).
+Azure Storage omfattar även hanterade och ohanterade diskfunktioner som används av virtuella datorer. Mer information om dessa funktioner finns i [Compute Services-dokumentationen](https://docs.microsoft.com/azure/#pivot=services&panel=Compute).
 
 ## <a name="types-of-storage-accounts"></a>Typer av lagringskonton 
 
-Den här tabellen visar hello olika typer av lagringskonton och vilka objekt som kan användas med varje.
+I den här tabellen visas de olika typerna av lagringskonton och vilka objekt som kan användas med var och en.
 
 |**Typ av lagringskonto**|**Allmän Standard**|**Allmän Premium**|**Blob Storage, frekvent och lågfrekvent åtkomstnivå**|
 |-----|-----|-----|-----|
@@ -108,105 +101,105 @@ Det finns två typer av allmänna lagringskonton.
 
 #### <a name="standard-storage"></a>Standard Storage 
 
-hello används mest storage-konton är standard storage-konton som kan användas för alla typer av data. Standard storage-konton använder magnetiska media toostore data.
+De vanligaste lagringskontona är standardlagringskonton, som kan användas för alla typer av data. För standardlagringskonton används magnetiska media för att lagra data.
 
 #### <a name="premium-storage"></a>Premium Storage
 
-Premium Storage ger högpresterande lagring för sidblobbar, som främst används för VHD-filer. Premium-lagringskonton använder SSD toostore data. Microsoft rekommenderar att du använder Premium Storage för alla dina virtuella datorer.
+Premium Storage ger högpresterande lagring för sidblobbar, som främst används för VHD-filer. För Premium Storage-konton används SSD för att lagra data. Microsoft rekommenderar att du använder Premium Storage för alla dina virtuella datorer.
 
 ### <a name="blob-storage-accounts"></a>Blob Storage-konton
 
-hello Blob Storage-konto är ett specialiserat lagringskonto används toostore blockblobbar och tilläggsblobbar. Du kan inte lagra sidblobbar i dessa konton, och därför kan du inte lagra VHD-filer. Dessa konton kan du tooset tooHot en åtkomst-nivå eller lågfrekvent; hello nivå kan ändras när som helst. 
+Blob Storage-kontot är ett specialanpassat lagringskonto som används för att lagra blockblobbar och tilläggsblobbar. Du kan inte lagra sidblobbar i dessa konton, och därför kan du inte lagra VHD-filer. Med dessa konton kan du ange en frekvent eller lågfrekvent åtkomstnivå – nivån kan ändras när som helst. 
 
-hello frekvent åtkomstnivå används för filer som används ofta--du betalar högre kostnad för lagring, men hello kostnaden för att komma åt hello blobbar är mycket lägre. Du betalar högre kostnad för att komma åt hello BLOB för blobbar som lagras i hello kall åtkomstnivå, men hello kostnaden för lagring är mycket lägre.
+Frekvent åtkomstnivå används för filer som används ofta – du betalar en högre kostnad för lagring, men kostnaden för åtkomst till blobbarna är mycket lägre. För blobbar som lagras i lågfrekvent åtkomstnivå betalar du en högre kostnad för åtkomst till blobbarna, men kostnaden för lagring är mycket lägre.
 
 ## <a name="accessing-your-blobs-files-and-queues"></a>Åtkomst till dina blobbar, filer och köer
 
-Varje lagringskonto har två autentiseringsnycklar, och båda kan användas för alla åtgärder. Det finns två nycklar så att du kan rulla över hello nycklar ibland tooenhance säkerhet. Det är viktigt att dessa nycklar hållas säkra eftersom innehar tillsammans med hello kontonamn tillåter obegränsad åtkomst tooall data i hello storage-konto. 
+Varje lagringskonto har två autentiseringsnycklar, och båda kan användas för alla åtgärder. Det finns två nycklar så att du kan växla nycklar ibland för att förbättra säkerheten. Det är mycket viktigt att dessa nycklar skyddas, eftersom tillgång till dem tillsammans med kontonamnet ger obegränsad tillgång till alla data i lagringskontot. 
 
-Det här avsnittet ser två sätt toosecure hello storage-konto och dess data. Detaljerad information om hur du skyddar ditt lagringskonto och dina data finns hello [säkerhetsguiden för Azure Storage](storage-security-guide.md).
+Det här avsnittet tar upp två sätt att skydda lagringskontot och dess data. Detaljerad information om hur du skyddar ditt lagringskonto och dina data finns i [säkerhetsguiden för Azure Storage](storage-security-guide.md).
 
-### <a name="securing-access-toostorage-accounts-using-azure-ad"></a>Skydda åtkomsten toostorage konton med hjälp av Azure AD
+### <a name="securing-access-to-storage-accounts-using-azure-ad"></a>Skydda åtkomst till lagringskonton med hjälp av Azure AD
 
-Enkelriktade toosecure åtkomst tooyour storage-data är genom att kontrollera åtkomst toohello lagringskontonycklar. Du kan tilldela roller toousers, grupper eller program med Resource Manager rollbaserad åtkomstkontroll (RBAC). Rollerna är knutna tooa specifik uppsättning åtgärder som tillåts eller inte tillåts. Med RBAC hanterar toogrant åtkomst tooa lagringskonto endast hello hanteringsåtgärder för detta lagringskonto, till exempel ändra åtkomstnivå för hello. Du kan inte använda RBAC toogrant access toodata-objekt som en specifik behållare eller filresurs. Du kan dock använda RBAC toogrant åtkomst toohello lagringskontonycklar, som sedan kan använda tooread hello-dataobjekt. 
+Ett sätt att skydda åtkomst till dina lagringsdata är genom att kontrollera åtkomst till lagringskontonycklarna. Med rollbaserad åtkomstkontroll (RBAC) i Resource Manager kan du tilldela roller till användare, grupper eller program. Rollerna är knutna till en specifik uppsättning åtgärder som är tillåtna eller otillåtna. Om du använder RBAC för att bevilja åtkomst till ett lagringskonto hanteras endast hanteringsåtgärderna för det lagringskontot, till exempel ändring av åtkomstnivå. Du kan inte använda RBAC för att bevilja åtkomst till dataobjekt, till exempel en specifik behållare eller filresurs. Du kan dock använda RBAC för att bevilja åtkomst till lagringskontonycklarna, som sedan kan användas för att läsa dataobjekten. 
 
 ### <a name="securing-access-using-shared-access-signatures"></a>Skydda åtkomst med hjälp av signaturer för delad åtkomst 
 
-Du kan använda signaturer för delad åtkomst och lagras åtkomst principer toosecure dataobjekt. En signatur för delad åtkomst (SAS) är en sträng som innehåller en säkerhetstoken som kan vara ansluten toohello URI för en tillgång som gör att du toodelegate åtkomst toospecific lagringsobjekt och toospecify begränsningarna, t.ex behörigheter och hello tidsvärdet mängd åtkomst. Den här funktionen har omfattande möjligheter. Detaljerad information finns för[med delad åtkomst signaturer (SAS)](storage-dotnet-shared-access-signature-part-1.md).
+Du kan använda signaturer för delad åtkomst och lagrade åtkomstprinciper för att skydda dina dataobjekt. En signatur för delad åtkomst (SAS) är en sträng som innehåller en säkerhetstoken som kan kopplas till URI:n för en tillgång som gör att du kan delegera åtkomst till specifika lagringsobjekt och ange begränsningar, till exempel behörigheter och datum/tid-intervallet för åtkomst. Den här funktionen har omfattande möjligheter. Detaljerad information finns i [Använda signaturer för delad åtkomst (SAS)](storage-dotnet-shared-access-signature-part-1.md).
 
-### <a name="public-access-tooblobs"></a>Allmän åtkomst tooblobs
+### <a name="public-access-to-blobs"></a>Offentlig åtkomst till blobbar
 
-hello Blob-tjänsten kan du tooprovide offentlig åtkomst tooa behållaren och dess blobbar, eller en specifik blobb. När du anger att en behållare eller blobb är offentlig kan alla läsa den anonymt; ingen autentisering krävs. Ett exempel på när du vill ha toodo detta är när du har en webbplats som använder bilder, video eller dokument från Blob storage. Mer information finns i [Hantera anonym läsbehörighet toocontainers och blobbar](../blobs/storage-manage-access-to-resources.md) 
+Med Blob Service kan du tillhandahålla offentlig åtkomst till en behållare och dess blobbar, eller en specifik blob. När du anger att en behållare eller blobb är offentlig kan alla läsa den anonymt; ingen autentisering krävs. Ett exempel på när du kan göra det är när du har en webbplats med bilder, video eller dokument från Blob Storage. Mer information finns i [Hantera anonym läsbehörighet till behållare och blobbar](../blobs/storage-manage-access-to-resources.md). 
 
 ## <a name="encryption"></a>Kryptering
 
-Det finns några grundläggande typer av kryptering för hello Storage-tjänster. 
+Det finns några grundläggande typer av kryptering för Storage-tjänsterna. 
 
 ### <a name="encryption-at-rest"></a>Vilande kryptering 
 
-Du kan aktivera kryptering för lagring-tjänsten (SSE) på antingen hello filer service (förhandsgranskning) eller hello Blob-tjänsten för Azure storage-konto. Om aktiverad, krypteras alla data som skrivs toohello specifik tjänst innan skrivs. När du läser hello data dekrypteras innan returneras. 
+Du kan aktivera SSE (Storage Service Encryption) för Files-tjänsten (förhandsversion) eller Blob Service för ett Azure-lagringskonto. Om det aktiveras krypteras alla data som skrivs till den specifika tjänsten innan de skrivs. När du läser dessa data dekrypteras de innan de returneras. 
 
 ### <a name="client-side-encryption"></a>Kryptering av klientsidan
 
-hello storage, klientbiblioteken har metoder som du kan anropa tooprogrammatically kryptera data innan den skickas över hello överföring från hello klienten tooAzure. De lagras krypterade, vilket innebär att de också är krypterade i vila. När du läser hello data tillbaka dekryptera hello information när du har fått den. 
+Lagringsklientbiblioteken har metoder som du kan anropa för att programmässigt kryptera data innan de skickas via kabeln från klienten till Azure. De lagras krypterade, vilket innebär att de också är krypterade i vila. När du läser data dekrypteras informationen när du har fått den. 
 
 ### <a name="encryption-in-transit-with-azure-file-shares"></a>Kryptering under överföring med Azure-filresurser
 
-Mer information om signaturer för delad åtkomst finns i [Använda signaturer för delad åtkomst (SAS)](../storage-dotnet-shared-access-signature-part-1.md). Se [Hantera anonym läsbehörighet toocontainers och blobbar](../blobs/storage-manage-access-to-resources.md) och [autentisering för hello Azure Storage-tjänster](https://msdn.microsoft.com/library/azure/dd179428.aspx) mer information om säker åtkomst tooyour storage-konto.
+Mer information om signaturer för delad åtkomst finns i [Använda signaturer för delad åtkomst (SAS)](../storage-dotnet-shared-access-signature-part-1.md). Mer information om säker åtkomst till ditt lagringskonto finns i [Hantera anonym läsbehörighet till behållare och blobbar](../blobs/storage-manage-access-to-resources.md) och [Autentisering för Azure Storage-tjänster](https://msdn.microsoft.com/library/azure/dd179428.aspx).
 
-Mer information om hur du skyddar ditt lagringskonto och kryptering finns hello [säkerhetsguiden för Azure Storage](storage-security-guide.md).
+Mer information om hur du skyddar ditt lagringskonto och kryptering finns i [säkerhetsguiden för Azure Storage](storage-security-guide.md).
 
 ## <a name="replication"></a>Replikering
 
-I ordning tooensure att dina data skyddas, Azure Storage har hello möjlighet tookeep (och hantera) flera kopior av dina data. Det kallas replikering, eller ibland redundans. När du konfigurerar ditt lagringskonto väljer du replikeringstyp. I de flesta fall kan den här inställningen ändras när hello storage-konto har konfigurerats. 
+För att säkerställa att dina data är beständiga kan Azure Storage lagra (och hantera) flera kopior av dina data. Det kallas replikering, eller ibland redundans. När du konfigurerar ditt lagringskonto väljer du en replikeringstyp. I de flesta fall kan den här inställningen ändras efter att lagringskontot har konfigurerats. 
 
-Alla lagringskonton har **lokalt redundant lagring (LRS)**. Det innebär tre kopior av dina data hanteras av Azure Storage i hello Datacenter anges när hello storage-konto har ställts in. När ändringarna har bekräftats tooone kopiera, hello andra två kopior uppdateras innan det returneras lyckades. Det innebär att hello tre repliker alltid är synkroniserade. Dessutom hello tre kopior av finns i separata feldomäner och uppgradera domäner, vilket innebär att dina data är tillgängliga även om en lagringsnod hålla dina data misslyckas eller uppdateras tas offline toobe. 
+Alla lagringskonton har **lokalt redundant lagring (LRS)**. Det innebär att tre kopior av dina data hanteras av Azure Storage i det datacenter som angavs när lagringskontot konfigurerades. När ändringar sparas i en kopia uppdateras de andra två kopiorna. Det innebär att de tre replikerna alltid är synkroniserade. Dessutom finns de tre kopiorna i separata feldomäner och uppgraderingsdomäner, vilket innebär att dina data är tillgängliga även om en lagringsnod med dina data råkar ut för fel eller kopplas från för att uppdateras. 
 
 **Lokalt redundant lagring (LRS)**
 
-Som det står ovan har du med LRS tre kopior av dina data i ett enda datacenter. Detta hanterar hello problemet med data blir tillgängliga om en lagringsnod misslyckas eller tas offline toobe uppdaterats, men inte hello fallet med ett hela datacentret blir otillgänglig.
+Som det står ovan har du med LRS tre kopior av dina data i ett enda datacenter. Det hanterar problemet med att data blir otillgängliga om en lagringsnod råkar ut för ett fel eller kopplas från för att uppdateras, men inte om ett helt datacenter skulle bli otillgängligt.
 
 **Zonredundant lagring (ZRS)**
 
-Zonredundant lagring (ZRS) underhålls hello tre lokala kopior av dina data och en annan uppsättning tre kopior av dina data. hello replikeras andra uppsättning tre kopior asynkront mellan datacenter inom en eller två regioner. Observera att ZRS endast är tillgängligt för blockblobbar i allmänna lagringskonton. När du har skapat ditt lagringskonto och valt ZRS kan du också kan inte konvertera det toouse tooany andra typ av replikering eller tvärtom.
+Med zonredundant lagring (ZRS) lagras de tre lokala kopiorna av dina data samt en annan uppsättning av tre kopior av dina data. Den andra uppsättningen av tre kopior replikeras asynkront mellan datacenter i en eller två regioner. Observera att ZRS endast är tillgängligt för blockblobbar i allmänna lagringskonton. Och när du har skapat ditt lagringskonto och valt ZRS kan du inte konvertera det för att använda en annan typ av replikering eller tvärtom.
 
 ZRS-konton ger högre hållbarhet än LRS, men ZRS-konton har inte mått- eller loggningsfunktioner. 
 
 **Geo-redundant lagring (GRS)**
 
-GEO-redundant lagring (GRS) upprätthåller hello tre lokala kopior av dina data i en primär region och en annan uppsättning tre kopior av dina data i en sekundär region hundratals mil bort från hello primär region. Azure Storage hello händelse av ett fel vid hello primära region inte över toohello sekundär region. 
+Med geo-redundant lagring (GRS) lagras de tre lokala kopiorna av dina data i en primär region och en annan uppsättning av tre kopior av dina data i en sekundär region hundratals kilometer från den primära regionen. Om det uppstår ett fel i den primära regionen kommer Azure Storage att redundansväxla till den sekundära regionen. 
 
 **Geo-redundant lagring med läsbehörighet (RA-GRS)** 
 
-Geo-redundant lagring med läsbehörighet är exakt samma sätt som GRS förutom att du får tillgång till läsåtkomst toohello data hello sekundär plats. Om hello primära Datacenter blir tillfälligt otillgänglig, kan du fortsätta tooread hello data från hello sekundär plats. Det kan vara mycket användbart. Du kan till exempel ha ett webbprogram som ändrar till skrivskyddat läge och pekar toohello sekundär kopia, så att vissa åtkomst trots att uppdateringar inte är tillgängliga. 
+Geo-redundant lagring med läsbehörighet är precis som GRS förutom att du får läsbehörighet till data på den sekundära platsen. Om det primära datacentret tillfälligt blir otillgängligt kan du fortsätta att läsa data från den sekundära platsen. Det kan vara mycket användbart. Du kan till exempel ha en webbapp som ändrar till skrivskyddat läge och pekar på den sekundära kopian, vilket ger viss åtkomst även om uppdateringar inte är tillgängliga. 
 
 > [!IMPORTANT]
-> Du kan ändra hur dina data replikeras när ditt lagringskonto har skapats, såvida du inte valde ZRS när du skapade hello-konto. Observera dock att du kan innebära en ytterligare engångskostnader för dataöverföring om du växlar från LRS tooGRS eller RA-GRS.
+> Du kan ändra hur dina data replikeras när ditt lagringskonto har skapats, såvida du inte valde ZRS när du skapade kontot. Observera dock att det kan utgå ytterligare engångskostnader för dataöverföring om du växlar från LRS till GRS eller RA-GRS.
 >
 
 Mer information om replikering finns i [Azure Storage-replikering](storage-redundancy.md).
 
-Disaster recovery information finns i [vilka toodo om ett Azure Storage-avbrott inträffar](storage-disaster-recovery-guidance.md).
+Information om haveriberedskap finns i [Vad du gör om ett avbrott i Azure Storage inträffar?](storage-disaster-recovery-guidance.md).
 
-Ett exempel på hur tooleverage RA-GRS lagring tooensure hög tillgänglighet, se [skapar hög tillgängliga program med hjälp av RA-GRS](storage-designing-ha-apps-with-ragrs.md).
+Ett exempel på hur du utnyttjar RA-GRS-lagring för att säkerställa hög tillgänglighet finns i [Utforma högtillgängliga program med hjälp av RA-GRS](storage-designing-ha-apps-with-ragrs.md).
 
-## <a name="transferring-data-tooand-from-azure-storage"></a>Överföra data tooand från Azure Storage
+## <a name="transferring-data-to-and-from-azure-storage"></a>Överföra data till och från Azure Storage
 
-Du kan använda hello AzCopy kommandoradsverktyget toocopy blob och fildata i ditt lagringskonto eller mellan lagringskonton. Se en av hello följande artiklar för att få hjälp:
+Du kan använda kommandoradsverktyget AzCopy för att kopiera blob- och fildata inom ditt lagringskonto eller mellan lagringskonton. Läs någon av följande artiklar om du behöver hjälp:
 
 * [Överföra data med AzCopy för Windows](storage-use-azcopy.md)
 * [Överföra data med AzCopy för Linux](storage-use-azcopy-linux.md)
 
-AzCopy är byggt på hello [Azure Data Movement Library](https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/), som är tillgängliga i förhandsversionen.
+AzCopy är byggt ovanpå [biblioteket för Azure-dataflyttningar](https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/), som för närvarande är tillgängligt som en förhandsversion.
 
-hello Azure Import/Export service kan vara används tooimport eller export stora mängder tooor för blob-data från ditt lagringskonto. Du förbereda e flera hårddiskar tooan Azure-datacenter, där de överför hello data till och från hello hårddiskar och skickar hello hårddiskar tillbaka tooyou. Läs mer om hello Import/Export service [använda hello Microsoft Azure Import/Export Service tooTransfer Data tooBlob lagring](../storage-import-export-service.md).
+Azure Import/Export-tjänsten kan användas för att importera eller exportera stora mängder blob-data till eller från ditt lagringskonto. Du förbereder och skickar flera hårddiskar per post till ett Azure-datacenter, där de överför data till/från hårddiskarna och skickar tillbaka hårddiskarna till dig. Mer information om tjänsten Import/Export finns i [Använda tjänsten Microsoft Azure Import/Export för att överföra data till Blob Storage](../storage-import-export-service.md).
 
 ## <a name="pricing"></a>Prissättning
 
-Detaljerad information om priser för Azure Storage finns hello [priser sidan](https://azure.microsoft.com/pricing/details/storage/blobs/).
+Detaljerad information om priser för Azure Storage finns på [prissidan](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
 ## <a name="storage-apis-libraries-and-tools"></a>API:er, bibliotek och verktyg för Azure Storage
-Azure Storage-resurser kan nås med alla språk som kan skicka HTTP/HTTPS-förfrågningar. Dessutom erbjuder Azure Storage programmeringsbibliotek för flera populära språk. Dessa bibliotek förenklar många aspekter av arbetet med Azure Storage genom att hantera information som till exempel synkrona och asynkrona anrop, massbearbetning av åtgärder, undantagshantering, automatiska omförsök, funktionsbeteenden och så vidare. Bibliotek är tillgängliga för hello följande språk och plattformar, med andra i hello pipeline:
+Azure Storage-resurser kan nås med alla språk som kan skicka HTTP/HTTPS-förfrågningar. Dessutom erbjuder Azure Storage programmeringsbibliotek för flera populära språk. Dessa bibliotek förenklar många aspekter av arbetet med Azure Storage genom att hantera information som till exempel synkrona och asynkrona anrop, massbearbetning av åtgärder, undantagshantering, automatiska omförsök, funktionsbeteenden och så vidare. Bibliotek är för närvarande tillgängliga för följande språk och plattformar, med andra i pipeline:
 
 ### <a name="azure-storage-data-services"></a>Azure Storage Data Services
 * [REST-API för Storage Services](/rest/api/storageservices/)
@@ -226,15 +219,13 @@ Azure Storage-resurser kan nås med alla språk som kan skicka HTTP/HTTPS-förfr
 * [Mer information om File Storage](../storage-files-introduction.md)
 * [Mer information om Queue Storage](../queues/storage-queues-introduction.md)
 
-<!-- RE-ENABLE THESE AFTER MVC GOES LIVE 
-tooget up and running with Azure Storage quickly, check out one of hello following Quickstarts:
-* [Create a storage account using PowerShell](storage-quick-create-storage-account-powershell.md)
-* [Create a storage account using CLI](storage-quick-create-storage-account-cli.md)
--->
+Om du vill komma igång med Azure Storage snabbt kan du ta en titt på någon av följande snabbstartsguider:
+* [Skapa ett lagringskonto med PowerShell](storage-quickstart-create-storage-account-powershell.md)
+* [Skapa ett lagringskonto med CLI](storage-quickstart-create-storage-account-cli.md)
 
-<!-- FIGURE OUT WHAT tooDO WITH ALL THESE LINKS.
+<!-- FIGURE OUT WHAT TO DO WITH ALL THESE LINKS.
 
-Azure Storage resources can be accessed by any language that can make HTTP/HTTPS requests. Additionally, Azure Storage offers programming libraries for several popular languages. These libraries simplify many aspects of working with Azure Storage by handling details such as synchronous and asynchronous invocation, batching of operations, exception management, automatic retries, operational behavior and so forth. Libraries are currently available for hello following languages and platforms, with others in hello pipeline:
+Azure Storage resources can be accessed by any language that can make HTTP/HTTPS requests. Additionally, Azure Storage offers programming libraries for several popular languages. These libraries simplify many aspects of working with Azure Storage by handling details such as synchronous and asynchronous invocation, batching of operations, exception management, automatic retries, operational behavior and so forth. Libraries are currently available for the following languages and platforms, with others in the pipeline:
 
 ### Azure Storage data services
 * [Storage Services REST API](https://docs.microsoft.com/rest/api/storageservices/)
@@ -258,7 +249,7 @@ Azure Storage resources can be accessed by any language that can make HTTP/HTTPS
 * [Storage Data Movement Client Library for .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/)
 
 ### Tools and utilities
-* [Microsoft Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md) is a free, standalone app from Microsoft that enables you toowork visually with Azure Storage data on Windows, macOS, and Linux.
+* [Microsoft Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md) is a free, standalone app from Microsoft that enables you to work visually with Azure Storage data on Windows, macOS, and Linux.
 * [Azure Storage Client Tools](../storage-explorers.md)
 * [Azure SDKs and Tools](https://azure.microsoft.com/tools/)
 * [Azure Storage Emulator](http://www.microsoft.com/download/details.aspx?id=43709)
@@ -266,15 +257,12 @@ Azure Storage resources can be accessed by any language that can make HTTP/HTTPS
 * [AzCopy Command-Line Utility](http://aka.ms/downloadazcopy)
 
 ## Next steps
-toolearn more about Azure Storage, explore these resources:
+To learn more about Azure Storage, explore these resources:
 
 ### Documentation
 * [Azure Storage Documentation](https://azure.microsoft.com/documentation/services/storage/)
 * [Create a storage account](../storage-create-storage-account.md)
 
-<!-- after our quick starts are available, replace this link with a link tooone of those. 
-Had tooremove this article, it refers toohello VS quickstarts, and they've stopped publishing them. Robin --> 
-<!--* [Get started with Azure Storage in five minutes](storage-getting-started-guide.md)
 -->
 
 ### <a name="for-administrators"></a>För administratörer
@@ -283,34 +271,33 @@ Had tooremove this article, it refers toohello VS quickstarts, and they've stopp
 
 ### <a name="for-net-developers"></a>För .NET-utvecklare
 * [Komma igång med Azure Blob Storage med hjälp av .NET](../blobs/storage-dotnet-how-to-use-blobs.md)
+* [Utveckla för Azure Files med .NET](../files/storage-dotnet-how-to-use-files.md)
 * [Komma igång med Azure Table Storage med hjälp av .NET](../../cosmos-db/table-storage-how-to-use-dotnet.md)
 * [Komma igång med Azure Queue Storage med hjälp av .NET](../storage-dotnet-how-to-use-queues.md)
-* [Komma igång med Azure File Storage i Windows](../storage-dotnet-how-to-use-files.md)
 
 ### <a name="for-javaandroid-developers"></a>För Java-/Android-utvecklare
-* [Hur toouse Blob storage från Java](../blobs/storage-java-how-to-use-blob-storage.md)
-* [Hur toouse Table storage från Java](../../cosmos-db/table-storage-how-to-use-java.md)
-* [Hur toouse Queue storage från Java](../storage-java-how-to-use-queue-storage.md)
-* [Hur toouse File storage från Java](../storage-java-how-to-use-file-storage.md)
+* [Använda Blob Storage från Java](../blobs/storage-java-how-to-use-blob-storage.md)
+* [Utveckla för Azure Files med Java](../files/storage-java-how-to-use-file-storage.md)
+* [Använda Table Storage från Java](../../cosmos-db/table-storage-how-to-use-java.md)
+* [Använda Queue Storage från Java](../storage-java-how-to-use-queue-storage.md)
 
 ### <a name="for-nodejs-developers"></a>För Node.js-utvecklare
-* [Hur toouse Blob storage från Node.js](../blobs/storage-nodejs-how-to-use-blob-storage.md)
-* [Hur toouse Table storage från Node.js](../../cosmos-db/table-storage-how-to-use-nodejs.md)
-* [Hur toouse Queue storage från Node.js](../storage-nodejs-how-to-use-queues.md)
+* [Använda Blob Storage från Node.js](../blobs/storage-nodejs-how-to-use-blob-storage.md)
+* [Använda Table Storage från Node.js](../../cosmos-db/table-storage-how-to-use-nodejs.md)
+* [Använda Queue Storage från Node.js](../storage-nodejs-how-to-use-queues.md)
 
 ### <a name="for-php-developers"></a>För PHP-utvecklare
-* [Hur toouse Blob storage från PHP](../blobs/storage-php-how-to-use-blobs.md)
-* [Hur toouse Table storage från PHP](../../cosmos-db/table-storage-how-to-use-php.md)
-* [Hur toouse Queue storage från PHP](../storage-php-how-to-use-queues.md)
+* [Använda Blob Storage från PHP](../blobs/storage-php-how-to-use-blobs.md)
+* [Använda Table Storage från PHP](../../cosmos-db/table-storage-how-to-use-php.md)
+* [Använda Queue Storage från PHP](../storage-php-how-to-use-queues.md)
 
 ### <a name="for-ruby-developers"></a>För Ruby-utvecklare
-* [Hur toouse Blob storage från Ruby](../blobs/storage-ruby-how-to-use-blob-storage.md)
-* [Hur toouse Table storage från Ruby](../../cosmos-db/table-storage-how-to-use-ruby.md)
-* [Hur toouse Queue storage från Ruby](../storage-ruby-how-to-use-queue-storage.md)
+* [Använda Blob Storage från Ruby](../blobs/storage-ruby-how-to-use-blob-storage.md)
+* [Använda Table Storage från Ruby](../../cosmos-db/table-storage-how-to-use-ruby.md)
+* [Använda Queue Storage från Ruby](../storage-ruby-how-to-use-queue-storage.md)
 
 ### <a name="for-python-developers"></a>För Python-utvecklare
-* [Hur toouse Blob storage från Python](../blobs/storage-python-how-to-use-blob-storage.md)
-* [Hur toouse Table storage från Python](../../cosmos-db/table-storage-how-to-use-python.md)
-* [Hur toouse Queue storage från Python](../storage-python-how-to-use-queue-storage.md)   
-* [Hur toouse File storage från Python](../storage-python-how-to-use-file-storage.md) 
--->
+* [Använda Blob Storage från Python](../blobs/storage-python-how-to-use-blob-storage.md)
+* [Utveckla för Azure Files med Python](../files/storage-python-how-to-use-file-storage.md)
+* [Använda Table Storage från Python](../../cosmos-db/table-storage-how-to-use-python.md)
+* [Använda Queue Storage från Python](../storage-python-how-to-use-queue-storage.md)

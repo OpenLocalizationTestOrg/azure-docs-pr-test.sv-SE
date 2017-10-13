@@ -1,6 +1,6 @@
 ---
-title: "aaaCreate en universella Windowsplattformen (UWP) som använder på Mobile Apps | Microsoft Docs"
-description: "Följ den här självstudiekursen tooget igång med att använda mobilappserverdelar för utveckling av universella Windowsplattformen (UWP) appar i C#, Visual Basic eller JavaScript."
+title: "Skapa en universell Windowsplattform (UWP) som använder Mobile Apps | Microsoft Docs"
+description: "Följ den här kursen och kom igång med att använda serverdelar för mobilappar i Azure för utveckling av appar med den universella Windowsplattformen (UWP) i C#, Visual Basic eller JavaScript."
 services: app-service\mobile
 documentationcenter: windows
 author: ggailey777
@@ -14,17 +14,17 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 10/01/2016
 ms.author: glenga
-ms.openlocfilehash: d0f57bca5a8195b8b0461b8f7a0d8516371d56a8
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 5408e032670dda7f149c442e08f52b02abe23f05
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-windows-app"></a>Skapa en Windows-app
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
 
 ## <a name="overview"></a>Översikt
-Den här kursen visar hur tooadd en molnbaserad serverdel tjänsten tooa universella Windowsplattformen (UWP) app. Mer information om Mobile Apps finns [här](app-service-mobile-value-prop.md). hello nedan visas skärmdumpar från hello slutförts app:
+I den här kursen får du lära dig hur du lägger till en molnbaserad serverdelstjänst i en app i den universella Windowsplattformen (UWP). Mer information om Mobile Apps finns [här](app-service-mobile-value-prop.md). Nedan visas skärmdumpar från den färdiga appen:
 
 ![Färdig skrivbordsapp](./media/app-service-mobile-windows-store-dotnet-get-started/mobile-quickstart-completed-desktop.png)   
 Visad på ett skrivbord
@@ -35,47 +35,47 @@ Visad på en telefon
 Du måste slutföra den här kursen innan du går någon annan kurs om Mobilappar för UWP-appar.
 
 ## <a name="prerequisites"></a>Krav
-toocomplete den här kursen behöver du hello följande:
+För att kunna genomföra den här kursen behöver du följande:
 
-* Ett aktivt Azure-konto. Om du inte har ett konto kan du registrera dig för en utvärderingsversion av Azure och få upp too10 mobilappar utan kostnad som du kan fortsätta att använda även efter utvärderingsperiodens slut. Mer information om den [kostnadsfria utvärderingsversionen av Azure](https://azure.microsoft.com/pricing/free-trial/).
+* Ett aktivt Azure-konto. Om du inte har ett konto kan du registrera dig för en utvärderingsversion av Azure och få upp till tio mobilappar utan kostnad som du kan fortsätta att använda även efter utvärderingsperiodens slut. Mer information om den kostnadsfria utvärderingsversionen av Azure finns [här](https://azure.microsoft.com/pricing/free-trial/).
 * [Visual Studio Community 2015] eller senare version.
 
 ## <a name="create-a-new-azure-mobile-app-backend"></a>Skapa en ny mobilappsserverdel i Azure
-Följ dessa steg toocreate en ny mobilappsserverdel.
+Skapa en ny mobilappsserverdel genom att följa instruktionerna nedan.
 
 [!INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
-Du har nu skapat en mobilsappsserverdel i Azure som kan användas av dina mobilklientprogram. Därefter måste du ladda ned ett serverprojekt för en enkel todo-list ”serverdel och publicera den tooAzure.
+Du har nu skapat en mobilsappsserverdel i Azure som kan användas av dina mobilklientprogram. I nästa steg får du ladda ned ett serverprojekt för en enkel todo-list-serverdel och publicera den på Azure.
 
-## <a name="configure-hello-server-project"></a>Konfigurera hello serverprojekt
+## <a name="configure-the-server-project"></a>Konfigurera serverprojektet
 [!INCLUDE [app-service-mobile-configure-new-backend.md](../../includes/app-service-mobile-configure-new-backend.md)]
 
-## <a name="download-and-run-hello-client-project"></a>Hämta och kör klientprojektet hello
-När du har konfigurerat serverdelen för Mobilappen kan du antingen skapa en ny klientapp eller ändra en befintlig app tooconnect tooAzure. I det här avsnittet kan du ladda ned en UWP-appsmall som är anpassade tooconnect tooyour mobilappsserverdel.
+## <a name="download-and-run-the-client-project"></a>Hämta och kör klientprojektet
+När du har konfigurerat serverdelen för mobilappen kan du antingen skapa en ny klientapp eller modifiera en befintlig app som ansluts till Azure. I det här avsnittet får du ladda du ned en UWP-appsmall som är särskilt anpassad för att ansluta till din mobilappsserverdel.
 
-1. Tillbaka i hello **Snabbstart** klickar du på bladet för din mobilappsserverdel **skapar en ny app** > **hämta**, extrahera hello komprimerade projektfilerna tooyour lokal dator.
+1. Gå tillbaka till bladet **Snabbstart** för din mobilappsserverdel och klicka på **Skapa ny app** > **Hämta**. Extrahera sedan den komprimerade filen lokalt på din dator.
 
     ![Hämta ett snabbstartsprojekt för Windows](./media/app-service-mobile-windows-store-dotnet-get-started/mobile-app-windows-quickstart.png)
-2. (Valfritt) Lägg till hello UWP-app-projekt toohello samma lösning som serverprojektet hello. Detta gör det enklare toodebug och testa både hello appen och hello backend i hello samma Visual Studio-lösning om du väljer toodo så. tooadd en UWP-app-projekt toohello lösning, måste du använda Visual Studio 2015 eller en senare version.
-3. Hej UWP-appen som Startprojekt hello, tryck på hello F5 viktiga toodeploy och kör hello app.
-4. I hello app, ange en beskrivande text som *fullständig hello kursen*, i hello **infoga en TodoItem** textrutan och klicka sedan på **spara**.
+2. (Valfritt) Lägg UWP-appsprojektet i samma lösning som serverprojektet. På så sätt blir det enklare att felsöka och testa både appen och serverdelen i samma Visual Studio-lösning om du skulle vilja det. För att kunna lägga in ett UWP-appsprojekt i lösningen måste du ha Visual Studio 2015 eller en senare version.
+3. Med UWP-appen som startprojekt trycker du på F5-tangenten för att distribuera och köra appen.
+4. I appen anger du en beskrivande text i textrutan **Infoga TodoItem**, till exempel *Slutför kursen* och sedan klickar du på **Spara**.
 
     ![Färdig Windows-snabbstartsapp på skrivbord](./media/app-service-mobile-windows-store-dotnet-get-started/mobile-quickstart-startup.png)
 
-    Detta skickar en POST-begäran toohello ny mobilappsserverdel som finns i Azure.
-5. (Valfritt) Stoppa hello appen och starta om den på en annan enhet eller mobilemulator.
+    En POST-begäran skickas till den nya appserverdelen som finns på Azure.
+5. (Valfritt) Stäng av appen och starta om den på en annan enhet eller mobilemulator.
 
     ![Färdig Windows-snabbstartsapp på telefon](./media/app-service-mobile-windows-store-dotnet-get-started/mobile-quickstart-completed.png)
 
-    Observera att data som sparades hello föregående steg läses från Azure när hello UWP-appen startar.
+    Observera att data som sparades i föregående steg läses in från Azure när UWP-appen startar.
 
 ## <a name="next-steps"></a>Nästa steg
-* [Lägg till autentisering tooyour app](app-service-mobile-windows-store-dotnet-get-started-users.md)  
-  Lär dig hur tooauthenticate användare i appen med en identitetsprovider.
-* [Lägg till push-meddelanden tooyour app](app-service-mobile-windows-store-dotnet-get-started-push.md)  
-  Lär dig hur tooadd push-meddelanden stöder tooyour app och konfigurera din Mobilapp backend toouse Azure Notification Hubs toosend push-meddelanden.
+* [Lägg till autentisering i appen](app-service-mobile-windows-store-dotnet-get-started-users.md)  
+  Läs om hur du autentiserar användare i appen med en identitetsleverantör.
+* [Lägg till push-meddelanden i appen](app-service-mobile-windows-store-dotnet-get-started-push.md)  
+  Läs om hur du lägger till stöd för push-meddelanden i appen och konfigurerar serverdelen för mobilappen så att Azure Notification Hubs används för att skicka push-meddelanden.
 * [Aktivera offlinesynkronisering av appen](app-service-mobile-windows-store-dotnet-get-started-offline-data.md)  
-  Lär dig hur tooadd offline stöder din app att använda en mobilappsserverdel. Offlinesynkronisering kan slutanvändarna toointeract med en mobil app&mdash;visa, lägga till eller ändra data&mdash;även om det inte finns någon nätverksanslutning.
+  Läs om hur du lägger till offlinestöd i appen genom en mobilappsserverdel. Med offlinesynkronisering kan slutanvändarna interagera med mobilappen och &mdash;se, lägga till och ändra data&mdash; även när det inte finns någon nätverksanslutning.
 
 <!-- Anchors. -->
 <!-- Images. -->

@@ -42,7 +42,7 @@
 #### [Köra ett jobb och aktiviteter](./scripts/batch-cli-sample-run-job.md)
 # Referens
 ## [Kodexempel](https://azure.microsoft.com/en-us/resources/samples/?service=batch)
-## [PowerShell](/powershell/module/azurerm.batch)
+## [Azure PowerShell](/powershell/module/azurerm.batch)
 ## [Azure CLI](/cli/azure/batch)
 ## [NET](/dotnet/api/microsoft.azure.batch)
 ## [Java](/java/api/com.microsoft.azure.batch)
@@ -63,12 +63,11 @@
 
 # Relaterat
 ## [Batch Shipyard](https://github.com/Azure/batch-shipyard)
-## [Databearbetning med Batch och Data Factory](../data-factory/data-factory-data-processing-using-batch.md?toc=%2fazure%2fbatch%2ftoc.json)
-## [Batch- och HPC-lösningar i hello Azure-molnet](batch-hpc-solutions.md)
+## [Databearbetning med Batch och Data Factory](../data-factory/v1/data-factory-data-processing-using-batch.md?toc=%2fazure%2fbatch%2ftoc.json)
+## [Batch- och HPC-lösningar i Azure-molnet](batch-hpc-solutions.md)
 
 # Resurser
 ## [Azure-översikt](https://azure.microsoft.com/roadmap/)
-## [Big Compute-resurser](big-compute-resources.md)
 ## [Blogg](https://blogs.technet.microsoft.com/windowshpc/)
 ## [C#-kodexempel](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/)
 ## [MSDN-forum](https://social.msdn.microsoft.com/Forums/en-us/home?forum=azurebatch)

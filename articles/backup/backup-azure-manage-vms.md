@@ -1,6 +1,6 @@
 ---
-title: "aaaManage Resource Manager distribuerade virtuella datorsäkerhetskopieringar | Microsoft Docs"
-description: "Lär dig hur toomanage och övervaka säkerhetskopiering för Resource Manager distribuerade virtuella datorer"
+title: "Hantera Resource Manager distribuerade virtuella datorsäkerhetskopieringar | Microsoft Docs"
+description: "Lär dig att hantera och övervaka säkerhetskopiering för Resource Manager distribuerade virtuella datorer"
 services: backup
 documentationcenter: 
 author: trinadhk
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2016
 ms.author: trinadhk;markgal
-ms.openlocfilehash: 241fc4b2a29c5cd8b8b0ee8efbf8ba4e96c6a7ea
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 35a21cb99ca4bad124a9f764cef9da453e1fe47f
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="manage-azure-virtual-machine-backups"></a>Hantera säkerhetskopiering av virtuella Azure-datorer
 > [!div class="op_single_selector"]
@@ -27,67 +27,67 @@ ms.lasthandoff: 10/06/2017
 >
 >
 
-Den här artikeln innehåller information om hur du hanterar VM-säkerhetskopieringar och förklarar hello aviseringar om säkerhetskopiering informationen i hello portalens instrumentpanel. hello anvisningarna i den här artikeln gäller toousing virtuella datorer med Recovery Services-valv. Den här artikeln inte beskriver hello skapandet av virtuella datorer eller förklarar den hur tooprotect virtuella datorer. En introduktion om hur du skyddar Azure Resource Manager distribuerade virtuella datorer i Azure med ett Recovery Services-valv finns [förhandstitt: Säkerhetskopiera virtuella datorer tooa Recovery Services-valvet](backup-azure-vms-first-look-arm.md).
+Den här artikeln innehåller information om hur du hanterar Virtuella säkerhetskopieringar och förklarar aviseringar om säkerhetskopiering informationen i portalens instrumentpanel. Riktlinjerna i den här artikeln gäller för virtuella datorer med Recovery Services-valv. Den här artikeln täcker inte skapandet av virtuella datorer och inte heller har förklarar hur du skyddar virtuella datorer. En introduktion om hur du skyddar Azure Resource Manager distribuerade virtuella datorer i Azure med ett Recovery Services-valv finns [förhandstitt: Säkerhetskopiera virtuella datorer till ett Recovery Services-valv](backup-azure-vms-first-look-arm.md).
 
 ## <a name="manage-vaults-and-protected-virtual-machines"></a>Hantera valv och skyddade virtuella datorer
-I hello Azure-portalen ger hello Recovery Services-valvet instrumentpanelen åtkomst tooinformation om hello valvet, inklusive:
+I Azure-portalen ger Recovery Services-valvet instrumentpanelen tillgång till information om valvet, inklusive:
 
-* hello senaste säkerhetskopian av ögonblicksbild, som också hello senaste återställningspunkt < br\>
-* Hej säkerhetskopieringsprincip < br\>
+* den senaste ögonblicksbild, som också är den senaste återställningspunkten < br\>
+* säkerhetskopieringsprincipen < br\>
 * Total storlek på alla ögonblicksbilder av säkerhetskopior < br\>
-* antal virtuella datorer som är skyddade med hello valvet < br\>
+* antal virtuella datorer som är skyddade med valvet < br\>
 
-Många hanteringsuppgifter med en säkerhetskopiering av virtuella datorer som börjar med öppna hello valvet i hello instrumentpanelen. Men eftersom valv kan vara används tooprotect flera objekt (eller flera virtuella datorer) tooview information om en viss virtuell dator, öppna hello valvet objektet instrumentpanelen. hello följande procedur visar hur tooopen hello *valvet instrumentpanelen* och fortsätt sedan toohello *valvet objektet instrumentpanelen*. Det finns ”tips” i båda procedurerna som pekar ut hur tooadd hello valvet och valvet objektet toohello Azure instrumentpanel med kommandot hello PIN-kod toodashboard. PIN-kod toodashboard är ett sätt att skapa en genväg toohello valvet eller element. Du kan också köra vanliga kommandon från hello genväg.
+Många hanteringsuppgifter med en säkerhetskopiering av virtuella datorer som börjar med öppna valvet i instrumentpanelen. Men eftersom valv kan användas för att skydda flera objekt (eller flera virtuella datorer), om du vill visa information om en viss virtuell dator, öppna instrumentpanelen valvet objektet. Följande procedur visar hur du öppnar den *valvet instrumentpanelen* och fortsätt sedan till den *valvet objektet instrumentpanelen*. Det finns ”tips” i båda procedurerna som pekar reda på hur du lägger till valvet och valvet objektet i Azure instrumentpanel med hjälp av PIN-kod för instrumentpanelen kommando. Fäst på instrumentpanelen är ett sätt att skapa en genväg till valvet eller objekt. Du kan också köra vanliga kommandon från genvägen.
 
 > [!TIP]
-> Om du har flera instrumentpaneler och blad öppna Använd hello mörkt blå skjutreglaget längst hello hello fönstret tooslide hello Azure instrumentpanelen fram och tillbaka.
+> Om du har flera instrumentpaneler och öppnar blad, Använd mörkt blå skjutreglaget längst ned i fönstret till bild Azure instrumentpanelen fram och tillbaka.
 >
 >
 
 ![Fullständig vy med skjutreglaget](./media/backup-azure-manage-vms/bottom-slider.png)
 
-### <a name="open-a-recovery-services-vault-in-hello-dashboard"></a>Öppna ett Recovery Services-valv i hello instrumentpanelen:
-1. Logga in toohello [Azure-portalen](https://portal.azure.com/).
-2. Hej hubbmenyn, klicka på **Bläddra** och Skriv i hello lista över resurser, **återställningstjänster**. När du börjar skriva in hello listan filtreras baserat på dina indata. Klicka på **Recovery Services-valv**.
+### <a name="open-a-recovery-services-vault-in-the-dashboard"></a>Öppna ett Recovery Services-valv i instrumentpanelen:
+1. Logga in på [Azure Portal](https://portal.azure.com/).
+2. På navmenyn klickar du på **Bläddra** och i listan över resurser skriver du **Recovery Services**. När du börjar skriva filtreras listan baserat på det du skriver. Klicka på **Recovery Services-valv**.
 
     ![Skapa Recovery Services-valv (steg 1)](./media/backup-azure-manage-vms/browse-to-rs-vaults.png) <br/>
 
-    hello lista över Recovery Services-valv visas.
+    Listan över Recovery Services-valv visas.
 
     ![Lista över Recovery Services-valv ](./media/backup-azure-manage-vms/list-o-vaults.png) <br/>
 
    > [!TIP]
-   > Om du fäster en valvet toohello Azure instrumentpanelen är som valvet omedelbart tillgängligt när du öppnar hello Azure-portalen. toopin en valvet toohello instrumentpanelen i hello valvet lista, högerklicka på hello valvet och välj **PIN-kod toodashboard**.
+   > Om du fäster ett valv på instrumentpanelen i Azure är som valvet omedelbart tillgängligt när du öppnar den Azure-portalen. Högerklicka på valvet för att fästa ett valv på instrumentpanelen i listan med valvet, och välj **fäst på instrumentpanelen**.
    >
    >
-3. Hello listan över valv och välj hello valvet tooopen dess instrumentpanel. När du väljer hello valvet, hello valvet instrumentpanelen och hello **inställningar** bladet som är öppna. I följande bild hello, hello **Contoso valvet** instrumentpanelen är markerat.
+3. Välj i listan över valv valvet för att öppna dess instrumentpanelen. När du väljer valvet, valvet instrumentpanelen och **inställningar** bladet som är öppna. I följande bild, den **Contoso valvet** instrumentpanelen är markerat.
 
     ![Öppna instrumentpanelen i valvet och inställningsbladet](./media/backup-azure-manage-vms/full-view-rs-vault.png)
 
 ### <a name="open-a-vault-item-dashboard"></a>Öppna en valvet objektet instrumentpanel
-Hello föregående procedur du har öppnat hello valvet instrumentpanelen. instrumentpanel för tooopen hello valvet objektet:
+Du har öppnat valvet instrumentpanelen i föregående procedur. Öppna instrumentpanelen valvet objektet:
 
-1. Hello valvet instrumentpanelen på hello **säkerhetskopiering objekt** panelen, klickar du på **Azure Virtual Machines**.
+1. I instrumentpanelen för valvet på den **säkerhetskopiering objekt** panelen, klickar du på **Azure Virtual Machines**.
 
     ![Öppna Säkerhetskopiering poster sida vid sida](./media/backup-azure-manage-vms/contoso-vault-1606.png)
 
-    Hej **Säkerhetskopieringsobjekt** bladet visar hello senaste säkerhetskopieringsjobbet för varje objekt. I det här exemplet har en virtuell dator, demovm markgal skyddas av det här valvet.  
+    Den **Säkerhetskopieringsobjekt** bladet visar en lista över senaste säkerhetskopieringsjobbet för varje objekt. I det här exemplet har en virtuell dator, demovm markgal skyddas av det här valvet.  
 
     ![Säkerhetskopiera objekt sida vid sida](./media/backup-azure-manage-vms/backup-items-blade.png)
 
    > [!TIP]
-   > Du kan fästa en valvet objektet toohello Azure instrumentpanelen för enkel åtkomst. toopin ett valv-objekt i listan över objekt för hello valvet, högerklicka hello objektet och välj **PIN-kod toodashboard**.
+   > Du kan fästa ett valv objekt på instrumentpanelen i Azure för enkel åtkomst. Om du vill fästa ett valv objekt i listan över objekt valvet, högerklicka på objektet och välj **fäst på instrumentpanelen**.
    >
    >
-2. I hello **säkerhetskopiering objekt** bladet, klickar du på hello objektet tooopen hello valvet objektet instrumentpanelen.
+2. I den **säkerhetskopiering objekt** bladet, klickar du på objektet för att öppna instrumentpanelen valvet objektet.
 
     ![Säkerhetskopiera objekt sida vid sida](./media/backup-azure-manage-vms/backup-items-blade-select-item.png)
 
-    hello valvet objektet instrumentpanel och dess **inställningar** bladet som är öppna.
+    Valvet objektet instrumentpanel och dess **inställningar** bladet som är öppna.
 
     ![Säkerhetskopiera objekt instrumentpanel med inställningsbladet](./media/backup-azure-manage-vms/item-dashboard-settings.png)
 
-    Hello valvet objektet instrumentpanel kan du utföra många viktiga hanteringsaktiviteter som:
+    Från instrumentpanelen valvet objekt, kan du utföra många viktiga hanteringsaktiviteter som:
 
    * Ändra principer eller skapa en ny säkerhetskopieringsprincip < br\>
    * Visa återställningspunkter och se deras konsekvent tillstånd < br\>
@@ -97,21 +97,21 @@ Hello föregående procedur du har öppnat hello valvet instrumentpanelen. instr
    * ta bort säkerhetskopierade data (eller återställningspunkt) < br\>
    * [återställa säkerhetskopior](backup-azure-arm-restore-vms.md#restore-backed-up-disks) < br\>
 
-Hello följande procedurer, är hello startpunkt hello valvet objektet instrumentpanelen.
+Följande procedurer är startpunkten valvet objektet instrumentpanelen.
 
 ## <a name="manage-backup-policies"></a>Hantera säkerhetskopieringsprinciper
-1. På hello [valvet objektet instrumentpanelen](backup-azure-manage-vms.md#open-a-vault-item-dashboard), klickar du på **alla inställningar** tooopen hello **inställningar** bladet.
+1. På den [valvet objektet instrumentpanelen](backup-azure-manage-vms.md#open-a-vault-item-dashboard), klickar du på **alla inställningar** att öppna den **inställningar** bladet.
 
     ![Princip för säkerhetskopiering bladet](./media/backup-azure-manage-vms/all-settings-button.png)
-2. På hello **inställningar** bladet, klickar du på **säkerhetskopiera princip** tooopen det bladet.
+2. På den **inställningar** bladet, klickar du på **säkerhetskopiera princip** att öppna det bladet.
 
-    På bladet hello hello säkerhetskopiering frekvens och kvarhållning intervallet information visas.
+    På bladet visas säkerhetskopiering frekvens och kvarhållning intervallet information.
 
     ![Princip för säkerhetskopiering bladet](./media/backup-azure-manage-vms/backup-policy-blade.png)
-3. Från hello **Välj säkerhetskopieringsprincip** menyn:
+3. Från den **Välj säkerhetskopieringsprincip** menyn:
 
-   * toochange principer, Välj en annan princip och klicka på **spara**. hello nya principen är omedelbart tillämpade toohello valvet. < br\>
-   * toocreate en princip, Välj **Skapa nytt**.
+   * Om du vill ändra principer, Välj en annan princip och klicka på **spara**. Den nya principen tillämpas omedelbart på valvet. < br\>
+   * Om du vill skapa en princip, Välj **Skapa nytt**.
 
      ![Säkerhetskopiering av virtuell dator](./media/backup-azure-manage-vms/backup-policy-create-new.png)
 
@@ -120,108 +120,108 @@ Hello följande procedurer, är hello startpunkt hello valvet objektet instrumen
 [!INCLUDE [backup-create-backup-policy-for-vm](../../includes/backup-create-backup-policy-for-vm.md)]
 
 > [!NOTE]
-> När du hanterar principer för säkerhetskopiering, gör att toofollow hello [metodtips](backup-azure-vms-introduction.md#best-practices) för optimal prestanda vid säkerhetskopiering
+> När du hanterar principer för säkerhetskopiering, se till att följa den [metodtips](backup-azure-vms-introduction.md#best-practices) för optimal prestanda vid säkerhetskopiering
 >
 >
 
 ## <a name="on-demand-backup-of-a-virtual-machine"></a>Säkerhetskopiering på begäran för en virtuell dator
-Du kan utföra en på-begäran säkerhetskopiering av en virtuell dator när den har konfigurerats för skydd. Om hello första säkerhetskopian väntar skapas säkerhetskopiering på begäran en fullständig kopia av hello virtuell dator i hello Recovery Services-valvet. Om hello första säkerhetskopieringen har slutförts skickas en säkerhetskopiering på begäran endast ändringar från hello tidigare ögonblicksbild, toohello Recovery Services-valvet. Efterföljande säkerhetskopieringar är som är alltid inkrementellt.
+Du kan utföra en på-begäran säkerhetskopiering av en virtuell dator när den har konfigurerats för skydd. Om den första säkerhetskopian väntar skapas säkerhetskopiering på begäran en fullständig kopia av den virtuella datorn i Recovery Services-valvet. Om den första säkerhetskopieringen har slutförts, skickas en säkerhetskopiering på begäran endast ändringar från tidigare ögonblicksbild till Recovery Services-valvet. Efterföljande säkerhetskopieringar är som är alltid inkrementellt.
 
 > [!NOTE]
-> Hej kvarhållningsintervallet för en säkerhetskopiering på begäran är hello kvarhållningsvärde har angetts för hello daglig säkerhetskopieringspunkt i hello princip. Om ingen daglig säkerhetskopieringspunkt är markerad används hello veckovis säkerhetskopieringspunkt.
+> Kvarhållningsintervall för en säkerhetskopiering på begäran är kvarhållning det angivna värdet för daglig säkerhetskopieringspunkt i principen. Om ingen daglig säkerhetskopieringspunkt är markerad används veckovis säkerhetskopieringspunkt.
 >
 >
 
-tootrigger en på-begäran-säkerhetskopia av en virtuell dator:
+Starta en säkerhetskopiering på begäran för en virtuell dator:
 
-* På hello [valvet objektet instrumentpanelen](backup-azure-manage-vms.md#open-a-vault-item-dashboard), klickar du på **Säkerhetskopiera nu**.
+* På den [valvet objektet instrumentpanelen](backup-azure-manage-vms.md#open-a-vault-item-dashboard), klickar du på **Säkerhetskopiera nu**.
 
     ![Säkerhetskopiering nu knappen](./media/backup-azure-manage-vms/backup-now-button.png)
 
-    hello portal ser till att du vill att toostart en säkerhetskopiering på begäran. Klicka på **Ja** toostart hello säkerhetskopieringsjobb.
+    Portalen ser till att du vill starta en säkerhetskopiering på begäran. Klicka på **Ja** att starta jobbet.
 
     ![Säkerhetskopiering nu knappen](./media/backup-azure-manage-vms/backup-now-check.png)
 
-    hello säkerhetskopiering skapar en återställningspunkt. Hej Kvarhållningsintervall hello återställningspunkt är hello samma som Kvarhållningsintervall som angetts i hello principen som är associerad med hello virtuell dator. tootrack hello förloppet för hello jobbet i hello valvet instrumentpanelen, klicka på hello **säkerhetskopieringsjobb** panelen.  
+    Säkerhetskopieringsjobbet skapar en återställningspunkt. Kvarhållningsintervall för återställningspunkten är detsamma som Kvarhållningsintervall som anges i principen som är associerad med den virtuella datorn. Om du vill spåra förloppet för jobbet på valvet instrumentpanelen klickar du på den **säkerhetskopieringsjobb** panelen.  
 
 ## <a name="stop-protecting-virtual-machines"></a>Sluta skydda virtuella datorer
-Om du väljer toostop skyddar en virtuell dator, tillfrågas du om du vill tooretain hello Återställningspunkter. Det finns två sätt toostop skyddar virtuella datorer:
+Om du vill sluta skydda en virtuell dator, tillfrågas du om du vill behålla återställningspunkterna. Det finns två sätt att sluta skydda virtuella datorer:
 
 * Stoppa alla framtida säkerhetskopieringsjobb och ta bort alla återställningspunkter, eller
-* Stoppa alla framtida säkerhetskopieringsjobb men lämna hello Återställningspunkter <br/>
+* Stoppa alla framtida säkerhetskopieringsjobb men lämna kvar återställningspunkter <br/>
 
-Det finns en kostnad som är associerade med lämnar hello Återställningspunkter i lagringen. Hello fördelen att lämna hello Återställningspunkter är dock kan du återställa virtuella hello senare, om så önskas. Information om hello kostnaden för att lämna hello Återställningspunkter finns hello [prisinformationen](https://azure.microsoft.com/pricing/details/backup/). Om du väljer toodelete alla återställningspunkter kan återställa du inte hello virtuell dator.
+Det finns en kostnad som är associerade med lämnar återställningspunkter i lagringen. Fördelen med att lämna återställningspunkterna är dock kan du återställa den virtuella datorn senare, om så önskas. Information om kostnaden för att lämna återställningspunkterna finns på [prisinformationen](https://azure.microsoft.com/pricing/details/backup/). Om du vill ta bort alla återställningspunkter kan återställa du inte den virtuella datorn.
 
-toostop skydd för en virtuell dator:
+Ta bort skyddet för en virtuell dator:
 
-1. På hello [valvet objektet instrumentpanelen](backup-azure-manage-vms.md#open-a-vault-item-dashboard), klickar du på **stoppa säkerhetskopiering**.
+1. På den [valvet objektet instrumentpanelen](backup-azure-manage-vms.md#open-a-vault-item-dashboard), klickar du på **stoppa säkerhetskopiering**.
 
     ![Stoppa säkerhetskopiering](./media/backup-azure-manage-vms/stop-backup-button.png)
 
-    hello stoppa säkerhetskopiering blad öppnas.
+    Stoppa säkerhetskopiering blad öppnas.
 
     ![Stoppa säkerhetskopiering bladet](./media/backup-azure-manage-vms/stop-backup-blade.png)
-2. På hello **stoppa säkerhetskopiering** bladet Välj om tooretain eller ta bort hello säkerhetskopierade data. hello information om innehåller information om ditt val.
+2. På den **stoppa säkerhetskopiering** bladet Välj om du vill behålla eller ta bort säkerhetskopierade data. Informationsrutan innehåller information om ditt val.
 
     ![Stoppa skydd](./media/backup-azure-manage-vms/retain-or-delete-option.png)
-3. Hoppa över toostep 4 om du har valt tooretain hello säkerhetskopierade data. Om du väljer toodelete säkerhetskopieringsdata bekräfta som du vill använda toostop hello säkerhetskopieringsjobb och ta bort återställningspunkter hello - hello-typnamn för hello-objektet.
+3. Om du valde att behålla säkerhetskopierade data vidare till steg 4. Om du har valt att ta bort säkerhetskopieringsdata, bekräfta att du vill stoppa alla säkerhetskopieringsjobb och ta bort återställningspunkter - skriver du namnet på objektet.
 
     ![Stoppa verifiering](./media/backup-azure-manage-vms/item-verification-box.png)
 
-    Om du är osäker hello objektnamnet hovra över hello utropstecken tooview hello namn. Hello namnet på hello objekt är också **stoppa säkerhetskopiering** hello överst i hello-bladet.
+    Om du är osäker objektnamnet hovra över utropstecken att visa namnet. Namnet på objektet är också **stoppa säkerhetskopiering** längst upp på bladet.
 4. Du kan också ange en **orsak** eller **kommentar**.
-5. toostop hello säkerhetskopieringsjobbet för hello aktuella objekt, klickar du på ![säkerhetskopiering stoppknappen](./media/backup-azure-manage-vms/stop-backup-button-blue.png)
+5. Säkerhetskopieringsjobbet för det aktuella objektet klickar du på ![säkerhetskopiering stoppknappen](./media/backup-azure-manage-vms/stop-backup-button-blue.png)
 
-    Ett meddelande kan du vet hello säkerhetskopieringsjobb har stoppats.
+    Ett meddelande kan du vet att säkerhetskopiera jobb har stoppats.
 
     ![Bekräfta stoppskydd](./media/backup-azure-manage-vms/stop-message.png)
 
 ## <a name="resume-protection-of-a-virtual-machine"></a>Återuppta skyddet av en virtuell dator
-Om hello **behålla säkerhetskopierade Data** alternativet valdes när skyddet för hello virtuella datorn har stoppats, så är det möjligt tooresume skydd. Om hello **ta bort säkerhetskopierade Data** alternativet har valts och sedan skyddet för hello virtuella datorn kan inte återuppta.
+Om den **behålla säkerhetskopierade Data** alternativet valdes när skyddet för den virtuella datorn har stoppats, så är det möjligt att skyddet ska återupptas. Om den **ta bort säkerhetskopierade Data** alternativet har valts och sedan skyddet för den virtuella datorn kan inte återuppta.
 
-tooresume skydd för hello virtuell dator
+Att återuppta skydd för den virtuella datorn
 
-1. På hello [valvet objektet instrumentpanelen](backup-azure-manage-vms.md#open-a-vault-item-dashboard), klickar du på **återuppta säkerhetskopiering**.
+1. På den [valvet objektet instrumentpanelen](backup-azure-manage-vms.md#open-a-vault-item-dashboard), klickar du på **återuppta säkerhetskopiering**.
 
     ![Återuppta skydd](./media/backup-azure-manage-vms/resume-backup-button.png)
 
-    hello princip för säkerhetskopiering blad öppnas.
+    Princip för säkerhetskopiering blad öppnas.
 
    > [!NOTE]
-   > Du kan välja en annan princip än hello princip som virtuella datorn ursprungligen skyddades när skydda hello virtuella datorn igen.
+   > Du kan välja en annan princip än principen som virtuella datorn ursprungligen skyddades när skydda den virtuella datorn igen.
    >
    >
-2. Gör så hello i [hantera principer för säkerhetskopiering](backup-azure-manage-vms.md#manage-backup-policies) tooassign hello princip för hello virtuella datorn.
+2. Följ stegen i [hantera principer för säkerhetskopiering](backup-azure-manage-vms.md#manage-backup-policies) tilldela principen för den virtuella datorn.
 
-    När hello säkerhetskopieringsprincip tillämpade toohello virtuell dator kan se du hello efter meddelande.
+    När säkerhetskopieringsprincipen som används för den virtuella datorn, visas följande meddelande.
 
     ![Har skyddat VM](./media/backup-azure-manage-vms/success-message.png)
 
 ## <a name="delete-backup-data"></a>Ta bort säkerhetskopierade data
-Du kan ta bort hello säkerhetskopierade data som är kopplade till en virtuell dator under hello **stoppa säkerhetskopiering** jobb, eller när som helst efter hello jobbet har slutförts. Det kan även vara bra toowait dagar eller veckor innan du tar bort hello Återställningspunkter. Till skillnad från återställa återställningspunkter, när du tar bort säkerhetskopierade data, kan du välja specifika punkter toodelete. Om du väljer toodelete dina säkerhetskopierade data kan du ta bort alla återställningspunkter som är associerade med hello-objektet.
+Du kan ta bort den säkerhetskopiera informationen som är kopplad till en virtuell dator under den **stoppa säkerhetskopiering** jobb, eller när som helst efter säkerhetskopieringen jobbet har slutförts. Det kan även vara bra att vänta dagar eller veckor innan du tar bort återställningspunkterna. Till skillnad från återställa återställningspunkter, när du tar bort säkerhetskopierade data, kan du välja specifika återställningspunkterna för att ta bort. Om du väljer att ta bort dina säkerhetskopierade data kan du ta bort alla återställningspunkter som är associerad med objektet.
 
-hello följande procedur förutsätter hello säkerhetskopieringsjobbet för hello virtuella datorn har stoppats eller inaktiverats. När hello säkerhetskopieringsjobbet är inaktiverat hello **återuppta säkerhetskopiering** och **ta bort säkerhetskopiering** alternativ är tillgängliga i hello valvet objektet instrumentpanelen.
+Följande procedur förutsätter att jobbet för den virtuella datorn har stoppats eller inaktiverats. När jobbet som är inaktiverat på **återuppta säkerhetskopiering** och **ta bort säkerhetskopiering** alternativ är tillgängliga i valvet objektet instrumentpanelen.
 
 ![Återuppta och ta bort knappar](./media/backup-azure-manage-vms/resume-delete-buttons.png)
 
-toodelete säkerhetskopierade data på en virtuell dator med hello *säkerhetskopiera inaktiverats*:
+Ta bort säkerhetskopieringsdata på en virtuell dator med den *säkerhetskopiera inaktiverats*:
 
-1. På hello [valvet objektet instrumentpanelen](backup-azure-manage-vms.md#open-a-vault-item-dashboard), klickar du på **ta bort säkerhetskopiering**.
+1. På den [valvet objektet instrumentpanelen](backup-azure-manage-vms.md#open-a-vault-item-dashboard), klickar du på **ta bort säkerhetskopiering**.
 
     ![VM-typ](./media/backup-azure-manage-vms/delete-backup-buttom.png)
 
-    Hej **ta bort säkerhetskopierade Data** blad öppnas.
+    Den **ta bort säkerhetskopierade Data** blad öppnas.
 
     ![VM-typ](./media/backup-azure-manage-vms/delete-backup-blade.png)
-2. Namn på hello hello objektet tooconfirm som du vill toodelete hello Återställningspunkter.
+2. Skriv namnet på objektet du vill bekräfta att du vill ta bort återställningspunkter.
 
     ![Stoppa verifiering](./media/backup-azure-manage-vms/item-verification-box.png)
 
-    Om du är osäker hello objektnamnet hovra över hello utropstecken tooview hello namn. Hello namnet på hello objekt är också **ta bort säkerhetskopierade Data** hello överst i hello-bladet.
+    Om du är osäker objektnamnet hovra över utropstecken att visa namnet. Namnet på objektet är också **ta bort säkerhetskopierade Data** längst upp på bladet.
 3. Du kan också ange en **orsak** eller **kommentar**.
-4. toodelete hello säkerhetskopierade data för hello aktuella objekt, klickar du på ![säkerhetskopiering stoppknappen](./media/backup-azure-manage-vms/delete-button.png)
+4. Ta bort säkerhetskopierade data för det aktuella objektet, klicka på ![säkerhetskopiering stoppknappen](./media/backup-azure-manage-vms/delete-button.png)
 
-    Ett meddelande kan du vet hello säkerhetskopierade data har tagits bort.
+    Ett meddelande får du reda på den säkerhetskopiera informationen har tagits bort.
 
 ## <a name="next-steps"></a>Nästa steg
-Information om hur du skapar en virtuell dator från en återställningspunkt igen kolla [återställa virtuella Azure-datorer](backup-azure-restore-vms.md). Om du behöver information om hur du skyddar virtuella datorer, se [förhandstitt: Säkerhetskopiera virtuella datorer tooa Recovery Services-valvet](backup-azure-vms-first-look-arm.md). Information om övervakning av händelser finns [övervakar aviseringar för virtuell dator i Azure-säkerhetskopieringar](backup-azure-monitor-vms.md).
+Information om hur du skapar en virtuell dator från en återställningspunkt igen kolla [återställa virtuella Azure-datorer](backup-azure-restore-vms.md). Om du behöver information om hur du skyddar virtuella datorer, se [förhandstitt: Säkerhetskopiera virtuella datorer till ett Recovery Services-valv](backup-azure-vms-first-look-arm.md). Information om övervakning av händelser finns [övervakar aviseringar för virtuell dator i Azure-säkerhetskopieringar](backup-azure-monitor-vms.md).

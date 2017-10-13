@@ -1,6 +1,6 @@
 ---
-title: "aaaImplement redundans strömning med Azure Media Services | Microsoft Docs"
-description: "Det här avsnittet visar hur tooimplement ett scenario för strömning av redundans."
+title: "Implementera redundans strömning med Azure Media Services | Microsoft Docs"
+description: "Det här avsnittet visar hur du implementerar en växling vid fel strömning scenario."
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -14,49 +14,49 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/05/2017
 ms.author: juliako
-ms.openlocfilehash: ade0bace57f35ab3ed855d3a98f743e08da4f324
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: aed104c9c74606e0ad69fc2d0bfb2f38d85d795d
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="implement-failover-streaming-with-azure-media-services"></a>Implementera redundans strömning med Azure Media Services
 
-Den här genomgången visar hur toocopy innehåll (BLOB) från en tillgång till en annan i ordning toohandle redundans för strömning på begäran. Det här scenariot är användbart om du vill ha tooset upp Azure Content Delivery Network toofail över mellan två datacenter, vid ett strömavbrott i ett datacenter. Den här genomgången använder hello Azure Media Services SDK, hello Azure Media Services REST API och hello Azure Storage SDK: N toodemonstrate hello följande uppgifter:
+Den här genomgången visar hur du kopierar innehåll (BLOB) från en tillgång till en annan för att hantera redundans för strömning på begäran. Det här scenariot är användbart om du vill ställa in Azure Content Delivery Network att växla över mellan två datacenter, vid ett strömavbrott i ett datacenter. Den här genomgången använder Azure Media Services SDK, Azure Media Services REST API och Azure Storage SDK: N för att demonstrera följande uppgifter:
 
 1. Skapa ett Media Services-konto i ”A. Datacenter”
 2. Överför en mezzaninfil till en källa tillgång.
-3. Koda hello tillgång till flera bit hastighet MP4-filer. 
-4. Skapa en delad läsåtkomst signatur. Detta är hello källa tillgången toohave läsbehörighet toohello behållare i hello storage-konto som är associerad med hello källa tillgången.
-5. Hämta hello behållarnamn av hello källa tillgång från hello delad läsåtkomst signatur lokaliserare skapade i föregående steg i hello. Detta är nödvändigt för att kopiera BLOB mellan storage-konton (beskrivs senare i avsnittet hello).
-6. Skapa ett ursprung för hello tillgång som skapades av hello kodning aktivitet. 
+3. Koda tillgången till flera bit hastighet MP4-filer. 
+4. Skapa en delad läsåtkomst signatur. Detta är att källan tillgången ska ha läsbehörighet till behållaren i storage-konto som är associerad med källan tillgången.
+5. Hämta behållarnamn tillgångens källa från den delade läsbehörighet signatur positionerare skapade i föregående steg. Detta är nödvändigt för att kopiera BLOB mellan storage-konton (beskrivs senare i avsnittet).
+6. Skapa ett ursprung positionerare för tillgången som skapades av aktiviteten kodning. 
 
-Sedan toohandle hello redundans:
+Sedan kan hantera redundans:
 
 1. Skapa ett Media Services-konto i ”Data Center B.”
-2. Skapa en tom tillgång mål i hello mål Media Services-konto.
-3. Skapa en skrivning delad åtkomst signatur. Detta är hello tom tillgången toohave skrivbehörighet toohello Målbehållaren i hello mål-lagringskontot som är associerad med hello mål tillgången.
-4. Använd hello Azure Storage SDK: N toocopy blobbar (tillgångsfiler) mellan hello källa storage-konto i ”datacenter A” och hello mål-lagringskontot i ”Data Center B.” Dessa storage-konton är kopplade till hello tillgångar av intresse.
-5. Associera blobbar (tillgångsfiler) som har kopierade toohello mål blob-behållare med hello mål tillgången. 
-6. Skapa ett ursprung för hello tillgång i ”Data Center B” och ange hello lokaliserare ID som har genererats för hello tillgång i ”A. Datacenter”
+2. Skapa en tom tillgång mål i Media Services-kontot.
+3. Skapa en skrivning delad åtkomst signatur. Detta är tomt tillgången mål för skrivåtkomst till behållaren i mål-lagringskontot som är kopplat till målet tillgången.
+4. Använd Azure Storage SDK: N för att kopiera BLOB (tillgångsfiler) mellan käll-lagringskonto i ”datacenter A” och mål-lagringskontot i ”Data Center B.” Dessa storage-konton är kopplade till resurser av intresse.
+5. Associera blobbar (tillgångsfiler) som har kopierats till mål-blob-behållare med mål tillgången. 
+6. Skapa ett ursprung positionerare för tillgången i ”Data Center B” och ange lokaliserare-ID som har genererats för tillgången i ”A. Datacenter”
 
-Det här ger du hello strömmande URL: er där hello relativa sökvägar för hello URL: er är hello samma (endast hello bas-URL: er är olika). 
+Detta ger dig strömmande URL: er där relativa sökvägar för URL: er är samma (endast basen URL skiljer sig åt). 
 
-Sedan toohandle eventuella avbrott som du kan skapa ett innehållsleveransnätverk ovanpå dessa ursprung lokaliserare. 
+Du kan sedan skapa ett innehållsleveransnätverk ovanpå dessa ursprung positionerare för att hantera alla avbrott. 
 
-det gäller hello följande överväganden:
+Följande gäller:
 
-* hello nuvarande version av Media Services SDK stöder inte programmässigt genererar IAssetFile information som kan associera en tillgång med tillgångsfiler. Använd i stället hello CreateFileInfos Media Services REST API toodo detta. 
-* Lagringskrypterad tillgångar (AssetCreationOptions.StorageEncrypted) stöds inte för replikering (eftersom hello krypteringsnyckeln är olika i båda Media Services-konton). 
-* Om du vill tootake nytta av dynamisk paketering, se till att hello strömningsslutpunkt som du vill toostream ditt innehåll hello **kör** tillstånd.
+* Den aktuella versionen av Media Services SDK stöder inte programmässigt genererar IAssetFile information som kan associera en tillgång med tillgångsfiler. Använd i stället CreateFileInfos Media Services REST API för att göra detta. 
+* Lagringskrypterad tillgångar (AssetCreationOptions.StorageEncrypted) stöds inte för replikering (eftersom krypteringsnyckeln är olika i båda Media Services-konton). 
+* Om du vill dra nytta av dynamisk paketering, kontrollera att den strömningsslutpunkt från vilken du vill strömma ditt innehåll finns i den **kör** tillstånd.
 
 > [!NOTE]
-> Överväg att använda hello Media Services [replikatorn verktyget](http://replicator.codeplex.com/) som ett alternativt tooimplementing a failover strömning scenariot manuellt. Det här verktyget kan du tooreplicate tillgångar mellan två Media Services-konton.
+> Överväg att använda Media Services [replikatorn verktyget](http://replicator.codeplex.com/) i stället för att implementera en växling vid fel strömning scenariot manuellt. Det här verktyget kan du replikera tillgångar mellan två Media Services-konton.
 > 
 > 
 
 ## <a name="prerequisites"></a>Krav
-* Två Media Services-konton i en ny eller befintlig Azure-prenumeration. Se [hur tooCreate Media Services-konto](media-services-portal-create-account.md).
+* Två Media Services-konton i en ny eller befintlig Azure-prenumeration. Se [hur du skapar ett Media Services-konto](media-services-portal-create-account.md).
 * Operativsystem: Windows 7, Windows 2008 R2 eller Windows 8.
 * .NET framework 4.5 eller .NET Framework 4.
 * Visual Studio 2010 SP1 eller senare version (Professional, Premium, Ultimate eller Express).
@@ -64,11 +64,11 @@ det gäller hello följande överväganden:
 ## <a name="set-up-your-project"></a>Konfigurera ditt projekt
 I det här avsnittet, skapa och konfigurera ett konsolprogram i C#-projekt.
 
-1. Använd Visual Studio toocreate en ny lösning som innehåller hello C#-konsolprogram projekt. Ange **HandleRedundancyForOnDemandStreaming** hello namn och klicka sedan på **OK**.
-2. Skapa hello **SupportFiles** mapp på hello samma nivå som hello **HandleRedundancyForOnDemandStreaming.csproj** projektfilen. Under hello **SupportFiles** mapp, skapa hello **OutputFiles** och **MP4Files** mappar. Kopiera en .mp4-fil till hello **MP4Files** mapp. (I det här exemplet hello **BigBuckBunny.mp4** filen används.) 
-3. Använd **Nuget** tooadd referenser tooDLLs relaterade tooMedia tjänster. I **Visual Studio huvudmenyn**väljer **verktyg** > **Library Package Manager** > **Pakethanterarkonsolen**. Skriv i konsolfönstret hello **Install-Package windowsazure.mediaservices**, och tryck på RETUR.
+1. Använda Visual Studio för att skapa en ny lösning som innehåller C#-konsolprogram projektet. Ange **HandleRedundancyForOnDemandStreaming** namn och klicka sedan på **OK**.
+2. Skapa den **SupportFiles** mappen på samma nivå som den **HandleRedundancyForOnDemandStreaming.csproj** projektfilen. Under den **SupportFiles** mapp, skapa den **OutputFiles** och **MP4Files** mappar. Kopiera en .mp4-fil i den **MP4Files** mapp. (I det här exemplet i **BigBuckBunny.mp4** filen används.) 
+3. Använd **Nuget** att lägga till referenser till DLL-filer som är relaterade till Media Services. I **Visual Studio huvudmenyn**väljer **verktyg** > **Library Package Manager** > **Pakethanterarkonsolen**. I konsolfönstret, skriver **Install-Package windowsazure.mediaservices**, och tryck på RETUR.
 4. Lägg till andra referenser som krävs för det här projektet: System.Configuration och avsnittsgruppen System.Web.
-5. Ersätt **med** instruktioner som har lagts till toohello **Programs.cs** fil som standard med hello följande viktiga:
+5. Ersätt **med** instruktioner som har lagts till i den **Programs.cs** fil som standard med de följande:
    
         using System;
         using System.Configuration;
@@ -87,7 +87,7 @@ I det här avsnittet, skapa och konfigurera ett konsolprogram i C#-projekt.
         using Microsoft.WindowsAzure.Storage;
         using Microsoft.WindowsAzure.Storage.Blob;
         using Microsoft.WindowsAzure.Storage.Auth;
-6. Lägg till hello **appSettings** avsnittet toohello **.config** fil- och uppdatera hello värden baserat på ditt Media Services och lagring nyckel och namn. 
+6. Lägg till den **appSettings** avsnittet till den **.config** filen och uppdatera värden baserat på ditt Media Services och lagring nyckeln och namnet värden. 
    
         <appSettings>
           <add key="MediaServicesAccountNameSource" value="Media-Services-Account-Name-Source"/>
@@ -101,11 +101,11 @@ I det här avsnittet, skapa och konfigurera ett konsolprogram i C#-projekt.
         </appSettings>
 
 ## <a name="add-code-that-handles-redundancy-for-on-demand-streaming"></a>Lägg till kod som hanterar redundans för strömning på begäran
-I det här avsnittet skapar du hello möjlighet toohandle redundans.
+I det här avsnittet skapar du möjligheten att hantera redundans.
 
-1. Lägg till hello följande klassnivå fält toohello programklassen.
+1. Lägg till följande klassnivå fält i programklassen.
        
-        // Read values from hello App.config file.
+        // Read values from the App.config file.
         private static readonly string MediaServicesAccountNameSource = ConfigurationManager.AppSettings["MediaServicesAccountNameSource"];
         private static readonly string MediaServicesAccountKeySource = ConfigurationManager.AppSettings["MediaServicesAccountKeySource"];
         private static readonly string StorageNameSource = ConfigurationManager.AppSettings["MediaServicesStorageAccountNameSource"];
@@ -116,21 +116,21 @@ I det här avsnittet skapar du hello möjlighet toohandle redundans.
         private static readonly string StorageNameTarget = ConfigurationManager.AppSettings["MediaServicesStorageAccountNameTarget"];
         private static readonly string StorageKeyTarget = ConfigurationManager.AppSettings["MediaServicesStorageAccountKeyTarget"];
         
-        // Base support files path.  Update this field toopoint toohello base path  
-        // for hello local support files folder that you create. 
+        // Base support files path.  Update this field to point to the base path  
+        // for the local support files folder that you create. 
         private static readonly string SupportFiles = Path.GetFullPath(@"../..\SupportFiles");
         
-        // Paths toosupport files (within hello above base path). 
+        // Paths to support files (within the above base path). 
         private static readonly string SingleInputMp4Path = Path.GetFullPath(SupportFiles + @"\MP4Files\BigBuckBunny.mp4");
         private static readonly string OutputFilesFolder = Path.GetFullPath(SupportFiles + @"\OutputFiles");
         
-        // Class-level field used tookeep a reference toohello service context.
+        // Class-level field used to keep a reference to the service context.
         static private CloudMediaContext _contextSource = null;
         static private CloudMediaContext _contextTarget = null;
         static private MediaServicesCredentials _cachedCredentialsSource = null;
         static private MediaServicesCredentials _cachedCredentialsTarget = null;
 
-2. Ersätt hello standarddefinition Main-metoden med hello efter. Metoddefinitioner som anropas från Main anges nedan.
+2. Ersätt standarddefinition Main-metoden med följande. Metoddefinitioner som anropas från Main anges nedan.
         
         static void Main(string[] args)
         {
@@ -155,46 +155,46 @@ I det här avsnittet skapar du hello möjlighet toohandle redundans.
             if (job.State != JobState.Error)
             {
                 IAsset sourceOutputAsset = job.OutputMediaAssets[0];
-                // Get hello locator for Smooth Streaming
+                // Get the locator for Smooth Streaming
                 var sourceOriginLocator = GetStreamingOriginLocator(_contextSource, sourceOutputAsset);
         
                 Console.WriteLine("Locator Id: {0}", sourceOriginLocator.Id);
                 
-                // 1.Create a read-only SAS locator for hello source asset toohave read access toohello container in hello source Storage account (associated with hello source Media Services account)
+                // 1.Create a read-only SAS locator for the source asset to have read access to the container in the source Storage account (associated with the source Media Services account)
                 var readSasLocator = GetSasReadLocator(_contextSource, sourceOutputAsset);
         
-                // 2.Get hello container name of hello source asset from hello read-only SAS locator created in hello previous step
+                // 2.Get the container name of the source asset from the read-only SAS locator created in the previous step
                 string containerName = (new Uri(readSasLocator.Path)).Segments[1];
         
-                // 3.Create a target empty asset in hello target Media Services account
+                // 3.Create a target empty asset in the target Media Services account
                 var targetAsset = CreateTargetEmptyAsset(_contextTarget, containerName);
         
-                // 4.Create a write SAS locator for hello target empty asset toohave write access toohello container in hello target Storage account (associated with hello target Media Services account)
+                // 4.Create a write SAS locator for the target empty asset to have write access to the container in the target Storage account (associated with the target Media Services account)
                 ILocator writeSasLocator = CreateSasWriteLocator(_contextTarget, targetAsset);
         
                 // Get asset container name.
                 string targetContainerName = (new Uri(writeSasLocator.Path)).Segments[1];
         
-                // 5.Copy hello blobs in hello source container (source asset) toohello target container (target empty asset)
+                // 5.Copy the blobs in the source container (source asset) to the target container (target empty asset)
                 CopyBlobsFromDifferentStorage(containerName, targetContainerName, StorageNameSource, StorageKeySource, StorageNameTarget, StorageKeyTarget);
         
-                // 6.Use hello CreateFileInfos Media Services REST API tooautomatically generate all hello IAssetFile’s for hello target asset. 
-                //      This API call is not supported in hello current Media Services SDK for .NET. 
+                // 6.Use the CreateFileInfos Media Services REST API to automatically generate all the IAssetFile’s for the target asset. 
+                //      This API call is not supported in the current Media Services SDK for .NET. 
                 CreateFileInfosForAssetWithRest(_contextTarget, targetAsset, MediaServicesAccountNameTarget, MediaServicesAccountKeyTarget);
         
-                // Check if hello AssetFiles are now  associated with hello asset.
-                Console.WriteLine("Asset files assocated with hello {0} asset:", targetAsset.Name);
+                // Check if the AssetFiles are now  associated with the asset.
+                Console.WriteLine("Asset files assocated with the {0} asset:", targetAsset.Name);
                 foreach (var af in targetAsset.AssetFiles)
                 {
                     Console.WriteLine(af.Name);
                 }
         
-                // 7.Copy hello Origin locator of hello source asset toohello target asset by using hello same Id
+                // 7.Copy the Origin locator of the source asset to the target asset by using the same Id
                 var replicatedLocatorPath = CreateOriginLocatorWithRest(_contextTarget,
                             MediaServicesAccountNameTarget, MediaServicesAccountKeyTarget,
                             sourceOriginLocator.Id, targetAsset.Id);
         
-                // Create a full URL toohello manifest file. Use this for playback
+                // Create a full URL to the manifest file. Use this for playback
                 // in streaming media clients. 
                 string originalUrlForClientStreaming = sourceOriginLocator.Path + GetPrimaryFile(sourceOutputAsset).Name + "/manifest";
         
@@ -208,10 +208,10 @@ I det här avsnittet skapar du hello möjlighet toohandle redundans.
                 writeSasLocator.Delete();
         }
 
-3. hello följande metoddefinitioner av anropas från Main.
+3. Följande metoddefinitioner anropas från Main.
 
     >[!NOTE]
-    >Det finns en gräns på 1 000 000 principer för olika Media Services-principer (till exempel för lokaliserare principen eller ContentKeyAuthorizationPolicy). Du bör använda hello hello i samma princip-ID om du alltid använder samma dagar och åtkomst behörigheter. Till exempel använda hello samma ID för principer för lokaliserare som är avsedda tooremain på plats för lång tid (icke-överföringen principer). Mer information finns i [i det här avsnittet](media-services-dotnet-manage-entities.md#limit-access-policies).
+    >Det finns en gräns på 1 000 000 principer för olika Media Services-principer (till exempel för lokaliserare principen eller ContentKeyAuthorizationPolicy). Du bör använda samma princip-ID om du alltid använder samma dagar och åtkomstbehörigheter. Till exempel använda samma ID för principer för lokaliserare som är avsedda att vara på plats för lång tid (icke-överföringen principer). Mer information finns i [i det här avsnittet](media-services-dotnet-manage-entities.md#limit-access-policies).
 
         public static IAsset CreateAssetAndUploadSingleFile(CloudMediaContext context,
                                                         AssetCreationOptions assetCreationOptions,
@@ -242,49 +242,49 @@ I det här avsnittet skapar du hello möjlighet toohandle redundans.
             // Declare a new job.
             IJob job = context.Jobs.Create("My encoding job");
    
-            // Get a media processor reference, and pass tooit hello name of hello 
-            // processor toouse for hello specific task.
+            // Get a media processor reference, and pass to it the name of the 
+            // processor to use for the specific task.
             IMediaProcessor processor = GetLatestMediaProcessorByName(context,
                                                     "Media Encoder Standard");
    
-            // Create a task with hello encoding details, using a string preset.
+            // Create a task with the encoding details, using a string preset.
             // In this case "Adaptive Streaming" preset is used.
             ITask task = job.Tasks.AddNew("My encoding task",
                 processor,
                 "Adaptive Streaming",
                 TaskOptions.ProtectedConfiguration);
    
-            // Specify hello input asset toobe encoded.
+            // Specify the input asset to be encoded.
             task.InputAssets.Add(asset);
    
-            // Add an output asset toocontain hello results of hello job. 
+            // Add an output asset to contain the results of the job. 
             // This output is specified as AssetCreationOptions.None, which 
-            // means hello output asset is in hello clear (unencrypted). 
+            // means the output asset is in the clear (unencrypted). 
             var outputAssetName = "OutputAsset_" + Guid.NewGuid();
             task.OutputAssets.AddNew(outputAssetName,
                 AssetCreationOptions.None);
    
-            // Use hello following event handler toocheck job progress.  
+            // Use the following event handler to check job progress.  
             job.StateChanged += new
                     EventHandler<JobStateChangedEventArgs>(StateChanged);
    
-            // Launch hello job.
+            // Launch the job.
             job.Submit();
    
             // Optionally log job details. This displays basic job details
-            // toohello console and saves them tooa JobDetails-{JobId}.txt file 
+            // to the console and saves them to a JobDetails-{JobId}.txt file 
             // in your output folder.
             LogJobDetails(context, job.Id);
    
-            // Check job execution and wait for job toofinish. 
+            // Check job execution and wait for job to finish. 
             Task progressJobTask = job.GetExecutionProgressTask(CancellationToken.None);
             progressJobTask.Wait();
    
             // Get an updated job reference.
             job = GetJob(context, job.Id);
    
-            // Since we hello output asset contains a set of Smooth Streaming files,
-            // set hello .ism file toobe hello primary file
+            // Since we the output asset contains a set of Smooth Streaming files,
+            // set the .ism file to be the primary file
             if (job.State != JobState.Error)
                 SetPrimaryFile(job.OutputMediaAssets[0]);
    
@@ -293,8 +293,8 @@ I det här avsnittet skapar du hello möjlighet toohandle redundans.
    
         public static ILocator GetStreamingOriginLocator(CloudMediaContext context, IAsset assetToStream)
         {
-            // Get a reference toohello streaming manifest file from hello  
-            // collection of files in hello asset. 
+            // Get a reference to the streaming manifest file from the  
+            // collection of files in the asset. 
             IAssetFile manifestFile = GetPrimaryFile(assetToStream);
    
             // Create a 30-day readonly access policy. 
@@ -304,13 +304,13 @@ I det här avsnittet skapar du hello möjlighet toohandle redundans.
                 TimeSpan.FromDays(30),
                 AccessPermissions.Read);
    
-            // Create a locator toohello streaming content on an origin. 
+            // Create a locator to the streaming content on an origin. 
             ILocator originLocator = context.Locators.CreateLocator(LocatorType.OnDemandOrigin,
                 assetToStream,
                 policy,
                 DateTime.UtcNow.AddMinutes(-5));
    
-            // Return hello locator. 
+            // Return the locator. 
             return originLocator;
         }
    
@@ -418,7 +418,7 @@ I det här avsnittet skapar du hello möjlighet toohandle redundans.
                         .ToArray();
 
             if (ismAssetFiles.Count() != 1)
-                throw new ArgumentException("hello asset should have only one, .ism file");
+                throw new ArgumentException("The asset should have only one, .ism file");
 
             ismAssetFiles.First().IsPrimary = true;
             ismAssetFiles.First().Update();
@@ -431,7 +431,7 @@ I det här avsnittet skapar du hello möjlighet toohandle redundans.
                     where f.Name.EndsWith(".ism")
                     select f;
 
-            // Cast hello reference tooa true IAssetFile type. 
+            // Cast the reference to a true IAssetFile type. 
             IAssetFile manifestFile = theManifest.First();
 
             return manifestFile;
@@ -459,9 +459,9 @@ I det här avsnittet skapar du hello möjlighet toohandle redundans.
 
             string blobToken = sourceContainer.GetSharedAccessSignature(new SharedAccessBlobPolicy()
             {
-                // Specify hello expiration time for hello signature.
+                // Specify the expiration time for the signature.
                 SharedAccessExpiryTime = DateTime.Now.AddDays(1),
-                // Specify hello permissions granted by hello signature.
+                // Specify the permissions granted by the signature.
                 Permissions = SharedAccessBlobPermissions.Write | SharedAccessBlobPermissions.Read
             });
 
@@ -473,16 +473,16 @@ I det här avsnittet skapar du hello möjlighet toohandle redundans.
 
                 if (sourceCloudBlob.Properties.Length > 0)
                 {
-                    // In Azure Media Services, hello files are stored as block blobs. 
+                    // In Azure Media Services, the files are stored as block blobs. 
                     // Page blobs are not supported by Azure Media Services.  
                     var destinationBlob = targetContainer.GetBlockBlobReference(fileName);
                     destinationBlob.StartCopyFromBlob(new Uri(sourceBlob.Uri.AbsoluteUri + blobToken));
 
                     while (true)
                     {
-                        // hello StartCopyFromBlob is an async operation, 
-                        // so we want toocheck if hello copy operation is completed before proceeding. 
-                        // toodo that, we call FetchAttributes on hello blob and check hello CopyStatus. 
+                        // The StartCopyFromBlob is an async operation, 
+                        // so we want to check if the copy operation is completed before proceeding. 
+                        // To do that, we call FetchAttributes on the blob and check the CopyStatus. 
                         destinationBlob.FetchAttributes();
                         if (destinationBlob.CopyState.Status != CopyStatus.Pending)
                         {
@@ -552,7 +552,7 @@ I det här avsnittet skapar du hello möjlighet toohandle redundans.
             StringBuilder builder = new StringBuilder();
             IJob job = GetJob(context, jobId);
 
-            builder.AppendLine("\nThe job stopped due toocancellation or an error.");
+            builder.AppendLine("\nThe job stopped due to cancellation or an error.");
             builder.AppendLine("***************************");
             builder.AppendLine("Job ID: " + job.Id);
             builder.AppendLine("Job Name: " + job.Name);
@@ -573,7 +573,7 @@ I det här avsnittet skapar du hello möjlighet toohandle redundans.
                 }
             }
             builder.AppendLine("***************************\n");
-            // Write hello output tooa local file and toohello console. hello template 
+            // Write the output to a local file and to the console. The template 
             // for an error output file is:  JobStop-{JobId}.txt
             string outputFile = OutputFilesFolder + @"\JobStop-" + JobIdAsFileName(job.Id) + ".txt";
             WriteToFile(outputFile, builder.ToString());
@@ -589,7 +589,7 @@ I det här avsnittet skapar du hello möjlighet toohandle redundans.
             builder.AppendLine("Job Name: " + job.Name);
             builder.AppendLine("Job submitted (client UTC time): " + DateTime.UtcNow.ToString());
 
-            // Write hello output tooa local file and toohello console. hello template 
+            // Write the output to a local file and to the console. The template 
             // for an error output file is:  JobDetails-{JobId}.txt
             string outputFile = OutputFilesFolder + @"\JobDetails-" + JobIdAsFileName(job.Id) + ".txt";
             WriteToFile(outputFile, builder.ToString());
@@ -603,7 +603,7 @@ I det här avsnittet skapar du hello möjlighet toohandle redundans.
             return jobID.Replace(":", "_");
         }
 
-        // Write method output toohello output files folder.
+        // Write method output to the output files folder.
         private static void WriteToFile(string outFilePath, string fileContent)
         {
             StreamWriter sr = File.CreateText(outFilePath);
@@ -613,14 +613,14 @@ I det här avsnittet skapar du hello möjlighet toohandle redundans.
 
         private static IJob GetJob(CloudMediaContext context, string jobId)
         {
-            // Use a Linq select query tooget an updated 
+            // Use a Linq select query to get an updated 
             // reference by Id. 
             var jobInstance =
                 from j in context.Jobs
                 where j.Id == jobId
                 select j;
 
-            // Return hello job reference as an Ijob. 
+            // Return the job reference as an Ijob. 
             IJob job = jobInstance.FirstOrDefault();
 
             return job;
@@ -628,13 +628,13 @@ I det här avsnittet skapar du hello möjlighet toohandle redundans.
 
         private static IAsset GetAsset(CloudMediaContext context, string assetId)
         {
-            // Use a LINQ Select query tooget an asset.
+            // Use a LINQ Select query to get an asset.
             var assetInstance =
                 from a in context.Assets
                 where a.Id == assetId
                 select a;
 
-            // Reference hello asset as an IAsset.
+            // Reference the asset as an IAsset.
             IAsset asset = assetInstance.FirstOrDefault();
 
             return asset;
@@ -667,8 +667,8 @@ I det här avsnittet skapar du hello möjlighet toohandle redundans.
 
         public static void DeleteAccessPolicy(CloudMediaContext context, string existingPolicyId)
         {
-            // toodelete a specific access policy, get a reference toohello policy.  
-            // based on hello policy Id passed toohello method.
+            // To delete a specific access policy, get a reference to the policy.  
+            // based on the policy Id passed to the method.
             var policyInstance =
                     from p in context.AccessPolicies
                     where p.Id == existingPolicyId
@@ -681,7 +681,7 @@ I det här avsnittet skapar du hello möjlighet toohandle redundans.
         }
 
         //////////////////////////////////////////////////////
-        /// hello following methods use REST calls.
+        /// The following methods use REST calls.
         //////////////////////////////////////////////////////
 
         public static string GetAcsBearerToken(string clientId, string clientSecret, string scope, string accessControlServiceUri)
@@ -797,7 +797,7 @@ I det här avsnittet skapar du hello möjlighet toohandle redundans.
                 switch (response.StatusCode)
                 {
                     case HttpStatusCode.MovedPermanently:
-                        //Recurse once with hello mediaServicesApiServerUri redirect Location:
+                        //Recurse once with the mediaServicesApiServerUri redirect Location:
                         if (autoRedirect)
                         {
                             redirectedMediaServicesApiServerUri = response.Headers["Location"];
@@ -809,7 +809,7 @@ I det här avsnittet skapar du hello möjlighet toohandle redundans.
                         }
                         else
                         {
-                            Console.WriteLine("Redirection too{0} failed.",
+                            Console.WriteLine("Redirection to {0} failed.",
                                 mediaServicesApiServerUri);
                             return null;
                         }
@@ -940,7 +940,7 @@ I det här avsnittet skapar du hello möjlighet toohandle redundans.
         }
 
 ## <a name="next-steps"></a>Nästa steg
-Du kan nu använda en traffic manager tooroute begäranden mellan två Datacenter för hello och därmed växla över vid eventuella avbrott.
+Du kan nu använda en traffic manager för att vidarebefordra begäranden mellan två datacenter, och därför över vid eventuella avbrott.
 
 ## <a name="media-services-learning-paths"></a>Sökvägar för Media Services-utbildning
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

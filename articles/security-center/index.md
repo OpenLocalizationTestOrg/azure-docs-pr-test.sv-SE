@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure Security Center-dokumentation – självstudier, API-referens | Microsoft Docs"
-description: "Lär dig hur tooset in säkerhet övervaka och hantera principer för Azure-resurser. Självstudier, en REST-API-referens och annan dokumentation."
+title: "Dokumentation om Azure Security Center – Självstudier, API-referens | Microsoft Docs"
+description: "Lär dig hur du konfigurerar säkerhetsövervakning och principhantering av Azure-resurser. Självstudier, en REST-API-referens och annan dokumentation."
 services: security-center
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: b2bed6a128c7c767687871389f982d6155c6161d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 8a17bd97f758db843cecc53b02722344d6b9d6dc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="security-center-documentation"></a>Dokumentation om Security Center
 
-Lär dig hur hello toouse Security Center tooget överblick och kontroll över säkerheten för dina Azure-resurser.  Självstudier, en REST API-referens och andra dokumentationen visar hur tooset in säkerhet övervaka och hantera principer som fungerar med ett vittomfattande ekosystem med säkerhetslösningar.
+Lär dig använda Security Center för att få bättre inblick i och kontroll över dina Azure-resursers säkerhet.  Självstudier, en REST-API-referens och annan dokumentation som visar hur du konfigurerar säkerhetsövervakning och principhantering som fungerar med ett brett ekosystem av säkerhetslösningar.
 
 <ul class="panelContent cardsFTitle">
     <li>

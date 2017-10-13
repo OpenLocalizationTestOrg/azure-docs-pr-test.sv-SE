@@ -1,8 +1,8 @@
 ### <a name="server-auth"></a>Gör så här för att: autentisera med en provider (Server Flow)
-toohave Mobile Apps hantera hello autentiseringsprocessen i din app, måste du registrera din app med din identitetsprovider. I din Azure App Service måste tooconfigure hello program-ID och hemlighet som tillhandahålls av leverantören.
-Mer information finns i självstudiekursen hello [Lägg till autentisering tooyour app](../articles/app-service-mobile/app-service-mobile-cordova-get-started-users.md).
+För att använda Mobile Apps för att hantera autentiseringsprocessen i din app måste du registrera din app med din identitetsprovider. Sedan måste du konfigurera program-ID och -hemligheten som du fått av din provider i Azure App Service.
+Mer information finns i självstudierna [Lägg till autentisering till din app](../articles/app-service-mobile/app-service-mobile-cordova-get-started-users.md).
 
-När du har registrerat din identitetsleverantör anropa hello `.login()` metod med hello namnet på leverantören. Till exempel använda toologin med Facebook hello följande kod:
+När du har registrerat din identitetsprovider anropar du `.login()`-metoden med namnet på din provider. För att till exempel logga in med Facebook använder du följande kod:
 
 ```
 client.login("facebook").done(function (results) {
@@ -12,16 +12,16 @@ client.login("facebook").done(function (results) {
 });
 ```
 
-hello giltiga värden för hello-providern är 'aad', 'facebook', 'google', 'microsoftaccount' och 'twitter'.
+Giltiga värden för providern är 'aad', 'facebook', 'google', 'microsoftaccount' och 'twitter'.
 
 > [!NOTE]
-> Google-autentisering fungerar för närvarande inte via Server Flow.  tooauthenticate med Google, måste du använda en [-flödet metoden](#client-auth).
+> Google-autentisering fungerar för närvarande inte via Server Flow.  Om du vill autentisera med Google måste du använda en [klientflödesmetod](#client-auth).
 
-I detta fall hanterar Azure App Service hello OAuth 2.0-autentiseringsflöde.  Den visar hello inloggningssidan för hello vald leverantör och genererar en Apptjänst-autentiseringstoken efter genomförd inloggning med hello identitetsprovider. hello returneras inloggning, när du är klar, ett JSON-objekt som exponerar både hello användar-ID och Apptjänst autentiseringstoken i hello användar-ID- och authenticationToken respektive. Den här token kan cachelagras och återanvändas tills den upphör att gälla.
+I det här fallet hanterar Azure App Service OAuth 2.0-autentiseringsflödet.  Den visar inloggningssidan för den valda providern och genererar en App Service-autentiseringstoken efter genomförd inloggning med identitetsprovidern. När inloggningsfunktionen är färdig returnerar den ett JSON-objekt som både visar användar-ID och App Service-autentiseringstoken i fälten userId respektive authenticationToken. Den här token kan cachelagras och återanvändas tills den upphör att gälla.
 
 ###<a name="client-auth"></a>Gör så här för att: autentisera med en provider (Client Flow)
 
-Appen kan även oberoende kontakta hello identitetsleverantör och ange sedan hello returnerade token tooyour Apptjänst för autentisering. Det här flödet kan tooprovide en enkel inloggning för användare eller tooretrieve ytterligare användardata från hello identitetsleverantören.
+Din app kan även oberoende kontakta identitetsprovidern och sedan tillhandahålla den returnerade token till App Service för autentisering. Det här klientflödet gör det möjligt för dig att tillhandahålla enkel inloggning för användare eller hämta ytterligare användardata från identitetsprovidern.
 
 #### <a name="social-authentication-basic-example"></a>Grundläggande exempel på social autentisering
 
@@ -38,11 +38,11 @@ client.login(
 });
 
 ```
-Det här exemplet förutsätter att hello-token under förutsättning av hello respektive providern SDK lagras i hello token variabeln.
+Det här exemplet förutsätter att den token som tillhandahålls av respektive provider-SDK lagras i token-variabeln.
 
 #### <a name="microsoft-account-example"></a>Exempel med Microsoft-konto
 
-följande exempel använder hello hello Live SDK, som stöder enkel inloggning för Windows Store-appar med hjälp av Account:
+Följande exempel använder Live SDK som har stöd för enkel inloggning för Windows Store-appar vid användning av Microsoft-konton:
 
 ```
 WL.login({ scope: "wl.basic"}).then(function (result) {
@@ -59,11 +59,11 @@ WL.login({ scope: "wl.basic"}).then(function (result) {
 
 ```
 
-Det här exemplet får en token från Live Connect som är angivna tooyour Apptjänst genom att anropa hello inloggningen funktion.
+I det här exemplet hämtas en token från Live Connect som sedan levereras till App Service genom att anropa inloggningsfunktionen.
 
-###<a name="auth-getinfo"></a>Så här: hämta information om hello autentiserade användare
+###<a name="auth-getinfo"></a>Gör så här för att: Få mer information om den autentiserade användaren
 
-hello autentiseringsinformation kan hämtas från hello `/.auth/me` slutpunkten med hjälp av en HTTP anropa med något AJAX-bibliotek.  Se till att du ställer in hello `X-ZUMO-AUTH` huvud tooyour autentiseringstoken.  hello autentiseringstoken lagras i `client.currentUser.mobileServiceAuthenticationToken`.  Till exempel toouse hello fetch API:
+Autentiseringsinformationen kan hämtas från `/.auth/me`-slutpunkten med hjälp av HTTP-anrop med ett AJAX-bibliotek.  Se till att du ställer in `X-ZUMO-AUTH`-rubriken till din autentiseringstoken.  Autentiseringstoken lagras i `client.currentUser.mobileServiceAuthenticationToken`.  För att till exempel använda Fetch API:
 
 ```
 var url = client.applicationUrl + '/.auth/me';
@@ -73,8 +73,8 @@ fetch(url, { headers: headers })
     .then(function (data) {
         return data.json()
     }).then(function (user) {
-        // hello user object contains hello claims for hello authenticated user
+        // The user object contains the claims for the authenticated user
     });
 ```
 
-Fetch är tillgängligt som [ett npm-paket](https://www.npmjs.com/package/whatwg-fetch) eller som nedladdning via en webbläsare från [CDNJS](https://cdnjs.com/libraries/fetch). Du kan också använda jQuery eller en annan AJAX API toofetch hello information.  Data tas emot som ett JSON-objekt.
+Fetch är tillgängligt som [ett npm-paket](https://www.npmjs.com/package/whatwg-fetch) eller som nedladdning via en webbläsare från [CDNJS](https://cdnjs.com/libraries/fetch). Du kan även använda jQuery eller en annan AJAX API för att hämta informationen.  Data tas emot som ett JSON-objekt.

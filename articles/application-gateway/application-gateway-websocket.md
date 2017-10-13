@@ -1,6 +1,6 @@
 ---
-title: "aaaWebSocket stöd i Azure Programgateway | Microsoft Docs"
-description: "Den här sidan innehåller en översikt över hello programmet Gateway WebSocket-stöd."
+title: "WebSocket-stöd i Azure Programgateway | Microsoft Docs"
+description: "Den här sidan innehåller en översikt av programmet Gateway WebSocket-stöd."
 documentationcenter: na
 services: application-gateway
 author: amsriva
@@ -14,23 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/08/2017
 ms.author: amsriva
-ms.openlocfilehash: 3776117803e8559ad243c2d4c3dd661199c1e48a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 75b06ddd02da231b7813c609c848c75e42116da5
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="overview-of-websocket-support-in-application-gateway"></a>Översikt över WebSocket-stöd i Programgateway
 
-Application Gateway har inbyggt stöd för WebSocket över alla gateway-storlekar. Det finns ingen inställning som kan konfigureras av användaren tooselectively aktivera eller inaktivera WebSocket-stöd. 
+Application Gateway har inbyggt stöd för WebSocket över alla gateway-storlekar. Det finns ingen kan konfigureras inställning du vill aktivera eller inaktivera WebSocket-stöd. 
 
-WebSocket-protokollet är standardiserade i [RFC6455](https://tools.ietf.org/html/rfc6455) aktiverar en fullständig duplex kommunikation mellan en server och en klient över en tidskrävande TCP-anslutning. Den här funktionen tillåter en mer interaktiva kommunikation mellan hello webbservern och hello-klienten, vilket kan vara dubbelriktad utan hello krävs för avsökning som krävs i HTTP-baserade implementeringar. WebSocket har lite extra till skillnad från HTTP och kan återanvändning hello samma TCP-anslutning för flera/svar ledde till ett mer effektivt utnyttjande av resurser. WebSocket-protokoll är utformad toowork via traditionella HTTP-portarna 80 och 443.
+WebSocket-protokollet är standardiserade i [RFC6455](https://tools.ietf.org/html/rfc6455) aktiverar en fullständig duplex kommunikation mellan en server och en klient över en tidskrävande TCP-anslutning. Den här funktionen tillåter för en mer interaktiva kommunikation mellan webbservern och klienten, som kan vara dubbelriktad utan att behöva för avsökning som krävs i HTTP-baserade implementeringar. WebSocket har lite extra till skillnad från HTTP och kan återanvända samma TCP-anslutning för flera begäranden/svar ledde till ett mer effektivt utnyttjande av resurser. WebSocket-protokoll är utformade att fungera via traditionella HTTP-portarna 80 och 443.
 
-Du kan fortsätta att använda en standard HTTP-lyssnaren på port 80 eller 443 tooreceive WebSocket-trafik. WebSocket-trafik är riktat toohello WebSocket aktiverat serverdelen med hello lämpliga serverdelspool som anges i programmet gateway regler. hello backend-servern måste svara toohello programmet gateway avsökningar, som beskrivs i hello [hälsa avsökningen översikt](application-gateway-probe-overview.md) avsnitt. Programmet gateway hälsoavsökningar är endast HTTP/HTTPS. Varje backend-servern måste svara tooHTTP avsökningar för gateway tooroute WebSocket trafik toohello programserver.
+Du kan fortsätta att använda en standard HTTP-lyssnaren på port 80 eller 443 ta emot WebSocket-trafik. WebSocket-trafik omdirigeras sedan till WebSocket aktiverad serverdelen med lämpliga serverdelspoolen som anges i programmet gateway regler. Backend-servern måste svara på gateway-avsökningar programmet som beskrivs i den [hälsa avsökningen översikt](application-gateway-probe-overview.md) avsnitt. Programmet gateway hälsoavsökningar är endast HTTP/HTTPS. Varje backend-servern måste svara på http-avsökningar för Programgateway att dirigera WebSocket-trafik till servern.
 
 ## <a name="listener-configuration-element"></a>Listener-konfigurationselementet
 
-En befintlig HTTP-lyssnare kan vara används toosupport WebSocket-trafik. hello följande är ett fragment av ett httpListeners element från en exempelfil för mallen. Du måste både HTTP och HTTPS-lyssnare toosupport WebSocket och säker WebSocket-trafik. På liknande sätt kan du använda hello [portal](application-gateway-create-gateway-portal.md) eller [PowerShell](application-gateway-create-gateway-arm.md) toocreate en Programgateway med lyssnare på port 80/443 toosupport WebSocket-trafik.
+En befintlig HTTP-lyssnare kan användas för att stödja WebSocket-trafik. Följande är ett fragment av ett httpListeners element från en exempelfil för mallen. Behöver du både HTTP och HTTPS-lyssnare för att stödja WebSocket och säker WebSocket-trafik. På liknande sätt kan du använda den [portal](application-gateway-create-gateway-portal.md) eller [PowerShell](application-gateway-create-gateway-arm.md) att skapa en Programgateway med lyssnare på port 80/443 för att stödja WebSocket-trafik.
 
 ```json
 "httpListeners": [
@@ -66,7 +66,7 @@ En befintlig HTTP-lyssnare kan vara används toosupport WebSocket-trafik. hello 
 
 ## <a name="backendaddresspool-backendhttpsetting-and-routing-rule-configuration"></a>BackendAddressPool, BackendHttpSetting och routning regelkonfigurationen
 
-En BackendAddressPool är används toodefine en serverdelspool med WebSocket aktiverad servrar. Hej backendHttpSetting definieras med en backend-port 80 och 443. hello egenskaper för cookie-baserad tillhörighet och requestTimeouts är inte relevant tooWebSocket trafik. Ändring ingen som krävs i hello routningsregel är ”Basic” används tootie hello lämpliga lyssnare toohello motsvarande serverdelen för adresspoolen. 
+En BackendAddressPool används för att definiera en serverdelspool med WebSocket aktiverad servrar. BackendHttpSetting definieras med en backend-port 80 och 443. Egenskaper för cookie-baserad tillhörighet och requestTimeouts är inte relevanta för WebSocket-trafik. Ändring ingen som krävs i regeln för routning, ”Basic” används för att koppla motsvarande serverdelsadresspool lämplig lyssnaren. 
 
 ```json
 "requestRoutingRules": [{
@@ -104,7 +104,7 @@ En BackendAddressPool är används toodefine en serverdelspool med WebSocket akt
 
 ## <a name="websocket-enabled-backend"></a>WebSocket aktiverat backend
 
-Din serverdel måste ha en HTTP/HTTPS-webbserver som körs på hello konfigurerats port (vanligtvis 80/443) för WebSocket toowork. Det här kravet är eftersom WebSocket-protokollet kräver hello inledande handskakning toobe HTTP med uppgraderingen tooWebSocket-protokollet som en huvudfält. hello följande är ett exempel på ett sidhuvud:
+Din serverdel måste ha en HTTP/HTTPS-webbserver som körs på den konfigurerade port (vanligtvis 80/443) för WebSocket ska fungera. Det här kravet är eftersom WebSocket-protokollet krävs inledande handskakning ska HTTP med uppgraderingen WebSocket-protokollet som en huvudfält. Följande är ett exempel på ett sidhuvud:
 
 ```
     GET /chat HTTP/1.1
@@ -117,9 +117,9 @@ Din serverdel måste ha en HTTP/HTTPS-webbserver som körs på hello konfigurera
     Sec-WebSocket-Version: 13
 ```
 
-En annan orsak kan vara att programmet gateway backend-hälsoavsökningen stöder endast HTTP och HTTPS-protokoll. Om hello backend-servern inte svarar tooHTTP eller HTTPS-avsökningar tas den utanför serverdelspool.
+En annan orsak kan vara att programmet gateway backend-hälsoavsökningen stöder endast HTTP och HTTPS-protokoll. Om backend-servern inte svarar på HTTP eller HTTPS avsökningar, tas den utanför serverdelspool.
 
 ## <a name="next-steps"></a>Nästa steg
 
-Efter att lära dig mer om WebSocket-support, gå för[skapa en Programgateway](application-gateway-create-gateway.md) tooget igång med en WebSocket aktiverat webbprogram.
+Efter att lära dig mer om WebSocket-support, gå till [skapa en Programgateway](application-gateway-create-gateway.md) komma igång med en WebSocket-aktiverade program.
 

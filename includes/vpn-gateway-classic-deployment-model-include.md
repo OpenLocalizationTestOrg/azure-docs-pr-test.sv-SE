@@ -1,6 +1,6 @@
 > [!NOTE]
-> Den här artikeln är avsedd för hello klassiska distributionsmodellen. Om du är ny tooAzure, rekommenderar vi att du använder hello Resource Manager-modellen i stället. hello Resource Manager-modellen är hello senaste distributionsmodell och erbjuder flera alternativ och kompatibilitet med funktionen än hello klassiska distributionsmodellen. Läs mer om hello distributionsmodeller [modeller för distribution](../articles/resource-manager-deployment-model.md).
+> Den här artikeln beskriver hur du gör om du använder den klassiska distributionsmodellen. Om du inte har erfarenhet av Azure rekommenderar vi att du använder Resource Manager-distributionsmodellen i stället. Resource Manager-distributionsmodellen är den mest aktuella distributionsmodellen och erbjuder fler alternativ och bättre funktionskompatibilitet än den klassiska distributionsmodellen. Mer information om distributionsmodellerna finns i [Förstå distributionsmodeller](../articles/resource-manager-deployment-model.md).
 
-> För hello Resource Manager-versionen av den här artikeln, väljer du den hello nedrullningsbara listan nedan eller från hello innehållsförteckning hello vänster.
+> Om du vill läsa Resource Manager-versionen av den här artikeln väljer du den i listrutan nedan eller i innehållsförteckningen till vänster.
 >
 >

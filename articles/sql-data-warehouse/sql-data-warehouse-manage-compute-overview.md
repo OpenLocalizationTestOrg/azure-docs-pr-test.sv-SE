@@ -1,6 +1,6 @@
 ---
-title: "aaaManage beräkningskraft i Azure SQL Data Warehouse (översikt) | Microsoft Docs"
-description: "Prestanda skala ut funktioner i Azure SQL Data Warehouse. Skala ut genom att justera dwu: er eller pausa och återuppta beräkning resurser toosave kostnader."
+title: "Hantera datorkraft i Azure SQL Data Warehouse (översikt) | Microsoft Docs"
+description: "Prestanda skala ut funktioner i Azure SQL Data Warehouse. Skala ut genom att justera dwu: er eller pausa och återuppta beräkningsresurser för att spara kostnader."
 services: sql-data-warehouse
 documentationcenter: NA
 author: hirokib
@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: manage
 ms.date: 03/22/2017
 ms.author: elbutter
-ms.openlocfilehash: 1ffbe8d694ac181eaeb6f585a2cee87a570ed7d5
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: abe22f542a79714f6e894870872ee6b76ffe7633
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="manage-compute-power-in-azure-sql-data-warehouse-overview"></a>Hantera datorkraft i Azure SQL Data Warehouse (översikt)
 > [!div class="op_single_selector"]
@@ -31,16 +31,16 @@ ms.lasthandoff: 10/06/2017
 >
 >
 
-hello-arkitekturen för SQL Data Warehouse separerar lagring och beräkning, så att varje tooscale oberoende av varandra. Beräkning kan därför vara skalade toomeet prestandakrav oberoende av hello mängden data. En naturlig följd av den här arkitekturen är att [fakturering] [ billed] för beräkning och lagring är desamma. 
+Arkitekturen för SQL Data Warehouse separerar lagring och beräkning, så att varje del kan skalas oberoende av varandra. Därför kan beräkning skalas för att uppfylla prestandakrav oberoende av mängden data. En naturlig följd av den här arkitekturen är att [fakturering] [ billed] för beräkning och lagring är desamma. 
 
-Den här översikten beskriver hur skala ut fungerar med SQL Data Warehouse och hur tooutilize hello pausa, återuppta och skala funktionerna för SQL Data Warehouse. Kontakta hello [enheter (dwu: er) för datalager] [ data warehouse units (DWUs)] sidan toolearn hur dwu: er och prestanda är relaterade. 
+Den här översikten beskriver hur skala ut fungerar med SQL Data Warehouse och hur du använder pausa, återuppta och skala funktionerna i SQL Data Warehouse. Läs den [enheter (dwu: er) för datalager] [ data warehouse units (DWUs)] sidan om du vill lära dig hur dwu: er och prestanda är relaterade. 
 
 ## <a name="how-compute-management-operations-work-in-sql-data-warehouse"></a>Beräkna hur hanteringsåtgärder fungerar i SQL Data Warehouse
-hello-arkitekturen för SQL Data Warehouse består av en control-noden, datornoder och hello lagringsskikt sprids 60-distributioner. 
+Arkitekturen för SQL Data Warehouse består av en control-noden, compute-noder och lagringsskikt sprids 60-distributioner. 
 
-Under normala aktiv session i SQL Data Warehouse systemets huvudnod hanterar hello metadata och innehåller hello distribuerad frågeoptimerare. Under den här huvudnod är compute-noder och lagring-lagret. Systemet har en huvudnod fyra datornoder och hello lagringsskikt som består av 60 distributioner för en DWU 400. 
+Under normala aktiv session i SQL Data Warehouse systemets huvudnod hanterar metadata och innehåller distribuerad frågeoptimerare. Under den här huvudnod är compute-noder och lagring-lagret. Systemet har en huvudnod, fyra datornoder och lagringsskikt, som består av 60 distributioner för en DWU 400. 
 
-När du genomgå en skala eller pausa åtgärden hello systemet först stoppar alla inkommande förfrågningar och sedan återställer transaktioner tooensure ett konsekvent tillstånd. För skala utförs skalning endast när den här transaktionella återställning har slutförts. En skala upp åtgärd hello system etablerar hello extra önskat antal datornoder och startar sedan återansluta hello noder toohello lagring beräkningslager. Hello onödiga noder släpps och hello återstående datornoderna återansluta själva toohello lämpligt antal distributioner för en skala ned-åtgärd. För en paus åtgärden beräkna alla noder släpps och datorn kommer att göras en mängd olika metadata operations tooleave slutliga systemet i ett stabilt tillstånd.
+När du genomgå en skala eller pausa åtgärden systemet först stoppar alla inkommande förfrågningar och sedan återställer transaktioner för att säkerställa ett konsekvent tillstånd. För skala utförs skalning endast när den här transaktionella återställning har slutförts. En skala upp åtgärd system bestämmelserna extra önskat antal datornoder och startar sedan återansluta datornoderna lagring-lagret. För en skala ned åtgärd onödiga noderna släpps och återstående datornoderna återansluta sig själva till ett lämpligt antal distributioner. För en paus åtgärden beräkna alla noder släpps och datorn kommer att göras en mängd metadataåtgärder lämna slutliga systemet i ett stabilt tillstånd.
 
 | DWU  | \#med beräkningsnoder | \#för distributioner per nod |
 | ---- | ------------------ | ---------------------------- |
@@ -57,15 +57,15 @@ När du genomgå en skala eller pausa åtgärden hello systemet först stoppar a
 | 3000 | 30                 | 2                            |
 | 6000 | 60                 | 1                            |
 
-hello tre primära funktioner för hantering av beräkning är:
+Det finns tre grundläggande funktioner för hantering av beräkning:
 
 1. Pausa
 2. Återuppta
 3. Skala
 
-Var och en av dessa åtgärder kan ta flera minuter toocomplete. Om du är skalning/pausa/återupptar automatiskt kan kanske du vill tooimplement logik tooensure att vissa åtgärder har slutförts innan du fortsätter med en annan åtgärd. 
+Var och en av dessa åtgärder kan ta flera minuter att slutföra. Om du är skalning/pausa/återupptar automatiskt, kanske du vill implementera logik för att säkerställa att vissa åtgärder har slutförts innan du fortsätter med en annan åtgärd. 
 
-Kontrollera hello databastillståndet via olika slutpunkter kan du toocorrectly implementera automatisering av dessa åtgärder. hello portal ger meddelande vid slutförandet av en åtgärd och hello databaser aktuella tillstånd, men tillåter inte programmässiga kontroll av tillståndet. 
+Kontrollera databasens status via olika slutpunkter kan du implementera korrekt automatisering av dessa åtgärder. Portalen ger aviseringar när en åtgärd och databaserna aktuella tillstånd, men tillåter inte att programmatiskt kontroll av tillståndet. 
 
 >  [!NOTE]
 >
@@ -86,12 +86,12 @@ Kontrollera hello databastillståndet via olika slutpunkter kan du toocorrectly 
 
 ## <a name="scale-compute"></a>Skala bearbetning
 
-Prestanda i SQL Data Warehouse mäts i [enheter (dwu: er) för datalager] [ data warehouse units (DWUs)] som är en abstracted mått på beräkningsresurser t.ex CPU, minne och i/o-bandbredd. En användare som önskar tooscale sina systemets prestanda kan göra detta på olika sätt som hello portal, T-SQL och REST API: er. 
+Prestanda i SQL Data Warehouse mäts i [enheter (dwu: er) för datalager] [ data warehouse units (DWUs)] som är en abstracted mått på beräkningsresurser t.ex CPU, minne och i/o-bandbredd. En användare som vill skala sina systemets prestanda kan göra det på olika sätt, t.ex via portalen, T-SQL och REST API: er. 
 
 ### <a name="how-do-i-scale-compute"></a>Hur skala beräkning?
-Datorkraft hanteras SQL Data Warehouse genom att ändra hello DWU-inställningar. Prestandaökningar [linjärt] [ linearly] när du lägger till flera DWU för vissa åtgärder.  Vi erbjuder DWU-erbjudanden som säkerställer att prestandan kommer att ändras märkbart när du skalar systemet upp eller ned. 
+Beräkna power hanteras SQL Data Warehouse genom att ändra DWU-inställningen. Prestandaökningar [linjärt] [ linearly] när du lägger till flera DWU för vissa åtgärder.  Vi erbjuder DWU-erbjudanden som säkerställer att prestandan kommer att ändras märkbart när du skalar systemet upp eller ned. 
 
-tooadjust dwu: er, du kan använda någon av dessa enskilda metoder.
+Du kan använda någon av dessa enskilda metoder för att justera dwu: er.
 
 * [Skala datorkraft med Azure-portalen][Scale compute power with Azure portal]
 * [Skala datorkraft med PowerShell][Scale compute power with PowerShell]
@@ -100,41 +100,41 @@ tooadjust dwu: er, du kan använda någon av dessa enskilda metoder.
 
 ### <a name="how-many-dwus-should-i-use"></a>Hur många dwu: er ska jag använda?
 
-toounderstand vad ditt perfekta DWU-värde är, försök att skala upp och ner och köra några frågor efter att läsa in data. Eftersom det går snabbt att skala, kan du försöka olika prestandanivåer i en timme eller mindre. 
+För att ta reda på ditt optimala DWU-värde kan du testa att skala upp och ned och köra några frågor när du har läst in dina data. Eftersom det går snabbt att skala, kan du försöka olika prestandanivåer i en timme eller mindre. 
 
 > [!Note] 
-> SQL Data Warehouse är utformad tooprocess stora mängder data. toosee dess true funktioner för skalning, speciellt vid större dwu: er som du vill använda toouse stora datamängder som närmar sig eller större än 1 TB.
+> SQL Data Warehouse är utformat för att bearbeta stora mängder data. Om du vill visa dess true funktioner för skalning, speciellt vid större dwu: er som du vill använda en stor mängd data som närmar sig eller större än 1 TB.
 
-Rekommendationer för att hitta hello bästa DWU för din arbetsbelastning:
+Rekommendationer för att hitta den bästa DWU för din arbetsbelastning:
 
 1. Börja genom att välja en mindre DWU prestandanivå för ett datalager under utveckling.  En bra utgångspunkt är DW400 eller DW200.
-2. Övervakare för programmets prestanda, sett hello antalet dwu: er som valts jämfört med toohello prestanda du se.
-3. Avgör hur mycket snabbare eller långsammare prestanda bör vara för du tooreach hello optimala prestandanivån för dina krav genom att överta linjär skala.
-4. Öka eller minska antalet hello dwu: er i andel toohow mycket snabbare eller långsammare som du vill tooperform din arbetsbelastning. 
+2. Övervakare för programmets prestanda, sett valt antal dwu: er jämfört med prestanda du se.
+3. Avgör hur mycket snabbare eller långsammare prestanda ska du når optimal prestanda för dina krav genom att överta linjär skala.
+4. Öka eller minska antalet dwu: er i förhållande till hur mycket snabbare eller långsammare du vill din arbetsbelastning att utföra. 
 5. Fortsätt att göra justeringar tills du når nivån optimal prestanda för dina affärsbehov.
 
 > [!NOTE]
 >
-> Frågeprestanda ökar bara med flera parallellisering om hello arbete delas mellan beräkningsnoder. Om du upptäcker att skalning inte är ändra din prestanda, finns våra artiklar toocheck om dina data fördelas ojämnt eller om du introducerar en stor mängd data movement för prestandajustering. 
+> Frågeprestanda ökar med mer parallellisering bara om arbetet som kan delas mellan beräkningsnoder. Om du upptäcker att skalning inte är ändra din prestanda, finns våra artiklar för att kontrollera om dina data fördelas ojämnt eller om du introducerar en stor mängd data movement för prestandajustering. 
 
 ### <a name="when-should-i-scale-dwus"></a>När bör jag skala dwu: er?
-Skalning dwu: er ändrar hello följande viktiga scenarier:
+Skalning dwu: er ändrar följande viktiga scenarier:
 
-1. Ändra linjärt prestanda för hello för sökningar, aggregeringar och CTAS uttryck
-2. Öka hello antal läsare och skrivare vid inläsning av med PolyBase
+1. Ändra linjärt prestanda för sökningar, aggregeringar och CTAS uttryck
+2. Öka antalet läsare och skrivare vid inläsning av med PolyBase
 3. Maximalt antal samtidiga frågor och samtidighet fack
 
-Rekommendationer för när tooscale dwu: er:
+Rekommendationer att skala dwu: er:
 
 1. Innan du utför en tung datainläsnings- eller omvandlingsåtgärd åtgärd skala upp dwu: er så att dina data blir tillgängliga snabbare.
-2. Skala tooaccommodate större antal samtidiga frågor under belastning kontorstid. 
+2. Skala för att anpassa större antal samtidiga frågor under belastning kontorstid. 
 
 <a name="pause-compute-bk"></a>
 
 ## <a name="pause-compute"></a>Pausa beräkning
 [!INCLUDE [SQL Data Warehouse pause description](../../includes/sql-data-warehouse-pause-description.md)]
 
-toopause en databas med någon av metoderna enskilda.
+Använd någon av dessa enskilda metoder för att pausa en databas.
 
 * [Pausa beräkning med Azure-portalen][Pause compute with Azure portal]
 * [Pausa beräkning med PowerShell][Pause compute with PowerShell]
@@ -145,7 +145,7 @@ toopause en databas med någon av metoderna enskilda.
 ## <a name="resume-compute"></a>Återuppta beräkning
 [!INCLUDE [SQL Data Warehouse resume description](../../includes/sql-data-warehouse-resume-description.md)]
 
-tooresume en databas med någon av metoderna enskilda.
+Använd någon av dessa enskilda metoder för att återuppta en databas.
 
 * [Återuppta beräkning med Azure-portalen][Resume compute with Azure portal]
 * [Återuppta beräkning med PowerShell][Resume compute with PowerShell]
@@ -155,7 +155,7 @@ tooresume en databas med någon av metoderna enskilda.
 
 ## <a name="check-database-state"></a>Kontrollera databasens status 
 
-tooresume en databas med någon av metoderna enskilda.
+Använd någon av dessa enskilda metoder för att återuppta en databas.
 
 - [Kontrollera databasens status med T-SQL][Check database state with T-SQL]
 - [Kontrollera databasens status med PowerShell][Check database state with PowerShell]
@@ -163,12 +163,12 @@ tooresume en databas med någon av metoderna enskilda.
 
 ## <a name="permissions"></a>Behörigheter
 
-Skalning hello-databasen kräver hello behörigheterna som beskrivs i [ALTER DATABASE][ALTER DATABASE].  Pausa och återuppta kräver hello [SQL DB-deltagare] [ SQL DB Contributor] behörighet, särskilt Microsoft.Sql/servers/databases/action.
+Skalning databasen kräver behörigheterna som beskrivs i [ALTER DATABASE][ALTER DATABASE].  Pausa och återuppta kräver den [SQL DB-deltagare] [ SQL DB Contributor] behörighet, särskilt Microsoft.Sql/servers/databases/action.
 
 <a name="next-steps-bk"></a>
 
 ## <a name="next-steps"></a>Nästa steg
-Se följande artiklar toohelp du känner till vissa ytterligare KPI begreppen toohello:
+Se följande artiklar för att hjälpa dig förstå några ytterligare KPI-begrepp:
 
 * [Hantering av arbetsbelastning och samtidighet][Workload and concurrency management]
 * [Översikt över tabellen design][Table design overview]

@@ -1,6 +1,6 @@
 ---
-title: aaaAzure Active Directory-inloggning aktivitet rapporten API exempel | Microsoft Docs
-description: "Hur tooget igång med hello Azure Active Directory Reporting API"
+title: Azure Active Directory inloggningsaktivitet rapporten API-exempel | Microsoft Docs
+description: "Hur du kommer igång med Azure Active Directory Reporting API"
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -15,28 +15,28 @@ ms.workload: identity
 ms.date: 07/15/2017
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: d4fbbea95fe0b52828673b997681ae37481e21bc
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 7fc2b59fe37ed2ffe85925c457300ef8fd83c3c7
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="azure-active-directory-sign-in-activity-report-api-samples"></a>Azure Active Directory inloggningsaktivitet rapporten API-exempel
-Det här avsnittet är en del av en samling ämnen om hello Azure Active Directory reporting API.  
-Azure AD-rapportering ger dig en API som gör att du tooaccess inloggningsaktivitet data med hjälp av koden eller relaterade verktyg.  
-hello omfånget för det här avsnittet är tooprovide som till exempel koden för hello **aktivitet API inloggning**.
+Det här avsnittet är en del av en samling ämnen om Azure Active Directory reporting API.  
+Azure AD-rapportering ger dig en API som gör att du kan komma åt inloggningsaktivitet data med hjälp av koden eller relaterade verktyg.  
+Omfattningen av det här avsnittet är att ge dig exempelkod för den **aktivitet API inloggning**.
 
 Se:
 
 * [Granskningsloggar](active-directory-reporting-azure-portal.md#activity-reports) mer information
-* [Komma igång med hello Azure Active Directory Reporting API](active-directory-reporting-api-getting-started.md) mer information om hello reporting API.
+* [Komma igång med Azure Active Directory Reporting API](active-directory-reporting-api-getting-started.md) för mer information om reporting API.
 
 
 ## <a name="prerequisites"></a>Krav
-Innan du kan använda hello prover i det här avsnittet, behöver du toocomplete hello [krav tooaccess hello Azure AD reporting API](active-directory-reporting-api-prerequisites.md).  
+Innan du kan använda exemplen i det här avsnittet, måste du slutföra de [krav för att få åtkomst till Azure AD reporting API](active-directory-reporting-api-prerequisites.md).  
 
 ## <a name="powershell-script"></a>PowerShell-skript
-    # This script will require hello Web Application and permissions setup in Azure Active Directory
+    # This script will require the Web Application and permissions setup in Azure Active Directory
     $ClientID       = "<clientId>"             # Should be a ~35 character string insert your info here
     $ClientSecret   = "<clientSecret>"         # Should be a ~44 character string insert your info here
     $loginURL       = "https://login.microsoftonline.com/"
@@ -63,7 +63,7 @@ Innan du kan använda hello prover i det här avsnittet, behöver du toocomplete
     Do{
         Write-Output "Fetching data using Uri: $url"
         $myReport = (Invoke-WebRequest -UseBasicParsing -Headers $headerParams -Uri $url)
-        Write-Output "Save hello output tooa file SigninActivities$i.json"
+        Write-Output "Save the output to a file SigninActivities$i.json"
         Write-Output "---------------------------------------------"
         $myReport.Content | Out-File -FilePath SigninActivities$i.json -Force
         $url = ($myReport.Content | ConvertFrom-Json).'@odata.nextLink'
@@ -78,13 +78,13 @@ Innan du kan använda hello prover i det här avsnittet, behöver du toocomplete
 
 
 
-## <a name="executing-hello-script"></a>Skriptet hello
-När du hello skriptet är klar, kör den och verifiera att hello förväntade data från hello loggar kontrollrapport returneras.
+## <a name="executing-the-script"></a>Körning av skriptet
+När du har redigerat skriptet körs och kontrollera att de förväntade data från revision loggar rapporten returneras.
 
-hello skriptet returnerar utdata från hello inloggning rapport i JSON-format. Det skapar också ett `SigninActivities.json` filen med hello samma utdata. Du kan experimentera genom att ändra hello skriptet tooreturn data från andra rapporter och kommentera ut hello utdataformat som du inte behöver.
+Skriptet returnerar utdata från rapporten i JSON-format. Det skapar också en `SigninActivities.json` fil med samma utdata. Du kan experimentera genom att ändra skriptet för att returnera data från andra rapporter och kommentera ut utdataformat som du inte behöver.
 
 ## <a name="next-steps"></a>Nästa steg
-* Vill du toocustomize hello prover i det här avsnittet? Kolla in hello [Azure Active Directory inloggningsaktivitet API-referens för](active-directory-reporting-api-sign-in-activity-reference.md). 
-* Om du vill toosee en fullständig översikt över användning av hello Azure Active Directory reporting API, se [komma igång med hello Azure Active Directory reporting API](active-directory-reporting-api-getting-started.md).
-* Om du vill toofind mer information om Azure Active Directory reporting finns hello [Azure Active Directory Reporting Guide](active-directory-reporting-guide.md).  
+* Vill du anpassa exemplen i det här avsnittet? Kolla in den [Azure Active Directory inloggningsaktivitet API-referens för](active-directory-reporting-api-sign-in-activity-reference.md). 
+* Om du vill se en fullständig översikt över med Azure Active Directory reporting API, se [komma igång med Azure Active Directory reporting API](active-directory-reporting-api-getting-started.md).
+* Om du vill veta mer om Azure Active Directory reporting finns i [Azure Active Directory Reporting Guide](active-directory-reporting-guide.md).  
 

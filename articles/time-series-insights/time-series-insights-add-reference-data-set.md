@@ -1,6 +1,6 @@
 ---
-title: "aaaAdd referens datauppsättning tooyour Azure tid serien Insights miljö | Microsoft Docs"
-description: "Lägg till referens datauppsättning tooyour tid serien insikter miljö i den här självstudiekursen"
+title: "Lägga till en referensdatauppsättning i miljön för Azure Time Series Insights | Microsoft Docs"
+description: "I den här självstudien ansluter du en referensdatauppsättning till Time Series Insights-miljön"
 keywords: 
 services: time-series-insights
 documentationcenter: 
@@ -8,43 +8,43 @@ author: venkatgct
 manager: almineev
 editor: cgronlun
 ms.assetid: 
-ms.service: time-series-insights
+ms.service: tsi
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/29/2017
 ms.author: venkatja
-ms.openlocfilehash: 05e626ed81a22f2a8710b23a931ccd17c0f38ca5
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 574f3c5b3a889733f47d729c795ec39009f2ef4a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-hello-ibiza-portal"></a>Skapa en referens för datauppsättning för tid serien insikter miljön med hjälp av hello Ibiza-portalen
+# <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-ibiza-portal"></a>Skapa en referensdatauppsättning för miljön för Time Series Insights med Ibiza Portal
 
-En referens datauppsättning är en samling objekt som är förstärkta med hello händelser från din händelsekälla. Bearbetningsmotorn för tidsserieinsikter kopplar en händelse från din händelsekälla till ett objekt i referensdatauppsättningen. Den här förhöjda händelsen är sedan tillgängliga för frågor. Den här kopplingen baseras på hello nycklar som definierats i datauppsättningen referens.
+En referensdatauppsättning är en samling objekt som är förstärkta med händelser från din händelsekälla. Bearbetningsmotorn för tidsserieinsikter kopplar en händelse från din händelsekälla till ett objekt i referensdatauppsättningen. Den här förhöjda händelsen är sedan tillgängliga för frågor. Den här kopplingen baseras på de nycklar som definierats i referensdatauppsättningen.
 
-## <a name="steps-tooadd-a-reference-data-set-tooyour-environment"></a>Steg tooadd en referens datauppsättning tooyour miljö
+## <a name="steps-to-add-a-reference-data-set-to-your-environment"></a>Steg för att lägga till en referensdatauppsättning i din miljö
 
-1. Logga in toohello [Ibiza-portalen](https://portal.azure.com).
-2. Klicka på ”alla resurser” hello menyn hello vänster på hello Ibiza-portalen.
+1. Logga in på [Ibiza portal](https://portal.azure.com).
+2. Klicka på ”Alla resurser” på menyn på vänster sida av Ibiza Portal.
 3. Välj Time Series Insights-miljö.
 
-    ![Skapa hello tid serien insikter referens datauppsättning](media/add-reference-data-set/getstarted-create-reference-data-set-1.png)
+    ![Skapa Time Series Insights-referensdatauppsättningen](media/add-reference-data-set/getstarted-create-reference-data-set-1.png)
 
 4. Välj ”referensdatauppsättningar”, klicka på ”+ Lägg till”.
 
-    ![Skapa datauppsättning för hello tid serien insikter referens - information](media/add-reference-data-set/getstarted-create-reference-data-set-2.png)
+    ![Skapa Time Series Insights-referensdatauppsättningen - information](media/add-reference-data-set/getstarted-create-reference-data-set-2.png)
 
-5. Ange hello namn hello referens datauppsättning.
-6. Ange hello nyckelnamn och dess. Den här namn och typ är används toopick hello rätt egenskap från hello händelse i din händelsekälla. Till exempel om du tillhandahåller nyckelnamn som ”DeviceId” och typ som ”sträng” sedan hello tid serien insikter ingång letar efter en egenskap med namnet hello ”DeviceId” av typen ”sträng” i hello inkommande händelse. Du kan ange flera viktiga toojoin med hello-händelse. hello egenskapen matchar är skiftlägeskänslig.
+5. Ange namnet på referensdatauppsättningen.
+6. Ange namnet och dess typ. Detta namn och typ används för att välja rätt egenskap från händelsen i din händelsekälla. Till exempel, om du tillhandahåller nyckelnamn som ”DeviceId” och typ som ”String” söker motorn för tidserieinsikter sedan en egenskap med namnet ”DeviceId” av typen ”String” i den inkommande händelsen. Du kan ange mer än en nyckel att ansluta till händelsen. Matchningen med egenskapsnamn är skiftlägeskänslig.
 
-     ![Skapa datauppsättning för hello tid serien insikter referens - information](media/add-reference-data-set/getstarted-create-reference-data-set-3.png)
+     ![Skapa Time Series Insights-referensdatauppsättningen - information](media/add-reference-data-set/getstarted-create-reference-data-set-3.png)
 
 7. Klicka på ”Skapa”.
 
 ## <a name="next-steps"></a>Nästa steg
 
 * [Hantera referensdata](time-series-insights-manage-reference-data-csharp.md) programmässigt.
-* Hello fullständiga API-referens, se [referens Data API](/rest/api/time-series-insights/time-series-insights-reference-reference-data-api) dokumentet.
+* En fullständig API-referens, se dokumentet [Referensdata-API](/rest/api/time-series-insights/time-series-insights-reference-reference-data-api) .

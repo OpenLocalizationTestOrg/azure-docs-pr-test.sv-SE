@@ -1,5 +1,5 @@
 ---
-title: aaaAzure Container Service-skriptexempel | Microsoft Docs
+title: Azure Container Service-skriptexempel | Microsoft Docs
 description: Azure Container Service-skriptexempel
 services: container-service
 documentationcenter: 
@@ -17,15 +17,15 @@ ms.workload: na
 ms.date: 05/30/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 8c655a1c2a13c5636211ba8333c0e7a338b1e79a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: b56c45fc711cc2831adde80617b14a82601b49e7
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="azure-cli-samples-for-azure-container-service"></a>Azure CLI prover för Azure Container Service
 
-hello innehåller följande tabell länkar toobash skript som skapats med hello Azure CLI.
+Följande tabell innehåller länkar till bash-skript som skapats med hjälp av Azure CLI.
 
 | | |
 |---|---|

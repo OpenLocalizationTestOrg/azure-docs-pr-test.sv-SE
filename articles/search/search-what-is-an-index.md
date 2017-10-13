@@ -1,5 +1,5 @@
 ---
-title: "aaaCreate Azure Search index | Microsoft Azure | Söktjänsten värdbaserade moln"
+title: "Skapa ett Azure Search-index | Microsoft Azure | Värdbaserad söktjänst i molnet"
 description: "Vad är ett index i Azure Search och hur används det?"
 services: search
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 12/08/2016
 ms.author: ashmaka
-ms.openlocfilehash: c01cc654ff91427c8f1569b2f5b060a0a0f044c6
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 7fc45273c0f71c727b7087949cc63bbb4111f866
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-azure-search-index"></a>Skapa ett Azure Search-index
 > [!div class="op_single_selector"]
@@ -28,41 +28,41 @@ ms.lasthandoff: 10/06/2017
 > 
 
 ## <a name="what-is-an-index"></a>Vad är ett index?
-Ett *index* är ett  beständigt arkiv med *dokument* och andra konstruktioner som används av en Azure Search-tjänst. Ett dokument är en enskild enhet med sökbara data i ditt index. En återförsäljare som sysslar med e-handel kan till exempel ha ett dokument för varje artikel som företaget säljer, och en nyhetsorganisation kan ha ett dokument för varje nyhetsartikel osv. Mappa dessa begrepp toomore bekant databasen motsvarigheter: en *index* är begreppsmässigt tooa *tabell*, och *dokument* är ungefär för*rader* i en tabell.
+Ett *index* är ett  beständigt arkiv med *dokument* och andra konstruktioner som används av en Azure Search-tjänst. Ett dokument är en enskild enhet med sökbara data i ditt index. En återförsäljare som sysslar med e-handel kan till exempel ha ett dokument för varje artikel som företaget säljer, och en nyhetsorganisation kan ha ett dokument för varje nyhetsartikel osv. Om vi matchar dessa koncept till vanliga motsvarigheter i databasvärlden så kan ett *index* begreppsmässigt liknas vid en *tabell* och *dokument* kan grovt jämföras med *rader* i en tabell.
 
-När du lägger till/Överför dokument och skicka Sök frågor tooAzure sökning, skicka ditt begäranden tooa index i din söktjänst.
+När du lägger till/laddar upp dokument och skickar sökfrågor till Azure Search skickar du dina förfrågningar till ett specifikt index i din söktjänst.
 
 ## <a name="field-types-and-attributes-in-an-azure-search-index"></a>Fälttyper och fältattribut i ett Azure Search-index
-När du definierar schemat måste du ange hello namn, typ och attribut för varje fält i ditt index. hello fälttypen klassificerar hello data som lagras i fältet. Attribut kan anges på enskilda fält toospecify hur hello fältet används. hello följande tabeller räkna upp hello typer och attribut som du kan ange.
+När du definierar ett schema måste du ange namnet, typen och attributet för varje fält i ditt index. Fälttypen klassificerar de data som lagras i fältet. Attribut anges för enskilda fält och definierar hur fältet används. Följande tabeller innehåller de typer och attribut som du kan ange.
 
 ### <a name="field-types"></a>Fälttyper
 | Typ | Beskrivning |
 | --- | --- |
 | *Edm.String* |Text som kan tokeniseras för textsökning (radbrytning, ordstamsigenkänning osv). |
-| *Collection(Edm.String)* |En lista med strängar som kan tokeniseras för textsökning. Det finns ingen teoretisk övre gräns för hello antalet objekt i en samling, men hello 16 MB övre gräns på nyttolastens storlek gäller toocollections. |
+| *Collection(Edm.String)* |En lista med strängar som kan tokeniseras för textsökning. Det finns ingen teoretisk övre gräns för antalet objekt i en samling, men den övre gränsen på 16 MB för nyttolasten gäller för samlingar. |
 | *Edm.Boolean* |Innehåller sant/falskt-värden. |
 | *Edm.Int32* |32-bitars heltalsvärden. |
 | *Edm.Int64* |64-bitars heltalsvärden. |
 | *Edm.Double* |Numeriska data med dubbel precision. |
-| *Edm.DateTimeOffset* |Datum tidsvärden med hello OData V4-format (t.ex. `yyyy-MM-ddTHH:mm:ss.fffZ` eller `yyyy-MM-ddTHH:mm:ss.fff[+/-]HH:mm`). |
-| *Edm.GeographyPoint* |En plats som representerar en geografisk plats på hello jordglob. |
+| *Edm.DateTimeOffset* |Datum- och tidsvärden som representeras i OData V4-format (t.ex. `yyyy-MM-ddTHH:mm:ss.fffZ` eller `yyyy-MM-ddTHH:mm:ss.fff[+/-]HH:mm`). |
+| *Edm.GeographyPoint* |En punkt som representerar en geografisk plats i världen. |
 
 Mer detaljerad information om [vilka datatyper som stöds i Azure Search finns här](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types).
 
 ### <a name="field-attributes"></a>Fältattribut
 | Attribut | Beskrivning |
 | --- | --- |
-| *Nyckel* |En sträng som innehåller hello unikt ID för varje dokument som används för dokumentet slå upp. Alla index måste ha en nyckel. Bara ett fält kan vara hello nyckel och dess typ måste anges tooEdm.String. |
+| *Nyckel* |En sträng som innehåller det unika ID:t för varje dokument och som används för att leta upp dokument. Alla index måste ha en nyckel. Endast ett fält kan vara nyckeln och dess typ måste anges till Edm.String. |
 | *Hämtningsbar* |Anger om ett fält kan returneras i sökresultat. |
-| *Filtrerbar* |Tillåter hello fältet toobe används i filterfrågor. |
-| *Sorterbar* |Gör en fråga toosort sökresultat med hjälp av det här fältet. |
-| *Fasettbar* |Gör en fältet toobe som används i en [fasetterad navigering](search-faceted-navigation.md) struktur för användaren själv dirigerad filtrering. Vanligtvis fält som innehåller upprepade värden som du kan använda toogroup flera dokument tillsammans (till exempel flera dokument som omfattas av ett enda varumärke eller tjänstekategori) fungerar bäst som facets. |
-| *Sökbar* |Markerar hello fält som sökbara fulltext. |
+| *Filtrerbar* |Gör att fältet kan användas i filterfrågor. |
+| *Sorterbar* |Gör att en fråga kan sortera sökresultat med hjälp av det här fältet. |
+| *Fasettbar* |Gör att ett fält kan användas i en struktur för [aspektbaserad navigering](search-faceted-navigation.md) för filtrering av användaren. Oftast fungerar fält med upprepade värden som kan användas för att gruppera flera dokument (till exempel flera dokument som hör till samma varumärkes- eller tjänstkategori) bäst som aspekter. |
+| *Sökbar* |Markerar fältet som fulltextsökbart. |
 
 Mer detaljerad information om [indexattributen i Azure Search finns här](https://docs.microsoft.com/rest/api/searchservice/Create-Index).
 
 ## <a name="guidance-for-defining-an-index-schema"></a>Riktlinjer för att definiera ett indexschema
-Ta din tid i hello planera fasen toothink via varje beslut när du utformar ditt index. Det är viktigt att du behåller dina Sök upplevelse och företag behov i åtanke när du skapar ditt index som varje fält måste tilldelas hello [rätt attribut](https://docs.microsoft.com/rest/api/searchservice/Create-Index). Ändra ett index när den har distribuerats innebär att återskapa och ladda om hello informationen.
+När du skapar ditt index bör du ta dig tid i planeringsfasen och tänka igenom varje beslut. Det är viktigt att du har användarupplevelsen och dina affärsbehov i åtanke när du utformar ditt index eftersom varje fält måste tilldelas [rätt egenskaper](https://docs.microsoft.com/rest/api/searchservice/Create-Index). Om du behöver ändra ett index som har distribuerats måste du återskapa och läsa in dina data igen.
 
 Om datalagringsbehovet ändras med tiden kan du öka eller minska kapaciteten genom att lägga till eller ta bort partitioner. Mer information finns i [Hantera din söktjänst i Azure](search-manage.md) och [Tjänstgränser](search-limits-quotas-capacity.md).
 

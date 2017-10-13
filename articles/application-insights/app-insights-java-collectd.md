@@ -1,6 +1,6 @@
 ---
-title: "aaaMonitor Java web app prestanda på Linux - Azure | Microsoft Docs"
-description: "Utökad övervakning av programprestanda för din Java-webbplats med hello CollectD plugin-programmet för Application Insights."
+title: "Övervaka Java web app prestanda på Linux - Azure | Microsoft Docs"
+description: "Utökad övervakning av programprestanda för din Java-webbplats med CollectD plugin-programmet för Application Insights."
 services: application-insights
 documentationcenter: java
 author: harelbr
@@ -13,39 +13,39 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/24/2016
 ms.author: bwren
-ms.openlocfilehash: f783e8607a83b2b43f67d3a2fc20f100aa2f75ec
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 4ea917b068e0242bfb88d7357eca032607a43a3f
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="collectd-linux-performance-metrics-in-application-insights"></a>collectd: Linux prestandamått i Application Insights
 
 
-Linux tooexplore system prestandamått i [Programinsikter](app-insights-overview.md), installera [collectd](http://collectd.org/), tillsammans med dess plugin Application Insights. Den här lösningen med öppen källkod samlar in olika system- och statistik.
+Utforska prestandastatistik för Linux-system i [Programinsikter](app-insights-overview.md), installera [collectd](http://collectd.org/), tillsammans med dess plugin Application Insights. Den här lösningen med öppen källkod samlar in olika system- och statistik.
 
-Normalt ska du använda collectd om du redan har [instrumenterats Java webbtjänsten med Application Insights][java]. Den ger dig mer data toohelp du tooenhance appens prestanda eller diagnostisera problem. 
+Normalt ska du använda collectd om du redan har [instrumenterats Java webbtjänsten med Application Insights][java]. Den ger dig fler data som kan hjälpa dig att förbättra prestanda för din app eller diagnostisera problem. 
 
 ![exempel diagram](./media/app-insights-java-collectd/sample.png)
 
 ## <a name="get-your-instrumentation-key"></a>Hämta nyckel för instrumentation
-I hello [Microsoft Azure-portalen](https://portal.azure.com)öppnar hello [Programinsikter](app-insights-overview.md) resurs där du vill att hello data tooappear. (Eller [skapar en ny resurs](app-insights-create-new-resource.md).)
+I den [Microsoft Azure-portalen](https://portal.azure.com)öppnar den [Programinsikter](app-insights-overview.md) resurs där du vill att data ska visas. (Eller [skapar en ny resurs](app-insights-create-new-resource.md).)
 
-Ta en kopia av hello instrumentation nyckel som identifierar hello resurs.
+Ta en kopia av nyckeln instrumentation som identifierar resursen.
 
-![Bläddra igenom alla öppna resursen och sedan i hello Essentials listrutan, markera och kopiera hello Instrumentation nyckel](./media/app-insights-java-collectd/02-props.png)
+![Bläddra igenom alla, öppna din resurs i Essentials nedrullningsbara Markera och kopiera nyckeln Instrumentation](./media/app-insights-java-collectd/02-props.png)
 
-## <a name="install-collectd-and-hello-plug-in"></a>Installera collectd och hello plugin-program
+## <a name="install-collectd-and-the-plug-in"></a>Installera collectd och plugin-programmet
 På ditt Linux-servrar:
 
 1. Installera [collectd](http://collectd.org/) version 5.4.0 eller senare.
-2. Hämta hello [Programinsikter collectd writer plugin](https://aka.ms/aijavasdk). Observera hello versionsnumret.
-3. Kopiera hello plugin JAR i `/usr/share/collectd/java`.
+2. Hämta den [Programinsikter collectd writer plugin](https://aka.ms/aijavasdk). Notera versionsnumret.
+3. Kopiera JAR-plugin-programmet i `/usr/share/collectd/java`.
 4. Redigera `/etc/collectd/collectd.conf`:
-   * Se till att [hello Java-plugin-programmet](https://collectd.org/wiki/index.php/Plugin:Java) är aktiverad.
-   * Uppdatera hello JVMArg för hello java.class.path tooinclude hello följande JAR. Uppdatera hello version nummer toomatch hello som du hämtade:
+   * Se till att [pluginprogrammet Java](https://collectd.org/wiki/index.php/Plugin:Java) är aktiverad.
+   * Uppdatera JVMArg för java.class.path för att inkludera följande JAR. Uppdatera versionsnumret för att matcha det du hämtade:
    * `/usr/share/collectd/java/applicationinsights-collectd-1.0.5.jar`
-   * Lägg till den här fragment med hello Instrumentation nyckeln från din resurs:
+   * Lägg till den här fragment med Instrumentation nyckeln från din resurs:
 
 ```XML
 
@@ -90,47 +90,47 @@ Här är en del av en exempelkonfigurationsfilen:
 
 Konfigurera andra [collectd plugin-program](https://collectd.org/wiki/index.php/Table_of_Plugins), som kan samla in olika data från olika källor.
 
-Starta om collectd enligt tooits [manuell](https://collectd.org/wiki/index.php/First_steps).
+Starta om collectd enligt dess [manuell](https://collectd.org/wiki/index.php/First_steps).
 
-## <a name="view-hello-data-in-application-insights"></a>Visa hello data i Application Insights
-Öppna i Application Insights-resurs [Metrics Explorer och Lägg till diagram][metrics], välja hello mått du vill använda toosee från hello anpassad kategori.
+## <a name="view-the-data-in-application-insights"></a>Visa data i Application Insights
+Öppna i Application Insights-resurs [Metrics Explorer och Lägg till diagram][metrics], välja mått som du vill se från anpassad kategori.
 
 ![](./media/app-insights-java-collectd/result.png)
 
-Som standard samman hello mått över alla värddatorerna som hello mått har samlats in. tooview hello mått per värd i hello diagram informationsbladet, aktivera gruppering och välj sedan toogroup CollectD-värden.
+Som standard samman mätvärdena över alla värddatorerna som mätvärdena som har samlats in. Om du vill visa mått per värd i diagrammet informationsbladet aktivera gruppering och sedan välja att gruppera efter CollectD-värden.
 
-## <a name="tooexclude-upload-of-specific-statistics"></a>tooexclude överföringen av specifika statistik
-Som standard skickar Application Insights-plugin-programmet hello alla hello data som samlas in av alla hello aktiverat collectd ”läsa” plugin-program. 
+## <a name="to-exclude-upload-of-specific-statistics"></a>För att utesluta överföringen av specifika statistik
+Som standard skickar Application Insights plugin-programmet alla data som samlas in av alla aktiverade collectd läsa plugin-program. 
 
-tooexclude data från specifika plugin-program eller datakällor:
+För att utesluta data från specifika plugin-program eller datakällor:
 
-* Redigera hello konfigurationsfilen. 
+* Redigera konfigurationsfilen. 
 * I `<Plugin ApplicationInsightsWriter>`, Lägg till direktivet rader så här:
 
 | Direktivet | Verkan |
 | --- | --- |
-| `Exclude disk` |Undanta alla data som samlas in av hello `disk` plugin-program |
-| `Exclude disk:read,write` |Exkludera hello källor med namnet `read` och `write` från hello `disk` plugin-programmet. |
+| `Exclude disk` |Undanta alla data som samlas in av den `disk` plugin-program |
+| `Exclude disk:read,write` |Exkludera datakällor med namnet `read` och `write` från den `disk` plugin-programmet. |
 
 Separata direktiv med en ny rad.
 
 ## <a name="problems"></a>Har du problem?
-*Data i hello portal visas inte*
+*Data i portalen visas inte*
 
-* Öppna [Sök] [ diagnostic] toosee om hello rådata händelser har tagits emot. Ibland kan de ta längre tooappear i metrics explorer.
-* Du kan behöva för[ange brandväggsundantag för utgående data](app-insights-ip-addresses.md)
-* Aktivera spårning i hello Application Insights plugin-programmet. Lägg till följande rad i `<Plugin ApplicationInsightsWriter>`:
+* Öppna [Sök] [ diagnostic] att se om raw händelser har tagits emot. Ibland kan de ta längre tid att visas i metrics explorer.
+* Du kan behöva [ange brandväggsundantag för utgående data](app-insights-ip-addresses.md)
+* Aktivera spårning i Application Insights plugin-programmet. Lägg till följande rad i `<Plugin ApplicationInsightsWriter>`:
   * `SDKLogger true`
-* Öppna en terminal och starta collectd i utförligt läge, toosee eventuella problem som den rapporterar:
+* Öppna en terminal och starta collectd i utförligt läge, se eventuella problem som den rapporterar:
   * `sudo collectd -f`
 
 ## <a name="known-issue"></a>Kända problem
 
-hello Application Insights skriva plugin-programmet är inte kompatibel med vissa Läs plugin-program. Vissa plugin-program att ibland skicka ”NaN” där Application Insights-plugin-programmet hello förväntar sig ett flyttal.
+Application Insights skriva plugin-programmet är inte kompatibelt med vissa Läs plugin-program. Vissa plugin-program att ibland skicka ”NaN” där plugin-programmet Application Insights förväntar sig ett flyttal.
 
-Symptom: hello collectd loggen visar fel som innehåller ”AI:... SyntaxError: Oväntad token N ”.
+Symptom: Collectd loggen visar fel som innehåller ”AI:... SyntaxError: Oväntad token N ”.
 
-Lösning: Utesluta data som samlas in av hello problemet skrivåtgärder plugin-program. 
+Lösning: Utesluta data som samlas in av plugin-program för problemet skrivåtgärder. 
 
 <!--Link references-->
 

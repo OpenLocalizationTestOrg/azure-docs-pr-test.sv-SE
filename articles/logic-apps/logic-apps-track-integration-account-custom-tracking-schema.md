@@ -1,6 +1,6 @@
 ---
-title: "aaaCustom upp scheman för B2B övervakning - Azure Logic Apps | Microsoft Docs"
-description: "Skapa anpassade spårning scheman toomonitor B2B-meddelanden från transaktioner i ditt Azure-konto för integrering."
+title: "Spårning av anpassade scheman för övervakning av B2B - Azure Logic Apps | Microsoft Docs"
+description: "Skapa anpassade spårning scheman för att övervaka B2B-meddelanden från transaktioner i ditt Azure-konto för integrering."
 author: padmavc
 manager: anneta
 editor: 
@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 01/27/2017
 ms.author: LADocs; padmavc
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8cf26a43d89f0414a2a8c5ef59d804235afeb5d6
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: b71a4938dde2a71f1ce29403af7aa9101358d64c
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="enable-tracking-toomonitor-your-complete-workflow-end-to-end"></a>Aktivera spårning toomonitor hela arbetsflödet, slutpunkt-till-slutpunkt
-Det finns inbyggda spåra att du kan aktivera för olika delar av ditt företag att arbetsflödet, till exempel uppföljning AS2 eller X12 meddelanden. När du skapar arbetsflöden som omfattar en logikapp, BizTalk Server, SQL Server eller något annat lager kan du aktivera anpassade spårning loggar händelser från hello början toohello slutet av arbetsflödet. 
+# <a name="enable-tracking-to-monitor-your-complete-workflow-end-to-end"></a>Aktivera spårning att övervaka hela arbetsflödet, slutpunkt-till-slutpunkt
+Det finns inbyggda spåra att du kan aktivera för olika delar av ditt företag att arbetsflödet, till exempel uppföljning AS2 eller X12 meddelanden. När omfattar du skapar arbetsflöden som en logikapp, BizTalk Server, SQL Server eller något annat lager kan du aktivera anpassade spårning loggar händelser från början till slutet av arbetsflödet. 
 
-Det här avsnittet innehåller anpassad kod som du kan använda i hello lager utanför din logikapp. 
+Det här avsnittet innehåller anpassad kod som du kan använda i lagren utanför din logikapp. 
 
 ## <a name="custom-tracking-schema"></a>Spårning av anpassade schemat
 ````java
@@ -63,19 +63,19 @@ Det här avsnittet innehåller anpassad kod som du kan använda i hello lager ut
 
 | Egenskap | Typ | Beskrivning |
 | --- | --- | --- |
-| SourceType |   | Typ av hello kör källa. Tillåtna värden är **Microsoft.Logic/workflows** och **anpassade**. (Obligatoriskt) |
-| Källa |   | Om hello källtypen är **Microsoft.Logic/workflows**, hello källinformation måste toofollow det här schemat. Om hello källtypen är **anpassade**, hello-schemat är en JToken. (Obligatoriskt) |
+| SourceType |   | Typ av kör källan. Tillåtna värden är **Microsoft.Logic/workflows** och **anpassade**. (Obligatoriskt) |
+| Källa |   | Om källtypen är **Microsoft.Logic/workflows**, källinformation måste följa det här schemat. Om källtypen är **anpassade**, schemat är en JToken. (Obligatoriskt) |
 | system-ID | Sträng | Logik app system-ID. (Obligatoriskt) |
 | runId | Sträng | Logikapp kör ID. (Obligatoriskt) |
-| operationName | Sträng | Namn på hello-åtgärd (till exempel åtgärd eller utlösare). (Obligatoriskt) |
-| repeatItemScopeName | Sträng | Upprepa objektnamnet om hello åtgärd inuti en `foreach` / `until` loop. (Obligatoriskt) |
-| repeatItemIndex | Integer | Om hello åtgärden är inuti en `foreach` / `until` loop. Anger hello upprepade objektindex. (Obligatoriskt) |
-| trackingId | Sträng | Spårnings-ID, toocorrelate hälsningsmeddelande. (Valfritt) |
-| correlationId | Sträng | Korrelations-ID, toocorrelate hälsningsmeddelande. (Valfritt) |
-| ClientRequestId | Sträng | Klienten kan fylla i den toocorrelate meddelanden. (Valfritt) |
-| EventLevel |   | Nivå av hello-händelse. (Obligatoriskt) |
-| EventTime |   | Tid för hello händelsen i UTC-formatet ÅÅÅÅ-MM-DDTHH:MM:SS.00000Z. (Obligatoriskt) |
-| RecordType |   | Typ av hello spåra post. Tillåtna värde är **anpassade**. (Obligatoriskt) |
+| operationName | Sträng | Namnet på åtgärden (till exempel åtgärd eller utlösare). (Obligatoriskt) |
+| repeatItemScopeName | Sträng | Upprepa objektnamnet om åtgärden i en `foreach` / `until` loop. (Obligatoriskt) |
+| repeatItemIndex | Integer | Om instruktionen är inuti en `foreach` / `until` loop. Anger det upprepade objekt indexet. (Obligatoriskt) |
+| trackingId | Sträng | Spårnings-ID för att korrelera meddelanden. (Valfritt) |
+| correlationId | Sträng | Korrelations-ID, att korrelera meddelanden. (Valfritt) |
+| ClientRequestId | Sträng | Klienten kan fylla i den för att korrelera meddelanden. (Valfritt) |
+| EventLevel |   | Nivå av händelsen. (Obligatoriskt) |
+| EventTime |   | Tid för händelse, i UTC-format åååå-MM-DDTHH:MM:SS.00000Z. (Obligatoriskt) |
+| RecordType |   | Typ av post spåra. Tillåtna värde är **anpassade**. (Obligatoriskt) |
 | Post |   | Anpassad posttyp. Tillåtna format är JToken. (Obligatoriskt) |
 
 ## <a name="b2b-protocol-tracking-schemas"></a>B2B-protokollet spårning scheman
@@ -85,5 +85,5 @@ Information om spårning av scheman B2B-protokollet finns i:
 
 ## <a name="next-steps"></a>Nästa steg
 * Lär dig mer om [övervakning B2B-meddelanden](logic-apps-monitor-b2b-message.md).   
-* Lär dig mer om [spåra B2B-meddelanden i hello Operations Management Suite-portalen](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
-* Mer information om hello [Enterprise-Integrationspaket](../logic-apps/logic-apps-enterprise-integration-overview.md).
+* Lär dig mer om [spåra B2B-meddelanden i Operations Management Suite-portalen](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
+* Lär dig mer om den [Enterprise-Integrationspaket](../logic-apps/logic-apps-enterprise-integration-overview.md).

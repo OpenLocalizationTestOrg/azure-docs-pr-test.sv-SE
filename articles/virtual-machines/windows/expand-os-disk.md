@@ -1,6 +1,6 @@
 ---
-title: "aaaExpand hello OS-enhet på en Windows-dator i ett Azure | Microsoft Docs"
-description: "Expandera hello storleken på hello OS-enhet på en virtuell dator med Azure Powershell i hello Resource Manager-distributionsmodellen."
+title: "Expandera OS-enhet på en Windows-dator i ett Azure | Microsoft Docs"
+description: "Utöka storleken på OS-enhet på en virtuell dator med Azure Powershell i Resource Manager-distributionsmodellen."
 services: virtual-machines-windows
 documentationcenter: 
 author: kirpasingh
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/18/2016
 ms.author: kirpas
-ms.openlocfilehash: 07d29e63a43af2839dbb38e572c4634417922676
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 31c300d0ff39853a5d2d995d00e578bb1838e4cc
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="how-tooexpand-hello-os-drive-of-a-virtual-machine-in-an-azure-resource-group"></a>Hur tooexpand hello OS-enhet på en virtuell dator i Azure-resursgrupp
+# <a name="how-to-expand-the-os-drive-of-a-virtual-machine-in-an-azure-resource-group"></a>Så här expanderar OS-enhet på en virtuell dator i Azure-resursgrupp
 [!INCLUDE [virtual-machine-common-expand-os-disk](../../../includes/virtual-machines-common-expand-os-disk.md)]
 

@@ -1,6 +1,6 @@
 ---
-title: "aaaAn introduktion tooApache Kafka på HDInsight - Azure | Microsoft Docs"
-description: "Lär dig mer om Apache Kafka på HDInsight: vad det är syfte och där toofind exempel och komma igång information."
+title: "Introduktion till Apache Kafka på HDInsight - Azure | Microsoft Docs"
+description: "Lär dig mer om Apache Kafka på HDInsight: vad det är, dess syfte och var du hittar exempel och kommer igång."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -13,58 +13,67 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 06/15/2017
+ms.date: 09/07/2017
 ms.author: larryfr
-ms.openlocfilehash: 1bc198d4cf93a4682030d4fa5f71030f49ad64be
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 39234ca792983178cfd4304e001271ea30e28ae6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="introducing-apache-kafka-on-hdinsight-preview"></a>Introduktion till Apache Kafka på HDInsight (förhandsversion)
 
-[Apache Kafka](https://kafka.apache.org) är en öppen källkod distribuerade strömmande plattform som kan använda toobuild realtid strömmande data pipelines och program. Kafka ger också meddelandet broker funktioner liknande tooa meddelandekö, där du kan publicera och prenumerera på toonamed dataströmmar. Kafka på HDInsight ger dig en hanterad, skalbara och hög tillgänglighet tjänst i hello Microsoft Azure-molnet.
+[Apache Kafka](https://kafka.apache.org) är en distribuerad direktuppspelningsplattform med öppen källkod som kan användas för att skapa realtidsuppspelade datapipelines och program. Kafka tillhandahåller även funktionen för asynkron meddelandekö som liknar en meddelandekö där du kan publicera och prenumerera på namngivna dataströmmar. Kafka på HDInsight erbjuder en hanterad, maximalt skalbar och högtillgänglig tjänst i Microsoft Azure-molnet.
 
 ## <a name="why-use-kafka-on-hdinsight"></a>Varför använda Kafka på HDInsight?
 
-Kafka innehåller hello följande funktioner:
+Kafka tillhandahåller följande funktioner:
 
-* Publicera och prenumerera meddelanden mönster: Kafka innehåller ett producenten API för att publicera poster tooa Kafka avsnittet. hello konsumenten API används när prenumerera tooa avsnittet.
+* Meddelandemönster av typen publicera-prenumerera: Kafka innehåller en producent-API för publicering av poster till ett Kafka-ämne. Konsument-API används när det finns en prenumererar på ett ämne.
 
-* Dataströmsbearbetning: Kafka används ofta med Apache Storm eller Spark för bearbetning av dataströmmen i realtid. Kafka 0.10.0.0 (HDInsight version 3.5) introducerades en strömmande API som gör att du toobuild strömning lösningar utan Storm eller Spark.
+* Dataströmsbearbetning: Kafka används ofta med Apache Storm eller Spark för bearbetning av dataströmmen i realtid. Kafka 0.10.0.0 (HDInsight version 3.5) införde en strömmande API som gör att du kan skapa direktuppspelade lösningar utan Storm eller Spark.
 
-* Skala horisontellt: Kafka partitionerar dataströmmar över hello noderna i hello HDInsight-kluster. Konsumenten processer kan associeras med enskilda partitioner tooprovide nätverksbelastning när förbrukar poster.
+* Vågrät skala: Kafka partitionerar dataströmmar mellan noderna i HDInsight-klustret. Konsumentprocesser kan associeras med enskilda partitioner för att ge belastningsutjämning när poster används.
 
-* I ordning: inom varje partition poster som lagras i hello dataströmmen i hello ordning som de har tagits emot. Genom att associera en konsumentprocess per partition bearbetas posterna garanterat i ordning.
+* Leverans i ordning: Inom varje partition lagras posterna i strömmen i den ordning som de togs emot. Genom att associera en konsumentprocess per partition bearbetas posterna garanterat i ordning.
 
-* Feltoleranta:, Partitioner kan replikeras mellan noder tooprovide feltolerans.
+* Feltoleranta: Partitioner kan replikeras mellan noder för att ge feltolerans.
 
-* Integrering med Azure hanterade diskar: hanterade diskar ger högre skala och genomströmning för hello-diskar som används av hello virtuella datorer i hello HDInsight-kluster.
+* Integrering med Azure Managed Disks: Managed Disks ger högre skala och genomströmning för diskar som används av de virtuella datorerna i HDInsight-klustret.
 
-    Hanterade diskar är aktiverat som standard för Kafka i HDInsight och hello antalet diskar som används per nod kan konfigureras när HDInsight skapas. För mer information om hanterade diskar, se [Hanterade Azure-diskar](../virtual-machines/windows/managed-disks-overview.md).
+    Hanterade diskar är aktiverade som standard för Kafka på HDInsight. Antalet diskar som används per nod kan konfigureras när HDInsight skapas. För mer information om hanterade diskar, se [Hanterade Azure-diskar](../virtual-machines/windows/managed-disks-overview.md).
 
     Se [Ökad skalbalhet med Kafta på HDInsight](hdinsight-apache-kafka-scalability.md) för mer information om att konfigurera hanterade diskar med Kafka på HDInsight.
 
 ## <a name="use-cases"></a>Användningsfall
 
-* **Messaging**: eftersom den stöder hello Publicera prenumerera-mönster för meddelandet, Kafka används ofta som en koordinator för meddelandet.
+* **Meddelanden**: Eftersom den stöder meddelandemönstret publicera-prenumerera används Kafka ofta som en asynkron meddelandekö.
 
-* **Aktivitetsspårning**: eftersom Kafka tillhandahåller i ordning loggning med poster, den kan använda tootrack och skapa aktiviteter. Till exempel användaråtgärder på en webbplats eller i ett program.
+* **Aktivitetsspårning**: Eftersom Kafka innehåller i ordningsbaserad loggning av poster kan den användas för att spåra och återskapa aktiviteter. Till exempel användaråtgärder på en webbplats eller i ett program.
 
-* **Aggregeringen**: med bearbetning av dataströmmen kan du samla information från olika dataströmmar toocombine och centralisera hello information till användningsdata.
+* **Sammanställning**: Med hjälp av strömbearbetning kan du sammanställa information från olika strömmar för att kombinera och centralisera information till användningsdata.
 
 * **Omvandling**: Med dataströmsbearbetning kan du kombinera och utöka data från flera inkommande avsnitt i ett eller flera utdataämnen.
 
+## <a name="architecture"></a>Arkitektur
+
+![Kafka-klusterkonfiguration](./media/hdinsight-apache-kafka-introduction/kafka-cluster.png)
+
+Det här diagrammet visar en typisk Kafka-konfiguration som använder konsumentgrupper, partitionering och replikering för att erbjuda parallell läsning av händelser med feltolerans. Apache ZooKeeper är byggt för samtidiga och elastiska transaktioner med låg latens, eftersom det hanterar Kafka-klusters tillstånd. Kafka lagrar poster i *ämnen*. Poster produceras av *producenter*, och används av *konsumenter*. Producenter hämtar poster från asynkrona Kafka-*meddelandeköer*. Varje arbetsnod i HDInsight-klustret är en asynkron Kafka-meddelandekö. En partition skapas för varje konsument, vilket möjliggör parallell bearbetning av strömmade data. Replikering används för att sprida partitionerna mellan noder, vilket skyddar mot nodavbrott. En partition som är markerad med *(L)* är ledande för den angivna partitionen. Producenttrafik dirigeras till varje ledande nod med det tillstånd som hanteras av ZooKeeper.
+
+> [!IMPORTANT]
+> Kafka har ingen information om den underliggande maskinvaran (rack) i Azure-datacentret. För att kontrollera att partitionerna är rätt balanserade över den underliggande maskinvaran kan du läsa informationen om att [konfigurera hög tillgänglighet för data (Kafka)](hdinsight-apache-kafka-high-availability.md).
+
 ## <a name="next-steps"></a>Nästa steg
 
-Använd hello följande länkar toolearn hur toouse Apache Kafka på HDInsight:
+Använd följande länkar om du vill veta om hur du använder Apache Kafka på HDInsight:
 
 * [Kom igång med Kafka på HDInsight](hdinsight-apache-kafka-get-started.md)
 
-* [Använda MirrorMaker toocreate en replik av Kafka på HDInsight](hdinsight-apache-kafka-mirroring.md)
+* [Använd MirrorMaker för att skapa en replik av Kafka på HDInsight](hdinsight-apache-kafka-mirroring.md)
 
 * [Använda Apache Storm med Kafka på HDInsight](hdinsight-apache-storm-with-kafka.md)
 
 * [Använda Apache Spark med Kafka på HDInsight](hdinsight-apache-spark-with-kafka.md)
 
-* [Ansluta tooKafka via ett virtuellt Azure-nätverk](hdinsight-apache-kafka-connect-vpn-gateway.md)
+* [Ansluta till Kafka via ett trådlöst Azure-nätverk](hdinsight-apache-kafka-connect-vpn-gateway.md)

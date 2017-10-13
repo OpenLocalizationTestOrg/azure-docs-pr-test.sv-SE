@@ -1,16 +1,16 @@
 > [!NOTE]
-> * hello VPN-gateway offentliga IP-adressen ändras när du migrerar från en gamla SKU tooa nya SKU.
-> * Du kan inte migrera klassiska VPN-gatewayer toohello nya SKU: er. Klassiska VPN-gatewayer kan endast använda hello äldre (gamla) SKU: er.
+> * Den offentliga IP-adressen för VPN-gatewayen ändras när du migrerar från en gammal SKU till en ny SKU.
+> * Du kan inte migrera klassiska VPN-gatewayer till de nya SKU:erna. Klassiska VPN-gatewayer kan endast använda de äldre (gamla) SKU:erna.
 > 
 
-Det går inte att ändra storlek på Azure VPN gateway mellan hello gamla SKU: er och hello nya SKU-familjer. Om du har VPN-gatewayer i hello Resource Manager-distributionsmodellen som använder hello äldre version av hello SKU: er kan du migrera toohello nya SKU: er. toomigrate, du ta bort hello befintliga VPN-gateway för det virtuella nätverket och sedan skapa en ny.
+Du kan inte ändra storlek på Azure VPN-gatewayer mellan de gamla SKU:erna och de nya SKU-familjerna. Om du har VPN-gatewayer i Resource Manager-distributionsmodellen som använder den äldre versionen av de SKU: er kan migrera du till nya SKU: er. För att migrera måste du ta bort den befintliga VPN-gatewayen för det virtuella nätverket och sedan skapa en ny.
 
 Arbetsflöde för migrering:
 
-1. Ta bort alla anslutningar toohello virtuell nätverksgateway.
-2. Ta bort hello gamla VPN-gateway.
-3. Skapa hello nya VPN-gateway.
-4. Uppdatera din lokala VPN-enheter med hello nya VPN-gateway IP-adressen (för anslutningar för plats-till-plats).
-5. Uppdatera hello gateway IP-adressvärde för alla gateways för VNet-till-VNet lokala nätverk som ansluter toothis gateway.
-6. Hämta nya VPN-konfiguration klientpaket för P2S-klienter som ansluter toohello virtuellt nätverk via VPN-gateway.
-7. Återskapa hello anslutningar toohello virtuell nätverksgateway.
+1. Ta bort flera anslutningar till en virtuell nätverksgateway.
+2. Ta bort VPN-gatewayen.
+3. Skapa den nya VPN-gatewayen.
+4. Uppdatera din lokala VPN-enhet med den nya IP-adressen för VPN-gatewayen (för plats-till-plats-anslutningar).
+5. Uppdatera gateway IP-adressvärdet för alla lokala nätverket VNet-till-VNet-gateways som ska ansluta till den här gatewayen.
+6. Hämta den nya klientpaket för VPN-konfiguration för P2S-klienter som ansluter till det virtuella nätverket via den här VPN-gatewayen.
+7. Skapa om flera anslutningar till en virtuell nätverksgateway.

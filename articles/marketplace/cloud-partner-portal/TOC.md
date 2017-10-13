@@ -5,7 +5,7 @@
 ## [Kom igång med partnerportalen i molnet](./cloud-partner-portal-getting-started-with-the-cloud-partner-portal.md)
 ## [Produkter som stöds](./Cloud-partner-portal-products-that-can-get-published-via-portal.md)
 
-# Hur tooguides
+# Instruktionsguider
 ## Hantera Virtual Machines
 ### [Skapa erbjudande för virtuell dator](../../cloud-partner-portal/cloud-partner-portal-publish-virtual-machine.md)
 #### [Förutsättningar](../../cloud-partner-portal/cloud-partner-portal-publish-virtual-machine.md#what-are-pre-requisites-for-publishing-a-vm)
@@ -21,7 +21,7 @@
 
 ### [Uppdatera befintligt erbjudande](./cloud-partner-portal-update-existing-offer.md)
 ### [Ta bort erbjudande/SKU för VM](./cloud-partner-portal-delete-an-offer.md)
-### [Migrera toocloud partnerportalen](./cloud-partner-portal-how-to-migrate-to-the-new-cloud-partner-portal.md)
+### [Migrera till partnerportalen i molnet](./cloud-partner-portal-how-to-migrate-to-the-new-cloud-partner-portal.md)
 
 ## [Hämta kundleads](./cloud-partner-portal-get-customer-leads.md)
 ### [Azure Table](../../cloud-partner-portal/cloud-partner-portal-lead-management-instructions-azure-table.md)

@@ -1,6 +1,6 @@
 ---
-title: "aaaReset ett lokalt Windows-lösenord utan Azure-agenten | Microsoft Docs"
-description: "Hur tooreset hello lösenord för lokala Windows-användarkonto när hello Azure gästagenten inte har installerats eller fungerar på en virtuell dator"
+title: "Återställer ett lokalt Windows-lösenord utan Azure-agenten | Microsoft Docs"
+description: "Hur du återställer lösenordet för ett lokalt Windows-användarkonto när Azure gästagenten inte har installerats eller fungerar på en virtuell dator"
 services: virtual-machines-windows
 documentationcenter: 
 author: iainfoulds
@@ -14,70 +14,70 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/07/2017
 ms.author: iainfou
-ms.openlocfilehash: c559c31ea142f9cf50d2c5b6182c5355fec9bac5
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 880f5e5967298401fc2522124af3746d9906ffa8
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="how-tooreset-local-windows-password-for-azure-vm"></a>Hur tooreset lokala Windows-lösenord för Azure VM
-Du kan återställa hello lokala Windows-lösenord för en virtuell dator i Azure med hjälp av hello [Azure-portalen eller Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) angivna hello Azure gäst-agenten är installerad. Den här metoden är hello primära sätt tooreset ett lösenord för en Azure VM. Om du får problem med hello Azure gästagent inte svarar eller misslyckas tooinstall efter överföring av en anpassad avbildning måste återställa du manuellt en Windows-lösenord. Den här artikeln beskrivs hur tooreset ett lokalt kontolösenord genom att koppla hello källa OS virtuell disk tooanother VM. 
+# <a name="how-to-reset-local-windows-password-for-azure-vm"></a>Hur du återställer lokala Windows-lösenord för Azure VM
+Du kan återställa det lokala Windows-lösenordet för en virtuell dator i Azure med hjälp av [Azure-portalen eller Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) förutsatt att Azure gästagenten är installerad. Den här metoden är det vanligaste sättet att återställa ett lösenord för en Azure VM. Om du får problem med Azure gästagenten inte svarar eller inte kunde installeras efter överföring av en anpassad avbildning, du kan manuellt återställa en Windows-lösenord. Den här artikeln beskriver hur du återställer ett lokalt kontolösenord genom att koppla den virtuella käll-OS-disken till en annan virtuell dator. 
 
 > [!WARNING]
-> Endast använda den här processen som en sista utväg. Försök tooreset alltid ett lösenord med hello [Azure-portalen eller Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) första.
+> Endast använda den här processen som en sista utväg. Alltid ett försök att återställa ett lösenord med hjälp av den [Azure-portalen eller Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) första.
 > 
 > 
 
-## <a name="overview-of-hello-process"></a>Översikt över hello-processen
-hello core stegen för att utföra en lokal återställning av lösenord för en virtuell Windows-dator i Azure när det finns ingen åtkomst toohello Azure gästagent är följande:
+## <a name="overview-of-the-process"></a>Översikt över processen
+Grundläggande steg för att utföra en lokal återställning av lösenord för en virtuell Windows-dator i Azure när det finns ingen åtkomst till Azure gästagenten är följande:
 
-* Ta bort Virtuella hello källdatorn. hello virtuella diskar bevaras.
-* Koppla hello källa VM OS disk tooanother VM på hello samma plats i din Azure-prenumeration. Den här virtuella datorn är refererad tooas hello felsökning VM.
-* Använd hello felsökning VM för att skapa vissa config-filer på hello källa VM OS-disken.
-* Koppla bort hello VM OS-disken från hello felsökning VM.
-* Använd en virtuell dator med hello ursprungliga virtuella disken för toocreate en Resource Manager-mall.
-* När hello nya VM Starter hello konfigurationsfiler skapar du uppdateringen hello lösenordet för användaren som hello krävs.
+* Ta bort den Virtuella källdatorn. Virtuella diskar bevaras.
+* Koppla källa VM OS-disken till en annan virtuell dator på samma plats i din Azure-prenumeration. Den här virtuella datorn kallas felsökning VM.
+* Använd felsökning VM för att skapa vissa config-filer på käll-VM OS-disken.
+* Koppla bort den virtuella datorn OS-disken från felsökning VM.
+* Använd en Resource Manager-mall för att skapa en virtuell dator med hjälp av den ursprungliga virtuella disken.
+* När den nya virtuella datorn startar uppdatera config-filer som du skapar lösenordet för användaren som krävs.
 
 ## <a name="detailed-steps"></a>Detaljerade steg
-Försök tooreset alltid ett lösenord med hello [Azure-portalen eller Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) innan du försöker hello följande steg. Kontrollera att du har en säkerhetskopia av den virtuella datorn innan du börjar. 
+Alltid ett försök att återställa ett lösenord med hjälp av den [Azure-portalen eller Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) innan de försöker med följande steg. Kontrollera att du har en säkerhetskopia av den virtuella datorn innan du börjar. 
 
-1. Ta bort hello påverkas VM i Azure-portalen. Ta bort hello VM tar bara bort hello metadata, hello referens för hello VM i Azure. hello virtuella diskar bevaras när hello VM tas bort:
+1. Ta bort de berörda VM i Azure-portalen. Den virtuella datorn endast tar bort metadata, referensen för den virtuella datorn i Azure. Virtuella diskar bevaras när den virtuella datorn tas bort:
    
-   * Välj hello VM i hello Azure-portalen klickar du på *ta bort*:
+   * Välj den virtuella datorn i Azure-portalen, klicka på *ta bort*:
      
      ![Ta bort en befintlig virtuell dator](./media/reset-local-password-without-agent/delete_vm.png)
-2. Koppla hello källa VM OS disk toohello felsökning VM. hello felsökning VM måste vara i hello samma region som hello källa VM OS-disken (som `West US`):
+2. Koppla källa VM OS-disken till Virtuellt datorn felsökning. Felsökning VM måste finnas i samma region som käll-VM OS-disken (som `West US`):
    
-   * Välj hello felsökning VM i hello Azure-portalen. Klicka på *diskar* | *bifoga befintliga*:
+   * Välj felsökning VM i Azure-portalen. Klicka på *diskar* | *bifoga befintliga*:
      
      ![Bifoga den befintliga disken](./media/reset-local-password-without-agent/disks_attach_existing.png)
      
-     Välj *VHD-filen* och välj sedan hello storage-konto som innehåller ditt Virtuella källdatorn:
+     Välj *VHD-filen* och välj sedan det lagringskonto som innehåller ditt Virtuella källdatorn:
      
      ![Välj lagringskonto](./media/reset-local-password-without-agent/disks_select_storageaccount.PNG)
      
-     Välj hello käll-behållare. hello källa behållare är vanligtvis *virtuella hårddiskar*:
+     Markera behållaren som källa. Käll-behållaren är vanligtvis *virtuella hårddiskar*:
      
      ![Välj lagringsbehållare](./media/reset-local-password-without-agent/disks_select_container.png)
      
-     Välj hello OS vhd tooattach. Klicka på *Välj* toocomplete hello processen:
+     Välj OS-vhd att ansluta. Klicka på *Välj* att slutföra processen:
      
      ![Välj källa för virtuell disk](./media/reset-local-password-without-agent/disks_select_source_vhd.png)
-3. Ansluta toohello felsökning av virtuell dator med hjälp av fjärrskrivbord och säkerställa hello källa VM OS-disken visas:
+3. Ansluta till den Virtuella datorn med hjälp av fjärrskrivbord felsökning och säkerställa källa VM OS-disken visas:
    
-   * Välj hello felsökning VM i hello Azure-portalen och klicka på *Anslut*.
-   * Öppna hello RDP-filen som hämtas. Ange hello användarnamnet och lösenordet för hello felsökning VM.
-   * I Utforskaren, leta efter hello datadisk bifogade. Om hello källa Virtuella datorns virtuella Hårddisken är hello endast data disk ansluten toohello felsökning VM, bör det vara hello F: enhet:
+   * Välj felsökning VM i Azure-portalen och klicka på *Anslut*.
+   * Öppna RDP-filen som laddas ned. Ange användarnamn och lösenord för felsökning VM.
+   * I Utforskaren, leta efter datadisk bifogade. Om ursprungliga Virtuella datorns VHD finns endast data-disk som är ansluten till Virtuellt datorn felsökning, ska det vara F: enhet:
      
      ![Visa bifogade datadisk](./media/reset-local-password-without-agent/troubleshooting_vm_fileexplorer.png)
-4. Skapa `gpt.ini` i `\Windows\System32\GroupPolicy` på hello källa VM-enhet (om det finns gpt.ini, byta namn på toogpt.ini.bak):
+4. Skapa `gpt.ini` i `\Windows\System32\GroupPolicy` på käll-VM-enhet (om det finns gpt.ini, Byt namn till gpt.ini.bak):
    
    > [!WARNING]
-   > Se till att du inte oavsiktligt skapa hello följande filer i C:\Windows, hello OS-enhet för hello felsökning VM. Skapa följande filer i hello OS-enhet för källan virtuell dator som är anslutna som en datadisk hello.
+   > Kontrollera att du inte oavsiktligt skapar följande filer i C:\Windows OS-enhet för felsökning VM. Skapa följande filer i OS-enhet för källan virtuell dator som är anslutna som en datadisk.
    > 
    > 
    
-   * Lägg till följande rader i hello hello `gpt.ini` fil som du skapade:
+   * Lägg till följande rader i den `gpt.ini` fil som du skapade:
      
      ```
      [General]
@@ -87,9 +87,9 @@ Försök tooreset alltid ett lösenord med hello [Azure-portalen eller Azure Pow
      ```
      
      ![Skapa gpt.ini](./media/reset-local-password-without-agent/create_gpt_ini.png)
-5. Skapa `scripts.ini` i `\Windows\System32\GroupPolicy\Machine\Scripts`. Kontrollera att dolda mappar som visas. Om det behövs, skapa hello `Machine` eller `Scripts` mappar.
+5. Skapa `scripts.ini` i `\Windows\System32\GroupPolicy\Machine\Scripts`. Kontrollera att dolda mappar som visas. Skapa vid behov på `Machine` eller `Scripts` mappar.
    
-   * Lägg till följande rader hello hello `scripts.ini` fil som du skapade:
+   * Lägg till följande rader i `scripts.ini` fil som du skapade:
      
      ```
      [Startup]
@@ -98,7 +98,7 @@ Försök tooreset alltid ett lösenord med hello [Azure-portalen eller Azure Pow
      ```
      
      ![Skapa scripts.ini](./media/reset-local-password-without-agent/create_scripts_ini.png)
-6. Skapa `FixAzureVM.cmd` i `\Windows\System32` med hello efter innehållet, ersätter `<username>` och `<newpassword>` med egna värden:
+6. Skapa `FixAzureVM.cmd` i `\Windows\System32` med följande innehållet och Ersätt `<username>` och `<newpassword>` med egna värden:
    
     ```
     net user <username> <newpassword> /add
@@ -109,40 +109,40 @@ Försök tooreset alltid ett lösenord med hello [Azure-portalen eller Azure Pow
 
     ![Skapa FixAzureVM.cmd](./media/reset-local-password-without-agent/create_fixazure_cmd.png)
    
-    När du definierar hello nytt lösenord måste du uppfylla kraven på lösenordskomplexitet hello som konfigurerats för den virtuella datorn.
-7. Koppla bort hello disk från hello felsökning VM i Azure-portalen:
+    När du definierar det nya lösenordet måste du uppfylla krav på komplexitet konfigurerat lösenord för den virtuella datorn.
+7. Koppla bort disken från felsökning VM i Azure-portalen:
    
-   * Välj hello felsökning VM i hello Azure-portalen, klicka på *diskar*.
-   * Välj hello datadisk kopplade i steg 2, klickar du på *Detach*:
+   * Välj felsökning VM i Azure-portalen, klicka på *diskar*.
+   * Välj datadisken ansluten i steg 2, klicka på *Detach*:
      
      ![Koppla bort disk](./media/reset-local-password-without-agent/detach_disk.png)
-8. Innan du skapar en virtuell dator måste du hämta hello URI tooyour källa OS-disken:
+8. Innan du skapar en virtuell dator måste du hämta URI till din datakälla OS-disk:
    
-   * Välj hello storage-konto i hello Azure-portalen klickar du på *Blobbar*.
-   * Välj hello-behållare. hello källa behållare är vanligtvis *virtuella hårddiskar*:
+   * Välj lagringskonto i Azure-portalen klickar du på *Blobbar*.
+   * Välj behållare. Käll-behållaren är vanligtvis *virtuella hårddiskar*:
      
      ![Välj kontot lagringsblob](./media/reset-local-password-without-agent/select_storage_details.png)
      
-     Välj källa VM OS VHD och klicka på hello *kopiera* knappen Nästa toohello *URL* namn:
+     Välj källa VM OS VHD och klicka på den *kopiera* knappen bredvid den *URL* namn:
      
      ![Kopiera disk URI](./media/reset-local-password-without-agent/copy_source_vhd_uri.png)
-9. Skapa en virtuell dator från hello källa VM OS-disken:
+9. Skapa en virtuell dator från käll-VM OS-disken:
    
-   * Använd [Azure Resource Manager-mallen](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd) toocreate en virtuell dator från en särskild virtuell Hårddisk. Klicka på hello `Deploy tooAzure` knappen tooopen hello Azure-portalen med hello mallbaserat information fylls i automatiskt.
-   * Om du vill tooretain alla tidigare hello-inställningarna för hello VM, Välj *redigera mallen* tooprovide din befintliga VNet, undernät, nätverkskort eller offentlig IP-adress.
-   * I hello `OSDISKVHDURI` klistra in hello käll-VHD-URI hämta i hello föregående steg i textrutan parameter:
+   * Använd [Azure Resource Manager-mallen](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd) att skapa en virtuell dator från en särskild virtuell Hårddisk. Klicka på den `Deploy to Azure` knappen för att öppna den Azure-portalen med mallbaserat information fylls i automatiskt.
+   * Om du vill bevara de tidigare inställningarna för den virtuella datorn, väljer *redigera mallen* att ge dina befintliga VNet, undernät, nätverkskort eller offentlig IP-adress.
+   * I den `OSDISKVHDURI` parametern textruta, klistra in URI för käll-VHD hämta i föregående steg:
      
      ![Skapa en virtuell dator från mall](./media/reset-local-password-without-agent/create_new_vm_from_template.png)
-10. Efter hello nya virtuella datorn körs, ansluta toohello virtuella datorn med Fjärrskrivbord med hello nya lösenordet du angav i hello `FixAzureVM.cmd` skript.
-11. Från din fjärrsession toohello filer nya virtuella datorn, ta bort hello följande tooclean in hello miljö:
+10. När den nya virtuella datorn körs, ansluta till den virtuella datorn med hjälp av fjärrskrivbord med det nya lösenordet du angav i den `FixAzureVM.cmd` skript.
+11. Ta bort följande filer att rensa miljön från din fjärrsession till den nya virtuella datorn:
     
     * Från %windir%\System32
       * ta bort FixAzureVM.cmd
     * Från %windir%\System32\GroupPolicy\Machine\
       * ta bort scripts.ini
     * Från %windir%\System32\GroupPolicy
-      * ta bort gpt.ini (om gpt.ini fanns före och du byta namn på den toogpt.ini.bak, Byt namn på hello .bak-filen tillbaka toogpt.ini)
+      * ta bort gpt.ini (om gpt.ini fanns före och du bytt namn till gpt.ini.bak, Byt namn på filen .bak tillbaka till gpt.ini)
 
 ## <a name="next-steps"></a>Nästa steg
-Om du fortfarande inte kan ansluta med hjälp av fjärrskrivbord, se hello [RDP felsökningsguiden](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Hej [detaljerad RDP felsökningsguide för](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) tittar på felsökning metoder i stället för särskilda åtgärder. Du kan också [öppnar du ett Azure supportbegäran](https://azure.microsoft.com/support/options/) för praktiska hjälp.
+Om du fortfarande inte kan ansluta med hjälp av fjärrskrivbord, finns det [RDP felsökningsguiden](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Den [detaljerad RDP felsökningsguide för](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) tittar på felsökning metoder i stället för särskilda åtgärder. Du kan också [öppnar du ett Azure supportbegäran](https://azure.microsoft.com/support/options/) för praktiska hjälp.
 

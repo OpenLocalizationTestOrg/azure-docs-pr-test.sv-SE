@@ -1,5 +1,5 @@
 ---
-title: aaaAzure Mobile Engagement Windows Universal-appar SDK viktig information | Microsoft Docs
+title: "Azure Mobile Engagement Windows Universal SDK för appar viktig information | Microsoft Docs"
 description: "Azure Mobile Engagement – Windows Universal SDK för appar viktig information"
 services: mobile-engagement
 documentationcenter: mobile
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 11/03/2016
 ms.author: piyushjo
-ms.openlocfilehash: 280bd064888f69a77d6fe0c31eafd98a0bbf724e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: dc5529a9e8f4eba867732f719ca8fff718c00d5a
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="windows-universal-apps-sdk-release-notes"></a>Viktig information för Windows Universal SDK för appar
 ## <a name="341-11032016"></a>3.4.1 (11/03/2016)
@@ -27,8 +27,8 @@ ms.lasthandoff: 10/06/2017
 
 ## <a name="340-04192016"></a>3.4.0 (04/19/2016)
 * Nå överlägget förbättringar.
-* Tillagda ”TestLogLevel” API tooenable-disable-filtret loggarna för konsolen sänds av hello SDK.
-* Fast i aktiviteten meddelanden riktad hello första aktiviteten inte visas i appen startar.
+* Tillagda ”TestLogLevel” API på filter-aktivera/inaktivera loggarna för konsolen orsakat av SDK.
+* Fast i aktiviteten meddelanden målobjekt för den första aktiviteten som inte visas i appen startar.
 
 ## <a name="331-02182016"></a>3.3.1 (02/18/2016)
 * Fast konflikter mellan web meddelande HTML-innehåll och SDK: ns HTML-sida.
@@ -42,19 +42,19 @@ ms.lasthandoff: 10/06/2017
 
 ## <a name="320-11202015"></a>3.2.0 (11/20/2015)
 * Stöd för Windows 10 Universal Windows Platform program har lagts till.
-* Tillagda push kanal delning funktionen toofix kanal konflikter (nu kompatibelt med Azure Notification Hubs).
-* Fast kraschar vid begäran om hello enhets-id bara efter hello initiering.
+* Tillagda push kanal funktionen för att åtgärda kanal konflikter (nu kompatibelt med Azure Notification Hubs) för delning.
+* Fast kraschar vid begäran om enhetens id precis efter initieringen.
 * Konsolen loggar förbättringar.
 * Fast kraschar vid parsning av vissa ohanterade undantag.
 
 ## <a name="310-05212015"></a>3.1.0 (05/21/2015)
-* hello Mobile Engagement-enhets-id är nu baserat på ett GUID som genereras vid tidpunkten för installationen.
+* Mobile Engagement-enhets-id är nu baserat på ett GUID som genereras vid tidpunkten för installationen.
 
 ## <a name="301-04292015"></a>3.0.1 (04/29/2015)
-* Fast ett programfel som påverkar hello SDK-initieringen av vissa WinRT för Windows Phone-appar.
+* Fast ett programfel som påverkar SDK-initieringen av vissa WinRT för Windows Phone-appar.
 
 ## <a name="300-04032015"></a>3.0.0 (04/03/2015)
-* Introduktion till hello Mobile Engagement SDK för universell App (Windows och Windows Phone WinRT).
+* Introduktion till Mobile Engagement SDK för universell App (Windows och Windows Phone WinRT).
 * Standard-meddelandeikonen har uppdaterats.
 * Skicka tillbaka system notification åtgärd feedback när användaren klickar på ett meddelande.
 * Fast Systemmeddelande som ibland spelas i appen efter att användaren klickar på.

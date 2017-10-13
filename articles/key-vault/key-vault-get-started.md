@@ -1,6 +1,6 @@
 ---
-title: "aaaGet igång med Azure Key Vault | Microsoft Docs"
-description: "Använd den här självstudiekursen toohelp du få igång med Azure Key Vault toocreate en förstärkt behållare i Azure, toostore och hantera krypteringsnycklar och hemligheter i Azure."
+title: "Komma igång med Azure Key Vault | Microsoft Docs"
+description: "Den här självstudiekursen hjälper dig att komma igång med Azure Key Vault för att skapa en säker behållare i Azure för lagring och hantering av krypteringsnycklar och hemligheter i Azure."
 services: key-vault
 documentationcenter: 
 author: cabailey
@@ -14,22 +14,22 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 07/19/2017
 ms.author: cabailey
-ms.openlocfilehash: 865853b778dec5fca5c7db0d060627554c0a9cb3
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 0299d931c5bf21775b68069afaa106279270226a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-key-vault"></a>Komma igång med Azure Key Vault
-Azure Key Vault är tillgängligt i de flesta regioner. Mer information finns i hello [Key Vault-priser](https://azure.microsoft.com/pricing/details/key-vault/).
+Azure Key Vault är tillgängligt i de flesta regioner. Mer information finns på sidan med [Key Vault-priser](https://azure.microsoft.com/pricing/details/key-vault/).
 
 ## <a name="introduction"></a>Introduktion
-Använd den här självstudiekursen toohelp du få igång med Azure Key Vault toocreate en förstärkt behållare (ett valv) i Azure, toostore och hantera krypteringsnycklar och hemligheter i Azure. Den vägleder dig genom hello processen med att använda Azure PowerShell toocreate ett valv som innehåller en nyckel eller ett lösenord som du sedan kan använda med ett Azure-program. Därefter tittar vi på hur ett program kan använda den här nyckeln eller lösenordet.
+Den här självstudiekursen hjälper dig att komma igång med Azure Key Vault för att skapa en säker behållare (ett valv) i Azure för lagring och hantering av krypteringsnycklar och hemligheter i Azure. Kursen beskriver steg för steg hur du använder Azure PowerShell för att skapa ett valv som innehåller en nyckel eller ett lösenord som du sedan kan använda med ett Azure-program. Därefter tittar vi på hur ett program kan använda den här nyckeln eller lösenordet.
 
-**Uppskattad tid toocomplete:** 20 minuter
+**Uppskattad tidsåtgång:** 20 minuter
 
 > [!NOTE]
-> Den här självstudiekursen innehåller inte instruktioner för hur toowrite hello Azure-program med något av hello steg, nämligen hur tooauthorize ett program toouse en nyckel eller hemlighet i hello nyckeln valvet.
+> Den här kursen innehåller inte instruktioner för hur du skriver Azure-programmet som ingår i ett av stegen, nämligen hur du tillåter ett program att använda en nyckel eller hemlighet i nyckelvalvet.
 >
 > I den här kursen används Azure PowerShell. Anvisningar för plattformsoberoende kommandoradsgränssnitt finns i [den här självstudiekursen](key-vault-manage-with-cli2.md).
 >
@@ -38,45 +38,45 @@ Använd den här självstudiekursen toohelp du få igång med Azure Key Vault to
 Översiktlig information om Azure Key Vault finns i [Vad är Azure Key Vault?](key-vault-whatis.md)
 
 ## <a name="prerequisites"></a>Krav
-toocomplete den här självstudien måste du ha hello följande:
+För att kunna slutföra den här självstudiekursen behöver du följande:
 
-* En prenumeration tooMicrosoft Azure. Om du inte har en prenumeration kan du registrera dig för ett [kostnadsfritt konto](https://azure.microsoft.com/pricing/free-trial/).
-* Azure PowerShell, **minst version 1.1.0**. tooinstall Azure PowerShell och koppla den till din Azure-prenumeration, se [hur tooinstall och konfigurera Azure PowerShell](/powershell/azure/overview). Om du redan har installerat Azure PowerShell och inte vet hello version från hello Azure PowerShell-konsolen, Skriv `(Get-Module azure -ListAvailable).Version`. Du kan använda den här självstudiekursen med några mindre ändringar även om du har Azure PowerShell version 0.9.1 till och med 0.9.8 installerad. Till exempel måste du använda hello `Switch-AzureMode AzureResourceManager` kommandot och hello Azure Key Vault kommandona har ändrats. En lista över hello Key Vault-cmdlets för versioner 0.9.1 via 0.9.8, se [Azure Key Vault-Cmdlets](/powershell/module/azurerm.keyvault/#key_vault).
-* Ett program som är konfigurerade toouse hello nyckel eller lösenord som du skapar i den här kursen. Ett exempelprogram som är tillgänglig från hello [Microsoft Download Center](http://www.microsoft.com/en-us/download/details.aspx?id=45343). Instruktioner finns i hello tillhörande Readme-filen.
+* En prenumeration på Microsoft Azure. Om du inte har en prenumeration kan du registrera dig för ett [kostnadsfritt konto](https://azure.microsoft.com/pricing/free-trial/).
+* Azure PowerShell, **minst version 1.1.0**. Om du vill installera och sedan koppla Azure PowerShell till din Azure-prenumeration läser du [Installera och konfigurera Azure PowerShell](/powershell/azure/overview). Om du redan har installerat Azure PowerShell och inte vet vilken version du har skriver du `(Get-Module azure -ListAvailable).Version` i Azure PowerShell-konsolen. Du kan använda den här självstudiekursen med några mindre ändringar även om du har Azure PowerShell version 0.9.1 till och med 0.9.8 installerad. Du måste till exempel använda kommandot `Switch-AzureMode AzureResourceManager`, och vissa Azure Key Vault-kommandon har ändrats. En lista med Key Vault-cmdlets för version 0.9.1 till och med 0.9.8 finns i [Cmdlets för Azure Key Vault](/powershell/module/azurerm.keyvault/#key_vault).
+* Ett program som ska konfigureras att använda nyckeln eller lösenordet som du skapar i den här självstudiekursen. Ett exempelprogram är tillgängligt från [Microsoft Download Center](http://www.microsoft.com/en-us/download/details.aspx?id=45343). Anvisningar finns i den tillhörande Readme-filen.
 
-Den här kursen är avsedd för Azure PowerShell nybörjare, men förutsätter att du förstår hello grundläggande begrepp som moduler, cmdletar och sessioner. Mer information finns i [Komma igång med Windows PowerShell](https://technet.microsoft.com/library/hh857337.aspx).
+Den här kursen är avsedd för nybörjare av Azure PowerShell, men vi förutsätter att du förstår de grundläggande begreppen, t.ex. moduler, cmdlets och sessioner. Mer information finns i [Komma igång med Windows PowerShell](https://technet.microsoft.com/library/hh857337.aspx).
 
-tooget utförlig information för alla cmdletar som du ser i den här kursen används hello **Get-Help** cmdlet.
+Om du vill visa detaljerad hjälp om cmdlets som du ser i den här självstudiekursen använder du cmdleten **Get-Help**.
 
     Get-Help <cmdlet-name> -Detailed
 
-Till exempel tooget hjälp för hello **Login-AzureRmAccount** cmdlet, skriv:
+Om du till exempel behöver hjälp med cmdleten **Login-AzureRmAccount** skriver du:
 
     Get-Help Login-AzureRmAccount -Detailed
 
-Du kan också läsa följande kurser tooget bekant med Azure Resource Manager i Azure PowerShell hello:
+Du kan också läsa följande självstudier för att bekanta dig med Azure Resource Manager i Azure PowerShell:
 
-* [Hur tooinstall och konfigurera Azure PowerShell](/powershell/azure/overview)
+* [Installera och konfigurera Azure PowerShell](/powershell/azure/overview)
 * [Använda Azure PowerShell med Resource Manager](../powershell-azure-resource-manager.md)
 
-## <a id="connect"></a>Ansluta tooyour prenumerationer
-Starta en Azure PowerShell-session och logga in tooyour Azure-konto med hello följande kommando:  
+## <a id="connect"></a>Ansluta till dina prenumerationer
+Starta en Azure PowerShell-session och logga in på ditt Azure-konto med följande kommando:  
 
     Login-AzureRmAccount
 
-Observera att om du använder en specifik instans av Azure, till exempel Azure Government använder hello - miljö parametern med det här kommandot. Exempel: `Login-AzureRmAccount –Environment (Get-AzureRmEnvironment –Name AzureUSGovernment)`
+Om du använder en specifik instans av Azure, till exempel Azure Government, använder du parametern -Environment med det här kommandot. Exempel: `Login-AzureRmAccount –Environment (Get-AzureRmEnvironment –Name AzureUSGovernment)`
 
-Ange ditt användarnamn för Azure-konto och lösenord i hello popup-webbläsarfönstret. Azure PowerShell får alla hello-prenumerationer som är associerade med det här kontot och som standard, använder hello första.
+Ange användarnamnet och lösenordet för ditt Azure-konto i popup-fönstret i webbläsaren. Azure PowerShell identifierar alla prenumerationer som är associerade med det här kontot och använder den första som standard.
 
-Om du har flera prenumerationer och vill toospecify en specifik en toouse för Azure Key Vault, skriver du hello följande toosee hello prenumerationer för ditt konto:
+Om du har flera prenumerationer och vill välja en specifik prenumeration för Azure Key Vault skriver du följande för att visa prenumerationerna för ditt konto:
 
     Get-AzureRmSubscription
 
-Sedan toospecify hello prenumeration toouse, typ:
+Ange sedan den prenumeration som du vill använda genom att skriva:
 
     Set-AzureRmContext -SubscriptionId <subscription ID>
 
-Mer information om hur du konfigurerar Azure PowerShell finns [hur tooinstall och konfigurera Azure PowerShell](/powershell/azure/overview).
+Mer information om hur du konfigurerar Azure PowerShell finns i [Installera och konfigurera Azure PowerShell](/powershell/azure/overview).
 
 ## <a id="resource"></a>Skapa en ny resursgrupp
 När du använder Azure Resource Manager skapas alla relaterade resurser inuti en resursgrupp. Vi ska skapa en ny resursgrupp med namnet **ContosoResourceGroup** i den här självstudiekursen:
@@ -85,133 +85,133 @@ När du använder Azure Resource Manager skapas alla relaterade resurser inuti e
 
 
 ## <a id="vault"></a>Skapa ett nyckelvalv
-Använd hello [ny AzureRmKeyVault](/powershell/module/azurerm.keyvault/new-azurermkeyvault) cmdlet toocreate en nyckelvalvet. Denna cmdlet har tre obligatoriska parametrar: en **resursgruppnamn**, **nyckelvalv namn**, och hello **geografisk plats**.
+Skapa ett nytt nyckelvalv med cmdleten [New-AzureRmKeyVault](/powershell/module/azurerm.keyvault/new-azurermkeyvault). Denna cmdlet har tre obligatoriska parametrar: ett **resursgruppsnamn**, ett **nyckelvalvsnamn** och en **geografisk plats**.
 
-Om du använder hello valvnamnet för till exempel **ContosoKeyVault**, hello resursgruppens namn av **ContosoResourceGroup**, och hello plats **Östasien**, typ:
+Om du till exempel använder valvnamnet **ContosoKeyVault**, resursgruppsnamnet **ContosoResourceGroup** och platsen **East Asia** skriver du:
 
     New-AzureRmKeyVault -VaultName 'ContosoKeyVault' -ResourceGroupName 'ContosoResourceGroup' -Location 'East Asia'
 
-hello resultatet av denna cmdlet visar egenskaperna för hello nyckelvalv som du nyss skapade. hello två viktigaste egenskaper är:
+Utdata från denna cmdlet visar egenskaper för nyckelvalvet som du precis skapat. De två viktigaste egenskaperna är:
 
-* **Valvet namnet**: I hello exempelvis är **ContosoKeyVault**. Du ska använda det här namnet för andra Key Vault-cmdlets.
-* **Valvet URI**: I hello exempelvis är https://contosokeyvault.vault.azure.net/. Program som använder ditt valv via dess REST-API måste använda denna URI.
+* **Valvnamn**: I det här exemplet är namnet **ContosoKeyVault**. Du ska använda det här namnet för andra Key Vault-cmdlets.
+* **Valvets URI**: I exemplet är detta https://contosokeyvault.vault.azure.net/. Program som använder ditt valv via dess REST-API måste använda denna URI.
 
-Azure-konto är nu behörig tooperform några åtgärder på den här nyckeln valvet. Vilket ingen annan har ännu.
+Nu har ditt Azure-konto behörighet att utföra åtgärder i det här nyckelvalvet. Vilket ingen annan har ännu.
 
 > [!NOTE]
-> Om du ser hello fel **hello prenumerationen är inte registrerad toouse namnområdet 'Microsoft.KeyVault'** när du försöker toocreate nya nyckelvalvet, kör `Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.KeyVault"` och kör sedan kommandot Nytt AzureRmKeyVault. Mer information finns i [Register-AzureRmResourceProvider](/powershell/module/azurerm.resources/register-azurermresourceprovider).
+> Om du får felet **Prenumerationen har inte registrerats för användning av namnrymden Microsoft.KeyVault** när du försöker skapa ett nytt nyckelvalv kör du `Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.KeyVault"` och kör sedan kommandot New-AzureRmKeyVault igen. Mer information finns i [Register-AzureRmResourceProvider](/powershell/module/azurerm.resources/register-azurermresourceprovider).
 >
 >
 
-## <a id="add"></a>Lägga till en nyckel eller Hemlig toohello nyckelvalv
-Om du vill Azure Key Vault toocreate programvaruskyddad nyckel som du kan använda hello [Lägg till AzureKeyVaultKey](/powershell/module/azurerm.keyvault/add-azurekeyvaultkey) cmdlet, och skriver hello följande:
+## <a id="add"></a>Lägga till en nyckel eller hemlighet till nyckelvalvet
+Om du vill att Azure Key Vault ska skapa en programvaruskyddad nyckel åt dig använder du cmdleten [Add-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/add-azurekeyvaultkey)  och skriver följande:
 
     $key = Add-AzureKeyVaultKey -VaultName 'ContosoKeyVault' -Name 'ContosoFirstKey' -Destination 'Software'
 
-Men om du har en befintlig programvaruskyddad nyckel i en. PFX-fil som sparats tooyour C:\ enhet i en fil med namnet softkey.pfx som du vill tooupload tooAzure Key Vault typen hello följande tooset hello variabeln **securepfxpwd** för ett lösenord på **123** för hello. PFX-filen:
+Men om du har en befintlig programvaruskyddad nyckel i en PFX-fil som sparats på enhet C:\ i en fil med namnet softkey.pfx som du vill överföra till Azure Key Vault skriver du följande för att ange variabeln **securepfxpwd** för lösenordet **123** för PFX-filen:
 
     $securepfxpwd = ConvertTo-SecureString –String '123' –AsPlainText –Force
 
-Skriv sedan följande tooimport hello nyckeln från hello hello. PFX-fil, som skyddar hello nyckeln av programvara i hello Key Vault-tjänsten:
+Skriv sedan följande för att importera nyckeln från PFX-filen, som skyddar den med programvara i Key Vault-tjänsten:
 
     $key = Add-AzureKeyVaultKey -VaultName 'ContosoKeyVault' -Name 'ContosoFirstKey' -KeyFilePath 'c:\softkey.pfx' -KeyFilePassword $securepfxpwd
 
 
-Nu kan du referera den här nyckeln att du har skapat eller överföra tooAzure Key Vault med hjälp av dess URI. Använd **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey** tooalways hämta hello aktuella versionen och använda **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/ cgacf4f763ar42ffb0a1gca546aygd87** tooget den här specifika versionen.  
+Nu kan du referera till nyckeln som du skapat eller överfört till Azure Key Vault med hjälp av dess URI. Använd **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey** om du alltid vill hämta den aktuella versionen och använd **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87** om du vill hämta den här specifika versionen.  
 
-toodisplay hello URI för den här nyckeln typ:
+Du kan visa nyckelns URI genom att skriva:
 
     $Key.key.kid
 
-tooadd en hemlig toohello valvet, som är ett lösenord med namnet SQLPassword och har hello Pa$ w0rd tooAzure Key Vault-värde, konvertera först hello värdet för Pa$ w0rd tooa säker sträng genom att skriva hello följande:
+Om du vill lägga till en hemlighet till valvet, dvs. ett lösenord med namnet SQLPassword och värdet Pa$ w0rd i Azure Key Vault, börjar du med att konvertera värdet Pa$ $w0rd till en säker sträng genom att skriva följande:
 
     $secretvalue = ConvertTo-SecureString 'Pa$$w0rd' -AsPlainText -Force
 
-Skriv hello följande:
+Skriv sedan följande:
 
     $secret = Set-AzureKeyVaultSecret -VaultName 'ContosoKeyVault' -Name 'SQLPassword' -SecretValue $secretvalue
 
-Nu kan du referera lösenordet du lagt till tooAzure Key Vault med dess URI. Använd **https://ContosoVault.vault.azure.net/secrets/SQLPassword** tooalways hämta hello aktuella versionen och använda **https://ContosoVault.vault.azure.net/secrets/SQLPassword/ 90018dbb96a84117a0d2847ef8e7189d** tooget den här specifika versionen.
+Nu kan du referera till det här lösenordet som du lagt till i Azure Key Vault med hjälp av dess URI. Använd **https://ContosoVault.vault.azure.net/secrets/SQLPassword** om du alltid vill hämta den senaste versionen och använd **https://ContosoVault.vault.azure.net/secrets/SQLPassword/90018dbb96a84117a0d2847ef8e7189d** om du vill hämta den här specifika versionen.
 
-toodisplay hello URI för den här hemligheten typ:
+Du visar hemlighetens URI genom att skriva:
 
     $secret.Id
 
-Nu ska vi visa hello nyckel eller hemlighet som du just skapat:
+Nu ska vi visa nyckeln eller hemligheten som du precis skapat:
 
-* tooview nyckeltypen,:`Get-AzureKeyVaultKey –VaultName 'ContosoKeyVault'`
-* tooview din hemliga, typ:`Get-AzureKeyVaultSecret –VaultName 'ContosoKeyVault'`
+* Om du vill visa din nyckel skriver du: `Get-AzureKeyVaultKey –VaultName 'ContosoKeyVault'`
+* Om du vill visa din hemlighet skriver du: `Get-AzureKeyVaultSecret –VaultName 'ContosoKeyVault'`
 
-Ditt nyckelvalv och nyckel eller hemlighet är nu redo för program toouse. Du måste auktorisera program toouse dem.  
+Nu är ditt nyckelvalv och din nyckel eller hemlighet redo att användas av program. Du måste ge programmen tillstånd att använda dem.  
 
 ## <a id="register"></a>Registrera ett program med Azure Active Directory
-Det här steget utförs normalt av en utvecklare, på en separat dator. Det är inte specifik tooAzure Key Vault men finns här för fullständighetens skull.
+Det här steget utförs normalt av en utvecklare, på en separat dator. Det är inte specifikt för Azure Key Vault men tas med i kursen för att inte utelämna något.
 
 > [!IMPORTANT]
-> toocomplete hello kursen, ditt konto, hello valvet och hello-program som du registrerar i det här steget måste vara i hello samma Azure-katalogen.
+> För att slutföra självstudiekursen måste ditt konto, valvet och det program som du ska registrera i det här steget finnas i samma Azure-katalog.
 >
 >
 
-Program som använder ett nyckelvalv måste autentiseras med hjälp av en token från Azure Active Directory. toodo detta, hello ägare av programmet hello måste först registrera programmet hello i sina Azure Active Directory. Hello slutet av registrering hämtar hello programägaren hello följande värden:
+Program som använder ett nyckelvalv måste autentiseras med hjälp av en token från Azure Active Directory. Programmets ägare måste då först registrera programmet i sin Azure Active Directory. I slutet av registreringen hämtar programmets ägare följande värden:
 
-* En **program-ID** (även kallat ett klient-ID) och **autentiseringsnyckel** (även kallat hello delad hemlighet). programmet hello måste båda dessa värden tooAzure Active Directory tooget presentera en token. Hur konfigureras programmet hello toodo detta beror på programmet hello. För hello Key Vault exempelprogrammet anger hello programägaren värdena i hello app.config-fil.
+* Ett **program-ID** (även kallat ett klient-ID) och en **autentiseringsnyckel** (även kallat den delade nyckeln). Programmet måste presentera båda dessa värden för Azure Active Directory för att få en token. Hur programmet är konfigurerat för att göra detta beror på programmet. I Key Vault-exempelprogrammet anger programmets ägare dessa värden i filen app.config.
 
-tooregister hello program i Azure Active Directory:
+Så här registrerar du programmet i Azure Active Directory:
 
-1. Logga in toohello klassiska Azure-portalen.
-2. Klicka på vänster hello **Active Directory**, och välj sedan hello katalog där du ska registrera ditt program. <br> <br> **Obs:** måste du välja hello samma katalog som innehåller hello Azure-prenumeration som du skapade nyckelvalvet. Om du inte vet vilken katalog detta är klickar du på **inställningar**, identifiera hello prenumeration som du skapade ditt nyckelvalv och Observera hello namnet på hello katalog visas i hello sista kolumnen.
-3. Klicka på **Program**. Om inga appar har lagts till tooyour directory kan den här sidan visar endast hello **Lägg till en App** länk. Klicka på länken hello eller också kan du klicka på **lägga till** i hello kommandofält.
-4. I hello **Lägg till program** på hello **vad vill du vill toodo?** klickar du på **Lägg till ett program som min organisation utvecklar**.
-5. På hello **berätta om tillämpningsprogrammet** , ange ett namn för ditt program och väljer sedan **WEB APPLICATION och/eller webb-API** (hello standard). Klicka på hello **nästa** ikon.
-6. På hello **appegenskaper** anger hello **SIGN-ON-URL** och **APP-ID URI** för webbprogram. Om programmet inte har dessa värden kan du hitta på dem för det här steget (du kan till exempel skriva http://test1.contoso.com i båda rutorna). Det spelar ingen roll om dessa platser finns eller inte. Vad är viktigt är hello appen ID URI för varje program är olika för varje program i din katalog. hello directory använder denna sträng tooidentify din app.
-7. Klicka på hello **Slutför** ikonen toosave ändringarna i hello guiden.
-8. På hello **Snabbstart** klickar du på **konfigurera**.
-9. Rulla toohello **nycklar** avsnittet väljer hello varaktighet och klicka sedan på **spara**. hello sidan uppdateras och innehåller nu ett nyckelvärde. Du måste konfigurera ditt program med det här värdet för nyckeln och hello **klient-ID** värde. (Anvisningar för den här konfigurationen är programspecifika.)
-10. Kopiera hello klient-ID-värde från den här sidan som du vill använda i hello nästa steg tooset behörigheter på ditt valv.
+1. Logga in på den klassiska Azure-portalen.
+2. Klicka på **Active Directory** till vänster och välj sedan den katalog som du ska registrera programmet i. <br> <br> **Obs!** Du måste välja samma katalog som innehåller Azure-prenumerationen som du skapade nyckelvalvet med. Om du inte vet vilken katalog det är klickar du på **Inställningar**, identifierar prenumerationen som du skapade nyckelvalvet med och noterar namnet på katalogen som visas i den sista kolumnen.
+3. Klicka på **Program**. Om inga appar har lagts till i katalogen visas bara länken **Lägg till en app** på den här sidan. Klicka på länken eller på **Lägg till** i kommandofältet.
+4. I guiden **Lägg till program** på sidan **Vad vill du göra?** klickar du på **Lägg till ett program som min organisation utvecklar**.
+5. På sidan **Berätta om appen** anger du ett namn för appen och väljer sedan **Webbapp och/eller webb-API** (standardinställningen). Klicka på ikonen **Nästa**.
+6. På sidan **Appegenskaper** anger du webbappens **inloggnings-URL** och **appidentitets-URI**. Om programmet inte har dessa värden kan du hitta på dem för det här steget (du kan till exempel skriva http://test1.contoso.com i båda rutorna). Det spelar ingen roll om dessa platser finns eller inte. Det viktiga är att appidentitets-URI:n för varje program är olika för varje program i katalogen. Katalogen använder den här strängen för att identifiera din app.
+7. Klicka på ikonen **Slutför** för att spara dina ändringar i guiden.
+8. På sidan **Snabbstart** klickar du på **Konfigurera**.
+9. Bläddra till **nycklarna**, välj varaktighet och klicka sedan på **Spara**. Sidan uppdateras och innehåller nu ett nyckelvärde. Du måste konfigurera ditt program med det här nyckelvärdet och värdet **klient-ID**. (Anvisningar för den här konfigurationen är programspecifika.)
+10. Kopiera värdet för klient-ID:t från den här sidan, som du ska använda i nästa steg för att ange behörigheter för valvet.
 
-## <a id="authorize"></a>Auktorisera hello programmet toouse hello nyckel eller hemlighet.
-tooauthorize hello programmet tooaccess hello nyckel eller hemlighet i hello valvet, Använd den [Set AzureRmKeyVaultAccessPolicy](/powershell/module/azurerm.keyvault/set-azurermkeyvaultaccesspolicy) cmdlet.
+## <a id="authorize"></a>Godkänna att programmet använder nyckeln eller hemligheten
+För att ge programmet tillstånd att komma åt nyckeln eller hemligheten i valvet använder du cmdleten [Set-AzureRmKeyVaultAccessPolicy](/powershell/module/azurerm.keyvault/set-azurermkeyvaultaccesspolicy).
 
-Om din valvnamnet är till exempel **ContosoKeyVault** och hello-program som du vill tooauthorize har ett klient-ID för 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed och du vill tooauthorize hello programmet toodecrypt och logga med nycklar i ditt valv kör hello följande:
+Om ditt valvnamn till exempel är **ContosoKeyVault** och programmet som du vill auktorisera har klient-ID:t 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed och du vill tillåta att programmet dekrypterar och loggar in med nycklar i valvet, kör du följande:
 
     Set-AzureRmKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -ServicePrincipalName 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed -PermissionsToKeys decrypt,sign
 
-Om du vill tooauthorize att samma program tooread hemligheter i ditt valv, kör du hello följande:
+Om du vill att samma program ska kunna läsa hemligheter i valvet kör du följande:
 
     Set-AzureRmKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -ServicePrincipalName 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed -PermissionsToSecrets Get
 
-## <a id="HSM"></a>Om du vill toouse en maskinvarusäkerhetsmodul (HSM)
-För ytterligare säkerhet kan du importera eller generera nycklar i maskinvarusäkerhetsmoduler (HSM) som lämnar aldrig hello HSM gräns. hello HSM är FIPS 140-2 Level 2-verifierade. Om det här kravet inte gäller tooyou, hoppa över det här avsnittet och gå för[ta bort hello nyckelvalvet och associerade nycklar och hemligheter](#delete).
+## <a id="HSM"></a>Om du vill använda en maskinvarusäkerhetsmodul (HSM)
+Om du vill öka säkerheten ytterligare kan du importera och generera nycklar i maskinvarusäkerhetsmoduler (HSM) som aldrig lämnar HSM-gränsen. HSM-modulerna är FIPS 140-2 Level 2-verifierade. Om detta krav inte är nödvändigt för dig hoppar du över det här avsnittet och går vidare till [Ta bort nyckelvalvet och associerade nycklar och hemligheter](#delete).
 
-toocreate nycklarna HSM-skyddad måste du använda hello [Azure Key Vault Premium service tier toosupport HSM-skyddade nycklar](https://azure.microsoft.com/pricing/free-trial/). Observera även att den här funktionen inte är tillgänglig för Azure i Kina.
+För att skapa dessa HSM-skyddade nycklar måste du använda [premiumnivån av Azure Key Vault för att stödja HSM-skyddade nycklar](https://azure.microsoft.com/pricing/free-trial/). Observera även att den här funktionen inte är tillgänglig för Azure i Kina.
 
-När du skapar hello nyckelvalvet, lägger du till hello **- SKU** parameter:
+När du skapar nyckelvalvet lägger du till parametern **-SKU**:
 
     New-AzureRmKeyVault -VaultName 'ContosoKeyVaultHSM' -ResourceGroupName 'ContosoResourceGroup' -Location 'East Asia' -SKU 'Premium'
 
 
 
-Du kan lägga till programvara-skyddade nycklar (som visas tidigare) och HSM-skyddade nycklar toothis nyckelvalvet. toocreate HSM-skyddad nyckel set hello **-målet** parametern too'HSM':
+Du kan lägga till programvaruskyddade nycklar (som du såg tidigare) och HSM-skyddade nycklar till det här nyckelvalvet. Om du vill skapa en HSM-skyddad nyckel anger du parametern **-Destination** till 'HSM':
 
     $key = Add-AzureKeyVaultKey -VaultName 'ContosoKeyVaultHSM' -Name 'ContosoFirstHSMKey' -Destination 'HSM'
 
-Du kan använda följande kommando tooimport hello en nyckel från en. PFX-filen på datorn. Detta kommando importerar hello nyckel till HSM: er i hello Key Vault-tjänsten:
+Du kan använda följande kommando för att importera en nyckel från en PFX-fil på datorn. Det här kommandot importerar nyckeln till HSM-moduler i Key Vault-tjänsten:
 
     $key = Add-AzureKeyVaultKey -VaultName 'ContosoKeyVaultHSM' -Name 'ContosoFirstHSMKey' -KeyFilePath 'c:\softkey.pfx' -KeyFilePassword $securepfxpwd -Destination 'HSM'
 
 
-hello nästa kommando importerar en ”bring your own key” paketet (BYOK). Det här scenariot kan du skapa din nyckel i din lokala HSM och överföra det tooHSMs i hello Key Vault-tjänsten, utan hello nyckel lämnar hello HSM gräns:
+Nästa kommando importerar ett BYOK-paket (Bring Your Own Key). Med det är scenariot kan du generera nyckeln i din lokala HSM och överföra den till HSM-moduler i Key Vault-tjänsten utan att nyckeln lämnar HSM-gränsen:
 
     $key = Add-AzureKeyVaultKey -VaultName 'ContosoKeyVaultHSM' -Name 'ContosoFirstHSMKey' -KeyFilePath 'c:\ITByok.byok' -Destination 'HSM'
 
-Detaljerade instruktioner om hur toogenerate BYOK paketet, se [hur toogenerate och överför HSM-skyddade nycklar för Azure Key Vault](key-vault-hsm-protected-keys.md).
+Mer detaljerad information om hur du skapar det här BYOK-paketet finns i [Generera och överföra HSM-skyddade nycklar för Azure Key Vault](key-vault-hsm-protected-keys.md).
 
-## <a id="delete"></a>Ta bort hello nyckelvalvet och associerade nycklar och hemligheter
-Om du behöver inte längre hello nyckelvalvet och hello nyckel eller hemlighet som den innehåller, kan du ta bort hello nyckelvalv med hello [ta bort AzureRmKeyVault](/powershell/module/azurerm.keyvault/remove-azurermkeyvault) cmdlet:
+## <a id="delete"></a>Ta bort nyckelvalvet och associerade nycklar och hemligheter
+Om du inte längre behöver nyckelvalvet och nyckeln eller hemligheten som det innehåller kan du ta bort nyckelvalvet med cmdleten [Remove-AzureRmKeyVault](/powershell/module/azurerm.keyvault/remove-azurermkeyvault):
 
     Remove-AzureRmKeyVault -VaultName 'ContosoKeyVault'
 
-Eller, du kan ta bort en hela Azure resursgrupp, vilket innefattar hello nyckelvalvet och andra resurser som du ingår i gruppen:
+Eller så kan du ta bort en hel Azure-resursgrupp, som innehåller nyckelvalvet och andra resurser som du har lagt till i gruppen:
 
     Remove-AzureRmResourceGroup -ResourceGroupName 'ContosoResourceGroup'
 
@@ -220,16 +220,16 @@ Eller, du kan ta bort en hela Azure resursgrupp, vilket innefattar hello nyckelv
 Andra kommandon som kan vara användbara för att hantera Azure Key Vault:
 
 * `$Keys = Get-AzureKeyVaultKey -VaultName 'ContosoKeyVault'`: Det här kommandot hämtar en tabellvy över alla nycklar och valda egenskaper.
-* `$Keys[0]`: Det här kommandot visar en fullständig lista över egenskaper för hello angiven nyckel
+* `$Keys[0]`: Det här kommandot visar en fullständig lista över egenskaper för den angivna nyckeln
 * `Get-AzureKeyVaultSecret`: Det här kommandot visar en tabellvy över alla hemliga namn och valda egenskaper.
-* `Remove-AzureKeyVaultKey -VaultName 'ContosoKeyVault' -Name 'ContosoFirstKey'`: Exempel hur tooremove en viss nyckel.
-* `Remove-AzureKeyVaultSecret -VaultName 'ContosoKeyVault' -Name 'SQLPassword'`: Exempel hur tooremove en specifik hemlighet.
+* `Remove-AzureKeyVaultKey -VaultName 'ContosoKeyVault' -Name 'ContosoFirstKey'`: Exempel på hur du tar bort en särskild nyckel.
+* `Remove-AzureKeyVaultSecret -VaultName 'ContosoKeyVault' -Name 'SQLPassword'`: Exempel på hur du tar bort en särskild hemlighet.
 
 ## <a id="next"></a>Nästa steg
 En uppföljningskurs där Azure Key Vault används i en webbapp finns i [Använda Azure Key Vault från en webbapp](key-vault-use-from-web-application.md).
 
-toosee hur nyckelvalvet används finns i [Azure Key Vault-loggning](key-vault-logging.md).
+Om du vill se hur nyckelvalvet används läser du avsnittet om [Azure Key Vault-loggning](key-vault-logging.md).
 
-En lista över hello senaste Azure PowerShell-cmdlets för Azure Key Vault finns [Azure Key Vault-Cmdlets](/powershell/module/azurerm.keyvault/#key_vault).
+En lista över de senaste Azure PowerShell-cmdlets för Azure Key Vault finns i [Cmdlets för Azure Key Vault](/powershell/module/azurerm.keyvault/#key_vault).
 
-Programmering referenser finns [hello Azure Key Vault Utvecklarhandbok](key-vault-developers-guide.md).
+Programmeringsreferenser finns i [utvecklarguiden för Azure Key Vault](key-vault-developers-guide.md).

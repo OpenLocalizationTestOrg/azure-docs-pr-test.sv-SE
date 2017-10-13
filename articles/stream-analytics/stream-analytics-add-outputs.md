@@ -1,5 +1,5 @@
 ---
-title: "aaaHow tooconfigure data matar ut för Stream Analytics-jobb | Microsoft Docs"
+title: "Hur du konfigurerar data matar ut för Stream Analytics-jobb | Microsoft Docs"
 description: "Konfigurera utdata för Stream Analytics-jobb | Learning sökvägssegment."
 keywords: data som utdata, dataflyttning
 documentationcenter: 
@@ -15,37 +15,37 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/26/2017
 ms.author: samacha
-ms.openlocfilehash: c5d89e9e9f9211d3e778580c071dd53d56aed9fe
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 1ffa517469da1a8d79917b9747abc97ca3bef463
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="how-tooconfigure-data-outputs-for-stream-analytics-jobs"></a>Hur tooconfigure data matar ut för Stream Analytics-jobb
+# <a name="how-to-configure-data-outputs-for-stream-analytics-jobs"></a>Hur du konfigurerar data matar ut för Stream Analytics-jobb
 
-Azure Stream Analytics-jobb kan vara anslutna tooone eller mer utdata som definierar en anslutning tooan befintliga data mottagare. Stream Analytics-jobbet, processer och omvandlar inkommande data som skrivs en dataström med data utdata händelser tooyour jobbutdata.
+Azure Stream Analytics-jobb kan vara ansluten till en eller flera utdata som definierar en anslutning till en befintlig data sink. Stream Analytics-jobbet, processer och omvandlar inkommande data som skrivs en dataström med data utdata händelser till ditt jobb utdata.
 
-Utdata för Stream Analytics kan vara används toosource realtids-instrumentpaneler och aviseringar, utlösare data movement arbetsflöden eller helt enkelt Arkivera data för batch-bearbetning vid ett senare tillfälle. Stream Analytics har förstklassigt integrering med flera Azure-tjänster som dokumenteras här.
+Stream Analytics-data utdata kan användas som källa för realtids-instrumentpaneler eller aviseringar, utlöser arbetsflöden för flytt av data eller bara arkiverar data för batch-bearbetning vid ett senare tillfälle. Stream Analytics har förstklassigt integrering med flera Azure-tjänster som dokumenteras här.
 
-tooadd utdata tooyour Stream Analytics-jobbet:
+Lägga till utdata till Stream Analytics-jobb:
 
-1. I hello [Azure-portalen](https://portal.azure.com), öppna ditt jobb och klickar på **utdata** och klicka sedan på **Lägg till** i hello utdata bladet som visas.
+1. I den [Azure-portalen](https://portal.azure.com), öppna ditt jobb och klickar på **utdata** och klicka sedan på **Lägg till** i bladet utdata som visas.
    
     ![Lägga till utdata](./media/stream-analytics-add-outputs/1-stream-analytics-add-outputs.png)  
    
-2. Ange ett eget namn för den här utdata i hello **kolumnalias** rutan. Det här namnet kan användas i ditt jobb fråga senare på toorefer toohello utdata.  
+2. Ange ett eget namn för den här utdata i den **kolumnalias** rutan. Det här namnet kan användas i ditt jobb fråga vid ett senare tillfälle för att referera till utdata.  
    
-    Fyll i hello resten av hello krävs anslutning egenskaper tooconnect tooyour utdata.  De här fälten varierar beroende på utdatatypen och definieras här.  
+    Fyll i resten av egenskaperna behövs för att ansluta till dina utdata.  De här fälten varierar beroende på utdatatypen och definieras här.  
    
     ![Välj typ av data movement](./media/stream-analytics-add-outputs/2-stream-analytics-add-outputs.png)  
    
-3. Hello utdatatypen måste du använda toospecify hur hello data serialiseras eller formaterad. Här beskrivs hello specifika serialisering inställningar för varje Utdatatyp av.
+3. Beroende på vilken Utdatatyp, kan du behöva ange hur data serialiseras eller formaterad. Här beskrivs specifika serialisering inställningarna för varje Utdatatyp av.
    
-    Fyll i hello resten av hello behövs egenskaper tooconnect tooyour datakälla. De här fälten varierar beroende på typ av indata- och och definieras i detalj i hello [skapa jobbet artikel](stream-analytics-create-a-job.md).  
+    Fyll i resten av egenskaperna behövs för att ansluta till datakällan. De här fälten varierar beroende på typ av indata- och och definieras i detalj i den [skapa jobbet artikel](stream-analytics-create-a-job.md).  
 
 > [!Note]
 >
-> Output-elementet tillagda toohello jobb, måste finnas innan hello jobbet har startats och händelser börjar flöda. Till exempel om du använder Blob storage som utdata hello jobbet kommer inte att skapa ett lagringskonto automatiskt. Den måste toobe som skapats av hello användare innan hello ASA jobb har startat.
+> En output-elementet som läggs till projektet, måste finnas innan jobbet har startats och händelser börjar flöda. Till exempel om du använder Blob storage som utdata jobbet kommer inte att skapa ett lagringskonto automatiskt. Den måste skapas av användaren innan ASA jobbet har startats.
 > 
  
 
@@ -53,7 +53,7 @@ tooadd utdata tooyour Stream Analytics-jobbet:
 Om du behöver mer hjälp kan du besöka vårt [Azure Stream Analytics-forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
 
 ## <a name="next-steps"></a>Nästa steg
-* [Introduktion tooAzure Stream Analytics](stream-analytics-introduction.md)
+* [Introduktion till Azure Stream Analytics](stream-analytics-introduction.md)
 * [Komma igång med Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Skala Azure Stream Analytics-jobb](stream-analytics-scale-jobs.md)
 * [Referens för Azure Stream Analytics-frågespråket](https://msdn.microsoft.com/library/azure/dn834998.aspx)

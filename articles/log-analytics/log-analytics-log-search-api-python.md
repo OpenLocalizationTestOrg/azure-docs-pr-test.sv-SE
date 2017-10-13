@@ -1,6 +1,6 @@
 ---
-title: "aaaPython skript tooretrieve data från Azure Log Analytics | Microsoft Docs"
-description: "hello Log Analytics loggen Sök-API kan REST API-klient tooretrieve data från en logganalys-arbetsytan.  Den här artikeln innehåller ett exempelskript för Python med hello loggen Sök-API."
+title: "Python-skriptet för att hämta data från Azure Log Analytics | Microsoft Docs"
+description: "Log Analytics loggen Sök API kan alla REST API-klient att hämta data från en logganalys-arbetsytan.  Den här artikeln innehåller ett exempelskript för Python med hjälp av loggen Sök-API."
 services: log-analytics
 documentationcenter: 
 author: bwren
@@ -13,20 +13,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/28/2017
 ms.author: bwren
-ms.openlocfilehash: a45693b04cd388301b859e7186ca671786d0229e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 56d7c6dc648a01e7b0efc167cb65c94bac5468ec
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="retrieve-data-from-log-analytics-with-a-python-script"></a>Hämta data från logganalys med Python-skriptet
-Hej [Log Analytics loggen Sök API](log-analytics-log-search-api.md) gör REST API-klient tooretrieve data från en logganalys-arbetsytan.  Den här artikeln beskriver en Python-skriptet som använder hello Log Analytics loggen Sök-API.  
+Den [Log Analytics loggen Sök API](log-analytics-log-search-api.md) tillåter alla REST API-klient att hämta data från en logganalys-arbetsytan.  Den här artikeln beskriver en Python-skriptet som använder Log Analytics loggen Sök-API.  
 
 ## <a name="authentication"></a>Autentisering
-Det här skriptet använder ett huvudnamn för tjänsten i Azure Active Directory tooauthenticate toohello arbetsyta.  Tjänstens huvudnamn att en klient programmet toorequest som hello service autentisera ett konto även om hello-klienten inte har hello kontonamn. Innan du kör skriptet måste du skapa ett huvudnamn för tjänsten med hjälp av hello process på [använda portalen toocreate ett Azure Active Directory-program och tjänstens huvudnamn som kan komma åt resurser](../azure-resource-manager/resource-group-create-service-principal-portal.md).  Du behöver tooprovide hello program-ID, klient-ID och autentiseringsnyckel toohello skript. 
+Det här skriptet använder ett huvudnamn för tjänsten i Azure Active Directory för att autentisera till arbetsytan.  Tjänstens huvudnamn kan ett klientprogram att begära att autentisera tjänsten ett konto även om klienten inte har namnet på kontot. Innan du kör skriptet måste du skapa ett huvudnamn för tjänsten med hjälp av processen för [använda portalen för att skapa ett Azure Active Directory applikationen eller tjänsten säkerhetsobjekt som kan komma åt resurser](../azure-resource-manager/resource-group-create-service-principal-portal.md).  Du måste ange program-ID, klient-ID och autentiseringsnyckel i skriptet. 
 
 > [!NOTE]
-> När du [skapa ett Azure Automation-konto](../automation/automation-create-standalone-account.md), ett huvudnamn för tjänsten skapas som är lämplig toouse med det här skriptet.  Om du redan har ett huvudnamn för tjänsten som skapats av Azure Automation så bör du kunna toouse den i stället för att skapa en ny, även om du behöver för[skapa en autentiseringsnyckel](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key) om den inte redan har en.
+> När du [skapa ett Azure Automation-konto](../automation/automation-create-standalone-account.md), skapas ett huvudnamn för tjänsten som är lämplig för användning med det här skriptet.  Om du redan har ett huvudnamn för tjänsten som skapats av Azure Automation så att du ska kunna använda den i stället för att skapa en ny, men du kan behöva [skapa en autentiseringsnyckel](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key) om den inte redan har en.
 
 ## <a name="script"></a>Skript
 ``` python
@@ -40,7 +40,7 @@ from pprint import pprint
 resource_group = 'xxxxxxxx'
 workspace = 'xxxxxxxx'
 
-# Details of query.  Modify these tooyour requirements.
+# Details of query.  Modify these to your requirements.
 query = "Type=Event"
 end_time = datetime.datetime.utcnow()
 start_time = end_time - datetime.timedelta(hours=24)
@@ -61,7 +61,7 @@ context = adal.AuthenticationContext('https://login.microsoftonline.com/' + tena
 token_response = context.acquire_token_with_client_credentials('https://management.core.windows.net/', application_id, application_key)
 access_token = token_response.get('accessToken')
 
-# Add token tooheader
+# Add token to header
 headers = {
     "Authorization": 'Bearer ' + access_token,
     "Content-Type":'application/json'
@@ -90,7 +90,7 @@ response = requests.post(uri,json=search_params,headers=headers)
 # Response of 200 if successful
 if response.status_code == 200:
 
-    # Parse hello response tooget hello ID and status
+    # Parse the response to get the ID and status
     data = response.json()
     search_id = data["id"].split("/")
     id = search_id[len(search_id)-1]
@@ -99,12 +99,12 @@ if response.status_code == 200:
     # If status is pending, then keep checking until complete
     while status == "Pending":
 
-        # Build URL tooget search from ID and send request
+        # Build URL to get search from ID and send request
         uri_search = uri_search + '/' + id
         uri = uri_search + '?' + uri_api
         response = requests.get(uri,headers=headers)
 
-        # Parse hello response tooget hello status
+        # Parse the response to get the status
         data = response.json()
         status = data["__metadata"]["Status"]
 
@@ -119,4 +119,4 @@ print ("Returned top:" + str(data["__metadata"]["top"]))
 pprint (data["value"])
 ```
 ## <a name="next-steps"></a>Nästa steg
-- Mer information om hello [Log Analytics loggen Sök API](log-analytics-log-search-api.md).
+- Lär dig mer om den [Log Analytics loggen Sök API](log-analytics-log-search-api.md).

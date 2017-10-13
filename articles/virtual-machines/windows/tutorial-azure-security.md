@@ -1,5 +1,5 @@
 ---
-title: aaaAzure Security Center och Windows-datorer i Azure | Microsoft Docs
+title: Azure Security Center och Windows-datorer i Azure | Microsoft Docs
 description: "Läs mer om säkerheten för din Windows Azure-dator med Azure Security Center."
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/01/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 238bf4e266a24a536d35dd647db6056ab39a1f1a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: adb00e28b0b204858a763f83836ee2ac96f8f9e4
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="monitor-virtual-machine-security-by-using-azure-security-center"></a>Övervaka virtuella säkerhet med hjälp av Azure Security Center
 
@@ -34,81 +34,81 @@ Azure Security Center kan hjälpa dig få insyn i Azure-resurs säkerhetsåtgär
 
 ## <a name="security-center-overview"></a>Översikt över Security Center
 
-Security Center identifierar potentiella konfigurationsproblem för virtuell dator (VM) och mål säkerhetshot. Dessa kan innehålla virtuella datorer som saknar nätverkssäkerhetsgrupper och okrypterade diskar brute force-attacker för Remote Desktop Protocol (RDP). hello information visas på instrumentpanelen som hello Security Center enkelt att läsa diagram.
+Security Center identifierar potentiella konfigurationsproblem för virtuell dator (VM) och mål säkerhetshot. Dessa kan innehålla virtuella datorer som saknar nätverkssäkerhetsgrupper och okrypterade diskar brute force-attacker för Remote Desktop Protocol (RDP). Informationen visas på instrumentpanelen i Security Center i lätt att läsa diagram.
 
-tooaccess hello instrumentpanelen i Security Center, i hello Azure-portalen på hello-menyn och väljer **Security Center**. På instrumentpanelen hello du finns hello säkerhetshälsa i Azure-miljön, hitta en uppräkning av aktuella rekommendationer och visa hello aktuell status för hot aviseringar. Du kan expandera varje övergripande diagram toosee detalj.
+För att komma åt instrumentpanelen i Security Center i Azure-portalen på menyn, Välj **Security Center**. På instrumentpanelen, se säkerhetshälsa för Azure-miljön, hitta antalet aktuella rekommendationer och visa aktuell status för hot aviseringar. Du kan expandera varje övergripande diagram om du vill se mer information.
 
 ![Instrumentpanelen Security Center](./media/tutorial-azure-security/asc-dash.png)
 
-Security Center är mer omfattande än data identifiering tooprovide rekommendationer för problem som upptäcks. Om en virtuell dator har distribuerats utan ett anslutet nätverkssäkerhetsgrupp, visar Säkerhetscenter en rekommendation med steg du kan vidta. Du kan hämta automatiska reparationer utan att lämna hello kontexten för Security Center.  
+Security Center är mer omfattande än identifiering av data för att ge rekommendationer för problem som upptäcks. Om en virtuell dator har distribuerats utan ett anslutet nätverkssäkerhetsgrupp, visar Säkerhetscenter en rekommendation med steg du kan vidta. Du kan hämta automatiska reparationer utan att lämna samband med Security Center.  
 
 ![Rekommendationer](./media/tutorial-azure-security/recommendations.png)
 
 ## <a name="set-up-data-collection"></a>Konfigurera datainsamling
 
-Innan du kan få en överblick över VM säkerhetskonfigurationer, måste tooset in insamling av Security Center. Detta innebär att aktivera insamling av data och skapa ett Azure storage-konto toohold insamlade data. 
+Innan du kan få en överblick över VM säkerhetskonfigurationer, måste du ställer in insamling av Security Center. Detta innebär att aktivera insamling av data och skapa ett Azure storage-konto för att lagra data som samlats in. 
 
-1. Klicka på instrumentpanelen för hello Security Center **säkerhetsprincip**, och sedan välja din prenumeration. 
+1. Klicka på instrumentpanelen i Security Center **säkerhetsprincip**, och sedan välja din prenumeration. 
 2. För **datainsamling**väljer **på**.
-3. Välj toocreate ett lagringskonto **väljer något lagringskonto**. Markera **OK**.
-4. På hello **säkerhetsprincip** bladet väljer **spara**. 
+3. Om du vill skapa ett lagringskonto **väljer något lagringskonto**. Markera **OK**.
+4. På den **säkerhetsprincip** bladet väljer **spara**. 
 
-hello Säkerhetscenter data collection agent installeras på alla virtuella datorer och datainsamlingen påbörjas. 
+Security Center data collection agent installeras på alla virtuella datorer och datainsamlingen påbörjas. 
 
 ## <a name="set-up-a-security-policy"></a>Ställ in en säkerhetsprincip
 
-Säkerhetsprinciper finns används toodefine hello objekt som Security Center samlar in data och ger rekommendationer. Du kan tillämpa olika principer toodifferent uppsättningar med Azure-resurser. Även om Azure-resurser som standard ska utvärderas mot alla principobjekt kan du inaktivera enskilda principobjekt för alla Azure-resurser eller för en resursgrupp. Detaljerad information om säkerhetsprinciper från security Center finns [ställa in säkerhetsprinciper i Azure Security Center](../../security-center/security-center-policies.md). 
+IPSec-principer används för att definiera objekten som Säkerhetscenter samlar in data och ger rekommendationer. Du kan använda olika principer för olika uppsättningar av Azure-resurser. Även om Azure-resurser som standard ska utvärderas mot alla principobjekt kan du inaktivera enskilda principobjekt för alla Azure-resurser eller för en resursgrupp. Detaljerad information om säkerhetsprinciper från security Center finns [ställa in säkerhetsprinciper i Azure Security Center](../../security-center/security-center-policies.md). 
 
-tooset in en säkerhetsprincip för alla Azure-resurser:
+Att ställa in en säkerhetsprincip för alla Azure-resurser:
 
-1. Välj på instrumentpanelen för hello Security Center **säkerhetsprincip**, och sedan välja din prenumeration.
+1. Välj på instrumentpanelen i Security Center **säkerhetsprincip**, och sedan välja din prenumeration.
 2. Välj **skyddsprincip**.
-3. Aktivera eller inaktivera principobjekt som du vill tooapply tooall Azure-resurser.
+3. Aktivera eller inaktivera principobjekt som du vill koppla till alla Azure-resurser.
 4. När du är klar med att välja inställningarna väljer **OK**.
-5. På hello **säkerhetsprincip** bladet väljer **spara**. 
+5. På den **säkerhetsprincip** bladet väljer **spara**. 
 
-tooset en princip för en viss resursgrupp:
+Att konfigurera en princip för en viss resursgrupp:
 
-1. Välj på instrumentpanelen för hello Security Center **säkerhetsprincip**, och välj sedan en resursgrupp.
+1. Välj på instrumentpanelen i Security Center **säkerhetsprincip**, och välj sedan en resursgrupp.
 2. Välj **skyddsprincip**.
-3. Aktivera eller inaktivera principobjekt som du vill tooapply toohello resursgruppen.
+3. Aktivera eller inaktivera principobjekt som du vill koppla till resursgruppen.
 4. Under **arv**väljer **unik**.
 5. När du är klar med att välja inställningarna väljer **OK**.
-6. På hello **säkerhetsprincip** bladet väljer **spara**.  
+6. På den **säkerhetsprincip** bladet väljer **spara**.  
 
 Du kan också stänga av insamling av data för en viss resursgrupp på den här sidan.
 
-I följande exempel hello, en unik princip har skapats för en resursgrupp med namnet *myResoureGroup*. Disk kryptering och web application brandväggen rekommendationer är inaktiverade i den här principen.
+I följande exempel skapas en unik princip för en resursgrupp med namnet *myResoureGroup*. Disk kryptering och web application brandväggen rekommendationer är inaktiverade i den här principen.
 
 ![Unik princip](./media/tutorial-azure-security/unique-policy.png)
 
 ## <a name="view-vm-configuration-health"></a>Visa konfigurationshälsa för VM
 
-När du har aktiverat datainsamling och ställa in en säkerhetsprincip, börjar Security Center tooprovide aviseringar och rekommendationer. Eftersom virtuella datorer distribueras är hello data collection agenten installerad. Security Center består av data för hello nya virtuella datorer. Detaljerad information om hälsa för VM-konfiguration, se [skydda dina virtuella datorer i Security Center](../../security-center/security-center-virtual-machine-recommendations.md). 
+När du har aktiverat datainsamling och ange en säkerhetsprincip för, börjar Security Center att ge aviseringar och rekommendationer. Eftersom virtuella datorer distribueras är data collection agenten installerad. Security Center består av data för de nya virtuella datorerna. Detaljerad information om hälsa för VM-konfiguration, se [skydda dina virtuella datorer i Security Center](../../security-center/security-center-virtual-machine-recommendations.md). 
 
-När data har samlats in sammanställs hello resurshälsa för varje virtuell dator och relaterade Azure-resurs. hello information visas i ett enkelt att läsa diagram. 
+När data har samlats in sammanställs resurshälsa för varje virtuell dator och relaterade Azure-resurs. Informationen visas i ett enkelt att läsa diagram. 
 
-tooview resource health:
+Visa resurshälsa:
 
-1.  På instrumentpanelen för hello Security Center under **resurssäkerhetshälsa**väljer **Compute**. 
-2.  På hello **Compute** bladet väljer **virtuella datorer**. Den här vyn visar en sammanfattning av hello Konfigurationsstatus för din virtuella dator.
+1.  På Security Center instrumentpanelen under **resurssäkerhetshälsa**väljer **Compute**. 
+2.  På den **Compute** bladet väljer **virtuella datorer**. Den här vyn visar en sammanfattning av status för konfiguration för dina virtuella datorer.
 
 ![Beräkna hälsa](./media/tutorial-azure-security/compute-health.png)
 
-toosee alla rekommendationer för en virtuell dator, Välj hello VM. Rekommendationer och reparation beskrivs i detalj i hello nästa avsnitt i den här kursen.
+Om du vill se alla rekommendationer för en virtuell dator, väljer du den virtuella datorn. Rekommendationer och reparation beskrivs närmare i nästa avsnitt i den här kursen.
 
 ## <a name="remediate-configuration-issues"></a>Åtgärda problem med konfiguration
 
-När Security Center startar toopopulate med konfigurationsdata görs rekommendationer baserat på hello säkerhetsprincip som du konfigurerar. Till exempel om en virtuell dator har konfigurerats utan en nätverkssäkerhetsgrupp, görs en rekommendation toocreate en. 
+När Security Center börjar fylla med konfigurationsdata, görs rekommendationer baserat på den säkerhetsprincip som du konfigurerar. Till exempel om en virtuell dator har konfigurerats utan en nätverkssäkerhetsgrupp görs en rekommendation för att skapa en. 
 
-toosee en lista över alla rekommendationer: 
+Visa en lista över alla rekommendationer: 
 
-1. Välj på instrumentpanelen för hello Security Center **rekommendationer**.
-2. Välj en specifik rekommendation. En lista över alla resurser som gäller hello rekommendation visas.
-3. tooapply en rekommendation, välja en specifik resurs. 
-4. Följ instruktionerna för hello för steg. 
+1. Välj på instrumentpanelen i Security Center **rekommendationer**.
+2. Välj en specifik rekommendation. En lista över alla resurser som rekommendationen gäller visas.
+3. Välj en specifik resurs för att tillämpa en rekommendation. 
+4. Följ anvisningarna för steg. 
 
-I många fall Security Center innehåller tillämplig steg du kan vidta tooaddress en rekommendation utan att lämna Security Center. I följande exempel hello, upptäcks Security Center en nätverkssäkerhetsgrupp som har en obegränsad inkommande regel. Hello rekommendation på sidan kan du välja hello **redigera regler för inkommande trafik** knappen. hello-användargränssnitt som är nödvändiga toomodify hello regel visas. 
+I många fall innehåller Security Center tillämplig steg som du kan vidta en rekommendation utan att lämna Security Center. I följande exempel identifierar Security Center en nätverkssäkerhetsgrupp som har en obegränsad inkommande regel. På sidan rekommendation kan du välja den **redigera regler för inkommande trafik** knappen. Användargränssnittet som behövs för att ändra regeln visas. 
 
 ![Rekommendationer](./media/tutorial-azure-security/remediation.png)
 
@@ -116,27 +116,27 @@ De är märkta som löst som rekommendationer har åtgärdats.
 
 ## <a name="view-detected-threats"></a>Visa identifierade hot
 
-Dessutom visar tooresource rekommendationer, Security Center hotidentifieringsaviseringar. hello aviseringar säkerhetsfunktion sammanställer data som samlas in från varje VM, Azure nätverk loggar och anslutna partner solutions toodetect säkerhetshot mot Azure-resurser. För detaljerad information om funktionerna i Security Center threat detection Se [identifieringsfunktionerna i Azure Security Center](../../security-center/security-center-detection-capabilities.md).
+Förutom resurs konfigurationsrekommendationer visas hotidentifieringsaviseringar i Security Center. Aviseringar säkerhetsfunktion sammanställer data som samlas in från varje VM, Azure nätverk loggar och anslutna partnerlösningar att upptäcka säkerhetshot mot Azure-resurser. För detaljerad information om funktionerna i Security Center threat detection Se [identifieringsfunktionerna i Azure Security Center](../../security-center/security-center-detection-capabilities.md).
 
-hello säkerhetsfunktion aviseringar kräver hello Security Center priser nivå toobe ökade från *lediga* för*Standard*. En 30-dagars **kostnadsfri utvärderingsversion** är tillgänglig när du flyttar toothis högre prisnivå. 
+Aviseringar säkerhetsfunktion kräver Security Center prisnivån ökas från *lediga* till *Standard*. En 30-dagars **kostnadsfri utvärderingsversion** är tillgänglig när du flyttar till den här högre prisnivå. 
 
-toochange hello prisnivån:  
+Ändra prisnivån:  
 
-1. Klicka på instrumentpanelen för hello Security Center **säkerhetsprincip**, och sedan välja din prenumeration.
+1. Klicka på instrumentpanelen i Security Center **säkerhetsprincip**, och sedan välja din prenumeration.
 2. Välj **prisnivå**.
-3. Välj hello ny nivå och välj sedan **Välj**.
-4. På hello **säkerhetsprincip** bladet väljer **spara**. 
+3. Välj ny nivå och välj sedan **Välj**.
+4. På den **säkerhetsprincip** bladet väljer **spara**. 
 
-När du har ändrat hello prisnivån börjar hello säkerhet aviseringar diagram toopopulate som säkerhetshot identifieras.
+När du har ändrat prisnivån börjar säkerhet aviseringar diagrammet fylla som säkerhet hot upptäcks.
 
 ![Säkerhetsaviseringar](./media/tutorial-azure-security/security-alerts.png)
 
-Välj en avisering tooview information. Du kan till exempel finns en beskrivning av hello hot, hello identifieringstiden alla hot försök och hello rekommenderade åtgärderna. I följande exempel hello, upptäcktes en RDP brute force-attacker med 294 RDP lösenordsförsök. En rekommenderad lösning på problemet.
+Välj en avisering för att visa information. Du kan till exempel se en beskrivning av hotet, identifieringstid, alla hot försök och de rekommenderade åtgärderna. I följande exempel upptäcktes en RDP brute force-attacker med 294 RDP lösenordsförsök. En rekommenderad lösning på problemet.
 
 ![RDP-attack](./media/tutorial-azure-security/rdp-attack.png)
 
 ## <a name="next-steps"></a>Nästa steg
-I den här självstudiekursen, Ställ in Azure Security Center och granskas virtuella datorer i Security Center. Du har lärt dig att:
+I den här självstudiekursen, Ställ in Azure Security Center och granskas virtuella datorer i Security Center. Du har lärt dig hur till:
 
 > [!div class="checklist"]
 > * Konfigurera datainsamling
@@ -144,7 +144,7 @@ I den här självstudiekursen, Ställ in Azure Security Center och granskas virt
 > * Visa och lösa konfigurationsproblem hälsa
 > * Granska identifierade hot
 
-Avancera toohello nästa självstudiekurs toolearn hur toocreate CI/CD-pipeline med Visual Studio Team Services och en Windows virtuell dator som kör IIS.
+Gå vidare till nästa kurs att lära dig hur du skapar en CI/CD-pipeline med Visual Studio Team Services och en Windows virtuell dator som kör IIS.
 
 > [!div class="nextstepaction"]
 > [Visual Studio Team Services CI/CD-pipeline](./tutorial-vsts-iis-cicd.md)

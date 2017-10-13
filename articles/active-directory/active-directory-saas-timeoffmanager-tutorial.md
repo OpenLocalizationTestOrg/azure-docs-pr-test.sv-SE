@@ -1,6 +1,6 @@
 ---
 title: "Självstudier: Azure Active Directory-integrering med TimeOffManager | Microsoft Docs"
-description: "Lär dig hur tooconfigure enkel inloggning mellan Azure Active Directory och TimeOffManager."
+description: "Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och TimeOffManager."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,111 +14,111 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
-ms.openlocfilehash: c871257bfb49883e31b1c4860a9d7faa70e9ab48
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 3f944ffbf704694b293b4b1e5bdb4f2c93ae35a1
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-timeoffmanager"></a>Självstudier: Azure Active Directory-integrering med TimeOffManager
 
-I kursen får du lära dig hur toointegrate TimeOffManager med Azure Active Directory (AD Azure).
+I kursen får lära du att integrera TimeOffManager med Azure Active Directory (AD Azure).
 
-Integrera TimeOffManager med Azure AD ger dig hello följande fördelar:
+Integrera TimeOffManager med Azure AD ger dig följande fördelar:
 
-- Du kan styra i Azure AD som har åtkomst till tooTimeOffManager
-- Du kan aktivera din användare tooautomatically get inloggade tooTimeOffManager (Single Sign-On) med sina Azure AD-konton
-- Du kan hantera dina konton i en central plats - hello Azure-portalen
+- Du kan styra i Azure AD som har åtkomst till TimeOffManager
+- Du kan aktivera användarna att automatiskt hämta loggat in på TimeOffManager (Single Sign-On) med sina Azure AD-konton
+- Du kan hantera dina konton i en central plats - Azure-portalen
 
-Om du vill tooknow mer information om integrering av SaaS-app med Azure AD, se [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Om du vill veta mer information om integrering av SaaS-app med Azure AD finns [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Krav
 
-tooconfigure Azure AD-integrering med TimeOffManager, behöver du hello följande objekt:
+För att konfigurera Azure AD-integrering med TimeOffManager, behöver du följande:
 
 - En Azure AD-prenumeration
 - En TimeOffManager enkel inloggning aktiverad prenumeration
 
 > [!NOTE]
-> tootest hello stegen i den här självstudiekursen, rekommenderas inte med hjälp av en produktionsmiljö.
+> Om du vill testa stegen i den här kursen rekommenderar vi inte med hjälp av en produktionsmiljö.
 
-tootest hello steg i den här självstudiekursen, bör du följa dessa rekommendationer:
+Om du vill testa stegen i den här självstudiekursen, bör du följa dessa rekommendationer:
 
 - Använd inte i produktionsmiljön, om det är nödvändigt.
 - Om du inte har en utvärderingsversion Azure AD-miljö kan du [hämta en utvärderingsversion för en månad](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Scenariobeskrivning
-I kursen får testa du Azure AD enkel inloggning i en testmiljö. hello-scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
+I kursen får testa du Azure AD enkel inloggning i en testmiljö. Det scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
 
-1. Lägg till TimeOffManager från hello-galleriet
+1. Lägg till TimeOffManager från galleriet
 2. Konfigurera och testa Azure AD enkel inloggning
 
-## <a name="add-timeoffmanager-from-hello-gallery"></a>Lägg till TimeOffManager från hello-galleriet
-tooconfigure hello integrering av TimeOffManager i Azure AD, behöver du tooadd TimeOffManager hello galleriet tooyour listan över hanterade SaaS-appar.
+## <a name="add-timeoffmanager-from-the-gallery"></a>Lägg till TimeOffManager från galleriet
+Du måste lägga till TimeOffManager från galleriet i listan över hanterade SaaS-appar för att konfigurera integrering av TimeOffManager i Azure AD.
 
-**tooadd TimeOffManager från galleriet hello utför hello följande steg:**
+**Utför följande steg för att lägga till TimeOffManager från galleriet:**
 
-1. I hello  **[Azure-portalen](https://portal.azure.com)**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon. 
+1. I den  **[Azure-portalen](https://portal.azure.com)**, klicka på den vänstra navigeringspanelen **Azure Active Directory** ikon. 
 
     ![Active Directory][1]
 
-2. Navigera för**företagsprogram**. Gå sedan för**alla program**.
+2. Gå till **företagsprogram**. Gå till **alla program**.
 
     ![Program][2]
     
-3. tooadd nya program, klickar du på **nytt program** hello längst upp i dialogrutan.
+3. Om du vill lägga till nya programmet, klickar du på **nytt program** knappen överst i dialogrutan.
 
     ![Program][3]
 
-4. Skriv i sökrutan hello **TimeOffManager**väljer **TimeOffManager** från resultatet Kontrollpanelen och klicka sedan på **Lägg till** knappen tooadd hello program.
+4. I sökrutan skriver **TimeOffManager**väljer **TimeOffManager** från resultatet Kontrollpanelen och klicka sedan på **Lägg till** för att lägga till programmet.
 
     ![Lägg till från galleriet](./media/active-directory-saas-timeoffmanager-tutorial/tutorial_timeoffmanager_addfromgallery.png)
 
 ##  <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa Azure AD enkel inloggning
 I det här avsnittet kan du konfigurera och testa Azure AD enkel inloggning med TimeOffManager baserat på en testanvändare som kallas ”Britta Simon”.
 
-För enkel inloggning toowork måste Azure AD tooknow vilka hello motsvarighet användaren i TimeOffManager är tooa i Azure AD. Med andra ord måste en länk mellan en Azure AD-användare och hello relaterade användare i TimeOffManager toobe upprättas.
+Azure AD måste du känna till användaren i TimeOffManager motsvarighet till en användare i Azure AD för enkel inloggning ska fungera. Med andra ord måste en länk förhållandet mellan en Azure AD-användare och relaterade användaren i TimeOffManager upprättas.
 
-I TimeOffManager, tilldela hello värdet för hello **användarnamn** i Azure AD som hello värde för hello **användarnamn** tooestablish hello länken relationen.
+I TimeOffManager, tilldela värdet för den **användarnamn** i Azure AD som värde för den **användarnamn** etablera länken relationen.
 
-tooconfigure och testa Azure AD enkel inloggning med TimeOffManager, behöver du toocomplete hello följande byggblock:
+Om du vill konfigurera och testa Azure AD enkel inloggning med TimeOffManager, måste du utföra följande byggblock:
 
-1. **[Konfigurera Azure AD enkel inloggning](#configure-azure-ad-single-sign-on)**  -tooenable användare-toouse den här funktionen.
-2. **[Skapa en Azure AD-testanvändare](#create-an-azure-ad-test-user)**  -tootest Azure AD enkel inloggning med Britta Simon.
-3. **[Skapa en testanvändare TimeOffManager](#create-a-timeoffmanager-test-user)**  -toohave en motsvarighet för Britta Simon i TimeOffManager som är länkade toohello Azure AD-representation av användaren.
-4. **[Tilldela hello Azure AD-testanvändare](#assign-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD enkel inloggning.
-5. **[Testa enkel inloggning](#test-single-sign-on)**  -tooverify hello om konfigurationen fungerar.
+1. **[Konfigurera Azure AD enkel inloggning](#configure-azure-ad-single-sign-on)**  - om du vill att användarna kan använda den här funktionen.
+2. **[Skapa en Azure AD-testanvändare](#create-an-azure-ad-test-user)**  - om du vill testa Azure AD enkel inloggning med Britta Simon.
+3. **[Skapa en testanvändare TimeOffManager](#create-a-timeoffmanager-test-user)**  – du har en motsvarighet för Britta Simon i TimeOffManager som är kopplad till Azure AD-representation av användaren.
+4. **[Tilldela Azure AD-testanvändare](#assign-the-azure-ad-test-user)**  - om du vill aktivera Britta Simon att använda Azure AD enkel inloggning.
+5. **[Testa enkel inloggning](#test-single-sign-on)**  - om du vill kontrollera om konfigurationen fungerar.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurera Azure AD enkel inloggning
 
-I det här avsnittet Aktivera Azure AD enkel inloggning i hello Azure-portalen och konfigurera enkel inloggning i ditt TimeOffManager program.
+I det här avsnittet Aktivera Azure AD enkel inloggning i Azure-portalen och konfigurera enkel inloggning i ditt TimeOffManager program.
 
-**Utför följande steg hello tooconfigure Azure AD enkel inloggning med TimeOffManager:**
+**Utför följande steg för att konfigurera Azure AD enkel inloggning med TimeOffManager:**
 
-1. I hello Azure-portalen på hello **TimeOffManager** integreringssidan för programmet, klickar du på **enkel inloggning**.
+1. I Azure-portalen på den **TimeOffManager** integreringssidan för programmet, klickar du på **enkel inloggning**.
 
     ![Konfigurera enkel inloggning][4]
 
-2. På hello **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** tooenable enkel inloggning.
+2. På den **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** att aktivera enkel inloggning.
  
     ![SAML-baserade inloggning](./media/active-directory-saas-timeoffmanager-tutorial/tutorial_timeoffmanager_samlbase.png)
 
-3. På hello **TimeOffManager domän och URL: er** avsnittet, utföra hello följande:
+3. På den **TimeOffManager domän och URL: er** avsnittet, utför följande:
 
      ![Avsnittet TimeOffManager domän och URL: er](./media/active-directory-saas-timeoffmanager-tutorial/tutorial_timeoffmanager_url.png)
 
-    I hello **Reply URL** textruta, ange ett URL-Adressen med hello följer mönstret:`https://www.timeoffmanager.com/cpanel/sso/consume.aspx?company_id=<companyid>`
+    I den **Reply URL** textruta Skriv en URL med följande mönster:`https://www.timeoffmanager.com/cpanel/sso/consume.aspx?company_id=<companyid>`
 
     > [!NOTE] 
-    > Det här värdet är inte verkliga. Uppdatera det här värdet med hello faktiska Reply-URL. Du kan hämta värdet från **inställningssidan för enkelinloggning** som beskrivs senare i självstudiekursen hello eller kontakta [TimeOffManager supportteamet](http://www.timeoffmanager.com/contact-us.aspx).
+    > Det här värdet är inte verkliga. Uppdatera det här värdet med det faktiska Reply-URL. Du kan hämta värdet från **inställningssidan för enkelinloggning** som beskrivs senare i självstudiekursen eller kontakta [TimeOffManager supportteamet](http://www.timeoffmanager.com/contact-us.aspx).
  
-4. På hello **SAML-signeringscertifikat** klickar du på **certifikat (Base64)** och spara sedan hello certifikat på datorn.
+4. På den **SAML-signeringscertifikat** klickar du på **certifikat (Base64)** och spara certifikatfilen på datorn.
 
     ![Signeringscertifikat för SAML-avsnitt](./media/active-directory-saas-timeoffmanager-tutorial/tutorial_timeoffmanager_certificate.png) 
 
-5. hello syftet med det här avsnittet är toooutline hur tooenable användare tooauthenticate tooTimeOffManger med sitt konto i Azure AD med hjälp av federation baserat på hello SAML-protokoll.
+5. Syftet med det här avsnittet är att beskriva hur användarna att autentisera till TimeOffManger med sitt konto i Azure AD med hjälp av federation baserat på SAML-protokoll.
     
-    Tillämpningsprogrammet TimeOffManger förväntar hello SAML intyg i ett specifikt format, vilket kräver att du tooadd attributet mappningar tooyour SAML-token attribut-konfiguration. hello följande skärmbild visar ett exempel för det här.
+    Tillämpningsprogrammet TimeOffManger förväntar SAML-intyg i ett specifikt format, vilket kräver att du kan lägga till anpassade attributmappning konfigurationen för SAML-token attribut. Följande skärmbild visar ett exempel för det här.
 
     ![SAML-token attribut](./media/active-directory-saas-timeoffmanager-tutorial/tutorial_timeoffmanager_attrb.png "attribut för saml-token")
     
@@ -128,15 +128,15 @@ I det här avsnittet Aktivera Azure AD enkel inloggning i hello Azure-portalen o
     | Efternamn |User.surname |
     | E-post |User.Mail |
     
-    a.  För varje datarad i hello tabellen ovan klickar du på **lägga till användarattribut**.
+    a.  För varje datarad i tabellen ovan, klickar du på **lägga till användarattribut**.
     
     ![SAML-token attribut](./media/active-directory-saas-timeoffmanager-tutorial/tutorial_timeoffmanager_addattrb.png "attribut för saml-token")
     
     ![SAML-token attribut](./media/active-directory-saas-timeoffmanager-tutorial/tutorial_timeoffmanager_addattrb1.png "attribut för saml-token")
     
-    b.  I hello **attributnamn** textruta hello attributnamn visas för den raden.
+    b.  I den **attributnamn** textruta ange attributets namn visas för den raden.
     
-    c.  I hello **attributvärdet** textruta väljer hello-attributvärde som visas för den raden.
+    c.  I den **attributvärdet** textruta Välj attributvärde som visas för den raden.
     
     d.  Klicka på **OK**.
     
@@ -144,101 +144,101 @@ I det här avsnittet Aktivera Azure AD enkel inloggning i hello Azure-portalen o
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-timeoffmanager-tutorial/tutorial_general_400.png)
 
-7. På hello **TimeOffManager Configuration** klickar du på **konfigurera TimeOffManager** tooopen **konfigurera inloggning** fönster. Kopiera hello **Sign-Out URL, SAML enhets-ID och SAML enkel inloggning Tjänstwebbadress** från hello **Snabbreferens avsnitt.**
+7. På den **TimeOffManager Configuration** klickar du på **konfigurera TimeOffManager** att öppna **konfigurera inloggning** fönster. Kopiera den **Sign-Out URL, SAML enhets-ID och SAML enkel inloggning Tjänstwebbadress** från den **Snabbreferens avsnitt.**
 
     ![TimeOffManager konfigurationsavsnitt](./media/active-directory-saas-timeoffmanager-tutorial/tutorial_timeoffmanager_configure.png) 
 
 8. Logga in på webbplatsen TimeOffManager företag som en administratör i en annan webbläsarfönster.
 
-9. Gå för**konto \> kontoalternativ \> inställningar för enkel inloggning**.
+9. Gå till **konto \> konto alternativ \> enkel inloggning inställningar**.
    
    ![Enkel inloggning inställningar](./media/active-directory-saas-timeoffmanager-tutorial/ic795917.png "enkel inloggning inställningar")
-7. I hello **inställningar för enkel inloggning** avsnittet, utföra hello följande steg:
+7. I den **inställningar för enkel inloggning** avsnittet, utför följande steg:
    
    ![Enkel inloggning inställningar](./media/active-directory-saas-timeoffmanager-tutorial/ic795918.png "enkel inloggning inställningar")
    
-   a. Öppna din Base64-kodade certifikatet i anteckningar, kopiera hello innehållet i den i Urklipp, och klistra in hello hela certifikatet till **X.509-certifikat** textruta.
+   a. Öppna din Base64-kodade certifikatet i anteckningar, kopiera innehållet i den till Urklipp och klistra in hela certifikatet till **X.509-certifikat** textruta.
    
-   b. I **Idp utfärdaren** textruta klistra in hello värdet för **SAML enhets-ID** som du har kopierat från Azure-portalen.
+   b. I **Idp utfärdaren** textruta klistra in värdet för **SAML enhets-ID** som du har kopierat från Azure-portalen.
    
-   c. I **IdP slutpunkts-URL** textruta klistra in hello värdet för **SAML inloggning tjänst-URL för enkel** som du har kopierat från Azure-portalen.
+   c. I **IdP slutpunkts-URL** textruta klistra in värdet för **SAML inloggning tjänst-URL för enkel** som du har kopierat från Azure-portalen.
    
    d. Som **genomdriva SAML**väljer **nr**.
    
    e. Som **skapa automatiskt användare**väljer **Ja**.
    
-   f. I **logga ut URL** textruta klistra in hello värdet för **Sign-Out URL** som du har kopierat från Azure-portalen.
+   f. I **logga ut URL** textruta klistra in värdet för **Sign-Out URL** som du har kopierat från Azure-portalen.
    
    g. Klicka på **spara ändringar**.
 
-11. I **inställningar för enkelinloggning** sidan Kopiera hello värdet för **Assertion konsument-tjänstens URL** och klistra in den i hello **Reply URL** textrutan under **TimeOffManager Domänen och URL: er** avsnitt i Azure-portalen. 
+11. I **inställningar för enkelinloggning** sidan, kopierar du värdet för **Assertion konsument-tjänstens URL** och klistra in den i den **Reply URL** textrutan under **TimeOffManager Domänen och URL: er** avsnitt i Azure-portalen. 
 
       ![Enkel inloggning inställningar](./media/active-directory-saas-timeoffmanager-tutorial/ic795915.png "enkel inloggning inställningar")
 
 > [!TIP]
-> Du kan nu läsa en kortare version av dessa anvisningar i hello [Azure-portalen](https://portal.azure.com), medan du ställer in hello appen!  När du lägger till den här appen från hello **Active Directory > företagsprogram** avsnittet, klicka bara på hello **enkel inloggning** flik och åtkomst hello inbäddade dokumentationen via hello  **Konfigurationen** avsnittet längst ned hello. Du kan läsa mer om hello inbäddade dokumentationen funktionen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Du kan nu läsa en kortare version av instruktionerna i den [Azure-portalen](https://portal.azure.com), medan du installerar appen!  När du lägger till den här appen från den **Active Directory > företagsprogram** avsnittet, klickar du på den **enkel inloggning** fliken och få åtkomst till den inbäddade dokumentationen via den **Configuration** avsnittet längst ned. Du kan läsa mer om funktionen inbäddade dokumentationen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Skapa en testanvändare i Azure AD
-hello syftet med det här avsnittet är toocreate en testanvändare i hello Azure-portalen kallas Britta Simon.
+Syftet med det här avsnittet är att skapa en testanvändare i Azure-portalen kallas Britta Simon.
 
 ![Skapa Azure AD-användare][100]
 
-**toocreate en testanvändare i Azure AD kan utföra hello följande steg:**
+**Utför följande steg för att skapa en testanvändare i Azure AD:**
 
-1. I hello **Azure-portalen**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon.
+1. I den **Azure-portalen**, klicka på det vänstra navigeringsfönstret **Azure Active Directory** ikon.
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-timeoffmanager-tutorial/create_aaduser_01.png) 
 
-2. toodisplay hello lista över användare, gå för**användare och grupper** och på **alla användare**.
+2. Om du vill visa en lista över användare, gå till **användare och grupper** och på **alla användare**.
     
     ![Användare och grupper--> alla användare](./media/active-directory-saas-timeoffmanager-tutorial/create_aaduser_02.png) 
 
-3. tooopen hello **användare** dialogrutan klickar du på **Lägg till** på hello överkant hello dialogrutan.
+3. Öppna den **användare** dialogrutan klickar du på **Lägg till** överst i dialogrutan.
  
     ![Knappen Lägg till](./media/active-directory-saas-timeoffmanager-tutorial/create_aaduser_03.png) 
 
-4. På hello **användaren** dialogrutan utför hello följande steg:
+4. På den **användaren** dialogrutan utför följande steg:
  
     ![Dialogrutan Användarsida](./media/active-directory-saas-timeoffmanager-tutorial/create_aaduser_04.png) 
 
-    a. I hello **namn** textruta typen **BrittaSimon**.
+    a. I den **namn** textruta typen **BrittaSimon**.
 
-    b. I hello **användarnamn** textruta typen hello **e-postadress** av BrittaSimon.
+    b. I den **användarnamn** textruta typ av **e-postadress** av BrittaSimon.
 
-    c. Välj **visa lösenordet** och Skriv ned hello värdet för hello **lösenord**.
+    c. Välj **visa lösenordet** och anteckna värdet för den **lösenord**.
 
     d. Klicka på **Skapa**.
  
 ### <a name="create-a-timeoffmanager-test-user"></a>Skapa en testanvändare TimeOffManager
 
-I ordning tooenable Azure AD-användare toolog i TimeOffManager, måste de vara etablerade tooTimeOffManager.  
+För att aktivera Azure AD-användare att logga in på TimeOffManager etableras de för TimeOffManager.  
 
 TimeOffManager stöder bara i tid användaretablering. Det finns ingen åtgärd-objekt.  
 
-hello användare läggs till automatiskt under hello första inloggningen med enkel inloggning på.
+Användare läggs till automatiskt under den första inloggningen med enkel inloggning på.
 
 >[!NOTE]
->Du kan använda något annat TimeOffManager användarens konto skapas verktyg eller API: er som tillhandahålls av TimeOffManager tooprovision användarkonton i Azure AD.
+>Du kan använda något annat TimeOffManager användarens konto skapas verktyg eller API: er som tillhandahålls av TimeOffManager att etablera Azure AD-användarkonton.
 > 
 
-### <a name="assign-hello-azure-ad-test-user"></a>Tilldela användare hello Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändare
 
-I det här avsnittet kan aktivera du Britta Simon toouse Azure enkel inloggning genom att bevilja åtkomst tooTimeOffManager.
+I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inloggning genom att bevilja åtkomst till TimeOffManager.
 
 ![Tilldela användare][200] 
 
-**tooassign Britta Simon tooTimeOffManager utför hello följande steg:**
+**Om du vill tilldela TimeOffManager Britta Simon utför du följande steg:**
 
-1. I hello Azure-portalen, öppna hello program visa och navigera toohello directory vy och gå för**företagsprogram** Klicka **alla program**.
+1. Öppna vyn program i Azure-portalen och gå till vyn directory och gå till **företagsprogram** Klicka **alla program**.
 
     ![Tilldela användare][201] 
 
-2. Välj i listan med program hello **TimeOffManager**.
+2. Välj i listan med program **TimeOffManager**.
 
     ![TimeOffManager i listan över appar](./media/active-directory-saas-timeoffmanager-tutorial/tutorial_timeoffmanager_app.png) 
 
-3. Hello-menyn hello vänster **användare och grupper**.
+3. Klicka på menyn till vänster **användare och grupper**.
 
     ![Tilldela användare][202] 
 
@@ -246,7 +246,7 @@ I det här avsnittet kan aktivera du Britta Simon toouse Azure enkel inloggning 
 
     ![Tilldela användare][203]
 
-5. På **användare och grupper** markerar **Britta Simon** i hello användarlistan.
+5. På **användare och grupper** markerar **Britta Simon** på listan användare.
 
 6. Klicka på **Välj** knappen på **användare och grupper** dialogrutan.
 
@@ -254,13 +254,13 @@ I det här avsnittet kan aktivera du Britta Simon toouse Azure enkel inloggning 
     
 ### <a name="test-single-sign-on"></a>Testa enkel inloggning
 
-I det här avsnittet kan testa du Azure AD enkel inloggning konfigurationen med hello åtkomstpanelen.
+I det här avsnittet kan du testa Azure AD enkel inloggning konfigurationen med hjälp av panelen åtkomst.
 
-Du bör få automatiskt inloggade tooyour TimeOffManager programmet när du klickar på hello TimeOffManager panelen i hello åtkomstpanelen. Läs mer om åtkomstpanelen [introduktion toohello åtkomstpanelen](active-directory-saas-access-panel-introduction.md).
+När du klickar på panelen TimeOffManager på åtkomstpanelen du bör få automatiskt loggat in på ditt TimeOffManager program. Läs mer om åtkomstpanelen [introduktion till åtkomstpanelen](active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-* [Lista över självstudier om hur tooIntegrate SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Vad är programåtkomst och enkel inloggning med Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

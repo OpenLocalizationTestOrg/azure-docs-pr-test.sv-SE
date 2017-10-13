@@ -1,9 +1,9 @@
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-I föregående steg hello, skapa Azure-resurser i en resursgrupp. Om du inte förväntar dig tooneed resurserna i hello framtida, kan du ta bort dem genom att ta bort hello resursgruppen.
+I de föregående stegen skapade du Azure-resurser i en resursgrupp. Om du inte tror att du behöver dessa resurser i framtiden, kan du ta bort dem genom att ta bort resursgruppen.
  
-Välj hello vänstra menyn i hello Azure-portalen, **resursgrupper** och välj sedan **myResourceGroup**.
+På menyn till vänster i Azure Portal klickar du på **Resursgrupper** och sedan på **myResourceGroup**.
 
-Hello resurs grupp på sidan Kontrollera att hello resurser är hello dem du vill ha toodelete.
+Kontrollera att resurser på resursgruppsidan är de som du vill ta bort.
 
-Välj **ta bort**, typen **myResourceGroup** i hello textruta och välj sedan **ta bort**.
+Välj **Ta bort**, skriv **myResourceGroup** i textrutan och välj sedan **Ta bort**.

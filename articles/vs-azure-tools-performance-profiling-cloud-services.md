@@ -1,6 +1,6 @@
 ---
-title: "aaaTesting hello prestanda för en molnbaserad tjänst | Microsoft Docs"
-description: "Testa hello prestanda för en tjänst i molnet med hjälp av hello Visual Studio-profiler"
+title: "Testa prestanda för en molnbaserad tjänst | Microsoft Docs"
+description: "Testa prestanda för en tjänst i molnet med hjälp av Visual Studio-profiler"
 services: visual-studio-online
 documentationcenter: n/a
 author: kraigb
@@ -14,52 +14,52 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/11/2016
 ms.author: kraigb
-ms.openlocfilehash: 98bd775e6ffcf948e737c5ec26399c81f4770fe3
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: eafcc2f9d53bcdae63036df070e5adec24cbc252
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="testing-hello-performance-of-a-cloud-service"></a>Testa hello prestanda för en tjänst i molnet
+# <a name="testing-the-performance-of-a-cloud-service"></a>Testa prestanda för en tjänst i molnet
 ## <a name="overview"></a>Översikt
-Du kan testa hello prestanda för en tjänst i molnet i hello följande sätt:
+Du kan testa prestanda för en tjänst i molnet på följande sätt:
 
-* Använda Azure-diagnostik toocollect information om begäranden och anslutningar och tooreview platsstatistik som visar hur hello-tjänsten utför ur customer. tooget igång med, se [konfigurera diagnostik för virtuella datorer och Azure Cloud Services](http://go.microsoft.com/fwlink/p/?LinkId=623009).
-* Använd hello Visual Studio profiler tooget en detaljerad analys av hello beräkningar aspekter av hur hello-tjänsten körs. Som det här avsnittet beskriver, kan du använda hello profileraren toomeasure prestanda som en tjänst som körs i Azure. Information om hur toouse hello profileraren toomeasure prestanda som en tjänst körs lokalt i en beräkningsemulatorn finns [testar hello prestanda för ett Azure Cloud Service lokalt i hello Compute Emulator med hello Visual Studio-Profiler ](http://go.microsoft.com/fwlink/p/?LinkId=262845).
+* Använd Azure-diagnostik samla in information om begäranden och anslutningar och granska platsstatistik som visar hur tjänsten utför ur customer. Kom igång med finns [konfigurera diagnostik för virtuella datorer och Azure Cloud Services](http://go.microsoft.com/fwlink/p/?LinkId=623009).
+* Använd Visual Studio-profiler för att få en detaljerad analys av beräkningar aspekter av hur tjänsten körs. Du kan använda profileraren för att mäta prestanda som en tjänst som körs i Azure som det här avsnittet beskrivs. Information om hur du använder profileraren för att mäta prestanda som en tjänst körs lokalt i en beräkningsemulatorn finns [testa prestanda för ett Azure Cloud Service lokalt i en Compute Emulator med hjälp av Visual Studio profileraren](http://go.microsoft.com/fwlink/p/?LinkId=262845).
 
 ## <a name="choosing-a-performance-testing-method"></a>Att välja en metod för prestandatestning
-### <a name="use-azure-diagnostics-toocollect"></a>Använd Azure-diagnostik toocollect:
+### <a name="use-azure-diagnostics-to-collect"></a>Använd Azure-diagnostik för att samla in:
 * Statistik på webbsidor eller tjänster, till exempel begäranden och anslutningar.
 * Statistik över roller, till exempel hur ofta en roll har startats om.
-* Allmän information om minnesanvändning, till exempel hello procentandel av tiden som hello skräpinsamlingen tar eller hello minne uppsättning den pågående rollen.
+* Allmän information om minnesanvändning, till exempel procentandelen av tid skräpinsamlingen tar eller minnet uppsättning den pågående rollen.
 
-### <a name="use-hello-visual-studio-profiler-to"></a>Använd hello Visual Studio-profiler till:
-* Avgör vilka funktioner ta hello de flesta tid.
+### <a name="use-the-visual-studio-profiler-to"></a>Använd Visual Studio-profiler till:
+* Avgör vilka funktioner ta ut mesta möjliga tid.
 * Mäter hur lång tid tar för varje del av ett beräkningsmässigt intensiva program.
 * Jämför detaljerad prestandarapporter för två versioner av en tjänst.
-* Analysera minnesallokering i detalj än hello enskilda minnesallokering.
+* Analysera minnesallokering i detalj än enskilda minnesallokering.
 * Analysera samtidighet problem i flertrådade kod.
 
-När du använder hello profiler, kan du samla in data när en molnbaserad tjänst körs lokalt eller i Azure.
+När du använder profileraren kan du samla in data när en molnbaserad tjänst körs lokalt eller i Azure.
 
 ### <a name="collect-profiling-data-locally-to"></a>Samla in profileringsdata lokalt till:
-* Testa hello prestanda för en del av en tjänst i molnet, till exempel hello körning av specifika arbetsroll som inte kräver en realistisk simulerade belastning.
-* Testa hello prestanda för en tjänst i molnet i isolering under kontrollerade förhållanden.
-* Testa hello prestanda för en tjänst i molnet innan du distribuerar den tooAzure.
-* Testa hello prestanda för en tjänst i molnet privat, utan att störa hello befintliga distributioner.
-* Testa hello prestanda för hello tjänsten utan att det medför kostnader för körs i Azure.
+* Testa prestanda hos en del av en molntjänst, t.ex körningen av specifika arbetsroll som inte kräver en realistisk simulerade belastning.
+* Testa prestanda för en tjänst i molnet i isolering under kontrollerade förhållanden.
+* Testa prestanda för en tjänst i molnet innan du distribuerar det till Azure.
+* Testa prestanda för en tjänst i molnet privat, utan att störa befintliga distributioner.
+* Testa prestanda hos tjänsten utan att det medför kostnader för körs i Azure.
 
 ### <a name="collect-profiling-data-in-azure-to"></a>Samla in profileringsdata i Azure för att:
-* Testa hello prestanda för en tjänst i molnet under en simulerad eller verkliga belastning.
-* Använd hello instrumentation metoden för att samla in profileringsdata, som det här avsnittet beskrivs senare.
-* Testa hello prestanda för hello tjänsten i hello samma miljö som när hello-tjänsten körs i produktion.
+* Testa prestanda för en tjänst i molnet under en simulerad eller verkliga belastning.
+* Använd metoden instrumentation för att samla in profileringsdata, som det här avsnittet beskrivs senare.
+* Testa prestanda för tjänsten i samma miljö som när tjänsten körs i produktion.
 
-Du vanligtvis simulera en belastningen tootest molntjänster under normal eller betonar villkor.
+Du simulera vanligtvis en belastning test molntjänster under normal eller stress villkor.
 
 ## <a name="profiling-a-cloud-service-in-azure"></a>Profilering av en tjänst i molnet i Azure
-När du publicerar Molntjänsten från Visual Studio kan du profilen hello-tjänsten och ange hello profilering inställningar som ger du hello information som du vill. En profilering session startas för varje instans av en roll. Mer information om hur toopublish tjänsten från Visual Studio, se [publicering tooan Azure Cloud Service från Visual Studio](https://msdn.microsoft.com/library/azure/ee460772.aspx).
+När du publicerar Molntjänsten från Visual Studio kan du ange vilka inställningar som ger dig den information som du vill profilen tjänsten. En profilering session startas för varje instans av en roll. Mer information om hur du publicerar din tjänst från Visual Studio finns [publicering till en Azure-molntjänst från Visual Studio](https://msdn.microsoft.com/library/azure/ee460772.aspx).
 
-toounderstand mer information om prestanda profilering i Visual Studio finns [nybörjare guiden tooPerformance Profiling](https://msdn.microsoft.com/library/azure/ms182372.aspx) och [Analysera prestanda med hjälp av verktyg för profilering](https://msdn.microsoft.com/library/azure/z9z62c29.aspx).
+Om du vill veta mer om profilering av prestanda i Visual Studio, se [nybörjare Guide för prestanda profilering](https://msdn.microsoft.com/library/azure/ms182372.aspx) och [Analysera prestanda med hjälp av verktyg för profilering](https://msdn.microsoft.com/library/azure/z9z62c29.aspx).
 
 > [!NOTE]
 > Du kan aktivera IntelliTrace eller profilering när du publicerar Molntjänsten. Du kan aktivera båda.
@@ -69,48 +69,48 @@ toounderstand mer information om prestanda profilering i Visual Studio finns [ny
 ### <a name="profiler-collection-methods"></a>Profileraren samling metoder
 Du kan använda annan samling metoder för profilering, baserat på dina prestandaproblem:
 
-* **CPU-provtagning** -den här metoden samlar in programstatistik som är användbara för inledande analys av problem med CPU-användning. CPU-sampling är hello föreslagna metod för att starta de flesta prestanda undersökningar. Det finns en låg påverkan på hello-program som du profilering när du samlar in CPU provtagning data.
-* **Instrumentation** -den här metoden samlar in detaljerad tidsinställning data som är användbar för fokuserad analys och för att analysera i/o-prestanda. hello instrumentation metoden registrerar varje post och avsluta funktionsanropet hello funktioner i en modul under en profilering kör. Den här metoden är användbar för att samla in detaljerade tidsinställning information om en del av din kod och för att förstå hello effekten av inkommande och utgående åtgärder på programmets prestanda. Den här metoden är inaktiverad för en dator som kör ett 32-bitars operativsystem. Det här alternativet är tillgängligt endast när du kör hello Molntjänsten i Azure, inte lokalt i hello beräkningsemulatorn.
-* **Minnesallokering för .NET** -den här metoden samlar in .NET Framework minne allokering data med hjälp av hello provtagning profilering metod. hello insamlade data omfattar hello antalet och storleken på allokerade objekt.
-* **Concurrency** -den här metoden samlar in konkurrens resursdata och process- och Körningsdata som är användbara vid analys av flertrådade och flerprocessig program. hello samtidighet metoden samlar in data för varje händelse som blockerar körning av din kod, till exempel när en tråd väntar låst åtkomst tooan programmet resurs toobe frigöras. Den här metoden är användbar för att analysera flertrådiga program.
-* Du kan också aktivera **nivå interaktion profilering**, som innehåller ytterligare information om hello körningstider för synkron ADO.NET anropar i flera nivåer program som kommunicerar med en eller flera funktioner databaser. Du kan samla in data för nivån interaktion med någon av hello profilering metoder. Läs mer om nivån interaktion profilering [nivå interaktioner visa](https://msdn.microsoft.com/library/azure/dd557764.aspx).
+* **CPU-provtagning** -den här metoden samlar in programstatistik som är användbara för inledande analys av problem med CPU-användning. CPU-provtagning är den föreslagna metoden för att starta de flesta prestanda undersökningar. Det finns en låg påverkan på det program som du profilering när du samlar in CPU provtagning data.
+* **Instrumentation** -den här metoden samlar in detaljerad tidsinställning data som är användbar för fokuserad analys och för att analysera i/o-prestanda. Metoden instrumentation registrerar varje post och avsluta funktionsanropet av funktioner i en modul under en profilering kör. Den här metoden är användbar för att samla in detaljerade tidsinställning information om en del av din kod och för att förstå effekten av inkommande och utgående åtgärder på programmets prestanda. Den här metoden är inaktiverad för en dator som kör ett 32-bitars operativsystem. Det här alternativet är tillgängligt endast när du kör Molntjänsten i Azure, inte lokalt i beräkningsemulatorn.
+* **Minnesallokering för .NET** -den här metoden samlar in .NET Framework minne allokering data med hjälp av beräkningarna profilering metod. Insamlade data omfattar antal och storlek på allokerade objekt.
+* **Concurrency** -den här metoden samlar in konkurrens resursdata och process- och Körningsdata som är användbara vid analys av flertrådade och flerprocessig program. Metoden samtidighet samlar in data för varje händelse som blockerar körning av din kod, till exempel när en tråd väntar låst åtkomst till en resurs för program att frigöras. Den här metoden är användbar för att analysera flertrådiga program.
+* Du kan också aktivera **nivå interaktion profilering**, som tillhandahåller ytterligare information om körningstider för synkron ADO.NET anropar i funktioner i flera nivåer program som kommunicerar med en eller flera databaser. Du kan samla in data för nivån interaktion med någon av metoderna profilering. Läs mer om nivån interaktion profilering [nivå interaktioner visa](https://msdn.microsoft.com/library/azure/dd557764.aspx).
 
 ## <a name="configuring-profiling-settings"></a>Konfigurera inställningar för profilering
-Hej följande bild visar hur tooconfigure profilering inställningarna från hello i dialogrutan Publicera Azure-program.
+Följande bild visar hur du konfigurerar inställningarna profilering från dialogrutan Publicera Azure-program.
 
 ![Konfigurera profilering inställningar](./media/vs-azure-tools-performance-profiling-cloud-services/IC526984.png)
 
 > [!NOTE]
-> tooenable hello **Aktivera profilering** kryssrutan, måste du ha hello profiler som är installerad på hello datorn att du använder toopublish Molntjänsten. Hello profiler installeras som standard när du installerar Visual Studio.
+> Så här aktiverar du den **Aktivera profilering** kryssrutan, måste du ha profileraren installerad på den lokala datorn som du använder för att publicera din tjänst i molnet. Profileraren installeras som standard när du installerar Visual Studio.
 > 
 > 
 
-### <a name="tooconfigure-profiling-settings"></a>tooconfigure profilering inställningar
-1. Öppna hello snabbmenyn för din Azure-projekt i Solution Explorer och välj sedan **publicera**. Detaljerade anvisningar om hur toopublish en molnbaserad tjänst bör se [publicering av ett moln med hjälp av tjänsten hello Azure-verktyg](http://go.microsoft.com/fwlink/p?LinkId=623012).
-2. I hello **publicera Azure-programmet** dialogrutan, Välj hello **avancerade inställningar** fliken.
-3. tooenable profilering, Välj hello **Aktivera profilering** kryssrutan.
-4. tooconfigure inställningarna profilering väljer hello **inställningar** hyperlänk. hello dialogrutan profilering inställningar.
-5. Från hello **vilken metod för profilering skulle du som toouse** alternativknappar, Välj hello typ av profilering som du behöver.
-6. toocollect hello nivå interaktion profilering data, Välj hello **aktivera nivå interaktion profilering** kryssrutan.
-7. toosave hello inställningar, väljer hello **OK** knappen.
+### <a name="to-configure-profiling-settings"></a>Att konfigurera inställningar för profilering
+1. Öppna snabbmenyn för din Azure-projekt i Solution Explorer och välj sedan **publicera**. Detaljerade anvisningar om hur du publicerar en tjänst i molnet finns [publicering av en tjänst i molnet med Azure-verktyg](http://go.microsoft.com/fwlink/p?LinkId=623012).
+2. I den **publicera Azure-programmet** dialogrutan väljer den **avancerade inställningar** fliken.
+3. Välj för att aktivera profilering av **Aktivera profilering** kryssrutan.
+4. Så här konfigurerar du inställningarna för profilering av **inställningar** hyperlänk. Dialogrutan profilering inställningar visas.
+5. Från den **vilken metod för profilering av du vill använda** alternativknappar, Välj typ av profilering som du behöver.
+6. Om du vill samla in nivå interaktionen profilering data, Välj den **aktivera nivå interaktion profilering** kryssrutan.
+7. Spara inställningarna genom att välja den **OK** knappen.
    
-    När du publicerar det här programmet är de här inställningarna används toocreate hello profilering sessionen för varje roll.
+    När du publicerar programmet används de här inställningarna för att skapa profilering session för varje roll.
 
 ## <a name="viewing-profiling-reports"></a>Visa profilering rapporter
-En profilering session skapas för varje instans av en roll i Molntjänsten. tooview profilering av dina rapporter för varje session från Visual Studio kan du visa hello Server Explorer-fönstret och välj hello Azure Compute-nod tooselect en instans av en roll. Du kan sedan visa hello profilering rapport som visas i följande illustration hello.
+En profilering session skapas för varje instans av en roll i Molntjänsten. Om du vill visa profilering av varje session från Visual Studio, kan du visa Server Explorer-fönstret och välj sedan Azure Compute-nod för att välja en instans av en roll. Du kan sedan visa rapporten profilering som visas i följande bild.
 
 ![Visa profilering rapport från Azure](./media/vs-azure-tools-performance-profiling-cloud-services/IC748914.png)
 
-### <a name="tooview-profiling-reports"></a>tooview profilering rapporter
-1. tooview hello Server Explorer-fönstret i Visual Studio på hello menyn fältet Välj vyn Server Explorer.
-2. Välj hello Azure Compute-nod och välj hello Azure-distribution nod för hello molntjänst som du valde tooprofile när du har publicerat från Visual Studio.
-3. tooview profilering rapporter för en instans, Välj hello roll i hello service, öppna hello snabbmenyn för en specifik instans och sedan **visa profilering rapport**.
+### <a name="to-view-profiling-reports"></a>Visa profilering rapporter
+1. Om du vill visa fönstret Server Explorer i Visual Studio, på menyraden Välj Visa, Server Explorer.
+2. Välj Azure Compute-nod och väljer sedan noden Azure-distribution för den molntjänst som du har valt att profilen när du publicerade från Visual Studio.
+3. Om du vill visa vilka rapporter för en instans, väljer du vilken roll i tjänsten, öppna snabbmenyn för en specifik instans och välj sedan **visa profilering rapport**.
    
-    hello rapport, en .vsp-fil, nu laddas ned från Azure och hello status hello hämtning visas i hello Azure-aktivitetsloggen. När hello nedladdningen är klar hello profilering rapporten visas på en flik i hello Redigeraren för Visual Studio med namnet <Role name>  *<Instance Number>*  <identifier>.vsp. Sammanfattningsdata för hello rapporten visas.
-4. toodisplay olika vyer av hello rapporten i hello aktuell vy listan, Välj hello typ av vy som du vill. Mer information finns i [profilering verktyg rapportvyer](https://msdn.microsoft.com/library/azure/bb385755.aspx).
+    Rapporten kan en .vsp fil nu laddas ned från Azure och status för hämtningen visas i Azure-aktivitetsloggen. När nedladdningen är klar profilering rapporten visas på en flik i Redigeraren för Visual Studio med namnet <Role name>  *<Instance Number>*  <identifier>.vsp. Sammanfattningsdata för rapporten visas.
+4. För att visa olika vyer av rapporten i aktuell vy listan, Välj typ av vy som du vill. Mer information finns i [profilering verktyg rapportvyer](https://msdn.microsoft.com/library/azure/bb385755.aspx).
 
 ## <a name="next-steps"></a>Nästa steg
 [Felsökning av molntjänster](https://msdn.microsoft.com/library/azure/ee405479.aspx)
 
-[Publishing tooan Azure Cloud Service från Visual Studio](https://msdn.microsoft.com/library/azure/ee460772.aspx)
+[Publicering till en Azure-molntjänst från Visual Studio](https://msdn.microsoft.com/library/azure/ee460772.aspx)
 

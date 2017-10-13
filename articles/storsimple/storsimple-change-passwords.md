@@ -1,6 +1,6 @@
 ---
-title: "aaaChange lösenord via StorSimple Enhetshanteraren | Microsoft Docs"
-description: "Beskriver hur hello toouse StorSimple Manager service toochange administratörslösenord StorSimple Snapshot Manager och enhet."
+title: "Ändra lösenord via StorSimple Enhetshanteraren | Microsoft Docs"
+description: "Beskriver hur du använder StorSimple Manager-tjänsten för att ändra administratörslösenordet StorSimple Snapshot Manager och enhet."
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,46 +14,46 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 08/17/2016
 ms.author: alkohli
-ms.openlocfilehash: b2836eb4d3a05e1d2a5eeeeefe66c75f63ba38ed
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: d890b59595628ca3eeff1df258847c2bb54d29ff
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="use-hello-storsimple-manager-service-toochange-your-storsimple-passwords"></a>Använd hello StorSimple Manager-tjänsten toochange StorSimple-lösenord
+# <a name="use-the-storsimple-manager-service-to-change-your-storsimple-passwords"></a>Använda StorSimple Manager-tjänsten för att ändra din StorSimple-lösenord
 ## <a name="overview"></a>Översikt
-Hej klassiska Azure-portalen **konfigurera** innehåller alla hello enheten parametrar som du kan konfigurera om på en StorSimple-enhet som hanteras av en StorSimple Manager-tjänsten. Den här självstudiekursen beskrivs hur du kan använda hello **konfigurera** sidan toochange enhetsadministratören eller lösenordet för StorSimple Snapshot Manager.
+Den klassiska Azure-portalen **konfigurera** innehåller alla enheter-parametrar som du kan konfigurera om på en StorSimple-enhet som hanteras av en StorSimple Manager-tjänsten. Den här självstudiekursen beskrivs hur du kan använda den **konfigurera** sidan för att ändra enhetsadministratören eller lösenordet för StorSimple Snapshot Manager.
 
-## <a name="change-hello-device-administrator-password"></a>Ändra hello enhetens administratörslösenord
-När du använder Windows PowerShell-gränssnittet tooaccess hello StorSimple-enhet är obligatoriska tooenter administratörslösenord för enheten. När hello första StorSimple-enhet är registrerad med en tjänst hello standardlösenordet för det här gränssnittet är *Password1*. Hello säkerheten för dina data, du är obligatoriska toochange lösenordet vid hello slutet av hello registreringsprocessen. Du kan avsluta från hello registreringen utan att ändra lösenordet. Mer information finns i [steg3: konfigurera och registrera hello enheten via Windows PowerShell för StorSimple](storsimple-deployment-walkthrough-u2.md#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple).
+## <a name="change-the-device-administrator-password"></a>Ändra enhetens administratörslösenord
+När du använder Windows PowerShell-gränssnittet för att komma åt StorSimple-enhet, måste du ange ett administratörslösenord för enheten. När den första StorSimple-enheten har registrerats med en tjänst standardlösenordet för det här gränssnittet är *Password1*. För att skydda dina data måste du ändra lösenordet i slutet av registreringsprocessen. Du kan inte avsluta registreringen utan att ändra lösenordet. Mer information finns i [steg3: konfigurera och registrera enheten via Windows PowerShell för StorSimple](storsimple-deployment-walkthrough-u2.md#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple).
 
-hello lösenordet som angavs först via Windows PowerShell-gränssnittet för hello under registreringen kan sedan ändras via hello klassiska Azure-portalen. Utför följande steg toochange hello enhetens administratörslösenord hello.
+Lösenordet som angavs först via Windows PowerShell-gränssnittet under registreringen kan sedan ändras via den klassiska Azure-portalen. Utför följande steg om du vill ändra enhetens administratörslösenord.
 
-#### <a name="toochange-hello-device-administrator-password"></a>toochange hello enhetens administratörslösenord
-1. I klassiska hello-portalen klickar du på **enheter** > **konfigurera** för din enhet.
-2. Bläddra nedåt toohello **administratörslösenordet för enheten** avsnitt. Ange ett administratörslösenord som innehåller från 8 too15 tecken. hello lösenordet måste vara en kombination av 3 eller flera av versaler, gemener, siffror och särskilda tecken.
-3. Bekräfta hello lösenord.
-4. Klicka på **spara** på hello hello sidans nederkant.
+#### <a name="to-change-the-device-administrator-password"></a>Ändra enhetens administratörslösenord
+1. I den klassiska portalen klickar du på **enheter** > **konfigurera** för din enhet.
+2. Rulla ned till den **administratörslösenordet för enheten** avsnitt. Ange ett administratörslösenord som innehåller mellan 8 och 15 tecken. Lösenordet måste vara en kombination av 3 eller flera av versaler, gemener, siffror och särskilda tecken.
+3. Bekräfta lösenordet.
+4. Klicka på **Spara** längst ned på sidan.
 
-hello enhetens administratörslösenord ska nu uppdateras. Du kan använda den här ändrade lösenord tooaccess hello Windows PowerShell-gränssnittet.
+Administratörslösenord för enheten ska nu uppdateras. Du kan använda den här ändrade lösenord för att komma åt Windows PowerShell-gränssnittet.
 
-## <a name="change-hello-storsimple-snapshot-manager-password"></a>Ändra hello lösenordet för StorSimple Snapshot Manager
-Programvaran StorSimple Manager finns på din Windows-värd och kan administratörer toomanage säkerhetskopior av StorSimple-enheten i hello form av lokala och molnögonblicksbilder.
+## <a name="change-the-storsimple-snapshot-manager-password"></a>Ändra lösenordet för StorSimple Snapshot Manager
+Programvaran StorSimple Manager finns på din Windows-värd och ger administratörer möjlighet att hantera säkerhetskopiering av din StorSimple-enhet i form av lokala och molnbaserade ögonblicksbilder.
 
-När du konfigurerar en enhet i StorSimple Snapshot Manager, uppmanas du att tooprovide hello enhetens IP-adress och lösenord tooauthenticate lagringsenheten. Det här lösenordet först konfigureras via hello Windows PowerShell-gränssnittet. Mer information finns i [steg3: konfigurera och registrera hello enheten via Windows PowerShell för StorSimple](storsimple-deployment-walkthrough-u2.md#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple).
+När du konfigurerar en enhet i StorSimple Snapshot Manager, uppmanas du att ange enhetens IP-adress och lösenord för att autentisera lagringsenheten. Det här lösenordet först konfigureras via Windows PowerShell-gränssnittet. Mer information finns i [steg3: konfigurera och registrera enheten via Windows PowerShell för StorSimple](storsimple-deployment-walkthrough-u2.md#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple).
 
-hello lösenordet som angavs först via Windows PowerShell-gränssnittet för hello under registreringen kan sedan ändras via hello klassiska portalen. Utför följande steg toochange hello StorSimple Snapshot Manager lösenord hello.
+Lösenordet som angavs först via Windows PowerShell-gränssnittet under registreringen kan sedan ändras via den klassiska portalen. Utför följande steg om du vill ändra lösenordet för StorSimple Snapshot Manager.
 
-#### <a name="toochange-hello-storsimple-snapshot-manager-password"></a>lösenordet för toochange hello StorSimple Snapshot Manager
-1. I klassiska hello-portalen klickar du på **enheter** > **konfigurera** för din enhet.
-2. Bläddra nedåt toohello **StorSimple Snapshot Manager** avsnitt. Ange ett lösenord som är 14 eller 15 tecken. Kontrollera att lösenordet hello innehåller en kombination av 3 eller flera av versaler, gemener, siffror och särskilda tecken.
-3. Bekräfta hello lösenord.
-4. Klicka på **spara** på hello hello sidans nederkant.
+#### <a name="to-change-the-storsimple-snapshot-manager-password"></a>Så här ändrar du lösenordet för StorSimple Snapshot Manager
+1. I den klassiska portalen klickar du på **enheter** > **konfigurera** för din enhet.
+2. Rulla ned till den **StorSimple Snapshot Manager** avsnitt. Ange ett lösenord som är 14 eller 15 tecken. Kontrollera att lösenordet innehåller en kombination av 3 eller flera av versaler, gemener, siffror och särskilda tecken.
+3. Bekräfta lösenordet.
+4. Klicka på **Spara** längst ned på sidan.
 
-hello lösenordet för StorSimple Snapshot Manager ska nu uppdateras.
+Lösenordet för StorSimple Snapshot Manager ska nu uppdateras.
 
 ## <a name="next-steps"></a>Nästa steg
 * Lär dig mer om [StorSimple-säkerhet](storsimple-security.md).
 * Lär dig mer om [ändra din enhetskonfiguration](storsimple-modify-device-config.md).
-* Lär dig mer om [med hello StorSimple Manager service tooadminister StorSimple-enheten](storsimple-manager-service-administration.md).
+* Lär dig mer om [använda StorSimple Manager-tjänsten för att administrera din StorSimple-enhet](storsimple-manager-service-administration.md).
 

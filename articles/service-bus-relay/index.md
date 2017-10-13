@@ -1,15 +1,26 @@
 ---
+title: "Dokumentation för Service Bus Relay"
+description: "Lär dig hur tjänsten Azure Relay fungerar i ett hybridmoln och lokal miljö, och komplettera med anvisningar, självstudier, videor, API-referenser och mycket mer."
+services: service-bus
+author: czeumault
+manager: carolz
 layout: LandingPage
-title: aaaService Bus Relay-dokumentation
-description: "Lär dig hur hello Azure vidarebefordrande tjänsten fungerar i en hybrid molnet och lokalt, med hur du, självstudier, videor, API-referenserna och mycket mer."
-ms.openlocfilehash: c042c82c90fa03e91ee9c1b513e325d7e8d33c08
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.assetid: 
+ms.service: service-bus
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 03/14/2017
+ms.author: carolz
+ms.openlocfilehash: 9305e85ff075e8e7ee3e21315d28f63613ac01f4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
+---
 ---
 # <a name="service-bus-relay-documentation"></a>Dokumentation för Service Bus Relay
-Lär dig hur Azure vidarebefordrande tjänsten underlättar hybridprogram mellan lokala och molnet miljöer i ett företagsnätverk som kopplar nätverks- och hello offentliga moln, utan att behöva tooopen en brandväggsanslutning eller kräva störande ändringar tooa företagets nätverksinfrastruktur.
+Läs om hur tjänsten Azure Relay hjälper dig att använda hybridprogram mellan en lokal miljö och molnmiljö (i ett företagsnätverk och det offentliga molnet), utan att du behöver öppna en brandväggsanslutning eller göra störande ändringar i företagets nätverksinfrastruktur.
 
 <ul class="panelContent cardsFTitle">
     <li>

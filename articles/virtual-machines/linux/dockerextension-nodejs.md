@@ -1,6 +1,6 @@
 ---
-title: "aaaUse hello Azure Docker VM-tillägget med hello Azure CLI 1.0 | Microsoft Docs"
-description: "Lär dig hur toouse hello Docker VM-tillägget tooquickly och säkert distribuera en Docker-miljö i Azure med hjälp av Resource Manager-mallar."
+title: "Använda Azure Docker VM-tillägget med Azure CLI 1.0 | Microsoft Docs"
+description: "Lär dig hur du använder Docker VM-tillägget för att snabbt och säkert distribuera en Docker-miljö i Azure med hjälp av Resource Manager-mallar."
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
@@ -14,42 +14,42 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/11/2017
 ms.author: iainfou
-ms.openlocfilehash: 2133cdb1af741fe30093910fae5c3b2c91e8d5fe
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: a3cbcf63533f4042dcd695e141655c5814bd7068
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="create-a-docker-environment-in-azure-using-hello-docker-vm-extension-with-hello-azure-cli-10"></a>Skapa en Docker-miljö i Azure med hello Azure CLI 1.0 hello Docker VM-tillägget
-Docker är en populär behållarhantering och avbildningsverktyg plattform som gör att du tooquickly fungerar med behållare på Linux (och även Windows). Det finns olika sätt som du kan distribuera Docker enligt tooyour behov i Azure. Den här artikeln fokuserar på att använda hello Docker VM-tillägget och Azure Resource Manager-mallar. 
+# <a name="create-a-docker-environment-in-azure-using-the-docker-vm-extension-with-the-azure-cli-10"></a>Skapa en Docker-miljö i Azure med Azure CLI 1.0 Docker VM-tillägget
+Docker är en populär behållarhantering och avbildningsverktyg plattform som gör att du snabbt arbeta med behållare för Linux (och även Windows). I Azure det, finns olika sätt som du kan distribuera Docker efter dina behov. Den här artikeln fokuserar på att använda Docker VM-tillägget och Azure Resource Manager-mallar. 
 
-Mer information om hello finns olika distributionsmetoder, inklusive användning av Docker-dator och Azure Behållartjänster hello följande artiklar:
+Mer information om olika distributionsmetoder, inklusive användning av Docker-dator och Azure Container Services finns i följande artiklar:
 
-* tooquickly prototyp en app, som du kan skapa en enda Docker-värd med [Docker datorn](docker-machine.md).
-* För större och mer stabilt miljöer, kan du använda hello Azure Docker VM-tillägget, som också stöder [Docker Compose](https://docs.docker.com/compose/overview/) toogenerate konsekvent behållardistributionerna. Den här artikeln information med hjälp av hello Azure Docker VM-tillägget.
-* toobuild produktionsklara, skalbara miljöer som ger ytterligare schemaläggning och hanteringsverktygen, kan du distribuera en [Docker Swarm-kluster på Azure Container Service](../../container-service/dcos-swarm/container-service-deployment.md).
+* Att snabbt prototyp en app du kan skapa en enda Docker-värd med [Docker datorn](docker-machine.md).
+* För större och mer stabilt miljöer, kan du använda Azure Docker VM-tillägget, som också stöder [Docker Compose](https://docs.docker.com/compose/overview/) att generera konsekvent behållardistributionerna. Den här artikeln information med hjälp av Azure Docker VM-tillägget.
+* När du skapar produktionsklara, skalbara miljöer som ger ytterligare schemaläggning och hanteringsverktygen ska du distribuera en [Docker Swarm-kluster på Azure Container Service](../../container-service/dcos-swarm/container-service-deployment.md).
 
-## <a name="cli-versions-toocomplete-hello-task"></a>CLI versioner toocomplete hello aktivitet
-Du kan göra hello med hjälp av något av följande versioner av CLI hello:
+## <a name="cli-versions-to-complete-the-task"></a>CLI-versioner för att slutföra uppgiften
+Du kan slutföra uppgiften med någon av följande CLI-versioner:
 
-- [Azure CLI 1.0](#azure-docker-vm-extension-overview) – våra CLI för hello klassisk och resurs management distributionsmodeller (den här artikeln)
-- [Azure CLI 2.0](dockerextension.md) -vår nästa generations CLI för hello resursdistributionsmodell för hantering 
+- [Azure CLI 1.0](#azure-docker-vm-extension-overview) – våra CLI för klassisk och resurs management på distributionsmodeller (den här artikeln)
+- [Azure CLI 2.0](dockerextension.md) – vår nästa generations CLI för distributionsmodellen resurshantering 
 
 ## <a name="azure-docker-vm-extension-overview"></a>Översikt av Azure Docker VM-tillägg
-hello Azure Docker VM-tillägget installerar och konfigurerar hello Docker daemon Docker-klienten och Docker Compose i Linux-dator (VM). Genom att använda hello Azure Docker VM-tillägget kan ha du mer kontroll och funktioner än att bara använda Docker-dator eller skapa hello Docker värd själv. Dessa ytterligare funktioner som [Docker Compose](https://docs.docker.com/compose/overview/), se hello Azure Docker VM-tillägget som passar för stabilare utvecklare eller produktion miljöer.
+Azure Docker VM-tillägget installeras och konfigureras Docker-daemon, Docker-klienten och Docker Compose i Linux-dator (VM). Med hjälp av Azure Docker VM-tillägget kan ha mer kontroll och funktioner än att bara använda Docker-dator eller skapa Docker-värd själv. Dessa ytterligare funktioner som [Docker Compose](https://docs.docker.com/compose/overview/), se Azure Docker VM-tillägget som passar för stabilare utvecklare eller produktion miljöer.
 
-Azure Resource Manager-mallar definiera hello hela strukturen för din miljö. Mallar kan du toocreate och konfigurera resurser, till exempel hello Docker värden virtuella datorer, lagring, rollbaserad åtkomstkontroll (RBAC) och diagnostik. Du kan återanvända dessa mallar toocreate ytterligare distributioner på ett konsekvent sätt. Mer information om Azure Resource Manager och mallar finns [översikt över Resource Manager](../../azure-resource-manager/resource-group-overview.md). 
+Azure Resource Manager-mallar definiera hela strukturen för din miljö. Mallar kan du skapa och konfigurera resurser, till exempel Docker värden virtuella datorer, lagring, rollbaserad åtkomstkontroll (RBAC) och diagnostik. Du kan återanvända dessa mallar för att skapa ytterligare distributioner på ett konsekvent sätt. Mer information om Azure Resource Manager och mallar finns [översikt över Resource Manager](../../azure-resource-manager/resource-group-overview.md). 
 
-## <a name="deploy-a-template-with-hello-azure-docker-vm-extension"></a>Distribuera en mall med hello Azure Docker VM-tillägget
-Vi använder en befintlig quickstart mallen toocreate en Ubuntu VM som använder hello Azure Docker VM-tillägget tooinstall och konfigurerar hello Docker-värden. Du kan visa hello mallen här: [enkel distribution av en Ubuntu VM med Docker](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu). 
+## <a name="deploy-a-template-with-the-azure-docker-vm-extension"></a>Distribuera en mall med Azure Docker VM-tillägg
+Vi ska använda en befintlig mall för Snabbstart för att skapa en Ubuntu VM som använder Azure Docker VM-tillägget för att installera och konfigurera Docker-värden. Du kan visa den här mallen: [enkel distribution av en Ubuntu VM med Docker](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu). 
 
-Du behöver hello [senaste Azure CLI](../../cli-install-nodejs.md) installerad och logga in med hello Resource Manager-läge på följande sätt:
+Du behöver den [senaste Azure CLI](../../cli-install-nodejs.md) installerad och logga in med Resource Manager-läget på följande sätt:
 
 ```azurecli
 azure config mode arm
 ```
 
-Distribuera hello mallen med hjälp av hello Azure CLI, att ange hello mallen URI. hello följande exempel skapar en resursgrupp med namnet *myResourceGroup* i hello *westus* plats. Använda egna resursgruppens namn och plats på följande sätt:
+Distribuera mallen med hjälp av Azure CLI, ange URI för mallen. I följande exempel skapas en resursgrupp med namnet *myResourceGroup* på platsen *westus*. Använda egna resursgruppens namn och plats på följande sätt:
 
 ```azurecli
 azure group create \
@@ -58,14 +58,14 @@ azure group create \
     --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/docker-simple-on-ubuntu/azuredeploy.json
 ```
 
-Besvara hello prompter tooname ditt lagringskonto, ange ett användarnamn och lösenord och ange ett DNS-namn. hello utdata är liknande toohello följande exempel:
+Besvara anvisningarna för att namnge ditt lagringskonto, ange ett användarnamn och lösenord och ange ett DNS-namn. Utdata ser ut ungefär så här:
 
 ```azurecli
 info:    Executing command group create
 + Getting resource group myResourceGroup
 + Updating resource group myResourceGroup
 info:    Updated resource group myResourceGroup
-info:    Supply values for hello following parameters
+info:    Supply values for the following parameters
 newStorageAccountName: mystorageaccount
 adminUsername: azureuser
 adminPassword: P@ssword!
@@ -82,21 +82,21 @@ data:
 info:    group create command OK
 ```
 
-hello Azure CLI returnerar du toohello fråga efter endast några sekunder, men Docker-värden skapas och konfigureras av hello Azure Docker VM-tillägget. Det tar några minuter för hello distribution toofinish. Du kan visa information om värdstatusen hello Docker med hello `azure vm show` kommando.
+Azure CLI-returnerar du fråga efter endast några sekunder, men Docker-värden är fortfarande som skapat och konfigurerat Azure Docker VM-tillägget. Det tar några minuter för att distributionen ska slutföras. Du kan visa information om hur du använder för Docker värden status i `azure vm show` kommando.
 
-hello följande exempel kontrollerar hello status för hello virtuella datorn med namnet *myDockerVM* (hello standardnamnet från hello mall - inte ändrar namnet) i hello resursgrupp med namnet *myResourceGroup*. Ange hello hello resursgruppen som du skapade i föregående steg hello:
+I följande exempel kontrollerar status för den virtuella datorn med namnet *myDockerVM* (standardnamnet från mall - inte ändrar namnet) i resursgrupp med namnet *myResourceGroup*. Ange namnet på resursgruppen som du skapade i föregående steg:
 
 ```azurecli
 azure vm show --resource-group myResourceGroup --name myDockerVM
 ```
 
-Hej utdata från hello `azure vm show` kommandot är liknande toohello följande exempel:
+Utdata från den `azure vm show` kommando som liknar följande exempel:
 
 ```azurecli
 info:    Executing command vm show
-+ Looking up hello VM "myDockerVM"
-+ Looking up hello NIC "myVMNicD"
-+ Looking up hello public ip "myPublicIPD"
++ Looking up the VM "myDockerVM"
++ Looking up the NIC "myVMNicD"
++ Looking up the public ip "myPublicIPD"
 data:    Id                              :/subscriptions/guid/resourceGroups/myresourcegroup/providers/Microsoft.Compute/virtualMachines/MyDockerVM
 data:    ProvisioningState               :Succeeded
 data:    Name                            :MyDockerVM
@@ -119,27 +119,27 @@ data:    Diagnostics Instance View:
 info:    vm show command OK
 ```
 
-Hello övre delen av hello utdata visas hello **ProvisioningState** av hello VM. När detta visar *lyckades*, hello distributionen är klar och du kan SSH toohello VM.
+Längst upp i utdata, finns det **ProvisioningState** av den virtuella datorn. När detta visar *lyckades*distributionen är klar och du kan SSH till den virtuella datorn.
 
-Hello utgången av hello utdata *FQDN* visar hello fullständigt kvalificerade domännamnet för Docker-värden. Den här FQDN är det du använder tooSSH tooyour Docker-värd i hello återstående steg.
+Mot slutet av utdata, *FQDN* visar fullständigt kvalificerade domännamnet för Docker-värden. Den här FQDN är det du använder till SSH till Docker-värden i stegen.
 
 ## <a name="deploy-your-first-nginx-container"></a>Distribuera din första nginx-behållare
-En gång hello distributionen har slutförts SSH tooyour nya Docker värden från den lokala datorn. Ange användarnamn och FQDN på följande sätt:
+När distributionen är klar, SSH till din nya Docker-värden från den lokala datorn. Ange användarnamn och FQDN på följande sätt:
 
 ```bash
 ssh ops@mypublicdns.westus.cloudapp.azure.com
 ```
 
-När inloggad toohello Docker-värden kan vi köra en nginx-behållare:
+När inloggad till Docker-värden kan vi köra en nginx-behållare:
 
 ```bash
 sudo docker run -d -p 80:80 nginx
 ```
 
-hello-utdata är liknande toohello följande exempel som hello nginx-avbildningen hämtas och en behållare som är igång:
+Utdata liknar följande exempel som nginx-avbildningen hämtas och en behållare igång:
 
 ```bash
-Unable toofind image 'nginx:latest' locally
+Unable to find image 'nginx:latest' locally
 latest: Pulling from library/nginx
 efd26ecc9548: Pull complete
 a3ed95caeb02: Pull complete
@@ -150,25 +150,25 @@ Status: Downloaded newer image for nginx:latest
 b6ed109fb743a762ff21a4606dd38d3e5d35aff43fa7f12e8d4ed1d920b0cd74
 ```
 
-Kontrollera status för hello hello-behållare som körs på värden Docker på följande sätt:
+Kontrollera status för de behållare som körs på värden Docker på följande sätt:
 
 ```bash
 sudo docker ps
 ```
 
-hello-utdata är liknande toohello som följande exempel, visar hello nginx behållaren körs och TCP-portarna 80 och 443 och vidarebefordras:
+Utdata liknar följande exempel, visar att nginx-behållaren körs och TCP-portarna 80 och 443 och vidarebefordras:
 
 ```bash
 CONTAINER ID        IMAGE               COMMAND                  CREATED              STATUS              PORTS                         NAMES
 b6ed109fb743        nginx               "nginx -g 'daemon off"   About a minute ago   Up About a minute   0.0.0.0:80->80/tcp, 443/tcp   adoring_payne
 ```
 
-toosee din behållare i åtgärden, öppna upp en webbläsare och ange hello FQDN-namn för Docker-värd:
+För att se din behållare i åtgärden, öppna en webbläsare och ange FQDN-namnet på din Docker-värd:
 
 ![Körs ngnix behållare](./media/dockerextension/nginxrunning.png)
 
 ## <a name="azure-docker-vm-extension-template-reference"></a>Azure Docker VM-mall tilläggsreferens
-hello föregående exempel använder en befintlig mall för Snabbstart. Du kan också distribuera hello Azure Docker VM-tillägget med egna Resource Manager-mallar. toodo Lägg därför till hello följande tooyour Resource Manager-mallar, definiera hello *vmName* på den virtuella datorn på rätt sätt:
+Det föregående exemplet används en befintlig mall för Snabbstart. Du kan också distribuera Azure Docker VM-tillägget med egna Resource Manager-mallar. Om du vill göra det lägger du till följande Resource Manager-mallar, definiera den *vmName* på den virtuella datorn på rätt sätt:
 
 ```json
 {
@@ -193,11 +193,11 @@ hello föregående exempel använder en befintlig mall för Snabbstart. Du kan o
 Du kan hitta mer detaljerad genomgång om hur du använder Resource Manager-mallar genom att läsa [översikt över Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md).
 
 ## <a name="next-steps"></a>Nästa steg
-Vill du kanske för[konfigurera hello Docker daemon TCP-port](https://docs.docker.com/engine/reference/commandline/dockerd/#/bind-docker-to-another-hostport-or-a-unix-socket), Förstå [Docker säkerhet](https://docs.docker.com/engine/security/security/), eller distribuera behållare med [Docker Compose](https://docs.docker.com/compose/overview/). Mer information om hello Azure Docker VM-tillägget själva finns hello [GitHub projekt](https://github.com/Azure/azure-docker-extension/).
+Du kanske vill [konfigurera Docker-daemon TCP-port](https://docs.docker.com/engine/reference/commandline/dockerd/#/bind-docker-to-another-hostport-or-a-unix-socket), Förstå [Docker säkerhet](https://docs.docker.com/engine/security/security/), eller distribuera behållare med [Docker Compose](https://docs.docker.com/compose/overview/). Mer information om Azure Docker VM tillägget själva finns i [GitHub projekt](https://github.com/Azure/azure-docker-extension/).
 
-Läs mer om hello ytterligare Docker distributionsalternativ i Azure:
+Läs mer om ytterligare Docker distributionsalternativen i Azure:
 
-* [Använda Docker-dator med hello Azure drivrutin](docker-machine.md)  
-* [Kom igång med Docker Compose toodefine och köra ett program för flera behållare på en virtuell dator i Azure](docker-compose-quickstart.md).
+* [Använda Docker-datorn med Azure-drivrutin](docker-machine.md)  
+* [Kom igång med Docker och skriv för att definiera och köra ett program för flera behållare på en virtuell dator i Azure](docker-compose-quickstart.md).
 * [Distribuera ett Azure Container Service-kluster](../../container-service/dcos-swarm/container-service-deployment.md)
 

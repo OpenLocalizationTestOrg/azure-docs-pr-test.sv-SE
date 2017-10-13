@@ -1,5 +1,5 @@
 ---
-title: aaaSendGrid | Microsoft Docs
+title: SendGrid | Microsoft Docs
 description: "Skapa logikappar med Azure App service. Provider för SendGrid anslutning kan du skicka e-post och hantera mottagande listor."
 services: logic-apps
 documentationcenter: .net,nodejs,java
@@ -15,33 +15,33 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 08/18/2016
 ms.author: mandia; ladocs
-ms.openlocfilehash: c89c9930310232ac4c0fc9ee474f45d7910cf27c
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 9ff0591741899d65b8274fb14ab3f3c8db9abe36
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="get-started-with-hello-sendgrid-connector"></a>Kom igång med hello SendGrid-anslutningen
+# <a name="get-started-with-the-sendgrid-connector"></a>Kom igång med SendGrid-anslutningen
 Provider för SendGrid anslutning kan du skicka e-post och hantera mottagande listor.
 
 Du kan komma igång genom att skapa en logikapp nu, se [skapa en logikapp](../logic-apps/logic-apps-create-a-logic-app.md).
 
-## <a name="create-a-connection-toosendgrid"></a>Skapa en anslutning tooSendGrid
-toocreate logikappar med SendGrid, måste du först skapa en **anslutning** ange hello information för hello följande egenskaper: 
+## <a name="create-a-connection-to-sendgrid"></a>Skapa en anslutning till SendGrid
+För att skapa logikappar med SendGrid, måste du först skapa en **anslutning** ange detaljer för följande egenskaper: 
 
 | Egenskap | Krävs | Beskrivning |
 | --- | --- | --- |
 | apiKey |Ja |Ange din SendGrid Api-nyckel |
 
-> [!INCLUDE [Steps toocreate a connection tooSendGrid](../../includes/connectors-create-api-sendgrid.md)]
+> [!INCLUDE [Steps to create a connection to SendGrid](../../includes/connectors-create-api-sendgrid.md)]
 > 
 
 
-När du skapar hello anslutning kan du använda det tooexecute hello åtgärder och lyssna efter hello utlösare.
+När du har skapat anslutningen kan du använda den och utföra åtgärderna som du kan lyssna efter utlösare.
 
 ## <a name="connector-specific-details"></a>Connector-specifik information
 
-Visa alla utlösare och åtgärder som definierats i hello swagger och även se några gränser i hello [connector information](/connectors/sendgrid/).
+Visa alla utlösare och åtgärder som definierats i swagger och även se några gränser i den [connector information](/connectors/sendgrid/).
 
 ## <a name="more-connectors"></a>Flera kopplingar
-Gå tillbaka toohello [API: er listan](apis-list.md).
+Gå tillbaka till den [API: er listan](apis-list.md).

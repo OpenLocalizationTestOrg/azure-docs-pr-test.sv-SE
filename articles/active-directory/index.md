@@ -1,9 +1,9 @@
 ---
 layout: LandingPage
-description: "Lär dig hur toosynchronize kataloger och aktivera enkel inloggning. Dokumentationen visar hur toointegrate en fullständig uppsättning funktioner för hantering av identiteter."
-title: "aaaAzure Active Directory-dokumentation – självstudier, API-referens | Microsoft Docs"
+description: "Lär dig hur du synkroniserar kataloger och möjliggör enkel inloggning. Dokumentationen visar hur du integrerar en fullständig uppsättning funktioner för identitetshantering."
+title: "Dokumentation om Azure Active Directory – Självstudier, API-referens | Microsoft Docs"
 services: active-directory
-author: carolz
+author: czeumault
 manager: carolz
 ms.assetid: 
 ms.service: active-directory
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: a99aa3cc979a518c5b53cb1540f037b6776fb157
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: a0a9b69824829d0b7a07583210eaddb1f39bcf88
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-documentation"></a>Dokumentation om Azure Active Directory
 
-Lär dig hur toosynchronize kataloger och aktivera enkel inloggning med Azure Active Directory (AD Azure). Visar självstudier, API-referenserna och övrig dokumentation hur toointegrate identitetshanteringsfunktionerna inklusive multifaktorautentisering, registrering av enheten, rollbaserad åtkomst styra och säkerhetsövervakning och aviseringar.
+Lär dig hur du synkroniserar kataloger och möjliggör enkel inloggning med Azure Active Directory (Azure AD). Självstudier, API-referenser och annan dokumentation visar hur du integrerar funktioner för identitethantering inklusive Multi-Factor Authentication, enhetsregistrering, rollbaserad åtkomstkontroll, säkerhetsövervakning och avisering.
 
 <ul class="panelContent cardsFTitle">
     <li>

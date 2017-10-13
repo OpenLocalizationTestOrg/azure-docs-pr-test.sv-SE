@@ -1,27 +1,27 @@
-#### <a name="toocreate-a-cloud-appliance"></a>toocreate en moln-installation
+#### <a name="to-create-a-cloud-appliance"></a>Så här skapar du en molninstallation
 
-1. I hello Azure-portalen, går toohello **StorSimple Enhetshanteraren** service.
-2. Gå toohello **enheter** bladet. Hello kommandofältet hello service sammanfattning-bladet, klickar du på **skapa moln installation**.
+1. Gå till **StorSimple Device Manager**-tjänsten på Azure Portal.
+2. Gå till bladet **Enheter**. Klicka på **Skapa molninstallation** från kommandofältet på sammanfattningsbladet för tjänsten.
     ![Skapa StorSimple-molninstallation](./media/storsimple-8000-create-cloud-appliance-u2/sca-create1.png)
-3. I hello **skapa moln installation** bladet ange hello följande information.
+3. Ange följande information på bladet **Skapa molninstallation**.
    
     ![Skapa StorSimple-molninstallation](./media/storsimple-8000-create-cloud-appliance-u2/sca-create2m.png)
    
    1. **Namn** – Ett unikt namn för molninstallationen.
-   2. **Modellen** -Välj hello modell hello molnet enhetens. En 8010-enhet erbjuder 30 TB standardlagring, medan 8020 har 64 TB Premium Storage. Ange 8010 toodeploy hämtningsscenarier på objektsnivå från säkerhetskopior. Välj 8020 toodeploy hög prestanda, låg latens arbetsbelastningar, eller Använd som en sekundär enhet för katastrofåterställning.
-   3. **Version** -Välj hello version av hello molnet installation. hello version motsvarar toohello version av hello virtuell diskavbildning som används toocreate hello molnet installation. Angivna hello version av hello molnet installation avgör vilka fysiska enheten du växla över eller klona från, är det viktigt att du skapar en lämplig version av hello molnet installation.
-   4. **Virtuellt nätverk** – ange ett virtuellt nätverk som du vill toouse med den här utrustningen i molnet. Om du använder Premiumlagring, måste du välja ett virtuellt nätverk som stöds med hello Premium Storage-konto. hello stöds inte för virtuella nätverk är nedtonade i listrutan hello. Du får en varning om du väljer ett virtuellt nätverk som inte stöds.
-   5. **Undernät** -baserat på hello virtuellt nätverk har valts, hello listrutan visar hello associerade undernät. Tilldela en undernät tooyour moln installation.
-   6. **Storage-konto** – Välj en toohold hello lagringskontoavbildningen hello molnet enhetens under etableringen. Det här lagringskontot måste vara i hello samma region som hello molnet installation och virtuella nätverk. Det bör inte användas för datalagring av hello fysiska eller hello molnet installation. Som standard skapas ett nytt lagringskonto för detta ändamål. Men om du vet att du redan har ett lagringskonto som är lämpligt kan kan du välja den hello-listan. Om du skapar en premium molnet installation, visar hello listrutan endast Premium Storage-konton.
+   2. **Modell** – Välj modell för molninstallationen. En 8010-enhet erbjuder 30 TB standardlagring, medan 8020 har 64 TB Premium Storage. Välj 8010 om du vill distribuera scenarier för hämtning på objektnivå från säkerhetskopior. Välj 8020 om du vill distribuera högpresterande arbetsbelastningar med korta svarstider, eller för användning som en sekundär enhet för haveriberedskap.
+   3. **Version** – Välj versionen för molninstallationen. Versionen motsvarar versionen av den virtuella diskens avbildning som används för att skapa molninstallationen. Eftersom molninstallationens version bestämmer vilken fysisk enhet du växlar över eller klonar från är det viktigt att du skapar rätt version för molninstallationen.
+   4. **Virtuellt nätverk** – Ange ett virtuellt nätverk som du vill använda med den här virtuella enheten. Om du använder Premium Storage så måste du välja ett virtuellt nätverk som stöds av Premium Storage-kontot. Virtuella nätverk som inte stöds är nedtonade i listrutan. Du får en varning om du väljer ett virtuellt nätverk som inte stöds.
+   5. **Undernät** – Associerade undernät visas i listrutan baserat på det virtuella nätverk du valt. Tilldela ett undernät till molninstallationen.
+   6. **Lagringskonto** – Välj det lagringskonto där avbildningen av molninstallationen ska lagras under etableringen. Lagringskontot måste finnas i samma region som molninstallationen och det virtuella nätverket. Det bör inte användas för datalagring av vare sig den fysiska enheten eller molninstallationen. Som standard skapas ett nytt lagringskonto för detta ändamål. Men om du vet att du redan har ett lagringskonto som är lämpligt, kan du välja det från listan. Om du skapar en premiummolninstallation visas endast Premium Storage-konton i listan.
       
       > [!NOTE]
-      > hello molnet enheten fungerar bara med hello Azure storage-konton.
+      > Molninstallationen fungerar bara med Azure Storage-konton.
     
-   7. Välj hello kryssrutan tooindicate som du förstår att hello data som lagras på hello molnet installation finns i ett Microsoft-datacenter.
+   7. Markera kryssrutan för att bekräfta att du förstår att data som lagras i molninstallationen finns på ett Microsoft-datacenter.
        * När du bara använder en fysisk enhet så sparas krypteringsnyckeln med din enhet. Microsoft kan därmed inte dekryptera den.
 
-       * När du använder en moln-installation, lagras både hello krypteringsnyckeln och dekrypteringsnyckeln hello i Microsoft Azure. Mer information finns i [Säkerhetsöverväganden vid användning av en molninstallation](../articles/storsimple/storsimple-security.md#storsimple-virtual-device-security).
-   8. Klicka på **skapa** tooprovision hello molnet installation. hello enheten kan ta cirka 30 minuter toobe etableras. Du meddelas när hello molnet installation har skapats. Gå tooDevices bladet och hello lista över enheter uppdaterar toodisplay hello molnet installation. hello status hello-enhetens är **klar tooset in**.
+       * När du använder en molninstallation lagras både krypteringsnyckeln och dekrypteringsnyckeln i Microsoft Azure. Mer information finns i [Säkerhetsöverväganden vid användning av en molninstallation](../articles/storsimple/storsimple-security.md).
+   8. Etablera molninstallationen genom att klicka på **Skapa**. Enheten kan ta runt 30 minuter för att etableras. Du får ett meddelande när molninstallationen har skapats. Gå till bladet Enheter så uppdateras enhetslistan med molninstallationen. Installationens status är **Redo för installation**.
       
-      ![StorSimple-enhet för molnet redo tooset in](./media/storsimple-8000-create-cloud-appliance-u2/sca-create3.png)
+      ![StorSimple-molninstallation som är redo att installeras](./media/storsimple-8000-create-cloud-appliance-u2/sca-create3.png)
 

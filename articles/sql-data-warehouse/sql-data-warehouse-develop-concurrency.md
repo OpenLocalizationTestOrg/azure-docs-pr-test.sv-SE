@@ -1,5 +1,5 @@
 ---
-title: hantering av aaaConcurrency och arbetsbelastning i SQL Data Warehouse | Microsoft Docs
+title: Hantering av samtidighet och arbetsbelastning i SQL Data Warehouse | Microsoft Docs
 description: "Förstå samtidighet och arbetsbelastningen hantering i Azure SQL Data Warehouse för utveckling av lösningar."
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,24 +15,24 @@ ms.workload: data-services
 ms.custom: performance
 ms.date: 08/23/2017
 ms.author: joeyong;barbkess;kavithaj
-ms.openlocfilehash: 7f7e77aa687760252aed16573b609817ed9111c3
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: eaf2d43286dbaa52ada1430fbb7ce1e37f41c0d4
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="concurrency-and-workload-management-in-sql-data-warehouse"></a>Hantering av samtidighet och arbetsbelastning i SQL Data Warehouse
-toodeliver förutsägbar prestanda i skala, Microsoft Azure SQL Data Warehouse hjälper dig att styra samtidighet nivåer och resursfördelningar som minne och CPU-prioritering. Den här artikeln beskriver toohello begrepp av samtidighet och arbetsbelastningen management, förklarar hur båda funktionerna har genomförts och hur du kan kontrollera dem i ditt data warehouse. Hantering av SQL Data Warehouse arbetsbelastning är avsedda toohelp du stöd för miljöer med flera användare. Det är inte avsedd för flera innehavare arbetsbelastningar.
+För att leverera förutsägbar prestanda i skala, Microsoft Azure SQL Data Warehouse hjälper dig styra samtidighet nivåer och resursfördelningar som minne och CPU-prioritering. Den här artikeln ger en introduktion till begreppet samtidighet och arbetsbelastningen hantering, förklarar hur båda funktionerna har genomförts och hur du kan kontrollera dem i ditt data warehouse. Hantering av SQL Data Warehouse arbetsbelastning är avsedda att hjälpa dig stöd för miljöer med flera användare. Det är inte avsedd för flera innehavare arbetsbelastningar.
 
 ## <a name="concurrency-limits"></a>Concurrency-gränser
-Det låter SQL Data Warehouse dig too1 024 samtidiga anslutningar. Alla 1 024 anslutningar kan skicka frågor samtidigt. Toooptimize dataflöde, SQL Data Warehouse kan dock kö vissa frågor tooensure att varje fråga får en minimal minnestilldelningen. Queuing inträffar vid körning i frågan. MSMQ-frågor när gränsen har uppnåtts samtidighet SQL Data Warehouse kan öka behövs totala genomflödet genom att säkerställa att aktiva frågor får åtkomst toocritically minnesresurser.  
+SQL Data Warehouse kan upp till 1 024 samtidiga anslutningar. Alla 1 024 anslutningar kan skicka frågor samtidigt. För att optimera genomflödet dock kö SQL Data Warehouse några frågor för att säkerställa att varje fråga får en minimal minnestilldelningen. Queuing inträffar vid körning i frågan. Genom queuing frågor när samtidighet gränser nås, öka SQL Data Warehouse totala genomflödet genom att säkerställa att aktiva frågor får åtkomst till resurser ytterst nödvändigt minne.  
 
-Concurrency gränser styrs av två begrepp: *samtidiga frågor* och *samtidighet fack*. För en fråga tooexecute måste den köras i både hello frågan samtidighet gränsen och hello samtidighet fördelning.
+Concurrency gränser styrs av två begrepp: *samtidiga frågor* och *samtidighet fack*. Det måste köras i både frågan samtidighet gränsen och samtidighet fack tilldelning att köra en fråga.
 
-* Samtidiga frågor är hello frågor som körs med hello samma tid. SQL Data Warehouse stöder upp too32 samtidiga frågor på hello större DWU storlekar.
-* Concurrency platser tilldelas baserat på DWU. Varje 100 DWU innehåller 4 samtidighet platser. Till exempel en DW100 allokerar 4 samtidighet platser och DW1000 allokerar 40. Varje fråga förbrukar en eller flera samtidiga platser, beroende på hello [resursklassen](#resource-classes) av hello fråga. Frågor som körs i hello smallrc resursklassen använda en concurrency-plats. Frågor som körs i en högre resursklassen förbruka mer samtidighet platser.
+* Samtidiga frågor är frågor som körs på samma gång. SQL Data Warehouse stöder upp till 32 samtidiga frågor på större DWU-storlekar.
+* Concurrency platser tilldelas baserat på DWU. Varje 100 DWU innehåller 4 samtidighet platser. Till exempel en DW100 allokerar 4 samtidighet platser och DW1000 allokerar 40. Varje fråga förbrukar en eller flera samtidiga platser, beroende på [resursklassen](#resource-classes) av frågan. Frågor som körs i resursklassen smallrc använda en concurrency-plats. Frågor som körs i en högre resursklassen förbruka mer samtidighet platser.
 
-hello följande tabell beskrivs hello gränser för både samtidiga frågor och samtidighet fack på hello olika DWU-storlekar.
+I följande tabell beskrivs gränsvärdena för både samtidiga frågor och samtidighet fack vid olika DWU-storlekar.
 
 ### <a name="concurrency-limits"></a>Concurrency-gränser
 | DWU | Maximalt antal samtidiga frågor | Concurrency fack allokerade |
@@ -50,21 +50,21 @@ hello följande tabell beskrivs hello gränser för både samtidiga frågor och 
 | DW3000 |32 |120 |
 | DW6000 |32 |240 |
 
-När något av dessa tröskelvärden uppfylls är nya frågor i kö och utförs på grundval först in, först ut.  Som en frågor är klar och hello antalet frågor och fack understiger hello gränser, släpps köade frågor. 
+När något av dessa tröskelvärden uppfylls är nya frågor i kö och utförs på grundval först in, först ut.  En frågor har slutförts, och antalet frågor och fack understiger gränserna som släpps köade frågor. 
 
 > [!NOTE]  
-> *Välj* frågor körs enbart på hantering av dynamiska vyer (av DMV: er) eller katalogvyer inte regleras av någon av hello samtidighet gränser. Du kan övervaka hello system oavsett hello antalet frågor som körs på den.
+> *Välj* frågor körs enbart på hantering av dynamiska vyer (av DMV: er) eller katalogvyer inte regleras av någon av gränserna som samtidighet. Du kan övervaka systemets oavsett antalet frågor som körs på den.
 > 
 > 
 
 ## <a name="resource-classes"></a>Resursklasser
-Resursen klasserna hjälper dig styra minnesallokering och CPU-cykler som anges tooa frågan. Du kan tilldela två typer av resursen klasser tooa användaren i hello form av databasroller. hello två typer av resursklasser är följande:
-1. Dynamiska resurs-klasser (**smallrc mediumrc, largerc xlargerc**) allokera en variabel mängd minne beroende på hello aktuella DWU. Detta innebär att när du skalar upp tooa större DWU dina frågor automatiskt få mer minne. 
-2. Statiska resurs-klasser (**staticrc10 staticrc20, staticrc30, staticrc40, staticrc50, staticrc60, staticrc70, staticrc80**) allokera hello samma mängd minne oavsett hello aktuella DWU (förutsatt att hello DWU sig själv har tillräckligt med minne). Det innebär att större dwu: er, du kan köra flera frågor i varje resursklassen samtidigt.
+Resursklasser hjälper dig att kontrollera minnesallokeringen och processorcyklerna som en fråga tilldelas. Du kan tilldela en användare i form av databasroller två typer av resursklasser. De två typerna av resursklasser är följande:
+1. Dynamiska resurs-klasser (**smallrc mediumrc, largerc xlargerc**) allokera en variabel mängd minne beroende på den aktuella DWU. Det innebär att när du skalar upp till en större DWU dina frågor automatiskt få mer minne. 
+2. Statiska resurs-klasser (**staticrc10 staticrc20, staticrc30, staticrc40, staticrc50, staticrc60, staticrc70, staticrc80**) allokera samma mängd minne oavsett aktuella DWU (förutsatt att själva DWU har tillräckligt med minne). Det innebär att större dwu: er, du kan köra flera frågor i varje resursklassen samtidigt.
 
-Användare i **smallrc** och **staticrc10** ges en mindre mängd minne och kan dra nytta av högre samtidighet. Däremot användare som har tilldelats för**xlargerc** eller **staticrc80** ges stora mängder minne, och därför färre deras frågor kan köras samtidigt.
+Användare i **smallrc** och **staticrc10** ges en mindre mängd minne och kan dra nytta av högre samtidighet. Däremot användare tilldelade **xlargerc** eller **staticrc80** ges stora mängder minne, och därför färre deras frågor kan köras samtidigt.
 
-Som standard varje användare är medlem i hello små resursklassen **smallrc**. Hej proceduren `sp_addrolemember` är används tooincrease hello resursklassen, och `sp_droprolemember` är används toodecrease hello resursklassen. Till exempel kommandot skulle öka hello resursklassen för loaduser för**largerc**:
+Som standard varje användare är medlem i små resursklassen **smallrc**. Proceduren `sp_addrolemember` används för att öka resursklassen och `sp_droprolemember` används för att minska resursklassen. Det här kommandot skulle till exempel öka resursklassen för loaduser till **largerc**:
 
 ```sql
 EXEC sp_addrolemember 'largerc', 'loaduser'
@@ -73,24 +73,24 @@ EXEC sp_addrolemember 'largerc', 'loaduser'
 
 ### <a name="queries-that-do-not-honor-resource-classes"></a>Frågor som inte följer resursklasser
 
-Det finns några typer av frågor som inte omfattas av en större minnesallokering. hello system ignorerar sina allokering av klassen och alltid köra dessa frågor i hello små resursklassen i stället. Om de här frågorna körs alltid i hello små resursklassen, kan de köras när samtidighet platser är under hög belastning och de kommer inte använda fler platser än vad som behövs. Se [resurs klassen undantag](#query-exceptions-to-concurrency-limits) för mer information.
+Det finns några typer av frågor som inte omfattas av en större minnesallokering. Systemet ignorerar sina allokering av klassen och alltid köra dessa frågor i små resursklassen i stället. Om de här frågorna körs alltid i små resursklassen, kan de köras när samtidighet platser är under hög belastning och de kommer inte använda fler platser än vad som behövs. Se [resurs klassen undantag](#query-exceptions-to-concurrency-limits) för mer information.
 
 ## <a name="details-on-resource-class-assignment"></a>Information om resurs klassen tilldelning
 
 
 Några få mer information om resursklass:
 
-* *ALTER role* krävs behörighet toochange hello resursklassen för en användare.
-* Du kan lägga till en användare tooone eller flera av hello högre resursklasser, åsidosätter klasser dynamisk resurs statiska resursklasser. Det vill säga om en användare har tilldelats tooboth **mediumrc**(dynamisk) och **staticrc80**(statisk) **mediumrc** är hello resursklass som har lösts in.
- * När en användare har tilldelats toomore än en resursklass i en viss klass resurstyp (mer än en dynamisk resursklassen eller mer än en statisk resursklassen), funktion hello högsta resursklassen. Om en användare har tilldelats tooboth mediumrc och largerc, funktion som är hello högre resursklass (largerc). Och om en användare har tilldelats tooboth **staticrc20** och **statirc80**, **staticrc80** är hanteras.
-* hello resursklassen för hello system administrativa användare kan inte ändras.
+* *ALTER role* behörighet krävs för att ändra resursklassen för en användare.
+* Du kan lägga till en användare till en eller flera av de högre resurs klasserna, åsidosätter dynamisk resursklasser statiska resursklasser. Det vill säga om en användare har tilldelats både **mediumrc**(dynamisk) och **staticrc80**(statisk) **mediumrc** är resursklass som har lösts in.
+ * När en användare har tilldelats fler än en resursklass i en viss klass resurstyp (mer än en dynamisk resursklassen eller mer än en statisk resursklassen), funktion den högsta resursklassen. Om en användare har tilldelats både mediumrc och largerc funktion som är högre resursklass (largerc). Och om en användare har tilldelats både **staticrc20** och **statirc80**, **staticrc80** är hanteras.
+* Resursklass av den administrativa systemanvändaren kan inte ändras.
 
 Ett detaljerat exempel finns [ändrar användaren resurs klassexempel](#changing-user-resource-class-example).
 
 ## <a name="memory-allocation"></a>Minnesallokering
-Det finns för- och nackdelar tooincreasing resursklassen för en användare. Öka en resursklass för en användare får sina frågor åtkomst toomore minne, vilket kan innebära att köra frågor snabbare.  Högre resurs klasserna dock minska också hello antalet frågor som kan köras. Detta är hello säkerhetsaspekten tilldelning av stora mängder minne tooa enskild fråga eller att tillåta att andra frågor som måste också minnesallokering toorun samtidigt. Om en användare får hög tilldelning av minne för en fråga, andra användare har åtkomst toothat inte samma minne toorun en fråga.
+Det finns för- och nackdelar för ett ökande antal resursklassen för en användare. Öka en resursklass för en användare får sina frågor tillgång till mer minne, vilket kan innebära att köra frågor snabbare.  Högre resurs klasserna dock minska också antalet frågor som kan köras. Det här är en kompromiss mellan tilldelning av stora mängder minne till en enda fråga eller att tillåta att andra frågor som måste också minnesallokering körs samtidigt. Om en användare får hög tilldelning av minne för en fråga, andra användare inte tillgång till att samma minne för att köra en fråga.
 
-i den följande tabellen hello mappar hello-minne som allokerats tooeach distribution av DWU och resurs-klassen.
+I följande tabell mappar det minne som allokerats för varje distribution av DWU och resurs-klassen.
 
 ### <a name="memory-allocations-per-distribution-for-dynamic-resource-classes-mb"></a>Minnesallokering per distribution för dynamisk resursklasser (MB)
 | DWU | smallrc | mediumrc | largerc | xlargerc |
@@ -108,7 +108,7 @@ i den följande tabellen hello mappar hello-minne som allokerats tooeach distrib
 | DW3000 |100 |1,600 |3,200 |6,400 |
 | DW6000 |100 |3,200 |6,400 |12,800 |
 
-i den följande tabellen hello mappar hello-minne som allokerats tooeach distribution av DWU och statiska resursklassen. Observera att hello högre resurs klasserna ha sina minne minskas toohonor hello övergripande DWU gränser.
+I följande tabell mappar det minne som allokerats till varje distribution av DWU och statiska resursklassen. Observera att klasserna högre resurs har sina minne minskas för att respektera övergripande DWU-gränser.
 
 ### <a name="memory-allocations-per-distribution-for-static-resource-classes-mb"></a>Minnesallokering per distribution för statiska resursklasser (MB)
 | DWU | staticrc10 | staticrc20 | staticrc30 | staticrc40 | staticrc50 | staticrc60 | staticrc70 | staticrc80 |
@@ -126,7 +126,7 @@ i den följande tabellen hello mappar hello-minne som allokerats tooeach distrib
 | DW3000 |100 |200 |400 |800 |1,600 |3,200 |6,400 |6,400 |
 | DW6000 |100 |200 |400 |800 |1,600 |3,200 |6,400 |12,800 |
 
-Från föregående tabell hello, kan du se att en fråga som körs på en DW2000 i hello **xlargerc** resursklassen skulle ha åtkomst too6, 400 MB minne inom varje hello 60 distribuerade databaser.  Det finns 60 distributioner i SQL Data Warehouse. Därför bör toocalculate hello totala minnesallokering för en fråga i en viss resurs-klass, hello ovan värden multipliceras med 60.
+Från föregående tabell kan du se att en fråga som körs på en DW2000 i den **xlargerc** resursklassen skulle ha åtkomst till 6 400 MB minne inom 60 distribuerade databaser.  Det finns 60 distributioner i SQL Data Warehouse. För att beräkna den totala minnesallokering för en fråga i en viss resurs bör därför ovanstående värden multipliceras med 60.
 
 ### <a name="memory-allocations-system-wide-gb"></a>Minne-allokeringar systemomfattande (GB)
 | DWU | smallrc | mediumrc | largerc | xlargerc |
@@ -144,12 +144,12 @@ Från föregående tabell hello, kan du se att en fråga som körs på en DW2000
 | DW3000 |6 |94 |188 |375 |
 | DW6000 |6 |188 |375 |750 |
 
-Från den här tabellen systemomfattande minnesallokering, ser du att en fråga som körs på en DW2000 i hello xlargerc resursklassen fördelas 375 GB minne totalt (6 400 MB * 60 distributioner / 1 024 tooconvert tooGB) över hello hela ditt SQL Data Warehouse.
+Från den här tabellen systemomfattande minnesallokering, ser du en fråga som körs på en DW2000 i klassen xlargerc resurs tilldelas 375 GB minne totalt (6 400 MB * 60 distributioner / 1 024 att konvertera till GB) över hela ditt SQL Data Warehouse.
 
-hello gäller samma beräkning toostatic resursklasser.
+Samma beräkning gäller statiska resursklasser.
  
 ## <a name="concurrency-slot-consumption"></a>Concurrency fack förbrukning  
-SQL Data Warehouse ger mer minne tooqueries kör högre resurs klasserna. Minnet är en fast resurs.  Därför hello allokera mer minne per fråga hello färre samtidiga frågor kan köra. hello reiterates följande tabell alla hello tidigare begrepp i en enda vy som visar hello antalet samtidiga tillgängliga platser av DWU och hello fack som används av varje resursklassen.  
+SQL Data Warehouse ger mer minne till frågor som körs i högre resursklasser. Minnet är en fast resurs.  Därför mer minne som allokerats per fråga, färre samtidiga frågor kan köra. I följande tabell reiterates alla tidigare begreppen i en enda vy som visar antalet samtidiga fack som är tillgängliga genom DWU och de platser som används av varje resursklassen.  
 
 ### <a name="allocation-and-consumption-of-concurrency-slots-for-dynamic-resource-classes"></a>Fördelningen och förbrukningen av samtidighet fack för dynamisk resursklasser  
 | DWU | Maximalt antal samtidiga frågor | Concurrency fack allokerade | Platser som används av smallrc | Platser som används av mediumrc | Platser som används av largerc | Platser som används av xlargerc |
@@ -183,50 +183,50 @@ SQL Data Warehouse ger mer minne tooqueries kör högre resurs klasserna. Minnet
 | DW3000 | 32| 120| 1| 2| 4| 8| 16| 32| 64| 64|
 | DW6000 | 32| 240| 1| 2| 4| 8| 16| 32| 64| 128|
 
-Du kan se som kör SQL Data Warehouse som DW1000 allokerar högst 32 samtidiga frågor och totalt 40 samtidighet fack från dessa tabeller. Om alla användare kör i smallrc, skulle 32 samtidiga förfrågningar tillåts eftersom varje fråga förbrukar 1 samtidighet plats. Om alla användare på en DW1000 kördes i mediumrc, varje fråga skulle allokeras 800 MB per distribution för en totala minnesallokering 47 GB per fråga och samtidighet skulle vara begränsad too5 användare (40 samtidighet fack / 8 kortplatser per mediumrc användare).
+Du kan se som kör SQL Data Warehouse som DW1000 allokerar högst 32 samtidiga frågor och totalt 40 samtidighet fack från dessa tabeller. Om alla användare kör i smallrc, skulle 32 samtidiga förfrågningar tillåts eftersom varje fråga förbrukar 1 samtidighet plats. Om alla användare på en DW1000 kördes i mediumrc, varje fråga skulle allokeras 800 MB per distribution för en totala minnesallokering 47 GB per fråga och samtidighet skulle vara begränsad till 5 användare (40 samtidighet fack / 8 kortplatser per mediumrc användare).
 
 ## <a name="selecting-proper-resource-class"></a>Att välja rätt resursklassen  
-Det är en bra idé toopermanently tilldela användare tooa resursklassen i stället för att ändra deras resursklasser. Till exempel skapa belastningar tooclustered columnstore-tabeller högre kvalitet index när mer minne allokeras. tooensure som belastningar har toohigher minne, skapa en användare för att överföra data och tilldela den här användaren tooa högre resursklassen permanent.
-Det finns ett par av bästa praxis toofollow här. Som nämnts ovan är SQL DW stöder två typer av klassen resurstyper: statisk resursklasser och dynamisk resursklasser.
+Det är en bra idé att permanent tilldela användare till en resursklass i stället för att ändra deras resursklasser. Till exempel skapa belastningar grupperade columnstore-tabeller högre kvalitet index när mer minne allokeras. Skapa en användare för att överföra data och permanent tilldela användaren till en högre resursklassen för att säkerställa att belastningen har åtkomst till högre minne.
+Det finns ett antal rekommendationer för här. Som nämnts ovan är SQL DW stöder två typer av klassen resurstyper: statisk resursklasser och dynamisk resursklasser.
 ### <a name="loading-best-practices"></a>Inläsning av bästa praxis
-1.  Om hello förväntningar belastningar med vanlig mängd data, är en statisk resursklassen ett bra alternativ. Senare, när skala upp tooget mer dataresurser, hello datalagret ska kunna frågar toorun flera samtidiga out-of-the-box, som hello belastningen användaren inte förbruka mer minne.
-2.  Om hello förväntningar större belastningar i vissa fall, är en dynamisk resursklassen bra. Senare, när du ökar tooget mer dataresurser, hello belastningen användare får mer minne out-of-the-box, så därför att hello belastningen tooperform snabbare.
+1.  Om förväntningarna belastningar med vanlig mängd data, är en statisk resursklassen ett bra alternativ. Senare, när du ökar få mer dataresurser, kommer datalagret att kunna köra flera samtidiga frågor out-of-the-box, eftersom belastningen användaren inte förbruka mer minne.
+2.  Om förväntningarna större belastningar i vissa fall, är en dynamisk resursklassen bra. Senare, när du ökar få mer dataresurser, får Läs in användaren mer minne out-of-the-box, därför att tillåta att belastningen utföra snabbare.
 
-hello minneskrav tooprocess belastningar effektivt beror på hello uppbyggnad hello-tabell som är inlästa och hello mängden data som bearbetas. Läsa in data i CCI tabeller kräver till exempel vissa minne toolet CCI rowgroups nå uppfylldes. Mer information finns i hello Columnstore-index - vägledning för datainläsning.
+Det minne som behövs för att bearbeta belastningar effektivt beror på tabellen som lästs in och hur mycket data som bearbetas. Till exempel kräver läsa in data i CCI tabeller minne så att CCI rowgroups nå uppfylldes. Mer information finns i Columnstore-index - vägledning för datainläsning.
 
-Som bästa praxis, rekommenderar vi att du toouse minst 200MB minne för belastning.
+Som bästa praxis rekommenderar vi att du använder minst 200MB minne för belastning.
 
 ### <a name="querying-best-practices"></a>Frågar bästa praxis
-Frågor har olika krav beroende på deras komplexitet. Öka minnesmängd per fråga eller öka hello samtidighet är båda ogiltig sätt tooaugment totala genomflödet beroende på hello frågan behov.
-1.  Om hello förväntningar regelbundna, komplexa frågor (till exempel toogenerate dagliga och veckovisa rapporter) och behöver inte tootake nytta av samtidighet, dynamiska resursklassen är ett bra alternativ. Om hello system har mer data tooprocess, ger skala upp hello datalagret därför automatiskt mer minne toohello användaren hello frågan körs.
-2.  Om hello förväntningar variabel eller profil över samtidighet mönster (till exempel om hello databasen efterfrågas via ett webbgränssnitt brett tillgänglig), statiska resursklassen är ett bra alternativ. Senare, när du ökar toodata datalager, hello användaren som associerats med hello statiska resursklassen kommer automatiskt att kan toorun flera samtidiga frågor.
+Frågor har olika krav beroende på deras komplexitet. Öka minnesmängd per fråga eller öka parallellkörning är båda giltiga sätt att utöka totala genomflödet beroende fråga behov.
+1.  Om förväntningarna regelbundna, komplexa frågor (till exempel att generera rapporter för dagliga och veckovisa) och behöver inte dra nytta av samtidighet, dynamiska resursklassen är ett bra alternativ. Om systemet har mer data att bearbeta, ger skala upp datalagret därför automatiskt mer minne till användaren som kör frågan.
+2.  Om förväntningarna variabel eller profil över samtidighet mönster (till exempel om databasen efterfrågas via ett webbgränssnitt brett tillgänglig), statiska resursklassen är ett bra alternativ. Senare, när skala upp till data warehouse kommer användaren som är associerad med den statiska resursklassen automatiskt att kunna köra flera samtidiga frågor.
 
-Genom att välja rätt minnestilldelningen beroende på hello behovet av din fråga är icke-trivial som beror på många faktorer, till exempel hello mängden data som efterfrågas, hello uppbyggnad hello tabellscheman och olika koppling, val och grupp-predikat. Från en allmän synvinkel allokera mer minne tillåter frågor toocomplete snabbare, men skulle minska hello övergripande samtidighet. Om samtidighet inte är ett problem, skadas över minnesallokering inte. toofine finjustera dataflöde, försök olika varianter av resursklasser kan krävas.
+Genom att välja rätt minnestilldelningen beroende på behovet av din fråga är icke-trivial som beror på många faktorer, till exempel hur mycket data som efterfrågas, vilka slags tabellscheman, och olika koppling, val och grupp-predikat. Från en allmän synvinkel allokera mer minne tillåter frågor för att slutföra snabbare, men skulle minskar den övergripande. Om samtidighet inte är ett problem, skadas över minnesallokering inte. För att finjustera genomströmning kan försök olika varianter av resursklasser krävas.
 
-Du kan använda hello följande lagrade procedur toofigure ut samtidighet och minne bevilja per resursklassen vid en given SLO och hello närmaste bästa resursklassen för minne beräkningsintensiva CCI åtgärder på CCI partitionerade tabellen vid en viss resurs-klass:
+Du kan använda följande lagrade procedur för att ta reda på samtidighet och minne bevilja per resursklassen vid en given SLO och närmaste bästa resursklassen för minne beräkningsintensiva CCI åtgärder på CCI partitionerade tabellen vid en viss resurs-klass:
 
 #### <a name="description"></a>Beskrivning:  
-Här är hello syftet med den här lagrade proceduren:  
-1. toohelp användaren ta reda på samtidighet och minne bevilja per resursklassen vid ett givet Servicenivåmål. Användaren måste tooprovide NULL för både schema- och tablename för den här enligt hello exemplet nedan.  
-2. toohelp användaren räkna ut hello närmaste bästa resursklassen för hello minne intensed CCI åtgärder (belastning, kopiera tabellen återskapa index, etc.) på icke partitionerad CCI tabell till en viss resurs-klass. hello lagrade procedur använder tabellen schema toofind ut hello krävs minnestilldelningen för detta.
+Här är syftet med den här lagrade proceduren:  
+1. För att hjälpa användare att ta reda på bevilja samtidighet och minne per resursklassen vid ett givet Servicenivåmål. Användaren måste ange NULL för både schema- och tablename för den här som visas i exemplet nedan.  
+2. För att användaren ta reda på den närmaste bästa resursklassen för minne intensed CCI åtgärder (belastning, kopiera tabellen återskapa index, etc.) på icke partitionerad CCI tabell till en viss resurs-klass. Den lagrade proceduren använder tabellschemat för att ta reda på minnestilldelningen krävs för den här.
 
 #### <a name="dependencies--restrictions"></a>Beroenden och begränsningar:
-- Den här lagrade proceduren är inte utformad toocalculate minnesutrymmet för partitionerad cci tabellen.    
-- Den här lagrade proceduren tar inte minneskravet hänsyn för hello väljer en del av CTAS/INSERT-Välj och förutsätter att den toobe ett enkelt SELECT.
-- Den här lagrade proceduren använder en temporär tabell så kan användas i hello session där den här lagrade proceduren har skapats.    
-- Den här lagrade proceduren beror på hello aktuella erbjudanden (t.ex. maskinvarukonfiguration, DMS-konfiguration) och om någon av som ändras sedan denna lagrade procedur fungerar inte korrekt.  
+- Den här lagrade proceduren är inte avsedd att beräkna minnesutrymmet för partitionerad cci tabellen.    
+- Den här lagrade proceduren tar inte minneskravet hänsyn för den VALDA delen av CTAS/INSERT-Välj och förutsätter att det ska vara ett enkelt SELECT.
+- Den här lagrade proceduren använder en temporär tabell så det kan användas i sessionen där den här lagrade proceduren har skapats.    
+- Den här lagrade proceduren beror på de aktuella erbjudandena (t.ex. maskinvarukonfiguration, DMS-konfiguration) och om någon av som ändras sedan denna lagrade procedur fungerar inte korrekt.  
 - Den här lagrade proceduren beror på befintliga erbjudna samtidighet gränsen och om att ändringar sedan den här lagrade proceduren fungerar inte korrekt.  
 - Denna lagrade procedur beror på befintlig resurs klassen erbjudanden och om att ändringar sedan detta lagrade procedur wuold fungerar inte korrekt.  
 
 >  [!NOTE]  
->  Om du inte får utdata när du kör lagrad procedur med parametrar som ges det kan vara två fall. <br />1. Antingen DW-parametern innehåller ett ogiltigt värde för Servicenivåmål <br />2. ELLER så finns det ingen matchande resursklassen för CCI åtgärd om tabellnamn angavs. <br />Till exempel på DW100, högsta minnestilldelningen är 400MB och om tabellschemat är bred tillräckligt med toocross hello krav 400 MB.
+>  Om du inte får utdata när du kör lagrad procedur med parametrar som ges det kan vara två fall. <br />1. Antingen DW-parametern innehåller ett ogiltigt värde för Servicenivåmål <br />2. ELLER så finns det ingen matchande resursklassen för CCI åtgärd om tabellnamn angavs. <br />Exempelvis är DW100, högsta minnestilldelningen 400MB och om tabellschemat litet mellan kravet 400 MB.
       
 #### <a name="usage-example"></a>Exempel på användning:
 Syntax:  
 `EXEC dbo.prc_workload_management_by_DWU @DWU VARCHAR(7), @SCHEMA_NAME VARCHAR(128), @TABLE_NAME VARCHAR(128)`  
-1. @DWU:Ange antingen en NULL-parameter tooextract hello aktuella DWU från hello databasen för Datalagret eller ange någon stöds DWU i hello form av 'DW100'
-2. @SCHEMA_NAME:Ange ett namn på hello tabell
-3. @TABLE_NAME:Ange ett tabellnamn hello intressanta
+1. @DWU:Antingen ange en NULL-parameter om du vill extrahera den aktuella DWU från databasen för Datalagret eller ange eventuella stöds DWU i form av 'DW100'
+2. @SCHEMA_NAME:Ange ett namn på tabellen
+3. @TABLE_NAME:Ange ett tabellnamn av intresse
 
 Exempel köra den här lagrade proceduren:  
 ```sql  
@@ -236,10 +236,10 @@ EXEC dbo.prc_workload_management_by_DWU 'DW6000', NULL, NULL;
 EXEC dbo.prc_workload_management_by_DWU NULL, NULL, NULL;  
 ```
 
-Tabell 1 används i hello exemplen ovan kunde skapas enligt nedan:  
+Tabell 1 används i ovanstående exempel kunde skapas enligt nedan:  
 `CREATE TABLE Table1 (a int, b varchar(50), c decimal (18,10), d char(10), e varbinary(15), f float, g datetime, h date);`
 
-#### <a name="heres-hello-stored-procedure-definition"></a>Här är hello lagrade Procedurdefinition:
+#### <a name="heres-the-stored-procedure-definition"></a>Här är definitionen för lagrade proceduren:
 ```sql  
 -------------------------------------------------------------------------------
 -- Dropping prc_workload_management_by_DWU procedure if it exists.
@@ -259,7 +259,7 @@ CREATE PROCEDURE dbo.prc_workload_management_by_DWU
 AS
 IF @DWU IS NULL
 BEGIN
--- Selecting proper DWU for hello current DB if not specified.
+-- Selecting proper DWU for the current DB if not specified.
 SET @DWU = (
   SELECT 'DW'+CAST(COUNT(*)*100 AS VARCHAR(10))
   FROM sys.dm_pdw_nodes
@@ -271,7 +271,7 @@ SET @DWU_NUM = CAST (SUBSTRING(@DWU, 3, LEN(@DWU)-2) AS INT)
 
 -- Raise error if either schema name or table name is supplied but not both them supplied
 --IF ((@SCHEMA_NAME IS NOT NULL AND @TABLE_NAME IS NULL) OR (@TABLE_NAME IS NULL AND @SCHEMA_NAME IS NOT NULL))
---     RAISEERROR('User need toosupply either both Schema Name and Table Name or none of them')
+--     RAISEERROR('User need to supply either both Schema Name and Table Name or none of them')
        
 -- Dropping temp table if exists.
 IF OBJECT_ID('tempdb..#ref') IS NOT NULL
@@ -279,7 +279,7 @@ BEGIN
   DROP TABLE #ref;
 END
 
--- Creating ref. temptable (CTAS) toohold mapping info.
+-- Creating ref. temptable (CTAS) to hold mapping info.
 -- CREATE TABLE #ref
 CREATE TABLE #ref
 WITH (DISTRIBUTION = ROUND_ROBIN)
@@ -316,7 +316,7 @@ AS
   UNION ALL
     SELECT 'DW6000', 32, 240, 1, 32, 64, 128, 1, 2, 4, 8, 16, 32, 64, 128
 )
--- Creating workload mapping tootheir corresponding slot consumption and default memory grant.
+-- Creating workload mapping to their corresponding slot consumption and default memory grant.
 ,map
 AS
 (
@@ -554,11 +554,11 @@ GO
 ```
 
 ## <a name="query-importance"></a>Vikten av frågan
-SQL Data Warehouse implementerar resursklasser med hjälp av arbetsbelastningsgrupper. Det finns totalt åtta arbetsbelastningsgrupper som kontrollerar hello funktionssätt hello resursklasser över hello olika DWU-storlekar. För alla DWU använder SQL Data Warehouse bara fyra hello åtta arbetsbelastningsgrupper. Detta är meningsfullt eftersom varje arbetsbelastningsgruppen tilldelas tooone av fyra resursklasser: smallrc mediumrc, largerc, eller xlargerc. hello betydelse förstå hello arbetsbelastningsgrupper är att vissa av dessa arbetsbelastningsgrupper är inställda toohigher *vikten*. Vikten används för CPU schemaläggning. Frågor som körs med hög prioritet får tre gånger så mycket CPU-cykler än de med medelhög prioritet. Därför avgör samtidighet fack mappningar också CPU-prioritet. När en fråga förbrukar 16 eller flera platser, körs det som hög prioritet.
+SQL Data Warehouse implementerar resursklasser med hjälp av arbetsbelastningsgrupper. Det finns totalt åtta arbetsbelastningsgrupper som styr beteendet för resursklasser över olika DWU-storleken. För alla DWU använder SQL Data Warehouse bara fyra grupperna åtta arbetsbelastning. Detta är meningsfullt eftersom varje arbetsbelastningsgruppen har tilldelats någon av fyra resursklasser: smallrc mediumrc, largerc, eller xlargerc. Vikten av att förstå grupperna arbetsbelastning är att vissa av dessa arbetsbelastningsgrupper som har angetts till högre *vikten*. Vikten används för CPU schemaläggning. Frågor som körs med hög prioritet får tre gånger så mycket CPU-cykler än de med medelhög prioritet. Därför avgör samtidighet fack mappningar också CPU-prioritet. När en fråga förbrukar 16 eller flera platser, körs det som hög prioritet.
 
-hello visar följande tabell hello vikten mappningar för varje arbetsbelastning.
+Följande tabell visar vikten mappningar för varje arbetsbelastning.
 
-### <a name="workload-group-mappings-tooconcurrency-slots-and-importance"></a>Arbetsbelastningen grupp mappningar tooconcurrency platser och betydelse
+### <a name="workload-group-mappings-to-concurrency-slots-and-importance"></a>Arbetsbelastningen gruppmappningar till samtidighet platser och betydelse
 | Arbetsbelastningsgrupper | Concurrency fack mappning | MB / Distribution | Vikten mappning |
 |:--- |:---:|:---:|:--- |
 | SloDWGroupC00 |1 |100 |Medel |
@@ -570,9 +570,9 @@ hello visar följande tabell hello vikten mappningar för varje arbetsbelastning
 | SloDWGroupC06 |64 |6,400 |Hög |
 | SloDWGroupC07 |128 |12,800 |Hög |
 
-Från hello **fördelningen och förbrukningen av samtidighet fack** diagram, ser du att en DW500 1, 4, 8 och 16 samtidighet fack för smallrc, mediumrc, largerc och xlargerc, respektive. Du kan slå dessa värden upp i föregående diagram toofind hello vikten för varje resursklassen hello.
+Från den **fördelningen och förbrukningen av samtidighet fack** diagram, ser du att en DW500 1, 4, 8 och 16 samtidighet fack för smallrc, mediumrc, largerc och xlargerc, respektive. Du kan slå dessa värden upp i det föregående att hitta vikten för varje resurs.
 
-### <a name="dw500-mapping-of-resource-classes-tooimportance"></a>DW500 mappning av resursen klasser tooimportance
+### <a name="dw500-mapping-of-resource-classes-to-importance"></a>DW500 mappning av resursklasser betydelse
 | Resursklass | Arbetsbelastningsgruppen | Concurrency-platser som används | MB / Distribution | Betydelse |
 |:--- |:--- |:---:|:---:|:--- |
 | smallrc |SloDWGroupC00 |1 |100 |Medel |
@@ -588,7 +588,7 @@ Från hello **fördelningen och förbrukningen av samtidighet fack** diagram, se
 | staticrc70 |SloDWGroupC03 |16 |1,600 |Hög |
 | staticrc80 |SloDWGroupC03 |16 |1,600 |Hög |
 
-Du kan använda hello följande DMV-frågan toolook på hello skillnader i minnet resursallokeringen i detalj från hello perspektiv hello resursstyrningen eller tooanalyze aktiva och historisk användning av hello arbetsbelastningsgrupper när du felsöker.
+Du kan använda följande DMV-frågan granskar skillnaderna i minnet resursallokeringen i detalj ur resursstyrningen eller för att analysera active och historisk användning av arbetsbelastningsgrupper när du felsöker.
 
 ```sql
 WITH rg
@@ -637,9 +637,9 @@ ORDER BY
 ```
 
 ## <a name="queries-that-honor-concurrency-limits"></a>Frågor som följer gränser för samtidig användning
-De flesta frågor regleras av resursklasser. De här frågorna måste få plats inuti både hello samtidiga frågan och samtidighet fack tröskelvärden. En användare kan inte välja tooexclude en fråga från hello samtidighet fack modell.
+De flesta frågor regleras av resursklasser. De här frågorna måste få plats inuti båda samtidiga frågan och samtidighet fack tröskelvärdena. En användare kan inte välja att undanta en fråga från concurrency fack-modell.
 
-tooreiterate, hello följande instruktioner respektera resursklasser:
+Om du vill upprepar, respektera följande påståenden resursklasser:
 
 * INFOGA VÄLJER
 * UPPDATERING
@@ -652,12 +652,12 @@ tooreiterate, hello följande instruktioner respektera resursklasser:
 * SKAPA DET GRUPPERADE COLUMNSTORE-INDEX
 * SKAPA TABLE AS SELECT (CTAS)
 * Läsa in data
-* Dataflyttsåtgärderna som utförs av hello Data Movement Service (DMS)
+* Dataflyttsåtgärderna utförs av Data Movement Service (DMS)
 
-## <a name="query-exceptions-tooconcurrency-limits"></a>Frågan undantag tooconcurrency gränser
-Några frågor följdes inte hello resurs klassen toowhich hello användaren har tilldelats. Dessa undantag toohello samtidighet gränser görs när hello minnesresurser som krävs för ett visst kommando är låg, ofta eftersom hello-kommandot är en metadata-åtgärd. hello syftet med sådana undantag är tooavoid större minnesallokering för frågor som behöver dem aldrig. I dessa fall tilldelad hello standard små resursklass (smallrc) används alltid oavsett hello faktiska resursklassen toohello användare. Till exempel `CREATE LOGIN` körs alltid i smallrc. hello toofulfill för resurser som krävs för den här åtgärden är mycket låg så att den inte gör meningsfullt tooinclude hello frågan i hello concurrency fack-modell.  De här frågorna också begränsas inte av hello 32 användaren samtidighet gränsen, ett obegränsat antal dessa frågor kan köra upp toohello session på högst 1 024 sessioner.
+## <a name="query-exceptions-to-concurrency-limits"></a>Frågan undantag samtidighet gränserna
+Några frågor följdes inte resursklassen som användaren har tilldelats. Sådana undantag samtidighet gränserna görs när minnesresurserna som behövs för ett visst kommando är låg, ofta eftersom kommandot är en metadata-åtgärd. Syftet med sådana undantag är att undvika större minnesallokering för frågor som behöver dem aldrig. I dessa fall används standard små resursklassen (smallrc) alltid oavsett faktiska resursklassen för användaren. Till exempel `CREATE LOGIN` körs alltid i smallrc. De resurser som krävs för att utföra den här åtgärden är mycket låg, så det inte vara klokt att inkludera frågan i samtidighet fack modellen.  De här frågorna också begränsas inte av antalet samtidiga 32 användare, ett obegränsat antal dessa frågor kan köra till högst 1 024 sessioner session.
 
-följande instruktioner hello följdes inte resursklasser:
+Följande uttryck följdes inte resursklasser:
 
 * Skapa eller ta bort tabell
 * ALTER TABLE... VÄXELN, dela och slå samman partitionen
@@ -683,7 +683,7 @@ Removed as these two are not confirmed / supported under SQLDW
 -->
 
 ##  <a name="changing-user-resource-class-example"></a>Ändra ett exempel på användaren resurs klass
-1. **Skapa inloggning:** öppna en anslutning tooyour **master** databasen på hello SQLServer är värd för SQL Data Warehouse-databas och kör följande kommandon hello.
+1. **Skapa inloggning:** öppna en anslutning till din **master** databasen på SQLServer som värd för SQL Data Warehouse-databas och kör följande kommandon.
    
     ```sql
     CREATE LOGIN newperson WITH PASSWORD = 'mypassword';
@@ -691,37 +691,37 @@ Removed as these two are not confirmed / supported under SQLDW
     ```
    
    > [!NOTE]
-   > Det är en bra idé toocreate en användare i hello huvuddatabasen för Azure SQL Data Warehouse-användare. Skapa en användare i master kan en användare toologin med hjälp av verktyg som SSMS utan att ange ett databasnamn.  Det gör dem också toouse hello object explorer tooview alla databaser på en SQLServer.  Mer information om att skapa och hantera användare finns [skydda en databas i SQL Data Warehouse][Secure a database in SQL Data Warehouse].
+   > Det är en bra idé att skapa en användare i master-databasen för Azure SQL Data Warehouse-användare. Skapa en användare i master tillåter en användare att logga in med verktyg som SSMS utan att ange ett databasnamn.  Det gör också att de använder object explorer för att visa alla databaser på en SQLServer.  Mer information om att skapa och hantera användare finns [skydda en databas i SQL Data Warehouse][Secure a database in SQL Data Warehouse].
    > 
    > 
-2. **Skapa SQL Data Warehouse användare:** öppna en anslutning toohello **SQL Data Warehouse** databasen och kör följande kommando hello.
+2. **Skapa SQL Data Warehouse användare:** öppna en anslutning till den **SQL Data Warehouse** databasen och kör följande kommando.
    
     ```sql
     CREATE USER newperson FOR LOGIN newperson;
     ```
-3. **Bevilja behörighet:** hello följande exempel ger `CONTROL` på hello **SQL Data Warehouse** databas. `CONTROL`vid hello är databasnivå hello motsvarar db_owner i SQL Server.
+3. **Bevilja behörighet:** i följande exempel beviljas `CONTROL` på den **SQL Data Warehouse** databas. `CONTROL`databasen är motsvarigheten till db_owner i SQL Server.
    
     ```sql
-    GRANT CONTROL ON DATABASE::MySQLDW toonewperson;
+    GRANT CONTROL ON DATABASE::MySQLDW to newperson;
     ```
-4. **Öka resursklass:** Använd hello följande fråga tooadd en tooa högre arbetsbelastning management användarroll.
+4. **Öka resursklass:** använder du följande fråga för att lägga till en användare till en högre roll för arbetsbelastning.
    
     ```sql
     EXEC sp_addrolemember 'largerc', 'newperson'
     ```
-5. **Minska resursklass:** Använd hello följande fråga tooremove en användare från en roll för arbetsbelastning.
+5. **Minska resursklass:** använder du följande fråga för att ta bort en användare från en roll för arbetsbelastning.
    
     ```sql
     EXEC sp_droprolemember 'largerc', 'newperson';
     ```
    
    > [!NOTE]
-   > Det är inte möjligt tooremove en användare från smallrc.
+   > Det går inte att ta bort en användare från smallrc.
    > 
    > 
 
 ## <a name="queued-query-detection-and-other-dmvs"></a>Köade frågan identifiering och andra av DMV: er
-Du kan använda hello `sys.dm_pdw_exec_requests` DMV tooidentify frågor som väntar i en kö samtidighet. Frågar väntar på en plats för samtidighet har statusen **avbruten**.
+Du kan använda den `sys.dm_pdw_exec_requests` DMV att identifiera frågor som väntar i en kö samtidighet. Frågar väntar på en plats för samtidighet har statusen **avbruten**.
 
 ```sql
 SELECT      r.[request_id]                 AS Request_ID
@@ -742,7 +742,7 @@ WHERE   ro.[type_desc]      = 'DATABASE_ROLE'
 AND     ro.[is_fixed_role]  = 0;
 ```
 
-hello följande fråga visar vilken roll som varje användare har tilldelats.
+Följande fråga visar vilken roll som varje användare har tilldelats.
 
 ```sql
 SELECT     r.name AS role_principal_name
@@ -753,14 +753,14 @@ JOIN    sys.database_principals AS m            ON rm.member_principal_id    = m
 WHERE    r.name IN ('mediumrc','largerc', 'xlargerc');
 ```
 
-SQL Data Warehouse är hello följande vänta typer:
+SQL Data Warehouse har följande vänta typer:
 
-* **LocalQueriesConcurrencyResourceType**: frågor som är placerade utanför hello samtidighet fack framework. DMV frågor och system fungerar som `SELECT @@VERSION` är exempel på lokala frågor.
-* **UserConcurrencyResourceType**: frågor som är placerade i hello samtidighet fack framework. Frågor mot tabeller slutanvändarens representerar exempel som använder den här resurstypen.
+* **LocalQueriesConcurrencyResourceType**: frågor som är placerade utanför samtidighet fack ramen. DMV frågor och system fungerar som `SELECT @@VERSION` är exempel på lokala frågor.
+* **UserConcurrencyResourceType**: frågor som visas inuti samtidighet fack ramen. Frågor mot tabeller slutanvändarens representerar exempel som använder den här resurstypen.
 * **DmsConcurrencyResourceType**: Väntar till följd av dataflyttsåtgärderna.
-* **BackupConcurrencyResourceType**: den här vänta anger att en databas säkerhetskopieras. hello högsta värdet för den här resurstypen är 1. Om flera säkerhetskopieringar har begärts på hello samtidigt, hello andra placerar i kö.
+* **BackupConcurrencyResourceType**: den här vänta anger att en databas säkerhetskopieras. Det maximala värdet för den här resurstypen är 1. Om flera säkerhetskopieringar har begärts samtidigt, kommer de andra kö.
 
-Hej `sys.dm_pdw_waits` DMV kan vara används toosee vilka resurser en begäran väntar.
+Den `sys.dm_pdw_waits` DMV kan användas för att se vilka resurser som väntar på en begäran.
 
 ```sql
 SELECT  w.[wait_id]
@@ -796,7 +796,7 @@ JOIN    sys.dm_pdw_exec_requests r  ON w.[request_id] = r.[request_id]
 WHERE    w.[session_id] <> SESSION_ID();
 ```
 
-Hej `sys.dm_pdw_resource_waits` DMV visar endast hello resurs väntar används av en given fråga. Resursen väntetiden endast mäter hello tid väntar på resurser toobe tillhandahålls, som skillnad från toosignal väntetid, vilket är hello tid det tar för hello underliggande SQL-servrar tooschedule hello-fråga till hello CPU.
+Den `sys.dm_pdw_resource_waits` DMV visar endast de resursen väntar som används av en given fråga. Väntetiden för resursen endast mäter den tid som väntar på resurser som ska tillhandahållas, till skillnad från signal väntetiden, vilket är den tid det tar för de underliggande SQL-servrarna att schemalägga frågan till Processorn.
 
 ```sql
 SELECT  [session_id]
@@ -814,7 +814,7 @@ FROM    sys.dm_pdw_resource_waits
 WHERE    [session_id] <> SESSION_ID();
 ```
 
-Hej `sys.dm_pdw_wait_stats` DMV kan användas för analys av historiska trender för väntar.
+Den `sys.dm_pdw_wait_stats` DMV kan användas för analys av historiska trender för väntar.
 
 ```sql
 SELECT    w.[pdw_node_id]
@@ -828,13 +828,13 @@ FROM    sys.dm_pdw_wait_stats w;
 ```
 
 ## <a name="next-steps"></a>Nästa steg
-Mer information om hur du hanterar databasanvändare och säkerhet finns [skydda en databas i SQL Data Warehouse][Secure a database in SQL Data Warehouse]. Mer information om hur större resursklasser kan förbättra kvaliteten för grupperade columnstore-index, finns [återskapa index tooimprove segment kvalitet].
+Mer information om hur du hanterar databasanvändare och säkerhet finns [skydda en databas i SQL Data Warehouse][Secure a database in SQL Data Warehouse]. Mer information om hur större resursklasser kan förbättra kvaliteten för grupperade columnstore-index, finns [bygga om index för att förbättra kvaliteten segment].
 
 <!--Image references-->
 
 <!--Article references-->
 [Secure a database in SQL Data Warehouse]: ./sql-data-warehouse-overview-manage-security.md
-[återskapa index tooimprove segment kvalitet]: ./sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality
+[bygga om index för att förbättra kvaliteten segment]: ./sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality
 [Secure a database in SQL Data Warehouse]: ./sql-data-warehouse-overview-manage-security.md
 
 <!--MSDN references-->

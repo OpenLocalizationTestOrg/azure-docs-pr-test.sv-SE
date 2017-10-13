@@ -1,14 +1,14 @@
 ## <a name="AdditionalServices"></a>Så här: använda ytterligare Twilio-tjänster
-Dessutom kan toohello exemplen nedan, Twilio erbjuder webbaserade API: er som du använda tooleverage ytterligare Twilio-funktioner från din Azure-program. Fullständig information finns i hello [Twilio-API-dokumentationen][twilio_api_documentation].
+Förutom de exempel som visas här, erbjuder Twilio webbaserade API: er som du kan använda för att utnyttja ytterligare funktioner för Twilio från Azure-program. Fullständig information finns i [Twilio-API-dokumentationen][twilio_api_documentation].
 
 ## <a name="NextSteps"></a>Nästa steg
-Nu när du har lärt dig hello grunderna i hello Twilio-tjänsten ska du följa dessa länkar toolearn mer:
+Nu när du har lärt dig grunderna i Twilio-tjänsten kan du följa dessa länkar om du vill veta mer:
 
 * [Riktlinjer för Twilio-säkerhet][twilio_security_guidelines]
 * [Twilio HowTos och exempelkod][twilio_howtos]
 * [Twilio snabbstarten självstudier][twilio_quickstarts] 
 * [Twilio på GitHub][twilio_on_github]
-* [Kontakta tooTwilio Support][twilio_support]
+* [Prata med Twilio-Support][twilio_support]
 
 [twilio_api_documentation]: http://www.twilio.com/api
 [twilio_security_guidelines]: http://www.twilio.com/docs/security

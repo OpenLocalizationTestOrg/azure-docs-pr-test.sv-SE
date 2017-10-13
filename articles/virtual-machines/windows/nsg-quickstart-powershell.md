@@ -1,6 +1,6 @@
 ---
-title: "aaaOpen portarna tooa VM med hjälp av Azure PowerShell | Microsoft Docs"
-description: "Lär dig hur tooopen en port / skapa en slutpunkt tooyour Windows VM använder hello Azure resource manager distribution läge och Azure PowerShell"
+title: "Öppna portar till en virtuell dator med hjälp av Azure PowerShell | Microsoft Docs"
+description: "Lär dig hur du öppnar en port / skapa en slutpunkt på din Windows-dator med hjälp av Azure resource manager distribution läge och Azure PowerShell"
 services: virtual-machines-windows
 documentationcenter: 
 author: iainfoulds
@@ -14,27 +14,27 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/21/2017
 ms.author: iainfou
-ms.openlocfilehash: c1817a0c447ae4ce7a1ce2a1fc6927bedf2dacb5
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: e818e3b3c707e1471d6f580f8379a277d3575b89
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="how-tooopen-ports-and-endpoints-tooa-vm-in-azure-using-powershell"></a>Hur tooopen portar och slutpunkter tooa VM i Azure med hjälp av PowerShell
+# <a name="how-to-open-ports-and-endpoints-to-a-vm-in-azure-using-powershell"></a>Hur du öppnar portar och slutpunkter till en virtuell dator i Azure med hjälp av PowerShell
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
 
 ## <a name="quick-commands"></a>Snabbkommandon
-toocreate en nätverkssäkerhet och ACL-regler måste [hello senaste versionen av Azure PowerShell installerat](/powershell/azureps-cmdlets-docs). Du kan också [utföra dessa steg med hello Azure-portalen](nsg-quickstart-portal.md).
+Att skapa en säkerhetsgrupp för nätverk och ACL-regler måste [den senaste versionen av Azure PowerShell installerat](/powershell/azureps-cmdlets-docs). Du kan också [utför dessa steg med hjälp av Azure portal](nsg-quickstart-portal.md).
 
-Logga in tooyour Azure-konto:
+Logga in på ditt Azure-konto:
 
 ```powershell
 Login-AzureRmAccount
 ```
 
-Följande exempel Ersätt exempel parameternamn i hello med egna värden. Exempel parameternamn ingår *myResourceGroup*, *myNetworkSecurityGroup*, och *myVnet*.
+Ersätt exempel parameternamn med egna värden i följande exempel. Exempel parameternamn ingår *myResourceGroup*, *myNetworkSecurityGroup*, och *myVnet*.
 
-Skapa en regel med [ny AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig). hello följande exempel skapas en regel med namnet *myNetworkSecurityGroupRule* tooallow *tcp* trafik på port *80*:
+Skapa en regel med [ny AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig). I följande exempel skapas en regel med namnet *myNetworkSecurityGroupRule* så att *tcp* trafik på port *80*:
 
 ```powershell
 $httprule = New-AzureRmNetworkSecurityRuleConfig `
@@ -50,7 +50,7 @@ $httprule = New-AzureRmNetworkSecurityRuleConfig `
     -DestinationPortRange 80
 ```
 
-Skapa sedan ditt nätverk säkerhetsgrupp med [ny AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/new-azurermnetworksecuritygroup) och tilldela hello HTTP-regel som du just har skapat på följande sätt. hello följande exempel skapar en Nätverkssäkerhetsgrupp med namnet *myNetworkSecurityGroup*:
+Skapa sedan ditt nätverk säkerhetsgrupp med [ny AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/new-azurermnetworksecuritygroup) och tilldela HTTP-regel som du just har skapat på följande sätt. I följande exempel skapas en Nätverkssäkerhetsgrupp med namnet *myNetworkSecurityGroup*:
 
 ```powershell
 $nsg = New-AzureRmNetworkSecurityGroup `
@@ -60,7 +60,7 @@ $nsg = New-AzureRmNetworkSecurityGroup `
     -SecurityRules $httprule
 ```
 
-Nu ska vi tilldela Nätverkssäkerhetsgruppen tooa undernätet. hello följande exempel tilldelas ett befintligt virtuellt nätverk med namnet *myVnet* toohello variabeln *$vnet* med [Get-AzureRmVirtualNetwork](/powershell/module/azurerm.network/get-azurermvirtualnetwork):
+Nu ska vi tilldela säkerhetsgrupp för nätverk till ett undernät. I följande exempel tilldelas ett befintligt virtuellt nätverk med namnet *myVnet* till variabeln *$vnet* med [Get-AzureRmVirtualNetwork](/powershell/module/azurerm.network/get-azurermvirtualnetwork):
 
 ```powershell
 $vnet = Get-AzureRmVirtualNetwork `
@@ -68,7 +68,7 @@ $vnet = Get-AzureRmVirtualNetwork `
     -Name "myVnet"
 ```
 
-Associera en säkerhetsgrupp för nätverk med ditt undernät med [Set AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/set-azurermvirtualnetworksubnetconfig). hello följande exempel associerar hello undernät med namnet *mySubnet* med säkerhetsgrupp för nätverk:
+Associera en säkerhetsgrupp för nätverk med ditt undernät med [Set AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/set-azurermvirtualnetworksubnetconfig). I följande exempel associerar undernätet med namnet *mySubnet* med säkerhetsgrupp för nätverk:
 
 ```powershell
 $subnetPrefix = $vnet.Subnets|?{$_.Name -eq 'mySubnet'}
@@ -80,7 +80,7 @@ Set-AzureRmVirtualNetworkSubnetConfig `
     -NetworkSecurityGroup $nsg
 ```
 
-Slutligen uppdaterar ditt virtuella nätverk med [Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/set-azurermvirtualnetwork) för dina ändringar tootake gälla:
+Slutligen uppdaterar ditt virtuella nätverk med [Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/set-azurermvirtualnetwork) för att ändringarna ska börja gälla:
 
 ```powershell
 Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
@@ -88,12 +88,12 @@ Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
 
 
 ## <a name="more-information-on-network-security-groups"></a>Mer information om Nätverkssäkerhetsgrupper
-hello här snabb kommandon kan du tooget upp och körs med trafiken flödar tooyour VM. Nätverkssäkerhetsgrupper ger många bra funktioner och granularitet för styra åtkomst tooyour resurser. Du kan läsa mer om [skapar en säkerhetsgrupp för nätverk och ACL-regler här](tutorial-virtual-network.md#manage-internal-traffic).
+Snabb kommandon här kan du komma igång med trafik som flödar till den virtuella datorn. Nätverkssäkerhetsgrupper ger många bra funktioner och granularitet för att styra åtkomst till resurser. Du kan läsa mer om [skapar en säkerhetsgrupp för nätverk och ACL-regler här](tutorial-virtual-network.md#manage-internal-traffic).
 
-Du bör placera dina virtuella datorer bakom en belastningsutjämnare i Azure för hög tillgänglighet webbprogram. hello belastningsutjämnare distribuerar trafik tooVMs med en Nätverkssäkerhetsgrupp som tillhandahåller trafikfiltrering. Mer information finns i [hur tooload saldo Linux virtuella datorer i Azure toocreate högtillgänglig programmet](tutorial-load-balancer.md).
+Du bör placera dina virtuella datorer bakom en belastningsutjämnare i Azure för hög tillgänglighet webbprogram. Belastningsutjämnaren distribuerar trafik till virtuella datorer med en Nätverkssäkerhetsgrupp som tillhandahåller trafikfiltrering. Mer information finns i [hur du läser in balansera Linux-datorer i Azure för att skapa ett program med hög tillgänglighet](tutorial-load-balancer.md).
 
 ## <a name="next-steps"></a>Nästa steg
-I det här exemplet skapas en enkel regel tooallow HTTP-trafik. Du kan hitta information om hur du skapar mer detaljerad miljöer i hello följande artiklar:
+I det här exemplet skapas en enkel regel för att tillåta HTTP-trafik. Du kan hitta information om hur du skapar mer detaljerad miljöer i följande artiklar:
 
 * [Översikt över Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md)
 * [Vad är en nätverkssäkerhetsgrupp (NSG)?](../../virtual-network/virtual-networks-nsg.md)

@@ -1,6 +1,6 @@
 ---
-title: aaaOverview av hello Azure Compute-enhet | Microsoft Docs
-description: "Översikt över hello begreppet hello Azure compute enheter för Windows. hello ACU ger ett sätt för att jämföra CPU-prestanda över Azure SKU: er."
+title: "Översikt över Azure Compute-enhet | Microsoft Docs"
+description: "Översikt över begreppet Azure compute enheter för Windows. ACU ger ett sätt för att jämföra CPU-prestanda över Azure SKU: er."
 services: virtual-machines-windows
 documentationcenter: 
 author: jonbeck7
@@ -15,18 +15,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/28/2017
 ms.author: jonbeck
-ms.openlocfilehash: d2fc635c68851382b3d1df3d5836b306f9044273
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 2214c7e8661a81e19b765b8519a48542de1159fb
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="azure-compute-unit-acu"></a>Azure compute-enhet (ACU)
 
 [!INCLUDE [virtual-machines-common-acu](../../../includes/virtual-machines-common-acu.md)]
 
 
-Här är länkar toomore information om olika storlekar för hello:
+Här är länkar till mer information om olika storlekar:
 - [Allmänna](sizes-general.md)
 - [Minnesoptimerad](../virtual-machines-windows-sizes-memory.md)
 - [Beräkningsoptimerad](sizes-compute.md)

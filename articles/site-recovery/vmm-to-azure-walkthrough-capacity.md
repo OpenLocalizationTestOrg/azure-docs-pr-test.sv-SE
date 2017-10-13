@@ -1,6 +1,6 @@
 ---
-title: "aaaPlan kapacitet och skalning för Virtuella Hyper-V-replikering (med VMM) tooAzure med Azure Site Recovery | Microsoft Docs"
-description: "Använd den här artikeln tooplan kapacitet och skala när replikera virtuella Hyper-V-datorer i VMM moln tooAzure med Azure Site Recovery"
+title: "Planera kapacitet och skalning för Virtuella Hyper-V-replikering (med VMM) till Azure med Azure Site Recovery | Microsoft Docs"
+description: "Använd den här artikeln för att planera kapaciteten och skala vid replikering av Hyper-V virtuella datorer i VMM-moln till Azure med Azure Site Recovery"
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
@@ -14,59 +14,59 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 07/23/2017
 ms.author: raynew
-ms.openlocfilehash: 9818ada9bb21f60ac00b3894696201b06630cb2b
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: ab1dc21a829140f8cd2e57837d83a05b0d71bcdf
+ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/29/2017
 ---
-# <a name="step-3-plan-capacity-and-scaling-for-hyper-v-with-vmm-tooazure-replication"></a>Steg 3: Planera kapacitet och skalning för Hyper-V (med VMM) tooAzure replikering
+# <a name="step-3-plan-capacity-and-scaling-for-hyper-v-with-vmm-to-azure-replication"></a>Steg 3: Planera kapacitet och skalning för Hyper-V (med VMM) till Azure-replikering
 
-När du har granskat hello [kraven för distribution av](vmm-to-azure-walkthrough-prerequisites.md)kan använda den här artikeln toofigure planera för kapacitet och skala vid replikering av lokala virtuella Hyper-V-datorer i System Center Virtual Machine Manager (VMM) moln tooAzure med [Azure Site Recovery](site-recovery-overview.md).
+När du har granskat den [kraven för distribution av](vmm-to-azure-walkthrough-prerequisites.md), använda den här artikeln för att ta reda på planera för kapacitet och skala vid replikering av lokala Hyper-V virtuella datorer i System Center Virtual Machine Manager (VMM)-moln till Azure med [Azure Site Recovery](site-recovery-overview.md).
 
-När du har läst den här artikeln efter eventuella kommentarer längst ned hello eller tekniska frågor om hello [Azure Recovery Services-forumet](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
+När du har läst den här artikeln efter eventuella kommentarer längst ned eller tekniska frågor om den [Azure Recovery Services-forumet](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
 
 
 ## <a name="how-do-i-start-capacity-planning"></a>Hur börjar jag kapacitetsplanering?
 
 
-Du samla in information om din miljö för replikering och planera kapacitet i hello data, tillsammans med hello överväganden markerat i den här artikeln.
+Du samla in information om replikeringsmiljön och planera kapacitet med hjälp av data, tillsammans med överväganden markerat i den här artikeln.
 
 
 ## <a name="gather-information"></a>Samla in information
 
 1. Samla in information om replikeringsmiljön, inklusive virtuella datorer, diskar per virtuell dator och lagringsutrymme per disk.
-2. Identifiera dina dagliga (omsättningen) förändringstakten för replikerade data. Hämta hello [Hyper-V kapacitetsplanering verktyget](https://www.microsoft.com/download/details.aspx?id=39057) tooget hello förändringstakten. Vi rekommenderar att du kör det här verktyget över en vecka toocapture medelvärden.
+2. Identifiera dina dagliga (omsättningen) förändringstakten för replikerade data. Hämta den [Hyper-V kapacitetsplanering verktyget](https://www.microsoft.com/download/details.aspx?id=39057) få förändringstakten. Vi rekommenderar att du kör det här verktyget över en vecka att avbilda medelvärden.
  
 
 ## <a name="figure-out-capacity"></a>Ta reda på kapaciteten
 
-Baserat på hello information som du har samla du kör hello [Site Recovery Kapacitetsplaneringsverktyget för](http://aka.ms/asr-capacity-planner-excel) tooanalyze din källmiljö arbetsbelastningar, beräkna bandbreddsbehov och serverresurser för hello källplats och hello resurser (virtuella datorer och lagring osv), som du behöver i hello målplats. Du kan köra verktyget hello på ett par olika lägen:
+Utifrån den information som du har samla kan du köra den [Site Recovery Kapacitetsplaneringsverktyget för](http://aka.ms/asr-capacity-planner-excel) beräkna bandbreddsbehov och serverresurser för källplatsen och resurser (virtuella datorer och lagring osv), som du behöver på målplatsen för att analysera dina källmiljön och arbetsbelastningar. Du kan köra verktyget på ett par olika lägen:
 
-- Snabb planering: kör hello-verktyget i det här läget tooget nätverks- och projektioner baserat på ett genomsnittligt antal virtuella datorer, diskar, lagring och förändringstakten.
-- Detaljerad planering: kör hello-verktyget i det här läget och ange information för varje arbetsbelastning på VM-nivå. Analysera VM-kompatibilitet och får nätverks- och projektioner.
+- Snabb planering: kör verktyget i det här läget för att hämta nätverks- och projektioner baserat på ett genomsnittligt antal virtuella datorer, diskar, lagring och förändringstakten.
+- Detaljerad planering: köra verktyget i det här läget och ger information för varje arbetsbelastning på VM-nivå. Analysera VM-kompatibilitet och får nätverks- och projektioner.
 
-Kör nu hello verktyget:
+Nu köra verktyget:
 
-1. Hämta hello [verktyget](http://aka.ms/asr-capacity-planner-excel)
-2. toorun hello snabb planner, Följ [instruktionerna](site-recovery-capacity-planner.md#run-the-quick-planner), och välj hello scenario **Hyper-V tooAzure**.
-3. toorun Hej detaljerad planner, Följ [instruktionerna](site-recovery-capacity-planner.md#run-the-detailed-planner), och välj hello scenario **Hyper-V tooAzure**.
+1. Hämta den [verktyget](http://aka.ms/asr-capacity-planner-excel)
+2. Så här kör du snabbt planner [instruktionerna](site-recovery-capacity-planner.md#run-the-quick-planner), och välj scenariot **Hyper-V till Azure**.
+3. Så här kör du detaljerad planner [instruktionerna](site-recovery-capacity-planner.md#run-the-detailed-planner), och välj scenariot **Hyper-V till Azure**.
 
 ## <a name="control-network-bandwidth"></a>Kontrollera nätverksbandbredd
 
-När du har beräknade hello bandbredd som du behöver ha ett antal alternativ för att styra hello mängden bandbredd som används för replikering:
+När du har beräknat bandbredd som du behöver ha ett antal alternativ för att styra hur mycket bandbredd som används för replikering:
 
-* **Begränsa bandbredden**: Hyper-V-trafik som replikeras tooAzure går igenom en specifik Hyper-V-värd. Du kan begränsa bandbredden på värdservern för hello.
-* **Påverka bandbredd**: du kan påverka hello bandbredd som används för replikering med hjälp av några registernycklar.
+* **Begränsa bandbredden**: Hyper-V-trafik som replikeras till Azure går igenom en specifik Hyper-V-värd. Du kan begränsa bandbredden på värdservern.
+* **Påverka bandbredd**: du kan påverka den bandbredd som används för replikering med hjälp av några registernycklar.
 
 ### <a name="throttle-bandwidth"></a>Begränsa bandbredden
-1. Öppna hello Microsoft Azure Backup MMC snapin-modulen på hello Hyper-V-värdservern. Som standard är en genväg till Microsoft Azure Backup finns på hello skrivbordet eller i C:\Program Files\Microsoft Azure Recovery Services Agent\bin\wabadmin.
-2. I snapin-modulen hello klickar du på **ändra egenskaper för**.
-3. På hello **begränsning** väljer **aktivera Användningsbegränsning för internetbandbredd för säkerhetskopieringsåtgärder**, och ange hello gränserna för arbete och fritid timmar. Giltigt intervall är från 512 kbit/s too102 Mbit/s per sekund.
+1. Öppna snapin-modulen Microsoft Azure Backup MMC på Hyper-V-värdservern. Som standard finns det en genväg till Microsoft Azure Backup på skrivbordet eller i C:\Program Files\Microsoft Azure Recovery Services Agent\bin\wabadmin.
+2. Klicka på **Ändra egenskaper** i snapin-modulen.
+3. På fliken **Begränsning** väljer du **Aktivera användningsbegränsning för Internetbandbredd för säkerhetskopieringsåtgärder** och ange begränsningarna för arbetstid och övrig tid. Giltiga intervall är från 512 kbit/s till 102 Mbit/s.
 
     ![Begränsa bandbredden](./media/vmm-to-azure-walkthrough-capacity/throttle2.png)
 
-Du kan också använda hello [Set-OBMachineSetting](https://technet.microsoft.com/library/hh770409.aspx) cmdlet tooset begränsning. Här är ett exempel:
+Du kan också ange begränsningar med hjälp av cmdleten [Set-OBMachineSetting](https://technet.microsoft.com/library/hh770409.aspx). Här är ett exempel:
 
     $mon = [System.DayOfWeek]::Monday
     $tue = [System.DayOfWeek]::Tuesday
@@ -75,11 +75,11 @@ Du kan också använda hello [Set-OBMachineSetting](https://technet.microsoft.co
 **Set-OBMachineSetting -NoThrottle** anger att ingen begränsning krävs.
 
 ### <a name="influence-network-bandwidth"></a>Påverka nätverkets bandbredd
-1. I registret hello navigera för**HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication**.
-   * tooinfluence hello bandbredd trafik på en replikering disk, ändra hello värdet hello **UploadThreadsPerVM**, eller skapa hello nyckeln om den inte finns.
-   * tooinfluence hello bandbredd för redundanstrafik från Azure, ändra värdet för hello **DownloadThreadsPerVM**.
-2. hello standardvärdet är 4. I ett ”överetablerat” nätverk bör registernycklarna ändras från hello standardvärden. hello maximala är 32. Övervaka trafik toooptimize hello värde.
+1. Gå till **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication** i registret.
+   * Om du vill påverka bandbredd trafiken på en replikering disk ändrar du värdet i **UploadThreadsPerVM**, eller skapa nyckeln om den inte finns.
+   * Ändra värdet för att påverka bandbredden för redundanstrafik från Azure **DownloadThreadsPerVM**.
+2. Standardvärdet är 4. I ett ”överetablerat” nätverk bör du ändra registernycklarnas standardvärden. Det högsta antalet är 32. Övervaka trafiken för att optimera värdet.
 
 ## <a name="next-steps"></a>Nästa steg
 
-Gå för[steg 4: Planera nätverk](vmm-to-azure-walkthrough-network.md).
+Gå till [steg 4: Planera nätverk](vmm-to-azure-walkthrough-network.md).

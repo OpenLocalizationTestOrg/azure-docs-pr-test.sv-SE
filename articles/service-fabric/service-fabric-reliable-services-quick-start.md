@@ -1,6 +1,6 @@
 ---
-title: "aaaCreate ditt första Service Fabric-program i C# | Microsoft Docs"
-description: "Introduktion toocreating ett Microsoft Azure Service Fabric-program med tillståndslösa och tillståndskänsliga tjänster."
+title: "Skapa din första Service Fabric-program i C# | Microsoft Docs"
+description: "Introduktion till att skapa ett Microsoft Azure Service Fabric-program med tillståndslösa och tillståndskänsliga tjänster."
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/06/2017
 ms.author: vturecek
-ms.openlocfilehash: e95e67cc84be1b83c936b250cae9112ddc77b963
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 813021d6239ae3cf79bb84b78f77e39c9e0783f6
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="get-started-with-reliable-services"></a>Kom igång med Reliable Services
 > [!div class="op_single_selector"]
@@ -27,36 +27,36 @@ ms.lasthandoff: 10/06/2017
 > 
 > 
 
-Ett Azure Service Fabric-program innehåller en eller flera tjänster som körs din kod. Den här guiden visar hur toocreate både tillståndslösa och tillståndskänsliga Service Fabric-program med [Reliable Services](service-fabric-reliable-services-introduction.md).  Den här videon Microsoft Virtual Academy visar också hur toocreate en tillståndslös tillförlitlig tjänst:<center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=s39AO76yC_7206218965">  
+Ett Azure Service Fabric-program innehåller en eller flera tjänster som körs din kod. Den här guiden visar hur du skapar både tillståndslösa och tillståndskänsliga Service Fabric-program med [Reliable Services](service-fabric-reliable-services-introduction.md).  Den här Microsoft Virtual Academy video visar även hur du skapar en tillståndslös tillförlitlig tjänst:<center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=s39AO76yC_7206218965">  
 <img src="./media/service-fabric-reliable-services-quick-start/ReliableServicesVid.png" WIDTH="360" HEIGHT="244">  
 </a></center>
 
 ## <a name="basic-concepts"></a>Grundläggande begrepp
-tooget igång med tillförlitlig tjänster kan du bara behöver toounderstand några grundläggande begrepp:
+Om du vill komma igång med Reliable Services, behöver du bara förstå några grundläggande begrepp:
 
-* **Typen tjänst**: det här är din implementering. Den definieras av hello-klass som du skriver och som utökar `StatelessService` och annan kod eller beroenden, används tillsammans med ett namn och ett versionsnummer.
-* **Med namnet tjänstinstans**: toorun din tjänst du skapar namngivna instanser av service-typen mycket som du skapar objektinstanser av en klasstyp. En tjänstinstans har ett namn i hello form av en URI med hello ”fabric: /” schemat, till exempel ”fabric: / MyApp/MyService”.
-* **Tjänstvärden**: hello med namnet tjänstinstanser som du skapar måste toorun inom en värdprocess. hello tjänstvärden är bara en process där instanser av tjänsten kan köras.
-* **Registrering av tjänst**: registrering sammanför allt. hello service-typen måste vara registrerad med hello Service Fabric runtime i en tjänst värd tooallow Service Fabric toocreate instanser av den toorun.  
+* **Typen tjänst**: det här är din implementering. Den definieras av den klass som utökar du skriver `StatelessService` och annan kod eller beroenden, används tillsammans med ett namn och ett versionsnummer.
+* **Med namnet tjänstinstans**: för att köra din tjänst måste du skapa namngivna instanser av service-typen mycket som du skapar objektinstanser av en klasstyp. En tjänstinstans har ett namn i form av en URI med hjälp av den ”fabric: /” schemat, till exempel ”fabric: / MyApp/MyService”.
+* **Tjänstvärden**: namngiven tjänstinstanser som du skapar måste du köra inom en värdprocess. Tjänstevärden är bara en process där instanser av tjänsten kan köras.
+* **Registrering av tjänst**: registrering sammanför allt. Tjänsttypen måste registreras med Service Fabric-körning i en tjänstevärd för att tillåta Service Fabric skapar instanser av den att köra.  
 
 ## <a name="create-a-stateless-service"></a>Skapa en tillståndslös tjänst
-En tillståndslös tjänst är en typ av tjänst som används för närvarande hello normen i molnprogram. Anses tillståndslös eftersom själva hello-tjänsten inte innehåller data som behöver toobe lagras på ett tillförlitligt sätt eller hög tillgänglighet. Om en instans av en tillståndslösa tjänsten stängs av, förloras alla det interna tillståndet. I den här typen av tjänsten tillstånd måste vara beständiga tooan extern butik, till exempel Azure-tabeller eller en SQL-databas i den toobe gjort hög tillgänglighet och tillförlitlig.
+En tillståndslös tjänst är en typ av tjänst som används för närvarande normen i molnprogram. Anses tillståndslös eftersom själva tjänsten inte innehåller data som behöver lagras på ett tillförlitligt sätt eller hög tillgänglighet. Om en instans av en tillståndslösa tjänsten stängs av, förloras alla det interna tillståndet. I den här typen av tjänsten måste tillstånd sparas till en extern butik, till exempel Azure-tabeller eller en SQL-databas för att den ska göras hög tillgänglighet och tillförlitlig.
 
 Starta Visual Studio 2015 eller Visual Studio 2017 som administratör och skapa ett nytt Service Fabric application projekt med namnet *HelloWorld*:
 
-![Använd hello nytt projekt dialogrutan rutan toocreate ett nytt Service Fabric-program](media/service-fabric-reliable-services-quick-start/hello-stateless-NewProject.png)
+![Använd dialogrutan Nytt projekt för att skapa ett nytt Service Fabric-program](media/service-fabric-reliable-services-quick-start/hello-stateless-NewProject.png)
 
 Skapa ett projekt för tillståndslösa tjänsten med namnet *HelloWorldStateless*:
 
-![Skapa ett projekt för tillståndslösa tjänsten i hello andra dialogrutan](media/service-fabric-reliable-services-quick-start/hello-stateless-NewProject2.png)
+![Skapa ett projekt för tillståndslösa tjänsten i den andra dialogrutan](media/service-fabric-reliable-services-quick-start/hello-stateless-NewProject2.png)
 
 Din lösning innehåller nu två projekt:
 
-* *HelloWorld*. Detta är hello *programmet* projekt som innehåller din *services*. Den innehåller också hello programmanifestet som beskriver hello program, samt ett antal PowerShell-skript som hjälper dig toodeploy ditt program.
-* *HelloWorldStateless*. Detta är hello service-projekt. Den innehåller hello tillståndslösa tjänsten implementering.
+* *HelloWorld*. Det här är den *programmet* projekt som innehåller din *services*. Den innehåller också programmanifestet som beskriver programmet, samt ett antal PowerShell-skript som hjälper dig att distribuera ditt program.
+* *HelloWorldStateless*. Detta är service-projekt. Den innehåller den tillståndslösa tjänstimplementeringen.
 
-## <a name="implement-hello-service"></a>Implementera hello-tjänsten
-Öppna hello **HelloWorldStateless.cs** filen i hello service-projekt. En tjänst kan köra all affärslogik i Service Fabric. hello service API innehåller två startpunkter för din kod:
+## <a name="implement-the-service"></a>Implementera tjänsten
+Öppna den **HelloWorldStateless.cs** filen i service-projekt. En tjänst kan köra all affärslogik i Service Fabric. API för tjänsten tillhandahåller två startpunkter för din kod:
 
 * En öppen metoden, kallas *RunAsync*, där du kan börja köra alla arbetsbelastningar, inklusive tidskrävande beräkning av arbetsbelastningar.
 
@@ -76,11 +76,11 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 }
 ```
 
-I den här självstudiekursen fokuserar vi på hello `RunAsync()` metoden. Det är där du kan starta direkt köra din kod.
-hello projektmall innehåller ett exempel på implementering av `RunAsync()` som ökar en löpande uppräkning.
+I den här självstudiekursen kommer vi fokusera på den `RunAsync()` metoden. Det är där du kan starta direkt köra din kod.
+Projektmallen innehåller ett exempel på implementering av `RunAsync()` som ökar en löpande uppräkning.
 
 > [!NOTE]
-> Mer information om hur toowork med en kommunikation stacken finns [Service Fabric Web API-tjänster med OWIN själva värd](service-fabric-reliable-services-communication-webapi.md)
+> Mer information om hur du arbetar med en stack kommunikation finns [Service Fabric Web API-tjänster med OWIN själva värd](service-fabric-reliable-services-communication-webapi.md)
 > 
 > 
 
@@ -88,7 +88,7 @@ hello projektmall innehåller ett exempel på implementering av `RunAsync()` som
 ```csharp
 protected override async Task RunAsync(CancellationToken cancellationToken)
 {
-    // TODO: Replace hello following sample code with your own logic
+    // TODO: Replace the following sample code with your own logic
     //       or remove this RunAsync override if it's not needed in your service.
 
     long iterations = 0;
@@ -104,44 +104,44 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
 }
 ```
 
-hello plattform anropar den här metoden när en instans av en tjänst är monterade och klar tooexecute. För en tillståndslös tjänst innebär som bara när hello tjänstinstans öppnas. En token för annullering tillhandahålls toocoordinate när service-instans måste toobe stängd. I Service Fabric inträffa cykeln Öppna/stänga av en tjänstinstans många gånger under hello livslängd för hello-tjänsten som helhet. Detta kan inträffa av olika orsaker, bland annat:
+Plattformen som anropar den här metoden när en instans av en tjänst är monterade och redo att köra. För en tillståndslös tjänst innebär som bara när tjänstinstansen öppnas. En token för annullering tillhandahålls koordinera när service-instans måste stängas. I Service Fabric inträffa cykeln Öppna/stänga av en tjänstinstans många gånger under livslängden för tjänsten som helhet. Detta kan inträffa av olika orsaker, bland annat:
 
-* hello flyttas instanser av tjänsten för resurser.
+* Systemet flyttar instanser av tjänsten för resurser.
 * Fel uppstår i koden.
-* hello programmets eller systemets uppgraderas.
-* hello underliggande maskinvara påträffar ett avbrott.
+* Programmets eller systemets uppgraderas.
+* Den underliggande maskinvaran skulle få ett avbrott.
 
-Den här orchestration hanteras av hello system tookeep tjänsten hög tillgänglighet och korrekt Balanserat.
+Den här orchestration hanteras av systemet för att hålla din tjänst hög tillgänglighet och korrekt belastningsutjämnade.
 
-`RunAsync()`bör inte blockera synkront. Implementeringen av RunAsync ska returnera en uppgift eller await på alla tidskrävande eller blockerar åtgärder tooallow hello runtime toocontinue. Notera i hello `while(true)` loop i hello föregående exempel är en åtgärdsreturnerande `await Task.Delay()` används. Om din arbetsbelastning måste blockerar synkront kan du schemalägga en ny uppgift med `Task.Run()` i din `RunAsync` implementering.
+`RunAsync()`bör inte blockera synkront. Implementeringen av RunAsync ska returnera en uppgift eller await på alla tidskrävande eller blockerar åtgärder för att fortsätta körningen. Observera i den `while(true)` loop i föregående exempel är en åtgärdsreturnerande `await Task.Delay()` används. Om din arbetsbelastning måste blockerar synkront kan du schemalägga en ny uppgift med `Task.Run()` i din `RunAsync` implementering.
 
-Annullering av din arbetsbelastning är en samverkande ansträngning styrd av hello tillhandahålls annullering token. hello systemet väntar på uppgiften-tooend (som lyckades, avbokning eller fel) innan den flyttas på. Det är viktigt toohonor hello annullering token, Slutför någon fungerar och avsluta `RunAsync()` så snabbt som möjligt när hello systemet begär annullering.
+Annullering av din arbetsbelastning är en samverkande ansträngning styrd av den angivna annullering-token. Systemet väntar på uppgiften till slutet (genom lyckades, avbokning eller fel) innan den flyttas på. Det är viktigt att respektera cancellation-token, Slutför allt arbete och avsluta `RunAsync()` så snabbt som möjligt när systemet begär annullering.
 
-I det här exemplet tillståndslösa tjänsten lagras hello antal i en lokal variabel. Men eftersom detta är en tillståndslös tjänst hello-värde som lagras finns bara för hello aktuella livscykeln för dess tjänstinstansen. När tjänsten hello flyttas eller startas om, går hello värdet förlorad.
+I det här exemplet tillståndslösa tjänsten lagras antalet i en lokal variabel. Men eftersom detta är en tillståndslös tjänst är det värde som lagras finns bara för den aktuella livscykeln för dess tjänstinstansen. När tjänsten startas om flyttar går värdet förlorad.
 
 ## <a name="create-a-stateful-service"></a>Skapa en tillståndskänslig tjänst
-Service Fabric introducerar en ny typ av tjänst som är tillståndskänslig. En tillståndskänslig service kan upprätthålla tillstånd på ett tillförlitligt sätt inom hello själva tjänsten, samordnad med hello-kod som använder den. Tillstånd görs högtillgänglig av Service Fabric utan hello måste toopersist tillstånd tooan extern butik.
+Service Fabric introducerar en ny typ av tjänst som är tillståndskänslig. En tillståndskänslig service kan upprätthålla tillstånd på ett tillförlitligt sätt inom tjänsten samordnad med kod som använder den. Tillstånd görs högtillgänglig av Service Fabric utan att behöva spara tillstånd för att en extern butik.
 
-tooconvert ett värde för prestandaräknaren från tillståndslös toohighly tillgänglig och beständiga när hello service flyttas eller startas om, behöver du en tillståndskänslig tjänst.
+Om du vill konvertera ett värde för prestandaräknaren från tillståndslös till hög tillgänglighet och beständiga, även när tjänsten flyttas eller startas om, behöver du en tillståndskänslig tjänst.
 
-Hej i samma *HelloWorld* programmet, du kan lägga till en ny tjänst genom att högerklicka på hello Services referenser i hello projektet och välja **Lägg till ny tjänst för Service Fabric ->**.
+I samma *HelloWorld* programmet, du kan lägga till en ny tjänst genom att högerklicka på tjänsterna referenser i projektet för konsolprogrammet och välja **Lägg till ny tjänst för Service Fabric ->**.
 
-![Lägg till en service tooyour Service Fabric-program](media/service-fabric-reliable-services-quick-start/hello-stateful-NewService.png)
+![Lägga till en tjänst till Service Fabric-program](media/service-fabric-reliable-services-quick-start/hello-stateful-NewService.png)
 
 Välj **tillståndskänslig Service** och ger den namnet *HelloWorldStateful*. Klicka på **OK**.
 
-![Använd hello nytt projekt dialogrutan rutan toocreate en ny tillståndskänslig Service Fabric-tjänst](media/service-fabric-reliable-services-quick-start/hello-stateful-NewProject.png)
+![Använd dialogrutan Nytt projekt för att skapa en ny tillståndskänslig Service Fabric-tjänst](media/service-fabric-reliable-services-quick-start/hello-stateful-NewProject.png)
 
-Ditt program bör nu ha två tjänster: hello tillståndslösa tjänsten *HelloWorldStateless* och hello tillståndskänslig service *HelloWorldStateful*.
+Ditt program bör nu ha två tjänster: tillståndslösa tjänsten *HelloWorldStateless* och tillståndskänsliga tjänsten *HelloWorldStateful*.
 
-En tillståndskänslig tjänst har hello samma startpunkter som en tillståndslös tjänst. hello största skillnaden är hello tillgängligheten för en *tillståndsprovidern* som kan lagra tillstånd på ett tillförlitligt sätt. Service Fabric medföljer en implementering av provider för tillstånd kallas [tillförlitliga samlingar](service-fabric-reliable-services-reliable-collections.md), vilket kan du skapa replikerade datastrukturer via hello tillförlitliga Tillståndshanterare. En tillståndskänslig tillförlitlig tjänst använder den här tillståndsprovidern som standard.
+En tillståndskänslig tjänst har samma startpunkter som en tillståndslös tjänst. Den största skillnaden är tillgängligheten för en *tillståndsprovidern* som kan lagra tillstånd på ett tillförlitligt sätt. Service Fabric medföljer en implementering av provider för tillstånd kallas [tillförlitliga samlingar](service-fabric-reliable-services-reliable-collections.md), vilket låter dig skapa replikeras datastrukturer via Hanteraren för tillförlitlig tillstånd. En tillståndskänslig tillförlitlig tjänst använder den här tillståndsprovidern som standard.
 
-Öppna **HelloWorldStateful.cs** i *HelloWorldStateful*, som innehåller hello följande RunAsync-metoden:
+Öppna **HelloWorldStateful.cs** i *HelloWorldStateful*, som innehåller följande RunAsync metod:
 
 ```csharp
 protected override async Task RunAsync(CancellationToken cancellationToken)
 {
-    // TODO: Replace hello following sample code with your own logic
+    // TODO: Replace the following sample code with your own logic
     //       or remove this RunAsync override if it's not needed in your service.
 
     var myDictionary = await this.StateManager.GetOrAddAsync<IReliableDictionary<string, long>>("myDictionary");
@@ -159,8 +159,8 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
 
             await myDictionary.AddOrUpdateAsync(tx, "Counter", 0, (key, value) => ++value);
 
-            // If an exception is thrown before calling CommitAsync, hello transaction aborts, all changes are
-            // discarded, and nothing is saved toohello secondary replicas.
+            // If an exception is thrown before calling CommitAsync, the transaction aborts, all changes are
+            // discarded, and nothing is saved to the secondary replicas.
             await tx.CommitAsync();
         }
 
@@ -169,23 +169,23 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
 ```
 
 ### <a name="runasync"></a>RunAsync
-`RunAsync()`fungerar på samma sätt i tillståndskänsliga och tillståndslösa tjänster. Dock i en tillståndskänslig service hello plattform utför ytterligare arbete för din räkning innan den kör `RunAsync()`. Detta verk kan inkludera att säkerställa att hello tillförlitliga Tillståndshanterare och tillförlitlig samlingar är klar toouse.
+`RunAsync()`fungerar på samma sätt i tillståndskänsliga och tillståndslösa tjänster. Dock i en tillståndskänslig service plattformen utför ytterligare arbete för din räkning innan den kör `RunAsync()`. Detta verk kan inkludera att säkerställa att tillförlitliga Tillståndshanterare och tillförlitlig samlingar är redo att användas.
 
-### <a name="reliable-collections-and-hello-reliable-state-manager"></a>Tillförlitliga samlingar och hello tillförlitliga Tillståndshanterare
+### <a name="reliable-collections-and-the-reliable-state-manager"></a>Tillförlitliga samlingar och hanteraren för tillförlitlig tillstånd
 ```csharp
 var myDictionary = await this.StateManager.GetOrAddAsync<IReliableDictionary<string, long>>("myDictionary");
 ```
 
-[IReliableDictionary](https://msdn.microsoft.com/library/dn971511.aspx) är en dictionary-implementering som du kan använda tooreliably arkivtillståndet i hello-tjänsten. Med Service Fabric och tillförlitlig samlingar kan du lagra data direkt i din tjänst utan hello behovet av en extern beständiga arkivet. Tillförlitliga samlingar gör att dina data är hög tillgänglighet. Service Fabric åstadkommer detta genom att skapa och hantera flera *repliker* av tjänsten för dig. Det ger också en API som avlägsnar bort hello svårigheter för att hantera dessa repliker och deras tillståndsövergångar.
+[IReliableDictionary](https://msdn.microsoft.com/library/dn971511.aspx) är en dictionary-implementering som du kan använda för att lagra på ett tillförlitligt sätt tillstånd i tjänsten. Med Service Fabric och tillförlitlig samlingar, kan du lagra data direkt i din tjänst utan behov av en extern beständiga arkivet. Tillförlitliga samlingar gör att dina data är hög tillgänglighet. Service Fabric åstadkommer detta genom att skapa och hantera flera *repliker* av tjänsten för dig. Det ger också en API som avlägsnar direkt svårigheter för att hantera dessa repliker och deras tillståndsövergångar.
 
 Tillförlitliga samlingar kan lagra alla .NET-typ, inklusive din anpassade typer med några varningar.
 
-* Service Fabric gör ditt tillstånd hög tillgänglighet av *replikerar* tillstånd mellan noder och tillförlitlig samlingar lagra data toolocal disken på varje replik. Det innebär att allt som lagras i tillförlitliga samlingar måste vara *serialiserbara*. Som standard använder tillförlitliga samlingar [DataContract](https://msdn.microsoft.com/library/system.runtime.serialization.datacontractattribute%28v=vs.110%29.aspx) för serialisering, så det är viktigt toomake till att din typer är [stöds av hello datakontraktserialiserren](https://msdn.microsoft.com/library/ms731923%28v=vs.110%29.aspx) när du använder hello standard serialiserare.
-* Objekt replikeras för hög tillgänglighet när du gör transaktioner på tillförlitliga samlingar. Objekt som lagras i tillförlitliga samlingar sparas i lokalt minne i din tjänst. Det innebär att du har en lokal referens toohello objekt.
+* Service Fabric gör ditt tillstånd hög tillgänglighet av *replikerar* tillstånd mellan noder och tillförlitlig samlingar lagra data på en lokal disk på varje replik. Det innebär att allt som lagras i tillförlitliga samlingar måste vara *serialiserbara*. Som standard använder tillförlitliga samlingar [DataContract](https://msdn.microsoft.com/library/system.runtime.serialization.datacontractattribute%28v=vs.110%29.aspx) för serialisering, så det är viktigt att se till att din typer är [stöds av datakontraktserialiserren](https://msdn.microsoft.com/library/ms731923%28v=vs.110%29.aspx) när du använder standard-serialisering.
+* Objekt replikeras för hög tillgänglighet när du gör transaktioner på tillförlitliga samlingar. Objekt som lagras i tillförlitliga samlingar sparas i lokalt minne i din tjänst. Det innebär att du har en lokal referens till objektet.
   
-   Det är viktigt att du inte mutera lokala instanser av dessa objekt utan att utföra en uppdateringsåtgärd på hello tillförlitliga samling i en transaktion. Det beror på att ändringarna toolocal objektinstanser inte replikeras automatiskt. Du måste infoga igen hello objektet tillbaka till hello ordlista eller Använd en av hello *uppdatera* metoder i hello ordlistan.
+   Det är viktigt att du inte mutera lokala instanser av dessa objekt utan att utföra en Uppdateringsåtgärd i den tillförlitliga samlingen i en transaktion. Det beror på att ändringar i lokala instanser av objekt inte replikeras automatiskt. Du måste infoga objektet tillbaka till ordlistan igen eller Använd en av de *uppdatera* metoder i ordlistan.
 
-hello tillförlitliga Tillståndshanterare hanterar tillförlitliga samlingar åt dig. Du kan bara begära hello tillförlitliga Tillståndshanterare för en tillförlitlig samling efter namn när som helst och var som helst i din tjänst. hello tillförlitliga Tillståndshanterare garanterar att du får en referens tillbaka. Inte rekommenderar vi att du sparar referenser tooreliable samling instanser i klassmedlemsvariabler eller egenskaper. Särskild försiktighet måste vidtas tooensure hello referens har angetts tooan instans alltid i hello service livscykel. hello tillförlitliga Tillståndshanterare hanterar det här fungerar och har optimerats för Upprepa besök.
+Tillförlitliga Tillståndshanterarens hanterar tillförlitliga samlingar åt dig. Du kan bara be tillförlitliga Tillståndshanterarens för en tillförlitlig samling med namnet när som helst och var som helst i din tjänst. Den tillförlitliga tillstånd Manager ser till att du får en referens tillbaka. Inte rekommenderar vi att du sparar referenser till tillförlitliga samling instanser i klassmedlem egenskaper eller variabler. Särskild försiktighet måste vidtas för att säkerställa att referensen har angetts till en instans alltid i livscykeln för tjänsten. Tillförlitliga Tillståndshanterarens hanterar det här fungerar och har optimerats för Upprepa besök.
 
 ### <a name="transactional-and-asynchronous-operations"></a>Transaktionell och asynkrona åtgärder
 ```C#
@@ -199,17 +199,17 @@ using (ITransaction tx = this.StateManager.CreateTransaction())
 }
 ```
 
-Tillförlitliga samlingar har många hello samma åtgärder som deras `System.Collections.Generic` och `System.Collections.Concurrent` motsvarigheter göra, förutom LINQ. Åtgärder på tillförlitliga samlingar är asynkron. Detta är eftersom skrivåtgärder med tillförlitlig samlingar utföra tooreplicate för i/o-åtgärder och bevara data toodisk.
+Tillförlitliga samlingar har många av åtgärderna som deras `System.Collections.Generic` och `System.Collections.Concurrent` motsvarigheter göra, förutom LINQ. Åtgärder på tillförlitliga samlingar är asynkron. Det beror på att skrivåtgärder med tillförlitlig samlingar utföra i/o-åtgärder för att replikera och spara data till disk.
 
-Åtgärder för insamling av tillförlitliga är *transaktionella*, så att du kan behålla tillstånd konsekvent över flera tillförlitliga samlingar och åtgärder. Du kan till exempel ett arbetsobjekt från en tillförlitlig kö har status Created, utföra en åtgärd på det och spara hello resultat i en tillförlitlig Dictionary alla inom en enskild transaktion. Detta behandlas som en atomisk åtgärd och det garanterar hello hela åtgärden lyckas eller hello hela åtgärden återställs. Om ett fel uppstår när du har status Created hello objektet men innan du sparar hello resultatet hello hela transaktionen återställs och hello objekt förblir i hello kö för bearbetning.
+Åtgärder för insamling av tillförlitliga är *transaktionella*, så att du kan behålla tillstånd konsekvent över flera tillförlitliga samlingar och åtgärder. Du kan till exempel ett arbetsobjekt från en tillförlitlig kö har status Created, utföra en åtgärd på det och spara resultatet i en tillförlitlig ordlista alla inom en enskild transaktion. Detta behandlas som en atomisk åtgärd och det garanterar att hela åtgärden lyckas eller hela åtgärden återställs. Om ett fel inträffar efter att objektet har status Created men innan du sparar resultatet hela transaktionen återställs och artikeln finns kvar i kön för bearbetning.
 
-## <a name="run-hello-application"></a>Kör programmet hello
-Returnerar vi nu toohello *HelloWorld* program. Du kan nu skapa och distribuera tjänster. När du trycker på **F5**, ditt program kommer att byggas och distribuerade tooyour lokala klustret.
+## <a name="run-the-application"></a>Köra programmet
+Vi Gå nu tillbaka till den *HelloWorld* program. Du kan nu skapa och distribuera tjänster. När du trycker på **F5**, ditt program kommer skapats och distribuerats till det lokala klustret.
 
-När hello-tjänster startar körs, kan du visa hello genereras ETW Event Tracing for Windows ()-händelser i en **diagnostiska händelser** fönster. Observera att hello händelser visas från både hello tillståndslösa tjänsten och hello tillståndskänslig service i hello program. Du kan pausa hello dataström genom att klicka på hello **pausa** knappen. Du kan sedan kontrollera hello information om ett meddelande genom att expandera meddelandet.
+När tjänsten startas, kan du visa de genererade ETW Event Tracing for Windows ()-händelserna i en **diagnostiska händelser** fönster. Observera att de händelser som visas är från både tjänsten tillståndslösa och tillståndskänsliga tjänsten i programmet. Du kan pausa dataströmmen genom att klicka på den **pausa** knappen. Du kan granska information om ett meddelande genom att expandera meddelandet.
 
 > [!NOTE]
-> Innan du kör programmet hello kan du kontrollera att du har en lokal utveckling kluster som kör. Kolla in hello [Kom igång med](service-fabric-get-started.md) information om hur du konfigurerar din lokala miljö.
+> Kontrollera att du har en lokal utveckling kluster som kör innan du kör programmet. Kolla in den [Kom igång med](service-fabric-get-started.md) information om hur du konfigurerar din lokala miljö.
 > 
 > 
 

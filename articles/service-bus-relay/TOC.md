@@ -9,10 +9,13 @@
 ### [NET](relay-hybrid-connections-dotnet-get-started.md)
 ### [Node](relay-hybrid-connections-node-get-started.md)
 ## [WCF-relä](relay-wcf-dotnet-get-started.md)
+## [Självstudier för WCF-relä](service-bus-relay-tutorial.md)
+## [Självstudier för WCF-relä REST](service-bus-relay-rest-tutorial.md)
 
 # Gör så här för att
 ## Planera och designa
 ### [Autentisering och säkerhet](relay-authentication-and-authorization.md)
+#### [Migrera från ACS till SAS](relay-migrate-acs-sas.md)
 ### [Hybridanslutningsprotokoll](relay-hybrid-connections-protocol.md)
 ## Utveckla
 ### [Tillgängliga API:er](relay-api-overview.md)

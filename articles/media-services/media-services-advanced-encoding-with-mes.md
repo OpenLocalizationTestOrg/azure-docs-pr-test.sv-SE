@@ -1,6 +1,6 @@
 ---
-title: "aaaPerform avancerade kodning genom att anpassa MES förinställningar | Microsoft Docs"
-description: "Det här avsnittet visar hur tooperform avancerade kodning genom att anpassa Media Encoder Standard uppgiften förinställningar."
+title: "Utföra avancerade encoding genom att anpassa MES förinställningar | Microsoft Docs"
+description: "Det här avsnittet beskrivs hur du utför avancerad kodning genom att anpassa Media Encoder Standard uppgiften förinställningar."
 services: media-services
 documentationcenter: 
 author: juliako
@@ -14,27 +14,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: juliako
-ms.openlocfilehash: 9caa68fafacaf51f91f0554c5bafe491928d8c77
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 8de3bdd45261c84a0e1bb90f1c58863ad740dd5a
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="perform-advanced-encoding-by-customizing-mes-presets"></a>Utföra avancerade encoding genom att anpassa MES förinställningar 
 
 ## <a name="overview"></a>Översikt
 
-Det här avsnittet visar hur toocustomize Media Encoder Standard förinställningar. Hej [Encoding med Media Encoder Standard med hjälp av anpassade förinställningar](media-services-custom-mes-presets-with-dotnet.md) avsnittet visas hur toouse .NET toocreate kodning uppgift och ett jobb som utför den här uppgiften. När du anpassar en förinställning, ange hello anpassade förinställningar toohello kodning aktivitet. 
+Det här avsnittet beskrivs hur du anpassar Media Encoder Standard förinställningar. Den [Encoding med Media Encoder Standard med hjälp av anpassade förinställningar](media-services-custom-mes-presets-with-dotnet.md) avsnittet visas hur du skapar en uppgift som kodning och ett jobb som utför den här uppgiften med hjälp av .NET. När du har ändrat en förinställning kan du ange anpassade förinställningar kodning aktiviteten. 
 
 >[!NOTE]
->Om du använder en XML-förinställning, göra att toopreserve hello elementordning, som visas i XML-exempel (till exempel KeyFrameInterval måste föregå SceneChangeDetection).
+>Om du använder en XML-förinställning, se till att bevara elementordning, som visas i XML-exempel (till exempel KeyFrameInterval måste föregå SceneChangeDetection).
 >
 
-I det här avsnittet hello anpassade förinställningar som utför hello efter kodning uppgifter har visat.
+I det här avsnittet visas anpassade förinställningar som utför följande uppgifter för kodning.
 
 ## <a name="support-for-relative-sizes"></a>Stöd för relativa storleken
 
-När du genererar miniatyrer, behöver du inte ange tooalways utdata bredd och höjd i bildpunkter. Du kan ange dem i procent i hello intervallet [% 1,..., 100%].
+När du genererar miniatyrer, behöver du inte alltid ange utdata bredd och höjd i bildpunkter. Du kan ange dem i procent i intervallet [% 1,..., 100%].
 
 ### <a name="json-preset"></a>JSON förinställda
     "Width": "100%",
@@ -46,16 +46,16 @@ När du genererar miniatyrer, behöver du inte ange tooalways utdata bredd och h
 
 ## <a id="thumbnails"></a>Generera miniatyrbilder
 
-Det här avsnittet visas hur toocustomize en förinställning som genererar miniatyrer. hello innehåller förinställning som anges nedan information om hur du vill att tooencode filen samt information som behövs för toogenerate miniatyrerna. Du kan vidta någon av hello MES förinställningar dokumenterade [detta](media-services-mes-presets-overview.md) och lägger till kod som genererar miniatyrer.  
+Det här avsnittet visar hur du anpassar en förinställning som genererar miniatyrer. Den förinställning som anges nedan innehåller information om hur du vill koda din fil samt information som behövs för att generera miniatyrbilder. Du kan vidta någon av MES förinställningar dokumenterade [detta](media-services-mes-presets-overview.md) och lägger till kod som genererar miniatyrer.  
 
 > [!NOTE]
-> Hej **SceneChangeDetection** inställningen i hello följande förinställda kan endast anges tootrue om du kodar tooa enkel bithastighet video. Om du kodar tooa multibithastighet video och ange **SceneChangeDetection** tootrue, hello kodare returnerar ett fel.  
+> Den **SceneChangeDetection** inställningen i följande förinställda kan endast anges till true om du kodar för en enda bithastighet video. Om du kodar till en video med flera bithastigheter och ange **SceneChangeDetection** till true, kodaren returnerar ett fel.  
 >
 >
 
 Mer information om schemat finns [detta](media-services-mes-schema.md) avsnittet.
 
-Se till att tooreview hello [överväganden](#considerations) avsnitt.
+Se till att granska den [överväganden](#considerations) avsnitt.
 
 ### <a id="json"></a>JSON förinställda
     {
@@ -232,25 +232,25 @@ Se till att tooreview hello [överväganden](#considerations) avsnitt.
 
 ### <a name="considerations"></a>Överväganden
 
-det gäller hello följande överväganden:
+Följande gäller:
 
-* hello användningen av explicita tidsstämplar för Startintervall-steg förutsätter att hello Indatakällan är minst 1 minut.
+* Användningen av explicita tidsstämplar för Startintervall-steg förutsätter att Indatakällan är minst 1 minut.
 * BmpImage-jpg/Png-element har Start, steg, och intervallet strängattribut – dessa kan tolkas som:
 
   * RAM-numret om de är icke-negativa heltal, till exempel ”Start”: ”120”
-  * Relativa toosource varaktighet om uttryckt %-suffixet, till exempel ”Start”: ”15%”, eller
+  * Relativt källa varaktighet om uttryckt som %-suffixet, till exempel ”Start”: ”15%”, eller
   * Tidsstämpel om uttryckt: mm: ss... Formatera, till exempel ”Start” ”: 00: 01:00”
 
     Du kan blanda och matcha här ska du ange.
 
-    Dessutom Start har också stöd för ett särskilt makro: {bästa}, som försöker toodetermine hello första ”intressant” bildrutan hello innehåll Obs: (steg och intervallet ignoreras när Start är inställd för {bästa})
+    Dessutom Start har också stöd för ett särskilt makro: {bästa}, som försöker fastställa den första ”intressanta” bildrutan anteckningens innehåll: (steg och intervallet ignoreras när Start är inställd på {bäst})
   * Standardvärden: Starta: {bästa}
-* Utdataformat måste uttryckligen anges för varje bildformat toobe: BmpFormat-Jpg/Png. När matchar MES JpgVideo tooJpgFormat och så vidare. OutputFormat introducerar ett nytt specifika bilden codec makro: {Index}, som måste toobe finns (en gång och bara en gång) för bildformat för utdata.
+* Utdataformat måste tillhandahållas explicit för varje bildformat: Jpg/Png/BmpFormat. När matchar MES JpgVideo till JpgFormat och så vidare. OutputFormat introducerar ett nytt specifika bilden codec makro: {Index}, vilket måste vara finns (en gång och bara en gång) för bildformat för utdata.
 
 ## <a id="trim_video"></a>Ta bort en video (urklippet)
-Det här avsnittet pratar om hur du ändrar hello kodare förinställningar tooclip eller trim hello indatavideo där hello-indata är en s.k. mezzaninfil eller på begäran-fil. hello kodare kan också använda tooclip eller rensa en tillgång, som har hämtats eller arkiverade från en direktsänd dataström – hello information för detta finns i [bloggen](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/).
+Det här avsnittet handlar om att ändra kodare förinställningar för att klippa ut eller rensa indatavideo där indata är en s.k. mezzaninfil eller på begäran-fil. Kodaren kan också användas för att klippa ut eller ta bort en tillgång, som har hämtats eller arkiverade från en direktsänd dataström – information om detta finns i [bloggen](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/).
 
-tootrim filmer, du kan vidta någon av hello MES förinställningar dokumenterade [detta](media-services-mes-presets-overview.md) avsnittet och ändra hello **källor** element (som visas nedan). hello-värdet för StartTime måste toomatch hello absolut tidsstämplar hello inkommande video. Till exempel om hello första bildrutan i hello indatavideo har en tidsstämpel för 12:00:10.000 och StartTime bör vara minst 12:00:10.000 och större. I hello exemplet nedan förutsätter att hello videoinmatning har en första tidsstämpel noll. **Källor** ska placeras hello början av hello förinställda.
+Beskär videor du vidta någon av MES förinställningar dokumenterade [detta](media-services-mes-presets-overview.md) avsnittet och ändra den **källor** element (som visas nedan). Värdet för StartTime måste matcha inkommande videon absolut tidsstämplar. Till exempel om den första bildrutan indata har en tidsstämpel för 12:00:10.000, sedan StartTime bör vara minst 12:00:10.000 och större. I exemplet nedan förutsätter att indatavideo har en första tidsstämpel noll. **Källor** ska placeras i början av förinställningen.
 
 ### <a id="json"></a>JSON förinställda
     {
@@ -372,7 +372,7 @@ tootrim filmer, du kan vidta någon av hello MES förinställningar dokumenterad
     }
 
 ### <a name="xml-preset"></a>XML-förinställda
-tootrim filmer, du kan vidta någon av hello MES förinställningar dokumenterade [här](media-services-mes-presets-overview.md) och ändra hello **källor** element (som visas nedan).
+Beskär videor du vidta någon av MES förinställningar dokumenterade [här](media-services-mes-presets-overview.md) och ändra den **källor** element (som visas nedan).
 
     <?xml version="1.0" encoding="utf-16"?>
     <Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
@@ -491,11 +491,11 @@ tootrim filmer, du kan vidta någon av hello MES förinställningar dokumenterad
 
 ## <a id="overlay"></a>Skapa ett överlägg
 
-hello Media Encoder Standard kan du toooverlay en bild till en befintlig video. För närvarande hello följande format stöds: png, jpg, gif, bmp och. hello är förinställning som anges nedan ett grundläggande exempel på en videoöverlägg.
+Media Encoder Standard kan du överlagra en bild till en befintlig video. För närvarande följande format stöds: png, jpg, gif, bmp och. Den förinställning som anges nedan är ett grundläggande exempel på en videoöverlägg.
 
-Dessutom toodefining en förinställd fil du har också toolet Media Services vet vilken fil i hello tillgången är hello överlägget avbildningen och vilken fil är hello källa video där du vill toooverlay hello bilden. hello videofil har toobe hello **primära** fil.
+Utöver definierar en förvalda har du också kan Media Services vet vilken fil i tillgången överlägget avbildningen och vilken fil som är videon som du vill överlagra avbildningen. Video filen måste vara den **primära** fil.
 
-Om du använder .NET, lägger du till hello följande två funktioner toohello .NET-exempel som definierats i [detta](media-services-custom-mes-presets-with-dotnet.md#encoding_with_dotnet) avsnittet. Hej **UploadMediaFilesFromFolder** funktionen Överför filer från en mapp (till exempel BigBuckBunny.mp4 och Image001.png) och anger hello mp4 toobe hello primära fil i hello tillgången. Hej **EncodeWithOverlay** använder funktionen hello anpassade förvalda som skickades tooit (till exempel hello förinställningen som följer) toocreate hello kodning aktivitet.
+Om du använder .NET, lägger du till följande två funktioner i .NET-exempel som definierats i [detta](media-services-custom-mes-presets-with-dotnet.md#encoding_with_dotnet) avsnittet. Den **UploadMediaFilesFromFolder** funktionen Överför filer från en mapp (till exempel BigBuckBunny.mp4 och Image001.png) och anger mp4-fil ska vara den primära filen i tillgången. Den **EncodeWithOverlay** funktionen använder den anpassade förinställda filen som skickades till den (till exempel den förinställning som visas nedan) att skapa aktiviteten kodning.
 
 
     static public IAsset UploadMediaFilesFromFolder(string folderPath)
@@ -504,7 +504,7 @@ Om du använder .NET, lägger du till hello följande två funktioner toohello .
     
         foreach (var af in asset.AssetFiles)
         {
-            // hello following code assumes 
+            // The following code assumes 
             // you have an input folder with one MP4 and one overlay image file.
             if (af.Name.Contains(".mp4"))
                 af.IsPrimary = true;
@@ -521,11 +521,11 @@ Om du använder .NET, lägger du till hello följande två funktioner toohello .
     {
         // Declare a new job.
         IJob job = _context.Jobs.Create("Media Encoder Standard Job");
-        // Get a media processor reference, and pass tooit hello name of hello 
-        // processor toouse for hello specific task.
+        // Get a media processor reference, and pass to it the name of the 
+        // processor to use for the specific task.
         IMediaProcessor processor = GetLatestMediaProcessorByName("Media Encoder Standard");
 
-        // Load hello XML (or JSON) from hello local file.
+        // Load the XML (or JSON) from the local file.
         string configuration = File.ReadAllText(customPresetFileName);
 
         // Create a task
@@ -534,11 +534,11 @@ Om du använder .NET, lägger du till hello följande två funktioner toohello .
             configuration,
             TaskOptions.None);
 
-        // Specify hello input assets toobe encoded.
+        // Specify the input assets to be encoded.
         // This asset contains a source file and an overlay file.
         task.InputAssets.Add(assetSource);
 
-        // Add an output asset toocontain hello results of hello job. 
+        // Add an output asset to contain the results of the job. 
         task.OutputAssets.AddNew("Output asset",
             AssetCreationOptions.None);
 
@@ -553,9 +553,9 @@ Om du använder .NET, lägger du till hello följande två funktioner toohello .
 > [!NOTE]
 > Aktuella begränsningar:
 >
-> hello överlägget opacitetsinställningen stöds inte.
+> Inställningen för opacitet överlägget stöds inte.
 >
-> Din video källfilen och hello överlägget image-filen har toobe i hello samma tillgång och hello videofil behov toobe set som hello primära fil i tillgången.
+> Källfilen video och överlägget image-filen måste vara i samma tillgång och videofilen måste anges som den primära filen i tillgången.
 >
 >
 
@@ -700,11 +700,11 @@ Om du använder .NET, lägger du till hello följande två funktioner toohello .
 
 
 ## <a id="silent_audio"></a>Infoga en tyst ljud spåra när indata har inget ljud
-Som standard om du skickar en inkommande toohello kodare som bara innehåller video, och inget ljud innehåller hello utdatatillgången filer som innehåller endast video data. Vissa spelare kanske inte toohandle sådana utdataströmmar. Du kan använda den här inställningen tooforce hello kodare tooadd en tyst ljud spåra toohello utdata i scenariot.
+Som standard om du skickar indata till den kodare som bara innehåller video, och inget ljud innehåller utdatatillgången filer som innehåller endast video data. Vissa spelare kanske inte kan hantera dessa utdataströmmar. Du kan använda den här inställningen för att tvinga kodaren att lägga till en tyst ljud Spåra utdata i scenariot.
 
-tooforce hello kodare tooproduce en tillgång som innehåller en tyst ljud spåra när indata har inget ljud ange hello ”InsertSilenceIfNoAudio” värde.
+Ange värdet ”InsertSilenceIfNoAudio” om du vill tvinga kodaren att skapa en tillgång som innehåller en tyst ljud spåra när indata har inget ljud.
 
-Du kan vidta någon av hello MES förinställningar dokumenterade i [detta](media-services-mes-presets-overview.md) avsnitt och att Hej ändringar:
+Du kan vidta någon av MES förinställningar dokumenterade i [detta](media-services-mes-presets-overview.md) avsnittet och gör följande ändringar:
 
 ### <a name="json-preset"></a>JSON förinställda
     {
@@ -723,9 +723,9 @@ Du kan vidta någon av hello MES förinställningar dokumenterade i [detta](medi
     </AACAudio>
 
 ## <a id="deinterlacing"></a>Inaktivera automatisk Frigör sammanflätning
-Kunder behöver inte toodo något om de liksom hello interlace innehållet toobe automatiskt ej sammanflätad. När hello automatiskt Frigör sammanflätning är aktiverad (standard) hello MES hello automatisk identifiering av sammanflätade ramar och frigör interlaces endast ramar som markerats som sammanflätad.
+Kunder behöver inte göra något om de vill interlace innehållet ska automatiskt Frigör sammanflätade. När den automatiska Frigör sammanflätning är aktiverad (standard) stöder automatisk identifiering av sammanflätade ramar systemet och frigör interlaces endast ramar som markerats som sammanflätad.
 
-Du kan inaktivera hello automatiskt Frigör sammanflätning. Det här alternativet rekommenderas inte.
+Du kan inaktivera den automatiska Frigör sammanflätning. Det här alternativet rekommenderas inte.
 
 ### <a name="json-preset"></a>JSON förinställda
     "Sources": [
@@ -799,24 +799,24 @@ Det här avsnittet beskrivs två ljuddata MES förinställningar: AAC ljud- och 
 
 ## <a id="concatenate"></a>Sammanfoga två eller flera videofiler
 
-hello följande exempel visar hur du kan skapa en förinställd tooconcatenate två eller fler videofiler. hello vanligaste scenariot är när du vill tooadd ett sidhuvud eller en släpvagn toohello huvudsakliga video. hello avsedd användning är när hello videofiler redigeras tillsammans resursegenskaper (skärmupplösning, bildfrekvens, ljud spåra antalet osv.). Noga inte toomix videor olika hastigheterna eller med olika antal ljud spår.
+I följande exempel visas hur du kan skapa en förinställning för att sammanfoga två eller flera videofiler. Det vanligaste scenariot är om du vill lägga till ett sidhuvud eller en släpvagn huvudsakliga videon. Det är avsedd att användas när videofiler redigeras tillsammans resursegenskaper (skärmupplösning, bildfrekvens, ljud spåra antalet osv.). Noga inte för att blanda videor olika hastigheterna eller med olika antal ljud spår.
 
 >[!NOTE]
->hello aktuella designen av hello sammanfogning funktionen förväntar sig att hello indata videoklipp är konsekventa vad gäller upplösning bildfrekvens osv. 
+>Den aktuella designen av funktionen sammanfogning förväntar sig att ingående videoklipp är konsekvent vad gäller upplösning bildfrekvens osv. 
 
 ### <a name="requirements-and-considerations"></a>Krav och överväganden
 
 * Inkommande videor endast ha ett ljud spår.
-* Ange videor ska ha hello samma bildfrekvens.
-* Du måste överföra videor till separata tillgångar och ange hello videor som hello primärfilen i varje tillgång.
-* Du måste tooknow hello varaktighet videor.
-* hello förinställda exemplen nedan förutsätter att alla hello inkommande videor som börjar med en tidsstämpel noll. Du behöver toomodify hello StartTime värden om hello videor har olika första tidsstämpel som är vanligtvis hello fallet med Direktmigrering Arkiv.
-* hello gör JSON förinställda explicita referenser toohello AssetID värdena för hello inkommande tillgångar.
-* hello exempelkoden förutsätter att hello JSON förinställningen har sparats tooa lokal fil, till exempel ”C:\supportFiles\preset.json”. Det förutsätts även att två tillgångar har skapats genom att ladda upp två videofiler och att du vet hello gällande AssetID värden.
-* Hej kodfragmentet och JSON förinställda visar ett exempel på Sammanfoga två videofiler. Du kan utöka den toomore än två videor av:
+* Inkommande videor ska ha samma bildfrekvens.
+* Du måste överföra videor till separata tillgångar och ange videor som den primära filen i varje tillgång.
+* Du behöver veta varaktigheten för dina videor.
+* Förinställda exemplen nedan förutsätter att alla inkommande videor som börjar med en tidsstämpel noll. Du behöver ändra värdena StartTime om videor har olika första tidstämpeln som normalt är fallet med Direktmigrering Arkiv.
+* JSON-förinställda gör explicita referenser till AssetID värdena för inkommande tillgångar.
+* Exempelkoden förutsätter att JSON-förinställda har sparats till en lokal fil, till exempel ”C:\supportFiles\preset.json”. Det förutsätts även att två tillgångar har skapats genom att ladda upp två videofiler och att du vet värdena AssetID.
+* Kodstycke och JSON förinställda visar ett exempel på Sammanfoga två videofiler. Du kan utvidga den till fler än två videor av:
 
-  1. Anropar uppgift. InputAssets.Add() upprepade gånger tooadd fler videoklipp i ordning.
-  2. Gör motsvarande redigerar toohello ”källor” element i hello JSON, genom att lägga till fler poster i hello samma ordning.
+  1. Anropar uppgift. InputAssets.Add() flera gånger för att lägga till fler videoklipp i ordning.
+  2. Gör motsvarande redigerar i elementet ”källor” i JSON, genom att lägga till fler poster i samma ordning.
 
 ### <a name="net-code"></a>.NET-kod
 
@@ -825,11 +825,11 @@ hello följande exempel visar hur du kan skapa en förinställd tooconcatenate t
 
     // Declare a new job.
     IJob job = _context.Jobs.Create("Media Encoder Standard Job for Concatenating Videos");
-    // Get a media processor reference, and pass tooit hello name of the
-    // processor toouse for hello specific task.
+    // Get a media processor reference, and pass to it the name of the
+    // processor to use for the specific task.
     IMediaProcessor processor = GetLatestMediaProcessorByName("Media Encoder Standard");
 
-    // Load hello XML (or JSON) from hello local file.
+    // Load the XML (or JSON) from the local file.
     string configuration = File.ReadAllText(@"c:\supportFiles\preset.json");
 
     // Create a task
@@ -838,12 +838,12 @@ hello följande exempel visar hur du kan skapa en förinställd tooconcatenate t
         configuration,
         TaskOptions.None);
 
-    // Specify hello input videos toobe concatenated (in order).
+    // Specify the input videos to be concatenated (in order).
     task.InputAssets.Add(asset1);
     task.InputAssets.Add(asset2);
-    // Add an output asset toocontain hello results of hello job.
+    // Add an output asset to contain the results of the job.
     // This output is specified as AssetCreationOptions.None, which
-    // means hello output asset is not encrypted.
+    // means the output asset is not encrypted.
     task.OutputAssets.AddNew("Output asset",
         AssetCreationOptions.None);
 
@@ -853,7 +853,7 @@ hello följande exempel visar hur du kan skapa en förinställd tooconcatenate t
 
 ### <a name="json-preset"></a>JSON förinställda
 
-Uppdatera dina anpassade förinställningen med ID: n för hello tillgångar som du vill tooconcatenate och hello lämplig tidpunkt segment för varje video.
+Uppdatera dina anpassade förinställningen med ID-numren för de resurser som du vill att sammanfoga och med lämplig tidpunkt segment för varje video.
 
     {
       "Version": 1.0,
@@ -908,21 +908,21 @@ Uppdatera dina anpassade förinställningen med ID: n för hello tillgångar som
     }
 
 ## <a id="crop"></a>Beskär videor med Media Encoder Standard
-Se hello [Beskär videor med Media Encoder Standard](media-services-crop-video.md) avsnittet.
+Finns det [Beskär videor med Media Encoder Standard](media-services-crop-video.md) avsnittet.
 
 ## <a id="no_video"></a>Infoga en video spåra när indata har ingen bild
 
-Som standard om du skickar en inkommande toohello kodare som innehåller endast ljud och ingen bild innehåller hello utdatatillgången filer som innehåller endast ljuddata. Vissa spelare, inklusive Azure Media Player (se [detta](https://feedback.azure.com/forums/169396-azure-media-services/suggestions/8082468-audio-only-scenarios)) kanske inte kan toohandle dessa strömmar. Du kan använda den här inställningen tooforce hello kodare tooadd en monokromt video spåra toohello utdata i scenariot.
+Som standard om du skickar indata till den kodare som innehåller endast ljud och ingen bild innehåller utdatatillgången filer som innehåller endast ljuddata. Vissa spelare, inklusive Azure Media Player (se [detta](https://feedback.azure.com/forums/169396-azure-media-services/suggestions/8082468-audio-only-scenarios)) kanske inte kan hantera dessa strömmar. Du kan använda den här inställningen för att tvinga kodaren att lägga till en monokromt video Spåra utdata i scenariot.
 
 > [!NOTE]
-> Tvinga hello kodare tooinsert en utdata video spåra ökar hello storlek hello utdata tillgången och hello därmed kostnaden för hello kodning aktivitet. Du bör köra testerna tooverify som Storleksökningen gällande har endast en liten inverkan på dina månatliga avgifter.
+> Tvinga kodaren att infoga en video Spåra utdata ökar storleken på utdata tillgången, och därigenom kostnader för kodning uppgiften. Du bör köra tester för att kontrollera att denna gällande ökning har endast en liten inverkan på dina månatliga avgifter.
 >
 
-### <a name="inserting-video-at-only-hello-lowest-bitrate"></a>Infoga video på endast hello lägsta bithastighet
+### <a name="inserting-video-at-only-the-lowest-bitrate"></a>Infoga video på endast de lägsta bithastigheten
 
-Anta att du använder en flera kodning av bithastighet förinställningen som [”H264 Multibithastighet 720p”](media-services-mes-preset-h264-multiple-bitrate-720p.md) tooencode hela din indata katalogen för strömning, som innehåller en blandning av video och ljud-only-filer. I detta scenario när hello indata har ingen bild kanske du vill tooforce hello kodare tooinsert en video monokromt spåra på bara hello lägsta bithastighet, som skillnad från tooinserting video vid varje utdata bithastighet. tooachieve detta, behöver du toouse hello **InsertBlackIfNoVideoBottomLayerOnly** flaggan.
+Anta att du använder en flera kodning av bithastighet förinställningen som [”H264 Multibithastighet 720p”](media-services-mes-preset-h264-multiple-bitrate-720p.md) att koda hela inkommande katalogen för strömning, som innehåller en blandning av video och ljud-only-filer. I detta scenario när indata har ingen bild kanske du vill tvinga kodaren Infoga monokromt video reda på just den lägsta bithastigheten i stället för att infoga video i varje utdata bithastighet. För att åstadkomma detta måste du använda den **InsertBlackIfNoVideoBottomLayerOnly** flaggan.
 
-Du kan vidta någon av hello MES förinställningar dokumenterade i [detta](media-services-mes-presets-overview.md) avsnitt och att Hej ändringar:
+Du kan vidta någon av MES förinställningar dokumenterade i [detta](media-services-mes-presets-overview.md) avsnittet och gör följande ändringar:
 
 #### <a name="json-preset"></a>JSON förinställda
     {
@@ -936,7 +936,7 @@ Du kan vidta någon av hello MES förinställningar dokumenterade i [detta](medi
 
 #### <a name="xml-preset"></a>XML-förinställda
 
-Använd villkor när du använder XML = ”InsertBlackIfNoVideoBottomLayerOnly” som en attributet toohello **H264Video** element och villkor = ”InsertSilenceIfNoAudio” som ett attribut för**AACAudio**.
+Använd villkor när du använder XML = ”InsertBlackIfNoVideoBottomLayerOnly” som ett attribut till den **H264Video** element och villkor = ”InsertSilenceIfNoAudio” som ett attribut till **AACAudio**.
 
 ```
 . . .
@@ -963,9 +963,9 @@ Använd villkor när du använder XML = ”InsertBlackIfNoVideoBottomLayerOnly�
 ```
 
 ### <a name="inserting-video-at-all-output-bitrates"></a>Infoga video alls utdata bithastighet
-Anta att du använder en flera kodning av bithastighet förinställningen som [”H264 Multibithastighet 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) tooencode hela din indata katalogen för strömning, som innehåller en blandning av video och ljud-only-filer. I detta scenario när hello indata har ingen bild kanske du vill tooforce hello kodare tooinsert monokromt video reda på alla hello utdata bithastighet. Detta säkerställer att din utdata tillgångar är alla homogen med avseende toonumber spårar video och ljud spår. tooachieve detta, behöver du toospecify hello ”InsertBlackIfNoVideo” flaggan.
+Anta att du använder en flera kodning av bithastighet förinställningen som [”H264 Multibithastighet 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) att koda hela inkommande katalogen för strömning, som innehåller en blandning av video och ljud-only-filer. I detta scenario när indata har ingen bild kanske du vill tvinga kodaren Infoga monokromt video reda på alla utdata bithastighet. Detta säkerställer att din utdata tillgångar är alla homogen förhållande till antalet spårar video och ljud spår. Du måste ange flaggan ”InsertBlackIfNoVideo” för att uppnå.
 
-Du kan vidta någon av hello MES förinställningar dokumenterade i [detta](media-services-mes-presets-overview.md) avsnitt och att Hej ändringar:
+Du kan vidta någon av MES förinställningar dokumenterade i [detta](media-services-mes-presets-overview.md) avsnittet och gör följande ändringar:
 
 #### <a name="json-preset"></a>JSON förinställda
     {
@@ -979,7 +979,7 @@ Du kan vidta någon av hello MES förinställningar dokumenterade i [detta](medi
 
 #### <a name="xml-preset"></a>XML-förinställda
 
-Använd villkor när du använder XML = ”InsertBlackIfNoVideo” som en attributet toohello **H264Video** element och villkor = ”InsertSilenceIfNoAudio” som ett attribut för**AACAudio**.
+Använd villkor när du använder XML = ”InsertBlackIfNoVideo” som ett attribut till den **H264Video** element och villkor = ”InsertSilenceIfNoAudio” som ett attribut till **AACAudio**.
 
 ```
 . . .
@@ -1006,7 +1006,7 @@ Använd villkor när du använder XML = ”InsertBlackIfNoVideo” som en attrib
 ```
 
 ## <a id="rotate_video"></a>Rotera en video
-Hej [Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-standard.md) stöder rotation av vinklar 0/90/180/270. hello standardbeteendet är ”automatisk”, där den försöker toodetect hello rotation metadata i hello inkommande videofil och kompensera för den. Inkludera hello följande **källor** elementet tooone hello förinställningar som definierats i [detta](media-services-mes-presets-overview.md) avsnitt:
+Den [Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-standard.md) stöder rotation av vinklar 0/90/180/270. Standardinställningen är ”automatisk” där försöker identifiera rotation metadata i den inkommande videofilen och kompensera för den. Inkludera följande **källor** element till ett av de förinställda som definierats i [detta](media-services-mes-presets-overview.md) avsnitt:
 
 ### <a name="json-preset"></a>JSON förinställda
     "Sources": [
@@ -1030,9 +1030,9 @@ Hej [Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-sta
         </Source>
     </Sources>
 
-Se även [detta](media-services-mes-schema.md#PreserveResolutionAfterRotation) avsnittet för mer information om hur hello kodare tolkar hello bredd och höjd inställningar i hello förinställningen när rotation ersättning utlöses.
+Se även [detta](media-services-mes-schema.md#PreserveResolutionAfterRotation) avsnittet för mer information om hur kodaren tolkar bredd och höjd inställningarna i förinställningen när rotation ersättning utlöses.
 
-Du kan använda hello värdet ”0” tooindicate toohello kodare tooignore rotation metadata, om den finns i hello inkommande videon.
+Du kan använda värdet ”0” för att visa kodaren att ignorera rotation metadata, om den finns i inkommande video.
 
 ## <a name="media-services-learning-paths"></a>Sökvägar för Media Services-utbildning
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

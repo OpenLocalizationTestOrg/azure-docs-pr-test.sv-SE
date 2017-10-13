@@ -1,6 +1,6 @@
 ---
-title: "aaaExpand OS-disk på Linux VM med hello Azure CLI 1.0 | Microsoft Docs"
-description: "Lär dig hur tooexpand hello operativsystem (OS) virtuell disk på en Linux VM som använder hello Azure CLI 1.0 och hello Resource Manager-distributionsmodellen"
+title: "Expandera OS-disken på Linux VM med Azure CLI 1.0 | Microsoft Docs"
+description: "Lär dig hur du expandera den virtuella disken operativsystem (OS) på en Linux VM som använder Azure CLI 1.0 och Resource Manager-distributionsmodellen"
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
@@ -14,42 +14,42 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/11/2017
 ms.author: iainfou
-ms.openlocfilehash: 0db78c0b86b48b2c5358611e11bb0b7ad781a559
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 0aedcd70b54c2ed47ec327ccf0529a48351353c0
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="expand-os-disk-on-a-linux-vm-using-hello-azure-cli-with-hello-azure-cli-10"></a>Expandera OS-disk på en Linux-VM med hello Azure CLI 1.0 hello Azure CLI
-hello virtuell hårddisk standardstorlek för hello operativsystem (OS) är vanligtvis 30 GB på en Linux-dator (VM) i Azure. Du kan [lägga till datadiskar](add-disk.md) tooprovide för ytterligare lagringsutrymme, men du kan också tooexpand hello OS-disk. Den här artikeln beskrivs hur tooexpand hello OS-disken för en Linux-VM med hjälp av ohanterade diskar med hello Azure CLI 1.0.
+# <a name="expand-os-disk-on-a-linux-vm-using-the-azure-cli-with-the-azure-cli-10"></a>Expandera OS-disk på en Linux VM som använder Azure CLI med Azure CLI 1.0
+Standardstorleken för virtuell hårddisk för operativsystem (OS) är vanligtvis 30 GB på en Linux-dator (VM) i Azure. Du kan [lägga till datadiskar](add-disk.md) att tillhandahålla för ytterligare lagringsutrymme, men du kan också expandera OS-disk. Den här artikeln beskriver hur du expandera OS-disk för en Linux-VM med hjälp av ohanterade diskar med Azure CLI 1.0.
 
-## <a name="cli-versions-toocomplete-hello-task"></a>CLI versioner toocomplete hello aktivitet
-Du kan göra hello med hjälp av något av följande versioner av CLI hello:
+## <a name="cli-versions-to-complete-the-task"></a>CLI-versioner för att slutföra uppgiften
+Du kan slutföra uppgiften med någon av följande CLI-versioner:
 
-- [Azure CLI 1.0](#prerequisites) – våra CLI för hello klassisk och resurs management distributionsmodeller (den här artikeln)
-- [Azure CLI 2.0](expand-disks.md) -vår nästa generations CLI för hello resursdistributionsmodell för hantering
+- [Azure CLI 1.0](#prerequisites) – våra CLI för klassisk och resurs management på distributionsmodeller (den här artikeln)
+- [Azure CLI 2.0](expand-disks.md) – vår nästa generations CLI för distributionsmodellen resurshantering
 
 ## <a name="prerequisites"></a>Krav
-Du behöver hello [senaste Azure CLI 1.0](../../cli-install-nodejs.md) installerad och inloggad tooan [Azure-konto](https://azure.microsoft.com/pricing/free-trial/) läget hello Resource Manager på följande sätt:
+Du behöver den [senaste Azure CLI 1.0](../../cli-install-nodejs.md) installerad och inloggad på ett [Azure-konto](https://azure.microsoft.com/pricing/free-trial/) med hjälp av hanteraren för filserverresurser på följande sätt:
 
 ```azurecli
 azure config mode arm
 ```
 
-Följande exempel Ersätt exempel parameternamn i hello med egna värden. Exempel parameternamn inkluderar *myResourceGroup* och *myVM*.
+Ersätt exempel parameternamn med egna värden i följande exempel. Exempel parameternamn inkluderar *myResourceGroup* och *myVM*.
 
 ## <a name="expand-os-disk"></a>Expandera operativsystemets disk
 
-1. Går inte att utföra åtgärder på virtuella hårddiskar med hello VM körs. hello följande exempel stoppar och tar bort hello virtuella datorn med namnet *myVM* i hello resursgrupp med namnet *myResourceGroup*:
+1. Det går inte att utföra åtgärder på virtuella hårddiskar med den virtuella datorn körs. I följande exempel stoppar och tar bort den virtuella datorn med namnet *myVM* i resursgrupp med namnet *myResourceGroup*:
 
     ```azurecli
     azure vm deallocate --resource-group myResourceGroup --name myVM
     ```
 
     > [!NOTE]
-    > `azure vm stop`Frigör inte hello beräkningsresurser. toorelease beräkningsresurser använder `azure vm deallocate`. hello VM att frigöra tooexpand hello virtuell hårddisk.
+    > `azure vm stop`Frigör inte beräkningsresurserna. Använd om du vill frigöra beräkningsresurser `azure vm deallocate`. Den virtuella datorn måste frigöras för att expandera den virtuella hårddisken.
 
-2. Uppdatera hello storleken på hello ohanterad OS-disken med hello `azure vm set` kommando. följande exempel uppdateringar hello hello virtuella datorn med namnet *myVM* i hello resursgrupp med namnet *myResourceGroup* toobe *50* GB:
+2. Uppdatera storleken på en ohanterad OS disk med hjälp av den `azure vm set` kommando. I följande exempel uppdateras den virtuella datorn med namnet *myVM* i resursgrupp med namnet *myResourceGroup* ska *50* GB:
 
     ```azurecli
     azure vm set \
@@ -64,7 +64,7 @@ Följande exempel Ersätt exempel parameternamn i hello med egna värden. Exempe
     azure vm start --resource-group myResourceGroup --name myVM
     ```
 
-4. SSH tooyour VM med hello rätt behörighet. storleken har tooverify hello OS-disk, Använd `df -h`. hello följande exempel på utdata som visar hello primära partitionen (*/dev/sda1*) är nu 50 GB:
+4. SSH till den virtuella datorn med rätt autentiseringsuppgifter. Använd för att kontrollera att OS-disken har ändrats, `df -h`. Följande exempel visas den primära partitionen (*/dev/sda1*) är nu 50 GB:
 
     ```bash
     Filesystem      Size  Used Avail Use% Mounted on
@@ -74,4 +74,4 @@ Följande exempel Ersätt exempel parameternamn i hello med egna värden. Exempe
     ```
 
 ## <a name="next-steps"></a>Nästa steg
-Om du behöver ytterligare lagringsutrymme du också [lägga till data diskar tooa Linux VM](add-disk.md). Mer information om diskkryptering finns [kryptera diskar på en Linux VM som använder hello Azure CLI](encrypt-disks.md).
+Om du behöver ytterligare lagringsutrymme du också [lägga till diskar till en Linux-VM](add-disk.md). Mer information om diskkryptering finns [kryptera diskar på en Linux VM som använder Azure CLI](encrypt-disks.md).

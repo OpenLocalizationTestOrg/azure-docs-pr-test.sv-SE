@@ -1,6 +1,6 @@
 ---
-title: "aaaProblems inloggning tooa galleriet program konfigurerade för federerad enkel inloggning | Microsoft Docs"
-description: "Riktlinjer för hello specifika fel när du loggar in på ett program som du har konfigurerat för SAML-baserade federerad enkel inloggning med Azure AD"
+title: "Problem som loggar in på ett gallery-program som konfigurerats för federerad enkel inloggning | Microsoft Docs"
+description: "Riktlinjer för de specifika felen när du loggar in på ett program som du har konfigurerat för SAML-baserade federerad enkel inloggning med Azure AD"
 services: active-directory
 documentationcenter: 
 author: ajamess
@@ -13,215 +13,215 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: ba20a4904860cf063967029cad33fb80f16e4956
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 0fc5a8eb3d033d60bf6082d61bf1698924ab91c6
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="problems-signing-in-tooa-gallery-application-configured-for-federated-single-sign-on"></a>Problem med att logga i tooa galleriet program konfigurerade för federerad enkel inloggning
+# <a name="problems-signing-in-to-a-gallery-application-configured-for-federated-single-sign-on"></a>Problem som loggar in på ett gallery-program som konfigurerats för federerad enkel inloggning
 
-tootroubleshoot ditt problem, behöver du tooverify hello programkonfigurationen i Azure AD som följer:
+Om du vill felsöka problemet måste du kontrollera i programkonfigurationen i Azure AD som följer:
 
--   Du har följt alla hello konfigurationssteg för hello Azure AD-galleriet-program.
+-   Du har följt alla konfigurationssteg för programmets Azure AD-galleriet.
 
--   hello identifierare och Reply-URL som konfigurerats i AAD matchar de förväntade värdena i hello program
+-   Identifierare och Reply URL som konfigurerats i AAD matchar de förväntade värdena i programmet
 
--   Du har tilldelat användare toohello program
+-   Du har tilldelat användare till programmet
 
 ## <a name="application-not-found-in-directory"></a>Programmet hittades inte i katalog
 
-*Fel AADSTS70001: Programmet med ID 'https://contoso.com' hittades inte i hello directory*.
+*Fel AADSTS70001: Programmet med ID 'https://contoso.com' hittades inte i katalogen*.
 
 **Möjlig orsak**
 
-hello utfärdaren attribut skickar från hello programmet tooAzure AD i hello SAML-begäran inte matchar hello identifierare värdet som konfigurerats i programmet hello Azure AD.
+Utfärdaren attribut skickar från programmet till Azure AD i SAML-begäran matchar inte ID-värdet som konfigurerats i Azure AD-programmet.
 
 **Lösning**
 
-Se till att attributet hello utfärdaren i hello SAML-begäran matchar hello ID-värdet som konfigurerats i Azure AD:
+Se till att attributet utfärdaren i SAML-begäran matchar identifieraren värdet som konfigurerats i Azure AD:
 
-1.  Öppna hello [ **Azure Portal** ](https://portal.azure.com/) och logga in som en **Global administratör** eller **Co-administratör.**
+1.  Öppna den [ **Azure Portal** ](https://portal.azure.com/) och logga in som en **Global administratör** eller **Co-administratör.**
 
-2.  Öppna hello **Azure Active Directory-tillägget** genom att klicka på **fler tjänster** längst hello hello huvudsakliga vänstra navigeringsmenyn.
+2.  Öppna den **Azure Active Directory-tillägget** genom att klicka på **fler tjänster** längst ned i den huvudsakliga vänstra navigeringsmenyn.
 
-3.  Skriv i **”Azure Active Directory**” i sökrutan för hello filter och väljer hello **Azure Active Directory** objekt.
+3.  Skriv i **”Azure Active Directory**” i sökrutan för filter och välj den **Azure Active Directory** objekt.
 
-4.  Klicka på **företagsprogram** från hello Azure Active Directory vänstra navigeringsmenyn.
+4.  Klicka på **företagsprogram** från Azure Active Directory vänstra navigeringsmenyn.
 
-5.  Klicka på **alla program** tooview en lista över alla program.
+5.  Klicka på **alla program** att visa en lista över alla program.
 
-  * Om du inte ser hello-program som du vill visa här använder du hello **Filter** kontroll hello överst i hello **listan med alla program** och ange hello **visa** alternativ för** Alla program.**
+  * Om du inte ser programmet som du vill visa här använder du den **Filter** kontrollen längst upp i den **listan med alla program** och ange den **visa** att **alla program.**
 
-6.  Välj hello-program som du vill tooconfigure enkel inloggning
+6.  Välj det program som du vill konfigurera enkel inloggning
 
-7.  När programmet hello läses in klickar du på hello **enkel inloggning** från hello programmet vänstra navigeringsmenyn.
+7.  När programmet läses in klickar du på den **enkel inloggning** från programmets vänstra navigeringsmenyn.
 
-8.  Gå för**domän och URL: er** avsnitt. Kontrollera att hello-värdet i hello identifierare textruta matchar hello värdet för hello identifierarvärde visas i hello-fel.
+8.  Gå till **domän och URL: er** avsnitt. Kontrollera att värdet i textrutan identifierare som matchar värdet för ID-värdet som visas i Windows.
 
-När du har uppdaterat hello identifierarvärde i Azure AD och dess matchande hello värdet skickar av programmet hello i hello SAML-begäran, bör du kunna toosign i toohello program.
+När du har uppdaterat ID-värdet i Azure AD och den matchar värdet skickar av programmet i SAML-begäran, bör du kunna logga in till programmet.
 
-## <a name="hello-reply-address-does-not-match-hello-reply-addresses-configured-for-hello-application"></a>hello svarsadressen matchar inte hello svar adresser som har konfigurerats för hello program.
+## <a name="the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application"></a>Svarsadressen matchar inte reply-adresser som har konfigurerats för programmet.
 
-*Fel AADSTS50011: hello svarsadressen 'https://contoso.com' matchar inte hello svar adresser som har konfigurerats för hello program*
+*Fel AADSTS50011: Svarsadressen 'https://contoso.com' matchar inte reply-adresser som har konfigurerats för programmet*
 
 **Möjlig orsak**
 
-Hej AssertionConsumerServiceURL värdet i hello SAML-begäran matchar inte hello Reply URL värde eller mönster som konfigurerats i Azure AD. Hej AssertionConsumerServiceURL värdet i hello SAML-begäran är hello URL som visas i hello-fel.
+AssertionConsumerServiceURL värdet i SAML-begäran matchar inte den Reply URL-värde eller mönster som konfigurerats i Azure AD. AssertionConsumerServiceURL värdet i SAML-begäran är den URL som du ser i felet.
 
 **Lösning**
 
-Se till att hello AssertionConsumerServiceURL värde i dess matchande hello Reply URL-värdet som konfigurerats i Azure AD hello SAML-begäran.
+Kontrollera att värdet AssertionConsumerServiceURL i SAML-begäran matchar Reply URL värdet som konfigurerats i Azure AD.
 
-1.  Öppna hello [ **Azure Portal** ](https://portal.azure.com/) och logga in som en **Global administratör** eller **Co-administratör.**
+1.  Öppna den [ **Azure Portal** ](https://portal.azure.com/) och logga in som en **Global administratör** eller **Co-administratör.**
 
-2.  Öppna hello **Azure Active Directory-tillägget** genom att klicka på **fler tjänster** längst hello hello huvudsakliga vänstra navigeringsmenyn.
+2.  Öppna den **Azure Active Directory-tillägget** genom att klicka på **fler tjänster** längst ned i den huvudsakliga vänstra navigeringsmenyn.
 
-3.  Skriv i **”Azure Active Directory**” i sökrutan för hello filter och väljer hello **Azure Active Directory** objekt.
+3.  Skriv i **”Azure Active Directory**” i sökrutan för filter och välj den **Azure Active Directory** objekt.
 
-4.  Klicka på **företagsprogram** från hello Azure Active Directory vänstra navigeringsmenyn.
+4.  Klicka på **företagsprogram** från Azure Active Directory vänstra navigeringsmenyn.
 
-5.  Klicka på **alla program** tooview en lista över alla program.
+5.  Klicka på **alla program** att visa en lista över alla program.
 
-  * Om du inte ser hello-program som du vill visa här använder du hello **Filter** kontroll hello överst i hello **listan med alla program** och ange hello **visa** alternativ för** Alla program.**
+  * Om du inte ser programmet som du vill visa här använder du den **Filter** kontrollen längst upp i den **listan med alla program** och ange den **visa** att **alla program.**
 
-6.  Välj hello-program som du vill tooconfigure enkel inloggning
+6.  Välj det program som du vill konfigurera enkel inloggning
 
-7.  När programmet hello läses in klickar du på hello **enkel inloggning** från hello programmet vänstra navigeringsmenyn.
+7.  När programmet läses in klickar du på den **enkel inloggning** från programmets vänstra navigeringsmenyn.
 
-8.  Gå för**domän och URL: er** avsnitt. Kontrollera eller uppdatera hello värdet i hello Reply URL textruta toomatch hello AssertionConsumerServiceURL värdet i hello SAML-begäran.  
-    * Om du inte ser hello Reply URL-textrutan, Välj hello **visa avancerade inställningar för URL: en** kryssrutan.
+8.  Gå till **domän och URL: er** avsnitt. Kontrollera eller uppdatera värdet i textrutan Reply URL matcha värdet som AssertionConsumerServiceURL i SAML-begäran.  
+    * Om du inte ser textrutan Reply URL, väljer du den **visa avancerade inställningar för URL: en** kryssrutan.
 
-När du har uppdaterat hello Reply URL-värdet i Azure AD och den har matchar hello värde skickar av hello program i hello SAML-begäran, bör du kunna toosign i toohello program.
+När du har uppdaterat Reply URL-värdet i Azure AD och den matchar värdet skickar av programmet i SAML-begäran, bör du kunna logga in till programmet.
 
 ## <a name="user-not-assigned-a-role"></a>Användare som inte har tilldelats en roll
 
-*Fel AADSTS50105: hello inloggad användare ”brian@contoso.com' är inte tilldelad tooa roll för programmet hello*.
+*Fel AADSTS50105: Den inloggade användaren 'brian@contoso.com' har inte tilldelats en roll för programmets*.
 
 **Möjlig orsak**
 
-hello användaren har inte beviljats åtkomst toohello program i Azure AD.
+Användaren har inte beviljats åtkomst till programmet i Azure AD.
 
 **Lösning**
 
-tooassign en eller flera användare tooan programmet direkt, gör hello nedan:
+Följ stegen nedan om du vill tilldela en eller flera användare till ett program direkt:
 
-1.  Öppna hello [ **Azure Portal** ](https://portal.azure.com/) och logga in som en **Global administratör.**
+1.  Öppna den [ **Azure Portal** ](https://portal.azure.com/) och logga in som en **Global administratör.**
 
-2.  Öppna hello **Azure Active Directory-tillägget** genom att klicka på **fler tjänster** längst hello hello huvudsakliga vänstra navigeringsmenyn.
+2.  Öppna den **Azure Active Directory-tillägget** genom att klicka på **fler tjänster** längst ned i den huvudsakliga vänstra navigeringsmenyn.
 
-3.  Skriv i **”Azure Active Directory**” i sökrutan för hello filter och väljer hello **Azure Active Directory** objekt.
+3.  Skriv i **”Azure Active Directory**” i sökrutan för filter och välj den **Azure Active Directory** objekt.
 
-4.  Klicka på **företagsprogram** från hello Azure Active Directory vänstra navigeringsmenyn.
+4.  Klicka på **företagsprogram** från Azure Active Directory vänstra navigeringsmenyn.
 
-5.  Klicka på **alla program** tooview en lista över alla program.
+5.  Klicka på **alla program** att visa en lista över alla program.
 
-  * Om du inte ser hello-program som du vill visa här använder du hello **Filter** kontroll hello överst i hello **listan med alla program** och ange hello **visa** alternativ för** Alla program.**
+  * Om du inte ser programmet som du vill visa här använder du den **Filter** kontrollen längst upp i den **listan med alla program** och ange den **visa** att **alla program.**
 
-6.  Välj hello-program som du vill tooassign en toofrom hello-användarlistan.
+6.  Välj det program som du vill tilldela en användare i listan.
 
-7.  När programmet hello läses in klickar du på **användare och grupper** från hello programmet vänstra navigeringsmenyn.
+7.  När programmet läses in klickar du på **användare och grupper** från programmets vänstra navigeringsmenyn.
 
-8.  Klicka på hello **Lägg till** knappen ovanpå hello **användare och grupper** lista tooopen hello **Lägg uppdrag** bladet.
+8.  Klicka på den **Lägg till** knappen ovanpå den **användare och grupper** att öppna den **Lägg uppdrag** bladet.
 
-9.  Klicka på hello **användare och grupper** selector från hello **Lägg uppdrag** bladet.
+9.  Klicka på den **användare och grupper** selector från den **Lägg uppdrag** bladet.
 
-10. Typen i hello **fullständigt namn** eller **e-postadress** för hello-användare som du vill tilldela till hello **Sök efter namn eller e-postadress** sökrutan.
+10. Ange den **fullständigt namn** eller **e-postadress** för den användare som du vill tilldela till den **Sök efter namn eller e-postadress** sökrutan.
 
-11. Hovra över hello **användare** i hello listan tooreveal en **kryssrutan**. Klicka på hello kryssrutan nästa toohello användarens profil foto eller logotypen tooadd användaren-toohello **valda** lista.
+11. Hovra över den **användare** i listan för att visa en **kryssrutan**. Klicka på kryssrutan bredvid användarens profilfoto eller logotyp som du vill lägga till användaren till den **valda** lista.
 
-12. **Valfritt:** om du vill ha för**lägga till fler än en användare**, typ i en annan **fullständigt namn** eller **e-postadress** till hello **Sök efter namn eller e-postadress** sökrutan och klicka på hello kryssrutan tooadd den här användaren toohello **valda** lista.
+12. **Valfritt:** om du vill **lägga till fler än en användare**, typ i en annan **fullständigt namn** eller **e-postadress** till den **Sök efter namn eller e-postadress** sökrutan och klicka på kryssrutan för att lägga till användaren till den **valda** lista.
 
-13. När du har valt användare klickar du på hello **Välj** knappen tooadd dem toohello lista över användare och grupper toobe tilldelat toohello program.
+13. När du har valt användare klickar du på den **Välj** för att lägga till dem i listan över användare och grupper som tilldelas till programmet.
 
-14. **Valfritt:** klickar du på hello **Välj roll** Väljaren i hello **Lägg uppdrag** bladet tooselect en roll tooassign toohello användare som du har valt.
+14. **Valfritt:** klickar du på den **Välj roll** Väljaren i den **Lägg uppdrag** bladet Välj en roll att tilldela användare som du har valt.
 
-15. Klicka på hello **tilldela** knappen tooassign hello programmet toohello markerade användare.
+15. Klicka på den **tilldela** för att tilldela program till de valda användarna.
 
-Efter en kort tidsperiod att hello användare som du har valt kan toolaunch dessa program med hjälp av hello metoder som beskrivs under hello lösning beskrivning.
+Användare som du har valt att kunna starta dessa program med hjälp av de metoder som beskrivs i avsnittet lösning beskrivning efter en kort tidsperiod.
 
 ## <a name="not-a-valid-saml-request"></a>Inte en giltig SAML-begäran
 
-*Fel AADSTS75005: hello-begäran är inte ett giltigt Saml2-protokollmeddelande.*
+*Fel AADSTS75005: Begäran är inte ett giltigt Saml2-protokollmeddelande.*
 
 **Möjlig orsak**
 
-Azure AD stöder inte hello SAML-begäran skickas av programmet hello för enkel inloggning. Några vanliga problem är:
+Azure AD stöder inte SAML begäran skickas av programmet för enkel inloggning. Några vanliga problem är:
 
--   Obligatoriska fält i hello SAML-begäran som saknas
+-   Obligatoriska fält i SAML-begäran som saknas
 
 -   SAML-kodade metoden
 
 **Lösning**
 
-1.  Avbilda SAML-begäran. Följ hello kursen [hur toodebug SAML-baserade enkel inloggning tooapplications i Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging) toolearn hur toocapture hello SAML begäran.
+1.  Avbilda SAML-begäran. Följ guiden [felsöka SAML-baserade enkel inloggning till program i Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging) att lära dig att avbilda SAML-begäran.
 
-2.  Kontakta programvaruleverantören för hello och resursen:
+2.  Kontakta programvaruleverantören och resursen:
 
    -   SAML-begäran
 
    -   [Krav för Azure AD enkel inloggning SAML-protokoll](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference)
 
-De bör verifiera de stöder hello Azure AD SAML-implementering för enkel inloggning.
+De bör verifiera de stöd för Azure AD SAML-implementeringen för enkel inloggning.
 
 ## <a name="no-resource-in-requiredresourceaccess-list"></a>Ingen resurs i requiredResourceAccess lista
 
-*Fel AADSTS65005:hello klientprogrammet har begärt åtkomst tooresource ' 00000002-0000-0000-c000-000000000000'. Begäran misslyckades på grund av hello-klienten inte har angett den här resursen i listan över requiredResourceAccess*.
+*Fel AADSTS65005: klientprogrammet har begärt åtkomst till resursen ' 00000002-0000-0000-c000-000000000000'. Begäran misslyckades eftersom klienten inte har angetts för den här resursen i listan över requiredResourceAccess*.
 
 **Möjlig orsak**
 
-hello programobjektet är skadad.
+Programobjektet är skadad.
 
 **Lösning: alternativ 1**
 
-toosolve hello problem, Lägg till hello unika identifierarvärde i hello Azure AD-konfigurationen. tooadd en identifierarvärde gör hello nedan:
+Lös problemet genom att lägga till det unika ID-värdet i Azure AD-konfigurationen. Följ stegen nedan om du vill lägga till ett ID-värde:
 
-1.  Öppna hello [ **Azure Portal** ](https://portal.azure.com/) och logga in som en **Global administratör** eller **Co-administratör.**
+1.  Öppna den [ **Azure Portal** ](https://portal.azure.com/) och logga in som en **Global administratör** eller **Co-administratör.**
 
-2.  Öppna hello **Azure Active Directory-tillägget** genom att klicka på **fler tjänster** längst hello hello huvudsakliga vänstra navigeringsmenyn.
+2.  Öppna den **Azure Active Directory-tillägget** genom att klicka på **fler tjänster** längst ned i den huvudsakliga vänstra navigeringsmenyn.
 
-3.  Skriv i **”Azure Active Directory**” i sökrutan för hello filter och väljer hello **Azure Active Directory** objekt.
+3.  Skriv i **”Azure Active Directory**” i sökrutan för filter och välj den **Azure Active Directory** objekt.
 
-4.  Klicka på **företagsprogram** från hello Azure Active Directory vänstra navigeringsmenyn.
+4.  Klicka på **företagsprogram** från Azure Active Directory vänstra navigeringsmenyn.
 
-5.  Klicka på **alla program** tooview en lista över alla program.
+5.  Klicka på **alla program** att visa en lista över alla program.
 
-  * Om du inte ser hello-program som du vill visa här använder du hello **Filter** kontroll hello överst i hello **listan med alla program** och ange hello **visa** alternativ för** Alla program.**
+  * Om du inte ser programmet som du vill visa här använder du den **Filter** kontrollen längst upp i den **listan med alla program** och ange den **visa** att **alla program.**
 
-6.  Välj hello-program som du har konfigurerat för enkel inloggning.
+6.  Välj det program som du har konfigurerat för enkel inloggning.
 
-7.  När hello-programmet läses in, klicka på hello **enkel inloggning** från hello programmet vänstra navigeringsmenyn
+7.  När programmet läses in, klicka på den **enkel inloggning** från programmets vänstra navigeringsmenyn
 
-8.  Under hello **domän och URL: en** avsnittet, kontrollera hello **visa avancerade inställningar för URL: en**.
+8.  Under den **domän och URL: en** avsnittet, kontrollerar du den **visa avancerade inställningar för URL: en**.
 
-9.  i hello **identifierare** textruta ange en unik identifierare för programmet hello.
+9.  i den **identifierare** textruta ange en unik identifierare för programmet.
 
-10. **Spara** hello konfiguration.
+10. **Spara** konfigurationen.
 
 
 **Alternativ 2**
 
-Om alternativet 1 ovan inte fungerar för dig, tar du bort hello programmet från hello directory. Sedan kan lägga till och konfigurera om programmet hello, hello följande sätt:
+Om alternativet 1 ovan inte fungerar för dig, tar du bort programmet från katalogen. Sedan kan lägga till och konfigurera om programmet, Följ stegen nedan:
 
-1.  Öppna hello [ **Azure Portal** ](https://portal.azure.com/) och logga in som en **Global administratör** eller **Co-administratör.**
+1.  Öppna den [ **Azure Portal** ](https://portal.azure.com/) och logga in som en **Global administratör** eller **Co-administratör.**
 
-2.  Öppna hello **Azure Active Directory-tillägget** genom att klicka på **fler tjänster** längst hello hello huvudsakliga vänstra navigeringsmenyn.
+2.  Öppna den **Azure Active Directory-tillägget** genom att klicka på **fler tjänster** längst ned i den huvudsakliga vänstra navigeringsmenyn.
 
-3.  Skriv i **”Azure Active Directory**” i sökrutan för hello filter och väljer hello **Azure Active Directory** objekt.
+3.  Skriv i **”Azure Active Directory**” i sökrutan för filter och välj den **Azure Active Directory** objekt.
 
-4.  Klicka på **företagsprogram** från hello Azure Active Directory vänstra navigeringsmenyn.
+4.  Klicka på **företagsprogram** från Azure Active Directory vänstra navigeringsmenyn.
 
-5.  Klicka på **alla program** tooview en lista över alla program.
+5.  Klicka på **alla program** att visa en lista över alla program.
 
-  * Om du inte ser hello-program som du vill visa här använder du hello **Filter** kontroll hello överst i hello **listan med alla program** och ange hello **visa** alternativ för** Alla program.**
+  * Om du inte ser programmet som du vill visa här använder du den **Filter** kontrollen längst upp i den **listan med alla program** och ange den **visa** att **alla program.**
 
-6.  Välj hello-program som du vill tooconfigure enkel inloggning
+6.  Välj det program som du vill konfigurera enkel inloggning
 
-7.  Klicka på **ta bort** på hello övre vänstra av programmet hello **översikt** bladet.
+7.  Klicka på **ta bort** längst upp till vänster i programmet **översikt** bladet.
 
-8.  Uppdatera Azure AD och lägga till hello program från hello Azure AD-galleriet. Konfigurera sedan hello program
+8.  Uppdatera Azure AD och lägga till programmet från Azure AD-galleriet. Konfigurera sedan programmet
 
-<span id="_Hlk477190176" class="anchor"></span>När du konfigurerar om programmet hello ska kunna toosign i toohello program.
+<span id="_Hlk477190176" class="anchor"></span>När du konfigurerar om programmet bör du kunna logga in på programmet.
 
 ## <a name="certificate-or-key-not-configured"></a>Certifikatet eller nyckeln som inte har konfigurerats
 
@@ -229,39 +229,39 @@ Om alternativet 1 ovan inte fungerar för dig, tar du bort hello programmet frå
 
 **Möjlig orsak**
 
-hello programobjektet är skadad och kan identifiera inte hello-certifikatet som konfigurerats för programmet hello Azure AD.
+Programobjektet är skadat och Azure AD kan identifiera inte certifikatet som konfigurerats för programmet.
 
 **Lösning**
 
-toodelete och skapa ett nytt certifikat, hello följande sätt:
+Följ stegen nedan om du vill ta bort och skapa ett nytt certifikat:
 
-1.  Öppna hello [ **Azure Portal** ](https://portal.azure.com/) och logga in som en **Global administratör** eller **Co-administratör.**
+1.  Öppna den [ **Azure Portal** ](https://portal.azure.com/) och logga in som en **Global administratör** eller **Co-administratör.**
 
-2.  Öppna hello **Azure Active Directory-tillägget** genom att klicka på **fler tjänster** längst hello hello huvudsakliga vänstra navigeringsmenyn.
+2.  Öppna den **Azure Active Directory-tillägget** genom att klicka på **fler tjänster** längst ned i den huvudsakliga vänstra navigeringsmenyn.
 
-3.  Skriv i **”Azure Active Directory**” i sökrutan för hello filter och väljer hello **Azure Active Directory** objekt.
+3.  Skriv i **”Azure Active Directory**” i sökrutan för filter och välj den **Azure Active Directory** objekt.
 
-4.  Klicka på **företagsprogram** från hello Azure Active Directory vänstra navigeringsmenyn.
+4.  Klicka på **företagsprogram** från Azure Active Directory vänstra navigeringsmenyn.
 
-5.  Klicka på **alla program** tooview en lista över alla program.
+5.  Klicka på **alla program** att visa en lista över alla program.
 
- * Om du inte ser hello-program som du vill visa här använder du hello **Filter** kontroll hello överst i hello **listan med alla program** och ange hello **visa** alternativ för** Alla program.**
+ * Om du inte ser programmet som du vill visa här använder du den **Filter** kontrollen längst upp i den **listan med alla program** och ange den **visa** att **alla program.**
 
-6.  Välj hello-program som du vill tooconfigure enkel inloggning
+6.  Välj det program som du vill konfigurera enkel inloggning
 
-7.  När programmet hello läses in klickar du på hello **enkel inloggning** från hello programmet vänstra navigeringsmenyn.
+7.  När programmet läses in klickar du på den **enkel inloggning** från programmets vänstra navigeringsmenyn.
 
-8.  Klicka på **Skapa nytt certifikat** under hello **SAML signeringscertifikat** avsnitt.
+8.  Klicka på **Skapa nytt certifikat** under den **SAML signeringscertifikat** avsnitt.
 
 9.  Välj upphör att gälla. Klicka på **spara.**
 
-10. Kontrollera **aktivera nya certifikatet** toooverride hello aktiva certifikatet. Klicka på **spara** hello överst på bladet hello och acceptera tooactivate hello förnyelsecertifikat.
+10. Kontrollera **aktivera nya certifikatet** att åsidosätta det aktiva certifikatet. Klicka på **spara** längst upp på bladet och Godkänn om du vill aktivera det förnyade certifikatet.
 
-11. Under hello **SAML-signeringscertifikat** klickar du på **ta bort** tooremove hello **används inte** certifikat.
+11. Under den **SAML-signeringscertifikat** klickar du på **ta bort** att ta bort den **används inte** certifikat.
 
-## <a name="problem-when-customizing-hello-saml-claims-sent-tooan-application"></a>Problem när du anpassar hello SAML anspråk skickas tooan program
+## <a name="problem-when-customizing-the-saml-claims-sent-to-an-application"></a>Problem när du anpassar SAML-anspråk som skickas till ett program
 
-toolearn hur toocustomize hello SAML attributet anspråk skickas tooyour program finns i [anspråk mappning i Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping) för mer information.
+Information om hur du anpassar SAML attributet anspråk som skickas till ditt program finns [anspråk mappning i Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping) för mer information.
 
 ## <a name="next-steps"></a>Nästa steg
-[Hur toodebug SAML-baserade enkel inloggning tooapplications i Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging)
+[Felsöka SAML-baserade enkel inloggning till program i Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging)

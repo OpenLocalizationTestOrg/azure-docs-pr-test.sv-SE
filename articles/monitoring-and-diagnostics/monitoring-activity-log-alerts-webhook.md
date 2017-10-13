@@ -1,6 +1,6 @@
 ---
-title: "aaaUnderstand hello webhook schemat som används i aktiviteten loggen aviseringar | Microsoft Docs"
-description: "Läs mer om hello schemat för hello JSON som är bokförd tooa Webhooksadressen när en aktivitet loggen avisering aktiveras."
+title: "Förstå webhook-schemat som används i aktiviteten loggen aviseringar | Microsoft Docs"
+description: "Läs mer om schemat för JSON som skickas till en Webhooksadressen när en aktivitet loggen avisering aktiveras."
 author: johnkemnetz
 manager: orenr
 editor: 
@@ -14,24 +14,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: johnkem
-ms.openlocfilehash: 75562e0589222d3e392ea73eacfd7414a422d115
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 75c71bcd16573d4f4dd3377c623aa9b414aa3906
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Webhooks för Azure aktiviteten Logga varningar
-Som en del av hello definition av en grupp kan konfigurera du webhook slutpunkter tooreceive aktivitet loggen varningsmeddelanden. Du kan vidarebefordra dessa meddelanden tooother system för efterbearbetning eller anpassade åtgärder med webhooks. Den här artikeln visar vilka hello nyttolasten för hello HTTP POST tooa webhook verkar vara.
+Som en del av definitionen för en grupp, kan du konfigurera webhook slutpunkter för att ta emot aviseringar för aktiviteten loggen. Du kan använda webhooks, för att vidarebefordra meddelandena till andra system för efterbearbetning eller anpassade åtgärder. Den här artikeln visar hur nyttolasten för HTTP POST till en webhook ser ut.
 
-Mer information om aktiviteten loggen aviseringar finns i hur för[skapa Azure aktivitet Logga varningar](monitoring-activity-log-alerts.md).
+Mer information om aktiviteten loggen aviseringar finns så [skapa Azure aktivitet Logga varningar](monitoring-activity-log-alerts.md).
 
-Mer information om åtgärdsgrupper finns hur för[skapa åtgärdsgrupper](monitoring-action-groups.md).
+Mer information om åtgärdsgrupper finns så [skapa åtgärdsgrupper](monitoring-action-groups.md).
 
-## <a name="authenticate-hello-webhook"></a>Autentisera hello-webhook
-Hej webhook kan eventuellt använda tokenbaserad auktorisering för autentisering. Hej webhook URI sparas med ett token ID, till exempel `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`.
+## <a name="authenticate-the-webhook"></a>Autentisera webhooken
+Webhooken kan du använda tokenbaserad auktorisering för autentisering. Webhooken URI sparas med ett token ID, till exempel `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`.
 
 ## <a name="payload-schema"></a>Nyttolasten i schemat
-hello JSON-nyttolast som ingår i hello efter åtgärden skiljer sig baserat på hello nyttolast data.context.activityLog.eventSource fält.
+JSON-nyttolast som ingår i POST-åtgärden skiljer sig baserat på den nyttolasten data.context.activityLog.eventSource fält.
 
 ###<a name="common"></a>Vanliga
 ```json
@@ -122,41 +122,41 @@ hello JSON-nyttolast som ingår i hello efter åtgärden skiljer sig baserat på
 
 Specifika schemainformation om tjänsten notification aktivitet loggen hälsovarningar, finns [tjänsten meddelanden om hälsostatus](monitoring-service-notifications.md).
 
-Information om specifika schemat på alla andra aktiviteten loggen aviseringar finns [översikt över hello Azure-aktivitetsloggen](monitoring-overview-activity-logs.md).
+Information om specifika schemat på alla andra aktiviteten loggen aviseringar finns [översikt över Azure aktivitetsloggen](monitoring-overview-activity-logs.md).
 
 | Elementnamn | Beskrivning |
 | --- | --- |
-| status |Används för mått aviseringar. Alltid inställt för ”aktiverad” för aktiviteten loggen aviseringar. |
-| Kontexten |Kontexten för hello-händelse. |
-| resourceProviderName |Hej resursprovidern av hello påverkas resurs. |
+| status |Används för mått aviseringar. Alltid inställt på ”aktiverad” för aktiviteten loggen aviseringar. |
+| Kontexten |Kontexten för händelsen. |
+| resourceProviderName |Resursprovidern för resursen påverkas. |
 | conditionType |Alltid ”Event”. |
-| namn |Namnet på hello varningsregel. |
-| id |Resurs-ID för hello avisering. |
-| description |Aviseringsbeskrivningen när hello avisering skapas. |
+| namn |Namnet på regeln. |
+| id |Resurs-ID för aviseringen. |
+| Beskrivning |Aviseringsbeskrivningen när aviseringen har skapats. |
 | subscriptionId |Azure prenumerations-ID. |
-| tidsstämpel |Tiden på vilka hello händelsen skapades av hello Azure-tjänst som bearbetade hello-begäran. |
-| resourceId |Resurs-ID för hello påverkas resurs. |
-| resourceGroupName |Namnet på resursgruppen hello för hello påverkas resurs. |
-| properties |En uppsättning `<Key, Value>` par (det vill säga `Dictionary<String, String>`) som innehåller information om hello-händelse. |
-| Händelse |Element som innehåller metadata om hello-händelse. |
-| Auktorisering |hello rollbaserad åtkomstkontroll egenskaper för hello-händelse. Dessa egenskaper innehåller vanligtvis hello åtgärd, hello roll och hello omfång. |
-| category |Kategori hello-händelse. Värden som stöds omfattar administrativa, varning, säkerhet, ServiceHealth och rekommendation. |
-| Anroparen |E-postadressen hello användaren som utförde hello operation, UPN-anspråk eller SPN-anspråk baserat på tillgänglighet. Kan vara null för vissa system-anrop. |
-| correlationId |Vanligtvis ett GUID i strängformat. Händelser med correlationId tillhör toohello samma större åtgärd och dela vanligtvis en correlationId. |
-| eventDescription |Statisk textbeskrivning av hello-händelse. |
-| eventDataId |Unik identifierare för hello-händelse. |
-| eventSource |Namnet på hello Azure-tjänst eller infrastruktur som genererade hello-händelse. |
-| httpRequest |hello begäran innehåller vanligen hello clientRequestId clientIpAddress och HTTP-metoden (till exempel PLACERA). |
-| nivå |Något av följande värden hello: kritisk, fel, varning, information och utförlig. |
-| Åtgärds-ID |Vanligtvis ett GUID som delas med hello händelser motsvarande toosingle igen. |
-| operationName |Namnet på hello igen. |
-| properties |Egenskaper för hello-händelse. |
-| status |Sträng. Status för hello-åtgärd. Vanliga värden är igång, pågår, slutfört, misslyckades, aktiv och löst. |
-| subStatus |Inkluderar vanligtvis hello HTTP-statuskoden hello motsvarande REST-anrop. Det kan även innehålla andra strängar som beskriver en sådan. Vanliga understatus värden är OK (HTTP-statuskod: 200), skapade (HTTP-statuskod: 201), godkända (HTTP-statuskod: 202), inte innehåll (HTTP-statuskod: 204), felaktig begäran (HTTP-statuskod: 400), det gick inte att hitta (HTTP-statuskod: 404), konflikt (HTTP-statuskod: 409 ), Internt serverfel (HTTP-statuskod: 500), tjänsten inte tillgänglig (HTTP-statuskod: 503), och Gateway-Timeout (HTTP-statuskod: 504). |
+| tidsstämpel |Tid då händelsen skapades av Azure-tjänsten som bearbetade förfrågan. |
+| resourceId |Resurs-ID för resursen påverkas. |
+| resourceGroupName |Namnet på resursgruppen för resursen påverkas. |
+| properties |En uppsättning `<Key, Value>` par (det vill säga `Dictionary<String, String>`) som innehåller information om händelsen. |
+| Händelse |Element som innehåller metadata om händelsen. |
+| Auktorisering |Rollbaserad åtkomstkontroll egenskaperna för händelsen. Dessa egenskaper innehåller vanligtvis åtgärden rollen och omfång. |
+| category |Kategori för händelsen. Värden som stöds omfattar administrativa, varning, säkerhet, ServiceHealth och rekommendation. |
+| Anroparen |E-postadressen för användaren som utförde åtgärden, UPN-anspråk eller SPN-anspråk baserat på tillgänglighet. Kan vara null för vissa system-anrop. |
+| correlationId |Vanligtvis ett GUID i strängformat. Händelser med correlationId tillhör samma större åtgärd och vanligtvis delar en correlationId. |
+| eventDescription |Statisk textbeskrivning av händelsen. |
+| eventDataId |Unik identifierare för händelsen. |
+| eventSource |Namnet på Azure-tjänsten eller infrastruktur som genererade händelsen. |
+| httpRequest |Begäran innehåller vanligtvis clientRequestId, clientIpAddress och HTTP-metoden (till exempel PLACERA). |
+| nivå |Ett av följande värden: kritisk, fel, varning, information och utförlig. |
+| Åtgärds-ID |Vanligtvis ett GUID som delas mellan de händelser som motsvarar en enda åtgärd. |
+| operationName |Namnet på åtgärden. |
+| properties |Egenskaper för händelsen. |
+| status |Sträng. Status för åtgärden. Vanliga värden är igång, pågår, slutfört, misslyckades, aktiv och löst. |
+| subStatus |Normalt innehåller HTTP-statuskod för motsvarande REST-anrop. Det kan även innehålla andra strängar som beskriver en sådan. Vanliga understatus värden är OK (HTTP-statuskod: 200), skapade (HTTP-statuskod: 201), godkända (HTTP-statuskod: 202), inte innehåll (HTTP-statuskod: 204), felaktig begäran (HTTP-statuskod: 400), det gick inte att hitta (HTTP-statuskod: 404), konflikt (HTTP-statuskod: 409 ), Internt serverfel (HTTP-statuskod: 500), tjänsten inte tillgänglig (HTTP-statuskod: 503), och Gateway-Timeout (HTTP-statuskod: 504). |
 
 ## <a name="next-steps"></a>Nästa steg
-* [Mer information om hello aktivitetsloggen](monitoring-overview-activity-logs.md).
+* [Mer information om aktivitetsloggen](monitoring-overview-activity-logs.md).
 * [Köra Azure automation-skript (Runbooks) på Azure-aviseringar](http://go.microsoft.com/fwlink/?LinkId=627081).
-* [Använd en logik app toosend ett SMS via Twilio från en Azure avisering](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app). Det här exemplet är för mått aviseringar, men det kan vara ändrade toowork med en varning för loggen.
-* [Använd en logik app toosend ett Slack meddelande från en Azure avisering](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app). Det här exemplet är för mått aviseringar, men det kan vara ändrade toowork med en varning för loggen.
-* [Använd en logik app toosend meddelande-tooan Azure kö i en Azure avisering](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app). Det här exemplet är för mått aviseringar, men det kan vara ändrade toowork med en varning för loggen.
+* [Använd en logikapp för att skicka ett SMS via Twilio från en Azure avisering](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app). Det här exemplet är för mått aviseringar, men den kan ändras för att fungera med en varning för loggen.
+* [Använd en logikapp för att skicka en Slack-meddelande från en Azure avisering](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app). Det här exemplet är för mått aviseringar, men den kan ändras för att fungera med en varning för loggen.
+* [Använd en logikapp för att skicka ett meddelande till en Azure-kö i en Azure avisering](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app). Det här exemplet är för mått aviseringar, men den kan ändras för att fungera med en varning för loggen.

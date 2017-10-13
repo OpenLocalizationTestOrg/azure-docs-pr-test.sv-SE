@@ -1,6 +1,6 @@
 ---
-title: "aaaTroubleshoot programutveckling för Azure Active Directory | Microsoft Docs"
-description: "Lös hello de vanligaste problem relaterade tooAzure Active Directory-programutveckling"
+title: "Felsöka Azure Active Directory programutveckling | Microsoft Docs"
+description: "Lösa vanliga problem som rör programutveckling med Azure Active"
 services: active-directory
 documentationcenter: 
 author: ajamess
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: f1171d19cb9875df51dc0bf3c5e2449fab03bff5
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 8ec8e150c17fef307a7a60cb19ed776875715606
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="troubleshoot-azure-active-directory-application-development"></a>Felsöka Azure Active Directory programutveckling
-hello följande länkar leder du tooa innehållskarta som hjälper dig att tooresolve några hello de flesta vanliga problem med programutveckling med hello **programmet registret** i Azure Active Directory.
+Följande länkar leder till en innehållskarta som hjälper dig att lösa några av de vanligaste problem som du kan stöta på när du hanterar **företagsprogram** i Azure Active Directory.
 
 * [Problem med konfiguration och registrering](active-directory-application-dev-config-content-map.md)
 * [Problem med att utveckla program](active-directory-application-dev-development-content-map.md)

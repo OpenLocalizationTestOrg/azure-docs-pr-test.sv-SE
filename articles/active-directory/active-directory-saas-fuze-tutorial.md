@@ -1,6 +1,6 @@
 ---
 title: "Självstudier: Azure Active Directory-integrering med Fuze | Microsoft Docs"
-description: "Lär dig hur tooconfigure enkel inloggning mellan Azure Active Directory och Fuze."
+description: "Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Fuze."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,71 +13,71 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: jeedes
-ms.openlocfilehash: d0ea8c6456824e348301ed8bf1f5e00f4bfa8121
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: c7f7b095aac6202a7ec5248ee2bbb109615287a7
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fuze"></a>Självstudier: Azure Active Directory-integrering med Fuze
 
-I kursen får du lära dig hur toointegrate Fuze med Azure Active Directory (AD Azure).
+I kursen får lära du att integrera Fuze med Azure Active Directory (AD Azure).
 
-Integrera Fuze med Azure AD ger dig hello följande fördelar:
+Integrera Fuze med Azure AD ger dig följande fördelar:
 
-- Du kan styra i Azure AD som har åtkomst till tooFuze
-- Du kan aktivera din användare tooautomatically get inloggade tooFuze (Single Sign-On) med sina Azure AD-konton
-- Du kan hantera dina konton i en central plats - hello Azure Management portal
+- Du kan styra i Azure AD som har åtkomst till Fuze
+- Du kan aktivera användarna att automatiskt hämta loggat in på Fuze (Single Sign-On) med sina Azure AD-konton
+- Du kan hantera dina konton i en central plats - till Azure-hanteringsportalen
 
-Om du vill tooknow mer information om integrering av SaaS-app med Azure AD, se [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Om du vill veta mer information om integrering av SaaS-app med Azure AD finns [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Krav
 
-tooconfigure Azure AD-integrering med Fuze, behöver du hello följande objekt:
+För att konfigurera Azure AD-integrering med Fuze, behöver du följande:
 
 - En Azure AD-prenumeration
 - En Fuze enkel inloggning på aktiverade prenumeration
 
 
 > [!NOTE]
-> tootest hello stegen i den här självstudiekursen, rekommenderas inte med hjälp av en produktionsmiljö.
+> Om du vill testa stegen i den här kursen rekommenderar vi inte med hjälp av en produktionsmiljö.
 
 
-tootest hello steg i den här självstudiekursen, bör du följa dessa rekommendationer:
+Om du vill testa stegen i den här självstudiekursen, bör du följa dessa rekommendationer:
 
 - Du bör inte använda produktionsmiljön, om det inte är nödvändigt.
 - Om du inte har en utvärderingsversion Azure AD-miljö kan du hämta en utvärderingsversion av en månad [här](https://azure.microsoft.com/pricing/free-trial/).
 
 
 ## <a name="scenario-description"></a>Scenariobeskrivning
-I kursen får testa du Azure AD enkel inloggning i en testmiljö. hello-scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
+I kursen får testa du Azure AD enkel inloggning i en testmiljö. Det scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
 
-1. Att lägga till Fuze från hello-galleriet
+1. Att lägga till Fuze från galleriet
 2. Konfigurera och testa Azure AD enkel inloggning
 
 
-## <a name="adding-fuze-from-hello-gallery"></a>Att lägga till Fuze från hello-galleriet
-tooconfigure hello integrering av Fuze i Azure AD, behöver du tooadd Fuze hello galleriet tooyour listan över hanterade SaaS-appar.
+## <a name="adding-fuze-from-the-gallery"></a>Att lägga till Fuze från galleriet
+Du måste lägga till Fuze från galleriet i listan över hanterade SaaS-appar för att konfigurera integrering av Fuze i Azure AD.
 
-**tooadd Fuze från galleriet hello utför hello följande steg:**
+**Utför följande steg för att lägga till Fuze från galleriet:**
 
-1. I hello  **[Azure-hanteringsportalen](https://portal.azure.com)**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon. 
+1. I den  **[Azure-hanteringsportalen](https://portal.azure.com)**, klicka på den vänstra navigeringspanelen **Azure Active Directory** ikon. 
 
     ![Active Directory][1]
 
-2. Navigera för**företagsprogram**. Gå sedan för**alla program**.
+2. Gå till **företagsprogram**. Gå till **alla program**.
 
     ![Program][2]
     
-3. Klicka på **Lägg till** hello längst upp i hello dialogrutan.
+3. Klicka på **Lägg till** knappen överst i dialogrutan.
 
     ![Program][3]
 
-4. Skriv i sökrutan hello **Fuze**.
+4. I sökrutan skriver **Fuze**.
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-fuze-tutorial/tutorial_fuze_000.png)
 
-5. Markera hello resultat på panelen **Fuze**, och klicka sedan på **Lägg till** knappen tooadd hello program.
+5. Välj i resultatpanelen **Fuze**, och klicka sedan på **Lägg till** för att lägga till programmet.
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-fuze-tutorial/tutorial_fuze_0001.png)
 
@@ -85,77 +85,77 @@ tooconfigure hello integrering av Fuze i Azure AD, behöver du tooadd Fuze hello
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurera och testa Azure AD enkel inloggning
 I det här avsnittet kan du konfigurera och testa Azure AD enkel inloggning med Fuze baserat på en testanvändare som kallas ”Britta Simon”.
 
-För enkel inloggning toowork måste Azure AD tooknow vilka hello motsvarighet användaren i Fuze är tooa i Azure AD. Med andra ord måste en länk mellan en Azure AD-användare och hello relaterade användare i Fuze toobe upprättas.
+Azure AD måste du känna till användaren i Fuze motsvarighet till en användare i Azure AD för enkel inloggning ska fungera. Med andra ord måste en länk förhållandet mellan en Azure AD-användare och relaterade användaren i Fuze upprättas.
 
-Den här länken relationen upprättas genom att tilldela hello värdet för hello **användarnamn** i Azure AD som hello värde för hello **användarnamn** i Fuze.
+Den här länken relationen upprättas genom att tilldela värdet för den **användarnamn** i Azure AD som värde för den **användarnamn** i Fuze.
 
-tooconfigure och testa Azure AD enkel inloggning med Fuze, behöver du toocomplete hello följande byggblock:
+Om du vill konfigurera och testa Azure AD enkel inloggning med Fuze, måste du utföra följande byggblock:
 
-1. **[Konfigurera Azure AD enkel inloggning](#configuring-azure-ad-single-sign-on)**  -tooenable användare-toouse den här funktionen.
-2. **[Skapa en Azure AD-testanvändare](#creating-an-azure-ad-test-user)**  -tootest Azure AD enkel inloggning med Britta Simon.
-3. **[Skapa en testanvändare Fuze](#creating-a-fuze-test-user)**  -toohave en motsvarighet för Britta Simon i Fuze som är länkade toohello Azure AD-representation av henne.
-4. **[Tilldela hello Azure AD-testanvändare](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD enkel inloggning.
-5. **[Testa enkel inloggning](#testing-single-sign-on)**  -tooverify hello om konfigurationen fungerar.
+1. **[Konfigurera Azure AD enkel inloggning](#configuring-azure-ad-single-sign-on)**  - om du vill att användarna kan använda den här funktionen.
+2. **[Skapa en Azure AD-testanvändare](#creating-an-azure-ad-test-user)**  - om du vill testa Azure AD enkel inloggning med Britta Simon.
+3. **[Skapa en testanvändare Fuze](#creating-a-fuze-test-user)**  – du har en motsvarighet för Britta Simon i Fuze som är kopplad till Azure AD-representation av henne.
+4. **[Tilldela Azure AD-testanvändare](#assigning-the-azure-ad-test-user)**  - om du vill aktivera Britta Simon att använda Azure AD enkel inloggning.
+5. **[Testa enkel inloggning](#testing-single-sign-on)**  - om du vill kontrollera om konfigurationen fungerar.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurera Azure AD enkel inloggning
 
-I det här avsnittet Aktivera Azure AD enkel inloggning i hello Azure Management portal och konfigurera enkel inloggning i ditt Fuze program.
+I det här avsnittet Aktivera Azure AD enkel inloggning i Azure-hanteringsportalen och konfigurera enkel inloggning i ditt Fuze program.
 
-**Utför följande steg hello tooconfigure Azure AD enkel inloggning med Fuze:**
+**Utför följande steg för att konfigurera Azure AD enkel inloggning med Fuze:**
 
-1. I hello Azure Management portal på hello **Fuze** integreringssidan för programmet, klickar du på **enkel inloggning**.
+1. I Azure-hanteringsportalen på den **Fuze** integreringssidan för programmet, klickar du på **enkel inloggning**.
 
     ![Konfigurera enkel inloggning][4]
 
-2. På hello **enkel inloggning** dialogrutan som **läge** Välj **SAML-baserade inloggning** tooenable för enkel inloggning.
+2. På den **enkel inloggning** dialogrutan som **läge** Välj **SAML-baserade inloggning** att aktivera enkel inloggning på.
  
     ![Konfigurera enkel inloggning](./media/active-directory-saas-fuze-tutorial/tutorial_fuze_01.png)
 
-3. På hello **Fuze domän och URL: er** avsnittet, utföra hello följande steg:
+3. På den **Fuze domän och URL: er** avsnittet, utför följande steg:
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-fuze-tutorial/tutorial_fuze_020.png)
     
-    I hello **inloggning URL** textruta typen hello inloggning URL som:`https://www.thinkingphones.com/jetspeed/portal/`
+    I den **inloggning URL** textruta typen Sign-on-URL som:`https://www.thinkingphones.com/jetspeed/portal/`
 
 4.  Klicka på **spara** knappen.
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-fuze-tutorial/tutorial_general_400.png)
 
-5. På hello **SAML-signeringscertifikat** klickar du på **XML-Metadata för** och spara hello XML-filen på datorn.
+5. På den **SAML-signeringscertifikat** klickar du på **XML-Metadata för** och spara xml-filen på datorn.
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-fuze-tutorial/tutorial_fuze_05.png) 
 
-6. tooconfigure enkel inloggning på **Fuze** sida, behöver du toosend hello hämtas **XML-Metadata för** för[Fuze supportteamet](https://www.fuze.com/support). De ska ställa in detta i ordning toohave hello SAML SSO anslutningen korrekt på båda sidor.
+6. Konfigurera enkel inloggning på **Fuze** sida, måste du skicka den hämtade **XML-Metadata för** till [Fuze supportteamet](https://www.fuze.com/support). De ska ange detta för att få SAML SSO anslutningen korrekt på båda sidor.
 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Skapa en testanvändare i Azure AD
-hello syftet med det här avsnittet är toocreate en testanvändare i hello Azure Management portal kallas Britta Simon.
+Syftet med det här avsnittet är att skapa en testanvändare i Azure Management portal kallas Britta Simon.
 
 ![Skapa Azure AD-användare][100]
 
-**toocreate en testanvändare i Azure AD kan utföra hello följande steg:**
+**Utför följande steg för att skapa en testanvändare i Azure AD:**
 
-1. I hello **Azure-hanteringsportalen**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon.
+1. I den **Azure-hanteringsportalen**, klicka på det vänstra navigeringsfönstret **Azure Active Directory** ikon.
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-fuze-tutorial/create_aaduser_01.png) 
 
-2. Gå för**användare och grupper** och på **alla användare** toodisplay hello lista över användare.
+2. Gå till **användare och grupper** och på **alla användare** att visa en lista över användare.
     
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-fuze-tutorial/create_aaduser_02.png) 
 
-3. Hello överst i dialogrutan hello klickar du på **Lägg till** tooopen hello **användaren** dialogrutan.
+3. Klicka på överst i dialogrutan **Lägg till** att öppna den **användaren** dialogrutan.
  
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-fuze-tutorial/create_aaduser_03.png) 
 
-4. På hello **användaren** dialogrutan utför hello följande steg:
+4. På den **användaren** dialogrutan utför följande steg:
  
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-fuze-tutorial/create_aaduser_04.png) 
 
-    a. I hello **namn** textruta typen **BrittaSimon**.
+    a. I den **namn** textruta typen **BrittaSimon**.
 
-    b. I hello **användarnamn** textruta typen hello **e-postadress** av BrittaSimon.
+    b. I den **användarnamn** textruta typ av **e-postadress** av BrittaSimon.
 
-    c. Välj **visa lösenordet** och Skriv ned hello värdet för hello **lösenord**.
+    c. Välj **visa lösenordet** och anteckna värdet för den **lösenord**.
 
     d. Klicka på **Skapa**. 
 
@@ -164,23 +164,23 @@ hello syftet med det här avsnittet är toocreate en testanvändare i hello Azur
 
 Fuze program stöder fullständig precis i tid användaren etablera så att användarna ska skapas automatiskt när de loggar in. För andra information kontakta Fuze [stöder](https://www.fuze.com/support).
 
-### <a name="assigning-hello-azure-ad-test-user"></a>Tilldela användare hello Azure AD
+### <a name="assigning-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändare
 
-I det här avsnittet Aktivera Britta Simon toouse Azure enkel inloggning genom att tilldela tooFuze sin åtkomst.
+I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inloggning genom att bevilja sin åtkomst till Fuze.
 
 ![Tilldela användare][200] 
 
-**tooassign Britta Simon tooFuze utför hello följande steg:**
+**Om du vill tilldela Fuze Britta Simon utför du följande steg:**
 
-1. I hello Azure Management portal öppnar du hello program visa och navigera toohello directory vy och gå för**företagsprogram** Klicka **alla program**.
+1. Öppna vyn program i Azure-hanteringsportalen och gå till vyn directory och gå till **företagsprogram** Klicka **alla program**.
 
     ![Tilldela användare][201] 
 
-2. Välj i listan med program hello **Fuze**.
+2. Välj i listan med program **Fuze**.
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-fuze-tutorial/tutorial_fuze_50.png) 
 
-3. Hello-menyn hello vänster **användare och grupper**.
+3. Klicka på menyn till vänster **användare och grupper**.
 
     ![Tilldela användare][202] 
 
@@ -188,7 +188,7 @@ I det här avsnittet Aktivera Britta Simon toouse Azure enkel inloggning genom a
 
     ![Tilldela användare][203]
 
-5. På **användare och grupper** markerar **Britta Simon** i hello användarlistan.
+5. På **användare och grupper** markerar **Britta Simon** på listan användare.
 
 6. Klicka på **Välj** knappen på **användare och grupper** dialogrutan.
 
@@ -197,14 +197,14 @@ I det här avsnittet Aktivera Britta Simon toouse Azure enkel inloggning genom a
 
 ### <a name="testing-single-sign-on"></a>Testa enkel inloggning
 
-I det här avsnittet kan testa du Azure AD enkel inloggning konfigurationen med hello åtkomstpanelen.
+I det här avsnittet kan du testa Azure AD enkel inloggning konfigurationen med hjälp av panelen åtkomst.
 
-Du bör få automatiskt inloggade tooyour Fuze programmet när du klickar på hello Fuze panelen i hello åtkomstpanelen.
+När du klickar på panelen Fuze på åtkomstpanelen du bör få automatiskt loggat in på ditt Fuze program.
 
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-* [Lista över självstudier om hur tooIntegrate SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Vad är programåtkomst och enkel inloggning med Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

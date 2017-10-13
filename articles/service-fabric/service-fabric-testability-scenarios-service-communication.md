@@ -14,45 +14,45 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2017
 ms.author: vturecek
-ms.openlocfilehash: 4a8f941c1e8e641384a9ee3a1149dabaaf9983cc
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: c182cc2062ada40029504de5b2b64b021c614ce6
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="service-fabric-testability-scenarios-service-communication"></a>Service Fabric möjlighet att testa scenarier: tjänsten kommunikation
-Mikrotjänster och tjänstorienterad arkitektur formatmallar ytan naturligt i Azure Service Fabric. I dessa typer av distribuerade arkitekturer består komponentbaserade mikrotjänster program vanligtvis av flera tjänster som behöver tootalk tooeach andra. I även hello enklaste fall kan har du vanligtvis minst en tillståndslös webbtjänst och en tillståndskänslig data storage-tjänst som behöver toocommunicate.
+Mikrotjänster och tjänstorienterad arkitektur formatmallar ytan naturligt i Azure Service Fabric. I dessa typer av distribuerade arkitekturer består komponentbaserade mikrotjänster program vanligtvis av flera tjänster som behöver kommunicera med varandra. I även de enklaste fall kan har du vanligtvis minst en tillståndslös webbtjänst och en tillståndskänslig data storage-tjänst som behöver kommunicera.
 
-Service-to-service-kommunikation är en kritisk integrering av ett program, eftersom varje tjänst Exponerar en fjärransluten tooother API-tjänster. Arbeta med en uppsättning API-gränser som innebär att i/o vanligtvis kräver viss precision med mycket testning och validering.
+Service-to-service-kommunikation är en kritisk integrering av ett program, eftersom varje tjänst Exponerar en fjärr-API till andra tjänster. Arbeta med en uppsättning API-gränser som innebär att i/o vanligtvis kräver viss precision med mycket testning och validering.
 
-Det finns många överväganden toomake när dessa gränser för tjänsten wired tillsammans i ett distribuerat system:
+Det finns många saker du måste ta när dessa gränser för tjänsten wired tillsammans i ett distribuerat system:
 
 * *Transport-protokollet*. Ska du använda HTTP för ökad samverkan eller anpassade binära protokoll för maximalt dataflöde?
-* *Felhantering*. Hur permanent och tillfälliga fel hanteras? Vad händer när en tjänst flyttar tooa annan nod?
-* *Tidsgränser och fördröjning*. I multitiered program, hur varje tjänstnivå hanterar latens via hello stacken och toohello användare?
+* *Felhantering*. Hur permanent och tillfälliga fel hanteras? Vad händer när en tjänst som flyttar till en annan nod?
+* *Tidsgränser och fördröjning*. I multitiered program, hur varje tjänstnivå hanterar latens via stacken och för användaren?
 
-Om du använder en av hello inbyggd kommunikation tjänstkomponenter som tillhandahålls av Service Fabric eller du skapar egna, är testa hello samverkan mellan dina tjänster kritiska tooensuring återhämtning i ditt program.
+Om du använder en inbyggd tjänst kommunikation komponenter som tillhandahålls av Service Fabric eller om du skapar egna, tester samverkan mellan dina tjänster är kritiska för återhämtning i ditt program.
 
-## <a name="prepare-for-services-toomove"></a>Förbereda för tjänster toomove
-Instanser av tjänsten kan flytta över tid. Detta gäller särskilt när de är konfigurerade med belastningen anpassad skräddarsydda optimal Resursanvändning belastningsutjämning. Service Fabric flyttar din tjänst instanser toomaximize deras tillgänglighet även under uppgraderingar, redundans, skalbara och andra situationer som sker över hello livslängden för ett distribuerat system.
+## <a name="prepare-for-services-to-move"></a>Förbereda för services för att flytta
+Instanser av tjänsten kan flytta över tid. Detta gäller särskilt när de är konfigurerade med belastningen anpassad skräddarsydda optimal Resursanvändning belastningsutjämning. Service Fabric flyttar instanser av tjänsten för att maximera deras tillgänglighet även under uppgraderingar, redundans, skalbara och andra situationer som sker över livslängden för ett distribuerat system.
 
-När tjänster flyttar i hello kluster, ska klienterna och andra tjänster vara förberedda toohandle två scenarier när de talar tooa tjänsten:
+När tjänster flyttar i klustret, ska klienterna och andra tjänster förberedas för att hantera två scenarier när de kommunicerar med en tjänst:
 
-* hello service-instans eller partition replik har flyttats sedan hello senaste gången som du har talat tooit. Detta är en normal del av en livscykel för tjänsten och det bör vara förväntade toohappen under hello livslängd för programmet.
-* hello service-instans eller partition repliken är i hello processen att flytta. Även om växling vid fel på en tjänst från en nod tooanother uppstår mycket snabbt i Service Fabric kan finnas det en fördröjning i tillgänglighet om hello kommunikation del av din tjänst är långsam toostart.
+* Service-instans eller partition repliken har flyttats sedan förra gången du talade vi till den. Detta är en normal del av en livscykel för tjänsten och den bör förväntas under livslängden för ditt program.
+* Service-instans eller partition repliken håller på att flytta. Även om växling vid fel på en tjänst från en nod till en annan uppstår mycket snabbt i Service Fabric kan finnas det en fördröjning i tillgänglighet om kommunikationskomponenten av tjänsten tar lång tid att starta.
 
-Hantering av dessa scenarier smidigt är viktigt för ett system för smooth körs. toodo så Tänk som:
+Hantering av dessa scenarier smidigt är viktigt för ett system för smooth körs. Om du vill göra det måste du tänka på:
 
-* Varje tjänst som kan vara anslutna toohas en *adress* att den lyssnar på (till exempel http- eller WebSockets). När du flyttar en tjänstinstans eller partition, ändrar sin adress-slutpunkt. (Den flyttas tooa annan nod med en annan IP-adress.) Om du använder hello inbyggd kommunikationskomponenter hanterar de nytt lösa postadresser åt dig.
-* Det kan finnas en tillfällig ökning i tjänsten svarstid som hello service-instans startar upp dess lyssnare igen. Detta beror på hur snabbt hello tjänsten öppnar hello lyssnare när hello tjänstinstans flyttas.
-* Alla befintliga anslutningar måste toobe stänga och öppna när hello service öppnas på en ny nod. En korrekt nodavstängning eller omstart ger dig tid för befintliga anslutningar toobe avslutas på vanligt sätt.
+* Varje tjänst som kan anslutas till har en *adress* att den lyssnar på (till exempel http- eller WebSockets). När du flyttar en tjänstinstans eller partition, ändrar sin adress-slutpunkt. (Den flyttas till en annan nod med en annan IP-adress.) Om du använder inbyggd kommunikationskomponenter hanterar de nytt lösa postadresser åt dig.
+* Det kan finnas en tillfällig ökning i tjänsten svarstid som startar tjänsten instans av dess lyssnare igen. Detta beror på hur snabbt tjänsten öppnar lyssnaren när tjänstinstansen flyttas.
+* Alla befintliga anslutningar måste du stänga och öppna när tjänsten öppnas på en ny nod. En korrekt nodavstängning eller omstart ger dig tid för befintliga anslutningar stängs avslutas.
 
 ### <a name="test-it-move-service-instances"></a>Testa den: flytta instanser av tjänsten
-Med hjälp av Service Fabric datatillgång verktyg kan du skapa en test-scenario tootest situationerna på olika sätt:
+Med hjälp av Service Fabric datatillgång verktyg kan skapa du ett Testscenario om du vill testa dessa situationer på olika sätt:
 
 1. Flytta en tillståndskänslig service primära repliken.
    
-    hello kan primär replik av en tillståndskänslig service-partitionen flyttas av olika orsaker. Använd den här tootarget hello primära repliken av en specifik partition toosee hur dina tjänster reagerar toohello flytta på ett mycket kontrollerat sätt.
+    Den primära repliken av en tillståndskänslig service partition kan flyttas av olika orsaker. Används för att rikta den primära repliken av en specifik partition för att se hur dina tjänster reagerar på flytten på ett mycket kontrollerat sätt.
    
     ```powershell
    
@@ -61,9 +61,9 @@ Med hjälp av Service Fabric datatillgång verktyg kan du skapa en test-scenario
     ```
 2. Stoppa en nod.
    
-    När en nod har stoppats hello Service Fabric flyttar alla hello service instanser eller partitioner som fanns på den noden tooone av andra tillgängliga noder i klustret hello. Använd den här tootest en situation där en nod har förlorats från ditt kluster och alla instanser av tjänsten hello och repliker på noden har toomove.
+    När en nod har stoppats, flyttar Service Fabric alla instanser av tjänsten eller partitioner som fanns på den noden till en av de andra tillgängliga noderna i klustret. Används för att testa en situation där en nod tappas bort från klustret och alla tjänstinstanser och repliker på noden måste flytta.
    
-    Du kan stoppa en nod med hjälp av hello PowerShell **stoppa ServiceFabricNode** cmdlet:
+    Du kan stoppa en nod med hjälp av PowerShell **stoppa ServiceFabricNode** cmdlet:
    
     ```powershell
    
@@ -72,14 +72,14 @@ Med hjälp av Service Fabric datatillgång verktyg kan du skapa en test-scenario
     ```
 
 ## <a name="maintain-service-availability"></a>Underhåll tjänsttillgänglighet för
-Service Fabric är utformad tooprovide hög tillgänglighet för dina tjänster som en plattform. Men i extrema fall underliggande infrastruktur kan fortfarande ha inte finns. Det är viktigt tootest för dessa scenarier för.
+Service Fabric är utformad att ge hög tillgänglighet för dina tjänster som en plattform. Men i extrema fall underliggande infrastruktur kan fortfarande ha inte finns. Det är viktigt att testa för dessa scenarier för.
 
-Tillståndskänsliga tjänster använder ett kvorum-baserat system tooreplicate tillstånd för hög tillgänglighet. Det innebär att ett kvorum av repliker måste toobe tillgängliga tooperform skrivåtgärder. Ett kvorum av repliker kanske inte tillgänglig i sällsynta fall, till exempel ett omfattande maskinvarufel. I dessa fall kan du inte kan tooperform skrivåtgärder, men du kommer fortfarande att kunna tooperform läsåtgärder.
+Tillståndskänsliga tjänster använder en kvorum-dator för att replikera statusen för hög tillgänglighet. Det innebär att ett kvorum av repliker måste vara tillgängliga för att utföra skrivåtgärder. Ett kvorum av repliker kanske inte tillgänglig i sällsynta fall, till exempel ett omfattande maskinvarufel. Du kommer inte att kunna utföra skrivåtgärder i dessa fall, men du kommer fortfarande att kunna utföra läsåtgärder.
 
 ### <a name="test-it-write-operation-unavailability"></a>Testa den: skriva åtgärden otillgänglighet
-Med hello datatillgång i Service Fabric kan du mata in ett fel som startar förlorar kvorum som ett test. Även om ett sådant scenario är sällsynt, är det viktigt att klienter och tjänster som är beroende av en tillståndskänslig service förberetts toohandle situationer där denne inte fatta skriva begäranden tooit. Det är också viktigt att hello tillståndskänslig själva tjänsten känner till denna möjlighet och smidigt kommunicera den toocallers.
+Med hjälp av verktygen datatillgång i Service Fabric du mata in ett fel som startar förlorar kvorum som ett test. Även om ett sådant scenario är sällsynt, är det viktigt att klienter och tjänster som är beroende av en tillståndskänslig service är beredd att hantera situationer där denne inte fatta skrivåtgärder till den. Det är också viktigt att tillståndskänslig själva tjänsten känner till denna möjlighet och kan smidigt kommunicera till anropare.
 
-Du kan ge upphov till förlorar kvorum med hjälp av hello PowerShell **Invoke-ServiceFabricPartitionQuorumLoss** cmdlet:
+Du kan ge upphov till förlorar kvorum med hjälp av PowerShell **Invoke-ServiceFabricPartitionQuorumLoss** cmdlet:
 
 ```powershell
 
@@ -87,7 +87,7 @@ PS > Invoke-ServiceFabricPartitionQuorumLoss -ServiceName fabric:/Myapplication/
 
 ```
 
-I det här exemplet anger vi `QuorumLossMode` för`QuorumReplicas` tooindicate som vi vill tooinduce kvorumförlust utan att stoppa alla repliker. Det här sättet läsåtgärder är fortfarande möjligt. tootest ett scenario där en hel partition är tillgänglig, kan du ange den här växeln för`AllReplicas`.
+I det här exemplet anger vi `QuorumLossMode` till `QuorumReplicas` att indikera att vi vill framkalla förlorar kvorum utan att stoppa alla repliker. Det här sättet läsåtgärder är fortfarande möjligt. Om du vill testa ett scenario där en hel partition är tillgänglig, du kan ange den här växeln till `AllReplicas`.
 
 ## <a name="next-steps"></a>Nästa steg
 [Mer information om datatillgång åtgärder](service-fabric-testability-actions.md)

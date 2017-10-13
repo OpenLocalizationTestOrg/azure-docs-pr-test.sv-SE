@@ -16,8 +16,8 @@
 ### [Java](event-hubs-java-get-started-receive-eph.md)
 ### [Apache Storm](event-hubs-storm-getstarted-receive.md)
 ## Samla in händelser
-### [Använd hello Azure portal tooenable Event Hubs avbilda](event-hubs-capture-enable-through-portal.md)
-### [Använd en Resource Manager mallen tooenable Event Hubs avbilda](event-hubs-resource-manager-namespace-event-hub-enable-capture.md)
+### [Använd Azure Portal för att aktivera Event Hubs Capture](event-hubs-capture-enable-through-portal.md)
+### [Använd en Resource Manager-mall för att aktivera Event Hubs Capture](event-hubs-resource-manager-namespace-event-hub-enable-capture.md)
 ## [Programmeringsguide](event-hubs-programming-guide.md)
 
 # Gör så här för att
@@ -37,7 +37,7 @@
 ### Capture
 #### [Event Hubs Capture](event-hubs-capture-overview.md)
 #### [Samla in Event Hubs-data med hjälp av Python](event-hubs-capture-python.md)
-### [Med hjälp av PowerShell tooprovision entiteter](event-hubs-manage-with-ps.md) 
+### [Etablera entiteter med PowerShell](event-hubs-manage-with-ps.md) 
 ### [Strömma Azure Diagnostics-data med Event Hubs](event-hubs-streaming-azure-diags-data.md)
 ### [Skapa och distribuera en Event Hub med en Resource Manager-mall](event-hubs-resource-manager-namespace-event-hub.md)
 

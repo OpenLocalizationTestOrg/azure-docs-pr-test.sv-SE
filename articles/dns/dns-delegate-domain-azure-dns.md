@@ -1,6 +1,6 @@
 ---
-title: "aaaDelegate din domän tooAzure DNS | Microsoft Docs"
-description: "Förstå hur toochange domän delegering och Använd Azure DNS namn servrar tooprovide domän värdar."
+title: "Delegera din domän till Azure DNS | Microsoft Docs"
+description: "Lär dig hur du ändrar domändelegering och använder Azure DNS-namnservrar för att tillhandahålla domänvärdtjänster."
 services: dns
 documentationcenter: na
 author: georgewallace
@@ -13,62 +13,62 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/12/2017
 ms.author: gwallace
-ms.openlocfilehash: f780bdaa416150e5e3afe6c6845dc75ba54b6203
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 33b3ec24432ff1268860b9a2e9d5098600a8dedc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="delegate-a-domain-tooazure-dns"></a>Delegera en domän tooAzure DNS
+# <a name="delegate-a-domain-to-azure-dns"></a>Delegera en domän till Azure DNS
 
-Azure DNS kan du toohost en DNS-zon och hantera hello DNS-poster för en domän i Azure. För DNS-frågor för en domän tooreach Azure DNS hello domän har toobe delegerad tooAzure DNS från hello överordnad domän. Kom ihåg Azure DNS är inte hello domänregistrator. Den här artikeln förklarar hur toodelegate din domän tooAzure DNS.
+Med Azure DNS kan du vara värd för en DNS-zon och hantera DNS-posterna för en domän i Azure. För att DNS-frågor för en domän ska nå Azure DNS måste domänen delegeras till Azure DNS från den överordnade domänen. Tänk på att Azure DNS inte är domänregistratorn. I artikeln förklaras hur du delegerar din domän till Azure DNS.
 
-För domäner som har köpt från ett register, erbjuder din registrator hello alternativet tooset upp dessa NS-poster. Du har inte tooown domän-toocreate en DNS-zon med det domännamnet i Azure DNS. Du behöver dock tooown hello domän tooset in hello delegering tooAzure DNS med hello register.
+Om domänerna köpts från en registrator kan registratorn konfigurera dessa NS-poster. Du behöver inte äga en domän för att kunna skapa en DNS-zon med det domännamnet i Azure DNS. Du behöver äga domänen för att konfigurera delegeringen till Azure DNS med registratorn.
 
-Anta att du köper hello domän 'contoso.net' och skapa en zon med hello name 'contoso.net' i Azure DNS. Hello ägare av hello domän erbjuder din registrator du hello alternativet tooconfigure hello adresser (det vill säga hello NS-poster) för din domän. hello registrator lagrar dessa NS-poster i hello överordnade domänen i det här fallet '.net'. Klienter runt hello world kan sedan vara riktad tooyour domän i Azure DNS-zonen när tooresolve DNS-poster i 'contoso.net'.
+Anta exempelvis att du köper domänen ”contoso.net” och skapar en zon med namnet ”contoso.net” i Azure DNS. Som ägare till domänen erbjuder sig registratorn att konfigurera namnserveradresserna (det vill säga NS-posterna) för din domän. Registratorn lagrar dessa NS-poster i den överordnade domänen, i detta fall ”.net”. Klienter över hela världen kan sedan omdirigeras till din domän i Azure DNS-zonen när du försöker matcha DNS-poster i ”contoso.net”.
 
 ## <a name="create-a-dns-zone"></a>Skapa en DNS-zon
 
-1. Logga in toohello Azure-portalen
-1. Hej hubbmenyn, klicka på och klicka på **New > nätverk >** och klicka sedan på **DNS-zonen** tooopen hello skapa DNS-zonen bladet.
+1. Logga in på Azure Portal
+1. Klicka på **Nytt > Nätverk >** på navmenyn och klicka sedan på **DNS-zon** för att öppna bladet Skapa DNS-zon.
 
     ![DNS-zon](./media/dns-domain-delegation/dns.png)
 
-1. På hello **skapa DNS-zonen** bladet ange hello följande värden, och klicka sedan på **skapa**:
+1. På bladet **Skapa DNS-zon** anger du följande värden och klickar sedan på **Skapa**:
 
    | **Inställning** | **Värde** | **Detaljer** |
    |---|---|---|
-   |**Namn**|contoso.net|hello namnet på hello DNS-zonen|
-   |**Prenumeration**|[Din prenumeration]|Välj en prenumeration toocreate hello Programgateway i.|
-   |**Resursgrupp**|**Skapa ny:** contosoRG|Skapa en resursgrupp. hello resursgruppens namn måste vara unikt inom hello-prenumeration som du har valt. Mer om resursgrupper läsa hello toolearn [Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fdns%2ftoc.json#resource-groups) översiktsartikel.|
+   |**Namn**|contoso.net|Namnet på DNS-zonen|
+   |**Prenumeration**|[Din prenumeration]|Välj den prenumeration där du vill skapa programgatewayen.|
+   |**Resursgrupp**|**Skapa ny:** contosoRG|Skapa en resursgrupp. Resursgruppens namn måste vara unikt inom den prenumeration du valde. Mer information om resursgrupper finns i [översikten över Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fdns%2ftoc.json#resource-groups).|
    |**Plats**|Västra USA||
 
 > [!NOTE]
-> hello resursgruppen refererar toohello platsen för hello resursgruppen och har ingen inverkan på hello DNS-zon. hello DNS-zonen plats är alltid ”globala” och visas inte.
+> Resursgruppen refererar till platsen för resursgruppen och har ingen inverkan på DNS-zonen. Platsen för DNS-zonen är alltid "global" och visas inte.
 
 ## <a name="retrieve-name-servers"></a>Hämta namnservrar
 
-Innan du kan delegera din DNS-zonen tooAzure DNS, måste du först tooknow hello servernamn för zonen. Azure DNS allokerar namnservrar från en pool varje gång en zon skapas.
+Innan du kan delegera din DNS-zon till Azure DNS måste du känna till namnservernamnen för din zon. Azure DNS allokerar namnservrar från en pool varje gång en zon skapas.
 
-1. Med hello DNS-zon som skapats i hello Azure-portalen **Favoriter** rutan klickar du på **alla resurser**. Klicka på hello **contoso.net** DNS-zonen i hello **alla resurser** bladet. Om hello-prenumeration som du har valt redan har flera resurser i den, kan du ange **contoso.net** i hello filtrera efter namn... rutan Programgateway tooeasily åtkomst hello. 
+1. I Azure Portal klickar du på **Alla resurser** i rutan **Favoriter** för den DNS-zon du skapade. Klicka på DNS-zonen **contoso.net** på bladet **Alla resurser**. Om den prenumeration du valde redan har flera resurser kan du ange **contoso.net** i rutan Filtrera efter namn... för att enkelt få åtkomst till Application Gateway. 
 
-1. Hämta hello namnservrar från hello DNS-zonen bladet. I det här exemplet hello zonen 'contoso.net' har tilldelats namnservrar ' ns1-01.azure-dns.com', 'ns2-01.azure-DNS-.net', ' ns3-01.azure-dns.org', och ' ns4-01.azure-dns.info':
+1. Hämta namnservrarna på bladet DNS-zon. I det här exemplet har zonen ”contoso.net” tilldelats namnservrarna ”ns1-01.azure-dns.com”, ”ns2-01.azure-dns.net”, ”ns3-01.azure-dns.org” och ”ns4-01.azure-dns.info”:
 
  ![DNS-namnserver](./media/dns-domain-delegation/viewzonens500.png)
 
-Azure DNS skapas automatiskt auktoritära NS-poster i zonen som innehåller hello tilldelade namnservrar.  toosee hello namnserver namn via Azure PowerShell eller Azure CLI, du behöver tooretrieve dessa poster.
+Azure DNS skapar automatiskt auktoritativa NS-poster i din zon som innehåller de tilldelade namnservrarna.  Om du vill se namnservernamnen via Azure PowerShell eller Azure CLI behöver du bara hämta dessa poster.
 
-hello dessutom följande exempel hello steg tooretrieve hello namnservrar för en zon i Azure DNS med PowerShell och Azure CLI.
+I följande exempel finns exempel på hur du kan hämta namnservrarna för en zon i Azure DNS med PowerShell och Azure CLI.
 
 ### <a name="powershell"></a>PowerShell
 
 ```powershell
-# hello record name "@" is used toorefer toorecords at hello top of hello zone.
+# The record name "@" is used to refer to records at the top of the zone.
 $zone = Get-AzureRmDnsZone -Name contoso.net -ResourceGroupName contosoRG
 Get-AzureRmDnsRecordSet -Name "@" -RecordType NS -Zone $zone
 ```
 
-följande exempel hello är hello svar.
+Följande exempel är svaret.
 
 ```
 Name              : @
@@ -88,7 +88,7 @@ Metadata          :
 az network dns record-set show --resource-group contosoRG --zone-name contoso.net --type NS --name @
 ```
 
-följande exempel hello är hello svar.
+Följande exempel är svaret.
 
 ```json
 {
@@ -116,25 +116,25 @@ följande exempel hello är hello svar.
 }
 ```
 
-## <a name="delegate-hello-domain"></a>Delegera hello domän
+## <a name="delegate-the-domain"></a>Delegera domänen
 
-Nu när du har hello namnservrar och hello DNS-zonen skapas måste toobe uppdateras med hello Azure DNS-namnservrar hello överordnade domänen. Varje register har sina egna DNS management tools toochange hello namnserverposter för en domän. Hej domänregistrators DNS-hantering på sidan Redigera hello NS-poster och Ersätt hello NS-poster med hello som skapats i Azure DNS.
+Nu när du har namnservrar och DNS-zonen är skapad måste den överordnade domänen uppdateras med Azure DNS-namnservrarna. Varje registrator har sina egna DNS-hanteringsverktyg för att ändra namnserverposterna för en domän. På registratorns DNS-hanteringssida redigerar du NS-posterna och ersätter NS-posterna med dem som Azure DNS skapat.
 
-När delegera en domän tooAzure DNS, måste du använda hello servernamn tillhandahålls av Azure DNS. Det rekommenderas toouse alla fyra namn servernamn, oavsett hello namnet på din domän. Domän-delegering kräver inte hello name server name toouse hello samma toppnivådomänen som din domän.
+När du delegerar en domän till Azure DNS måste du använda namnservernamnen som tillhandahålls av Azure DNS. Vi rekommenderar att du använder alla fyra namnservernamn, oavsett vilket namn din domän har. Domändelegering kräver inte att namnservernamnet använder samma toppnivådomän som din domän.
 
-Du bör inte använda ”sammanlänkande poster' toopoint toohello Azure DNS-namnet IP-adresser, eftersom dessa IP-adresser kan ändras i framtiden. Delegering med hjälp av namnservernamn i din egen zon, även kallat ”vanity name servers”, stöds inte i Azure DNS.
+Använd inte ”fästposter” för att peka på IP-adresser för Azure DNS-namnservrar eftersom dessa IP-adresser kan komma att ändras i framtida. Delegering med hjälp av namnservernamn i din egen zon, även kallat ”vanity name servers”, stöds inte i Azure DNS.
 
 ## <a name="verify-name-resolution-is-working"></a>Kontrollera att namnmatchningen fungerar
 
-När du har slutfört hello delegering kan du kontrollera att namnmatchning fungerar genom att använda ett verktyg som till exempel ”nslookup” tooquery hello SOA-post för zonen (som skapas automatiskt när hello zon skapas).
+När du har slutfört delegeringen kan du kontrollera att namnmatchningen fungerar med hjälp av ett verktyg som till exempel ”nslookup” för att fråga efter SOA-posten för din zon (som skapas automatiskt när zonen skapas).
 
-Du har inte toospecify hello Azure DNS-namnservrar hittar om hello delegering har ställts in korrekt hello normal DNS lösningsprocessen hello namnservrar automatiskt.
+Du behöver inte ange Azure DNS-namnservrarna om delegeringen har konfigurerats korrekt. Den normala DNS-matchningsprocessen hittar namnservrarna automatiskt.
 
 ```
 nslookup -type=SOA contoso.com
 ```
 
-hello följande är ett exempelsvar från hello föregående kommando:
+Här följer ett exempel på ett svar från föregående kommando:
 
 ```
 Server: ns1-04.azure-dns.com
@@ -152,81 +152,81 @@ default TTL = 300 (5 mins)
 
 ## <a name="delegate-sub-domains-in-azure-dns"></a>Delegera underdomäner i Azure DNS
 
-Om du vill tooset in en separat underordnad zon kan delegera du en underordnad domän i Azure DNS. Till exempel att ställa in och delegerad 'contoso.net' i Azure DNS du anta att du vill tooset in en separat underordnad zon 'partners.contoso.net'.
+Om du vill konfigurera en separat underordnad zon kan du delegera en underdomän i Azure DNS. Anta till exempel att du har konfigurerat och delegerat ”contoso.net” i Azure DNS och att du vill konfigurera en separat underordnad zon, ”partners.contoso.net”.
 
-1. Skapa partners.contoso.net' hello underordnade zonen' i Azure DNS.
-2. Leta upp hello auktoritära NS-poster i hello underordnade zonen tooobtain hello namnservrar värd hello underordnade zonen i Azure DNS.
-3. Delegera hello underordnade zonen genom att konfigurera NS-poster i hello överordnade zonen pekar toohello underordnad zon.
+1. Skapa den underordnade zonen ”partners.contoso.net” i Azure DNS.
+2. Leta upp de auktoritativa NS-posterna i den underordnade zonen  för att hämta namnservrarna som är värdar för den underordnade zonen i Azure DNS.
+3. Delegera den underordnade zonen genom att konfigurera NS-poster i den överordnade zonen som pekar på den underordnade zonen.
 
 ### <a name="create-a-dns-zone"></a>Skapa en DNS-zon
 
-1. Logga in toohello Azure-portalen
-1. Hej hubbmenyn, klicka på och klicka på **New > nätverk >** och klicka sedan på **DNS-zonen** tooopen hello skapa DNS-zonen bladet.
+1. Logga in på Azure Portal
+1. Klicka på **Nytt > Nätverk >** på navmenyn och klicka sedan på **DNS-zon** för att öppna bladet Skapa DNS-zon.
 
     ![DNS-zon](./media/dns-domain-delegation/dns.png)
 
-1. På hello **skapa DNS-zonen** bladet ange hello följande värden, och klicka sedan på **skapa**:
+1. På bladet **Skapa DNS-zon** anger du följande värden och klickar sedan på **Skapa**:
 
    | **Inställning** | **Värde** | **Detaljer** |
    |---|---|---|
-   |**Namn**|partners.contoso.net|hello namnet på hello DNS-zonen|
-   |**Prenumeration**|[Din prenumeration]|Välj en prenumeration toocreate hello Programgateway i.|
-   |**Resursgrupp**|**Använd befintlig:** contosoRG|Skapa en resursgrupp. hello resursgruppens namn måste vara unikt inom hello-prenumeration som du har valt. Mer om resursgrupper läsa hello toolearn [Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fdns%2ftoc.json#resource-groups) översiktsartikel.|
+   |**Namn**|partners.contoso.net|Namnet på DNS-zonen|
+   |**Prenumeration**|[Din prenumeration]|Välj den prenumeration där du vill skapa programgatewayen.|
+   |**Resursgrupp**|**Använd befintlig:** contosoRG|Skapa en resursgrupp. Resursgruppens namn måste vara unikt inom den prenumeration du valde. Mer information om resursgrupper finns i [översikten över Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fdns%2ftoc.json#resource-groups).|
    |**Plats**|Västra USA||
 
 > [!NOTE]
-> hello resursgruppen refererar toohello platsen för hello resursgruppen och har ingen inverkan på hello DNS-zon. hello DNS-zonen plats är alltid ”globala” och visas inte.
+> Resursgruppen refererar till platsen för resursgruppen och har ingen inverkan på DNS-zonen. Platsen för DNS-zonen är alltid "global" och visas inte.
 
 ### <a name="retrieve-name-servers"></a>Hämta namnservrar
 
-1. Med hello DNS-zon som skapats i hello Azure-portalen **Favoriter** rutan klickar du på **alla resurser**. Klicka på hello **partners.contoso.net** DNS-zonen i hello **alla resurser** bladet. Om hello-prenumeration som du har valt redan har flera resurser i den, kan du ange **partners.contoso.net** i hello filtrera efter namn... rutan tooeasily åtkomst hello DNS-zon.
+1. I Azure Portal klickar du på **Alla resurser** i rutan **Favoriter** för den DNS-zon du skapade. Klicka på DNS-zonen **partners.contoso.net** på bladet **Alla resurser**. Om den prenumeration du valde redan har flera resurser kan du ange **partners.contoso.net** i rutan Filtrera efter namn... när du ska hitta din DNS-zon.
 
-1. Hämta hello namnservrar från hello DNS-zonen bladet. I det här exemplet hello zonen 'contoso.net' har tilldelats namnservrar ' ns1-01.azure-dns.com', 'ns2-01.azure-DNS-.net', ' ns3-01.azure-dns.org', och ' ns4-01.azure-dns.info':
+1. Hämta namnservrarna på bladet DNS-zon. I det här exemplet har zonen ”contoso.net” tilldelats namnservrarna ”ns1-01.azure-dns.com”, ”ns2-01.azure-dns.net”, ”ns3-01.azure-dns.org” och ”ns4-01.azure-dns.info”:
 
  ![DNS-namnserver](./media/dns-domain-delegation/viewzonens500.png)
 
-Azure DNS skapas automatiskt auktoritära NS-poster i zonen som innehåller hello tilldelade namnservrar.  toosee hello namnserver namn via Azure PowerShell eller Azure CLI, du behöver tooretrieve dessa poster.
+Azure DNS skapar automatiskt auktoritativa NS-poster i din zon som innehåller de tilldelade namnservrarna.  Om du vill se namnservernamnen via Azure PowerShell eller Azure CLI behöver du bara hämta dessa poster.
 
 ### <a name="create-name-server-record-in-parent-zone"></a>Skapa namnserverpost i överordnad zon
 
-1. Navigera toohello **contoso.net** DNS-zonen i hello Azure-portalen.
+1. Navigera till DNS-zonen **contoso.net** i Azure Portal.
 1. Klicka på **+ Postuppsättning**
-1. På hello **lägga till postuppsättning** bladet ange hello följande värden, och klicka sedan på **OK**:
+1. Ange följande värden på bladet **Lägg till uppsättning av poster** och klicka sedan på **OK**.
 
    | **Inställning** | **Värde** | **Detaljer** |
    |---|---|---|
-   |**Namn**|partner|hello namnet på hello underordnade DNS-zonen|
+   |**Namn**|partner|Namnet på den underordnade DNS-zonen|
    |**Typ**|NS|Använd NS för namnserverposter.|
-   |**TTL**|1|Tid toolive.|
-   |**TTL-enhet**|Timmar|Anger tid toolive enhet toohours|
-   |**NAMNSERVER**|{namnservrar från zonen partners.contoso.net}|Ange alla 4 i hello namnservrar från partners.contoso.net zon. |
+   |**TTL**|1|Time to live.|
+   |**TTL-enhet**|Timmar|anger timmar som enheter för time to live|
+   |**NAMNSERVER**|{namnservrar från zonen partners.contoso.net}|Ange alla 4 namnservrarna från partners.contoso.net.zone. |
 
    ![DNS-namnserver](./media/dns-domain-delegation/partnerzone.png)
 
 
 ### <a name="delegating-sub-domains-in-azure-dns-with-other-tools"></a>Delegera underdomäner i Azure DNS med andra verktyg
 
-hello innehåller följande exempel hello steg toodelegate underdomäner i Azure DNS med PowerShell och CLI:
+I följande exempel får du anvisningar för hur du delegerar underdomäner i Azure DNS med PowerShell och CLI:
 
 #### <a name="powershell"></a>PowerShell
 
-hello följande PowerShell-exempel visar hur det fungerar. hello samma steg kan utföras via hello Azure-portalen eller via hello plattformsoberoende Azure CLI.
+Följande PowerShell-exempel demonstrerar hur det fungerar. Du kan utföra samma steg från Azure Portal, eller via plattformsoberoende Azure CLI.
 
 ```powershell
-# Create hello parent and child zones. These can be in same resource group or different resource groups as Azure DNS is a global service.
+# Create the parent and child zones. These can be in same resource group or different resource groups as Azure DNS is a global service.
 $parent = New-AzureRmDnsZone -Name contoso.net -ResourceGroupName contosoRG
 $child = New-AzureRmDnsZone -Name partners.contoso.net -ResourceGroupName contosoRG
 
-# Retrieve hello authoritative NS records from hello child zone as shown in hello next example. This contains hello name servers assigned toohello child zone.
+# Retrieve the authoritative NS records from the child zone as shown in the next example. This contains the name servers assigned to the child zone.
 $child_ns_recordset = Get-AzureRmDnsRecordSet -Zone $child -Name "@" -RecordType NS
 
-# Create hello corresponding NS record set in hello parent zone toocomplete hello delegation. hello record set name in hello parent zone matches hello child zone name, in this case "partners".
+# Create the corresponding NS record set in the parent zone to complete the delegation. The record set name in the parent zone matches the child zone name, in this case "partners".
 $parent_ns_recordset = New-AzureRmDnsRecordSet -Zone $parent -Name "partners" -RecordType NS -Ttl 3600
 $parent_ns_recordset.Records = $child_ns_recordset.Records
 Set-AzureRmDnsRecordSet -RecordSet $parent_ns_recordset
 ```
 
-Använd `nslookup` tooverify allt har konfigurerats korrekt genom att leta upp hello SOA-post på hello underordnad zon.
+Använd `nslookup` för att kontrollera att allt är korrekt konfigurerat genom att leta upp SOA-posten för den underordnade zonen.
 
 ```
 nslookup -type=SOA partners.contoso.com
@@ -251,12 +251,12 @@ partners.contoso.com
 ```azurecli
 #!/bin/bash
 
-# Create hello parent and child zones. These can be in same resource group or different resource groups as Azure DNS is a global service.
+# Create the parent and child zones. These can be in same resource group or different resource groups as Azure DNS is a global service.
 az network dns zone create -g contosoRG -n contoso.net
 az network dns zone create -g contosoRG -n partners.contoso.net
 ```
 
-Hämta hello namnservrar för hello `partners.contoso.net` zon från hello-utdata.
+Hämta namnservrarna för `partners.contoso.net`-zonen från utdata.
 
 ```
 {
@@ -278,12 +278,12 @@ Hämta hello namnservrar för hello `partners.contoso.net` zon från hello-utdat
 }
 ```
 
-Skapa hello postuppsättning och NS-poster för varje namnserver.
+Skapa postuppsättningen och NS-poster för varje namnserver.
 
 ```azurecli
 #!/bin/bash
 
-# Create hello record set
+# Create the record set
 az network dns record-set ns create --resource-group contosorg --zone-name contoso.net --name partners
 
 # Create a ns record for each name server.
@@ -295,11 +295,11 @@ az network dns record-set ns add-record --resource-group contosorg --zone-name c
 
 ## <a name="delete-all-resources"></a>Ta bort alla resurser
 
-toodelete alla resurser skapas i den här artikeln, fullständig hello följande steg:
+Så här tar du bort alla resurser som skapats i den här artikeln:
 
-1. I hello Azure-portalen **Favoriter** rutan klickar du på **alla resurser**. Klicka på hello **contosorg** resursgrupp i hello bladet för alla resurser. Om hello-prenumeration som du har valt redan har flera resurser i den, kan du ange **contosorg** i hello **filtrera efter namn...** rutan tooeasily åtkomst hello resursgruppens namn.
-1. I hello **contosorg** bladet, klickar du på hello **ta bort** knappen.
-1. hello portalen måste du tootype hello namnet på hello resurs grupp tooconfirm som du vill toodelete den. Typen *contosorg* hello resursgruppens namn, sedan klickar du på **ta bort**. Tar bort en resursgrupp alla resurser inom hello resursgrupp, så alltid att tooconfirm hello innehållet i en resursgrupp innan den tas bort. hello portal tar bort alla resurser som ingår i hello resursgrupp och sedan tar bort hello resursgruppen sig själv. Den här processen tar flera minuter.
+1. Klicka på **Alla resurser** i rutan **Favoriter** i Azure Portal. Klicka på resursgruppen **contosorg** på bladet Alla resurser. Om den prenumeration du valde redan har flera resurser kan du ange **contosorg** i rutan **Filtrera efter namn...** när du ska hitta resursgruppen.
+1. Klicka på knappen **Ta bort** i bladet **contosorg**.
+1. Du måste ange namnet på resursgruppen i portalen som bekräftelse på att du vill ta bort den. Skriv *contosorg* som resursgruppnamn och klicka sedan på **Ta bort**. När du tar bort en resursgrupp så tas alla resurser i resursgruppen bort, så du måste alltid kontrollera innehållet i en resursgrupp innan du tar bort den. Portalen tar bort alla resurser som finns i resursgruppen och sedan tas själva resursgruppen bort. Den här processen tar flera minuter.
 
 ## <a name="next-steps"></a>Nästa steg
 

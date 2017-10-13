@@ -1,6 +1,6 @@
 ---
 title: "Självstudier: Konfigurera LucidChart för automatisk användaretablering med Azure Active Directory | Microsoft Docs"
-description: "Lär dig hur tooconfigure Azure Active Directory tooautomatically etablera och avinstallation etablera användarkonton tooLucidChart."
+description: "Lär dig hur du konfigurerar Azure Active Directory för att automatiskt etablera och avetablera användarkonton till LucidChart."
 services: active-directory
 documentationcenter: 
 author: asmalser-msft
@@ -14,82 +14,82 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: asmalser-msft
-ms.openlocfilehash: d3af45141731215f2edc8942ad21b016468c1e38
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 1f9344a5e750360e21ed7dc8e3ed013c2c2e1a45
+ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/29/2017
 ---
 # <a name="tutorial-configuring-lucidchart-for-automatic-user-provisioning"></a>Självstudier: Konfigurera LucidChart för automatisk Användaretablering
 
 
-hello syftet med den här kursen är tooshow du hello stegen tooperform i LucidChart och Azure AD tooautomatically etablera och avinstallation etablera användarkonton från Azure AD tooLucidChart. 
+Syftet med den här kursen är att visa de steg som du behöver göra i LucidChart och Azure AD för att automatiskt etablera och avetablera användarkonton från Azure AD till LucidChart. 
 
 ## <a name="prerequisites"></a>Krav
 
-hello-scenario som beskrivs i den här kursen förutsätter att du redan har hello följande objekt:
+Det scenario som beskrivs i den här kursen förutsätter att du redan har följande objekt:
 
 *   En Azure Active directory-klient
-*   En LucidChart klient med hello [företagsplan](https://www.lucidchart.com/user/117598685#/subscriptionLevel) eller bättre aktiverat 
+*   En LucidChart klient med den [företagsplan](https://www.lucidchart.com/user/117598685#/subscriptionLevel) eller bättre aktiverat 
 *   Ett användarkonto i LucidChart med administratörsbehörigheter 
 
-## <a name="assigning-users-toolucidchart"></a>Tilldela användare tooLucidChart
+## <a name="assigning-users-to-lucidchart"></a>Tilldela användare till LucidChart
 
-Azure Active Directory använder ett begrepp som kallas ”tilldelningar” toodetermine som användarna ska få åtkomst till tooselected appar. Hello gäller automatisk konto användaretablering är är bara hello användare och grupper som har ”tilldelats” tooan program i Azure AD synkroniserad. 
+Azure Active Directory använder ett begrepp som kallas ”tilldelningar” för att avgöra vilka användare ska få åtkomst till valda appar. I samband med automatisk konto användaretablering, synkroniseras de användare och grupper som har ”tilldelats” till ett program i Azure AD. 
 
-Innan du konfigurerar och aktiverar hello etableras, måste toodecide vilka användare och/eller grupper i Azure AD representerar hello användare som behöver åtkomst till tooyour LucidChart app. När du valt, kan du tilldela dessa användare tooyour LucidChart app genom att följa hello anvisningarna här:
+Innan du konfigurerar och aktiverar tjänsten etablering, måste du bestämma vilka användare och/eller grupper i Azure AD representerar de användare som behöver åtkomst till appen LucidChart. När bestämt, kan du tilldela dessa användare i appen LucidChart genom att följa anvisningarna här:
 
-[Tilldela en användare eller grupp tooan enterprise app](active-directory-coreapps-assign-user-azure-portal.md)
+[Tilldela en användare eller grupp till en enterprise-app](active-directory-coreapps-assign-user-azure-portal.md)
 
-### <a name="important-tips-for-assigning-users-toolucidchart"></a>Viktiga tips för att tilldela användare tooLucidChart
+### <a name="important-tips-for-assigning-users-to-lucidchart"></a>Viktiga tips för att tilldela användare till LucidChart
 
-*   Vi rekommenderar att en enda Azure AD-användare är tilldelad tooLucidChart tootest hello etablering konfiguration. Ytterligare användare och/eller grupper kan tilldelas senare.
+*   Vi rekommenderar att en enda Azure AD-användare har tilldelats LucidChart för att testa allokering konfigurationen. Ytterligare användare och/eller grupper kan tilldelas senare.
 
-*   När du tilldelar en användare tooLucidChart, måste du välja antingen hello **användaren** roll eller en annan giltig programspecifika roll (om tillgängliga) i dialogrutan för hello tilldelning. Hej **standard åtkomst** roll fungerar inte för etablering och dessa användare hoppas över.
+*   När du tilldelar en användare LucidChart, måste du välja någon av **användaren** roll eller en annan giltig programspecifika roll (om tillgängliga) i dialogrutan tilldelning. Den **standard åtkomst** roll fungerar inte för etablering och dessa användare hoppas över.
 
 
-## <a name="configuring-user-provisioning-toolucidchart"></a>Konfigurera användaretablering tooLucidChart 
+## <a name="configuring-user-provisioning-to-lucidchart"></a>Konfigurering av användarförsörjning till LucidChart 
 
-Det här avsnittet hjälper dig att ansluta din Azure AD-tooLucidChart användarkonto API-etablering och konfigurerar hello etablering service toocreate, uppdatera och inaktivera tilldelade användarkonton i LucidChart baserat på tilldelning av användare och grupper i Azure AD .
+Det här avsnittet hjälper dig att ansluta din Azure AD till Lucidcharts användarkonto API-etablering och konfigurera tjänsten etablering för att skapa, uppdatera och inaktivera tilldelade användarkonton i LucidChart baserat på tilldelning av användare och grupper i Azure AD.
 
 > [!TIP]
-> Du kan också välja tooenabled SAML-baserade enkel inloggning för LucidChart, följa instruktionerna i hello [Azure-portalen](https://portal.azure.com). Enkel inloggning kan konfigureras oberoende av Automatisk etablering, även om dessa två funktioner komplettera varandra.
+> Du kan också välja att aktivera SAML-baserade enkel inloggning för LucidChart, följer du instruktionerna som anges i [Azure-portalen](https://portal.azure.com). Enkel inloggning kan konfigureras oberoende av Automatisk etablering, även om dessa två funktioner komplettera varandra.
 
 
-### <a name="configure-automatic-user-account-provisioning-toolucidchart-in-azure-ad"></a>Konfigurera automatisk användarkonto etablering tooLucidChart i Azure AD
+### <a name="configure-automatic-user-account-provisioning-to-lucidchart-in-azure-ad"></a>Konfigurera automatisk konto användaretablering till LucidChart i Azure AD
 
 
-1. I hello [Azure-portalen](https://portal.azure.com), bläddra toohello **Azure Active Directory > Företagsappar > alla program** avsnitt.
+1. I den [Azure-portalen](https://portal.azure.com), bläddra till den **Azure Active Directory > Företagsappar > alla program** avsnitt.
 
-2. Om du redan har konfigurerat LucidChart för enkel inloggning, söka efter din instans av LucidChart hjälp hello sökfältet. Annars väljer **Lägg till** och Sök efter **LucidChart** i hello programgalleriet. Välj LucidChart från hello sökresultaten och lägga till den tooyour listan med program.
+2. Om du redan har konfigurerat LucidChart för enkel inloggning, söka efter din instans av LucidChart med hjälp av sökfältet. Annars väljer **Lägg till** och Sök efter **LucidChart** i programgalleriet. Välj LucidChart i sökresultatet och lägga till den i listan med program.
 
-3. Välj din instans av LucidChart och sedan hello **etablering** fliken.
+3. Välj din instans av LucidChart och sedan den **etablering** fliken.
 
-4. Ange hello **etablering läge** för**automatisk**.
+4. Ange den **Etableringsläge** till **automatisk**.
 
     ![LucidChart etablering](./media/active-directory-saas-lucidchart-provisioning-tutorial/LucidChart1.png)
 
-5. Under hello **administratörsautentiseringsuppgifter** avsnitt, inkommande hello **hemlighet Token** genereras av din LucidChart konto (du kan hitta hello token under kontot: **Team**  >  **Appintegrering** > **SCIM**). 
+5. Under den **administratörsautentiseringsuppgifter** avsnitt, ange den **hemlighet Token** genereras av din LucidChart konto (du kan söka efter token under kontot: **Team**  >  **Appintegrering** > **SCIM**). 
 
     ![LucidChart etablering](./media/active-directory-saas-lucidchart-provisioning-tutorial/LucidChart2.png)
 
-6. I hello Azure-portalen klickar du på **Testanslutningen** tooensure Azure AD kan ansluta tooyour LucidChart app. Om hello anslutningen misslyckas, kontrollera kontots LucidChart har administratörsbehörigheter och försök steg 5 igen.
+6. I Azure-portalen klickar du på **Testanslutningen** så Azure AD kan ansluta till din LucidChart app. Om anslutningen misslyckas, kontrollera kontots LucidChart har administratörsbehörigheter och försök steg 5 igen.
 
-7. Ange hello e-postadress för en person eller grupp som ska få meddelanden om etablering fel i hello **e-postmeddelande** fältet och kontrollera hello kryssrutan ”Skicka ett e-postmeddelande när ett fel uppstår”.
+7. Ange e-postadressen för en person eller grupp som ska få meddelanden om etablering fel i den **e-postmeddelande** fält och markera kryssrutan ”Skicka ett e-postmeddelande när ett fel uppstår”.
 
 8. Klicka på **Spara**. 
 
-9. Välj under hello mappningar avsnitt, **synkronisera Azure Active Directory-användare tooLucidChart**.
+9. Välj under avsnittet mappningar **synkronisera Azure Active Directory-användare LucidChart**.
 
-10. I hello **attributmappning** avsnittet kan du granska hello användarattribut som synkroniseras från Azure AD tooLucidChart. Hej attribut som valts som **matchande** egenskaper är används toomatch hello användarkonton i LucidChart för uppdateringsåtgärder. Välj hello spara knappen toocommit ändringar.
+10. I den **attributmappning** avsnittet kan du granska användarattribut som synkroniseras från Azure AD till LucidChart. De attribut som valts som **matchande** egenskaper som används för att matcha användarkonton i LucidChart för uppdateringsåtgärder. Välj knappen Spara för att genomföra ändringarna.
 
-11. tooenable hello Azure AD-etablering tjänsten för LucidChart, ändra hello **Status för etablering** för**på** i hello **inställningar** avsnitt
+11. Om du vill aktivera Azure AD-tjänsten för LucidChart-etablering, ändra den **Status för etablering** till **på** i den **inställningar** avsnitt
 
 12. Klicka på **Spara**. 
 
-Den här åtgärden startar hello den första synkroniseringen av användare och/eller grupper som har tilldelats tooLucidChart i hello användare och grupper avsnitt. hello inledande synkronisering tar längre tid tooperform än efterföljande synkroniseringar som sker ungefär var tjugonde minut så länge hello-tjänsten körs. Du kan använda hello **synkroniseringsinformation** avsnittet toomonitor förlopp och följ länkarna tooprovisioning aktivitetsrapporter, som beskriver alla åtgärder som utförs av hello etableras.
+Den här åtgärden startar den första synkroniseringen av användare och/eller grupper som tilldelas till LucidChart i avsnittet användare och grupper. Den första synkroniseringen tar längre tid än efterföljande synkroniseringar som sker ungefär var tjugonde minut så länge som tjänsten körs. Du kan använda den **synkroniseringsinformation** avsnittet för att övervaka förloppet och följ länkarna till att etablera aktivitetsrapporter som beskriver alla åtgärder som utförs av tjänsten etablering.
 
-Mer information om hur tooread hello Azure AD-etablering loggar finns [rapportering om automatisk konto användaretablering](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-saas-provisioning-reporting).
+Mer information om hur du tolkar Azure AD-etablering loggar finns [rapportering om automatisk konto användaretablering](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-saas-provisioning-reporting).
 
 
 ## <a name="additional-resources"></a>Ytterligare resurser
@@ -99,4 +99,4 @@ Mer information om hur tooread hello Azure AD-etablering loggar finns [rapporter
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Lär dig hur tooreview loggar och få rapporter om etablering aktivitet](active-directory-saas-provisioning-reporting.md)
+* [Lär dig hur du granska loggarna och få rapporter om etablering aktivitet](active-directory-saas-provisioning-reporting.md)

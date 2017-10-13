@@ -1,5 +1,5 @@
 >[!NOTE]
->För resurser som inte har åtgärdats, kan du begära hello kvoter toobe aktiveras genom att öppna ett supportärende. Gör **inte** skapa ytterligare Azure Media Services-konton i ett försök tooobtain högre gränser.
+>För resurser som inte är fasta kan du be om att öka kvoterna genom att skapa ett supportärende. Försök **inte** få högre gränser genom att skapa ytterligare Azure Media Services-konton.
 
 | Resurs | Standardgräns | 
 | --- | --- | 
@@ -18,28 +18,28 @@
 | Strömningsenheter per slutpunkt för direktuppspelning |10 |
 | Lagringskonton | 1 000<sup>(5)</sup> (fast) |
 | Principer | 1 000 000<sup>(6)</sup> |
-| Filstorlek| I vissa fall att det finns en gräns på hello maximal filstorlek som stöds för bearbetning i Media Services. <sup>7</sup> |
+| Filstorlek| I vissa fall finns det en gräns för maximal filstorlek för bearbetning i Media Services. <sup>7</sup> |
   
-<sup>1</sup> S3 RU:er är inte tillgängliga i västra Indien. Hej max RU gränser återställs om hello kunden ändrar hello typ (till exempel från S2 tooS1). 
+<sup>1</sup> S3 RU:er är inte tillgängliga i västra Indien. Max RU gränser återställs om kunden ändrar typ (till exempel från S2 till S1). 
 
-<sup>2</sup> Det här värdet innefattar jobb i kö och avslutade, aktiva och avbrutna jobb. Det innefattar inte borttagna jobb. Du kan ta bort hello gamla jobb med hjälp av **IJob.Delete** eller hello **ta bort** HTTP-begäran.
+<sup>2</sup> Det här värdet innefattar jobb i kö och avslutade, aktiva och avbrutna jobb. Det innefattar inte borttagna jobb. Du kan ta bort gamla jobb med **IJob.Delete** eller HTTP-begäran **DELETE**.
 
-Startar 1 April 2017 raderas alla jobb poster i ditt konto som är äldre än 90 dagar automatiskt, tillsammans med dess associerade aktiviteten poster, även om hello Totalt antal poster som är lägre än hello maximala kvoten. Om du behöver tooarchive hello projektaktivitet/information du kan använda hello kod beskrivs [här](../articles/media-services/media-services-dotnet-manage-entities.md).
+Från och med 1 april 2017 raderas alla jobbposter i ditt konto som är äldre än 90 dagar automatiskt, tillsammans med deras associerade uppgiftsposter, även om det totala antalet poster är lägre än den maximala kvoten. Om du behöver arkivera jobb/uppgiftsinformationen kan du använda koden som beskrivs [här](../articles/media-services/media-services-dotnet-manage-entities.md).
 
-<sup>3</sup> när du gör en begäran toolist jobbet entiteter kan högst 1 000 returneras per begäran. Om du behöver tookeep reda på alla skickade jobb kan du använda upp/skip enligt beskrivningen i [OData system frågealternativ](http://msdn.microsoft.com/library/gg309461.aspx).
+<sup>3</sup> När du gör en begäran till jobblistan kan högst 1 000 entiteter returneras per begäran. Om du behöver följa upp alla skickade jobb kan du använda top/skip (maximalt antal poster som ska returneras/hoppa över) på det sätt som beskrivs i [OData system query options](http://msdn.microsoft.com/library/gg309461.aspx) (OData-systemfrågealternativ).
 
-<sup>4</sup> Positionerare är inte utformade för att hantera åtkomstkontroll per användare. toogive olika åtkomst rättigheter tooindividual användare använda Digital Rights Management (DRM) lösningar. Mer information finns i [det här](../articles/media-services/media-services-content-protection-overview.md) avsnittet.
+<sup>4</sup> Positionerare är inte utformade för att hantera åtkomstkontroll per användare. Om du vill ge olika åtkomsträttigheter till enskilda användare kan du använda DRM-lösningar (Digital Rights Management). Mer information finns i [det här](../articles/media-services/media-services-content-protection-overview.md) avsnittet.
 
-<sup>5</sup> hello storage-konton måste vara från hello samma Azure-prenumeration.
+<sup>5</sup> Lagringskontona måste tillhöra samma Azure-prenumeration.
 
 <sup>6</sup> Det finns en gräns på 1 000 000 principer för olika AMS-principer (till exempel för positionerarprincipen eller ContentKeyAuthorizationPolicy). 
 
 >[!NOTE]
-> Du bör använda hello samma princip-ID om du alltid använder hello samma dagar / åtkomstbehörigheter / osv. Mer information och ett exempel finns i [det här](../articles/media-services/media-services-dotnet-manage-entities.md#limit-access-policies) avsnittet.
+> Du bör använda samma princip-ID om du alltid använder samma dagar, åtkomstbehörigheter etc. Mer information och ett exempel finns i [det här](../articles/media-services/media-services-dotnet-manage-entities.md#limit-access-policies) avsnittet.
 
-<sup>7</sup>om du överför innehåll tooan tillgångar i Azure Media Services med hello avsiktshantering tooprocess den med något av hello media processorer i vår tjänst (d.v.s. kodare som Media Encoder Standard och Media Encoder Premium arbetsflöde eller analys som står inför detektor), bör sedan du vara medveten om hello begränsningen på hello maximala storlek. 
+<sup>7</sup>om du överför innehåll till en tillgång i Azure Media Services med avsikt att bearbeta den med något av de media processorerna i vår tjänst (d.v.s. kodare som Media Encoder Standard och Media Encoder Premium arbetsflöde eller analys motorer som ansikte Detektor), och du bör vara medveten om villkoret för den maximala storleken. 
 
-Från och med den 15 maj 2017 hello maximala storleken som stöds för en enda blob är 195 TB - med filen largers än den här gränsen, uppgiften misslyckas. Vi arbetar en korrigering tooaddress den här gränsen. Dessutom hello begränsningen på hello maxstorleken för hello tillgången är som följer.
+Från och med den 15 maj 2017 den maximala storleken som stöds för en enda blob är 195 TB - med filen largers än den här gränsen, uppgiften misslyckas. Vi arbetar en lösning för att åtgärda den här gränsen. Dessutom är begränsningen för maximal storlek för tillgången som följer.
 
 | Mediereserverad enhet | Maximal inkommande storlek (GB)| 
 | --- | --- | 

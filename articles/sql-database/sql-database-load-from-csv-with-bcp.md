@@ -1,6 +1,6 @@
 ---
-title: "aaaLoad data från CSV-filen till Azure SQL Database (bcp) | Microsoft Docs"
-description: "För små datastorlekar, använder du bcp tooimport data till Azure SQL Database."
+title: "Läs in data från CSV-fil till Azure SQL Database (bcp) | Microsoft Docs"
+description: "För mindre datastorlekar används bcp för att importera data till Azure SQL Database."
 services: sql-database
 documentationcenter: NA
 author: CarlRabeler
@@ -15,32 +15,32 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.date: 01/10/2017
 ms.author: carlrab
-ms.openlocfilehash: 9350e459aa844223820fbbd849a830cf0354d4e9
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 84bebab7763bb21f73880a6c8b367a62b0c137d3
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="load-data-from-csv-into-azure-sql-database-flat-files"></a>Läsa in data från CSV till Azure SQL Database (flat-filer)
-Du kan använda hello bcp kommandoradsverktyget tooimport data från en CSV-fil till Azure SQL Database.
+Du kan använda kommandoradsverktyget bcp för att importera data från en CSV-fil till Azure SQL Database.
 
 ## <a name="before-you-begin"></a>Innan du börjar
 ### <a name="prerequisites"></a>Krav
-toocomplete hello stegen i den här artikeln, måste du:
+Du behöver följande för att slutföra stegen i den här artikeln:
 
 * Skapa en logisk Azure SQL Database-server och -databas
-* hello kommandoradsverktyget BCP installerat
-* hello kommandoradsverktyget sqlcmd installerat
+* Kommandoradsverktyget bcp installerat
+* Kommandoradsverktyget sqlcmd installerat
 
-Du kan hämta verktygen bcp och sqlcmd för hello från hello [Microsoft Download Center][Microsoft Download Center].
+Du kan hämta verktygen bcp och sqlcmd från [Microsoft Download Center][Microsoft Download Center].
 
 ### <a name="data-in-ascii-or-utf-16-format"></a>Data i ASCII- eller UTF-16-format
-Om du provar den här självstudiekursen med dina egna data behöver data toouse hello ASCII- eller UTF-16-kodning eftersom bcp inte stöder UTF-8. 
+Om du använder egna data i självstudierna, måste de använda sig av ASCII- eller UTF-16-kodning eftersom bcp inte stöder UTF-8. 
 
 ## <a name="1-create-a-destination-table"></a>1. Skapa en måltabell
-Definiera en tabell i SQL-databas som hello måltabellen. hello kolumner i tabellen hello måste överensstämma med toohello data i varje rad i datafilen.
+Definiera en tabell i SQL Database som måltabellen. Kolumnerna i tabellen måste motsvara data i varje rad i din datafil.
 
-toocreate en tabell, öppna en kommandotolk och använder sqlcmd.exe toorun hello följande kommando:
+För att skapa en tabell, öppnar du en kommandotolk och använder sqlcmd.exe för att köra följande kommando:
 
 ```sql
 sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q "
@@ -56,7 +56,7 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 
 
 ## <a name="2-create-a-source-data-file"></a>2. Skapa en källdatafil
-Öppna Anteckningar och kopiera hello följande rader med data i en ny textfil och sedan spara den här filen tooyour lokala temp-katalog, C:\Temp\DimDate2.txt. Den här datan är i ASCII-format.
+Öppna Anteckningar och kopiera följande datarader till en ny textfil. Spara sedan filen till din lokala temp-katalog, C:\Temp\DimDate2.txt. Den här datan är i ASCII-format.
 
 ```
 20150301,1,3
@@ -73,26 +73,26 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 20150101,1,3
 ```
 
-(Valfritt) tooexport dina egna data från en SQL Server-databas, öppna en kommandotolk och kör följande kommando hello. Ersätt TableName, ServerName, DatabaseName, Username och Password med din egen information.
+(Valfritt) Om du vill exportera dina egna data från en SQL Server-databas, öppnar du en kommandotolk och kör följande kommando. Ersätt TableName, ServerName, DatabaseName, Username och Password med din egen information.
 
 ```bcp
 bcp <TableName> out C:\Temp\DimDate2_export.txt -S <ServerName> -d <DatabaseName> -U <Username> -P <Password> -q -c -t , 
 ```
 
-## <a name="3-load-hello-data"></a>3. Läs in hello data
-tooload hello data, öppna en kommandotolk och kör hello följande kommando, ersätter hello värdena för servernamn, databasen namn, användarnamn och lösenord med din egen information.
+## <a name="3-load-the-data"></a>3. Läs in data
+För att läsa in data, öppnar du en kommandotolk och kör följande kommando, där du ersätter värdena för servernamn, databasnamn, användarnamn och lösenord med din egen information.
 
 ```bcp
 bcp DimDate2 in C:\Temp\DimDate2.txt -S <ServerName> -d <DatabaseName> -U <Username> -P <password> -q -c -t  ,
 ```
 
-Använd det här kommandot tooverify hello data har lästs in korrekt
+Använd det här kommandot för att verifiera att data har lästs in korrekt
 
 ```bcp
 sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q "SELECT * FROM DimDate2 ORDER BY 1;"
 ```
 
-hello resultat bör se ut så här:
+Resultatet borde se ut så här:
 
 | DateId | CalendarQuarter | FiscalQuarter |
 | --- | --- | --- |
@@ -110,7 +110,7 @@ hello resultat bör se ut så här:
 | 20151201 |4 |2 |
 
 ## <a name="next-steps"></a>Nästa steg
-toomigrate en SQL Server-databas finns [SQL Server-Databasmigrering](sql-database-cloud-migrate.md).
+Om du vill migrera en SQL Server-databas hittar du mer information i [SQL Server-databasmigrering](sql-database-cloud-migrate.md).
 
 <!--MSDN references-->
 [bcp]: https://msdn.microsoft.com/library/ms162802.aspx

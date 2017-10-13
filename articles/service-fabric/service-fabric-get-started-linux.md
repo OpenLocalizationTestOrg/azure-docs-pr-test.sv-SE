@@ -1,6 +1,6 @@
 ---
-title: "aaaSet in din utvecklingsmiljö i Linux | Microsoft Docs"
-description: "Installera hello runtime och SDK och skapa en lokal utveckling kluster på Linux. När du har slutfört den här installationen kommer du att redo toobuild program."
+title: "Konfigurera en utvecklingsmiljö i Linux | Microsoft Docs"
+description: "Installera runtime och SDK, och skapa ett lokalt utvecklingskluster i Linux. När du har slutfört den här installationen är du redo att börja bygga program."
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
@@ -12,13 +12,13 @@ ms.devlang: dotNet
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 8/23/2017
+ms.date: 9/19/2017
 ms.author: subramar
-ms.openlocfilehash: 9d82c2015f9e2c6fb55f2052c7cdb1e906c5deeb
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: da9aff17c16e179be200677bfbfd1287fff269e3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Förbereda utvecklingsmiljön i Linux
 > [!div class="op_single_selector"]
@@ -28,101 +28,114 @@ ms.lasthandoff: 10/06/2017
 >
 >  
 
-toodeploy och kör [Azure Service Fabric program](service-fabric-application-model.md) på utvecklingsdatorn Linux installera hello körning och gemensamma SDK. Du kan även installera SDK:er för Java och .NET Core.
+För att kunna skapa och köra [Azure Service Fabric-program](service-fabric-application-model.md) på en Linux-utvecklingsdator måste du installera runtime och SDK. Du kan även installera SDK:er för Java- och .NET Core-utveckling.
 
 ## <a name="prerequisites"></a>Krav
 
-följande versioner av operativsystemet hello stöds för utveckling:
+Följande operativsystemversioner stöds för utveckling:
 
 * Ubuntu 16.04 (`Xenial Xerus`)
 
+## <a name="installation-methods"></a>Installationsmetoder
+
+### <a name="1-script-installation"></a>1. Installation av skript
+
+Ett skript anges för att underlätta installationen av Service Fabric runtime och Service Fabric common SDK tillsammans med **sfctl** CLI. Kör de manuella installationsstegen i nästa avsnitt för att avgöra vad som ska installeras och vilka licenser som godkänns. Vi förutsätter att du har godkänt licenserna för all programvara som installeras innan du kör skriptet. 
+
+När skriptet har körts du kan hoppa direkt till [Konfigurera ett lokalt kluster](#set-up-a-local-cluster).
+
+```bash
+sudo curl -s https://raw.githubusercontent.com/Azure/service-fabric-scripts-and-templates/master/scripts/SetupServiceFabric/SetupServiceFabric.sh | sudo bash
+```
+
+### <a name="2-manual-installation"></a>2. Manuell installation
+Följ resten av den här guiden för information om manuell installation av Service Fabric runtime och SDK.
+
 ## <a name="update-your-apt-sources"></a>Uppdatera dina APT-källor
-tooinstall hello SDK och hello associerade runtime-paketet via hello lgh get-kommandoradsverktyg, måste du först uppdatera avancerade paketering verktyget (LGH)-datakällor.
+Om du vill installera SDK och det tillhörande runtime-paketet via kommandoradsverktyget apt-get så måste du först uppdatera dina APT (Advanced Packaging Tool)-källor.
 
 1. Öppna en terminal.
-2. Lägg till hello Service Fabric lagringsplatsen tooyour källor lista.
+2. Lägga till Service Fabric-repon i listan med källor.
 
     ```bash
     sudo sh -c 'echo "deb [arch=amd64] http://apt-mo.trafficmanager.net/repos/servicefabric/ xenial main" > /etc/apt/sources.list.d/servicefabric.list'
     ```
 
-3. Lägg till hello `dotnet` lagringsplatsen tooyour källor lista.
+3. Lägg till `dotnet`-repon i listan med källor.
 
     ```bash
     sudo sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet-release/ xenial main" > /etc/apt/sources.list.d/dotnetdev.list'
     ```
 
-4. Lägg till hello nya Gnu sekretess Guard (GnuPG eller GPG) nyckeln tooyour LGH nyckelring.
+4. Lägg till den nya Gnu Privacy Guard-nyckeln (GnuPG eller GPG) i APT-nyckelringen.
 
     ```bash
     sudo apt-key adv --keyserver apt-mo.trafficmanager.net --recv-keys 417A0893
     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 417A0893
     ```
 
-5. Lägg till hello officiella Docker GPG viktiga tooyour LGH nyckelring.
+5. Lägg till den officiella Docker GPG-nyckeln i din APT-nyckelring.
 
     ```bash
     sudo apt-get install curl
     sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
     ```
 
-6. Ställ in hello Docker-databasen.
+6. Ställ in Docker-databasen.
 
     ```bash
     sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
     ```
 
-7. Uppdatera paketet innehåller baserat på hello nyligen lagt till databaser.
+7. Uppdatera paketlistor baserat på nyligen tillagda lagringsplatser.
 
     ```bash
     sudo apt-get update
     ```
 
-## <a name="install-and-set-up-hello-sdk-for-local-cluster-setup"></a>Installera och konfigurera hello SDK för konfiguration av lokal
+## <a name="install-and-set-up-the-service-fabric-sdk-for-local-cluster-setup"></a>Installera och konfigurera Service Fabric SDK för lokal klusterkonfiguration
 
-När du har uppdaterat dina datakällor kan du installera hello SDK. Installera hello Service Fabric SDK-paketet, bekräfta hello installationen och accepterar toohello licensavtalet (EULA).
+När du har uppdaterat källorna kan du installera SDK. Installera Service Fabric SDK-paketet, bekräfta installationen och acceptera licensavtalet (EULA).
 
 ```bash
 sudo apt-get install servicefabricsdkcommon
 ```
 
 >   [!TIP]
->   hello automatisera följande kommandon accepterar hello-licens för Service Fabric-paket:
+>   Följande kommandon automatiserar godkännandet av licensen för Service Fabric-paket:
 >   ```bash
->   echo "servicefabric servicefabric/accepted-eula-v1 select true" | sudo debconf-set-selections
->   echo "servicefabricsdkcommon servicefabricsdkcommon/accepted-eula-v1 select true" | sudo debconf-set-selections
+>   echo "servicefabric servicefabric/accepted-eula-ga select true" | sudo debconf-set-selections
+>   echo "servicefabricsdkcommon servicefabricsdkcommon/accepted-eula-ga select true" | sudo debconf-set-selections
 >   ```
 
 ## <a name="set-up-a-local-cluster"></a>Konfigurera ett lokalt kluster
-  Om hello-installationen har slutförts ska kunna toostart lokala klustret.
+  När installationen har slutförts ska du kunna starta ett lokalt kluster.
 
-  1. Kör hello installationsskriptet för klustret.
+  1. Kör klusterinstallationsskriptet.
 
       ```bash
       sudo /opt/microsoft/sdk/servicefabric/common/clustersetup/devclustersetup.sh
       ```
 
-  2. Öppna en webbläsare och gå för[Service Fabric Explorer](http://localhost:19080/Explorer). Du bör se hello Service Fabric Explorer instrumentpanelen om hello klustret har startats.
+  2. Öppna en webbläsare och gå till [Service Fabric Explorer](http://localhost:19080/Explorer). Om klustret har startats visas instrumentpanelen Service Fabric Explorer.
 
       ![Service Fabric Explorer på Linux][sfx-linux]
 
-  Nu kan du distribuera fördefinierade Service Fabric-programpaket eller nya paket baserat på gästbehållare eller körbara gästprogram. toobuild nya tjänster med hjälp av hello Java eller .NET Core SDK följer hello valfria konfigurationssteg som finns i följande avsnitt.
+  Nu kan du distribuera fördefinierade Service Fabric-programpaket eller nya paket baserat på gästbehållare eller körbara gästprogram. Om du vill skapa nya tjänster med SDK:er för Java eller .NET Core, följer du installationsanvisningarna i följande avsnitt.
 
 
   > [!NOTE]
-  > Fristående kluster stöds inte i Linux. hello preview stöder endast en ruta och flera datorer Azure Linux-kluster.
+  > Fristående kluster stöds inte i Linux.
   >
 
-## <a name="set-up-hello-service-fabric-cli"></a>Ställ in hello Service Fabric CLI
+## <a name="set-up-the-service-fabric-cli"></a>Konfigurera Service Fabric CLI
 
-Hej [Service Fabric CLI](service-fabric-cli.md) har kommandon för att interagera med Service Fabric-enheter, inklusive kluster och program. Den är baserad på python, så att toohave python och pip-installeras innan du fortsätter med hello följande kommando:
+[Service Fabric CLI](service-fabric-cli.md) innehåller kommandon för att interagera med Service Fabric-entiteter, t.ex. kluster och program.
+Installera CLI genom att följa anvisningarna i [Service Fabric CLI](service-fabric-cli.md).
 
-```bash
-pip install sfctl
-```
 
-## <a name="install-and-set-up-hello-generators-for-containers-and-guest-executables"></a>Installera och konfigurera hello generatorer för behållare och Gäst-körbara filer
-Service Fabric tillhandahåller ramverktyg som hjälper dig att skapa ett Service Fabric-program från terminalen med en Yeoman-mallgenerator. Följ hello stegen nedan tooensure som du har hello Service Fabric yeoman mall generatorn för att arbeta på din dator.
+## <a name="set-up-yeoman-generators-for-containers-and-guest-executables"></a>Konfigurera Yeoman-generatorer för behållare och körbara gästprogram
+Service Fabric tillhandahåller ramverktyg som hjälper dig att skapa Service Fabric-program från en terminal med en Yeoman-mallgenerator. Följ dessa steg för att konfigurera Service Fabric Yeoman-mallgeneratorer:
 
 1. Installera nodejs och NPM på datorn
 
@@ -135,66 +148,72 @@ Service Fabric tillhandahåller ramverktyg som hjälper dig att skapa ett Servic
   ```bash
   sudo npm install -g yo
   ```
-3. Installera hello Service Fabric Yeo behållare generator och Gäst execuatble generator från NPM
+3. Installera Yeo-behållargeneratorn för Service Fabric och generatorn för körbara gästprogram från NPM
 
   ```bash
   sudo npm install -g generator-azuresfcontainer  # for Service Fabric container application
   sudo npm install -g generator-azuresfguest      # for Service Fabric guest executable application
   ```
 
-När du har installerat hello ovan generatorer, bör du kunna toocreate appar med gästtjänster för körbara filer eller behållare genom att köra `yo azuresfguest` eller `yo azuresfcontainer` respektive.
+När du har installerat generatorerna kan du skapa körbara gästprogram eller behållartjänster genom att köra `yo azuresfguest` respektive `yo azuresfcontainer`.
 
-## <a name="install-hello-necessary-java-artifacts-optional-if-you-want-toouse-hello-java-programming-models"></a>Installera hello nödvändiga Java artefakter (valfritt, om du vill toouse hello Java programmeringsmodeller)
+## <a name="set-up-net-core-20-development"></a>Konfigurera .NET Core 2.0 för utveckling
 
-toobuild Service Fabric-tjänster med hjälp av Java, kontrollera att du har JDK 1.8 installeras tillsammans med Gradle som används för att köra build-uppgifter. följande fragment hello installerar öppna JDK 1.8 tillsammans med Gradle. hello Service Fabric Java bibliotek hämtas från Maven.
+Installera [.NET Core 2.0 SDK för Ubuntu](https://www.microsoft.com/net/core#linuxubuntu) om du vill börja [skapa Service Fabric-program i C#](service-fabric-create-your-first-linux-application-with-csharp.md). Paket för .NET Core 2.0 Service Fabric-program finns på NuGet.org (för närvarande som förhandsversion).
+
+## <a name="set-up-java-development"></a>Konfigurera Java-utveckling
+
+Installera JDK 1.8 och Gradle för att köra build-uppgifter om du vill skapa Service Fabric-tjänster som använder Java. Följande kodfragment installerar Open JDK 1.8 tillsammans med Gradle. Java-biblioteken för Service Fabric hämtas från Maven.
 
   ```bash
   sudo apt-get install openjdk-8-jdk-headless
   sudo apt-get install gradle
   ```
 
-## <a name="install-hello-eclipse-neon-plug-in-optional"></a>Installera hello Eclipse Neon plugin-programmet (valfritt)
+## <a name="install-the-eclipse-neon-plug-in-optional"></a>Installera Eclipse Neon-plugin-programmet (valfritt)
 
-Du kan installera hello plugin-programmet Eclipse för Service Fabric från inom hello **Eclipse IDE för Java-utvecklare**. Du kan använda Eclipse toocreate Service Fabric gäst körbara program och behållarprogram i tillägg tooService Fabric Java-program.
+Du kan installera Eclipse-plugin-programmet för Service Fabric i Eclipse IDE för Java-utvecklare. Du kan använda Eclipse för att skapa körbara Service Fabric-gästprogram och behållarprogram utöver Service Fabric Java-program.
 
-1. Se till att du har den senaste Eclipse Neon och hello senaste Buildship versionen i Eclipse (1.0.17 eller senare) installerat. Du kan kontrollera hello versioner av installerade komponenter genom att välja **hjälp** > **installationsinformationen**. Du kan uppdatera Buildship med hjälp av hello instruktionerna på [Eclipse Buildship: Eclipse plugin-program för Gradle][buildship-update].
+1. Kontrollera att du har den senaste Eclipse Neon-versionen och den senaste Buildship-versionen (1.0.17 eller senare) installerat. Du kan kontrollera vilka versioner de installerade komponenterna har genom att välja **Hjälp** > **Installationsinformation**. Om du vill uppdatera Buildship kan du läsa [Eclipse Buildship: Eclipse-plugin-program för Gradle][buildship-update].
 
-2. tooinstall hello Service Fabric-plugin-program, Välj **hjälp** > **installera ny programvara**.
+2. Om du vill installera Service Fabric-plugin-programmet väljer du **Hjälp** > **Installera ny programvara**.
 
-3. I hello **arbeta med** skriver **http://dl.microsoft.com/eclipse**.
+3. Ange **http://dl.microsoft.com/eclipse** i textrutan **Arbeta med**.
 
 4. Klicka på **Lägg till**.
 
-    ![hello tillgänglig programvara sida][sf-eclipse-plugin]
+    ![Sidan Tillgänglig programvara][sf-eclipse-plugin]
 
-5. Välj hello **ServiceFabric** plugin-program och klicka sedan på **nästa**.
+5. Välj **Service Fabric**-plugin-programmet och klicka sedan på **Nästa**.
 
-6. Slutföra hello installationssteg och acceptera hello licensavtalet.
+6. Slutför installationsstegen och acceptera licensavtalet för användare.
 
-Kontrollera att du har hello senaste versionen om du redan har hello Service Fabric Eclipse plugin-program installerat. Du kan kontrollera genom att välja **hjälp** > **installationsinformationen** och sedan söka efter Service Fabric hello listan över installerade plugin-program. Välj **Uppdatera** om det finns en nyare version.
+Om du redan har Service Fabric Eclipse-plugin-programmet installerat kontrollerar du att du har den senaste versionen. Du kan kontrollera detta genom att välja **Hjälp** > **Installationsinformation** och sedan söka efter Service Fabric i listan över installerade plugin-program. Välj **Uppdatera** om det finns en nyare version.
 
 Mer information finns i [Service Fabric-plugin-program för utveckling av Java-program i Eclipse](service-fabric-get-started-eclipse.md).
 
+## <a name="update-the-sdk-and-runtime"></a>Uppdatera SDK och Runtime
 
-## <a name="install-hello-net-core-sdk-optional-if-you-want-toouse-hello-net-core-programming-models"></a>Installera hello .NET Core SDK (valfritt, om du vill toouse hello .NET Core programmeringsmodeller)
-hello .NET Core SDK innehåller hello bibliotek och mallar som är nödvändiga toobuild Service Fabric-tjänster med .NET Core. Installera hello .NET Core SDK-paketet genom att köra hello följande:
-
-   ```bash
-   sudo apt-get install servicefabricsdkcsharp
-   ```
-
-## <a name="update-hello-sdk-and-runtime"></a>Uppdatera hello SDK och körning
-
-tooupdate toohello senaste versionen av hello SDK och körning, kör följande kommandon hello (Avmarkera hello SDK: er som du inte vill):
+Om du vill uppdatera till den senaste versionen av SDK och Runtime kör du följande kommandon:
 
 ```bash
 sudo apt-get update
-sudo apt-get install servicefabric servicefabricsdkcommon servicefabricsdkcsharp
+sudo apt-get install servicefabric servicefabricsdkcommon
 ```
-tooupdate hello Java SDK binärfiler från Maven du behöver tooupdate hello version information hello motsvarande binära i hello ``build.gradle`` filen toopoint toohello senaste versionen. tooknow exakt där du behöver tooupdate hello version, kan du läsa tooany ``build.gradle`` filen i Service Fabric Kom igång-exempel [här](https://github.com/Azure-Samples/service-fabric-java-getting-started).
+Om du vill uppdatera Java SDK-binärfilerna från Maven måste du uppdatera versionsinformationen för motsvarande binärfil i ``build.gradle``-filen så att den pekar på den senaste versionen. Om du vill veta exakt var du behöver uppdatera versionen kan du titta i någon av ``build.gradle``-filerna i komma igång-exemplen för Service Fabric [här](https://github.com/Azure-Samples/service-fabric-java-getting-started).
 
 > [!NOTE]
-> Uppdatera hello-paket kan det leda till att din toostop för lokal utveckling-kluster som körs. Starta om dina lokala kluster efter en uppgradering genom att följa hello anvisningar på den här sidan.
+> När du uppdaterar paketen ovan kan ditt lokala miljökluster stoppas. Starta om ditt lokala kluster efter en uppgradering genom att följa instruktionerna på den här sidan.
+
+## <a name="remove-the-sdk"></a>Ta bort SDK
+Kör följande om du vill ta bort Service Fabric SDK:er:
+
+```bash
+sudo apt-get remove servicefabric servicefabicsdkcommon
+sudo npm uninstall generator-azuresfcontainer
+sudo npm uninstall generator-azuresfguest
+sudo apt-get install -f
+```
 
 ## <a name="next-steps"></a>Nästa steg
 
@@ -202,7 +221,7 @@ tooupdate hello Java SDK binärfiler från Maven du behöver tooupdate hello ver
 * [Skapa och distribuera ditt första Service Fabric-program med Java i Linux med Service Fabric-plugin-programmet för Eclipse](service-fabric-get-started-eclipse.md)
 * [Skapa ditt första CSharp-program i Linux](service-fabric-create-your-first-linux-application-with-csharp.md)
 * [Förbereda utvecklingsmiljön i OSX](service-fabric-get-started-mac.md)
-* [Använd hello Service Fabric CLI toomanage dina program](service-fabric-application-lifecycle-sfctl.md)
+* [Använd Service Fabric CLI för att hantera dina program](service-fabric-application-lifecycle-sfctl.md)
 * [Skillnader mellan Service Fabric i Windows och Linux](service-fabric-linux-windows-differences.md)
 * [Kom igång med Service Fabric CLI](service-fabric-cli.md)
 

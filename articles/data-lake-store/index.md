@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure Data Lake Store-dokumentation – självstudier, API-referens | Microsoft Docs"
-description: "Lär dig hur tooset, hantera och komma åt en storskaliga, Hadoop-kompatibelt data lake lagringsplats för analyser på data för varje storlek, typ och införandet hastighet."
+title: "Dokumentation om Azure Data Lake Store – Självstudier, API-referens | Microsoft Docs"
+description: "Lär dig hur du konfigurerar, hanterar och får åtkomst till en högskalig, Hadoop-kompatibel Data Lake-lagringsplats för analys av data av alla storlekar, typer och inmatningshastigheter."
 services: data-lake-store
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 8a4730472b7811f022991bffc6dde7bb1be6458e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 3c0327ebb4cb8d6ee66d019326ade4f4bcb258ae
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="data-lake-store-documentation"></a>Dokumentation om Data Lake Store
 
-Lär dig hur toouse Data Lake Store toocreate en storskaliga, Hadoop-kompatibelt databasen för analyser på data av valfri storlek, typ och införandet processorhastighet. Visar självstudier, API-referenserna och övrig dokumentation hur tooset, hantera och komma åt en data lake-databas för drifts- och undersökande analyser.
+Lär dig hur du använder Data Lake Store för att skapa en högskalig, Hadoop-kompatibel lagringsplats för analys av data av alla storlekar, typer och inmatningshastigheter. Självstudier, API-referenser och annan dokumentation visar hur du konfigurerar, hanterar och får åtkomst till en Data Lake-lagringsplats för drifts- och förberedande analys.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -70,7 +70,7 @@ Lär dig hur toouse Data Lake Store toocreate en storskaliga, Hadoop-kompatibelt
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Kom igång med Azure Data Lake Store med hjälp av hello Azure-portalen</h3>
+                        <h3>Kom igång med Azure Data Lake Store med Azure Portal</h3>
                     </div>
                 </div>
             </div>
@@ -106,7 +106,7 @@ Lär dig hur toouse Data Lake Store toocreate en storskaliga, Hadoop-kompatibelt
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Kom igång med Azure Data Lake Store med hjälp av hello Azure CLI</h3>
+                        <h3>Kom igång med Azure Data Lake Store med Azure CLI</h3>
                     </div>
                 </div>
             </div>

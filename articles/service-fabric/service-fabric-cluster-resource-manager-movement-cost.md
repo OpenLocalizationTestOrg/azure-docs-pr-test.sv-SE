@@ -14,23 +14,23 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 65d4ac73efffcf7b25b1e95da6f9012a9238cb75
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 5de07c259d1d327d0211338c2911804445dd6b60
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="service-movement-cost"></a>Tjänsten förflyttningskostnad
-En faktor som hello resurshanteraren för Service Fabric-klustret anser vid toodetermine vilka ändringar toomake tooa kluster är hello kostnaden för dessa ändringar. hello begreppet ”kostnad” säljs ut mot hur mycket hello-klustret kan förbättras. Kostnaden är inberäknade vid flytt av tjänster för belastningsutjämning, defragmentering och andra krav. hello målet är toomeet hello krav i hello minst störande och dyr sätt. 
+En faktor som tar hänsyn till Service Fabric klustret Resource Manager när försök att fastställa vilka ändringar du gör i ett kluster är kostnaden för dessa ändringar. Begreppet ”kostnad” säljs ut mot hur mycket klustret kan förbättras. Kostnaden är inberäknade vid flytt av tjänster för belastningsutjämning, defragmentering och andra krav. Målet är att uppfylla kraven på minst störande och dyr sätt. 
 
-Flytta services kostnader CPU-tid och nätverksbandbredd på minst. För tillståndskänsliga tjänster kräver kopiera hello tillståndet för de tjänster som förbrukar mer minne och diskutrymme. Minimera hello kostnaden för lösningar som hello Azure Service Fabric klustret Resource Manager har säkerställer att hello klusterresurser inte har använt för att i onödan. Men vill du inte också tooignore lösningar som skulle förbättrar hello fördelning av resurser i hello kluster.
+Flytta services kostnader CPU-tid och nätverksbandbredd på minst. För tillståndskänsliga tjänster kräver kopiera tillståndet för de tjänster som förbrukar mer minne och diskutrymme. Minimerar kostnaden för lösningar som Azure Service Fabric klustret Resource Manager har säkerställer att klustrets resurser inte har använt för att i onödan. Men vill du dessutom inte att ignorera lösningar som skulle förbättrar allokeringen av resurser i klustret.
 
-hello klustret Resource Manager har två sätt att beräkna kostnader och begränsa dem medan den försöker toomanage hello klustret. hello första mekanism helt enkelt inventering varje gång den blir. Om två lösningar skapas med om hello balansera samma (poäng), och sedan hello klustret Resource Manager föredrar hello något med hello lägsta kostnaden (totalt antal flyttar).
+Klustret Resource Manager har två sätt att beräkna kostnader och begränsa dem medan den försöker hantera klustret. Den första mekanismen är helt enkelt inventering varje gång den blir. Om två lösningar skapas med om samma balansera (poäng), och sedan klustret Resource Manager föredrar en med lägst kostnad (totalt antal flyttar).
 
-Den här metoden fungerar bra. Men som standard eller statiska laster, är det osannolikt i ett komplext system att alla flyttar är lika. Vissa är sannolikt toobe mycket dyrare.
+Den här metoden fungerar bra. Men som standard eller statiska laster, är det osannolikt i ett komplext system att alla flyttar är lika. Vissa sannolikt kommer att vara mycket dyrare.
 
 ## <a name="setting-move-costs"></a>Inställningen flytta kostnader 
-Du kan ange hello flytta standardkostnaden för en tjänst när den har skapats:
+Du kan ange standard flytta kostnaden för en tjänst när den har skapats:
 
 PowerShell:
 
@@ -43,12 +43,12 @@ C#:
 ```csharp
 FabricClient fabricClient = new FabricClient();
 StatefulServiceDescription serviceDescription = new StatefulServiceDescription();
-//set up hello rest of hello ServiceDescription
+//set up the rest of the ServiceDescription
 serviceDescription.DefaultMoveCost = MoveCost.Medium;
 await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 ```
 
-Du kan också ange eller uppdatera MoveCost dynamiskt för en tjänst när hello-tjänsten har skapats: 
+Du kan också ange eller uppdatera MoveCost dynamiskt för en tjänst när tjänsten har skapats: 
 
 PowerShell: 
 
@@ -66,7 +66,7 @@ await fabricClient.ServiceManager.UpdateServiceAsync(new Uri("fabric:/AppName/Se
 
 ## <a name="dynamically-specifying-move-cost-on-a-per-replica-basis"></a>Ange dynamiskt flytta kostnaden på grundval av per replik
 
-hello föregående kodfragment är alla för att ange MoveCost för en hel tjänst samtidigt från själva utanför hello-tjänsten. Dock flytta kostnaden är mest användbara är när hello flytta kostnaden för en specifik tjänstobjekt ändras under dess livslängd. Eftersom hello tjänsterna själva förmodligen ha hello bra uppfattning om hur kostsamma de är toomove en given tidpunkt, det är en API för tjänster tooreport sina egna enskilda flytta kostnad under körningen. 
+Föregående kodfragment är alla för att ange MoveCost för en hel tjänst på en gång från utanför själva tjänsten. Dock flytta kostnaden är mest användbara är när flytta kostnaden för en specifik tjänstobjekt ändras under dess livslängd. Eftersom tjänsterna själva har antagligen den bästa uppfattning om hur kostsamma de är att flytta en given tidpunkt, är en API för tjänster som rapporten sina egna individuella flytta kostnad under körning. 
 
 C#:
 
@@ -75,20 +75,20 @@ this.Partition.ReportMoveCost(MoveCost.Medium);
 ```
 
 ## <a name="impact-of-move-cost"></a>Effekten av flytta kostnad
-MoveCost har fyra nivåer: noll, lågt, Medium och hög. MoveCosts är relativ tooeach andra, förutom noll. Noll flytta innebär att flytt är ledig och bör inte räknas av mot hello poängen för hello lösning. Inställningen flytten kostnad tooHigh har *inte* garantera hello repliken finns kvar på samma plats.
+MoveCost har fyra nivåer: noll, lågt, Medium och hög. MoveCosts är i förhållande till varandra, utom noll. Noll flytta innebär att flytt är ledig och bör inte räknas av mot poängen för lösningen. Ange flytten kostnad för hög har *inte* garanti för att repliken håller sig kvar på samma plats.
 
 <center>
 ![Flytta kostnad som en faktor att välja repliker för flytt][Image1]
 </center>
 
-MoveCost hjälper dig att hitta hello lösningar att orsaken hello minst avbrott övergripande och enklaste tooachieve när fortfarande anländer till motsvarande saldo. En tjänst begreppet kostnaden kan vara relativt toomany saker. hello vanligaste faktorer för att beräkna kostnaden flytta är:
+MoveCost hjälper dig att hitta lösningar som stör den minst övergripande och som är enklast att uppnå när fortfarande anländer till motsvarande saldo. En tjänst begreppet kostnaden kan vara i förhållande till många saker. De vanligaste faktorerna för att beräkna kostnaden flytta är:
 
-- hello mängden tillstånd eller data som hello service har toomove.
-- hello kostnaden för frånkoppling av klienter. Flytta en primär replik är vanligtvis kostar mer än hello kostnaden för att flytta en sekundär replik.
-- hello kostnaden för att avbryta en pågående åtgärd. Vissa åtgärder på hello data lagra nivå eller åtgärder som utförs i svaret tooa klientanrop är kostsamma. Efter en viss punkt du inte vill toostop dem om du inte behöver. Medan hello igen som händer, öka så hello flytta kostnaden för den här tjänsten objektet tooreduce hello sannolikheten att flyttas. När hello åtgärden är klar kan du ange hello kostnaden tillbaka toonormal.
+- Mängden tillstånd eller data som har tjänsten för att flytta.
+- Kostnaden för frånkoppling av klienter. Flytta en primär replik är vanligtvis kostar mer än kostnaden för att flytta en sekundär replik.
+- Kostnaden för att avbryta en pågående åtgärd. Vissa åtgärder på data lagra nivå eller åtgärder som utförs i svar på en klient är kostsamma. Du vill inte stoppa dem om du inte behöver efter en viss punkt. Så medan åtgärden pågår, ökar du flytta kostnaden för den här tjänsten objekt för att minska sannolikheten för att flyttas. När åtgärden är klar kan ange du kostnaden till normal.
 
 ## <a name="enabling-move-cost-in-your-cluster"></a>Aktivera flytta kostnaden i klustret
-För att Hej mer detaljerade MoveCosts toobe beaktas, MoveCost måste vara aktiverat i klustret. Utan den här inställningen hello standardläget för inventering flyttar används för beräkning av MoveCost och MoveCost rapporter ignoreras.
+För mer detaljerade MoveCosts till beaktas måste MoveCost aktiveras i klustret. Standardläget för inventering flyttar används för beräkning av MoveCost utan den här inställningen och MoveCost rapporter ignoreras.
 
 
 ClusterManifest.xml:
@@ -116,7 +116,7 @@ värdbaserade kluster via ClusterConfig.json för fristående distributioner ell
 ```
 
 ## <a name="next-steps"></a>Nästa steg
-- Resurshanteraren för Service Fabric-kluster använder mått toomanage förbrukning och kapacitet i hello kluster. Mer om mått toolearn och hur tooconfigure dem, kolla [hantera resursförbrukning och belastningen i Service Fabric med](service-fabric-cluster-resource-manager-metrics.md).
-- toolearn om hur hello klustret Resource Manager hanterar och balanserar belastningen i hello klustret, ta en titt [NLB Service Fabric-kluster](service-fabric-cluster-resource-manager-balancing.md).
+- Resurshanteraren för Service Fabric-kluster använder mått för att hantera förbrukning och kapacitet i klustret. Mer information om mått och hur du konfigurerar dem kolla [hantera resursförbrukning och belastningen i Service Fabric med](service-fabric-cluster-resource-manager-metrics.md).
+- Mer information om hur klustret Resource Manager hanterar och balanserar belastningen i klustret, ta en titt [NLB Service Fabric-kluster](service-fabric-cluster-resource-manager-balancing.md).
 
 [Image1]:./media/service-fabric-cluster-resource-manager-movement-cost/service-most-cost-example.png

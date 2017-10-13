@@ -1,6 +1,6 @@
 ---
-title: toorequire aaaHow multifaktorautentisering | Microsoft Docs
-description: "Lär dig hur toorequire multifaktorautentisering (MFA) för privilegierade identiteter med hello Azure Active Directory Privileged Identity Management-tillägget."
+title: "Hur du kan kräva multifaktorautentisering | Microsoft Docs"
+description: "Lär dig att kräva multifaktorautentisering (MFA) för privilegierade identiteter med Azure Active Directory Privileged Identity Management-tillägget."
 services: active-directory
 documentationcenter: 
 author: billmath
@@ -15,37 +15,37 @@ ms.workload: identity
 ms.date: 06/06/2017
 ms.author: billmath
 ms.custom: pim
-ms.openlocfilehash: c08fad9dc80c09a14a4bd7497da4942fa227c3ae
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: b778774fa23be8219db3f716d79bac324a7de9d3
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="how-toorequire-mfa-in-azure-ad-privileged-identity-management"></a>Hur toorequire MFA i Azure AD Privileged Identity Management
-Vi rekommenderar att du kräver multifaktorautentisering (MFA) för alla dina administratörer. Detta minskar hello risken för angrepp på grund av tooa komprometteras lösenord.
+# <a name="how-to-require-mfa-in-azure-ad-privileged-identity-management"></a>Så här kräver du MFA i Azure AD Privileged Identity Management
+Vi rekommenderar att du kräver multifaktorautentisering (MFA) för alla dina administratörer. Detta minskar risken för angrepp på grund av en komprometterad lösenord.
 
-Du kan kräva att användarna slutföra MFA-kontrollen när de loggar in. Hej blogginlägget [MFA för Office 365 och Azure MFA](https://blogs.technet.microsoft.com/ad/2014/02/11/mfa-for-office-365-and-mfa-for-azure/) jämför vad som ingår i Office och Azure-prenumerationer med hello-funktioner som ingår i erbjudandet för hello Microsoft Azure Multi-Factor Authentication.
+Du kan kräva att användarna slutföra MFA-kontrollen när de loggar in. Blogginlägget [MFA för Office 365 och Azure MFA](https://blogs.technet.microsoft.com/ad/2014/02/11/mfa-for-office-365-and-mfa-for-azure/) jämför vad som ingår i Office och Azure-prenumerationer, med följande funktioner i Microsoft Azure Multi-Factor Authentication-erbjudandet.
 
-Du kan också kräva att användarna slutföra MFA-kontrollen när de aktiverar en roll i Azure AD PIM. Det här sättet om hello användaren inte slutföra MFA-kontrollen när de loggat in, kommer de att ange toodo så av PIM.
+Du kan också kräva att användarna slutföra MFA-kontrollen när de aktiverar en roll i Azure AD PIM. Det innebär om användaren inte slutföra MFA-kontrollen när de loggat in, uppmanas de att göra det av PIM.
 
 ## <a name="requiring-mfa-in-azure-ad-privileged-identity-management"></a>Kräver MFA i Azure AD Privileged Identity Management
-När du hanterar identiteter i PIM som en administratör av Privilegierade roller kan du se aviseringar som rekommenderar MFA för privilegierade konton. Klicka på hello säkerhet avisering i hello PIM instrumentpanel och ett nytt blad öppnas med en lista över hello administratörskonton som ska kräva MFA.  Du kan kräva MFA genom att markera flera roller och sedan klicka på hello **åtgärda** knapp eller klicka på hello ellipserna nästa tooindividual roller och klicka sedan på hello **åtgärda** knappen.
+När du hanterar identiteter i PIM som en administratör av Privilegierade roller kan du se aviseringar som rekommenderar MFA för privilegierade konton. Klicka på säkerhetsaviseringen i PIM-instrumentpanelen och öppnas ett nytt blad med en lista över administratörskonton som ska kräva MFA.  Du kan kräva MFA genom att markera flera roller och sedan klicka på den **åtgärda** knappen, eller om du klickar på ellipserna enskilda roller och klicka sedan på den **åtgärda** knappen.
 
 > [!IMPORTANT]
-> Just nu är Azure MFA fungerar bara med arbets- eller skolkonton, inte Microsoft-konton (vanligtvis ett personligt konto som har använt toosign i tooMicrosoft services Skype, Xbox, Outlook.com osv.). Därför kan inte alla som använder ett Microsoft-konto vara administratör berättigade eftersom de inte kan använda MFA tooactivate deras roller. Om dessa användare behöver toocontinue hantera arbetsbelastningar som använder ett Microsoft-konto kan du höja dem toopermanent administratörer för tillfället.
+> Just nu Azure MFA fungerar bara med arbets- eller skolkonton, inte Microsoft-konton (vanligtvis ett personligt konto som används för att logga in på Microsoft-tjänster som Skype, Xbox, Outlook.com, etc.). Därför kan inte alla som använder ett Microsoft-konto vara administratör berättigade eftersom de inte kan använda MFA för att aktivera deras roller. Om dessa användare måste fortsätta att hantera arbetsbelastningar som använder ett Microsoft-konto, gör du dem till permanenta administratörer för tillfället.
 > 
 > 
 
-Du kan dessutom ändra hello MFA-kravet för en viss roll genom att klicka på den i hello roller avsnittet hello PIM-instrumentpanelen. Klicka på **inställningar** i hello rollen bladet och sedan välja **aktivera** under multifaktorautentisering.
+Du kan dessutom ändra MFA-kravet för en viss roll genom att klicka på den i avsnittet roller i PIM-instrumentpanelen. Klicka på **inställningar** i rollen bladet och sedan välja **aktivera** under multifaktorautentisering.
 
 ## <a name="how-azure-ad-pim-validates-mfa"></a>Hur Azure AD PIM verifierar MFA
 Det finns två alternativ för att verifiera MFA när en användare aktiverar rollen.
 
-hello enklaste alternativet är toorely på Azure MFA för användare som aktiverar en privilegierad roll. toodo, första kontrollen som de användarna som är licensierad, om det behövs och har registrerat dig för Azure MFA. Mer information om hur toodo kan i [komma igång med Azure Multi-Factor Authentication i molnet hello](../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md). Det rekommenderas, men inte krävs att du konfigurerar Azure AD tooenforce MFA för dessa användare när de loggar in. Det beror på att hello MFA kontroller ska göras av Azure AD PIM sig själv.
+Det enklaste alternativet är att lita på Azure MFA för användare som aktiverar en privilegierad roll. Om du vill göra detta du först kontrollera att dessa användare licensieras om det behövs och har registrerat dig för Azure MFA. Mer information om hur du gör detta finns i [komma igång med Azure Multi-Factor Authentication i molnet](../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md). Det rekommenderas, men inte krävs att du konfigurerar Azure AD för att införa MFA för dessa användare när de loggar in. Det beror på att MFA-kontroller ska göras av Azure AD PIM sig själv.
 
-Om användare som autentiseras lokalt kan du ha identitetsprovider ansvara för MFA. Om du har konfigurerat AD federationstjänster toorequire smartkortbaserad autentisering innan du använder Azure AD, till exempel [skydda molnresurser med Azure Multi-Factor Authentication och AD FS](../multi-factor-authentication/multi-factor-authentication-get-started-adfs-cloud.md) innehåller anvisningar för att konfigurera AD FS toosend anspråk tooAzure AD. När en användare försöker tooactivate en roll, accepterar Azure AD PIM att MFA har redan verifierats för hello användare när den tar emot hello lämpliga anspråk.
+Om användare som autentiseras lokalt kan du ha identitetsprovider ansvara för MFA. Om du har konfigurerat AD Federation Services för att kräva smartkortbaserad autentisering innan du använder Azure AD, till exempel [skydda molnresurser med Azure Multi-Factor Authentication och AD FS](../multi-factor-authentication/multi-factor-authentication-get-started-adfs-cloud.md) innehåller anvisningar för att konfigurera AD FS för att skicka anspråk till Azure AD. När en användare försöker aktivera en roll, accepterar Azure AD PIM att MFA har redan verifierats för användaren när den tar emot rätt anspråk.
 
-<!--Every topic should have next steps and links toohello next logical set of content tookeep hello customer engaged-->
+<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>Nästa steg
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 

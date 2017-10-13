@@ -1,5 +1,5 @@
 ---
-title: aaaUpgrade tooAzure AD Application Proxy | Microsoft Docs
+title: Uppgradera till Azure AD Application Proxy | Microsoft Docs
 description: "Välj vilka proxy-lösning som är bäst om du uppgraderar från Microsoft Forefront eller enhetlig åtkomst Gateway."
 services: active-directory
 documentationcenter: 
@@ -15,20 +15,20 @@ ms.date: 07/27/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 7dc2633140b384e25792470dadbb7f3fa7992a2b
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 6c9f70493155de6989b26fd4e8bcf1dff01c835c
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="compare-remote-access-solutions"></a>Jämför fjärråtkomstlösningar
 
-Azure Active Directory Application Proxy är en av två fjärråtkomstlösningarna som Microsoft erbjuder. hello andra är Web Application Proxy hello lokala versionen. Dessa två lösningar ersätta tidigare produkter som erbjuds av Microsoft: Microsoft Forefront Threat Management Gateway (TMG) och enhetlig åtkomst Gateway (UAG). Använd den här artikeln toounderstand hur lösningarna fyra jämföra tooeach andra. För de som du fortfarande använder hello föråldrad TMG eller UAG lösningar kan använda den här artikeln toohelp planen din migrering tooone av hello Application Proxy. 
+Azure Active Directory Application Proxy är en av två fjärråtkomstlösningarna som Microsoft erbjuder. Den andra är Web Application Proxy, lokal version. Dessa två lösningar ersätta tidigare produkter som erbjuds av Microsoft: Microsoft Forefront Threat Management Gateway (TMG) och enhetlig åtkomst Gateway (UAG). Använd den här artikeln för att förstå hur dessa fyra lösningar förhåller sig till varandra. För de som du fortfarande använder använder de föråldrade TMG eller UAG-lösningarna den här artikeln för att planera migreringen till en Application Proxy. 
 
 
 ## <a name="feature-comparison"></a>Jämför funktioner
 
-Använd den här tabellen toounderstand hur Threat Management Gateway (TMG), enhetlig åtkomst Gateway (UAG), Webbprogramproxy (WAP) och Azure AD Application Proxy (AP) jämför tooeach andra.
+Använd den här tabellen för att förstå hur Threat Management Gateway (TMG), enhetlig åtkomst Gateway (UAG), Webbprogramproxy (WAP) och Azure AD Application Proxy (AP) förhåller sig till varandra.
 
 | Funktion | TMG | UAG | WAP | AP |
 | ------- | --- | --- | --- | --- |
@@ -45,22 +45,22 @@ Använd den här tabellen toounderstand hur Threat Management Gateway (TMG), enh
 | Autentisering med rubriker | - | Ja | - | Ja, med PingAccess | 
 | Skalbar molnlagring säkerhet | - | - | - | Ja | 
 | Villkorlig åtkomst | - | Ja | - | Ja |
-| Inga komponenter i hello demilitariserad zon (DMZ) | - | - | - | Ja |
+| Inga komponenter i demilitariserad zon (DMZ) | - | - | - | Ja |
 | Inga inkommande anslutningar | - | - | - | Ja |
 
-För de flesta fall rekommenderar vi Azure AD-program som hello moderna lösning. Du kan inte använda anpassade domäner i Azure Active Directory Web Application Proxy är bara önskade i scenarier som kräver en proxyserver för AD FS. 
+För de flesta fall rekommenderar vi Azure AD-program som moderna lösning. Du kan inte använda anpassade domäner i Azure Active Directory Web Application Proxy är bara önskade i scenarier som kräver en proxyserver för AD FS. 
 
-Azure AD Application Proxy erbjuder unika fördelar när jämfört med toosimilar produkter, inklusive:
+Azure AD Application Proxy har unika fördelar jämfört med liknande produkter, inklusive:
 
-- Utöka Azure AD tooon lokala resurser
+- Utöka Azure AD till lokala resurser
    - Skalbar molnlagring säkerhet och skydd
-   - Funktioner som villkorlig åtkomst och Multi-Factor Authentication är enkelt tooenable
-- Ingen Component i hello demilitariserad zon
+   - Funktioner som villkorlig åtkomst och Multi-Factor Authentication är lätta att aktivera
+- Ingen Component i demilitariserad zon
 - Inga inkommande anslutningar som krävs
-- En åtkomstpanelen att användarna kan gå toofor alla sina program, inklusive O365, Azure AD-integrerade SaaS-appar och dina lokala web apps. 
+- En åtkomstpanelen att användarna kan gå till för alla sina program, inklusive O365, Azure AD-integrerade SaaS-appar och dina lokala web apps. 
 
 
 ## <a name="next-steps"></a>Nästa steg
 
-- [Använda Azure AD-program tooprovide säker fjärråtkomst tooon lokala program](active-directory-application-proxy-get-started.md)
-- [Övergången från Forefront TMG och UAG tooApplication Proxy](https://blogs.technet.microsoft.com/isablog/2015/06/30/modernizing-microsoft-application-access-with-web-application-proxy-and-azure-active-directory-application-proxy/).
+- [Använda Azure AD-program för att ge säker fjärråtkomst till lokala program](active-directory-application-proxy-get-started.md)
+- [Övergången från Forefront TMG och UAG till Application Proxy](https://blogs.technet.microsoft.com/isablog/2015/06/30/modernizing-microsoft-application-access-with-web-application-proxy-and-azure-active-directory-application-proxy/).

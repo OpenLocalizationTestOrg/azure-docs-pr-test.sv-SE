@@ -1,5 +1,5 @@
 ---
-title: "aaaAzure AD v2 Android komma igång - Test | Microsoft Docs"
+title: "Azure AD v2 Android komma igång - testa | Microsoft Docs"
 description: "Hur en Android-app kan få en åtkomst-token och anropa API: erna som kräver åtkomst-token från Azure Active Directory v2 slutpunkten eller Microsoft Graph API"
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,33 +15,33 @@ ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: 499f32b46fd44cca0e52179bced49b311135d8de
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 6df64f4820f8409bd8897d5ac24f81bffeeef102
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 ## <a name="test-your-code"></a>Testa din kod
 
-1. Distribuera din kod tooyour/emulatorn.
-2. När du är klar tootest kan använda Microsoft Azure Active Directory (organisationskonto) eller en Account (live.com, outlook.com) konto toosign i. 
+1. Distribuera din kod till din emulatorn.
+2. Använd när du är redo att testa Microsoft Azure Active Directory (organisationskonto) eller ett Account (live.com, outlook.com) för att logga in. 
 
 ![Exempel skärmbild](media/active-directory-mobileanddesktopapp-android-test/mainwindow.png)
 <br/><br/>
 ![Logga in](media/active-directory-mobileanddesktopapp-android-test/usernameandpassword.png)
 
 ### <a name="consent"></a>Medgivande
-hello första gången en användare loggar in tooyour program, de kommer att visas ett medgivande skärm liknande toohello nedan, där de måste acceptera tooexplicitly: 
+Första gången en användare loggar in på ditt program, de kommer att visas en medgivande skärm som liknar den nedan, där de måste uttryckligen acceptera: 
 
 ![Medgivande](media/active-directory-mobileanddesktopapp-android-test/androidconsent.png)
 
 
 ### <a name="expected-results"></a>Förväntat resultat
-Du bör se hello resultatet av ett anrop tooMicrosoft Graph API ”jag” endpoint används tootooobtain hello användarprofil - https://graph.microsoft.com/v1.0/me. En lista över vanliga Microsoft Graph slutpunkter finns [artikel](https://developer.microsoft.com/graph/docs#common-microsoft-graph-queries).
+Du bör se resultatet av ett anrop till Microsoft Graph API ”jag” slutpunkt som används till att hämta användarprofil - https://graph.microsoft.com/v1.0/me. En lista över vanliga Microsoft Graph slutpunkter finns [artikel](https://developer.microsoft.com/graph/docs#common-microsoft-graph-queries).
 
 <!--start-collapse-->
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>Mer information om scope och delegerade behörigheter
 
-hello Microsoft Graph API kräver hello `user.read` omfång tooread hello användarens profil. Detta scope läggs automatiskt som standard i alla program som registreras på vår registreringsportal. Vissa andra API: er för Microsoft Graph samt anpassade API: er för backend-servern kan kräva ytterligare scope. Till exempel hello omfånget för Microsoft Graph `Calendars.Read` är nödvändiga toolist hello användares kalendrar. I ordning tooaccess hello användarens kalender i en kontext med ett program måste du tooadd hello `Calendars.Read` delegerad behörighet toohello programmet registreringens information och Lägg sedan till hello `Calendars.Read` omfång toohello `acquireTokenSilentAsync` anropa. hello användare kan uppmanas att ytterligare medgivanden när du ökar hello antal scope.
+Microsoft Graph API kräver den `user.read` omfång att läsa användarens profil. Detta scope läggs automatiskt som standard i alla program som registreras på vår registreringsportal. Vissa andra API: er för Microsoft Graph samt anpassade API: er för backend-servern kan kräva ytterligare scope. Till exempel för Microsoft Graph omfånget `Calendars.Read` krävs för att visa en lista med användarens kalendrar. För att komma åt användarens kalender i en kontext med ett program måste du lägga till den `Calendars.Read` delegerad behörighet att programmet registreringsinformation och Lägg sedan till den `Calendars.Read` omfånget för den `acquireTokenSilentAsync` anropa. Användaren kan uppmanas att ytterligare medgivanden när du ökar antalet scope.
 
 <!--end-collapse-->

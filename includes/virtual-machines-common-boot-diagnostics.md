@@ -1,16 +1,16 @@
 Nu finns stöd för två felsökningsfunktioner i Azure: konsolutdata och skärmbild för Azure Virtual Machines Resource Manager-distributionsmodellen. 
 
-När en egen avbildning tooAzure eller även starta en av hello plattform bilder, kan det finnas många orsaker till varför en virtuell dator hämtar till tillståndet ej startbar. Dessa funktioner aktivera du tooeasily diagnostisera och återställa dina virtuella datorer från startfel.
+När du använder en egen avbildning i Azure eller till och med startar en av plattformsavbildningarna, kan det finnas många orsaker till att en virtuell dator övergår i tillståndet Ej startbar. Med de här funktionerna kan du enkelt diagnostisera och återställa virtuella datorer vid startfel.
 
-För Linux virtuella datorer kan du lätt visa hello utdata från konsolen loggen från hello Portal:
+För virtuella Linux-datorer kan du lätt visa utdata från konsolloggen på portalen:
 
 ![Azure Portal](./media/virtual-machines-common-boot-diagnostics/screenshot1.png)
  
-Men för både Windows och Linux virtuella datorer kan Azure också toosee en skärmbild av hello VM från hello hypervisor-programmet:
+För både virtuella Windows- och Linux-datorer kan du dock även se en skärmbild av den virtuella datorn från hypervisor-program:
 
 ![Fel](./media/virtual-machines-common-boot-diagnostics/screenshot2.png)
 
-De här båda funktionerna finns för Azure Virtual Machines i alla regioner. Obs skärmbilder och utdata kan ta upp too10 minuter tooappear i ditt lagringskonto.
+De här båda funktionerna finns för Azure Virtual Machines i alla regioner. Tänk på att det kan ta upp till 10 minuter innan skärmbilder och utdata visas på lagringskontot.
 
 ## <a name="common-boot-errors"></a>Vanliga startfel
 
@@ -29,15 +29,15 @@ De här båda funktionerna finns för Azure Virtual Machines i alla regioner. Ob
 - [Startfel eller INACCESSIBLE_BOOT_DEVICE](https://support.microsoft.com/help/4010143)
 
 ## <a name="enable-diagnostics-on-a-new-virtual-machine"></a>Aktivera diagnostik på en ny virtuell dator
-1. När du skapar en ny virtuell dator från hello Preview Portal väljer hello **Azure Resource Manager** hello distribution modellen listrutan:
+1. När du skapar en ny virtuell dator från förhandsversionsportalen, väljer du **Azure Resource Manager** från listrutan med distributionsmodeller:
  
     ![Resource Manager](./media/virtual-machines-common-boot-diagnostics/screenshot3.jpg)
 
-2. Konfigurera hello övervakning alternativet tooselect hello storage-konto där du vill ha tooplace filerna diagnostik.
+2. Konfigurera övervakningsalternativet och välj det lagringskonto där du vill placera de här diagnostikfilerna.
  
     ![Skapa en virtuell dator](./media/virtual-machines-common-boot-diagnostics/screenshot4.jpg)
 
-3. Om du distribuerar en Azure Resource Manager-mall, navigera tooyour virtuella datorresurser och Lägg till hello diagnostik profil avsnitt. Kom ihåg toouse hello ”2015-06-15” API version-huvud.
+3. Om du distribuerar från en Azure Resource Manager-mall går du till den virtuella datorresursen och lägger till diagnostikprofilavsnittet. Kom ihåg att använda API-versionsrubriken 2015-06-15.
 
     ```json
     {
@@ -46,7 +46,7 @@ De här båda funktionerna finns för Azure Virtual Machines i alla regioner. Ob
           … 
     ```
 
-4. Hej diagnostikprofilen kan tooselect hello storage-konto där du vill att tooput dessa loggar.
+4. Via diagnostikprofilen kan du välja det lagringskonto där loggarna ska placeras.
 
     ```json
             "diagnosticsProfile": {
@@ -59,11 +59,11 @@ De här båda funktionerna finns för Azure Virtual Machines i alla regioner. Ob
         }
     ```
 
-toodeploy ett exempel på en virtuell dator med startdiagnostikinställningar aktiverad checka ut våra lagringsplatsen här.
+Om du vill distribuera en virtuell exempeldator med aktiverad startdiagnostik, kan du kolla in vår repo här.
 
 ## <a name="update-an-existing-virtual-machine"></a>Uppdatera en befintlig virtuell dator ##
 
-tooenable startdiagnostikinställningar via hello Portal, kan du även uppdatera en befintlig virtuell dator via hello Portal. Välj hello Startdiagnostikinställningar alternativet och spara. Starta om hello VM tootake effekt.
+Du kan också uppdatera en befintlig virtuell dator via portalen om du vill aktivera startdiagnostik via portalen. Välj alternativet Startdiagnostik och Spara. Starta om den virtuella datorn så att ändringarna börjar gälla.
 
 ![Uppdatera befintlig virtuell dator](./media/virtual-machines-common-boot-diagnostics/screenshot5.png)
 

@@ -1,6 +1,6 @@
 ---
-title: aaaBacking in Azure Import/Export enhet manifesten | Microsoft Docs
-description: "Lär dig hur toohave enheten visar för hello Microsoft Azure Import/Export service säkerhetskopieras automatiskt."
+title: "Säkerhetskopiera Azure Import/Export enhet manifesten | Microsoft Docs"
+description: "Lär dig mer om att din enhet manifest för tjänsten Microsoft Azure Import/Export säkerhetskopieras automatiskt."
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.openlocfilehash: f48b97a2cce62714aace2b30a393305202c7ecd9
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 33eb8e1eea8f8aa7b79ef3e54f2b1ed88dc794ae
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="backing-up-drive-manifests-for-azure-importexport-jobs"></a>Säkerhetskopiera enheten visar för Azure Import/Export-jobb
 
-Enheten manifest kan automatiskt säkerhetskopieras tooblobs genom att ange hello `BackupDriveManifest` egenskapen för`true` i hello [placera jobbet](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) eller [uppdatering jobbegenskaper](/rest/api/storageimportexport/jobs#Jobs_Update) REST-API: et. Som standard säkerhetskopieras hello enhet manifesten inte. hello enhet manifestet säkerhetskopior lagras som blockblobar i en behållare i hello storage-konto som är associerade med hello jobb. Hello behållarens namn är som standard `waimportexport`, men du kan ange ett annat namn i hello `DiagnosticsPath` egenskapen när du anropar hello `Put Job` eller `Update Job Properties` åtgärder. hello säkerhetskopiering manifestet blob namnges i hello följande format: `waies/jobname_driveid_timestamp_manifest.xml`.
+Enheten manifest kan automatiskt säkerhetskopieras till blobbar genom att ange den `BackupDriveManifest` egenskapen `true` i den [placera jobbet](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) eller [uppdatering jobbegenskaper](/rest/api/storageimportexport/jobs#Jobs_Update) REST-API: et. Som standard säkerhetskopieras enhet manifesten inte. Enheten manifestet säkerhetskopiorna lagras som blockblobar i en behållare i storage-konto som är associerat med jobbet. Behållarens namn är som standard `waimportexport`, men du kan ange ett nytt namn i den `DiagnosticsPath` egenskapen när du anropar den `Put Job` eller `Update Job Properties` åtgärder. Säkerhetskopiering manifestet blob namnges i följande format: `waies/jobname_driveid_timestamp_manifest.xml`.
 
- Du kan hämta hello hello enhet-URI-manifestet för ett jobb genom att anropa hello [Get Job](/rest/api/storageimportexport/jobs#Jobs_Get) igen. hello blob-URI returneras hello `ManifestUri` egenskap för varje enhet.
+ Du kan hämta URI för enhet manifesten för ett jobb genom att anropa den [Get Job](/rest/api/storageimportexport/jobs#Jobs_Get) igen. Blob-URI returneras den `ManifestUri` egenskap för varje enhet.
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Med hjälp av hello Import/Export service REST API](storage-import-export-using-the-rest-api.md)
+* [Med hjälp av tjänsten Import/Export REST API](storage-import-export-using-the-rest-api.md)

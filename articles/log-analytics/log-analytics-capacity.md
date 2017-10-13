@@ -1,6 +1,6 @@
 ---
-title: "aaaCapacity och lösning av prestanda i Azure Log Analytics | Microsoft Docs"
-description: "Använd hello kapacitet och prestanda lösning i logganalys toohelp du förstår hello kapacitet för Hyper-V-servrar."
+title: "Lösning för kapacitet och prestanda i Azure Log Analytics | Microsoft Docs"
+description: "Använd lösningen kapacitet och prestanda i logganalys som hjälper dig att förstå kapaciteten för Hyper-V-servrar."
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
@@ -14,40 +14,40 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: banders
-ms.openlocfilehash: c47bb1e8bb9d4460b0241e89a616f3b356844b08
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 5ca005127721092b8efcf0ac83cc967ab15fe72d
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="plan-hyper-v-virtual-machine-capacity-with-hello-capacity-and-performance-solution-preview"></a>Planera kapaciteten för Hyper-V-virtuella datorer med hello kapacitet och prestanda lösning (förhandsgranskning)
+# <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-preview"></a>Planera kapaciteten för Hyper-V-virtuella datorer med kapacitet och prestanda för lösning (förhandsgranskning)
 
 ![Symbolen kapacitet och prestanda](./media/log-analytics-capacity/capacity-solution.png)
 
-Du kan använda hello kapacitet och prestanda lösning i logganalys toohelp du förstår hello kapacitet för Hyper-V-servrar. hello lösningen ger insikter om din Hyper-V-miljö genom att visa hello sätt (CPU, minne och disk) hello värdar och hello virtuella datorer som körs på dessa Hyper-V-värdar. Mått har samlats in för CPU, minne och diskar på alla värdar och hello virtuella datorer som körs på dem..
+Du kan använda lösningen kapacitet och prestanda i logganalys som hjälper dig att förstå kapaciteten för Hyper-V-servrar. Lösningen ger insikter om Hyper-V-miljö genom att visa den totala användningen av värdarna och de virtuella datorerna körs på dessa Hyper-V-värdar (CPU, minne och disk). Mått har samlats in för CPU, minne och diskar mellan alla värdar och de virtuella datorerna körs på dem..
 
-hello-lösningen:
+Lösning:
 
 -   Visar med högsta och lägsta CPU och minne användning
 -   Visar virtuella datorer med högsta och lägsta CPU och minne användning
 -   Visar virtuella datorer med högsta och lägsta IOPS och genomströmning användning
 -   Visar vilka virtuella datorer som körs på vilka värdar
--   Visar hello översta diskar med hög genomströmning och IOPS, och svarstid i kluster delade klustervolymer
-- Gör att du toocustomize och filter baserat på grupper
+-   Visar översta diskar med hög genomströmning, IOPS och svarstid i klusterdelade volymer
+- Du kan anpassa och filtrera baserat på grupper
 
 > [!NOTE]
-> hello tidigare version av hello kapacitet och prestanda-lösning som kallas kapacitet Management krävs både System Center Operations Manager och System Center Virtual Machine Manager. Den här uppdaterade lösningen har inte dessa beroenden.
+> Den tidigare versionen av kapacitet och prestanda för lösningen kallas kapacitet Management krävs både System Center Operations Manager och System Center Virtual Machine Manager. Den här uppdaterade lösningen har inte dessa beroenden.
 
 
 ## <a name="connected-sources"></a>Anslutna källor
 
-hello i den följande tabellen beskrivs hello anslutna källor som stöds av den här lösningen.
+I följande tabell beskrivs de anslutna källor som stöds av den här lösningen.
 
 | Ansluten källa | Support | Beskrivning |
 |---|---|---|
-| [Windows-agenter](log-analytics-windows-agents.md) | Ja | hello lösningen samlar in information om kapacitet och prestanda från Windows-agenter. |
-| [Linux-agenter](log-analytics-linux-agents.md) | Nej    | hello lösningen samlar inte in information om kapacitet och prestanda från direkt Linux-agenter.|
-| [SCOM-hanteringsgrupp](log-analytics-om-agents.md) | Ja |hello lösningen samlar in data för kapacitet och prestanda från agenter i en ansluten SCOM-hanteringsgrupp. En direkt anslutning från hello SCOM-agent tooOMS krävs inte. Data vidarebefordras från hello management group toohello OMS-databasen.|
+| [Windows-agenter](log-analytics-windows-agents.md) | Ja | Lösningen samlar in information om kapacitet och prestanda från Windows-agenter. |
+| [Linux-agenter](log-analytics-linux-agents.md) | Nej    | Lösningen samlar inte in information om kapacitet och prestanda från direkt Linux-agenter.|
+| [SCOM-hanteringsgrupp](log-analytics-om-agents.md) | Ja |Lösningen samlar in data om kapacitet och prestanda från agenter i en ansluten SCOM-hanteringsgrupp. En direkt anslutning från SCOM-agent till OMS krävs inte. Data vidarebefordras från hanteringsgruppen till OMS-databasen.|
 | [Azure Storage-konto](log-analytics-azure-storage.md) | Nej | Azure storage innehåller inte data kapacitet och prestanda.|
 
 ## <a name="prerequisites"></a>Krav
@@ -57,51 +57,51 @@ hello i den följande tabellen beskrivs hello anslutna källor som stöds av den
 
 ## <a name="configuration"></a>Konfiguration
 
-Utför följande steg tooadd hello Kapacitets- och lösningen tooyour arbetsytan hello.
+Utför följande steg för att lägga till kapacitet och prestanda för lösningen till din arbetsyta.
 
-- Lägg till hello kapacitet och prestanda lösning tooyour OMS-arbetsyta med hjälp av hello process beskrivs i [lägga till logganalys lösningar från hello lösningar galleriet](log-analytics-add-solutions.md).
+- Lägg till lösningen kapacitet och prestanda i din OMS-arbetsyta med hjälp av den process som beskrivs i [lägga till logganalys lösningar från galleriet lösningar](log-analytics-add-solutions.md).
 
 ## <a name="management-packs"></a>Hanteringspaket
 
-Om din SCOM-hanteringsgrupp är anslutna tooyour OMS-arbetsyta, sedan installeras hello följande hanteringspaket i SCOM när du lägger till den här lösningen. Det krävs ingen konfigurering eller underhåll av dessa hanteringspaket.
+Om din SCOM-hanteringsgrupp är ansluten till din OMS-arbetsyta, sedan installeras följande hanteringspaket i SCOM när du lägger till den här lösningen. Det krävs ingen konfigurering eller underhåll av dessa hanteringspaket.
 
 - Microsoft.IntelligencePacks.CapacityPerformance
 
-hello 1201 händelse liknar:
+Händelsen 1201 liknar:
 
 
 ```
 New Management Pack with id:"Microsoft.IntelligencePacks.CapacityPerformance", version:"1.10.3190.0" received.
 ```
 
-När hello Kapacitets- och lösningen uppdateras ändras hello versionsnumret.
+När lösningen Kapacitets- och uppdateras ändras versionsnumret.
 
-Mer information om hur lösningen hanteringspaketen är uppdaterade finns [ansluta Operations Manager tooLog Analytics](log-analytics-om-agents.md).
+Mer information om hur lösningens hanteringspaket uppdateras finns i [Anslut Operations Manager till Log Analytics](log-analytics-om-agents.md).
 
-## <a name="using-hello-solution"></a>Med hello-lösning
+## <a name="using-the-solution"></a>Använda lösningen
 
-När du lägger till hello Kapacitets- och lösningen tooyour arbetsytan läggs toohello översikt över instrumentpanelen i hello kapacitet och prestanda. Den här panelen visar antalet hello antalet aktiva Hyper-V-värdar och hello antal aktiva virtuella datorer som har övervakas för hello angiven tidsperiod.
+När du lägger till lösningen kapacitet och prestanda för din arbetsyta, har kapacitet och prestanda lagts till i instrumentpanelens Översikt. Den här panelen visar antalet aktiva Hyper-V-värdar och valt antal aktiva virtuella datorer som har övervakas för tidsperioden.
 
 ![Panelen kapacitet och prestanda](./media/log-analytics-capacity/capacity-tile.png)
 
 
 ### <a name="review-utilization"></a>Granska användning
 
-Klicka på hello kapacitet och prestanda panelen tooopen hello kapacitet och prestanda för instrumentpanelen. hello instrumentpanelen innehåller hello kolumner i hello i den följande tabellen. Varje kolumnen visar tooten artiklar som matchar att kolumnens sökvillkor för hello angivna scope och ett tidsintervall. Du kan köra en sökning i loggen som returnerar alla poster genom att klicka på **se alla** längst ned hello hello kolumnen eller genom att klicka på kolumnrubriken hello.
+Klicka på panelen kapacitet och prestanda för att öppna instrumentpanelen kapacitet och prestanda. Instrumentpanelen innehåller kolumnerna i följande tabell. Varje kolumn listar upp till tio objekt som matchar denna kolumns kriterier för specificerat omfång och tidsintervall. Du kan köra en loggsökning som returnerar alla poster genom att klicka på **Se alla** längst ned i kolumnen eller genom att klicka på kolumnrubriken.
 
 - **Värdar**
-    - **Värd för processoranvändningen** visar en grafisk trend över hello CPU-utnyttjande på värddatorer och en lista över värdar som baserats på hello tidsperiod. Hovra över hello diagram tooview detaljer för en specifik tidpunkt. Klicka på hello diagram tooview mer information finns i loggen Sök. Klicka på varje värd namn tooopen loggen Sök och visa information om prestandaräknare CPU för värdbaserade virtuella datorer.
-    - **Värd för minnesanvändning** visar en grafisk trend över hello minnesanvändning värddatorer och en lista över värdar som baserats på hello tidsperiod. Hovra över hello diagram tooview detaljer för en specifik tidpunkt. Klicka på hello diagram tooview mer information finns i loggen Sök. Klicka på alla värden namnet tooopen loggen Sök- och minne räknaren information för värdbaserade virtuella datorer.
+    - **Värd för processoranvändningen** visar en grafisk trend över CPU-utnyttjande på värddatorer och en lista över värdar, baserat på den valda tidsperioden. Hovra över linjediagram för att visa detaljer för en specifik tidpunkt. Klicka på diagrammet om du vill visa mer information i loggen sökningen. Klicka på alla värdnamn för att öppna loggen Sök och visa information om CPU prestandaräknare för värdbaserade virtuella datorer.
+    - **Värd för minnesanvändning** visar en grafisk trend över minnesanvändning värddatorer och en lista över värdar, baserat på den valda tidsperioden. Hovra över linjediagram för att visa detaljer för en specifik tidpunkt. Klicka på diagrammet om du vill visa mer information i loggen sökningen. Klicka på alla värdnamn för att öppna loggen sökning och visa information om prestandaräknare för värdbaserade virtuella datorer.
 - **Virtual Machines**
-    - **VM processoranvändningen** visar en grafisk trend över hello CPU-användning av virtuella datorer och en lista över virtuella datorer baserat på hello tidsperiod. Hovra över hello diagram tooview detaljer för en specifik tidpunkt för hello uppifrån 3 virtuella datorer. Klicka på hello diagram tooview mer information finns i loggen Sök. Klicka på alla VM namn tooopen loggen Sök och visa samman CPU information om prestandaräknare för hello VM.
-    - **VM minnesanvändning** visar en grafisk trend över hello minnesanvändning för virtuella datorer och en lista över virtuella datorer baserat på hello tidsperiod. Hovra över hello diagram tooview detaljer för en specifik tidpunkt för hello uppifrån 3 virtuella datorer. Klicka på hello diagram tooview mer information finns i loggen Sök. På alla VM namn tooopen loggen Sök och visa information om prestandaräknare aggregerade minne för hello VM.
-    - **VM totala Disk-IOPS** visar en grafisk trend över hello totala IOPS för virtuella datorer och en lista över virtuella datorer med hello IOPS för varje disks hello tidsperiod. Hovra över hello diagram tooview detaljer för en specifik tidpunkt för hello uppifrån 3 virtuella datorer. Klicka på hello diagram tooview mer information finns i loggen Sök. Klicka på alla VM namn tooopen loggen Sök- och aggregerade disk IOPS prestandaräknaren information för hello VM.
-    - **VM totala Diskgenomflödet** visar en grafisk trend över hello totala diskgenomflödet för virtuella datorer och en lista över virtuella datorer med hello totala genomflödet för varje, baserat på hello tidsperiod. Hovra över hello diagram tooview detaljer för en specifik tidpunkt för hello uppifrån 3 virtuella datorer. Klicka på hello diagram tooview mer information finns i loggen Sök. Klicka på alla VM namn tooopen loggen Sök och visa sammanställda totala genomflödet räknaren diskinformation för hello VM.
+    - **VM processoranvändningen** visar en grafisk trend över CPU-användning av virtuella datorer och en lista över virtuella datorer baserat på den valda tidsperioden. Hovra över linjediagram för att visa detaljer för en specifik tidpunkt för de översta 3 virtuella datorerna. Klicka på diagrammet om du vill visa mer information i loggen sökningen. Klicka på alla VM-namn för att öppna loggen Sök och visa sammanställs CPU information om prestandaräknare för den virtuella datorn.
+    - **VM minnesanvändning** visar en grafisk trend över minnesanvändning för virtuella datorer och en lista över virtuella datorer baserat på den valda tidsperioden. Hovra över linjediagram för att visa detaljer för en specifik tidpunkt för de översta 3 virtuella datorerna. Klicka på diagrammet om du vill visa mer information i loggen sökningen. Klicka på alla namn på virtuell dator att öppna loggen Sök och visa information om prestandaräknare aggregerade minne för den virtuella datorn.
+    - **VM totala Disk-IOPS** visar en grafisk trend över totala disken IOPS för virtuella datorer och en lista över virtuella datorer med IOPS för varje, baserat på den valda tidsperioden. Hovra över linjediagram för att visa detaljer för en specifik tidpunkt för de översta 3 virtuella datorerna. Klicka på diagrammet om du vill visa mer information i loggen sökningen. Klicka på alla VM-namn för att öppna loggen Sök- och aggregerade disk IOPS prestandaräknaren information för den virtuella datorn.
+    - **VM totala Diskgenomflödet** visar en grafisk trend över det totala genomflödet för virtuella datorer och en lista över virtuella datorer med det totala genomflödet för varje baserat på den valda tidsperioden. Hovra över linjediagram för att visa detaljer för en specifik tidpunkt för de översta 3 virtuella datorerna. Klicka på diagrammet om du vill visa mer information i loggen sökningen. Klicka på alla VM-namn för att öppna loggen Sök och visa sammanställs totala genomflödet räknaren diskinformation för den virtuella datorn.
 - **Klusterdelade volymer**
-    - **Totalt antal genomströmning** visar hello summan av både läsning och skrivning på klusterdelade volymer.
-    - **Totalt antal IOPS** visar hello summan av i/o-åtgärder per sekund på klusterdelade volymer.
-    - **Total svarstid** visar hello totala svarstiden på klusterdelade volymer.
-- **Värd för densitet** hello övre panelen visar hello totala antalet värdar och virtuella datorer tillgängliga toohello lösning. Klicka på hello övre panelen tooview ytterligare information i loggen sökningen. Visar också alla värdar och hello antalet virtuella datorer som är värd för. Klicka på en värd toodrill hello VM resultaten i en sökning i loggen.
+    - **Totalt antal genomströmning** visar summan av både läsningar och skrivningar på klusterdelade volymer.
+    - **Totalt antal IOPS** visar summan av i/o-åtgärder per sekund på klusterdelade volymer.
+    - **Total svarstid** visar den totala svarstiden på klusterdelade volymer.
+- **Värd för densitet** övre panelen visar det totala antalet värdar och virtuella datorer som är tillgängliga för lösningen. Klicka på övre panelen om du vill visa mer information i loggen sökningen. Visar också alla värdar och antalet virtuella datorer som finns. Klicka på en värd till VM-resultat i en logg sökning mer detaljerat.
 
 
 ![instrumentpanelen värdar bladet](./media/log-analytics-capacity/dashboard-hosts.png)
@@ -111,14 +111,14 @@ Klicka på hello kapacitet och prestanda panelen tooopen hello kapacitet och pre
 
 ### <a name="evaluate-performance"></a>Utvärdera prestanda
 
-Produktion datormiljöer skiljer sig avsevärt från en organisation tooanother. Dessutom kapacitet och prestanda för arbetsbelastningar kan beror på hur dina virtuella datorer som körs, och vad du normalt. Specifika procedurer toohelp du mäta prestanda skulle förmodligen inte tooyour miljö. Det innebär att flera generaliserad vägledning är bättre passar toohelp. Microsoft publicerar en mängd av vägledning artiklar toohelp du mäta prestanda.
+Produktion datormiljöer avsevärt skiljer sig åt en organisation. Dessutom kapacitet och prestanda för arbetsbelastningar kan beror på hur dina virtuella datorer som körs, och vad du normalt. Specifika procedurer som hjälper dig att mått prestanda förmodligen inte gäller för din miljö. Så mer generaliserad normativ vägledning passar bättre för att. Microsoft publicerar en mängd olika vägledningsartiklar för att du mäta prestanda.
 
-toosummarize, hello lösningen samlar in Kapacitets- och data från olika källor, till exempel prestandaräknare. Kapacitets- och data som visas i olika underlag i hello lösning och jämför dina resultat toothose på hello [mäta prestanda på Hyper-V](https://msdn.microsoft.com/library/cc768535.aspx) artikel. Även om hello artikeln publicerades en tid sedan är hello mått, överväganden och riktlinjer fortfarande giltiga. hello artikeln innehåller länkar tooother användbara resurser.
+Sammanfattningsvis, lösningen samlar in kapacitet och prestandadata från olika källor, till exempel prestandaräknare. Kapacitets- och data som visas i olika underlag i lösningen och jämför resultaten till webbplatser på den [mäta prestanda på Hyper-V](https://msdn.microsoft.com/library/cc768535.aspx) artikel. Även om artikeln publicerades för en tid sedan, är mått, överväganden och riktlinjer fortfarande giltiga. Artikeln innehåller länkar till andra användbara resurser.
 
 
 ## <a name="sample-log-searches"></a>Exempel på loggsökningar
 
-hello följande tabell innehåller exempel loggen söker efter Kapacitets- och data som samlas in och beräknas av den här lösningen.
+Följande tabell innehåller exempel loggen söker efter Kapacitets- och data som samlas in och beräknas av den här lösningen.
 
 | Fråga | Beskrivning |
 |---|---|
@@ -131,7 +131,7 @@ hello följande tabell innehåller exempel loggen söker efter Kapacitets- och d
 | Uppdelning av totala svarstiden i alla CSV: er | <code> Type=Perf ObjectName="Capacity and Performance" (CounterName="CSV Read Latency" OR CounterName="CSV Write Latency") &#124; top 2500 &#124; measure avg(CounterValue) by CounterName, InstanceName interval 1HOUR</code> |
 
 >[!NOTE]
-> Om ditt arbetsområde har uppgraderade toohello [nya Log Analytics-frågespråket](log-analytics-log-search-upgrade.md), hello senare frågorna skulle ändra toohello följande.
+> Om din arbetsyta har uppgraderats till [det nya Log Analytics-frågespråket](log-analytics-log-search-upgrade.md) ändras frågorna ovan till följande.
 
 > | Fråga | Beskrivning |
 |:--- |:--- |
@@ -145,4 +145,4 @@ hello följande tabell innehåller exempel loggen söker efter Kapacitets- och d
 
 
 ## <a name="next-steps"></a>Nästa steg
-* Använd [logga sökningar i logganalys](log-analytics-log-searches.md) tooview detaljerade Kapacitets- och data.
+* Använd [logga sökningar i logganalys](log-analytics-log-searches.md) att visa detaljerad information om kapacitet och prestanda.

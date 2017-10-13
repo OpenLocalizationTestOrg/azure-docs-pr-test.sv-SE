@@ -1,53 +1,70 @@
 ---
-Rubrik: aaa ”Azure Analysis Services självstudiekursen kompletterande lektionen: dynamiska säkerhet | Microsoft Docs ”beskrivning: Beskriver hur toouse dynamiska säkerhet med hjälp av raden filter i hello Azure Analysis Services-kursen.
-tjänster: analysis services dokumentationcenter: '' författare: minewiskan manager: erikre editor: '' taggar: ''
-
-MS.AssetID: ms.service: analysis services ms.devlang: NA ms.topic: get-started-article ms.tgt_pltfrm: NA ms.workload: na ms.date: 2017-05/26 ms.author: owend
+title: "Kompletterande lektion i Azure Analysis Services-självstudiekurs: Dynamisk säkerhet | Microsoft Docs"
+description: "Beskriver hur du använder dynamisk säkerhet med hjälp av radfilter i Azure Analysis Services-kursen."
+services: analysis-services
+documentationcenter: 
+author: Minewiskan
+manager: erikre
+editor: 
+tags: 
+ms.assetid: 
+ms.service: analysis-services
+ms.devlang: NA
+ms.topic: get-started-article
+ms.tgt_pltfrm: NA
+ms.workload: na
+ms.date: 05/26/2017
+ms.author: owend
+ms.openlocfilehash: b258c18fde15014192e8f604a4e8b3842c3e52c9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: sv-SE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="supplemental-lesson---dynamic-security"></a>Kompletterande lektion – Dynamisk säkerhet
 
 [!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
-I den här kompletterande lektionen skapar du en ytterligare roll som implementerar dynamisk säkerhet. Dynamisk säkerhet skyddar radnivå baserat på hello användar namn eller inloggnings-id för hello inloggade användaren. 
+I den här kompletterande lektionen skapar du en ytterligare roll som implementerar dynamisk säkerhet. Med dynamisk säkerhet får du säkerhet på radnivå baserat på användarnamn eller inloggnings-id för den användare som är inloggad. 
   
-tooimplement dynamiska säkerhet kan du lägga en tabell tooyour modell som innehåller hello användarnamnen för de användare som kan ansluta toohello modell och bläddra modellobjekt och data. hello-modell som du skapar med den här kursen är i hello kontexten för Adventure Works; dock toocomplete detta lektion, måste du lägga till en tabell som innehåller användare från din egen domän. Du behöver inte hello lösenord för hello användarnamn som har lagts till. toocreate en EmployeeSecurity-tabell med ett litet antal användare från din egen domän du använda hello klistra in funktionen Klistra in data från ett Excel-kalkylblad. I ett verkligt scenario skulle hello tabell som innehåller användarnamn vanligtvis vara en tabell från en faktiska databasen som en datakälla. till exempel en verklig DimEmployee tabell.  
+Om du vill implementera dynamisk säkerhet lägger du till en tabell i din modell som innehåller användarnamnen för de användare som ska kunna ansluta till modellen och visa modellobjekt och data. Modellen du skapar i den här självstudiekursen finns i kontexten för Adventure Works. Men för att slutföra den här lektionen måste du lägga till en tabell som innehåller användare från din egen domän. Du behöver inte lösenorden för användarnamnen som läggs till. För att skapa en EmployeeSecurity-tabell med ett litet antal användare från din egen domän använder du funktionen Klistra in och klistrar in data från ett Excel-kalkylblad. I ett verkligt scenario skulle tabellen som innehåller användarnamn vanligtvis vara en tabell från en faktisk databas som en datakälla, till exempel en verklig DimEmployee-tabell.  
   
-tooimplement dynamiska säkerhet kan du använda två DAX-funktioner: [användarnamn funktionen (DAX)](http://msdn.microsoft.com/22dddc4b-1648-4c89-8c93-f1151162b93f) och [LOOKUPVALUE funktionen (DAX)](http://msdn.microsoft.com/73a51c4d-131c-4c33-a139-b1342d10caab). Dessa funktioner, som tillämpas i en radfilterformel, definieras i en ny roll. Med funktionen hello LOOKUPVALUE anger hello formeln ett värde från hello EmployeeSecurity tabell. hello formeln skickar sedan att värdet toohello användarnamn funktion, vilket anger hello hello användares användarnamn inloggad tillhör toothis roll. hello-användare kan sedan bläddra endast de data som anges av hello rollen radfilter. I det här scenariot kan ange du att försäljning anställda endast kan bläddra Internet försäljningsdata för hello Försäljningsdistrikt som de är en medlem.  
+När du implementerar dynamisk säkerhet använder du två DAX-funktioner: [USERNAME (DAX)](http://msdn.microsoft.com/22dddc4b-1648-4c89-8c93-f1151162b93f) och [LOOKUPVALUE (DAX)](http://msdn.microsoft.com/73a51c4d-131c-4c33-a139-b1342d10caab). Dessa funktioner, som tillämpas i en radfilterformel, definieras i en ny roll. Med hjälp av funktionen LOOKUPVALUE anger formeln ett värde från tabellen EmployeeSecurity. Formeln skickar sedan att värdet till funktionen USERNAME som anger användarnamnet för den inloggade användaren som tillhör den här rollen. Användaren kan sedan endast visa de data som anges av rollens radfilter. I det här scenariot anger du att säljpersonal endast ska kunna visa information om Internetförsäljning för de försäljningsområden som de är medlem i.  
   
-De aktiviteter som är unikt toothis Adventure Works tabellmodell scenariot, men inte nödvändigtvis tillämpas tooa verkligt scenario identifieras som sådana. Varje aktivitet innehåller ytterligare information som beskriver hello syftet hello-aktivitet.  
+De aktiviteter som är unika för det här Adventure Works-tabellmodellscenariot, men som inte nödvändigtvis skulle gälla för ett verkligt scenario identifieras som sådana. Varje aktivitet innehåller ytterligare information som beskriver syftet med aktiviteten.  
   
-Uppskattad tid toocomplete lektionen: **30 minuter**  
+Uppskattad tidsåtgång för den här lektionen: **30 minuter**  
   
 ## <a name="prerequisites"></a>Krav  
-Den här kompletterande lektionen ingår i självstudiekursen för tabellmodellering som bör slutföras i rätt ordning. Innan du utför hello uppgifter i den här kompletterande lektionen bör du har slutfört alla tidigare erfarenheter.  
+Den här kompletterande lektionen ingår i självstudiekursen för tabellmodellering som bör slutföras i rätt ordning. Innan du utför aktiviteterna i den här kompletterande lektionen måste du ha slutfört alla föregående lektioner.  
   
-## <a name="add-hello-dimsalesterritory-table-toohello-aw-internet-sales-tabular-model-project"></a>Lägg till hello DimSalesTerritory tabell toohello AW Internet försäljning modellen Tabellprojekt  
-tooimplement dynamiska säkerhet för det här scenariot för Adventure Works, måste du lägga till två ytterligare tabeller tooyour modell. hello första tabellen som du lägger till är DimSalesTerritory (som Försäljningsdistrikt) från hello samma AdventureWorksDW-databasen. Du senare använda en rad filter toohello SalesTerritory tabell som definierar hello viss data hello inloggade användare kan bläddra.  
+## <a name="add-the-dimsalesterritory-table-to-the-aw-internet-sales-tabular-model-project"></a>Lägga till tabellen DimSalesTerritory i AW Internet Sales-tabellmodellprojektet  
+Om du vill implementera dynamisk säkerhet för det här Adventure Works-scenariot måste du lägga till ytterligare två tabeller i modellen. Först lägger du till tabellen DimSalesTerritory (som försäljningsområde) från samma AdventureWorksDW-databas. Sedan tillämpar du ett radfilter för tabellen SalesTerritory som definierar vilka data som den inloggade användaren kan visa.  
   
-#### <a name="tooadd-hello-dimsalesterritory-table"></a>tooadd hello DimSalesTerritory tabell  
+#### <a name="to-add-the-dimsalesterritory-table"></a>Lägga till tabellen DimSalesTerritory  
   
 1.  I tabellmodellutforskaren > **Datakällor** högerklickar du på din anslutning och sedan på **Importera nya tabeller**.  
 
-    Hello autentiseringsuppgifter för personifiering dialogrutan visas skriver du hello personifiering autentiseringsuppgifter som du använde i lektionen 2: Lägg till Data.
+    Om dialogrutan Autentiseringsuppgifter för personifiering visas anger du de autentiseringsuppgifter för personifiering som du använde i Lektion 2: Lägga till data.
   
-2.  Välj hello i Navigator **DimSalesTerritory** tabell och klicka sedan på **OK**.    
+2.  I navigatören väljer du tabellen **DimSalesTerritory** och klickar sedan på **OK**.    
   
-3.  I frågeredigeraren klickar du på hello **DimSalesTerritory** fråga och ta sedan bort **SalesTerritoryAlternateKey** kolumn.  
+3.  I frågeredigeraren klickar du på frågan **DimSalesTerritory** och tar sedan bort kolumnen **SalesTerritoryAlternateKey**.  
   
 7.  Klicka på **Importera**.  
   
-    hello ny tabell läggs toohello modellen arbetsytan. Objekt och data från hello källtabellen DimSalesTerritory importeras sedan till Tabellmodell din AW Internet försäljning.  
+    Den nya tabellen läggs till i modellarbetsytan. Objekt och data från tabellen DimSalesTerritory importeras sedan till din AW Internet Sales-tabellmodell.  
   
-9. När hello tabellen har importerats, klickar du på **Stäng**.  
+9. När tabellen har importerats klickar du på **Stäng**.  
 
 ## <a name="add-a-table-with-user-name-data"></a>Lägga till en tabell med användarnamndata  
-Hej DimEmployee tabellen i hello AdventureWorksDW som exempeldatabas innehåller användare från hello AdventureWorks domän. Dessa användarnamn finns inte i din egen miljö. Du måste skapa en tabell i din modell som innehåller ett litet antal (minst tre) faktiska användare från din organisation. Du lägger sedan till användarna som medlemmar toohello ny roll. Du behöver inte hello lösenord för hello exempel användarnamn, men du behöver faktiska Windows-användarnamn från en egen domän.  
+Tabellen DimEmployee i AdventureWorksDW-exempeldatabasen innehåller användare från AdventureWorks-domänen. Dessa användarnamn finns inte i din egen miljö. Du måste skapa en tabell i din modell som innehåller ett litet antal (minst tre) faktiska användare från din organisation. Sedan lägger du till dessa användare som medlemmar i den nya rollen. Du behöver inte lösenorden för exempelanvändarnamnen, men du behöver de faktiska Windows-användarnamnen från din domän.  
   
-#### <a name="tooadd-an-employeesecurity-table"></a>tooadd en EmployeeSecurity tabell  
+#### <a name="to-add-an-employeesecurity-table"></a>Så här lägger du till en EmployeeSecurity-tabell  
   
 1.  Öppna Microsoft Excel och skapa ett kalkylblad.  
   
-2.  Kopiera hello i den följande tabellen, inklusive hello rubrikraden och klistra in den i hello kalkylblad.  
+2.  Kopiera följande tabell, inklusive rubrikraden, och klistra in den i kalkylbladet.  
 
     ```
       |EmployeeId|SalesTerritoryId|FirstName|LastName|LoginId|  
@@ -58,77 +75,77 @@ Hej DimEmployee tabellen i hello AdventureWorksDW som exempeldatabas innehåller
       |3|5|<user first name>|<user last name>|\<domain\username>|  
     ```
 
-3.  Ersätt hello förnamn, efternamn och domän\användarnamn med hello namn och inloggnings-ID för tre användare i din organisation. Placera hello samma användare på hello två första raderna för EmployeeId 1, visar den här användaren tillhör toomore än en försäljning territorium. Lämna hello EmployeeId och SalesTerritoryId som de är.  
+3.  Ersätt förnamn, efternamn och domän\användarnamn med namnen och inloggnings-id:n för de tre användarna i din organisation. Placera samma användare på de första två raderna, för EmployeeId 1, så att den här användaren tillhör fler än ett försäljningsområde. Lämna fälten EmployeeId och SalesTerritoryId som de är.  
   
-4.  Spara hello kalkylblad som **SampleEmployee**.  
+4.  Spara kalkylbladet som **SampleEmployee**.  
   
-5.  Hello kalkylblad, markerar du alla hello-celler med data om anställda, inklusive hello sidhuvud, och sedan högerklicka hello markerade data och klicka på **kopiera**.  
+5.  I kalkylbladet markerar du alla celler med information om anställda, inklusive rubrikerna. Högerklicka sedan på de markerade data och klicka på **Kopiera**.  
   
-6.  Klicka på hello i SSDT, **redigera** -menyn och klicka sedan på **klistra in**.  
+6.  Välj **Redigera**-menyn i SSDT och klicka på **Klistra in**.  
   
-    Om klistra in är nedtonad klickar du på någon kolumn i en tabell i hello modellen designer-fönstret och försök igen.  
+    Om Klistra in är nedtonat klickar du på valfri kolumn i valfri tabell i modelldesignerfönstret. Försök sedan igen.  
   
-7.  I hello **klistra in Preview** i dialogrutan **tabellnamn**, typen **EmployeeSecurity**.  
+7.  Skriv **EmployeeSecurity** i **Tabellnamn** i dialogrutan **Förhandsgranska inklistring**.  
   
-8.  I **Data toobe klistras in**, kontrollera hello data omfattar alla hello användardata och rubriker från hello SampleEmployee kalkylblad.  
+8.  I **Data som ska klistras in** kontrollerar du att data innehåller alla användardata och alla rubriker från kalkylbladet SampleEmployee.  
   
 9. Kontrollera att **Låt första raden utgöra kolumnrubriker** är markerat och klicka sedan på **Ok**.  
   
-    En ny tabell med namnet EmployeeSecurity med medarbetardata som kopieras från hello SampleEmployee kalkylblad skapas.  
+    En ny tabell med namnet EmployeeSecurity skapas med information om anställda som kopieras från kalkylbladet SampleEmployee.  
   
 ## <a name="create-relationships-between-factinternetsales-dimgeography-and-dimsalesterritory-table"></a>Skapa relationer mellan tabellerna FactInternetSales, DimGeography och DimSalesTerritory  
-Hej FactInternetSales och DimGeography DimSalesTerritory tabellen alla innehålla en gemensam kolumn SalesTerritoryId. Hej SalesTerritoryId kolumnen i hello DimSalesTerritory tabellen innehåller värden med ett annat Id för alla områden.  
+Tabellerna FactInternetSales, DimGeography och DimSalesTerritory innehåller var och en kolumnen SalesTerritoryId. Kolumnen SalesTerritoryId i tabellen DimSalesTerritory innehåller värden med olika id för varje försäljningsområde.  
   
-#### <a name="toocreate-relationships-between-hello-factinternetsales-dimgeography-and-hello-dimsalesterritory-table"></a>toocreate relationer mellan hello FactInternetSales, DimGeography och hello DimSalesTerritory tabell  
+#### <a name="to-create-relationships-between-the-factinternetsales-dimgeography-and-the-dimsalesterritory-table"></a>Så här skapar du relationer mellan tabellerna FactInternetSales, DimGeography och DimSalesTerritory  
   
-1.  I diagramvyn i hello **DimGeography** tabell, klicka och håll på hello **SalesTerritoryId** kolumn, och sedan dra hello markören toohello **SalesTerritoryId** kolumn i hello **DimSalesTerritory** tabell och släpp.  
+1.  Klicka på och håll ned kolumnen **SalesTerritoryId** i tabellen **DimGeography** i diagramvyn och dra sedan markören till kolumnen **SalesTerritoryId** i tabellen **DimSalesTerritory** och släpp.  
   
-2.  I hello **FactInternetSales** tabell, klicka och håll på hello **SalesTerritoryId** kolumn, och sedan dra hello markören toohello **SalesTerritoryId** kolumn i hello  **DimSalesTerritory** tabell och släpp.  
+2.  Klicka på och håll ned kolumnen **SalesTerritoryId** i tabellen **FactInternetSales** och dra sedan markören till kolumnen **SalesTerritoryId** i tabellen **DimSalesTerritory** och släpp.  
   
-    Meddelande hello Active-egenskapen för den här relationen är False, vilket innebär att det är inaktivt. hello har redan tabellen FactInternetSales en annan aktiv relation.  
+    Observera att egenskapen Active för den här relationen är False (falsk), vilket innebär att relationen är inaktiv. Det finns redan en annan aktiv relation för tabellen FactInternetSales.  
   
-## <a name="hide-hello-employeesecurity-table-from-client-applications"></a>Dölj hello EmployeeSecurity tabell från klientprogram  
-I det här steget dölja du hello EmployeeSecurity tabell, som visas i ett klientprogram fältlistan. Tänk på att du inte skyddar tabellen genom att dölja den. Användare kan fortfarande fråga på EmployeeSecurity-tabelldata om de vet hur man gör. toosecure Hej EmployeeSecurity tabelldata hindrar användare från att kunna tooquery datainnehåll, du använda ett filter för en aktivitet med senare.  
+## <a name="hide-the-employeesecurity-table-from-client-applications"></a>Dölja tabellen EmployeeSecurity för klientprogram  
+I den här aktiviteten döljer du tabellen EmployeeSecurity så att den inte visas i fältlistan i klientprogram. Tänk på att du inte skyddar tabellen genom att dölja den. Användare kan fortfarande fråga på EmployeeSecurity-tabelldata om de vet hur man gör. Om du vill skydda data i tabellen EmployeeSecurity och hindra användare från att kunna fråga på data i tabellen använder du ett filter (se senare aktivitet).  
   
-#### <a name="toohide-hello-employeesecurity-table-from-client-applications"></a>toohide hello EmployeeSecurity tabell från klientprogram  
+#### <a name="to-hide-the-employeesecurity-table-from-client-applications"></a>Så här döljer du tabellen EmployeeSecurity för klientprogram  
   
--   Högerklicka i hello modellen designer i diagramvyn hello **medarbetare** tabell rubrik och klicka sedan på **dölja från klientverktyg**.  
+-   Högerklicka på tabellrubriken **Employee** (Anställd) i diagramvyn i modelldesignern och klicka sedan på **Dölj för klientverktyg**.  
   
 ## <a name="create-a-sales-employees-by-territory-user-role"></a>Skapa användarrollen Säljpersonal per område  
-I den här aktiviteten skapar du en användarroll. Den här rollen omfattar ett radfilter som definierar vilka rader i hello DimSalesTerritory tabell är synliga toousers. hello filter tillämpas sedan i hello en-till-många-relation riktning tooall andra tabeller relaterade tooDimSalesTerritory. Du kan också använda ett filter som skyddar hello hela EmployeeSecurity tabellen från att frågbar av alla användare som är medlem i rollen hello.  
+I den här aktiviteten skapar du en användarroll. Rollen innefattar ett radfilter som definierar vilka rader i tabellen DimSalesTerritory som ska vara synliga för användare. Filtret tillämpas sedan i relationsriktningen en-till-flera för alla andra tabeller som är relaterade till DimSalesTerritory. Du kan också tillämpa ett filter som skyddar hela EmployeeSecurity-tabellen så att ingen användare som är medlem i rollen kan fråga på data i tabellen.  
   
 > [!NOTE]  
-> hello försäljning anställda av territorium roll som du skapar i den här lektionen begränsar medlemmar toobrowse (eller fråga) endast försäljningsdata för hello försäljning territorium toowhich de tillhör. Om du lägger till en användare som en medlem toohello försäljning anställda av territorium roll som också finns en medlem i en roll som skapas i [lektionen 11: skapa roller](../tutorials/aas-lesson-11-create-roles.md), får du en kombination av behörigheter. När en användare är medlem i flera roller, hello behörigheter och radfilter som definierats för varje roll är kumulativa. Det vill säga har hello användare hello större behörigheter som anges av hello kombination av roller.  
+> Rollen Säljpersonal per område som du skapar i den här lektionen begränsar medlemmarna så att de bara kan visa (eller fråga på) försäljningsdata för det försäljningsområde som de tillhör. Om du lägger till en användare som medlem i rollen Säljpersonal per område och användaren även är medlem i en roll som skapats i [Lektion 11: Skapa roller](../tutorials/aas-lesson-11-create-roles.md) får du en kombination av behörigheter. När en användare är medlem i flera roller ackumuleras behörigheterna och radfitren som definierats för varje roll. Det vill säga att användaren får högre behörighet som bestäms av kombinationen av rollerna.  
   
-#### <a name="toocreate-a-sales-employees-by-territory-user-role"></a>toocreate en försäljning anställda av territorium användarroll  
+#### <a name="to-create-a-sales-employees-by-territory-user-role"></a>Så här skapar du användarrollen Säljpersonal per område  
   
-1.  Klicka på hello i SSDT, **modellen** -menyn och klicka sedan på **roller**.  
+1.  Klicka på **Modell**-menyn i SSDT och klicka sedan på **Roller**.  
   
 2.  Klicka på **Ny** i **rollhanteraren**.  
   
-    En ny roll med hello ingen behörighet har lagts till toohello lista.  
+    En ny roll med behörigheten Ingen läggs till i listan.  
   
-3.  Klicka på hello ny roll, och klicka sedan på hello **namn** kolumn, byta namn på hello rollen för**anställda försäljning per område**.  
+3.  Klicka på den nya rollen och ändra sedan namnet på rollen till **Säljpersonal per område** i kolumnen **Namn**.  
   
-4.  I hello **behörigheter** kolumnen, klickar du på hello listrutan och välj sedan hello **Läs** behörighet.  
+4.  Klicka på listrutan i kolumnen **Behörigheter** och välj sedan behörigheten **Läsa**.  
   
-5.  Klicka på hello **medlemmar** fliken och klicka sedan på **Lägg till**.  
+5.  Klicka på fliken **Medlemmar** och sedan på **Lägg till**.  
   
-6.  I hello **Välj användare eller grupp** i dialogrutan **RETUR hello-objekt med namnet tooselect**, Skriv hello första exemplet användarnamn du använde när du skapar hello EmployeeSecurity tabell. Klicka på **Kontrollera namn** tooverify hello användarnamn är giltig och klicka sedan på **Ok**.  
+6.  I **Ange ett objektnamn du vill markera** i dialogrutan **Välj användare eller grupp** anger du det första exempelanvändarnamnet du använde när du skapade tabellen EmployeeSecurity. Klicka på **Kontrollera namn** för att verifiera att användarnamnet är giltigt och klicka sedan på **Ok**.  
   
-    Upprepa det här steget lägger till hello andra Exempelnamn för användare som du använde när du skapar hello EmployeeSecurity tabell.  
+    Upprepa det här steget för att lägga till de andra exempelanvändarnamnen du använde när du skapade tabellen EmployeeSecurity.  
   
-7.  Klicka på hello **radfilter** fliken.  
+7.  Klicka på fliken **Radfilter**.  
   
-8.  För hello **EmployeeSecurity** tabell i hello **DAX-Filter** kolumn, typen hello följande formel:  
+8.  Skriv följande formel i kolumnen **DAX-filter** i tabellen **EmployeeSecurity**:  
   
     ```
       =FALSE()  
     ```
   
-    Den här formeln anger att alla kolumner matcha toohello FALSKT booleskt villkor. Inga kolumner har valts för hello EmployeeSecurity tabellen kan efterfrågas av en medlem i hello försäljning anställda av territorium användarroll.  
+    Den här formeln anger alla kolumner matchar det booleska värdet False (falskt). Medlemmar i rollen Säljpersonal per område kan inte fråga på någon av kolumnerna i tabellen EmployeeSecurity.  
   
-9. För hello **DimSalesTerritory** tabell, typen hello följande formel:  
+9. Skriv följande formel för tabellen **DimSalesTerritory**:  
 
     ```  
     ='Sales Territory'[Sales Territory Id]=LOOKUPVALUE('Employee Security'[Sales Territory Id], 
@@ -137,36 +154,36 @@ I den här aktiviteten skapar du en användarroll. Den här rollen omfattar ett 
       'Sales Territory'[Sales Territory Id]) 
     ```
   
-    I den här formeln returnerar hello funktionen LOOKUPVALUE alla värden för hello DimEmployeeSecurity [SalesTerritoryId]-kolumnen, där hello EmployeeSecurity [LoginId] är hello samma som hello aktuella inloggade Windows-användarnamn och EmployeeSecurity [ SalesTerritoryId] är hello samma som hello DimSalesTerritory [SalesTerritoryId].  
+    I den här formeln returnerar funktionen LOOKUPVALUE alla värden för kolumnen DimEmployeeSecurity[SalesTerritoryId] där EmployeeSecurity[LoginId] är samma som det inloggade Windows-användarnamnet och EmployeeSecurity[SalesTerritoryId] är samma som DimSalesTerritory[SalesTerritoryId].  
   
-    hello är försäljning territorium-ID: N som returneras av LOOKUPVALUE och sedan använda toorestrict hello rader som visas i hello DimSalesTerritory tabell. Endast rader där hello SalesTerritoryID för hello rad är i hello uppsättning ID som returnerades av funktionen för hello LOOKUPVALUE visas.  
+    Den uppsättning försäljningsområdes-ID:n som returneras av LOOKUPVALUE används sedan för att begränsa vilka rader som visas i tabellen DimSalesTerritory. Endast de rader där SalesTerritoryID för raden finns i den uppsättning av ID:n som returneras av funktionen LOOKUPVALUE visas.  
   
 10. Klicka på **Ok** i rollhanteraren.  
   
-## <a name="test-hello-sales-employees-by-territory-user-role"></a>Testa hello försäljning anställda av territorium användarroll  
-I det här steget använder du hello analysera i Excel-funktionen i SSDT tootest hello effekt hello försäljning anställda av territorium användarroll. Du anger ett av hello användarnamn du har lagt till toohello EmployeeSecurity tabellen och som en medlem i rollen hello. Det här användarnamnet används sedan som hello gällande namnet i hello anslutningen mellan Excel och hello modellen.  
+## <a name="test-the-sales-employees-by-territory-user-role"></a>Testa användarrollen Säljpersonal per område  
+I den här uppgiften använder du funktionen Analysera i Excel i SSDT för att testa effektiviteten hos användarrollen Säljpersonal per område. Du anger något av de användarnamn som du har lagt till i tabellen EmployeeSecurity som medlem i rollen. Det här användarnamnet används sedan som gällande användarnamn i anslutningen som skapas mellan Excel och modellen.  
   
-#### <a name="tootest-hello-sales-employees-by-territory-user-role"></a>tootest hello försäljning anställda av territorium användarroll  
+#### <a name="to-test-the-sales-employees-by-territory-user-role"></a>Så här testar du användarrollen Säljpersonal per område  
   
-1.  Klicka på hello i SSDT, **modellen** -menyn och klicka sedan på **analysera i Excel**.  
+1.  Klicka på **Modell**-menyn i SSDT och klicka sedan på **Analysera i Excel**.  
   
-2.  I hello **analysera i Excel** i dialogrutan **ange hello namn eller roll toouse tooconnect toohello användarmodellen**väljer **andra Windows-användare**, och klicka sedan på **Bläddra**.  
+2.  Välj **Annan Windows-användare** i **Ange det användarnamn eller den roll som ska användas för att ansluta till modellen** i dialogrutan **Analysera i Excel** och klicka sedan på **Bläddra**.  
   
-3.  I hello **Välj användare eller grupp** i dialogrutan **ange hello objektet namnet tooselect**, ange ett användarnamn som du har inkluderat i hello EmployeeSecurity tabell och klicka sedan på **Kontrollera namn**.  
+3.  I **Ange ett objektnamn du vill markera** i dialogrutan **Välj användare eller grupp** skriver du ett användarnamn som du har lagt till i tabellen EmployeeSecurity. Klicka sedan på **Kontrollera namn**.  
   
-4.  Klicka på **Ok** tooclose hello **Välj användare eller grupp** dialogrutan och klicka sedan på **Ok** tooclose hello **analysera i Excel** dialogrutan.  
+4.  Klicka på **Ok** för att stänga dialogrutan **Välj användare eller grupp** och klicka sedan på **Ok** för att stänga dialogrutan **Analysera i Excel**.  
   
-    Excel öppnas med en ny arbetsbok. En pivottabell skapas automatiskt. hello PivotTable-Fields listan innehåller de flesta av hello datafält som är tillgängliga i din nya modell.  
+    Excel öppnas med en ny arbetsbok. En pivottabell skapas automatiskt. Listan Pivottabellfält innehåller de flesta datafält som är tillgängliga i den nya modellen.  
   
-    Meddelande hello EmployeeSecurity tabellen visas inte i hello PivotTable-Fields lista. Du valde att dölja den här tabellen för klientverktyg i en föregående aktivitet.  
+    Observera att tabellen EmployeeSecurity inte visas i listan Pivottabellfält. Du valde att dölja den här tabellen för klientverktyg i en föregående aktivitet.  
   
-5.  I hello **fält** under **∑ Internet försäljning** (mått), Välj hello **InternetTotalSales** mått. hello mått har angetts i hello **värden** fält.  
+5.  I **∑ Internet Sales** (mått) i listan **Fält** väljer du måttet **InternetTotalSales**. Måttet anges i fälten **Värden**.  
   
-6.  Välj hello **SalesTerritoryId** kolumn från hello **DimSalesTerritory** tabell. hello kolumn har angetts i hello **radetiketter** fält.  
+6.  Välj kolumnen **SalesTerritoryId** i tabellen **DimSalesTerritory**. Kolumnen anges i fälten **Radetiketter**.  
   
-    Meddelande Internet försäljningssiffrorna visas bara för hello en region toowhich hello gällande användarnamnet du använde tillhör. Om du väljer en annan kolumn, visas som stad från hello DimGeography tabellen som rad Etikettfält, endast städer i hello försäljning territorium toowhich hello effektiva användaren tillhör.  
+    Observera att Internetförsäljningssiffror endast visas för den region som det gällande användarnamnet (som du använde) tillhör. Om du väljer en annan kolumn, till exempel City (Ort) i tabellen DimGeography som radetikettfält, visas endast orter i försäljningsområdet som den gällande användaren tillhör.  
   
-    Den här användaren kan inte bläddra eller fråga alla Internet-försäljningsdata för områden än hello en de tillhör. Den här begränsningen beror på att hello radfilter som definierats för hello DimSalesTerritory tabell i hello försäljning anställda av territorium användarrollen skyddar data för alla data som rör tooother Försäljningsdistrikt.  
+    Den här användaren kan inte visa eller fråga på Internetförsäljningsdata för andra områden än det som han eller hon tillhör. Den här begränsningen beror på att radfiltret som definierats för tabellen DimSalesTerritory i användarrollen Säljpersonal per område skyddar alla data för andra försäljningsområden.  
   
 ## <a name="see-also"></a>Se även  
 [Funktionen USERNAME (DAX)](https://msdn.microsoft.com/library/hh230954.aspx)  

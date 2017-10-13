@@ -1,6 +1,6 @@
 ---
-title: aaaUsing Azure CDN med CORS | Microsoft Docs
-description: "Lär dig hur toouse hello Azure Content Delivery Network (CDN) toowith Cross-Origin Resource Sharing (CORS)."
+title: "Med hjälp av Azure CDN med CORS | Microsoft Docs"
+description: "Lär dig hur du använder i Azure Content innehållsleveransnätverk (CDN) till med Cross-Origin Resource Sharing (CORS)."
 services: cdn
 documentationcenter: 
 author: zhangmanling
@@ -14,32 +14,32 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 6c743b56c32a2d3aacc9a77094cb87d61b95d2f7
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 7070397f6e69b21add75bad8220f0b8ebe36d266
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="using-azure-cdn-with-cors"></a>Med hjälp av Azure CDN med CORS
 ## <a name="what-is-cors"></a>Vad är CORS?
-CORS (Cross Origin Resource Sharing) är en HTTP-funktion som gör att ett webbprogram som körs i en domän tooaccess resurser i en annan domän. I ordning tooreduce hello risken för webbplatser scripting angrepp, alla moderna webbläsare för att implementera säkerhetsbegränsning kallas [samma ursprung princip](http://www.w3.org/Security/wiki/Same_Origin_Policy).  Detta förhindrar att en webbsida från anropa API: er i en annan domän.  CORS ger ett säkert sätt tooallow ett ursprung (hello ursprungsdomän) toocall API: er i ett ursprung.
+CORS (Cross Origin Resource Sharing) är en HTTP-funktion som gör att ett webbprogram som körs i en domän kan komma åt resurser i en annan domän. För att minska risken för angrepp för webbplatser scripting alla moderna webbläsare för att implementera säkerhetsbegränsning kallas [samma ursprung princip](http://www.w3.org/Security/wiki/Same_Origin_Policy).  Detta förhindrar att en webbsida från anropa API: er i en annan domän.  CORS ger ett säkert sätt så att ett ursprung (ursprungsdomän) att anropa API: er i ett ursprung.
 
 ## <a name="how-it-works"></a>Hur det fungerar
 Det finns två typer av CORS-förfrågningar, *enkla begäranden* och *komplexa begäranden.*
 
 ### <a name="for-simple-requests"></a>För enkla begäranden:
 
-1. hello webbläsaren skickar hello CORS-begäran med en ytterligare **ursprung** HTTP-huvud. hello-värdet för det här sidhuvudet är hello ursprung som betjänats hello överordnad sida som har definierats som hello kombination av *protokoll,* *domän,* och *port.*  En sida från https://www.contoso.com försöker tooaccess användardata i hello fabrikam.com ursprung, skickas hello följande huvudet i begäran toofabrikam.com:
+1. Webbläsaren skickar en begäran för CORS med en ytterligare **ursprung** HTTP-huvud. Värdet för det här sidhuvudet är ursprung som hanteras av den överordnade sidan som har definierats som en kombination av *protokoll,* *domän,* och *port.*  När en sida från https://www.contoso.com försöker få åtkomst till användardata i fabrikam.com ursprung, skulle begärandehuvudet följande skickas till fabrikam.com:
 
    `Origin: https://www.contoso.com`
 
-2. hello servern svarar med hello följande:
+2. Servern svarar med något av följande:
 
    * En **Access Control-Tillåt-ursprung** rubrik i sitt svar som anger vilken plats ursprung är tillåtna. Exempel:
 
      `Access-Control-Allow-Origin: https://www.contoso.com`
 
-   * En HTTP-felkod: till exempel 403 om hello server inte tillåter hello cross-origin begäran när du har kontrollerat hello ursprung sidhuvud
+   * En HTTP-felkod, till exempel 403 om servern inte tillåter cross-origin-begäran när du har kontrollerat rubriken ursprung
 
    * En **Access Control-Tillåt-ursprung** huvud med jokertecken som gör att alla ursprung:
 
@@ -47,52 +47,52 @@ Det finns två typer av CORS-förfrågningar, *enkla begäranden* och *komplexa 
 
 ### <a name="for-complex-requests"></a>För komplexa begäranden:
 
-En komplex begäran är en begäran om CORS där hello webbläsare krävs toosend en *preflight-begäran* (d.v.s. en preliminär avsökning) innan du skickar hello faktiska CORS-begäran. hello preflight-begäran frågar hello server behörighet om hello ursprungliga CORS-begäran kan fortsätta och är en `OPTIONS` begära toohello samma URL.
+En komplex begäran är en CORS-begäran där webbläsaren krävs för att skicka en *preflight-begäran* (d.v.s. en preliminär avsökning) innan den faktiska CORS-begäranden skickas. Preflight-begäran frågar behörigheten server om de ursprungliga CORS begäran kan fortsätta och är en `OPTIONS` begäran till samma URL.
 
 > [!TIP]
-> Visa mer information om CORS-flöden och vanliga fallgropar hello [Guide tooCORS för REST API: er](https://www.moesif.com/blog/technical/cors/Authoritative-Guide-to-CORS-Cross-Origin-Resource-Sharing-for-REST-APIs/).
+> Mer information om CORS-flöden och vanliga fallgropar, visa den [Guide till CORS för REST API: er](https://www.moesif.com/blog/technical/cors/Authoritative-Guide-to-CORS-Cross-Origin-Resource-Sharing-for-REST-APIs/).
 >
 >
 
 ## <a name="wildcard-or-single-origin-scenarios"></a>Jokertecken eller enskild ursprung scenarier
-CORS i Azure CDN fungerar automatiskt med ingen ytterligare konfiguration när hello **Access Control-Tillåt-ursprung** huvud är inställt toowildcard (*) eller ett enda ursprung.  hello CDN cachelagrar hello första svar och efterföljande begäranden använder hello samma sidhuvud.
+CORS i Azure CDN fungerar automatiskt med ingen ytterligare konfiguration när den **Access Control-Tillåt-ursprung** huvud är inställt på jokertecken (*) eller ett enda ursprung.  CDN cachelagrar första svaret och efterföljande begäranden använder samma huvud.
 
-Om begäran har redan gjorts toohello CDN tidigare tooCORS anges på hello din ursprung, behöver du toopurge innehåll på din slutpunkt innehåll tooreload hello innehåll med hello **Access Control-Tillåt-ursprung** huvud.
+Om begäran redan har gjorts till CDN innan CORS har angetts på den din ursprung måste du rensa innehållet för slutpunkten innehållet att läsa in innehåll med den **Access Control-Tillåt-ursprung** huvud.
 
 ## <a name="multiple-origin-scenarios"></a>Scenarier med flera ursprung
-Om du behöver tooallow en specifik lista över ursprung toobe tillåts för CORS saker lite mer komplicerad. hello problemet uppstår när hello CDN cachelagrar hello **Access Control-Tillåt-ursprung** huvud för hello första CORS-ursprunget.  När en annan CORS-ursprunget gör en efterföljande begäran, hello CDN fungerar hello cachelagrade **Access Control-Tillåt-ursprung** rubriken, som inte matchar.  Det finns flera sätt toocorrect detta.
+Om du vill tillåta att en viss lista över ursprung som ska tillåtas för CORS saker lite mer komplicerad. Problemet uppstår när CDN cachelagrar den **Access Control-Tillåt-ursprung** sidhuvud för det första CORS-ursprunget.  När en annan CORS-ursprunget gör en efterföljande begäran, CDN fungerar det cachelagrade **Access Control-Tillåt-ursprung** rubriken, som inte matchar.  Det finns flera sätt att åtgärda detta.
 
 ### <a name="azure-cdn-premium-from-verizon"></a>Azure CDN Premium från Verizon
-Hej bästa sätt tooenable är toouse **Azure CDN Premium från Verizon**, vilket visar att vissa avancerade funktioner. 
+Det bästa sättet att göra detta är att använda **Azure CDN Premium från Verizon**, vilket visar att vissa avancerade funktioner. 
 
-Du behöver för[skapa en regel](cdn-rules-engine.md) toocheck hello **ursprung** sidhuvud på hello-begäran.  Om det är ett giltigt ursprung din regel kommer att ange hello **Access Control-Tillåt-ursprung** huvud med hello ursprung i hello-begäran.  Om hello ursprung har angetts i hello **ursprung** huvud är inte tillåtet, regeln bör utelämna hello **Access Control-Tillåt-ursprung** huvudet som gör att hello webbläsarbegäran tooreject hello. 
+Du behöver [skapa en regel](cdn-rules-engine.md) att kontrollera den **ursprung** huvud i begäran.  Om det är ett giltigt ursprung din regel kommer att ange den **Access Control-Tillåt-ursprung** huvud med ursprung i begäran.  Om ursprung har angetts i den **ursprung** huvud är inte tillåtet, regeln bör utelämna den **Access Control-Tillåt-ursprung** huvud vilket leder till webbläsaren om du vill avvisa begäran. 
 
-Det finns två sätt toodo detta med hello regelmotor.  I båda fallen hello **Access Control-Tillåt-ursprung** huvudet från hello filens ursprungsserver ignoreras helt, hello CDN regelmotor helt hanterar hello tillåtna CORS ursprung.
+Det finns två sätt att göra detta med regler-motorn.  I båda fallen den **Access Control-Tillåt-ursprung** huvudet från filservern ursprung ignoreras helt, den CDN regelmotor hanterar helt tillåtna CORS ursprung.
 
 #### <a name="one-regular-expression-with-all-valid-origins"></a>Ett reguljärt uttryck med alla giltiga ursprung
-I det här fallet ska du skapa ett reguljärt uttryck som innehåller alla hello ursprung önskade tooallow: 
+I det här fallet skapar du ett reguljärt uttryck som innehåller alla ursprung som du vill tillåta: 
 
     https?:\/\/(www\.contoso\.com|contoso\.com|www\.microsoft\.com|microsoft.com\.com)$
 
 > [!TIP]
-> **Azure CDN från Verizon** använder [Perl kompatibel reguljära uttryck](http://pcre.org/) som motorn för reguljära uttryck.  Du kan använda ett verktyg som [reguljära uttryck 101](https://regex101.com/) toovalidate reguljära uttryck.  Observera att hello ”/” tecken är giltig i reguljära uttryck och behöver inte toobe undantaget, men undantagstecken tecknet anses vara bästa praxis och förväntas av vissa regex verifierare.
+> **Azure CDN från Verizon** använder [Perl kompatibel reguljära uttryck](http://pcre.org/) som motorn för reguljära uttryck.  Du kan använda ett verktyg som [reguljära uttryck 101](https://regex101.com/) att verifiera det reguljära uttrycket.  Observera att tecknet ”/” är giltig i reguljära uttryck och behöver inte hoppas, men undantagstecken tecknet anses vara bästa praxis och förväntas av vissa regex verifierare.
 > 
 > 
 
-Om hello reguljära uttryck matchar, ersätts regeln hello **Access Control-Tillåt-ursprung** huvud (eventuella) från hello ursprung med hello ursprung som skickade hello-begäran.  Du kan också lägga till ytterligare CORS-huvuden som **-kontroll-Tillåt-åtkomstmetoder**.
+Om det reguljära uttrycket matchar regeln ersätter den **Access Control-Tillåt-ursprung** huvud (eventuella) från ursprunget med ursprung som skickade begäran.  Du kan också lägga till ytterligare CORS-huvuden som **-kontroll-Tillåt-åtkomstmetoder**.
 
 ![Exempel på regler med reguljära uttryck](./media/cdn-cors/cdn-cors-regex.png)
 
 #### <a name="request-header-rule-for-each-origin"></a>Begäran huvud-regel för varje ursprung.
-I stället för reguljära uttryck kan du istället skapa en separat regel för varje ursprung du vill använda hello tooallow **begära huvud med jokertecken** [matchar villkoret](https://msdn.microsoft.com/library/mt757336.aspx#Anchor_1). Som med hello reguljärt uttryck metoden motorn hello regler fristående anger hello CORS huvuden. 
+I stället för reguljära uttryck kan du i stället skapa en separat regel för varje ursprung som du vill tillåta med hjälp av den **begära huvud med jokertecken** [matchar villkoret](https://msdn.microsoft.com/library/mt757336.aspx#Anchor_1). Precis som med metoden reguljärt uttryck anger enbart regler motorn CORS-huvuden. 
 
 ![Regler som exempel utan reguljärt uttryck](./media/cdn-cors/cdn-cors-no-regex.png)
 
 > [!TIP]
-> I hello-exemplet ovan, hello användning av jokertecken hello * visar hello regler motorn toomatch både HTTP och HTTPS.
+> I exemplet ovan med jokertecknet * anger regelmotor att matcha både HTTP och HTTPS.
 > 
 > 
 
 ### <a name="azure-cdn-standard"></a>Standard Azure CDN
-På Azure CDN Standard profiler hello mekanism tooallow för flera ursprung utan hello hello jokertecken ursprung är toouse [fråga cachelagring av frågesträngar](cdn-query-string.md).  Du måste ha tooenable frågan sträng inställningen för hello CDN-slutpunkten och sedan använda en unik frågesträng för begäranden från alla domäner som är tillåtna. Detta resulterar i hello CDN cachelagring ett separat objekt för varje unik frågesträng. Den här metoden är inte idealiskt, men eftersom den resulterar i flera kopior av hello samma fil cachelagrade på hello CDN.  
+På Azure CDN Standard profiler endast mekanism för att tillåta flera ursprung utan att använda jokertecken ursprung är att använda [fråga cachelagring av frågesträngar](cdn-query-string.md).  Du måste aktivera inställningen för frågan anslutningssträngen för CDN-slutpunkten och sedan använda en unik frågesträng för begäranden från varje tillåtna domän. Detta resulterar i CDN cachelagring ett separat objekt för varje unik frågesträng. Den här metoden är perfekt, dock inte eftersom den resulterar i flera kopior av samma fil cachelagras på CDN.  
 

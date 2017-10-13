@@ -1,5 +1,5 @@
 ---
-title: aaaAzure Data Lake Store MapReduce prestanda justera riktlinjer | Microsoft Docs
+title: Azure Data Lake Store MapReduce prestandajustering riktlinjer | Microsoft Docs
 description: Azure Data Lake Store MapReduce prestandajustering riktlinjer
 services: data-lake-store
 documentationcenter: 
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: e21414a23530e65613c85156af0209c88ec54d2d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 9528148792f083cb0e48d356e61cf61762ee954f
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="performance-tuning-guidance-for-mapreduce-on-hdinsight-and-azure-data-lake-store"></a>Prestandajustering för MapReduce på HDInsight och Azure Data Lake Store
 
@@ -26,55 +26,55 @@ ms.lasthandoff: 10/06/2017
 ## <a name="prerequisites"></a>Krav
 
 * **En Azure-prenumeration**. Se [Hämta en kostnadsfri utvärderingsversion av Azure](https://azure.microsoft.com/pricing/free-trial/).
-* **Ett Azure Data Lake Store-konto**. Anvisningar för hur toocreate en, se [Kom igång med Azure Data Lake Store](data-lake-store-get-started-portal.md)
-* **Azure HDInsight-kluster** med åtkomst tooa Data Lake Store-konto. Se [skapar ett HDInsight-kluster med Data Lake Store](data-lake-store-hdinsight-hadoop-use-portal.md). Kontrollera att du kan aktivera Fjärrskrivbord för hello kluster.
+* **Ett Azure Data Lake Store-konto**. Anvisningar om hur du skapar en finns [Kom igång med Azure Data Lake Store](data-lake-store-get-started-portal.md)
+* **Azure HDInsight-kluster** med åtkomst till ett Data Lake Store-konto. Se [skapar ett HDInsight-kluster med Data Lake Store](data-lake-store-hdinsight-hadoop-use-portal.md). Kontrollera att du kan aktivera Fjärrskrivbord för klustret.
 * **Använda MapReduce på HDInsight**.  Mer information finns i [använda MapReduce i Hadoop i HDInsight](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-use-mapreduce)  
 * **Prestandajustering riktlinjer för ADLS**.  Allmänna prestanda begrepp finns [Data Lake Store justera Prestandaråd](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-performance-tuning-guidance)  
 
 ## <a name="parameters"></a>Parametrar
 
-När du kör MapReduce-jobb är här hello viktigaste parametrarna som du kan konfigurera tooincrease prestanda på ADLS:
+När du kör MapReduce-jobb, är här de viktigaste parametrarna som du kan konfigurera för att öka prestanda hos ADLS:
 
-* **Mapreduce.Map.Memory.MB** – hello mängden minne tooallocate tooeach mapper
-* **Mapreduce.Job.Maps** – hello antal kartan uppgifter per jobb
-* **Mapreduce.Reduce.Memory.MB** – hello mängden minne tooallocate tooeach reducer
-* **Mapreduce.Job.reduces** – hello antal minska uppgifter per jobb
+* **Mapreduce.Map.Memory.MB** – hur mycket minne som ska allokeras till varje mapper
+* **Mapreduce.Job.Maps** – antal kartan uppgifter per jobb
+* **Mapreduce.Reduce.Memory.MB** – hur mycket minne som ska allokeras till varje reducer
+* **Mapreduce.Job.reduces** – antal minska uppgifter per jobb
 
-**Mapreduce.Map.Memory / Mapreduce.reduce.memory** siffran ska justeras baserat på hur mycket minne som krävs för hello kartan och/eller minska aktivitet.  hello standardvärdena för mapreduce.map.memory och mapreduce.reduce.memory kan visas i Ambari via hello Yarn konfiguration.  Navigera tooYARN i Ambari, och visa hello konfigurationerna fliken.  Hej YARN minne visas.  
+**Mapreduce.Map.Memory / Mapreduce.reduce.memory** siffran ska justeras baserat på hur mycket minne som krävs för kartan och/eller minska aktivitet.  Standardvärdena för mapreduce.map.memory och mapreduce.reduce.memory kan visas i Ambari via Yarn-konfiguration.  Navigera till YARN i Ambari, och visar fliken konfigurationerna.  YARN-minne visas.  
 
-**Mapreduce.Job.Maps / Mapreduce.job.reduces** det avgör hello maximalt antal mappers eller förminskningsapparater toobe skapas.  hello antal delningar avgör hur många mappers kommer att skapas för hello MapReduce-jobb.  Därför kan du få mindre mappers du begärt om det finns mindre delningar än hello antalet mappers som begärdes.       
+**Mapreduce.Job.Maps / Mapreduce.job.reduces** det avgör det maximala antalet mappers eller förminskningsapparater ska skapas.  Antal delningar avgör hur många mappers kommer att skapas för MapReduce-jobb.  Därför kan du få mindre mappers du begärt om det finns mindre delningar än antalet mappers som begärdes.       
 
 ## <a name="guidance"></a>Riktlinjer
 
-**Steg 1: Bestäm antalet jobb som körs** -standard MapReduce använder hello hela klustret på jobbet.  Du kan använda mindre hello kluster med mindre mappers än det finns tillgängliga behållare.  hello riktlinjerna i det här dokumentet förutsätter att programmet hello endast program som körs på klustret.      
+**Steg 1: Bestäm antalet jobb som körs** -standard MapReduce använder hela klustret på jobbet.  Du kan använda mindre klustret med mindre mappers än det finns tillgängliga behållare.  Riktlinjerna i det här dokumentet förutsätter att programmet endast program som körs på klustret.      
 
-**Steg 2: Ange mapreduce.map.memory/mapreduce.reduce.memory** – hello storlek hello minne för kartan och minska uppgifter är beroende av ditt specifika jobb.  Du kan minska hello minnesstorleken om du vill tooincrease samtidighet.  hello antalet aktiviteter som körs samtidigt beror på hello antal behållare.  Genom att minska hello mängden minne per mapper eller reducer kan fler behållare skapas, som gör det möjligt mer mappers eller förminskningsapparater toorun samtidigt.  Minskar hello mängden minne kan för mycket orsaka vissa processer toorun slut på minne.  Om du får en heap-fel när du kör jobbet, bör du öka hello minne per mapper eller reducer.  Du bör överväga att lägga till fler behållare lägger till extra administration för varje ytterligare behållare som potentiellt kan försämra prestanda.  Ett annat alternativ är tooget mer minne genom att använda ett kluster som har högre mängder minne eller öka hello antalet noder i klustret.  Mer minne kan flera behållare toobe används, vilket innebär att flera samtidiga.  
+**Steg 2: Ange mapreduce.map.memory/mapreduce.reduce.memory** – storleken på minnet för kartan och minska uppgifter är beroende av ditt specifika jobb.  Du kan minska minnesstorleken om du vill öka parallellkörningen.  Antalet aktiviteter som körs samtidigt beror på hur många behållare.  Genom att minska mängden minne per mapper eller reducer kan fler behållare skapas, vilket aktiverar fler mappers eller förminskningsapparater körs samtidigt.  Minska mängden minne för mycket kanske vissa processer köras, slut på minne.  Om du får en heap-fel när du kör jobbet kan öka du minne per mapper eller reducer.  Du bör överväga att lägga till fler behållare lägger till extra administration för varje ytterligare behållare som potentiellt kan försämra prestanda.  Ett annat alternativ är att hämta mer minne med hjälp av ett kluster med större mängder minne eller öka antalet noder i klustret.  Mer minne aktiverar fler behållare som ska användas, vilket innebär att flera samtidiga.  
 
-**Steg 3: Bestäm minne totalt YARN** -tootune mapreduce.job.maps/mapreduce.job.reduces bör du hello minnesmängden totala YARN tillgängliga för användning.  Den här informationen är tillgänglig i Ambari.  Navigera tooYARN och visa hello konfigurationerna fliken.  Hej YARN minne visas i det här fönstret.  Du bör multiplicera hello YARN minne med hello antalet noder i klustret tooget hello totala YARN minnet.
+**Steg 3: Bestäm totala YARN minne** - om du vill justera mapreduce.job.maps/mapreduce.job.reduces, bör du mängden totala YARN minne som är tillgängliga för användning.  Den här informationen är tillgänglig i Ambari.  Navigera till YARN och visar fliken konfigurationerna.  YARN-minne visas i det här fönstret.  Du bör multiplicera YARN-minne med antalet noder i klustret för att hämta den totala mängden minnet på YARN.
 
     Total YARN memory = nodes * YARN memory per node
-Om du använder ett tomt kluster kan minne vara hello totalt YARN minne för klustret.  Om andra program använder minne, kan du välja tooonly används en del av ditt kluster minne genom att minska hello antalet mappers eller förminskningsapparater toohello behållare vill du toouse.  
+Om du använder ett tomt kluster kan minne vara den totala mängden minnet YARN för klustret.  Om andra program använder minne, kan du välja att bara använda en del av ditt kluster minne genom att minska antalet mappers eller förminskningsapparater antal behållare som du vill använda.  
 
-**Steg 4: Beräkna antalet YARN behållare** – YARN-behållare kräver hello mängden samtidighet för hello jobb.  Ta totalt YARN-minne och delar av mapreduce.map.memory.  
+**Steg 4: Beräkna antalet YARN behållare** – YARN-behållare kräver mängden samtidighet som är tillgängliga för projektet.  Ta totalt YARN-minne och delar av mapreduce.map.memory.  
 
     # of YARN containers = total YARN memory / mapreduce.map.memory
 
-**Steg 5: Ange mapreduce.job.maps/mapreduce.job.reduces** ange mapreduce.job.maps/mapreduce.job.reduces tooat minst hello antalet tillgängliga behållare.  Du kan experimentera ytterligare genom att öka hello antalet mappers och förminskningsapparater toosee om du får bättre prestanda.  Tänk på att flera mappers har ytterligare kostnader så har för många mappers kan prestanda försämras.  
+**Steg 5: Ange mapreduce.job.maps/mapreduce.job.reduces** sägs mapreduce.job.maps/mapreduce.job.reduces minst antal tillgängliga behållare.  Du kan experimentera ytterligare genom att öka antalet mappers och förminskningsapparater för att se om du får bättre prestanda.  Tänk på att flera mappers har ytterligare kostnader så har för många mappers kan prestanda försämras.  
 
-CPU-schemaläggning och CPU-isolering är inaktiverade som standard så hello antal YARN-behållare är begränsad av minne.
+CPU-schemaläggning och CPU-isolering är inaktiverade som standard så att antalet YARN behållare är begränsad av minne.
 
 ## <a name="example-calculation"></a>Exempel beräkning
 
-Anta att du har ett kluster som består av 8 D14 noder och du vill toorun ett i/o-intensiva jobb.  Här följer hello beräkningar som du bör göra:
+Anta att du har ett kluster som består av 8 D14 noder och du vill köra ett i/o-intensiva jobb.  Här följer de beräkningar som du bör göra:
 
-**Steg 1: Bestäm antalet jobb som körs** -i vårt exempel antar vi att våra jobbet är hello endast en körs.  
+**Steg 1: Bestäm antalet jobb som körs** -i vårt exempel antar vi att våra jobbet är den enda körs.  
 
 **Steg 2: Ange mapreduce.map.memory/mapreduce.reduce.memory** – i vårt exempel du kör ett i/o-intensiva jobb och bestämmer 3 GB minne för kartan uppgifter är tillräckligt.
 
     mapreduce.map.memory = 3GB
 **Steg 3: Bestäm totala YARN-minne**
 
-    total memory from hello cluster is 8 nodes * 96GB of YARN memory for a D14 = 768GB
+    total memory from the cluster is 8 nodes * 96GB of YARN memory for a D14 = 768GB
 **Steg 4: Beräkna antal YARN-behållare**
 
     # of YARN containers = 768GB of available memory / 3 GB of memory =   256
@@ -87,24 +87,24 @@ Anta att du har ett kluster som består av 8 D14 noder och du vill toorun ett i/
 
 **ADLS-begränsning**
 
-Som en tjänst med flera innehavare anger ADLS gränser för nivån bandbredd.  Om du träffar dessa gränser, startar toosee aktivitet fel. Det kan identifieras av sett bandbreddsbegränsning fel i loggarna för aktiviteten.  Om du behöver mer bandbredd för jobbet, kontaktar du oss.   
+Som en tjänst med flera innehavare anger ADLS gränser för nivån bandbredd.  Om du träffar dessa gränser, startar du att se misslyckade aktiviteter. Det kan identifieras av sett bandbreddsbegränsning fel i loggarna för aktiviteten.  Om du behöver mer bandbredd för jobbet, kontaktar du oss.   
 
-toocheck om du har komma begränsats måste tooenable hello felsökningsloggning på hello på klientsidan. Här visas hur du kan göra det:
+Om du vill kontrollera om du har komma begränsats, måste du Aktivera felsökningsloggning på klientsidan. Här visas hur du kan göra det:
 
-1. Placera hello följande egenskap i hello log4j egenskaper i Ambari > YARN > Config > avancerade yarn log4j: log4j.logger.com.microsoft.azure.datalake.store=DEBUG
+1. Placera följande egenskap i log4j-egenskaper i Ambari > YARN > Config > avancerade yarn log4j: log4j.logger.com.microsoft.azure.datalake.store=DEBUG
 
-2. Starta om alla hello noder/för hello config tootake effekt.
+2. Starta om alla noder/för konfigurationen ska börja gälla.
 
-3. Om du har komma begränsats visas hello HTTP 429 felkod i hello YARN-loggfilen. Hej YARN loggfilen finns i /tmp/&lt;användare&gt;/yarn.log
+3. Om du har komma begränsats visas felkoden HTTP 429 i loggfilen YARN. YARN loggfilen finns i /tmp/&lt;användare&gt;/yarn.log
 
-## <a name="examples-toorun"></a>Exempel tooRun
+## <a name="examples-to-run"></a>Exempel för att köra
 
-toodemonstrate visas hur MapReduce körs på Azure Data Lake Store nedan några exempelkod som körs på ett kluster med hello följande inställningar:
+För att demonstrera hur MapReduce körs på Azure Data Lake Store, visas nedan några exempelkod som körs på ett kluster med följande inställningar:
 
 * 16 noden D14v2
 * Hadoop-kluster som kör HDI 3,6
 
-För en startpunkt är här några exempel kommandon toorun MapReduce Teragen Terasort och Teravalidate.  Du kan justera de här kommandona baserat på dina resurser.
+Här är några exempel för att köra MapReduce Teragen, Terasort och Teravalidate för en startpunkt.  Du kan justera de här kommandona baserat på dina resurser.
 
 **Teragen**
 

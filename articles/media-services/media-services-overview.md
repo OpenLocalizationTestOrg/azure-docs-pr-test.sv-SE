@@ -1,5 +1,5 @@
 ---
-title: "aaaAzure Media Services översikt | Microsoft Docs"
+title: "Översikt över Azure Media Services | Microsoft Docs"
 description: "Det här avsnittet ger en översikt över Azure Media Services"
 services: media-services
 documentationcenter: 
@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 07/04/2017
 ms.author: juliako;anilmur
-ms.openlocfilehash: 81f9f4d9ff75effea30c10fd09449e9d2025f377
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 2a175aed40b9775d9a4de6877eb3467b43819568
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-media-services-overview"></a>Översikt över Azure Media Services 
 
-Microsoft Azure Media Services är en utökningsbar molnbaserad plattform som gör att utvecklare toobuild skalbara media hanterings- och program. Media Services baseras på REST API: er som gör att du toosecurely överföra, lagra, koda och paketera video-eller ljudinnehåll för både på begäran och live strömmande leverans toovarious klienter (till exempel TV, datorer och mobila enheter).
+Microsoft Azure Media Services är en utökningsbar molnbaserad plattform som gör att utvecklare kan skapa skalbara program för mediehantering och medieleverans. Media Services baseras på REST API:er som gör det möjligt att på ett säkert sätt överföra, lagra, koda och paketera video- eller ljudinnehåll för att strömma både på begäran och live till olika klienter (till exempel TV, datorer och mobila enheter).
 
-Du kan bygga arbetsflöden för slutpunkt till slutpunkt bara med Media Services. Du kan också välja toouse komponenter från tredje part för vissa delar av arbetsflödet. Koda till exempel med hjälp av en kodare från tredje part. Därefter kan du överföra, skydda, paketera och leverera med Media Services.
+Du kan bygga arbetsflöden för slutpunkt till slutpunkt bara med Media Services. Du kan också välja att använda komponenter från tredje part för vissa delar av arbetsflödet. Koda till exempel med hjälp av en kodare från tredje part. Därefter kan du överföra, skydda, paketera och leverera med Media Services.
 
-Du kan välja toostream innehållet live eller leverera innehåll på begäran. hello innehåller också länkar tooother relevanta avsnitt.
+Du kan välja att strömma ditt innehåll live eller leverera innehåll på begäran. Avsnittet innehåller också länkar till andra relevanta avsnitt.
 
 ## <a name="media-services-learning-paths"></a>Sökvägar för Media Services-utbildning
 Du kan visa sökvägar för AMS-utbildning här:
@@ -36,25 +36,25 @@ Du kan visa sökvägar för AMS-utbildning här:
 
 ## <a name="prerequisites"></a>Krav
 
-toostart med Azure Media Services bör du ha hello följande:
+Om du vill börja använda Azure Media Services ska du ha följande:
 
 * Ett Azure-konto. Om du inte har något konto kan skapa du ett kostnadsfritt utvärderingskonto på bara några minuter. Mer information finns i [kostnadsfri utvärderingsversion av Azure](https://azure.microsoft.com).
 * Ett Azure Media Services-konto. Mer information finns i [Skapa konto](media-services-portal-create-account.md).
 * (Valfritt) Konfigurera utvecklingsmiljön. Välj .NET eller REST API för din utvecklingsmiljö. Mer information finns i [Ställa in miljön](media-services-dotnet-how-to-use.md).
 
-    Lär dig också hur för[ansluta programmässigt tooAMS API](media-services-use-aad-auth-to-access-ams-api.md).
+    Lär dig även att [ansluta programmässigt till AMS API](media-services-use-aad-auth-to-access-ams-api.md).
 * En standard- eller premiumslutpunkt för direktuppspelning med tillståndet Startad.  Mer information finns i [Hantera strömningsslutpunkter](media-services-portal-manage-streaming-endpoints.md).
 
 ## <a name="sdks-and-tools"></a>SDK:er och verktyg
 
-toobuild Media Services-lösningar som du kan använda:
+Bygg Media Services-lösningar genom att använda:
 
 * [Media Services REST API](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)
-* En av hello tillgängliga klient-SDK:
+* En av de tillgängliga klient-SDK:erna:
     * [Azure Media Services SDK för .NET](https://github.com/Azure/azure-sdk-for-media-services),
     * [Azure SDK för Java](https://github.com/Azure/azure-sdk-for-java),
     * [Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php),
-    * [Azure Media Services för Node.js](https://github.com/michelle-becker/node-ams-sdk/blob/master/lib/request.js) (detta är en icke-Microsoft-version av en Node.js SDK. Den underhålls av en grupp och är inte en 100% täckning för hello AMS APIs).
+    * [Azure Media Services för Node.js](https://github.com/michelle-becker/node-ams-sdk/blob/master/lib/request.js) (detta är en icke-Microsoft-version av en Node.js SDK. Den underhålls av ett community och har för närvarande inte en 100-procentig täckning av AMS API:er).
 * Befintliga verktyg:
     * [Azure Portal](https://portal.azure.com/)
     * [Azure-Media Services-Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) (Azure Media Services Explorer (AMSE) är ett Winforms/C#-program för Windows)
@@ -62,7 +62,7 @@ toobuild Media Services-lösningar som du kan använda:
 ## <a name="concepts-and-overview"></a>Koncept och översikt
 Azure Media Services-koncepten finns i [Koncept](media-services-concepts.md).
 
-En hur-tooseries som introducerar tooall hello huvudkomponenterna i Azure Media Services, se [Azure Media Services stegvisa självstudier](https://docs.com/fukushima-shigeyuki/3439/english-azure-media-services-step-by-step-series). Den här serien ger en bra översikt över koncepten och använder hello AMSE-verktyget toodemonstrate AMS uppgifter. AMSE-verktyget är ett verktyg i Windows. Det här verktyget stöder de flesta av hello uppgifter som du kan göra programmässigt med [AMS SDK för .NET](https://github.com/Azure/azure-sdk-for-media-services), [Azure SDK för Java](https://github.com/Azure/azure-sdk-for-java), eller [Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php).
+En instruktionsserie som ger en introduktion till huvudkomponenterna i Azure Media Services finns i [Azure Media Services stegvisa självstudier](https://docs.com/fukushima-shigeyuki/3439/english-azure-media-services-step-by-step-series). Den här serien ger en bra översikt över koncepten och använder verktyget AMSE för att demonstrera AMS-uppgifter. AMSE-verktyget är ett verktyg i Windows. Det här verktyget stöder de flesta av de uppgifter som du kan göra programmässigt med [AMS SDK för .NET](https://github.com/Azure/azure-sdk-for-media-services), [Azure SDK för Java](https://github.com/Azure/azure-sdk-for-java) eller  [Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php).
 
 ## <a name="supported-scenarios-and-availability-of-media-services-across-data-centers"></a>Scenarier som stöds och tillgänglighet för Media Services över datacenter
 
@@ -72,13 +72,13 @@ Detaljerad information finns i [AMS-scenarier och tillgänglighet för funktione
 
 * Vi garanterar 99,9 % tillgänglighet för REST API-transaktioner för Media Services Encoding.
 * För Streaming svarar vi på serviceförfrågningar med 99,9 % tillgänglighet för befintligt medieinnehåll när en Standard- eller Premium-slutpunkt för direktuppspelning har köpts.
-* För Live-kanaler garanterar vi att köra kanaler ska ha extern anslutning minst 99,9% av hello tid.
-* Content Protection garanterar vi att vi ska uppfyller viktiga förfrågningar minst 99,9% av hello tid.
-* Indexer ska vi utföra service för indexeringsuppgifter som bearbetas med en Encoding-reserverad enhet 99,9% av hello tid.
+* För live-kanaler garanterar vi att kanaler som körs ska ha extern anslutning minst 99,9 % av tiden.
+* När det gäller Content Protection garanterar vi att vi ska uppfyller viktiga förfrågningar minst 99,9 % av tiden.
+* När det gäller Indexer ska vi utföra service för indexeringsuppgifter som bearbetas med en kodningsreserverad enhet 99,9 % av tiden.
 
 Mer information finns i [Microsoft Azure SLA](https://azure.microsoft.com/support/legal/sla/).
 
-Information om tillgänglighet i datacenter finns hello [Avaiability](scenarios-and-availability.md#availability) avsnitt.
+Information om tillgänglighet i datacenter finns i avsnittet [tillgänglighet](scenarios-and-availability.md#availability).
 
 ## <a name="support"></a>Support
 

@@ -1,6 +1,6 @@
 ---
-title: "aaaHow toouse hello SendGrid e-posttjänst (Node.js) | Microsoft Docs"
-description: "Lär dig hur skicka e-post med hello SendGrid e-posttjänst på Azure. Kodexempel som skrivits med hello Node.js API."
+title: "Hur du använder SendGrid e-posttjänst (Node.js) | Microsoft Docs"
+description: "Lär dig hur skicka e-post med SendGrid-e-posttjänsten på Azure. Kodexempel som skrivits med Node.js-API."
 services: 
 documentationcenter: nodejs
 author: erikre
@@ -14,22 +14,22 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 01/05/2016
 ms.author: erikre
-ms.openlocfilehash: fd617b6aaa656e7b5dd51c51ebb0db1e848450f8
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 327cea3a24cc47a9cc463b37cc2346ebc475ef7f
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="how-toosend-email-using-sendgrid-from-nodejs"></a>Hur tooSend e-post med hjälp av SendGrid från Node.js
-Den här guiden visar hur tooperform vanliga programmeringsuppgifter med SendGrid e-tjänsten på Azure. hello exempel skrivs med hello Node.js API. hello beskrivs scenarier där **konstruera e-post**, **skicka e-post**, **lägga till bilagor**, **med hjälp av filter**, och **uppdatera egenskaperna för**. Mer information om SendGrid och skicka e-post finns hello [nästa steg](#next-steps) avsnitt.
+# <a name="how-to-send-email-using-sendgrid-from-nodejs"></a>Hur du skickar e-post med SendGrid från Node.js
+Den här guiden visar hur du utför vanliga programmeringsuppgifter med SendGrid-e-posttjänsten på Azure. Exemplen är skrivna med Node.js-API. Scenarier som tas upp inkluderar **konstruera e-post**, **skicka e-post**, **lägga till bilagor**, **med hjälp av filter**, och **uppdatera egenskaperna för**. Mer information om SendGrid och skicka e-post finns i [nästa steg](#next-steps) avsnitt.
 
-## <a name="what-is-hello-sendgrid-email-service"></a>Vad är hello SendGrid e-posttjänst?
+## <a name="what-is-the-sendgrid-email-service"></a>Vad är SendGrid e-posttjänst?
 SendGrid är en [molnbaserade e-posttjänst] som ger tillförlitliga [transaktionella e-postleverans], skalbarhet och analys i realtid tillsammans med flexibel API: er som gör det enkelt anpassad integrering. Vanliga Användningsscenarier för SendGrid är:
 
-* Automatiskt skickar kvitton toocustomers
+* Skicka automatiskt kvitton till kunder
 * Administrera distribution visas för att skicka kunder månatliga e-reklamblad och specialerbjudanden
 * Samla in realtid mätvärden för sådant som blockerade e-post och kunden svarstider
-* Generera rapporter toohelp identifiera trender
+* Generera rapporter för att identifiera trender
 * Vidarebefordran av kundfrågor
 * E-postaviseringar från ditt program
 
@@ -38,20 +38,20 @@ Mer information finns i [https://sendgrid.com](https://sendgrid.com).
 ## <a name="create-a-sendgrid-account"></a>Skapa ett SendGrid-konto
 [!INCLUDE [sendgrid-sign-up](../includes/sendgrid-sign-up.md)]
 
-## <a name="reference-hello-sendgrid-nodejs-module"></a>Referens hello SendGrid Node.js-modul
-Hej SendGrid-modul för Node.js kan installeras via hello nod Pakethanteraren (npm) med hjälp av hello följande kommando:
+## <a name="reference-the-sendgrid-nodejs-module"></a>Referera till SendGrid Node.js-modul
+Modulen SendGrid för Node.js kan installeras via noden package manager (npm) med hjälp av följande kommando:
 
     npm install sendgrid
 
-Efter installationen kan kräva du hello modulen i ditt program med hjälp av hello följande kod:
+Efter installationen kan kräva du modulen i ditt program med hjälp av följande kod:
 
     var sendgrid = require('sendgrid')(sendgrid_username, sendgrid_password);
 
-Hej SendGrid modulen exporterar hello **SendGrid** och **e-post** funktioner.
+Modulen SendGrid exporterar den **SendGrid** och **e-post** funktioner.
 **SendGrid** ansvarar för att skicka e-post via Web API medan **e-post** kapslar in ett e-postmeddelande.
 
 ## <a name="how-to-create-an-email"></a>Så här: skapa ett e-postmeddelande
-Skapa ett e-postmeddelande med hello SendGrid modulen innebär att först skapa ett e-postmeddelande hello e-funktionen, och skickar den med hjälp av hello SendGrid-funktionen. hello följande är ett exempel på hur du skapar ett nytt meddelande hello e-funktionen:
+Skapa ett e-postmeddelande med hjälp av modulen SendGrid innebär att först skapa ett e-postmeddelande med hjälp av funktionen för e-post och skicka det med hjälp av funktionen SendGrid. Följande är ett exempel på hur du skapar ett nytt meddelande med hjälp av funktionen för e-post:
 
     var email = new sendgrid.Email({
         to: 'john@contoso.com',
@@ -60,16 +60,16 @@ Skapa ett e-postmeddelande med hello SendGrid modulen innebär att först skapa 
         text: 'This is a sample email message.'
     });
 
-Du kan också ange ett HTML-meddelande för klienter som stöder genom att ange hello HTML-egenskapen. Exempel:
+Du kan också ange ett HTML-meddelande för klienter som stöder html-egenskapen. Exempel:
 
     html: This is a sample <b>HTML<b> email message.
 
-Ange egenskaper för båda hello text och html ger korrekt användning av textinnehåll för klienter som inte stöder HTML-meddelanden.
+Ange egenskaper för både text och html ger korrekt användning av textinnehåll för klienter som inte stöder HTML-meddelanden.
 
-Mer information om alla egenskaper som stöds av hello e-funktionen finns [sendgrid nodejs][sendgrid-nodejs].
+Mer information om alla egenskaper som stöds av funktionen för e-post finns [sendgrid nodejs][sendgrid-nodejs].
 
 ## <a name="how-to-send-an-email"></a>Så här: skicka ett e-postmeddelande
-När du har skapat ett e-postmeddelande med hello e-funktionen kan du skicka den via hello webb-API som tillhandahålls av SendGrid. 
+Du kan skicka den med hjälp av Web-API som tillhandahålls av SendGrid när du har skapat ett e-postmeddelande med hjälp av funktionen för e-post. 
 
 ### <a name="web-api"></a>Webb-API
     sendgrid.send(email, function(err, json){
@@ -78,7 +78,7 @@ När du har skapat ett e-postmeddelande med hello e-funktionen kan du skicka den
     });
 
 > [!NOTE]
-> Medan hello exemplen ovan visas skicka i ett e-objektet och motringning funktionen måste anropa du också direkt hello skicka funktionen genom att ange egenskaper för e-post direkt. Exempel:  
+> Du kan också direkt anropa send-funktionen genom att ange egenskaper för e-post direkt när ovanstående exempel visa passera i en e-objektet och motringning funktion. Exempel:  
 > 
 > `````
 > sendgrid.send({
@@ -92,7 +92,7 @@ När du har skapat ett e-postmeddelande med hello e-funktionen kan du skicka den
 > 
 
 ## <a name="how-to-add-an-attachment"></a>Så här: Lägg till en bifogad fil
-Bifogade filer kan läggas till tooa meddelandet genom att ange hello filnamn och sökväg i hello **filer** egenskapen. hello som följande exempel visar skicka bifogade filer:
+Bifogade filer kan läggas till ett meddelande genom att ange filnamn och sökväg i den **filer** egenskapen. Exemplet nedan visar skicka bifogade filer:
 
     sendgrid.send({
         to: 'john@contoso.com',
@@ -103,7 +103,7 @@ Bifogade filer kan läggas till tooa meddelandet genom att ange hello filnamn oc
             {
                 filename:     '',           // required only if file.content is used.
                 contentType:  '',           // optional
-                cid:          '',           // optional, used toospecify cid for inline content
+                cid:          '',           // optional, used to specify cid for inline content
                 path:         '',           //
                 url:          '',           // == One of these three options is required
                 content:      ('' | Buffer) //
@@ -112,16 +112,16 @@ Bifogade filer kan läggas till tooa meddelandet genom att ange hello filnamn oc
     });
 
 > [!NOTE]
-> När du använder hello **filer** egenskapen hello-filen måste vara tillgängligt via [fs.readFile](http://nodejs.org/docs/v0.6.7/api/fs.html#fs.readFile). Om hello-fil som du vill tooattach finns i Azure Storage, exempelvis en Blob-behållare, måste du först kopiera hello fillagring toolocal eller tooan Azure enheten innan den kan skickas som en bifogad fil med hello **filer** egenskapen.
+> När du använder den **filer** egenskapen filen måste vara tillgängligt via [fs.readFile](http://nodejs.org/docs/v0.6.7/api/fs.html#fs.readFile). Om filen som du vill ansluta finns i Azure Storage, exempelvis en Blob-behållare, måste du först kopiera filen till lokal lagring eller en Azure-enheten innan den kan skickas som en bifogad fil med hjälp av den **filer** egenskapen.
 > 
 > 
 
-## <a name="how-to-use-filters-tooenable-footers-and-tracking"></a>Så här: filter tooEnable sidfötter och spårning
-SendGrid ger ytterligare e-postfunktioner via hello filter. Dessa är inställningar som kan läggas till tooan e-postmeddelande för att aktivera vissa funktioner, till exempel aktivera klickar du på spårning, Google analytics, prenumerationen spårning och så vidare. En fullständig lista över filter finns [filterinställningar][Filter Settings].
+## <a name="how-to-use-filters-to-enable-footers-and-tracking"></a>Så här: använda filter för att aktivera sidfötter och spårning
+SendGrid ger ytterligare e-postfunktioner genom att använda filter. Dessa finns inställningar som du kan lägga till ett e-postmeddelande för att aktivera vissa funktioner, till exempel aktivera Klicka spårning, Google analytics, prenumeration spårning och så vidare. En fullständig lista över filter finns [filterinställningar][Filter Settings].
 
-Filter kan vara tillämpade tooa meddelande med hjälp av hello **filter** egenskapen.
+Filter kan tillämpas på ett meddelande med hjälp av den **filter** egenskapen.
 Varje filter som anges av ett hash-värde som innehåller filter-specifika inställningar.
-hello följande exempel visar hello sidfoten och på Spåra filter:
+Följande exempel visar sidfoten och på Spåra filter:
 
 ### <a name="footer"></a>Sidfot
     var email = new sendgrid.Email({
@@ -173,10 +173,10 @@ eller ange ett filter med hjälp av
 Mer information finns i [sendgrid nodejs][sendgrid-nodejs].
 
 ## <a name="how-to-use-additional-sendgrid-services"></a>Så här: använda ytterligare SendGrid tjänster
-SendGrid erbjuder webbaserade API: er som du kan använda tooleverage ytterligare SendGrid funktioner från din Azure-program. Fullständig information finns i hello [SendGrid API-dokumentationen][SendGrid API documentation].
+SendGrid erbjuder webbaserade API: er som du kan använda för att utnyttja ytterligare funktioner för SendGrid från Azure-program. Fullständig information finns i [SendGrid API-dokumentationen][SendGrid API documentation].
 
 ## <a name="next-steps"></a>Nästa steg
-Nu när du har lärt dig hello grunderna i hello SendGrid e-posttjänst, följa dessa länkar toolearn mer.
+Nu när du har lärt dig grunderna om tjänsten SendGrid e-post, kan du följa dessa länkar om du vill veta mer.
 
 * SendGrid Node.js modulen databasen: [sendgrid nodejs][sendgrid-nodejs]
 * SendGrid API-dokumentationen: <https://sendgrid.com/docs>

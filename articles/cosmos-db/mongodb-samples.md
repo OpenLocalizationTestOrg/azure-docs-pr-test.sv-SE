@@ -1,6 +1,6 @@
 ---
-title: aaaUse MongoDB APIs toobuild appen Azure Cosmos DB | Microsoft Docs
-description: "En självstudiekurs som skapar en onlinedatabas med hello Azure Cosmos DB API: er för MongoDB."
+title: "Använda MongoDB APIs för att skapa en app i Azure Cosmos DB | Microsoft Docs"
+description: "En självstudiekurs som skapar en onlinedatabas med hjälp av Azure Cosmos DB-API: er för MongoDB."
 keywords: mongodb-exempel
 services: cosmos-db
 author: AndrewHoh
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: anhoh
-ms.openlocfilehash: 09be4362fe3aac02e0163325f958210be9598383
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 433d2e585c884a10e7e923a0b27c179a95410d01
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="build-an-azure-cosmos-db-api-for-mongodb-app-using-nodejs"></a>Skapa en Azure-Cosmos-DB: API: et för MongoDB-app med Node.js
 > [!div class="op_single_selector"]
@@ -32,16 +32,16 @@ ms.lasthandoff: 10/06/2017
 >  
 >
 
-Det här exemplet visas hur toobuild en Azure-Cosmos-DB: API: et för MongoDB-konsolapp med Node.js.
+Det här exemplet illustrerar hur du skapar en Azure-Cosmos-DB: API: et för MongoDB-konsolapp med Node.js.
 
-toouse det här exemplet måste du:
+Om du vill använda det här exemplet måste du:
 
 * [Skapa](create-mongodb-dotnet.md#create-account) en Azure-Cosmos-DB: API för MongoDB-kontot.
 * Hämta din MongoDB [anslutningssträngen](connect-mongodb-account.md) information.
 
-## <a name="create-hello-app"></a>Skapa hello-app
+## <a name="create-the-app"></a>Skapa appen
 
-1. Skapa en *app.js* filen och kopiera och klistra in hello koden nedan.
+1. Skapa en *app.js* filen och kopiera och klistra in koden nedan.
 
     ```nodejs
     var MongoClient = require('mongodb').MongoClient;
@@ -66,7 +66,7 @@ toouse det här exemplet måste du:
             "address": { "country": "USA", "state": "WA", "city": "Seattle" }
         }, function(err, result) {
         assert.equal(err, null);
-        console.log("Inserted a document into hello families collection.");
+        console.log("Inserted a document into the families collection.");
         callback();
     });
     };
@@ -122,7 +122,7 @@ toouse det här exemplet måste du:
     });
     ```
 
-2. Ändra följande variabler i hello hello *app.js* fil per inställningarna för ditt konto (Lär dig hur toofind din [anslutningssträngen](connect-mongodb-account.md)):
+2. Ändra följande variabler i den *app.js* fil per inställningarna för ditt konto (Lär dig att hitta din [anslutningssträngen](connect-mongodb-account.md)):
    
     ```nodejs
     var url = 'mongodb://<endpoint>:<password>@<endpoint>.documents.azure.com:10255/?ssl=true';
@@ -131,4 +131,4 @@ toouse det här exemplet måste du:
 3. Öppna valfri terminal, kör **npm installera mongodb--spara**, kör din app med **noden app.js**
 
 ## <a name="next-steps"></a>Nästa steg
-* Lär dig hur för[använder MongoChef](mongodb-mongochef.md) med Azure Cosmos-DB: API för MongoDB-kontot.
+* Lär dig hur du [använder MongoChef](mongodb-mongochef.md) med Azure Cosmos-DB: API för MongoDB-kontot.

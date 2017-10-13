@@ -1,5 +1,5 @@
 ---
-title: "aaaAzure virtuellt nätverk | Microsoft Docs"
+title: "Virtuella Azure-nätverket | Microsoft Docs"
 description: "Läs mer om Azure Virtual Network koncept och funktioner."
 services: virtual-network
 documentationcenter: na
@@ -15,79 +15,79 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/23/2017
 ms.author: jdial
-ms.openlocfilehash: 55ae6a131d882ad893aeffcaa4127bc47beda552
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 6d6afd2b9b956138ed400fbd6cabd3b480fde0f0
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="azure-virtual-network"></a>Azure Virtual Network
 
-hello Azure Virtual Network service aktiverar du toosecurely ansluta Azure-resurser tooeach andra med virtuella nätverk (Vnet). Ett virtuellt nätverk är en representation av ditt eget nätverk i hello molnet. Ett virtuellt nätverk är en logisk isolering av hello Azure-molnet dedikerad tooyour prenumeration. Du kan också ansluta Vnet tooyour lokalt nätverk. hello följande bild visar några av hello funktionerna i hello Azure Virtual Network service:
+Tjänsten Azure Virtual Network kan du ansluta Azure-resurser på ett säkert sätt till varandra med virtuella nätverk (Vnet). Ett virtuellt nätverk är en representation av ditt eget nätverk i molnet. Ett virtuellt nätverk är en logisk isolering av Azure-molnet dedikerad till din prenumeration. Du kan också ansluta Vnet till ditt lokala nätverk. Följande bild visar några av funktionerna i Azure Virtual Network service:
 
 ![Nätverksdiagram](./media/virtual-networks-overview/virtual-network-overview.png)
 
-toolearn mer om hello följande Azure Virtual Network-funktioner, klickar du på hello kapaciteten:
-- **[Isolering:](#isolation) ** Vnet isoleras från varandra. Du kan skapa separata Vnet för utveckling, testning och produktion som Använd hello samma CIDR-Adressblock. Däremot kan du skapa flera virtuella nätverk som använder olika CIDR-Adressblock och ansluta nätverk tillsammans. Du kan dela ett VNet i flera undernät. Azure erbjuder intern namnmatchning för virtuella datorer och molntjänster rollinstanser anslutna tooa VNet. Du kan också konfigurera ett virtuellt nätverk toouse egna DNS-servrar, istället för att använda intern namnmatchning för Azure.
-- **[Internet-anslutning:](#internet) ** alla Azure virtuella datorer (VM) och molntjänster rollinstanser anslutna tooa VNet har åtkomst till toohello Internet, som standard. Du kan också aktivera inkommande åtkomst toospecific resurser efter behov.
-- **[Azure-resurs-anslutningen:](#within-vnet) ** Azure-resurser som molntjänster och virtuella datorer kan vara anslutna toohello samma virtuella nätverk. hello resurser kan ansluta tooeach andra använder privata IP-adresser, även om de finns i olika undernät. Azure tillhandahåller standardroutning mellan undernät, virtuella nätverk och lokala nätverk, så att du inte har tooconfigure och hantera vägar.
-- **[VNet-anslutningen:](#connect-vnets) ** Vnet kan vara anslutna tooeach andra, aktivera resurser anslutna tooany VNet toocommunicate med alla resurser för andra virtuella nätverk.
-- **[Lokal anslutning:](#connect-on-premises) ** Vnet kan vara anslutna tooon lokala nätverk via privata nätverksanslutningar mellan ditt nätverk och Azure, eller en plats-till-plats VPN-anslutning via hello Internet.
-- **[Trafikfiltrering:](#filtering) ** molntjänster och Virtuella nätverkstrafik för rollen instanser inkommande och utgående kan filtreras efter källans IP-adress och port, mål-IP-adress och port och protokoll.
-- **[Routning:](#routing) ** Alternativt kan du åsidosätta Azures standard routning genom att konfigurera egna vägar eller använda BGP-vägar via en nätverksgateway.
+Mer information om följande funktioner i Azure Virtual Network klickar du på funktionen:
+- **[Isolering:](#isolation)**  Vnet isoleras från varandra. Du kan skapa separata Vnet för utveckling, testning och produktion som använder samma CIDR-Adressblock. Däremot kan du skapa flera virtuella nätverk som använder olika CIDR-Adressblock och ansluta nätverk tillsammans. Du kan dela ett VNet i flera undernät. Azure erbjuder intern namnmatchning för virtuella datorer och molntjänster rollinstanser ansluten till ett virtuellt nätverk. Du kan också konfigurera ett virtuellt nätverk för att använda dina egna DNS-servrar i stället för intern namnmatchning för Azure.
+- **[Internet-anslutning:](#internet)**  alla Azure virtuella datorer (VM) och molntjänster rollinstanser ansluten till ett virtuellt nätverk har åtkomst till Internet, som standard. Du kan också aktivera inkommande åtkomst till specifika resurser efter behov.
+- **[Azure-resurs-anslutningen:](#within-vnet)**  Azure-resurser som molntjänster och virtuella datorer kan anslutas till samma virtuella nätverk. Resurserna kan ansluta till varandra med privata IP-adresser, även om de finns i olika undernät. Azure tillhandahåller standardroutning mellan undernät, virtuella nätverk och lokala nätverk, så du behöver att konfigurera och hantera vägar.
+- **[VNet-anslutningen:](#connect-vnets)**  Vnet kan anslutas till varandra, aktivera resurser som är anslutna till alla virtuella nätverk för att kommunicera med alla resurser för andra virtuella nätverk.
+- **[Lokal anslutning:](#connect-on-premises)**  Vnet kan anslutas till lokalt nätverk via privata nätverksanslutningar mellan ditt nätverk och Azure, eller en plats-till-plats VPN-anslutning via Internet.
+- **[Trafikfiltrering:](#filtering)**  molntjänster och Virtuella nätverkstrafik för rollen instanser inkommande och utgående kan filtreras efter källans IP-adress och port, mål-IP-adress och port och protokoll.
+- **[Routning:](#routing)**  Alternativt kan du åsidosätta Azures standard routning genom att konfigurera egna vägar eller använda BGP-vägar via en nätverksgateway.
 
 ## <a name = "isolation"></a>Isolering av nätverk och segmentering
 
 Du kan implementera flera Vnet i varje Azure [prenumeration](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) och Azure [region](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#region). Varje virtuellt nätverk är isolerad från andra Vnet. För varje virtuellt nätverk kan du:
-- Ange en egen privata IP-adressutrymmet med hjälp av offentliga och privata (RFC 1918)-adresser. Azure tilldelar resurser anslutna toohello VNet en privat IP-adress från hello adressutrymme som du tilldelar.
-- Segmentera hello VNet i en eller flera undernät och tilldela en del av hello VNet adressutrymme tooeach undernät.
-- Använd Azure-tillhandahållna namnmatchning eller ange egna DNS-server för användning av resurser anslutna tooa VNet. Mer information om namnmatchning i Vnet, läsa hello toolearn [namnmatchning för virtuella datorer och molntjänster](virtual-networks-name-resolution-for-vms-and-role-instances.md) artikel.
+- Ange en egen privata IP-adressutrymmet med hjälp av offentliga och privata (RFC 1918)-adresser. Azure tilldelar resurser som ansluten till VNet en privat IP-adress från det adressutrymme som du tilldelar.
+- Segmentera VNet i en eller flera undernät och tilldela en del av VNet-adressutrymmet för varje undernät.
+- Använd Azure-tillhandahållna namnmatchning eller ange egna DNS-server för användning av resurser som är anslutna till ett virtuellt nätverk. Mer information om namnmatchning i Vnet i [namnmatchning för virtuella datorer och molntjänster](virtual-networks-name-resolution-for-vms-and-role-instances.md) artikel.
 
-## <a name = "internet"></a>Ansluta toohello Internet
-Alla resurser anslutna tooa VNet har utgående anslutning toohello Internet som standard. hello privata IP-adressen för hello resursen är källan nätverksadress översättas (SNAT) tooa offentlig IP-adress av hello Azure-infrastrukturen. Mer om utgående anslutning till Internet, läsa hello toolearn [förstå utgående anslutningar i Azure](..\load-balancer\load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json#standalone-vm-with-no-instance-level-public-ip-address) artikel. Du kan ändra hello standard anslutningen genom att implementera anpassad Routning och filtrera trafik.
+## <a name = "internet"></a>Ansluta till Internet
+Alla resurser som är ansluten till ett virtuellt nätverk har utgående anslutning till Internet som standard. Privata IP-adressen för resursen är källan nätverksadress översättas (SNAT) till en offentlig IP-adress av Azure-infrastrukturen. Om du vill veta mer om utgående Internetanslutning kan du läsa den [förstå utgående anslutningar i Azure](..\load-balancer\load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json#standalone-vm-with-no-instance-level-public-ip-address) artikel. Du kan ändra standard anslutningen genom att implementera anpassad Routning och filtrera trafik.
 
-toocommunicate inkommande tooAzure resurser från hello Internet eller toocommunicate utgående toohello Internet utan SNAT, en resurs måste tilldelas en offentlig IP-adress. Mer om den offentliga IP-adresser, läsa hello toolearn [offentliga IP-adresser](virtual-network-public-ip-address.md) artikel.
+Att kommunicera inkommande Azure-resurser från Internet eller kommunicera utgående till Internet utan SNAT tilldelas en resurs en offentlig IP-adress. Mer information om den offentliga IP-adresser i [offentliga IP-adresser](virtual-network-public-ip-address.md) artikel.
 
 ## <a name="within-vnet"></a>Anslut Azure-resurser
-Du kan ansluta flera Azure-resurser tooa VNet, till exempel virtuella datorer (VM), Cloud Services, Apptjänstmiljöer och Skalningsuppsättningar i virtuella datorer. Virtuella datorer ansluta tooa undernät inom ett VNet till ett nätverksgränssnitt (NIC). Mer om nätverkskort, läsa hello toolearn [nätverksgränssnitt](virtual-network-network-interface.md) artikel.
+Du kan ansluta flera Azure-resurser till ett virtuellt nätverk, till exempel virtuella datorer (VM), Cloud Services, Apptjänstmiljöer och Skalningsuppsättningar i virtuella datorer. Virtuella datorer ansluta till ett undernät i ett virtuellt nätverk via ett nätverksgränssnitt (NIC). Mer information om nätverkskort på [nätverksgränssnitt](virtual-network-network-interface.md) artikel.
 
 ## <a name="connect-vnets"></a>Ansluta virtuella nätverk
 
-Du kan ansluta Vnet tooeach andra är att aktivera resurser anslutna tooeither VNet toocommunicate med varandra över Vnet. Du kan använda ett eller båda av följande alternativ tooconnect Vnet tooeach andra hello:
-- **Peering:** aktiverar resurser anslutna toodifferent Azure Vnet inom hello samma Azure-plats toocommunicate med varandra. hello bandbredd och fördröjning mellan hello Vnet är hello samma som om hello resurserna var anslutna toohello samma virtuella nätverk. toolearn mer information om peering, läsa hello [virtuella nätverk peering](virtual-network-peering-overview.md) artikel.
-- **VNet-till-VNet-anslutningen:** aktiverar resurser anslutna toodifferent Azure VNet inom hello samma eller olika Azure-platser. Till skillnad från peering, är bandbredd eftersom begränsade mellan Vnet trafik måste gå genom en Azure VPN-Gateway. Mer om hur du ansluter Vnet med ett VNet-till-VNet-anslutningen, läsa hello toolearn [konfigurera VNet-till-VNet-anslutningen](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) artikel.
+Du kan ansluta Vnet till varandra, aktivera resurser som är anslutna till något virtuellt nätverk att kommunicera med varandra via Vnet. Du kan använda ett eller båda av följande alternativ för att ansluta Vnet till varandra:
+- **Peering:** gör att resurser som anslutits till olika virtuella Azure-nätverk inom samma Azure-plats att kommunicera med varandra. Bandbredd och fördröjning mellan till Vnet är samma som resurserna som är anslutna till samma virtuella nätverk. Mer information om peering den [virtuella nätverk peering](virtual-network-peering-overview.md) artikel.
+- **VNet-till-VNet-anslutningen:** gör att resurser som anslutits till olika Azure-VNet i samma eller olika Azure platser. Till skillnad från peering, är bandbredd eftersom begränsade mellan Vnet trafik måste gå genom en Azure VPN-Gateway. Mer information om hur du ansluter Vnet med ett VNet-till-VNet-anslutningen i [konfigurera VNet-till-VNet-anslutningen](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) artikel.
 
-## <a name="connect-on-premises"></a>Ansluta tooan lokalt nätverk
+## <a name="connect-on-premises"></a>Ansluta till ett lokalt nätverk
 
-Du kan ansluta dina lokala nätverk tooa VNet med valfri kombination av hello följande alternativ:
-- **Punkt-till-plats virtuellt privat nätverk (VPN):** upprättas mellan en enskild dator ansluten tooyour nätverk och hello VNet. Den här anslutningen är bra om du precis har börjat med Azure, eller för utvecklare, eftersom det krävs lite eller ingen ändringar tooyour befintliga nätverk. hello anslutningen använder hello SSTP-protokollet tooprovide krypterad kommunikation över hello Internet mellan hello PC och hello virtuella nätverk. hello svarstid för en punkt-till-plats-VPN är oförutsägbart, eftersom hello trafik färdas genom hello Internet.
-- **Plats-till-plats-VPN:** mellan din VPN-enhet och en Azure VPN-Gateway. Den här anslutningstypen gör att alla lokala resurser du auktoriserar tooaccess ett VNet. hello-anslutningen är en IPSec/IKE-VPN som tillhandahåller krypterad kommunikation över hello Internet mellan din lokala enhet och hello Azure VPN-gateway. hello svarstid för en plats-till-plats-anslutning är oförutsägbart, eftersom hello trafik färdas genom hello Internet.
-- **Azure ExpressRoute:** upprättas mellan ditt nätverk och Azure, via en ExpressRoute-partner. Den här anslutningen är privat. Trafik inte går över hello Internet. hello svarstid för en ExpressRoute-anslutning är förutsägbar, eftersom trafiken inte passerar hello Internet.
+Du kan ansluta dina lokala nätverk till ett virtuellt nätverk med hjälp av följande alternativ:
+- **Punkt-till-plats virtuellt privat nätverk (VPN):** upprättas mellan en enda dator som är ansluten till nätverket och VNet. Den här anslutningen är bra om du precis har börjat med Azure, eller för utvecklare, eftersom det krävs lite eller ingen ändringar i ditt befintliga nätverk. Anslutningen använder SSTP-protokollet för att tillhandahålla krypterad kommunikation via Internet mellan datorn och VNet. Svarstiden för en punkt-till-plats-VPN är oförutsägbart, eftersom trafiken färdas genom Internet.
+- **Plats-till-plats-VPN:** mellan din VPN-enhet och en Azure VPN-Gateway. Den här anslutningstypen gör att alla lokala resurser som du har behörighet att komma åt ett VNet. Anslutningen är en IPSec/IKE-VPN som tillhandahåller krypterad kommunikation via Internet mellan din lokala enhet och Azure VPN-gatewayen. Svarstiden för en plats-till-plats-anslutning är oförutsägbart, eftersom trafiken färdas genom Internet.
+- **Azure ExpressRoute:** upprättas mellan ditt nätverk och Azure, via en ExpressRoute-partner. Den här anslutningen är privat. Trafik inte går över Internet. Svarstid för en ExpressRoute-anslutning är förutsägbar, eftersom trafiken inte sker via Internet.
 
-Mer om alla hello tidigare anslutningsalternativ läsa hello toolearn [anslutning Topologidiagram](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#diagrams) artikel.
+Mer information om alla tidigare anslutningsalternativ den [anslutning Topologidiagram](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#diagrams) artikel.
 
 ## <a name="filtering"></a>Filtrera nätverkstrafik
-Du kan filtrera nätverkstrafiken mellan undernät med ett eller båda av följande alternativ för hello:
-- **Nätverkssäkerhetsgrupper (NSG):** varje NSG kan innehålla flera inkommande och utgående säkerhetsregler som gör att du toofilter trafik genom käll- och IP-adress, port och protokoll. Du kan använda en NSG tooeach NIC på en virtuell dator. Du kan också använda en NSG toohello undernätet ett nätverkskort eller andra Azure-resurs är ansluten till. Mer om NSG: er, läsa hello toolearn [Nätverkssäkerhetsgrupper](virtual-networks-nsg.md) artikel.
-- **Nätverks-virtuella installationer (NVA):** en NVA är en virtuell dator kör programvara som utför en funktion i nätverket, till exempel en brandvägg. Visa en lista över tillgängliga NVAs i hello [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?page=1&subcategories=appliances). NVAs är också tillgängliga som ger WAN-optimering och andra nätverksenheter trafik funktioner. NVAs används vanligtvis med användardefinierade eller BGP-vägar. Du kan också använda en NVA toofilter trafik mellan virtuella nätverk.
+Du kan filtrera nätverkstrafiken mellan undernät med ett eller båda av följande alternativ:
+- **Nätverkssäkerhetsgrupper (NSG):** varje NSG kan innehålla flera inkommande och utgående säkerhetsregler som gör det möjligt att filtrera trafik genom käll- och IP-adress, port och protokoll. Du kan använda en NSG för varje nätverkskort på en virtuell dator. Du kan också använda en NSG till undernätet för ett nätverkskort eller andra Azure-resurs är ansluten till. Mer information om NSG: er i [Nätverkssäkerhetsgrupper](virtual-networks-nsg.md) artikel.
+- **Nätverks-virtuella installationer (NVA):** en NVA är en virtuell dator kör programvara som utför en funktion i nätverket, till exempel en brandvägg. Visa en lista över tillgängliga NVAs i den [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?page=1&subcategories=appliances). NVAs är också tillgängliga som ger WAN-optimering och andra nätverksenheter trafik funktioner. NVAs används vanligtvis med användardefinierade eller BGP-vägar. Du kan också använda en NVA för att filtrera trafik mellan virtuella nätverk.
 
 ## <a name="routing"></a>Dirigera nätverkstrafik
 
-Azure skapar routningstabeller som aktiverar resurser anslutna tooany undernätet i alla VNet toocommunicate med varandra som standard. Du kan implementera något eller båda av följande alternativ toooverride hello hello standardvägar Azure skapar:
-- **Användardefinierade vägar:** kan du skapa anpassade routningstabeller med vägar som styr där är trafik dirigeras toofor varje undernät. Mer om användardefinierade vägar, läsa hello toolearn [användardefinierade vägar](virtual-networks-udr-overview.md) artikel.
-- **BGP-vägar:** om du ansluter din VNet tooyour lokalt nätverk med en Azure VPN-Gateway eller ExpressRoute-anslutning du sprida BGP-vägar tooyour Vnet.
+Azure skapar routningstabeller som gör att resurser som är anslutna till alla undernät i alla virtuella nätverk för att kommunicera med varandra som standard. Du kan implementera ett eller båda av följande alternativ för att åsidosätta standardvägar Azure skapar:
+- **Användardefinierade vägar:** kan du skapa anpassade routningstabeller med vägar som styr där trafik dirigeras till för varje undernät. Mer information om användardefinierade vägar finns i artikeln [Användardefinierade vägar](virtual-networks-udr-overview.md).
+- **BGP-vägar:** om du ansluter ditt VNet till ditt lokala nätverk med hjälp av en Azure VPN-Gateway eller ExpressRoute-anslutning du sprida BGP-vägar till din Vnet.
 
 ## <a name="pricing"></a>Prissättning
 
-Det är gratis för virtuella nätverk, undernät, vägtabeller eller nätverket säkerhetsgrupper. Utgående Internet-bandbreddsanvändning, offentliga IP-adresser, peering virtuellt nätverk, VPN-gatewayer och ExpressRoute varje har olika priser strukturer. Visa hello [för virtuella nätverk](https://azure.microsoft.com/pricing/details/virtual-network), [VPN-Gateway](https://azure.microsoft.com/pricing/details/vpn-gateway), och [ExpressRoute](https://azure.microsoft.com/pricing/details/expressroute) priser sidor för mer information.
+Det är gratis för virtuella nätverk, undernät, vägtabeller eller nätverket säkerhetsgrupper. Utgående Internet-bandbreddsanvändning, offentliga IP-adresser, peering virtuellt nätverk, VPN-gatewayer och ExpressRoute varje har olika priser strukturer. Visa den [för virtuella nätverk](https://azure.microsoft.com/pricing/details/virtual-network), [VPN-Gateway](https://azure.microsoft.com/pricing/details/vpn-gateway), och [ExpressRoute](https://azure.microsoft.com/pricing/details/expressroute) priser sidor för mer information.
 
 ## <a name="faq"></a>VANLIGA FRÅGOR OCH SVAR
 
-vanliga frågor och svar om virtuella nätverk, tooreview finns hello [virtuella nätverk vanliga frågor och svar](virtual-networks-faq.md) artikel.
+Vanliga frågor och svar om virtuella nätverk finns i [virtuella nätverk vanliga frågor och svar](virtual-networks-faq.md) artikel.
 
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Skapa ditt första VNet och Anslut några virtuella datorer tooit genom att slutföra hello stegen i hello [skapa din första virtuella nätverket](virtual-network-get-started-vnet-subnet.md) artikel.
-- Skapa en punkt-till-plats-anslutning tooa VNet genom att fylla hello stegen i hello [konfigurerar en punkt-till-plats-anslutning](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) artikel.
-- Lär dig mer om hello andra nyckeln [nätverk funktioner](../networking/networking-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) Azure.
+- Skapa din första virtuella nätverk och ansluta ett fåtal virtuella datorer, genom att slutföra stegen i den [skapa din första virtuella nätverket](virtual-network-get-started-vnet-subnet.md) artikel.
+- Skapa en punkt-till-plats-anslutning till ett virtuellt nätverk genom att slutföra stegen i den [konfigurerar en punkt-till-plats-anslutning](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) artikel.
+- Lär dig mer om den andra nyckeln [nätverk funktioner](../networking/networking-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) Azure.

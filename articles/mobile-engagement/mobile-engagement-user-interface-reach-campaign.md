@@ -1,6 +1,6 @@
 ---
-title: "aaaAzure användargränssnitt för Mobile Engagement - nå kampanj"
-description: Laern hur toocreate och hantera push notification kampanjer med Azure Mobile Engagement
+title: "Användargränssnittet för Azure Mobile Engagement - Reach-kampanj"
+description: "Laern hur du skapar och hanterar push-meddelande kampanjer som använder Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: 
 author: piyushjo
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 825e550ace63a34d1a90b10fa976a61eb15a6d04
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: fc88db8db11d1ed12fa95c2087c9a32b21bf4de5
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="how-toocreate-and-manage-push-notification-campaigns"></a>Hur toocreate och hantera kampanjer för push-meddelande
-Du kan använda hello Reach-avsnittet i hello UI toocreate en ny Push-kampanj med en formel genom att tillhandahålla alla hello information som du behöver toosend ett push-meddelande. hello alternativen för en Push-kampanj varierar något beroende på hello fyra kampanjtyper: meddelanden, avsökningar, Data-push både och paneler (endast Windows Phone).
+# <a name="how-to-create-and-manage-push-notification-campaigns"></a>Hur du skapar och hanterar kampanjer för push-meddelande
+Du kan använda Reach-avsnittet i Användargränssnittet för att skapa en ny Push-kampanj med en formel genom att ange den information som du måste skicka ett push-meddelande. Alternativen för en Push-kampanj varierar något beroende på vilka kampanjtyper av fyra: meddelanden, avsökningar, Data-push både och paneler (endast Windows Phone).
 
 ### <a name="option-applies-to"></a>Alternativet gäller för:
 * Språk: Alla (meddelanden, undersökningar, Data push-meddelanden, paneler)
@@ -35,18 +35,18 @@ Du kan använda hello Reach-avsnittet i hello UI toocreate en ny Push-kampanj me
 ![Reach-Campaign1][20]
 
 ## <a name="languages"></a>Språk
-Du kan använda hello språk nedrullningsbara menyn toosend en annan version av din Push-toodevices som ställs toouse olika språk. Som standard får alla enheter hello samma Push oavsett vilket språk de inställda toouse. Användare med sina enheter ange tooa olika språk får hello standard språkversion av hello Push. Många av hello push-kampanj alternativ tillåta toospecify alternativa innehåll för varje hello fler språk du väljer. 
+Du kan använda listrutan språk för att skicka en annan version av din Push till enheter som är inställda på olika språk. Som standard får alla enheter samma Push oavsett vilket språk som de är inställd på att använda. Användare med sina enheter som har angetts till ett annat språk får som standard språkversion av push-meddelandet. Många av alternativ för push-kampanj kan du ange alternativa innehåll för varje ytterligare språk som du väljer. 
 
 ![Reach-Campaign2][21]
 
 ### <a name="language-differences-apply-to"></a>Språkskillnader gäller för:
-* Språk: Unika språk kan väljas i tillägg toohello standardspråk
+* Språk: Unika språk kan väljas förutom standardspråk
 * Kampanj: Samma för alla språk
-* Meddelande: Unika för varje språk dessutom toohello standardspråk
-* Innehåll: Unika för varje språk dessutom toohello standardspråk
+* Meddelande: Unika för varje språk utöver standardspråk
+* Innehåll: Unika för varje språk utöver standardspråk
 * Målgrupp: Filtreras efter ett villkor för olika språk
 * Tidsintervall: samma för alla språk
-* Test: Skickas tooeach språk i taget
+* Test: Kan skickas till alla språk samtidigt
 
 ### <a name="supported-languages"></a>Språk som stöds:
 * Arabiska (ar) 
@@ -89,27 +89,27 @@ Du kan använda hello språk nedrullningsbara menyn toosend en annan version av 
 * Vietnamesiska (vi) 
 
 ## <a name="campaign"></a>Kampanj
-Du kan använda hello kampanj avsnittet tooset hello namn och kategori för kampanjen samt som om du planerar tooignore hello målgrupp för en Push-kampanj och skicka den här kampanjen via hello nå API (och vissa element med hello låg nivå Push-API) i stället. Kategorier kan användas med ett anpassat meddelande mallen toocontrol i appen meddelanden baserat på fördefinierade inställningar. Du kan hämta en lista över dina befintliga ”kategorier” via hello nå API.
+Du kan använda kampanj-avsnittet för att ange namn och kategori för kampanjen samt som om du planerar att ignorera målgrupp för en Push-kampanj och skicka den här kampanjen via API: et nå (och vissa element med låg nivå Push-API) i stället. Kategorier kan användas med en anpassad aviseringsmall för kontrollen i appen meddelanden baserat på fördefinierade inställningar. Du kan hämta en lista över dina befintliga ”kategorier” via Reach-API.
 
 > [!WARNING]
-> Om alternativet hello ”Ignorera målgrupp, push skickas toousers via hello API” hello ”kampanj” avsnittet av en Reach-kampanj hello kampanj skickas inte automatiskt, måste toosend den manuellt via hello nå API.
+> Om du använder alternativet ”Ignorera målgrupp, push skickas till användarna via API: et” i avsnittet ”kampanj” i en Reach-kampanj kampanjen skickas inte automatiskt, måste skicka manuellt via Reach-API.
 
 ![Reach-Campaign3][22]
 
 ### <a name="option-applies-to"></a>Alternativet gäller för:
 * Namn: alla
 * Kategori: Meddelanden, undersökningar
-* Ignorera målgrupp, push skickas toousers via hello API: alla
+* Ignorera målgrupp, push skickas till användare via API: alla
 
 ## <a name="notification"></a>Avisering
-Du kan använda hello Notification avsnittet tooset grundläggande inställningar för din push inklusive: hello titeln på hello Push hello-meddelande, en bild i appen, eller om det är stängas. Många Meddelandeinställningar är särskilda toohello plattform på enheten. Du kan välja om din push skickas ”app” eller ”out of app” eller båda. (Kom ihåg att användare kan ”välja” eller ”CEIP” ”out-of-app” push-meddelanden på hello operativsystemet nivå på sina enheter och Azure Mobile Engagement kommer inte att kunna toooverride den här inställningen. Kom ihåg att hello Reach-API som hanterar ”i app” och ”out-of-app” push-meddelanden. hello Push-API kan vara används toohandle ”out-of-app” push-meddelanden för.) Push-meddelanden kan anpassas med bilder eller HTML-innehåll, inklusive djuplänkar för att länka utanför din App eller tooanother plats i din App (Android SDK 2.1.0 eller senare avsiktshantering kategorier krävs). Du kan ändra hello ikonen eller iOS-skylt och skicka text eller web innehållet (ett popup-fönster med HTML-innehåll, URL: en länk tooanother plats i eller utanför hello app). Du kan också göra Android-enheter ring eller vibrerar med hello Push. (Kom ihåg att du kommer måste hello rätt SDK behörigheter i din Android manifest filen tooring eller vibrerar en enhet.) Det finns för närvarande inga branschen standard för Android ”översikt” storlekar eftersom skärmstorlek skiljer sig på varje enhet, men 400 × 100 bilder fungerar på nästan alla skärmstorlek.
+Du kan använda avsnittet meddelande så här anger du grundläggande inställningar för din push inklusive: rubriken för push-meddelandet, meddelandet, en bild i appen, eller om det är stängas. Många Meddelandeinställningar är specifika för plattformen för enheten. Du kan välja om din push skickas ”app” eller ”out of app” eller båda. (Kom ihåg att användare kan ”välja” eller ”CEIP” ”out-of-app” push-meddelanden på operativsystemet nivå på sina enheter och Azure Mobile Engagement kommer inte att kunna åsidosätta den här inställningen. Kom ihåg att nå API: et hanterar ”i app” och ”out-of-app” push-meddelanden. Push-API kan användas för att hantera ”utanför appen” push-meddelanden för.) Push-meddelanden kan anpassas med bilder eller HTML-innehåll, inklusive djuplänkar för att länka utanför appen eller till en annan plats i din App (Android SDK 2.1.0 eller senare avsiktshantering kategorier krävs). Du kan ändra ikonen eller iOS-skylt och skicka text eller web innehållet (ett popup-fönster med HTML-innehåll, URL: en länk till en annan plats i eller utanför appen). Du kan också göra Android-enheter ring eller vibrerar med push-meddelandet. (Kom ihåg att du måste rätt SDK behörigheter i din Android-manifestfilen om du vill ringa eller vibrerar en enhet.) Det finns för närvarande inga branschen standard för Android ”översikt” storlekar eftersom skärmstorlek skiljer sig på varje enhet, men 400 × 100 bilder fungerar på nästan alla skärmstorlek.
 
 ### <a name="delivery-types"></a>Leverans typer:
-* Endast utanför appen: hello-meddelande levereras när hello användare inte använda hello programmet.
-* hello utanför appavisering som endast kräver ett certifikat från Apple eller Google (APN eller GCM-certifikat).
-* I appen bara: hello-meddelande visas endast när hello program körs.
-* hello-meddelande använder hello Capptain leverans tooreach hello systemanvändaren. Du kan anpassa hello layout/visning av din push.
-* När som helst: Det här alternativet innebär att du skickar ett meddelande som antingen hello-program körs eller inte.
+* Endast utanför appen: meddelandet levereras när användaren inte använda programmet.
+* Out-of-appavisering som endast kräver ett certifikat från Apple eller Google (APN eller GCM-certifikat).
+* I appen bara: meddelandet visas endast när programmet körs.
+* Meddelandet använder systemets Capptain leverans till användaren. Du kan anpassa layout/visningen av dina push.
+* När som helst: Detta alternativ gör att du skickar ett meddelande som antingen programmet körs eller inte.
 
 ![Reach-Campaign4][23]
 
@@ -117,7 +117,7 @@ Du kan använda hello Notification avsnittet tooset grundläggande inställninga
 * Meddelande: Meddelanden, undersökningar
 
 ## <a name="content"></a>Innehåll
-Du kan använda hello innehållsavsnitt toomodify hello innehållet i dina meddelanden, avsökningar, Data-push både och paneler (endast Windows Phone). hello innehåll inställningen för Push-kampanjer är särskilda toohello kampanj. 
+Du kan använda avsnittet innehåll för att ändra innehållet i dina meddelanden, avsökningar, Data-push både och paneler (endast Windows Phone). Push-kampanjer innehåll inställningen är specifik för typ av kampanj. 
 
 ### <a name="see-also"></a>Se även
 * [UI-dokumentation – nå - Push-innehåll][Link 29]
@@ -125,15 +125,15 @@ Du kan använda hello innehållsavsnitt toomodify hello innehållet i dina medde
 ![Reach-Campaign5][24]
 
 ## <a name="audience"></a>Målgrupp
-Du kan använda hello målgruppen avsnittet toodefine en standard lista över objekt toolimit din kampanj eller gränser din kampanj baserat på egna villkor. hello standarduppsättning alternativ tooLimit din målgrupp kan du toopush tooeither nya eller gamla användare eller endast interna push-användare. Du kan också ange en kvot toolimit hello antalet användare som tar emot hello push. Du kan redigera hello-uttrycket för hur din kampanj är filtrerade tooinclude manuellt en eller flera kriterium tootarget användare. Du kan skriva en målgruppsuttrycket manuellt. Ett sådant uttryck måste uttryckligen definiera hello relationen mellan kriterierna. Ett kriterium beskrivs av en identifierare som måste börja med en bokstav och får inte innehålla blanksteg. hello relationen mellan hello kriterierna kan beskrivas med 'och', 'eller', 'not-operatorer som '(',')'. Exempel: ”Criterion1 or (Criterion1 och inte Criterion2)”.
+Du kan använda målgrupp för att definiera en standard lista över objekt att begränsa din kampanj eller gränser din kampanj baserat på egna villkor. Alternativ för att begränsa användarna standarduppsättning kan du push till nya eller gamla användare eller endast interna push-användare. Du kan också ange en kvot för att begränsa antalet användare som tar emot push-meddelandet. Du kan redigera uttrycket för hur din kampanj filtreras för att inkludera en eller flera villkor till målet användare manuellt. Du kan skriva en målgruppsuttrycket manuellt. Ett sådant uttryck måste uttryckligen definiera relationen mellan kriterierna. Ett kriterium beskrivs av en identifierare som måste börja med en bokstav och får inte innehålla blanksteg. Relationen mellan kriterierna kan beskrivas med 'och', 'eller', 'not-operatorer som '(',')'. Exempel: ”Criterion1 or (Criterion1 och inte Criterion2)”.
 
 > [!NOTE]
-> Har många ingår i kampanjer, hello serversidan riktad genomsökning kan ta lång tid, särskilt om du försöker toostart hello flera kampanjer på samma gång.
+> Har många ingår i kampanjer, kan serversidan genomsökning som mål vara långsam, särskilt om du försöker starta flera kampanjer på samma gång.
 
 * Om det är möjligt endast starta en kampanj i taget.
-* Vid hello mest endast start fyra kampanjer i taget.
-* Push-bara tooyour aktiva användare (kryssrutan ”engagera bara användare som kan nås med hjälp av interna Push” och ”engagera bara aktiva användare”) så att dina användare som fortfarande har hello appen har installerats och använda den måste toobe genomsöks.
-  När användarna har definierats kan du använda hello simulera knappen toofind ut hur många användare får den här Push. Detta kommer att beräkna hello antal kända användare som kan vara mål för den här målgruppen (detta är en uppskattning baserad på ett slumpvist urval av användare). Tänk på att användare som har avinstallerat programmet hello ingår också i företagsmiljöer, men kan inte nås.
+* Endast starta på de fyra kampanjer i taget.
+* Skicka bara till aktiva användare (kryssrutan ”engagera bara användare som kan nås med hjälp av interna Push” och ”engagera bara aktiva användare”) så att dina användare som fortfarande ha installerat appen och använda den behöver genomsökas.
+  Du kan använda knappen simulera för att ta reda på hur många användare får den här Push när användarna har definierats. Detta kommer beräkna antalet kända användare som kan vara mål för den här målgruppen (detta är en uppskattning baserad på ett slumpvist urval av användare). Tänk på att användare som har avinstallerat programmet också ingår i denna målgrupp, men kan inte nås.
 
 ### <a name="see-also"></a>Se även
 * [UI-dokumentationen – Reach - nytt Push kriterium][Link 28]
@@ -152,10 +152,10 @@ Du kan använda hello målgruppen avsnittet toodefine en standard lista över ob
 * Engagera bara användare som kan nås med systemspecifika push-aviseringar: meddelanden, avsökningar
 
 ## <a name="time-frame"></a>Tidsintervall
-Du kan använda hello tidsram avsnittet tooset när hello push skickas eller lämna hello tidsram tomt toostart hello kampanj omedelbart. Kom ihåg att tidszon hello slutanvändare kan starta med hello kampanj en dag tidigare än vad du förväntar dig för dina slutanvändare i Asien och skicka små batchar av push-meddelanden i taget tills alla tidszoner i hello world matchar hello tidsram som angetts för din kampanj. Med hjälp av hello slutanvändarens tidszon kan också orsaka fördröjningar i kampanjer eftersom den har toorequest hello tid från hello phone innan du startar hello push.
+Du kan använda avsnittet tidsram för att ange när push-meddelandet ska skickas eller tidsperioden du kan lämna tomt om du vill starta kampanjen direkt. Kom ihåg att tidszonen för de slutanvändare kan starta med kampanjen en dag tidigare än vad du förväntar dig för dina slutanvändare i Asien och skicka små batchar av push-meddelanden i taget tills alla tidszoner i världen matchar den tidsperiod som angetts för din kampanj. Med hjälp av slutanvändarens tidszon kan också orsaka fördröjningar i kampanjer eftersom den har begära tiden från telefonen innan du startar push-meddelandet.
 
 > [!NOTE]
-> Kampanjer utan ett slutdatum kan cachelagra push-meddelanden lokalt och fortfarande visa dem efter att du manuellt fullständig kampanjer. tooavoid detta beteende, specifik sluttid för kampanjer.
+> Kampanjer utan ett slutdatum kan cachelagra push-meddelanden lokalt och fortfarande visa dem efter att du manuellt fullständig kampanjer. Att undvika det här beteendet specifik sluttid för kampanjer.
 
 ### <a name="see-also"></a>Se även
 * [Nå - hur Tos-planering][Link 3] 
@@ -166,10 +166,10 @@ Du kan använda hello tidsram avsnittet tooset när hello push skickas eller lä
 * Tidsintervall: meddelanden, undersökningar, paneler
 
 ## <a name="test"></a>Testa
-Du kan använda hello Test avsnittet toosend push tooyour egna test enheten innan du sparar hello kampanj. Om du har konfigurerat en anpassad språk för den här kampanjen kan testa du hello push på varje språk. Du kan konfigurera en testenhet från ”mitt konto”.
+Du kan använda avsnittet Test för att skicka den här push till test enheten innan du sparar kampanjen. Om du har konfigurerat en anpassad språk för den här kampanjen kan testa du push-meddelandet på varje språk. Du kan konfigurera en testenhet från ”mitt konto”.
 
 > [!NOTE]
-> Inga data loggas när du använder hello-knappen på serversidan för ”test” push-meddelanden, data loggas endast för verkliga push-kampanjer.
+> Inga serversidan data loggas när du använder knappen till ”test” push-meddelanden, data loggas endast för verkliga push-kampanjer.
 
 ### <a name="see-also"></a>Se även
 * [UI-dokumentation – mitt konto][Link 14]

@@ -1,6 +1,6 @@
 ---
-title: "aaaBack upp och Återställ en Oracle-databas 12c-databasen på en virtuell Azure Linux-dator | Microsoft Docs"
-description: "Lär dig hur tooback upp och Återställ en Oracle-databas 12c-databasen i Azure-miljön."
+title: "Säkerhetskopiera och återställa en Oracle-databas 12c-databas på en virtuell Azure Linux-dator | Microsoft Docs"
+description: "Lär dig mer om att säkerhetskopiera och återställa en databas med Oracle-databas 12c i Azure-miljön."
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: v-shiuma
@@ -15,40 +15,40 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 5/17/2017
 ms.author: rclaus
-ms.openlocfilehash: 68846f4efce5eabdb71cd71772e003838154e93b
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 9a2293f13b90e9a4cb11b4169fad969dd622a9a6
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="back-up-and-recover-an-oracle-database-12c-database-on-an-azure-linux-virtual-machine"></a>Säkerhetskopiera och återställa en Oracle-databas 12c-databas på en virtuell Azure Linux-dator
 
-Du kan använda Azure CLI toocreate och hantera Azure-resurser i en kommandotolk eller använda skript. I den här artikeln använder vi Azure CLI skript toodeploy en Oracle-databas 12c-databas från en avbildning för Azure Marketplace-galleriet.
+Du kan använda Azure CLI för att skapa och hantera Azure-resurser i en kommandotolk eller använda skript. Vi använder Azure CLI-skript för att distribuera en Oracle-databas 12c-databas från en avbildning för Azure Marketplace-galleriet i den här artikeln.
 
-Innan du börjar bör du kontrollera att Azure CLI är installerad. Mer information finns i hello [Azure CLI installationsguiden](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Innan du börjar bör du kontrollera att Azure CLI är installerad. Mer information finns i [Azure CLI installationsguiden](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
-## <a name="prepare-hello-environment"></a>Förbered hello-miljön
+## <a name="prepare-the-environment"></a>Förbered miljön
 
 ### <a name="step-1-prerequisites"></a>Steg 1: förutsättningar
 
-*   tooperform hello-säkerhetskopiering och återställning process, måste du först skapa en Linux VM som har en installerad instans av Oracle-databas 12c. hello Marketplace-avbildning som du använder toocreate hello VM heter *Oracle: Oracle-databasen-Ee:12.1.0.2:latest*.
+*   Du måste skapa en Linux VM som har en installerad instans av Oracle-databas 12c om du vill utföra processen för säkerhetskopiering och återställning. Marketplace-avbildning som du använder för att skapa den virtuella datorn har namnet *Oracle: Oracle-databasen-Ee:12.1.0.2:latest*.
 
-    toolearn hur toocreate en Oracle-databas finns hello [Oracle skapa database Snabbstart](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-database-quick-create).
+    Information om hur du skapar en Oracle-databas finns i [Oracle skapa database Snabbstart](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-database-quick-create).
 
 
-### <a name="step-2-connect-toohello-vm"></a>Steg 2: Anslut toohello VM
+### <a name="step-2-connect-to-the-vm"></a>Steg 2: Anslut till den virtuella datorn
 
-*   toocreate en SSH (Secure Shell)-session med hello VM, använda hello följande kommando. Ersätt hello IP-adress och hello värdnamn med hello `publicIpAddress` värde för den virtuella datorn.
+*   Om du vill skapa en SSH (Secure Shell)-session med den virtuella datorn, använder du följande kommando. Ersätt IP-adress och värdnamn med den `publicIpAddress` värde för den virtuella datorn.
 
     ```bash 
     ssh <publicIpAddress>
     ```
 
-### <a name="step-3-prepare-hello-database"></a>Steg 3: Förbered hello-databas
+### <a name="step-3-prepare-the-database"></a>Steg 3: Förbereda databasen
 
 1.  Det här steget förutsätter att du har en Oracle-instans (cdb1) som körs på en virtuell dator med namnet *myVM*.
 
-    Kör hello *oracle* superanvändare rot och sedan initiera hello lyssnare:
+    Kör den *oracle* superanvändare rot och sedan initiera lyssnaren:
 
     ```bash
     $ sudo su - oracle
@@ -58,11 +58,11 @@ Innan du börjar bör du kontrollera att Azure CLI är installerad. Mer informat
     Starting /u01/app/oracle/product/12.1.0/dbhome_1/bin/tnslsnr: please wait...
 
     TNSLSNR for Linux: Version 12.1.0.2.0 - Production
-    Log messages written too/u01/app/oracle/diag/tnslsnr/myVM/listener/alert/log.xml
+    Log messages written to /u01/app/oracle/diag/tnslsnr/myVM/listener/alert/log.xml
     Listening on: (DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=myVM.twltkue3xvsujaz1bvlrhfuiwf.dx.internal.cloudapp.net)(PORT=1521)))
 
-    Connecting too(ADDRESS=(PROTOCOL=tcp)(HOST=)(PORT=1521))
-    STATUS of hello LISTENER
+    Connecting to (ADDRESS=(PROTOCOL=tcp)(HOST=)(PORT=1521))
+    STATUS of the LISTENER
     ------------------------
     Alias                     LISTENER
     Version                   TNSLSNR for Linux: Version 12.1.0.2.0 - Production
@@ -74,11 +74,11 @@ Innan du börjar bör du kontrollera att Azure CLI är installerad. Mer informat
     Listener Log File         /u01/app/oracle/diag/tnslsnr/myVM/listener/alert/log.xml
     Listening Endpoints Summary...
     (DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=myVM.twltkue3xvsujaz1bvlrhfuiwf.dx.internal.cloudapp.net)(PORT=1521)))
-    hello listener supports no services
-    hello command completed successfully
+    The listener supports no services
+    The command completed successfully
     ```
 
-2.  (Valfritt) Kontrollera att hello databasen är i läget för archive log:
+2.  (Valfritt) Kontrollera att databasen är i läget för archive log:
 
     ```bash
     $ sqlplus / as sysdba
@@ -94,16 +94,16 @@ Innan du börjar bör du kontrollera att Azure CLI är installerad. Mer informat
     SQL> ALTER DATABASE OPEN;
     SQL> ALTER SYSTEM SWITCH LOGFILE;
     ```
-3.  (Valfritt) Skapa en tabell tootest hello incheckning:
+3.  (Valfritt) Skapa en tabell om du vill testa genomförandet:
 
     ```bash
     SQL> alter session set "_ORACLE_SCRIPT"=true ;
     Session altered.
     SQL> create user scott identified by tiger;
     User created.
-    SQL> grant create session tooscott;
+    SQL> grant create session to scott;
     Grant succeeded.
-    SQL> grant create table tooscott;
+    SQL> grant create table to scott;
     Grant succeeded.
     SQL> alter user scott quota 100M on users;
     User altered.
@@ -115,7 +115,7 @@ Innan du börjar bör du kontrollera att Azure CLI är installerad. Mer informat
     SQL> commit;
     Commit complete.
     ```
-4.  Kontrollera eller ändra storlek och hello Säkerhetskopians plats:
+4.  Kontrollera eller ändra storlek och Säkerhetskopians plats:
 
     ```bash
     $ sqlplus / as sysdba
@@ -125,7 +125,7 @@ Innan du börjar bör du kontrollera att Azure CLI är installerad. Mer informat
     db_recovery_file_dest                string      /u01/app/oracle/fast_recovery_area
     db_recovery_file_dest_size           big integer 4560M
     ```
-5. Använd Oracle Recovery Manager (RMAN) tooback hello databasen:
+5. Använd Oracle Recovery Manager (RMAN) för att säkerhetskopiera databasen:
 
     ```bash
     $ rman target /
@@ -134,11 +134,11 @@ Innan du börjar bör du kontrollera att Azure CLI är installerad. Mer informat
 
 ### <a name="step-4-application-consistent-backup-for-linux-vms"></a>Steg 4: Programkonsekvent säkerhetskopiering för virtuella Linux-datorer
 
-Programkonsekvent säkerhetskopiering är en ny funktion i Azure Backup. Du kan skapa och välj tooexecute skript före och efter hello VM-ögonblicksbild (före ögonblicksbild och efter ögonblicksbild).
+Programkonsekvent säkerhetskopiering är en ny funktion i Azure Backup. Du kan skapa och välj skript körs före och efter VM-ögonblicksbild (före ögonblicksbild och efter ögonblicksbild).
 
-1. Hämta hello JSON-fil.
+1. Hämta JSON-filen.
 
-    Hämta VMSnapshotScriptPluginConfig.json från https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig. hello filinnehållet se liknande toohello följande:
+    Hämta VMSnapshotScriptPluginConfig.json från https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig. Filinnehållet se ut ungefär så här:
 
     ```azurecli
     {
@@ -155,7 +155,7 @@ Programkonsekvent säkerhetskopiering är en ny funktion i Azure Backup. Du kan 
     }
     ```
 
-2. Skapa hello /etc/azure mapp på hello VM:
+2. Skapa mappen /etc/azure på den virtuella datorn:
 
     ```bash
     $ sudo su -
@@ -163,13 +163,13 @@ Programkonsekvent säkerhetskopiering är en ny funktion i Azure Backup. Du kan 
     # cd /etc/azure
     ```
 
-3. Kopiera hello JSON-fil.
+3. Kopiera JSON-filen.
 
-    Kopiera VMSnapshotScriptPluginConfig.json toohello /etc/azure mapp.
+    Kopiera VMSnapshotScriptPluginConfig.json till mappen /etc/azure.
 
-4. Redigera hello JSON-fil.
+4. Redigera JSON-filen.
 
-    Redigera hello VMSnapshotScriptPluginConfig.json filen tooinclude hello `PreScriptLocation` och `PostScriptlocation` parametrar. Exempel:
+    Redigera filen VMSnapshotScriptPluginConfig.json att inkludera den `PreScriptLocation` och `PostScriptlocation` parametrar. Exempel:
 
     ```azurecli
     {
@@ -186,7 +186,7 @@ Programkonsekvent säkerhetskopiering är en ny funktion i Azure Backup. Du kan 
     }
     ```
 
-5. Skapa hello inför ögonblicksbilden och efter ögonblickbild skriptfiler.
+5. Skapa inför ögonblicksbilden och efter ögonblickbild skriptfilerna.
 
     Här är ett exempel på skript inför ögonblicksbilden och efter ögonblicksbild för en ”kalla” säkerhetskopiering (en offlinesäkerhetskopiering, med avstängning och omstart):
 
@@ -226,7 +226,7 @@ Programkonsekvent säkerhetskopiering är en ny funktion i Azure Backup. Du kan 
     su - $ORA_OWNER -c "sqlplus / as sysdba @/etc/azure/post_script.sql" > /etc/azure/pre_script_$v_date.log
     ```
 
-    För /etc/azure/pre_script.sql, ändrar du hello innehållet i filen hello enligt dina krav:
+    /Etc/azure/pre_script.sql, ändra i innehållet i filen enligt dina krav:
 
     ```bash
     alter tablespace SYSTEM begin backup;
@@ -236,7 +236,7 @@ Programkonsekvent säkerhetskopiering är en ny funktion i Azure Backup. Du kan 
     alter system archive log stop;
     ```
 
-    För /etc/azure/post_script.sql, ändrar du hello innehållet i filen hello enligt dina krav:
+    /Etc/azure/post_script.sql, ändra i innehållet i filen enligt dina krav:
 
     ```bash
     alter tablespace SYSTEM end backup;
@@ -253,9 +253,9 @@ Programkonsekvent säkerhetskopiering är en ny funktion i Azure Backup. Du kan 
     # chmod 700 /etc/azure/post_script.sh
     ```
 
-7. Testa hello-skript.
+7. Testa skripten.
 
-    tootest hello skript som först logga in som rot. Kontrollera sedan att det inte finns några fel:
+    Om du vill testa skripten först logga in som rot. Kontrollera sedan att det inte finns några fel:
 
     ```bash
     # /etc/azure/pre_script.sh
@@ -265,25 +265,25 @@ Programkonsekvent säkerhetskopiering är en ny funktion i Azure Backup. Du kan 
 Mer information finns i [programkonsekvent säkerhetskopiering för virtuella Linux-datorer](https://azure.microsoft.com/en-us/blog/announcing-application-consistent-backup-for-linux-vms-using-azure-backup/).
 
 
-### <a name="step-5-use-azure-recovery-services-vaults-tooback-up-hello-vm"></a>Steg 5: Använd Azure Recovery Services-valv tooback in hello VM
+### <a name="step-5-use-azure-recovery-services-vaults-to-back-up-the-vm"></a>Steg 5: Använd Azure Recovery Services-valv om du vill säkerhetskopiera den virtuella datorn
 
-1.  I hello Azure-portalen, söka efter **Recovery Services-valv**.
+1.  I Azure-portalen, söka efter **Recovery Services-valv**.
 
     ![Sidan för Recovery Services-valv](./media/oracle-backup-recovery/recovery_service_01.png)
 
-2.  På hello **Recovery Services-valv** tooadd ett nytt valv bladet klickar du på **Lägg till**.
+2.  På den **Recovery Services-valv** klickar du på bladet för att lägga till ett nytt valv **Lägg till**.
 
     ![Recovery Services-valv lägger du till sidan](./media/oracle-backup-recovery/recovery_service_02.png)
 
-3.  toocontinue, klickar du på **myVault**.
+3.  Om du vill fortsätta klickar du på **myVault**.
 
     ![Sidan innehåller information om Recovery Services-valv](./media/oracle-backup-recovery/recovery_service_03.png)
 
-4.  På hello **myVault** bladet, klickar du på **säkerhetskopiering**.
+4.  På den **myVault** bladet, klickar du på **säkerhetskopiering**.
 
     ![Recovery Services-valv säkerhetskopiera sida](./media/oracle-backup-recovery/recovery_service_04.png)
 
-5.  På hello **säkerhetskopiering målet** blad, Använd hello standardvärdena för **Azure** och **virtuella**. Klicka på **OK**.
+5.  På den **säkerhetskopiering målet** bladet använder standardvärden för **Azure** och **virtuella**. Klicka på **OK**.
 
     ![Sidan innehåller information om Recovery Services-valv](./media/oracle-backup-recovery/recovery_service_05.png)
 
@@ -291,37 +291,37 @@ Mer information finns i [programkonsekvent säkerhetskopiering för virtuella Li
 
     ![Recovery Services-valv säkerhetskopiera princip detaljsida](./media/oracle-backup-recovery/recovery_service_06.png)
 
-7.  På hello **Välj virtuella datorer** bladet, Välj hello **myVM1** kryssrutan och klicka sedan på **OK**. Klicka på hello **Aktivera säkerhetskopiering** knappen.
+7.  På den **Välj virtuella datorer** bladet Välj den **myVM1** kryssrutan och klicka sedan på **OK**. Klicka på den **Aktivera säkerhetskopiering** knappen.
 
-    ![Recovery Services valv objekt toohello säkerhetskopiering detaljsida](./media/oracle-backup-recovery/recovery_service_07.png)
+    ![Återställningsobjekt Services valv till säkerhetskopiering detaljsida](./media/oracle-backup-recovery/recovery_service_07.png)
 
     > [!IMPORTANT]
-    > När du klickar på **Aktivera säkerhetskopiering**, hello säkerhetskopieringen startas inte förrän hello schemalagda tiden går ut. tooset upp en omedelbar säkerhetskopia fullständig hello nästa steg.
+    > När du klickar på **Aktivera säkerhetskopiering**, säkerhetskopieringen startas inte förrän den schemalagda tiden går ut. Slutför nästa steg om du vill konfigurera en omedelbar säkerhetskopia.
 
-8.  På hello **myVault - objekt för säkerhetskopiering** bladet under **säkerhetskopiering OBJEKTANTAL**, Välj hello säkerhetskopiering objektantal.
+8.  På den **myVault - objekt för säkerhetskopiering** bladet under **säkerhetskopiering OBJEKTANTAL**, Välj antalet säkerhetskopiering objekt.
 
     ![Recovery Services valv myVault detaljsida](./media/oracle-backup-recovery/recovery_service_08.png)
 
-9.  På hello **säkerhetskopiering objekt (Azure virtuell dator)** bladet hello höger på sidan hello Klicka hello knappen (**...** ) knappen och klicka sedan på **Säkerhetskopiera nu**.
+9.  På den **säkerhetskopiering objekt (Azure virtuell dator)** bladet till höger på sidan, klicka på ellipsknappen (**...** ) knappen och klicka sedan på **Säkerhetskopiera nu**.
 
     ![Recovery Services-valv säkerhetskopiering nu kommando](./media/oracle-backup-recovery/recovery_service_09.png)
 
-10. Klicka på hello **säkerhetskopiering** knappen. Vänta tills hello säkerhetskopieringsprocessen toofinish. Gå sedan för[steg 6: ta bort databasfilerna hello](#step-6-remove-the-database-files).
+10. Klicka på den **säkerhetskopiering** knappen. Vänta tills säkerhetskopieringen ska slutföras. Gå sedan till [steg 6: ta bort databasfilerna](#step-6-remove-the-database-files).
 
-    tooview hello status för hello säkerhetskopieringsjobb, klickar du på **jobb**.
+    Om du vill visa status för jobbet, klickar du på **jobb**.
 
     ![Recovery Services-valv jobbet sida](./media/oracle-backup-recovery/recovery_service_10.png)
 
-    hello status för hello säkerhetskopieringsjobbet visas i följande bild hello:
+    Status för jobbet visas i följande bild:
 
     ![Recovery Services-valv jobbet sida med status](./media/oracle-backup-recovery/recovery_service_11.png)
 
-11. Åtgärda eventuella fel i hello loggfilen för en programkonsekvent säkerhetskopiering. hello loggfilen finns i /var/log/azure/Microsoft.Azure.RecoveryServices.VMSnapshotLinux/1.0.9114.0.
+11. Åtgärda eventuella fel i loggfilen för en programkonsekvent säkerhetskopiering. Loggfilen finns i /var/log/azure/Microsoft.Azure.RecoveryServices.VMSnapshotLinux/1.0.9114.0.
 
-### <a name="step-6-remove-hello-database-files"></a>Steg 6: Ta bort hello-databasfiler 
-Senare i den här artikeln lär du dig hur tootest hello återställningsprocessen. Innan du kan testa hello återställningsprocessen har tooremove hello-databasfiler.
+### <a name="step-6-remove-the-database-files"></a>Steg 6: Ta bort databasfilerna 
+Senare i den här artikeln lär du dig hur du testar återställningsprocessen. Innan du kan testa återställningsprocessen måste du ta bort databasfilerna.
 
-1.  Ta bort hello tabellutrymmet och säkerhetskopiering filer:
+1.  Ta bort filer tabellutrymmet och säkerhetskopiering:
 
     ```bash
     $ sudo su - oracle
@@ -331,7 +331,7 @@ Senare i den här artikeln lär du dig hur tootest hello återställningsprocess
     $ rm -rf *
     ```
     
-2.  (Valfritt) Stänga av hello Oracle-instansen:
+2.  (Valfritt) Stänga av Oracle-instansen:
 
     ```bash
     $ sqlplus / as sysdba
@@ -339,38 +339,38 @@ Senare i den här artikeln lär du dig hur tootest hello återställningsprocess
     ORACLE instance shut down.
     ```
 
-## <a name="restore-hello-deleted-files-from-hello-recovery-services-vaults"></a>Återställa hello bort filer från hello Recovery Services-valv
-toorestore hello borttagna filer, fullständig hello följande steg:
+## <a name="restore-the-deleted-files-from-the-recovery-services-vaults"></a>Återställa borttagna filer från Recovery Services-valv
+Om du vill återställa borttagna filer, gör du följande:
 
-1. I hello Azure-portalen, söka efter hello *myVault* Recovery Services-valv objektet. På hello **översikt** bladet under **Säkerhetskopiera objekt**, Välj hello antal objekt.
+1. I Azure-portalen, söka efter den *myVault* Recovery Services-valv objektet. På den **översikt** bladet under **Säkerhetskopiera objekt**, Välj antalet objekt.
 
     ![Recovery Services valv myVault Säkerhetskopiera objekt](./media/oracle-backup-recovery/recovery_service_12.png)
 
-2. Under **säkerhetskopiering OBJEKTANTAL**, Välj hello antal objekt.
+2. Under **säkerhetskopiering OBJEKTANTAL**, Välj antalet objekt.
 
     ![Recovery Services-valv antal för virtuell dator i Azure-säkerhetskopiering objekt](./media/oracle-backup-recovery/recovery_service_13.png)
 
-3. På hello **myvm1** bladet, klickar du på **filåterställning (förhandsgranskning)**.
+3. På den **myvm1** bladet, klickar du på **filåterställning (förhandsgranskning)**.
 
-    ![Skärmbild av hello Recovery Services-valv återställningssidan för filen](./media/oracle-backup-recovery/recovery_service_14.png)
+    ![Skärmbild av Recovery Services-valv återställningssidan för filen](./media/oracle-backup-recovery/recovery_service_14.png)
 
-4. På hello **filåterställning (förhandsgranskning)** rutan klickar du på **hämta skriptet**. Spara hello download (.sh) tooa mapp på hello-klientdator.
+4. På den **filåterställning (förhandsgranskning)** rutan klickar du på **hämta skriptet**. Spara sedan filen download (.sh) till en mapp på klientdatorn.
 
     ![Hämta filen sparar alternativ](./media/oracle-backup-recovery/recovery_service_15.png)
 
-5. Kopiera hello .sh filen toohello VM.
+5. Kopiera filen .sh till den virtuella datorn.
 
-    hello som följande exempel visar hur du toouse en säker kopia (scp) kommandot toomove hello filen toohello VM. Du kan också kopiera hello innehållet toohello Urklipp och klistra in hello innehållet om du i en ny fil som har ställts in på hello VM.
+    I följande exempel visas hur du kan använda en säker kopia (scp) kommandot för att flytta filen till den virtuella datorn. Du kan också kopiera innehållet i Urklipp och klistra in innehållet i en ny fil som har ställts in på den virtuella datorn.
 
     > [!IMPORTANT]
-    > I följande exempel hello, kontrollerar du att du uppdaterar hello IP-adress och mappen värden. hello-värden måste mappa toohello mappen där hello filen sparas.
+    > Se till att du uppdaterar IP-adress och mappen värdena i exemplet nedan. Värdena måste mappas till mappen där filen sparas.
 
     ```bash
     $ scp Linux_myvm1_xx-xx-2017 xx-xx-xx PM.sh <publicIpAddress>:/<folder>
     ```
-6. Ändra hello-fil, så att det ägs av hello rot.
+6. Ändra filen, så att det ägs av roten.
 
-    I följande exempel hello, ändra hello-filen så att det ägs av hello rot. Ändra behörigheter.
+    I följande exempel visas att ändra filen så att det ägs av roten. Ändra behörigheter.
 
     ```bash 
     $ ssh <publicIpAddress>
@@ -379,24 +379,24 @@ toorestore hello borttagna filer, fullständig hello följande steg:
     # chmod 755 /<folder>/Linux_myvm1_xx-xx-2017 xx-xx-xx PM.sh
     # /<folder>/Linux_myvm1_xx-xx-2017 xx-xx-xx PM.sh
     ```
-    hello följande exempel visar vad som ska visas när du har kört hello föregående skript. När du uppmanas toocontinue, ange **Y**.
+    I följande exempel visar vad som ska visas när du har kört skriptet. När du uppmanas att fortsätta ange **Y**.
 
     ```bash
     Microsoft Azure VM Backup - File Recovery
     ______________________________________________
-    hello script requires 'open-iscsi' and 'lshw' toorun.
-    Do you want us tooinstall 'open-iscsi' and 'lshw' on this machine?
-    Please press 'Y' toocontinue with installation, 'N' tooabort hello operation. : Y
+    The script requires 'open-iscsi' and 'lshw' to run.
+    Do you want us to install 'open-iscsi' and 'lshw' on this machine?
+    Please press 'Y' to continue with installation, 'N' to abort the operation. : Y
     Installing 'open-iscsi'....
     Installing 'lshw'....
 
-    Connecting toorecovery point using ISCSI service...
+    Connecting to recovery point using ISCSI service...
 
     Connection succeeded!
 
-    Please wait while we attach volumes of hello recovery point toothis machine...
+    Please wait while we attach volumes of the recovery point to this machine...
 
-    ************ Volumes of hello recovery point and their mount paths on this machine ************
+    ************ Volumes of the recovery point and their mount paths on this machine ************
 
     Sr.No.  |  Disk  |  Volume  |  MountPath
 
@@ -404,20 +404,20 @@ toorestore hello borttagna filer, fullständig hello följande steg:
 
     2)  | /dev/sde  |  /dev/sde2  |  /root/myVM-20170517093913/Volume2
 
-    ************ Open File Explorer toobrowse for files. ************
+    ************ Open File Explorer to browse for files. ************
 
-    After recovery, tooremove hello disks and close hello connection toohello recovery point, please click 'Unmount Disks' in step 3 of hello portal.
+    After recovery, to remove the disks and close the connection to the recovery point, please click 'Unmount Disks' in step 3 of the portal.
 
-    Please enter 'q/Q' tooexit...
+    Please enter 'q/Q' to exit...
     ```
 
-7. Åtkomst toohello monterade volymer bekräftas.
+7. Åtkomst till de monterade volymerna bekräftas.
 
-    tooexit, ange **q**, och sök sedan efter hello monterade volymer. en lista över hello läggs volymer i en kommandotolk, ange toocreate **df -k**.
+    Om du vill avsluta, ange **q**, och sök sedan efter de monterade volymerna. Om du vill skapa en lista över volymer som lagts till i en kommandotolk, ange **df -k**.
 
-    ![hello df -k kommando](./media/oracle-backup-recovery/recovery_service_16.png)
+    ![Kommandot df -k](./media/oracle-backup-recovery/recovery_service_16.png)
 
-8. Använd hello följande skript toocopy hello saknas filer tillbaka toohello mappar:
+8. Använd följande skript om du vill kopiera de saknade filerna till mapparna:
 
     ```bash
     # cd /root/myVM-2017XXXXXXX/Volume2/u01/app/oracle/fast_recovery_area/CDB1/backupset/2017_xx_xx
@@ -429,7 +429,7 @@ toorestore hello borttagna filer, fullständig hello följande steg:
     # cd /u01/app/oracle/oradata/cdb1
     # chown oracle:oinstall *.dbf
     ```
-9. I följande skript hello, använder du RMAN toorecover hello databasen:
+9. Använd RMAN ska kunna återställa databasen i följande skript:
 
     ```bash
     # sudo su - oracle
@@ -441,93 +441,93 @@ toorestore hello borttagna filer, fullständig hello följande steg:
     RMAN> SELECT * FROM scott.scott_table;
     ```
     
-10. Demontera hello disk.
+10. Demontera disken.
 
-    I hello Azure-portalen på hello **filåterställning (förhandsgranskning)** bladet, klickar du på **demontera diskar**.
+    I Azure-portalen på den **filåterställning (förhandsgranskning)** bladet, klickar du på **demontera diskar**.
 
     ![Demontera diskar kommando](./media/oracle-backup-recovery/recovery_service_17.png)
 
-## <a name="restore-hello-entire-vm"></a>Återställa hello hela VM
+## <a name="restore-the-entire-vm"></a>Återställa hela den virtuella datorn
 
-I stället för att återställa hello bort filer från hello Recovery Services-valv, kan du återställa hello hela datorn.
+Du kan återställa hela den virtuella datorn i stället för att återställa borttagna filer från Recovery Services-valv.
 
 ### <a name="step-1-delete-myvm"></a>Steg 1: Ta bort myVM
 
-*   I hello Azure-portalen, går toohello **myVM1** valvet och välj sedan **ta bort**.
+*   I Azure-portalen går du till den **myVM1** valvet och välj sedan **ta bort**.
 
     ![Valvet delete-kommandot](./media/oracle-backup-recovery/recover_vm_01.png)
 
-### <a name="step-2-recover-hello-vm"></a>Steg 2: Återställa hello VM
+### <a name="step-2-recover-the-vm"></a>Steg 2: Återställa den virtuella datorn
 
-1.  Gå för**Recovery Services-valv**, och välj sedan **myVault**.
+1.  Gå till **Recovery Services-valv**, och välj sedan **myVault**.
 
     ![myVault post](./media/oracle-backup-recovery/recover_vm_02.png)
 
-2.  På hello **översikt** bladet under **Säkerhetskopiera objekt**, Välj hello antal objekt.
+2.  På den **översikt** bladet under **Säkerhetskopiera objekt**, Välj antalet objekt.
 
     ![myVault Säkerhetskopiera objekt](./media/oracle-backup-recovery/recover_vm_03.png)
 
-3.  På hello **säkerhetskopiering objekt (Azure virtuell dator)** bladet väljer **myvm1**.
+3.  På den **säkerhetskopiering objekt (Azure virtuell dator)** bladet väljer **myvm1**.
 
     ![Återställningssidan för VM](./media/oracle-backup-recovery/recover_vm_04.png)
 
-4.  På hello **myvm1** bladet Klicka hello knappen (**...** ) knappen och klicka sedan på **återställa VM**.
+4.  På den **myvm1** bladet Klicka på ellipsknappen (**...** ) knappen och klicka sedan på **återställa VM**.
 
     ![Restore-kommandots VM](./media/oracle-backup-recovery/recover_vm_05.png)
 
-5.  På hello **Välj återställningspunkt** bladet, Välj hello objekt du vill toorestore och klicka sedan på **OK**.
+5.  På den **Välj återställningspunkt** bladet, Välj det objekt som du vill återställa och klicka sedan på **OK**.
 
-    ![Välj hello återställningspunkt](./media/oracle-backup-recovery/recover_vm_06.png)
+    ![Välj återställningspunkten](./media/oracle-backup-recovery/recover_vm_06.png)
 
     Om du har aktiverat programkonsekvent säkerhetskopiering, visas en blå vertikalstreck.
 
-6.  På hello **Återställ konfiguration** bladet välj hello virtuella datornamnet, Välj hello resursgrupp och klicka sedan på **OK**.
+6.  På den **Återställ konfiguration** bladet välj namnet på virtuella datorn, välja en resursgrupp och klicka sedan på **OK**.
 
     ![Återställa konfigurationsvärden](./media/oracle-backup-recovery/recover_vm_07.png)
 
-7.  toorestore hello VM, klicka på hello **återställa** knappen.
+7.  Om du vill återställa den virtuella datorn, klickar du på den **återställa** knappen.
 
-8.  tooview hello status för hello återställningsprocessen klickar du på **jobb**, och klicka sedan på **säkerhetskopieringsjobb**.
+8.  Om du vill visa status för återställningen klickar du på **jobb**, och klicka sedan på **säkerhetskopieringsjobb**.
 
     ![Säkerhetskopieringsjobb status-kommandot](./media/oracle-backup-recovery/recover_vm_08.png)
 
-    hello visar följande bild hello återställningsprocessen hello status:
+    Följande bild visar status för återställningen:
 
-    ![Status för hello återställningsprocessen](./media/oracle-backup-recovery/recover_vm_09.png)
+    ![Status för återställningen](./media/oracle-backup-recovery/recover_vm_09.png)
 
-### <a name="step-3-set-hello-public-ip-address"></a>Steg 3: Ange hello offentliga IP-adress
-Efter hello VM har återställts, ställa in hello offentlig IP-adress.
+### <a name="step-3-set-the-public-ip-address"></a>Steg 3: Ange den offentliga IP-adressen
+När den virtuella datorn har återställts kan ställa in den offentliga IP-adressen.
 
-1.  Skriv i sökrutan hello **offentliga IP-adressen**.
+1.  I sökrutan anger **offentliga IP-adressen**.
 
     ![Lista över offentliga IP-adresser](./media/oracle-backup-recovery/create_ip_00.png)
 
-2.  På hello **offentliga IP-adresser** bladet, klickar du på **Lägg till**. På hello **skapa offentlig IP-adress** bladet för **namnet**väljer hello offentliga IP-namn. För **resursgrupp**, väljer du **använd befintlig**. Klicka på **Skapa**.
+2.  På den **offentliga IP-adresser** bladet, klickar du på **Lägg till**. På den **skapa offentlig IP-adress** bladet för **namn**, Välj offentlig IP-namnet. För **resursgrupp**, väljer du **använd befintlig**. Klicka på **Skapa**.
 
     ![Skapa IP-adress](./media/oracle-backup-recovery/create_ip_01.png)
 
-3.  tooassociate hello offentlig IP-adress med hello nätverksgränssnittet för hello VM, söka efter och välj **myVMip**. Klicka på **associera**.
+3.  Om du vill associera den offentliga IP-adressen till nätverksgränssnittet för den virtuella datorn, leta upp och markera **myVMip**. Klicka på **associera**.
 
     ![Associera IP-adress](./media/oracle-backup-recovery/create_ip_02.png)
 
-4.  För **resurstypen**väljer **nätverksgränssnittet**. Välj hello nätverksgränssnitt som används av hello myVM instansen och klicka sedan på **OK**.
+4.  För **resurstypen**väljer **nätverksgränssnittet**. Välj det nätverksgränssnitt som används av myVM-instansen och klicka sedan på **OK**.
 
     ![Välj resurstyp och NIC-värden](./media/oracle-backup-recovery/create_ip_03.png)
 
-5.  Sök efter och öppna hello instans av myVM portar från hello-portalen. hello IP-adress som är associerad med hello VM visas på hello myVM **översikt** bladet.
+5.  Söka efter och öppna instansen av myVM är portar från portalen. IP-adressen som är associerad med den virtuella datorn visas på myVM **översikt** bladet.
 
     ![Värdet för IP-adress](./media/oracle-backup-recovery/create_ip_04.png)
 
-### <a name="step-4-connect-toohello-vm"></a>Steg 4: Anslut toohello VM
+### <a name="step-4-connect-to-the-vm"></a>Steg 4: Anslut till den virtuella datorn
 
-*   tooconnect toohello VM, använda hello följande skript:
+*   Använd följande skript för att ansluta till den virtuella datorn:
 
     ```bash 
     ssh <publicIpAddress>
     ```
 
-### <a name="step-5-test-whether-hello-database-is-accessible"></a>Steg 5: Testa om hello-databasen är tillgänglig
-*   tootest tillgänglighet, Använd hello följande skript:
+### <a name="step-5-test-whether-the-database-is-accessible"></a>Steg 5: Testa om databasen är tillgänglig
+*   Testa hjälpmedel genom att använda följande skript:
 
     ```bash 
     $ sudo su - oracle
@@ -536,10 +536,10 @@ Efter hello VM har återställts, ställa in hello offentlig IP-adress.
     ```
 
     > [!IMPORTANT]
-    > Om hello databasen **Start** kommandot genererar ett fel, toorecover hello databasen, se [steg 6: Använd RMAN toorecover hello databasen](#step-6-optional-use-rman-to-recover-the-database).
+    > Om databasen **Start** kommandot genererar ett fel, om du vill återställa databasen finns [steg 6: Använd RMAN ska kunna återställa databasen](#step-6-optional-use-rman-to-recover-the-database).
 
-### <a name="step-6-optional-use-rman-toorecover-hello-database"></a>Steg 6: (Valfritt) använda RMAN toorecover hello databas
-*   toorecover hello databas, Använd hello följande skript:
+### <a name="step-6-optional-use-rman-to-recover-the-database"></a>Steg 6: (Valfritt) använda RMAN ska kunna återställa databasen
+*   Om du vill återställa databasen använder du följande skript:
 
     ```bash
     # sudo su - oracle
@@ -551,11 +551,11 @@ Efter hello VM har återställts, ställa in hello offentlig IP-adress.
     RMAN> SELECT * FROM scott.scott_table;
     ```
 
-hello säkerhetskopiering och återställning av hello Oracle 12c databasen på en Azure Linux-VM är nu klar.
+Säkerhetskopiering och återställning av databasen på 12c Oracle-databas på en Azure Linux-VM är nu klar.
 
-## <a name="delete-hello-vm"></a>Ta bort hello VM
+## <a name="delete-the-vm"></a>Ta bort den virtuella datorn
 
-När du behöver inte längre hello VM, kan du använda hello efter kommandot tooremove hello resursgrupp, hello VM och alla relaterade resurser:
+Du kan använda följande kommando för att ta bort resursgruppen, den virtuella datorn och alla relaterade resurser när du inte längre behöver den virtuella datorn:
 
 ```azurecli
 az group delete --name myResourceGroup

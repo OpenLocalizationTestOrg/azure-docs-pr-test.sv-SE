@@ -1,4 +1,4 @@
-följande tabell visar hello krav för PolicyBased och RouteBased VPN-gatewayer hello. Den här tabellen gäller tooboth hello Resource Manager och klassiska distributionsmodeller. Hello klassiska modellen PolicyBased VPN-gatewayer är hello detsamma som statiska gatewayer och ruttbaserade gatewayer är hello detsamma som dynamiska gatewayer.
+I följande tabell visas kraven för PolicyBased och RouteBased VPN-gatewayer. Tabellen gäller både för Resource Manager- och den klassiska distributionsmodellen. Den klassiska modellen PolicyBased VPN-gatewayer är detsamma som statiska gatewayer och ruttbaserade gatewayer är detsamma som dynamiska gatewayer.
 
 |  | **PolicyBased grundläggande VPN-Gateway** | **RouteBased grundläggande VPN-Gateway** | **RouteBased Standard VPN-Gateway** | **RouteBased hög prestanda VPN-Gateway** |
 | --- | --- | --- | --- | --- |

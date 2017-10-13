@@ -1,45 +1,45 @@
 <!--author=alkohli last changed: 02/10/17-->
 
-#### <a name="toodownload-hotfixes"></a>toodownload snabbkorrigeringar
+#### <a name="to-download-hotfixes"></a>Ladda ned snabbkorrigerar
 
-Utför följande steg toodownload hello programuppdateringen från hello Microsoft Update-katalogen hello.
+Utför följande steg för att hämta programuppdateringen från Microsoft Update Catalog.
 
-1. Starta Internet Explorer och navigera för[http://catalog.update.microsoft.com](http://catalog.update.microsoft.com).
-2. Om det här är första gången du använder hello Microsoft Update-katalogen på den här datorn klickar du på **installera** när begärd tooinstall hello tillägg för Microsoft Update-katalogen.
+1. Starta Internet Explorer och gå till [http://catalog.update.microsoft.com](http://catalog.update.microsoft.com).
+2. Om det här är första gången du använder Microsoft Update Catalog på den här datorn klickar du på **Installera** när du uppmanas att installera tillägget för Microsoft Update Catalog.
 
     ![Installera katalog](./media/storsimple-install-update2-hotfix/HCS_InstallCatalog-include.png)
 
-3. Ange hello Knowledge Base (KB) nummer i sökrutan för hello Microsoft Update-katalogen hello hello snabbkorrigering som du vill toodownload, till exempel **4011839**, och klicka sedan på **Sök**.
+3. I sökrutan i Microsoft Update Catalog anger du kunskapsbasnumret för den snabbkorrigering som du vill hämta, till exempel **4011839**, och klickar sedan på **Sök**.
    
-    hello snabbkorrigeringen visas, till exempel **kumulativa programvara paket uppdatering 4.0 för StorSimple 8000-serien**.
+    I listan över snabbkorrigeringar visas den aktuella posten, till exempel **Cumulative Software Bundle Update 4.0 for StorSimple 8000 Series**.
    
     ![Sökkatalog](./media/storsimple-install-update2-hotfix/HCS_SearchCatalog1-include.png)
 
-4. Klicka på **Hämta**. Ange eller **Bläddra** tooa lokal plats där du vill hello hämtar tooappear. Klicka på hello filer toodownload toohello den angivna platsen och mapp. hello-mappen kan också vara kopierade tooa nätverksresurs som kan nås från hello enhet.
-5. Sök efter eventuella ytterligare snabbkorrigeringar som anges i hello tabellen ovan (**4011841**), och ladda ned hello motsvarande filer toohello specifika mappar som anges i föregående tabell hello.
+4. Klicka på **Hämta**. Ange eller **Bläddra** till en lokal plats där du vill att nedladdningarna ska läggas. Klicka på filer som hämtas till den angivna platsen och mapp. Mappen kan också kopieras till en nätverksresurs som kan nås från enheten.
+5. Sök efter eventuella ytterligare snabbkorrigeringar som anges i tabellen ovan (**4011841**), och hämta motsvarande filer till specifika mappar som anges i tabellen ovan.
 
 > [!NOTE]
-> hello snabbkorrigeringar måste vara tillgänglig från båda domänkontrollanterna toodetect eventuella eventuella felmeddelanden från hello peer-domänkontrollant.
+> Snabbkorrigeringarna måste vara tillgänglig från båda domänkontrollanter för att identifiera eventuella felmeddelanden från peer-domänkontrollant.
 >
-> hello snabbkorrigeringar måste kopieras i 3 separata mappar. Till exempel hello enheten MDS-program/TIS agentuppdatering kan kopieras i _FirstOrderUpdate_ mapp, alla hello andra utan avbrott uppdateringar kan kopieras i hello _SecondOrderUpdate_ mapp, och Underhåll läge uppdateringar kopierade i _ThirdOrderUpdate_ mapp.
+> Snabbkorrigeringarna måste kopieras till tre separata mappar. Exempelvis kan enheten MDS-program/TIS agentuppdatering kopieras i _FirstOrderUpdate_ mapp, alla andra utan avbrott uppdateringar kan kopieras i den _SecondOrderUpdate_ mapp, och Underhåll läge uppdateringar kopierade i _ThirdOrderUpdate_ mapp.
 
-#### <a name="tooinstall-and-verify-regular-mode-hotfixes"></a>tooinstall och kontrollera standardläget snabbkorrigeringar
+#### <a name="to-install-and-verify-regular-mode-hotfixes"></a>Installera och verifiera snabbkorrigeringar i normalläge
 
-Utför följande steg tooinstall hello och kontrollera snabbkorrigeringar regular-läge. Om du redan installerat med hello klassiska Azure-portalen kan du gå vidare för[installera och underhåll läge snabbkorrigeringar](#to-install-and-verify-maintenance-mode-hotfixes).
+Utför följande steg för att installera och verifiera snabbkorrigeringar i normalläge. Om du redan har installerat dem med hjälp av den klassiska Azure-portalen kan du gå vidare för att [installera och verifiera snabbkorrigeringar i underhållsläge](#to-install-and-verify-maintenance-mode-hotfixes).
 
-1. tooinstall hello snabbkorrigeringar, åtkomst hello Windows PowerShell-gränssnittet på din StorSimple enhetens seriekonsol. Följ hello detaljerade instruktioner i [använda PuTTy tooconnect toohello seriekonsolen](../articles/storsimple/storsimple-deployment-walkthrough.md#use-putty-to-connect-to-the-device-serial-console). Hello Kommandotolken, tryck på **RETUR**.
-2. Välj **alternativ 1** toolog på toohello enhet med fullständig åtkomst. Vi rekommenderar att du installerar snabbkorrigeringen hello på hello passiva domänkontrollant först.
-3. snabbkorrigering för tooinstall hello, Kommandotolken hello typ:
+1. Gå in i Windows PowerShell-gränssnittet på din StorSimple-enhets seriekonsol för att installera snabbkorrigerarna. Följ de detaljerade instruktionerna i [Använd PuTTY för att ansluta till enhetens seriekonsol](../articles/storsimple/storsimple-deployment-walkthrough.md#use-putty-to-connect-to-the-device-serial-console). Tryck på **Retur** i kommandotolken.
+2. Välj **Alternativ 1** för att logga in på enheten med fullständig åtkomst. Vi rekommenderar att du installerar snabbkorrigeringen på den passiva styrenheten först.
+3. Ange följande i kommandotolken för att installera snabbkorrigeringen:
    
-    `Start-HcsHotfix -Path <path tooupdate file> -Credential <credentials in domain\username format>`
+    `Start-HcsHotfix -Path <path to update file> -Credential <credentials in domain\username format>`
    
-    Använd IP i stället för DNS på resurssökvägen i hello ovanstående kommando. hello autentiseringsuppgiftsparametern används bara om du ansluter till en autentiserad resurs.
+    Använd IP i stället för DNS i resurssökvägen i kommandot ovan. Parametern för autentiseringsuppgifter används bara om du ansluter till en autentiserad resurs.
    
-    Vi rekommenderar att du använder hello autentiseringsuppgifter parametern tooaccess resurser. Även resurser som är öppna för ”alla” är vanligtvis inte att öppna toounauthenticated användare.
+    Vi rekommenderar att du använder parametern för autentiseringsuppgifter för att få åtkomst till resurser. Även resurser som är öppna för ”alla” är vanligtvis inte öppna för icke-autentiserade användare.
    
-    Ange hello lösenord när du uppmanas.
+    Ange lösenordet när du uppmanas att göra så.
    
-    Ett exempel på utdata för att installera hello första uppdateringar visas nedan. För hello första uppdatering behöver du toopoint toohello specifik fil.
+    Ett exempel på utdata för att installera första orderns uppdateringar visas nedan. Du måste peka på filen för den första uppdateringen i ordning.
    
         ````
         Controller0>Start-HcsHotfix -Path \\10.100.100.100\share
@@ -47,16 +47,16 @@ Utför följande steg tooinstall hello och kontrollera snabbkorrigeringar regula
    
         Confirm
    
-        This operation starts hello hotfix installation and could reboot one or
-        both of hello controllers. If hello device is serving I/Os, these will not
-        be disrupted. Are you sure you want toocontinue?
+        This operation starts the hotfix installation and could reboot one or
+        both of the controllers. If the device is serving I/Os, these will not
+        be disrupted. Are you sure you want to continue?
         [Y] Yes [N] No [?] Help (default is "Y"): Y
    
         ````
-4. Typen **Y** när begärd tooconfirm hello snabbkorrigeringsinstallationen.
-5. Övervaka hello uppdateringen med hjälp av hello `Get-HcsUpdateStatus` cmdlet. hello-update först slutför på hello passiva domänkontrollant. När hello passiva controller har uppdaterats, finns en växling vid fel och hello uppdatering används sedan på hello andra styrenheten. hello uppdateringen är klar när båda hello domänkontrollanter uppdateras.
+4. Skriv **Y** när du uppmanas att bekräfta installationen av snabbkorrigeringen.
+5. Övervaka uppdateringen med hjälp av `Get-HcsUpdateStatus`-cmdlet. Uppdateringen slutförs först på den passiva styrenheten. När den passiva styrenheten har uppdaterats sker en redundans och uppdateringen tillämpas sedan på den andra styrenheten. Uppdateringen har slutförts när båda styrenheterna har uppdateras.
    
-    hello visar följande exempel på utdata hello uppdatering pågår. Hej `RunInprogress` blir `True` när hello uppdatering pågår.
+    Följande exempel på utdata visar att uppdateringen pågår. `RunInprogress` kommer att vara `True` när uppdateringen pågår.
 
     ```
     Controller0>Get-HcsUpdateStatus
@@ -67,7 +67,7 @@ Utför följande steg tooinstall hello och kontrollera snabbkorrigeringar regula
     Controller1Events   :
     ```
    
-     följande exempel på utdata hello anger hello uppdateringen är klar. Hej `RunInProgress` blir `False` när hello uppdateringen har slutförts.
+     Följande exempel på utdata visar att uppdateringen är färdig. `RunInProgress` kommer att vara `False` när uppdateringen är färdig.
    
     ```
     Controller0>Get-HcsUpdateStatus
@@ -79,40 +79,40 @@ Utför följande steg tooinstall hello och kontrollera snabbkorrigeringar regula
     ```
 
     > [!NOTE]
-    > Ibland kan hello cmdlet rapporter `False` när hello uppdateringen pågår fortfarande. tooensure som hello snabbkorrigeringen är klar, Vänta några minuter, kör kommandot och kontrollera att hello `RunInProgress` är `False`. Om det är har hello snabbkorrigeringen slutförts.
+    > I vissa fall rapporterar cmdlet `False` när uppdateringen fortfarande pågår. Om du vill kontrollera att snabbkorrigeringen har slutförts väntar du några minuter och sedan kör du det här kommandot igen och kontrollerar att `RunInProgress` är `False`. Om det har det har snabbkorrigeringen slutförts.
 
-6. Kontrollera hello system programvaruversioner när hello programuppdateringen har slutförts. Ange:
+6. När programuppdateringen har slutförts kan du kontrollera systemprogramversionerna. Ange:
    
     `Get-HcsSystem`
    
-    Du bör se hello följande versioner:
+    Du bör se följande versioner:
    
    * `FriendlySoftwareVersion: StorSimple 8000 Series Update 4.0`
    *  `HcsSoftwareVersion: 6.3.9600.17820`
    
-    Om hello versionsnumret inte ändras efter att de hello uppdateringen anger hello snabbkorrigeringen har misslyckats tooapply. Kontakta [Microsoft Support](../articles/storsimple/storsimple-contact-microsoft-support.md) för ytterligare hjälp om du ser det här.
+    Om versionsnumret inte ändras efter att uppdateringen har tillämpats indikerar det att snabbkorrigeringen har misslyckats. Kontakta [Microsoft Support](../articles/storsimple/storsimple-contact-microsoft-support.md) för ytterligare hjälp om du ser det här.
      
     > [!IMPORTANT]
-    > Du måste starta om hello aktiva styrenheten via hello `Restart-HcsController` cmdlet innan du tillämpar hello nästa uppdatering.
+    > Du måste starta om den aktiva styrenheten via den `Restart-HcsController` cmdlet innan du tillämpar nästa uppdatering.
      
-7. Upprepa steg 3-5 tooinstall hello TIS/MDS agent hämtas tooyour _FirstOrderUpdate_ mapp. 
-8. Upprepa steg 3-5 tooinstall hello andra uppdateringar. **För andra uppdateringar, flera uppdateringar installeras genom att bara köra hello `Start-HcsHotfix cmdlet` och peka toohello mappen där det finns andra uppdateringar. hello cmdlet utför alla hello tillgängliga uppdateringar i hello mapp.** Om en uppdatering redan är installerad, identifierar som hello update logik och inte tillämpa uppdateringen. 
+7. Upprepa steg 3-5 om du vill installera agenten TIS/MDS hämtas till din _FirstOrderUpdate_ mapp. 
+8. Upprepa steg 3-5 för att installera andra orderns uppdateringar. **För andra uppdateringar, flera uppdateringar installeras genom att bara köra den `Start-HcsHotfix cmdlet` och peka på den mapp där det finns andra uppdateringar. Cmdleten körs alla uppdateringar som är tillgängliga i mappen.** Om en uppdatering redan är installerad identifierar uppdateringslogiken det och tillämpar inte uppdateringen. 
 
-När du har installerat alla hello snabbkorrigeringar använder hello `Get-HcsSystem` cmdlet. hello versioner bör vara:
+När alla snabbkorrigeringar har installerats använder du `Get-HcsSystem`-cmdleten. Versionerna bör vara:
 
    * `CisAgentVersion:  1.0.9441.0`
    * `MdsAgentVersion: 35.2.2.0`
    * `Lsisas2Version: 2.0.78.00`
 
 
-#### <a name="tooinstall-and-verify-maintenance-mode-hotfixes"></a>tooinstall och kontrollera Underhåll läge snabbkorrigeringar
-Använda KB4011837 tooinstall disk firmware-uppdateringar. Dessa är störande uppdateringar och ta runt 30 minuter toocomplete. Du kan välja tooinstall dessa i ett fönster för planerat underhåll av anslutande toohello enhetens seriekonsol.
+#### <a name="to-install-and-verify-maintenance-mode-hotfixes"></a>Installera och verifiera snabbkorrigeringar i underhållsläge
+Använd KB4011837 för att installera uppdateringar av inbyggd programvara för disk. Det här är störande uppdateringar och tar cirka 30 minuter för att slutföra. Du kan välja att installera dem i ett planerat underhållsfönster genom att ansluta till enhetens seriekonsol.
 
-Observera att om den inbyggda programvaran disken är redan uppdaterade, du inte behöver tooinstall uppdateringarna. Kör hello `Get-HcsUpdateAvailability` cmdlet från hello enhetens seriekonsol toocheck om uppdateringar är tillgängliga och om hello uppdateringar är störande (underhållsläget) eller utan avbrott (standardläget) uppdateringar.
+Observera att om den inbyggda programvaran för disken redan är uppdaterad så behöver du inte installera uppdateringarna. Kör `Get-HcsUpdateAvailability`-cmdleten från enhetens seriekonsol för att kontrollera om det finns tillgängliga uppdateringar och om uppdateringarna är störande (underhållsläge) eller avbrottsfria (standardläget).
 
-uppdateringar av tooinstall hello disk inbyggd, följ instruktionerna för hello nedan.
+Följ anvisningarna nedan om du vill installera uppdateringarna för den inbyggda programvaran för disken.
 
-1. Placera hello enhet i underhållsläge hello. **Observera att du inte bör använda Windows PowerShell-fjärrkommunikation om du ansluter tooa enhet i underhållsläge. I stället köra denna cmdlet på hello enhetskontroll när ansluten via hello enhetens seriekonsol.** Ange:
+1. Sätt enheten i underhållsläge. **Observera att du inte bör använda Windows PowerShell-fjärrkommunikation när du ansluter till en enhet i underhållsläge. I stället kan du köra den här cmdleten på enhetens styrenhet när du är ansluten via enhetens seriekonsol.** Ange:
    
     `Enter-HcsMaintenanceMode`
    
@@ -121,14 +121,14 @@ uppdateringar av tooinstall hello disk inbyggd, följ instruktionerna för hello
         Controller0>Enter-HcsMaintenanceMode
         Checking device state...
    
-        In maintenance mode, your device will not service IOs and will be disconnected from hello Microsoft Azure StorSimple Manager service. Entering maintenance mode will end hello current session and reboot both controllers, which takes a few minutes toocomplete. Are you sure you want tooenter maintenance mode?
+        In maintenance mode, your device will not service IOs and will be disconnected from the Microsoft Azure StorSimple Manager service. Entering maintenance mode will end the current session and reboot both controllers, which takes a few minutes to complete. Are you sure you want to enter maintenance mode?
         [Y] Yes [N] No (Default is "Y"): Y
    
         -----------------------MAINTENANCE MODE------------------------
         Microsoft Azure StorSimple Appliance Model 8600
         Name: Update4-8600-mystorsimple
         Copyright (C) 2014 Microsoft Corporation. All rights reserved.
-        You are connected tooController0 - Passive
+        You are connected to Controller0 - Passive
         ---------------------------------------------------------------
    
         Serial Console Menu
@@ -138,26 +138,26 @@ uppdateringar av tooinstall hello disk inbyggd, följ instruktionerna för hello
         [4] Change language
         Please enter your choice>
    
-    Båda hello domänkontrollanter starta sedan om i underhållsläge.
-2. tooinstall hello disk firmware-uppdatering, typ:
+    Båda styrenheterna och starta sedan om i underhållsläge.
+2. Ange följande för att installera uppdateringen av inbyggd programvara för disk:
    
-    `Start-HcsHotfix -Path <path tooupdate file> -Credential <credentials in domain\username format>`
+    `Start-HcsHotfix -Path <path to update file> -Credential <credentials in domain\username format>`
    
     Ett exempel på utdata visas nedan.
    
         Controller1>Start-HcsHotfix -Path \\10.100.100.100\share\ThirdOrderUpdates\ -Credential contoso\john
         Enter Password:
-        WARNING: In maintenance mode, hotfixes should be installed on each controller sequentially. After hello hotfix is installed on this controller, install it on hello peer controller.
+        WARNING: In maintenance mode, hotfixes should be installed on each controller sequentially. After the hotfix is installed on this controller, install it on the peer controller.
         Confirm
-        This operation starts a hotfix installation and could reboot one or both of hello controllers. By installing new updates you agree to, and accept any additional terms associated with, hello new functionality listed in hello release notes (https://go.microsoft.com/fwLink/?LinkID=613790). Are you sure you want toocontinue?
+        This operation starts a hotfix installation and could reboot one or both of the controllers. By installing new updates you agree to, and accept any additional terms associated with, the new functionality listed in the release notes (https://go.microsoft.com/fwLink/?LinkID=613790). Are you sure you want to continue?
         [Y] Yes [N] No (Default is "Y"): Y
-        WARNING: Installation is currently in progress. This operation can take several minutes toocomplete.
-3. Övervakaren hello installera förlopp med hjälp av `Get-HcsUpdateStatus` kommando. hello uppdateringen är klar när hello `RunInProgress` ändras för`False`.
-4. När hello installationen är klar startar hello styrenhet vilket hello Underhåll läge snabbkorrigeringen har installerats om. Logga in som alternativ 1 med fullständig åtkomst och kontrollera hello disk version på inbyggd programvara. Ange:
+        WARNING: Installation is currently in progress. This operation can take several minutes to complete.
+3. Övervaka installationsförloppet med `Get-HcsUpdateStatus`-kommandot. Uppdateringen är slutförd när `RunInProgress` ändras till `False`.
+4. När installationen är färdig startas styrenheten som snabbkorrigeringen i underhållsläge installerades på om. Logga in som alternativ 1 med fullständig åtkomst och verifiera versionen för den inbyggda programvaran för disken. Ange:
    
    `Get-HcsFirmwareVersion`
    
-   hello förväntas disk firmware versioner är:
+   De förväntade versionerna för den inbyggda programvaran för disken är:
    
    `XMGJ, XGEG, KZ50, F6C2, VR08, N002, 0106`
    
@@ -168,7 +168,7 @@ uppdateringar av tooinstall hello disk inbyggd, följ instruktionerna för hello
        Name: Update4-8600-mystorsimple
        Software Version: 6.3.9600.17820
        Copyright (C) 2014 Microsoft Corporation. All rights reserved.
-       You are connected tooController1
+       You are connected to Controller1
        ---------------------------------------------------------------
    
        Controller1>Get-HcsFirmwareVersion
@@ -244,9 +244,9 @@ uppdateringar av tooinstall hello disk inbyggd, följ instruktionerna för hello
               WD:WD4001FYYG-01SL3:VR08
               WD:WD4001FYYG-01SL3:VR08
    
-    Kör hello `Get-HcsFirmwareVersion` kommandot på hello andra domänkontrollanter tooverify som hello programvaruversionen har uppdaterats. Du kan avsluta hello underhållsläge. toodo så, Skriv följande kommando för varje enhet controller hello:
+    Kör `Get-HcsFirmwareVersion`-kommandot på den andra styrenheten för att verifiera att programvaruversionen har uppdaterats. Du kan sedan avsluta underhållsläget. För att göra det anger du följande kommando för varje enhetsstyrenhet:
    
    `Exit-HcsMaintenanceMode`
 
-5. hello domänkontrollanter startas om när du avsluta underhållsläget. Efter hello disk firmware uppdateringar har tillämpats och hello enheten avslutat underhållsläget, returnerar toohello klassiska Azure-portalen. Observera att hello portal inte kanske visar att du installerat hello Underhåll läge uppdateringarna i 24 timmar.
+5. Styrenheterna startas om när du avslutar underhållsläget. Efter att uppdateringarna för den inbyggda programvaran för disken har tillämpats och enheten har avslutat underhållsläget kan du gå tillbaka till den klassiska Azure-portalen. Observera att portalen kanske inte visar att du har installerat uppdateringarna i underhållsläge på 24 timmar.
 

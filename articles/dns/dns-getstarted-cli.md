@@ -1,6 +1,6 @@
 ---
-title: "aaaGet igång med Azure DNS använder Azure CLI 2.0 | Microsoft Docs"
-description: "Lär dig hur toocreate ett DNS-zonen och posten i Azure DNS. Detta är en stegvis guide toocreate och hantera dina första DNS-zonen och posten med hello Azure CLI 2.0."
+title: "Komma igång med Azure DNS med hjälp av Azure CLI 2.0 | Microsoft Docs"
+description: "Läs om hur du skapar en DNS-zon och en DNS-post i Azure DNS. Detta är en steg-för-steg-guide om hur du skapar och hanterar din första DNS-zon och DNS-post med Azure CLI 2.0."
 services: dns
 documentationcenter: na
 author: jtuliani
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/10/2017
 ms.author: jonatul
-ms.openlocfilehash: 8a894941e9910d5cc35394a1be9dbca9792613f2
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 6958d61b29961f59cb22f62bec55f2d467e7e7cb
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-dns-using-azure-cli-20"></a>Komma igång med Azure DNS med hjälp av Azure CLI 2.0
 
@@ -29,15 +29,15 @@ ms.lasthandoff: 10/06/2017
 > * [Azure CLI 1.0](dns-getstarted-cli-nodejs.md)
 > * [Azure CLI 2.0](dns-getstarted-cli.md)
 
-Den här artikeln vägleder dig genom hello steg toocreate din första DNS-zonen och posten med hello plattformsoberoende Azure CLI 2.0, som är tillgänglig för Windows, Mac och Linux. Du kan också utföra dessa steg med hello Azure-portalen eller Azure PowerShell.
+Den här artikeln visar hur du skapar din första DNS-zon och DNS-post med hjälp av plattformsoberoende Azure CLI 2.0, som är tillgängligt för Windows, Mac och Linux. Du kan också utföra de här stegen med Azure Portal eller Azure PowerShell.
 
-En DNS-zon är används toohost hello DNS-poster för en viss domän. toostart som värd för din domän i Azure DNS, behöver du toocreate en DNS-zon för domännamnet. Varje DNS-post för din domän skapas sedan i den här DNS-zonen. Slutligen toopublish DNS-zonen toohello Internet, behöver du tooconfigure hello namnservrar för hello domän. Dessa steg beskrivs nedan.
+En DNS-zon används som värd åt DNS-posterna för en viss domän. Om du vill låta Azure DNS vara värd för din domän så måste du skapa en DNS-zon för det domännamnet. Varje DNS-post för din domän skapas sedan i den här DNS-zonen. Om du vill publicera din DNS-zon på Internet måste du konfigurera namnservrarna för domänen. Dessa steg beskrivs nedan.
 
-Dessa instruktioner förutsätter att du redan har installerat och inloggad tooAzure CLI 2.0. Mer information finns [hur toomanage DNS zoner med hjälp av Azure CLI 2.0](dns-operations-dnszones-cli.md).
+Anvisningarna förutsätter att du redan har installerat och loggat in på Azure CLI 2.0. Mer information finns i [Hantera DNS-zoner med hjälp av Azure CLI 2.0](dns-operations-dnszones-cli.md).
 
-## <a name="create-hello-resource-group"></a>Skapa hello resursgrupp
+## <a name="create-the-resource-group"></a>Skapa en resursgrupp
 
-Innan du skapar hello DNS-zonen skapas en resursgrupp toocontain hello DNS-zon. hello följande visar hello-kommando.
+Skapa en resursgrupp som ska innehålla DNS-zonen innan du skapar DNS-zonen. Nedan visas kommandot.
 
 ```azurecli
 az group create --name MyResourceGroup --location "West US"
@@ -45,9 +45,9 @@ az group create --name MyResourceGroup --location "West US"
 
 ## <a name="create-a-dns-zone"></a>Skapa en DNS-zon
 
-En DNS-zon skapas med hjälp av hello `az network dns zone create` kommando. toosee hjälp för det här kommandot skriver `az network dns zone create -h`.
+En DNS-zon skapas med hjälp av kommandot `az network dns zone create`. Om du vill se hjälpen för det här kommandot skriver du `az network dns zone create -h`.
 
-hello följande exempel skapas en DNS-zon som kallas *contoso.com* i hello resursgruppen *MyResourceGroup*. Använd hello exempel toocreate en DNS-zon ersätter hello värden för din egen.
+Exemplet nedan skapar en DNS-zon som heter *contoso.com* i resursgruppen med namnet *MyResourceGroup*. Använd exemplet när du vill skapa en DNS-zon, och ersätt värdena med dina egna.
 
 ```azurecli
 az network dns zone create -g MyResourceGroup -n contoso.com
@@ -56,20 +56,20 @@ az network dns zone create -g MyResourceGroup -n contoso.com
 
 ## <a name="create-a-dns-record"></a>Skapa en DNS-post
 
-toocreate DNS-post och använda hello `az network dns record-set [record type] add-record` kommando. Mer information, om exempelvis A-poster, finns i `azure network dns record-set A add-record -h`.
+Skapa en DNS-post genom att använda kommandot `az network dns record-set [record type] add-record`. Mer information, om exempelvis A-poster, finns i `azure network dns record-set A add-record -h`.
 
-hello följande exempel skapas en post med hello relativa namnet ”www” i hello DNS-zonen ”contoso.com” i resursgruppen ”MyResourceGroup”. hello fullständigt kvalificerade namnet på postuppsättningen hello är ”www.contoso.com”. hello-posttypen är ”A”, med IP-adress ”1.2.3.4” och en standard-TTL 3600 sekunder (1 timme) används.
+I följande exempel skapas en post med det relativa namnet "www" i resursgruppen "MyResourceGroup" i DNS-zonen "contoso.com". Postuppsättningens fullständigt kvalificerade namn är ”www.contoso.com”. Postens typ är "A", IP-adressen är "1.2.3.4" och en standard-TTL på 3 600 sekunder (1 timme) används.
 
 ```azurecli
 az network dns record-set a add-record -g MyResourceGroup -z contoso.com -n www -a 1.2.3.4
 ```
 
-För andra posttyper postuppsättningar med fler än en post för den alternativa TTL-värden och toomodify befintliga poster finns [hantera DNS-poster och postuppsättningar med hello Azure CLI 2.0](dns-operations-recordsets-cli.md).
+Information om andra posttyper, postuppsättningar med fler än en post, alternativa TTL-värden och ändring av befintliga poster finns i [Hantera DNS-poster och postuppsättningar med Azure CLI 2.0](dns-operations-recordsets-cli.md).
 
 
 ## <a name="view-records"></a>Visa poster
 
-toolist hello DNS-poster i zonen, Använd:
+Om du vill visa en lista med DNS-poster i din zon använder du:
 
 ```azurecli
 az network dns record-set list -g MyResourceGroup -z contoso.com
@@ -78,9 +78,9 @@ az network dns record-set list -g MyResourceGroup -z contoso.com
 
 ## <a name="update-name-servers"></a>Uppdatera namnservrar
 
-När du är nöjd att din DNS-zonen och poster har ställts in korrekt behöver tooconfigure ditt domännamn toouse hello Azure DNS-namnservrar. Detta gör att andra användare i hello Internet toofind DNS-poster.
+När du är nöjd med konfigurationen av DNS-zonen och DNS-posterna måste du konfigurera ditt domännamn för användning med Azure DNS-namnservrarna. Det gör att andra användare på Internet kan hitta dina DNS-poster.
 
-hello namnservrar för zonen ges av hello `az network dns zone show` kommando. servernamn toosee hello namn, Använd JSON-utdata, som visas i följande exempel hello.
+Namnservrarna för din zon anges av `az network dns zone show`-kommandot. Använd JSON-utdata (se följande exempel) om du vill se namnservernamnen.
 
 ```azurecli
 az network dns zone show -g MyResourceGroup -n contoso.com -o json
@@ -104,11 +104,11 @@ az network dns zone show -g MyResourceGroup -n contoso.com -o json
 }
 ```
 
-Dessa namnservrar ska konfigureras med hello domännamnsregistratorn (där du har köpt hello domännamn). Din registrator kommer att erbjuda hello alternativet tooset in hello namnservrar för hello domän. Mer information finns i [Delegera din domän tooAzure DNS](dns-domain-delegation.md).
+Dessa namnservrar ska konfigureras med domännamnsregistratorn (där du köpte domännamnet). Registratorn erbjuder möjligheten att konfigurera namnservrar för domänen. Mer information finns i [Delegera en domän till Azure DNS](dns-domain-delegation.md).
 
 ## <a name="delete-all-resources"></a>Ta bort alla resurser
  
-toodelete alla resurser skapas i den här artikeln tar hello följande steg:
+Så här tar du bort alla resurser som skapats i den här artikeln:
 
 ```azurecli
 az group delete --name MyResourceGroup
@@ -116,8 +116,8 @@ az group delete --name MyResourceGroup
 
 ## <a name="next-steps"></a>Nästa steg
 
-toolearn mer om Azure DNS finns [översikt över Azure DNS](dns-overview.md).
+Läs mer om Azure DNS i [Översikt över Azure DNS](dns-overview.md).
 
-toolearn mer information om hur du hanterar DNS-zoner i Azure DNS finns [hantera DNS-zoner i Azure DNS använder Azure CLI 2.0](dns-operations-dnszones-cli.md).
+Mer information om hur du hanterar DNS-zoner i Azure DNS finns i [Hantera DNS-zoner i Azure DNS med Azure CLI 2.0](dns-operations-dnszones-cli.md).
 
-toolearn mer information om hur du hanterar DNS-poster i Azure DNS finns [hantera DNS-poster och registrera anger i Azure DNS använder Azure CLI 2.0](dns-operations-recordsets-cli.md).
+Mer information om hur du hanterar DNS-poster i Azure DNS finns i [Hantera DNS-poster och postuppsättningar i Azure DNS med Azure CLI 2.0](dns-operations-recordsets-cli.md).

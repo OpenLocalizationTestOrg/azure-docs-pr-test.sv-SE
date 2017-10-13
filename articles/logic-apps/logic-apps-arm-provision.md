@@ -1,6 +1,6 @@
 ---
-title: aaaCreate en logikapp med en mall i Azure | Microsoft Docs
-description: "Använd en logikapp för toodeploy en Azure Resource Manager-mall för att definiera arbetsflöden."
+title: Skapa en logikapp med en mall i Azure | Microsoft Docs
+description: "Använd en mall för Azure Resource Manager för att distribuera en logikapp för att definiera arbetsflöden."
 services: logic-apps
 documentationcenter: 
 author: MandiOhlinger
@@ -14,29 +14,29 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2016
 ms.author: LADocs; mandia
-ms.openlocfilehash: efbacb534fc7f11e9b593aae4383480ce3a1752f
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 161adeacd6da2b15225c8a4ddae171e19e539967
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="create-a-logic-app-using-a-template"></a>Skapa en Logic App med hjälp av en mall
-Mallar tillhandahåller ett snabbt sätt toouse olika kopplingar inom en logikapp. Logikappar innehåller Azure Resource Manager-mallar för toocreate en logikapp som kan använda toodefine business arbetsflöden. Du kan definiera vilka resurser har distribuerats och hur toodefine parametrar när du distribuerar din logikapp. Du kan använda den här mallen för egna affärsscenarier eller anpassa den toomeet dina krav.
+Mallar tillhandahåller ett snabbt sätt att använda olika kopplingar inom en logikapp. Logikappar innehåller Azure Resource Manager-mallar att skapa en logikapp som kan användas för att definiera arbetsflöden för företag. Du kan definiera vilka resurser har distribuerats och hur du definierar parametrar när du distribuerar din logikapp. Du kan använda mallen för egna affärsscenarier eller anpassa den så att den uppfyller dina krav.
 
-Mer information om hello logik appegenskaper finns [logik App arbetsflödet Management API](https://msdn.microsoft.com/library/azure/mt643788.aspx). 
+Mer information om appegenskaper logik finns [logik App arbetsflödet Management API](https://msdn.microsoft.com/library/azure/mt643788.aspx). 
 
-Exempel på hello definition själva finns [definitioner för författare Logic Apps](logic-apps-author-definitions.md). 
+Exempel på definition själva finns [definitioner för författare Logic Apps](logic-apps-author-definitions.md). 
 
 Mer information om hur du skapar mallar finns [redigera Azure Resource Manager-mallar](../azure-resource-manager/resource-group-authoring-templates.md).
 
-Hello fullständig mall, se [logiska appmallen](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json).
+Den fullständiga mallen finns [logiska appmallen](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json).
 
 ## <a name="what-you-deploy"></a>Du distribuerar
 Med den här mallen kan du distribuera en logikapp.
 
-toorun hello distributionen väljer automatiskt hello efter knappen:  
+Klicka på följande om du vill köra distributionen automatiskt:  
 
-[![Distribuera tooAzure](media/logic-apps-arm-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-logic-app-create%2Fazuredeploy.json)
+[![Distribuera till Azure](media/logic-apps-arm-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-logic-app-create%2Fazuredeploy.json)
 
 ## <a name="parameters"></a>Parametrar
 [!INCLUDE [app-service-logic-deploy-parameters](../../includes/app-service-logic-deploy-parameters.md)]
@@ -47,13 +47,13 @@ toorun hello distributionen väljer automatiskt hello efter knappen:
         "defaultValue": "http://azure.microsoft.com/en-us/status/feed/"
       }
 
-## <a name="resources-toodeploy"></a>Resurser toodeploy
+## <a name="resources-to-deploy"></a>Resurser som ska distribueras
 ### <a name="logic-app"></a>Logikapp
-Skapar hello logikapp.
+Skapar logikappen.
 
-hello mallar använder ett parametervärde för hello logik appens namn. Anger hello platsen för hello logik app toohello samma plats som hello resursgrupp. 
+Mallarna använder ett parametervärde för appnamnet logik. Den anger platsen för logikappen till samma plats som resursgruppen. 
 
-Denna viss definition körs en gång i timmen och pingar hello plats som anges i hello **testUri** parameter. 
+Denna viss definition körs en gång i timmen och pingar den plats som anges i den **testUri** parameter. 
 
     {
       "type": "Microsoft.Logic/workflows",
@@ -99,7 +99,7 @@ Denna viss definition körs en gång i timmen och pingar hello plats som anges i
     }
 
 
-## <a name="commands-toorun-deployment"></a>Kommandon toorun distribution
+## <a name="commands-to-run-deployment"></a>Kommandon för att köra distributionen
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
 ### <a name="powershell"></a>PowerShell

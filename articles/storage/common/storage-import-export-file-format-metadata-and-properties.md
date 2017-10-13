@@ -1,6 +1,6 @@
 ---
-title: aaaAzure Import/Export metadata och egenskaper filformatet | Microsoft Docs
-description: "Lär dig hur toospecify metadata och egenskaper för en eller flera BLOB-objekt som är en del av en importera eller exportera jobb."
+title: "Azure Import/Export metadata och egenskaper för nytt filformat | Microsoft Docs"
+description: "Lär dig hur du anger metadata och egenskaperna för en eller flera blobbar som är en del av en importera eller exportera jobb."
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.openlocfilehash: bb13c1f1a27baea77298cb224970cd521d02d8c0
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 3f728ad94cdcbd32092b677f11a737ae91376720
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="azure-importexport-service-metadata-and-properties-file-format"></a>Azure Import/Export service metadata och egenskaper filformat
-Du kan ange egenskaper för en eller flera blobbar och metadata som en del av ett importjobb eller ett exportjobb. Egenskaper för blob som skapas som en del av ett importjobb eller tooset metadata kan du ange en egenskaper eller metadata fil på hello hårddisk som innehåller hello data toobe importeras. För ett exportjobb skrivs metadata och egenskaper tooa egenskaper eller metadata fil som ingår på hello hårddisken returnerade tooyou.  
+Du kan ange egenskaper för en eller flera blobbar och metadata som en del av ett importjobb eller ett exportjobb. Om du vill ange egenskaper för blob som skapas som en del av ett importjobb eller metadata, kan du ange en egenskaper eller metadata fil på hårddisken som innehåller data som ska importeras. För ett exportjobb skrivs metadata och egenskaper till en fil för metadata eller egenskaper som ingår på hårddisken till dig.  
   
 ## <a name="metadata-file-format"></a>Filformat för metadata  
-hello-format för en metadatafil är följande:  
+Formatet för en metadatafil är följande:  
   
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>  
@@ -37,11 +37,11 @@ hello-format för en metadatafil är följande:
   
 |XML-Element|Typ|Beskrivning|  
 |-----------------|----------|-----------------|  
-|`Metadata`|Rotelementet|hello rotelementet för hello metadatafil.|  
-|`metadata-name`|Sträng|Valfri. hello XML-elementet anger hello namnet på hello metadata för hello blob och dess värde anger hello hello metadata inställningens värde.|  
+|`Metadata`|Rotelementet|Rotelementet i metadatafilen.|  
+|`metadata-name`|Sträng|Valfri. XML-elementet anger namnet på metadata för blob och dess värde anger värdet för inställningen metadata.|  
   
 ## <a name="properties-file-format"></a>Filformatet för egenskaper  
-hello filformatet egenskaper är följande:  
+Formatet för en egenskapsfil är följande:  
   
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>  
@@ -59,15 +59,15 @@ hello filformatet egenskaper är följande:
   
 |XML-Element|Typ|Beskrivning|  
 |-----------------|----------|-----------------|  
-|`Properties`|Rotelementet|hello hello egenskaper filens rotelement.|  
-|`Last-Modified`|Sträng|Valfri. hello modifierades senast för hello-blob. För exportjobb.|  
-|`Etag`|Sträng|Valfri. Hej blob ETag-värde. För exportjobb.|  
-|`Content-Length`|Sträng|Valfri. hello storlek hello blob i byte. För exportjobb.|  
-|`Content-Type`|Sträng|Valfri. hello innehållstypen för hello-blob.|  
-|`Content-MD5`|Sträng|Valfri. Hej blob MD5-hash.|  
-|`Content-Encoding`|Sträng|Valfri. Hej blob innehåll kodning.|  
-|`Content-Language`|Sträng|Valfri. Hej blob innehåll språk.|  
-|`Cache-Control`|Sträng|Valfri. hello cache kontrollen sträng för hello-blob.|  
+|`Properties`|Rotelementet|Rotelementet i filen egenskaper.|  
+|`Last-Modified`|Sträng|Valfri. Den senast ändrade tiden för blob. För exportjobb.|  
+|`Etag`|Sträng|Valfri. Blobens ETag-värde. För exportjobb.|  
+|`Content-Length`|Sträng|Valfri. Storleken på blobben i byte. För exportjobb.|  
+|`Content-Type`|Sträng|Valfri. Innehållstypen för blob.|  
+|`Content-MD5`|Sträng|Valfri. Blobens MD5-hash.|  
+|`Content-Encoding`|Sträng|Valfri. Den blob-innehåll kodning.|  
+|`Content-Language`|Sträng|Valfri. Blobens innehåll språk.|  
+|`Cache-Control`|Sträng|Valfri. Kontroll av cache sträng för blob.|  
 
 ## <a name="next-steps"></a>Nästa steg
 

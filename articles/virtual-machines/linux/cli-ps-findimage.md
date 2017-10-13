@@ -1,6 +1,6 @@
 ---
-title: aaaSelect Linux VM bilder med hello Azure CLI | Microsoft Docs
-description: "Lär dig hur toouse hello Azure CLI toodetermine hello utgivare, erbjudande, SKU och version för Marketplace VM-avbildningar."
+title: "Välj Linux VM-avbildningar med Azure CLI | Microsoft Docs"
+description: "Lär dig hur du använder Azure CLI för att fastställa utgivare, erbjudande, SKU och version för Marketplace VM-avbildningar."
 services: virtual-machines-linux
 documentationcenter: 
 author: dlepow
@@ -16,41 +16,41 @@ ms.workload: infrastructure
 ms.date: 08/24/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0b115b8654bc156b5bfadba53a6b002a105acb68
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: e0c27a7ee9e9a7ab1a3b004e070fa556b56a36a5
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="how-toofind-linux-vm-images-in-hello-azure-marketplace-with-hello-azure-cli"></a>Hur toofind Linux VM bilder i hello Azure Marketplace med hello Azure CLI
-Det här avsnittet beskrivs hur toouse hello Azure CLI 2.0 toofind VM-avbildningar i hello Azure Marketplace. Använd den här informationen toospecify Marketplace-avbildning när du skapar en Linux VM.
+# <a name="how-to-find-linux-vm-images-in-the-azure-marketplace-with-the-azure-cli"></a>Hur du hittar Linux VM avbildningar i Azure Marketplace med Azure CLI
+Det här avsnittet beskriver hur du använder Azure CLI 2.0 för att hitta VM-avbildningar i Azure Marketplace. Använd informationen för att ange en Marketplace-avbildning när du skapar en Linux VM.
 
-Kontrollera att du har installerat hello senaste [Azure CLI 2.0](/cli/azure/install-az-cli2) och loggas i tooan Azure-konto (`az login`).
+Kontrollera att du har installerat senast [Azure CLI 2.0](/cli/azure/install-az-cli2) och är inloggad på ett Azure-konto (`az login`).
 
 ## <a name="terminology"></a>Terminologi
 
-Marketplace-bilder identifieras i hello CLI och andra Azure-verktyg enligt tooa hierarki:
+Marketplace-bilder identifieras i CLI och andra Azure-verktyg enligt en hierarki:
 
-* **Publisher** -hello organisationen som skapade hello avbildningen. Exempel: kanoniska
+* **Publisher** -organisationen som skapade avbildningen. Exempel: kanoniska
 * **Erbjuder** – en grupp av relaterade bilder som har skapats av en utgivare. Exempel: Ubuntu Server
 * **SKU** - en instans av ett erbjudande, till exempel en högre version av en distributionsplats. Exempel: 16.04-LTS
-* **Version** -hello versionsnumret för en bild SKU. När du anger hello bild, kan du ersätta hello versionsnummer med ”senaste”, som väljer hello senaste versionen av hello-distribution.
+* **Version** -versionsnumret för en bild SKU. När du anger avbildningen, kan du ersätta versionsnumret med ”senaste”, som väljs den senaste versionen av distributionen.
 
-toospecify Marketplace-avbildning du vanligtvis använda hello avbildning *URN*. hello URN kombinerar dessa värden, avgränsade med kolon (:) hello: *Publisher*:*erbjuder*:*Sku*:*Version*. 
+Om du vill ange en Marketplace-avbildning, använder du vanligtvis bilden *URN*. URN kombinerar dessa värden, avgränsade med kolon (:): *Publisher*:*erbjuder*:*Sku*:*Version*. 
 
 
 ## <a name="list-popular-images"></a>Lista över populära bilder
 
-Kör hello [az vm bildlista](/cli/azure/vm/image#list) kommandot, utan hello `--all` alternativet, toosee en lista över populära VM bilder i hello Azure Marketplace. Till exempel köra följande kommando toodisplay hello en cachelagrad lista över populära bilder i tabellformat:
+Kör den [az vm bildlista](/cli/azure/vm/image#list) kommandot, utan de `--all` alternativet om du vill se en lista över populära VM-avbildningar i Azure Marketplace. Till exempel köra följande kommando för att visa en cachelagrad lista över populära bilder i tabellformat:
 
 ```azurecli
 az vm image list --output table
 ```
 
-hello utdata innehåller hello URN (hello värdet i hello *Urn* kolumn), som du använder toospecify hello bild. När du skapar en virtuell dator med någon av dessa populära Marketplace-avbildningar, kan du alternativt ange hello URN alias som *UbuntuLTS*.
+Utdata innehåller URN (värdet i den *Urn* kolumn), där du anger du vilken avbildning. När du skapar en virtuell dator med någon av dessa populära Marketplace-avbildningar, kan du alternativt ange URN-alias som *UbuntuLTS*.
 
 ```
-You are viewing an offline list of images, use --all tooretrieve an up-to-date list
+You are viewing an offline list of images, use --all to retrieve an up-to-date list
 Offer          Publisher               Sku                 Urn                                                             UrnAlias             Version
 -------------  ----------------------  ------------------  --------------------------------------------------------------  -------------------  ---------
 CentOS         OpenLogic               7.3                 OpenLogic:CentOS:7.3:latest                                     CentOS               latest
@@ -65,9 +65,9 @@ UbuntuServer   Canonical               16.04-LTS           Canonical:UbuntuServe
 
 ## <a name="find-specific-images"></a>Söka efter specifika avbildningar
 
-toofind en specifik VM-avbildning i hello Marketplace, använda hello `az vm image list` med hello `--all` alternativet. Den här versionen av hello kommandot tar några tid toocomplete och kan returnera långa utdata så att du vanligtvis filtrera hello listan efter `--publisher` eller en annan parameter. 
+Använd för att hitta en specifik VM-avbildning i Marketplace den `az vm image list` kommandot med de `--all` alternativet. Den här versionen av kommandot tar en stund att slutföra och kan returnera långa utdata så att du vanligtvis filtrera listan efter `--publisher` eller en annan parameter. 
 
-Exempelvis hello följande kommando visar alla Debian erbjudanden (Kom ihåg att utan hello `--all` växla, söks endast hello lokalt cacheminne gemensamma nodbilder):
+Till exempel följande kommando visar alla Debian erbjudanden (Kom ihåg att utan den `--all` växla, söks endast den lokala cachen gemensamma nodbilder):
 
 ```azurecli
 az vm image list --offer Debian --all --output table 
@@ -102,11 +102,11 @@ Debian   credativ     8                  credativ:Debian:8:8.0.201708040        
 ...
 ```
 
-Liknande filter med hello `--location`, `--publisher`, och `--sku` alternativ. Du kan även utföra delmatchningar på ett filter, till exempel söker efter `--offer Deb` toofind alla Debian bilder.
+Liknande filter med det `--location`, `--publisher`, och `--sku` alternativ. Du kan även utföra delmatchningar på ett filter, till exempel söker efter `--offer Deb` att hitta alla Debian bilder.
 
-Om du inte anger en viss plats med hello `--location` alternativ, hello värden för `westus` returneras som standard. (Ange en annan standardsökväg genom att köra `az configure --defaults location=<location>`.)
+Om du inte anger en viss plats med den `--location` alternativ, värdena för `westus` returneras som standard. (Ange en annan standardsökväg genom att köra `az configure --defaults location=<location>`.)
 
-Till exempel hello följande kommando visar alla Debian 8 SKU: er i `westeurope`:
+Till exempel följande kommando visar alla Debian 8 SKU: er i `westeurope`:
 
 ```azurecli
 az vm image list --location westeurope --offer Deb --publisher credativ --sku 8 --all --output table
@@ -133,15 +133,15 @@ Debian   credativ     8                  credativ:Debian:8:8.0.201706210        
 ...
 ```
 
-## <a name="navigate-hello-images"></a>Navigera hello bilder 
-Ett annat sätt toofind en avbildning på en plats är toorun hello [az vm avbildningen lista-utgivare](/cli/azure/vm/image#list-publishers), [az vm avbildningen lista-erbjudanden](/cli/azure/vm/image#list-offers), och [az vm avbildningen lista-SKU: er](/cli/azure/vm/image#list-skus) kommandon i sekvens. Med dessa kommandon bestämma dessa värden:
+## <a name="navigate-the-images"></a>Navigera avbildningar 
+Ett annat sätt att hitta en bild på en plats är att köra den [az vm avbildningen lista-utgivare](/cli/azure/vm/image#list-publishers), [az vm avbildningen lista-erbjudanden](/cli/azure/vm/image#list-offers), och [az vm avbildningen lista-SKU: er](/cli/azure/vm/image#list-skus) kommandon i sekvens. Med dessa kommandon bestämma dessa värden:
 
-1. Lista hello avbildningen utgivare.
+1. Visa en lista över avbildningsutgivare.
 2. Visa en lista över erbjudanden från en viss utgivare.
 3. Visa en lista över SKU:er för ett visst erbjudande.
 
 
-Till exempel hello följande kommando visar hello avbildningen utgivare i hello västra USA plats:
+Till exempel visar följande kommando bilden utgivare i USA, västra plats:
 
 ```azurecli
 az vm image list-publishers --location westus --output table
@@ -166,7 +166,7 @@ westus      activeeon
 westus      adatao
 ...
 ```
-Använd den här informationen toofind erbjuder från en viss utgivare. Till exempel om Canonical är en avbildningens utgivare i hello västra USA plats kan hitta sina erbjudanden genom att köra `azure vm image list-offers`. Skicka hello plats och hello utgivare som i följande exempel hello:
+Använd den här informationen kan hitta från en viss utgivare. Till exempel om Canonical är en avbildningens utgivare i USA, västra platsen kan hitta sina erbjudanden genom att köra `azure vm image list-offers`. Ange platsen och utgivare som i följande exempel:
 
 ```azurecli
 az vm image list-offers --location westus --publisher Canonical --output table
@@ -185,7 +185,7 @@ westus      Ubuntu_Core
 westus      Ubuntu_Snappy_Core
 westus      Ubuntu_Snappy_Core_Docker
 ```
-Du ser att Canonical i hello västra USA region, publicerar hello **UbuntuServer** erbjudande på Azure. Men vad SKU: er? tooget dessa värden kör `azure vm image list-skus` och ange hello plats och utgivare som du har identifierat:
+Du ser att i regionen USA, västra Canonical publicerar den **UbuntuServer** erbjudande på Azure. Men vad finns det för SKU:er? För att få dessa värden, köra `azure vm image list-skus` och ange den plats och utgivare som du har identifierat:
 
 ```azurecli
 az vm image list-skus --location westus --publisher Canonical --offer UbuntuServer --output table
@@ -219,7 +219,7 @@ westus      17.04-DAILY
 westus      17.10-DAILY
 ```
 
-Använd slutligen hello `az vm image list` kommandot toofind en viss version av hello SKU som du vill **16.04 LTS**:
+Använd slutligen den `az vm image list` kommando som söker efter en viss version av SKU: N som du vill **16.04 LTS**:
 
 ```azurecli
 az vm image list --location westus --publisher Canonical --offer UbuntuServer --sku 16.04-LTS --all --output table
@@ -257,4 +257,4 @@ UbuntuServer  Canonical    16.04-LTS  Canonical:UbuntuServer:16.04-LTS:16.04.201
 UbuntuServer  Canonical    16.04-LTS  Canonical:UbuntuServer:16.04-LTS:16.04.201708151  16.04.201708151
 ```
 ## <a name="next-steps"></a>Nästa steg
-Nu kan du välja exakt hello bild vill du ha toouse genom att anteckna hello URN värde. Skicka det här värdet med hello `--image` parameter när du skapar en virtuell dator med hello [az vm skapa](/cli/azure/vm#create) kommando. Kom ihåg att du kan ersätta hello versionsnumret i hello URN med ”senaste”. Den här versionen är alltid hello senaste versionen av hello-distribution. toocreate en virtuell dator snabbt med hjälp av hello URN information, se [skapa och hantera virtuella Linux-datorer med hello Azure CLI](tutorial-manage-vm.md).
+Du kan nu välja exakt den avbildning som du vill använda genom att anteckna värdet för URN. Skicka detta värde med den `--image` parameter när du skapar en virtuell dator med den [az vm skapa](/cli/azure/vm#create) kommando. Kom ihåg att du kan ersätta versionsnumret i URN med ”senaste”. Den här versionen är alltid den senaste versionen av distributionen. För att snabbt skapa en virtuell dator med hjälp av URN information, se [skapa och hantera virtuella Linux-datorer med Azure CLI](tutorial-manage-vm.md).

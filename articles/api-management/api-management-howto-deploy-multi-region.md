@@ -1,6 +1,6 @@
 ---
-title: aaaDeploy Azure API Management services toomultiple Azure regioner | Microsoft Docs
-description: "Lär dig hur toodeploy ett Azure API Management-tjänsten instans toomultiple Azure regioner."
+title: "Distribuera Azure API Management-tjänster i Azure-regioner | Microsoft Docs"
+description: "Lär dig hur du distribuerar en Azure API Management service-instans till Azure-regioner."
 services: api-management
 documentationcenter: 
 author: steved0x
@@ -14,54 +14,54 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
-ms.openlocfilehash: 04a3e762261237d73a769320a21363f99f1d20cb
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 1c39fee739c2f5fd4b928e1e76e1ea57f072b5f8
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="how-toodeploy-an-azure-api-management-service-instance-toomultiple-azure-regions"></a>Hur toodeploy ett Azure API Management-tjänsten instans toomultiple Azure regioner
-API-hantering stöder distribution av flera regioner där API utgivare toodistribute ett enda API-tjänsten till alla önskade Azure-regioner. Detta minskar begäran latens uppfattas av geografiskt distribuerat API-konsumenter och förbättrar även tjänsttillgängligheten om en region tas offline. 
+# <a name="how-to-deploy-an-azure-api-management-service-instance-to-multiple-azure-regions"></a>Distribuera ett Azure API Management service-instans till Azure-regioner
+API-hantering stöder distribution av flera regioner där API utgivare att distribuera en enda API-tjänsten till alla önskade Azure-regioner. Detta minskar begäran latens uppfattas av geografiskt distribuerat API-konsumenter och förbättrar även tjänsttillgängligheten om en region tas offline. 
 
-När en API Management-tjänst skapas från början, innehåller endast en [enhet] [ unit] och finns i en enda Azure-region, som är tilldelad som hello primär Region. Ytterligare regioner kan enkelt lagts till via hello Azure-portalen. En API Management gateway-servern är distribuerad tooeach region och trafik call blir routade toohello närmaste gateway. Om en region frånkopplas är hello trafik automatiskt igen dirigerad toohello nästa närmaste gateway. 
+När en API Management-tjänst skapas från början, innehåller endast en [enhet] [ unit] och finns i en enda Azure-region, som anges som den primära regionen. Ytterligare regioner kan enkelt lägga via Azure Portal. En API Management gateway-servern har distribuerats till varje region och anrop trafik vidarebefordras till närmaste gateway. Om en region försätts offline, är trafiken automatiskt igen dirigerad till nästa närmaste gateway. 
 
 > [!IMPORTANT]
-> Distribution av flera regioner är endast tillgängligt i hello  **[Premium] [ Premium]**  nivå.
+> Distribution av flera regioner är endast tillgängligt i den  **[Premium] [ Premium]**  nivå.
 > 
 > 
 
-## <a name="add-region"></a>Distribuera en API Management service-instans tooa nya region
+## <a name="add-region"></a>Distribuera en API Management service-instans till en ny region
 > [!NOTE]
-> Om du inte har skapat en instans för API Management-tjänsten finns [skapa en instans för API Management-tjänsten] [ Create an API Management service instance] i hello [Kom igång med Azure API Management] [ Get started with Azure API Management] kursen.
+> Om du inte har skapat en API Management-tjänstinstans än läser du [Skapa en API Management-tjänstinstans][Create an API Management service instance] i självstudiekursen [Komma igång med Azure API Management][Get started with Azure API Management].
 > 
 > 
 
-Navigera i hello Azure Portal toohello **skala och prissättning** för din API Management service-instans. 
+I Azure Portal går du till den **skala och prissättning** för din API Management service-instans. 
 
 ![Skala][api-management-scale-service]
 
-toodeploy tooa ny region, klicka på **+ Lägg till region** hello-verktygsfältet.
+Om du vill distribuera till en ny region, klickar du på **+ Lägg till region** i verktygsfältet.
 
 ![Lägg till region][api-management-add-region]
 
-Välj hello plats från hello listrutan och ange hello antal enheter för med hello skjutreglaget.
+Välja platsen i den nedrullningsbara listrutan och ange antalet enheter för med skjutreglaget.
 
 ![Ange enheter][api-management-select-location-units]
 
-Klicka på **Lägg till** tooplace ditt val i tabellen för hello-platser. 
+Klicka på **Lägg till** att placera ditt val i tabellen platser. 
 
-Upprepa den här processen tills du har alla platser som har konfigurerats och klicka på **spara** från hello verktygsfältet toostart hello distributionsprocessen.
+Upprepa den här processen tills du har alla platser som har konfigurerats och klicka på **spara** från verktygsfältet för att starta distributionsprocessen.
 
 ## <a name="remove-region"></a>Ta bort en instans för API Management-tjänsten från en plats
-Navigera i hello Azure Portal toohello **skala och prissättning** för din API Management service-instans. 
+I Azure Portal går du till den **skala och prissättning** för din API Management service-instans. 
 
 ![Skala][api-management-scale-service]
 
-Hello-plats som öppnar tooremove hello snabbmenyn med hello **...**  längst hello högra ände hello tabell. Välj hello **ta bort** alternativet.
+Öppna menyn kontext med för den plats som du vill ta bort den **...**  längst till höger i tabellen. Välj den **ta bort** alternativet.
 
 ![Ta bort region][api-management-remove-region]
 
-Bekräfta borttagning av hello och klicka på **spara** tooapply hello ändringar.
+Bekräfta borttagningen och klicka på **spara** att tillämpa ändringarna.
 
 [api-management-management-console]: ./media/api-management-howto-deploy-multi-region/api-management-management-console.png
 
@@ -73,7 +73,7 @@ Bekräfta borttagning av hello och klicka på **spara** tooapply hello ändringa
 [Create an API Management service instance]: api-management-get-started.md#create-service-instance
 [Get started with Azure API Management]: api-management-get-started.md
 
-[Deploy an API Management service instance tooa new region]: #add-region
+[Deploy an API Management service instance to a new region]: #add-region
 [Delete an API Management service instance from a region]: #remove-region
 
 [unit]: http://azure.microsoft.com/pricing/details/api-management/

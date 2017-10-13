@@ -1,6 +1,6 @@
 ---
-title: aaaAdd cachelagring tooimprove prestanda i Azure API Management | Microsoft Docs
-description: "Lär dig hur tooimprove hello svarstid, bandbreddsanvändning och webbtjänsten ladda för hantering av API-anrop."
+title: "Förbättra prestanda i Azure API Management med cachelagring | Microsoft Docs"
+description: "Lär dig hur du förbättrar svarstider, bandbreddsanvändning och webbtjänstbelastning i API Management-tjänstanrop."
 services: api-management
 documentationcenter: 
 author: steved0x
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: 056ab7cf788218327e30bd5c028b76e3b1977fb0
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 59c595f0d5ce849f44c46fdb6cab0b44d35fffa0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="add-caching-tooimprove-performance-in-azure-api-management"></a>Lägg till cachelagring tooimprove prestanda i Azure API Management
+# <a name="add-caching-to-improve-performance-in-azure-api-management"></a>Förbättra prestanda i Azure API Management med cachelagring
 Du kan konfigurera åtgärder i API Management för cachelagring av svar. Cachelagring av svar kan avsevärt minska API:ets svarstider, bandbreddsanvändning och webbtjänstbelastning när data inte ändras så ofta.
 
-Den här guiden visar hur tooadd svar cachelagring för din API och konfigurera principer för hello exempel Echo-API: et. Sedan kan du anropa hello åtgärden från hello developer portal tooverify cachelagring i åtgärden.
+Den här guiden beskriver hur du lägger till cachelagring av svar till ditt API och hur du konfigurerar principer för Echo API-exempelåtgärderna. När du är klar kan du bekräfta att cachelagringen fungerar genom att anropa åtgärden från utvecklarportalen.
 
 > [!NOTE]
 > Mer information om hur du cachelagrar objekt med nycklar med hjälp av principuttryck finns i [Anpassad cachelagring i Azure API Management](api-management-sample-cache-by-key.md).
@@ -31,54 +31,54 @@ Den här guiden visar hur tooadd svar cachelagring för din API och konfigurera 
 > 
 
 ## <a name="prerequisites"></a>Krav
-Innan följande hello stegen i den här guiden, måste du ha en API Management service-instans med API och en produkt som har konfigurerats. Om du inte har skapat en instans för API Management-tjänsten finns [skapa en instans för API Management-tjänsten] [ Create an API Management service instance] i hello [Kom igång med Azure API Management] [ Get started with Azure API Management] kursen.
+Innan du följer stegen i den här guiden måste du ha en API Management-tjänstinstans med ett API och en konfigurerad produkt. Om du inte har skapat en API Management-tjänstinstans än läser du [Skapa en API Management-tjänstinstans][Create an API Management service instance] i självstudiekursen [Komma igång med Azure API Management][Get started with Azure API Management].
 
 ## <a name="configure-caching"> </a>Konfigurera en åtgärd för cachelagring
-I det här steget ska du granska hello cacheinställningar av hello **hämta resurs (Zeroed)** åtgärden hello exemplet Echo-API.
+I det här steget ska du granska cachelagringsinställningarna för åtgärden **GET Resource (cached)** i Echo API-exemplet.
 
 > [!NOTE]
-> Varje instans för API Management-tjänsten kommer förkonfigurerade med en Echo-API som kan använda tooexperiment med och lär dig mer om API-hantering. Mer information finns i [Komma igång med Azure API Management][Get started with Azure API Management].
+> Varje API Management-tjänstinstans är förkonfigurerad med ett Echo-API som du kan använda för att experimentera och lära dig mer om API Management. Mer information finns i [Komma igång med Azure API Management][Get started with Azure API Management].
 > 
 > 
 
-tooget har startats klickar du på **Publisher portal** i hello Azure-portalen för API Management-tjänsten. Då kommer du toohello API Management publisher portal.
+Börja genom att klicka på **Publisher-portal** på Azure Portal för API Management-tjänsten. När du gör det kommer du till utgivarportalen för API Management.
 
 ![Utgivarportalen][api-management-management-console]
 
-Klicka på **API: er** från hello **API Management** menyn på hello vänster och klicka sedan på **Echo API**.
+Klicka på **API:er** på **API Management**-menyn till vänster och klicka sedan på **Echo API**.
 
 ![Echo API][api-management-echo-api]
 
-Klicka på hello **Operations** fliken och klicka sedan på hello **hämta resurs (Zeroed)** åtgärden från hello **Operations** lista.
+Klicka på fliken **Åtgärder** och klicka sedan på **GET resource (cached)** i listan **Åtgärder**.
 
 ![Echo API-åtgärder][api-management-echo-api-operations]
 
-Klicka på hello **cachelagring** fliken tooview hello cache-inställningar för den här åtgärden.
+Visa åtgärdens cachelagringsinställningar genom att klicka på fliken **Cachelagring**.
 
 ![Fliken Cachelagring][api-management-caching-tab]
 
-tooenable cachelagring för en åtgärd, Välj hello **aktivera** kryssrutan. I det här exemplet är cachelagring aktiverat.
+Om du vill aktivera cachelagring för en åtgärd markerar du kryssrutan **Aktivera**. I det här exemplet är cachelagring aktiverat.
 
-Anpassade varje åtgärden svar, baserat på hello värdena i hello **variera inom strängen frågeparametrar** och **variera av huvuden** fält. Om du vill toocache som flera svar baserat på frågan string-parametrar eller huvuden kan konfigurera du dem i dessa två fält.
+Varje åtgärdssvar registreras, baserat på värdena i fälten **Variera med frågesträngparametrar** och **Variera med sidhuvuden**. Om du vill cachelagra flera svar baserat på frågesträngsparametrar eller sidhuvuden kan du konfigurera dem i dessa två fält.
 
-**Varaktighet** anger hello giltighetstid tidsintervall hello cachelagrat svar. I det här exemplet hello är **3600** sekunder, vilket är likvärdiga tooone timme.
+**Varaktighet** anger giltighetsintervallet för de cachelagrade svaren. I det här exemplet är intervallet **3600** sekunder, vilket motsvarar en timme.
 
-Med hello cachelagring konfigurationen i det här exemplet hello första begäran toohello **hämta resurs (Zeroed)** åtgärd returnerar ett svar från hello backend-tjänsten. Svaret ska cachelagras Nyckelbaserade av hello angetts sidhuvuden och fråga strängparametrar. Efterföljande anrop toohello åtgärden med matchande parametrar, har hello cachelagrade svar som returneras till hello cache varaktighet intervall har gått ut.
+Med cachelagringskonfigurationen i det här exemplet returnerar den första begäran till **GET Resource (cached)** ett svar från backend-tjänsten. Svaret cachelagras och registreras av de angivna sidhuvudena och frågesträngsparametrarna. För efterföljande anrop till åtgärden, med matchande parametrar, returneras det cachelagrade svaret till cachlagringsintervallets slut.
 
-## <a name="caching-policies"></a>Granska hello cachelagring principer
-I det här steget kan du granska hello cacheinställningar för hello **hämta resurs (Zeroed)** åtgärden hello exemplet Echo-API.
+## <a name="caching-policies"> </a>Granska cachelagringsprinciperna
+I det här steget ska du granska cachelagringsinställningarna för åtgärden **GET Resource (cached)** i Echo API-exemplet.
 
-När inställningar för cachelagring har konfigurerats för en åtgärd på hello **cachelagring** fliken Cachelagring principer har lagts till för hello igen. Dessa principer kan visas och ändras i hello redigeraren.
+När cachelagringsinställningarna har konfigurerats för en åtgärd på fliken **Cachelagring** läggs cachelagringsprinciper till för åtgärden. Dessa principer kan visas och redigeras i principredigeraren.
 
-Klicka på **principer** från hello **API Management** menyn på hello vänster och välj sedan **Echo API / hämta resurs (Zeroed)** från hello **åtgärden**listrutan.
+Klicka på **Principer** på **API Management**-menyn till vänster och välj sedan **Echo API/GET Resource (cached)** i listrutan **Åtgärd**.
 
 ![Åtgärden Principomfattning][api-management-operation-dropdown]
 
-Redigeraren för hello visas hello principer för den här åtgärden.
+Visar principerna för den här åtgärden i principredigeraren.
 
 ![API Management-principredigeraren][api-management-policy-editor]
 
-hello principdefinitionen för den här åtgärden innehåller hello principer som definierar hello cachelagring konfiguration som kontrollerades med hello **cachelagring** fliken i hello föregående steg.
+Principdefinitionen för den här åtgärden innehåller principerna som definierar cachelagringskonfigurationen som vi granskade på fliken **Cachelagring** i föregående steg.
 
 ```xml
 <policies>
@@ -98,49 +98,49 @@ hello principdefinitionen för den här åtgärden innehåller hello principer s
 ```
 
 > [!NOTE]
-> Ändringar som gjorts toohello cachelagring principer i Redigeraren för hello används på hello **cachelagring** fliken för en åtgärd och vice versa.
+> Ändringar som görs i cachelagringsprinciperna i principredigeraren visas på fliken **Cachelagring** för en åtgärd, och tvärtom.
 > 
 > 
 
-## <a name="test-operation"></a>Anropa en åtgärd och testa hello cachelagring
-toosee hello cachelagring i praktiken vi kallar hello åtgärden från hello developer-portalen. Klicka på **utvecklarportalen** i hello övre högra menyn.
+## <a name="test-operation"> </a>Anropa en åtgärd och testa cachelagringen
+Om du vill se hur cachelagringen fungerar i praktiken kan du anropa åtgärden från utvecklarportalen. Klicka på **Utvecklarportal** på menyn längst upp till höger.
 
 ![Utvecklarportalen][api-management-developer-portal-menu]
 
-Klicka på **API: er** i hello översta menyn och välj sedan **Echo API**.
+Klicka på **API:er** på den översta menyn och välj **Echo API**.
 
 ![Echo API][api-management-apis-echo-api]
 
-> Om du har bara en API som konfigurerats eller synliga tooyour konto, klicka på API: er kommer du direkt toohello åtgärder för att API.
+> Om du bara har ett API som är konfigurerat eller som visas för ditt konto och du klickar på API:er så kommer du direkt till åtgärderna för det API:et.
 > 
 > 
 
-Välj hello **hämta resurs (Zeroed)** igen och klicka sedan på **öppna konsolen**.
+Välj åtgärden **GET Resource (cached)** och klicka på **Öppna konsol**.
 
 ![Öppna konsolen][api-management-open-console]
 
-hello-konsolen kan du tooinvoke operations direkt från hello developer-portalen.
+Från konsolen kan du anropa åtgärder direkt från utvecklarportalen.
 
 ![Konsolen][api-management-console]
 
-Behåll hello standardvärden för **param1** och **param2**.
+Behåll standardvärdena för **param1** och **param2**.
 
-Välj hello önskade nyckeln från hello **prenumeration nyckeln** listrutan. Om ditt konto bara har en prenumeration är den redan vald.
+Välj önskad nyckel i listrutan **subscription-key**. Om ditt konto bara har en prenumeration är den redan vald.
 
-Ange **sampleheader:value1** i hello **begärandehuvuden** textruta.
+Ange **sampleheader:value1** i textrutan **Begärandehuvuden**.
 
-Klicka på **HTTP Get** och anteckna hello-svarshuvuden.
+Klicka på **HTTP Get** och notera svarshuvudena.
 
-Ange **sampleheader:value2** i hello **Begäransrubriker** textrutan och klicka sedan på **HTTP Get**.
+Ange **sampleheader:value2** i textrutan **Begärandehuvuden** och klicka sedan på **HTTP Get**.
 
-Observera att hello-värdet för **sampleheader** fortfarande **value1** hello svar. Prova några olika värden och Observera att hello cachelagrade svar från hello första anropet returneras.
+Observera att värdet för **sampleheader** fortfarande är **value1** i svaret. Prova några olika värden och observera att det cachelagrade svaret från det första anropet returneras.
 
-Ange **25** till hello **param2** fältet och klickar sedan på **HTTP Get**.
+Ange **25** i fältet **param2** och klicka sedan på **HTTP Get**.
 
-Observera att hello-värdet för **sampleheader** hello svar finns i **value2**. Eftersom hello Åtgärdsresultat baseras frågesträng, returnerades hello föregående cachelagrade svar inte.
+Observera att värdet för **sampleheader** i svaret nu är **value2**. Eftersom åtgärdsresultatet registreras av frågesträngen returnerades inte det föregående cachelagrade svaret.
 
 ## <a name="next-steps"> </a>Nästa steg
-* Mer information om cachelagring principer finns [cachelagring principer] [ Caching policies] i hello [principreferens för API Management][API Management policy reference].
+* Mer information om cachelagringsprinciper finns i [Cachelagringsprinciper][Caching policies] i [Principreferens för API Management][API Management policy reference].
 * Mer information om hur du cachelagrar objekt med nycklar med hjälp av principuttryck finns i [Anpassad cachelagring i Azure API Management](api-management-sample-cache-by-key.md).
 
 [api-management-management-console]: ./media/api-management-howto-cache/api-management-management-console.png
@@ -155,10 +155,10 @@ Observera att hello-värdet för **sampleheader** hello svar finns i **value2**.
 [api-management-console]: ./media/api-management-howto-cache/api-management-console.png
 
 
-[How tooadd operations tooan API]: api-management-howto-add-operations.md
-[How tooadd and publish a product]: api-management-howto-add-products.md
+[How to add operations to an API]: api-management-howto-add-operations.md
+[How to add and publish a product]: api-management-howto-add-products.md
 [Monitoring and analytics]: api-management-monitoring.md
-[Add APIs tooa product]: api-management-howto-add-products.md#add-apis
+[Add APIs to a product]: api-management-howto-add-products.md#add-apis
 [Publish a product]: api-management-howto-add-products.md#publish-product
 [Get started with Azure API Management]: api-management-get-started.md
 
@@ -168,6 +168,6 @@ Observera att hello-värdet för **sampleheader** hello svar finns i **value2**.
 [Create an API Management service instance]: api-management-get-started.md#create-service-instance
 
 [Configure an operation for caching]: #configure-caching
-[Review hello caching policies]: #caching-policies
-[Call an operation and test hello caching]: #test-operation
+[Review the caching policies]: #caching-policies
+[Call an operation and test the caching]: #test-operation
 [Next steps]: #next-steps

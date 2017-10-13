@@ -1,5 +1,5 @@
 ---
-title: "aaaEnable Transparent datakryptering för Stretch Database TSQL - Azure | Microsoft Docs"
+title: "Aktivera Transparent datakryptering för Stretch Database TSQL - Azure | Microsoft Docs"
 description: "Aktivera Transparent datakryptering (TDE) för SQL Server Stretch Database på Azure TSQL"
 services: sql-server-stretch-database
 documentationcenter: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: anvang
-ms.openlocfilehash: a9ba23649656fb344480d79438a1115f0eb353bd
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: ed26c2b386e08b76f78b4a05e12c46d2b97c20f2
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="enable-transparent-data-encryption-tde-for-stretch-database-on-azure-transact-sql"></a>Aktivera Transparent datakryptering (TDE) för Stretch Database på Azure (Transact-SQL)
 > [!div class="op_single_selector"]
@@ -27,35 +27,35 @@ ms.lasthandoff: 10/06/2017
 >
 >
 
-Transparent Data kryptering (TDE) skyddar mot hello hotet att skadlig aktivitet genom att utföra realtid kryptering och dekryptering av hello databas, tillhörande säkerhetskopior och transaktionsloggfiler vilande utan ändringar toohello programmet.
+Transparent Data kryptering (TDE) skyddar mot hot från skadlig aktivitet genom att utföra realtid kryptering och dekryptering av databasen, tillhörande säkerhetskopior och transaktionsloggfiler vilande utan ändringar i programmet.
 
-TDE krypterar hello lagring av en hel databas med en symmetrisk nyckel kallas hello krypteringsnyckeln för databasen. Hej databaskrypteringsnyckeln skyddas av en inbyggd servercertifikat. hello inbyggda servercertifikatet är unikt för varje Azure-servern. Microsoft roteras automatiskt dessa certifikat minst var 90: e dag. En allmän beskrivning av TDE finns [Transparent Data kryptering (TDE)].
+TDE krypterar lagring av en hel databas med hjälp av en symmetrisk nyckel som heter databaskrypteringsnyckeln. Databaskrypteringsnyckeln skyddas av en inbyggd servercertifikat. Inbyggda certifikatet är unikt för varje Azure-servern. Microsoft roteras automatiskt dessa certifikat minst var 90: e dag. En allmän beskrivning av TDE finns [Transparent Data kryptering (TDE)].
 
 ## <a name="enabling-encryption"></a>Aktivera kryptering
-tooenable TDE för en Azure-databas som lagrar data som migrerats från en Stretch-aktiverade SQL Server-databas, hello hello följande saker:
+Om du vill aktivera TDE för en Azure-databas som lagrar data som migrerats från en Stretch-aktiverade SQL Server-databas måste du göra följande:
 
-1. Ansluta toohello *master* databasen på hello Azure server värd hello-databas med en inloggning som är administratör eller medlem i hello **dbmanager** roll i hello master-databasen
-2. Köra hello följande instruktion tooencrypt hello-databasen.
+1. Ansluta till den *master* databas på Azure server som värd för databasen med en inloggning som administratör eller medlem i den **dbmanager** roll i master-databasen
+2. Kör följande sats för att kryptera databasen.
 
 ```sql
 ALTER DATABASE [database_name] SET ENCRYPTION ON;
 ```
 
 ## <a name="disabling-encryption"></a>Om du inaktiverar kryptering
-toodisable TDE för en Azure-databas som lagrar data som migrerats från en Stretch-aktiverade SQL Server-databas, hello hello följande saker:
+Om du vill inaktivera TDE för en Azure-databas som lagrar data som migrerats från en Stretch-aktiverade SQL Server-databas måste du göra följande:
 
-1. Ansluta toohello *master* databasen med en inloggning som är administratör eller medlem i hello **dbmanager** roll i hello master-databasen
-2. Köra hello följande instruktion tooencrypt hello-databasen.
+1. Ansluta till den *master* databasen med en inloggning som är administratör eller medlem i den **dbmanager** roll i master-databasen
+2. Kör följande sats för att kryptera databasen.
 
 ```sql
 ALTER DATABASE [database_name] SET ENCRYPTION OFF;
 ```
 
 ## <a name="verifying-encryption"></a>Verifiering av kryptering
-tooverify krypteringsstatus för en Azure-databas som lagrar data som migrerats från en Stretch-aktiverade SQL Server-databas, hello hello följande saker:
+Kontrollera krypteringsstatus för en Azure-databas som lagrar data som migrerats från en Stretch-aktiverade SQL Server-databas genom att göra följande:
 
-1. Ansluta toohello *master* eller instans database med en inloggning som administratör eller medlem i hello **dbmanager** roll i hello master-databasen
-2. Köra hello följande instruktion tooencrypt hello-databasen.
+1. Ansluta till den *master* eller instans database med en inloggning som administratör eller medlem i den **dbmanager** roll i master-databasen
+2. Kör följande sats för att kryptera databasen.
 
 ```sql
 SELECT

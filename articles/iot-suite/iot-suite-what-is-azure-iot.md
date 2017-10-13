@@ -1,6 +1,6 @@
 ---
-title: "aaaAzure lösningar för Sakernas Internet (IoT Suite) | Microsoft Docs"
-description: "En översikt över IoT på Azure, inklusive en exempel-lösningsarkitektur och hur det relaterar tooAzure IoT Suite och hello förkonfigurerade lösningar."
+title: "Azure-lösningar för Sakernas Internet (IoT Suite) | Microsoft Docs"
+description: "En översikt över IoT på Azure, inklusive en exempellösningsarkitektur och hur den relaterar till Azure IoT Suite och de förkonfigurerade lösningarna."
 services: 
 suite: iot-suite
 documentationcenter: 
@@ -15,32 +15,32 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: dobett
-ms.openlocfilehash: e527ca3f7541c84fbd6abc99ee38792468f88644
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 320190488bb4c7b8192421f9dd50a5264f558584
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 [!INCLUDE [iot-azure-and-iot](../../includes/iot-azure-and-iot.md)]
 
 ## <a name="azure-iot-suite"></a>Azure IoT Suite
-hello Microsoft Azure IoT Suite är en lösning i företagsklass som möjliggör tooget snabbt igång via en uppsättning utökningsbara förkonfigurerade lösningar. Med dessa lösningar kan du hantera vanliga IoT-scenarier som [fjärrövervakning][lnk-preconfigured-solutions], [förebyggande underhåll][lnk-predictive-maintenance] och [ansluten fabrik][lnk-connected-factory]. Dessa lösningar är implementeringar av hello IoT-lösningsarkitektur som beskrivs i den här artikeln.
+Microsoft Azure IoT Suite är en lösning i företagsklass som hjälper dig att snabbt komma igång med hjälp av en samling utökningsbara, förkonfigurerade lösningar. Med dessa lösningar kan du hantera vanliga IoT-scenarier som [fjärrövervakning][lnk-preconfigured-solutions], [förebyggande underhåll][lnk-predictive-maintenance] och [ansluten fabrik][lnk-connected-factory]. Dessa lösningar är implementeringar av IoT-lösningsarkitekturen som beskrivs i den här artikeln.
 
-hello är förkonfigurerade lösningar klar, fungerar slutpunkt till slutpunkt-lösningar som innehåller:
+De förkonfigurerade lösningarna är färdiga kompletta lösningar, som bland annat innehåller:
 
-- Simulerade enheter tooget du startade.
+- Simulerade enheter som hjälper dig att komma igång.
 - Förkonfigurerade Azure-tjänster som [Azure IoT Hub][Azure IoT Hub], [Azure Event Hubs][Azure Event Hubs], [Azure Stream Analytics][Azure Stream Analytics], [Azure Machine Learning][Azure Machine Learning] och [Azure Storage][Azure storage].
 - Lösningsspecifika hanteringskonsoler.
 
-hello förkonfigurerade lösningar innehåller beprövade, produktionsklara kod som du kan anpassa och utöka tooimplement egna specifika IoT-scenarier.
+De förkonfigurerade lösningarna innehåller beprövad, produktionsklar kod som du kan anpassa och utöka för att implementera dina egna specifika IoT-scenarier.
 
-Du kanske även är intresserad av hello [Azure IoT Hub] [ Azure IoT Hub] service med många hello förkonfigurerade lösningar. [Azure IoT-hubb] [ Azure IoT Hub] ger hello säkert och tillförlitligt dubbelriktad kommunikation mellan enheter och hello moln som används i hello förkonfigurerade lösningsarkitektur.
+Du kanske också är intresserad av tjänsten [Azure IoT Hub][Azure IoT Hub] som används i många av de förkonfigurerade lösningarna. [Azure IoT Hub][Azure IoT Hub] tillhandahåller den säkra och tillförlitliga dubbelriktade kommunikationen mellan enheter och molnet som används i arkitekturen för de förkonfigurerade lösningarna.
 
 ## <a name="next-steps"></a>Nästa steg
-Utforska dessa resurser toocontinue Lär dig mer om IoT Suite och hello förkonfigurerade lösningar:
+Utforska dessa resurser för att lära dig mer om IoT Suite och de förkonfigurerade lösningarna:
 
 * [Vad är Azure IoT Suite?][lnk-whatissuite]
-* [Vad är hello Azure IoT Suite förkonfigurerade lösningar?][lnk-whatarepreconfigured]
+* [Vad är förkonfigurerade lösningar i Azure IoT Suite?][lnk-whatarepreconfigured]
 
 [lnk-whatissuite]: iot-suite-overview.md
 [lnk-whatarepreconfigured]: iot-suite-what-are-preconfigured-solutions.md

@@ -1,6 +1,6 @@
 ---
-title: "Kom igång aaaAzure SQL Data Warehouse - kursen | Microsoft Docs"
-description: "Den här kursen lär du dig hur tooprovision och Läs in data till Azure SQL Data Warehouse. Du får också lära dig hello grunderna om skalning, pausa och justera."
+title: "Självstudiekurs: Komma igång med Azure SQL Data Warehouse | Microsoft Docs"
+description: "I den här kursen får du lära dig hur du etablerar och läser in data i Azure SQL Data Warehouse. Du får också lära dig grunderna för skala, pausa och justera."
 services: sql-data-warehouse
 documentationcenter: NA
 author: hirokib
@@ -15,32 +15,32 @@ ms.workload: data-services
 ms.custom: quickstart
 ms.date: 01/26/2017
 ms.author: elbutter;barbkess
-ms.openlocfilehash: edd2a21b0fe49ca8e9792c7c512310339a822c55
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 39efa954fa1eb3d7d93dbeceac48b96d865349ab
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-sql-data-warehouse"></a>Komma igång med SQL Data Warehouse
 
-Den här kursen visar hur tooprovision och Läs in data till Azure SQL Data Warehouse. Du får också lära dig hello grunderna om skalning, pausa och justera. När du är klar kan du vara redo tooquery och utforska dina data warehouse.
+Den här kursen visar hur du etablerar och läser in data i Azure SQL Data Warehouse. Du får också lära dig grunderna för skala, pausa och justera. När du är klar är du redo att fråga efter och utforska datalagret.
 
-**Uppskattad tid toocomplete:** det här är en vägledning för slutpunkt till slutpunkt med exempelkod som tar cirka 30 minuter toocomplete när hello förutsättningar är uppfyllda. 
+**Återstående tid:** Det här är en självstudie för slutpunkt till slutpunkt med exempelkod som tar cirka 30 minuter att slutföra när du har uppfyllt kraven. 
 
 ## <a name="prerequisites"></a>Krav
 
-hello kursen förutsätter att du är bekant med grundläggande koncept för SQL Data Warehouse. En introduktion finns i [Vad är SQL Data Warehouse?](sql-data-warehouse-overview-what-is.md) 
+Självstudien förutsätter att du är bekant med grundläggande begrepp för SQL Data Warehouse. En introduktion finns i [Vad är SQL Data Warehouse?](sql-data-warehouse-overview-what-is.md) 
 
 ### <a name="sign-up-for-microsoft-azure"></a>Registrera dig för Microsoft Azure
-Om du inte redan har ett Microsoft Azure-konto, måste toosign för en toouse den här tjänsten. Om du redan har ett konto kan du hoppa över det här steget. 
+Om du inte redan har ett Microsoft Azure-konto måste du registrera dig för ett konto för att kunna använda den här tjänsten. Om du redan har ett konto kan du hoppa över det här steget. 
 
-1. Navigera toohello konto sidor [https://azure.microsoft.com/account/](https://azure.microsoft.com/account/)
+1. Gå till kontosidorna på [https://azure.microsoft.com/account/](https://azure.microsoft.com/account/)
 2. Skapa ett kostnadsfritt Azure-konto eller köp ett konto.
-3. Följ instruktionerna för hello
+3. Följ anvisningarna
 
 ### <a name="install-appropriate-sql-client-drivers-and-tools"></a>Installera rätt verktyg och drivrutin för SQL-klienten
 
-De flesta SQL-klientverktygen kan ansluta tooSQL Data Warehouse med hjälp av ADO.NET, JDBC eller ODBC. På grund av toohello stort antal T-SQL-funktioner som har stöd för SQL Data Warehouse, är vissa klientprogram inte helt kompatibel med SQL Data Warehouse.
+De flesta SQL-klientverktygen kan ansluta till SQL Data Warehouse med JDBC, ODBC eller ADO.NET. På grund av det stora antalet T-SQL-funktioner som SQL Data Warehouse stöder kanske inte alla klientprogram är helt kompatibla med SQL Data Warehouse.
 
 Om du kör ett Windows-operativsystem rekommenderar vi att du använder antingen [Visual Studio] eller [SQL Server Management Studio].
 
@@ -50,7 +50,7 @@ Om du kör ett Windows-operativsystem rekommenderar vi att du använder antingen
 
 ## <a name="create-a-sql-data-warehouse"></a>Skapa ett SQL Data Warehouse
 
-En SQL Data Warehouse är en särskild typ av databas som är avsedd för MPP (massively parallel processing). hello databasen distribueras över flera noder och bearbetar frågor parallellt. SQL Data Warehouse har en control-noden som samordnar hello aktiviteter för alla hello-noder. själva hello noderna använda SQL-databas toomanage dina data.  
+En SQL Data Warehouse är en särskild typ av databas som är avsedd för MPP (massively parallel processing). Databasen fördelas på flera noder och bearbetar frågor parallellt. SQL Data Warehouse har en kontrollnod som samordnar aktiviteter för alla noder. Noderna använder SQL Database för att hantera dina data.  
 
 > [!NOTE]
 > Att skapa ett SQL Data Warehouse kan resultera i en ny fakturerbar tjänst.  Mer information finns på [prissidan för SQL Data Warehouse](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
@@ -58,14 +58,14 @@ En SQL Data Warehouse är en särskild typ av databas som är avsedd för MPP (m
 
 ### <a name="create-a-data-warehouse"></a>Skapa ett datalager
 
-1. Logga in på hello [Azure-portalen](https://portal.azure.com).
+1. Logga in på [Azure-portalen](https://portal.azure.com).
 2. Klicka på **Nytt** > **Databaser** > **SQL Data Warehouse**.
 
     ![NewBlade](../../includes/media/sql-data-warehouse-create-dw/blade-click-new.png) ![SelectDW](../../includes/media/sql-data-warehouse-create-dw/blade-select-dw.png)
 
 3. Fyll i distributionsinformationen
 
-    **Databasnamn**: Välj önskat namn. Om du har flera datalager, rekommenderar vi ditt namn som innehåller information om till exempel hello region, miljö, till exempel *mydw-westus-1-test*.
+    **Databasnamn**: Välj önskat namn. Om du har flera instanser av datalager rekommenderar vi att dina namn innehåller information om instansens region, miljö osv., t.ex. *mydw-westus-1-test*.
 
     **Prenumeration**: Din Azure-prenumeration
 
@@ -75,61 +75,61 @@ En SQL Data Warehouse är en särskild typ av databas som är avsedd för MPP (m
 
     **Källa**: Tom databas
 
-    **Server**: Välj hello-server som du skapade i [krav].
+    **Server**: Välj den server som du skapade i [Krav].
 
-    **Sorteringen**: lämna hello Standardsortering SQL_Latin1_General_CP1_CI_AS.
+    **Sortering**: Lämna standardsorteringen SQL_Latin1_General_CP1_CI_AS.
 
-    **Välj prestanda**: Vi rekommenderar att börja med hello standard 400DWU.
+    **Select performance** (Välj prestanda): Vi rekommenderar att du börjar med standardinställningen 400DWU.
 
-4. Välj **PIN-kod toodashboard** ![tooDashboard PIN-kod](./media/sql-data-warehouse-get-started-tutorial/pin-to-dashboard.png)
+4. Välj **Fäst vid instrumentpanelen** ![Fäst vid instrumentpanelen](./media/sql-data-warehouse-get-started-tutorial/pin-to-dashboard.png)
 
-5. Sitta tillbaka och vänta på din data warehouse toodeploy! Det är normalt för den här processen tootake flera minuter. hello-portalen meddelar dig när dina data warehouse är klar toouse. 
+5. Luta dig tillbaka medan datalagret distribueras! Processen kan ta flera minuter. Portalen meddelar dig när datalagret är klart att användas. 
 
-## <a name="connect-toosql-data-warehouse"></a>Ansluta tooSQL Data Warehouse
+## <a name="connect-to-sql-data-warehouse"></a>Anslut till SQL Data Warehouse
 
-Den här kursen använder SQL Server Management Studio (SSMS) tooconnect toohello-datalagret. Du kan ansluta tooSQL datalagret via anslutningarna stöds: ADO.NET, JDBC, ODBC- och PHP. Tänk på att funktionaliteten kan vara begränsad med verktyg som inte stöds av Microsoft.
+I den här självstudiekursen använder vi SQL Server Management Studio (SSMS) för att ansluta till datalagret. Du kan ansluta till SQL Data Warehouse med hjälp av våra anslutningsappar som stöds: ADO.NET, JDBC, ODBC och PHP. Tänk på att funktionaliteten kan vara begränsad med verktyg som inte stöds av Microsoft.
 
 
 ### <a name="get-connection-information"></a>Hämta anslutningsinformation
 
-tooconnect tooyour datalagret, behöver du tooconnect via hello logiska SQLServer som du skapade i [krav].
+Om du vill ansluta till ditt informationslager måste du ansluta via den logiska SQL-server som du skapade i [Krav].
 
-1. Välj ditt data warehouse hello instrumentpanel eller söker efter det i dina resurser.
+1. Välj ditt datalager på instrumentpanelen eller sök efter det i dina resurser.
 
     ![Instrumentpanel för SQL Data Warehouse](./media/sql-data-warehouse-get-started-tutorial/sql-dw-dashboard.png)
 
-2. Hitta hello fullständigt namn för hello logiska SQLServer.
+2. Hitta den logiska SQL-serverns fullständiga namn.
 
     ![Välj servernamn](./media/sql-data-warehouse-get-started-tutorial/select-server.png)
 
-3. Öppna SSMS och använder object explorer tooconnect toothis server med administratörsautentiseringsuppgifter för hello server du skapade i [krav]
+3. Öppna SSMS och använd objektutforskaren för att ansluta till den här servern med de serveradmin-autentiseringsuppgifter som du skapade i [Krav]
 
     ![Anslut med SSMS](./media/sql-data-warehouse-get-started-tutorial/ssms-connect.png)
 
-Om allt går korrekt, bör du nu anslutet tooyour logisk SQL-server. Eftersom du har loggat in som hello-administratören kan ansluta du tooany databasen hos hello-servern, inklusive hello master-databasen. 
+Om allt går som det ska bör du nu vara ansluten till din logiska SQL Server-instans. Eftersom du har loggat in som serveradministratör kan du ansluta till alla databaser som hanteras av servern, inklusive huvuddatabasen. 
 
-Det finns bara en server-administratörskontot och hello har de flesta behörigheter för alla användare. Var noga med att inte tooallow för många personer i din organisation tooknow hello administratörslösenord. 
+Det finns endast ett serveradministratörskonto och det har de flesta behörigheter för alla användare. Var noga med att inte låta för många personer i organisationen få reda på adminlösenordet. 
 
-Du kan också ha ett administratörskonto för Azure Active Directory. Vi tillhandahålla inte hello informationen här. Om du vill toolearn mer om hur du använder Azure Active Directory-autentisering, se [Azure AD authentication](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication).
+Du kan också ha ett administratörskonto för Azure Active Directory. Vi tillhandahåller inte informationen här. Om du vill veta mer om hur du använder Azure Active Directory-autentisering går du till [Azure AD-autentisering](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication).
 
 Därefter skapar vi ytterligare inloggningar och användare.
 
 
 ## <a name="create-a-database-user"></a>Skapa en databasanvändare
 
-I det här steget skapar du en användare konto tooaccess ditt data warehouse. Vi också visar hur toogive som användaren hello möjlighet toorun frågor med stora mängder minne och processorresurser.
+I det här steget kan skapa du ett användarkonto för att få åtkomst till datalagret. Vi visar också hur du ger användaren möjlighet att köra frågor med en stor mängd minne och CPU-resurser.
 
-### <a name="notes-about-resource-classes-for-allocating-resources-tooqueries"></a>Information om resursklasser för att fördela resurser tooqueries
+### <a name="notes-about-resource-classes-for-allocating-resources-to-queries"></a>Information om resursklasser för att tilldela resurser till frågor
 
-- tookeep dina data är säkra, Använd inte hello server admin toorun frågor på produktionsdatabaserna. Det har hello de flesta behörigheter för alla användare och använder den tooperform åtgärder på användardata placerar dina data i fara. Dessutom eftersom hello serveradministratören är avsedd tooperform hanteringsåtgärder, körs operations med bara en liten fördelningen av minne och processorresurser. 
+- Om du vill skydda dina data ska du inte använda serveradministratören för att köra frågor i produktionsdatabaserna. Här finns de flesta privilegier för alla användare, och om du använder den för att utföra åtgärder på användardata kan dina skadas. Dessutom, eftersom serveradministratören är avsedd att utföra hanteringsåtgärder, kör den åtgärder med en liten allokering av minne och CPU-resurser. 
 
-- SQL Data Warehouse använder fördefinierade databasroller som kallas resursklasser, tooallocate olika mängder minne, CPU-resurser och samtidighet fack toousers. Varje användare kan tillhöra tooa small, medium, stora eller extra stor resursklassen. hello användarens resursklassen bestämmer hello resurser hello användaren har toorun frågor och läsa in åtgärder.
+- SQL Data Warehouse använder fördefinierade databasroller som kallas resursklasser för att allokera olika mängder minne, CPU-resurser och samtidighetsfack till användare. Varje användare kan höra till en liten, mellanstor eller extra stor resursklass. Användarens resursklass bestämmer de resurser som användaren måste köra frågor och läsa in åtgärder för.
 
-- För optimala datakomprimering måste hello användaren tooload med stor eller extra stor resursallokeringar. Läs mer om resursklasser [här](./sql-data-warehouse-develop-concurrency.md#resource-classes):
+- För att optimera datakomprimering kan användaren behöva läsa in med stora eller extra stora resursallokeringar. Läs mer om resursklasser [här](./sql-data-warehouse-develop-concurrency.md#resource-classes):
 
 ### <a name="create-an-account-that-can-control-a-database"></a>Skapa ett konto som kan styra en databas
 
-Eftersom du är inloggad i hello-administratören ha behörigheter toocreate inloggningar och användare.
+Eftersom du för närvarande är inloggad som serveradministratör har du behörighet att skapa inloggningar och användare.
 
 1. Med SSMS eller någon annan frågeklient öppnar du en ny fråga för **huvuddatabasen**.
 
@@ -137,62 +137,61 @@ Eftersom du är inloggad i hello-administratören ha behörigheter toocreate inl
 
     ![Ny fråga mot huvuddatabas1](./media/sql-data-warehouse-get-started-tutorial/query-on-master.png)
 
-2. Kör det här kommandot T-SQL-toocreate i hello frågefönstret en inloggning med namnet MedRCLogin och användare med namnet LoadingUser. Den här inloggningen kan ansluta toohello logisk SQL-server.
+2. I frågefönstret kör du det här T-SQL-kommandot för att skapa en inloggning med namnet MedRCLogin och en användare med namnet LoadingUser. Den här inloggningen kan inte ansluta till den logiska SQL-servern.
 
     ```sql
     CREATE LOGIN MedRCLogin WITH PASSWORD = 'a123reallySTRONGpassword!';
-    CREATE USER LoadingUser FOR LOGIN MedRCLogin;
     ```
 
-3. Nu frågar hello *SQL Data Warehouse-databas*, skapa en databasanvändare baserat på hello inloggning som du skapade tooaccess och utföra åtgärder på hello-databasen.
+3. Nu frågar du *SQL Data Warehouse-databasen*. Skapa en databasanvändare baserat på inloggningen du skapade för att få åtkomst till och utföra åtgärder i databasen.
 
     ```sql
     CREATE USER LoadingUser FOR LOGIN MedRCLogin;
     ```
 
-4. Ge hello användare kontroll behörigheter toohello databasen kallas NYT. 
+4. Ge databasen användarkontrollbehörigheter till databasen NYT. 
 
     ```sql
-    GRANT CONTROL ON DATABASE::[NYT] tooLoadingUser;
+    GRANT CONTROL ON DATABASE::[NYT] to LoadingUser;
     ```
     > [!NOTE]
-    > Om databasnamnet är bindestreck vara säker på att toowrap den inom parentes! 
+    > Om ditt databasnamn innehåller bindestreck måste du skriva det inom parentes! 
     >
 
-### <a name="give-hello-user-medium-resource-allocations"></a>Ge hello användaren medelhög resursallokeringar
+### <a name="give-the-user-medium-resource-allocations"></a>Ge användaren medelstora resursallokeringar
 
-1. Kör den här T-SQL-kommandot toomake detta till en medlem av hello medelhög resursklassen, som kallas mediumrc. 
+1. Kör det här T-SQL-kommandot för att göra den medlem i den medelstora resursklassen som kallas mediumrc. 
 
     ```sql
     EXEC sp_addrolemember 'mediumrc', 'LoadingUser';
     ```
     > [!NOTE]
-    > Klicka på [här](sql-data-warehouse-develop-concurrency.md#resource-classes) toolearn mer om samtidighet och resursen! 
+    > Klicka [här](sql-data-warehouse-develop-concurrency.md#resource-classes) och läs mer om samtidighet och resursklasser! 
     >
 
-2. Ansluta toohello logisk server med hello nya autentiseringsuppgifter
+2. Ansluta till den logiska servern med nya autentiseringsuppgifter
 
     ![Logga in med ny inloggning](./media/sql-data-warehouse-get-started-tutorial/new-login.png)
 
 
 ## <a name="load-data-from-azure-blob-storage"></a>Läsa in data från Azure Blob Storage
 
-Du är nu redo tooload data till data warehouse. Det här steget visar hur tooload New York City taxi cab data från en offentlig Azure storage blob. 
+Du är nu redo att läsa in data till datalagret. Det här steget visar hur du hämtar New York City-taxidata från en offentlig Azure Storage-blob. 
 
-- Ett vanligt sätt tooload data till SQL Data Warehouse är toofirst flytta hello data tooAzure blob-lagring och läsa in den i ditt data warehouse. toomake den enklare toounderstand hur tooload, har vi New York taxi cab-data som redan finns i en offentlig Azure storage blob. 
+- Ett vanligt sätt att läsa in data till SQL Data Warehouse är att först flytta data till Azure Blob Storage och sedan läsa in den i datalagret. Om du vill göra det enklare att förstå hur du ska läsa in har vi redan New York-taxidata i en offentlig Azure Storage-blob. 
 
-- För framtida bruk, toolearn hur tooget data-tooAzure blob-lagring eller tooload den direkt från din datakälla till SQL Data Warehouse finns hello [översikt över inläsning](sql-data-warehouse-overview-load.md).
+- Om du vill lära dig hur du får dina data till Azure Blob Storage eller hur du läser in dem direkt från källan till SQL Data Warehouse för framtida bruk går du till [översikten över inläsning](sql-data-warehouse-overview-load.md).
 
 
 ### <a name="define-external-data"></a>Definiera externa data
 
-1. Skapa en huvudnyckel. Du behöver bara toocreate en huvudnyckel en gång per databas. 
+1. Skapa en huvudnyckel. Du behöver bara skapa en huvudnyckel en gång per databas. 
 
     ```sql
     CREATE MASTER KEY;
     ```
 
-2. Definiera hello placering av hello Azure blob som innehåller data som hello taxi CAB-filen.  
+2. Ange platsen för Azure-bloben som innehåller taxi-data.  
 
     ```sql
     CREATE EXTERNAL DATA SOURCE NYTPublic
@@ -203,11 +202,11 @@ Du är nu redo tooload data till data warehouse. Det här steget visar hur toolo
     );
     ```
 
-3. Ange hello externt filformat
+3. Ange de externa filformaten
 
-    Hej ```CREATE EXTERNAL FILE FORMAT``` kommandot är används toospecify formatet för filer som innehåller hello externa data. De innehåller text som avgränsas med ett eller flera tecken som kallas avgränsare. I demonstrationssyfte lagras hello taxi cab data som komprimerade data såväl som gzip komprimerade data.
+    Kommandot ```CREATE EXTERNAL FILE FORMAT``` används för att ange formatet för filerna som innehåller de externa data. De innehåller text som avgränsas med ett eller flera tecken som kallas avgränsare. För demonstration lagras taxidata både som komprimerade data och gzip-komprimerade data.
 
-    Kör följande T-SQL-kommandon toodefine två olika format: okomprimerade och komprimerade.
+    Kör dessa T-SQL-kommandon för att definiera två olika format: okomprimerat och komprimerat.
 
     ```sql
     CREATE EXTERNAL FILE FORMAT uncompressedcsv
@@ -238,7 +237,7 @@ Du är nu redo tooload data till data warehouse. Det här steget visar hur toolo
     ```sql
     CREATE SCHEMA ext;
     ```
-5. Skapa hello externa tabeller. Dessa tabeller refererar till data som lagras i Azure Blob Storage. Kör följande T-SQL-kommandon toocreate hello flera externa tabeller som alla punkt toohello Azure blob vi definierats tidigare i vår extern datakälla.
+5. Skapa de externa tabellerna. Dessa tabeller refererar till data som lagras i Azure Blob Storage. Kör följande T-SQL-kommandon för att skapa flera externa tabeller som alla pekar mot den Azure-blob vi definierade tidigare i vår externa datakälla.
 
 ```sql
     CREATE EXTERNAL TABLE [ext].[Date] 
@@ -415,11 +414,11 @@ Du är nu redo tooload data till data warehouse. Det här steget visar hur toolo
     ;
 ```
 
-### <a name="import-hello-data-from-azure-blob-storage"></a>Importera hello data från Azure blob storage.
+### <a name="import-the-data-from-azure-blob-storage"></a>Importera data från Azure Blob Storage.
 
-SQL Data Warehouse har stöd för en nyckelinstruktion som kallas CREATE TABLE AS SELECT (CTAS). Den här instruktionen skapas en ny tabell baserat på hello resultaten av en select-instruktion. hello ny tabell har hello samma kolumner och datatyper som hello resultaten av hello select-uttryck.  Här är en elegant sätt tooimport data från Azure blob storage till SQL Data Warehouse.
+SQL Data Warehouse har stöd för en nyckelinstruktion som kallas CREATE TABLE AS SELECT (CTAS). Den här instruktionen skapar en ny tabell baserat på resultatet av en select-instruktion. Den nya tabellen har samma kolumner och datatyper som resultatet av select-instruktionen.  Detta är ett smidigt sätt att importera data från Azure Blob Storage till SQL Data Warehouse.
 
-1. Kör det här skriptet tooimport dina data.
+1. Kör det här skriptet för att importera dina data.
 
     ```sql
     CREATE TABLE [dbo].[Date]
@@ -496,7 +495,7 @@ SQL Data Warehouse har stöd för en nyckelinstruktion som kallas CREATE TABLE A
 
 2. Visa data som laddas.
 
-   Du läser in flera GB data och komprimerar dem till högpresterande klustrade Columnstore-index. Kör följande fråga som använder en dynamisk vyer (av DMV: er) tooshow hello Hanteringsstatus hello belastningen hello. När du har startat hello frågan hämtar du en kaffe och en tilltugg medan SQL Data Warehouse stöder vissa frekventa lyft.
+   Du läser in flera GB data och komprimerar dem till högpresterande klustrade Columnstore-index. Kör följande fråga som använder en dynamisk hanteringsvy (DMV) för att visa status för belastningen. När du har startat frågan kan du hämta lite kaffe och något att äta medan SQL Data Warehouse sköter grovjobbet.
     
     ```sql
     SELECT
@@ -539,51 +538,51 @@ SQL Data Warehouse har stöd för en nyckelinstruktion som kallas CREATE TABLE A
 
 ## <a name="improve-query-performance"></a>Förbättra prestanda för frågor
 
-Det finns flera sätt tooimprove frågeprestanda och tooachieve hello snabba prestanda som SQL Data Warehouse är utformad tooprovide.  
+Det finns flera sätt att förbättra frågeprestanda och få den snabba prestanda som SQL Data Warehouse har utformats för att ge.  
 
-### <a name="see-hello-effect-of-scaling-on-query-performance"></a>Se hello av skalning på frågeprestanda 
+### <a name="see-the-effect-of-scaling-on-query-performance"></a>Se effekten av skalning på frågeprestanda 
 
-Enkelriktade tooimprove frågeprestanda är tooscale resurser genom att ändra hello DWU servicenivå för ditt informationslager. Varje tjänstenivå kostar mer, men du kan minska eller pausa resurser när som helst. 
+Ett sätt att förbättra frågeprestanda är att skala resurser genom att ändra DWU-tjänstenivån för informationslagret. Varje tjänstenivå kostar mer, men du kan minska eller pausa resurser när som helst. 
 
 I det här steget jämför du prestanda på två olika DWU-inställningar.
 
-Först ska vi skala hello sizing ned too100 DWU så att vi kan få en uppfattning om hur en beräkningsnod kan utföra på en egen.
+Vi ska först skala ned till 100 DWU:er för att få en uppfattning av hur en beräkningsnod kan prestera på egen hand.
 
-1. Gå toohello portal och välj ditt SQL Data Warehouse.
+1. Gå till portalen och välj SQL Data Warehouse.
 
-2. Välj skala hello SQL Data Warehouse-bladet. 
+2. Välj skala på bladet SQL Data Warehouse. 
 
     ![Skala DW från portalen](./media/sql-data-warehouse-get-started-tutorial/scale-dw.png)
 
-3. Skala hello prestanda liggande too100 DWU och klicka på Spara.
+3. Skala ned prestandafältet till 100 DWU och klicka på Spara.
 
     ![Skala och spara](./media/sql-data-warehouse-get-started-tutorial/scale-and-save.png)
 
-4. Vänta medan din skala åtgärden toofinish.
+4. Vänta tills skalningen har slutförts.
 
     > [!NOTE]
-    > Frågor kan inte köras medan du ändrar hello skala. Skalning **stoppar** dina frågor som körs för närvarande. Du kan starta om dem när hello-åtgärden har slutförts.
+    > Frågor kan inte köras medan du ändrar skalan. Skalning **stoppar** dina frågor som körs för närvarande. Du kan starta om dem när åtgärden är klar.
     >
     
-5. Göra en genomsökning åtgärd på hello resa data, välja hello översta miljoner poster för alla hello-kolumner. Om du snabbt är gärna toomove på du ledigt tooselect färre rader. Anteckna hello tid det tar toorun för den här åtgärden.
+5. Kör en genomsökningsåtgärd mot reseinformationen och välj den översta miljonen poster för alla kolumner. Om du är otålig och vill gå vidare snabbt kan du välja färre rader. Notera hur lång tid det tar att utföra den här åtgärden.
 
     ```sql
     SELECT TOP(1000000) * FROM dbo.[Trip]
     ```
-6. Skala ditt informationslager tillbaka too400 DWU. Kom ihåg att varje 100 DWU är att lägga till en annan compute-nod tooyour Azure SQL Data Warehouse.
+6. Skala tillbaka informationslagret till 400 DWU. Kom ihåg att varje 100 DWU lägger till en till beräkningsnod till ditt Azure SQL Data Warehouse.
 
-7. Kör hello frågan igen! Du bör märka en stor skillnad. 
+7. Kör frågan igen! Du bör märka en stor skillnad. 
 
     > [!NOTE]
-    > Eftersom hello frågan returnerar stora mängder data, kanske hello bandbreddstillgänglighet av hello-dator som kör SSMS flaskhalsar. Det kan leda till att du inte ser några prestandaförbättringar!
+    > Eftersom frågan returnerar stora mängder data, kan bandbreddstillgängligheten för den dator som kör SSMS utgöra en prestandaflaskhals. Det kan leda till att du inte ser några prestandaförbättringar!
 
 > [!NOTE]
-> Eftersom SQL Data Warehouse använder massiv parallell bearbetning (MPP). Frågor som skanna eller utföra analysfunktioner på miljoner rader upplevelse hello true kraften i Azure SQL Data Warehouse.
+> Eftersom SQL Data Warehouse använder massiv parallell bearbetning (MPP). Frågor som skannar eller utför analysfunktioner på miljoner rader utnyttjar den verkliga kraften i Azure SQL Data Warehouse.
 >
 
-### <a name="see-hello-effect-of-statistics-on-query-performance"></a>Se hello av statistik på frågeprestanda
+### <a name="see-the-effect-of-statistics-on-query-performance"></a>Se effekten av statistik på frågeprestanda
 
-1. Köra en fråga som kopplar hello datumtabell med hello resa tabell
+1. Kör en fråga som kopplar datumtabellen med resetabellen
 
     ```sql
     SELECT TOP (1000000) 
@@ -615,10 +614,10 @@ Först ska vi skala hello sizing ned too100 DWU så att vi kan få en uppfattnin
         ON  tr.DateID = dt.DateID
     ```
 
-    Den här frågan tar ett tag eftersom SQL Data Warehouse har tooshuffle data innan den kan utföra hello koppling. Kopplingar har inte tooshuffle data om de är utformad toojoin data i hello samma sätt som den distribueras. Det är ett djupare ämne. 
+    Den här frågan tar en stund eftersom SQL Data Warehouse måste blanda data innan den kan utföra kopplingen. Kopplingar behöver inte blanda data om de har utformats för att koppla data på samma sätt som de distribueras. Det är ett djupare ämne. 
 
 2. Statistik gör skillnad. 
-3. Kör den här instruktionen toocreate statistik på hello kopplingskolumner.
+3. Kör den här instruktionen för att skapa statistik på de kopplade kolumnerna.
 
     ```sql
     CREATE STATISTICS [dbo.Date DateID stats] ON dbo.Date (DateID);
@@ -628,16 +627,16 @@ Först ska vi skala hello sizing ned too100 DWU så att vi kan få en uppfattnin
     > [!NOTE]
     > SQL DW hanterar inte statistik automatiskt åt dig. Statistik är viktigt för frågeprestanda och vi rekommenderar att du skapar och uppdaterar statistik.
     > 
-    > **Du får hello utnyttja genom att låta statistik för kolumner som ingår i kopplingar, kolumner som används i hello där satsen och kolumner finns i GROUP BY.**
+    > **Du får ut mest genom att använda statistik med kolumner som ingår i kopplingar, kolumner som används i WHERE-satsen och kolumner som finns i GROUP BY.**
     >
 
-3. Kör hello frågan från förutsättningarna igen och notera eventuella skillnader i prestanda. Hello skillnader i prestanda för frågor kommer inte att som drastiskt som skala upp, bör du se en påskynda. 
+3. Kör frågan från Krav igen och notera eventuella skillnader i prestanda. Även om skillnaderna i frågeprestanda inte är lika drastiska som när du skalar upp, bör du märka att det går snabbare. 
 
 ## <a name="next-steps"></a>Nästa steg
 
-Du är nu redo tooquery och utforska. Se våra bästa praxis och tips.
+Nu är du redo att köra frågor och utforska. Se våra bästa praxis och tips.
 
-Om du är klar utforska hello dag, se till att toopause din instans! I produktion, du får mycket stora besparingar av du pausar och skalning toomeet dina affärsbehov.
+Om du är klar för dagen ser du till att pausa din instans. I en produktionsmiljö kan du uppnå enorma besparingar genom att pausa och skala utifrån dina affärsbehov.
 
 ![Pausa](./media/sql-data-warehouse-get-started-tutorial/pause.png)
 
@@ -651,20 +650,20 @@ Om du är klar utforska hello dag, se till att toopause din instans! I produktio
 
 [Top 10 Best Practices for Building a Large Scale Relational Data Warehouse][] (Tio rekommendationer för att skapa ett storskaligt relationsinformationslager)
 
-[Migrera Data tooAzure SQL Data Warehouse][]
+[Migrating Data to Azure SQL Data Warehouse][] (Migrera data till Azure SQL Data Warehouse)
 
 [Concurrency and workload management]: sql-data-warehouse-develop-concurrency.md#changing-user-resource-class-example (Hantering av samtidiga körningar och arbetsbelastningar)
 [Metodtips för Azure SQL Data Warehouse]: sql-data-warehouse-best-practices.md#hash-distribute-large-tables
 [Query Monitoring]: sql-data-warehouse-manage-monitor.md (Frågeövervakning)
 [Top 10 Best Practices for Building a Large Scale Relational Data Warehouse]: https://blogs.msdn.microsoft.com/sqlcat/2013/09/16/top-10-best-practices-for-building-a-large-scale-relational-data-warehouse/ (Tio rekommendationer för att skapa ett storskaligt relationsinformationslager)
-[Migrera Data tooAzure SQL Data Warehouse]: https://blogs.msdn.microsoft.com/sqlcat/2016/08/18/migrating-data-to-azure-sql-data-warehouse-in-practice/
+[Migrating Data to Azure SQL Data Warehouse]: https://blogs.msdn.microsoft.com/sqlcat/2016/08/18/migrating-data-to-azure-sql-data-warehouse-in-practice/ (Migrera data till Azure SQL Data Warehouse)
 
 
 
 [!INCLUDE [Additional Resources](../../includes/sql-data-warehouse-article-footer.md)]
 
 <!-- Internal Links -->
-[krav]: sql-data-warehouse-get-started-tutorial.md#prerequisites
+[Krav]: sql-data-warehouse-get-started-tutorial.md#prerequisites
 
 <!--Other Web references-->
 [Visual Studio]: https://www.visualstudio.com/

@@ -1,6 +1,6 @@
 ---
-title: aaaBack virtuella Azure-datorer | Microsoft Docs
-description: "Identifiera, registrera och säkerhetskopiera virtuella datorer i Azure tooa recovery services-valvet."
+title: "Säkerhetskopiera virtuella datorer i Azure | Microsoft Docs"
+description: "Identifiera, registrera och säkerhetskopiera virtuella Azure-datorer till ett recovery services-valv."
 services: backup
 documentationcenter: 
 author: markgalioto
@@ -16,92 +16,92 @@ ms.topic: article
 ms.date: 8/15/2017
 ms.author: trinadhk;jimpark;markgal;
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a204a42726450a7fd89b5563a786b5070578b113
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 40983a3de104238d09b976b5fcf2419da42c1bba
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
-# <a name="back-up-azure-virtual-machines-tooa-recovery-services-vault"></a>Säkerhetskopiera virtuella datorer i Azure tooa Recovery Services-valvet
+# <a name="back-up-azure-virtual-machines-to-a-recovery-services-vault"></a>Säkerhetskopiera virtuella Azure-datorer till ett Recovery Services-valv
 > [!div class="op_single_selector"]
-> * [Säkerhetskopiera virtuella datorer tooRecovery Services-valvet](backup-azure-arm-vms.md)
-> * [Säkerhetskopiera virtuella datorer tooBackup valvet](backup-azure-vms.md)
+> * [Säkerhetskopiera virtuella datorer till Recovery Services-valvet](backup-azure-arm-vms.md)
+> * [Säkerhetskopiera virtuella datorer till Backup-valvet](backup-azure-vms.md)
 >
 >
 
-Den här artikeln beskrivs hur tooback in virtuella Azure-datorer (både distribuerade Resource Manager och klassisk distribuerade) tooa Recovery Services-valvet. De flesta hello arbete för att säkerhetskopiera virtuella datorer är hello förberedelser. Innan du kan säkerhetskopiera eller mellan en virtuell dator, måste du slutföra hello [krav](backup-azure-arm-vms-prepare.md) tooprepare din miljö för att skydda dina virtuella datorer. När du har slutfört hello krav, kan du initiera hello Säkerhetskopieringsåtgärden tootake ögonblicksbilder av den virtuella datorn.
+Den här artikeln beskrivs hur du säkerhetskopierar virtuella Azure-datorer (både distribuerade Resource Manager och klassisk distribuerade) till Recovery Services-valvet. Det mesta av arbetet för att säkerhetskopiera virtuella datorer är förberedelserna. Innan du kan säkerhetskopiera eller mellan en virtuell dator, måste du slutföra de [krav](backup-azure-arm-vms-prepare.md) att förbereda miljön för att skydda dina virtuella datorer. När du har slutfört förutsättningarna kan du starta säkerhetskopiering för att ta ögonblicksbilder av den virtuella datorn.
 
 
 [!INCLUDE [learn about backup deployment models](../../includes/backup-deployment-models.md)]
 
-Mer information finns i hello artiklar på [planerar din infrastruktur för VM-säkerhetskopiering i Azure](backup-azure-vms-introduction.md) och [virtuella Azure-datorer](https://azure.microsoft.com/documentation/services/virtual-machines/).
+Mer information finns i artiklar på [planerar din infrastruktur för VM-säkerhetskopiering i Azure](backup-azure-vms-introduction.md) och [virtuella Azure-datorer](https://azure.microsoft.com/documentation/services/virtual-machines/).
 
-## <a name="triggering-hello-backup-job"></a>Utlösande hello säkerhetskopieringsjobb
-hello princip för säkerhetskopiering som är associerade med hello Recovery Services-valvet definierar när och hur ofta hello Säkerhetskopieringsåtgärden körs. Som standard är hello första schemalagd säkerhetskopiering hello första säkerhetskopian. Tills hello första säkerhetskopian inträffar hello senaste Status för säkerhetskopiering på hello **säkerhetskopieringsjobb** bladet visas som **varning (första säkerhetskopian väntande)**.
+## <a name="triggering-the-backup-job"></a>Utlöser säkerhetskopieringsjobbet
+Den säkerhetskopieringsprincip som är kopplade till Recovery Services-valvet definierar hur ofta och när Säkerhetskopieringsåtgärden körs. Som standard är den första säkerhetskopian i den första schemalagda säkerhetskopieringen. Innan den första säkerhetskopieringen har körts visas Status för senaste säkerhetskopiering på bladet **Säkerhetskopieringsjobb** som **Varning (första säkerhetskopiering väntar)**.
 
 ![Säkerhetskopiering väntar](./media/backup-azure-vms-first-look-arm/initial-backup-not-run.png)
 
-Om din första säkerhetskopian förfaller toobegin snart, rekommenderas att du kör **Säkerhetskopiera nu**. hello börjar följande procedur från instrumentpanelen för hello-valvet. Den här proceduren används för att köra hello inledande säkerhetskopieringsjobbet när du har slutfört alla krav. Den här proceduren är inte tillgängligt om hello inledande säkerhetskopieringsjobbet redan har körts. hello anger associerade säkerhetskopieringsprincip hello nästa säkerhetskopieringsjobb.  
+Såvida inte den första säkerhetskopieringen kommer att börja snart, rekommenderar vi att du kör **Säkerhetskopiera nu**. Följande procedur börjar från instrumentpanelen valvet. Den här proceduren används för att köra det inledande säkerhetskopieringsjobbet när du har slutfört alla krav. Den här proceduren är inte tillgängligt om inledande säkerhetskopieringsjobbet redan har körts. Den associera säkerhetskopieringsprincipen anger nästa säkerhetskopieringsjobb.  
 
-toorun hello inledande säkerhetskopieringsjobbet:
+Så här kör du det första säkerhetskopieringsjobbet:
 
-1. Hello valvet instrumentpanelen, klicka på hello antalet under **säkerhetskopiering objekt**, eller klicka på hello **säkerhetskopiering objekt** panelen. <br/>
+1. På instrumentpanelen för valvet klickar du på numret under **Säkerhetskopieringsobjekt**, eller på panelen **Säkerhetskopieringsobjekt**. <br/>
   ![Ikonen Inställningar](./media/backup-azure-vms-first-look-arm/rs-vault-config-vm-back-up-now-1.png)
 
-  Hej **säkerhetskopiering objekt** blad öppnas.
+  Bladet **Säkerhetskopieringsobjekt** öppnas.
 
   ![Säkerhetskopieringsobjekt](./media/backup-azure-vms-first-look-arm/back-up-items-list.png)
 
-2. På hello **säkerhetskopiering objekt** bladet, Välj hello-objektet.
+2. Välj objektet på bladet **Säkerhetskopieringsobjekt**.
 
   ![Ikonen Inställningar](./media/backup-azure-vms-first-look-arm/back-up-items-list-selected.png)
 
-  Hej **säkerhetskopiering objekt** lista öppnas. <br/>
+  Listan **Säkerhetskopieringsobjekt** öppnas. <br/>
 
   ![Säkerhetskopieringsjobbet utlöses](./media/backup-azure-vms-first-look-arm/backup-items-not-run.png)
 
-3. På hello **säkerhetskopiering objekt** klickar du på ellipserna hello **...**  tooopen hello snabbmenyn.
+3. Öppna snabbmenyn genom att klicka på ellipserna **...** i listan **Säkerhetskopieringsobjekt**.
 
   ![Snabbmeny](./media/backup-azure-vms-first-look-arm/context-menu.png)
 
-  hello snabbmenyn visas.
+  Snabbmenyn visas.
 
   ![Snabbmeny](./media/backup-azure-vms-first-look-arm/context-menu-small.png)
 
-4. Klicka på hello snabbmenyn **Säkerhetskopiera nu**.
+4. Klicka på **Säkerhetskopiera nu** på snabbmenyn.
 
   ![Snabbmeny](./media/backup-azure-vms-first-look-arm/context-menu-small-backup-now.png)
 
-  hello säkerhetskopiering nu blad öppnas.
+  Bladet Säkerhetskopiera nu öppnas.
 
-  ![Visar hello säkerhetskopiering nu bladet](./media/backup-azure-vms-first-look-arm/backup-now-blade-short.png)
+  ![Visar bladet Säkerhetskopiera nu](./media/backup-azure-vms-first-look-arm/backup-now-blade-short.png)
 
-5. På hello säkerhetskopiering nu bladet Klicka hello kalendern använder hello kalender kontrollen tooselect hello sista dagen återställningspunkten behålls Klicka på **säkerhetskopiering**.
+5. På bladet Säkerhetskopiera nu klickar du på kalenderikonen, använder kalenderkontrollen för att välja den sista dagen som den här återställningspunkten ska behållas och klickar sedan på **Säkerhetskopiera**.
 
-  ![Ange hello sista dag hello säkerhetskopiering nu återställningspunkten behålls](./media/backup-azure-vms-first-look-arm/backup-now-blade-calendar.png)
+  ![Ange den sista dagen som återställningspunkten som skapas med Säkerhetskopiera nu ska behållas](./media/backup-azure-vms-first-look-arm/backup-now-blade-calendar.png)
 
-  Distribution meddelanden att du vet hello jobbet har utlösts och att du kan övervaka hello hello jobb på sidan för hello säkerhetskopiering jobb. Beroende på hello storlek på den virtuella datorn, kan det ta en stund att skapa hello första säkerhetskopian.
+  Distributionsmeddelanden visas som anger att säkerhetskopieringsjobbet har initierats, och du kan övervaka förloppet för jobbet på sidan Säkerhetskopieringsjobb. Beroende på den virtuella datorns storlek kan det ta en stund att skapa den första säkerhetskopian.
 
-6. tooview och spåra hello status för hello första säkerhetskopian på hello valvet instrumentpanelen på hello **säkerhetskopieringsjobb** Klicka på panelen **pågår**.
+6. Du kan visa eller spåra statusen för den första säkerhetskopieringen genom att klicka på **Pågår** på panelen **Säkerhetskopieringsjobb** på instrumentpanelen för valvet.
 
   ![Panelen Säkerhetskopieringsjobb](./media/backup-azure-vms-first-look-arm/open-backup-jobs-1.png)
 
-  hello säkerhetskopieringsjobb blad öppnas.
+  Bladet Säkerhetskopieringsjobb öppnas.
 
   ![Panelen Säkerhetskopieringsjobb](./media/backup-azure-vms-first-look-arm/backup-jobs-in-jobs-view-1.png)
 
-  I hello **säkerhetskopiera jobb** bladet hittar du hello status för alla jobb. Kontrollera om hello säkerhetskopieringsjobbet för den virtuella datorn pågår fortfarande eller om den har slutförts. När ett säkerhetskopieringsjobb är klar är hello status *slutförd*.
+  Du kan se statusen för alla jobb på bladet **Säkerhetskopieringsjobb**. Kontrollera om säkerhetskopieringsjobbet för den virtuella datorn fortfarande körs, eller om det har slutförts. När säkerhetskopieringsjobbet är klart visas statusen *Slutfört*.
 
   > [!NOTE]
-  > Som en del av hello säkerhetskopieringsåtgärd utfärdar hello Azure Backup service kommandot toohello säkerhetskopiering filnamnstillägget i varje VM-tooflush alla skriver och utför en programkonsekvent ögonblicksbild.
+  > Som en del av säkerhetskopieringen skickar tjänsten Azure Backup ett kommando till säkerhetskopieringstillägget på varje virtuell dator som instruerar det att tömma alla skrivningar och använda en konsekvent ögonblicksbild.
   >
   >
 
 ## <a name="troubleshooting-errors"></a>Felsökning av fel
-Om du stöter på problem under säkerhetskopieringen för den virtuella datorn, se hello [VM felsökningsartikel](backup-azure-vms-troubleshoot.md) för hjälp.
+Om du stöter på problem när säkerhetskopiera den virtuella datorn finns på [VM felsökningsartikel](backup-azure-vms-troubleshoot.md) för hjälp.
 
 ## <a name="next-steps"></a>Nästa steg
-Nu när du har skyddat den virtuella datorn finns hello följande artiklar toolearn om VM hanteringsuppgifter och hur toorestore virtuella datorer.
+Nu när du har skyddat den virtuella datorn finns i följande artiklar om VM hanteringsuppgifter och återställa virtuella datorer.
 
 * [Hantera och övervaka dina virtuella datorer](backup-azure-manage-vms.md)
 * [Återställa virtuella datorer](backup-azure-arm-restore-vms.md)

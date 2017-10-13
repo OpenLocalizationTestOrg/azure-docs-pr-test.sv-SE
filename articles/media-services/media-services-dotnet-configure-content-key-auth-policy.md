@@ -1,6 +1,6 @@
 ---
-title: "aaaConfigure innehållsnyckelns auktoriseringsprincip med Media Services .NET SDK | Microsoft Docs"
-description: "Lär dig hur tooconfigure en auktoriseringsprincip för en innehållsnyckel med Media Services .NET SDK."
+title: "Konfigurera innehållsnyckelns auktoriseringsprincip med Media Services .NET SDK | Microsoft Docs"
+description: "Lär dig hur du konfigurerar en auktoriseringsprincip för en innehållsnyckel med Media Services .NET SDK."
 services: media-services
 documentationcenter: 
 author: Mingfeiy
@@ -14,27 +14,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: juliako;mingfeiy
-ms.openlocfilehash: cfcbc5da9819bcec8b163fef183988a8beff9ed2
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 75dd9107dca215a0b31db3d44bada69210fe9ac6
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="dynamic-encryption-configure-content-key-authorization-policy"></a>Dynamisk kryptering: Konfigurera innehållsnyckelns auktoriseringsprincip
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../includes/media-services-selector-content-key-auth-policy.md)]
 
 ## <a name="overview"></a>Översikt
-Microsoft Azure Media Services kan du toodeliver MPEG DASH, Smooth Streaming och HTTP Live Streaming (HLS)-dataströmmar som skyddas med Standard AES (Advanced Encryption) (med 128-bitars krypteringsnycklar) eller [Microsoft PlayReady DRM](https://www.microsoft.com/playready/overview/). AMS gör också att du toodeliver DASH-dataströmmar krypterat med Widevine DRM. Både PlayReady och Widevine krypteras enligt hello Common Encryption (ISO/IEC 23001 7 CENC)-specifikationen.
+Microsoft Azure Media Services kan du leverera MPEG DASH, Smooth Streaming och HTTP Live Streaming (HLS) dataströmmar som skyddas med Standard AES (Advanced Encryption) (med 128-bitars krypteringsnycklar) eller [Microsoft PlayReady DRM](https://www.microsoft.com/playready/overview/). AMS kan du leverera DASH krypterat med Widevine DRM-dataströmmar. Både PlayReady och Widevine krypteras enligt den gemensamma  krypteringsspecifikationen (ISO/IEC 23001 7 CENC).
 
-Media Services tillhandahåller också en **nyckel-/ Licensleveranstjänst** från vilka klienterna kan hämta AES-nycklar eller PlayReady/Widevine-licenser tooplay hello krypterat innehåll.
+Media Services tillhandahåller också en **nyckel-/ Licensleveranstjänst** från vilka klienterna kan hämta AES-nycklar eller PlayReady/Widevine-licenser för att spela upp det krypterade innehållet.
 
-Om du vill använda för Media Services tooencrypt en tillgång, behöver du tooassociate en krypteringsnyckel (**CommonEncryption** eller **EnvelopeEncryption**) med hello tillgången (enligt [här](media-services-dotnet-create-contentkey.md)) och även konfigurera auktoriseringsprinciper för hello nyckel (som beskrivs i den här artikeln).
+Om du vill använda för Media Services att kryptera en tillgång, måste du associera en krypteringsnyckel (**CommonEncryption** eller **EnvelopeEncryption**) med tillgången (enligt [här](media-services-dotnet-create-contentkey.md)) och även konfigurera auktoriseringsprinciper för nyckeln (som beskrivs i den här artikeln).
 
-När en dataströmmen har begärts av en spelare, använder Media Services hello angetts viktiga toodynamically kryptera ditt innehåll med hjälp av AES eller DRM-kryptering. toodecrypt hello dataströmmen hello player begär hello nyckeln från hello viktiga leverans av tjänsten. toodecide om huruvida användaren hello är godkänd tooget hello nyckel, hello tjänsten utvärderar hello auktoriseringsprinciper som du angav för hello nyckeln.
+När en dataströmmen har begärts av en spelare, använder Media Services den angivna nyckeln för att kryptera dynamiskt innehåll med AES eller DRM-kryptering. Om du vill dekryptera dataströmmen begär spelaren nyckeln från tjänsten nyckel. Om du vill avgöra om användaren har behörighet att hämta nyckel för utvärderar tjänsten auktoriseringsprinciper som du angav för nyckeln.
 
-Media Services stöder flera olika sätt att auktorisera användare som begär nycklar. Hej innehållsnyckelns auktoriseringsprincip kan ha en eller flera auktoriseringsbegränsningar: **öppna** eller **token** begränsning. Hej tokenbegränsade principen måste åtföljas av en token som utfärdas av en säker säkerhetstokentjänst (STS). Media Services stöder token i hello **Simple Web Tokens** ([SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)) format och **JSON Web Token** ([JWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3)) format.
+Media Services stöder flera olika sätt att auktorisera användare som begär nycklar. Principen för auktorisering av innehållsnyckel kan ha en eller flera auktoriseringsbegränsningar: **öppna** eller **token** begränsning. Den tokenbegränsade principen måste åtföljas av en token utfärdad av en säker tokentjänst (Secure Token Service – STS). Media Services stöder token i den **Simple Web Tokens** ([SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)) format och **JSON Web Token** ([JWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3)) format.
 
-Media Services tillhandahåller inte Secure Token tjänster. Du kan skapa en anpassad STS eller använda Microsoft Azure ACS tooissue token. hello STS måste vara konfigurerade toocreate en token som signerats med hello angiven nyckel och utfärda anspråk som du angav i hello tokenbegränsningar konfiguration (som beskrivs i den här artikeln). hello returnerar Media Services-tjänsten för leverans av nyckeln hello encryption key toohello klienten om hello token är giltig och hello anspråk i hello token som matchar de som konfigurerats för hello innehållsnyckeln.
+Media Services tillhandahåller inte Secure Token tjänster. Du kan skapa en anpassad STS eller använda Microsoft Azure ACS problemet tokens. STS måste konfigureras för att skapa en token som signerats med angiven nyckel och utfärda anspråk som du angav i tokenbegränsningar-konfiguration (som beskrivs i den här artikeln). Media Services viktiga tjänsten returneras krypteringsnyckeln till klienten om token är giltig och anspråk i token som matchar de som konfigurerats för innehållsnyckeln.
 
 Mer information finns i
 
@@ -42,22 +42,22 @@ Mer information finns i
 
 [Integrera Azure Media Services OWIN MVC baserat app med Azure Active Directory och begränsa viktiga innehållsleverans baserat på JWT anspråk](http://www.gtrifonov.com/2015/01/24/mvc-owin-azure-media-services-ad-integration/).
 
-[Använd Azure ACS tooissue token](http://mingfeiy.com/acs-with-key-services).
+[Använd Azure ACS problemet tokens](http://mingfeiy.com/acs-with-key-services).
 
 ### <a name="some-considerations-apply"></a>Vissa förutsättningar gäller:
-* När AMS-kontot skapas en **standard** strömningsslutpunkt har lagts till tooyour konto i hello **stoppad** tillstånd. toostart strömning ditt innehåll och dra nytta av dynamisk paketering och dynamisk kryptering, strömmande slutpunkten har toobe i hello **kör** tillstånd. 
+* När AMS-kontot skapas en **standard** strömningsslutpunkt har lagts till i ditt konto i den **stoppad** tillstånd. Om du vill starta strömning ditt innehåll och dra nytta av dynamisk paketering och dynamisk kryptering strömmande slutpunkten måste vara i den **kör** tillstånd. 
 * Din tillgång måste innehålla en uppsättning MP4s med anpassningsbar bithastighet eller Smooth Streaming-filer. Mer information finns i [koda en tillgång](media-services-encode-asset.md).
 * Ladda upp och koda dina tillgångar med **AssetCreationOptions.StorageEncrypted** alternativet.
-* Om du planerar toohave nycklar för multiinnehåll som kräver hello samma principkonfigurationer, det är starkt rekommenderat toocreate en enda auktoriseringsprincip och återanvända med nycklar för multiinnehåll.
-* hello nyckeln Delivery service cachelagrar ContentKeyAuthorizationPolicy och dess relaterade objekt (alternativ och begränsningar) i 15 minuter.  Om du skapar en ContentKeyAuthorizationPolicy och ange toouse ”Token” begränsning, och sedan testa den och sedan uppdatera hello-principen för ”öppna” begränsning, det tar ungefär 15 minuter innan hello princip växlar toohello ”öppen” version av hello-principen.
+* Om du planerar att ha flera nycklar för innehåll som kräver i samma konfiguration, rekommenderas att skapa en enda auktoriseringsprincip och återanvända med nycklar för multiinnehåll.
+* Tjänsten nyckeln cachelagrar ContentKeyAuthorizationPolicy och dess relaterade objekt (alternativ och begränsningar) i 15 minuter.  Om du skapar en ContentKeyAuthorizationPolicy och ange om du vill använda en ”Token” begränsning, testa, och uppdatera principen till ”öppen” begränsningen, det tar ungefär 15 minuter innan principen växlar till ”öppen” versionen av principen.
 * Om du lägger till eller uppdaterar din tillgångs leveransprincip måste du ta bort en befintlig lokaliserare (om sådan finns) och skapa en ny.
 * Det går för närvarande kryptera progressiv hämtning.
 
 ## <a name="aes-128-dynamic-encryption"></a>AES-128 dynamisk kryptering
 ### <a name="open-restriction"></a>Öppna begränsning
-Öppna begränsning innebär hello system levererar hello viktiga tooanyone som begär nycklar. Den här begränsningen kan vara användbart för testning.
+Öppna begränsning innebär systemet ger nyckeln till alla som begär nycklar. Den här begränsningen kan vara användbart för testning.
 
-hello följande exempel skapar en öppen auktoriseringsprincip och lägger till den toohello innehållsnyckeln.
+I följande exempel skapar en öppen auktoriseringsprincip och lägger till den innehållsnyckeln.
 
     static public void AddOpenAuthorizationPolicy(IContentKey contentKey)
     {
@@ -89,17 +89,17 @@ hello följande exempel skapar en öppen auktoriseringsprincip och lägger till 
 
         policy.Options.Add(policyOption);
 
-        // Add ContentKeyAutorizationPolicy tooContentKey
+        // Add ContentKeyAutorizationPolicy to ContentKey
         contentKey.AuthorizationPolicyId = policy.Id;
         IContentKey updatedKey = contentKey.UpdateAsync().Result;
-        Console.WriteLine("Adding Key tooAsset: Key ID is " + updatedKey.Id);
+        Console.WriteLine("Adding Key to Asset: Key ID is " + updatedKey.Id);
     }
 
 
 ### <a name="token-restriction"></a>Tokenbegränsningar
-Det här avsnittet beskrivs hur toocreate en innehåll nyckeln auktoriseringsprincip och koppla den till hello innehållsnyckeln. hello auktoriseringsprincip beskriver vilka behörighetskraven måste vara uppfyllda toodetermine hello användare som är auktoriserade tooreceive hello nyckeln (till exempel innehåller hello ”Verifieringsnyckeln” listan hello nyckel hello säkerhetstoken som har signerats med).
+Det här avsnittet beskrivs hur du skapar en princip för auktorisering av innehållsnyckel och associera det med innehållsnyckeln. Auktoriseringsprincipen beskriver vilka auktorisering krav måste uppfyllas för att avgöra om användaren har behörighet att ta emot nyckeln (till exempel innehåller listan ”Verifieringsnyckeln” innehålla den nyckel som token som signerats med).
 
-tooconfigure hello tokenbegränsningar alternativet behöver du toouse XML behörighetskraven toodescribe hello token. Hej tokenbegränsningar konfigurations-XML måste följa toohello följande XML-schema.
+Om du vill konfigurera alternativet tokenbegränsningar som du behöver använda en XML för att beskriva behörighetskraven för token. Tokenbegränsningar konfigurations-XML måste uppfylla följande XML-schema.
 
 #### <a id="schema"></a>Tokenbegränsningar schema
     <?xml version="1.0" encoding="utf-8"?>
@@ -149,10 +149,10 @@ tooconfigure hello tokenbegränsningar alternativet behöver du toouse XML behö
       <xs:element name="SymmetricVerificationKey" nillable="true" type="tns:SymmetricVerificationKey" />
     </xs:schema>
 
-När du konfigurerar hello **token** begränsad princip, måste du ange hello primära ** verifiering nyckeln **, **utfärdaren** och **målgruppen** parametrar. hello ** primära Verifieringsnyckeln ** innehåller hello-nyckel som hello token har signerats med, **utfärdaren** är hello säker tokentjänst problem hello säkerhetstoken. Hej **målgruppen** (kallas ibland **omfång**) beskriver hello avsikt hello-token eller hello resursen hello token auktoriserar åtkomst till. hello Media Services viktiga delivery service verifierar att dessa värden i hello token matchar hello värden i hello mallen. 
+När du konfigurerar den **token** begränsad princip, måste du ange den primära ** verifiering nyckeln **, **utfärdaren** och **målgruppen** parametrar. Den ** primära Verifieringsnyckeln ** innehåller den nyckel som token som signerats med, **utfärdaren** är den säkra tokentjänst som utfärdar token. Den **målgruppen** (kallas ibland **omfång**) beskriver syftet med token eller token auktoriserar åtkomst till resursen. Media Services viktiga tjänsten verifierar att dessa värden i token matchar värdena i mallen. 
 
-När du använder **Media Services SDK för .NET**, du kan använda hello **TokenRestrictionTemplate** toogenerate hello begränsning klasstoken.
-hello följande exempel skapar en auktoriseringsprincip med en token begränsning. I det här exemplet hello klienten skulle ha toopresent en token som innehåller: signering nyckel (VerificationKey), en token utfärdare och nödvändiga anspråk.
+När du använder **Media Services SDK för .NET**, du kan använda den **TokenRestrictionTemplate** klassen för att skapa begränsning-token.
+I följande exempel skapas en auktoriseringsprincip med en token begränsning. I det här exemplet klienten skulle ha presentera en token som innehåller: signering nyckel (VerificationKey), en token utfärdare och nödvändiga anspråk.
 
     public static string AddTokenRestrictedAuthorizationPolicy(IContentKey contentKey)
     {
@@ -186,10 +186,10 @@ hello följande exempel skapar en auktoriseringsprincip med en token begränsnin
 
         policy.Options.Add(policyOption);
 
-        // Add ContentKeyAutorizationPolicy tooContentKey
+        // Add ContentKeyAutorizationPolicy to ContentKey
         contentKey.AuthorizationPolicyId = policy.Id;
         IContentKey updatedKey = contentKey.UpdateAsync().Result;
-        Console.WriteLine("Adding Key tooAsset: Key ID is " + updatedKey.Id);
+        Console.WriteLine("Adding Key to Asset: Key ID is " + updatedKey.Id);
 
         return tokenTemplateString;
     }
@@ -209,36 +209,36 @@ hello följande exempel skapar en auktoriseringsprincip med en token begränsnin
     }
 
 #### <a id="test"></a>Test-token
-tooget en test-token baserat på hello tokenbegränsningar som användes för nyckelauktoriseringsprincipen för hello, hello följande.
+Gör följande för att få en test-token baserat på de tokenbegränsningar som användes för nyckelauktoriseringsprincipen.
 
     // Deserializes a string containing an Xml representation of a TokenRestrictionTemplate
     // back into a TokenRestrictionTemplate class instance.
     TokenRestrictionTemplate tokenTemplate =
         TokenRestrictionTemplateSerializer.Deserialize(tokenTemplateString);
 
-    // Generate a test token based on hello hello data in hello given TokenRestrictionTemplate.
-    // Note, you need toopass hello key id Guid because we specified 
-    // TokenClaim.ContentKeyIdentifierClaim in during hello creation of TokenRestrictionTemplate.
+    // Generate a test token based on the the data in the given TokenRestrictionTemplate.
+    // Note, you need to pass the key id Guid because we specified 
+    // TokenClaim.ContentKeyIdentifierClaim in during the creation of TokenRestrictionTemplate.
     Guid rawkey = EncryptionUtils.GetKeyIdAsGuid(key.Id);
 
-    //hello GenerateTestToken method returns hello token without hello word “Bearer” in front
-    //so you have tooadd it in front of hello token string. 
+    //The GenerateTestToken method returns the token without the word “Bearer” in front
+    //so you have to add it in front of the token string. 
     string testToken = TokenRestrictionTemplateSerializer.GenerateTestToken(tokenTemplate, null, rawkey);
-    Console.WriteLine("hello authorization token is:\nBearer {0}", testToken);
+    Console.WriteLine("The authorization token is:\nBearer {0}", testToken);
     Console.WriteLine();
 
 
 ## <a name="playready-dynamic-encryption"></a>PlayReady-dynamisk kryptering
-Media Services kan du tooconfigure hello behörigheter och begränsningar som du vill för hello PlayReady DRM runtime tooenforce när en användare försöker tooplay tillbaka skyddat innehåll. 
+Media Services kan du konfigurera behörigheter och begränsningar som du vill använda för PlayReady DRM-körningsmiljön att tvinga när en användare försöker att spela upp skyddat innehåll. 
 
-När du skyddar ditt innehåll med PlayReady hello saker du behöver toospecify i principen för auktorisering är en XML-sträng som definierar hello [PlayReady-licensmall](media-services-playready-license-template-overview.md). I Media Services SDK för .NET hello **PlayReadyLicenseResponseTemplate** och **PlayReadyLicenseTemplate** klasser hjälper dig att definiera hello PlayReady License-mall.
+När du skyddar ditt innehåll med PlayReady, en av de saker som du måste ange i principen för auktorisering är en XML-sträng som definierar den [PlayReady-licensmall](media-services-playready-license-template-overview.md). I Media Services SDK för .NET, den **PlayReadyLicenseResponseTemplate** och **PlayReadyLicenseTemplate** klasser hjälper dig att definiera PlayReady License-mall.
 
-[Det här avsnittet](media-services-protect-with-drm.md) visar hur tooencrypt ditt innehåll med **PlayReady** och **Widevine**.
+[Det här avsnittet](media-services-protect-with-drm.md) visar hur du krypterar ditt innehåll med **PlayReady** och **Widevine**.
 
 ### <a name="open-restriction"></a>Öppna begränsning
-Öppna begränsning innebär hello system levererar hello viktiga tooanyone som begär nycklar. Den här begränsningen kan vara användbart för testning.
+Öppna begränsning innebär systemet ger nyckeln till alla som begär nycklar. Den här begränsningen kan vara användbart för testning.
 
-hello följande exempel skapar en öppen auktoriseringsprincip och lägger till den toohello innehållsnyckeln.
+I följande exempel skapar en öppen auktoriseringsprincip och lägger till den innehållsnyckeln.
 
     static public void AddOpenAuthorizationPolicy(IContentKey contentKey)
     {
@@ -272,13 +272,13 @@ hello följande exempel skapar en öppen auktoriseringsprincip och lägger till 
 
         contentKeyAuthorizationPolicy.Options.Add(policyOption);
 
-        // Associate hello content key authorization policy with hello content key.
+        // Associate the content key authorization policy with the content key.
         contentKey.AuthorizationPolicyId = contentKeyAuthorizationPolicy.Id;
         contentKey = contentKey.UpdateAsync().Result;
     }
 
 ### <a name="token-restriction"></a>Tokenbegränsningar
-tooconfigure hello tokenbegränsningar alternativet behöver du toouse XML behörighetskraven toodescribe hello token. Hej tokenbegränsningar konfigurations-XML måste uppfylla toohello XML-schemat visas i [detta](#schema) avsnitt.
+Om du vill konfigurera alternativet tokenbegränsningar som du behöver använda en XML för att beskriva behörighetskraven för token. Konfigurationen av tokenbegränsningar XML måste motsvara det XML-schemat visas i [detta](#schema) avsnitt.
 
     public static string AddTokenRestrictedAuthorizationPolicy(IContentKey contentKey)
     {
@@ -313,10 +313,10 @@ tooconfigure hello tokenbegränsningar alternativet behöver du toouse XML behö
 
         policy.Options.Add(policyOption);
 
-        // Add ContentKeyAutorizationPolicy tooContentKey
+        // Add ContentKeyAutorizationPolicy to ContentKey
         contentKeyAuthorizationPolicy.Options.Add(policyOption);
 
-        // Associate hello content key authorization policy with hello content key
+        // Associate the content key authorization policy with the content key
         contentKey.AuthorizationPolicyId = contentKeyAuthorizationPolicy.Id;
         contentKey = contentKey.UpdateAsync().Result;
 
@@ -341,42 +341,42 @@ tooconfigure hello tokenbegränsningar alternativet behöver du toouse XML behö
 
     static private string ConfigurePlayReadyLicenseTemplate()
     {
-        // hello following code configures PlayReady License Template using .NET classes
-        // and returns hello XML string.
+        // The following code configures PlayReady License Template using .NET classes
+        // and returns the XML string.
 
-        //hello PlayReadyLicenseResponseTemplate class represents hello template for hello response sent back toohello end user. 
-        //It contains a field for a custom data string between hello license server and hello application 
+        //The PlayReadyLicenseResponseTemplate class represents the template for the response sent back to the end user. 
+        //It contains a field for a custom data string between the license server and the application 
         //(may be useful for custom app logic) as well as a list of one or more license templates.
         PlayReadyLicenseResponseTemplate responseTemplate = new PlayReadyLicenseResponseTemplate();
 
-        // hello PlayReadyLicenseTemplate class represents a license template for creating PlayReady licenses
-        // toobe returned toohello end users. 
-        //It contains hello data on hello content key in hello license and any rights or restrictions toobe 
-        //enforced by hello PlayReady DRM runtime when using hello content key.
+        // The PlayReadyLicenseTemplate class represents a license template for creating PlayReady licenses
+        // to be returned to the end users. 
+        //It contains the data on the content key in the license and any rights or restrictions to be 
+        //enforced by the PlayReady DRM runtime when using the content key.
         PlayReadyLicenseTemplate licenseTemplate = new PlayReadyLicenseTemplate();
-        //Configure whether hello license is persistent (saved in persistent storage on hello client) 
-        //or non-persistent (only held in memory while hello player is using hello license).  
+        //Configure whether the license is persistent (saved in persistent storage on the client) 
+        //or non-persistent (only held in memory while the player is using the license).  
         licenseTemplate.LicenseType = PlayReadyLicenseType.Nonpersistent;
 
-        // AllowTestDevices controls whether test devices can use hello license or not.  
-        // If true, hello MinimumSecurityLevel property of hello license
-        // is set too150.  If false (hello default), hello MinimumSecurityLevel property of hello license is set too2000.
+        // AllowTestDevices controls whether test devices can use the license or not.  
+        // If true, the MinimumSecurityLevel property of the license
+        // is set to 150.  If false (the default), the MinimumSecurityLevel property of the license is set to 2000.
         licenseTemplate.AllowTestDevices = true;
 
 
-        // You can also configure hello Play Right in hello PlayReady license by using hello PlayReadyPlayRight class. 
-        // It grants hello user hello ability tooplayback hello content subject toohello zero or more restrictions 
-        // configured in hello license and on hello PlayRight itself (for playback specific policy). 
-        // Much of hello policy on hello PlayRight has toodo with output restrictions 
-        // which control hello types of outputs that hello content can be played over and 
+        // You can also configure the Play Right in the PlayReady license by using the PlayReadyPlayRight class. 
+        // It grants the user the ability to playback the content subject to the zero or more restrictions 
+        // configured in the license and on the PlayRight itself (for playback specific policy). 
+        // Much of the policy on the PlayRight has to do with output restrictions 
+        // which control the types of outputs that the content can be played over and 
         // any restrictions that must be put in place when using a given output.
-        // For example, if hello DigitalVideoOnlyContentRestriction is enabled, 
-        //then hello DRM runtime will only allow hello video toobe displayed over digital outputs 
-        //(analog video outputs won’t be allowed toopass hello content).
+        // For example, if the DigitalVideoOnlyContentRestriction is enabled, 
+        //then the DRM runtime will only allow the video to be displayed over digital outputs 
+        //(analog video outputs won’t be allowed to pass the content).
 
-        //IMPORTANT: These types of restrictions can be very powerful but can also affect hello consumer experience. 
-        // If hello output protections are configured too restrictive, 
-        // hello content might be unplayable on some clients. For more information, see hello PlayReady Compliance Rules document.
+        //IMPORTANT: These types of restrictions can be very powerful but can also affect the consumer experience. 
+        // If the output protections are configured too restrictive, 
+        // the content might be unplayable on some clients. For more information, see the PlayReady Compliance Rules document.
 
         // For example:
         //licenseTemplate.PlayRight.AgcAndColorStripeRestriction = new AgcAndColorStripeRestriction(1);
@@ -387,7 +387,7 @@ tooconfigure hello tokenbegränsningar alternativet behöver du toouse XML behö
     }
 
 
-tooget en test-token baserat på hello tokenbegränsningar som användes för hello auktorisering av innehållsnyckel princip Se [detta](#test) avsnitt. 
+Att hämta en token för test baserat på de tokenbegränsningar som användes för auktorisering av innehållsnyckel princip Se [detta](#test) avsnitt. 
 
 ## <a id="types"></a>Typer som används när du definierar ContentKeyAuthorizationPolicy
 ### <a id="ContentKeyRestrictionType"></a>ContentKeyRestrictionType
@@ -424,5 +424,5 @@ tooget en test-token baserat på hello tokenbegränsningar som användes för he
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-step"></a>Nästa steg
-Nu när du har konfigurerat innehållsnyckelns auktoriseringsprincip gå toohello [hur tooconfigure tillgångsleveransprincip](media-services-dotnet-configure-asset-delivery-policy.md) avsnittet.
+Nu när du har konfigurerat innehållsnyckelns auktoriseringsprincip, gå till den [konfigurera tillgångsleveransprincip](media-services-dotnet-configure-asset-delivery-policy.md) avsnittet.
 

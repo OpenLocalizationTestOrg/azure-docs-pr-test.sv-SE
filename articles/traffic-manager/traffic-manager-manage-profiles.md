@@ -1,5 +1,5 @@
 ---
-title: aaaManage Azure Traffic Manager-profiler | Microsoft Docs
+title: Hantera Azure Traffic Manager-profiler | Microsoft Docs
 description: "Den här artikeln beskriver hur du skapar, inaktiverar, aktiverar och tar bort en Azure Traffic Manager-profil."
 services: traffic-manager
 documentationcenter: 
@@ -14,58 +14,58 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/10/2017
 ms.author: kumud
-ms.openlocfilehash: 0c6ab0c451581d039514a9de0b525b3937e45a85
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: a5164282264124835692bc72a4ab61891aa7af9d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-an-azure-traffic-manager-profile"></a>Hantera en Azure Traffic Manager-profil
 
-Traffic Manager-profiler använder Routning av nätverkstrafik metoder toocontrol hello fördelning av trafik tooyour molntjänster eller webbplats slutpunkter. Den här artikeln förklarar hur toocreate och hantera profilerna.
+Traffic Manager-profiler använder trafikroutningsmetoder för att kontrollera trafikdistributionen till dina molntjänster eller webbplats-slutpunkter. Den här artikeln förklarar hur du skapar och hanterar de här profilerna.
 
 ## <a name="create-a-traffic-manager-profile"></a>Skapa en Traffic Manager-profil
 
-Du kan skapa en Traffic Manager-profil med hjälp av hello Azure-portalen. När du har skapat din profil, kan du konfigurera slutpunkter, övervakning och andra inställningar i hello Azure-portalen. Traffic Manager stöder upp too200 slutpunkter per profil. De flesta användningsscenarier kräver dock endast ett litet antal slutpunkter.
+Du kan skapa en Traffic Manager-profil med Azure Portal. När du har skapat din profil kan du konfigurera slutpunkter, övervakning och andra inställningar på Azure Portal. Traffic Manager har stöd för upp till 200 slutpunkter per profil. De flesta användningsscenarier kräver dock endast ett litet antal slutpunkter.
 
-### <a name="toocreate-a-traffic-manager-profile"></a>toocreate en trafikhanterarprofil
+### <a name="to-create-a-traffic-manager-profile"></a>Skapa en Traffic Manager-profil
 
-1. Inloggning från en webbläsare, toohello [Azure-portalen](http://portal.azure.com). Om du inte redan har ett konto kan du [registrera dig för en kostnadsfri utvärderingsmånad](https://azure.microsoft.com/free/). 
-2. På hello **hubb** -menyn klickar du på **ny** > **nätverk** > **se alla**, klickar du på **trafik Manager** profil tooopen hello **skapa Traffic Manager-profilen** bladet Klicka **skapa**.
-3. På hello **skapa Traffic Manager-profilen** bladet slutförts enligt följande:
-    1. Ge profilen ett namn i **Namn**. Det här namnet måste toobe unika inom hello trafficmanager.net zon och resulterar i hello DNS-namnet <name>, trafficmanager.net som används tooaccess Traffic Manager-profilen.
-    2. I **routningsmetod**väljer hello **prioritet** routningsmetoden.
-    3. I **prenumeration**, Välj hello-prenumeration som du vill att toocreate profilen under
-    4. I **resursgruppen**, och skapa en ny resurs grupp tooplace profilen under.
-    5. I **resursgruppsplats**, Välj hello plats hello resursgruppen. Den här inställningen refererar toohello platsen för hello resursgruppen och har ingen inverkan på hello Traffic Manager-profilen som ska distribueras globalt.
+1. Logga in på [Azure Portal](http://portal.azure.com) från en webbläsare. Om du inte redan har ett konto kan du [registrera dig för en kostnadsfri utvärderingsmånad](https://azure.microsoft.com/free/). 
+2. På menyn **Hub** (Hubb) klickar du på **New** (Ny) > **Nätverk** > **See all** (Visa alla), klicka på **Traffic Manager**-profilen för att öppna bladet **Skapa Traffic Manager-profil** och sedan på **Skapa**.
+3. På bladet **Skapa Traffic Manager-profil** gör du följande:
+    1. Ge profilen ett namn i **Namn**. Namnet måste var unikt inom trafficmanager.net-zonen och genererar DNS-namnet <name>, trafficmanager.net, som används för att öppna din Traffic Manager-profil.
+    2. I **Routningsmetod** väljer du routningsmetoden **Priority** (Prioritet).
+    3. I **Prenumeration** väljer du den prenumeration du vill skapa profilen under
+    4. I **Resursgrupp** skapar du en ny resursgrupp att placera profilen under.
+    5. I **Resursgruppsplats** väljer du plats för resursgruppen. Inställningen refererar till platsen för resursgruppen och har ingen inverkan på Traffic Manager-profilen som distribueras globalt.
     6. Klicka på **Skapa**.
-    7. När hello globala distribution av Traffic Manager-profilen är klar visas den i respektive resursgruppen som en hello resurser.
+    7. När den globala distribueringen av din Traffic Manager-profil är klar listas den i respektive resursgrupp som en av resurserna.
 
 ## <a name="disable-enable-or-delete-a-profile"></a>Inaktivera, aktivera eller ta bort en profil
 
-Du kan inaktivera en befintlig profil så att trafik Manager inte refererar användaren begäranden toohello konfigurerade slutpunkter. När du inaktiverar en Traffic Manager-profil hello profil och hello information i hello profil förblir intakta och kan redigeras i hello Traffic Manager-gränssnittet.  Referenser återuppta när du återaktivera hello profil. När du skapar en Traffic Manager-profilen i hello Azure-portalen aktiveras den automatiskt. Om en bestämmer att en profil inte längre behövs, kan du ta bort den.
+Du kan inaktivera en befintlig profil så att Traffic Manager inte refererar användarbegäranden till de konfigurerade slutpunkterna. När du inaktiverar en Traffic Manager-profil, finns själva profilen och informationen den innehåller kvar och kan redigeras i Traffic Manager-gränssnittet.  Referenser återupptas när du återaktiverar profilen. När du skapar en Traffic Manager-profil i Azure-portalen så aktiveras den automatiskt. Om en bestämmer att en profil inte längre behövs, kan du ta bort den.
 
-### <a name="toodisable-a-profile"></a>toodisable en profil
+### <a name="to-disable-a-profile"></a>Så här inaktiverar du en profil
 
-1. Om du använder ett anpassat domännamn, ändra hello CNAME-post på Internet-DNS-servern så att den inte längre pekar tooyour Traffic Manager-profilen.
-2. Trafiken slutar att dirigeras toohello slutpunkterna via hello Traffic Manager-profilinställningarna.
-3. Inloggning från en webbläsare, toohello [Azure-portalen](http://portal.azure.com).
-2. I sökfältet hello-portalen, söka efter hello **trafikhanterarprofil** namn som du vill toomodify och klicka sedan på hello Traffic Manager-profilen i hello resulterar det hello visas.
-3. I hello **trafikhanterarprofil** bladet klickar du på **översikt**, hello översikt-bladet klickar du på **inaktivera**, och sedan bekräfta toodisable hello Traffic Manager-profilen.
+1. Om du använder ett anpassat domännamn, ändra då CNAME-posten på din Internet-DNS-server så att den inte längre pekar mot din Traffic Manager-profil.
+2. Trafiken slutar att dirigeras till slutpunkterna via Traffic Manager-profilinställningarna.
+3. Logga in på [Azure Portal](http://portal.azure.com) från en webbläsare.
+2. Leta efter namnet på **Traffic Manager-profilen** som du vill modifiera och klicka sedan på Traffic Manager-profilen i resultaten som visas.
+3. På bladet **Traffic Manager-profil** klickar du på **Översikt**, i bladet Översikt klickar du på **Inaktivera** och bekräftar sedan för att inaktivera Traffic Manager-profilen.
 
-### <a name="tooenable-a-profile"></a>tooenable en profil
+### <a name="to-enable-a-profile"></a>Så här aktiverar du en profil
 
-1. Inloggning från en webbläsare, toohello [Azure-portalen](http://portal.azure.com).
-2. I sökfältet hello-portalen, söka efter hello **trafikhanterarprofil** namn som du vill toomodify och klicka sedan på hello Traffic Manager-profilen i hello resulterar det hello visas.
-3. I hello **trafikhanterarprofil** bladet, klickar du på **översikt**, och klicka sedan på i hello översikt bladet **aktivera**.
-5. Om du använder ett anpassat domännamn kan du skapa en CNAME-resursposten på din Internet-DNS-server toopoint toohello domännamnet för Traffic Manager-profilen.
-6. Trafiken är riktat toohello slutpunkter igen.
+1. Logga in på [Azure Portal](http://portal.azure.com) från en webbläsare.
+2. Leta efter namnet på **Traffic Manager-profilen** som du vill modifiera och klicka sedan på Traffic Manager-profilen i resultaten som visas.
+3. I bladet **Traffic Manager-profil** klickar du på **Översikt** och sedan på bladet Översikt klickar du på **Aktivera**.
+5. Om du använder ett anpassat domännamn, skapar du en CNAME-resurspost på din Internet-DNS-server som pekar mot domännamnet för din Traffic Manager-profil.
+6. Trafiken börjar dirigeras till slutpunkterna igen.
 
-### <a name="toodelete-a-profile"></a>toodelete en profil
+### <a name="to-delete-a-profile"></a>Så här tar du bort en profil
 
-1. Kontrollera att hello DNS-resursposten på Internet-DNS-servern inte längre använder en CNAME-resurspost som pekar toohello domännamnet för Traffic Manager-profilen.
-2. I sökfältet hello-portalen, söka efter hello **trafikhanterarprofil** namn som du vill toomodify och klicka sedan på hello Traffic Manager-profilen i hello resulterar det hello visas.
-3. I hello **trafikhanterarprofil** bladet klickar du på **översikt**, hello översikt-bladet klickar du på **ta bort**, och sedan bekräfta toodelete hello Traffic Manager-profilen.
+1. Kontrollera att DNS-resursposten på Internet-DNS-servern inte längre använder en CNAME-resurspost som pekar på domännamnet för Traffic Manager-profilen.
+2. Leta efter namnet på **Traffic Manager-profilen** som du vill modifiera och klicka sedan på Traffic Manager-profilen i resultaten som visas.
+3. På bladet **Traffic Manager-profil** klickar du på **Översikt**, i bladet Översikt klickar du på **Ta bort** och bekräftar sedan för att ta bort Traffic Manager-profilen.
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure Multi-Factor Authentication-dokumentation – självstudier, API-referens | Microsoft Docs"
-description: "Lär dig hur toodeploy multifaktorautentisering med en mängd verifieringsmetoderna som tillhandahåller en enkel inloggning process. Självstudier, en SDK och mycket mer."
+title: "Dokumentation om Azure Multi-factor Authentication – Självstudier, API-referens | Microsoft Docs"
+description: "Lär dig hur du distribuerar Multi-Factor Authentication med en mängd verifieringsmetoder som ger en enkel inloggningsprocess. Självstudier, en SDK och mycket mer."
 services: multi-factor-authentication
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 0ede2ad48a3d4e756aeb0b1f6bc0e07e4e7b1fcc
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 25c21170df0ae5ef3dc57943448963059550fa1b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="multi-factor-authentication-documentation"></a>Dokumentation om Multi-Factor Authentication
 
-Lär dig hur toodeploy och hantera Azure Multi-Factor Authentication, verifiering för tvåstegsverifiering identitetssystem. Självstudier, en SDK och andra dokumentationen visar hur toodeliver stark autentisering med en mängd verifieringsmetoderna samtidigt som en process för enkel inloggning.
+Lär dig att distribuera och hantera Azure Multi-Factor Authentication, ett tvåstegssystem för identitetsverifiering. Självstudier, en SDK och annan dokumentation visar hur du kan leverera stark autentisering med en mängd verifieringsmetoder tillsammans med en enkel inloggningsprocess.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -88,7 +88,7 @@ Lär dig hur toodeploy och hantera Azure Multi-Factor Authentication, verifierin
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Kom igång med Azure Multi-Factor Authentication i molnet hello</h3>
+                        <h3>Kom igång med Azure Multi-Factor Authentication i molnet</h3>
                     </div>
                 </div>
             </div>

@@ -1,8 +1,8 @@
-hello visar följande tabell hello gateway-typer och hello uppskattade sammanställda genomflöde av gateway-SKU. Den här tabellen gäller toohello Resource Manager och klassiska distributionsmodeller. 
+Följande tabell visar gateway-typerna och beräknat aggregerat dataflöde efter gateway-SKU. Den här tabellen gäller för Resource Manager och klassiska distributionsmodeller. 
 
 Prissättningen skiljer sig åt mellan gateway-SKU:er. Mer information finns i [Prissättning för VPN-gateway](https://azure.microsoft.com/pricing/details/vpn-gateway).
 
-Observera att hello UltraPerformance gateway-SKU inte representeras i den här tabellen. Information om hello UltraPerformance SKU finns hello [ExpressRoute](../articles/expressroute/expressroute-about-virtual-network-gateways.md) dokumentation.
+Observera att UltraPerformance gateway-SKU inte visas i den här tabellen. Information om UltraPerformance SKU finns i [ExpressRoute](../articles/expressroute/expressroute-about-virtual-network-gateways.md)-dokumentationen.
 
 |  | **VPN Gateway-genomflöde (1)** | **VPN Gateway, max. IPsec-tunnlar (2)** | **ExpressRoute-gateway, genomflöde** | **VPN-gateway och ExpressRoute samexisterar** |
 | --- | --- | --- | --- | --- |
@@ -11,14 +11,14 @@ Observera att hello UltraPerformance gateway-SKU inte representeras i den här t
 | **High Performance SKU (4)** |200 Mbit/s |30 |2000 Mbps |Ja |
 
 
-(1) hello VPN-genomströmning är en grov uppskattning baserat på hello mätningar mellan Vnet i hello samma Azure-region. Det är inte en garanterad genomströmning för anslutningar mellan platser över hello Internet. Det är hello högsta möjliga genomströmningen mått.
+(1) VPN-genomströmning är en grov uppskattning baserat på mätningar mellan VNet i samma Azure-region. Det här är ingen garanterad genomströmning för anslutningar mellan olika platser via Internet. Värdet utgör dock högsta möjliga genomflöde.
 
-(2) hello antalet tunnlar innebär tooRouteBased VPN. En principbaserad VPN stöder bara en VPN-tunnel av typen plats-till-plats.
+(2) Antalet tunnlar refererar till ruttbaserad VPN. En principbaserad VPN stöder bara en VPN-tunnel av typen plats-till-plats.
 
-(3) BGP stöds inte för hello grundläggande SKU.
+(3) BGP stöds inte för Basic-SKU:n.
 
-(4) Principbaserade VPN:er stöds inte för den här SKU:n. De stöds för hello grundläggande SKU.
+(4) Principbaserade VPN:er stöds inte för den här SKU:n. De stöds bara för Basic-SKU:n.
 
-(5) S2S VPN-Gateway-anslutningar av typen aktiv-aktiv stöds inte för denna SKU. Aktiv-aktiv stöds på hello HighPerformance SKU.
+(5) S2S VPN-Gateway-anslutningar av typen aktiv-aktiv stöds inte för denna SKU. Aktiv-aktiv stöds enbart på HighPerformance SKU.
 
 (6) grundläggande SKU är föråldrad för användning med ExpressRoute.

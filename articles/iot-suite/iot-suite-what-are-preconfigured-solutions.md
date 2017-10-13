@@ -1,6 +1,6 @@
 ---
-title: "aaaAzure IoT förkonfigurerade lösningar | Microsoft Docs"
-description: "En beskrivning av hello Azure IoT förkonfigurerade lösningar och deras arkitektur med länkar tooadditional resurser."
+title: "Förkonfigurerade lösningar i Azure IoT | Microsoft Docs"
+description: "En beskrivning av de förkonfigurerade lösningarna i Azure IoT och deras arkitektur med länkar till ytterligare resurser."
 services: 
 suite: iot-suite
 documentationcenter: 
@@ -15,27 +15,27 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2017
 ms.author: dobett
-ms.openlocfilehash: bd059d08ab458fdb0b6f49b3ac469db930dab09e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: e0e79cb3b4c71c5d424f3b46af72fcb8b2f63ead
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="what-are-hello-azure-iot-suite-preconfigured-solutions"></a>Vad är hello Azure IoT Suite förkonfigurerade lösningar?
+# <a name="what-are-the-azure-iot-suite-preconfigured-solutions"></a>Vad är förkonfigurerade lösningar i Azure IoT Suite?
 
-hello Azure IoT Suite förkonfigurerade lösningar är implementeringar av vanliga mönster för IoT-lösningen som du distribuerar tooAzure med din prenumeration. Du kan använda hello förkonfigurerade lösningar:
+De förkonfigurerade lösningarna i Azure IoT Suite är implementeringar av vanliga IoT-lösningsmönster som du kan distribuera till Azure via din prenumeration. Du kan använda de förkonfigurerade lösningarna:
 
 * Som en startpunkt för dina egna IoT-lösningar.
-* toolearn om vanliga mönster i IoT-lösningen och utveckling.
+* Mer information om vanliga mönster i utformningen och utvecklingen av IoT-lösningar.
 
-Varje förkonfigurerade lösningen är en fullständig, slutpunkt-till-slutpunkt-implementering som använder simulerade enheter toogenerate telemetri.
+Varje förkonfigurerad lösning är en fullständig implementering från slutpunkt till slutpunkt som använder simulerade enheter för att generera telemetri.
 
-Du kan hämta hello fullständig källa kod toocustomize och utöka hello lösning toomeet dina specifika IoT-krav.
+Du kan ladda ned den fullständiga källkoden för att anpassa och utöka lösningen så att den uppfyller dina specifika IoT-krav.
 
 > [!NOTE]
-> toodeploy något av hello förkonfigurerade lösningar, besök [Microsoft Azure IoT Suite][lnk-azureiotsuite]. hello artikel [Kom igång med hello IoT förkonfigurerade lösningar] [ lnk-getstarted-preconfigured] innehåller mer information om hur toodeploy och kör något av hello lösningar.
+> Om du vill distribuera någon av de förkonfigurerade lösningarna besöker du [Microsoft Azure IoT Suite][lnk-azureiotsuite]. Artikeln [Komma igång med förkonfigurerade IoT-lösningar][lnk-getstarted-preconfigured] innehåller mer information om hur du distribuerar och kör lösningarna.
 
-hello följande tabell visar hur hello lösningar mappa toospecific IoT-funktioner:
+Följande tabell visar hur lösningarna mappar till specifika IoT-funktioner:
 
 | Lösning | Datainhämtning | Enhetsidentitet | Enhetshantering | Kommando och kontroll | Regler och åtgärder | Förutsägelseanalys |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -43,64 +43,64 @@ hello följande tabell visar hur hello lösningar mappa toospecific IoT-funktion
 | [Förebyggande underhåll][lnk-predictive-maintenance] |Ja |Ja |- |Ja |Ja |Ja |
 | [Ansluten fabrik][lnk-getstarted-factory] |Ja |Ja |Ja |Ja |Ja |- |
 
-* *Datapåfyllning*: ingång av data vid skala toohello moln.
-* *Enhetsidentitet*: hantera unikt enhets identiteter och styra enheten toohello lösning.
+* *Datainhämtning*: Inhämtning av data till molnet i hög skala.
+* *Enhetsidentitet*: Hantera unika enhetsidentiteter och kontrollera enhetsåtkomst till lösningen.
 * *Enhetshantering*: Hantera enhetsmetadata och utför åtgärder som omstarter av enheten och uppgraderingar av den inbyggda programvaran.
-* *Kommando- och*: toocause hello enheten tootake en åtgärd, skicka meddelanden tooa enheten från hello molnet.
-* *Regler och åtgärder*: tooact på specifika enhet till moln data, hello lösningens serverdel använder regler.
-* *Förutsägelseanalyser*: hello lösningens serverdel analyserar data för enhet till moln toopredict när specifika åtgärder ska utföras. Till exempel analysera flygplan motorn telemetri toodetermine när motorn Underhåll förfaller.
+* *Kommando och kontroll*: Skicka meddelanden till en enhet från molnet för att utlösa en åtgärd på enheten.
+* *Regler och åtgärder*: Lösningens serverdel använder regler för att agera på specifika data från enheten till molnet.
+* *Förutsägelseanalys*: Lösningens backend-server analyserar data från enheten till molnet för att förutsäga när specifika åtgärder ska äga rum. Lösningen kan till exempel analysera telemetri från en flygplansmotor för att fastställa när motorunderhåll krävs.
 
 ## <a name="remote-monitoring-preconfigured-solution-overview"></a>Översikt över den förkonfigurerade lösningen för fjärrövervakning
 
-Vi har valt toodiscuss hello fjärråtkomst övervakning förkonfigurerade lösning i den här artikeln eftersom det visar många vanliga designelement som hello andra lösningar för resursen.
+Vi har valt att diskutera den förkonfigurerade lösningen för fjärrövervakning i den här artikeln eftersom den illustrerar många vanliga designelement som finns i de andra lösningarna.
 
-hello illustrerar följande diagram hello viktiga delar i hello remote övervakningslösning. hello innehåller följande avsnitt mer information om de här elementen.
+Följande diagram illustrerar de viktigaste elementen i fjärrövervakningslösningen. Följande avsnitt innehåller mer information om dessa element.
 
 ![Arkitekturen i den förkonfigurerade lösningen för fjärrövervakning][img-remote-monitoring-arch]
 
 ## <a name="devices"></a>Enheter
 
-När du distribuerar hello remote förkonfigurerade övervakningslösning är fyra simulerade enheter företablerad i hello-lösning som simulerar en kylningsenhet. Dessa simulerade enheter har en inbyggd temperatur- och fuktighetsmodell som genererar telemetri. Dessa simulerade enheter ingår:
+När du distribuerar den förkonfigurerade fjärrövervakningslösningen har fyra simulerade enheter som simulerar en kylningsenhet redan konfigurerats i lösningen. Dessa simulerade enheter har en inbyggd temperatur- och fuktighetsmodell som genererar telemetri. Dessa simulerade enheter ingår:
 
-- Visa hello slutpunkt till slutpunkt flödet av data via hello-lösning.
+- Visa flödet av data slutpunkt till slutpunkt genom lösningen.
 - Ange en lämplig källa för telemetri.
-- Ange ett mål för metoder eller kommandon om du är en backend-utvecklare med hello lösningen som en startpunkt för en anpassad implementering.
+- Ange ett mål för metoderna eller kommandona om du är en backend-utvecklare som använder lösningen som en startpunkt för en anpassad implementering.
 
-hello simulerade enheter i hello-lösning kan svara toohello följande kommunikation moln till enhet:
+De simulerade enheterna i lösningen kan svara på följande kommunikation från moln till enhet:
 
-- *Metoder ([direkt metoder][lnk-direct-methods])*: en dubbelriktad kommunikationsmetod där en ansluten enhet är förväntade toorespond omedelbart.
-- *Kommandon (moln till enhet meddelanden)*: en enkelriktad kommunikationsmetod där en enhet hämtar hello-kommando från en beständig kö.
+- *Metoder ([direkta metoder][lnk-direct-methods])*: En dubbelriktad kommunikationsmetod där en ansluten enhet förväntas svara omedelbart.
+- *Kommandon (meddelande från moln till enhet)*: En enkelriktad kommunikationsmetod där en enhet hämtar kommandot från en beständig kö.
 
 En jämförelse av de olika metoderna finns i [Cloud-to-device communications guidance][lnk-c2d-guidance] (Vägledning för kommunikation från moln till enhet).
 
-När en enhet ansluter först tooIoT hubb i hello förkonfigurerade lösningen, skickar en enhet information meddelandet toohello hubb. Det här meddelandet räknar hello metoder hello enheten kan svara. I hello remote förkonfigurerade övervakningslösning, stöder simulerade enheter dessa metoder:
+Första gången en enhet ansluter till IoT Hub i den förkonfigurerade lösningen skickar den ett meddelande med enhetsinformation till hubben. Det här meddelandet räknar upp de metoder som enheten kan svara på. Simulerade enheter stöder följande metoder i den förkonfigurerade fjärrövervakningslösningen:
 
-* *Initiera Firmware uppdatera*: den här metoden initierar en asynkron åtgärd på hello enheten tooperform en firmware-uppdatering. hello asynkrona aktiviteten använder rapporterade egenskaper toodeliver status uppdateringar toohello lösning instrumentpanelen.
-* *Starta om*: den här metoden gör hello simulerade enheten tooreboot.
-* *FactoryReset*: den här metoden utlöser en fabriksåterställning på hello simulerade enheten.
+* *Initiate Firmware Update* (Påbörja uppdatering av inbyggd programvara): den här metoden påbörjar en asynkron uppgift på enheten för att utföra en uppdatering av den inbyggda programvaran. De asynkrona åtgärderna använder rapporterade egenskaper för att leverera statusuppdateringar till lösningens instrumentpanel.
+* *Starta om*: den här metoden gör att den simulerade enheten startas om.
+* *FactoryReset*: den här metoden utlöser en fabriksåterställning på den simulerade enheten.
 
-När en enhet ansluter först tooIoT hubb i hello förkonfigurerade lösningen, skickar en enhet information meddelandet toohello hubb. Det här meddelandet räknar hello kommandon hello enheten kan svara. I hello remote förkonfigurerade övervakningslösning, stöder simulerade enheter dessa kommandon:
+Första gången en enhet ansluter till IoT Hub i den förkonfigurerade lösningen skickar den ett meddelande med enhetsinformation till hubben. Det här meddelandet räknar upp de kommandon som enheten kan svara på. Simulerade enheter stöder följande kommandon i den förkonfigurerade fjärrövervakningslösningen:
 
-* *Ping-enheten*: hello enheten svarar toothis kommandot med en bekräftelse. Det här kommandot är användbart för att kontrollera hello enheten är fortfarande aktivt och lyssnar.
-* *Starta telemetri*: instruerar hello enheten toostart skicka telemetri.
-* *Stoppa telemetri*: instruerar hello enheten toostop skicka telemetri.
-* *Ändra Ställ utgångspunkt temperatur*: kontroller hello simulerade temperatur telemetri värden hello enheten skickar. Det här kommandot är användbart för att testa backend-logiken.
-* *Diagnostiska telemetri*: styr om hello enheten ska skicka hello externa temperatur som telemetri.
-* *Ändra enhetens tillstånd*: Anger hello tillstånd metadata enhetsegenskap som hello rapporter enheter. Det här kommandot är användbart för att testa backend-logiken.
+* *Pinga enhet*: Enheten svarar på det här kommandot med en bekräftelse. Det här kommandot är användbart för att kontrollera att enheten fortfarande är aktiv och lyssnar.
+* *Starta telemetri*: Instruerar enheten att börja skicka telemetri.
+* *Stoppa telemetri*: Instruerar enheten att sluta skicka telemetri.
+* *Ändra temperaturvärden*: Styr vilka simulerade telemetrivärden för temperatur som enheten skickar. Det här kommandot är användbart för att testa backend-logiken.
+* *Diagnostiktelemetri*: Styr om enheten ska skicka den externa temperaturen som telemetri.
+* *Ändra enhetstillstånd*: Anger metadataegenskapen för enhetens tillstånd som rapporteras av enheten. Det här kommandot är användbart för att testa backend-logiken.
 
-Du kan lägga till flera simulerade enheterna toohello lösning som genererar hello samma telemetri och svara toohello samma metoder och kommandon.
+Du kan lägga till fler simulerade enheter i lösningen som skickar samma telemetri och som svarar på samma metoder och kommandon.
 
-Dessutom tooresponding toocommands och metoder hello lösningen använder [enhet twins][lnk-device-twin]. Enheterna använder enheten twins tooreport egenskapen värden toohello lösningens serverdel. hello lösning instrumentpanelen använder enheten twins tooset toonew önskad egenskapsvärden på enheter. Under hello firmware uppdatera processen hello simulerade enheten rapporter uppdatera hello status för hello med hjälp av rapporterade egenskaper.
+Utöver att svara på kommandon och metoder använder lösningen [enhetstvillingar][lnk-device-twin]. Enheterna använder enhetstvillingar för att rapportera egenskapsvärden till lösningens backend-server. Lösningens instrumentpanel använder enhetstvillingar för att ange nya önskade egenskapsvärden på enheter. Under uppdateringen av inbyggd programvara rapporterar till exempel den simulerade enheten uppdateringens status med hjälp av rapporterade egenskaper.
 
 ## <a name="iot-hub"></a>IoT Hub
 
-I den här förkonfigurerade lösningen hello IoT-hubb instans motsvarar toohello *Molngateway* i en typisk [IoT-lösningsarkitektur][lnk-what-is-azure-iot].
+I den här förkonfigurerade lösningen motsvarar IoT Hub-instansen *moln-gatewayen* i en typisk [IoT-lösningsarkitektur][lnk-what-is-azure-iot].
 
-En IoT-hubb tar emot telemetri från hello enheter på en enda slutpunkt. En IoT-hubb har också enhetsspecifika slutpunkter där varje enhet kan hämta hello-kommandon som skickas tooit.
+En IoT-hubb tar emot telemetri från enheterna på en enda slutpunkt. En IoT-hubb har också enhetsspecifika slutpunkter där varje enhet kan ta emot de kommandon som skickas till den.
 
-Hej IoT-hubb tillgängliggör hello emot telemetri via hello tjänsten på klientsidan telemetri läsa slutpunkt.
+IoT-hubben ser till att den mottagna telemetrin är tillgänglig via den telemetriavlästa slutpunkten på tjänstsidan.
 
-hello enheten hanteringsmöjligheter för IoT-hubb kan du toomanage egenskaper för din enhet från hello lösning portal och schema jobb som utför åtgärder som:
+Kapaciteten för enhetshantering av IoT Hub hjälper dig att hantera dina enhetsegenskaper från lösningsportalen och schemalägga jobb som utför åtgärder som:
 
 - Starta om enheter
 - Ändra enhetstillstånd
@@ -108,64 +108,64 @@ hello enheten hanteringsmöjligheter för IoT-hubb kan du toomanage egenskaper f
 
 ## <a name="azure-stream-analytics"></a>Azure Stream Analytics
 
-hello förkonfigurerade lösningen använder tre [Azure Stream Analytics] [ lnk-asa] (ASA) jobb toofilter hello telemetri dataström från hello enheter:
+Den förkonfigurerade lösningen använder tre [Azure Stream Analytics][lnk-asa]-jobb (ASA) för att filtrera telemetriströmmen från enheterna:
 
-* *DeviceInfo jobbet* -utdata data tooan Event hub som dirigerar enhetsregistret för enheten registreringen-specifika meddelanden toohello lösning. Det här enhetsregistret är en Azure Cosmos DB-databas. Dessa meddelanden skickas när en enhet ansluter först eller i svaret tooa **ändra enhetsstatus** kommando.
-* *Telemetri jobbet* – skickar alla rådata telemetri tooAzure blob-lagring för kyla och beräknar telemetri aggregeringar som visas i instrumentpanelen för hello-lösning.
-* *Regler jobbet* - filter hello telemetri strömmen för värden som överskrider tröskelvärden för varje regel och utdata hello data tooan Event hub. När en regel utlöses visas hello lösning portalens instrumentpanel den här händelsen som en ny rad i hello larm historiktabellen. Dessa regler kan även utlösa en åtgärd som baseras på hello inställningarna på hello **regler** och **åtgärder** vyer i hello lösning portal.
+* *DeviceInfo-jobbet* – Matar ut data till en händelsehubb som dirigerar enhetsregistreringsspecifika meddelanden till lösningens enhetsregister. Det här enhetsregistret är en Azure Cosmos DB-databas. Meddelandena skickas första gången en enhet ansluter eller som svar på kommandot **Ändra enhetstillstånd**.
+* Jobbet *Telemetri* – skickar alla råtelemetridata till Azure Blob Storage för kall lagring och beräknar telemetriaggregeringar som visas på instrumentpanelen för lösningen.
+* Jobbet *Regler* – filtrerar telemetriströmmen och hämtar värden som överskrider tröskelvärden för regler och matar sedan ut dessa data till en händelsehubb. När en regel utlöses visar instrumentpanelen på lösningsportalen den här händelsen som en ny rad i larmhistoriktabellen. Reglerna kan även utlösa en åtgärd baserad på inställningarna som definierats i vyerna **Regler** och **Åtgärder** på lösningsportalen.
 
-I den här förkonfigurerade lösningen hello ASA jobb utgör en del av toohello **IoT-lösningens serverdel** i en typisk [IoT-lösningsarkitektur][lnk-what-is-azure-iot].
+I den här förkonfigurerade lösningen är ASA-jobben en del av **IoT-lösningens serverdel** i en typisk [IoT-lösningsarkitektur][lnk-what-is-azure-iot].
 
 ## <a name="event-processor"></a>Händelseprocessor
 
-I den här förkonfigurerade lösningen hello Händelseprocessorn utgör en del av hello **IoT-lösningens serverdel** i en typisk [IoT-lösningsarkitektur][lnk-what-is-azure-iot].
+I den här förkonfigurerade lösningen är händelseprocessorn en del av **IoT-lösningens serverdel** i en typisk [IoT-lösningsarkitektur][lnk-what-is-azure-iot].
 
-Hej **DeviceInfo** och **regler** ASA jobb skickar sina utdata tooEvent NAV för leverans av tooother backend-tjänster. hello lösningen använder en [EventProcessorHost] [ lnk-event-processor] instans som körs en [Webbjobb][lnk-web-job], tooread hälsningsmeddelande från dessa händelsehubbar. Hej **EventProcessorHost** använder:
-- Hej **DeviceInfo** data tooupdate hello enhetsdata hello Cosmos-DB-databas.
-- Hej **regler** data tooinvoke hello logik app och uppdatera hello aviseringar visas i hello lösning portal.
+ASA-jobben **DeviceInfo** och **Regler** skickar sina utdata till Event Hubs för leverans till andra backend-tjänster. Lösningen använder en [EventProcessorHost][lnk-event-processor]-instans som körs i ett [WebJob][lnk-web-job] för att läsa meddelanden från dessa händelsehubbar. **EventProcessorHost** använder:
+- **DeviceInfo**-data för att uppdatera enhetsdata i Cosmos DB-databasen.
+- **Regler**-data för att anropa logikappen och uppdatera aviseringarna som visas i lösningsportalen.
 
 ## <a name="device-identity-registry-device-twin-and-cosmos-db"></a>Enhetsidentitetsregistret, enhetstvillingar och Cosmos DB
 
-Varje IoT-hubb innehåller ett [enhetsidentitetsregister][lnk-identity-registry] som lagrar enhetsnycklar. Använder denna information för IoT-hubb autentisera enheter – en enhet måste registreras och har en giltig nyckel innan den kan ansluta toohello hubb.
+Varje IoT-hubb innehåller ett [enhetsidentitetsregister][lnk-identity-registry] som lagrar enhetsnycklar. IoT Hub använder den här informationen för att autentisera enheter – en enhet måste vara registrerad och ha en giltig nyckel innan den kan ansluta till hubben.
 
-En [enheten dubbla] [ lnk-device-twin] är ett JSON-dokument som hanteras av hello IoT-hubb. En enhetstvilling för en enhet innehåller:
+En [enhetstvilling][lnk-device-twin] är ett JSON-dokument som hanteras av IoT Hub. En enhetstvilling för en enhet innehåller:
 
-- Rapporterat egenskaper som skickas av hello enheten toohello hubb. Du kan visa egenskaperna i hello lösning portal.
-- Egenskaper som du vill toosend toohello enhet. Du kan ange dessa egenskaper i hello lösning portal.
-- Taggar som finns bara i hello enheten dubbla och inte på hello enhet. Du kan använda dessa taggar toofilter listan med enheter i hello lösning portal.
+- Rapporterade egenskaper som skickas av enheten till hubben. Du kan se de här egenskaperna i lösningsportalen.
+- Önskade egenskaper som du vill skicka till enheten. Du kan ange de här egenskaperna i lösningsportalen.
+- Taggar som endast finns i enhetstvillingen och inte på enheten. Du kan använda de här taggarna för att filtrera enhetslistan i lösningsportalen.
 
-Den här lösningen använder enheten twins toomanage enhetens metadata. hello lösningen använder också en Cosmos-DB databasen toostore ytterligare Lösningsspecifika enhetsdata, till exempel hello-kommandon som stöds av varje enhet och hello kommandohistoriken.
+Den här lösningen använder enhetstvillingar för att hantera enhetsmetadata. Lösningen använder även Cosmos DB-databasen för att lagra ytterligare lösningsspecifika enhetsdata, till exempel kommandon som stöds av varje enhet och kommandohistorik.
 
-hello lösning måste också hålla hello information i hello enhetsidentitetsregistret synkroniseras med hello innehållet i hello Cosmos-DB-databas. Hej **EventProcessorHost** använder hello data från **DeviceInfo** stream analytics-jobbet toomanage hello synkronisering.
+Lösningen måste också spara informationen i enhetsidentitetsregistret som synkroniseras med innehållet i Cosmos DB-databasen. **EventProcessorHost** använder data från Stream Analytics-jobbet **Enhetsinformation** för att hantera synkroniseringen.
 
 ## <a name="solution-portal"></a>Lösningsportal
 
 ![lösningsportal][img-dashboard]
 
-hello lösning portal är ett webbaserat gränssnitt som är distribuerade toohello moln som en del av hello förkonfigurerade lösningen. Här kan du:
+Lösningsportalen är ett webbaserat gränssnitt som distribueras till molnet som en del av den förkonfigurerade lösningen. Här kan du:
 
 * Visa telemetri och larmhistorik på en instrumentpanel.
 * Etablera nya enheter.
 * Hantera och övervaka enheter.
-* Skicka kommandon toospecific enheter.
+* Skicka kommandon till specifika enheter.
 * Anropa metoder på specifika enheter.
 * Hantera regler och åtgärder.
-* Schemalägga jobb toorun på en eller flera enheter.
+* Schemalägg jobb som ska köras på en eller flera enheter.
 
-I den här förkonfigurerade lösningen hello lösning portal utgör en del av hello **IoT-lösningens serverdel** och en del av hello **bearbetnings-och** i hello typiska [IoT-lösningen arkitektur för][lnk-what-is-azure-iot].
+I den här förkonfigurerade lösningen är lösningsportalen en del av **IoT-lösningens serverdel** och en del av **bearbetnings- och affärsanslutningarna** i en typisk [IoT-lösningsarkitektur][lnk-what-is-azure-iot].
 
 ## <a name="next-steps"></a>Nästa steg
 
 Mer information om IoT-lösningsarkitekturer finns i [Microsoft Azure IoT-tjänster: referensarkitektur][lnk-refarch].
 
-Nu du vet vilka förkonfigurerade lösningen är att komma igång genom att distribuera hello *fjärrövervaknings* förkonfigurerade lösningen: [Kom igång med hello förkonfigurerade lösningar] [ lnk-getstarted-preconfigured].
+Nu vet du vad en förkonfigurerad lösning är och kan komma igång genom att distribuera den förkonfigurerade lösningen för *fjärrövervakning*: [Komma igång med förkonfigurerade lösningar][lnk-getstarted-preconfigured].
 
 [img-remote-monitoring-arch]: ./media/iot-suite-what-are-preconfigured-solutions/remote-monitoring-arch1.png
 [img-dashboard]: ./media/iot-suite-what-are-preconfigured-solutions/dashboard.png
 [lnk-what-is-azure-iot]: iot-suite-what-is-azure-iot.md
 [lnk-asa]: https://azure.microsoft.com/documentation/services/stream-analytics/
 [lnk-event-processor]: ../event-hubs/event-hubs-programming-guide.md#event-processor-host
-[lnk-web-job]: ../app-service-web/web-sites-create-web-jobs.md
+[lnk-web-job]: ../app-service/web-sites-create-web-jobs.md
 [lnk-identity-registry]: ../iot-hub/iot-hub-devguide-identity-registry.md
 [lnk-predictive-maintenance]: iot-suite-predictive-overview.md
 [lnk-azureiotsuite]: https://www.azureiotsuite.com/

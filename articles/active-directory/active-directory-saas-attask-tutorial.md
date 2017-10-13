@@ -1,6 +1,6 @@
 ---
 title: "Självstudier: Azure Active Directory-integrering med @Task| Microsoft Docs"
-description: "Lär dig hur tooconfigure enkel inloggning mellan Azure Active Directory och @Task."
+description: "Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och @Task."
 services: active-directory
 documentationcenter: 
 author: jeevansd
@@ -14,108 +14,108 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 0840763622086a02a27cfafff3b741bc66cec498
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: ebb19ca6cbaf04106fbce937d95651e709854cfd
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-task"></a>Självstudier: Azure Active Directory-integrering med@Task
-hello syftet med den här kursen är tooshow du hur toointegrate @Task med Azure Active Directory (AD Azure).  
-Integrera @Task med Azure AD tillhandahåller hello följande fördelar: 
+Syftet med den här kursen är att visa dig hur du integrerar @Task med Azure Active Directory (AD Azure).  
+Integrera @Task med Azure AD ger följande fördelar: 
 
-* Du kan styra i Azure AD som har åtkomsttoo@Task
-* Du kan aktivera användarna tooautomatically hämta inloggade too@Task (Single Sign-On) med sina Azure AD-konton
-* Du kan hantera dina konton i en central plats - hello klassiska Azure-portalen
+* Du kan styra i Azure AD som har åtkomst till@Task
+* Du kan ge användarna automatiskt får loggat in på @Task (Single Sign-On) med sina Azure AD-konton
+* Du kan hantera dina konton i en central plats – den klassiska Azure-portalen
 
-Om du vill tooknow mer information om integrering av SaaS-app med Azure AD, se [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Om du vill veta mer information om integrering av SaaS-app med Azure AD finns [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Krav
-tooconfigure Azure AD-integrering med @Task, behöver du hello följande objekt:
+Konfigurera Azure AD-integrering med @Task, behöver du följande:
 
 * En Azure AD-prenumeration
 * En @Task enkel inloggning aktiverad prenumeration
 
 > [!NOTE]
-> tootest hello stegen i den här självstudiekursen, rekommenderas inte med hjälp av en produktionsmiljö.
+> Om du vill testa stegen i den här kursen rekommenderar vi inte med hjälp av en produktionsmiljö.
 > 
 > 
 
-tootest hello steg i den här självstudiekursen, bör du följa dessa rekommendationer:
+Om du vill testa stegen i den här självstudiekursen, bör du följa dessa rekommendationer:
 
 * Du bör inte använda produktionsmiljön, om det inte är nödvändigt.
 * Om du inte har en utvärderingsversion Azure AD-miljö kan du hämta en utvärderingsversion för en månad [här](https://azure.microsoft.com/pricing/free-trial/). 
 
 ## <a name="scenario-description"></a>Scenario-beskrivning
-hello syftet med den här kursen är tooenable du tootest Azure AD enkel inloggning i en testmiljö.  
-hello-scenario som beskrivs i den här kursen består av tre huvudsakliga byggblock:
+Syftet med den här kursen är att du ska testa Azure AD enkel inloggning i en testmiljö.  
+Det scenario som beskrivs i den här kursen består av tre huvudsakliga byggblock:
 
-1. Lägga till @Task från hello-galleriet 
+1. Lägga till @Task från galleriet 
 2. Konfigurera och testa Azure AD enkel inloggning
 
-## <a name="adding-task-from-hello-gallery"></a>Lägga till @Task från hello-galleriet
-tooconfigure hello integrering av @Task till Azure AD, behöver du tooadd @Task hello galleriet tooyour listan över hanterade SaaS-appar.
+## <a name="adding-task-from-the-gallery"></a>Lägga till @Task från galleriet
+Så här konfigurerar du integrering av @Task till Azure AD, måste du lägga till @Task från galleriet i listan över hanterade SaaS-appar.
 
-**tooadd @Task från galleriet hello utföra hello följande steg:**
+**Att lägga till @Task från galleriet utför du följande steg:**
 
-1. I hello **klassiska Azure-portalen**, på hello vänstra navigeringsfönstret, klicka på **Active Directory**. 
+1. I den **klassiska Azure-portalen**, klicka på det vänstra navigeringsfönstret **Active Directory**. 
    
     ![Active Directory][1] 
-2. Från hello **Directory** listan, Välj hello katalog som du vill tooenable katalogintegrering.
-3. tooopen hello program i vyn hello directory vyn klickar du på **program** i hello huvudmenyn.
+2. Från den **Directory** listan, Välj den katalog som du vill aktivera katalogintegrering.
+3. Klicka för att öppna vyn program i vyn directory **program** på huvudmenyn.
    
     ![Program][2] 
-4. Klicka på **Lägg till** på hello hello sidans nederkant.
+4. Klicka på **Lägg till** längst ned på sidan.
    
     ![Program][3] 
-5. På hello **vad vill du vill toodo** dialogrutan klickar du på **lägga till ett program från galleriet hello**.
+5. På den **vad vill du göra** dialogrutan klickar du på **lägga till ett program från galleriet**.
    
     ![Program][4] 
-6. Skriv i sökrutan hello  **@Task** .
+6. I sökrutan skriver  **@Task** .
    
     ![Program][5] 
-7. I resultatfönstret hello väljer  **@Task** , och klicka sedan på **Slutför** tooadd hello program.
+7. I resultatfönstret, Välj  **@Task** , och klicka sedan på **Slutför** lägga till programmet.
    
     ![Program][30] 
 
 ## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurera och testa Azure AD enkel inloggning
-hello syftet med det här avsnittet är tooshow du hur tooconfigure och testa Azure AD med enkel inloggning med @Task baserat på en testanvändare som kallas ”Britta Simon”.
+Syftet med det här avsnittet är att visa dig hur du konfigurerar och testa Azure AD enkel inloggning med @Task baserat på en testanvändare som kallas ”Britta Simon”.
 
-För enkel inloggning toowork Azure AD måste tooknow vilka hello motsvarighet användare i @Task tooan användaren i Azure AD. Med andra ord en länk relation mellan en Azure AD-användare och hello relaterade användare i @Task måste toobe upprättas.   
-Den här länken relationen upprättas genom att tilldela hello värdet för hello **användarnamn** i Azure AD som hello värde för hello **användarnamn** i @Task.
+För enkel inloggning ska fungera, Azure AD måste veta vilka motsvarande användaren i @Task till en användare i Azure AD är. Med andra ord en länk förhållandet mellan en Azure AD-användare och relaterade användaren i @Task måste upprättas.   
+Den här länken relationen upprättas genom att tilldela värdet för den **användarnamn** i Azure AD som värde för den **användarnamn** i @Task.
 
-tooconfigure och testa Azure AD enkel inloggning med @Task, behöver du toocomplete hello följande byggblock:
+Konfigurera och testa Azure AD enkel inloggning med @Task, måste du utföra följande byggblock:
 
-1. **[Konfigurera Azure AD enkel inloggning](#configuring-azure-ad-single-single-sign-on)**  -tooenable användare-toouse den här funktionen.
-2. **[Skapa en Azure AD-testanvändare](#creating-an-azure-ad-test-user)**  -tootest Azure AD enkel inloggning med Britta Simon.
-3. **[Skapa en @Tasktest användare](#creating-a-halogen-software-test-user)**  -toohave en motsvarighet för Britta Simon i @Taskthat är länkade toohello Azure AD-representation av henne.
-4. **[Tilldela hello Azure AD-testanvändare](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD enkel inloggning.
-5. **[Testa enkel inloggning](#testing-single-sign-on)**  -tooverify hello om konfigurationen fungerar.
+1. **[Konfigurera Azure AD enkel inloggning](#configuring-azure-ad-single-single-sign-on)**  - om du vill att användarna kan använda den här funktionen.
+2. **[Skapa en Azure AD-testanvändare](#creating-an-azure-ad-test-user)**  - om du vill testa Azure AD enkel inloggning med Britta Simon.
+3. **[Skapa en @Tasktest användare](#creating-a-halogen-software-test-user)**  – du har en motsvarighet för Britta Simon i @Taskthat är kopplad till Azure AD-representation av henne.
+4. **[Tilldela Azure AD-testanvändare](#assigning-the-azure-ad-test-user)**  - om du vill aktivera Britta Simon att använda Azure AD enkel inloggning.
+5. **[Testa enkel inloggning](#testing-single-sign-on)**  - om du vill kontrollera om konfigurationen fungerar.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurera Azure AD-Single Sign-On
-hello syftet med det här avsnittet är tooenable Azure AD enkel inloggning i hello klassiska Azure-portalen och tooconfigure enkel inloggning i din @Task program.
+Syftet med det här avsnittet är att aktivera Azure AD enkel inloggning i den klassiska Azure-portalen och konfigurera enkel inloggning i din @Task program.
 
-**tooconfigure Azure AD enkel inloggning med @Task, utföra hello följande steg:**
+**Konfigurera Azure AD enkel inloggning med @Task, utför följande steg:**
 
-1. I hello klassiska Azure-portalen på hello  **@Task**  integreringssidan för programmet, klickar du på **Konfigurera enkel inloggning** tooopen hello **Konfigurera enkel inloggning**  dialogrutan.
+1. I den klassiska Azure-portalen på den  **@Task**  integreringssidan för programmet, klickar du på **Konfigurera enkel inloggning** att öppna den **Konfigurera enkel inloggning** dialogrutan.
    
     ![Konfigurera enkel inloggning][6] 
-2. På hello **hur skulle du som användare toosign på too@Task**  väljer **Azure AD enkel inloggning**, och klicka sedan på **nästa**.
+2. På den **hur vill du användarna att logga in på @Task**  väljer **Azure AD enkel inloggning**, och klicka sedan på **nästa**.
    
     ![Azure AD-Single Sign-On][7] 
-3. På hello **konfigurera Appinställningar** dialogrutan utför hello följande steg:
+3. På den **konfigurera Appinställningar** dialogrutan utför följande steg:
    
     ![Konfigurera Appinställningar för][8] 
    
-     a. I hello **logga URL** textruta typen hello URL som används av dina användare toosign på tooyour @Task program (t.ex.:*https://<Tenant name>.attask ondemand.com*).
+     a. I den **logga URL** textruta, Skriv URL: en som används av dina användare logga in till din @Task program (t.ex.:*https://<Tenant name>.attask ondemand.com*).
    
      b. Klicka på **Nästa**.
-4. På hello **Konfigurera enkel inloggning vid @Task**  klickar du på **hämtar metadata**, spara hello metadatafil lokalt på datorn och klicka sedan på **nästa**.
+4. På den **Konfigurera enkel inloggning vid @Task**  klickar du på **hämtar metadata**, spara metadatafilen lokalt på datorn och klicka sedan på **nästa**.
    
     ![Vad är Azure AD Connect?][9] 
-5. Inloggning tooyour @Task företagets webbplats som administratör.
-6. Gå för**enkel inloggning på konfigurationen**.
-7. På hello **enkel inloggning** dialogrutan, utför följande steg hello
+5. Logga in på ditt @Task företagets webbplats som administratör.
+6. Gå till **enkel inloggning på konfigurationen**.
+7. På den **enkel inloggning** dialogrutan, utför följande steg
    
     ![Konfigurera enkel inloggning][23]
    
@@ -123,118 +123,118 @@ hello syftet med det här avsnittet är tooenable Azure AD enkel inloggning i he
    
     b. Välj **Service Provider-ID**.
    
-    c. Kopiera hello på hello klassiska Azure-portalen, **Remote inloggnings-URL**, och klistra in den i hello **Portal Inloggningswebbadressen** textruta.
+    c. På den klassiska Azure-portalen, kopiera den **Remote inloggnings-URL**, och klistrar in det i den **Portal Inloggningswebbadressen** textruta.
    
-    d. Kopiera hello på hello klassiska Azure-portalen, **tjänst-URL för enkel Sign-Out**, och klistra in den i hello **Sign-Out URL** textruta.
+    d. På den klassiska Azure-portalen, kopiera den **tjänst-URL för enkel Sign-Out**, och klistrar in det i den **Sign-Out URL** textruta.
    
-    e. Kopiera hello på hello klassiska Azure-portalen, **ändra lösenord URL**, och klistra in den i hello **ändra lösenord URL** textruta.
+    e. På den klassiska Azure-portalen, kopiera den **ändra lösenord URL**, och klistrar in det i den **ändra lösenord URL** textruta.
    
     f. Klicka på **Spara**.
-8. Välj hello konfiguration för enkel inloggning bekräftelse på hello klassiska Azure-portalen, och klicka sedan på **nästa**. 
+8. Välj bekräftelsen konfiguration för enkel inloggning på den klassiska Azure-portalen och klicka sedan på **nästa**. 
    
     ![Vad är Azure AD Connect?][10]
-9. På hello **enkel inloggning bekräftelse** klickar du på **Slutför**.  
+9. På den **enkel inloggning bekräftelse** klickar du på **Slutför**.  
    
     ![Vad är Azure AD Connect?][11]
 
 ### <a name="creating-an-azure-ad-test-user"></a>Skapa en testanvändare i Azure AD
-hello syftet med det här avsnittet är toocreate en testanvändare i hello klassiska Azure-portalen kallas Britta Simon.  
+Syftet med det här avsnittet är att skapa en testanvändare i den klassiska Azure-portalen kallas Britta Simon.  
 
 ![Skapa Azure AD-användare][20]
 
-**toocreate en testanvändare i Azure AD kan utföra hello följande steg:**
+**Utför följande steg för att skapa en testanvändare i Azure AD:**
 
-1. I hello **klassiska Azure-portalen**, på hello vänstra navigeringsfönstret, klicka på **Active Directory**.
+1. I den **klassiska Azure-portalen**, klicka på det vänstra navigeringsfönstret **Active Directory**.
    
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-attask-tutorial/create_aaduser_02.png) 
-2. Från hello **Directory** listan, Välj hello katalog som du vill tooenable katalogintegrering.
-3. toodisplay hello lista över användare i hello menyn hello överst, klickar du på **användare**.
+2. Från den **Directory** listan, Välj den katalog som du vill aktivera katalogintegrering.
+3. Klicka för att visa en lista över användare, på menyn upp **användare**.
    
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-attask-tutorial/create_aaduser_03.png) 
-4. tooopen hello **Lägg till användare** i hello verktygsfältet på hello längst ned i dialogrutan klickar du på **Lägg till användare**. 
+4. Öppna den **Lägg till användare** i verktygsfältet längst ned i dialogrutan klickar du på **Lägg till användare**. 
    
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-attask-tutorial/create_aaduser_04.png) 
-5. På hello **berätta om den här användaren** dialogrutan utför hello följande steg: 
+5. På den **berätta om den här användaren** dialogrutan utför följande steg: 
    
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-attask-tutorial/create_aaduser_05.png) 
    
     a. Välj ny användare i din organisation som typ av användare.
    
-    b. I hello användarnamn **textruta**, typen **BrittaSimon**.
+    b. I användarnamnet **textruta**, typen **BrittaSimon**.
    
     c. Klicka på **Nästa**.
-6. På hello **användarprofil** dialogrutan utför hello följande steg: 
+6. På den **användarprofil** dialogrutan utför följande steg: 
    
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-attask-tutorial/create_aaduser_06.png) 
    
-    a. I hello **Förnamn** textruta typen **Britta**.  
+    a. I den **Förnamn** textruta typen **Britta**.  
    
-    b. I hello **efternamn** textruta typ, **Simon**.
+    b. I den **efternamn** textruta typ, **Simon**.
    
-    c. I hello **visningsnamn** textruta typen **Britta Simon**.
+    c. I den **visningsnamn** textruta typen **Britta Simon**.
    
-    d. I hello **rollen** väljer **användaren**.
+    d. I den **rollen** väljer **användaren**.
 
     e. Klicka på **Nästa**.
 
-7. På hello **skaffa tillfälligt lösenord** dialogrutan sidan, klickar du på **skapa**.
+7. På den **skaffa tillfälligt lösenord** dialogrutan sidan, klickar du på **skapa**.
    
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-attask-tutorial/create_aaduser_07.png) 
-8. På hello **skaffa tillfälligt lösenord** dialogrutan utför hello följande steg:
+8. På den **skaffa tillfälligt lösenord** dialogrutan utför följande steg:
    
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-attask-tutorial/create_aaduser_08.png) 
    
-    a. Skriv ned hello värdet för hello **nytt lösenord**.
+    a. Anteckna värdet för den **nytt lösenord**.
    
     b. Klicka på **Complete** (Slutför).   
 
 ### <a name="creating-an-task-test-user"></a>Skapa en @Task testanvändare
-hello syftet med det här avsnittet är toocreate en användare som kallas Britta Simon i @Task.
+Syftet med det här avsnittet är att skapa en användare som kallas Britta Simon i @Task.
 
-**toocreate en användare som kallas Britta Simon i @Task, utföra hello följande steg:**
+**Så här skapar du en användare som kallas Britta Simon i @Task, utför följande steg:**
 
-1. Logga in tooyour @Task företagets webbplats som administratör.
-2. Hello-menyn överst hello **personer**.
+1. Logga in på ditt @Task företagets webbplats som administratör.
+2. Klicka på menyn högst upp **personer**.
 3. Klicka på **ny Person**. 
-4. Utför följande hello på hello ny Person dialogrutan:
+4. I dialogrutan Ny Person att utföra följande steg:
    
     ![Skapa en @Task testanvändare][21] 
    
-    a. I hello **Förnamn** textruta skriver ”Britta”.
+    a. I den **Förnamn** textruta skriver ”Britta”.
    
-    b. I hello **efternamn** textruta skriver ”Simon”.
+    b. I den **efternamn** textruta skriver ”Simon”.
    
-    c. I hello **e-postadress** textruta Skriv Britta Simon e-postadress i Azure Active Directory.
+    c. I den **e-postadress** textruta Skriv Britta Simon e-postadress i Azure Active Directory.
    
     d. Klicka på **lägga till personen**.
 
-### <a name="assigning-hello-azure-ad-test-user"></a>Tilldela användare hello Azure AD
-hello syftet med det här avsnittet är tooenabling Britta Simon toouse Azure enkel inloggning genom att ge sina access too@Task.
+### <a name="assigning-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändare
+Syftet med det här avsnittet är att aktivera Britta Simon att använda Azure enkel inloggning med sin åtkomst beviljas till @Task.
 
 ![Tilldela användare][200] 
 
-**tooassign Britta Simon too@Task, utföra hello följande steg:**
+**Tilldela Britta Simon till @Task, utför följande steg:**
 
-1. På hello Azure klassiska portal, tooopen hello program i vyn hello directory vyn klickar du på **program** i hello huvudmenyn.
+1. På den klassiska Azure-portalen för att öppna vyn program i katalogen vyn klickar du på **program** på huvudmenyn.
    
     ![Tilldela användare][201] 
-2. Välj i listan med program hello  **@Task** .
+2. Välj i listan med program  **@Task** .
    
     ![Tilldela användare][202] 
-3. Hello-menyn överst hello **användare**.
+3. Klicka på menyn högst upp **användare**.
    
     ![Tilldela användare][203] 
-4. Markera i hello användare **Britta Simon**.
-5. Klicka i hello verktygsfältet hello längst ned **tilldela**.
+4. Välj i listan användare **Britta Simon**.
+5. Klicka på i verktygsfältet längst ned i **tilldela**.
    
     ![Tilldela användare][205]
 
 ### <a name="testing-single-sign-on"></a>Testa enkel inloggning
-hello syftet med det här avsnittet är tootest din Azure AD-konfiguration för enkel inloggning med hello åtkomstpanelen.  
-När du klickar på hello @Task panelen i Hej åtkomstpanelen, du får automatiskt inloggade tooyour @Task program.
+Syftet med det här avsnittet är att testa Azure AD enkel inloggning konfigurationen med hjälp av panelen åtkomst.  
+När du klickar på den @Task panelen på panelen åtkomst som du bör få automatiskt loggat in på ditt @Task program.
 
 ## <a name="additional-resources"></a>Ytterligare resurser
-* [Lista över självstudier om hur tooIntegrate SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Vad är programåtkomst och enkel inloggning med Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->

@@ -1,6 +1,6 @@
 ---
-title: "aaaDeploy en app på en skaluppsättning för virtuell dator i Azure | Microsoft Docs"
-description: "Lär dig toodeploy ett enkelt autoskalning program på en virtuell dator skala anges med en Azure Resource Manager-mall."
+title: "Distribuera ett program på en Azure VM-skalningsuppsättning | Microsoft Docs"
+description: "Lär dig att distribuera ett enkelt autoskalningsprogram på en VM-skaluppsttning med en Azure Resource Manager-mall."
 services: virtual-machine-scale-sets
 documentationcenter: 
 author: rwike77
@@ -15,25 +15,25 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/24/2017
 ms.author: ryanwi
-ms.openlocfilehash: 6fccc310312cabfcdddfcbcd2d154fc5cc440417
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 07883a33382cc660b043c99872312a9e77228253
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="deploy-an-autoscaling-app-using-a-template"></a>Distribuera en app för automatisk skalning med en mall
 
-[Azure Resource Manager-mallar](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#template-deployment) är ett bra sätt toodeploy grupper av relaterade resurser. Den här kursen bygger på [distribuera en enkel skaluppsättning](virtual-machine-scale-sets-mvss-start.md) och beskriver hur toodeploy ett enkelt autoskalning program på en skala anges med en Azure Resource Manager-mall.  Du kan också ställa in autoskalning med PowerShell, CLI eller hello-portalen. Mer information finns i [Översikt för autoskala](virtual-machine-scale-sets-autoscale-overview.md).
+[Azure Resource Manager-mallar](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#template-deployment) är ett bra sätt att distribuera grupper av relaterade resurser. Den här kursen bygger på [Distribuera en enkel skaluppsättning](virtual-machine-scale-sets-mvss-start.md) och beskriver hur du distribuerar ett enkelt program med autoskalning på en skaluppsättning med en Azure Resource Manager-mall.  Du kan också ställa in autoskalning med PowerShell, CLI eller portalen. Mer information finns i [Översikt för autoskala](virtual-machine-scale-sets-autoscale-overview.md).
 
 ## <a name="two-quickstart-templates"></a>Två snabbstartmallar
-När du distribuerar en skaluppsättning du kan installera ny programvara på en plattformbild med ett [VM-tillägg](../virtual-machines/virtual-machines-windows-extensions-features.md). Ett VM-tilläggt är ett litet program som innehåller en färdig konfiguration och automatisering av uppgifter på virtuella Azure-datorer, till exempel att distribuera en app. Två olika exempelmallarna finns i [Azure/azure--snabbstartsmallar](https://github.com/Azure/azure-quickstart-templates) som visar hur toodeploy ett autoskalning program på en skala anges med VM-tillägg.
+När du distribuerar en skaluppsättning du kan installera ny programvara på en plattformbild med ett [VM-tillägg](../virtual-machines/virtual-machines-windows-extensions-features.md). Ett VM-tilläggt är ett litet program som innehåller en färdig konfiguration och automatisering av uppgifter på virtuella Azure-datorer, till exempel att distribuera en app. Två olika exempelmallar finns i [Azure/azure-snabbstartsmallar](https://github.com/Azure/azure-quickstart-templates) som visar hur du distribuerar ett autoskalningsprogram på en skaluppsättning som anges med VM-tillägg.
 
 ### <a name="python-http-server-on-linux"></a>Python-HTTP-servern på Linux
-Hej [Python HTTP-servern på Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale) exempelmall distribuerar en enkel autoskalning program som körs på en Linux-skaluppsättning.  [Bottle](http://bottlepy.org/docs/dev/), en Python web framework och en enkel HTTP-server distribueras på varje virtuell dator i hello skala anges med ett anpassat skript för VM-tillägget. Hej skaluppsättning skalar när Genomsnittlig CPU-belastning över alla virtuella datorer som är större än 60% och skalas när hello Genomsnittlig CPU-användning är mindre än 30%.
+Exempelmallen [Python HTTP-servern på Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale) distribuerar ett enkelt autoskalningsprogram som körs på en Linux-skaluppsättning.  [Bottle](http://bottlepy.org/docs/dev/), ett Python webwramverk och en enkel HTTP-server distribueras på varje virtuell dator i skaluppsättningen med ett anpassat skript för VM-tillägget. Skaluppsättningen skalar upp när den genomsnittliga CPU-användningen över alla virtuella datorer är större än 60 % och skalar ner när den genomsnittliga CPU-användningen är mindre än 30 %.
 
-Dessutom toohello skaluppsättning resurs, hello *azuredeploy.json* exempelmall deklarerar också virtuella nätverk, offentlig IP-adress, belastningsutjämnare och Autoskala inställningar resurser.  Mer information om hur du skapar dessa resurser i en mall finns i [Linux-skala med autoskala](virtual-machine-scale-sets-linux-autoscale.md).
+Förutom skaluppsättningsresursen deklarerar exempelmallen *azuredeploy.json* också virtuella nätverk, offentlig IP-adress, belastningsutjämnare och resurser för inställning av autoskala.  Mer information om hur du skapar dessa resurser i en mall finns i [Linux-skala med autoskala](virtual-machine-scale-sets-linux-autoscale.md).
 
-I hello *azuredeploy.json* mall, hello `extensionProfile` -egenskapen för hello `Microsoft.Compute/virtualMachineScaleSets` resurs anger tillägget för anpassat skript. `fileUris`Anger hello skript plats. I det här fallet två filer: *workserver.py*, som definierar en enkel HTTP-server och *installserver.sh*, som installerar Bottle och startar hello HTTP-servern. `commandToExecute`Anger hello kommandot toorun när hello skaluppsättning har distribuerats.
+I mallen *azuredeploy.json* anger `extensionProfile`-egenskapen för `Microsoft.Compute/virtualMachineScaleSets`-resurs ett anpassat skripttillägg. `fileUris` anger platsen för skript. I det här fallet två filer: *workserver.py*, som definierar en enkel HTTP-server och *installserver.sh*, som installerar Bottle och startar HTTP-servern. `commandToExecute` anger kommandot som ska köras när skaluppsättning har distribuerats.
 
 ```json
           "extensionProfile": {
@@ -59,11 +59,11 @@ I hello *azuredeploy.json* mall, hello `extensionProfile` -egenskapen för hello
 ```
 
 ### <a name="aspnet-mvc-application-on-windows"></a>ASP.NET MVC-appen i Windows
-Hej [ASP.NET MVC-program på Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-webapp-dsc-autoscale) exempelmall distribuerar en enkel ASP.NET MVC-app som körs i IIS på Windows skaluppsättning.  IIS och hello MVC-app distribueras med hello [PowerShell önskad tillståndskonfiguration (DSC)](virtual-machine-scale-sets-dsc.md) VM-tillägget.  hello skala konfigurera skalor (på VM-instans i taget) när CPU-användning är större än 50% under 5 minuter. 
+Exempelmallen [ASP.NET MVC-appen i Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-webapp-dsc-autoscale) distribuerar en enkel ASP.NET MVC-app som körs i IIS på Windows-skaluppsättning.  IIS och MVC-appen distribueras med VM-tillägget [PowerShell önskad tillståndskonfiguration (DSC)](virtual-machine-scale-sets-dsc.md).  Skaluppsättningen skalar upp (en VM-instans i taget) när CPU-användning är större än 50 % under 5 minuter. 
 
-Dessutom toohello skaluppsättning resurs, hello *azuredeploy.json* exempelmall deklarerar också virtuella nätverk, offentlig IP-adress, belastningsutjämnare och Autoskala inställningar resurser. Den här mallen visas också uppgradering av programmet.  Mer information om hur du skapar dessa resurser i en mall finns i [Windows-skala med autoskala](virtual-machine-scale-sets-windows-autoscale.md).
+Förutom skaluppsättningsresursen deklarerar exempelmallen *azuredeploy.json* också virtuella nätverk, offentlig IP-adress, belastningsutjämnare och resurser för inställning av autoskala. Den här mallen visas också uppgradering av programmet.  Mer information om hur du skapar dessa resurser i en mall finns i [Windows-skala med autoskala](virtual-machine-scale-sets-windows-autoscale.md).
 
-I hello *azuredeploy.json* mall, hello `extensionProfile` -egenskapen för hello `Microsoft.Compute/virtualMachineScaleSets` resurs anger en [önskad tillståndskonfiguration (DSC)](virtual-machine-scale-sets-dsc.md) -tillägg som installerar IIS och standard webbprogrammet från en WebDeploy-paketet.  Hej *IISInstall.ps1* skriptet installerar IIS på hello virtuella datorn och finns i hello *DSC* mapp.  hello MVC-webbappen finns i hello *WebDeploy* mapp.  hello sökvägar toohello installationsskriptet och hello webbprogrammet har definierats i hello `powershelldscZip` och `webDeployPackage` parametrar i hello *azuredeploy.parameters.json* fil. 
+I mallen *azuredeploy.json* anger resursen `extensionProfile` egenskapen för `Microsoft.Compute/virtualMachineScaleSets` ett [önskad tillståndskonfiguration (DSC)](virtual-machine-scale-sets-dsc.md)-tillägg som installerar IIS och en standard-webbapp från ett WebDeploy-paket.  Skriptet *IISInstall.ps1* installerar IIS på den virtuella datorn och finns i mappen *DSC*.  MVC-webbappen finns i mappen *WebDeploy*.  Sökvägar till installationsskriptet och webbprogrammet har definierats i parametrarna `powershelldscZip` och `webDeployPackage` i filen *azuredeploy.parameters.json*. 
 
 ```json
           "extensionProfile": {
@@ -93,11 +93,11 @@ I hello *azuredeploy.json* mall, hello `extensionProfile` -egenskapen för hello
           }
 ```
 
-## <a name="deploy-hello-template"></a>Distribuera hello mall
-hello enklaste sättet toodeploy hello [Python HTTP-servern på Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale) eller [ASP.NET MVC-program på Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-webapp-dsc-autoscale) mallen är toouse hello **distribuera tooAzure** knapp hittades i hello i hello viktigt-filer i GitHub.  Du kan också använda PowerShell eller Azure CLI toodeploy hello exempelmallarna.
+## <a name="deploy-the-template"></a>Distribuera mallen
+Det enklaste sättet att distribuera [Python HTTP-servern på Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale) eller mallen [ASP.NET MVC-program på Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-webapp-dsc-autoscale) är att använda knappen **Distribuera till Azure** som finns i readme-filerna i GitHub.  Du kan också använda PowerShell eller Azure CLI för att distribuera exempelmallarna.
 
 ### <a name="powershell"></a>PowerShell
-Kopiera hello [Python HTTP-servern på Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale) eller [ASP.NET MVC-program på Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-webapp-dsc-autoscale) filer från hello GitHub-repo tooa mapp på den lokala datorn.  Öppna hello *azuredeploy.parameters.json* fil- och update hello standardvärdena för hello `vmssName`, `adminUsername`, och `adminPassword` parametrar. Spara följande PowerShell-skript för hello*deploy.ps1* i hello samma mapp som hello *azuredeploy.json* mall. toodeploy hello exempel mallen kör hello *deploy.ps1* skriptet från en PowerShell-Kommandotolken.
+Kopiera [Python HTTP-servern på Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale) eller filerna [ASP.NET MVC-appen i Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-webapp-dsc-autoscale) från GitHub-lagringsplatsen till en mapp på den lokala datorn.  Öppna filen *azuredeploy.parameters.json* och uppdatera standardvärdena för parametrarna `vmssName`, `adminUsername` och `adminPassword`. Spara följande PowerShell-skript till *deploy.ps1* i samma mapp som mallen *azuredeploy.json*. För att distribuera exempelmallen, kör skriptet *deploy.ps1* från en PowerShell-kommandotolk.
 
 ```powershell
 param(
@@ -163,7 +163,7 @@ if($resourceProviders.length) {
 $resourceGroup = Get-AzureRmResourceGroup -Name $resourceGroupName -ErrorAction SilentlyContinue
 if(!$resourceGroup)
 {
-    Write-Host "Resource group '$resourceGroupName' does not exist. toocreate a new resource group, please enter a location.";
+    Write-Host "Resource group '$resourceGroupName' does not exist. To create a new resource group, please enter a location.";
     if(!$resourceGroupLocation) {
         $resourceGroupLocation = Read-Host "resourceGroupLocation";
     }
@@ -174,7 +174,7 @@ else{
     Write-Host "Using existing resource group '$resourceGroupName'";
 }
 
-# Start hello deployment
+# Start the deployment
 Write-Host "Starting deployment...";
 if(Test-Path $parametersFilePath) {
     New-AzureRmResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile $templateFilePath -TemplateParameterFile $parametersFilePath;
@@ -191,7 +191,7 @@ IFS=$'\n\t'
 
 # -e: immediately exit if any command has a non-zero exit status
 # -o: prevents errors in a pipeline from being masked
-# IFS new value is less likely toocause confusing bugs when looping arrays or arguments (e.g. $@)
+# IFS new value is less likely to cause confusing bugs when looping arrays or arguments (e.g. $@)
 
 usage() { echo "Usage: $0 -i <subscriptionId> -g <resourceGroupName> -n <deploymentName> -l <resourceGroupLocation>" 1>&2; exit 1; }
 
@@ -238,12 +238,12 @@ if [[ -z "$deploymentName" ]]; then
 fi
 
 if [[ -z "$resourceGroupLocation" ]]; then
-    echo "Enter a location below toocreate a new resource group else skip this"
+    echo "Enter a location below to create a new resource group else skip this"
     echo "ResourceGroupLocation:"
     read resourceGroupLocation
 fi
 
-#templateFile Path - template file toobe used
+#templateFile Path - template file to be used
 templateFilePath="template.json"
 
 if [ ! -f "$templateFilePath" ]; then
@@ -264,7 +264,7 @@ if [ -z "$subscriptionId" ] || [ -z "$resourceGroupName" ] || [ -z "$deploymentN
     usage
 fi
 
-#login tooazure using your credentials
+#login to azure using your credentials
 az account show 1> /dev/null
 
 if [ $? != 0 ];
@@ -272,7 +272,7 @@ then
     az login
 fi
 
-#set hello default subscription id
+#set the default subscription id
 az account set --name $subscriptionId
 
 set +e

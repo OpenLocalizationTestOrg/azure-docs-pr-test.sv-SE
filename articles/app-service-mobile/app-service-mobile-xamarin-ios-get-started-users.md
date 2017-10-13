@@ -1,6 +1,6 @@
 ---
-title: "aaaGet igång med autentisering för Mobile Apps i Xamarin-iOS"
-description: "Lär dig hur toouse Mobile Apps tooauthenticate användare av Xamarin iOS-app via en mängd olika identitetsleverantörer, inklusive AAD, Google, Facebook, Twitter och Microsoft."
+title: "Komma igång med autentisering för Mobile Apps i Xamarin-iOS"
+description: "Lär dig hur du använder Mobilappar för att autentisera användare av Xamarin iOS-app via en mängd olika identitetsleverantörer, inklusive AAD, Google, Facebook, Twitter och Microsoft."
 services: app-service\mobile
 documentationcenter: xamarin
 author: ggailey777
@@ -14,56 +14,56 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: glenga
-ms.openlocfilehash: 6458e9651b03df61c86b88b11953792e04bfa5b2
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 454b2df5a9bf8cfba93befea54370957ab044d95
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="add-authentication-tooyour-xamarinios-app"></a>Lägg till autentisering tooyour Xamarin.iOS-app
+# <a name="add-authentication-to-your-xamarinios-app"></a>Lägga till autentisering i en Xamarin.iOS-app
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
-Det här avsnittet beskrivs hur du tooauthenticate användare av en Apptjänst Mobile App från klientprogrammet. Lägg till autentisering toohello Xamarin.iOS snabbstartsprojekt en identitetsleverantör som stöds av Apptjänst i den här självstudiekursen. Efter att har autentiseras och auktoriseras av din Mobilapp hello användar-ID-värde visas och du kommer att kunna tooaccess begränsad tabelldata.
+Det här avsnittet visar hur du autentiserar användare i en Apptjänst Mobile App från klientprogrammet. I kursen får du lägger till autentisering Xamarin.iOS quickstart projektet med en identitetsleverantör som stöds av App Service. Efter att har autentiseras och auktoriseras av din Mobilapp användar-ID-värde visas och du kommer att kunna få åtkomst till begränsade tabelldata.
 
-Du måste slutföra kursen hello [skapa en Xamarin.iOS-app]. Om du inte använder hello laddat ned Snabbstart serverprojekt, måste du lägga till hello autentisering tillägget paketet tooyour projekt. Mer information om server tilläggspaket finns [arbeta med serverdelen för hello .NET SDK för Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
+Du måste slutföra kursen [skapa en Xamarin.iOS-app]. Om du inte använder serverprojekt hämtade Snabbstart, måste du lägga till tillägget autentiseringspaket projektet. Mer information om server tilläggspaket finns [arbeta med serverdelen .NET SDK för Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
 
 ## <a name="register-your-app-for-authentication-and-configure-app-services"></a>Registrera din app för autentisering och konfigurera Apptjänster
 [!INCLUDE [app-service-mobile-register-authentication](../../includes/app-service-mobile-register-authentication.md)]
 
-## <a name="add-your-app-toohello-allowed-external-redirect-urls"></a>Lägg till din app toohello tillåtna externa omdirigerings-URL
+## <a name="add-your-app-to-the-allowed-external-redirect-urls"></a>Lägg till din app i tillåtna externa omdirigerings-URL
 
-Säker autentisering måste du definiera en ny URL-schema för din app. Detta tillåter hello autentisering system tooredirect tillbaka tooyour appen när hello-autentiseringen är klar. I den här självstudiekursen kommer vi använda hello URL-schema _appname_ i hela. Du kan dock använda alla URL-schema som du väljer. Det bör vara unikt tooyour mobila program. tooenable hello omdirigering på serversidan hello:
+Säker autentisering måste du definiera en ny URL-schema för din app. Detta gör att autentiseringssystemet kan omdirigera tillbaka till din app när autentiseringen är klar. I den här självstudiekursen kommer vi använda URL-schemat _appname_ i hela. Du kan dock använda alla URL-schema som du väljer. Det bör vara unikt för din mobila program. Du vill aktivera omdirigering på serversidan:
 
-1. I hello [Azure portal], väljer du din Apptjänst.
+1. Välj din Apptjänst i [Azure-portalen].
 
-2. Klicka på hello **autentisering / auktorisering** menyalternativet.
+2. Klicka på den **autentisering / auktorisering** menyalternativet.
 
-3. I hello **tillåtna externa omdirigerings-URL: er**, ange `url_scheme_of_your_app://easyauth.callback`.  Hej **url_scheme_of_your_app** i den här strängen är hello URL-schema för din mobila program.  Det bör följa den normala URL specifikation för ett protokoll (Använd bokstäver och siffror och börja med en bokstav).  Du bör anteckna hello sträng som du väljer när du behöver tooadjust mobilprogram koden med hello URL-schemat på flera platser.
+3. I den **tillåtna externa omdirigerings-URL: er**, ange `url_scheme_of_your_app://easyauth.callback`.  Den **url_scheme_of_your_app** i den här strängen är URL-schemat för din mobila program.  Det bör följa den normala URL specifikation för ett protokoll (Använd bokstäver och siffror och börja med en bokstav).  Du bör anteckna den sträng som du väljer när du behöver justera mobilprogram koden med URL-schemat på flera platser.
 
 4. Klicka på **OK**.
 
 5. Klicka på **Spara**.
 
-## <a name="restrict-permissions-tooauthenticated-users"></a>Begränsa behörigheter tooauthenticated användare
+## <a name="restrict-permissions-to-authenticated-users"></a>Begränsa behörighet för autentiserade användare
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
-&nbsp;&nbsp;4. Kör hello klientprojekt i Visual Studio eller Xamarin Studio på en enhet eller emulator. Kontrollera att ett undantag med en statuskod 401 (obehörig) utlöses efter hello appen startar. hello misslyckade är loggade toohello konsol hello felsökare. Därför bör du se hello fel i utdatafönstret hello i Visual Studio.
+&nbsp;&nbsp;4. Kör klientprojektet i Visual Studio eller Xamarin Studio på en enhet eller emulator. Kontrollera att ett undantag med en statuskod 401 (obehörig) aktiveras när appen startar. Felet loggas i konsolen för felsökning. Därför bör du se felet i utdatafönstret i Visual Studio.
 
-&nbsp;&nbsp;Felet obehörig beror hello app försöker tooaccess serverdelen för Mobilappen som en oautentiserad användare. Hej *TodoItem* tabellen nu kräver autentisering.
+&nbsp;&nbsp;Felet obehörig beror på att appen försöker få åtkomst till din mobilappsserverdel som en oautentiserad användare. Den *TodoItem* tabellen nu kräver autentisering.
 
-Därefter uppdaterar du hello klienten app toorequest resurser från hello mobilappsserverdel med en autentiserad användare.
+Därefter uppdaterar du klientappen till begäran resurser från serverdelen för Mobilappen med en autentiserad användare.
 
-## <a name="add-authentication-toohello-app"></a>Lägg till autentisering toohello app
-I det här avsnittet ska du ändra hello app toodisplay en inloggningsskärm innan data. När hello app startar inte ansluter tooyour Apptjänst inte och visas inte några data. Efter hello första gången utför hello användaren hello uppdatera gest hello inloggningsskärmen visas. efter genomförd inloggning ska hello lista över todo-objekt visas.
+## <a name="add-authentication-to-the-app"></a>Lägg till autentisering i appen
+I det här avsnittet ska du ändra appen för att visas en inloggningsskärm innan data. När appen startar inte kan inte ansluta till din Apptjänst och visas inte några data. När först gången utför användaren uppdatera-gest inloggningsskärmen visas. listan över todo-objekt ska visas efter genomförd inloggning.
 
-1. Öppna hello-filen i hello klientprojektet **QSTodoService.cs** och Lägg till följande hello-instruktion och `MobileServiceUser` med accessor toohello QSTodoService klass:
+1. Öppna filen i klientprojektet **QSTodoService.cs** och Lägg till följande med instruktionen och `MobileServiceUser` med accessorn för att klassen QSTodoService:
  
         using UIKit;
        
         // Logged in user
         private MobileServiceUser user;
         public MobileServiceUser User { get { return user; } }
-2. Lägga till nya metod med namnet **autentisera** för**QSTodoService** med hello definitionen:
+2. Lägga till nya metod med namnet **autentisera** till **QSTodoService** med definitionen av följande:
 
         public async Task Authenticate(UIViewController view)
         {
@@ -78,9 +78,9 @@ I det här avsnittet ska du ändra hello app toodisplay en inloggningsskärm inn
             }
         }
 
-    >[AZURE.NOTE] Om du använder en identitetsleverantör än en Facebook ändrar hello-värdet som skickades för**LoginAsync** ovan tooone av hello följande: _MicrosoftAccount_, _Twitter_, _Google_, eller _WindowsAzureActiveDirectory_.
+    >[AZURE.NOTE] Om du använder en identitetsleverantör än en Facebook, ändra värdet som skickas till **LoginAsync** ovan till något av följande: _MicrosoftAccount_, _Twitter_,  _Google_, eller _WindowsAzureActiveDirectory_.
 
-3. Öppna **QSTodoListViewController.cs**. Ändra hello metoddefinition av **ViewDidLoad** tar bort hello anrop för**RefreshAsync()** nära hello slut:
+3. Öppna **QSTodoListViewController.cs**. Ändra metoddefinitionen av **ViewDidLoad** tar bort anropet till **RefreshAsync()** mot slutet:
    
         public override async void ViewDidLoad ()
         {
@@ -93,10 +93,10 @@ I det här avsnittet ska du ändra hello app toodisplay en inloggningsskärm inn
                 await RefreshAsync();
             }
    
-            // Comment out hello call tooRefreshAsync
+            // Comment out the call to RefreshAsync
             // await RefreshAsync();
         }
-4. Ändra hello metoden **RefreshAsync** tooauthenticate om hello **användaren** -egenskapen är null. Lägg till följande kod hello överst i hello metoddefinition hello:
+4. Ändra metoden **RefreshAsync** att autentisera om det **användaren** -egenskapen är null. Lägg till följande kod högst upp i metoddefinition:
    
         // start of RefreshAsync method
         if (todoService.User == null) {
@@ -107,7 +107,7 @@ I det här avsnittet ska du ändra hello app toodisplay en inloggningsskärm inn
             }
         }
         // rest of RefreshAsync method
-5. Öppna **AppDelegate.cs**, Lägg till följande metod hello:
+5. Öppna **AppDelegate.cs**, lägger du till följande metod:
 
         public static Func<NSUrl, bool> ResumeWithURL;
 
@@ -115,10 +115,10 @@ I det här avsnittet ska du ändra hello app toodisplay en inloggningsskärm inn
         {
             return ResumeWithURL != null && ResumeWithURL(url);
         }
-6. Öppna **Info.plist** fil, navigera för**URL typer** i hello **Avancerat** avsnitt. Nu konfigurera hello **identifierare** och hello **URL-scheman** URL-typen och klicka på **Lägg till URL-typen**. **URL-scheman** ska vara hello samma som {url_scheme_of_your_app}.
-7. I Visual Studio eller Xamarin Studio anslutna tooyour Xamarin skapa värden på en Mac som kör hello klientprojektet inriktning på en enhet eller emulator. Kontrollera appen hello visar inga data.
+6. Öppna **Info.plist** fil, gå till **URL typer** i den **Avancerat** avsnitt. Nu konfigurera den **identifierare** och **URL-scheman** URL-typen och klicka på **Lägg till URL-typen**. **URL-scheman** bör vara samma som {url_scheme_of_your_app}.
+7. I Visual Studio eller Xamarin Studio ansluten till din Xamarin skapa värd på en Mac som kör klientprojektet inriktning på en enhet eller emulator. Kontrollera att inga data visas i appen.
    
-    Utföra hello uppdatera gest genom att dra nedåt hello listan över objekt, vilket leder till hello inloggningen skärmen tooappear. När du har angett giltiga autentiseringsuppgifter, hello app visar hello lista över todo-objekt och du kan göra uppdateringar toohello data.
+    Utföra en uppdatering gest genom att dra nedåt i listan över objekt, vilket leder till inloggningssidan visas. När du har angett giltiga autentiseringsuppgifter, visas listan över todo-objekt och du kan göra uppdateringar till data.
 
 <!-- URLs. -->
 [Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582

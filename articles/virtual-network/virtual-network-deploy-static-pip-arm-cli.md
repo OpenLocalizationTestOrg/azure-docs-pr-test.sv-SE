@@ -1,6 +1,6 @@
 ---
-title: aaaCreate en virtuell dator med en statisk offentlig IP-adress - Azure CLI 2.0 | Microsoft Docs
-description: "Lär dig hur toocreate en virtuell dator med en statisk offentlig IP-adress med hjälp av hello Azure-kommandoradsgränssnittet (CLI) 2.0."
+title: Skapa en virtuell dator med en statisk offentlig IP-adress - Azure CLI 2.0 | Microsoft Docs
+description: "Lär dig hur du skapar en virtuell dator med en statisk offentlig IP-adress med hjälp av Azure-kommandoradsgränssnittet (CLI) 2.0."
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -16,13 +16,13 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 486060463486462dd8336734a7ad23c4a2cba452
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: a4c32694949880037f01bb2b6b9779d2cbb9809c
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="create-a-vm-with-a-static-public-ip-address-using-hello-azure-cli-20"></a>Skapa en virtuell dator med en statisk offentlig IP-adress med hjälp av hello Azure CLI 2.0
+# <a name="create-a-vm-with-a-static-public-ip-address-using-the-azure-cli-20"></a>Skapa en virtuell dator med en statisk offentlig IP-adress använder Azure CLI 2.0
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](virtual-network-deploy-static-pip-arm-portal.md)
@@ -34,18 +34,18 @@ ms.lasthandoff: 10/06/2017
 
 [!INCLUDE [virtual-network-deploy-static-pip-intro-include.md](../../includes/virtual-network-deploy-static-pip-intro-include.md)]
 
-Azure har två olika distributionsmodeller för att skapa och arbeta med resurser: [Resource Manager och klassisk](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Den här artikeln täcker hello Resource Manager-distributionsmodellen, som Microsoft rekommenderar för de flesta nya distributioner i stället för hello klassiska distributionsmodellen.
+Azure har två olika distributionsmodeller för att skapa och arbeta med resurser: [Resource Manager och klassisk](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Den här artikeln täcker distributionsmodell hanteraren för filserverresurser, som Microsoft rekommenderar för de flesta nya distributioner i stället för den klassiska distributionsmodellen.
 
 [!INCLUDE [virtual-network-deploy-static-pip-scenario-include.md](../../includes/virtual-network-deploy-static-pip-scenario-include.md)]
 
-## <a name = "create"></a>Skapa hello VM
+## <a name = "create"></a>Skapa den virtuella datorn
 
-Du kan göra detta med hjälp av hello Azure CLI 2.0 (den här artikeln) eller hello [Azure CLI 1.0](virtual-network-deploy-static-pip-cli-nodejs.md). Hej värdena i ”” hello variabler i hello steg som följer skapa resurser med inställningar från hello scenario. Ändra hello värden som är lämpliga för din miljö.
+Du kan göra detta med hjälp av Azure CLI 2.0 (den här artikeln) eller [Azure CLI 1.0](virtual-network-deploy-static-pip-cli-nodejs.md). Värdena i ”” för variabler i de steg som följer skapa resurser med inställningar för scenariot. Ändra värdena för din miljö.
 
-1. Installera hello [Azure CLI 2.0](/cli/azure/install-az-cli2) om du inte redan har installerats.
-2. Skapa en SSH offentlig och privat nyckel för virtuella Linux-datorer genom att fylla hello stegen i hello [skapa en SSH offentlig och privat nyckel för Linux virtuella datorer](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-3. Från en kommandotolk, logga in med hello kommandot `az login`.
-4. Skapa hello VM genom att köra hello-skript som följer på en Linux- eller Mac-dator. hello Azure offentlig IP-adress, virtuella nätverk, nätverksgränssnitt och Virtuella resurser måste alla finnas i hello samma plats. Även om hello resurser inte alla har tooexist i hello samma resursgrupp i hello följande skript som de gör.
+1. Installera den [Azure CLI 2.0](/cli/azure/install-az-cli2) om du inte redan har installerats.
+2. Skapa en SSH offentlig och privat nyckel för Linux virtuella datorer genom att slutföra stegen i den [skapa en SSH offentlig och privat nyckel för Linux virtuella datorer](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+3. Från en kommandotolk, logga in med kommandot `az login`.
+4. Skapa den virtuella datorn genom att köra skriptet som följer på en Linux- eller Mac-dator. Azure offentlig IP-adress, virtuella nätverk, nätverksgränssnitt och Virtuella resurser finnas på samma plats. Även om resurserna inte alla finns i samma resursgrupp kan i följande skript gör de.
 
 ```bash
 RgName="IaaSStory"
@@ -57,11 +57,11 @@ az group create \
 --name $RgName \
 --location $Location
 
-# Create a public IP address resource with a static IP address using hello --allocation-method Static option.
-# If you do not specify this option, hello address is allocated dynamically. hello address is assigned toothe
-# resource from a pool of IP adresses unique tooeach Azure region. hello DnsName must be unique within the
-# Azure location it's created in. Download and view hello file from https://www.microsoft.com/en-us/download/details.aspx?id=41653#
-# that lists hello ranges for each region.
+# Create a public IP address resource with a static IP address using the --allocation-method Static option.
+# If you do not specify this option, the address is allocated dynamically. The address is assigned to the
+# resource from a pool of IP adresses unique to each Azure region. The DnsName must be unique within the
+# Azure location it's created in. Download and view the file from https://www.microsoft.com/en-us/download/details.aspx?id=41653#
+# that lists the ranges for each region.
 
 PipName="PIPWEB1"
 DnsName="iaasstoryws1"
@@ -86,8 +86,8 @@ az network vnet create \
 --subnet-name $SubnetName \
 --subnet-prefix $SubnetPrefix
 
-# Create a network interface connected toohello VNet with a static private IP address and associate hello public IP address
-# resource toohello NIC.
+# Create a network interface connected to the VNet with a static private IP address and associate the public IP address
+# resource to the NIC.
 
 NicName="NICWEB1"
 PrivateIpAddress="192.168.1.101"
@@ -100,21 +100,21 @@ az network nic create \
 --private-ip-address $PrivateIpAddress \
 --public-ip-address $PipName
 
-# Create a new VM with hello NIC
+# Create a new VM with the NIC
 
 VmName="WEB1"
 
-# Replace hello value for hello VmSize variable with a value from the
+# Replace the value for the VmSize variable with a value from the
 # https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-sizes article.
 VmSize="Standard_DS1"
 
-# Replace hello value for hello OsImage variable with a value for *urn* from hello output returned by entering
-# hello `az vm image list` command. 
+# Replace the value for the OsImage variable with a value for *urn* from the output returned by entering
+# the `az vm image list` command. 
 
 OsImage="credativ:Debian:8:latest"
 Username='adminuser'
 
-# Replace hello following value with hello path tooyour public key file.
+# Replace the following value with the path to your public key file.
 SshKeyValue="~/.ssh/id_rsa.pub"
 
 az vm create \
@@ -126,27 +126,27 @@ az vm create \
 --nics $NicName \
 --admin-username $Username \
 --ssh-key-value $SshKeyValue
-# If creating a Windows VM, remove hello previous line and you'll be prompted for hello password you want tooconfigure for hello VM.
+# If creating a Windows VM, remove the previous line and you'll be prompted for the password you want to configure for the VM.
 ```
 
-Dessutom toocreating en virtuell dator, hello skriptet skapar:
-- En enda premium hanterade disken som standard, men du har andra alternativ för hello disktyp som du kan skapa. Läs hello [skapa en Linux VM som använder hello Azure CLI 2.0](../virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json) artikeln för information.
-- Virtuella nätverk, undernät, nätverkskort och offentliga IP-adress-resurser. Du kan också använda *befintliga* virtuellt nätverk, undernät, nätverkskort eller resurserna för offentlig IP-adress. toolearn hur toouse befintliga nätverksresurser i stället för att skapa ytterligare resurser, ange `az vm create -h`.
+Förutom att skapa en virtuell dator skapar skriptet:
+- En enda premium hanterade disken som standard, men du har andra alternativ för den typ av disk som du kan skapa. Läs den [skapa en Linux VM som använder Azure CLI 2.0](../virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json) artikeln för information.
+- Virtuella nätverk, undernät, nätverkskort och offentliga IP-adress-resurser. Du kan också använda *befintliga* virtuellt nätverk, undernät, nätverkskort eller resurserna för offentlig IP-adress. Information om hur du använder befintliga nätverksresurser i stället för att skapa ytterligare resurser, ange `az vm create -h`.
 
 ## <a name = "validate"></a>Validera skapa Virtuella och den offentliga IP-adress
 
-1. Ange hello kommando `az resource list --resouce-group IaaSStory --output table` toosee en lista över hello resurser som skapats av hello skript. Det bör finnas fem resurser i hello returnerade utdata: network interface, disk, offentlig IP-adress, virtuella nätverk och en virtuell dator.
-2. Ange hello kommando `az network public-ip show --name PIPWEB1 --resource-group IaaSStory --output table`. Anteckna hello värdet i hello returnerade utdata, **IP-adress** och hello värdet av **PublicIpAllocationMethod** är *statiska*.
-3. Ta bort hello <> innan du kör följande kommando hello ersätter *användarnamn* med hello namn som används för hello **användarnamn** variabeln i hello skript och ersätter *ipAddress* med hello **ipAddress** hello föregående steg. Hello kör följande kommando tooconnect toohello VM: `ssh -i ~/.ssh/azure_id_rsa <Username>@<ipAddress>`. 
+1. Ange kommandot `az resource list --resouce-group IaaSStory --output table` att se en lista över de resurser som skapats av skriptet. Det bör finnas fem resurser i returnerade utdata: network interface, disk, offentlig IP-adress, virtuella nätverk och en virtuell dator.
+2. Ange kommandot `az network public-ip show --name PIPWEB1 --resource-group IaaSStory --output table`. Returnerade utdata och anteckna värdet för **IpAddress** och att värdet för **PublicIpAllocationMethod** är *statiska*.
+3. Ta bort <> innan du kör följande kommando ersätter *användarnamn* med namn som du använde för den **användarnamn** variabeln i skript och ersätter *IP-adress* med den **IP-adress** från föregående steg. Kör följande kommando för att ansluta till den virtuella datorn: `ssh -i ~/.ssh/azure_id_rsa <Username>@<ipAddress>`. 
 
-## <a name= "clean-up"></a>Ta bort hello VM och associerade resurser
+## <a name= "clean-up"></a>Ta bort den virtuella datorn och associerade resurser
 
-Vi rekommenderar att du tar bort hello resurser skapas i den här övningen om du inte använder dem i produktion. VM, offentlig IP-adress och diskresurser avgifter, så länge som de har etablerats. tooremove hello resurser som skapades under den här övningen fullständig hello följande steg:
+Vi rekommenderar att du tar bort de resurser som skapades i den här övningen om du inte använder dem i produktion. VM, offentlig IP-adress och diskresurser avgifter, så länge som de har etablerats. Om du vill ta bort de resurser som skapades under den här övningen, gör du följande:
 
-1. tooview hello resurser i hello resursgrupp, kör hello `az resource list --resource-group IaaSStory` kommando.
-2. Bekräfta att det finns inga resurser i hello resursgrupp än hello resurser som skapats av hello skriptet i den här artikeln. 
-3. alla resurser skapas i den här övningen kör hello toodelete `az group delete -n IaaSStory` kommando. hello-kommando bort hello resursgruppen och alla hello-resurser som den innehåller.
+1. Om du vill visa resurserna i resursgruppen kör den `az resource list --resource-group IaaSStory` kommando.
+2. Bekräfta att det finns inga resurser i resursgrupp än de resurser som skapades av skriptet i den här artikeln. 
+3. Om du vill ta bort alla resurser som har skapats i den här övningen kör den `az group delete -n IaaSStory` kommando. Kommandot tar bort resursgruppen och alla resurser som den innehåller.
 
 ## <a name="next-steps"></a>Nästa steg
 
-All nätverkstrafik kan flöda tooand från hello skapas den virtuella datorn i den här artikeln. Du kan definiera inkommande och utgående regler inom en NSG som begränsar hello trafik som kan flöda tooand från hello nätverksgränssnitt, hello undernät eller båda. Mer om NSG: er, läsa hello toolearn [NSG översikt](virtual-networks-nsg.md) artikel.
+All nätverkstrafik kan flöda till och från den virtuella datorn skapas i den här artikeln. Du kan definiera inkommande och utgående regler inom en NSG som begränsar trafiken kan flöda till och från nätverksgränssnittet undernätet eller båda. Mer information om NSG: er i [NSG översikt](virtual-networks-nsg.md) artikel.

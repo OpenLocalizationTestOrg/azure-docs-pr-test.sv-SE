@@ -1,21 +1,28 @@
 
 
-1. Logga in toohello [Azure Portal](https://portal.azure.com), och klicka sedan på **+ ny** på hello upp till vänster i hello-skärmen.
-2. Klicka på **Ny**, sedan **Webb + mobilt**. Bläddra ner vid behov och klicka på **Notification Hub**.
+1. Logga in på [Azure Portal](https://portal.azure.com).
+
+2. Välj **Nytt** > **Webb och mobilt** > **Notification Hub**.
    
-      ![Azure Portal – skapa Notification Hubs](./media/notification-hubs-portal-create-new-hub/notification-hubs-azure-portal-create.png)
+      ![Azure Portal – skapa en Notification Hub](./media/notification-hubs-portal-create-new-hub/notification-hubs-azure-portal-create.png)
       
-3. Kontrollera att du anger ett unikt namn i hello **Meddelandehubben** fältet. Välj din önskade **region**, **prenumeration** och **resursgrupp** (om du redan har en). 
+3. I rutan **Notification Hub** skriver du ett unikt namn. Välj din **region**, **prenumeration** och **resursgrupp** (om du redan har en). 
    
-    Om du redan har en service bus-namnrymd som du vill toocreate hello hubben i, väljer du via hello **Välj befintligt** alternativ i hello **Namespace** fältet.  Annars kan använda du hello standardnamnet som kommer att skapas baserat på hubbnamnet hello så länge hello namnområdesnamnet som är tillgängliga. 
+    Om du redan har ett namnområde för Service Bus som du vill skapa hubben i gör du följande:
+
+    a. I området **Namnområde** väljer du länken **Välj befintligt**. 
    
-    När du är klar klickar du på **Skapa**.
+    b. Välj **Skapa**.
+
+    Om du inte redan har ett namnområde för Service Bus kan du använda standardnamnet som skapas baserat på hubbnamnet (om namnområdesnamnet är tillgängligt).
    
       ![Azure Portal – ange egenskaper för meddelandehubben](./media/notification-hubs-portal-create-new-hub/notification-hubs-azure-portal-settings.png)
-4. Du kommer att vidtas toohello respektive Portalsida efter hello namnområdet och meddelandehubben har skapats. 
+
+    När du har skapat namnområdet och en meddelandehubb öppnas Azure Portal. 
    
-      ![Azure Portal – portalsida för Meddelandehubb](./media/notification-hubs-portal-create-new-hub/notification-hubs-azure-portal-page.png)
-5. Klicka på **inställningar** och sedan **åtkomstprinciper** -anteckna hello två anslutningssträngar som görs tillgängliga tooyou som du behöver dem toohandle push-meddelanden senare.
+      ![Azure Portal – portalsida för meddelandehubb](./media/notification-hubs-portal-create-new-hub/notification-hubs-azure-portal-page.png)
+
+4. Välj **Inställningar** > **Åtkomstprinciper**. Anteckna de två anslutningssträngarna som är tillgängliga för dig. Du behöver dem för att hantera push-meddelanden senare.
    
-      ![Azure Portal – anslutningssträngar för Meddelandehubb](./media/notification-hubs-portal-create-new-hub/notification-hubs-connection-strings-portal.png)
+      ![Azure Portal – anslutningssträngar för meddelandehubb](./media/notification-hubs-portal-create-new-hub/notification-hubs-connection-strings-portal.png)
 

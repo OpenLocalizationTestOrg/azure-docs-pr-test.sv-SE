@@ -1,6 +1,6 @@
 ---
-title: "aaaConnect via fjärranslutning tooyour StorSimple-enhet | Microsoft Docs"
-description: "Förklarar hur tooconfigure enheten för fjärrhantering och hur tooconnect tooWindows PowerShell för StorSimple via HTTP eller HTTPS."
+title: "Fjärransluta till din StorSimple-enhet | Microsoft Docs"
+description: "Beskriver hur du konfigurerar enheten för fjärrhantering och hur du ansluter till Windows PowerShell för StorSimple via HTTP eller HTTPS."
 services: storsimple
 documentationcenter: 
 author: alkohli
@@ -15,139 +15,139 @@ ms.workload: NA
 ms.date: 04/07/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 38b6a6350891b9f6f8fdfc55880b2f47105d947c
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: ff76884f020a0fb8a1b48bd371c419bd65e85fd3
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="connect-remotely-tooyour-storsimple-8000-series-device"></a>Fjärransluta tooyour StorSimple 8000-serieenhet
+# <a name="connect-remotely-to-your-storsimple-8000-series-device"></a>Fjärransluta till enheten StorSimple 8000-serien
 
 ## <a name="overview"></a>Översikt
 
-Du kan fjärransluta tooyour enheten via Windows PowerShell. När du ansluter det här sättet kan ser du inte en meny. (Du se en meny endast om du använder hello seriekonsolen på hello enheten tooconnect.) Med Windows PowerShell-fjärrkommunikation ansluta tooa specifika runspace. Du kan också ange hello visningsspråket.
+Du kan fjärransluta till din enhet via Windows PowerShell. När du ansluter det här sättet kan ser du inte en meny. (Du se en meny endast om du använder seriekonsolen på enheten för att ansluta.) Med Windows PowerShell-fjärrkommunikation ansluta till en specifik runspace. Du kan också ange språk för visning.
 
-Mer information om hur du använder Windows PowerShell-fjärrkommunikation toomanage enheten finns för[använda Windows PowerShell för StorSimple tooadminister StorSimple-enheten](storsimple-8000-windows-powershell-administration.md).
+Mer information om hur du använder Windows PowerShell-fjärrkommunikation för att hantera enheten, gå till [använda Windows PowerShell för StorSimple att administrera din StorSimple-enhet](storsimple-8000-windows-powershell-administration.md).
 
-Den här självstudiekursen beskrivs hur tooconfigure enheten för fjärrhantering och sedan hur tooconnect tooWindows PowerShell för StorSimple. Du kan använda HTTP eller HTTPS tooremotely ansluta via Windows PowerShell. Men när du beslutar hur tooconnect tooWindows PowerShell för StorSimple, Överväg hello följande information:
+Den här självstudiekursen beskrivs hur du konfigurerar enheten för fjärrhantering och hur du ansluter till Windows PowerShell för StorSimple. Du kan använda HTTP eller HTTPS för att fjärransluta via Windows PowerShell. Men när du bestämmer hur du ansluter till Windows PowerShell för StorSimple, Tänk på följande:
 
-* Ansluta direkt toohello enhetens seriekonsol är säkra, men anslutande toohello seriekonsolen över nätverksväxlar är inte. Var försiktig av hello säkerhetsrisk när du ansluter toohello enhetens seriekonsol via nätverksväxlar.
-* Ansluter via en HTTP-session kan erbjuda mer säkerhet än att ansluta via seriekonsol hello hello nätverket. Även om detta inte hello säkraste metoden, är det acceptabelt på betrodda nätverk.
-* Ansluter via en HTTPS-session med ett självsignerat certifikat är hello säkraste och hello rekommenderas.
+* Ansluta direkt till enhetens seriekonsol är säker och ansluter till seriekonsol via nätverksväxlar inte. Var försiktig för säkerhetsrisken när du ansluter till enhetens seriekonsol via nätverksväxlar.
+* Ansluter via en HTTP-session kan erbjuda mer säkerhet än att ansluta via seriekonsolen över nätverket. Även om detta inte är den säkraste metoden är är det acceptabelt på betrodda nätverk.
+* Ansluter via en HTTPS-session med ett självsignerat certifikat är den säkraste och det rekommenderade alternativet.
 
-Du kan fjärransluta toohello Windows PowerShell-gränssnittet. Fjärråtkomst tooyour StorSimple-enhet via hello Windows PowerShell-gränssnittet är inte aktiverad som standard. Du måste aktivera fjärrhantering på hello enheten först och sedan på hello-klient som är används tooaccess din enhet.
+Du kan fjärransluta till Windows PowerShell-gränssnittet. Fjärråtkomst till din StorSimple-enhet via Windows PowerShell-gränssnittet är inte aktiverad som standard. Du måste först aktivera fjärrhantering på enheten och klicka sedan på klienten som används för åtkomst till din enhet.
 
-hello stegen som beskrivs i den här artikeln utfördes på ett värdsystem som kör Windows Server 2012 R2.
+Stegen som beskrivs i den här artikeln utfördes på ett värdsystem som kör Windows Server 2012 R2.
 
 ## <a name="connect-through-http"></a>Ansluta via HTTP
 
-Ansluter tooWindows PowerShell för StorSimple via en HTTP-session är säkrare än att ansluta via hello seriekonsol av StorSimple-enheten. Även om detta inte hello säkraste metoden, är det acceptabelt på betrodda nätverk.
+Ansluter till Windows PowerShell för StorSimple via en HTTP-session är säkrare än att ansluta via seriekonsolen av StorSimple-enheten. Även om detta inte är den säkraste metoden är är det acceptabelt på betrodda nätverk.
 
-Du kan använda antingen hello Azure-portalen eller hello seriekonsolen tooconfigure fjärrhantering. Välj hello följande procedurer:
+Du kan använda Azure-portalen eller seriekonsolen för att konfigurera fjärrhantering. Välj följande procedurer:
 
-* [Använda hello Azure portal tooenable remote management via HTTP](#use-the-azure-classic-portal-to-enable-remote-management-over-http)
-* [Använda hello seriekonsolen tooenable remote management via HTTP](#use-the-serial-console-to-enable-remote-management-over-http)
+* [Använda Azure portal för att aktivera fjärrhantering över HTTP](#use-the-azure-classic-portal-to-enable-remote-management-over-http)
+* [Använd seriekonsolen för att aktivera fjärrhantering över HTTP](#use-the-serial-console-to-enable-remote-management-over-http)
 
-När du aktiverar fjärrhantering, Använd hello följa proceduren tooprepare hello-klient för en fjärranslutning.
+När du aktiverar fjärrhantering, Använd följande procedur för att Förbered för en fjärranslutning.
 
-* [Förbered hello-klient för fjärranslutning](#prepare-the-client-for-remote-connection)
+* [Förbered för fjärranslutning](#prepare-the-client-for-remote-connection)
 
-### <a name="use-hello-azure-portal-tooenable-remote-management-over-http"></a>Använda hello Azure portal tooenable remote management via HTTP
+### <a name="use-the-azure-portal-to-enable-remote-management-over-http"></a>Använda Azure portal för att aktivera fjärrhantering över HTTP
 
-Utföra hello följa stegen i hello Azure portal tooenable fjärrhantering över HTTP.
+Utför följande steg i Azure-portalen för att aktivera fjärrhantering över HTTP.
 
-#### <a name="tooenable-remote-management-through-hello-azure-portal"></a>tooenable fjärrhantering via hello Azure-portalen
+#### <a name="to-enable-remote-management-through-the-azure-portal"></a>Så här aktiverar du fjärrhantering via Azure portal
 
-1. Gå tooyour StorSimple enheten Manager-tjänsten. Välj **enheter** och markera och på hello enheten tooconfigure för fjärrhantering. Gå för**Enhetsinställningar > säkerhet**.
-2. I hello **säkerhetsinställningar** bladet, klickar du på **fjärrhantering**.
-3. I hello **fjärrhantering** bladet ange **aktivera fjärrhantering** för**Ja**.
-4. Nu kan du välja tooconnect med HTTP. (hello är standard tooconnect via HTTPS.) Se till att HTTP har valts.
+1. Gå till StorSimple Device Manager-tjänsten. Välj **enheter** och markera och klicka på den enhet som du vill konfigurera för fjärrhantering. Gå till **Enhetsinställningar > säkerhet**.
+2. I den **säkerhetsinställningar** bladet, klickar du på **fjärrhantering**.
+3. I den **fjärrhantering** bladet ange **aktivera fjärrhantering** till **Ja**.
+4. Nu kan du välja att ansluta med HTTP. (Standard är att ansluta via HTTPS.) Se till att HTTP har valts.
    
    > [!NOTE]
    > Det är bara acceptabelt att ansluta över HTTP på betrodda nätverk.
    
 5. Klicka på **spara** och när du uppmanas att bekräfta, Välj **Ja**.
 
-### <a name="use-hello-serial-console-tooenable-remote-management-over-http"></a>Använda hello seriekonsolen tooenable remote management via HTTP
-Utför följande hello seriekonsolen tooenable remote enhetshantering hello.
+### <a name="use-the-serial-console-to-enable-remote-management-over-http"></a>Använd seriekonsolen för att aktivera fjärrhantering över HTTP
+Utför följande steg på enhetens seriekonsol för att aktivera fjärrhantering.
 
-#### <a name="tooenable-remote-management-through-hello-device-serial-console"></a>tooenable fjärrhantering via hello enhetens seriekonsol
-1. På menyn för seriekonsolen av hello väljer du alternativ 1. Mer information om hur du använder hello seriekonsolen på hello enhet gå för[ansluta tooWindows PowerShell för StorSimple via enhetens seriekonsol](storsimple-8000-windows-powershell-administration.md#connect-to-windows-powershell-for-storsimple-via-the-device-serial-console).
-2. I hello kommandotolk, skriver du:`Enable-HcsRemoteManagement –AllowHttp`
-3. Du meddelas om hello säkerhetsrisker med att använda HTTP tooconnect toohello enhet. När du uppmanas bekräfta genom att skriva **Y**.
+#### <a name="to-enable-remote-management-through-the-device-serial-console"></a>Så här aktiverar du fjärrhantering via enhetens seriekonsol
+1. Välj alternativ 1 på menyn för seriekonsolen. Mer information om hur du använder seriekonsolen på enheten, gå till [Anslut till Windows PowerShell för StorSimple via enhetens seriekonsol](storsimple-8000-windows-powershell-administration.md#connect-to-windows-powershell-for-storsimple-via-the-device-serial-console).
+2. Skriv följande i Kommandotolken:`Enable-HcsRemoteManagement –AllowHttp`
+3. Du meddelas om säkerhetsrisker med att använda HTTP för att ansluta till enheten. När du uppmanas bekräfta genom att skriva **Y**.
 4. Kontrollera att HTTP har aktiverats genom att skriva:`Get-HcsSystem`
-5. Kontrollera att hello **RemoteManagementMode** fältet visar **HttpsAndHttpEnabled**.hello följande bild visar de här inställningarna i PuTTY.
+5. Kontrollera att den **RemoteManagementMode** fältet visar **HttpsAndHttpEnabled**. Följande bild visar de här inställningarna i PuTTY.
    
      ![Seriell HTTPS och HTTP-aktiverad](./media/storsimple-remote-connect/HCS_SerialHttpsAndHttpEnabled.png)
 
-### <a name="prepare-hello-client-for-remote-connection"></a>Förbered hello-klient för fjärranslutning
-Utför följande steg på klientens hello tooenable fjärrhantering hello.
+### <a name="prepare-the-client-for-remote-connection"></a>Förbered för fjärranslutning
+Utför följande steg på klienten för att aktivera fjärrhantering.
 
-#### <a name="tooprepare-hello-client-for-remote-connection"></a>tooprepare hello klienten för fjärranslutning
+#### <a name="to-prepare-the-client-for-remote-connection"></a>Så här förbereder du klienten för fjärranslutning
 1. Starta en Windows PowerShell-session som administratör.
-2. Skriv följande kommando tooadd hello IP-adress i listan över betrodda värdar hello StorSimple enheten toohello klientens hello:
+2. Skriv följande kommando för att lägga till IP-adressen för StorSimple-enhet i listan över betrodda värdar klientens:
    
      `Set-Item wsman:\localhost\Client\TrustedHosts <device_ip> -Concatenate -Force`
    
-     Ersätt <*device_ip*> med hello IP-adressen för din enhet, till exempel: 
+     Ersätt <*device_ip*> med IP-adressen för din enhet, till exempel: 
    
      `Set-Item wsman:\localhost\Client\TrustedHosts 10.126.173.90 -Concatenate -Force`
-3. Skriv följande kommando toosave hello enheten autentiseringsuppgifter i en variabel hello: 
+3. Skriv följande kommando för att spara autentiseringsuppgifter för enheten i en variabel: 
    
     ```
     $cred = Get-Credential
     ```
     
-4. Hello i dialogrutan som visas:
+4. I dialogrutan som visas:
    
-   1. Skriv hello användarnamn i formatet: *device_ip\SSAdmin*.
-   2. Ange hello enhetens administratörslösenord som angavs när hello enhet har konfigurerats med hello installationsguiden. hello standardlösenordet är *Password1*.
-5. Starta Windows PowerShell-sessionen hello enheten genom att skriva följande kommando:
+   1. Ange användarnamnet i formatet: *device_ip\SSAdmin*.
+   2. Ange enhetens administratörslösenord som angavs när enheten konfigurerades med installationsguiden. Standardlösenordet är *Password1*.
+5. Starta Windows PowerShell-sessionen på enheten genom att skriva följande kommando:
    
      `Enter-PSSession -Credential $cred -ConfigurationName SSAdminConsole -ComputerName <device_ip>`
    
    > [!NOTE]
-   > toocreate en Windows PowerShell-session för användning med hello virtuell StorSimple-enhet, Lägg till hello `–Port` parametern och ange hello offentlig port som du konfigurerade i fjärrkommunikation för virtuell StorSimple-enhet.
+   > Om du vill skapa en Windows PowerShell-session för användning med den virtuella enheten StorSimple, bifoga den `–Port` parametern och ange den offentliga porten som du konfigurerade i fjärrkommunikation för virtuell StorSimple-enhet.
    
    
-Du bör nu ha en aktiv Windows PowerShell-session toohello fjärrenheten.
+Du bör nu ha en aktiv Windows PowerShell-fjärrsession till enheten.
    
 ![PowerShell-fjärrkommunikation med HTTP](./media/storsimple-remote-connect/HCS_PSRemotingUsingHTTP.png)
 
 ## <a name="connect-through-https"></a>Ansluta via HTTPS
 
-Ansluter tooWindows PowerShell för StorSimple via en HTTPS-session är hello säkraste och rekommenderade metoden för enhet som ansluter via fjärranslutning tooyour Microsoft Azure StorSimple. hello följande procedurer beskrivs hur tooset in hello serial-konsolen och klienten datorer så att du kan använda HTTPS tooconnect tooWindows PowerShell för StorSimple.
+Ansluter till Windows PowerShell för StorSimple via en HTTPS-session är den mest säkra och rekommenderade metoden för att fjärransluta till din Microsoft Azure StorSimple-enhet. Följande procedurer beskriver hur du ställer in serial-konsolen och klienten datorerna så att du kan använda HTTPS för att ansluta till Windows PowerShell för StorSimple.
 
-Du kan använda antingen hello Azure-portalen eller hello seriekonsolen tooconfigure fjärrhantering. Välj hello följande procedurer:
+Du kan använda Azure-portalen eller seriekonsolen för att konfigurera fjärrhantering. Välj följande procedurer:
 
-* [Använda hello Azure portal tooenable remote management via HTTPS](#use-the-azure-classic-portal-to-enable-remote-management-over-https)
-* [Använda hello seriekonsolen tooenable remote management via HTTPS](#use-the-serial-console-to-enable-remote-management-over-https)
+* [Använda Azure portal för att aktivera fjärrhantering över HTTPS](#use-the-azure-classic-portal-to-enable-remote-management-over-https)
+* [Använd seriekonsolen för att aktivera fjärrhantering över HTTPS](#use-the-serial-console-to-enable-remote-management-over-https)
 
-När du aktiverar fjärrhantering, Använd följande procedurer tooprepare hello värden för en fjärrhantering hello och ansluter toohello enheten från hello fjärrvärden.
+När du aktiverar fjärrhantering, Använd följande procedurer för att förbereda värden för en fjärrhantering och ansluter till enheten från fjärrvärden.
 
-* [Förbereda hello värden för fjärrhantering](#prepare-the-host-for-remote-management)
-* [Anslut toohello enhet från hello fjärrvärden](#connect-to-the-device-from-the-remote-host)
+* [Förbereda värden för fjärrhantering](#prepare-the-host-for-remote-management)
+* [Ansluta till enheten från fjärrvärden](#connect-to-the-device-from-the-remote-host)
 
-### <a name="use-hello-azure-portal-tooenable-remote-management-over-https"></a>Använda hello Azure portal tooenable remote management via HTTPS
+### <a name="use-the-azure-portal-to-enable-remote-management-over-https"></a>Använda Azure portal för att aktivera fjärrhantering över HTTPS
 
-Utföra hello följa stegen i hello Azure portal tooenable fjärrhantering över HTTPS.
+Utför följande steg i Azure-portalen för att aktivera fjärrhantering över HTTPS.
 
-#### <a name="tooenable-remote-management-over-https-from-hello-azure-portal"></a>tooenable remote management via HTTPS från hello Azure-portalen
+#### <a name="to-enable-remote-management-over-https-from-the-azure-portal"></a>Att aktivera fjärrhantering via HTTPS från Azure-portalen
 
-1. Gå tooyour StorSimple enheten Manager-tjänsten. Välj **enheter** och markera och på hello enheten tooconfigure för fjärrhantering. Gå för**Enhetsinställningar > säkerhet**.
-2. I hello **säkerhetsinställningar** bladet, klickar du på **fjärrhantering**.
-3. Ange **aktivera fjärrhantering** för**Ja**.
-4. Nu kan du välja tooconnect med hjälp av HTTPS. (hello är standard tooconnect via HTTPS.) Kontrollera att HTTPS är markerad.
-5. ... Och klicka sedan på **hämta certifikat för fjärrhantering**. Ange en plats toosave den här filen. Du måste tooinstall certifikatet på hello klienten eller värddatorn dator som du ska använda tooconnect toohello enhet.
+1. Gå till StorSimple Device Manager-tjänsten. Välj **enheter** och markera och klicka på den enhet som du vill konfigurera för fjärrhantering. Gå till **Enhetsinställningar > säkerhet**.
+2. I den **säkerhetsinställningar** bladet, klickar du på **fjärrhantering**.
+3. Ställ in **Aktivera fjärrhantering** på **Ja**.
+4. Du kan nu välja att ansluta med HTTPS. (Standard är att ansluta via HTTPS.) Kontrollera att HTTPS är markerad.
+5. ... Och klicka sedan på **hämta certifikat för fjärrhantering**. Ange en plats om du vill spara den här filen. Du måste installera certifikatet på klienten eller värddatorn datorn som du använder för att ansluta till enheten.
 6. Klicka på **spara** och klicka sedan på **Ja** när du uppmanas att bekräfta.
 
-### <a name="use-hello-serial-console-tooenable-remote-management-over-https"></a>Använda hello seriekonsolen tooenable remote management via HTTPS
+### <a name="use-the-serial-console-to-enable-remote-management-over-https"></a>Använd seriekonsolen för att aktivera fjärrhantering över HTTPS
 
-Utför följande hello seriekonsolen tooenable remote enhetshantering hello.
+Utför följande steg på enhetens seriekonsol för att aktivera fjärrhantering.
 
-#### <a name="tooenable-remote-management-through-hello-device-serial-console"></a>tooenable fjärrhantering via hello enhetens seriekonsol
-1. På menyn för seriekonsolen av hello väljer du alternativ 1. Mer information om hur du använder hello seriekonsolen på hello enhet gå för[ansluta tooWindows PowerShell för StorSimple via enhetens seriekonsol](storsimple-8000-windows-powershell-administration.md#connect-to-windows-powershell-for-storsimple-via-the-device-serial-console).
-2. I hello kommandotolk, skriver du:
+#### <a name="to-enable-remote-management-through-the-device-serial-console"></a>Så här aktiverar du fjärrhantering via enhetens seriekonsol
+1. Välj alternativ 1 på menyn för seriekonsolen. Mer information om hur du använder seriekonsolen på enheten, gå till [Anslut till Windows PowerShell för StorSimple via enhetens seriekonsol](storsimple-8000-windows-powershell-administration.md#connect-to-windows-powershell-for-storsimple-via-the-device-serial-console).
+2. Skriv följande i Kommandotolken:
    
      `Enable-HcsRemoteManagement`
    
@@ -156,89 +156,89 @@ Utför följande hello seriekonsolen tooenable remote enhetshantering hello.
    
      `Get-HcsSystem`
    
-    Kontrollera att hello **RemoteManagementMode** fältet visar **HttpsEnabled**.hello följande bild visar de här inställningarna i PuTTY.
+    Se till att den **RemoteManagementMode** fältet visar **HttpsEnabled**. Följande bild visar de här inställningarna i PuTTY.
    
      ![Seriell HTTPS-aktiverade](./media/storsimple-remote-connect/HCS_SerialHttpsEnabled.png)
-4. Från hello utdata från `Get-HcsSystem`, kopiera hello serienumret för hello enheten och spara den för senare användning.
+4. Från utdata från `Get-HcsSystem`, kopiera serienumret på enheten och spara den för senare användning.
    
    > [!NOTE]
-   > hello serienummer mappar toohello CN-namn i hello certifikat.
+   > Serienumret mappas till CN-namnet i certifikatet.
    
 5. Hämta ett certifikat för fjärrhantering genom att skriva: 
    
      `Get-HcsRemoteManagementCert`
    
-    Ett certifikat liknande toohello följande visas.
+    Ett certifikat som liknar följande visas.
    
     ![Hämta certifikat för fjärrhantering](./media/storsimple-remote-connect/HCS_GetRemoteManagementCertificate.png)
-6. Kopiera hello i hello certifikat från **---BEGIN CERTIFICATE---** för**---END CERTIFICATE---** i en textredigerare, till exempel Anteckningar och spara den som en .cer-fil. (Du kommer att kopiera den här filen tooyour fjärrvärden när du förbereder hello värden.)
+6. Kopiera informationen i certifikatet från **---BEGIN CERTIFICATE---** till **---END CERTIFICATE---** i en textredigerare, till exempel Anteckningar och spara den som en .cer-fil. (Du kopierar filen till din fjärrvärden när du förbereder värden.)
    
    > [!NOTE]
-   > toogenerate ett nytt certifikat använder hello `Set-HcsRemoteManagementCert` cmdlet.
+   > Om du vill skapa ett nytt certifikat, använder den `Set-HcsRemoteManagementCert` cmdlet.
    
-### <a name="prepare-hello-host-for-remote-management"></a>Förbereda hello värden för fjärrhantering
+### <a name="prepare-the-host-for-remote-management"></a>Förbereda värden för fjärrhantering
 
-tooprepare hello värddatorn för en anslutning som använder en HTTPS-session, utföra hello följande procedurer:
+Utför följande procedurer för att förbereda värddatorn för en anslutning som använder en HTTPS-session:
 
-* [Importera hello .cer-fil i hello rotarkivet hello klienten eller fjärrvärden](#to-import-the-certificate-on-the-remote-host).
-* [Lägg till hello enhetens serienummer toohello hosts-filen på din fjärrvärden](#to-add-device-serial-numbers-to-the-remote-host).
+* [Importera CER-filen till rotarkivet på klienten eller fjärrvärden](#to-import-the-certificate-on-the-remote-host).
+* [Lägg till enhetens serienummer i hosts-filen på din fjärrvärden](#to-add-device-serial-numbers-to-the-remote-host).
 
-Var och en av hello föregående procedurerna beskrivs nedan.
+Var och en av de föregående procedurerna beskrivs nedan.
 
-#### <a name="tooimport-hello-certificate-on-hello-remote-host"></a>tooimport hello certifikatet på fjärrvärden hello
-1. Högerklicka på hello .cer-fil och välj **installera certifikat**. Detta startar hello guiden Importera certifikat.
+#### <a name="to-import-the-certificate-on-the-remote-host"></a>Importera certifikatet på fjärrvärden
+1. Högerklicka på .cer-filen och välj **installera certifikat**. Detta startar guiden Importera certifikat.
    
     ![Guiden Importera 1 certifikat](./media/storsimple-remote-connect/HCS_CertificateImportWizard1.png)
 2. För **plats**väljer **lokal dator**, och klicka sedan på **nästa**.
-3. Välj **placera alla certifikat i följande store hello**, och klicka sedan på **Bläddra**. Navigera toohello rotarkivet på din fjärrvärden och klicka sedan på **nästa**.
+3. Välj **placera alla certifikat i nedanstående arkiv**, och klicka sedan på **Bläddra**. Navigera till rotarkivet för din fjärrvärden och klicka sedan på **nästa**.
    
     ![Guiden Importera 2 certifikat](./media/storsimple-remote-connect/HCS_CertificateImportWizard2.png)
-4. Klicka på **Slutför**. Visas ett meddelande som talar om att hello importen lyckades.
+4. Klicka på **Slutför**. Visas ett meddelande som talar om att importen lyckades.
    
     ![Guiden Importera 3 certifikat](./media/storsimple-remote-connect/HCS_CertificateImportWizard3.png)
 
-#### <a name="tooadd-device-serial-numbers-toohello-remote-host"></a>tooadd enhetens serienummer toohello fjärrvärden
-1. Starta Anteckningar som administratör och öppna hello värdfilen som finns på \Windows\System32\Drivers\etc.
-2. Lägg till följande tre poster tooyour värdfilen hello: **DATA 0 IP-adress**, **fasta IP-adressen för styrenhet 0**, och **domänkontrollant 1 fasta IP-adressen**.
-3. Ange hello enhetens serienummer som du sparade tidigare. Den här toohello IP-adressen som visas i följande bild hello. Lägg till för styrenhet 0 och 1 **Controller0** och **Controller1** hello slutet av hello serienummer (CN-namn).
+#### <a name="to-add-device-serial-numbers-to-the-remote-host"></a>Att lägga till Enhetsserienummer fjärrvärden
+1. Starta Anteckningar som administratör och öppna värdfilen som finns på \Windows\System32\Drivers\etc.
+2. Lägg till följande tre poster i hosts-filen: **DATA 0 IP-adress**, **fasta IP-adressen för styrenhet 0**, och **domänkontrollant 1 fasta IP-adressen**.
+3. Ange serienumret för enheten som du sparade tidigare. Mappa till IP-adressen som visas i följande bild. Lägg till för styrenhet 0 och 1 **Controller0** och **Controller1** i slutet av serienumret (CN-namn).
    
-    ![Lägger till CN-namnet toohosts fil](./media/storsimple-remote-connect/HCS_AddingCNNameToHostsFile.png)
-4. Spara hello hosts-filen.
+    ![Lägger till CN-namn i hosts-filen](./media/storsimple-remote-connect/HCS_AddingCNNameToHostsFile.png)
+4. Spara hosts-filen.
 
-### <a name="connect-toohello-device-from-hello-remote-host"></a>Anslut toohello enhet från hello fjärrvärden
+### <a name="connect-to-the-device-from-the-remote-host"></a>Ansluta till enheten från fjärrvärden
 
-Använda Windows PowerShell och SSL tooenter en SSAdmin sessionen på din enhet från en fjärrvärd eller klienten. Hej SSAdmin session mappar toooption 1 i hello [seriekonsolen](storsimple-8000-windows-powershell-administration.md#connect-to-windows-powershell-for-storsimple-via-the-device-serial-console) -menyn i enheten.
+Använda Windows PowerShell och SSL för att ange en SSAdmin session på din enhet från en fjärrvärd eller klienten. Sessionen SSAdmin mappar till alternativ 1 i den [seriekonsolen](storsimple-8000-windows-powershell-administration.md#connect-to-windows-powershell-for-storsimple-via-the-device-serial-console) -menyn i enheten.
 
-Utföra hello följa proceduren på hello som du vill toomake hello Windows PowerShell fjärranslutning.
+Utför följande procedur på den dator som du vill göra fjärranslutning i Windows PowerShell.
 
-#### <a name="tooenter-an-ssadmin-session-on-hello-device-by-using-windows-powershell-and-ssl"></a>tooenter en SSAdmin sessionen på hello-enhet med hjälp av Windows PowerShell och SSL
+#### <a name="to-enter-an-ssadmin-session-on-the-device-by-using-windows-powershell-and-ssl"></a>Ange en SSAdmin session på enheten med hjälp av Windows PowerShell och SSL
 1. Starta en Windows PowerShell-session som administratör.
-2. Lägg till hello enhetens IP-adress toohello klientens betrodda värdar genom att skriva:
+2. Lägg till enhetens IP-adress i klientens betrodda värdar genom att skriva:
    
      `Set-Item wsman:\localhost\Client\TrustedHosts <device_ip> -Concatenate -Force`
    
-    Där <*device_ip*> är hello IP-adressen för din enhet, till exempel: 
+    Där <*device_ip*> är IP-adressen för din enhet, till exempel: 
    
      `Set-Item wsman:\localhost\Client\TrustedHosts 10.126.173.90 -Concatenate -Force`
-3. toocreate nya autentiseringsuppgifter, skriver du:
+3. Om du vill skapa en ny autentiseringsuppgift skriver du:
    
      `$cred = New-Object pscredential @("<IP of target device>\SSAdmin", (ConvertTo-SecureString -Force -AsPlainText "<Device Administrator Password>"))`
    
-    Där <*IP målenhet*> är hello IP-adressen för DATA 0 för din enhet, till exempel **10.126.173.90** enligt hello föregående bild av hello hosts-filen. Ange dessutom hello administratörslösenordet för enheten.
+    Där <*IP målenhet*> är IP-adressen för DATA 0 för din enhet, till exempel **10.126.173.90** som visas i föregående bild av hosts-filen. Dessutom ange administratörslösenordet för enheten.
 4. Skapa en session genom att skriva:
    
      `$session = New-PSSession -UseSSL -ComputerName <Serial number of target device> -Credential $cred -ConfigurationName "SSAdminConsole"`
    
-    Ange hello hello - ComputerName parameter i cmdleten hello <*serienumret för målenhet*>. Det här serienumret mappades toohello IP-adress för DATA 0 i hello värdfilen på fjärrvärden; till exempel **SHX0991003G44MT** som visas i följande bild hello.
+    Parametern - ComputerName i cmdleten, ange den <*serienumret för målenhet*>. Det här serienumret mappades till IP-adressen för DATA 0 i värdfilen på fjärrvärden; till exempel **SHX0991003G44MT** som visas i följande bild.
 5. Ange:
    
      `Enter-PSSession $session`
-6. Du behöver toowait några minuter och du kommer sedan att anslutna tooyour enheten via HTTPS via SSL. Du ser ett meddelande som anger att du är ansluten tooyour enhet.
+6. Du kommer att behöva vänta några minuter och sedan ansluts du till din enhet via HTTPS via SSL. Du ser ett meddelande som anger att du är ansluten till din enhet.
    
     ![PowerShell-fjärrkommunikation med hjälp av HTTPS och SSL](./media/storsimple-remote-connect/HCS_PSRemotingUsingHTTPSAndSSL.png)
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Lär dig mer om [med hjälp av Windows PowerShell tooadminister StorSimple-enheten](storsimple-8000-windows-powershell-administration.md).
-* Lär dig mer om [med hello StorSimple Enhetshanteraren service tooadminister StorSimple-enheten](storsimple-8000-manager-service-administration.md).
+* Lär dig mer om [använder Windows PowerShell för att administrera din StorSimple-enhet](storsimple-8000-windows-powershell-administration.md).
+* Lär dig mer om [använder Enhetshanteraren för StorSimple-tjänsten för att administrera din StorSimple-enhet](storsimple-8000-manager-service-administration.md).
 

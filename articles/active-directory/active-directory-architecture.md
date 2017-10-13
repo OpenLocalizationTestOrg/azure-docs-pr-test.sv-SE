@@ -1,6 +1,6 @@
 ---
-title: aaaUnderstand Azure Active Directory-arkitektur | Microsoft Docs
-description: "Förklarar vad en Azure AD-klient är och hur toomanage Azure via Azure Active Directory"
+title: "Förstå Azure Active Directory-arkitekturen | Microsoft Docs"
+description: "I den här artikeln lär du dig vad en Azure AD-klient är och hur du hanterar Azure via Azure Active Directory"
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -14,94 +14,94 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/02/2017
 ms.author: markvi
-ms.openlocfilehash: 799943c012dcc309907ed3c36372038a0aad222a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 50dad848cfbdab7f5b1fff0fcec3b5f754e6ae74
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="understand-azure-active-directory-architecture"></a>Förstå Azure Active Directory-arkitekturen
-Azure Active Directory (AD Azure) aktiverar du toosecurely hantera tooAzure tjänster och resurser för dina användare. En komplett uppsättning identitetshanteringsfunktioner ingår i Azure AD. Information om funktionerna i Azure AD finns i [Vad är Azure Active Directory?](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-whatis)
+Med Azure AD (Active Directory Azure) kan du på ett säkert sätt hantera åtkomsten till Azure-tjänster och -resurser för dina användare. En komplett uppsättning identitetshanteringsfunktioner ingår i Azure AD. Information om funktionerna i Azure AD finns i [Vad är Azure Active Directory?](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-whatis)
 
-Med Azure AD kan du skapa och hantera användare och grupper och aktivera behörigheter tooallow och neka tooenterprise resurser. Information om Identitetshantering finns [hello grunderna i Azure Identitetshantering](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals-identity).
+Med Azure AD kan du skapa och hantera användare och grupper och aktivera behörigheter för att tillåta och neka åtkomst till företagsresurser. Information om identitetshantering finns i [The fundamentals of Azure identity management](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals-identity) (Grunderna om Azure-identitetshantering).
 
 ## <a name="azure-ad-architecture"></a>Azure AD-arkitekturen
-Azure AD geografiskt distribuerad arkitektur kombinerar omfattande övervakning, automatisk omdirigering, redundans och återställningsfunktioner aktivera oss toodeliver på företagsnivå tillgänglighet och prestanda tooour kunder.
+Azure Active Directorys geografiskt distribuerade arkitektur kombinerar omfattande funktioner för övervakning, automatisk omdirigering, redundans och återställning som hjälper oss att leverera tillgänglighet och prestanda på företagsnivå till våra kunder.
 
-hello följande arkitektur elementen beskrivs i den här artikeln:
+Följande arkitekturelement beskrivs i den här artikeln:
  *  Tjänstarkitekturens design
  *  Skalbarhet 
  *  Kontinuerlig tillgänglighet
  *  Datacenter
 
 ### <a name="service-architecture-design"></a>Tjänstarkitekturens design
-hello vanligaste sättet toobuild en skalbar, hög tillgänglighet och dataintensiva systemet är via oberoende byggblock eller skalningsenheter för datanivå hello Azure AD, skalenheter kallas *partitioner*. 
+Det vanligaste sättet att bygga ett skalbart, högtillgängligt, dataintensivt system är genom oberoende byggblock eller skalningsenheter på Azure AD-datanivån. Skalningsenheterna kallas för *partitioner*. 
 
-hello datanivå har flera frontend-tjänster som ger Läs-och skrivbehörighet kapaciteten. hello diagrammet nedan visar hur hello komponenter av en enskild katalogpartition distribueras i geografiskt distrubuted datacenter. 
+Datanivån har flera frontend-tjänster som tillhandahåller läs-och skrivfunktioner. Diagrammet nedan visar hur komponenterna i en partition med en enda katalog distribueras i geografiskt utspridda datacenter. 
 
   ![Partitioner med en enda katalog](./media/active-directory-architecture/active-directory-architecture.png)
 
-hello komponenter i Azure AD-arkitekturen är en primär replik och sekundära replikerna.
+Komponenterna i Azure AD-arkitekturen består av en primär replik och flera sekundära repliker.
 
 **Primär replik**
 
-Hej *primära repliken* tar emot alla *skriver* för hello-partition som den tillhör. Någon skriva åtgärden är omedelbart replikerade tooa sekundär replik i olika datacenter innan det returneras lyckade toohello anroparen, tillse geo-redundant hållbarhet för skrivningar.
+Den *primära repliken* tar emot alla *skrivningar* för den partition som den tillhör. Alla skrivåtgärder replikeras omedelbart till en sekundär replik i ett annat datacenter innan anroparen får en bekräftelse om att åtgärden lyckades. Den här metoden garanterar geo-redundant hållbarhet för skrivningar.
 
 **Sekundära repliker**
 
-Alla *katalogläsningar* hanteras från *sekundära repliker*. Sekundära repliker är datacenter som är fysiskt placerade i olika geografiska områden. Det finns många sekundära repliker eftersom data replikeras asynkront. Directory läser, till exempel autentiseringsbegäranden, hanteras från datacenter som är nära tooour kunder. hello sekundära repliker är ansvarig för skrivskyddade skalbarhet.
+Alla *katalogläsningar* hanteras från *sekundära repliker*. Sekundära repliker är datacenter som är fysiskt placerade i olika geografiska områden. Det finns många sekundära repliker eftersom data replikeras asynkront. Katalogläsningar, till exempel autentiseringsbegäranden, hanteras från datacenter som finns nära våra kunder. De sekundära replikerna ansvarar för läsningarnas skalbarhet.
 
 ### <a name="scalability"></a>Skalbarhet
 
-Skalbarhet är hello möjligheten för en tjänst tooexpand toomeet öka krav på prestanda. Skriva skalbarhet uppnås genom partitionering hello data. Läs skalbarhet uppnås genom att replikera data från en partition toomultiple sekundära repliker distribueras i hälsningsmeddelande.
+Skalbarhet syftar på en tjänsts förmåga att skala upp för att möta ökade krav på prestanda. Skalbarhet för skrivningar uppnås genom datapartitionering. Skalbarhet för läsningar uppnås genom att data replikeras från en partition till flera sekundära repliker runtom i världen.
 
-Begäranden från katalogen program är vanligtvis routade toohello datacenter som de är fysiskt närmast. Skrivningar är transparent omdirigerade toohello primära repliken tooprovide skrivskyddad konsekvenskontroll. Sekundära repliker utöka avsevärt hello skalan för partitioner eftersom hello kataloger normalt fungerar läser de flesta hello tid.
+Begäranden från katalogprogram dirigeras normalt till de datacenter som de ligger närmats fysiskt. Skrivningar omdirigeras transparent till den primära repliken för att tillhandahålla konsekventa läsningar och skrivningar. Sekundära repliker utökar avsevärt partitionernas skalning eftersom katalogerna normalt hanterar läsningar större delen av tiden.
 
-Katalogen program ansluta toohello närmsta datacenter. Detta förbättrar prestanda vilket gör det möjligt att skala upp. Eftersom en katalogpartition kan ha många sekundära repliker, kan sekundära repliker placeras närmare toohello directory-klienter. Endast internt directory service komponenter som är write-intensiva mål hello active primära repliken direkt.
+Katalogprogram ansluter till de närmaste datacentren. Detta förbättrar prestanda vilket gör det möjligt att skala upp. Eftersom en katalogpartition kan ha många sekundära repliker, kan sekundära repliker placeras närmare katalogklienterna. Endast interna katalogtjänstkomponenter som är skrivningsintensiva riktar sig direkt till den aktiva primära repliken.
 
 ### <a name="continuous-availability"></a>Kontinuerlig tillgänglighet
 
-Definierar hello möjligheten för en system tooperform oavbruten tillgänglighet (eller drifttid). hello viktiga tooAzure Annonsens hög tillgänglighet är att våra tjänster snabbt kan flytta trafik över flera geografiskt spridd datacenter. Alla datacenter är oberoende av varandra, vilket innebär att fellägen kan hållas åtskilda.
+Tillgängligheten (eller drifttiden) syftar på ett systems möjlighet att köra kontinuerligt. Nyckeln till Azure Active Directorys höga tillgänglighet är att våra tjänster snabbt kan växla trafik över flera geografiskt utspridda datacenter. Alla datacenter är oberoende av varandra, vilket innebär att fellägen kan hållas åtskilda.
 
-Azure AD är-partitionen förenklad jämfört med toohello enterprise AD-design, vilket är nödvändigt för att skala upp hello system. Vi har implementerat en design med en enskild huvudreplik och en noggrant styrd och deterministisk redundans mellan repliker.
+Azure Active Directorys partitionsdesign är förenklad jämfört med AD-företagsdesignen, vilket är viktigt för uppskalning av systemet. Vi har implementerat en design med en enskild huvudreplik och en noggrant styrd och deterministisk redundans mellan repliker.
 
 **Feltolerans**
 
-Ett system finns mer om det är feltolerant toohardware-, nätverks- och programvara fel. För varje partition på hello katalog, en hög tillgänglighet master replik finns: hello primära repliken. Endast skrivningar toohello partition utförs på repliken. Repliken är kontinuerligt och noggrant övervakas och skrivningar kan vara omedelbart flyttats pekar tooanother repliken (som blir hello nya primära) om ett fel upptäcks. Under en redundansväxling kan det uppstå ett avbrott i skrivtillgängligheten på 1 till 2 minuter. Lästillgängligheten påverkas inte under den här tiden.
+Ett system är mer tillgängligt om det är tolerant för maskinvaru-, nätverks- och programvarurelaterade fel. För varje partition i katalogen finns det en huvudreplik med hög tillgänglighet: den primära repliken. Endast skrivningar till partitionen utförs på den här repliken. Repliken övervakas kontinuerligt och noggrant, och skrivningar kan omedelbart växlas till en annan replik (som blir den nya primära repliken) om det uppstår ett fel. Under en redundansväxling kan det uppstå ett avbrott i skrivtillgängligheten på 1 till 2 minuter. Lästillgängligheten påverkas inte under den här tiden.
 
-Läsåtgärder (som outnumber skrivningar av många i storlek) bara gå toosecondary repliker. Eftersom sekundära repliker är idempotent kan kompenseras enkelt förlust av alla en replik i en given partition genom att dirigera hello läsningar tooanother repliken, vanligtvis i hello samma datacenter.
+Läsåtgärder (som är avsevärt många fler än skrivåtgärderna) skickas endast till sekundära repliker. Eftersom sekundära repliker är idempotenta kompenseras förlusten av en replik i en viss partition enkelt genom att läsningarna dirigeras till en annan replik, vanligtvis i samma datacenter.
 
 **Datahållbarhet**
 
-En skrivning är varaktigt allokerat tooat minst två data Datacenter tidigare tooit som ska bekräftas. Detta sker genom att först utför hello skrivning vid hello primära och sedan omedelbart replikerar hello skrivåtgärder tooat minst en andra datacenter. Detta säkerställer att en potentiell oåterkallelig förlust av hello data center värd hello primära inte leder till dataförlust.
+Skrivningarnas hållbarhet säkerställs genom skrivning till minst två datacenter innan åtgärden bekräftas som lyckad. Detta sker genom att skrivningarna först skrivs till den primära repliken och sedan direkt efter till minst ett annat datacenter. Detta säkerställer att en potentiell oåterkallelig förlust av datacentret som är värd för den primära repliken inte resulterar i förlust av data.
 
-Azure AD har noll [Recovery tid mål för Återställningstid](https://en.wikipedia.org/wiki/Recovery_time_objective) för utfärdande och directory läser och hello efter minuter (~ 5 minuter) RTO för katalogen skriver. [Målet för återställningspunkter (RPO)](https://en.wikipedia.org/wiki/Recovery_point_objective) är också noll, och inga data går förlorade vid redundansväxlingar.
+Azure Active Directorys [mål för återställningstid (RTO)](https://en.wikipedia.org/wiki/Recovery_time_objective) är noll för utfärdande av token och katalogläsningar och bara några minuter (~ 5 minuter) för katalogskrivningar. [Målet för återställningspunkter (RPO)](https://en.wikipedia.org/wiki/Recovery_point_objective) är också noll, och inga data går förlorade vid redundansväxlingar.
 
 ### <a name="data-centers"></a>Datacenter
 
-Azure AD replikerna lagras i finns i hela hello world-datacenter. Mer information finns i avsnittet om [Azure-datacenter](https://azure.microsoft.com/en-us/overview/datacenters).
+Azure Active Directorys repliker lagras i datacenter runtom i världen. Mer information finns i avsnittet om [Azure-datacenter](https://azure.microsoft.com/en-us/overview/datacenters).
 
-Azure AD fungerar mellan datacenter med hello följande egenskaper:
+Azure AD körs i datacenter med följande funktioner:
 
- * Autentisering, diagram och andra AD-tjänster bakom hello Gateway-tjänsten. hello Gateway hanterar belastningsutjämning för dessa tjänster. Den växlar automatiskt över om servrar med feltillstånd identifieras under transaktionella hälsotillståndsavsökningar. Baserat på dessa hälsoavsökningar dirigerar hello Gateway dynamiskt trafik toohealthy datacenter.
- * För *läser*, hello katalogen har sekundära repliker och motsvarande frontend-tjänster i en aktiv-aktiv konfiguration i flera datacenter. Om ett fel uppstår på ett helt Datacenter blir trafik automatiskt routade tooa olika datacenter.
- *  För *skriver*, hello directory kommer redundans primära (master) repliken mellan Datacenter via planerad (nya primära är synkroniserade tooold primära) eller nödfall redundans procedurer. Data hållbarhet uppnås genom att replikera alla commit tooat minst två datacenter.
+ * Autentisering, Graph och andra AD-tjänster finns bakom gatewaytjänsten. Gatewaytjänsten hanterar belastningsutjämningen av dessa tjänster. Den växlar automatiskt över om servrar med feltillstånd identifieras under transaktionella hälsotillståndsavsökningar. Baserat på dessa hälsotillståndsavsökningar dirigerar gatewaytjänsten trafiken dynamiskt till felfria datacenter.
+ * För *läsningar* har katalogen sekundära repliker och motsvarande frontend-tjänster i en ”aktiv-aktiv”-konfiguration i flera datacenter. Om ett helt datacenter får problem dirigeras trafiken automatiskt till ett annat datacenter.
+ *  För *skrivningar* redundansväxlar katalogtjänsten den primära repliken (huvudrepliken) över datacenter genom planerade redundansväxlingar eller nödväxlingar (den nya primära repliken synkroniseras med den gamla primära repliken). Datahållbarheten uppnås genom skrivning till minst två datacenter.
 
 **Datakonsekvens**
 
-hello directory modellen är en av slutliga konsekvensen. En typisk problemet med distribuerade asynkront replikering system är hello data som returneras från en ”viss” repliken inte kanske upp toodate. 
+Katalogmodellen tillhandahåller konsekvens. Ett typiskt problem med distribuerade asynkrona replikeringssystem är att de data som returneras från en specifik replik kanske inte är uppdaterade. 
 
-Azure AD innehåller skrivskyddad konsekvens för tillämpningar för en sekundär replik av Routning skrivningar toohello primära repliken och dra synkront hello skriver tillbaka toohello sekundär replik.
+Azure AD tillhandahåller läs- och skrivkonsekvens för program som skriver och läser till en viss sekundär replik genom att skrivningarna dirigeras till den primära repliken, varefter de hämtas tillbaka synkront till den sekundära repliken.
 
-Programmet skriver med hello Graph API för Azure AD är tas ut från underhålla tillhörighet tooa directory repliken konsekvent skrivskyddad. hello Azure AD Graph tjänsten upprätthåller en logisk session som har tillhörighet tooa sekundär replik för läsningar; tillhörighet fångas i ett ”replik-token” som hello diagrammet tjänsten cache med hjälp av en distribuerad cache. Den här variabeln används sedan för efterföljande åtgärder i hello samma logiska session. 
+Programskrivningar som använder Graph-API:et för Azure AD abstraheras från tillhörighetsmappningen till en katalogreplik för läs- och skrivkonsekvens. Azure AD Graph-tjänsten upprättar en logisk session som är mappad till en sekundär replik som används för läsningar. Mappningen registreras i en ”repliktoken” som diagramtjänsten cachelagrar med hjälp av en distribuerad cache. Denna token används sedan för efterföljande åtgärder i samma logiska session. 
 
  >[!NOTE]
- >Skrivningar replikeras direkt toohello sekundär replik toowhich hello logiska sessionens läsningar har utfärdats.
+ >Skrivningar replikeras direkt till den sekundära repliken som den logiska sessionens läsningar skickades till.
  >
 
 **Skydd av säkerhetskopior**
 
-hello directory implementerar mjuka borttagningar i stället för hårda borttagningar för användare och enkel återställning av oavsiktliga borttagningar av en kund-klienter. Om administratören innehavare av misstag tar bort användare, kan de enkelt ångra och återställa hello bort användare. 
+Katalogen implementerar mjuka borttagningar, i stället för hårda borttagningar, för användare och klientorganisationer så att oavsiktliga borttagningar av en kund enkelt kan återställas. Om administratören för en klientorganisation oavsiktligt tar bort användare kan han eller hon enkelt ångra åtgärden och återställa de borttagna användarna. 
 
 Azure AD implementerar dagliga säkerhetskopieringar av alla data och kan därför auktoritativt återställa data i händelse av logiska borttagningar eller skadade data. Vår datanivå använder felkorrigeringskoder för felkontroll och automatisk korrigering av särskilda typer av diskfel.
 
@@ -109,11 +109,11 @@ Azure AD implementerar dagliga säkerhetskopieringar av alla data och kan därf�
 
 Körning av en tjänst med hög tillgänglighet kräver förstklassiga mät- och övervakningsfunktioner. Azure AD analyserar och rapporterar kontinuerligt viktiga mätvärden och framgångskriterier rörande tjänsternas hälsa för var och en av dess tjänster. Vi utvecklar och finjusterar kontinuerligt mätvärden, övervakning och aviseringar för alla scenarier i varje Azure AD-tjänst och för alla tjänster.
 
-Om Azure AD-tjänsten inte fungerar som förväntat, vidta vi omedelbart åtgärden toorestore funktioner så snabbt som möjligt. hello viktigaste mått Azure AD-spårar är hur snabbt kan identifiera och minska en kund eller live problem. Vi investera kraftigt i övervakning och aviseringar toominimize tid toodetect (TTD mål: < 5 minuter) och Operativ beredskap toominimize tid toomitigate (TTM mål: < 30 minuter).
+Om en Azure AD-tjänst inte fungerar som förväntat vidtar vi omedelbart åtgärder för att återställa funktionerna så snabbt som möjligt. Det viktigaste måttet som Azure AD spårar är hur snabbt vi kan identifiera och undvika ett kundproblem eller problem med en live-webbplats. Vi har gjort stora investeringar inom övervakning och avisering för att minimera tiden för upptäckt (målsättning: < 5 minuter) och inom systemberedskap för att minimera tiden för avhjälpande åtgärder (målsättning: < 30 minuter).
 
 **Säkra åtgärder**
 
-Vi använder operativa kontroller, till exempel multifaktorautentisering (MFA) för alla åtgärder, samt granskning av alla åtgärder. Dessutom kan använder vi en just-in-time-höjning system toogrant tillfällig åtkomst som krävs för alla operativa uppgiften på begäran med jämna mellanrum. Mer information finns i [hello betrodda molnet](https://azure.microsoft.com/en-us/support/trust-center).
+Vi använder operativa kontroller, till exempel multifaktorautentisering (MFA) för alla åtgärder, samt granskning av alla åtgärder. Dessutom använder vi ett JIT-utvärderingssystem (Just-In-Time) för att löpande bevilja nödvändig tillfällig åtkomst för operativa uppgifter på begäran. Mer information finns i [The Trusted Cloud](https://azure.microsoft.com/en-us/support/trust-center) (Det säkra molnet).
 
 ## <a name="next-steps"></a>Nästa steg
 [Utvecklarhandbok för Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-developers-guide)

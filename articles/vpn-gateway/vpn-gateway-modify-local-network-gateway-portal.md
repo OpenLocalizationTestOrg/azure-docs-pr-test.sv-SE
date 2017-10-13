@@ -1,6 +1,6 @@
 ---
-title: "Ändra hello lokala nätverket gateway IP-adressprefix och hello VPN-Gateway IP-adress | Azure | Portal | Microsoft Docs"
-description: "Den här artikeln vägleder dig genom att ändra IP-adressprefix för din lokala nätverksgateway med hjälp av hello Azure-portalen."
+title: "Ändra lokala nätverket gateway IP-adressprefix och VPN-Gateway IP-adress | Azure | Portal | Microsoft Docs"
+description: "Den här artikeln vägleder dig genom att ändra IP-adressprefix för din lokala nätverksgateway som använder Azure portal."
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: cherylmc
-ms.openlocfilehash: 001df7b748ccc234d87aab3501a4f0e4ddfe60f5
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: bdd6f90fe97408bd45a72adf58bfdc190207de46
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
-# <a name="modify-local-network-gateway-settings-using-hello-azure-portal"></a>Ändra inställningar för lokalt nätverk gateway med hello Azure-portalen
+# <a name="modify-local-network-gateway-settings-using-the-azure-portal"></a>Ändra inställningar för lokalt nätverk gateway med Azure-portalen
 
-Hello inställningar för din lokala nätverksgateway AddressPrefix eller GatewayIPAddress ändras. Den här artikeln beskrivs hur du toomodify inställningarna för lokala gateway. Du kan också ändra dessa inställningar med hjälp av en annan metod genom att välja ett annat alternativ hello följande lista:
+Inställningar för din lokala nätverksgateway AddressPrefix eller GatewayIPAddress ändras. Den här artikeln visar hur du ändrar inställningarna för lokala gateway. Du kan också ändra dessa inställningar med hjälp av en annan metod genom att välja ett annat alternativ från listan nedan:
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](vpn-gateway-modify-local-network-gateway-portal.md)
@@ -35,13 +35,13 @@ Hello inställningar för din lokala nätverksgateway AddressPrefix eller Gatewa
 
 ## <a name="ipaddprefix"></a>Ändra IP-adressprefix
 
-När du ändrar IP-adressprefix beror hello steg du följer på om din lokala nätverksgateway har en anslutning.
+När du ändrar IP-adressprefix beror de steg du följer på om din lokala nätverksgateway har en anslutning.
 
 [!INCLUDE [modify prefix](../../includes/vpn-gateway-modify-ip-prefix-portal-include.md)]
 
-## <a name="gwip"></a>Ändra IP-adressen för hello gateway
+## <a name="gwip"></a>Ändra IP-adressen för gateway
 
-Om hello VPN-enhet som du vill tooconnect toohas ändras dess offentliga IP-adress, måste toomodify hello lokala nätverket gateway tooreflect som ändras. När du ändrar hello offentlig IP-adress, beror hello steg du följer på om din lokala nätverksgateway har en anslutning.
+Om VPN-enheten som du vill ansluta till har bytt offentlig IP-adress måste du ändra den lokala nätverksgatewayen så att den återspeglar den ändringen. När du ändrar den offentliga IP-adressen, beror de steg du följer på om din lokala nätverksgateway har en anslutning.
 
 [!INCLUDE [modify gateway IP](../../includes/vpn-gateway-modify-lng-gateway-ip-portal-include.md)]
 

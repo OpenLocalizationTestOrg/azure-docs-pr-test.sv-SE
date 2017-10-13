@@ -1,5 +1,5 @@
 ---
-title: aaaAzure Batch Analytics | Microsoft Docs
+title: Azure Batch Analytics | Microsoft Docs
 description: "Referens för Azure Batch Analytics."
 services: batch
 author: tamram
@@ -12,20 +12,20 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: tamram
-ms.openlocfilehash: 462fbad1ac522b485ae18c1e8891b9d2cabd45e0
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 7d634e1bb595a84b8af339e5bc5a483a7849e7f7
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="batch-analytics"></a>Batch Analytics
-hello innehåller Batch Analytics referensinformation för hello händelser och varningar som är tillgängliga för Batch-tjänsten resurser.
+Avsnitt i Batchanalyser innehåller referensinformation för händelser och varningar som är tillgängliga för Batch-tjänsten resurser.
 
 Se [Azure Batch diagnostikloggning](https://azure.microsoft.com/documentation/articles/batch-diagnostics/) mer information om att aktivera och använda Batch diagnostikloggar.
 
 ## <a name="diagnostic-logs"></a>Diagnostikloggar
 
-hello Azure Batch-tjänsten skickar hello följande diagnostiska logghändelser under hello livstid vissa Batch-resurser.
+Azure Batch-tjänsten skickar följande diagnostiska logghändelser under livslängden för vissa Batch-resurser.
 
 **Tjänsten logghändelser**
 * [Skapa poolen](batch-pool-create-event.md)

@@ -1,6 +1,6 @@
 ---
-title: "aaaAbout VPN-enheter för anslutningar mellan lokala Azure-anslutningar | Microsoft Docs"
-description: "Den här artikeln beskriver VPN-enheter och IPSec-parametrar för S2S VPN Gateway-anslutningar på olika platser. Länkar finns tooconfiguration anvisningar och exempel."
+title: "Om VPN-enheter för Azure-anslutningar på olika platser | Microsoft Docs"
+description: "Den här artikeln beskriver VPN-enheter och IPSec-parametrar för S2S VPN Gateway-anslutningar på olika platser. Länkar finns till konfigurationsanvisningar och exempel."
 services: vpn-gateway
 documentationcenter: na
 author: yushwang
@@ -15,27 +15,26 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/14/2017
 ms.author: yushwang;cherylmc
-ms.openlocfilehash: 8b84afbf93d807342ecd56ab369d5909a13343e9
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 7b7e5f0f089cc87c9e63eee1fd3d29b7a2c0d49f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>Om VPN-enheter och IPSec-/IKE-parametrar för anslutningar för VPN-gateway från plats till plats
 
-En VPN-enhet är obligatoriska tooconfigure en plats-till-plats (S2S) mellan lokala VPN-anslutning via en VPN-gateway. Plats-till-plats-anslutningar kan vara används toocreate hybridlösning eller om du vill skapa säkra anslutningar mellan ditt lokala nätverk och dina virtuella nätverk. Den här artikeln innehåller en lista över verifierade VPN-enheter och en lista över IPsec-/IKE-parametrar för VPN-gatewayer.
+En VPN-enhet krävs för att konfigurera en VPN-anslutning för plats-till-plats (S2S) på olika platser med hjälp av en VPN-gateway. Plats-till-plats-anslutningar kan användas för att skapa en hybridlösning, eller när du vill skapa säkra anslutningar mellan ditt lokala nätverk och ditt virtuella nätverk. Den här artikeln innehåller en lista över verifierade VPN-enheter och en lista över IPsec-/IKE-parametrar för VPN-gatewayer.
 
 > [!IMPORTANT]
-> Om du stöter på problem med nätverksanslutningen mellan din lokala VPN-enheter och VPN-gatewayer finns för[kända kompatibilitetsproblem för enheten](#known).
->
+> Om du har problem med anslutningen mellan dina lokala VPN-enheter och VPN-gatewayer läser du avsnittet [Kända enhetskompatibilitetsproblem](#known).
 >
 
-### <a name="items-toonote-when-viewing-hello-tables"></a>Objekt toonote när du visar hello tabeller:
+### <a name="items-to-note-when-viewing-the-tables"></a>Observera följande när du läser tabellerna:
 
-* Terminologin har ändrats för Azure VPN-gateways. Hello-namn har ändrats. Funktionaliteten har inte ändrats.
+* Terminologin har ändrats för Azure VPN-gateways. Endast namnen har ändrats. Funktionaliteten har inte ändrats.
   * Statisk routning = Principbaserad
   * Dynamisk routning = Routningsbaserad
-* Specifikationer för HighPerformance VPN-gateway och RouteBased VPN-gateway är hello samma, om inget annat anges. Till exempel är hello verifiera VPN-enheter som är kompatibla med RouteBased VPN-gatewayer också kompatibla med hello HighPerformance VPN-gateway.
+* Specifikationerna för en VPN-gateway med hög kapacitet och en routningsbaserad VPN-gateway är samma, om inget annat anges. Till exempel är verifierade VPN-enheter som är kompatibla med routningsbaserade VPN-gatewayer också kompatibla med VPN-gatewayen med hög kapacitet.
 
 ## <a name="devicetable"></a>Validerade VPN-enheter och guider för enhetskonfiguration
 
@@ -43,9 +42,9 @@ En VPN-enhet är obligatoriska tooconfigure en plats-till-plats (S2S) mellan lok
 > När du konfigurerar en plats-till-plats-anslutning krävs en offentlig IPv4-adress för VPN-enheten.
 >
 
-Vi har verifierat en uppsättning VPN-standardenheter tillsammans med våra enhetsleverantörer. Alla hello enheter i hello enhetsfamiljer i följande lista hello arbeta med VPN-gatewayer. Se [om VPN-Gateway inställningar](vpn-gateway-about-vpn-gateway-settings.md#vpntype) toounderstand hello VPN skriver användning (PolicyBased eller RouteBased) för hello VPN Gateway-lösning som du vill tooconfigure.
+Vi har verifierat en uppsättning VPN-standardenheter tillsammans med våra enhetsleverantörer. Alla enheter i enhetsfamiljerna i följande lista bör fungera med VPN-gatewayer. Mer information om VPN-typerna (PolicyBased eller RouteBased) för den VPN Gateway-lösning som du vill konfigurera finns i [Om VPN Gateway-inställningar](vpn-gateway-about-vpn-gateway-settings.md#vpntype).
 
-toohelp konfigurera din VPN-enhet, finns toohello länkar som motsvarar tooappropriate enhetsfamilj. hello länkar tooconfiguration anvisningar finns på grundval av bästa prestanda. Kontakta enhetens tillverkare för att se vilka VPN-enheter som stöds.
+Hjälp med att konfigurera VPN-enheten finns i de länkar som motsvarar lämplig enhetsfamilj. Länkarna till konfigurationsanvisningarna tillhandahålls i mån av möjlighet. Kontakta enhetens tillverkare för att se vilka VPN-enheter som stöds.
 
 |**Leverantör**          |**Enhetsfamilj**     |**Minsta operativsystemversion** |**Instruktioner för principbaserad konfiguration** |**Instruktioner för routningsbaserad konfiguration** |
 | ---                | ---                  | ---                   | ---            | ---           |
@@ -55,9 +54,9 @@ toohelp konfigurera din VPN-enhet, finns toohello länkar som motsvarar tooappro
 | Barracuda Networks, Inc. |Barracuda NextGen Firewall X-serien |Barracuda Firewall 6.5 |[Konfigurationsguide](https://techlib.barracuda.com/BFW/ConfigAzureVPNGateway) |Inte kompatibel |
 | Brocade            |Vyatta 5400 vRouter   |Virtuell router 6.6R3 GA|[Konfigurationsguide](http://www1.brocade.com/downloads/documents/html_product_manuals/vyatta/vyatta_5400_manual/wwhelp/wwhimpl/js/html/wwhelp.htm#href=VPN_Site-to-Site%20IPsec%20VPN/Preface.1.1.html) |Inte kompatibel |
 | Check Point |Security Gateway |R77.30 |[Konfigurationsguide](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |[Konfigurationsguide](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |
-| Cisco              |ASA       |8.3 |[Konfigurationsexempel](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASA) |Inte kompatibel |
+| Cisco              |ASA       |8.3<br>8.4 och senare versioner (IKEv2*) |[Konfigurationsexempel](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASA) |[Konfigurationsguide*](vpn-gateway-3rdparty-device-config-cisco-asa.md) |
 | Cisco |ASR |Principbaserad: IOS 15.1<br>Routningsbaserad: IOS 15.2 |[Konfigurationsexempel](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASR) |[Konfigurationsexempel](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASR) |
-| Cisco |ISR |Principbaserad: IOS 15.0<br>Routningsbaserad*: IOS 15.1 |[Konfigurationsexempel](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) |[Konfigurationsexempel*](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) |
+| Cisco |ISR |Principbaserad: IOS 15.0<br>Routningsbaserad*: IOS 15.1 |[Konfigurationsexempel](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) |[Konfigurationsexempel**](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) |
 | Citrix |NetScaler MPX, SDX, VPX |10.1 och senare |[Konfigurationsguide](https://docs.citrix.com/en-us/netscaler/11-1/system/cloudbridge-connector-introduction/cloudbridge-connector-azure.html) |Inte kompatibel |
 | F5 |BIG-IP-serien |12.0 |[Konfigurationsguide](https://devcentral.f5.com/articles/connecting-to-windows-azure-with-the-big-ip) |[Konfigurationsguide](https://devcentral.f5.com/articles/big-ip-to-azure-dynamic-ipsec-tunneling) |
 | Fortinet |FortiGate |FortiOS 5.4.2 |  |[Konfigurationsguide](http://cookbook.fortinet.com/ipsec-vpn-microsoft-azure-54) |
@@ -68,25 +67,28 @@ toohelp konfigurera din VPN-enhet, finns toohello länkar som motsvarar tooappro
 | Juniper |SSG |ScreenOS 6.2 |[Konfigurationsexempel](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/SSG) |[Konfigurationsexempel](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/SSG) |
 | Microsoft |Routning och fjärråtkomst |Windows Server 2012 |Inte kompatibel |[Konfigurationsexempel](http://go.microsoft.com/fwlink/p/?LinkId=717761) |
 | Open Systems AG |Mission Control Security Gateway |Saknas |[Konfigurationsguide](https://www.open.ch/_pdf/Azure/AzureVPNSetup_Installation_Guide.pdf) |Inte kompatibel |
-| Openswan |Openswan |2.6.32 |(Kommer snart) |Inte kompatibel |
 | Palo Alto Networks |Alla enheter som kör PAN-OS |PAN-OS<br>Principbaserad: 6.1.5 eller senare<br>Routningsbaserad: 7.1.4 |[Konfigurationsguide](https://live.paloaltonetworks.com/t5/Configuration-Articles/How-to-Configure-VPN-Tunnel-Between-a-Palo-Alto-Networks/ta-p/59065) |[Konfigurationsguide](https://live.paloaltonetworks.com/t5/Integration-Articles/Configuring-IKEv2-VPN-for-Microsoft-Azure-Environment/ta-p/60340) |
-| SonicWall |TZ-serie, NSA-serie<br>SuperMassive-serie<br>NSA-serie i E-klassen |SonicOS 5.8.x<br>SonicOS 5.9.x<br>SonicOS 6.x |[Konfigurationsguide för SonicOS 6.2](http://documents.software.dell.com/sonicos/6.2/microsoft-azure-configuration-guide?ParentProduct=646)<br>[Konfigurationsguide för SonicOS 5.9](http://documents.software.dell.com/sonicos/5.9/microsoft-azure-configuration-guide?ParentProduct=850) |[Konfigurationsguide för SonicOS 6.2](http://documents.software.dell.com/sonicos/6.2/microsoft-azure-configuration-guide?ParentProduct=646)<br>[Konfigurationsguide för SonicOS 5.9](http://documents.software.dell.com/sonicos/5.9/microsoft-azure-configuration-guide?ParentProduct=850) |
+| SonicWall |TZ-serie, NSA-serie<br>SuperMassive-serie<br>NSA-serie i E-klassen |SonicOS 5.8.x<br>SonicOS 5.9.x<br>SonicOS 6.x |Stöds inte|[Konfigurationsguide](https://www.sonicwall.com/en-us/support/knowledge-base/170505320011694) |
 | WatchGuard |Alla |Fireware XTM<br> Principbaserad: v11.11.x<br>Routningsbaserad: v11.12.x |[Konfigurationsguide](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA2F00000000LI7KAM&lang=en_US) |[Konfigurationsguide](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA22A000000XZogSAG&lang=en_US)|
 
-(*) ISR 7200 serie routrar stöder endast principbaserade VPN.
+> [!NOTE]
+>
+> (*) Cisco ASA version 8.4 och senare har stöd för IKEv2 och kan ansluta till Azure VPN Gateway med hjälp av anpassade IPsec-/IKE-principer med alternativet ”UsePolicyBasedTrafficSelectors”. Mer information finns i den här [instruktionsartikeln](vpn-gateway-connect-multiple-policybased-rm-ps.md).
+>
+> (**) Routrar i ISR 7200-serien stöder endast principbaserade VPN-gatewayer.
 
 ## <a name="additionaldevices"></a>Icke-verifierade VPN-enheter
 
-Om du inte ser enheten visas i hello verifiera VPN-enheter tabell fungera enheten fortfarande med en plats-till-plats-anslutning. Kontakta enhetstillverkaren för ytterligare information om support och konfiguration.
+Om du inte hittar din enhet i tabellen med verifierade VPN-enheter kan enheten ändå fungera med en plats-till-plats-anslutning. Kontakta enhetstillverkaren för ytterligare information om support och konfiguration.
 
 ## <a name="editing"></a>Redigera enhetens konfigurationsexempel
 
-När du har hämtat hello angivna VPN-enhet configuration exempel behöver tooreplace vissa hello värden tooreflect hello inställningar för din miljö.
+När du har hämtat den angivna VPN-enhetens konfigurationsexempel, måste du byta ut vissa värden så att de motsvarar inställningarna för din miljö.
 
-### <a name="tooedit-a-sample"></a>tooedit ett exempel:
+### <a name="to-edit-a-sample"></a>Så här redigerar du ett exempel:
 
-1. Öppna hello exempel med hjälp av anteckningar.
-2. Söka och ersätta alla <*text*> strängar hello värden som passar tooyour miljö. Vara säker på att tooinclude < och >. När ett namn har angetts måste hello-namn som du väljer vara unika. Om ett kommando inte fungerar kan du läsa mer i din enhetstillverkares dokumentation.
+1. Öppna exemplet med Anteckningar.
+2. Sök och ersätt alla <*text*>-strängar med de värden som gäller för din miljö. Var noga med att inkludera < och >. När ett namn anges måste det vara unikt. Om ett kommando inte fungerar kan du läsa mer i din enhetstillverkares dokumentation.
 
 | **Exempeltext** | **Ändra till** |
 | --- | --- |
@@ -99,17 +101,18 @@ När du har hämtat hello angivna VPN-enhet configuration exempel behöver toore
 | &lt;SP_AzureNetworkSubnetMask&gt; |Ange nätmasken. Exempel: 255.255.0.0 |
 | &lt;SP_OnPremisesNetworkIpRange&gt; |Ange det lokala intervallet. Exempel: 10.2.1.0 |
 | &lt;SP_OnPremisesNetworkSubnetMask&gt; |Ange den lokala nätmasken. Exempel: 255.255.255.0 |
-| &lt;SP_AzureGatewayIpAddress&gt; |Det här virtuella nätverket information specifik tooyour och finns i hello hanteringsportalen som **Gateway IP-adressen**. |
-| &lt;SP_PresharedKey&gt; |Den här informationen är specifik tooyour virtuella nätverk och finns i hello hanteringsportalen som hanterar nyckel. |
+| &lt;SP_AzureGatewayIpAddress&gt; |Den här informationen är specifik för ditt virtuella nätverk och finns i hanteringsportalen som **IP-adress för gateway**. |
+| &lt;SP_PresharedKey&gt; |Den här informationen är specifik för ditt virtuella nätverk och finns i hanteringsportalen som Hantera nyckel. |
 
 ## <a name="ipsec"></a>IPsec-/IKE-parametrar
 
-> [!NOTE]
-> Även om hello värden som anges i följande tabell hello stöds av hello VPN-gateway för närvarande det finns ingen mekanism för toospecify eller välj en specifik kombination av algoritmer eller parametrar hello VPN-gateway. Du måste ange eventuella villkor från hello lokala VPN-enhet. Du måste dessutom foga ihop **MSS** vid **1350**.
-> 
+> [!IMPORTANT]
+> 1. Tabellerna nedan innehåller de kombinationer av algoritmer och parametrar som används av Azure VPN-gatewayer med standardkonfigurationen. För routningsbaserade VPN-gatewayer som skapats med Azure Resource Management-distributionsmodellen kan du ange en anpassad princip för varje enskild anslutning. Detaljerade anvisningar finns i avsnittet [Configure IPsec/IKE policy](vpn-gateway-ipsecikepolicy-rm-powershell.md) (Konfigurera IPsec-/IKE-princip).
+>
+> 2. Du måste dessutom foga ihop TCP **MSS** vid **1350**. Om dina VPN-enheter inte stöder MSS-ihopfogning kan du i stället ange **MTU** i tunnelgränssnittet till **1400** byte.
 >
 
-I följande tabeller hello:
+I följande tabeller:
 
 * SA = Security Association
 * IKE fas 1 kallas även "Huvudläge"
@@ -139,7 +142,7 @@ I följande tabeller hello:
 
 ### <a name ="RouteBasedOffers"></a>Erbjudanden för RouteBased VPN IPsec-säkerhetsassociation (IKE-snabbläge SA)
 
-hello visas följande tabell IPsec SA (snabbläge för IKE)-erbjudanden. Erbjudanden är listade hello ordning preferensordning presenteras som hello erbjudande eller godkänns.
+Följande tabell visar erbjudanden för IPsec SA (IKE-snabbläge). Erbjudandena visas i prioritetsordning efter när erbjudandet visats eller godkänts.
 
 #### <a name="azure-gateway-as-initiator"></a>Azure Gateway som initierare
 
@@ -183,20 +186,20 @@ hello visas följande tabell IPsec SA (snabbläge för IKE)-erbjudanden. Erbjuda
 | 25|AES128        |SHA256            |14           |
 | 26|3DES          |SHA1              |14           |
 
-* Du kan ange IPsec ESP NULL-kryptering med routningsbaserade VPN-gatewayer och VPN-gatewayer som har hög kapacitet. Null baserat kryptering inte ge skydd toodata under överföring och bör endast användas när maximalt dataflöde och lägsta svarstid måste anges. Klienter kan välja toouse detta i VNet-till-VNet-kommunikationsscenarion eller kryptering som används på andra ställen i hello-lösning.
-* Använda hello Azure VPN gateway-standardinställningar för anslutning via hello Internet, med kryptering och hash-algoritmer som anges i hello tabeller ovan tooensure säkerheten för din kritisk kommunikation.
+* Du kan ange IPsec ESP NULL-kryptering med routningsbaserade VPN-gatewayer och VPN-gatewayer som har hög kapacitet. Null-baserad kryptering ger inget skydd av data under överföringen och bör endast användas när maximalt dataflöde och lägsta svarstid krävs. Klienter kan välja att använda detta i scenarier med VNet-till-VNet-kommunikation eller när kryptering används någon annanstans i lösningen.
+* Vid Internetanslutning på flera platser bör du använda standardinställningarna för Azure VPN Gateway med kryptering och de hash-algoritmer som anges i tabellen ovan, för att garantera säkerheten för din kritiska kommunikation.
 
 ## <a name="known"></a>Kända enhetskompatibilitetsproblem
 
 > [!IMPORTANT]
-> Dessa hello kända kompatibilitetsproblem mellan tredje parts VPN-enheter och Azure VPN-gatewayer. hello Azure-teamet arbetar aktivt med hello leverantörer tooaddress hello problem som anges här. När hello problem har åtgärdats, kommer den här sidan uppdateras med hello allra senaste informationen. Kom tillbaka regelbundet.
+> Det här är kända kompatibilitetsproblem mellan VPN-enheter från tredje part och Azure VPN-gateways. Azure-teamet arbetar aktivt med leverantörerna för att åtgärda de problem som beskrivs här. Den här sidan uppdateras med den senaste informationen när problemen har åtgärdats. Kom tillbaka regelbundet.
 >
 >
 
 ### <a name="feb-16-2017"></a>16 februari 2017
 
-**Palo Alto nätverk enheter med version tidigare too7.1.4** för Azure ruttbaserade VPN: Om du använder VPN-enheter från Palo Alto nätverk med PANORERING OS-version tidigare too7.1.4 och har anslutningen utfärdar tooAzure ruttbaserad VPN-gatewayer Utför följande steg hello:
+**Palo Alto Networks-enheter med tidigare versioner än 7.1.4** för Azure-vägbaserad VPN: Om du använder VPN-enheter från Palo Alto Networks med en PAN-OS-version äldre än 7.1.4 och har problem att ansluta till Azure-vägbaserade VPN-gateways ska du göra så här:
 
-1. Kontrollera hello version på inbyggd programvara för enheten Palo Alto-nätverk. Om din PANORERA OS-version är äldre än 7.1.4, uppgradera too7.1.4.
-2. På hello Palo Alto nätverk enhet kan ändra hello fas 2 SA (eller Snabbläge) livstid too28, 800 sekunder (8 timmar) när ansluter toohello Azure VPN-gateway.
-3. Om du fortfarande har problem med nätverksanslutningen, öppna en supportbegäran från hello Azure-portalen.
+1. Kontrollera Palo Alto Networks-enhetens version av den inbyggda programvaran (firmware). Om din version av PAN-OS är äldre än 7.1.4 uppgraderar du till 7.1.4.
+2. På Palo Alto Networks-enheten ändrar du livslängden för Phase 2 SA (eller Quick Mode SA) till 28 800 sekunder (8 timmar) vid anslutning till Azure VPN-gatewayen.
+3. Om du fortfarande har anslutningsproblem skapar du en supportbegäran i Azure Portal.

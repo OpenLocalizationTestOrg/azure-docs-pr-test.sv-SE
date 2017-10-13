@@ -1,6 +1,6 @@
 ---
 title: "Självstudier: Konfigurera LinkedIn försäljning Navigator för automatisk användaretablering med Azure Active Directory | Microsoft Docs"
-description: "Lär dig hur tooconfigure Azure Active Directory tooautomatically etablera och avinstallation etablera användarkonton tooLinkedIn försäljning Navigator."
+description: "Lär dig hur du konfigurerar Azure Active Directory för att automatiskt etablera och avetablera användarkonton till LinkedIn försäljning Navigator."
 services: active-directory
 documentationcenter: 
 author: asmalser-msft
@@ -14,110 +14,110 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/15/2017
 ms.author: asmalser-msft
-ms.openlocfilehash: 322c5271535994c13a9fafadbf74f356cdfe865d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 86357949c8e6927f78ca5bb8b7e20a6b88c37ef3
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-configuring-linkedin-sales-navigator-for-automatic-user-provisioning"></a>Självstudier: Konfigurera LinkedIn försäljning Navigator för automatisk Användaretablering
 
 
-hello syftet med den här kursen är tooshow du hello stegen tooperform i LinkedIn försäljning Navigator och Azure AD tooautomatically etablera och avinstallation etablera användarkonton från Azure AD tooLinkedIn försäljning Navigator. 
+Syftet med den här kursen är att visa de steg som du behöver göra i LinkedIn försäljning Navigator och Azure AD för att automatiskt etablera och avetablera användarkonton från Azure AD till LinkedIn försäljning Navigator. 
 
 ## <a name="prerequisites"></a>Krav
 
-hello-scenario som beskrivs i den här kursen förutsätter att du redan har hello följande objekt:
+Det scenario som beskrivs i den här kursen förutsätter att du redan har följande objekt:
 
 *   En Azure Active Directory-klient
 *   En LinkedIn försäljning Navigator-klient 
-*   Ett administratörskontot i LinkedIn försäljning Navigator med åtkomst toohello LinkedIn Account Center
+*   Ett administratörskontot i LinkedIn försäljning Navigator med åtkomst till LinkedIn Account Center
 
 > [!NOTE]
-> Azure Active Directory kan integreras med LinkedIn försäljning Navigator med hello [SCIM](http://www.simplecloud.info/) protokoll.
+> Azure Active Directory kan integreras med LinkedIn försäljning Navigator med hjälp av den [SCIM](http://www.simplecloud.info/) protokoll.
 
-## <a name="assigning-users-toolinkedin-sales-navigator"></a>Tilldela användare tooLinkedIn försäljning Navigator
+## <a name="assigning-users-to-linkedin-sales-navigator"></a>Tilldela användare till LinkedIn försäljning Navigator
 
-Azure Active Directory använder ett begrepp som kallas ”tilldelningar” toodetermine som användarna ska få åtkomst till tooselected appar. Hello gäller automatisk konto användaretablering är kommer bara hello användare och grupper som har ”tilldelats” tooan program i Azure AD att synkroniseras. 
+Azure Active Directory använder ett begrepp som kallas ”tilldelningar” för att avgöra vilka användare ska få åtkomst till valda appar. I samband med automatisk konto användaretablering, kommer endast användare och grupper som har ”tilldelats” till ett program i Azure AD att synkroniseras. 
 
-Innan du konfigurerar och aktiverar hello etableras, behöver du toodecide vilka användare och/eller grupper i Azure AD som representerar hello-användare som behöver åtkomst till tooLinkedIn försäljning Navigator. När du valt, kan du tilldela dessa användare tooLinkedIn försäljning Navigator genom att följa hello anvisningarna här:
+Innan du konfigurerar och aktiverar tjänsten etablering, måste du bestämma vilka användare och/eller grupper i Azure AD representerar de användare som behöver åtkomst till LinkedIn försäljning Navigator. När bestämt, kan du tilldela dessa användare till LinkedIn försäljning Navigator genom att följa anvisningarna här:
 
-[Tilldela en användare eller grupp tooan enterprise app](active-directory-coreapps-assign-user-azure-portal.md)
+[Tilldela en användare eller grupp till en enterprise-app](active-directory-coreapps-assign-user-azure-portal.md)
 
-### <a name="important-tips-for-assigning-users-toolinkedin-sales-navigator"></a>Viktiga tips för att tilldela användare tooLinkedIn försäljning Navigator
+### <a name="important-tips-for-assigning-users-to-linkedin-sales-navigator"></a>Viktiga tips för att tilldela användare till LinkedIn försäljning Navigator
 
-*   Vi rekommenderar att en enda Azure AD-användare tilldelas tooLinkedIn försäljning Navigator tootest hello etablering konfiguration. Ytterligare användare och/eller grupper kan tilldelas senare.
+*   Vi rekommenderar att en enda Azure AD-användare tilldelas LinkedIn försäljning Navigator testa allokering konfigurationen. Ytterligare användare och/eller grupper kan tilldelas senare.
 
-*   När du tilldelar en användare tooLinkedIn försäljning Navigator, måste du välja hello **användaren** roll i dialogrutan för hello tilldelning. Hej ”standard” rollen fungerar inte för etablering.
+*   När du tilldelar en användare LinkedIn försäljning Navigator, måste du välja den **användaren** roll i dialogrutan tilldelning. Rollen ”standard åtkomst” fungerar inte för etablering.
 
 
-## <a name="configuring-user-provisioning-toolinkedin-sales-navigator"></a>Konfigurera användaretablering tooLinkedIn försäljning Navigator
+## <a name="configuring-user-provisioning-to-linkedin-sales-navigator"></a>Konfigurering av användarförsörjning LinkedIn försäljning Navigator
 
-Det här avsnittet hjälper dig att ansluta din Azure AD tooLinkedIn försäljning Navigator och SCIM användarkonto API-etablering och konfigurerar hello etablering service toocreate, uppdatera och inaktivera tilldelade användarkonton i LinkedIn försäljning Navigator baserat på användare och grupptilldelning i Azure AD.
+Det här avsnittet visar hur du ansluter din Azure AD till LinkedIn försäljning Navigator SCIM användarkonto API-etablering och konfigurera tjänsten etablering för att skapa, uppdatera och inaktivera tilldelade användarkonton i LinkedIn försäljning Navigator baserat på användare och grupptilldelning i Azure AD.
 
 > [!TIP]
-> Du kan också välja tooenabled SAML-baserade enkel inloggning för LinkedIn försäljning Navigator följa instruktionerna i hello [Azure-portalen](https://portal.azure.com). Enkel inloggning kan konfigureras oberoende av Automatisk etablering, även om dessa två funktioner kompletterar varandra.
+> Du kan också välja att aktivera SAML-baserade enkel inloggning för LinkedIn försäljning Navigator, följer du instruktionerna som anges i [Azure-portalen](https://portal.azure.com). Enkel inloggning kan konfigureras oberoende av Automatisk etablering, även om dessa två funktioner kompletterar varandra.
 
 
-### <a name="tooconfigure-automatic-user-account-provisioning-toolinkedin-sales-navigator-in-azure-ad"></a>tooconfigure automatisk användarkonto etablering tooLinkedIn försäljning Navigator i Azure AD:
+### <a name="to-configure-automatic-user-account-provisioning-to-linkedin-sales-navigator-in-azure-ad"></a>Konfigurera automatisk konto användaretablering LinkedIn försäljning Navigator i Azure AD:
 
 
-hello första steget är tooretrieve LinkedIn-åtkomsttoken. Om du är företagsadministratör kan etablera du själv en åtkomst-token. Gå för i din kontocenter**inställningar &gt; globala inställningar** och öppna hello **SCIM installationsprogrammet** panelen.
+Det första steget är att hämta LinkedIn-åtkomsttoken. Om du är företagsadministratör kan etablera du själv en åtkomst-token. Gå till i din kontocenter **inställningar &gt; globala inställningar** och öppna den **SCIM installationsprogrammet** panelen.
 
 > [!NOTE]
-> Om du öppnar hello kontocenter direkt i stället för via en länk, kan du nå den med hjälp av hello följande steg.
+> Om du ansluter till mitt konto direkt i stället för via en länk, kan du nå den med hjälp av följande steg.
 
-1)  Logga in tooAccount Center.
+1)  Logga in på kontot Center.
 
 2)  Välj **Admin &gt; administrationsinställningar** .
 
-3)  Klicka på **avancerade integreringar** på hello vänstra sidopanelen. Du är riktat toohello kontocenter.
+3)  Klicka på **avancerade integreringar** på vänster sidopanelen. Du dirigeras till mitt konto.
 
-4)  Klicka på **+ Lägg till ny SCIM konfiguration** och följa hello genom att fylla i varje fält.
+4)  Klicka på **+ Lägg till ny SCIM konfiguration** och följer du proceduren genom att fylla i varje fält.
 
 > När autoassign licenser inte är aktiverad, innebär det att endast användardata är synkroniserad.
 
 ![LinkedIn försäljning Navigator etablering](./media/active-directory-saas-linkedinsalesnavigator-provisioning-tutorial/linkedin_1.PNG)
 
-> När autolicense tilldelning har aktiverats måste toonote programinstansen och licenstyp. Licenser är kopplade till en första komma, först hantera bas tills alla hello licenser tas.
+> När autolicense tilldelning har aktiverats måste du Observera programinstansen och licenstypen. Licenser är kopplade till en första komma, först hantera bas tills alla licenser tas.
 
 ![LinkedIn försäljning Navigator etablering](./media/active-directory-saas-linkedinsalesnavigator-provisioning-tutorial/linkedin_2.PNG)
 
-5)  Klicka på **skapa token**. Du bör se bildskärmen åtkomst-token under hello **åtkomsttoken** fältet.
+5)  Klicka på **skapa token**. Du bör se din token visas under den **åtkomsttoken** fältet.
 
-6)  Spara din dator eller en åtkomst-token tooyour Urklipp innan de lämnar hello-sidan.
+6)  Spara åtkomst-token till Urklipp eller en dator innan du lämnar sidan.
 
-7) Logga sedan in toohello [Azure-portalen](https://portal.azure.com), och bläddra toohello **Azure Active Directory > Företagsappar > alla program** avsnitt.
+7) Logga sedan in till den [Azure-portalen](https://portal.azure.com), och bläddra till den **Azure Active Directory > Företagsappar > alla program** avsnitt.
 
-8) Om du redan har konfigurerat LinkedIn försäljning Navigator för enkel inloggning, söka efter din instans av LinkedIn försäljning Navigator hjälp hello sökfältet. Annars väljer **Lägg till** och Sök efter **LinkedIn försäljning Navigator** i hello programgalleriet. Välj LinkedIn försäljning Navigator hello sökresultat och Lägg den tooyour listan med program.
+8) Om du redan har konfigurerat LinkedIn försäljning Navigator för enkel inloggning söka efter din instans av LinkedIn försäljning Navigator med hjälp av sökfältet. Annars väljer **Lägg till** och Sök efter **LinkedIn försäljning Navigator** i programgalleriet. Välj LinkedIn försäljning Navigator i sökresultatet och lägga till den i listan med program.
 
-9)  Välj din instans av LinkedIn försäljning Navigator och sedan hello **etablering** fliken.
+9)  Välj din instans av LinkedIn försäljning Navigator och sedan den **etablering** fliken.
 
-10) Ange hello **etablering läge** för**automatisk**.
+10) Ange den **Etableringsläge** till **automatisk**.
 
 ![LinkedIn försäljning Navigator etablering](./media/active-directory-saas-linkedinsalesnavigator-provisioning-tutorial/linkedin_3.PNG)
 
-11)  Fyll i följande fält under hello **administratörsautentiseringsuppgifter** :
+11)  Fyll i följande fält under **administratörsautentiseringsuppgifter** :
 
-* I hello **klient URL** anger https://api.linkedin.com.
+* I den **klient URL** anger https://api.linkedin.com.
 
-* I hello **hemlighet Token** skriver hello åtkomst-token som du genererade i steg 1 och klicka på **Testanslutningen** .
+* I den **hemlighet Token** skriver den åtkomst-token som du genererade i steg 1 och klicka på **Testanslutningen** .
 
-* Du bör se ett meddelande om lyckade på hello upperright sida av portalen.
+* Du bör se ett meddelande om lyckade på upperright sida av portalen.
 
-12) Ange hello e-postadress för en person eller grupp som ska få meddelanden om etablering fel i hello **e-postmeddelande** fält och markera kryssrutan hello nedan.
+12) Ange e-postadressen för en person eller grupp som ska få meddelanden om etablering fel i den **e-postmeddelande** fält och markera kryssrutan nedan.
 
 13) Klicka på **Spara**. 
 
-14) I hello **attributmappning** avsnittet kan du granska hello användar- och Gruppattribut som ska synkroniseras från Azure AD tooLinkedIn försäljning Navigator. Observera att hello attribut som valts som **matchande** egenskaper kommer att använda toomatch hello användarkonton och grupper i LinkedIn försäljning Navigator för uppdateringsåtgärder. Välj hello spara knappen toocommit ändringar.
+14) I den **attributmappning** avsnittet kan du granska de användar- och attribut som ska synkroniseras från Azure AD LinkedIn försäljning Navigator. Observera att attribut som är markerade som **matchande** egenskaper som används för att matcha användarkonton och grupper i LinkedIn försäljning Navigator för uppdateringsåtgärder. Välj knappen Spara för att genomföra ändringarna.
 
 ![LinkedIn försäljning Navigator etablering](./media/active-directory-saas-linkedinsalesnavigator-provisioning-tutorial/linkedin_4.PNG)
 
-15) tooenable hello Azure AD-etablering tjänsten för LinkedIn försäljning Navigator ändra hello **Status för etablering** för**på** i hello **inställningar** avsnitt
+15) Om du vill aktivera Azure AD etableras för LinkedIn försäljning Navigator ändra den **Status för etablering** till **på** i den **inställningar** avsnitt
 
 16) Klicka på **Spara**. 
 
-Detta startar hello den första synkroniseringen av användare och/eller grupper som har tilldelats tooLinkedIn försäljning Navigator under hello användare och grupper. Observera att hello inledande synkronisering tar längre tid tooperform än efterföljande synkroniseringar som sker ungefär var tjugonde minut så länge hello-tjänsten körs. Du kan använda hello **synkroniseringsinformation** avsnittet toomonitor förlopp och följ länkarna tooprovisioning aktivitetsrapporter, som beskriver alla åtgärder som utförs av hello etableras i appen LinkedIn försäljning Navigator.
+Detta startar den första synkroniseringen av användare och/eller grupper som tilldelas till LinkedIn försäljning Navigator i avsnittet användare och grupper. Observera att den första synkroniseringen ta längre tid än efterföljande synkroniseringar som sker ungefär var tjugonde minut så länge som tjänsten körs. Du kan använda den **synkroniseringsinformation** avsnittet för att övervaka förloppet och följ länkarna till att etablera aktivitetsrapporter som beskriver alla åtgärder som utförs av tjänsten etablering i appen LinkedIn försäljning Navigator.
 
 
 ## <a name="additional-resources"></a>Ytterligare resurser

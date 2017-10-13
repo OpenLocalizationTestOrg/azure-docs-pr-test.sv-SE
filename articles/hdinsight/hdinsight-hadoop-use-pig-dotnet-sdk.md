@@ -1,6 +1,6 @@
 ---
-title: "aaaRun Apache Pig-jobb med .NET SDK för Hadoop - Azure HDInsight | Microsoft Docs"
-description: "Lär dig hur toouse hello .NET SDK för Hadoop toosubmit Pig-jobb tooHadoop på HDInsight."
+title: "Köra Apache Pig-jobb med .NET SDK för Hadoop - Azure HDInsight | Microsoft Docs"
+description: "Lär dig hur du använder .NET SDK för Hadoop för att skicka Pig-jobb till Hadoop i HDInsight."
 services: hdinsight
 documentationcenter: .net
 author: Blackmist
@@ -16,38 +16,38 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/15/2017
 ms.author: larryfr
-ms.openlocfilehash: 1d4ceebd7c168372d23fe29a088f04676686de30
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: e40d152821b36852c447d5a3adfd39114edbbace
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
-# <a name="run-pig-jobs-using-hello-net-sdk-for-hadoop-in-hdinsight"></a>Köra Pig-jobb med hjälp av hello .NET SDK för Hadoop i HDInsight
+# <a name="run-pig-jobs-using-the-net-sdk-for-hadoop-in-hdinsight"></a>Köra Pig-jobb med hjälp av .NET SDK för Hadoop i HDInsight
 
 [!INCLUDE [pig-selector](../../includes/hdinsight-selector-use-pig.md)]
 
-Lär dig hur toouse hello .NET SDK för Hadoop toosubmit Apache Pig jobb tooHadoop på Azure HDInsight.
+Lär dig hur du använder .NET SDK för Hadoop för att skicka Apache Pig-jobb till Hadoop på Azure HDInsight.
 
-Hej HDInsight .NET SDK innehåller .NET-klientbibliotek som gör det enklare toowork med HDInsight-kluster från .NET. Pig tillåter toocreate MapReduce åtgärder genom att modellera en serie Datatransformationer. I detta dokument kan du lära dig hur toosubmit toouse en grundläggande C#-program en Pig jobbet tooan HDInsight-kluster.
+HDInsight .NET SDK innehåller .NET-klientbibliotek som gör det enklare att arbeta med HDInsight-kluster från .NET. Pig kan du skapa MapReduce åtgärder genom att modellera en serie Datatransformationer. Lär dig hur du använder ett grundläggande C#-program för att skicka Pig-jobbet till ett HDInsight-kluster i det här dokumentet.
 
 ## <a name="prerequisites"></a>Krav
 
-toocomplete hello stegen i den här artikeln, behöver du hello följande.
+Du behöver följande för att slutföra stegen i den här artikeln.
 
 * Ett Azure HDInsight (Hadoop på HDInsight)-kluster (antingen Windows eller Linux-baserade).
 
   > [!IMPORTANT]
-  > Linux är hello endast operativsystem på HDInsight version 3.4 eller senare. Mer information finns i [HDInsight-avveckling på Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+  > Linux är det enda operativsystemet som används med HDInsight version 3.4 och senare. Mer information finns i [HDInsight-avveckling på Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 * Visual Studio 2012, 2013 eller 2015 2017.
 
-## <a name="create-hello-application"></a>Skapa hello program
+## <a name="create-the-application"></a>Skapa programmet
 
-Hej HDInsight .NET SDK innehåller klientbibliotek för .NET, vilket gör det enklare toowork med HDInsight-kluster från .NET.
+HDInsight .NET SDK innehåller klientbibliotek för .NET, vilket gör det lättare att arbeta med HDInsight-kluster från .NET.
 
-1. Från hello **filen** -menyn i Visual Studio, markera **ny** och välj sedan **projekt**.
+1. Från den **filen** -menyn i Visual Studio, markera **ny** och välj sedan **projekt**.
 
-2. För hello nya projekt värden typ eller välj hello följande:
+2. Ange eller Välj följande värden för det nya projektet:
 
    | Egenskap | Värde |
    | ------ | ------ |
@@ -55,15 +55,15 @@ Hej HDInsight .NET SDK innehåller klientbibliotek för .NET, vilket gör det en
    | Mall | Konsolprogram |
    | Namn | SubmitPigJob |
 
-3. Klicka på **OK** toocreate hello projektet.
+3. Klicka på **OK** för att skapa projektet.
 
-4. Från hello **verktyg** väljer du **Library Package Manager** eller **Nuget Package Manager**, och välj sedan **Pakethanterarkonsolen**.
+4. Från den **verktyg** väljer du **Library Package Manager** eller **Nuget Package Manager**, och välj sedan **Pakethanterarkonsolen**.
 
-5. tooinstall hello .NET SDK-paket, Använd hello följande kommando:
+5. För att installera .NET SDK-paket, använder du följande kommando:
 
         Install-Package Microsoft.Azure.Management.HDInsight.Job
 
-6. Dubbelklicka på Solution Explorer **Program.cs** tooopen den. Ersätt hello befintlig kod med hello följande.
+6. Dubbelklicka på Solution Explorer **Program.cs** att öppna den. Ersätt den befintliga koden med följande.
 
     ```csharp
     using Microsoft.Azure.Management.HDInsight.Job;
@@ -83,14 +83,14 @@ Hej HDInsight .NET SDK innehåller klientbibliotek för .NET, vilket gör det en
 
             static void Main(string[] args)
             {
-                System.Console.WriteLine("hello application is running ...");
+                System.Console.WriteLine("The application is running ...");
 
                 var clusterCredentials = new BasicAuthenticationCloudCredentials { Username = ExistingClusterUsername, Password = ExistingClusterPassword };
                 _hdiJobManagementClient = new HDInsightJobManagementClient(ExistingClusterUri, clusterCredentials);
 
                 SubmitPigJob();
 
-                System.Console.WriteLine("Press ENTER toocontinue ...");
+                System.Console.WriteLine("Press ENTER to continue ...");
                 System.Console.ReadLine();
             }
 
@@ -107,30 +107,30 @@ Hej HDInsight .NET SDK innehåller klientbibliotek för .NET, vilket gör det en
                                 DUMP RESULT;"
                 };
 
-                System.Console.WriteLine("Submitting hello Pig job toohello cluster...");
+                System.Console.WriteLine("Submitting the Pig job to the cluster...");
                 var response = _hdiJobManagementClient.JobManagement.SubmitPigJob(parameters);
-                System.Console.WriteLine("Validating that hello response is as expected...");
+                System.Console.WriteLine("Validating that the response is as expected...");
                 System.Console.WriteLine("Response status code is " + response.StatusCode);
-                System.Console.WriteLine("Validating hello response object...");
+                System.Console.WriteLine("Validating the response object...");
                 System.Console.WriteLine("JobId is " + response.JobSubmissionJsonResponse.Id);
             }
         }
     }
     ```
 
-7. toostart hello program, tryck på **F5**.
+7. Du kan börja programmet **F5**.
 
-8. tooexit hello program, tryck på **RETUR**.
+8. Om du vill avsluta programmet trycker du på **RETUR**.
 
 ## <a name="summary"></a>Sammanfattning
 
-Som du ser kan hello .NET SDK för Hadoop toocreate .NET-program som skicka Pig-jobb tooan HDInsight-kluster och övervaka hello jobbstatus.
+Som du ser kan du skapa .NET-program som skickar Pig-jobb till ett HDInsight-kluster och övervaka jobbstatusen .NET SDK för Hadoop.
 
 ## <a name="next-steps"></a>Nästa steg
 
 Information om Pig i HDInsight finns [använda Pig med Hadoop i HDInsight](hdinsight-use-pig.md).
 
-Mer information om hur du använder Hadoop i HDInsight finns i hello följande dokument:
+Mer information om hur du använder Hadoop i HDInsight finns i följande dokument:
 
 * [Använda Hive med Hadoop i HDInsight](hdinsight-use-hive.md)
 * [Använda MapReduce med Hadoop i HDInsight](hdinsight-use-mapreduce.md)

@@ -1,6 +1,6 @@
 ---
-title: "aaaGet igång med Python och Azure Cloud Services | Microsoft Docs"
-description: "Översikt över användning av Python Tools för Visual Studio toocreate Azure-molntjänster inklusive webb- och arbetsroller."
+title: "Komma igång med Python och Azure Cloud Services | Microsoft Docs"
+description: "Översikt över hur du använder Python Tools för Visual Studio för att skapa Azure-molntjänster, inklusive webb- och arbetsroller."
 services: cloud-services
 documentationcenter: python
 author: thraka
@@ -14,15 +14,15 @@ ms.devlang: python
 ms.topic: hero-article
 ms.date: 07/18/2017
 ms.author: adegeo
-ms.openlocfilehash: f5fd85e754839f146abe912351c59dc4a148c990
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 030a09c05ac4b480c9326b8a9ebc585339f312b5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="python-web-and-worker-roles-with-python-tools-for-visual-studio"></a>Webb- och arbetsroller för Python med Python Tools för Visual Studio
 
-I den här artikeln ges en översikt över hur du använder webb- och arbetsroller för Python med hjälp av [Python Tools för Visual Studio][Python Tools for Visual Studio]. Lär dig hur toouse Visual Studio toocreate och distribuera en enkel molnbaserad tjänst som använder Python.
+I den här artikeln ges en översikt över hur du använder webb- och arbetsroller för Python med hjälp av [Python Tools för Visual Studio][Python Tools for Visual Studio]. Lär dig hur du använder Visual Studio för att skapa och distribuera en grundläggande molntjänst som använder Python.
 
 ## <a name="prerequisites"></a>Krav
 * [Visual Studio 2013, 2015 eller 2017](https://www.visualstudio.com/)
@@ -35,45 +35,45 @@ I den här artikeln ges en översikt över hur du använder webb- och arbetsroll
 [!INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
 ## <a name="what-are-python-web-and-worker-roles"></a>Vad är webb- och arbetsroller för Python?
-Azure har tre beräkningsmodeller för att köra program: [funktionen Web Apps i Azure App Service][execution model-web sites], [Azure Virtual Machines][execution model-vms] och [Azure Cloud Services][execution model-cloud services]. Alla tre modeller stöder Python. Cloud Services, där webb- och arbetsroller ingår, tillhandahåller *plattform som en tjänst (PaaS)*. I en molnbaserad tjänst bör tillhandahåller en webbroll en dedikerad Internet Information Services (IIS) web server toohost frontend-webbprogram, medan en arbetsroll kan köra asynkrona, tidskrävande eller beständiga uppgifter oberoende av användarinteraktion eller indata.
+Azure har tre beräkningsmodeller för att köra program: [funktionen Web Apps i Azure App Service][execution model-web sites], [Azure Virtual Machines][execution model-vms] och [Azure Cloud Services][execution model-cloud services]. Alla tre modeller stöder Python. Cloud Services, där webb- och arbetsroller ingår, tillhandahåller *plattform som en tjänst (PaaS)*. I en molntjänst tillhandahåller en webbroll en dedikerad IIS-webbserver (Internet Information Services) som fungerar som värd för frontend-webbprogram, medan en arbetsroll kan köra asynkrona, tidskrävande eller beständiga uppgifter oberoende av användarinteraktion eller indata.
 
 Mer information finns i [Vad är en molntjänst?].
 
 > [!NOTE]
-> *Letar du efter toobuild en enkel webbplats?*
-> Om ditt scenario bara en enkel webbplats klientdel, Överväg att använda hello förenklade funktionen Web Apps i Azure App Service. Du kan lätt att uppgradera tooa Molntjänsten som webbplatsen växer och dina behov förändras. Se hello <a href="/develop/python/">Python Developer Center</a> för artiklar om utvecklingen av funktionen för hello Web Apps i Azure App Service.
+> *Vill du skapa en enkel webbplats?*
+> Om ditt scenario bara är en enkel webbplats bör du överväga att använda den förenklade funktionen Web Apps i Azure App Service. Det är lätt att uppgradera till en molntjänst efter hand som webbplatsen växer och dina behov förändras. På <a href="/develop/python/">Python Developer Center</a> hittar du artiklar om utvecklingen av funktionen Web Apps i Azure App Service.
 > <br />
 > 
 > 
 
 ## <a name="project-creation"></a>Skapa projekt
-I Visual Studio kan du välja **Azure Cloud Service** i hello **nytt projekt** dialogrutan under **Python**.
+I Visual Studio kan du välja **Azure Cloud Service** i dialogrutan **Nytt projekt** under **Python**.
 
 ![Dialogrutan Nytt projekt](./media/cloud-services-python-ptvs/new-project-cloud-service.png)
 
-Du kan skapa nya webb- och arbetsroller hello Azure Cloud Service i guiden.
+Du kan skapa nya webb- och arbetsroller i Azure Cloud Services-guiden.
 
 ![Dialogrutan för Azure Cloud Services](./media/cloud-services-python-ptvs/new-service-wizard.png)
 
-hello mallen för arbetsroller med formaterad kod tooconnect tooan Azure storage-konto eller Azure Service Bus.
+Mallen för arbetsroller innehåller formaterad exempelkod för anslutning till ett Azure-lagringskonto eller till Azure Service Bus.
 
 ![Molntjänstlösning](./media/cloud-services-python-ptvs/worker.png)
 
-Du kan lägga till webb- eller arbetarroll roller tooan befintlig molntjänst när som helst.  Du kan välja tooadd befintliga projekt i din lösning eller skapa nya.
+Du kan lägga till webb- eller arbetsroller till en befintlig molntjänst när som helst.  Du kan välja att lägga till befintliga projekt i din lösning eller skapa nya.
 
 ![Kommandot Lägg till roll](./media/cloud-services-python-ptvs/add-new-or-existing-role.png)
 
 Din molntjänst kan innehålla roller som implementeras på olika språk.  Exempelvis kan en Python-webbroll implementeras med hjälp av Django, med Python, eller med C#-arbetsroller.  Du kan enkelt kommunicera mellan dina roller med hjälp av Service Bus-köer eller lagringsköer.
 
-## <a name="install-python-on-hello-cloud-service"></a>Installera Python på hello Molntjänsten
+## <a name="install-python-on-the-cloud-service"></a>Installera Python i molntjänsten
 > [!WARNING]
-> hello installationsskript som installeras med Visual Studio (för närvarande hello artikeln uppdaterades senast) fungerar inte. Det här avsnittet beskriver en lösning.
+> Installationsskripten som installeras med Visual Studio (när den här artikeln uppdaterades senast) fungerar inte. Det här avsnittet beskriver en lösning.
 > 
 > 
 
-hello viktigaste problemet med hello installationsskript är att de inte installerar python. Först definierar två [Start uppgifter](cloud-services-startup-tasks.md) i hello [ServiceDefinition.csdef](cloud-services-model-and-package.md#servicedefinitioncsdef) fil. hello första uppgiften (**PrepPython.ps1**) hämtar och installerar hello Python-körning. hello andra aktiviteten (**PipInstaller.ps1**) och kör pip tooinstall eventuella beroenden som du kan ha.
+Huvudproblemet med installationsskripten är att de inte installerar Python. Definiera först två [startaktiviteter](cloud-services-startup-tasks.md) i filen [ServiceDefinition.csdef](cloud-services-model-and-package.md#servicedefinitioncsdef). Den första aktiviteten (**PrepPython.ps1**) hämtar och installerar Python-körningen. Den andra aktiviteten (**PipInstaller.ps1**) kör pip för att installera alla beroenden som du kan ha.
 
-Följande skript hello skrevs riktad Python 3.5. Om du vill toouse hello version 2.x av python, ange hello **PYTHON2** variabeln filen för**på** för hello två Start aktiviteter och hello runtime uppgiften: `<Variable name="PYTHON2" value="<mark>on</mark>" />`.
+Följande skript har skrivits för Python 3.5. Om du vill använda version 2.x av Python, ställer du in **PYTHON2**-variabelfilen till **på** för de båda startaktiviteterna och för körningsaktiviteten: `<Variable name="PYTHON2" value="<mark>on</mark>" />`.
 
 ```xml
 <Startup>
@@ -100,7 +100,7 @@ Följande skript hello skrevs riktad Python 3.5. Om du vill toouse hello version
 </Startup>
 ```
 
-Hej **PYTHON2** och **PYPATH** toohello worker startaktivitet måste läggas till variabler. Hej **PYPATH** variabeln används bara om hello **PYTHON2** variabeln anges för**på**.
+Variablerna **PYTHON2** och **PYPATH** måste läggas till arbetsstartsaktiviteten. **PYPATH**-variabeln används bara om **PYTHON2**-variabeln anges till **på**.
 
 ```xml
 <Runtime>
@@ -166,10 +166,10 @@ Hej **PYTHON2** och **PYPATH** toohello worker startaktivitet måste läggas til
 
 
 
-Skapa sedan hello **PrepPython.ps1** och **PipInstaller.ps1** filer i hello **. / bin** mappen för din roll.
+Skapa sedan filerna **PrepPython.ps1** och **PipInstaller.ps1** i din rolls **. / bin**-mapp.
 
 #### <a name="preppythonps1"></a>PrepPython.ps1
-Det här skriptet installerar Python. Om hello **PYTHON2** miljövariabeln har ställts in för**på**, och sedan Python 2.7 är installerad, annars Python 3.5 är installerat.
+Det här skriptet installerar Python. Om du anger **PYTHON2**-miljövariabeln till **på** installeras Python 2.7, annars installeras Python 3.5.
 
 ```powershell
 $is_emulated = $env:EMULATED -eq "true"
@@ -195,7 +195,7 @@ if (-not $is_emulated){
             $outFile = "${env:TEMP}\python-2.7.12.amd64.msi"
         }
 
-        Write-Output "Not found, downloading $url too$outFile$nl"
+        Write-Output "Not found, downloading $url to $outFile$nl"
         Invoke-WebRequest $url -OutFile $outFile
         Write-Output "Installing$nl"
 
@@ -215,7 +215,7 @@ if (-not $is_emulated){
 ```
 
 #### <a name="pipinstallerps1"></a>PipInstaller.ps1
-Det här skriptet ringer upp pip och installerar alla hello beroenden i hello **requirements.txt** fil. Om hello **PYTHON2** miljövariabeln har ställts in för**på**, Python 2.7 används, annars Python 3.5 används.
+Det här skriptet ringer upp pip och installerar alla beroenden i **requirements.txt**-filen. Om du anger **PYTHON2**-miljövariabeln till **på** används Python 2.7, annars används Python 3.5.
 
 ```powershell
 $is_emulated = $env:EMULATED -eq "true"
@@ -244,13 +244,13 @@ if (-not $is_emulated){
 
 #### <a name="modify-launchworkerps1"></a>Ändra LaunchWorker.ps1
 > [!NOTE]
-> Hello gäller en **arbetsrollen** projektet **LauncherWorker.ps1** är obligatoriska tooexecute hello Start-fil. I en **webbroll** projekt, hello startfil i stället definieras i hello projektegenskaperna.
+> Vid ett **arbetsroll**projekt krävs filen **LauncherWorker.ps1** för att köra startfilen. Vid ett **webbroll**projekt definieras startfilen istället i egenskaperna för projektet.
 > 
 > 
 
-Hej **bin\LaunchWorker.ps1** ursprungligen skapades toodo mycket prep arbete, men det inte fungerar. Ersätt hello innehållet i filen med hello följande skript.
+**bin\LaunchWorker.ps1** skapades ursprungligen för att göra mycket förberedande arbete men det fungerar inte riktigt som tänkt. Ersätt innehållet i filen med följande skript.
 
-Det här skriptet anropar hello **worker.py** filen från projektet python. Om hello **PYTHON2** miljövariabeln har ställts in för**på**, Python 2.7 används, annars Python 3.5 används.
+Det här skriptet anropar **worker.py**-filen från python-projektet. Om du anger **PYTHON2**-miljövariabeln till **på** används Python 2.7, annars används Python 3.5.
 
 ```powershell
 $is_emulated = $env:EMULATED -eq "true"
@@ -274,7 +274,7 @@ else
 {
     Write-Output "Running (EMULATED) worker.py$nl"
 
-    # Customize tooyour local dev environment
+    # Customize to your local dev environment
 
     if ($is_python2) {
         cd..
@@ -288,7 +288,7 @@ else
 ```
 
 #### <a name="pscmd"></a>ps.cmd
-hello Visual Studio mallar ha skapat en **ps.cmd** filen i hello **. / bin** mapp. Shell-skript visar hello PowerShell wrapper skript ovan och tillhandahåller loggning baserat på hello namn för hello PowerShell wrapper anropas. Detta är vad som bör finnas i den, om filen inte skapades. 
+Visual Studio-mallarna ska ha skapat en **ps.cmd**-fil i **. / bin**-mappen. Detta gränssnittsskript anropar PowerShell-omslutningsskripten ovan och tillhandahåller loggning baserat på namnet på den anropade PowerShell-omslutningen. Detta är vad som bör finnas i den, om filen inte skapades. 
 
 ```bat
 @echo off
@@ -302,38 +302,38 @@ if not exist "%DiagnosticStore%\LogFiles" mkdir "%DiagnosticStore%\LogFiles"
 
 
 ## <a name="run-locally"></a>Lokal körning
-Om du konfigurera ditt molntjänstprojekt som hello Startprojekt och tryck på F5 körs Molntjänsten hello i hello lokala Azure-emulatorn.
+Om du definierar ditt molntjänstprojekt som startprojektet och trycker på F5 körs molntjänsten i den lokala Azure-emulatorn.
 
-Även om PTVS stöder fungerar startas i hello emulatorn felsökning (till exempel brytpunkter) inte.
+Även om PTVS har stöd för att starta i emulatorn så går det inte att felsöka (till exempel brytpunkter).
 
-toodebug dina webb- och arbetsroller roller som du kan ange hello rollen projektet som Startprojekt hello och felsöka det i stället.  Du kan också ange flera startprojekt.  Högerklicka på hello lösning och välj sedan **ange Startprojekt**.
+Om du vill felsöka dina webb- och arbetsroller kan du konfigurera rollprojektet som startprojektet och felsöka det i stället.  Du kan också ange flera startprojekt.  Högerklicka på lösningen och välj **Ange startprojekt**.
 
 ![Egenskaper för lösningens startprojekt](./media/cloud-services-python-ptvs/startup.png)
 
-## <a name="publish-tooazure"></a>Publicera tooAzure
-toopublish, högerklicka på hello molntjänstprojektet i lösningen hello och välj sedan **publicera**.
+## <a name="publish-to-azure"></a>Publicera till Azure
+När du vill publicera högerklickar du på molntjänstprojektet i lösningen och väljer **Publicera**.
 
 ![Inloggning för publicering i Microsoft Azure](./media/cloud-services-python-ptvs/publish-sign-in.png)
 
-Följ guiden hello. Aktivera Fjärrskrivbord vid behov. Fjärrskrivbord är användbart när du behöver toodebug något.
+Följ guiden. Aktivera Fjärrskrivbord vid behov. Fjärrskrivbord är användbart när du behöver felsöka något.
 
 När du har konfigurerat inställningarna klickar du på **Publicera**.
 
-Förloppet visas i utdatafönstret hello och sedan visas hello Azure-aktivitetsloggen fönster.
+Förloppet visas i utdatafönstret. Därefter visas fönstret med Microsoft Azure-aktivitetsloggen.
 
 ![Fönstret med Microsoft Azure-aktivitetsloggen](./media/cloud-services-python-ptvs/publish-activity-log.png)
 
-Distributionen tar flera minuter toocomplete, sedan webbplatsen och/eller arbetsroller köras i Azure!
+Distributionen tar flera minuter. När den är klar körs dina webb- och/eller arbetsroller i Azure!
 
 ### <a name="investigate-logs"></a>Undersöka loggar
-När hello cloud service virtuell dator startar och installerar Python, kan du titta på hello loggar toofind eventuella felmeddelanden. Dessa loggar finns i hello **C:\Resources\Directory\\{rollen} \LogFiles** mapp. **PrepPython.err.txt** har minst ett fel i den från när hello-skriptet försöker toodetect om Python är installerad och **PipInstaller.err.txt** kan klagar på att en inaktuell version av pip.
+När den virtuella molntjänstdatorn startar och installerar Python, kan du titta på loggarna för att hitta eventuella felmeddelanden. Dessa loggar finns i mappen **C:\Resources\Directory\\{role}\LogFiles**. **PrepPython.err.txt** har minst ett fel från när skriptet försöker identifiera om Python är installerat och **PipInstaller.err.txt** kan klaga över en inaktuell version av pip.
 
 ## <a name="next-steps"></a>Nästa steg
-Mer detaljerad information om hur du arbetar med webb- och arbetsroller roller i Python Tools för Visual Studio finns i dokumentationen till PTVS hello:
+Mer detaljerad information om hur du arbetar med webb- och arbetsroller i Python Tools för Visual Studio finns i dokumentationen till PTVS:
 
 * [Molntjänstprojekt][Cloud Service Projects]
 
-Mer information om hur du använder Azure-tjänster från dina webb- och arbetsroller roller, till exempel med hjälp av Azure Storage eller Azure Service Bus finns hello följande artiklar:
+Mer information om hur du använder Azure-tjänster från dina webb- och arbetsroller, t.ex. Azure Storage eller Azure Service Bus, finns i följande artiklar:
 
 * [Blob Service][Blob Service]
 * [Table Service][Table Service]
@@ -344,7 +344,7 @@ Mer information om hur du använder Azure-tjänster från dina webb- och arbetsr
 <!--Link references-->
 
 [Vad är en molntjänst?]: cloud-services-choose-me.md
-[execution model-web sites]: ../app-service-web/app-service-web-overview.md
+[execution model-web sites]: ../app-service/app-service-web-overview.md
 [execution model-vms]:../virtual-machines/windows/overview.md
 [execution model-cloud services]: cloud-services-choose-me.md
 [Python Developer Center]: /develop/python/

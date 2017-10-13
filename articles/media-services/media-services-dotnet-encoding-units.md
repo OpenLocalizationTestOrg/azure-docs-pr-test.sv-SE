@@ -1,6 +1,6 @@
 ---
-title: "aaaScale media bearbetning genom att lägga till kodning enheter – Azure |  Microsoft Docs"
-description: "Lär dig hur toohow tooadd kodning enheter med .NET"
+title: "Skala bearbetning genom att lägga till kodning enheter – Azure media |  Microsoft Docs"
+description: "Lär dig hur du hur du lägger till kodning enheter med .NET"
 services: media-services
 documentationcenter: 
 author: juliako
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: juliako;milangada;
-ms.openlocfilehash: b9f71a6487c5d136319a38a1598d60edfaa81b9e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 72a8729d22a9e76c8076d7a3347619a2163e4f09
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="how-tooscale-encoding-with-net-sdk"></a>Hur tooscale encoding med .NET SDK
+# <a name="how-to-scale-encoding-with-net-sdk"></a>Hur du skalar kodning med .NET SDK:n
 > [!div class="op_single_selector"]
 > * [Portal](media-services-portal-scale-media-processing.md)
 > * [.NET](media-services-dotnet-encoding-units.md)
@@ -32,14 +32,14 @@ ms.lasthandoff: 10/06/2017
 
 ## <a name="overview"></a>Översikt
 > [!IMPORTANT]
-> Se till att tooreview hello [översikt](media-services-scale-media-processing-overview.md) avsnittet tooget mer information om att skala media bearbetning av avsnittet.
+> Se till att granska den [översikt](media-services-scale-media-processing-overview.md) avsnittet om du vill ha mer information om skalning media bearbetning av avsnittet.
 > 
 > 
 
-toochange hello reserverad enhet typ och hello antalet kodningsreserverade enheter med hjälp av .NET SDK hello följande:
+Om du vill ändra typ av enhet och antalet kodningsreserverade enheter med hjälp av .NET SDK, gör du följande:
 
     IEncodingReservedUnit encodingS1ReservedUnit = _context.EncodingReservedUnits.FirstOrDefault();
-    encodingS1ReservedUnit.ReservedUnitType = ReservedUnitType.Basic; // Corresponds tooS1
+    encodingS1ReservedUnit.ReservedUnitType = ReservedUnitType.Basic; // Corresponds to S1
     encodingS1ReservedUnit.Update();
     Console.WriteLine("Reserved Unit Type: {0}", encodingS1ReservedUnit.ReservedUnitType);
 
@@ -49,20 +49,20 @@ toochange hello reserverad enhet typ och hello antalet kodningsreserverade enhet
     Console.WriteLine("Number of reserved units: {0}", encodingS1ReservedUnit.CurrentReservedUnits);
 
 ## <a name="opening-a-support-ticket"></a>Öppna ett supportärende
-Som standard var Media Services-konto kan skala tooup too25 kodning och 5 på begäran reserverade enheter för strömning. Du kan begära en högre gräns genom att öppna ett supportärende.
+Som standard kan alla Media Services-konto skala upp till 25 kodning och 5 på begäran reserverade enheter för strömning. Du kan begära en högre gräns genom att öppna ett supportärende.
 
 ### <a name="open-a-support-ticket"></a>Öppna ett supportärende
-tooopen ett supportärende hello följande:
+Om du vill öppna en supportbegäran biljetten gör du följande:
 
-1. Klicka på [få Support](https://manage.windowsazure.com/?getsupport=true). Om du inte är inloggad som du kommer att tillfrågas tooenter dina autentiseringsuppgifter.
+1. Klicka på [få Support](https://manage.windowsazure.com/?getsupport=true). Om du inte är inloggad uppmanas du att ange dina autentiseringsuppgifter.
 2. Välj din prenumeration.
 3. Välj ”Technical” under typ av stöd.
 4. Klicka på ”Skapa biljett”.
-5. Välj ”Azure Media Services” i hello produktlista visas på hello nästa sida.
+5. Välj ”Azure Media Services” i produktlistan över visas på nästa sida.
 6. Välj ”typ” som passar ditt problem.
 7. Klicka på Fortsätt.
 8. Följ instruktionerna på nästa sida och anger sedan information om problemet.
-9. Klicka på Skicka tooopen hello biljett.
+9. Klicka på Skicka för att öppna biljetten.
 
 ## <a name="media-services-learning-paths"></a>Sökvägar för Media Services-utbildning
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

@@ -1,6 +1,6 @@
 ---
-title: "aaaNetwork Prestandaövervakaren lösning i Azure Log Analytics | Microsoft Docs"
-description: "Network Performance Monitor i Azure Log Analytics hjälper dig att övervaka hello prestanda för ditt nätverk – i nära real gång toodetect och leta upp flaskhalsar i nätverket."
+title: "Network Performance Monitor-lösning i Azure Log Analytics | Microsoft Docs"
+description: "Nätverk i Azure Log Analytics identifiera hjälper dig att övervaka prestanda för ditt nätverk – i nära real-gång till och hitta flaskhalsar i nätverket."
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
@@ -14,55 +14,55 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/11/2017
 ms.author: banders
-ms.openlocfilehash: e074948221fdd003c640861d759c4ce69ced1cd7
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: c6568e491429f6046ab164ab5eacd0ae5846e201
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="network-performance-monitor-solution-in-log-analytics"></a>Network Performance Monitor-lösning i logganalys
 
 ![Nätverket Prestandaövervakaren symbol](./media/log-analytics-network-performance-monitor/npm-symbol.png)
 
-Det här dokumentet beskriver hur tooset upp och Använd hello Network Performance Monitor-lösning i logganalys som hjälper dig att övervaka hello prestanda för ditt nätverk – i nära real gång toodetect och hitta flaskhalsar i nätverket. Du kan övervaka hello förluster eller fördröjningar mellan två nätverk, undernät eller servrar med hello Network Performance Monitor-lösning. Network Performance Monitor identifierar nätverksproblem som trafik blackholing routning fel och problem med att konventionella nätverket övervakning metoderna inte är kan toodetect. Network Performance Monitor genererar aviseringar och meddelar och när ett tröskelvärde komprometteras för en nätverkslänk. Dessa tröskelvärden kan hämtas automatiskt av hello system eller konfigurera toouse anpassade Varningsregler. Network Performance Monitor garanterar snabbt ska kunna identifiera problem med prestanda och localizes hello källa för hello problemet tooa särskilt nätverkssegment eller enheter.
+Det här dokumentet beskriver hur installation och användning nätverk Network Performance Monitor-lösning i logganalys som hjälper dig att övervaka prestanda för ditt nätverk – i nära real-gång-om du vill identifiera och leta upp flaskhalsar. Du kan övervaka förluster eller fördröjningar mellan två nätverk, undernät eller servrar med Network Performance Monitor-lösning. Network Performance Monitor identifierar nätverksproblem som trafik blackholing routning fel och problem som vanliga nätverk övervakning metoder inte går att identifiera. Network Performance Monitor genererar aviseringar och meddelar och när ett tröskelvärde komprometteras för en nätverkslänk. Dessa tröskelvärden kan hämtas automatiskt av systemet eller du kan konfigurera dem för att använda anpassade Varningsregler. Network Performance Monitor garanterar snabbt ska kunna identifiera problem med prestanda och localizes källan till problemet till en viss nätverkssegment eller enhet.
 
-Du kan identifiera problem med hello lösning instrumentpanelen som visar sammanfattningsinformation om nätverket inklusive senaste hälsa händelser på nätverket, nätverkslänkar och undernätverkslänkar som ställs inför hög paketförlust och latens. Du kan gå nedåt till ett nätverk länken tooview hello aktuella hälsotillstånd undernätverkslänkar samt nod till nod länkar. Du kan också visa hello historiska trender för förluster eller fördröjningar på hello nätverk, undernätverk och nod-till-nod-nivå. Du kan identifiera tillfälliga nätverksproblem genom att visa historiska trender diagram för paketförlust och fördröjning och hitta flaskhalsar i nätverk på en topologisk karta. hello interaktiva topologi diagrammet kan du toovisualize hello hopp som nexthop nätverksvägar och fastställa hello källan hello problemet. Precis som andra lösningar du kan använda loggen Sök efter olika analytics krav toocreate anpassade rapporter baserat på hello data som samlas in av Network Performance Monitor.
+Du kan identifiera problem med lösningen instrumentpanelen som visar sammanfattningsinformation om nätverket inklusive senaste hälsa händelser på nätverket, nätverkslänkar och undernätverkslänkar som ställs inför hög paketförlust och latens. Du kan gå nedåt i en nätverkslänk att visa aktuella hälsotillstånd undernätverkslänkar samt nod till nod länkar. Du kan också visa historisk trend förluster eller fördröjningar på nätverket, undernätverk och nod-till-nod-nivå. Du kan identifiera tillfälliga nätverksproblem genom att visa historiska trender diagram för paketförlust och fördröjning och hitta flaskhalsar i nätverk på en topologisk karta. Interaktiva topologi diagrammet kan du visualisera hopp som nexthop nätverksvägar och ta reda på orsaken till problemet. Du kan använda loggen Sök efter olika analytics krav för att skapa anpassade rapporter baserat på de data som samlas in av Network Performance Monitor som andra lösningar.
 
-hello lösningen använder syntetiska transaktioner som en mekanism för primära toodetect nätverksfel. Därför kan du använda det utan hänsyn till en viss nätverksenhet tillverkare eller modell. Den fungerar även över lokala molnet (IaaS) och hybridmiljöer. hello lösningen upptäcker automatiskt hello nätverkstopologi och olika vägar i nätverket.
+Lösningen använder syntetiska transaktioner som primär metod för att identifiera nätverksfel. Därför kan du använda det utan hänsyn till en viss nätverksenhet tillverkare eller modell. Den fungerar även över lokala molnet (IaaS) och hybridmiljöer. Lösningen upptäcker automatiskt nätverkets topologi och olika vägar i nätverket.
 
-Vanliga nätverk övervakning produkter fokus på övervakning hello nätverk hälsotillståndet för enheten (routrar, växlar osv) men ger inte insikter om hello faktiska kvaliteten på nätverksanslutningen mellan två platser, vilket gör Network Performance Monitor.
+Vanliga nätverk övervakning produkter fokusera på att övervaka hälsotillståndet för nätverk-enhet (routrar, växlar osv), men ger inte insikter om den faktiska kvaliteten på nätverksanslutning mellan två platser, vilket gör Network Performance Monitor.
 
-### <a name="using-hello-solution-standalone"></a>Använder hello lösning fristående
-Om du vill toomonitor hello kvalitet Nätverksanslutningar mellan sina kritiska arbetsbelastningar, kan nätverk, Datacenter eller office platser och du använda hello Network Performance Monitor lösning ensamt toomonitor anslutning hälsa mellan:
+### <a name="using-the-solution-standalone"></a>Med fristående lösning
+Om du vill övervaka kvaliteten på nätverksanslutning mellan sina kritiska arbetsbelastningar, kan nätverk, Datacenter eller office platser och du använda Network Performance Monitor-lösningen ensamt för att övervaka hälsotillståndet för anslutningen mellan:
 
 * flera Datacenter eller office platser som är anslutna via ett offentligt eller privat nätverk
 * viktiga arbetsbelastningar som körs affärsprogram
-* offentliga molntjänster som Microsoft Azure eller Amazon Web Services (AWS) och lokala nätverk, om du har IaaS (VM) tillgängliga och gateways har konfigurerats tooallow kommunikation mellan lokala nätverk och moln-nätverk
+* offentliga molntjänster som Microsoft Azure eller Amazon Web Services (AWS) och lokala nätverk, om du har IaaS (VM) tillgänglig och du har gateways som konfigurerats för att tillåta kommunikation mellan lokala nätverk och moln-nätverk
 * Azure och lokala nätverk när du använder Express Route
 
-### <a name="using-hello-solution-with-other-networking-tools"></a>Med andra nätverk verktyg hello lösning
-Om du vill toomonitor en driftsapplikationer, kan du använda hello Network Performance Monitor-lösning som en tillhörande lösning tooother verktyg. Ett långsamt nätverk kan leda tooslow program och Network Performance Monitor kan hjälpa dig att undersöka problem med prestanda som orsakas av underliggande nätverksproblem. Eftersom hello lösning inte kräver någon åtkomst toonetwork enheter, behöver inte toorely på ett team tooprovide nätverksinformation om hur hello nätverket påverkar program programadministratör hello.
+### <a name="using-the-solution-with-other-networking-tools"></a>Med lösningen med andra verktyg för nätverk
+Om du vill övervaka en driftsapplikationer kan du använda Network Performance Monitor-lösning som en tillhörande lösning till andra verktyg. Ett långsamt nätverk kan leda till långsam program och Network Performance Monitor kan hjälpa dig att undersöka problem med prestanda som orsakas av underliggande nätverksproblem. Lösningen inte kräver någon åtkomst till nätverksenheter, behöver programadministratören inte eftersom förlitar sig på ett nätverk team att ge information om hur nätverket påverkar program.
 
-Även om du redan investerar i andra nätverksövervakningsverktyg kan sedan hello-lösning kompletterar dessa verktyg eftersom de flesta traditionella övervakning nätverkslösningar inte tillhandahåller insikter om slutpunkt till slutpunkt prestandamått som förluster eller fördröjningar.  hello Network Performance Monitor-lösningen hjälper dig att fylla den lucka.
+Även om du redan investerar i andra nätverksövervakningsverktyg kan sedan lösningen kompletterar dessa verktyg eftersom de flesta traditionella övervakning nätverkslösningar inte tillhandahåller insikter om slutpunkt till slutpunkt prestandamått som förluster eller fördröjningar.  Network Performance Monitor-lösningen hjälper dig att fylla den lucka.
 
-## <a name="installing-and-configuring-agents-for-hello-solution"></a>Installera och konfigurera agenter för hello lösning
-Använd hello grundläggande processer tooinstall agenter på [ansluta Windows-datorer tooLog Analytics](log-analytics-windows-agents.md) och [ansluta Operations Manager tooLog Analytics](log-analytics-om-agents.md).
+## <a name="installing-and-configuring-agents-for-the-solution"></a>Installera och konfigurera agenter för lösningen
+Använd basic-processer för att installera agenter på [ansluta Windows-datorer till logganalys](log-analytics-windows-agents.md) och [ansluta Operations Manager till logganalys](log-analytics-om-agents.md).
 
 > [!NOTE]
-> Du behöver tooinstall minst 2 agenter i ordning toohave toodiscover tillräckligt med data och övervaka dina nätverksresurser. Annars förblir hello lösning i att konfigurera läge tills du installerar och konfigurerar ytterligare agenter.
+> Du måste installera minst 2 agenter för att få tillräckligt med data för att identifiera och övervaka dina nätverksresurser. Annars förblir lösningen konfigurera statusen tills du installerar och konfigurerar ytterligare agenter.
 >
 >
 
-### <a name="where-tooinstall-hello-agents"></a>Där tooinstall hello agenter
-Innan du installerar agenter, Överväg hello topologin för ditt nätverk och vilka delar av hello nätverk du vill toomonitor. Vi rekommenderar att du installerar fler än en agent för varje undernät som du vill toomonitor. Med andra ord för varje undernät som du vill toomonitor, välja två eller flera servrar eller virtuella datorer och installera hello agent på dem.
+### <a name="where-to-install-the-agents"></a>Var du vill installera agenter
+Innan du installerar agenter, Överväg topologin hos ditt nätverk och vilka delar av nätverket som du vill övervaka. Vi rekommenderar att du installerar fler än en agent för varje undernät som du vill övervaka. Med andra ord för varje undernät som du vill övervaka, välja två eller flera servrar eller virtuella datorer och installera agenten på dem.
 
-Om du är osäker på om hello topologin för ditt nätverk kan du installera hello agenter på servrar med viktiga arbetsbelastningar där du vill att toomonitor hello nätverkets prestanda. Exempelvis kanske du vill tookeep reda på en nätverksanslutning mellan en webbserver och en server som kör SQL Server. I det här exemplet skulle du installerar en agent på båda servrarna.
+Om du är osäker på om nätverkets topologi, installera agenter på servrar med viktiga arbetsbelastningar där du vill övervaka nätverkets prestanda. Du kanske vill hålla reda på en nätverksanslutning mellan en webbserver och en server som kör SQL Server. I det här exemplet skulle du installerar en agent på båda servrarna.
 
-Agenter övervakar nätverksanslutning (länkar) mellan värdar--inte hello värdar sig själva. I så fall toomonitor en nätverkslänk måste du installera agenter på båda slutpunkter för länken.
+Agenter övervakar nätverksanslutning (länkar) mellan värdar--inte själva värdarna. Så om du vill övervaka en nätverkslänk, måste du installera agenter på båda slutpunkter för länken.
 
 ### <a name="configure-agents"></a>Konfigurera agenter
 
-Om du planerar toouse hello ICMP-protokoll för syntetiska transaktioner, behöver du tooenable hello följande brandväggsregler för att på ett tillförlitligt sätt använder ICMP:
+Om du tänker använda ICMP-protokollet för syntetiska transaktioner måste du aktivera följande brandväggsregler för att på ett tillförlitligt sätt använda ICMP:
 
 ```
 netsh advfirewall firewall add rule name="NPMDICMPV4Echo" protocol="icmpv4:8,any" dir=in action=allow
@@ -74,243 +74,243 @@ netsh advfirewall firewall add rule name="NPMDICMPV6TimeExceeded" protocol="icmp
 ```
 
 
-Om du avser toouse hello TCP-protokoll måste tooopen portar i brandväggen för dessa datorer tooensure som agenter kan kommunicera. Du behöver toodownload och kör sedan hello [EnableRules.ps1 PowerShell-skript](https://gallery.technet.microsoft.com/OMS-Network-Performance-04a66634) utan några parametrar i ett PowerShell-fönster med administratörsbehörighet.
+Om du planerar att använda TCP-protokollet måste du öppna portar i brandväggen för dessa datorer för att kontrollera att agenterna kan kommunicera. Du måste hämta och kör den [EnableRules.ps1 PowerShell-skript](https://gallery.technet.microsoft.com/OMS-Network-Performance-04a66634) utan några parametrar i ett PowerShell-fönster med administratörsbehörighet.
 
-hello skriptet skapar registernycklar som krävs av hello Network Performance Monitor och skapar Windows-brandväggen regler tooallow agenter toocreate TCP-anslutningar med varandra. hello registernycklar som skapats av hello skript kan även ange om toolog hello debug-loggar och hello sökväg för hello loggar fil. Den definierar även hello agent TCP-port som används för kommunikation. hello värden för nycklarna anges automatiskt av hello skript, så du inte bör ändra dessa nycklar manuellt.
+Skriptet skapar registernycklar som krävs av Network Performance Monitor och skapar Windows brandväggsregler som tillåter agenter för att skapa TCP-anslutningar med varandra. Registernycklar som skapats av skriptet ange om du vill logga debug-loggar och sökvägen för filen loggar. Den definierar även agent TCP-port som används för kommunikation. Värden för nycklarna anges automatiskt av skript, så du inte bör ändra dessa nycklar manuellt.
 
-hello port öppnas som standard är 8084. Du kan använda en anpassad port genom att tillhandahålla hello parametern `portNumber` toohello skript. Dock ska hello samma port användas på alla hello datorer där hello skript körs.
+Porten öppnas som standard är 8084. Du kan använda en anpassad port genom att ange parametern `portNumber` i skriptet. Men ska samma port användas på alla datorer där skriptet körs.
 
 > [!NOTE]
-> hello EnableRules.ps1 skriptet konfigurerar regler för Windows-brandväggen på hello dator där hello skript körs. Om du har en brandvägg för nätverk, bör du kontrollera att den tillåter trafik för hello TCP-port som används av Network Performance Monitor.
+> Skriptet EnableRules.ps1 konfigurerar regler för Windows-brandväggen endast på den dator där skriptet körs. Om du har en brandvägg för nätverk, bör du kontrollera att den tillåter trafik för TCP-porten som används av Network Performance Monitor.
 >
 >
 
-## <a name="configuring-hello-solution"></a>Konfigurera hello lösning
-Använd följande information tooinstall hello och konfigurera hello lösning.
+## <a name="configuring-the-solution"></a>Konfigurera lösningen
+Använd följande information för att installera och konfigurera lösningen.
 
-1. hello Network Performance Monitor lösningen hämtar data från datorer som kör Windows Server 2008 SP 1 eller senare eller Windows 7 SP1 eller senare, vilket är hello samma krav som hello Microsoft Monitoring Agent (MMA). NPM agenter kan också köra på Windows desktop/client-operativsystem (Windows 10, Windows 8.1, Windows 8 och Windows 7).
+1. Network Performance Monitor-lösningen hämtar data från datorer som kör Windows Server 2008 SP 1 eller senare eller Windows 7 SP1 eller senare, vilket är samma krav som Microsoft Monitoring Agent (MMA). NPM agenter kan också köra på Windows desktop/client-operativsystem (Windows 10, Windows 8.1, Windows 8 och Windows 7).
     >[!NOTE]
-    >hello agenter för Windows server-operativsystem stöder både TCP och ICMP som hello protokoll för syntetisk transaktion. Hello agenter för Windows-klientoperativsystem stöder dock endast ICMP som hello protokoll för syntetisk transaktion.
+    >Agenter för Windows server-operativsystem stöder både TCP och ICMP som protokoll för syntetisk transaktion. Agenter för Windows-klientoperativsystem stöder dock endast ICMP som protokoll för syntetisk transaktion.
 
-2. Lägg till hello Network Performance Monitor lösning tooyour arbetsyta från [Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview) eller genom att använda hello process som beskrivs i [lägga till logganalys lösningar från hello lösningar galleriet](log-analytics-add-solutions.md).  
+2. Lägga till Network Performance Monitor-lösningen till arbetsytan från [Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview) eller genom att använda processen som beskrivs i [lägga till logganalys lösningar från galleriet lösningar](log-analytics-add-solutions.md).  
    ![Nätverket Prestandaövervakaren symbol](./media/log-analytics-network-performance-monitor/npm-symbol.png)
-3. I hello OMS-portalen, ser du en ny panel med titeln **Network Performance Monitor** med hälsningsmeddelande *lösningen kräver ytterligare konfiguration*. Du behöver tooconfigure hello lösning tooadd nätverk baserat på undernät och noder som identifieras av agenter. Klicka på **Network Performance Monitor** toostart konfigurera hello standardnätverk.  
+3. I OMS-portalen visas en ny panel med titeln **Network Performance Monitor** med meddelandet *lösningen kräver ytterligare konfiguration*. Du behöver konfigurera lösningen för att lägga till nätverk baserat på undernät och noder som identifieras av agenter. Klicka på **Network Performance Monitor** att börja konfigurera standardnätverk.  
    ![lösningen kräver ytterligare konfiguration](./media/log-analytics-network-performance-monitor/npm-config.png)
 
-### <a name="configure-hello-solution-with-a-default-network"></a>Konfigurera hello lösning med en standardnätverk
-På sidan för konfiguration av hello ser du ett enda nätverk med namnet **standard**. När du inte har definierats några nätverk placeras alla hello automatiskt identifieras undernät i hello standardnätverk.
+### <a name="configure-the-solution-with-a-default-network"></a>Konfigurera lösningen med ett standardnätverk
+På konfigurationssidan ser du ett enda nätverk med namnet **standard**. När du inte har definierats några nätverk placeras alla automatiskt identifieras undernät i nätverket standard.
 
-När du skapar ett nätverk kan du lägga till ett undernät tooit och undernätet tas bort från hello standardnätverk. Om du tar bort ett nätverk, returneras alla undernät automatiskt toohello standardnätverk.
+När du skapar ett nätverk kan du lägga till ett undernät till den och undernätet tas bort från standardnätverk. Om du tar bort ett nätverk, returneras alla undernät automatiskt till standard-nätverk.
 
-Med andra ord hello nätverk som är standard hello behållare för alla hello-undernät som inte ingår i en användardefinierad nätverk. Du kan inte redigera eller ta bort hello standardnätverk. Det finns alltid i hello system. Du kan dock skapa så många nätverk som du behöver.
+Med andra ord är standardnätverk en behållare för alla undernät som inte ingår i en användardefinierad nätverk. Du kan inte redigera eller ta bort standardnätverk. Det finns alltid i systemet. Du kan dock skapa så många nätverk som du behöver.
 
-I de flesta fall hello undernät i din organisation ska ordnas i flera nätverk och skapar du en eller flera nätverk toologically gruppera dina undernät.
+I de flesta fall undernät i din organisation ska ordnas i flera nätverk och du måste skapa en eller flera nätverk för att gruppera dina undernät.
 
 ### <a name="create-new-networks"></a>Skapa nya nätverk
-Ett nätverk i Prestandaövervakaren för nätverk är en behållare för undernät. Du kan skapa ett nätverk med ett namn och Lägg till undernät toohello nätverk. Du kan till exempel skapa ett nätverk med namnet *Building1* och Lägg sedan till undernät eller skapa ett nätverk med namnet *DMZ* och Lägg sedan till alla undernät som hör toodemilitarized zon toothis nätverk.
+Ett nätverk i Prestandaövervakaren för nätverk är en behållare för undernät. Du kan skapa ett nätverk med ett namn som du vill använda och Lägg till undernät i nätverket. Du kan till exempel skapa ett nätverk med namnet *Building1* och Lägg sedan till undernät eller skapa ett nätverk med namnet *DMZ* och Lägg sedan till alla undernät i demilitariserad zon till det här nätverket.
 
-#### <a name="toocreate-a-new-network"></a>toocreate ett nytt nätverk
-1. Klicka på **Lägg till nätverket** och skriver sedan hello nätverkets namn och beskrivning.
+#### <a name="to-create-a-new-network"></a>Skapa ett nytt nätverk
+1. Klicka på **Lägg till nätverket** och Skriv nätverkets namn och beskrivning.
 2. Välj ett eller flera undernät och klicka sedan på **Lägg till**.
-3. Klicka på **spara** toosave hello konfiguration.  
+3. Klicka på **spara** att spara konfigurationen.  
    ![lägga till nätverk](./media/log-analytics-network-performance-monitor/npm-add-network.png)
 
 ### <a name="wait-for-data-aggregation"></a>Vänta tills Datasammanställning
-När du har sparat hello konfiguration för första gången, startar hello lösning samla in paket förluster eller fördröjningar nätverksinformation mellan hello noder där agenter är installerade. Den här processen kan ta en stund ibland över 30 minuter. Under det här tillståndet hello Network Performance Monitor hello översiktssidan visas ett meddelande om *Datasammanställning pågående*.
+När du har sparat konfigurationen för första gången, startar lösningen samla in paket förluster eller fördröjningar nätverksinformation mellan noderna där agenter är installerade. Den här processen kan ta en stund ibland över 30 minuter. Under det här tillståndet Network Performance Monitor-panelen på översiktssidan visas ett meddelande om *Datasammanställning pågående*.
 
 ![Dataaggregering pågår](./media/log-analytics-network-performance-monitor/npm-aggregation.png)
 
-När hello data har överförts visas hello Network Performance Monitor panelen uppdateras visar data.
+När data har överförts visas Network Performance Monitor panelen uppdateras visar data.
 
 ![Prestandaövervakaren nätverksikon](./media/log-analytics-network-performance-monitor/npm-tile.png)
 
-Klicka på hello panelen tooview hello Network Performance Monitor instrumentpanelen.
+Klicka på panelen om du vill visa infopanelen Network Performance Monitor.
 
 ![Nätverket Prestandaövervakaren instrumentpanelen](./media/log-analytics-network-performance-monitor/npm-dash01.png)
 
 ### <a name="edit-monitoring-settings-for-subnets"></a>Redigera inställningarna för övervakning för undernät
-Alla undernät där minst en agent har installerats visas på hello **undernätverk** fliken i hello konfigurationssidan.
+Visas alla undernät där minst en agent har installerats på den **undernätverk** fliken i konfigurationssidan.
 
-#### <a name="tooenable-or-disable-monitoring-for-particular-subnetworks"></a>tooenable eller inaktivera övervakning för specifika undernät
-1. Hello markerar eller avmarkerar kryssrutan nästa toohello **ID för undernätverk** och se till att **för övervakning** är markerad eller avmarkerad, vid behov. Du kan markera eller avmarkera flera undernät. När den är inaktiverad, övervakas inte undernätverk som hello agenter ska vara uppdaterade toostop pinga andra agenter.
-2. Välj hello noder som du vill toomonitor för en viss undernätverk genom att välja hello undernätverk hello listan och flytta hello krävs noder mellan hello listor som innehåller oövervakade och övervakade noder.
-   Du kan lägga till en anpassad **beskrivning** toohello undernätverk om du vill.
-3. Klicka på **spara** toosave hello konfiguration.  
+#### <a name="to-enable-or-disable-monitoring-for-particular-subnetworks"></a>Aktivera eller inaktivera övervakning för specifika undernät
+1. Markera eller avmarkera kryssrutan bredvid den **ID för undernätverk** och se till att **för övervakning** är markerad eller avmarkerad, vid behov. Du kan markera eller avmarkera flera undernät. När den är inaktiverad, övervakas inte undernätverk som agenterna uppdateras för att stoppa pinga andra agenter.
+2. Välj de noder som du vill övervaka för en viss undernätverk genom att välja undernätverk i listan och flytta krävs noderna mellan listor som innehåller oövervakade och övervakade noder.
+   Du kan lägga till en anpassad **beskrivning** till undernätverk, om du vill.
+3. Klicka på **spara** att spara konfigurationen.  
    ![Redigera undernätet](./media/log-analytics-network-performance-monitor/npm-edit-subnet.png)
 
-### <a name="choose-nodes-toomonitor"></a>Välj noder toomonitor
-Alla hello-noder som har en agent installerad visas i hello **noder** fliken.
+### <a name="choose-nodes-to-monitor"></a>Välj noder för att övervaka
+Alla noder som har en agent som installerats på de visas i den **noder** fliken.
 
-#### <a name="tooenable-or-disable-monitoring-for-nodes"></a>tooenable eller inaktivera övervakning för noder
-1. Markera eller avmarkera hello noder som du vill toomonitor eller stoppa övervakningen.
+#### <a name="to-enable-or-disable-monitoring-for-nodes"></a>Aktivera eller inaktivera övervakning för noder
+1. Markera eller avmarkera de noder som du vill övervaka eller stoppa övervakningen.
 2. Klicka på **för övervakning**, eller avmarkera den efter behov.
 3. Klicka på **Spara**.  
    ![aktivera övervakning av nod](./media/log-analytics-network-performance-monitor/npm-enable-node-monitor.png)
 
 ### <a name="set-monitoring-rules"></a>Ange regler för övervakning
-Network Performance Monitor genererar hälsa händelser om hello-anslutning mellan två noder eller undernätverk eller nätverket länkar när ett tröskelvärde komprometteras. Dessa tröskelvärden kan hämtas automatiskt av hello system eller konfigurera anpassade Varningsregler.
+Network Performance Monitor genererar hälsa händelser om finns en anslutning mellan två noder eller undernätverk eller nätverket länkar när ett tröskelvärde komprometteras. Dessa tröskelvärden kan hämtas automatiskt av systemet eller konfigurera anpassade Varningsregler.
 
-Hej *standardregel* skapas av hello system och skapar en hälsohändelse när förlust eller fördröjning mellan ett par nätverk eller undernätverk länkar överträdelser hello system lärt dig tröskelvärdet. Du kan välja toodisable hello standardregel och skapa anpassade regler för övervakning
+Den *standardregel* har skapats av systemet och skapar en hälsohändelse när förlust eller fördröjning mellan ett par nätverk eller undernätverk länkar överträdelser system lärt dig tröskelvärdet. Du kan välja att inaktivera Standardregeln och skapa anpassade regler för övervakning
 
-#### <a name="toocreate-custom-monitoring-rules"></a>toocreate anpassade regler för övervakning
-1. Klicka på **Lägg till regel** i hello **övervakaren** och ange hello namn och beskrivning.
-2. Välj hello par nätverk eller undernätverk länkar toomonitor hello listor.
-3. Först välja hello nätverk i vilka hello första undernätverk/s intressanta finns hello nätverket listrutan och välj sedan hello undernätverk/s hello motsvarande undernätverk listrutan.
-   Välj **alla undernät** om du vill toomonitor hello alla undernät i en nätverkslänk. Välj hello på samma sätt andra undernätverk/s av intresse. Och du kan klicka på **Lägg till undantag** tooexclude övervakning för viss undernätverk länkar från hello val du har gjort.
+#### <a name="to-create-custom-monitoring-rules"></a>Att skapa anpassade regler för övervakning
+1. Klicka på **Lägg till regel** i den **övervakaren** och ange namn och beskrivning.
+2. Välj paret med nätverks- eller undernätverk länkar för att övervaka i listan.
+3. Först välja nätverket första undernätverk/s intressanta finns i nätverket listrutan och välj sedan undernätverk/s i motsvarande undernätverk listrutan.
+   Välj **alla undernät** om du vill övervaka alla undernät i en nätverkslänk. På liknande sätt väljer du den andra undernätverk/s av intresse. Och du kan klicka på **Lägg till undantag** för att utesluta övervakning för specifika undernätverkslänkar från den val.
 4. Välj mellan ICMP- och TCP protokoll för att köra syntetiska transaktioner.
-5. Om du inte vill toocreate hälsa händelser för hello-objekt som du har valt, avmarkera **aktivera övervakning av hälsotillstånd på hello länkar som omfattas av den här regeln**.
+5. Om du inte vill skapa hälsa händelser för de objekt som du har valt, sedan avmarkera **aktivera övervakning av hälsotillstånd på länkarna som omfattas av den här regeln**.
 6. Välj övervakning villkor.
-   Du kan ange anpassade tröskelvärden för hälsotillstånd händelse genereras genom att skriva tröskelvärden. När hello värdet av hello villkor går över dess valda tröskelvärdet för hello valda nätverket/undernätverk par, skapas en hälsohändelse.
-7. Klicka på **spara** toosave hello konfiguration.  
+   Du kan ange anpassade tröskelvärden för hälsotillstånd händelse genereras genom att skriva tröskelvärden. När värdet för villkoret går över dess valda tröskelvärdet för det valda nätverk/undernätverk paret, skapas en hälsohändelse.
+7. Klicka på **spara** att spara konfigurationen.  
    ![Skapa anpassad regel för övervakning](./media/log-analytics-network-performance-monitor/npm-monitor-rule.png)
 
-När du har sparat en regel för övervakning, du kan integrera regeln med Alert Management genom att klicka på **skapa avisering**. En aviseringsregel skapas automatiskt med hello sökfråga och andra nödvändiga parametrar automatiskt ifyllda. Med hjälp av en aviseringsregel, du kan ta emot e-postbaserad aviseringar dessutom toohello befintliga aviseringar i NPM. Aviseringar kan också utlösa vidtar åtgärder med runbooks eller de kan integrera med befintliga lösningar tjänsten med hjälp av webhooks. Du kan klicka på **hantera avisering** tooedit hello aviseringsinställningar.
+När du har sparat en regel för övervakning, du kan integrera regeln med Alert Management genom att klicka på **skapa avisering**. En aviseringsregel skapas automatiskt med sökvillkoret och andra nödvändiga parametrar automatiskt ifyllda. Med hjälp av en aviseringsregel, du kan ta emot e-postbaserad aviseringar, förutom befintliga aviseringar i NPM. Aviseringar kan också utlösa vidtar åtgärder med runbooks eller de kan integrera med befintliga lösningar tjänsten med hjälp av webhooks. Du kan klicka på **hantera avisering** redigera inställningar för avisering.
 
-### <a name="choose-hello-right-protocol-icmp-or-tcp"></a>Välj hello rätt protokoll-ICMP- eller TCP
+### <a name="choose-the-right-protocol-icmp-or-tcp"></a>Välja rätt protokoll-ICMP- eller TCP
 
-Network Performance Monitor (NPM) använder prestandamått för syntetiska transaktioner toocalculate nätverk som paketet dataförlust och länka svarstid. toounderstand detta bättre, Överväg att en NPM agent anslutna tooone slutet av en nätverkslänk. Den här NPM agenten skickar avsökningen paket tooa andra NPM agent anslutna tooanother slutet av hello nätverk. hello andra agenten svarar med svarspaket. Den här processen upprepas några gånger. Genom att mäta hello antalet svar och tidsåtgång tooreceive varje svar, hello första NPM agent utvärderar länkfördröjningen och tappade paket.
+Network Performance Monitor (NPM) använder syntetiska transaktioner för att beräkna prestandamått för nätverket som paketet dataförlust och länka svarstid. För att förstå det bättre att överväga en NPM-agent som är ansluten till ett end för en nätverkslänk. Den här NPM-agenten skickar avsökningen paket till en andra NPM-agent som är ansluten till en annan slutet av nätverket. Andra agenten svarar med svarspaket. Den här processen upprepas några gånger. Första NPM agenten utvärderar länkfördröjningen genom att mäta antalet svar och tidsåtgång för att ta emot varje svar och tappade paket.
 
-hello bestäms format, storlek och ordning i paketen av hello protokoll som du väljer när du skapar regler för övervakning. Baserat på protokollet för hälsningspaket hello mellanliggande nätverksenheter (routrar, växlar osv.) kan bearbeta paketen på olika sätt. Önskat protokoll påverkar därför hello riktighet hello resultat. Och önskat protokoll avgör också om du måste vidta någon manuella steg när du distribuerar hello NPM lösning.
+Format, storlek och ordning i paketen bestäms av det protokoll som du väljer när du skapar regler för övervakning. Baserat på protokollet för paket, mellanliggande nätverksenheter (routrar, växlar osv.) kan bearbeta paketen på olika sätt. Följaktligen påverkar önskat protokoll precisionen i resultaten. Och önskat protokoll avgör också om du måste vidta alla manuella steg när du distribuerar lösningen NPM.
 
-NPM erbjuder du hello val mellan ICMP- och TCP-protokoll för att köra syntetiska transaktioner.
-Om du väljer ICMP när du skapar en regel för syntetisk transaktion använder hello NPM agenter ICMP ECHO-meddelanden toocalculate hello nätverks-svarstid och paketförlust. ICMP ECHO använder hello samma meddelande som skickas av hello konventionella Ping-verktyget. När du använder TCP som protokoll hello skickar NPM agenter TCP SYN paket över hello nätverk. Detta följs av en TCP-handskakning slutförande och sedan ta bort hello anslutning med RST paket.
+NPM kan du välja mellan att ICMP- och TCP-protokoll för att köra syntetiska transaktioner.
+Om du väljer ICMP när du skapar en regel för syntetisk transaktion, använda NPM-agenter ICMP ECHO-meddelanden för att beräkna Nätverksfördröjningen och paketförlust. ICMP ECHO använder samma meddelande som skickas av konventionella Ping-verktyget. När du använder TCP som protokoll, skickar NPM agenter TCP SYN paket via nätverket. Detta följs av en TCP-handskakning slutförande och sedan ta bort anslutningen via RST paket.
 
-#### <a name="points-tooconsider-before-choosing-hello-protocol"></a>Punkter tooconsider innan du väljer hello-protokollet
-Överväg följande information innan du väljer en protokollet toouse hello:
+#### <a name="points-to-consider-before-choosing-the-protocol"></a>Saker att tänka på innan du väljer protokollet
+Tänk på följande innan du väljer ett protokoll som ska användas:
 
 ##### <a name="discovering-multiple-network-routes"></a>Identifiering av flera nätverksvägar
-TCP är mer exakt när identifiering av flera vägar och den måste färre agenter i varje undernät. En eller två agenter som använder TCP kan exempelvis identifiera alla redundanta sökvägar mellan undernät. Du måste dock flera agenter med ICMP tooachieve liknande resultat. Med ICMP, om du har *N* antal vägar mellan två undernät som du behöver mer än 5*N* agenter i källan eller målet undernät.
+TCP är mer exakt när identifiering av flera vägar och den måste färre agenter i varje undernät. En eller två agenter som använder TCP kan exempelvis identifiera alla redundanta sökvägar mellan undernät. Du måste dock flera agenter använder ICMP för att få samma resultat. Med ICMP, om du har *N* antal vägar mellan två undernät som du behöver mer än 5*N* agenter i källan eller målet undernät.
 
 ##### <a name="accuracy-of-results"></a>Riktighet resultat
-Routrar och växlar ofta tooassign lägre prioritet tooICMP ECHO paket jämfört med tooTCP-paket. I vissa situationer när nätverksenheter är högt belastad, visar hello data från TCP närmare hello förluster eller fördröjningar orsakade av program. Detta inträffar eftersom de flesta av hello programmet trafiken flödar över TCP. I sådana fall ger ICMP mindre exakt resultaten jämförs tooTCP.
+Routrar och växlar tenderar att tilldela ICMP ECHO-paket jämfört med TCP-paket med lägre prioritet. I vissa situationer när nätverksenheter är högt belastad, avspeglar data hämtas av TCP närmare den förluster eller fördröjningar orsakade av program. Detta inträffar eftersom de flesta programtrafiken flödar över TCP. I sådana fall ger ICMP mindre korrekta resultat jämfört med TCP.
 
 ##### <a name="firewall-configuration"></a>Brandväggskonfiguration
-TCP-protokollet kräver att TCP-paket skickas tooa målport. hello standardport som används av NPM agenter är 8084, men du kan ändra detta när du konfigurerar agenter. Du måste därför tooensure att din nätverkets brandväggar eller NSG-regler (i Azure) tillåter trafik på port hello. Du måste också toomake till den lokala hello-brandväggen på hello datorer där agenter är installerade är konfigurerat tooallow trafik på den här porten.
+TCP-protokollet kräver att TCP-paket skickas till en målport. Standardport som används av NPM agenter är 8084, men du kan ändra detta när du konfigurerar agenter. Därför måste du kontrollera att din nätverkets brandväggar eller NSG-regler (i Azure) tillåter trafik på port. Du måste också se till att den lokala brandväggen på datorer där agenter är installerade är konfigurerad för att tillåta trafik på den här porten.
 
-Du kan använda PowerShell-skript tooconfigure brandväggsregler på dina datorer som kör Windows, men du behöver tooconfigure nätverkets brandvägg manuellt.
+Du kan använda PowerShell-skript för att konfigurera brandväggens regler på dina datorer som kör Windows, men du måste konfigurera nätverkets brandvägg manuellt.
 
-Däremot fungerar inte ICMP använder port. I de flesta företagsscenarier tillåts ICMP-trafik via hello brandväggar tooallow du toouse verktyg för Nätverksdiagnostik som hello Ping-verktyget. Så om du kan pinga en dator från en annan, kan du använda hello ICMP-protokollet utan tooconfigure brandväggar manuellt.
+Däremot fungerar inte ICMP använder port. I de flesta företagsscenarier tillåts ICMP-trafik via brandvägg så att du kan använda verktyg för Nätverksdiagnostik som Ping-verktyget. Så om du kan pinga en dator från en annan, kan du använda ICMP-protokollet utan att behöva konfigurera brandväggar manuellt.
 
 > [!NOTE]
-> Om du inte är säker på vilket protokoll toouse välja ICMP toostart med. Om du inte är nöjd med resultaten hello växla du alltid tooTCP senare.
+> Om du inte är säker på vilket protokoll som ska användas, väljer du börja med ICMP. Om du inte är nöjd med resultaten kan växla du alltid till TCP senare.
 
 
-#### <a name="how-tooswitch-hello-protocol"></a>Hur tooswitch hello protokoll
+#### <a name="how-to-switch-the-protocol"></a>Så här byter du protokollet
 
-Om du har valt toouse ICMP under distributionen kan du växla tooTCP när som helst genom att redigera hello standardinställningar för övervakning av regeln.
+Om du väljer att använda ICMP under distributionen måste växla du till TCP när som helst genom att redigera standardinställningar för övervakning av regeln.
 
-##### <a name="tooedit-hello-default-monitoring-rule"></a>tooedit hello övervakning Standardregeln för
-1.  Navigera för**nätverksprestanda** > **övervakaren** > **konfigurera** > **övervakaren** och klicka sedan på **standardregel**.
-2.  Rulla toohello **protokollet** avsnittet och väljer hello protokoll som du vill toouse.
-3.  Klicka på **spara** tooapply hello inställningen.
+##### <a name="to-edit-the-default-monitoring-rule"></a>Så här redigerar du standardinställningar för övervakning av regel
+1.  Gå till **nätverksprestanda** > **övervakaren** > **konfigurera** > **övervakaren** och klicka sedan på **standardregel**.
+2.  Bläddra till den **protokollet** och välj det protokoll som du vill använda.
+3.  Klicka på **spara** inställningen ska användas.
 
-Även om Standardregeln hello använder ett visst protokoll, kan du skapa nya regler med ett annat protokoll. Du kan även skapa en blandning av regler där vissa hello regler använder ICMP och en annan med TCP.
+Även om Standardregeln är med ett visst protokoll, kan du skapa nya regler med ett annat protokoll. Du kan även skapa en blandning av regler om några av reglerna som använder ICMP och en annan med TCP.
 
 
 
 
 ## <a name="data-collection-details"></a>Information om samlingen
-Network Performance Monitor använder TCP SYN-SYNACK-ACK handskakning paket när TCP är valt och ICMP ECHO ICMP ECHO SVARSMEDDELANDEN när ICMP har valts som hello toocollect förluster eller fördröjningar protokollinformation. Traceroute är också används tooget topologiinformation.
+Network Performance Monitor använder TCP SYN-SYNACK-ACK handskakning paket när du har valt TCP och ICMP ECHO ICMP ECHO SVARSMEDDELANDEN när ICMP är valt som protokoll för att samla in information om förluster eller fördröjningar. Traceroute används också för att hämta information om nätverkstopologin.
 
-hello följande tabell visar metoder för insamling av data och annan information om hur data samlas in för Network Performance Monitor.
+I följande tabell visar metoder för insamling av data och annan information om hur data samlas in för Network Performance Monitor.
 
 | Plattform | Styr Agent | SCOM-agent | Azure Storage | SCOM krävs? | SCOM-agent data som skickas via management-grupp | Frekvens för samlingen |
 | --- | --- | --- | --- | --- | --- | --- |
 | Windows | &#8226; | &#8226; |  |  |  |TCP-handskakningar på/ICMP ECHO-meddelanden var femte sekund data skickas var 3: e minut |
 
-hello lösningen använder syntetiska transaktioner tooassess hello hälsotillstånd hello nätverk. OMS-agenter som installerats på olika punkt i hello nätverkspaket exchange TCP eller ICMP Echo (beroende på hello protokoll har valts för övervakning) med varandra. Hello pågående Läs agenter hello fram och åter tid och paket förlust, eventuella. Varje agent utförs med jämna mellanrum, även en trace väg tooother agenter toofind alla hello olika vägar i hello-nätverket som ska testas. Med dessa data kan härleda hello agenter hello nätverks-svarstid och paket förlust siffrorna. hello tester upprepas var femte sekund och data som sammanställs för tre minuter av hello-agenter innan du laddar upp det toohello logganalys-tjänsten.
+Lösningen använder syntetiska transaktioner för att utvärdera hälsan för nätverket. OMS-agenter som installerats på olika punkt i nätverkspaket exchange TCP eller ICMP Echo (beroende på det protokoll som valts för övervakning) med varandra. I processen dig agenter fram och åter tid och paket förlust, eventuella. Varje agent med jämna mellanrum, utför även en spårningsrutt för att andra agenter för att hitta alla olika vägar i nätverket som ska testas. Med dessa data kan härleda agenterna Nätverksfördröjningen och paket förlustsiffror. Testerna upprepas var femte sekund och data har aggregerats under en period på tre minuter med agenterna innan den skickas till logganalys-tjänsten.
 
 > [!NOTE]
-> Även om agenter är ofta kommunicerar med varandra, genererar de inte mycket nätverkstrafik när utföra hello tester. Agenter använda enbart TCP SYN-SYNACK-ACK handskakning paket toodetermine hello förluster eller fördröjningar – inga data som utbyts paket. Under den här processen agenter kommunicerar med varandra endast vid behov och hello agent kommunikation topologi optimeras tooreduce nätverkstrafik.
+> Även om agenter är ofta kommunicerar med varandra, genererar de inte mycket nätverkstrafik när du utför testerna. Agenter använda enbart TCP SYN-SYNACK-ACK handskakning paket att fastställa förluster eller fördröjningar – inga data som utbyts paket. Under den här processen agenter kommunicerar med varandra endast vid behov och kommunikationstopologin agent är optimerad för att minska nätverkstrafiken.
 >
 >
 
-## <a name="using-hello-solution"></a>Med hello-lösning
-Det här avsnittet beskriver alla hello instrumentpanelen funktioner och hur toouse dem.
+## <a name="using-the-solution"></a>Använda lösningen
+Det här avsnittet beskriver alla instrumentpanelen funktioner och hur de används.
 
 ### <a name="solution-overview-tile"></a>Lösning: översikt sida vid sida
-När du har aktiverat hello Network Performance Monitor lösning ger hello lösning panelen på översiktssidan för hello OMS en snabb överblick över hello nätverkets tillstånd. Ett ringdiagram visar hello antal felfria och feltillstånd undernätverkslänkar visas. När du klickar på panelen hello öppnas hello lösning instrumentpanelen.
+När du har aktiverat Network Performance Monitor-lösningen ger en snabb överblick över nätverkets tillstånd panelen lösning på översiktssidan OMS. Ett ringdiagram visar antalet felfritt och feltillstånd undernätverkslänkar visas. När du klickar på ikonen öppnas lösning instrumentpanelen.
 
 ![Prestandaövervakaren nätverksikon](./media/log-analytics-network-performance-monitor/npm-tile.png)
 
 ### <a name="network-performance-monitor-solution-dashboard"></a>Nätverket Prestandaövervakaren lösning instrumentpanelen
-Hej **nätverk sammanfattning** bladet visas en sammanfattning av hello nätverk tillsammans med relativ storlek. Detta följs av paneler visar totalt antal nätverkslänkar, undernät länkar och sökvägar i hello system (en sökväg som består av hello IP-adresser för två värdar med agenter och alla hello hopp mellan dem).
+Den **nätverk sammanfattning** bladet visar en översikt över nätverk tillsammans med relativ storlek. Detta följs av paneler visar totalt antal nätverkslänkar, undernät länkar och sökvägar i systemet (en sökväg som består av IP-adresserna för två värdar med agenter och alla hopp mellan dem).
 
-Hej **upp händelser på nätverket hälsa** bladet visar en lista över senaste hälsa händelser och aviseringar i hello system och hello tid eftersom hello händelse har varit aktiv. En hälsohändelse eller en varning genereras när hello paketförlust eller latens för en länk för nätverk eller undernätverk överskrider ett tröskelvärde.
+Den **upp händelser på nätverket hälsa** bladet visar en lista över senaste hälsa händelser och aviseringar i systemet och hur lång tid eftersom händelsen har varit aktiv. En hälsohändelse eller en varning genereras när paketförlust eller latens för en länk för nätverk eller undernätverk överskrider ett tröskelvärde.
 
-Hej **upp ohälsosamt nätverkslänkar** bladet visar en lista över nätverkslänkar. Dessa är hello nätverkslänkar som har en eller flera negativa hälsohändelse för tillfället hello.
+Den **upp ohälsosamt nätverkslänkar** bladet visar en lista över nätverkslänkar. Dessa är nätverkslänkar som har en eller flera negativa hälsohändelse för dem för tillfället.
 
-Hej **upp Undernätverkslänkar med mest förlust** och **Undernätverkslänkar med mest svarstid** blad visar hello översta undernätverkslänkar av paketförlust och främsta undernätverkslänkar efter svarstid respektive. Fördröjningar eller vissa mängden paketförlust kan förväntas på vissa nätverkslänkarna. Dessa länkar visas i topp tio hello-listor, men är inte dåligt hälsotillstånd.
+Den **upp Undernätverkslänkar med mest förlust** och **Undernätverkslänkar med mest svarstid** blad Visa översta undernätverkslänkar genom paketförlust och främsta undernätverkslänkar efter svarstid respektive. Fördröjningar eller vissa mängden paketförlust kan förväntas på vissa nätverkslänkarna. Dessa länkar visas i den översta tio listan men är inte dåligt hälsotillstånd.
 
-Hej **vanliga frågor** bladet innehåller en uppsättning sökfrågor som hämta rådata för nätverksövervakning data direkt. Du kan använda de här frågorna som utgångspunkt för att skapa egna frågor för anpassad rapportering.
+Den **vanliga frågor** bladet innehåller en uppsättning sökfrågor som hämta rådata för nätverksövervakning data direkt. Du kan använda de här frågorna som utgångspunkt för att skapa egna frågor för anpassad rapportering.
 
 ![Nätverket Prestandaövervakaren instrumentpanelen](./media/log-analytics-network-performance-monitor/npm-dash01.png)
 
 ### <a name="drill-down-for-depth"></a>Gå nedåt för djup
-Du kan klicka på olika länkar på hello lösning instrumentpanelen toodrill nedåt djupare i alla intresseområde. Till exempel när du ser en avisering eller ett feltillstånd nätverkslänken som visas på instrumentpanelen för hello, du kan klicka på den tooinvestigate ytterligare. Vidarebefordras du tooa sidan som visar alla hello undernätverkslänkar för hello nätverks-länk. Du kommer att kunna toosee hello förlust, svarstid och hälsa status för varje undernätverk länken och snabbt ta reda på vilka undernätverkslänkar orsakar hello problem. Du kan klicka **visa nodlänkar** toosee alla hello nodlänkar för hello ohälsosamt undernät länka. Du kan sedan se enskilda nod till nod länkar och hitta hello nodlänkar.
+Du kan klicka på olika länkar på lösningen instrumentpanelen för att gå nedåt djupare i alla intresseområde. När du ser en avisering eller ett feltillstånd nätverkslänken som visas på instrumentpanelen kan du till exempel klicka att undersöka vidare. Vidarebefordras du till en sida som visar alla undernätverkslänkar för nätverks-länk. Du kommer att kunna se status för dataförlust, svarstid och hälsotillståndet för varje undernätverk länk och snabbt ta reda på vilka undernätverkslänkar som orsakar problemet. Du kan klicka **visa nodlänkar** att se alla länkar i noden för länken ohälsosamt undernät. Du kan sedan se enskilda nod till nod länkar och hitta nodlänkar.
 
-Du kan klicka på **visa topologi** tooview hello hopp av hopp topologi hello vägar mellan hello käll- och noder. Hej ohälsosamt vägar eller hopp visas i rött så att du snabbt kan identifiera hello problemet tooa viss del av hello nätverk.
+Du kan klicka på **visa topologi** att visa hopp av hopp topologin vägar mellan käll- och noderna. Feltillstånd vägar eller hopp visas i rött så att du snabbt kan identifiera problemet till en viss del av nätverket.
 
 ![specificera-data](./media/log-analytics-network-performance-monitor/npm-drill.png)
 
 ### <a name="network-state-recorder"></a>Nätverket lådan
 
-Varje visas en ögonblicksbild av nätverkets tillstånd vid en viss tidpunkt. Som standard visas hello senaste tillstånd. hello visas hello överst på hello sidan hello punkt i tiden som hello status visas. Du kan välja toogo tillbaka i tiden och visa hello ögonblicksbild av nätverkets tillstånd genom att klicka på hello-fältet på **åtgärder**. Du kan också välja tooenable eller inaktivera automatisk uppdatering för en sida när du visar hello senaste tillstånd.
+Varje visas en ögonblicksbild av nätverkets tillstånd vid en viss tidpunkt. Senaste status visas som standard. Längst upp på sidan visar punkten i tiden som status visas. Du kan välja att gå tillbaka i tiden och visa ögonblicksbilden av nätverkets tillstånd genom att klicka på listen på **åtgärder**. Du kan också välja att aktivera eller inaktivera automatisk uppdatering för en sida när du visar det aktuella tillståndet.
 
 ![nätverket](./media/log-analytics-network-performance-monitor/network-state.png)
 
 #### <a name="trend-charts"></a>Trend diagram
-På varje nivå som du nedåt, du kan se hello trend förluster eller fördröjningar för en nätverkslänk. Trend diagram är också tillgängliga för undernätverk och nod-länkar. Du kan ändra hello tidsintervall för hello diagram tooplot genom att använda hello tid kontrollen hello överst i hello diagram.
+På varje nivå som du nedåt, du kan se trend förluster eller fördröjningar för en nätverkslänk. Trend diagram är också tillgängliga för undernätverk och nod-länkar. Du kan ändra tidsintervallet för diagram ska ritas med hjälp av kontrollen tid överst i diagrammet.
 
-Trend diagram visar en historisk perspektiv hello prestanda för en nätverkslänk för. Vissa nätverksproblem är tillfälligt till sin natur och skulle vara svårt toocatch endast genom att titta på hello hello nätverkets aktuella tillstånd. Detta beror på att problem kan ansluta snabbt och försvinner innan alla meddelanden endast tooreappear vid ett senare tillfälle. Sådana tillfälliga problem kan också vara svårt för administratörer eftersom de utfärdar ofta yta som oförklarade ökningen av svarstiden programmet, även när alla programkomponenter visas toorun smidigt.
+Trend diagram visar en historisk perspektiv för prestandan hos en nätverkslänk. Vissa nätverksproblem är tillfälligt till sin natur och är svåra att fånga endast genom att titta på det aktuella tillståndet för nätverket. Detta beror på att problem kan ansluta snabbt och försvinner innan alla meddelanden enbart för att visas igen vid en senare tidpunkt. Sådana tillfälliga problem kan också vara svårt för administratörer eftersom de utfärdar ofta yta som oförklarade ökningen av svarstiden programmet, även när alla programkomponenter ut att fungera smidigt.
 
-Du kan enkelt identifiera dessa typer av problem genom att titta på trenddiagram där hello problemet visas som en plötslig topp i antal paket eller fördröjning nätverksförluster.
+Du kan enkelt identifiera dessa typer av problem genom att titta på trenddiagram där problemet visas som en plötslig topp i Nätverksfördröjningen eller paketförlust.
 
 ![trenddiagram](./media/log-analytics-network-performance-monitor/npm-trend.png)
 
 #### <a name="hop-by-hop-topology-map"></a>hopp av hopp topologisk karta
-Network Performance Monitor visar du hello hopp av hopp topologin av routinginformation mellan två noder i en interaktiv topologisk karta. Du kan visa hello topologisk karta genom att markera en nod länk och sedan klicka på **visa topologi**. Du kan också visa hello topologisk karta genom att klicka på **sökvägar** rutan på hello instrumentpanel. När du klickar på **sökvägar** på hello instrumentpanelen har du tooselect hello käll- och noder hello vänstra panelen och klicka sedan på **Rita** tooplot hello vägar mellan hello två noder.
+Network Performance Monitor visas topologin som hopp av hopp av routinginformation mellan två noder i en interaktiv topologisk karta. Du kan visa topologisk karta genom att markera en nod länk och sedan klicka på **visa topologi**. Du kan också visa topologisk karta genom att klicka på **sökvägar** panelen på instrumentpanelen. När du klickar på **sökvägar** på instrumentpanelen, måste du markera käll- och noder från den vänstra panelen och klicka sedan på **ritytans** ska ritas vägar mellan två noder.
 
-hello topologisk karta visar hur många vägar som finns mellan hello två noder och vilka sökvägar hello data paket ta. Flaskhalsar i nätverket är markerat i rött på hello topologisk karta. Du kan hitta en felaktig nätverksanslutning eller en felaktig nätverksenhet genom att titta på red färgade elementen på hello topologisk karta.
+Topologisk karta visar hur många vägar mellan två noder och vad är sökvägar datapaketen ta. Flaskhalsar i nätverket är markerat i rött på topologisk karta. Du kan hitta en felaktig nätverksanslutning eller en felaktig nätverksenhet genom att titta på red färgade elementen på topologisk karta.
 
-När du klickar på en nod eller hovra över den på hello topologisk karta visas hello egenskaper för hello nod som FQDN och IP-adressen. Klicka på ett hopp toosee IP-adressen är. Du kan välja toofilter viss vägar med hjälp av hello filter i hello döljas åtgärdsfönstret. Och du kan också förenkla hello nätverkstopologier genom att dölja hello mellanliggande hopp med hello skjutreglaget hello åtgärdsfönstret. Du kan zooma in eller out-of-hello topologisk karta med mushjulet.
+När du klickar på en nod eller hovra över den på topologisk karta, visas egenskaperna för noden som FQDN och IP-adressen. Klicka på ett hopp finns den IP-adress. Du kan välja att filtrera särskilt vägar genom att använda filter i åtgärdsrutan döljas. Och du kan också förenkla nätverkstopologier genom att dölja mellanliggande hopp med skjutreglaget i åtgärdsfönstret. Du kan zooma in eller out-of-topologisk karta med mushjulet.
 
-Observera att hello-topologi som visas på kartan hello är nivå 3-topologi och innehåller inte nivå 2-enheter och anslutningar.
+Observera att topologin visas på kartan är nivå 3-topologi och innehåller inte nivå 2-enheter och anslutningar.
 
 ![hopp av hopp topologisk karta](./media/log-analytics-network-performance-monitor/npm-topology.png)
 
 #### <a name="fault-localization"></a>Lokalisering av fel
-Network Performance Monitor är flaskhalsar i kan toofind hello nätverk utan att ansluta toohello nätverksenheter. Network Performance Monitor gör baserat på hello data som samlas in från hello nätverket och genom att använda avancerade algoritmer på hello nätverket diagram, en probabilistic uppskattning av hello delar av nätverket som är mest sannolika hello källan hello problemet.
+Network Performance Monitor kan hitta flaskhalsar i nätverk utan att ansluta till nätverksenheter. Network Performance Monitor gör baserat på de data som samlas in från nätverket och genom att använda avancerade algoritmer på diagrammet nätverk, en probabilistic uppskattning av de delar av nätverket som är mest sannolika orsaken till problemet.
 
-Den här metoden är användbar toodetermine hello nätverksflaskhalsar när åtkomst toohops är inte tillgängligt eftersom det inte krävs någon toobe för data som samlats in från hello nätverksenheter som routrar och växlar. Detta är också användbart när hello hopp mellan två noder som inte ingår i din administrativ kontroll. Hello hopp kanske till exempel Internet-routrar.
+Den här metoden är användbar för att avgöra flaskhalsarna i nätverket när åtkomst till hopp är inte tillgängligt eftersom det inte kräver några data samlas in från nätverksenheterna som routrar och växlar. Detta är också användbart när hopp mellan två noder som inte ingår i din administrativ kontroll. Hopp kanske till exempel Internet-routrar.
 
 ### <a name="log-analytics-search"></a>Logganalys Sök
-Alla data som exponeras grafiskt genom hello Network Performance Monitor instrumentpanelen och nedåt sidor finns inbyggt i logganalys-sökning. Du kan fråga hello data med hjälp av hello Sök frågespråket och skapa anpassade rapporter genom att exportera hello data tooExcel eller PowerBI. Hej **vanliga frågor** bladet hello instrumentpanelen har vissa användbara frågor som du kan använda som hello som startpunkt för att skapa egna frågor och rapporter.
+Alla data som är exponerade grafiskt via Network Performance Monitor-instrumentpanelen och nedåt sidor finns inbyggt i logganalys-sökning. Du kan fråga efter data med hjälp av frågespråket Sök och skapa anpassade rapporter genom att exportera data till Excel eller PowerBI. Den **vanliga frågor** bladet på instrumentpanelen har vissa användbara frågor som du kan använda som utgångspunkt för att skapa egna frågor och rapporter.
 
 ![sökfrågor](./media/log-analytics-network-performance-monitor/npm-queries.png)
 
-## <a name="investigate-hello-root-cause-of-a-health-alert"></a>Undersök hello grundorsaken till en avisering om hälsa
-Nu när du har läst om Network Performance Monitor vi titta på en enkel undersökning hello-grundorsaken till en hälsohändelse.
+## <a name="investigate-the-root-cause-of-a-health-alert"></a>Undersök orsaken till en avisering om hälsa
+Nu när du har läst om Network Performance Monitor vi titta på en enkel undersökning grundorsaken till en hälsohändelse.
 
-1. På översiktssidan för hello får du en ögonblicksbild hello hälsotillståndet hos ditt nätverk genom att följa hello **Network Performance Monitor** panelen. Observera att utanför hello 6 undernätverk länkar som övervakas, 2 är felfria. Detta garanterar undersökning. Klicka på hello panelen tooview hello lösning instrumentpanelen.  
+1. På sidan Översikt över får du en ögonblicksbild av hälsotillståndet för ditt nätverk genom att följa den **Network Performance Monitor** panelen. Observera att utanför 6 undernätverk länkar som övervakas, 2 är felfria. Detta garanterar undersökning. Klicka på panelen om du vill visa instrumentpanelen för lösningen.  
    ![Prestandaövervakaren nätverksikon](./media/log-analytics-network-performance-monitor/npm-investigation01.png)
-2. I hello exempel bilden nedan märker du att det finns en hälsohändelse som en nätverkslänk som är i feltillstånd. Du bestämmer dig tooinvestigate hello problemet och klicka på hello **DMZ2 DMZ1** nätverk länken toofind ut hello roten för hello problem.  
+2. I exemplet bilden nedan märker du att det finns en hälsohändelse som en nätverkslänk som är i feltillstånd. Du vill undersöka problemet och klicka på den **DMZ2 DMZ1** nätverkslänken ta reda på roten till problemet.  
    ![exempel ohälsosamt nätverk](./media/log-analytics-network-performance-monitor/npm-investigation02.png)
-3. hello nedåt sidan visas alla hello undernätverkslänkar i **DMZ2 DMZ1** nätverkslänken. Lägg märke till att hello svarstid för både hello undernätverkslänkar har passerat hello tröskelvärdet gör nätverkslänken hello feltillstånd. Du kan också se hello latens trender för båda hello undernätverkslänkar. Du kan använda hello tidsåtgången markering i hello diagram toofocus på hello tidsintervall. Du kan se hello tidpunkten hello när latens har nått sin belastning. Du kan söka hello loggar för problemet tid period tooinvestigate hello senare. Klicka på **visa nodlänkar** toodrill nedåt ytterligare.  
+3. Sidan nedåt visar alla undernätverkslänkar i **DMZ2 DMZ1** nätverkslänken. Lägg märke till att svarstiden för både undernätverkslänkar har passerat tröskelvärdet för att göra nätverkslänken feltillstånd. Du kan också se trenderna svarstid för både undernätverkslänkar. Du kan använda valet av tid kontroll i diagrammet för att fokusera på tidsintervallet som krävs. Du kan se tid på dagen när latens har nått sin belastning. Senare kan du söka efter denna tidsperiod att undersöka problemet. Klicka på **visa nodlänkar** till nedåt ytterligare.  
    ![feltillstånd undernät länkar exempel](./media/log-analytics-network-performance-monitor/npm-investigation03.png)
-4. Liknande toohello föregående sida hello nedåt sidan för hello viss undernätverk länken visas ned dess ingående nodlänkar. Du kan utföra samma åtgärder som du gjorde i hello föregående steg. Klicka på **visa topologi** tooview hello topologi mellan hello 2 noder.  
+4. Liknar föregående sida, nedåt sidan för viss undernätverk länken visar ned dess ingående nodlänkar. Du kan utföra samma åtgärder som du gjorde i föregående steg. Klicka på **visa topologi** att visa topologi mellan 2 noderna.  
    ![felaktiga noden länkar exempel](./media/log-analytics-network-performance-monitor/npm-investigation04.png)
-5. Alla hello sökvägar mellan hello 2 valda noder ritas i hello topologisk karta. Du kan visualisera hello hopp av hopp topologi vägar mellan två noder på hello topologisk karta. Den ger dig en tydlig bild av hur många vägar finns mellan hello två noder och vilka sökvägar hello datapaket tar. Flaskhalsar i nätverket markeras med röd färg. Du kan hitta en felaktig nätverksanslutning eller en felaktig nätverksenhet genom att titta på red färgade elementen på hello topologisk karta.  
+5. Alla sökvägar mellan noderna 2 ritas i topologisk karta. Du kan visualisera hopp av hopp topologin av routinginformation mellan två noder i topologisk karta. Den ger dig en tydlig bild av hur många vägar finns mellan två noder och vad sökvägar datapaketen tar. Flaskhalsar i nätverket markeras med röd färg. Du kan hitta en felaktig nätverksanslutning eller en felaktig nätverksenhet genom att titta på red färgade elementen på topologisk karta.  
    ![exemplet ohälsosamt topologi](./media/log-analytics-network-performance-monitor/npm-investigation05.png)
-6. hello förlust, svarstid och hello antalet hopp i varje sökväg kan ses i hello **åtgärd** fönstret. Använd hello rullningslisten tooview hello information på sökvägarna feltillstånd.  Använd hello filter tooselect hello sökvägar med hello ohälsosamt hopp så att hello topologin för endast hello markerad sökvägar ritas. Du kan använda din mus hjul toozoom i eller utanför hello topologisk karta.
+6. Förlust, svarstid och antal hopp i varje sökväg kan ses i den **åtgärd** fönstret. Använd rullningslisten för att visa information om dessa ohälsosamt sökvägar.  Använd filter för att välja sökvägar med feltillstånd hopp så att topologin för bara de valda sökvägarna ritas. Du kan använda mushjulet för att zooma in eller ut topologisk karta.
 
-   I hello under bilden ser du tydligt hello grundorsaken till hello problemet områden toohello avsnittet hello nätverk genom att titta på hello sökvägar och hopp med röd färg. Klicka på en nod i hello topologisk karta visar hello egenskaper för hello-nod, inklusive hello FQDN och IP-adress. Klicka på ett hopp visar hello IP-adress hello hopp.  
+   I den under bilden visas tydligt orsaken till problemområden till specifika avsnitt i nätverket genom att titta på sökvägar och hopp med röd färg. Klicka på en nod i topologisk karta visar egenskaperna för den noden, inklusive det fullständiga Domännamnet och IP-adress. IP-adress för hopp visas när du klickar på ett hopp.  
    ![feltillstånd topologi - sökvägen information exempel](./media/log-analytics-network-performance-monitor/npm-investigation06.png)
 
 ## <a name="provide-feedback"></a>Ge feedback
 
-- **UserVoice** -du kan publicera dina idéer för Network Performance Monitor funktioner som du vill oss toowork på. Besök vår [UserVoice sidan](https://feedback.azure.com/forums/267889-log-analytics/category/188146-network-monitoring).
-- **Ansluta till vår kommittén** -vi alltid är intresserad av att nya kunder ansluta till vår kommittén. Som en del av det kan du få en förhandsåtkomst toonew funktioner och hjälp oss att förbättra Network Performance Monitor. Om du är intresserad av att koppla kan fylla i det här [snabb undersökning](https://aka.ms/npmcohort).
+- **UserVoice** -du kan publicera dina idéer för Network Performance Monitor-funktioner som du vill att vi ska arbeta med. Besök vår [UserVoice sidan](https://feedback.azure.com/forums/267889-log-analytics/category/188146-network-monitoring).
+- **Ansluta till vår kommittén** -vi alltid är intresserad av att nya kunder ansluta till vår kommittén. Som en del av det kan du få en förhandsåtkomst till nya funktioner och hjälp oss att förbättra Network Performance Monitor. Om du är intresserad av att koppla kan fylla i det här [snabb undersökning](https://aka.ms/npmcohort).
 
 ## <a name="next-steps"></a>Nästa steg
-* [Söka i loggar](log-analytics-log-searches.md) tooview detaljerad dataposter prestanda för nätverket.
+* [Söka i loggar](log-analytics-log-searches.md) att visa detaljerad nätverket prestanda dataposter.

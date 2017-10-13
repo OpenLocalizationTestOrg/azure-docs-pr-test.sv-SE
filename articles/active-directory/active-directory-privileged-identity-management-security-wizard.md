@@ -1,6 +1,6 @@
 ---
-title: "aaaThe Azure AD Privileged Identity Management-säkerhetsguiden"
-description: "hello visas första gången du använder hello Azure Active Directory Privileged Identity Management-tillägg, med en säkerhetsguiden. Den här artikeln beskriver hello steg för att använda hello guiden."
+title: "Azure AD Privileged Identity Management-säkerhetsguiden"
+description: "Första gången du använder Azure Active Directory Privileged Identity Management-tillägg visas med en säkerhetsguiden. Den här artikeln beskriver stegen för att med hjälp av guiden."
 services: active-directory
 documentationcenter: 
 author: billmath
@@ -15,30 +15,30 @@ ms.workload: identity
 ms.date: 02/27/2017
 ms.author: billmath
 ms.custom: pim ; H1Hack27Feb2017
-ms.openlocfilehash: 0b3019134d3c7cfac33b3acfcf430b4d4f67b119
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 260d178f3d8158411b3ad266e3b0d15edbebc722
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="using-hello-security-wizard-in-azure-ad-privileged-identity-management"></a>Med hjälp av guiden för hello säkerhet i Azure AD Privileged Identity Management 
-Om du är hello första person toorun Azure Privileged Identity Management (PIM) för din organisation, visas en guide. hello-guiden hjälper dig att förstå hello säkerhetsriskerna med Privilegierade identiteter och hur toouse PIM tooreduce riskerna. Du behöver inte toomake alla ändringar tooexisting rolltilldelningar hello i guiden om du föredrar toodo senare.
+# <a name="using-the-security-wizard-in-azure-ad-privileged-identity-management"></a>Guiden Säkerhet i Azure AD Privileged Identity Management 
+Om du är den första personen att köra Azure Privileged Identity Management (PIM) för din organisation, visas en guide. Guiden hjälper dig att förstå säkerhetsriskerna med Privilegierade identiteter och hur du använder PIM för att minska riskerna. Du behöver inte göra ändringar i befintliga rolltilldelningar i guiden om du vill göra det senare.
 
-## <a name="what-tooexpect"></a>Vilka tooexpect
-Innan din organisation kan börja använda PIM, alla rolltilldelningar är permanenta: hello användare är alltid i dessa roller även om de inte för närvarande behöver sina privilegier.  hello första steget hello guiden visar en lista över privilegierad roller och hur många användare som för närvarande rollerna. Du kan gå i tooa viss roll toolearn mer information om användare om en eller flera av dem är okänd.
+## <a name="what-to-expect"></a>Vad du kan förvänta dig
+Innan din organisation kan börja använda PIM, alla rolltilldelningar är permanenta: användarna är alltid i dessa roller även om de inte för närvarande behöver sina privilegier.  Det första steget i guiden visar en lista över privilegierad roller och hur många användare som för närvarande rollerna. Du kan öka detaljnivån en viss roll för mer information om användare om en eller flera av dem är okänd.
 
-hello andra steget hello guiden ger dig en möjlighet toochange administratör rolltilldelningar.  
+Det andra steget i guiden får du möjlighet att ändra administratörens rolltilldelningar.  
 
 > [!WARNING]
-> Det är viktigt att du har minst en global administratör och mer än en administratör av Privilegierade roller med ett organisationskonto (inte ett Microsoft-konto). Om det finns bara en administratör av Privilegierade roller, tas inte hello organisation kan toomanage PIM om att kontot har tagits bort.
-> Kom också rolltilldelningar permanent om en användare har ett Microsoft-konto (ett konto som de använder toosign i tooMicrosoft tjänster som Skype och Outlook.com). Om du planerar toorequire MFA för aktivering för rollen, kommer den användaren utelåst.
+> Det är viktigt att du har minst en global administratör och mer än en administratör av Privilegierade roller med ett organisationskonto (inte ett Microsoft-konto). Om det finns bara en administratör av Privilegierade roller, organisationen inte kan hantera PIM om kontot tas bort.
+> Kom också rolltilldelningar permanent om en användare har ett Microsoft-konto (ett konto som de använder för att logga in på Microsoft-tjänster som Skype och Outlook.com). Om du planerar att kräva MFA för aktivering för rollen utelåst användaren.
 > 
 > 
 
-När du har gjort ändringar hello guiden kommer inte längre att visas. hello visas nästa gång du eller en annan administratör av Privilegierade roller använder PIM, hello PIM-instrumentpanelen.  
+När du har gjort ändringar i guiden kommer inte längre att visas. Nästa gång du eller en annan administratör av Privilegierade roller använder PIM, visas PIM-instrumentpanelen.  
 
-* Om du skulle t.ex. tooadd eller ta bort användare från roller eller ändra tilldelningar från permanent tooeligible, kan du läsa mer i [hur tooadd eller ta bort en användarroll](active-directory-privileged-identity-management-how-to-add-role-to-user.md).
-* Om du vill att toogive fler användare komma åt toomanage PIM, Läs mer på [hur toogive åt toomanage i PIM](active-directory-privileged-identity-management-how-to-give-access-to-pim.md).
+* Om du vill lägga till eller ta bort användare från roller eller ändra tilldelningar från permanent till berättigade Läs mer på [lägga till eller ta bort en användarroll](active-directory-privileged-identity-management-how-to-add-role-to-user.md).
+* Om du vill ge flera användare åtkomst till hantera PIM Läs mer på [ge åtkomst för att hantera i PIM](active-directory-privileged-identity-management-how-to-give-access-to-pim.md).
 
 ## <a name="next-steps"></a>Nästa steg
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]

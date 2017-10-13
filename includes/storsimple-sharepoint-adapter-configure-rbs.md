@@ -1,54 +1,54 @@
 <!--author=SharS last changed: 1/14/2016 -->
 
 > [!NOTE]
-> När du gör ändringar toohello StorSimple nätverkskort för SharePoint RBS konfigurationen måste du vara inloggad med ett konto som tillhör toohello gruppen Domänadministratörer. Dessutom måste du komma åt hello konfigurationssidan från en webbläsare som körs på hello samma värden som Central Administration.
+> När du ändrar StorSimple-kortet för SharePoint RBS konfigurationen måste du vara inloggad med ett konto som tillhör gruppen Domänadministratörer. Dessutom måste du komma åt konfigurationssidan från en webbläsare som körs på samma värddator som Central Administration.
 > 
 > 
 
-#### <a name="tooconfigure-rbs"></a>tooconfigure RBS
-1. Öppna hello Central Administration av SharePoint-sida och Bläddra för**systeminställningar**. 
-2. I hello **Azure StorSimple** klickar du på **konfigurera StorSimple nätverkskort**.
+#### <a name="to-configure-rbs"></a>Så här konfigurerar du RBS
+1. Öppna sidan Central Administration av SharePoint och bläddra till **systeminställningar**. 
+2. I den **Azure StorSimple** klickar du på **konfigurera StorSimple nätverkskort**.
    
-    ![Konfigurera hello StorSimple-kort](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_SSASP_ConfigRBS1-include.png) 
-3. På hello **konfigurera StorSimple nätverkskort** sidan:
+    ![Konfigurera StorSimple-kort](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_SSASP_ConfigRBS1-include.png) 
+3. På den **konfigurera StorSimple nätverkskort** sidan:
    
-   1. Kontrollera att hello **Aktivera redigering sökväg** är markerad.
-   2. Hello i textrutan Ange hello Universal Naming Convention (UNC) för hello blobstore.
+   1. Se till att den **Aktivera redigering sökväg** är markerad.
+   2. I rutan skriver du Universal Naming Convention (UNC)-sökvägen till blobstore.
       
       > [!NOTE]
-      > hello BLOB store volym måste finnas på en iSCSI-volymen som konfigurerats på hello StorSimple-enhet.
+      > BLOB store volym måste finnas på en iSCSI-volymen som konfigurerats på StorSimple-enheten.
 
-   3. Klicka på hello **aktivera** knapp under varje hello innehållsdatabaser som du vill tooconfigure för Fjärrlagring.
+   3. Klicka på den **aktivera** knapp under varje innehållsdatabaser som du vill konfigurera för Fjärrlagring.
       
       > [!NOTE]
-      > hello blobstore måste vara delad och kan nås av alla frontend (WFE) webbservrar och hello-användarkonto som har konfigurerats för hello SharePoint-servergrupp måste ha åtkomst toohello resursen.
+      > BLOB-arkivet måste vara delad och kan nås av alla frontend (WFE) webbservrar och det användarkonto som har konfigurerats för SharePoint-servergruppen måste ha åtkomst till resursen.
       
-      ![Aktivera hello RBS provider](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_SSASP_ConfigRBS2-include.png)
+      ![Aktivera RBS-provider](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_SSASP_ConfigRBS2-include.png)
       
-      När du aktiverar eller inaktiverar RBS dessutom visas hello följande meddelande.
+      När du aktiverar eller inaktiverar RBS dessutom visas följande meddelande.
       
       ![Konfigurera StorSimple nätverkskort aktivera inaktivera](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_ConfigureStorSimpleAdapterEnableDisableMessage-include.png)
 
-   4. Klicka på hello **uppdatering** tooapply hello konfiguration. När du klickar på hello **uppdatering** knappen hello RBS Konfigurationsstatus kommer att uppdateras på alla WFE-servrar och hello hela servergruppen kommer att RBS-aktiverade. hello följande meddelande visas.
+   4. Klicka på den **uppdatering** för att tillämpa konfigurationen. När du klickar på den **uppdatering** knappen Konfigurationsstatus RBS kommer att uppdateras på alla WFE-servrar och hela servergruppen kommer att RBS-aktiverade. Följande meddelande visas.
       
       ![Kortet configuration meddelande](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_SSASP_ConfigRBS3-include.png)
       
       > [!NOTE]
-      > Om du konfigurerar RBS för en SharePoint-grupp med ett mycket stort antal databaser (större än 200), kan hello Central Administration av SharePoint-webbsida timeout. Om det inträffar kan du uppdatera hello-sidan. Detta påverkar inte hello konfigurationsprocessen.
+      > Om du konfigurerar RBS för en SharePoint-grupp med ett mycket stort antal databaser (större än 200), kan sidan Central Administration av SharePoint timeout. Om det inträffar kan du uppdatera sidan. Detta påverkar inte konfigurationen.
 
-4. Verifiera hello konfiguration:
+4. Kontrollera konfigurationen:
    
-   1. Logga in toohello Central Administration av SharePoint-webbplats och bläddra toohello **konfigurera StorSimple nätverkskort** sidan.
-   2. Kontrollera hello configuration information toomake till att de matchar hello-inställningar som du angav. 
+   1. Logga in på webbplatsen för Central Administration av SharePoint och bläddra till den **konfigurera StorSimple nätverkskort** sidan.
+   2. Kontrollera konfigurationsinformation för att se till att de matchar de inställningar som du angett. 
 5. Kontrollera att RBS fungerar korrekt:
    
-   1. Ladda upp ett dokument tooSharePoint. 
-   2. Bläddra toohello UNC-sökväg som du har konfigurerat. Se till att hello RBS katalogstruktur har skapats och att den innehåller hello upp objektet.
-6. (Valfritt) Du kan använda hello Microsoft RBS `Migrate()` PowerShell-cmdlet som ingår i SharePoint toomigrate befintlig BLOB innehåll toohello StorSimple-enhet. Mer information finns i [migrerar innehåll till eller från RBS i SharePoint 2013] [ 6] eller [migrerar innehåll till eller från RBS (SharePoint Foundation 2010)] [7].
-7. (Valfritt) Test-installationer Kontrollera du att hello-BLOB har flyttats utanför hello innehållsdatabas på följande sätt: 
+   1. Överför ett dokument till SharePoint. 
+   2. Bläddra till UNC-sökvägen som du har konfigurerat. Se till att katalogstrukturen RBS har skapats och att den innehåller överförda objektet.
+6. (Valfritt) Du kan använda Microsoft RBS `Migrate()` PowerShell-cmdlet som ingår i SharePoint för att migrera befintliga BLOB-innehåll till StorSimple-enhet. Mer information finns i [migrerar innehåll till eller från RBS i SharePoint 2013] [ 6] eller [migrerar innehåll till eller från RBS (SharePoint Foundation 2010)] [7].
+7. (Valfritt) På test-installationer kan du kontrollera att Blobbarna har flyttats utanför innehållsdatabasen på följande sätt: 
    
    1. Starta SQL Management Studio.
-   2. Köra hello ListBlobsInDB_2010.sql eller ListBlobsInDB_2013.sql, enligt följande.
+   2. Kör frågan ListBlobsInDB_2010.sql eller ListBlobsInDB_2013.sql på följande sätt.
       
       ```
       **ListBlobsInDB_2013.sql**
@@ -91,18 +91,18 @@
         GO
       ```
       
-      Om RBS är korrekt konfigurerad, visas ett nullvärde i hello SizeOfContentInDB kolumn för alla objekt som har överförts och har externalized med RBS.
-8. (Valfritt) När du konfigurerar RBS och flytta alla BLOB innehåll toohello StorSimple-enhet kan du flytta hello innehållsdatabasen toohello enhet. Om du väljer toomove hello innehållsdatabasen, rekommenderar vi att du konfigurerar hello innehållsdatabasen lagring på hello enhet som en primär volym. Använd upprätta sedan SQL Server best practices toomigrate hello innehållsdatabasen toohello StorSimple-enhet. 
+      Om RBS är korrekt konfigurerad, visas ett nullvärde i kolumnen SizeOfContentInDB för alla objekt som har överförts och har externalized med RBS.
+8. (Valfritt) När du konfigurerar RBS och flytta alla BLOB-innehåll till StorSimple-enhet kan flytta du innehållsdatabasen till enheten. Om du väljer att flytta innehållsdatabasen rekommenderar vi att du konfigurerar innehållsdatabasen lagring på enheten som en primär volym. Använd upprätta sedan SQL Server bästa praxis för att migrera innehållsdatabasen till StorSimple-enhet. 
    
    > [!NOTE]
-   > Flytta hello innehållsdatabasen toohello enheten stöds endast för hello StorSimple 8000-serien (den inte stöds för hello 5000 och 7000-serien).
+   > Flytta innehållsdatabasen till enheten har endast stöd för StorSimple 8000-serien (den inte stöds för 5000 och 7000-serien).
    
-   Om du sparar Blobbar och hello innehållsdatabasen i separata volymer på hello StorSimple-enhet, rekommenderar vi att du konfigurerar dem i hello samma volymbehållare. Detta säkerställer att de ska säkerhetskopieras tillsammans.
+   Om du sparar Blobbar och innehållsdatabasen i separata volymer på StorSimple-enheten, rekommenderar vi att du konfigurerar dem i samma volymbehållare. Detta säkerställer att de ska säkerhetskopieras tillsammans.
    
    > [!WARNING]
-   > Om du inte har aktiverat RBS rekommenderar vi inte flytta hello innehållsdatabasen toohello StorSimple-enhet. Detta är en otestade konfiguration.
+   > Om du inte har aktiverat RBS rekommenderar vi inte flytta innehållsdatabasen till StorSimple-enhet. Detta är en otestade konfiguration.
    
-9. Gå toohello nästa steg: [konfigurera skräpinsamling](#configure-garbage-collection).
+9. Gå till nästa steg: [konfigurera skräpinsamling](#configure-garbage-collection).
 
 [6]: https://technet.microsoft.com/library/ff628254(v=office.15).aspx
 [7]: https://technet.microsoft.com/library/ff628255(v=office.14).aspx

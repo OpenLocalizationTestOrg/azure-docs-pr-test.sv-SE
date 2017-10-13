@@ -24,7 +24,7 @@
 
 ## Skydda
 ### [Övervaka resurser](oms-security-monitoring-resources.md)
-### [Svara toosecurity aviseringar](oms-security-responding-alerts.md)
+### [Åtgärda säkerhetsaviseringar](oms-security-responding-alerts.md)
 ### [Utvärdering av baslinje](oms-security-baseline.md)
 ### [Utvärdering av skadlig kod](../log-analytics/log-analytics-malware.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 ### [Systemuppdateringsbedömning](../log-analytics/log-analytics-system-update.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)

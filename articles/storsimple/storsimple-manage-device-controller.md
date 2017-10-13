@@ -1,6 +1,6 @@
 ---
-title: aaaManage StorSimple-styrenheter | Microsoft Docs
-description: "Lär dig hur toostop, starta om, stänga av eller återställa din StorSimple-styrenheter."
+title: Hantera StorSimple-styrenheter | Microsoft Docs
+description: "Lär dig mer om att stoppa, starta om, stänga av eller återställa din StorSimple-styrenheter."
 services: storsimple
 documentationcenter: 
 author: alkohli
@@ -14,174 +14,174 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/11/2016
 ms.author: alkohli
-ms.openlocfilehash: 9a86aa0f4a8fd96c36df206774972602c47a49a6
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 67dbb0c4066002256efbab6061157c641527e441
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="manage-your-storsimple-device-controllers"></a>Hantera din StorSimple-styrenheter
 ## <a name="overview"></a>Översikt
-Den här självstudiekursen beskriver hello olika åtgärder som kan utföras på din StorSimple-styrenheter. hello-styrenheter i din StorSimple-enhet är redundant (peer) domänkontrollanter i ett aktivt-passivt konfiguration. Endast en domänkontrollant är aktiv vid en given tidpunkt och bearbetar alla hello disk- och åtgärder. hello är andra domänkontrollanter i passivt läge. Om hello aktiva styrenheten misslyckas aktiveras hello passiva controller automatiskt.
+Den här självstudiekursen beskriver de olika åtgärder som kan utföras på din StorSimple-styrenheter. Domänkontrollanter i din StorSimple-enhet är redundant (peer) domänkontrollanter i ett aktivt-passivt konfiguration. Endast en domänkontrollant är aktiv vid en given tidpunkt och bearbetar alla disk- och åtgärder. Den andra styrenheten är i passivt läge. Om den aktiva styrenheten misslyckas aktiveras passiva controller automatiskt.
 
-Vägledningen innehåller stegvisa instruktioner toomanage hello-styrenheter med hjälp av den:
+Vägledningen innehåller stegvisa instruktioner för att hantera enheten domänkontrollanter med hjälp av den:
 
-* **Domänkontrollanter** avsnitt i hello **Underhåll** sida i hello StorSimple Manager-tjänsten
+* **Domänkontrollanter** avsnitt i den **Underhåll** sidan i StorSimple Manager-tjänsten
 * Windows PowerShell för StorSimple.
 
-Vi rekommenderar att du hanterar hello styrenheter via hello StorSimple Manager-tjänsten. Om en åtgärd kan endast utföras med hjälp av Windows PowerShell för StorSimple, gör en del av hello kursen.
+Vi rekommenderar att du hanterar styrenheter via StorSimple Manager-tjänsten. Om en åtgärd kan endast utföras med hjälp av Windows PowerShell för StorSimple, gör en del av kursen.
 
 När du har läst den här självstudiekursen kommer du att kunna:
 
 * Starta om eller stänga av en domänkontrollant för StorSimple-enhet
 * Stänga av en StorSimple-enhet
-* Återställ standardvärden för toofactory din StorSimple-enhet
+* Återställa din StorSimple-enhet till fabriksinställningarna
 
 ## <a name="restart-or-shut-down-a-single-controller"></a>Starta om eller stänga av en enda domänkontrollant
-En domänkontrollant omstart eller avstängning krävs inte som en del av normal drift. Avstängning åtgärder för en enskild enhet är vanliga endast i fall där en misslyckad enhet maskinvarukomponent behöver bytas ut. En omstart av domänkontrollanten kan också krävas i en situation där prestanda påverkas av omfattande minnesanvändning eller en felaktig styrenhet. Du kanske också måste toorestart en domänkontrollant efter en lyckad controller ersättning, om du vill tooenable och testa hello ersättas domänkontrollant.
+En domänkontrollant omstart eller avstängning krävs inte som en del av normal drift. Avstängning åtgärder för en enskild enhet är vanliga endast i fall där en misslyckad enhet maskinvarukomponent behöver bytas ut. En omstart av domänkontrollanten kan också krävas i en situation där prestanda påverkas av omfattande minnesanvändning eller en felaktig styrenhet. Du kan också måste starta om en domänkontrollant efter en lyckad controller ersättning, om du vill aktivera och testa den ersatta styrenheten.
 
-Starta om en enhet är inte störande tooconnected initierare, förutsatt att hello passiva domänkontrollant är tillgänglig. Om en passiv domänkontrollant är inte tillgänglig eller inaktiverad, startar om hello active kan styrenhet resultera i hello avbrott i tjänsten och driftstopp.
+Starta om en enhet är inte störande för anslutna initierare, förutsatt att den passiva domänkontrollanten är tillgänglig. Om en passiv domänkontrollant inte är tillgänglig eller aktiverade av och sedan startar om den aktiva styrenheten orsaka avbrott i tjänsten och driftstopp.
 
 > [!IMPORTANT]
 > * **En domänkontrollant som körs ska aldrig tas fysiskt bort eftersom det skulle resultera i förlust av redundans och en ökad risk för driftstopp.**
-> * hello gäller följande procedur bara toohello fysiska StorSimple-enheten. Information om hur toostart, stoppa och starta om hello virtuell enhet, se [arbeta med hello virtuella enheten](storsimple-virtual-device-u2.md#work-with-the-storsimple-virtual-device).
+> * Följande procedur gäller enbart för den fysiska StorSimple-enheten. Information om hur du starta, stoppa och starta om den virtuella enheten finns [arbeta med den virtuella enheten](storsimple-virtual-device-u2.md#work-with-the-storsimple-virtual-device).
 > 
 > 
 
-Du kan starta om eller stänga av en enskild enhet domänkontrollant med hjälp av hello klassiska Azure-portalen för hello StorSimple Manager-tjänsten eller Windows PowerShell för StorSimple
+Du kan starta om eller stänga av en enskild enhet domänkontrollant med hjälp av den klassiska Azure-portalen på StorSimple Manager-tjänsten eller Windows PowerShell för StorSimple
 
-toomanage din styrenheter från hello klassiska Azure-portalen utföra hello följande steg.
+Utför följande steg för att hantera din styrenheter från den klassiska Azure-portalen.
 
-#### <a name="toorestart-or-shut-down-a-controller-in-classic-portal"></a>toorestart eller Stäng av en domänkontrollant i den klassiska portalen
-1. Navigera för**enheter > Underhåll**.
-2. Gå för**maskinvarustatus** och kontrollera att hello status för båda hello domänkontrollanter på din enhet är **felfri**.
+#### <a name="to-restart-or-shut-down-a-controller-in-classic-portal"></a>Starta om eller stänga av en domänkontrollant i den klassiska portalen
+1. Gå till **enheter > Underhåll**.
+2. Gå till **maskinvarustatus** och kontrollera att status för båda domänkontrollanterna på din enhet är **felfri**.
    
     ![Kontrollera StorSimple-styrenheter är felfria](./media/storsimple-manage-device-controller/IC766017.png)
-3. Hello längst ned i hello **Underhåll** klickar du på **hantera domänkontrollanter**.
+3. Längst ned i den **Underhåll** klickar du på **hantera domänkontrollanter**.
    
     ![Hantera StorSimple-styrenheter](./media/storsimple-manage-device-controller/IC766018.png)</br>
    
    > [!NOTE]
-   > Om du inte ser **hantera domänkontrollanter**, måste du tooinstall uppdateringar. Mer information finns i [uppdatera din StorSimple-enhet](storsimple-update-device.md).
+   > Om du inte ser **hantera domänkontrollanter**, måste du installera uppdateringar. Mer information finns i [uppdatera din StorSimple-enhet](storsimple-update-device.md).
    > 
    > 
-4. I hello **ändra inställningarna för domänkontrollanter** dialogrutan rutan, hello följande:
+4. I den **ändra inställningarna för domänkontrollanter** dialogrutan Gör följande:
    
-   1. Från hello **Select Controller** listrutan, Välj hello domänkontrollant som du vill toomanage. hello alternativ är styrenhet 0 och 1. Dessa domänkontrollanter identifieras också aktiva eller passiva.
+   1. Från den **Select Controller** listrutan väljer du den domänkontrollant som du vill hantera. Alternativen är styrenhet 0 och 1. Dessa domänkontrollanter identifieras också aktiva eller passiva.
       
       > [!NOTE]
-      > En domänkontrollant inte kan hanteras om det är inte tillgänglig eller aktiverade inaktiverat och visas inte i hello listrutan.
+      > En domänkontrollant inte kan hanteras om det är inte tillgänglig eller aktiverade inaktiverat och visas inte i den nedrullningsbara listan.
       > 
       > 
-   2. Från hello **Välj åtgärd** listrutan väljer du **omstart controller** eller **Stäng controller**.
+   2. Från den **Välj åtgärd** listrutan Välj **omstart controller** eller **stänga av domänkontrollant**.
       
        ![Starta om passiva domänkontrollanten för StorSimple-enhet](./media/storsimple-manage-device-controller/IC766020.png)
-   3. Klicka på kryssikonen hello ![Kryssikon](./media/storsimple-manage-device-controller/IC740895.png).
+   3. Klicka på kryssikonen ![Kryssikon](./media/storsimple-manage-device-controller/IC740895.png).
 
-Detta kommer att starta om eller stänga hello-styrenhet. hello tabellen nedan sammanfattar hello information om vad som händer beroende på hello val du gjorde i hello **ändra inställningarna för domänkontrollanter** dialogrutan.  
+Det här startar du om eller stänga av registeransvarige. Tabellen nedan sammanfattar information om vad som händer beroende på de val du har gjort i den **ändra inställningarna för domänkontrollanter** dialogrutan.  
 
 | Val av # | Om du vill... | Detta sker. |
 | --- | --- | --- |
-| 1. |Starta om hello passiva domänkontrollanten. |Ett jobb skapas toorestart hello domänkontrollant och du meddelas när hello jobbet har skapats. Detta initierar hello controller startas om. Du kan övervaka hello omstarten genom att öppna **Service > instrumentpanelen > Visa åtgärdsloggar** och sedan filtrering av parametrar specifika tooyour-tjänsten. |
-| 2. |Starta om hello aktiva styrenhet. |Du ser hello följande varning: ”Om du startar om hello aktiva styrenheten hello enhet misslyckas över toohello passiva domänkontrollant. Vill du toocontinue ”? </br>Om du väljer tooproceed med den här åtgärden hello nästa steg är identiska toothose används toorestart hello passiva domänkontrollant (se markeringen 1). |
-| 3. |Stäng hello passiva domänkontrollant. |Hello följande meddelande visas ”: när har avslutats, måste toopush hello power knappen på din domänkontrollant tooturn den på. Vill du verkligen tooshut ned den här styrenheten ”? </br>Om du väljer tooproceed med den här åtgärden hello nästa steg är identiska toothose används toorestart hello passiva domänkontrollant (se markeringen 1). |
-| 4. |Stäng hello aktiva styrenhet. |Hello följande meddelande visas ”: när har avslutats, måste toopush hello power knappen på din domänkontrollant tooturn den på. Vill du verkligen tooshut ned den här styrenheten ”? </br>Om du väljer tooproceed med den här åtgärden hello nästa steg är identiska toothose används toorestart hello passiva domänkontrollant (se markeringen 1). |
+| 1. |Starta om den passiva domänkontrollanten. |Ett jobb skapas för att starta om domänkontrollanten och du meddelas när jobbet har skapats. Detta initierar controller omstarten. Du kan övervaka omstarten genom att öppna **Service > instrumentpanelen > Visa åtgärdsloggar** och sedan filtrering av parametrar som är specifika för din tjänst. |
+| 2. |Starta om den aktiva styrenheten. |Du ser följande varning: ”Om du startar om den aktiva styrenheten enheten växlar över till den passiva styrenheten. Vill du fortsätta ”? </br>Om du väljer att fortsätta med åtgärden nästa steg är identiska med de som används för att starta om den passiva domänkontrollanten (se markeringen 1). |
+| 3. |Stäng av den passiva styrenheten. |Följande meddelande visas: ”när har avslutats, du behöver du trycker på strömknappen på styrenheten den aktiveras. Är du säker på att du vill stänga av den här domänkontrollanten ”? </br>Om du väljer att fortsätta med åtgärden nästa steg är identiska med de som används för att starta om den passiva domänkontrollanten (se markeringen 1). |
+| 4. |Stäng av den aktiva styrenheten. |Följande meddelande visas: ”när har avslutats, du behöver du trycker på strömknappen på styrenheten den aktiveras. Är du säker på att du vill stänga av den här domänkontrollanten ”? </br>Om du väljer att fortsätta med åtgärden nästa steg är identiska med de som används för att starta om den passiva domänkontrollanten (se markeringen 1). |
 
-#### <a name="toorestart-or-shut-down-a-controller-in-windows-powershell-for-storsimple"></a>toorestart eller Stäng av en domänkontrollant i Windows PowerShell för StorSimple
-Utför följande steg tooshut ned hello eller starta om en enda domänkontrollanten på StorSimple-enheten från hello klassiska Azure-portalen.
+#### <a name="to-restart-or-shut-down-a-controller-in-windows-powershell-for-storsimple"></a>Starta om eller stänga av en domänkontrollant i Windows PowerShell för StorSimple
+Utför följande steg om du vill stänga av eller starta om en enda domänkontrollanten på StorSimple-enheten från den klassiska Azure-portalen.
 
-1. Hello enhet med hjälp av hello seriekonsolen eller en telnet-session från en fjärrdator. Anslut tooController 0 eller domänkontrollant 1 av följande hello stegen i [använda PuTTY tooconnect toohello enhetens seriekonsol](storsimple-deployment-walkthrough.md#use-putty-to-connect-to-the-device-serial-console).
-2. I menyn för seriekonsolen av hello väljer du alternativ 1, **logga in med fullständig åtkomst**.
-3. I hello Banderollmeddelandet anteckna hello-domänkontrollant som du är ansluten för (styrenhet 0 eller 1-styrenhet) och om det är hello aktiva eller passiva (standby) hello-styrenheten.
+1. Komma åt enheten via seriekonsolen eller en telnet-session från en fjärrdator. Ansluta till styrenhet 0 eller 1 för domänkontrollant genom att följa stegen i [Använd PuTTY för att ansluta till enhetens seriekonsol](storsimple-deployment-walkthrough.md#use-putty-to-connect-to-the-device-serial-console).
+2. I menyn för seriekonsolen väljer du alternativ 1, **logga in med fullständig åtkomst**.
+3. I Banderollmeddelandet, notera den domänkontrollant som du är ansluten till (styrenhet 0 eller 1-styrenhet) och om det är aktivt eller passiva (standby)-styrenheten.
    
-   * tooshut ned en enda domänkontrollant i Kommandotolken hello typ:
+   * Om du vill stänga av en enda domänkontrollant i Kommandotolken skriver du:
      
        `Stop-HcsController`
      
-       Detta stängs hello-domänkontrollant som du är ansluten till. Om du stoppar hello aktiva styrenheten, misslyckas det över toohello passiva domänkontrollant innan den stängs av.
-   * toorestart skriver du en domänkontrollant i Kommandotolken hello:
+       Detta stängs den domänkontrollant som du är ansluten till. Om du avbryter den aktiva styrenheten, sedan växlar den över till den passiva styrenheten innan den stängs av.
+   * Om du vill starta om en domänkontrollant i Kommandotolken skriver du:
      
        `Restart-HcsController`
      
-       Hello-domänkontrollant som du är ansluten till kommer att startas om. Om du startar om hello aktiva styrenheten, växlar den över toohello passiva domänkontrollant innan hello startar om.
+       Den domänkontrollant som du är ansluten till kommer att startas om. Om du startar om den aktiva styrenheten, växlar den över till den passiva styrenheten före omstart.
 
 ## <a name="shut-down-a-storsimple-device"></a>Stänga av en StorSimple-enhet
-Det här avsnittet beskrivs hur tooshut ned en löpande eller en misslyckad StorSimple-enhet från en fjärrdator. En enhet är inaktiverat när du stänger av både hello-styrenheter. En enhet avstängning görs när hello enhet fysiskt flyttas eller tas ur funktion.
+Det här avsnittet beskrivs hur du stänga av en löpande eller en misslyckad StorSimple-enhet från en fjärrdator. En enhet är inaktiverat när du stänger av både styrenheter. En enhet avstängning görs när enheten fysiskt flyttas eller tas ur funktion.
 
 > [!IMPORTANT]
-> Kontrollera hello hälsa hello komponenter innan du stänger hello enhet. Navigera för**enheter > Underhåll > maskinvarustatus** och kontrollera att hello Indikator status för alla hello-komponenter är grön. Endast en felfri enhet har en grön status. Om enheten är att stänga av tooreplace en felaktig komponent, visas en misslyckad (röd) eller en försämrad (gul) status för hello respektive komponenterna.
+> Kontrollera hälsotillståndet för enhetskomponenter innan du stänga av enheten. Gå till **enheter > Underhåll > maskinvarustatus** och kontrollera att Indikator status för alla komponenter är grön. Endast en felfri enhet har en grön status. Om enheten stängs ned till ersätter en felaktig komponent, visas en misslyckad (röd) eller en försämrad (gul) status för respektive komponenterna.
 > 
 > 
 
-#### <a name="tooshut-down-a-storsimple-device"></a>tooshut ned en StorSimple-enhet
-1. Använd hello [starta om eller stänga av en domänkontrollant](#restart-or-shut-down-a-single-controller) proceduren tooidentify och avsluta hello passiva domänkontrollant på enheten. Du kan utföra den här åtgärden i hello klassiska Azure-portalen eller i Windows PowerShell för StorSimple.
-2. Upprepa hello senare steg tooshut ned hello aktiva styrenhet.
-3. Nu behöver du toolook på hello tillbaka plana av hello enhet. När hello två domänkontrollanter helt är stängt ska hello status indikatorer på båda hello domänkontrollanter blinkande red. Om du behöver tooturn av hello enheten helt just nu Vänd hello power växlar på både ström och kylning moduler (PCMs) toohello OFF-läge. Detta ska stänga av hello enhet.
+#### <a name="to-shut-down-a-storsimple-device"></a>Stänga en StorSimple-enhet
+1. Använd den [starta om eller stänga av en domänkontrollant](#restart-or-shut-down-a-single-controller) proceduren för att identifiera och stänga av den passiva styrenheten på enheten. Du kan utföra den här åtgärden i den klassiska Azure-portalen eller i Windows PowerShell för StorSimple.
+2. Upprepa ovanstående steg för att stänga av den aktiva styrenheten.
+3. Nu behöver du titta på det bakre planet för enheten. När två domänkontrollanter är helt avstängd, bör statusen indikatorer på båda domänkontrollanterna blinkande red. Om du behöver stänga av enheten helt just nu Vänd strömbrytare på både ström och kylning moduler (PCMs) till OFF-läge. Detta bör stänga av enheten.
 
-<!--#### tooshut down a StorSimple device in Windows PowerShell for StorSimple
+<!--#### To shut down a StorSimple device in Windows PowerShell for StorSimple
 
-1. Connect toohello serial console of hello StorSimple device by following hello steps in [Use PuTTY tooconnect toohello device serial console](storsimple-deployment-walkthrough.md#use-putty-to-connect-to-the-serial-console).
+1. Connect to the serial console of the StorSimple device by following the steps in [Use PuTTY to connect to the device serial console](storsimple-deployment-walkthrough.md#use-putty-to-connect-to-the-serial-console).
 
-1. In hello serial console menu, verify from hello banner message that hello controller you are connected toois hello passive controller. If you are connected toohello active controller, disconnect from this controller and connect toohello other controller.
+1. In the serial console menu, verify from the banner message that the controller you are connected to is the passive controller. If you are connected to the active controller, disconnect from this controller and connect to the other controller.
 
-1. In hello serial console menu, choose option 1, **log in with full access**.
+1. In the serial console menu, choose option 1, **log in with full access**.
 
-1. At hello prompt, type:
+1. At the prompt, type:
 
     `Stop-HCSController`
 
-    This should shut down hello current controller. tooverify whether hello shutdown has finished, check hello back of hello device. hello controller status LED should be solid red.
+    This should shut down the current controller. To verify whether the shutdown has finished, check the back of the device. The controller status LED should be solid red.
 
-1. Repeat steps 1 through 4 tooconnect toohello active controller and then shut it down.
+1. Repeat steps 1 through 4 to connect to the active controller and then shut it down.
 
-1. After both hello controllers are completely shut down, hello status LEDs on both should be blinking red. If you need tooturn off hello device completely at this time, flip hello power switches on both Power and Cooling Modules (PCMs) toohello OFF position.-->
+1. After both the controllers are completely shut down, the status LEDs on both should be blinking red. If you need to turn off the device completely at this time, flip the power switches on both Power and Cooling Modules (PCMs) to the OFF position.-->
 
-## <a name="reset-hello-device-toofactory-default-settings"></a>Återställ standardinställningar för hello enheten toofactory
+## <a name="reset-the-device-to-factory-default-settings"></a>Återställa enheten till fabriksinställningarna
 > [!IMPORTANT]
-> Kontakta Microsoft Support om du behöver tooreset toofactory standardinställningarna på enheten. hello proceduren som beskrivs nedan bör endast användas tillsammans med Microsoft-supporten.
+> Kontakta Microsoft Support om du behöver återställa enheten till fabriksinställningarna. Proceduren som beskrivs nedan bör endast användas tillsammans med Microsoft-supporten.
 > 
 > 
 
-Den här proceduren beskriver hur tooreset din Microsoft Azure StorSimple enheten toofactory standardinställningar med hjälp av Windows PowerShell för StorSimple.
-När du återställer en enhet tar bort alla data och inställningar från hello hela klustret som standard.
+Den här proceduren beskriver hur du återställer din Microsoft Azure StorSimple-enhet till fabriksinställningarna använder Windows PowerShell för StorSimple.
+När du återställer en enhet tar bort alla data och inställningar från hela klustret som standard.
 
-Utför följande steg tooreset hello standardinställningarna för Microsoft Azure StorSimple-enhet toofactory:
+Utför följande steg för att återställa din Microsoft Azure StorSimple-enhet till fabriksinställningarna:
 
-### <a name="tooreset-hello-device-toodefault-settings-in-windows-powershell-for-storsimple"></a>tooreset hello toodefault Enhetsinställningar i Windows PowerShell för StorSimple
-1. Hello enhet via dess seriekonsol. Kontrollera hello banderoll meddelandet tooensure att du är ansluten toohello aktiva styrenhet.
-2. I menyn för seriekonsolen av hello väljer du alternativ 1, **logga in med fullständig åtkomst**.
-3. I hello kommandotolk, skriver du hello efter kommandot tooreset hello hela klustret, ta bort alla data och metadata för domänkontrollanten inställningar:
+### <a name="to-reset-the-device-to-default-settings-in-windows-powershell-for-storsimple"></a>Återställa enheten till standardinställningarna i Windows PowerShell för StorSimple
+1. Komma åt enheten via dess seriekonsol. Kontrollera Banderollmeddelandet så att du är ansluten till den aktiva styrenheten.
+2. I menyn för seriekonsolen väljer du alternativ 1, **logga in med fullständig åtkomst**.
+3. I Kommandotolken skriver du följande kommando för att återställa hela klustret, ta bort alla data och metadata för domänkontrollanten inställningar:
    
     `Reset-HcsFactoryDefault`
    
-    tooinstead återställa en enda domänkontrollant använder hello [Återställ HcsFactoryDefault](http://technet.microsoft.com/library/dn688132.aspx) med hello `-scope` parameter.)
+    Om du vill återställa i stället en enda domänkontrollant måste du använda den [Återställ HcsFactoryDefault](http://technet.microsoft.com/library/dn688132.aspx) med den `-scope` parameter.)
    
-    hello systemet startas om flera gånger. Du meddelas när hello återställning har slutförts. Det kan ta den här processen 45 – 60 minuter under en 8100-enhet och 60-90 minuter för en 8600 toofinish beroende på hello systemmodell.
+    Systemet startas om flera gånger. Du meddelas när återställningen har slutförts. Beroende på systemmodell, kan det ta 45 – 60 minuter för 8100-enhet och 60-90 minuter för en 8600 att slutföra den här processen.
    
    > [!TIP]
-   > * Om du använder Update 1.2 eller tidigare använda hello `–SkipFirmwareVersionCheck` versionskontroll för parametern tooskip hello firmware (annars ser du en firmware-matchningsfel: fabriksåterställning kan inte fortsätta på grund av tooa matchning av datatyp i versioner av inbyggd hello. ).
-   > * hello kan factory återställning fungera för StorSimple-enheter som kör uppdatering 1 eller 1.1 i hello Government portal och har utfört en lyckad enkel eller dubbel domänkontrollant ersättning (med ersättning domänkontrollanter som levererades med före uppdatering 1 programvara). Detta händer när hello fabriksåterställa avbildningen verifieras för hello förekomsten av en SHA1-fil på hello-domänkontrollant som inte finns för före uppdateringen 1 programvara. Om du ser den här fabriken återställa fel, kontakta Microsoft Support tooassist steg du med hello nästa. Det här problemet visas inte med ersättning domänkontrollanter som levererades från hello factory med uppdatering 1 eller senare programvara.
+   > * Om du använder Update 1.2 eller tidigare använder den `–SkipFirmwareVersionCheck` parametern för att hoppa över versionskontroll firmware (annars ser du ett matchningsfel för inbyggd programvara: fabriksåterställning kan inte fortsätta på grund av ett matchningsfel för versionerna av inbyggd. ).
+   > * Fabriken Återställ proceduren misslyckas för StorSimple-enheter som kör uppdatering 1 eller 1.1 i Government portal och har utfört en lyckad enkel eller dubbel domänkontrollant ersättning (med ersättning domänkontrollanter som levererades med programvara före uppdatering 1). Detta händer när de fabriksåterställa avbildningen verifieras om finns en SHA1-fil på en domänkontrollant som inte finns för före uppdateringen 1 programvara. Om du ser fabriksåterställa fel, kontakta Microsoft Support för att hjälpa dig med nästa steg. Det här problemet visas inte med ersättning domänkontrollanter som har levererats från fabriken med uppdatering 1 eller senare programvara.
    > 
    > 
 
 ## <a name="questions-and-answers-about-managing-device-controllers"></a>Frågor och svar om hur du hanterar styrenheter
-I det här avsnittet har vi sammanfattas några av hello vanliga frågor angående hantera StorSimple-styrenheter.
+I det här avsnittet har vi sammanfattas några vanliga frågor om hantering StorSimple-styrenheter.
 
-**F.** Vad händer om båda hello domänkontrollanter på enheten är felfri och aktiverade och starta om eller stänga hello aktiva styrenheten?
+**F.** Vad händer om båda domänkontrollanterna på enheten är felfri och aktiverade på och jag startar om eller stänga av den aktiva styrenheten?
 
-**S.** Om båda hello domänkontrollanter på din enhet är felfri och aktiverade på, du uppmanas att bekräfta. Du kan välja att:
+**S.** Om båda domänkontrollanterna på din enhet är felfri och aktiverade på, du uppmanas att bekräfta. Du kan välja att:
 
-* **Starta om hello aktiva styrenheten** – du uppmanas att starta om en domänkontrollant för active resulterar hello enheten toofail över toohello passiva domänkontrollant. hello domänkontrollanten startar om.
-* **Stänga av en domänkontrollant för en aktiv** – du meddelas att stänga av en domänkontrollant för active leder till avbrott. Du måste också toopush hello strömknappen på hello enheten tooturn på hello-domänkontrollant.
+* **Starta om den aktiva styrenheten** – du uppmanas att starta om en domänkontrollant för en aktiv gör att enheten att växla över till den passiva styrenheten. Domänkontrollanten startar om.
+* **Stänga av en domänkontrollant för en aktiv** – du meddelas att stänga av en domänkontrollant för active leder till avbrott. Du måste också trycker på strömknappen på enheten för att aktivera på domänkontrollanten.
 
-**F.** Vad händer om hello passiva domänkontrollant på enheten är inte tillgänglig eller aktiverade inaktiverat och jag startar om eller stänger hello aktiva styrenheten?
+**F.** Vad händer om den passiva styrenheten på enheten är inte tillgänglig eller aktiverade inaktiverat och jag startar om eller stänga av den aktiva styrenheten?
 
-**S.** Om hello passiva domänkontrollanten på din enhet är tillgänglig eller så är aktiverade inaktiverat och du väljer att:
+**S.** Om den passiva styrenheten på din enhet är tillgänglig eller så är aktiverade inaktiverat och du väljer att:
 
-* **Starta om hello aktiva styrenheten** – du meddelas att fortsätter hello åtgärden resulterar i ett tillfälligt avbrott i hello-tjänsten och du uppmanas att bekräfta.
-* **Stänga av en domänkontrollant för en aktiv** – du meddelas att fortsätter hello åtgärden resulterar i avbrottstid och att du måste toopush hello strömknappen på en eller båda domänkontrollanterna tooturn på hello enhet. Du uppmanas att bekräfta.
+* **Starta om den aktiva styrenheten** – du meddelas att fortsätta den här åtgärden resulterar i ett tillfälligt avbrott i tjänsten och du uppmanas att bekräfta.
+* **Stänga av en domänkontrollant för en aktiv** – du meddelas att fortsätta den här åtgärden resulterar i avbrottstid och att du behöver du trycker på strömknappen på en eller båda-domänkontrollanter för att aktivera enheten. Du uppmanas att bekräfta.
 
-**F.** När hello controller omstart eller avstängning misslyckas tooprogress?
+**F.** När har controller omstart eller avstängning kan inte gå vidare?
 
 **S.** Starta om eller stänga av en domänkontrollant kan misslyckas om:
 
@@ -191,17 +191,17 @@ I det här avsnittet har vi sammanfattas några av hello vanliga frågor angåen
 
 **F.** Hur kan du ta reda på om en domänkontrollant har startats om eller stänga av?
 
-**S.** Du kan kontrollera status för hello domänkontrollanten på sidan för hello underhåll. status för hello domänkontrollanten indikerar om en domänkontrollant har startats om eller stänga av. Dessutom innehåller hello aviseringar sidan en informationsavisering om hello domänkontrollant har startats om eller stänga av. hello controller omstart och avstängning operations registreras också i hello åtgärdsloggar. Mer information om åtgärdsloggar gå för[visa hello åtgärdsloggar](storsimple-service-dashboard.md#view-the-operations-logs).
+**S.** Du kan kontrollera status för domänkontrollanten på sidan underhåll. Status för domänkontrollanten indikerar om en domänkontrollant har startats om eller stänga av. Sidan aviseringar innehåller dessutom en informationsavisering om styrenheten har startats om eller stänga av. Domänkontrollanten startar om och stänga operations registreras också i loggarna för åtgärden. Mer information om åtgärdsloggar går du till [visa åtgärdsloggar](storsimple-service-dashboard.md#view-the-operations-logs).
 
-**F.** Finns det någon effekt toohello I/o på grund av domänkontrollant växling vid fel?
+**F.** Finns det någon inverkan på I/o på grund av domänkontrollant växling vid fel?
 
-**S.** hello TCP-anslutningar mellan initierare och aktiva styrenheten kommer att återställas till följd av domänkontrollant växling vid fel, men återupprättas när hello passiva controller förutsätter igen. Det kan vara en tillfällig (mindre än 30 sekunder)-paus i i/o-aktivitet mellan initierare och hello enhet under hello loppet av den här åtgärden.
+**S.** TCP-anslutningar mellan initierare och aktiva styrenheten kommer att återställas till följd av domänkontrollant växling vid fel, men återupprättas när den passiva styrenheten förutsätter åtgärden. Det kan finnas en tillfällig (mindre än 30 sekunder)-paus i i/o-aktivitet mellan initierare och enheten under den här åtgärden.
 
-**F.** Hur återställer jag min controller tooservice när det stängs av och tas bort?
+**F.** Hur återställer jag min controller till tjänsten när den stängs av och tas bort
 
-**S.** tooreturn tooservice en domänkontrollant måste du infoga den i hello chassi som beskrivs i [ersätta en domänkontrollant modul på din StorSimple-enhet](storsimple-controller-replacement.md).
+**S.** Om du vill återställa en domänkontrollant till tjänsten måste du infoga den i chassit enligt beskrivningen i [ersätta en domänkontrollant modul på din StorSimple-enhet](storsimple-controller-replacement.md).
 
 ## <a name="next-steps"></a>Nästa steg
-* Om det uppstår problem med din StorSimple-styrenheter som du inte kan lösa med hjälp av hello procedurer som anges i den här självstudien [kontaktar Microsoft Support](storsimple-contact-microsoft-support.md).
-* Gå toolearn mer information om hur du använder hello StorSimple Manager-tjänsten för[Använd hello StorSimple Manager service tooadminister StorSimple-enheten](storsimple-manager-service-administration.md).
+* Om det uppstår problem med din StorSimple-styrenheter som du inte kan lösa med hjälp av anvisningarna som beskrivs i den här självstudiekursen [kontaktar Microsoft Support](storsimple-contact-microsoft-support.md).
+* Mer information om hur du använder StorSimple Manager-tjänsten går du till [använda StorSimple Manager-tjänsten för att administrera din StorSimple-enhet](storsimple-manager-service-administration.md).
 

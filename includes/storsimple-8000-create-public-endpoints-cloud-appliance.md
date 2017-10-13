@@ -1,45 +1,45 @@
-#### <a name="toocreate-public-endpoints-on-hello-cloud-appliance"></a>toocreate offentliga slutpunkter på hello moln-enhet
+#### <a name="to-create-public-endpoints-on-the-cloud-appliance"></a>Så här skapar du offentliga slutpunkter för molninstallationen
 
-1. Logga in toohello Azure-portalen.
-2. Gå för**virtuella datorer**, markera och klickar på hello virtuell dator som används som din enhet för molnet.
+1. Logga in på Azure Portal.
+2. Gå till **Virtual Machines** och markera och klicka på den virtuella dator som används som molninstallation.
     
-3. Du måste toocreate en network security group (NSG) regel toocontrol hello trafikflödet och från den virtuella datorn. Utföra hello följande steg toocreate en NSG-regel.
+3. Du måste skapa en NSG-regel (nätverkssäkerhetsgrupp) för att styra flödet av trafik in till och ut från den virtuella datorn. Skapa en NSG-regel genom att utföra stegen nedan.
     1. Välj **Nätverkssäkerhetsgrupp**.
         ![](./media/storsimple-8000-create-public-endpoints-cloud-appliance/sca-create-public-endpt1.png)
 
-    2. Klicka på hello standard nätverkssäkerhetsgruppen som visas.
+    2. Klicka på standardnätverkssäkerhetsgruppen.
         ![](./media/storsimple-8000-create-public-endpoints-cloud-appliance/sca-create-public-endpt2.png)
 
     3. Välj **Inkommande säkerhetsregel**.
         ![](./media/storsimple-8000-create-public-endpoints-cloud-appliance/sca-create-public-endpt3.png)
 
-    4. Klicka på **+ Lägg till** toocreate en ingående säkerhetsregel.
+    4. Skapa en säkerhetsregel för inkommande trafik genom att klicka på **+ Lägg till**.
         ![](./media/storsimple-8000-create-public-endpoints-cloud-appliance/sca-create-public-endpt4.png)
 
-        I bladet för hello Lägg till inkommande säkerhetsregler regel:
+        På bladet Lägg till inkommande säkerhetsregel:
 
-        1. För hello **namn**, typen hello följande namn för hello slutpunkt: WinRMHttps.
+        1. I fältet **Namn** anger du följande namn för slutpunkten: WinRMHttps.
         
-        2. För hello **prioritet**väljer ett tal som är mindre än 1000 och (vilket är hello prioritet för hello standardregel). Högre hello värde i lägre hello prioritet.
+        2. För **Prioritet** väljer du ett tal som är mindre än 1 000 (som är prioriteten för standardregeln). Desto högre värde, ju lägre prioritet.
 
-        3. Ange hello **källa** för**alla**.
+        3. Ange **Källa** till **Alla**.
 
-        4. För hello **Service**väljer **WinRM**. Hej **protokollet** anges automatiskt för**TCP** och hello **portintervall** har angetts för**5986**.
+        4. För **Tjänst** väljer du **WinRM**. **Protokoll** ställs automatiskt in till **TCP**, och **Portintervall** till **5986**.
 
-        5. Klicka på **OK** toocreate hello regeln.
+        5. Skapa regeln genom att klicka på **OK**.
 
             ![](./media/storsimple-8000-create-public-endpoints-cloud-appliance/sca-create-public-endpt5.png)
 
-4. Det sista steget är tooassociate nätverkssäkerheten gruppen med ett undernät eller ett visst nätverksgränssnitt. Utför följande steg tooassociate hello säkerhetsgrupp för nätverk med ett undernät.
-    1. Gå för**undernät**.
+4. Det sista steget är att associera nätverkssäkerhetsgruppen med ett undernät eller ett visst nätverksgränssnitt. Du associerar nätverkssäkerhetsgruppen med ett undernät genom att utföra stegen nedan.
+    1. Gå till **Undernät**.
     2. Klicka på **+ Associera**.
         ![](./media/storsimple-8000-create-public-endpoints-cloud-appliance/sca-create-public-endpt7.png)
 
-    3. Välj det virtuella nätverket och välj sedan hello rätt undernät.
-    4. Klicka på **OK** toocreate hello regeln.
+    3. Välj ditt virtuella nätverk och välj sedan lämpligt undernät.
+    4. Skapa regeln genom att klicka på **OK**.
 
         ![](./media/storsimple-8000-create-public-endpoints-cloud-appliance/sca-create-public-endpt11.png)
 
-När hello regeln har skapats kan visa du dess information toodetermine hello offentliga virtuella IP-adresser (VIP)-adress. Anteckna den adressen.
+När regeln har skapats kan du visa information om regeln för att ta reda på den offentliga virtuella IP-adressen (VIP). Anteckna den adressen.
 
 

@@ -1,6 +1,6 @@
 ---
-title: aaaCreate en ODC-fil tooconnect tooan Azure Analysis Services-server | Microsoft Docs
-description: "Lär dig hur toocreate en ODC-fil tooconnect tooand hämta data från en Analysis Services-server i Azure."
+title: "Skapa en ODC-fil för att ansluta till en Azure Analysis Services-server | Microsoft Docs"
+description: "Lär dig hur du skapar en ODC-fil för att ansluta till och hämta data från en Analysis Services-server i Azure."
 services: analysis-services
 documentationcenter: 
 author: minewiskan
@@ -15,30 +15,30 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 08/23/2017
 ms.author: owend
-ms.openlocfilehash: 9c8c8df23b17f19905d7ec51af4eb63eb995045e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 530f3b5c9e90cb45ffb6e12d0d08a35f8d687471
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="create-an-office-data-connection-file"></a>Skapa en ODC-fil
 
-I den här artikeln beskrivs hur du kan skapa en ODC-fil tooconnect tooan Azure Analysis Services-servern från Excel 2016 versionsnumret 16.0.7369.2117 eller tidigare, eller Excel 2013. En uppdaterad [MSOLAP.7 provider](analysis-services-data-providers.md) krävs också.
+I den här artikeln beskrivs hur du kan skapa en ODC-fil att ansluta till en Azure Analysis Services-server från Excel 2016 versionsnumret 16.0.7369.2117 eller tidigare, eller Excel 2013. En uppdaterad [MSOLAP.7 provider](analysis-services-data-providers.md) krävs också.
 
 
-1. Kopiera hello anslutning exempelfilen nedan och klistra in i en textredigerare. 
+1. Kopiera anslutning exempelfilen nedan och klistra in i en textredigerare. 
 
-2. I `odc:ConnectionString`, ändra hello följande egenskaper:
+2. I `odc:ConnectionString`, ändra följande egenskaper:
 
-    *   I `Data Source=asazure://<region>.asazure.windows.net/<servername>;` ändra `<region>` toohello region för Analysis Services-servern och `<servername>` toohello namnet på din server.
+    *   I `Data Source=asazure://<region>.asazure.windows.net/<servername>;` ändra `<region>` för regionen där Analysis Services-servern och `<servername>` till namnet på servern.
 
-    *   I `Initial Catalog=<database>;` ändra `<database>` toohello namnet på databasen.
+    *   I `Initial Catalog=<database>;` ändra `<database>` till namnet på din databas.
 
-3. I `<odc:CommandText>Model</odc:CommandText>` ändra `Model` toohello namnet på din modell eller perspektiv. 
+3. I `<odc:CommandText>Model</odc:CommandText>` ändra `Model` till namnet på din modell eller perspektiv. 
 
-4. Spara hello-fil med en `.odc` tillägget toohello C:\Users\\*användarnamn*\Documents\My mapp.
+4. Spara filen med ett `.odc` tillägget till C:\Users\\*användarnamn*\Documents\My mapp.
 
-5. Högerklicka på hello-filen och klicka sedan på **öppna i Excel**. Eller i Excel på hello **Data** band klickar du på **befintliga anslutningar**, markera filen och klicka sedan på **öppna**.
+5. Högerklicka på filen och klicka sedan på **öppna i Excel**. Eller i Excel, på den **Data** band klickar du på **befintliga anslutningar**, markera filen och klicka sedan på **öppna**.
 
 
 

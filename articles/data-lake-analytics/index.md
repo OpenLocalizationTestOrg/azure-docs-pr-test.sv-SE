@@ -1,9 +1,9 @@
 ---
-title: "aaaAzure Data Lake Analytics-dokumentation – självstudier, API-referens | Microsoft Docs"
-description: "Lär dig hur du gör stordataanalyser med Data Lake Analytics. Självstudiekurser visar hur toorun batch, realtid och interaktiv analys och hur toowrite U-SQL-frågor."
+title: "Dokumentation om Azure Data Lake Analytics – Självstudier, API-referens | Microsoft Docs"
+description: "Lär dig hur du gör stordataanalyser med Data Lake Analytics. Självstudier visar hur du kör batch-, realtids- och interaktiva analyser, och hur du skriver U-SQL-frågor."
 services: data-lake-analytics
-author: saveenr
-manager: saveenr
+author: czeumault
+manager: carolz
 layout: LandingPage
 ms.assetid: 
 ms.service: data-lake-analytics
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 515ad4c2a9023e970f1da05785bf3583d37cfccf
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 0cad8acb88494755522e0772c77afcc4793d8e74
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="data-lake-analytics-documentation"></a>Dokumentation om Data Lake Analytics
 
-Lär dig hur toouse toorun Data Lake Analytics stordataanalys jobb att skala toomassive datauppsättningar. Självstudiekurser och andra dokumentationen visar hur toocreate och hantera batch, realtid, och interaktiva analytics-jobb och hur tooquery med hello U-SQL-språket.
+Lär dig hur du använder Data Lake Analytics för att köra stordataanalysjobb som skalas för enorma datauppsättningar. Självstudier och annan dokumentation visar hur du skapar och hanterar batch-, realtids- och interaktiva analysjobb och hur du frågar med hjälp av U-SQL-språket.
 
 <ul class="panelContent cardsFTitle">
     <li>

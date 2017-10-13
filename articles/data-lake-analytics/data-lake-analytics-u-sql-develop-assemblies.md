@@ -1,6 +1,6 @@
 ---
-title: "aaaDevelop U-SQL-sammansättningar för Azure Data Lake Analytics-jobb | Microsoft Docs"
-description: "Lär dig hur toodevelop sammansättningar toobe används och återanvändas i Data Lake Analytics-jobb. "
+title: "Utveckla U-SQL-sammansättningar för Azure Data Lake Analytics-jobb | Microsoft Docs"
+description: "Lär dig hur du utvecklar sammansättningar som ska användas och återanvändas i Data Lake Analytics-jobb. "
 services: data-lake-analytics
 documentationcenter: 
 author: jejiang
@@ -13,39 +13,39 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/30/2016
 ms.author: jejiang
-ms.openlocfilehash: 86dd17b25e0967306ed36bb5b7f3178d9409d53d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: c49f80f8dcd330d7f46726241e7178351b9cc28f
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="develop-u-sql-assemblies-for-azure-data-lake-analytics-jobs"></a>Utveckla U-SQL-sammansättningar för Azure Data Lake Analytics-jobb
-Lär dig hur tooturn bakomliggande kod till sammansättningar toobe används och återanvändas i Data Lake Analytics-jobb. 
+Lär dig hur du aktiverar bakomliggande kod i sammansättningar som används och återanvändas i Data Lake Analytics-jobb. 
 
-U-SQL gör det enkelt tooadd dina egna anpassade kod i .net-språk, till exempel C#, VB.Net eller F #. Du kan även distribuera din egen runtime toosupport andra språk.
+U-SQL gör det lätt att lägga till din egen kod i .net-språk, till exempel C#, VB.Net eller F #. Du kan även distribuera din egen runtime för att stödja andra språk.
 
-hello enklaste sättet toouse anpassad kod är toouse hello Data Lake-verktyg för Visual Studio bakomliggande kod funktioner. Mer information finns i [Självstudier: utveckla U-SQL-skript med hjälp av Data Lake-verktyg för Visual Studio](data-lake-analytics-data-lake-tools-get-started.md). Det finns några nackdelar med bakomliggande kod:
+Det enklaste sättet att använda anpassade kod är att använda Data Lake-verktyg för Visual Studio bakomliggande kod funktioner. Mer information finns i [Självstudier: utveckla U-SQL-skript med hjälp av Data Lake-verktyg för Visual Studio](data-lake-analytics-data-lake-tools-get-started.md). Det finns några nackdelar med bakomliggande kod:
 
-- hello källkoden hämtar upp för varje skript.
+- Källkoden hämtar upp för varje skript.
 - bakomliggande kod kan inte delas med andra jobb.
 
-tooaddress dessa nackdelar du kan aktivera bakomliggande kod till sammansättningar och registrera hello sammansättningar toohello Data Lake Analytics-katalogen.
+Du kan aktivera bakomliggande kod till sammansättningar och registrera sammansättningarna i Data Lake Analytics-katalogen för att åtgärda dessa nackdelar.
 
 ## <a name="prerequisites"></a>Krav
 * Visual Studio 2017, Visual Studio 2015, Visual Studio 2013 update 4 eller Visual Studio 2012 med Visual C++ installerat
-* Microsoft Azure SDK för .NET version 2.5 eller högre.  Installera den med hjälp av hello installationsprogram för webbplattform eller Visual Studio-installationsprogrammet
+* Microsoft Azure SDK för .NET version 2.5 eller högre.  Installera den med hjälp av installationsprogram för webbplattform eller Visual Studio-installationsprogrammet
 * Ett Data Lake Analytics-konto.  Se [Kom igång med Azure Data Lake Analytics med hjälp av Azure Portal](data-lake-analytics-get-started-portal.md).
-* Gå igenom hello [Kom igång med Azure Data Lake Analytics U-SQL Studio](data-lake-analytics-u-sql-get-started.md) kursen.
-* Ansluta tooAzure.
-* Överför hello källdata, se [Kom igång med Azure Data Lake Analytics U-SQL Studio](data-lake-analytics-u-sql-get-started.md). 
+* Gå igenom den [Kom igång med Azure Data Lake Analytics U-SQL Studio](data-lake-analytics-u-sql-get-started.md) kursen.
+* Ansluta till Azure.
+* Överför källdata, se [Kom igång med Azure Data Lake Analytics U-SQL Studio](data-lake-analytics-u-sql-get-started.md). 
 
 ## <a name="develop-assemblies-for-u-sql"></a>Utveckla sammansättningar för U-SQL
 
-**toocreate och skicka ett U-SQL-jobb**
+**Skapa och skicka ett U-SQL-jobb**
 
-1. Från hello **filen** -menyn klickar du på **ny**, och klicka sedan på **projekt**.
-2. Expandera **installerad**, **mallar**, **Azure Data Lake**, **U-SQL(ADLA)**väljer hello **Class Library (för U-SQL Program)** mallen och klicka sedan på **OK**.
-3. Skriv koden i Class1.cs.  hello följande är ett kodexempel.
+1. Klicka på **Nytt** i **Arkiv**-menyn och klicka sedan på **Projekt**.
+2. Expandera **installerad**, **mallar**, **Azure Data Lake**, **U-SQL(ADLA)**, Välj den **Class Library (för U-SQL Program)** mallen och klicka sedan på **OK**.
+3. Skriv koden i Class1.cs.  Följande är ett kodexempel.
 
         using Microsoft.Analytics.Interfaces;
 
@@ -62,20 +62,20 @@ tooaddress dessa nackdelar du kan aktivera bakomliggande kod till sammansättnin
                 }
             }
         }
-4. Klicka på hello **skapa** -menyn och klicka sedan på **skapa lösning** toocreate hello dll.
+4. Klicka på den **skapa** -menyn och klicka sedan på **skapa lösning** att skapa DLL-filen.
 
 ## <a name="register-assemblies"></a>Registrera sammansättningar
 
 Se [Använd Data Lake Analytics(U-SQL) katalogen](data-lake-analytics-use-u-sql-catalog.md).
 
 
-## <a name="use-hello-assemblies"></a>Använd hello sammansättningar
+## <a name="use-the-assemblies"></a>Använda sammansättningarna
 
-Se [använder hello Azure Data Lake-verktyg för Visual Studio Code](data-lake-analytics-data-lake-tools-for-vscode.md).
+Se [Använd Azure Data Lake-verktyg för Visual Studio Code](data-lake-analytics-data-lake-tools-for-vscode.md).
 
 ## <a name="see-also"></a>Se även
 * [Kom igång med Data Lake Analytics med hjälp av PowerShell](data-lake-analytics-get-started-powershell.md)
-* [Kom igång med Data Lake Analytics med hjälp av hello Azure-portalen](data-lake-analytics-get-started-portal.md)
+* [Kom igång med Data Lake Analytics med hjälp av Azure portal](data-lake-analytics-get-started-portal.md)
 * [Använd Data Lake-verktyg för Visual Studio för att utveckla U-SQL-program](data-lake-analytics-data-lake-tools-get-started.md)
 * [Använd Data Lake Analytics(U-SQL) katalog](data-lake-analytics-use-u-sql-catalog.md)
-* [Använd hello Azure Data Lake-verktyg för Visual Studio Code](data-lake-analytics-data-lake-tools-for-vscode.md)
+* [Använda Azure Data Lake Tools för Visual Studio Code](data-lake-analytics-data-lake-tools-for-vscode.md)

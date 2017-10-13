@@ -5,6 +5,7 @@
 ## Självstudie för runbook
 ### [Skapa grafisk runbook](automation-first-runbook-graphical.md)
 ### [Skapa PowerShell-runbook](automation-first-runbook-textual-powershell.md)
+### [Min första Python-runbook](automation-first-runbook-textual-python2.md)
 ### [Skapa PowerShell Workflow-runbook](automation-first-runbook-textual.md)
 # Gör så här för att
 ## Autentisering och säkerhet
@@ -34,17 +35,21 @@
 ### [Ändra Runbook-inställningar](automation-runbook-settings.md)
 ### [Hantera Azure Automation-data](automation-managing-data.md)
 ### [Anropa Azure Automation Runbook från en Log Analytics-avisering](automation-invoke-runbook-from-omsla-alert.md)
-### [Skicka en JSON-objekt tooan Azure Automation-runbook](automation-pass-json-string.md)
+### [Skicka ett JSON-objekt till en Azure Automation-runbook](automation-pass-json-string.md)
 ## Hybrid Runbook Worker
 ### [Distribuera Hybrid Runbook Worker](automation-hybrid-runbook-worker.md)
+### [Azure Automation Windows Hybrid Runbook Worker](automation-windows-hrw-install.md)
+### [Azure Automation Linux Hybrid Runbook Worker](automation-linux-hrw-install.md)
 ### [Köra runbook-flöden i arbetsroll](automation-hrw-run-runbooks.md)
+### [Ta bort Azure Automation Hybrid Runbook Worker-arbeten](automation-remove-hrw.md)
 ## Distribuera konfigurationshantering (DSC)
 ### [Översikt över önskad tillståndskonfiguration (DSC)](automation-dsc-overview.md)
 ### [Komma igång](automation-dsc-getting-started.md)
+### [Konfigurera servrar till önskade tillstånd och hantera drift med Azure Automation](tutorial-configure-servers-desired-state.md)
 ### [Konfigurera datorer för hantering](automation-dsc-onboarding.md)
 ### [Kompilera DSC-konfigurationer](automation-dsc-compile.md)
 ### [Kontinuerlig distribution med Chocolatey](automation-dsc-cd-chocolatey.md)
-### [Vidarebefordra Azure Automation DSC reporting data tooOMS logganalys](automation-dsc-diagnostics.md)
+### [Vidarebefordra Azure Automation DSC-rapportdata till OMS Log Analytics](automation-dsc-diagnostics.md)
 ## Hantera tillgångar
 ### [Certifikat](automation-certificates.md)
 ### [Anslutningar](automation-connections.md)
@@ -64,11 +69,15 @@
 ### [Anropa Azure Automation Runbook från en Log Analytics-avisering](automation-invoke-runbook-from-omsla-alert.md)
 ### [Distribuera en Azure Resource Manager-mall i en Azure Automation PowerShell- runbook](automation-deploy-template-runbook.md)
 ## Lösningar
-### [Spårning av ändringar](../log-analytics/log-analytics-change-tracking.md)
 ### [Hantering av uppdateringar](../operations-management-suite/oms-solution-update-management.md)
+#### [Hantera uppdateringar för fler virtuella datorer](manage-update-multi.md)
+#### [Integrera SCCMr med uppdateringshantering för OMS](oms-solution-updatemgmt-sccmintegration.md)
+### [Spårning av ändringar](../log-analytics/log-analytics-change-tracking.md)
+### [Spåra ändringar i dina virtuella datorer](automation-vm-change-tracking.md)
+### [Hantera en virtuell dator med inventeringssamlingen](automation-vm-inventory.md)
 ### [Starta/stoppa virtuella datorer utanför arbetstid](automation-solution-vm-management.md)
 ## Övervaka
-### [Vidarebefordra Azure Automation-jobbet data tooLog Analytics](automation-manage-send-joblogs-log-analytics.md)
+### [Vidarebefordra jobbdata från Azure Automation till Log Analytics](automation-manage-send-joblogs-log-analytics.md)
 ### [Ta bort länk till Azure Automation-konto från Log Analytics](automation-unlink-from-log-analytics.md)
 ## Migrera
 ### [Migrera från Orchestrator](automation-orchestrator-migration.md)
@@ -77,8 +86,8 @@
 ### [Felsöka vanliga fel](automation-troubleshooting-automation-errors.md)
 ### [Felsöka Hybrid Runbook Worker](automation-troubleshooting-hybrid-runbook-worker.md)
 # Referens
-## [PowerShell](/powershell/module/azurerm.automation)
-## [PowerShell (klassisk)](/powershell/module/azure/?view=azuresmps-3.7.0)
+## [Azure PowerShell](/powershell/module/azurerm.automation)
+## [Azure PowerShell (klassisk)](/powershell/module/azure/?view=azuresmps-3.7.0)
 ## [.NET](/dotnet/api/microsoft.azure.management.automation)
 ## [REST](/rest/api/automation)
 ## [REST (klassisk)](https://msdn.microsoft.com/library/azure/mt163781)

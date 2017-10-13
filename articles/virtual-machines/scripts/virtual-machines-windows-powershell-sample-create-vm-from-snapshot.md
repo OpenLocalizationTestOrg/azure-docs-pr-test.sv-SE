@@ -1,5 +1,5 @@
 ---
-title: "aaaAzure PowerShell skriptexempel - skapa en virtuell dator från en ögonblicksbild | Microsoft Docs"
+title: "Azure PowerShell-skript Sample - skapa en virtuell dator från en ögonblicksbild | Microsoft Docs"
 description: "Azure PowerShell-skript Sample - skapa en virtuell dator från en ögonblicksbild"
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 89c65171b55bff0582c4a26df0b0f29f556845fd
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 63d108bbfd0f58f8a40bf1c7c8649e3a1f7ed288
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="create-a-virtual-machine-from-a-snapshot-with-powershell"></a>Skapa en virtuell dator från en ögonblicksbild med PowerShell
 
@@ -32,11 +32,11 @@ Det här skriptet skapar en virtuell dator från en ögonblicksbild av en OS-dis
 
 ## <a name="sample-script"></a>Exempelskript
 
-[!code-powershell[main](../../../powershell_scripts/virtual-machine/create-vm-from-snapshot/create-vm-from-snapshot.ps1 "Create VM from managed os disk")]
+[!code-powershell[huvudsakliga](../../../powershell_scripts/virtual-machine/create-vm-from-snapshot/create-vm-from-snapshot.ps1 "Skapa virtuell dator från hanterade os-disk")]
 
 ## <a name="clean-up-deployment"></a>Rensa distribution 
 
-Kör följande kommando tooremove hello resursgrupp, VM och alla relaterade resurser hello.
+Kör följande kommando för att ta bort resursgruppen, virtuell dator och alla relaterade resurser.
 
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup
@@ -44,15 +44,15 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 
 ## <a name="script-explanation"></a>Skriptet förklaring
 
-Det här skriptet använder hello följande kommandon tooget ögonblicksbild egenskaper, skapar du en hanterad disk från en ögonblicksbild och skapa en virtuell dator. Varje objekt i hello tabellen länkar toocommand viss dokumentation.
+Det här skriptet använder följande kommandon för att hämta egenskaper för ögonblicksbild, skapar du en hanterad disk från en ögonblicksbild och skapa en virtuell dator. Varje objekt i tabellen länkar till kommandot viss dokumentation.
 
 | Kommando | Anteckningar |
 |---|---|
 | [Get-AzureRmSnapshot](/powershell/module/azurerm.compute/get-azurermsnapshot) | Hämtar en ögonblicksbild med hjälp av namnet på ögonblicksbilder. |
-| [Ny AzureRmDiskConfig](/powershell/module/azurerm.compute/new-azurermdiskconfig) | Skapar en diskkonfiguration. Den här konfigurationen används med hello disken skapas. |
+| [Ny AzureRmDiskConfig](/powershell/module/azurerm.compute/new-azurermdiskconfig) | Skapar en diskkonfiguration. Den här konfigurationen används med disk-processen. |
 | [Ny AzureRmDisk](/powershell/module/azurerm.compute/new-azurermdisk) | Skapar en hanterade diskar. |
-| [Ny AzureRmVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig) | Skapar en VM-konfiguration. Den här konfigurationen omfattar information som VM-namn, operativsystem och administrativa autentiseringsuppgifter. hello konfiguration används under skapande av virtuell dator. |
-| [Ange AzureRmVMOSDisk](/powershell/module/azurerm.compute/set-azurermvmosdisk) | Bifogar hello hanterade diskar som OS disk toohello virtuell dator |
+| [Ny AzureRmVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig) | Skapar en VM-konfiguration. Den här konfigurationen omfattar information som VM-namn, operativsystem och administrativa autentiseringsuppgifter. Konfigurationen används under Skapa en virtuell dator. |
+| [Ange AzureRmVMOSDisk](/powershell/module/azurerm.compute/set-azurermvmosdisk) | Bifogar hanterade diskar som OS-disken till den virtuella datorn |
 | [Ny AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress) | Skapar en offentlig IP-adress. |
 | [Ny AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface) | Skapar ett nätverksgränssnitt. |
 | [Ny AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) | Skapar en virtuell dator. |
@@ -60,6 +60,6 @@ Det här skriptet använder hello följande kommandon tooget ögonblicksbild ege
 
 ## <a name="next-steps"></a>Nästa steg
 
-Mer information om hello Azure PowerShell-modulen finns [Azure PowerShell dokumentationen](/powershell/azure/overview).
+Mer information om Azure PowerShell-modulen finns [Azure PowerShell dokumentationen](/powershell/azure/overview).
 
-Ytterligare virtuella PowerShell-skript-exempel finns i hello [Virtuella för Windows Azure-dokumentationen](../windows/powershell-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Ytterligare virtuella PowerShell-skript-exempel finns i den [Virtuella för Windows Azure-dokumentationen](../windows/powershell-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

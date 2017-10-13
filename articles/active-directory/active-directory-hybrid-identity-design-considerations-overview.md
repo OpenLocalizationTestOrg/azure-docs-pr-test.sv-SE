@@ -1,5 +1,5 @@
 ---
-title: "designöverväganden för aaaAzure Active Directory hybrid identity - översikt | Microsoft Docs"
+title: "Azure Active Directory hybrid identity designöverväganden - översikt | Microsoft Docs"
 description: "Översikt och innehåll karta över designguide Hybrid Identity"
 documentationcenter: 
 services: active-directory
@@ -14,45 +14,45 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 10aacb04c90abd100eb56d7c44d590946b052f18
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: e2a70f2474298618dd8ee11c583f8f445d7eba7d
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="azure-active-directory-hybrid-identity-design-considerations"></a>Azure Active Directory Hybrid Identity designöverväganden
-Konsumenten-baserade enheter Prolifererande företagets hälsningsmeddelande och molnbaserade program för programvara som en tjänst (SaaS) är enkelt tooadopt. Därför kan behålla kontrollen över användarnas programåtkomst plattformar interna datacenter och moln en utmaning.  
+Konsumenten-baserade enheter proliferating företagets världen och molnbaserade program för programvara som en tjänst (SaaS) är lätta att vidta. Därför kan behålla kontrollen över användarnas programåtkomst plattformar interna datacenter och moln en utmaning.  
 
-Microsofts identitetslösningar omfattar lokala och molnbaserade funktioner, och skapa en enda användaridentitet för autentisering och auktorisering tooall resurser, oavsett plats. Vi kallar detta Hybrididentitet. Det finns olika design- och konfigurationsalternativ för hybrididentitet med hjälp av Microsoft solutions och i vissa fall kan det vara svårt toodetermine vilken kombination som passar organisationens behov hello. 
+Microsofts identitetslösningar omfattar lokala och molnbaserade funktioner, skapar en enda användaridentitet för autentisering och auktorisering för alla resurser, oavsett plats. Vi kallar detta Hybrididentitet. Det finns olika design och konfigurationsalternativ för hybrididentitet med hjälp av Microsoft solutions och i vissa fall kan det vara svårt att avgöra vilken kombination bästa uppfyller behoven för din organisation. 
 
-Den här Designguide för Hybrid Identity hjälper toounderstand hur toodesign en hybrididentitetslösning som bäst passar hello affärs- och teknikbehov behöver för din organisation.  Den här guiden innehåller en rad steg och aktiviteter som att du kan följa toohelp du utforma en hybrididentitetslösning som uppfyller organisationens unika krav. I hello steg och aktiviteter presenterar handboken hello hello relevanta tekniker och funktionen alternativ tillgängliga tooorganizations toomeet funktionella och kvalitetskrav (till exempel tillgänglighet, skalbarhet, prestanda, hantering och säkerhet) krav. 
+Den här Designguide för Hybrid Identity hjälper dig att förstå hur för att utforma en hybrididentitetslösning som passar bäst för verksamheten och teknikbehov för din organisation.  Den här guiden innehåller en rad steg och aktiviteter som du kan följa för att hjälpa dig att utforma en hybrididentitetslösning som uppfyller organisationens unika krav. I steg och aktiviteter, kommer guiden presentera relevanta tekniker och funktioner finns tillgängliga för organisationer att uppfylla funktions- och kvalitetskrav (till exempel tillgänglighet, skalbarhet, prestanda, hantering och säkerhet) nivå krav. 
 
-Specifikt, finns hello hybrid identity överväganden guiden designmål tooanswer hello följande frågor: 
+Mer specifikt är hybrid identity överväganden guiden designmålen att besvara följande frågor: 
 
-* Frågor gör jag behöver tooask och besvara toodrive en identity-specifika hybridutformning för en domän med teknik- eller problemdomän som bäst uppfyller Mina krav?
-* Vilka sekvensen av aktiviteter bör jag slutföra toodesign en hybrididentitetslösning för hello teknik eller problem? 
-* Vilka hybrid identity-teknik och vilka konfigurationsalternativ finns tillgängliga toohelp mig uppfylla kraven? Vad är hello avvägningarna mellan dessa alternativ så att jag kan välja hello bästa alternativet för mitt företag?
+* Vilka frågor behöver jag be och besvara för att hitta en identity-specifika hybridutformning för en domän med teknik- eller problemdomän som bäst uppfyller Mina krav?
+* Vilka sekvensen av aktiviteter bör slutföras för att utforma en hybrididentitetslösning för domänen teknik eller problem? 
+* Vilka hybrid identity-teknik och vilka konfigurationsalternativ finns tillgängliga för att hjälpa mig uppfylla kraven? Vad är avvägningarna mellan dessa alternativ så att jag kan välja det bästa alternativet för mitt företag?
 
 ## <a name="who-is-this-guide-intended-for"></a>Vem riktar den här handboken till?
  CHEF, CITO, chefen identitet arkitekter, Enterprise-arkitekter och IT-arkitekter som ansvarar för att utforma en hybrididentitetslösning för medelstora eller stora organisationer.
 
 ## <a name="how-can-this-guide-help-you"></a>Hur kan den här handboken hjälpa dig?
-Du kan använda den här guiden toounderstand hur toodesign en hybrididentitetslösning som kan toointegrate ett moln baserade identity management-systemet med din aktuella lokalt identitetslösning. 
+Du kan använda den här guiden för att förstå hur du utformar en hybrididentitetslösning som går att integrera en molnbaserad identity management-systemet med din aktuella lokal identitetslösning. 
 
-hello följande bild visar ett exempel en hybrididentitetslösning som gör att IT-administratörer toomanage toointegrate deras aktuella Windows Server Active Directory lösningen som finns lokalt med Microsoft Azure Active Directory tooenable användare toouse enkel Inloggning (SSO) över program som finns i hello molnet och lokalt.
+Följande bild visar ett exempel en hybrididentitetslösning som gör att IT-administratörer att hantera deras aktuella Windows Server Active Directory lösningen som finns lokalt integrera med Microsoft Azure Active Directory så att användarna kan använda enkel inloggning ( SSO) över program som finns i molnet och lokalt.
 
 ![](./media/hybrid-id-design-considerations/hybridID-example.png)
 
-Hej ovanför bild är ett exempel på en hybrididentitetslösning som använder cloud services toointegrate med lokala funktioner i ordning tooprovide ett enda upplevelse toohello slutanvändaren autentiseringsprocessen och toofacilitate IT hanterar dessa resurser. Även om detta kan vara ett mycket vanligt scenario är varje organisations identitet hybridutformning sannolikt toobe skiljer sig hello visas i exemplet i bild 1 på grund av toodifferent krav. 
+På bilden ovan är ett exempel på en hybrididentitetslösning som använder molntjänster till att integrera med lokala funktioner för att ge en enda upplevelse för slutanvändaren autentiseringsprocessen och för att underlätta IT hanterar de resurser. Även om detta kan vara ett mycket vanligt scenario, kommer varje organisations identitet hybridutformning skiljer sig från exemplet som illustreras i bild 1 på grund av olika krav. 
 
-Den här guiden innehåller en serie steg och uppgifter som att du kan följa toodesign en hybrididentitetslösning som uppfyller organisationens unika krav. I hela hello alternativ följande steg och aktiviteter, hello guiden visar hello relevanta tekniker och funktionen tillgängliga tooyou toomeet funktions- och kvalitetsnivån som krävs för din organisation.
+Den här guiden innehåller en serie steg och aktiviteter som du kan följa om du vill skapa en hybrididentitetslösning som uppfyller organisationens unika krav. I följande steg och aktiviteter presenterar handboken relevanta tekniker och Funktionsalternativ för att uppfylla funktions- och tjänsten kvalitetsnivån som krävs för din organisation.
 
 **Antaganden**: du har viss erfarenhet av Windows Server, Active Directory Domain Services och Azure Active Directory. I det här dokumentet förutsätter vi att du söker efter hur lösningarna kan uppfylla företagets behov på egen hand eller i en integrerad lösning.
 
 ## <a name="design-considerations-overview"></a>Översikt över design-överväganden
-Det här dokumentet innehåller en uppsättning steg och aktiviteter som att du kan följa toodesign en hybrididentitetslösning som bäst uppfyller dina krav. hello stegen visas i tur och ordning. Överväganden vid utformning av du lär dig i senare steg kan kräva toochange beslut som du tog tidigare, men på grund av tooconflicting designalternativ. Varje försök görs tooalert du toopotential designkonflikter i hello dokumentet. 
+Det här dokumentet innehåller en uppsättning steg och aktiviteter som du kan följa om du vill skapa en hybrididentitetslösning som bäst uppfyller dina krav. Stegen visas i tur och ordning. Överväganden vid utformning av du lär dig i senare steg kan kräva att du ändrar beslut som du tog tidigare, men på grund av konflikter som uppstår. Varje försök görs att varna dig om eventuella designkonflikter i hela dokumentet. 
 
-Du anländer till hello design som bäst motsvarar dina krav förrän du har gått igenom hello steg så många gånger som behövs tooincorporate alla hello överväganden i hello dokumentet. 
+Du kommer till vilken design som bäst motsvarar dina krav förrän du har gått igenom stegen så många gånger som behövs för att alla tänkbara överväganden i dokumentet. 
 
 | Hybrid Identity fas | Avsnittet innehåller en listan |
 | --- | --- |
@@ -61,5 +61,5 @@ Du anländer till hello design som bäst motsvarar dina krav förrän du har gå
 | Planera för hybrid identity livscykel |[Fastställa hanteringsuppgifter för hybrid identity](active-directory-hybrid-identity-design-considerations-hybrid-id-management-tasks.md) <br> [Hantering av datasynkronisering](active-directory-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)<br> [Fastställa införandestrategin hybrid identity](active-directory-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md) |
 
 ## <a name="download-this-guide"></a>Hämta denna guide
-Du kan hämta en pdf-version av hello överväganden vid utformning av Hybrid guide från hello [Technet-galleriet](https://gallery.technet.microsoft.com/Azure-Hybrid-Identity-b06c8288). 
+Du kan hämta en pdf-version av guiden överväganden vid utformning av Hybrid från den [Technet-galleriet](https://gallery.technet.microsoft.com/Azure-Hybrid-Identity-b06c8288). 
 

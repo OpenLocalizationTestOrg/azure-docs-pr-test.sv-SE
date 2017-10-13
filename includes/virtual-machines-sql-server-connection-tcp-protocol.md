@@ -1,17 +1,17 @@
-1. När anslutna toohello virtuella datorn med fjärrskrivbord, söka efter **Configuration Manager**:
+1. Sök efter **Configuration Manager** medan du fortfarande är fjärrskrivbordsansluten till den virtuella datorn:
 
     ![Öppna SSCM](./media/virtual-machines-sql-server-connection-tcp-protocol/sql-server-configuration-manager.png)
 
-1. Konfigurationshanteraren för SQL Server i hello konsolfönstret expanderar **SQL Server-nätverkskonfigurationen**.
+1. Expandera **SQL Server-nätverkskonfiguration** i konsolfönstret i Konfigurationshanteraren för SQL Server.
 
-1. I konsolfönstret hello klickar du på **protokoll för MSSQLSERVER** (hello namnet för standardinstansen.) Högerklicka i informationsfönstret hello **TCP** och på **aktivera** om den inte redan är aktiverad.
+1. Klicka på **Protokoll för MSSQLSERVER** (standardinstansnamnet) i konsolfönstret. Högerklicka på **TCP** i informationsfönstret och klicka på **Aktivera** om det inte redan har aktiverats.
 
     ![Aktivera TCP](./media/virtual-machines-sql-server-connection-tcp-protocol/enable-tcp.png)
 
-1. I konsolfönstret hello klickar du på **SQL Server Services**. Högerklicka i informationsfönstret hello  **SQL Server (*instansnamn*) ** (hello standardinstansen är **SQL Server (MSSQLSERVER)**), och klicka sedan på **starta om** , toostop och starta om hello-instans av SQL Server.
+1. Klicka på **SQL Server-tjänster** i konsolfönstret. Högerklicka på **SQL Server (*instansnamnet*)** (standardinstansen är **SQL Server (MSSQLSERVER)**) i informationsfönstret och klicka sedan på **Starta om** för att stoppa och starta om instansen av SQL Server.
 
     ![Starta om databasmotorn](./media/virtual-machines-sql-server-connection-tcp-protocol/restart-sql-server.png)
 
 1. Stäng Konfigurationshanteraren för SQL Server.
 
-Mer information om hur du aktiverar protokoll för hello SQL Server Database Engine finns [aktivera eller inaktivera nätverksprotokoll Server](http://msdn.microsoft.com/library/ms191294.aspx).
+Mer information om hur du aktiverar protokoll för SQL Server-databasmotorn finns i [Enable or Disable a Server Network Protocol](http://msdn.microsoft.com/library/ms191294.aspx) (Aktivera eller inaktivera ett servernätverksprotokoll).

@@ -1,6 +1,6 @@
 ---
-title: "aaaPolling långvariga åtgärder | Microsoft Docs"
-description: "Det här avsnittet visar hur toopoll långvariga åtgärder."
+title: "Avsökning långvariga åtgärder | Microsoft Docs"
+description: "Det här avsnittet visar hur du avsöker långvariga åtgärder."
 services: media-services
 documentationcenter: 
 author: juliako
@@ -14,36 +14,36 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: juliako
-ms.openlocfilehash: f8315a5ddbe484d794c3e2164e47dd9e70521671
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 7123a2d44d3b7c332afe30fb0fcea88ca29e313a
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="delivering-live-streaming-with-azure-media-services"></a>Leverera direktsänd strömning med Azure Media Services
 
 ## <a name="overview"></a>Översikt
 
-Microsoft Azure Media Services erbjuder API: er som skickar begäranden tooMedia Services toostart åtgärder (till exempel: skapa, starta, stoppa eller ta bort en kanal). Dessa åtgärder är långvariga.
+Microsoft Azure Media Services erbjuder API: er som skickar begäranden till Media Services för att starta operations (till exempel: skapa, starta, stoppa eller ta bort en kanal). Dessa åtgärder är långvariga.
 
-hello Media Services .NET SDK innehåller API: er som skickar begäran om hello och vänta tills hello åtgärden toocomplete (internt hello API: er avsöker för åtgärden pågår vid vissa intervall). Till exempel när du anropar kanal. Start(), hello-metoden returnerar när hello kanal har startats. Du kan också använda hello asynkrona versionen: väntan på kanalen. StartAsync() (information om uppgiftsbaserade asynkront mönster finns [trycker du på](https://msdn.microsoft.com/library/hh873175\(v=vs.110\).aspx)). API: er som skickar en begäran om åtgärden och avsökas hello status tills hello-åtgärden har slutförts kallas ”avsökning metoder”. Dessa metoder (särskilt hello Async-version) rekommenderas för rich-klientprogram och/eller tillståndskänsliga tjänster.
+Media Services .NET SDK innehåller API: er som skickar begäran och vänta tills åtgärden har slutförts (internt, för API: er avsöker för åtgärden pågår vid vissa intervall). Till exempel när du anropar kanal. Start(), returnerar-metoden när kanalen har startats. Du kan också använda den asynkrona versionen: väntan på kanalen. StartAsync() (information om uppgiftsbaserade asynkront mönster finns [trycker du på](https://msdn.microsoft.com/library/hh873175\(v=vs.110\).aspx)). API: er som skickar en begäran om åtgärden och söka efter status tills åtgärden har slutförts kallas ”avsökning metoder”. Dessa metoder (särskilt den asynkron versionen) rekommenderas för rich-klientprogram och/eller tillståndskänsliga tjänster.
 
-Det finns scenarier där ett program inte kan vänta på en lång http-begäran och vill toopoll för hello åtgärden pågår manuellt. Ett typiskt exempel är en webbläsare som interagerar med en tillståndslös webbtjänst: när hello webbläsare begär toocreate en kanal, webbtjänst hello initierar långvarig åtgärd och returnerar hello åtgärden ID toohello webbläsare. hello webbläsare sedan be hello web service tooget hello Åtgärdsstatus baserat på hello-ID. hello Media Services .NET SDK innehåller API: er som är användbara för det här scenariot. Dessa API: er kallas ”icke-avsökning metoder”.
-hello ”icke-avsökning metoder” har hello följer mönstret: skicka*OperationName*åtgärd (till exempel SendCreateOperation). Skicka*OperationName*åtgärden metoder returnerar hello **IOperation** objektet; hello returnerade objekt innehåller information som kan vara används tootrack hello igen. hello skicka*OperationName*OperationAsync metoder returnerar **aktivitet<IOperation>**.
+Det finns scenarier där ett program inte kan vänta på en lång http-begäran och vill söka efter åtgärden förloppet manuellt. Ett typiskt exempel är en webbläsare som interagerar med en tillståndslös webbtjänst: när webbläsaren skickar en begäran för att skapa en kanal, webbtjänsten initierar en långvarig åtgärd och returnerar åtgärds-ID till webbläsaren. Webbläsaren kan sedan ber du webbtjänsten för att hämta Åtgärdsstatus för baserat på ID. Media Services .NET SDK innehåller API: er som är användbara för det här scenariot. Dessa API: er kallas ”icke-avsökning metoder”.
+”Icke-avsökning metoder” har följande namngivningsmönstret: skicka*OperationName*åtgärd (till exempel SendCreateOperation). Skicka*OperationName*åtgärden metoder returnerar den **IOperation** objekt; den returnerade objekt innehåller information som kan användas för att spåra igen. Skicka*OperationName*OperationAsync metoder returnerar **aktivitet<IOperation>**.
 
-För närvarande hello följande metoder för klasser stöd för icke-avsökning: **kanal**, **StreamingEndpoint**, och **programmet**.
+För närvarande följande klasser stöder inte avsökning metoder: **kanal**, **StreamingEndpoint**, och **programmet**.
 
-toopoll för hello Åtgärdsstatus, Använd hello **GetOperation** metod på hello **OperationBaseCollection** klass. Använd hello följande intervall toocheck hello Åtgärdsstatus: för **kanal** och **StreamingEndpoint** åtgärder, använda 30 sekunder; för **programmet** åtgärder, använder 10 sekunder.
+Om du vill söka efter Åtgärdsstatus använder den **GetOperation** -metoden i den **OperationBaseCollection** klass. Använd följande intervall för att kontrollera Åtgärdsstatus: för **kanal** och **StreamingEndpoint** åtgärder, använda 30 sekunder; för **programmet** åtgärder, använder 10 sekunder.
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Skapa och konfigurera ett Visual Studio-projekt
 
-Konfigurera utvecklingsmiljön och fylla hello app.config-fil med anslutningsinformation, enligt beskrivningen i [Media Services-utveckling med .NET](media-services-dotnet-how-to-use.md).
+Konfigurera utvecklingsmiljön och fyll i filen app.config med anslutningsinformation, enligt beskrivningen i [Media Services-utveckling med .NET](media-services-dotnet-how-to-use.md).
 
 ## <a name="example"></a>Exempel
 
-hello följande exempel definierar en klass med namnet **ChannelOperations**. Definitionen av den här klassen kan vara en startpunkt för din web service klassdefinitionen. För enkelhetens skull använder hello exemplen hello icke asynkrona versioner av metoder.
+I följande exempel definierar en klass med namnet **ChannelOperations**. Definitionen av den här klassen kan vara en startpunkt för din web service klassdefinitionen. I följande exempel används ej asynkrona versioner av metoder för enkelhetens skull.
 
-hello exemplet visas hur hello klienten kan använda den här klassen.
+Exemplet visar även hur klienten kan använda den här klassen.
 
 ### <a name="channeloperations-class-definition"></a>ChannelOperations klassdefinitionen
 
@@ -54,12 +54,12 @@ hello exemplet visas hur hello klienten kan använda den här klassen.
     using System.Net;
 
     /// <summary> 
-    /// hello ChannelOperations class only implements 
-    /// hello Channel’s creation operation. 
+    /// The ChannelOperations class only implements 
+    /// the Channel’s creation operation. 
     /// </summary> 
     public class ChannelOperations
     {
-        // Read values from hello App.config file.
+        // Read values from the App.config file.
         private static readonly string _AADTenantDomain =
             ConfigurationManager.AppSettings["AADTenantDomain"];
         private static readonly string _RESTAPIEndpoint =
@@ -77,12 +77,12 @@ hello exemplet visas hur hello klienten kan använda den här klassen.
         }
 
         /// <summary>  
-        /// Initiates hello creation of a new channel.  
+        /// Initiates the creation of a new channel.  
         /// </summary>  
-        /// <param name="channelName">Name toobe given toohello new channel</param>  
+        /// <param name="channelName">Name to be given to the new channel</param>  
         /// <returns>  
-        /// Operation Id for hello long running operation being executed by Media Services. 
-        /// Use this operation Id toopoll for hello channel creation status. 
+        /// Operation Id for the long running operation being executed by Media Services. 
+        /// Use this operation Id to poll for the channel creation status. 
         /// </returns> 
         public string StartChannelCreation(string channelName)
         {
@@ -99,14 +99,14 @@ hello exemplet visas hur hello klienten kan använda den här klassen.
         }
 
         /// <summary> 
-        /// Checks if hello operation has been completed. 
-        /// If hello operation succeeded, hello created channel Id is returned in hello out parameter.
+        /// Checks if the operation has been completed. 
+        /// If the operation succeeded, the created channel Id is returned in the out parameter.
         /// </summary> 
-        /// <param name="operationId">hello operation Id.</param> 
+        /// <param name="operationId">The operation Id.</param> 
         /// <param name="channel">
-        /// If hello operation succeeded, 
-        /// hello created channel Id is returned in hello out parameter.</param>
-        /// <returns>Returns false if hello operation is still in progress; otherwise, true.</returns> 
+        /// If the operation succeeded, 
+        /// the created channel Id is returned in the out parameter.</param>
+        /// <returns>Returns false if the operation is still in progress; otherwise, true.</returns> 
         public bool IsCompleted(string operationId, out string channelId)
         {
             IOperation operation = _context.Operations.GetOperation(operationId);
@@ -117,9 +117,9 @@ hello exemplet visas hur hello klienten kan använda den här klassen.
             switch (operation.State)
             {
                 case OperationState.Failed:
-                    // Handle hello failure. 
+                    // Handle the failure. 
                     // For example, throw an exception. 
-                    // Use hello following information in hello exception: operationId, operation.ErrorMessage.
+                    // Use the following information in the exception: operationId, operation.ErrorMessage.
                     break;
                 case OperationState.Succeeded:
                     completed = true;
@@ -180,7 +180,7 @@ hello exemplet visas hur hello klienten kan använda den här klassen.
         }
     }
 
-### <a name="hello-client-code"></a>hello klientkod
+### <a name="the-client-code"></a>Klientkoden
     ChannelOperations channelOperations = new ChannelOperations();
     string opId = channelOperations.StartChannelCreation("MyChannel001");
 
@@ -193,7 +193,7 @@ hello exemplet visas hur hello klienten kan använda den här klassen.
         isCompleted = channelOperations.IsCompleted(opId, out channelId);
     }
 
-    // If we got here, we should have hello newly created channel id.
+    // If we got here, we should have the newly created channel id.
     Console.WriteLine(channelId);
 
 

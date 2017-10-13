@@ -1,6 +1,6 @@
 ---
-title: "aaaDebugging appar i en lokal dockerbehållare | Microsoft Docs"
-description: "Lär dig hur toomodify en app som körs i en lokal dockerbehållare uppdatera hello behållare via Redigera och uppdatera och ange brytpunkter-felsökning"
+title: "Felsökning av appar i en lokal dockerbehållare | Microsoft Docs"
+description: "Lär dig hur du ändrar en app som körs i en lokal dockerbehållare, uppdatera behållaren via Redigera och uppdatera och ange brytpunkter-felsökning"
 services: azure-container-service
 documentationcenter: na
 author: mlearned
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 07/22/2016
 ms.author: mlearned
-ms.openlocfilehash: ff64e62fbb93901a29b5496bd5e17d2c4ea5ca99
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: fcd58736d8915a61683a416fb9bf3892ba7b7bd8
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="debugging-apps-in-a-local-docker-container"></a>Felsök appar i en lokal Docker-behållare
 ## <a name="overview"></a>Översikt
-hello Visual Studio Tools för Docker ger ett konsekvent sätt toodevelop i och validera ditt program lokalt i en Linux-dockerbehållare.
-Du har inte toorestart hello behållaren varje gång du gör en kod ändra.
-Den här artikeln visar hur toouse hello ”redigera och uppdatera” funktionen toostart en ASP.NET Core Web app i en lokal dockerbehållare gör nödvändiga ändringar och sedan uppdatera hello webbläsare toosee ändringarna.
-Den här artikeln visar också hur tooset brytpunkter för felsökning.
+Visual Studio Tools för Docker ger ett konsekvent sätt att utveckla i och validera ditt program lokalt i en Linux-dockerbehållare.
+Du behöver inte starta om behållaren varje gång du gör en kod ändra.
+Den här artikeln visar hur funktionen ”Redigera och uppdatera” för att starta en ASP.NET Core webbprogram i en lokal dockerbehållare, gör nödvändiga ändringar och sedan uppdatera webbläsaren om du vill se ändringarna.
+Den här artikeln beskriver också hur du ställer in brytpunkter för felsökning.
 
 > [!NOTE]
 > Stöd för Windows-behållare kommer i en framtida version
@@ -33,15 +33,15 @@ Den här artikeln visar också hur tooset brytpunkter för felsökning.
 >
 
 ## <a name="prerequisites"></a>Krav
-hello följande verktyg måste vara installerad.
+Följande verktyg måste vara installerad.
 
 * [Senaste version av Visual Studio](https://www.visualstudio.com/downloads/)
 * [Microsoft ASP.NET Core 1.0 SDK](https://go.microsoft.com/fwlink/?LinkID=809122)
 
-lokalt toorun Docker behållare, behöver du en lokal docker-klient.
-Du kan använda hello [Docker verktygslådan](https://www.docker.com/products/docker-toolbox), vilket kräver att Hyper-V toobe inaktiveras eller du kan använda [Docker för Windows](https://www.docker.com/get-docker), som använder Hyper-V och kräver att Windows 10.
+Om du vill köra Docker behållare lokalt, behöver du en lokal docker-klient.
+Du kan använda den [Docker verktygslådan](https://www.docker.com/products/docker-toolbox), vilket kräver Hyper-V kan inaktiveras eller du kan använda [Docker för Windows](https://www.docker.com/get-docker), som använder Hyper-V och kräver att Windows 10.
 
-Om du använder Docker verktygslådan, du behöver för[konfigurera hello Docker-klienten](vs-azure-tools-docker-setup.md)
+Om du använder Docker verktygslådan, måste du [konfigurerar Docker-klient](vs-azure-tools-docker-setup.md)
 
 ## <a name="1-create-a-web-app"></a>1. Skapa en webbapp
 [!INCLUDE [create-aspnet5-app](../includes/create-aspnet5-app.md)]
@@ -50,46 +50,46 @@ Om du använder Docker verktygslådan, du behöver för[konfigurera hello Docker
 [!INCLUDE [Add docker support](../includes/vs-azure-tools-docker-add-docker-support.md)]
 
 ## <a name="3-edit-your-code-and-refresh"></a>3. Redigera koden och uppdatera
-tooquickly iterera ändringar, kan du starta appen i en behållare och fortsätta toomake ändringar, visa dem precis som med IIS Express.
+För att snabbt iterera ändringar, kan du starta appen i en behållare och fortsätta att göra ändringar, visa dem precis som med IIS Express.
 
-1. Ange hello lösning konfiguration för`Debug` och tryck på  **&lt;CTRL + F5 >** toobuild din docker avbildningen och kör lokalt.
+1. Konfigurera lösningen `Debug` och tryck på  **&lt;CTRL + F5 >** att skapa en docker-avbildning och köra det lokalt.
 
-    När hello behållaren avbildningen har skapats och körs i en dockerbehållare, startas Visual Studio hello webbprogram i din standardwebbläsare.
-    Om du använder hello Microsoft Edge-webbläsaren eller på annat sätt har fel finns [felsökning](vs-azure-tools-docker-troubleshooting-docker-errors.md) avsnitt.
-2. Gå toohello om sida, vilket är där vi toomake våra ändringar.
-3. Returnera tooVisual Studio och öppna `Views\Home\About.cshtml`.
-4. Lägg till hello efter HTML-innehåll toohello hello-filen och spara hello ändringar.
+    När avbildningen behållaren har skapats och körs i en dockerbehållare, startas Visual Studio webbappen i din standardwebbläsare.
+    Om du använder Microsoft Edge-webbläsaren eller på annat sätt har fel finns [felsökning](vs-azure-tools-docker-troubleshooting-docker-errors.md) avsnitt.
+2. Gå till sidan om, vilket är där vi göra våra ändringar.
+3. Gå tillbaka till Visual Studio och öppna `Views\Home\About.cshtml`.
+4. Lägg till följande HTML-innehåll i slutet av filen och spara ändringarna.
 
     ```
     <h1>Hello from a Docker Container!</h1>
     ```
-5. Visar hello utdatafönstret när hello .NET version har slutförts och du ser dessa rader kan växla tillbaka tooyour webbläsare och uppdatera hello om sida.
+5. Visa utdatafönstret när .NET-versionen har slutförts och du ser dessa rader kan gå tillbaka till din webbläsare och uppdatera sidan om.
 
    ```
    Now listening on: http://*:80
-   Application started. Press Ctrl+C tooshut down
+   Application started. Press Ctrl+C to shut down
    ```
 6. Ändringarna har tillämpats!
 
 ## <a name="4-debug-with-breakpoints"></a>4. Felsöka med brytpunkter
-Ofta behöver ändringar ytterligare kontroll, utnyttja hello felsökning funktioner i Visual Studio.
+Ofta behöver ändringar ytterligare kontroll, utnyttja funktionerna för felsökning av Visual Studio.
 
-1. Returnera tooVisual Studio och öppna`Controllers\HomeController.cs`
-2. Ersätt hello innehållet i hello About() metod med hello följande:
+1. Gå tillbaka till Visual Studio och öppna`Controllers\HomeController.cs`
+2. Ersätt innehållet i metoden About() med följande:
 
    ```
    string message = "Your application description page from within a Container";
    ViewData["Message"] = message;
    ````
-3. Ange en brytpunkt toohello vänsterkant hello `string message`... rad.
-4. Träffa  **&lt;F5 >** toostart felsökning.
-5. Navigera toohello om sidan toohit din brytpunkt.
-6. Växla tooVisual Studio tooview hello brytpunkt och inspektera hello-värdet för meddelandet.
+3. Ange en brytpunkt till vänster om den `string message`... rad.
+4. Träffa  **&lt;F5 >** att starta felsökningen.
+5. Gå till sidan om att träffa din brytpunkt.
+6. Växla till Visual Studio för att visa brytpunkten och kontrollera värdet för meddelandet.
 
    ![][2]
 
 ## <a name="summary"></a>Sammanfattning
-Med [Visual Studio 2015 Tools för Docker](https://aka.ms/DockerToolsForVS), du kan hämta hello produktivitet arbeta lokalt, med hello produktion mer att utveckla i en dockerbehållare.
+Med [Visual Studio 2015 Tools för Docker](https://aka.ms/DockerToolsForVS), kan du arbeta lokalt, med produktion mer att utveckla i en dockerbehållare produktivitet.
 
 ## <a name="troubleshooting"></a>Felsökning
 [Felsökning av Visual Studio Docker-utveckling](vs-azure-tools-docker-troubleshooting-docker-errors.md)
@@ -100,17 +100,17 @@ Med [Visual Studio 2015 Tools för Docker](https://aka.ms/DockerToolsForVS), du 
 * [Docker-verktyg för Visual Studio Code](http://aka.ms/dockertoolsforvscode) -språk services för att redigera docker-filer, med mer e2e scenarier kommer
 * [Information om Windows behållaren](http://aka.ms/containers)-information för Windows Server och Nano Server
 * [Azure Container Service](https://azure.microsoft.com/services/container-service/) - [Azure Container Service-innehåll](http://aka.ms/AzureContainerService)
-* Fler exempel i arbetet med Docker finns [arbeta med Docker](https://github.com/Microsoft/HealthClinic.biz/wiki/Working-with-Docker) från hello [HealthClinic.biz](https://github.com/Microsoft/HealthClinic.biz) 2015 Anslut [demo](https://blogs.msdn.microsoft.com/visualstudio/2015/12/08/connectdemos-2015-healthclinic-biz/). Läs mer Snabbstart från hello HealthClinic.biz demo [Azure Developer Tools Snabbstart](https://github.com/Microsoft/HealthClinic.biz/wiki/Azure-Developer-Tools-Quickstarts).
+* Fler exempel i arbetet med Docker finns [arbeta med Docker](https://github.com/Microsoft/HealthClinic.biz/wiki/Working-with-Docker) från den [HealthClinic.biz](https://github.com/Microsoft/HealthClinic.biz) 2015 Anslut [demo](https://blogs.msdn.microsoft.com/visualstudio/2015/12/08/connectdemos-2015-healthclinic-biz/). Fler snabbstartsguider från HealthClinic.biz-demonstrationen finns i [Snabbstartsguider för Azure Developer Tools](https://github.com/Microsoft/HealthClinic.biz/wiki/Azure-Developer-Tools-Quickstarts).
 
 ## <a name="various-docker-tools"></a>Olika Docker-verktyg
 [Vissa bra docker-verktyg (Steve Lasker blogg)](https://blogs.msdn.microsoft.com/stevelasker/2016/03/25/some-great-docker-tools/)
 
 ## <a name="good-articles"></a>Bra artiklar
-[Introduktion tooMicroservices från NGINX](https://www.nginx.com/blog/introduction-to-microservices/)
+[Introduktion till Mikrotjänster från NGINX](https://www.nginx.com/blog/introduction-to-microservices/)
 
 ## <a name="presentations"></a>Presentationer
 * [Steve Lasker: VS Live nu är det jul 2016 - Docker e2e](https://github.com/SteveLasker/Presentations/blob/master/VSLive2016/Vegas/)
-* [Introduktion tooASP.NET Core @ build 2016 - där du vid Demo](https://channel9.msdn.com/Events/Build/2016/B810)
+* [Introduktion till ASP.NET Core @ build 2016 - där du vid Demo](https://channel9.msdn.com/Events/Build/2016/B810)
 * [Utveckla .NET appar i behållare, Channel 9](https://blogs.msdn.microsoft.com/stevelasker/2016/02/19/developing-asp-net-apps-in-docker-containers/)
 
 [2]: ./media/vs-azure-tools-docker-edit-and-refresh/breakpoint.png

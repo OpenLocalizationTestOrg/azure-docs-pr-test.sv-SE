@@ -1,9 +1,9 @@
 ---
-title: "aaa ”Azure Analysis Services självstudiekursen lektionen 8 skapa perspektiv | Microsoft Docs ”"
-description: "Beskriver hur toocreate perspektiv i hello självstudiekursen Azure Analysis Services-projekt."
+title: "Azure Analysis Services självstudiekurs 8: Skapa perspektiv | Microsoft Docs"
+description: "Beskriver hur du skapar perspektiv i Azure Analysis Services-självstudieprojektet."
 services: analysis-services
 documentationcenter: 
-author: minewiskan
+author: Minewiskan
 manager: erikre
 editor: 
 tags: 
@@ -13,44 +13,44 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 05/26/2017
+ms.date: 09/20/2017
 ms.author: owend
-ms.openlocfilehash: 25391813e1969ecb22af4d6f9c1ccd8358d812fe
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 68f4e9744007bcf71c5b9239ecfb6f18cf0cd86e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="lesson-8-create-perspectives"></a>Lektion 8: Skapa perspektiv
 
 [!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
-I den här lektionen skapar du ett perspektiv för Internetförsäljning. Ett perspektiv definierar en visningsbar delmängd av en modell som ger fokuserade, affärsspecifika eller programspecifika översiktsvyer. När en användare ansluter tooa modellen med hjälp av ett perspektiv, visas endast de modellobjekt (tabeller, kolumner, mått, hierarkier och KPI: er) som fält som definierats i det perspektivet. Det finns fler toolearn [perspektiv](https://docs.microsoft.com/sql/analysis-services/tabular-models/perspectives-ssas-tabular).
+I den här lektionen skapar du ett perspektiv för Internetförsäljning. Ett perspektiv definierar en visningsbar delmängd av en modell som ger fokuserade, affärsspecifika eller programspecifika översiktsvyer. När en användare ansluter till en modell med hjälp av ett perspektiv visas endast de modellobjekt (tabeller, kolumner, mått, hierarkier och KPI:er), eller fält, som definierats i det perspektivet. Mer information finns i [Partitioner](https://docs.microsoft.com/sql/analysis-services/tabular-models/perspectives-ssas-tabular).
   
-hello Internet försäljning perspektiv som du skapar i den här lektionen undantar hello DimCustomer tabellobjekt. När du skapar ett perspektiv som undantar vissa objekt från vyn finns objektet fortfarande i hello modellen. Men det är inte synligt i fältlistan i rapporteringsklienten. Beräknade kolumner och mått, som antingen är inkluderade i ett perspektiv eller inte, kan fortfarande göra beräkningar från objektdata som exkluderas.  
+Perspektivet Internetförsäljning som du skapar i den här lektionen exkluderar tabellobjektet DimCustomer. När du skapar ett perspektiv som exkluderar visning av ett visst objekt existerar objektet fortfarande i modellen. Men det är inte synligt i fältlistan i rapporteringsklienten. Beräknade kolumner och mått, som antingen är inkluderade i ett perspektiv eller inte, kan fortfarande göra beräkningar från objektdata som exkluderas.  
   
-hello syftet med den här lektionen är toodescribe hur toocreate perspektiv och bekanta dig med hello tabellmodell redigeringsverktyg. Om du senare expanderar den här modellen tooinclude ytterligare tabeller kan du skapa ytterligare perspektiv toodefine olika synvinkel hello modell, till exempel inventerings- och försäljning.  
+I den här lektionen visar vi hur du skapar perspektiv och du får bekanta dig med tabellmodellens redigeringsverktyg. Om du senare väljer att utöka modellen med ytterligare tabeller kan du skapa ytterligare perspektiv för att definiera olika översiktsvyer för modellen, till exempel Lager och Försäljning.  
   
-Uppskattad tid toocomplete lektionen: **fem minuter**  
+Uppskattad tidsåtgång för den här lektionen: **Fem minuter**  
   
 ## <a name="prerequisites"></a>Krav  
-Det här avsnittet ingår i självstudiekursen för tabellmodellering som bör slutföras i rätt ordning. Innan du utför hello uppgifter i den här lektionen bör du slutfört hello föregående lektionen: [lektionen 7: skapa prestationsindikatorer](../tutorials/aas-lesson-7-create-key-performance-indicators.md).  
+Det här avsnittet ingår i självstudiekursen för tabellmodellering som bör slutföras i rätt ordning. Innan du utför uppgifterna under den här lektionen måste du ha slutfört föregående lektion: [Lektion 7: Skapa KPI:er](../tutorials/aas-lesson-7-create-key-performance-indicators.md).  
   
 ## <a name="create-perspectives"></a>Skapa perspektiv  
   
-#### <a name="toocreate-an-internet-sales-perspective"></a>toocreate ett Internet försäljning perspektiv  
+#### <a name="to-create-an-internet-sales-perspective"></a>Så här skapar du ett perspektiv för Internetförsäljning  
   
-1.  Klicka på hello **modellen** menyn > **perspektiv** > **skapa och hantera**.  
+1.  Klicka på **Modell**-menyn > **Perspektiv** > **Skapa och hantera**.  
   
-2.  I hello **perspektiv** dialogrutan klickar du på **nytt perspektiv**.  
+2.  Klicka på **Nytt perspektiv** i dialogrutan **Perspektiv**.  
   
-3.  Dubbelklicka på hello **nytt perspektiv** kolumnrubriken och Byt sedan namn **Internet försäljning**.  
+3.  Dubbelklicka på kolumnrubriken **Nytt perspektiv** och ändra sedan namnet till **Internetförsäljning**.  
   
-4.  Välj hello alla hello tabeller *utom* **DimCustomer**.  
+4.  Markera alla tabeller *utom* **DimCustomer**.  
   
     ![aas-lesson8-perspectives](../tutorials/media/aas-lesson8-perspectives.png)
   
-    I en senare lektionen använder du hello analysera i Excel funktionen tootest det här perspektivet. hello Excel fältlistan för pivottabell innehåller varje tabell utom hello DimCustomer tabell.  
+    I en senare lektion använder du funktionen Analysera i Excel för att testa perspektivet. Fältlistan för pivottabell i Excel innehåller alla tabeller utom tabellen DimCustomer.  
 
 ## <a name="whats-next"></a>Nästa steg
 [Lektion 9: Skapa hierarkier](../tutorials/aas-lesson-9-create-hierarchies.md).

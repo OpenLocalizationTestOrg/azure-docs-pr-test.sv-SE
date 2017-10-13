@@ -1,9 +1,9 @@
-* Ansluta toohello Processervern virtuell dator med anslutning till fjärrskrivbord.
-* Du kan starta hello cspsconfigtool.exe genom att klicka på hello genvägen på skrivbordet hello. (hello verktyget automatiskt startas om den här hello första gången du loggar in hello processen Server).
+* Anslut till den virtuella processerverdatorn via Anslutning till fjärrskrivbord.
+* Du kan starta cspsconfigtool.exe genom att klicka på genvägen på skrivbordet. (Verktyget startas automatiskt om det är första gången du loggar in på processervern).
   - Konfigurationsserverns fullständiga domännamn eller IP-adress
-  - Vilka hello Configuration servern lyssnar på port. hello-värdet bör vara 443
-  - Anslutningen konfigurationsservern lösenfras tooconnect toohello.
-  - Data Transfer port toobe konfigurerats för den här processen-servern. Lämna hello standardvärdet som är om du har ändrat den tooa annat portnummer i din miljö.
+  - Porten som konfigurationsservern lyssnar på. Värdet bör vara 443
+  - Lösenfras för anslutningen till konfigurationsservern.
+  - Dataöverföringsporten som ska konfigureras för den här processervern. Använd standardvärdet, såvida du inte har bytt till en annan port i din miljö.
 
     ![Registrera processerver](./media/site-recovery-vmware-register-process-server/register-ps.png)
-* Klicka på hello spara toosave hello konfiguration och registrera hello Processervern.
+* Klicka på Spara för att spara konfigurationen och registrera processervern.

@@ -1,6 +1,6 @@
 ---
-title: "aaaQuickstart - Azure Docker CE kluster för Linux | Microsoft Docs"
-description: "Lär dig snabbt toocreate ett Docker CE kluster på Linux-behållare i Azure Container Service med hello Azure CLI."
+title: "Snabbstart – Azure Docker CE-kluster för Linux | Microsoft Docs"
+description: "Lär dig snabbt att skapa ett Docker CE-kluster på Linux-behållare i Azure Container Service med Azure CLI."
 services: container-service
 documentationcenter: 
 author: neilpeterson
@@ -17,27 +17,27 @@ ms.workload: na
 ms.date: 08/25/2017
 ms.author: nepeters
 ms.custom: 
-ms.openlocfilehash: 6c26c12ed085ec379c3486095a5fa51379afc5a2
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 01357ceca1d78c80c901c9fbec08ce85f02fb958
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-docker-ce-cluster"></a>Distribuera Docker CE-kluster
 
-I den här snabbstartsguide distribueras ett Docker CE-kluster med hello Azure CLI. Ett program för flera behållare som består av frontwebb och en Redis-instans distribueras sedan och köra på hello kluster. När klar hello programmet är tillgänglig över hello internet.
+I den här snabbstartsguiden ska vi distribuera ett Docker CE-kluster med hjälp av Azure CLI. Därefter distribuerar vi och kör ett flerbehållarprogram som består av en webbklientdel och en Redis-instans i klustret. När vi har gjort det kan programmet nås via Internet.
 
 Docker CE på Azure Container Service är en förhandsversion och **bör inte användas för produktionsarbete**.
 
 Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
-Om du väljer tooinstall och använda hello CLI lokalt denna Snabbstart kräver att du kör hello Azure CLI version 2.0.4 eller senare. Kör `az --version` toofind hello version. Om du behöver tooinstall eller uppgradering, se [installera Azure CLI 2.0]( /cli/azure/install-azure-cli).
+Om du väljer att installera och använda CLI lokalt måste du köra Azure CLI version 2.0.4 eller senare. Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI 2.0]( /cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Skapa en resursgrupp
 
-Skapa en resursgrupp med hello [az gruppen skapa](/cli/azure/group#create) kommando. En Azure-resursgrupp är en logisk grupp där Azure-resurser distribueras och hanteras.
+Skapa en resursgrupp med kommandot [az group create](/cli/azure/group#create). En Azure-resursgrupp är en logisk grupp där Azure-resurser distribueras och hanteras.
 
-hello följande exempel skapar en resursgrupp med namnet *myResourceGroup* i hello *ukwest* plats.
+I följande exempel skapas en resursgrupp med namnet *myResourceGroup* på platsen *ukwest*.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location ukwest
@@ -60,19 +60,21 @@ Resultat:
 
 ## <a name="create-docker-swarm-cluster"></a>Skapa Docker Swarm-kluster
 
-Skapa ett Docker CE-kluster i Azure Container Service med hello [az acs skapa](/cli/azure/acs#create) kommando. 
+Skapa ett Docker CE-kluster i Azure Container Service med kommandot [az acs create](/cli/azure/acs#create). 
 
-hello följande exempel skapar ett kluster med namnet *mySwarmCluster* med en Linux master-nod och tre noder för Linux-agenten.
+I följande exempel skapas ett kluster med namnet *mySwarmCluster* med en Linux-huvudnod och tre Linux-agentnoder.
 
 ```azurecli-interactive
 az acs create --name mySwarmCluster --orchestrator-type dockerce --resource-group myResourceGroup --generate-ssh-keys
 ```
 
-Om några minuter hello-kommandot har slutförts och returnerar json-formaterade information om hello-klustret.
+I vissa fall, som vid en begränsad utvärderingsversion, har en Azure-prenumeration begränsad åtkomst till Azure-resurser. Om distributionen misslyckas på grund av begränsade tillgängliga kärnor minskar du antalet standardagenter genom att lägga till `--agent-count 1` till kommandot [az acs create](/cli/azure/acs#create). 
 
-## <a name="connect-toohello-cluster"></a>Ansluta toohello kluster
+Efter en stund slutförs kommandot och returnerar json-formaterad information om klustret.
 
-I den här snabbstartsguide måste hello FQDN för både hello Docker Swarm och hello Docker agent poolen. Kör följande kommando tooreturn både hello-hanterare och agent FQDN hello.
+## <a name="connect-to-the-cluster"></a>Anslut till klustret
+
+I den här snabbstartsguide behöver du FQDN både för Docker Swarm-huvudnoden och Docker-agentpoolen. Kör följande kommando för att returnera både huvudnods- och agent-FQDN.
 
 
 ```bash
@@ -87,24 +89,24 @@ Master                                                               Agent
 myswarmcluster-myresourcegroup-d5b9d4mgmt.ukwest.cloudapp.azure.com  myswarmcluster-myresourcegroup-d5b9d4agent.ukwest.cloudapp.azure.com
 ```
 
-Skapa en SSH-tunnel toohello Swarm master. Ersätt `MasterFQDN` med hello FQDN-adressen för hello Swarm master.
+Skapa en SSH-tunnel till Swarm-huvudnoden. Ersätt `MasterFQDN` med FQDN-adressen för Swarm-huvudnoden.
 
 ```bash
 ssh -p 2200 -fNL localhost:2374:/var/run/docker.sock azureuser@MasterFQDN
 ```
 
-Ange hello `DOCKER_HOST` miljövariabeln. Detta ger dig toorun docker kommandon mot hello Docker Swarm utan toospecify hello namnet på hello-värden.
+Ange miljövariabeln `DOCKER_HOST`. På detta sätt kan du köra Docker-kommandon mot Docker Swarm utan att behöva ange värdnamnet.
 
 ```bash
 export DOCKER_HOST=localhost:2374
 ```
 
-Du är nu redo toorun Docker-tjänster på hello Docker Swarm.
+Du är nu redo att köra Docker-tjänster på Docker Swarm.
 
 
-## <a name="run-hello-application"></a>Kör programmet hello
+## <a name="run-the-application"></a>Köra programmet
 
-Skapa en fil med namnet `azure-vote.yaml` och kopiera hello efter innehåll till den.
+Skapa en fil med namnet `azure-vote.yaml` och kopiera följande innehåll till den.
 
 
 ```yaml
@@ -123,7 +125,7 @@ services:
         - "80:80"
 ```
 
-Kör hello [docker-stacken distribuera](https://docs.docker.com/engine/reference/commandline/stack_deploy/) kommandot toocreate hello Azure röst-tjänsten.
+Kör kommandot [docker stack deploy](https://docs.docker.com/engine/reference/commandline/stack_deploy/) för att skapa Azure Vote-tjänsten.
 
 ```bash
 docker stack deploy azure-vote --compose-file azure-vote.yaml
@@ -137,13 +139,13 @@ Creating service azure-vote_azure-vote-back
 Creating service azure-vote_azure-vote-front
 ```
 
-Använd hello [docker-stacken ps](https://docs.docker.com/engine/reference/commandline/stack_ps/) kommandot tooreturn hello Distributionsstatus för hello program.
+Använd kommandot [docker stack ps](https://docs.docker.com/engine/reference/commandline/stack_ps/) för att returnera distributionsstatusen för programmet.
 
 ```bash
 docker stack ps azure-vote
 ```
 
-En gång hello `CURRENT STATE` för varje tjänst är `Running`, hello programmet är redo.
+När `CURRENT STATE` för varje tjänst är `Running` är programmet redo.
 
 ```bash
 ID                  NAME                            IMAGE                                 NODE                               DESIRED STATE       CURRENT STATE                ERROR               PORTS
@@ -151,30 +153,30 @@ tnklkv3ogu3i        azure-vote_azure-vote-front.1   microsoft/azure-vote-front:r
 lg99i4hy68r9        azure-vote_azure-vote-back.1    redis:latest                          swarmm-agentpool0-66066781000002   Running             Running about a minute ago
 ```
 
-## <a name="test-hello-application"></a>Testa programmet hello
+## <a name="test-the-application"></a>Testa programmet
 
-Bläddra toohello FQDN för hello Swarm-agenten poolen tootest ut hello Azure rösten program.
+Gå till FQDN för Swarm-agentpoolen för att testa Azure Vote-programmet.
 
-![Bild av tooAzure röst-surfning](media/container-service-docker-swarm-mode-walkthrough/azure-vote.png)
+![Bild som illustrerar hur du navigerar till Azure Vote](media/container-service-docker-swarm-mode-walkthrough/azure-vote.png)
 
 ## <a name="delete-cluster"></a>Ta bort klustret
-När hello klustret inte längre behövs, kan du använda hello [ta bort grupp az](/cli/azure/group#delete) kommandot tooremove hello resursgrupp, behållartjänsten och alla relaterade resurser.
+När klustret inte längre behövs du använda kommandot [az group delete](/cli/azure/group#delete) för att ta bort resursgruppen, den virtuella datorn och alla relaterade resurser.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes --no-wait
 ```
 
-## <a name="get-hello-code"></a>Hämta hello kod
+## <a name="get-the-code"></a>Hämta koden
 
-I den här snabbstartsguide har skapats i förväg behållaren bilder används toocreate en Docker-tjänst. hello relaterade programkod, Dockerfile, och Skriv fil finns på GitHub.
+I den här snabbstartsguide används fördefinierade behållaravbildningar för att skapa en Docker-tjänst. Tillhörande programkod, Dockerfile och Compose-fil finns på GitHub.
 
 [https://github.com/Azure-Samples/azure-voting-app-redis](https://github.com/Azure-Samples/azure-voting-app-redis.git)
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här snabbstartsguide distribuerats Docker Swarm-kluster och distribuerat en tooit för flera program.
+I den här snabbstartsguiden distribuerade du ett Docker Swarm-kluster och distribuerade sedan ett flerbehållarprogram till det.
 
-toolearn om integreringen med Docker varmt med Visual Studio Team Services fortsätta toohello CI/CD med Docker Swarm och VSTS.
+Mer information om integrering av Docker Swarm med Visual Studio Team Services finns i CI/CD med Docker Swarm och VSTS.
 
 > [!div class="nextstepaction"]
 > [CI/CD med Docker Swarm och VSTS](./container-service-docker-swarm-setup-ci-cd.md)

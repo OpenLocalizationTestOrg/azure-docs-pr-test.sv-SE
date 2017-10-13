@@ -1,6 +1,6 @@
 ---
-title: "aaaConnect och kommunicera med tjänster i Azure Service Fabric | Microsoft Docs"
-description: "Lär dig hur tooresolve, ansluta och kommunicera med tjänster i Service Fabric."
+title: "Ansluta och kommunicera med tjänster i Azure Service Fabric | Microsoft Docs"
+description: "Lär dig hur du löser ansluta och kommunicera med tjänster i Service Fabric."
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,72 +14,72 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 5/9/2017
 ms.author: vturecek
-ms.openlocfilehash: b8b374a71d4c5d21f48a560a3a8c81b357fe418d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 3e61ad19df34c6a57da43e26bd2ab9d7ecdbf98e
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="connect-and-communicate-with-services-in-service-fabric"></a>Ansluta och kommunicera med tjänster i Service Fabric
-I Service Fabric körs en tjänst någonstans i ett Service Fabric-kluster, vanligtvis fördelade på flera virtuella datorer. Den kan flyttas från en enda plats tooanother, antingen av hello tjänstens ägare eller automatiskt av Service Fabric. Tjänsterna är inte statiskt bundet tooa viss dator eller adress.
+I Service Fabric körs en tjänst någonstans i ett Service Fabric-kluster, vanligtvis fördelade på flera virtuella datorer. Den kan flyttas från en plats till en annan, antingen av tjänstens ägare eller automatiskt av Service Fabric. Tjänster är inte statiskt knutna till en viss dator eller en adress.
 
-Ett Service Fabric-program består normalt av många olika tjänster, där varje tjänst utför en särskild aktivitet. Dessa tjänster kan kommunicera med varandra tooform en fullständig funktion, till exempel återgivning olika delar av ett webbprogram. Det finns också klienten program som ansluter tooand kommunicera med tjänster. Det här dokumentet beskrivs hur tooset upprätta kommunikation med och mellan dina tjänster i Service Fabric.
+Ett Service Fabric-program består normalt av många olika tjänster, där varje tjänst utför en särskild aktivitet. Dessa tjänster kan kommunicera med varandra för att bilda en fullständig funktion, till exempel återgivning olika delar av ett webbprogram. Det finns också klientprogram som kan ansluta till och kommunicera med tjänster. Det här dokumentet beskrivs hur du ställer in kommunikation med och mellan dina tjänster i Service Fabric.
 
 Den här Microsoft Virtual Academy videon beskrivs också kommunikation:<center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=iYFCk76yC_6706218965">  
 <img src="./media/service-fabric-connect-and-communicate-with-services/CommunicationVid.png" WIDTH="360" HEIGHT="244">  
 </a></center>
 
 ## <a name="bring-your-own-protocol"></a>Ta med egna protokoll
-Service Fabric hjälper dig att hantera hello livscykeln för dina tjänster, men det gör inte beslut om dina tjänster gör. Detta omfattar kommunikation. När tjänsten har öppnats av Service Fabric är din tjänst möjlighet tooset in en slutpunkt för inkommande begäranden du med oavsett protokoll eller kommunikation stack. Tjänsten kommer att lyssna på en normal **IP:port** med adresseringsschema, till exempel en URI-adress. Flera instanser av tjänsten eller repliker kan dela en värdprocess, då de kommer måste toouse olika portar eller använda en delning av port mekanism, till exempel hello http.sys kernel-drivrutinen i Windows. I båda fallen måste varje instans av tjänsten eller replik i en värdprocess måste vara unikt adresserbara.
+Service Fabric hjälper dig att hantera livscykeln för dina tjänster, men det gör inte beslut om dina tjänster gör. Detta omfattar kommunikation. När tjänsten har öppnats av Service Fabric, som är din tjänst möjlighet att ställa in en slutpunkt för inkommande begäranden som använder oavsett protokoll eller kommunikation stack som du vill. Tjänsten kommer att lyssna på en normal **IP:port** med adresseringsschema, till exempel en URI-adress. Flera instanser av tjänsten eller repliker kan dela en värdprocess, då de antingen måste använda olika portar eller använda en delning av port mekanism, till exempel http.sys kernel-drivrutinen i Windows. I båda fallen måste varje instans av tjänsten eller replik i en värdprocess måste vara unikt adresserbara.
 
 ![slutpunkter][1]
 
 ## <a name="service-discovery-and-resolution"></a>Identifiering och lösning
-I ett distribuerat system, kan tjänster flytta från en dator tooanother över tid. Detta kan inträffa av olika skäl, inklusive resurser, uppgraderingar, redundans och skalbara. Det innebär att tjänsten slutpunkts-adresser ändras när hello tjänsten flyttar toonodes med olika IP-adresser och öppnas på olika portar om hello tjänsten använder en dynamiskt vald port.
+I ett distribuerat system, kan tjänster flytta från en dator till en annan över tid. Detta kan inträffa av olika skäl, inklusive resurser, uppgraderingar, redundans och skalbara. Det innebär att tjänsten slutpunkts-adresser ändras när tjänsten flyttas till noder med olika IP-adresser och öppnas på olika portar om tjänsten använder en dynamiskt vald port.
 
 ![Distribution av tjänster][7]
 
-Service Fabric ger en identifiering och lösning tjänsten anropade hello Naming Service. hello upprätthåller namngivningstjänst en tabell som mappar med namnet tjänstinstanser toohello slutpunkts-adresser som de lyssna på. Alla instanser för tjänsten i Service Fabric har unika namn som visas i form av URI: er, till exempel `"fabric:/MyApplication/MyService"`. hello namnet på hello tjänst ändras inte under hello livslängd för hello-tjänsten kan endast hello slutpunkts-adresser som kan ändras när tjänsterna flytta. Detta är detsamma toowebsites som har konstant URL: er men där hello IP-adress kan ändras. Och liknande tooDNS på hello web som matchar webbplatsadresser URL: er tooIP Service Fabric har ett register som mappar service namn tootheir slutpunktsadress.
+Service Fabric är en tjänst för identifiering och lösning som kallas Naming Service. Tjänsten Naming upprätthåller en tabell som mappar namngivna instanser av tjänsten till slutpunkts-adresser som de lyssna på. Alla instanser för tjänsten i Service Fabric har unika namn som visas i form av URI: er, till exempel `"fabric:/MyApplication/MyService"`. Namnet på tjänsten ändras inte under livslängden för tjänsten, är det bara slutpunkts-adresser som kan ändras när tjänsterna flytta. Detta är detsamma som webbplatser som har konstant URL: er men där IP-adress kan ändras. Och liknar DNS på webben, som matchar IP-adresser för webbplats-URL: er, Service Fabric har ett register som mappar tjänstnamn till deras slutpunktsadress.
 
 ![slutpunkter][2]
 
-Lösa och ansluta tooservices omfattar hello följande köras i en slinga:
+Lösa och ansluta till tjänster omfattar följande steg i en slinga:
 
-* **Lös**: Get hello slutpunkt som en tjänst har publicerat från hello Naming Service.
-* **Ansluta**: ansluta toohello tjänsten via oavsett protokoll använder på denna slutpunkt.
-* **Försök**: ett anslutningsförsök misslyckas av olika orsaker, till exempel om hello-tjänsten har flyttats sedan hello senaste gången hello slutpunktsadress löstes. I så fall hello föregående Lös och ansluta steg måste toobe igen och den här cykeln upprepas tills hello anslutningen lyckas.
+* **Lös**: hämta den slutpunkt som har publicerat en tjänst från Naming Service.
+* **Ansluta**: ansluta till tjänsten via oavsett protokoll använder på denna slutpunkt.
+* **Försök**: ett anslutningsförsök misslyckas av olika orsaker, för om tjänsten har flyttats sedan den senast slutpunktsadressen löstes. I så fall den föregående lösa och ansluta steg måste göras och den här cykeln upprepas tills anslutningen lyckas.
 
-## <a name="connecting-tooother-services"></a>Anslutningstjänsterna tooother
-Tjänster som ansluter tooeach andra i ett kluster vanligtvis direkt åtkomst till hello slutpunkter av andra tjänster eftersom hello noder i ett kluster finns på hello samma lokala nätverk. toomake är enklare tooconnect mellan tjänster, Service Fabric ger ytterligare tjänster som använder hello Naming Service. En DNS-tjänst och en omvänd proxy-tjänst.
+## <a name="connecting-to-other-services"></a>Ansluter till andra tjänster
+Tjänster vanligtvis ansluta till varandra i ett kluster kan komma åt direkt slutpunkter av andra tjänster eftersom noder i ett kluster finns i samma lokala nätverk. Om du vill göra är enklare att ansluta olika tjänster, Service Fabric ger ytterligare tjänster som använder Naming Service. En DNS-tjänst och en omvänd proxy-tjänst.
 
 
 ### <a name="dns-service"></a>DNS-tjänst
-Eftersom många tjänster, särskilt av tjänster, kan ha ett befintligt URL-namn, som kan tooresolve dessa med hello standard DNS-protokollet (snarare än hello namngivningstjänst protocol) är praktiskt, särskilt i programmet ”lyfta och flytta” scenarier. Detta är exakt vilka hello DNS-tjänsten. Det gör du toomap DNS-namn tooa tjänstnamn och därför matcha IP-adresser för slutpunkt. 
+Eftersom många tjänster, särskilt av tjänster kan ha ett befintligt URL-namn, att kunna lösa dessa med hjälp av standard-DNS-protokollet (i stället för protokollet Naming Service) är mycket praktiskt, särskilt i programmet ”lyfta och flytta” scenarier. Detta är exakt det DNS-tjänsten. På så sätt kan du mappa DNS-namn till ett namn och därför matcha IP-adresser för slutpunkt. 
 
-Följande diagram, hello DNS-tjänsten körs i hello Service Fabric-klustret mappar som visas i hello DNS-namn tooservice namn som sedan kan matchas med hello namngivningstjänst tooreturn hello endpoint adresser tooconnect till. hello DNS-namn för hello tjänsten tillhandahålls för närvarande hello skapas. 
+I följande diagram visas matchar DNS-namn till tjänstnamn som sedan kan matchas med namngivningstjänst att returnera slutpunkts-adresser för att ansluta till DNS-tjänsten som körs i Service Fabric-klustret. DNS-namn för tjänsten tillhandahålls vid tidpunkten för skapandet. 
 
 ![slutpunkter][9]
 
-Mer information om hur toouse hello DNS-tjänsten finns [DNS-tjänsten i Azure Service Fabric](service-fabric-dnsservice.md) artikel.
+För mer information om hur du använder DNS-tjänsten finns [DNS-tjänsten i Azure Service Fabric](service-fabric-dnsservice.md) artikel.
 
 ### <a name="reverse-proxy-service"></a>Tjänsten omvänd proxy
-hello omvänd proxy adresser tjänster i hello-kluster som exponerar http-slutpunkter, inklusive HTTPS. hello omvänd proxy förenklar anropar andra tjänster och deras metoder genom att låta en specifik URI-format och hanterar hello lösa ansluta, försök steg som krävs för en tjänst toocommunicate med en annan med hello namngivning av tjänsten. Med andra ord döljer hello Naming Service från dig vid anrop av andra tjänster genom att göra detta så enkelt som anropar en URL.
+Omvänd proxy adresser tjänster i klustret som exponerar http-slutpunkter, inklusive HTTPS. Omvänd proxy avsevärt förenklar anropa andra tjänster och deras metoder genom att ha ett specifikt URI-format och hanterar lösas, ansluta, försök steg som krävs för en tjänst att kommunicera med varandra med namngivning av tjänsten. Med andra ord döljer namngivningstjänst från dig vid anrop av andra tjänster genom att göra detta så enkelt som anropar en URL.
 
 ![slutpunkter][10]
 
-Mer information om hur toouse hello omvänd proxy-tjänsten finns [omvänd proxy i Azure Service Fabric](service-fabric-reverseproxy.md) artikel.
+Mer information om hur du använder omvänd proxy-tjänst finns [omvänd proxy i Azure Service Fabric](service-fabric-reverseproxy.md) artikel.
 
 ## <a name="connections-from-external-clients"></a>Anslutningar från externa klienter
-Tjänster som ansluter tooeach andra i ett kluster vanligtvis direkt åtkomst till hello slutpunkter av andra tjänster eftersom hello noder i ett kluster finns på hello samma lokala nätverk. I vissa miljöer med kan ett kluster dock finnas bakom en belastningsutjämnare som skickar externa ingång trafik via en begränsad uppsättning portar. I dessa fall tjänster fortfarande kommunicera med varandra och Lös adresser med hjälp av hello Naming Service, men extra steg måste vidtas tooallow externa klienter tooconnect tooservices.
+Tjänster vanligtvis ansluta till varandra i ett kluster kan komma åt direkt slutpunkter av andra tjänster eftersom noder i ett kluster finns i samma lokala nätverk. I vissa miljöer med kan ett kluster dock finnas bakom en belastningsutjämnare som skickar externa ingång trafik via en begränsad uppsättning portar. I dessa fall tjänster kan kommunicera med varandra och matcha adresser med att använda fortfarande, men måste du vidta ytterligare åtgärder för att tillåta externa klienter att ansluta till tjänster.
 
 ## <a name="service-fabric-in-azure"></a>Service Fabric i Azure
-Ett Service Fabric-kluster i Azure är placerad bakom en belastningsutjämnare i Azure. Alla externa trafiken toohello klustret måste gå via hello belastningsutjämnaren. hello belastningsutjämnare automatiskt vidarebefordrar trafik inkommande på en slumpmässig porten tooa *nod* som har hello öppna samma port. hello Azure belastningsutjämnare bara medveten om portar som är öppna på hello *noder*, öppnar du portar genom att individuella inte känner *services*.
+Ett Service Fabric-kluster i Azure är placerad bakom en belastningsutjämnare i Azure. Alla externa trafik till klustret måste gå via belastningsutjämnaren. Belastningsutjämnaren kommer automatiskt att vidarebefordra trafik inkommande på en viss port till ett slumpmässigt *nod* som har samma port öppna. Azure belastningsutjämnare bara medveten om portar som är öppna på de *noder*, öppnar du portar genom att individuella inte känner *services*.
 
 ![Azure belastningsutjämnare och Service Fabric-topologi][3]
 
-Till exempel i ordning tooaccept extern trafik på port **80**, måste vara konfigurerad hello följande saker:
+Till exempel för att kunna acceptera extern trafik på port **80**, konfigureras följande saker:
 
-1. Skriv en tjänst som lyssnar på port 80. Konfigurera port 80 i hello service ServiceManifest.xml och öppna en lyssnare i hello-tjänsten, till exempel en egen värdbaserade webbserver.
+1. Skriv en tjänst som lyssnar på port 80. Konfigurera port 80 i tjänstens ServiceManifest.xml och öppna en lyssnare i tjänsten, till exempel en egen värdbaserade webbserver.
 
     ```xml
     <Resources>
@@ -159,30 +159,30 @@ Till exempel i ordning tooaccept extern trafik på port **80**, måste vara konf
             ...
         }
     ```
-2. Skapa ett Service Fabric-kluster i Azure och ange port **80** som en anpassad endpoint-port för hello nodtypen som är värd för hello-tjänsten. Om du har mer än en nodtyp kan du skapa en *placering begränsningen* på hello tjänsten tooensure körs bara på hello nodtyp som har hello anpassade endpoint porten är öppen.
+2. Skapa ett Service Fabric-kluster i Azure och ange port **80** som en anpassad endpoint-port för nodtypen som är värd för tjänsten. Om du har mer än en nodtyp kan du skapa en *placering begränsningen* på tjänsten så att den kan bara köras på nodtypen som har anpassade endpoint porten öppnas.
 
     ![Öppna en port på en nodtyp][4]
-3. När hello klustret har skapats kan du konfigurera hello Azure belastningsutjämnare i hello klustrets resursgrupp tooforward trafik på port 80. När du skapar ett kluster via hello Azure-portalen kan ställs detta in automatiskt för varje anpassad endpoint-port som har konfigurerats.
+3. När klustret har skapats kan du konfigurera Azure belastningsutjämnare i klusterresursgrupp att vidarebefordra trafik på port 80. När du skapar ett kluster via Azure portal, ställs detta in automatiskt för varje anpassad endpoint-port som har konfigurerats.
 
-    ![Vidarebefordra trafik i hello Azure belastningsutjämnare][5]
-4. hello Azure belastningsutjämnare använder en avsökning toodetermine om eller inte toosend trafik tooa viss nod. hello avsökning regelbundet kontrollerar en slutpunkt på varje nod toodetermine huruvida hello nod svarar. Om hello avsökningen misslyckas tooreceive ett svar efter ett visst antal gånger stoppar hello belastningsutjämnaren skickar trafik toothat nod. När du skapar ett kluster via hello Azure-portalen, konfigureras automatiskt en avsökning för varje anpassad endpoint-port som har konfigurerats.
+    ![Vidarebefordra trafik i Azure belastningsutjämnare][5]
+4. Azure belastningsutjämnare använder en avsökning för att avgöra om att skicka trafik till en viss nod eller inte. Avsökningen söker regelbundet en slutpunkt på varje nod för att avgöra om noden svarar. Om det inte går att ta emot ett svar efter ett visst antal gånger avsökningen, stoppar belastningsutjämnaren skickar trafik till noden. När du skapar ett kluster via Azure portal, konfigureras automatiskt en avsökning för varje anpassad endpoint-port som har konfigurerats.
 
-    ![Vidarebefordra trafik i hello Azure belastningsutjämnare][8]
+    ![Vidarebefordra trafik i Azure belastningsutjämnare][8]
 
-Det är viktigt tooremember hello Azure belastningsutjämnare och hello avsökning bara känna till om hello *noder*, inte hello *services* körs på hello noder. hello Azure belastningsutjämnare kommer alltid att skicka trafik toonodes som svarar toohello avsökningen, så var försiktig tooensure tjänster är tillgängliga på hello-noder som kan toorespond toohello avsökning.
+Det är viktigt att komma ihåg att Azure belastningsutjämnare och avsökningen bara känna av *noder*, inte den *tjänster* körs på noderna. Azure belastningsutjämnare kommer alltid att skicka trafik till noder som svarar avsökningen, så måste vara försiktig så att tjänster är tillgängliga på de noder som är kunna svara avsökningen.
 
 ## <a name="reliable-services-built-in-communication-api-options"></a>Reliable Services: Inbyggda API kommunikationsalternativ
-hello Reliable Services framework levereras med flera fördefinierade kommunikationsalternativ. hello beslutet om vilka en fungerar bäst för dig beror på hello val av hello programming modellen och hello kommunikation framework hello programmeringsspråket som dina tjänster har skrivits i.
+Reliable Services framework levereras med flera fördefinierade kommunikationsalternativ. Beslutet om vilka en fungerar bäst för dig beror på valet av programmeringsmiljö, kommunikation framework och programmeringsspråk som dina tjänster har skrivits i.
 
-* **Inget specifikt protokoll:** om du inte har ett visst val av kommunikation framework, men du vill tooget något igång snabbt och sedan hello perfekt alternativ för du är [remoting service](service-fabric-reliable-services-communication-remoting.md), vilket gör att strikt typkontroll RPC-anrop för Reliable Services och Reliable Actors. Detta är hello enklaste och snabbaste sättet tooget igång med service-kommunikation. Tjänsten fjärrkommunikation hanterar lösning av postadresser, anslutning, försök igen och felhantering. Detta är tillgängligt för både C# och Java-program.
-* **HTTP**: för språkoberoende kommunikation HTTP innehåller en branschstandardiserad val med verktyg och HTTP-servrar som är tillgängliga på många olika språk, alla stöds inte av Service Fabric. Tjänster kan använda alla tillgängliga, till exempel HTTP stack [ASP.NET Web API](service-fabric-reliable-services-communication-webapi.md) för C#-program. Klienter som skrivits i C# kan utnyttja hello `ICommunicationClient` och `ServicePartitionClient` klasser, medan för Java, använda hello `CommunicationClient` och `FabricServicePartitionClient` klasser, [för tjänsten upplösning, HTTP-anslutningar och försök igen slingor](service-fabric-reliable-services-communication.md).
-* **WCF**: Om du har befintliga kod som använder WCF som din kommunikation framework, så du kan använda hello `WcfCommunicationListener` för hello på serversidan och `WcfCommunicationClient` och `ServicePartitionClient` klasser för hello-klienten. Detta men är bara tillgängligt för C#-program på Windows-baserade kluster. Mer information finns i den här artikeln [WCF-baserad implementering av hello kommunikation stack](service-fabric-reliable-services-communication-wcf.md).
+* **Inget specifikt protokoll:** om du inte har ett visst val av kommunikation framework, men du vill få något dig snabbt, så det bästa alternativet för du [remoting service](service-fabric-reliable-services-communication-remoting.md), vilket gör att strikt typkontroll RPC-anrop för Reliable Services och Reliable Actors. Detta är det enklaste och snabbaste sättet att komma igång med service-kommunikation. Tjänsten fjärrkommunikation hanterar lösning av postadresser, anslutning, försök igen och felhantering. Detta är tillgängligt för både C# och Java-program.
+* **HTTP**: för språkoberoende kommunikation HTTP innehåller en branschstandardiserad val med verktyg och HTTP-servrar som är tillgängliga på många olika språk, alla stöds inte av Service Fabric. Tjänster kan använda alla tillgängliga, till exempel HTTP stack [ASP.NET Web API](service-fabric-reliable-services-communication-webapi.md) för C#-program. Klienter som skrivits i C# kan utnyttja den `ICommunicationClient` och `ServicePartitionClient` klasser, medan Java, Använd den `CommunicationClient` och `FabricServicePartitionClient` klasser, [för tjänsten upplösning, HTTP-anslutningar och försök igen slingor](service-fabric-reliable-services-communication.md).
+* **WCF**: Om du har befintliga kod som använder WCF som din kommunikation framework, så du kan använda den `WcfCommunicationListener` för serversidan och `WcfCommunicationClient` och `ServicePartitionClient` klasser för klienten. Detta men är bara tillgängligt för C#-program på Windows-baserade kluster. Mer information finns i den här artikeln [WCF-baserad implementering av kommunikation stacken](service-fabric-reliable-services-communication-wcf.md).
 
 ## <a name="using-custom-protocols-and-other-communication-frameworks"></a>Med hjälp av anpassade protokoll och andra ramverk för kommunikation
-Tjänster kan använda alla protokoll eller ramverk för kommunikation, om det är ett anpassat protokoll för binära via TCP-sockets eller händelser via strömning via [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) eller [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/). Service Fabric ger kommunikation API: er som du ansluter din kommunikation stacken, medan alla hello arbetar toodiscover och ansluta representeras från dig. Finns den här artikeln om hello [tillförlitlig kommunikation modell](service-fabric-reliable-services-communication.md) för mer information.
+Tjänster kan använda alla protokoll eller ramverk för kommunikation, om det är ett anpassat protokoll för binära via TCP-sockets eller händelser via strömning via [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) eller [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/). Service Fabric ger kommunikation API: er som du ansluter din kommunikation stacken, medan allt arbete att upptäcka och ansluta representeras från dig. Se den här artikeln om den [tillförlitlig kommunikation modell](service-fabric-reliable-services-communication.md) för mer information.
 
 ## <a name="next-steps"></a>Nästa steg
-Lär dig mer om hello begrepp och API: er som är tillgängliga i hello [Reliable Services kommunikation modellen](service-fabric-reliable-services-communication.md), sedan komma igång snabbt med [remoting service](service-fabric-reliable-services-communication-remoting.md) eller gå djupgående toolearn hur toowrite en lyssnare för kommunikation med [Web API med OWIN som värd för automatisk](service-fabric-reliable-services-communication-webapi.md).
+Mer information om begrepp och API: er som är tillgängliga i den [Reliable Services kommunikation modellen](service-fabric-reliable-services-communication.md), sedan komma igång snabbt med [remoting service](service-fabric-reliable-services-communication-remoting.md) eller gå på djupet att lära dig hur du skriver ett meddelande lyssnaren med [Web API med OWIN som värd för automatisk](service-fabric-reliable-services-communication-webapi.md).
 
 [1]: ./media/service-fabric-connect-and-communicate-with-services/serviceendpoints.png
 [2]: ./media/service-fabric-connect-and-communicate-with-services/namingservice.png

@@ -1,6 +1,6 @@
 ---
-title: "aaaSimulate fel i Azure mikrotjänster | Microsoft Docs"
-description: "Den här artikeln handlar om hello datatillgång åtgärder finns i Microsoft Azure Service Fabric."
+title: "Simulera fel i Azure mikrotjänster | Microsoft Docs"
+description: "Den här artikeln handlar om datatillgång åtgärder finns i Microsoft Azure Service Fabric."
 services: service-fabric
 documentationcenter: .net
 author: motanv
@@ -14,47 +14,47 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/07/2017
 ms.author: motanv;heeldin
-ms.openlocfilehash: 5bdda1c0c5a40b243ab956c4791afd52e11c4089
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: c8ddc7732999ae555323bebaef60aa34c8f2ec17
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="testability-actions"></a>Möjlighet att testa åtgärder
-I ordning toosimulate en instabilt infrastruktur ger Azure Service Fabric du hello utvecklare med sätt toosimulate olika verkliga fel och tillståndsövergångar. Dessa visas som datatillgång åtgärder. hello åtgärder är hello lågnivå-API: er som orsakar en viss feltolerans injection, tillståndsövergång eller validering. Du kan skriva omfattande testscenarier för dina tjänster genom att kombinera dessa åtgärder.
+För att simulera en instabilt infrastruktur tillhandahåller Azure Service Fabric utvecklaren med olika sätt att simulera olika verkliga fel och tillståndsövergångar. Dessa visas som datatillgång åtgärder. Åtgärderna är för låg nivå API: er som orsakar en viss feltolerans injection, tillståndsövergång eller validering. Du kan skriva omfattande testscenarier för dina tjänster genom att kombinera dessa åtgärder.
 
-Service Fabric innehåller några vanliga testscenarier består av dessa åtgärder. Vi rekommenderar starkt att du använder dessa inbyggda scenarier som väljs noggrant tootest vanliga tillståndsövergångar och fel fall. Åtgärder kan dock använda toocreate anpassade testscenarier när du vill tooadd täckning för scenarier som inte omfattas av inbyggda hello-scenarier ännu eller som är anpassade skräddarsydda för ditt program.
+Service Fabric innehåller några vanliga testscenarier består av dessa åtgärder. Vi rekommenderar starkt att du använder dessa inbyggda scenarier som väljs noggrant för att testa vanliga tillståndsövergångar och fel fall. Åtgärder kan dock användas för att skapa anpassade testscenarier när du vill lägga till täckning för scenarier som inte omfattas av inbyggda scenarier ännu eller som är anpassade skräddarsydda för ditt program.
 
-C#-implementeringar av hello åtgärder finns i hello System.Fabric.dll sammansättning. hello System Fabric PowerShell-modulen finns i hello Microsoft.ServiceFabric.Powershell.dll sammansättning. Som en del av runtime-installation är hello ServiceFabric PowerShell-modulen installerad tooallow lätt att använda.
+C#-implementeringar av åtgärder finns i System.Fabric.dll-sammansättningen. System Fabric PowerShell-modulen finns i Microsoft.ServiceFabric.Powershell.dll-sammansättningen. Modulen ServiceFabric PowerShell installeras som en del av runtime-installation, så att lätt att använda.
 
 ## <a name="graceful-vs-ungraceful-fault-actions"></a>Korrekt kontra städat fel åtgärder
 Möjlighet att testa åtgärder indelas i två huvudsakliga buckets.
 
-* Städat fel: dessa fel simulera fel som omstarter av datorn och krascher. I sådana fall fel hello körningskontexten processens plötsligt. Detta innebär att ingen rensning av hello tillstånd kan köra innan programmet hello startas igen.
-* Korrekt fel: dessa fel simulera korrekt åtgärder som flyttar replik och således som utlösts av belastningsutjämning. I sådana fall hello tjänsten hämtar ett meddelande om hello Stäng och kan rensa hello tillstånd innan du avslutar.
+* Städat fel: dessa fel simulera fel som omstarter av datorn och krascher. I sådana fall fel körningskontexten processens plötsligt. Detta innebär att ingen rensning av tillståndet kan köra innan programmet startas igen.
+* Korrekt fel: dessa fel simulera korrekt åtgärder som flyttar replik och således som utlösts av belastningsutjämning. I sådana fall kan tjänsten hämtar ett meddelande om stängning och kan rensa tillståndet innan du avslutar.
 
-För bättre kvalitet verifiering köra hello-tjänsten och företag arbetsbelastning när att olika korrekt och städat fel. Städat fel utöva scenarier där hello tjänstprocessen plötsligt avslutas hello mitten av vissa arbetsflöde. Detta testar hello Återställningssökväg när hello service replikeringen har återställts av Service Fabric. Detta hjälper testa datakonsekvens och huruvida hello Tjänststatus behålls korrekt efter fel. hello andra uppsättning fel (hello korrekt misslyckanden) testa att hello service korrekt reagerar tooreplicas flyttas runt av Service Fabric. Detta testar hantering av annullering i hello RunAsync metoden. hello-tjänsten måste toocheck för hello annullering token som angetts korrekt spara sitt tillstånd och avsluta hello RunAsync metoden.
+För bättre kvalitet verifiering, kör du tjänsten och affärskrav arbetsbelastningen när att olika korrekt och städat fel. Städat fel utöva scenarier där tjänstprocessen plötsligt avslutas mitt i vissa arbetsflöde. Detta testar återställningssökvägen när tjänsten replikeringen har återställts av Service Fabric. Detta hjälper testa datakonsekvens och om tjänstens tillstånd hanteras korrekt efter fel. Den andra uppsättningen fel (korrekt misslyckanden) testa att tjänsten korrekt reagerar på repliker flyttas runt av Service Fabric. Detta testar hantering av annullering i metoden RunAsync. Tjänsten måste kontrollera för att ange, spara tillståndet annullering token och avsluta RunAsync-metoden.
 
 ## <a name="testability-actions-list"></a>Möjlighet att testa åtgärdslista
 | Åtgärd | Beskrivning | Hanterade API | PowerShell-cmdlet | Korrekt/städat fel |
 | --- | --- | --- | --- | --- |
-| CleanTestState |Tar bort alla hello testtillstånd från hello kluster vid en felaktig avstängning av hello test-drivrutinen. |CleanTestStateAsync |Remove-ServiceFabricTestState |Inte tillämpligt |
+| CleanTestState |Tar bort alla testtillstånd från klustret vid en felaktig avstängning av test-drivrutinen. |CleanTestStateAsync |Remove-ServiceFabricTestState |Inte tillämpligt |
 | InvokeDataLoss |Startar förlust av data i en partition med tjänsten. |InvokeDataLossAsync |Invoke-ServiceFabricPartitionDataLoss |Korrekt |
 | InvokeQuorumLoss |Placerar en given tillståndskänslig service partition i förlorar kvorum. |InvokeQuorumLossAsync |Anropa ServiceFabricQuorumLoss |Korrekt |
-| Flytta primära |Flyttar hello angetts primära repliken av en tillståndskänslig service toohello angivna klusternoden. |MovePrimaryAsync |Flytta ServiceFabricPrimaryReplica |Korrekt |
-| Flytta sekundär |Flyttar hello aktuella sekundär replik av en tillståndskänslig service tooa annan klusternod. |MoveSecondaryAsync |Flytta ServiceFabricSecondaryReplica |Korrekt |
-| RemoveReplica |Simulerar ett replik fel genom att ta bort en replik från ett kluster. Detta kommer att stängas hello replik och övergår det toorole None, ta bort dess status från hello kluster. |RemoveReplicaAsync |Ta bort ServiceFabricReplica |Korrekt |
-| RestartDeployedCodePackage |Simulerar ett fel i koden paketet genom att starta om en kodpaketet har distribuerats på en nod i ett kluster. Detta avbryter hello kod paketet processen, vilket startar om alla hello användaren service repliker i den här processen. |RestartDeployedCodePackageAsync |Starta om ServiceFabricDeployedCodePackage |Städat |
+| Flytta primära |Flyttar den angivna primära repliken av en tillståndskänslig tjänst till den angivna klusternoden. |MovePrimaryAsync |Flytta ServiceFabricPrimaryReplica |Korrekt |
+| Flytta sekundär |Flyttar den aktuella sekundär repliken av en tillståndskänslig tjänst till en annan klusternod. |MoveSecondaryAsync |Flytta ServiceFabricSecondaryReplica |Korrekt |
+| RemoveReplica |Simulerar ett replik fel genom att ta bort en replik från ett kluster. Detta kommer att stängas repliken och kommer övergång till rollen None, ta bort dess status från klustret. |RemoveReplicaAsync |Ta bort ServiceFabricReplica |Korrekt |
+| RestartDeployedCodePackage |Simulerar ett fel i koden paketet genom att starta om en kodpaketet har distribuerats på en nod i ett kluster. Detta avbryter kod paketet processen, vilket startar om alla användare service repliker finns i den här processen. |RestartDeployedCodePackageAsync |Starta om ServiceFabricDeployedCodePackage |Städat |
 | RestartNode |Simulerar ett nodfel för Service Fabric-kluster genom att starta om en nod. |RestartNodeAsync |Starta om ServiceFabricNode |Städat |
 | RestartPartition |Simulerar ett datacenter blackout eller kluster blackout scenario genom att starta om vissa eller alla repliker för en partition. |RestartPartitionAsync |Restart-ServiceFabricPartition |Korrekt |
-| RestartReplica |Simulerar ett fel för repliken genom att starta om en beständiga replik i ett kluster, stänga hello replik och sedan öppna den igen. |RestartReplicaAsync |Starta om ServiceFabricReplica |Korrekt |
+| RestartReplica |Simulerar ett fel för repliken genom att starta om en beständiga replik i ett kluster, stänga repliken och sedan öppna den igen. |RestartReplicaAsync |Starta om ServiceFabricReplica |Korrekt |
 | Startnod |Startar en nod i ett kluster som har redan stoppats. |StartNodeAsync |Start-ServiceFabricNode |Inte tillämpligt |
-| StopNode |Simulerar ett nodfel genom att stoppa en nod i ett kluster. hello nod förblir ned förrän Startnod anropas. |StopNodeAsync |Stop-ServiceFabricNode |Städat |
-| ValidateApplication |Verifierar hello tillgänglighet och hälsotillståndet för alla Service Fabric-tjänster i ett program, vanligtvis efter att vissa fel till hello system. |ValidateApplicationAsync |Testa ServiceFabricApplication |Inte tillämpligt |
-| ValidateService |Verifierar hello tillgänglighet och hälsotillståndet för ett Service Fabric-tjänsten, vanligtvis efter att vissa fel till hello system. |ValidateServiceAsync |Testa ServiceFabricService |Inte tillämpligt |
+| StopNode |Simulerar ett nodfel genom att stoppa en nod i ett kluster. Noden förblir ned förrän Startnod anropas. |StopNodeAsync |Stop-ServiceFabricNode |Städat |
+| ValidateApplication |Verifierar tillgänglighet och hälsotillståndet för alla Service Fabric-tjänster i ett program, vanligtvis efter att vissa fel i systemet. |ValidateApplicationAsync |Testa ServiceFabricApplication |Inte tillämpligt |
+| ValidateService |Verifierar tillgänglighet och hälsotillståndet för ett Service Fabric-tjänsten, vanligtvis efter att vissa fel i systemet. |ValidateServiceAsync |Testa ServiceFabricService |Inte tillämpligt |
 
 ## <a name="running-a-testability-action-using-powershell"></a>Köra en datatillgång-åtgärd med hjälp av PowerShell
-De här självstudierna visar hur toorun en möjlighet att testa åtgärden med hjälp av PowerShell. Du får lära dig hur toorun en datatillgång-åtgärd mot en lokal (en-box)-kluster eller ett Azure-kluster. Microsoft.Fabric.Powershell.dll--hello Service Fabric PowerShell-modulen--installeras automatiskt när du installerar hello Microsoft Service Fabric MSI. hello modulen laddas automatiskt när du öppnar en PowerShell-kommandotolk.
+Den här kursen visar hur du kör en möjlighet att testa åtgärden med hjälp av PowerShell. Du får lära dig att köra en datatillgång-åtgärd mot en lokal (en-box)-kluster eller ett Azure-kluster. Microsoft.Fabric.Powershell.dll--Service Fabric PowerShell-modulen--installeras automatiskt när du installerar Microsoft Service Fabric MSI. Modulen har lästs in automatiskt när du öppnar en PowerShell-kommandotolk.
 
 Självstudiekurs segment:
 
@@ -62,13 +62,13 @@ Självstudiekurs segment:
 * [Köra en åtgärd mot ett Azure-kluster](#run-an-action-against-an-azure-cluster)
 
 ### <a name="run-an-action-against-a-one-box-cluster"></a>Köra en åtgärd mot ett kluster med en ruta
-toorun en datatillgång-åtgärd mot en lokala klustret först ansluta toohello klustret och öppna hello PowerShell-Kommandotolken i administratörsläge. Låt oss titta på hello **omstart ServiceFabricNode** åtgärd.
+Om du vill köra en datatillgång-åtgärd mot en lokala klustret, Anslut till klustret och öppna PowerShell-Kommandotolken i administratörsläge. Låt oss titta på den **omstart ServiceFabricNode** åtgärd.
 
 ```powershell
 Restart-ServiceFabricNode -NodeName Node1 -CompletionMode DoNotVerify
 ```
 
-Här hello åtgärd **omstart ServiceFabricNode** körs på en nod med namnet ”Nod1”. hello slutförande läge anger att den inte ska kontrollera om hello starta om noden åtgärden faktiskt har slutförts. Att ange hello slutförande-läge som ”verifiera” innebär att den tooverify om hello omstart åtgärden faktiskt har slutförts. Istället för att ange hello noden direkt med namnet kan du ange den via en partition nyckel och hello typ av repliken, enligt följande:
+Här åtgärden **omstart ServiceFabricNode** körs på en nod med namnet ”Nod1”. Slutförande-läge anger att den inte ska kontrollera om omstart av nod åtgärden faktiskt har slutförts. Ange slutförande-läge som ”verifiera” gör att den kan kontrollera om omstart åtgärden faktiskt har slutförts. I stället för att direkt ange noden med namnet, kan du ange den via en partitionsnyckel och vilken typ av repliken, enligt följande:
 
 ```powershell
 Restart-ServiceFabricNode -ReplicaKindPrimary  -PartitionKindNamed -PartitionKey Partition3 -CompletionMode Verify
@@ -83,20 +83,20 @@ Connect-ServiceFabricCluster $connection
 Restart-ServiceFabricNode -NodeName $nodeName -CompletionMode DoNotVerify
 ```
 
-**Starta om ServiceFabricNode** ska använda toorestart ett Service Fabric-nod i ett kluster. Detta förhindrar hello Fabric.exe-processen, vilket startar om alla hello system-tjänsten och användaren service repliker på noden. Med den här API-tootest kan din tjänst upptäcka buggar längs hello failover återställning sökvägar. Det hjälper att simulera nodfel i hello kluster.
+**Starta om ServiceFabricNode** ska användas för att starta om en Service Fabric-nod i ett kluster. Detta förhindrar att Fabric.exe-processen, vilket startar om alla system-tjänsten och användaren service repliker finns på noden. Använd detta API för att testa din tjänst kan upptäcka buggar längs failover återställning sökvägar. Det hjälper att simulera nodfel i klustret.
 
-hello följande skärmbild visar hello **omstart ServiceFabricNode** datatillgång kommandot i åtgärden.
+I följande skärmbild visas den **omstart ServiceFabricNode** datatillgång kommandot i åtgärden.
 
 ![](media/service-fabric-testability-actions/Restart-ServiceFabricNode.png)
 
-hello utdata av hello först **Get-ServiceFabricNode** (en cmdlet från hello Service Fabric PowerShell-modulen) visar den lokala hello-klustret har fem noder: Node.1 tooNode.5. Efter hello datatillgång åtgärd (cmdlet) **omstart ServiceFabricNode** körs på hello nod med namnet Node.4 vi se hello nodens drifttid har återställts.
+Utdata från först **Get-ServiceFabricNode** (en cmdlet från modulen Service Fabric PowerShell) visar att det lokala klustret har fem noder: Node.1 till Node.5. När du har möjlighet att testa åtgärden (cmdlet) **omstart ServiceFabricNode** körs på noden med namnet Node.4 vi se att nodens drifttid har återställts.
 
 ### <a name="run-an-action-against-an-azure-cluster"></a>Köra en åtgärd mot ett Azure-kluster
-Kör en datatillgång-åtgärd (med hjälp av PowerShell) mot ett Azure-kluster är liknande toorunning hello-åtgärd mot en lokala klustret. hello endast skillnaden är att innan du kan köra hello-åtgärden, i stället för anslutande toohello lokala klustret och du behöver tooconnect toohello Azure kluster först.
+Kör en datatillgång-åtgärd (med hjälp av PowerShell) mot ett Azure-kluster liknar Kör åtgärden mot lokala klustret. Den enda skillnaden är att du måste först ansluta till Azure-klustret innan du kan köra åtgärden i stället för att ansluta till det lokala klustret.
 
 ## <a name="running-a-testability-action-using-c35"></a>Köra en datatillgång åtgärd med C & #35.
-toorun en möjlighet att testa åtgärden med hjälp av C#, måste du först tooconnect toohello kluster med hjälp av FabricClient. Skaffa hello parametrar som behövs toorun hello åtgärd. Olika parametrar som kan användas för toorun hello samma åtgärd.
-Titta på hello RestartServiceFabricNode åtgärd, enkelriktade toorun är det med hjälp av noden hello information (nodnamnet och nod-instans-ID) i hello kluster.
+Om du vill köra en möjlighet att testa åtgärden med hjälp av C#, måste du först ansluta till klustret med hjälp av FabricClient. Skaffa de parametrar som behövs för att köra instruktionen. Olika parametrar som kan användas för att köra samma åtgärd.
+Titta på åtgärden RestartServiceFabricNode är ett sätt att köra den med hjälp av noden informationen (nodnamnet och nod-instans-ID) i klustret.
 
 ```csharp
 RestartNodeAsync(nodeName, nodeInstanceId, completeMode, operationTimeout, CancellationToken.None)
@@ -104,16 +104,16 @@ RestartNodeAsync(nodeName, nodeInstanceId, completeMode, operationTimeout, Cance
 
 Parametern förklaring:
 
-* **CompleteMode** anger att hello-läge inte ska kontrollera om hello omstart åtgärden faktiskt har slutförts. Att ange hello slutförande-läge som ”verifiera” innebär att den tooverify om hello omstart åtgärden faktiskt har slutförts.  
-* **OperationTimeout** anger hello tiden för hello åtgärden toofinish innan en TimeoutException undantag.
-* **CancellationToken** gör en väntande samtal toobe avbröts.
+* **CompleteMode** anger att läget som inte ska kontrollera om omstart åtgärden faktiskt har slutförts. Ange slutförande-läge som ”verifiera” gör att den kan kontrollera om omstart åtgärden faktiskt har slutförts.  
+* **OperationTimeout** anger hur lång tid för att åtgärden ska slutföras innan en TimeoutException undantag.
+* **CancellationToken** aktiverar ett väntande samtal avbrytas.
 
-Du kan ange den via en partition nyckel och hello typ av replik i stället för att ange hello noden direkt med sitt namn.
+I stället för att direkt ange noden med namnet, kan du ange det via en partitionsnyckel och vilken typ av replikering.
 
 Mer information finns i [PartitionSelector och ReplicaSelector](#partition_replica_selector).
 
 ```csharp
-// Add a reference tooSystem.Fabric.Testability.dll and System.Fabric.dll
+// Add a reference to System.Fabric.Testability.dll and System.Fabric.dll
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -136,10 +136,10 @@ class Test
         Console.WriteLine("Starting RestartNode test");
         try
         {
-            //Restart hello node by using ReplicaSelector
+            //Restart the node by using ReplicaSelector
             RestartNodeAsync(clusterConnection, serviceName).Wait();
 
-            //Another way toorestart node is by using nodeName and nodeInstanceId
+            //Another way to restart node is by using nodeName and nodeInstanceId
             RestartNodeAsync(clusterConnection, nodeName, nodeInstanceId).Wait();
         }
         catch (AggregateException exAgg)
@@ -180,9 +180,9 @@ class Test
 
 ## <a name="partitionselector-and-replicaselector"></a>PartitionSelector och ReplicaSelector
 ### <a name="partitionselector"></a>PartitionSelector
-PartitionSelector är en hjälp som visas i datatillgång är används tooselect en specifik partition på vilka tooperform hello datatillgång åtgärder. Det kan vara används tooselect en specifik partition om hello partitions-ID är känt i förväg. Eller, du kan ange hello partitionsnyckel och hello åtgärden kommer att lösa hello partitions-ID internt. Du kan också ha hello kan välja att en slumpmässig partition.
+PartitionSelector är en hjälp som visas i datatillgång och används för att välja en specifik partition som du vill utföra några åtgärder för datatillgång. Det kan användas för att välja en specifik partition om partitions-ID är känt i förväg. Eller, du kan ange Partitionsnyckeln och åtgärden kommer att lösa partitions-ID internt. Du har också välja en slumpmässig partition.
 
-toouse helper, skapa hello PartitionSelector objekt och välj hello partition med hjälp av någon av hello Select * metoder. Ange sedan hello PartitionSelector objektet toohello API som kräver. Om inget alternativ har valts standard tooa slumpmässiga partition.
+Skapa PartitionSelector-objekt och markerar du partitionen med någon av metoderna väljer * om du vill använda den här hjälpfilen. Ange sedan objektet PartitionSelector-API: et som kräver. Om inget alternativ har valts standard till en slumpmässig partition.
 
 ```csharp
 Uri serviceName = new Uri("fabric:/samples/InMemoryToDoListApp/InMemoryToDoListService");
@@ -204,9 +204,9 @@ PartitionSelector uniformIntPartitionSelector = PartitionSelector.PartitionKeyOf
 ```
 
 ### <a name="replicaselector"></a>ReplicaSelector
-ReplicaSelector är en hjälp som visas i datatillgång är används toohelp väljer du en replik på vilka tooperform någon av hello datatillgång åtgärder. Det kan vara används tooselect en specifik replik om hello-replik-ID är känt i förväg. Dessutom har hello möjlighet att välja en primär replik eller en slumpmässig sekundär. ReplicaSelector härleds från PartitionSelector, så du måste tooselect både hello replik och hello partition där du vill tooperform hello datatillgång igen.
+ReplicaSelector är en hjälp som visas i datatillgång och används för att markera en replik som du vill utföra några åtgärder för datatillgång. Det kan användas för att välja en specifik replik om replik-ID är känt i förväg. Dessutom har möjlighet att välja en primär replik eller en slumpmässig sekundär. ReplicaSelector härleds från PartitionSelector, så du måste välja både repliken och den partition som du vill utföra åtgärden datatillgång.
 
-toouse helper, skapa ett ReplicaSelector objekt och ange hello önskemål tooselect hello replik och hello partition. Du kan sedan överföra den till hello API som kräver. Om inget alternativ har valts standard tooa slumpmässiga replik och slumpmässiga partition.
+Skapa ett ReplicaSelector-objekt om du vill använda den här hjälpfilen och ange hur du vill välja repliken och partitionen. Du kan sedan överföra den till API-gränssnitt som kräver. Om inget alternativ har valts används som standard slumpmässig replik- och slumpmässiga partition.
 
 ```csharp
 Guid partitionIdGuid = new Guid("8fb7ebcc-56ee-4862-9cc0-7c6421e68829");
@@ -216,10 +216,10 @@ long replicaId = 130559876481875498;
 // Select a random replica
 ReplicaSelector randomReplicaSelector = ReplicaSelector.RandomOf(partitionSelector);
 
-// Select hello primary replica
+// Select the primary replica
 ReplicaSelector primaryReplicaSelector = ReplicaSelector.PrimaryOf(partitionSelector);
 
-// Select hello replica by ID
+// Select the replica by ID
 ReplicaSelector replicaByIdSelector = ReplicaSelector.ReplicaIdOf(partitionSelector, replicaId);
 
 // Select a random secondary replica
@@ -228,7 +228,7 @@ ReplicaSelector secondaryReplicaSelector = ReplicaSelector.RandomSecondaryOf(par
 
 ## <a name="next-steps"></a>Nästa steg
 * [Möjlighet att testa scenarier](service-fabric-testability-scenarios.md)
-* Hur tootest din tjänst
+* Hur du testar din tjänst
   * [Simulera fel under tjänstens arbetsbelastningar](service-fabric-testability-workload-tests.md)
   * [Tjänst-till-tjänst kommunikationsfel](service-fabric-testability-scenarios-service-communication.md)
 

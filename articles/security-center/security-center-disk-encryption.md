@@ -1,6 +1,6 @@
 ---
-title: aaaEncrypt en virtuell dator i Azure | Microsoft Docs
-description: "Det här dokumentet hjälper dig att tooencrypt en virtuell Azure-dator när du har fått en avisering från Azure Security Center."
+title: Kryptera en virtuell Azure-dator | Microsoft Docs
+description: "Det här dokumentet hjälper dig att kryptera en virtuell Azure-dator när du har fått en avisering från Azure Security Center."
 services: security, security-center
 documentationcenter: na
 author: TomShinder
@@ -14,134 +14,134 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/15/2017
 ms.author: tomsh
-ms.openlocfilehash: 7c7c6eed39d16bde8a0dfaffe3a3331c58101634
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 8d39aafb0ab7b0e87afdf4d2f50f1e224b8d251f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="encrypt-an-azure-virtual-machine"></a>Kryptera en virtuell Azure-dator
-Azure Security Center varnar dig om du har virtuella datorer som inte är krypterade. Dessa aviseringar visas med hög angelägenhetsgrad och hello rekommendation är tooencrypt dessa virtuella datorer.
+Azure Security Center varnar dig om du har virtuella datorer som inte är krypterade. Dessa aviseringar visas med hög angelägenhetsgrad och rekommendationen är att kryptera dessa virtuella datorer.
 
 ![Rekommendation för kryptering av disk](./media/security-center-disk-encryption/security-center-disk-encryption-fig1.png)
 
 > [!NOTE]
-> hello informationen i det här dokumentet gäller tooencrypting virtuella datorer utan att använda en krypteringsnyckel för nyckel (som krävs för att säkerhetskopiera virtuella datorer med Azure Backup). Hello artikel [Azure Disk Encryption för Windows och Linux virtuella datorer i Azure](https://docs.microsoft.com/en-us/azure/security/azure-security-disk-encryption) information om hur toouse en nyckel krypteringsnyckeln toosupport Azure Backup för krypterade Azure virtuella datorer.
+> Informationen i detta dokument gäller för kryptering av virtuella datorer utan att använda en krypteringsnyckel (som krävs för att säkerhetskopiera virtuella datorer med Azure Backup). Läs artikeln [Azure Disk Encryption for Windows and Linux Azure Virtual Machines](https://docs.microsoft.com/en-us/azure/security/azure-security-disk-encryption) (Azure Disk Encryption för Windows och virtuella Linux-datorer i Azure) om du vill ha information om hur man använder en krypteringsnyckel för att ge Azure Backup stöd för krypterade virtuella Azure-datorer.
 >
 >
 
-tooencrypt Azure virtuella datorer som identifierats av Azure Security Center behov av kryptering, rekommenderar vi hello följande steg:
+Vi rekommenderar följande steg när du ska kryptera virtuella Azure-datorer som har identifierats vara i behov av kryptering av Azure Security Center:
 
-* Installera och konfigurera Azure PowerShell. Detta gör att du toorun hello PowerShell-kommandon krävs tooset in hello krav krävs tooencrypt Azure virtuella datorer.
-* Hämta och kör hello Azure Disk Encryption krav Azure PowerShell-skript
+* Installera och konfigurera Azure PowerShell. Det gör att du kan köra de PowerShell-kommandon som krävs för att ställa in kraven och kryptera Azure-datorer.
+* Hämta och kör de Azure PowerShell-skript som krävs för Azure Disk Encryption
 * Kryptera dina virtuella datorer
 
-hello syftet med det här dokumentet är tooenable du tooencrypt virtuella datorer, även om du har liten eller ingen erfarenhet av Azure PowerShell.
-Det här dokumentet förutsätter att du använder Windows 10 som hello klientdatorn där du ska konfigurera Azure Disk Encryption.
+Målet med det här dokumentet är att du ska kunna kryptera dina virtuella datorer, även om du har liten eller ingen erfarenhet av Azure PowerShell.
+I det här dokumentet förutsätter vi att du använder Windows 10 som den klientdator där du ska konfigurera Azure Disk Encryption.
 
-Det finns flera metoder som kan vara används toosetup hello krav och tooconfigure kryptering för virtuella datorer i Azure. Om du redan känner till väl Azure PowerShell eller Azure CLI, kanske du hellre toouse alternativa metoder.
+Det finns flera metoder som kan användas för att konfigurera de nödvändiga komponenterna och konfigurera kryptering för virtuella datorer i Azure. Om du redan känner till Azure PowerShell eller Azure CLI väl kanske du hellre vill använda alternativa metoder.
 
 > [!NOTE]
-> toolearn mer information om alternativa sätt tooconfiguring kryptering för virtuella Azure-datorer, se [Azure Disk Encryption för Windows och Linux virtuella datorer i Azure](https://gallery.technet.microsoft.com/Azure-Disk-Encryption-for-a0018eb0).
+> Mer info om alternativa sätt att konfigurera kryptering för virtuella Azure-datorer finns i [Azure Disk Encryption för Windows och virtuella Linux-datorer i Azure](https://gallery.technet.microsoft.com/Azure-Disk-Encryption-for-a0018eb0).
 >
 >
 
 ## <a name="install-and-configure-azure-powershell"></a>Installera och konfigurera Azure PowerShell
-Du behöver ha Azure PowerShell version 1.2.1 eller senare installerat på datorn. hello artikel [hur tooinstall och konfigurera Azure PowerShell](/powershell/azure/overview) innehåller alla hello stegen tooprovision din dator toowork med Azure PowerShell. hello enklaste metoden är toouse hello Web PI-installation-metoden anges i den artikeln. Även om du redan har installerat Azure PowerShell, installera igen med hello Web PI-metoden så att du har hello senaste versionen av Azure PowerShell.
+Du behöver ha Azure PowerShell version 1.2.1 eller senare installerat på datorn. Artikeln [Så installerar och konfigurerar du Azure PowerShell](/powershell/azure/overview) beskriver alla steg du behöver för att ställa in datorn så att den fungerar med Azure PowerShell. Den enklaste metoden är att använda metoden för Web PI-installation som beskrivs i den artikeln. Även om du redan har installerat Azure PowerShell bör du installera det igen med Web PI-metoden så att du har den senaste versionen av Azure PowerShell.
 
-## <a name="obtain-and-run-hello-azure-disk-encryption-prerequisites-configuration-script"></a>Hämta och kör krävs för hello Azure disk encryption konfigurationsskript
-hello Azure Disk Encryption nödvändiga Konfigurationsskriptet ställer in alla hello förutsättningar som krävs för att kryptera dina virtuella Azure-datorer.
+## <a name="obtain-and-run-the-azure-disk-encryption-prerequisites-configuration-script"></a>Hämta och kör det konfigurationsskript som krävs för Azure Disk Encryption
+Med det nödvändiga konfigurationsskriptet för Azure Disk Encryption ställs alla förutsättningar som krävs för kryptering av dina virtuella Azure-datorer in.
 
-1. Gå toohello GitHub-sida som innehåller hello [Azure Disk Encryption nödvändiga installationsskriptet](https://github.com/Azure/azure-powershell/blob/master/src/ResourceManager/Compute/Commands.Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1).
-2. Hej GibHub-sidan, klicka på hello **Raw** knappen.
-3. Använd **CTRL-A** tooselect alla hello text på hello sida och sedan använda **CTRL-C** toocopy alla hello text hello sidan toohello Urklipp.
-4. Öppna **anteckningar** och klistrar in hello kopieras i anteckningar.
+1. Gå till den GitHub-sida som innehåller det [nödvändiga installationsskriptet för Azure Disk Encryption](https://github.com/Azure/azure-powershell/blob/master/src/ResourceManager/Compute/Commands.Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1).
+2. Klicka på **Raw**-knappen som finns på GibHub-sidan.
+3. Markera all text på sidan genom att använda **CTRL-A**. Använd sedan **CTRL-C** och kopiera all text till Urklipp.
+4. Öppna **Anteckningar** och klistra in den kopierade texten.
 5. Skapa en ny mapp på enhet C: med namnet **AzureADEScript**.
-6. Spara hello anteckningsfilen: Klicka på **filen**, klicka på **Spara som**. Ange i textrutan med hello-fil, **”ADEPrereqScript.ps1”** och på **spara**. (Kontrollera att du placerar hello citattecknen runt hello namn, annars sparas hello-fil med filnamnstillägget .txt).
+6. Spara anteckningsfilen: Klicka på **Arkiv** och sedan på **Spara som**. I textrutan för filnamn anger du **”ADEPrereqScript.ps1”** och klickar på **Spara**. (Kontrollera att du placerar citattecknen runt namnet, annars sparas filen med filnamnstillägget .txt).
 
-Nu när hello skriptinnehållet har sparats, öppna hello skript i hello PowerShell ISE:
+Nu när skriptinnehållet har sparats öppnar du skriptet i PowerShell ISE:
 
-1. I hello Start-menyn, klickar du på **Cortana**. Be **Cortana** ”PowerShell” genom att skriva **PowerShell** i hello Cortana-sökrutan.
+1. Klicka på **Cortana** i Start-menyn. Fråga **Cortana** ”PowerShell” genom att skriva **PowerShell** i Cortana-sökrutan.
 2. Högerklicka på **Windows PowerShell ISE** och klicka på **Kör som administratör**.
-3. I hello **administratör: Windows PowerShell ISE** -fönstret klickar du på **visa** och klicka sedan på **visa Skriptfönster**.
-4. Om du ser hello **kommandon** hello höger på hello fönstret klicka hello **”x”** i hello övre högra hörnet av hello fönstret tooclose den. Om hello texten är för liten för att du toosee använder **CTRL + Lägg till** (”Lägg till” är hello ”plustecknet”). Om hello texten är för stor, kan du använda **CTRL + subtrahera** (subtrahera är hello ”-” tecken).
-5. Klicka på **Arkiv** och sedan på **Öppna**. Navigera toohello **C:\AzureADEScript** mappen och hello Dubbelklicka på hello **ADEPrereqScript**.
-6. Hej **ADEPrereqScript** innehåll bör nu visas i hello PowerShell ISE och är färgkodade toohelp du enkelt se diverse komponenter, till exempel kommandon, parametrar och variabler.
+3. I fönstret **Administratör: Windows PowerShell ISE** klickar du på **Visa** och sedan på **Visa skriptfönster**.
+4. Om du ser fönstret **Kommandon** till höger klickar du på **”x”** i det övre högra hörnet för att stänga det. Om texten är för liten för att se använder du **CTRL + Lägg till** (”Lägg till” är tecknet ”+”). Om texten är för stor använder du **CTRL + subtrahera** (subtrahera är tecknet ”-”).
+5. Klicka på **Arkiv** och sedan på **Öppna**. Navigera till mappen **C:\AzureADEScript** och dubbelklicka på **ADEPrereqScript**.
+6. Innehållet **ADEPrereqScript** bör nu visas i PowerShell ISE. Det är färgkodat för att du enkelt ska kunna se diverse komponenter, till exempel kommandon, parametrar och variabler.
 
-Du bör nu se något liknande hello bilden nedan.
+Du bör nu se något som liknar bilden nedan.
 
 ![Fönstret PowerShell ISE](./media/security-center-disk-encryption/security-center-disk-encryption-fig2.png)
 
-hello övre fönstret är refererad tooas hello ”Skriptfönster” hello nedre rutan är refererad tooas hello ”konsolen”. Vi använder dessa termer senare i den här artikeln.
+Det översta fönstret kallas ”skriptfönster” och det längst ned kallas ”konsolen”. Vi använder dessa termer senare i den här artikeln.
 
-## <a name="run-hello-azure-disk-encryption-prerequisites-powershell-command"></a>Kör PowerShell-kommando för hello Azure disk encryption krav
-hello skript krävs för Azure Disk Encryption ber dig om hello följande information när du har startat hello skript:
+## <a name="run-the-azure-disk-encryption-prerequisites-powershell-command"></a>Kör de PowerShell-kommandon som krävs för Azure Disk Encryption
+Skriptet med kraven för Azure Disk Encryption ber dig om följande information när du har startat skriptet:
 
-* **Resursgruppens namn** - namn för hello resursgrupp som du vill tooput hello Nyckelvalvet i.  En ny resursgrupp med hello-namn som du anger kommer att skapas om det inte redan finns en med samma namn skapas. Om du redan har en resursgrupp som du vill toouse i den här prenumerationen ange hello namnet på resursgruppen.
-* **Nyckelvalvets namn** -namnet på hello Nyckelvalv där krypteringsnycklarna nycklar är toobe placeras. Om det inte redan finns ett nyckelvalv med samma namn skapas ett nytt nyckelvalv med det här namnet. Om du redan har ett Nyckelvalv som du vill toouse ange hello namn på hello befintliga Nyckelvalvet.
-* **Plats** -platsen för hello Key Vault. Kontrollera hello Nyckelvalvet och virtuella datorer toobe krypterade i hello samma plats. Om du inte vet hello plats finns steg senare i den här artikeln som visar hur toofind ut.
-* **Azure Active Directory-programnamn** -namnet på hello Azure Active Directory-program som kommer att använda toowrite hemligheter toohello Key Vault. Om det inte redan finns ett program med det namnet skapas ett nytt. Om du redan har ett Azure Active Directory-program som du vill toouse ange hello namnet på det Azure Active Directory-programmet.
+* **Resursgruppens namn** – namnet på den resursgrupp som du vill placera nyckelvalvet i.  Om det inte redan finns en med samma namn skapas en ny resursgrupp med det namn som du anger. Om du redan har en resursgrupp som du vill använda i den här prenumerationen anger du namnet på den.
+* **Nyckelvalvets namn** – namnet på det nyckelvalv där krypteringsnycklarna ska placeras. Om det inte redan finns ett nyckelvalv med samma namn skapas ett nytt nyckelvalv med det här namnet. Om du redan har ett nyckelvalv som du vill använda anger du namnet på det befintliga nyckelvalvet.
+* **Plats** – platsen för nyckelvalvet. Kontrollera att nyckelvalvet och virtuella datorer som ska krypteras finns på samma plats. Om du inte vet vilken plats det är finns steg senare i artikeln som visar hur du tar reda på det.
+* **Azure Active Directory-programmets namn** – namnet på det Azure Active Directory-program som ska användas för att skriva hemligheter i nyckelvalvet. Om det inte redan finns ett program med det namnet skapas ett nytt. Om du redan har ett Azure Active Directory-program som du vill använda anger du namnet på det Azure Active Directory-programmet.
 
 > [!NOTE]
-> Om du är nyfiken som toowhy måste toocreate ett Azure Active Directory-program, se *registrera ett program med Azure Active Directory* i hello artikeln [komma igång med Azure Key Vault](../key-vault/key-vault-get-started.md).
+> Om du är nyfiken på varför du behöver skapa ett Azure Active Directory-program kan du läsa avsnittet *Registrera ett program med Azure Active Directory* i artikeln [Komma igång med Azure-nyckelvalvet](../key-vault/key-vault-get-started.md).
 >
 >
 
-Utför hello följande steg tooencrypt en virtuell Azure-dator:
+Kryptera en virtuell Azure-dator genom att utföra följande steg:
 
-1. Om du stängde hello PowerShell ISE öppnar du en upphöjd hello PowerShell ISE-instans. Följ hello anvisningarna tidigare i den här artikeln om hello PowerShell ISE inte redan är öppna. Om du har stängt hello skript och öppna sedan hello **ADEPrereqScript.ps1** på **filen**, sedan **öppna** och välja hello skript hello **c:\ AzureADEScript** mapp. Om du har följt den här artikeln från början hello, bara vidare toohello nästa steg.
-2. Ändra hello fokus toohello lokala hello skriptet genom att skriva i hello PowerShell ISE (hello längst ned i fönstret hello PowerShell ISE) hello konsolträdet **cd c:\AzureADEScript** och tryck på **RETUR**.
-3. Ange hello körningsprincipen på datorn så att du kan köra hello skript. Typen **Set-ExecutionPolicy Unrestricted** i hello konsolen och tryck sedan på RETUR. Om du ser en dialogruta om hello effekterna av hälsningspaket ändringsprinciper tooexecution klickar du antingen **Ja tooall** eller **Ja** (om du ser **Ja tooall**, markerar du det alternativet – om du inte ser **Ja tooall**, klicka på **Ja**).
-4. Logga in på Azure-kontot. Skriv i konsolen för hello **Login-AzureRmAccount** och tryck på **RETUR**. En dialogruta visas där du anger dina autentiseringsuppgifter (Kontrollera att du har rättigheter toochange hello virtuella datorer – om du inte har rättigheter du inte kan tooencrypt dem. Om du inte är säker frågar du din prenumerationsägare eller administratör). Du bör se information om din **miljö**, ditt **konto**, **klient-ID**, **prenumerations-ID** och **aktuellt lagringskonto**. Kopiera hello **SubscriptionId** tooNotepad. Du behöver toouse detta i steg #6.
-5. Sök efter vilken prenumeration den virtuella datorn tillhör tooand dess plats. Gå för[https://portal.azure.com](ttps://portal.azure.com) och logga in.  Klicka på vänster sida av hello sidan hello, **virtuella datorer**. Du kommer se en lista över dina virtuella datorer och hello prenumerationer som de tillhör.
+1. Om du har stängt PowerShell ISE öppnar du en upphöjd PowerShell ISE-instans. Följ anvisningarna tidigare i den här artikeln om PowerShell ISE inte redan är öppet. Om du har avslutat skriptet öppnar du **ADEPrereqScript.ps1** genom att klicka på **Arkiv**. Klicka sedan på **Öppna** och välj skriptet i mappen **c:\AzureADEScript**. Om du har följt den här artikeln från början går du bara vidare till nästa steg.
+2. I PowerShell ISE-konsolen (längst ned i PowerShell ISE) ändrar du fokus till det lokala skriptet genom att skriva **cd c:\AzureADEScript** och trycka på **RETUR**.
+3. Ange körningsprincipen på datorn så att du kan köra skriptet. Skriv **Set-ExecutionPolicy Unrestricted** i konsolen och tryck på RETUR. Om du ser en dialogruta om effekterna av att ändra körningsprincipen klickar du antingen på **Ja till alla** eller **Ja** (om du ser **Ja till alla** markerar du det alternativet. Om du inte ser **Ja till alla** klickar du på **Ja**).
+4. Logga in på Azure-kontot. Skriv **Login-AzureRmAccount** i konsolen och tryck på **RETUR**. En dialogruta visas där du anger dina autentiseringsuppgifter (kontrollera att du har behörighet att ändra de virtuella datorerna – om du inte har det kan du inte kryptera dem. Om du inte är säker frågar du din prenumerationsägare eller administratör). Du bör se information om din **miljö**, ditt **konto**, **klient-ID**, **prenumerations-ID** och **aktuellt lagringskonto**. Kopiera ditt **prenumerations-ID** till anteckningar. Du behöver använda det i steg 6.
+5. Sök efter vilken prenumeration som den virtuella datorn tillhör och vilken plats den har. Gå till [https://portal.azure.com](ttps://portal.azure.com) och logga in.  Klicka på **virtuella datorer** till vänster. Du får se en lista över dina virtuella datorer och de prenumerationer som de tillhör.
 
    ![Virtuella datorer](./media/security-center-disk-encryption/security-center-disk-encryption-fig3.png)
-6. Returnera toohello PowerShell ISE. Ange hello prenumerationskontext där hello skriptet ska köras. Skriv i konsolen för hello **Select-AzureRmSubscription – SubscriptionId < your_subscription_Id >** (Ersätt **< your_subscription_Id >** med ditt faktiska prenumerations-ID) och tryck på  **Ange**. Du kommer att se information om hello miljö, **konto**, **TenantId**, **SubscriptionId** och **aktuellt Lagringskonto**.
-7. Du är nu redo toorun hello skript. Klicka på hello **kör skriptet** eller tryck på knappen **F5** på hello tangentbord.
+6. Gå tillbaka till PowerShell ISE. Ställ in den prenumerationskontext som skriptet ska köras i. I konsolen skriver du **Select-AzureRmSubscription –SubscriptionId <your_subscription_Id>** (ersätt **< your_subscription_Id >** med ditt faktiska prenumerations-ID) och tryck på **RETUR**. Du ser information om din miljö, ditt **konto**, **klient-ID**, **prenumerations-ID** och **aktuellt lagringskonto**.
+7. Du är nu redo att köra skriptet. Klicka på knappen **Kör skript** eller tryck på **F5** på tangentbordet.
 
    ![Köra PowerShell-skript](./media/security-center-disk-encryption/security-center-disk-encryption-fig4.png)
-8. hello skriptet begär **resourceGroupName:** -anger hello namnet på *resursgruppen* du vill toouse, tryck på **RETUR**. Ange ett namn som du vill använda toouse för en ny om du inte har någon. Om du redan har en *resursgruppen* du vill toouse (till exempel hello något som den virtuella datorn är i), ange hello namnet på hello befintlig resursgrupp.
-9. hello skriptet begär **keyVaultName:** -anger hello namnet på hello *Nyckelvalvet* du vill ha toouse och tryck på RETUR. Ange ett namn som du vill använda toouse för en ny om du inte har någon. Om du redan har ett Nyckelvalv som du vill toouse anger hello namnet på hello befintliga *Nyckelvalvet*.
-10. hello skriptet begär **plats:** – ange hello namnet på hello var i vilka hello VM som du vill tooencrypt finns och tryck sedan på **RETUR**. Om du inte kommer ihåg hello plats, gå tillbaka toostep #5.
-11. hello skriptet begär **aadAppName:** -anger hello namnet på hello *Azure Active Directory* tryck på programmet som du vill toouse, **RETUR**. Ange ett namn som du vill använda toouse för en ny om du inte har någon. Om du redan har en *Azure Active Directory-programmet* du vill toouse, anger hello namnet på hello befintliga *Azure Active Directory-programmet*.
-12. En logg i dialogrutan visas. Ange dina autentiseringsuppgifter (Ja, du har loggat in en gång, men nu behöver du toodo igen).
-13. hello skriptet körs och när du är klar uppmanas du toocopy hello värdena för hello **aadClientID**, **aadClientSecret**, **diskEncryptionKeyVaultUrl**, och **keyVaultResourceId**. Kopiera vart och ett av dessa värden toohello Urklipp och klistra in dem i anteckningar.
-14. Returnera toohello PowerShell ISE och placera markören hello hello slutet av hello sista raden och tryck på **RETUR**.
+8. Skriptet begär **resourceGroupName:** – ange namnet på den *resursgrupp* du vill använda och tryck sedan på **RETUR**. Ange ett namn som du vill använda för en ny resursgrupp om du inte har en. Om du redan har en *resursgrupp* som du vill använda (till exempel den som den virtuella datorn är i) anger du namnet på den befintliga resursgruppen.
+9. Skriptet begär **KeyVaultName:** – Ange namnet på det *nyckelvalv* du vill använda och tryck sedan på RETUR. Ange ett namn som du vill använda för ett nytt nyckelvalv om du inte har ett. Om du redan har ett nyckelvalv som du vill använda anger du namnet på det befintliga *nyckelvalvet*.
+10. Skriptet begär **plats:** – Ange namnet på den plats där den virtuella datorn som du vill kryptera finns och tryck sedan på **RETUR**. Om du inte kommer ihåg platsen går du tillbaka till steg 5.
+11. Skriptet begär **aadAppName:** – Ange namnet på det *Azure Active Directory*-program du vill använda och tryck sedan på **RETUR**. Ange ett namn som du vill använda för ett nytt program om du inte har ett. Om du redan har ett *Azure Active Directory-program*  som du vill använda anger du namnet på det befintliga *Azure Active Directory-programmet*.
+12. En logg i dialogrutan visas. Ange dina autentiseringsuppgifter (ja, du har loggat in en gång, men nu måste du göra det igen).
+13. Skriptet körs och när det är klart uppmanas du att kopiera värdena i **aadClientID**, **aadClientSecret**, **diskEncryptionKeyVaultUrl**, och **keyVaultResourceId**. Kopiera vart och ett av dessa värden till Urklipp och klistra in dem i anteckningar.
+14. Gå tillbaka till PowerShell ISE och placera markören i slutet av den sista raden. Tryck på **RETUR**.
 
-hello utdata från skriptet hello ska se ut ungefär hello-skärmen nedan:
+Skriptets utdata ska se ut ungefär som skärmen nedan:
 
 ![PowerShell-utdata](./media/security-center-disk-encryption/security-center-disk-encryption-fig5.png)
 
-## <a name="encrypt-hello-azure-virtual-machine"></a>Kryptera hello Azure-dator
-Du är nu redo tooencrypt den virtuella datorn. Om den virtuella datorn finns i hello samma resursgrupp som ditt Nyckelvalv kan du flytta på toohello krypteringsstegen. Om den virtuella datorn inte är i hello samma resursgrupp som ditt Nyckelvalv, måste tooenter hello följande i hello hello PowerShell ISE-konsolen:
+## <a name="encrypt-the-azure-virtual-machine"></a>Kryptera den virtuella Azure-datorn
+Du är nu redo att kryptera din virtuella dator. Om den virtuella datorn finns i samma resursgrupp som ditt nyckelvalv kan du gå vidare till avsnittet med krypteringsstegen. Men om den virtuella datorn inte är i samma resursgrupp som ditt nyckelvalv måste du ange följande i konsolen i PowerShell ISE:
 
 **$resourceGroupName = <’Virtual_Machine_RG’>**
 
-Ersätt **< Virtual_Machine_RG >** med hello resursgruppen där de virtuella datorerna finns hello namnet omges av enkla citattecken. Tryck sedan på **RETUR**.
-tooconfirm som Hej rätt Resursgruppsnamn har angetts, skriver följande hello i hello konsolen PowerShell ISE:
+Ersätt **< Virtual_Machine_RG >** med namnet på resursgruppen där de virtuella datorerna finns. Det ska omges av enkla citattecken. Tryck sedan på **RETUR**.
+Bekräfta att rätt resursgruppsnamn har angetts genom att skriva följande i konsolen PowerShell ISE:
 
 **$resourceGroupName**
 
-Tryck på **RETUR**. Du bör se hello namnet på resursgruppen som de virtuella datorerna finns i. Exempel:
+Tryck på **RETUR**. Du bör se namnet på resursgruppen som de virtuella datorerna finns i. Några exempel:
 
 ![PowerShell-utdata](./media/security-center-disk-encryption/security-center-disk-encryption-fig6.png)
 
 ### <a name="encryption-steps"></a>Krypteringssteg
-Du måste först tootell PowerShell hello namn hello virtuell dator som du vill tooencrypt. I konsolen för hello skriver du:
+Först måste du ange namnet på den virtuella datorn som du vill kryptera för PowerShell. Skriv följande i konsolen:
 
 **$vmName = <’your_vm_name’>**
 
-Ersätt **< your_vm_name >** med hello namnet på den virtuella datorn (Kontrollera att hello namnet omges av enkla citattecken) och tryck sedan på **RETUR**.
+Ersätt **< your_vm_name >** med namnet på den virtuella datorn (kontrollera att namnet omges av enkla citattecken) och tryck sedan på **RETUR**.
 
-tooconfirm som Hej rätt namn på virtuell dator angavs, skriver du:
+Bekräfta att rätt namn har angetts för den virtuella datorn genom att skriva:
 
 **$vmName**
 
-Tryck på **RETUR**. Du bör se hello namn hello virtuell dator som du vill tooencrypt. Exempel:
+Tryck på **RETUR**. Du bör se namnet på den virtuella datorn som du vill kryptera. Några exempel:
 
 ![PowerShell-utdata](./media/security-center-disk-encryption/security-center-disk-encryption-fig7.png)
 
-Det finns två metoder toorun hello kryptering kommandot tooencrypt alla enheter på hello virtuell dator. hello första metoden är tootype hello följande kommando i hello konsolen PowerShell ISE:
+Det finns två metoder som du kan använda för att köra krypteringskommandot för att kryptera alla enheter på den virtuella datorn. Den första metoden är att skriva följande kommando i konsolen PowerShell ISE:
 
 ~~~
 Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $resourceGroupName -VMName $vmName -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId -VolumeType All
@@ -149,32 +149,32 @@ Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $resourceGroupName -VMNa
 
 När du har skrivit det här kommandot trycker du på **RETUR**.
 
-hello andra metoden är tooclick i hello Skriptfönster (hello översta rutan hello PowerShell ISE) och rulla ned toohello längst ned på hello skript. Markera hello-kommando som anges ovan och högerklicka på den och klicka sedan på **kör** eller tryck på **F8** på hello tangentbord.
+Den andra metoden är att klicka i skriptfönstret (den översta rutan i PowerShell ISE) och rulla längst ned i skriptet. Markera det kommando som anges ovan och högerklicka på det. Klicka sedan på **Kör markerat** eller tryck på **F8** på tangentbordet.
 
 ![PowerShell ISE](./media/security-center-disk-encryption/security-center-disk-encryption-fig8.png)
 
-Oavsett hello metod använder du en dialogruta visas som informerar dig om att det tar 10 – 15 minuter för hello åtgärden toocomplete. Klicka på **Ja**.
+Oavsett vilken metod du använder visas en dialogruta som talar om att det tar 10–15 minuter att slutföra åtgärden. Klicka på **Ja**.
 
-Medan hello krypteringsprocessen sker kan du se hello hello virtuella datorns status för returnera toohello Azure-portalen. Klicka på vänster sida av hello sidan hello, **virtuella datorer**, i hello **virtuella datorer** bladet Klicka hello namnet på hello virtuell dator som du krypterar. Hello-bladet som visas, Lägg märke till att hello **Status** säger att den **uppdatering**. Det visar att kryptering pågår.
+Medan krypteringsprocessen sker kan du gå tillbaka till Azure Portal och se status för den virtuella datorn. Klicka på **Virtuella datorer** till vänster. I bladet **Virtuella datorer** klickar du på namnet på den virtuella datorn som du krypterar. I bladet som visas kan du se att **Status** säger att den **uppdaterar**. Det visar att kryptering pågår.
 
-![Mer information om hello VM](./media/security-center-disk-encryption/security-center-disk-encryption-fig9.png)
+![Mer information om den virtuella datorn](./media/security-center-disk-encryption/security-center-disk-encryption-fig9.png)
 
-Returnera toohello PowerShell ISE. När hello skriptet har slutförts visas det som visas i hello bilden nedan.
+Gå tillbaka till PowerShell ISE. När skriptet har slutförts ser du det som visas i bilden nedan.
 
 ![PowerShell-utdata](./media/security-center-disk-encryption/security-center-disk-encryption-fig10.png)
 
-toodemonstrate som hello virtuella datorn är krypterad, returnera toohello Azure-portalen och klicka på **virtuella datorer** på vänster sida av hello sidan hello. Klicka på hello virtuella du krypterade hello namn. I hello **inställningar** bladet, klickar du på **diskar**.
+Om du vill demonstrera att den virtuella datorn är krypterad går du tillbaka till Azure Portal och klickar på **Virtuella datorer** till vänster på sidan. Klicka på namnet på den virtuella datorn som du har krypterat. I bladet **Inställningar** klickar du på **Diskar**.
 
 ![Inställningsalternativ](./media/security-center-disk-encryption/security-center-disk-encryption-fig11.png)
 
-På hello **diskar** bladet visas **kryptering** är **aktiverad**.
+I bladet **Diskar** kan du se att **Kryptering** är **aktiverat**.
 
 ![Diskegenskaper](./media/security-center-disk-encryption/security-center-disk-encryption-fig12.png)
 
 ## <a name="next-steps"></a>Nästa steg
-I det här dokumentet du lärt dig hur tooencrypt en virtuell dator i Azure. toolearn mer om Azure Security Center finns hello följande:
+I det här dokumentet beskrivs hur du krypterar en virtuell dator i Azure. I följande avsnitt kan du lära dig mer om Azure Security Center:
 
-* [Övervakning av säkerhetshälsa i Azure Security Center](security-center-monitoring.md) – Lär dig hur toomonitor hello Azure-resursers hälsa
-* [Hantera och svarar toosecurity aviseringar i Azure Security Center](security-center-managing-and-responding-alerts.md) – Lär dig hur toomanage och svara toosecurity aviseringar
-* [Vanliga frågor om Azure Security Center](security-center-faq.md) – finns vanliga frågor om hur du använder hello-tjänsten
+* [Säkerhetshälsoövervakning i Azure Security Center](security-center-monitoring.md)  – Här kan du läsa om hur du övervakar dina Azure-resursers hälsa
+* [Hantera och åtgärda säkerhetsaviseringar i Azure Security Center](security-center-managing-and-responding-alerts.md) – Här får du lära dig hur du hanterar och åtgärdar säkerhetsaviseringar
+* [Vanliga frågor och svar om Azure Security Center](security-center-faq.md): Här finns vanliga frågor om tjänsten.
 * [Azures säkerhetsblogg](http://blogs.msdn.com/b/azuresecurity/): Här hittar du blogginlägg om säkerhet och regelefterlevnad i Azure.

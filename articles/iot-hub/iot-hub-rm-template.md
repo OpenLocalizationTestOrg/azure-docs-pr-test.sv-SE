@@ -1,6 +1,6 @@
 ---
-title: aaaCreate en Azure IoT-hubb med en mall (.NET) | Microsoft Docs
-description: "Hur toouse toocreate en Azure Resource Manager-mall för en IoT-hubb med ett C#-program."
+title: Skapa en Azure IoT-hubb med en mall (.NET) | Microsoft Docs
+description: "Hur du använder en Azure Resource Manager-mall för att skapa en IoT-hubb med ett C#-program."
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
@@ -14,22 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: 6140deff3553701f994502fd4a60178f874e27cf
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 0f197a28e0c51b06d0b47a03c29fe1fde0c6b78d
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-net"></a>Skapa en IoT-hubb med hjälp av Azure Resource Manager-mall (.NET)
 
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
-Du kan använda Azure Resource Manager toocreate och hantera Azure IoT-hubbar programmässigt. De här självstudierna visar hur toouse toocreate en Azure Resource Manager-mall för en IoT-hubb från ett C#-program.
+Du kan använda Azure Resource Manager för att skapa och hantera Azure IoT-hubbar programmässigt. Den här kursen visar hur du skapar en IoT-hubb från ett C#-program med hjälp av en Azure Resource Manager-mall.
 
 > [!NOTE]
-> Azure har två olika distributionsmodeller för att skapa och arbeta med resurser: [Azure Resource Manager och klassisk](../azure-resource-manager/resource-manager-deployment-model.md).  Den här artikeln täcker hello Azure Resource Manager-distributionsmodellen.
+> Azure har två olika distributionsmodeller för att skapa och arbeta med resurser: [Azure Resource Manager och klassisk](../azure-resource-manager/resource-manager-deployment-model.md).  Den här artikeln täcker Azure Resource Manager-distributionsmodellen.
 
-toocomplete den här kursen behöver du hello följande:
+För att kunna genomföra den här kursen behöver du följande:
 
 * Visual Studio 2015 eller Visual Studio 2017.
 * Ett aktivt Azure-konto. <br/>Om du inte har något konto kan du skapa ett [kostnadsfritt konto][lnk-free-trial] på bara några minuter.
@@ -40,15 +40,15 @@ toocomplete den här kursen behöver du hello följande:
 
 ## <a name="prepare-your-visual-studio-project"></a>Förbered din Visual Studio-projekt
 
-1. Skapa ett Visual C# klassiska skrivbordet projekt med hello i Visual Studio **Konsolapp (.NET Framework)** projektmall. Namnet hello projektet **CreateIoTHub**.
+1. I Visual Studio, skapa ett Visual C# klassiska skrivbordet projekt med den **Konsolapp (.NET Framework)** projektmall. Namnge projektet **CreateIoTHub**.
 
 2. Högerklicka på projektet i Solution Explorer och klicka sedan på **hantera NuGet-paket**.
 
-3. Kontrollera NuGet Package Manager **inkludera förhandsversion**, och på hello **Bläddra** sidan Sök efter **Microsoft.Azure.Management.ResourceManager**. Välj hello paketet, klicka på **installera**i **granska ändringar** klickar du på **OK**, klicka på **jag accepterar** tooaccept hello licenser.
+3. Kontrollera NuGet Package Manager **inkludera förhandsversion**, och på den **Bläddra** sidan Sök efter **Microsoft.Azure.Management.ResourceManager**. Välj paketet, klicka på **installera**i **granska ändringar** klickar du på **OK**, klicka på **jag accepterar** att acceptera licenser.
 
-4. I NuGet-Pakethanteraren, söka efter **Microsoft.IdentityModel.Clients.ActiveDirectory**.  Klicka på **installera**i **granska ändringar** klickar du på **OK**, klicka på **jag accepterar** tooaccept hello licens.
+4. I NuGet-Pakethanteraren, söka efter **Microsoft.IdentityModel.Clients.ActiveDirectory**.  Klicka på **installera**i **granska ändringar** klickar du på **OK**, klicka på **jag accepterar** att acceptera licensvillkoren.
 
-5. I Program.cs ersätta hello befintliga **med** instruktioner med hello följande kod:
+5. I Program.cs ersätta den befintliga **med** instruktioner med följande kod:
 
     ```csharp
     using System;
@@ -58,7 +58,7 @@ toocomplete den här kursen behöver du hello följande:
     using Microsoft.Rest;
     ```
 
-6. Lägg till följande statiska variabler som ersätter platshållarvärdena hello hello i Program.cs. Du antecknade **ApplicationId**, **SubscriptionId**, **TenantId**, och **lösenord** tidigare i den här kursen. **Namnet på ditt Azure Storage** är hello namnet på hello Azure Storage-konto där du lagrar mallfilerna för Azure Resource Manager-. **Resursgruppens namn** är hello namnet på hello resursgrupp som du använder när du skapar hello IoT-hubb. hello namnet kan vara en befintlig eller ny resursgrupp. **Distributionsnamnet** är ett namn för hello distributionen som **Deployment_01**.
+6. Lägg till följande statiska variabler ersätta platshållarvärdena i Program.cs. Du antecknade **ApplicationId**, **SubscriptionId**, **TenantId**, och **lösenord** tidigare i den här kursen. **Namnet på ditt Azure Storage** är namnet på Azure Storage-konto där du lagrar mallfilerna för Azure Resource Manager-. **Resursgruppens namn** är namnet på resursgruppen som du använder när du skapar en IoT-hubben. Namnet kan vara en befintlig eller ny resursgrupp. **Distributionsnamnet** är ett namn för distributionen, till exempel **Deployment_01**.
 
     ```csharp
     static string applicationId = "{Your ApplicationId}";
@@ -72,13 +72,13 @@ toocomplete den här kursen behöver du hello följande:
 
 [!INCLUDE [iot-hub-get-access-token](../../includes/iot-hub-get-access-token.md)]
 
-## <a name="submit-a-template-toocreate-an-iot-hub"></a>Skicka en mall toocreate en IoT-hubb
+## <a name="submit-a-template-to-create-an-iot-hub"></a>Skicka en mall för att skapa en IoT-hubb
 
-Använda en JSON-mall och parametern filen toocreate en IoT-hubb i resursgruppen. Du kan också använda en Azure Resource Manager mallen toomake ändringar tooan befintliga IoT-hubb.
+Använda en JSON-fil i mallen och parametern för att skapa en IoT-hubb i resursgruppen. Du kan också använda en Azure Resource Manager-mall för att göra ändringar i en befintlig IoT-hubb.
 
-1. Högerklicka på projektet i Solution Explorer, klicka på **Lägg till**, och klicka sedan på **nytt objekt**. Lägg till en JSON-fil som kallas **template.json** tooyour projekt.
+1. Högerklicka på projektet i Solution Explorer, klicka på **Lägg till**, och klicka sedan på **nytt objekt**. Lägg till en JSON-fil som kallas **template.json** i projektet.
 
-2. tooadd en standard IoT-hubb toohello **östra USA** region, Ersätt hello innehållet i **template.json** med hello efter resursdefinitionen. Hello aktuell lista över regioner som har stöd för IoT-hubb finns [Azure Status][lnk-status]:
+2. Att lägga till en IoT-hubb som standard till den **östra USA** region, ersätter du innehållet i **template.json** med följande resursdefinitionen. Den aktuella listan över regioner som har stöd för IoT-hubb finns [Azure Status][lnk-status]:
 
     ```json
     {
@@ -114,9 +114,9 @@ Använda en JSON-mall och parametern filen toocreate en IoT-hubb i resursgruppen
     }
     ```
 
-3. Högerklicka på projektet i Solution Explorer, klicka på **Lägg till**, och klicka sedan på **nytt objekt**. Lägg till en JSON-fil som kallas **parameters.json** tooyour projekt.
+3. Högerklicka på projektet i Solution Explorer, klicka på **Lägg till**, och klicka sedan på **nytt objekt**. Lägg till en JSON-fil som kallas **parameters.json** i projektet.
 
-4. Ersätt hello innehållet i **parameters.json** med hello följande parameterinformation som anger ett namn för hello ny IoT-hubb som **{din initialer} mynewiothub**. Hej IoT-hubbnamnet måste vara globalt unika så att den ska innehålla ditt namn eller initialer:
+4. Ersätt innehållet i **parameters.json** med följande parameterinformation som anger ett namn för den nya IoT-hubben som **{din initialer} mynewiothub**. IoT-hubbnamnet måste vara globalt unika så att den ska innehålla ditt namn eller initialer:
 
     ```json
     {
@@ -129,15 +129,15 @@ Använda en JSON-mall och parametern filen toocreate en IoT-hubb i resursgruppen
     ```
   [!INCLUDE [iot-hub-pii-note-naming-hub](../../includes/iot-hub-pii-note-naming-hub.md)]
 
-5. I **Server Explorer**, ansluta tooyour Azure-prenumeration och i Azure Storage konto för att skapa en behållare som kallas **mallar**. I hello **egenskaper** panelen, ange hello **offentlig läsbehörighet** behörigheter för hello **mallar** behållare för**Blob**.
+5. I **Server Explorer**, ansluta till din Azure-prenumeration och skapa en behållare som kallas i Azure Storage-konto **mallar**. I den **egenskaper** panelen genom att ange den **offentlig läsbehörighet** behörigheter för den **mallar** behållare för att **Blob**.
 
-6. I **Server Explorer**, högerklicka på hello **mallar** behållaren och klicka sedan på **visa Blob-behållaren**. Klicka på hello **överför Blob** , Välj hello två filer, **parameters.json** och **templates.json**, och klicka sedan på **öppna** tooupload hello JSON filer toohello **mallar** behållare. hello URL: er för hello blob som innehåller hello JSON-data är:
+6. I **Server Explorer**, högerklicka på den **mallar** behållaren och klicka sedan på **visa Blob-behållaren**. Klicka på den **överför Blob** , Välj två filer, **parameters.json** och **templates.json**, och klicka sedan på **öppna** överför JSON-filer till den **mallar** behållare. URL: er för de blobbar som innehåller de JSON-data är:
 
     ```csharp
     https://{Your storage account name}.blob.core.windows.net/templates/parameters.json
     https://{Your storage account name}.blob.core.windows.net/templates/template.json
     ```
-7. Lägg till följande metod tooProgram.cs hello:
+7. Lägg till följande metod i Program.cs:
 
     ```csharp
     static void CreateIoTHub(ResourceManagementClient client)
@@ -146,7 +146,7 @@ Använda en JSON-mall och parametern filen toocreate en IoT-hubb i resursgruppen
     }
     ```
 
-8. Lägg till följande kod toohello hello **CreateIoTHub** metoden toosubmit hello mallen och parametern filer toohello Azure Resource Manager:
+8. Lägg till följande kod i den **CreateIoTHub** metod för att skicka filer till Azure Resource Manager-mall och parameter:
 
     ```csharp
     var createResponse = client.Deployments.CreateOrUpdate(
@@ -169,7 +169,7 @@ Använda en JSON-mall och parametern filen toocreate en IoT-hubb i resursgruppen
         });
     ```
 
-9. Lägg till följande kod toohello hello **CreateIoTHub** metod som visar hello status och hello nycklar för hello ny IoT-hubb:
+9. Lägg till följande kod i den **CreateIoTHub** metod som visar status och nycklarna för ny IoT-hubben:
 
     ```csharp
     string state = createResponse.Properties.ProvisioningState;
@@ -177,16 +177,16 @@ Använda en JSON-mall och parametern filen toocreate en IoT-hubb i resursgruppen
 
     if (state != "Succeeded")
     {
-      Console.WriteLine("Failed toocreate iothub");
+      Console.WriteLine("Failed to create iothub");
     }
     Console.WriteLine(createResponse.Properties.Outputs);
     ```
 
-## <a name="complete-and-run-hello-application"></a>Fullständig och kör hello program
+## <a name="complete-and-run-the-application"></a>Slutför och köra programmet
 
-Du kan nu slutföra hello program genom att anropa hello **CreateIoTHub** metoden innan du skapar och kör den.
+Du kan nu slutföra programmet genom att anropa den **CreateIoTHub** metoden innan du skapar och kör den.
 
-1. Lägg till hello efter koden toohello hello **Main** metoden:
+1. Lägg till följande kod i slutet av den **Main** metoden:
 
     ```csharp
     CreateIoTHub(client);
@@ -195,25 +195,25 @@ Du kan nu slutföra hello program genom att anropa hello **CreateIoTHub** metode
 
 2. Klicka på **skapa** och sedan **skapa lösning**. Korrigera eventuella fel.
 
-3. Klicka på **felsöka** och sedan **Start Debugging** toorun hello program. Det kan ta flera minuter för hello distribution toorun.
+3. Klicka på **felsöka** och sedan **Start Debugging** att köra programmet. Det kan ta flera minuter för att distributionen ska köras.
 
-4. tooverify lägga till din programmet hello ny IoT-hubb, besök hello [Azure-portalen] [ lnk-azure-portal] och visa en lista över resurser. Du kan också använda hello **Get-AzureRmResource** PowerShell-cmdlet.
+4. För att verifiera ditt program läggs ny IoT-hubben, finns det [Azure-portalen] [ lnk-azure-portal] och visa en lista över resurser. Du kan också använda den **Get-AzureRmResource** PowerShell-cmdlet.
 
 > [!NOTE]
-> Det här exempelprogrammet lägger till en S1 Standard IoT-hubb du debiteras. Du kan ta bort hello IoT-hubb via hello [Azure-portalen] [ lnk-azure-portal] eller genom att använda hello **ta bort AzureRmResource** PowerShell-cmdlet när du är klar.
+> Det här exempelprogrammet lägger till en S1 Standard IoT-hubb du debiteras. Du kan ta bort IoT-hubb via den [Azure-portalen] [ lnk-azure-portal] eller genom att använda den **ta bort AzureRmResource** PowerShell-cmdlet när du är klar.
 
 ## <a name="next-steps"></a>Nästa steg
-Nu du har distribuerat en IoT-hubb med en Azure Resource Manager-mall med ett C#-program kan behöva du ytterligare tooexplore:
+Nu du har distribuerat en IoT-hubb med en Azure Resource Manager-mall med ett C#-program, kanske du vill utforska vidare:
 
-* Läs mer om hello funktionerna i hello [IoT-hubb resursprovidern REST API][lnk-rest-api].
-* Läs [översikt över Azure Resource Manager] [ lnk-azure-rm-overview] toolearn mer om hello funktioner i Azure Resource Manager.
+* Läs mer om funktionerna i den [IoT-hubb resursprovidern REST API][lnk-rest-api].
+* Läs [översikt över Azure Resource Manager] [ lnk-azure-rm-overview] att lära dig mer om funktionerna i Azure Resource Manager.
 
-toolearn mer information om hur du utvecklar för IoT-hubb finns hello följande artiklar:
+Mer information om hur du utvecklar för IoT-hubb finns i följande artiklar:
 
-* [Introduktion tooC SDK][lnk-c-sdk]
+* [Introduktion till C SDK][lnk-c-sdk]
 * [Azure IoT-SDK][lnk-sdks]
 
-toofurther utforska hello funktionerna i IoT Hub, se:
+Om du vill utforska ytterligare funktionerna i IoT-hubb, se:
 
 * [Simulera en enhet med Azure IoT kant][lnk-iotedge]
 

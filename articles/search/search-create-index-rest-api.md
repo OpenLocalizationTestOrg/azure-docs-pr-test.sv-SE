@@ -1,6 +1,6 @@
 ---
-title: "aaa ”skapa ett index (REST API - Azure Search) | Microsoft Docs ”"
-description: Skapa ett index i kod med hello Azure Search http-REST API.
+title: "Skapa ett index (REST-API – Azure Search)| Microsoft Docs"
+description: "Skapa ett index med kod med hjälp av HTTP REST-API:et för Azure Search."
 services: search
 documentationcenter: 
 author: ashmaka
@@ -15,13 +15,13 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 12/08/2016
 ms.author: ashmaka
-ms.openlocfilehash: 117ab64a9874a443351a8a02a9b959b8f7beb7c1
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 9a64d1436471e406b7d9b700257d3dd96b5edcde
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="create-an-azure-search-index-using-hello-rest-api"></a>Skapa ett Azure Search-index med hello REST API
+# <a name="create-an-azure-search-index-using-the-rest-api"></a>Skapa ett Azure Search-index med hjälp av REST-API:et
 > [!div class="op_single_selector"]
 >
 > * [Översikt](search-what-is-an-index.md)
@@ -31,33 +31,33 @@ ms.lasthandoff: 10/06/2017
 >
 >
 
-Den här artikeln vägleder dig genom hello processen att skapa ett Azure Search [index](https://docs.microsoft.com/rest/api/searchservice/Create-Index) med hello Azure Search REST API.
+Den här artikeln beskriver steg för steg hur du skapar ett Azure Search-[index](https://docs.microsoft.com/rest/api/searchservice/Create-Index) med hjälp av REST-API:et för Azure Search.
 
 Innan du följer den här guiden och skapar ett index bör du redan ha [skapat en Azure Search-tjänst](search-create-service-portal.md).
 
-toocreate ett Azure Search index med hello REST-API, som du tänker utfärda en enkel HTTP POST-begäran tooyour Azure Search tjänstens URL-slutpunkt. Din indexdefinitionen ska ingå i hello begärantext som giltig JSON-innehåll.
+Om du vill skapa ett Azure Search-index med hjälp av REST-API:et skickar du en enkel HTTP POST-begäran till slutpunkten i Azure Search-tjänstens URL. Din indexdefinition finns i begärandetexten i form av välstrukturerat JSON-innehåll.
 
 ## <a name="identify-your-azure-search-services-admin-api-key"></a>Identifiera Azure Search-tjänstens API-administratörsnyckel
-Nu när du har etablerat en Azure Search-tjänst kan du utfärda HTTP-begäranden mot din tjänst-URL-slutpunkten med hjälp av hello REST API. *Alla* API-förfrågningar måste innehålla hello api-nyckel som har genererats för hello söktjänsten du etablerat. Med en giltig nyckel upprättar förtroende mellan hello programmet skickar hello begäran och hello-tjänsten som hanterar den fall per begäran.
+Nu när du har etablerat en Azure Search-tjänst kan du skicka HTTP-förfrågningar mot din tjänsts URL-slutpunkt med hjälp av REST-API:et. *Alla* API-förfrågningar måste innehålla API-nyckeln som genererades för Search-tjänsten som du etablerade. En giltig nyckel upprättar förtroende, i varje begäran, mellan programmet som skickar begäran och tjänsten som hanterar den.
 
-1. toofind din tjänst api-nycklar som du måste logga in på hello [Azure-portalen](https://portal.azure.com/)
-2. Gå tooyour Azure Search service-bladet
-3. Klicka på hello ”nycklar”-ikon
+1. För att hitta din tjänsts API-nycklar måste du logga in på [Azure Portal](https://portal.azure.com/).
+2. Gå till Azure Search-tjänstens blad
+3. Klicka på nyckelikonen
 
 Tjänsten har *administratörsnycklar* och *frågenycklar*.
 
-* Din primära och sekundära *admin nycklar* bevilja fullständiga rättigheter tooall åtgärder, inklusive hello möjlighet toomanage hello service, skapa och ta bort index, indexerare och datakällor. Det finns två nycklar så att du kan fortsätta toouse hello sekundärnyckeln om du väljer tooregenerate hello primärnyckel och vice versa.
-* Din *fråga nycklar* bevilja läsbehörighet tooindexes och dokument och är vanligtvis distribuerade tooclient program som utfärdar search-begäranden.
+* Dina primära och sekundära *administratörsnycklar* ger fullständig behörighet för alla åtgärder, inklusive möjligheten att hantera tjänsten, skapa och ta bort index, indexerare och datakällor. Det finns två nycklar så att du kan fortsätta att använda den sekundära nyckeln om du bestämmer dig för att återskapa den primära nyckeln och tvärtom.
+* Dina *frågenycklar* beviljar läsbehörighet till index och dokument och distribueras vanligen till klientprogram som skickar sökförfrågningar.
 
-För hello syftet med att skapa ett index, kan du använda antingen primär eller sekundär administrationsnyckel.
+Du kan använda antingen en primär eller sekundär administrationsnyckel när du skapar ett index.
 
 ## <a name="define-your-azure-search-index-using-well-formed-json"></a>Definiera ditt Azure Search-index med välstrukturerad JSON
-En enkel HTTP POST-begäran tooyour tjänst skapar ditt index. hello brödtext HTTP POST-begäran innehåller ett enda JSON-objekt som definierar ditt Azure Search-index.
+Ditt index skapas med en enkel HTTP POST-begäran till din tjänst. Brödtexten i HTTP POST-begäran innehåller ett enda JSON-objekt som definierar ditt Azure Search-index.
 
-1. första hello-egenskapen för den här JSON-objekt är hello namnet på ditt index.
-2. andra hello-egenskapen för den här JSON-objekt är en JSON-matris med namnet `fields` som innehåller ett separat JSON-objekt för varje fält i ditt index. Var och en av dessa JSON-objekt innehåller flera namn/värde-par för varje hello fältattribut, bland annat ”name”, ”typ”, osv.
+1. Den första egenskapen för det här JSON-objektet är namnet på ditt index.
+2. Den andra egenskapen för JSON-objektet är en JSON-matris med namnet `fields` som innehåller ett separat JSON-objekt för varje fält i indexet. Varje JSON-objekt innehåller flera namn/värde-par för vart och ett av fältattributen, inklusive ”name”, ”type” osv.
 
-Det är viktigt att du behåller dina Sök upplevelse och företag behov i åtanke när du skapar ditt index som varje fält måste tilldelas hello [rätt attribut](https://docs.microsoft.com/rest/api/searchservice/Create-Index). Dessa attribut styra vilka söka funktioner (filtrering, faceting, sortering fulltextsökning osv) gäller toowhich fält. För alla attribut som du inte anger blir hello standard tooenable hello motsvarande sökfunktionen såvida du inaktivera den.
+Det är viktigt att du har användarupplevelsen och dina affärsbehov i åtanke när du utformar ditt index eftersom varje fält måste tilldelas [rätt egenskaper](https://docs.microsoft.com/rest/api/searchservice/Create-Index). Dessa attribut styr vilka sökfunktioner (filtrering, aspekter, sortering av textsökningar osv) som tillämpas på vilka fält. För attribut som du inte anger aktiveras motsvarande sökfunktion som standard såvida du inte uttryckligen inaktiverar den.
 
 I vårt exempel har vi gett indexet namnet ”hotels” och definierat fälten så här:
 
@@ -81,30 +81,30 @@ I vårt exempel har vi gett indexet namnet ”hotels” och definierat fälten s
 }
 ```
 
-Vi har noggrant valt hello indexattribut för varje fält baserat på hur vi tror att de ska användas i ett program. Till exempel `hotelId` är en unik nyckel som användare söker efter hotell förmodligen inte vet, så vi inaktivera fulltextsökning för fältet genom att ange `searchable` för`false`, vilket sparar utrymme i hello index.
+Vi har noga valt indexattributen för varje fält baserat på hur vi tror att de kommer att användas i ett program. `hotelId` är exempelvis en unik nyckel som personer som söker efter hotell antagligen inte känner till, så vi inaktiverar fulltextsökning för det fältet genom att ange `searchable` till `false`, vilket sparar utrymme i indexet.
 
-Observera att ett fält i ditt index av typen `Edm.String` hello betecknas som hello '' nyckelfält.
+Observera att exakt ett fält i indexet av typen `Edm.String` måste definieras som nyckelfältet.
 
-hello indexdefinitionen ovan använder ett språk analyzer för hello `description_fr` eftersom den är avsedd toostore franska text. Se [hello Language support avsnittet](https://docs.microsoft.com/rest/api/searchservice/Language-support) samt hello motsvarande [blogginlägget](https://azure.microsoft.com/blog/language-support-in-azure-search/) mer information om språkanalys.
+Indexdefinitionen ovan använder ett språkanalysverktyg för `description_fr`-fältet eftersom det ska lagra fransk text. Mer information om språkanalysverktyg finns i [avsnittet om språkstöd](https://docs.microsoft.com/rest/api/searchservice/Language-support) och i motsvarande [blogginlägg](https://azure.microsoft.com/blog/language-support-in-azure-search/).
 
-## <a name="issue-hello-http-request"></a>Problemet hello HTTP-begäran
-1. Med din indexdefinitionen som hello begärantext, utfärda en HTTP POST-begäran tooyour Azure Search-tjänsten slutpunkts-URL. I hello URL och vara säker på att toouse tjänstnamnet som hello värdnamn och placera hello rätt `api-version` som en frågesträngsparameter (hello aktuella API-versionen är `2016-09-01` när hello publicera det här dokumentet).
-2. Ange hello i hello begärandehuvuden `Content-Type` som `application/json`. Du måste också tooprovide administrationsnyckeln för din tjänst som du identifierade i steg I i hello `api-key` huvud.
+## <a name="issue-the-http-request"></a>Skicka HTTP-begäran
+1. Använd indexdefinitionen som begärandetext och skicka en HTTP POST-begäran till URL:en för Azure Search-tjänstens slutpunkt. I URL:en använder du tjänstnamnet som värdnamn och placerar rätt `api-version` som en frågesträngsparameter (den aktuella API-versionen är `2016-09-01` vid tidpunkten för publiceringen av det här dokumentet).
+2. I huvudena för begäran anger du `Content-Type` som `application/json`. Du måste också ange tjänstens administratörsnyckel som du identifierade i steg I i `api-key`-huvudet.
 
-Du måste tooprovide egna namn och api nycklar tooissue hello tjänstbegäran nedan:
+Du måste ange ditt eget tjänstnamn och din egen API-nyckel för att skicka begäran nedan:
 
     POST https://[service name].search.windows.net/indexes?api-version=2016-09-01
     Content-Type: application/json
     api-key: [api-key]
 
 
-Statuskoden 201 (har skapats) bör returneras om begäran lyckades. Mer information om hur du skapar ett index via hello REST-API finns hello [här API-referens](https://docs.microsoft.com/rest/api/searchservice/Create-Index). Mer information om andra HTTP-statuskoder som kan returneras om det uppstår fel finns i [HTTP-statuskoder (Azure Search)](https://docs.microsoft.com/rest/api/searchservice/HTTP-status-codes).
+Statuskoden 201 (har skapats) bör returneras om begäran lyckades. Mer information om hur du kan skapa ett index via REST-API:et finns i API-referensen i [API-referensen här](https://docs.microsoft.com/rest/api/searchservice/Create-Index). Mer information om andra HTTP-statuskoder som kan returneras om det uppstår fel finns i [HTTP-statuskoder (Azure Search)](https://docs.microsoft.com/rest/api/searchservice/HTTP-status-codes).
 
-När du är klar med ett index och vill toodelete den bara utfärda en ta bort HTTP-begäran. Detta är till exempel hur vi skulle ta bort hello ”hotell” index:
+När du är klar med ett index och vill ta bort det skickar du bara en HTTP DELETE-begäran. Så här skulle vi till exempel göra om vi ville ta bort indexet ”hotels”:
 
     DELETE https://[service name].search.windows.net/indexes/hotels?api-version=2016-09-01
     api-key: [api-key]
 
 
 ## <a name="next-steps"></a>Nästa steg
-När du har skapat ett Azure Search-index, kommer du att redo för[överföra innehållet till hello index](search-what-is-data-import.md) så att du kan börja söka data.
+När du har skapat ett Azure Search-index är det dags att [ladda upp innehållet till indexet](search-what-is-data-import.md) så att du kan börja söka efter data.

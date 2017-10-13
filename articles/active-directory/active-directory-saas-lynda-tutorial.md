@@ -1,6 +1,6 @@
 ---
 title: "Självstudier: Azure Active Directory-integrering med Lynda.com | Microsoft Docs"
-description: "Lär dig hur tooconfigure enkel inloggning mellan Azure Active Directory och Lynda.com."
+description: "Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Lynda.com."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,109 +13,109 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: jeedes
-ms.openlocfilehash: fb8d7824e5121da79e9248393b0cbcb0efaffec1
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 84ed2adcc2d49ddbb6bd2e9cc3b93b967ebed063
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lyndacom"></a>Självstudier: Azure Active Directory-integrering med Lynda.com
 
-I kursen får du lära dig hur toointegrate Lynda.com med Azure Active Directory (AD Azure).
+I kursen får lära du att integrera Lynda.com med Azure Active Directory (AD Azure).
 
-Integrera Lynda.com med Azure AD ger dig hello följande fördelar:
+Integrera Lynda.com med Azure AD ger dig följande fördelar:
 
-- Du kan styra i Azure AD som har åtkomst till tooLynda.com
-- Du kan aktivera din användare tooautomatically get inloggade tooLynda.com (Single Sign-On) med sina Azure AD-konton
-- Du kan hantera dina konton i en central plats - hello Azure-portalen
+- Du kan styra i Azure AD som har åtkomst till Lynda.com
+- Du kan aktivera användarna att automatiskt hämta loggat in på Lynda.com (Single Sign-On) med sina Azure AD-konton
+- Du kan hantera dina konton i en central plats - Azure-portalen
 
-Om du vill tooknow mer information om integrering av SaaS-app med Azure AD, se [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Om du vill veta mer information om integrering av SaaS-app med Azure AD finns [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Krav
 
-tooconfigure Azure AD-integrering med Lynda.com, behöver du hello följande objekt:
+För att konfigurera Azure AD-integrering med Lynda.com, behöver du följande:
 
 - En Azure AD-prenumeration
 - En Lynda.com enkel inloggning på aktiverade prenumeration
 
 > [!NOTE]
-> tootest hello stegen i den här självstudiekursen, rekommenderas inte med hjälp av en produktionsmiljö.
+> Om du vill testa stegen i den här kursen rekommenderar vi inte med hjälp av en produktionsmiljö.
 
-tootest hello steg i den här självstudiekursen, bör du följa dessa rekommendationer:
+Om du vill testa stegen i den här självstudiekursen, bör du följa dessa rekommendationer:
 
 - Använd inte i produktionsmiljön, om det är nödvändigt.
 - Om du inte har en utvärderingsversion Azure AD-miljö kan du hämta en utvärderingsversion för en månad [här](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Scenariobeskrivning
-I kursen får testa du Azure AD enkel inloggning i en testmiljö. hello-scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
+I kursen får testa du Azure AD enkel inloggning i en testmiljö. Det scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
 
-1. Att lägga till Lynda.com från hello-galleriet
+1. Att lägga till Lynda.com från galleriet
 2. Konfigurera och testa Azure AD enkel inloggning
 
-## <a name="adding-lyndacom-from-hello-gallery"></a>Att lägga till Lynda.com från hello-galleriet
-tooconfigure hello integrering av Lynda.com i Azure AD, behöver du tooadd Lynda.com hello galleriet tooyour listan över hanterade SaaS-appar.
+## <a name="adding-lyndacom-from-the-gallery"></a>Att lägga till Lynda.com från galleriet
+Du måste lägga till Lynda.com från galleriet i listan över hanterade SaaS-appar för att konfigurera integrering av Lynda.com i Azure AD.
 
-**tooadd Lynda.com från galleriet hello utför hello följande steg:**
+**Utför följande steg för att lägga till Lynda.com från galleriet:**
 
-1. I hello  **[Azure-portalen](https://portal.azure.com)**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon. 
+1. I den  **[Azure-portalen](https://portal.azure.com)**, klicka på den vänstra navigeringspanelen **Azure Active Directory** ikon. 
 
     ![Active Directory][1]
 
-2. Navigera för**företagsprogram**. Gå sedan för**alla program**.
+2. Gå till **företagsprogram**. Gå till **alla program**.
 
     ![Program][2]
     
-3. tooadd nya program, klickar du på **nytt program** hello längst upp i dialogrutan.
+3. Om du vill lägga till nya programmet, klickar du på **nytt program** knappen överst i dialogrutan.
 
     ![Program][3]
 
-4. Skriv i sökrutan hello **Lynda.com**.
+4. I sökrutan skriver **Lynda.com**.
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-lynda-tutorial/tutorial_lynda.com_search.png)
 
-5. Markera hello resultat på panelen **Lynda.com**, och klicka sedan på **Lägg till** knappen tooadd hello program.
+5. Välj i resultatpanelen **Lynda.com**, och klicka sedan på **Lägg till** för att lägga till programmet.
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-lynda-tutorial/tutorial_lynda.com_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurera och testa Azure AD enkel inloggning
 I det här avsnittet kan du konfigurera och testa Azure AD enkel inloggning med Lynda.com baserat på en testanvändare som kallas ”Britta Simon”.
 
-För enkel inloggning toowork måste Azure AD tooknow vilka hello motsvarighet användaren i Lynda.com är tooa i Azure AD. Med andra ord måste en länk mellan en Azure AD-användare och hello relaterade användare i Lynda.com toobe upprättas.
+Azure AD måste du känna till användaren i Lynda.com motsvarighet till en användare i Azure AD för enkel inloggning ska fungera. Med andra ord måste en länk förhållandet mellan en Azure AD-användare och relaterade användaren i Lynda.com upprättas.
 
-Den här länken relationen upprättas genom att tilldela hello värdet för hello **användarnamn** i Azure AD som hello värde för hello **användarnamn** i Lynda.com.
+Den här länken relationen upprättas genom att tilldela värdet för den **användarnamn** i Azure AD som värde för den **användarnamn** i Lynda.com.
 
-tooconfigure och testa Azure AD enkel inloggning med Lynda.com, behöver du toocomplete hello följande byggblock:
+Om du vill konfigurera och testa Azure AD enkel inloggning med Lynda.com, måste du utföra följande byggblock:
 
-1. **[Konfigurera Azure AD enkel inloggning](#configuring-azure-ad-single-sign-on)**  -tooenable användare-toouse den här funktionen.
-2. **[Skapa en Azure AD-testanvändare](#creating-an-azure-ad-test-user)**  -tootest Azure AD enkel inloggning med Britta Simon.
-3. **[Skapa en testanvändare Lynda.com](#creating-a-lyndacom-test-user)**  -toohave en motsvarighet för Britta Simon i Lynda.com som är länkade toohello Azure AD-representation av användaren.
-4. **[Tilldela hello Azure AD-testanvändare](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD enkel inloggning.
-5. **[Testa enkel inloggning](#testing-single-sign-on)**  -tooverify hello om konfigurationen fungerar.
+1. **[Konfigurera Azure AD enkel inloggning](#configuring-azure-ad-single-sign-on)**  - om du vill att användarna kan använda den här funktionen.
+2. **[Skapa en Azure AD-testanvändare](#creating-an-azure-ad-test-user)**  - om du vill testa Azure AD enkel inloggning med Britta Simon.
+3. **[Skapa en testanvändare Lynda.com](#creating-a-lyndacom-test-user)**  – du har en motsvarighet för Britta Simon i Lynda.com som är kopplad till Azure AD-representation av användaren.
+4. **[Tilldela Azure AD-testanvändare](#assigning-the-azure-ad-test-user)**  - om du vill aktivera Britta Simon att använda Azure AD enkel inloggning.
+5. **[Testa enkel inloggning](#testing-single-sign-on)**  - om du vill kontrollera om konfigurationen fungerar.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurera Azure AD enkel inloggning
 
-I det här avsnittet Aktivera Azure AD enkel inloggning i hello Azure-portalen och konfigurera enkel inloggning i ditt Lynda.com program.
+I det här avsnittet Aktivera Azure AD enkel inloggning i Azure-portalen och konfigurera enkel inloggning i ditt Lynda.com program.
 
-**Utför följande steg hello tooconfigure Azure AD enkel inloggning med Lynda.com:**
+**Utför följande steg för att konfigurera Azure AD enkel inloggning med Lynda.com:**
 
-1. I hello Azure-portalen på hello **Lynda.com** integreringssidan för programmet, klickar du på **enkel inloggning**.
+1. I Azure-portalen på den **Lynda.com** integreringssidan för programmet, klickar du på **enkel inloggning**.
 
     ![Konfigurera enkel inloggning][4]
 
-2. På hello **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** tooenable enkel inloggning.
+2. På den **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** att aktivera enkel inloggning.
  
     ![Konfigurera enkel inloggning](./media/active-directory-saas-lynda-tutorial/tutorial_lynda.com_samlbase.png)
 
-3. På hello **Lynda.com domän och URL: er** avsnittet, utföra hello följande steg:
+3. På den **Lynda.com domän och URL: er** avsnittet, utför följande steg:
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-lynda-tutorial/tutorial_lynda.com_url.png)
 
-    I hello **inloggnings-URL** textruta, ange ett URL-Adressen med hello följer mönstret:`https://<subdomain>.lynda.com/Shibboleth.sso/InCommon?providerId=<url>&target=<url> `
+    I den **inloggnings-URL** textruta Skriv en URL med följande mönster:`https://<subdomain>.lynda.com/Shibboleth.sso/InCommon?providerId=<url>&target=<url> `
 
     > [!NOTE] 
-    > Det här värdet är inte verkliga. Uppdatera det här värdet med hello faktiska inloggnings-URL. Kontakta [Lynda.com klienten supportteamet](https://www.linkedin.com/help/lynda/ask) tooget dessa värden. 
+    > Det här värdet är inte verkliga. Uppdatera det här värdet med det faktiska inloggnings-URL. Kontakta [Lynda.com klienten supportteamet](https://www.linkedin.com/help/lynda/ask) att hämta dessa värden. 
  
-4. På hello **SAML-signeringscertifikat** klickar du på **XML-Metadata för** och spara hello XML-filen på datorn.
+4. På den **SAML-signeringscertifikat** klickar du på **XML-Metadata för** och spara XML-filen på datorn.
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-lynda-tutorial/tutorial_lynda.com_certificate.png) 
 
@@ -123,66 +123,66 @@ I det här avsnittet Aktivera Azure AD enkel inloggning i hello Azure-portalen o
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-lynda-tutorial/tutorial_general_400.png)
 
-6. tooconfigure enkel inloggning på **Lynda.com** sida, behöver du toosend hello hämtas **XML-Metadata för** [Lynda.com support](https://www.linkedin.com/help/lynda/ask).
+6. Konfigurera enkel inloggning på **Lynda.com** sida, måste du skicka den hämtade **XML-Metadata för** [Lynda.com support](https://www.linkedin.com/help/lynda/ask).
 
 ### <a name="creating-an-azure-ad-test-user"></a>Skapa en testanvändare i Azure AD
-hello syftet med det här avsnittet är toocreate en testanvändare i hello Azure-portalen kallas Britta Simon.
+Syftet med det här avsnittet är att skapa en testanvändare i Azure-portalen kallas Britta Simon.
 
 ![Skapa Azure AD-användare][100]
 
-**toocreate en testanvändare i Azure AD kan utföra hello följande steg:**
+**Utför följande steg för att skapa en testanvändare i Azure AD:**
 
-1. I hello **Azure-portalen**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon.
+1. I den **Azure-portalen**, klicka på det vänstra navigeringsfönstret **Azure Active Directory** ikon.
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-lynda-tutorial/create_aaduser_01.png) 
 
-2. toodisplay hello lista över användare, gå för**användare och grupper** och på **alla användare**.
+2. Om du vill visa en lista över användare, gå till **användare och grupper** och på **alla användare**.
     
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-lynda-tutorial/create_aaduser_02.png) 
 
-3. tooopen hello **användare** dialogrutan klickar du på **Lägg till** på hello överkant hello dialogrutan.
+3. Öppna den **användare** dialogrutan klickar du på **Lägg till** överst i dialogrutan.
  
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-lynda-tutorial/create_aaduser_03.png) 
 
-4. På hello **användaren** dialogrutan utför hello följande steg:
+4. På den **användaren** dialogrutan utför följande steg:
  
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-lynda-tutorial/create_aaduser_04.png) 
 
-    a. I hello **namn** textruta typen **BrittaSimon**.
+    a. I den **namn** textruta typen **BrittaSimon**.
 
-    b. I hello **användarnamn** textruta typen hello **e-postadress** av BrittaSimon.
+    b. I den **användarnamn** textruta typ av **e-postadress** av BrittaSimon.
 
-    c. Välj **visa lösenordet** och Skriv ned hello värdet för hello **lösenord**.
+    c. Välj **visa lösenordet** och anteckna värdet för den **lösenord**.
 
     d. Klicka på **Skapa**.
  
 ### <a name="creating-a-lyndacom-test-user"></a>Skapa en testanvändare Lynda.com
 
-Det finns inga uppgiften för du tooconfigure användaretablering tooLynda.com.  
-När en tilldelad användare försöker toolog i tooLynda.com med hello åtkomstpanelen, kontrollerar Lynda.com om hello användaren finns.  
+Det finns inga uppgiften som du kan konfigurera användaretablering till Lynda.com.  
+När en tilldelad användare försöker logga in med hjälp av åtkomstpanelen Lynda.com kontrollerar Lynda.com om användaren finns.  
 
 Om det finns inget användarkonto ännu, skapas den automatiskt av Lynda.com.
 
 >[!NOTE]
->Du kan använda något annat Lynda.com användarens konto skapas verktyg eller API: er som tillhandahålls av Lynda.com tooprovision AAD-användarkonton. 
+>Du kan använda något annat Lynda.com användarens konto skapas verktyg eller API: er som tillhandahålls av Lynda.com att etablera AAD-användarkonton. 
 
-### <a name="assigning-hello-azure-ad-test-user"></a>Tilldela användare hello Azure AD
+### <a name="assigning-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändare
 
-I det här avsnittet kan aktivera du Britta Simon toouse Azure enkel inloggning genom att bevilja åtkomst tooLynda.com.
+I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inloggning genom att bevilja åtkomst till Lynda.com.
 
 ![Tilldela användare][200] 
 
-**tooassign Britta Simon tooLynda.com utför hello följande steg:**
+**Om du vill tilldela Lynda.com Britta Simon utför du följande steg:**
 
-1. I hello Azure-portalen, öppna hello program visa och navigera toohello directory vy och gå för**företagsprogram** Klicka **alla program**.
+1. Öppna vyn program i Azure-portalen och gå till vyn directory och gå till **företagsprogram** Klicka **alla program**.
 
     ![Tilldela användare][201] 
 
-2. Välj i listan med program hello **Lynda.com**.
+2. Välj i listan med program **Lynda.com**.
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-lynda-tutorial/tutorial_lynda.com_app.png) 
 
-3. Hello-menyn hello vänster **användare och grupper**.
+3. Klicka på menyn till vänster **användare och grupper**.
 
     ![Tilldela användare][202] 
 
@@ -190,7 +190,7 @@ I det här avsnittet kan aktivera du Britta Simon toouse Azure enkel inloggning 
 
     ![Tilldela användare][203]
 
-5. På **användare och grupper** markerar **Britta Simon** i hello användarlistan.
+5. På **användare och grupper** markerar **Britta Simon** på listan användare.
 
 6. Klicka på **Välj** knappen på **användare och grupper** dialogrutan.
 
@@ -202,7 +202,7 @@ Om du vill testa dina inställningar för enkel inloggning, öppna åtkomstpanel
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-* [Lista över självstudier om hur tooIntegrate SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Vad är programåtkomst och enkel inloggning med Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->

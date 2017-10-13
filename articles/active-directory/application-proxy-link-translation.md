@@ -1,6 +1,6 @@
 ---
-title: "aaaTranslate länkar och URL: er Azure AD App Proxy | Microsoft Docs"
-description: Beskriver hello grunderna om Azure AD Application Proxy-kopplingar.
+title: "Översätta länkar och URL: er Azure AD App Proxy | Microsoft Docs"
+description: Beskriver grunderna om Azure AD Application Proxy-kopplingar.
 services: active-directory
 documentationcenter: 
 author: kgremban
@@ -15,78 +15,78 @@ ms.date: 08/10/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 7ec2b9fb01617067cf5d676037877bf72c19217b
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 57218346d236b376d2227e0ffaea6c6dd5ebe855
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>Omdirigera hårdkodad länkar till appar som publiceras med Azure AD Application Proxy
 
-Azure AD Application Proxy gör dina lokala appar tillgängliga toousers som är fjärranslutna eller på sina egna enheter. Vissa appar har utvecklats med lokala länkar som är inbäddad i hello HTML. De här länkarna fungerar inte korrekt när hello app används via fjärranslutning. När du har flera lokala program punkt tooeach andra dina användare förväntar sig hello länkar tookeep fungerar när de inte är i hello-kontoret. 
+Azure AD Application Proxy gör dina lokala appar tillgängliga för användare som är fjärranslutna eller på sina egna enheter. Vissa appar har utvecklats med lokala länkar som är inbäddade i HTML. De här länkarna fungerar inte när appen används via fjärranslutning. När du har flera lokala program peka till varandra, räknar användarna länkar kan fortsätta arbeta när de inte är på kontoret. 
 
-hello bästa sätt toomake till att länkarna fungerar hello samma både inom och utanför företagets nätverk är tooconfigure hello externa URL: er för dina appar toobe hello samma som deras interna URL: er. Använd [anpassade domäner](active-directory-application-proxy-custom-domains.md) tooconfigure din externa URL: er toohave din företagets domännamn i stället för hello proxy för standarddomänen.
+Det bästa sättet att se till att länkarna fungerar på samma sätt både inom och utanför företagets nätverk är att konfigurera de externa URL: er för dina appar för att vara samma som deras interna URL: er. Använd [anpassade domäner](active-directory-application-proxy-custom-domains.md) att konfigurera externa URL: er om du vill att företagets domännamn i stället för standarddomänen proxy.
 
-Om du inte kan använda anpassade domäner i din klientorganisation, behålls hello länken översättning funktion i Application Proxy länkarna fungerar oavsett var dina användarna finns. När du har appar som pekar direkt toointernal slutpunkter eller portar, kan du mappa publicerade dessa Intern URL: er toohello externa Application Proxy URL: er. När länköversättning är aktiverat och programproxy söker igenom HTML, CSS och välj JavaScript-taggar för publicerade interna länkar. Sedan översätter hello Application Proxy-tjänsten dem så att användarna får en oavbruten upplevelse.
+Om du inte kan använda anpassade domäner i din klientorganisation, behålls funktionen länken översättning av Application Proxy länkarna fungerar oavsett var dina användarna finns. När du har appar som pekar direkt på interna slutpunkter eller portar, kan du mappa dessa interna URL: er publicerade externa Application Proxy URL: er. När länköversättning är aktiverat och programproxy söker igenom HTML, CSS och välj JavaScript-taggar för publicerade interna länkar. Sedan översätter tjänsten Application Proxy dem så att användarna får en oavbruten upplevelse.
 
 >[!NOTE]
->hello länken översättningsfunktionen är för klienter som av något skäl inte kan använda anpassade domäner toohave hello samma interna och externa URL: er för sina appar. Innan du aktiverar den här funktionen finns om [anpassade domäner i Azure AD Application Proxy](active-directory-application-proxy-custom-domains.md) du kan använda.
+>Länken översättningsfunktionen är för klienter som av något skäl inte kan använda anpassade domäner har samma interna och externa URL: er för sina appar. Innan du aktiverar den här funktionen finns om [anpassade domäner i Azure AD Application Proxy](active-directory-application-proxy-custom-domains.md) du kan använda.
 >
->Eller, om hello-program som du behöver tooconfigure med länköversättning SharePoint, se [konfigurera alternativa åtkomstmappningar för SharePoint 2013](https://technet.microsoft.com/library/cc263208.aspx) för en annan metod toomapping länkar.
+>Eller, om programmet som du behöver konfigurera länk översättningen är SharePoint finns [konfigurera alternativa åtkomstmappningar för SharePoint 2013](https://technet.microsoft.com/library/cc263208.aspx) en annan metod för mappning av länkar.
 
 ## <a name="how-link-translation-works"></a>Hur länkar översättning fungerar
 
-Efter autentisering när hello-proxyserver passerar hello data toohello programanvändare, Application Proxy igenom hello program för hårdkodad länkar och ersätter dem med deras respektive publicerade externa URL: er.
+Efter autentisering när proxyservern skickar programdata till användaren, Application Proxy igenom program för hårdkodad länkar och ersätter dem med deras respektive publicerade externa URL: er.
 
-Programproxy förutsätter att program är kodade i UTF-8. Om detta inte är fallet hello ange hello kodningstyp i en http-Svarsrubrik som `Content-Type:text/html;charset=utf-8`.
+Programproxy förutsätter att program är kodade i UTF-8. Om detta inte är fallet, ange kodningstyp i en http-Svarsrubrik som `Content-Type:text/html;charset=utf-8`.
 
 ### <a name="which-links-are-affected"></a>Vilka länkar påverkas?
 
-hello länken översättningsfunktionen söker bara efter länkar som finns i koden taggar i hello brödtexten i en app. Programproxy har en separat funktion för översättning av cookies eller URL: er i rubriker. 
+Funktionen länken översättning söker bara efter länkar som finns i koden taggarna i en App. Programproxy har en separat funktion för översättning av cookies eller URL: er i rubriker. 
 
 Det finns två vanliga typer av interna länkar i lokala program:
 
-- **Relativa interna länkar** den punkt tooa delad resurs i en lokal filstruktur som `/claims/claims.html`. De här länkarna fungerar automatiskt i appar som publiceras via Application Proxy och fortsätta toowork med eller utan länköversättning. 
-- **Hårdkodad interna länkar** tooother lokala appar som `http://expenses` eller publicerade filer av `http://expenses/logo.jpg`. hello länken översättningsfunktionen fungerar på hårdkodad interna länkar och ändrar dem toopoint toohello externa URL: er som fjärranslutna användare behöver toogo via.
+- **Relativa interna länkar** som pekar på en delad resurs i en lokal fil-struktur som `/claims/claims.html`. De här länkarna fungerar automatiskt i appar som publiceras via Application Proxy och fortsätter att fungera med eller utan länköversättning. 
+- **Hårdkodad interna länkar** till andra lokala appar som `http://expenses` eller publicerade filer av `http://expenses/logo.jpg`. Funktionen länken översättning fungerar på hårdkodad interna länkar och ändrar dem så att den pekar till de externa URL: er som fjärranslutna användare behöver gå igenom.
 
-### <a name="how-do-apps-link-tooeach-other"></a>Hur länkar tooeach andra appar?
+### <a name="how-do-apps-link-to-each-other"></a>Hur länkar appar till varandra?
 
-Länköversättning är aktiverat för varje program, så att du har kontroll över hello användarupplevelsen på hello per app-nivå. Aktivera länköversättning för en app när du vill hello länkar *från* som app-toobe översätts inte länkar *till* appen. 
+Länköversättning är aktiverat för varje program, så att du har kontroll över användarupplevelsen på per app-nivå. Aktivera länköversättning för en app när du vill att länkarna *från* appen översättas länkar inte *till* appen. 
 
-Anta exempelvis att du har tre program som publicerats via Proxy för alla länkar tooeach andra: fördelar, utgifter och resa. Det finns en fjärde app Feedback som inte publicerats via Application Proxy.
+Anta exempelvis att du har tre program som publicerats via Proxy för att alla länkar till varandra: fördelar, utgifter och resa. Det finns en fjärde app Feedback som inte publicerats via Application Proxy.
 
-När du aktiverar länköversättning för hello fördelar app hello länkar tooExpenses och resa är omdirigerade toohello externa URL: er för dessa appar, men hello länken tooFeedback omdirigeras inte eftersom det inte finns några externa URL: en. Länkar från utgifter och resa tillbaka tooBenefits inte fungerar, eftersom länköversättning inte har aktiverats för dessa två appar.
+När du aktiverar länken översättningen av fördelar appen länkar till kostnader och resa omdirigeras till de externa URL: er för dessa appar, men länken till Feedback omdirigeras inte eftersom det inte finns några externa URL: en. Länkar från utgifter och resa till fördelar fungerar inte, eftersom länköversättning inte har aktiverats för dessa två appar.
 
-![Länkar från fördelar tooother appar när länköversättning är aktiverad](./media/application-proxy-link-translation/one_app.png)
+![Länkar från fördelar till andra appar när länköversättning är aktiverad](./media/application-proxy-link-translation/one_app.png)
 
 ### <a name="which-links-arent-translated"></a>Vilka länkar inte är översatt?
 
-tooimprove prestanda och säkerhet, vissa länkar är inte översättas:
+För att förbättra prestanda och säkerhet, inte är vissa länkar översatt:
 
 - Länkar inte inuti kodtaggar. 
 - Länkar inte i HTML-, CSS- eller JavaScript. 
-- Interna länkar öppnas från andra program. Att kommer inte översätta länkar skickas via e-post eller snabbmeddelande eller ingår i andra dokument. hello användarna måste tooknow toogo toohello externa URL: en.
+- Interna länkar öppnas från andra program. Att kommer inte översätta länkar skickas via e-post eller snabbmeddelande eller ingår i andra dokument. Användarna behöver veta för att gå till den externa Webbadressen.
 
-Om du behöver toosupport något av dessa två scenarier, Använd hello samma interna och externa URL: er i stället för länköversättning.  
+Om du behöver stöd för något av dessa två scenarier kan du använda samma interna och externa URL: er i stället för länköversättning.  
 
 ## <a name="enable-link-translation"></a>Aktivera länköversättning
 
 Komma igång med länköversättning är lika enkelt som att klicka på en knapp:
 
-1. Logga in toohello [Azure-portalen](https://portal.azure.com) som administratör.
-2. Gå för**Azure Active Directory** > **företagsprogram** > **alla program** > Välj hello-app som du vill toomanage > **Programproxy**.
-3. Aktivera **översätta URL: er i programmet brödtext** för**Ja**.
+1. Logga in på [Azure Portal](https://portal.azure.com) som administratör.
+2. Gå till **Azure Active Directory** > **företagsprogram** > **alla program** > Välj den app som du vill hantera > **programproxy**.
+3. Aktivera **översätta URL: er i programmet brödtext** till **Ja**.
 
-   ![Välj Ja tootranslate URL: er i programmet brödtext](./media/application-proxy-link-translation/select_yes.png).
-4. Välj **spara** tooapply ändringarna.
+   ![Välj Ja om du vill att översätta URL: er i programmet brödtext](./media/application-proxy-link-translation/select_yes.png).
+4. Välj **spara** tillämpa dina ändringar.
 
-Nu när användarna har åtkomst till det här programmet genomsökas hello proxy för intern URL: er som har publicerats via Application Proxy på din klient.
+När användarna har åtkomst till det här programmet ska nu proxyn automatiskt söka efter interna URL: er som har publicerats via Application Proxy på din klient.
 
 ## <a name="send-feedback"></a>Skicka feedback
 
-Vi vill hjälp-toomake den här funktionen fungerar för alla dina appar. Vi söka över 30 taggar i HTML- och CSS och överväger vilka JavaScript fall toosupport. Om du har ett exempel på genererade länkar som inte är som översätts skickar du ett kodstycke för[Application Proxy Feedback](mailto:aadapfeedback@microsoft.com). 
+Vi vill du att den här funktionen fungerar för alla dina appar. Vi söka över 30 taggar i HTML- och CSS och överväger som JavaScript fall för att stödja. Om du har ett exempel på genererade länkar som inte är som översätts skickar du ett kodstycke till [Application Proxy Feedback](mailto:aadapfeedback@microsoft.com). 
 
 ## <a name="next-steps"></a>Nästa steg
-[Använda anpassade domäner med Azure AD Application Proxy](active-directory-application-proxy-custom-domains.md) toohave hello samma interna och externa URL
+[Använda anpassade domäner med Azure AD Application Proxy](active-directory-application-proxy-custom-domains.md) ska ha samma interna och externa URL: en
 
 [Konfigurera alternativa åtkomstmappningar för SharePoint 2013](https://technet.microsoft.com/library/cc263208.aspx)

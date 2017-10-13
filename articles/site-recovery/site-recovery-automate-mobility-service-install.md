@@ -1,6 +1,6 @@
 ---
-title: "aaaDeploy hello Site Recovery mobilitetstjänsten med Azure Automation DSC | Microsoft Docs"
-description: "Beskriver hur toouse Azure Automation DSC tooautomatically distribuera hello Azure Site Recovery mobilitetstjänsten och Azure-agenten för VMware VM och fysisk server replication tooAzure"
+title: "Distribuera Site Recovery-mobilitetstjänsten med Azure Automation DSC | Microsoft Docs"
+description: "Beskriver hur du använder Azure Automation DSC för att automatiskt distribuera Azure Site Recovery-mobilitetstjänsten och Azure-agenten för VMware VM och fysisk serverreplikering till Azure"
 services: site-recovery
 documentationcenter: 
 author: krnese
@@ -14,57 +14,57 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: krnese
-ms.openlocfilehash: 52cdd13ceb61718a21137180c55db86919af5929
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: bcc5f11afbecac8fe63935f3401dd3e2d767e8aa
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
-# <a name="deploy-hello-mobility-service-with-azure-automation-dsc-for-replication-of-vm"></a>Distribuera hello mobilitetstjänsten med Azure Automation DSC för replikering av virtuell dator
+# <a name="deploy-the-mobility-service-with-azure-automation-dsc-for-replication-of-vm"></a>Distribuera mobilitetstjänsten med Azure Automation DSC för replikering av virtuell dator
 I Operations Management Suite ger vi dig en omfattande säkerhetskopiering och haveriberedskapslösning som du kan använda som en del av en kontinuitetsplan.
 
-Vi har startats denna resa tillsammans med Hyper-V med hjälp av Hyper-V-replikering. Men vi har utökade toosupport heterogena installationen eftersom kunder har flera hypervisorer och plattformar i sina moln.
+Vi har startats denna resa tillsammans med Hyper-V med hjälp av Hyper-V-replikering. Men vi har utökat stöd för en inställning för heterogena eftersom kunder har flera hypervisorer och plattformar i sina moln.
 
-Om du kör VMware arbetsbelastningar och/eller fysiska servrar idag, kör en hanteringsserver alla hello Azure Site Recovery-komponenter i din miljö toohandle hello kommunikations- och replikering med Azure, när Azure är målet.
+Om du kör VMware arbetsbelastningar och/eller fysiska servrar idag, körs alla Azure Site Recovery-komponenter i din miljö för att hantera replikering för kommunikation och data med Azure, när Azure är målet i en hanteringsserver.
 
-## <a name="deploy-hello-site-recovery-mobility-service-by-using-automation-dsc"></a>Distribuera hello på Site Recovery-mobilitetstjänsten med hjälp av Automation DSC
+## <a name="deploy-the-site-recovery-mobility-service-by-using-automation-dsc"></a>Distribuera Site Recovery-mobilitetstjänsten med hjälp av Automation DSC
 Låt oss börja genom att göra en snabb uppdelning av den här hanteringsservern har.
 
-hello management-servern kör flera serverroller. En av dessa roller är *configuration*, som samordnar kommunikationen och hanterar processer för replikering och återställning av data.
+Management-servern kör flera serverroller. En av dessa roller är *configuration*, som samordnar kommunikationen och hanterar processer för replikering och återställning av data.
 
-Dessutom hello *processen* roll som fungerar som en replikerings-gateway. Den här rollen tar emot replikeringsdata från skyddade källdatorer, optimerar dem med cachelagring, komprimering och kryptering och skickar sedan tooan Azure storage-konto. En av hello funktioner för hello Processroll är också toopush installation av hello Mobility service tooprotected datorer och utför automatisk identifiering av virtuella VMware-datorer.
+Dessutom kan den *processen* roll som fungerar som en replikerings-gateway. Den här rollen tar emot replikeringsdata från skyddade källdatorer, optimerar dem med cachelagring, komprimering och kryptering och skickar det till ett Azure storage-konto. En av funktionerna för processen är också att push-installation av mobilitetstjänsten till skyddade datorer och utföra automatisk identifiering av virtuella VMware-datorer.
 
-Om det finns en återställning från Azure, hello *huvudmålservern* roll hanterar replikeringsdata hello som en del av den här åtgärden.
+Om det finns en återställning från Azure, den *huvudmålservern* roll hanterar replikeringsdata som en del av den här åtgärden.
 
-För hello skyddade datorer, vi förlitar sig på hello *mobilitetstjänsten*. Den här komponenten är distribuerade tooevery dator (VMware VM eller fysiska server) som du vill tooreplicate tooAzure. Den samlar in dataskrivningar på hello datorn och vidarebefordrar dem toohello hanteringsservern (Processroll).
+För de skydda datorerna vi förlitar sig på den *mobilitetstjänsten*. Den här komponenten distribueras till varje dator (VMware VM eller fysiska server) som du vill replikera till Azure. Den samlar in dataskrivningar på datorn och vidarebefordrar dem till hanteringsservern (Processroll).
 
-När du behandlar kontinuitet för företag är viktigt toounderstand dina arbetsbelastningar, din infrastruktur och hello komponenter inblandade. Du kan sedan uppfyller hello krav för recovery tid mål för Återställningstid och mål för återställningspunkt (RPO). I den här kontexten hello mobilitetstjänsten är viktiga tooensuring som dina arbetsbelastningar skyddas som förväntat.
+När du hantera affärskontinuitet, är det viktigt att förstå dina arbetsbelastningar och din infrastruktur och komponenterna som ingår. Du kan sedan uppfyller kraven för återställning tid mål för Återställningstid och mål för återställningspunkt (RPO). I den här kontexten är mobilitetstjänsten nyckeln till att säkerställa att dina arbetsbelastningar skyddas som förväntat.
 
 Hur kan du, på ett optimerat sätt se till att du har en tillförlitlig skyddade installationen med hjälp av vissa Operations Management Suite-komponenter?
 
-Den här artikeln innehåller ett exempel på hur du kan använda Azure Automation önskad tillstånd Configuration (DSC), tillsammans med Site Recovery tooensure som:
+Den här artikeln innehåller ett exempel på hur du kan använda Azure Automation önskad tillstånd Configuration (DSC), tillsammans med Site Recovery för att se till att:
 
-* Hej mobilitetstjänsten och Virtuella Azure-agenten är distribuerade toohello Windows-datorer som du vill tooprotect.
-* Hej mobilitetstjänsten och Virtuella Azure-agenten körs alltid när Azure är hello replikeringsmål.
+* Mobilitetstjänstversionen och Virtuella Azure-agenten distribueras till de Windows-datorer som du vill skydda.
+* Mobilitetstjänstversionen och Virtuella Azure-agenten körs alltid när Azure är replikeringsmålet.
 
 ## <a name="prerequisites"></a>Krav
-* En databas toostore hello som krävs för installationen
-* En databas toostore hello krävs lösenfras tooregister hello management server
+* En databas för lagring av de nödvändiga inställningarna
+* En databas för att lagra nödvändiga lösenfrasen registreras hos management server
 
   > [!NOTE]
-  > En unik lösenfras genereras för varje hanteringsserver. Om du vill toodeploy flera hanteringsservrar blir har tooensure som hello rätt lösenfras lagras i hello passphrase.txt filen.
+  > En unik lösenfras genereras för varje hanteringsserver. Om du ska distribuera flera hanteringsservrar, måste du se till att rätt lösenfrasen lagras i filen passphrase.txt.
   >
   >
-* Windows Management Framework (WMF) 5.0 installerat på hello datorer som du vill tooenable för skydd (ett krav för Automation DSC)
+* Windows Management Framework (WMF) 5.0 installerat på de datorer som du vill aktivera skydd (ett krav för Automation DSC)
 
   > [!NOTE]
-  > Om du vill toouse DSC för Windows-datorer som har WMF 4.0 installerat avsnittet hello [Använd DSC i frånkopplade miljöer](## Use DSC in disconnected environments).
+  > Om du vill använda DSC för Windows-datorer som har WMF 4.0 installerat finns i avsnittet [använder DSC i frånkopplade miljöer](## Use DSC in disconnected environments).
   
 
-Hej mobilitetstjänsten kan installeras via hello kommandoraden och tar flera argument. Det är därför du behöver toohave hello-binärfiler (när du extraherar dem från din konfiguration) och lagra dem på en plats där du kan hämta dem med hjälp av DSC-konfigurationen.
+Mobilitetstjänsten kan installeras via kommandoraden och tar flera argument. Därför måste du ha binärfilerna (när du extraherar dem från din konfiguration) och lagra dem på en plats där du kan hämta dem med hjälp av DSC-konfigurationen.
 
 ## <a name="step-1-extract-binaries"></a>Steg 1: Extrahera binärfiler
-1. tooextract hello filer som behövs för den här installationen Bläddra toohello följande katalog på hanteringsservern:
+1. Bläddra till följande katalog på hanteringsservern för att extrahera filerna som du behöver för den här installationen:
 
     **\Microsoft azure Site Recovery\home\svsystems\pushinstallsvc\repository**
 
@@ -72,28 +72,28 @@ Hej mobilitetstjänsten kan installeras via hello kommandoraden och tar flera ar
 
     **Microsoft ASR_UA_version_Windows_GA_date_Release.exe**
 
-    Använd följande kommando tooextract hello installer hello:
+    Använd följande kommando för att extrahera installationsprogrammet:
 
     **.\Microsoft-ASR_UA_9.1.0.0_Windows_GA_02May2016_release.exe /q /x:C:\Users\Administrator\Desktop\Mobility_Service\Extract**
-2. Markera alla filer och skicka dem tooa komprimerad mapp.
+2. Markera alla filer och skicka dem till en komprimerad mapp.
 
-Nu har du hello-binärfiler som du behöver tooautomate hello installationen av hello mobilitetstjänsten med hjälp av Automation DSC.
+Nu har du de binära filerna som behövs för att automatisera installationen av mobilitetstjänsten med hjälp av Automation DSC.
 
 ### <a name="passphrase"></a>Lösenfrasen
-Sedan måste toodetermine där du vill att tooplace komprimerade mappen. Du kan använda ett Azure storage-konto som visas senare toostore hello lösenfras som du behöver för hello-installationen. hello agenten registreras sedan med hello hanteringsservern som en del av hello-processen.
+Därefter måste du bestämma om du vill placera komprimerade mappen. Du kan använda ett Azure storage-konto som du ser senare för att lagra lösenfrasen som ska användas för installationen. Sedan registrerar agenten med hanteringsservern som en del av processen.
 
-hello lösenfras som du fick när du distribuerade hanteringsservern hello kan sparas tooa textfil som passphrase.txt.
+Lösenordet som du fick när du distribuerade hanteringsservern kan sparas till en textfil som passphrase.txt.
 
-Placera både hello komprimerade mappen och lösenfrasen hello i en dedikerad behållare i hello Azure storage-konto.
+Placera både den komprimerade mappen och lösenfrasen i en dedikerad behållare i Azure storage-konto.
 
 ![Mapp](./media/site-recovery-automate-mobilitysevice-install/folder-and-passphrase-location.png)
 
-Om du vill tookeep dessa filer på en resurs i nätverket kan göra du detta. Du behöver bara tooensure att hello DSC-resurs som du kommer att använda senare har åtkomst och kan få hello installationen och lösenfrasen.
+Om du vill behålla dessa filer på en resurs i nätverket, kan du göra detta. Du behöver bara se till att DSC-resurs som du kommer att använda senare har åtkomst och kan få installationen och lösenfrasen.
 
-## <a name="step-2-create-hello-dsc-configuration"></a>Steg 2: Skapa hello DSC-konfiguration
-hello inställningen beror på WMF 5.0. Hello datorn toosuccessfully tillämpas i hello konfigurationen med hjälp av Automation DSC, WMF 5.0 måste toobe finns.
+## <a name="step-2-create-the-dsc-configuration"></a>Steg 2: Skapa DSC-konfigurationen
+Inställningen beror på WMF 5.0. WMF 5.0 måste finnas för att kunna tillämpa konfigurationen med hjälp av Automation DSC datorn.
 
-hello miljö använder hello följande exempel DSC-konfigurationen:
+Miljön använder följande exempel DSC-konfigurationen:
 
 ```powershell
 configuration ASRMobilityService {
@@ -190,42 +190,42 @@ configuration ASRMobilityService {
     }
 }
 ```
-hello konfiguration gör hello följande:
+Konfigurationen att göra följande:
 
-* hello variabler talar hello konfiguration där tooget hello binärfiler för hello mobilitetstjänsten och hello Azure VM-agent, där tooget hello lösenfras och toostore hello utdata.
-* hello konfigurationen importeras hello xPSDesiredStateConfiguration DSC-resurs, så att du kan använda `xRemoteFile` toodownload hello filer från hello-databas.
-* hello konfigurationen skapar en katalog där du vill toostore hello binärfiler.
-* hello Arkiv resursen kommer att extrahera hello filer från hello komprimerade mappen.
-* hello paketet installera resursen kommer att installera mobilitetstjänsten hello från hello UNIFIEDAGENT. EXE-installationsprogram med specifika hello-argument. (hello variabler som skapar hello argument måste toobe ändras tooreflect din miljö.)
-* hello paketet AzureAgent resurs installeras hello Azure VM, vilket rekommenderas på varje virtuell dator som körs i Azure. hello Azure VM-agenten är det också möjligt tooadd tillägg toohello VM efter växling vid fel.
-* hello säkerställer tjänsten eller de resurser som att hello relaterade mobilitetstjänsterna och hello Azure-tjänster alltid körs.
+* Variablerna talar om hur var du kan hämta de binära filerna för mobilitetstjänsten och Virtuella Azure-agenten var du kan hämta lösenfrasen och var du lagrar utdata.
+* Konfigurationen importeras xPSDesiredStateConfiguration DSC-resurs så att du kan använda `xRemoteFile` ska hämta filerna från databasen.
+* Konfigurationen skapar en katalog där du vill lagra de binära filerna.
+* Arkivera resursen kommer att extrahera filerna från den komprimerade mappen.
+* Paketet installera resursen kommer att installera mobilitetstjänsten från UNIFIEDAGENT. EXE-installationsprogram med specifika argument. (De variabler som skapar argumenten måste ändras för att avspegla din miljö.)
+* Virtuella Azure-agenten, vilket rekommenderas på varje virtuell dator som körs i Azure installerar paketet AzureAgent resurs. Virtuella Azure-agenten gör det också möjligt att lägga till tillägg till den virtuella datorn efter redundans.
+* Den tjänsten eller de resurser som säkerställer att körs alltid relaterade mobilitetstjänsterna och Azure-tjänster.
 
-Spara hello konfiguration som **ASRMobilityService**.
+Spara konfigurationen som **ASRMobilityService**.
 
 > [!NOTE]
-> Kom ihåg tooreplace hello CSIP i din konfiguration tooreflect hello faktiska management-servern så att hello agent ansluts korrekt och använder hello rätt lösenfras.
+> Kom ihåg att ersätta CSIP i konfigurationen för att återspegla faktiska management-servern så att agenten ska anslutas på rätt sätt och använder rätt lösenfras.
 >
 >
 
-## <a name="step-3-upload-tooautomation-dsc"></a>Steg 3: Överför tooAutomation DSC
-Eftersom hello DSC-konfiguration som du gjort importerar en modul för nödvändiga DSC-resurs (xPSDesiredStateConfiguration), måste tooimport att modulen i Automation innan du laddar upp hello DSC-konfigurationen.
+## <a name="step-3-upload-to-automation-dsc"></a>Steg 3: Överför till Automation DSC
+Eftersom DSC-konfigurationen som du har gjort kommer att importera en modul för nödvändiga DSC-resurs (xPSDesiredStateConfiguration), måste du importera modulen i Automation innan du laddar upp DSC-konfigurationen.
 
-Logga in tooyour Automation-konto för Bläddra**tillgångar** > **moduler**, och klicka på **Bläddra galleriet**.
+Logga in på ditt Automation-konto, bläddra till **tillgångar** > **moduler**, och klicka på **Bläddra galleriet**.
 
-Här kan du söka efter hello modulen och importera den tooyour konto.
+Här kan du söka efter modulen och importera dem till ditt konto.
 
 ![Importera modulen](./media/site-recovery-automate-mobilitysevice-install/search-and-import-module.png)
 
-När du är klar detta går tooyour datorn där du har moduler som hello Azure Resource Manager har installerats och fortsätta tooimport hello nyskapad DSC-konfigurationen.
+När du är klar detta går du till datorn där du har Azure Resource Manager-moduler som har installerats och fortsätta importera nyskapade DSC-konfigurationen.
 
 ### <a name="import-cmdlets"></a>Importera cmdlet: ar
-Logga in tooyour Azure-prenumeration i PowerShell. Ändra hello cmdlets tooreflect din miljö och avbilda kontoinformationen Automation i en variabel:
+Logga in på Azure-prenumerationen i PowerShell. Ändra cmdlet: ar för att avspegla din miljö och avbilda kontoinformationen Automation i en variabel:
 
 ```powershell
 $AAAccount = Get-AzureRmAutomationAccount -ResourceGroupName 'KNOMS' -Name 'KNOMSAA'
 ```
 
-Överför hello configuration tooAutomation DSC med hjälp av hello följande cmdlet:
+Överför konfigurationen till Automation DSC genom att använda följande cmdlet:
 
 ```powershell
 $ImportArgs = @{
@@ -236,44 +236,44 @@ $ImportArgs = @{
 $AAAccount | Import-AzureRmAutomationDscConfiguration @ImportArgs
 ```
 
-### <a name="compile-hello-configuration-in-automation-dsc"></a>Kompilera hello konfigurationen i Automation DSC
-Sedan måste toocompile hello konfigurationen i Automation DSC, så att du kan starta tooregister noder tooit. Du kan uppnå som genom att köra följande cmdlet hello:
+### <a name="compile-the-configuration-in-automation-dsc"></a>Kompilera konfigurationen i Automation DSC
+Därefter måste kompilera konfigurationen i Automation DSC, så att du kan börja registrera noderna till den. Du kan åstadkomma som genom att köra följande cmdlet:
 
 ```powershell
 $AAAccount | Start-AzureRmAutomationDscCompilationJob -ConfigurationName ASRMobilityService
 ```
 
-Detta kan ta några minuter, eftersom du i princip distribuerar hello toohello finns DSC pull-konfigurationstjänsten.
+Detta kan ta några minuter, eftersom du i princip distribuerar konfigurationen till den värdbaserade DSC pull-tjänsten.
 
-När du kompilerar hello konfiguration du kan hämta hello jobbinformation med hjälp av PowerShell (Get-AzureRmAutomationDscCompilationJob) eller genom att använda hello [Azure-portalen](https://portal.azure.com/).
+När du sammanställer konfigurationen du kan hämta jobbinformation med hjälp av PowerShell (Get-AzureRmAutomationDscCompilationJob) eller genom att använda den [Azure-portalen](https://portal.azure.com/).
 
 ![Hämta jobb](./media/site-recovery-automate-mobilitysevice-install/retrieve-job.png)
 
-Du har nu publicerade och överföra din DSC-konfiguration tooAutomation DSC.
+Du har nu har publicerats och överföra DSC-konfigurationen till Automation DSC.
 
-## <a name="step-4-onboard-machines-tooautomation-dsc"></a>Steg 4: Publicera datorer tooAutomation DSC
+## <a name="step-4-onboard-machines-to-automation-dsc"></a>Steg 4: Publicera datorer till Automation DSC
 > [!NOTE]
-> En av hello förutsättningar för att slutföra det här scenariot är att din Windows-datorer uppdateras med hello senaste versionen av WMF. Du kan hämta och installera rätt version av hello för din plattform från hello [Download Center](https://www.microsoft.com/download/details.aspx?id=50395).
+> En av förutsättningarna för att slutföra det här scenariot är att din Windows-datorer uppdateras med den senaste versionen av WMF. Du kan hämta och installera rätt version för din plattform från den [Download Center](https://www.microsoft.com/download/details.aspx?id=50395).
 >
 >
 
-Nu skapar du en metaconfig för DSC att du använder tooyour noder. toosucceed med den här behöver du tooretrieve hello endpoint URL och hello primär nyckel för det valda Automation-kontot i Azure. Du hittar dessa värden under **nycklar** på hello **alla inställningar** bladet för hello Automation-konto.
+Nu skapar du en metaconfig för DSC som du ska gälla för noderna. Du måste hämta slutpunkts-URL och den primära nyckeln för det valda Automation-kontot i Azure för att lyckas med den här. Du hittar dessa värden under **nycklar** på den **alla inställningar** bladet för Automation-kontot.
 
 ![Nyckelvärden](./media/site-recovery-automate-mobilitysevice-install/key-values.png)
 
-I det här exemplet har du en fysisk server för Windows Server 2012 R2 som du vill tooprotect genom att använda Site Recovery.
+I det här exemplet har du en Windows Server 2012 R2 fysisk server som du vill skydda med Site Recovery.
 
-### <a name="check-for-any-pending-file-rename-operations-in-hello-registry"></a>Kontrollera om det finns väntande filåtgärder rename i hello registret
-Vi rekommenderar att du söker efter eventuella väntande filåtgärder rename i hello registret innan du börjar tooassociate hello server med hello Automation DSC-slutpunkten. De kan förhindra hello installationen att slutföra på grund av tooa väntande omstart.
+### <a name="check-for-any-pending-file-rename-operations-in-the-registry"></a>Kontrollera om det finns väntande filåtgärder Byt namn i registret
+Innan du börjar koppla servern till slutpunkten för Automation DSC, rekommenderar vi att du söker efter eventuella väntande filåtgärder Byt namn i registret. De kan förhindra installationen slutförs på grund av en väntande omstart.
 
-Kör följande cmdlet tooverify att det finns ingen väntande omstart på hello server hello:
+Kör följande cmdlet för att kontrollera att det finns ingen väntande omstart på servern:
 
 ```powershell
 Get-ItemProperty 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\' | Select-Object -Property PendingFileRenameOperations
 ```
-Om det visar tomt är OK tooproceed. Om inte, du kan åtgärda detta genom hello servern startas om under en underhållsperiod.
+Om det visar tomt är OK för att fortsätta. Om inte, du kan åtgärda detta genom att servern startas om under en underhållsperiod.
 
-tooapply hello konfigurationen på hello-servern, starta hello PowerShell Integrated Scripting Environment (ISE) och kör följande skript hello. Detta är i grunden en DSC lokala konfiguration som instruerar hello Local Configuration Manager-motorn tooregister med hello Automation DSC-tjänsten och hämta hello specifik konfiguration (ASRMobilityService.localhost).
+Starta PowerShell Integrated Scripting Environment (ISE) och kör följande skript för att tillämpa konfigurationen på servern. Detta är i grunden en DSC lokala konfiguration som instruerar Local Configuration Manager-motorn att registrera med Automation DSC-tjänsten och hämta viss konfiguration (ASRMobilityService.localhost).
 
 ```powershell
 [DSCLocalConfigurationManager()]
@@ -314,63 +314,63 @@ metaconfig -URL 'https://we-agentservice-prod-1.azure-automation.net/accounts/<Y
 Set-DscLocalConfigurationManager .\metaconfig -Force -Verbose
 ```
 
-Den här konfigurationen medför hello Local Configuration Manager motorn tooregister sig själv med Automation DSC. Den avgör också hur hello motorn ska köras, vad den ska göra om det finns en konfigurationsavvikelser (ApplyAndAutoCorrect) och hur den ska fortsätta med hello konfiguration om en omstart krävs.
+Den här konfigurationen gör att den lokala Configuration Manager-motorn att registrera sig med Automation DSC. Den avgör också hur motorn ska köras, vad den ska göra om det finns en konfigurationsavvikelser (ApplyAndAutoCorrect) och hur den ska fortsätta med konfigurationen av en omstart krävs.
 
-När du har kört skriptet bör hello nod börja tooregister med Automation DSC.
+När du har kört skriptet bör noden börja registrera med Automation DSC.
 
 ![Noden registrering pågår](./media/site-recovery-automate-mobilitysevice-install/register-node.png)
 
-Om du går tillbaka toohello Azure-portalen kan se du hello nyregistrerade noden nu har visats i hello-portalen.
+Om du går tillbaka till Azure-portalen kan se du att noden nyregistrerade nu har visats i portalen.
 
-![Registrerade nod i hello-portalen](./media/site-recovery-automate-mobilitysevice-install/registered-node.png)
+![Registrerade nod i portalen](./media/site-recovery-automate-mobilitysevice-install/registered-node.png)
 
-Du kan köra hello följande PowerShell-cmdlet tooverify som hello nod har registrerats korrekt på hello-servern:
+Du kan köra följande PowerShell-cmdlet för att kontrollera att noden har registrerats korrekt på servern:
 
 ```powershell
 Get-DscLocalConfigurationManager
 ```
 
-När hello konfiguration har ägardatabasen och tillämpade toohello server kan kan du kontrollera detta genom att köra följande cmdlet hello:
+Efter konfigurationen har hämtas och tillämpas på servern, kan du kontrollera detta genom att köra följande cmdlet:
 
 ```powershell
 Get-DscConfigurationStatus
 ```
 
-hello utdata visar hello servern har har hämtas dess konfiguration:
+Utdata visar att servern har mottagit dess konfiguration:
 
 ![Resultat](./media/site-recovery-automate-mobilitysevice-install/successful-config.png)
 
-Dessutom hello Mobility tjänstinställning har sin egen logg som finns på *SystemDrive*\ProgramData\ASRSetupLogs.
+Dessutom tjänstinställning Mobility har sin egen logg som finns på *SystemDrive*\ProgramData\ASRSetupLogs.
 
-Det stämmer. Du har nu distribuerats och registrerad hello mobilitetstjänsten på hello datorn som du vill tooprotect genom att använda Site Recovery. DSC ska kontrollera att tjänsterna för hello krävs alltid är igång.
+Det stämmer. Du har nu distribuerats och registrerad mobilitetstjänsten på den dator som du vill skydda med Site Recovery. DSC ska kontrollera att de nödvändiga tjänsterna körs alltid.
 
 ![Slutförd distribution](./media/site-recovery-automate-mobilitysevice-install/successful-install.png)
 
-När hello hanteringsservern identifierar hello lyckad distribution, kan du konfigurera skyddet och aktivera replikering på hello dator genom att använda Site Recovery.
+När hanteringsservern identifierar lyckad distribution, kan du konfigurera skyddet och aktivera replikering på datorn med hjälp av Site Recovery.
 
 ## <a name="use-dsc-in-disconnected-environments"></a>Använd DSC i frånkopplade miljöer
-Om dina datorer inte är anslutna toohello Internet kan du fortfarande är beroende av DSC-toodeploy och konfigurerar hello mobilitetstjänsten på hello arbetsbelastningar som du vill tooprotect.
+Om dina datorer inte är ansluten till Internet, kan du fortfarande beroende DSC för att distribuera och konfigurera mobilitetstjänsten på arbetsbelastningar som du vill skydda.
 
-Du kan initiera en egen hämtningsservern för DSC i din miljö tooessentially innehåller hello samma funktioner som du får från Automation DSC. Det vill säga hello klienter hämtar hello-konfiguration (när den är registrerad) toohello DSC-slutpunkten. Ett annat alternativ är dock toomanually push hello DSC-konfiguration tooyour datorer, lokalt eller fjärranslutet.
+Du kan initiera en egen hämtningsservern för DSC i din miljö för att ge i stort sett samma funktioner som du får från Automation DSC. Det vill säga hämtar klienter konfigurationen (när den är registrerad) till DSC-slutpunkten. Ett annat alternativ är dock manuellt push DSC-konfigurationen till dina datorer, lokalt eller fjärranslutet.
 
-Observera att i det här exemplet finns det en parameter som lagts till för hello datornamn. hello fjärrfiler finns nu på en fjärresurs som ska vara tillgängliga av hello datorer som du vill tooprotect. hello slutet av hello skript utfärdar hello-konfigurationen och startar sedan tooapply hello DSC-konfiguration toohello måldatorn.
+Observera att i det här exemplet finns det en extra parameter för namnet på datorn. Fjärråtkomst filerna finns nu på en fjärresurs som ska kunna nås av datorer som du vill skydda. I slutet av skriptet utfärdar konfigurationen och startar sedan tillämpa DSC-konfigurationen på måldatorn.
 
 ### <a name="prerequisites"></a>Krav
-Se till att hello xPSDesiredStateConfiguration PowerShell-modulen är installerad. Du kan installera hello xPSDesiredStateConfiguration modul för Windows-datorer där WMF 5.0 är installerat, genom att köra följande cmdlet för hello måldatorerna hello:
+Se till att xPSDesiredStateConfiguration PowerShell-modulen är installerad. För Windows-datorer där WMF 5.0 är installerat, kan du installera modulen xPSDesiredStateConfiguration genom att köra följande cmdlet på måldatorer:
 
 ```powershell
 Find-Module -Name xPSDesiredStateConfiguration | Install-Module
 ```
 
-Du kan också hämta och spara hello modulen om du behöver toodistribute den tooWindows datorer som har WMF 4.0. Kör denna cmdlet på en dator där PowerShellGet (WMF 5.0) förekommer:
+Du kan också hämta och spara modulen om du behöver distribuera den till Windows-datorer som har WMF 4.0. Kör denna cmdlet på en dator där PowerShellGet (WMF 5.0) förekommer:
 
 ```powershell
 Save-Module -Name xPSDesiredStateConfiguration -Path <location>
 ```
 
-Kontrollera också att hello för WMF 4.0, [Windows 8.1 update KB2883200](https://www.microsoft.com/download/details.aspx?id=40749) är installerat på hello datorer.
+Även WMF 4.0, se till att den [Windows 8.1 update KB2883200](https://www.microsoft.com/download/details.aspx?id=40749) installeras på datorer.
 
-hello flyttas följande konfiguration tooWindows datorer som har WMF 5.0 och WMF 4.0:
+Följande konfiguration kan skickas till Windows-datorer som har WMF 5.0 och WMF 4.0:
 
 ```powershell
 configuration ASRMobilityService {
@@ -471,28 +471,28 @@ ASRMobilityService -ComputerName 'MyTargetComputerName'
 Start-DscConfiguration .\ASRMobilityService -Wait -Force -Verbose
 ```
 
-Om du vill tooinstantiate hämtningsservern egna DSC på ditt företagsnätverk toomimic hello-funktioner som du kan hämta från Automation DSC, se [ställer in en pull webbserver DSC](https://msdn.microsoft.com/powershell/dsc/pullserver?f=255&MSPPError=-2147217396).
+Om du vill skapa en instans av en egen DSC pull-server i företagsnätverket för att efterlikna de funktioner som du kan hämta från Automation DSC, se [ställer in en pull webbserver DSC](https://msdn.microsoft.com/powershell/dsc/pullserver?f=255&MSPPError=-2147217396).
 
 ## <a name="optional-deploy-a-dsc-configuration-by-using-an-azure-resource-manager-template"></a>Valfritt: Distribuera en DSC-konfigurationen med hjälp av en Azure Resource Manager-mall
-Den här artikeln har fokuserar på hur du kan skapa egna DSC-konfigurationen tooautomatically distribuera hello mobilitetstjänsten och hello Azure VM-agenten och se till att de körs på hello datorer som du vill tooprotect. Vi har också en Azure Resource Manager-mall som ska distribuera den här DSC-konfiguration tooa ny eller befintlig Azure Automation-konto. hello-mallen använder indataparametrar toocreate Automation tillgångar som innehåller hello variabler för din miljö.
+Den här artikeln har fokuserar på hur du kan skapa egna DSC-konfiguration för att automatiskt distribuera mobilitetstjänsten och Azure VM-agenten-- och kontrollera som de körs på de datorer som du vill skydda. Vi har också en Azure Resource Manager-mall som ska distribuera den här DSC-konfigurationen till en ny eller befintlig Azure Automation-konto. Mallen använder indataparametrar för att skapa Automation tillgångar som innehåller variabler för din miljö.
 
-När du har distribuerat hello mallen kan du bara referera toostep 4 i den här guiden tooonboard dina datorer.
+När du distribuerar mallen kan du bara referera till steg 4 i den här guiden för att publicera dina datorer.
 
-hello mallen gör hello följande:
+Mallen kommer att göra följande:
 
 1. Använd ett befintligt Automation-konto eller skapa en ny
 2. Ta indataparametrar:
-   * ASRRemoteFile--hello plats där du har sparat hello Mobility tjänstinställning
-   * ASRPassphrase--hello plats där du har sparat hello passphrase.txt fil
-   * ASRCSEndpoint--hello IP-adressen för hanteringsservern
-3. Importera hello xPSDesiredStateConfiguration PowerShell-modulen
-4. Skapa och kompilera hello DSC-konfiguration
+   * ASRRemoteFile--den plats där du har sparat tjänstinställning Mobility
+   * ASRPassphrase--den plats där du har sparat filen passphrase.txt
+   * ASRCSEndpoint--IP-adressen för hanteringsservern
+3. Importera xPSDesiredStateConfiguration PowerShell-modulen
+4. Skapa och kompilera DSC-konfigurationen
 
-Alla hello föregående steg sker i hello rätt ordning, så att du kan starta onboarding dina datorer för skydd.
+De föregående stegen sker i rätt ordning, så att du kan starta onboarding dina datorer för skydd.
 
-hello-mallen med instruktioner för distribution, finns på [GitHub](https://github.com/krnese/AzureDeploy/tree/master/OMS/MSOMS/DSC).
+Mallen med instruktioner för distribution, finns på [GitHub](https://github.com/krnese/AzureDeploy/tree/master/OMS/MSOMS/DSC).
 
-Distribuera hello-mallen med hjälp av PowerShell:
+Distribuera mallen med hjälp av PowerShell:
 
 ```powershell
 $RGDeployArgs = @{
@@ -509,4 +509,4 @@ New-AzureRmResourceGroupDeployment @RGDeployArgs -Verbose
 ```
 
 ## <a name="next-steps"></a>Nästa steg
-När du distribuerar hello Mobility service agenter, kan du [Aktivera replikering](site-recovery-vmware-to-azure.md) för hello virtuella datorer.
+När du har distribuerat agenterna Mobility service kan du [Aktivera replikering](site-recovery-vmware-to-azure.md) för virtuella datorer.

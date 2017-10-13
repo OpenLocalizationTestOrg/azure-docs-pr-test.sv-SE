@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure VPN Gateway-dokumentation – självstudier, API-referens | Microsoft Docs"
-description: "Lär dig hur tooconfigure virtuellt privat nätverk (VPN)-gatewayer toomanage trafik mellan virtuella nätverk i molnet och lokalt eller molnet Vnet."
+title: "Dokumentation om Azure VPN-gateway – Självstudier och API-referens | Microsoft Docs"
+description: "Lär dig hur du konfigurerar gatewayer för virtuellt privat nätverk (VPN-gateway) för att hantera trafik mellan virtuella nätverk i molnet och lokala platser, eller mellan olika virtuella nätverk i molnet."
 services: vpn-gateway
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: a518f39e0cb8761e239d0c033a7801803edfd0a7
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 61273e472dd0d0727df40984ad277aaf4c244611
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="vpn-gateway-documentation"></a>Dokumentation om VPN-gateway
 
-Lär dig hur tooconfigure VPN-Gateway, en VPN-gateway. Dokumentationen visar hur toosend nätverkstrafik mellan virtuella Azure-nätverk och lokala platser eller andra virtuella Azure-nätverk (Vnet).
+Lär dig hur du konfigurerar VPN-gateway, en gateway för virtuellt privat nätverk. Dokumentation som visar hur du skickar nätverkstrafik mellan Azure virtuella nätverk och lokala platser eller mellan andra Azure virtuella nätverk (VNets).
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -88,7 +88,7 @@ Lär dig hur tooconfigure VPN-Gateway, en VPN-gateway. Dokumentationen visar hur
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Kom igång med att skapa en plats-till-plats-anslutning med hello Azure-portalen</h3>
+                        <h3>Kom igång med att skapa en plats-till-plats-anslutning med Azure Portal</h3>
                     </div>
                 </div>
             </div>
@@ -106,7 +106,7 @@ Lär dig hur tooconfigure VPN-Gateway, en VPN-gateway. Dokumentationen visar hur
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Komma igång med en punkt-till-plats-anslutning med hello Azure-portalen</h3>
+                        <h3>Kom igång med att skapa en punkt-till-plats-anslutning med Azure Portal</h3>
                     </div>
                 </div>
             </div>
@@ -124,7 +124,7 @@ Lär dig hur tooconfigure VPN-Gateway, en VPN-gateway. Dokumentationen visar hur
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Komma igång med att skapa en VNet-till-VNet-anslutning med hello Azure-portalen</h3>
+                        <h3>Kom igång med att skapa en anslutning mellan virtuella nätverk (VNet-till-VNet) med Azure Portal</h3>
                     </div>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 ---
-title: aaaMonitor en SharePoint-webbplats med Application Insights
+title: "Övervaka en SharePoint-webbplats med Application Insights"
 description: "Börja övervaka ett nytt program med en ny instrumentationsnyckel"
 services: application-insights
 documentationcenter: 
@@ -13,66 +13,66 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/24/2016
 ms.author: bwren
-ms.openlocfilehash: acfe99c24a4d77daec1017de0442ec952a1faba2
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: a3b37674469a131016f46af590e1eee3ba4cdc73
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-a-sharepoint-site-with-application-insights"></a>Övervaka en SharePoint-webbplats med Application Insights
-Azure Application Insights övervakar hello tillgänglighet, prestanda och användning av dina appar. Här får du lära dig hur tooset den för en SharePoint-webbplats.
+Azure Application Insights övervakar dina appars tillgänglighet, prestanda och användning. Här lär du dig att ställa in det för en SharePoint-webbplats.
 
 ## <a name="create-an-application-insights-resource"></a>Skapa en Application Insights-resurs
-I hello [Azure-portalen](https://portal.azure.com), skapa en ny Application Insights-resurs. Välj ASP.NET som hello programtyp.
+Skapa en ny Application Insights-resurs på [Azure Portal](https://portal.azure.com). Välj ASP.NET som programtypen.
 
-![Klicka på egenskaper, markera hello nyckeln och tryck på ctrl + C](./media/app-insights-sharepoint/01-new.png)
+![Klicka på Egenskaper, markera nyckeln och tryck på CTRL + C.](./media/app-insights-sharepoint/01-new.png)
 
-hello-bladet som öppnas är hello plats där du kan se prestanda- och användningsdata om din app. tooget tillbaka tooit nästa gång du loggar in tooAzure, bör du hitta en panel för den hello startskärmen. Du kan också klicka på Bläddra toofind den.
+Bladet som öppnas är den plats där du kan se prestanda- och användningsdata om din app. Om du vill komma tillbaka till det nästa gång du loggar in på Azure bör du hitta en panel för det på startskärmen. Du kan också klicka på Bläddra för att hitta det.
 
-## <a name="add-our-script-tooyour-web-pages"></a>Lägga till våra skriptet tooyour webbsidor
-Hämta hello skript för webbsidor i Snabbstart:
+## <a name="add-our-script-to-your-web-pages"></a>Lägga till våra skript på dina webbsidor
+Hämta skriptet för webbsidor i Snabbstart:
 
 ![](./media/app-insights-sharepoint/02-monitor-web-page.png)
 
-Infoga hello skript innan hello &lt;/head&gt; taggen för varje sida som du vill tootrack. Om din webbplats har en huvudsida, kan du placera hello skript det. Till exempel, i ett ASP.NET MVC-projekt, placerar du det i View\Shared\_Layout.cshtml
+Infoga skriptet precis före &lt;/head&gt;-taggen för alla sidor som du vill spåra. Om din webbplats har en huvudsida kan du placera skriptet där. Till exempel, i ett ASP.NET MVC-projekt, placerar du det i View\Shared\_Layout.cshtml
 
-hello skriptet innehåller hello instrumentation nyckeln som leder hello telemetri tooyour Application Insights-resurs.
+Skriptet innehåller instrumenteringsnyckeln som dirigerar telemetri till din Application Insights-resurs.
 
-### <a name="add-hello-code-tooyour-site-pages"></a>Lägg till hello kodsidor tooyour plats
-#### <a name="on-hello-master-page"></a>På hello huvudsida
-Om du kan redigera hello platsens huvudsida, som ger övervakning för varje sida i hello plats.
+### <a name="add-the-code-to-your-site-pages"></a>Lägg till kod på dina webbsidor
+#### <a name="on-the-master-page"></a>På huvudsidan
+Om du kan redigera webbplatsens huvudsida kan du övervaka alla sidor på webbplatsen.
 
-Checka ut hello huvudsida och redigera den med hjälp av SharePoint Designer eller någon annan redigerare.
+Spara huvudsidan och redigera den med hjälp av SharePoint Designer eller någon annan redigerare.
 
 ![](./media/app-insights-sharepoint/03-master.png)
 
-Lägg till hello kod innan hello </head> tagg. 
+Lägg till kod precis före taggen </head>. 
 
 ![](./media/app-insights-sharepoint/04-code.png)
 
 #### <a name="or-on-individual-pages"></a>Eller på enskilda sidor
-toomonitor en begränsad uppsättning sidor, lägga till hello skript separat tooeach sidan. 
+Lägg till skript på varje enskild sida som du vill övervaka. 
 
-Infoga en webbdel och bädda in hello kodstycket i den.
+Infoga en webbdel och bädda in kodfragmentet i den.
 
 ![](./media/app-insights-sharepoint/05-page.png)
 
 ## <a name="view-data-about-your-app"></a>Visa data om din app
 Distribuera om din app.
 
-Returnerar tooyour programmet bladet i hello [Azure-portalen](https://portal.azure.com).
+Gå tillbaka till ditt programblad i [Azure Portal](https://portal.azure.com).
 
-hello första händelser visas i sökningen. 
+De första händelserna visas i sökningen. 
 
 ![](./media/app-insights-sharepoint/09-search.png)
 
 Klicka på Uppdatera efter några sekunder om du väntade dig mer data.
 
-Hello översikt bladet, klickar du på **användningsanalys** toosee toocharts av användare, sessioner och sidvyer:
+Klicka på bladet översikt och klicka på **användningsanalys** för att se diagram för användare, sessioner och sidvyer:
 
 ![](./media/app-insights-sharepoint/06-usage.png)
 
-På varje diagram toosee mer information – till exempel sidvisningar:
+Klicka på diagram om du vill se mer information – till exempel sidvyer:
 
 ![](./media/app-insights-sharepoint/07-pages.png)
 
@@ -81,14 +81,14 @@ Eller användare:
 ![](./media/app-insights-sharepoint/08-users.png)
 
 ## <a name="capturing-user-id"></a>Hämta användar-Id
-hello standard webbsida kodstycke fånga inte hello användar-id från SharePoint, men du kan göra det med en mindre ändring.
+Kodfragmentet för standardwebbplatsen hämtar inte användar-ID från SharePoint, men du kan göra detta med en liten ändring.
 
-1. Kopiera instrumentation appkey från hello Essentials listrutan i Application Insights. 
+1. Kopiera din apps instrumentationsnyckeln från Essentials listrutan i Application Insights. 
 
     ![](./media/app-insights-sharepoint/02-props.png)
 
-1. Ersätt hello instrumentation nyckeln för 'XXXX' i hello kodfragmentet nedan. 
-2. Bädda in hello skript i din SharePoint-app i stället för hello fragment du får från hello-portalen.
+1. Ersätta instrumentationsnyckeln 'XXXX' i kodfragmentet nedan. 
+2. Bädda in skriptet i en SharePoint-app i stället för utdraget som du får från portalen.
 
 ```
 
@@ -99,26 +99,26 @@ hello standard webbsida kodstycke fånga inte hello användar-id från SharePoin
 <script type="text/javascript"> 
 var personProperties; 
 
-// Ensure that hello SP.UserProfiles.js file is loaded before hello custom code runs. 
+// Ensure that the SP.UserProfiles.js file is loaded before the custom code runs. 
 SP.SOD.executeOrDelayUntilScriptLoaded(getUserProperties, 'SP.UserProfiles.js'); 
 
 function getUserProperties() { 
-    // Get hello current client context and PeopleManager instance. 
+    // Get the current client context and PeopleManager instance. 
     var clientContext = new SP.ClientContext.get_current(); 
     var peopleManager = new SP.UserProfiles.PeopleManager(clientContext); 
 
-    // Get user properties for hello target user. 
-    // tooget hello PersonProperties object for hello current user, use hello 
+    // Get user properties for the target user. 
+    // To get the PersonProperties object for the current user, use the 
     // getMyProperties method. 
 
     personProperties = peopleManager.getMyProperties(); 
 
-    // Load hello PersonProperties object and send hello request. 
+    // Load the PersonProperties object and send the request. 
     clientContext.load(personProperties); 
     clientContext.executeQueryAsync(onRequestSuccess, onRequestFail); 
 } 
 
-// This function runs if hello executeQueryAsync call succeeds. 
+// This function runs if the executeQueryAsync call succeeds. 
 function onRequestSuccess() { 
 var appInsights=window.appInsights||function(config){
 function s(config){t[config]=function(){var i=arguments;t.queue.push(function(){t[config].apply(t,i)})}}var t={config:config},r=document,f=window,e="script",o=r.createElement(e),i,u;for(o.src=config.url||"//az416426.vo.msecnd.net/scripts/a/ai.0.js",r.getElementsByTagName(e)[0].parentNode.appendChild(o),t.cookie=r.cookie,t.queue=[],i=["Event","Exception","Metric","PageView","Trace"];i.length;)s("track"+i.pop());return config.disableExceptionTracking||(i="onerror",s("_"+i),u=f[i],f[i]=function(config,r,f,e,o){var s=u&&u(config,r,f,e,o);return s!==!0&&t["_"+i](config,r,f,e,o),s}),t
@@ -129,7 +129,7 @@ function s(config){t[config]=function(){var i=arguments;t.queue.push(function(){
     appInsights.trackPageView(document.title,window.location.href, {User: personProperties.get_displayName()});
 } 
 
-// This function runs if hello executeQueryAsync call fails. 
+// This function runs if the executeQueryAsync call fails. 
 function onRequestFail(sender, args) { 
 } 
 </script> 
@@ -140,7 +140,7 @@ function onRequestFail(sender, args) {
 
 
 ## <a name="next-steps"></a>Nästa steg
-* [Webbtester](app-insights-monitor-web-app-availability.md) toomonitor hello tillgängligheten för din webbplats.
+* [Webbtest](app-insights-monitor-web-app-availability.md) för att övervaka tillgängligheten för webbplatsen.
 * [Application Insights](app-insights-overview.md) för andra typer av appar.
 
 <!--Link references-->

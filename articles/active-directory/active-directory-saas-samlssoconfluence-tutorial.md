@@ -1,6 +1,6 @@
 ---
 title: "Självstudier: Azure Active Directory-integrering med SAML SSO för antal samverkande resolution GmbH | Microsoft Docs"
-description: "Lär dig hur tooconfigure enkel inloggning mellan Azure Active Directory och SAML SSO för antal samverkande resolution GmbH."
+description: "Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och SAML SSO för antal samverkande resolution GmbH."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,68 +13,68 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: jeedes
-ms.openlocfilehash: fe50636709857ec49023e24bdc8c6cd8c58e3c7a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 9a36d686ba39b5168860a20e8c4db357888df6a7
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-confluence-by-resolution-gmbh"></a>Självstudier: Azure Active Directory-integrering med SAML SSO för antal samverkande resolution GmbH
 
-I kursen får du lära dig hur toointegrate SAML SSO för antal samverkande resolution GmbH med Azure Active Directory (AD Azure).
+I kursen får lära du att integrera SAML SSO för antal samverkande resolution GmbH med Azure Active Directory (AD Azure).
 
-Integrera SAML SSO för antal samverkande resolution GmbH med Azure AD ger dig hello följande fördelar:
+Integrera SAML SSO för antal samverkande resolution GmbH med Azure AD ger dig följande fördelar:
 
-- Du kan styra i Azure AD som har åtkomst tooSAML SSO för antal samverkande resolution GmbH
-- Du kan aktivera din användare tooautomatically get inloggade tooSAML SSO för antal samverkande resolution GmbH (Single Sign-On) med sina Azure AD-konton
-- Du kan hantera dina konton i en central plats - hello Azure-portalen
+- Du kan styra i Azure AD som har åtkomst till SAML SSO för antal samverkande resolution GmbH
+- Du kan aktivera användarna att automatiskt hämta loggat in på SAML SSO för antal samverkande resolution GmbH (Single Sign-On) med sina Azure AD-konton
+- Du kan hantera dina konton i en central plats - Azure-portalen
 
-Om du vill tooknow mer information om integrering av SaaS-app med Azure AD, se [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Om du vill veta mer information om integrering av SaaS-app med Azure AD finns [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Krav
 
-tooconfigure Azure AD-integrering med SAML SSO för antal samverkande resolution GmbH, behöver du hello följande objekt:
+För att konfigurera Azure AD-integrering med SAML SSO för antal samverkande resolution GmbH, behöver du följande:
 
 - En Azure AD-prenumeration
 - En SAML SSO för växer samman av upplösning GmbH enkel inloggning på aktiverade prenumeration
 
 > [!NOTE]
-> tootest hello stegen i den här självstudiekursen, rekommenderas inte med hjälp av en produktionsmiljö.
+> Om du vill testa stegen i den här kursen rekommenderar vi inte med hjälp av en produktionsmiljö.
 
-tootest hello steg i den här självstudiekursen, bör du följa dessa rekommendationer:
+Om du vill testa stegen i den här självstudiekursen, bör du följa dessa rekommendationer:
 
 - Använd inte i produktionsmiljön, om det är nödvändigt.
 - Om du inte har en utvärderingsversion Azure AD-miljö kan du hämta en utvärderingsversion för en månad [här](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Scenariobeskrivning
-I kursen får testa du Azure AD enkel inloggning i en testmiljö. hello-scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
+I kursen får testa du Azure AD enkel inloggning i en testmiljö. Det scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
 
-1. Att lägga till SAML SSO för antal samverkande resolution GmbH från hello-galleriet
+1. Att lägga till SAML SSO för antal samverkande resolution GmbH från galleriet
 2. Konfigurera och testa Azure AD enkel inloggning
 
-## <a name="adding-saml-sso-for-confluence-by-resolution-gmbh-from-hello-gallery"></a>Att lägga till SAML SSO för antal samverkande resolution GmbH från hello-galleriet
+## <a name="adding-saml-sso-for-confluence-by-resolution-gmbh-from-the-gallery"></a>Att lägga till SAML SSO för antal samverkande resolution GmbH från galleriet
 
-tooconfigure hello integrering av SAML SSO för antal samverkande resolution GmbH i Azure AD, behöver du tooadd SAML SSO för antal samverkande resolution GmbH hello galleriet tooyour listan över hanterade SaaS-appar.
+Du måste lägga till SAML SSO för antal samverkande resolution GmbH från galleriet i listan över hanterade SaaS-appar för att konfigurera integrering av SAML SSO för antal samverkande resolution GmbH i Azure AD.
 
-**tooadd SAML SSO för antal samverkande resolution GmbH från galleriet hello utför hello följande steg:**
+**Utför följande steg för att lägga till SAML SSO för antal samverkande resolution GmbH från galleriet:**
 
-1. I hello  **[Azure-portalen](https://portal.azure.com)**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon. 
+1. I den  **[Azure-portalen](https://portal.azure.com)**, klicka på den vänstra navigeringspanelen **Azure Active Directory** ikon. 
 
     ![Active Directory][1]
 
-2. Navigera för**företagsprogram**. Gå sedan för**alla program**.
+2. Gå till **företagsprogram**. Gå till **alla program**.
 
     ![Program][2]
     
-3. tooadd nya program, klickar du på **nytt program** hello längst upp i dialogrutan.
+3. Om du vill lägga till nya programmet, klickar du på **nytt program** knappen överst i dialogrutan.
 
     ![Program][3]
 
-4. Skriv i sökrutan hello **SAML SSO för antal samverkande resolution GmbH**.
+4. I sökrutan skriver **SAML SSO för antal samverkande resolution GmbH**.
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-samlssoconfluence-tutorial/tutorial_samlssoconfluence_search.png)
 
-5. Markera hello resultat på panelen **SAML SSO för antal samverkande resolution GmbH**, och klicka sedan på **Lägg till** knappen tooadd hello program.
+5. Välj i resultatpanelen **SAML SSO för antal samverkande resolution GmbH**, och klicka sedan på **Lägg till** för att lägga till programmet.
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-samlssoconfluence-tutorial/tutorial_samlssoconfluence_addfromgallery.png)
 
@@ -82,50 +82,50 @@ tooconfigure hello integrering av SAML SSO för antal samverkande resolution Gmb
 
 I det här avsnittet kan du konfigurera och testa Azure AD enkel inloggning med SAML SSO för antal samverkande resolution GmbH baserat på en testanvändare som kallas ”Britta Simon”.
 
-För enkel inloggning toowork måste Azure AD tooknow användare vilka hello motsvarighet i SAML SSO för antal samverkande resolution GmbH är tooa användare i Azure AD. Med andra ord en länk relationen mellan en Azure AD-användare och hello relaterade användare i SAML SSO för antal samverkande resolution GmbH måste toobe upprättas.
+För enkel inloggning ska fungera, Azure AD som behöver veta vilka motsvarande användaren i SAML SSO för antal samverkande resolution GmbH är att en användare i Azure AD. Med andra ord en länk förhållandet mellan en Azure AD-användare och relaterade användaren i SAML SSO för antal samverkande resolution GmbH måste upprättas.
 
-SAML SSO för antal samverkande resolution GmbH, tilldela hello värdet för hello **användarnamn** i Azure AD som hello värde för hello **användarnamn** tooestablish hello länken relationen.
+SAML SSO för antal samverkande resolution GmbH, tilldela värdet för den **användarnamn** i Azure AD som värde för den **användarnamn** etablera länken relationen.
 
-tooconfigure och testa Azure AD enkel inloggning med SAML SSO för antal samverkande resolution GmbH, behöver du toocomplete hello följande byggblock:
+Om du vill konfigurera och testa Azure AD enkel inloggning med SAML SSO för antal samverkande resolution GmbH, måste du utföra följande byggblock:
 
-1. **[Konfigurera Azure AD enkel inloggning](#configuring-azure-ad-single-sign-on)**  -tooenable användare-toouse den här funktionen.
-2. **[Skapa en Azure AD-testanvändare](#creating-an-azure-ad-test-user)**  -tootest Azure AD enkel inloggning med Britta Simon.
-3. **[Skapa en SAML SSO för växer samman av upplösning GmbH testanvändare](#creating-a-saml-sso-for-confluence-by-resolution-gmbh-test-user)**  -toohave en motsvarighet för Britta Simon SAML SSO för antal samverkande resolution GmbH som är länkade toohello Azure AD-representation av användaren.
-4. **[Tilldela hello Azure AD-testanvändare](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD enkel inloggning.
-5. **[Testa enkel inloggning](#testing-single-sign-on)**  -tooverify hello om konfigurationen fungerar.
+1. **[Konfigurera Azure AD enkel inloggning](#configuring-azure-ad-single-sign-on)**  - om du vill att användarna kan använda den här funktionen.
+2. **[Skapa en Azure AD-testanvändare](#creating-an-azure-ad-test-user)**  - om du vill testa Azure AD enkel inloggning med Britta Simon.
+3. **[Skapa en SAML SSO för växer samman av upplösning GmbH testanvändare](#creating-a-saml-sso-for-confluence-by-resolution-gmbh-test-user)**  – du har en motsvarighet för Britta Simon SAML SSO för antal samverkande resolution GmbH som är kopplad till Azure AD-representation av användaren.
+4. **[Tilldela Azure AD-testanvändare](#assigning-the-azure-ad-test-user)**  - om du vill aktivera Britta Simon att använda Azure AD enkel inloggning.
+5. **[Testa enkel inloggning](#testing-single-sign-on)**  - om du vill kontrollera om konfigurationen fungerar.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurera Azure AD enkel inloggning
 
-I det här avsnittet Aktivera Azure AD enkel inloggning i hello Azure-portalen och konfigurera enkel inloggning i din SAML SSO för antal samverkande resolution GmbH program.
+I det här avsnittet Aktivera Azure AD enkel inloggning i Azure-portalen och konfigurera enkel inloggning i din SAML SSO för antal samverkande resolution GmbH program.
 
-**tooconfigure Azure AD enkel inloggning med SAML SSO för antal samverkande resolution GmbH, utför följande steg hello:**
+**Utför följande steg för att konfigurera Azure AD enkel inloggning med SAML SSO för antal samverkande resolution GmbH:**
 
-1. I hello Azure-portalen på hello **SAML SSO för antal samverkande resolution GmbH** integreringssidan för programmet, klickar du på **enkel inloggning**.
+1. I Azure-portalen på den **SAML SSO för antal samverkande resolution GmbH** integreringssidan för programmet, klickar du på **enkel inloggning**.
 
     ![Konfigurera enkel inloggning][4]
 
-2. På hello **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** tooenable enkel inloggning.
+2. På den **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** att aktivera enkel inloggning.
  
     ![Konfigurera enkel inloggning](./media/active-directory-saas-samlssoconfluence-tutorial/tutorial_samlssoconfluence_samlbase.png)
 
-3. På hello **SAML SSO växer samman resolution GmbH domän och URL: er** om du vill tooconfigure hello programmet i **IDP** initierade läge:
+3. På den **SAML SSO växer samman resolution GmbH domän och URL: er** om du vill konfigurera programmet i **IDP** initierade läge:
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-samlssoconfluence-tutorial/tutorial_samlssoconfluence_url_1.png)
 
-    a. I hello **identifierare** textruta, ange ett URL-Adressen med hello följer mönstret:`https://<server-base-url>/plugins/servlet/samlsso`
+    a. I den **identifierare** textruta Skriv en URL med följande mönster:`https://<server-base-url>/plugins/servlet/samlsso`
 
-    b. I hello **Reply URL** textruta, ange ett URL-Adressen med hello följer mönstret:`https://<server-base-url>/plugins/servlet/samlsso`
+    b. I den **Reply URL** textruta Skriv en URL med följande mönster:`https://<server-base-url>/plugins/servlet/samlsso`
 
-4. Kontrollera **visa avancerade inställningar för URL: en**. Om du inte vill tooconfigure hello programmet i **SP** initierade läge:
+4. Kontrollera **visa avancerade inställningar för URL: en**. Om du vill konfigurera programmet i **SP** initierade läge:
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-samlssoconfluence-tutorial/tutorial_samlssoconfluence_url_2.png)
 
-    I hello **inloggnings-URL** textruta, ange ett URL-Adressen med hello följer mönstret:`https://<server-base-url>/plugins/servlet/samlsso`
+    I den **inloggnings-URL** textruta Skriv en URL med följande mönster:`https://<server-base-url>/plugins/servlet/samlsso`
      
     > [!NOTE] 
-    > Dessa värden är inte verkliga. Uppdatera dessa värden med hello faktiska identifierare, Reply URL och inloggnings-URL. Kontakta [SAML SSO för antal samverkande resolution GmbH klienten supportteam](https://www.resolution.de/go/support) tooget dessa värden. 
+    > Dessa värden är inte verkliga. Uppdatera dessa värden med den faktiska identifierare Reply URL och inloggnings-URL. Kontakta [SAML SSO för antal samverkande resolution GmbH klienten supportteam](https://www.resolution.de/go/support) att hämta dessa värden. 
 
-5. På hello **SAML-signeringscertifikat** klickar du på **XML-Metadata för** och spara sedan hello metadata på datorn.
+5. På den **SAML-signeringscertifikat** klickar du på **XML-Metadata för** och spara sedan metadatafilen på datorn.
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-samlssoconfluence-tutorial/tutorial_samlssoconfluence_certificate.png) 
 
@@ -133,13 +133,13 @@ I det här avsnittet Aktivera Azure AD enkel inloggning i hello Azure-portalen o
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-samlssoconfluence-tutorial/tutorial_general_400.png)  
     
-7. Logga in tooyour i ett annat webbläsarfönster **SAML SSO för antal samverkande upplösning GmbH admin Portal** som administratör.
+7. I en annan webbläsarfönstret, logga in på ditt **SAML SSO för antal samverkande upplösning GmbH admin Portal** som administratör.
 
-8. Hovra över kugge och klicka på hello **tillägg**.
+8. Hovra över kugge och klicka på den **tillägg**.
     
     ![Konfigurera enkel inloggning](./media/active-directory-saas-samlssoconfluence-tutorial/addon1.png)
 
-9. Du kan omdirigerade tooAdministrator sidan. Ange hello lösenord och klicka **Bekräfta** knappen.
+9. Du omdirigeras till sidan med administratörsåtkomst. Ange lösenordet och klicka på **Bekräfta** knappen.
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-samlssoconfluence-tutorial/addon2.png)
 
@@ -147,11 +147,11 @@ I det här avsnittet Aktivera Azure AD enkel inloggning i hello Azure-portalen o
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-samlssoconfluence-tutorial/addon.png)
 
-11. Sök **SAML enkel inloggning (SSO) för antal samverkande** och på **installera** knappen tooinstall hello ny SAML-plugin-programmet.
+11. Sök **SAML enkel inloggning (SSO) för antal samverkande** och på **installera** för att installera den nya SAML-plugin-programmet.
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-samlssoconfluence-tutorial/addon7.png)
 
-12. hello plugin installationen startar. Klicka på **Stäng**.
+12. Plugin-installationen startar. Klicka på **Stäng**.
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-samlssoconfluence-tutorial/addon8.png)
 
@@ -161,7 +161,7 @@ I det här avsnittet Aktivera Azure AD enkel inloggning i hello Azure-portalen o
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-samlssoconfluence-tutorial/addon10.png)
     
-14. Klicka på **konfigurera** tooconfigure hello nytt plugin-program.
+14. Klicka på **konfigurera** att konfigurera nya plugin-programmet.
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-samlssoconfluence-tutorial/addon11.png)
 
@@ -169,7 +169,7 @@ I det här avsnittet Aktivera Azure AD enkel inloggning i hello Azure-portalen o
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-samlssoconfluence-tutorial/addon3.png)
     
-16. På **SAML SingleSignOn Plugin-konfiguration** klickar du på **lägga till ytterligare identitetsleverantör** knappen tooconfigure hello inställningar av identitetsleverantören.
+16. På **SAML SingleSignOn Plugin Configuration** klickar du på **lägga till ytterligare identitetsleverantör** för att konfigurera inställningarna för identitetsleverantör.
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-samlssoconfluence-tutorial/addon4.png)
 
@@ -177,99 +177,99 @@ I det här avsnittet Aktivera Azure AD enkel inloggning i hello Azure-portalen o
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-samlssoconfluence-tutorial/addon5.png)
  
-    a. Lägg till **namn** av hello identitetsprovider (t.ex Azure AD).
+    a. Lägg till **namn** av identitetsleverantören (t.ex Azure AD).
     
-    b. Lägg till **beskrivning** av hello identitetsprovider (t.ex Azure AD).
+    b. Lägg till **beskrivning** av identitetsleverantören (t.ex Azure AD).
 
-    c. Klicka på **XML** och välj hello **Metadata** -fil som du har hämtat från Azure-portalen.
+    c. Klicka på **XML** och välj den **Metadata** -fil som du har hämtat från Azure-portalen.
 
     d. Klicka på **belastningen** knappen.
 
-    e. Den läser hello IdP metadata och fyller hello fält som är markerade i hello skärmbild.   
-18. Klicka på **Spara inställningar** knappen toosave hello inställningar.
+    e. Den läser IdP-metadata och fylls fälten som är markerade i skärmbilden. 
+18. Klicka på **Spara inställningar** för att spara inställningarna.
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-samlssoconfluence-tutorial/addon6.png)
 
 > [!TIP]
-> Du kan nu läsa en kortare version av dessa anvisningar i hello [Azure-portalen](https://portal.azure.com), medan du ställer in hello appen!  När du lägger till den här appen från hello **Active Directory > företagsprogram** avsnittet, klicka bara på hello **enkel inloggning** flik och åtkomst hello inbäddade dokumentationen via hello  **Konfigurationen** avsnittet längst ned hello. Du kan läsa mer om hello inbäddade dokumentationen funktionen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Du kan nu läsa en kortare version av instruktionerna i den [Azure-portalen](https://portal.azure.com), medan du installerar appen!  När du lägger till den här appen från den **Active Directory > företagsprogram** avsnittet, klickar du på den **enkel inloggning** fliken och få åtkomst till den inbäddade dokumentationen via den **Configuration** avsnittet längst ned. Du kan läsa mer om funktionen inbäddade dokumentationen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="creating-an-azure-ad-test-user"></a>Skapa en testanvändare i Azure AD
-hello syftet med det här avsnittet är toocreate en testanvändare i hello Azure-portalen kallas Britta Simon.
+Syftet med det här avsnittet är att skapa en testanvändare i Azure-portalen kallas Britta Simon.
 
 ![Skapa Azure AD-användare][100]
 
-**toocreate en testanvändare i Azure AD kan utföra hello följande steg:**
+**Utför följande steg för att skapa en testanvändare i Azure AD:**
 
-1. I hello **Azure-portalen**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon.
+1. I den **Azure-portalen**, klicka på det vänstra navigeringsfönstret **Azure Active Directory** ikon.
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-samlssoconfluence-tutorial/create_aaduser_01.png) 
 
-2. toodisplay hello lista över användare, gå för**användare och grupper** och på **alla användare**.
+2. Om du vill visa en lista över användare, gå till **användare och grupper** och på **alla användare**.
     
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-samlssoconfluence-tutorial/create_aaduser_02.png) 
 
-3. tooopen hello **användare** dialogrutan klickar du på **Lägg till** på hello överkant hello dialogrutan.
+3. Öppna den **användare** dialogrutan klickar du på **Lägg till** överst i dialogrutan.
  
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-samlssoconfluence-tutorial/create_aaduser_03.png) 
 
-4. På hello **användaren** dialogrutan utför hello följande steg:
+4. På den **användaren** dialogrutan utför följande steg:
  
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-samlssoconfluence-tutorial/create_aaduser_04.png) 
 
-    a. I hello **namn** textruta typen **BrittaSimon**.
+    a. I den **namn** textruta typen **BrittaSimon**.
 
-    b. I hello **användarnamn** textruta typen hello **e-postadress** av BrittaSimon.
+    b. I den **användarnamn** textruta typ av **e-postadress** av BrittaSimon.
 
-    c. Välj **visa lösenordet** och Skriv ned hello värdet för hello **lösenord**.
+    c. Välj **visa lösenordet** och anteckna värdet för den **lösenord**.
 
     d. Klicka på **Skapa**.
  
 ### <a name="creating-a-saml-sso-for-confluence-by-resolution-gmbh-test-user"></a>Skapa en SAML SSO för växer samman av upplösning GmbH testanvändare
 
-tooenable Azure AD-användare toolog i tooSAML enkel inloggning för antal samverkande resolution GmbH de måste etableras i SAML SSO för antal samverkande resolution GmbH.  
+Om du vill aktivera Azure AD-användare kan logga in till SAML SSO för växer samman med upplösning GmbH etableras de i SAML SSO för antal samverkande resolution GmbH.  
 SAML SSO för antal samverkande resolution GmbH är etablering en manuell aktivitet.
 
-**tooprovision ett användarkonto, utför följande steg hello:**
+**Utför följande steg om du vill konfigurera ett användarkonto:**
 
-1. Logga in tooyour SAML SSO för växer samman av upplösning GmbH företagets plats som administratör.
+1. Logga in på ditt SAML SSO för växer samman av upplösning GmbH företagets plats som administratör.
 
-2. Hovra över kugge och klicka på hello **Användarhantering**.
+2. Hovra över kugge och klicka på den **Användarhantering**.
 
     ![Lägga till medarbetare](./media/active-directory-saas-samlssoconfluence-tutorial/user1.png) 
 
-3. Under avsnittet för användare, klickar du på **lägga till användare** fliken. På hello **”Lägg till en användare”** dialogrutan utför hello följande steg:
+3. Under avsnittet för användare, klickar du på **lägga till användare** fliken. På den **”Lägg till en användare”** dialogrutan utför följande steg:
 
     ![Lägga till medarbetare](./media/active-directory-saas-samlssoconfluence-tutorial/user2.png) 
 
-    a. I hello **användarnamn** textruta hello e-post för användare som Britta Simon.
+    a. I den **användarnamn** textruta Skriv e-postadressen för användaren som Britta Simon.
 
-    b. I hello **fullständiga namn** textruta typen hello användarens fullständiga namn som Britta Simon.
+    b. I den **fullständiga namn** textruta skriver du det fullständiga namnet på användaren som Britta Simon.
 
-    c. I hello **e-post** textruta typen hello användarens e-postadress som Brittasimon@contoso.com.
+    c. I den **e-post** textruta typen e-postadressen för användaren som Brittasimon@contoso.com.
 
-    d. I hello **lösenord** textruta hello lösenordstyp för Britta Simon.
+    d. I den **lösenord** textruta, Skriv in lösenordet för Britta Simon.
 
-    e. Klicka på **Bekräfta lösenord** hello lösenord.
+    e. Klicka på **Bekräfta lösenord** ange lösenordet igen.
     
     f. Klicka på **Lägg till** knappen.    
 
-### <a name="assigning-hello-azure-ad-test-user"></a>Tilldela användare hello Azure AD
+### <a name="assigning-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändare
 
-I det här avsnittet kan aktivera du Britta Simon toouse Azure enkel inloggning genom att bevilja åtkomst tooSAML SSO för antal samverkande resolution GmbH.
+I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inloggning genom att bevilja åtkomst till SAML SSO för antal samverkande resolution GmbH.
 
 ![Tilldela användare][200] 
 
-**tooassign Britta Simon tooSAML SSO för antal samverkande resolution GmbH, utför följande steg hello:**
+**Om du vill tilldela SAML SSO för antal samverkande Britta Simon resolution GmbH, utför du följande steg:**
 
-1. I hello Azure-portalen, öppna hello program visa och navigera toohello directory vy och gå för**företagsprogram** Klicka **alla program**.
+1. Öppna vyn program i Azure-portalen och gå till vyn directory och gå till **företagsprogram** Klicka **alla program**.
 
     ![Tilldela användare][201] 
 
-2. Välj i listan med program hello **SAML SSO för antal samverkande resolution GmbH**.
+2. Välj i listan med program **SAML SSO för antal samverkande resolution GmbH**.
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-samlssoconfluence-tutorial/tutorial_samlssoconfluence_app.png) 
 
-3. Hello-menyn hello vänster **användare och grupper**.
+3. Klicka på menyn till vänster **användare och grupper**.
 
     ![Tilldela användare][202] 
 
@@ -277,7 +277,7 @@ I det här avsnittet kan aktivera du Britta Simon toouse Azure enkel inloggning 
 
     ![Tilldela användare][203]
 
-5. På **användare och grupper** markerar **Britta Simon** i hello användarlistan.
+5. På **användare och grupper** markerar **Britta Simon** på listan användare.
 
 6. Klicka på **Välj** knappen på **användare och grupper** dialogrutan.
 
@@ -285,14 +285,14 @@ I det här avsnittet kan aktivera du Britta Simon toouse Azure enkel inloggning 
     
 ### <a name="testing-single-sign-on"></a>Testa enkel inloggning
 
-I det här avsnittet kan testa du Azure AD enkel inloggning konfigurationen med hello åtkomstpanelen.
+I det här avsnittet kan du testa Azure AD enkel inloggning konfigurationen med hjälp av panelen åtkomst.
 
-När du klickar på hello SAML SSO för växer samman av upplösning GmbH panelen i hello åtkomstpanelen bör du hämta automatiskt inloggade tooyour SAML SSO för antal samverkande resolution GmbH program.
+När du klickar på SAML SSO för växer samman av upplösning GmbH panelen på åtkomstpanelen du bör få automatiskt loggat in på ditt SAML SSO för antal samverkande resolution GmbH program.
 Läs mer om åtkomstpanelen [introduktion till åtkomstpanelen](active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-* [Lista över självstudier om hur tooIntegrate SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Vad är programåtkomst och enkel inloggning med Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

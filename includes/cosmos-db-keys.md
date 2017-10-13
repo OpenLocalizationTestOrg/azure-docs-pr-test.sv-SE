@@ -1,4 +1,4 @@
-  Nu navigera toohello Cosmos-DB-kontoblad och klicka på **nycklar**eftersom vi använder dessa värden i hello webbprogram skapar vi nästa.
+  Gå nu till bladet Cosmos DB-konto och klicka på **Nycklar**, eftersom vi kommer att använda dessa värden i webbprogrammet vi ska skapa nu.
 
-![Skärmbild som visar hello Azure portal som visar ett Cosmos-DB-konto med hello nycklar knappen är markerad på hello Cosmos-DB-kontoblad och värden för hello URI, PRIMÄRNYCKEL och SEKUNDÄRNYCKEL markerade i hello bladet nycklar](./media/cosmos-db-keys/keys.png)
+![Skärmdump av Azure Portal som visar Cosmos DB-konto med knappen Nycklar markerad i bladet Cosmos DB-konto och värdena URI, PRIMÄRNYCKEL och SEKUNDÄRNYCKEL markerade på bladet Nycklar](./media/cosmos-db-keys/keys.png)
 

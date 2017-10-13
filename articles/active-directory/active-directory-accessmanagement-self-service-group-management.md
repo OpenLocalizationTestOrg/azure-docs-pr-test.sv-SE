@@ -1,6 +1,6 @@
 ---
-title: "aaaSetting in Azure Active Directory för hantering av självbetjäningsportalen åtkomst | Microsoft Docs"
-description: "Grupphantering via självbetjäning kan användare toocreate och hantera säkerhetsgrupper eller Office 365-grupper i Azure Active Directory och ger användarna hello möjligheten toorequest säkerhetsgrupp eller Office 365-gruppmedlemskap"
+title: "Konfigurera Azure Active Directory för hantering av programåtkomst via självbetjäning| Microsoft Docs"
+description: "Skapa och hantera säkerhetsgrupper eller Office 365-grupper i Azure Active Directory och begära medlemskap i säkerhetsgrupper eller Office 365-grupper"
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -12,42 +12,40 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/27/2017
+ms.date: 09/07/2017
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 2a73f4ed2532d41143fe5abe2fef1322d971a5c0
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 7a7370eb076ba8602a58a260a14bb863c55bc803
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="setting-up-azure-active-directory-for-self-service-group-management"></a>Konfigurera Azure Active Directory för grupphantering via självbetjäning
-Grupphantering via självbetjäning kan användare toocreate och hantera säkerhetsgrupper eller Office 365-grupper i Azure Active Directory (AD Azure). Användarna kan också begära säkerhetsgrupp eller Office 365-gruppmedlemskap och sedan hello ägare hello gruppen kan godkänna eller neka medlemskap. På så sätt kan kan dagliga kontrollen av gruppmedlemskap vara delegerade toopeople som förstår hello affärskontexten för medlemskapet. Funktioner för grupphantering via självbetjäning är bara tillgängliga för säkerhetsgrupper och Office 365-grupper, men inte för e-postaktiverade säkerhetsgrupper eller distributionslistor.
-
-> [!IMPORTANT]
-> Microsoft rekommenderar att du hanterar Azure AD med hjälp av hello [administrationscentret för Azure AD](https://aad.portal.azure.com) i hello Azure-portalen istället för att använda hello klassiska Azure-portalen som hänvisas till i den här artikeln.
+# <a name="set-up-azure-active-directory-for-self-service-group-management"></a>Konfigurera Azure Active Directory för grupphantering via självbetjäning
+Dina användare kan skapa och hantera egna säkerhetsgrupper eller Office 365-grupper i Azure Active Directory (Azure AD). Användare kan även begära säkerhetsgruppsmedlemskap eller Office 365-gruppmedlemskap, och sedan kan gruppens ägare godkänna eller neka medlemskap. Den dagliga kontrollen av gruppmedlemskap delegeras till dem som förstår medlemskapets affärskontext. Funktioner för grupphantering via självbetjäning är bara tillgängliga för säkerhetsgrupper och Office 365-grupper, men inte för e-postaktiverade säkerhetsgrupper eller distributionslistor.
 
 Grupphantering via självbetjäning består för närvarande av två viktiga scenarier: delegerad grupphantering och grupphantering via självbetjäning.
 
-* **Delegerad grupphantering** ett exempel är en administratör som hanterar åtkomst tooa SaaS-program som hello företaget använder. Har blivit svårt att hantera dessa åtkomstbehörigheter ber administratören hello företag ägare toocreate en ny grupp. Hej administratör tilldelas åtkomst för hello toohello ny programgrupp och lägger till toohello grupp alla personer som redan kommer åt toohello program. hello företagsägaren sedan kan lägga till fler användare och användarna har automatiskt etablerade toohello program. hello företagsägaren behöver inte toowait för hello toomanage administratörsåtkomst för användare. Om Hej administratör ger hello samma behörighet tooa manager i en annan affärsgrupp sedan personen kan också hantera åtkomsten för sina egna användare. Varken hello företagsägaren eller hello manager kan visa eller hantera varandras användare. Hej administratör kan fortfarande se alla användare som har åtkomst toohello programmet och blockera behörigheten om det behövs.
-* **Grupphantering via självbetjäning** Ett exempel på det här scenariot är två användare som båda har SharePoint Online-platser som de har konfigurerat oberoende av varandra. De vill toogive varje andras team åtkomst tootheir platser. tooaccomplish, de kan skapa en grupp i Azure AD och i SharePoint Online väljer var och en av dem som gruppen tooprovide åtkomst tootheir platser. När någon vill ha åtkomst begär de det från hello åtkomstpanelen och efter godkännande får de åtkomst tooboth SharePoint Online-platserna automatiskt. Senare beslutar en av dem att alla användare åtkomst till hello plats även ska få åtkomst till tooa visst SaaS-program. Hej administratör hello SaaS-program kan lägga till åtkomstbehörigheter för hello programmet toohello SharePoint Online-webbplats. Därefter ger alla begäranden som godkännas åtkomst toohello två SharePoint Online-platserna och toothis SaaS-program.
+* **Delegerad grupphantering** Ett exempel är en administratör som hanterar åtkomsten till ett SaaS-program som hennes företag använder. Eftersom det börjar bli svårt att hantera dessa åtkomstbehörigheter ber administratören företagsägaren att skapa en ny grupp. Administratören tilldelar åtkomst för programmet till den nya gruppen och lägger till alla personer som redan har åtkomst till programmet till gruppen. Företagsägaren kan sedan lägga till fler användare, som automatiskt tilldelas programmet. Företagsägaren behöver inte vänta på administratören för att kunna hantera åtkomst för användarna. Om administratören tilldelar en chef samma behörighet i en annan affärsgrupp, så kan den personen även hantera sina egna användare åtkomst. Varken företagsägaren eller chefen kan visa eller hantera varandras användare. Administratören kan fortfarande se alla användare som har åtkomst till programmet och blockera behörigheten om det behövs.
+* **Grupphantering via självbetjäning** Ett exempel på det här scenariot är två användare som båda har SharePoint Online-platser som de har konfigurerat oberoende av varandra. De vill ge varandras grupper åtkomst till sina respektive webbplatser. De kan åstadkomma detta genom att först skapa en grupp i Azure AD och därefter var och en välja samma grupp i SharePoint Online, vilket ger dem åtkomst till varandras webbplatser. När någon vill ha åtkomst begär de det från åtkomstpanelen och efter godkännande får de automatiskt åtkomst till båda SharePoint Online-platserna. Senare beslutar den ena av dem att alla användare som har åtkomst till webbplatsen även ska få åtkomst till ett visst SaaS-program. SaaS-programmets administratör kan lägga till åtkomstbehörighet för programmet till SharePoint Online-webbplatsen. När det är gjort kommer alla förfrågningar som han godkänner att ge åtkomst till de två SharePoint Online-webbplatserna och även till SaaS-programmet.
 
-## <a name="making-a-group-available-for-end-user-self-service"></a>Göra en grupp tillgänglig för självbetjäning av slutanvändare
-1. I hello [klassiska Azure-portalen](https://manage.windowsazure.com), öppna Azure AD-katalogen.
-2. På hello **konfigurera** ställer du in **delegerad grupphantering** tooEnabled.
-3. Ange **användare kan skapa säkerhetsgrupper** eller **användare kan skapa grupper för Office** tooEnabled.
+## <a name="make-a-group-available-for-user-self-service"></a>Göra en grupp tillgänglig för självbetjäning av användare
+1. Logga in på [Azure AD administratörscenter](https://aad.portal.azure.com) med ett konto som är en global administratör för katalogen.
+2. Välj **Användare och grupper** och sedan **Gruppinställningar**.
+3. Ställ in **Självbetjäning för grupphantering aktiverad** på **Ja**.
+4. Ställ in **Användare kan skapa säkerhetsgrupper** eller **Användare kan skapa Office 365-grupper** på **Ja**.
+  * När inställningarna är aktiverade kan alla användare i katalogen skapa nya säkerhetsgrupper och lägga till medlemmar i dessa grupper. Dessa nya grupper visas även på åtkomstpanelen för alla andra användare. Om gruppens principinställningar så tillåter kan andra användare skapa förfrågningar om att ansluta till dessa grupper. 
+  * När de här inställningarna är avaktiverade kan användarna inte skapa grupper eller ändra de befintliga grupper som de äger. De kan dock fortfarande hantera medlemskap i dessa grupper och godkänna förfrågningar från andra användare om att ansluta till grupperna.
 
-När **användare kan skapa säkerhetsgrupper** är aktiverat kan alla användare i din katalog tillåts toocreate nya säkerhetsgrupper och lägga till medlemmar toothese grupper. Dessa nya grupper visas också i hello åtkomstpanelen för alla andra användare. Om hello principinställningen för gruppen hello kan kan andra användare skapa förfrågningar toojoin dessa grupper. Om du har inaktiverat **Användare kan skapa säkerhetsgrupper** så kan användarna inte skapa grupper eller ändra de befintliga grupper som de äger. De kan fortfarande hantera hello medlemskap i dessa grupper och godkänna förfrågningar från andra användare toojoin deras grupper.
+Genom **Användare som kan hantera säkerhetsgrupper** och **Användare som kan hantera Office 365-grupper** kan du få mer detaljerad åtkomstkontroll över dina användares grupphantering via självbetjäning. När **Användare kan skapa grupper** är aktiverat kan alla användare i klientorganisationen skapa nya grupper och lägga till medlemmar i dessa grupper. Om du ställer in dem på **Some** (Vissa) begränsar du grupphanteringen till enbart en begränsad grupp användare. När du har angett den här växeln till **Vissa** måste du lägga till användare i gruppen SSGMSecurityGroupsUsers innan de kan skapa nya grupper och lägga till medlemmar i dem. Om du väljer **Alla** för **Användare som kan använda självbetjäning för säkerhetsgrupper** och **Användare som kan hantera Office 365-grupper** kan alla användare i klienten skapa nya grupper.
 
-Du kan också använda **användare som kan använda Självbetjäning för säkerhetsgrupper** tooachieve en mer detaljerad åtkomstkontroll över grupphantering via Självbetjäning för dina användare. När **användare kan skapa grupper** är aktiverat kan alla användare i din katalog tillåts toocreate nya grupper och lägga till medlemmar toothese grupper. Genom att även ange **användare som kan använda Självbetjäning för säkerhetsgrupper** tooSome, du är att begränsa gruppen management tooonly en begränsad grupp användare. När den här växeln anges tooSome, måste du lägga till användargruppen toohello SSGMSecurityGroupsUsers innan de kan skapa nya grupper och lägga till medlemmar toothem. Genom att ange **användare som kan använda Självbetjäning för säkerhetsgrupper** tooAll, användarna i din katalog toocreate nya grupper.
-
-Du kan också använda hello **grupp som kan använda Självbetjäning för säkerhetsgrupper** rutan toospecify ett eget namn för en grupp vars medlemmar kan använda självbetjäning.
+Du kan också använda **Grupp som kan hantera säkerhetsgrupper** eller **Grupp som kan hantera Office 365-grupper** för att ange en enda grupp vars medlemmar ska kunna använda självbetjäning.
 
 ## <a name="next-steps"></a>Nästa steg
 Dessa artiklar innehåller ytterligare information om Azure Active Directory.
 
-* [Hantera åtkomst tooresources med Azure Active Directory-grupper](active-directory-manage-groups.md)
+* [Hantera åtkomst till resurser med Azure Active Directory-grupper](active-directory-manage-groups.md)
 * [Azure Active Directory-cmdletar för att konfigurera gruppinställningar](active-directory-accessmanagement-groups-settings-cmdlets.md)
 * [Artikelindex för programhantering i Azure Active Directory](active-directory-apps-index.md)
 * [Vad är Azure Active Directory?](active-directory-whatis.md)

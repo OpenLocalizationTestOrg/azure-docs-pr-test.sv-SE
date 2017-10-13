@@ -1,6 +1,6 @@
 ---
-title: "aaaMicrosoft Azure IoT Suite-översikt | Microsoft Docs"
-description: "Översikt över hur Azure IoT Suite ger internet av saker förkonfigurerade lösningar toocollect analysera, och lagra data, ange visualiseringar och integrera med andra system."
+title: "Översikt över Microsoft Azure IoT Suite | Microsoft Docs"
+description: "Översikt över hur Azure IoT Suite levererar förkonfigurerade IoT-lösningar för att samla in, analysera och lagra data, skapa visualiseringar och integrera med andra system."
 services: 
 suite: iot-suite
 documentationcenter: 
@@ -16,15 +16,15 @@ ms.workload: na
 ms.date: 07/24/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 385025c5ec0d37c74689a928bc09e85b33439634
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: bfa8dbbd0b1d943a9eb7a042df0bac25189d9ac9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="overview-of-azure-iot-suite"></a>Översikt över Azure IoT Suite
 
-hello Azure internet av saker (IoT) services erbjuder en mängd funktioner. Med dessa tjänster i företagsklass kan du:
+Azures tjänster för Sakernas Internet (IoT, Internet of Things) tillhandahåller en rad intressanta funktioner. Med dessa tjänster i företagsklass kan du:
 
 * Samla in data från enheter
 * Analysera dataströmmar i rörelse
@@ -33,37 +33,37 @@ hello Azure internet av saker (IoT) services erbjuder en mängd funktioner. Med 
 * Integrera med back office-system
 * Hantera dina enheter
 
-toodeliver dessa funktioner, Azure IoT Suite paket tillsammans flera Azure-tjänster med anpassade tillägg som *förkonfigurerade lösningar*. Dessa förkonfigurerade lösningar är grundläggande implementeringar av vanliga IoT-lösningen mönster som hjälper tooreduce hello tid som går åt toodeliver IoT-lösningar. Med hjälp av hello [IoT software development Kit][lnk-sdks], du kan anpassa och utöka dessa lösningar toomeet dina egna behov. Du kan också använda dessa lösningar som exempel eller mallar när du utvecklar nya IoT-lösningar.
+För att leverera dessa funktioner paketerar Azure IoT Suite samman flera Azure-tjänster med anpassade tillägg i form av *förkonfigurerade lösningar*. Dessa förkonfigurerade lösningar är grundläggande implementeringar av vanliga IoT-lösningsmönster som kan minska den tid det tar att leverera IoT-lösningar. Med [programutvecklingspaketen för IoT][lnk-sdks] kan du anpassa och utöka dessa lösningar efter dina egna behov. Du kan också använda dessa lösningar som exempel eller mallar när du utvecklar nya IoT-lösningar.
 
-hello ger följande videoklipp en introduktion tooAzure IoT Suite:
+Följande videoklipp innehåller en introduktion till Azure IoT Suite:
 
 > [!VIDEO https://channel9.msdn.com/Events/Microsoft-Azure/AzureCon-2015/ACON309/player]
 > 
 > 
 
 ## <a name="azure-iot-services-in-azure-iot-suite"></a>Azure IoT-tjänster i Azure IoT Suite
-hello förkonfigurerade lösningar använder vanligtvis hello följande tjänster:
+De förkonfigurerade lösningarna använder vanligtvis följande tjänster:
 
-* Core tooAzure IoT Suite är hello [Azure IoT Hub] [ lnk-iot-hub] service. Den här tjänsten tillhandahåller hello enhet till moln och moln till enhet meddelandefunktioner och fungerar som gateway toohello hello molnet och hello andra viktiga IoT Suite-tjänster. hello-tjänsten kan du tooreceive meddelanden från dina enheter med skala och skicka kommandon tooyour enheter. hello-tjänsten kan du också för[hantera dina enheter][lnk-device-management]. Till exempel konfigurera, starta om eller utför en fabriksåterställning på en eller flera enheter anslutna toohello hubben.
-* [Azure Stream Analytics][lnk-asa] tillhandahåller analys av data i rörelse. IoT Suite använder den här tjänsten tooprocess inkommande telemetri, utföra aggregation och identifiera händelser. hello förkonfigurerade lösningar kan också använda stream analytics tooprocess informationsmeddelanden som innehåller data, till exempel metadata eller kommandot svar från enheter. hello-lösningar använder Stream Analytics tooprocess hello meddelanden från dina enheter och leverera meddelandena tooother tjänster.
-* [Azure Storage] [ lnk-azure-storage] och [Azure Cosmos DB] [ lnk-document-db] ange hello funktioner för lagring av data. hello förkonfigurerade lösningar använder blob storage toostore telemetri och toomake den tillgänglig för analys. hello-lösningar använder Cosmos DB toostore enhetens metadata och aktivera hello enhetshanteringsfunktioner hello lösningar.
-* [Azure Web Apps] [ lnk-web-apps] och [Microsoft Power BI] [ lnk-power-bi] ange hello data visualiseringsfunktioner. hello flexibilitet Power BI kan du tooquickly skapa egna interaktiva instrumentpaneler som använder IoT Suite data.
+* Kärnan i Azure IoT Suite är [Azure IoT Hub][lnk-iot-hub]-tjänsten. Den här tjänsten tillhandahåller funktioner för meddelandehantering från ”enhet till moln” och från ”moln till enhet” och fungerar som en gateway till molnet och andra viktiga IoT Suite-tjänster. Tjänsten gör att du kan ta emot meddelanden från dina enheter i hög skala och skicka kommandon till dina enheter. Med tjänsten kan du även [hantera dina enheter][lnk-device-management]. Du kan till exempel konfigurera, starta om eller utföra en fabriksåterställning på en eller flera enheter som är anslutna till hubben.
+* [Azure Stream Analytics][lnk-asa] tillhandahåller analys av data i rörelse. IoT Suite använder den här tjänsten för att bearbeta inkommande telemetri, utföra aggregeringar och identifiera händelser. De förkonfigurerade lösningarna använder också Stream Analytics för att bearbeta informationsmeddelanden som innehåller data, till exempel metadata eller kommandosvar från enheter. Lösningarna använder Stream Analytics för att hantera meddelanden från dina enheter och leverera dem till andra tjänster.
+* [Azure Storage][lnk-azure-storage] och [Azure Cosmos DB][lnk-document-db] tillhandahåller funktioner för datalagring. De förkonfigurerade lösningarna använder Blob Storage för att lagra telemetri och för att göra den tillgänglig för analys. Lösningarna använda Cosmos DB för att lagra metadata om enheter och för att aktivera enhetshanteringsfunktionerna i lösningarna.
+* [Azure Web Apps][lnk-web-apps] och [Microsoft Power BI][lnk-power-bi] tillhandahåller visualiseringsfunktioner. Flexibiliteten i Power BI gör att du snabbt kan skapa egna interaktiva instrumentpaneler som använder IoT Suite-data.
 
-En översikt över hello arkitekturen för en typisk IoT-lösningen, se [Microsoft Azure och hello Sakernas Internet (IoT)][iot-suite-what-is-azure-iot].
+En översikt över arkitekturen i en typisk IoT-lösning finns i [Microsoft Azure och Sakernas Internet (IoT)][iot-suite-what-is-azure-iot].
 
 ## <a name="preconfigured-solutions"></a>Förkonfigurerade lösningar
 
-IoT Suite innehåller förkonfigurerade lösningar för att aktivera du tooquickly Kom igång med och tooexplore hello vanliga IoT-scenarier som:
+IoT Suite levereras med förkonfigurerade lösningar som hjälper dig att snabbt komma igång med och utforska vanliga IoT-scenarier som:
 
 * Fjärrövervakning
 * Förebyggande underhåll
 * Ansluten fabrik
 
-Du kan distribuera dessa lösningar tooyour Azure-prenumeration och sedan köra en fullständig, slutpunkt-till-slutpunkt IoT-scenariot.
+Du kan distribuera lösningarna till din Azure-prenumeration och sedan köra ett komplett IoT-scenario från slutpunkt till slutpunkt.
 
 ## <a name="next-steps"></a>Nästa steg
 
-Nu när du har en översikt över vad IoT Suite kan göra och vad är dess huvudkomponenter kan du lära dig mer om hello förkonfigurerade lösningar i IoT Suite. Mer information finns i [vad hello Azure IoT förkonfigurerade lösningar?][lnk-what-are-preconfig]
+Nu när du har en översikt över vad IoT Suite kan göra och dess huvudkomponenter kan du lära dig mer om de förinställda lösningarna i IoT Suite. Mer information finns i [Var är förkonfigurerade lösningar i Azure IoT?][lnk-what-are-preconfig]
 
 [lnk-sdks]: https://azure.microsoft.com/documentation/articles/iot-hub-sdks-summary/
 [lnk-iot-hub]: https://azure.microsoft.com/documentation/services/iot-hub/

@@ -1,6 +1,6 @@
 ---
-title: aaaDeploy Azure-resurser toomultiple resursgrupper | Microsoft Docs
-description: "Visar hur tootarget mer än en Azure-resurs gruppera under distributionen."
+title: Distribuera Azure-resurser till flera resursgrupper | Microsoft Docs
+description: "Visar hur du kan arbeta mer än en Azure-resursgrupp under distributionen."
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2017
 ms.author: tomfitz
-ms.openlocfilehash: 93a39a26e0ca18dfcb5c6e8de95c38a64186d6de
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: d8b041213b269775175a810e585103d3c538557f
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="deploy-azure-resources-toomore-than-one-resource-group"></a>Distribuera Azure-resurser toomore än en resursgrupp
+# <a name="deploy-azure-resources-to-more-than-one-resource-group"></a>Distribuera Azure-resurser till mer än en resursgrupp
 
-Normalt distribuerar du alla hello resurser i din mall tooa enskild resursgrupp. Det finns emellertid scenarier där du vill toodeploy en uppsättning resurser tillsammans men placera dem i olika resursgrupper. Du kan till exempel vill toodeploy hello säkerhetskopiering virtuella datorn för Azure Site Recovery tooa separat resursgrupp och plats. Resource Manager kan toouse kapslade mallar tootarget olika resursgrupper än hello resursgruppens namn används för hello överordnade mallen.
+Normalt distribuerar du alla resurser i mallen som en enskild resursgrupp. Det finns emellertid scenarier där du vill distribuera en uppsättning resurser tillsammans men placera dem i olika resursgrupper. Exempelvis kanske du vill distribuera den säkerhetskopiera virtuella för Azure Site Recovery till en separat resursgrupp och plats. Resource Manager kan du använda kapslade mallar för olika resursgrupper än den resursgrupp som används för den överordnade mallen.
 
-hello resursgrupp är hello livscykel behållaren för hello programmet och dess mängd resurser. Du skapar hello resursgruppen utanför hello mallen och ange hello resurs grupp tootarget under distributionen. En introduktion tooresource grupper, se [översikt över Azure Resource Manager](resource-group-overview.md).
+Resursgruppen är en behållare för livscykeln för programmet och dess mängd resurser. Du skapar resursgruppen utanför mallen och ange resursgrupp som mål under distributionen. En introduktion till resursgrupper finns [översikt över Azure Resource Manager](resource-group-overview.md).
 
 ## <a name="example-template"></a>Exempelmall
 
-tootarget en annan resurs, måste du använda en mall för kapslade eller länkade under distributionen. Hej `Microsoft.Resources/deployments` resurstypen ger en `resourceGroup` parameter som kan användas toospecify en annan resursgrupp för hello kapslade distributionen. Alla resursgrupper för hello måste finnas innan du kör hello-distribution. hello följande exempel distribuerar två lagringskonton - en i hello resursgruppen som anges under distributionen, och en i en resursgrupp med namnet `crossResourceGroupDeployment`:
+Om du vill ange en annan resurs, måste du använda en mall för kapslade eller länkade under distributionen. Den `Microsoft.Resources/deployments` resurstypen ger en `resourceGroup` parameter som kan du ange en annan resursgrupp för den kapslade distributionen. Alla resursgrupper måste finnas innan du kör distributionen. I följande exempel distribuerar två lagringskonton - en i resursgruppen som anges under distributionen, och en i en resursgrupp med namnet `crossResourceGroupDeployment`:
 
 ```json
 {
@@ -83,11 +83,11 @@ tootarget en annan resurs, måste du använda en mall för kapslade eller länka
 }
 ```
 
-Om du ställer in `resourceGroup` toohello namnet på en resursgrupp som inte finns, hello distributionen misslyckas. Om du inte anger ett värde för `resourceGroup`, Resource Manager använder hello överordnade resursgruppen.  
+Om du ställer in `resourceGroup` till namnet på en resursgrupp som inte finns misslyckas distributionen. Om du inte anger ett värde för `resourceGroup`, Resource Manager använder överordnade resursgruppen.  
 
-## <a name="deploy-hello-template"></a>Distribuera hello mall
+## <a name="deploy-the-template"></a>Distribuera mallen
 
-toodeploy hello exempel mallen som du kan använda hello-portalen, Azure PowerShell eller Azure CLI. För Azure PowerShell eller Azure CLI, måste du använda en Versionspost från maj 2017 eller senare. hello exempel förutsätter att du har sparat hello mall lokalt som en fil med namnet **crossrgdeployment.json**.
+Du kan använda portalen, Azure PowerShell eller Azure CLI för att distribuera mallen exempel. För Azure PowerShell eller Azure CLI, måste du använda en Versionspost från maj 2017 eller senare. I exemplen antar vi att du har sparat mallen lokalt som en fil med namnet **crossrgdeployment.json**.
 
 För PowerShell:
 
@@ -117,9 +117,9 @@ När distributionen är klar kan du se två resursgrupper. Varje resursgrupp inn
 
 ## <a name="use-resourcegroup-function"></a>Funktionen resourceGroup()
 
-För mellan distributionen av resursgrupper, hello [resouceGroup() funktionen](resource-group-template-functions-resource.md#resourcegroup) matchar på olika sätt beroende på hur du anger hello kapslade mallen. 
+Mellan distributionen av resursgrupper, för den [resouceGroup() funktionen](resource-group-template-functions-resource.md#resourcegroup) matchar på olika sätt beroende på hur du anger den kapslade mallen. 
 
-Om du bäddar in en mall i en annan mall löser resouceGroup() i hello kapslade mallen toohello överordnade resursgruppen. Ett inbäddat mallen använder hello följande format:
+Om du bäddar in en mall i en annan mall löser resouceGroup() i den kapslade mallen till den överordnade resursgruppen. Ett inbäddat mallen använder följande format:
 
 ```json
 "apiVersion": "2017-05-10",
@@ -130,12 +130,12 @@ Om du bäddar in en mall i en annan mall löser resouceGroup() i hello kapslade 
     "mode": "Incremental",
     "template": {
         ...
-        resourceGroup() refers tooparent resource group
+        resourceGroup() refers to parent resource group
     }
 }
 ```
 
-Om du länka tooa separat mall löser resouceGroup() i hello länkade mallen toohello kapslade resursgruppen. En länkad mall använder hello följande format:
+Om du länkar till en separat mall löser resouceGroup() i mallen länkade till den kapslade resursgruppen. En länkad mall används följande format:
 
 ```json
 "apiVersion": "2017-05-10",
@@ -146,13 +146,13 @@ Om du länka tooa separat mall löser resouceGroup() i hello länkade mallen too
     "mode": "Incremental",
     "templateLink": {
         ...
-        resourceGroup() in linked template refers toolinked resource group
+        resourceGroup() in linked template refers to linked resource group
     }
 }
 ```
 
 ## <a name="next-steps"></a>Nästa steg
 
-* hur toodefine parametrarna i mallen, se toounderstand [förstå hello struktur och syntaxen för Azure Resource Manager-mallar](resource-group-authoring-templates.md).
+* Information om hur du definierar parametrar i mallen finns [förstå struktur och syntaxen för Azure Resource Manager-mallar](resource-group-authoring-templates.md).
 * Tips om hur du löser vanliga distributionsfel finns [felsöka vanliga Azure-distribution med Azure Resource Manager](resource-manager-common-deployment-errors.md).
 * Information om hur du distribuerar en mall som kräver en SAS-token finns [distribuera privata mallar med SAS-token](resource-manager-powershell-sas-token.md).

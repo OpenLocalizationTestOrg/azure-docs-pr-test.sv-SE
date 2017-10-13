@@ -1,5 +1,5 @@
 ---
-title: aaaAzure Mobile Engagement Android SDK-Integration
+title: Azure Mobile Engagement Android SDK-Integration
 description: "Senaste uppdateringarna och procedurer för Android SDK för Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: mobile
@@ -14,69 +14,69 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: c57132ff49cf8c335627a72b37f9b78529e84f48
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 43987962ea2b7b825b88643d18b4db65f1f1670e
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="how-toointegrate-adm-with-engagement"></a>Hur tooIntegrate ADM med Engagement
+# <a name="how-to-integrate-adm-with-engagement"></a>Hur du integrerar ADM med Engagement
 > [!IMPORTANT]
-> Du måste följa hello integration beskrivs i hello hur tooIntegrate Engagement på Android dokumentet innan du följer den här guiden.
+> Du måste följa integration proceduren i hur du integrerar Engagement på Android dokumentet innan du följer den här guiden.
 > 
-> Det här dokumentet är användbar bara om du redan har integrerat hello Reach-modulen och planera toopush Amazon-enheter. toointegrate Reach-kampanjer i ditt program, Läs först hur tooIntegrate Engagement nå på Android.
+> Det här dokumentet är användbar bara om du redan har integrerat med Reach-modulen och planera att skicka Amazon-enheter. Om du vill integrera Reach-kampanjer i ditt program, Läs först hur du integrerar Engagement nå på Android.
 > 
 > 
 
 ## <a name="introduction"></a>Introduktion
-Integrera ADM kan ditt program toobe pushas när måldatorn Amazon Android-enheter.
+Integrera ADM kan ditt program ska kunna skickas när måldatorn Amazon Android-enheter.
 
-ADM-nyttolaster pushas toohello SDK alltid innehålla hello `azme` nyckel i hello dataobjekt. Därför om du använder ADM för andra ändamål i ditt program, kan du filtrera push-meddelanden baserat på nyckeln.
+ADM-nyttolaster pushas till SDK alltid innehålla den `azme` nyckel i dataobjektet. Därför om du använder ADM för andra ändamål i ditt program, kan du filtrera push-meddelanden baserat på nyckeln.
 
 > [!IMPORTANT]
 > Endast Amazon Kindle enheter som kör Android 4.0.3 eller senare som stöds av Amazon Device Messaging; Du kan dock integrera koden på ett säkert sätt på andra enheter.
 > 
 > 
 
-## <a name="sign-up-tooadm"></a>Registrera dig tooADM
+## <a name="sign-up-to-adm"></a>Registrera dig för ADM
 Om du inte redan har gjort, måste du aktivera ADM på Amazon-konto.
 
-hello proceduren beskrivs på: [ <https://developer.amazon.com/sdk/adm/credentials.html>].
+Förfarandet som beskrivs i: [ <https://developer.amazon.com/sdk/adm/credentials.html>].
 
-När du slutför hello proceduren får du:
+När du slutför proceduren får du:
 
-* OAuth autentiseringsuppgifter (klient-ID och en Klienthemlighet) för Engagement toobe kan toopush dina enheter.
+* OAuth-autentiseringsuppgifter (klient-ID och en Klienthemlighet) för Engagement för att kunna push dina enheter.
 * En API-nyckel som integreras i ditt program.
 
 ## <a name="sdk-integration"></a>SDK-integration
 ### <a name="managing-device-registrations"></a>Hantera registreringar för enhet
-Varje enhet måste skicka en registrering kommandot toohello ADM-servrar, annars de inte kan nås.
+Varje enhet måste skicka ett kommando för registrering till ADM-servrar, annars de inte kan nås.
 
-Om du redan använder hello [ADM-klientbiblioteket], och redan har [integrerad ADM] du kan gå direkt tooandroid och sdk-adm-ta emot.
+Om du redan använder den [ADM-klientbiblioteket], och redan har [integrerad ADM] du kan gå direkt till android-sdk-adm-ta emot.
 
-Om du inte har integrerat ADM ännu Engagement har ett enklare sätt tooenable den i ditt program:
+Om du inte har integrerat ADM, har Engagement ett enklare sätt att aktivera den i ditt program:
 
 Redigera din `AndroidManifest.xml` fil:
 
-* Lägg till Hej namnområdet för Amazon, hello filen börja så här:
+* Lägg till namnområdet för Amazon filen ska börja så här:
   
       <?xml version="1.0" encoding="utf-8"?>
       <manifest xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:amazon="http://schemas.amazon.com/apk/res/android"
-* I hello `<application/>` tagg, lägga till det här avsnittet:
+* I den `<application/>` tagg, lägga till det här avsnittet:
   
       <amazon:enable-feature
          android:name="com.amazon.device.messaging"
          android:required="false"/>
   
       <meta-data android:name="engagement:adm:register" android:value="true" />
-* Du kan ha ett build-fel om ditt mål för projektgenerering är lägre än Android 2.1 när du lägger till hello amazon-tagg. Du har toouse en **Android 2.1 +** skapa mål (oroa dig inte, kan du fortfarande ha en `minSdkVersion` ange too4).
-* Integrera hello ADM API-nyckel som en tillgång genom att följa [proceduren].
+* Du kan ha ett build-fel om ditt mål för projektgenerering är lägre än Android 2.1 när du lägger till amazon-taggen. Du måste använda ett **Android 2.1 +** skapa mål (oroa dig inte, kan du fortfarande ha en `minSdkVersion` värdet 4).
+* Integrera ADM API-nyckeln som en tillgång genom att följa [proceduren].
 
-Följ sedan instruktionerna för hello hello nästa avsnitt.
+Följ sedan anvisningarna i nästa avsnitt.
 
-### <a name="communicate-registration-id-toohello-engagement-push-service-and-receive-notifications"></a>Kommunicera id toohello Engagement Push registreringstjänsten och ta emot meddelanden
-I ordning toocommunicate hello registrerings-id för hello enheten toohello Engagement Push-tjänst och ta emot dess meddelanden, lägga till följande tooyour hello `AndroidManifest.xml` fil i hello `<application/>` tagga (även om du använder ADM utan behov av):
+### <a name="communicate-registration-id-to-the-engagement-push-service-and-receive-notifications"></a>Kommunicera registrerings-id till Engagement Push-tjänsten och ta emot meddelanden
+För att kunna kommunicera registrerings-id för enheten till Engagement Push-tjänsten och ta emot dess meddelanden, lägger du till följande till din `AndroidManifest.xml` filen inuti den `<application/>` tagga (även om du använder ADM utan behov av):
 
         <receiver android:name="com.microsoft.azure.engagement.adm.EngagementADMEnabler"
           android:exported="false">
@@ -94,7 +94,7 @@ I ordning toocommunicate hello registrerings-id för hello enheten toohello Enga
           </intent-filter>
         </receiver>   
 
-Kontrollera att du har följande behörigheter i hello din `AndroidManifest.xml` (innan hello `</application>` tagg).
+Se till att du har följande behörigheter i din `AndroidManifest.xml` (innan den `</application>` tagg).
 
         <uses-permission android:name="android.permission.WAKE_LOCK"/>
         <uses-permission android:name="com.amazon.device.messaging.permission.RECEIVE"/>

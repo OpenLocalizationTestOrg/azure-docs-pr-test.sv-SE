@@ -25,42 +25,42 @@
 ### [Konfigurera trafikregler för en roll](cloud-services-enable-communication-role-instances.md)
 ### [Hantera livscykelhändelser för molntjänst](cloud-services-role-lifecycle-dotnet.md)
 ### [Socket.io (Node.js)](cloud-services-nodejs-chat-app-socketio.md)
-### [Använd Twilio toomake ett telefonsamtal (.NET)](../partner-twilio-cloud-services-dotnet-phone-call-web-role.md)
+### [Använda Twilio för att ringa ett telefonsamtal (.NET)](../partner-twilio-cloud-services-dotnet-phone-call-web-role.md)
 ### [New Relic](../store-new-relic-cloud-services-dotnet-application-performance-management.md)
 
 ### Konfigurera startuppgifter
 #### [Skapa startuppgifter](cloud-services-startup-tasks.md)
 #### [Vanliga startuppgifter](cloud-services-startup-tasks-common.md)
-#### [Använda en aktivitet tooInstall .NET på en tjänst i molnet roll](cloud-services-dotnet-install-dotnet.md)
+#### [Använd en åtgärd för att installera .NET på en molntjänstroll](cloud-services-dotnet-install-dotnet.md)
 
 ### Konfigurera Fjärrskrivbord
-#### [Portal](cloud-services-role-enable-remote-desktop-new-portal.md)
+#### [Azure Portal](cloud-services-role-enable-remote-desktop-new-portal.md)
 #### [Klassisk portal](cloud-services-role-enable-remote-desktop.md)
-#### [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
+#### [Azure PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
 
 ## Distribuera
 ### Skapa och distribuera en molntjänst i portalen
-#### [Portal](cloud-services-how-to-create-deploy-portal.md)
+#### [Azure Portal](cloud-services-how-to-create-deploy-portal.md)
 #### [Klassisk portal](cloud-services-how-to-create-deploy.md)
 ### [Skapa en tom molntjänstbehållare i PowerShell](cloud-services-powershell-create-cloud-container.md)
 ### Konfigurera ett anpassat domännamn
 #### [Portal](cloud-services-custom-domain-name-portal.md)
 #### [Klassisk portal](cloud-services-custom-domain-name.md)
 ### [Mellanlagra en molntjänstdistribution (Node.js)](cloud-services-nodejs-stage-application.md)
-### [Ansluta tooa anpassad domänkontrollant](cloud-services-connect-to-custom-domain.md)
+### [Anslut till en anpassad domänkontrollant](cloud-services-connect-to-custom-domain.md)
 
 ## Hantera tjänst
 ### Vanliga administrativa uppgifter
-#### [Portal](cloud-services-how-to-manage-portal.md)
+#### [Azure Portal](cloud-services-how-to-manage-portal.md)
 #### [Klassisk portal](cloud-services-how-to-manage.md)
 ### Konfigurera en molntjänst
-#### [Portal](cloud-services-how-to-configure-portal.md)
+#### [Azure Portal](cloud-services-how-to-configure-portal.md)
 #### [Klassisk portal](cloud-services-how-to-configure.md)
 ### [Hantera en molntjänst med Azure Automation](automation-manage-cloud-services.md)
 ### Konfigurera automatisk skalning
-#### [Portal](cloud-services-how-to-scale-portal.md)
+#### [Azure Portal](cloud-services-how-to-scale-portal.md)
 #### [Klassisk portal](cloud-services-how-to-scale.md)
-### [Använda Python toomanage Azure-resurser](cloud-services-python-how-to-use-service-management.md)
+### [Använd Python för att hantera Azure-resurser](cloud-services-python-how-to-use-service-management.md)
 
 ### [Gästoperativsystemets korrigeringsfiler](cloud-services-guestos-msrc-releases.md)
 ### Gästoperativsystem, indragning
@@ -80,13 +80,13 @@
 ### [Testa prestanda](../vs-azure-tools-performance-profiling-cloud-services.md)
 #### [Testa med Visual Studio Profiler](cloud-services-performance-testing-visual-studio-profiler.md)
 ### Aktivera diagnostik
-#### [PowerShell](cloud-services-diagnostics-powershell.md)
+#### [Azure PowerShell](cloud-services-diagnostics-powershell.md)
 #### [.NET](cloud-services-dotnet-diagnostics.md)
 #### [Visual Studio](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md)
 ### [Använda prestandaräknare i Azure Diagnostics](cloud-services-dotnet-diagnostics-performance-counters.md)
 ### [Lagra och visa diagnostikdata i Azure Storage](cloud-services-dotnet-diagnostics-storage.md)
 ### [Spåra en molntjänst med diagnostik](cloud-services-dotnet-diagnostics-trace-flow.md)
-### [Skicka diagnostikdata tooApp insikter](cloud-services-dotnet-diagnostics-applicationinsights.md)
+### [Skicka diagnostikdata till App Insights](cloud-services-dotnet-diagnostics-applicationinsights.md)
 
 ## Felsöka
 ### Felsökning 
@@ -98,7 +98,7 @@
 ### [Vanliga orsaker till rollåteranvändning i molntjänst](cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md)
 ### [TEMP-standardmappen är för liten för en roll](cloud-services-troubleshoot-default-temp-folder-size-too-small-web-worker-role.md)
 ### [Vanliga distributionsproblem](cloud-services-troubleshoot-deployment-problems.md)
-### [Rollen kunde inte toostart](cloud-services-troubleshoot-roles-that-fail-start.md)
+### [Rollen startades inte](cloud-services-troubleshoot-roles-that-fail-start.md)
 ### [Vägledning för återställning](cloud-services-disaster-recovery-guidance.md)
 ### Vanliga frågor och svar om Cloud Services
 #### [Vanliga frågor och svar om program- och tjänsttillgänglighet](cloud-services-application-and-service-availability-faq.md)
@@ -108,8 +108,14 @@
 
 # Referens
 ## [Kodexempel](https://azure.microsoft.com/en-us/resources/samples/?service=cloud-services)
-## [.csdef XMLSchema](https://msdn.microsoft.com/library/azure/ee758711)
-## [.cscfg XMLSchema](https://msdn.microsoft.com/library/azure/ee758710)
+## [.csdef XML-schema](schema-csdef-file.md)
+### [LoadBalancerProbe-schema](schema-csdef-loadbalancerprobe.md)
+### [WebRole-schema](schema-csdef-webrole.md)
+### [WorkerRole-schema](schema-csdef-workerrole.md)
+### [NetworkTrafficRules-schema](schema-csdef-networktrafficrules.md)
+## [.cscfg XML-schema](schema-cscfg-file.md)
+### [Rollschema](schema-cscfg-role.md)
+### [NetworkConfiguration-schema](schema-cscfg-networkconfiguration.md)
 ## [REST](https://msdn.microsoft.com/library/azure/ee460812)
 
 # Resurser

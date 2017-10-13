@@ -1,16 +1,16 @@
-Använd hello Azure CLI tooget hello Fjärrdistribution URL för API-appen. Följande kommando, Ersätt i hello  *\<appnamn >* med namnet på ditt webbprogram.
+Använd Azure CLI för att hämta URL:en för fjärrdistribution för din API-app. Ersätt *\<app_name>* med din webbapps namn i följande kommando.
 
 ```azurecli-interactive
 az webapp deployment source config-local-git --name <app_name> --resource-group myResourceGroup --query url --output tsv
 ```
 
-Konfigurera din lokala Git-distribution toobe kan toopush toohello fjärråtkomst.
+Konfigurera din lokala Git-distribution för att kunna push-överföra till en fjärrplats.
 
 ```bash
 git remote add azure <URI from previous step>
 ```
 
-Skicka toohello Azure remote toodeploy din app. Du ombeds hello lösenord som du skapade tidigare när du skapade hello distribution användare. Kontrollera att du anger hello lösenordet du skapade i tidigare i hello quickstart och inte hello lösenord du använder toolog i toohello Azure-portalen.
+Skicka till Azure-fjärrdatabasen för att distribuera appen. Du uppmanas att ange lösenordet som du skapade tidigare när du skapade distributionsanvändaren. Se till att du anger det lösenord som du skapade tidigare i snabbstarten, inte lösenordet som du använde när du loggade in på Azure Portal.
 
 ```bash
 git push azure master

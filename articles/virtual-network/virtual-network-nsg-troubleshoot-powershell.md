@@ -1,6 +1,6 @@
 ---
-title: "aaaTroubleshoot Nätverkssäkerhetsgrupper - PowerShell | Microsoft Docs"
-description: "Lär dig hur tootroubleshoot Nätverkssäkerhetsgrupper i hello Azure Resource Manager distribution modellen med hjälp av Azure PowerShell."
+title: "Felsöka Nätverkssäkerhetsgrupper - PowerShell | Microsoft Docs"
+description: "Lär dig hur du felsöker Nätverkssäkerhetsgrupper i Azure Resource Manager-distributionsmodellen med hjälp av Azure PowerShell."
 services: virtual-network
 documentationcenter: na
 author: AnithaAdusumilli
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
-ms.openlocfilehash: 95fd60fa72cf6d17fa990e3c3eb7d980878f7c15
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 5edaf7197576ac1c0bd1fc6bed21fd65ed135106
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="troubleshoot-network-security-groups-using-azure-powershell"></a>Felsöka Nätverkssäkerhetsgrupper med hjälp av Azure PowerShell
 > [!div class="op_single_selector"]
@@ -28,35 +28,35 @@ ms.lasthandoff: 10/06/2017
 > 
 > 
 
-Om du konfigurerade Nätverkssäkerhetsgrupper (NSG: er) på den virtuella datorn (VM) och har problem med anslutningen VM, för den här artikeln innehåller en översikt över diagnostikfunktionerna för NSG: er toohelp fortsätta felsökningen.
+Om du konfigurerade Nätverkssäkerhetsgrupper (NSG: er) på den virtuella datorn (VM) och har problem med anslutningen VM, innehåller den här artikeln en översikt över diagnostikfunktionerna för NSG: er för att fortsätta felsökningen.
 
-NSG: er kan du toocontrol hello typer av trafik som flöde till och från virtuella datorer (VM). NSG: er kan vara tillämpade toosubnets i ett Azure Virtual Network (VNet), nätverksgränssnitt (NIC) eller båda. hello effektiva reglerna tooa NIC är en sammanställning av hello regler som finns i hello NSG: er används tooa NIC och hello undernät, det är anslutet till. Regler för dessa NSG: er kan ibland står i konflikt med varandra och påverka nätverksanslutning för en virtuell dator.  
+NSG: er kan du styra vilka typer av trafik som flöde till och från virtuella datorer (VM). NSG: er kan tillämpas på undernät i ett Azure Virtual Network (VNet), nätverksgränssnitt (NIC) eller båda. Effektiva reglerna som gäller för ett nätverkskort är en sammanställning av regler som finns i NSG: er som tillämpas på ett nätverkskort och undernät som den är ansluten till. Regler för dessa NSG: er kan ibland står i konflikt med varandra och påverka nätverksanslutning för en virtuell dator.  
 
-Du kan visa alla hello effektiva säkerhetsregler från dina NSG: er som tillämpas på den Virtuella datorns nätverkskort. Den här artikeln visar hur tootroubleshoot VM anslutningsproblem med dessa regler i hello Azure Resource Manager-distributionsmodellen. Om du inte är bekant med principerna för VNet och NSG läsa hello [för virtuella nätverk](virtual-networks-overview.md) och [Nätverkssäkerhetsgrupper](virtual-networks-nsg.md) översikt artiklar.
+Du kan visa alla effektiva säkerhetsregler från dina NSG: er som tillämpas på den Virtuella datorns nätverkskort. Den här artikeln visar hur du felsöker problem med nätverksanslutningen VM med hjälp av reglerna i Azure Resource Manager-distributionsmodellen. Om du inte är bekant med principerna för VNet och NSG läsa den [för virtuella nätverk](virtual-networks-overview.md) och [Nätverkssäkerhetsgrupper](virtual-networks-nsg.md) översikt artiklar.
 
-## <a name="using-effective-security-rules-tootroubleshoot-vm-traffic-flow"></a>Med hjälp av effektiva säkerhetsregler tootroubleshoot VM trafikflöde
-hello-scenariot som följer är ett exempel på ett vanligt anslutningsproblem:
+## <a name="using-effective-security-rules-to-troubleshoot-vm-traffic-flow"></a>Använda effektiva säkerhetsregler för att felsöka VM trafikflöde
+Det scenario som följer är ett exempel på ett vanligt anslutningsproblem:
 
-En virtuell dator med namnet *VM1* är en del av ett undernät med namnet *Undernät1* inom ett VNet med namnet *WestUS VNet1*. Ett försök tooconnect toohello VM som använder RDP över TCP-port 3389 misslyckas. NSG: er som tillämpas på båda hello NIC *VM1 NIC1* och hello undernät *Undernät1*. Trafik tooTCP port 3389 tillåts i hello NSG som är kopplad till nätverksgränssnittet hello *VM1 NIC1*, men TCP pinga tooVM1's port 3389 misslyckas.
+En virtuell dator med namnet *VM1* är en del av ett undernät med namnet *Undernät1* inom ett VNet med namnet *WestUS VNet1*. Ett försök att ansluta till den virtuella datorn med RDP över TCP-port 3389 misslyckas. NSG: er som tillämpas på båda NIC *VM1 NIC1* och undernätet *Undernät1*. Trafik till TCP-port 3389 tillåts i NSG: N som är kopplad till nätverksgränssnittet *VM1 NIC1*, men TCP ping till VM1 är port 3389 misslyckas.
 
-När det här exemplet används TCP-port 3389, hello följande steg kan vara används toodetermine inkommande och utgående anslutningsfel via alla portar.
+Följande steg kan användas för att fastställa inkommande och utgående anslutningsfel över alla portar när det här exemplet används TCP-port 3389.
 
 ## <a name="detailed-troubleshooting-steps"></a>Detaljerad felsökning
-Fullständig hello följande steg tootroubleshoot NSG: er för en virtuell dator:
+Utför följande steg för att felsöka NSG: er för en virtuell dator:
 
-1. Starta en Azure PowerShell-sessionen och logga in tooAzure. Om du inte är bekant med Azure PowerShell, läsa hello [hur tooinstall och konfigurera Azure PowerShell](/powershell/azure/overview) artikel.
-2. Ange följande kommando tooreturn alla NSG-regler tillämpas tooa nätverkskort med namnet hello *VM1 NIC1* i hello resursgruppen *RG1*:
+1. Starta en Azure PowerShell-sessionen och logga in på Azure. Om du inte är bekant med Azure PowerShell kan du läsa den [hur du installerar och konfigurerar du Azure PowerShell](/powershell/azure/overview) artikel.
+2. Ange följande kommando för att returnera alla NSG-regler tillämpas på ett nätverkskort med namnet *VM1 NIC1* i resursgruppen *RG1*:
    
         Get-AzureRmEffectiveNetworkSecurityGroup -NetworkInterfaceName VM1-NIC1 -ResourceGroupName RG1
    
    > [!TIP]
-   > Om du inte vet hello namnet på ett nätverkskort, ange hello efter kommandot tooretrieve hello namnen på alla nätverkskort i en resursgrupp: 
+   > Om du inte vet namnet på ett nätverkskort, kan du ange följande kommando för att hämta namnen på alla nätverkskort i en resursgrupp: 
    > 
    > `Get-AzureRmNetworkInterface -ResourceGroupName RG1 | Format-Table Name`
    > 
    > 
    
-    hello följande är ett exempel på hello effektiva regler utdatan för hello *VM1 NIC1* NIC:
+    Följande är ett exempel på effektiva regler utdata returneras för den *VM1 NIC1* NIC:
    
         NetworkSecurityGroup   : {
                                    "Id": "/subscriptions/[Subscription ID]/resourceGroups/RG1/providers/Microsoft.Network/networkSecurityGroups/VM1-NIC1-NSG"
@@ -155,46 +155,46 @@ Fullständig hello följande steg tootroubleshoot NSG: er för en virtuell dator
                                 },...
                                 ]
    
-    Observera följande information i hello utdata hello:
+    Observera följande information i utdata:
    
-   * Det finns två **NetworkSecurityGroup** avsnitt: en är associerad med ett undernät (*Undernät1*) och ett är kopplat till ett nätverkskort (*VM1 NIC1*). I det här exemplet har en NSG tillämpad tooeach.
-   * **Associationen** visar hello resurs (undernät eller NIC) angivna NSG är associerad med. Om hello NSG-resurs är flyttas/koppla bort omedelbart innan du kör det här kommandot kan eventuellt du toowait några sekunder för hello ändra tooreflect i hello kommandoutdata. 
-   * Hej namn som inleds med *defaultSecurityRules*: när en NSG skapas, skapas flera standardregler för säkerhet i den. Standardreglerna kan inte tas bort, men de kan åsidosättas med högre Prioritetsregler.
-     Läs hello [NSG översikt](virtual-networks-nsg.md#default-rules) artikel toolearn mer information om NSG standard säkerhetsregler.
-   * **ExpandedAddressPrefix** expanderar hello adressprefix för NSG standardtaggar. Taggar representerar flera adressprefix. Utökningen av hello taggar kan vara användbart när du felsöker VM anslutning till eller från specifika adressprefix. Till exempel utökar VIRTUAL_NETWORK taggen med VNET-peering tooshow peerkoppla VNet-prefix i hello tidigare utdata.
+   * Det finns två **NetworkSecurityGroup** avsnitt: en är associerad med ett undernät (*Undernät1*) och ett är kopplat till ett nätverkskort (*VM1 NIC1*). I det här exemplet har en NSG tillämpats för varje.
+   * **Associationen** visar resurs (undernät eller NIC) angivna NSG är associerad med. Om NSG-resurs är flyttas/koppla bort omedelbart innan du kör det här kommandot kan behöva du vänta några sekunder innan ändringen så att den återger kommandots utdata. 
+   * De namn som inleds med *defaultSecurityRules*: när en NSG skapas, skapas flera standardregler för säkerhet i den. Standardreglerna kan inte tas bort, men de kan åsidosättas med högre Prioritetsregler.
+     Läs den [NSG översikt](virtual-networks-nsg.md#default-rules) artikeln om du vill lära dig mer om NSG standard säkerhetsregler.
+   * **ExpandedAddressPrefix** expanderar adressprefix för NSG standardtaggar. Taggar representerar flera adressprefix. Utökningen av taggar kan vara användbart när du felsöker VM anslutning till eller från specifika adressprefix. Till exempel med VNET-peering utökas VIRTUAL_NETWORK taggen visas peerkoppla VNet-prefix i föregående utdata.
      
      > [!NOTE]
-     > Hej endast visar effektiva kommandoregler om en NSG är associerad med ett undernät och/eller ett nätverkskort. En virtuell dator kan ha flera nätverkskort med olika NSG: er som används. När du felsöker kan köra hello-kommando för varje nätverkskort.
+     > Kommandot endast visar effektiva reglerna om en NSG är associerad med ett undernät och/eller ett nätverkskort. En virtuell dator kan ha flera nätverkskort med olika NSG: er som används. När du felsöker, kör du kommandot för varje nätverkskort.
      > 
      > 
-3. tooease filtrering över större antal NSG-regler, ange följande kommandon tootroubleshoot ytterligare hello: 
+3. För att underlätta filtrering över större antal NSG-regler kan du ange följande kommandon för att fortsätta felsökningen: 
    
         $NSGs = Get-AzureRmEffectiveNetworkSecurityGroup -NetworkInterfaceName VM1-NIC1 -ResourceGroupName RG1
         $NSGs.EffectiveSecurityRules | Sort-Object Direction, Access, Priority | Out-GridView
    
-    Ett filter för RDP-trafik (TCP-port 3389), är tillämpas toohello rutnätsvy som visas i följande bild hello:
+    Ett filter för RDP-trafik (TCP-port 3389), används till diagramvyn, enligt följande bild:
    
     ![Regellistan](./media/virtual-network-nsg-troubleshoot-powershell/rules.png)
-4. Som du ser i hello rutnätsvy finns både tillåta och neka regler för RDP. hello utdata från steg 2 visar den hello *DenyRDP* regeln är i hello NSG tillämpas toohello undernät. Regler för inkommande trafik NSG: er används toohello undernät bearbetas först. Om en matchning hittas bearbetas hello NSG tillämpas toohello nätverksgränssnittet inte. I det här fallet hello *DenyRDP* regeln från hello undernät blockerar RDP toohello VM (**VM1**).
+4. Som du ser i diagramvyn finns både tillåta och neka regler för RDP. Utdata från steg 2 visar att den *DenyRDP* regeln är i NSG tillämpad på undernätet. Regler för inkommande trafik bearbetas NSG: er tillämpad på undernätet först. Om en matchning hittas, bearbetas inte NSG tillämpas för nätverksgränssnittet. I det här fallet den *DenyRDP* regeln från undernätet blockerar RDP till den virtuella datorn (**VM1**).
    
    > [!NOTE]
-   > En virtuell dator kan ha flera nätverkskort anslutna tooit. Varje kanske anslutna tooa olika undernät. Eftersom hello kommandon i föregående steg i hello körs mot ett nätverkskort, är det viktigt tooensure som du anger hello NIC som du har med hello anslutningsfel till. Om du inte är säker på att köra du alltid hello kommandon mot varje nätverkskort anslutet toohello VM.
+   > En virtuell dator kan ha flera nätverkskort som är kopplade till den. Varje kanske är anslutet till ett annat undernät. Eftersom kommandona i föregående steg körs mot ett nätverkskort, är det viktigt att se till att du anger du får anslutningsfel till nätverkskortet. Om du inte är säker på att köra du alltid kommandon mot varje nätverkskort som är anslutet till den virtuella datorn.
    > 
    > 
-5. tooRDP i VM1, ändra hello *neka RDP (port 3389)* regel för*Tillåt RDP(3389)* i hello **Undernät1 NSG** NSG. Kontrollera att TCP-port 3389 är öppen genom att öppna en RDP-anslutning toohello VM eller hello PsPing verktyget. Du kan lära dig mer om PsPing genom att läsa hello [PsPing hämtningssidan](https://technet.microsoft.com/sysinternals/psping.aspx)
+5. Till RDP till VM1 ändra den *neka RDP (port 3389)* regel att *Tillåt RDP(3389)* i den **Undernät1 NSG** NSG. Kontrollera att TCP-port 3389 är öppen genom att öppna en RDP-anslutning till den virtuella datorn eller med hjälp av verktyget PsPing. Du kan lära dig mer om PsPing genom att läsa den [PsPing hämtningssidan](https://technet.microsoft.com/sysinternals/psping.aspx)
    
-    Du kan eller ta bort regler från en NSG med hello information i hello utdata från hello följande kommando:
+    Du kan eller ta bort regler från en NSG med hjälp av informationen i utdata från kommandot:
    
         Get-Help *-AzureRmNetworkSecurityRuleConfig
 
 ## <a name="considerations"></a>Överväganden
-Överväg följande punkter när du felsöker problem med nätverksanslutningen hello:
+Tänk på följande när du felsöker problem med nätverksanslutningen:
 
-* Standard NSG-regler som blockerar inkommande åtkomst från hello internet och bara bevilja VNet inkommande trafik. Regler som uttryckligen läggas tooallow inkommande åtkomst från Internet, vid behov.
-* Om det finns inga NSG säkerhetsregler som orsakar en virtuell dators network connectivity toofail, kan hello problemet bero på följande:
-  * Brandväggsprogram körs i hello VM-operativsystem
-  * Vägar som konfigurerats för virtuella installationer eller lokal trafik. Internet-trafiken kan vara omdirigerade tooon lokala via Tvingad tunneltrafik. En RDP/SSH-anslutning från hello Internet tooyour VM kanske inte fungerar med den här inställningen, beroende på hur hello lokalt nätverksmaskinvara hanterar den här trafiken. Läs hello [felsökning vägar](virtual-network-routes-troubleshoot-powershell.md) artikel toolearn hur toodiagnose väg problem som kan hindra hello trafikflödet i och ut ur hello VM. 
-* Om du har peerkoppla Vnet, som standard, expandera hello VIRTUAL_NETWORK taggen automatiskt tooinclude prefix för peerkoppla Vnet. Du kan visa dessa prefix i hello **ExpandedAddressPrefix** lista, tootroubleshoot alla problem relaterade tooVNet peering anslutning. 
-* Effektiva säkerhetsregler visas bara om det finns en NSG som är associerade med hello Virtuella nätverkskort och undernät. 
-* Om det finns inga NSG: er som är associerade med hello NIC eller undernät och att du har en offentlig IP-adress som tilldelats tooyour VM, vara alla portar öppna för inkommande och utgående åtkomst. Om hello VM har en offentlig IP-adress, rekommenderas tillämpa NSG: er toohello NIC eller undernät.  
+* Standard NSG-regler ska blockera inkommande åtkomst från internet och tillåter bara VNet inkommande trafik. Regler bör läggas uttryckligen vill tillåta inkommande åtkomst från Internet, som krävs.
+* Om det finns inga NSG säkerhetsregler som orsakar en virtuell dator är ansluten till nätverket misslyckas, kan det bero på följande:
+  * Brandväggsprogram som körs i den Virtuella datorns operativsystem
+  * Vägar som konfigurerats för virtuella installationer eller lokal trafik. Internet-trafik kan omdirigeras till lokalt via Tvingad tunneltrafik. En RDP/SSH-anslutning från Internet till den virtuella datorn kanske inte fungerar med den här inställningen, beroende på hur trafiken hanteras i nätverksmaskinvara lokalt. Läs den [felsökning vägar](virtual-network-routes-troubleshoot-powershell.md) artikel för att lära dig att felsöka väg problem som kan hindra flödet av trafik till och från den virtuella datorn. 
+* Om du har peerkoppla Vnet, som standard, expanderar taggen VIRTUAL_NETWORK automatiskt för att inkludera prefix för peerkoppla Vnet. Du kan visa dessa prefix i den **ExpandedAddressPrefix** lista, för att felsöka eventuella problem som är relaterade till VNet-peering anslutning. 
+* Effektiva säkerhetsregler visas bara om det finns en NSG som är kopplade till Virtuellt datorns nätverkskort och undernät. 
+* Om det finns inga NSG: er som är kopplade till nätverkskortet eller undernät och att du har en offentlig IP-adress som tilldelats till den virtuella datorn, kommer alla portar vara öppna för inkommande och utgående åtkomst. Om den virtuella datorn har en offentlig IP-adress, rekommenderas tillämpa NSG: er till nätverkskort eller undernät.  
 

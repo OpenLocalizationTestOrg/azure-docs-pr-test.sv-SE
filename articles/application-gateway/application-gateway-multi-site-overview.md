@@ -1,6 +1,6 @@
 ---
-title: "aaaHosting flera platser på Azure Programgateway | Microsoft Docs"
-description: "Den här sidan innehåller en översikt över hello Programgateway stöd för flera platser."
+title: "Agera värd åt flera webbplatser i Azure Application Gateway | Microsoft Docs"
+description: "Den här sidan ger en översikt över Application Gateways stöd för flera webbplatser."
 documentationcenter: na
 services: application-gateway
 author: amsriva
@@ -14,38 +14,38 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2017
 ms.author: amsriva
-ms.openlocfilehash: 4ab6faa97f1891d7525affdaa36463681bf99e9f
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 645f68d836babf11f32fc391e6dacc9430f0070c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>Flera webbplatser i Application Gateway
 
-Värd för flera plats kan du tooconfigure mer än ett webbprogram på hello samma program gateway-instans. Den här funktionen kan du tooconfigure en effektivare topologin för din distribution genom att lägga ihop too20 webbplatser tooone Programgateway. Varje webbplats kan dirigeras tooits äger serverdelspool. I följande exempel hello, fungerar Programgateway trafik för contoso.com och fabrikam.com från två backend-serverpooler kallas ContosoServerPool och FabrikamServerPool.
+Om du har flera webbplatser så kan du konfigurera fler än ett webbprogram inom samma programgateway-instans. Den här funktionen låter dig konfigurera en mer effektiv topologi för dina distributioner genom att lägga till upp till 20 webbplatser till en programgateway. Varje webbplats kan dirigeras till en egen serverdelspool. I följande exempel servar Application Gateway trafik åt contoso.com och fabrikam.com från två serverdels-serverpooler som heter ContosoServerPool och FabrikamServerPool.
 
 ![imageURLroute](./media/application-gateway-multi-site-overview/multisite.png)
 
 > [!IMPORTANT]
-> Regler bearbetas i hello ordning de anges i hello-portalen. Det är första tidigare tooconfiguring för rekommenderas tooconfigure flera platser lyssnare en grundläggande lyssnare.  Detta säkerställer att trafik hämtar routade toohello tillbaka avslutas. Om en grundläggande lyssnare visas först och matchar en inkommande begäran kommer den att bearbetas av den lyssnaren.
+> Regler bearbetas i den ordning de visas i portalen. Vi rekommenderar starkt att konfigurera lyssnare för flera platser första innan du konfigurerar en grundläggande lyssnare.  Detta säkerställer att trafik dirigeras till rätt serverdel. Om en grundläggande lyssnare visas först och matchar en inkommande begäran kommer den att bearbetas av den lyssnaren.
 
-Begäranden för http://contoso.com är routade tooContosoServerPool och http://fabrikam.com är routade tooFabrikamServerPool.
+Begäranden för http://contoso.com dirigeras till ContosoServerPool och http://fabrikam.com dirigeras till FabrikamServerPool.
 
-På liknande sätt hello två underdomäner i hello samma överordnade domänen kan finnas på samma gateway-programdistribution. Exempel på användning av underdomäner kan vara http://blog.contoso.com och http://app.contoso.com på samma distribution av en programgateway.
+På samma sätt kan två underdomäner i samma överordnade domän finnas på samma distribution av en programgateway. Exempel på användning av underdomäner kan vara http://blog.contoso.com och http://app.contoso.com på samma distribution av en programgateway.
 
 ## <a name="host-headers-and-server-name-indication-sni"></a>Värdhuvuden och servernamnsindikator (SNI)
 
-Det finns tre vanliga mekanismer för att aktivera flera för webbplatsen på hello samma infrastruktur.
+Det finns tre vanliga mekanismer för att aktivera flera platser inom samma infrastruktur.
 
 1. Flera webbprogram på varsin unik IP-adress.
-2. Använd värdnamnet toohost flera webbprogram på hello samma IP-adress.
-3. Använd olika portar toohost flera webbprogram på hello samma IP-adress.
+2. Använd värdnamn för att ha flera webbprogram på samma IP-adress.
+3. Använd olika portar för att har flera webbprogram på samma IP-adress.
 
-För tillfället får en Application Gateway en enda IP-adress som den lyssnar på trafik från. Därför stöds inte alternativet där varje program har sin egen IP-adress för tillfället. Application Gateway har stöd för värd för flera program varje lyssnar på olika portar, men det här scenariot kräver hello program tooaccept trafik på portarna inte är standard och inte är en önskad konfiguration. Programgateway är beroende av HTTP 1.1 värden huvuden toohost mer än en webbplats på hello samma offentliga IP-adress och port. hello webbplatser som finns på Programgateway kan också stöd för SSL-avlastning med Server Servernamnsindikation (SNI) TLS-tillägg. Det här scenariot innebär att hello klientens webbläsare och backend webbservergrupp måste ha stöd för HTTP/1.1 och TLS-tillägg som definieras i RFC 6066.
+För tillfället får en Application Gateway en enda IP-adress som den lyssnar på trafik från. Därför stöds inte alternativet där varje program har sin egen IP-adress för tillfället. Application Gateway stöder att ha flera program som alla lyssnar på olika portar, men det här scenariot kräver att programmen accepterar trafik på icke-standardportar och det är ofta en oönskad konfiguration. Application Gateway förlitar sig på HTTP 1.1 värdhuvuden för att ha mer än en webbplats på samma offentliga IP-adress och port. Webbplatserna i Application Gateway kan också stödja SSL-avlastning med servernamnsindikator (SNI) TLS-tillägget. Det här scenariot innebär att klientens webbläsare och serverdels-webbservergrupp måste ha stöd för HTTP/1.1 och TLS-tillägg som det definieras i RFC 6066.
 
 ## <a name="listener-configuration-element"></a>Listener-konfigurationselementet
 
-Befintliga HTTPListener konfigurationselement är förbättrad toosupport värden namn och en server name indikation element, som används av gateway tooroute trafik tooappropriate backend programpoolen. hello är följande kodexempel hello fragment av HttpListeners element från mallen.
+Det befintliga HTTPListener-konfigurationselement utökas till att stödja värdnamn och servernamnsindikator-element, som används av Application Gateway för att dirigera trafik till korrekta serverdels-pooler. Följande kodexempel är ett utdrag från HttpListeners-elementet från mallfilen.
 
 ```json
 "httpListeners": [
@@ -83,11 +83,11 @@ Befintliga HTTPListener konfigurationselement är förbättrad toosupport värde
 ],
 ```
 
-Du besöker [Resource Manager-mallen med hjälp av flera värd för webbplatsen](https://github.com/Azure/azure-quickstart-templates/blob/master/201-application-gateway-multihosting) end tooend mallbaserade distribution.
+Du kan besöka [Resource Manager-mallen för flera webbplatser](https://github.com/Azure/azure-quickstart-templates/blob/master/201-application-gateway-multihosting) för en slutpunkt-till-slutpunkts mallbaserad distribution.
 
 ## <a name="routing-rule"></a>Routingregeln
 
-Det finns ingen ändring som krävs i hello routningsregel. Hej routningsregel ”Basic” bör fortsätta toobe valt tootie hello lämplig plats lyssnare toohello motsvarande serverdelen för adresspoolen.
+Inga ändringar behövs i routingregeln. Routingregeln Basic ska fortfarande väljas för att knyta rätt webbplats-lyssnare till motsvarande serverdels-adresspool.
 
 ```json
 "requestRoutingRules": [
@@ -128,5 +128,5 @@ Det finns ingen ändring som krävs i hello routningsregel. Hej routningsregel �
 
 ## <a name="next-steps"></a>Nästa steg
 
-När du lära dig mer om flera värd för platsen, gå för[skapa en Programgateway med flera värd för webbplatsen](application-gateway-create-multisite-azureresourcemanager-powershell.md) toocreate en Programgateway med möjlighet toosupport mer än ett webbprogram.
+När du har lärt dig om flera webbplatser, kan du gå till [skapa en programgateway med flera webbplatser](application-gateway-create-multisite-azureresourcemanager-powershell.md) för att skapa en programgateway som stöder flera en ett webbprogram.
 

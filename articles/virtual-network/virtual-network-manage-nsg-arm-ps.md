@@ -1,6 +1,6 @@
 ---
-title: "aaaManage nätverkssäkerhetsgrupper - Azure PowerShell | Microsoft Docs"
-description: "Lär dig hur toomanage nätverkssäkerhetsgrupper med hjälp av PowerShell."
+title: "Hantera nätverkssäkerhetsgrupper - Azure PowerShell | Microsoft Docs"
+description: "Lär dig hur du hanterar nätverkssäkerhetsgrupper med hjälp av PowerShell."
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 930fe5e0827896ad67b24d84e41a5d3f898ba838
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: ca7f4926ca4edf9d20612aca74f6ae5f0ed847b3
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="manage-network-security-groups-using-powershell"></a>Hantera säkerhetsgrupper i nätverket med hjälp av PowerShell
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 10/06/2017
 [!INCLUDE [virtual-network-manage-nsg-intro-include.md](../../includes/virtual-network-manage-nsg-intro-include.md)]
 
 > [!NOTE]
-> Azure har två olika distributionsmodeller för att skapa och arbeta med resurser: [Resource Manager och klassisk](../resource-manager-deployment-model.md). Den här artikeln täcker hello Resource Manager-distributionsmodellen, som Microsoft rekommenderar för de flesta nya distributioner i stället för hello klassiska distributionsmodellen.
+> Azure har två olika distributionsmodeller för att skapa och arbeta med resurser: [Resource Manager och klassisk](../resource-manager-deployment-model.md). Den här artikeln täcker distributionsmodell hanteraren för filserverresurser, som Microsoft rekommenderar för de flesta nya distributioner i stället för den klassiska distributionsmodellen.
 >
 
 [!INCLUDE [virtual-network-manage-nsg-arm-scenario-include.md](../../includes/virtual-network-manage-nsg-arm-scenario-include.md)]
@@ -40,7 +40,7 @@ ms.lasthandoff: 10/06/2017
 Du kan visa dina befintliga NSG: er, hämta regler för en befintlig NSG och ta reda på vilka resurser en NSG är kopplad till.
 
 ### <a name="view-existing-nsgs"></a>Visa befintliga NSG: er
-tooview alla befintliga NSG: er i en prenumeration kör hello `Get-AzureRmNetworkSecurityGroup` cmdlet.
+Om du vill visa alla befintliga NSG: er i en prenumeration kör den `Get-AzureRmNetworkSecurityGroup` cmdlet.
 
 Förväntat resultat:
 
@@ -87,7 +87,7 @@ Förväntat resultat:
     Subnets              : [...]
 
 
-tooview hello listan över NSG: er i en viss resursgrupp, kör hello `Get-AzureRmNetworkSecurityGroup` cmdlet.
+Om du vill visa listan över NSG: er i en viss resursgrupp, kör den `Get-AzureRmNetworkSecurityGroup` cmdlet.
 
 Förväntad utdata:
 
@@ -120,7 +120,7 @@ Förväntad utdata:
     Subnets              : [...]
 
 ### <a name="list-all-rules-for-an-nsg"></a>Visa en lista med alla regler för en NSG
-tooview hello regler för en NSG som heter **NSG-klientdel**, ange hello följande kommando:
+Visa regler för en NSG som heter **NSG-klientdel**, anger du följande kommando:
 
 ```powershell
 Get-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name NSG-FrontEnd | Select SecurityRules -ExpandProperty SecurityRules
@@ -157,17 +157,17 @@ Förväntad utdata:
     Direction                : Inbound
 
 > [!NOTE]
-> Du kan också använda `Get-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name "NSG-FrontEnd" | Select DefaultSecurityRules -ExpandProperty DefaultSecurityRules` toolist hello standardregler från hello **NSG-klientdel** NSG.
+> Du kan också använda `Get-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name "NSG-FrontEnd" | Select DefaultSecurityRules -ExpandProperty DefaultSecurityRules` att lista standardregler från den **NSG-klientdel** NSG.
 > 
 
 ### <a name="view-nsgs-associations"></a>Visa NSG: er associationer
-tooview vilka resurser hello **NSG-klientdel** NSG är associerad med, kör hello följande kommando:
+Visa vilka resurser de **NSG-klientdel** NSG är associerat med, kör du följande kommando:
 
 ```powershell
 Get-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name NSG-FrontEnd
 ```
 
-Leta efter hello **NetworkInterfaces** och **undernät** egenskaper som visas nedan:
+Leta efter den **NetworkInterfaces** och **undernät** egenskaper som visas nedan:
 
     NetworkInterfaces    : []
     Subnets              : [
@@ -177,21 +177,21 @@ Leta efter hello **NetworkInterfaces** och **undernät** egenskaper som visas ne
                              }
                            ]
 
-I föregående exempel hello är hello NSG inte associerad tooany nätverksgränssnitt (NIC) Det är associerade tooa undernät med namnet **klientdel**.
+I det förra exemplet är NSG: N inte kopplad till någon nätverksgränssnitt (NIC) den är kopplad till ett undernät med namnet **klientdel**.
 
 ## <a name="manage-rules"></a>Hantera regler
-Du kan lägga till regler tooan befintliga NSG, redigera befintliga regler och ta bort regler.
+Du kan lägga till regler i en befintlig NSG, redigera befintliga regler och ta bort regler.
 
 ### <a name="add-a-rule"></a>Lägg till en regel
-tooadd en regel som tillåter **inkommande** trafik tooport **443** från alla datorn toohello **NSG-klientdel** NSG fullständig hello följande steg:
+Att lägga till en regel som tillåter **inkommande** trafik till port **443** från en dator till den **NSG-klientdel** NSG, gör du följande:
 
-1. Kör följande kommando tooretrieve hello befintliga NSG hello och lagra den i en variabel:
+1. Kör följande kommando för att hämta befintliga NSG: N och lagra den i en variabel:
 
     ```powershell   
     $nsg = Get-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name NSG-FrontEnd
     ```
 
-2. Kör följande kommando tooadd hello en regel toohello NSG:
+2. Kör följande kommando för att lägga till en regel till NSG: N:
 
     ```powershell
     Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg `
@@ -207,12 +207,12 @@ tooadd en regel som tillåter **inkommande** trafik tooport **443** från alla d
     -DestinationPortRange 443
     ```
 
-3. toosave hello ändringar gjorts toohello NSG, kör hello följande kommando:
+3. Om du vill spara ändringarna i NSG: N, kör du följande kommando:
 
     ```powershell
     Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg
     ```
-    Förväntad utdata visar endast hello säkerhetsregler:
+    Förväntad utdata visar endast säkerhetsregler:
    
         Name                 : NSG-FrontEnd
         ...
@@ -243,15 +243,15 @@ tooadd en regel som tillåter **inkommande** trafik tooport **443** från alla d
                                ]
 
 ### <a name="change-a-rule"></a>Ändra en regel
-toochange hello regeln som skapade ovan tooallow inkommande trafik från hello **Internet** endast gör hello nedan.
+Så här ändrar du regeln som skapade ovan för att tillåta inkommande trafik från den **Internet** , Följ stegen nedan.
 
-1. Kör följande kommando tooretrieve hello befintliga NSG hello och lagra den i en variabel:
+1. Kör följande kommando för att hämta befintliga NSG: N och lagra den i en variabel:
 
     ```powershell 
     $nsg = Get-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name NSG-FrontEnd
     ```
 
-2. Kör följande kommando med hello nya regelinställningar hello:
+2. Kör följande kommando med de nya inställningarna för regeln:
 
     ```powershell
     Set-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg `
@@ -267,13 +267,13 @@ toochange hello regeln som skapade ovan tooallow inkommande trafik från hello *
     -DestinationPortRange 443
     ```
 
-3. toosave hello ändringar gjorts toohello NSG, kör hello följande kommando:
+3. Om du vill spara ändringarna i NSG: N, kör du följande kommando:
 
     ```powershell
     Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg
     ```
 
-    Förväntad utdata visar endast hello säkerhetsregler:
+    Förväntad utdata visar endast säkerhetsregler:
    
         Name                 : NSG-FrontEnd
         ...
@@ -304,25 +304,25 @@ toochange hello regeln som skapade ovan tooallow inkommande trafik från hello *
                                ]
 
 ### <a name="delete-a-rule"></a>Ta bort en regel
-1. Kör följande kommando tooretrieve hello befintliga NSG hello och lagra den i en variabel:
+1. Kör följande kommando för att hämta befintliga NSG: N och lagra den i en variabel:
 
     ```powershell
     $nsg = Get-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name NSG-FrontEnd
     ```
 
-2. Kör följande kommando tooremove hello regeln från hello NSG hello:
+2. Kör följande kommando för att ta bort regeln från NSG: N:
 
     ```powershell
     Remove-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name https-rule
     ```
 
-3. Spara hello ändringar toohello NSG, genom att köra följande kommando hello:
+3. Spara ändringarna i NSG: N, genom att köra följande kommando:
 
     ```powershell
     Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg
     ```
 
-    Förväntad utdata visar endast hello säkerhetsregler meddelande hello **https-regel** inte längre visas:
+    Förväntad utdata visar endast säkerhetsregler, meddelande i **https-regel** inte längre visas:
    
         Name                 : NSG-FrontEnd
         ...
@@ -338,36 +338,36 @@ toochange hello regeln som skapade ovan tooallow inkommande trafik från hello *
                                ]
 
 ## <a name="manage-associations"></a>Hantera kopplingar
-Du kan koppla en NSG toosubnets och nätverkskort. Du kan också koppla bort en NSG från alla resurser som den är kopplad till.
+Du kan koppla en NSG till undernät och nätverkskort. Du kan också koppla bort en NSG från alla resurser som den är kopplad till.
 
-### <a name="associate-an-nsg-tooa-nic"></a>Koppla en NSG tooa NIC
-tooassociate hello **NSG-klientdel** NSG toohello **TestNICWeb1** NIC, fullständig hello följande steg:
+### <a name="associate-an-nsg-to-a-nic"></a>Koppla en NSG till ett nätverkskort
+Associera den **NSG-klientdel** NSG till den **TestNICWeb1** NIC, gör du följande:
 
-1. Kör följande kommando tooretrieve hello befintliga NSG hello och lagra den i en variabel:
+1. Kör följande kommando för att hämta befintliga NSG: N och lagra den i en variabel:
 
     ```powershell
     $nsg = Get-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name NSG-FrontEnd
     ```
 
-2. Hello kör följande kommando tooretrieve hello befintliga NIC och lagrar den i en variabel:
+2. Kör följande kommando för att hämta befintlig NIC och lagra den i en variabel:
 
     ```powershell
     $nic = Get-AzureRmNetworkInterface -ResourceGroupName RG-NSG -Name TestNICWeb1
     ```
 
-3. Ange hello **NetworkSecurityGroup** -egenskapen för hello **NIC** variabeln toohello värdet för hello **NSG** variabel, genom att ange hello följande kommando:
+3. Ange den **NetworkSecurityGroup** -egenskapen för den **NIC** variabeln till värdet för den **NSG** variabel, genom att ange följande kommando:
 
     ```powershell
     $nic.NetworkSecurityGroup = $nsg
     ```
 
-4. toosave hello ändringar gjorts toohello NIC, kör hello följande kommando:
+4. Om du vill spara ändringarna i nätverkskortet, kör du följande kommando:
 
     ```powershell
     Set-AzureRmNetworkInterface -NetworkInterface $nic
     ```
    
-    Förväntad utdata visar endast hello **NetworkSecurityGroup** egenskapen:
+    Förväntad utdata visar endast den **NetworkSecurityGroup** egenskapen:
    
         NetworkSecurityGroup : {
                                  "SecurityRules": [],
@@ -378,58 +378,58 @@ tooassociate hello **NSG-klientdel** NSG toohello **TestNICWeb1** NIC, fullstän
                                }
 
 ### <a name="dissociate-an-nsg-from-a-nic"></a>Koppla bort en NSG från ett nätverkskort
-toodissociate hello **NSG-klientdel** NSG från hello **TestNICWeb1** NIC, fullständig hello följande steg:
+Koppla bort den **NSG-klientdel** NSG från den **TestNICWeb1** NIC, gör du följande:
 
-1. Hello kör följande kommando tooretrieve hello befintliga NIC och lagrar den i en variabel:
+1. Kör följande kommando för att hämta befintlig NIC och lagra den i en variabel:
 
     ```powershell
     $nic = Get-AzureRmNetworkInterface -ResourceGroupName RG-NSG -Name TestNICWeb1
     ```
 
-2. Ange hello **NetworkSecurityGroup** -egenskapen för hello **NIC** variabel för**$null** genom att köra följande kommando hello:
+2. Ange den **NetworkSecurityGroup** -egenskapen för den **NIC** variabeln **$null** genom att köra följande kommando:
 
     ```powershell
     $nic.NetworkSecurityGroup = $null
     ```
 
-3. toosave hello ändringar gjorts toohello NIC, kör hello följande kommando:
+3. Om du vill spara ändringarna i nätverkskortet, kör du följande kommando:
 
     ```powershell
     Set-AzureRmNetworkInterface -NetworkInterface $nic
     ```
    
-    Förväntad utdata visar endast hello **NetworkSecurityGroup** egenskapen:
+    Förväntad utdata visar endast den **NetworkSecurityGroup** egenskapen:
    
         NetworkSecurityGroup : null
 
 ### <a name="dissociate-an-nsg-from-a-subnet"></a>Koppla bort en NSG från ett undernät
-toodissociate hello **NSG-klientdel** NSG från hello **klientdel** undernät, fullständig hello följande steg:
+Koppla bort den **NSG-klientdel** NSG från den **klientdel** undernät, gör du följande:
 
-1. Kör följande kommando tooretrieve hello befintliga VNet hello och lagra den i en variabel:
+1. Kör följande kommando för att hämta befintliga VNet och lagra den i en variabel:
 
     ```powershell
     $vnet = Get-AzureRmVirtualNetwork -ResourceGroupName RG-NSG -Name TestVNet
     ```
 
-2. Kör hello följande kommando tooretrieve hello **klientdel** undernät och lagra den i en variabel:
+2. Kör följande kommando för att hämta den **klientdel** undernät och lagra den i en variabel:
 
     ```powershell
     $subnet = Get-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name FrontEnd
     ```
  
-3. Ange hello **NetworkSecurityGroup** -egenskapen för hello **undernät** variabel för**$null** genom att ange hello följande kommando:
+3. Ange den **NetworkSecurityGroup** -egenskapen för den **undernät** variabeln **$null** genom att ange följande kommando:
 
     ```powershell
     $subnet.NetworkSecurityGroup = $null
     ```
 
-4. toosave hello ändringar gjorts toohello undernät, kör hello följande kommando:
+4. Om du vill spara ändringarna i undernätet, kör du följande kommando:
 
     ```powershell
     Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
     ```
 
-    Förväntad utdata som visar hello egenskaper för hello **klientdel** undernät. Observera att det finns inte en egenskap för **NetworkSecurityGroup**:
+    Förväntad utdata visar egenskaperna för den **klientdel** undernät. Observera att det finns inte en egenskap för **NetworkSecurityGroup**:
    
             ...
             Subnets           : [
@@ -451,40 +451,40 @@ toodissociate hello **NSG-klientdel** NSG från hello **klientdel** undernät, f
                                     ...
                                 ]
 
-### <a name="associate-an-nsg-tooa-subnet"></a>Koppla en NSG tooa undernät
-tooassociate hello **NSG-klientdel** NSG toohello **FronEnd** undernät igen, fullständig hello följande steg:
+### <a name="associate-an-nsg-to-a-subnet"></a>Koppla en NSG till ett undernät
+Associera den **NSG-klientdel** NSG till den **FronEnd** undernät igen, gör du följande:
 
-1. Kör följande kommando tooretrieve hello befintliga VNet hello och lagra den i en variabel:
+1. Kör följande kommando för att hämta befintliga VNet och lagra den i en variabel:
 
     ```powershell
     $vnet = Get-AzureRmVirtualNetwork -ResourceGroupName RG-NSG -Name TestVNet
     ```
 
-2. Kör hello följande kommando tooretrieve hello **klientdel** undernät och lagra den i en variabel:
+2. Kör följande kommando för att hämta den **klientdel** undernät och lagra den i en variabel:
 
     ```powershell
     $subnet = Get-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name FrontEnd
     ```
  
-3. Kör följande kommando tooretrieve hello befintliga NSG hello och lagra den i en variabel:
+3. Kör följande kommando för att hämta befintliga NSG: N och lagra den i en variabel:
 
     ```powershell
     $nsg = Get-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name NSG-FrontEnd
     ```
 
-4. Ange hello **NetworkSecurityGroup** -egenskapen för hello **undernät** variabel för**$null** genom att köra följande kommando hello:
+4. Ange den **NetworkSecurityGroup** -egenskapen för den **undernät** variabeln **$null** genom att köra följande kommando:
 
     ```powershell
     $subnet.NetworkSecurityGroup = $nsg
     ```
 
-5. toosave hello ändringar gjorts toohello undernät, kör hello följande kommando:
+5. Om du vill spara ändringarna i undernätet, kör du följande kommando:
 
     ```powershell
     Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
     ```
 
-    Förväntad utdata visar endast hello **NetworkSecurityGroup** -egenskapen för hello **klientdel** undernät:
+    Förväntad utdata visar endast den **NetworkSecurityGroup** -egenskapen för den **klientdel** undernät:
    
         ...
         "NetworkSecurityGroup": {
@@ -497,19 +497,19 @@ tooassociate hello **NSG-klientdel** NSG toohello **FronEnd** undernät igen, fu
         ...
 
 ## <a name="delete-an-nsg"></a>Ta bort en NSG
-Du kan bara ta bort en NSG om den inte är kopplad till tooany resurs. toodelete en NSG åtgärderna hello nedan.
+Du kan bara ta bort en NSG om den inte är kopplad till en resurs. Följ stegen nedan om du vill ta bort en NSG.
 
-1. associerad toocheck hello resurser tooan NSG, kör hello `azure network nsg show` enligt [visa NSG: er kopplingarna](#View-NSGs-associations).
-2. Om hello NSG är associerad tooany nätverkskort, kör hello `azure network nic set` enligt [koppla bort en NSG från ett nätverkskort](#Dissociate-an-NSG-from-a-NIC) för varje nätverkskort. 
-3. Om hello NSG är associerad tooany undernät, kör hello `azure network vnet subnet set` enligt [koppla bort en NSG från ett undernät](#Dissociate-an-NSG-from-a-subnet) för varje undernät.
-4. toodelete hello NSG, kör hello följande kommando:
+1. Om du vill kontrollera resurser som är associerade med en NSG kör den `azure network nsg show` enligt [visa NSG: er kopplingarna](#View-NSGs-associations).
+2. Om NSG: N är kopplad till varje nätverkskort, kör du den `azure network nic set` enligt [koppla bort en NSG från ett nätverkskort](#Dissociate-an-NSG-from-a-NIC) för varje nätverkskort. 
+3. Om NSG: N är kopplat till alla undernät måste köra den `azure network vnet subnet set` enligt [koppla bort en NSG från ett undernät](#Dissociate-an-NSG-from-a-subnet) för varje undernät.
+4. Ta bort NSG: N genom att köra följande kommando:
 
     ```powershell
     Remove-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name NSG-FrontEnd -Force
     ```
    
    > [!NOTE]
-   > Hej `-Force` parametern ser du inte behöver tooconfirm hello borttagning.
+   > Den `-Force` parametern säkerställer du inte behöver bekräfta borttagningen.
    > 
 
 ## <a name="next-steps"></a>Nästa steg

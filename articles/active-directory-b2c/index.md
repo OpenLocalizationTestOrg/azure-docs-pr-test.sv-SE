@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure Active Directory B2C-dokumentation – självstudier, API-referens | Microsoft Docs"
-description: "Lär dig hur toodeploy omfattande identitetshanteringen i hello cloud. Dokumentationen visar hur tooprotect konsumentinriktade webb- och mobilappar."
+title: "Dokumentation om Azure Active Directory B2C – Självstudier, API-referens | Microsoft Docs"
+description: "Lär dig hur du distribuerar omfattande konsumentidentitetshantering i molnet. Dokumentationen visar hur du skyddar konsumentinriktade webb- och mobilappar."
 services: active-directory-b2c
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: f9f6939d4d5bbe49533cad037a9085ce3da63155
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: e36baddffd634cb7d601d09ccebaf40b27798c7b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 #<a name="active-directory-b2c-documentation"></a>Dokumentation om Active Directory B2C
 
-Lär dig hur tooset och hantera omfattande identitetshanteringen i hello molnet med Active Directory B2C. Självstudier, referenser och övrig dokumentation visar hur tooprotect konsumentinriktade webb- och mobila program med säker inloggning.
+Lär dig att konfigurera och hantera omfattande konsumentidentitetshantering i molnet med Active Directory B2C. Självstudiekurser, referenser och annan dokumentation visar hur du skyddar konsumentinriktade webb- och mobilappar med säker inloggning.
 
 <ul class="panelContent cardsFTitle">
     <li>

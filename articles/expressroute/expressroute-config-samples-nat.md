@@ -1,5 +1,5 @@
 ---
-title: aaaExpressRoute kunden router configuration exempel | Microsoft Docs
+title: ExpressRoute kunden router configuration prover | Microsoft Docs
 description: "Den här sidan innehåller router configuration-exempel för Cisco och Juniper routrar."
 documentationcenter: na
 services: expressroute
@@ -14,27 +14,27 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: cherylmc
-ms.openlocfilehash: b5faca0666bda6173e54abb0b6560d5f8bf8bfc2
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 83a7da2db537a3c900e90432455d59e8ac56d917
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="router-configuration-samples-tooset-up-and-manage-nat"></a>Routerkonfiguration exempel tooset in och hantera NAT
-Den här sidan innehåller NAT configuration-exempel för Cisco ASA och Juniper SRX serie routrar. Dessa är avsedda toobe prover för endast vägledning och får inte användas eftersom. Du kan arbeta med din leverantör toocome med lämpliga konfigurationer för nätverket. 
+# <a name="router-configuration-samples-to-set-up-and-manage-nat"></a>Router configuration exempel för att konfigurera och hantera NAT
+Den här sidan innehåller NAT configuration-exempel för Cisco ASA och Juniper SRX serie routrar. Dessa är avsedda att prover för endast vägledning och får inte användas eftersom. Du kan arbeta med leverantören för att få fram lämpliga konfigurationerna för nätverket. 
 
 > [!IMPORTANT]
-> Exempel på den här sidan är avsedda toobe rent anvisningar. Du måste arbeta med leverantörens försäljning / tekniska teamet och ditt nätverk team toocome upp med lämpliga konfigurationer toomeet dina behov. Microsoft stöder inte problem relaterade tooconfigurations som anges i den här sidan. För att lösa problem måste du kontakta enhetsleverantören av.
+> Exempel på den här sidan är avsedda att vara rent anvisningar. Du måste arbeta med leverantörens försäljning / tekniska teamet och teamet nätverk för att få fram lämpliga konfigurationer för att uppfylla dina behov. Microsoft stöder inte problem relaterade till konfigurationer som anges i den här sidan. För att lösa problem måste du kontakta enhetsleverantören av.
 > 
 > 
 
-* Router configuration exemplen nedan gäller tooAzure offentliga och Microsoft peerkopplingar. Du måste inte konfigurera NAT för privat Azure-peering. Granska [ExpressRoute peerkopplingar](expressroute-circuit-peerings.md) och [ExpressRoute NAT krav](expressroute-nat.md) för mer information.
+* Router configuration exemplen nedan gäller för offentlig Azure och Microsoft peerkopplingar. Du måste inte konfigurera NAT för privat Azure-peering. Granska [ExpressRoute peerkopplingar](expressroute-circuit-peerings.md) och [ExpressRoute NAT krav](expressroute-nat.md) för mer information.
 
-* Du måste använda separata NAT IP-adresspooler för anslutningen toohello internet och ExpressRoute. Med hjälp av samma NAT IP-poolen över hello hello internet och ExpressRoute leder asymmetriska Routning och anslutningsproblem.
+* Du måste använda separata NAT IP-adresspooler för anslutning till internet och ExpressRoute. Med hjälp av samma NAT IP-adresspool mellan internet och ExpressRoute leder asymmetriska Routning och anslutningsproblem.
 
 
 ## <a name="cisco-asa-firewalls"></a>Cisco ASA-brandväggar
-### <a name="pat-configuration-for-traffic-from-customer-network-toomicrosoft"></a>PATRIK konfiguration för trafik från kundens nätverk tooMicrosoft
+### <a name="pat-configuration-for-traffic-from-customer-network-to-microsoft"></a>PATRIK konfiguration för trafik från kundens nätverk till Microsoft
     object network MSFT-PAT
       range <SNAT-START-IP> <SNAT-END-IP>
 
@@ -54,12 +54,12 @@ Den här sidan innehåller NAT configuration-exempel för Cisco ASA och Juniper 
 
     nat (outside,inside) source dynamic on-prem pat-pool MSFT-PAT destination static MSFT-Range MSFT-Range
 
-### <a name="pat-configuration-for-traffic-from-microsoft-toocustomer-network"></a>PATRIK konfiguration för trafik från Microsoft toocustomer nätverk
+### <a name="pat-configuration-for-traffic-from-microsoft-to-customer-network"></a>PATRIK konfiguration för trafik från Microsoft till kundens nätverk
 
 **Gränssnitt och riktning:**
 
-    Source Interface (where hello traffic enters hello ASA): inside
-    Destination Interface (where hello traffic exits hello ASA): outside
+    Source Interface (where the traffic enters the ASA): inside
+    Destination Interface (where the traffic exits the ASA): outside
 
 **Konfiguration:**
 
@@ -87,10 +87,10 @@ NAT-kommandon:
 
 
 ## <a name="juniper-srx-series-routers"></a>Juniper SRX serie routrar
-### <a name="1-create-redundant-ethernet-interfaces-for-hello-cluster"></a>1. Skapa redundanta Ethernet-gränssnitt för hello-kluster
+### <a name="1-create-redundant-ethernet-interfaces-for-the-cluster"></a>1. Skapa redundanta Ethernet-gränssnitt för klustret
     interfaces {
         reth0 {
-            description "tooInternal Network";
+            description "To Internal Network";
             vlan-tagging;
             redundant-ether-options {
                 redundancy-group 1;
@@ -103,13 +103,13 @@ NAT-kommandon:
             }
         }
         reth1 {
-            description "tooMicrosoft via Edge Router";
+            description "To Microsoft via Edge Router";
             vlan-tagging;
             redundant-ether-options {
                 redundancy-group 2;
             }
             unit 100 {
-                description "tooMicrosoft via Edge Router";
+                description "To Microsoft via Edge Router";
                 vlan-id 100;
                 family inet {
                     address <IP-Address/Subnet-mask>;
@@ -121,8 +121,8 @@ NAT-kommandon:
 
 ### <a name="2-create-two-security-zones"></a>2. Skapa två säkerhetszoner
 * Förtroende-zonen för interna nätverket och Untrust zon för externa nätverk med routrar i utkanten
-* Tilldela lämpliga gränssnitt toohello zoner
-* Tillåt tjänster på hello-gränssnitt
+* Tilldela lämpliga gränssnitt till zoner
+* Tillåt tjänster på gränssnitt
 
     säkerhet {zoner {säkerhetszon förtroende {-inkommande-värdtrafik {-systemtjänster {ping;                   } protokoll {bgp;                   {reth0.100;}}-gränssnitt               }}-säkerhetszon Untrust {-inkommande-värdtrafik {-systemtjänster {ping;                   } protokoll {bgp;                   {reth1.100;}}-gränssnitt               }           }       }   }
 
@@ -159,8 +159,8 @@ NAT-kommandon:
 
 
 ### <a name="4-configure-nat-policies"></a>4. Konfigurera NAT-principer
-* Skapa två NAT-pooler. En kommer att använda tooNAT trafik utgående tooMicrosoft och andra från Microsoft toohello kund.
-* Skapa regler tooNAT hello respektive trafik
+* Skapa två NAT-pooler. En används för NAT-trafik utgående till Microsoft och andra från Microsoft till kunden.
+* Skapa regler för NAT respektive trafik
   
        security {
            nat {
@@ -183,7 +183,7 @@ NAT-kommandon:
                    }
                    rule-set Outbound_NAT {
                        from routing-instance Internal;
-                       toorouting-instance External-ExpressRoute;
+                       to routing-instance External-ExpressRoute;
                        rule SNAT-Out {
                            match {
                                source-address 0.0.0.0/0;
@@ -199,7 +199,7 @@ NAT-kommandon:
                    }
                    rule-set Inbound-NAT {
                        from routing-instance External-ExpressRoute;
-                       toorouting-instance Internal;
+                       to routing-instance Internal;
                        rule SNAT-In {
                            match {
                                source-address 0.0.0.0/0;
@@ -217,8 +217,8 @@ NAT-kommandon:
            }
        }
 
-### <a name="5-configure-bgp-tooadvertise-selective-prefixes-in-each-direction"></a>5. Konfigurera BGP tooadvertise selektiv prefix i varje riktning
-Se toosamples i [routning configuration prover ](expressroute-config-samples-routing.md) sidan.
+### <a name="5-configure-bgp-to-advertise-selective-prefixes-in-each-direction"></a>5. Konfigurera BGP att annonsera selektiv prefix i varje riktning
+Referera till exempel i [routning configuration prover ](expressroute-config-samples-routing.md) sidan.
 
 ### <a name="6-create-policies"></a>6. Skapa principer
     routing-options {
@@ -316,5 +316,5 @@ Se toosamples i [routning configuration prover ](expressroute-config-samples-rou
     }
 
 ## <a name="next-steps"></a>Nästa steg
-Se hello [ExpressRoute vanliga frågor och svar](expressroute-faqs.md) för mer information.
+Se [Vanliga frågor och svar om ExpressRoute](expressroute-faqs.md) för mer information.
 

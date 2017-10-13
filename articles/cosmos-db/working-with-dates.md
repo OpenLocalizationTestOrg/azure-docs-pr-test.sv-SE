@@ -1,6 +1,6 @@
 ---
-title: aaaWorking med datum i Azure Cosmos DB | Microsoft Docs
-description: "Läs mer om hur toowork med datum i Azure Cosmos-databasen."
+title: Arbeta med datum i Azure Cosmos DB | Microsoft Docs
+description: "Läs mer om hur du arbetar med datum i Azure Cosmos DB."
 services: cosmos-db
 author: arramac
 manager: jhubbard
@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/25/2017
 ms.author: arramac
-ms.openlocfilehash: 27ec170e4bef72c0b5b456738f1275ef02543024
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: b6a77e33eea24000037ffb31d7aae3cb1d345ce9
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="working-with-dates-in-azure-cosmos-db"></a>Arbeta med datum i Azure Cosmos DB
-Azure Cosmos-DB ger schemaflexibilitet och omfattande indexering via ett ursprungligt [JSON](http://www.json.org) datamodellen. Alla Azure Cosmos DB resurser inklusive databaser, samlingar, dokument och lagrade procedurer modelleras och lagras som JSON-dokument. Som ett krav för att bärbara JSON (och Azure Cosmos DB) stöder bara en liten uppsättning grundläggande typer: sträng, Number, Boolean, matris, objekt och Null. JSON är flexibel och tillåta utvecklare och ramverk toorepresent mer komplexa typer med hjälp av dessa primitiver och skriva dem som objekt eller matriser. 
+Azure Cosmos-DB ger schemaflexibilitet och omfattande indexering via ett ursprungligt [JSON](http://www.json.org) datamodellen. Alla Azure Cosmos DB resurser inklusive databaser, samlingar, dokument och lagrade procedurer modelleras och lagras som JSON-dokument. Som ett krav för att bärbara JSON (och Azure Cosmos DB) stöder bara en liten uppsättning grundläggande typer: sträng, Number, Boolean, matris, objekt och Null. JSON är flexibel och kan utvecklare och ramverk att representera mer komplexa typer med hjälp av dessa primitiver och skriva dem som objekt eller matriser. 
 
-I tillägg toohello grundläggande typer många program behöver hello [DateTime](https://msdn.microsoft.com/library/system.datetime(v=vs.110).aspx) skriva toorepresent datum och tidsstämplar. Den här artikeln beskriver hur utvecklare kan lagra, hämta och fråga datum i Azure Cosmos-databasen med hello .NET SDK.
+Utöver de grundläggande typerna många program behöver den [DateTime](https://msdn.microsoft.com/library/system.datetime(v=vs.110).aspx) typ som representerar datum och tidsstämplar. Den här artikeln beskriver hur utvecklare kan lagra, hämta och fråga datum i Azure Cosmos-databasen med .NET SDK.
 
 ## <a name="storing-datetimes"></a>Lagra datum och tid
-Som standard hello [Azure Cosmos DB SDK](documentdb-sdk-dotnet.md) Serialiserar DateTime-värden som [ISO 8601](http://www.iso.org/iso/catalogue_detail?csnumber=40874) strängar. De flesta program kan använda hello standard strängrepresentation för datum/tid för hello följande orsaker:
+Som standard den [Azure Cosmos DB SDK](documentdb-sdk-dotnet.md) Serialiserar DateTime-värden som [ISO 8601](http://www.iso.org/iso/catalogue_detail?csnumber=40874) strängar. De flesta program kan använda standard strängrepresentation för datum/tid av följande skäl:
 
-* Strängar kan jämföras och hello relativa sorteringen av hello DateTime-värden bevaras när de är transformerad toostrings. 
+* Strängar kan jämföras och DateTime-värden relativa ordning bevaras när de omvandlas till strängar. 
 * Den här metoden kräver inte någon anpassad kod eller ett attribut för JSON-konvertering.
-* hello datum som lagras i JSON är mänsklig läsbar.
+* Datum som lagras i JSON är mänsklig läsbar.
 * Den här metoden kan dra nytta av Azure Cosmos DB index för snabb frågeprestanda.
 
-Till exempel hello följande fragment lagrar en `Order` objektegenskaper som innehåller två DateTime - `ShipDate` och `OrderDate` som ett dokument med hjälp av hello .NET SDK:
+Till exempel följande kodavsnitt lagrar en `Order` objektegenskaper som innehåller två DateTime - `ShipDate` och `OrderDate` som ett dokument med .NET SDK:
 
     public class Order
     {
@@ -63,31 +63,31 @@ Det här dokumentet lagras i Azure Cosmos DB på följande sätt:
     }
     
 
-Du kan också lagra datum och tid som Unix tidsstämplar som är som ett tal som representerar hello antal förflutna sekunder sedan den 1 januari 1970. Azure Cosmos DB interna tidsstämpel (`_ts`) egenskapen följer den här metoden. Du kan använda hello [UnixDateTimeConverter](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.unixdatetimeconverter.aspx) klassen tooserialize datum och tid som tal. 
+Du kan också lagra datum och tid som Unix tidsstämplar som är som ett tal som representerar antalet förflutna sekunder sedan den 1 januari 1970. Azure Cosmos DB interna tidsstämpel (`_ts`) egenskapen följer den här metoden. Du kan använda den [UnixDateTimeConverter](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.unixdatetimeconverter.aspx) klassen för att serialisera datum och tid som tal. 
 
 ## <a name="indexing-datetimes-for-range-queries"></a>Indexering datum och tid för intervallet frågor
-Intervallet frågor är vanliga med DateTime-värden. Om du behöver toofind alla order som skapats sedan igår eller söka efter alla order som levererats i hello senaste fem minuterna, måste till exempel tooperform intervallet frågor. tooexecute dessa frågor effektivt, måste du konfigurera din samling för intervallet indexering i strängar.
+Intervallet frågor är vanliga med DateTime-värden. Om du behöver hitta alla order som skapats sedan igår, eller söka efter alla order som levererats under de senaste fem minuterna, måste du utföra intervallet frågor. Om du vill köra dessa frågor effektivt måste du konfigurera din samling för intervallet indexering i strängar.
 
     DocumentCollection collection = new DocumentCollection { Id = "orders" };
     collection.IndexingPolicy = new IndexingPolicy(new RangeIndex(DataType.String) { Precision = -1 });
     await client.CreateDocumentCollectionAsync("/dbs/orderdb", collection);
 
-Du kan lära dig mer om hur tooconfigure indexering principer på [Azure Cosmos DB indexering principer](indexing-policies.md).
+Du kan lära dig mer om hur du konfigurerar indexering principer på [Azure Cosmos DB indexering principer](indexing-policies.md).
 
 ## <a name="querying-datetimes-in-linq"></a>Frågar datum och tid i LINQ
-hello .NET DocumentDB SDK har automatiskt stöd för hämtning av data som lagras i Azure Cosmos DB via LINQ. Hello visar följande utdrag exempelvis en LINQ-fråga som filter order som levererades i hello senaste tre dagarna.
+.NET DocumentDB SDK har automatiskt stöd för hämtning av data som lagras i Azure Cosmos DB via LINQ. Följande utdrag visar exempelvis en LINQ-fråga som filter order som levererades under de senaste tre dagarna.
 
     IQueryable<Order> orders = client.CreateDocumentQuery<Order>("/dbs/orderdb/colls/orders")
         .Where(o => o.ShipDate >= DateTime.UtcNow.AddDays(-3));
           
-    // Translated toohello following SQL statement and executed on Azure Cosmos DB
+    // Translated to the following SQL statement and executed on Azure Cosmos DB
     SELECT * FROM root WHERE (root["ShipDate"] >= "2016-12-18T21:55:03.45569Z")
 
-Du kan lära dig mer om Azure Cosmos DB SQL-frågan språk och hello LINQ-providern på [frågar Cosmos DB](documentdb-sql-query.md).
+Du kan lära dig mer om Azure Cosmos DB SQL-frågespråket och LINQ-providern på [frågar Cosmos DB](documentdb-sql-query.md).
 
-I den här artikeln vi har tittat på hur toostore, index- och frågar efter datum och tid i Azure Cosmos-databasen.
+I den här artikeln vi har tittat på hur du lagrar, index- och fråga datum och tid i Azure Cosmos-databasen.
 
 ## <a name="next-steps"></a>Nästa steg
-* Hämta och köra hello [kodexempel på GitHub](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples)
+* Hämta och kör den [kodexempel på GitHub](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples)
 * Lär dig mer om [DocumentDB API-fråga](documentdb-sql-query.md)
 * Lär dig mer om [Azure Cosmos DB indexering principer](indexing-policies.md)

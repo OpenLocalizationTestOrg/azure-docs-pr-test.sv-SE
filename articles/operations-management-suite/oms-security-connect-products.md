@@ -1,6 +1,6 @@
 ---
-title: "aaaConnecting din säkerhet produkter toohello Operations Management Suite (OMS) säkerhet och granska lösningen | Microsoft Docs"
-description: "Det här avsnittet får du tooconnect din säkerhet produkter tooOperations Management Suite säkerhets- och granska lösningen formatet händelse vanliga."
+title: "Ansluta säkerhetsprodukter till säkerhets- och granskningslösningen i Operations Management Suite (OMS) | Microsoft Docs"
+description: "Det här dokumentet beskriver hur du ansluter dina säkerhetsprodukter till säkerhets- och granskningslösningen i Operations Management Suite med hjälp av Common Event Format."
 services: operations-management-suite
 documentationcenter: na
 author: YuriDio
@@ -15,23 +15,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2017
 ms.author: yurid
-ms.openlocfilehash: 0f4b372d0379987c4e249628a3c8d52733be65c2
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 710a1fe0ce2b7a1841187cf75f4ffb090cc161e5
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="connecting-your-security-products-toohello-operations-management-suite-oms-security-and-audit-solution"></a>Ansluta din säkerhet produkter toohello Operations Management Suite (OMS) säkerhet och granska lösning 
-Det här dokumentet hjälper dig att ansluta din säkerhetsprodukter i hello OMS säkerhet och granska lösningen. följande källor hello stöds:
+# <a name="connecting-your-security-products-to-the-operations-management-suite-oms-security-and-audit-solution"></a>Ansluta säkerhetsprodukter till säkerhets- och granskningslösningen i Operations Management Suite (OMS) 
+Det här dokumentet beskriver hur du ansluter dina säkerhetsprodukter till säkerhets- och granskningslösningen i OMS. Följande källor stöds:
 
 - CEF-händelser (Common Event Format)
 - Cisco ASA-händelser
 
 
 ## <a name="what-is-cef"></a>Vad är CEF?
-Vanliga händelse (CEF) är en branschstandard för format ovanpå Syslog-meddelanden som används av många säkerhet leverantörer tooallow händelse samverkan mellan olika plattformar. OMS säkerhets- och gransknings-lösningen stöd för datapåfyllning med CEF, vilket gör att du tooconnect din säkerhetsprodukter OMS-säkerhet. 
+Common Event Format (CEF) är ett branschstandardformat ovanpå Syslog-meddelanden som används av många säkerhetsleverantörer för att händelser ska kunna samverka mellan olika plattformar. Säkerhets- och granskningslösningen i OMS stöder datainmatning med hjälp av CEF så att du kan ansluta dina säkerhetsprodukter till OMS-säkerhetslösningen. 
 
-Genom att ansluta dina datakälla tooOMS är kan tootake nytta av följande funktioner som ingår i den här plattformen hello:
+Genom att ansluta din datakälla till OMS kan du dra nytta av följande funktioner som ingår i den här plattformen:
 
 - Sökning och korrelation
 - Granskning
@@ -41,20 +41,20 @@ Genom att ansluta dina datakälla tooOMS är kan tootake nytta av följande funk
 
 ## <a name="collection-of-security-solution-logs"></a>Insamling av loggar för säkerhetslösningen
 
-OMS-säkerhetslösningen har stöd för insamling av loggar via CEF över Syslogs- och [Cisco ASA](https://blogs.technet.microsoft.com/msoms/2016/08/25/add-your-cisco-asa-logs-to-oms-security/)-loggar. I det här exemplet hello källan (dator som genererar hello loggar) är en Linux-dator som kör daemon för syslog-ng och hello målet är OMS-säkerhet. tooprepare hello Linux-dator måste tooperform hello följande uppgifter:
+OMS-säkerhetslösningen har stöd för insamling av loggar via CEF över Syslogs- och [Cisco ASA](https://blogs.technet.microsoft.com/msoms/2016/08/25/add-your-cisco-asa-logs-to-oms-security/)-loggar. I det här exemplet är källan (datorn som genererar loggarna) en Linux-dator som kör syslog-ng-daemon och målet är OMS-säkerhetslösningen. Du måste förbereda Linux-datorn genom att utföra följande uppgifter:
 
-- Hämta hello OMS-Agent för Linux version 1.2.0-25 eller senare.
-- Följ hello avsnittet **installera snabbguide** från [i den här artikeln](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#steps-to-install-the-oms-agent-for-linux) tooinstall och publicera hello agent tooyour arbetsyta.
+- Ladda ned OMS-agenten för Linux, version 1.2.0-25 eller senare.
+- Följ stegen i **snabbinstallationsguiden** från [den här artikeln](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#steps-to-install-the-oms-agent-for-linux) för att installera och publicera agenten på din arbetsyta.
 
-Normalt är hello-agenten installerad på en annan dator från hello på vilka hello loggar genereras. Vidarebefordran hello loggar toohello agentdator kräver vanligtvis hello följande steg:
+Normalt installeras agenten på en annan dator än den där loggarna genereras. När loggarna ska vidarebefordras till agentdatorn krävs vanligtvis följande steg:
 
-- Konfigurera hello loggning produkten/datorn tooforward hello nödvändiga händelser toohello daemon för syslog (rsyslog eller syslog-ng) på hello agentdator.
-- Aktivera hello syslog-daemon på agenten datorn tooreceive hälsningsmeddelande från ett fjärrsystem.
+- Konfigurera loggningsprodukten eller loggningsdatorn så att den vidarebefordrar nödvändiga händelser till syslog-daemon (rsyslog eller syslog-ng) på agentdatorn.
+- Aktivera syslog-daemon på agentdatorn så att meddelanden kan tas emot från ett fjärrsystem.
 
-På hello agentdator måste hello händelser skickas från hello syslog-daemon toolocal UDP-port 25226 toobe. hello agenten lyssnar efter inkommande händelser på denna port. hello följande är ett exempel på en konfiguration för att skicka alla händelser från hello lokalt system toohello agent (du kan ändra hello configuration toofit dina lokala inställningar):
+På agentdatorn måste händelserna skickas från syslog-daemon till den lokala UDP-porten 25226. Agenten lyssnar efter inkommande händelser på den här porten. Följande är ett exempel på en konfiguration som skickar alla händelser från det lokala systemet till agenten (du kan ändra konfigurationen så att den passar dina lokala inställningar):
 
-1. Öppna hello terminalfönster och gå toohello directory */etc/syslog-ng /* 
-2. Skapa en ny fil *security-config-omsagent.conf* och Lägg till följande innehåll hello: OMS_facility = local4
+1. Öppna terminalfönstret och gå till katalogen */etc/syslog-ng /* 
+2. Skapa en ny fil *security-config-omsagent.conf* och lägg till följande innehåll: OMS_facility = local4
     
     filter f_local4_oms { facility(local4); };
 
@@ -62,8 +62,8 @@ På hello agentdator måste hello händelser skickas från hello syslog-daemon t
 
     log { source(src); filter(f_local4_oms); destination(security_oms); };
     
-3. Hämta hello filen *security_events.conf* och placera i */etc/opt/microsoft/omsagent/conf/omsagent.d/* i hello OMS-Agent datorn.
-4. Skriv hello-kommandot nedan toorestart hello syslog-daemon: *för syslog-ng kör:*
+3. Hämta filen *security_events.conf* och placera den i */etc/opt/microsoft/omsagent/conf/omsagent.d/* på OMS-agentdatorn.
+4. Skriv kommandot nedan för att starta om daemon för syslog: *för syslog-ng kör:*
     
     ```
     sudo service rsyslog restart
@@ -74,7 +74,7 @@ På hello agentdator måste hello händelser skickas från hello syslog-daemon t
     ```
     /etc/init.d/syslog-ng restart
     ```
-5. Skriv hello-kommandot nedan toorestart hello OMS-Agent:
+5. Skriv kommandot nedan för att starta om OMS-agenten:
 
     *För syslog-ng kör du:*
     
@@ -87,7 +87,7 @@ På hello agentdator måste hello händelser skickas från hello syslog-daemon t
     ```
     systemctl restart omsagent
     ```
-6. Ange hello kommandot nedan och granska hello resultatet tooconfirm att det inte finns några fel i loggen för hello OMS-Agent:
+6. Skriv kommandot nedan och granska resultatet för att bekräfta att det inte finns några fel i OMS-agentloggen:
 
     ``` 
     tail /var/opt/microsoft/omsagent/log/omsagent.log
@@ -97,19 +97,19 @@ På hello agentdator måste hello händelser skickas från hello syslog-daemon t
 
 [!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
-När hello konfigurationen är klar, startar hello säkerhetshändelse toobe som inhämtas av OMS-säkerhet. toovisualize dessa händelser, öppna hello loggen Sök skriver hello kommando *typ = CommonSecurityLog* i hello sökfältet och tryck på RETUR. hello följande exempel visar hello resultatet av kommandot, Lägg märke till att i det här fallet OMS säkerhet redan inhämtas säkerhetsloggar från flera leverantörer:
+När konfigurationen är klar börjar säkerhetshändelsen att matas in av OMS-säkerhetslösningen. Du kan visualisera dessa händelser genom att öppna Loggsökning, skriva kommandot *Type=CommonSecurityLog* i sökfältet och trycka på Retur. Följande exempel visar resultatet av det här kommandot. Observera att i det här fallet har säkerhetsloggar från flera leverantörer redan matats in i OMS-säkerhetslösningen:
    
 ![Utvärdering av säkerhetsbaslinjen i säkerhets- och granskningslösningen i OMS](./media/oms-security-connect-products/oms-security-connect-products-fig1.png)
 
-Du kan förfina sökningen för en enda leverantör, till exempel toovisualize online Cisco loggar, typ: *typ = CommonSecurityLog DeviceVendor = Cisco*. Hej ”CommonSecurityLog” har fördefinierade fält för alla CEF-huvudet exempel hello grundläggande extensios, medan andra tillägg om den är ”tillägget för anpassat” eller inte, kommer att infogas i fältet ”AdditionalExtensions”. Du kan använda anpassade fält hello funktionen tooget särskilda fält från den. 
+Du kan förfina sökningen för en enskild leverantör, till exempel för att visualisera Cisco-onlineloggar, genom att skriva: *Type=CommonSecurityLog DeviceVendor=Cisco*. ”CommonSecurityLog” har fördefinierade fält för ett eventuellt CEF-huvud, inklusive de grundläggande tilläggen, medan andra tillägg, oavsett om det rör sig om ett ”anpassat tillägg” eller inte, infogas i fältet ”AdditionalExtensions”. Du kan använda funktionen för anpassade fält för att hämta dedikerade fält. 
 
 ### <a name="accessing-computers-missing-baseline-assessment"></a>Kontrollera datorer utan utvärdering av säkerhetsbaslinje
-OMS stöder hello domänprofilen medlem baslinje i Windows Server 2008 R2 upp tooWindows Server 2012 R2. Baslinjen för Windows Server 2016 är inte klar än och läggs till så fort den publiceras. Alla andra operativsystem som genomsöks via OMS säkerhet och granska baslinjen bedömning visas under hello **datorer som saknar baslinjen assessment** avsnitt.
+OMS stöder baslinjeprofilen för domänmedlemmar i Windows Server 2008 R2 upp till Windows Server 2012 R2. Baslinjen för Windows Server 2016 är inte klar än och läggs till så fort den publiceras. Alla andra operativsystem som genomsöks med Utvärdering av säkerhetsbaslinje i säkerhets- och granskningslösningen i OMS visas i avsnittet **Datorer utan utvärdering av säkerhetsbaslinje**.
 
 ## <a name="see-also"></a>Se även
-I det här dokumentet du lärt dig hur tooconnect tooOMS din CEF-lösning. toolearn mer om OMS-säkerhet finns hello följande artiklar:
+I det här dokumentet har du lärt dig hur du ansluter din CEF-lösning till OMS. Mer information om säkerheten i OMS finns i följande artiklar:
 
 * [Översikt över Operations Management Suite (OMS)](operations-management-suite-overview.md)
-* [Övervakning och svarar tooSecurity varningar i Operations Management Suite säkerhet och granska lösning](oms-security-responding-alerts.md)
+* [Övervaka och svara på säkerhetsaviseringar i säkerhets- och granskningslösningen i Operations Management Suite](oms-security-responding-alerts.md)
 * [Övervaka resurser i säkerhets- och granskningslösningen i Operations Management Suite](oms-security-monitoring-resources.md)
 

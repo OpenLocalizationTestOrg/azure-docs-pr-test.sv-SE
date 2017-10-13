@@ -1,6 +1,6 @@
 ---
-title: "aaaSet in Azure Key Vault för virtuella Linux-datorer | Microsoft Docs"
-description: "Hur hello tooset in Key Vault för användning med en virtuell dator i Azure Resource Manager med CLI 2.0."
+title: "Konfigurera Azure Key Vault för virtuella Linux-datorer | Microsoft Docs"
+description: "Hur du ställer in Key Vault för användning med en virtuell dator i Azure Resource Manager med CLI 2.0."
 services: virtual-machines-linux
 documentationcenter: 
 author: singhkays
@@ -15,34 +15,34 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 02/24/2017
 ms.author: singhkay
-ms.openlocfilehash: a5dc1fbe59a71b4456ba5b9bbacdb90440064757
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 2cc9b4c978e9a4deb0c8443c4b0f9e301a7cf492
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="how-tooset-up-key-vault-for-virtual-machines-with-hello-azure-cli-20"></a>Hur tooset in Key Vault för virtuella datorer med hello Azure CLI 2.0
+# <a name="how-to-set-up-key-vault-for-virtual-machines-with-the-azure-cli-20"></a>Hur du ställer in Key Vault för virtuella datorer med Azure CLI 2.0
 
-I hello Azure Resource Manager-stacken modelleras hemligheter/certifikat som resurser som tillhandahålls av Key Vault. toolearn mer om Azure Key Vault finns [vad är Azure Key Vault?](../../key-vault/key-vault-whatis.md) För Key Vault toobe används med Azure Resource Manager VMs hello *EnabledForDeployment* egenskapen i Nyckelvalvet måste anges tootrue. Den här artikeln lär du dig hur tooset in Key Vault för användning med virtuella Azure-datorer (VM) med hjälp av hello Azure CLI 2.0. Du kan också utföra dessa steg med hello [Azure CLI 1.0](key-vault-setup-cli-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+I Azure Resource Manager-stacken modelleras hemligheter/certifikat som resurser som tillhandahålls av Key Vault. Mer information om Azure Key Vault finns [vad är Azure Key Vault?](../../key-vault/key-vault-whatis.md) För Key Vault som ska användas med Azure Resource Manager VMs den *EnabledForDeployment* egenskapen i Nyckelvalvet måste anges till true. Den här artikeln visar hur du ställer in Key Vault för användning med virtuella Azure-datorer (VM) med hjälp av Azure CLI 2.0. Du kan också utföra dessa steg med [Azure CLI 1.0](key-vault-setup-cli-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-tooperform dessa steg, behöver du hello senaste [Azure CLI 2.0](/cli/azure/install-az-cli2) installerad och logga in tooan Azure-konto med [az inloggningen](/cli/azure/#login).
+Om du vill utföra dessa steg behöver du senast [Azure CLI 2.0](/cli/azure/install-az-cli2) installerad och inloggad till en Azure-konto med hjälp av [az inloggningen](/cli/azure/#login).
 
 ## <a name="create-a-key-vault"></a>Skapa en Key Vault-lösning
-Skapa en nyckelvalvet och tilldela hello princip för programdistribution med [az keyvault skapa](/cli/azure/keyvault#create). hello följande exempel skapas ett nyckelvalv med namnet `myKeyVault` i hello `myResourceGroup` resursgrupp:
+Skapa en nyckelvalvet och tilldela princip för programdistribution med [az keyvault skapa](/cli/azure/keyvault#create). I följande exempel skapas ett nyckelvalv med namnet `myKeyVault` i den `myResourceGroup` resursgrupp:
 
 ```azurecli
 az keyvault create -l westus -n myKeyVault -g myResourceGroup --enabled-for-deployment true
 ```
 
 ## <a name="update-a-key-vault-for-use-with-vms"></a>Uppdatera ett Nyckelvalv för användning med virtuella datorer
-Ange princip för hello-distribution på en befintlig nyckelvalv med [az keyvault uppdatering](/cli/azure/keyvault#update). hello följande uppdateringar hello nyckelvalv med namnet `myKeyVault` i hello `myResourceGroup` resursgrupp:
+Ange princip för programdistribution på en befintlig nyckel valvet med [az keyvault uppdatering](/cli/azure/keyvault#update). Följande uppdateringar nyckelvalvet med namnet `myKeyVault` i den `myResourceGroup` resursgrupp:
 
 ```azurecli
 az keyvault update -n myKeyVault -g myResourceGroup --set properties.enabledForDeployment=true
 ```
 
-## <a name="use-templates-tooset-up-key-vault"></a>Använda mallar tooset in Key Vault
-När du använder en mall måste tooset hello `enabledForDeployment` egenskapen för`true` för hello Key Vault-resursen på följande sätt:
+## <a name="use-templates-to-set-up-key-vault"></a>Använda mallar för att ställa in Key Vault
+När du använder en mall måste du ange den `enabledForDeployment` egenskapen `true` för nyckeln valvet resurs på följande sätt:
 
 ```json
 {

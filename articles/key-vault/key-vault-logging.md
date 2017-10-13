@@ -1,6 +1,6 @@
 ---
-title: aaaAzure Key Vault-loggning | Microsoft Docs
-description: "Använd den här självstudiekursen toohelp dig att komma igång med Azure Key Vault-loggning."
+title: Azure Key Vault-loggning | Microsoft Docs
+description: "Den här kursen hjälper dig att komma igång med Azure Key Vault-loggning."
 services: key-vault
 documentationcenter: 
 author: cabailey
@@ -14,88 +14,88 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 07/19/2017
 ms.author: cabailey
-ms.openlocfilehash: 38a173297948748bef45e3d857c06b50b3e21e74
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: e9a4f16f048833dab49f7db79892fe47a5aeff37
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault-loggning
-Azure Key Vault är tillgängligt i de flesta regioner. Mer information finns i hello [Key Vault-priser](https://azure.microsoft.com/pricing/details/key-vault/).
+Azure Key Vault är tillgängligt i de flesta regioner. Mer information finns på sidan med [Key Vault-priser](https://azure.microsoft.com/pricing/details/key-vault/).
 
 ## <a name="introduction"></a>Introduktion
-När du har skapat en eller flera nyckelvalv, vill du förmodligen toomonitor hur och när din nyckel valv är ofta, och av vem. Du kan göra det genom att aktivera loggning för nyckelvalvet, vilket sparar information i ett Azure-lagringskonto som du anger. En ny behållare med namnet **insights-logs-auditevent** skapas automatiskt för det angivna lagringskontot och du kan använda samma lagringskonto för att samla in loggar för flera nyckelvalv.
+När du har skapat ett eller flera nyckelvalv vill du förmodligen övervaka hur och när nyckelvalven används, och av vem. Du kan göra det genom att aktivera loggning för nyckelvalvet, vilket sparar information i ett Azure-lagringskonto som du anger. En ny behållare med namnet **insights-logs-auditevent** skapas automatiskt för det angivna lagringskontot och du kan använda samma lagringskonto för att samla in loggar för flera nyckelvalv.
 
-Du kan komma åt din loggningsinformation högst, 10 minuter efter hello nyckeln valvet igen. Oftast är informationen dock tillgänglig snabbare än så.  Är det upp tooyou toomanage loggarna på ditt lagringskonto:
+Loggningsinformationen är tillgänglig senast tio minuter efter att nyckelvalvsåtgärden ägde rum. Oftast är informationen dock tillgänglig snabbare än så.  Det är upp till dig att hantera loggarna i ditt lagringskonto:
 
-* Använd standard Azure access control metoder toosecure loggarna genom att begränsa vem som kan komma åt dem.
-* Ta bort loggar som du inte längre vill tookeep i ditt lagringskonto.
+* Använd standardåtkomstmetoder i Azure för att skydda loggarna genom att begränsa vem som kan komma åt dem.
+* Ta bort loggar som du inte vill behålla i ditt lagringskonto.
 
-Använd den här självstudiekursen toohelp dig att komma igång med Azure Key Vault-loggning, toocreate ditt lagringskonto, aktivera loggning och tolka hello logga information som samlas in.  
+Den här självstudiekursen hjälper dig att komma igång med Azure Key Vault-loggning och förklarar hur du skapar ett lagringskonto, aktiverar loggning och tolkar loggningsinformation som samlas in.  
 
 > [!NOTE]
-> Den här självstudiekursen innehåller inte instruktioner för hur toocreate nyckeln valv, nycklar och hemligheter. Den här informationen finns i [Komma igång med Azure Key Vault](key-vault-get-started.md). Anvisningar för plattformsoberoende kommandoradsgränssnitt finns i [den här självstudiekursen](key-vault-manage-with-cli2.md).
+> Självstudiekursen innehåller inte instruktioner för hur du skapar nyckelvalv, nycklar eller hemligheter. Den här informationen finns i [Komma igång med Azure Key Vault](key-vault-get-started.md). Anvisningar för plattformsoberoende kommandoradsgränssnitt finns i [den här självstudiekursen](key-vault-manage-with-cli2.md).
 >
-> För närvarande kan du konfigurera Azure Key Vault i hello Azure-portalen. I stället använder du dessa Azure PowerShell-instruktioner.
+> För närvarande kan du inte konfigurera Azure Key Vault på Azure-portalen. I stället använder du dessa Azure PowerShell-instruktioner.
 >
 >
 
 Översiktlig information om Azure Key Vault finns i [Vad är Azure Key Vault?](key-vault-whatis.md)
 
 ## <a name="prerequisites"></a>Krav
-toocomplete den här självstudien måste du ha hello följande:
+För att kunna slutföra den här självstudiekursen behöver du följande:
 
 * Ett befintligt nyckelvalv som du har använt.  
-* Azure PowerShell, **minst version 1.0.1**. tooinstall Azure PowerShell och koppla den till din Azure-prenumeration, se [hur tooinstall och konfigurera Azure PowerShell](/powershell/azure/overview). Om du redan har installerat Azure PowerShell och inte vet hello version från hello Azure PowerShell-konsolen, Skriv `(Get-Module azure -ListAvailable).Version`.  
+* Azure PowerShell, **minst version 1.0.1**. Om du vill installera och sedan koppla Azure PowerShell till din Azure-prenumeration läser du [Installera och konfigurera Azure PowerShell](/powershell/azure/overview). Om du redan har installerat Azure PowerShell och inte vet vilken version du har skriver du `(Get-Module azure -ListAvailable).Version` i Azure PowerShell-konsolen.  
 * Tillräckligt med utrymme i Azure för Key Vault-loggarna.
 
-## <a id="connect"></a>Ansluta tooyour prenumerationer
-Starta en Azure PowerShell-session och logga in tooyour Azure-konto med hello följande kommando:  
+## <a id="connect"></a>Ansluta till dina prenumerationer
+Starta en Azure PowerShell-session och logga in på ditt Azure-konto med följande kommando:  
 
     Login-AzureRmAccount
 
-Ange ditt användarnamn för Azure-konto och lösenord i hello popup-webbläsarfönstret. Azure PowerShell får alla hello-prenumerationer som är associerade med det här kontot och som standard, använder hello första.
+Ange användarnamnet och lösenordet för ditt Azure-konto i popup-fönstret i webbläsaren. Azure PowerShell identifierar alla prenumerationer som är associerade med det här kontot och använder den första som standard.
 
-Om du har flera prenumerationer du kanske toospecify en som har använt toocreate Azure Key Vault. Skriv hello följande toosee hello prenumerationer för ditt konto:
+Om du har flera prenumerationer kan du behöva ange en som användes för att skapa Azure Key Vault. Skriv följande för att visa prenumerationerna för ditt konto:
 
     Get-AzureRmSubscription
 
-Sedan toospecify hello prenumeration som är kopplad till nyckelvalvet du loggar, typ:
+Skriv sedan följande för att ange den prenumeration som är associerad med nyckelvalvet som du ska logga:
 
     Set-AzureRmContext -SubscriptionId <subscription ID>
 
 > [!NOTE]
-> Detta är ett viktigt steg och särskilt användbart om du har flera prenumerationer som är kopplade till ditt konto. Du kan få ett fel tooregister Microsoft.Insights om det här steget hoppas över.
+> Detta är ett viktigt steg och särskilt användbart om du har flera prenumerationer som är kopplade till ditt konto. Du kan få ett felmeddelande om att registrera Microsoft.Insights om du hoppar över det här steget.
 >   
 >
 
-Mer information om hur du konfigurerar Azure PowerShell finns [hur tooinstall och konfigurera Azure PowerShell](/powershell/azure/overview).
+Mer information om hur du konfigurerar Azure PowerShell finns  i [Installera och konfigurera Azure PowerShell](/powershell/azure/overview).
 
 ## <a id="storage"></a>Skapa ett nytt lagringskonto för dina loggar
-Men du kan använda ett befintligt lagringskonto för dina loggar, ska vi skapa ett nytt lagringskonto som är dedikerad tooKey valvet loggar. Av praktiska skäl för när vi har toospecify detta senare hello information ska lagras i en variabel med namnet **sa**.
+Även om du kan använda ett befintligt lagringskonto för dina loggar ska vi skapa ett nytt lagringskonto som ska användas specifikt för Key Vault-loggar. För att underlätta för oss när vi senare ska ange detta så lagrar vi informationen i en variabel med namnet **sa**.
 
-För ytterligare enkel hantering, vi också använder hello samma resursgrupp som hello en som innehåller våra nyckelvalvet. Från hello [komma igång-självstudiekurs](key-vault-get-started.md), den här resursgruppen heter **ContosoResourceGroup** och vi kommer att fortsätta toouse hello Östasien plats. Ersätt värdena med dina egna efter behov:
+För att underlätta ytterligare använder vi också samma resursgrupp som den som innehåller vårt nyckelvalv. I [Komma igång-självstudiekursen](key-vault-get-started.md) heter den här resursgruppen **ContosoResourceGroup** och vi kommer även att fortsätta att använda platsen East Asia (Östasien). Ersätt värdena med dina egna efter behov:
 
     $sa = New-AzureRmStorageAccount -ResourceGroupName ContosoResourceGroup -Name contosokeyvaultlogs -Type Standard_LRS -Location 'East Asia'
 
 
 > [!NOTE]
-> Om du väljer toouse ett befintligt lagringskonto, måste den använda hello samma prenumeration som ditt nyckelvalv och den måste använda hello Resource Manager-modellen i stället för hello klassiska distributionsmodellen.
+> Om du vill använda ett befintligt lagringskonto måste det använda samma prenumeration som ditt nyckelvalv samt använda Resource Manager-distributionsmodellen i stället för den klassiska distributionsmodellen.
 >
 >
 
-## <a id="identify"></a>Identifiera hello nyckelvalv för loggarna
-I vår komma igång-kursen var vår nyckelvalv namnet **ContosoKeyVault**, så vi kommer att fortsätta toouse som namn och lagra hello information till en variabel med namnet **kv**:
+## <a id="identify"></a>Identifiera nyckelvalvet för dina loggar
+I Komma igång-självstudien heter nyckelvalvet **ContosoKeyVault** och vi fortsätter att använda det namnet och lagrar informationen i en variabel med namnet **kv**:
 
     $kv = Get-AzureRmKeyVault -VaultName 'ContosoKeyVault'
 
 
 ## <a id="enable"></a>Aktivera loggning
-tooenable loggning för Key Vault vi använder hello Set-AzureRmDiagnosticSetting cmdlet, tillsammans med hello variabler som vi skapade för vår nya storage-konto och våra nyckelvalvet. Vi ska också ange hello **-aktiverad** flaggan för**$true** och ange hello kategori tooAuditEvent (hello endast kategori för Key Vault-loggning):
+För att aktivera loggning för nyckelvalvet ska vi använda cmdleten Set-AzureRmDiagnosticSetting tillsammans med variabeln som vi skapade för vårt nya lagringskonto och vårt nyckelvalv. Vi kan också ange flaggan **-Enabled** till **$true** och ange kategorin till AuditEvent (den enda kategorin för Nyckelvalvloggning):
 
     Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories AuditEvent
 
-hello utdata för detta omfattar:
+Följande utdata returneras för detta:
 
     StorageAccountId   : /subscriptions/<subscription-GUID>/resourceGroups/ContosoResourceGroup/providers/Microsoft.Storage/storageAccounts/ContosoKeyVaultLogs
     ServiceBusRuleId   :
@@ -108,30 +108,30 @@ hello utdata för detta omfattar:
         Days    : 0
 
 
-Det här bekräftar att loggning har nu aktiverats för nyckelvalvet, spara information tooyour storage-konto.
+Detta bekräftar att loggning är aktiverat för nyckelvalvet och att information sparas i ditt lagringskonto.
 
-Du kan också ange bevarandeprincip för loggar så att äldre loggar tas bort automatiskt. Till exempel kvarhållning princip genom att använda **- RetentionEnabled** flaggan för**$true** och ange **- RetentionInDays** parameter för**90** så att loggar som är äldre än 90 dagar tas automatiskt bort.
+Du kan också ange bevarandeprincip för loggar så att äldre loggar tas bort automatiskt. Ange till exempel bevarandeprincip genom att ange flaggan **- RetentionEnabled** till **$true** och ange parametern **- RetentionInDays** till **90** så att de loggar som är äldre än 90 dagar tas bort automatiskt.
 
     Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories AuditEvent -RetentionEnabled $true -RetentionInDays 90
 
 Vad loggas:
 
 * Alla autentiserade REST-API-förfrågningar loggas, vilket omfattar förfrågningar som misslyckats på grund av åtkomstbehörigheter, systemfel eller ogiltiga förfrågningar.
-* Åtgärder på hello nyckeln valvet sig själv, vilket inkluderar skapande, borttagning, inställningen nyckelvalv åtkomstprinciper, och uppdaterar nyckelvalv attribut som etiketter.
-* Åtgärder för nycklar och hemligheter i hello nyckelvalvet, vilket innefattar att skapa, ändra eller ta bort dessa nycklar och hemligheter; åtgärder som till exempel signera, verifiera, kryptera, dekryptera, omsluter och unwrap nycklar, hämta hemligheter, lista över nycklar och hemligheter och deras versioner.
+* Åtgärder i själva nyckelvalvet, t.ex. att skapa, ta bort eller konfigurera åtkomstprinciper för nyckelvalvet eller att uppdatera attribut för nyckelvalvet, t.ex. taggar.
+* Åtgärder med nycklar och hemligheter i nyckelvalvet, t.ex. att skapa, ändra eller ta bort nycklar eller hemligheter; åtgärder som att signera, verifiera, kryptera, dekryptera, omsluta eller ta bort en nyckelomslutning, hämta hemligheter, visa nycklar och hemligheter samt deras versioner.
 * Oautentiserade förfrågningar som resulterar i ett 401-svar. Till exempel förfrågningar som inte har någon ägartoken, som är felaktiga, som har upphört att gälla eller som har en ogiltig token.  
 
 ## <a id="access"></a>Komma åt loggarna
-Nyckelvalv loggfilerna lagras i hello **insights-loggar-auditevent** behållare i hello storage-konto som du angav. toolist skriver du alla hello blobbar i den här behållaren:
+Loggarna för nyckelvalvet lagras i behållaren **insights-logs-auditevent** i det lagringskonto som du angav. Om du vill visa alla blobbar i den här behållaren skriver du:
 
-Skapa först en variabel för hello behållarnamn. Detta kommer att användas i hela hello resten av hello genomgång.
+Börja med att skapa en variabel för behållarens namn. Detta kommer att användas i resten av genomgången.
 
     $container = 'insights-logs-auditevent'
 
-toolist skriver du alla hello blobbar i den här behållaren:
+Om du vill visa alla blobbar i den här behållaren skriver du:
 
     Get-AzureStorageBlob -Container $container -Context $sa.Context
-hello-utdata kommer att se något liknande toothis:
+Följande utdata returneras för detta:
 
 **Behållarens URI: https://contosokeyvaultlogs.blob.core.windows.net/insights-logs-auditevent**
 
@@ -144,13 +144,13 @@ hello-utdata kommer att se något liknande toothis:
 
 **resourceId=/SUBSCRIPTIONS/361DA5D4-A47A-4C79-AFDD-XXXXXXXXXXXX/RESOURCEGROUPS/CONTOSORESOURCEGROUP/PROVIDERS/MICROSOFT.KEYVAULT/VAULTS/CONTOSOKEYVAULT/y=2016/m=01/d=04/h=18/m=00/PT1H.json****
 
-Som du ser i den här utdatan hello blobbar följa en namngivningskonvention: **resourceId =<ARM resource ID>/y =<year>/m =<month>/d =<day of month>/tim =<hour>/m =<minute>/filename.json**
+Som du ser i dessa utdata följer blobbarna en namngivningskonvention: **resourceId=<ARM resource ID>/y=<year>/m=<month>/d=<day of month>/h=<hour>/m=<minute>/filnamn.json**
 
-hello datum- och tidsvärden Använd UTC.
+Datum- och tidsvärdena använder UTC.
 
-Eftersom hello samma lagringskonto kan vara används toocollect loggar för olika resurser, är hello fullständiga resurs-ID i hello blob-namnet mycket användbar tooaccess eller hämta bara hello blob som du behöver. Men innan vi gör det kan vi först tar upp hur toodownload alla hello blobbar.
+Eftersom samma lagringskonto kan användas för att samla in loggar för flera resurser är det fullständiga resurs-ID:t i blobbnamnet mycket användbart för att komma åt eller hämta endast de blobbar som du behöver. Men innan vi gör det ska vi titta på hur du hämtar alla blobbar.
 
-Först skapa en mapp toodownload hello blobbar. Exempel:
+Börja med att skapa en mapp som du vill ladda ned blobbarna till. Till exempel:
 
     New-Item -Path 'C:\Users\username\ContosoKeyVaultLogs' -ItemType Directory -Force
 
@@ -158,28 +158,28 @@ Hämta sedan en lista över alla blobbar:
 
     $blobs = Get-AzureStorageBlob -Container $container -Context $sa.Context
 
-Skicka den här listan via 'Get-AzureStorageBlobContent' toodownload hello blobbar i vår målmappen:
+Skicka den här listan via ”Get-AzureStorageBlobContent” för att ladda ned blobbarna till målmappen:
 
     $blobs | Get-AzureStorageBlobContent -Destination 'C:\Users\username\ContosoKeyVaultLogs'
 
-När du kör andra kommandot hello  **/**  avgränsare i hello blobbnamnen skapa en fullständig mappstruktur under hello målmappen och den här strukturen kommer att använda toodownload och lagra hello blob som filer.
+När du kör det här andra kommandot skapar **/**-avgränsaren i blobbnamnen en fullständig mappstruktur under målmappen. Den här strukturen används för att hämta och spara blobbarna som filer.
 
-tooselectively ladda ned blobbar kan använda jokertecken. Exempel:
+Om du vill ladda ned blobbarna selektivt använder du jokertecken. Till exempel:
 
-* Om du har flera viktiga valv och vill toodownload loggar för ett enda nyckelvalv med namnet CONTOSOKEYVAULT3:
+* Om du har flera nyckelvalv och bara vill hämta loggar för ett av dem, mer specifikt nyckelvalvet CONTOSOKEYVAULT3:
 
         Get-AzureStorageBlob -Container $container -Context $sa.Context -Blob '*/VAULTS/CONTOSOKEYVAULT3
-* Om du har flera resursgrupper och vill toodownload loggar för en resursgrupp, använda `-Blob '*/RESOURCEGROUPS/<resource group name>/*'`:
+* Om du har flera resursgrupper och bara vill hämta loggar för en av dem använder du `-Blob '*/RESOURCEGROUPS/<resource group name>/*'`:
 
         Get-AzureStorageBlob -Container $container -Context $sa.Context -Blob '*/RESOURCEGROUPS/CONTOSORESOURCEGROUP3/*'
-* Om du vill toodownload alla hello loggar för hello månad januari 2016 använder `-Blob '*/year=2016/m=01/*'`:
+* Om du vill hämta alla loggar för januari 2016 använder du `-Blob '*/year=2016/m=01/*'`:
 
         Get-AzureStorageBlob -Container $container -Context $sa.Context -Blob '*/year=2016/m=01/*'
 
-Du är nu redo toostart tittar på vad som finns i hello loggar. Men innan du flyttar till två fler parametrar för att du kan behöva tooknow Get-AzureRmDiagnosticSetting som:
+Nu är det dags att börja titta på vad som finns i loggarna. Men innan vi går vidare till det ska vi nämna ytterligare två parametrar för Get-AzureRmDiagnosticSetting som det kan vara bra att känna till:
 
-* tooquery hello status för diagnostikinställningar för nyckelvalvet-resurs:`Get-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId`
-* toodisable loggning för nyckelvalvet-resurs:`Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $false -Categories AuditEvent`
+* Om du vill fråga efter statusen för nyckelvalvsresursens diagnostikinställningar: `Get-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId`
+* Om du vill inaktivera loggning för nyckelvalvsresursen: `Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $false -Categories AuditEvent`
 
 ## <a id="interpret"></a>Tolka Key Vault-loggarna
 Enskilda blobbar lagras som text, formaterad som en JSON-blobb. Det här är ett exempel på en loggpost från `Get-AzureRmKeyVault -VaultName 'contosokeyvault'`:
@@ -206,31 +206,31 @@ Enskilda blobbar lagras som text, formaterad som en JSON-blobb. Det här är ett
     }
 
 
-hello följande tabell visas hello fältnamn och beskrivningar.
+Följande tabell innehåller fältnamnen och beskrivningarna.
 
 | Fältnamn | Beskrivning |
 | --- | --- |
 | time |Datum och tid (UTC). |
-| resourceId |Azure Resource Manager Resource-ID. För Key Vault loggar är alltid hello Key Vault resurs-ID. |
-| operationName |Namnet på hello åtgärd utförs, enligt beskrivningen i hello nästa tabell. |
-| operationVersion |Detta är hello REST API-version som begärs av hello-klient. |
-| category |För Key Vault loggar är AuditEvent hello enda, tillgänglig värde. |
+| resourceId |Azure Resource Manager Resource-ID. För Key Vault-loggar är detta alltid nyckelvalvets resurs-ID. |
+| operationName |Namnet på åtgärden, som beskrivs i nästa tabell. |
+| operationVersion |Det här är REST-API-versionen som begärs av klienten. |
+| category |För Key Vault-loggar är AuditEvent det enda, tillgängliga värdet. |
 | resultType |Resultatet av REST-API-begäran. |
 | resultSignature |HTTP-status. |
-| resultDescription |Ytterligare beskrivning om hello resultat när det är tillgängligt. |
-| durationMs |Tiden det tog tooservice hello REST-API-begäran, i millisekunder. Detta inkluderar inte hello Nätverksfördröjningen, så hello tid du mäta på klientsidan för hello inte kanske stämmer med den här gången. |
-| callerIpAddress |Hello-klienten som gjorde begäran hello IP-adress. |
-| correlationId |Ett valfritt GUID som hello klienten kan skicka toocorrelate klientsidan loggar med loggar av tjänsten på klientsidan (Key Vault). |
-| identity |Identitet från hello-token som angavs när du gör hello REST API-begäran. Detta är vanligtvis en ”användare”, ”tjänstens huvudnamn” eller en kombination av ”användare+app-ID”, till exempel då en begäran är resultatet av en Azure PowerShell-cmdlet. |
-| properties |Det här fältet innehåller olika typer av information baserat på hello åtgärden (operationName). I de flesta fall innehåller information om klienter (hello useragent sträng skickades av klientens hello), hello exakt URI för REST API-begäran och HTTP-statuskod. Dessutom, när ett objekt returneras ett resultat av en begäran (till exempel KeyCreate eller VaultGet) innehåller den också hello nyckeln URI (som ”id”), valvet URI eller hemlighet URI. |
+| resultDescription |En ytterligare beskrivning av resultatet, om en sådan är tillgänglig. |
+| durationMs |Hur lång tid i millisekunder som det tog att utföra REST-API-begäran. Detta omfattar inte nätverksfördröjningen, så den tid du mäter på klientsidan kanske inte stämmer med den här tiden. |
+| callerIpAddress |IP-adressen för klienten som gjorde begäran. |
+| correlationId |Ett valfritt GUID som klienten kan skicka för att korrelera loggar på klientsidan med loggar på tjänstsidan (Key Vault). |
+| identity |Identiteten från den token som angavs när REST-API-begäran gjordes. Detta är vanligtvis en ”användare”, ”tjänstens huvudnamn” eller en kombination av ”användare+app-ID”, till exempel då en begäran är resultatet av en Azure PowerShell-cmdlet. |
+| properties |Vilken information som visas i det här fältet beror på åtgärden (operationName). I de flesta fall innehåller det klientinformation (useragent-strängen som skickas av klienten), REST-API-begärans exakta URI och HTTP-statuskoden. När ett objekt returneras som ett resultat av en begäran (till exempel KeyCreate eller VaultGet) innehåller det även nyckelns URI (som ”id”), valvets URI eller hemlighetens URI. |
 
-Hej **operationName** fältvärden har ObjectVerb format. Exempel:
+**operationName**-fältvärdena har ObjectVerb-format. Till exempel:
 
-* Alla åtgärder i nyckelvalvet har hello ' valvet`<action>`-formatet som `VaultGet` och `VaultCreate`.
-* Alla åtgärder som nyckel har hello ' nyckel`<action>`-formatet som `KeySign` och `KeyList`.
-* Alla hemliga åtgärder har hello ' hemlighet`<action>`-formatet som `SecretGet` och `SecretListVersions`.
+* Alla åtgärder med ett nyckelvalv har formatet ”Vault`<action>`”, till exempel `VaultGet` och `VaultCreate`.
+* Alla åtgärder med nycklar har formatet ”Key`<action>`”, till exempel `KeySign` och `KeyList`.
+* Alla åtgärder med hemligheter har formatet ”secret`<action>`”, till exempel `SecretGet` och `SecretListVersions`.
 
-hello i den följande tabellen listas hello operationName och motsvarande REST API-kommandot.
+Följande tabell innehåller operationName och motsvarande REST-API-kommando.
 
 | operationName | REST-API-kommando |
 | --- | --- |
@@ -253,8 +253,8 @@ hello i den följande tabellen listas hello operationName och motsvarande REST A
 | KeyEncrypt |[Kryptera med en nyckel](https://msdn.microsoft.com/en-us/library/azure/dn878060.aspx) |
 | KeyDecrypt |[Dekryptera med en nyckel](https://msdn.microsoft.com/en-us/library/azure/dn878097.aspx) |
 | KeyUpdate |[Uppdatera en nyckel](https://msdn.microsoft.com/en-us/library/azure/dn903616.aspx) |
-| KeyList |[Lista hello nycklar i ett valv](https://msdn.microsoft.com/en-us/library/azure/dn903629.aspx) |
-| KeyListVersions |[Lista hello versioner av en nyckel](https://msdn.microsoft.com/en-us/library/azure/dn986822.aspx) |
+| KeyList |[Visa en lista med nycklarna i ett valv](https://msdn.microsoft.com/en-us/library/azure/dn903629.aspx) |
+| KeyListVersions |[Visa en lista över versionerna av en nyckel](https://msdn.microsoft.com/en-us/library/azure/dn986822.aspx) |
 | SecretSet |[Skapa en hemlighet](https://msdn.microsoft.com/en-us/library/azure/dn903618.aspx) |
 | SecretGet |[Hämta en hemlighet](https://msdn.microsoft.com/en-us/library/azure/dn903633.aspx) |
 | SecretUpdate |[Uppdatera en hemlighet](https://msdn.microsoft.com/en-us/library/azure/dn986818.aspx) |
@@ -264,13 +264,13 @@ hello i den följande tabellen listas hello operationName och motsvarande REST A
 
 ## <a id="loganalytics"></a>Använda Log Analytics
 
-Du kan använda hello Azure Key Vault-lösning i logganalys tooreview Azure Key Vault AuditEvent loggar. Mer information, inklusive hur tooset detta, se [Azure Key Vault-lösning i logganalys](../log-analytics/log-analytics-azure-key-vault.md). Den här artikeln innehåller också instruktioner om du behöver toomigrate från hello gamla Key Vault-lösning som erbjöds hello logganalys förhandsversionen, där du först dirigeras din loggar tooan Azure Storage-konto och konfigurerat Log Analytics tooread därifrån.
+Du kan använda Azure Key Vault-lösningen i Log Analytics för att läsa igenom AuditEvent-loggarna i Azure Key Vault. Mer information och information om hur du konfigurerar detta finns i [Azure Key Vault i Log Analytics](../log-analytics/log-analytics-azure-key-vault.md). I artikeln hittar du dessutom anvisningar ifall du behöver migrera från den gamla Key Vault-lösningen som fanns i förhandsversionen av Log Analytics. Där började du med att dirigera loggarna till ett Azure Storage-konto och konfigurerade Log Analytics till att läsa därifrån.
 
 ## <a id="next"></a>Nästa steg
 En självstudiekurs där Azure Key Vault används i en webbapp finns i [Använda Azure Key Vault från en webbapp](key-vault-use-from-web-application.md).
 
-Programmering referenser finns [hello Azure Key Vault Utvecklarhandbok](key-vault-developers-guide.md).
+Programmeringsreferenser finns i [utvecklarguiden för Azure Key Vault](key-vault-developers-guide.md).
 
 En lista med Azure PowerShell 1.0-cmdlets för Azure Key Vault finns i [Cmdlets för Azure Key Vault](/powershell/module/azurerm.keyvault/#key_vault).
 
-En självstudiekurs om viktiga rotation och logg granskning med Azure Key Vault finns [hur toosetup Key Vault med end tooend nyckeln rotation och granskning](key-vault-key-rotation-log-monitoring.md).
+Självstudierna om nyckelrotering och logggranskning med Azure Key Vault finns i [Ställa in Key Vault med heltäckande nyckelrotering och granskning](key-vault-key-rotation-log-monitoring.md).

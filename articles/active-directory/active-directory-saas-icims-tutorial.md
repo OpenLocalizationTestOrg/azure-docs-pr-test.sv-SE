@@ -1,6 +1,6 @@
 ---
 title: "Självstudier: Azure Active Directory-integrering med ICIMS | Microsoft Docs"
-description: "Lär dig hur tooconfigure enkel inloggning mellan Azure Active Directory och ICIMS."
+description: "Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och ICIMS."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,184 +14,184 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.openlocfilehash: 3fa970f008e64e84b0a1280f691f0181851b757c
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 26a6b41a0e59924d007855ca548f22ed00bd7e23
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-icims"></a>Självstudier: Azure Active Directory-integrering med ICIMS
 
-I kursen får du lära dig hur toointegrate ICIMS med Azure Active Directory (AD Azure).
+I kursen får lära du att integrera ICIMS med Azure Active Directory (AD Azure).
 
-Integrera ICIMS med Azure AD ger dig hello följande fördelar:
+Integrera ICIMS med Azure AD ger dig följande fördelar:
 
-- Du kan styra i Azure AD som har åtkomst till tooICIMS
-- Du kan aktivera din användare tooautomatically get inloggade tooICIMS (Single Sign-On) med sina Azure AD-konton
-- Du kan hantera dina konton i en central plats - hello Azure-portalen
+- Du kan styra i Azure AD som har åtkomst till ICIMS
+- Du kan aktivera användarna att automatiskt hämta loggat in på ICIMS (Single Sign-On) med sina Azure AD-konton
+- Du kan hantera dina konton i en central plats - Azure-portalen
 
-Om du vill tooknow mer information om integrering av SaaS-app med Azure AD, se [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Om du vill veta mer information om integrering av SaaS-app med Azure AD finns [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Krav
 
-tooconfigure Azure AD-integrering med ICIMS, behöver du hello följande objekt:
+För att konfigurera Azure AD-integrering med ICIMS, behöver du följande:
 
 - En Azure AD-prenumeration
 - En ICIMS enkel inloggning aktiverad prenumeration
 
 > [!NOTE]
-> tootest hello stegen i den här självstudiekursen, rekommenderas inte med hjälp av en produktionsmiljö.
+> Om du vill testa stegen i den här kursen rekommenderar vi inte med hjälp av en produktionsmiljö.
 
-tootest hello steg i den här självstudiekursen, bör du följa dessa rekommendationer:
+Om du vill testa stegen i den här självstudiekursen, bör du följa dessa rekommendationer:
 
 - Använd inte i produktionsmiljön, om det är nödvändigt.
 - Om du inte har en utvärderingsversion Azure AD-miljö kan du [hämta en utvärderingsversion för en månad](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Scenariobeskrivning
-I kursen får testa du Azure AD enkel inloggning i en testmiljö. hello-scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
+I kursen får testa du Azure AD enkel inloggning i en testmiljö. Det scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
 
-1. Att lägga till ICIMS från hello-galleriet
+1. Att lägga till ICIMS från galleriet
 2. Konfigurera och testa Azure AD enkel inloggning
 
-## <a name="adding-icims-from-hello-gallery"></a>Att lägga till ICIMS från hello-galleriet
-tooconfigure hello integrering av ICIMS i Azure AD, behöver du tooadd ICIMS hello galleriet tooyour listan över hanterade SaaS-appar.
+## <a name="adding-icims-from-the-gallery"></a>Att lägga till ICIMS från galleriet
+Du måste lägga till ICIMS från galleriet i listan över hanterade SaaS-appar för att konfigurera integrering av ICIMS i Azure AD.
 
-**tooadd ICIMS från galleriet hello utför hello följande steg:**
+**Utför följande steg för att lägga till ICIMS från galleriet:**
 
-1. I hello  **[Azure-portalen](https://portal.azure.com)**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon. 
+1. I den  **[Azure-portalen](https://portal.azure.com)**, klicka på den vänstra navigeringspanelen **Azure Active Directory** ikon. 
 
-    ![hello Azure Active Directory-knappen][1]
+    ![Azure Active Directory-knappen][1]
 
-2. Navigera för**företagsprogram**. Gå sedan för**alla program**.
+2. Gå till **företagsprogram**. Gå till **alla program**.
 
-    ![hello Enterprise program bladet][2]
+    ![Bladet Enterprise program][2]
     
-3. tooadd nya program, klickar du på **nytt program** hello längst upp i dialogrutan.
+3. Om du vill lägga till nya programmet, klickar du på **nytt program** knappen överst i dialogrutan.
 
-    ![hello-knappen för nytt program][3]
+    ![Knappen Nytt program][3]
 
-4. Skriv i sökrutan hello **ICIMS**väljer **ICIMS** resultatet-panelen klickar **Lägg till** knappen tooadd hello program.
+4. I sökrutan skriver **ICIMS**väljer **ICIMS** resultatet-panelen klickar **Lägg till** för att lägga till programmet.
 
-    ![ICIMS i hello resultatlistan](./media/active-directory-saas-icims-tutorial/tutorial_icims_addfromgallery.png)
+    ![ICIMS i resultatlistan](./media/active-directory-saas-icims-tutorial/tutorial_icims_addfromgallery.png)
 
 ##  <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa Azure AD enkel inloggning
 I det här avsnittet kan du konfigurera och testa Azure AD enkel inloggning med ICIMS baserat på en testanvändare som kallas ”Britta Simon”.
 
-För enkel inloggning toowork måste Azure AD tooknow vilka hello motsvarighet användaren i ICIMS är tooa i Azure AD. Med andra ord måste en länk mellan en Azure AD-användare och hello relaterade användare i ICIMS toobe upprättas.
+Azure AD måste du känna till användaren i ICIMS motsvarighet till en användare i Azure AD för enkel inloggning ska fungera. Med andra ord måste en länk förhållandet mellan en Azure AD-användare och relaterade användaren i ICIMS upprättas.
 
-I ICIMS, tilldela hello värdet för hello **användarnamn** i Azure AD som hello värde för hello **användarnamn** tooestablish hello länken relationen.
+I ICIMS, tilldela värdet för den **användarnamn** i Azure AD som värde för den **användarnamn** etablera länken relationen.
 
-tooconfigure och testa Azure AD enkel inloggning med ICIMS, behöver du toocomplete hello följande byggblock:
+Om du vill konfigurera och testa Azure AD enkel inloggning med ICIMS, måste du utföra följande byggblock:
 
-1. **[Konfigurera Azure AD enkel inloggning](#configure-azure-ad-single-sign-on)**  -tooenable användare-toouse den här funktionen.
-2. **[Skapa en Azure AD-testanvändare](#create-an-azure-ad-test-user)**  -tootest Azure AD enkel inloggning med Britta Simon.
-3. **[Skapa en testanvändare ICIMS](#create-an-icims-test-user)**  -toohave en motsvarighet för Britta Simon i ICIMS som är länkade toohello Azure AD-representation av användaren.
-4. **[Tilldela hello Azure AD-testanvändare](#assign-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD enkel inloggning.
-5. **[Testa enkel inloggning](#test-single-sign-on)**  -tooverify hello om konfigurationen fungerar.
+1. **[Konfigurera Azure AD enkel inloggning](#configure-azure-ad-single-sign-on)**  - om du vill att användarna kan använda den här funktionen.
+2. **[Skapa en Azure AD-testanvändare](#create-an-azure-ad-test-user)**  - om du vill testa Azure AD enkel inloggning med Britta Simon.
+3. **[Skapa en testanvändare ICIMS](#create-an-icims-test-user)**  – du har en motsvarighet för Britta Simon i ICIMS som är kopplad till Azure AD-representation av användaren.
+4. **[Tilldela Azure AD-testanvändare](#assign-the-azure-ad-test-user)**  - om du vill aktivera Britta Simon att använda Azure AD enkel inloggning.
+5. **[Testa enkel inloggning](#test-single-sign-on)**  - om du vill kontrollera om konfigurationen fungerar.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurera Azure AD enkel inloggning
 
-I det här avsnittet Aktivera Azure AD enkel inloggning i hello Azure-portalen och konfigurera enkel inloggning i ditt ICIMS program.
+I det här avsnittet Aktivera Azure AD enkel inloggning i Azure-portalen och konfigurera enkel inloggning i ditt ICIMS program.
 
-**Utför följande steg hello tooconfigure Azure AD enkel inloggning med ICIMS:**
+**Utför följande steg för att konfigurera Azure AD enkel inloggning med ICIMS:**
 
-1. I hello Azure-portalen på hello **ICIMS** integreringssidan för programmet, klickar du på **enkel inloggning**.
+1. I Azure-portalen på den **ICIMS** integreringssidan för programmet, klickar du på **enkel inloggning**.
 
     ![Konfigurera enkel inloggning][4]
 
-2. På hello **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** tooenable enkel inloggning.
+2. På den **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** att aktivera enkel inloggning.
  
     ![Enkel inloggning dialogrutan](./media/active-directory-saas-icims-tutorial/tutorial_icims_samlbase.png)
 
-3. På hello **ICIMS domän och URL: er** avsnittet, utföra hello följande steg:
+3. På den **ICIMS domän och URL: er** avsnittet, utför följande steg:
 
     ![URL: er och ICIMS domän med enkel inloggning information](./media/active-directory-saas-icims-tutorial/tutorial_icims_url.png)
 
-    a. I hello **inloggnings-URL** textruta, ange ett URL-Adressen med hello följer mönstret:`https://<tenant name>.icims.com`
+    a. I den **inloggnings-URL** textruta Skriv en URL med följande mönster:`https://<tenant name>.icims.com`
 
-    b. I hello **identifierare** textruta, ange ett URL-Adressen med hello följer mönstret:`https://<tenant name>.icims.com`
+    b. I den **identifierare** textruta Skriv en URL med följande mönster:`https://<tenant name>.icims.com`
 
     > [!NOTE] 
-    > Dessa värden är inte verkliga. Uppdatera dessa värden med hello faktiska inloggnings-URL och identifierare. Kontakta [ICIMS klienten supportteamet](https://www.icims.com/contact-us) tooget dessa värden. 
+    > Dessa värden är inte verkliga. Uppdatera dessa värden med den faktiska inloggnings-URL och identifierare. Kontakta [ICIMS klienten supportteamet](https://www.icims.com/contact-us) att hämta dessa värden. 
  
-4. På hello **SAML-signeringscertifikat** klickar du på **XML-Metadata för** och spara sedan hello metadata på datorn.
+4. På den **SAML-signeringscertifikat** klickar du på **XML-Metadata för** och spara sedan metadatafilen på datorn.
 
-    ![länk för hämtning av hello-certifikat](./media/active-directory-saas-icims-tutorial/tutorial_icims_certificate.png) 
+    ![Länken hämta certifikatet](./media/active-directory-saas-icims-tutorial/tutorial_icims_certificate.png) 
 
 5. Klicka på **spara** knappen.
 
     ![Konfigurera enkel inloggning spara](./media/active-directory-saas-icims-tutorial/tutorial_general_400.png)
 
-6. På hello **ICIMS Configuration** klickar du på **konfigurera ICIMS** tooopen **konfigurera inloggning** fönster. Kopiera hello **Sign-Out URL, SAML enhets-ID och SAML enkel inloggning Tjänstwebbadress** från hello **Snabbreferens avsnitt.**
+6. På den **ICIMS Configuration** klickar du på **konfigurera ICIMS** att öppna **konfigurera inloggning** fönster. Kopiera den **Sign-Out URL, SAML enhets-ID och SAML enkel inloggning Tjänstwebbadress** från den **Snabbreferens avsnitt.**
 
     ![ICIMS konfiguration](./media/active-directory-saas-icims-tutorial/tutorial_icims_configure.png) 
 
-7. tooconfigure enkel inloggning på **ICIMS** sida, behöver du toosend hello hämtas **XML-Metadata för**, **Sign-Out URL, SAML enhets-ID och SAML inloggning tjänst-URL för enkel** för [ICIMS supportteam](https://www.icims.com/contact-us). De kan ange den här inställningen toohave hello SAML SSO anslutningen korrekt på båda sidor.
+7. Konfigurera enkel inloggning på **ICIMS** sida, måste du skicka den hämtade **XML-Metadata för**, **Sign-Out URL, SAML enhets-ID och SAML enkel inloggning Tjänstwebbadress** till [ICIMS supportteam](https://www.icims.com/contact-us). De kan ange den här inställningen att ha SAML SSO anslutningen korrekt på båda sidor.
 
 > [!TIP]
-> Du kan nu läsa en kortare version av dessa anvisningar i hello [Azure-portalen](https://portal.azure.com), medan du ställer in hello appen!  När du lägger till den här appen från hello **Active Directory > företagsprogram** avsnittet, klicka bara på hello **enkel inloggning** flik och åtkomst hello inbäddade dokumentationen via hello  **Konfigurationen** avsnittet längst ned hello. Du kan läsa mer om hello inbäddade dokumentationen funktionen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Du kan nu läsa en kortare version av instruktionerna i den [Azure-portalen](https://portal.azure.com), medan du installerar appen!  När du lägger till den här appen från den **Active Directory > företagsprogram** avsnittet, klickar du på den **enkel inloggning** fliken och få åtkomst till den inbäddade dokumentationen via den **Configuration** avsnittet längst ned. Du kan läsa mer om funktionen inbäddade dokumentationen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Skapa en testanvändare i Azure AD
-hello syftet med det här avsnittet är toocreate en testanvändare i hello Azure-portalen kallas Britta Simon.
+Syftet med det här avsnittet är att skapa en testanvändare i Azure-portalen kallas Britta Simon.
 
 ![Skapa en testanvändare i Azure AD][100]
 
-**toocreate en testanvändare i Azure AD kan utföra hello följande steg:**
+**Utför följande steg för att skapa en testanvändare i Azure AD:**
 
-1. I hello **Azure-portalen**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon.
+1. I den **Azure-portalen**, klicka på det vänstra navigeringsfönstret **Azure Active Directory** ikon.
 
-    ![hello Azure Active Directory-knappen](./media/active-directory-saas-icims-tutorial/create_aaduser_01.png) 
+    ![Azure Active Directory-knappen](./media/active-directory-saas-icims-tutorial/create_aaduser_01.png) 
 
-2. toodisplay hello lista över användare, gå för**användare och grupper** och på **alla användare**.
+2. Om du vill visa en lista över användare, gå till **användare och grupper** och på **alla användare**.
     
-    ![Hej ”användare och grupper” och ”alla användare” länkar](./media/active-directory-saas-icims-tutorial/create_aaduser_02.png) 
+    ![”Användare och grupper” och ”alla användare” länkar](./media/active-directory-saas-icims-tutorial/create_aaduser_02.png) 
 
-3. tooopen hello **användare** dialogrutan klickar du på **Lägg till** på hello överkant hello dialogrutan.
+3. Öppna den **användare** dialogrutan klickar du på **Lägg till** överst i dialogrutan.
  
-    ![hello webbinställningar](./media/active-directory-saas-icims-tutorial/create_aaduser_03.png) 
+    ![Knappen Lägg till](./media/active-directory-saas-icims-tutorial/create_aaduser_03.png) 
 
-4. På hello **användaren** dialogrutan utför hello följande steg:
+4. På den **användaren** dialogrutan utför följande steg:
  
-    ![hello användardialogrutan](./media/active-directory-saas-icims-tutorial/create_aaduser_04.png) 
+    ![Dialogrutan användare](./media/active-directory-saas-icims-tutorial/create_aaduser_04.png) 
 
-    a. I hello **namn** textruta typen **BrittaSimon**.
+    a. I den **namn** textruta typen **BrittaSimon**.
 
-    b. I hello **användarnamn** textruta typen hello **e-postadress** av BrittaSimon.
+    b. I den **användarnamn** textruta typ av **e-postadress** av BrittaSimon.
 
-    c. Välj **visa lösenordet** och Skriv ned hello värdet för hello **lösenord**.
+    c. Välj **visa lösenordet** och anteckna värdet för den **lösenord**.
 
     d. Klicka på **Skapa**.
  
 ### <a name="create-an-icims-test-user"></a>Skapa en testanvändare ICIMS
 
-hello syftet med det här avsnittet är toocreate en användare som kallas Britta Simon i ICIMS. Arbeta med [ICIMS supportteam](https://www.icims.com/contact-us) tooadd hello användare i hello ICIMS konto. 
+Syftet med det här avsnittet är att skapa en användare som kallas Britta Simon i ICIMS. Arbeta med [ICIMS supportteam](https://www.icims.com/contact-us) att lägga till användare i ICIMS-konto. 
 
-### <a name="assign-hello-azure-ad-test-user"></a>Tilldela användare hello Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändare
 
-I det här avsnittet kan aktivera du Britta Simon toouse Azure enkel inloggning genom att bevilja åtkomst tooICIMS.
+I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inloggning genom att bevilja åtkomst till ICIMS.
 
-![Tilldela hello användarroll][200]
+![Tilldela rollen][200]
 
-**tooassign Britta Simon tooICIMS utför hello följande steg:**
+**Om du vill tilldela ICIMS Britta Simon utför du följande steg:**
 
-1. I hello Azure-portalen, öppna hello program visa och navigera toohello directory vy och gå för**företagsprogram** Klicka **alla program**.
+1. Öppna vyn program i Azure-portalen och gå till vyn directory och gå till **företagsprogram** Klicka **alla program**.
 
     ![Tilldela användare][201] 
 
-2. Välj i listan med program hello **ICIMS**.
+2. Välj i listan med program **ICIMS**.
 
-    ![Hej ICIMS länken i listan med program hello](./media/active-directory-saas-icims-tutorial/tutorial_icims_app.png) 
+    ![Länken ICIMS i listan med program](./media/active-directory-saas-icims-tutorial/tutorial_icims_app.png) 
 
-3. Hello-menyn hello vänster **användare och grupper**.
+3. Klicka på menyn till vänster **användare och grupper**.
 
-    ![Hej ”användare och grupper” länk][202] 
+    ![Länken ”användare och grupper”][202] 
 
 4. Klicka på **Lägg till** knappen. Välj sedan **användare och grupper** på **Lägg uppdrag** dialogrutan.
 
-    ![hello Lägg uppdrag fönstret][203]
+    ![Fönstret Lägg till tilldelning][203]
 
-5. På **användare och grupper** markerar **Britta Simon** i hello användarlistan.
+5. På **användare och grupper** markerar **Britta Simon** på listan användare.
 
 6. Klicka på **Välj** knappen på **användare och grupper** dialogrutan.
 
@@ -199,13 +199,13 @@ I det här avsnittet kan aktivera du Britta Simon toouse Azure enkel inloggning 
     
 ### <a name="test-single-sign-on"></a>Testa enkel inloggning
 
-hello syftet med det här avsnittet är tootest din Azure AD SSO konfiguration av hello åtkomstpanelen.  
+Syftet med det här avsnittet är att testa Azure AD SSO-konfigurationen med hjälp av panelen åtkomst.  
 
-Du bör få automatiskt inloggade tooyour ICIMS programmet när du klickar på hello ICIMS panelen i hello åtkomstpanelen.
+När du klickar på panelen ICIMS på åtkomstpanelen du bör få automatiskt loggat in på ditt ICIMS program.
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-* [Lista över självstudier om hur tooIntegrate SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Vad är programåtkomst och enkel inloggning med Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

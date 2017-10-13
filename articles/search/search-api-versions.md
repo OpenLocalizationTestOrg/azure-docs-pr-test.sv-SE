@@ -1,6 +1,6 @@
 ---
-title: aaaAPI versioner av Azure Search | Microsoft Docs
-description: "Princip för programversion för Azure Search REST API: er och hello klientbiblioteket i hello .NET SDK."
+title: API-versioner av Azure Search | Microsoft Docs
+description: "Princip för programversion för Azure Search REST API: er och klientbiblioteket i .NET SDK."
 services: search
 documentationcenter: 
 author: brjohnstmsft
@@ -14,24 +14,24 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 01/11/2017
 ms.author: brjohnst
-ms.openlocfilehash: 4fa722fad5577c6b254be7fa673eb240fff316a2
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: a14131455ad94cbc4b729077568b12043401c08e
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="api-versions-in-azure-search"></a>API-versioner i Azure Search
-Azure Search samlar funktionen uppdateras regelbundet. Ibland, men inte alltid dessa uppdateringar som kräver att oss toopublish en ny version av våra API toopreserve bakåtkompatibilitet. En ny version kan du toocontrol när och hur du integrerar tjänstuppdateringar för sökning i koden.
+Azure Search samlar funktionen uppdateras regelbundet. Ibland, men inte alltid kräver dessa uppdateringar oss att publicera en ny version av våra API för att bevara bakåtkompatibilitet. En ny version kan du styra hur och när du integrerar tjänstuppdateringar för sökning i koden.
 
-Som regel försök vi toopublish nya versioner bara när det behövs, eftersom den kan omfatta vissa arbete tooupgrade din kod toouse ett nytt API-version. Vi bara publicerar en ny version om vi behöver toochange någon aspekt av hello API på ett sätt som bryter bakåtkompatibilitet. Detta kan inträffa på grund av korrigeringar tooexisting funktioner eller på grund av nya funktioner som ändrar befintliga API-ytan.
+Som regel som vi försöker publicera nya versioner bara när det behövs, eftersom den kan omfatta möda för att uppgradera din kod för att använda en ny API-version. Vi bara publicerar en ny version om vi behöver ändra vissa delar av API: et på ett sätt som bryter bakåtkompatibilitet. Detta kan inträffa på grund av korrigeringar av befintliga funktioner eller på grund av nya funktioner som ändrar befintliga API-ytan.
 
-Vi följer hello samma regel för SDK-uppdateringar. hello Azure Search SDK följer hello [semantiska versionshantering](http://semver.org/) regler, vilket innebär att dess version består av tre delar: högre och lägre build-nummer (till exempel 1.1.0). Vi kommer att släppa en ny högre version av hello SDK endast vid ändringar som bryter bakåtkompatibilitet. Vi kommer att öka hello lägre version för hårt funktionsuppdateringar och för felkorrigeringar vi bara ökar hello-versionen.
+Vi följer samma regel för SDK-uppdateringar. Azure Search SDK följer den [semantiska versionshantering](http://semver.org/) regler, vilket innebär att dess version består av tre delar: högre och lägre build-nummer (till exempel 1.1.0). Vi kommer att släppa en ny högre version av SDK endast vid ändringar som bryter bakåtkompatibilitet. Vi kommer att öka den lägre versionen för hårt funktionsuppdateringar och för felkorrigeringar vi bara ökar versionsnumret.
 
 > [!NOTE]
-> Din Azure Search-tjänstinstansen stöder flera REST API-versioner, inklusive hello senaste. Du kan fortsätta toouse en version när den inte längre hello senaste, men vi rekommenderar att du migrerar din kod toouse hello senaste versionen. När du använder hello REST-API, måste du ange hello API-versionen i varje begäran via parametern för hello api-version. När du använder hello .NET SDK avgör hello version av hello SDK som du använder hello motsvarande version av hello REST API. Om du använder en äldre SDK kan du fortsätta toorun koden utan ändringar även om hello tjänsten uppgraderade toosupport nyare API-version.
+> Din Azure Search-tjänstinstansen stöder flera REST API-versioner, inklusive det senaste. Du kan fortsätta att använda en version när det är inte längre den senaste, men vi rekommenderar att du migrerar din kod för att använda den senaste versionen. När du använder REST-API, måste du ange API-versionen i varje begäran via parametern api-version. När du använder .NET SDK, anger versionen av du använder SDK motsvarande version av REST API. Om du använder en äldre SDK kan fortsätta du att köra koden utan ändringar, även om tjänsten uppgraderas för att stödja en nyare API-version.
 
 ## <a name="snapshot-of-current-versions"></a>Ögonblicksbilden av aktuella versioner
-Nedan visas en ögonblicksbild av hello aktuella versioner av alla programming interfaces tooAzure sökning.
+Nedan en ögonblicksbild av de aktuella versionerna av alla programmeringsgränssnitt för Azure Search.
 
 | Gränssnitt | Senaste huvudversion | Status |
 | --- | --- | --- |
@@ -42,24 +42,24 @@ Nedan visas en ögonblicksbild av hello aktuella versioner av alla programming i
 | [Hantering av .NET SDK](https://aka.ms/search-mgmt-sdk) |2015-08-19 |Allmänt tillgänglig |
 | [REST API för hantering](https://docs.microsoft.com/rest/api/searchmanagement/) |2015-08-19 |Allmänt tillgänglig |
 
-För hello REST API: er, inklusive hello `api-version` på varje anrop krävs. Detta gör det enkelt tootarget en viss version, till exempel en förhandsgranskning API. hello följande exempel visar hur hello `api-version` parameter har angetts:
+För REST API: erna, inklusive den `api-version` på varje anrop krävs. Detta gör det enkelt att fokusera på en viss version, till exempel en förhandsgranskning API. Följande exempel visar hur `api-version` parameter har angetts:
 
     GET https://adventure-works.search.windows.net/indexes/bikes?api-version=2016-09-01
 
 > [!NOTE]
-> Även om varje begäran har en `api-version`, rekommenderar vi att du använder hello samma version för alla API-begäranden. Detta gäller särskilt när nya API-versioner införa attribut eller funktioner som inte känns igen av tidigare versioner. Blanda API-versioner kan ha oönskade konsekvenser och bör undvikas.
+> Även om varje begäran har en `api-version`, rekommenderar vi att du använder samma version för alla API-begäranden. Detta gäller särskilt när nya API-versioner införa attribut eller funktioner som inte känns igen av tidigare versioner. Blanda API-versioner kan ha oönskade konsekvenser och bör undvikas.
 >
-> hello Service REST-API och Management REST API är en ny version oberoende av varandra. Alla likheter i versionsnummer är sammanhanget.
+> Tjänsten REST-API och Management REST API är versionshanterade oberoende av varandra. Alla likheter i versionsnummer är sammanhanget.
 
-Allmänt tillgänglig (eller GA) API: er kan användas i produktion och ämne tooAzure servicenivåavtal. Förhandsversioner har experiment funktioner som inte är alltid migrerade tooa GA-version. **Vi starkt rekommenderar mot att använda Förhandsgranska API: er i program i produktion.**
+Allmänt tillgänglig (eller GA) API: er som kan användas i produktion och regleras Azure servicenivåavtal. Förhandsversioner har experiment funktioner som inte alltid har migrerats till en GA-version. **Vi starkt rekommenderar mot att använda Förhandsgranska API: er i program i produktion.**
 
 ## <a name="about-preview-and-generally-available-versions"></a>Om förhandsversionen och allmänt tillgängliga versioner
-Azure Search Frigör alltid före experiment funktioner via hello REST API först, sedan via förhandsversioner av hello .NET SDK.
+Azure Search Frigör alltid före experiment funktioner via REST API först, sedan via förhandsversioner av .NET SDK.
 
-Förhandsgranskningsfunktioner är inte garanterat toobe migreras tooa GA-versionen. Funktioner i en GA-versionen är anses sannolikt inte kommer toochange med hello undantag av små bakåtkompatibla korrigeringar och förbättringar, är förhandsgranskningsfunktioner tillgängliga för testning och experiment med hello målet för att samla in feedback om funktionen designen och implementeringen.
+Förhandsgranskningsfunktioner är inte säkert att migreras till en GA-version. Funktioner i en GA-versionen är anses sannolikt inte kommer att ändra med undantag för små bakåtkompatibla korrigeringar och förbättringar, är förhandsgranskningsfunktioner tillgängliga för testning och experiment, med målet att samla in feedback om funktionen designen och implementeringen.
 
-Men eftersom förhandsgranskningsfunktioner ämne toochange, rekommenderar vi mot skriva kod som tar ett beroende på förhandsversioner. Om du använder en äldre version av preview rekommenderar vi migrering toohello allmänt tillgänglig (GA) version.
+Men eftersom förhandsgranskningsfunktionerna kan ändras, rekommenderar vi mot skriva kod som tar ett beroende på förhandsversioner. Om du använder en äldre version av preview rekommenderar vi migrering till den allmänt tillgängliga versionen (GA).
 
-För hello .NET SDK: vägledning för migrering av kod finns på [uppgradera hello .NET SDK](search-dotnet-sdk-migration.md).
+För .NET SDK: vägledning för migrering av kod finns på [uppgradera .NET SDK](search-dotnet-sdk-migration.md).
 
-Allmän tillgänglighet innebär att Azure Search är nu under hello servicenivåavtal (SLA). hello SLA finns på [serviceavtal för Azure Search](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
+Allmän tillgänglighet innebär att Azure Search är nu under servicenivåavtal (SLA). SLA finns på [serviceavtal för Azure Search](https://azure.microsoft.com/support/legal/sla/search/v1_0/).

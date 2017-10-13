@@ -1,6 +1,6 @@
 ---
-title: "aaaHow toouse hello Azure Active Directory Power BI-Innehållspaketen | Microsoft Docs"
-description: "Lär dig hur toouse hello Azure Active Directory Power BI-Innehållspaketen"
+title: "Så här använder du innehållspaketet för Azure Active Directory Power BI | Microsoft Docs"
+description: "Lär dig hur du använder innehållspaketet för Azure Active Directory Power BI"
 services: active-directory
 author: MarkusVi
 manager: femila
@@ -13,29 +13,29 @@ ms.workload: identity
 ms.date: 07/15/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: d07d678aedbe3089c4ea5f981f72311bdb389a17
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 5c642bb814a279756e8391f12fdc86b6ec0b4a8f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="how-toouse-hello-azure-active-directory-power-bi-content-pack"></a>Hur toouse hello Azure Active Directory Power BI-Innehållspaketen
+# <a name="how-to-use-the-azure-active-directory-power-bi-content-pack"></a>Så här använder du innehållspaketet för Azure Active Directory Power BI
 
-Det är viktigt för dig som IT-administratör att förstå hur dina användare anpassar sig till och använder Azure Active Directory-funktioner. Det gör att du tooplan din IT-infrastruktur och kommunikation tooincrease användnings- och tooget hello mest utanför AAD-funktioner. Power BI-innehåll Pack för Azure Active Directory ger du hello möjlighet toofurther analysera dina data toounderstand hur du kan använda den här informationen toogather bättre insikter om vad som händer med sina Azure Active Directory för hello olika funktioner du kraftigt förlitar sig på.  Du kan enkelt hämta hello förskapad innehållspaket och få insikter tooall hello aktiviteter i din Azure Active Directory med omfattande visualiseringen upplevelse Power BI erbjuder med hello-integrering av Azure Active Directory-API: er i Power BI. Du kan skapa en egen instrumentpanel och enkelt dela den med andra i din organisation. 
+Det är viktigt för dig som IT-administratör att förstå hur dina användare anpassar sig till och använder Azure Active Directory-funktioner. Då kan du planera IT-infrastrukturen och kommunikationen för att öka användningen och för att få ut det mesta av AAD-funktionerna. Med Power BI-innehållspaketet för Azure Active Directory kan du ytterligare analysera dina data för att förstå hur du kan använda informationen och bättre tolka vad som händer med Azure Active Directory för de olika funktionerna som används ofta.  Du kan enkelt ladda ned det förskapade innehållspaketet och få information om alla aktiviteter i din Azure Active Directory med den omfattande visualiseringsupplevelsen som Power BI erbjuder med hjälp av integreringen av Azure Active Directory-API:er i Power BI. Du kan skapa en egen instrumentpanel och enkelt dela den med andra i din organisation. 
 
-Det här avsnittet innehåller du med stegvisa instruktioner för hur tooinstall och använda hello innehåll pack i din miljö.
+Det här avsnittet innehåller stegvisa instruktioner för hur du installerar och använder innehållspaketet i din miljö.
 
 ## <a name="installation"></a>Installation  
 
-**tooinstall hello Power BI-Innehållspaketet:**
+**Så här installerar du Power BI-innehållspaketet:**
 
-1. Logga in på [Power BI](https://app.powerbi.com/groups/me/getdata/services) med ditt Power BI-konto (detta är hello samma konto som din O365 eller Azure AD-kontot).
+1. Logga in på [Power BI](https://app.powerbi.com/groups/me/getdata/services) med ditt Power BI-konto (det här är samma konto som ditt O365- eller Azure AD-konto).
 
-2. Längst ned hello hello vänstra navigeringsfönstret, Välj **hämta Data**.
+2. Längst ned i det vänstra navigationsfönstret väljer du **Hämta data**.
 
     ![Innehållspaketet för Azure Active Directory Power BI](./media/active-directory-reporting-power-bi-content-pack-how-to/01.png)
  
-3. I hello **Services** klickar du på **hämta**.
+3. I rutan **Tjänster** klickar du på **Hämta**.
    
     ![Innehållspaketet för Azure Active Directory Power BI](./media/active-directory-reporting-power-bi-content-pack-how-to/02.png)
 
@@ -46,7 +46,7 @@ Det här avsnittet innehåller du med stegvisa instruktioner för hur tooinstall
 5.  När du uppmanas anger du ditt klient-ID för Azure AD och klickar sedan på **Nästa**.
 
     > [!TIP] 
-    > Ett snabbt sätt tooget hello klient-Id för din Office 365 / Azure AD-klient är toologin toohello Azure AD-portalen, detaljnivån toohello directory och kopiera hello-ID från hello följande URL: https://manage.windowsazure.com/woodgroveonline.com#Workspaces/ ActiveDirectoryExtension ellerkatalogen/<tenantid>/directoryQuickStart
+    > Ett snabbt sätt att hämta klient-ID för din Office 365-/Azure AD-klient är att logga in på Azure AD-portalen, öka detaljnivån i katalogen och kopiera ID:t från följande URL: https://manage.windowsazure.com/woodgroveonline.com#Workspaces/ActiveDirectoryExtension/Directory/<tenantid>/directoryQuickStart
 
     ![Innehållspaketet för Azure Active Directory Power BI](./media/active-directory-reporting-power-bi-content-pack-how-to/04.png) 
 
@@ -60,7 +60,7 @@ Det här avsnittet innehåller du med stegvisa instruktioner för hur tooinstall
  
     ![Innehållspaketet för Azure Active Directory Power BI](./media/active-directory-reporting-power-bi-content-pack-how-to/06.png) 
 
-8.  Klicka på hello app medgivande dialogrutan **acceptera**.
+8.  Klicka på alternativet för att **godkänna** i appens dialogruta för medgivande.
  
 9.  Klicka på instrumentpanelen för aktivitetsloggar i Azure Active Directory när den har skapats.
  
@@ -68,46 +68,46 @@ Det här avsnittet innehåller du med stegvisa instruktioner för hur tooinstall
 
 ## <a name="what-can-i-do-with-this-content-pack"></a>Vad kan jag göra med det här innehållspaketet?
 
-Innan vi hoppar till vad du kan göra med det här Innehållspaketet här förhandsgranskning av hello olika rapporter i hello innehåll pack. Rapporten data går tillbaka toohello **senaste 30 dagarna**.
+Här är en snabb genomgång av olika rapporter i innehållspaketet innan vi går in på det du kan göra med innehållspaketet. Rapportdata finns för de **senaste 30 dagarna**.
 
 ### <a name="reports-included-in-this-version-of-azure-active-directory-logs-content-pack"></a>Rapporter som ingår i den här versionen av innehållspaketet för Azure Active Directory-loggar
 
-**Appanvändning och Trend rapporten**: få insikter om hello appar används i din organisation och vilka som används mest hello och när. Du kan använda den här rapporten toogather insikter om hur en app som du nyligen distribuerat i organisationen används eller ta reda på vilka appar som är populära. På så sätt kan du förbättra användning om du ser om hello appen inte används.
+**Appanvändning och trendrapporter**: Få insikter om de appar som används i din organisation, vilka som används mest och när de används. Du kan använda den här rapporten för att samla in insikter om hur en app som du nyligen distribuerade i organisationen används eller ta reda på vilka appar som är populära. På så sätt kan du förbättra användningen om du ser att en app inte används.
 
-**Inloggningar efter plats och användare**: få insikter om alla hello inloggningar utförs med hjälp av Azure identitets- och ger insikter om hello identitet hello. Informationen hjälper dig att få djupare insikt i enskilda inloggningar och besvara frågor som:
+**Inloggningar efter plats och användare**: Ger information om alla inloggningar som utförs med hjälp av Azure Identity och information om användarnas identitet. Informationen hjälper dig att få djupare insikt i enskilda inloggningar och besvara frågor som:
 
 - Varifrån loggade den här användaren in?
-- Som användare har hello de flesta inloggningar och där de logga in från? 
-- Lyckades hello logga in?  
+- Vilken användare har flest inloggningar och varifrån loggade användaren in? 
+- Lyckades inloggningen?  
  
 Du kan se ytterligare information genom att klicka på ett visst datum eller en viss plats.
 
 **Unika användare per app**: Få en överblick över alla unika användare som använder en viss app. Detta omfattar endast användare som har loggat in till ett program ”*utan problem*”.
 
-**Enheten inloggningar**: få en översikt över hello typ av operativsystem och webbläsare som används av användare i organisationen med detaljerad information om hello användare, inklusive:
+**Enhetsinloggningar**: Få en översikt över vilka operativsystem och webbläsare som användare använder i organisationen med detaljerad information om användarna som omfattar:
 
 - Användarnamn
 - IP-adress
 - Plats 
 - Inloggningsstatus 
 
-Med den här rapporten kan förstår du hello olika enhetsprofiler används inom organisationen och bestämma principer för enheter baserat på vad som ska användas
+Med den här rapporten kan du förstå de olika enhetsprofiler som används inom organisationen och bestämma principer för enheter baserat på vad som används
 
-**SSPR-tratt**: Få förståelse för hur lösenordsåterställning fungerar i din organisation. Ta en förhandstitt hur många lösenord återställer försökte via hello SSPR verktyg och hur många av dem har genomförts. Lär dig mer om hello återställer Lösenordsfel med hello SSPR Trattens och förstå varför vissa fel uppstod. Den här rapporten ger en bättre förståelse för hur hello SSPR verktyget används inom organisationen så att du hello rätt beslut.
+**SSPR-tratt**: Få förståelse för hur lösenordsåterställning fungerar i din organisation. Ta en förhandstitt på hur många lösenordsåterställningar som försökte utföras via SSPR-verktyget och hur många av dem som genomfördes. Lär dig mer om fel vid lösenordsåterställning med SSPR-tratten och förstå varför vissa fel uppstod. Den här rapporten ger en bättre förståelse för hur SSPR-verktyget används inom organisationen så att du kan fatta rätt beslut.
 
 ## <a name="customizing-azure-ad-activity-content-pack"></a>Anpassa innehållspaketet för Azure AD Activity
 
-**Ändra visualiseringen**: du kan ändra en rapport visualisering genom att klicka på **Redigera rapport** och välj hello visualiseringen som du vill använda.
+**Ändra visualisering**: Du kan ändra ett visuellt objekt i en rapport genom att klicka på **Redigera rapport** och välja det önskade visuella objektet.
  
 ![Innehållspaketet för Azure Active Directory Power BI](./media/active-directory-reporting-power-bi-content-pack-how-to/09.png) 
  
 ![Innehållspaketet för Azure Active Directory Power BI](./media/active-directory-reporting-power-bi-content-pack-how-to/10.png) 
 
-**Inkludera ytterligare fält**: du kan lägga till en rapport för fältet toohello eller ta bort den genom att välja hello visual toowhich som du vill tooadd/ta bort hello fält. Jag lägger till ”inloggning” fältet toohello tabell statusvyn i hello exemplet nedan. 
+**Ta med ytterligare fält**: Du kan lägga till ett fält i rapporten eller ta bort det genom att välja det visuella objekt som du vill lägga till/ta bort från fältet. Jag lägger till fältet ”inloggningsstatus” i tabellvyn i exemplet nedan. 
  
 ![Innehållspaketet för Azure Active Directory Power BI](./media/active-directory-reporting-power-bi-content-pack-how-to/11.png) 
 
-**PIN-kod visualiseringar tooyour instrumentpanelen**: du kan anpassa instrumentpanelen och inkludera egna visualiseringar toohello rapport och fästa den toohello instrumentpanelen. I hello exemplet nedan jag lägga till ett nytt filter som kallas ”Inloggningsstatusen” och ingår i hello rapporten. Jag hello visualiseringen har ändrats från stapeldiagram tooa linjediagram och fästa den här nya visual toohello instrumentpanelen.
+**Fäst visuella objekt på instrumentpanelen**: Du kan anpassa instrumentpanelen och ta med egna visuella objekt i rapporten och fästa på instrumentpanelen. I exemplet nedan lade jag till ett nytt filter som kallas ”Inloggningsstatus” och tog med det i rapporten. Jag ändrade även det visuella objektet från stapeldiagram till linjediagram och kan fästa det här nya visuella objektet på instrumentpanelen.
 
 ![Innehållspaketet för Azure Active Directory Power BI](./media/active-directory-reporting-power-bi-content-pack-how-to/12.png) 
 
@@ -117,7 +117,7 @@ Med den här rapporten kan förstår du hello olika enhetsprofiler används inom
  
 
 
-**Dela instrumentpanelen**: när du har skapat hello-innehåll som du vill kan du dela hello instrumentpanel med hello användare i din organisation. Kom ihåg att när du delar hello rapport, kan de se hello fält som du har valt i hello rapporten.
+**Dela instrumentpanelen**: När du har skapat innehållet kan du dela instrumentpanelen med användare i organisationen. Kom ihåg att de kan se fälten som du markerat när du delar rapporten.
  
 ![Innehållspaketet för Azure Active Directory Power BI](./media/active-directory-reporting-power-bi-content-pack-how-to/14.png) 
 
@@ -125,21 +125,21 @@ Med den här rapporten kan förstår du hello olika enhetsprofiler används inom
 
 ## <a name="scheduling-a-daily-refresh-of-your-power-bi-report"></a>Schemalägga en daglig uppdatering av Power BI-rapporter
 
-Gå tooschedule en daglig uppdatering av Power BI-rapport för**datauppsättningar > Inställningar > Uppdatera schema** och ange den som visas nedan.
+Om du vill schemalägga en daglig uppdatering av en Power BI-rapport går du till **Datauppsättningar > Inställningar > Schemalägg uppdatering** och konfigurerar det enligt nedan.
  
 ![Innehållspaketet för Azure Active Directory Power BI](./media/active-directory-reporting-power-bi-content-pack-how-to/15.png) 
 
-## <a name="updating-toonewer-version-of-content-pack"></a>Uppdatera toonewer version av Innehållspaketet
+## <a name="updating-to-newer-version-of-content-pack"></a>Uppdatera till en nyare version av innehållspaketet
 
-Om du vill tooupdate pack ditt innehåll tooget en nyare version:
+Om du vill uppdatera ditt innehållspaket för att få en nyare version:
 
-- Hämta hello nya Innehållspaketet och konfigurera enligt anvisningarna i den här artikeln.
+- Ladda ned det nya innehållspaketet och konfigurera enligt anvisningarna i den här artikeln.
 
-- När du har ställt in gå för**Data Source > Inställningar > autentiseringsuppgifter för datakälla** och ange dina autentiseringsuppgifter på nytt enligt nedan
+- När du har konfigurerat det går du till **Datakälla > Inställningar > Autentiseringsuppgifter för datakälla** och anger dina autentiseringsuppgifter på nytt enligt anvisningarna nedan
 
     ![Innehållspaketet för Azure Active Directory Power BI](./media/active-directory-reporting-power-bi-content-pack-how-to/16.png) 
 
-Så snart hello ny version av Innehållspaketet hello fungerar kan du ta bort hello gammal version vid behov genom att ta bort hello underliggande rapporter och datauppsättningar som är associerade med det Innehållspaketet.
+När den nya versionen av innehållspaketet fungerar kan du ta bort den gamla versionen vid behov genom att ta bort de underliggande rapporterna och de datauppsättningar som är associerade med innehållspaketet.
 
 ## <a name="still-having-issues"></a>Har du fortfarande problem? 
 
@@ -148,4 +148,4 @@ Läs vår [felsökningsguide](active-directory-reporting-troubleshoot-content-pa
 
 ## <a name="next-steps"></a>Nästa steg
 
-En översikt över rapportering finns i hello [Azure Active Directory reporting](active-directory-reporting-azure-portal.md).
+En översikt över rapportering finns i [Azure Active Directory-rapportering](active-directory-reporting-azure-portal.md).

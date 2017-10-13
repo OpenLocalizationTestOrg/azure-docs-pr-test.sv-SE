@@ -1,6 +1,6 @@
 ---
-title: "Översikt över aaaSecurity arkitektur | Microsoft Docs"
-description: "hello artikeln innehåller en översikt över arkitekturen security för Azure och en granskad lista över relaterade artiklar."
+title: "Översikt över säkerheten i arkitektur | Microsoft Docs"
+description: "Artikeln innehåller en översikt över arkitekturen security för Azure och en granskad lista över relaterade artiklar."
 services: security
 documentationcenter: na
 author: TomShinder
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/04/2017
 ms.author: yurid
-ms.openlocfilehash: 74f24c6169642c45e2f141e1b1b1d9b20385904f
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: efb0cfa4b7950a2d9418282965a23498a67cbffc
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="security-architecture-overview"></a>Översikt över säkerheten i arkitektur
-Med ett starkt arkitektur foundation är en hello nycklar toosuccess när det gäller toosecure lösning distributioner i Azure. Med denna kunskap du är kan toobetter förstå dina behov av att veta hello rätt frågor tooask och mer utrustade toofind hello rätt svar tooyour frågor. Få rätt svar toohello rätt frågor kommer du långt mot optimera hello säkerheten för din distribution.
+Med ett starkt arkitektur foundation är en för framgång när det gäller att skydda lösning distributioner i Azure. Med den kunskapen går det att bättre förstå dina behov av att känna till rätt frågor och och mer utrustade att hitta höger svaren på dina frågor. Få svar på rätt frågor kommer du långt mot optimera säkerheten för din distribution.
 
-I det här avsnittet visas artiklar på Azure-säkerhetsarkitekturen som hjälper dig att skapa säkra lösningar. En samling populära Azure säkerhetsmetoder och mönster ingår också. För tillfället har hello följande artiklar vi – se till att toovisit vår webbplats och hello Azure Security Team-blogg för uppdateringar regelbundet:
+I det här avsnittet visas artiklar på Azure-säkerhetsarkitekturen som hjälper dig att skapa säkra lösningar. En samling populära Azure säkerhetsmetoder och mönster ingår också. För tillfället har vi i följande artiklar – Besök vår webbplats och Azure Security Team-blogg för uppdateringar regelbundet:
 
 * [Dataklassificering för användning i molnet](azure-security-data-classification.md)
 * [Programarkitektur i Microsoft Azure](security-application-architecture-on-azure.md)

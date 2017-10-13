@@ -1,9 +1,9 @@
 ---
-title: "belastningsutjämnaren aaaCreate mot en Internet - Azure-mall | Microsoft Docs"
-description: "Lär dig hur toocreate Internet-riktade belastningsfördelning i Resource Manager med hjälp av en mall"
+title: "Skapa en Internetaktiverad belastningsutjämnare – Azure-mall | Microsoft Docs"
+description: "Lär dig hur du skapar en Internetuppkopplad belastningsutjämnare i Resource Manager med hjälp av en mall"
 services: load-balancer
 documentationcenter: na
-author: kumudd
+author: KumudD
 manager: timlt
 tags: azure-resource-manager
 ms.assetid: b24f4729-4559-4458-8527-71009d242647
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/23/2017
+ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 2bce8cb87303838f3bc732d51228ab46d8015552
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: f88e3cf6672d975793b4836434ec31d9f7d37016
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="creating-an-internet-facing-load-balancer-using-a-template"></a>Skapa en Internetuppkopplad belastningsutjämnare med hjälp av en mall
 
@@ -28,24 +28,26 @@ ms.lasthandoff: 10/06/2017
 > * [Azure CLI](../load-balancer/load-balancer-get-started-internet-arm-cli.md)
 > * [Mall](../load-balancer/load-balancer-get-started-internet-arm-template.md)
 
+[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
+
 [!INCLUDE [load-balancer-get-started-internet-intro-include.md](../../includes/load-balancer-get-started-internet-intro-include.md)]
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-Den här artikeln beskriver hello Resource Manager-modellen. Du kan också [Lär dig hur toocreate Internet-riktade belastningsutjämnaren med klassiska distributionsmodellen](load-balancer-get-started-internet-classic-portal.md)
+Den här artikeln beskriver Resource Manager-distributionsmodellen. Du kan också läsa om [hur du skapar en Internetuppkopplad belastningsutjämnare med hjälp av den klassiska distributionsmodellen](load-balancer-get-started-internet-classic-portal.md)
 
 [!INCLUDE [load-balancer-get-started-internet-scenario-include.md](../../includes/load-balancer-get-started-internet-scenario-include.md)]
 
-## <a name="deploy-hello-template-by-using-click-toodeploy"></a>Distribuera hello mallen med Klicka toodeploy
+## <a name="deploy-the-template-by-using-click-to-deploy"></a>Distribuera mallen genom att klicka för att distribuera
 
-hello exempelmall tillgängliga i hello offentliga databasen använder en parameterfil som innehåller hello standard värden som används för toogenerate hello scenario som beskrivs ovan. toodeploy den här mallen med hjälp av klickar du på toodeploy, Följ [länken](http://go.microsoft.com/fwlink/?LinkId=544801), klickar du på **distribuera tooAzure**, ersätta hello Standardparametervärden om det behövs och följ instruktionerna för hello hello-portalen.
+Exempelmallen som är tillgänglig i den offentliga databasen använder en parameterfil som innehåller standardvärdena som används för att generera scenariot som beskrivs ovan. Om du vill distribuera den här mallen genom att klicka för att distribuera följer du [den här länken](http://go.microsoft.com/fwlink/?LinkId=544801), klickar på **Deploy to Azure** (Distribuera till Azure), ersätter standardparametervärdena om det behövs och följer anvisningarna på portalen.
 
-## <a name="deploy-hello-template-by-using-powershell"></a>Distribuera hello-mallen med hjälp av PowerShell
+## <a name="deploy-the-template-by-using-powershell"></a>Distribuera mallen med hjälp av PowerShell
 
-toodeploy hello mallen som du hämtade med PowerShell, följ hello stegen nedan.
+Följ stegen nedan om du vill distribuera mallen som du hämtat med hjälp av PowerShell.
 
-1. Om du aldrig har använt Azure PowerShell, se [hur tooInstall och konfigurera Azure PowerShell](/powershell/azure/overview) och följer instruktionerna för hello alla hello sätt toohello avslutas toosign till Azure och välja din prenumeration.
-2. Kör hello **ny AzureRmResourceGroupDeployment** cmdlet toocreate en resurs med hello mallen.
+1. Om du aldrig använt Azure PowerShell tidigare, se [Installera och konfigurera Azure PowerShell](/powershell/azure/overview) och följ instruktionerna till slutet för att logga in på Azure och välja din prenumeration.
+2. Kör cmdleten **New-AzureRmResourceGroupDeployment** för att skapa en resursgrupp med hjälp av mallen.
 
     ```powershell
     New-AzureRmResourceGroupDeployment -Name TestRG -Location uswest `
@@ -53,23 +55,23 @@ toodeploy hello mallen som du hämtade med PowerShell, följ hello stegen nedan.
         -TemplateParameterFile 'https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-2-vms-loadbalancer-lbrules/azuredeploy.parameters.json'
     ```
 
-## <a name="deploy-hello-template-by-using-hello-azure-cli"></a>Distribuera hello mallen med hello Azure CLI
+## <a name="deploy-the-template-by-using-the-azure-cli"></a>Distribuera mallen med hjälp av Azure CLI
 
-toodeploy hello mall med hjälp av hello Azure CLI, följ hello stegen nedan.
+Följ stegen nedan om du vill distribuera mallen med hjälp av Azure CLI.
 
-1. Om du aldrig har använt Azure CLI, se [installera och konfigurera hello Azure CLI](../cli-install-nodejs.md) och följer instruktionerna för hello in toohello punkt där du väljer Azure-konto och prenumeration.
-2. Kör hello **azure config mode** kommandot tooswitch tooResource Manager-läge enligt nedan.
+1. Om du aldrig har använt Azure CLI, se [installera och konfigurera Azure CLI](../cli-install-nodejs.md) och följ instruktionerna upp till den punkt där du väljer Azure-konto och prenumeration.
+2. Kör kommandot **azure config mode** för att växla till Resource Manager-läge, som det visas nedan.
 
     ```azurecli
     azure config mode arm
     ```
 
-    Här är förväntat hello utdata för hello ovanstående kommando:
+    Följande utdata förväntas från kommandot ovan:
 
         info:    New mode is arm
 
-3. Från din webbläsare, navigerar för[hello Quickstart mallen](https://github.com/Azure/azure-quickstart-templates/tree/master/201-2-vms-loadbalancer-lbrules), kopiera hello innehållet i hello json-fil och klistra in i en ny fil i datorn. I det här scenariot kan du kopiera hello värden under tooa fil med namnet **c:\lb\azuredeploy.parameters.json**.
-4. Kör hello **azure-gruppdistributionen skapa** cmdlet toodeploy hello nya belastningsutjämning med hjälp av hello mallen och parametern filer du hämtade och ändrade ovan. hello-listan som visas efter hello utdata förklarar hello parametrar som används.
+3. Navigera till [snabbstartsmallen](https://github.com/Azure/azure-quickstart-templates/tree/master/201-2-vms-loadbalancer-lbrules) i webbläsaren, kopiera innehållet i JSON-filen och klistra in det i en ny fil på din dator. I det här scenariot kopierar du värdena nedan till en fil med namnet **c:\lb\azuredeploy.parameters.json**.
+4. Kör cmdleten **azure group deployment create** för att distribuera den nya belastningsutjämnaren med hjälp av mall- och parameterfilerna som du hämtade och ändrade ovan. Listan som visas efter alla utdata förklarar parametrarna som använts.
 
     ```azurecli
     azure group create --name TestRG --location westus --template-file 'https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-2-vms-loadbalancer-lbrules/azuredeploy.json' --parameters-file 'c:\lb\azuredeploy.parameters.json'

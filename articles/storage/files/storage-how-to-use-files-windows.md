@@ -1,6 +1,6 @@
 ---
-title: "aaaMount en Azure-filresurs och åtkomst hello delar i Windows | Microsoft Docs"
-description: "Montera en filresurs i Azure och åtkomst hello resurs i Windows."
+title: "Montera en filresurs på Azure och få åtkomst till resursen i Windows | Microsoft Docs"
+description: "Montera en filresurs på Azure och få åtkomst till resursen i Windows."
 services: storage
 documentationcenter: na
 author: RenaShahMSFT
@@ -12,70 +12,73 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/27/2017
+ms.date: 09/19/2017
 ms.author: renash
-ms.openlocfilehash: eb6d58ad391adb6c06703ad694150534ccf44ada
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 111b925de9ca2155e2d3631979272170ed614816
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="mount-an-azure-file-share-and-access-hello-share-in-windows"></a>Montera en filresurs i Azure och åtkomst hello resurs i Windows
-[Azure File storage](../storage-dotnet-how-to-use-files.md) är Microsofts enkelt toouse moln-filsystem. Azure-filresurser kan monteras i Windows och Windows Server. Den här artikeln visar tre olika sätt toomount en Azure-filresurs på Windows: med hello File Explorer-Gränssnittet via PowerShell och via hello kommandotolk. 
+# <a name="mount-an-azure-file-share-and-access-the-share-in-windows"></a>Montera en filresurs på Azure och få åtkomst till resursen i Windows
+[Azure Files](storage-files-introduction.md) är Microsofts lättanvända filsystem i molnet. Azure-filresurser kan monteras i Windows och Windows Server. Den här artikeln visar tre olika sätt att montera en Azure-filresurs på Windows: med användargränssnittet Utforskaren, via PowerShell eller via Kommandotolken. 
 
-I ordning toomount en Azure-filresurs utanför hello Azure-region finns i, till exempel lokalt eller i en annan Azure-region, stöder hello OS SMB 3.0. 
+Operativsystemet måste stödja SMB 3.0 för att montera en Azure-filresurs utanför den Azure-region som den finns i, till exempel lokalt eller i en annan Azure-region. 
 
-Azure File-resursen kan monteras på Windows-datorn antingen lokalt eller i Azure VM beroende på operativsystemversion. Tabellen nedan visar hello 
+Du kan montera Azure-filresurser i en Windows-installation som körs antingen i en virtuell Azure-dator eller lokalt. Tabellen nedan visar vilka operativsystemversioner som har stöd för montering av filresurser och i vilken miljö:
 
-| Windows-version        | SMB-version |Monteras på Azure VM|Monteras lokalt|
-|------------------------|-------------|---------------------|---------------------|
-| Windows 7              | SMB 2.1     | Ja                 | Nej                  |
-| Windows Server 2008 R2 | SMB 2.1     | Ja                 | Nej                  |
-| Windows 8              | SMB 3.0     | Ja                 | Ja                 |
-| Windows Server 2012    | SMB 3.0     | Ja                 | Ja                 |
-| Windows Server 2012 R2 | SMB 3.0     | Ja                 | Ja                 |
-| Windows 10             | SMB 3.0     | Ja                 | Ja                 |
+| Windows-version        | SMB-version | Monteras i Azure VM | Monteras lokalt |
+|------------------------|-------------|-----------------------|----------------------|
+| Windows 10<sup>1</sup>  | SMB 3.0 | Ja | Ja |
+| Windows Server 2016    | SMB 3.0     | Ja                   | Ja                  |
+| Windows 8.1            | SMB 3.0     | Ja                   | Ja                  |
+| Windows Server 2012 R2 | SMB 3.0     | Ja                   | Ja                  |
+| Windows Server 2012    | SMB 3.0     | Ja                   | Ja                  |
+| Windows 7              | SMB 2.1     | Ja                   | Nej                   |
+| Windows Server 2008 R2 | SMB 2.1     | Ja                   | Nej                   |
+
+<sup>1</sup>Windows 10-versionerna 1507, 1511, 1607, 1703 och 1709.
 
 > [!Note]  
-> Vi rekommenderar att alltid hello senaste KB för din version av Windows.
+> Vi rekommenderar alltid den senaste uppdateringen för din version av Windows.
 
 ## <a name="aprerequisites-for-mounting-azure-file-share-with-windows"></a></a>Förutsättningar för att montera Azure-filresurser med Windows 
-* **Lagringskontonamnet**: toomount ett Azure-filresurs, du behöver hello namnet på hello storage-konto.
+* **Lagringskontonamn**: Om du vill montera en Azure-filresurs behöver du namnet på lagringskontot.
 
-* **Lagringskontonyckel**: toomount ett Azure-filresurs, du behöver hello primära (eller sekundära) lagringsnyckel. SAS-nycklar stöds inte för montering.
+* **Lagringskontonyckel**: Om du vill montera en Azure-filresurs behöver du den primära (eller sekundära) lagringsnyckeln. SAS-nycklar stöds inte för montering.
 
-* **Kontrollera att port 445 är öppen**: Azure File Storage använder SMB-protokollet. SMB kommunicerar via TCP-port 445 - Kontrollera toosee om brandväggen inte blockerar TCP-portar 445 från klientdatorn.
+* **Kontrollera att port 445 är öppen**: Azure Files använder SMB-protokollet. SMB kommunicerar via TCP-port 445. Kontrollera om din brandvägg blockerar TCP-port 445 från klientdatorn.
 
-## <a name="mount-hello-azure-file-share-with-file-explorer"></a>Montera hello Azure-filresurs med Utforskaren
+## <a name="mount-the-azure-file-share-with-file-explorer"></a>Montera Azure-filresursen med Utforskaren
 > [!Note]  
-> Observera att hello följa anvisningar visas på Windows 10 och kan skilja sig på äldre versioner. 
+> Observera att följande instruktioner visas på Windows 10 och kan skilja sig en aning på äldre versioner. 
 
-1. **Öppna Utforskaren**: Detta kan göras genom att öppna från hello Start-menyn eller genom att trycka på Win + E genväg.
+1. **Öppna Utforskaren**: Detta kan göras genom att öppna från startmenyn eller genom att använda tangentbordsgenvägen Win+E.
 
-2. **Navigera toohello ”den här datorn” objektet hello vänster av hello-fönstret. Detta ändrar hello menyerna hello menyfliksområdet. Under hello dator-menyn väljer du ”karta nätverksenhet”**.
+2. **Navigera till objektet "Den här datorn" på vänster sida av fönstret. Detta ändrar menyerna i menyfliksområdet. Under menyn Dator väljer du "Anslut nätverksenhet"**.
     
-    ![En skärmbild av hello ”mappa nätverksenheten” nedrullningsbara menyn](./media/storage-how-to-use-files-windows/1_MountOnWindows10.png)
+    ![En skärmbild av den nedrullningsbara menyn "Anslut nätverksenhet"](./media/storage-how-to-use-files-windows/1_MountOnWindows10.png)
 
-3. **Kopiera hello UNC-sökväg från hello ”Anslut” fönster i hello Azure-portalen**: en detaljerad beskrivning av hur toofind den här informationen kan hittas [här](storage-how-to-use-files-portal.md#connect-to-file-share).
+3. **Kopiera UNC-sökvägen från fönstret "Anslut" i Azure Portal**: En detaljerad beskrivning av hur du hittar den här informationen hittar du [här](storage-how-to-use-files-portal.md#connect-to-file-share).
 
-    ![hello UNC-sökväg i hello Azure File storage Anslut rutan](./media/storage-how-to-use-files-windows/portal_netuse_connect.png)
+    ![UNC-sökvägen från fönstret Anslut i Azure Files](./media/storage-how-to-use-files-windows/portal_netuse_connect.png)
 
-4. **Välj hello enhetsbeteckning och ange hello UNC-sökväg.** 
+4. **Välj enhetsbeteckningen och ange UNC-sökvägen.** 
     
-    ![En skärmbild av hello ”karta nätverksenhet” dialogrutan](./media/storage-how-to-use-files-windows/2_MountOnWindows10.png)
+    ![En skärmbild av dialogrutan "Anslut nätverksenhet"](./media/storage-how-to-use-files-windows/2_MountOnWindows10.png)
 
-5. **Använd hello Lagringskontonamnet föregås av `Azure\` som hello användarnamn och en Lagringskontonyckel som hello lösenord.**
+5. **Använd lagringskontonamnet som börjar med `Azure\` som användarnamnet och en lagringskontonyckel som lösenord.**
     
-    ![En skärmbild av hello Autentiseringsdialogrutan för nätverk](./media/storage-how-to-use-files-windows/3_MountOnWindows10.png)
+    ![En skärmbild av dialogrutan med nätverksautentiseringsuppgifter](./media/storage-how-to-use-files-windows/3_MountOnWindows10.png)
 
 6. **Använd Azure-filresurser som du vill**.
     
     ![Azure-filresursen är nu monterad](./media/storage-how-to-use-files-windows/4_MountOnWindows10.png)
 
-7. **När du är klar toodismount (eller koppla från) hello Azure-filresursen du göra det genom att högerklicka på hello post för hello resurs under hello ”nätverksplatser” i Utforskaren och välja ”koppla från”**.
+7. **När du är redo att demontera (eller koppla från) Azure-filresursen så kan du göra det genom att högerklicka på posten för resursen under "Nätverksplatser" i Utforskaren och välja "Koppla från"**.
 
-## <a name="mount-hello-azure-file-share-with-powershell"></a>Montera hello Azure-filresurs med PowerShell
-1. **Använd hello följande kommando toomount hello Azure-filresursen**: spara tooreplace `<storage-account-name>`, `<share-name>`, `<storage-account-key>`, `<desired-drive-letter>` med hello rätt information.
+## <a name="mount-the-azure-file-share-with-powershell"></a>Montera Azure-filresursen med PowerShell
+1. **Använd följande kommando för att montera Azure-filresursen**: Kom ihåg att ersätta `<storage-account-name>`, `<share-name>`, `<storage-account-key>` och `<desired-drive-letter>` med rätt information.
 
     ```PowerShell
     $acctKey = ConvertTo-SecureString -String "<storage-account-key>" -AsPlainText -Force
@@ -83,59 +86,59 @@ Azure File-resursen kan monteras på Windows-datorn antingen lokalt eller i Azur
     New-PSDrive -Name <desired-drive-letter> -PSProvider FileSystem -Root "\\<storage-account-name>.file.core.windows.net\<share-name>" -Credential $credential
     ```
 
-2. **Använd hello Azure-filresurs som du vill**.
+2. **Använd Azure-filresursen som du vill**.
 
-3. **När du är klar demontera hello Azure filresurs med hjälp av följande kommando hello**.
+3. **Demontera Azure-filresursen med följande kommando när du är klar**.
 
     ```PowerShell
     Remove-PSDrive -Name <desired-drive-letter>
     ```
 
 > [!Note]  
-> Du kan använda hello `-Persist` parameter på `New-PSDrive` toomake hello Azure File share synliga toohello resten av hello OS när monterad.
+> Du kan använda `-Persist`-parametern på `New-PSDrive` för att göra Azure-filresursen synlig för resten av operativsystemet när den är monterad.
 
-## <a name="mount-hello-azure-file-share-with-command-prompt"></a>Montera hello Azure-filresurs med Kommandotolken
-1. **Använd hello följande kommando toomount hello Azure-filresursen**: spara tooreplace `<storage-account-name>`, `<share-name>`, `<storage-account-key>`, `<desired-drive-letter>` med hello rätt information.
+## <a name="mount-the-azure-file-share-with-command-prompt"></a>Montera Azure-filresursen med Kommandotolken
+1. **Använd följande kommando för att montera Azure-filresursen**: Kom ihåg att ersätta `<storage-account-name>`, `<share-name>`, `<storage-account-key>` och `<desired-drive-letter>` med rätt information.
 
     ```
     net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> <storage-account-key> /user:Azure\<storage-account-name>
     ```
 
-2. **Använd hello Azure-filresurs som du vill**.
+2. **Använd Azure-filresursen som du vill**.
 
-3. **När du är klar demontera hello Azure filresurs med hjälp av följande kommando hello**.
+3. **Demontera Azure-filresursen med följande kommando när du är klar**.
 
     ```
     net use <desired-drive-letter>: /delete
     ```
 
 > [!Note]  
-> Du kan konfigurera hello Azure File share tooautomatically återansluta vid omstart av bestående hello autentiseringsuppgifter i Windows. följande kommando hello behålls hello autentiseringsuppgifter:
+> Du kan konfigurera Azure-filresursen för att återansluta automatiskt efter omstart genom att spara autentiseringsuppgifterna i Windows. Följande kommando sparar autentiseringsuppgifter:
 >   ```
 >   cmdkey /add:<storage-account-name>.file.core.windows.net /user:AZURE\<storage-account-name> /pass:<storage-account-key>
 >   ```
 
 ## <a name="next-steps"></a>Nästa steg
-Mer information om Azure File Storage finns på följande länkar.
+Mer information om Azure Files finns på följande länkar.
 
 * [Vanliga frågor och svar](../storage-files-faq.md)
 * [Felsökning i Windows](storage-troubleshoot-windows-file-connection-problems.md)      
 
 ### <a name="conceptual-articles-and-videos"></a>Begreppsrelaterade artiklar och videoklipp
-* [Azure Files Storage: ett friktionslöst SMB-filsystem i molnet för Windows och Linux](https://azure.microsoft.com/documentation/videos/azurecon-2015-azure-files-storage-a-frictionless-cloud-smb-file-system-for-windows-and-linux/)
-* [Hur toouse Azure File storage med Linux](../storage-how-to-use-files-linux.md)
+* [Azure Files: ett smidigt SMB-filsystem i molnet för Windows och Linux](https://azure.microsoft.com/documentation/videos/azurecon-2015-azure-files-storage-a-frictionless-cloud-smb-file-system-for-windows-and-linux/)
+* [Använda Azure Files med Linux](../storage-how-to-use-files-linux.md)
 
-### <a name="tooling-support-for-azure-file-storage"></a>Verktygsstöd för Azure File Storage
-* [Hur toouse AzCopy med Microsoft Azure Storage](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
-* [Använda hello Azure CLI med Azure Storage](../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#create-and-manage-file-shares)
-* [Felsökning av problem i Azure File Storage – Windows](storage-troubleshoot-windows-file-connection-problems.md)
-* [Felsökning av problem i Azure File Storage – Linux](storage-troubleshoot-linux-file-connection-problems.md)
+### <a name="tooling-support-for-azure-files"></a>Verktygsstöd för Azure Files
+* [Använd AzCopy med Microsoft Azure Storage](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
+* [Använd Azure CLI:et med Azure Storage](../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#create-and-manage-file-shares)
+* [Felsökning av problem i Azure Files – Windows](storage-troubleshoot-windows-file-connection-problems.md)
+* [Felsökning av problem i Azure Files – Linux](storage-troubleshoot-linux-file-connection-problems.md)
 
 ### <a name="blog-posts"></a>Blogginlägg
-* [Azure File Storage finns nu allmänt tillgänglig](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/)
-* [Inuti Azure File Storage](https://azure.microsoft.com/blog/inside-azure-file-storage/)
+* [Azure Files är nu allmänt tillgängligt](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/)
+* [Inuti Azure Files](https://azure.microsoft.com/blog/inside-azure-file-storage/)
 * [Introduktion till Microsoft Azure File Service](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
-* [Migrera data tooAzure fil](https://azure.microsoft.com/blog/migrating-data-to-microsoft-azure-files/)
+* [Migrera data till Azure File](https://azure.microsoft.com/blog/migrating-data-to-microsoft-azure-files/)
 
 ### <a name="reference"></a>Referens
 * [Storage-klientbibliotek för .NET-referens](https://msdn.microsoft.com/library/azure/dn261237.aspx)

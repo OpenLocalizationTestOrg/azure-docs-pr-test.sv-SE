@@ -1,6 +1,6 @@
 ---
-title: aaaAssign grupper tooAzure AD-appar | Microsoft Docs
-description: "Hur tooimplement gruppera tilldelning för Azure-program."
+title: Tilldela till Azure AD-appar | Microsoft Docs
+description: "Hur du implementerar grupptilldelning för Azure-program."
 services: active-directory
 documentationcenter: 
 author: kgremban
@@ -16,26 +16,26 @@ ms.date: 05/07/2017
 ms.author: kgremban
 ms.custom: H1Hack27Feb2017
 robots: noindex
-ms.openlocfilehash: 086619df09c13bf259afc3128d45ed804b99e519
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: e0b0b87a454db96747f024e81882fe83d62fdbe2
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="assign-azure-active-directory-groups-tooan-application"></a>Tilldela Azure Active Directory-grupper tooan program
-Innan du kan tilldela användare och grupper tooan program, måste du begära Användartilldelning. toolearn hur toorequire Användartilldelning finns hello [kräver Användartilldelning](active-directory-applications-guiding-developers-requiring-user-assignment.md) artikel.
+# <a name="assign-azure-active-directory-groups-to-an-application"></a>Tilldela ett program med Azure Active Directory-grupper
+Innan du kan tilldela användare och grupper till ett program, måste du begära Användartilldelning. Information om hur du kan kräva Användartilldelning finns i [kräver Användartilldelning](active-directory-applications-guiding-developers-requiring-user-assignment.md) artikel.
 
-Den här artikeln förutsätter att du redan har skapat grupper i hello active directory som du använder för det här programmet.
+Den här artikeln förutsätter att du redan har skapat grupper i active directory som du använder för det här programmet.
 
-## <a name="assigning-groups-tooan-application"></a>Tilldela grupper tooan program
-1. Logga in toohello Azure-portalen med ett administratörskonto.
-2. Klicka på hello **alla objekt** objekt i hello huvudmenyn.
-3. Välja hello-katalog som du använder för hello program.
-4. Klicka på hello **program** fliken.
-5. Välj hello programmet hello listan över program som är associerade med den här katalogen.
-6. Klicka på hello **användare och grupper** fliken.
-7. Filter hello listan över grupper i active directory med hjälp av hello **grupper** listrutan.
-8. Välj hello grupp.
+## <a name="assigning-groups-to-an-application"></a>Tilldela grupper till ett program
+1. Logga in på Azure-portalen med ett administratörskonto.
+2. Klicka på den **alla objekt** objekt på huvudmenyn.
+3. Välj det bibliotek som du använder för programmet.
+4. Klicka på den **program** fliken.
+5. Markera programmet i listan över program som är associerade med den här katalogen.
+6. Klicka på den **användare och grupper** fliken.
+7. Filtrera listan över grupper i active directory med hjälp av den **grupper** listrutan.
+8. Välj en grupp.
 9. Klicka på **TILLDELA**.
 10. Klicka på **Ja** när du tillfrågas.
 

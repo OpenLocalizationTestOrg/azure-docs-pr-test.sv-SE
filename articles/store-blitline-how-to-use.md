@@ -1,6 +1,6 @@
 ---
-title: "aaaHow toouse Blitline för bearbetning av bilden – Azure funktion guide"
-description: "Lär dig hur toouse hello Blitline tjänsten tooprocess bilderna i ett Azure-program."
+title: "Hur du använder Blitline för avbildningen bearbetning - Azure funktion guide"
+description: "Lär dig hur du använder tjänsten Blitline för att behandla bilder i ett Azure-program."
 services: 
 documentationcenter: .net
 author: blitline-dev
@@ -14,37 +14,37 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/09/2014
 ms.author: support@blitline.com
-ms.openlocfilehash: 328fd177e25f45f29f8ad8e142d02b46017a858e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 1d90599e028b3407a513b04b878e3aefc39928a2
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="how-toouse-blitline-with-azure-and-azure-storage"></a>Hur toouse Blitline med Azure och Azure Storage
-Den här guiden förklarar hur tooaccess Blitline tjänster och hur toosubmit jobb tooBlitline.
+# <a name="how-to-use-blitline-with-azure-and-azure-storage"></a>Hur du använder Blitline med Azure och Azure Storage
+Den här guiden förklarar hur du komma åt Blitline tjänster och skicka jobb till Blitline.
 
 ## <a name="what-is-blitline"></a>Vad är Blitline?
-Blitline är en molnbaserad avbildning bearbetning av tjänst som tillhandahåller enterprise nivån avbildningen bearbetning på en bråkdel av hello pris att det skulle kosta toobuild den själv.
+Blitline är en molnbaserad avbildning bearbetning av tjänst som tillhandahåller enterprise nivån avbildningen bearbetning på en bråkdel av det pris som den skulle kostnaden för att skapa den själv.
 
-hello faktum är att avbildningen bearbetningen har gjorts upprepade gånger, vanligtvis återskapas från grunden hello varje webbplats. Vi förstår detta eftersom vi har byggt dem miljoner gånger för. En dag som vi valt kanske är det dags göra vi bara det för alla. Vi vet hur toodo den toodo den snabb och effektiv och spara alla fungerar i hello tiden.
+Faktum är att avbildningen bearbetningen har gjorts upprepade gånger, vanligtvis återskapas från grunden för varje webbplats. Vi förstår detta eftersom vi har byggt dem miljoner gånger för. En dag som vi valt kanske är det dags göra vi bara det för alla. Vi vet hur du gör den att göra det snabbt och effektivt och spara alla arbets under tiden.
 
 Mer information finns i [http://www.blitline.com](http://www.blitline.com).
 
 ## <a name="what-blitline-is-not"></a>Vad Blitline är inte...
-tooclarify vad Blitline är användbart för, är det ofta enklare tooidentify vad Blitline inte utför innan du går vidare.
+För att förtydliga vad Blitline är användbart för, är det ofta enklare att identifiera vad Blitline utför inte innan du går vidare.
 
-* Blitline har inte HTML widgetar tooupload bilder. Du måste ha tillgängliga avbildningarna offentligt eller med begränsade behörigheter som är tillgängliga för Blitline tooreach.
+* Blitline har inte HTML-widgetar att ladda upp bilder. Du måste ha tillgängliga avbildningarna offentligt eller med begränsade behörigheter som är tillgängliga för Blitline att nå.
 * Blitline utför inte live avbildningen bearbetning, till exempel Aviary.com
-* Blitline accepteras inte av bilder, kan inte vara utgivarinitierad bilder-tooBlitline direkt. Du måste push-installera dem tooAzure lagring eller andra platser som har stöd för Blitline och berätta var toogo få dem Blitline.
+* Blitline accepteras inte av bilder, kan inte vara utgivarinitierad bilderna till Blitline direkt. Du måste push-installera dem till Azure Storage eller andra platser har stöd för Blitline och berätta Blitline var hämta dem.
 * Blitline är massivt parallell och utför inte någon synkron bearbetning. Vilket innebär att du måste ge oss en postback_url och vi kan meddela dig när vi är klar bearbetning.
 
 ## <a name="create-a-blitline-account"></a>Skapa ett Blitline-konto
 [!INCLUDE [blitline-signup](../includes/blitline-signup.md)]
 
-## <a name="how-toocreate-a-blitline-job"></a>Hur toocreate ett Blitline-jobb
-Blitline använder JSON toodefine hello åtgärder som du vill tootake på en bild. Den här JSON består av några enkla fält.
+## <a name="how-to-create-a-blitline-job"></a>Så här skapar du ett Blitline-jobb
+Blitline använder JSON för att definiera de åtgärder som du vill ta med en bild. Den här JSON består av några enkla fält.
 
-hello enklaste exemplet är följande:
+Det enklaste exemplet är följande:
 
         json : '{
        "application_id": "MY_APP_ID",
@@ -56,17 +56,17 @@ hello enklaste exemplet är följande:
        } ]
     }'
 
-Här är JSON som tar en avbildning ”src” ”... boys.jpeg” och sedan ändra storlek på det bild too240x140.
+Här är JSON som tar en avbildning ”src” ”... boys.jpeg” och sedan ändra storlek på avbildningen till 240 x 140.
 
-hello program-ID är något som du hittar i din **ANSLUTNINGSINFORMATION** eller **hantera** fliken på Azure. Det är din hemliga identifierare som gör toorun jobb på Blitline.
+Program-ID är något som du hittar i din **ANSLUTNINGSINFORMATION** eller **hantera** fliken på Azure. Det är din hemliga identifierare som gör det möjligt att köra på Blitline.
 
-Hej ”spara”-parametern identifierar information om där du vill tooput hello avbildningen när vi har bearbetat den. Vi har inte definierats någon i det här fallet är trivial. Om ingen plats har definierats Blitline lagrar det lokalt (och tillfälligt) på en plats som unikt molnet. Du kommer att kunna tooget som platsen från hello JSON som returneras av Blitline när du gör hello Blitline. Hej ”bild” identifierare krävs och returneras tooyou när tooidentify sparade den här viss bild.
+Parametern ”spara” identifierar information om var du vill placera avbildningen när vi har bearbetat den. Vi har inte definierats någon i det här fallet är trivial. Om ingen plats har definierats Blitline lagrar det lokalt (och tillfälligt) på en plats som unikt molnet. Du kommer att kunna hämta den platsen från JSON som returneras av Blitline när du gör Blitline. Identifieraren ”bild” krävs och returneras till dig när att identifiera den här viss spara bilden.
 
-Du hittar mer information om hello *funktioner* stöder vi här: <http://www.blitline.com/docs/functions>
+Du hittar mer information om den *funktioner* stöder vi här: <http://www.blitline.com/docs/functions>
 
-Du kan också hitta dokumentation om hello alternativ här: <http://www.blitline.com/docs/api>
+Du kan också hitta dokumentation om jobbet alternativen: <http://www.blitline.com/docs/api>
 
-När du har din JSON är allt du behöver toodo **POST** den för`http://api.blitline.com/job`
+När du har din JSON är allt du behöver göra **POST** att`http://api.blitline.com/job`
 
 Får du JSON tillbaka som ser ut ungefär så här:
 
@@ -82,10 +82,10 @@ Får du JSON tillbaka som ser ut ungefär så här:
     }
 
 
-Du ser att Blitline har tagit emot din begäran, den har placerats i en kö för bearbetning och när den har slutförts hello avbildningen ska vara tillgängligt vid: **https://s3.amazonaws.com/dev.blitline/2011110722/YOUR\_APP\_ID /CK3f0xBF_2bV6wf7gEZE8w.jpg**
+Du ser att Blitline har tagit emot din begäran, den har placerats i en kö för bearbetning och när den har slutförts avbildningen ska vara tillgängligt vid: **https://s3.amazonaws.com/dev.blitline/2011110722/YOUR\_APP\_ID/CK3f0xBF_2bV6wf7gEZE8w.jpg**
 
-## <a name="how-toosave-an-image-tooyour-azure-storage-account"></a>Hur toosave en bild tooyour Azure Storage-konto
-Om du har ett Azure Storage-konto kan ha du enkelt Blitline push hello bearbetas bilder till din Azure-behållaren. Genom att lägga till en ”azure_destination” definiera hello plats och behörigheter för Blitline toopush till.
+## <a name="how-to-save-an-image-to-your-azure-storage-account"></a>Hur du sparar en avbildning i Azure Storage-konto
+Om du har ett Azure Storage-konto kan har du enkelt Blitline skicka bearbetade bilder till din Azure-behållaren. Genom att lägga till en ”azure_destination” definiera plats och behörigheter för Blitline att skicka till.
 
 Här är ett exempel:
 
@@ -105,20 +105,20 @@ Här är ett exempel:
        }'
 
 
-Genom att fylla i hello CAPITALIZED värden med dina egna, kan du skicka den här JSON-toohttp://api.blitline.com/job och hello ”src” bild bearbetas med ett filter för oskärpa och pushas tooyou Azure mål.
+Genom att fylla i CAPITALIZED värdena med dina egna, kan du skicka den här JSON till http://api.blitline.com/job och ”src” bilden kommer att bearbetas med ett filter för oskärpa och sedan pushas till Azure mål.
 
 ### <a name="please-note"></a>Obs!
-hello SAS måste innehålla hello hela SAS-url, inklusive hello filnamnet hello målfilen.
+SAS måste innehålla den hela SAS-url, inklusive filnamn för målfilen.
 
 Exempel:
 
     http://blitline.blob.core.windows.net/sample/image.jpg?sr=b&sv=2012-02-12&st=2013-04-12T03%3A18%3A30Z&se=2013-04-12T04%3A18%3A30Z&sp=w&sig=Bte2hkkbwTT2sqlkkKLop2asByrE0sIfeesOwj7jNA5o%3D
 
 
-Du kan också läsa hello senaste utgåvan av Blitline's Azure Storage docs [här](http://www.blitline.com/docs/azure_storage).
+Du kan också läsa den senaste utgåvan av Blitline's Azure Storage docs [här](http://www.blitline.com/docs/azure_storage).
 
 ## <a name="next-steps"></a>Nästa steg
-Besök blitline.com tooread om våra andra funktioner:
+Besök blitline.com att läsa om våra andra funktioner:
 
 * Blitline API-slutpunkt Docs <http://www.blitline.com/docs/api>
 * Blitline API-funktioner <http://www.blitline.com/docs/functions>

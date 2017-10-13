@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure HDInsight-dokumentation – självstudier, API-referens | Microsoft Docs"
-description: "Lär dig om Hadoop på HDInsight. Dokumentationen visar hur toouse Hadoop, Spark, HBase, R-Server och flera tooprocess analysera och få insikter från stordata."
+title: "Dokumentation om Azure HDInsight – Självstudier, API-referens | Microsoft Docs"
+description: "Lär dig om Hadoop på HDInsight. Dokumentation som visar dig hur du kan använda Hadoop, Spark, HBase, R-Server med flera för att bearbeta, analysera och få insikter från stordata."
 services: hdinsight
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 592c31863df2e90886c9e9596b1a24edea79e990
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 7d639ca03261f3a9cad537dd92103c5aa6cd0af9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 #<a name="azure-hdinsight-documentation"></a>Dokumentation om Azure HDInsight
 
-Lär dig hur toouse Hadoop i hello cloud på HDInsight tooanalyze strömmande eller historiska data. Självstudier och andra dokumentationen visar hur toocreate kluster, bearbeta och analysera stordata och utveckla lösningar med Hadoop, Spark, HBase, R-Server, Storm och andra tekniker i hello Hadoop-ekosystemet.
+Lär dig hur du använder Hadoop i molnet på HDInsight för att analysera strömmande eller historiska data. Självstudiekurser och annan dokumentationen visar hur du skapar kluster, bearbetar och analyserar stordata och utvecklar lösningar med Hadoop, Spark, HBase, R-Server, Storm och andra tekologier i Hadoop-ekosystemet.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -125,6 +125,24 @@ Lär dig hur toouse Hadoop i hello cloud på HDInsight tooanalyze strömmande el
                     </div>
                     <div class="cardText">
                         <h3>Kom igång med HDInsight med ett Apache Storm-kluster</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+<li>
+        <a href="https://github.com/hdinsight/hdinsight-dev-guide/blob/master/HDInsight%20Developer%20Guide.pdf">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/tutorial.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Utvecklarguide för HDInsight</h3>
                     </div>
                 </div>
             </div>

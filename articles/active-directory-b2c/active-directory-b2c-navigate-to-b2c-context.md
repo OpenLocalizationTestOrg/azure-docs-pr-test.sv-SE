@@ -1,6 +1,6 @@
 ---
-title: "Azure Active Directory B2C: Växla tooa B2C-klient | Microsoft Docs"
-description: "Hur tooswitch i hello kontexten för din Active Directory B2C-klient"
+title: 'Azure Active Directory B2C: Byta till en B2C-klient | Microsoft Docs'
+description: "Så här byter du till samma kontext som din Active Directory B2C-klient finns i"
 services: active-directory-b2c
 documentationcenter: 
 author: parakhj
@@ -14,33 +14,33 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 4/13/2017
 ms.author: parakhj
-ms.openlocfilehash: 572f9ab283ecac68d284bb04fdfc98575bcf9393
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 40d8d57d974a949fbdc0a06eeceb2d06bfbaa09f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="switching-tooyour-azure-ad-b2c-tenant"></a>Växla tooyour Azure AD B2C-klient
+# <a name="switching-to-your-azure-ad-b2c-tenant"></a>Byta till en Azure AD B2C-klient
 
-I ordning tooconfigure Azure AD B2C måste toobe i hello kontexten för din Azure AD B2C-klient.
+Om du vill konfigurera Azure AD B2C måste du först byta till samma kontext som Azure AD B2C-klienten finns i.
 
 ## <a name="log-into-azure-ad-b2c-tenant"></a>Logga in på Azure AD B2C-klienten
 
-toonavigate tooyour Azure AD B2C-klient, du måste vara inloggad på hello Azure-portalen som global administratör för hello Azure AD B2C-klient.
+Om du vill navigera till din Azure AD B2C-klient måste du vara inloggad i Azure Portal som global administratör för Azure AD B2C-klienten.
 
-1. Logga in på hello [Azure-portalen](http://portal.azure.com).
-1. Växla klienter genom att klicka på din e-postadress eller bild i hello övre högra hörnet.
-1. I hello `Directory` listan som visas väljer hello Azure AD B2C-klient som du vill toomanage.
+1. Logga in på [Azure-portalen](http://portal.azure.com).
+1. Växla mellan klienterna genom att klicka på din e-postadress eller på bilden i det övre högra hörnet.
+1. I den `Directory`-lista som visas väljer du den Azure AD B2C-klient som du vill hantera.
 
-hello Azure Portal uppdateras.  Du är nu inloggad på hello Azure-portalen i hello kontexten för din Azure AD B2C-klient.
+Azure Portal uppdateras.  Du är nu inloggad på Azure Portal, i samma kontext som din Azure AD B2C-klient.
 
-## <a name="navigate-toohello-b2c-features-blade"></a>Navigera toohello B2C-funktionsbladet
+## <a name="navigate-to-the-b2c-features-blade"></a>Gå till B2C-funktionsbladet
 
-1. Klicka på **Bläddra** på hello vänstra navigeringsfönstret.
-1. Klicka på **> fler tjänster** och sök sedan efter `Azure AD B2C` i hello vänstra navigeringsfönstret.  (toopin tooyour vänstra startsidan klickar du på hello stjärna toohello till vänster i Azure AD B2C)
-1. Klicka på **Azure AD B2C** tooaccess hello B2C-funktionsbladet.
+1. Klicka på **Bläddra** i det vänstra navigeringsfönstret.
+1. Klicka på  **> Fler tjänster** och sök efter `Azure AD B2C` i det vänstra navigeringsfönstret.  (Klicka på stjärnan till vänster om Azure AD B2C för att fästa vid vänster startsida)
+1. Klicka på **Azure AD B2C** för att komma åt B2C-funktionsbladet.
    
-    ![Skärmbild som visar Bläddra tooB2C funktionsbladet](./media/active-directory-b2c-get-started/b2c-browse.png)
+    ![Skärmbild av bläddring till B2C-funktionsbladet](./media/active-directory-b2c-get-started/b2c-browse.png)
 
 > [!IMPORTANT]
-> Du måste toobe Global administratör för hello B2C-klient toobe kan tooaccess hello B2C-funktionsbladet. En global administratör från en annan klient eller en användare från en klient kan inte komma åt det.  Du kan växla tooyour B2C-klient med hjälp av hello klient switcher i hello övre högra hörnet av hello Azure-portalen.
+> Du måste vara global administratör för B2C-klienten för att kunna komma åt B2C-funktionsbladet. En global administratör från en annan klient eller en användare från en klient kan inte komma åt det.  Du kan växla till B2C-klienten med klientväxlaren i det övre högra hörnet i Azure Portal.

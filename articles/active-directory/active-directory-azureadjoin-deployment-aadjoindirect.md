@@ -1,6 +1,6 @@
 ---
-title: "aaaUsage scenarier och överväganden vid distribution för Azure AD Join | Microsoft Docs"
-description: "Förklarar hur administratörer kan konfigurera Azure AD Join för slutanvändarna (anställda, studenter, andra användare). Här beskrivs också hello olika verkliga scenarier för att använda Azure AD Join."
+title: "Användningsscenarier och överväganden vid distribution för Azure AD Join | Microsoft Docs"
+description: "Förklarar hur administratörer kan konfigurera Azure AD Join för slutanvändarna (anställda, studenter, andra användare). Här beskrivs också olika verkliga scenarier för att använda Azure AD Join."
 services: active-directory
 documentationcenter: 
 author: femila
@@ -15,36 +15,36 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2017
 ms.author: markvi
-ms.openlocfilehash: 7e57971481aa312ebf8a69999d194f9dcc3d4708
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: fd0aab1a14bbd324e734e5efe8fe101e8a8dfefa
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="usage-scenarios-and-deployment-considerations-for-azure-ad-join"></a>Användningsscenarier och överväganden vid distribution för Azure AD Join
 ## <a name="usage-scenarios-for-azure-ad-join"></a>Användningsscenarier för Azure AD Join
-### <a name="scenario-1-businesses-largely-in-hello-cloud"></a>Scenario 1: Företag i stort sett i hello moln
-Azure Active Directory Join (Azure AD Join) du kan ha nytta om du för närvarande fungerar och hantera identiteter för ditt företag i molnet hello eller flyttar toohello moln snart. Du kan använda ett konto som du har skapat i Azure AD toosign i tooWindows 10. Via [hello först köra experience (FRX) processen](active-directory-azureadjoin-user-frx.md), eller genom att ansluta till Azure AD från [hello inställningsmenyn](active-directory-azureadjoin-user-upgrade.md), dina användare kan ansluta till sina datorer tooAzure AD.  Användarna kan också få enkel inloggning (SSO) åtkomst för molnresurser som Office 365 i webbläsaren eller i Office-program.
+### <a name="scenario-1-businesses-largely-in-the-cloud"></a>Scenario 1: Företag i stort sett i molnet
+Azure Active Directory Join (Azure AD Join) du kan ha nytta om du för närvarande fungerar och hantera identiteter för ditt företag i molnet eller flytt till molnet snart. Du kan använda ett konto som du har skapat i Azure AD för att logga in på Windows 10. Via [första gången du kör uppstå (FRX) processen](active-directory-azureadjoin-user-frx.md), eller genom att ansluta till Azure AD från [inställningsmenyn](active-directory-azureadjoin-user-upgrade.md), kan användarna ansluta sina datorer till Azure AD.  Användarna kan också få enkel inloggning (SSO) åtkomst till molnresurser som Office 365 i webbläsaren eller i Office-program.
 
 ### <a name="scenario-2-educational-institutions"></a>Scenario 2: Utbildningssyfte
-Utbildningssyfte har vanligtvis två användartyper: lärare och övrig personal och studenter. Fakultetsmedlemmar anses långsiktig medlemmar i hello organisation. Skapa lokala konton för dem. är önskvärt. Men studenter tillhör shorter-term hello organisation och sina konton kan hanteras i Azure AD. Det innebär att directory skala flyttas toohello moln i stället för att lagras lokalt. Det innebär också att studenter som kommer att kunna toosign i tooWindows med sina Azure AD-konton och få åtkomst till tooOffice 365 resurser i Office-program.
+Utbildningssyfte har vanligtvis två användartyper: lärare och övrig personal och studenter. Fakultetsmedlemmar anses långsiktig medlemmar i organisationen. Skapa lokala konton för dem. är önskvärt. Men studenter shorter-term som ingår i organisationen och sina konton kan hanteras i Azure AD. Det innebär att directory skala kan skickas till molnet i stället för att lagras lokalt. Det innebär också att studenter som kommer att kunna logga in till Windows med sina Azure AD-konton och få åtkomst till Office 365-resurser i Office-program.
 
 ### <a name="scenario-3-retail-businesses"></a>Scenario 3: Retail företag
-Retail företag har säsongsbaserade arbetare och långsiktig anställda. Du vanligtvis skapa lokala konton och använda domänanslutna datorer för långsiktig heltidsanställda. Men när anställda tillhör shorter-term hello organisation, och det är önskvärt toomanage sina konton där användarlicenser kan enkelt flytta runt. När du skapar sina konton i hello moln med Office 365 licenser kan få dessa användare hello fördelarna med att logga in tooWindows och Office-program med Azure AD-kontot, samtidigt som du behåller mer flexibelt med licenser när de lämnar.
+Retail företag har säsongsbaserade arbetare och långsiktig anställda. Du vanligtvis skapa lokala konton och använda domänanslutna datorer för långsiktig heltidsanställda. Men när anställda är shorter-term medlemmar i organisationen och det är klokt att hantera sina konton där användarlicenser kan enkelt flytta runt. När du skapar sina konton i molnet med Office 365 licenser kan få dessa användare fördelarna med att logga in på Windows och Office-program med Azure AD-kontot, samtidigt som du behåller mer flexibelt med licenser när de lämnar.
 
 ### <a name="scenario-4-additional-scenarios"></a>Scenario 4: Fler scenarier
-Tillsammans med hello fördelar som tidigare diskuterats, dra nytta av att användarna ansluta sina enheter tooAzure AD på grund av en förenklad anslutande upplevelse, effektiv enhetshantering, automatisk hantering av mobilenhetsregistrering och tooAzure för enkel inloggning AD och lokala resurser.  
+Tillsammans med de fördelar som tidigare diskuterats, dra nytta av att användarna ansluta sina enheter till Azure AD på grund av en förenklad anslutande upplevelse, effektiv enhetshantering, automatisk hantering av mobilenhetsregistrering och enkel inloggning till Azure AD och lokala resurser.  
 
 ## <a name="deployment-considerations-for-azure-ad-join"></a>Överväganden vid distribution för Azure AD Join
-### <a name="enable-your-users-toojoin-a-company-owned-device-directly-tooazure-ad"></a>Aktivera din användare toojoin en företagsägd enhet direkt tooAzure AD
-Företag kan tillhandahålla molnbaserad konton toopartner företag och organisationer. Dessa partners kan sedan enkelt komma åt företagets appar och resurser med enkel inloggning. Det här scenariot är tillämpliga toousers som har åtkomst till resurser i första hand i hello molnet, till exempel Office 365 eller SaaS-appar som förlitar sig på Azure AD för autentisering.
+### <a name="enable-your-users-to-join-a-company-owned-device-directly-to-azure-ad"></a>Ge användarna att ansluta till en företagsägd enhet direkt till Azure AD
+Företag kan tillhandahålla molnbaserad konton till partnerföretag och organisationer. Dessa partners kan sedan enkelt komma åt företagets appar och resurser med enkel inloggning. Det här scenariot gäller för användare som har åtkomst till resurser i första hand i molnet, till exempel Office 365 eller SaaS-appar som förlitar sig på Azure AD för autentisering.
 
 ### <a name="prerequisites"></a>Krav
-**På företagsnivå hello (administratör)**
+**På företagsnivå (administratör)**
 
 * Azure-prenumeration med Azure Active Directory  
 
-**På användarnivå hello**
+**På användarnivå**
 
 * Windows 10 (Professional och Enterprise Edition)
 
@@ -53,18 +53,18 @@ Företag kan tillhandahålla molnbaserad konton toopartner företag och organisa
 
 ### <a name="user-tasks"></a>Användaruppgifter
 * [Skapa en ny Windows 10-enhet med Azure AD under installationen](active-directory-azureadjoin-user-frx.md)
-* [Konfigurera en Windows 10-enhet med Azure AD hello inställningsmenyn](active-directory-azureadjoin-user-upgrade.md)
-* [Ansluta till en personlig tooyour organisation för Windows 10-enhet](active-directory-azureadjoin-personal-device.md)
+* [Konfigurera en Windows 10-enhet med Azure AD från inställningsmenyn](active-directory-azureadjoin-user-upgrade.md)
+* [Ansluta en egen Windows 10-enhet till din organisation](active-directory-azureadjoin-personal-device.md)
 
 ## <a name="enable-byod-in-your-organization-for-windows-10"></a>Aktivera BYOD i din organisation för Windows 10
-Du kan ställa in din användare och anställda toouse sina personliga Windows-enheter (BYOD) tooaccess företagets appar och resurser. Användarna kan lägga till sina Azure AD-konton (arbets- eller skolkonto konton) tooa personliga Windows tooaccess resurser på ett sätt som skyddade och kompatibla.
+Du kan konfigurera användare och anställda använda sina personliga Windows-enheter (BYOD) för att få åtkomst till företagets appar och resurser. Användarna kan lägga till sina Azure AD-konton (arbets- eller skolkonto konton) till en personlig windowsenhet för att komma åt resurser på ett sätt som skyddade och kompatibla.
 
 ### <a name="prerequisites"></a>Krav
-**På företagsnivå hello (administratör)**
+**På företagsnivå (administratör)**
 
 * Azure AD-prenumeration
 
-**På användarnivå hello**
+**På användarnivå**
 
 * Windows 10 (Professional och Enterprise Edition)
 
@@ -72,13 +72,13 @@ Du kan ställa in din användare och anställda toouse sina personliga Windows-e
 * [Konfigurera enhetsregistrering](active-directory-azureadjoin-setup.md)
 
 ### <a name="user-tasks"></a>Användaruppgifter
-* [Ansluta till en personlig tooyour organisation för Windows 10-enhet](active-directory-azureadjoin-personal-device.md)
+* [Ansluta en egen Windows 10-enhet till din organisation](active-directory-azureadjoin-personal-device.md)
 
 ## <a name="additional-information"></a>Ytterligare information
-* [Windows 10 för hello företaget: sätt toouse enheter för arbete](active-directory-azureadjoin-windows10-devices-overview.md)
-* [Utöka molnet funktioner tooWindows 10-enheter via Azure Active Directory Join](active-directory-azureadjoin-user-upgrade.md)
+* [Windows 10 för företaget: Sätt att använda enheter för arbete](active-directory-azureadjoin-windows10-devices-overview.md)
+* [Utöka molnkapaciteten till Windows 10-enheter via Azure Active Directory Join](active-directory-azureadjoin-user-upgrade.md)
 * [Autentisera identiteter utan lösenord via Microsoft Passport](active-directory-azureadjoin-passport.md)
 * [Läs mer om användningsscenarier för Azure AD Join](active-directory-azureadjoin-deployment-aadjoindirect.md)
-* [Ansluta domänanslutna enheter tooAzure AD för Windows 10-upplevelser](active-directory-azureadjoin-devices-group-policy.md)
+* [Ansluta domänanslutna enheter till miljöer med Azure AD och Windows 10](active-directory-azureadjoin-devices-group-policy.md)
 * [Konfigurera Azure AD Join](active-directory-azureadjoin-setup.md)
 

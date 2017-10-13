@@ -1,6 +1,6 @@
 ---
-title: aaaUse bcp tooload data till SQL Data Warehouse | Microsoft Docs
-description: "Lär dig vad bcp är och hur toouse det för informationslagerscenarier."
+title: "Använd bcp för att läsa in data till SQL Data Warehouse | Microsoft Docs"
+description: "Läs mer om vad bcp är och hur man använder det för informationslager-scenarier."
 services: sql-data-warehouse
 documentationcenter: NA
 author: ckarst
@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: loading
 ms.date: 10/31/2016
 ms.author: cakarst;barbkess
-ms.openlocfilehash: 09a2980585097644924c71899f9e74fb32fbc26d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 7596eac10fdf53380d85128265430ce07b551fe3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="load-data-with-bcp"></a>Läsa in data med bcp
 > [!div class="op_single_selector"]
@@ -30,41 +30,41 @@ ms.lasthandoff: 10/06/2017
 > 
 > 
 
-**[BCP] [ bcp]**  är ett kommandoradsverktyg för massinläsning som gör att du toocopy data mellan SQL Server, datafiler och SQL Data Warehouse. Använd bcp tooimport stort antal rader till SQL Data Warehouse-tabeller eller tooexport data från SQL Server-tabeller till datafiler. Förutom när det används med queryout-alternativet hello, behöver bcp inte Transact-SQL.
+**[bcp][bcp]** är ett kommandoradsverktyg för massinläsning som låter dig kopiera data mellan SQL Server, datafiler och SQL Data Warehouse. Använd bcp för att importera ett stort antal rader till SQL Data Warehouse-tabeller eller exportera data från SQL Server-tabeller till datafiler. Bcp kräver ingen Transact-SQL kunskap förutom när det används med queryout-alternativet.
 
-BCP är ett snabbt och enkelt sätt toomove mindre datauppsättningar in och ut från en SQL Data Warehouse-databas. hello exakta mängden data som tooload/extrahera med bcp rekommenderas beror på du nätverks anslutning toohello Azure-datacenter.  Generellt sett kan dimensionstabeller enkelt läsas in och extraheras med bcp, men bcp rekommenderas inte för inläsning eller extrahering av stora mängder data.  Polybase är hello rekommenderas för inläsning och extrahering av stora mängder data eftersom det är bättre utnyttja hello massivt parallella bearbetningsarkitekturen i SQL Data Warehouse.
+bcp är ett snabbt och enkelt sätt att flytta mindre datauppsättningar in och ut från en SQL Data Warehouse-databas. Den exakta mängden data som rekommenderas att läsa in/extrahera med bcp, beror på din nätverksanslutning till Azure-datacentret.  Generellt sett kan dimensionstabeller enkelt läsas in och extraheras med bcp, men bcp rekommenderas inte för inläsning eller extrahering av stora mängder data.  Polybase rekommenderas för inläsning och extrahering av stora mängder data, eftersom det är bättre på att utnyttja den massivt parallella bearbetningsarkitekturen i SQL Data Warehouse.
 
 Med bcp kan du:
 
-* Använd ett enkelt kommandoradsverktyg tooload data till SQL Data Warehouse.
-* Använd ett enkelt kommandoradsverktyg tooextract data från SQL Data Warehouse.
+* Använda ett enkelt kommandoradsverktyg för att läsa in data till SQL Data Warehouse.
+* Använda ett enkelt kommandoradsverktyg för att extrahera data från SQL Data Warehouse.
 
 De här självstudierna visar hur du:
 
-* Importera data till en tabell med bcp hello i kommandot
-* Exportera data från en tabell med hello bcp out-kommandot
+* Importerar data till en tabell med bcp in-kommandot
+* Exporterar data från en tabell med bcp out-kommandot
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Loading-data-into-Azure-SQL-Data-Warehouse-with-BCP/player]
 > 
 > 
 
 ## <a name="prerequisites"></a>Krav
-toostep igenom den här kursen behöver du:
+För att gå igenom de här självstudierna, behöver du:
 
 * En SQL Data Warehouse-databas
-* hello kommandoradsverktyget bcp installerat
-* hello kommandoradsverktyget SQLCMD installerat
+* Kommandoradsverktyget bcp installerat
+* Kommandoradsverktyget SQLCMD installerat
 
 > [!NOTE]
-> Du kan hämta verktygen bcp och sqlcmd för hello från hello [Microsoft Download Center][Microsoft Download Center].
+> Du kan hämta verktygen bcp och sqlcmd från [Microsoft Download Center][Microsoft Download Center].
 > 
 > 
 
 ## <a name="import-data-into-sql-data-warehouse"></a>Importera data till SQL Data Warehouse
-I kursen får du skapa en tabell i Azure SQL Data Warehouse och importera data till hello tabell.
+I de här självstudierna kommer du att skapa en tabell i Azure SQL Data Warehouse och importera data till tabellen.
 
 ### <a name="step-1-create-a-table-in-azure-sql-data-warehouse"></a>Steg 1: Skapa en tabell i Azure SQL Data Warehouse
-Använd sqlcmd toorun hello följande fråga toocreate en tabell på din instans från en kommandotolk:
+Använd sqlcmd från en kommandotolk för att köra följande fråga och skapa en tabell på din instans:
 
 ```sql
 sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q "
@@ -83,12 +83,12 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 ```
 
 > [!NOTE]
-> Se [tabell översikt] [ Table Overview] eller [CREATE TABLE-syntax] [ CREATE TABLE syntax] för mer information om hur du skapar en tabell i SQL Data Warehouse och hello  alternativen i hello WITH-satsen.
+> Se [Tabellöversikt][Table Overview] eller [CREATE TABLE-syntax][CREATE TABLE syntax] för ytterligare information om hur man skapar en tabell i SQL Data Warehouse och alternativen som finns i WITH-satsen.
 > 
 > 
 
 ### <a name="step-2-create-a-source-data-file"></a>Steg 2: Skapa en källdatafil
-Öppna Anteckningar och kopiera hello följande rader med data i en ny textfil och sedan spara den här filen tooyour lokala temp-katalog, C:\Temp\DimDate2.txt.
+Öppna Anteckningar och kopiera följande datarader till en ny textfil. Spara sedan filen till din lokala temp-katalog, C:\Temp\DimDate2.txt.
 
 ```
 20150301,1,3
@@ -106,24 +106,24 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 ```
 
 > [!NOTE]
-> Det är viktigt tooremember att bcp.exe inte har stöd för hello UTF-8 Filkodning. Använd ASCII-filer eller UTF-16-kodade filer när du använder bcp.exe.
+> Det är viktigt att komma ihåg att bcp.exe inte har stöd för UTF-8 filkodning. Använd ASCII-filer eller UTF-16-kodade filer när du använder bcp.exe.
 > 
 > 
 
-### <a name="step-3-connect-and-import-hello-data"></a>Steg 3: Anslut och importera hello data
-Med bcp kan du ansluta och importera hello data med hjälp av följande kommando ersätter hello värdena med lämpliga sådana hello:
+### <a name="step-3-connect-and-import-the-data"></a>Steg 3: Anslut och importera data
+Med bcp kan du ansluta och importera data med hjälp av följande kommando, där du ersätter värdena med lämpliga sådana:
 
 ```sql
 bcp DimDate2 in C:\Temp\DimDate2.txt -S <Server Name> -d <Database Name> -U <Username> -P <password> -q -c -t  ','
 ```
 
-Du kan verifiera hello data har lästs in genom att köra följande fråga med sqlcmd hello:
+Du kan verifiera att data lästs in genom att köra följande fråga med hjälp av sqlcmd:
 
 ```sql
 sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q "SELECT * FROM DimDate2 ORDER BY 1;"
 ```
 
-Detta bör returnera hello följande resultat:
+Det ska returnera följande resultat:
 
 | DateId | CalendarQuarter | FiscalQuarter |
 | --- | --- | --- |
@@ -141,9 +141,9 @@ Detta bör returnera hello följande resultat:
 | 20151201 |4 |2 |
 
 ### <a name="step-4-create-statistics-on-your-newly-loaded-data"></a>Steg 4: Skapa statistik på dina nyinlästa data
-SQL Data Warehouse stöder inte än automatiskt skapande eller uppdatering av statistik. I ordning tooget hello bästa prestanda från dina frågor, är det viktigt att statistik skapas på alla kolumner i alla tabeller efter hello första inläsningen eller vid betydande dataändringar i hello data. En detaljerad förklaring av statistik finns hello [statistik] [ Statistics] -avsnittet i hello ämnesgruppen. Nedan visas ett enkelt exempel på hur toocreate statistik hello fram läses in i det här exemplet
+SQL Data Warehouse stöder inte än automatiskt skapande eller uppdatering av statistik. För att få bästa möjliga prestanda från dina frågor, är det viktigt att statistik skapas på alla kolumner i alla tabeller efter den första inläsningen eller vid betydande dataändringar. En detaljerad förklaring av statistik finns i ämnet [Statistik][Statistics] i ämnesgruppen Utveckla. Nedan följer ett enkelt exempel på hur du skapar statistik på tabellerna som lästs in i det här exemplet
 
-Kör följande CREATE STATISTICS-uttryck från en sqlcmd-kommandotolk hello:
+Kör följande CREATE STATISTICS-uttryck från en sqlcmd-kommandotolk:
 
 ```sql
 sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q "
@@ -154,15 +154,15 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 ```
 
 ## <a name="export-data-from-sql-data-warehouse"></a>Exportera data från SQL Data Warehouse
-I de här självstudierna kommer du att skapa en datafil från en tabell i SQL Data Warehouse. Vi kommer att exportera hello data vi skapade ovan tooa ny datafil som heter DimDate2_export.txt.
+I de här självstudierna kommer du att skapa en datafil från en tabell i SQL Data Warehouse. Vi kommer att exportera de data vi skapade ovan till en ny datafil som heter DimDate2_export.txt.
 
-### <a name="step-1-export-hello-data"></a>Steg 1: Exportera hello data
-Använda hello bcp-verktyget kan du ansluta och exportera data med hjälp av följande kommando ersätter hello värdena med lämpliga sådana hello:
+### <a name="step-1-export-the-data"></a>Steg 1: Exportera data
+Med bcp-verktyget kan du ansluta och exportera data med hjälp av följande kommando, där du ersätter värdena med lämpliga sådana:
 
 ```sql
 bcp DimDate2 out C:\Temp\DimDate2_export.txt -S <Server Name> -d <Database Name> -U <Username> -P <password> -q -c -t ','
 ```
-Du kan kontrollera hello data exporterats korrekt genom att öppna nya hello-filen. hello data i hello filen bör matcha hello texten nedan:
+Du kan verifiera att data exporterats korrekt genom att öppna den nya filen. De data som finns i filen ska matcha texten nedan:
 
 ```
 20150301,1,3
@@ -180,7 +180,7 @@ Du kan kontrollera hello data exporterats korrekt genom att öppna nya hello-fil
 ```
 
 > [!NOTE]
-> På grund av toohello hur distribuerade system kanske inte hello dataordning hello samma över SQL Data Warehouse-databaser. Ett annat alternativ är toouse hello **queryout** funktionen i bcp toowrite en fråga extrakt istället exportera hello hela tabellen.
+> På grund av hur distribuerade system fungerar, är det möjligt att dataordningen inte är samma i alla SQL Data Warehouse-databaser. Ett annat alternativ är att använda **queryout**-funktionen i bcp för att skriva ett fråge-extrakt istället för att exportera hela tabellen.
 > 
 > 
 

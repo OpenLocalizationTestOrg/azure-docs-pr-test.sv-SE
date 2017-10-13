@@ -1,18 +1,18 @@
-Hej [Microsoft Azure Configuration Manager-biblioteket för .NET](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/) erbjuder en klass för parsning av en anslutningssträng från en konfigurationsfil. Hej [CloudConfigurationManager](https://msdn.microsoft.com/library/azure/mt634650.aspx) klassen Parsar konfigurationsinställningar oavsett om klientprogrammet för hello körs på hello skrivbordet, på en mobil enhet i en virtuell Azure-dator eller i en Azure-molntjänst.
+[Microsoft Azure-konfigurationshanterarens bibliotek för .NET](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/) erbjuder en klass för parsning av en anslutningssträng från en konfigurationsfil. [CloudConfigurationManager-klassen](https://msdn.microsoft.com/library/azure/mt634650.aspx) parsar konfigurationsinställningar oavsett om klientprogrammet körs på skrivbordet, på en mobil enhet, i en virtuell Azure-dator eller i en Azure-molntjänst.
 
-tooreference Hej CloudConfigurationManager-paketet, Lägg till följande hello `using` direktiv:
+Om du vill referera till CloudConfigurationManager-paketet lägger du till följande `using`-direktiv:
 
 ```csharp
 using Microsoft.Azure; //Namespace for CloudConfigurationManager
 ```
 
-Här är ett exempel som visar hur tooretrieve en anslutningssträngen från en konfigurationsfil:
+Här följer ett exempel som visar hur du kan hämta en anslutningssträng från en konfigurationsfil:
 
 ```csharp
-// Parse hello connection string and return a reference toohello storage account.
+// Parse the connection string and return a reference to the storage account.
 CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
     CloudConfigurationManager.GetSetting("StorageConnectionString"));
 ```
 
-Använda hello Azure Configuration Manager är valfritt. Du kan också använda en API som hello .NET Framework [ConfigurationManager](https://msdn.microsoft.com/library/system.configuration.configurationmanager.aspx) klass.
+Du måste inte använda Azure Configuration Manager. Du kan också använda ett API som .NET Frameworks [ConfigurationManager](https://msdn.microsoft.com/library/system.configuration.configurationmanager.aspx)-klass.
 

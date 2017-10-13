@@ -1,6 +1,6 @@
 ---
-title: "aaaCreate ditt första Azure-virtuellt nätverk | Microsoft Docs"
-description: "Lär dig hur toocreate ett Azure Virtual Network (VNet), ansluta två virtuella datorer (VM) toohello VNet och ansluta toohello virtuella datorer."
+title: "Skapa ditt första virtuella nätverk i Azure | Microsoft Docs"
+description: "Lär dig hur du skapar ett virtuellt Azure-nätverk (VNet), ansluter två virtuella datorer (VM) till ditt VNet och ansluter till de virtuella datorerna."
 services: virtual-network
 documentationcenter: 
 author: jimdial
@@ -15,79 +15,79 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/27/2016
 ms.author: jdial
-ms.openlocfilehash: 1981524cf706d5ebc83b1ff77735617550ff058a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: e653764d7cb514d50b44fadd0cc5963dd404d99e
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="create-your-first-virtual-network"></a>Skapa ditt första virtuella nätverk
 
-Lär dig hur toocreate ett virtuellt nätverk (VNet) med två undernät, skapa två virtuella datorer (VM) och ansluta varje VM-tooone av hello undernät, som visas i följande bild hello:
+Lär dig hur du skapar ett virtuellt nätverk (VNet) med två undernät, skapar två virtuella datorer (VM) och ansluter de båda virtuella datorerna till var sitt undernät. Se följande bild:
 
 ![Diagram över virtuellt nätverk](./media/virtual-network-get-started-vnet-subnet/vnet-diagram.png)
 
-Azure-nätverk (VNet) är en representation av ditt eget nätverk i hello molnet. Du kan själv styra dina Azure-nätverksinställningar och definiera DHCP-adressblock, DNS-inställningar, säkerhetsprinciper och routning. Mer om VNet begrepp läsa hello toolearn [översikt över virtuella nätverk](virtual-networks-overview.md) artikel. Utför följande steg toocreate hello resurser hello bilden hello:
+Ett Azure-virtuellt nätverk (VNet) är en representation av ditt eget nätverk i molnet. Du kan själv styra dina Azure-nätverksinställningar och definiera DHCP-adressblock, DNS-inställningar, säkerhetsprinciper och routning. Du kan läsa mer om VNet-begreppen i artikeln [Virtuella nätverk](virtual-networks-overview.md). Så här skapar du resurserna som visas i bilden:
 
 1. [skapa ett VNet med två undernät](#create-vnet)
-2. [Skapa två virtuella datorer, var och en med ett nätverksgränssnitt (NIC)](#create-vms), och koppla en network security group (NSG) tooeach NIC
-3. [Ansluta tooand från hello virtuella datorer](#connect-to-from-vms)
-4. [ta bort alla resurser](#delete-resources). Du betalar avgifter för några av hello resurser som skapades i den här övningen när de har etablerats. toominimize hello kostnader, när du har slutfört hello övningen bör toocomplete hello stegen i det här avsnittet toodelete hello-resurser som du skapar.
+2. [skapa två virtuella datorer med var sitt nätverksgränssnitt (NIC)](#create-vms) och koppla en nätverkssäkerhetsgrupp (NSG) till varje nätverkskort
+3. [anslut till och från de virtuella datorerna](#connect-to-from-vms)
+4. [ta bort alla resurser](#delete-resources). Det tillkommer avgifter för några av resurserna som skapas i den här övningen så länge de är etablerade. Du kan minimera avgifterna genom att utföra stegen i det här avsnittet och ta bort de resurser du skapar i övningen.
 
-Du har en grundläggande förståelse för hur du kan använda ett virtuellt nätverk när du slutför hello stegen i den här artikeln. Nästa steg tillhandahålls så att du kan lära dig mer om hur toouse Vnet på en djupare nivå.
+När du har utfört stegen i den här artikeln kommer du att ha en grundläggande förståelse för hur du kan använda ett VNet. I senare steg får du lära dig mer om hur du använder VNet på en djupare nivå.
 
 ## <a name="create-vnet"></a>Skapa ett virtuellt nätverk med två undernät
 
-toocreate ett virtuellt nätverk med två undernät, fullständig hello steg som följer. Olika undernät är vanligtvis används toocontrol hello trafikflödet mellan undernät.
+Så här skapar du ett virtuellt nätverk med två undernät. Olika undernät används normalt till att styra trafikflödet mellan undernät.
 
-1. Logga in toohello [Azure-portalen](<https://portal.azure.com>). Om du inte redan har ett konto kan du [registrera dig för en kostnadsfri utvärderingsmånad](https://azure.microsoft.com/free). 
-2. I hello **Favoriter** hello portalen klickar du på **ny**.
-3. I hello **ny** bladet, klickar du på **nätverk**. I hello **nätverk** bladet, klickar du på **för virtuella nätverk**som visas i följande bild hello:
+1. Logga in på [Azure-portalen](<https://portal.azure.com>). Om du inte redan har ett konto kan du [registrera dig för en kostnadsfri utvärderingsmånad](https://azure.microsoft.com/free). 
+2. Klicka på **Nytt** i rutan **Favoriter** i portalen.
+3. Klicka på **Nätverk** i bladet **Nytt**. Klicka på **Virtuellt nätverk** i bladet **Nätverk**, se följande bild:
 
     ![Diagram över virtuellt nätverk](./media/virtual-network-get-started-vnet-subnet/virtual-network.png)
 
-4.  I hello **för virtuella nätverk** bladet lämna *Resource Manager* markerad som hello distributionsmodell och klicka på **skapa**.
-5.  I hello **skapa virtuellt nätverk-bladet** som visas, ange följande värden hello och klicka sedan på **skapa**:
+4.  Lämna *Resource Manager* som distributionsmodell i bladet **Virtuellt nätverk** och klicka på **skapa**.
+5.  Ange följande värden bladet **Skapa virtuellt nätverk** och klicka på **Skapa**:
 
     |**Inställning**|**Värde**|**Detaljer**|
     |---|---|---|
-    |**Namn**|*MyVNet*|hello-namnet måste vara unikt inom hello resursgrupp.|
+    |**Namn**|*MyVNet*|Namnet måste vara unikt inom resursgruppen.|
     |**Adressutrymme**|*10.0.0.0/16*|Du kan ange valfritt adressutrymme med CIDR-notation.|
-    |**Namn på undernät**|*Klient*|Hej undernätsnamn måste vara unika inom hello virtuellt nätverk.|
-    |**Adressintervall för undernätet**|*10.0.0.0/24*| hello-intervall som du anger måste finnas i hello-adressutrymmet som definierats för hello virtuellt nätverk.|
-    |**Prenumeration**|*[din prenumeration]*|Välj en prenumeration toocreate hello VNet i. Ett VNet ligger i en enskild prenumeration.|
-    |**Resursgrupp**|**Skapa ny:** *MyRG*|Skapa en resursgrupp. hello resursgruppens namn måste vara unikt inom hello-prenumeration som du har valt. Mer om resursgrupper läsa hello toolearn [Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-groups) översiktsartikel.|
-    |**Plats**|*USA, västra*| Vanligtvis är hello plats som ligger närmast tooyour fysiska markerad.|
+    |**Namn på undernät**|*Klient*|Namnet på undernätet måste vara unikt inom det virtuella nätverket.|
+    |**Adressintervall för undernätet**|*10.0.0.0/24*| Det intervall du anger måste ligga inom det adressutrymme du definierade för det virtuella nätverket.|
+    |**Prenumeration**|*[din prenumeration]*|Välj den prenumeration där du vill skapa VNet-förekomsten. Ett VNet ligger i en enskild prenumeration.|
+    |**Resursgrupp**|**Skapa ny:** *MyRG*|Skapa en resursgrupp. Resursgruppens namn måste vara unikt inom den prenumeration du valde. Mer information om resursgrupper finns i [översikten över Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-groups).|
+    |**Plats**|*USA, västra*| Normalt den närmaste platsen rent geografiskt.|
 
-    Hej VNet tar några sekunder toocreate. När den har skapats kan du se hello Azure portalens instrumentpanel.
+    Det tar några sekunder att skapa ditt VNet. När det har skapats ser du instrumentpanelen för Azure Portal.
 
-6. Med hello virtuellt nätverk som skapats i hello Azure-portalen **Favoriter** rutan klickar du på **alla resurser**. Klicka på hello **MyVNet** virtuellt nätverk i hello **alla resurser** bladet. Om hello-prenumeration som du har valt redan har flera resurser i den, kan du ange *MyVNet* i hello **filtrera efter namn...** rutan tooeasily åtkomst hello virtuella nätverk.
-7. Hej **MyVNet** blad öppnas och visar information om hello VNet, enligt följande bild hello:
+6. Klicka på **Alla resurser** i rutan **Favoriter** för det virtuella nätverk du skapade. Klicka på det virtuella nätverket **MyVNet** i bladet **Alla resurser**. Om den prenumeration du valde redan har flera resurser kan du ange *MyVNet* i rutan **Filtrera efter namn** när du ska hitta ditt VNet.
+7. Bladet **MyVNet** öppnas och du ser information om ditt VNet, se följande bild:
 
     ![Diagram över virtuellt nätverk](./media/virtual-network-get-started-vnet-subnet/myvnet.png)
 
-8. I hello föregående bild visas klickar du på **undernät** toodisplay en lista över hello undernät i hello virtuella nätverk. hello undernät som finns är **frontend**, hello undernät som du skapade i steg 5.
-9. I hello MyVNet - undernät-bladet klickar du på **+ undernät** toocreate ett undernät med hello följande information och klickar på **OK** toocreate hello undernät:
+8. Så som visas i föregående bild kan du klicka på **Undernät** för att visa en lista med undernät i ditt VNet. Det enda undernät som finns är **Klient**, det undernät du skapade i steg 5.
+9. Klicka på **+ Undernät** i bladet MyVNet – Undernät och skapa ett undernät genom att ange följande information och klicka på **OK**:
 
     |**Inställning**|**Värde**|**Detaljer**|
     |---|---|---|
-    |**Namn**|*Server*|hello namn måste vara unika inom hello virtuellt nätverk.|
-    |**Adressintervall**|*10.0.1.0/24*|hello-intervall som du anger måste finnas i hello-adressutrymmet som definierats för hello virtuellt nätverk.|
-    |**Nätverkssäkerhetsgrupp** och **Routningstabell**|*Ingen* (standardvärde)|Vi går igenom nätverkssäkerhetsgrupper (NSG:er) senare i den här artikeln. Mer om användardefinierade vägar, läsa hello toolearn [användardefinierade vägar](virtual-networks-udr-overview.md) artikel.|
+    |**Namn**|*Server*|Namnet måste vara unikt inom det virtuella nätverket.|
+    |**Adressintervall**|*10.0.1.0/24*|Det intervall du anger måste ligga inom det adressutrymme du definierade för det virtuella nätverket.|
+    |**Nätverkssäkerhetsgrupp** och **Routningstabell**|*Ingen* (standardvärde)|Vi går igenom nätverkssäkerhetsgrupper (NSG:er) senare i den här artikeln. Mer information om användardefinierade vägar finns i artikeln [Användardefinierade vägar](virtual-networks-udr-overview.md).|
 
-10. När hello Nytt undernät läggs toohello VNet, kan du stänga hello **MyVNet – undernät** bladet och Stäng hello **alla resurser** bladet.
+10. När du har lagt till det nya undernätet i ditt VNet kan du stänga bladet **MyVNet – Undernät** och sedan stänga bladet **Alla resurser**.
 
 ## <a name="create-vms"></a>Skapa virtuella datorer
 
-Du kan skapa hello virtuella datorer med hello VNet och undernät som har skapats. I den här övningen både virtuella datorer som kör hello operativsystemet Windows Server, men de kan köra alla operativsystem som stöds av Azure, inklusive flera olika Linux-distributioner.
+När du har skapat ditt VNet och undernäten kan du skapa de virtuella datorerna. I den här övningen kör båda de virtuella datorerna operativsystemet Windows Server, men de kan köra alla operativsystem som stöds av Azure, bland annat flera olika Linux-distributioner.
 
-### <a name="create-web-server-vm"></a>Skapa hello webbserver VM
+### <a name="create-web-server-vm"></a>Skapa den virtuella webbserverdatorn
 
-toocreate hello webbservern VM, fullständig hello följande steg:
+Så här skapar du den virtuella webbserverdatorn:
 
-1. Klicka på i hello Azure portal Favoriter **ny**, **Compute**, sedan **Windows Server 2016 Datacenter**.
-2. I hello **Windows Server 2016 Datacenter** bladet, klickar du på **skapa**.
-3. I hello **grunderna** bladet som visas, ange eller välj hello följande värden och klicka på **OK**:
+1. Klicka på **Ny**, **Compute** och sedan **Windows Server 2016 Datacenter** i rutan Favoriter i Azure Portal.
+2. Klicka på **Skapa** i bladet **Windows Server 2016 Datacenter**.
+3. Ange eller välj följande värden i bladet **Grundläggande inställningar** och klicka på **OK**:
 
     |**Inställning**| **Värde**|**Detaljer**|
     |---|---|---|
@@ -95,156 +95,156 @@ toocreate hello webbservern VM, fullständig hello följande steg:
     |**Typ av virtuell datordisk**|*SSD*|
     |**Användarnamn**|*Ditt val*|
     |**Lösenord och Bekräfta lösenord**|*Ditt val*|
-    | **Prenumeration**|*<Your subscription>*|hello prenumeration måste vara samma prenumeration som du valde i steg 5 i hello hello [skapa ett virtuellt nätverk med två undernät](#create-vnet) i den här artikeln. Hej VNet som du ansluter en VM-toomust finns i hello samma prenumeration som hello VM.|
-    |**Resursgrupp**|**Använd befintlig:** Välj *MyRG*|Även om vi använder samma resursgrupp som vi gjorde hello VNet, hello hello resurser inte har tooexist i hello samma resursgrupp.|
-    |**Plats**|*USA, västra*|hello måste vara samma plats som du angav i steg 5 i hello hello [skapa ett virtuellt nätverk med två undernät](#create-vnet) i den här artikeln. Virtuella datorer och hello Vnet som de ansluter toomust finns i hello samma plats.|
+    | **Prenumeration**|*<Your subscription>*|Prenumerationen måste vara samma prenumeration som du valde i steg 5 i avsnittet [Skapa ett virtuellt nätverk med två undernät](#create-vnet) i den här artikeln. Det VNet du ansluter en virtuell dator till måste finnas i samma prenumeration som den virtuella datorn.|
+    |**Resursgrupp**|**Använd befintlig:** Välj *MyRG*|Även om vi använder samma resursgrupp som vi gjorde för VNet-förekomsten så måste inte resurserna ligga i samma resursgrupp.|
+    |**Plats**|*USA, västra*|Platsen måste vara samma plats som du angav i steg 5 i avsnittet [Skapa ett virtuellt nätverk med två undernät](#create-vnet) i den här artikeln. Virtuella datorer och de VNet som de ansluter till måste finnas på samma plats.|
 
-4. I hello **välja en storlek** bladet, klickar du på *DS1_V2 Standard*, klicka på **Välj**. Läs hello [Windows VM-storlekar](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) artikel för en lista över alla Windows VM-storlekar som stöds av Azure.
-5. I hello **inställningar** bladet ange eller välj hello följande värden och klicka på **OK**:
+4. Klicka på *DS1_V2 Standard* på bladet **Välj en storlek** och klicka på **Välj**. I artikeln om [storlekar på virtuella Windows-datorer](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) finns en lista med alla storlekar på virtuella Windows-datorer som kan användas i Azure.
+5. Ange eller välj följande värden i bladet **Inställningar** och klicka på **OK**:
 
     |**Inställning**|**Värde**|**Detaljer**|
     |---|---|---|
     |**Lagring: Använd hanterade diskar**|*Ja*||
-    |**Virtuellt nätverk**| Välj *MyVNet*|Du kan välja alla virtuella nätverk som finns i hello samma plats som hello VM som du skapar. Mer om Vnet och undernät, läsa hello toolearn [för virtuella nätverk](virtual-networks-overview.md) artikel.|
-    |**Undernät**|Välj *Klient*|Du kan välja alla undernät som finns inom hello virtuella nätverk.|
-    |**Offentlig IP-adress**|Acceptera standardvärdet för hello|En offentlig IP-adress kan du tooconnect toohello VM från hello Internet. Mer om den offentliga IP-adresser, läsa hello toolearn [IP-adresser](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) artikel.|
-    |**Nätverkssäkerhetsgrupp (brandvägg)**|Acceptera standardvärdet för hello|Klicka på hello **(nya) MyWebServer nsg** standard NSG hello portal skapas tooview dess inställningar. I hello **skapa nätverkssäkerhetsgruppen** bladet som öppnas, Observera att den har en regel för inkommande trafik som tillåter TCP/3389 (RDP)-trafik från alla käll-IP-adresser.|
-    |**Alla andra värden**|Acceptera hello standardvärden|Mer om hello återstående inställningar, läsa hello toolearn [om VMs](../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) artikel.|
+    |**Virtuellt nätverk**| Välj *MyVNet*|Du kan välja alla VNet som finns på samma plats som den virtuella dator du skapar. Du kan läsa mer om VNet och undernät i artikeln [Virtuella nätverk](virtual-networks-overview.md).|
+    |**Undernät**|Välj *Klient*|Du kan välja alla undernät som finns i ditt VNet.|
+    |**Offentlig IP-adress**|Acceptera standardinställningarna|Med en offentlig IP-adress kan du ansluta till den virtuella datorn från internet. Mer information om offentliga IP-adresser finns i artikeln om [IP-adresser](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses).|
+    |**Nätverkssäkerhetsgrupp (brandvägg)**|Acceptera standardinställningarna|Klicka på standardnätverkssäkerhetsgruppen **(ny) MyWebServer-nsg** som portalen skapade så att inställningarna för den visas. Lägg märke till att det finns en regel för inkommande trafik i bladet **Skapa nätverkssäkerhetsgrupp**, som tillåter TCP/3389-trafik (RDP) trafik från alla IP-källadresser.|
+    |**Alla andra värden**|Acceptera standardvärdena|Mer information om återstående inställningar finns i artikeln [Om virtuella datorer](../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).|
 
-    Nätverkssäkerhetsgrupper (NSG) kan du toocreate inkommande/utgående regler för hello typ av nätverkstrafik som kan flöda tooand från hello VM. Som standard alla inkommande trafik toohello VM nekas. Du kan lägga till ytterligare regler för inkommande trafik för TCP/80 (HTTP) och TCP/443 (HTTPS) för en webbserver i produktionsmiljö. Det finns ingen regel för utgående trafik eftersom all utgående trafik tillåts som standard. Du kan lägga till/ta bort regler toocontrol trafik per dina principer. Läs hello [Nätverkssäkerhetsgrupper](virtual-networks-nsg.md) artikel toolearn mer om NSG: er.
+    Med nätverkssäkerhetsgrupper (NSG) kan du skapa regler för inkommande/utgående trafik för den typ av nätverkstrafik som kan flöda till och från den virtuella datorn. Som standard nekas all inkommande trafik till den virtuella datorn. Du kan lägga till ytterligare regler för inkommande trafik för TCP/80 (HTTP) och TCP/443 (HTTPS) för en webbserver i produktionsmiljö. Det finns ingen regel för utgående trafik eftersom all utgående trafik tillåts som standard. Du kan lägga till/ta bort regler för trafiken enligt era principer. Mer information om nätverkssäkerhetsgrupper finns i artikeln [Nätverkssäkerhetsgrupper](virtual-networks-nsg.md).
 
-6.  I hello **sammanfattning** bladet granskar hello inställningar och klickar på **OK** toocreate hello VM. Panelen status visas på portalens instrumentpanel för hello som hello VM skapar. Det kan ta några minuter toocreate. Du behöver inte toowait för den toocomplete. Du kan fortsätta toohello nästa steg när hello virtuell dator skapas.
+6.  Granska inställningarna på bladet **Sammanfattning** och klicka på **OK** så att den virtuella datorn skapas. En statusruta visas på portalens instrumentpanel när den virtuella datorn skapas. Det kan ta några minuter att skapa datorn. Du behöver inte vänta tills åtgärden har slutförts. Du kan fortsätta till nästa steg medan den virtuella datorn skapas.
 
-### <a name="create-database-server-vm"></a>Skapa hello databasserver VM
+### <a name="create-database-server-vm"></a>Skapa den virtuella databasserverdatorn
 
-toocreate hello databasserver VM, fullständig hello följande steg:
+Så här skapar du den virtuella databasserverdatorn:
 
-1.  Klicka på i hello Favoriter **ny**, **Compute**, sedan **Windows Server 2016 Datacenter**.
-2.  I hello **Windows Server 2016 Datacenter** bladet, klickar du på **skapa**.
-3.  I hello **bladet grundläggande**, ange eller välj hello följande värden och sedan på **OK**:
+1.  Klicka på **Ny**, **Compute** och sedan **Windows Server 2016 Datacenter** i rutan Favoriter.
+2.  Klicka på **Skapa** i bladet **Windows Server 2016 Datacenter**.
+3.  Ange eller välj följande värden i bladet **Grundläggande inställningar** och klicka på **OK**:
 
     |**Inställning**|**Värde**|**Detaljer**|
     |---|---|---|
-    |**Namn**|*MyDBServer*|Den här virtuella datorn fungerar som en databasserver som hello webbservern ansluter till, men den hello Internet kan inte ansluta till.|
+    |**Namn**|*MyDBServer*|Den här virtuella datorn fungerar som en databasserver som webbservern ansluter till, men som det inte går att ansluta till från internet.|
     |**Typ av virtuell datordisk**|*SSD*||
     |**Användarnamn**|Ditt val||
     |**Lösenord och Bekräfta lösenord**|Ditt val||
-    |**Prenumeration**|<Your subscription>|hello prenumeration måste vara samma prenumeration som du valde i steg 5 i hello hello [skapa ett virtuellt nätverk med två undernät](#create-vnet) i den här artikeln.|
-    |**Resursgrupp**|**Använd befintlig:** Välj *MyRG*|Även om vi använder samma resursgrupp som vi gjorde hello VNet, hello hello resurser inte har tooexist i hello samma resursgrupp.|
-    |**Plats**|*USA, västra*|hello måste vara samma plats som du angav i steg 5 i hello hello [skapa ett virtuellt nätverk med två undernät](#create-vnet) i den här artikeln.|
+    |**Prenumeration**|<Your subscription>|Prenumerationen måste vara samma prenumeration som du valde i steg 5 i avsnittet [Skapa ett virtuellt nätverk med två undernät](#create-vnet) i den här artikeln.|
+    |**Resursgrupp**|**Använd befintlig:** Välj *MyRG*|Även om vi använder samma resursgrupp som vi gjorde för VNet-förekomsten så måste inte resurserna ligga i samma resursgrupp.|
+    |**Plats**|*USA, västra*|Platsen måste vara samma plats som du angav i steg 5 i avsnittet [Skapa ett virtuellt nätverk med två undernät](#create-vnet) i den här artikeln.|
 
-4.  I hello **välja en storlek** bladet, klickar du på *DS1_V2 Standard*, klicka på **Välj**.
-5.  I hello **inställningar** bladet ange eller välj hello följande värden och klicka på **OK**:
+4.  Klicka på *DS1_V2 Standard* på bladet **Välj en storlek** och klicka på **Välj**.
+5.  Ange eller välj följande värden i bladet **Inställningar** och klicka på **OK**:
 
     |**Inställning**|**Värde**|**Detaljer**|
     |----|----|---|
     |**Lagring: Använd hanterade diskar**|*Ja*||
-    |**Virtuellt nätverk**|Välj *MyVNet*|Du kan välja alla virtuella nätverk som finns i hello samma plats som hello VM som du skapar.|
-    |**Undernät**|Välj *backend-* genom att klicka på hello **undernät** rutan, sedan välja **backend-** från hello **Välj ett undernät** bladet|Du kan välja alla undernät som finns inom hello virtuella nätverk.|
-    |**Offentlig IP-adress**|Ingen – hello standardadressen Klicka **ingen** från hello **Välj offentlig IP-adress** bladet|Utan en offentlig IP-adress kan du bara ansluta toohello VM från en annan virtuell dator ansluten toohello samma virtuella nätverk. Du kan inte ansluta tooit direkt från hello Internet.|
-    |**Nätverkssäkerhetsgrupp (brandvägg)**|Acceptera standardvärdet för hello| Som hello standard NSG skapas för hello MyWebServer VM denna NSG också har hello standard samma inkommande regel. Du kan lägga till en ytterligare regel för inkommande trafik för TCP/1433 (MS SQL) för en databasserver. Det finns ingen regel för utgående trafik eftersom all utgående trafik tillåts som standard. Du kan lägga till/ta bort regler toocontrol trafik per dina principer.|
-    |**Alla andra värden**|Acceptera hello standardvärden||
+    |**Virtuellt nätverk**|Välj *MyVNet*|Du kan välja alla VNet som finns på samma plats som den virtuella dator du skapar.|
+    |**Undernät**|Välj *Server* genom att klicka i rutan **Undernät** och sedan välja **Server** i bladet **Välj ett undernät**|Du kan välja alla undernät som finns i ditt VNet.|
+    |**Offentlig IP-adress**|Ingen – klicka på standardadressen och sedan på **Ingen** i bladet **Välj offentlig IP-adress**|Utan en offentlig IP-adress kan du bara ansluta till den virtuella datorn från andra virtuella dator som är anslutna till samma VNet. Du kan inte ansluta till den direkt från internet.|
+    |**Nätverkssäkerhetsgrupp (brandvägg)**|Acceptera standardinställningarna| Precis som standardnätverkssäkerhetsgruppen som skapades för den virtuella datorn MyWebServer VM så har den här nätverkssäkerhetsgruppen samma regel för inkommande trafik. Du kan lägga till en ytterligare regel för inkommande trafik för TCP/1433 (MS SQL) för en databasserver. Det finns ingen regel för utgående trafik eftersom all utgående trafik tillåts som standard. Du kan lägga till/ta bort regler för trafiken enligt era principer.|
+    |**Alla andra värden**|Acceptera standardvärdena||
 
-6.  I hello **sammanfattning** bladet granskar hello inställningar och klickar på **OK** toocreate hello VM. Panelen status visas på portalens instrumentpanel för hello som hello VM skapar. Det kan ta några minuter toocreate. Du behöver inte toowait för den toocomplete. Du kan fortsätta toohello nästa steg när hello virtuell dator skapas.
+6.  Granska inställningarna på bladet **Sammanfattning** och klicka på **OK** så att den virtuella datorn skapas. En statusruta visas på portalens instrumentpanel när den virtuella datorn skapas. Det kan ta några minuter att skapa datorn. Du behöver inte vänta tills åtgärden har slutförts. Du kan fortsätta till nästa steg medan den virtuella datorn skapas.
 
 ## <a name="review"></a>Granska resurser
 
-Om du har skapat en VNet och två virtuella datorer, hello Azure-portalen skapas flera ytterligare resurser för dig i hello MyRG resursgruppen. Granska hello innehållet i hello MyRG resursgruppen genom att slutföra hello följande steg:
+Även om du endast skapade ett VNet och två virtuella datorer så har Azure Portal skapat flera ytterligare resurser i resursgruppen MyRG. Så här kan du granska innehållet i resursgruppen MyRG:
 
-1. I hello **Favoriter** rutan klickar du på **fler tjänster**.
-2. I hello **fler tjänster** rutan, skriver *resursgrupper* i hello som har hello word *Filter* i den. Klicka på **resursgrupper** när du ser i hello filtrerad lista.
-3. I hello **resursgrupper** rutan klickar du på hello *MyRG* resursgruppen. Du kan ange om du har många befintliga resursgrupper i din prenumeration, *MyRG* i hello som innehåller hello text *filtrera efter namn...* tooquickly resursgrupp åtkomst hello MyRG.
-4.  I hello **MyRG** bladet visas som hello resursgruppen innehåller 12 resurser som visas i följande bild hello:
+1. Klicka på **Fler tjänster** i rutan **Favoriter**.
+2. Skriv *Resursgrupper* i rutan **Fler tjänster**, i rutan som innehåller ordet *Filter*. Klicka på **Resursgrupper** när du ser det i den filtrerade listan.
+3. Klicka på resursgruppen *MyRG* i rutan **Resursgrupper**. Om du har många resursgrupper i din prenumeration kan du skriva *MyRG* i rutan som innehåller texten *Filtrera efter namn ...* för att snabbt hitta resursgruppen MyRG.
+4.  I bladet **MyRG** ser du att resursgruppen innehåller 12 resurser, se följande bild:
 
     ![Innehåll i resursgruppen](./media/virtual-network-get-started-vnet-subnet/resource-group-contents.png)
 
-Mer om virtuella datorer, diskar och storage-konton kan läsa hello toolearn [virtuella](../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [Disk](../virtual-machines/windows/about-disks-and-vhds.md?toc=%2fazure%2fvirtual-network%2ftoc.json), och [lagringskonto](../storage/common/storage-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) översikt över artiklar. Du kan se hello två standard NSG: er hello portal skapas automatiskt. Du kan också se den hello portalen skapas två gränssnitt (NIC)-nätverksresurser. Ett nätverkskort aktiverar en VM tooconnect tooother resurser över hello virtuella nätverk. Läs hello [NIC](virtual-network-network-interface.md) artikel toolearn mer om nätverkskort. hello portal skapas också en offentlig IP-adressresurs. Offentliga IP-adresser är en inställning för en offentlig IP-adressresurs. Mer om den offentliga IP-adresser, läsa hello toolearn [IP-adresser](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) artikel.
+Mer information om virtuella datorer, diskar och lagringskonton finns i översiktsartiklarna [Virtuell dator](../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [Disk](../virtual-machines/windows/about-disks-and-vhds.md?toc=%2fazure%2fvirtual-network%2ftoc.json) och [Lagringskonto](../storage/common/storage-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Du ser de två nätverkssäkerhetsgrupper som portalen skapade som standard. Du kan också se att portalen har skapat två nätverksgränssnitt (NIC). Ett nätverkskort gör att en virtuell dator kan ansluta till andra resurser i ditt VNet. Mer information om nätverkskort finns i artikeln [Nätverkskort](virtual-network-network-interface.md). Dessutom skapas en offentlig IP-adressresurs i portalen. Offentliga IP-adresser är en inställning för en offentlig IP-adressresurs. Mer information om offentliga IP-adresser finns i artikeln om [IP-adresser](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses).
 
-## <a name="connect-to-from-vms"></a>Ansluta toohello virtuella datorer
+## <a name="connect-to-from-vms"></a>Anslut till de virtuella datorerna
 
-Du kan nu ansluta toohello virtuella datorer genom att slutföra hello stegen i följande avsnitt hello med ditt VNet och två virtuella datorer skapas:
+Med ditt VNet och de två virtuella datorerna du skapade så kan du nu ansluta till de virtuella datorerna genom att följa stegen i följande avsnitt:
 
-### <a name="connect-from-internet"></a>Ansluta toohello webbservern VM från hello Internet
+### <a name="connect-from-internet"></a>Anslut till den virtuella webbserverdatorn från internet
 
-tooconnect toohello webbservern VM från hello Internet, fullständig hello följande steg:
+Så här ansluter du till den virtuella webbserverdatorn från internet:
 
-1. Hello-portalen, öppna hello MyRG resursgruppen genom att slutföra hello stegen i hello [granska resurser](#review) i den här artikeln.
-2. I hello **MyRG** bladet, klickar du på hello **MyWebServer** VM.
-3. I hello **MyWebServer** bladet, klickar du på **Anslut**som visas i följande bild hello:
+1. Öppna resursgruppen MyRG i portalen genom att följa stegen i avsnittet [Granska resurser](#review) i den här artikeln.
+2. Klicka på den virtuella datorn **MyWebServer** i bladet **MyRG**.
+3. Klicka på **Anslut** i bladet **MyWebServer**, se följande bild:
 
-    ![Anslut tooweb server VM](./media/virtual-network-get-started-vnet-subnet/webserver.png)
+    ![Anslut till den virtuella webbserverdatorn](./media/virtual-network-get-started-vnet-subnet/webserver.png)
 
-4. Tillåt din webbläsare toodownload hello *MyWebServer.rdp* filen och sedan öppna den.
-5. Om du får en dialogrutan visas som informerar du hello utgivaren av hello anslutning inte kan verifieras, klickar du på **Anslut**.
-6. När du anger dina autentiseringsuppgifter, se till att logga in med hello användarnamn och lösenord som du angav i steg 3 i hello [skapa hello webbservern VM](#create-web-server-vm) i den här artikeln. Om hello **Windows-säkerhet** visas som visas inte i listan hello korrekt autentiseringsuppgifter kan du behöva tooclick **fler alternativ**, sedan **Använd ett annat konto**, så att du kan Ange hello rätt användarnamn och lösenord). Klicka på **OK** tooconnect toohello VM.
-7. Om du får en **anslutning till fjärrskrivbord** rutan informerar du som hello identitet hello fjärrdatorn inte kan verifieras klickar du på **Ja**.
-8. Du är nu ansluten toohello MyWebServer VM från hello Internet. Lämna hello fjärrskrivbordsanslutning öppna toocomplete hello stegen i nästa avsnitt om hello.
+4. Tillåt att webbläsaren laddar ned filen *MyWebServer.rdp* och öppna den sedan.
+5. Om du ser en dialogruta om att det inte går att verifiera utgivaren av fjärranslutningen klickar du på **Anslut**.
+6. När du anger dina inloggningsuppgifter ska du använda det användarnamn och lösenord du angav i steg 3 i avsnittet [Skapa den virtuella webbserverdatorn](#create-web-server-vm) i den här artikeln. Om rutan **Windows-säkerhet** som visas inte innehåller rätt inloggningsuppgifter kan du behöva klicka på **Fler alternativ** och sedan på **Använd ett annat konto**, så du kan ange rätt användarnamn och lösenord. Klicka på **OK** för att ansluta till den virtuella datorn.
+7. Om du ser rutan **Anslutning till fjärrskrivbord** med information om att det inte går att verifiera fjärrdatorns identitet klickar du på **Ja**.
+8. Du är nu ansluten till den virtuella datorn MyWebServer från internet. Låt anslutningen till fjärrskrivbordet vara öppen när du utför stegen i nästa avsnitt.
 
-anslutning till hello är toohello offentlig IP-adress som tilldelats toohello offentliga IP-adress resurs hello portal skapade i steg 5 i hello [skapa ett virtuellt nätverk med två undernät](#create-vnet) i den här artikeln. hello anslutningen tillåts eftersom hello Standardregeln som skapats i hello **MyWebServer nsg** NSG tillåts TCP/3389 (RDP) inkommande toohello VM från alla käll-IP-adresser. Om du försöker tooconnect toohello VM via någon annan port hello anslutningen misslyckas, såvida inte du lägger till ytterligare regler för inkommande trafik toohello NSG vilket gör att hello ytterligare portar.
+Fjärranslutningen är till den offentliga IP-adress som tilldelats till den offentliga IP-adressresursen som portalen skapade i steg 5 i avsnittet [Skapa ett virtuellt nätverk med två undernät](#create-vnet) i den här artikeln. Anslutningen tillåts eftersom standardregeln som skapades i nätverkssäkerhetsgruppen **MyWebServer-nsg** tillåter inkommande TCP/3389-trafik (RDP) till den virtuella datorn från alla IP-källadresser. Om du försöker ansluta till den virtuella datorn över någon annan port upprättas inte anslutningen, såvida du inte lägger till ytterligare regler för inkommande trafik i nätverkssäkerhetsgruppen så att fler portar tillåts.
 
 >[!NOTE]
->Om du lägger till ytterligare regler för inkommande trafik toohello NSG, kontrollera att hello samma portar är öppna på hello Windows-brandväggen eller hello misslyckas anslutningen.
+>Om du lägger till fler regler för inkommande trafik i nätverkssäkerhetsgruppen ska du se till att samma portar är öppna i Windows-brandväggen, annars går det inte att ansluta.
 >
 
-### <a name="connect-to-internet"></a>Ansluta toohello Internet från hello webbserver VM
+### <a name="connect-to-internet"></a>Anslut till internet från den virtuella webbserverdatorn
 
-tooconnect utgående toohello Internet från hello webbserver VM, fullständig hello följande steg:
+Så här ansluter du till internet från den virtuella webbserverdatorn:
 
-1. Om du inte redan har en anslutning till toohello MyWebServerVM öppna, gör en anslutning till toohello VM genom att slutföra hello stegen i hello [Anslut toohello webbservern VM från hello Internet](#connect-from-internet) i den här artikeln.
-2. Öppna Internet Explorer hello Windows-skrivbordet. I hello **installationsprogrammet Internet Explorer 11** dialogrutan klickar du på **inte använda rekommenderade inställningar**, klicka på **OK**. Är det rekommenderade tooaccept hello rekommenderade inställningar för en produktionsserver.
-3. Ange i hello adressfältet i Internet Explorer, [bing.com](http:www.bing.com). Om du får en dialogruta för Internet Explorer klickar du på **Lägg till**, sedan **Lägg till** i hello **tillförlitliga platser** dialogrutan och klicka på **Stäng**. Upprepa den här processen i eventuella andra dialogrutor i Internet Explorer.
-4. Sök på hello Bing sida, ange *whatsmyipaddress*, klicka sedan på hello förstoringsglas. Bing returnerar hello offentliga IP-adress som tilldelats toohello offentliga IP-adressresurs skapas av hello portalen när du skapar hello VM. Om du undersöker hello inställningar för hello **MyWebServer ip** resurs måste du se hello samma IP-adress som tilldelats toohello offentliga IP-adressresurs som hello bilden nedan. hello IP-adress som tilldelats tooyour VM skiljer sig dock.
+1. Om du inte redan har en fjärranslutning öppen till MyWebServerVM ska du skapa en fjärranslutning till den virtuella datorn genom att följa stegen i avsnittet [Anslut till den virtuella webbserverdatorn från internet](#connect-from-internet) i den här artikeln.
+2. Öppna Internet Explorer från Windows-skrivbordet. Klicka på **Använd inte de rekommenderade inställningarna** i dialogrutan med **installationsprogrammet för Internet Explorer 11** och klicka på **OK**. För servrar i produktionsmiljö rekommenderar vi att du accepterar de rekommenderade inställningarna.
+3. Ange [bing.com](http:www.bing.com) i adressfältet i Internet Explorer. Om du ser en dialogruta i Internet Explorer klickar du på **Lägg till**, och sedan på **Lägg till** i dialogrutan **Betrodda platser**. Klicka sedan på **Stäng**. Upprepa den här processen i eventuella andra dialogrutor i Internet Explorer.
+4. Ange *whatsmyipaddress* på Bing-söksidan och klicka på förstoringsglaset. Bing returnerar den offentliga IP-adressen som tilldelades den offentliga IP-adressresursen som portalen skapade när du skapade den virtuella datorn. Om du undersöker inställningarna för resursen **MyWebServer-ip** ser du samma IP-adress som tilldelades till den offentliga IP-adressresursen, se bilden nedan. IP-adressen som tilldelades till den virtuella datorn är dock en annan.
 
-    ![Anslut tooweb server VM](./media/virtual-network-get-started-vnet-subnet/webserver-pip.png)
+    ![Anslut till den virtuella webbserverdatorn](./media/virtual-network-get-started-vnet-subnet/webserver-pip.png)
 
-5.  Lämna hello fjärrskrivbordsanslutning öppna toocomplete hello stegen i nästa avsnitt om hello.
+5.  Låt anslutningen till fjärrskrivbordet vara öppen när du utför stegen i nästa avsnitt.
 
-Du är kan tooconnect toohello Internet från hello VM eftersom alla utgående anslutning från hello VM tillåts som standard. Du kan begränsa utgående anslutning genom att lägga till ytterligare regler toohello NSG tillämpas toohello NIC, toohello undernät hello nätverkskort är ansluten till, eller båda.
+Du kan ansluta till internet från den virtuella datorn eftersom all utgående trafik från den virtuella datorn tillåts som standard. Du kan begränsa den utgående trafiken genom att lägga till ytterligare regler i nätverkssäkerhetsgruppen för nätverkskortet, till undernätet som nätverkskortet är anslutet till, eller båda.
 
-Om hello VM placeras i hello stoppats (frigjorts) tillstånd med hjälp av hello portal, hello offentlig IP-adress kan ändras. Om du kräver att hello offentliga IP-adress aldrig ändras, kan du använda hello statisk tilldelningsmetod för hello IP-adress i stället för hello dynamisk fördelning (som standard hello). Mer om toolearn hello skillnaderna mellan allokeringsmetoder, läsa hello [IP-adressen typer och fördelningsmetoder](virtual-network-ip-addresses-overview-arm.md) artikel.
+Om den virtuella datorn stoppas (avallokeras) via portalen så kan den offentliga IP-adressen ändras. Om du inte vill att den offentliga IP-adressen ska ändras så kan du använda statisk allokering för IP-adressen snarare än dynamisk allokering (som är standard). Mer information om skillnaderna mellan de båda allokeringsmetoderna finns i artikeln [IP-adresstyper och allokeringsmetoder i Azure](virtual-network-ip-addresses-overview-arm.md).
 
-### <a name="webserver-to-dbserver"></a>Ansluta toohello databasserver VM från hello webbserver VM
+### <a name="webserver-to-dbserver"></a>Anslut till den virtuella databasserverdatorn från den virtuella webbserverdatorn
 
-tooconnect toohello databasserver VM från hello webbserver VM, fullständig hello följande steg:
+Så här ansluter du till den virtuella databasserverdatorn från den virtuella webbserverdatorn:
 
-1. Om du inte redan har en anslutning till toohello MyWebServer VM öppna, gör en anslutning till toohello VM genom att slutföra hello stegen i hello [Anslut toohello webbservern VM från hello Internet](#connect-from-internet) i den här artikeln.
-2. Klicka på hello Start-knappen i hello nedre vänstra hörnet på skrivbordet för Windows hello och börja skriva *fjärrskrivbord*. När hello Start-menyn i listan visas **anslutning till fjärrskrivbord**, klickar du på den.
-3. I hello **anslutning till fjärrskrivbord** dialogrutan Ange *MyDBServer* för hello datornamn och klicka på **Anslut**.
-4. Ange hello användarnamn och lösenord du angav i steg 3 i hello [skapa hello databasserver VM](#create-database-server-vm) avsnitt i den här artikeln, klicka sedan på **OK**.
-5. Om du får en dialogrutan visas som informerar du hello identitet hello fjärrdatorn inte kan verifieras, klickar du på **Ja**.
-6. Lämna hello fjärrskrivbordsanslutning tooboth servrar öppna toocomplete hello stegen i hello nästa avsnitt.
+1. Om du inte redan har en fjärranslutning öppen till den virtuella datorn MyWebServer så skapar du en fjärranslutning till den virtuella datorn genom att följa stegen i avsnittet [Anslut till den virtuella webbserverdatorn från Internet](#connect-from-internet) i den här artikeln.
+2. Klicka på Start i det nedre vänstra hörnet av Windows-skrivbordet och börja sedan skriva *fjärrskrivbord*. När du ser **Anslutning till fjärrskrivbord** på startmenyn klickar du på det alternativet.
+3. Ange *MyDBServer* som datornamn i dialogrutan **Anslutning till fjärrskrivbord** och klicka på **Anslut**.
+4. Ange det användarnamn och lösenord du angav i steg 3 i avsnittet [Skapa den virtuella databasserverdatorn](#create-database-server-vm) i den här artikeln och klicka på **OK**.
+5. Om du ser en dialogruta med information om att det inte går att verifiera fjärrdatorns identitet klickar du på **Ja**.
+6. Låt fjärranslutningen vara öppen till båda servrarna när du utför stegen i nästa avsnitt.
 
-Du är kan toomake hello anslutning toohello databasservern VM från hello webbservern VM för hello följande orsaker:
+Det här gör att du kan ansluta till den virtuella databasserverdatorn från den virtuella webbserverdatorn:
 
-- TCP/3389 inkommande anslutningar har aktiverats för alla käll-IP i hello standard NSG skapade i steg 5 i hello [skapa hello databasserver VM](#create-database-server-vm) i den här artikeln.
-- Du har initierat hello-anslutningen från hello webbserver VM, som är anslutna toohello samma virtuella nätverk som databasserver för hello VM. tooconnect tooa VM som inte har en offentlig IP-adress som tilldelats tooit, måste du ansluta från en annan virtuell dator ansluten toohello samma virtuella nätverk, även om hello VM är anslutna tooa olika undernät.
-- Även om hello virtuella datorer är anslutna toodifferent undernät, skapar Azure standardvägar som gör anslutningen mellan undernät. Du kan åsidosätta hello standardvägar genom att skapa egna men. Läs hello [användardefinierade vägar](virtual-networks-udr-overview.md) artikel toolearn mer om routning i Azure.
+- Inkommande TCP/3389-anslutningar är aktiverade för alla IP-källadresser i nätverkssäkerhetsgruppen som skapades i steg 5 i avsnittet [Skapa den virtuella databasserverdatorn](#create-database-server-vm) i den här artikeln.
+- Du initierade anslutningen från den virtuella webbserverdatorn, som är ansluten till samma VNet som den virtuella databasserverdatorn. Om du vill ansluta till en virtuell dator som inte har tilldelats en offentlig IP-adress måste du ansluta från en annan virtuell dator som är ansluten till samma VNet, även om den virtuella datorn är ansluten till ett annat undernät.
+- Även om de virtuella datorerna är anslutna till olika undernät så skapar Azure standardvägar för anslutning mellan undernät. Du kan däremot åsidosätta standardvägarna genom att skapa din egen väg. Mer information om routning och vägar i Azure finns i artikeln [Användardefinierade vägar](virtual-networks-udr-overview.md).
 
-Om du försöker tooinitiate en anslutning till toohello databasserver VM från hello Internet, som du gjorde i hello [Anslut toohello webbservern VM från hello Internet](#connect-from-internet) avsnitt i den här artikeln du ser att hello **Anslut** alternativet är nedtonad. Ansluta är nedtonad eftersom det inte finns några offentliga IP-adress som tilldelats toohello VM, inkommande anslutningar tooit från hello Internet inte är möjligt.
+Om du försöker initiera en fjärranslutning till den virtuella databasserverdatorn från internet, som du gjorde i avsnittet [Anslut till den virtuella webbserverdatorn från internet](#connect-from-internet) i den här artikeln, så ser du att alternativet **Anslut** är nedtonat. Alternativet Anslut är nedtonat eftersom ingen offentlig IP-adress har tilldelats till den virtuella datorn, så det går inte att ansluta till datorn från internet.
 
-### <a name="connect-toohello-internet-from-hello-database-server-vm"></a>Ansluta toohello Internet från hello databasserver VM
+### <a name="connect-to-the-internet-from-the-database-server-vm"></a>Anslut till internet från den virtuella databasserverdatorn
 
-Anslut utgående toohello Internet från hello databasserver VM genom att slutföra hello följande steg:
+Så här ansluter du till internet från den virtuella databasserverdatorn:
 
-1. Om du inte redan har en anslutning till toohello MyDBServer VM öppna från hello MyWebServer VM, fullständig hello stegen i hello [Anslut toohello databasservern VM från hello webbservern VM](#webserver-to-dbserver) i den här artikeln.
-2. Öppna Internet Explorer från hello Windows-skrivbordet på hello MyDBServer VM och svara toohello dialogrutor som du gjorde i steg 2 och 3 av hello [ansluta toohello Internet från hello webbserver VM](#connect-to-internet) i den här artikeln.
-3. Ange i adressfältet hello [bing.com](http:www.bing.com).
-4. Klicka på **Lägg till** hello Internet Explorer i dialogrutan som visas sedan **Lägg till**, sedan **Stäng** i hello **betrodda** dialogrutan platser. Gör på samma sätt i eventuella ytterligare dialogrutor.
-5. Sök på hello Bing sida, ange *whatsmyipaddress*, klicka sedan på hello förstoringsglas. Bing returnerar hello offentliga IP-adress som är tilldelad toohello VM hello Azure-infrastrukturen. 6. Stäng hello remote desktop toohello MyDBServer VM från hello MyWebServer VM och sedan stänga hello fjärranslutning toohello MyWebServer VM.
+1. Om du inte redan har en fjärranslutning öppen till den virtuella datorn MyDBServer från den virtuella datorn MyWebServer så följer du stegen i avsnittet [Anslut till den virtuella databasserverdatorn från den virtuella webbserverdatorn](#webserver-to-dbserver) i den här artikeln.
+2. Öppna Internet Explorer från Windows-skrivbordet i den virtuella datorn MyDBServer och gör på samma sätt i dialogrutorna som du gjorde i steg 2 och 3 i avsnittet [Anslut till internet från den virtuella webbserverdatorn](#connect-to-internet) i den här artikeln.
+3. Ange [bing.com](http:www.bing.com) i adressfältet.
+4. Klicka på **Lägg till** i dialogrutan i Internet Explorer. Klicka på **Lägg till** och sedan på **Stäng** i dialogrutan **Betrodda platser**. Gör på samma sätt i eventuella ytterligare dialogrutor.
+5. Ange *whatsmyipaddress* på Bing-söksidan och klicka på förstoringsglaset. Bing returnerar den offentliga IP-adress som för närvarande har tilldelats till den virtuella datorn via Azure-infrastrukturen. 6. Stäng fjärranslutningen till den virtuella datorn MyDBServer från den virtuella datorn MyWebServer och stäng sedan fjärranslutningen till den virtuella datorn MyWebServer.
 
-hello utgående anslutning toohello Internet tillåts eftersom all utgående trafik tillåts som standard, även om en offentlig IP-adressresurs inte är tilldelad toohello MyDBServer VM. Alla virtuella datorer som standard är kan tooconnect utgående toohello Internet, med eller utan en offentlig IP-adress resurs som är tilldelad toohello VM. Du är inte kan tooconnect toohello offentliga IP-adressen från hello Internet men som du skulle kunna toofor hello MyWebServer VM som har en offentlig IP-adress resurs som är tilldelad.
+Den utgående anslutningen till internet tillåts eftersom all utgående trafik tillåts som standard, även om ingen offentlig IP-adressresurs har tilldelats till den virtuella datorn MyDBServer. Alla virtuella datorer kan som standard ansluta utgående till internet, med eller utan någon tilldelad offentlig IP-adressresurs. Du kan däremot inte ansluta till den offentliga IP-adressen från internet, som du kunde för den virtuella datorn MyWebServer som fått en offentlig IP-adressresurs tilldelad.
 
 ## <a name="delete-resources"></a>Ta bort alla resurser
 
-toodelete alla resurser skapas i den här artikeln, fullständig hello följande steg:
+Så här tar du bort alla resurser som skapats i den här artikeln:
 
-1. tooview hello MyRG resursgruppen skapas i den här artikeln har slutförts steg 1-3 i hello [granska resurser](#review) i den här artikeln. Granska igen hello resurser i hello resursgrupp. Om du har skapat hello MyRG resursgrupp per föregående steg finns hello 12 resurser hello bilden i steg 4.
-2. Hej MyRG-bladet, klickar du på hello **ta bort** knappen.
-3. hello portalen måste du tootype hello namnet på hello resurs grupp tooconfirm som du vill toodelete den. Om du ser resurser än hello resurserna som visas i steg 4 i hello [granska resurser](#review) avsnitt i den här artikeln klickar du på **Avbryt**. Om bara hello 12 resurser som skapats som en del av den här artikeln, anger du *MyRG* hello resursgruppens namn, sedan klickar du på **ta bort**. Tar bort en resursgrupp alla resurser inom hello resursgrupp, så alltid att tooconfirm hello innehållet i en resursgrupp innan den tas bort. hello portal tar bort alla resurser som ingår i hello resursgrupp och sedan tar bort hello resursgruppen sig själv. Den här processen tar flera minuter.
+1. Visa resursgruppen MyRG genom att följa steg 1–3 i avsnittet [Granska resurser](#review) i den här artikeln. Granska på nytt resurserna i resursgruppen. Om du skapade resursgruppen MyRG enligt föregående steg så ser du de 12 resurserna som visas på bilden i steg 4.
+2. Klicka på knappen **Ta bort** i bladet MyRG.
+3. Du måste ange namnet på resursgruppen i portalen som bekräftelse på att du vill ta bort den. Om du ser andra resurser än de som visas i steg 4 i avsnittet [Granska resurser](#review) i den här artikeln klickar du på **Avbryt**. Om du bara ser de 12 resurser som skapats i den här artikeln anger du *MyRG* som namn på resursgruppen och klickar på **Ta bort**. När du tar bort en resursgrupp så tas alla resurser i resursgruppen bort, så du måste alltid kontrollera innehållet i en resursgrupp innan du tar bort den. Portalen tar bort alla resurser som finns i resursgruppen och sedan tas själva resursgruppen bort. Den här processen tar flera minuter.
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här övningen har du skapat ett VNet och två virtuella datorer. Du angav anpassade inställningar när du skapade de virtuella datorerna och godkände flera standardinställningar. Vi rekommenderar att du läser hello följande artiklar, innan du distribuerar produktion Vnet och virtuella datorer, tooensure som du känner till alla tillgängliga inställningar:
+I den här övningen har du skapat ett VNet och två virtuella datorer. Du angav anpassade inställningar när du skapade de virtuella datorerna och godkände flera standardinställningar. Vi rekommenderar att du läser följande artiklar innan du distribuerar VNet-förekomster och virtuella datorer i produktionsmiljö, så att du förstår alla tillgängliga inställningar:
 
 - [Virtuella nätverk](virtual-networks-overview.md)
 - [Offentliga IP-adresser](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)

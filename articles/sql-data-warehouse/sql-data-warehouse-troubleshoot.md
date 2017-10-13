@@ -1,5 +1,5 @@
 ---
-title: aaaTroubleshooting Azure SQL Data Warehouse | Microsoft Docs
+title: "Felsöka Azure SQL Data Warehouse | Microsoft Docs"
 description: "Felsöka Azure SQL Data Warehouse."
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,66 +15,66 @@ ms.workload: data-services
 ms.custom: manage
 ms.date: 03/30/2017
 ms.author: kevin;barbkess
-ms.openlocfilehash: 3c53a39f77057fe0bcc053a0b896555abf397515
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: d269e62b8d49a6c96ce40c2e31c4096e16e07793
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="troubleshooting-azure-sql-data-warehouse"></a>Felsöka Azure SQL Data Warehouse
-Det här avsnittet visar några av hello Vanliga felsökningsfrågor vi får höra från våra kunder.
+Det här avsnittet innehåller några av de vanligaste felsökning frågor som vi får höra från våra kunder.
 
 ## <a name="connecting"></a>Ansluta
 | Problem | Lösning |
 |:--- |:--- |
-| Inloggningen misslyckades för användaren 'NT AUTHORITY\\ANONYMOUS LOGON ”. (Microsoft SQL Server, fel: 18456) |Det här felet uppstår när en AAD-användare försöker tooconnect toohello master-databasen, men har inte en användare i master.  toocorrect problemet antingen ange hello SQL Data Warehouse du vill tooconnect tooat anslutningstiden eller lägga till användaren hello toohello huvuddatabasen.  Se [Säkerhetsöversikt] [ Security overview] mer information. |
-| hello server principal ”MittAnvändarnamn” inte är kan tooaccess hello databasen ”master” under hello aktuella säkerhetskontexten. Det går inte att öppna användarens standarddatabas. Inloggningen misslyckades. Inloggningen misslyckades för användaren 'MittAnvändarnamn'. (Microsoft SQL Server, fel: 916) |Det här felet uppstår när en AAD-användare försöker tooconnect toohello master-databasen, men har inte en användare i master.  toocorrect problemet antingen ange hello SQL Data Warehouse du vill tooconnect tooat anslutningstiden eller lägga till användaren hello toohello huvuddatabasen.  Se [Säkerhetsöversikt] [ Security overview] mer information. |
-| CTAIP fel |Det här felet kan inträffa när en inloggning som har skapats på hello SQL server-huvuddatabasen, men inte i hello SQL Data Warehouse-databas.  Om du får det här felet kan ta en titt på hello [Säkerhetsöversikt] [ Security overview] artikel.  Den här artikeln förklarar hur toocreate skapar en inloggning och användaren på Huvudmålet och sedan hur toocreate en användare i hello SQL Data Warehouse-databas. |
-| Blockeras av brandvägg |Azure SQL-databaser är skyddade av servern och databasen nivån brandväggar tooensure bara kända IP-adresser som har åtkomst till tooa databas. hello brandväggar är säkra som standard, vilket innebär att du uttryckligen aktivera och IP-adressen eller adressintervallet innan du kan ansluta.  tooconfigure brandväggen för åtkomst, gör hello i [konfigurera brandväggen serveråtkomst för klientens IP-Adressen] [ Configure server firewall access for your client IP] i hello [etablering instruktioner] [Provisioning instructions]. |
-| Det går inte att ansluta med verktyget eller drivrutinen |SQL Data Warehouse rekommenderar att du använder [SSMS][SSMS], [SSDT för Visual Studio][SSDT for Visual Studio], eller [sqlcmd] [ sqlcmd] tooquery dina data. Mer information om drivrutiner och anslutande tooSQL datalagret finns [drivrutiner för Azure SQL Data Warehouse] [ Drivers for Azure SQL Data Warehouse] och [ansluta tooAzure SQL Data Warehouse] [ Connect tooAzure SQL Data Warehouse] artiklar. |
+| Inloggningen misslyckades för användaren 'NT AUTHORITY\\ANONYMOUS LOGON ”. (Microsoft SQL Server, fel: 18456) |Det här felet uppstår när en AAD-användare försöker ansluta till master-databasen, men har inte en användare i master.  För att åtgärda problemet antingen ange SQL Data Warehouse som du vill ansluta till vid anslutningen, eller lägga till användaren i master-databasen.  Se [Säkerhetsöversikt] [ Security overview] mer information. |
+| Servern huvudnamn ”MittAnvändarnamn” går inte att komma åt databasen ”master” under det aktuella säkerhetssammanhanget. Det går inte att öppna användarens standarddatabas. Inloggningen misslyckades. Inloggningen misslyckades för användaren 'MittAnvändarnamn'. (Microsoft SQL Server, fel: 916) |Det här felet uppstår när en AAD-användare försöker ansluta till master-databasen, men har inte en användare i master.  För att åtgärda problemet antingen ange SQL Data Warehouse som du vill ansluta till vid anslutningen, eller lägga till användaren i master-databasen.  Se [Säkerhetsöversikt] [ Security overview] mer information. |
+| CTAIP fel |Det här felet kan inträffa när en inloggning som har skapats på SQL server-huvuddatabasen, men inte i SQL Data Warehouse-databas.  Om du får det här felet kan ta en titt på den [Säkerhetsöversikt] [ Security overview] artikel.  Den här artikeln beskriver hur du skapar skapa en inloggning och användaren på master och hur du skapar en användare i SQL Data Warehouse-databas. |
+| Blockeras av brandvägg |Azure SQL-databaser är skyddade av servern och databasen nivån brandväggar så bara kända IP-adresser som har åtkomst till en databas. Brandväggarna är säkra som standard, vilket innebär att du uttryckligen aktivera och IP-adressen eller adressintervallet innan du kan ansluta.  Om du vill konfigurera brandväggen för åtkomst, följer du stegen i [konfigurera brandväggen serveråtkomst för klientens IP-Adressen] [ Configure server firewall access for your client IP] i den [etablering instruktioner] [Provisioning instructions]. |
+| Det går inte att ansluta med verktyget eller drivrutinen |SQL Data Warehouse rekommenderar att du använder [SSMS][SSMS], [SSDT för Visual Studio][SSDT for Visual Studio], eller [sqlcmd] [ sqlcmd] fråga dina data. Mer information om drivrutiner och ansluta till SQL Data Warehouse, se [drivrutiner för Azure SQL Data Warehouse] [ Drivers for Azure SQL Data Warehouse] och [Anslut till Azure SQL Data Warehouse] [ Connect to Azure SQL Data Warehouse] artiklar. |
 
 ## <a name="tools"></a>Verktyg
 | Problem | Lösning |
 |:--- |:--- |
-| Visual Studio object explorer saknas i AAD-användare |Detta är ett känt problem.  Som en tillfällig lösning kan visa hello användare i [sys.database_principals][sys.database_principals].  Se [autentisering tooAzure SQL Data Warehouse] [ Authentication tooAzure SQL Data Warehouse] toolearn mer om hur du använder Azure Active Directory med SQL Data Warehouse. |
-|Manuell scripting, guiden hello skript eller ansluter via SSMS är långsam, låsta eller berörda fel| Kontrollera att användarna har skapats i hello master-databasen. I skriptalternativen, också se till att hello motorn edition har angetts som ”Microsoft Azure SQL Data Warehouse Edition” och motor är ”Microsoft Azure SQL Database”.|
+| Visual Studio object explorer saknas i AAD-användare |Detta är ett känt problem.  Som en tillfällig lösning kan du visa användarna i [sys.database_principals][sys.database_principals].  Se [autentisering till Azure SQL Data Warehouse] [ Authentication to Azure SQL Data Warehouse] att lära dig mer om hur du använder Azure Active Directory med SQL Data Warehouse. |
+|Manuell scripting, med hjälp av guiden skript eller ansluter via SSMS är långsam, låsta eller berörda fel| Kontrollera att användarna har skapats i master-databasen. I skriptalternativen, också kontrollera att motorn edition har angetts som ”Microsoft Azure SQL Data Warehouse Edition” och motor är ”Microsoft Azure SQL Database”.|
 
 ## <a name="performance"></a>Prestanda
 | Problem | Lösning |
 |:--- |:--- |
-| Felsökning av frågan prestanda |Om du försöker tootroubleshoot en viss fråga startar med [lära sig hur toomonitor dina frågor][Learning how toomonitor your queries]. |
-| Dåliga prestanda och planer är ofta ett resultat av saknas statistik |hello beror vanligaste sämre prestanda på bristen på statistik på tabellerna.  Se [underhålla tabellstatistik] [ Statistics] mer information om hur toocreate statistik och varför de är viktiga tooyour prestanda. |
-| Låg samtidighet / frågor i kö |Förstå [hantering av arbetsbelastning] [ Workload management] är viktigt i ordning toounderstand hur toobalance minnesallokering med samtidighet. |
-| Hur tooimplement bästa praxis |hello bästa frågeprestanda för plats toostart toolearn sätt tooimprove är [SQL Data Warehouse metodtips] [ SQL Data Warehouse best practices] artikel. |
-| Hur tooimprove prestanda med skalning |Ibland hello lösningens tooimproving prestanda är toosimply lägga till flera compute power tooyour frågor från [skala ditt SQL Data Warehouse][Scaling your SQL Data Warehouse]. |
-| Dåliga prestanda på grund av dålig index kvalitet |Några tillfällen frågor kan långsammare eftersom [dålig columnstore-index kvalitet][Poor columnstore index quality].  Finns den här artikeln för mer information och hur för[återskapa index tooimprove segment kvalitet][Rebuild indexes tooimprove segment quality]. |
+| Felsökning av frågan prestanda |Om du vill felsöka en viss fråga startar med [Lär dig hur du övervakar dina frågor][Learning how to monitor your queries]. |
+| Dåliga prestanda och planer är ofta ett resultat av saknas statistik |Den vanligaste orsaken till dåliga prestanda är statistik på tabellerna saknas.  Se [underhålla tabellstatistik] [ Statistics] för information om hur du skapar statistik och varför de är viktiga för din prestanda. |
+| Låg samtidighet / frågor i kö |Förstå [hantering av arbetsbelastning] [ Workload management] är viktigt för att förstå hur du ska hantera minnesallokering med samtidighet. |
+| Hur du implementerar bästa praxis |Är det enklast att börja lära dig att förbättra frågeprestanda [SQL Data Warehouse metodtips] [ SQL Data Warehouse best practices] artikel. |
+| Hur vi kan förbättra prestanda med skalning |Ibland lösningen för att förbättra prestanda är att helt enkelt lägga till mer datorkraft frågor genom [skala ditt SQL Data Warehouse][Scaling your SQL Data Warehouse]. |
+| Dåliga prestanda på grund av dålig index kvalitet |Några tillfällen frågor kan långsammare eftersom [dålig columnstore-index kvalitet][Poor columnstore index quality].  Finns den här artikeln för mer information och hur du [återskapa index för att förbättra kvaliteten segment][Rebuild indexes to improve segment quality]. |
 
 ## <a name="system-management"></a>Systemhantering
 | Problem | Lösning |
 |:--- |:--- |
-| Felmeddelande 40847: Kunde inte utföra hello-åtgärden eftersom servern skulle överskrida hello tillåtna Database Transaction Unit-kvot för 45000. |Sänk antingen hello [DWU] [ DWU] av hello databas du försöker toocreate eller [begära en ökad kvot][request a quota increase]. |
-| Undersöka användningen |Se [tabell storlekar] [ Table sizes] toounderstand hello användningen av systemet. |
-| Att hantera tabeller |Se hello [tabell översikt] [ Overview] artikel för att få hjälp med att hantera dina tabeller.  Den här artikeln innehåller också länkar till mer detaljerad information som [tabell datatyper][Data types], [distribuerar en tabell][Distribute], [Indexering av en tabell][Index], [partitionering en tabell][Partition], [underhålla tabellstatistik] [ Statistics] och [temporära tabeller][Temporary]. |
-|Transparent data kryptering (TDE) förloppsindikatorn uppdateras inte i hello Azure-portalen|Du kan visa hello tillståndet för TDE via [powershell](/powershell/module/azurerm.sql/get-azurermsqldatabasetransparentdataencryption).|
+| Felmeddelande 40847: Det gick inte att utföra åtgärden eftersom servern skulle överskrida den tillåtna kvoten Database Transaction Unit av 45000. |Minska den [DWU] [ DWU] av databasen som du försöker skapa eller [begära en ökad kvot][request a quota increase]. |
+| Undersöka användningen |Se [tabell storlekar] [ Table sizes] att förstå användningen av systemet. |
+| Att hantera tabeller |Finns det [tabell översikt] [ Overview] artikel för att få hjälp med att hantera dina tabeller.  Den här artikeln innehåller också länkar till mer detaljerad information som [tabell datatyper][Data types], [distribuerar en tabell][Distribute], [Indexering av en tabell][Index], [partitionering en tabell][Partition], [underhålla tabellstatistik] [ Statistics] och [temporära tabeller][Temporary]. |
+|Transparent data kryptering (TDE) förloppsindikatorn uppdateras inte i Azure Portal|Du kan visa status för TDE via [powershell](/powershell/module/azurerm.sql/get-azurermsqldatabasetransparentdataencryption).|
 
 ## <a name="polybase"></a>Polybase
 | Problem | Lösning |
 |:--- |:--- |
-| Läs in misslyckas på grund av stora rader |Stor rad stöd är för närvarande inte tillgängligt för Polybase.  Det innebär att om tabellen innehåller VARCHAR(MAX), NVARCHAR(MAX) eller VARBINARY(MAX), kan externa tabeller ska använda tooload dina data.  Belastningen för stora rader är för närvarande stöds bara via Azure Data Factory (med BCP), Azure Stream Analytics, SSIS, BCP eller hello SqlBulkCopy körs .NET-klass. PolyBase-stöd för stora rader läggs till i en framtida version. |
-| BCP belastningen på tabellen med MAX-datatypen kan inte |Det finns ett känt problem som kräver att VARCHAR(MAX), NVARCHAR(MAX) eller VARBINARY(MAX) placeras i hello slutet av hello tabellen i vissa situationer.  Försök att flytta din MAX kolumner toohello slutet av hello tabell. |
+| Läs in misslyckas på grund av stora rader |Stor rad stöd är för närvarande inte tillgängligt för Polybase.  Det innebär att om tabellen innehåller VARCHAR(MAX), NVARCHAR(MAX) eller VARBINARY(MAX), externa tabeller inte kan användas för att läsa in dina data.  Belastningen för stora rader är för närvarande stöds bara via Azure Data Factory (med BCP), Azure Stream Analytics, SSIS, BCP eller klassen .NET SqlBulkCopy körs. PolyBase-stöd för stora rader läggs till i en framtida version. |
+| BCP belastningen på tabellen med MAX-datatypen kan inte |Det finns ett känt problem som kräver att VARCHAR(MAX), NVARCHAR(MAX) eller VARBINARY(MAX) placeras i slutet av tabellen i vissa situationer.  Försök att flytta MAX-kolumner i slutet av tabellen. |
 
 ## <a name="differences-from-sql-database"></a>Skillnader från SQL-databas
 | Problem | Lösning |
 |:--- |:--- |
 | Funktioner som inte stöds SQL-databas |Se [stöds inte i tabellen funktioner][Unsupported table features]. |
 | Datatyper stöds inte SQL-databas |Se [datatyper][Unsupported data types]. |
-| Ta bort och uppdatera begränsningar |Se [uppdatering lösningar][UPDATE workarounds], [ta bort lösningar] [ DELETE workarounds] och [med CTAS toowork runt stöds inte UPPDATERINGEN och Ta bort syntax][Using CTAS toowork around unsupported UPDATE and DELETE syntax]. |
+| Ta bort och uppdatera begränsningar |Se [UPPDATERINGEN lösningar][UPDATE workarounds], [ta bort lösningar] [ DELETE workarounds] och [med CTAS undvika stöds inte UPPDATERINGEN och Ta bort syntax][Using CTAS to work around unsupported UPDATE and DELETE syntax]. |
 | MERGE-instruktionen stöds inte |Se [MERGE lösningar][MERGE workarounds]. |
-| Begränsningar för lagrad procedur |Se [lagrade proceduren begränsningar] [ Stored procedure limitations] toounderstand vissa hello begränsningar av lagrade procedurer. |
-| UDF: er stöder inte SELECT-uttryck |Det här är en aktuell begränsning i vår UDF: er.  Se [CREATE FUNCTION] [ CREATE FUNCTION] för hello syntax vi stöder. |
+| Begränsningar för lagrad procedur |Se [lagrade proceduren begränsningar] [ Stored procedure limitations] att förstå vissa begränsningar av lagrade procedurer. |
+| UDF: er stöder inte SELECT-uttryck |Det här är en aktuell begränsning i vår UDF: er.  Se [CREATE FUNCTION] [ CREATE FUNCTION] syntaxen vi stöder. |
 
 ## <a name="next-steps"></a>Nästa steg
-Om du har toofind en lösning tooyour problemet ovan, här är några andra resurser som du kan försöka.
+Om du har det gick inte att hitta en lösning på problemet ovan, nedan följer några resurser som du kan försöka.
 
 * [Bloggar]
 * [Funktionsbegäranden]
@@ -92,12 +92,12 @@ Om du har toofind en lösning tooyour problemet ovan, här är några andra resu
 [SSMS]: https://msdn.microsoft.com/library/mt238290.aspx
 [SSDT for Visual Studio]: ./sql-data-warehouse-install-visual-studio.md
 [Drivers for Azure SQL Data Warehouse]: ./sql-data-warehouse-connection-strings.md
-[Connect tooAzure SQL Data Warehouse]: ./sql-data-warehouse-connect-overview.md
+[Connect to Azure SQL Data Warehouse]: ./sql-data-warehouse-connect-overview.md
 [Skapa ett supportärende]: ./sql-data-warehouse-get-started-create-support-ticket.md
 [Scaling your SQL Data Warehouse]: ./sql-data-warehouse-manage-compute-overview.md
 [DWU]: ./sql-data-warehouse-overview-what-is.md
 [request a quota increase]: ./sql-data-warehouse-get-started-create-support-ticket.md#request-quota-change
-[Learning how toomonitor your queries]: ./sql-data-warehouse-manage-monitor.md
+[Learning how to monitor your queries]: ./sql-data-warehouse-manage-monitor.md
 [Provisioning instructions]: ./sql-data-warehouse-get-started-provision.md
 [Configure server firewall access for your client IP]: ./sql-data-warehouse-get-started-provision.md#create-a-server-level-firewall-rule-in-the-azure-portal
 [SQL Data Warehouse best practices]: ./sql-data-warehouse-best-practices.md
@@ -112,15 +112,15 @@ Om du har toofind en lösning tooyour problemet ovan, här är några andra resu
 [Statistics]: ./sql-data-warehouse-tables-statistics.md
 [Temporary]: ./sql-data-warehouse-tables-temporary.md
 [Poor columnstore index quality]: ./sql-data-warehouse-tables-index.md#causes-of-poor-columnstore-index-quality
-[Rebuild indexes tooimprove segment quality]: ./sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality
+[Rebuild indexes to improve segment quality]: ./sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality
 [Workload management]: ./sql-data-warehouse-develop-concurrency.md
-[Using CTAS toowork around unsupported UPDATE and DELETE syntax]: ./sql-data-warehouse-develop-ctas.md#using-ctas-to-work-around-unsupported-features
+[Using CTAS to work around unsupported UPDATE and DELETE syntax]: ./sql-data-warehouse-develop-ctas.md#using-ctas-to-work-around-unsupported-features
 [UPDATE workarounds]: ./sql-data-warehouse-develop-ctas.md#ansi-join-replacement-for-update-statements
 [DELETE workarounds]: ./sql-data-warehouse-develop-ctas.md#ansi-join-replacement-for-delete-statements
 [MERGE workarounds]: ./sql-data-warehouse-develop-ctas.md#replace-merge-statements
 [Stored procedure limitations]: ./sql-data-warehouse-develop-stored-procedures.md#limitations
-[Authentication tooAzure SQL Data Warehouse]: ./sql-data-warehouse-authentication.md
-[Working around hello PolyBase UTF-8 requirement]: ./sql-data-warehouse-load-polybase-guide.md#working-around-the-polybase-utf-8-requirement
+[Authentication to Azure SQL Data Warehouse]: ./sql-data-warehouse-authentication.md
+[Working around the PolyBase UTF-8 requirement]: ./sql-data-warehouse-load-polybase-guide.md#working-around-the-polybase-utf-8-requirement
 
 <!--MSDN references-->
 [sys.database_principals]: https://msdn.microsoft.com/library/ms187328.aspx

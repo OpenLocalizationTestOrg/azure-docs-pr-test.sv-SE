@@ -1,6 +1,6 @@
 ---
-title: aaaAzure Linux VM-storlekar - GPU | Microsoft Docs
-description: "Visar hello olika GPU optimerade storlekar för virtuella Linux-datorer i Azure."
+title: Azure Linux VM-storlekar - GPU | Microsoft Docs
+description: "Visar olika GPU optimerad storlekar som finns tillgängliga för Linux virtuella datorer i Azure."
 services: virtual-machines-linux
 documentationcenter: 
 author: jonbeck7
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/28/2017
 ms.author: jonbeck
-ms.openlocfilehash: e98f720499be37df4048aeb513aa4f6b187b7335
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 5c9bf89feba519147b07f2810fe4da882664e89e
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="gpu-linux-vm-sizes"></a>GPU Linux VM-storlekar
 
@@ -34,7 +34,7 @@ Drivrutinen installation och verifiering anvisningar finns [N-serien drivrutinsi
 
 [!INCLUDE [virtual-machines-n-series-considerations](../../../includes/virtual-machines-n-series-considerations.md)]
 
-* Vi rekommenderar inte att installera X server eller andra system som använder hello nouveau drivrutinen på Ubuntu NC virtuella datorer. Innan du installerar NVIDIA GPU drivrutiner, måste toodisable hello nouveau drivrutin.  
+* Vi rekommenderar inte att installera X server eller andra system som använder drivrutinen nouveau på Ubuntu NC virtuella datorer. Du måste inaktivera nouveau drivrutinen innan du installerar drivrutiner för NVIDIA GPU.  
 
 ## <a name="other-sizes"></a>Andra storlekar
 - [Generellt syfte](sizes-general.md)

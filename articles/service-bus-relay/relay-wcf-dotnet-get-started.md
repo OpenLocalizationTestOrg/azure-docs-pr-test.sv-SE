@@ -1,6 +1,6 @@
 ---
-title: "aaaGet igång med Azure Relay WCF-reläer i .NET | Microsoft Docs"
-description: "Lär dig hur toouse Azure Relay WCF vidarebefordrar tooconnect två program som finns på olika platser."
+title: "Kom igång med Azure Relay WCF vidarebefordrar i .NET | Microsoft Docs"
+description: "Lär dig hur du använder Azure Relay WCF reläer för att ansluta två appar som finns på olika platser."
 services: service-bus-relay
 documentationcenter: .net
 author: sethmanheim
@@ -14,57 +14,57 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/23/2017
 ms.author: sethm
-ms.openlocfilehash: a652617fc2e9b7c8d62d39fa914f77df6e3a1771
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 1af1ac78398d65e6a87f0d24d6198f3dfbc82ffd
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="how-toouse-azure-relay-wcf-relays-with-net"></a>Hur toouse Azure Relay WCF vidarebefordrar med .NET
-Den här artikeln beskriver hur toouse hello Azure vidarebefordrande tjänsten. hello exemplen är skrivna i C# och använder API för hello Windows Communication Foundation (WCF) med tillägg som finns i hello Service Bus-sammansättningen. Mer information om Azure relay finns hello [översikt över Azure Relay](relay-what-is-it.md).
+# <a name="how-to-use-azure-relay-wcf-relays-with-net"></a>Hur du använder Azure Relay WCF vidarebefordrar med .NET
+Den här artikeln beskriver hur du använder tjänsten Azure Relay. Exemplen är skrivna i C# och använder API:et Windows Communication Foundation (WCF) med tillägg som finns i Service Bus-sammansättningen. Mer information om Azure relay finns i [översikt över Azure Relay](relay-what-is-it.md).
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
 ## <a name="what-is-wcf-relay"></a>Vad är WCF Relay?
 
-hello Azure [ *vidarebefordrande WCF* ](relay-what-is-it.md) kan du toobuild hybridprogram som körs i ett Azure-datacenter och din egen lokala företagsmiljö. hello vidarebefordrande tjänsten förenklar detta genom att du toosecurely exponera tjänster för Windows Communication Foundation (WCF) som finns i ett företagsnätverk som kopplar nätverk toohello offentliga moln, utan med tooopen en brandväggsanslutning eller kräva störande ändringar tooa företagets nätverksinfrastruktur.
+Azure [ *vidarebefordrande WCF* ](relay-what-is-it.md) kan du skapa hybridprogram som körs i både ett Azure-datacenter och din egen lokala företagsmiljö. Tjänsten relay förenklar detta genom att på ett säkert sätt exponera tjänster för Windows Communication Foundation (WCF) som finns i ett företagsnätverk mot det offentliga molnet, utan att behöva öppna en brandväggsanslutning eller kräva störande ändringar i företagets nätverksinfrastruktur.
 
 ![WCF Relay-begrepp](./media/service-bus-dotnet-how-to-use-relay/sb-relay-01.png)
 
-Azure Relay gör toohost WCF-tjänster i din befintliga företagsmiljö. Du kan sedan delegera lyssningen för inkommande sessioner och förfrågningar toothese WCF services toohello relay-tjänsten körs i Azure. Detta gör du tooexpose dessa tjänster tooapplication kod som körs i Azure, eller toomobile arbetare eller miljöer för extranätpartner. Relay gör toosecurely styra vem som kan komma åt dessa tjänster på en detaljerad nivå. Det ger ett kraftfullt och säkert sätt tooexpose programfunktioner och data från dina befintliga företagslösningar och dra nytta av den från hello molnet.
+Du kan värden WCF-tjänster i din befintliga företagsmiljö Azure Relay. Du kan sedan delegera lyssningen för inkommande sessioner och förfrågningar till de här WCF-tjänster till den vidarebefordrande tjänsten som körs i Azure. Tack vare detta kan du exponera dessa tjänster för programkoden som körs i Azure, eller för mobila arbetare eller miljöer för extranätpartner. Du kan på ett säkert sätt styra åtkomsten till dessa tjänster på en detaljerad nivå Relay. Det ger dig ett kraftfullt och säkert sätt att exponera programfunktioner och data från dina befintliga företagslösningar och dra nytta av dessa från molnet.
 
-Den här artikeln beskrivs hur toouse Azure Relay toocreate WCF-webbtjänst exponeras med hjälp av en TCP-kanalbindning och som implementerar en säker konversation mellan två parter.
+Den här artikeln beskriver hur du använder Azure Relay för att skapa en WCF-webbtjänst exponeras med hjälp av en bindning, TCP-kanal som implementerar en säker konversation mellan två parter.
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
-## <a name="get-hello-service-bus-nuget-package"></a>Hämta hello Service Bus-NuGet-paket
-Hej [Service Bus NuGet-paketet](https://www.nuget.org/packages/WindowsAzure.ServiceBus) är hello enklaste sättet tooget hello Service Bus-API och tooconfigure ditt program med alla hello Service Bus-beroenden. tooinstall hello NuGet-paketet i ditt projekt hello följande:
+## <a name="get-the-service-bus-nuget-package"></a>Hämta Service Bus-NuGet-paketet
+[Service Bus-NuGet-paketet](https://www.nuget.org/packages/WindowsAzure.ServiceBus) är det enklaste sättet att komma åt Service Bus-API:et och att konfigurera din app med alla Service Bus-beroenden. Om du vill installera NuGet-paketet i ditt projekt gör du följande:
 
 1. Högerklicka på **Referenser** i Solution Explorer och klicka sedan på **Hantera NuGet-paket**.
-2. Sök efter ”Service Bus” och välj hello **Microsoft Azure Service Bus** objekt. Klicka på **installera** toocomplete hello installationen och sedan stänga hello följande dialogruta:
+2. Sök efter "Service Bus" och markera posten **Microsoft Azure Service Bus**. Klicka på **Installera** för att slutföra installationen och stäng sedan följande dialogruta:
    
    ![](./media/service-bus-dotnet-how-to-use-relay/getting-started-multi-tier-13.png)
 
 ## <a name="expose-and-consume-a-soap-web-service-with-tcp"></a>Exponera och använda en SOAP-webbtjänst med TCP
-tooexpose en befintlig WCF SOAP-webbtjänst för extern användning, måste du göra ändringar toohello tjänstbindningar och adresser. Du kan behöva ändringar tooyour konfigurationsfilen eller kan det krävas kodändringar, beroende på hur du har skapat och konfigurerat dina WCF-tjänster. Observera att WCF gör du toohave flera nätverksslutpunkter över Hej samma tjänst, så du kan behålla hello befintliga interna slutpunkter när du lägger till relay slutpunkter för extern åtkomst på hello samma tid.
+Om du vill exponera en befintlig WCF SOAP-webbtjänst för extern användning, måste du göra ändringar i tjänstebindningarna och i adresserna. Det här kan kräva att du även gör ändringar i konfigurationsfilen, eller i koden, beroende på hur du har skapat och konfigurerat dina WCF-tjänster. Observera att WCF gör att du kan ha flera nätverksslutpunkter inom samma tjänst så att du kan behålla de befintliga, interna slutpunkterna när du lägger till relay slutpunkter för extern åtkomst på samma gång.
 
-I den här uppgiften att skapa en enkel WCF-tjänst och Lägg till en relay-lyssnaren tooit. Den här övningen förutsätter bekant med Visual Studio och därför igenom inte alla hello information om hur du skapar ett projekt. Övningen fokuserar istället på hello-koden.
+I den här uppgiften att skapa en enkel WCF-tjänst och Lägg till en relay-lyssnare. Den här övningen förutsätter att du är bekant med Visual Studio och går därför inte igenom alla detaljer om hur man skapar ett projekt. Övningen fokuserar istället på koden.
 
-Slutför hello följa proceduren tooset konfigurera miljön innan du påbörjar de här stegen:
+Innan du börjar med dessa steg måste du slutföra följande procedur för att göra justeringar i din miljö:
 
-1. Skapa ett konsolprogram som innehåller två projekt, ”klient” och ”tjänst” i hello lösning i Visual Studio.
-2. Lägg till hello Service Bus-NuGet-paketet tooboth projekt. Det här paketet lägger till alla hello nödvändiga sammansättningen referenser tooyour projekt.
+1. Skapa ett konsolprogram i Visual Studio som innehåller två projekt, ”Klient” och ”Tjänst”, inne i lösningen.
+2. Lägga till Service Bus NuGet-paketet i båda projekten. Detta paket lägger till alla nödvändiga sammansättningsreferenser i dina projekt.
 
-### <a name="how-toocreate-hello-service"></a>Hur toocreate hello service
-Först skapar du själva hello-tjänsten. Alla WCF-tjänster består av minst tre separata delar:
+### <a name="how-to-create-the-service"></a>Så här skapar du tjänsten
+Först skapar du själva tjänsten. Alla WCF-tjänster består av minst tre separata delar:
 
-* Definition av ett kontrakt som beskriver vilka meddelanden som utbyts och vilka åtgärder som toobe anropas.
+* Definitionen av ett kontrakt, som beskriver vilka meddelanden som ska bytas ut och vilka åtgärder som ska anropas.
 * Implementering av kontraktet.
-* Värden som är värd hello WCF-tjänst och visar flera slutpunkter.
+* Värden som används som värd för WCF-tjänsten och exponerar ett flera slutpunkter.
 
-hello kodexempel i det här avsnittet adressen var och en av dessa komponenter.
+Kodexemplet i det här avsnittet tar upp var och en av dessa komponenter i detalj.
 
-hello kontraktet definierar en enda åtgärd `AddNumbers`, som adderar två tal och returnerar hello resultat. Hej `IProblemSolverChannel` gränssnittet aktiverar hello klienten toomore enkelt hantera hello proxylivslängden. Att skapa ett sådant gränssnitt anses vara bästa praxis. Det är en bra idé tooput det här kontraktet definition i en separat fil så att du kan referera till filen från både ”klient” och ”tjänst” projekt, men du kan också kopiera hello koden till båda projekten.
+Kontraktet definierar en enda åtgärd `AddNumbers`, som adderar två tal och returnerar resultatet. Gränssnittet `IProblemSolverChannel` gör att klienten enklare kan hantera proxylivslängden. Att skapa ett sådant gränssnitt anses vara bästa praxis. Det är en bra idé att placera kontraktdefinitionen i en separat fil så att du kan referera till filen från både ”Klient”- och ”Tjänst”-projektet, men du kan också kopiera koden till båda projekten.
 
 ```csharp
 using System.ServiceModel;
@@ -79,7 +79,7 @@ interface IProblemSolver
 interface IProblemSolverChannel : IProblemSolver, IClientChannel {}
 ```
 
-Med hello kontrakt på plats är hello-implementeringen:
+Med kontrakt på plats är implementeringen på följande sätt:
 
 ```csharp
 class ProblemSolver : IProblemSolver
@@ -92,7 +92,7 @@ class ProblemSolver : IProblemSolver
 ```
 
 ### <a name="configure-a-service-host-programmatically"></a>Konfigurera en tjänstevärd programmässigt
-Med hello kontraktet och implementering på plats kan värd du nu hello-tjänsten. Värdhanteringen utförs i en [System.ServiceModel.ServiceHost](https://msdn.microsoft.com/library/system.servicemodel.servicehost.aspx) objekt, som tar hand om hanteringen av hello-tjänsten och värdar hello slutpunkter som lyssnar efter meddelanden. hello konfigurerar följande kod hello-tjänsten med både en vanlig, lokal slutpunkt och en relay endpoint tooillustrate hello utseende, sida vid sida av interna och externa slutpunkter. Ersätt hello sträng *namnområde* med ditt namnområdesnamn och *yourKey* med hello SAS-nyckel som du fick i hello förra steget av installationen.
+När kontraktet är på plats och implementeringen har genomförts, kan du nu vara värd för tjänsten. Värdhanteringen utförs inne i ett [System.ServiceModel.ServiceHost](https://msdn.microsoft.com/library/system.servicemodel.servicehost.aspx)-objekt som tar hand om hanteringen av tjänsteinstanserna och fungerar som värd för de slutpunkter som lyssnar efter meddelanden. Följande kod konfigurerar tjänsten med både en vanlig, lokal slutpunkt och en relay-slutpunkt för att visa utseende, sida vid sida av interna och externa slutpunkter. Ersätt strängen *namnområde* med ditt namnområdesnamn och *yourKey* med den SAS-nyckel som du fick i det förra steget av installationen.
 
 ```csharp
 ServiceHost sh = new ServiceHost(typeof(ProblemSolver));
@@ -109,27 +109,27 @@ sh.AddServiceEndpoint(
 
 sh.Open();
 
-Console.WriteLine("Press ENTER tooclose");
+Console.WriteLine("Press ENTER to close");
 Console.ReadLine();
 
 sh.Close();
 ```
 
-I exemplet hello skapar du två slutpunkter som finns på hello samma kontrakt implementering. En lokal och en projiceras via Azure Relay. hello viktigaste skillnaderna mellan dem är bindningarna hello: [NetTcpBinding](https://msdn.microsoft.com/library/system.servicemodel.nettcpbinding.aspx) för hello lokala punkten och [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding#microsoft_servicebus_nettcprelaybinding) för hello relay slutpunkt och hello adresser. hello lokala slutpunkten har en lokal nätverksadress med en separat port. hello relay slutpunkten har en slutpunktsadress som består av hello sträng `sb`, ditt namnområdesnamn och hello sökvägen ”solver”. Detta resulterar i hello URI `sb://[serviceNamespace].servicebus.windows.net/solver`, identifierar hello tjänsteslutpunkten som en Service Bus (relay) TCP-slutpunkt med ett fullständigt kvalificerat externa DNS-namn. Om du placerar hello koden som ska ersätta platshållarna hello i hello `Main` funktion av hello **Service** program du har en fungerande tjänst. Om du vill att din tjänst toolisten enbart på hello relay bort hello lokala slutpunktsdeklarationen.
+I det här exemplet skapar du två slutpunkter som ligger på samma kontraktsimplementering. En lokal och en projiceras via Azure Relay. De viktigaste skillnaderna mellan dem är bindningarna: [NetTcpBinding](https://msdn.microsoft.com/library/system.servicemodel.nettcpbinding.aspx) för den lokala och [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding#microsoft_servicebus_nettcprelaybinding) för relay-slutpunkten och adresserna. Den lokala slutpunkten har en lokal nätverksadress med en separat port. Relay-slutpunkten har en slutpunktsadress som består av strängen `sb`, ditt namnområdesnamn och sökvägen ”solver”. Detta resulterar i URI: N `sb://[serviceNamespace].servicebus.windows.net/solver`, identifierar tjänsteslutpunkten som en Service Bus (relay) TCP-slutpunkt med ett fullständigt kvalificerat externa DNS-namn. Om du placerar ut koden som ska ersätta platshållarna i `Main`-funktionen i **Tjänsteprogrammet** kommer du att få en fungerande tjänst. Om du vill att din tjänst endast ska lyssna på vidarebefordran kan du ta bort den lokala slutpunktsdeklarationen.
 
-### <a name="configure-a-service-host-in-hello-appconfig-file"></a>Konfigurera en tjänstevärd i hello App.config-fil
-Du kan också konfigurera hello värden med hjälp av hello App.config-fil. hello koden för tjänstevärden i det här fallet visas i hello nästa exempel.
+### <a name="configure-a-service-host-in-the-appconfig-file"></a>Konfigurera en tjänstevärd i filen App.config
+Du kan också konfigurera värden med hjälp av filen App.config. Koden för tjänstevärden i det här fallet visas i nästa exempel.
 
 ```csharp
 ServiceHost sh = new ServiceHost(typeof(ProblemSolver));
 sh.Open();
-Console.WriteLine("Press ENTER tooclose");
+Console.WriteLine("Press ENTER to close");
 Console.ReadLine();
 sh.Close();
 ```
 
-hello slutpunktsdefinitionerna flyttas till hello App.config-fil. hello NuGet-paketet har redan lagt till en uppsättning definitioner toohello App.config-filen som är hello krävs configuration tillägg för Azure Relay. Hej följande exempel, som är hello exakt motsvarighet till föregående kod hello bör visas direkt under hello **system.serviceModel** element. I det här kodexemplet förutsätter vi att namnområdet för ditt C#-projekt har namnet **Tjänst**.
-Ersätt hello platshållarna med namnet för relay-namnområdet och SAS-nyckel.
+Slutpunktsdefinitionerna flyttas till filen App.config. NuGet-paketet har redan lagts till en uppsättning definitioner i filen App.config som är nödvändig konfiguration-tillägg för Azure Relay. Följande exempel, som är en exakt motsvarighet till föregående kod, bör visas direkt under elementet **system.serviceModel**. I det här kodexemplet förutsätter vi att namnområdet för ditt C#-projekt har namnet **Tjänst**.
+Ersätt platshållarna med namnet för relay-namnområdet och SAS-nyckel.
 
 ```xml
 <services>
@@ -156,15 +156,15 @@ Ersätt hello platshållarna med namnet för relay-namnområdet och SAS-nyckel.
 </behaviors>
 ```
 
-När du har gjort ändringarna hello-tjänsten startar som förut men med två live-slutpunkter: en lokal och en som lyssnar i hello molnet.
+När du har gjort dessa ändringar, startar tjänsten som förut men med två live-slutpunkter: en lokal och en som lyssnar i molnet.
 
-### <a name="create-hello-client"></a>Skapa hello-klient
+### <a name="create-the-client"></a>Skapa klienten
 #### <a name="configure-a-client-programmatically"></a>Konfigurera en klient programmässigt
-tooconsume hello tjänsten som du kan skapa en WCF-klient som använder en [ChannelFactory](https://msdn.microsoft.com/library/system.servicemodel.channelfactory.aspx) objekt. Service Bus använder en tokenbaserad säkerhetsmodell som implementeras med hjälp av SAS. Hej [TokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider) klassen representerar en leverantör av säkerhetstoken med inbyggda fabriksmetoder som returnerar vissa välkända tokenleverantörer. hello följande exempel används hello [CreateSharedAccessSignatureTokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider#Microsoft_ServiceBus_TokenProvider_CreateSharedAccessSignatureTokenProvider_System_String_) metoden toohandle hello förvärv av hello lämplig SAS-token. är de som erhålls från hello portal som beskrivs i föregående avsnitt i hello hello namn och nyckel.
+Om du vill använda tjänsten, kan du skapa en WCF-klient som använder ett [ChannelFactory](https://msdn.microsoft.com/library/system.servicemodel.channelfactory.aspx)-objekt. Service Bus använder en tokenbaserad säkerhetsmodell som implementeras med hjälp av SAS. Klassen [TokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider) representerar en leverantör av säkerhetstoken med inbyggda fabriksmetoder som returnerar ett antal välkända tokenleverantörer. I följande exempel används metoden [CreateSharedAccessSignatureTokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider#Microsoft_ServiceBus_TokenProvider_CreateSharedAccessSignatureTokenProvider_System_String_) för att hantera förvärvet av lämplig SAS-token. Namnet och nyckeln är de som du fick från portalen, enligt beskrivningen i det förra avsnittet.
 
-Första, referens eller kopiering hello `IProblemSolver` minimera koden från hello-tjänsten till ditt klientprojekt.
+Först måste du referera eller kopiera kontraktkoden `IProblemSolver` från tjänsten till ditt klientprojekt.
 
-Ersätt sedan hello koden i hello `Main` metod för hello-klienten, Ersätt återigen platshållartexten hello med relay namnområdet och SAS-nyckel.
+Ersätt Koden i den `Main` metoden för klienten, Ersätt återigen platshållartexten med relay namnområdet och SAS-nyckel.
 
 ```csharp
 var cf = new ChannelFactory<IProblemSolverChannel>(
@@ -180,10 +180,10 @@ using (var ch = cf.CreateChannel())
 }
 ```
 
-Du kan nu skapa hello klienten och hello-tjänsten och köra dem (kör hello tjänsten först), och hello klienten anropar hello-tjänsten och skriver ut **9**. Du kan köra hello klienten och servern på olika datorer, även över nätverk och hello kommunikation fortfarande fungerar. hello klientkoden kan också köra hello molnet eller lokalt.
+Du kan nu skapa klienten och tjänsten och köra dem (kör tjänsten först). Klienten anropar tjänsten och skriver ut **9**. Du kan köra klient och servern på olika datorer, även över nätverk. Kommunikationen kommer ändå att fungera. Klientkoden kan också köras i molnet eller lokalt.
 
-#### <a name="configure-a-client-in-hello-appconfig-file"></a>Konfigurera en klient i hello App.config-fil
-hello följande kod visar hur tooconfigure hello klienten med hjälp av hello App.config-fil.
+#### <a name="configure-a-client-in-the-appconfig-file"></a>Konfigurera en klient i filen App.config
+Följande kod visar hur du konfigurerar klienten med hjälp av filen App.config.
 
 ```csharp
 var cf = new ChannelFactory<IProblemSolverChannel>("solver");
@@ -193,7 +193,7 @@ using (var ch = cf.CreateChannel())
 }
 ```
 
-hello slutpunktsdefinitionerna flyttas till hello App.config-fil. hello följande exempel, som är hello samma som hello koden som listades tidigare, bör visas direkt under hello `<system.serviceModel>` element. Här, som tidigare måste du ersätta hello platshållarna med relay namnområdet och SAS-nyckel.
+Slutpunktsdefinitionerna flyttas till filen App.config. I följande exempel, som är samma som koden som listades tidigare, bör visas direkt under den `<system.serviceModel>` element. Här, precis som tidigare, måste du ersätta platshållarna med relay namnområdet och SAS-nyckel.
 
 ```xml
 <client>
@@ -216,11 +216,11 @@ hello slutpunktsdefinitionerna flyttas till hello App.config-fil. hello följand
 ```
 
 ## <a name="next-steps"></a>Nästa steg
-Nu när du har lärt dig hello grunderna i Azure Relay följa dessa länkar toolearn mer.
+Nu när du har lärt dig grunderna i Azure Relay, kan du följa dessa länkar om du vill veta mer.
 
 * [Vad är Azure Relay?](relay-what-is-it.md)
 * [Azure Service Bus-Arkitekturöversikt](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md)
-* Hämta Service Bus-exempel från [Azure-exempel] [ Azure samples] eller se hello [översikt över Service Bus-exempel][overview of Service Bus samples].
+* Hämta Service Bus-exempel från [Azure-exempel] [ Azure samples] eller finns den [översikt över Service Bus-exempel][overview of Service Bus samples].
 
 [Shared Access Signature Authentication with Service Bus]: ../service-bus-messaging/service-bus-shared-access-signature-authentication.md
 [Azure samples]: https://code.msdn.microsoft.com/site/search?query=service%20bus&f%5B0%5D.Value=service%20bus&f%5B0%5D.Type=SearchText&ac=2

@@ -1,6 +1,6 @@
 ---
-title: "aaaLoad data från SQL Server till Azure SQL Data Warehouse (PolyBase) | Microsoft Docs"
-description: "Använder bcp tooexport data från SQL Server tooflat filer, AZCopy tooimport data tooAzure blobblagring och PolyBase tooingest hello data till Azure SQL Data Warehouse."
+title: "Läs in data från SQL Server till Azure SQL Data Warehouse (PolyBase) | Microsoft Docs"
+description: "Använder sig av bcp för att exportera data från SQL Server till flat-filer, AZCopy för att importera data till Azure blobblagring och PolyBase för att mata in data i Azure SQL Data Warehouse."
 services: sql-data-warehouse
 documentationcenter: NA
 author: ckarst
@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: loading
 ms.date: 10/31/2016
 ms.author: cakarst;barbkess
-ms.openlocfilehash: 1346fb016e0538a44426671bf4e29358cb24f7ab
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 966100094f98bae41bf90df500d005fa78b31ec3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="load-data-with-polybase-in-sql-data-warehouse"></a>Läs in data med PolyBase i SQL Data Warehouse
 > [!div class="op_single_selector"]
@@ -29,32 +29,32 @@ ms.lasthandoff: 10/06/2017
 > 
 > 
 
-Den här kursen visar hur tooload data till SQL Data Warehouse med hjälp av AzCopy och PolyBase. När du är klar, kommer du att veta hur man:
+De här självstudierna visar hur du läser in data i SQL Data Warehouse med hjälp av AzCopy och PolyBase. När du är klar, kommer du att veta hur man:
 
-* Använda AzCopy toocopy data tooAzure blob storage
-* Skapa databasobjekt toodefine hello data
-* Kör en T-SQL-fråga tooload hello data
+* Använder AzCopy för att kopiera data till Azure-blobblagring
+* Skapar databasobjekt för att definiera data
+* Kör en T-SQL-fråga för att läsa in data
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Loading-data-with-PolyBase-in-Azure-SQL-Data-Warehouse/player]
 > 
 > 
 
-## <a name="prerequisites"></a>Krav
-toostep igenom den här kursen behöver du
+## <a name="prerequisites"></a>Förutsättningar
+För att gå igenom de här självstudierna behöver du
 
 * En SQL Data Warehouse-databas.
 * Ett Azure-lagringskonto av typen standard lokalt redundant lagring (Standard-LRS), standard geo-redundant lagring (Standard-GRS) eller standard geo-redundant lagring med läsbehörighet (Standard-RAGRS).
-* Kommandoradsverktyget AzCopy. Hämta och installera hello [senaste versionen av AzCopy] [ latest version of AzCopy] som installeras med hello Microsoft Azure Storage-verktyg.
+* Kommandoradsverktyget AzCopy. Hämta och installera den [senaste versionen av AzCopy][latest version of AzCopy] som installeras med Microsoft Azure Storage-verktygen.
   
     ![Azure Storage-verktyg](./media/sql-data-warehouse-get-started-load-with-polybase/install-azcopy.png)
 
-## <a name="step-1-add-sample-data-tooazure-blob-storage"></a>Steg 1: Lägg till exempel data tooAzure blob-lagring
-I ordning tooload data måste tooput exempeldata i en Azure-blobblagring. I det här steget fyller vi en Azure Storage-blob med exempeldata. Senare, ska vi använda PolyBase tooload exempeldatan till din SQL Data Warehouse-databas.
+## <a name="step-1-add-sample-data-to-azure-blob-storage"></a>Steg 1: Lägg till exempeldata i Azure blobblagret
+För att kunna läsa in data, behöver vi lägga exempeldata i ett Azure-blobblager. I det här steget fyller vi en Azure Storage-blob med exempeldata. Senare kommer vi att använda PolyBase för att läsa in exempeldatan till din SQL Data Warehouse-databas.
 
 ### <a name="a-prepare-a-sample-text-file"></a>A. Förbered en exempeltextfil
-tooprepare en exempeltextfil:
+Förbered en exempeltextfil:
 
-1. Öppna Anteckningar och kopiera hello följande rader med data i en ny fil. Spara den här tooyour lokala temp-katalog som % temp%\DimDate2.txt.
+1. Öppna anteckningar och kopiera följande datarader i en ny fil. Spara den på din lokala temp-katalog som %temp%\DimDate2.txt.
 
 ```
 20150301,1,3
@@ -72,11 +72,11 @@ tooprepare en exempeltextfil:
 ```
 
 ### <a name="b-find-your-blob-service-endpoint"></a>B. Hitta blobbtjänstens slutpunkt
-toofind blobbtjänstens slutpunkt:
+Så här hittar du blobbtjänstens slutpunkt:
 
-1. Välj hello Azure Portal **Bläddra** > **Lagringskonton**.
-2. Klicka på hello storage-konto som du vill toouse.
-3. I hello lagring-kontoblad klickar du på Blobbar
+1. I Azure Portal väljer du **Bläddra** > **Lagringskonton**.
+2. Klicka på det lagringskonto som du vill använda.
+3. I bladet Storage-konton klickar du på Blobbar
    
     ![Klicka på Blobbar](./media/sql-data-warehouse-get-started-load-with-polybase/click-blobs.png)
 4. Spara URL:en för blobbtjänstens slutpunkt för senare.
@@ -84,67 +84,67 @@ toofind blobbtjänstens slutpunkt:
     ![Blob-tjänstens slutpunkt](./media/sql-data-warehouse-get-started-load-with-polybase/blob-service.png)
 
 ### <a name="c-find-your-azure-storage-key"></a>C. Hitta din Azure-lagringsnyckel
-toofind Azure-lagringsnyckel:
+Hitta din Azure-lagringsnyckel:
 
-1. Hello Azure Portal, Välj **Bläddra** > **Lagringskonton**.
-2. Klicka på hello storage-konto som du vill toouse.
+1. I Azure Portal väljer du **Bläddra** > **Lagringskonton**.
+2. Klicka på det lagringskonto som du vill använda.
 3. Välj **Alla inställningar** > **Åtkomstnycklar**.
-4. Klicka på hello kopiera rutan toocopy en access nycklar toohello Urklipp.
+4. Klicka på kopiera-rutan för att kopiera en av dina åtkomstnycklar till urklipp.
    
     ![Kopiera Azure-lagringsnyckel](./media/sql-data-warehouse-get-started-load-with-polybase/access-key.png)
 
-### <a name="d-copy-hello-sample-file-tooazure-blob-storage"></a>D. Kopiera hello exempel filen tooAzure blob-lagring
-toocopy datalagringen tooAzure blob:
+### <a name="d-copy-the-sample-file-to-azure-blob-storage"></a>D. Kopiera exempelfilen till Azure-blobblagring
+Kopiera dina data till Azure-blobblagring:
 
-1. Öppna en kommandotolk och ändra kataloger toohello installationskatalogen för AzCopy. Det här kommandot ändrar toohello Standardinstallationskatalogen på en 64-bitars Windows-klient.
+1. Öppna en kommandotolk och ändra katalog till installationskatalogen för AzCopy. Det här kommandot ändrar till standard-installationskatalogen på en 64-bitars Windows-klient.
    
     ```
     cd /d "%ProgramFiles(x86)%\Microsoft SDKs\Azure\AzCopy"
     ```
-2. Kör följande kommando tooupload hello hello. Ange URL:en för blobbtjänstens slutpunkt för <blob service endpoint URL> och nyckeln för Azure-lagringskontot för <azure_storage_account_key>.
+2. Kör följande kommando för att ladda upp filen. Ange URL:en för blobbtjänstens slutpunkt för <blob service endpoint URL> och nyckeln för Azure-lagringskontot för <azure_storage_account_key>.
    
     ```
     .\AzCopy.exe /Source:C:\Temp\ /Dest:<blob service endpoint URL> /datacontainer/datedimension/ /DestKey:<azure_storage_account_key> /Pattern:DimDate2.txt
     ```
 
-Se även [komma igång med kommandoradsverktyget Azcopy hello][latest version of AzCopy].
+Mer information finns i [Kom igång med kommandoradsverktyget AzCopy][latest version of AzCopy].
 
 ### <a name="e-explore-your-blob-storage-container"></a>E. Utforska din blobblagringsbehållare
-toosee hello filen du överförde tooblob lagring:
+Om du vill se filen du laddade upp till blobblagring:
 
-1. Gå tillbaka tooyour Blob-tjänsten bladet.
+1. Gå tillbaka till bladet Blob-tjänst.
 2. Under Behållare dubbelklickar du på **datacontainer**.
-3. tooexplore hello sökvägen tooyour data, klickar du på hello mapp **datedimension** och du ser den överförda filen **DimDate2.txt**.
-4. tooview egenskaper, klicka på **DimDate2.txt**.
-5. Observera att i egenskapsbladet för hello Blob, du kan hämta eller ta bort hello-filen.
+3. Om du vill följa sökvägen till dina data, klickar du på mappen **datedimension** för att se filen **DimDate2.txt** som du laddat upp.
+4. Om du vill visa egenskaper, klickar du på **DimDate2.txt**.
+5. Observera att bladet för Blob-egenskaper låter dig hämta eller ta bort filen.
    
     ![Visa Azure-lagringsblobb](./media/sql-data-warehouse-get-started-load-with-polybase/view-blob.png)
 
-## <a name="step-2-create-an-external-table-for-hello-sample-data"></a>Steg 2: Skapa en extern tabell för exempeldata hello
-I det här avsnittet skapar vi en extern tabell som definierar hello exempeldata.
+## <a name="step-2-create-an-external-table-for-the-sample-data"></a>Steg 2: Skapa en extern tabell för exempeldata
+I det här avsnittet ska vi skapa en extern tabell som definierar exempeldata.
 
-PolyBase använder externa tabeller tooaccess data i Azure blob storage. Eftersom hello data inte lagras inom SQL Data Warehouse, hanterar PolyBase autentisering toohello externa data med hjälp av en databas-omfattande autentisering.
+PolyBase använder sig av externa tabeller för att komma åt data i Azure-blobblagring. Eftersom data inte lagras inom SQL Data Warehouse, hanterar PolyBase autentisering till externa data med hjälp av en databas-omfattande autentisering.
 
-hello exemplet i det här steget använder de här Transact-SQL-instruktioner toocreate en extern tabell.
+Exemplet i det här steget använder de här Transact-SQL-uttrycken för att skapa en extern tabell.
 
-* [Skapa huvudnyckel (Transact-SQL)] [ Create Master Key (Transact-SQL)] tooencrypt hello hemligheten för din databas-omfattande autentisering.
-* [Skapa Databasomfattande autentisering (Transact-SQL)] [ Create Database Scoped Credential (Transact-SQL)] toospecify autentiseringsinformation för ditt Azure storage-konto.
-* [Skapa extern datakälla (Transact-SQL)] [ Create External Data Source (Transact-SQL)] toospecify hello platsen för din Azure-blobblagring.
-* [Skapa externt filformat (Transact-SQL)] [ Create External File Format (Transact-SQL)] toospecify hello formatet för dina data.
-* [Skapa extern tabell (Transact-SQL)] [ Create External Table (Transact-SQL)] toospecify hello tabelldefinitionen och platsen för hello data.
+* [Skapa huvudnyckel (Transact-SQL)][Create Master Key (Transact-SQL)] för att kryptera hemligheten för din databasövergripande autentisering.
+* [Skapa databasomfattande autentisering (Transact-SQL)][Create Database Scoped Credential (Transact-SQL)] och ange autentiseringsinformation för ditt Azure-lagringskonto.
+* [Skapa extern datakälla (Transact-SQL)][Create External Data Source (Transact-SQL)] och ange platsen för din Azure-bloblagring.
+* [Skapa externt filformat (Transact-SQL)][Create External File Format (Transact-SQL)] och ange formatet för dina data.
+* [Skapa extern tabell (Transact-SQL)][Create External Table (Transact-SQL)] och ange tabelldefinitionen och platsen för dina data.
 
-Kör den här frågan mot din SQL Data Warehouse-databas. Den skapar en extern tabell som heter DimDate2External i dbo-schemat, hello som pekar toohello Exempeldatan dimdate2.txt i hello Azure blob storage.
+Kör den här frågan mot din SQL Data Warehouse-databas. Det skapar en extern tabell som heter DimDate2External i dbo-schemat, som pekar på exempeldatan DimDate2.txt i Azure-blobblagret.
 
 ```sql
 -- A: Create a master key.
 -- Only necessary if one does not already exist.
--- Required tooencrypt hello credential secret in hello next step.
+-- Required to encrypt the credential secret in the next step.
 
 CREATE MASTER KEY;
 
 
 -- B: Create a database scoped credential
--- IDENTITY: Provide any string, it is not used for authentication tooAzure storage.
+-- IDENTITY: Provide any string, it is not used for authentication to Azure storage.
 -- SECRET: Provide your Azure storage account key.
 
 
@@ -156,9 +156,9 @@ WITH
 
 
 -- C: Create an external data source
--- TYPE: HADOOP - PolyBase uses Hadoop APIs tooaccess data in Azure blob storage.
+-- TYPE: HADOOP - PolyBase uses Hadoop APIs to access data in Azure blob storage.
 -- LOCATION: Provide Azure storage account name and blob container name.
--- CREDENTIAL: Provide hello credential created in hello previous step.
+-- CREDENTIAL: Provide the credential created in the previous step.
 
 CREATE EXTERNAL DATA SOURCE AzureStorage
 WITH (
@@ -180,10 +180,10 @@ WITH (
 );
 
 
--- E: Create hello external table
--- Specify column names and data types. This needs toomatch hello data in hello sample file.
--- LOCATION: Specify path toofile or directory that contains hello data (relative toohello blob container).
--- toopoint tooall files under hello blob container, use LOCATION='.'
+-- E: Create the external table
+-- Specify column names and data types. This needs to match the data in the sample file.
+-- LOCATION: Specify path to file or directory that contains the data (relative to the blob container).
+-- To point to all files under the blob container, use LOCATION='.'
 
 CREATE EXTERNAL TABLE dbo.DimDate2External (
     DateId INT NOT NULL,
@@ -197,25 +197,25 @@ WITH (
 );
 
 
--- Run a query on hello external table
+-- Run a query on the external table
 
 SELECT count(*) FROM dbo.DimDate2External;
 
 ```
 
 
-I SQL Server Object Explorer i Visual Studio, kan du se hello externa filformatet, extern datakälla och hello DimDate2External-tabellen.
+I SQL Server Object Explorer i Visual Studio, kan du se det externa filformatet, den externa datakällan och DimDate2External-tabellen.
 
 ![Visa extern tabell](./media/sql-data-warehouse-get-started-load-with-polybase/external-table.png)
 
 ## <a name="step-3-load-data-into-sql-data-warehouse"></a>Steg 3: Läs in data till SQL Data Warehouse
-När hello extern tabell har skapats kan du läsa hello data i en ny tabell eller infoga den i en befintlig tabell.
+När den externa tabellen har skapats kan du antingen läsa in dina data till en ny tabell eller infoga dem i en befintlig tabell.
 
-* tooload hello data i en ny tabell, kör hello [CREATE TABLE AS SELECT (Transact-SQL)] [ CREATE TABLE AS SELECT (Transact-SQL)] instruktionen. hello nya tabellen kommer att ha hello kolumnerna som namnges i frågan hello. hello datatyper hello kolumner matchar hello datatyper i hello externa tabelldefinitionen.
-* tooload hello data i en befintlig tabell använder hello [INSERT... Välj (Transact-SQL)] [ INSERT...SELECT (Transact-SQL)] instruktionen.
+* Om du vill läsa in data till en ny tabell kör du uttrycket [CREATE TABLE AS SELECT (Transact-SQL)][CREATE TABLE AS SELECT (Transact-SQL)]. Den nya tabellen kommer att ha kolumnerna som namnges i frågan. Datatyperna för kolumnerna kommer att matcha datatyperna i den externa tabelldefinitionen.
+* Om du vill läsa in data i en befintlig tabell använder du uttrycket [INSERT...SELECT (Transact-SQL)][INSERT...SELECT (Transact-SQL)].
 
 ```sql
--- Load hello data from Azure blob storage tooSQL Data Warehouse
+-- Load the data from Azure blob storage to SQL Data Warehouse
 
 CREATE TABLE dbo.DimDate2
 WITH
@@ -228,9 +228,9 @@ SELECT * FROM [dbo].[DimDate2External];
 ```
 
 ## <a name="step-4-create-statistics-on-your-newly-loaded-data"></a>Steg 4: Skapa statistik på dina nyinlästa data
-SQL Data Warehouse skapar och uppdaterar inte statistik automatiskt. Därför tooachieve hög frågeprestanda, det är viktigt toocreate statistik för varje kolumn av varje tabell efter hello först hämta. Det är också viktigt tooupdate statistik efter betydande förändringar i hello data.
+SQL Data Warehouse skapar och uppdaterar inte statistik automatiskt. För att få en hög frågeprestanda är det därför viktigt att skapa statistik för varje kolumn av varje tabell efter den första inläsningen. Det är också viktigt att uppdatera statistiken efter att det har skett betydande förändringar.
 
-Det här exemplet skapar enkolumns-statistik på hello nya DimDate2-tabellen.
+Det här exemplet skapar enkolumns-statistik för den nya DimDate2-tabellen.
 
 ```sql
 CREATE STATISTICS [DateId] on [DimDate2] ([DateId]);
@@ -238,10 +238,10 @@ CREATE STATISTICS [CalendarQuarter] on [DimDate2] ([CalendarQuarter]);
 CREATE STATISTICS [FiscalQuarter] on [DimDate2] ([FiscalQuarter]);
 ```
 
-Det finns fler toolearn [statistik][Statistics].  
+Mer information finns i [Statistik][Statistics].  
 
 ## <a name="next-steps"></a>Nästa steg
-Se hello [PolyBase-guiden] [ PolyBase guide] för ytterligare information som du bör känna till när du utvecklar en lösning som använder PolyBase.
+Se [PolyBase-guiden][PolyBase guide] för ytterligare information som du bör känna till när du utvecklar en PolyBase-baserad lösning.
 
 <!--Image references-->
 

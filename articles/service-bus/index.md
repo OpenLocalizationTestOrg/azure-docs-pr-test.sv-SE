@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure Service Bus-dokumentation – självstudier, API-referens | Microsoft Docs"
-description: "Lär dig hur tooset in meddelanden som ansluter program och tjänster lokalt och molnet miljöer.  Självstudier, videor, API-referenser och mycket annat."
+title: "Dokumentation om Azure Service Bus – Självstudier, API-referens | Microsoft Docs"
+description: "Lär dig hur du konfigurerar en meddelandetjänst som ansluter program och tjänster över lokala platser och molnmiljöer.  Självstudier, videor, API-referenser och mycket annat."
 services: service-bus
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 03/14/2017
 ms.author: carolz
-ms.openlocfilehash: 68df38c39d6f5da112b44025aaf393df542ce01a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 9651d93f4d29121e561108845ed48558e46e42f5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 #<a name="service-bus-documentation"></a>Dokumentation för Service Bus
 
-Lär dig hur toouse Service Bus och Relay tooconnect över lokalt och molnet miljöer. Självstudier, videor, API-referenserna och andra dokumentationen visar hur tooset in molnet meddelandehantering mellan program och tjänster.
+Lär dig hur du använder Service Bus och Relay för att ansluta över lokala platser och molnmiljöer. Självstudier, videor, API-referenser och annan dokumentation som visar hur du konfigurerar molnmeddelandehantering mellan program och tjänster.
 
 <ul class="panelContent cardsFTitle">
     <li>

@@ -1,6 +1,6 @@
 ---
-title: "Översikt över säkerheten i aaaAzure | Microsoft Docs"
-description: "hello säkerhetsinformation för Microsoft Azure-webbplats på Azure.com är din plats för teknisk svar tooyour Azure säkerhetsfrågor."
+title: "Översikt över säkerheten i Azure | Microsoft Docs"
+description: "Säkerhetsinformation för Microsoft Azure-webbplats på Azure.com är en teknisk svar på dina Azure säkerhetsfrågor."
 services: security
 documentationcenter: na
 author: TomShinder
@@ -14,25 +14,25 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/18/2016
 ms.author: terrylan
-ms.openlocfilehash: bee676068a84cf8af03910aa5fcb047723ebce6a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 1303815755584e912891d501018b257b96e5f063
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="azure-security-overview"></a>Översikt över Azure-säkerhet
-hello säkerhetsinformation för Microsoft Azure-webbplats på Azure.com är din plats för teknisk svar tooyour Azure säkerhetsfrågor. Om du är intresserad av Azure efterlevnad och hur Azure skyddar sin egen infrastruktur finns hello [Microsoft Trust Center](https://www.microsoft.com/TrustCenter/default.aspx).
+Säkerhetsinformation för Microsoft Azure-webbplats på Azure.com är en teknisk svar på dina Azure säkerhetsfrågor. Om du är intresserad av Azure efterlevnad och hur Azure skyddar sin egen infrastruktur, finns det [Microsoft Trust Center](https://www.microsoft.com/TrustCenter/default.aspx).
 
-Vi vet att säkerheten är jobbet en i hello molnet och det är viktigt att du hitta korrekt och rimlig information om säkerheten i Azure. En av hello bästa orsaker toouse Azure för dina program och tjänster är tootake nytta av hello mängd säkerhetsverktyg och funktioner som är tillgängliga. Dessa verktyg och funktioner gör det möjligt toocreate säkra lösningar på hello säker Azure-plattformen.
+Vi vet att säkerhet är ett jobb i molnet och det är viktigt att du hitta korrekt och rimlig information om säkerheten i Azure. Ett av de bästa skälen att använda Azure för dina program och tjänster är att dra nytta av en mängd säkerhetsverktyg och funktioner som är tillgängliga. Dessa verktyg och funktioner för att göra det möjligt att skapa säkra lösningar för säkra Azure-plattformen.
 
-Den här sidan och den här platsen kommer att utvecklas som nya Azure-tjänster är online och att befintliga tjänster uppdateras. Förbättra ständigt våra erbjudanden för säkerhet och vi delar hello teknisk information om dessa förbättringar här. Vi rekommenderar att du regelbundet returnera toothis plats och nyheter!
+Den här sidan och den här platsen kommer att utvecklas som nya Azure-tjänster är online och att befintliga tjänster uppdateras. Förbättra ständigt våra erbjudanden för säkerhet och vi delar de tekniska detaljerna för dessa förbättringar här. Vi rekommenderar att du gå tillbaka till den här platsen regelbundet och nyheter!
 
-## <a name="using-hello-azure-security-information-site"></a>Med hjälp av hello Azure Security Information Site
-När du tittar på hello vänster hello sidan finns en uppsättning kategorier av säkerhetsfrågor. Klicka eller tryck på hello avsnittet toosee hello artiklar som vi har för den kategorin.
+## <a name="using-the-azure-security-information-site"></a>Använda Azure Security Information webbplatsen
+När du tittar på vänster sida av sidan finns en uppsättning kategorier av säkerhetsfrågor. Klicka eller tryck på avsnittet om du vill se artiklar som vi har för den kategorin.
 
-Varje kategori innehåller en översikt översiktsartikel. hello målet med hello översiktsartikel är tooprovide du en sammanfattning av vad Azure har toooffer vad gäller säkerhet för den kategorin. hello översikt över artiklarna hjälper dig att förstå hello produkter, tjänster och funktioner som är tillgängliga i Azure som du kan använda tooenhance hello säkerheten för din distribution. Dessa artiklar översikt innehåller flera länkar tootechnical innehåll så att du kan lära dig mer om hello ämnen och hur tooimplement dem.
+Varje kategori innehåller en översikt översiktsartikel. Målet med översikt översiktsartikeln är att ge dig en översikt över Azure har att erbjuda vad gäller säkerhet för den kategorin. Översikt över artiklarna hjälper dig att förstå produkter, tjänster och funktioner som är tillgängliga i Azure som du kan använda för att förbättra säkerheten för dina distributioner. Dessa artiklar översikt innehåller flera länkar till tekniska innehållet så att du kan lära dig mer om avsnitten och hur de används.
 
-hello adresserar Azure säkerhetsinformation för närvarande hello följande kategorier:
+Säkerhetsinformation för Azure-plats-adresser för närvarande följande kategorier:
 
 * Resurser
 * Nätverkssäkerhet
@@ -46,8 +46,8 @@ hello adresserar Azure säkerhetsinformation för närvarande hello följande ka
 * Arkitektur
 
 > [!NOTE]
-> Alla hello artiklar har vi hello Azure säkerhetsinformation plats visas i hello navigering hello vänster hello-sidan. Om du vill toosee alla hello-artiklar, klicka eller tryck på **finns mer** längst hello hello kategorilistan.
+> Alla artiklar som vi har säkerhetsinformation för Azure-webbplatsen visas i navigeringsfältet till vänster på sidan. Om du vill se alla artiklar klicka eller tryck på **finns mer** längst ned i kategorilistan.
 >
 >
 
-Vi vill indata! Om det finns kategorier du vill lägga till, för oss berätta! Om det finns artiklar som du vill lägga till tooan befintlig kategori, låt oss veta att för! Du kan använda hello kommentarer nedan eller skriva toous på [ azsecinfosite@microsoft.com ](mailto:azsecinfosite@microsoft.com) och vi kommer införliva rekommendationerna i våra planer.
+Vi vill indata! Om det finns kategorier du vill lägga till, för oss berätta! Om det finns artiklar som ska läggas till en befintlig kategori, låt oss veta att för! Du kan använda kommentarer nedan eller skriva till oss på [ azsecinfosite@microsoft.com ](mailto:azsecinfosite@microsoft.com) och vi kommer införliva rekommendationerna i våra planer.

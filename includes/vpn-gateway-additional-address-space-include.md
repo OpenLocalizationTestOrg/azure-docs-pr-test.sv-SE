@@ -1,16 +1,16 @@
-### <a name="tooadd-additional-address-space"></a>tooadd ytterligare adressutrymme
+### <a name="to-add-additional-address-space"></a>Lägga till ytterligare adressutrymme
 
-1. tooadd ytterligare adressutrymme, under hello **inställningar** på sidan virtuella nätverk, klickar du på **adressutrymmet** tooopen hello adressutrymme sidan.
-2. Lägga till ytterligare adressutrymme för hello och klicka sedan på **spara** hello överst på hello sidan.
+1. Om du vill lägga till ytterligare adressutrymme öppnar du avsnittet **Inställningar** på sidan för ditt virtuella nätverk, och klickar på **Adressutrymme** för att öppna sidan Adressutrymme.
+2. Lägg till ytterligare adressutrymme och klicka sedan på **Spara** högst upp på sidan.
 
   ![Lägg till adressutrymme](./media/vpn-gateway-additional-address-space-include/address_space.png)
 
-### <a name="toocreate-additional-subnets"></a>toocreate undernät
+### <a name="to-create-additional-subnets"></a>Skapa extra undernät
 
-1. toocreate undernät i hello **inställningar** avsnitt på sidan virtuella nätverk klickar du på **undernät** tooopen hello **undernät** sidan. 
-2. På hello undernät klickar du på **+ undernät** tooopen hello **Lägg till undernät** sidan. Namnge ditt nya undernät och ange hello-adressintervall.
+1. Om du vill skapa undernät öppnar du avsnittet **Inställningar** på sidan för ditt virtuella nätverk, och klickar sedan på **Undernät** för att öppna sidan **Undernät**. 
+2. På sidan Undernät klickar du på **+Undernät** så att sidan **Lägg till undernät** öppnas. Ge det nya undernätet ett namn och ange adressintervallet.
 
   ![Undernätsinställningar](./media/vpn-gateway-additional-address-space-include/add_subnet.png)
-3. toosave dina ändringar klickar du på **OK** på hello hello sidans nederkant.
+3. Klicka på **OK** längst ned på sidan för att spara ändringarna.
 
   ![Undernätsinställningar](./media/vpn-gateway-additional-address-space-include/ok.png)

@@ -1,6 +1,6 @@
 ---
-title: "aaaCreate Java MapReduce för Hadoop - Azure HDInsight | Microsoft Docs"
-description: "Lär dig hur toouse Apache Maven toocreate en Java-baserad MapReduce programmet sedan köra den med Hadoop på Azure HDInsight."
+title: "Skapa Java MapReduce för Hadoop - Azure HDInsight | Microsoft Docs"
+description: "Lär dig hur du använder Apache Maven för att skapa ett Java-baserad MapReduce-program och sedan köra den med Hadoop på Azure HDInsight."
 services: hdinsight
 editor: cgronlun
 manager: jhubbard
@@ -16,15 +16,15 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: larryfr
-ms.openlocfilehash: 903a57a482395f7da79002188399a4d6288ff0af
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 11d63f22204eb2acb530378f53ac72f16a35a4f2
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="develop-java-mapreduce-programs-for-hadoop-on-hdinsight"></a>Utveckla Java-MapReduce-program för Hadoop i HDInsight
 
-Lär dig hur toouse Apache Maven toocreate en Java-baserad MapReduce programmet sedan köra den med Hadoop på Azure HDInsight.
+Lär dig hur du använder Apache Maven för att skapa ett Java-baserad MapReduce-program och sedan köra den med Hadoop på Azure HDInsight.
 
 > [!NOTE]
 > Det här exemplet har senast har testats på HDInsight 3,6.
@@ -40,44 +40,44 @@ Lär dig hur toouse Apache Maven toocreate en Java-baserad MapReduce programmet 
 
 ## <a name="configure-development-environment"></a>Konfigurera utvecklingsmiljön
 
-hello kan följande miljövariabler anges när du installerar Java och hello JDK. Dock bör du kontrollera att de finns och att de innehåller hello rätt värden för ditt system.
+Följande miljövariabler kan anges när du installerar Java och JDK. Dock bör du kontrollera att de finns och att de innehåller rätt värden för ditt system.
 
-* `JAVA_HOME`-måste peka toohello katalog där hello Java runtime environment (JRE) har installerats. Till exempel på en OS X-, Unix- eller Linux-system, den måste ha ett värde liknande för`/usr/lib/jvm/java-7-oracle`. I Windows, skulle det ha ett värde som är liknande för`c:\Program Files (x86)\Java\jre1.7`
+* `JAVA_HOME`-måste peka på den katalog där med Java runtime environment (JRE) har installerats. På en OS X-, Unix- eller Linux-system, bör det till exempel ha ett värde som liknar `/usr/lib/jvm/java-7-oracle`. I Windows, skulle det ha ett värde som liknar`c:\Program Files (x86)\Java\jre1.7`
 
-* `PATH`-bör innehålla hello följande sökvägar:
+* `PATH`-bör innehålla följande sökvägar:
   
-  * `JAVA_HOME`(eller motsvarande hello-sökväg)
+  * `JAVA_HOME`(eller motsvarande sökväg)
 
-  * `JAVA_HOME\bin`(eller motsvarande hello-sökväg)
+  * `JAVA_HOME\bin`(eller motsvarande sökväg)
 
-  * hello katalog där Maven har installerats
+  * Katalogen där Maven är installerat
 
 ## <a name="create-a-maven-project"></a>Skapa ett Maven-projekt
 
-1. Från en terminalsession eller Kommandotolken i din utvecklingsmiljö, ändra kataloger toohello plats toostore projektet.
+1. Från en terminalsession eller Kommandotolken i din utvecklingsmiljö, ändra kataloger till platsen som du vill lagra det här projektet.
 
-2. Använd hello `mvn` kommandot, som installeras med Maven toogenerate hello scaffold-teknik för hello-projekt.
+2. Använd den `mvn` kommandot, som installeras med Maven för att generera scaffold-teknik för projektet.
 
    ```bash
    mvn archetype:generate -DgroupId=org.apache.hadoop.examples -DartifactId=wordcountjava -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
    ```
 
     > [!NOTE]
-    > Om du använder PowerShell kan du ange hello `-D` parametrar inom dubbla citattecken.
+    > Om du använder PowerShell kan du ange den `-D` parametrar inom dubbla citattecken.
     >
     > `mvn archetype:generate "-DgroupId=org.apache.hadoop.examples" "-DartifactId=wordcountjava" "-DarchetypeArtifactId=maven-archetype-quickstart" "-DinteractiveMode=false"`
 
-    Det här kommandot skapar en katalog med hello namn anges av hello `artifactID` parameter (**wordcountjava** i det här exemplet.) Den här katalogen innehåller hello följande objekt:
+    Det här kommandot skapar en katalog med det namn som anges av den `artifactID` parameter (**wordcountjava** i det här exemplet.) Den här katalogen innehåller följande:
 
-   * `pom.xml`-hello [projekt Object Model (POM)](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html) som innehåller information och konfigurationsinformation används toobuild hello projektet.
+   * `pom.xml`- [Projekt Object Model (POM)](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html) som innehåller information och konfiguration information som används för att skapa projektet.
 
-   * `src`-hello-katalogen som innehåller programmet hello.
+   * `src`-Katalogen som innehåller programmet.
 
-3. Ta bort hello `src/test/java/org/apache/hadoop/examples/apptest.java` fil. Den används inte i det här exemplet.
+3. Ta bort den `src/test/java/org/apache/hadoop/examples/apptest.java` filen. Den används inte i det här exemplet.
 
 ## <a name="add-dependencies"></a>Lägga till beroenden
 
-1. Redigera hello `pom.xml` och Lägg till följande text i hello hello `<dependencies>` avsnitt:
+1. Redigera den `pom.xml` och Lägg till följande text i det `<dependencies>` avsnitt:
    
    ```xml
     <dependency>
@@ -100,14 +100,14 @@ hello kan följande miljövariabler anges när du installerar Java och hello JDK
     </dependency>
    ```
 
-    Detta definierar bibliotek som krävs (anges i &lt;artefakt-ID\>) med en specifik version (listade i &lt;version\>). Dessa beroenden hämtas vid kompileringen, från hello standarddatabas Maven. Du kan använda hello [Maven databasen Sök](http://search.maven.org/#artifactdetails%7Corg.apache.hadoop%7Chadoop-mapreduce-examples%7C2.5.1%7Cjar) tooview mer.
+    Detta definierar bibliotek som krävs (anges i &lt;artefakt-ID\>) med en specifik version (listade i &lt;version\>). Dessa beroenden hämtas vid kompileringen, från Maven standarddatabas. Du kan använda den [Maven databasen Sök](http://search.maven.org/#artifactdetails%7Corg.apache.hadoop%7Chadoop-mapreduce-examples%7C2.5.1%7Cjar) vill se mer.
    
-    Hej `<scope>provided</scope>` talar om Maven dessa beroenden inte paketeras med hello program som de som tillhandahålls av HDInsight-kluster i hello vid körning.
+    Den `<scope>provided</scope>` talar om Maven dessa beroenden inte paketeras med programmet som de som tillhandahålls av HDInsight-kluster under körning.
 
     > [!IMPORTANT]
-    > hello-version som används ska matcha hello version av Hadoop finns på ditt kluster. Mer information om versioner finns hello [HDInsight component-versioning](hdinsight-component-versioning.md) dokumentet.
+    > Den version som används ska matcha versionen av Hadoop finns på ditt kluster. Mer information om versioner finns i [HDInsight component-versioning](hdinsight-component-versioning.md) dokumentet.
 
-2. Lägg till följande toohello hello `pom.xml` fil. Den här texten måste finnas i hello `<project>...</project>` taggar i hello-filen, till exempel mellan `</dependencies>` och `</project>`.
+2. Lägg till följande för att den `pom.xml` filen. Den här texten måste finnas i den `<project>...</project>` taggar i filen, till exempel mellan `</dependencies>` och `</project>`.
 
    ```xml
     <build>
@@ -144,20 +144,20 @@ hello kan följande miljövariabler anges när du installerar Java och hello JDK
     </build>
    ```
 
-    hello första plugin konfigurerar hello [Maven skugga Plugin](http://maven.apache.org/plugins/maven-shade-plugin/), vilket är används toobuild en uberjar (kallas ibland ett fatjar) som innehåller beroenden som krävs av hello program. Den också förhindrar duplicering av licenser i hello jar-paket, vilket kan orsaka problem på vissa datorer.
+    Första plugin-programmet konfigurerar den [Maven skugga Plugin](http://maven.apache.org/plugins/maven-shade-plugin/), som används för att skapa en uberjar (kallas ibland ett fatjar) som innehåller beroenden som krävs för programmet. Den också förhindrar duplicering av licenser i jar-paketet, vilket kan orsaka problem på vissa datorer.
 
-    hello andra plugin konfigurerar hello målversionen Java.
+    Andra plugin-programmet konfigurerar Java målversionen.
 
     > [!NOTE]
     > HDInsight 3.4 och tidigare användning Java 7. HDInsight 3.5 och senare använder Java 8.
 
-3. Spara hello `pom.xml` fil.
+3. Spara den `pom.xml` filen.
 
-## <a name="create-hello-mapreduce-application"></a>Skapa hello MapReduce-program
+## <a name="create-the-mapreduce-application"></a>Skapa MapReduce-program
 
-1. Gå toohello `wordcountjava/src/main/java/org/apache/hadoop/examples` katalog och Byt namn på hello `App.java` filen för`WordCount.java`.
+1. Gå till den `wordcountjava/src/main/java/org/apache/hadoop/examples` katalog och Byt namn på den `App.java` filen till `WordCount.java`.
 
-2. Öppna hello `WordCount.java` filen i en textredigerare och Ersätt hello innehållet med hello följande text:
+2. Öppna den `WordCount.java` filen i en textredigerare och Ersätt det med följande text:
    
     ```java
     package org.apache.hadoop.examples;
@@ -230,58 +230,58 @@ hello kan följande miljövariabler anges när du installerar Java och hello JDK
     }
     ```
    
-    Meddelande hello paketnamnet är `org.apache.hadoop.examples` och hello klassnamn är `WordCount`. Du kan använda dessa namn när du skickar hello MapReduce-jobb.
+    Lägg märke till paketnamnet `org.apache.hadoop.examples` och klassnamnet har `WordCount`. Du använder dessa namn när du skickar MapReduce-jobb.
 
-3. Spara hello-filen.
+3. Spara filen.
 
-## <a name="build-hello-application"></a>Skapa hello program
+## <a name="build-the-application"></a>Skapa programmet
 
-1. Ändra toohello `wordcountjava` directory om du inte redan har det.
+1. Ändra till den `wordcountjava` directory om du inte redan har det.
 
-2. Använd följande kommando toobuild en JAR-filen som innehåller hello programmet hello:
+2. Använd följande kommando för att skapa en JAR-fil som innehåller programmet:
 
    ```
    mvn clean package
    ```
 
-    Det här kommandot rensar alla tidigare build-artefakter, laddar ned alla beroenden som inte redan installerats, och sedan versioner och paketera hello programmet.
+    Det här kommandot rensar alla tidigare build-artefakter, laddar ned alla beroenden som inte redan installerats, och sedan versioner och paketet programmet.
 
-3. När hello kommandot har slutförts, hello `wordcountjava/target` katalogen innehåller en fil med namnet `wordcountjava-1.0-SNAPSHOT.jar`.
+3. När kommandot har slutförts i `wordcountjava/target` katalogen innehåller en fil med namnet `wordcountjava-1.0-SNAPSHOT.jar`.
    
    > [!NOTE]
-   > Hej `wordcountjava-1.0-SNAPSHOT.jar` filen är en uberjar som innehåller inte bara hello WordCount jobb, men även beroenden som hello jobbet kräver vid körning.
+   > Den `wordcountjava-1.0-SNAPSHOT.jar` filen är en uberjar som innehåller inte bara den WordCount jobb, utan även beroenden som krävs vid körning.
 
-## <a id="upload"></a>Överför hello jar
+## <a id="upload"></a>Överför jar
 
-Använd följande kommando tooupload hello jar-filen toohello HDInsight headnode hello:
+Använd följande kommando för att överföra jar-filen till HDInsight-headnode:
 
    ```bash
    scp target/wordcountjava-1.0-SNAPSHOT.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:
    ```
 
-    Replace __USERNAME__ with your SSH user name for hello cluster. Replace __CLUSTERNAME__ with hello HDInsight cluster name.
+    Replace __USERNAME__ with your SSH user name for the cluster. Replace __CLUSTERNAME__ with the HDInsight cluster name.
 
-Det här kommandot kopierar hello filer från lokala system hello toohello huvudnod. Mer information finns i [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md) (Använda SSH med HDInsight).
+Det här kommandot kopieras filerna från det lokala systemet till huvudnod. Mer information finns i [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md) (Använda SSH med HDInsight).
 
-## <a name="run"></a>Kör hello MapReduce-jobb på Hadoop
+## <a name="run"></a>Kör MapReduce-jobb på Hadoop
 
-1. Ansluta tooHDInsight via SSH. Mer information finns i [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md) (Använda SSH med HDInsight).
+1. Anslut till HDInsight med hjälp av SSH. Mer information finns i [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md) (Använda SSH med HDInsight).
 
-2. Använd följande kommando toorun hello MapReduce programmet hello från hello SSH-sessionen:
+2. Använd följande kommando för att köra programmet MapReduce från SSH-session:
    
    ```bash
    yarn jar wordcountjava-1.0-SNAPSHOT.jar org.apache.hadoop.examples.WordCount /example/data/gutenberg/davinci.txt /example/data/wordcountout
    ```
    
-    Detta kommando startar hello WordCount MapReduce-programmet. hello indatafilen är `/example/data/gutenberg/davinci.txt`, och hello målkatalogen är `/example/data/wordcountout`. Både hello filen med indata och utdata är lagrade toohello standardlagring för hello-kluster.
+    Detta kommando startar WordCount MapReduce-programmet. Indatafilen är `/example/data/gutenberg/davinci.txt`, och den angivna katalogen är `/example/data/wordcountout`. Både filen med indata och utdata lagras till standardlagring för klustret.
 
-3. När hello jobbet är slutfört, använder du följande kommandoresultat tooview hello hello:
+3. När jobbet har slutförts använder du följande kommando för att visa resultatet:
    
    ```bash
    hdfs dfs -cat /example/data/wordcountout/*
    ```
 
-    Du bör få en lista över ord och antal med värden liknande toohello följande text:
+    Du bör få en lista över ord och antal med värden som liknar följande:
    
         zeal    1
         zelus   1
@@ -289,13 +289,13 @@ Det här kommandot kopierar hello filer från lokala system hello toohello huvud
 
 ## <a id="nextsteps"></a>Nästa steg
 
-I det här dokumentet har du lärt dig hur toodevelop ett Java-MapReduce-jobb. Se hello efter dokument för andra sätt toowork med HDInsight.
+I det här dokumentet har du lärt dig hur du utvecklar ett Java-MapReduce-jobb. Finns i följande dokument för andra sätt att arbeta med HDInsight.
 
 * [Använda Hive med HDInsight][hdinsight-use-hive]
 * [Använda Pig med HDInsight][hdinsight-use-pig]
 * [Använda MapReduce med HDInsight](hdinsight-use-mapreduce.md)
 
-Mer information finns också hello [Java-Utvecklingscenter](https://azure.microsoft.com/develop/java/).
+Mer information finns också i [Java-Utvecklingscenter](https://azure.microsoft.com/develop/java/).
 
 [azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
 [azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/

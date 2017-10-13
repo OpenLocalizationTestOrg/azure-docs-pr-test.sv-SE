@@ -1,6 +1,6 @@
 ---
 title: "Självstudier: Azure Active Directory-integrering med AppBlade | Microsoft Docs"
-description: "Lär dig hur tooconfigure enkel inloggning mellan Azure Active Directory och AppBlade."
+description: "Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och AppBlade."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,109 +13,109 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 06f3d8fcee97945c867bca6f3aebe15ecef04617
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 7820a70b34b6d25ba81b17c472159d08904335d1
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-appblade"></a>Självstudier: Azure Active Directory-integrering med AppBlade
 
-I kursen får du lära dig hur toointegrate AppBlade med Azure Active Directory (AD Azure).
+I kursen får lära du att integrera AppBlade med Azure Active Directory (AD Azure).
 
-Integrera AppBlade med Azure AD ger dig hello följande fördelar:
+Integrera AppBlade med Azure AD ger dig följande fördelar:
 
-- Du kan styra i Azure AD som har åtkomst till tooAppBlade
-- Du kan aktivera din användare tooautomatically get inloggade tooAppBlade (Single Sign-On) med sina Azure AD-konton
-- Du kan hantera dina konton i en central plats - hello Azure-portalen
+- Du kan styra i Azure AD som har åtkomst till AppBlade
+- Du kan aktivera användarna att automatiskt hämta loggat in på AppBlade (Single Sign-On) med sina Azure AD-konton
+- Du kan hantera dina konton i en central plats - Azure-portalen
 
-Om du vill tooknow mer information om integrering av SaaS-app med Azure AD, se [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Om du vill veta mer information om integrering av SaaS-app med Azure AD finns [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Krav
 
-tooconfigure Azure AD-integrering med AppBlade, behöver du hello följande objekt:
+För att konfigurera Azure AD-integrering med AppBlade, behöver du följande:
 
 - En Azure AD-prenumeration
 - En AppBlade enkel inloggning på aktiverade prenumeration
 
 > [!NOTE]
-> tootest hello stegen i den här självstudiekursen, rekommenderas inte med hjälp av en produktionsmiljö.
+> Om du vill testa stegen i den här kursen rekommenderar vi inte med hjälp av en produktionsmiljö.
 
-tootest hello steg i den här självstudiekursen, bör du följa dessa rekommendationer:
+Om du vill testa stegen i den här självstudiekursen, bör du följa dessa rekommendationer:
 
 - Använd inte i produktionsmiljön, om det är nödvändigt.
 - Om du inte har en utvärderingsversion Azure AD-miljö kan du hämta en utvärderingsversion för en månad [här](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Scenariobeskrivning
-I kursen får testa du Azure AD enkel inloggning i en testmiljö. hello-scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
+I kursen får testa du Azure AD enkel inloggning i en testmiljö. Det scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
 
-1. Att lägga till AppBlade från hello-galleriet
+1. Att lägga till AppBlade från galleriet
 2. Konfigurera och testa Azure AD enkel inloggning
 
-## <a name="adding-appblade-from-hello-gallery"></a>Att lägga till AppBlade från hello-galleriet
-tooconfigure hello integrering av AppBlade i Azure AD, behöver du tooadd AppBlade hello galleriet tooyour listan över hanterade SaaS-appar.
+## <a name="adding-appblade-from-the-gallery"></a>Att lägga till AppBlade från galleriet
+Du måste lägga till AppBlade från galleriet i listan över hanterade SaaS-appar för att konfigurera integrering av AppBlade i Azure AD.
 
-**tooadd AppBlade från galleriet hello utför hello följande steg:**
+**Utför följande steg för att lägga till AppBlade från galleriet:**
 
-1. I hello  **[Azure-portalen](https://portal.azure.com)**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon. 
+1. I den  **[Azure-portalen](https://portal.azure.com)**, klicka på den vänstra navigeringspanelen **Azure Active Directory** ikon. 
 
     ![Active Directory][1]
 
-2. Navigera för**företagsprogram**. Gå sedan för**alla program**.
+2. Gå till **företagsprogram**. Gå till **alla program**.
 
     ![Program][2]
     
-3. tooadd nya program, klickar du på **nytt program** hello längst upp i dialogrutan.
+3. Om du vill lägga till nya programmet, klickar du på **nytt program** knappen överst i dialogrutan.
 
     ![Program][3]
 
-4. Skriv i sökrutan hello **AppBlade**.
+4. I sökrutan skriver **AppBlade**.
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-appblade-tutorial/tutorial_appblade_search.png)
 
-5. Markera hello resultat på panelen **AppBlade**, och klicka sedan på **Lägg till** knappen tooadd hello program.
+5. Välj i resultatpanelen **AppBlade**, och klicka sedan på **Lägg till** för att lägga till programmet.
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-appblade-tutorial/tutorial_appblade_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurera och testa Azure AD enkel inloggning
 I det här avsnittet kan du konfigurera och testa Azure AD enkel inloggning med AppBlade baserat på en testanvändare som kallas ”Britta Simon”.
 
-För enkel inloggning toowork måste Azure AD tooknow vilka hello motsvarighet användaren i AppBlade är tooa i Azure AD. Med andra ord måste en länk mellan en Azure AD-användare och hello relaterade användare i AppBlade toobe upprättas.
+Azure AD måste du känna till användaren i AppBlade motsvarighet till en användare i Azure AD för enkel inloggning ska fungera. Med andra ord måste en länk förhållandet mellan en Azure AD-användare och relaterade användaren i AppBlade upprättas.
 
-I AppBlade, tilldela hello värdet för hello **användarnamn** i Azure AD som hello värde för hello **användarnamn** tooestablish hello länken relationen.
+I AppBlade, tilldela värdet för den **användarnamn** i Azure AD som värde för den **användarnamn** etablera länken relationen.
 
-tooconfigure och testa Azure AD enkel inloggning med AppBlade, behöver du toocomplete hello följande byggblock:
+Om du vill konfigurera och testa Azure AD enkel inloggning med AppBlade, måste du utföra följande byggblock:
 
-1. **[Konfigurera Azure AD enkel inloggning](#configuring-azure-ad-single-sign-on)**  -tooenable användare-toouse den här funktionen.
-2. **[Skapa en Azure AD-testanvändare](#creating-an-azure-ad-test-user)**  -tootest Azure AD enkel inloggning med Britta Simon.
-3. **[Skapa en testanvändare AppBlade](#creating-an-appblade-test-user)**  -toohave en motsvarighet för Britta Simon i AppBlade som är länkade toohello Azure AD-representation av användaren.
-4. **[Tilldela hello Azure AD-testanvändare](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD enkel inloggning.
-5. **[Testa enkel inloggning](#testing-single-sign-on)**  -tooverify hello om konfigurationen fungerar.
+1. **[Konfigurera Azure AD enkel inloggning](#configuring-azure-ad-single-sign-on)**  - om du vill att användarna kan använda den här funktionen.
+2. **[Skapa en Azure AD-testanvändare](#creating-an-azure-ad-test-user)**  - om du vill testa Azure AD enkel inloggning med Britta Simon.
+3. **[Skapa en testanvändare AppBlade](#creating-an-appblade-test-user)**  – du har en motsvarighet för Britta Simon i AppBlade som är kopplad till Azure AD-representation av användaren.
+4. **[Tilldela Azure AD-testanvändare](#assigning-the-azure-ad-test-user)**  - om du vill aktivera Britta Simon att använda Azure AD enkel inloggning.
+5. **[Testa enkel inloggning](#testing-single-sign-on)**  - om du vill kontrollera om konfigurationen fungerar.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurera Azure AD enkel inloggning
 
-I det här avsnittet Aktivera Azure AD enkel inloggning i hello Azure-portalen och konfigurera enkel inloggning i ditt AppBlade program.
+I det här avsnittet Aktivera Azure AD enkel inloggning i Azure-portalen och konfigurera enkel inloggning i ditt AppBlade program.
 
-**Utför följande steg hello tooconfigure Azure AD enkel inloggning med AppBlade:**
+**Utför följande steg för att konfigurera Azure AD enkel inloggning med AppBlade:**
 
-1. I hello Azure-portalen på hello **AppBlade** integreringssidan för programmet, klickar du på **enkel inloggning**.
+1. I Azure-portalen på den **AppBlade** integreringssidan för programmet, klickar du på **enkel inloggning**.
 
     ![Konfigurera enkel inloggning][4]
 
-2. På hello **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** tooenable enkel inloggning.
+2. På den **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** att aktivera enkel inloggning.
  
     ![Konfigurera enkel inloggning](./media/active-directory-saas-appblade-tutorial/tutorial_appblade_samlbase.png)
 
-3. På hello **AppBlade domän och URL: er** avsnittet, utföra hello följande steg:
+3. På den **AppBlade domän och URL: er** avsnittet, utför följande steg:
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-appblade-tutorial/tutorial_appblade_url.png)
 
-    I hello **inloggnings-URL** textruta, ange ett URL-Adressen med hello följer mönstret:`https://<companyname>.appblade.com/saml/<tenantid>`
+    I den **inloggnings-URL** textruta Skriv en URL med följande mönster:`https://<companyname>.appblade.com/saml/<tenantid>`
 
     > [!NOTE] 
-    > Det här värdet är inte verkliga. Hello uppdateringsvärde med hello faktiska inloggnings-URL. Kontakta [AppBlade klienten supportteamet](mailto:support@appblade.com) tooget hello värde. 
+    > Det här värdet är inte verkliga. Uppdatera värdet med det faktiska inloggnings-URL. Kontakta [AppBlade klienten supportteamet](mailto:support@appblade.com) värdet hämtas. 
  
-4. På hello **SAML-signeringscertifikat** klickar du på **XML-Metadata för** och spara sedan hello metadata på datorn.
+4. På den **SAML-signeringscertifikat** klickar du på **XML-Metadata för** och spara sedan metadatafilen på datorn.
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-appblade-tutorial/tutorial_appblade_certificate.png) 
 
@@ -123,71 +123,71 @@ I det här avsnittet Aktivera Azure AD enkel inloggning i hello Azure-portalen o
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-appblade-tutorial/tutorial_general_400.png)
 
-6. tooconfigure enkel inloggning på **AppBlade** sida, behöver du toosend hello hämtas **XML-Metadata för** för[AppBlade supportteamet](mailto:support@appblade.com). Dessutom be dem tooconfigure hello **utfärdar-URL för SSO** som `https://appblade.com/saml`. Den här inställningen krävs för toowork för enkel inloggning.
+6. Konfigurera enkel inloggning på **AppBlade** sida, måste du skicka den hämtade **XML-Metadata för** till [AppBlade supportteamet](mailto:support@appblade.com). Dessutom be dem att konfigurera den **utfärdar-URL för SSO** som `https://appblade.com/saml`. Den här inställningen krävs för enkel inloggning ska fungera.
 
 
 > [!TIP]
-> Du kan nu läsa en kortare version av dessa anvisningar i hello [Azure-portalen](https://portal.azure.com), medan du ställer in hello appen!  När du lägger till den här appen från hello **Active Directory > företagsprogram** avsnittet, klicka bara på hello **enkel inloggning** flik och åtkomst hello inbäddade dokumentationen via hello  **Konfigurationen** avsnittet längst ned hello. Du kan läsa mer om hello inbäddade dokumentationen funktionen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Du kan nu läsa en kortare version av instruktionerna i den [Azure-portalen](https://portal.azure.com), medan du installerar appen!  När du lägger till den här appen från den **Active Directory > företagsprogram** avsnittet, klickar du på den **enkel inloggning** fliken och få åtkomst till den inbäddade dokumentationen via den **Configuration** avsnittet längst ned. Du kan läsa mer om funktionen inbäddade dokumentationen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
  
 ### <a name="creating-an-azure-ad-test-user"></a>Skapa en testanvändare i Azure AD
-hello syftet med det här avsnittet är toocreate en testanvändare i hello Azure-portalen kallas Britta Simon.
+Syftet med det här avsnittet är att skapa en testanvändare i Azure-portalen kallas Britta Simon.
 
 ![Skapa Azure AD-användare][100]
 
-**toocreate en testanvändare i Azure AD kan utföra hello följande steg:**
+**Utför följande steg för att skapa en testanvändare i Azure AD:**
 
-1. I hello **Azure-portalen**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon.
+1. I den **Azure-portalen**, klicka på det vänstra navigeringsfönstret **Azure Active Directory** ikon.
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-appblade-tutorial/create_aaduser_01.png) 
 
-2. toodisplay hello lista över användare, gå för**användare och grupper** och på **alla användare**.
+2. Om du vill visa en lista över användare, gå till **användare och grupper** och på **alla användare**.
     
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-appblade-tutorial/create_aaduser_02.png) 
 
-3. tooopen hello **användare** dialogrutan klickar du på **Lägg till** på hello överkant hello dialogrutan.
+3. Öppna den **användare** dialogrutan klickar du på **Lägg till** överst i dialogrutan.
  
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-appblade-tutorial/create_aaduser_03.png) 
 
-4. På hello **användaren** dialogrutan utför hello följande steg:
+4. På den **användaren** dialogrutan utför följande steg:
  
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-appblade-tutorial/create_aaduser_04.png) 
 
-    a. I hello **namn** textruta typen **BrittaSimon**.
+    a. I den **namn** textruta typen **BrittaSimon**.
 
-    b. I hello **användarnamn** textruta typen hello **e-postadress** av BrittaSimon.
+    b. I den **användarnamn** textruta typ av **e-postadress** av BrittaSimon.
 
-    c. Välj **visa lösenordet** och Skriv ned hello värdet för hello **lösenord**.
+    c. Välj **visa lösenordet** och anteckna värdet för den **lösenord**.
 
     d. Klicka på **Skapa**.
  
 ### <a name="creating-an-appblade-test-user"></a>Skapa en testanvändare AppBlade
 
-hello syftet med det här avsnittet är toocreate en användare som kallas Britta Simon i AppBlade. AppBlade stöder just-in-time-etablering, vilket är aktiverat som standard. **Kontrollera att domännamnet är konfigurerad med AppBlade för användaretablering. Efter att endast hello-in-time användaretablering fungerar.**
+Syftet med det här avsnittet är att skapa en användare som kallas Britta Simon i AppBlade. AppBlade stöder just-in-time-etablering, vilket är aktiverat som standard. **Kontrollera att domännamnet är konfigurerad med AppBlade för användaretablering. Efter att endast användare som just-in-time-etablering fungerar.**
 
-Om hello användare har en e-postadress som slutar med hello-domän som konfigurerats av AppBlade för ditt konto och sedan hello användaren kommer automatiskt att ansluta hello kontot som en medlem med hello behörigheten som du anger, vilket är en ”Basic” (en grundläggande användare kan bara installera program), ”” (en användare kan ladda upp nya versioner av appen och hantera projekt) eller liknande ”administratör” (fullständig behörighet toohello administratörskonto). Normalt en skulle välja Basic och främja användare manuellt via en inloggning för serveradministratör (AppBlade måste tooconfigure antingen en e-postbaserad administratörsinloggning i förväg eller befordra en användare för hello kunds räkning efter inloggningen).
+Om användaren har en e-postadress som slutar med den domän som konfigurerats av AppBlade för ditt konto och sedan användaren kommer automatiskt att ansluta till kontot som en medlem med behörigheten som du anger, som är ”Basic” (en grundläggande användare kan bara installera program), ”teammedlem” (en användare kan ladda upp nya versioner av appen och hantera projekt) eller ”administratör” (fullständiga administratörsrättigheter till kontot). En skulle normalt väljer Basic och främja användare manuellt via en inloggning för serveradministratör (AppBlade måste konfigurera antingen en e-postbaserad administratörsinloggning i förväg eller befordra en användare för kundens räkning efter inloggningen).
 
-Det finns ingen åtgärd objekt i det här avsnittet. En ny användare skapas under ett försök tooaccess AppBlade om den inte finns. 
+Det finns ingen åtgärd objekt i det här avsnittet. En ny användare skapas under ett försök att komma åt AppBlade om den inte finns. 
 
 > [!NOTE]
-> Om du behöver toocreate en användare manuellt, måste toocontact hello [AppBlade supportteamet](mailto:support@appblade.com).
+> Om du behöver skapa en användare manuellt, måste du kontakta den [AppBlade supportteamet](mailto:support@appblade.com).
 
-### <a name="assigning-hello-azure-ad-test-user"></a>Tilldela användare hello Azure AD
+### <a name="assigning-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändare
 
-I det här avsnittet kan aktivera du Britta Simon toouse Azure enkel inloggning genom att bevilja åtkomst tooAppBlade.
+I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inloggning genom att bevilja åtkomst till AppBlade.
 
 ![Tilldela användare][200] 
 
-**tooassign Britta Simon tooAppBlade utför hello följande steg:**
+**Om du vill tilldela AppBlade Britta Simon utför du följande steg:**
 
-1. I hello Azure-portalen, öppna hello program visa och navigera toohello directory vy och gå för**företagsprogram** Klicka **alla program**.
+1. Öppna vyn program i Azure-portalen och gå till vyn directory och gå till **företagsprogram** Klicka **alla program**.
 
     ![Tilldela användare][201] 
 
-2. Välj i listan med program hello **AppBlade**.
+2. Välj i listan med program **AppBlade**.
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-appblade-tutorial/tutorial_appblade_app.png) 
 
-3. Hello-menyn hello vänster **användare och grupper**.
+3. Klicka på menyn till vänster **användare och grupper**.
 
     ![Tilldela användare][202] 
 
@@ -195,7 +195,7 @@ I det här avsnittet kan aktivera du Britta Simon toouse Azure enkel inloggning 
 
     ![Tilldela användare][203]
 
-5. På **användare och grupper** markerar **Britta Simon** i hello användarlistan.
+5. På **användare och grupper** markerar **Britta Simon** på listan användare.
 
 6. Klicka på **Välj** knappen på **användare och grupper** dialogrutan.
 
@@ -203,12 +203,12 @@ I det här avsnittet kan aktivera du Britta Simon toouse Azure enkel inloggning 
     
 ### <a name="testing-single-sign-on"></a>Testa enkel inloggning
 
-hello syftet med det här avsnittet är tootest din Azure AD-konfiguration för enkel inloggning med hello åtkomstpanelen.  
-Du bör få automatiskt inloggade tooyour AppBlade programmet när du klickar på hello AppBlade panelen i hello åtkomstpanelen. 
+Syftet med det här avsnittet är att testa Azure AD enkel inloggning konfigurationen med hjälp av panelen åtkomst.  
+När du klickar på panelen AppBlade på åtkomstpanelen du bör få automatiskt loggat in på ditt AppBlade program. 
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-* [Lista över självstudier om hur tooIntegrate SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Vad är programåtkomst och enkel inloggning med Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

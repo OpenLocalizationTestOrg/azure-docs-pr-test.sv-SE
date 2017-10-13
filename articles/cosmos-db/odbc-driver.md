@@ -1,6 +1,6 @@
 ---
-title: "aaaConnect tooAzure Cosmos-databas med hjälp av verktyg för BI analytics | Microsoft Docs"
-description: "Lär dig hur toouse hello Azure Cosmos DB ODBC-drivrutinen toocreate tabeller och vyer så att normaliserade data kan visas i BI och data analytics-programvara."
+title: "Ansluta till Azure Cosmos-databasen med verktyg för BI analytics | Microsoft Docs"
+description: "Lär dig hur du använder Azure Cosmos DB ODBC-drivrutinen för att skapa tabeller och vyer så att normaliserade data kan visas i BI och data analytics-programvara."
 keywords: ODBC, odbc-drivrutinen
 services: cosmos-db
 author: mimig1
@@ -15,137 +15,137 @@ ms.devlang: rest-api
 ms.topic: article
 ms.date: 05/24/2017
 ms.author: mimig
-ms.openlocfilehash: e12a70f7805445f09fac01411e4bfbccc9a29c7a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 2df792c00b7a789dbefa64bfe0245f1ad73c3faa
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="connect-tooazure-cosmos-db-using-bi-analytics-tools-with-hello-odbc-driver"></a>Ansluta tooAzure Cosmos DB med ODBC-drivrutinen för hello BI-verktyg för analys
+# <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>Ansluta till Azure Cosmos-databasen med verktyg för analys av BI med ODBC-drivrutin
 
-hello Azure Cosmos DB ODBC-drivrutinen möjliggör tooconnect tooAzure Cosmos-databasen med BI analytics verktyg som SQL Server Integration Services, Power BI Desktop och Tableau så att du kan analysera och skapa visualiseringar av dina Azure Cosmos DB-data i dem lösningar.
+Azure Cosmos DB ODBC-drivrutinen kan du ansluta till Azure Cosmos-databasen med BI analytics-verktyg som SQL Server Integration Services och Power BI Desktop Tableau så att du kan analysera och skapa visualiseringar av dina Azure Cosmos DB-data i dessa lösningar.
 
-hello Azure Cosmos DB ODBC-drivrutinen är ODBC 3.8 kompatibel och stöder ANSI SQL-92-syntax. Hej drivrutinen ger omfattande funktioner toohelp renormalize av data i Azure Cosmos DB. Du kan med hello drivrutin, för att representera data i Azure Cosmos DB som tabeller och vyer. hello-drivrutinen möjliggör tooperform SQL-åtgärder mot hello tabeller och vyer inklusive Gruppera efter frågor, infogningar, uppdateringar och borttagningar.
+Azure Cosmos DB ODBC-drivrutinen är ODBC 3.8 kompatibel och stöder ANSI SQL-92-syntax. Drivrutinen erbjuder omfattande funktioner som hjälper dig att renormalize data i Azure Cosmos DB. Du kan använder drivrutinen för att representera data i Azure Cosmos DB som tabeller och vyer. Drivrutinen kan du utföra SQL-åtgärder mot de tabeller och vyer, inklusive frågor, infogar, uppdateringar, och tar bort.
 
-## <a name="why-do-i-need-toonormalize-my-data"></a>Varför måste jag göra toonormalize Mina data?
-Azure Cosmos-databasen är en schemalös databas, så det möjliggör snabb utveckling av appar genom att aktivera program tooiterate sina data modell hello direkt och begränsa dem inte tooa strikt schema. En enda Azure Cosmos-DB-databas kan innehålla olika strukturer JSON-dokument. Det är bra för snabb utveckling, men när du vill tooanalyze och skapa rapporter för dina data med hjälp av dataanalys och BI-verktyg, hello data ofta måste toobe förenklas och följa tooa visst schema.
+## <a name="why-do-i-need-to-normalize-my-data"></a>Varför måste normalisera Mina data?
+Azure Cosmos-DB är en schemalös databas så att den möjliggör snabb utveckling av appar genom att aktivera program för att iterera sina datamodellen direkt och inte begränsa dem till ett strikt schema. En enda Azure Cosmos-DB-databas kan innehålla olika strukturer JSON-dokument. Det är bra för snabb utveckling, men när du vill analysera och skapa rapporter för dina data med hjälp av dataanalys och BI-verktyg data behöver ofta förenklas och följa ett visst schema.
 
-Det är där hello ODBC-drivrutinen kommer in. Med hjälp av hello ODBC-drivrutinen, kan du nu renormalized data i Azure Cosmos DB i tabeller och vyer passning tooyour data analys och rapportering måste. Hej renormalized scheman har ingen inverkan på hello underliggande data och inte begränsa utvecklare tooadhere toothem kan de helt enkelt aktiverar du tooleverage ODBC-kompatibel verktyg tooaccess hello data. Nu Azure Cosmos-DB-databas kommer inte bara vara en favorit för Utvecklingsteamet, men data analytikerna kommer gillar det för.
+Det är där ODBC-drivrutinen kommer in. Du kan nu renormalized data i Azure Cosmos DB i tabeller och vyer montering dina databehov för analys och rapportering med hjälp av ODBC-drivrutinen. Renormalized scheman har ingen inverkan på underliggande data och inte begränsa utvecklare att följa dem, de bara kan du utnyttja ODBC-kompatibel verktyg för att komma åt data. Nu Azure Cosmos-DB-databas kommer inte bara vara en favorit för Utvecklingsteamet, men data analytikerna kommer gillar det för.
 
-Nu kan komma igång med hello ODBC-drivrutinen.
+Nu kan komma igång med ODBC-drivrutinen.
 
-## <a id="install"></a>Steg 1: Installera hello Azure Cosmos DB ODBC-drivrutinen
+## <a id="install"></a>Steg 1: Installera Azure Cosmos DB ODBC-drivrutinen
 
-1. Hämta hello drivrutiner för din miljö:
+1. Hämta drivrutiner för din miljö:
 
     * [Microsoft Azure Cosmos DB ODBC 64-bit.msi](https://aka.ms/documentdb-odbc-64x64) för 64-bitars Windows
     * [Microsoft Azure Cosmos DB ODBC 32 x 64-bit.msi](https://aka.ms/documentdb-odbc-32x64) för 32-bitars på Windows 64-bitars
     * [Microsoft Azure Cosmos DB ODBC 32-bit.msi](https://aka.ms/documentdb-odbc-32x32) för 32-bitars Windows
 
-    Kör hello msi-filen lokalt, vilket startar hello **installationsguiden för Microsoft Azure Cosmos DB ODBC-drivrutinen**. 
-2. Slutför installationsguiden för hello hello standard inkommande tooinstall hello ODBC-drivrutin.
-3. Öppna hello **ODBC Data source Administrator** appen på din dator och du kan göra detta genom att skriva **ODBC-datakällor** i Windows hello sökrutan. 
-    Du kan bekräfta hello-drivrutinen har installerats genom att klicka på hello **drivrutiner** flik och se till att **ODBC-drivrutinen för Microsoft Azure Cosmos DB** visas.
+    Kör msi-filen lokalt, som startar den **installationsguiden för Microsoft Azure Cosmos DB ODBC-drivrutinen**. 
+2. Slutför guiden med standardinställningarna som indata för att installera ODBC-drivrutinen.
+3. Öppna den **ODBC Data source Administrator** appen på din dator och du kan göra detta genom att skriva **ODBC-datakällor** i Windows-sökrutan. 
+    Du kan bekräfta drivrutinen har installerats genom att klicka på den **drivrutiner** flik och se till att **ODBC-drivrutinen för Microsoft Azure Cosmos DB** visas.
 
     ![Azure Cosmos DB ODBC Data Source Administrator](./media/odbc-driver/odbc-driver.png)
 
-## <a id="connect"></a>Steg 2: Anslut tooyour Azure Cosmos-DB-databas
+## <a id="connect"></a>Steg 2: Anslut till din Azure Cosmos-DB-databas
 
-1. Efter [installerar hello Azure Cosmos DB ODBC-drivrutinen](#install), i hello **ODBC Data Source Administrator** -fönstret klickar du på **Lägg till**. Du kan skapa en användare eller System-DSN. I det här exemplet skapar vi ett användar-DSN.
-2. I hello **Skapa ny datakälla** väljer **ODBC-drivrutinen för Microsoft Azure Cosmos DB**, och klicka sedan på **Slutför**.
-3. I hello **SDN installationsprogram för Azure Cosmos DB ODBC-drivrutinen** Fyll i hello följande: 
+1. Efter [installera Azure Cosmos DB ODBC-drivrutinen](#install)i den **ODBC Data Source Administrator** -fönstret klickar du på **Lägg till**. Du kan skapa en användare eller System-DSN. I det här exemplet skapar vi ett användar-DSN.
+2. I den **Skapa ny datakälla** väljer **ODBC-drivrutinen för Microsoft Azure Cosmos DB**, och klicka sedan på **Slutför**.
+3. I den **SDN installationsprogram för Azure Cosmos DB ODBC-drivrutinen** Fyll i följande: 
 
     ![Azure Cosmos DB ODBC-drivrutinen DSN inställningsfönstret](./media/odbc-driver/odbc-driver-dsn-setup.png)
-    - **Namn på datakälla**: egna eget namn för hello ODBC DSN. Det här namnet är unikt tooyour Azure Cosmos DB konto, så namnet på lämpligt sätt om du har flera konton.
-    - **Beskrivning**: en kort beskrivning av hello-datakälla.
-    - **Värden**: URI för Azure DB som Cosmos-konto. Du kan hämta det från hello Azure Cosmos DB nycklar bladet i hello Azure-portalen som visas i följande skärmbild hello. 
-    - **Snabbtangent**: hello primär eller sekundär, skrivskyddad eller skrivskyddad nyckeln från bladet för hello Azure Cosmos DB nycklar i hello Azure-portalen som visas i följande skärmbild hello. Vi rekommenderar att du använder hello skrivskyddad sekundärnyckel om hello DSN används för skrivskyddade databehandling och rapportering.
+    - **Namn på datakälla**: egna eget namn för ODBC DSN. Det här namnet är unikt för ditt Azure DB som Cosmos-konto, så namnet på lämpligt sätt om du har flera konton.
+    - **Beskrivning**: en kort beskrivning av datakällan.
+    - **Värden**: URI för Azure DB som Cosmos-konto. Du kan hämta det från bladet Azure Cosmos DB nycklar i Azure-portalen som visas i följande skärmbild. 
+    - **Snabbtangent**: primär eller sekundär, skrivskyddad eller skrivskyddad nyckeln från bladet Azure Cosmos DB nycklar i Azure-portalen som visas i följande skärmbild. Vi rekommenderar att du använder den skrivskyddade nyckeln om DSN används för skrivskyddade databehandling och rapportering.
     ![Azure DB-nycklar för Cosmos-bladet](./media/odbc-driver/odbc-driver-keys.png)
-    - **Kryptera åtkomstnyckeln för**: Välj hello bäst baserat på hello användare för den här datorn. 
-4. Klicka på hello **Test** knappen toomake att du kan ansluta tooyour Azure DB som Cosmos-konto. 
-5. Klicka på **avancerade alternativ** och ange hello följande värden:
-    - **Fråga konsekvenskontroll**: Välj hello [konsekvensnivå](consistency-levels.md) för din verksamhet. hello standardvärdet är Session.
-    - **Antal återförsök**: Ange hello många gånger tooretry en åtgärd om hello första begäran inte slutföras på grund av tooservice begränsning.
+    - **Kryptera åtkomstnyckeln för**: Välj det bästa valet baserat på användare för den här datorn. 
+4. Klicka på den **Test** för att kontrollera att du kan ansluta till ditt konto i Azure Cosmos DB. 
+5. Klicka på **avancerade alternativ** och ange följande värden:
+    - **Fråga konsekvenskontroll**: Välj den [konsekvensnivå](consistency-levels.md) för din verksamhet. Standardvärdet är Session.
+    - **Antal återförsök**: Ange hur många gånger ska försöka utföra en åtgärd om den ursprungliga begäranden inte slutföras på grund av begränsning av tjänsten.
     - **Schemafilen**: du har ett antal alternativ här.
-        - Som standard, lämnar den här posten är (tom) söker hello drivrutinen hello första sidan data för alla samlingar toodetermine hello schemat för varje samling. Detta kallas samlingen mappning. Utan en schemafilen som definierats hello drivrutinen har tooperform hello genomsökning för varje drivrutin-session och kan resultera i en senare tid för ett program med hjälp av hello DSN att starta. Vi rekommenderar att du alltid associerar en schemafil för en Datakälla.
-        - Om du redan har en schemafilen (eventuellt en som du skapat med hjälp av hello [schemat Editor](#schema-editor)), kan du klicka på **Bläddra**navigerar tooyour filen, klickar du på **spara**, och klicka sedan på **OK**.
-        - Om du vill toocreate ett nytt schema, klickar du på **OK**, och klicka sedan på **schemat Editor** i hello huvudfönstret. Gå sedan vidare toohello [schemat Editor](#schema-editor) information. När du skapar hello nya schemafilen, Kom ihåg toogo tillbaka toohello **avancerade alternativ** fönstret tooinclude hello nyskapad schemafilen.
+        - Som standard, lämnar den här posten är (tom) söker drivrutinen första sidan data för alla samlingar att fastställa schemat för varje samling. Detta kallas samlingen mappning. Drivrutinen har att utföra sökningen för varje drivrutin session utan en schemafilen som definierats och kan resultera i en senare tid för ett program med hjälp av DSN att starta. Vi rekommenderar att du alltid associerar en schemafil för en Datakälla.
+        - Om du redan har en schemafilen (eventuellt en som du skapat med hjälp av [schemat redigeraren](#schema-editor)), kan du klicka på **Bläddra**, navigera till filen, klicka på **spara**, och klicka sedan på **OK**.
+        - Om du vill skapa ett nytt schema, klickar du på **OK**, och klicka sedan på **schemat Editor** i huvudfönstret. Gå sedan vidare till den [schemat Editor](#schema-editor) information. När du skapar den nya schemafilen, Kom ihåg att gå tillbaka till den **avancerade alternativ** fönstret ska omfatta schemafilen nyligen skapade.
 
-6. När du slutför och stänger hello **Azure Cosmos DB ODBC-drivrutinen DSN för** fönstret hello nya användar-DSN är läggs toohello användar-DSN-fliken.
+6. När du slutför och stänger den **Azure Cosmos DB ODBC-drivrutinen DSN för** och den nya användaren DSN har lagts till i fliken användar-DSN.
 
-    ![Nya Azure Cosmos DB ODBC DSN hello användar-DSN på fliken](./media/odbc-driver/odbc-driver-user-dsn.png)
+    ![Nya Azure Cosmos DB ODBC DSN på fliken användar-DSN](./media/odbc-driver/odbc-driver-user-dsn.png)
 
-## <a id="#collection-mapping"></a>Steg 3: Skapa schemadefinition metoden hello samling mappning
+## <a id="#collection-mapping"></a>Steg 3: Skapa schemadefinition med metoden samling mappning
 
-Det finns två typer av provtagningsmetoder som du kan använda: **samling mappning** eller **tabell avgränsare**. En provtagning session kan använda båda provtagningsmetoderna, men varje samling kan bara använda en specifik urvalsmetoden. hello stegen nedan för att skapa ett schema för hello data i en eller flera samlingar metoden hello samling mappning. Den här urvalsmetoden hämtar hello data hello-sidan i en samling toodetermine hello struktur hello data. Den transposes en samling tooa tabell på hello ODBC-sida. Den här urvalsmetoden är effektiv och snabb när hello data i en samling är homogen. Om en samling innehåller heterogena typ av data, rekommenderar vi du använder hello [tabell avgränsare mappning metoden](#table-mapping) eftersom det ger en mer robusta urvalsmetoden toodetermine hello datastrukturer i hello samling. 
+Det finns två typer av provtagningsmetoder som du kan använda: **samling mappning** eller **tabell avgränsare**. En provtagning session kan använda båda provtagningsmetoderna, men varje samling kan bara använda en specifik urvalsmetoden. Stegen nedan för att skapa ett schema för data i en eller flera samlingar med metoden samling mappning. Den här urvalsmetoden hämtar-data på sidan i en samling för att fastställa strukturen för data. Den transposes en samling till en tabell på ODBC-sida. Den här urvalsmetoden är effektivt och snabbt när data i en samling är homogen. Om en samling innehåller heterogena typ av data, rekommenderar vi du använder den [tabell avgränsare mappning metoden](#table-mapping) eftersom det ger en mer robusta urvalsmetoden för att fastställa datastrukturer i samlingen. 
 
-1. När du har slutfört steg 1 – 4 i [Anslut tooyour Azure Cosmos DB databasen](#connect), klickar du på **schemat Editor** i hello **Azure Cosmos DB ODBC-drivrutinen DSN för** fönster.
+1. När du har slutfört steg 1 – 4 i [Anslut till Azure Cosmos DB databasen](#connect), klickar du på **schemat Editor** i den **Azure Cosmos DB ODBC-drivrutinen DSN för** fönster.
 
-    ![Schemat editor-knapp i hello Azure Cosmos DB ODBC-drivrutinen DSN för fönster](./media/odbc-driver/odbc-driver-schema-editor.png)
-2. I hello **schemat Editor** -fönstret klickar du på **Skapa nytt**.
-    Hej **generera schemat** fönstret visas alla hello samlingar i hello Azure DB som Cosmos-konto. 
-3. Välj en eller flera samlingar toosample och klicka sedan på **exempel**. 
-4. I hello **designvyn** fliken, hello database, schema och tabellen representeras. I hello tabellvy visar hello genomsökning hello uppsättning egenskaper associerade med hello kolumnnamn (SQL-namn, namnet på datakällan, osv.).
-    För varje kolumn, kan du ändra hello kolumnnamnet SQL, hello SQL-typ, SQL-längd (om tillämpligt), skala (om tillämpligt), Precision (om tillämpligt) och kan ha värdet null.
-    - Du kan ange **Dölj kolumn** för**SANT** om du vill tooexclude kolumnen från frågeresultaten. Kolumner markerad Dölj kolumn = true returneras inte för val och projektion, även om de fortfarande är en del av hello schemat. Du kan till exempel dölja alla hello Azure Cosmos DB krävs Systemegenskaper börjar med ”_”.
-    - Hej **id** kolumnen är hello fält som inte får vara dolda eftersom den används som hello primärnyckel i hello normaliserade schemat. 
-5. När du har definierat hello schemat klickar du på **filen** | **spara**, navigera toohello katalogschemat toosave hello och klicka sedan på **spara**.
+    ![Schemat editor-knapp i fönstret DSN inställningar för Azure Cosmos DB ODBC-drivrutin](./media/odbc-driver/odbc-driver-schema-editor.png)
+2. I den **schemat Editor** -fönstret klickar du på **Skapa nytt**.
+    Den **generera schemat** fönstret visas alla samlingar i Azure DB som Cosmos-konto. 
+3. Välj en eller flera samlingar till exempel och klicka sedan på **exempel**. 
+4. I den **designvyn** fliken, databas, schema och tabellen representeras. I tabellvyn visar genomsökningen uppsättning egenskaper som är associerade med kolumnnamn (SQL-namn, namnet på datakällan, osv.).
+    För varje kolumn, kan du ändra kolumnnamnet för SQL, SQL-typ, SQL-längd (om tillämpligt), skala (om tillämpligt), Precision (om tillämpligt) och kan ha värdet null.
+    - Du kan ange **Dölj kolumn** till **SANT** om du vill utesluta kolumnen från frågeresultat. Kolumner markerad Dölj kolumn = true returneras inte för val och projektion, även om de fortfarande är en del av schemat. Du kan till exempel dölja alla Azure Cosmos DB krävs systemegenskaperna börjar med ”_”.
+    - Den **id** kolumn är det enda fält inte får vara dolda eftersom den används som primärnyckel i normaliserade schemat. 
+5. När du har definierat schemat klickar du på **filen** | **spara**, gå till katalogen för att spara schemat och klicka sedan på **spara**.
 
-    Om du vill ha toouse i hello framtida schemat med en Datakälla öppnas hello Azure Cosmos DB ODBC-drivrutinen DSN för (via hello ODBC Data Source Administrator), avancerade alternativ och gå sedan toohello spara schemat hello schemafilen i rutan. Sparar en schemat filen tooan ändrar befintliga DSN hello DSN anslutning tooscope toohello data och struktur som definieras av schemat.
+    Om du i framtiden vill använda det här schemat med en Datakälla öppna fönstret Azure Cosmos DB ODBC-drivrutinen DSN för (via ODBC Data Source Administrator), klicka på Avancerat och navigera till sparade schemat i rutan schemafilen. En schemafil sparas till en befintlig DSN ändrar DSN-anslutningen till scope till data och struktur som definieras av schemat.
 
-## <a id="table-mapping"></a>Steg 4: Skapa en schemadefinition som använder hello tabell-avgränsare mappning metod
+## <a id="table-mapping"></a>Steg 4: Skapa en schemadefinition med tabell-avgränsare mappning metod
 
 Det finns två typer av provtagningsmetoder som du kan använda: **samling mappning** eller **tabell avgränsare**. En provtagning session kan använda båda provtagningsmetoderna, men varje samling kan bara använda en specifik urvalsmetoden. 
 
-hello följande steg att skapa ett schema för hello data i en eller flera samlingar med hello **tabell avgränsare** mappning av metoden. Vi rekommenderar att du använder den här provtagningsmetoden när samlingar innehåller heterogena typ av data. Du kan använda den här metoden tooscope hello provtagning tooa uppsättning attribut och dess motsvarande värden. Om ett dokument innehåller en egenskap för ”typ”, kan du definiera hello provtagning toohello värden för den här egenskapen. hello slutresultatet hello provtagning är en uppsättning tabeller för varje hello värden för typ som du har angett. Skriv till exempel = bil genererar en bil tabell vid typ = plan skulle skapa en plan tabell.
+Följande steg att skapa ett schema för data i en eller flera samlingar med hjälp av den **tabell avgränsare** mappning av metoden. Vi rekommenderar att du använder den här provtagningsmetoden när samlingar innehåller heterogena typ av data. Du kan använda den här metoden för att begränsa beräkningarna till en uppsättning attribut och dess motsvarande värden. Om ett dokument innehåller en egenskap för ”typ”, kan du definiera beräkningarna till värden i den här egenskapen. Slutresultatet för provtagning är en uppsättning tabeller för alla värden för typ som du har angett. Skriv till exempel = bil genererar en bil tabell vid typ = plan skulle skapa en plan tabell.
 
-1. När du har slutfört steg 1 – 4 i [Anslut tooyour Azure Cosmos DB databasen](#connect), klickar du på **schemat Editor** i hello Azure Cosmos DB ODBC-drivrutinen DSN inst.
-2. I hello **schemat Editor** -fönstret klickar du på **Skapa nytt**.
-    Hej **generera schemat** fönstret visas alla hello samlingar i hello Azure DB som Cosmos-konto. 
-3. Markera en samling på hello **Exempelvyn** på fliken hello **definitionen mappning** för hello samlingen, klickar du på **redigera**. I hello **definitionen mappning** väljer **tabell avgränsare** metod. Sedan hello följande:
+1. När du har slutfört steg 1 – 4 i [Anslut till Azure Cosmos DB databasen](#connect), klickar du på **schemat redigeraren** i fönstret DSN installationsprogram för Azure Cosmos DB ODBC-drivrutinen.
+2. I den **schemat Editor** -fönstret klickar du på **Skapa nytt**.
+    Den **generera schemat** fönstret visas alla samlingar i Azure DB som Cosmos-konto. 
+3. Markera en samling på den **Exempelvyn** fliken den **definitionen mappning** för samlingen, klickar du på **redigera**. I den **definitionen mappning** väljer **tabell avgränsare** metod. Gör något av följande:
 
-    a. I hello **attribut** rutan, hello namn på en egenskap som avgränsare. Detta är en egenskap i dokumentet som du vill tooscope hello, till exempel City och tryck RETUR. 
+    a. I den **attribut** skriver namnet på en egenskap som avgränsare. Detta är en egenskap i dokumentet som du vill omfång provtagning till exempelvis ort och tryck på RETUR. 
 
-    b. Om du bara vill tooscope hello provtagning toocertain värden för hello-attribut som du precis angav Markera hello-attributet i hello alternativrutan och ange ett värde i hello **värdet** rutan, till exempel Seattle och tryck på RETUR. Du kan fortsätta tooadd flera värden för attributen. Se bara till att rätt attribut är markerad när du anger värden hello.
+    b. Välj attributet i rutan om du bara vill omfång provtagning till vissa värden för attributet som du angav och ange ett värde i den **värdet** rutan, till exempel Seattle och tryck på RETUR. Du kan fortsätta att lägga till flera värden för attributen. Se bara till att rätt attributet aktiveras när du anger värden.
 
-    Om du inkluderar exempelvis en **attribut** värdet av ort, och du vill toolimit tabell-tooonly innehåller rader med ett värde för ort i New York och Dubai, anger du stad i hello attribut, och New York och sedan Dubai i hello  **Värden** rutan.
+    Om du inkluderar exempelvis en **attribut** värdet av ort, och du vill begränsa din tabell om du vill inkludera endast rader med ett värde för ort i New York och Dubai, anger du stad i rutan attribut, och New York och sedan Dubai i den **värden** rutan.
 4. Klicka på **OK**. 
-5. När du har slutfört hello mappning definitioner för hello samlingar du vill toosample i hello **schemat Editor** -fönstret klickar du på **exempel**.
-     För varje kolumn, kan du ändra hello kolumnnamnet SQL, hello SQL-typ, SQL-längd (om tillämpligt), skala (om tillämpligt), Precision (om tillämpligt) och kan ha värdet null.
-    - Du kan ange **Dölj kolumn** för**SANT** om du vill tooexclude kolumnen från frågeresultaten. Kolumner markerad Dölj kolumn = true returneras inte för val och projektion, även om de fortfarande är en del av hello schemat. Du kan till exempel dölja alla hello Azure Cosmos DB krävs Systemegenskaper börjar med ”_”.
-    - Hej **id** kolumnen är hello fält som inte får vara dolda eftersom den används som hello primärnyckel i hello normaliserade schemat. 
-6. När du har definierat hello schemat klickar du på **filen** | **spara**, navigera toohello katalogschemat toosave hello och klicka sedan på **spara**.
-7. Tillbaka i hello **Azure Cosmos DB ODBC-drivrutinen DSN för** -fönstret klickar du på ** Avancerade alternativ **. Sedan hello **schemafilen** , navigera toohello sparade schemafilen och klicka **OK**. Klicka på **OK** igen toosave hello DSN. Detta sparar hello schema du skapade toohello DSN. 
+5. När du har slutfört mappning definitioner för samlingarna du vill prova i den **schemat Editor** -fönstret klickar du på **exempel**.
+     För varje kolumn, kan du ändra kolumnnamnet för SQL, SQL-typ, SQL-längd (om tillämpligt), skala (om tillämpligt), Precision (om tillämpligt) och kan ha värdet null.
+    - Du kan ange **Dölj kolumn** till **SANT** om du vill utesluta kolumnen från frågeresultat. Kolumner markerad Dölj kolumn = true returneras inte för val och projektion, även om de fortfarande är en del av schemat. Du kan till exempel dölja alla Azure Cosmos DB krävs systemegenskaperna börjar med ”_”.
+    - Den **id** kolumn är det enda fält inte får vara dolda eftersom den används som primärnyckel i normaliserade schemat. 
+6. När du har definierat schemat klickar du på **filen** | **spara**, gå till katalogen för att spara schemat och klicka sedan på **spara**.
+7. I den **Azure Cosmos DB ODBC-drivrutinen DSN för** -fönstret klickar du på ** Avancerade alternativ **. I den **schemafilen** , navigera till den sparade schemafilen och klicka **OK**. Klicka på **OK** igen för att spara det DSN-namnet. Detta sparar det schema som du skapade det DSN-namnet. 
 
 ## <a name="optional-creating-views"></a>(Valfritt) Skapa vyer
-Du kan definiera och skapa vyer som en del av hello provtagning. Dessa vyer finns motsvarande tooSQL vyer. De är skrivskyddade och scope hello val och hello som definierats i Azure Cosmos-Databasens SQL-projektioner. 
+Du kan definiera och skapa vyer som en del av processen provtagning. Dessa vyer är likvärdiga med SQL-vyer. De är skrivskyddade och scope valen och projektioner av Azure Cosmos-Databasens SQL definieras. 
 
-toocreate en vy för dina data i hello **schemat Editor** i hello fönstret **vydefinitioner** kolumn, klickar du på **Lägg till** på hello raden i hello samlingen toosample. I hello **vydefinitioner** fönstret hello följande:
-1. Klicka på **ny**, ange ett namn för hello vy, till exempel EmployeesfromSeattleView och klicka sedan på **OK**.
-2. I hello **Redigera vy** och ange en Azure Cosmos DB-fråga. Detta måste vara en Azure Cosmos-Databasens SQL-fråga, till exempel`SELECT c.City, c.EmployeeName, c.Level, c.Age, c.Gender, c.Manager FROM c WHERE c.City = “Seattle”`, och klicka sedan på **OK**.
+Du skapar en vy för dina data i den **schemat Editor** fönster i den **vydefinitioner** kolumnen, klickar du på **Lägg till** på raden i samlingen till exempel. I den **vydefinitioner** fönster, gör du följande:
+1. Klicka på **ny**, ange ett namn för vyn, till exempel EmployeesfromSeattleView och klicka sedan på **OK**.
+2. I den **Redigera vy** och ange en Azure Cosmos DB-fråga. Detta måste vara en Azure Cosmos-Databasens SQL-fråga, till exempel`SELECT c.City, c.EmployeeName, c.Level, c.Age, c.Gender, c.Manager FROM c WHERE c.City = “Seattle”`, och klicka sedan på **OK**.
 
-Du kan skapa flera vyer som du vill. När du är klar definierande hello vyer, kan du sedan prov hello data. 
+Du kan skapa flera vyer som du vill. När du är klar definierar vyerna som du kan sedan ta prov data. 
 
 ## <a name="step-5-view-your-data-in-bi-tools-such-as-power-bi-desktop"></a>Steg 5: Visa dina data i BI-verktyg som Power BI Desktop
 
-Du kan använda din nya DSN tooconnect DocumentADB med en ODBC-kompatibel tools - det här steget bara visas hur tooconnect tooPower BI Desktop och skapa en Power BI-visualisering.
+Du kan använda din nya DSN för att ansluta DocumentADB med verktyg som ODBC-kompatibel – det här steget bara visar hur du ansluter till Power BI Desktop och skapa en Power BI-visualisering.
 
 1. Öppna Power BI Desktop.
 2. Klicka på **hämta Data**.
-3. I hello **hämta Data** -fönstret klickar du på **andra** | **ODBC** | **Anslut**.
-4. I hello **från ODBC** fönster, Välj hello namn på datakälla du skapat och klicka sedan på **OK**. Du kan lämna hello **avancerade alternativ** poster som är tom.
-5. I hello **åtkomst till en datakälla med hjälp av en ODBC-drivrutin** väljer **standard eller anpassad** och klicka sedan på **Anslut**. Du behöver inte tooinclude hello **autentiseringsuppgifter anslutningssträngsegenskaper**.
-6. I hello **Navigator** i hello till vänster i fönstret expanderar hello databasen, hello schemat och välj sedan hello tabell. hello resultatfönstret innehåller hello data med hjälp av hello-schema som du skapade.
-7. toovisualize hello data i Power BI desktop kryssrutan hello framför hello tabellnamn klicka sedan på **belastningen**.
-8. Välj fliken för hello Data i Power BI Desktop på hello längst till vänster, ![Datafliken i Power BI Desktop](./media/odbc-driver/odbc-driver-data-tab.png) tooconfirm dina data har importerats.
-9. Du kan nu skapa grafer med Power BI genom att klicka på fliken för hello rapport ![fliken rapport i Power BI Desktop](./media/odbc-driver/odbc-driver-report-tab.png), klicka på **nya Visual**, och anpassa din panel. Mer information om hur du skapar visualiseringar i Power BI Desktop finns [visualiseringstyper i Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-visualization-types-for-reports-and-q-and-a/).
+3. I den **hämta Data** -fönstret klickar du på **andra** | **ODBC** | **Anslut**.
+4. I den **från ODBC** väljer du datakällan servernamnet du skapat och klicka sedan på **OK**. Du kan lämna den **avancerade alternativ** poster som är tom.
+5. I den **åtkomst till en datakälla med hjälp av en ODBC-drivrutin** väljer **standard eller anpassad** och klicka sedan på **Anslut**. Du behöver inte inkludera den **autentiseringsuppgifter anslutningssträngsegenskaper**.
+6. I den **Navigator** i den vänstra rutan i fönstret expanderar du databasen, schemat, och välj tabellen. Resultatfönstret innehåller data med det schema som du skapade.
+7. Om du vill visualisera data i Power BI desktop kryssrutan framför tabellnamnet och klicka sedan på **belastningen**.
+8. I Power BI Desktop längst till vänster, klicka på fliken Data ![Datafliken i Power BI Desktop](./media/odbc-driver/odbc-driver-data-tab.png) Bekräfta dina data importerades.
+9. Du kan nu skapa grafer med Power BI genom att klicka på fliken rapport ![fliken rapport i Power BI Desktop](./media/odbc-driver/odbc-driver-report-tab.png), klicka på **nya Visual**, och anpassa din panel. Mer information om hur du skapar visualiseringar i Power BI Desktop finns [visualiseringstyper i Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-visualization-types-for-reports-and-q-and-a/).
 
 ## <a name="troubleshooting"></a>Felsökning
 
-Om du får följande fel hello Kontrollera hello **värden** och **åtkomstnyckeln** värden som du kopierade hello Azure-portalen i [steg 2](#connect) är korrekta och försök sedan igen. Använd hello kopiera knappar toohello höger i hello **värden** och **åtkomstnyckeln** värden i hello Azure portal toocopy hello värden felfritt.
+Om du får följande fel, se till att den **värden** och **åtkomstnyckeln** värden som du kopierade i Azure portal [steg 2](#connect) är korrekta och försök sedan igen. Använd knapparna kopiera till höger om den **värden** och **åtkomstnyckeln** värden i Azure portal för att kopiera värdena felfritt.
 
-    [HY000]: [Microsoft][Azure Cosmos DB] (401) HTTP 401 Authentication Error: {"code":"Unauthorized","message":"hello input authorization token can't serve hello request. Please check that hello expected payload is built as per hello protocol, and check hello key being used. Server used hello following payload toosign: 'get\ndbs\n\nfri, 20 jan 2017 03:43:55 gmt\n\n'\r\nActivityId: 9acb3c0d-cb31-4b78-ac0a-413c8d33e373"}`
+    [HY000]: [Microsoft][Azure Cosmos DB] (401) HTTP 401 Authentication Error: {"code":"Unauthorized","message":"The input authorization token can't serve the request. Please check that the expected payload is built as per the protocol, and check the key being used. Server used the following payload to sign: 'get\ndbs\n\nfri, 20 jan 2017 03:43:55 gmt\n\n'\r\nActivityId: 9acb3c0d-cb31-4b78-ac0a-413c8d33e373"}`
 
 ## <a name="next-steps"></a>Nästa steg
 
-toolearn mer om Azure Cosmos DB finns [vad är Azure Cosmos DB?](introduction.md).
+Läs mer om Azure Cosmos DB i [vad är Azure Cosmos DB?](introduction.md).

@@ -1,6 +1,6 @@
 ---
 title: "Självstudier: Azure Active Directory-integrering med Cezanne HR programvara | Microsoft Docs"
-description: "Lär dig hur tooconfigure enkel inloggning mellan Cezanne HR-programvaran och Azure Active Directory."
+description: "Lär dig hur du konfigurerar enkel inloggning mellan Cezanne HR-programvaran och Azure Active Directory."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,35 +13,35 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeedes
-ms.openlocfilehash: 3675acd8871d62c2277def8074f7aa39ac46e2a3
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 623c438edfce5f98c2d32d8bb25a97d86aa77909
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="tutorial-integrate-azure-active-directory-with-cezanne-hr-software"></a>Självstudier: Integrera Azure Active Directory med Cezanne HR-programvara
 
-I kursen får du lära dig hur toointegrate Cezanne HR-program med Azure Active Directory (AD Azure).
+I kursen får lära du att integrera Cezanne HR-program med Azure Active Directory (AD Azure).
 
-Integrera Cezanne HR-program med Azure AD ger dig hello följande fördelar. Du kan:
+Integrera Cezanne HR-program med Azure AD ger dig följande fördelar. Du kan:
 
-- Kontrollera i Azure AD som har åtkomst tooCezanne HR-programvara.
-- Aktivera användare tooautomatically-inloggning tooCezanne HR-program med enkel inloggning (SSO) med sina Azure AD-konton.
-- Hantera dina konton i en central plats: hello Azure-portalen.
+- Kontrollera i Azure AD som har åtkomst till Cezanne HR-programvara.
+- Ge användarna logga in automatiskt Cezanne HR-program med enkel inloggning (SSO) med sina Azure AD-konton.
+- Hantera dina konton i en central plats: Azure-portalen.
 
-toolearn mer information om programvara som en tjänst (SaaS) app-integrering med Azure AD finns [vad är programåtkomst och enkel inloggning med Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Läs mer om programvara som en tjänst (SaaS) appintegrering med Azure AD i [vad är programåtkomst och enkel inloggning med Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Krav
 
-tooconfigure Azure AD-integrering med Cezanne HR-programvara du behöver hello följande objekt:
+För att konfigurera Azure AD-integrering med Cezanne HR programvara, behöver du följande:
 
 - En Azure AD-prenumeration
 - Cezanne HR-programvara SSO-aktiverade prenumeration
 
 > [!NOTE]
-> tootest hello steg i den här självstudiekursen, rekommenderar vi att du inte använder en produktionsmiljö.
+> Om du vill testa stegen i den här självstudiekursen, rekommenderar vi att du inte använder en produktionsmiljö.
 
-tootest hello stegen i den här självstudiekursen, Följ dessa rekommendationer:
+Följ dessa rekommendationer för att testa stegen i den här självstudiekursen:
 
 - Använd inte i produktionsmiljön, om det är nödvändigt.
 - Om du inte har en utvärderingsversion Azure AD-miljö kan du [hämta en utvärderingsversion för en månad](https://azure.microsoft.com/pricing/free-trial/).
@@ -49,240 +49,240 @@ tootest hello stegen i den här självstudiekursen, Följ dessa rekommendationer
 ## <a name="scenario-description"></a>Scenariobeskrivning
 I kursen får testa du Azure AD SSO i en testmiljö. 
 
-hello-scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
+Det scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
 
-* Lägga till Cezanne HR programvara från hello-galleriet
+* Lägga till Cezanne HR programvara från galleriet
 * Konfigurera och testa Azure AD-SSO
 
-## <a name="add-cezanne-hr-software-from-hello-gallery"></a>Lägg till Cezanne HR programvara från hello-galleriet
-tooconfigure hello integrering av Cezanne HR-program i Azure AD och lägga till Cezanne HR programvara från hello galleriet tooyour lista över hanterade SaaS-appar.
+## <a name="add-cezanne-hr-software-from-the-gallery"></a>Lägg till Cezanne HR programvara från galleriet
+Lägg till Cezanne HR programvara från galleriet i listan över hanterade SaaS-appar för att konfigurera integrering av Cezanne HR-program i Azure AD.
 
-tooadd Cezanne HR programvara från galleriet hello hello följande:
+Lägg till Cezanne HR programvara från galleriet genom att göra följande:
 
-1. I hello  **[Azure-portalen](https://portal.azure.com)**, i hello vänstra rutan, Välj hello **Azure Active Directory** knappen. 
+1. I den  **[Azure-portalen](https://portal.azure.com)**, i den vänstra rutan, Välj den **Azure Active Directory** knappen. 
 
-    ![Hej ”Azure Active Directory”-knappen][1]
+    ![Knappen ”Azure Active Directory”][1]
 
 2. Välj **företagsprogram** > **alla program**.
 
-    ![Hej ”alla program” länk][2]
+    ![Länken ”alla program”][2]
     
-3. tooadd ett nytt program hello överst i hello **alla program** dialogrutan **nytt program**.
+3. Att lägga till ett nytt program överst i den **alla program** dialogrutan **nytt program**.
 
-    ![Hej ”nya program” knappen][3]
+    ![”Det nya programmet” knappen][3]
 
-4. Skriv i sökrutan hello **Cezanne HR programvara**.
+4. I sökrutan skriver **Cezanne HR programvara**.
 
-    ![hello sökrutan](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_search.png)
+    ![Sökrutan](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_search.png)
 
-5. Markera i hello resultat **Cezanne HR programvara** och välj sedan hello **Lägg till** knappen tooadd hello program.
+5. Välj i resultatlistan **Cezanne HR programvara** och välj sedan den **Lägg till** för att lägga till programmet.
 
-    ![hello resultatlistan](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_addfromgallery.png)
+    ![Resultatlistan](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa Azure AD enkel inloggning
 I det här avsnittet kan du konfigurera och testa Azure AD SSO med Cezanne HR programvara baserat på en testanvändare som kallas ”Britta Simon”.
 
-För enkel inloggning toowork måste Azure AD tooknow hello Cezanne HR programvara motsvarighet toohello Azure AD-användare. Med andra ord måste du upprätta en länk relationen mellan en Azure AD-användare och hello relaterade användaren i hello Cezanne HR-programvara.
+För enkel inloggning ska fungera, Azure AD som behöver veta Cezanne HR programvarumotsvarighet till Azure AD-användare. Med andra ord måste du upprätta en länk förhållandet mellan en Azure AD-användare och relaterade användaren i Cezanne HR-programvara.
 
-tooestablish hello länken relationen, tilldela hello Cezanne HR programvara **användarnamn** värde som hello Azure AD **användarnamn** värde.
+Tilldela Cezanne HR-programvara för att upprätta länken relationen, **användarnamn** värde som Azure AD **användarnamn** värde.
 
-tooconfigure och testa Azure AD enkel inloggning med hjälp av Cezanne HR-program, fullständig hello följande byggblock.
+Slutför följande byggblock för att konfigurera och testa Azure AD SSO med Cezanne HR-programvara.
 
 ### <a name="configure-azure-ad-sso"></a>Konfigurera Azure AD för enkel inloggning
 
-I det här avsnittet kan du aktivera Azure AD SSO i hello Azure-portalen och konfigurera enkel inloggning i programmet Cezanne HR hello följande:
+I det här avsnittet kan du aktivera Azure AD enkel inloggning i Azure-portalen och konfigurera enkel inloggning i Cezanne HR programmet genom att göra följande:
 
-1. I hello Azure-portalen på hello **Cezanne HR programvara** programmet integration anger **enkel inloggning**.
+1. I Azure-portalen på den **Cezanne HR programvara** programmet integration anger **enkel inloggning**.
 
-    ![Hej ”enkel inloggning” kommando][4]
+    ![Kommandot ”enkel inloggning”][4]
 
-2. tooenable SSO i hello **enkel inloggning** dialogrutan, Välj hello **läge** som **SAML-baserade inloggning**.
+2. Att aktivera enkel inloggning, i den **enkel inloggning** dialogrutan markerar du den **läge** som **SAML-baserade inloggning**.
  
-    ![Hej ”Mode-ruta](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_samlbase.png)
+    ![Rutan ”läge”](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_samlbase.png)
 
-3. Under **Cezanne HR programvara domän och URL: er**, hello följande:
+3. Under **Cezanne HR programvara domän och URL: er**, gör du följande:
 
-    ![Hej ”Cezanne HR programvara domän och URL: er” avsnittet](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_url.png)
+    ![Avsnittet ”Cezanne HR programvara domän och URL: er”](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_url.png)
 
-    a. I hello **inloggnings-URL** Skriv en URL som har hello följande syntax:`https://w3.cezanneondemand.com/cezannehr/-/<tenant id>`
+    a. I den **inloggnings-URL** skriver en URL som har följande syntax:`https://w3.cezanneondemand.com/cezannehr/-/<tenant id>`
 
-    b. I hello **Reply URL** Skriv en URL som har hello följande syntax:`https://w3.cezanneondemand.com:443/<tenantid>`    
+    b. I den **Reply URL** skriver en URL som har följande syntax:`https://w3.cezanneondemand.com:443/<tenantid>`    
      
     > [!NOTE] 
-    > hello föregående värden är inte verkliga. Uppdatera dem med hello faktiska reply URL och hello inloggnings-URL. tooobtain hello värden, kontakta hello [Cezanne HR programvara klienten supportteamet](mailto:info@cezannehr.com).
+    > Föregående värden är inte verkliga. Uppdatera dem med faktiska reply-Webbadressen och Webbadressen för inloggning. För att få värdena kan kontakta den [Cezanne HR programvara klienten supportteamet](mailto:info@cezannehr.com).
 
-4. Under **SAML-signeringscertifikat**väljer **certifikat (Base64)**, och sedan spara hello certifikatfilen på datorn.
+4. Under **SAML-signeringscertifikat**väljer **certifikat (Base64)**, och sedan spara certifikatfilen på datorn.
 
-    ![Hej ”SAML signeringscertifikat” avsnittet](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_certificate.png) 
+    ![Avsnittet ”SAML signeringscertifikat”](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_certificate.png) 
 
 5. Välj **Spara**.
 
-    ![Hej ”spara”.](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_general_400.png)
+    ![Knappen ”Spara”](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_general_400.png)
     
-6. Under **Cezanne HR programvarukonfiguration**väljer **konfigurera Cezanne HR programvara** tooopen hello **konfigurera inloggning** fönster. Kopiera hello **SAML enhets-ID** och **SAML enkel inloggning** URL: en från hello **Snabbreferens** avsnitt.
+6. Under **Cezanne HR programvarukonfiguration**väljer **konfigurera Cezanne HR programvara** att öppna den **konfigurera inloggning** fönster. Kopiera den **SAML enhets-ID** och **SAML enkel inloggning** URL från den **Snabbreferens** avsnitt.
 
-    ![Hej ”Cezanne HR programvara” konfigurationsavsnitt](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_configure.png) 
+    ![I avsnittet ”Cezanne HR programvarukonfiguration”](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_configure.png) 
 
-7. Logga tooyour Cezanne HR programvara innehavaren som en administratör i en annan webbläsarfönster.
+7. Logga in på din Cezanne HR-klient för programvara som en administratör i en annan webbläsarfönster.
 
-8. I hello vänster och välj **systeminställningarna**. Välj **säkerhetsinställningar** > **enkel inloggning Configuration**.
+8. I den vänstra rutan, Välj **systeminställningarna**. Välj **säkerhetsinställningar** > **enkel inloggning Configuration**.
 
-    ![Hej ”enkel inloggning Configuration” länk](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_000.png)
+    ![Länken ”enkel inloggning-konfiguration”](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_000.png)
 
-9. I hello **Tillåt användare toolog i med hjälp av följande tjänster för enkel inloggning (SSO) hello** rutan, Välj hello **SAML 2.0** kryssrutan och välj hello **Advanced Configuration** alternativet.
+9. I den **Tillåt användare att logga in med följande tjänster för enkel inloggning (SSO)** väljer den **SAML 2.0** kryssrutan och välj den **Advanced Configuration** alternativet.
 
     ![Enkel inloggning services-alternativ](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_001.png)
 
 10. Välj **lägga till nya**.
 
-    ![Hej ”Lägg till ny” knappen](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_002.png)
+    ![Knappen ”Lägg till ny”](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_002.png)
 
-11. Under **SAML 2.0 identitetsleverantörer**, hello följande:
+11. Under **SAML 2.0 identitetsleverantörer**, gör du följande:
 
-    ![Hej ”identitetsleverantörer SAML 2.0” avsnittet](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_003.png)
+    ![Avsnittet ”identitetsleverantörer SAML 2.0”](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_003.png)
     
-    a. I hello **visningsnamn** ange hello namn för din identitetsprovider.
+    a. I den **visningsnamn** anger du namnet på din identitetsleverantör.
 
-    b. I hello **identifiering** klistra in hello **SAML enhets-ID** som du kopierade från hello Azure-portalen. 
+    b. I den **identifiering** klistra in den **SAML enhets-ID** som du kopierade från Azure-portalen. 
 
-    c. I hello **SAML bindning** väljer **efter**.
+    c. I den **SAML bindning** väljer **efter**.
 
-    d. I hello **säkerhetstoken tjänstslutpunkten** klistra in hello **SAML enkel inloggning** URL som du kopierade från hello Azure-portalen. 
+    d. I den **säkerhetstoken tjänstslutpunkten** klistra in den **SAML enkel inloggning** URL som du kopierade från Azure-portalen. 
     
-    e. I hello **användarnamn ID-attributet** ange `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
+    e. I den **användarnamn ID-attributet** ange `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
     
-    f. tooupload hello hämtat certifikat från Azure AD, Välj hello **överför** knappen.
+    f. Ladda upp det hämta certifikatet från Azure AD, Välj den **överför** knappen.
     
     g. Välj **OK**. 
 
 12. Välj **Spara**.
 
-    ![Hej ”spara”.](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_004.png)
+    ![Knappen ”Spara”](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_004.png)
 
 > [!TIP]
-> När du ställer in hello app kan du läsa en kortare version av hello före instruktioner i hello [Azure-portalen](https://portal.azure.com). När du har lagt till hello appen från hello **Active Directory** > **företagsprogram** avsnitt, Välj hello **enkel inloggning** fliken. Sedan åtkomst hello inbäddade dokumentation från hello **Configuration** avsnitt. 
+> När du skapar appen kan du läsa en kortare version av föregående anvisningarna i den [Azure-portalen](https://portal.azure.com). När du har lagt till appen från den **Active Directory** > **företagsprogram** väljer den **enkel inloggning** fliken. Komma åt inbäddade dokumentationen från den **Configuration** avsnitt. 
 
-toolearn mer om hello inbäddade dokumentationen funktionen finns [Azure AD inbäddade dokumentationen]( https://go.microsoft.com/fwlink/?linkid=845985).
+Mer information om funktionen inbäddade dokumentation finns [Azure AD inbäddade dokumentationen]( https://go.microsoft.com/fwlink/?linkid=845985).
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Skapa en testanvändare i Azure AD
-I det här avsnittet skapar du testanvändare Britta Simon i hello Azure-portalen.
+I det här avsnittet skapar du testanvändare Britta Simon i Azure-portalen.
 
-![hello testanvändare Britta Simon][100]
+![Testanvändare Britta Simon][100]
 
-toocreate en testanvändare i Azure AD hello följande:
+Om du vill skapa en testanvändare i Azure AD, gör du följande:
 
-1. I hello **Azure-portalen**, i hello vänstra rutan, Välj hello **Azure Active Directory** knappen.
+1. I den **Azure-portalen**, i den vänstra rutan, Välj den **Azure Active Directory** knappen.
 
-    ![Hej ”Azure Active Directory”-knappen](./media/active-directory-saas-cezannehrsoftware-tutorial/create_aaduser_01.png) 
+    ![Knappen ”Azure Active Directory”](./media/active-directory-saas-cezannehrsoftware-tutorial/create_aaduser_01.png) 
 
-2. toodisplay hello lista över användare, Välj **användare och grupper** > **alla användare**.
+2. Om du vill visa en lista över användare, Välj **användare och grupper** > **alla användare**.
     
-    ![Hej ”alla användare” länk](./media/active-directory-saas-cezannehrsoftware-tutorial/create_aaduser_02.png) 
+    ![Länken ”alla användare”](./media/active-directory-saas-cezannehrsoftware-tutorial/create_aaduser_02.png) 
     
-    Hej **alla användare** öppnas.
+    Den **alla användare** öppnas.
 
-3. tooopen hello **användare** dialogrutan **Lägg till**.
+3. Öppna den **användare** dialogrutan **Lägg till**.
  
-    ![Hej ”Lägg till”-knappen](./media/active-directory-saas-cezannehrsoftware-tutorial/create_aaduser_03.png) 
+    ![Knappen ”Lägg till”](./media/active-directory-saas-cezannehrsoftware-tutorial/create_aaduser_03.png) 
 
-4. I hello **användaren** dialogrutan rutan, hello följande:
+4. I den **användaren** dialogrutan Gör följande:
  
-    ![dialogrutan för hello ”användare”](./media/active-directory-saas-cezannehrsoftware-tutorial/create_aaduser_04.png) 
+    ![Dialogrutan ”användare”](./media/active-directory-saas-cezannehrsoftware-tutorial/create_aaduser_04.png) 
 
-    a. I hello **namn** skriver **BrittaSimon**.
+    a. I den **namn** skriver **BrittaSimon**.
 
-    b. I hello **användarnamn** Skriv användaren Britta Simon **e-postadress**.
+    b. I den **användarnamn** Skriv användaren Britta Simon **e-postadress**.
 
-    c. Välj hello **visa lösenordet** kryssrutan och Observera hello värdet som har genererats i hello **lösenord** rutan.
+    c. Välj den **visa lösenordet** och anteckna värdet som har genererats i den **lösenord** rutan.
 
     d. Välj **Skapa**.
  
 ### <a name="create-a-cezanne-hr-software-test-user"></a>Skapa en testanvändare för Cezanne HR-programvara
 
-tooenable Azure AD-användare toosign i tooCezanne HR-program, måste de etableras i Cezanne HR-programvara. Hello gäller Cezanne HR programvara är etablering en manuell aktivitet.
+Om du vill aktivera Azure AD-användare att logga in på Cezanne HR programvara, måste de etableras i Cezanne HR programvara. När det gäller Cezanne HR-program är etablering en manuell aktivitet.
 
-Konfigurera ett användarkonto genom att göra hello följande:
+Konfigurera ett användarkonto genom att göra följande:
 
-1.  Logga in tooyour Cezanne HR programvara företagets webbplats som administratör.
+1.  Logga in på webbplatsen Cezanne HR programvara företag som administratör.
 
-2.  I hello vänster och välj **systeminställningarna** > **hantera användare** > **Lägg till nya användare**.
+2.  I den vänstra rutan, Välj **systeminställningarna** > **hantera användare** > **Lägg till nya användare**.
 
-    ![Hej ”Lägg till nya användare” länken](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_005.png "ny användare")
+    ![Länken ”Lägg till nya användare”](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_005.png "ny användare")
 
-3.  Under **detaljer**, hello följande:
+3.  Under **detaljer**, gör du följande:
 
-    ![Hej ”Person” informationsavsnittet](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_006.png "ny användare")
+    ![Avsnittet ”Person information”](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_006.png "ny användare")
     
     a. Ange **intern användare** som **OFF**.
     
-    b. I hello **Förnamn** rutan, typen hello användarens förnamn, till exempel **Britta**.  
+    b. I den **Förnamn** Skriv användarens förnamn, till exempel **Britta**.  
  
-    c. I hello **efternamn** rutan, typen hello användarens efternamn, till exempel **Simon**.
+    c. I den **efternamn** Skriv användarens efternamn, till exempel **Simon**.
     
-    d. I hello **e-post** skriver hello användarens e-postadress, till exempel Brittasimon@contoso.com.
+    d. I den **e-post** Skriv användarens e-postadress, till exempel Brittasimon@contoso.com.
 
-4.  Under **kontoinformation**, hello följande:
+4.  Under **kontoinformation**, gör du följande:
 
-    ![Hej ”information om kontot”](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_007.png "ny användare")
+    ![Avsnittet ”kontoinformation”](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_007.png "ny användare")
     
-    a. I hello **användarnamn** skriver hello användarens e-postadress, till exempel Brittasimon@contoso.com.
+    a. I den **användarnamn** Skriv användarens e-postadress, till exempel Brittasimon@contoso.com.
     
-    b. I hello **lösenord** skriver hello användarens lösenord.
+    b. I den **lösenord** Skriv användarens lösenord.
     
-    c. I hello **säkerhetsroll** väljer **HR Professional**.
+    c. I den **säkerhetsroll** väljer **HR Professional**.
     
     d. Välj **OK**.
 
-5. På hello **enkel inloggning** på fliken hello **SAML 2.0 identifierare** väljer **Lägg till ny**.
+5. På den **enkel inloggning** fliken den **SAML 2.0 identifierare** väljer **Lägg till ny**.
 
-    ![Hej ”Lägg till ny” knappen](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_008.png "användare")
+    ![Knappen ”Lägg till ny”](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_008.png "användare")
 
-6. I hello **identitetsleverantör** Välj identitetsprovider. I hello **användar-ID** ange hello e-postadress för test användaren Britta Simons konto.
+6. I den **identitetsleverantör** Välj identitetsprovider. I den **användar-ID** ange e-postadressen för test användaren Britta Simons konto.
 
-    ![Hej ”identitetsleverantör” och ”User ID”](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_009.png "användare")
+    ![Rutorna ”identitetsleverantör” och ”User ID”](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_009.png "användare")
     
 7. Välj **Spara**.
 
-    ![Hej ”spara” knappen](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_010.png "användare")
+    ![Knappen ”Spara”](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_010.png "användare")
 
-### <a name="assign-hello-azure-ad-test-user"></a>Tilldela användare hello Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändare
 
-I det här avsnittet Aktivera testanvändare Britta Simon toouse Azure SSO genom att bevilja åtkomst tooCezanne HR programvara.
+I det här avsnittet kan du aktivera testanvändare Britta Simon att använda Azure SSO genom att bevilja åtkomst till Cezanne HR-programvara.
 
 ![Testa användaråtkomst][200] 
 
-1. Öppna hello program och gå sedan toohello directory vyn i hello Azure-portalen. Välj **företagsprogram** > **alla program**.
+1. Öppna program och sedan gå till vyn katalog i Azure-portalen. Välj **företagsprogram** > **alla program**.
 
-    ![Hej ”alla program” länk][201] 
+    ![Länken ”alla program”][201] 
 
-2. Välj i listan med program hello **Cezanne HR programvara**.
+2. Välj i listan med program **Cezanne HR programvara**.
 
-    ![listan med hello ”program”](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_app.png) 
+    ![Listan med ”program”](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_app.png) 
 
-3. Välj hello menyn hello vänster **användare och grupper**.
+3. Välj på menyn till vänster **användare och grupper**.
 
     ![Tilldela användare][202] 
 
-4. Välj **Lägg till**. I hello **Lägg uppdrag** dialogrutan **användare och grupper**.
+4. Välj **Lägg till**. I den **Lägg uppdrag** dialogrutan **användare och grupper**.
 
     ![”Användare och grupper” länk][203]
 
-5. I hello **användare och grupper** i dialogrutan hello **användare** väljer **Britta Simon**.
+5. I den **användare och grupper** i dialogrutan den **användare** väljer **Britta Simon**.
 
-6. I hello **användare och grupper** dialogrutan **Välj**.
+6. I den **användare och grupper** dialogrutan **Välj**.
 
-7. I hello **Lägg uppdrag** dialogrutan **tilldela**.
+7. I den **Lägg uppdrag** dialogrutan **tilldela**.
     
 ### <a name="test-sso"></a>Testa enkel inloggning
 
-I det här avsnittet testa du konfigurationen av Azure AD SSO med hjälp av hello åtkomstpanelen.
+I det här avsnittet testa du konfigurationen av Azure AD SSO med hjälp av åtkomstpanelen.
 
-När du väljer hello Cezanne HR programvara panelen i hello åtkomstpanelen logga in automatiskt tooyour Cezanne HR-program.
+När du väljer panelen Cezanne HR programvara på åtkomstpanelen kan logga du in automatiskt i tillämpningsprogrammet Cezanne HR-programvara.
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Lista över självstudier om hur toointegrate SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Vad är programåtkomst och enkel inloggning med Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->

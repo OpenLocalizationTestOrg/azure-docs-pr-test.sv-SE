@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 5/06/2017
 ms.author: parakhj
-ms.openlocfilehash: 28a39f282488b81fc9e2ab7841b5f2cb4cd58715
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: cb7a9f01e43d41eb7315cb37a41e69f044ce5566
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-b2c-sign-up-and-sign-in-consumers-in-your-applications-using-custom-policies"></a>Azure Active Directory B2C: Registrera och logga in användare i dina program med anpassade principer
-Anpassade principer är konfigurationsfiler som definierar hello beteende för din Azure AD B2C-klient. De kan vara helt redigeras av en identitet developer toocomplete en nära obegränsat antal uppgifter.
+Anpassade principer är konfigurationsfiler som definierar beteendet för din Azure AD B2C-klient. Identitetsutvecklare kan redigera dessa för att utföra ett nästan obegränsat antal uppgifter.
 
-## <a name="how-tooarticles"></a>Hur tooarticles
-Lär dig hur toouse specifika funktioner i Azure Active Directory B2C:
+## <a name="how-to-articles"></a>Instruktionsartiklar
+Lär dig hur du använder specifika funktioner i Azure Active Directory B2C:
 
 * [Kom igång](active-directory-b2c-overview-custom.md)
 * Konfigurera OIDC-leverantörer som [Azure AD](active-directory-b2c-setup-aad-custom.md).
@@ -39,7 +39,7 @@ Lär dig hur toouse specifika funktioner i Azure Active Directory B2C:
 * Felsöka genom att [samla in loggar med Application Insights](active-directory-b2c-troubleshoot-custom.md).
 
 ## <a name="whats-new"></a>Nyheter
-Kom tillbaka ofta toolearn om framtida ändringar toohello Azure Active Directory B2C. Vi kommer även att twittra om eventuella uppdateringar med @AzureAD.
+Kom tillbaka ofta om du är nyfiken på framtida förändringar i Azure Active Directory B2C. Vi kommer även att twittra om eventuella uppdateringar med @AzureAD.
 
 
 

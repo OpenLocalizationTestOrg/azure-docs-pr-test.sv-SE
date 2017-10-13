@@ -1,6 +1,6 @@
 ---
 title: "Azure Active Directory B2C: Hämta en token som använder en Android-App | Microsoft Docs"
-description: "Den här artikeln visar hur toocreate en Android-app som använder AppAuth med Azure Active Directory B2C toomanage användaridentiteter och autentiserar användare."
+description: "Den här artikeln visar hur du skapar en Android-app som använder AppAuth med Azure Active Directory B2C hanterar användaridentiteter och autentiserar användare."
 services: active-directory-b2c
 documentationcenter: android
 author: parakhj
@@ -14,22 +14,22 @@ ms.devlang: java
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: parakhj
-ms.openlocfilehash: 0236398673115a34951f035cb1e73e89417abf86
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: cd4b8048245be49ea79bcb1b364f2f99c56f8291
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="azure-ad-b2c-sign-in-using-an-android-application"></a>Azure AD B2C: Logga in med ett Android-program
 
-hello Microsoft identity-plattformen använder öppna standarder, till exempel OAuth2 och OpenID Connect. Detta gör att utvecklare tooleverage något bibliotek de önskar toointegrate med våra tjänster. tooaid utvecklare i vår plattform med andra bibliotek, vi har skrivit några genomgång som den här en toodemonstrate hur tooconfigure 3 part bibliotek tooconnect toohello Microsoft identity-plattformen. De flesta bibliotek som implementerar [hello RFC6749 OAuth2-specifikationen](https://tools.ietf.org/html/rfc6749) kommer att kunna tooconnect toohello Microsoft Identity-plattformen.
+Microsofts identitetsplattform använder öppna standarder som OAuth2 och OpenID Connect. Det innebär att utvecklare kan utnyttja alla bibliotek som de vill integrera med våra tjänster. Vi har skrivit några genomgång som detta att demonstrera hur du konfigurerar 3 part bibliotek för att ansluta till Microsoft identity-plattformen för att hjälpa utvecklare i vår plattform med andra bibliotek. De flesta bibliotek som implementerar [RFC6749 OAuth2-specifikationen](https://tools.ietf.org/html/rfc6749) kan ansluta till Microsoft Identity-plattformen.
 
 > [!WARNING]
-> Microsoft tillhandahåller inte korrigeringar för 3 part bibliotek och inte har gjort en genomgång av dessa bibliotek. Det här exemplet använder ett 3 part bibliotek kallas AppAuth har testats för kompatibilitet i grundläggande scenarier med hello Azure AD B2C. Problem och funktionsförfrågningar ska vara riktad toohello biblioteket öppen källkod projektet. Se [i den här artikeln](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-libraries) för mer information.  
+> Microsoft tillhandahåller inte korrigeringar för 3 part bibliotek och inte har gjort en genomgång av dessa bibliotek. Det här exemplet använder ett 3 part bibliotek kallas AppAuth har testats för kompatibilitet i grundläggande scenarier med Azure AD B2C. Problem och funktionsförfrågningar ska dirigeras till biblioteksprojekt öppen källkod. Se [i den här artikeln](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-libraries) för mer information.  
 >
 >
 
-Om du är ny tooOAuth2 eller OpenID Connect är mycket av det här exemplet konfigurationen inte mycket bra tooyou. Vi rekommenderar att du tittar på en kort [översikt över hello-protokollet som vi dokumenteras här](active-directory-b2c-reference-protocols.md).
+Om du inte har erfarenhet av OAuth2 eller OpenID Connect kanske du inte får ut så mycket av den här exempelkonfigurationen. Vi rekommenderar att du läser en kort [översikt över protokollet som vi har dokumenterat här](active-directory-b2c-reference-protocols.md).
 
 ## <a name="get-an-azure-ad-b2c-directory"></a>Skaffa en Azure AD B2C-katalog
 
@@ -37,33 +37,33 @@ Innan du kan använda Azure AD B2C måste du skapa en katalog eller klient. En k
 
 ## <a name="create-an-application"></a>Skapa ett program
 
-Sedan måste toocreate en app i B2C-katalogen. Det ger Azure AD den information som behövs toocommunicate säkert med din app. Följ toocreate en mobil app [instruktionerna](active-directory-b2c-app-registration.md). Se till att:
+Därefter måste du skapa en app i B2C-katalogen. Det ger Azure AD den information som tjänsten behöver för att kommunicera säkert med din app. Så här skapar du en mobil app [instruktionerna](active-directory-b2c-app-registration.md). Se till att:
 
-* Inkludera en **Native Client** i hello program.
-* Kopiera hello **program-ID** som är tilldelade tooyour app. Du behöver det senare.
+* Inkludera en **Native Client** i programmet.
+* Kopiera **program-ID:t** som har tilldelats din app. Du behöver det senare.
 * Konfigurera en intern klient **omdirigerings-URI** (t.ex. com.onmicrosoft.fabrikamb2c.exampleapp://oauth/redirect). Du behöver även detta senare.
 
 [!INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
 
 ## <a name="create-your-policies"></a>Skapa principer
 
-I Azure AD B2C definieras varje användarupplevelse av en [princip](active-directory-b2c-reference-policies.md). Den här appen innehåller en identity-upplevelse: en kombinerad inloggning och registrering. Du behöver toocreate principen, som beskrivs i den [referensartikeln om principer](active-directory-b2c-reference-policies.md#create-a-sign-up-policy). Tänk på att när du skapar hello princip:
+I Azure AD B2C definieras varje användarupplevelse av en [princip](active-directory-b2c-reference-policies.md). Den här appen innehåller en identity-upplevelse: en kombinerad inloggning och registrering. Du måste skapa den här principen, som beskrivs i den [referensartikeln om principer](active-directory-b2c-reference-policies.md#create-a-sign-up-policy). Tänk på följande när du skapar principen:
 
-* Välj hello **visningsnamn** som ett anmälan attribut i principen.
-* Välj hello **visningsnamn** och **objekt-ID** programanspråken i varje princip. Du kan också välja andra anspråk.
-* Kopiera hello **namn** på varje princip när du har skapat den. Det bör ha hello prefixet `b2c_1_`.  Du behöver hello principnamn senare.
+* Välj den **visningsnamn** som ett anmälan attribut i principen.
+* Välj det **visningsnamn** och **objekt-ID** som programmet gör anspråk på i varje princip. Du kan också välja andra anspråk.
+* Kopiera **namnet** på varje princip när du har skapat den. Det bör ha prefixet `b2c_1_`.  Du behöver principnamnet senare.
 
 [!INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
 
-När du har skapat dina principer kan du är klar toobuild din app.
+När du har skapat dina principer är det dags att bygga appen.
 
-## <a name="download-hello-sample-code"></a>Hämta hello exempelkod
+## <a name="download-the-sample-code"></a>Hämta exempelkoden
 
-Vi har angett ett fungerande exempel som använder AppAuth med Azure AD B2C [på GitHub](https://github.com/Azure-Samples/active-directory-android-native-appauth-b2c). Du kan hämta hello koden och kör den. Du kan snabbt komma igång med din egen app med Azure AD B2C konfigurationen genom att följa instruktionerna hello i hello [README.md](https://github.com/Azure-Samples/active-directory-android-native-appauth-b2c/blob/master/README.md).
+Vi har angett ett fungerande exempel som använder AppAuth med Azure AD B2C [på GitHub](https://github.com/Azure-Samples/active-directory-android-native-appauth-b2c). Du kan hämta koden och kör den. Du kan snabbt komma igång med din egen app med Azure AD B2C konfigurationen genom att följa anvisningarna i den [README.md](https://github.com/Azure-Samples/active-directory-android-native-appauth-b2c/blob/master/README.md).
 
-hello prov är en ändring av hello-exemplet som anges av [AppAuth](https://openid.github.io/AppAuth-Android/). Besök deras sidan toolearn mer om AppAuth och dess funktioner.
+Exemplet är en ändring av exemplet som anges av [AppAuth](https://openid.github.io/AppAuth-Android/). Besök deras sidan om du vill veta mer om AppAuth och dess funktioner.
 
-## <a name="modifying-your-app-toouse-azure-ad-b2c-with-appauth"></a>Ändra din app toouse Azure AD B2C med AppAuth
+## <a name="modifying-your-app-to-use-azure-ad-b2c-with-appauth"></a>Ändra din app att använda Azure AD B2C med AppAuth
 
 > [!NOTE]
 > AppAuth stöder Android API 16 (Jellybean) och senare. Vi rekommenderar att du använder API-23 och högre.
@@ -71,18 +71,18 @@ hello prov är en ändring av hello-exemplet som anges av [AppAuth](https://open
 
 ### <a name="configuration"></a>Konfiguration
 
-Du kan konfigurera kommunikation med Azure AD B2C genom att antingen ange hello identifiera URI eller genom att ange både hello autentiseringsslutpunkt och tokenslutpunkten URI: er. I båda fallen måste hello följande information:
+Du kan konfigurera kommunikation med Azure AD B2C genom att ange anger identifieringen URI eller genom att ange både autentiseringsslutpunkt och tokenslutpunkten URI: er. I båda fallen måste följande information:
 
 * Klient-ID (t.ex. contoso.onmicrosoft.com)
 * Principens namn (t.ex. B2C\_1\_SignUpIn)
 
-Om du väljer tooautomatically identifiera hello auktoriserings- och token-slutpunkt för URI: er, måste toofetch information från hello identifiering URI. hello identifiering URI kan genereras genom att ersätta hello klient\_-ID och hello princip\_namn i hello följande URL:
+Om du väljer att automatiskt identifiera auktoriserings- och tokenslutpunkten URI: er måste att hämta information från identifiering URI. Identifieringen URI kan genereras genom att ersätta innehavaren\_-ID och principen\_namn i följande URL:
 
 ```java
 String mDiscoveryURI = "https://login.microsoftonline.com/<Tenant_ID>/v2.0/.well-known/openid-configuration?p=<Policy_Name>";
 ```
 
-Du kan hämta hello auktoriserings- och tokenslutpunkten URI: er och skapa ett AuthorizationServiceConfiguration objekt genom att köra hello följande:
+Du kan hämta auktoriserings- och tokenslutpunkten URI: er och skapa ett AuthorizationServiceConfiguration objekt genom att köra följande:
 
 ```java
 final Uri issuerUri = Uri.parse(mDiscoveryURI);
@@ -95,15 +95,15 @@ AuthorizationServiceConfiguration.fetchFromIssuer(
           @Nullable AuthorizationServiceConfiguration serviceConfiguration,
           @Nullable AuthorizationException ex) {
         if (ex != null) {
-            Log.w(TAG, "Failed tooretrieve configuration for " + issuerUri, ex);
+            Log.w(TAG, "Failed to retrieve configuration for " + issuerUri, ex);
         } else {
-            // service configuration retrieved, proceed tooauthorization...
+            // service configuration retrieved, proceed to authorization...
         }
       }
   });
 ```
 
-Istället för att använda identifiering tooobtain hello auktoriserings- och tokenslutpunkten URI: er, du kan också ange dem explicit genom att ersätta hello klient\_-ID och hello princip\_namn i hello URL nedan:
+I stället för att få fram auktorisering och tokenslutpunkten URI: er med hjälp av identifiering du kan också ange dem explicit genom att ersätta innehavaren\_-ID och principen\_namn i URL: er nedan:
 
 ```java
 String mAuthEndpoint = "https://login.microsoftonline.com/<Tenant_ID>/oauth2/v2.0/authorize?p=<Policy_Name>";
@@ -111,18 +111,18 @@ String mAuthEndpoint = "https://login.microsoftonline.com/<Tenant_ID>/oauth2/v2.
 String mTokenEndpoint = "https://login.microsoftonline.com/<Tenant_ID>/oauth2/v2.0/token?p=<Policy_Name>";
 ```
 
-Kör hello följande kod toocreate AuthorizationServiceConfiguration-objekt:
+Kör följande kod för att skapa AuthorizationServiceConfiguration-objekt:
 
 ```java
 AuthorizationServiceConfiguration config =
         new AuthorizationServiceConfiguration(name, mAuthEndpoint, mTokenEndpoint);
 
-// perform hello auth request...
+// perform the auth request...
 ```
 
 ### <a name="authorizing"></a>Auktorisera
 
-När du konfigurerar eller hämtar en auktorisering tjänstkonfiguration, kan en begäran om godkännande konstrueras. toocreate hello begäran måste hello följande information:
+När du konfigurerar eller hämtar en auktorisering tjänstkonfiguration, kan en begäran om godkännande konstrueras. För att skapa begäran, behöver du följande information:
 
 * Klient-ID (t.ex. 00000000-0000-0000-0000-000000000000)
 * Omdirigerings-URI med ett anpassat schema (t.ex. com.onmicrosoft.fabrikamb2c.exampleapp://oauthredirect)
@@ -138,7 +138,7 @@ AuthorizationRequest req = new AuthorizationRequest.Builder(
     .build();
 ```
 
-Se toohello [AppAuth guide](https://openid.github.io/AppAuth-Android/) på hur toocomplete hello resten av hello-processen. Om du behöver tooquickly komma igång med en fungerande app, kolla [exemplet](https://github.com/Azure-Samples/active-directory-android-native-appauth-b2c). Åtgärderna i hello hello [README.md](https://github.com/Azure-Samples/active-directory-android-native-appauth-b2c/blob/master/README.md) tooenter Azure AD B2C konfigurationen.
+Mer information finns i [AppAuth guide](https://openid.github.io/AppAuth-Android/) om hur du Slutför resten av processen. Om du behöver att snabbt komma igång med en fungerande app kan ta en titt [exemplet](https://github.com/Azure-Samples/active-directory-android-native-appauth-b2c). Följ stegen i den [README.md](https://github.com/Azure-Samples/active-directory-android-native-appauth-b2c/blob/master/README.md) att ange din egen Azure AD B2C-konfiguration.
 
-Vi är alltid öppna toofeedback och förslag! Om du har problem med det här avsnittet eller rekommendationer för att förbättra det här innehållet, skulle vi uppskattar din feedback på hello hello sidans nederkant. För funktionsbegäranden, lägga till dem för[UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c).
+Vi är alltid öppna för feedback och förslag! Om du har problem med det här avsnittet eller rekommendationer för att förbättra det här innehållet, skulle vi uppskattar din feedback längst ned på sidan. För funktionsbegäranden, lägga till dem i [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c).
 

@@ -1,6 +1,6 @@
 ---
-title: aaaRespond toosecurity incidenter med Azure Security Center | Microsoft Docs
-description: "Det här dokumentet förklarar hur toouse Azure Security Center för ett scenario för incidenter."
+title: "Reagera på säkerhetshot med Azure Security Center | Microsoft Docs"
+description: "I det här dokumentet beskrivs hur du använder Azure Security Center i ett scenario med incidenthantering."
 services: security-center
 documentationcenter: na
 author: YuriDio
@@ -14,89 +14,89 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/30/2017
 ms.author: yurid
-ms.openlocfilehash: aaf50c0c7e774d03d517c3fd11686dbae48dd29b
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 6cd6c822eb255893feac2536d7bae034380094b2
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="using-azure-security-center-for-an-incident-response"></a>Använda Azure Security Center vid incidenthantering
-Många organisationer lär dig hur toorespond toosecurity incidenter efter drabbas av ett angrepp. tooreduce kostnader och skada, är det viktigt toohave en incidenter planera på plats innan en attack äger rum. Azure Security Center kan användas i olika faser av en incidenthantering.
+Många organisationer lär sig att reagera på säkerhetsincidenter först när de har drabbats av en attack. För att minska kostnaderna och skadorna är det viktigt att ha en incidenthanteringsplan på plats innan en attack äger rum. Azure Security Center kan användas i olika faser av en incidenthantering.
 
 ## <a name="incident-response-planning"></a>Planering av incidenthantering
-En effektiv plan beror på tre kärnfunktionerna: som kan tooprotect, upptäcka och åtgärda toothreats. Skydda handlar om att förhindra incidenter, identifieringen är om hur du identifierar hot tidigt och svaret är om att ta bort hello angripare och återställa system toomitigate hello påverkan av en överträdelse.
+En effektiv plan är beroende av tre grundfunktioner: förmågan att skydda, identifiera och svara på hot. Skydd handlar om att förhindra incidenter, identifiering om att upptäcka hot tidigt och svar om att avlägsna angriparen och återställa systemen för att minimera påverkan av ett intrång.
 
-Den här artikeln använder etapper av incidenter för hello från hello [Microsoft Azure Security Response i hello molnet](https://gallery.technet.microsoft.com/Azure-Security-Response-in-dd18c678) artikel, som visas i följande diagram hello:
+I den här artikeln används säkerhetsstegen för incidenthantering från artikeln [Microsoft Azure Security Response in the Cloud (Microsoft Azure Security Response i molnet)](https://gallery.technet.microsoft.com/Azure-Security-Response-in-dd18c678) enligt följande diagram:
 
 ![Livscykel för incidenthantering](./media/security-center-incident-response/security-center-incident-response-fig1.png)
 
-Du kan använda Security Center under hello identifiera, utvärdering och diagnostisera steg. Här följer exempel på hur Security Center kan vara användbar vid hello tre inledande incidenter steg:
+Du kan använda Security Center under stegen för identifiering, utvärdering och diagnostisering. Här visas ett exempel på hur Security Center kan vara användbart vid de tre första incidenthanteringsstegen:
 
-* **Identifiera**: granska hello första tecken på att en händelse undersökning.
-  * Exempel: granska hello första kontroll att en säkerhetsvarning med hög prioritet har aktiverats i instrumentpanelen för hello Security Center.
-* **Utvärdera**: utföra hello inledande assessment tooobtain mer information om hello misstänkt aktivitet.
-  * Exempel: hämta mer information om hello Säkerhetsvarning.
+* **Identifiera**: Visa den första indikationen i en händelseundersökning.
+  * Exempel: Visa den första verifiering om att en säkerhetsavisering med hög prioritet aktiverades i instrumentpanelen till Security Center.
+* **Utvärdera**: Utför en första utvärdering för att få mer information om den misstänkta aktiviteten.
+  * Exempel: Hämta mer information om säkerhetsaviseringen.
 * **Diagnostisera**: Utföra en teknisk undersökning och identifiera strategier för inneslutning, åtgärder och bugglösning.
-  * Exempel: Följ hello steg beskrivs av Security Center i den särskilda säkerhetsaviseringen.
+  * Exempel: Följ anvisningarna för reparation som beskrivs i Security Center i säkerhetsvarningen.
 
-hello scenariot nedan visar hur tooleverage Security Center under hello identifiera, utvärdering och diagnostisera/svara led i en säkerhetsincident. I Security Center är en [säkerhetsincident](security-center-incident.md) en sammanställning av alla aviseringar för en resurs som överensstämmer med särskilda [händelsekedje](https://blogs.technet.microsoft.com/office365security/addressing-your-cxos-top-five-cloud-security-concerns/)mönster. Incidenter visas i hello [säkerhetsaviseringar](security-center-managing-and-responding-alerts.md) panelen och bladet. En incident visar hello lista över relaterade aviseringar, vilket gör att du tooobtain mer information om varje förekomst. Security Center innehåller också fristående säkerhetsaviseringar som kan vara används tootrack ned en misstänkt aktivitet.
+Scenariot nedan visar hur du använder Security Center till identifiering, utvärdering och diagnostisering/hantering vid en säkerhetsincident. I Security Center är en [säkerhetsincident](security-center-incident.md) en sammanställning av alla aviseringar för en resurs som överensstämmer med särskilda [händelsekedje](https://blogs.technet.microsoft.com/office365security/addressing-your-cxos-top-five-cloud-security-concerns/)mönster. Incidenterna vas på panelen och bladet [Säkerhetsaviseringar](security-center-managing-and-responding-alerts.md). En incident visar en lista över relaterade aviseringar så att du kan få mer information om varje förekomst. Security Center har även fristående säkerhetsaviseringar som också kan användas för att spåra upp en misstänkt aktivitet.
 
 ## <a name="scenario"></a>Scenario
-Contoso nyligen har migreras några av sina lokala resurser tooAzure, inklusive vissa baseras på virtuella datorer av branschspecifika arbetsbelastningar och SQL-databaser. För närvarande har Contosos team som ansvarar för datorsäkerheten, CSIRT (Computer Security Incident Response Team) svårt att undersöka säkerhetsproblem på grund av bristande integrering av säkerhetsfunktionerna i de aktuella incidenthanteringsverktygen. Den här brist på integrering introducerar ett problem under hello identifiera steget (för många falska positiva identifieringar) samt under hello utvärdering och diagnostisera steg. Som en del av migreringen, de valt tooopt i för Security Center toohelp dem som löser problemet.
+Contoso migrerade nyligen några av sina lokala resurser till Azure, inklusive vissa virtuella datorbaserade branschspecifika arbetsbelastningar och SQL-databaser. För närvarande har Contosos team som ansvarar för datorsäkerheten, CSIRT (Computer Security Incident Response Team) svårt att undersöka säkerhetsproblem på grund av bristande integrering av säkerhetsfunktionerna i de aktuella incidenthanteringsverktygen. Bristen på integrering utgör ett problem vid identifiering (det blir för många falska positiva resultat), samt vid utvärderings- och diagnostiseringsstegen. Som en del av den här migreringen beslutar de att välja Security Center för att lösa problemet.
 
-Hej första fasen av migreringen slutförts när de publicerats så alla resurser som åtgärdas alla hello säkerhetsrekommendationer från Security Center. Contoso CSIRT är hello centrum för att hantera datorn säkerhetsincidenter. hello team består av en grupp personer med ansvar för att hantera en säkerhetsincident. hello gruppmedlemmar har tydligt definierat uppgifter tooensure områden med svar är återstår som upptäckts.
+Den första fasen i migreringen slutförs när alla resurser har integreras och alla säkerhetsrekommendationer från Security Center har hanterats. Contoso CSIRT är huvudresursen för att hantera säkerhetsincidenter. Gruppen består av en grupp personer med ansvar för att hantera en alla säkerhetsincidenter. Gruppmedlemmarna har tydligt definierade uppgifter som säkerställer att inget område lämnas utan åtgärd.
 
-För hello syftet med det här scenariot vi toofocus på hello följande personer som ingår i Contoso CSIRT hello roller:
+I det här scenariot ska vi fokusera på rollerna för följande personer som ingår i Contoso CSIRT:
 
 ![Livscykel för incidenthantering](./media/security-center-incident-response/security-center-incident-response-fig2.png)
 
 Johanna, som arbetar med säkerheten. Hennes ansvarsområden är följande:
 
-* Övervaka och svara toosecurity hot runt hello klockan.
-* Växande toohello molnansvarig eller säkerhetsanalytiker efter behov.
+* Övervakning och hantering av säkerhetshot dygnet runt.
+* Eskalering till molnets arbetsbelastningsägare eller säkerhetsanalytiker vid behov.
 
 Sam är säkerhetsanalytiker och hans ansvar omfattar:
 
 * Undersöka attacker.
 * Åtgärda aviseringar.
-* Arbeta med toodetermine för ägare av arbetsbelastning och tillämpa åtgärder.
+* Arbeta med arbetsbelastningsägare för att fastställa och tillämpa åtgärder.
 
-Som du ser Johanna och Sam har olika ansvarsområdena och de måste fungera tillsammans tooshare Security Center information.
+Som du kan se har Johanna och Sam olika ansvarsområden och de måste samarbeta för att dela informationen från Security Center.
 
 ## <a name="recommended-solution"></a>Rekommenderad lösning
-Eftersom Johanna och Sam har olika roller, kommer de att använda olika områden av Security Center tooobtain relevant information för dagliga aktiviteter. Johanna använder **Säkerhetsaviseringar** som en del av sin dagliga övervakning.
+Eftersom Johanna och Sam har olika roller kommer de att använda olika områden i Security Center till att skaffa relevant information för sitt dagliga arbete. Johanna använder **Säkerhetsaviseringar** som en del av sin dagliga övervakning.
 
 ![Säkerhetsaviseringar](./media/security-center-incident-response/security-center-incident-response-fig3.png)
 
-Johanna använder säkerhetsaviseringar under hello identifiera och bedöm steg. När Johanna har slutförts hello inledande kontrollen kan hon eskalera hello problemet tooSam om det krävs ytterligare undersökning. Nu använder Sam hello information som angavs av Security Center ibland tillsammans med andra datakällor toomove toohello diagnostisera steget.
+Johanna använder säkerhetsaviseringar under identifierings- och utvärderingsstegen. När Johanna har avslutat den inledande utvärderingen kan hon eskalera problemet till Sam om det krävs ytterligare undersökningar. Sam använder nu informationen från Security Center, ibland tillsammans med andra datakällor, för att gå vidare till diagnostiseringsskedet.
 
-## <a name="how-tooimplement-this-solution"></a>Hur tooimplement den här lösningen
-toosee hur du använder Azure Security Center i ett scenario för incidenter, vi gör Johannas hello identifiera och bedöm stegvis, och sedan se Sam har toodiagnose hello problemet.
+## <a name="how-to-implement-this-solution"></a>Hur man implementerar denna lösning
+Om du vill se hur du använder Azure Security Center i ett scenario för incidenthantering, följer vi Johanna i identifierings- och utvärderingsstegen och ser sedan vad Sam gör för att diagnosticera problemet.
 
 ### <a name="detect-and-assess-incident-response-stages"></a>Identifiera och utvärdera stegen vid incidenthantering
-Johanna inloggad toohello Azure-portalen och fungerar i hello Security Center-konsolen. Som en del av sin dagligen övervakningsaktiviteter, igång hon granska högprioriterade aviseringar genom att utföra hello följande steg:
+Johanna har loggat in på Azure Portal arbetar med Security Center-konsolen. Som en del av sin dagliga övervakning har hon börjat granska säkerhetsaviseringar med hög prioritet genom att utföra följande steg:
 
-1. Klicka på hello **säkerhetsaviseringar** panelen och åtkomst hello **säkerhetsaviseringar** bladet.
+1. Klicka på ikonen **Säkerhetsaviseringar** och gå till bladet **Säkerhetsaviseringar**.
     ![Bladet Säkerhetsaviseringar](./media/security-center-incident-response/security-center-incident-response-fig4.png)
 
    > [!NOTE]
-   > Hello syftet med det här scenariot är Jenny pågående tooperform en utvärdering på hello skadliga SQL aktivitet avisering som visas i föregående bild hello.
+   > I det här scenariot ska Johanna utföra en utvärdering av aviseringen om skadlig SQL-aktivitet som visas på bilden ovan.
    >
    >
-2. Klicka på hello **skadliga SQL-aktivitet** varning och granska hello angripna resurser i hello **skadliga SQL-aktivitet** bladet: ![Incident information](./media/security-center-incident-response/security-center-incident-response-fig5.png)
+2. Klicka på den **skadliga SQL-aktivitet** varning och granska angripna resurser i den **skadliga SQL-aktivitet** bladet: ![Incident information](./media/security-center-incident-response/security-center-incident-response-fig5.png)
 
-    I det här bladet Jenny kan anteckna om hello angripna resurser, hur många gånger angrepp har inträffat och när det har upptäckts.
-3. Klicka på hello **angripna resursen** tooobtain mer information om det här angreppet.
+    På det här bladet kan Johanna föra anteckningar om de attackerade resurserna, hur många gånger attacken har utförts och när den upptäcktes.
+3. Klicka på den **attackerade resursen** för att få mer information om angreppet.
 
-När du har läst hello beskrivning finner Jenny att detta inte är ett falsklarm och att hon ska hantera det här fallet tooSam.
+När hon har läst beskrivningen är Johanna övertygad om att detta inte är falskt positivt och att hon bör eskalera fallet till Sam.
 
 ### <a name="diagnose-incident-response-stage"></a>Steget att diagnosticera incidenthantering
-SAM tar emot hello fallet från Jenny och börjar granska hello steg som föreslås i Security Center.
+Sam får ärendet från Johanna och börjar gå igenom de åtgärdssteg som föreslås i Security Center.
 
 ![Livscykel för incidenthantering](./media/security-center-incident-response/security-center-incident-response-fig6.png)
 
 ### <a name="additional-resources"></a>Ytterligare resurser
-hello incidenter team kan också dra nytta av hello [Security Center Power BI](security-center-powerbi.md) kapaciteten toosee olika typer av rapporter. Dessa rapporter kan hjälpa dem under ytterligare undersökning toovisualize, analysera och filtrera rekommendationer och säkerhetsaviseringar. För företag som använder sina säkerhetsinformation och hanteringslösningen för händelse (SIEM) under undersökningen hello, kan de också [integrera Security Center med sitt lösning](security-center-integrating-alerts-with-log-integration.md). Du kan också integrera Azure granskningsloggar och händelser för virtuell dator (VM)-säkerhet med hjälp av hello [Azure logganalys integration verktyget](https://blogs.msdn.microsoft.com/azuresecurity/2016/07/21/microsoft-azure-log-integration-preview/). tooinvestigate en attack, du kan använda den här informationen tillsammans med hello-information som innehåller Security Center.
+Incidentteamet kan också använda funktionen [Security Center Power BI](security-center-powerbi.md) att se olika typer av rapporter. Dessa rapporter kan hjälpa dem under vidare undersökningar, eftersom de ger möjlighet att visualisera, analysera och filtrera rekommendationer och säkerhetsaviseringar. Företag som använder en SIEM-lösning (Security Information and Event Management) vid undersökningen kan även [integrera Security Center tillsammans med lösningen](security-center-integrating-alerts-with-log-integration.md). Azures granskningsloggar och virtuella datorsäkerhetshändelser kan dessutom integreras med [loggintegrationsverktyget i Azure](https://blogs.msdn.microsoft.com/azuresecurity/2016/07/21/microsoft-azure-log-integration-preview/). Den här informationen kan användas tillsammans med den information som tillhandahålls av Security Center när man undersöker ett angrepp.
 
 ## <a name="conclusion"></a>Slutsats
-Montera ett team innan något inträffar är mycket viktigt tooyour organisation och påverkar positivt hur incidenter hanteras. Med hello rätt verktyg toomonitor resurser hjälper den här team tootake korrekt steg tooremediate en säkerhetsincident. Security Center [identifieringsfunktionerna](security-center-detection-capabilities.md) kan hjälpa IT tooquickly svara toosecurity incidenter och åtgärda säkerhetsproblem.
+Att sätta samman ett team innan en incident inträffar är mycket viktigt för organisationen och kommer att påverka hanteringen av incidenter på ett positivt sätt. Om teamet har rätt verktyg för att övervaka resurserna kan de vidta rätt steg för att åtgärda en säkerhetsincident. [Identifieringsfunktioner](security-center-detection-capabilities.md) i Security Center hjälper IT-avdelningen att snabbt agera på säkerhetsincidenter samt åtgärda säkerhetsproblem.

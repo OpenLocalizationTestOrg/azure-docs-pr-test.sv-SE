@@ -1,9 +1,9 @@
 ---
-title: "aaaWhat är Azure Automation | Microsoft Docs"
-description: "Lär dig vilket värde som innehåller Azure Automation och få svar på frågor för toocommon så att du kan komma igång skapas med hjälp av runbooks och Azure Automation DSC."
+title: "Vad är Azure Automation? | Microsoft Docs"
+description: "Lär dig vilket värde Azure Automation tillför och få svar på vanliga frågor så att du snabbt kan komma igång med runbooks och Azure Automation DSC."
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: jwhit
 editor: 
 keywords: "vad är automation, azure automation, azure automation-exempel"
@@ -15,51 +15,51 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/10/2016
 ms.author: magoedte;bwren
-ms.openlocfilehash: 1e5a90e272d6b2beb7b5007e2fea2c110dbd79b1
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: c9f5c346350a62540ba29444b1b00cc9dc398d56
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-automation-overview"></a>Översikt över Azure Automation
-Microsoft Azure Automation är ett sätt för användarna tooautomate hello manuell, långvariga, felbenägna och ofta återkommande uppgifter som utförs ofta i en miljö med molnet och företagets. Det sparar tid och ökar tillförlitligheten hello vanliga administrativa uppgifter och även schemalägger dem toobe automatiskt utföras med jämna mellanrum. Du kan automatisera processer med hjälp av runbooks eller automatisera konfigurationshantering med Desired State Configuration. Den här artikeln innehåller en kort översikt över Azure Automation och ger svar på några vanliga frågor. Mer detaljerad information om hello olika ämnen kan du referera tooother artiklar i det här biblioteket.
+Microsoft Azure Automation gör det möjligt för användare att automatisera manuella, tidskrävande, felbenägna och ofta återkommande uppgifter som är vanliga i molnet och företagsmiljöer. Det sparar tid och ökar tillförlitligheten i vanliga administrativa uppgifter och schemalägger dem även så att de kan utföras automatiskt med jämna mellanrum. Du kan automatisera processer med hjälp av runbooks eller automatisera konfigurationshantering med Desired State Configuration. Den här artikeln innehåller en kort översikt över Azure Automation och ger svar på några vanliga frågor. Du kan referera till andra artiklar i det här biblioteket om du vill ha mer detaljerad information om de olika avsnitten.
 
 ## <a name="automating-processes-with-runbooks"></a>Automatisera processer med runbooks
-En runbook är en uppsättning aktiviteter som utför en automatisk process i Azure Automation. Det kan vara en enkel process som att starta en virtuell dator och skapa en loggpost eller du kan ha en komplex runbook som kombinerar andra mindre runbooks tooperform en komplicerad process över flera resurser eller även flera moln och lokala miljöer.  
+En runbook är en uppsättning aktiviteter som utför en automatisk process i Azure Automation. Det kan vara en enkel process som startar en virtuell dator och skapar en loggpost eller så kanske du har en komplex runbook som kombinerar andra mindre runbooks för att utföra en komplex process över flera resurser eller till och med flera moln och i lokala miljöer.  
 
-Du kan till exempel ha en befintlig manuell process för att trunkera en SQL-databas om den närmar sig maximal storlek som innehåller flera steg, till exempel den anslutande toohello server ansluter toohello databasen, hämta hello aktuella storleken på databasen, kontrollera om Tröskelvärde har överskridits trunkera den och meddela användaren. I stället för att manuellt utföra vart och ett av dessa steg kan du skapa en runbook som utför alla dessa uppgifter som en enda process. Du startar hello runbook, hello krävs information som exempelvis hello SQL-servernamnet, databasnamnet och mottagarens e- och sitta tillbaka medan hello processen har slutförts. 
+Du kanske till exempel har en befintlig manuell process för att trunkera en SQL-databas om den närmar sig den högsta tillåtna storleken som innehåller flera steg, till exempel: anslut till servern, anslut till databasen, hämta databasens aktuella storlek, kontrollera om tröskelvärdet har överskridits, trunkera den och meddela användaren. I stället för att manuellt utföra vart och ett av dessa steg kan du skapa en runbook som utför alla dessa uppgifter som en enda process. Du startar runbooken, anger informationen som krävs, till exempel SQL-servernamnet, databasnamnet och mottagarens e-postadress och lutar dig sedan tillbaka medan processen körs. 
 
 ## <a name="what-can-runbooks-automate"></a>Vad kan runbooks automatisera?
-Eftersom runbooks i Azure Automation baseras på Windows PowerShell eller Windows PowerShell Workflow så kan de göra allt som PowerShell kan. Om ett program eller en tjänst har ett API kan en runbook arbeta med dem. Om du har en PowerShell-modul för hello program, kan du läsa in modulen i Azure Automation och inkluderar dessa cmdletar i din runbook. Azure Automation-runbooks körs i hello Azure-molnet och kan komma åt molnresurser eller externa resurser som kan nås från hello molnet. Med hjälp av [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md), runbooks kan köras i dina lokala data center toomanage lokala resurser. 
+Eftersom runbooks i Azure Automation baseras på Windows PowerShell eller Windows PowerShell Workflow så kan de göra allt som PowerShell kan. Om ett program eller en tjänst har ett API kan en runbook arbeta med dem. Om du har en PowerShell-modul för programmet kan du läsa in modulen i Azure Automation och ta med dessa cmdlets i din runbook. Azure Automation-runbooks körs i Azure-molnet och kan komma åt alla molnresurser eller externa resurser som kan nås från molnet. Med hjälp av [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md) kan runbooks köras i ditt lokala datacenter för att hantera lokala resurser. 
 
-## <a name="getting-runbooks-from-hello-community"></a>Hämtar runbooks från hello-gemenskapen
-Hej [Runbook-galleriet](automation-runbook-gallery.md#runbooks-in-runbook-gallery) innehåller runbooks från Microsoft och hello-community som du kan använda oförändrad i din miljö eller anpassa dem efter egna behov. De är också användbart tooas referenser toolearn hur toocreate egna runbooks. Du kan även bidra med egna runbooks toohello galleriet som du tror att andra användare kan vara användbart. 
+## <a name="getting-runbooks-from-the-community"></a>Hämtar runbooks från communityn
+[Runbook-galleriet](automation-runbook-gallery.md#runbooks-in-runbook-gallery) innehåller runbooks från Microsoft och communityn som du kan använda som de är i din miljö eller anpassa efter behov. De är också användbara som referenser när du lär dig hur du skapar egna runbooks. Du kan även bidra med egna runbooks i galleriet som du tror att andra användare kan ha nytta av. 
 
 ## <a name="creating-runbooks-with-azure-automation"></a>Skapa runbooks med Azure Automation
-Du kan [skapar egna runbooks](automation-creating-importing-runbook.md) från scratch eller ändra runbooks från hello [Runbook-galleriet](http://msdn.microsoft.com/library/azure/dn781422.aspx) för dina egna behov. Det finns fyra olika [runbook-typer](automation-runbook-types.md) som du kan välja mellan beroende på dina krav och din PowerShell-miljö. Om du föredrar toowork direkt med hello PowerShell-kod, så du kan använda en [PowerShell-runbook](automation-runbook-types.md#powershell-runbooks) eller [PowerShell-arbetsflödesrunbook](automation-runbook-types.md#powershell-workflow-runbooks) du redigera offline eller hello [textrepresentation editor](http://msdn.microsoft.com/library/azure/dn879137.aspx) i hello Azure-portalen. Om du föredrar tooedit en runbook utan att exponeras toohello underliggande kod därefter kan du skapa en [grafisk runbook](automation-runbook-types.md#graphical-runbooks) med hello [grafiska redigerare](automation-graphical-authoring-intro.md) i hello Azure-portalen. 
+Du kan [skapa dina egna runbooks](automation-creating-importing-runbook.md) från scratch eller ändra runbooks från [runbook-galleriet](http://msdn.microsoft.com/library/azure/dn781422.aspx) efter dina behov. Det finns fyra olika [runbook-typer](automation-runbook-types.md) som du kan välja mellan beroende på dina krav och din PowerShell-miljö. Om du föredrar att arbeta direkt med PowerShell-koden måste du använda en [PowerShell-runbook](automation-runbook-types.md#powershell-runbooks) eller [PowerShell Workflow-runbook](automation-runbook-types.md#powershell-workflow-runbooks) som du redigerar offline eller med [textredigeraren](http://msdn.microsoft.com/library/azure/dn879137.aspx) på Azure-portalen. Om du vill redigera en runbook utan att arbeta direkt med den underliggande koden kan du skapa en [grafisk runbook](automation-runbook-types.md#graphical-runbooks) med hjälp av den [grafiska redigeraren](automation-graphical-authoring-intro.md) på Azure-portalen. 
 
-Vill titta på tooreading? Ta en titt på hello nedan video från Microsoft Ignite session i maj 2015. Obs: Hello koncept och funktioner som beskrivs i den här videon är korrekt, Azure Automation har nått mycket eftersom den här videon registrerades, nu har en mer omfattande användargränssnitt i hello Azure-portalen och har stöd för ytterligare funktioner.
+Föredrar du att titta eller läsa? Titta på videoklippet nedan från Microsoft Ignite-sessionen i maj 2015. Obs! Begreppen och funktionerna som beskrivs i den här videon är korrekta, men Azure Automation har utvecklats mycket sedan videon spelades in och har nu ett mer omfattande användargränssnitt på Azure-portalen och stöd för fler funktioner.
 
 > [!VIDEO https://channel9.msdn.com/Events/Ignite/2015/BRK3451/player]
 > 
 > 
 
 ## <a name="automating-configuration-management-with-desired-state-configuration"></a>Automatisera konfigurationshanteringen med Desired State Configuration
-[PowerShell DSC](https://technet.microsoft.com/library/dn249912.aspx) är en plattform som gör att du toomanage, distribuera och upprätthålla konfiguration för fysiska värdar och virtuella datorer med en deklarativ PowerShell-syntax. Du kan definiera konfigurationer på en central DSC-hämtningsserver som måldatorer kan hämta och använda automatiskt. DSC tillhandahåller en uppsättning PowerShell-cmdlets som du kan använda toomanage konfigurationer och resurser.  
+[PowerShell DSC](https://technet.microsoft.com/library/dn249912.aspx) är en plattform som hjälper dig att hantera, distribuera och tillämpa konfigurationen för fysiska värdar och virtuella datorer med en deklarativ PowerShell-syntax. Du kan definiera konfigurationer på en central DSC-hämtningsserver som måldatorer kan hämta och använda automatiskt. DSC tillhandahåller en uppsättning PowerShell-cmdlets som du kan använda för att hantera konfigurationer och resurser.  
 
-[Azure Automation DSC](automation-dsc-overview.md) är en molnbaserad lösning för PowerShell DSC som tillhandahåller tjänster som krävs för företagsmiljöer.  Du kan hantera resurser i Azure Automation DSC och använda konfigurationer toovirtual eller fysiska datorer som hämtar dem från en DSC Pull-Server i hello Azure-molnet.  Lösningen innehåller också rapporteringstjänster som informerar dig om viktiga händelser, t.ex. när noder har avvikit från sin tilldelade konfiguration och när en ny konfiguration har tillämpats. 
+[Azure Automation DSC](automation-dsc-overview.md) är en molnbaserad lösning för PowerShell DSC som tillhandahåller tjänster som krävs för företagsmiljöer.  Du kan hantera dina DSC-resurser i Azure Automation och tillämpa konfigurationer på virtuella eller fysiska datorer som hämtar dem från en DSC-hämtningsserver i Azure-molnet.  Lösningen innehåller också rapporteringstjänster som informerar dig om viktiga händelser, t.ex. när noder har avvikit från sin tilldelade konfiguration och när en ny konfiguration har tillämpats. 
 
 ## <a name="creating-your-own-dsc-configurations-with-azure-automation"></a>Skapa dina egna DSC-konfigurationer med Azure Automation
-[DSC-konfigurationer](automation-dsc-overview.md) ange hello önskad tillstånd för en nod.  Flera noder kan tillämpa hello samma konfiguration tooassure alla Underhåll tillståndet identiska.  Du kan skapa en konfiguration med valfri textredigerare på den lokala datorn och sedan importera den till Azure Automation där du kan sammanställa och tillämpa den på noder.
+[DSC-konfigurationer](automation-dsc-overview.md) definierar det önskade tillståndet för en nod.  Flera noder kan använda samma konfiguration så att alla har samma tillstånd.  Du kan skapa en konfiguration med valfri textredigerare på den lokala datorn och sedan importera den till Azure Automation där du kan sammanställa och tillämpa den på noder.
 
 ## <a name="getting-modules-and-configurations"></a>Hämta moduler och konfigurationer
-Du kan hämta [PowerShell-moduler](automation-runbook-gallery.md#modules-in-powershell-gallery) som innehåller cmdletar som du kan använda i dina runbooks och DSC-konfigurationer från hello [PowerShell-galleriet](http://www.powershellgallery.com/). Du kan öppna den här gallery från hello Azure-portalen och importera moduler direkt till Azure Automation du kan hämta och importera dem manuellt Du kan inte installera hello moduler direkt från hello Azure-portalen, men du kan hämta dem installera dem som en annan modul. 
+Du kan hämta [PowerShell-moduler](automation-runbook-gallery.md#modules-in-powershell-gallery) som innehåller cmdlets som du kan använda i dina runbooks och DSC-konfigurationer från [PowerShell-galleriet](http://www.powershellgallery.com/). Du kan starta det här galleriet från Azure-portalen och importera moduler direkt till Azure Automation, eller hämta och importera dem manuellt. Du kan inte installera moduler direkt från Azure-portalen, men du kan hämta dem och installera dem på samma sätt som andra moduler. 
 
 ## <a name="example-practical-applications-of-azure-automation"></a>Exempel på praktiska tillämpningar med Azure Automation
-Följande är några exempel på vad är hello typer av automatiseringsscenarier med Azure Automation. 
+Nedan följer några exempel på olika automatiseringsscenarier med Azure Automation. 
 
 * Skapa och kopiera virtuella datorer i olika Azure-prenumerationer. 
-* Schemalägga att filen kopieras från en lokal dator tooan Azure Blob Storage-behållare. 
+* Schemalägg filkopieringar från en lokal dator till en Azure Blob Storage-behållare. 
 * Automatisera säkerhetsfunktioner, t.ex. funktioner som nekar förfrågningar från en klient när en DoS-attack (Denial of Service) upptäckts. 
 * Se till att datorerna alltid uppfyller kraven i konfigurerade säkerhetsprinciper.
 * Hantera kontinuerlig distribution av programkod i molnet och i den lokala infrastrukturen. 
@@ -67,19 +67,19 @@ Följande är några exempel på vad är hello typer av automatiseringsscenarier
 * Trunkera en tabell i en SQL-databas om databasen närmar sig den största tillåtna storleken. 
 * Fjärruppdatera miljöinställningar för en Azure-webbplats. 
 
-## <a name="how-does-azure-automation-relate-tooother-automation-tools"></a>Hur relaterar tooother verktyg för automatisering av Azure Automation?
-[Service Management Automation (SMA)](http://technet.microsoft.com/library/dn469260.aspx) är avsedda tooautomate hanteringsuppgifter i hello privat moln. Det installeras lokalt i ditt datacenter som en komponent i [Microsoft Azure Pack](https://www.microsoft.com/en-us/server-cloud/). SMA och Azure Automation använder hello samma runbook format baserat på Windows PowerShell och Windows PowerShell-arbetsflöde, men har inte stöd för SMA [grafiska runbook-flöden](automation-graphical-authoring-intro.md).  
+## <a name="how-does-azure-automation-relate-to-other-automation-tools"></a>Hur relaterar Azure Automation till andra automatiseringsverktyg?
+[Service Management Automation (SMA)](http://technet.microsoft.com/library/dn469260.aspx) är avsett att automatisera hanteringsuppgifter i det privata molnet. Det installeras lokalt i ditt datacenter som en komponent i [Microsoft Azure Pack](https://www.microsoft.com/en-us/server-cloud/). SMA och Azure Automation använder samma runbook-format baserat på Windows PowerShell och Windows PowerShell Workflow, men SMA har inte stöd för [grafiska runbooks](automation-graphical-authoring-intro.md).  
 
-[System Center 2012 Orchestrator](http://technet.microsoft.com/library/hh237242.aspx) är avsett för automatisering av lokala resurser. Den använder en annan runbook-format än Azure Automation och Service Management Automation och har ett grafiskt gränssnitt toocreate runbooks utan skript. Dess runbooks består av aktiviteter från integrationspaket som är skrivna specifikt för Orchestrator. 
+[System Center 2012 Orchestrator](http://technet.microsoft.com/library/hh237242.aspx) är avsett för automatisering av lokala resurser. Den använder ett annat runbook-format än Azure Automation och Service Management Automation och har ett grafiskt gränssnitt som gör att du kan skapa runbooks utan att skriva skript. Dess runbooks består av aktiviteter från integrationspaket som är skrivna specifikt för Orchestrator. 
 
 ## <a name="where-can-i-get-more-information"></a>Var hittar jag mer information?
-En mängd resurser är tillgängliga för du toolearn mer om Azure Automation och skapa egna runbooks. 
+Det finns många resurser där du kan lära dig mer om Azure Automation och hur du skapar egna runbooks. 
 
-* **Azure Automation-biblioteket** är där du är just nu. hello artiklar i det här biblioteket innehåller komplett dokumentation på hello konfiguration och administration av Azure Automation och egna runbooks för redigering. 
-* [Azure PowerShell-cmdlets](http://msdn.microsoft.com/library/jj156055.aspx) innehåller information om hur du automatiserar Azure-åtgärder med hjälp av Windows PowerShell. Runbooks använder dessa cmdlets toowork med Azure-resurser. 
-* [Hanteringsbloggen](https://azure.microsoft.com/blog/tag/azure-automation/) innehåller hello senaste information om Azure Automation och andra tekniker för hantering från Microsoft. Du ska prenumerera på toothis blogg toostay in toodate med hello senaste från hello Azure Automation-teamet. 
-* [Automation-Forum](http://go.microsoft.com/fwlink/p/?LinkId=390561) kan du toopost frågor om Azure Automation-toobe som hanteras av Microsoft och hello Automation community. 
-* [Azure Automation-cmdlets](https://msdn.microsoft.com/library/mt244122.aspx) innehåller information om hur du automatiserar administrationsåtgärder. Den innehåller cmdlets toomanage Automation-konton, tillgångar, runbooks, DSC.
+* **Azure Automation-biblioteket** är där du är just nu. Artiklarna i det här biblioteket innehåller komplett dokumentation om hur du konfigurerar och administrerar Azure Automation och hur du skapar egna runbooks. 
+* [Azure PowerShell-cmdlets](http://msdn.microsoft.com/library/jj156055.aspx) innehåller information om hur du automatiserar Azure-åtgärder med hjälp av Windows PowerShell. Runbooks använder dessa cmdlets för att arbeta med Azure-resurser. 
+* [Management-bloggen](https://azure.microsoft.com/blog/tag/azure-automation/) innehåller den senaste informationen om Azure Automation och andra hanteringstekniker från Microsoft. Prenumerera på den här bloggen för att hålla dig uppdaterad om det senaste från Azure Automation-teamet. 
+* Använd [Automation-forumet](http://go.microsoft.com/fwlink/p/?LinkId=390561) för att ställa frågor om Azure Automation som besvaras av Microsoft- och Automation-communityn. 
+* [Azure Automation-cmdlets](https://msdn.microsoft.com/library/mt244122.aspx) innehåller information om hur du automatiserar administrationsåtgärder. Här hittar du cmdlets för att hantera konton, tillgångar, runbooks och DSC för Automation.
 
 ## <a name="can-i-provide-feedback"></a>Kan jag lämna feedback?
 **Vi tar gärna emot din feedback!** Om du letar efter en lösning för Azure Automation-runbooks eller en integreringsmodul kan du publicera en skriptbegäran på Script Center. Om du har feedback eller funktionsönskemål om Azure Automation kan du publicera dem i [User Voice](http://feedback.windowsazure.com/forums/34192--general-feedback). Tack! 

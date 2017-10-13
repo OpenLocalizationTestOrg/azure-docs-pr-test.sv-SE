@@ -1,6 +1,6 @@
 ---
-title: aaaView SAML returnerades av hello Access Control Service (Java)
-description: "Lär dig hur tooview SAML som returneras av hello åtkomstkontrolltjänsten i Java-program finns i Azure."
+title: Visa SAML som returneras av Access Control Service (Java)
+description: "Lär dig hur du visar SAML som returneras av åtkomstkontrolltjänsten i Java-program i Azure."
 services: active-directory
 documentationcenter: java
 author: rmcmurray
@@ -15,40 +15,40 @@ ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
 ms.custom: aaddev
-ms.openlocfilehash: b6733bc98b505cfa89a4ce456f368ee15da11427
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 1552e624a4703138ab82f7133ceaec3dbd04e1db
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="how-tooview-saml-returned-by-hello-azure-access-control-service"></a>Hur tooview SAML returnerades av hello Azure Access Control Service
-Den här guiden visar hur tooview hello underliggande Security Assertion Markup Language (SAML) returnerade tooyour programmet hello Azure Access Control Service (ACS). hello guiden bygger på hello [hur tooAuthenticate webbanvändare med Azure Access Control Service med Eclipse](active-directory-java-authenticate-users-access-control-eclipse.md) avsnittet genom att ange koden som visar hello SAML information. programmet hello slutförts ser liknande toohello följande.
+# <a name="how-to-view-saml-returned-by-the-azure-access-control-service"></a>Så här visar du SAML som returnerats av tjänsten Azure Access Control
+Den här guiden visar hur du visar den underliggande Security Assertion Markup Language (SAML) returneras till ditt program med Azure Access Control Service (ACS). Guiden bygger på den [så Web autentisera användare med Azure Access Control Service med Eclipse](active-directory-java-authenticate-users-access-control-eclipse.md) avsnittet genom att ange koden som visar SAML-information. Det färdiga programmet kommer att se ut ungefär så här.
 
 ![Exempel SAML-utdata][saml_output]
 
-Mer information om ACS finns hello [nästa steg](#next_steps) avsnitt.
+Mer information om ACS finns i [nästa steg](#next_steps) avsnitt.
 
 > [!NOTE]
-> hello Azure Access Control tjänstfilter är en community technology preview. Som förhandsversionen stöds den formellt inte av Microsoft.
+> Azure Access tjänstfilter kontrollen är en community technology preview. Som förhandsversionen stöds den formellt inte av Microsoft.
 > 
 > 
 
 ## <a name="prerequisites"></a>Krav
-toocomplete hello uppgifterna i den här guiden är klar hello exempelprogram på [hur tooAuthenticate webbanvändare med Azure Access Control Service med Eclipse](active-directory-java-authenticate-users-access-control-eclipse.md) och använda den som hello som startpunkt för den här självstudiekursen.
+Om du vill utföra åtgärderna i den här guiden Slutför exemplet på [så Web autentisera användare med Azure Access Control Service med Eclipse](active-directory-java-authenticate-users-access-control-eclipse.md) och använda den som utgångspunkt för den här kursen.
 
-## <a name="add-hello-jspwriter-library-tooyour-build-path-and-deployment-assembly"></a>Lägg till hello JspWriter biblioteket tooyour build sökväg och distribution av sammansättningen
-Lägga till hello bibliotek som innehåller hello **javax.servlet.jsp.JspWriter** klassen tooyour skapa sökvägen och distribution av sammansättningen. Om du använder Tomcat hello biblioteket är **jsp-api.jar**, som finns i hello Apache **lib** mapp.
+## <a name="add-the-jspwriter-library-to-your-build-path-and-deployment-assembly"></a>Lägga till JspWriter bibliotek i sammansättningen build sökväg och distribution
+Lägg till biblioteket som innehåller den **javax.servlet.jsp.JspWriter** klassen för att skapa sökvägen och distribution av sammansättningen. Om du använder Tomcat biblioteket är **jsp-api.jar**, som finns i Apache **lib** mapp.
 
-1. Högerklicka i Eclipses Projektutforskaren **MyACSHelloWorld**, klickar du på **byggsökväg**, klickar du på **konfigurera byggsökväg**, klickar du på hello **bibliotek** fliken och klicka sedan på **lägga till externa JAR: er**.
-2. I hello **JAR markeringen** dialogrutan navigera toohello nödvändiga JAR markerar du det och klickar sedan på **öppna**.
-3. Med hello **egenskaper för MyACSHelloWorld** fortfarande öppna dialogrutan **distribution sammansättningen**.
-4. I hello **Web distribution sammansättningen** dialogrutan klickar du på **Lägg till**.
-5. I hello **nytt sammansättningen direktiv** dialogrutan klickar du på **Java Build Path poster** och klicka sedan på **nästa**.
-6. Välj hello lämpligt bibliotek och klicka på **Slutför**.
-7. Klicka på **OK** tooclose hello **egenskaper för MyACSHelloWorld** dialogrutan.
+1. I Eclipses Projektutforskaren, högerklickar du på **MyACSHelloWorld**, klickar du på **byggsökväg**, klickar du på **konfigurera byggsökväg**, klicka på den **bibliotek** fliken och klicka sedan på **lägga till externa JAR: er**.
+2. I den **JAR markeringen** dialogrutan, navigera till den nödvändiga JAR markerar du den och klicka sedan på **öppna**.
+3. Med den **egenskaper för MyACSHelloWorld** fortfarande öppna dialogrutan **distribution sammansättningen**.
+4. I den **Web distribution sammansättningen** dialogrutan klickar du på **Lägg till**.
+5. I den **nytt sammansättningen direktiv** dialogrutan klickar du på **Java Build Path poster** och klicka sedan på **nästa**.
+6. Välj lämpligt bibliotek och klicka på **Slutför**.
+7. Klicka på **OK** att stänga den **egenskaper för MyACSHelloWorld** dialogrutan.
 
-## <a name="modify-hello-jsp-file-toodisplay-saml"></a>Ändra hello JSP-fil toodisplay SAML
-Ändra **index.jsp** toouse hello följande kod.
+## <a name="modify-the-jsp-file-to-display-saml"></a>Ändra JSP-fil om du vill visa SAML
+Ändra **index.jsp** att använda följande kod.
 
     <%@ page language="java" contentType="text/html; charset=UTF-8"
         pageEncoding="UTF-8"%>
@@ -100,14 +100,14 @@ Lägga till hello bibliotek som innehåller hello **javax.servlet.jsp.JspWriter*
                           if (nChild > 0)
                           {                    
 
-                                 // If it is a text node, just print hello text.
+                                 // If it is a text node, just print the text.
                                  if (list.item(0).getNodeName() == "#text")
                                  {
                                      out.println("Text value: <b>" + list.item(0).getTextContent() + "</b><br>");
                                  }
                                  else
                                  {
-                                     // Print out hello child node names.
+                                     // Print out the child node names.
                                      out.print("Contains " + nChild + " child node(s): ");   
                                         for (i=0; i < nChild; i++)
                                      {
@@ -116,19 +116,19 @@ Lägga till hello bibliotek som innehåller hello **javax.servlet.jsp.JspWriter*
                                         out.print("<b>" + temp.getNodeName() + "</b>");
                                         if (i < nChild - 1)
                                         {
-                                            // Separate hello names.
+                                            // Separate the names.
                                             out.print(", ");
                                         }
                                         else
                                         {
-                                            // Finish hello sentence.
+                                            // Finish the sentence.
                                             out.print(".");
                                         }
 
                                      }
                                      out.println("<br>");
 
-                                     // Process hello child nodes.
+                                     // Process the child nodes.
                                      for (i=0; i < nChild; i++)
                                      {
                                         Node temp = list.item(i);
@@ -162,7 +162,7 @@ Lägga till hello bibliotek som innehåller hello **javax.servlet.jsp.JspWriter*
             doc = docBuilder.parse(in);
             doc.getDocumentElement().normalize();
 
-            // Iterate hello child nodes of hello doc.
+            // Iterate the child nodes of the doc.
             NodeList list = doc.getChildNodes();
 
             for (int i=0; i < list.getLength(); i++)
@@ -180,18 +180,18 @@ Lägga till hello bibliotek som innehåller hello **javax.servlet.jsp.JspWriter*
     </body>
     </html>
 
-## <a name="run-hello-application"></a>Kör programmet hello
-1. Kör ditt program i hello datorn emulator eller distribuera tooAzure, med hello steg som beskrivs i [hur tooAuthenticate webbanvändare med Azure Access Control Service med Eclipse](active-directory-java-authenticate-users-access-control-eclipse.md).
-2. Starta en webbläsare och öppna ditt webbprogram. När du har loggat in tooyour program visas SAML-information, inklusive hello security assertion tillhandahålls av hello identitetsleverantör.
+## <a name="run-the-application"></a>Köra programmet
+1. Kör ditt program i emulatorn dator eller distribuera till Azure med hjälp av stegen som beskrivs i [så Web autentisera användare med Azure Access Control Service med Eclipse](active-directory-java-authenticate-users-access-control-eclipse.md).
+2. Starta en webbläsare och öppna ditt webbprogram. När du loggar in på ditt program, ser du SAML-information, inklusive den security assertion tillhandahållits av identitetsleverantören.
 
 ## <a name="next-steps"></a>Nästa steg
-toofurther utforska Gransknings-och insamlingstjänstens funktioner och tooexperiment med mer avancerade scenarier, se [Access Control Service 2.0][Access Control Service 2.0].
+Utforska att ytterligare funktioner för Gransknings-och insamlingstjänstens och om du vill experimentera med mer avancerade scenarier, se [Access Control Service 2.0][Access Control Service 2.0].
 
 [Prerequisites]: #pre
-[Modify hello JSP file toodisplay SAML]: #modify_jsp
-[Add hello JspWriter library tooyour build path and deployment assembly]: #add_library
-[Run hello application]: #run_application
+[Modify the JSP file to display SAML]: #modify_jsp
+[Add the JspWriter library to your build path and deployment assembly]: #add_library
+[Run the application]: #run_application
 [Next steps]: #next_steps
 [Access Control Service 2.0]: http://go.microsoft.com/fwlink/?LinkID=212360
-[How tooAuthenticate Web Users with Azure Access Control Service Using Eclipse]: active-directory-java-authenticate-users-access-control-eclipse
+[How to Authenticate Web Users with Azure Access Control Service Using Eclipse]: active-directory-java-authenticate-users-access-control-eclipse
 [saml_output]: ./media/active-directory-java-view-saml-returned-by-access-control/SAML_Output.png

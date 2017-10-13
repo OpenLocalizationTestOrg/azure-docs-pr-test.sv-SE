@@ -1,5 +1,5 @@
 ---
-title: "aaaAzure IoT säkerhetsmetoder | Microsoft Docs"
+title: "Azure IoT-säkerhetsmetoder | Microsoft Docs"
 description: "IoT säkerhetsmetoder för att skydda din IoT-infrastruktur. Innehåller rekommendationer för utvecklare, distributörer lösning och lösningen operatörer."
 services: iot-hub
 documentationcenter: 
@@ -14,21 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/03/2017
 ms.author: yurid
-ms.openlocfilehash: 5c71affbf861882e655b824ae7d3bd23f3421d3d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: d922cd972528882a921c8b5a4c5af251fd3e61a4
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 [!INCLUDE [iot-security-best-practices](../../includes/iot-security-best-practices.md)]
 
 ## <a name="see-also"></a>Se även
-toolearn mer om att skydda din IoT-lösningen, se:
+Mer information om hur du skyddar IoT-lösningen finns:
 
 * [IoT-säkerhetsarkitekturen][lnk-security-architecture]
 * [Säkra din IoT-distribution][lnk-security-deployment]
 
-toofurther utforska hello funktionerna i IoT Hub, se:
+Om du vill utforska ytterligare funktionerna i IoT-hubb, se:
 
 * [Simulera en enhet med Azure IoT kant][lnk-iotedge]
 

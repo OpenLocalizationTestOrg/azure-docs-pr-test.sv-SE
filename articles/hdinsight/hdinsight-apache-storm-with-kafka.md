@@ -1,6 +1,6 @@
 ---
-title: "aaaUse Apache Kafka med Storm på HDInsight - Azure | Microsoft Docs"
-description: "Apache Kafka har installerats med Apache Storm på HDInsight. Lär dig hur toowrite tooKafka och läs sedan från den, med hjälp av hello KafkaBolt och KafkaSpout komponenter medföljer Storm. Lär dig också hur toouse hello som framework toodefine och skicka Storm-topologier."
+title: "Använda Apache Kafka med Storm på HDInsight - Azure | Microsoft Docs"
+description: "Apache Kafka har installerats med Apache Storm på HDInsight. Lär dig mer om att skriva till Kafka och läses sedan från den, använder de KafkaBolt och KafkaSpout med Storm. Också lära dig hur du använder som framework att definiera och skicka Storm-topologier."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -15,60 +15,60 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 07/21/2017
 ms.author: larryfr
-ms.openlocfilehash: 95701f51dfdf6f1a859dcde96d7053df4f21701f
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: e8895ef3c11aea48513e4060a20f5f49b11fc961
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="use-apache-kafka-preview-with-storm-on-hdinsight"></a>Använda Apache Kafka (förhandsversion) med Storm på HDInsight
 
-Lär dig hur toouse Apache Storm tooread från och skriva tooApache Kafka. Det här exemplet visar även hur toosave data från en Storm-topologi toohello HDFS-kompatibla filsystemet används av HDInsight.
+Lär dig hur du använder Apache Storm att läsa från och skriva till Apache Kafka. Det här exemplet visar även hur du sparar data från en Storm-topologi till HDFS-kompatibla filsystem som används av HDInsight.
 
 > [!NOTE]
-> hello stegen i det här dokumentet skapa ett Azure-resursgrupp som innehåller både ett Storm på HDInsight och en Kafka på HDInsight-kluster. Dessa kluster finns både i ett Azure Virtual Network, vilket gör att hello Storm-kluster toodirectly kommunicera med hello Kafka klustret.
+> Stegen i det här dokumentet skapa ett Azure-resursgrupp som innehåller både ett Storm på HDInsight och en Kafka på HDInsight-kluster. Dessa kluster finns både i ett Azure Virtual Network, vilket innebär att Storm-klustret kan kommunicera direkt med Kafka kluster.
 > 
-> Kom ihåg toodelete hello kluster tooavoid överdriven avgifter när du är klar med hello steg i det här dokumentet.
+> Kom ihåg att ta bort kluster för att undvika överdriven avgifter när du är klar med steg i det här dokumentet.
 
-## <a name="get-hello-code"></a>Hämta hello kod
+## <a name="get-the-code"></a>Hämta koden
 
-hello koden hello exemplet i det här dokumentet finns på [https://github.com/Azure-Samples/hdinsight-storm-java-kafka](https://github.com/Azure-Samples/hdinsight-storm-java-kafka).
+Koden för exemplet i det här dokumentet finns på [https://github.com/Azure-Samples/hdinsight-storm-java-kafka](https://github.com/Azure-Samples/hdinsight-storm-java-kafka).
 
-toocompile det här projektet du behöver följande konfiguration för din utvecklingsmiljö hello:
+För att kompilera det här projektet, behöver du följande konfiguration för din utvecklingsmiljö:
 
 * [Java JDK 1.8](https://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html) eller högre. HDInsight 3.5 eller högre krävs Java 8.
 
 * [Maven 3.x](https://maven.apache.org/download.cgi)
 
-* En SSH-klient (du behöver hello `ssh` och `scp` kommandon) – information finns i [använda SSH med HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
+* En SSH-klient (du behöver den `ssh` och `scp` kommandon) – information finns i [använda SSH med HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 * En textredigerare eller IDE.
 
-hello kan följande miljövariabler anges när du installerar Java och hello JDK på utvecklingsdatorn. Dock bör du kontrollera att de finns och att de innehåller hello rätt värden för ditt system.
+Följande miljövariabler kan anges när du installerar Java och JDK på utvecklingsdatorn. Dock bör du kontrollera att de finns och att de innehåller rätt värden för ditt system.
 
-* `JAVA_HOME`-måste peka toohello katalog där hello JDK har installerats.
-* `PATH`-bör innehålla hello följande sökvägar:
+* `JAVA_HOME`-måste peka på den katalog där JDK har installerats.
+* `PATH`-bör innehålla följande sökvägar:
   
-    * `JAVA_HOME`(eller motsvarande hello-sökväg).
-    * `JAVA_HOME\bin`(eller motsvarande hello-sökväg).
-    * hello katalog där Maven är installerat.
+    * `JAVA_HOME`(eller motsvarande sökväg).
+    * `JAVA_HOME\bin`(eller motsvarande sökväg).
+    * Den katalog där Maven är installerat.
 
-## <a name="create-hello-clusters"></a>Skapa hello kluster
+## <a name="create-the-clusters"></a>Skapa kluster
 
-Apache Kafka på HDInsight ger inte tillgång toohello Kafka mäklare över hello offentliga internet. Allt som pratar tooKafka måste vara i hello samma virtuella Azure-nätverket som hello noder i hello Kafka klustret. I det här exemplet finns både hello Kafka och Storm-kluster i Azure-nätverk. hello följande diagram visar hur kommunikation som flödar mellan hello kluster:
+Apache Kafka på HDInsight ger inte tillgång till Kafka mäklare via det offentliga internet. Allt som kommunicerar Kafka måste finnas i samma virtuella Azure-nätverket som noder i klustret Kafka. I det här exemplet finns både Kafka och Storm-kluster i Azure-nätverk. Följande diagram visar hur kommunikation som flödar mellan kluster:
 
 ![Diagram över Storm och Kafka kluster i Azure-nätverk](./media/hdinsight-apache-storm-with-kafka/storm-kafka-vnet.png)
 
 > [!NOTE]
-> Andra tjänster på hello klustret hello som SSH- och Ambari kan nås över internet. Mer information om hello offentliga portar som är tillgängliga med HDInsight finns [portar och URI: er som används av HDInsight](hdinsight-hadoop-port-settings-for-services.md).
+> Andra tjänster på klustret, till exempel SSH och Ambari kan nås via internet. Mer information om de offentliga portarna som är tillgängliga med HDInsight finns [portar och URI: er som används av HDInsight](hdinsight-hadoop-port-settings-for-services.md).
 
-Du kan skapa en Azure-nätverk, Kafka, och Storm-kluster manuellt, är det enklare toouse en Azure Resource Manager-mall. Använd hello följande steg toodeploy virtuellt Azure-nätverk, Kafka, och Storm-kluster tooyour Azure-prenumeration.
+Du kan skapa en Azure-nätverk, Kafka, och Storm-kluster manuellt, men det är enklare att använda en Azure Resource Manager-mall. Använd följande steg för att distribuera ett Azure-nätverk, Kafka, och Storm-kluster till Azure-prenumeration.
 
-1. Använd hello efter knappen toosign i tooAzure och öppna hello mallen i hello Azure-portalen.
+1. Använd knappen följande för att logga in på Azure och öppna mallen i Azure-portalen.
    
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-kafka-storm-cluster-in-vnet-v2.json" target="_blank"><img src="./media/hdinsight-apache-storm-with-kafka/deploy-to-azure.png" alt="Deploy tooAzure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-kafka-storm-cluster-in-vnet-v2.json" target="_blank"><img src="./media/hdinsight-apache-storm-with-kafka/deploy-to-azure.png" alt="Deploy to Azure"></a>
    
-    hello Azure Resource Manager-mallen finns på **https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-storm-cluster-in-vnet-v1.json**. Den skapar hello följande resurser:
+    Azure Resource Manager-mallen finns på **https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-storm-cluster-in-vnet-v1.json**. Den skapar följande resurser:
     
     * Azure-resursgrupp
     * Azure Virtual Network
@@ -77,89 +77,89 @@ Du kan skapa en Azure-nätverk, Kafka, och Storm-kluster manuellt, är det enkla
     * Storm på HDInsight version 3,6 (tre arbetarnoder)
 
   > [!WARNING]
-  > tooguarantee tillgängligheten för Kafka på HDInsight, klustret måste innehålla minst tre arbetsnoderna. Den här mallen skapar ett Kafka kluster som innehåller tre arbetsnoderna.
+  > Klustret måste innehålla minst tre arbetsnoder för att garantera tillgängligheten för Kafka i HDInsight. Den här mallen skapar ett Kafka kluster som innehåller tre arbetsnoderna.
 
-2. Använd hello följande riktlinjer toopopulate hello poster på hello **anpassad distribution** bladet:
+2. Använd följande riktlinjer för att fylla posterna på den **anpassad distribution** bladet:
    
     ![HDInsight anpassad distribution](./media/hdinsight-apache-storm-with-kafka/parameters.png)
 
-    * **Resursgruppen**: skapa en grupp eller välj en befintlig. Den här gruppen innehåller hello HDInsight-kluster.
+    * **Resursgruppen**: skapa en grupp eller välj en befintlig. Den här gruppen innehåller HDInsight-klustret.
    
-    * **Plats**: Välj en plats geografiskt nära tooyou.
+    * **Plats**: Välj en plats geografiskt nära dig.
 
-    * **Basera klusternamnet**: det här värdet används som hello huvudnamnet för hello Storm och Kafka kluster. Ange till exempel **hdi** skapar en Storm-kluster med namnet **storm-hdi** och ett Kafka kluster med namnet **kafka hdi**.
+    * **Basera klusternamnet**: det här värdet används som huvudnamnet för Storm och Kafka kluster. Ange till exempel **hdi** skapar en Storm-kluster med namnet **storm-hdi** och ett Kafka kluster med namnet **kafka hdi**.
    
-    * **Klustrets inloggningsnamn**: hello administratörsanvändarnamnet för hello Storm och Kafka kluster.
+    * **Klustrets inloggningsnamn**: admin användarnamn Storm och Kafka kluster.
    
-    * **Klustret inloggningslösenordet**: hello administratörslösenord för hello Storm och Kafka kluster.
+    * **Klustret inloggningslösenordet**: administratörslösenord för Storm och Kafka kluster.
     
-    * **SSH-användarnamn**: hello SSH användaren toocreate för hello Storm och Kafka kluster.
+    * **SSH-användarnamn**: SSH-användare skapa för Storm och Kafka kluster.
     
-    * **SSH-lösenordet**: hello användarlösenord hello SSH för hello Storm och Kafka kluster.
+    * **SSH-lösenordet**: lösenord för SSH-användare för Storm och Kafka kluster.
 
-3. Läs hello **villkor**, och välj sedan **acceptera toohello villkoren ovan**.
+3. Läs den **villkor**, och välj sedan **jag samtycker till villkoren som anges ovan**.
 
-4. Kontrollera slutligen **PIN-kod toodashboard** och välj sedan **inköp**. Det tar cirka 20 minuter toocreate hello kluster.
+4. Kontrollera slutligen **fäst på instrumentpanelen** och välj sedan **inköp**. Det tar ungefär 20 minuter för att skapa kluster.
 
-När du har skapat hello resurser visas hello bladet för resursgruppen hello.
+När resurserna som har skapats visas bladet för resursgruppen.
 
-![Blad för resursgrupp för hello vnet och kluster](./media/hdinsight-apache-storm-with-kafka/groupblade.png)
+![Blad för resursgrupp för virtuella nätverk och kluster](./media/hdinsight-apache-storm-with-kafka/groupblade.png)
 
 > [!IMPORTANT]
-> Observera att hello namnen på hello HDInsight-kluster är **storm-BASENAME** och **kafka BASENAME**, där BASENAME är hello namn du angett toohello mall. Du kan använda dessa namn i senare steg när du ansluter toohello kluster.
+> Lägg märke till att namnen på HDInsight-kluster **storm-BASENAME** och **kafka BASENAME**, där BASENAME är det namn du angav i mallen. Du kan använda dessa namn i senare steg när du ansluter till kluster.
 
-## <a name="understanding-hello-code"></a>Förstå hello kod
+## <a name="understanding-the-code"></a>Förstå koden
 
 Det här projektet innehåller två topologier:
 
-* **KafkaWriter**: definieras av hello **writer.yaml** filen, skriver den här topologin slumpmässiga meningar tooKafka med hello KafkaBolt med Apache Storm.
+* **KafkaWriter**: definieras av den **writer.yaml** filen, den här topologin skriver slumpmässiga meningar till Kafka med KafkaBolt med Apache Storm.
 
-    Den här topologin använder en anpassad **SentenceSpout** komponenten toogenerate slumpmässiga meningar.
+    Den här topologin använder en anpassad **SentenceSpout** komponenten som ska generera en slumpmässig meningar.
 
-* **KafkaReader**: definieras av hello **reader.yaml** filen, den här topologin läser data från Kafka med hello KafkaSpout med Apache Storm och sedan loggar hello data toostdout.
+* **KafkaReader**: definieras av den **reader.yaml** filen, den här topologin läser data från Kafka med KafkaSpout med Apache Storm och sedan loggar data STDOUT.
 
-    Den här topologin använder toodefault för hello Storm HdfsBolt toowrite datalagring för hello Storm-kluster.
+    Den här topologin använder Storm-HdfsBolt för att skriva data till standardlagring för Storm-kluster.
 ### <a name="flux"></a>Som
 
-hello topologier definieras med hjälp av [som](https://storm.apache.org/releases/1.1.0/flux.html). Som introducerades i Storm-0.10.x och låter dig tooseparate hello topologi configuration från hello kod. Topologier som använder hello som framework definieras hello topologi i en YAML-fil. Hej YAML filen kan vara ingår i hello-topologi. Det kan också vara en fristående fil som används när du skickar hello-topologi. Som stöder också variabeln ersättning vid körning, som används i det här exemplet.
+Topologierna definieras med hjälp av [som](https://storm.apache.org/releases/1.1.0/flux.html). Som introducerades i Storm-0.10.x och du kan avgränsa topologi konfigurationen från koden. Topologier som använder ramverket som definieras topologin i en YAML-fil. YAML-filen kan vara ingår i topologin. Det kan också vara en fristående fil som används när du skickar in topologin. Som stöder också variabeln ersättning vid körning, som används i det här exemplet.
 
-hello anges följande parametrar vid körning för dessa topologier:
+Följande parametrar anges vid körning för dessa topologier:
 
-* `${kafka.topic}`: hello namnet på hello Kafka avsnitt som hello topologier läsning och skrivning till.
+* `${kafka.topic}`: Namnet på avsnittet Kafka som den topologier läsning och skrivning till.
 
-* `${kafka.broker.hosts}`: hello värd att hello Kafka förmedlar körs på. hello broker informationen används av hello KafkaBolt när du skriver tooKafka.
+* `${kafka.broker.hosts}`: De värdar som Kafka förmedlar köras på. Service broker-informationen används av KafkaBolt vid skrivning till Kafka.
 
-* `${kafka.zookeeper.hosts}`: hello-värdar som Zookeeper körs på i hello Kafka klustret.
+* `${kafka.zookeeper.hosts}`: De värdar som Zookeeper körs på i Kafka-klustret.
 
 Mer information om topologier som finns [https://storm.apache.org/releases/1.1.0/flux.html](https://storm.apache.org/releases/1.1.0/flux.html).
 
-## <a name="download-and-compile-hello-project"></a>Hämta och kompilera hello-projekt
+## <a name="download-and-compile-the-project"></a>Hämta och kompileras projektet
 
-1. Hämta hello projektet från på din utvecklingsmiljö [https://github.com/Azure-Samples/hdinsight-storm-java-kafka](https://github.com/Azure-Samples/hdinsight-storm-java-kafka), öppna en kommandorad och ändra kataloger toohello plats som du hämtade hello-projekt.
+1. Hämta projektet från på din utvecklingsmiljö [https://github.com/Azure-Samples/hdinsight-storm-java-kafka](https://github.com/Azure-Samples/hdinsight-storm-java-kafka), öppna en kommandorad och ändra kataloger till platsen som du hämtade projektet.
 
-2. Från hello **hdinsight-storm-java-kafka** katalog, Använd hello följande kommando toocompile hello projekt och skapa ett paket för distribution:
+2. Från den **hdinsight-storm-java-kafka** directory, Använd följande kommando för att kompilera projektet och skapa ett paket för distribution:
 
   ```bash
   mvn clean package
   ```
 
-    hello paketet skapas en fil med namnet `KafkaTopology-1.0-SNAPSHOT.jar` i hello `target` directory.
+    Paketet skapas en fil med namnet `KafkaTopology-1.0-SNAPSHOT.jar` i den `target` directory.
 
-3. Använd hello följande kommandon toocopy hello paketet tooyour Storm på HDInsight-kluster. Ersätt **användarnamn** med hello SSH-användarnamn för hello-kluster. Ersätt **BASENAME** med grundläggande hello-namn du använde när du skapar hello kluster.
+3. Använd följande kommandon för att kopiera paketet till ditt Storm på HDInsight-kluster. Ersätt **användarnamn** med SSH-användarnamn för klustret. Ersätt **BASENAME** med det grundläggande namnet som du använde när du skapar klustret.
 
   ```bash
   scp ./target/KafkaTopology-1.0-SNAPSHOT.jar USERNAME@storm-BASENAME-ssh.azurehdinsight.net:KafkaTopology-1.0-SNAPSHOT.jar
   ```
 
-    När du uppmanas ange hello-lösenord som du använde när du skapar hello kluster.
+    När du uppmanas, ange lösenordet som du använde när du skapar kluster.
 
-## <a name="configure-hello-topology"></a>Konfigurera hello-topologi
+## <a name="configure-the-topology"></a>Konfigurera topologin
 
-1. Använd någon av följande metoder toodiscover hello hello Kafka broker värdar:
+1. Använd någon av följande metoder för att identifiera Kafka broker värdar:
 
     ```powershell
-    $creds = Get-Credential -UserName "admin" -Message "Enter hello HDInsight login"
-    $clusterName = Read-Host -Prompt "Enter hello Kafka cluster name"
+    $creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"
+    $clusterName = Read-Host -Prompt "Enter the Kafka cluster name"
     $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/KAFKA/components/KAFKA_BROKER" `
         -Credential $creds
     $respObj = ConvertFrom-Json $resp.Content
@@ -172,20 +172,20 @@ Mer information om topologier som finns [https://storm.apache.org/releases/1.1.0
     ```
 
     > [!IMPORTANT]
-    > hello Bash exempel förutsätter att `$CLUSTERNAME` innehåller hello namnet på hello HDInsight-kluster. Det förutsätts även att som [jq](https://stedolan.github.io/jq/) är installerad. När du uppmanas du ange hello lösenord för hello inloggningskonto för klustret.
+    > Bash-exemplet förutsätter att `$CLUSTERNAME` innehåller namnet på HDInsight-klustret. Det förutsätts även att som [jq](https://stedolan.github.io/jq/) är installerad. När du uppmanas, ange lösenordet för inloggningskontot för klustret.
 
-    hello-värdet som returneras är liknande toohello följande text:
+    Det värde som returneras liknar följande:
 
         wn0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092,wn1-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092
 
     > [!IMPORTANT]
-    > Det kan finnas fler än två broker värdar för klustret, behöver du inte tooprovide en fullständig lista över alla värdar tooclients. En eller två är tillräckligt.
+    > Det kan finnas fler än två broker värdar för klustret, behöver du inte ange en fullständig lista över alla värdar till klienter. En eller två är tillräckligt.
 
-2. Använd någon av följande metoder toodiscover hello Kafka Zookeeper värdar hello:
+2. Använd någon av följande metoder för att identifiera Kafka Zookeeper-värdar:
 
     ```powershell
-    $creds = Get-Credential -UserName "admin" -Message "Enter hello HDInsight login"
-    $clusterName = Read-Host -Prompt "Enter hello Kafka cluster name"
+    $creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"
+    $clusterName = Read-Host -Prompt "Enter the Kafka cluster name"
     $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/ZOOKEEPER/components/ZOOKEEPER_SERVER" `
         -Credential $creds
     $respObj = ConvertFrom-Json $resp.Content
@@ -198,146 +198,146 @@ Mer information om topologier som finns [https://storm.apache.org/releases/1.1.0
     ```
 
     > [!IMPORTANT]
-    > hello Bash exempel förutsätter att `$CLUSTERNAME` innehåller hello namnet på hello HDInsight-kluster. Det förutsätts även att som [jq](https://stedolan.github.io/jq/) är installerad. När du uppmanas du ange hello lösenord för hello inloggningskonto för klustret.
+    > Bash-exemplet förutsätter att `$CLUSTERNAME` innehåller namnet på HDInsight-klustret. Det förutsätts även att som [jq](https://stedolan.github.io/jq/) är installerad. När du uppmanas, ange lösenordet för inloggningskontot för klustret.
 
-    hello-värdet som returneras är liknande toohello följande text:
+    Det värde som returneras liknar följande:
 
         zk0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181,zk2-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181
 
     > [!IMPORTANT]
-    > Det finns fler än två Zookeeper-noder, behöver du inte tooprovide en fullständig lista över alla värdar tooclients. En eller två är tillräckligt.
+    > Det finns fler än två Zookeeper-noder, behöver du inte ange en fullständig lista över alla värdar till klienter. En eller två är tillräckligt.
 
     Spara det här värdet eftersom det används senare.
 
-3. Redigera hello `dev.properties` filen i projektet hello hello rot. Lägg till hello Broker och Zookeeper värdar information toohello matchande rader i den här filen. hello konfigureras följande exempel med hjälp av hello exempelvärden från hello föregående steg:
+3. Redigera den `dev.properties` filen i roten av projektet. Lägga till den Service Broker och Zookeeper värdar i matchande rader i den här filen. I följande exempel konfigureras med hjälp av exempelvärden från föregående steg:
 
         kafka.zookeeper.hosts: zk0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181,zk2-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181
         kafka.broker.hosts: wn0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092,wn1-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092
         kafka.topic: stormtopic
 
-4. Spara hello `dev.properties` fil och sedan använda hello följande kommando tooupload den toohello Storm-kluster:
+4. Spara den `dev.properties` filen och sedan använda följande kommando för att överföra den till Storm-kluster:
 
      ```bash
     scp dev.properties USERNAME@storm-BASENAME-ssh.azurehdinsight.net:KafkaTopology-1.0-SNAPSHOT.jar
     ```
 
-    Ersätt **användarnamn** med hello SSH-användarnamn för hello-kluster. Ersätt **BASENAME** med grundläggande hello-namn du använde när du skapar hello kluster.
+    Ersätt **användarnamn** med SSH-användarnamn för klustret. Ersätt **BASENAME** med det grundläggande namnet som du använde när du skapar klustret.
 
-## <a name="start-hello-writer"></a>Starta hello skrivare
+## <a name="start-the-writer"></a>Starta skrivaren
 
-1. Använd följande tooconnect toohello Storm-kluster med SSH hello. Ersätt **användarnamn** med hello SSH-användarnamn används när du skapar hello kluster. Ersätt **BASENAME** med hello basnamn används när du skapar hello kluster.
+1. Använd följande för att ansluta till Storm-kluster med SSH. Ersätt **användarnamn** med SSH-användarnamn som används när du skapar klustret. Ersätt **BASENAME** med det grundläggande namnet som används när du skapar klustret.
 
   ```bash
   ssh USERNAME@storm-BASENAME-ssh.azurehdinsight.net
   ```
 
-    När du uppmanas ange hello-lösenord som du använde när du skapar hello kluster.
+    När du uppmanas, ange lösenordet som du använde när du skapar kluster.
    
     Mer information finns i [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md) (Använda SSH med HDInsight).
 
-2. Från hello SSH-anslutning, använder du följande kommando toocreate hello Kafka avsnittet används av hello topologi hello:
+2. Använder du följande kommando från SSH-anslutning för att skapa avsnittet Kafka används av topologi:
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 3 --partitions 8 --topic stormtopic --zookeeper $KAFKAZKHOSTS
     ```
 
-    Ersätt `$KAFKAZKHOSTS` med hello Zookeeper värd för information som du hämtade i hello föregående avsnitt.
+    Ersätt `$KAFKAZKHOSTS` med Zookeeper värd för information som du hämtade i föregående avsnitt.
 
-2. Använd hello efter kommandot toostart hello writer topologi från hello SSH-anslutning toohello Storm-kluster:
+2. Från SSH-anslutning till Storm-kluster använder du följande kommando för att starta writer topologi:
 
     ```bash
     storm jar KafkaTopology-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --remote -R /writer.yaml --filter dev.properties
     ```
 
-    hello-parametrar som används med det här kommandot är:
+    De parametrar som används med det här kommandot är:
 
-    * `org.apache.storm.flux.Flux`: Använd som tooconfigure och kör den här topologin.
+    * `org.apache.storm.flux.Flux`: Använd som du konfigurerar och kör den här topologin.
 
-    * `--remote`: Skicka hello topologi tooNimbus. hello topologi distribueras över hello arbetarnoder i klustret hello.
+    * `--remote`: Skicka topologi och Nimbus. Topologi distribueras över arbetarnoder i klustret.
 
-    * `-R /writer.yaml`: Använd hello `writer.yaml` filen tooconfigure hello-topologi. `-R`Anger att den här resursen ingår i hello jar-filen. Det är i hello jar hello rot så `/writer.yaml` är hello sökvägen tooit.
+    * `-R /writer.yaml`: Använd den `writer.yaml` filen om du vill konfigurera topologin. `-R`Anger att den här resursen ingår i jar-filen. Det är i roten av jar så `/writer.yaml` är sökvägen till den.
 
-    * `--filter`: Fylla poster i hello `writer.yaml` topologi med värden i hello `dev.properties` fil. Till exempel hello värdet för hello `kafka.topic` post i hello-filen är används tooreplace hello `${kafka.topic}` post i hello topologi definition.
+    * `--filter`: Fylla poster i den `writer.yaml` topologi med värdena i den `dev.properties` filen. Exempelvis värdet för den `kafka.topic` post i filen används för att ersätta den `${kafka.topic}` post i topologin definition.
 
-5. När hello-topologi har börjat använda hello efter kommandot tooverify att skrivs data toohello Kafka avsnittet:
+5. När topologin har börjat använder du följande kommando för att kontrollera att den data skrivs till avsnittet Kafka:
 
   ```bash
   /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --zookeeper $KAFKAZKHOSTS --from-beginning --topic stormtopic
   ```
 
-    Ersätt `$KAFKAZKHOSTS` med hello Zookeeper värd för information som du hämtade i hello föregående avsnitt.
+    Ersätt `$KAFKAZKHOSTS` med Zookeeper värd för information som du hämtade i föregående avsnitt.
 
-    Detta kommando använder ett skript som medföljer Kafka toomonitor hello avsnittet. Efter ett tag och bör börja returnera slumpmässiga meningar som har skrivits toohello avsnittet. hello utdata är liknande toohello följande exempel:
+    Det här kommandot använder ett skript som medföljer Kafka för att övervaka avsnittet. Efter ett tag och bör börja returnera slumpmässiga meningar som har skrivits till ämnet. Utdata ser ut ungefär så här:
 
         i am at two with nature             
-        an apple a day keeps hello doctor away
-        snow white and hello seven dwarfs     
-        hello cow jumped over hello moon        
-        an apple a day keeps hello doctor away
-        an apple a day keeps hello doctor away
-        hello cow jumped over hello moon        
-        an apple a day keeps hello doctor away
-        an apple a day keeps hello doctor away
+        an apple a day keeps the doctor away
+        snow white and the seven dwarfs     
+        the cow jumped over the moon        
+        an apple a day keeps the doctor away
+        an apple a day keeps the doctor away
+        the cow jumped over the moon        
+        an apple a day keeps the doctor away
+        an apple a day keeps the doctor away
         four score and seven years ago      
-        snow white and hello seven dwarfs     
-        snow white and hello seven dwarfs     
+        snow white and the seven dwarfs     
+        snow white and the seven dwarfs     
         i am at two with nature             
-        an apple a day keeps hello doctor away
+        an apple a day keeps the doctor away
 
-    Tryck på Ctrl + c toostop hello skript.
+    Använd Ctrl + c för att stoppa skriptet.
 
-## <a name="start-hello-reader"></a>Starta hello läsare
+## <a name="start-the-reader"></a>Starta läsaren
 
-1. Använd hello efter kommandot toostart hello reader topologi från hello SSH-session toohello Storm-kluster:
+1. Från SSH-session till Storm-kluster använder du följande kommando för att starta reader-topologi:
 
   ```bash
   storm jar KafkaTopology-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --remote -R /reader.yaml --filter dev.properties
   ```
 
-2. När hello topologi startar öppna hello Storm-Användargränssnittet. Den här webbgränssnittet finns i https://storm-BASENAME.azurehdinsight.net/stormui. Ersätt __BASENAME__ med hello basnamn används när hello klustret har skapats. 
+2. När topologin startar öppna Storm-Användargränssnittet. Den här webbgränssnittet finns i https://storm-BASENAME.azurehdinsight.net/stormui. Ersätt __BASENAME__ med det grundläggande namnet som används när klustret skapades. 
 
-    Vid uppmaning används hello admin inloggningsnamnet (standard `admin`) och lösenord som används när hello klustret har skapats. Du ser en webbsida liknande toohello följande bild:
+    När du uppmanas, Använd inloggningsnamnet admin (standard `admin`) och lösenord som används när klustret skapades. Du ser en webbsida som liknar följande bild:
 
     ![Storm UI](./media/hdinsight-apache-storm-with-kafka/stormui.png)
 
-3. Hello Storm-Användargränssnittet, Välj hello __kafka läsare__ länken i hello __Topology Summary__ avsnittet toodisplay information om hello __kafka läsare__ topologi.
+3. Storm-Användargränssnittet, Välj den __kafka läsare__ länken i den __Topology Summary__ avsnitt för att visa information om den __kafka läsare__ topologi.
 
-    ![Topologi sammanfattningen i hello Storm webbgränssnittet](./media/hdinsight-apache-storm-with-kafka/topology-summary.png)
+    ![Topologi sammanfattningen i Storm webbgränssnittet](./media/hdinsight-apache-storm-with-kafka/topology-summary.png)
 
-4. toodisplay information om hello instanser av hello loggaren bult komponent, Välj hello __loggaren bult__ länken i hello __bultar (hela tiden)__ avsnitt.
+4. Om du vill visa information om instanser av komponenten loggaren bult, Välj den __loggaren bult__ länken i den __bultar (hela tiden)__ avsnitt.
 
-    ![Loggaren bult länk under hello bultar](./media/hdinsight-apache-storm-with-kafka/bolts.png)
+    ![Loggaren bult länk i avsnittet bultar](./media/hdinsight-apache-storm-with-kafka/bolts.png)
 
-5. I hello __Executors__ väljer du en länk i hello __Port__ kolumnen toodisplay logga information om den här instansen av hello-komponent.
+5. I den __Executors__ väljer du en länk i den __Port__ kolumn som ska visas logga information om den här instansen av komponenten.
 
     ![Executors länk](./media/hdinsight-apache-storm-with-kafka/executors.png)
 
-    hello-loggen innehåller en logg över hello data läses från hello Kafka avsnittet. hello information i loggen för hello är liknande toohello följande text:
+    Loggen innehåller en logg över data läses från avsnittet Kafka. Informationen i loggen liknar följande:
 
         2016-11-04 17:47:14.907 c.m.e.LoggerBolt [INFO] Received data: four score and seven years ago
-        2016-11-04 17:47:14.907 STDIO [INFO] hello cow jumped over hello moon
-        2016-11-04 17:47:14.908 c.m.e.LoggerBolt [INFO] Received data: hello cow jumped over hello moon
-        2016-11-04 17:47:14.911 STDIO [INFO] snow white and hello seven dwarfs
-        2016-11-04 17:47:14.911 c.m.e.LoggerBolt [INFO] Received data: snow white and hello seven dwarfs
-        2016-11-04 17:47:14.932 STDIO [INFO] snow white and hello seven dwarfs
-        2016-11-04 17:47:14.932 c.m.e.LoggerBolt [INFO] Received data: snow white and hello seven dwarfs
-        2016-11-04 17:47:14.969 STDIO [INFO] an apple a day keeps hello doctor away
-        2016-11-04 17:47:14.970 c.m.e.LoggerBolt [INFO] Received data: an apple a day keeps hello doctor away
+        2016-11-04 17:47:14.907 STDIO [INFO] the cow jumped over the moon
+        2016-11-04 17:47:14.908 c.m.e.LoggerBolt [INFO] Received data: the cow jumped over the moon
+        2016-11-04 17:47:14.911 STDIO [INFO] snow white and the seven dwarfs
+        2016-11-04 17:47:14.911 c.m.e.LoggerBolt [INFO] Received data: snow white and the seven dwarfs
+        2016-11-04 17:47:14.932 STDIO [INFO] snow white and the seven dwarfs
+        2016-11-04 17:47:14.932 c.m.e.LoggerBolt [INFO] Received data: snow white and the seven dwarfs
+        2016-11-04 17:47:14.969 STDIO [INFO] an apple a day keeps the doctor away
+        2016-11-04 17:47:14.970 c.m.e.LoggerBolt [INFO] Received data: an apple a day keeps the doctor away
 
-## <a name="stop-hello-topologies"></a>Stoppa hello topologier
+## <a name="stop-the-topologies"></a>Stoppa topologierna
 
-Från en SSH-session toohello Storm-kluster, använder du följande kommandon toostop hello Storm-topologier hello:
+Använd följande kommandon från en SSH-session till Storm-kluster för att stoppa Storm-topologier:
 
   ```bash
   storm kill kafka-writer
   storm kill kafka-reader
   ```
 
-## <a name="delete-hello-cluster"></a>Ta bort hello kluster
+## <a name="delete-the-cluster"></a>Ta bort klustret
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-Eftersom hello stegen i det här dokumentet skapa båda klustren i hello samma Azure-resursgrupp, kan du ta bort hello resursgrupp i hello Azure-portalen. Ta bort hello resursgruppen tar bort alla resurser som har skapats genom att följa det här dokumentet.
+Eftersom stegen i det här dokumentet skapa båda klustren i samma Azure resursgrupp måste du ta bort resursgruppen i Azure-portalen. Ta bort resursgruppen tar bort alla resurser som har skapats genom att följa det här dokumentet.
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure IoT Hub-dokumentation – självstudier, API-referens | Microsoft Docs"
-description: "Lär dig hur toouse IoT-hubb tooconnect, övervaka och kontrollera miljarder Sakernas Internet tillgångar. Självstudier, API-referenser, videor och annan dokumentation."
+title: "Dokumentation om Azure IoT Hub – Självstudier, API-referens | Microsoft Docs"
+description: "Lär dig hur du använder IoT Hub för att ansluta, övervaka och styra miljontals Sakernas Internet-resurser. Självstudier, API-referenser, videor och annan dokumentation."
 services: iot-hub
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: b4d9e66dad55417cff6b9252379cf7265fb542fb
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 270d1aec5855ee3bb9cc121526d311ab78d989c9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="iot-hub-documentation"></a>Dokumentation om IoT Hub 
 
-Lär dig hur toouse IoT-hubb tooconnect, övervaka och kontrollera miljarder Sakernas Internet tillgångar. Självstudier, API-referenser, videor och annan dokumentation hjälper dig att distribuera tillförlitlig och dubbelriktad kommunikation mellan IoT-enheter och en lösnings serverdel. 
+Lär dig hur du använder IoT Hub för att ansluta, övervaka och styra miljontals Sakernas Internet-resurser. Självstudier, API-referenser, videor och annan dokumentation hjälper dig att distribuera tillförlitlig och dubbelriktad kommunikation mellan IoT-enheter och en lösnings serverdel. 
 
 <ul class="panelContent cardsFTitle">
      <li>
@@ -106,7 +106,7 @@ Lär dig hur toouse IoT-hubb tooconnect, övervaka och kontrollera miljarder Sak
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Utvecklarhandbok för Läs hello</h3>
+                        <h3>Läs utvecklarguiden</h3>
                     </div>
                 </div>
             </div>

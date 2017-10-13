@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure Notification Hubs-dokumentation – självstudier, API-referens | Microsoft Docs"
-description: "Lär dig hur toosend push-meddelanden från alla backend tooany mobila enheter med Notification Hubs. Självstudier, API-referenser och annan dokumentation."
+title: "Dokumentation om Azure Notification Hubs – Självstudier, API-referens | Microsoft Docs"
+description: "Lär dig hur du skickar push-meddelanden från alla serverdelar till alla mobila enheter med Notification Hubs. Självstudier, API-referenser och annan dokumentation."
 services: notification-hubs
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 050c70c32f50eb495cd53a6bfa5549d6ae189d89
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: f7b8560d4ce7374e36d5f7e8a5d2056396e4f089
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 #<a name="notification-hubs-documentation"></a>Dokumentation för Notification Hubs
 
-Lär dig hur toouse Meddelandehubbar ett flera plattformar, skalbara push-meddelande motorn för att snabbt skicka miljontals meddelanden. Självstudier, API-referenserna och andra dokumentationen visar hur tooset in och skicka push-meddelanden från alla backend tooany mobila enheter. 
+Lär dig hur du använder Notification Hubs, en skalbar push-meddelandemotor för flera plattformar, för att snabbt kunna skicka miljontals meddelanden. Självstudier, API-referenser och annan dokumentation som visar hur du konfigurerar och skickar push-meddelanden från alla serverdelar till alla mobila enheter. 
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -70,7 +70,7 @@ Lär dig hur toouse Meddelandehubbar ett flera plattformar, skalbara push-meddel
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Komma igång med att skicka push-meddelanden tooAndroid (FCM) med Azure Notification Hubs</h3>
+                        <h3>Kom igång med att skicka push-meddelanden till Android (FCM) med Azure Notification Hubs</h3>
                     </div>
                 </div>
             </div>
@@ -88,7 +88,7 @@ Lär dig hur toouse Meddelandehubbar ett flera plattformar, skalbara push-meddel
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Kom igång med Notification Hub genom att använda Baidu</h3>
+                        <h3>Kom igång med Notification Hubs genom att använda Baidu</h3>
                     </div>
                 </div>
             </div>
@@ -106,7 +106,7 @@ Lär dig hur toouse Meddelandehubbar ett flera plattformar, skalbara push-meddel
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Komma igång med att skicka push-meddelanden tooChrome appar med Azure Notification Hubs</h3>
+                        <h3>Kom igång med att skicka push-meddelanden till Chrome-appar med Azure Notification Hubs</h3>
                     </div>
                 </div>
             </div>
@@ -124,7 +124,7 @@ Lär dig hur toouse Meddelandehubbar ett flera plattformar, skalbara push-meddel
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Komma igång med att skicka push-meddelanden tooiOS med Azure Notification Hubs</h3>
+                        <h3>Kom igång med att skicka push-meddelanden till iOS med Azure Notification Hubs</h3>
                     </div>
                 </div>
             </div>

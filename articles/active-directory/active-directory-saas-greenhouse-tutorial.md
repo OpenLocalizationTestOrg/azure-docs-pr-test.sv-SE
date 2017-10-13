@@ -1,6 +1,6 @@
 ---
 title: "Självstudier: Azure Active Directory-integrering med växthusgaser | Microsoft Docs"
-description: "Lär dig hur tooconfigure enkel inloggning mellan Azure Active Directory och växthusgaser."
+description: "Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och växthusgaser."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,167 +14,167 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.openlocfilehash: 1a7cdd00c4f2b15a1afc89522d79af22f4c5d866
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: d3aba4aab8ded8749db2bf8197f57a6763008c60
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-greenhouse"></a>Självstudier: Azure Active Directory-integrering med växthusgaser
 
-I kursen får du lära dig hur toointegrate växthusgaser med Azure Active Directory (AD Azure).
+I kursen får lära du att integrera växthusgaser med Azure Active Directory (AD Azure).
 
-Integrera växthusgaser med Azure AD ger dig hello följande fördelar:
+Integrera växthusgaser med Azure AD ger dig följande fördelar:
 
-- Du kan styra i Azure AD som har åtkomst till tooGreenhouse.
-- Du kan låta dina användare tooautomatically get inloggade tooGreenhouse (Single Sign-On) med sina Azure AD-konton.
-- Du kan hantera dina konton i en central plats - hello Azure-portalen.
+- Du kan styra i Azure AD som har åtkomst till växthusgaser.
+- Du kan aktivera användarna att automatiskt hämta loggat in på växthusgaser (Single Sign-On) med sina Azure AD-konton.
+- Du kan hantera dina konton i en central plats - Azure-portalen.
 
-Om du vill tooknow mer information om integrering av SaaS-app med Azure AD, se [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Om du vill veta mer information om integrering av SaaS-app med Azure AD finns [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Krav
 
-tooconfigure Azure AD-integrering med växthusgaser måste hello följande objekt:
+För att konfigurera Azure AD-integrering med växthusgaser, behöver du följande:
 
 - En Azure AD-prenumeration
 - En växthusgaser enkel inloggning aktiverad prenumeration
 
 > [!NOTE]
-> tootest hello stegen i den här självstudiekursen, rekommenderas inte med hjälp av en produktionsmiljö.
+> Om du vill testa stegen i den här kursen rekommenderar vi inte med hjälp av en produktionsmiljö.
 
-tootest hello steg i den här självstudiekursen, bör du följa dessa rekommendationer:
+Om du vill testa stegen i den här självstudiekursen, bör du följa dessa rekommendationer:
 
 - Använd inte i produktionsmiljön, om det är nödvändigt.
 - Om du inte har en utvärderingsversion Azure AD-miljö kan du [hämta en utvärderingsversion för en månad](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Scenariobeskrivning
-I kursen får testa du Azure AD enkel inloggning i en testmiljö. hello-scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
+I kursen får testa du Azure AD enkel inloggning i en testmiljö. Det scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
 
-1. Att lägga till växthusgaser från hello-galleriet
+1. Att lägga till växthusgaser från galleriet
 2. Konfigurera och testa Azure AD enkel inloggning
 
-## <a name="adding-greenhouse-from-hello-gallery"></a>Att lägga till växthusgaser från hello-galleriet
-tooconfigure hello-integrering världens Azure AD, behöver du tooadd växthusgaser hello galleriet tooyour listan över hanterade SaaS-appar.
+## <a name="adding-greenhouse-from-the-gallery"></a>Att lägga till växthusgaser från galleriet
+Du måste lägga till växthusgaser från galleriet i listan över hanterade SaaS-appar för att konfigurera integrering världens i Azure AD.
 
-**tooadd växthusgaser från galleriet hello utför hello följande steg:**
+**Utför följande steg för att lägga till växthusgaser från galleriet:**
 
-1. I hello  **[Azure-portalen](https://portal.azure.com)**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon. 
+1. I den  **[Azure-portalen](https://portal.azure.com)**, klicka på den vänstra navigeringspanelen **Azure Active Directory** ikon. 
 
-    ![hello Azure Active Directory-knappen][1]
+    ![Azure Active Directory-knappen][1]
 
-2. Navigera för**företagsprogram**. Gå sedan för**alla program**.
+2. Gå till **företagsprogram**. Gå till **alla program**.
 
-    ![hello Enterprise program bladet][2]
+    ![Bladet Enterprise program][2]
     
-3. tooadd nya program, klickar du på **nytt program** hello längst upp i dialogrutan.
+3. Om du vill lägga till nya programmet, klickar du på **nytt program** knappen överst i dialogrutan.
 
-    ![hello-knappen för nytt program][3]
+    ![Knappen Nytt program][3]
 
-4. Skriv i sökrutan hello **växthusgaser**väljer **växthusgaser** resultatet-panelen klickar **Lägg till** knappen tooadd hello program.
+4. I sökrutan skriver **växthusgaser**väljer **växthusgaser** resultatet-panelen klickar **Lägg till** för att lägga till programmet.
 
-    ![Växthusgaser i hello resultatlistan](./media/active-directory-saas-greenhouse-tutorial/tutorial_greenhouse_addfromgallery.png)
+    ![Växthusgaser i resultatlistan](./media/active-directory-saas-greenhouse-tutorial/tutorial_greenhouse_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa Azure AD enkel inloggning
 
 I det här avsnittet kan du konfigurera och testa Azure AD enkel inloggning med växthusgaser baserat på en testanvändare som kallas ”Britta Simon”.
 
-För enkel inloggning toowork måste Azure AD tooknow vilka hello motsvarighet användaren i växthusgaser är tooa i Azure AD. Med andra ord måste en länk relationen mellan en Azure AD-användare och hello relaterade användare i växthusgaser toobe upprättas.
+Azure AD måste du känna till användaren i växthusgaser motsvarighet till en användare i Azure AD för enkel inloggning ska fungera. Med andra ord måste en länk förhållandet mellan en Azure AD-användare och relaterade användaren i växthusgaser upprättas.
 
-I växthus, tilldela hello värdet för hello **användarnamn** i Azure AD som hello värde för hello **användarnamn** tooestablish hello länken relationen.
+I växthus, tilldela värdet för den **användarnamn** i Azure AD som värde för den **användarnamn** etablera länken relationen.
 
-tooconfigure och testa Azure AD enkel inloggning med växthusgaser, behöver du toocomplete hello följande byggblock:
+Om du vill konfigurera och testa Azure AD enkel inloggning med växthusgaser, måste du utföra följande byggblock:
 
-1. **[Konfigurera Azure AD enkel inloggning](#configure-azure-ad-single-sign-on)**  -tooenable användare-toouse den här funktionen.
-2. **[Skapa en Azure AD-testanvändare](#create-an-azure-ad-test-user)**  -tootest Azure AD enkel inloggning med Britta Simon.
-3. **[Skapa en testanvändare växthusgaser](#create-a-greenhouse-test-user)**  -toohave en motsvarighet för Britta Simon i växthusgaser som är länkade toohello Azure AD-representation av användaren.
-4. **[Tilldela hello Azure AD-testanvändare](#assign-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD enkel inloggning.
-5. **[Testa enkel inloggning](#test-single-sign-on)**  -tooverify hello om konfigurationen fungerar.
+1. **[Konfigurera Azure AD enkel inloggning](#configure-azure-ad-single-sign-on)**  - om du vill att användarna kan använda den här funktionen.
+2. **[Skapa en Azure AD-testanvändare](#create-an-azure-ad-test-user)**  - om du vill testa Azure AD enkel inloggning med Britta Simon.
+3. **[Skapa en testanvändare växthusgaser](#create-a-greenhouse-test-user)**  – har en motsvarighet för Britta Simon växthusgaser som är kopplad till Azure AD-representation av användaren.
+4. **[Tilldela Azure AD-testanvändare](#assign-the-azure-ad-test-user)**  - om du vill aktivera Britta Simon att använda Azure AD enkel inloggning.
+5. **[Testa enkel inloggning](#test-single-sign-on)**  - om du vill kontrollera om konfigurationen fungerar.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurera Azure AD enkel inloggning
 
-I det här avsnittet Aktivera Azure AD enkel inloggning i hello Azure-portalen och konfigurera enkel inloggning i tillämpningsprogrammet växthusgaser.
+I det här avsnittet Aktivera Azure AD enkel inloggning i Azure-portalen och konfigurera enkel inloggning i tillämpningsprogrammet växthusgaser.
 
-**Utför följande steg hello tooconfigure Azure AD enkel inloggning med växthusgaser:**
+**Utför följande steg för att konfigurera Azure AD enkel inloggning med växthusgaser:**
 
-1. I hello Azure-portalen på hello **växthusgaser** integreringssidan för programmet, klickar du på **enkel inloggning**.
+1. I Azure-portalen på den **växthusgaser** integreringssidan för programmet, klickar du på **enkel inloggning**.
 
     ![Konfigurera enkel inloggning länk][4]
 
-2. På hello **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** tooenable enkel inloggning.
+2. På den **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** att aktivera enkel inloggning.
  
     ![Enkel inloggning dialogrutan](./media/active-directory-saas-greenhouse-tutorial/tutorial_greenhouse_samlbase.png)
 
-3. På hello **växthusgaser domän och URL: er** avsnittet, utföra hello följande steg:
+3. På den **växthusgaser domän och URL: er** avsnittet, utför följande steg:
 
     ![URL: er och växthusgaser domän med enkel inloggning information](./media/active-directory-saas-greenhouse-tutorial/tutorial_greenhouse_url.png)
 
-    a. I hello **inloggnings-URL** textruta, ange ett URL-Adressen med hello följer mönstret:`https://<companyname>.greenhouse.io`
+    a. I den **inloggnings-URL** textruta Skriv en URL med följande mönster:`https://<companyname>.greenhouse.io`
 
-    b. I hello **identifierare** textruta, ange ett URL-Adressen med hello följer mönstret:`https://<companyname>.greenhouse.io`
+    b. I den **identifierare** textruta Skriv en URL med följande mönster:`https://<companyname>.greenhouse.io`
 
     > [!NOTE] 
-    > Dessa värden är inte verkliga. Uppdatera dessa värden med hello faktiska inloggnings-URL och identifierare. Kontakta [växthusgaser klienten supportteamet](https://www.greenhouse.io/contact) tooget dessa värden. 
+    > Dessa värden är inte verkliga. Uppdatera dessa värden med den faktiska inloggnings-URL och identifierare. Kontakta [växthusgaser klienten supportteamet](https://www.greenhouse.io/contact) att hämta dessa värden. 
  
 
 
-4. På hello **SAML-signeringscertifikat** klickar du på **XML-Metadata för** och spara sedan hello metadata på datorn.
+4. På den **SAML-signeringscertifikat** klickar du på **XML-Metadata för** och spara sedan metadatafilen på datorn.
 
-    ![länk för hämtning av hello-certifikat](./media/active-directory-saas-greenhouse-tutorial/tutorial_greenhouse_certificate.png) 
+    ![Länken hämta certifikatet](./media/active-directory-saas-greenhouse-tutorial/tutorial_greenhouse_certificate.png) 
 
 5. Klicka på **spara** knappen.
 
     ![Konfigurera enkel inloggning spara](./media/active-directory-saas-greenhouse-tutorial/tutorial_general_400.png)
 
-6. tooconfigure enkel inloggning på **växthusgaser** sida, behöver du toosend hello hämtas **XML-Metadata för** för[växthusgaser supportteamet](http://www.greenhouse.io/contact).
+6. Konfigurera enkel inloggning på **växthusgaser** sida, måste du skicka den hämtade **XML-Metadata för** till [växthusgaser supportteamet](http://www.greenhouse.io/contact).
 
 > [!TIP]
-> Du kan nu läsa en kortare version av dessa anvisningar i hello [Azure-portalen](https://portal.azure.com), medan du ställer in hello appen!  När du lägger till den här appen från hello **Active Directory > företagsprogram** avsnittet, klicka bara på hello **enkel inloggning** flik och åtkomst hello inbäddade dokumentationen via hello  **Konfigurationen** avsnittet längst ned hello. Du kan läsa mer om hello inbäddade dokumentationen funktionen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Du kan nu läsa en kortare version av instruktionerna i den [Azure-portalen](https://portal.azure.com), medan du installerar appen!  När du lägger till den här appen från den **Active Directory > företagsprogram** avsnittet, klickar du på den **enkel inloggning** fliken och få åtkomst till den inbäddade dokumentationen via den **Configuration** avsnittet längst ned. Du kan läsa mer om funktionen inbäddade dokumentationen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Skapa en testanvändare i Azure AD
 
-hello syftet med det här avsnittet är toocreate en testanvändare i hello Azure-portalen kallas Britta Simon.
+Syftet med det här avsnittet är att skapa en testanvändare i Azure-portalen kallas Britta Simon.
 
    ![Skapa en testanvändare i Azure AD][100]
 
-**toocreate en testanvändare i Azure AD kan utföra hello följande steg:**
+**Utför följande steg för att skapa en testanvändare i Azure AD:**
 
-1. Klicka på hello i hello Azure-portalen hello vänster **Azure Active Directory** knappen.
+1. I Azure-portalen i den vänstra rutan klickar du på den **Azure Active Directory** knappen.
 
-    ![hello Azure Active Directory-knappen](./media/active-directory-saas-greenhouse-tutorial/create_aaduser_01.png)
+    ![Azure Active Directory-knappen](./media/active-directory-saas-greenhouse-tutorial/create_aaduser_01.png)
 
-2. toodisplay hello lista över användare, gå för**användare och grupper**, och klicka sedan på **alla användare**.
+2. Om du vill visa en lista över användare, gå till **användare och grupper**, och klicka sedan på **alla användare**.
 
-    ![Hej ”användare och grupper” och ”alla användare” länkar](./media/active-directory-saas-greenhouse-tutorial/create_aaduser_02.png)
+    ![”Användare och grupper” och ”alla användare” länkar](./media/active-directory-saas-greenhouse-tutorial/create_aaduser_02.png)
 
-3. tooopen hello **användare** dialogrutan klickar du på **Lägg till** hello överst i hello **alla användare** dialogrutan.
+3. Öppna den **användare** dialogrutan klickar du på **Lägg till** överst i den **alla användare** dialogrutan.
 
-    ![hello webbinställningar](./media/active-directory-saas-greenhouse-tutorial/create_aaduser_03.png)
+    ![Knappen Lägg till](./media/active-directory-saas-greenhouse-tutorial/create_aaduser_03.png)
 
-4. I hello **användaren** dialogrutan utför hello följande steg:
+4. I den **användaren** dialogrutan utför följande steg:
 
-    ![hello användardialogrutan](./media/active-directory-saas-greenhouse-tutorial/create_aaduser_04.png)
+    ![Dialogrutan användare](./media/active-directory-saas-greenhouse-tutorial/create_aaduser_04.png)
 
-    a. I hello **namn** skriver **BrittaSimon**.
+    a. I den **namn** skriver **BrittaSimon**.
 
-    b. I hello **användarnamn** rutan typen hello användarens e-postadress Britta Simon.
+    b. I den **användarnamn** Skriv användarens Britta Simon e-postadress.
 
-    c. Välj hello **visa lösenordet** kryssrutan och sedan skriva ned hello-värde som visas i hello **lösenord** rutan.
+    c. Välj den **visa lösenordet** kryssrutan och sedan skriva ned det värde som visas i den **lösenord** rutan.
 
     d. Klicka på **Skapa**.
  
 ### <a name="create-a-greenhouse-test-user"></a>Skapa en testanvändare växthusgaser
 
-I ordning tooenable Azure AD-användare toolog till växthusgaser, måste de etableras i växthusgaser. I fallet hello världens är etablering en manuell aktivitet.
+För att aktivera Azure AD-användare att logga in på växthusgaser etableras de i växthusgaser. När det gäller växthusgaser är etablering en manuell aktivitet.
 
 >[!NOTE]
->Du kan använda något annat växthusgaser användarens konto skapas verktyg eller API: er som tillhandahålls av växthusgaser tooprovision AAD användarkonton. 
+>Du kan använda något annat växthusgaser användarens konto skapas verktyg eller API: er som tillhandahålls av växthusgaser etablera AAD-användarkonton. 
 
-**tooprovision användarkonton, utföra hello följande steg:**
+**Utför följande steg för att etablera en användarkonton:**
 
-1. Logga in tooyour **växthusgaser** företagets webbplats som administratör.
+1. Logga in på ditt **växthusgaser** företagets webbplats som administratör.
 
-2. Hello-menyn överst hello **konfigurera**, och klicka sedan på **användare**.
+2. Klicka på menyn högst upp **konfigurera**, och klicka sedan på **användare**.
    
    ![Användare](./media/active-directory-saas-greenhouse-tutorial/ic790791.png "användare")
 
@@ -182,42 +182,42 @@ I ordning tooenable Azure AD-användare toolog till växthusgaser, måste de eta
    
    ![Ny användare](./media/active-directory-saas-greenhouse-tutorial/ic790792.png "ny användare")
 
-4. I hello **Lägg till nya användare** avsnittet, utföra hello följande steg:
+4. I den **Lägg till nya användare** avsnittet, utför följande steg:
    
    ![Lägga till nya användare](./media/active-directory-saas-greenhouse-tutorial/ic790793.png "lägga till nya användare")
 
-   a. I hello **ange användarens e-postmeddelanden** textruta typen hello e-postadress för ett giltigt Azure Active Directory-konto som du vill tooprovision.
+   a. I den **ange användarens e-postmeddelanden** textruta, ange ett giltigt Azure Active Directory-konto som du vill etablera e-postadress.
 
    b. Klicka på **Spara**.    
    
       >[!NOTE]
-      >hello Azure Active Directory-konto innehavare får ett e-postmeddelande inklusive en länk tooconfirm hello innan den aktiveras.
+      >Azure Active Directory-konto innehavare får ett e-postmeddelande med en länk för att bekräfta kontot innan den aktiveras.
 
-### <a name="assign-hello-azure-ad-test-user"></a>Tilldela användare hello Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändare
 
-I det här avsnittet kan aktivera du Britta Simon toouse Azure enkel inloggning genom att bevilja åtkomst tooGreenhouse.
+I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inloggning genom att bevilja åtkomst till växthusgaser.
 
-![Tilldela hello användarroll][200] 
+![Tilldela rollen][200] 
 
-**tooassign Britta Simon tooGreenhouse utför hello följande steg:**
+**Om du vill tilldela växthusgaser Britta Simon utför du följande steg:**
 
-1. I hello Azure-portalen, öppna hello program visa och navigera toohello directory vy och gå för**företagsprogram** Klicka **alla program**.
+1. Öppna vyn program i Azure-portalen och gå till vyn directory och gå till **företagsprogram** Klicka **alla program**.
 
     ![Tilldela användare][201] 
 
-2. Välj i listan med program hello **växthusgaser**.
+2. Välj i listan med program **växthusgaser**.
 
-    ![hello växthusgaser länken i listan med program hello](./media/active-directory-saas-greenhouse-tutorial/tutorial_greenhouse_app.png)  
+    ![Länken växthusgaser i listan med program](./media/active-directory-saas-greenhouse-tutorial/tutorial_greenhouse_app.png)  
 
-3. Hello-menyn hello vänster **användare och grupper**.
+3. Klicka på menyn till vänster **användare och grupper**.
 
-    ![Hej ”användare och grupper” länk][202]
+    ![Länken ”användare och grupper”][202]
 
 4. Klicka på **Lägg till** knappen. Välj sedan **användare och grupper** på **Lägg uppdrag** dialogrutan.
 
-    ![hello Lägg uppdrag fönstret][203]
+    ![Fönstret Lägg till tilldelning][203]
 
-5. På **användare och grupper** markerar **Britta Simon** i hello användarlistan.
+5. På **användare och grupper** markerar **Britta Simon** på listan användare.
 
 6. Klicka på **Välj** knappen på **användare och grupper** dialogrutan.
 
@@ -225,14 +225,14 @@ I det här avsnittet kan aktivera du Britta Simon toouse Azure enkel inloggning 
     
 ### <a name="test-single-sign-on"></a>Testa enkel inloggning
 
-I det här avsnittet kan testa du Azure AD enkel inloggning konfigurationen med hello åtkomstpanelen.
+I det här avsnittet kan du testa Azure AD enkel inloggning konfigurationen med hjälp av panelen åtkomst.
 
-Du bör få automatiskt inloggade tooyour växthusgaser programmet när du klickar på hello växthusgaser panelen i hello åtkomstpanelen.
-Läs mer om hello åtkomstpanelen [introduktion toohello åtkomstpanelen](active-directory-saas-access-panel-introduction.md).
+När du klickar på panelen växthusgaser på åtkomstpanelen du bör få automatiskt loggat in på ditt växthusgaser program.
+Läs mer om åtkomstpanelen [introduktion till åtkomstpanelen](active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-* [Lista över självstudier om hur tooIntegrate SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Vad är programåtkomst och enkel inloggning med Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->

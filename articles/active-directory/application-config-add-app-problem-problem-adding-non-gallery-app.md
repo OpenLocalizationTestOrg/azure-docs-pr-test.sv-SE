@@ -1,6 +1,6 @@
 ---
-title: "aaaProblem lägga till en icke-galleriet program | Microsoft Docs"
-description: "Förstå hello vanliga problem personer yta när du lägger till anpassade program för icke-galleriet"
+title: "Problem att lägga till en icke-galleriet program | Microsoft Docs"
+description: "Förstå de vanliga problem personer står inför när du lägger till anpassade program för icke-galleriet"
 services: active-directory
 documentationcenter: 
 author: ajamess
@@ -13,117 +13,117 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: cfe9b657ae18cbacaddbd85658471a2c57c9cf95
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: bb3fc7877f4e7cafc3904fc67abd87b897874d8a
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="problem-adding-a-non-gallery-application"></a>Problem att lägga till en icke-galleriet program
 
-Den här artikeln hjälper dig toounderstand hello vanliga problem personer står inför när du lägger till **anpassade program för icke-galleriet** och vad du kan göra tooresolve dem. 
+Den här artikeln hjälper dig att förstå de vanliga problem personer står inför när du lägger till **anpassade program för icke-galleriet** och vad du kan göra för att lösa problemen. 
 
-## <a name="i-clicked-hello-add-button-and-my-application-took-a-long-time-tooappear"></a>Klickade hello ”Lägg till”-knappen och mitt program tog en lång tid tooappear
+## <a name="i-clicked-the-add-button-and-my-application-took-a-long-time-to-appear"></a>Jag har klickat på knappen ”Lägg till” och mitt program tog lång tid ska visas
 
-I vissa fall kan det ta 1 till 2 minuter (och ibland längre) för ett program tooappear har lagt till tooyour directory. Även om detta inte är hello normal prestanda ser hello programmet tillägg pågår genom att klicka på hello **meddelanden** ikonen (hello bell) i hello övre högra hörnet på hello [Azure Portal](https://portal.azure.com/)och letar efter en **pågår** eller **slutförd** meddelande med etiketten **skapa program**.
+I vissa fall kan det ta 1 till 2 minuter (och ibland längre) för ett program ska visas när du lägger till den i din katalog. Även om detta inte är normal prestanda ser programmet tillägg pågår genom att klicka på den **meddelanden** ikonen (sal) i övre högra hörnet på den [Azure Portal](https://portal.azure.com/) och letar efter en **pågår** eller **slutförd** meddelande med etiketten **skapa program**.
 
-Om programmet aldrig har lagts till, eller om det uppstår ett fel när du klickar på hello **Lägg till** knappen, visas en **meddelande** i en **fel** tillstånd. Om du vill veta mer om hello fel toolearn mer tooor dela med en stöd engingeer du kan se mer information om hello felet genom att följa stegen hello i hello [hur toosee hello information om en portalmeddelandet](#how-to-see-the-details-of-a-portal-notification) avsnitt.
+Om ditt program aldrig har lagts till, eller det uppstår ett fel när du klickar på den **Lägg till** knappen, visas en **meddelande** i en **fel** tillstånd. Om du vill ha mer information om felet för att lära dig mer om hur du eller dela med en stöd engingeer visas mer information om felet genom att följa stegen i den [så visas detaljerad information om en portalmeddelandet](#how-to-see-the-details-of-a-portal-notification) avsnitt.
 
-## <a name="i-clicked-hello-add-button-and-my-application-didnt-appear"></a>Klickade hello ”Lägg till”-knappen och mitt program visas inte
+## <a name="i-clicked-the-add-button-and-my-application-didnt-appear"></a>Jag har klickat på knappen ”Lägg till” och mitt program visas inte
 
-Ibland på grund av problem med tootransient nätverksproblem eller ett programfel kan lägga till ett program misslyckas. Du kan se detta händer när du klickar på hello **meddelanden** ikon (hello bell) i hello övre högra hörnet av hello Azure Portal och du ser ett rött (!) ikonen nästa tooyour **skapa program** meddelande. Detta anger att ett fel uppstod när du skapar hello program.
+Ibland på grund av temporära problem nätverksproblem eller ett programfel kan lägga till ett program misslyckas. Du ser detta händer när du klickar på den **meddelanden** ikonen (sal) i övre högra hörnet i Azure Portal och du ser ikonen red (!) bredvid ditt **skapa program** meddelande. Detta anger att ett fel uppstod när du skapar programmet.
 
-Om det uppstår ett fel när du klickar på hello **Lägg till** knappen, visas en **meddelande** i en **fel** tillstånd. Om du vill veta mer om hello fel toolearn mer tooor dela med en stöd engingeer du kan se mer information om hello felet genom att följa stegen hello i hello [hur toosee hello information om en portalmeddelandet](#how-to-see-the-details-of-a-portal-notification) avsnitt.
+Om det uppstår ett fel när du klickar på den **Lägg till** knappen, visas en **meddelande** i en **fel** tillstånd. Om du vill ha mer information om felet för att lära dig mer om hur du eller dela med en stöd engingeer visas mer information om felet genom att följa stegen i den [så visas detaljerad information om en portalmeddelandet](#how-to-see-the-details-of-a-portal-notification) avsnitt.
 
-## <a name="i-dont-know-how-tooset-up-my-application-once-ive-added-it"></a>Jag vet inte hur tooset in Mina program när jag har lagt till den
+## <a name="i-dont-know-how-to-set-up-my-application-once-ive-added-it"></a>Jag vet inte hur du ställer in Mina program när jag har lagt till
 
-Om du behöver hjälp med Lär dig mer om anpassade program hello [dokumentbibliotek för Azure AD-program](https://docs.microsoft.com/azure/active-directory/active-directory-apps-index) toolearn mer om enkel inloggning med Azure AD och hur det fungerar.
+Om du behöver hjälp med att lära dig om anpassade program i [dokumentbibliotek för Azure AD-program](https://docs.microsoft.com/azure/active-directory/active-directory-apps-index) hjälper dig att lära dig mer om enkel inloggning med Azure AD och hur det fungerar.
 
-## <a name="how-toosee-hello-details-of-a-portal-notification"></a>Hur toosee hello information om ett meddelande om portal
+## <a name="how-to-see-the-details-of-a-portal-notification"></a>Hur du visar information om ett meddelande om portal
 
-Du kan se hello information om eventuella portalmeddelandet genom att följa hello stegen nedan:
+Du kan se information om eventuella portalmeddelandet genom att följa stegen nedan:
 
-1.  Klicka på hello **meddelanden** ikon (hello bell) i hello övre högra hörnet av hello Azure-portalen
+1.  Klicka på den **meddelanden** ikonen (sal) i övre högra hörnet i Azure Portal
 
-2.  Markera alla meddelanden i en **fel** tillstånd (de med en röd (!) nästa toothem).
+2.  Markera alla meddelanden i en **fel** tillstånd (de med ett rött (!) bredvid dem).
 
    >[!NOTE]
    >Du kan klicka på meddelanden i en **lyckade** eller **pågår** tillstånd.
    >
    >
 
-3.  Den här öppna hello **detaljer** bladet.
+3.  Den här öppna den **detaljer** bladet.
 
-4.  Använd den här informationen själv toounderstand mer information om hello problem.
+4.  Använd den här informationen dig att förstå mer information om problemet.
 
-5.  Om du fortfarande behöver hjälp kan också dela informationen med en stöd tekniker eller hello grupp tooget produkthjälp med ditt problem.
+5.  Om du fortfarande behöver hjälp kan du också dela informationen med en supporttekniker eller produktgruppen för att få hjälp med problemet.
 
-6.  Klicka på hello **kopiera-ikonen** toohello höger i hello **Kopieringsfel** textruta toocopy alla hello meddelande information tooshare med en support eller produkt grupp tekniker.
+6.  Klicka på den **kopiera-ikonen** till höger om den **Kopieringsfel** textruta för att kopiera meddelande allt delar med en support eller produkt grupp tekniker.
 
-## <a name="how-tooget-help-by-sending-notification-details-tooa-support-engineer"></a>Hur tooget genom att skicka meddelande information tooa supportteknikern
+## <a name="how-to-get-help-by-sending-notification-details-to-a-support-engineer"></a>Få hjälp genom att skicka meddelandeinformation till en supporttekniker
 
-Det är mycket viktigt att du dela **alla hello information som visas nedan** med en supporttekniker om du behöver hjälp, så att de kan hjälpa dig snabbt. Du kan göra det enkelt av **tar en skärmbild** eller genom att klicka på hello **kopiera felikonen**, hitta toohello höger om hello **Kopieringsfel** textruta.
+Det är mycket viktigt att du dela **allt som anges nedan** med en supporttekniker om du behöver hjälp, så att de kan hjälpa dig snabbt. Du kan göra det enkelt av **tar en skärmbild** eller genom att klicka på den **kopiera felikonen**, hittade till höger om den **Kopieringsfel** textruta.
 
 ## <a name="notification-details-explained"></a>Meddelandeinformation förklaras
 
-hello nedan förklaras mer vad varje hello avisering artiklar innebär och ger exempel på var och en av dem.
+Den nedan beskrivs mer vad varje av meddelandet objekt innebär och innehåller exempel på var och en av dem.
 
 ### <a name="essential-notification-items"></a>Viktigt meddelande objekt
 
--   **Rubrik** – hello beskrivande rubrik av hello-meddelande
+-   **Rubrik** – beskrivande rubrik i meddelandet
    *  Exempel – **Application proxy-inställningar**
 
--   **Beskrivning** – hello beskrivning av vad som hänt på grund av hello åtgärden
+-   **Beskrivning** – beskrivning av vad som hänt på grund av åtgärden
 
    *  Exempel – **intern url har angett används redan av ett annat program**
 
--   **Meddelande-Id** – hello unikt id för hello-meddelande
+-   **Meddelande-Id** – unikt id för meddelandet
 
    *  Exempel – **clientNotification-2adbfc06-2073-4678-a69f-7eb78d96b068**
 
--   **Id för klientbegäran** – hello specifik begäran-id som din webbläsare
+-   **Id för klientbegäran** – specifik begäran-id som din webbläsare
 
    *  Exempel – **302fd775-3329-4670-a9f3-bea37004f0bc**
 
--   **Tid UTC stämpel** – hello tidsstämpeln då uppstod hello-meddelande i UTC
+-   **Tid UTC stämpel** – tidsstämpeln då uppstod meddelandet i UTC
 
    *  Exempel – **2017-03-23T19:50:43.7583681Z**
 
--   **Internt transaktions-Id** – hello internt ID vi kan använda toolook hello fel i vårt system
+-   **Internt transaktions-Id** – internt ID vi kan använda för att söka av fel i vårt system
 
    *  Exempel – **71a2f329-ca29-402f-aa72-bc00a7aca603**
 
--   **UPN** – hello-användaren som utförde åtgärden hello
+-   **UPN** – användaren som utförde åtgärden
 
    *  Exempel –**tperkins@f128.info**
 
--   **Klient-Id** – hello unikt ID för hello-klient som hello användaren som utförde åtgärden hello var medlem av
+-   **Klient-Id** – unikt ID för den klient som användaren som utförde åtgärden var medlem av
 
    *  Exempel – **7918d4b5-0442-4a97-be2d-36f9f9962ece**
 
--   **Användarobjektet Id** – hello unikt ID för hello-användaren som utförde åtgärden hello
+-   **Användarobjektet Id** – unikt ID för den användare som utförde åtgärden
 
  *  Exempel – **17f84be4-51f8-483a-b533-383791227a99**
 
 ### <a name="detailed-notification-items"></a>Detaljerat meddelande objekt
 
--   **Visningsnamn** – **(kan vara tom)** en mer detaljerad visningsnamn för hello-fel
+-   **Visningsnamn** – **(kan vara tom)** en mer detaljerad visningsnamn efter fel
 
   *  Exempel – **Application proxy-inställningar**
 
--   **Status för** – hello viss status av hello-meddelande
+-   **Status för** – specifika status för meddelandet
 
    *  Exempel – **misslyckades**
 
--   **Objekt-Id** – **(kan vara tom)** hello mot vilken hello åtgärden utfördes objekt-ID
+-   **Objekt-Id** – **(kan vara tom)** objekt-ID som åtgärden utfördes
 
    *  Exempel – **8e08161d-f2fd-40ad-a34a-a9632d6bb599**
 
--   **Information om** – hello detaljerad beskrivning av vad som hänt på grund av hello åtgärden
+-   **Information om** – detaljerad beskrivning av vad som hänt på grund av åtgärden
 
    *  Exempel – **intern url 'http://bing.com/' är ogiltig eftersom den redan används**
 
--   **Kopiera fel** – Klicka på hello **kopiera-ikonen** toohello höger i hello **Kopieringsfel** textruta toocopy alla hello meddelande information tooshare med en support eller produkt grupp tekniker
+-   **Kopiera fel** – klickar du på den **kopiera-ikonen** till höger om den **Kopieringsfel** textruta för att kopiera meddelande allt delar med en support eller produkt grupp tekniker
 
    *  Exempel```{"errorCode":"InternalUrl\_Duplicate","localizedErrorDetails":{"errorDetail":"Internal url 'http://google.com/' is invalid since it is already in use"},"operationResults":\[{"objectId":null,"displayName":null,"status":0,"details":"Internal url 'http://bing.com/' is invalid since it is already in use"}\],"timeStampUtc":"2017-03-23T19:50:26.465743Z","clientRequestId":"302fd775-3329-4670-a9f3-bea37004f0bb","internalTransactionId":"ea5b5475-03b9-4f08-8e95-bbb11289ab65","upn":"tperkins@f128.info","tenantId":"7918d4b5-0442-4a97-be2d-36f9f9962ece","userObjectId":"17f84be4-51f8-483a-b533-383791227a99"}```
 

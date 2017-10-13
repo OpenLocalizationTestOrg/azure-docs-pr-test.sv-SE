@@ -1,5 +1,5 @@
 ---
-title: aaaJava web app analytics med Azure Application Insights | Microsoft Docs
+title: Analysera Java-webbappar med Azure Application Insights | Microsoft Docs
 description: "Övervakning av programprestanda för Java-webbappar med Application Insights. "
 services: application-insights
 documentationcenter: java
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/14/2017
 ms.author: bwren
-ms.openlocfilehash: 6555ee53a44f937350e4fa296080f7dce4f45226
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: f017b8ca42ff3560e17d8aac303a4f834d298540
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Komma igång med Application Insights i ett Java-webbprojekt
 
 
-[Application Insights](https://azure.microsoft.com/services/application-insights/) är en utökningsbar analytics-tjänsten för webbutvecklare som hjälper dig att förstå hello prestanda och användning av tillämpningsprogrammet live. Använd den för[identifiera och diagnostisera prestandaproblem och undantag](app-insights-detect-triage-diagnose.md), och [skriva kod] [ api] tootrack vad användare göra med din app.
+[Application Insights](https://azure.microsoft.com/services/application-insights/) är en utökningsbar analystjänst för webbutvecklare som hjälper dig att förstå prestanda och användningen av ditt liveprogram. Tjänsten hjälper dig att [identifiera och diagnostisera prestandaproblem och undantag](app-insights-detect-triage-diagnose.md) samt att [skriva kod][api] för att se vad användarna gör med din app.
 
 ![exempeldata](./media/app-insights-java-get-started/5-results.png)
 
@@ -31,29 +31,29 @@ Application Insights har stöd för Java-appar som körs på Linux, Unix eller W
 Du behöver:
 
 * Oracle JRE 1.6 eller senare eller Zulu JRE 1.6 eller senare
-* En prenumeration för[Microsoft Azure](https://azure.microsoft.com/).
+* En prenumeration på [Microsoft Azure](https://azure.microsoft.com/).
 
-*Om du har ett webbprogram som redan är live, du kan följa hello alternativa proceduren för[lägga till hello SDK vid körning i hello webbserver](app-insights-java-live.md). Det alternativt undviker att återskapa hello koden, men du får inte hello alternativet toowrite kod tootrack användaraktivitet.*
+*Om du har en webbapp som redan är aktiv kan du följa den alternativa proceduren [för att lägga till SDK vid körningen på webbservern](app-insights-java-live.md). Med det alternativet undviker du att behöva återskapa koden, men du kan inte skriva kod för att spåra användaraktivitet.*
 
 ## <a name="1-get-an-application-insights-instrumentation-key"></a>1. Hämta en Application Insights-instrumenteringsnyckel
-1. Logga in toohello [Microsoft Azure-portalen](https://portal.azure.com).
-2. Skapa en Application Insights-resurs. Ange hello programmet typen tooJava webbprogram.
+1. Logga in på [Microsoft Azure Portal](https://portal.azure.com).
+2. Skapa en Application Insights-resurs. Ange programtypen till Java-webbapp.
 
     ![Fyll i ett namn, välj Java-webbapp och klicka på Skapa](./media/app-insights-java-get-started/02-create.png)
-3. Hitta hello instrumentation nyckeln för hello ny resurs. Du behöver toopaste nyckeln i projektet koden inom kort.
+3. Leta upp instrumenteringsnyckeln för den nya resursen. Du kommer att behöva klistra in den här nyckeln i projektkoden inom kort.
 
-    ![Klicka på egenskaper i hello nya Resursöversikt och kopiera hello Instrumentation nyckel](./media/app-insights-java-get-started/03-key.png)
+    ![I den nya resursöversikten klickar du på Egenskaper och kopierar instrumenteringsnyckeln.](./media/app-insights-java-get-started/03-key.png)
 
-## <a name="2-add-hello-application-insights-sdk-for-java-tooyour-project"></a>2. Lägg till hello Application Insights SDK för Java tooyour projekt
-*Välj hello lämpligt sätt för projektet.*
+## <a name="2-add-the-application-insights-sdk-for-java-to-your-project"></a>2. Lägga till Application Insights SDK för Java till ditt projekt
+*Välj lämplig metod för ditt projekt.*
 
-#### <a name="if-youre-using-eclipse-toocreate-a-maven-or-dynamic-web-project-"></a>Om du använder-solförmörkelse toocreate ett Maven eller dynamisk projekt...
-Använd hello [Application Insights SDK för Java-plugin-programmet][eclipse].
+#### <a name="if-youre-using-eclipse-to-create-a-maven-or-dynamic-web-project-"></a>Om du använder Eclipse för att skapa ett Maven- eller Dynamic Web-projekt …
+Använd [plugin-programmet Application Insights SDK för Java][eclipse].
 
 #### <a name="if-youre-using-maven"></a>Om du använder Maven …
-Om projektet har redan ställts in toouse Maven för version, kod merge hello följande tooyour pom.xml fil.
+Om ditt projekt redan har konfigurerats för utveckling med Maven sammanfogar du följande kod i pom.xml-filen.
 
-Sedan uppdatera hello projektet beroenden tooget hello binärfiler hämtas.
+Uppdatera sedan projektberoendena för att få binärfilerna.
 
 ```XML
 
@@ -75,13 +75,13 @@ Sedan uppdatera hello projektet beroenden tooget hello binärfiler hämtas.
     </dependencies>
 ```
 
-* *Stöter du på utvecklingsfel eller fel relaterade till verifieringen av kontrollsummor?* Prova att använda en specifik version, t.ex.: `<version>1.0.n</version>`. Du hittar hello senaste versionen i hello [SDK viktig information](https://github.com/Microsoft/ApplicationInsights-Java#release-notes) eller i vår [Maven artefakter](http://search.maven.org/#search%7Cga%7C1%7Capplicationinsights).
-* *Behöver tooupdate tooa nya SDK?* Uppdatera ditt projekts beroenden.
+* *Stöter du på utvecklingsfel eller fel relaterade till verifieringen av kontrollsummor?* Prova att använda en specifik version, t.ex.: `<version>1.0.n</version>`. Du hittar den senaste versionen i [viktig information om SDK](https://github.com/Microsoft/ApplicationInsights-Java#release-notes) eller i våra [Maven-artefakter](http://search.maven.org/#search%7Cga%7C1%7Capplicationinsights).
+* *Behöver du uppdatera till en ny SDK?* Uppdatera ditt projekts beroenden.
 
 #### <a name="if-youre-using-gradle"></a>Om du använder Gradle …
-Om projektet har redan ställts in toouse Gradle för version, kod merge hello följande tooyour build.gradle fil.
+Om ditt projekt redan har konfigurerats för utveckling med Gradle sammanfogar du följande kod i build.gradle-filen.
 
-Sedan uppdatera hello projektet beroenden tooget hello binärfiler laddas ned.
+Uppdatera sedan projektberoendena för att få binärfilerna.
 
 ```JSON
 
@@ -95,30 +95,30 @@ Sedan uppdatera hello projektet beroenden tooget hello binärfiler laddas ned.
     }
 ```
 
-* *Stöter du på utvecklingsfel eller fel relaterade till verifieringen av kontrollsummor? Prova att använda en specifik version, t.ex.:* `version:'1.0.n'`. *Du hittar hello senaste versionen i hello [SDK viktig information](https://github.com/Microsoft/ApplicationInsights-Java#release-notes).*
-* *tooupdate tooa nya SDK*
+* *Stöter du på utvecklingsfel eller fel relaterade till verifieringen av kontrollsummor? Prova att använda en specifik version, t.ex.:* `version:'1.0.n'`. *Du hittar den senaste versionen i [viktig information om SDK](https://github.com/Microsoft/ApplicationInsights-Java#release-notes).*
+* *Så här uppdaterar du till ett nytt SDK*
   * Uppdatera ditt projekts beroenden.
 
 #### <a name="otherwise-"></a>Eller …
-Lägg manuellt till hello SDK:
+Lägg till SDK manuellt:
 
-1. Hämta hello [Application Insights SDK för Java](https://aka.ms/aijavasdk).
-2. Extrahera hello binärfiler från hello zip-filen och Lägg till dem tooyour projekt.
+1. Ladda ned [Application Insights SDK för Java](https://aka.ms/aijavasdk).
+2. Extrahera binärfilerna från ZIP-filen och lägg till dem i projektet.
 
 ### <a name="questions"></a>Frågor …
-* *Vad är hello förhållandet mellan hello `-core` och `-web` komponenter i hello zip?*
+* *Vad är relationen mellan `-core` och `-web`-komponenterna i ZIP-filen?*
 
-  * `applicationinsights-core`ger du hello utan API. Du behöver alltid ha den här komponenten.
-  * `applicationinsights-web` ger dig mått som spårar antalet HTTP-förfrågningar och svarstider. Du kan utelämna den här komponenten om du inte vill att den här telemetrin ska samlas in automatiskt. Till exempel om du vill toowrite egna.
-* *tooupdate hello SDK när vi publicerar ändringar*
+  * `applicationinsights-core` ger dig det avskalade API:et. Du behöver alltid ha den här komponenten.
+  * `applicationinsights-web` ger dig mått som spårar antalet HTTP-förfrågningar och svarstider. Du kan utelämna den här komponenten om du inte vill att den här telemetrin ska samlas in automatiskt. Till exempel om du vill skriva din egen.
+* *Så här uppdaterar du SDK när du publicerar ändringar*
 
-  * Hämta senaste hello [Application Insights SDK för Java](https://aka.ms/qqkaq6) och Ersätt hello gamla.
-  * Beskrivs i hello [SDK viktig information](https://github.com/Microsoft/ApplicationInsights-Java#release-notes).
+  * Ladda ned senaste [Application Insights SDK för Java](https://aka.ms/qqkaq6) och ersätt det gamla.
+  * Ändringar beskrivs i [viktig information om SDK](https://github.com/Microsoft/ApplicationInsights-Java#release-notes).
 
 ## <a name="3-add-an-application-insights-xml-file"></a>3. Lägga till en XML-fil för Application Insights
-Lägg till mapp som ApplicationInsights.xml toohello resurser i projektet eller kontrollera läggs tooyour projekt klassökvägen för distribution. Kopiera hello följande XML till den.
+Lägg till ApplicationInsights.xml i resursmappen i ditt projekt eller se till att den läggs till i sökvägen för projektets distributionsklass. Kopiera följande XML-kod till den.
 
-Ersätt hello instrumentation nyckel som du har fått från hello Azure-portalen.
+Ersätt instrumenteringsnyckeln som du fick från Azure Portal.
 
 ```XML
 
@@ -126,7 +126,7 @@ Ersätt hello instrumentation nyckel som du har fått från hello Azure-portalen
     <ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
 
 
-      <!-- hello key from hello portal: -->
+      <!-- The key from the portal: -->
 
       <InstrumentationKey>** Your instrumentation key **</InstrumentationKey>
 
@@ -140,10 +140,10 @@ Ersätt hello instrumentation nyckel som du har fått från hello Azure-portalen
       </TelemetryModules>
 
       <!-- Events correlation (not required for bare API) -->
-      <!-- These initializers add context data tooeach event -->
+      <!-- These initializers add context data to each event -->
 
       <TelemetryInitializers>
-        <Add   type="com.microsoft.applicationinsights.web.extensibility.initializers.WebOperationIdTelemetryInitializer"/>
+        <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebOperationIdTelemetryInitializer"/>
         <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebOperationNameTelemetryInitializer"/>
         <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebSessionTelemetryInitializer"/>
         <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebUserTelemetryInitializer"/>
@@ -154,13 +154,13 @@ Ersätt hello instrumentation nyckel som du har fått från hello Azure-portalen
 ```
 
 
-* hello instrumentation nyckel skickas tillsammans med alla element på telemetri och talar om Application Insights toodisplay den i din resurs.
-* hello HTTP-begäran-komponenten är valfritt. Telemetri om begäran och svar gånger toohello portal skickas automatiskt.
-* Händelser korrelationen är en komponent som tillägg toohello HTTP-begäran. Den tilldelas en identifierare tooeach begäran tas emot av hello-servern och lägger till den här identifieraren som ett objekt med egenskapen tooevery av telemetri som hello egenskapen 'Operation.Id'. Det gör att du toocorrelate hello telemetri som är associerade med varje begäran genom att ange ett filter i [diagnostiska Sök][diagnostic].
-* hello Application Insights nyckel kan skickas dynamiskt från hello Azure-portalen som en systemegenskap (-DAPPLICATION_INSIGHTS_IKEY = your_ikey). Om det finns inte någon definierad egenskap sker sökning efter miljövariabeln (APPLICATION_INSIGHTS_IKEY) i Azure App-inställningarna. Om båda hello är odefinierad, används hello standard InstrumentationKey från ApplicationInsights.xml. Den här sekvensen hjälper dig att toomanage olika InstrumentationKeys för olika miljöer dynamiskt.
+* Instrumenteringsnyckeln skickas tillsammans med alla element i telemetrin och uppmanar Application Insights att visa den i din resurs.
+* Komponenten HTTP-begäran är valfri. Den skickar automatiskt telemetri om förfrågningar och svarstider till portalen.
+* Händelsekorrelation är ett tillägg till komponenten HTTP-begäran. Det tilldelar en identifierare för varje förfrågan som tas emot av servern och lägger till denna identifierare som en egenskap för alla objekt i telemetrin som egenskapen Operation.Id. Detta gör att du kan korrelera telemetrin som är associerad med varje begäran genom att ange ett filter i [Diagnostiksökning][diagnostic].
+* Application Insights-nyckeln kan skickas dynamiskt från Azure Portal som en systemegenskap (-DAPPLICATION_INSIGHTS_IKEY = your_ikey). Om det finns inte någon definierad egenskap sker sökning efter miljövariabeln (APPLICATION_INSIGHTS_IKEY) i Azure App-inställningarna. Om båda egenskaperna är odefinierade används som standard InstrumentationKey från ApplicationInsights.xml. Med hjälp av den här sekvensen kan du på ett dynamiskt sätt hantera olika InstrumentationKeys för olika miljöer.
 
-### <a name="alternative-ways-tooset-hello-instrumentation-key"></a>Alternativa sätt tooset hello instrumentation nyckel
-Application Insights SDK söker efter hello nyckel i följande ordning:
+### <a name="alternative-ways-to-set-the-instrumentation-key"></a>Olika sätt att konfigurera instrumenteringsnyckeln på
+Application Insights SDK:n söker efter nyckeln i följande ordning:
 
 1. Systemegenskap: -DAPPLICATION_INSIGHTS_IKEY=your_ikey
 2. Miljövariabel: APPLICATION_INSIGHTS_IKEY
@@ -174,11 +174,11 @@ Du kan också [ange den i koden](app-insights-api-custom-events-metrics.md#ikey)
 ```
 
 ## <a name="4-add-an-http-filter"></a>4. Lägga till ett HTTP-filter
-hello sista konfigurationssteget kan hello HTTP-begäran komponenten toolog varje webbegäran. (Krävs inte om du bara behöver hello utan API.)
+Det sista konfigurationssteget gör att komponenten HTTP-begäran kan logga varje webbegäran. (Krävs inte om du bara vill ha det avskalade API:et.)
 
-Leta upp och öppna hello web.xml filen i projektet och merge hello följande kod under hello webbprogrammet nod där programmet filter har konfigurerats.
+Leta upp och öppna filen web.xml i projektet och sammanfoga följande kod under webbappens nod, där dina programfiler är konfigurerade.
 
-tooget hello mest korrekta resultat, hello filter ska mappas innan alla filter.
+För bästa resultat bör filtret mappas före alla andra filter.
 
 ```XML
 
@@ -195,7 +195,7 @@ tooget hello mest korrekta resultat, hello filter ska mappas innan alla filter.
 ```
 
 #### <a name="if-youre-using-spring-web-mvc-31-or-later"></a>Om du använder Spring Web MVC 3.1 or later
-Redigera de här elementen i *-servlet.xml tooinclude hello Application Insights paketet:
+Redigera dessa element i *-servlet.xml för att ta med Application Insights-paketet:
 
 ```XML
 
@@ -210,7 +210,7 @@ Redigera de här elementen i *-servlet.xml tooinclude hello Application Insights
 ```
 
 #### <a name="if-youre-using-struts-2"></a>Om du använder Struts 2
-Lägg till den här artikeln toohello andra ojämnheter konfigurationsfilen (vanligtvis namngivna struts.xml eller andra ojämnheter default.xml):
+Lägg till det här objektet i Struts-konfigurationsfilen (vanligtvis struts.xml eller struts-default.xml):
 
 ```XML
 
@@ -220,46 +220,46 @@ Lägg till den här artikeln toohello andra ojämnheter konfigurationsfilen (van
      <default-interceptor-ref name="ApplicationInsightsRequestNameInterceptor" />
 ```
 
-(Om du har interceptorerna som definierats i en standard-stack hello spärren kan bara läggas toothat stack)
+(Om det finns spärrar som har definierats i en standardstack lägger du bara till spärren till den stacken.)
 
 ## <a name="5-run-your-application"></a>5. Köra ditt program
-Kör det i felsökningsläge på utvecklingsdatorn eller publicera tooyour server.
+Kör programmet i felsökningsläge på utvecklingsdatorn eller publicera det till servern.
 
 ## <a name="6-view-your-telemetry-in-application-insights"></a>6. Visa telemetrin i Application Insights
-Returnera tooyour Application Insights-resurs i [Microsoft Azure-portalen](https://portal.azure.com).
+Gå tillbaka till Application Insights-resursen på [Microsoft Azure Portal](https://portal.azure.com).
 
-HTTP-begäranden data visas på hello översikt bladet. (Om informationen inte visas väntar du några sekunder och klickar på Uppdatera.)
+Data om HTTP-förfrågningar visas på översiktsbladet. (Om informationen inte visas väntar du några sekunder och klickar på Uppdatera.)
 
 ![exempeldata](./media/app-insights-java-get-started/5-results.png)
 
 [Lär dig mer om mätvärden.][metrics]
 
-Klicka dig igenom några diagram toosee mer detaljerad samman mått.
+Klicka dig vidare i diagrammen om du vill visa mer detaljerade aggregerade mätvärden.
 
 ![](./media/app-insights-java-get-started/6-barchart.png)
 
-> Application Insights förutsätter hello format för HTTP-begäranden för MVC-program: `VERB controller/action`. `GET Home/Product/f9anuh81`, `GET Home/Product/2dffwrf5` och `GET Home/Product/sdf96vws` grupperas t.ex. i `GET Home/Product`. Denna gruppering gör det möjligt att skapa meningsfulla förfrågningsaggregeringar, t.ex. antal förfrågningar och genomsnittlig körningstid för förfrågningarna.
+> Application Insights förutsätter att formatet för HTTP-begäranden för MVC-program är: `VERB controller/action`. `GET Home/Product/f9anuh81`, `GET Home/Product/2dffwrf5` och `GET Home/Product/sdf96vws` grupperas t.ex. i `GET Home/Product`. Denna gruppering gör det möjligt att skapa meningsfulla förfrågningsaggregeringar, t.ex. antal förfrågningar och genomsnittlig körningstid för förfrågningarna.
 >
 >
 
 ### <a name="instance-data"></a>Instansdata
-Klicka dig igenom en specifik begäran Skriv toosee enskilda instanser.
+Klicka dig vidare inom en specifik begärandetyp om du vill visa enskilda instanser.
 
 Två typer av data visas i Application Insights: aggregerade data, som lagras och visas som medelvärden, antal och belopp; och instansdata, som är enskilda rapporter över HTTP-begäranden, undantag, sidvisningar eller anpassade händelser.
 
-När du visar hello egenskaperna för en begäran kan se du hello telemetriska händelser som är kopplade till den, till exempel begäranden och undantag.
+När du visar egenskaperna för en begäran kan du se telemetrihändelserna som är associerade med den, till exempel begäranden och undantag.
 
 ![](./media/app-insights-java-get-started/7-instance.png)
 
 ### <a name="analytics-powerful-query-language"></a>Analytics: Kraftfullt frågespråk
-När du samlar in mer data, kan du köra frågor båda tooaggregate data och toofind enskilda instanser.  [Analytics](app-insights-analytics.md) är ett kraftfullt verktyg både för att bättre förstå prestanda och användning, och för diagnostikändamål.
+Allt eftersom du ackumulerar mer data kan du köra frågor både för att aggregera data och för att hitta enskilda instanser.  [Analytics](app-insights-analytics.md) är ett kraftfullt verktyg både för att bättre förstå prestanda och användning, och för diagnostikändamål.
 
 ![Exempel med Analytics](./media/app-insights-java-get-started/025.png)
 
-## <a name="7-install-your-app-on-hello-server"></a>7. Installera appen på hello-server
-Nu publicera din app toohello server, låta personer använder den, och titta på hello telemetri som visas på hello-portalen.
+## <a name="7-install-your-app-on-the-server"></a>7. Installera din app på servern
+Publicera appen på servern, låt användarna använda den och se hur telemetrin visas på portalen.
 
-* Kontrollera att brandväggen tillåter programmet-toosend telemetri toothese portar:
+* Kontrollera att din brandvägg tillåter programmet att skicka telemetri till följande portar:
 
   * dc.services.visualstudio.com:443
   * f5.services.visualstudio.com:443
@@ -278,21 +278,21 @@ Ohanterade undantag samlas in automatiskt:
 
 ![Öppna Inställningar, Fel](./media/app-insights-java-get-started/21-exceptions.png)
 
-toocollect data på andra undantag, har du två alternativ:
+Om du vill samla in data om andra undantag kan du välja mellan två alternativ:
 
-* [Infoga anropar tootrackException() i koden][apiexceptions].
-* [Installera hello Java-agenten på servern](app-insights-java-agent.md). Du kan ange hello-metoder som du vill toowatch.
+* [Infoga anrop till trackException() i din kod][apiexceptions].
+* [Installera Java-agenten på servern](app-insights-java-agent.md). Du anger de metoder som du vill övervaka.
 
 ## <a name="monitor-method-calls-and-external-dependencies"></a>Övervaka metodanrop och externa beroenden
-[Installera hello agenten Java](app-insights-java-agent.md) toolog angivna interna metoder och anrop som görs via JDBC, med tidsinställning data.
+[Installera Java-agenten](app-insights-java-agent.md) om du vill logga angivna interna metoder och anrop som görs via JDBC, med tidsinställningsdata.
 
 ## <a name="performance-counters"></a>Prestandaräknare
-Öppna **inställningar**, **servrar**, toosee ett antal prestandaräknare.
+Öppna **Inställningar**, **Servrar**, om du vill se ett utbud av prestandaräknare.
 
 ![](./media/app-insights-java-get-started/11-perf-counters.png)
 
 ### <a name="customize-performance-counter-collection"></a>Anpassa samlingen med prestandaräknare
-toodisable samling hello standarduppsättning prestandaräknare, lägger du till följande kod under hello rotnoden hello ApplicationInsights.xml filen hello:
+Om du vill inaktivera datainsamlingen från standarduppsättningen med prestandaräknare lägger du till följande kod under rotnoden i filen ApplicationInsights.xml:
 
 ```XML
     <PerformanceCounters>
@@ -301,9 +301,9 @@ toodisable samling hello standarduppsättning prestandaräknare, lägger du till
 ```
 
 ### <a name="collect-additional-performance-counters"></a>Samla in data från fler prestandaräknare
-Du kan ange ytterligare prestandaräknare toobe samlas in.
+Du kan ange ytterligare prestandaräknare som du vill samla in data från.
 
-#### <a name="jmx-counters-exposed-by-hello-java-virtual-machine"></a>Räknare för JMX (som exponeras av hello Java Virtual Machine)
+#### <a name="jmx-counters-exposed-by-the-java-virtual-machine"></a>JMX-räknare (exponeras av Java Virtual Machine)
 
 ```XML
     <PerformanceCounters>
@@ -314,16 +314,16 @@ Du kan ange ytterligare prestandaräknare toobe samlas in.
     </PerformanceCounters>
 ```
 
-* `displayName`– hello-namnet som visas i hello Application Insights-portalen.
-* `objectName`– hello JMX-objektnamn.
-* `attribute`– hello-attributet för hello JMX objektet namn toofetch
-* `type`(valfritt) – hello JMX objektets attributtyp:
+* `displayName` – Namnet visas på Application Insights-portalen.
+* `objectName` – JMX-objektnamnet.
+* `attribute` – Attributet för JMX-objektnamnet som ska hämtas
+* `type` (valfritt) – Typen för JMX-objektets attribut:
   * Standardvärde: en enkel typ, till exempel int eller long.
-  * `composite`: hello prestandaräknardata har formatet hello av 'Attribute.Data'
-  * `tabular`: hello prestandaräknardata har hello format för en tabellrad
+  * `composite`: prestandaräknardata har formatet ”Attribute.Data”
+  * `tabular`: prestandaräknardata har tabellradsformat
 
 #### <a name="windows-performance-counters"></a>Windows-prestandaräknare
-Varje [Windows-prestandaräknare](https://msdn.microsoft.com/library/windows/desktop/aa373083.aspx) är medlem i en kategori (i hello samma sätt som att ett fält är medlem av en klass). Kategorier kan antingen vara globala eller ha numrerade eller namngivna instanser.
+Varje [Windows-prestandaräknare](https://msdn.microsoft.com/library/windows/desktop/aa373083.aspx) är medlem i en kategori (på samma sätt som ett fält är medlem i en klass). Kategorier kan antingen vara globala eller ha numrerade eller namngivna instanser.
 
 ```XML
     <PerformanceCounters>
@@ -334,35 +334,35 @@ Varje [Windows-prestandaräknare](https://msdn.microsoft.com/library/windows/des
     </PerformanceCounters>
 ```
 
-* displayName – hello namnet visas i hello Application Insights-portalen.
-* Kategorinamn – hello prestandaräknarkategorin (prestandaobjekt) som är kopplad till den här prestandaräknaren.
-* counterName – hello namn för hello prestandaräknare.
-* Instansnamn – hello kategori prestandaräknarinstans hello namn eller en tom sträng (””), om hello kategori innehåller en enda instans. Om hello categoryName är processen och hello prestandaräknaren som toocollect är från hello aktuella JVM-processen på som din app körs, ange `"__SELF__"`.
+* displayName – Namnet som visas på Application Insights-portalen.
+* categoryName – Kategorin av prestandaräknare (prestandaobjekt) som den här prestandaräknaren är associerad med.
+* counterName – Namnet på prestandaräknaren.
+* instanceName – Namnet på instansen av prestandaräknarkategorin eller en tom sträng ("") om kategorin innehåller en enda instans. Om categoryName är Process och den prestandaräknare som du vill samla in data från hör till den aktuella JVM-processen som din app körs i anger du `"__SELF__"`.
 
 Dina prestandaräknare visas som anpassade mått i [Metrics Explorer][metrics].
 
 ![](./media/app-insights-java-get-started/12-custom-perfs.png)
 
 ### <a name="unix-performance-counters"></a>Unix-prestandaräknare
-* [Installera collectd med Application Insights-plugin-programmet hello](app-insights-java-collectd.md) tooget en mängd olika system- och data.
+* [Installera collectd med Application Insights-plugin-programmet](app-insights-java-collectd.md) om du vill samla in en mängd olika system- och nätverksdata.
 
 ## <a name="get-user-and-session-data"></a>Samla in användar- och sesionsdata
-Du skickar telemetri från webbservern. Nu hello tooget 360 graders vy av programmet, du kan lägga till fler övervakning:
+Du skickar telemetri från webbservern. Men för att få en heltäckande bild av ditt program kan du lägga till ännu mer övervakning:
 
-* [Lägga till webbsidor för telemetri tooyour] [ usage] toomonitor sidan vyer och användaren mått.
-* [Ställ in webbtester] [ availability] toomake säker tillämpningsprogrammet är live och svarstid.
+* [Lägg till telemetri till webbsidor][usage] om du vill övervaka sidvisningar och användarmått.
+* [Konfigurera webbtester][availability] för att se till att ditt program är aktivt och effektivt.
 
 ## <a name="capture-log-traces"></a>Samla in loggspårningar
-Du kan använda Application Insights tooslice och undersök loggar från Log4J eller Logback andra ramverk för loggning. Du kan jämföra hello loggar med HTTP-begäranden och andra telemetri. [Lär dig mer][javalogs].
+Du kan använda Application Insights om du vill arbeta med loggar från Log4J, Logback eller andra loggningsramverk. Du kan korrelera loggarna med HTTP-förfrågningar och annan telemetri. [Lär dig mer][javalogs].
 
 ## <a name="send-your-own-telemetry"></a>Skicka din egen telemetri
-Nu när du har installerat hello SDK kan använda du hello API toosend egna telemetri.
+Nu när du har installerat SDK kan du använda API:et för att skicka din egen telemetri.
 
-* [Spåra anpassade händelser och mått] [ api] toolearn vad användarna gör med ditt program.
-* [Söka efter händelser och loggar] [ diagnostic] toohelp diagnostisera problem.
+* [Spåra anpassade händelser och mått][api] och ta reda på vad användare gör med ditt program.
+* [Sök efter händelser och loggar][diagnostic] för att diagnostisera problem.
 
 ## <a name="availability-web-tests"></a>Webbtester för tillgänglighet
-Application Insights kan testa din webbplats på regelbundet toocheck som är det upp och svarar också. [tooset in][availability], klicka på webbtester.
+Application Insights kan testa din webbplats med jämna mellanrum för att kontrollera att tjänsten är tillgänglig och att den svarar. [Du konfigurerar inställningarna][availability] genom att klicka på Webbtest.
 
 ![Klicka först på Webbtester och sedan på Lägg till webbtest](./media/app-insights-java-get-started/31-config-web-test.png)
 
@@ -382,9 +382,9 @@ Du kan visa diagram över svarstider, samt få e-postaviseringar om platsen kras
 ## <a name="next-steps"></a>Nästa steg
 * [Övervaka beroende anrop](app-insights-java-agent.md)
 * [Övervaka Unix-prestandaräknare](app-insights-java-collectd.md)
-* Lägg till [övervakning tooyour webbsidor](app-insights-javascript.md) toomonitor sidinläsning gånger AJAX-anrop, webbläsarundantag.
-* Skriva [telemetri om anpassade](app-insights-api-custom-events-metrics.md) tootrack användning i hello webbläsare eller hello-servern.
-* Skapa [instrumentpaneler](app-insights-dashboards.md) toobring tillsammans hello viktiga diagram för övervakning av systemet.
+* Lägg till [övervakning till dina webbsidor](app-insights-javascript.md) för att övervaka sidans belastning, AJAX-anrop, webbläsarundantag.
+* Skriv [anpassad telemetri](app-insights-api-custom-events-metrics.md) att spåra användningen i webbläsaren eller på servern.
+* Skapa [instrumentpaneler](app-insights-dashboards.md) för att samordna nyckeldiagram för övervakning av systemet.
 * Använd [Analytics](app-insights-analytics.md) för kraftfulla frågor via telemetri från din app
 * Mer information finns i [Azure för Java-utvecklare](/java/azure).
 

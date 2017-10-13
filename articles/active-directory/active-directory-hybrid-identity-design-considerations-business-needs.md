@@ -1,6 +1,6 @@
 ---
-title: "aaaAzure designöverväganden Active Directory hybrid identity - fastställa identitetskrav | Microsoft Docs"
-description: "Identifiera hello företagets affärsbehov som leda toodefine hello kraven för utformningen av hello hybrid identity."
+title: "Azure Active Directory hybrid identity designöverväganden - fastställa identitetskrav | Microsoft Docs"
+description: "Identifiera företagets affärsbehov som leder dig att fastställa krav för hybrid identity-design."
 documentationcenter: 
 services: active-directory
 author: billmath
@@ -14,92 +14,92 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: b2f1cad923b0f08ededa0d8f9a4ea8e799956e54
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 6503034b3f5a17a2a42338c73329eef0b01f2f27
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="determine-identity-requirements-for-your-hybrid-identity-solution"></a>Ange identitetskrav för för din hybrididentitetslösning
-hello första steget i utforma en hybrididentitetslösning är toodetermine hello krav för hello organisationen som kommer att använda den här lösningen.  Hybrididentitet startas som en stödjande roll (stöds alla andra molnlösningar genom att tillhandahålla autentisering) och tooprovide nya och intressanta funktioner som att låsa upp nya arbetsbelastningar för användare.  Dessa arbetsbelastningar eller tjänster som du vill tooadopt för dina användare styr hello kraven för utformningen av hello hybrid identity.  Dessa tjänster och arbetsbelastningar måste tooleverage hybrididentitet både lokalt och i hello molnet.  
+Det första steget i utforma en hybrididentitetslösning är att avgöra kraven för organisationen som kommer att använda den här lösningen.  Hybrididentitet startas som en stödjande roll (stöds alla andra molnlösningar genom att tillhandahålla autentisering) och för att lägga till nya och intressanta funktioner som att låsa upp nya arbetsbelastningar för användare.  Dessa arbetsbelastningar eller tjänster som du vill använda för dina användare styr kraven för hybrid identity-design.  Dessa tjänster och arbetsbelastningar behöver utnyttja hybrididentitet både lokalt och i molnet.  
 
-Du behöver toogo igenom dessa viktiga aspekter av hello business toounderstand vad det är ett krav nu och vilka hello företaget planerar för framtida hello. Om du inte har hello synligheten för hello långsiktig strategi för identitet hybridutformning, är risken att lösningen inte är skalbar när hello verksamheten behöver växa och ändra.   T han diagrammet nedan visar ett exempel på en hybrid identity-arkitektur och hello arbetsbelastningar som är att låsas upp för användare. Detta är bara ett exempel på alla hello nya möjligheter som kan låsas upp och levereras med en fast hybrid identity-strategi. 
+Du behöver gå igenom dessa viktiga aspekter av företag att förstå vad det är ett krav nu och företaget planerar för framtiden. Om du inte har synligheten för långsiktig strategi för identitet hybridutformning, är risken att lösningen inte är skalbar när verksamheten behöver växa och ändra.   T han diagrammet nedan visar ett exempel på en hybrid identity-arkitektur och arbetsbelastningar som är att låsas upp för användare. Detta är bara ett exempel på alla nya möjligheter som kan låsas upp och levereras med en fast hybrid identity-strategi. 
 
-Vissa komponenter som ingår i hello hybrid identity-arkitektur![](./media/hybrid-id-design-considerations/hybrid-identity-architechture.png)
+Vissa komponenter som ingår i hybrid identity-arkitektur![](./media/hybrid-id-design-considerations/hybrid-identity-architechture.png)
 
 ## <a name="determine-business-needs"></a>Fastställa affärsbehov
-Alla företag har olika krav, även om dessa företag är en del av hello samma bransch hello verkliga affärskraven variera. Du kan fortfarande utnyttja bästa praxis från branschen hello men slutänden är hello företagets affärsbehov som leda toodefine hello kraven för utformningen av hello hybrid identity. 
+Alla företag har olika krav, även om dessa företag finns i samma bransch, verkliga företag kraven kan variera. Du kan fortfarande utnyttja bästa praxis från branschen, men slutligen är det företagets affärsbehov som leder dig att fastställa krav för hybrid identity-design. 
 
-Kontrollera att tooanswer hello följande frågor tooidentify ditt företag måste:
+Se till att besvara följande frågor för att identifiera dina affärsbehov:
 
-* Ditt företag söker efter toocut IT operativa kostnad?
-* Ditt företag söker efter toosecure moln tillgångar (infrastruktur, SaaS-appar)?
-* Är företaget söker toomodernize IT?
-  * Är användarna mer mobila och krävande IT toocreate undantag i din DMZ tooallow annan typ av trafik tooaccess olika resurser?
-  * Har företaget äldre appar som behövs toobe publicerade toothese moderna användare men inte är enkelt toorewrite?
-  * Har ditt företag behöver tooaccomplish dessa uppgifter och placera den under kontroll på hello samtidigt?
-* Är företaget söker toosecure användarnas identitet och minska riskerna genom att nya verktyg som utnyttjar hello expertis för Microsoft Azure-säkerhet expertis lokalt?
-* Är företaget försök tooget bort hello dreaded ”externa” konton lokalt och flytta dem toohello moln där de inte längre ett vilande hot i din lokala miljö?
+* Ditt företag söker efter att klippa ut IT driftskostnaderna?
+* Ditt företag söker efter för att skydda molnet tillgångar (infrastruktur, SaaS-appar)?
+* Ditt företag söker efter för att modernisera IT?
+  * Är användarna mer mobila och krävande IT att skapa undantag till din DMZ så att en annan typ av trafik till olika resurser?
+  * Har företaget äldre appar som krävs för att publiceras till dessa moderna användare, men är inte enkelt att skriva om?
+  * Behöver företaget att utföra dessa uppgifter och ta det under kontroll på samma gång?
+* Ditt företag söker efter att skydda användarnas identitet och minska riskerna genom att nya verktyg som utnyttjar expertis för Microsoft Azure-säkerhet expertis lokalt?
+* Ditt företag som försöker att ta bort dreaded ”externa” konton lokalt och flytta dem till det moln där de inte längre ett vilande hot i din lokala miljö?
 
 ## <a name="analyze-on-premises-identity-infrastructure"></a>Analysera lokala identitetsinfrastruktur
-Nu när du har en uppfattning om företagets företagets krav måste tooevaluate din lokala identitetsinfrastruktur. Denna utvärdering är viktigt för att definiera hello tekniska krav toointegrate det aktuella identity lösning toohello moln identitet hanteringssystemet. Se till att tooanswer hello följande frågor:
+Nu när du har en uppfattning om företagets företagets krav som du behöver utvärdera din lokala identitetsinfrastruktur. Denna utvärdering är viktigt för att definiera de tekniska kraven för att integrera din aktuella identitetslösning till molnet identitet hanteringssystemet. Se till att besvara följande frågor:
 
 * Vilka autentisering och auktorisering lösning har ditt företag använder lokalt? 
 * Har ditt företag för närvarande några lokala synkroniseringstjänster?
 * Använder företaget en tredje parts identitetsleverantörer (IdP)?
 
-Du måste också toobe medveten om hello molntjänster som ditt företag kan ha. Utför en bedömning toounderstand hello aktuella integrering med SaaS IaaS och PaaS-modeller i din miljö är mycket viktigt. Se till att tooanswer hello följande frågor under denna bedömning:
+Du måste också vara medveten om molntjänster som ditt företag kan ha. Det är mycket viktigt att utföra en utvärdering för att förstå den aktuella integreringen med SaaS, IaaS och PaaS-modeller i din miljö. Se till att besvara följande frågor under denna bedömning:
 
 * Har företaget någon integrering med en molntjänstleverantör?
 * Om Ja, vilka tjänster som används?
 * För närvarande är den här integreringen i produktion eller är en pilot?
 
 > [!NOTE]
-> Om du inte har en korrekt mappning för alla dina appar och molntjänster, kan du använda hello Cloud App Discovery-verktyget. Det här verktyget kan ge IT-avdelningen insyn i alla organisationens affärsbehov och konsumenten molnappar. Det gör det enklare än någonsin toodiscover shadow IT i din organisation, inklusive information om användningsmönster och alla användare att komma åt dina molnprogram. tooget igång finns [Cloud app discovery](active-directory-cloudappdiscovery-whatis.md).
+> Om du inte har en korrekt mappning för alla dina appar och molntjänster, kan du använda verktyget Cloud App Discovery. Det här verktyget kan ge IT-avdelningen insyn i alla organisationens affärsbehov och konsumenten molnappar. Den gör det enklare att upptäcka skugg-it, information om användarmönster och eventuell användaråtkomst till dina molnprogram. Få igång finns [Cloud app discovery](active-directory-cloudappdiscovery-whatis.md).
 > 
 > 
 
 ## <a name="evaluate-identity-integration-requirements"></a>Utvärdera identity integration krav
-Sedan måste tooevaluate hello identity integration krav. Denna utvärdering är viktiga toodefine hello tekniska krav för hur användare autentiseras, hur hello organisation förekomst ser ut i hello molnet, hur hello organisation tillåter auktorisering och vilka hello användarupplevelsen är pågående toobe. Se till att tooanswer hello följande frågor:
+Därefter måste du utvärdera integreringskraven identitet. Det är viktigt att definiera de tekniska kraven för hur användare autentiseras, hur organisationens förekomst ser ut i molnet, hur organisationen kan auktorisering och användarupplevelsen kommer att utvärderingen. Se till att besvara följande frågor:
 
 * Kommer din organisation använder federation, standardautentisering eller båda?
-* Är ett krav för federationen?  På grund av hello följande:
+* Är ett krav för federationen?  På grund av följande:
   * Kerberos-baserad SSO
   * Företaget har ett lokalt program (antingen inbyggd interna eller 3 part) som använder SAML eller liknande funktioner för federation.
   * MFA via smartkort. RSA SecurID osv.
-  * Klienten åtkomstregler som löser hello frågorna nedan:
-    1. Kan jag blockera alla extern åtkomst tooOffice 365 baserat på hello hello klientens IP-adress?
-    2. Kan jag blockera alla extern åtkomst tooOffice 365, utom Exchange ActiveSync?
-    3. Jag kan blockera alla extern åtkomst tooOffice 365, utom webbläsarbaserade appar (OWA, SPO)
-    4. Jag kan blockera alla extern åtkomst tooOffice 365 för medlemmar i avsedda AD-grupper
+  * Klienten åtkomstregler som löser frågorna nedan:
+    1. Kan jag blockera all extern åtkomst till Office 365 baserat på IP-adressen för klienten?
+    2. Kan jag blockera all extern åtkomst till Office 365, utom Exchange ActiveSync?
+    3. Jag kan blockera all extern åtkomst till Office 365, utom webbläsarbaserade appar (OWA, SPO)
+    4. Jag kan blockera all extern åtkomst till Office 365 för medlemmar i avsedda AD-grupper
 * Säkerhetsgranskning/frågor
 * Befintlig investering i federerad autentisering
-* Vilket namn vår organisation använder våra domän i hello molnet?
-* Har en anpassad domän i hello organisation?
+* Vilket namn vår organisation använder för våra domänen i molnet?
+* Har organisationen en anpassad domän?
   1. Är domänen offentliga och enkelt kan verifieras via DNS?
-  2. Om det inte sedan har du en offentlig domän som kan vara tooregister används ett alternativt UPN i AD?
-* Stämmer hello-ID: n för molnet representation? 
-* Har organisationen hello appar som kräver integrering med molntjänster?
-* Har organisationen hello flera domäner och alla använder standard- eller federerad autentisering?
+  2. Om det inte sedan har du en offentlig domän som kan användas för att registrera ett alternativt UPN i AD?
+* Stämmer de ID: n för molnet representation? 
+* Har organisationen appar som kräver integrering med molntjänster?
+* Organisationen har flera domäner och alla använder standard- eller federerad autentisering?
 
 ## <a name="evaluate-applications-that-run-in-your-environment"></a>Utvärdera program som körs i din miljö
-Nu när du har en uppfattning om dina lokala och molnet infrastruktur, måste tooevaluate hello program som körs i dessa miljöer. Denna utvärdering är viktigt toodefine hello tekniska krav toointegrate dessa program toohello moln identity management-systemet. Se till att tooanswer hello följande frågor:
+Nu när du har en uppfattning om dina lokala och molnet infrastruktur behöver du utvärdera program som körs i dessa miljöer. Det är viktigt att definiera de tekniska kraven för att integrera dessa program till molnet identitet hanteringssystemet utvärderingen. Se till att besvara följande frågor:
 
 * Var kommer våra program bor?
-* Kommer användarna åt lokala program?  I hello molnet? Eller båda?
-* Finns det planer tootake hello befintliga programbelastningar och flytta dem toohello molnet?
-* Finns det planer toodevelop nya program som ska finnas antingen lokalt eller i hello molnet som använder autentisering i molnet?
+* Kommer användarna åt lokala program?  I molnet? Eller båda?
+* Finns det planer för att ta de befintliga programbelastningar och flytta dem till molnet?
+* Finns det planer för att utveckla nya program som ska finnas antingen lokalt eller i molnet som använder molnet autentisering?
 
 ## <a name="evaluate-user-requirements"></a>Utvärdera användarkrav
-Du kan också ha tooevaluate hello användarkrav. Denna utvärdering är viktiga toodefine hello steg som behövs för-boarding och hjälper användare när de flyttar toohello moln. Se till att tooanswer hello följande frågor:
+Du måste utvärdera användarkraven. Denna utvärdering är viktigt att definiera de steg som krävs för-boarding och hjälper användare som de övergång till molnet. Se till att besvara följande frågor:
 
 * Kommer användarna åt program lokala?
-* Kommer användarna åt program i hello molnet?
-* Hur kan användare normalt inloggningen tootheir lokala miljö?
-* Hur kommer användare logga in toohello cloud?
+* Kommer användarna åt program i molnet?
+* Hur ofta kan användare logga in på sina lokala miljö?
+* Hur kommer användare logga in på molnet?
 
 > [!NOTE]
-> Se till att tootake anteckningar för varje svar och förstå hello anledningen hello svaret. [Fastställa kraven på incidentsvar](active-directory-hybrid-identity-design-considerations-incident-response-requirements.md) kommer att överskrida hello alternativen och -tekniker/nackdelar med varje alternativ.  Har besvarat frågorna väljer du vilket alternativ som bäst passar dina behöver.
+> Se till att varje svar och försök förstå anledningen till svaret. [Fastställa kraven på incidentsvar](active-directory-hybrid-identity-design-considerations-incident-response-requirements.md) kommer att överskrida de tillgängliga alternativ och -tekniker/nackdelar med varje alternativ.  Har besvarat frågorna väljer du vilket alternativ som bäst passar dina behöver.
 > 
 > 
 

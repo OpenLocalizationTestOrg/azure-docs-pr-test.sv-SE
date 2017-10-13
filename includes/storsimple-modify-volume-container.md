@@ -1,19 +1,19 @@
 <!--author=SharS last changed: 1/7/2016-->
 
-#### <a name="toomodify-a-volume-container"></a>toomodify en volymbehållare
-1. På hello **enheter** sidan Välj hello enheten, dubbelklicka på den, och klicka sedan på hello **volymbehållare** fliken.
-2. I hello tabular lista över hello volymbehållare, väljer du hello inställningen att du vill toomodify och på **ändra**.
-3. I hello **ändra volymbehållare** dialogrutan rutan, hello följande:
+#### <a name="to-modify-a-volume-container"></a>Att ändra en volymbehållare
+1. På den **enheter** sidan, Välj enheten, dubbelklicka på den och klicka sedan på den **volymbehållare** fliken.
+2. I tabellform lista över volymbehållarna, väljer du den inställning som du vill ändra och klicka på **ändra**.
+3. I den **ändra volymbehållare** dialogrutan Gör följande:
    
-   1. Ändra hello namnet på hello volymbehållare och ändra inställningen för hello associerade bandbredd. 
+   1. Ändra namnet på volymbehållaren och ändra inställningen för associerade bandbredd. 
       
        ![Ändra Volymbehållare med Bandbreddsmall 1](./media/storsimple-modify-volume-container/HCS_ModifyVCBT1-include.png)
-   2. hello kryptering nyckel och storage-konto kan inte ändras efter att de har angetts. Om du har angett **Välj en bandbreddsmall**, klicka på nästa sida om hello pilen tooproceed toohello.
-4. Hello nästa sida i hello **ändra Volymbehållare** dialogrutan:
+   2. Kontot för kryptering nyckel och lagring kan inte ändras efter att de har angetts. Om du har angett **Välj en bandbreddsmall**, klickar du på pilen för att gå vidare till nästa sida.
+4. I nästa sida i den **ändra Volymbehållare** dialogrutan:
    
-   1. Hello listrutan, Välj en befintlig bandbreddsmall för.
-   2. Granska hello schemainställningar för hello angivna bandbreddsmall.
+   1. Listrutan, Välj en befintlig bandbreddsmall för.
+   2. Kontrollera schemainställningarna för för den angivna bandbreddsmall.
       
        ![Ändra Volymbehållare med Bandbreddsmall 2](./media/storsimple-modify-volume-container/HCS_ModifyVCBT2-include.png)
-   3. Klicka på kryssikonen hello ![kryssikon](./media/storsimple-modify-volume-container/HCS_CheckIcon-include.png) toosave hello uppdaterade inställningar. Hej **volymbehållare** sida blir uppdaterade tooreflect hello ändringar.
+   3. Klicka på kryssikonen ![kryssikon](./media/storsimple-modify-volume-container/HCS_CheckIcon-include.png) att spara de uppdaterade inställningarna. Den **volymbehållare** sidan uppdateras för att återspegla ändringarna.
 

@@ -1,6 +1,6 @@
 ---
-title: "aaaHeader-baserad autentisering med PingAccess för Azure AD Application Proxy | Microsoft Docs"
-description: Publicera program med PingAccess och App-Proxy toosupport huvud-baserad autentisering.
+title: "Rubrik-baserad autentisering med PingAccess för Azure AD Application Proxy | Microsoft Docs"
+description: "Publicera program med PingAccess och App-Proxy som stöder huvud-baserad autentisering."
 services: active-directory
 documentationcenter: 
 author: kgremban
@@ -15,124 +15,124 @@ ms.date: 08/23/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 38fe3e7a41a71f4ae6c75f014e44c722f773bd22
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 58034ab8830cf655199875b448948ea14dc04a70
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Rubrik-baserad autentisering för enkel inloggning med Application Proxy och PingAccess
 
-Azure Active Directory Application Proxy och PingAccess samarbetar tillsammans tooprovide Azure Active Directory-kunder med åtkomst tooeven fler program. PingAccess expanderar hello [befintliga Application Proxy-erbjudanden](active-directory-application-proxy-get-started.md) tooinclude åtkomst för enkel inloggning tooapplications som använder huvuden för autentisering.
+Azure Active Directory Application Proxy och PingAccess samarbetar tillsammans för att ge åtkomst till fler program med Azure Active Directory-kunder. PingAccess expanderar den [befintliga Application Proxy-erbjudanden](active-directory-application-proxy-get-started.md) med enkel inloggning åtkomst till program som använder huvuden för autentisering.
 
 ## <a name="what-is-pingaccess-for-azure-ad"></a>Vad är PingAccess för Azure AD?
 
-PingAccess för Azure Active Directory är ett erbjudande PingAccess som aktiverar du toogive användare åtkomst med enkel inloggning tooapplications som använder huvuden för autentisering. Programproxy behandlas dessa appar som helst, med hjälp av Azure AD tooauthenticate åtkomst och skicka trafik via hello kopplingstjänsten. PingAccess placeras framför hello appar och översätter hello åtkomst-token från Azure AD till ett sidhuvud så att programmet hello tar emot hello autentisering i hello-format som den kan läsa.
+PingAccess för Azure Active Directory är en uppsättning PingAccess som gör att du kan ge användare åtkomst till och enkel inloggning till program som använder huvuden för autentisering. Programmet Proxy behandlar apparna som någon annan, med hjälp av Azure AD för att autentisera åtkomst och skicka trafik via kopplingstjänsten. PingAccess placeras framför apparna och översätter åtkomst-token från Azure AD till ett sidhuvud så att programmet tar emot autentiseringen i det format som den kan läsa.
 
-Användarna kommer inte se något annat när de loggar in toouse ditt företags-appar. De kan fortsätta att arbeta från var som helst på vilken enhet som helst. 
+Användarna kommer inte se något annat när de loggar in att använda din företags-appar. De kan fortsätta att arbeta från var som helst på vilken enhet som helst. 
 
-Eftersom hello Application Proxy kopplingar direkt remote trafik tooall appar oavsett deras autentiseringstyp, kommer de fortsätta tooload saldo automatiskt, samt.
+Eftersom Application Proxy-kopplingar dirigera remote trafik till alla appar oavsett deras autentiseringstyp, kommer de fortsätta att belastningsutjämna automatiskt, samt.
 
 ## <a name="how-do-i-get-access"></a>Hur skaffar åtkomst?
 
-Eftersom det här scenariot erbjuds via ett partnerskap mellan Azure Active Directory och PingAccess, behöver du licenser för båda tjänsterna. Azure Active Directory Premium prenumerationer innehåller emellertid en grundläggande PingAccess licens som täcker in too20 program. Om du behöver toopublish fler än 20 huvud-baserade program, kan du köpa ytterligare en licens från PingAccess. 
+Eftersom det här scenariot erbjuds via ett partnerskap mellan Azure Active Directory och PingAccess, behöver du licenser för båda tjänsterna. Azure Active Directory Premium prenumerationer innehåller emellertid en grundläggande PingAccess licens som täcker upp till 20 program. Om du vill publicera fler än 20 huvud-baserade program kan du köpa ytterligare en licens från PingAccess. 
 
 Mer information finns i [Azure Active Directory-versioner](active-directory-editions.md).
 
 ## <a name="publish-your-application-in-azure"></a>Publicera programmet i Azure
 
-Den här artikeln är avsedd för personer som publicerar en app med det här scenariot för hello första gången. Det går igenom hur tooget igång med både program- och PingAccess, dessutom toohello publishing steg. Om du redan har konfigurerat båda tjänsterna men vill en uppdaterare på hello publicering steg kan du hoppa över hello kopplingsinstallationen och vidare för[lägga till din app tooAzure AD med Application Proxy](#add-your-app-to-Azure-AD-with-Application-Proxy).
+Den här artikeln är avsedd för personer som publicerar en app med det här scenariot för första gången. Det går igenom hur du kommer igång med både program- och PingAccess, utöver publicering stegen. Om du redan har konfigurerat båda tjänsterna men vill en uppdaterare för publishing steg du kan hoppa över kopplingsinstallationen av och gå vidare till [lägga till din app i Azure AD med Application Proxy](#add-your-app-to-Azure-AD-with-Application-Proxy).
 
 >[!NOTE]
->Eftersom det här scenariot är en koppling mellan Azure AD och PingAccess, vissa hello anvisningar finns på hello Ping identitet plats.
+>Eftersom det här scenariot är en koppling mellan Azure AD och PingAccess, vissa anvisningarna finns på webbplatsen Ping identitet.
 
 ### <a name="install-an-application-proxy-connector"></a>Installera en Application Proxy connector
 
-Om du redan har Application Proxy är aktiverat och har en koppling installeras, kan du hoppa över det här avsnittet och flyttar på för[lägga till din app tooAzure AD med Application Proxy](#add-your-app-to-azure-ad-with-application-proxy).
+Om du redan har Application Proxy är aktiverat och har en koppling installeras, kan du hoppa över det här avsnittet och gå vidare till [lägga till din app i Azure AD med Application Proxy](#add-your-app-to-azure-ad-with-application-proxy).
 
-hello Application Proxy connector är en Windows Server-tjänst som dirigerar hello trafik från din fjärranslutna anställda tooyour publicerade appar. Mer detaljerad Installationsinstruktioner finns [aktivera Application Proxy hello Azure-portalen](active-directory-application-proxy-enable.md).
+Application Proxy connector är en Windows Server-tjänst som dirigerar trafik från fjärranslutna anställda till publicerade appar. Mer detaljerad Installationsinstruktioner finns [aktivera Application Proxy på Azure-portalen](active-directory-application-proxy-enable.md).
 
-1. Logga in toohello [Azure-portalen](https://portal.azure.com) som global administratör.
+1. Logga in på den [Azure-portalen](https://portal.azure.com) som global administratör.
 2. Välj **Azure Active Directory** > **programproxy**.
-3. Välj **hämta anslutning** toostart hello Application Proxy connector hämtning. Följ installationsanvisningarna hello.
+3. Välj **hämta anslutning** att starta Application Proxy connector hämtningen. Följ installationsanvisningarna.
 
-   ![Aktivera Application Proxy och hämta hello connector](./media/application-proxy-ping-access/install-connector.png)
+   ![Aktivera Application Proxy och hämtar connector](./media/application-proxy-ping-access/install-connector.png)
 
-4. Hämta hello-anslutningen automatiskt aktivera Application Proxy för din katalog, men om inte du väljer **aktivera Application Proxy**.
+4. Hämtar anslutningen automatiskt aktivera Application Proxy för din katalog, men om inte du väljer **aktivera Application Proxy**.
 
 
-### <a name="add-your-app-tooazure-ad-with-application-proxy"></a>Lägg till din app tooAzure AD med Application Proxy
+### <a name="add-your-app-to-azure-ad-with-application-proxy"></a>Lägg till din app i Azure AD med Application Proxy
 
-Det finns två åtgärder som du behöver tootake i hello Azure-portalen. Du måste först toopublish ditt program med programproxy. Sedan måste toocollect viss information om hello-app som du kan använda under hello PingAccess steg.
+Det finns två åtgärder du måste vidta i Azure-portalen. Först måste du publicera ditt program med programproxy. Måste du samla in information om den app som du kan använda under PingAccess steg.
 
-Följ dessa steg toopublish din app. En mer detaljerad genomgång av steg 1 – 8, se [publicera program med Azure AD Application Proxy](application-proxy-publish-azure-portal.md).
+Följ dessa steg om du vill publicera en app. En mer detaljerad genomgång av steg 1 – 8, se [publicera program med Azure AD Application Proxy](application-proxy-publish-azure-portal.md).
 
-1. Om du inte i hello sista avsnittet, loggar du in toohello [Azure-portalen](https://portal.azure.com) som global administratör.
+1. Om du inte i det sista avsnittet, logga in på den [Azure-portalen](https://portal.azure.com) som global administratör.
 2. Välj **Azure Active Directory** > **företagsprogram**.
-3. Välj **Lägg till** hello överst i hello-bladet.
+3. Välj **Lägg till** längst upp på bladet.
 4. Välj **lokalt program**.
-5. Fyll i hello krävs fält med information om den nya appen. Använd följande riktlinjer för hello inställningar hello:
-   - **Intern URL**: anger normalt hello-URL som tar dig logga toohello appen på sidan när du är på hello företagsnätverket. I det här scenariot måste hello connector tootreat hello PingAccess proxy som hello framsidan hello-appen. Använd följande format: `https://<host name of your PA server>:<port>`. hello porten är 3000 som standard, men du kan konfigurera i PingAccess.
+5. Fyll i de obligatoriska fälten med information om den nya appen. Använd följande riktlinjer för inställningarna:
+   - **Intern URL**: normalt du ange en URL som tar dig till inloggningssidan för appens när du är på företagsnätverket. I det här scenariot måste kopplingen behandla PingAccess-proxy som sidan främre i appen. Använd följande format: `https://<host name of your PA server>:<port>`. Porten är 3000 som standard, men du kan konfigurera i PingAccess.
    - **Förautentiseringsmetoden**: Azure Active Directory
    - **Översätta URL: en i sidhuvuden**: Nej
 
    >[!NOTE]
-   >Om det här är ditt första program använder port 3000 toostart och gå tillbaka tooupdate den här inställningen om du ändrar konfigurationen PingAccess. Om det här är en app i andra eller senare behöver detta toomatch hello lyssnare som du har konfigurerat i PingAccess. Lär dig mer om [lyssnare i PingAccess](https://documentation.pingidentity.com/pingaccess/pa31/index.shtml#Listeners.html).
+   >Om det här är ditt första program Använd port 3000 att starta och gå tillbaka till att uppdatera den här inställningen om du ändrar konfigurationen PingAccess. Om det här är en app i andra behöver detta matcha lyssnare som du har konfigurerat i PingAccess. Lär dig mer om [lyssnare i PingAccess](https://documentation.pingidentity.com/pingaccess/pa31/index.shtml#Listeners.html).
 
-6. Välj **Lägg till** längst hello hello-bladet. Programmet har lagts till och hello snabb start-menyn öppnas.
-7. Hello snabb start-menyn, Välj **tilldela en användare för att testa**, och Lägg till minst en användare toohello program. Kontrollera att det här testet kontot har åtkomst toohello lokalt program.
-8. Välj **tilldela** toosave hello test Användartilldelning.
-9. På bladet för hantering av hello appen, Välj **enkel inloggning**.
-10. Välj **huvud-baserade inloggning** hello nedrullningsbara menyn. Välj **Spara**.
+6. Välj **Lägg till** längst ned på bladet. Programmet har lagts till och snabb start-menyn öppnas.
+7. Snabb startmenyn väljer du **tilldela en användare för att testa**, och Lägg till minst en användare till programmet. Kontrollera att det här testet kontot har åtkomst till lokala program.
+8. Välj **tilldela** spara Användartilldelning test.
+9. På bladet hantering väljer **enkel inloggning**.
+10. Välj **huvud-baserade inloggning** från den nedrullningsbara menyn. Välj **Spara**.
 
    >[!TIP]
-   >Om det här är första gången du använder huvud-baserade enkel inloggning måste tooinstall PingAccess. toomake till din Azure-prenumeration associeras automatiskt med PingAccess installationen, Använd hello länk på den här sidan för enkel inloggning toodownload PingAccess. Du kan öppna hello hämtningsplats nu eller kommer tillbaka toothis sidan senare. 
+   >Om det här är första gången du använder huvud-baserade enkel inloggning måste du installera PingAccess. Kontrollera att din Azure-prenumeration associeras automatiskt med PingAccess installationen genom att använda länken på den här sidan för enkel inloggning för att hämta PingAccess. Du kan öppna hämtningsplatsen nu eller försöka till den här sidan igen senare. 
 
    ![Välj huvud-baserade inloggning](./media/application-proxy-ping-access/sso-header.PNG)
 
-11. Stäng hello Enterprise program bladet eller bläddra alla hello sätt toohello vänstra tooreturn toohello Azure Active Directory-menyn.
+11. Stäng bladet för Enterprise-program eller rulla längst till vänster om du vill gå tillbaka till Azure Active Directory-menyn.
 12. Välj **App registreringar**.
 
    ![Välj App-registreringar](./media/application-proxy-ping-access/app-registrations.png)
 
-13. Välj hello-app som du just lagt till, sedan **Reply URL: er**.
+13. Välj den app som du just lagt till, sedan **Reply URL: er**.
 
    ![Välj svars-URL: er](./media/application-proxy-ping-access/reply-urls.png)
 
-14. Kontrollera toosee om hello externa URL: en som du tilldelade tooyour app i steg 5 i hello Reply URL-listan. Om den inte gör du det nu.
-15. På inställningsbladet för hello app väljer **nödvändiga behörigheter**.
+14. Kontrollera om det finns externa URL: en som tilldelats din app i steg 5 i Reply URL-listan. Om den inte gör du det nu.
+15. På inställningsbladet väljer **nödvändiga behörigheter**.
 
   ![Välj behörigheter som krävs](./media/application-proxy-ping-access/required-permissions.png)
 
-16. Välj **Lägg till**. Hello API, Välj **Windows Azure Active Directory**, sedan **Välj**. Hello behörigheter, Välj **läsa och skriva alla program** och **logga in och Läs användarprofil**, sedan **Välj** och **klar**.  
+16. Välj **Lägg till**. API: et, Välj **Windows Azure Active Directory**, sedan **Välj**. Behörigheter, Välj **läsa och skriva alla program** och **logga in och Läs användarprofil**, sedan **Välj** och **klar**.  
 
   ![Välj behörigheter](./media/application-proxy-ping-access/select-permissions.png)
 
-### <a name="collect-information-for-hello-pingaccess-steps"></a>Samla in information för hello PingAccess steg
+### <a name="collect-information-for-the-pingaccess-steps"></a>Samla in information för stegen PingAccess
 
 1. På inställningsbladet din app väljer **egenskaper**. 
 
   ![Välj egenskaper](./media/application-proxy-ping-access/properties.png)
 
-2. Spara hello **program-Id** värde. Detta används för hello klient-ID när du konfigurerar PingAccess.
-3. På inställningsbladet för hello app väljer **nycklar**.
+2. Spara den **program-Id** värde. Detta används för klient-ID när du konfigurerar PingAccess.
+3. På inställningsbladet väljer **nycklar**.
 
   ![Välj nycklar](./media/application-proxy-ping-access/Keys.png)
 
-4. Skapa en nyckel genom att ange en beskrivning av nyckeln och väljer ett förfallodatum hello nedrullningsbara menyn.
-5. Välj **Spara**. Ett GUID som visas i hello **värdet** fältet.
+4. Skapa en nyckel genom att ange en beskrivning av nyckeln och väljer ett förfallodatum nedrullningsbara menyn.
+5. Välj **Spara**. Ett GUID som visas i den **värdet** fältet.
 
-  Spara det här värdet, som du inte kan toosee den igen när du stänga fönstret.
+  Spara det här värdet nu, eftersom du inte kommer att kunna se den igen när du har stängt det här fönstret.
 
   ![Skapa en ny nyckel](./media/application-proxy-ping-access/create-keys.png)
 
-6. Stäng hello App registreringar bladet eller bläddra alla hello sätt toohello vänstra tooreturn toohello Azure Active Directory-menyn.
+6. Stäng appen registreringar bladet eller rulla åt vänster gå tillbaka till Azure Active Directory-menyn.
 7. Välj **egenskaper**.
-8. Spara hello **katalog-ID** GUID.
+8. Spara den **katalog-ID** GUID.
 
-### <a name="optional---update-graphapi-toosend-custom-fields"></a>Valfritt: uppdatera GraphAPI toosend anpassade fält
+### <a name="optional---update-graphapi-to-send-custom-fields"></a>Valfritt: uppdatera GraphAPI att skicka anpassade fält
 
-En lista över säkerhetstoken som Azure AD skickar för autentisering, se [Azure AD tokenreferens](./develop/active-directory-token-and-claims.md). Om du behöver ett anpassat anspråk som skickar andra token kan du använda GraphAPI tooset hello app fältet *acceptMappedClaims* för**SANT**. Du kan använda Azure AD Graph-Utforskaren eller MS Graph toomake den här konfigurationen. 
+En lista över säkerhetstoken som Azure AD skickar för autentisering, se [Azure AD tokenreferens](./develop/active-directory-token-and-claims.md). Om du behöver ett anpassat anspråk som skickar andra token kan använda GraphAPI för att ange fältet app *acceptMappedClaims* till **SANT**. Du kan använda Azure AD Graph-Utforskaren eller MS Graph för att göra den här konfigurationen. 
 
 Det här exemplet använder diagram Explorer:
 
@@ -146,15 +146,15 @@ PATCH https://graph.windows.net/myorganization/applications/<object_id_GUID_of_y
 
 ## <a name="download-pingaccess-and-configure-your-app"></a>Hämta PingAccess och konfigurera din app
 
-Nu när du har slutfört alla steg i hello Azure Active Directory-installationen, kan du gå vidare tooconfiguring PingAccess. 
+Nu när du har slutfört alla steg för Azure Active Directory-installationen, kan du gå vidare till Konfigurera PingAccess. 
 
-hello detaljerade anvisningar för hello PingAccess en del av det här scenariot fortsätter i hello Ping Identity-dokumentation [konfigurera PingAccess för Azure AD](https://docs.pingidentity.com/bundle/paaad_m_ConfigurePAforMSAzureADSolution_paaad43/page/pa_c_PAAzureSolutionOverview.html).
+Detaljerade anvisningar för PingAccess en del av det här scenariot fortsätter i dokumentationen för Ping identitet [konfigurera PingAccess för Azure AD](https://docs.pingidentity.com/bundle/paaad_m_ConfigurePAforMSAzureADSolution_paaad43/page/pa_c_PAAzureSolutionOverview.html).
 
-Dessa steg beskriver hur du hello processen för att skaffa en PingAccess-konto om du inte redan har ett, installera hello PingAccess Server och skapa en Azure AD OIDC leverantörsanslutning med hello katalog-ID som du kopierade från hello Azure-portalen. Sedan kan du använda hello program-ID och nyckel värden toocreate en webbsessionen på PingAccess. Sedan kan du konfigurera identitetsmappning och skapa en virtuell värd, plats och program.
+Dessa steg vägleder dig genom processen att skaffa en PingAccess-konto om du inte redan har ett, installerar PingAccess-servern och skapa en Azure AD OIDC Provider-anslutning med katalog-ID som du kopierade från Azure-portalen. Sedan kan du använda program-ID och nyckel värden, för att skapa en webbsessionen på PingAccess. Sedan kan du konfigurera identitetsmappning och skapa en virtuell värd, plats och program.
 
 ### <a name="test-your-app"></a>Testa din app
 
-När du har slutfört de här stegen kan ska din app vara igång. tootest, öppna en webbläsare och gå toohello externa URL: en som du skapade när du har publicerat hello app i Azure. Logga in med hello testkonto du tilldelade toohello appen.
+När du har slutfört de här stegen kan ska din app vara igång. Prova genom att öppna en webbläsare och gå till den externa URL som du skapade när du har publicerat appen i Azure. Logga in med kontot test som du tilldelade till appen.
 
 ## <a name="next-steps"></a>Nästa steg
 

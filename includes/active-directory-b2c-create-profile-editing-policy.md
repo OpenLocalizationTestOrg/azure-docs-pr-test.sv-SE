@@ -1,28 +1,28 @@
-tooenable profil redigering för ditt program måste toocreate en profil redigerar principen. Den här principen beskriver hello upplevelser som konsumenter går igenom under profil redigering och hello innehållet i token som programmet hello får på lyckades.
+Du aktiverar profilredigering i programmet genom att först skapa en princip för redigering av profil. Principen beskriver hur profilredigering går till för konsumenterna och innehållet i de token som programmet tar emot när åtgärden har slutförts.
 
 [!INCLUDE [active-directory-b2c-portal-navigate-b2c-service](active-directory-b2c-portal-navigate-b2c-service.md)]
 
-Välj hello principer under inställningar **redigera principer profiler** och på **+ Lägg till**.
+I principavsnittet i inställningar väljer du **Profilredigeringsprinciper** och klickar på **+ Lägg till**.
 
-![Välj profil ändra principer och klicka hello Lägg till](media/active-directory-b2c-create-profile-editing-policy/add-b2c-editing-policy.png)
+![Välj Profilredigeringsprinciper och klicka på Lägg till](media/active-directory-b2c-create-profile-editing-policy/add-b2c-editing-policy.png)
 
-Ange en princip **namn** för ditt program tooreference. Ange till exempel `SiPe`.
+Ange ett **namn** på principen för programmet. Ange till exempel `SiPe`.
 
 Välj **Identitetsprovidrar** och markera **Inloggning från lokalt konto**. Du kan också välja leverantörer via sociala nätverk om det redan har konfigurerats. Klicka på **OK**.
 
-![Välj lokal inloggning för kontot som en identitetsleverantör och klicka på hello OK](media/active-directory-b2c-create-profile-editing-policy/add-b2c-editing-identity-providers.png)
+![Välj Inloggning från lokalt konto som identitetsprovider och klicka på OK](media/active-directory-b2c-create-profile-editing-policy/add-b2c-editing-identity-providers.png)
 
-Välj **Profilattribut**. Välj attribut hello konsumenten kan visa och redigera sin profil. Välj till exempel **land/region**, **visningsnamn** och **postnummer**. Klicka på **OK**.
+Välj **Profilattribut**. Välj attribut som användarna kan visa och redigera i sina profiler. Välj till exempel **land/region**, **visningsnamn** och **postnummer**. Klicka på **OK**.
 
-![Välj vissa attribut och klicka på hello OK](media/active-directory-b2c-create-profile-editing-policy/add-b2c-editing-attributes.png)
+![Välj några attribut och klicka på OK](media/active-directory-b2c-create-profile-editing-policy/add-b2c-editing-attributes.png)
 
-Välj **Programanspråk**. Välj anspråk som du vill ska returneras i hello auktorisering token skickas tillbaka tooyour program efter en lyckad profil redigeringsmiljön. Välj till exempel **Visningsnamn**, **Postnummer**.
+Välj **Programanspråk**. Välj anspråk som du vill ska returneras i de auktoriseringstoken som skickas tillbaka till programmet efter en slutförd redigering av profil. Välj till exempel **Visningsnamn**, **Postnummer**.
 
 ![Välj några programanspråk och klicka på OK](media/active-directory-b2c-create-profile-editing-policy/add-b2c-editing-application-claims.png)
 
-Klicka på **skapa** tooadd hello princip. hello principen anges som **B2C_1_SiPe**. Hej **B2C_1_** prefix är tillagda toohello namn.
+Klicka på **Skapa** för att lägga till principen. Principen visas i listan som **B2C_1_SiPe**. Prefixet **B2C_1_** läggs till i namnet.
 
-Öppna hello princip genom att välja **B2C_1_SiPe**. Kontrollera hello inställningarna i hello tabell och klicka sedan på **kör nu**.
+Öppna principen genom att välja **B2C_1_SiPe**. Kontrollera inställningarna i tabellen och klicka på **Kör nu**.
 
 ![Välj princip och kör den](media/active-directory-b2c-create-profile-editing-policy/run-b2c-editing-policy.png)
 
@@ -31,8 +31,8 @@ Klicka på **skapa** tooadd hello princip. hello principen anges som **B2C_1_SiP
 | **Program** | Contoso B2C-app |
 | **Välj svarswebbadress** | `https://localhost:44316/` |
 
-En ny webbläsarflik öppnas och du kan kontrollera hello redigera användarfunktioner som konfigurerats för profiler.
+En ny webbläsarflik öppnas och du kan kontrollera hur profilredigeringen går till.
 
 > [!NOTE]
-> Den tar upp tooa minut för att skapa en princip och uppdaterar tootake effekt.
+> Det kan ta någon minut att skapa en princip och innan uppdateringarna börjar gälla.
 >

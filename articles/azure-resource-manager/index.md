@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure Resource Manager-dokumentation – självstudier, API-referens | Microsoft Docs"
-description: "Lär dig hur toouse Resource Manager toodeploy och hantera lösning resurser som en grupp och toocreate mallar för distribution av konsekvent och repeterbara resurs."
+title: "Dokumentation om Azure Resource Manager – Självstudier, API-referens | Microsoft Docs"
+description: "Lär dig hur du använder Resource Manager för att distribuera och hantera lösningsresurser som en grupp och hur du skapar mallar för konsekvent och repeterbar resursdistribution."
 services: azure-resource-manager
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: dc920b14e84bbad1a178fc91a61a1d2642d644b1
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: ab6725298c9e9c496d2e20b4e68ff72af1432bb2
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 #<a name="azure-resource-manager-documentation"></a>Azure Resource Manager-dokumentation
 
-Lär dig hur toouse Resource Manager toodeploy, övervaka och hantera resurser i lösningen som en grupp. Visar självstudier, API-referenserna och övrig dokumentation hur tooset resurs grupper och skapa mallar för distribution av konsekvent och repeterbara.
+Lär dig hur du använder Resource Manager för att distribuera, övervaka och hantera lösningsresurser som en grupp. Självstudiekurser, API-referenser och annan dokumentation visar hur du konfigurerar resursgrupper och skapar mallar för konsekvent och repeterbar resursdistribution.
 
 <ul class="panelContent cardsFTitle">
     <li>

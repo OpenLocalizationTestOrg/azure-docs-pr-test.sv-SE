@@ -1,6 +1,6 @@
 ---
-title: aaaManaging program med Azure Active Directory | Microsoft Docs
-description: "Den här artikeln hello fördelarna med att integrera Azure Active Directory med din lokala, moln och SaaS-program."
+title: Hantera program med Azure Active Directory | Microsoft Docs
+description: "Den här artikeln fördelarna med att integrera Azure Active Directory med din lokala, moln och SaaS-program."
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -14,101 +14,101 @@ ms.workload: identity
 ms.date: 07/05/2017
 ms.author: markvi
 ms.reviewer: asteen
-ms.openlocfilehash: 0016f8b433e101d8a150bc6d9be3931851578241
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: b8f0cfdb468094bc761d6b939ca318fcfbea3ea4
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="managing-applications-with-azure-active-directory"></a>Hantera program med Azure Active Directory
-Företag har två grundläggande krav för alla program utöver hello faktiska arbetsflödet eller innehåll:
+Utöver det faktiska arbetsflödet eller innehåll har företag två grundläggande krav för alla program:
 
-1. tooincrease produktivitet program ska vara enkelt toodiscover och åtkomst
-2. tooenable säkerhets- och styrning hello organisation behöver kontroll och tillsyn på vem som kan och faktiskt har åtkomst till varje program
+1. Om du vill öka produktiviteten ska program vara enkelt att identifiera och komma åt
+2. Om du vill aktivera säkerhet och styrning behöver organisationen kontroll och tillsyn på vem som kan och faktiskt har åtkomst till varje program
 
-I hello world av molnprogram detta uppnås bäst med identiteten toocontrol ”*som tillåts toodo vad*”.
+Inom molnprogram detta uppnås bäst identiteten för att styra ”*som är tillåten att göra vad*”.
 
 Inom datorsammanhang terminologi:
 
-* *Som* kallas *identitet* -hello hantering av användare och grupper
-* *Vad* kallas *åtkomsthantering* – hello hantering av åtkomst tooprotected resurser
+* *Som* kallas *identitet* -hantering av användare och grupper
+* *Vad* kallas *åtkomsthantering* – hantering av åtkomst till skyddade resurser
 
-Båda komponenterna tillsammans kallas *identitet och åtkomst Management (IAM)*, som definieras av hello [Gartner](http://www.gartner.com/it-glossary/identity-and-access-management-iam) som ”*hello säkerhet ämne som möjliggör hello höger enskilda användare tooaccess hello rätt resurser på hello Högerklicka gånger hello rätt skäl*”.
+Båda komponenterna tillsammans kallas *identitet och åtkomst Management (IAM)*, som definieras av den [Gartner](http://www.gartner.com/it-glossary/identity-and-access-management-iam) som ”*undantas säkerhet som kan rätt personer åtkomst till rätt resurser i högra gånger på grund av rätt*”.
 
-Vad är problemet hello okej? Om IAM *inte hanteras* på ett ställe med en integrerad lösning:
+Okej vad är problemet? Om IAM *inte hanteras* på ett ställe med en integrerad lösning:
 
-* Identity-administratörer har tooindividually skapa och uppdatera användarkonton i alla program separat, en redundant och tidskrävande aktivitet.
-* Användare har toomemorize tooaccess hello av flera referenser-program som de behöver toowork med. Därför tenderar toowrite ned sina lösenord användare eller använda andra lösningar för hantering av lösenord som innehåller andra data säkerhetsrisker.
-* Redundant tidskrävande aktiviteter minska hello tid användare och administratörer som arbetar på affärsverksamhet som ökar din verksamhet slutresultatet.
+* Identity-administratörer har individuellt skapa och uppdatera användarkonton i alla program separat, en redundant och tidskrävande aktivitet.
+* Användarna behöver komma ihåg flera autentiseringsuppgifter för att komma åt de program som de behöver för att arbeta med. Därför tenderar användare att skriva ned sina lösenord eller använda andra lösningar för hantering av lösenord som innehåller andra data säkerhetsrisker.
+* Redundant tidskrävande aktiviteter minska mängden tid användare och administratörer som arbetar på affärsverksamhet som ökar din verksamhet slutresultatet.
 
 Så vad förhindrar normalt organisationer från att anta integrerad IAM-lösningar?
 
-* De flesta tekniska lösningar baseras på programvaruplattformar som behöver toobe distribueras och av varje organisation för sina egna program.
+* De flesta tekniska lösningar baseras på programvaruplattformar som måste distribueras och av varje organisation för sina egna program.
 * Molnprogram antas ofta till en högre nivå än IT-organisation kan integrera med befintliga IAM.
-* Säkerhet och övervaka verktygsuppsättning kräver ytterligare anpassning och integrering tooachieve omfattande E2E scenarier.
+* Säkerhet och övervaka verktygsuppsättning kräver ytterligare anpassning och integrering för att uppnå omfattande E2E-scenarier.
 
 ## <a name="azure-active-directory-integrated-with-applications"></a>Azure Active Directory-integrerad med program
 Azure Active Directory är Microsofts omfattande identitet som en tjänst (IDaaS) som:
 
 * Aktiverar IAM som en tjänst i molnet 
 * Tillhandahåller centrala hantering, enkel inloggning (SSO) och rapportering 
-* Stöder integrerad åtkomsthantering för [tusentals program](https://azure.microsoft.com/marketplace/active-directory/) i hello programgalleriet, inklusive Salesforce, Google Apps, rutan, Concur och mycket mer. 
+* Stöder integrerad åtkomsthantering för [tusentals program](https://azure.microsoft.com/marketplace/active-directory/) i programgalleriet inklusive Salesforce, Google Apps, rutan, Concur och mycket mer. 
 
-Med Azure Active Directory, alla program som du publicerar för partner och kunder (business eller konsumenten) har hello samma funktioner för hantering av identiteter och åtkomst.<br> Det här kan du toosignificantly minska din driftskostnader.
+Med Azure Active Directory, alla program som du publicerar för partner och kunder (business eller konsumenten) har samma identitet och åtkomst hanteringsfunktioner.<br> Detta gör att du kan avsevärt minska din driftskostnader.
 
-Vad händer om du behöver tooimplement ett program som ännu inte finns i hello programgalleriet? Här är lite mer tid än att konfigurera enkel inloggning för program från hello programgalleriet ger Azure AD dig en guide som hjälper dig med hello konfiguration.
+Vad händer om du behöver implementera ett program som ännu inte finns i programgalleriet? Här är lite mer tid än att konfigurera enkel inloggning för program från galleriet programmet ger Azure AD dig en guide som hjälper dig med konfigurationen.
 
-hello-värdet för Azure AD är mer omfattande än ”bara” molnprogram. Du kan också använda den med lokala program genom att tillhandahålla säker fjärråtkomst. Du kan undvika hello hello behovet av VPN-anslutningar eller andra traditionella fjärråtkomst management-implementeringar med säker fjärråtkomst.
+Värdet för Azure AD är mer omfattande än ”bara” molnprogram. Du kan också använda den med lokala program genom att tillhandahålla säker fjärråtkomst. Med säker fjärråtkomst, kan du bli kvitt på behovet av VPN-anslutningar eller andra traditionella fjärråtkomst management-implementeringar.
 
-Genom att tillhandahålla central hantering och enkel inloggning (SSO) för alla program, Azure AD innehåller hello lösning toohello huvuddata problem med säkerhet och produktivitet.
+Azure AD innehåller lösningen på problem med de viktigaste data säkerhet och produktivitet genom att tillhandahålla central hantering och enkel inloggning (SSO) för alla program.
 
-* Användare kan komma åt flera program med en inloggning och ger mer tid tooincome genererar eller affärsenhet operations aktiviteter.
-* Identity-administratörer kan hantera åtkomst tooapplications på ett ställe.
+* Användare kan komma åt flera program med en inloggning ger mer tid till intäkter genererar eller affärsenhet operations aktiviteter.
+* Identity-administratörer kan hantera åtkomst till program på en plats.
 
-hello-förmån för hello användare och för ditt företag är uppenbara. Låt oss ta en närmare titt på hello fördelar för identitetsadministratör och hello organisation.
+Fördelen för användaren och för ditt företag är uppenbara. Låt oss ta en närmare titt på fördelarna för identitetsadministratör och organisationen.
 
 ## <a name="integrated-application-benefits"></a>Fördelar med integrerat program
-hello SSO-processen har två steg:
+SSO-processen har två steg:
 
-* Autentisering, hello processen att validera hello användarens identitet.
-* Auktorisering, hello beslut tooenable eller blockera åtkomst tooa resurs med en åtkomstprincip.
+* Autentisering, hur du verifierar användarens identitet.
+* Auktorisering, beslutet att aktivera eller blockera åtkomst till en resurs med en åtkomstprincip.
 
-När du använder Azure AD toomanage program och aktivera enkel inloggning:
+När du använder Azure AD för att hantera program och aktivera enkel inloggning:
 
-* Autentisering görs på hello användarens lokala (t.ex. AD) eller Azure AD-kontot.
-* Auktorisering kör på hello Azure AD tilldelning och skydd princip för att säkerställa konsekvent slutanvändarupplevelse och gör att du tooadd tilldelning, platser och MFA villkoren på alla program, oavsett dess interna funktioner.
+* Autentisering görs på användarens lokala (t.ex. AD) eller Azure AD-kontot.
+* Auktorisering körs på Azure AD tilldelning och skydd principen för att säkerställa konsekvent slutanvändarupplevelse och gör att du kan lägga till tilldelning, platser och MFA villkor på alla program, oavsett dess interna funktioner.
 
-Den viktiga toounderstand som hello sätt hello auktorisering trätt i kraft på hello målprogrammet varierar beroende på hur programmet hello har integrerat med Azure AD.
+Det är viktigt att förstå att sätt tillståndet trätt i kraft på målprogrammet varierar beroende på hur programmet har integrerat med Azure AD.
 
-* **Redan integrerade program av tjänstleverantören** som Office 365 och Azure, de är program som skapats direkt på Azure AD och förlita dig på den för sina omfattande identitets- och hanteringsfunktioner. Åtkomst toothese program aktiveras via directory utfärdande av information och token.
-* **Redan integrerade program från Microsoft och anpassade program** dessa är oberoende molnprogram som förlitar sig på ett internt programkatalogen och kan användas oberoende av Azure AD. Åtkomst toothese program aktiveras genom att utfärda ett program autentiseringsuppgifter som har mappats tooan programmet konto. Beroende på hello programfunktioner kan hello autentiseringsuppgifter vara en federation token eller användarnamn och lösenord för ett konto som tidigare var etablerad på hello program.
-* **Lokala program** program som publicerats via hello Azure AD-programproxy främst att aktivera åtkomst tooon lokala program. Dessa program är beroende av en central lokal katalog som Windows Server Active Directory. Åtkomst toothese program aktiveras genom att utlösa hello proxy toodeliver hello programmet innehåll toohello slutanvändaren när respektera hello lokal inloggning krav.
+* **Redan integrerade program av tjänstleverantören** som Office 365 och Azure, de är program som skapats direkt på Azure AD och förlita dig på den för sina omfattande identitets- och hanteringsfunktioner. Åtkomst till dessa program aktiveras via kataloginformation och utfärdande.
+* **Redan integrerade program från Microsoft och anpassade program** dessa är oberoende molnprogram som förlitar sig på ett internt programkatalogen och kan användas oberoende av Azure AD. Åtkomst till dessa program har aktiverats genom att utfärda ett program autentiseringsuppgifter som mappas till ett konto för programmet. Beroende på programfunktioner kanske autentiseringsuppgifter en federation-token eller användarnamnet och lösenordet för ett konto som tidigare har etablerats i programmet.
+* **Lokala program** program som publicerats via Azure AD application proxy främst att aktivera åtkomst till lokala program. Dessa program är beroende av en central lokal katalog som Windows Server Active Directory. Åtkomst till dessa program har aktiverats genom att utlösa proxyn att leverera programinnehållet till användaren vid respektera lokal inloggning krav.
 
-Till exempel om en användare ansluter till din organisation, behöver du toocreate ett konto för hello användare i Azure AD för hello primära inloggning operationer. Om den här användaren kräver åtkomst tooa hanterade program, till exempel Salesforce kan du även behöver toocreate ett konto för den här användaren i Salesforce och länka det toohello Azure-konto toomake SSO arbete. När hello användare lämnar organisationen, är det lämpligt toodelete hello Azure AD-kontot och alla motsvarighet konton i hello IAM lagrar hello program hello användare har åtkomst till.
+Om en användare ansluter till din organisation, måste du skapa ett konto för användaren i Azure AD för de primära inloggning-operationerna. Om användaren behöver åtkomst till ett hanterat program, till exempel Salesforce, måste du också skapa ett konto för den här användaren i Salesforce och länka det till Azure-konto så att SSO fungerar. När användaren lämnar företaget bör du ta bort Azure AD-kontot och alla motsvarighet konton i IAM lagrar program som användaren har åtkomst till.
 
 ## <a name="access-detection"></a>Åtkomst-identifiering
-IT-avdelningar är ofta inte medvetna om hello molnprogram som används i moderna företag. Tillsammans med Cloud App Discovery ger Azure AD dig en lösning toodetect dessa program.
+IT-avdelningar är ofta inte medvetna om alla molnprogram som används i moderna företag. Tillsammans med Cloud App Discovery ger Azure AD dig en lösning för att identifiera dessa program.
 
 ## <a name="account-management"></a>Kontohantering
-Traditionellt hantera konton i hello olika program är en manuell process som utförs av IT eller stöd för personal i hello organisation. Azure AD automatiserad helt kontohantering över alla service provider integrerade program och de program som redan integrerade Microsoft stöder automatisk användaretablering eller SAML JIT.
+Hantera konton i olika program traditionellt är en manuell process som utförs av IT eller stöd för personal i organisationen. Azure AD automatiserad helt kontohantering över alla service provider integrerade program och de program som redan integrerade Microsoft stöder automatisk användaretablering eller SAML JIT.
 
 ## <a name="automated-user-provisioning"></a>Automatisk användaretablering
-Vissa program ange automation-gränssnitt för att skapa och ta bort (eller avaktivering) av konton. Om en provider erbjuder sådant gränssnitt kan utnyttjas den av Azure AD. Detta din driftskostnaderna minskar eftersom administrativa uppgifter sker automatiskt och förbättrar hello säkerheten för din miljö, eftersom det minskar hello risken för obehörig åtkomst.
+Vissa program ange automation-gränssnitt för att skapa och ta bort (eller avaktivering) av konton. Om en provider erbjuder sådant gränssnitt kan utnyttjas den av Azure AD. Detta din driftskostnaderna minskar eftersom administrativa uppgifter sker automatiskt och förbättrar säkerheten för din miljö, eftersom det minskar risken för obehörig åtkomst.
 
 ## <a name="access-management"></a>Åtkomsthantering
-Du kan använda Azure AD för att hantera tooapplications med enskilda eller regel drivs tilldelningar. Du kan också delegera åtkomst management toohello rätt personer i hello organisation att se till att hello bästa tillsyn och minska hello belastningen på supportavdelningen.
+Använda Azure AD kan du hantera åtkomst till program med hjälp av enskilda eller regel drivs tilldelningar. Du kan också delegera åtkomsthantering till rätt personer i organisationen säkerställa bästa tillsyn och minska belastningen på supportavdelningen.
 
 ## <a name="on-premises-applications"></a>Lokala program
-hello inbyggda programproxy kan du toopublish lokalt program tooyour användarna som resulterar i både konsekvent åtkomst till upplevelse med moderna molnet fördelar för programmet och hello från Azure AD-övervakning, rapportering och säkerhetsfunktioner .
+Den inbyggda i application proxy kan du publicera dina lokala program till användarna som resulterar i åtkomst både konsekvent upplevelse med moderna molnapp och fördelarna från funktionerna i Azure AD övervakning, rapportering och säkerhet.
 
 ## <a name="reporting-and-monitoring"></a>Övervakning och rapportering
-Azure AD innehåller förintegrerade rapporterings- och övervakningsfunktionerna som gör att du tooknow vem som har åtkomst till tooapplications och när de faktiskt används dem.
+Azure AD innehåller förintegrerade rapportering och övervakning av funktioner som gör att du vet vem som har tillgång till program och de faktiskt används.
 
 ## <a name="related-capabilities"></a>Relaterade funktioner
-Du kan skydda dina program med detaljerade åtkomstprinciper och förintegrerade MFA med Azure AD. Mer om Azure MFA finns toolearn [Azure MFA](https://azure.microsoft.com/services/multi-factor-authentication/).
+Du kan skydda dina program med detaljerade åtkomstprinciper och förintegrerade MFA med Azure AD. Läs mer om Azure MFA finns [Azure MFA](https://azure.microsoft.com/services/multi-factor-authentication/).
 
 ## <a name="getting-started"></a>Komma igång
-tooget igång integrera program med Azure AD ta en titt på hello [integrera Azure Active Directory med program komma igång](active-directory-integrating-applications-getting-started.md).
+Om du vill komma igång med att integrera program med Azure AD kan ta en titt på den [integrera Azure Active Directory med program komma igång](active-directory-integrating-applications-getting-started.md).
 
 ## <a name="see-also"></a>Se även
 [Artikelindex för programhantering i Azure Active Directory](active-directory-apps-index.md)

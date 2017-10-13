@@ -1,6 +1,6 @@
 ---
-title: "aaaGet igång med Azure IoT Hub-enhet twins (.NET/.NET) | Microsoft Docs"
-description: "Hur toouse Azure IoT Hub-enhet twins tooadd taggar och sedan använda en IoT-hubb-fråga. Du kan använda hello Azure IoT-enhet SDK för .NET tooimplement hello simulerade enheten appen och hello Azure IoT-tjänsten SDK för .NET tooimplement service-appen som lägger till hello taggar och kör hello IoT-hubb frågan."
+title: "Kom igång med Azure IoT Hub-enhet twins (.NET/.NET) | Microsoft Docs"
+description: "Hur du använder Azure IoT Hub-enhet twins att lägga till taggar och sedan använda en IoT-hubb-fråga. Du kan använda Azure IoT-enhet SDK för .NET för att implementera appen simulerade enheten och tjänsten Azure IoT SDK för .NET att implementera en service-app som lägger till taggar och IoT-hubb-frågan körs."
 services: iot-hub
 documentationcenter: node
 author: dsk-2015
@@ -14,27 +14,27 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/15/2017
 ms.author: dkshir
-ms.openlocfilehash: 7fa73ac896c44e79c6522d252cd1515bd6e7bb2b
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 6073d594117e69676b753a1e3af25fffa3583a2b
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="get-started-with-device-twins-netnet"></a>Kom igång med enheten twins (.NET/.NET)
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]
 
-Hello slutet av den här självstudiekursen måste de här apparna för .NET-konsolen:
+I slutet av den här kursen har du apparna .NET-konsolen:
 
-* **CreateDeviceIdentity**, en .NET-app som skapar en enhets-ID och tillhörande nyckeln tooconnect appen simulerade enheten.
+* **CreateDeviceIdentity**, en .NET-app som skapar en enhets-ID och associerade säkerhetsnyckeln ansluta din simulerade enhetsapp.
 * **AddTagsAndQuery**, en .NET backend-app som lägger till taggar och frågar enheten twins.
-* **ReportConnectivity**, en enhet .NET-app som simulerar en enhet som ansluter tooyour IoT-hubb med hello enhetsidentitet skapade tidigare och rapporterar tillståndet anslutningen.
+* **ReportConnectivity**, en enhet .NET-app som simulerar en enhet som ansluter till din IoT-hubb med enhetens identitet skapade tidigare och rapporterar tillståndet anslutningen.
 
 > [!NOTE]
-> hello artikel [Azure IoT SDK] [ lnk-hub-sdks] innehåller information om hello Azure IoT-SDK: er som du kan använda toobuild både enheten och backend-appar.
+> Artikeln [Azure IoT SDK] [ lnk-hub-sdks] innehåller information om Azure IoT-SDK: er som du kan använda för att skapa både enheten och backend-appar.
 > 
 > 
 
-toocomplete den här kursen behöver du hello följande:
+Den här kursen behöver du följande:
 
 * Visual Studio 2015 eller Visual Studio 2017.
 * Ett aktivt Azure-konto. (Om du inte har något konto kan du skapa ett [kostnadsfritt konto][lnk-free-trial] på bara några minuter.)
@@ -43,26 +43,26 @@ toocomplete den här kursen behöver du hello följande:
 
 [!INCLUDE [iot-hub-get-started-create-device-identity-portal](../../includes/iot-hub-get-started-create-device-identity-portal.md)]
 
-Om du vill toocreate hello enhetsidentitet programmässigt i stället kan du läsa hello motsvarande avsnitt i hello [ansluta din simulerade enhet tooyour IoT-hubb med hjälp av .NET] [ lnk-device-identity-csharp] artikel.
+Om du vill skapa enhetens identitet programmässigt i stället läsa motsvarande avsnitt i den [ansluta din simulerade enhet till din IoT-hubb med hjälp av .NET] [ lnk-device-identity-csharp] artikel.
 
-## <a name="create-hello-service-app"></a>Skapa hello service-appen
-I det här avsnittet skapar du en .NET-konsolapp (med C#) som lägger till platsen metadata toohello enheten dubbla som är associerade med **myDeviceId**. Därefter frågor hello enheten twins lagras i hello IoT-hubb hello enheter finns i hello oss och hello som rapporterats av en mobil anslutning.
+## <a name="create-the-service-app"></a>Skapa service-appen
+I det här avsnittet skapar du en .NET-konsolapp (med C#) som lägger till platsen metadata i enheten-dubbla som är associerade med **myDeviceId**. Frågar sedan enheten-twins lagras i IoT-hubb som att markera de enheter som finns i USA och de som rapporterats av en mobil anslutning.
 
-1. I Visual Studio, lägger du till en Visual C# klassiska skrivbordet projektet toohello aktuella lösning med hjälp av hello **konsolprogram** projektmall. Namnet hello projektet **AddTagsAndQuery**.
+1. I Visual Studio lägger du till ett Visual C# Classic Desktop-projekt i den aktuella lösningen med hjälp av projektmallen **Konsolprogram**. Namnge projektet **AddTagsAndQuery**.
    
     ![Nytt Visual C# Windows Classic Desktop-projekt][img-createapp]
-1. I Solution Explorer högerklickar du på hello **AddTagsAndQuery** projektet och klicka sedan på **hantera NuGet-paket...** .
-1. I hello **NuGet Package Manager** väljer **Bläddra** och Sök efter **microsoft.azure.devices**. Välj **installera** tooinstall hello **Microsoft.Azure.Devices** paketet och acceptera hello villkor för användning. Den här proceduren hämtar, installerar och lägger till en referens toohello [Azure IoT service SDK] [ lnk-nuget-service-sdk] NuGet-paketet och dess beroenden.
+1. I Solution Explorer högerklickar du på den **AddTagsAndQuery** projektet och klicka sedan på **hantera NuGet-paket...** .
+1. I den **NuGet Package Manager** väljer **Bläddra** och Sök efter **microsoft.azure.devices**. Välj **installera** att installera den **Microsoft.Azure.Devices** paketet och Godkänn användningsvillkoren. Denna procedur hämtar, installerar och lägger till en referens för [NuGet-paketetet SDK för Azure IoT-tjänster][lnk-nuget-service-sdk] och dess beroenden.
    
     ![Fönstret för NuGet-pakethanteraren][img-servicenuget]
-1. Lägg till följande hello `using` instruktioner överst hello i hello **Program.cs** fil:
+1. Lägg till följande `using`-uttryck överst i **Program.cs**-filen:
    
         using Microsoft.Azure.Devices;
-1. Lägg till följande fält toohello hello **programmet** klass. Ersätt hello platshållarvärde med hello IoT-hubb anslutningssträngen för hello-hubb som du skapade i föregående avsnitt i hello.
+1. Lägg till följande fält i klassen **Program**. Ersätt platshållarvärdet med IoT Hub-anslutningssträngen som du skapade i föregående avsnitt.
    
         static RegistryManager registryManager;
         static string connectionString = "{iot hub connection string}";
-1. Lägg till följande metod toohello hello **programmet** klass:
+1. Lägg till följande metod i klassen **Program**:
    
         public static async Task AddTagsAndQuery()
         {
@@ -87,54 +87,54 @@ I det här avsnittet skapar du en .NET-konsolapp (med C#) som lägger till plats
             Console.WriteLine("Devices in Redmond43 using cellular network: {0}", string.Join(", ", twinsInRedmond43UsingCellular.Select(t => t.DeviceId)));
         }
    
-    Hej **RegistryManager** klassen visar alla hello metoder krävs toointeract med enheten twins från hello-tjänsten. hello föregående kod först initierar hello **registryManager** objekt, och sedan hämtar hello enheten dubbla för **myDeviceId**, och slutligen uppdateras taggarna hello önskad platsinformation.
+    Den **RegistryManager** klassen innehåller alla metoder som krävs för att interagera med enheten twins från tjänsten. Föregående kod först initierar den **registryManager** objekt och hämtar enheten dubbla för **myDeviceId**, och slutligen uppdateras taggarna med informationen som önskad plats.
    
-    När du har uppdaterat, körs två frågor: hello väljer först endast hello enheten twins av enheter som finns i hello **Redmond43** anläggningar och hello andra förfinar hello frågan tooselect bara hello enheter som även är anslutna via mobilnät.
+    När du har uppdaterat, körs två frågor: först väljer enheten twins av enheter som finns i den **Redmond43** anläggningen och andra förfinar frågan för att markera de enheter som även är anslutna via mobilnät.
    
-    Observera att hello föregående kod när den skapar hello **frågan** objekt, anger ett maximalt antal returnerade dokument. Hej **frågan** objektet innehåller en **HasMoreResults** boolesk egenskap som du kan använda tooinvoke hello **GetNextAsTwinAsync** metoder flera gånger tooretrieve alla resultat. En metod som kallas **GetNextAsJson** är tillgänglig för resultat som är inte enheten twins, till exempel resultatet av aggregering frågor.
-1. Slutligen lägger du till följande rader toohello hello **Main** metoden:
+    Observera att föregående kod när det skapas den **frågan** objekt, anger ett maximalt antal returnerade dokument. Den **frågan** objektet innehåller en **HasMoreResults** boolesk egenskap som du kan använda för att anropa den **GetNextAsTwinAsync** metoder flera gånger för att hämta alla resultat. En metod som kallas **GetNextAsJson** är tillgänglig för resultat som är inte enheten twins, till exempel resultatet av aggregering frågor.
+1. Slutligen lägger du till följande rader till **Main**-metoden:
    
         registryManager = RegistryManager.CreateFromConnectionString(connectionString);
         AddTagsAndQuery().Wait();
-        Console.WriteLine("Press Enter tooexit.");
+        Console.WriteLine("Press Enter to exit.");
         Console.ReadLine();
 
-1. Hello Solution Explorer, öppna hello **ange Startprojekt...**  och se till att hello **åtgärd** för **AddTagsAndQuery** projektet är **starta**. Skapa hello lösning.
-1. Kör det här programmet genom att högerklicka på hello **AddTagsAndQuery** projekt och välja **felsöka**, följt av **Starta ny instans**. Du bör se en enhet i hello resultat för hello frågan ställa för alla enheter i **Redmond43** och ingen för hello-fråga som begränsar hello resultatet toodevices som använder ett mobilnät.
+1. I Solution Explorer, öppna den **ange Startprojekt...**  och kontrollera att den **åtgärd** för **AddTagsAndQuery** projektet är **starta**. Skapa lösningen.
+1. Kör det här programmet genom att högerklicka på den **AddTagsAndQuery** projekt och välja **felsöka**, följt av **Starta ny instans**. Du bör se en enhet i resultaten för frågan ställa för alla enheter i **Redmond43** och ingen för frågan som begränsar resultat till enheter som använder ett mobilnät.
    
     ![Resultatet av frågan i fönstret][img-addtagapp]
 
-I nästa avsnitt om hello, skapar du en enhetsapp som rapporterar hello anslutningsinformation och ändringar hello resultatet av frågan hello hello föregående avsnitt.
+I nästa avsnitt skapar du en enhetsapp som rapporterar information om anslutningar och ändras resultatet av frågan i föregående avsnitt.
 
-## <a name="create-hello-device-app"></a>Skapa hello enhetsapp
-I det här avsnittet skapar du en .NET-konsolapp som ansluter tooyour hubb som **myDeviceId**, och sedan uppdaterar rapporterade egenskaper toocontain hello informationen att servern är ansluten med hjälp av ett mobilnät.
+## <a name="create-the-device-app"></a>Skapa enhetsapp
+I det här avsnittet skapar du en .NET-konsolapp som ansluter till din hubb som **myDeviceId**, och sedan uppdaterar egenskaperna rapporterade att innehålla den information som den är ansluten med hjälp av ett mobilnät.
 
-1. I Visual Studio, lägger du till en Visual C# klassiska skrivbordet projektet toohello aktuella lösning med hjälp av hello **konsolprogram** projektmall. Namnet hello projektet **ReportConnectivity**.
+1. I Visual Studio lägger du till ett Visual C# Classic Desktop-projekt i den aktuella lösningen med hjälp av projektmallen **Konsolprogram**. Namnge projektet **ReportConnectivity**.
    
     ![Ny Visual C# Windows Classic enhetsapp][img-createdeviceapp]
     
-1. I Solution Explorer högerklickar du på hello **ReportConnectivity** projektet och klicka sedan på **hantera NuGet-paket...** .
-1. I hello **NuGet Package Manager** väljer **Bläddra** och Sök efter **microsoft.azure.devices.client**. Välj **installera** tooinstall hello **Microsoft.Azure.Devices.Client** paketet och acceptera hello villkor för användning. Den här proceduren hämtar, installerar och lägger till en referens toohello [Azure IoT-enhet SDK] [ lnk-nuget-client-sdk] NuGet-paketet och dess beroenden.
+1. I Solution Explorer högerklickar du på den **ReportConnectivity** projektet och klicka sedan på **hantera NuGet-paket...** .
+1. I den **NuGet Package Manager** väljer **Bläddra** och Sök efter **microsoft.azure.devices.client**. Välj **installera** att installera den **Microsoft.Azure.Devices.Client** paketet och Godkänn användningsvillkoren. Den här proceduren hämtar, installerar och lägger till en referens till den [Azure IoT-enhet SDK] [ lnk-nuget-client-sdk] NuGet-paketet och dess beroenden.
    
     ![NuGet-Pakethanteraren fönstret-klientappen][img-clientnuget]
-1. Lägg till följande hello `using` instruktioner överst hello i hello **Program.cs** fil:
+1. Lägg till följande `using`-uttryck överst i **Program.cs**-filen:
    
         using Microsoft.Azure.Devices.Client;
         using Microsoft.Azure.Devices.Shared;
         using Newtonsoft.Json;
 
-1. Lägg till följande fält toohello hello **programmet** klass. Ersätt hello platshållarvärde med anslutningssträngen för hello enheten som du antecknade i hello föregående avsnitt.
+1. Lägg till följande fält i klassen **Program**. Ersätt platshållaren värdet med den anslutningssträng för enheten som du antecknade i föregående avsnitt.
    
         static string DeviceConnectionString = "HostName=<yourIotHubName>.azure-devices.net;DeviceId=<yourIotDeviceName>;SharedAccessKey=<yourIotDeviceAccessKey>";
         static DeviceClient Client = null;
 
-1. Lägg till följande metod toohello hello **programmet** klass:
+1. Lägg till följande metod i klassen **Program**:
 
        public static async void InitClient()
         {
             try
             {
-                Console.WriteLine("Connecting toohub");
+                Console.WriteLine("Connecting to hub");
                 Client = DeviceClient.CreateFromConnectionString(DeviceConnectionString, TransportType.Mqtt);
                 Console.WriteLine("Retrieving twin");
                 await Client.GetTwinAsync();
@@ -146,9 +146,9 @@ I det här avsnittet skapar du en .NET-konsolapp som ansluter tooyour hubb som *
             }
         }
 
-    Hej **klienten** objektet innehåller alla hello-metoder som du behöver toointeract med enheten twins från hello enhet. Hej koden som visas ovan, initierar hello **klienten** objekt och hämtar hello enheten dubbla för **myDeviceId**.
+    Den **klienten** objektet innehåller de metoder som du behöver för att interagera med enheten twins från enheten. Koden som visas ovan, initierar den **klienten** objekt och hämtar sedan enheten dubbla för **myDeviceId**.
 
-1. Lägg till följande metod toohello hello **programmet** klass:
+1. Lägg till följande metod i klassen **Program**:
    
         public static async void ReportConnectivity()
         {
@@ -170,9 +170,9 @@ I det här avsnittet skapar du en .NET-konsolapp som ansluter tooyour hubb som *
             }
         }
 
-   Hej koden ovan uppdateringar **myDeviceId**har rapporterats egenskap med hello anslutningsinformation.
+   Koden ovan uppdateringar **myDeviceId**har rapporterats egenskapen med anslutningsinformation om.
 
-1. Slutligen lägger du till följande rader toohello hello **Main** metoden:
+1. Slutligen lägger du till följande rader till **Main**-metoden:
    
        try
        {
@@ -184,27 +184,27 @@ I det här avsnittet skapar du en .NET-konsolapp som ansluter tooyour hubb som *
             Console.WriteLine();
             Console.WriteLine("Error in sample: {0}", ex.Message);
        }
-       Console.WriteLine("Press Enter tooexit.");
+       Console.WriteLine("Press Enter to exit.");
        Console.ReadLine();
 
-1. Hello Solution Explorer, öppna hello **ange Startprojekt...**  och se till att hello **åtgärd** för **ReportConnectivity** projektet är **starta**. Skapa hello lösning.
-1. Kör det här programmet genom att högerklicka på hello **ReportConnectivity** projekt och välja **felsöka**, följt av **Starta ny instans**. Du bör se information om hello dubbla och sedan skicka anslutning som en *rapporterade egenskapen*.
+1. I Solution Explorer, öppna den **ange Startprojekt...**  och kontrollera att den **åtgärd** för **ReportConnectivity** projektet är **starta**. Skapa lösningen.
+1. Kör det här programmet genom att högerklicka på den **ReportConnectivity** projekt och välja **felsöka**, följt av **Starta ny instans**. Du bör se får dubbla information och sedan skickar anslutning som en *rapporterade egenskapen*.
    
-    ![Kör enhetsanslutning app tooreport][img-rundeviceapp]
+    ![Kör enhetsapp till rapporten-anslutning][img-rundeviceapp]
     
     
-1. Nu när hello enheten rapporterade dess anslutningsinformation, bör den visas i båda frågor. Kör hello .NET **AddTagsAndQuery** app toorun hello frågar igen. Den här gången **myDeviceId** ska visas i båda frågeresultaten.
+1. Nu när enheten rapporteras dess anslutningsinformation, bör den visas i båda frågor. Kör .NET **AddTagsAndQuery** app att köras frågorna igen. Den här gången **myDeviceId** ska visas i båda frågeresultaten.
    
     ![Enhetsanslutning som har rapporterats][img-tagappsuccess]
 
 ## <a name="next-steps"></a>Nästa steg
-I den här självstudiekursen konfigurerade en ny IoT-hubb i hello Azure-portalen och sedan skapa en enhetsidentitet i hello IoT hub identitetsregistret. Du lagt till enhetsmetadata som taggar från en backend-app och skrev en simulerad enhet app tooreport anslutning enhetsinformation i hello enheten dubbla. Du också lära sig hur tooquery informationen med hjälp av frågespråket för hello SQL-liknande IoT-hubb.
+I den här självstudiekursen konfigurerade du en ny IoT Hub på Azure Portal och skapade sedan en enhetsidentitet i IoT-hubbens identitetsregister. Du lagt till enhetsmetadata som taggar från en backend-app och skrev en simulerad enhetsapp till enheten anslutningsinformation i dubbla för enheten. Du också fått lära dig hur man frågar den här informationen med hjälp av frågespråket i SQL-liknande IoT-hubb.
 
-Använd hello följande resurser toolearn hur till:
+Använd följande resurser för att lära dig hur du:
 
-* Skicka telemetri från enheter med hello [Kom igång med IoT-hubb] [ lnk-iothub-getstarted] självstudiekursen
-* Konfigurera enheter med hjälp av enheten två egenskaper med hello [Använd önskad egenskaper tooconfigure enheter] [ lnk-twin-how-to-configure] självstudiekursen
-* Kontrollera enheter interaktivt (till exempel aktivera fläktar från en användare-kontrollerade app) med hello [metoder från direkt] [ lnk-methods-tutorial] kursen.
+* Skicka telemetri från enheter med den [Kom igång med IoT-hubb] [ lnk-iothub-getstarted] självstudiekursen
+* Konfigurera enheter med hjälp av enheten två egenskaper med den [Använd önskad egenskaper att konfigurera enheter] [ lnk-twin-how-to-configure] självstudiekursen
+* Kontrollera enheter interaktivt (till exempel aktivera fläktar från en användare-kontrollerade app) med den [metoder från direkt] [ lnk-methods-tutorial] kursen.
 
 <!-- images -->
 [img-servicenuget]: media/iot-hub-csharp-csharp-twin-getstarted/servicesdknuget.png

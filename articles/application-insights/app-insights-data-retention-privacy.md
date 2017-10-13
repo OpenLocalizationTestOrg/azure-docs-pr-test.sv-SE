@@ -1,5 +1,5 @@
 ---
-title: "aaaData kvarhållning och lagring i Azure Application Insights | Microsoft Docs"
+title: Datalagring och lagring i Azure Application Insights | Microsoft Docs
 description: "Kvarhållning och sekretess Principframställning"
 services: application-insights
 documentationcenter: 
@@ -13,155 +13,155 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/07/2017
 ms.author: bwren
-ms.openlocfilehash: 7823431d03a57db5268d2724a0604e40666009f8
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: ddb9fa516da66da0484619439848583a29e1f5c1
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Datainsamling, kvarhållning och lagring i Application Insights
 
 
-När du installerar [Azure Application Insights] [ start] SDK i din app, skickas telemetri om din app toohello moln. Naturligtvis finns vill ansvarar utvecklare tooknow exakt vilka data som skickas, vad som händer toohello data och hur de kan behålla kontrollen över den. I synnerhet kunde känsliga data skickas, där är den lagrade och hur säker är det? 
+När du installerar [Azure Application Insights] [ start] SDK i din app, skickas telemetri om din app till molnet. Naturligtvis finns ansvarar utvecklare som vill veta exakt vilken information som skickas, vad som händer med data och hur de kan behålla kontrollen över den. I synnerhet kunde känsliga data skickas, där är den lagrade och hur säker är det? 
 
-Först hello kort svar:
+Första kort svaret:
 
-* hello standard telemetri moduler som kör ”out of box hello” är inte troligt toosend känsliga data toohello service. hello telemetri är bekymrad över belastning, prestanda och användning mått, undantag rapporter och andra diagnostikdata. hello huvudanvändaren data visas i hello diagnostiska rapporter är URL: er; men din app i varje fall inte bör Placera känsliga data i oformaterad text i en URL.
-* Du kan skriva kod som skickar ytterligare telemetri om anpassade toohelp till diagnostik- och användningsdata för övervakning. (Den här utökningsbarhet är en bra funktion i Application Insights.) Det skulle vara möjligt, av misstag, toowrite detta kod så att den innehåller personlig och andra känsliga data. Om ditt program fungerar med sådana uppgifter, installerar du en omfattande granska processer tooall hello koden du skriver.
-* När du utvecklar och testar din app, är det enkelt tooinspect vad som ska skickas av hello SDK. hello data visas i hello felsökning utdata windows hello IDE och webbläsare. 
-* hello data lagras i [Microsoft Azure](http://azure.com) servrar i hello USA eller Europa. (Men din app kan köras var som helst.) Azure har [stark säkerhet processer och uppfyller ett brett spektrum av efterlevnadsstandarder](https://azure.microsoft.com/support/trust-center/). Endast du och din avsedda grupp har åtkomst till tooyour data. Microsoft-Personal kan ha begränsad åtkomst tooit endast under vissa begränsade omständigheter med dina kunskaper. Den är krypterad under överföringen, dock inte i hello-servrar.
+* De moduler som standard telemetri som kör ”out of box” är inte sannolikt att känsliga data ska skickas till tjänsten. Telemetrin är bekymrad över belastning, prestanda och användning mått, undantag rapporter och andra diagnostikdata. Huvudanvändaren data visas i diagnostiska rapporter är URL: er; men din app i varje fall inte bör Placera känsliga data i oformaterad text i en URL.
+* Du kan skriva kod som skickar ytterligare anpassad telemetri för att hjälpa dig med diagnostik- och användningsdata för övervakning. (Den här utökningsbarhet är en bra funktion i Application Insights.) Det är möjligt, av misstag att skriva koden så att den innehåller personlig och andra känsliga data. Om ditt program fungerar med sådana uppgifter bör du använda en noggrann granska processer på alla koden du skriver.
+* När du utvecklar och testar din app, är det enkelt att kontrollera vad som ska skickas av SDK. Data visas i Felsökning utdata windows IDE och webbläsare. 
+* Data lagras i [Microsoft Azure](http://azure.com) servrar i USA eller Europa. (Men din app kan köras var som helst.) Azure har [stark säkerhet processer och uppfyller ett brett spektrum av efterlevnadsstandarder](https://azure.microsoft.com/support/trust-center/). Endast du och din avsedda grupp har åtkomst till dina data. Microsoft-Personal kan ha begränsad åtkomst till den endast under vissa begränsade omständigheter med dina kunskaper. Den är krypterad under överföringen, dock inte i servrar.
 
-hello resten av den här artikeln utvecklar mer komplett svaren på dessa frågor. Det har utformats för toobe självständiga, så att du kan visa den toocolleagues som inte är en del av din arbetsgrupp.
+Resten av den här artikeln utvecklar mer komplett svaren på dessa frågor. Den har utformats för att vara fristående, så att du kan visa att kollegor som inte är en del av din arbetsgrupp.
 
 ## <a name="what-is-application-insights"></a>Vad är Application Insights?
-[Azure Application Insights] [ start] är en tjänst från Microsoft som hjälper dig att förbättra hello prestanda och användbarhet för live programmet. Det övervakar programmet alla hello gång den körs, både under testningen och när du har publicerat eller distribuera den. Application Insights skapar diagram och tabeller som visar, till exempel vilka tidpunkter på dagen som de flesta användare hur responsiv hello appen är och hur den hanteras av en extern källa för tjänster som den är beroende. Om det finns krascher, fel eller prestandaproblem kan söka du igenom hello telemetridata i detalj toodiagnose hello orsak. Och hello tjänsten skickar e-postmeddelanden om det finns ändringar i hello tillgänglighet och prestanda för din app.
+[Azure Application Insights] [ start] är en tjänst från Microsoft som hjälper dig att förbättra prestanda och användbarhet för live programmet. Det övervakar programmet den tid som den körs, både under testningen och när du har publicerat eller distribuera den. Application Insights skapar diagram och tabeller som visar dig, till exempel, vilka tider som du får de flesta användare, hur responsiv appen är och hur väl den hanteras av externa tjänster som den är beroende av. Om det finns krascher, fel eller prestandaproblem kan söka du igenom telemetridata detaljerat för att diagnosticera orsaken. Och tjänsten skickar du e-postmeddelanden om det finns några ändringar i tillgänglighet och prestanda för din app.
 
-I ordning tooget den här funktionen kan du installera en Application Insights SDK i ditt program blir en del av koden. När appen körs hello SDK övervakar driften och skickar telemetri toohello Application Insights-tjänsten. Det här är en molntjänst av [Microsoft Azure](http://azure.com). (Men Application Insights fungerar för alla program, inte bara de som finns i Azure.)
+För att få den här funktionen måste installera du en Application Insights SDK i ditt program blir en del av koden. När appen körs SDK övervakar driften och skickar telemetri till Application Insights-tjänsten. Det här är en molntjänst av [Microsoft Azure](http://azure.com). (Men Application Insights fungerar för alla program, inte bara de som finns i Azure.)
 
-![hello SDK i din app skickar telemetri toohello Application Insights-tjänsten.](./media/app-insights-data-retention-privacy/01-scheme.png)
+![SDK i din app skickas telemetri till Application Insights-tjänsten.](./media/app-insights-data-retention-privacy/01-scheme.png)
 
-hello Application Insights-tjänsten lagrar och analyserar hello telemetri. toosee hello analys eller Sök genom hello lagras telemetri du loggar in tooyour Azure-konto och öppna hello Application Insights-resurs för ditt program. Du kan också dela access toohello data med andra medlemmar i gruppen, eller med angivna Azure-prenumeranter.
+Application Insights-tjänsten lagrar och analyserar telemetrin. Om du vill se analys eller Sök igenom lagrade telemetri, logga in på ditt Azure-konto och öppna Application Insights-resurs för ditt program. Du kan också dela åtkomst till data med andra medlemmar i gruppen, eller med angivna Azure-prenumeranter.
 
-Du kan ha data exporterats från hello Application Insights-tjänsten, till exempel tooa databas eller tooexternal verktyg. Du kan ange varje verktyg med en särskild nyckel som du har fått från hello-tjänsten. hello nyckel kan återkallas om det behövs. 
+Du kan ha data som exporteras från Application Insights-tjänsten, till exempel till en databas eller till externa verktyg. Du kan ange varje verktyg med en särskild nyckel som hämtas från tjänsten. Nyckeln kan återkallas om det behövs. 
 
-Application Insights SDK är tillgängliga för en mängd olika typer: webbtjänster som finns i din egen J2EE eller ASP.NET-servrar eller i Azure; webbklienter – det vill säga hello kod som körs på en webbsida; -program och tjänster. appar för enheter, till exempel Windows Phone, iOS och Android. Alla skicka telemetri toohello samma tjänst.
+Application Insights SDK är tillgängliga för en mängd olika typer: webbtjänster som finns i din egen J2EE eller ASP.NET-servrar eller i Azure; Web klienter – det vill säga den kod som körs på en webbsida; -program och tjänster. appar för enheter, till exempel Windows Phone, iOS och Android. Alla skicka telemetri till samma tjänst.
 
 ## <a name="what-data-does-it-collect"></a>Vilka data samlar det?
-### <a name="how-is-hello-data-is-collected"></a>Hur är hello data samlas in?
+### <a name="how-is-the-data-is-collected"></a>Hur är data samlas in?
 Det finns tre datakällor för data:
 
-* hello SDK, som du integrerar med din app antingen [under utveckling](app-insights-asp-net.md) eller [vid körning](app-insights-monitor-performance-live-website-now.md). Det finns olika SDK: er för olika programtyper. Det finns också en [SDK för webbsidor](app-insights-javascript.md), som läses in i hello slutanvändarens webbläsare tillsammans med hello-sidan.
+* SDK, som du integrerar med din app antingen [under utveckling](app-insights-asp-net.md) eller [vid körning](app-insights-monitor-performance-live-website-now.md). Det finns olika SDK: er för olika programtyper. Det finns också en [SDK för webbsidor](app-insights-javascript.md), som läses in i den slutanvändarens webbläsare tillsammans med sidan.
   
-  * Varje SDK innehåller ett antal [moduler](app-insights-configuration-with-applicationinsights-config.md), som använder olika tekniker toocollect olika typer av telemetri.
-  * Om du installerar hello SDK under utveckling, kan du använda dess API toosend egna telemetri i tillägg toohello standard moduler. Den här telemetri om anpassade kan innehålla alla data som du vill toosend.
-* I vissa webbservrar finns också agenter som kör tillsammans med hello app och skicka telemetri om CPU, minne och användandet av nätverket. Till exempel virtuella Azure-datorer Docker-värdar och [J2EE servrar](app-insights-java-agent.md) kan ha dessa agenter.
-* [Tillgänglighetstester](app-insights-monitor-web-app-availability.md) processer som körs av Microsoft som skickar begäranden tooyour webbprogrammet med jämna mellanrum. hello resultat skickas toohello Application Insights-tjänsten.
+  * Varje SDK innehåller ett antal [moduler](app-insights-configuration-with-applicationinsights-config.md), som använder olika metoder för att samla in olika typer av telemetri.
+  * Du kan använda dess API för att skicka din egen telemetri, förutom modulerna som standard om du installerar SDK under utveckling. Den här telemetri om anpassade kan innehålla alla data som du vill skicka.
+* I vissa webbservrar finns också agenter som kör tillsammans med appen och skicka telemetri om CPU, minne och användandet av nätverket. Till exempel virtuella Azure-datorer Docker-värdar och [J2EE servrar](app-insights-java-agent.md) kan ha dessa agenter.
+* [Tillgänglighetstester](app-insights-monitor-web-app-availability.md) processer som körs av Microsoft som skickar begäranden till ditt webbprogram med jämna mellanrum. Resultatet skickas till Application Insights-tjänsten.
 
 ### <a name="what-kinds-of-data-are-collected"></a>Vilka typer av data samlas in?
-hello huvudkategorier är:
+Huvudkategorierna är:
 
-* [Web server telemetri](app-insights-asp-net.md) -HTTP-begäranden.  URI tidsåtgång tooprocess hello begäran, svarskod, klientens IP-adress. Sessions-id.
+* [Web server telemetri](app-insights-asp-net.md) -HTTP-begäranden.  URI: N, tid det tar att bearbeta begäran, svarskod, klientens IP-adress. Sessions-id.
 * [Webbsidor](app-insights-javascript.md) -sidan, användare och session räknas. Sidinläsningstider. Undantag. AJAX-anrop.
 * Prestandaräknare - minne, CPU, IO, användandet av nätverket.
 * Klienten och servern kontext - OS, språk, typ av enhet, webbläsare, skärmupplösning.
 * [Undantag](app-insights-asp-net-exceptions.md) och krascher - **stacken Dumpar**, skapa id, processortyp. 
-* [Beroenden](app-insights-asp-net-dependencies.md) -tooexternal tjänster, till exempel vila, SQL, AJAX-anrop. URI: N eller anslutningssträngen, varaktighet, lyckas, kommandot.
+* [Beroenden](app-insights-asp-net-dependencies.md) -anrop till externa tjänster, till exempel vila, SQL, AJAX. URI: N eller anslutningssträngen, varaktighet, lyckas, kommandot.
 * [Tillgänglighetstester](app-insights-monitor-web-app-availability.md) -varaktighet för test och steg, svar.
 * [Spårningsloggar](app-insights-asp-net-trace-logs.md) och [telemetri om anpassade](app-insights-api-custom-events-metrics.md) - **något du kod till din loggar eller telemetri**.
 
 [Mer information om](#data-sent-by-application-insights).
 
 ## <a name="how-can-i-verify-whats-being-collected"></a>Hur kan jag bekräfta vad samlas?
-Om du utvecklar hello-app med Visual Studio kör hello appen i felsökningsläge (F5). hello telemetri visas i utdatafönstret hello. Därifrån kan du kopiera den och formatera den som JSON för enkel kontroll. 
+Om du utvecklar programmet med Visual Studio kör appen i felsökningsläge (F5). Telemetrin visas i utdatafönstret. Därifrån kan du kopiera den och formatera den som JSON för enkel kontroll. 
 
 ![](./media/app-insights-data-retention-privacy/06-vs.png)
 
-Det finns också en mer lättläst vy i hello Diagnostics-fönstret.
+Det finns också ett mer lättläst visa i fönstret diagnostik.
 
 Öppna din webbläsare felsökning fönster för webbsidor.
 
-![Trycka på F12 och öppna fliken för hello-nätverk.](./media/app-insights-data-retention-privacy/08-browser.png)
+![Tryck på F12 och öppna fliken nätverk.](./media/app-insights-data-retention-privacy/08-browser.png)
 
-### <a name="can-i-write-code-toofilter-hello-telemetry-before-it-is-sent"></a>Kan jag skriva kod toofilter hello telemetri innan den skickas?
+### <a name="can-i-write-code-to-filter-the-telemetry-before-it-is-sent"></a>Kan jag skriva kod för att filtrera telemetrin innan den skickas?
 Detta skulle vara möjligt genom att skriva en [telemetri processor plugin](app-insights-api-filtering-sampling.md).
 
-## <a name="how-long-is-hello-data-kept"></a>Hur lång tid är hello data sparas?
-Rådata datapunkter (objekt som du kan fråga i Analytics och inspektera i sökningen) hålls för in too90 dagar. Om du behöver tookeep data längre än den som du kan använda [löpande export](app-insights-export-telemetry.md) toocopy den tooa storage-konto.
+## <a name="how-long-is-the-data-kept"></a>Hur länge sparas data?
+Rådata datapunkter (objekt som du kan fråga i Analytics och inspektera i sökningen) stannar i upp till 90 dagar. Om du behöver skydda data som är längre än den som du kan använda [löpande export](app-insights-export-telemetry.md) att kopiera den till ett lagringskonto.
 
 Sammanställda data (det vill säga antal, medelvärden och andra statistiska data som du ser i måttet Explorer) finns kvar på en kornighet på 1 minut under 90 dagar.
 
-## <a name="who-can-access-hello-data"></a>Vem som kan komma åt hello data?
-hello data är synliga tooyou och, om du har en organisationskonto gruppmedlemmarna. 
+## <a name="who-can-access-the-data"></a>Vem kan komma åt dessa data?
+Data är synliga för dig och, om du har en organisationskonto gruppmedlemmarna. 
 
-Det kan exporteras av dig och dina gruppmedlemmar och kan vara kopierade tooother platser och vidarebefordras på tooother personer.
+Den kan exporteras av dig och dina gruppmedlemmar och kan kopieras till andra platser och skickas till andra personer.
 
-#### <a name="what-does-microsoft-do-with-hello-information-my-app-sends-tooapplication-insights"></a>Vad har Microsoft göra med hello information min app skickar tooApplication insikter?
-Microsoft använder hello data endast i ordning tooprovide hello tjänsten tooyou.
+#### <a name="what-does-microsoft-do-with-the-information-my-app-sends-to-application-insights"></a>Vad gör Microsoft med information om min app skickar till Application Insights?
+Microsoft använder informationen endast för att tillhandahålla tjänsten till dig.
 
-## <a name="where-is-hello-data-held"></a>Där lagras hello data?
-* I hello USA eller Europa. Du kan välja hello plats när du skapar en ny Application Insights-resurs. 
+## <a name="where-is-the-data-held"></a>Där lagras data?
+* I USA eller Europa. Du kan välja platsen när du skapar en ny Application Insights-resurs. 
 
 
-#### <a name="does-that-mean-my-app-has-toobe-hosted-in-hello-usa-or-europe"></a>Betyder det min app har toobe finns i hello USA eller Europa?
-* Nej. Programmet kan köras var som helst, i din egen lokala värdar eller i hello molnet.
+#### <a name="does-that-mean-my-app-has-to-be-hosted-in-the-usa-or-europe"></a>Betyder det min app måste finnas i USA eller Europa?
+* Nej. Programmet kan köras var som helst, i din egen lokala värdar eller i molnet.
 
 ## <a name="how-secure-is-my-data"></a>Hur säker är Mina data?
-Application Insights är en Azure-tjänst. Säkerhetsprinciper beskrivs i hello [Azure-säkerhet, sekretess och kompatibilitet vitboken](http://go.microsoft.com/fwlink/?linkid=392408).
+Application Insights är en Azure-tjänst. Säkerhetsprinciper beskrivs i den [Azure-säkerhet, sekretess och kompatibilitet vitboken](http://go.microsoft.com/fwlink/?linkid=392408).
 
-hello data lagras i Microsoft Azure-servrar. Begränsningar för konton i hello Azure Portal beskrivs i hello [Azure-säkerhet, sekretess och kompatibilitet dokumentet](http://go.microsoft.com/fwlink/?linkid=392408).
+Data lagras i Microsoft Azure-servrar. Begränsningar för konton i Azure Portal beskrivs i den [Azure-säkerhet, sekretess och kompatibilitet dokumentet](http://go.microsoft.com/fwlink/?linkid=392408).
 
-Åtkomst till tooyour data av Microsoft-Personal är begränsad. Vi har åtkomst till data tillåtelse och om det är nödvändigt toosupport din användning av Application Insights. 
+Åtkomst till dina data med Microsoft-Personal är begränsad. Vi har åtkomst till data tillåtelse och om det är nödvändigt att stödja användning av Application Insights. 
 
-Data i mängd i våra kunders program (till exempel överföringshastighet och genomsnittlig storlek på spårningar) är används tooimprove Application Insights.
+Data i mängd i våra kunders program (till exempel överföringshastighet och genomsnittlig storlek på spårningar) används för att förbättra Application Insights.
 
 #### <a name="could-someone-elses-telemetry-interfere-with-my-application-insights-data"></a>Det gick någon annans telemetri som störa Application Insights-data?
-De kan skicka ytterligare telemetri tooyour konto med hjälp av hello instrumentation nyckel som finns i hello kod webbsidor. Med tillräckligt med ytterligare data skulle dina inte korrekt återger appens prestanda och användning.
+De kan skicka ytterligare telemetri till ditt konto med hjälp av nyckeln instrumentation hittar du i koden för webbsidor. Med tillräckligt med ytterligare data skulle dina inte korrekt återger appens prestanda och användning.
 
-Om du delar kod med andra projekt kan du komma ihåg tooremove instrumentation-nyckel.
+Om du delar kod med andra projekt, Kom ihåg att ta bort din instrumentation nyckel.
 
-## <a name="is-hello-data-encrypted"></a>Krypteras hello data?
-Inte i hello-servrar för närvarande.
+## <a name="is-the-data-encrypted"></a>Krypteras data?
+Inte i servrar för närvarande.
 
 Krypteras alla data som flyttas mellan datacenter.
 
-#### <a name="is-hello-data-encrypted-in-transit-from-my-application-tooapplication-insights-servers"></a>Krypteras hello data under överföring från Mina program tooApplication insikter servrar?
-Ja, kan vi använda https toosend dataportalen toohello från nästan alla SDK: er, inklusive webbservrar, enheter och HTTPS-webbsidor. hello enda undantaget är data som skickas från vanlig HTTP-webbsidor. 
+#### <a name="is-the-data-encrypted-in-transit-from-my-application-to-application-insights-servers"></a>Krypteras data under överföring från mitt program till Application Insights servrar?
+Ja, vi använder https för att skicka data till portalen från nästan alla SDK: er, inklusive webbservrar, enheter och HTTPS-webbsidor. Det enda undantaget är data som skickas från vanlig HTTP-webbsidor. 
 
 ## <a name="personally-identifiable-information"></a>Personligt identifierbar Information
-#### <a name="could-personally-identifiable-information-pii-be-sent-tooapplication-insights"></a>Kunde personligt identifierbar Information (PII) skickas tooApplication insikter?
+#### <a name="could-personally-identifiable-information-pii-be-sent-to-application-insights"></a>Kunde personligt identifierbar Information (PII) skickas till Application Insights?
 Ja, det är möjligt. 
 
 Som en allmän vägledning:
 
-* De flesta standard telemetri (det vill säga telemetri som skickas utan att du skriva någon kod) innehåller inte explicit personligt identifierbar information. Det kan dock vara möjligt tooidentify personer genom härledning från en samling av händelser.
+* De flesta standard telemetri (det vill säga telemetri som skickas utan att du skriva någon kod) innehåller inte explicit personligt identifierbar information. Dock kan det vara möjligt att identifiera enskilda användare genom härledning från en samling av händelser.
 * Undantag och spåra meddelanden kan innehålla personligt identifierbar information
-* Anpassad telemetri - anrop som är till exempel TrackEvent som du kan skriva i kod med hello API eller loggfil spårningar - kan innehålla alla data som du väljer.
+* Anpassad telemetri - anrop som är till exempel TrackEvent som du kan skriva i kod med API- eller loggfil spåren - kan innehålla alla data som du väljer.
 
-hello tabellen hello slutet av det här dokumentet innehåller mer detaljerade beskrivningar av hello data som samlas in.
+Tabellen i slutet av det här dokumentet innehåller mer detaljerade beskrivningar av insamlade data.
 
-#### <a name="am-i-responsible-for-complying-with-laws-and-regulations-in-regard-toopii"></a>Kan jag ansvarar för att följa lagar och förordningar i beaktande tooPII?
-Ja. Det är ditt ansvar tooensure som hello insamling och användning av hello data överensstämmer med lagar och förordningar och hello Microsoft Online Services-villkor.
+#### <a name="am-i-responsible-for-complying-with-laws-and-regulations-in-regard-to-pii"></a>Kan jag ansvarar för att följa lagar och förordningar om personligt identifierbar information?
+Ja. Det är ditt ansvar att säkerställa att insamling och användning av data överensstämmer med lagar och förordningar och villkoren Microsoft Online Services.
 
-Du bör på lämpligt sätt informera kunderna om hello data programmet samlar in och hur hello data används.
+Du bör på lämpligt sätt informera kunderna om programmet samlar in data och hur data används.
 
 #### <a name="can-my-users-turn-off-application-insights"></a>Mina användare kan stänga av Application Insights?
-Inte direkt. Vi inte tillhandahålla en växel som dina användare kan arbeta tooturn av Application Insights.
+Inte direkt. Vi tillhandahålla inte en växel som användarna kan användas för att stänga av Application Insights.
 
-Men kan du implementera en sådan funktion i ditt program. Alla hello SDK innehåller en API-inställning som inaktiverar telemetri samling. 
+Men kan du implementera en sådan funktion i ditt program. Alla SDK innehåller en API-inställning som inaktiverar telemetri samling. 
 
 #### <a name="my-application-is-unintentionally-collecting-sensitive-information-can-application-insights-scrub-this-data-so-it-isnt-retained"></a>Mina program oavsiktligt samlar in känslig information. Application Insights Skrubba kan dessa data så att den inte finns kvar?
-Application Insights inte filtrera eller ta bort dina data. Du bör hantera hello data på rätt sätt och undvika att skicka sådana data tooApplication insikter.
+Application Insights inte filtrera eller ta bort dina data. Du ska hantera data på rätt sätt och undvika att skicka sådana data till Application Insights.
 
 ## <a name="data-sent-by-application-insights"></a>Data som skickas av Application Insights
-hello SDK variera mellan plattformar och det finns flera komponenter som du kan installera. (Se för[Application Insights - översikt][start].) Varje komponent skickar olika data.
+SDK: erna variera mellan plattformar och det finns flera komponenter som du kan installera. (Se [Application Insights - översikt][start].) Varje komponent skickar olika data.
 
 #### <a name="classes-of-data-sent-in-different-scenarios"></a>Typer av data som skickas i olika scenarier
 | Åtgärden | Dataklasser som samlas in (se nästa tabell) |
 | --- | --- |
-| [Lägg till Application Insights SDK tooa .NET-webbprojekt][greenbrown] |ServerContext<br/>Härleda<br/>Prestandaräknarna<br/>Begäranden<br/>**Undantag**<br/>Session<br/>användare |
+| [Lägg till Application Insights SDK i ett .NET-webbprojekt][greenbrown] |ServerContext<br/>Härleda<br/>Prestandaräknarna<br/>Begäranden<br/>**Undantag**<br/>Session<br/>användare |
 | [Installera statusövervakaren på IIS][redfield] |Beroenden<br/>ServerContext<br/>Härleda<br/>Prestandaräknarna |
-| [Lägg till Application Insights SDK tooa Java-webbapp][java] |ServerContext<br/>Härleda<br/>Förfrågan<br/>Session<br/>användare |
-| [Lägg till JavaScript SDK tooweb sida][client] |ClientContext <br/>Härleda<br/>Sidan<br/>ClientPerf<br/>AJAX |
+| [Lägg till Application Insights SDK för Java-webbapp][java] |ServerContext<br/>Härleda<br/>Förfrågan<br/>Session<br/>användare |
+| [Lägg till JavaScript SDK på webbsidan][client] |ClientContext <br/>Härleda<br/>Sidan<br/>ClientPerf<br/>AJAX |
 | [Definiera standardegenskaper][apiproperties] |**Egenskaper för** för alla händelser som standard och anpassade |
 | [Anropa TrackMetric][api] |Numeriska värden<br/>**Egenskaper** |
 | [Anropa spåra *][api] |händelsenamnet<br/>**Egenskaper** |
@@ -170,7 +170,7 @@ hello SDK variera mellan plattformar och det finns flera komponenter som du kan 
 
 För [SDK: er för andra plattformar][platforms], se dokumenten.
 
-#### <a name="hello-classes-of-collected-data"></a>hello klasser av insamlade data
+#### <a name="the-classes-of-collected-data"></a>Klasser av insamlade data
 | Insamlade dataklass | Innehåller (inte en fullständig förteckning) |
 | --- | --- |
 | **Egenskaper** |**Några data - bestäms av din kod** |
@@ -183,7 +183,7 @@ För [SDK: er för andra plattformar][platforms], se dokumenten.
 | Händelser |Händelsenamn och värde |
 | PageViews |Sidan och URL eller inloggningsnamn |
 | Klienten perf |URL-sida namn, inläsningstid för webbläsare |
-| AJAX |HTTP-anrop från webbsidan tooserver |
+| AJAX |HTTP-anrop från webbsidan till servern |
 | Begäranden |URL: en varaktighet, svarskod |
 | Beroenden |Typ (SQL, HTTP,...), anslutningssträngen eller URI, sync/asynkrona, varaktighet, lyckas, SQL-uttryck (med Status Monitor) |
 | **Undantag** |Typ, **meddelande**, anropa stackar, käll-fil- och tal, tråd-id |
@@ -193,7 +193,7 @@ För [SDK: er för andra plattformar][platforms], se dokumenten.
 | Tillgänglighet |Web test svarskod, varaktighet för varje steg, namn på testet, timestamp, lyckade, svarstid, test-plats |
 | SDK-diagnostik |Spårningsmeddelande eller ett undantag |
 
-Du kan [inaktivera vissa hello data genom att redigera ApplicationInsights.config][config]
+Du kan [inaktivera vissa data genom att redigera ApplicationInsights.config][config]
 
 ## <a name="credits"></a>Krediter
 Den här produkten innehåller GeoLite2 data som skapats av MaxMind, från [http://www.maxmind.com](http://www.maxmind.com).

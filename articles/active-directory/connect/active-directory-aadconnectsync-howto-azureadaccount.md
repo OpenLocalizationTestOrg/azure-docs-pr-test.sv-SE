@@ -1,8 +1,8 @@
 ---
-title: "Azure AD Connect-synkronisering: hur toomanage hello Azure AD-tjänstkontot | Microsoft Docs"
-description: "Det här avsnittet beskrivs hur toorestore hello Azure AD-tjänstkontot."
+title: "Azure AD Connect-synkronisering: hur du hanterar Azure AD-tjänstkontot | Microsoft Docs"
+description: "Det här avsnittet beskrivs hur du återställer Azure AD-tjänstkontot."
 services: active-directory
-keywords: "AADSTS70002, AADSTS50054, hello hur tooreset hello lösenordet för Azure AD Connect-synkronisering Connector-tjänstkontot"
+keywords: "AADSTS70002, AADSTS50054, hur du återställer lösenordet för Azure AD Connect-synkronisering Connector-tjänstkontot"
 documentationcenter: 
 author: andkjell
 manager: femila
@@ -15,31 +15,31 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: e563518eae173de42a1d40bb5a76e63f29f9da42
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 8e9e8192ee4fcb636b5be91d2616acbc9120c8c0
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="azure-ad-connect-sync-how-toomanage-hello-azure-ad-service-account"></a>Azure AD Connect-synkronisering: hur toomanage hello Azure AD-tjänstkonto
-hello-tjänstkontot som används av hello Azure AD Connector måste toobe tjänsten gratis. Om du behöver tooreset autentiseringsuppgifterna, är det här avsnittet för dig. Om exempelvis en Global administratör har av misstag Återställ hello lösenord på hello-tjänstkontot med hjälp av PowerShell.
+# <a name="azure-ad-connect-sync-how-to-manage-the-azure-ad-service-account"></a>Azure AD Connect-synkronisering: hur du hanterar Azure AD-tjänstkontot
+Tjänstkontot som används av Azure AD-anslutningen ska vara tjänsten gratis. Om du behöver återställa referenserna är det här avsnittet för dig. Till exempel om en Global administratör har av misstag återställa lösenordet för kontot med hjälp av PowerShell.
 
-## <a name="reset-hello-credentials"></a>Återställ hello autentiseringsuppgifter
-Om hello tjänstkontot som definierats på hello Azure AD Connector inte kan kontakta Azure AD på grund av problem med tooauthentication, kan hello lösenord återställas.
+## <a name="reset-the-credentials"></a>Återställa autentiseringsuppgifterna
+Om tjänstkontot som definierats i Azure AD Connector inte kan kontakta Azure AD på grund av autentiseringsproblem med, kan du återställa lösenordet.
 
-1. Logga in toohello Azure AD Connect sync-servern och starta PowerShell.
+1. Logga in på Azure AD Connect sync-servern och starta PowerShell.
 2. Kör `Add-ADSyncAADServiceAccount`.  
    ![PowerShell-cmdlet addadsyncaadserviceaccount](./media/active-directory-aadconnectsync-howto-azureadaccount/addadsyncaadserviceaccount.png)
 3. Ange autentiseringsuppgifter för Global administratör för Azure AD.
 
-Denna cmdlet återställer hello lösenordet för tjänstkontot för hello och uppdatera den i Azure AD och hello Synkroniseringsmotorn.
+Denna cmdlet återställer lösenordet för kontot och uppdatera den i Azure AD och Synkroniseringsmotorn.
 
 ## <a name="known-issues-these-steps-can-solve"></a>Kända problem som kan lösa de här stegen
-Det här avsnittet är en lista över felen som rapporteras av kunder som korrigerades med autentiseringsuppgifter för att återställa på hello Azure AD-tjänstkontot.
+Det här avsnittet är en lista över felen som rapporteras av kunder som korrigerades med autentiseringsuppgifter för att återställa på Azure AD-tjänstkontot.
 
 - - -
 Händelsen 6900  
-hello-servern påträffade ett oväntat fel vid bearbetning av en lösenordsändring:  
+Ett oväntat fel uppstod under bearbetning av en lösenordsändring:  
 AADSTS70002: Fel verifierar referenser. AADSTS50054: Gammalt lösenord används för autentisering.
 
 - - -

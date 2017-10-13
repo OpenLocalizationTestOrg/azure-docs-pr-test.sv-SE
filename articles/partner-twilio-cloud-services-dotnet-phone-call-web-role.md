@@ -1,6 +1,6 @@
 ---
-title: "aaaHow toomake ett telefonsamtal från Twilio (.NET) | Microsoft Docs"
-description: "Lär dig hur toomake ett telefonsamtal och skicka ett SMS-meddelandet med hello Twilio API-tjänsten på Azure. Kodexempel som skrivits i .NET."
+title: "Hur du gör ett telefonsamtal från Twilio (.NET) | Microsoft Docs"
+description: "Lär dig att ringa ett telefonsamtal och skicka ett SMS-meddelande med Twilio-API-tjänsten på Azure. Kodexempel som skrivits i .NET."
 services: 
 documentationcenter: .net
 author: devinrader
@@ -14,36 +14,36 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/04/2016
 ms.author: microsofthelp@twilio.com
-ms.openlocfilehash: 857d89961c563a51fef944f4a72828036af79b43
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 0899a49cbfda775017dab7fc6d8963bbeb86d74c
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="how-toomake-a-phone-call-using-twilio-in-a-web-role-on-azure"></a>Hur toomake en telefon ringer med Twilio i en webbroll på Azure
-Den här guiden visar hur toouse Twilio toomake ett samtal från en webbplats finns i Azure. hello uppmanar resulterande programmet hello användaren toomake ett anrop med hello baserat på antalet och meddelandet som visas i följande skärmbild hello.
+# <a name="how-to-make-a-phone-call-using-twilio-in-a-web-role-on-azure"></a>Hur du gör ett telefonsamtal med Twilio i en webbroll på Azure
+Den här guiden visar hur du använder Twilio för att ringa ett samtal från en webbsida som finns på Azure. Exempelprogrammet uppmanar användaren att göra anrop med angivet tal och meddelandet som visas i följande skärmbild.
 
 ![Azure anropet formuläret med hjälp av Twilio och ASP.NET][twilio_dotnet_basic_form]
 
 ## <a name="twilio-prereqs"></a>Förhandskrav
-Du behöver toodo hello följande toouse hello koden i det här avsnittet:
+Du måste göra följande för att använda koden i det här avsnittet:
 
-1. Skaffa ett Twilio-konto och autentisering-token från hello [Twilio konsolen][twilio_console]. tooget igång med Twilio, logga på [https://www.twilio.com/try-twilio][try_twilio]. Du kan utvärdera priser på [http://www.twilio.com/pricing][twilio_pricing]. Information om hello API som tillhandahålls av Twilio finns [http://www.twilio.com/voice/api][twilio_api].
-2. Lägg till hello *Twilio .NET-bibliotek* tooyour webbroll. Se **webbrollsprojektet för tooadd hello Twilio bibliotek tooyour**senare i det här avsnittet.
+1. Skaffa ett Twilio-konto och autentisering-token från den [Twilio konsolen][twilio_console]. Registrera dig för att komma igång med Twilio på [https://www.twilio.com/try-twilio][try_twilio]. Du kan utvärdera priser på [http://www.twilio.com/pricing][twilio_pricing]. Mer information om API som tillhandahålls av Twilio finns [http://www.twilio.com/voice/api][twilio_api].
+2. Lägg till den *Twilio .NET-bibliotek* till web-roll. Se **att lägga till Twilio-biblioteken i din webbrollsprojektet**senare i det här avsnittet.
 
 Du bör känna till hur du skapar en grundläggande [på Azure-Webbroll][azure_webroles_get_started].
 
 ## <a name="howtocreateform"></a>Så här: skapa ett webbformulär för ett samtal
-<a id="use_nuget"></a>tooadd hello Twilio bibliotek tooyour webbrollsprojektet:
+<a id="use_nuget"></a>Lägg till Twilio-bibliotek i webbprojektet för rollen:
 
 1. Öppna din lösning i Visual Studio.
 2. Högerklicka på **referenser**.
 3. Klicka på **hantera NuGet-paket**.
 4. Klicka på **Online**.
-5. Skriv i hello online sökrutan *twilio*.
-6. Klicka på **installera** på hello Twilio-paketet.
+5. Skriv i sökrutan online *twilio*.
+6. Klicka på **installera** på Twilio-paketet.
 
-hello följande kod visar hur toocreate en webbplats formuläret tooretrieve användardata för ett samtal. I det här exemplet, ett ASP.NET Web Role med namnet **TwilioCloud** skapas.
+Följande kod visar hur du skapar ett webbformulär för att hämta användardata för ett samtal. I det här exemplet, ett ASP.NET Web Role med namnet **TwilioCloud** skapas.
 
 ```aspx
 <%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.master"
@@ -69,8 +69,8 @@ hello följande kod visar hur toocreate en webbplats formuläret tooretrieve anv
 </asp:Content>
 ```
 
-## <a id="howtocreatecode"></a>Så här: skapa hello kod toomake hello anrop
-hello följande kod som anropas när hello användaren Slutför hello formuläret, skapar anropet hälsningsmeddelande och genererar hello-anrop. I det här exemplet körs hello koden i hello onclick händelsehanteraren hello knappen hello formuläret. (Använd ditt Twilio-konto och autentisering token i stället för hello platshållare för värden som har tilldelats för`accountSID` och `authToken` i hello koden nedan.)
+## <a id="howtocreatecode"></a>Så här: skapa koden för att göra anrop
+Följande kod, som kallas när användaren slutför formuläret, skapar anropet meddelandet och genererar anropet. I det här exemplet körs koden i händelsehanteraren onclick för knappen i formuläret. (Använd ditt Twilio-konto och autentisering token i stället för platshållarvärdena för `accountSID` och `authToken` i koden nedan.)
 
 ```csharp
 using System;
@@ -98,14 +98,14 @@ namespace WebRole1
             // Call porcessing happens here.
 
             // Use your account SID and authentication token instead of
-            // hello placeholders shown here.
+            // the placeholders shown here.
             var accountSID = "ACNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN";
             var authToken =  "NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN";
 
-            // Instantiate an instance of hello Twilio client.
+            // Instantiate an instance of the Twilio client.
             TwilioClient.Init(accountSID, authToken);
 
-            // Retrieve hello account, used later tooretrieve the
+            // Retrieve the account, used later to retrieve the
             var account = AccountResource.Fetch(accountSID);
 
             this.varDisplay.Items.Clear();
@@ -117,24 +117,24 @@ namespace WebRole1
             }
             else
             {
-                // Retrieve hello values entered by hello user.
-                var too= PhoneNumber(this.toNumber.Text);
+                // Retrieve the values entered by the user.
+                var to = PhoneNumber(this.toNumber.Text);
                 var from = new PhoneNumber("+14155992671");
                 var myMessage = this.message.Text;
 
-                // Create a URL using hello Twilio message and hello user-entered
-                // text. You must replace spaces in hello user's text with '%20'
-                // toomake hello text suitable for a URL.
+                // Create a URL using the Twilio message and the user-entered
+                // text. You must replace spaces in the user's text with '%20'
+                // to make the text suitable for a URL.
                 var url = $"http://twimlets.com/message?Message%5B0%5D={myMessage.Replace(" ", "%20")}";
                 var twimlUri = new Uri(url);
 
-                // Display hello endpoint, API version, and hello URL for hello message.
+                // Display the endpoint, API version, and the URL for the message.
                 this.varDisplay.Items.Add($"Using Twilio endpoint {
                 }");
                 this.varDisplay.Items.Add($"Twilioclient API Version is {apiVersion}");
-                this.varDisplay.Items.Add($"hello URL is {url}");
+                this.varDisplay.Items.Add($"The URL is {url}");
 
-                // Place hello call.
+                // Place the call.
                 var call = CallResource.create(to, from, url: twimlUri);
                 this.varDisplay.Items.Add("Call status: " + call.Status);
             }
@@ -143,22 +143,22 @@ namespace WebRole1
 }
 ```
 
-hello-anrop och hello Twilio slutpunkt, API-versionen och hello samtalsstatus visas. följande skärmbild visar utdata från ett exempel kör hello.
+Anropet görs och Twilio-slutpunkten och API-versionen av samtalsstatus visas. Följande skärmbild visar utdata från en exempel-körning.
 
 ![Azure anropet svaret med hjälp av Twilio och ASP.NET][twilio_dotnet_basic_form_output]
 
 Mer information om TwiML kan hittas på [http://www.twilio.com/docs/api/twiml][twiml]. Mer information om &lt;säg&gt; och andra Twilio-verb finns på [http://www.twilio.com/docs/api/twiml/say][twilio_say].
 
 ## <a id="nextsteps"></a>Nästa steg
-Den här koden har angetts tooshow du grundläggande funktioner med hjälp av Twilio i ett ASP.NET web role på Azure. Du kanske vill tooadd mer felhantering eller andra funktioner innan du distribuerar tooAzure i produktion. Exempel:
+Den här koden har angetts för att visa grundläggande funktioner med hjälp av Twilio i ett ASP.NET web role på Azure. Innan du distribuerar till Azure i produktion, kanske du vill lägga till flera felhantering eller andra funktioner. Exempel:
 
-* Istället för att använda ett webbformulär, kan du använda Azure Blob storage- eller ett telefonnummer för Azure SQL Database-instans toostore och anropa text. Information om hur du använder BLOB i Azure finns [hur toouse hello Azure Blob storage-tjänst i .NET][howto_blob_storage_dotnet]. Information om hur du använder SQL-databas finns [hur toouse Azure SQL-databas i .NET-program][howto_sql_azure_dotnet].
-* Du kan använda `RoleEnvironment.getConfigurationSettings` tooretrieve hello Twilio-konto-ID och autentisering token från din distribution konfigurationsinställningar, i stället för att hårdkoda hello värden i formuläret. Information om hello `RoleEnvironment` klassen, se [Microsoft.WindowsAzure.ServiceRuntime Namespace][azure_runtime_ref_dotnet].
-* Läsa hello Twilio säkerhetsriktlinjer på [https://www.twilio.com/docs/security][twilio_docs_security].
+* Istället för att använda ett webbformulär, kunde du använda Azure Blob-lagring eller en Azure SQL Database-instans för att lagra telefonnummer och anropa text. Information om hur du använder BLOB i Azure finns [hur du använder tjänsten Azure Blob storage i .NET][howto_blob_storage_dotnet]. Information om hur du använder SQL-databas finns [hur du använder Azure SQL Database i .NET-program][howto_sql_azure_dotnet].
+* Du kan använda `RoleEnvironment.getConfigurationSettings` för att hämta Twilio-konto-ID och autentisering token från din distribution konfigurationsinställningar, i stället för att hårdkoda värden i formuläret. Information om den `RoleEnvironment` klassen, se [Microsoft.WindowsAzure.ServiceRuntime Namespace][azure_runtime_ref_dotnet].
+* Läs Twilio-riktlinjer för säkerhet på [https://www.twilio.com/docs/security][twilio_docs_security].
 * Mer information om Twilio på [https://www.twilio.com/docs][twilio_docs].
 
 ## <a name="seealso"></a>Se även
-* [Hur toouse Twilio för röst- och SMS-funktioner från Azure](twilio-dotnet-how-to-use-for-voice-sms.md)
+* [Hur du använder Twilio för röst- och SMS-funktioner från Azure](twilio-dotnet-how-to-use-for-voice-sms.md)
 
 [twilio_console]: https://www.twilio.com/console
 [twilio_pricing]: http://www.twilio.com/pricing

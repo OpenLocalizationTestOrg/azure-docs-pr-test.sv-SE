@@ -1,6 +1,6 @@
 ---
-title: aaaAzure Active Directory reporting svarstiderna | Microsoft Docs
-description: "Lär dig mer om hello lång tid det tar för rapportering händelser tooshow in i din Azure-portalen"
+title: Azure Active Directory reporting svarstiderna | Microsoft Docs
+description: "Lär dig mer om hur lång tid det tar för rapporteringshändelser ska visas i din Azure-portalen"
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -15,27 +15,27 @@ ms.workload: identity
 ms.date: 07/15/2017
 ms.author: markvi;dhanyahk
 ms.reviewer: dhanyahk
-ms.openlocfilehash: eee959331262ba59b313dd038cb54699dbef48a4
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 93cb0baeab8f13f81257ed1bd32ed08561c54b72
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Azure Active Directory reporting svarstider
 
-Med [reporting](active-directory-preview-explainer.md) i hello Azure Active Directory, du får alla hello information som du behöver toodetermine hur din miljö gör. hello mängden tid det tar för att rapportera data tooshow upp i hello Azure-portalen kallas även svarstid. 
+Med [reporting](active-directory-preview-explainer.md) i Azure Active Directory så, du får all information du behöver ta reda på hur du gör din miljö. Hur lång tid det tar för att rapportera data visas i Azure-portalen kallas även svarstid. 
 
-Det här avsnittet listar hello latensinformation för hello alla reporting kategorier i hello Azure-portalen. 
+Det här avsnittet innehåller information svarstid för alla reporting kategorier i Azure-portalen. 
 
 
 ## <a name="activity-reports"></a>Aktivitetsrapporter
 
 Det finns två områden av aktiviteten reporting:
 
-- **Logga in aktiviteter** – Information om hello användning av hanterade program och användaren loggar in aktiviteter
+- **Inloggningsaktiviteter** – Information om användningen av hanterade program och användares inloggningsaktiviteter
 - **Granskningsloggar** – Granska information om systemaktivitet för användare och grupphantering, dina hanterade program och katalogaktiviteter
 
-hello i den följande tabellen listas hello latensinformation för aktivitetsrapporter.
+I följande tabell visas latensinformation för aktivitetsrapporter.
 
 | Rapport | Minimum | Genomsnittlig | Maximalt |
 | :-- | --- | --- | --- |
@@ -43,17 +43,17 @@ hello i den följande tabellen listas hello latensinformation för aktivitetsrap
 | Inloggningar               | 15 minuter  | 15 minuter | 2 timmar *   |
 
 >[!NOTE]
-> För vissa inloggningar aktivitetsdata från äldre office-program, kan det ta too8 timmar för hello rapporterar data tooshow. 
+> Det kan ta upp till 8 timmar för rapporteringsdata att visas för vissa aktivitetsdata om inloggningsåtgärder från äldre Office-program. 
 
 
 ## <a name="security-reports"></a>Säkerhetsrapporter
 
 Det finns två områden av säkerhet reporting:
 
-- **Riskfyllda inloggningar** -riskfyllda loggar in är en indikator för en inloggning försök som kan ha utförts av någon som inte är hello legitima ägare för ett användarkonto. 
+- **Riskfyllda inloggningar** – En riskfylld inloggning indikerar ett potentiellt inloggningsförsök av någon annan än användarkontots ägare. 
 - **Användare som har flaggats för risk** – En användare som har flaggats för risk indikerar att ett användarkonto kan ha komprometterats. 
 
-hello i den följande tabellen listas hello latensinformation för säkerhetsrapporter.
+I följande tabell visas latensinformation för säkerhetsrapporter.
 
 | Rapport | Minimum | Genomsnittlig | Maximalt |
 | :-- | --- | --- | --- |
@@ -62,16 +62,16 @@ hello i den följande tabellen listas hello latensinformation för säkerhetsrap
 
 ## <a name="risk-events"></a>Riskhändelser
 
-Azure Active Directory använder anpassningsbar maskininlärning algoritmer och heuristik toodetect misstänkta åtgärder som är relaterade tooyour användarkonton. Varje upptäckt misstänkt åtgärd lagras i en post kallas risk händelse.
+Azure Active Directory använder anpassningsbar maskininlärningsalgoritmer och heuristik för att identifiera misstänkta åtgärder som är relaterade till dina användarkonton. Varje upptäckt misstänkt åtgärd lagras i en post kallas risk händelse.
 
-hello i den följande tabellen listas hello latensinformation för riskhändelser.
+I följande tabell visas latensinformation för riskhändelser.
 
 | Rapport | Minimum | Genomsnittlig | Maximalt |
 | :-- | --- | --- | --- |
 | Inloggningar från anonyma IP-adresser |5 minuter |15 minuter |2 timmar |
 | Inloggningar från okända platser |5 minuter |15 minuter |2 timmar |
 | Används med läckta autentiseringsuppgifter |2 timmar |4 timmar |8 timmar |
-| Omöjlig resa tooatypical platser |5 minuter |1 timme |8 timmar  |
+| Omöjligt att resa till ovanliga platser |5 minuter |1 timme |8 timmar  |
 | Inloggningar från angripna enheter |2 timmar |4 timmar |8 timmar  |
 | Inloggningar från IP-adresser med misstänkt aktivitet |2 timmar |4 timmar |8 timmar  |
 
@@ -79,14 +79,14 @@ hello i den följande tabellen listas hello latensinformation för riskhändelse
 
 ## <a name="next-steps"></a>Nästa steg
 
-Om du vill tooknow mer om hello aktivitetsrapporter i hello Azure-portalen, se:
+Om du vill veta mer om aktivitetsrapporter i Azure-portalen, se:
 
-- [Inloggningsaktivitet rapporter i hello Azure Active Directory-portalen](active-directory-reporting-activity-sign-ins.md)
-- [Granska aktivitetsrapporter hello Azure Active Directory-portalen](active-directory-reporting-activity-audit-logs.md)
+- [Inloggningsaktivitet rapporterna i Azure Active Directory-portalen](active-directory-reporting-activity-sign-ins.md)
+- [Granska aktivitetsrapporter i Azure Active Directory-portalen](active-directory-reporting-activity-audit-logs.md)
 
-Om du vill tooknow mer om hello säkerhetsrapporter i hello Azure-portalen, se:
+Om du vill veta mer om säkerhetsrapporter i Azure-portalen, se:
 
-- [Användare på risk säkerhetsrapporten hello Azure Active Directory-portalen](active-directory-reporting-security-user-at-risk.md)
-- [Riskfyllda inloggningar rapporten i hello Azure Active Directory-portalen](active-directory-reporting-security-risky-sign-ins.md)
+- [Användare på risk säkerhetsrapporten i Azure Active Directory-portalen](active-directory-reporting-security-user-at-risk.md)
+- [Rapporten riskfyllda inloggningar i Azure Active Directory-portalen](active-directory-reporting-security-risky-sign-ins.md)
 
-Om du vill tooknow mer om riskhändelser finns [Azure Active Directory riskhändelser](active-directory-reporting-risk-events.md).
+Om du vill veta mer om riskhändelser finns [Azure Active Directory riskhändelser](active-directory-reporting-risk-events.md).

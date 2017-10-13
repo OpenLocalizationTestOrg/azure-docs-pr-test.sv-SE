@@ -1,5 +1,5 @@
 ---
-title: "Azure Active Directory Domain Services: Uppdatera DNS-inställningarna för hello virtuella Azure-nätverket | Microsoft Docs"
+title: "Azure Active Directory Domain Services: Uppdatera DNS-inställningarna för det virtuella Azure-nätverket | Microsoft Docs"
 description: "Komma igång med Azure Active Directory Domain Services"
 services: active-directory-ds
 documentationcenter: 
@@ -12,39 +12,39 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/27/2017
+ms.date: 09/26/2017
 ms.author: maheshu
-ms.openlocfilehash: e6eaff555cb9b7bb89ab7581d8de0b8cfc844529
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: ab8e3215e8e73d3943af06cffafa730cf1b7744b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="enable-azure-active-directory-domain-services-preview"></a>Aktivera Azure Active Directory Domain Services (förhandsversion)
+# <a name="enable-azure-active-directory-domain-services"></a>Aktivera Azure Active Directory Domain Services
 
-## <a name="task-4-update-dns-settings-for-hello-azure-virtual-network"></a>Uppgift 4: uppdatera DNS-inställningarna för hello Azure-nätverk
-Du har aktiverat Azure Active Directory Domain Services för din katalog i hello som föregår konfigurationsåtgärder. hello nästa uppgift är tooensure att datorer i hello virtuella nätverk kan ansluta och använda dessa tjänster. I den här artikeln uppdatera hello DNS-serverinställningarna för virtuellt nätverk toopoint toohello två IP-adresserna där Azure Active Directory Domain Services är tillgängligt på hello virtuellt nätverk.
+## <a name="task-4-update-dns-settings-for-the-azure-virtual-network"></a>Uppgift 4 – uppdatera DNS-inställningarna för det virtuella Azure-nätverket
+I de tidigare konfigurationsuppgifterna har du aktiverat Azure Active Directory Domain Services för katalogen. Härnäst ska du se till att datorerna i det virtuella nätverket kan ansluta och använda tjänsterna. I den här artikeln får du uppdatera DNS-serverinställningarna för det virtuella nätverket så att de pekar på de bägge IP-adresserna där Azure Active Directory Domain Services är tillgängliga i det virtuella nätverket.
 
-tooupdate hello DNS-Serverinställningen för hello virtuella nätverk som du har aktiverat Azure Active Directory Domain Services, fullständig hello följande steg:
+Utför följande konfigurationssteg för att uppdatera DNS-serverinställningen för det virtuella nätverket där Azure Active Directory Domain Services har aktiverats:
 
-1. Hej **översikt** fliken visas en uppsättning **krävs konfigurationssteg** toobe utföras när din hanterade domän är helt etablerad. hello första konfigurationssteget är **uppdatera DNS-serverinställningarna för det virtuella nätverket**.
+1. Fliken **Översikt** visar **Nödvändiga konfigurationssteg** som ska utföras när din hanterade domän är helt etablerad. Det första konfigurationssteget är **Uppdatera DNS-serverinställningarna för det virtuella nätverket**.
 
     ![Domain Services - översiktsflik vid full etablering](./media/getting-started/domain-services-provisioned-overview.png)
 
 2. När din domän är helt etablerad, visas två IP-adresser i den här panelen. IP-adresserna representerar en domänkontrollant för din hanterade domän.
 
-3. toocopy hello första IP-Adressen tooclipboard och klickar på hello Kopiera knappen Nästa tooit. Klicka på hello **konfigurera DNS-servrar** knappen.
+3. Klicka på kopieringsknappen bredvid den för att kopiera den första IP-adressen till Urklipp. Klicka sedan på knappen **Konfigurera DNS-servrar**.
 
-4. Klistra in hello första IP-adressen i hello **lägga till DNS-server** TextBox-kontroll i hello **DNS-servrar** bladet. Rullar vågrätt toohello lämnas toocopy hello andra IP-adressen och klistra in den i hello **lägga till DNS-server** textruta.
+4. Klistra in den första IP-adressen i textrutan **Lägga till DNS-server** i bladet **DNS-servrar**. Rulla vågrätt till vänster för att kopiera den andra IP-adressen och klistra in de i textrutan **Lägga till DNS-server**.
 
     ![Domain Services – uppdatera DNS](./media/getting-started/domain-services-update-dns.png)
 
-5. Klicka på **spara** när du är klar tooupdate hello DNS-servrar för hello virtuellt nätverk.
+5. Klicka på **Spara** när du är klar för att uppdatera DNS-servrar för det virtuella nätverket.
 
 > [!NOTE]
-> Virtuella datorer i nätverket hello bara hämta hello nya DNS-inställningarna efter en omstart. Om du behöver dem tooget hello uppdatera DNS-inställningar nu direkt kan utlösa en omstart genom hello portal, PowerShell eller hello CLI.
+> Virtuella datorer i nätverket kan bara hämta de nya DNS-inställningarna efter en omstart. Om du vill att de ska hämta de uppdaterade DNS-inställningarna direkt kan du utlösa en omstart genom portalen, PowerShell eller CLI.
 >
 >
 
 ## <a name="next-step"></a>Nästa steg
-[Uppgift 5: aktivera lösenord synkronisering tooAzure Active Directory Domain Services](active-directory-ds-getting-started-password-sync.md)
+Uppgift 5: [aktivera lösenordssynkronisering med Azure Active Directory Domain Services](active-directory-ds-getting-started-password-sync.md)

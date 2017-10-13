@@ -1,6 +1,6 @@
 ---
-title: "aaaManage förfallodatum för Azure Storage-blobbar i Azure CDN | Microsoft Docs"
-description: "Läs mer om hello alternativ för att styra time to live för BLOB i Azure CDN cachelagring."
+title: "Hantera förfallodatum för Azure Storage-blobbar i Azure CDN | Microsoft Docs"
+description: "Läs mer om alternativen för att styra time to live för BLOB i Azure CDN cachelagring."
 services: cdn
 documentationcenter: 
 author: zhangmanling
@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 9fecae9639deb28977da7f851e1da4a823ddc4e8
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: d4741921806e443d92c385a04b781cec296c2ae8
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="manage-expiration-of-azure-storage-blobs-in-azure-cdn"></a>Hantera förfallodatum för Azure Storage-blobbar i Azure CDN
 > [!div class="op_single_selector"]
@@ -27,43 +27,43 @@ ms.lasthandoff: 10/06/2017
 > 
 > 
 
-Hej [blob-tjänst](../storage/common/storage-introduction.md#blob-storage) i [Azure Storage](../storage/common/storage-introduction.md) är en av flera Azure-baserade ursprung integrerat med Azure CDN.  Alla offentliga blob-innehåll cachelagras i Azure CDN tills dess time to live (TTL) går ut.  hello TTL bestäms av hello [ *Cache-Control* huvud](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) hello HTTP-svar från Azure Storage.
+Den [blob-tjänst](../storage/common/storage-introduction.md#blob-storage) i [Azure Storage](../storage/common/storage-introduction.md) är en av flera Azure-baserade ursprung integrerat med Azure CDN.  Alla offentliga blob-innehåll cachelagras i Azure CDN tills dess time to live (TTL) går ut.  TTL-värdet bestäms av den [ *Cache-Control* huvud](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) i HTTP-svaret från Azure Storage.
 
 > [!TIP]
-> Du kan välja tooset inga TTL för en blob.  I det här fallet gäller Azure CDN automatiskt en standard-TTL sju dagar.
+> Du kan välja att ange inga TTL-värde för en blob.  I det här fallet gäller Azure CDN automatiskt en standard-TTL sju dagar.
 > 
-> Mer information om hur fungerar Azure CDN toospeed åtkomst tooblobs och andra filer finns hello [översikt över Azure CDN](cdn-overview.md).
+> Mer information om hur Azure CDN fungerar för att påskynda åtkomst till blobbar och andra filer finns i [översikt över Azure CDN](cdn-overview.md).
 > 
-> Mer information om hello Azure Storage blob-tjänsten finns [Blob-Tjänstkoncept](https://msdn.microsoft.com/library/dd179376.aspx). 
+> Mer information om Azure Storage blob-tjänsten finns [Blob-Tjänstkoncept](https://msdn.microsoft.com/library/dd179376.aspx). 
 > 
 > 
 
-Den här kursen visar flera olika sätt att du kan ange hello TTL-värde för en blobb i Azure Storage.  
+Den här kursen visar flera olika sätt som du kan ange TTL-värdet för en blobb i Azure Storage.  
 
 ## <a name="azure-powershell"></a>Azure PowerShell
-[Azure PowerShell](/powershell/azure/overview) är en av hello snabbaste, mest kraftfulla sätt tooadminister Azure-tjänster.  Använd hello `Get-AzureStorageBlob` cmdlet tooget toohello referensblobben, ange hello `.ICloudBlob.Properties.CacheControl` egenskapen. 
+[Azure PowerShell](/powershell/azure/overview) är en av de snabbaste, mest kraftfulla sätten att administrera din Azure-tjänster.  Använd den `Get-AzureStorageBlob` för att hämta en referens till blob, ange den `.ICloudBlob.Properties.CacheControl` egenskapen. 
 
 ```powershell
 # Create a storage context
 $context = New-AzureStorageContext -StorageAccountName "<storage account name>" -StorageAccountKey "<storage account key>"
 
-# Get a reference toohello blob
+# Get a reference to the blob
 $blob = Get-AzureStorageBlob -Context $context -Container "<container name>" -Blob "<blob name>"
 
-# Set hello CacheControl property tooexpire in 1 hour (3600 seconds)
+# Set the CacheControl property to expire in 1 hour (3600 seconds)
 $blob.ICloudBlob.Properties.CacheControl = "public, max-age=3600"
 
-# Send hello update toohello cloud
+# Send the update to the cloud
 $blob.ICloudBlob.SetProperties()
 ```
 
 > [!TIP]
-> Du kan också använda PowerShell för[hantera dina CDN-profiler och slutpunkter](cdn-manage-powershell.md).
+> Du kan också använda PowerShell för att [hantera dina CDN-profiler och slutpunkter](cdn-manage-powershell.md).
 > 
 > 
 
 ## <a name="azure-storage-client-library-for-net"></a>Azure Storage-klientbibliotek för .NET
-tooset en blob har TTL-värde med hjälp av .NET, Använd hello [Azure Storage-klientbibliotek för .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md) tooset hello [CloudBlob.Properties.CacheControl](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.blob.blobproperties.cachecontrol.aspx) egenskapen.
+Om du vill ange en blob TTL-värde med hjälp av .NET använder den [Azure Storage-klientbibliotek för .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md) att ange den [CloudBlob.Properties.CacheControl](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.blob.blobproperties.cachecontrol.aspx) egenskapen.
 
 ```csharp
 class Program
@@ -74,48 +74,48 @@ class Program
         // Retrieve storage account information from connection string
         CloudStorageAccount storageAccount = CloudStorageAccount.Parse(connectionString);
 
-        // Create a blob client for interacting with hello blob service.
+        // Create a blob client for interacting with the blob service.
         CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
-        // Create a reference toohello container
+        // Create a reference to the container
         CloudBlobContainer container = blobClient.GetContainerReference("<container name>");
 
-        // Create a reference toohello blob
+        // Create a reference to the blob
         CloudBlob blob = container.GetBlobReference("<blob name>");
 
-        // Set hello CacheControl property tooexpire in 1 hour (3600 seconds)
+        // Set the CacheControl property to expire in 1 hour (3600 seconds)
         blob.Properties.CacheControl = "public, max-age=3600";
 
-        // Update hello blob's properties in hello cloud
+        // Update the blob's properties in the cloud
         blob.SetProperties();
     }
 }
 ```
 
 > [!TIP]
-> Det finns många fler .NET-kodexempel i hello [Azure Blob Storage-exempel för .NET](https://azure.microsoft.com/documentation/samples/storage-blob-dotnet-getting-started/).
+> Det finns många fler .NET-kodexempel i den [Azure Blob Storage-exempel för .NET](https://azure.microsoft.com/documentation/samples/storage-blob-dotnet-getting-started/).
 > 
 > 
 
 ## <a name="other-methods"></a>Andra metoder
 * [Azure kommandoradsgränssnittet](../cli-install-nodejs.md)
   
-    När du överför hello blob, ange hello *cacheControl* egenskap med hello `-p` växla.  Det här exemplet anger hello TTL tooone timme (3600 sekunder).
+    När du hämtar blob, ange den *cacheControl* egenskapen med det `-p` växla.  Det här exemplet anger TTL-värdet till en timme (3600 sekunder).
   
     ```text
     azure storage blob upload -c <connectionstring> -p cacheControl="public, max-age=3600" .\test.txt myContainer test.txt
     ```
 * [REST-API för Azure Storage Services](https://msdn.microsoft.com/library/azure/dd179355.aspx)
   
-    Uttryckligen ange hello *x-ms-blob-cache-control* -egenskapen i en [placera Blob](https://msdn.microsoft.com/en-us/library/azure/dd179451.aspx), [placera Blockeringslista](https://msdn.microsoft.com/en-us/library/azure/dd179467.aspx), eller [ange egenskaper för Blob](https://msdn.microsoft.com/library/azure/ee691966.aspx) begäran.
+    Uttryckligen ställa in den *x-ms-blob-cache-control* -egenskapen i en [placera Blob](https://msdn.microsoft.com/en-us/library/azure/dd179451.aspx), [placera Blockeringslista](https://msdn.microsoft.com/en-us/library/azure/dd179467.aspx), eller [ange egenskaper för Blob](https://msdn.microsoft.com/library/azure/ee691966.aspx) begäran.
 * Verktyg för lagringshantering från tredje part
   
-    Vissa tredjeparts-hanteringsverktyg för Azure Storage kan du tooset hello *CacheControl* egenskapen för BLOB. 
+    Vissa tredjeparts-hanteringsverktyg för Azure Storage kan du ange den *CacheControl* egenskapen för BLOB. 
 
-## <a name="testing-hello-cache-control-header"></a>Tester hello *Cache-Control* sidhuvud
-Du kan enkelt kontrollera hello TTL-värde på dina blobbar.  Använda din webbläsare [utvecklingsverktyg](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/), testa att din blob omfattar hello *Cache-Control* Svarsrubrik.  Du kan också använda ett verktyg som **wget**, [Postman](https://www.getpostman.com/), eller [Fiddler](http://www.telerik.com/fiddler) tooexamine hello-svarshuvuden.
+## <a name="testing-the-cache-control-header"></a>Testa den *Cache-Control* sidhuvud
+Du kan enkelt kontrollera TTL-värde på dina blobbar.  Använda din webbläsare [utvecklingsverktyg](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/), test som din blob inklusive den *Cache-Control* Svarsrubrik.  Du kan också använda ett verktyg som **wget**, [Postman](https://www.getpostman.com/), eller [Fiddler](http://www.telerik.com/fiddler) att undersöka svarshuvuden.
 
 ## <a name="next-steps"></a>Nästa steg
-* [Läs mer om hello *Cache-Control* sidhuvud](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9)
-* [Lär dig hur toomanage förfallotiden för Molntjänsten innehåll i Azure CDN](cdn-manage-expiration-of-cloud-service-content.md)
+* [Läs mer om den *Cache-Control* sidhuvud](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9)
+* [Lär dig hur du hanterar du förfallodatum för Molntjänsten innehåll i Azure CDN](cdn-manage-expiration-of-cloud-service-content.md)
 

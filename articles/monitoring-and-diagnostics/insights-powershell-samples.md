@@ -1,6 +1,6 @@
 ---
-title: "aaaAzure övervakaren PowerShell Snabbstart-exempel. | Microsoft Docs"
-description: "Använd PowerShell tooaccess Azure-Monitor-funktioner, till exempel Autoskala, aviseringar, webhooks och söka aktivitetsloggar."
+title: "Azure PowerShell övervakaren Snabbstart-exempel. | Microsoft Docs"
+description: "Använda PowerShell för att få åtkomst till Azure-Monitor-funktioner, till exempel Autoskala, aviseringar, webhooks och söka aktivitetsloggar."
 author: kamathashwin
 manager: orenr
 editor: 
@@ -14,40 +14,40 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: ashwink
-ms.openlocfilehash: 6eece0b0227e0bbf08225bd330d0601169911f55
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 48f064884c2a6d0a55cc58a44169ed03c62de46d
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="azure-monitor-powershell-quick-start-samples"></a>Azure-Monitor PowerShell Snabbstart-exempel
-Den här artikeln innehåller exempel på PowerShell-kommandon toohelp du komma åt Azure-Monitor-funktioner. Azure övervakaren kan tooAutoScale molntjänster, virtuella datorer, och Web Apps och toosend aviseringsmeddelanden eller anropet webbadresser som baseras på värden för konfigurerade telemetridata.
+Den här artikeln innehåller exempel av PowerShell-kommandon som hjälper dig att komma åt Azure-Monitor funktioner. Azure-Monitor kan du Autoskala molntjänster, virtuella datorer och Web Apps att skicka aviseringar eller anropa webbadresser som baseras på värden för konfigurerade telemetridata.
 
 > [!NOTE]
-> Azure övervakaren är hello nytt namn för vad anropades ”Azure Insights” förrän den 25 september 2016. Hello namnområden och därmed hello följande kommandon fortfarande innehåller dock insikter ”hello”.
+> Azure övervakaren är det nya namnet för vad anropades ”Azure Insights” förrän den 25 september 2016. Namnområden och därmed följande kommandon fortfarande innehåller dock ”insikter”.
 > 
 > 
 
 ## <a name="set-up-powershell"></a>Konfigurera PowerShell
-Om du inte redan gjort ställa in PowerShell toorun på datorn. Mer information finns i [hur tooInstall och konfigurera PowerShell](/powershell/azure/overview).
+Om du inte redan gjort ange PowerShell ska köras på datorn. Mer information finns i [installera och konfigurera PowerShell](/powershell/azure/overview).
 
 ## <a name="examples-in-this-article"></a>Exemplen i den här artikeln
-hello exemplen i hello artikeln visar hur du kan använda Azure-Monitor-cmdlets. Du kan också granska hello hela listan med Azure-Monitor PowerShell-cmdlets på [Azure-Monitor (insikter) Cmdlets](https://msdn.microsoft.com/library/azure/mt282452#40v=azure.200#41.aspx).
+Exemplen i artikeln visar hur du kan använda Azure-Monitor-cmdlets. Du kan också granska hela listan med Azure-Monitor PowerShell-cmdlets på [Azure-Monitor (insikter) Cmdlets](https://msdn.microsoft.com/library/azure/mt282452#40v=azure.200#41.aspx).
 
 ## <a name="sign-in-and-use-subscriptions"></a>Logga in och använda prenumerationer
-Logga först in tooyour Azure-prenumeration.
+Först logga in på Azure-prenumerationen.
 
 ```PowerShell
 Login-AzureRmAccount
 ```
 
-Detta kräver toosign i. När du gör ditt konto, visas TenantID och standard prenumerations-ID. Alla hello Azure-cmdlets arbete i prenumerationen standard hello kontext. tooview hello listan över prenumerationer som du har åtkomst till, Använd hello följande kommando.
+Detta kräver att du loggar in. När du gör ditt konto, visas TenantID och standard prenumerations-ID. Alla Azure cmdlets fungerar i samband med standard-prenumeration. Använd följande kommando om du vill visa listan över prenumerationer som du har åtkomst till.
 
 ```PowerShell
 Get-AzureRmSubscription
 ```
 
-toochange arbeta kontexten tooa olika prenumerationen, Använd hello följande kommando.
+Använd följande kommando om du vill ändra fungerande kontexten till en annan prenumeration.
 
 ```PowerShell
 Set-AzureRmContext -SubscriptionId <subscriptionid>
@@ -55,9 +55,9 @@ Set-AzureRmContext -SubscriptionId <subscriptionid>
 
 
 ## <a name="retrieve-activity-log-for-a-subscription"></a>Hämta aktivitetsloggen för en prenumeration
-Använd hello `Get-AzureRmLog` cmdlet.  hello nedan följer några vanliga exempel.
+Använd den `Get-AzureRmLog` cmdlet.  Här följer några vanliga exempel.
 
-Hämta loggposter från denna tid/datum toopresent:
+Hämta loggposter från denna tid/datum presentera:
 
 ```PowerShell
 Get-AzureRmLog -StartTime 2016-03-01T10:30
@@ -87,38 +87,38 @@ Hämta alla loggposter med en specifik anropare:
 Get-AzureRmLog -Caller 'myname@company.com'
 ```
 
-följande kommando hämtar hello senaste 1 000 händelser från hello aktivitetsloggen hello:
+Följande kommando hämtar de senaste 1 000 händelserna från aktivitetsloggen:
 
 ```PowerShell
 Get-AzureRmLog -MaxEvents 1000
 ```
 
-`Get-AzureRmLog`har stöd för många parametrar. Se hello `Get-AzureRmLog` referens för mer information.
+`Get-AzureRmLog`har stöd för många parametrar. Finns det `Get-AzureRmLog` referens för mer information.
 
 > [!NOTE]
-> `Get-AzureRmLog`endast ger 15 dagar tidigare. Med hjälp av hello **- MaxEvents** parametern kan du tooquery hello sista N händelser, utöver 15 dagar. tooaccess händelser som är äldre än 15 dagar använda hello REST API eller SDK (C# exempel med hjälp av hello SDK). Om du inte inkluderar **StartTime**, då är standardvärdet för hello **EndTime** minus en timme. Om du inte inkluderar **EndTime**, och sedan hello standardvärdet är aktuell tid. Det finns alltid i UTC.
+> `Get-AzureRmLog`endast ger 15 dagar tidigare. Med hjälp av den **- MaxEvents** parameter kan du fråga de sista N händelserna efter 15 dagar. För åtkomst till händelser som är äldre än 15 dagar, använda REST API eller SDK (C#-exempel med hjälp av SDK). Om du inte inkluderar **StartTime**, då är standardvärdet **EndTime** minus en timme. Om du inte inkluderar **EndTime**, och standardvärdet är aktuell tid. Det finns alltid i UTC.
 > 
 > 
 
 ## <a name="retrieve-alerts-history"></a>Hämta aviseringar historik
-tooview alla Varna händelser, du kan fråga hello Azure Resource Manager loggar med hello följande exempel.
+Om du vill visa alla aviseringar händelser, kan du fråga Azure Resource Manager-loggar med hjälp av följande exempel.
 
 ```PowerShell
 Get-AzureRmLog -Caller "Microsoft.Insights/alertRules" -DetailedOutput -StartTime 2015-03-01
 ```
 
-tooview hello historik för en specifik avisering regel, kan du använda hello `Get-AzureRmAlertHistory` cmdlet, skicka i hello resurs-ID för hello varningsregel.
+Om du vill visa historiken för en specifik avisering regel som du kan använda den `Get-AzureRmAlertHistory` cmdlet, skicka i resurs-ID för regeln.
 
 ```PowerShell
 Get-AzureRmAlertHistory -ResourceId /subscriptions/s1/resourceGroups/rg1/providers/microsoft.insights/alertrules/myalert -StartTime 2016-03-1 -Status Activated
 ```
 
-Hej `Get-AzureRmAlertHistory` cmdlet har stöd för olika parametrar. Mer information finns i [Get-AlertHistory](https://msdn.microsoft.com/library/mt282453.aspx).
+Den `Get-AzureRmAlertHistory` cmdlet har stöd för olika parametrar. Mer information finns i [Get-AlertHistory](https://msdn.microsoft.com/library/mt282453.aspx).
 
 ## <a name="retrieve-information-on-alert-rules"></a>Hämta information om Varningsregler
-Alla hello följande kommandon fungerar på en resursgrupp med namnet ”montest”.
+Alla följande kommandon fungerar på en resursgrupp med namnet ”montest”.
 
-Visa alla hello egenskaper för hello varningsregeln:
+Visa alla egenskaper för regeln:
 
 ```PowerShell
 Get-AzureRmAlertRule -Name simpletestCPU -ResourceGroup montest -DetailedOutput
@@ -139,11 +139,11 @@ Get-AzureRmAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/
 `Get-AzureRmAlertRule`har stöd för andra parametrar. Se [Get-AlertRule](https://msdn.microsoft.com/library/mt282459.aspx) för mer information.
 
 ## <a name="create-metric-alerts"></a>Skapa mått aviseringar
-Du kan använda hello `Add-AlertRule` cmdlet toocreate, uppdatera eller inaktivera en aviseringsregel.
+Du kan använda den `Add-AlertRule` för att skapa, uppdatera eller inaktivera en aviseringsregel.
 
-Du kan skapa e-post och webhook-egenskaper med `New-AzureRmAlertRuleEmail` och `New-AzureRmAlertRuleWebhook`respektive. Tilldela dessa som åtgärder toohello i hello varningsregeln cmdlet **åtgärder** -egenskapen för hello varningsregel.
+Du kan skapa e-post och webhook-egenskaper med `New-AzureRmAlertRuleEmail` och `New-AzureRmAlertRuleWebhook`respektive. I cmdleten varningsregeln tilldela dem som åtgärder för att den **åtgärder** -egenskapen för regeln.
 
-hello i den följande tabellen beskrivs hello parametrar och värden används toocreate en avisering med ett mått.
+I följande tabell beskrivs de parametrar och värden som används för att skapa en avisering med ett mått.
 
 | Parametern | värde |
 | --- | --- |
@@ -151,13 +151,13 @@ hello i den följande tabellen beskrivs hello parametrar och värden används to
 | Platsen för den här varningsregeln |Östra USA |
 | ResourceGroup |montest |
 | TargetResourceId |/subscriptions/S1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
-| MetricName hello varning som skapas |\PhysicalDisk (_Total) \Disk Diskskrivningar/sek. Se hello `Get-MetricDefinitions` cmdlet om hur tooretrieve hello exakta mått namn |
+| MetricName för aviseringen som har skapats |\PhysicalDisk (_Total) \Disk Diskskrivningar/sek. Finns det `Get-MetricDefinitions` cmdlet om hur du hämtar de exakta mått namn |
 | Operatorn |GreaterThan |
 | Tröskelvärde (antal per sekund i för det här måttet) |1 |
 | Fönsterstorlek (format: mm: ss) |00:05:00 |
-| Aggregator (statistik för hello måttet, som använder Genomsnittligt antal i det här fallet) |Genomsnittlig |
+| Aggregator (statistik på måttet, som använder Genomsnittligt antal i det här fallet) |Genomsnittlig |
 | anpassad e-postmeddelanden (Strängmatrisen) |'foo@example.com','bar@example.com' |
-| Skicka e-tooowners, deltagare och läsare |-SendToServiceOwners |
+| Skicka e-post till ägare, deltagare och läsare |-SendToServiceOwners |
 
 Skapa en e-åtgärd
 
@@ -171,28 +171,28 @@ Skapa en Webhook-åtgärd
 $actionWebhook = New-AzureRmAlertRuleWebhook -ServiceUri https://example.com?token=mytoken
 ```
 
-Skapa hello varningsregeln på hello CPU % mått på en klassisk virtuell dator
+Skapa varningsregeln på processor % mått på en klassisk virtuell dator
 
 ```PowerShell
 Add-AzureRmMetricAlertRule -Name vmcpu_gt_1 -Location "East US" -ResourceGroup myrg1 -TargetResourceId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.ClassicCompute/virtualMachines/my_vm1 -MetricName "Percentage CPU" -Operator GreaterThan -Threshold 1 -WindowSize 00:05:00 -TimeAggregationOperator Average -Actions $actionEmail, $actionWebhook -Description "alert on CPU > 1%"
 ```
 
-Hämta hello varningsregel
+Hämta varningsregeln
 
 ```PowerShell
 Get-AzureRmAlertRule -Name vmcpu_gt_1 -ResourceGroup myrg1 -DetailedOutput
 ```
 
-hello Lägg till avisering cmdlet uppdateras även hello regel om det finns redan en varningsregel för hello angivna egenskaper. toodisable en aviseringsregel inkluderar hello parametern **- DisableRule**.
+Lägg till avisering cmdlet uppdateras också regeln om det finns redan en regel för varning för de angivna egenskaperna. Om du vill inaktivera en aviseringsregel, inkluderar du parametern **- DisableRule**.
 
 ## <a name="get-a-list-of-available-metrics-for-alerts"></a>Hämta en lista över tillgängliga mått för aviseringar
-Du kan använda hello `Get-AzureRmMetricDefinition` cmdlet tooview hello lista över alla mätvärden för en viss resurs.
+Du kan använda den `Get-AzureRmMetricDefinition` för att visa en lista över alla mätvärden för en viss resurs.
 
 ```PowerShell
 Get-AzureRmMetricDefinition -ResourceId <resource_id>
 ```
 
-hello skapar följande exempel en tabell med hello mått namn och hello enhet för den.
+I följande exempel skapar en tabell med måttet namn och enhet för den.
 
 ```PowerShell
 Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,Unit
@@ -202,30 +202,30 @@ En fullständig lista över tillgängliga alternativ för `Get-AzureRmMetricDefi
 
 ## <a name="create-and-manage-autoscale-settings"></a>Skapa och hantera Autoskala inställningar
 En resurs, till exempel en webbapp VM, molntjänst eller Skaluppsättning för virtuell dator kan ha endast en autoskalningsinställning som konfigurerats för den.
-Varje autoskalningsinställning kan dock ha flera profiler. Till exempel en för en prestandabaserad skala profil och en andra princip för en schemabaserade profil. Varje profil kan ha flera regler som konfigurerats på den. Läs mer om Autoskala [hur tooAutoscale ett program](../cloud-services/cloud-services-how-to-scale.md).
+Varje autoskalningsinställning kan dock ha flera profiler. Till exempel en för en prestandabaserad skala profil och en andra princip för en schemabaserade profil. Varje profil kan ha flera regler som konfigurerats på den. Läs mer om Autoskala [hur Autoskala ett program](../cloud-services/cloud-services-how-to-scale.md).
 
-Här är hello steg kommer vi att använda:
+Här följer de steg som vi använder:
 
 1. Skapa regler.
-2. Skapa eller profilerna mappning hello regler som du tidigare skapade toohello profiler.
+2. Skapa eller profilerna mappa de regler som du skapade tidigare till profilerna.
 3. Valfritt: Skapa meddelanden om autoskalning genom att konfigurera egenskaper för webhook och e-post.
-4. Skapa en autoskalningsinställning med ett namn på hello målresurs genom att mappa hello profiler och meddelanden som du skapade i föregående steg i hello.
+4. Skapa en autoskalningsinställning med ett namn på målresursen genom att mappa profiler och meddelanden som du skapade i föregående steg.
 
-hello visar följande exempel hur du kan skapa en autoskalningsinställning för en Virtual Machine Scale Set för ett Windows-operativsystem baserade genom att använda hello CPU-användning mått.
+I följande exempel visas hur du kan skapa en autoskalningsinställning för en Virtual Machine Scale Set för ett Windows-operativsystem baserade genom att använda mått för CPU-användning.
 
-Först skapa en regel tooscale ut, med en instans antal ökning.
+Först skapar du en regel för skalbar, med en instans antal ökning.
 
 ```PowerShell
 $rule1 = New-AzureRmAutoscaleRule -MetricName "Percentage CPU" -MetricResourceId /subscriptions/s1/resourceGroups/big2/providers/Microsoft.Compute/virtualMachineScaleSets/big2 -Operator GreaterThan -MetricStatistic Average -Threshold 60 -TimeGrain 00:01:00 -TimeWindow 00:10:00 -ScaleActionCooldown 00:10:00 -ScaleActionDirection Increase -ScaleActionValue 1
 ```        
 
-Skapa en regel tooscale i, med en instans antal minska.
+Sedan skapar en regel för att skala in, med en instans antal minska.
 
 ```PowerShell
 $rule2 = New-AzureRmAutoscaleRule -MetricName "Percentage CPU" -MetricResourceId /subscriptions/s1/resourceGroups/big2/providers/Microsoft.Compute/virtualMachineScaleSets/big2 -Operator GreaterThan -MetricStatistic Average -Threshold 30 -TimeGrain 00:01:00 -TimeWindow 00:10:00 -ScaleActionCooldown 00:10:00 -ScaleActionDirection Decrease -ScaleActionValue 1
 ```
 
-Skapa sedan en profil för hello regler.
+Skapa sedan en profil för reglerna.
 
 ```PowerShell
 $profile1 = New-AzureRmAutoscaleProfile -DefaultCapacity 2 -MaximumCapacity 10 -MinimumCapacity 2 -Rules $rule1,$rule2 -Name "My_Profile"
@@ -237,13 +237,13 @@ Skapa en webhook-egenskap.
 $webhook_scale = New-AzureRmAutoscaleWebhook -ServiceUri "https://example.com?mytoken=mytokenvalue"
 ```
 
-Skapa hello notification-egenskapen för hello autoskalningsinställning, inklusive e-post och hello webhook som du skapade tidigare.
+Skapa meddelande-egenskapen för autoskalningsinställning, inklusive e-post och webhooken som du skapade tidigare.
 
 ```PowerShell
 $notification1= New-AzureRmAutoscaleNotification -CustomEmails ashwink@microsoft.com -SendEmailToSubscriptionAdministrators SendEmailToSubscriptionCoAdministrators -Webhooks $webhook_scale
 ```
 
-Skapa slutligen hello Autoskala inställningen tooadd hello profil som du skapade ovan.
+Skapa slutligen autoskalningsinställningen som du lägger till den profil som du skapade ovan.
 
 ```PowerShell
 Add-AzureRmAutoscaleSetting -Location "East US" -Name "MyScaleVMSSSetting" -ResourceGroup big2 -TargetResourceId /subscriptions/s1/resourceGroups/big2/providers/Microsoft.Compute/virtualMachineScaleSets/big2 -AutoscaleProfiles $profile1 -Notifications $notification1
@@ -252,13 +252,13 @@ Add-AzureRmAutoscaleSetting -Location "East US" -Name "MyScaleVMSSSetting" -Reso
 Mer information om hur du hanterar Autoskala inställningar finns [Get-AutoscaleSetting](https://msdn.microsoft.com/library/mt282461.aspx).
 
 ## <a name="autoscale-history"></a>Autoskala historik
-hello följande exempel visar hur du kan visa senaste Autoskala och aviseringen händelser. Använd hello loggen Sök tooview hello Autoskala aktivitetshistorik.
+I följande exempel visas hur du kan visa senaste Autoskala och avisering händelser. Använd aktiviteten loggen sökning om du vill visa Autoskala historiken.
 
 ```PowerShell
 Get-AzureRmLog -Caller "Microsoft.Insights/autoscaleSettings" -DetailedOutput -StartTime 2015-03-01
 ```
 
-Du kan använda hello `Get-AzureRmAutoScaleHistory` cmdlet tooretrieve Autoskala historik.
+Du kan använda den `Get-AzureRmAutoScaleHistory` för att hämta Autoskala historik.
 
 ```PowerShell
 Get-AzureRmAutoScaleHistory -ResourceId /subscriptions/s1/resourceGroups/myrg1/providers/microsoft.insights/autoscalesettings/myScaleSetting -StartTime 2016-03-15 -DetailedOutput
@@ -267,32 +267,32 @@ Get-AzureRmAutoScaleHistory -ResourceId /subscriptions/s1/resourceGroups/myrg1/p
 Mer information finns i [Get-AutoscaleHistory](https://msdn.microsoft.com/library/mt282464.aspx).
 
 ### <a name="view-details-for-an-autoscale-setting"></a>Visa information om en autoskalningsinställning
-Du kan använda hello `Get-Autoscalesetting` cmdlet tooretrieve mer information om hello autoskalningsinställning.
+Du kan använda den `Get-Autoscalesetting` för att hämta mer information om autoskalningsinställningen.
 
-hello följande exempel visas information om alla Autoskala inställningar i myrg1' hello resurs grupp'.
+I följande exempel visas information om alla Autoskala inställningar i resursen grupp 'myrg1'.
 
 ```PowerShell
 Get-AzureRmAutoscalesetting -ResourceGroup myrg1 -DetailedOutput
 ```
 
-hello följande exempel visar information om alla Autoskala inställningar i myrg1' hello resurs grupp' och specifikt hello autoskalningsinställning med namnet 'MyScaleVMSSSetting'.
+I följande exempel visas information om alla Autoskala inställningar i resursen grupp 'myrg1' och specifikt autoskalningsinställningen med namnet 'MyScaleVMSSSetting'.
 
 ```PowerShell
 Get-AzureRmAutoscalesetting -ResourceGroup myrg1 -Name MyScaleVMSSSetting -DetailedOutput
 ```
 
 ### <a name="remove-an-autoscale-setting"></a>Ta bort en autoskalningsinställning
-Du kan använda hello `Remove-Autoscalesetting` cmdlet toodelete en autoskalningsinställning.
+Du kan använda den `Remove-Autoscalesetting` för att ta bort en autoskalningsinställning.
 
 ```PowerShell
 Remove-AzureRmAutoscalesetting -ResourceGroup myrg1 -Name MyScaleVMSSSetting
 ```
 
 ## <a name="manage-log-profiles-for-activity-log"></a>Hantera loggen profiler för aktivitetsloggen
-Du kan skapa en *logga profil* och exportera data från din verksamhet loggen tooa storage-konto och du kan konfigurera datalagring för den. Alternativt kan strömma du också hello data tooyour Event Hub. Observera att den här funktionen är för närvarande i förhandsvisning och du kan bara skapa en logg profil per prenumeration. Du kan använda följande cmdlets med din aktuella prenumeration toocreate hello och hantera profiler för loggen. Du kan också välja en viss prenumeration. Även om PowerShell standarder toohello aktuell prenumeration, du kan ändra den med hjälp av `Set-AzureRmContext`. Du kan konfigurera aktiviteten loggen tooroute data tooany storage-konto eller Händelsehubb i den prenumerationen. Data skrivs som blob-filer i JSON-format.
+Du kan skapa en *logga profil* och exportera data från din aktivitetsloggen till ett lagringskonto och du kan konfigurera datalagring för den. Du kan också kan du också strömma data till din Event Hub. Observera att den här funktionen är för närvarande i förhandsvisning och du kan bara skapa en logg profil per prenumeration. Du kan använda följande cmdlets med din aktuella prenumeration för att skapa och hantera profiler för loggen. Du kan också välja en viss prenumeration. Även om PowerShell som standard den aktuella prenumerationen, du kan ändra den med hjälp av `Set-AzureRmContext`. Du kan konfigurera aktivitetsloggen att vidarebefordra data till storage-konto eller Händelsehubb i den prenumerationen. Data skrivs som blob-filer i JSON-format.
 
 ### <a name="get-a-log-profile"></a>Hämta en logg-profil
-toofetch din befintliga log-profiler kan använda hello `Get-AzureRmLogProfile` cmdlet.
+För att hämta din befintliga log-profiler använder det `Get-AzureRmLogProfile` cmdlet.
 
 ### <a name="add-a-log-profile-without-data-retention"></a>Lägg till en logg profil utan datalagring
 ```PowerShell
@@ -305,21 +305,21 @@ Remove-AzureRmLogProfile -name my_log_profile_s1
 ```
 
 ### <a name="add-a-log-profile-with-data-retention"></a>Lägg till en logg-profil med datalagring
-Du kan ange hello **- RetentionInDays** egenskap med hello antalet dagar som ett positivt heltal där hello data sparas.
+Du kan ange den **- RetentionInDays** egenskap med antalet dagar som ett positivt heltal, där data bevaras.
 
 ```PowerShell
 Add-AzureRmLogProfile -Name my_log_profile_s1 -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -Locations global,westus,eastus,northeurope,westeurope,eastasia,southeastasia,japaneast,japanwest,northcentralus,southcentralus,eastus2,centralus,australiaeast,australiasoutheast,brazilsouth,centralindia,southindia,westindia -RetentionInDays 90
 ```
 
 ### <a name="add-log-profile-with-retention-and-eventhub"></a>Lägg till loggen profil med kvarhållning och EventHub
-I tillägg toorouting data toostorage-konto du kan också strömmas tooan Event Hub. Observera att i den här förhandsgranskningen versionen och hello konto lagringskonfiguration är obligatorisk men Event Hub-konfigurationen är valfria.
+Förutom routning dina data till storage-konto strömma du den till en Händelsehubb. Observera att i den här förhandsversionen och lagringen kontokonfiguration är obligatorisk men Event Hub-konfigurationen är valfria.
 
 ```PowerShell
 Add-AzureRmLogProfile -Name my_log_profile_s1 -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Locations global,westus,eastus,northeurope,westeurope,eastasia,southeastasia,japaneast,japanwest,northcentralus,southcentralus,eastus2,centralus,australiaeast,australiasoutheast,brazilsouth,centralindia,southindia,westindia -RetentionInDays 90
 ```
 
 ## <a name="configure-diagnostics-logs"></a>Konfigurera diagnostik-loggar
-Många Azure-tjänster ger ytterligare loggar och telemetri som kan vara konfigurerade toosave data i ditt Azure Storage-konto kan du skicka tooEvent NAV och/eller skickas tooan OMS logganalys-arbetsytan. Åtgärden kan endast utföras på en resurs-nivå och hello storage-konto eller händelse hubb ska finnas i hello samma region som hello målresurs där hello diagnostik inställningen konfigureras.
+Många Azure-tjänster ger ytterligare loggar och telemetri som kan vara konfigurerad för att spara data i Azure Storage-konto, skickar till Händelsehubbar och/eller skickas till en OMS logganalys-arbetsytan. Åtgärden kan endast utföras på en resurs-nivå och storage-konto eller händelse hubben ska finnas i samma region som målresursen där inställningen diagnostik konfigureras.
 
 ### <a name="get-diagnostic-setting"></a>Hämta diagnostikinställningen
 ```PowerShell

@@ -1,6 +1,6 @@
 ## <a name="java-sample-code-repositories"></a>Java-exempel kod databaser
 
-Här är en lista över alla våra exempel databaser för hello Java i Azure Storage-klientbiblioteket.
+Här är en lista över alla våra exempel databaser för klientbiblioteket för Azure Storage Java.
 
 * [Komma igång med Storage - hantera Storage-konto i Java](https://azure.microsoft.com/resources/samples/storage-java-manage-storage-accounts/)
 * [Komma igång med Azure Blob-tjänsten i Java](https://azure.microsoft.com/resources/samples/storage-blob-java-getting-started/)

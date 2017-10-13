@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure Automation-dokumentationen – självstudier, API-referens | Microsoft Docs"
-description: "Lär dig hur toouse Automation tooautomate processer och konfigurationshantering i ordning toosave tid och ökad tillförlitlighet vanliga administrativa uppgifter."
+title: "Dokumentation om Azure Automation – Självstudier, API-referens | Microsoft Docs"
+description: "Lär dig hur du använder Automation för att automatisera processer och konfigurationshantering, för att spara tid och öka tillförlitligheten i vanliga administrativa uppgifter."
 services: automation
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: eda979bac2434d9b4a91a4e661f5b46a6540a1d2
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: ed25b6abaacbdd44b718a1a5febce5a02dacc334
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="automation-documentation"></a>Dokumentation om Automation
 
-Lär dig hur hello toouse Automation toosave tid och ökad tillförlitlighet för vanliga administrativa uppgifter som utförs i en molnmiljö. Visar självstudier, API-referenserna och övrig dokumentation hur tooautomate processer med hjälp av runbooks eller automatisera konfigurationshantering med Desired State Configuration.
+Lär dig hur du använder Automation för att spara tid och öka tillförlitligheten i vanliga administrativa uppgifter som utförs i en molnmiljö. Självstudier, API-referenser och annan dokumentation visar hur du kan automatisera processer med hjälp av runbooks eller automatisera konfigurationshantering med Desired State Configuration.
 
 <ul class="panelContent cardsFTitle">
     <li>

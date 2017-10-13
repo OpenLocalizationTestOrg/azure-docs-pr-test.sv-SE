@@ -1,6 +1,6 @@
 ---
-title: aaaAzure Active Directory v2.0 Node.js web app inloggning | Microsoft Docs
-description: "Lär dig hur toobuild en Node.js webbapp som loggar in användare med hjälp av både ett personligt microsoftkonto och ett arbets- eller skolkonto konto."
+title: Azure Active Directory v2.0 Node.js web app inloggning | Microsoft Docs
+description: "Lär dig hur du skapar en Node.js-webbapp som loggar in användare med hjälp av både ett personligt microsoftkonto och ett arbets- eller skolkonto konto."
 services: active-directory
 documentationcenter: nodejs
 author: navyasric
@@ -15,42 +15,42 @@ ms.topic: article
 ms.date: 05/13/2017
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: f8ce6e2b841c215cb14e82bcf444fe849634cc88
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 6d49c742f72440e22830915c90de009d9188db2a
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="add-sign-in-tooa-nodejs-web-app"></a>Lägga till inloggning tooa Node.js-webbapp
+# <a name="add-sign-in-to-a-nodejs-web-app"></a>Lägga till inloggning till en Node.js-webbapp
 
 > [!NOTE]
-> Inte alla Azure Active Directory-scenarier och funktioner fungerar med hello v2.0-slutpunkten. toodetermine om du ska använda hello v2.0-slutpunkten eller hello v1.0 slutpunkt och Läs om [v2.0 begränsningar](active-directory-v2-limitations.md).
+> Inte alla Azure Active Directory-scenarier och funktioner fungerar med v2.0-slutpunkten. Läs mer om för att avgöra om du ska använda v2.0-slutpunkten eller v1.0 slutpunkten [v2.0 begränsningar](active-directory-v2-limitations.md).
 > 
 
-I den här självstudiekursen kommer använda vi Passport toodo hello följande uppgifter:
+I den här självstudiekursen använda vi Passport för att göra följande:
 
-* Logga in hello användare med hjälp av Azure Active Directory (AD Azure) i en webbapp och hello v2.0-slutpunkten.
-* Visa information om hello användare.
-* Logga hello användare utanför hello appen.
+* Logga in användaren med hjälp av Azure Active Directory (Azure AD) och v2.0-slutpunkten i en webbapp.
+* Visa information om användaren.
+* Logga ut från appen användaren.
 
-**Passport** är ett mellanprogram för autentisering för Node.js. Flexibel och modulära, Passport kan släppas diskret in i alla Express-baserade eller restify-webbappar. I Passport, en omfattande uppsättning strategier stöder autentisering med ett användarnamn och lösenord, Facebook, Twitter eller andra alternativ. Vi har utvecklat en strategi för Azure AD. I den här artikeln visar vi du hur tooinstall hello modulen och lägger sedan till hello Azure AD `passport-azure-ad` plugin-programmet.
+**Passport** är ett mellanprogram för autentisering för Node.js. Flexibel och modulära, Passport kan släppas diskret in i alla Express-baserade eller restify-webbappar. I Passport, en omfattande uppsättning strategier stöder autentisering med ett användarnamn och lösenord, Facebook, Twitter eller andra alternativ. Vi har utvecklat en strategi för Azure AD. I den här artikeln vi hur du kan installera modulen och Lägg sedan till Azure AD `passport-azure-ad` plugin-programmet.
 
 ## <a name="download"></a>Ladda ned
-hello-koden för den här självstudiekursen upprätthålls [på GitHub](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs). toofollow hello självstudier, kan du [hämta hello appens stomme som en .zip-fil](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs/archive/skeleton.zip) eller klona hello stommen:
+Koden för den här självstudiekursen [finns på GitHub](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs). Om du vill följa kursen, kan du [ladda ned appens stomme som en .zip-fil](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs/archive/skeleton.zip) eller klona stommen:
 
 ```git clone --branch skeleton https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs.git```
 
-Du kan också få hello slutförts programmet hello slutet av den här kursen.
+Du kan också få det färdiga programmet i slutet av den här kursen.
 
 ## <a name="1-register-an-app"></a>1: registrera en app
-Skapa en ny app på [apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList), eller följa [dessa detaljerade steg](active-directory-v2-app-registration.md) tooregister en app. Se till att du:
+Skapa en ny app på [apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList), eller följa [dessa detaljerade steg](active-directory-v2-app-registration.md) att registrera en app. Se till att du:
 
-* Kopiera hello **program-Id** tilldelade tooyour app. Du behöver den för den här självstudiekursen.
-* Lägg till hello **Web** plattform för din app.
-* Kopiera hello **omdirigerings-URI** från hello-portalen. Du måste använda hello URI standardvärdet `urn:ietf:wg:oauth:2.0:oob`.
+* Kopiera den **program-Id** tilldelats din app. Du behöver den för den här självstudiekursen.
+* Lägg till den **Web** plattform för din app.
+* Kopiera den **omdirigerings-URI** från portalen. Du måste använda URI standardvärdet `urn:ietf:wg:oauth:2.0:oob`.
 
-## <a name="2-add-prerequisities-tooyour-directory"></a>2: Lägg till prerequisities tooyour katalog
-Ändra kataloger toogo tooyour rotmapp om du inte redan har det i en kommandotolk. Kör följande kommandon hello:
+## <a name="2-add-prerequisities-to-your-directory"></a>2: lägga till prerequisities i katalogen
+Ändra kataloger för att gå till din rotmapp om du inte redan har det i en kommandotolk. Kör följande kommandon:
 
 * `npm install express`
 * `npm install ejs`
@@ -65,22 +65,22 @@ Skapa en ny app på [apps.dev.microsoft.com](https://apps.dev.microsoft.com/?ref
 * `npm install express-session`
 * `npm install cookie-parser`
 
-Dessutom kan vi använda `passport-azure-ad` i hello stommen i Snabbstart hello:
+Dessutom kan vi använda `passport-azure-ad` i stommen i Snabbstart:
 
 * `npm install passport-azure-ad`
 
-Detta installerar hello bibliotek som `passport-azure-ad` använder.
+Detta installerar biblioteken som `passport-azure-ad` använder.
 
-## <a name="3-set-up-your-app-toouse-hello-passport-node-js-strategy"></a>3: Ställ in din app toouse hello passport-nod-js-strategi
-Ställ in hello Express mellanprogram toouse hello autentiseringsprotokollet OpenID Connect. Använda Passport tooissue inloggning och utloggning begäranden, hantera hello användarens session och få information om hello användare, bland annat.
+## <a name="3-set-up-your-app-to-use-the-passport-node-js-strategy"></a>3: konfigurera din app att använda passport-nod-js-strategi
+Konfigurera Express-mellanprogrammet att använda autentiseringsprotokollet OpenID Connect. Du kan använda Passport för att utfärda inloggnings- och utloggningsförfrågningar, hantera användarens session och få information om användare, bland annat.
 
-1.  Hello rot i hello projekt, öppna hello Config.js-fil. I hello `exports.creds` ange din Apps konfigurationsvärden.
+1.  Öppna filen Config.js i roten av projektet. I den `exports.creds` ange din Apps konfigurationsvärden.
   
-  * `clientID`: hello **program-Id** som är tilldelade tooyour app i hello Azure-portalen.
-  * `returnURL`: hello **omdirigerings-URI** som du angav i hello-portalen.
-  * `clientSecret`: hello hemlighet som du skapade i hello-portalen.
+  * `clientID`: **Program-Id** som har tilldelats din app i Azure-portalen.
+  * `returnURL`: **Omdirigerings-URI** som du angav på portalen.
+  * `clientSecret`: Den hemlighet som du genererade på portalen.
 
-2.  Öppna hello App.js filen i hello roten av hello-projekt. tooinvoke hello OIDCStrategy stratey som medföljer `passport-azure-ad`, Lägg till följande anrop hello:
+2.  Öppna filen App.js i roten av projektet. Att anropa OIDCStrategy stratey, som medföljer `passport-azure-ad`, Lägg till följande anrop:
 
   ```JavaScript
   var OIDCStrategy = require('passport-azure-ad').OIDCStrategy;
@@ -91,12 +91,12 @@ Ställ in hello Express mellanprogram toouse hello autentiseringsprotokollet Ope
   });
   ```
 
-3.  toohandle din inloggning begäranden, Använd hello strategi som du precis refererade till:
+3.  Använd strategin som du precis refererade till för att hantera dina inloggning begäranden:
 
   ```JavaScript
-  // Use hello OIDCStrategy within Passport (section 2)
+  // Use the OIDCStrategy within Passport (section 2)
   //
-  //   Strategies in Passport require a `validate` function. hello function accepts
+  //   Strategies in Passport require a `validate` function. The function accepts
   //   credentials (in this case, an OpenID identifier), and invokes a callback
   //   with a user object.
   passport.use( new OIDCStrategy({
@@ -131,23 +131,23 @@ Ställ in hello Express mellanprogram toouse hello autentiseringsprotokollet Ope
   ));
   ```
 
-Passport använder ett liknande mönster för alla sina strategier (Twitter, Facebook och så vidare). Alla strategigenererare följer toohello mönster. Skicka hello strategi en `function()` som använder en token och `done` som parametrar. hello strategi returneras när den gör allt arbete. Lagra hello användar- och stash hello token så inte behöver du tooask för den igen.
+Passport använder ett liknande mönster för alla sina strategier (Twitter, Facebook och så vidare). Alla strategigenererare följer mönstret. Skicka en strategi för en `function()` som använder en token och `done` som parametrar. Strategin som returneras när den gör allt arbete. Lagra användaren och token så att du inte behöver fråga efter den igen.
 
   > [!IMPORTANT]
-  > hello tar föregående kod alla användare som kan autentisera tooyour server. Detta kallas för automatisk registrering. På en produktionsserver förmodligen du vill toolet vem som helst utan att behöva dem gå igenom den registreringsprocess som du väljer. Detta är vanligtvis hello mönster som du ser i konsumentappar. hello app kan tillåta dig tooregister med Facebook, men sedan du tillfrågas tooenter ytterligare information. Om du inte använde ett kommandoradsprogram för den här självstudiekursen, kan du extrahera hello e-post från token hello-objekt som returneras. Sedan kan du be hello tooenter ytterligare användarinformation. Eftersom detta är en testserver kan du lägga till hello användaren direkt toohello minnesinterna databasen.
+  > Föregående kod tar alla användare som kan autentisera till servern. Detta kallas för automatisk registrering. På en produktionsserver skulle du vill låta alla i utan att behöva dem gå igenom den registreringsprocess som du väljer. Detta är oftast det mönster som du ser i konsumentappar. Appen kan tillåta dig att registrera med Facebook, men sedan du ombedd att ange ytterligare information. Om du inte använde ett kommandoradsprogram för den här självstudiekursen, kan du extrahera den e-postadressen från tokenobjektet som returneras. Sedan kan du be användaren att ange ytterligare information. Eftersom detta är en testserver kan du lägga till användaren direkt till den minnesintern databasen.
   > 
   > 
 
-4.  Lägger till hello metoder för att du använder tookeep reda på användare som är inloggad, vilket krävs av Passport. Detta inkluderar serialisering och avserialisering av hello användarinformation:
+4.  Lägg till metoder som används för att hålla reda på användare som är inloggad, vilket krävs av Passport. Detta inkluderar serialisering och avserialisering av användarens information:
 
   ```JavaScript
 
   // Passport session setup (section 2)
 
-  //   toosupport persistent login sessions, Passport needs toobe able to
-  //   serialize users into, and deserialize users out of, hello session. Typically,
-  //   this is as simple as storing hello user ID when serializing, and finding
-  //   hello user by ID when deserializing.
+  //   To support persistent login sessions, Passport needs to be able to
+  //   serialize users into, and deserialize users out of, the session. Typically,
+  //   this is as simple as storing the user ID when serializing, and finding
+  //   the user by ID when deserializing.
   passport.serializeUser(function(user, done) {
     done(null, user.email);
   });
@@ -158,7 +158,7 @@ Passport använder ett liknande mönster för alla sina strategier (Twitter, Fac
     });
   });
 
-  // Array toohold signed-in users
+  // Array to hold signed-in users
   var users = [];
 
   var findByEmail = function(email, fn) {
@@ -173,7 +173,7 @@ Passport använder ett liknande mönster för alla sina strategier (Twitter, Fac
   };
   ```
 
-5.  Lägg till hello-kod som läser in hello Express-motorn. Du använder hello standard /views och /routes mönster som Express tillhandahåller:
+5.  Lägg till kod som läser in Express-motorn. Du använder standard-/views och /routes mönster som Express tillhandahåller:
 
   ```JavaScript
 
@@ -189,7 +189,7 @@ Passport använder ett liknande mönster för alla sina strategier (Twitter, Fac
     app.use(cookieParser());
     app.use(expressSession({ secret: 'keyboard cat', resave: true, saveUninitialized: false }));
     app.use(bodyParser.urlencoded({ extended : true }));
-    // Initialize Passport!  Also use passport.session() middleware, toosupport
+    // Initialize Passport!  Also use passport.session() middleware, to support
     // persistent login sessions (recommended).
     app.use(passport.initialize());
     app.use(passport.session());
@@ -199,31 +199,31 @@ Passport använder ett liknande mönster för alla sina strategier (Twitter, Fac
 
   ```
 
-6.  Lägg till hello POST dirigerar att leverera hello faktiska inloggning begäranden toohello `passport-azure-ad` motorn:
+6.  Lägg till POST dirigerar att leverera de faktiska inloggning förfrågningar till den `passport-azure-ad` motorn:
 
   ```JavaScript
 
   // Auth routes (section 3)
 
   // GET /auth/openid
-  //   Use passport.authenticate() as route middleware tooauthenticate the
-  //   request. hello first step in OpenID authentication involves redirecting
-  //   hello user toohello user's OpenID provider. After authenticating, hello OpenID
-  //   provider redirects hello user back toothis application at
+  //   Use passport.authenticate() as route middleware to authenticate the
+  //   request. The first step in OpenID authentication involves redirecting
+  //   the user to the user's OpenID provider. After authenticating, the OpenID
+  //   provider redirects the user back to this application at
   //   /auth/openid/return.
 
   app.get('/auth/openid',
     passport.authenticate('azuread-openidconnect', { failureRedirect: '/login' }),
     function(req, res) {
-      log.info('Authentication was called in hello sample');
+      log.info('Authentication was called in the sample');
       res.redirect('/');
     });
 
   // GET /auth/openid/return
-  //   Use passport.authenticate() as route middleware tooauthenticate the
-  //   request. If authentication fails, hello user is redirected back toothe
-  //   sign-in page. Otherwise, hello primary route function is called.
-  //   In this example, it redirects hello user toohello home page.
+  //   Use passport.authenticate() as route middleware to authenticate the
+  //   request. If authentication fails, the user is redirected back to the
+  //   sign-in page. Otherwise, the primary route function is called.
+  //   In this example, it redirects the user to the home page.
   app.get('/auth/openid/return',
     passport.authenticate('azuread-openidconnect', { failureRedirect: '/login' }),
     function(req, res) {
@@ -232,10 +232,10 @@ Passport använder ett liknande mönster för alla sina strategier (Twitter, Fac
     });
 
   // POST /auth/openid/return
-  //   Use passport.authenticate() as route middleware tooauthenticate the
-  //   request. If authentication fails, hello user is redirected back toothe
-  //   sign-in page. Otherwise, hello primary route function is called. 
-  //   In this example, it redirects hello user toohello home page.
+  //   Use passport.authenticate() as route middleware to authenticate the
+  //   request. If authentication fails, the user is redirected back to the
+  //   sign-in page. Otherwise, the primary route function is called. 
+  //   In this example, it redirects the user to the home page.
 
   app.post('/auth/openid/return',
     passport.authenticate('azuread-openidconnect', { failureRedirect: '/login' }),
@@ -245,10 +245,10 @@ Passport använder ett liknande mönster för alla sina strategier (Twitter, Fac
     });
   ```
 
-## <a name="4-use-passport-tooissue-sign-in-and-sign-out-requests-tooazure-ad"></a>4: Använd Passport tooissue inloggning och utloggning begär tooAzure AD
-Appen är nu konfigurera toocommunicate med hello v2.0-slutpunkten med hjälp av autentiseringsprotokollet för hello OpenID Connect. Hej `passport-azure-ad` strategi tar hand om alla hello information utforma autentiseringsmeddelanden, verifiera token från Azure AD och upprätthålla hello användarsessioner. Alla lämnas toodo är toogive användarna en sätt toosign i och logga ut och toogather mer information om hello användare är inloggad.
+## <a name="4-use-passport-to-issue-sign-in-and-sign-out-requests-to-azure-ad"></a>4: använda Passport för att utfärda inloggnings- och utloggningsförfrågningar till Azure AD
+Appen har konfigurerats för att kommunicera med v2.0-slutpunkten med hjälp av autentiseringsprotokollet OpenID Connect. Den `passport-azure-ad` strategi tar hand om alla detaljer om utforma autentiseringsmeddelanden, verifiera token från Azure AD och upprätthålla användarsessionen. Återstår gör är att ge användarna ett sätt att logga in och logga ut och för att samla in mer information om den användare som har loggat in.
 
-1.  Lägg till hello **standard**, **inloggning**, **konto**, och **logga ut** metoder tooyour App.js fil:
+1.  Lägg till den **standard**, **inloggning**, **konto**, och **logga ut** metoder i filen App.js:
 
   ```JavaScript
 
@@ -265,7 +265,7 @@ Appen är nu konfigurera toocommunicate med hello v2.0-slutpunkten med hjälp av
   app.get('/login',
     passport.authenticate('azuread-openidconnect', { failureRedirect: '/login' }),
     function(req, res) {
-      log.info('Login was called in hello sample');
+      log.info('Login was called in the sample');
       res.redirect('/');
   });
 
@@ -276,22 +276,22 @@ Appen är nu konfigurera toocommunicate med hello v2.0-slutpunkten med hjälp av
 
   ```
 
-  Här följer hello information:
+  Här följer information:
     
-    * Hej `/` kommandot omdirigerar toohello index.ejs vyn. Passerar hello användaren i hello begäran (om den finns).
-    * Hej `/account` vidarebefordra först *innebär att autentiseras* (du implementera som i följande kod hello). Sedan överförs den hello användaren i hello-begäran. Detta är så att du kan få mer information om hello användare.
-    * Hej `/login` kommandot anropar din `azuread-openidconnect` autentiseraren från `passport-azuread`. Om som inte lyckas omdirigerar den hello användaren tillbaka för`/login`.
-    * Hej `/logout` väg anropar hello logout.ejs visa (och väg). Detta kommando rensar cookies och sedan returnerar hello tillbaka tooindex.ejs för användaren.
+    * Den `/` kommandot omdirigerar till vyn index.ejs. Passerar användaren i begäran (om den finns).
+    * Den `/account` vidarebefordra först *innebär att autentiseras* (du implementera som i följande kod). Sedan, skickas användaren i begäran. Detta är så att du kan få mer information om användaren.
+    * Den `/login` kommandot anropar din `azuread-openidconnect` autentiseraren från `passport-azuread`. Om inte fungerar som den dirigerar användaren till `/login`.
+    * Den `/logout` vägen anropar logout.ejs visa (och väg). Detta tar bort cookies och returnerar sedan användaren till index.ejs.
 
-2.  Lägg till hello **EnsureAuthenticated** metod som du använde tidigare i `/account`:
+2.  Lägg till den **EnsureAuthenticated** metod som du använde tidigare i `/account`:
 
   ```JavaScript
 
-  // Route middleware tooensure hello user is authenticated (section 4)
+  // Route middleware to ensure the user is authenticated (section 4)
 
-  //   Use this route middleware on any resource that needs toobe protected. If
-  //   hello request is authenticated (typically via a persistent login session),
-  //   hello request proceeds. Otherwise, hello user is redirected toothe
+  //   Use this route middleware on any resource that needs to be protected. If
+  //   the request is authenticated (typically via a persistent login session),
+  //   the request proceeds. Otherwise, the user is redirected to the
   //   sign-in page.
   function ensureAuthenticated(req, res, next) {
     if (req.isAuthenticated()) { return next(); }
@@ -300,7 +300,7 @@ Appen är nu konfigurera toocommunicate med hello v2.0-slutpunkten med hjälp av
 
   ```
 
-3.  App.js, skapa hello server:
+3.  I App.js, skapar du servern:
 
   ```JavaScript
 
@@ -309,10 +309,10 @@ Appen är nu konfigurera toocommunicate med hello v2.0-slutpunkten med hjälp av
   ```
 
 
-## <a name="5-create-hello-views-and-routes-in-express-that-you-show-your-user-on-hello-website"></a>5: skapa hello vyerna och vägarna i Express du visa din användare på hello webbplats
-Lägg till hello vägarna och vyerna som visar information om toohello användare. hello-vägarna och vyerna även hantera hello `/logout` och `/login` vägar som du skapade.
+## <a name="5-create-the-views-and-routes-in-express-that-you-show-your-user-on-the-website"></a>5: skapa vyerna och vägarna i Express du visa din användare på webbplatsen
+Lägga till vägarna och vyerna som visar information för användaren. Vägarna och vyerna hanterar även de `/logout` och `/login` vägar som du skapade.
 
-1. Skapa hello i hello rotkatalog `/routes/index.js` vägen.
+1. Skapa i rotkatalogen på `/routes/index.js` väg.
 
   ```JavaScript
 
@@ -325,7 +325,7 @@ Lägg till hello vägarna och vyerna som visar information om toohello användar
   };
   ```
 
-2.  Skapa hello i hello rotkatalog `/routes/user.js` vägen.
+2.  Skapa i rotkatalogen på `/routes/user.js` väg.
 
   ```JavaScript
 
@@ -338,9 +338,9 @@ Lägg till hello vägarna och vyerna som visar information om toohello användar
   };
   ```
 
-  `/routes/index.js`och `/routes/user.js` är enkla vägar skickar vidare hello begäran tooyour vyer, inklusive hello användaren, om sådan finns.
+  `/routes/index.js`och `/routes/user.js` är enkla vägar skickar vidare begäran i vyer, inklusive användare, om sådan finns.
 
-3.  Skapa hello i hello rotkatalog `/views/index.ejs` vyn. Den här sidan anropar din **inloggning** och **logga ut** metoder. Du också använda hello `/views/index.ejs` visa toocapture kontoinformation. Du kan använda villkorlig hello `if (!user)` som hello användare som skickas via hello-begäran. Det finns bevis att du har en inloggad användare.
+3.  Skapa i rotkatalogen på `/views/index.ejs` vyn. Den här sidan anropar din **inloggning** och **logga ut** metoder. Du också använda den `/views/index.ejs` vyn för att avbilda kontoinformation. Du kan använda villkorliga `if (!user)` som användaren som skickas via i begäran. Det finns bevis att du har en inloggad användare.
 
   ```JavaScript
   <% if (!user) { %>
@@ -353,7 +353,7 @@ Lägg till hello vägarna och vyerna som visar information om toohello användar
   <% } %>
   ```
 
-4.  Skapa hello i hello rotkatalog `/views/account.ejs` vyn. Hej `/views/account.ejs` vy kan du tooview ytterligare information som `passport-azuread` placerar i hello användarens begäran.
+4.  Skapa i rotkatalogen på `/views/account.ejs` vyn. Den `/views/account.ejs` vy kan du visa ytterligare information som `passport-azuread` placerar i användarens begäran.
 
   ```Javascript
   <% if (!user) { %>
@@ -372,7 +372,7 @@ Lägg till hello vägarna och vyerna som visar information om toohello användar
   <% } %>
   ```
 
-5.  Lägg till en layout. Skapa hello i hello rotkatalog `/views/layout.ejs` vyn.
+5.  Lägg till en layout. Skapa i rotkatalogen på `/views/layout.ejs` vyn.
 
   ```HTML
 
@@ -399,20 +399,20 @@ Lägg till hello vägarna och vyerna som visar information om toohello användar
   </html>
   ```
 
-6.  toobuild och kör din app kör `node app.js`. Gå sedan för`http://localhost:3000`.
+6.  Om du vill skapa och köra appen kör `node app.js`. Gå sedan till `http://localhost:3000`.
 
-7.  Logga in med ett personligt microsoftkonto eller ett arbets- eller skolkonto konto. Observera att hello användaridentitet avspeglas i hello /account lista. 
+7.  Logga in med ett personligt microsoftkonto eller ett arbets- eller skolkonto konto. Observera att användarens identitet avspeglas i listan över /account. 
 
 Nu har du en webbapp som skyddas med hjälp av standardprotokollen. Du kan autentisera användare i din app genom att använda sina personliga och arbetet eller skolan konton.
 
 ## <a name="next-steps"></a>Nästa steg
-För referens anger hello slutförts exemplet (utan dina konfigurationsvärden) har angetts som [en .zip-fil](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs/archive/complete.zip). Du kan också klona det från GitHub:
+Referens tillhandahålls det slutförda exemplet (utan dina konfigurationsvärden) som [en .zip-fil](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs/archive/complete.zip). Du kan också klona det från GitHub:
 
 ```git clone --branch complete https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs.git```
 
-Därefter kan du gå vidare toomore avancerade alternativ. Du kanske vill tootry:
+Därefter kan du gå vidare till mer avancerade avsnitt. Du kanske vill prova:
 
-[Skydda ett Node.js-webb-API med hjälp av hello v2.0-slutpunkten](active-directory-v2-devquickstarts-node-api.md)
+[Skydda ett Node.js-webb-API med hjälp av v2.0-slutpunkten](active-directory-v2-devquickstarts-node-api.md)
 
 Här följer några ytterligare resurser:
 
@@ -420,5 +420,5 @@ Här följer några ytterligare resurser:
 * [Stacken spill ”azure-active-directory” tagg](http://stackoverflow.com/questions/tagged/azure-active-directory)
 
 ### <a name="get-security-updates-for-our-products"></a>Hämta säkerhetsuppdateringar för våra produkter
-Vi rekommenderar att du toosign in toobe meddelas när säkerhetsincidenter. På hello [Microsoft tekniska säkerhetsmeddelanden](https://technet.microsoft.com/security/dd252948) sidan, prenumerera tooSecurity rekommendationerna aviseringar.
+Vi rekommenderar att du loggar som ska meddelas när säkerhetsincidenter. På den [Microsoft tekniska säkerhetsmeddelanden](https://technet.microsoft.com/security/dd252948) kan prenumerera på rekommendationerna säkerhetsaviseringar.
 

@@ -1,5 +1,5 @@
 ---
-title: "aaaOverview aktören-baserad Azure mikrotjänster livscykeln för hantering av | Microsoft Docs"
+title: "Översikt över aktören-baserad Azure mikrotjänster livscykel | Microsoft Docs"
 description: "Beskriver Service Fabric tillförlitliga aktören livscykel, skräpinsamling och manuellt ta bort aktörer och deras tillstånd"
 services: service-fabric
 documentationcenter: .net
@@ -14,53 +14,53 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/13/2017
 ms.author: amanbha
-ms.openlocfilehash: a7926e372449048f0a579c2c58573754a4a82363
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 75b7b77a0bef2051599a4f61183109cfb2ffff3b
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="actor-lifecycle-automatic-garbage-collection-and-manual-delete"></a>Aktören livscykel, automatisk skräpinsamling och manuellt ta bort
-En aktör aktiveras hello första gången ett anrop görs tooany av dess metoder. En aktör är inaktiverad (skräp som samlats in av hello aktörer runtime) om den inte används för en konfigurerbar tidsperiod. En aktör och dess tillstånd kan också tas bort manuellt när som helst.
+En aktör aktiveras första gången ett anrop görs till någon av dess metoder. En aktör är inaktiverad (skräp som samlats in av aktörer runtime) om den inte används för en konfigurerbar tidsperiod. En aktör och dess tillstånd kan också tas bort manuellt när som helst.
 
 ## <a name="actor-activation"></a>Aktören aktivering
-När en aktör aktiveras inträffar hello följande:
+När en aktör aktiveras inträffar följande:
 
 * När ett samtal kommer för en aktör och ingen sådan redan är aktiv, skapas en ny aktören.
-* Hej aktörstillstånd har lästs in om den underhåller tillstånd.
-* Hej `OnActivateAsync` (C#) eller `onActivateAsync` (Java)-metoden (som kan åsidosättas i hello aktören implementering) anropas.
-* hello aktören anses nu aktiv.
+* Den aktörstillstånd har lästs in om den underhåller tillstånd.
+* Den `OnActivateAsync` (C#) eller `onActivateAsync` (Java)-metoden (som kan åsidosättas i aktören implementeringen) anropas.
+* Aktören anses nu aktiv.
 
 ## <a name="actor-deactivation"></a>Aktören avaktivering
-När en aktör inaktiveras inträffar hello följande:
+När en aktör inaktiveras inträffar följande:
 
-* När en aktör inte används för vissa tidsperiod, är det bort från hello Active aktörer tabell.
-* Hej `OnDeactivateAsync` (C#) eller `onDeactivateAsync` (Java)-metoden (som kan åsidosättas i hello aktören implementering) anropas. Rensar alla hello timers för hello aktören. Aktören åtgärder som tillstånd ändringar inte ska anropas från den här metoden.
+* När en aktör inte används för vissa tidsperiod, bort den från tabellen Active aktörer.
+* Den `OnDeactivateAsync` (C#) eller `onDeactivateAsync` (Java)-metoden (som kan åsidosättas i aktören implementeringen) anropas. Rensar alla timers för aktören. Aktören åtgärder som tillstånd ändringar inte ska anropas från den här metoden.
 
 > [!TIP]
-> hello aktörer Fabric runtime skickar vissa [händelser relaterade tooactor aktivering och inaktivering av](service-fabric-reliable-actors-diagnostics.md#list-of-events-and-performance-counters). De är användbara i diagnostik- och prestandaövervakning.
+> Fabric aktörer runtime skickar vissa [händelser relaterade till aktören aktivering och inaktivering av](service-fabric-reliable-actors-diagnostics.md#list-of-events-and-performance-counters). De är användbara i diagnostik- och prestandaövervakning.
 >
 >
 
 ### <a name="actor-garbage-collection"></a>Aktören skräpinsamling
-När en aktör inaktiveras referenser toohello aktören objekt släpps och det kan vara skräpinsamlats normalt av hello CLR common language runtime () eller java virtual machine (JVM) skräpinsamlingen. Skräpinsamling endast rensar hello aktören objekt. Det gör **inte** ta bort tillstånd lagras i hello aktören tillstånd Manager. hello nästa gång hello aktören har aktiverats, skapas ett nytt aktören objekt och dess tillstånd har återställts.
+När en aktör inaktiveras referenser till objektet aktören släpps och det kan vara skräpinsamlats normalt av CLR (CLR) eller java virtual machine (JVM) skräpinsamlingen. Skräpinsamling endast rensar aktören-objektet. Det gör **inte** ta bort statusen som lagras i aktören tillstånd Manager. Nästa gång aktören aktiveras aktören objekt skapas och dess tillstånd har återställts.
 
-Vad räknas som ”används” hello syfte inaktivering och skräpinsamling?
+Vad räknas som ”används” för inaktivering och skräpinsamling?
 
 * Ta emot ett samtal
-* `IRemindable.ReceiveReminderAsync`metoden anropas (gäller endast om hello aktör använder påminnelser)
+* `IRemindable.ReceiveReminderAsync`metoden anropas (gäller endast om aktören använder påminnelser)
 
 > [!NOTE]
-> Om hello aktör använder timers och dess timer-återanropet anropas, sker **inte** antal som ”används”.
+> om aktören använder timers och dess timer-återanropet anropas, sker **inte** antal som ”används”.
 >
 >
 
-Innan vi gå in hello information avaktivering är det viktigt toodefine hello följande villkor:
+Innan vi gå in information om inaktiveringen är det viktigt att definiera följande villkor:
 
-* *Skanna intervall*. Detta är hello intervall på vilka hello aktörer runtime söker igenom Active aktörer tabellen aktörer kan inaktiveras och skräpinsamlats. hello standardvärdet är 1 minut.
-* *Inaktivitetstid*. Detta är hello tid att en aktör måste tooremain oanvända (inaktiv) innan den kan inaktiveras och skräpinsamlats. hello standardvärdet är 60 minuter.
+* *Skanna intervall*. Detta är det intervall då aktörer runtime söker igenom Active aktörer tabellen aktörer kan inaktiveras och skräpinsamlats. Standardvärdet för det här är 1 minut.
+* *Inaktivitetstid*. Det här är tidsperiod som en aktör behöver förblir oanvänt (inaktiv) innan den kan inaktiveras och skräpinsamlats. Standardvärdet för det här är 60 minuter.
 
-Normalt behöver inte toochange dessa standardinställningar. Men om det behövs dessa intervall kan ändras via `ActorServiceSettings` när du registrerar din [aktören Service](service-fabric-reliable-actors-platform.md):
+Vanligtvis behöver du inte ändra standardinställningarna. Men om det behövs dessa intervall kan ändras via `ActorServiceSettings` när du registrerar din [aktören Service](service-fabric-reliable-actors-platform.md):
 
 ```csharp
 public class Program
@@ -93,29 +93,29 @@ public class Program
     }
 }
 ```
-Hello aktören runtime håller reda på hello mängden tid som den har varit inaktiv (dvs. inte används) för varje active aktören. hello aktören runtime kontrollerar alla hello aktörer varje `ScanIntervalInSeconds` toosee om det kan vara skräp samlas in och samlar in om det har varit inaktiv i `IdleTimeoutInSeconds`.
+Aktören runtime håller reda på hur lång tid som den har varit inaktiv (dvs. inte används) för varje active aktören. Aktören runtime kontrollerar var och en av berörda varje `ScanIntervalInSeconds` att se om det kan vara skräp samlas in och samlar in om det har varit inaktiv i `IdleTimeoutInSeconds`.
 
-Varje gång som en aktör används, är dess inaktivitetstid Återställ too0. Sedan kan hello aktören kan vara skräpinsamlats endast om den igen är vilande för `IdleTimeoutInSeconds`. Återkalla en aktör anses toohave har används om en gränssnittsmetod aktören eller ett aktören påminnelse motanrop körs. En aktör är **inte** anses vara toohave har används om dess timer motanrop körs.
+Varje gång som en aktör används återställs dess inaktivitetstid till 0. Sedan kan aktören kan vara skräpinsamlats endast om den igen är vilande för `IdleTimeoutInSeconds`. Kom ihåg att en aktör betraktas som används om en gränssnittsmetod aktören eller ett aktören påminnelse motanrop körs. En aktör är **inte** betraktas som används om dess timer motanrop körs.
 
-hello följande diagram visar hello livscykeln för ett enda aktören tooillustrate dessa begrepp.
+Följande diagram visar livscykeln för ett enda aktören att illustrera dessa begrepp.
 
 ![Exempel på inaktivitetstid][1]
 
-hello exemplet visar hello effekten av aktören metodanrop, påminnelser och timers på den här aktören hello livstid. följande punkter om hello exempel hello är värt att nämna:
+Exemplet visar effekten av aktören metodanrop, påminnelser och timers på den här aktören livstid. Följande punkter om exemplet är värt att nämna:
 
-* ScanInterval och IdleTimeout ställs too5 och 10. (Enheter inte roll här, eftersom exemplet är endast tooillustrate hello konceptet.)
-* hello genomsökningen efter aktörer toobe skräpinsamlats sker på T = 0, 5, 10, 15, 20, 25, som definieras av hello genomsökning intervall på 5.
-* En periodisk timer utlöses vid T = 4, 8, 12, 16, 20, 24, och dess motanrop körs. Hello inaktivitetstid av hello aktören påverkas inte.
-* En aktören metodanrop på T = 7 återställer hello inaktivitetstid too0 och fördröjningar hello skräpinsamling av hello aktören.
-* Ett återanrop för aktören påminnelse körs på T = 14 och ytterligare fördröjningar hello skräpinsamling av hello aktören.
-* Under hello skräp samling sökningen T = 25 hello aktören inaktivitetstid slutligen överskrider hello timeout vid inaktivitet för 10 och hello aktören samlas in som skräp.
+* ScanInterval och IdleTimeout ställs till 5 och 10. (Enheter inte roll här, eftersom exemplet är bara för att illustrera begreppen.)
+* Genomsökningen efter aktörer på att skräpinsamlas sker på T = 0, 5, 10, 15, 20, 25, som definieras i intervallet för sökning på 5.
+* En periodisk timer utlöses vid T = 4, 8, 12, 16, 20, 24, och dess motanrop körs. Inaktivitetstid aktören påverkas inte.
+* En aktören metodanrop på T = 7 återställs den inaktiva tiden till 0 och försenar skräpinsamling aktören.
+* Ett återanrop för aktören påminnelse körs på T = 14 och ytterligare fördröjningar skräpinsamling aktören.
+* Under skräp samling avsökningen T = 25 skådespelare, inaktivitetstid slutligen överskrider tidsgränsen för inaktivitet 10 och aktören samlas in som skräp.
 
-En aktör blir aldrig skräpinsamlats medan det körs en av dess metoder, oavsett hur lång tid det tar vid körning av den här metoden. Som tidigare nämnts förhindrar hello körning av aktören gränssnittsmetoder och påminnelse återanrop skräpinsamling genom att återställa hello aktören inaktivitetstid too0. hello körningen av timer återanrop återställs inte hello inaktivitetstid too0. Hello skräpinsamling av hello aktören skjuts tills hello timer återanrop har slutförts.
+En aktör blir aldrig skräpinsamlats medan det körs en av dess metoder, oavsett hur lång tid det tar vid körning av den här metoden. Som tidigare nämnts förhindrar körning av aktören gränssnittsmetoder och påminnelse återanrop skräpinsamling genom att återställa den aktören inaktivitetstid till 0. Körningen av timer återanrop återställs inte den inaktiva tiden till 0. Skräpinsamling aktören skjuts tills timer-återanrop har slutförts.
 
 ## <a name="deleting-actors-and-their-state"></a>Ta bort aktörer och deras tillstånd
-Skräpinsamling inaktiverade aktörer endast rensar hello aktören objekt, men det tar inte bort data som lagras i en aktör tillstånd Manager. När en aktör aktiveras igen, sker dess data tillgängliga tooit via hello Tillståndshanterare. I fall där aktörer lagra data i Tillståndshanterare och är inaktiverad men aldrig aktiverats igen vara det nödvändigt tooclean av sina data.
+Skräpinsamling inaktiverade aktörer endast rensar aktören objektet, men det tar inte bort data som lagras i en aktör tillstånd Manager. När en aktör aktiveras igen, få dess data igen ska tillgång till den via hanteraren tillstånd. I fall där aktörer lagra data i Tillståndshanterare och är inaktiverad men aldrig aktiverats igen, kan det vara nödvändigt att rensa sina data.
 
-Hej [aktören Service](service-fabric-reliable-actors-platform.md) innehåller en funktion för att ta bort aktörer från en fjärransluten anropare:
+Den [aktören Service](service-fabric-reliable-actors-platform.md) innehåller en funktion för att ta bort aktörer från en fjärransluten anropare:
 
 ```csharp
 ActorId actorToDelete = new ActorId(id);
@@ -134,7 +134,7 @@ ActorService myActorServiceProxy = ActorServiceProxy.create(
 myActorServiceProxy.deleteActorAsync(actorToDelete);
 ```
 
-Om du tar bort en aktör har hello följande effekter beroende på om huruvida hello aktören är för närvarande är aktiva:
+Om du tar bort en aktör ger följande effekter beroende på om huruvida aktören är för närvarande är aktiva:
 
 * **Aktiva aktören**
   * Aktören tas bort från listan med aktiva aktörer och inaktiveras.
@@ -142,7 +142,7 @@ Om du tar bort en aktör har hello följande effekter beroende på om huruvida h
 * **Inaktiva aktören**
   * Dess tillstånd tas bort permanent.
 
-Observera att det går inte att anropa en aktör ta bort på sig själv från någon av dess metoder aktören eftersom hello aktören inte kan tas bort körs inom en aktören anropet kontext, i vilken hello runtime har fått ett lås runt hello aktören anropet tooenforce Enkeltrådig åtkomst.
+Observera att det går inte att anropa en aktör ta bort på sig själv från någon av dess metoder aktören eftersom aktören inte kan tas bort körs inom en aktören anrop-kontext där körningsmiljön har fått ett lås runt aktören anropet att tillämpa Enkeltrådig åtkomst.
 
 ## <a name="next-steps"></a>Nästa steg
 * [Aktören timers och påminnelser](service-fabric-reliable-actors-timers-reminders.md)

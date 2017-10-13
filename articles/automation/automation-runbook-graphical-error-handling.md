@@ -1,9 +1,9 @@
 ---
-title: aaaError hantering i Azure Automation grafiska runbook | Microsoft Docs
-description: "Den här artikeln beskriver hur tooimplement felhantering logiken i Azure Automation grafisk runbook."
+title: Felhantering i grafiska Azure Automation-runbooks | Microsoft Docs
+description: "Den här artikeln beskriver hur du implementerar felhanteringslogik i Azure Automation grafiska runbooks."
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: jwhit
 editor: tysonn
 ms.assetid: 
@@ -14,62 +14,62 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/26/2016
 ms.author: magoedte
-ms.openlocfilehash: b9ff01361d2ebd9c0174b074a7a290b1cc2fd1c8
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 521b7bd1599ebe4158258e0eb706efae2e5c5b3a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="error-handling-in-azure-automation-graphical-runbooks"></a>Felhantering i Azure Automation grafiska runbooks
 
-En nyckel runbook design huvudnamn tooconsider identifierar olika problem som kan uppstå i en runbook. De här problemen kan omfatta lyckade åtgärder, förväntade feltillstånd och oväntade feltillstånd.
+En princip för runbook-design som är viktig att ta hänsyn är att identifiera de olika problem som kan uppstå i en runbook. De här problemen kan omfatta lyckade åtgärder, förväntade feltillstånd och oväntade feltillstånd.
 
-Runbooks bör inkludera felhantering. toovalidate hello utdata för en aktivitet eller hantera ett fel med grafiska runbook-flöden, du kan använda en aktivitet för Windows PowerShell-koden, definiera villkorlig logik på hello utdata länk hello aktivitet eller använda en annan metod.          
+Runbooks bör inkludera felhantering. Om du vill validera utdata för en aktivitet eller hantera ett fel på lämpligt sätt med grafiska runbooks kan du använda en Windows PowerShell-kodaktivitet, definiera villkorslogik på utdatalänken för aktiviteten eller tillämpa en annan metod.          
 
-Om det finns ett icke avslutar fel som uppstår vid en runbook-aktivitet, bearbetas alla aktiviteter som följer ofta, oavsett hello-fel. hello fel är sannolikt toogenerate ett undantag, men hello nästa aktivitet har fortfarande beviljad toorun. Detta är hello sättet att PowerShell är utformad toohandle fel.    
+Om det finns ett icke-avslutande fel som uppstår i en runbook-aktivitet, bearbetas en aktivitet som följer oavsett felet. Det är troligt att felet genererar ett undantag, men nästa aktivitet kan fortfarande få köras. Så här har PowerShell utformats för att hantera fel.    
 
-hello typer av PowerShell-fel som kan uppstå under körningen avbryts eller inte avslutas. hello skillnaderna mellan avslutande och icke-avslutande fel är följande:
+De typer av PowerShell-fel som kan uppstå under körning är avslutande eller icke-avslutande. Skillnaderna mellan avslutande och icke avslutande fel är följande:
 
-* **Avslutar fel**: ett allvarligt fel vid körning som stoppar hello kommando (eller skriptkörningen) helt. Exempel på detta är obefintliga cmdlet:ar, syntaxfel som förhindrar att en cmdlet körs eller andra allvarliga fel.
+* **Avslutande fel**: Ett allvarligt fel vid körning som stoppar kommandot (eller skriptkörningen) helt. Exempel på detta är obefintliga cmdlet:ar, syntaxfel som förhindrar att en cmdlet körs eller andra allvarliga fel.
 
-* **Icke-avslutande fel**: ett icke-allvarligt fel som tillåter körning av toocontinue trots hello-fel. Exempel på detta är operativa fel som att en fil inte gick att hitta och behörighetsproblem.
+* **Icke-avslutande fel**: Ett icke-allvarligt fel som gör att körningen kan fortsätta trots felet. Exempel på detta är operativa fel som att en fil inte gick att hitta och behörighetsproblem.
 
-Azure Automation-grafiska runbooks har förbättrats med hello kapaciteten tooinclude felhantering. Du kan nu omvandla undantag till icke-avslutande fel och skapa fellänkar mellan aktiviteter. Den här processen kan en runbook-redigerare toocatch fel och hantera realiserad eller oväntat villkor.  
+Grafiska Azure Automation-runbooks har förbättrats och fått en funktion för felhantering. Du kan nu omvandla undantag till icke-avslutande fel och skapa fellänkar mellan aktiviteter. På så sätt kan en runbookredigerare fånga upp fel och hantera det förväntade eller oväntade tillståndet.  
 
-## <a name="when-toouse-error-handling"></a>När toouse felhantering
+## <a name="when-to-use-error-handling"></a>När du ska använda felhantering
 
-När det är en kritisk aktivitet som genererar ett fel eller ett undantag, är det viktigt tooprevent hello nästa aktivitet i din runbook från bearbetning och toohandle hello-fel på lämpligt sätt. Detta är särskilt viktigt när runbooks stöder en företags- eller tjänståtgärdsprocess.
+När det finns en kritisk aktivitet som genererar ett fel eller ett undantag är det viktigt att förhindra att nästa aktivitet i din runbook behandlas samt att hantera felet på rätt sätt. Detta är särskilt viktigt när runbooks stöder en företags- eller tjänståtgärdsprocess.
 
-För varje aktivitet som kan producera ett fel, hello runbook-redigerare lägga till ett fel länk tooany andra aktiviteter.  hello målaktiviteten kan vara av valfri typ, inklusive kod aktiviteter, anropar en cmdlet anropar en annan runbook och så vidare.
+För varje aktivitet som kan producera ett fel kan runbook-redigeraren lägga till en fellänk som pekar till andra aktiviteter.  Målaktiviteten kan vara av valfri typ: kodaktivitet, anrop av en cmdlet, anrop av en annan runbook och så vidare.
 
-Hello målaktiviteten kan dessutom också ha utgående länkar. Dessa länkar kan vara vanliga länkar eller fellänkar. Det innebär att hello runbook-redigerare kan implementera komplex logik för felhantering utan sortera tooa code aktivitet. hello rekommenderas praxis toocreate en dedikerad felhantering runbook med vanliga funktioner, men det är inte obligatoriskt. Felhantering logiken i en aktivitet för PowerShell-kod som inte hello endast alternativet.  
+Målaktiviteten kan dessutom ha utgående länkar. Dessa länkar kan vara vanliga länkar eller fellänkar. Det innebär att runbook-författaren kan implementera komplex felhanteringslogik utan att behöva använda en kodaktivitet. Den rekommenderade metoden är att skapa en särskild runbook för felhantering med gemensamma funktioner, men detta är inte obligatoriskt. Felhanteringslogiken i en PowerShell-kodaktivitet är inte det enda alternativet.  
 
-Till exempel att du en runbook som försöker toostart en virtuell dator och installera ett program på den. Om hello VM inte startas på rätt sätt, genomför två åtgärder:
+Anta exempelvis att en runbook försöker starta en virtuell dator och installera ett program på den. Om den virtuella datorn inte startar på rätt sätt utför den två åtgärder:
 
 1. Den skickar ett meddelande om det här problemet.
 2. Den startar en annan runbook som automatiskt etablerar en ny virtuell dator i stället.
 
-En lösning är toohave fel pekar tooan aktivitet som hanterar steg ett. Du kan till exempel ansluta hello **Write-Warningg** cmdlet tooan aktivitet för steg två, till exempel hello **Start AzureRmAutomationRunbook** cmdlet.
+En lösning är att ha en fellänk som hänvisar till en aktivitet som hanterar steg ett. Du kan till exempel ansluta cmdleten **Write-Warning** till en aktivitet för steg två, exempelvis cmdleten **Start-AzureRmAutomationRunbook**.
 
-Du kan också generalisera beteendet för användning i många runbooks genom att dessa två aktiviteter i en separat hantering runbook och hello vägledningen förslag tidigare. Innan du anropar den här felhantering runbook du skapar ett anpassat meddelande från hello data i hello ursprungliga runbook och skickar den sedan som en parameter toohello felhantering runbook.
+Du kan också generalisera detta beteende för användning i många runbooks genom att placera dessa två aktiviteter i en separat felhanterings-runbook och följa de riktlinjer som har föreslagits tidigare. Innan du anropar denna felhanterings-runbook kan du skapa ett anpassat meddelande från data i den ursprungliga runbooken och därefter skicka detta som en parameter till felhanterings-runbooken.
 
-## <a name="how-toouse-error-handling"></a>Hur toouse felhantering
+## <a name="how-to-use-error-handling"></a>Hur du använder felhantering
 
-Varje aktivitet har en konfigurationsinställning som omvandlar undantag till icke-avslutande fel. Som standard är denna inställning inaktiverad. Vi rekommenderar att du aktiverar den här inställningen på alla aktiviteter där du vill att toohandle fel.  
+Varje aktivitet har en konfigurationsinställning som omvandlar undantag till icke-avslutande fel. Som standard är denna inställning inaktiverad. Du bör du aktivera den här inställningen för varje aktivitet där du vill hantera fel.  
 
-Genom att aktivera den här konfigurationen, du säkerställa att både avslutande och icke-avslutande fel i hello aktivitet hanteras som ej avslutande fel och kan hanteras med en fel-länk.  
+Genom att aktivera denna konfiguration kan du säkerställa att både avslutande och icke-avslutande fel i aktiviteten hanteras som icke-avslutande fel, och de kan sedan hanteras med en fellänk.  
 
-När du har konfigurerat den här inställningen kan du skapa en aktivitet som hanterar hello-fel. Om en aktivitet producerar något fel, hello utgående fel länkar följs och hello reguljära länkar som inte även om hello aktivitet producerar samt regelbundna utdata.<br><br> ![Fellänksexempel för Automation Runbook](media/automation-runbook-graphical-error-handling/error-link-example.png)
+När du har konfigurerat den här inställningen skapar du en aktivitet som hanterar felet. Om en aktivitet producerar ett fel kommer de utgående fellänkarna att följas och de vanliga länkarna följs inte, även om aktiviteten även producerar reguljära utdata.<br><br> ![Fellänksexempel för Automation Runbook](media/automation-runbook-graphical-error-handling/error-link-example.png)
 
-I följande exempel hello, hämtar en variabel som innehåller hello datornamnet för en virtuell dator i en runbook. Sedan försöker den toostart hello virtuell dator med hello nästa aktivitet.<br><br> ![Felhanteringsexempel för Automation Runbook](media/automation-runbook-graphical-error-handling/runbook-example-error-handling.png)<br><br>      
+I följande exempel hämtar en runbook en variabel som innehåller datornamnet på en virtuell dator. Den försöker sedan starta den virtuella datorn med nästa aktivitet.<br><br> ![Felhanteringsexempel för Automation Runbook](media/automation-runbook-graphical-error-handling/runbook-example-error-handling.png)<br><br>      
 
-Hej **Get-automationvariable,** aktivitet och **Start AzureRmVm** är konfigurerade tooconvert undantag tooerrors.  Om det finns problem med hello variabel eller första hello VM sedan fel genereras.<br><br> ![Felhantering i Automation Runbook, aktivitetsinställningar](media/automation-runbook-graphical-error-handling/activity-blade-convertexception-option.png)
+Aktiviteten **Get-AutomationVariable** och **Start AzureRmVm** har konfigurerats för att konvertera undantag till fel.  Om det är problem med att hämta variabeln eller att starta den virtuella datorn genereras fel.<br><br> ![Felhantering i Automation Runbook, aktivitetsinställningar](media/automation-runbook-graphical-error-handling/activity-blade-convertexception-option.png)
 
-Fel länkar flödar från dessa aktiviteter tooa enda **fel management** aktivitet (en kod aktivitet). Den här aktiviteten är konfigurerad med ett enkelt PowerShell-uttryck som använder hello *utlösa* nyckelordet toostop bearbetning, tillsammans med *$Error.Exception.Message* tooget hello-meddelande som beskriver hello aktuella undantaget.<br><br> ![Automation Runbook-felhantering, kodexempel](media/automation-runbook-graphical-error-handling/runbook-example-error-handling-code.png)
+Fellänkar flödar från dessa aktiviteter till en enda **felhanteringsaktivitet** (en kodaktivitet). Den här aktiviteten konfigureras med ett enkelt PowerShell-uttryck med hjälp av nyckelordet *Throw* för att stoppa bearbetningen tillsammans med *$Error.Exception.Message* för att hämta det meddelande som beskriver det aktuella undantaget.<br><br> ![Automation Runbook-felhantering, kodexempel](media/automation-runbook-graphical-error-handling/runbook-example-error-handling-code.png)
 
 
 ## <a name="next-steps"></a>Nästa steg
 
-* toolearn mer om länkar och länktyper i grafiska runbooks finns [grafiska redigering i Azure Automation](automation-graphical-authoring-intro.md#links-and-workflow).
+* Om du vill veta mer om länkar och länktyper i grafiska runbooks kan du läsa [Graphical authoring in Azure Automation](automation-graphical-authoring-intro.md#links-and-workflow) (Grafisk redigering i Azure Automation).
 
-* Mer om runbook-körningen hur toomonitor runbook-jobb och annan teknisk information finns i toolearn [spåra en runbook-jobbet](automation-runbook-execution.md).
+* Läs mer om att köra runbook, hur du övervakar runbook-jobb och andra tekniska detaljer i [Spåra ett runbook-jobb](automation-runbook-execution.md).

@@ -1,6 +1,6 @@
 ---
-title: "aaaAzure användargränssnitt för Mobile Engagement - Övervakare"
-description: "Lär dig hur toomonitor realtidsdata om ditt program med Azure Mobile Engagement"
+title: "Användargränssnittet för Azure Mobile Engagement - Övervakare"
+description: "Lär dig hur du övervakar data i realtid om ditt program med Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: 
 author: piyushjo
@@ -14,45 +14,45 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 3a581e4166bc88e6ee7aa784d4047c94533685b5
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 5f8a02e35db93585e0fe46d77b3ad18b94c99597
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="how-toomonitor-real-time-data-about-your-application"></a>Hur toomonitor realtidsdata för appen
-Den här artikeln beskriver hello **ÖVERVAKAREN** för hello **Mobile Engagement** portal. Du använder hello **Mobile Engagement** portal toomonitor och hantera dina mobila appar. Observera att toostart med hello-portalen måste du först toocreate en **Azure Mobile Engagement** konto. 
+# <a name="how-to-monitor-real-time-data-about-your-application"></a>Övervaka realtidsdata för appen
+Den här artikeln beskriver den **ÖVERVAKAREN** för den **Mobile Engagement** portal. Du använder den **Mobile Engagement** portalen för att övervaka och hantera dina mobila appar. Observera att börja använda portalen måste du först skapa en **Azure Mobile Engagement** konto. 
 
-hello övervakaren avsnitt i hello Användargränssnittet innehåller realtidsanalys information och tillåter tooset meddelanden när tröskelvärden uppnås för de flesta hello samma information som är tillgängliga i hello tidigare [ANALYTICS](mobile-engagement-user-interface-analytics.md) avsnitt i hello Användargränssnittet. Se hello **ordlista** avsnitt i hello [begrepp](http://go.microsoft.com/fwlink/?LinkId=525555) avsnittet definitioner av uttryck och förkortningar i analyser och övervakning (till exempel hello följande: aktiva användare, nya användare, behålls användare, Session, Användaren sökväg diagram, mappa användare, spårning URL: er, trender, aktivitet, händelse, jobb, fel, Extra information, krascher och App-info).
+Avsnittet Övervakare i Användargränssnittet innehåller realtidsanalys information och du kan ställa in varningar när tröskelvärden nås för de flesta av samma information som är tillgänglig tidigare i den [ANALYTICS](mobile-engagement-user-interface-analytics.md) avsnitt i Användargränssnittet. Finns den **ordlista** i avsnittet den [begrepp](http://go.microsoft.com/fwlink/?LinkId=525555) avsnittet definitioner av uttryck och förkortningar i analyser och övervakning (till exempel följande: aktiva användare, nya användare, behålls användare, Session, användaren sökväg Diagram, mappa användare, spårning URL: er, trender, aktivitet, händelse, jobb, fel, Extra information, krascher och App-info).
 
 > [!NOTE]
-> Många avsnitt av hello **Mobile Engagement** portalens användargränssnitt innehåller hello **Visa hjälp** knappen. Tryck på den här knappen tooget mer detaljerad information om ett avsnitt.
+> Många avsnitt i den **Mobile Engagement** portal Användargränssnittet innehåller den **Visa hjälp** knappen. Tryck på knappen för att få mer information om ett avsnitt.
 > 
 > 
 
 ## <a name="monitor---sessions-jobs-events-errors-and-crashes"></a>Övervakaren - sessioner, jobb, händelser, fel och krascher
-Du kan se hur många användare är för närvarande i sessionen och specifika skärmar eller göra vissa åtgärder. Du kan visa användaraktivitet dividerat med sessioner, jobb, händelser, fel och krascher. Du kan se hello aktuella informationen och visa hello information från hello timma, dag eller vecka. Du kan se all information som hello i varje kategori eller sortera efter specifika hello Session, jobb, händelse, fel och krascher.  Live övervakning är användbara toouse under händelser, t.ex en Push-kampanj toosee om det finns en uptick i praktiken rätt när du skickar Push-meddelande.
+Du kan se hur många användare är för närvarande i sessionen och specifika skärmar eller göra vissa åtgärder. Du kan visa användaraktivitet dividerat med sessioner, jobb, händelser, fel och krascher. Du kan se den aktuella informationen och visa information från den senaste timme, dag eller vecka. Du kan se all information i varje kategori eller sortering av viss Session, jobb, händelse, fel och krascher.  Live övervakning är bra att använda under händelser, t.ex en Push-kampanj för att se om det finns en uptick i praktiken rätt när du skickar Push-meddelande.
 
 ![Monitor1][14]  
 
 ## <a name="troubleshooting-with-monitor---events---details"></a>Felsöka med Monitor - händelser - information
-Generera en händelse i ditt program från enheten test och hitta i övervakaren - händelser - information är en av hello enklaste sätt toofind enheten ID för testenhet och tooconfirm som Azure Mobile Engagement-integreringen av Analytics, övervakning, och Segment fungerar från ditt program. När du har hello enhets-ID för enheten test kan lägga du tooyour testenheter i ”Mina konto--enheter”. Om du inte kan generera en händelse, se till att Azure Mobile Engagement korrekt är integrerat i din Android/iOS/Web/Windows/Windows Phone-app med hello SDK.
+Generera en händelse i ditt program från enheten test och hitta i övervakaren - händelser - information är en av de enklaste sätten att hitta enhets-ID för enheten test och för att bekräfta att Azure Mobile Engagement-integreringen av Analytics, övervakning, och Segment fungerar från ditt program. När du har enheten test enhets-ID, kan du lägga till den din testenheter i ”Mina konto--enheter”. Om du inte kan generera en händelse, se till att Azure Mobile Engagement korrekt är integrerat i din Android/iOS/Web/Windows/Windows Phone-app med SDK.
 
 Mer information finns: [SDK-dokumentationen][Link 5]
 
 ![Monitor2][15]  
 
 ## <a name="troubleshooting-with-monitor---crashes---details"></a>Felsöka med Monitor kraschar - - information
-Du kan granska information om kraschen uppges om din app från övervakaren - krascher - information toohelp avgöra varför en app kraschar. Du bör också söka efter kända problem med varje version av hello SDK i hello viktig information för varje version av hello SDK för Android/iOS/Web/Windows/Windows Phone.
+Du kan granska information om kraschen uppges om din app från övervakaren - krascher - information för att avgöra varför en app kraschar. Du bör också söka efter kända problem med varje version av SDK i viktig information för varje version av SDK för Android/iOS/Web/Windows/Windows Phone.
 
 Mer information finns: [SDK-dokumentation – viktig information][Link 5]
 
 ![Monitor3][16]
 
 ## <a name="monitor---alerts"></a>Övervakaren - aviseringar
-Du kan också ange villkor för aviseringar som skickas automatiskt tooyou via e-post eller snabbmeddelande. (XMPP-kompatibla tjänster som Googles GTalk eller Apples iChat stöds.) Aviseringar baseras på en fördefinierad identifiering tröskel större än (>) eller mindre än (<) ett visst antal sessioner, jobb, händelser, fel eller krascher per sekund, minut eller timme. Aviseringar kan övervaka alla aktiviteter av en viss typ, eller bara övervaka en specifik aktivitet jobbet, händelse eller fel. 
+Du kan också ange villkor för aviseringar som skickas automatiskt till dig via e-post eller snabbmeddelande. (XMPP-kompatibla tjänster som Googles GTalk eller Apples iChat stöds.) Aviseringar baseras på en fördefinierad identifiering tröskel större än (>) eller mindre än (<) ett visst antal sessioner, jobb, händelser, fel eller krascher per sekund, minut eller timme. Aviseringar kan övervaka alla aktiviteter av en viss typ, eller bara övervaka en specifik aktivitet jobbet, händelse eller fel. 
 
-Du kan även ange en minsta Identifieringstakt som är hello minsta mängd minuter som separeras två meddelanden för hello samma varning toomake säker att när aviseringen utlöses aldrig får du mer än 1 meddelanden per intervall som anges.
+Du kan även ange en minsta Identifieringstakt, vilket är den minsta mängden minuter som separeras två meddelanden för samma avisering att säkerställa att när aviseringen utlöses får du ett aldrig fler än 1 meddelande per intervall som anges.
 
 ![Monitor4][17]
 

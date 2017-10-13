@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure dokumentation för Stream Analytics - självstudier, API-referens | Microsoft Docs"
-description: "Lär dig hur toorun IoT analyser i hello cloud med fullständigt hanterade händelsebearbetning. Analysera data i realtid från program, sensorer, enheter och många fler."
+title: "Dokumentation om Azure Stream Analytics – Självstudier, API-referens | Microsoft Docs"
+description: "Lär dig hur du kör IoT-analys i molnet med fullständigt hanterad händelsebearbetning. Analysera data i realtid från program, sensorer, enheter och många fler."
 services: stream-analytics
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 05/23/2017
 ms.author: carolz
-ms.openlocfilehash: 4015137b0f39f86ada69d92e77e72b77b799d2d6
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: dc8aa21d89ce575d29d3a9c08909eb5617d7b8a5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="stream-analytics-documentation"></a>Stream Analytics-dokumentation
 
-Lär dig hur toorun Sakernas Internet (IoT) analyser i hello cloud med Stream Analytics, en helt hanterad händelsebearbetning motor. Självstudiekurser och andra dokumentationen visar hur tooanalyze data i realtid från program, sensorer, enheter, sociala media och mycket annat. 
+Lär dig hur du kör Sakernas Internet-analys (IoT) i molnet med Stream Analytics, en fullständigt hanterad motor för händelsebearbetning. Självstudier och annan dokumentation visar hur du analyserar data i realtid från program, sensorer, enheter, sociala media och många fler. 
 
 <ul class="panelContent cardsFTitle">
      <li>

@@ -1,6 +1,6 @@
 ---
-title: aaaConnecting Apache Spark tooAzure Cosmos DB | Microsoft Docs
-description: "Använd den här självstudiekursen toolearn om hello Azure Cosmos DB Spark connector som du kan använda tooconnect Apache Spark tooAzure Cosmos DB tooperform distribuerade aggregeringar och data sciences hello flera innehavare globalt distribuerad databas systemet från Microsoft som är avsedd för hello molnet."
+title: Ansluta Apache Spark till Azure Cosmos DB | Microsoft Docs
+description: "Använd den här självstudiekursen vill veta mer om Azure Cosmos DB Spark-koppling kan du ansluta Apache Spark i Azure Cosmos DB att utföra distribuerade aggregeringar och data sciences på flera innehavare globalt distribuerade databassystemet från Microsoft som utformad för molnet."
 keywords: Apache spark
 services: cosmos-db
 documentationcenter: 
@@ -15,36 +15,36 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: denlee
-ms.openlocfilehash: 70b496fc5ca8f65675f0224e749637f5d533c346
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 8ecbb478c81cde25bbd0d1c9ee07ae02b07f8cc7
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="accelerate-real-time-big-data-analytics-with-hello-spark-tooazure-cosmos-db-connector"></a>Påskynda realtid stordata med hello Spark tooAzure Cosmos DB connector
+# <a name="accelerate-real-time-big-data-analytics-with-the-spark-to-azure-cosmos-db-connector"></a>Påskynda realtid stordata med Spark på Azure DB som Cosmos-kopplingen
 
-hello Spark tooAzure Cosmos DB connector kan Azure Cosmos DB tooact som Indatakällan eller utdatamottagaren för Apache Spark-jobb. Ansluta [Spark](http://spark.apache.org/) för[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) accelererar din möjlighet toosolve fast flytta datavetenskap problem där du kan använda Azure Cosmos DB tooquickly kvarstår och fråga efter data. hello Spark tooAzure Cosmos DB anslutningen använder effektivt hello interna Azure Cosmos DB hanteras index. hello index aktivera uppdateringsbara kolumner när du utföra analyser och push-ned predikat filtrering mot fast föränderliga globalt distribuerade data mellan scenarier i Sakernas Internet (IoT) toodata vetenskap och analyser.
+Spark på Azure DB som Cosmos-kopplingen kan Azure Cosmos-Databsen ska fungera som en Indatakällan eller utdatamottagaren för Apache Spark-jobb. Ansluta [Spark](http://spark.apache.org/) till [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) accelererar möjligheten att lösa fast flyttar datavetenskap problem där du kan använda Azure Cosmos DB snabbt bevara och fråga efter data. Spark på Azure DB som Cosmos-kopplingen använder effektivt interna Azure Cosmos DB hanteras index. Index aktivera uppdateringsbara kolumner när du utföra analyser och push-ned predikat filtrering mot fast föränderliga globalt distribueras data mellan Sakernas Internet (IoT) till scenarion för vetenskap och analys av data.
 
-För att arbeta med Spark GraphX och hello Gremlin graph API: er i Azure Cosmos DB, se [utföra diagrammet analytics med hjälp av Spark och Apache TinkerPop Gremlin](spark-connector-graph.md).
+För att arbeta med Spark GraphX och Gremlin graph API: er i Azure Cosmos DB, se [utföra diagrammet analytics med hjälp av Spark och Apache TinkerPop Gremlin](spark-connector-graph.md).
 
 ## <a name="download"></a>Ladda ned
 
-tooget igång genom att hämta hello Spark tooAzure Cosmos DB connector (förhandsgranskning) från hello [azure cosmosdb spark](https://github.com/Azure/azure-cosmosdb-spark/) databasen på GitHub.
+Kom igång genom att hämta i Spark till Azure DB som Cosmos-anslutningstjänsten (förhandsgranskning) från den [azure cosmosdb spark](https://github.com/Azure/azure-cosmosdb-spark/) databasen på GitHub.
 
 ## <a name="connector-components"></a>Connector-komponenter
 
-hello-anslutningen använder hello följande komponenter:
+Anslutningen använder följande komponenter:
 
-* [Azure Cosmos-DB](http://documentdb.com) gör att kunder tooprovision och skala Elastiskt både dataflöden och lagringsutrymmen till alla geografiska regioner. hello-tjänsten erbjuder:
+* [Azure Cosmos-DB](http://documentdb.com) ger kunder möjlighet att etablera och skala Elastiskt både dataflöden och lagringsutrymmen till alla geografiska regioner. Tjänsten innehåller:
    * Aktivera nyckeln [global distributionsplatsen](distribute-data-globally.md) och skala horisontellt
-   * Garanteras siffra fördröjningar vid hello 99th percentilen
+   * Garanteras siffra fördröjningar vid 99th percentilen
    * [Flera väldefinierade konsekvenskontroll modeller](consistency-levels.md)
    * Garanterat hög tillgänglighet med flera funktioner
    * Alla funktioner backas upp av branschledande, omfattande [serviceavtal](https://azure.microsoft.com/support/legal/sla/cosmos-db) (SLA).
 
 * [Apache Spark](http://spark.apache.org/) är en kraftfull öppen källkod bearbetningsmotor som är uppbyggd kring hastighet, enkel användning och avancerade analyser.
 
-* [Apache Spark på Azure HDInsight](../hdinsight/hdinsight-apache-spark-jupyter-spark-sql.md) så att du kan distribuera Apache Spark i hello molnet för verksamhetskritiska distributioner med hjälp av [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/apache-spark/).
+* [Apache Spark på Azure HDInsight](../hdinsight/hdinsight-apache-spark-jupyter-spark-sql.md) så att du kan distribuera Apache Spark i molnet för verksamhetskritiska distributioner med hjälp av [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/apache-spark/).
 
 Officiellt versioner som stöds:
 
@@ -54,27 +54,27 @@ Officiellt versioner som stöds:
 | Scala| 2.11|
 | Azure DocumentDB Java SDK | 1.10.0 |
 
-Den här artikeln hjälper dig att köra några enkla exempel med hjälp av Python (via pyDocumentDB) och hello Scala gränssnitt.
+Den här artikeln hjälper dig att köra några enkla exempel med hjälp av Python (via pyDocumentDB) och Scala-gränssnitt.
 
-Det finns två tillvägagångssätt tooconnect Apache Spark och Azure Cosmos DB:
-- Använd pyDocumentDB via hello [Azure DocumentDB Python SDK](https://github.com/Azure/azure-documentdb-python).
-- Skapa en Java-baserad Spark tooAzure Cosmos-DB-koppling genom att använda hello [Azure DocumentDB Java SDK](https://github.com/Azure/azure-documentdb-java).
+Det finns två sätt att ansluta Apache Spark och Azure Cosmos DB:
+- Använd pyDocumentDB via den [Azure DocumentDB Python SDK](https://github.com/Azure/azure-documentdb-python).
+- Skapa en Java-baserad Spark på Azure Cosmos DB kopplingen genom att använda den [Azure DocumentDB Java SDK](https://github.com/Azure/azure-documentdb-java).
 
 ## <a name="pydocumentdb-implementation"></a>pyDocumentDB implementering
-hello aktuella [pyDocumentDB SDK](https://github.com/Azure/azure-documentdb-python) tooconnect Spark tooAzure Cosmos DB gör enligt följande diagram hello:
+Aktuellt [pyDocumentDB SDK](https://github.com/Azure/azure-documentdb-python) kan du ansluta Spark i Azure Cosmos DB som visas i följande diagram:
 
-![Spark tooAzure Cosmos DB dataflöde via pyDocumentDB DB](./media/spark-connector/spark-pydocumentdb.png)
+![Väck på Azure Cosmos DB dataflöde via pyDocumentDB DB](./media/spark-connector/spark-pydocumentdb.png)
 
 
-### <a name="data-flow-of-hello-pydocumentdb-implementation"></a>Dataflöde för hello pyDocumentDB implementering
+### <a name="data-flow-of-the-pydocumentdb-implementation"></a>Dataflöde för pyDocumentDB-implementering
 
-hello dataflöde är följande:
+Dataflödet är följande:
 
-1. hello Spark huvudnoden ansluter toohello Azure Cosmos DB gateway-noden via pyDocumentDB. En användare anger endast hello Spark och Azure Cosmos DB-anslutningar. Anslutningar toohello respektive huvud- och gateway-noderna är transparent toohello användare.
-2. hello gateway-noden gör hello frågan mot Azure Cosmos DB där hello frågan därefter körs mot hello samling partitioner i hello datanoder. hello svar för dessa frågor skickas tillbaka toohello gateway-noden och att resultatet returneras toohello Spark-nod.
-3. Efterföljande frågor (till exempel mot ett Spark-DataFrame) skickas toohello Spark arbetarnoder för bearbetning.
+1. Noden som Spark ansluter till Azure Cosmos DB gateway-noden via pyDocumentDB. En användare anger endast Spark och Azure Cosmos DB-anslutningar. Anslutningar till respektive huvud- och gateway-noderna är transparent för användaren.
+2. Gateway-noden gör frågan mot Azure Cosmos DB där frågan därefter körs mot mängdens partitioner i datanoder. Svaret på dessa frågor skickas tillbaka till gateway-noden och att resultatet returneras till huvudnoden Spark.
+3. Efterföljande frågor (till exempel mot ett Spark-DataFrame) skickas till arbetsnoder Spark för bearbetning.
 
-Kommunikation mellan Spark och Azure Cosmos DB är begränsad toohello Spark huvudnod och Azure Cosmos DB gateway-noder.  hello frågor går snabbt hello Transportskiktet mellan dessa två noder kan.
+Kommunikation mellan Spark och Azure Cosmos DB är begränsad till Spark-huvudnod och Azure Cosmos DB gateway-noder.  Frågorna går snabbt Transportskiktet mellan dessa två noder kan.
 
 ### <a name="install-pydocumentdb"></a>Installera pyDocumentDB
 Du kan installera pyDocumentDB på Drivrutinsnoden med hjälp av **pip**, till exempel:
@@ -84,10 +84,10 @@ pip install pyDocumentDB
 ```
 
 
-### <a name="connect-spark-tooazure-cosmos-db-via-pydocumentdb"></a>Ansluta Spark tooAzure Cosmos DB via pyDocumentDB
-hello enkelhet hello kommunikation transport gör körningen av en fråga från Spark tooAzure Cosmos DB genom att använda relativt enkla pyDocumentDB.
+### <a name="connect-spark-to-azure-cosmos-db-via-pydocumentdb"></a>Ansluta Spark i Azure Cosmos DB via pyDocumentDB
+Enkelhet kommunikation transport gör körningen av en fråga från Spark i Azure Cosmos DB genom att använda relativt enkla pyDocumentDB.
 
-Hej följande fragment visas hur toouse pyDocumentDB i en kontext som Spark.
+Följande kodavsnitt visar hur du använder pyDocumentDB i en kontext som Spark.
 
 ```
 # Import Necessary Libraries
@@ -96,33 +96,33 @@ from pydocumentdb import document_client
 from pydocumentdb import documents
 import datetime
 
-# Configuring hello connection policy (allowing for endpoint discovery)
+# Configuring the connection policy (allowing for endpoint discovery)
 connectionPolicy = documents.ConnectionPolicy()
 connectionPolicy.EnableEndpointDiscovery
 connectionPolicy.PreferredLocations = ["Central US", "East US 2", "Southeast Asia", "Western Europe","Canada Central"]
 
 
-# Set keys tooconnect tooAzure Cosmos DB
+# Set keys to connect to Azure Cosmos DB
 masterKey = 'le1n99i1w5l7uvokJs3RT5ZAH8dc3ql7lx2CG0h0kK4lVWPkQnwpRLyAN0nwS1z4Cyd1lJgvGUfMWR3v8vkXKA=='
 host = 'https://doctorwho.documents.azure.com:443/'
 client = document_client.DocumentClient(host, {'masterKey': masterKey}, connectionPolicy)
 ```
 
-Enligt beskrivningen i hello kodstycke:
+Enligt beskrivningen i kodfragmentet:
 
-* hello Azure Cosmos DB Python SDK (`pyDocumentDB`) innehåller hello alla hello nödvändiga anslutningsparametrar. Till exempel önskade hello platser parametern väljer hello läsa replik och prioritet.
-*  Importera hello nödvändiga bibliotek och konfigurera din **masterKey** och **värden** toocreate hello Azure Cosmos DB *klienten* (**pydocumentdb.document_ klienten**).
+* Azure Cosmos DB Python SDK (`pyDocumentDB`) innehåller alla de nödvändiga anslutningsparametrarna. Parametern önskade platser väljer exempelvis skrivskyddade replik och prioritet ordningsföljden.
+*  Importera de nödvändiga bibliotek och konfigurera din **masterKey** och **värden** att skapa Azure Cosmos DB *klienten* (**pydocumentdb.document_client** ).
 
 
 ### <a name="execute-spark-queries-via-pydocumentdb"></a>Köra Spark-frågor via pyDocumentDB
-följande exempel används hello Azure DB som Cosmos-instans som skapades i föregående hello-fragment med hjälp av hello hello angetts skrivskyddade nycklar. hello följande kodavsnitt ansluter toohello **airports.codes** samling i hello DoctorWho konto som angavs tidigare och kör en fråga tooextract hello flygplats orter i staten Washington.
+I följande exempel används Azure DB som Cosmos-instans som skapades i föregående fragment med angivna nycklar i skrivskyddat läge. Följande kodavsnitt som ansluter till den **airports.codes** samling i DoctorWho kontot som angavs tidigare och kör en fråga om du vill extrahera flygplats orter i staten Washington.
 
 ```
 # Configure Database and Collections
 databaseId = 'airports'
 collectionId = 'codes'
 
-# Configurations hello Azure Cosmos DB client will use tooconnect toohello database and collection
+# Configurations the Azure Cosmos DB client will use to connect to the database and collection
 dbLink = 'dbs/' + databaseId
 collLink = dbLink + '/colls/' + collectionId
 
@@ -139,55 +139,55 @@ query = client.QueryDocuments(collLink, querystr, options=None, partition_key=No
 elements = list(query)
 ```
 
-När hello frågan har utförts **frågan**, hello resultatet är en **query_iterable. QueryIterable** som är konverterade tooa Python-listan. En lista med Python kan vara enkelt konverterade tooa Spark DataFrame med hjälp av hello följande kod:
+Efter att frågan har utförts **frågan**, resultatet är en **query_iterable. QueryIterable** som konverteras till en Python-lista. En lista med Python kan enkelt omvandlas till ett Spark-DataFrame med hjälp av följande kod:
 
 ```
 # Create `df` Spark DataFrame from `elements` Python list
 df = spark.createDataFrame(elements)
 ```
 
-### <a name="why-use-hello-pydocumentdb-tooconnect-spark-tooazure-cosmos-db"></a>Varför använda hello pyDocumentDB tooconnect Spark tooAzure Cosmos DB?
-Ansluta Spark tooAzure Cosmos-databas med hjälp av pyDocumentDB är vanligtvis för scenarier där:
+### <a name="why-use-the-pydocumentdb-to-connect-spark-to-azure-cosmos-db"></a>Varför ska jag använda pyDocumentDB ansluta Spark i Azure Cosmos DB?
+Ansluter Spark i Azure Cosmos DB med hjälp av pyDocumentDB är vanligtvis för scenarier där:
 
-* Vill du toouse Python.
-* Du returnerar en relativt liten resultatuppsättning från Azure Cosmos DB tooSpark. Observera att hello underliggande dataset i Azure Cosmos-databasen kan vara ganska stor. Du kopplar filter, det vill säga kör predikat filter mot dina Azure Cosmos DB-datakälla.  
+* Du vill använda Python.
+* Du returnerar relativt små resultat från Azure Cosmos DB till Spark. Observera att den underliggande datamängden i Azure Cosmos DB kan vara ganska stor. Du kopplar filter, det vill säga kör predikat filter mot dina Azure Cosmos DB-datakälla.  
 
-## <a name="spark-tooazure-cosmos-db-connector"></a>Spark tooAzure Cosmos-DB-koppling
+## <a name="spark-to-azure-cosmos-db-connector"></a>Väck till Azure DB som Cosmos-koppling
 
-hello Spark tooAzure Cosmos DB anslutningen använder hello [Azure DocumentDB Java SDK](https://github.com/Azure/azure-documentdb-java) och flyttar data mellan hello Spark arbetarnoder och Azure Cosmos DB som visas i följande diagram hello:
+Spark på Azure DB som Cosmos-kopplingen använder den [Azure DocumentDB Java SDK](https://github.com/Azure/azure-documentdb-java) och flyttar data mellan Spark arbetarnoder och Azure Cosmos DB som visas i följande diagram:
 
-![Dataflödet i hello Spark tooAzure Cosmos-DB-koppling](./media/spark-connector/spark-connector.png)
+![Dataflödet i Spark på Azure DB som Cosmos-kopplingen](./media/spark-connector/spark-connector.png)
 
-hello dataflöde är följande:
+Dataflödet är följande:
 
-1. hello Spark huvudnoden ansluter toohello Azure Cosmos DB gateway-noden tooobtain hello partitionsöversikten. En användare anger endast hello Spark och Azure Cosmos DB-anslutningar. Anslutningar toohello respektive huvud- och gateway-noderna är transparent toohello användare.
-2. Den här informationen kan tillbaka toohello Spark-nod.  Du ska nu kunna tooparse hello frågan toodetermine hello partitioner och deras platser i Azure Cosmos-databasen som du behöver tooaccess.
-3. Den här informationen är överförda toohello Spark arbetsnoderna.
-4. hello Spark arbetarnoder ansluta toohello Azure Cosmos DB partitioner direkt tooextract hello data och returnera hello data toohello Spark partitioner i hello Spark arbetsnoderna.
+1. Noden som Spark ansluter till Azure Cosmos DB gateway-noden för att hämta partitionen kartan. En användare anger endast Spark och Azure Cosmos DB-anslutningar. Anslutningar till respektive huvud- och gateway-noderna är transparent för användaren.
+2. Den här informationen tillbaka till noden som Spark.  Du bör nu kunna parsa frågan för att fastställa partitionerna och deras platser i Azure Cosmos-databasen som du behöver åtkomst till.
+3. Den här informationen skickas till arbetsnoder Spark.
+4. Arbetsnoderna Spark ansluta till Azure Cosmos DB partitioner direkt för att extrahera data och returnera data till Spark-partitioner i Spark arbetsnoderna.
 
-Kommunikation mellan Spark och Azure Cosmos DB är betydligt snabbare eftersom hello dataförflyttning mellan hello Spark arbetarnoder och hello Azure Cosmos DB datanoder (partitioner).
+Kommunikation mellan Spark och Azure Cosmos DB är betydligt snabbare eftersom data flyttas mellan arbetarnoder Spark och Azure Cosmos DB datanoder (partitioner).
 
-### <a name="build-hello-spark-tooazure-cosmos-db-connector"></a>Skapa hello Spark tooAzure Cosmos-DB-koppling
-Hello connector projekt används för närvarande maven. toobuild hello-anslutningen utan beroenden, som du kan köra:
+### <a name="build-the-spark-to-azure-cosmos-db-connector"></a>Skapa Spark på Azure DB som Cosmos-kopplingen
+För närvarande använder connector projektet maven. Du kan köra för att skapa anslutningen utan beroenden:
 ```
 mvn clean package
 ```
-Du kan också hämta hello senaste versionerna av hello JAR från hello *släpper* mapp.
+Du kan också hämta de senaste versionerna av JAR från den *släpper* mapp.
 
-### <a name="include-hello-azure-cosmos-db-spark-jar"></a>Inkludera hello Azure Cosmos DB Spark JAR
-Innan du kör någon kod, behöver du tooinclude hello Azure Cosmos DB Spark JAR.  Om du använder hello **spark-shell**, och du kan inkludera hello JAR med hjälp av hello **--burkar** alternativet.  
+### <a name="include-the-azure-cosmos-db-spark-jar"></a>Inkludera Azure Cosmos DB Spark JAR
+Innan du kan köra all kod som du behöver inkludera JAR till Spark för Azure Cosmos DB.  Om du använder den **spark-shell**, och du kan inkludera JAR med hjälp av den **--burkar** alternativet.  
 
 ```
 spark-shell --master $master --jars /$location/azure-cosmosdb-spark-0.0.3-jar-with-dependencies.jar
 ```
 
-Om du vill tooexecute hello JAR utan beroenden, Använd hello följande kod:
+Om du vill köra JAR utan beroenden, använder du följande kod:
 
 ```
 spark-shell --master $master --jars /$location/azure-cosmosdb-spark-0.0.3.jar,/$location/azure-documentdb-1.10.0.jar
 ```
 
-Om du använder en bärbar dator tjänst, till exempel Azure HDInsight Jupyter-anteckningsbok service kan du använda hello **Väck magic** kommandon:
+Om du använder en bärbar dator tjänst, till exempel Azure HDInsight Jupyter-anteckningsbok service kan du använda den **Väck magic** kommandon:
 
 ```
 %%configure
@@ -198,12 +198,12 @@ Om du använder en bärbar dator tjänst, till exempel Azure HDInsight Jupyter-a
 }
 ```
 
-Hej **burkar** kommando aktiverar du tooinclude hello två JAR: er som krävs för **azure cosmosdb spark** (sig själv och hello Azure DocumentDB Java SDK) och utelämna **scala-återspeglar** så att den inte stör hello Livius anropar (Jupyter-anteckningsbok > Livius > Spark).
+Den **burkar** kommandot kan du inkludera två burkar som behövs för **azure cosmosdb spark** (sig själv och Azure DocumentDB Java SDK) och utelämna **scala-återspeglar** så att den inte stör Livius anropar (Jupyter-anteckningsbok > Livius > Spark).
 
-### <a name="connect-spark-tooazure-cosmos-db-using-hello-connector"></a>Ansluta Spark tooAzure Cosmos DB med hello connector
-Även om hello kommunikation transport är lite mer komplicerad, kör en fråga från Spark tooAzure Cosmos DB med hello-anslutningen är betydligt snabbare.
+### <a name="connect-spark-to-azure-cosmos-db-using-the-connector"></a>Ansluta Spark till Azure Cosmos-databasen med anslutningen
+Även om kommunikationen transporten är lite mer komplicerad, är kör en fråga från Spark i Azure Cosmos DB med hjälp av anslutningen betydligt snabbare.
 
-hello följande kodfragment som visar hur toouse hello kopplingen i en Spark-kontext.
+Följande kodavsnitt visar hur du använder kopplingen i en kontext som Spark.
 
 ```
 // Import Necessary Libraries
@@ -213,7 +213,7 @@ import com.microsoft.azure.cosmosdb.spark.schema._
 import com.microsoft.azure.cosmosdb.spark._
 import com.microsoft.azure.cosmosdb.spark.config.Config
 
-// Configure connection tooyour collection
+// Configure connection to your collection
 val readConfig2 = Config(Map("Endpoint" -> "https://doctorwho.documents.azure.com:443/",
 "Masterkey" -> "le1n99i1w5l7uvokJs3RT5ZAH8dc3ql7lx2CG0h0kK4lVWPkQnwpRLyAN0nwS1z4Cyd1lJgvGUfMWR3v8vkXKA==",
 "Database" -> "DepartureDelays",
@@ -226,14 +226,14 @@ val coll = spark.sqlContext.read.cosmosDB(readConfig2)
 coll.createOrReplaceTempView("c")
 ```
 
-Enligt beskrivningen i hello kodstycke:
+Enligt beskrivningen i kodfragmentet:
 
-- **Azure cosmosdb spark** innehåller hello alla hello nödvändiga anslutningsparametrar, bland annat hello önskade platser. Exempelvis kan du välja hello läsa replik och prioritet.
-- Bara importera hello nödvändiga bibliotek och konfigurera din masterKey och värden toocreate hello Azure DB som Cosmos-klienten.
+- **Azure cosmosdb spark** innehåller alla de nödvändiga anslutningsparametrarna, bland annat de primära platserna. Exempelvis kan du välja den skrivskyddade replik och prioritet ordningen.
+- Bara importera de nödvändiga bibliotek och konfigurera masterKey och värden för att skapa Azure DB som Cosmos-klienten.
 
-### <a name="execute-spark-queries-via-hello-connector"></a>Köra Spark-frågor via hello-koppling
+### <a name="execute-spark-queries-via-the-connector"></a>Köra Spark-frågor via connector
 
-följande exempel använder hello Azure DB som Cosmos-instans som skapades i föregående hello-fragment med hjälp av hello hello angetts skrivskyddade nycklar. hello följande kodavsnitt ansluter toohello DepartureDelays.flights_pcoll samling (i hello DoctorWho kontot som angavs tidigare) och kör en fråga tooextract hello fördröjning flyginformation av flygplan reser från Seattle.
+I följande exempel används Azure DB som Cosmos-instans som skapades i föregående fragment med angivna nycklar i skrivskyddat läge. Följande kodavsnitt ansluter till samlingen DepartureDelays.flights_pcoll (i det DoctorWho kontot som angavs tidigare) och kör en fråga om du vill extrahera flyginformation för fördröjning av flygplan reser från Seattle.
 
 ```
 // Queries
@@ -247,30 +247,30 @@ df.count()
 df.show()
 ```
 
-### <a name="why-use-hello-spark-tooazure-cosmos-db-connector-implementation"></a>Varför använda hello Spark tooAzure Cosmos DB connector implementering?
+### <a name="why-use-the-spark-to-azure-cosmos-db-connector-implementation"></a>Varför använda Spark Azure Cosmos DB-implementeringen för anslutningen?
 
-Ansluta Spark tooAzure Cosmos DB med hello-anslutningen är vanligtvis för scenarier där:
+Ansluta Spark i Azure Cosmos DB med hjälp av anslutningen är vanligtvis för scenarier där:
 
-* Du vill använda toouse Scala och uppdatera den tooinclude en Python-omslutning som anges i [problemet 3: lägga till Python wrapper och exempel](https://github.com/Azure/azure-cosmosdb-spark/issues/3).
-* Du har en stor mängd data tootransfer mellan Apache Spark och Azure Cosmos DB.
+* Du vill använda Scala och uppdatera den om du vill inkludera en Python-omslutning som anges i [problemet 3: lägga till Python wrapper och exempel](https://github.com/Azure/azure-cosmosdb-spark/issues/3).
+* Du har en stor mängd data för överföring mellan Apache Spark och Azure Cosmos DB.
 
-toogive dig en uppfattning om hello frågan prestandaskillnaden finns hello [frågan Testkörningar wiki](https://github.com/Azure/azure-cosmosdb-spark/wiki/Query-Test-Runs).
+För att ge dig en uppfattning om frågan prestandaskillnaden, finns det [frågan Testkörningar wiki](https://github.com/Azure/azure-cosmosdb-spark/wiki/Query-Test-Runs).
 
 ## <a name="distributed-aggregation-example"></a>Distribuerade aggregeringsexempel
-Det här avsnittet innehåller några exempel på hur du kan göra distribuerade aggregeringar och analytics med hjälp av Apache Spark och Azure Cosmos DB tillsammans. Azure Cosmos-DB stöder redan aggregeringar, som beskrivs i hello [planeten skala mängder med Azure Cosmos DB blogg](https://azure.microsoft.com/blog/planet-scale-aggregates-with-azure-documentdb/). Här är hur du kan dra den toohello nästa nivå med Apache Spark.
+Det här avsnittet innehåller några exempel på hur du kan göra distribuerade aggregeringar och analytics med hjälp av Apache Spark och Azure Cosmos DB tillsammans. Azure Cosmos-DB stöder redan aggregeringar, som beskrivs i den [planeten skala mängder med Azure Cosmos DB blogg](https://azure.microsoft.com/blog/planet-scale-aggregates-with-azure-documentdb/). Här är hur du kan dra den till nästa nivå med Apache Spark.
 
-Observera att dessa aggregeringar i referens toohello [Spark tooAzure Cosmos DB Connector anteckningsboken](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Spark-to-CosmosDB_Connector.ipynb).
+Observera att dessa aggregeringar är reference till den [Spark till Azure Cosmos DB Connector anteckningsboken](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Spark-to-CosmosDB_Connector.ipynb).
 
-### <a name="connect-tooflights-sample-data"></a>Ansluta tooflights exempeldata
-Exemplen aggregering åtkomst till vissa svarta prestandadata som är lagrad i vår **DoctorWho** Azure Cosmos-DB-databas. tooconnect tooit måste tooutilize hello följande kodutdrag:
+### <a name="connect-to-flights-sample-data"></a>Ansluta till flygplan exempeldata
+Exemplen aggregering åtkomst till vissa svarta prestandadata som är lagrad i vår **DoctorWho** Azure Cosmos-DB-databas. För att ansluta till den, måste du använda följande kodavsnitt:
 
 ```
-// Import Spark tooAzure Cosmos DB connector
+// Import Spark to Azure Cosmos DB connector
 import com.microsoft.azure.cosmosdb.spark.schema._
 import com.microsoft.azure.cosmosdb.spark._
 import com.microsoft.azure.cosmosdb.spark.config.Config
 
-// Connect tooAzure Cosmos DB Database
+// Connect to Azure Cosmos DB Database
 val readConfig2 = Config(Map("Endpoint" -> "https://doctorwho.documents.azure.com:443/",
 "Masterkey" -> "le1n99i1w5l7uvokJs3RT5ZAH8dc3ql7lx2CG0h0kK4lVWPkQnwpRLyAN0nwS1z4Cyd1lJgvGUfMWR3v8vkXKA==",
 "Database" -> "DepartureDelays",
@@ -283,7 +283,7 @@ val coll = spark.sqlContext.read.cosmosDB(readConfig2)
 coll.createOrReplaceTempView("c")
 ```
 
-Den här fragment har vi också kommer toorun en grundläggande fråga att överföringar hello filtrerad uppsättning data från Azure Cosmos DB tooSpark där hello senare kan utföra distribuerade mängder. I det här fallet ber vi om flygplan avviker från Seattle (SEA).
+Med den här fragment kommer vi också att köra en bas-fråga som överför en filtrerad uppsättning data från Azure Cosmos DB till Spark där denna kan utföra distribuerade mängder. I det här fallet ber vi om flygplan avviker från Seattle (SEA).
 
 ```
 // Run, get row count, and time query
@@ -291,14 +291,14 @@ val originSEA = spark.sql("SELECT c.date, c.delay, c.distance, c.origin, c.desti
 originSEA.createOrReplaceTempView("originSEA")
 ```
 
-hello har följande resultat skapats genom att köra frågor hello hello Jupyter-anteckningsbok service.  Observera att alla hello kodavsnitt är generisk och inte är specifika tooany service.
+Följande resultat har skapats genom att köra frågor från Jupyter-anteckningsbok tjänsten.  Observera att alla kodavsnitt är generisk och inte är specifika för varje tjänst.
 
 ### <a name="running-limit-and-count-queries"></a>Körs GRÄNSEN och antal frågor
-Precis som du är används tooin SQL/Spark SQL, låt oss börja med en **GRÄNSEN** fråga:
+Precis som du ofta i SQL/Spark SQL, låt oss börja med en **GRÄNSEN** fråga:
 
 ![Spark GRÄNSEN fråga](./media/spark-connector/spark-sql-query.png)
 
-hello nästa frågan är en enkel och snabb **antal** fråga:
+Nästa fråga är en enkel och snabb **antal** fråga:
 
 ![Spark COUNT-frågan](./media/spark-connector/spark-count-query.png)
 
@@ -319,8 +319,8 @@ Och här är en **DISTINCT, ORDER BY** fråga:
 
 ![Spark GROUP BY frågan diagram](./media/spark-connector/order-by-query.png)
 
-### <a name="continue-hello-flight-data-analysis"></a>Fortsätta hello svarta dataanalys
-Du kan använda följande exempel frågor toocontinue dataanalys hello svarta hello:
+### <a name="continue-the-flight-data-analysis"></a>Fortsätta svarta dataanalys
+Du kan använda följande Exempelfrågor för att fortsätta analys av data rör sig:
 
 #### <a name="top-5-delayed-destinations-cities-departing-from-seattle"></a>Vanliga 5 fördröjd mål (orter) reser från Seattle
 ```
@@ -346,9 +346,9 @@ order by percentile_approx(delay, 0.5)
 
 ## <a name="next-steps"></a>Nästa steg
 
-Om du inte redan gjort hämta hello Spark tooAzure Cosmos DB koppling från hello [azure cosmosdb spark](https://github.com/Azure/azure-cosmosdb-spark) GitHub-lagringsplatsen och utforska hello fler resurser i hello lagringsplatsen:
+Om du inte redan gjort ladda ned Spark till Azure DB som Cosmos-anslutningen från den [azure cosmosdb spark](https://github.com/Azure/azure-cosmosdb-spark) GitHub-lagringsplatsen och utforska ytterligare resurser i lagringsplatsen:
 
 * [Distribuerade aggregeringar exempel](https://github.com/Azure/azure-cosmosdb-spark/wiki/Aggregations-Examples)
 * [Exempel på skript och bärbara datorer](https://github.com/Azure/azure-cosmosdb-spark/tree/master/samples)
 
-Du kan också tooreview hello [datauppsättningar Guide, DataFrames och Apache Spark SQL](http://spark.apache.org/docs/latest/sql-programming-guide.html) och hello [Apache Spark på Azure HDInsight](../hdinsight/hdinsight-apache-spark-jupyter-spark-sql.md) artikel.
+Du kanske också vill granska den [datauppsättningar Guide, DataFrames och Apache Spark SQL](http://spark.apache.org/docs/latest/sql-programming-guide.html) och [Apache Spark på Azure HDInsight](../hdinsight/hdinsight-apache-spark-jupyter-spark-sql.md) artikel.

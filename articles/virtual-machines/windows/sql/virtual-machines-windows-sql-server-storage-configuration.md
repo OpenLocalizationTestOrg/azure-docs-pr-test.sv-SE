@@ -1,5 +1,5 @@
 ---
-title: "aaaStorage konfigurationen för SQL Server-datorer | Microsoft Docs"
+title: "Konfiguration för lagring för virtuella SQL Server-datorer | Microsoft Docs"
 description: "Det här avsnittet beskrivs hur Azure konfigurerar lagring för virtuella SQL Server-datorer under etableringen (Resource Manager-modellen). Här beskrivs också hur du konfigurerar lagring för din befintliga SQL Server-datorer."
 services: virtual-machines-windows
 documentationcenter: na
@@ -14,53 +14,53 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/31/2017
 ms.author: ninarn
-ms.openlocfilehash: b50dbd698828780cfc044fa0966e8f4e2f3bb6c6
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: f10bac1189c94a581487d19fc0cc129acec6a636
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>Konfiguration för lagring för virtuella SQL Server-datorer
-När du konfigurerar en avbildning av virtuell dator för SQL Server i Azure hjälper hello Portal tooautomate lagringskonfigurationen. Detta inkluderar kopplar lagring toohello VM, vilket gör den tillgänglig lagring tooSQL Server och konfigurera den toooptimize för dina specifika krav.
+När du konfigurerar en avbildning av virtuell dator för SQL Server i Azure hjälper portalen till att automatisera konfigurationen för lagring. Detta inkluderar ansluter lagringsenheter till den virtuella datorn, vilket gör att lagring tillgänglig för SQL Server och konfigurera den att optimera för dina specifika krav.
 
-Det här avsnittet beskrivs hur Azure konfigurerar lagring för din SQL Server-datorer både under etableringen och för befintliga virtuella datorer. Den här konfigurationen baseras på hello [prestandarelaterade metodtips](virtual-machines-windows-sql-performance.md) för Azure virtuella datorer som kör SQL Server.
+Det här avsnittet beskrivs hur Azure konfigurerar lagring för din SQL Server-datorer både under etableringen och för befintliga virtuella datorer. Den här konfigurationen baseras på den [prestandarelaterade metodtips](virtual-machines-windows-sql-performance.md) för Azure virtuella datorer som kör SQL Server.
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
 ## <a name="prerequisites"></a>Krav
-toouse hello automated konfigurationsinställningar för lagring, den virtuella datorn kräver hello följande egenskaper:
+Om du vill använda inställningarna för automatisk lagring, kräver den virtuella datorn följande egenskaper:
 
 * Etablerade med en [bild av SQL Server-galleriet](virtual-machines-windows-sql-server-iaas-overview.md#option-1-create-a-sql-vm-with-per-minute-licensing).
-* Använder hello [Resource Manager-distributionsmodellen](../../../azure-resource-manager/resource-manager-deployment-model.md).
+* Använder den [Resource Manager-distributionsmodellen](../../../azure-resource-manager/resource-manager-deployment-model.md).
 * Använder [Premiumlagring](../../../storage/common/storage-premium-storage.md).
 
 ## <a name="new-vms"></a>Nya virtuella datorer
-hello följande avsnitt beskrivs hur tooconfigure lagring för nya virtuella datorer för SQL Server.
+I följande avsnitt beskrivs hur du konfigurerar lagring för nya virtuella datorer för SQL Server.
 
 ### <a name="azure-portal"></a>Azure Portal
-Etablera en virtuell Azure-dator med en SQL Server-galleriet bild kan du tooautomatically konfigurera hello lagring för den nya virtuella datorn. Du kan ange hello lagringsstorlek och prestandabegränsningarna belastningstyp. hello följande skärmbild visar hello lagring configuration bladet används under SQL VM etablering.
+Etablera en virtuell Azure-dator med en SQL Server-galleriet bild kan du konfigurera lagring för den nya virtuella datorn automatiskt. Du kan ange lagringsstorlek, prestandabegränsningarna och Arbetsbelastningstyp. Följande skärmbild visar bladet Storage konfiguration används under SQL VM etablering.
 
 ![Konfigurera SQL Server VM lagring under etableringen.](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration-provisioning.png)
 
-Baserat på dina val utför Azure hello följande konfigurationsuppgifterna för lagring när du har skapat hello VM:
+Azure utför följande konfigurationsuppgifterna för lagring när du har skapat den virtuella datorn baserat på dina val:
 
-* Skapar och bifogar premium storage data diskar toohello virtuella datorn.
-* Konfigurerar hello data diskar toobe tillgänglig tooSQL Server.
-* Konfigurerar hello datadiskar till en lagringsplats för poolen baserat på hello angivna storlek och prestanda (IOPS och genomströmning) krav.
-* Associerar hello lagringspoolen med en ny enhet på hello virtuella datorn.
+* Skapar och bifogar premium lagringsdiskar data till den virtuella datorn.
+* Konfigurerar datadiskar för att komma åt SQL-servern.
+* Konfigurerar datadiskar i lagringspoolen baserat på de angivna storlek och prestanda (IOPS och genomströmning) krav.
+* Associerar lagringspoolen med en ny enhet på den virtuella datorn.
 * Optimerar nya enheten baserat på angivna belastningstyp (datalagring, överföringsprocesser eller Allmänt).
 
-Mer information om hur Azure konfigurerar lagringsinställningarna finns hello [lagring konfigurationsavsnittet](#storage-configuration). En fullständig genomgång av hur toocreate SQL Server-VM i hello Azure-portalen, se [hello etablering kursen](virtual-machines-windows-portal-sql-server-provision.md).
+Mer information om hur Azure konfigurerar inställningar för lagring finns i [lagring konfigurationsavsnittet](#storage-configuration). En fullständig genomgång av hur du skapar en SQL Server-VM i Azure Portal finns [självstudiekursen om etablering](virtual-machines-windows-portal-sql-server-provision.md).
 
 ### <a name="resource-manage-templates"></a>Resursen hantera mallar
-Om du använder hello följande Resource Manager-mallar är kopplade två diskar för premium-data som standard med ingen konfigurationen för lagringspooler. Du kan dock anpassa dessa mallar toochange hello antalet premiumdiskar som är anslutna toohello virtuella datorn.
+Om du använder följande Resource Manager-mallar är kopplade två diskar för premium-data som standard med ingen konfigurationen för lagringspooler. Du kan dock anpassa mallarna för att ändra antalet premiumdiskar för data som är kopplade till den virtuella datorn.
 
 * [Skapa virtuell dator med automatisk säkerhetskopiering](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-sql-full-autobackup)
 * [Skapa virtuell dator med inställningen automatisk uppdatering](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-sql-full-autopatching)
 * [Skapa virtuell dator med AKV-integreringen](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-sql-full-keyvault)
 
 ## <a name="existing-vms"></a>Befintliga virtuella datorer
-För befintliga SQL Server virtuella datorer kan ändra du vissa Lagringsinställningar i hello Azure-portalen. Välj den virtuella datorn, gå toohello inställningar och väljer SQL Server-konfigurationsfilen. hello SQL Server-konfigurationsfilen bladet visar hello aktuella lagringskvoten på den virtuella datorn. Alla enheter som finns på den virtuella datorn visas i det här diagrammet. För varje enhet visar hello lagringsutrymme i fyra avsnitt:
+För befintliga SQL Server virtuella datorer kan ändra du vissa Lagringsinställningar i Azure-portalen. Välj den virtuella datorn, gå till området Inställningar och välj SQL Server-konfigurationsfilen. Konfiguration av SQL Server-bladet visar den nuvarande lagringsanvändningen av den virtuella datorn. Alla enheter som finns på den virtuella datorn visas i det här diagrammet. För varje enhet visar lagringsutrymmet i fyra avsnitt:
 
 * SQL-data
 * SQL-logg
@@ -69,47 +69,47 @@ För befintliga SQL Server virtuella datorer kan ändra du vissa Lagringsinstäl
 
 ![Konfigurera lagring för befintliga SQLServer-dator](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration-existing.png)
 
-tooconfigure hello lagring tooadd en ny enhet eller utöka en befintlig enhet, klicka hello redigeringslänken ovan hello diagram.
+Klicka på Redigera om du vill konfigurera lagring för att lägga till en ny enhet eller utöka en befintlig enhet ovanför diagrammet.
 
-hello konfigurationsalternativ som visas varierar beroende på om du har använt funktionen innan. När du använder för hello första gången måste ange du din lagringskraven för en ny enhet. Om du tidigare har använt den här funktionen toocreate en enhet kan du välja tooextend enhetens lagring.
+De konfigurationsalternativ som du ser varierar beroende på om du har använt funktionen innan. När du använder för första gången måste ange du din lagringskraven för en ny enhet. Om du tidigare har använt funktionen för att skapa en enhet kan du utöka lagring för den här enheten.
 
-### <a name="use-for-hello-first-time"></a>Använd för hello första gången
-Om det är första gången du använder den här funktionen, kan du ange hello storlek och prestanda lagringsgränser för en ny enhet. Den här upplevelse är liknande toowhat visas vid etablering tid. hello största skillnaden är att du inte får toospecify hello belastningstyp. Den här begränsningen förhindrar störa eventuella befintliga SQL Server-konfigurationer på hello virtuella datorn.
+### <a name="use-for-the-first-time"></a>Använd för första gången
+Om det är första gången du använder den här funktionen kan du ange lagringsgränser för storlek och prestanda för en ny enhet. Det här upplevelsen liknar vad som visas vid etablering tid. Den största skillnaden är att du inte får ange vilken Arbetsbelastningstyp. Den här begränsningen kan störa eventuella befintliga SQL Server-konfigurationer på den virtuella datorn.
 
 ![Konfigurera SQL Server Storage skjutreglage](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-usage-sliders.png)
 
-Azure skapar en ny enhet baserat på dina specifikationer. I det här scenariot utför Azure hello följande konfigurationsuppgifterna för lagring:
+Azure skapar en ny enhet baserat på dina specifikationer. I det här scenariot utför Azure storage följande konfigurationsåtgärder:
 
-* Skapar och bifogar premium storage data diskar toohello virtuella datorn.
-* Konfigurerar hello data diskar toobe tillgänglig tooSQL Server.
-* Konfigurerar hello datadiskar till en lagringsplats för poolen baserat på hello angivna storlek och prestanda (IOPS och genomströmning) krav.
-* Associerar hello lagringspoolen med en ny enhet på hello virtuella datorn.
+* Skapar och bifogar premium lagringsdiskar data till den virtuella datorn.
+* Konfigurerar datadiskar för att komma åt SQL-servern.
+* Konfigurerar datadiskar i lagringspoolen baserat på de angivna storlek och prestanda (IOPS och genomströmning) krav.
+* Associerar lagringspoolen med en ny enhet på den virtuella datorn.
 
-Mer information om hur Azure konfigurerar lagringsinställningarna finns hello [lagring konfigurationsavsnittet](#storage-configuration).
+Mer information om hur Azure konfigurerar inställningar för lagring finns i [lagring konfigurationsavsnittet](#storage-configuration).
 
 ### <a name="add-a-new-drive"></a>Lägg till en ny enhet
-Om du redan har konfigurerat lagring på SQL Server-VM öppnar expanderande lagring två nya alternativ. hello första alternativet är tooadd en ny enhet, vilket kan öka hello prestandanivå på den virtuella datorn.
+Om du redan har konfigurerat lagring på SQL Server-VM öppnar expanderande lagring två nya alternativ. Det första alternativet är att lägga till en ny enhet som kan öka prestanda på den virtuella datorn.
 
-![Lägg till en ny enhet tooa SQL VM](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration-add-new-drive.png)
+![Lägg till en ny enhet till en SQL-VM](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration-add-new-drive.png)
 
-När du lägger till hello enhet, måste du utföra vissa extra manuell konfiguration tooachieve hello prestandaökning.
+När du lägger till enheten måste du utföra vissa extra manuell konfiguration för att uppnå prestandaökning.
 
-### <a name="extend-hello-drive"></a>Utöka hello-enhet
-hello är annat alternativ för att expandera lagring tooextend hello befintliga enheten. Det här alternativet ökar hello tillgängligt lagringsutrymme för enheten, men det ökar inte prestanda. Du kan inte ändra hello antalet kolumner när hello lagringspoolen har skapats med lagringspooler. hello antalet kolumner avgör hello antal parallella skrivningar, som kan vara stripe över hello datadiskar. Därför kan inte några datadiskar som lagts till öka prestanda. De kan endast ger mer lagringsutrymme för hello data skrivs. Den här begränsningen innebär också att när du utökar hello enhet hello antalet kolumner avgör hello minsta antalet diskar som du kan lägga till. Om du skapar en lagringspool med fyra datadiskar är hello antalet kolumner därför också fyra. När du utökar hello lagring, måste du lägga till minst fyra datadiskar.
+### <a name="extend-the-drive"></a>Utöka enheten
+Ett annat alternativ för att expandera lagring är att utöka den befintliga enheten. Det här alternativet ökar tillgängligt lagringsutrymme för enheten, men det ökar inte prestanda. Du kan inte ändra antalet kolumner när lagringspoolen har skapats med lagringspooler. Antalet kolumner som anger antalet parallella skrivningar, som kan vara stripe över datadiskar. Därför kan inte några datadiskar som lagts till öka prestanda. De kan bara ange mer lagringsutrymme för data som skrivs. Den här begränsningen innebär också att antalet kolumner när du utökar enheten anger det minsta antalet datadiskar som du kan lägga till. Om du skapar en lagringspool med fyra datadiskar är antalet kolumner därför också fyra. När du utökar lagringen, måste du lägga till minst fyra datadiskar.
 
 ![Utöka en enhet för en SQL-VM](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-extend-a-drive.png)
 
 ## <a name="storage-configuration"></a>Storage-konfiguration
-Det här avsnittet innehåller en referens för hello lagring konfigurationsändringar som Azure utför automatiskt under SQL VM etablering eller konfigurationen i hello Azure-portalen.
+Det här avsnittet innehåller en referens för att konfigurationsändringarna för lagring som Azure utför automatiskt under SQL VM etablering eller konfigurationen för Azure-portalen.
 
 * Om du har valt färre än två TBs lagring för den virtuella datorn, Azure inte att skapa en lagringspool.
-* Om du har valt minst två TBs lagring för den virtuella datorn, konfigurerar en lagringspool i Azure. hello nästa avsnitt i det här avsnittet beskrivs hello hello konfigurationen för lagringspooler.
-* Automatisk alltid lagringskonfiguration använder [premiumlagring](../../../storage/common/storage-premium-storage.md) P30 datadiskar. Därför det finns en 1:1-mappning mellan din valda antalet terabyte och hello antalet diskar kopplade tooyour VM.
+* Om du har valt minst två TBs lagring för den virtuella datorn, konfigurerar en lagringspool i Azure. Nästa avsnitt i det här avsnittet innehåller information om konfigurationen för lagringspooler.
+* Automatisk alltid lagringskonfiguration använder [premiumlagring](../../../storage/common/storage-premium-storage.md) P30 datadiskar. Det är därför en 1:1-mappning mellan din valda antalet terabyte och antalet datadiskar som är kopplade till den virtuella datorn.
 
-Information om priser finns hello [Storage-priser](https://azure.microsoft.com/pricing/details/storage) sida på hello **disklagring** fliken.
+Information om priser finns i [Storage-priser](https://azure.microsoft.com/pricing/details/storage) sida på den **disklagring** fliken.
 
-### <a name="creation-of-hello-storage-pool"></a>Skapa hello lagringspoolen
-Azure använder hello följande inställningar toocreate hello lagringspoolen på SQL Server-datorer.
+### <a name="creation-of-the-storage-pool"></a>Skapandet av lagringspoolen
+Azure har följande inställningar för att skapa lagringspoolen på SQL Server-datorer.
 
 | Inställning | Värde |
 | --- | --- |
@@ -123,23 +123,23 @@ Azure använder hello följande inställningar toocreate hello lagringspoolen p�
 | Antal kolumner |Antalet datadiskar<sup>1</sup> |
 | TempDB-plats |Lagras på datadiskar<sup>2</sup> |
 
-<sup>1</sup> när hello lagringspoolen har skapats kan du inte ändra hello antalet kolumner i hello lagringspoolen.
+<sup>1</sup> när lagringspoolen har skapats kan du inte ändra antalet kolumner i lagringspoolen.
 
-<sup>2</sup> inställningen gäller bara toohello första enheten som du skapar med hello lagring-konfigurationen.
+<sup>2</sup> den här inställningen gäller bara den första enheten som du skapar med konfigurationen för lagring.
 
 ## <a name="workload-optimization-settings"></a>Inställningar för optimering av arbetsbelastning
-hello följande tabell beskrivs hello tre arbetsbelastning typen alternativen och deras motsvarande optimeringar:
+I följande tabell beskrivs tre arbetsbelastning typen alternativen och deras motsvarande optimeringar:
 
 | Arbetsbelastningstyp | Beskrivning | Optimeringar |
 | --- | --- | --- |
 | **Allmänt** |Standardinställning som stöder de flesta arbetsbelastningar |Ingen |
-| **Transaktionell bearbetning** |Optimerar hello lagringen för traditionella OLTP-arbetsbelastningar |Spårningsflagga 1117<br/>Spårningsflagga 1118 |
-| **Datalagring** |Optimerar hello lagringen för analys- och rapporteringsarbetsbelastningar |Spårningsflagga 610<br/>Spårningsflagga 1117 |
+| **Transaktionell bearbetning** |Optimerar lagringen för traditionella OLTP-arbetsbelastningar |Spårningsflagga 1117<br/>Spårningsflagga 1118 |
+| **Datalagring** |Optimerar lagringen för analys- och rapporteringsarbetsbelastningar |Spårningsflagga 610<br/>Spårningsflagga 1117 |
 
 > [!NOTE]
-> Du kan bara ange hello belastningstyp när du etablerar en virtuell SQL-dator genom att markera den i hello lagring konfigurationssteg.
+> Du kan bara ange vilken arbetsbelastning när du etablerar en virtuell SQL-dator genom att markera den i konfigurationssteget för lagring.
 >
 >
 
 ## <a name="next-steps"></a>Nästa steg
-För andra avsnitt relaterade toorunning SQL Server i virtuella Azure-datorer, se [SQL Server på Azure Virtual Machines](virtual-machines-windows-sql-server-iaas-overview.md).
+Andra avsnitt relaterade till SQL Server som körs i virtuella Azure-datorer, se [SQL Server på Azure Virtual Machines](virtual-machines-windows-sql-server-iaas-overview.md).

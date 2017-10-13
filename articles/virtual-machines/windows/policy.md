@@ -1,6 +1,6 @@
 ---
-title: "aaaEnforce säkerheten med hjälp av principer på virtuella Windows-datorer i Azure | Microsoft Docs"
-description: Hur tooapply princip-tooan Azure Resource Manager Windows-dator
+title: "Framtvinga säkerhet med principer på virtuella Windows-datorer i Azure | Microsoft Docs"
+description: "Hur du använder en princip till en Azure Resource Manager Windows virtuell dator"
 services: virtual-machines-windows
 documentationcenter: 
 author: singhkays
@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: kasing
-ms.openlocfilehash: b31c8a03ecf8eed6a929f97fe4146ea14364404f
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 246f5958478fd6d9afc9ba990413ab08429bd25d
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="apply-policies-toowindows-vms-with-azure-resource-manager"></a>Tillämpa principer tooWindows virtuella datorer med Azure Resource Manager
-En organisation kan tillämpa olika konventioner och regler i hello företag med hjälp av principer. Tvingande av hello önskad beteendet kan att minska risken vid bidrar toohello framgång hello organisation. I den här artikeln beskriver vi hur du kan använda Azure Resource Manager principer toodefine hello önskad beteendet för virtuella datorer i din organisation.
+# <a name="apply-policies-to-windows-vms-with-azure-resource-manager"></a>Tillämpa principer för virtuella Windows-datorer med Azure Resource Manager
+En organisation kan tillämpa olika konventioner och regler i hela företaget med hjälp av principer. Tillämpning av önskat beteende kan du minimera risken när bidrar till att organisationen. I den här artikeln beskriver vi hur du kan använda principer för Azure Resource Manager för att definiera önskat beteende för virtuella datorer i din organisation.
 
-En introduktion toopolicies finns [använda princip toomanage resurser och kontrollera åtkomst](../../azure-resource-manager/resource-manager-policy.md).
+En introduktion till principer, se [använda princip för att hantera resurser och åtkomstkontroll](../../azure-resource-manager/resource-manager-policy.md).
 
 ## <a name="permitted-virtual-machines"></a>Tillåtna virtuella datorer
-tooensure att virtuella datorer för din organisation är kompatibla med ett program, kan du begränsa hello tillåtna operativsystem. I följande exempel princip hello, Tillåt endast Windows Server 2012 R2 Datacenter-datorer toobe skapas:
+För att säkerställa att virtuella datorer för din organisation är kompatibla med ett program, kan du begränsa de tillåtna operativsystem. I exemplet nedan principen Tillåt endast Windows Server 2012 R2 Datacenter virtuella datorer som ska skapas:
 
 ```json
 {
@@ -79,7 +79,7 @@ tooensure att virtuella datorer för din organisation är kompatibla med ett pro
 }
 ```
 
-Använd ett jokertecken toomodify hello föregående princip tooallow någon Windows Server Datacenter bild:
+Du kan använda jokertecken för att ändra föregående princip för att tillåta alla Windows Server Datacenter-avbildning:
 
 ```json
 {
@@ -88,7 +88,7 @@ Använd ett jokertecken toomodify hello föregående princip tooallow någon Win
 }
 ```
 
-Använd anyOf toomodify hello föregående princip tooallow alla Windows Server 2012 R2 Datacenter eller högre bild:
+Använd anyOf för att ändra föregående princip för att tillåta alla Windows Server 2012 R2 Datacenter eller högre avbildningen:
 
 ```json
 {
@@ -109,7 +109,7 @@ Information om principfält finns [princip alias](../../azure-resource-manager/r
 
 ## <a name="managed-disks"></a>Hanterade diskar
 
-toorequire hello användning av hanterade diskar, Använd hello följande princip:
+Om du vill kräva användning av hanterade diskar, använder du följande princip:
 
 ```json
 {
@@ -157,9 +157,9 @@ toorequire hello användning av hanterade diskar, Använd hello följande princi
 
 ## <a name="images-for-virtual-machines"></a>Avbildningar för virtuella datorer
 
-Av säkerhetsskäl bör kräva du att godkända anpassade avbildningar distribueras i din miljö. Du kan ange hello resursgruppen som innehåller hello godkända bilder eller hello specifika godkända bilder.
+Av säkerhetsskäl bör kräva du att godkända anpassade avbildningar distribueras i din miljö. Du kan ange antingen resursgruppen som innehåller godkända bilder eller specifika godkända bilder.
 
-följande exempel hello kräver avbildningar från en godkänd resursgrupp:
+I följande exempel kräver avbildningar från en godkänd resursgrupp:
 
 ```json
 {
@@ -186,7 +186,7 @@ följande exempel hello kräver avbildningar från en godkänd resursgrupp:
 } 
 ```
 
-hello anger följande exempel hello godkända bild ID: N:
+I följande exempel anger godkända image-ID: N:
 
 ```json
 {
@@ -197,7 +197,7 @@ hello anger följande exempel hello godkända bild ID: N:
 
 ## <a name="virtual-machine-extensions"></a>Tillägg för virtuell dator
 
-Du kanske vill tooforbid användningen av vissa typer av tillägg. Till exempel kanske ett tillägg inte kompatibelt med vissa virtuella datoravbildningar. följande exempel visar hur hello tooblock ett specifikt filnamnstillägg. Den använder utgivare och typen toodetermine vilka tillägg tooblock.
+Du kanske vill förbjuda användningen av vissa typer av tillägg. Till exempel kanske ett tillägg inte kompatibelt med vissa virtuella datoravbildningar. I följande exempel visas hur du blockerar ett specifikt filnamnstillägg. Används för utgivare och typ för att bestämma vilka tillägg som ska blockeras.
 
 ```json
 {
@@ -227,7 +227,7 @@ Du kanske vill tooforbid användningen av vissa typer av tillägg. Till exempel 
 
 ## <a name="azure-hybrid-use-benefit"></a>Hybridrapportering i Azure används förmån
 
-När du har en licens för lokala sparar du hello licens avgift på virtuella datorer. När du inte har hello licens, bör du förbjuda hello-alternativet. hello följande princip tillåter inte användning av Azure Hybrid Använd förmånen (AHUB):
+När du har en licens för lokala sparar du licens avgift på virtuella datorer. När du inte har licensen som bör du förbjuda alternativet. Följande princip tillåter inte användning av Azure Hybrid Använd förmånen (AHUB):
 
 ```json
 {
@@ -250,6 +250,6 @@ När du har en licens för lokala sparar du hello licens avgift på virtuella da
 ```
 
 ## <a name="next-steps"></a>Nästa steg
-* När du har definierat en regel (som visas i föregående exempel hello) måste toocreate hello principdefinitionen och tilldela den tooa omfång. hello scope kan vara en prenumeration, resursgrupp eller resurs. tooassign principer hello-portalen finns i [Använd Azure portal tooassign och hantera resursprinciper](../../azure-resource-manager/resource-manager-policy-portal.md). tooassign principer via REST-API, PowerShell eller Azure CLI, se [tilldela och hantera principer via skript](../../azure-resource-manager/resource-manager-policy-create-assign.md).
-* En introduktion tooresource principer finns i [resurs uppgifter](../../azure-resource-manager/resource-manager-policy.md).
-* Anvisningar om hur företag kan använda Resource Manager tooeffectively hantera prenumerationer, se [kodskelett Azure enterprise - normativ prenumeration styrning](../../azure-resource-manager/resource-manager-subscription-governance.md).
+* När du definierar en regel (som visas i föregående exempel) behöver du skapar principdefinitionen och kopplar den till ett omfång. Omfattningen kan vara en prenumeration, resursgrupp eller resurs. Om du vill tilldela principer via portalen finns [Använd Azure-portalen för att tilldela och hantera resursprinciper](../../azure-resource-manager/resource-manager-policy-portal.md). Om du vill tilldela principer via REST-API, PowerShell eller Azure CLI, se [tilldela och hantera principer via skript](../../azure-resource-manager/resource-manager-policy-create-assign.md).
+* En introduktion till resursprinciper finns [resurs uppgifter](../../azure-resource-manager/resource-manager-policy.md).
+* Vägledning för hur företag kan använda resurshanteraren för att effektivt hantera prenumerationer finns i [Azure enterprise scaffold - förebyggande prenumerationsåtgärder](../../azure-resource-manager/resource-manager-subscription-governance.md).

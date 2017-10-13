@@ -1,6 +1,6 @@
 ---
-title: aaaAzure Security Center-plattformen migrering | Microsoft Docs
-description: "Det här dokumentet beskriver vissa ändringar toohello sätt Azure Security Center-data som samlas in."
+title: Migrering av Azure Security Center-plattformen | Microsoft Docs
+description: "I det här dokumentet beskrivs några ändringar av hur Azure Security Center-data samlas in."
 services: security-center
 documentationcenter: na
 author: YuriDio
@@ -14,53 +14,53 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/24/2017
 ms.author: yurid
-ms.openlocfilehash: 28cb8d85912a3f62941cf113da51070081b5eda2
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 5ddf71dcd9c5a2b03e3b1441d8c9b4d91b6bad12
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="azure-security-center-platform-migration"></a>Migrering av Azure Security Center-plattformen
 
-Från och med tidig juni 2017 samlar Azure Security Center viktiga ändringar toohello sätt säkerhetsdata som samlas in och lagras.  Ändringarna låsa upp nya funktioner som hello möjlighet tooeasily Sök säkerhetsdata och bättre överensstämmer med andra Azure-hantering och övervakning av tjänster.
+Från och med början av juni 2017 har det gjorts viktiga ändringar av hur säkerhetsdata samlas in och lagras i Azure Security Center.  De här ändringarna möjliggör nya funktioner, som att enkelt kunna söka säkerhetsdata, och insamlingen ligger nu mer i linje med andra tjänster för hantering och övervakning i Azure.
 
 > [!NOTE]
-> hello plattform migrering bör inte påverka dina produktionsresurser och ingen åtgärd krävs från din sida.
+> Plattformsmigreringen bör inte påverka dina produktionsresurser och ingen åtgärd krävs från din sida.
 
 
 ## <a name="whats-happening-during-this-platform-migration"></a>Vad händer under den här plattformsmigreringen?
 
-Tidigare använda Security Center hello Azure Monitoring Agent toocollect säkerhetsdata från dina virtuella datorer. Detta omfattar information om säkerhetskonfigurationer som används tooidentify säkerhetsrisker, och säkerhetshändelser som används toodetect hot. Dessa data lagrades i dina lagringskonton i Azure.
+Tidigare användes Azure Monitoring Agent till att samla in säkerhetsdata från dina virtuella datorer i Security Center. Det här är bland annat information om säkerhetskonfigurationer som används till att identifiera säkerhetsproblem, och säkerhetshändelser som används till att identifiera hot. Dessa data lagrades i dina lagringskonton i Azure.
 
-Framöver, Security Center använder hello Microsoft Monitoring Agent – är detta hello samma agent används av hello Operations Management Suite och Log Analytics-tjänsten. Data som samlas in från den här agenten lagras i antingen en befintlig *logganalys* [arbetsytan](../log-analytics/log-analytics-manage-access.md) som är associerade med din Azure-prenumeration eller en ny arbetsytor med hänsyn till kontot hello geolokalisering av hello VM .
+Från och med nu används Microsoft Monitoring Agent i Security Center (samma agent används av Operations Management Suite och Log Analytics-tjänsten). Data som samlas in från agenten lagras antingen i en befintlig *Log Analytics*-[arbetsyta](../log-analytics/log-analytics-manage-access.md) som är associerad med din Azure-prenumeration eller i en ny arbetsyta med hänsyn till den virtuella datorns geografiska plats.
 
 ## <a name="agent"></a>Agent
 
-Som en del av hello övergång, hello Microsoft Monitoring Agent (för [Windows](../log-analytics/log-analytics-windows-agents.md) eller [Linux](../log-analytics/log-analytics-linux-agents.md)) är installerad på alla virtuella datorer i Azure som data samlas för närvarande.  Om hello VM har redan hello Microsoft Monitoring Agent installerad, Security Center utnyttjar hello aktuella installerad agent.
+Som en del av övergången installeras Microsoft Monitoring Agent (för [Windows](../log-analytics/log-analytics-windows-agents.md) eller [Linux](../log-analytics/log-analytics-linux-agents.md)) på alla virtuella Azure-datorer som data samlas in från.  Om den virtuella datorn redan har Microsoft Monitoring Agent installerad används den installerade agenten i Security Center.
 
-För en viss tidsperiod (vanligtvis några dagar) körs både agenter sida vid sida tooensure en smidig övergång utan att förlora data. På så sätt kan Microsoft toovalidate som hello nya data pipeline fungerar innan avslutade användning av hello aktuella pipeline. En gång verifierade hello Azure Monitoring Agent tas bort från dina virtuella datorer. Ingen åtgärd krävs från din sida. Du får ett e-postmeddelande när alla kunder har migrerats.
+Under en tid (vanligtvis några dagar) körs båda agenterna sida vid sida för att säkerställa en smidig övergång utan att data går förlorade. På så sätt kan Microsoft verifiera att den nya pipelinen för data fungerar innan den nuvarande pipelinen avslutas. Därefter tas Azure Monitoring Agent bort från dina virtuella datorer. Ingen åtgärd krävs från din sida. Du får ett e-postmeddelande när alla kunder har migrerats.
  
-Det rekommenderas inte att manuellt avinstallera hello Azure Monitoring Agent under migreringen hello som luckor i säkerhetsdata kan orsaka. Kontakta [Microsofts kundservice och support](https://support.microsoft.com/contactus/) om du behöver mer hjälp. 
+Du bör inte avinstallera Azure Monitoring Agent manuellt under migreringen eftersom det kan uppstå luckor i säkerhetsdata. Kontakta [Microsofts kundservice och support](https://support.microsoft.com/contactus/) om du behöver mer hjälp. 
 
-hello Microsoft Monitoring Agent för Windows kräver används TCP-port 443, läsa [Azure Security Center Troubleshooting Guide](security-center-troubleshooting-guide.md) för mer information.
+För Microsoft Monitoring Agent för Windows krävs användning av TCP-port 443, läs mer i [felsökningsguiden för Azure Security Center](security-center-troubleshooting-guide.md).
 
 
 > [!NOTE] 
-> Eftersom hello Microsoft Monitoring Agent kan användas av andra Azure-hantering och övervakning services hello-agenten avinstalleras inte automatiskt när du stänga av insamling av data i Security Center. Du kan dock manuellt avinstallera hello agenten om det behövs.
+> Eftersom Microsoft Monitoring Agent kan användas av andra tjänster för hantering och övervakning i Azure avinstalleras agenten inte automatiskt när du stänger av datainsamling i Security Center. Du kan däremot avinstallera agenten manuellt om det behövs.
 
 ## <a name="workspace"></a>Arbetsyta
 
-Som tidigare beskrivits kan data som samlas in från hello Microsoft Monitoring Agent (uppdrag Security Center) lagras i en befintlig logganalys arbetsytor som är associerade med din Azure-prenumeration eller en ny arbetsytor med hänsyn till kontot hello geoplats av hello VM.
+Så som beskrivits tidigare lagras data som samlas in från Microsoft Monitoring Agent (för Security Center) antingen i befintliga Log Analytics-arbetsytor som är associerade med din Azure-prenumeration eller i nya arbetsytor med hänsyn till den virtuella datorns geografiska plats.
 
-Du kan bläddra toosee en lista över dina logganalys arbetsytor, inklusive alla som skapats av Security Center i hello Azure-portalen. En relaterad resursgrupp skapas för nya arbetsytor. Både har följande namnkonvention:
+Du kan bläddra om du vill se en lista med dina Log Analytics-arbetsytor, inklusive alla som skapats av Security Center i Azure Portal. En relaterad resursgrupp skapas för nya arbetsytor. Både har följande namnkonvention:
 
 - Arbetsyta: *DefaultWorkspace-[prenumerations-id]-[geo]*
 - Resursgrupp: *DefaultResourceGroup-[geo]* 
  
-För arbetsytor som skapats av Security Center sparas data i 30 dagar. För befintliga arbetsytor baseras kvarhållning på hello arbetsytan prisnivån.
+För arbetsytor som skapats av Security Center sparas data i 30 dagar. För befintliga arbetsytor baseras kvarhållningen på arbetsytans prisnivå.
 
 > [!NOTE]
-> Data som tidigare samlats in av Security Center ligger kvar i dina lagringskonton. När hello migreringen är klar, kan du ta bort dessa lagringskonton.
+> Data som tidigare samlats in av Security Center ligger kvar i dina lagringskonton. När migreringen är klar kan du ta bort dessa lagringskonton.
 
 ### <a name="oms-security-solution"></a>OMS-säkerhetslösning 
 
@@ -69,12 +69,12 @@ För befintliga kunder som inte har OMS-säkerhetslösningen installerad så ins
 
 ## <a name="other-updates"></a>Övriga uppdateringar
 
-Tillsammans med hello plattform migrering vi lansera vissa ytterligare mindre uppdateringar:
+Tillsammans med plattformsmigreringen lanserar vi några ytterligare mindre uppdateringar:
 
-- Fler OS-versioner stöds. Visa hello lista [här](security-center-faq.md#virtual-machines).
-- hello lista över OS säkerhetsproblem ska expanderas. Visa hello lista [här](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335).
+- Fler OS-versioner stöds. Se listan [här](security-center-faq.md#virtual-machines).
+- Listan med OS-säkerhetsproblem utökas. Se listan [här](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335).
 - [Prissättningen](https://azure.microsoft.com/pricing/details/security-center/) kommer att räknas om per timme (tidigare var det per dag), vilket leder till kostnadsbesparingar för vissa kunder.
-- Insamling av data ska krävs och aktiveras automatiskt för kunder på hello Standard prisnivån.
+- Insamling av data kommer att krävas och aktiveras automatiskt för kunder på prisnivån Standard.
 - Azure Security Center kommer att börja identifiera lösningar mot skadlig kod som inte har distribuerats via Azure-tillägg. Identifiering av Symantec Endpoint Protection och Defender för Windows 2016 blir tillgänglig först.
-- Principer för att förebygga och meddelanden kan endast konfigureras på hello *prenumeration* nivå, men priser kan fortfarande anges på hello *resursgruppen* nivå
+- Förebyggandeprinciper och -meddelanden kan endast konfigureras på *prenumerationsnivå*, men priser kan fortfarande anges på *resursgruppsnivå*l
 

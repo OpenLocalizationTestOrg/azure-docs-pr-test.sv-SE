@@ -1,6 +1,6 @@
 ---
-title: "aaaManaging tillgångar och relaterade entiteter med Media Services .NET SDK"
-description: "Lär dig hur toomanage tillgångar och relaterade entiteter med hello Media Services SDK för .NET."
+title: Hantera resurser och relaterade entiteter med Media Services .NET SDK
+description: "Lär dig hur du hanterar tillgångar och relaterade entiteter med Media Services SDK för .NET."
 author: juliako
 manager: cfowler
 editor: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: juliako
-ms.openlocfilehash: 59a8543ffc6f7f30da2c67a6fcae09bc46da7a52
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 5efe16a09808267d0797521f9e1df2b60aec9cbb
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="managing-assets-and-related-entities-with-media-services-net-sdk"></a>Hantera resurser och relaterade entiteter med Media Services .NET SDK
 > [!div class="op_single_selector"]
@@ -27,50 +27,50 @@ ms.lasthandoff: 10/06/2017
 > 
 > 
 
-Det här avsnittet visar hur toomanage Azure Media Services entiteter med .NET. 
+Det här avsnittet visar hur du hanterar Azure Media Services entiteter med .NET. 
 
 >[!NOTE]
-> Startar 1 April 2017 raderas alla jobb poster i ditt konto som är äldre än 90 dagar automatiskt, tillsammans med dess associerade aktiviteten poster, även om hello Totalt antal poster som är lägre än hello maximala kvoten. Till exempel på 1 April 2017 tas alla jobb poster i ditt konto som är äldre än den 31 December 2016 automatiskt bort. Om du behöver tooarchive hello projektaktivitet/information kan du använda hello-kod som beskrivs i det här avsnittet.
+> Från och med 1 april 2017 raderas alla jobbposter i ditt konto som är äldre än 90 dagar automatiskt, tillsammans med deras associerade uppgiftsposter, även om det totala antalet poster är lägre än den maximala kvoten. Till exempel på 1 April 2017 tas alla jobb poster i ditt konto som är äldre än den 31 December 2016 automatiskt bort. Du kan använda koden som beskrivs i det här avsnittet om du behöver Arkivera jobb/aktivitetsinformationen.
 
 ## <a name="prerequisites"></a>Krav
 
-Konfigurera utvecklingsmiljön och fylla hello app.config-fil med anslutningsinformation, enligt beskrivningen i [Media Services-utveckling med .NET](media-services-dotnet-how-to-use.md). 
+Konfigurera utvecklingsmiljön och fyll i filen app.config med anslutningsinformation, enligt beskrivningen i [Media Services-utveckling med .NET](media-services-dotnet-how-to-use.md). 
 
 ## <a name="get-an-asset-reference"></a>Hämta en referens till en tillgång
-En uppgift som ofta är tooget en referens tooan befintliga tillgångar i Media Services. hello följande kodexempel visar hur du kan hämta en referens för tillgångsinformation från hello tillgångar samlingen på hello server context-objektet, baserat på en tillgång Id. hello följande kod i exemplet används en Linq fråga tooget ett tooan befintliga IAsset referensobjekt.
+En uppgift som ofta är att hämta en referens till en befintlig tillgång i Media Services. Följande kodexempel visar hur du kan hämta en referens för tillgångsinformation från samlingen tillgångar på servern context-objektet, baserat på en tillgång Id. Följande kodexempel använder en Linq-fråga för att hämta en referens till ett befintligt IAsset-objekt.
 
     static IAsset GetAsset(string assetId)
     {
-        // Use a LINQ Select query tooget an asset.
+        // Use a LINQ Select query to get an asset.
         var assetInstance =
             from a in _context.Assets
             where a.Id == assetId
             select a;
-        // Reference hello asset as an IAsset.
+        // Reference the asset as an IAsset.
         IAsset asset = assetInstance.FirstOrDefault();
 
         return asset;
     }
 
 ## <a name="list-all-assets"></a>Visa en lista med alla tillgångar
-Hello antalet tillgångar som du har i lagring växer, är det bra toolist dina tillgångar. hello följande kodexempel visar hur tooiterate via hello tillgångar mängden hello server context-objektet. Med varje tillgång skriver hello kodexemplet aktuella även några av dess egenskapen värden toohello-konsolen. Varje tillgång kan exempelvis innehålla många mediefiler. hello kodexempel skriver ut alla filer som är associerade med varje tillgång.
+När antalet tillgångar som du har i lagring växer, är det bra att visa dina tillgångar. Följande kodexempel visar hur du söker igenom tillgångar samling på servern kontextobjektet. Med varje tillgång skriver kodexemplet aktuella även några av dess egenskapsvärden i konsolen. Varje tillgång kan exempelvis innehålla många mediefiler. Exemplet skriver ut alla filer som är associerade med varje tillgång.
 
     static void ListAssets()
     {
-        string waitMessage = "Building hello list. This may take a few "
-            + "seconds tooa few minutes depending on how many assets "
+        string waitMessage = "Building the list. This may take a few "
+            + "seconds to a few minutes depending on how many assets "
             + "you have."
             + Environment.NewLine + Environment.NewLine
             + "Please wait..."
             + Environment.NewLine;
         Console.Write(waitMessage);
 
-        // Create a Stringbuilder toostore hello list that we build. 
+        // Create a Stringbuilder to store the list that we build. 
         StringBuilder builder = new StringBuilder();
 
         foreach (IAsset asset in _context.Assets)
         {
-            // Display hello collection of assets.
+            // Display the collection of assets.
             builder.AppendLine("");
             builder.AppendLine("******ASSET******");
             builder.AppendLine("Asset ID: " + asset.Id);
@@ -78,7 +78,7 @@ Hello antalet tillgångar som du har i lagring växer, är det bra toolist dina 
             builder.AppendLine("==============");
             builder.AppendLine("******ASSET FILES******");
 
-            // Display hello files associated with each asset. 
+            // Display the files associated with each asset. 
             foreach (IAssetFile fileItem in asset.AssetFiles)
             {
                 builder.AppendLine("Name: " + fileItem.Name);
@@ -93,48 +93,48 @@ Hello antalet tillgångar som du har i lagring växer, är det bra toolist dina 
 
 ## <a name="get-a-job-reference"></a>Hämta en referens i projektet
 
-När du arbetar med att bearbeta uppgifter i Media Services-koden måste ofta tooget referens tooan befintliga jobb med ett ID hello följande kodexempel visar hur tooget referens-tooan IJob objekt från hello jobb samling.
+När du arbetar med att bearbeta uppgifter i Media Services kod måste ofta du hämta en referens till ett befintligt jobb baserat på ett Id. Följande kodexempel visar hur du hämtar en referens till ett IJob objekt från samlingen jobb.
 
-Du kanske måste tooget jobbet referens när du startar en tidskrävande kodningsjobbet och måste toocheck hello Jobbstatus i en tråd. I detta fall när hello-metoden returnerar från en tråd måste tooretrieve ett uppdateras referens tooa jobb.
+Du kan behöva hämta en referens för jobbet när du startar en tidskrävande kodningsjobbet och behöver kontrollera Jobbstatus i en tråd. När metoden returnerar från en tråd i detta fall måste du hämta en uppdateras referens till ett jobb.
 
     static IJob GetJob(string jobId)
     {
-        // Use a Linq select query tooget an updated 
+        // Use a Linq select query to get an updated 
         // reference by Id. 
         var jobInstance =
             from j in _context.Jobs
             where j.Id == jobId
             select j;
-        // Return hello job reference as an Ijob. 
+        // Return the job reference as an Ijob. 
         IJob job = jobInstance.FirstOrDefault();
 
         return job;
     }
 
 ## <a name="list-jobs-and-assets"></a>Lista över jobb och tillgångar
-En viktig uppgift är toolist tillgångar med deras associerade jobbet i Media Services. hello följande kodexempel visar hur toolist alla IJob-objekt, och därefter för varje jobb visas egenskaper om hello jobb, alla relaterade aktiviteter, alla indata tillgångar och alla utdata tillgångar. hello koden i det här exemplet kan vara användbart för många andra aktiviteter. Till exempel om du vill toolist hello utdata tillgångar från en eller flera kodning jobb som du tidigare körde denna kod visar hur tooaccess hello utdata tillgångar. När du har en referens tooan utdatatillgången leverera du sedan hello innehåll tooother användare eller program genom att hämta den eller tillhandahålla URL: er. 
+En viktig uppgift är att lista över tillgångar med deras associerade jobbet i Media Services. Följande kodexempel visar hur du listar alla IJob-objekt, och sedan för varje projekt, den visar egenskaper om jobbet, alla relaterade uppgifter, alla indata-tillgångar och alla utdata tillgångar. Koden i det här exemplet kan vara användbart för flera uppgifter. Om du vill visa en lista med tillgångar utdata från ett eller flera kodning jobb som du tidigare körde visar denna kod hur du kommer åt utdata tillgångar. När du har en referens till en utdatatillgången, kan du sedan leverera innehållet till andra användare eller program genom att hämta den eller tillhandahålla URL: er. 
 
-Mer information om alternativ för att leverera tillgångar finns [leverera tillgångar med hello Media Services SDK för .NET](media-services-deliver-streaming-content.md).
+Mer information om alternativ för att leverera tillgångar finns [leverera tillgångar med Media Services SDK för .NET](media-services-deliver-streaming-content.md).
 
-    // List all jobs on hello server, and for each job, also list 
+    // List all jobs on the server, and for each job, also list 
     // all tasks, all input assets, all output assets.
 
     static void ListJobsAndAssets()
     {
-        string waitMessage = "Building hello list. This may take a few "
-            + "seconds tooa few minutes depending on how many assets "
+        string waitMessage = "Building the list. This may take a few "
+            + "seconds to a few minutes depending on how many assets "
             + "you have."
             + Environment.NewLine + Environment.NewLine
             + "Please wait..."
             + Environment.NewLine;
         Console.Write(waitMessage);
 
-        // Create a Stringbuilder toostore hello list that we build. 
+        // Create a Stringbuilder to store the list that we build. 
         StringBuilder builder = new StringBuilder();
 
         foreach (IJob job in _context.Jobs)
         {
-            // Display hello collection of jobs on hello server.
+            // Display the collection of jobs on the server.
             builder.AppendLine("");
             builder.AppendLine("******JOB*******");
             builder.AppendLine("Job ID: " + job.Id);
@@ -144,7 +144,7 @@ Mer information om alternativ för att leverera tillgångar finns [leverera till
             builder.AppendLine("==============");
 
 
-            // For each job, display hello associated tasks (a job  
+            // For each job, display the associated tasks (a job  
             // has one or more tasks). 
             builder.AppendLine("******TASKS*******");
             foreach (ITask task in job.Tasks)
@@ -160,7 +160,7 @@ Mer information om alternativ för att leverera tillgångar finns [leverera till
                 builder.AppendLine("==============");
             }
 
-            // For each job, display hello list of input media assets.
+            // For each job, display the list of input media assets.
             builder.AppendLine("******JOB INPUT MEDIA ASSETS*******");
             foreach (IAsset inputAsset in job.InputMediaAssets)
             {
@@ -173,7 +173,7 @@ Mer information om alternativ för att leverera tillgångar finns [leverera till
                 }
             }
 
-            // For each job, display hello list of output media assets.
+            // For each job, display the list of output media assets.
             builder.AppendLine("******JOB OUTPUT MEDIA ASSETS*******");
             foreach (IAsset theAsset in job.OutputMediaAssets)
             {
@@ -192,9 +192,9 @@ Mer information om alternativ för att leverera tillgångar finns [leverera till
     }
 
 ## <a name="list-all-access-policies"></a>Visa en lista med alla åtkomstprinciper
-I Media Services kan du definiera en åtkomstprincip för en tillgång eller dess filer. En åtkomstprincip definierar hello behörigheter för en fil eller en tillgång (vilken typ av åtkomst och hello varaktighet). I Media Services-koden definiera du vanligtvis en åtkomstprincip genom att skapa ett IAccessPolicy objekt och associera den med en befintlig tillgång. Sedan kan du skapa en ILocator-objektet, vilket gör att du kan ge direktåtkomst tooassets i Media Services. hello Visual Studio-projekt som medföljer den här dokumentationen serien innehåller flera kodexempel som visar hur toocreate och tilldela åt principer och lokaliserare tooassets.
+I Media Services kan du definiera en åtkomstprincip för en tillgång eller dess filer. En åtkomstprincip definierar behörigheter för en fil eller en tillgång (vilken typ av åtkomst och varaktighet). I Media Services-koden definiera du vanligtvis en åtkomstprincip genom att skapa ett IAccessPolicy objekt och associera den med en befintlig tillgång. Sedan kan du skapa en ILocator-objektet, vilket gör att du kan ge direktåtkomst till tillgångar i Media Services. Visual Studio-projekt som medföljer den här dokumentationen serien innehåller flera kodexempel som visar hur du skapar och tilldelar tillgångar åtkomstprinciper och lokaliserare.
 
-Hej följande exempel visas hur toolist alla åtkomstprinciper på hello-servern och visar hello typ av behörigheter som är associerade med varje. Ett annat bra sätt tooview åtkomstprinciper är toolist alla ILocator objekt på hello-servern och sedan för varje lokaliserare, kan du visa dess associerade åtkomstprincip via egenskapen AccessPolicy.
+Följande kodexempel visar hur du listar alla åtkomstprinciper på servern och visar vilken typ av behörigheter som associeras med varje. Ett annat bra sätt att visa principer för åtkomst är att lista alla ILocator objekt på servern och sedan för varje lokaliserare, kan du visa dess associerade åtkomstprincip via egenskapen AccessPolicy.
 
     static void ListAllPolicies()
     {
@@ -212,9 +212,9 @@ Hej följande exempel visas hur toolist alla åtkomstprinciper på hello-servern
 ## <a name="limit-access-policies"></a>Gränsen åtkomstprinciper 
 
 >[!NOTE]
-> Det finns en gräns på 1 000 000 principer för olika AMS-principer (till exempel för positionerarprincipen eller ContentKeyAuthorizationPolicy). Du bör använda hello samma princip-ID om du alltid använder hello samma dagar / åtkomstbehörigheter, till exempel principer för lokaliserare som är avsedda tooremain på plats för lång tid (icke-överföringen principer). 
+> Det finns en gräns på 1 000 000 principer för olika AMS-principer (till exempel för positionerarprincipen eller ContentKeyAuthorizationPolicy). Du bör använda samma princip-ID om du alltid använder samma dagar/åtkomstbehörigheter, till exempel principer för positionerare som är avsedda att vara på plats under en längre tid (icke-överföringsprinciper). 
 
-Du kan till exempel skapa en allmän uppsättning principer med hello följande kod som körs endast en gång i ditt program. Du kan logga ID tooa loggfilen för senare användning:
+Du kan till exempel skapa en allmän uppsättning principer med följande kod som körs endast en gång i ditt program. Du kan logga ID: N till en loggfil för senare användning:
 
     double year = 365.25;
     double week = 7;
@@ -226,18 +226,18 @@ Du kan till exempel skapa en allmän uppsättning principer med hello följande 
     Console.WriteLine("100 year policy ID is: " + policy100Year.Id);
     Console.WriteLine("One week policy ID is: " + policyWeek.Id);
 
-Du kan sedan använda hello befintliga ID: N i koden så här:
+Du kan sedan använda de befintliga ID i koden så här:
 
     const string policy1YearId = "nb:pid:UUID:2a4f0104-51a9-4078-ae26-c730f88d35cf";
 
 
-    // Get hello standard policy for 1 year read only
+    // Get the standard policy for 1 year read only
     var tempPolicyId = from b in _context.AccessPolicies
                        where b.Id == policy1YearId
                        select b;
     IAccessPolicy policy1Year = tempPolicyId.FirstOrDefault();
 
-    // Get hello existing asset
+    // Get the existing asset
     var tempAsset = from a in _context.Assets
                 where a.Id == assetID
                 select a;
@@ -246,14 +246,14 @@ Du kan sedan använda hello befintliga ID: N i koden så här:
     ILocator originLocator = _context.Locators.CreateLocator(LocatorType.OnDemandOrigin, asset,
         policy1Year,
         DateTime.UtcNow.AddMinutes(-5));
-    Console.WriteLine("hello locator base path is " + originLocator.BaseUri.ToString());
+    Console.WriteLine("The locator base path is " + originLocator.BaseUri.ToString());
 
 ## <a name="list-all-locators"></a>Visa en lista med alla positionerare
-En positionerare är en URL som innehåller en direkt sökväg tooaccess en tillgång, tillsammans med behörigheter toohello tillgång som definieras av hello lokaliserare associerade åtkomstprincip. Varje tillgång kan ha en samling ILocator objekt som är associerade med den på egenskapen lokaliserare. hello serverkontext har också en positionerare samling som innehåller alla lokaliserare.
+En positionerare är en URL som innehåller en direkt sökväg för att komma åt en tillgång, tillsammans med behörigheter till tillgången som definieras av den positionerare associerade åtkomstprincip. Varje tillgång kan ha en samling ILocator objekt som är associerade med den på egenskapen lokaliserare. Serverkontext har också en positionerare samling som innehåller alla lokaliserare.
 
-hello visar följande kodexempel alla positionerare på hello-servern. För varje lokaliserare visas hello Id för hello relaterade tillgången och åtkomstprincip. Den visar även hello typ av behörighet, hello förfallodatum och hello fullständig sökväg toohello tillgången.
+Följande kodexempel visar alla positionerare på servern. För varje lokaliserare visas Id för den relaterade tillgången och åtkomst. Den visar även typ av behörigheter, förfallodatum och den fullständiga sökvägen till tillgången.
 
-Observera att en positionerare sökvägen tooan tillgång är bara en grundläggande URL toohello tillgång. toocreate som en direkt sökväg tooindividual filer att en användare eller ett program kan bläddra till din kod måste lägga till hello specifika sökvägen toohello lokaliserare filsökväg. Mer information om hur toodo detta, se avsnittet hello [leverera tillgångar med hello Media Services SDK för .NET](media-services-deliver-streaming-content.md).
+Observera att en positionerare sökväg till en tillgång är en grundläggande Webbadress till tillgången. Om du vill skapa en direkt sökväg till enskilda filer som en användare eller ett program kan bläddra till din kod måste lägga till specifika filsökvägen lokaliserare sökvägen. Mer information om hur du gör detta finns i avsnittet [leverera tillgångar med Media Services SDK för .NET](media-services-deliver-streaming-content.md).
 
     static void ListAllLocators()
     {
@@ -265,18 +265,18 @@ Observera att en positionerare sökvägen tooan tillgång är bara en grundlägg
             Console.WriteLine("Locator access policy Id: " + locator.AccessPolicyId);
             Console.WriteLine("Access policy permissions: " + locator.AccessPolicy.Permissions);
             Console.WriteLine("Locator expiration: " + locator.ExpirationDateTime);
-            // hello locator path is hello base or parent path (with included permissions) tooaccess  
-            // hello media content of an asset. toocreate a full URL tooa specific media file, take 
-            // hello locator path and then append a file name and info as needed.  
+            // The locator path is the base or parent path (with included permissions) to access  
+            // the media content of an asset. To create a full URL to a specific media file, take 
+            // the locator path and then append a file name and info as needed.  
             Console.WriteLine("Locator base path: " + locator.Path);
             Console.WriteLine("");
         }
     }
 
 ## <a name="enumerating-through-large-collections-of-entities"></a>Uppräkning av stora mängder av entiteter
-När du frågar entiteter finns en gräns på 1000 entiteter som returneras i taget eftersom offentlig REST-v2 begränsar frågans resultat too1000 resultat. Du behöver toouse hoppa över och vidta vid uppräkning av stora mängder av entiteter. 
+När du frågar entiteter, finns det en gräns på 1000 entiteter som returneras i taget eftersom offentlig REST-v2 begränsar frågeresultaten till 1000 resultat. Du måste använda Skip och vidta vid uppräkning av stora mängder av entiteter. 
 
-hello angetts följande funktion slingor via alla hello jobb i hello Media Services-konto. Media Services returnerar 1000 jobb i Jobbsamlingen. hello-funktionen gör att användning av hoppa över och ta toomake Kontrollera som alla jobb räknas (om du har fler än 1000 jobb i ditt konto).
+Följande funktion loop genom alla jobb i den angivna Media Services-konto. Media Services returnerar 1000 jobb i Jobbsamlingen. Funktionen tillämpar Skip och vidta för att se till att alla jobb räknas (om du har fler än 1000 jobb i ditt konto).
 
     static void ProcessJobs()
     {
@@ -289,7 +289,7 @@ hello angetts följande funktion slingor via alla hello jobb i hello Media Servi
 
             while (true)
             {
-                // Loop through all Jobs (1000 at a time) in hello Media Services account
+                // Loop through all Jobs (1000 at a time) in the Media Services account
                 IQueryable _jobsCollectionQuery = _context.Jobs.Skip(skipSize).Take(batchSize);
                 foreach (IJob job in _jobsCollectionQuery)
                 {
@@ -315,23 +315,23 @@ hello angetts följande funktion slingor via alla hello jobb i hello Media Servi
     }
 
 ## <a name="delete-an-asset"></a>Ta bort en tillgång
-hello följande exempel tar bort en tillgång.
+I följande exempel tar bort en tillgång.
 
     static void DeleteAsset( IAsset asset)
     {
-        // delete hello asset
+        // delete the asset
         asset.Delete();
 
         // Verify asset deletion
         if (GetAsset(asset.Id) == null)
-            Console.WriteLine("Deleted hello Asset");
+            Console.WriteLine("Deleted the Asset");
 
     }
 
 ## <a name="delete-a-job"></a>Ta bort ett jobb
-toodelete ett jobb, måste du kontrollera hello jobb som anges i hello tillstånd egenskapen hello tillstånd. Jobb som har slutförts eller avbrutits kan tas bort medan jobb som har vissa andra tillstånd, till exempel köade schemalagda eller bearbetning, måste först avbrytas och sedan kan du ta bort.
+Om du vill ta bort ett jobb, måste du kontrollera status för jobbet som anges i egenskapen State. Jobb som har slutförts eller avbrutits kan tas bort medan jobb som har vissa andra tillstånd, till exempel köade schemalagda eller bearbetning, måste först avbrytas och sedan kan du ta bort.
 
-hello visar följande kodexempel en metod för att ta bort ett jobb genom att kontrollera status för jobb och ta sedan bort när hello tillstånd slutförts eller avbrutits. Den här koden beror på hello föregående avsnitt i det här avsnittet för att hämta en referens tooa jobbet: hämta en referens i projektet.
+Följande exempel visar en metod för att ta bort ett jobb genom att kontrollera status för jobb och ta sedan bort när tillståndet slutförts eller avbrutits. Den här koden är beroende av föregående avsnitt i det här avsnittet för att hämta en referens till ett jobb: hämta en referens i projektet.
 
     static void DeleteJob(string jobId)
     {
@@ -353,7 +353,7 @@ hello visar följande kodexempel en metod för att ta bort ett jobb genom att ko
                 case JobState.Error:
                     // Job errors should already be logged by polling or event 
                     // handling methods such as CheckJobProgress or StateChanged.
-                    // You can also call job.DeleteAsync toodo async deletes.
+                    // You can also call job.DeleteAsync to do async deletes.
                     job.Delete();
                     Console.WriteLine("Job has been deleted.");
                     jobDeleted = true;
@@ -380,12 +380,12 @@ hello visar följande kodexempel en metod för att ta bort ett jobb genom att ko
 
 
 ## <a name="delete-an-access-policy"></a>Ta bort en åtkomstprincip
-hello visar följande kodexempel hur tooget en åtkomstprincip för referens tooan baserat på en princip-Id och toodelete hello princip.
+Följande kodexempel visar hur du hämtar en referens till en princip utifrån en princip-Id, och sedan ta bort principen.
 
     static void DeleteAccessPolicy(string existingPolicyId)
     {
-        // toodelete a specific access policy, get a reference toohello policy.  
-        // based on hello policy Id passed toohello method.
+        // To delete a specific access policy, get a reference to the policy.  
+        // based on the policy Id passed to the method.
         var policyInstance =
                 from p in _context.AccessPolicies
                 where p.Id == existingPolicyId

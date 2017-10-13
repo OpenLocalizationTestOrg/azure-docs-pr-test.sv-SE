@@ -1,6 +1,6 @@
 ---
-title: "aaaLive ström med lokala kodare med hjälp av hello Azure-portalen | Microsoft Docs"
-description: "Den här självstudiekursen vägleder dig genom hello stegen för att skapa en kanal som är konfigurerad för en genomströmningsleverans."
+title: "Liveuppspelning med lokala kodare med hjälp av Azure Portal | Microsoft Docs"
+description: "Den här vägledningen visar dig stegen för att skapa en kanal som är konfigurerad för en genomströmningsleverans."
 services: media-services
 documentationcenter: 
 author: juliako
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/09/2017
 ms.author: juliako
-ms.openlocfilehash: 1fb341e022f66f33903e13e07d3e84c0216cad77
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 6939e3b31c3c1b514df4c559c2d9408fce122a4e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="how-tooperform-live-streaming-with-on-premises-encoders-using-hello-azure-portal"></a>Hur tooperform direktsänd strömning med lokala kodare med hjälp av hello Azure-portalen
+# <a name="how-to-perform-live-streaming-with-on-premises-encoders-using-the-azure-portal"></a>Så här utför du liveuppspelning med lokala kodare med hjälp av Azure Portal
 > [!div class="op_single_selector"]
 > * [Portal](media-services-portal-live-passthrough-get-started.md)
 > * [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
@@ -28,121 +28,121 @@ ms.lasthandoff: 10/06/2017
 > 
 > 
 
-Den här självstudiekursen vägleder dig genom hello stegen för att använda hello Azure portal toocreate en **kanal** som är konfigurerad för en genomströmningsleverans. 
+Den här vägledningen visar dig stegen för att använda Azure-portalen för att skapa en **kanal** som är konfigurerad för en genomströmningsleverans. 
 
 ## <a name="prerequisites"></a>Krav
-hello följande är obligatoriska toocomplete hello kursen:
+Följande krävs för att kunna genomföra vägledningen:
 
 * Ett Azure-konto. Mer information om den [kostnadsfria utvärderingsversionen av Azure](https://azure.microsoft.com/pricing/free-trial/). 
-* Ett Media Services-konto. toocreate Media Services-konto finns [hur tooCreate Media Services-konto](media-services-portal-create-account.md).
+* Ett Media Services-konto. Information om hur du skapar ett Media Services-konto finns i [Så här skapar du ett Media Services-konto](media-services-portal-create-account.md).
 * En webbkamera. Till exempel [Telestream Wirecast-kodaren](http://www.telestream.net/wirecast/overview.htm).
 
-Det rekommenderas starkt tooreview hello följande artiklar:
+Vi rekommenderar att du tittar närmare på följande artiklar:
 
 * [Azure Media Services RTMP-support och live-kodare](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/)
 * [Översikt över liveuppspelning med Azure Media Services](media-services-manage-channels-overview.md)
 * [Liveuppspelning med lokala kodare som skapar strömmar med flera bithastigheter](media-services-live-streaming-with-onprem-encoders.md)
 
 ## <a id="scenario"></a>Vanligt scenario för liveuppspelning
-hello beskriver följande steg uppgifter som ingår i att skapa vanliga program för direktsänd strömning som använder kanaler som har konfigurerats för genomströmningsleverans. Den här kursen visar hur toocreate och hanterar en genomströmningskanal och direktsända händelser.
+Följande steg beskriver uppgifter som ingår i att skapa vanliga appar för direktsänd strömning som använder kanaler som har konfigurerats för genomströmningsleverans. Den här vägledningen visar hur du skapar och hanterar en genomströmningskanal och direktsända händelser.
 
 >[!NOTE]
->Se till att hello strömningsslutpunkt från vilken du vill att toostream innehåll hello **kör** tillstånd. 
+>Kontrollera att slutpunkten för direktuppspelning som du vill spela upp innehåll från har tillståndet **Körs**. 
     
-1. Anslut en videokamera tooa dator. Starta och konfigurera en lokal direktsänd kodare som matar ut en RTMP- eller fragmenterad MP4-dataström i multibithastighet. Mer information finns i [Support och direktsända kodare för Azure Media Services RTMP](http://go.microsoft.com/fwlink/?LinkId=532824).
+1. Anslut en videokamera till en dator. Starta och konfigurera en lokal direktsänd kodare som matar ut en RTMP- eller fragmenterad MP4-dataström i multibithastighet. Mer information finns i [Support och direktsända kodare för Azure Media Services RTMP](http://go.microsoft.com/fwlink/?LinkId=532824).
    
     Det här steget kan också utföras när du har skapat din kanal.
 2. Skapa och starta en genomströmningskanal
-3. Hämta hello kanal infognings-URL. 
+3. Hämta kanalens infognings-URL. 
    
-    hello infognings-URL som används av hello livekodaren toosend hello dataströmmen toohello kanal.
-4. Hämta hello kanalens förhandsgransknings-URL. 
+    Infognings-URL:en används av livekodaren för att skicka dataströmmen till kanalen.
+4. Hämta kanalens förhandsgransknings-URL. 
    
-    Använd den här URL: en tooverify att din kanal är tar emot hello direktsänd dataström.
+    Använd denna URL för att kontrollera att din kanal tar emot den direktsända dataströmmen korrekt.
 5. Skapa en direktsänd händelse eller ett direktsänt program. 
    
-    När du använder hello Azure-portalen, skapar skapar en direktsänd händelse även en tillgång. 
+    När du använder Azure-portalen, skapas även en tillgång då du skapar en direktsänd händelse. 
 
-6. Starta hello händelsen eller programmet när du är klar toostart strömning och arkivering.
-7. Du kan också kan hello livekodare vara signalerat toostart en annons. hello annonsen infogas i utdataströmmen hello.
-8. Stoppa hello händelsen eller programmet när du vill toostop strömningen och arkiveringen hello händelsen.
-9. Ta bort hello händelsen eller programmet (och ta eventuellt bort tillgången hello).     
+6. Starta händelsen eller programmet när du är redo att påbörja strömning och arkivering.
+7. Som alternativ kan den direktsända kodaren få signal om att starta en annons. Annonsen infogas i utdataströmmen.
+8. Stoppa händelsen eller programmet när du vill stoppa strömningen och arkiveringen av händelsen.
+9. Ta bort händelsen eller programmet (och ta eventuellt bort tillgången).     
 
 > [!IMPORTANT]
-> Granska [direktsänd strömning med lokala kodare som skapar dataströmmar i multibithastighet](media-services-live-streaming-with-onprem-encoders.md) toolearn om koncept och överväganden relaterade toolive strömning med lokala kodare och genomströmningskanaler.
+> Titta närmare på [Liveuppspelning med lokala kodare som skapar dataströmmar i multibithastighet](media-services-live-streaming-with-onprem-encoders.md) för att lära dig mer om koncept och överväganden som rör liveuppspelning med lokala kodare och genomströmningskanaler.
 > 
 > 
 
-## <a name="tooview-notifications-and-errors"></a>tooview meddelanden och fel
-Om du vill tooview meddelanden och fel som genereras av hello Azure-portalen, klicka på ikonen för hello-meddelande.
+## <a name="to-view-notifications-and-errors"></a>Visa meddelanden och fel
+Klicka på meddelandeikonen om du vill visa meddelanden och fel som genereras av Azure-portalen.
 
 ![Meddelanden](./media/media-services-portal-passthrough-get-started/media-services-notifications.png)
 
 ## <a name="create-and-start-pass-through-channels-and-events"></a>Skapa och starta genomströmningskanaler och händelser
-En kanal är associerad med händelser och program som gör att du toocontrol hello publicering och lagring av segment i en direktsänd dataström. Kanaler hanterar händelser. 
+En kanal är associerad med händelser och program som gör att du kan styra publicering och lagring av segment i en direktsänd dataström. Kanaler hanterar händelser. 
 
-Du kan ange hello antal timmar som du vill att tooretain hello registreras innehåll för programmet hello genom att ange hello **Arkivfönster** längd. Det här värdet kan anges från minst 5 minuter tooa högst 25 timmar. Längd avgör också hello hur lång tid som klienter kan söka bakåt i tiden från hello aktuella direktsända positionen. Händelser kan köras under hello angiven tidsperiod, men innehåll som ligger bakom hello längd ignoreras kontinuerligt. Det här värdet för den här egenskapen avgör också hur länge hello klient manifest kan växa.
+Du kan ange det antal timmar som du vill behålla inspelat innehåll för programmet genom att ställa in längden för **Arkivfönster**. Det här värdet kan anges från minst 5 minuter till högst 25 timmar. Även arkivfönstrets längd påverkar den maximala tid som klienter kan söka bakåt i tiden från den aktuella direktsända positionen. Händelser kan köras under den angivna tidsperioden men innehåll som understiger fönsterlängden ignoreras kontinuerligt. Värdet för den här egenskapen avgör också hur länge klientmanifesten kan växa.
 
-Varje händelse är associerad till en tillgång. toopublish hello-händelse, måste du skapa en positionerare för hello associerade tillgången. Med den här positioneraren kan toobuild en strömnings-URL som du kan tillhandahålla tooyour klienter.
+Varje händelse är associerad till en tillgång. För att publicera händelsen måste du skapa en OnDemand-lokaliserare för den associerade tillgången. Med den här lokaliseraren kan du skapa en strömnings-URL som du kan tillhandahålla till dina klienter.
 
-En kanal har stöd för upp toothree samtidigt med händelser så att du kan skapa flera Arkiv för hello samma inkommande dataström. Detta ger dig toopublish och arkivera olika delar av en händelse efter behov. Till exempel är dina affärsbehov tooarchive 6 timmar av ett program, men toobroadcast sista 10 minuter. tooaccomplish detta, behöver du toocreate två program som körs samtidigt. Ett program är tooarchive 6 timmar av händelsen hello men hello programmet publiceras inte. hello kan inte ange tooarchive i 10 minuter och det här programmet har publicerats.
+En kanal har stöd för upp till tre händelser som körs samtidigt så du kan skapa flera arkiv för samma inkommande dataström. På så sätt kan du publicera och arkivera olika delar av en händelse efter behov. Ditt verksamhetsbehov kan till exempel vara att arkivera 6 timmar av ett program, men bara sända 10 minuter. För att åstadkomma detta måste du skapa två program som körs samtidigt. Ett program ställs in för att arkivera 6 timmar av händelsen, men programmet publiceras inte. Det andra programmet ställs in för att arkivera i 10 minuter och det här programmet publiceras.
 
 Du bör inte återanvända befintliga direktsända händelser. Skapa och starta istället en ny händelse för varje händelse.
 
-Starta hello händelsen när du är klar toostart strömning och arkivering. Stoppa programmet hello när du vill toostop strömningen och arkiveringen hello händelsen. 
+Starta händelsen när du är redo att påbörja strömning och arkivering. Stoppa programmet när du vill stoppa strömningen och arkiveringen av händelsen. 
 
-toodelete arkiverat innehåll, stoppa och ta bort hello händelsen och ta sedan bort hello associerade tillgången. En tillgång kan inte tas bort om den används av en händelse; hello händelsen måste tas bort först. 
+Om du vill ta bort arkiverat innehåll, stoppar du och tar bort händelsen och tar sedan bort associerade tillgången. En tillgång kan inte tas bort om den används av en händelse. Händelsen måste tas bort först. 
 
-När du stoppar och ta bort hello händelsen hello användare skulle vara kan toostream ditt arkiverade innehåll som en video på begäran för så länge du inte ta bort hello tillgången.
+Även efter att du stoppat och tagit bort händelsen skulle användarna kunna strömma ditt arkiverade innehåll som en video på begäran så länge du inte tar bort tillgången.
 
-Om du vill tooretain hello arkiverat innehåll, men inte har den tillgänglig för strömning, tar du bort hello strömning lokaliserare.
+Om du vill behålla det arkiverade innehållet, men inte att det ska vara tillgängligt för strömning, tar du bort strömningslokaliseraren.
 
-### <a name="toouse-hello-portal-toocreate-a-channel"></a>toouse hello portal toocreate en kanal
-Det här avsnittet visas hur toouse hello **Snabbregistrering** alternativet toocreate en genomströmningskanal.
+### <a name="to-use-the-portal-to-create-a-channel"></a>Använda portalen för att skapa en kanal
+Detta avsnitt visar hur du använder alternativet **Snabbregistrering** för att skapa en genomströmningskanal.
 
 Mer information om genomströmningskanaler finns i [Liveuppspelning med lokala kodare som skapar dataströmmar i multibithastighet](media-services-live-streaming-with-onprem-encoders.md).
 
-1. I hello [Azure-portalen](https://portal.azure.com/), Välj Azure Media Services-konto.
-2. I hello **inställningar** -fönstret klickar du på **direktsänd strömning**. 
+1. Välj ditt Azure Media Services-konto i [Azure-portalen](https://portal.azure.com/).
+2. I fönstret **Inställningar** klickar du på **Direktsänd strömning**. 
    
     ![Komma igång](./media/media-services-portal-passthrough-get-started/media-services-getting-started.png)
    
-    Hej **direktsänd strömning** visas.
-3. Klicka på **Snabbregistrering** toocreate en genomströmningskanal med hello RTMP-infogningsprotokollet.
+    Fönstret **Direktsänd strömning** visas.
+3. Klicka på **Snabbregistrering** för att skapa en genomströmningskanal med RTMP-infogningsprotokollet.
    
-    Hej **skapa en ny KANAL** visas.
-4. Namnge hello ny kanal och klickar på **skapa**. 
+    Fönstret **SKAPA EN NY KANAL** visas.
+4. Namnge den nya kanalen och klicka på **Skapa**. 
    
-    Detta skapar en genomströmningskanal med hello RTMP-infogningsprotokollet.
+    Detta skapar en genomströmningskanal med RTMP-infogningsprotokollet.
 
 ## <a name="create-events"></a>Skapa händelser
-1. Välj en kanal toowhich som du vill tooadd en händelse.
+1. Välj en kanal till vilken du vill lägga till en händelse.
 2. Tryck på knappen **Direktsänd händelse**.
 
 ![Händelse](./media/media-services-portal-passthrough-get-started/media-services-create-events.png)
 
 ## <a name="get-ingest-urls"></a>Hämta infognings-URL:er
-När hello kanalen har skapats kan du få infognings-URL: er som du kommer att ge toohello livekodaren. hello kodaren använder dessa URL: er tooinput en direktsänd dataström.
+När kanalen har skapats kan du få infognings-URL:er som du tillhandahåller till livekodaren. Kodaren använder dessa URL:er för att mata in en direktsänd dataström.
 
 ![Skapad](./media/media-services-portal-passthrough-get-started/media-services-channel-created.png)
 
-## <a name="watch-hello-event"></a>Titta på hello händelse
-toowatch hello-händelse, klickar du på **titta på** i hello Azure-portalen eller kopiera hello strömnings-URL och använder en valfri spelare önskat. 
+## <a name="watch-the-event"></a>Titta på händelsen
+För att titta på händelsen klickar du på **Titta på** i Azure-portalen eller kopierar strömnings-URL:en och använder en valfri spelare. 
 
 ![Skapad](./media/media-services-portal-passthrough-get-started/media-services-default-event.png)
 
-Direktsänd händelse automatiskt hämta innehåll för konverterade tooon begäran när stoppades.
+Direktsända händelser konverteras automatiskt till innehåll på begäran när de stoppas.
 
 ## <a name="clean-up"></a>Rensa
 Mer information om genomströmningskanaler finns i [Liveuppspelning med lokala kodare som skapar dataströmmar i multibithastighet](media-services-live-streaming-with-onprem-encoders.md).
 
-* En kanal kan stoppas endast när alla händelser eller program på hello kanalen har stoppats.  När hello kanalen har stoppats kan det inga avgifter. När du behöver toostart igen, det har hello samma infognings-URL så du inte behöver tooreconfigure din kodare.
-* En kanal kan tas bort bara när alla direktsända händelser i hello kanalen har tagits bort.
+* En kanal kan stoppas endast när alla händelser eller program i kanalen har stoppats.  När kanalen har stoppats medför den inga avgifter. När du vill starta den igen har den samma infognings-URL så att du inte behöver konfigurera om din kodare.
+* En kanal kan bara tas bort när alla direktsända händelser i kanalen har tagits bort.
 
 ## <a name="view-archived-content"></a>Visa arkiverat innehåll
-När du stoppar och ta bort hello händelsen hello användare skulle vara kan toostream ditt arkiverade innehåll som en video på begäran för så länge du inte ta bort hello tillgången. En tillgång kan inte tas bort om den används av en händelse; hello händelsen måste tas bort först. 
+Även efter att du stoppat och tagit bort händelsen skulle användarna kunna strömma ditt arkiverade innehåll som en video på begäran så länge du inte tar bort tillgången. En tillgång kan inte tas bort om den används av en händelse. Händelsen måste tas bort först. 
 
-toomanage dina tillgångar väljer **inställningen** och på **tillgångar**.
+För att hantera dina tillgångar väljer du **Inställning** och klickar på **Tillgångar**.
 
 ![Tillgångar](./media/media-services-portal-passthrough-get-started/media-services-assets.png)
 

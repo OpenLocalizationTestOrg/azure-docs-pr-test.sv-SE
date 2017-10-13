@@ -1,5 +1,5 @@
 ---
-title: "bibliotek för aaaAzure Händelsehubbar | Microsoft Docs"
+title: "Bibliotek för Azure Event Hubs | Microsoft Docs"
 description: "Hantera Händelsehubbar namnområden och entiteter från .NET"
 services: event-hubs
 cloud: na
@@ -14,15 +14,15 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: sethm
-ms.openlocfilehash: b7db0077f6f31397ae46e926c3c28630a157824c
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 0d659cb860a6c98342b548212820efe046decfcc
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="event-hubs-management-libraries"></a>Bibliotek för Event Hubs
 
-bibliotek för hello Händelsehubbar kan dynamiskt etablera Händelsehubbar namnområden och enheter. Detta gör komplexa distributioner och meddelandescenarier, så att du kan bestämma vilka enheter tooprovision programmässigt. Dessa bibliotek är tillgängliga för .NET.
+Bibliotek för Händelsehubbar kan dynamiskt etablera Händelsehubbar namnområden och enheter. Detta gör komplexa distributioner och meddelandescenarier, så att du kan bestämma vilka enheter att etablera programmässigt. Dessa bibliotek är tillgängliga för .NET.
 
 ## <a name="supported-functionality"></a>Funktioner som stöds
 
@@ -32,19 +32,19 @@ bibliotek för hello Händelsehubbar kan dynamiskt etablera Händelsehubbar namn
 
 ## <a name="prerequisites"></a>Krav
 
-tooget igång med hello Händelsehubbar bibliotek, måste du autentisera med Azure Active Directory (AAD). AAD kräver att du autentisera som ett huvudnamn för tjänsten som ger åtkomst tooyour Azure-resurser. Information om hur du skapar en tjänst UPN finns i något av dessa artiklar:  
+Om du vill komma igång med Händelsehubbar hantering av bibliotek, måste du autentisera med Azure Active Directory (AAD). AAD kräver att du autentisera som ett huvudnamn för tjänsten som ger åtkomst till resurserna i Azure. Information om hur du skapar en tjänst UPN finns i något av dessa artiklar:  
 
-* [Använd hello Azure portal toocreate Active Directory-program och tjänstens huvudnamn som har åtkomst till resurser](../azure-resource-manager/resource-group-create-service-principal-portal.md)
-* [Använda Azure PowerShell toocreate en service principal tooaccess resurser](../azure-resource-manager/resource-group-authenticate-service-principal.md)
-* [Använda Azure CLI toocreate en service principal tooaccess resurser](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md)
+* [Använda Azure portal för att skapa Active Directory-program och tjänstens huvudnamn som har åtkomst till resurser](../azure-resource-manager/resource-group-create-service-principal-portal.md)
+* [Använd Azure PowerShell för att skapa ett huvudnamn för tjänsten för resursåtkomst](../azure-resource-manager/resource-group-authenticate-service-principal.md)
+* [Använd Azure CLI för att skapa ett huvudnamn för tjänsten för resursåtkomst](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md)
 
-Dessa självstudiekurser ger dig en `AppId` (klient-ID), `TenantId`, och `ClientSecret` (autentiseringsnyckel) som används för autentisering av hello hantering av bibliotek. Du måste ha **ägare** behörigheter för hello resursgrupp som du vill använda toorun.
+Dessa självstudiekurser ger dig en `AppId` (klient-ID), `TenantId`, och `ClientSecret` (autentiseringsnyckel) som används för autentisering av hantering av bibliotek. Du måste ha **ägare** behörigheter för resursgruppen som du vill köra.
 
 ## <a name="programming-pattern"></a>Mönster för programmering
 
-Hej mönster toomanipulate alla Händelsehubbar-resurser följer ett gemensamt protokoll:
+Mönster för att ändra alla Händelsehubbar-resurser följer ett gemensamt protokoll:
 
-1. Hämta en token från AAD med hello `Microsoft.IdentityModel.Clients.ActiveDirectory` bibliotek.
+1. Hämta en token från AAD som använder den `Microsoft.IdentityModel.Clients.ActiveDirectory` bibliotek.
     ```csharp
     var context = new AuthenticationContext($"https://login.microsoftonline.com/{tenantId}");
 
@@ -54,7 +54,7 @@ Hej mönster toomanipulate alla Händelsehubbar-resurser följer ett gemensamt p
     );
     ```
 
-1. Skapa hello `EventHubManagementClient` objekt.
+1. Skapa den `EventHubManagementClient` objekt.
     ```csharp
     var creds = new TokenCredentials(token);
     var ehClient = new EventHubManagementClient(creds)
@@ -63,7 +63,7 @@ Hej mönster toomanipulate alla Händelsehubbar-resurser följer ett gemensamt p
     };
     ```
 
-1. Ange hello `CreateOrUpdate` parametrar tooyour angivna värden.
+1. Ange den `CreateOrUpdate` parametrar för att de angivna värdena.
     ```csharp
     var ehParams = new EventHubCreateOrUpdateParameters()
     {
@@ -71,7 +71,7 @@ Hej mönster toomanipulate alla Händelsehubbar-resurser följer ett gemensamt p
     };
     ```
 
-1. Köra hello-anrop.
+1. Köra anropet.
     ```csharp
     await ehClient.EventHubs.CreateOrUpdateAsync(resourceGroupName, namespaceName, EventHubName, ehParams);
     ```

@@ -1,5 +1,5 @@
 ---
-title: aaaUser-definierade scheman i SQL Data Warehouse | Microsoft Docs
+title: "Användardefinierade scheman i SQL Data Warehouse | Microsoft Docs"
 description: "Tips för att använda Transact-SQL-scheman i Azure SQL Data Warehouse för utveckling av lösningar."
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,39 +15,39 @@ ms.workload: data-services
 ms.custom: t-sql
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
-ms.openlocfilehash: c411d6fed68e67c444a5871eab06182eaeb6dbf5
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: dfb58956ad6637cf0f50b4c052ab98fb7c26139d
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="user-defined-schemas-in-sql-data-warehouse"></a>Användardefinierade scheman i SQL Data Warehouse
-Traditionella informationslager ofta använda separata databaser toocreate programmet gränser baserat på arbetsbelastning, domän och säkerhet. En traditionell SQL Server-datalagret kan exempelvis innehålla en fristående databas, en databas för datalager och vissa data mart-databaser. I den här topologin fungerar varje databas som en arbetsbelastning och säkerhetsgräns i hello arkitektur.
+Traditionella informationslager använder ofta separata databaser för att skapa programmet gränser, baserat på arbetsbelastning, domän och säkerhet. En traditionell SQL Server-datalagret kan exempelvis innehålla en fristående databas, en databas för datalager och vissa data mart-databaser. Varje databas fungerar som en arbetsbelastning och säkerhetsgräns i arkitekturen i den här topologin.
 
-Däremot kör SQL Data Warehouse hello hela arbetsbelastningen för informationslager inom en databas. Mellan databasen tillåts inte kopplingar. SQL Data Warehouse förväntar därför alla tabeller som används av hello datalager toobe lagras i en hello-databas.
+Däremot kör SQL Data Warehouse hela arbetsbelastningen för informationslager inom en databas. Mellan databasen tillåts inte kopplingar. SQL Data Warehouse förväntar därför alla tabeller som används av för datalagret lagras i en databas.
 
 > [!NOTE]
-> SQL Data Warehouse stöder inte mellan databasfrågor av något slag. Därför behöver data warehouse implementeringar som använder det här mönstret toobe omarbetad.
+> SQL Data Warehouse stöder inte mellan databasfrågor av något slag. Därför behöver data warehouse implementeringar som använder det här mönstret ändras.
 > 
 > 
 
 ## <a name="recommendations"></a>Rekommendationer
 Dessa är rekommendationer för att konsolidera arbetsbelastningar, säkerhet, domän och funktionella gränser med hjälp av användardefinierade scheman
 
-1. Använd en SQL Data Warehouse-databas toorun din hela arbetsbelastningen för informationslager
-2. Konsolidera din befintliga data warehouse miljö toouse en SQL Data Warehouse-databas
-3. Utnyttjar **användardefinierade scheman** tooprovide hello gräns tidigare implementeras med hjälp av databaser.
+1. Använd en SQL Data Warehouse-databas för att köra din hela arbetsbelastningen för informationslager
+2. Konsolidera din befintliga data warehouse-miljö för att använda en SQL Data Warehouse-databas
+3. Utnyttjar **användardefinierade scheman** att ange kolumnrubrikens tidigare implementeras med hjälp av databaser.
 
-Om användardefinierade scheman inte har använts tidigare har du grunden. Helt enkelt använda hello gamla databasnamnet som hello bas för dina egna scheman i hello SQL Data Warehouse-databas.
+Om användardefinierade scheman inte har använts tidigare har du grunden. Använd bara gamla databasnamnet som bas för dina egna scheman i SQL Data Warehouse-databas.
 
 Om scheman har redan använts har du några alternativ:
 
-1. Ta bort hello äldre schemanamn och börja om från början
-2. Behåll hello äldre schemanamn efter före väntande hello äldre namn toohello tabell schemanamn
-3. Behåll hello äldre schemanamn genom att implementera vyer över hello-tabellen i en extra schemat toore-skapa hello gamla datastrukturen.
+1. Ta bort de äldra schemanamn och börja om från början
+2. Behålla de äldra schemanamn av före väntande äldre schemanamnet till tabellnamnet
+3. Behåll det äldre schemat genom att implementera vyer över tabellen i en extra schemat att återskapa gamla datastrukturen.
 
 > [!NOTE]
-> På första inspektion verka alternativ 3 hello intressanta alternativ. Hej djävulens är dock hello detaljerat. Vyer är skrivskyddad i SQL Data Warehouse. Alla ändringar av data eller tabell måste toobe utföras mot hello bastabellen. Alternativ 3 introducerar också ett lager av vyer i systemet. Du kanske vill toogive detta ytterligare upp om du använder vyer i din arkitektur redan.
+> På första inspektion verka alternativet intressanta alternativ 3. Djävulen är dock i informationen. Vyer är skrivskyddad i SQL Data Warehouse. Alla ändringar av data- eller behöver utföras mot bastabellen. Alternativ 3 introducerar också ett lager av vyer i systemet. Du kanske vill ge den här ytterligare upp om du använder vyer i din arkitektur redan.
 > 
 > 
 
@@ -57,32 +57,32 @@ Implementera anpassade scheman baserat på databasnamn
 ```sql
 CREATE SCHEMA [stg]; -- stg previously database name for staging database
 GO
-CREATE SCHEMA [edw]; -- edw previously database name for hello data warehouse
+CREATE SCHEMA [edw]; -- edw previously database name for the data warehouse
 GO
-CREATE TABLE [stg].[customer] -- create staging tables in hello stg schema
+CREATE TABLE [stg].[customer] -- create staging tables in the stg schema
 (       CustKey BIGINT NOT NULL
 ,       ...
 );
 GO
-CREATE TABLE [edw].[customer] -- create data warehouse tables in hello edw schema
+CREATE TABLE [edw].[customer] -- create data warehouse tables in the edw schema
 (       CustKey BIGINT NOT NULL
 ,       ...
 );
 ```
 
-Behålla äldre schemat trots att av före väntande dem toohello tabellnamn. Scheman används för hello arbetsbelastning gräns.
+Behålla äldre schemanamn av före väntande dem till tabellens namn. Scheman används för arbetsbelastningen gräns.
 
 ```sql
-CREATE SCHEMA [stg]; -- stg defines hello staging boundary
+CREATE SCHEMA [stg]; -- stg defines the staging boundary
 GO
-CREATE SCHEMA [edw]; -- edw defines hello data warehouse boundary
+CREATE SCHEMA [edw]; -- edw defines the data warehouse boundary
 GO
-CREATE TABLE [stg].[dim_customer] --pre-pend hello old schema name toohello table and create in hello staging boundary
+CREATE TABLE [stg].[dim_customer] --pre-pend the old schema name to the table and create in the staging boundary
 (       CustKey BIGINT NOT NULL
 ,       ...
 );
 GO
-CREATE TABLE [edw].[dim_customer] --pre-pend hello old schema name toohello table and create in hello data warehouse boundary
+CREATE TABLE [edw].[dim_customer] --pre-pend the old schema name to the table and create in the data warehouse boundary
 (       CustKey BIGINT NOT NULL
 ,       ...
 );
@@ -91,23 +91,23 @@ CREATE TABLE [edw].[dim_customer] --pre-pend hello old schema name toohello tabl
 Behålla äldre schemanamn med hjälp av vyer
 
 ```sql
-CREATE SCHEMA [stg]; -- stg defines hello staging boundary
+CREATE SCHEMA [stg]; -- stg defines the staging boundary
 GO
-CREATE SCHEMA [edw]; -- stg defines hello data warehouse boundary
+CREATE SCHEMA [edw]; -- stg defines the data warehouse boundary
 GO
-CREATE SCHEMA [dim]; -- edw defines hello legacy schema name boundary
+CREATE SCHEMA [dim]; -- edw defines the legacy schema name boundary
 GO
-CREATE TABLE [stg].[customer] -- create hello base staging tables in hello staging boundary
+CREATE TABLE [stg].[customer] -- create the base staging tables in the staging boundary
 (       CustKey    BIGINT NOT NULL
 ,       ...
 )
 GO
-CREATE TABLE [edw].[customer] -- create hello base data warehouse tables in hello data warehouse boundary
+CREATE TABLE [edw].[customer] -- create the base data warehouse tables in the data warehouse boundary
 (       CustKey    BIGINT NOT NULL
 ,       ...
 )
 GO
-CREATE VIEW [dim].[customer] -- create a view in hello legacy schema name boundary for presentation consistency purposes only
+CREATE VIEW [dim].[customer] -- create a view in the legacy schema name boundary for presentation consistency purposes only
 AS
 SELECT  CustKey
 ,       ...
@@ -116,7 +116,7 @@ FROM    [edw].customer
 ```
 
 > [!NOTE]
-> Ändringar i schemat strategi måste en granskning av hello säkerhetsmodell för hello-databasen. I många fall kanske du kan toosimplify hello säkerhetsmodellen genom att tilldela behörigheter på hello schemat nivå. Om mer detaljerade behörigheter som krävs kan du använda databasroller.
+> Ändringar i schemat strategi måste en granskning av säkerhetsmodellen för databasen. I många fall kanske du kan förenkla säkerhetsmodellen genom att tilldela behörigheter på schemanivån. Om mer detaljerade behörigheter som krävs kan du använda databasroller.
 > 
 > 
 

@@ -1,6 +1,6 @@
 ---
-title: aaaEnable VM-agenten i Azure Security Center | Microsoft Docs
-description: "Det här dokumentet beskrivs hur tooimplement hello Azure Security Center rekommendation ** aktivera VM Agent **."
+title: Aktivera VM-agenten i Azure Security Center | Microsoft Docs
+description: "Det här dokumentet beskrivs hur du implementerar rekommenderar Azure Security Center ** aktivera VM Agent **."
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -14,38 +14,38 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2017
 ms.author: terrylan
-ms.openlocfilehash: 9bd71e638b020780537da25fd4cf7baf34d3e11a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 337a7adfd93c76882a749685702bea6d1524c96a
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="enable-vm-agent-in-azure-security-center"></a>Aktivera VM-agenten i Azure Security Center
-hello VM-agenten måste installeras på virtuella datorer (VM) i ordning för[Aktivera datainsamling](security-center-enable-data-collection.md).  Azure Security Center aktiverar du toosee som virtuella datorer kräver hello VM-agenten och rekommenderar att du aktiverar hello VM-agenten på dessa virtuella datorer.
+VM-agenten måste installeras på virtuella datorer (VM) för att [Aktivera datainsamling](security-center-enable-data-collection.md).  Azure Security Center kan du se vilka virtuella datorer som kräver den Virtuella Datoragenten och rekommenderar att du aktiverar VM-agenten på dessa virtuella datorer.
 
-hello VM-agenten installeras som standard för virtuella datorer som distribueras från hello Azure Marketplace. hello artikel [VM-Agent och tillägg – del 2](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/) innehåller information om hur tooinstall hello VM-agenten.
+VM-agenten installeras som standard för virtuella datorer som distribueras från Azure Marketplace. Artikeln [VM Agent and Extensions – Part 2](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/) (VM-agenter och tillägg – del 2) innehåller information om hur VM-agenten ska installeras.
 
 > [!NOTE]
-> Det här dokumentet introducerar hello-tjänsten med hjälp av ett exempel på distribution. Det är alltså inte en steg-för-steg-guide.
+> I det här dokumentet beskrivs tjänsten genom en exempeldistribution. Det är alltså inte en steg-för-steg-guide.
 >
 >
 
-## <a name="implement-hello-recommendation"></a>Implementera hello rekommendation
-1. I hello **rekommendationer bladet**väljer **aktivera VM-agenten**.
+## <a name="implement-the-recommendation"></a>Implementera rekommendationen
+1. I den **rekommendationer bladet**väljer **aktivera VM-agenten**.
    ![Aktivera VM-Agent][1]
-2. Då öppnas bladet hello **VM-agenten saknas eller inte svarar**. Det här bladet visar hello virtuella datorer som kräver hello VM-agenten. Följ instruktionerna för hello på hello bladet tooinstall hello VM-agenten.
+2. Gör det öppnas bladet **VM-agenten saknas eller inte svarar**. Det här bladet visar de virtuella datorer som kräver VM-agenten. Följ instruktionerna på bladet för att installera den Virtuella datoragenten.
    ![VM-agenten saknas][2]
 
 ## <a name="see-also"></a>Se även
-toolearn mer om Security Center finns hello följande:
+I följande avsnitt kan du lära dig mer om Security Center:
 
-* [Ange säkerhetsprinciper i Azure Security Center](security-center-policies.md)– Lär dig hur tooconfigure säkerhetsprinciper för dina Azure-prenumerationer och resursgrupper.
+* [Ange säkerhetsprinciper i Azure Security Center](security-center-policies.md): Här får du lära dig hur du ställer in säkerhetsprinciper för prenumerationer och resursgrupper i Azure.
 * [Hantera säkerhetsrekommendationer i Azure Security Center](security-center-recommendations.md): Här får du lära dig hur du kan skydda resurserna i Azure med hjälp av rekommendationer.
-* [Övervakning av säkerhetshälsa i Azure Security Center](security-center-monitoring.md)– Lär dig hur toomonitor hello Azure-resursers hälsa.
-* [Hantera och svarar toosecurity aviseringar i Azure Security Center](security-center-managing-and-responding-alerts.md)– Lär dig hur toomanage och svara toosecurity aviseringar.
-* [Övervaka partnerlösningar med Azure Security Center](security-center-partner-solutions.md) – Lär dig hur toomonitor hello dina partnerlösningars hälsostatus.
-* [Vanliga frågor om Azure Security Center](security-center-faq.md)--finns vanliga frågor om hur du använder hello-tjänsten.
-* [Azures säkerhetsblogg](http://blogs.msdn.com/b/azuresecurity/)--hello Azure security nyheter och information.
+* [Övervakning av säkerhetshälsa i Azure Security Center](security-center-monitoring.md): Här kan du läsa om hur du övervakar dina Azure-resursers hälsa.
+* [Hantera och åtgärda säkerhetsaviseringar i Azure Security Center](security-center-managing-and-responding-alerts.md): Här får du lära dig hur du hanterar och åtgärdar säkerhetsaviseringar.
+* [Övervaka partnerlösningar med Azure Security Center](security-center-partner-solutions.md): Här får du lära dig hur övervakar dina partnerlösningars hälsostatus.
+* [Vanliga frågor och svar om Azure Security Center](security-center-faq.md): Här finns vanliga frågor om tjänsten.
+* [Azures säkerhetsblogg](http://blogs.msdn.com/b/azuresecurity/) – Här kan du hitta de senaste nyheterna och aktuell information om säkerheten i Azure .
 
 <!--Image references-->
 [1]: ./media/security-center-enable-vm-agent/enable-vm-agent.png

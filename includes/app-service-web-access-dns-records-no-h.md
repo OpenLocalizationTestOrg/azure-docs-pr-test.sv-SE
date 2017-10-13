@@ -1,14 +1,14 @@
-Logga in toohello webbplats för din domänleverantör.
+Logga in på webbplatsen till din domänleverantör.
 
-Hitta hello sidan för hantering av DNS-poster. Provider för varje domän har sin egen DNS-poster gränssnitt, så dokumentationen hello-providern. Leta efter områden på hello platsen med etiketten **domännamn**, **DNS**, eller **namn serverhantering**. 
+Sök upp sidan för hantering av DNS-poster. Leverantören för varje domän har sitt eget DNS-postgränssnitt, så läs leverantörens dokumentation. Leta efter områden på webbplatsen med namnet **Domännamn**, **DNS**, eller **Namnserverhantering**. 
 
-Du kan ofta hitta hello DNS-poster sidan genom att visa din kontoinformation och söker efter en länk som **min domäner**. Gå toothat sidan och leta efter en länk som heter ungefär **zonfilen**, **DNS-poster**, eller **avancerad konfiguration**.
+Du kan ofta hitta sidan med DNS-poster genom att visa din kontoinformation och sedan söka efter en länk som heter exempelvis **Mina domäner**. Gå till sidan och sök upp efter en länk som heter något i stil med **Zonfil**, **DNS-poster** eller **Avancerad konfiguration**.
 
-hello visas följande skärmbild ett exempel på en DNS-poster sida:
+Skärmbilden nedan är ett exempel på en sida med DNS-poster:
 
 ![Exempelsida för DNS-poster](./media/app-service-web-access-dns-records-no-h/example-record-ui.png)
 
-I skärmbilden hello, väljer du **Lägg till** toocreate en post. Vissa providrar har olika länkar tooadd olika posttyper. Igen dokumentationen hello-providern.
+På exempelskärmbilden väljer du **Lägg till** för att skapa en post. Vissa providrar har olika länkar för att lägga till olika posttyper. Se leverantörens dokumentation.
 
 > [!NOTE]
-> För vissa leverantörer, till exempel GoDaddy, ändringar tooDNS poster inte gälla förrän du väljer en separat **spara ändringar** länk. 
+> För vissa leverantörer, till exempel GoDaddy, börjar ändringar i DNS-posterna inte att gälla förrän du väljer en separat **Spara ändringar**-länk. 

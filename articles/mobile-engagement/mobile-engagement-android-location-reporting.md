@@ -1,6 +1,6 @@
 ---
-title: "aaaLocation rapportering för Azure Mobile Engagement Android SDK"
-description: "Beskriver hur tooconfigure plats rapportering för Azure Mobile Engagement Android SDK"
+title: "Plats för Azure Mobile Engagement Android SDK"
+description: "Beskriver hur du konfigurerar platsen för Azure Mobile Engagement Android SDK"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
@@ -14,11 +14,11 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 08/12/2016
 ms.author: piyushjo;ricksal
-ms.openlocfilehash: c2cb097df2a77bee2d56ffe9509dc116548db408
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 777d5719cce505b55dfb61c91dcac7e713b077a9
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="location-reporting-for-azure-mobile-engagement-android-sdk"></a>Plats för Azure Mobile Engagement Android SDK
 > [!div class="op_single_selector"]
@@ -26,52 +26,52 @@ ms.lasthandoff: 10/06/2017
 > 
 > 
 
-Det här avsnittet beskrivs hur toodo plats rapportering för din Android-App.
+Det här avsnittet beskriver hur du gör plats rapportering för din Android-App.
 
 ## <a name="prerequisites"></a>Krav
 [!INCLUDE [Prereqs](../../includes/mobile-engagement-android-prereqs.md)]
 
 ## <a name="location-reporting"></a>Platsrapportering
-Om du vill att platser toobe rapporterade måste tooadd configuration några rader (mellan hello `<application>` och `</application>` taggar).
+Om du vill att platser som ska rapporteras som du behöver lägga till några rader configuration (mellan den `<application>` och `</application>` taggar).
 
 ### <a name="lazy-area-location-reporting"></a>Områdesrapportering
-Områdesrapportering kan reporting hello land, region och plats som är associerade med enheter. Den här typen av plats reporting används endast nätverksplatser (baserat på cellen ID eller Wi-Fi). hello enheten området rapporteras högst en gång per session. hello GPS används aldrig och därmed den här typen av plats rapporten har låg påverkan på hello batteri.
+Områdesrapportering kan reporting land, region och ort som är associerade med enheter. Den här typen av plats reporting används endast nätverksplatser (baserat på cellen ID eller Wi-Fi). Området enheten rapporteras som mest en gång per session. GPS används aldrig och därmed den här typen av plats rapporten har låg påverkan på batteridrift.
 
-Rapporterat områden är används toocompute geografiska statistik om användare, sessioner, händelser och fel. De kan också användas som kriterium i Reach-kampanjer.
+Rapporterat områden används för att beräkna geografiska statistik om användare, sessioner, händelser och fel. De kan också användas som kriterium i Reach-kampanjer.
 
-Du aktiverar lazy Områdesplats rapportering med hello-konfiguration som tidigare nämnts i den här proceduren:
+Du aktiverar lazy Områdesplats rapportering genom att använda konfigurationen som nämnts tidigare i den här proceduren:
 
     EngagementConfiguration engagementConfiguration = new EngagementConfiguration();
     engagementConfiguration.setConnectionString("Endpoint={appCollection}.{domain};AppId={appId};SdkKey={sdkKey}");
     engagementConfiguration.setLazyAreaLocationReport(true);
     EngagementAgent.getInstance(this).init(engagementConfiguration);
 
-Du måste också toospecify en plats-behörighet. Den här koden använder ``COARSE`` behörighet:
+Du måste också ange en plats-behörighet. Den här koden använder ``COARSE`` behörighet:
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
 Om din app kräver det, kan du använda ``ACCESS_FINE_LOCATION`` i stället.
 
 ### <a name="real-time-location-reporting"></a>Rapportering i realtid plats
-Rapportering i realtid plats kan reporting hello-latitud och longitud som är associerade med enheter. Som standard används den här typen av plats reporting endast platser i nätverket, baserat på cellen ID eller Wi-Fi. hello reporting är endast aktiv när hello-program körs i förgrunden (till exempel under en session).
+Rapportering i realtid plats kan reporting latituden och longituden som är associerade med enheter. Som standard används den här typen av plats reporting endast platser i nätverket, baserat på cellen ID eller Wi-Fi. Reporting är endast aktiv när programmet körs i förgrunden (till exempel under en session).
 
-Realtid platser är *inte* används toocompute statistik. Syftet endast är tooallow hello användning av geobegränsning i realtid \<Reach-målgruppen-geofencing\> kriterium i Reach-kampanjer.
+Realtid platser är *inte* används för att beräkna statistik. Deras enda syfte är att tillåta användning av geobegränsning i realtid \<Reach-målgruppen-geofencing\> kriterium i Reach-kampanjer.
 
-tooenable realtid plats rapportering, lägga till en rad med kod toowhere som hello Engagement anslutningssträngen i hello starta aktiviteten. hello resultatet ser ut så hello följande:
+Lägga till en rad med kod där du kan ange anslutningssträngen Engagement i aktiviteten starta om du vill aktivera realtidsskydd plats reporting. Resultatet ser ut ungefär så här:
 
     EngagementConfiguration engagementConfiguration = new EngagementConfiguration();
     engagementConfiguration.setConnectionString("Endpoint={appCollection}.{domain};AppId={appId};SdkKey={sdkKey}");
     engagementConfiguration.setRealtimeLocationReport(true);
     EngagementAgent.getInstance(this).init(engagementConfiguration);
 
-        You also need toospecify a location permission. This code uses ``COARSE`` permission:
+        You also need to specify a location permission. This code uses ``COARSE`` permission:
 
             <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
         If your app requires it, you can use ``ACCESS_FINE_LOCATION`` instead.
 
 #### <a name="gps-based-reporting"></a>GPS baseras reporting
-Som standard använder rapportering i realtid plats endast nätverksbaserade platser. tooenable hello GPS-baserade platser som är mycket mer exakt, använda hello konfigurationsobjekt:
+Som standard använder rapportering i realtid plats endast nätverksbaserade platser. Använd konfigurationsobjektet för att aktivera användning av GPS-baserade platser, vilket är mycket mer precisa:
 
     EngagementConfiguration engagementConfiguration = new EngagementConfiguration();
     engagementConfiguration.setConnectionString("Endpoint={appCollection}.{domain};AppId={appId};SdkKey={sdkKey}");
@@ -79,12 +79,12 @@ Som standard använder rapportering i realtid plats endast nätverksbaserade pla
     engagementConfiguration.setFineRealtimeLocationReport(true);
     EngagementAgent.getInstance(this).init(engagementConfiguration);
 
-Du måste också tooadd hello efter behörighet om saknas:
+Du måste också lägga till följande behörigheter om de saknas:
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
 #### <a name="background-reporting"></a>Rapportering i bakgrunden
-Som standard är rapportering i realtid plats bara aktivt när hello-program körs i förgrunden (till exempel under en session). tooenable hello reporting även i bakgrunden, Använd det här konfigurationsobjektet:
+Som standard är rapportering i realtid plats endast aktiv när programmet körs i förgrunden (till exempel under en session). Aktivera reporting även i bakgrunden med det här konfigurationsobjektet:
 
     EngagementConfiguration engagementConfiguration = new EngagementConfiguration();
     engagementConfiguration.setConnectionString("Endpoint={appCollection}.{domain};AppId={appId};SdkKey={sdkKey}");
@@ -93,11 +93,11 @@ Som standard är rapportering i realtid plats bara aktivt när hello-program kö
     EngagementAgent.getInstance(this).init(engagementConfiguration);
 
 > [!NOTE]
-> När hello-program körs i bakgrunden, nätverksbaserade platser rapporteras, även om du har aktiverat hello GPS.
+> När programmet körs i bakgrunden, nätverksbaserade platser rapporteras även om du har aktiverat GPS.
 > 
 > 
 
-Om hello användaren startar om sin enhet, har hello bakgrund plats rapporten stoppats. toomake den startas om när datorn startas, lägga till den här koden.
+Om användaren startar om sin enhet, har rapportens bakgrund plats stoppats. Lägg till denna kod så att den startar om automatiskt när datorn startas.
 
     <receiver android:name="com.microsoft.azure.engagement.EngagementLocationBootReceiver"
            android:exported="false">
@@ -106,25 +106,25 @@ Om hello användaren startar om sin enhet, har hello bakgrund plats rapporten st
         </intent-filter>
     </receiver>
 
-Du måste också tooadd hello efter behörighet om saknas:
+Du måste också lägga till följande behörigheter om de saknas:
 
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
 ## <a name="android-m-permissions"></a>Android M-behörigheter
 Från och med Android M kan vissa behörigheter hanteras vid körning och kräver användargodkännande.
 
-Om du riktar Android API-nivå 23 är hello runtime behörigheter inaktiverade som standard för nya installationer av appar. Annars är aktiverade som standard.
+Om du riktar Android API-nivå 23 är behörigheterna runtime inaktiverade som standard för nya installationer av appar. Annars är aktiverade som standard.
 
-Du kan aktivera och inaktivera dessa behörigheter hello enheten inställningsmenyn. Om du inaktiverar behörigheter hello system menyn stängs hello bakgrundsprocesser av hello programmet, vilket är en systembeteende och har ingen inverkan på möjlighet tooreceive push i bakgrunden.
+Du kan aktivera och inaktivera dessa behörigheter på inställningsmenyn för enheten. Om du inaktiverar behörigheter från system-menyn stängs bakgrundsprocesser av programmet, vilket är en systembeteende och har ingen inverkan på förmåga att ta emot push i bakgrunden.
 
-Hello gäller Mobile Engagement plats reporting är är hello behörigheten som kräver godkännande vid körning:
+I samband med Mobile Engagement plats reporting är de behörigheter som kräver godkännande vid körning:
 
 * `ACCESS_COARSE_LOCATION`
 * `ACCESS_FINE_LOCATION`
 
-Begär behörighet från hello-användare som använder en standard systemdialogruta. Berätta om hello användaren godkänner ``EngagementAgent`` tootake ändra hänsyn i realtid. Annars är hello ändra bearbetade hello nästa gång hello startar hello användarprogram.
+Begär behörighet från den användare som använder en standard systemdialogruta. Om användaren godkänner berätta ``EngagementAgent`` göra den ändringen i beräkningen i realtid. Annars bearbetas ändringen nästa gång användaren startar programmet.
 
-Här är en kod exempel toouse i en aktivitet i dina program toorequest behörigheter och vidarebefordra hello resultat om positivt för``EngagementAgent``:
+Här följer ett kodexempel på ska användas i en aktivitet på ditt program begär behörighet och vidarebefordra resultatet om positivt till ``EngagementAgent``:
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -142,9 +142,9 @@ Här är en kod exempel toouse i en aktivitet i dina program toorequest behörig
       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
       {
         /*
-         * Request location permission, but this doesn't explain why it is needed toohello user.
-         * hello standard Android documentation explains with more details how toodisplay a rationale activity tooexplain hello user why hello permission is needed in your application.
-         * Putting COARSE vs FINE has no impact here, they are part of hello same group for runtime permission management.
+         * Request location permission, but this doesn't explain why it is needed to the user.
+         * The standard Android documentation explains with more details how to display a rationale activity to explain the user why the permission is needed in your application.
+         * Putting COARSE vs FINE has no impact here, they are part of the same group for runtime permission management.
          */
         if (checkSelfPermission(android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED)
           requestPermissions(new String[] { android.Manifest.permission.ACCESS_FINE_LOCATION }, 0);
@@ -155,7 +155,7 @@ Här är en kod exempel toouse i en aktivitet i dina program toorequest behörig
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults)
     {
-      /* Only a positive location permission update requires engagement agent refresh, hence hello request code matching from above function */
+      /* Only a positive location permission update requires engagement agent refresh, hence the request code matching from above function */
       if (requestCode == 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
         getEngagementAgent().refreshPermissions();
     }

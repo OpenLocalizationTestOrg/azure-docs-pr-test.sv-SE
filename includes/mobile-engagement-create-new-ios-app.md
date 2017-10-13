@@ -1,17 +1,17 @@
-1. Starta **Xcode** och välj i popup-fönstret hello **skapa ett nytt Xcode-projekt**.
+1. Starta **Xcode** och välj **Skapa ett nytt Xcode-projekt** i popup-fönstret.
    
     ![](./media/mobile-engagement-create-new-ios-app/xcode-new-project.png)
 2. Välj **Program enkel vy** och klicka sedan på **Nästa**.
    
     ![](./media/mobile-engagement-create-new-ios-app/xcode-simple-view.png)
-3. Fyll i hello **produktnamn**, **organisationsnamn**, och **organisations-ID**. Välj **Objective-C** eller **Swift** i hello **språk** markeringen baserat på din app.
+3. Fyll i **Produktnamn**, **Organisationsnamn** och **Organisations-ID**. Välj **Objective-C** eller **Swift** i **Språk**-markeringen baserat på din app.
    
     ![](./media/mobile-engagement-create-new-ios-app/xcode-project-props.png)
 
 > [!IMPORTANT]
-> Se till att hello paketidentifieraren matchar med vad du har definierat i hello Apple Developer-konsolen för AppId och att du har en motsvarande certifikat för den. 
+> Se till att paketidentifieraren matchar det du har definierat i Apple Developer-konsolen för AppId och att du har motsvarande certifikat för den. 
 > 
 > 
 
-Xcode skapar hello demoappen där Mobile Engagement integreras.
+Xcode skapar sedan demo-appen som vi integrerar Mobile Engagement i.
 

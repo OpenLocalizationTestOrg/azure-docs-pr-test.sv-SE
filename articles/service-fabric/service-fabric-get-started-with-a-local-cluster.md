@@ -1,6 +1,6 @@
 ---
-title: "aaaDeploy och uppgradera lokalt Azure mikrotjänster | Microsoft Docs"
-description: "Lär dig hur tooset upp en lokal Service Fabric-kluster, distribuera ett befintligt program tooit och sedan uppgradera programmet."
+title: "Distribuera och uppgradera Azure-mikrotjänster lokalt | Microsoft Docs"
+description: "Lär dig hur du konfigurerar ett lokalt Service Fabric-kluster, distribuerar ett befintligt program till det och sedan uppgraderar programmet."
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/13/2017
 ms.author: ryanwi;mikhegn
-ms.openlocfilehash: e5f5adc9edb71433b2a7635e9d661ff92a4b18ec
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 359677972c7e1fa3f7435052021ddfae5b1ed85e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-deploying-and-upgrading-applications-on-your-local-cluster"></a>Komma igång med att distribuera och uppgradera program i det lokala klustret
-hello Azure Service Fabric SDK innehåller en fullständig lokal utvecklingsmiljö som du kan använda tooquickly komma igång med att distribuera och hantera program på lokala klustret. I den här artikeln, skapa ett lokalt kluster, distribuera ett befintligt program tooit och uppgradera programmet tooa nya versionen, allt från Windows PowerShell.
+Azure Service Fabric SDK innehåller en fullständig lokal utvecklingsmiljö som du kan använda för att snabbt komma igång med att distribuera och hantera program i ett lokalt kluster. I den här artikeln skapar du ett lokalt kluster, distribuerar ett befintligt program till det och uppgraderar sedan programmet till en ny version, allt från Windows PowerShell.
 
 > [!NOTE]
 > I den här artikeln förutsätter vi att du redan har [konfigurerat utvecklingsmiljön](service-fabric-get-started.md).
@@ -29,11 +29,11 @@ hello Azure Service Fabric SDK innehåller en fullständig lokal utvecklingsmilj
 > 
 
 ## <a name="create-a-local-cluster"></a>Skapa ett lokalt kluster
-Ett Service Fabric-kluster representerar en uppsättning maskinvaruresurser som du kan distribuera program till. Vanligtvis består ett kluster av var som helst från fem toomany tusentals datorer. Hello Service Fabric SDK innehåller emellertid en klusterkonfiguration som kan köras på en enskild dator.
+Ett Service Fabric-kluster representerar en uppsättning maskinvaruresurser som du kan distribuera program till. Vanligtvis består ett kluster av allt från fem till flera tusen datorer. Service Fabric SDK innehåller dock en klusterkonfiguration som kan köras på en enskild dator.
 
-Det är viktigt toounderstand som hello lokala Service Fabric-kluster inte är en emulator eller simulatorn. Det körs hello samma plattformskod som finns på flera datorer kluster. hello enda skillnaden är att den körs hello plattform processer som vanligtvis fördelade på fem datorer på en dator.
+Det är viktigt att förstå att det lokala Service Fabric-klustret inte är en emulator eller simulator. Det kör samma plattformskod som finns i kluster med flera datorer. Den enda skillnaden är att det kör plattformsprocesserna som normalt är fördelade mellan fem datorer på en enda dator.
 
-hello SDK tillhandahåller två sätt tooset in ett lokala kluster: en Windows PowerShell-skript och hello Klusterhanterare för lokala system fack app. I den här kursen använder vi hello PowerShell-skript.
+Med SDK kan du konfigurera ett lokalt kluster på två sätt: Windows PowerShell-skript och appen Local Cluster Manager i systemfältet. I den här självstudien använder vi PowerShell-skriptet.
 
 > [!NOTE]
 > Om du redan har skapat ett lokalt kluster genom att distribuera ett program från Visual Studio kan du hoppa över det här avsnittet.
@@ -41,7 +41,7 @@ hello SDK tillhandahåller två sätt tooset in ett lokala kluster: en Windows P
 > 
 
 1. Starta ett nytt PowerShell-fönster som administratör.
-2. Kör installationsskriptet för hello kluster från hello SDK-mappen:
+2. Kör installationsskriptet för klustret från SDK-mappen:
    
     ```powershell
     & "$ENV:ProgramFiles\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1"
@@ -51,109 +51,109 @@ hello SDK tillhandahåller två sätt tooset in ett lokala kluster: en Windows P
    
     ![Utdata efter klusterinstallationen][cluster-setup-success]
    
-    Du är nu redo tootry distribuera ett program tooyour kluster.
+    Nu kan du prova att distribuera ett program i klustret.
 
 ## <a name="deploy-an-application"></a>Distribuera ett program
-hello Service Fabric SDK innehåller en omfattande uppsättning ramverk och utvecklare tooling för att skapa program. Om du vill veta hur toocreate program i Visual Studio, se [skapa ditt första Service Fabric-program i Visual Studio](service-fabric-create-your-first-application-in-visual-studio.md).
+Service Fabric SDK har en omfattande uppsättning ramverk och utvecklingsverktyg som hjälper dig att skapa program. Om du vill lära dig hur du skapar program i Visual Studio läser du [Skapa ditt första Service Fabric-program i Visual Studio](service-fabric-create-your-first-application-in-visual-studio.md).
 
-I kursen får du använder en befintlig exempelprogrammet (kallas WordCount) så att du kan fokusera på hello management aspekter av hello plattform: distribution, övervakning och uppgradering.
+I den här självstudiekursen ska du använda ett befintligt exempelprogram (kallat WordCount) och fokusera på hanteringsaspekterna för plattformen: distribution, övervakning och uppgradering.
 
 1. Starta ett nytt PowerShell-fönster som administratör.
-2. Importera hello Service Fabric SDK PowerShell-modulen.
+2. Importera PowerShell-modulen för Service Fabric SDK.
    
     ```powershell
     Import-Module "$ENV:ProgramFiles\Microsoft SDKs\Service Fabric\Tools\PSModule\ServiceFabricSDK\ServiceFabricSDK.psm1"
     ```
-3. Skapa en katalog toostore hello-program som du vill hämta och distribuera, till exempel C:\ServiceFabric.
+3. Skapa en katalog för att lagra programmet som du hämtar och distribuerar, till exempel C:\ServiceFabric.
    
     ```powershell
     mkdir c:\ServiceFabric\
     cd c:\ServiceFabric\
     ```
-4. [Hämta hello WordCount program](http://aka.ms/servicefabric-wordcountapp) toohello plats som du skapade.  Obs: hello Microsoft Edge-webbläsaren sparar hello-fil med en *.zip* tillägg.  Ändra hello filnamnstillägget för*.sfpkg*.
-5. Anslut toohello lokala klustret:
+4. [Ladda ned programmet WordCount](http://aka.ms/servicefabric-wordcountapp) till den plats som du har skapat.  Obs! Microsoft Edge-webbläsaren sparar filen med ett *.zip*-tillägg.  Ändra filnamnstillägget till *.sfpkg*.
+5. Anslut till det lokala klustret:
    
     ```powershell
     Connect-ServiceFabricCluster localhost:19000
     ```
-6. Skapa ett nytt program kommandot på hello SDK-distribution med ett namn och en sökväg toohello programpaket.
+6. Skapa ett nytt program med SDK:s distributionskommando med ett namn och en sökväg till programpaketet.
    
     ```powershell  
    Publish-NewServiceFabricApplication -ApplicationPackagePath c:\ServiceFabric\WordCountV1.sfpkg -ApplicationName "fabric:/WordCount"
     ```
    
-    Om allt går bra bör du se hello följande utdata:
+    Om allt går som det ska bör du se följande utdata:
    
-    ![Distribuera ett program toohello lokala kluster][deploy-app-to-local-cluster]
-7. toosee hello program i åtgärden, starta hello webbläsare och gå för[http://localhost:8081/wordcount/index.html](http://localhost:8081/wordcount/index.html). Du bör se:
+    ![Distribuera ett program till det lokala klustret][deploy-app-to-local-cluster]
+7. Om du vill se programmet startar du webbläsaren och går till [http://localhost:8081/wordcount/index.html](http://localhost:8081/wordcount/index.html). Du bör se:
    
     ![Distribuerat programgränssnitt][deployed-app-ui]
    
-    Hej WordCount program är enkelt. Den omfattar klientens JavaScript-kod toogenerate slumpmässiga fem tecken ”ord”, som sedan vidarebefordras toohello program via ASP.NET Web API. En tillståndskänslig service spårar hello antalet ord räknas. De partitioneras baserat på hello första tecknet i hello word. Du kan hitta hello källkoden för hello WordCount-app i hello [klassiska komma igång exempel](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/WordCount).
+    WordCount-programmet är enkelt. Det innehåller JavaScript-kod på klientsidan för att generera slumpmässiga ”ord” med fem tecken, som sedan vidarebefordras till programmet via ASP.NET Web API. En tillståndskänslig tjänst spårar antalet ord som räknats. De partitioneras baserat på det första tecknet i ordet. Du hittar källkoden för WordCount-appen bland [de klassiska exemplen för att komma igång](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/WordCount).
    
-    hello-programmet som vi har distribuerats innehåller fyra partitioner. Så ord som inleds med ett via G lagras i hello första partitionen som ord som inleds med H till N lagras i andra hello-partition och så vidare.
+    Programmet som vi distribuerade innehåller fyra partitioner. Så ord som börjar med A till och med G lagras i den första partitionen, ord som börjar med H till och med N lagras i den andra partitionen och så vidare.
 
 ## <a name="view-application-details-and-status"></a>Visa programinformation och programstatus
-Nu när vi har distribuerat programmet hello ska vi titta på några av hello appinformation i PowerShell.
+Nu när vi har distribuerat programmet ska vi titta på några appdetaljer i PowerShell.
 
-1. Fråga alla distribuerade program på hello klustret:
+1. Fråga alla distribuerade program i klustret:
    
     ```powershell
     Get-ServiceFabricApplication
     ```
    
-    Förutsatt att du har bara distribuerat hello WordCount app kan se du något som liknar:
+    Om vi antar att du endast har distribuerat WordCount-appen visas något som liknar följande:
    
     ![Fråga alla distribuerade program i PowerShell][ps-getsfapp]
-2. Gå toohello nästa nivå genom att fråga hello uppsättning tjänster som ingår i hello WordCount program.
+2. Gå till nästa nivå genom att fråga uppsättningen med tjänster som ingår i WordCount-programmet.
    
     ```powershell
     Get-ServiceFabricService -ApplicationName 'fabric:/WordCount'
     ```
    
-    ![Visa lista över tjänster för programmet hello i PowerShell][ps-getsfsvc]
+    ![Visa en lista över tjänsterna för programmet i PowerShell][ps-getsfsvc]
    
-    hello program består av två tjänster och hello frontwebb hello tillståndskänslig tjänsten som hanterar hello ord.
-3. Slutligen vill titta på hello lista över partitioner för WordCountService:
+    Programmet består av två tjänster: frontwebbtjänsten och den tillståndskänsliga tjänsten som hanterar orden.
+3. Ta en titt på listan över partitioner för WordCountService:
    
     ```powershell
     Get-ServiceFabricPartition 'fabric:/WordCount/WordCountService'
     ```
    
-    ![Visa hello service partitioner i PowerShell][ps-getsfpartitions]
+    ![Visa tjänstpartitionerna i PowerShell][ps-getsfpartitions]
    
-    Hej uppsättning kommandon som du använde som alla Service Fabric PowerShell-kommandon, är tillgängliga för ett kluster som du kan ansluta till lokal eller fjärransluten.
+    Den uppsättning kommandon som du använde är, precis som alla PowerShell-kommandon för Service Fabric, tillgänglig för alla kluster som du ansluter till, både lokala och fjärranslutna.
    
-    För en mer visuell sätt toointeract med hello kluster, du kan använda hello Service Fabric Explorer Webbverktyg genom att navigera för[http://localhost:19080/Explorer](http://localhost:19080/Explorer) i hello webbläsare.
+    Ett mer visuellt sätt att interagera med klustret är att använda det webbaserade verktyget Service Fabric Explorer som du hittar på [http://localhost:19080/Explorer](http://localhost:19080/Explorer).
    
     ![Visa programinformation i Service Fabric Explorer][sfx-service-overview]
    
    > [!NOTE]
-   > toolearn mer om Service Fabric Explorer finns [visualisera ditt kluster med Service Fabric Explorer](service-fabric-visualizing-your-cluster.md).
+   > Mer information om Service Fabric Explorer finns i [Visualisera klustret med Service Fabric Explorer](service-fabric-visualizing-your-cluster.md).
    > 
    > 
 
 ## <a name="upgrade-an-application"></a>Uppgradera ett program
-Service Fabric ger ingen avbrottstid uppgraderingar genom övervakning hello hälsotillståndet för programmet hello när den samlar över hello kluster. Utföra en uppgradering av hello WordCount-programmet.
+Service Fabric tillhandahåller uppgraderingar utan någon nedtid genom att övervaka programmets hälsa medan det distribueras i klustret. Uppgradera WordCount-programmet.
 
-hello ny version av hello programmet nu räknar ord som börjar med en vokal. Eftersom hello uppgraderingen implementerar, visas två ändringar i hello programmets beteende. Först bör hello hastighet som hello antalet växer långsammare, eftersom färre ord räknas. Andra, eftersom hello första partitionen har två vokal (A- och E) och alla andra partitioner endast innehålla en varje, antalet slutligen att starta toooutpace hello andra.
+Den nya versionen av programmet räknar bara ord som börjar med en vokal. När uppgraderingen distribueras ser vi två ändringar i programmets beteende. För det första bör antalet växa långsammare eftersom färre ord räknas. För det andra bör den första partitionen så småningom gå om de andra eftersom den har två vokaler (A och E) medan alla andra partitioner endast innehåller en var.
 
-1. [Hämta hello WordCount version 2](http://aka.ms/servicefabric-wordcountappv2) toohello samma plats där du sparade hello version 1 paket.
-2. Returnera tooyour PowerShell-fönster och Använd hello SDK kommandot uppgradera tooregister hello den nya versionen i hello klustret. Sedan börjar uppgradera hello fabric: / WordCount-programmet.
+1. [Hämta WordCount version 2-paketet](http://aka.ms/servicefabric-wordcountappv2) till samma plats som du hämtade version 1-paketet till.
+2. Gå tillbaka till PowerShell-fönstret och använd SDK-uppgraderingskommandot för att registrera den nya versionen i klustret. Börja sedan uppgradera fabric:/WordCount-programmet.
    
     ```powershell
     Publish-UpgradedServiceFabricApplication -ApplicationPackagePath C:\ServiceFabric\WordCountV2.sfpkg -ApplicationName "fabric:/WordCount" -UpgradeParameters @{"FailureAction"="Rollback"; "UpgradeReplicaSetCheckTimeout"=1; "Monitored"=$true; "Force"=$true}
     ```
    
-    Du bör se hello följande utdata i PowerShell som hello uppgraderingen börjar.
+    Du bör se följande utdata i PowerShell när uppgraderingen börjar.
    
     ![Uppgraderingsförlopp i PowerShell][ps-appupgradeprogress]
-3. Medan du fortsätter hello uppgraderingen kan du enklare toomonitor dess status från Service Fabric Explorer. Starta ett webbläsarfönster och navigera för[http://localhost:19080/Explorer](http://localhost:19080/Explorer). Expandera **program** i trädet för hello hello vänster Välj **WordCount**, och slutligen **fabric: / WordCount**. Hello essentials på fliken finns hello status hello uppgradering när det fortsätter via hello klustret uppgraderingsdomäner.
+3. När uppgraderingen körs kan det vara lättare att övervaka dess status från Service Fabric Explorer. Öppna ett webbläsarfönster och gå till [http://localhost:19080/Explorer](http://localhost:19080/Explorer). Expandera **Program** i trädet till vänster, välj **WordCount** och slutligen **fabric:/WordCount**. På fliken Essentials ser du statusen för uppgraderingen när den fortsätter genom klustrets uppgraderingsdomäner.
    
     ![Uppgraderingsförlopp i Service Fabric Explorer][sfx-upgradeprogress]
    
-    Medan hello uppgraderingen utförs via varje domän, är hälsokontroller utförs tooensure som hello programmet fungerar korrekt.
-4. Om du kör hello tidigare fråga efter hello uppsättning tjänster i hello fabric: / WordCount-programmet, Lägg märke till att hello WordCountService version har ändrats men hello WordCountWebService version inte:
+    Allteftersom uppgraderingen fortsätter genom domänerna utförs hälsokontroller för att säkerställa att programmet fungerar korrekt.
+4. Om du kör om den tidigare frågan för tjänsterna i fabric:/WordCount-programmet ser du att versionen av WordCountService har ändrats, men inte versionen av WordCountWebService:
    
     ```powershell
     Get-ServiceFabricService -ApplicationName 'fabric:/WordCount'
@@ -161,52 +161,52 @@ hello ny version av hello programmet nu räknar ord som börjar med en vokal. Ef
    
     ![Fråga programtjänster efter uppgraderingen][ps-getsfsvc-postupgrade]
    
-    I det här exemplet ser du hur Service Fabric hanterar programuppgraderingar. Den når endast hello uppsättning tjänster (eller konfigurations och kod paket i dessa tjänster) som har ändrats, vilket gör hello processen med att uppgradera snabbare och mer tillförlitlig.
-5. Slutligen returneras toohello webbläsare tooobserve hello beteendet för hello ny programversion. Som förväntat, hello antal fortlöper långsammare och hello första partitionen slutar med lite mer hello volym.
+    I det här exemplet ser du hur Service Fabric hanterar programuppgraderingar. Service Fabric rör endast den uppsättning tjänster (eller kod/konfigurationspaket i dessa tjänster) som har ändrats, vilket gör uppgraderingsprocessen snabbare och mer tillförlitlig.
+5. Gå tillbaka till webbläsaren och observera hur den nya programversionen fungerar. Som förväntat växer antalet långsammare och den första partitionen har något mer av volymen när allt är klart.
    
-    ![Visa hello ny version av programmet hello i hello webbläsare][deployed-app-ui-v2]
+    ![Visa den nya versionen av programmet i webbläsaren][deployed-app-ui-v2]
 
 ## <a name="cleaning-up"></a>Rensa
-Det är viktigt tooremember som hello lokala klustret är verkliga innan du omsluter. Programmen toorun i bakgrunden hello tills du tar bort dem.  Beroende på hello uppbyggnad dina appar, kan en app som körs ta upp viktiga resurser på din dator. Du har flera alternativ toomanage program och hello kluster:
+Innan du avslutar är det viktigt att komma ihåg att det lokala klustret är verkligt. Programmen fortsätter att köras i bakgrunden tills du tar bort dem.  Beroende på typen av program kan ett program som körs ta betydande resurser i anspråk på datorn. Du kan hantera program och klustret på flera sätt:
 
-1. tooremove ett enskilt program och alla den datorns informationen genom att köra följande kommando hello:
+1. Ta bort ett enskilt program och dess data genom att köra följande kommando:
    
     ```powershell
     Unpublish-ServiceFabricApplication -ApplicationName "fabric:/WordCount"
     ```
    
-    Ta bort programmet hello från hello Service Fabric Explorer **åtgärder** -menyn eller hello snabbmenyn i listvyn för hello vänstra program.
+    Du kan också ta bort programmet från **Åtgärder**-menyn i Service Fabric Explorer eller från snabbmenyn i listvyn för program till vänster.
    
     ![Ta bort ett program i Service Fabric Explorer][sfe-delete-application]
-2. Avregistrera version 1.0.0 och 2.0.0 av hello WordCount programtyp när du tar bort programmet hello från hello kluster. Ta bort tar bort hello programpaket, inklusive hello koden och konfigurationen från avbildningsarkivet hello klustret.
+2. När du har tagit bort programmet från klustret avregistrerar du versionerna 1.0.0 och 2.0.0 av WordCount-programtypen. Raderingen ta bort programpaket, inklusive dess kod och konfiguration, från klustrets avbildningsarkiv.
    
     ```powershell
     Remove-ServiceFabricApplicationType -ApplicationTypeName WordCount -ApplicationTypeVersion 2.0.0
     Remove-ServiceFabricApplicationType -ApplicationTypeName WordCount -ApplicationTypeVersion 1.0.0
     ```
    
-    Eller välj i Service Fabric Explorer **avetablera typen** för hello program.
-3. tooshut ned hello klustret men behåll hello programdata och spårning, klickar du på **stoppa lokala klustret** i hello system fack app.
-4. toodelete hello klustret helt, klickar du på **ta bort lokala klustret** i hello system fack app. Det här alternativet resulterar i en annan långsam distribution hello nästa gång du trycka på F5 i Visual Studio. Ta bort hello lokala klustret bara om du inte tänker toouse den under en viss tid eller om du behöver tooreclaim resurser.
+    Du kan även välja att **avetablera typen** för programmet i Service Fabric Explorer.
+3. Om du vill stänga av klustret, men behålla programdata och spårningar, klickar du på **Stoppa lokalt kluster** i appen i systemfältet.
+4. Om du vill ta bort klustret helt klickar du på **Ta bort lokalt kluster** i appen i systemfältet. Alternativet resulterar i en till långsam distribution nästa gång du trycker på F5 i Visual Studio. Ta bara bort det lokala klustret om du inte avser att använda det under en tid eller om du behöver frigöra resurser.
 
 ## <a name="one-node-and-five-node-cluster-mode"></a>Läge för kluster med en nod och fem noder
-När du utvecklar program gör du ofta snabba iterationer när du skriver, felsöker och ändrar kod. toohelp optimera den här processen, hello lokala klustret kan köras i två lägen: en nod eller fem noder. Båda klusterlägena har sina fördelar. Läget för kluster med fem noder kan du toowork med en verklig kluster. Du kan testa redundansscenarier, samt arbeta med flera instanser och repliker av dina tjänster. Kluster med en nod läge är optimerad toodo snabb distribution och registrering av tjänster, toohelp du snabbt Validera kod med hello Service Fabric runtime.
+När du utvecklar program gör du ofta snabba iterationer när du skriver, felsöker och ändrar kod. För att optimera den här processen kan det lokala klustret köras i två lägen: i läget för en nod eller för fem noder. Båda klusterlägena har sina fördelar. I läget för ett kluster med fem noder kan du arbeta med ett verkligt kluster. Du kan testa redundansscenarier, samt arbeta med flera instanser och repliker av dina tjänster. Läget för ett kluster med en nod är optimerat för snabb distribution och registrering av tjänster så att du snabbt kan verifiera kod med hjälp av Service Fabric-runtime.
 
-Varken läget för kluster med en nod eller fem noder är en emulator eller simulator. hello lokal utveckling klustret körs hello samma plattformskod som finns på flera datorer kluster.
+Varken läget för kluster med en nod eller fem noder är en emulator eller simulator. Klustret för lokal utveckling kör samma plattformskod som i kluster med flera datorer.
 
 > [!WARNING]
-> När du ändrar hello klustret läge hello aktuella klustret tas bort från systemet och ett nytt kluster skapas. hello-data som lagras i hello klustret tas bort när du ändrar läget för klustret.
+> När du ändrar klusterläget tas det aktuella klustret bort från din dator och ett nytt kluster skapas. De data som lagras i klustret tas bort när du ändrar klusterläget.
 > 
 > 
 
-toochange hello läge tooone kluster, Välj **växla klustret läge** i hello Klusterhanterare för Service Fabric lokalt.
+Om du vill ändra läget till ett kluster för en nod väljer du **Växla klusterläge** i Local Cluster Manager i Service Fabric.
 
 ![Växla klusterläge][switch-cluster-mode]
 
-Eller ändra hello klustret läge med hjälp av PowerShell:
+Du kan också byta klusterläge med hjälp av PowerShell:
 
 1. Starta ett nytt PowerShell-fönster som administratör.
-2. Kör installationsskriptet för hello kluster från hello SDK-mappen:
+2. Kör installationsskriptet för klustret från SDK-mappen:
    
     ```powershell
     & "$ENV:ProgramFiles\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1" -CreateOneNodeCluster
@@ -218,8 +218,8 @@ Eller ändra hello klustret läge med hjälp av PowerShell:
 
 ## <a name="next-steps"></a>Nästa steg
 * Nu när du har distribuerat och uppgraderat vissa fördefinierade program kan du [skapa ett eget program i Visual Studio](service-fabric-create-your-first-application-in-visual-studio.md).
-* Alla hello-åtgärder som utförs på hello lokala klustret i den här artikeln kan utföras på en [Azure klustret](service-fabric-cluster-creation-via-portal.md) samt.
-* Det gick grundläggande hello uppgradering som vi utförs i den här artikeln. Se hello [uppgraderingsinformationen](service-fabric-application-upgrade.md) toolearn mer om hello kraften och flexibiliteten hos Service Fabric-uppgraderingar.
+* Alla åtgärder som utförts i det lokala klustret i den här artikeln kan även utföras i ett [Azure-kluster](service-fabric-cluster-creation-via-portal.md).
+* Uppgraderingen som vi utförde i den här artikeln var grundläggande. Mer information om kraften och flexibiliteten i Service Fabric-uppgraderingar finns i [uppgraderingsdokumentationen](service-fabric-application-upgrade.md).
 
 <!-- Images -->
 

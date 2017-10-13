@@ -1,6 +1,6 @@
 ---
-title: "aaaBest praxis för företag som flyttar tooAzure | Microsoft Docs"
-description: "Beskriver en kodskelett att företag kan använda tooensure en säker och hanterbar miljö."
+title: "Bästa praxis för företag som flyttar till Azure | Microsoft Docs"
+description: "Beskriver en kodskelett företag kan använda för att säkerställa en säker och hanterbar miljö."
 services: azure-resource-manager
 documentationcenter: na
 author: rdendtler
@@ -14,117 +14,117 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/31/2017
 ms.author: rodend;karlku;tomfitz
-ms.openlocfilehash: d1402cf21d0cf740e44c03fc345ecd39a6e1680c
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 3a19f2cf7566f38f80639d7c966638a3ec900cf4
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="azure-enterprise-scaffold---prescriptive-subscription-governance"></a>Azure enterprise kodskelett - normativ prenumeration styrning
-Företag vidtar allt hello offentligt moln dess rörlighet och flexibilitet. De använder hello Molnets styrkor toogenerate intäkter eller optimera resurser för hello företag. Microsoft Azure tillhandahåller många olika tjänster att företag kan sätta ihop som byggblock tooaddress en mängd olika arbetsbelastningar och program. 
+Företag vidtar allt det offentliga molnet dess rörlighet och flexibilitet. De använder Molnets styrkor för att generera intäkter eller optimera resurser för företaget. Microsoft Azure tillhandahåller många olika tjänster att företag kan sätta ihop som byggstenar för att adressera en mängd olika arbetsbelastningar och program. 
 
-Men om du vet där toobegin är ofta svårt. När du har bestämt toouse Azure uppstå några frågor ofta:
+Men om du vet var du ska börja är ofta svårt. När du har bestämt att använda Azure uppstå några frågor ofta:
 
 * ”Hur jag uppfylla våra juridiska krav för data suveränitet i vissa länder”?
 * ”Hur jag säkerställa att någon inte oavsiktligt ändrar kritiska system”?
 * ”Hur vet jag vad varje resurs stöder så jag kan kontot för den och faktura tillbaka korrekt”?
 
-en tom prenumeration med ingen guard spår hello oförmåga är avskräckande. Den här tomt utrymme kan hindra move-tooAzure.
+Potentiella för en tom prenumerationen med ingen guard spår är avskräckande. Den här tomt utrymme kan hindra övergången till Azure.
 
-Den här artikeln ger en startpunkt för tekniker tooaddress hello behovet av styrning och jämför den med hello behöver mer flexibel. Det inför hello begreppet en enterprise-kodskelett som hjälper organisationer i implementera och hantera sina Azure-prenumerationer. 
+Den här artikeln ger en startpunkt för tekniker att behovet av styrning och balansera med behovet av flexibilitet. Den introducerar konceptet för en enterprise-kodskelett som hjälper organisationer i implementera och hantera sina Azure-prenumerationer. 
 
 ## <a name="need-for-governance"></a>Behovet av att styrning
-Du måste lösa hello-avsnittet för styrning tidig tooensure hello lyckad användning av hello molnet inom hello företag när du flyttar tooAzure. Hello tid och bureaucracy för att skapa ett omfattande styrning system du tyvärr innebär vissa affärsgrupper gå direkt toovendors utan att inbegripa företagets IT. Den här metoden kan lämna hello enterprise öppna toovulnerabilities om hello resurser inte som hanteras korrekt. hello-egenskaperna hos offentliga cloud i hello - flexibilitet, flexibilitet och priser för förbrukningsbaserad - är viktiga toobusiness grupper som behöver tooquickly uppfyller hello behoven hos kunder (interna och externa). Men företagets IT måste tooensure att skyddas effektivt data och datorer.
+När du flyttar till Azure måste du åtgärda i avsnittet för styrning tidigt för att säkerställa en framgångsrik användning av molnet inom företaget. Tid och bureaucracy för att skapa ett omfattande styrning system du tyvärr innebär vissa affärsgrupper gå direkt till leverantörer utan att inbegripa företagets IT. Den här metoden kan lämna företaget öppen säkerhetsproblem om resurserna som inte hanteras korrekt. Egenskaperna hos offentliga cloud - flexibilitet, flexibilitet och priser för förbrukningsbaserad - är viktigt att affärsgrupper som behöver snabbt uppfyller behoven hos kunder (interna och externa). Men företagets IT måste se till att skyddas effektivt data och datorer.
 
-I verkligheten är scaffold-teknik används toocreate hello grunden för hello struktur. Hej kodskelett hjälper hello allmänna mönster och innehåller fästpunkter för permanent system toobe monterade. En enterprise-kodskelett är hello samma: en uppsättning flexibla kontroller och funktioner i Azure som tillhandahåller strukturen toohello miljö och ankare för tjänster som bygger på hello offentligt moln. Det ger hello builders (IT och affärsgrupper) en foundation toocreate och koppla nya tjänster.
+I verkligheten används scaffold-teknik för att skapa grunden för strukturen. Kodskelett hjälper allmänna mönster och ger fästpunkter för permanent system som ska monteras. En enterprise-kodskelett är samma: en uppsättning flexibla kontroller och funktioner i Azure som tillhandahåller strukturen i miljön och ankare för tjänster som bygger på offentliga moln. Det ger builders (IT och affärsgrupper) en grund för att skapa och koppla nya tjänster.
 
-Hej kodskelett baseras på praxis som vi har samlats in från många Användarsegmentet med klienter med olika storlekar. Dessa klienter mellan små organisationer utveckling av lösningar i hello molnet tooFortune 500 företag och oberoende programvaruleverantörer som migrerar och utveckling av lösningar i hello molnet. hello enterprise kodskelett är ”specialbyggt” toobe flexibla toosupport både traditionell IT-arbetsbelastningar och flexibel arbetsbelastningar; utvecklare som skapar programvara som en-tjänst (SaaS)-program utifrån t.ex, Azure-funktioner.
+Kodskelett baseras på praxis som vi har samlats in från många Användarsegmentet med klienter med olika storlekar. Dessa klienter mellan små organisationer utveckling av lösningar i molnet Fortune 500 företag och oberoende programvaruleverantörer som migrerar och utveckling av lösningar i molnet. Enterprise-kodskelett är ”specialbyggt” ska vara flexibel stöder både traditionell IT-arbetsbelastningar och flexibel arbetsbelastningar; utvecklare som skapar programvara som en-tjänst (SaaS)-program utifrån t.ex, Azure-funktioner.
 
-hello enterprise kodskelett är avsedda toobe hello grunden för varje ny prenumeration i Azure. Den låter administratörer tooensure arbetsbelastningar uppfyller hello minsta styrningskraven i en organisation utan förhindrar att affärsgrupper och utvecklare snabbt uppfylla sina egna mål.
+Enterprise-kodskelett är avsett att utgöra grunden för varje ny prenumeration i Azure. Det gör att administratörer kan kontrollera arbetsbelastningar uppfyller minsta styrningskraven i en organisation utan förhindrar att affärsgrupper och utvecklare snabbt uppfylla sina egna mål.
 
 > [!IMPORTANT]
-> Styrning är avgörande toohello framgången för Azure. Den här artikeln riktad mot hello teknisk implementering av en enterprise-kodskelett men bara vidrör på hello bredare process och relationer mellan hello komponenter. Princip för styrning flödar uppifrån hello ned och bestäms av vilka hello företag vill tooachieve. Naturligtvis finns hello skapandet av en modell för styrning för Azure innehåller representanter från IT-avdelningen, men viktigare ska den vara starkt representation från business grupp utfyllnadstecken och säkerhet och riskhantering. I hello slutet är en enterprise-kodskelett om att minimera business risk toofacilitate uppdrag och mål för en organisation.
+> Styrning är avgörande för Azure ska lyckas. Den här artikeln riktar sig till en enterprise-kodskelett teknisk implementering, men endast vidrör på bredare processen och relationer mellan komponenter. Princip för styrning flödar från överkanten ned och bestäms av vad företaget som vill uppnå. Naturligtvis finns skapandet av en modell för styrning för Azure innehåller representanter från IT-avdelningen, men viktigare ska den vara starkt representation från business grupp utfyllnadstecken och säkerhet och riskhantering. I slutet är en enterprise-kodskelett om att minimera risk för företag för att underlätta uppdrag och mål för en organisation.
 > 
 > 
 
-hello följande bild beskrivs hello komponenter i hello kodskelett. hello foundation förlitar sig på en fast plan för avdelningar, konton och prenumerationer. hello pelare består av Resource Manager principer och starka namngivning standarder. hello resten av hello kodskelett hämtas från grundläggande funktioner i Azure och funktioner att aktivera en säker och hanterbar miljö.
+Följande bild beskrivs komponenterna i kodskelett. Grunden är beroende av en fast plan för avdelningar, konton och prenumerationer. Pelare består av Resource Manager principer och starka namngivning standarder. Resten av kodskelett hämtas från grundläggande funktioner i Azure och funktioner att aktivera en säker och hanterbar miljö.
 
 ![kodskelett komponenter](./media/resource-manager-subscription-governance/components.png)
 
 > [!NOTE]
-> Azure har växt snabbt efter lanseringen 2008. Detta krävs Microsoft engineering team toorethink deras metod för att hantera och distribuera tjänster. hello Azure Resource Manager-modellen introducerades i 2014 och ersätter hello klassiska distributionsmodellen. Resource Manager kan organisationer toomore enkelt distribuera, ordna och styra Azure-resurser. Resource Manager innehåller parallellisering när du skapar resurser för snabbare distribution av lösningar för komplexa, beroende av varandra. Den omfattar även detaljerad åtkomstkontroll och hello möjlighet tootag resurser med metadata. Microsoft rekommenderar att du skapar alla resurser via hello Resource Manager-modellen. hello enterprise kodskelett är uttryckligen utformad för hello Resource Manager-modellen.
+> Azure har växt snabbt efter lanseringen 2008. Detta krävs Microsoft teknikerna snappa göras av deras metod för att hantera och distribuera tjänster. Azure Resource Manager-modellen introducerades i 2014 och ersätter den klassiska distributionsmodellen. Hanteraren för filserverresurser kan organisationer enkelt distribuera, ordna och styra Azure-resurser. Resource Manager innehåller parallellisering när du skapar resurser för snabbare distribution av lösningar för komplexa, beroende av varandra. Den omfattar även detaljerad åtkomstkontroll och möjligheten att taggen resurser med metadata. Microsoft rekommenderar att du skapar alla resurser via Resource Manager-modellen. Enterprise-kodskelett är explicit utformad för Resource Manager-modellen.
 > 
 > 
 
 ## <a name="define-your-hierarchy"></a>Definiera din hierarki
-hello grunden för hello kodskelett är hello Azure Enterprise-registrering (och hello Enterprise Portal). Hej företagsregistrering definierar hello form och användning av Azure-tjänster inom ett företag och är hello core styrningsstrukturen. Inom hello enterprise-avtal kan kunder toofurther dela upp hello-miljö till avdelningar, konton och slutligen prenumerationer. En Azure-prenumeration är hello grundläggande där alla resurser som ingår. Den definierar också flera begränsningar i Azure, till exempel antal kärnor, resurser osv.
+Grunden för kodskelett är Azure Enterprise-registrering (och Enterprise Portal). Enterprise-registrering definierar formen och användning av Azure-tjänster inom ett företag och är styrningsstrukturen kärnor. I enterprise-avtal kan kunder att ytterligare dela upp miljö till avdelningar, konton och slutligen prenumerationer. En Azure-prenumeration är den grundläggande enheten där alla resurser som ingår. Den definierar också flera begränsningar i Azure, till exempel antal kärnor, resurser osv.
 
 ![Hierarki](./media/resource-manager-subscription-governance/agreement.png)
 
-Alla företag har olika och hello hierarkin i hello föregående bild kan betydande flexibilitet i hur Azure ordnas inom hello företag. Innan du implementerar hello riktlinjer som finns i det här dokumentet, bör du modellen hierarkin och förstå hello inverkan på fakturering, åtkomst till företagsresurser och komplexitet.
+Alla företag har olika och hierarkin i föregående bild tillåter stor flexibilitet i hur Azure ordnas inom företaget. Innan du implementerar de riktlinjer som finns i det här dokumentet, bör du modellera hierarkin och förstå effekten på fakturering, åtkomst till företagsresurser och komplexitet.
 
-hello tre vanliga mönster för Azure-registreringar är:
+De tre vanliga mönster för Azure-registreringar är:
 
-* Hej **funktionella** mönster
+* Den **funktionella** mönster
   
     ![funktionella](./media/resource-manager-subscription-governance/functional.png)
-* Hej **affärsenhet** mönster 
+* Den **affärsenhet** mönster 
   
     ![verksamheten](./media/resource-manager-subscription-governance/business.png)
-* Hej **geografiska** mönster
+* Den **geografiska** mönster
   
     ![geografisk](./media/resource-manager-subscription-governance/geographic.png)
 
-Du kan använda hello kodskelett på hello nivå tooextend hello styrning prenumerationskraven av hello enterprise till hello prenumeration.
+Du kan använda kodskelett på prenumerationsnivån att utöka styrningen krav i företaget i prenumerationen.
 
 ## <a name="naming-standards"></a>Namnge standarder
-hello första hörnsten i hello kodskelett naming standarder. Väl utformad namngivning standarder aktivera tooidentify resurser i hello-portalen på en faktura och i skript. Troligen redan namngivningen standarder för lokal infrastruktur. När du lägger till Azure tooyour miljö bör du utöka de naming standarder tooyour Azure-resurser. Namnge standard underlätta mer effektiv hantering av hello-miljön på alla nivåer.
+Den första hörnsten i kodskelett är naming standarder. Väl utformad namngivning standarder kan du identifiera resurser i portalen på en faktura och i skript. Troligen redan namngivningen standarder för lokal infrastruktur. När du lägger till Azure i din miljö, ska du utöka dessa namngivning standarder till Azure-resurser. Namnge standard underlätta mer effektiv hantering av miljön på alla nivåer.
 
 > [!TIP]
 > För namngivningsregler:
-> * Granska och vidta om möjligt hello [Patterns and Practices vägledning](../guidance/guidance-naming-conventions.md). Den här vägledningen hjälper dig att bestämma på ett meningsfullt namngivningsstandarden.
-> * Använd camelCasing för namnen på de resurser (till exempel myResourceGroup och vnetNetworkName). Obs: Det är vissa resurser, till exempel lagringskonton, där hello endast alternativet toouse gemen (och inga andra specialtecken).
-> * Överväg att använda Azure Resource Manager principer (beskrivs i nästa avsnitt om hello) tooenforce naming standarder.
+> * Granska och vidta om möjligt den [Patterns and Practices vägledning](../guidance/guidance-naming-conventions.md). Den här vägledningen hjälper dig att bestämma på ett meningsfullt namngivningsstandarden.
+> * Använd camelCasing för namnen på de resurser (till exempel myResourceGroup och vnetNetworkName). Obs: Finns det vissa resurser, till exempel lagringskonton, där det enda alternativet är att använda gemener (och inga andra specialtecken).
+> * Överväg att använda Azure Resource Manager-principer (beskrivs i nästa avsnitt) att genomdriva namngivning standarder.
 > 
-> hello hjälper föregående tips dig att implementera en konsekvent namngivningskonvention.
+> Med hjälp av föregående tips när du implementerar en konsekvent namngivningskonvention.
 
 ## <a name="policies-and-auditing"></a>Principer och granskning
-hello andra hörnsten i hello kodskelett innebär att du skapar [Azure Resource Manager principer](resource-manager-policy.md) och [granskning hello aktivitetsloggen](resource-group-audit.md). Hanteraren för filserverresurser med får principer du hello möjlighet toomanage risk i Azure. Du kan definiera principer som kontrollera data suveränitet genom att begränsa, framtvinga eller granskning av vissa åtgärder. 
+Andra hörnsten i kodskelett innebär att du skapar [Azure Resource Manager principer](resource-manager-policy.md) och [granskning aktivitetsloggen](resource-group-audit.md). Principer för Resource Manager ger dig möjlighet att hantera risker i Azure. Du kan definiera principer som kontrollera data suveränitet genom att begränsa, framtvinga eller granskning av vissa åtgärder. 
 
-* Principen är en standard **Tillåt** system. Du styr åtgärder genom att definiera och tilldela principer tooresources som neka eller granska åtgärder på resurser.
+* Principen är en standard **Tillåt** system. Du styr åtgärder genom att definiera och tilldelning av principer till resurser som neka eller granska åtgärder på resurser.
 * Principer beskrivs av principdefinitioner i en princip definition language (if-then villkor).
-* Du skapar principer med JSON (Javascript Object Notation) formaterade filer. När du har definierat en princip du tilldelar den tooa viss omfång: prenumerationen, resursgruppen eller resursen.
+* Du skapar principer med JSON (Javascript Object Notation) formaterade filer. När du har definierat en princip du tilldela det till ett visst scope: prenumerationen, resursgruppen eller resursen.
 
-Principer har flera åtgärder som tillåter för en detaljerad metoden tooyour scenarier. hello åtgärder är:
+Principer har flera åtgärder som gör att en detaljerad metod för dina scenarier. Åtgärder är:
 
-* **Neka**: block hello resursbegäran
-* **Granska**: tillåter hello begäran men lägger till en rad toohello aktivitetsloggen (som kan vara används tooprovide aviseringar eller tootrigger runbooks)
-* **Lägg till**: lägger till angivna information toohello resursen. Till exempel om det inte taggen ”CostCenter” på en resurs lägger du till taggen med ett standardvärde.
+* **Neka**: blockerar resursbegäran
+* **Granska**: gör att begäran men lägger till en rad i aktivitetsloggen (som kan användas för att ge aviseringar eller att utlösa runbooks)
+* **Lägg till**: lägger till angivna information till resursen. Till exempel om det inte taggen ”CostCenter” på en resurs lägger du till taggen med ett standardvärde.
 
 ### <a name="common-uses-of-resource-manager-policies"></a>Vanliga användningsområden för Resource Manager-principer
-Principer för Azure Resource Manager är ett kraftfullt verktyg i hello Azure toolkit. Kan du tooavoid oväntat kostnader, tooidentify kostnader för resurser via taggning och tooensure center som kompatibilitet krav är uppfyllda. När principer kombineras med inbyggda granskningsfunktioner som hello fashion du komplexa och flexibla lösningar. Principer tillåter företag tooprovide kontroller för arbetsbelastningar ”traditionell IT” och ”Agile” arbetsbelastningar; som, utveckla kundprogram. hello vanligaste mönster vi finns i principer är:
+Principer för Azure Resource Manager är ett kraftfullt verktyg i Azure toolkit. De kan du undvika oväntade kostnader, att identifiera ett kostnadsställe för resurser via taggning och se till att restriktioner uppfylls. När principer kombineras med de inbyggda funktionerna för granskning, kan du fashion komplexa och flexibla lösningar. Principer kan företag som tillhandahåller kontroller för arbetsbelastningar ”traditionell IT” och ”Agile” arbetsbelastningar; som, utveckla kundprogram. De vanligaste mönster som vi finns i principer är:
 
-* **GEO-kompatibilitetsdata/suveränitet** -Azure tillhandahåller regioner över hälsningsmeddelande. Företag vill ofta toocontrol där resurserna skapas (om tooensure data suveränitet eller endast tooensure resurserna skapas nära toohello end konsumenter av hello resurser).
-* **Kostnadshanteringen** -Azure-prenumeration kan innehålla resurser av många typer och skala. Företag vill ofta tooensure som standard prenumerationer Undvik onödigt stora resurser, vilket kan kosta hundratals kronor i månaden eller mer.
-* **Standard styrning via taggar som krävs** -kräver taggar är en av hello vanligaste och hög önskade funktioner. Använda principer för Azure Resource Manager är företag kan tooensure att en resurs är taggade på rätt sätt. hello vanligaste taggar är: avdelning, resurs-ägare och miljö typ (till exempel - produktion, test och utveckling)
+* **GEO-kompatibilitetsdata/suveränitet** -Azure tillhandahåller regioner över hela världen. Företag vill ofta styra där resurserna skapas (om du vill se till att data suveränitet eller bara för att se till att resurserna skapas nära slutet konsumenter av resurser).
+* **Kostnadshanteringen** -Azure-prenumeration kan innehålla resurser av många typer och skala. Företag vill ofta så att prenumerationer som standard inte använder onödigt stora resurser, vilket kan kosta hundratals kronor i månaden eller mer.
+* **Standard styrning via taggar som krävs** -kräver taggar är en av de vanligaste och hög önskade funktionerna. Använda principer för Azure Resource Manager kan företag Se till att en resurs är taggade på rätt sätt. De vanligaste taggarna är: avdelning, resurs-ägare och miljö typ (till exempel - produktion, test och utveckling)
 
 **Exempel**
 
 ”Traditionell IT” prenumerationen för line-of-business-program
 
 * Framtvinga avdelning och ägare taggarna på alla resurser
-* Begränsa resursen skapas toohello Nordamerika Region
-* Begränsa hello möjlighet toocreate G-serien virtuella datorer och HDInsight-kluster
+* Begränsa skapa en resurs för Nordamerika-regionen
+* Begränsa möjligheten att skapa virtuella datorer G-serien och HDInsight-kluster
 
 ”Flexibel” miljö för en affärsenhet skapar molnprogram
 
-* toomeet data suveränitet krav tillåta hello skapande av resurser endast i en viss region.
-* Tillämpa miljötaggen på alla resurser. Om en resurs har skapats utan en tagg, bifoga hello **miljö: Okänt** tagga toohello resurs.
+* Att skapa resurser för att uppfylla kraven för suveränitet bara i en viss region.
+* Tillämpa miljötaggen på alla resurser. Om en resurs har skapats utan en tagg, bifoga den **miljö: Okänt** taggen till resursen.
 * Granska när resurserna skapas utanför Nordamerika men förhindrar inte.
 * Granska när hög kostnad resurser skapas.
 
 > [!TIP]
-> hello vanligaste användningen av Resource Manager principer mellan olika organisationer är toocontrol *där* resurser kan skapas och *vad* typer av resurser kan skapas. Dessutom tooproviding kontroller på *där* och *vad*, många företag använda principer tooensure resurser har hello rätt metadata toobill tillbaka för användning. Vi rekommenderar att tillämpa principer på hello prenumerationsnivån för:
+> De vanligaste användningen av Resource Manager principer mellan olika organisationer är att kontrollera *där* resurser kan skapas och *vad* typer av resurser kan skapas. Förutom att tillhandahålla kontroller på *där* och *vad*, många företag använda principer för att se till att resurserna har rätt metadata till för användning. Vi rekommenderar att tillämpa principer på prenumerationsnivån för:
 > 
 > * GEO-kompatibilitetsdata/suveränitet
 > * Kostnadshantering
@@ -135,14 +135,14 @@ Principer för Azure Resource Manager är ett kraftfullt verktyg i hello Azure t
 > 
 
 ### <a name="audit---what-happened"></a>Gransknings - vad hände?
-tooview hur fungerar din miljö, behöver du tooaudit användaraktivitet. De flesta typer av resurser i Azure skapa diagnostikloggar som du kan analysera via ett verktyg i loggen eller i Azure Operations Management Suite. Du kan samla in aktivitetsloggar över flera prenumerationer tooprovide en avdelningsnivå eller enterprise-vy. Granskningsposter är både ett viktigt diagnostiska verktyg och en mekanism för avgörande tootrigger händelser i hello Azure-miljön.
+Om du vill visa hur din miljö fungerar, måste du granska användaraktivitet. De flesta typer av resurser i Azure skapa diagnostikloggar som du kan analysera via ett verktyg i loggen eller i Azure Operations Management Suite. Du kan samla in aktivitetsloggar i flera prenumerationer att tillhandahålla en avdelningsnivå eller enterprise-vyn. Granskningsposter är både ett viktigt diagnostiska verktyg och en avgörande mekanism för att utlösa händelser i Azure-miljön.
 
-Aktivitetsloggar från Resource Manager distributioner aktivera toodetermine hello **operations** som tog plats och vem som utförde dem. Aktivitetsloggar kan samlas in och sammanställs med verktyg som logganalys.
+Aktivitetsloggar från Resource Manager distributioner gör det möjligt att fastställa den **operations** som tog plats och vem som utförde dem. Aktivitetsloggar kan samlas in och sammanställs med verktyg som logganalys.
 
 ## <a name="resource-tags"></a>Resurstaggar
-Som användare i din organisation lägga till resurser toohello prenumeration, blir allt viktigare tooassociate resurser med hello rätt avdelning, kund och miljö. Du kan koppla metadata tooresources via [taggar](resource-group-using-tags.md). Du kan använda taggar tooprovide information om hello resurs eller hello ägare. Taggar kan du endast sammanställd toonot och gruppera resurser på olika sätt, men använder informationen för hello återbetalning. Du kan tagga resurser med dig too15 nyckel: värde-par. 
+Som användare i din organisation kan du lägga till resurser i prenumerationen, blir allt viktigare att koppla resurser till rätt avdelning, kund och miljö. Du kan koppla metadata till resurser via [taggar](resource-group-using-tags.md). Du kan använda taggar för att ange information om resursen eller ägare. Taggar kan du inte bara sammanställa och gruppera resurser på olika sätt, men använda dessa data för återbetalning. Du kan tagga resurser med upp till 15 nyckel: värde-par. 
 
-Resurstaggarna är flexibla och ska vara anslutna toomost resurser. Exempel på vanliga resurstaggar är:
+Resurstaggarna är flexibla och ska kopplas till mest resurser. Exempel på vanliga resurstaggar är:
 
 * BillTo
 * Avdelning (eller affärsenhet)
@@ -163,95 +163,95 @@ Fler exempel på taggar finns [rekommenderas namnkonventionerna för Azure-resur
 > * Virtuella datorer
 > * Tjänsten miljöer/web programservrar
 > 
-> Den här märkning strategin identifierar alla prenumerationer vilka metadata som behövs för hello företag, ekonomi, säkerhet, riskhantering och övergripande hanteringen av hello-miljö. 
+> Den här märkning strategin identifierar alla prenumerationer vilka metadata som behövs för företag, ekonomi, säkerhet, riskhantering och övergripande hanteringen av miljön. 
 
 ## <a name="resource-group"></a>Resursgrupp
-Resource Manager kan tooput resurser i meningsfulla grupper för hantering av fakturerings- eller fysisk tillhörighet. Som nämnts tidigare har Azure två distributionsmodeller. Hej var tidigare klassiska modellen, hello grundläggande hanteringsenheten hello prenumeration. Det var svårt toobreak ned resurser inom en prenumeration som ledde toohello skapande av stora mängder prenumerationer. Vi såg hello införandet av resursgrupper med hello Resource Manager-modellen. Resursgrupper är behållare för resurser som har en gemensam livscykel eller dela ett attribut, till exempel ”alla SQL-servrar” eller ”A”.
+Resource Manager kan du placera resurser i meningsfulla grupper för hantering av fakturerings- eller fysisk tillhörighet. Som nämnts tidigare har Azure två distributionsmodeller. I den tidigare klassiska modellen var den grundläggande enheten för hantering av prenumerationen. Det var svårt att dela upp resurser inom en prenumeration, vilket ledde till att skapa många prenumerationer. Vi såg introduktionen av resursgrupper med Resource Manager-modellen. Resursgrupper är behållare för resurser som har en gemensam livscykel eller dela ett attribut, till exempel ”alla SQL-servrar” eller ”A”.
 
-Resursgrupper kan inte ingå i varandra och resurser kan bara höra tooone resursgruppen. Du kan använda vissa åtgärder på alla resurser i en resursgrupp. Till exempel försvinner tar bort en resursgrupp alla resurser inom hello resursgrupp. Normalt du placera en hela programmet eller relaterade system i hello samma resursgrupp. Till exempel en tre nivåprogram kallas Contoso webbprogram skulle innehålla hello webbservern, programserver och SQLServer i hello samma resursgrupp.
+Resursgrupper kan inte ingå i varandra och resurser kan bara tillhöra en resursgrupp. Du kan använda vissa åtgärder på alla resurser i en resursgrupp. Till exempel försvinner tar bort en resursgrupp alla resurser i resursgruppen. Normalt placera du en hela programmet eller relaterade system i samma resursgrupp. Till exempel skulle en tre nivåprogram kallas Contoso webbprogrammet innehålla webbservern, programservern och SQLServer i samma resursgrupp.
 
 > [!TIP]
-> Hur du ska organisera dina resursgrupper kan skilja sig från ”traditionell IT” arbetsbelastningar för ”flexibel IT” arbetsbelastningar:
+> Hur du ska organisera dina resursgrupper kan skilja sig från ”traditionell IT” arbetsbelastningar till ”flexibel IT” arbetsbelastningar:
 > 
-> * ”Traditionell IT” arbetsbelastningar är oftast grupperade efter objekt inom hello samma livscykel, till exempel ett program. Gruppering av program kan enskilda programhantering.
-> * ”Flexibel IT” arbetsbelastningar tenderar toofocus på extern kund-riktade molnprogram. hello resursgrupper bör återspegla hello lager för distributionen (till exempel Webbnivå, App-nivå) och hantering.
+> * ”Traditionell IT” arbetsbelastningar är oftast grupperade efter objekt inom samma livscykel, till exempel ett program. Gruppering av program kan enskilda programhantering.
+> * ”Flexibel IT” arbetsbelastningar tenderar att fokusera på extern kund-riktade molnprogram. Resursgrupper bör återspegla lager för distributionen (till exempel Webbnivå, App-nivå) och hantering.
 > 
 > Förstå din arbetsbelastning hjälper dig att utveckla en strategi för gruppen.
 
 ## <a name="role-based-access-control"></a>Rollbaserad åtkomstkontroll
-Du ber förmodligen dig själv ”som ska ha åtkomst tooresources”? och ”hur kan jag styra åtkomst”? Att tillåta eller inte tillåta åtkomst toohello Azure-portalen och kontrollera åtkomst tooresources hello-portalen är avgörande. 
+Du ber förmodligen dig själv ”som ska ha åtkomst till resurser”? och ”hur kan jag styra åtkomst”? Att tillåta eller inte tillåta åtkomst till Azure-portalen och kontrollera åtkomst till resurser i portalen är avgörande. 
 
-När Azure ursprungligen hade släppts åtkomst kontroller tooa prenumeration har grundläggande: administratör eller medadministratör. Åtkomst till tooa prenumeration hello klassisk modell underförstådda åtkomst tooall hello resurser i hello-portalen. Den här bristen på finmaskig kontroll vägleds toohello spridning av prenumerationer tooprovide en nivå av rimliga åtkomstkontroll för en Azure-registrering.
+När Azure släpptes ursprungligen, åtkomstkontroller för att en prenumeration har grundläggande: administratör eller medadministratör. Åtkomst till en prenumeration i klassiskt modell underförstådda åtkomst till alla resurser i portalen. Den här bristen på finmaskig kontroll ledde till den ökande mängden av prenumerationer att ge en rimlig åtkomstkontroll för en Azure-registrering.
 
-Den här spridning av prenumerationer behövs inte längre. Med rollbaserad åtkomstkontroll kan du tilldela användare toostandard roller (till exempel vanliga ”läsare” och ”författare” typer av roller). Du kan också definiera anpassade roller.
+Den här spridning av prenumerationer behövs inte längre. Du kan tilldela användare till standardroller (till exempel ”reader” och ”författare” vanliga roller) med rollbaserad åtkomstkontroll. Du kan också definiera anpassade roller.
 
 > [!TIP]
-> tooimplement rollbaserad åtkomstkontroll:
-> * Anslut din företagsidentitet store (vanligtvis Active Directory) tooAzure Active Directory med hjälp av hello AD Connect-verktyget.
-> * Styra hello Admin/Medadministratör för en prenumeration med hjälp av en hanterad identitet. **Inte** tilldela Admin-/ medadministratör tooa ny prenumeration ägare. Använd i stället RBAC roller tooprovide **ägare** rättigheter tooa grupp eller en person.
-> * Lägg till Azure tooa användargrupp (till exempel X Programägarna) i Active Directory. Använda hello synkroniserade grupp tooprovide grupp medlemmar hello rättigheter toomanage hello resursgrupp som innehåller programmet hello.
-> * Följ hello principen att bevilja hello **minsta privilegium** krävs toodo hello förväntades arbete. Exempel:
->   * Distributionsgruppen: En grupp som bara kan toodeploy resurser.
->   * : Virtuell dator en hanteringsgrupp som kan toorestart virtuella datorer (för åtgärder)
+> Implementera rollbaserad åtkomstkontroll:
+> * Anslut din företagsidentitet store (vanligtvis Active Directory) till Azure Active Directory med AD Connect-verktyget.
+> * Kontrollera den Admin/Medadministratör för en prenumeration med hjälp av en hanterad identitet. **Inte** Co-Admin-administratör tilldela en ny prenumeration ägare. Använd i stället RBAC-roller för att tillhandahålla **ägare** rättigheter till en grupp eller en person.
+> * Lägga till Azure användare i en grupp (exempelvis X Programägarna) i Active Directory. Använd gruppen synkroniserade ge gruppmedlemmar tillräcklig behörighet för att hantera den resursgrupp som innehåller programmet.
+> * Följ principen att bevilja den **minsta privilegium** krävs för att den förväntade arbete. Exempel:
+>   * Distributionsgruppen: En grupp som kan bara distribuera resurser.
+>   * Hantering av virtuell dator: En grupp som kan starta virtuella datorer (för åtgärder)
 > 
 > De här tipsen hjälpa dig att hantera åtkomst i din prenumeration.
 
 ## <a name="azure-resource-locks"></a>Azure-resurslås
-När organisationen lägger till core toohello abonnemang, blir allt viktigare tooensure att tjänsterna är tillgängliga tooavoid avbrott i verksamheten. [Resurslås](resource-group-lock-resources.md) aktivera toorestrict åtgärder på värdefulla resurser där ändra eller ta bort dem skulle ha en betydande inverkan på ditt program eller molninfrastruktur. Du kan använda Lås tooa prenumerationen, resursgruppen eller resursen. Normalt kan du använda Lås toofoundational resurser, till exempel virtuella nätverk, gatewayenheter och storage-konton. 
+När organisationen lägger till kärntjänsterna prenumerationen, blir det ytterst viktigt att se till att tjänsterna är tillgängliga för att undvika avbrott i verksamheten. [Resurslås](resource-group-lock-resources.md) att du kan begränsa värdefulla resurser där ändra eller ta bort dem skulle ha en betydande inverkan på ditt program eller molninfrastruktur. Du kan använda lås för en prenumeration, resursgrupp eller resurs. Normalt kan du använda Lås i grundläggande resurser, till exempel virtuella nätverk, gatewayenheter och storage-konton. 
 
-Resurslås för närvarande stöder två värden: CanNotDelete och ReadOnly. CanNotDelete innebär att användare (med lämpliga behörigheter för hello) kan fortfarande läsa eller ändra en resurs men ta bort inte den. ReadOnly innebär att behöriga användare inte kan ta bort eller ändra en resurs.
+Resurslås för närvarande stöder två värden: CanNotDelete och ReadOnly. CanNotDelete innebär att användare (med lämpliga behörigheter) kan fortfarande läsa eller ändra en resurs men ta bort inte den. ReadOnly innebär att behöriga användare inte kan ta bort eller ändra en resurs.
 
-toocreate eller ta bort lås för hantering, måste du ha tillgång för`Microsoft.Authorization/*` eller `Microsoft.Authorization/locks/*` åtgärder.
-I hello inbyggda roller beviljas endast ägare och administratör för användaråtkomst dessa åtgärder.
+För att skapa eller ta bort management lås, måste du ha åtkomst till `Microsoft.Authorization/*` eller `Microsoft.Authorization/locks/*` åtgärder.
+I de inbyggda rollerna beviljas endast ägare och administratör för användaråtkomst dessa åtgärder.
 
 > [!TIP]
-> Nätverksalternativ för kärnor bör skyddas med lås. Oavsiktlig borttagning av en gateway med plats-till-plats VPN är katastrofal tooan Azure-prenumeration. Azure tillåter inte att du toodelete ett virtuellt nätverk som används, men att använda fler begränsningar är en bra försiktighetsåtgärd. 
+> Nätverksalternativ för kärnor bör skyddas med lås. Oavsiktlig borttagning av en gateway för plats-till-plats VPN skulle vara katastrofal till en Azure-prenumeration. Azure tillåter inte att ta bort ett virtuellt nätverk som används, men att använda fler begränsningar är en bra försiktighetsåtgärd. 
 > 
 > * Virtuellt nätverk: CanNotDelete
 > * Nätverkssäkerhetsgruppen: CanNotDelete
 > * Principer: CanNotDelete
 > 
-> Principer är också viktigt toohello underhåll av lämpliga kontroller. Vi rekommenderar att du installerar en **CanNotDelete** låsa toopolices som används.
+> Principer är också viktigt att upprätthålla lämpliga kontroller. Vi rekommenderar att du installerar en **CanNotDelete** Lås till principer som används.
 
 ## <a name="core-networking-resources"></a>Core nätverksresurser
-Åtkomst tooresources kan vara interna (inom hello företagets nätverk) eller externa (via hello internet). Det är enkelt för användare i din organisation tooinadvertently put-resurser i hello fel plats och öppna dem potentiellt toomalicious åtkomst. Företag måste lägga till lämpliga kontroller tooensure att Azure användare gör hello rätt beslut som lokala enheter. Vi kan identifiera kärnresurser som ger grundläggande kontroll av åtkomst för prenumeration styrning. hello kärnresurser består av:
+Åtkomst till resurser kan vara antingen interna (inom företagets nätverk) eller externa (via internet). Det är enkelt för användare i din organisation att oavsiktligt placera resurser i fel plats och öppna dem potentiellt skadliga åtkomst. Företag måste lägga till lämpliga kontroller för att säkerställa att Azure användare fatta rätt beslut som lokala enheter. Vi kan identifiera kärnresurser som ger grundläggande kontroll av åtkomst för prenumeration styrning. Kärnresurserna består av:
 
-* **Virtuella nätverk** är behållarobjekt för undernät. Även om det inte är absolut nödvändigt, används ofta när du ansluter program toointernal företagets resurser.
-* **Nätverkssäkerhetsgrupper** är liknande tooa brandvägg och ange regler för hur en resurs kan ”prata” hello nätverket. De ger detaljerad kontroll över hur / om ett undernät (eller en virtuell dator) kan ansluta toohello Internet eller andra undernät i hello samma virtuella nätverk.
+* **Virtuella nätverk** är behållarobjekt för undernät. Även om det inte är absolut nödvändigt, används ofta när du ansluter program till interna företagsresurser.
+* **Nätverkssäkerhetsgrupper** liknar en brandvägg och ange regler för hur en resurs kan ”prata” över nätverket. De ger detaljerad kontroll över hur / om ett undernät (eller en virtuell dator) kan ansluta till Internet eller andra undernät i samma virtuella nätverk.
 
 ![Kärnnätverket](./media/resource-manager-subscription-governance/core-network.png)
 
 > [!TIP]
 > För nätverk:
-> * Skapa virtuella nätverk dedikerad tooexternal riktade arbetsbelastningar och interna arbetsbelastningar. Den här metoden minskar hello chans att oavsiktligt placera virtuella datorer som är avsedda för internt arbetsbelastningar i ett externt Internetriktade utrymme.
-> * Konfigurera säkerhet grupper toolimit nätverksåtkomst. Blockera åtkomst toohello minst internet från interna virtuella nätverk och blockera åtkomst toohello företagets nätverk från externa virtuella nätverk.
+> * Skapa virtuella nätverk som är dedikerad för arbetsbelastningar för externa och interna arbetsbelastningar. Den här metoden minskar risken för att oavsiktligt placera virtuella datorer som är avsedda för internt arbetsbelastningar i ett externt Internetriktade utrymme.
+> * Konfigurera nätverkssäkerhetsgrupper för att begränsa åtkomsten. Blockera åtkomst till internet från interna virtuella nätverk som minimum och blockera åtkomst till företagets nätverk från externa virtuella nätverk.
 > 
 > De här tipsen hjälper dig att implementera säker nätverksresurser.
 
 ### <a name="automation"></a>Automation
-Hantera resurser individuellt är både tidskrävande och potentiellt känsliga för vissa åtgärder. Azure tillhandahåller olika automatiseringsfunktionerna inklusive Azure Automation, Logic Apps och Azure Functions. [Azure Automation](../automation/automation-intro.md) kan administratörer toocreate och definiera runbooks toohandle vanliga uppgifter vid hantering av resurser. Du kan skapa runbooks med hjälp av en redigerare för PowerShell eller grafiska redigerare. Du kan skapa komplexa arbetsflöden i flera steg. Azure Automation är ofta använda toohandle vanliga aktiviteter som att stänga av oanvända resurser eller att skapa resurser i svaret tooa utlösare utan mänsklig inblandning.
+Hantera resurser individuellt är både tidskrävande och potentiellt känsliga för vissa åtgärder. Azure tillhandahåller olika automatiseringsfunktionerna inklusive Azure Automation, Logic Apps och Azure Functions. [Azure Automation](../automation/automation-intro.md) gör att administratörer kan skapa och definiera runbooks för att hantera vanliga uppgifter vid hantering av resurser. Du kan skapa runbooks med hjälp av en redigerare för PowerShell eller grafiska redigerare. Du kan skapa komplexa arbetsflöden i flera steg. Azure Automation används ofta för att hantera vanliga aktiviteter som att stänga av oanvända resurser eller skapar resurser som svar på en utlösare utan mänsklig inblandning.
 
 > [!TIP]
 > För automatisering:
-> * Skapa ett Azure Automation-konto och granska hello tillgängliga runbooks (både grafiskt och kommandot rad) tillgängliga i hello [Runbook-galleriet](../automation/automation-runbook-gallery.md).
+> * Skapa ett Azure Automation-konto och granska den tillgängliga runbooks (både grafiskt och kommandot rad) som är tillgängliga i den [Runbook-galleriet](../automation/automation-runbook-gallery.md).
 > * Importera och anpassa viktiga runbooks för eget bruk.
 > 
-> Ett vanligt scenario är hello möjlighet tooStart/avstängning virtuella datorer på ett schema. Det finns exempel runbooks som är tillgängliga i hello galleriet som hanterar det här scenariot och lära dig hur tooexpand den.
+> Ett vanligt scenario är möjligheten för Start/avstängning virtuella datorer på ett schema. Det finns exempel runbooks som är tillgängliga i galleriet som hanterar det här scenariot och lär dig att expandera den.
 > 
 > 
 
 ## <a name="azure-security-center"></a>Azure Security Center
-Kanske har ett hello största blockeringar toocloud införande hello gäller över säkerheten. IT-chefer risk och säkerhet avdelningar måste tooensure att resurser i Azure är säkra. 
+Kanske har ett av de största blockeringar till molnet införande problem över säkerheten. Risk IT-chefer och säkerhet avdelningar måste du se till att resurser i Azure är säker. 
 
-Hej [Azure Security Center](../security-center/security-center-intro.md) innehåller en central för hello säkerhetsstatusen för resurserna i hello prenumerationer och ger rekommendationer som kan förhindra angripna resurser. Det kan aktivera mer detaljerad principer (till exempel tillämpa principer toospecific resursgrupper som tillåter hello enterprise tootailor riskerna hållningsdata toohello de adressering). Slutligen är Azure Security Center en öppen plattform som gör Microsoft-partner och oberoende leverantörer toocreate programvara som ansluts till Azure Security Center tooenhance dess funktioner. 
+Den [Azure Security Center](../security-center/security-center-intro.md) innehåller en central för säkerhetsstatusen för resurserna i prenumerationerna och ger rekommendationer som kan förhindra angripna resurser. Det kan aktivera mer detaljerad principer (till exempel tillämpa principer till specifika resursgrupper som gör att företag kan anpassa sina hållningsdata för risk de adressering). Slutligen är Azure Security Center en öppen plattform som gör Microsoft-partner och oberoende programvaruleverantörer kan skapa program som ansluts till Azure Security Center för att förbättra dess funktioner. 
 
 > [!TIP]
-> Azure Security Center aktiveras som standard i varje prenumeration. Dock måste du aktivera datainsamling från virtuella datorer tooallow Azure Security Center tooinstall dess agenten och börja samla in data.
+> Azure Security Center aktiveras som standard i varje prenumeration. Dock måste du aktivera insamling av data från virtuella datorer så att Azure Security Center att installera dess agenten och börja samla in data.
 > 
 > ![Datainsamling](./media/resource-manager-subscription-governance/data-collection.png)
 > 
 > 
 
 ## <a name="next-steps"></a>Nästa steg
-* Nu när du har lärt dig om prenumerationen styrning, är det tid toosee rekommendationerna i praktiken. Se [exempel på att implementera Azure-prenumeration styrning](resource-manager-subscription-examples.md).
+* Nu när du har lärt dig om prenumerationen styrning, är det dags att se dessa rekommendationer i praktiken. Se [exempel på att implementera Azure-prenumeration styrning](resource-manager-subscription-examples.md).
 

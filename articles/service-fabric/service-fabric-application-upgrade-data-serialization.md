@@ -14,43 +14,43 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2017
 ms.author: vturecek
-ms.openlocfilehash: 1b65dfd3813423550631490640a81953864f58e3
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 6aa3ac7842df4657fca7f6b4264e1c6fe52dc0c6
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="how-data-serialization-affects-an-application-upgrade"></a>Hur dataserialisering påverkar en uppgradering av programmet
-I en [löpande uppgradering av programmet](service-fabric-application-upgrade.md), hello uppgraderingen är tillämpade tooa del noder, en domän i taget. Under den här processen vissa uppgraderingsdomäner finns på hello nyare version av programmet, och vissa uppgraderingsdomäner hello äldre versioner av programmet. Under den här fasen hello hello ny version av programmet måste vara kan tooread hello gammal version av dina data och hello gammal version av programmet måste vara kan tooread hello ny version av dina data. Om hello dataformat inte framåt och bakåt kompatibla, hello-uppgraderingen kan misslyckas eller värre, data går förlorat eller skadat. Den här artikeln beskrivs vad som utgör ditt dataformat och ger bästa praxis för att säkerställa att dina data är framåt och bakåt kompatibel.
+I en [löpande uppgradering av programmet](service-fabric-application-upgrade.md), uppgraderingen tillämpas på en del noder, en domän i taget. Vissa uppgraderingsdomäner finns på den nya versionen av ditt program under den här processen och vissa uppgraderingsdomäner finns på den äldre versionen av programmet. Den nya versionen av programmet måste kunna läsa den tidigare versionen av data under driftsättningen, och den gamla versionen av programmet måste kunna läsa den nya versionen av dina data. Om formatet inte är kompatibel med framåt och bakåt, misslyckas uppgraderingen eller värre, data kan försvinna eller skadas. Den här artikeln beskrivs vad som utgör ditt dataformat och ger bästa praxis för att säkerställa att dina data är framåt och bakåt kompatibel.
 
 ## <a name="what-makes-up-your-data-format"></a>Hur får din dataformat?
-I Azure Service Fabric hello data som är sparade som replikeras som kommer från C#-klasser. För program som använder [tillförlitliga samlingar](service-fabric-reliable-services-reliable-collections.md), att data är hello objekt i hello tillförlitliga ordböcker och köer. För program som använder [Reliable Actors](service-fabric-reliable-actors-introduction.md), som är hello säkerhetskopiering tillstånd för hello aktören. Dessa klasser i C# måste kunna serialiseras toobe beständiga och replikeras. Därför definieras hello dataformatet av hello fält och egenskaper som serialiseras, samt hur de serialiseras. Till exempel i en `IReliableDictionary<int, MyClass>` hello data är en serialiserad `int` och en serialiserad `MyClass`.
+Azure Service Fabric kommer de data som är beständiga och replikeras från C#-klasser. För program som använder [tillförlitliga samlingar](service-fabric-reliable-services-reliable-collections.md), att data är objekten i den tillförlitliga ordböcker och köer. För program som använder [Reliable Actors](service-fabric-reliable-actors-introduction.md), som är stödjande tillståndet för aktören. Dessa klasser i C# måste kunna serialiseras till beständiga och replikeras. Därför definieras dataformatet av fält och egenskaper som serialiseras, samt hur de serialiseras. Till exempel i en `IReliableDictionary<int, MyClass>` data är en serialiserad `int` och en serialiserad `MyClass`.
 
 ### <a name="code-changes-that-result-in-a-data-format-change"></a>Kod ändrar som resulterar i en data-formatändring
-Eftersom hello dataformat bestäms av klasser i C#, kan ändringar toohello klasser orsaka en formatändring data. Var försiktig tooensure som en uppgradering kan hantera hello dataformat ändringen. Exempel som kan orsaka dataändringar format:
+Eftersom dataformatet bestäms av klasser i C#, kan ändringar till klasser medföra en formatändring data. Vara måste försiktig så att en uppgradering kan hantera formatändring data. Exempel som kan orsaka dataändringar format:
 
 * Lägga till eller ta bort fält eller egenskaper
 * Byta namn på fält eller egenskaper
-* Ändra hello typer av fält eller egenskaper
-* Ändra hello klassnamn eller namnområde
+* Ändra vilka typer av fält eller egenskaper
+* Ändra namnet för klassen eller namnområdet
 
-### <a name="data-contract-as-hello-default-serializer"></a>Datakontrakt som hello standard serialiseraren
-hello serialiseraren används vanligtvis för Datainläsningen hello och avserialisering till hello aktuella versionen, även om hello data i en äldre eller *nyare* version. hello standard serialiseraren är hello [datakontrakt serialiseraren](https://msdn.microsoft.com/library/ms733127.aspx), som har väldefinierade versionshantering regler. Tillförlitliga samlingar kan hello serialiseraren toobe åsidosätts, men Reliable Actors för närvarande inte. hello data serialiseraren spelar en viktig roll i att aktivera löpande uppgraderingar. hello datakontrakt serialiseraren är hello serialiseraren som vi rekommenderar för Service Fabric-program.
+### <a name="data-contract-as-the-default-serializer"></a>Datakontrakt som standard serialiseraren
+Serialiseraren är vanligtvis ansvarig för läsning av data och avserialisering av det till den aktuella versionen, även om data i en äldre eller *nyare* version. Serialiseraren standard är den [datakontrakt serialiseraren](https://msdn.microsoft.com/library/ms733127.aspx), som har väldefinierade versionshantering regler. Tillförlitliga samlingar att serialiseraren som ska åsidosättas, men Reliable Actors för närvarande inte. Data serialiseraren spelar en viktig roll i att aktivera löpande uppgraderingar. Serialiseraren datakontrakt är serialiseraren som vi rekommenderar för Service Fabric-program.
 
-## <a name="how-hello-data-format-affects-a-rolling-upgrade"></a>Hur påverkar hello dataformat löpande uppgradering
-Det finns två huvudscenarier där hello serialiseraren kan stöta på en äldre under en uppgradering eller *nyare* version av dina data:
+## <a name="how-the-data-format-affects-a-rolling-upgrade"></a>Hur påverkar dataformatet löpande uppgradering
+Det finns två huvudscenarier där serialiseraren kan stöta på en äldre under en uppgradering eller *nyare* version av dina data:
 
-1. När en nod har uppgraderats och börjar säkerhetskopiera, laddar hello nya serialiseraren hello data beständiga toodisk av hello gamla versionen.
-2. Under hello löpande uppgradering, innehåller hello kluster en blandning av hello gamla och nya versioner av din kod. Eftersom repliker kan placeras i olika uppgraderingsdomäner och repliker skicka data tooeach andra hello nya eller gamla kan versionen av data påträffas i hello nya eller gamla versionen av din serialiseraren.
+1. När en nod har uppgraderats och börjar säkerhetskopiera, nya serialiseraren läser in de data som har kvar på disken av den gamla versionen.
+2. Under uppgraderingen innehåller klustret en blandning av gamla och nya versioner av din kod. Eftersom repliker kan placeras i olika uppgraderingsdomäner och repliker skicka data till varandra, kan den nya eller gamla versionen av dina data påträffas i den nya eller gamla versionen av din serialiserare.
 
 > [!NOTE]
-> Hej ”ny” och ”gamla versionen” här finns toohello version av din kod som körs. Hej ”nya serialiseraren” refererar toohello serialiseraren kod som körs i hello nya versionen av programmet. Hej ”nya data” refererar toohello serialiseras C#-klass från hello ny version av programmet.
+> ”Ny version” och ”gamla version” här avser versionen av din kod som körs. ”Nya serialiseraren” syftar på serialiserare-kod som körs i den nya versionen av programmet. ”Nya data” refererar till den serialiserade C#-klassen från den nya versionen av programmet.
 > 
 > 
 
-Hej två versioner av koden och dataformat måste vara både framåt och bakåt kompatibel. Om de inte är kompatibla hello löpande uppgradering misslyckas eller data kan gå förlorade. hello löpande uppgradering misslyckas eftersom hello-kod eller serialiseraren kan utlösa undantag eller ett fel när den stöter på hello andra versionen. Data kan gå förlorade om du till exempel en ny egenskap har lagts till men hello gamla serialiseraren den under deserialisering.
+De två versionerna av koden och data måste vara både framåt och bakåt kompatibel. Om de inte är kompatibla uppgraderingen misslyckas eller data kan gå förlorade. Uppgraderingen kan misslyckas om koden eller serialiseraren kan utlösa undantag eller ett fel när den stöter på den andra versionen. Data kan gå förlorade om du till exempel en ny egenskap har lagts till men gamla serialiseraren den under deserialisering.
 
-Datakontrakt är hello rekommenderade lösningen för att säkerställa att dina data är kompatibel. Det har väldefinierade versionshantering regler för att lägga till, ta bort och ändra fält. Det har också stöd för behandlar okänt fält, koppla upp i hello serialisering och deserialisering processen och behandlar klassarv. Mer information finns i [med datakontrakt](https://msdn.microsoft.com/library/ms733127.aspx).
+Datakontrakt är den rekommenderade lösningen för att säkerställa att dina data är kompatibel. Det har väldefinierade versionshantering regler för att lägga till, ta bort och ändra fält. Det har också stöd för behandlar okänt fält och koppla upp i processen för serialisering och deserialisering samt hantera klassarv. Mer information finns i [med datakontrakt](https://msdn.microsoft.com/library/ms733127.aspx).
 
 ## <a name="next-steps"></a>Nästa steg
 [Uppgradera ditt program med hjälp av Visual Studio](service-fabric-application-upgrade-tutorial.md) vägleder dig genom en uppgradering av programmet med hjälp av Visual Studio.
@@ -59,7 +59,7 @@ Datakontrakt är hello rekommenderade lösningen för att säkerställa att dina
 
 Styra hur programmet ska uppgraderas med hjälp av [uppgradera parametrar](service-fabric-application-upgrade-parameters.md).
 
-Lär dig hur toouse avancerade funktioner när du uppgraderar ditt program genom att referera för[avancerade ämnen](service-fabric-application-upgrade-advanced.md).
+Lär dig hur du använder avancerade funktioner när du uppgraderar ditt program genom att referera till [avancerade ämnen](service-fabric-application-upgrade-advanced.md).
 
-Lösa vanliga problem i programuppgraderingar genom att referera toohello stegen i [felsökning programuppgraderingar ](service-fabric-application-upgrade-troubleshooting.md).
+Lösa vanliga problem i programuppgraderingar genom att referera till stegen i [felsökning programuppgraderingar ](service-fabric-application-upgrade-troubleshooting.md).
 

@@ -1,27 +1,27 @@
 <!--author=SharS last changed: 9/15/15-->
 
-#### <a name="toocreate-a-custom-backup-policy"></a>toocreate en anpassad princip för säkerhetskopiering
-1. På hello **enheter** klickar du på **Säkerhetskopieringsprinciper** och klicka sedan på **Lägg till**.
-2. I hello **lägga till en princip för säkerhetskopiering** dialogrutan under **definiera din princip för säkerhetskopiering**:
+#### <a name="to-create-a-custom-backup-policy"></a>Så här skapar du en anpassad princip för säkerhetskopiering
+1. På den **enheter** klickar du på **Säkerhetskopieringsprinciper** och klicka sedan på **Lägg till**.
+2. I den **lägga till en princip för säkerhetskopiering** dialogrutan under **definiera din princip för säkerhetskopiering**:
    
    1. Ange ett namn för princip för säkerhetskopiering.
-   2. Välj hello volymer toobe lägga toothis princip. Du kan välja tooadd flera volymer genom att välja dem från hello nedrullningsbara listan.
-   3. Klicka på kryssikonen hello ![kryssikon](./media/storsimple-add-backup-policy/HCS_CheckIcon-include.png).
+   2. Välj volymerna som ska läggas till i den här principen. Du kan välja att lägga till flera volymer genom att välja dem från den nedrullningsbara listan.
+   3. Klicka på kryssikonen ![kryssikon](./media/storsimple-add-backup-policy/HCS_CheckIcon-include.png).
       
-      Du meddelas när hello princip har skapats. sidan för principer för säkerhetskopiering av hello också vara uppdaterade tooshow hello nyskapad princip.
-3. Klicka på hello principnamn (första kolumnen) toodrill ned detaljer om hello-princip som du nyss skapade.
+      Du meddelas när principen har skapats. Principer för säkerhetskopiering sidan uppdateras också för att visa den nya principen.
+3. Klicka på principen namn (första kolumnen) och öka detaljnivån till information om principen som du nyss skapade.
 4. Klicka på **hantera scheman**.
-5. I hello **hantera scheman** dialogrutan:
+5. I den **hantera scheman** dialogrutan:
    
-   1. Välj **Skapa nytt** tooadd ett annat schema.
-   2. Hello nedrullningsbara listan och väljer hello säkerhetskopieringstypen som **lokala** eller **moln** ögonblicksbild.
-   3. Ange hello frekvens för säkerhetskopiering i minuter, timmar, dagar eller veckor.
-   4. Välj ett Kvarhållningsintervall. Hej kvarhållningsalternativen beror på hello frekvens för säkerhetskopiering.
-   5. Välj hello och-datum för hello principen.
-   6. Välj hello kryssrutan tooenable hello princip.
-6. Klicka på kryssikonen hello ![kryssikon](./media/storsimple-add-backup-policy/HCS_CheckIcon-include.png) toofinish.
-7. Du kommer tillbaka toohello information om principen. Klicka på **spara** toosave hello ändringar du gjort toothis princip. Du meddelas när hello principen har sparats.
-8. Gå tillbaka toohello **Säkerhetskopieringsprinciper** sidan. hello tabular lista över principer för säkerhetskopiering av hello kommer att vara uppdaterade toodisplay hello ändrade principen.
+   1. Välj **Skapa nytt** att lägga till ett annat schema.
+   2. Listrutan, Välj typ av säkerhetskopiering som **lokala** eller **moln** ögonblicksbild.
+   3. Ange frekvensen för säkerhetskopiering i minuter, timmar, dagar eller veckor.
+   4. Välj ett Kvarhållningsintervall. Kvarhållningsalternativen beror på frekvensen för säkerhetskopiering.
+   5. Välj starttiden och startdatumet för principen.
+   6. Markera kryssrutan för att aktivera principen.
+6. Klicka på kryssikonen ![kryssikon](./media/storsimple-add-backup-policy/HCS_CheckIcon-include.png) till slut.
+7. Du kommer tillbaka till information om principen. Klicka på **spara** att spara ändringarna i den här principen. Du meddelas när principen har sparats.
+8. Gå tillbaka till den **Säkerhetskopieringsprinciper** sidan. Tabell lista över principer för säkerhetskopiering kommer att uppdateras för att visa den ändrade principen.
    
     ![Anpassad princip för säkerhetskopiering](./media/storsimple-create-custom-backup-policy/HCS_CustomBackupPolicyM-include.png).
 

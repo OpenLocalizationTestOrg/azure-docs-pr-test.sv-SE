@@ -1,19 +1,19 @@
-#### <a name="tooconfigure-and-register-hello-virtual-device"></a>tooconfigure och registrera hello virtuell enhet
+#### <a name="to-configure-and-register-the-virtual-device"></a>Konfigurera och registrera den virtuella enheten
 
-1. Välj hello virtuell StorSimple-enhet du skapade i hello **enheter** sidan.
-2. Klicka på **Slutför enhetskonfiguration**. Detta startar guiden för enhetskonfiguration hello.
+1. Välj den virtuella StorSimple-enhet som du just skapade på **Enheter**-sidan.
+2. Klicka på **Slutför enhetskonfiguration**. Guiden Konfigurera enhet startas.
     
     ![Slutför enhetskonfiguration på Enheter-sidan i StorSimple](./media/storsimple-configure-register-virtual-device/StorSimple_CompleteDeviceSetupSVA1M.png)
 
-4. Ange hello **krypteringsnyckel för Tjänstdata** i hello utrymmet.
+4. Ange **krypteringsnyckel för tjänstdata** i det avsedda området.
 
-5. Ange lösenord för hello Snapshot Manager och Enhetsadministratör av hello längd och inställningar som anges.
+5. Ange lösenord för Snapshot Manager och enhetsadministratör av den längd och inställningar som specificerades.
 
-6. Klicka på hello markerat toofinish hello inledande konfiguration och registrering av hello virtuell enhet. 
+6. Klicka på kryssmarkeringen för att slutföra den inledande konfiguration och registrering av den virtuella enheten. 
     
     ![Inställningar för virtuell StorSimple-enhet](./media/storsimple-configure-register-virtual-device/StorSimple_VirtualDeviceSettings1.png)
 
-När hello konfigurationen och registreringen är klar kommer hello enheten online. (Det kan ta flera minuter för hello enheten toocome online.)
+När konfigurationen och registreringen är klar, kommer enheten online. (Det kan ta flera minuter för enheten att komma online.)
 
 ![Onlinefas för virtuell StorSimple-enhet](./media/storsimple-configure-register-virtual-device/StorSimple_VirtualDeviceOnline1M.png)
 

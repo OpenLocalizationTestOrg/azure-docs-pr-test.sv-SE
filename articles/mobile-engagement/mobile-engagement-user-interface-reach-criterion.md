@@ -1,6 +1,6 @@
 ---
-title: "aaaAzure användargränssnitt för Mobile Engagement - nå kriterium"
-description: "Lär dig hur toouse målobjekt kriterier toosend push-kampanjer tooa väljer delmängd av dina användare med Azure Mobile Engagement"
+title: "Användargränssnittet för Azure Mobile Engagement - Reach kriterium"
+description: "Lär dig hur du använder målobjekt kriterier för att skicka push-kampanjer till en del av dina användare med Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: 
 author: piyushjo
@@ -14,39 +14,39 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: d956add1b7edc1d49451596019c5a4dec098d724
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 803b44721d0ab1ac7b5a8074e18857fc57adb724
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="how-toouse-targeting-criteria-toosend-push-campaigns-tooa-select-subset-of-your-users"></a>Hur toouse målobjekt kriterier toosend push-kampanjer tooa väljer delmängd av dina användare
-Målobjekt för användarna efter specifika villkor med hello ”villkor” knappen är en av hello mest kraftfulla koncept i Azure Mobile Engagement som hjälper till att du skickar relevanta push-meddelanden att hello kunder svarar tooinstead av massutskick alla. Du kan begränsa målgruppen utifrån kriterier som standard och simulera push-meddelanden toodetermine hur många personer får hello-meddelande.
+# <a name="how-to-use-targeting-criteria-to-send-push-campaigns-to-a-select-subset-of-your-users"></a>Hur du använder målobjekt kriterier för att skicka push-kampanjer till en del av dina användare
+Målobjekt för användarna efter specifika villkor med knappen ”villkor” är en av de mest kraftfulla begrepp som hjälper till att du skickar relevanta push-meddelanden i Azure Mobile Engagement att kunderna svarar på i stället för att skicka alla. Du kan begränsa målgruppen utifrån kriterier som standard och simulera push-meddelanden att avgöra hur många som tar emot meddelandet.
 
 **Se även:**
 
 * [UI-dokumentationen – Reach - nya Push-kampanj][Link 27]
 
 ## <a name="audience-criteria-can-include"></a>Målgruppen villkor kan omfatta:
-* ** Technicals: ** du kan rikta utifrån hello samma teknisk information som du kan se i hello Analytics och övervaka avsnitt. **Se även:** [UI-dokumentation – Analytics][Link 15], [UI-dokumentation – Övervakare][Link 16]
-* **Plats:** program som använder ”realtid plats reporting” med Geobegränsning kan använda geografiska plats som ett villkor tootarget en målgrupp från hello GPS-plats. Anrop för ”lazy området plats Reporting” också vara används tootarget en målgrupp från hello mobiltelefon platsen (”realtid plats reporting” och ”Lazy området plats rapportering” måste aktiveras från hello SDK). **Se även:** [SDK-dokumentationen – iOS - Integration][Link 5], [SDK-dokumentationen - Android - integrering][Link 5]
-* **Reach Feedback:** du kan inrikta dig på din målgrupp baserat på deras feedback från tidigare reach-meddelanden via reach feedback från meddelanden, avsökningar och skickar Data. Detta gör att du toobetter mål kan användarna när två eller tre nå kampanjer än du hello första gången. Det kan också användas toofilter ut användare som redan tagit emot ett meddelande med liknande innehåll genom att ange en kampanj tooNOT skickas toousers som redan fått en specifik tidigare kampanj. Du kan även utesluta användare som ingår en viss kampanj som fortfarande är aktivt tar emot nya push-meddelanden. **Se även:** [UI Documentation - Reach - Push-innehållet][Link 29]
+* ** Technicals: ** mål baserat på samma teknisk information hittar du i avsnitten Analytics och Övervakare. **Se även:** [UI-dokumentation – Analytics][Link 15], [UI-dokumentation – Övervakare][Link 16]
+* **Plats:** program som använder ”realtid plats reporting” med Geobegränsning kan använda geografiska plats som ett villkor för att rikta en målgrupp från GPS-plats. ”Lazy området plats Reporting” anrop också användas för att rikta en målgrupp från mobiltelefonen plats (”realtid plats reporting” och ”Lazy området plats rapportering” måste aktiveras från SDK). **Se även:** [SDK-dokumentationen – iOS - Integration][Link 5], [SDK-dokumentationen - Android - integrering][Link 5]
+* **Reach Feedback:** du kan inrikta dig på din målgrupp baserat på deras feedback från tidigare reach-meddelanden via reach feedback från meddelanden, avsökningar och skickar Data. Detta gör det möjligt att bättre mål målgruppen efter två eller tre nå kampanjer än du skulle kunna första gången. Det kan också användas för att filtrera bort användare som redan tagit emot ett meddelande med liknande innehåll genom att ange en kampanj som inte ska skickas till användare som redan tagit emot en specifik tidigare kampanj. Du kan även utesluta användare som ingår en viss kampanj som fortfarande är aktivt tar emot nya push-meddelanden. **Se även:** [UI Documentation - Reach - Push-innehållet][Link 29]
 * **Installera spårning:** kan du spåra information baserat på om dina användare installerat appen. **Se även:** [UI-dokumentation – inställningar][Link 20]
-* **Användarprofil:** du kan målet baserat på standardanvändare information och du kan målet baserat på hello anpassade appinfo som du har skapat. Detta omfattar användare som för närvarande är inloggad och användare som har besvarat frågor du har angett dem tooset i hello själva appen i stället för bara hur de har svarat tooprevious kampanjer. Alla App-Info har definierats för din app visas i listan.
+* **Användarprofil:** du kan målet baserat på standardanvändare information och du kan målet baserat på den information som anpassad app som du har skapat. Detta omfattar användare som för närvarande är inloggad och användare som har besvarat frågor du har angett dem som i själva appen i stället för bara hur de har svarat på tidigare kampanjer. Alla App-Info har definierats för din app visas i listan.
 * Segment: Du kan också mål baserat på segment som du har skapat baserat på specifika användarbeteende som innehåller flera villkor. Alla segment har definierats för din app visas på den här listan. **Se även:** [UI-dokumentation – segment][Link 18]
-* **App-Info:** anpassad App Info taggar kan skapas från ”inställningar” tootrack användarnas beteende. **Se även:** [UI-dokumentation – inställningar][Link 20]
+* **App-Info:** anpassad App Info taggar kan skapas från ”inställningar” för att spåra användarens beteende. **Se även:** [UI-dokumentation – inställningar][Link 20]
 
 ## <a name="example"></a>Exempel:
-Om du vill toopush köpa ett meddelande endast toohello underordnade uppsättning dina användare som har utfört en app åtgärd.
+Om du vill skicka ett meddelande endast till de underordnade dina användare som har utfört en åtgärd för köp i appen.
 
-1. Gå tooyour programinställningssidan väljer hello ”App-info”-menyn och väljer du ”ny app-info”
+1. Gå till inställningssidan för program, väljer ”App-info”-menyn och väljer ”nya app-info”
 2. Registrera en ny booleskt appinfo som kallas ”inAppPurchase”
-3. Kontrollera ditt program ange appinfon för ”true” när hello användare har en köp i appen (med hjälp av hello sendAppInfo (”inAppPurchase”,...) funktionen)
-4. Om du inte vill toodo detta från ditt program kan göra du det från din serverdel med hello device API)
-5. Du måste sedan bara toocreate ditt meddelande med ett villkor som begränsar din målgrupp toousers med ”inAppPurchase” anges för ”true”)
+3. Göra programmet ange appinfon till ”true” när användaren utför har ett inköp i appen (med hjälp av sendAppInfo (”inAppPurchase”,...) funktionen)
+4. Om du inte vill göra det från ditt program, kan du göra det från din serverdel med hjälp av device API)
+5. Sedan måste du skapa ditt meddelande med ett kriterium begränsa användarna till användare som har ”inAppPurchase” inställd på ”true”)
 
 > [!NOTE]
-> Målobjekt för baserat på kriterier än taggar för app-info kräver Azure Mobile Engagement toogather information från användarnas enheter innan hello push skickas och det kan det uppstå en fördröjning. Komplexa push-konfiguration som alternativ (t.ex. uppdatera Aktivitetsikoner) kan också vänta med push-meddelanden. Hello absolut snabbaste metoden i Azure Mobile Engagement är att använda en ”en bild” kampanj från hello Push-API. Med bara app info taggar som push villkor för en Reach-kampanj (antingen från hello nå API eller hello UI) är hello nästa snabbaste metoden eftersom taggar för app-info lagras på hello på serversidan. Med andra målobjekt kriterier för en push-kampanj är hello mest flexibla men långsammaste push metoden eftersom Azure Mobile Engagement har tooquery hello enheter i ordning toosend hello kampanj.
+> Målobjekt för baserat på kriterier än taggar för app-info kräver Azure Mobile Engagement att samla in information från användarnas enheter innan push skickas och så kan orsaka en fördröjning. Komplexa push-konfiguration som alternativ (t.ex. uppdatera Aktivitetsikoner) kan också vänta med push-meddelanden. Använda en ”en bild” kampanj från Push-API: et är absolut snabbaste metoden i Azure Mobile Engagement. Med bara app info taggar som push villkor för en Reach-kampanj (antingen från API: et nå eller Användargränssnittet) är den snabbaste metoden nästa eftersom taggar för app-info lagras på serversidan. Med andra målobjekt kriterier för en push-kampanj är den mest flexibla men långsammaste push-metoden eftersom Azure Mobile Engagement har fråga enheterna för att kunna skicka kampanjen.
 
 ![Reach-Criterion1][29] 
 

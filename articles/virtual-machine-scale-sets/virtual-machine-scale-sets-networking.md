@@ -1,5 +1,5 @@
 ---
-title: "aaaNetworking för skalningsuppsättningar i virtuella Azure-datorn | Microsoft Docs"
+title: "Nätverk för skalningsuppsättningar för virtuella Azure-datorer | Microsoft Docs"
 description: "Konfigurationsnätverksegenskaper för skalningsuppsättningar för virtuella Azure-datorer."
 services: virtual-machine-scale-sets
 documentationcenter: 
@@ -15,20 +15,20 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.author: guybo
-ms.openlocfilehash: ef3f0cfe648d2195c051a73987e654f0e15d13bf
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: a8520c6d8962cc362fc935f6b515a299c0ce75b3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Nätverk för skalningsuppsättningar för virtuella Azure-datorer
 
-När du distribuerar en virtuell dator i Azure-skala anges via hello portal vissa egenskaper för nätverk som är standard, till exempel en Azure belastningsutjämnare med inkommande NAT-regler. Den här artikeln beskriver hur toouse vissa hello mer avancerade funktioner som du kan konfigurera med en skala anger.
+När du distribuerar en skalningsuppsättning för en virtuell Azure-dator via portalen är vissa nätverksegenskaper standard, till exempel en Azure Load Balancer med inkommande NAT-regler. Den här artikeln beskriver hur du använder några mer avancerade nätverksfunktioner som du kan konfigurera med skalningsuppsättningar.
 
-Du kan konfigurera alla hello-funktioner som beskrivs i den här artikeln med hjälp av Azure Resource Manager-mallar. Azure CLI- och PowerShell-exempel ingår också i de valda funktionerna. Använd CLI 2.10 och PowerShell 4.2.0 eller senare.
+Du kan konfigurera alla funktioner som beskrivs i den här artikeln med hjälp av Azure Resource Manager-mallar. Azure CLI- och PowerShell-exempel ingår också i de valda funktionerna. Använd CLI 2.10 och PowerShell 4.2.0 eller senare.
 
 ## <a name="accelerated-networking"></a>Accelererat nätverk
-Azure [snabbare nätverk](../virtual-network/virtual-network-create-vm-accelerated-networking.md) förbättrar nätverkets prestanda genom att aktivera single-root I/O virtualization (SR-IOV) tooa virtuella datorn. toouse snabbare nätverk med skaluppsättningar genom att ange enableAcceleratedNetworking för**SANT** i inställningarna för din skaluppsättning networkInterfaceConfigurations. Exempel:
+Azure [accelererat nätverk](../virtual-network/virtual-network-create-vm-accelerated-networking.md) förbättrar nätverkets prestanda genom att aktivera SR-I/O-virtualisering till en virtuell dator. Om du vill använda accelererat nätverk med skalningsuppsättningar ställer du in enableAcceleratedNetworking till **sant** i inställningarna för skalningsuppsättningens networkInterfaceConfigurations. Exempel:
 ```json
 "networkProfile": {
     "networkInterfaceConfigurations": [
@@ -47,7 +47,7 @@ Azure [snabbare nätverk](../virtual-network/virtual-network-create-vm-accelerat
 ```
 
 ## <a name="create-a-scale-set-that-references-an-existing-azure-load-balancer"></a>Skapa en skalningsuppsättning som refererar till en befintlig Azure Load Balancer
-När en skaluppsättning skapas med hjälp av hello Azure-portalen, skapas en ny belastningsutjämnare för de flesta konfigurationsalternativ. Om du skapar en skalningsuppsättning som måste tooreference en befintlig belastningsutjämnare, kan du göra detta med hjälp av CLI. Följande exempelskript hello skapar en belastningsutjämnare och skapar sedan en skalningsuppsättning som refererar till den:
+När en skalningsuppsättning skapas med hjälp av Azure Portal skapas en ny belastningsutjämnare för de flesta konfigurationsalternativen. Om du skapar en skalningsuppsättning som måste referera till en befintlig belastningsutjämnare kan du göra detta med hjälp av CLI. Följande exempelskript skapar en belastningsutjämnare och sedan en skalningsuppsättning som refererar till den:
 ```bash
 az network lb create -g lbtest -n mylb --vnet-name myvnet --subnet mysubnet --public-ip-address-allocation Static --backend-pool-name mybackendpool
 
@@ -56,14 +56,14 @@ az vmss create -g lbtest -n myvmss --image Canonical:UbuntuServer:16.04-LTS:late
 ```
 
 ## <a name="configurable-dns-settings"></a>Konfigurera DNS-inställningar
-Som standard utför skalningsuppsättningar på hello specifika DNS-inställningarna för hello VNET och undernät som de skapades i. Du kan dock konfigurera hello DNS-inställningarna för en skala som anges direkt.
+Som standard tar skalningsuppsättningar över specifika DNS-inställningar från de VNET och undernät som de skapades i. Du kan dock konfigurera DNS-inställningar för en skalningsuppsättning direkt.
 ~
 ### <a name="creating-a-scale-set-with-configurable-dns-servers"></a>Skapa en skalningsuppsättning med konfigurerbara DNS-servrar
-toocreate en skala som anges med en anpassad DNS-konfiguration med hjälp av CLI 2.0, lägga till hello **--dns-servrar** argumentet toohello **vmss skapa** följt av utrymme avgränsade ip-adresser. Exempel:
+Om du vill skapa en skalningsuppsättning med en anpassad DNS-konfiguration med hjälp av CLI 2.0 lägger du till argumentet --**dns-servers** till kommandot **vmss create** följt av ip-adresser som avgränsas av ett blanksteg. Exempel:
 ```bash
 --dns-servers 10.0.0.6 10.0.0.5
 ```
-tooconfigure anpassade DNS-servrar i en Azure-mall, lägga till en dnsSettings egenskapen toohello skala networkInterfaceConfigurations avsnitt. Exempel:
+Om du vill konfigurera anpassade DNS-servrar i en Azure-mall lägger du till en dnsSettings-egenskap till skalningsuppsättningens networkInterfaceConfigurations-avsnitt. Exempel:
 ```json
 "dnsSettings":{
     "dnsServers":["10.0.0.6", "10.0.0.5"]
@@ -71,9 +71,9 @@ tooconfigure anpassade DNS-servrar i en Azure-mall, lägga till en dnsSettings e
 ```
 
 ### <a name="creating-a-scale-set-with-configurable-virtual-machine-domain-names"></a>Skapa en skalningsuppsättning med konfigurerbara domännamn för virtuella datorer
-toocreate skaluppsättning med en anpassad DNS-namnet för virtuella datorer med hjälp av CLI 2.0, lägga till hello **--vm domännamn** argumentet toohello **vmss skapa** följt av en sträng som representerar hello domännamn.
+För att skapa en skalningsuppsättning med ett anpassat DNS-namn för virtuella datorer med CLI 2.0 lägger du till argumentet **--vm-domain-name** till kommandot **vmss create** följt av en sträng som representerar domännamnet.
 
-tooset hello-domännamnet i en Azure-mall, lägga till en **dnsSettings** skaluppsättning för egenskapen toohello **networkInterfaceConfigurations** avsnitt. Exempel:
+Om du vill konfigurera domännamnet i en Azure-mall lägger du till en **dnsSettings**-egenskap till skalningsuppsättningens **networkInterfaceConfigurations**-avsnitt. Exempel:
 
 ```json
 "networkProfile": {
@@ -105,20 +105,20 @@ tooset hello-domännamnet i en Azure-mall, lägga till en **dnsSettings** skalup
 }
 ```
 
-hello utdata för en enskild virtuell dator dns-namn är i hello följande format: 
+Utdata för en enskild virtuell dator dns-namn anges i följande format: 
 ```
 <vm><vmindex>.<specifiedVmssDomainNameLabel>
 ```
 
 ## <a name="public-ipv4-per-virtual-machine"></a>Offentlig IPv4 per virtuell dator
-I allmänhet kräver inte skalningsuppsättningar för virtuella Azure-datorer sina egna offentliga IP-adresser. För de flesta fall är det mer ekonomiska och säker tooassociate en offentlig IP-adress tooa belastningen belastningsutjämnare eller tooan enskild virtuell dator (även kallat en jumpbox) som sedan vidarebefordrar inkommande anslutningar tooscale uppsättning virtuella datorer efter behov (till exempel via inkommande NAT-regler).
+I allmänhet kräver inte skalningsuppsättningar för virtuella Azure-datorer sina egna offentliga IP-adresser. I de flesta fall är det mer ekonomiskt och säkert att associera en offentlig IP-adress till en belastningsutjämnare eller till en enskild virtuell dator (kallas även en jumpbox) som sedan vidarebefordrar inkommande anslutningar till skalningsuppsättningar för virtuella datorer efter behov (till exempel via ingående NAT-regler).
 
-Dock vissa scenarier kräver skaluppsättning för virtuella datorer toohave sina egna offentliga IP-adresser. Ett exempel spel, där en konsol måste toomake en direktanslutning tooa moln virtuella datorn, vilket gör spelet fysik bearbetning. Ett annat exempel är där virtuella datorer måste toomake externa anslutningar tooone tvärs över regioner i en distribuerad databas.
+Men vissa scenarier kräver att skalningsuppsättningarna för virtuella datorer har sina egna offentliga IP-adresser. Ett exempel är spel, där en konsol kan behöva ansluta direkt till en virtuell dator i molnet som utför bearbetningen av spelets fysik. Ett annat exempel är när virtuella datorer behöver göra externa anslutningar till varandra över regioner i en distribuerad databas.
 
 ### <a name="creating-a-scale-set-with-public-ip-per-virtual-machine"></a>Skapa en skalningsuppsättning med en offentlig IP per virtuell dator
-toocreate en skalningsuppsättning som tilldelar en offentlig IP-adress tooeach virtuell dator med CLI 2.0, lägga till hello **--offentlig ip per vm** parametern toohello **vmss skapa** kommando. 
+För att skapa en skalningsuppsättning som tilldelar varje virtuell dator en offentlig IP-adress med hjälp av CLI 2.0 lägger du till parametern **--public-ip-per-vm** till kommandot **vmss create**. 
 
-toocreate en skala som anges med en Azure-mall, kontrollera hello API-versionen av hello Microsoft.Compute/virtualMachineScaleSets resursen är minst **2017-03-30**, och Lägg till en **publicIpAddressConfiguration**JSON egenskapen toohello skaluppsättning ipConfigurations avsnitt. Exempel:
+Kontrollera att API-versionen av resursen Microsoft.Compute/virtualMachineScaleSets är minst från **2017-03-30** om du vill skapa en skalningsuppsättning med en Azure-mall och lägg till en **publicIpAddressConfiguration**-JSON-egenskap till skalningsuppsättningens ipConfigurations-avsnitt. Exempel:
 
 ```json
 "publicIpAddressConfiguration": {
@@ -130,22 +130,22 @@ toocreate en skala som anges med en Azure-mall, kontrollera hello API-versionen 
 ```
 Exempelmall: [201-vmss-public-ip-linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-public-ip-linux)
 
-### <a name="querying-hello-public-ip-addresses-of-hello-virtual-machines-in-a-scale-set"></a>Frågar hello offentliga IP-adresser för hello virtuella datorer på en skala ange
-toolist hello offentliga IP-adresser tilldelas tooscale uppsättning virtuella datorer med hjälp av CLI 2.0 använder hello **az vmss lista-instans-offentliga-IP-adresser** kommando.
+### <a name="querying-the-public-ip-addresses-of-the-virtual-machines-in-a-scale-set"></a>Ställ frågor till de offentliga IP-adresserna för de virtuella datorerna i en skalningsuppsättning
+Om du vill se en lista över de offentliga IP-adresserna som tilldelats till skalningsuppsättningar för virtuella datorer med hjälp av CLI 2.0 använder du kommandot **az vmss list-instance-public-ips**.
 
-toolist skaluppsättning för den offentliga IP-adresser med hjälp av PowerShell använder hello _Get-AzureRmPublicIpAddress_ kommando. Exempel:
+För visa skaluppsättningens offentliga IP-adresser med hjälp av PowerShell ska du använda kommandot _Get-AzureRmPublicIpAddress_. Exempel:
 ```PowerShell
 PS C:\> Get-AzureRmPublicIpAddress -ResourceGroupName myrg -VirtualMachineScaleSetName myvmss
 ```
 
-Du kan också fråga hello offentliga IP-adresser genom att referera hello resurs-id för hello offentliga IP-adresskonfigurationen direkt. Exempel:
+Du kan också fråga offentliga IP-adresser genom att referera till resurs-ID för den offentliga IP-adresskonfigurationen direkt. Exempel:
 ```PowerShell
 PS C:\> Get-AzureRmPublicIpAddress -ResourceGroupName myrg -Name myvmsspip
 ```
 
-tooquery hello offentliga IP-adresser tilldelas tooscale uppsättning virtuella datorer med hello [resursutforskaren Azure](https://resources.azure.com), eller hello Azure REST-API med version **2017-03-30** eller högre.
+Fråga de offentliga IP-adresserna som tilldelats till skalningsuppsättningar för virtuella datorer med hjälp av [Azure Resource Explorer](https://resources.azure.com) eller Azure REST-API version **2017-03-30** eller högre.
 
-tooview offentliga IP-adresser för en skala som anges med hello resursutforskaren, titta på hello **publicipaddresses** avsnitt under din skaluppsättning. Till exempel: https://resources.azure.com/subscriptions/_your_sub_id_/resourceGroups/_your_rg_/providers/Microsoft.Compute/virtualMachineScaleSets/_your_vmss_/publicipaddresses
+Om du vill se de offentliga IP-adresserna för en skalningsuppsättning med Resource Explorer tittar du på avsnittet **publicipaddresses** under din skalningsuppsättning. Till exempel: https://resources.azure.com/subscriptions/_your_sub_id_/resourceGroups/_your_rg_/providers/Microsoft.Compute/virtualMachineScaleSets/_your_vmss_/publicipaddresses
 
 ```
 GET https://management.azure.com/subscriptions/{your sub ID}/resourceGroups/{RG name}/providers/Microsoft.Compute/virtualMachineScaleSets/{scale set name}/publicipaddresses?api-version=2017-03-30
@@ -190,10 +190,10 @@ Exempel på utdata:
 ```
 
 ## <a name="multiple-ip-addresses-per-nic"></a>Flera IP-adresser per nätverkskort
-Varje nätverkskort anslutet tooa virtuell dator i en skaluppsättning kan ha en eller flera IP-konfigurationer som är kopplade till den. Varje konfiguration tilldelas en privat IP-adress. Varje konfiguration kan också ha en associerad offentlig IP-adressresurs. toounderstand hur många IP-adresser kan tilldelas tooa NIC, och hur många offentliga IP-adresser som du kan använda i en Azure-prenumeration finns för[Azure gränser](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
+Varje nätverkskort som är kopplat till en virtuell dator i en skalningsuppsättning kan ha en eller flera associerade IP-konfigurationer. Varje konfiguration tilldelas en privat IP-adress. Varje konfiguration kan också ha en associerad offentlig IP-adressresurs. För att förstå hur många IP-adresser som kan tilldelas till ett nätverkskort och hur många offentliga IP-adresser du kan använda i en Azure-prenumeration kan du se [Azure-gränser](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
 ## <a name="multiple-nics-per-virtual-machine"></a>Flera nätverkskort per virtuell dator
-Du kan ha upp too8 nätverkskort per virtuell dator, beroende på storleken på datorn. hello maximalt antal nätverkskort per dator är tillgängliga i hello [VM storlek artikel](../virtual-machines/windows/sizes.md). hello följande exempel är en skaluppsättning för nätverksprofil visar flera poster för NIC och flera offentliga IP-adresser per virtuell dator:
+Du kan ha upp till 8 nätverkskort per virtuell dator, beroende på datorns storlek. Det maximala antalet nätverkskort per dator är tillgänglig i [artikeln om VM-storlek](../virtual-machines/windows/sizes.md). Följande exempel är en nätverksprofil för skalningsuppsättningar som visar flera poster för nätverkskort och flera offentliga IP-adresser per virtuell dator:
 ```json
 "networkProfile": {
     "networkInterfaceConfigurations": [
@@ -266,7 +266,7 @@ Du kan ha upp too8 nätverkskort per virtuell dator, beroende på storleken på 
 ```
 
 ## <a name="nsg-per-scale-set"></a>Nätverkssäkerhetsgrupp per skalningsuppsättning
-Nätverkssäkerhetsgrupper kan tillämpas direkt tooa skaluppsättning genom att lägga till en referens toohello network interface konfigurationsavsnittet hello skalan ange egenskaper för virtuell dator.
+Nätverkssäkerhetsgrupper kan tillämpas direkt på en skalningsuppsättning genom att lägga till en referens till konfigurationsavsnittet för nätverksgränssnittet i egenskaperna för skalningsuppsättningen för virtuella datorer.
 
 Exempel: 
 ```
@@ -306,4 +306,4 @@ Exempel:
 ```
 
 ## <a name="next-steps"></a>Nästa steg
-Mer information om virtuella Azure-nätverk finns för[denna dokumentation](../virtual-network/virtual-networks-overview.md).
+Mer information om virtuella Azure-nätverk finns i [den här dokumentationen](../virtual-network/virtual-networks-overview.md).

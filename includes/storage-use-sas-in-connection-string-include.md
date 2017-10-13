@@ -1,6 +1,6 @@
-Om du har en URL för delad åtkomst signatur (SAS) som ger dig åtkomst tooresources i ett lagringskonto kan du använda hello SAS i en anslutningssträng. Eftersom hello SAS innehåller hello information krävs tooauthenticate hello begäran, ger en anslutningssträng med en SAS hello-protokollet och hello tjänstslutpunkten hello nödvändiga autentiseringsuppgifter tooaccess hello resurs.
+Om du har en URL för delad åtkomst signatur (SAS) som ger åtkomst till resurser i ett lagringskonto kan du använda SAS i en anslutningssträng. Eftersom Signaturen innehåller information som krävs för att autentisera begäran, ger en anslutningssträng med en SAS protokollet, tjänstslutpunkten och autentiseringsuppgifterna som krävs för åtkomst till resursen.
 
-toocreate en anslutningssträng som innehåller en signatur för delad åtkomst, ange hello sträng i hello följande format:
+Ange strängen du vill skapa en anslutningssträng som innehåller en signatur för delad åtkomst i följande format:
 
 ```
 BlobEndpoint=myBlobEndpoint;
@@ -10,12 +10,12 @@ FileEndpoint=myFileEndpoint;
 SharedAccessSignature=sasToken
 ```
 
-Varje tjänstslutpunkten är valfritt, även om hello anslutningssträngen måste innehålla minst ett.
+Varje tjänstslutpunkten är valfritt, även om anslutningssträngen måste innehålla minst ett.
 
 > [!NOTE]
 > Du bör använda HTTPS med en SAS som bästa praxis.
 >
-> Om du anger en SAS i en anslutningssträng i en konfigurationsfil, eventuellt tooencode specialtecken i hello-URL.
+> Om du anger en SAS i en anslutningssträng i en konfigurationsfil, kan du behöva koda specialtecken i URL: en.
 >
 >
 
@@ -27,7 +27,7 @@ BlobEndpoint=https://storagesample.blob.core.windows.net;
 SharedAccessSignature=sv=2015-04-05&sr=b&si=tutorial-policy-635959936145100803&sig=9aCzs76n0E7y5BpEi2GvsSv433BZa22leDOZXX%2BXXIU%3D
 ```
 
-Och här är ett exempel på hello samma anslutningssträng kodning av specialtecken:
+Och här är ett exempel på samma anslutningssträng kodning av specialtecken:
 
 ```
 BlobEndpoint=https://storagesample.blob.core.windows.net;
@@ -43,7 +43,7 @@ FileEndpoint=https://storagesample.file.core.windows.net;
 SharedAccessSignature=sv=2015-07-08&sig=iCvQmdZngZNW%2F4vw43j6%2BVz6fndHF5LI639QJba4r8o%3D&spr=https&st=2016-04-12T03%3A24%3A31Z&se=2016-04-13T03%3A29%3A31Z&srt=s&ss=bf&sp=rwl
 ```
 
-Och här är ett exempel på hello samma anslutningssträng med URL-kodning:
+Och här är ett exempel på samma anslutningssträng med URL-kodning:
 
 ```
 BlobEndpoint=https://storagesample.blob.core.windows.net;

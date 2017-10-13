@@ -1,5 +1,5 @@
 ---
-title: aaaReliableConcurrentQueue i Azure Service Fabric
+title: ReliableConcurrentQueue i Azure Service Fabric
 description: "ReliableConcurrentQueue är en hög genomströmning kö som tillåter parallella enqueues och dequeues."
 services: service-fabric
 documentationcenter: .net
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 5/1/2017
 ms.author: sangarg
-ms.openlocfilehash: 78a9905996b9ab265c1288d2b49753638d7bc445
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 122cb48149477f295a65b8ee623c647b6db10a86
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="introduction-tooreliableconcurrentqueue-in-azure-service-fabric"></a>Introduktion tooReliableConcurrentQueue i Azure Service Fabric
-Tillförlitliga samtidiga kön är en asynkron transaktionell och replikerade kö vilka funktioner hög samtidighet för sätta och åtgärder som har status Created. Den är utformad toodeliver högt genomflöde och låg fördröjning av slappna hello strikt FIFO ordning som tillhandahålls av [tillförlitliga kön](https://msdn.microsoft.com/library/azure/dn971527.aspx) och i stället tillhandahåller en bästa sortering.
+# <a name="introduction-to-reliableconcurrentqueue-in-azure-service-fabric"></a>Introduktion till ReliableConcurrentQueue i Azure Service Fabric
+Tillförlitliga samtidiga kön är en asynkron transaktionell och replikerade kö vilka funktioner hög samtidighet för sätta och åtgärder som har status Created. Den är utformad för att leverera högt genomflöde och låg fördröjning av lugnt strikt FIFO ordningen som tillhandahålls av [tillförlitliga kön](https://msdn.microsoft.com/library/azure/dn971527.aspx) och i stället tillhandahåller en bästa sortering.
 
 ## <a name="apis"></a>API:er
 
@@ -33,20 +33,20 @@ Tillförlitliga samtidiga kön är en asynkron transaktionell och replikerade k�
 
 ## <a name="comparison-with-reliable-queuehttpsmsdnmicrosoftcomlibraryazuredn971527aspx"></a>Jämförelse med [tillförlitliga kön](https://msdn.microsoft.com/library/azure/dn971527.aspx)
 
-Tillförlitliga samtidiga kön erbjuds som ett alternativ för[tillförlitliga kön](https://msdn.microsoft.com/library/azure/dn971527.aspx). Det ska användas i fall där strikt FIFO ordning inte krävs, som garanterar FIFO kräver en kompromiss med samtidighet.  [Tillförlitliga kön](https://msdn.microsoft.com/library/azure/dn971527.aspx) använder lås tooenforce FIFO ordning, med maximalt en transaktion tillåts tooenqueue och maximalt en transaktion tillåts toodequeue i taget. Jämförelse tillförlitliga samtidiga kön sänker hello ordning begränsningen tillåter alla antalet samtidiga transaktioner toointerleave sina sätta och åtgärder har status Created. Bästa ordning har angetts men hello relativa ordning av två värden i en tillförlitlig samtidiga kö kan inte garanteras.
+Tillförlitliga samtidiga kön erbjuds som ett alternativ till [tillförlitliga kön](https://msdn.microsoft.com/library/azure/dn971527.aspx). Det ska användas i fall där strikt FIFO ordning inte krävs, som garanterar FIFO kräver en kompromiss med samtidighet.  [Tillförlitliga kön](https://msdn.microsoft.com/library/azure/dn971527.aspx) använder lås för att genomdriva FIFO ordning med maximalt en transaktion tillåts att köa och maximalt en transaktion får status Created i taget. Jämförelse tillförlitliga samtidiga kön sänker onlinebeställning begränsningen och gör att alla antalet samtidiga transaktioner interleave sina sätta och åtgärder som har status Created. Bästa ordning har angetts men den relativa sorteringen av två värden i en tillförlitlig samtidiga kö kan inte garanteras.
 
 Tillförlitliga samtidiga kön ger högre genomflöde och kortare svarstid än [tillförlitliga kö](https://msdn.microsoft.com/library/azure/dn971527.aspx) när det finns flera samtidiga transaktioner som utför enqueues och/eller dequeues.
 
-Ett exempel på en användningsfall för hello ReliableConcurrentQueue är hello [meddelandekö](https://en.wikipedia.org/wiki/Message_queue) scenario. I det här scenariot en eller flera meddelandeproducenter skapa och lägga till objekt toohello kö och en eller flera meddelandet konsumenter pull-meddelanden från kön hello och bearbeta dem.. Flera producenter och konsumenter fungerar oberoende av varandra, med hjälp av samtidiga transaktioner i ordning tooprocess hello kö.
+Ett exempel på en användningsfall för ReliableConcurrentQueue är den [meddelandekö](https://en.wikipedia.org/wiki/Message_queue) scenario. I det här scenariot en eller flera meddelandeproducenter skapa och Lägg till objekt i kön och en eller flera meddelandet konsumenter pull-meddelanden från kön och bearbeta dem.. Flera producenter och konsumenter fungerar oberoende av varandra, med samtidiga transaktioner ska kunna bearbeta kön.
 
 ## <a name="usage-guidelines"></a>Riktlinjer för användning
-* hello kön förväntar sig att hello objekt i hello kön har en låg Bevarandeperiod. Som är hello objekt skulle inte kvar i hello kö för länge.
-* hello kön garanterar inte strikt FIFO ordning.
-* hello kön läser inte sin egen skrivningar. Om ett objekt i kö i en transaktion, kommer inte att visas tooa dequeuer inom hello samma transaktion.
-* Dequeues inte är isolerade från varandra. Om objektet *A* har tagits bort i transaktion *txnA*, även om *txnA* är därmed inte verkställas objektet *A* inte är synliga tooa samtidiga transaktionen *txnB*.  Om *txnA* avbryts, *A* ska vara synliga för*txnB* omedelbart.
-* *TryPeekAsync* beteende kan implementeras med hjälp av en *TryDequeueAsync* och sedan avbryter hello transaktionen. Ett exempel på detta finns i hello Programming mönster avsnitt.
-* Antalet är icke-transaktionell. Det kan vara används tooget en uppfattning om hello antalet element i hello kön, men representerar point-in-time och kan inte förlita sig på.
-* Billigare bearbetning på hello togs bort från kön objekt bör inte utföras medan hello transaktion är aktiv, tooavoid långvariga transaktioner som kan påverka prestanda på hello system.
+* Kön förväntar sig att objekten i kön har en låg Bevarandeperiod. Det vill säga skulle objekt inte kvar i kön för lång tid.
+* Kön garanterar inte strikt FIFO ordning.
+* Kön läser inte sin egen skrivningar. Om ett objekt i kö i en transaktion, kommer den inte vara synliga för en dequeuer inom samma transaktion.
+* Dequeues inte är isolerade från varandra. Om objektet *A* har tagits bort i transaktion *txnA*, även om *txnA* är därmed inte verkställas objektet *A* skulle inte till en samtidig transaktion *txnB*.  Om *txnA* avbryts, *A* ska vara synlig för *txnB* omedelbart.
+* *TryPeekAsync* beteende kan implementeras med hjälp av en *TryDequeueAsync* och avbryter transaktionen. Ett exempel på detta finns i avsnittet Programming mönster.
+* Antalet är icke-transaktionell. Den kan användas för att få en uppfattning om antalet element i kön, men representerar point-in-time och kan inte förlita sig på.
+* Billigare bearbetning på dequeued objekt ska inte utföras medan transaktionen är aktiv för att undvika långvariga transaktioner som kan påverka prestanda på datorn.
 
 ## <a name="code-snippets"></a>Kodstycken
 Låt oss titta på några kodstycken och deras förväntade produktion. Undantagshantering ignoreras i det här avsnittet.
@@ -66,7 +66,7 @@ using (var txn = this.StateManager.CreateTransaction())
 }
 ```
 
-Anta att hello uppgiften har slutförts och som det finns inga samtidiga transaktioner ändra hello kön. hello användare kan förvänta sig hello köobjekt toocontain hello i något av följande order hello:
+Anta att aktiviteten har slutförts och att det finns inga samtidiga transaktioner ändra kön. Användaren kan förvänta sig kön att innehålla objekt i något av följande ordning:
 
 > 10, 20
 
@@ -95,11 +95,11 @@ using (var txn = this.StateManager.CreateTransaction())
 }
 ```
 
-Anta att hello aktiviteter har slutförts, att hello uppgifter kördes parallellt och att det inte finns några andra samtidiga transaktioner ändra hello kön. Inga härledning kan göras om hello ordningen på objekten i hello kön. För det här kodstycket kan hello objekt visas i någon av hello 4! möjliga ordningar.  hello kön försöker tookeep hello poster i en hello ursprungliga (köas), men kan vara framtvingad tooreorder dem på grund av tooconcurrent åtgärder eller fel.
+Anta att aktiviteterna har slutförts, att aktiviteterna har körts parallellt och att det inte finns några andra samtidiga transaktioner ändra kön. Inga härledning kan göras om ordningen på objekten i kön. Objekten kan visas i någon av 4 för det här kodstycket! möjliga ordningar.  Kön försöker placera objekten i ordningen de ursprungliga (köas), men kan tvingas att ändra ordning på dem på grund av samtidiga åtgärder eller fel.
 
 
 ### <a name="dequeueasync"></a>DequeueAsync
-Här följer några kodstycken för att använda TryDequeueAsync följt av hello förväntades utdata. Anta hello kön redan är ifyllda hello följande objekt i kö för hello:
+Här följer några kodstycken för att använda TryDequeueAsync följt av de förväntade utdata. Anta att kön redan fylls med följande objekt i kö:
 > 10, 20, 30, 40, 50, 60
 
 - *Fall 1: En har status Created aktivitet*
@@ -115,7 +115,7 @@ using (var txn = this.StateManager.CreateTransaction())
 }
 ```
 
-Anta att hello uppgiften har slutförts och som det finns inga samtidiga transaktioner ändra hello kön. Eftersom ingen härledning kan göras om hello ordning hello artiklar i hello kö, alla tre hello-objekt kan vara togs bort från kön, i vilken ordning som helst. hello kön försöker tookeep hello poster i en hello ursprungliga (köas), men kan vara framtvingad tooreorder dem på grund av tooconcurrent åtgärder eller fel.  
+Anta att aktiviteten har slutförts och att det finns inga samtidiga transaktioner ändra kön. Eftersom ingen härledning kan göras om i vilken ordning av objekten i kön måste alla tre objekt kan vara togs bort från kön, i valfri ordning. Kön försöker placera objekten i ordningen de ursprungliga (köas), men kan tvingas att ändra ordning på dem på grund av samtidiga åtgärder eller fel.  
 
 - *Fall 2: Parallell status Created aktivitet*
 
@@ -141,13 +141,13 @@ using (var txn = this.StateManager.CreateTransaction())
 }
 ```
 
-Anta att hello aktiviteter har slutförts, att hello uppgifter kördes parallellt och att det inte finns några andra samtidiga transaktioner ändra hello kön. Eftersom ingen härledning kan göras om hello ordning hello artiklar i hello kö, hello listor *dequeue1* och *dequeue2* varje innehåller två objekt, i vilken ordning som helst.
+Anta att aktiviteterna har slutförts, att aktiviteterna har körts parallellt och att det inte finns några andra samtidiga transaktioner ändra kön. Eftersom ingen härledning kan göras om i vilken ordning av objekten i kön, listorna *dequeue1* och *dequeue2* varje innehåller två objekt, i vilken ordning som helst.
 
-hello samma artikel kommer *inte* visas i båda listorna. Därför om dequeue1 har *10*, *30*, dequeue2 skulle ha *20*, *40*.
+Samma objektet kommer *inte* visas i båda listorna. Därför om dequeue1 har *10*, *30*, dequeue2 skulle ha *20*, *40*.
 
 - *Fall 3: Status Created ordning med Transaktionsavbrott*
 
-Avbryter en transaktion med pågående dequeues placeringar hello objekt tillbaka på hello huvud hello kön. hello ordning som hello objekt är lägga tillbaka i hello huvud hello kön är inte säkert. Låt oss titta på hello följande kod:
+Avbryter en transaktion med pågående dequeues placeringar objekten tillbaka på chefen för kön. Den ordning som objekten är lägga tillbaka i toppen av kön är inte säkert. Låt oss titta på följande kod:
 
 ```
 using (var txn = this.StateManager.CreateTransaction())
@@ -155,25 +155,25 @@ using (var txn = this.StateManager.CreateTransaction())
     await this.Queue.TryDequeueAsync(txn, cancellationToken);
     await this.Queue.TryDequeueAsync(txn, cancellationToken);
 
-    // Abort hello transaction
+    // Abort the transaction
     await txn.AbortAsync();
 }
 ```
-Anta att hello-objekt har tagits bort i hello följande ordning:
+Anta att objekten har tagits bort i följande ordning:
 > 10, 20
 
-När vi avbryta hello transaktion skulle hello objekt läggas till bakre toohello head hello köns i något av följande order hello:
+När vi avbryter transaktionen skulle objekten läggas till chefen för kön i något av följande ordning:
 > 10, 20
 
 > 20, 10
 
-hello samma sak gäller för alla fall där hello transaktionen inte har *genomförd*.
+Detsamma gäller för alla fall där transaktionen inte har *genomförd*.
 
 ## <a name="programming-patterns"></a>Mönster för programmering
 I det här avsnittet tittar vi på några programmering mönster som kan vara användbart i med hjälp av ReliableConcurrentQueue.
 
 ### <a name="batch-dequeues"></a>Batch Dequeues
-A rekommenderas programming mönstret är för hello konsumenten uppgiften toobatch dess dequeues i stället för att utföra en i taget har status Created. hello användaren kan välja toothrottle fördröjningar mellan varje batch eller hello batchstorlek. hello visar följande kodavsnitt den här programmeringsmodell.  Observera att i det här exemplet hello bearbetning görs efter hello transaktionen är genomförd, så om ett fel toooccur vid bearbetning, hello obearbetat objekt försvinner utan har bearbetats.  Alternativt hello bearbetning kan göras inom hello transaktions-scope, men detta kan ha en negativ inverkan på prestanda och kräver hanteringen av hello artiklar redan bearbetats.
+A rekommenderas programming mönstret är för konsumenten uppgiften att batchen dess dequeues i stället för att utföra en i taget har status Created. Användaren kan välja att begränsa fördröjningar mellan varje batch eller batchstorleken. Följande kodavsnitt visar den här programmeringsmodell.  Observera att i det här exemplet bearbetning görs när transaktionen är genomförd, så om ett fel uppstår under bearbetningen av, de obehandlade artiklarna försvinner utan har bearbetats.  Bearbetningen kan också ske inom transaktionsomfånget, men detta kan ha en negativ inverkan på prestanda och kräver hantering av de objekt som redan har bearbetats.
 
 ```
 int batchSize = 5;
@@ -194,12 +194,12 @@ while(!cancellationToken.IsCancellationRequested)
 
             if (ret.HasValue)
             {
-                // If an item was dequeued, add toohello buffer for processing
+                // If an item was dequeued, add to the buffer for processing
                 processItems.Add(ret.Value);
             }
             else
             {
-                // else break hello for loop
+                // else break the for loop
                 break;
             }
         }
@@ -207,7 +207,7 @@ while(!cancellationToken.IsCancellationRequested)
         await txn.CommitAsync();
     }
 
-    // Process hello dequeues
+    // Process the dequeues
     for (int i = 0; i < processItems.Count; ++i)
     {
         Console.WriteLine("Value : " + processItems[i]);
@@ -219,7 +219,7 @@ while(!cancellationToken.IsCancellationRequested)
 ```
 
 ### <a name="best-effort-notification-based-processing"></a>Bästa meddelandebaserad bearbetning
-En annan intressant programming mönster använder hello antal API. Här kan vi implementera bästa meddelandebaserad bearbetning för hello kö. hello kön antalet kan vara används toothrottle en sätta eller en dequeue aktivitet.  Observera att som i föregående exempel hello eftersom hello bearbetningen sker utanför hello transaktion obearbetat objekt kan gå förlorade om ett fel uppstår under bearbetningen.
+En annan intressant programming mönster använder Count-API. Här kan vi implementera bästa meddelandebaserad bearbetning för kön. Kön antal kan användas för att begränsa en sätta eller en dequeue aktivitet.  Observera att som i föregående exempel, eftersom sker bearbetningen utanför transaktionen, obearbetat objekt kan gå förlorade om ett fel uppstår under bearbetningen.
 
 ```
 int threshold = 5;
@@ -231,11 +231,11 @@ while(!cancellationToken.IsCancellationRequested)
     {
         cancellationToken.ThrowIfCancellationRequested();
 
-        // If hello queue does not have hello threshold number of items, delay hello task and check again
+        // If the queue does not have the threshold number of items, delay the task and check again
         await Task.Delay(TimeSpan.FromMilliseconds(delayMs), cancellationToken);
     }
 
-    // If there are approximately threshold number of items, try and process hello queue
+    // If there are approximately threshold number of items, try and process the queue
 
     // Buffer for dequeued items
     List<int> processItems = new List<int>();
@@ -250,7 +250,7 @@ while(!cancellationToken.IsCancellationRequested)
 
             if (ret.HasValue)
             {
-                // If an item was dequeued, add toohello buffer for processing
+                // If an item was dequeued, add to the buffer for processing
                 processItems.Add(ret.Value);
             }
         } while (processItems.Count < threshold && ret.HasValue);
@@ -258,7 +258,7 @@ while(!cancellationToken.IsCancellationRequested)
         await txn.CommitAsync();
     }
 
-    // Process hello dequeues
+    // Process the dequeues
     for (int i = 0; i < processItems.Count; ++i)
     {
         Console.WriteLine("Value : " + processItems[i]);
@@ -267,9 +267,9 @@ while(!cancellationToken.IsCancellationRequested)
 ```
 
 ### <a name="best-effort-drain"></a>Bästa tömning
-Kan inte garanteras tömning av hello kö på grund av toohello samtidiga uppbyggnad hello-datastrukturen.  Det är möjligt att även om inga användare åtgärder på hello kön finns relä, en viss anropet tooTryDequeueAsync inte kan returnera ett objekt som tidigare var köas och bekräftats.  hello köas objektet garanteras för*slutligen* bli synliga toodequeue men utan en mekanism för out-of-band-kommunikation, ett oberoende konsumenten inte kan vet hello kön har uppnått ett stabilt tillstånd även om alla producenter har stoppats och inga nya sätta tillåts. Därför är hello tömning åtgärden bästa som implementeras nedan.
+Tömning av kön kan inte garanteras på grund av datastrukturen samtidiga.  Det är möjligt att även om inga användare åtgärder på kön finns relä, ett visst anrop till TryDequeueAsync inte kan returnera ett objekt som tidigare var köas och bekräftats.  Objektet köas garanterat *slutligen* bli synlig för status Created, men utan en mekanism för out-of-band-kommunikation, ett oberoende konsumenten kan inte vet att kön har uppnått ett stabilt tillstånd även om alla tillverkare har stoppats och inga nya sätta tillåts. Därför är åtgärden tömning bästa som implementeras nedan.
 
-hello användaren ska stoppa alla ytterligare producenten och konsumentuppgifter och vänta tills alla pågående transaktioner toocommit eller Avbryt innan du försöker toodrain hello kön.  Om hello användaren känner hello förväntat antal objekt i kö hello kan skapa de ett meddelande som signalerar till att alla objekt har har tagits bort.
+Användaren måste stoppa alla ytterligare producenten och konsumentuppgifter och vänta tills alla pågående transaktioner att avbrytas eller genomföras innan du försöker att tömma kön.  Om användaren känner det förväntade antalet objekt i kön, kan de ställa in ett meddelande som signalerar till att alla objekt har har tagits bort.
 
 ```
 int numItemsDequeued;
@@ -289,7 +289,7 @@ do
 
             if(ret.HasValue)
             {
-                // Buffer hello dequeues
+                // Buffer the dequeues
                 processItems.Add(ret.Value);
             }
         } while (ret.HasValue && processItems.Count < batchSize);
@@ -297,7 +297,7 @@ do
         await txn.CommitAsync();
     }
 
-    // Process hello dequeues
+    // Process the dequeues
     for (int i = 0; i < processItems.Count; ++i)
     {
         Console.WriteLine("Value : " + processItems[i]);
@@ -306,7 +306,7 @@ do
 ```
 
 ### <a name="peek"></a>Granska
-ReliableConcurrentQueue ger inte hello *TryPeekAsync* api. Användare kan få hello titt semantiska med hjälp av en *TryDequeueAsync* och sedan avbryter hello transaktionen. I det här exemplet dequeues bearbetas bara om hello objektets värde är större än *10*.
+ReliableConcurrentQueue innehåller inte den *TryPeekAsync* api. Användare kan hämta titt semantiska med en *TryDequeueAsync* och avbryter transaktionen. I det här exemplet dequeues bearbetas bara om objektets värde är större än *10*.
 
 ```
 using (var txn = this.StateManager.CreateTransaction())
@@ -318,7 +318,7 @@ using (var txn = this.StateManager.CreateTransaction())
     {
         if (ret.Value > 10)
         {
-            // Process hello item
+            // Process the item
             Console.WriteLine("Value : " + ret.Value);
             valueProcessed = true;
         }
@@ -342,5 +342,5 @@ using (var txn = this.StateManager.CreateTransaction())
 * [Reliable Services säkerhetskopiering och återställning (Disaster Recovery)](service-fabric-reliable-services-backup-restore.md)
 * [Konfiguration av tillförlitliga tillstånd Manager](service-fabric-reliable-services-configuration.md)
 * [Komma igång med Service Fabric Web API-tjänster](service-fabric-reliable-services-communication-webapi.md)
-* [Avancerad användning av hello programmeringsmodellen i Reliable Services](service-fabric-reliable-services-advanced-usage.md)
+* [Avancerad användning av tjänsterna tillförlitliga programmeringsmodellen](service-fabric-reliable-services-advanced-usage.md)
 * [För utvecklare för tillförlitlig samlingar](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)

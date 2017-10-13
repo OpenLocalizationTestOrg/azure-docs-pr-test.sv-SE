@@ -1,6 +1,6 @@
 ---
-title: "aaaData åtkomstprinciper i Azure tid serien insikter | Microsoft Docs"
-description: "I kursen får du lära dig toomanage principerna dataåtkomst i tid serien insikter"
+title: "Principer för dataåtkomst i Azure Time Series Insights | Microsoft Docs"
+description: "I den här självstudien lär du dig att hantera principer för att hantera dataåtkomst i Time Series Insights"
 keywords: 
 services: time-series-insights
 documentationcenter: 
@@ -8,68 +8,68 @@ author: op-ravi
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 
-ms.service: time-series-insights
+ms.service: tsi
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 05/01/2017
 ms.author: omravi
-ms.openlocfilehash: f286d26c8c5c851c523e9384760dc4b10711fa3f
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 5258bf5de6f7aa1ea246f1235e7d362b1b7d0181
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="grant-data-access-tooa-time-series-insights-environment-using-azure-portal"></a>Bevilja åtkomst tooa tid serien insikter datamiljö med hjälp av Azure portal
+# <a name="grant-data-access-to-a-time-series-insights-environment-using-azure-portal"></a>Bevilja åtkomst till en Time Series Insights-miljö med Azure Portal
 
 Time Series Insights-miljöer har två oberoende typer av principer för åtkomst.
 
 * Hantera åtkomstprinciper
 * Dataåtkomstprinciper
 
-Båda principerna beviljar Azure Active Directory-huvudkonton (användare och appar) olika behörigheter i en viss miljö. hello säkerhetsobjekt (användare och appar) måste tillhöra toohello active directory (eller ”Azure-klient”) som associeras med hello som innehåller hello-miljö.
+Båda principerna beviljar Azure Active Directory-huvudkonton (användare och appar) olika behörigheter i en viss miljö. Huvudkontona (användare och appar) måste tillhöra den Active Directory (eller ”Azure-klient”) som är associerad med prenumerationen som innehåller miljön.
 
-Principer för hantering av åtkomst bevilja som behörigheter relaterade toohello konfigurationen av hello-miljö
-*   Skapa och ta bort hello miljö, händelsekällor referera till datamängder och
-*   Hantering av hello principerna dataåtkomst.
+Principer för hantering av åtkomst beviljar behörigheter som rör konfigurationen av miljön, som
+*   Skapandet och borttagningen av miljön, händelsekällor, referensdatamängder och
+*   hantering av principerna för dataåtkomst.
 
-Principerna dataåtkomst bevilja behörighet tooissue datafrågor manipulera referensdata i hello miljö och dela sparade frågor och perspektiv som är associerade med hello-miljön.
+Principerna för dataåtkomst beviljar behörigheter för att utfärda datafrågor, manipulera referensdata i miljön och sparade delade frågor och perspektiv som är associerade till miljön.
 
-hello två typer av principer kan tydlig uppdelning mellan toohello åtkomsthantering av hello miljö och åtkomst till toohello data i hello-miljö. Det är exempelvis möjligt toosetup en miljö så att hello ägare/skapare av hello miljö tas bort från hello dataåtkomst. Samt användare och tjänster som är tillåtna tooread data från hello miljö beviljas ingen åtkomst toohello konfiguration av hello-miljö.
+De två typerna av principer möjliggör en tydlig uppdelning mellan åtkomst till hantering av miljön och till data inuti miljön. Det är till exempel möjligt att konfigurera en miljö så att miljöns ägare/skapare tas bort från dataåtkomsten. Användare och tjänster som tillåts läsa data från miljön kan nekas åtkomst till miljöns konfiguration.
 
 ## <a name="grant-data-access"></a>Bevilja åtkomst till data
-hello följande steg visar hur toogrant dataåtkomst för en UPN:
+I följande steg visas hur du ger åtkomst till data för en användares huvudnamn:
 
-1.  Logga in toohello [Azure-portalen](https://portal.azure.com).
-2.  Klicka på ”alla resurser” hello menyn hello vänster på hello Azure-portalen.
+1.  Logga in på [Azure Portal](https://portal.azure.com).
+2.  Klicka på ”Alla resurser” på menyn på vänster sida av Azure Portal.
 3.  Välj Time Series Insights-miljö.
 
-  ![Hantera hello tid serien insikter source - miljö](media/data-access/getstarted-grant-data-access1.png)
+  ![Hantera Time Series Insights-källan – miljö](media/data-access/getstarted-grant-data-access1.png)
 
 4.  Välj ”Dataplansåtkomst” och klicka på ”Lägg till”
 
-  ![Hantera hello tid serien insikter källa – Lägg till](media/data-access/getstarted-grant-data-access2.png)
+  ![Hantera Time Series Insights-källan – lägg till](media/data-access/getstarted-grant-data-access2.png)
 
 5.  Klicka på ”Välj användare”.
-6.  Söka och välja användare via hello e-post.
+6.  Sök och välj användare via e-postmeddelandet.
 7.  Klicka på ”Välj” i bladet ”Välj användare”.
 
-  ![Hantera hello tid serien insikter source - Välj användare](media/data-access/getstarted-grant-data-access3.png)
+  ![Hantera Time Series Insights-källan – välj användare](media/data-access/getstarted-grant-data-access3.png)
 
 8.  Klicka på ”Välj roll”.
-9.  Välj ”bidragsgivare” om du vill tooallow användardata toochange referens och dela sparade frågor och perspektiv med andra användare av hello-miljö. Annars väljer ”Reader” tooallow frågan användardata i hello miljö och spara personliga (inte delade) frågor i hello-miljö.
-10. Klicka på ”Ok” hello ”Välj roll”-bladet.
+9.  Välj ”Deltagare” om du vill tillåta att användare kan ändra referensdata och dela sparade frågor och perspektiv med andra användare av miljön. Välj annars ”Läsare” för att tillåta att användare söker data i miljön och sparar personliga (inte delade) frågor i miljön.
+10. Klicka på ”OK” på bladet ”Välj roll”.
 
-  ![Hantera hello tid serien insikter source - Välj rolltjänster](media/data-access/getstarted-grant-data-access4.png)
+  ![Hantera Time Series Insights-källan – välj roll](media/data-access/getstarted-grant-data-access4.png)
 
-11. Klicka på ”Ok” hello ”Välj användarroll”-bladet.
+11. Klicka på ”OK” på bladet ”Välj användarroll”.
 12. Du bör se:
 
-  ![Hantera hello tid serien insikter source - resultat](media/data-access/getstarted-grant-data-access5.png)
+  ![Hantera Time Series Insights-källan – resultat](media/data-access/getstarted-grant-data-access5.png)
 
 ## <a name="next-steps"></a>Nästa steg
 
 * [Skapa en händelsekälla](time-series-insights-add-event-source.md)
-* [Skicka händelser](time-series-insights-send-events.md) toohello händelsekälla
+* [Skicka händelser](time-series-insights-send-events.md) till händelsekällan
 * Visa din miljö i [Time Series Insights-portalen](https://insights.timeseries.azure.com)

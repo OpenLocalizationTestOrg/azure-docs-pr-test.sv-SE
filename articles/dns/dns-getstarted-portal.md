@@ -1,6 +1,6 @@
 ---
-title: "aaaGet igång med Azure DNS med hello Azure-portalen | Microsoft Docs"
-description: "Lär dig hur toocreate ett DNS-zonen och posten i Azure DNS. Detta är en stegvis guide toocreate och hantera dina första DNS-zonen och posten med hello Azure-portalen."
+title: "Komma igång med Azure DNS med hjälp av Azure Portal | Microsoft Docs"
+description: "Läs om hur du skapar en DNS-zon och en DNS-post i Azure DNS. Detta är en steg-för-steg-guide om hur du skapar och hanterar din första DNS-zon och DNS-post på Azure Portal."
 services: dns
 documentationcenter: na
 author: jtuliani
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/10/2017
 ms.author: jonatul
-ms.openlocfilehash: 5cea01d840d794001cccac64defed8b329d948db
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 93b24e3d9fbb3fbb3ea995271fd63d1e82eb9c9e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="get-started-with-azure-dns-using-hello-azure-portal"></a>Kom igång med Azure DNS med hello Azure-portalen
+# <a name="get-started-with-azure-dns-using-the-azure-portal"></a>Komma igång med Azure DNS med hjälp av Azure Portal
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](dns-getstarted-portal.md)
@@ -29,77 +29,77 @@ ms.lasthandoff: 10/06/2017
 > * [Azure CLI 1.0](dns-getstarted-cli-nodejs.md)
 > * [Azure CLI 2.0](dns-getstarted-cli.md)
 
-Den här artikeln vägleder dig genom hello steg toocreate din första DNS-zonen och posten med hello Azure-portalen. Du kan också göra detta med hjälp av Azure PowerShell eller hello plattformsoberoende Azure CLI.
+Den här artikeln visar hur du skapa din första DNS-zon och DNS-post med Azure Portal. Du kan också utföra dessa steg med Azure PowerShell eller plattformsoberoende Azure CLI.
 
-En DNS-zon är används toohost hello DNS-poster för en viss domän. toostart som värd för din domän i Azure DNS, behöver du toocreate en DNS-zon för domännamnet. Varje DNS-post för din domän skapas sedan i den här DNS-zonen. Slutligen toopublish DNS-zonen toohello Internet, behöver du tooconfigure hello namnservrar för hello domän. Var och en av dessa steg beskrivs i följande hello.
+En DNS-zon används som värd åt DNS-posterna för en viss domän. Om du vill låta Azure DNS vara värd för din domän så måste du skapa en DNS-zon för det domännamnet. Varje DNS-post för din domän skapas sedan i den här DNS-zonen. Om du vill publicera din DNS-zon på Internet måste du konfigurera namnservrarna för domänen. Vart och ett av dessa steg beskrivs i följande steg.
 
 ## <a name="create-a-dns-zone"></a>Skapa en DNS-zon
 
-1. Logga in toohello Azure-portalen
-2. Hej hubbmenyn, klicka på och klicka på **New > nätverk >** och klicka sedan på **DNS-zonen** tooopen hello skapa DNS-zonen bladet.
+1. Logga in på Azure Portal
+2. Klicka på **Nytt > Nätverk >** på navmenyn och klicka sedan på **DNS-zon** för att öppna bladet Skapa DNS-zon.
 
     ![DNS-zon](./media/dns-getstarted-portal/openzone650.png)
 
-4. På hello **skapa DNS-zonen** bladet ange hello följande värden, och klicka sedan på **skapa**:
+4. På bladet **Skapa DNS-zon** anger du följande värden och klickar sedan på **Skapa**:
 
 
    | **Inställning** | **Värde** | **Detaljer** |
    |---|---|---|
-   |**Namn**|contoso.com|hello namnet på hello DNS-zonen|
-   |**Prenumeration**|[Din prenumeration]|Välj en prenumeration toocreate hello DNS-zonen i.|
-   |**Resursgrupp**|**Skapa ny:** contosoDNSRG|Skapa en resursgrupp. hello resursgruppens namn måste vara unikt inom hello-prenumeration som du har valt. Mer om resursgrupper läsa hello toolearn [Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fdns%2ftoc.json#resource-groups) översiktsartikel.|
+   |**Namn**|contoso.com|Namnet på DNS-zonen|
+   |**Prenumeration**|[Din prenumeration]|Välj en prenumeration att skapa DNS-zonen i.|
+   |**Resursgrupp**|**Skapa ny:** contosoDNSRG|Skapa en resursgrupp. Resursgruppens namn måste vara unikt inom den prenumeration du valde. Mer information om resursgrupper finns i [översikten över Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fdns%2ftoc.json#resource-groups).|
    |**Plats**|Västra USA||
 
 > [!NOTE]
-> hello resursgruppen refererar toohello platsen för hello resursgruppen och har ingen inverkan på hello DNS-zon. hello DNS-zonen plats är alltid ”globala” och visas inte.
+> Resursgruppen refererar till platsen för resursgruppen och har ingen inverkan på DNS-zonen. Platsen för DNS-zonen är alltid "global" och visas inte.
 
 ## <a name="create-a-dns-record"></a>Skapa en DNS-post
 
-hello vägleder följande exempel dig genom hello processen att skapa nya ”A” post. Andra typer av poster och toomodify befintliga poster finns [hantera DNS-poster och postuppsättningar med hjälp av hello Azure-portalen](dns-operations-recordsets-portal.md). 
+Följande exempel visar hur du skapar en ny "A"-post. Information om andra posttyper och hur du ändrar befintliga poster finns i [Hantera DNS-poster och postuppsättningar med Azure Portal](dns-operations-recordsets-portal.md) (på engelska). 
 
-1. Med hello skapade DNS-zonen i hello Azure-portalen **Favoriter** rutan klickar du på **alla resurser**. Klicka på hello **contoso.com** DNS-zonen i hello bladet för alla resurser. Om hello-prenumeration som du har valt redan har flera resurser i den, kan du ange **contoso.com** i hello **filtrera efter namn...** rutan tooeasily åtkomst hello DNS-zon.
+1. I Azure Portal klickar du på **Alla resurser** i rutan **Favoriter** för den DNS-zon du skapade. Klicka på DNS-zonen **contoso.com** på bladet Alla resurser. Om den prenumeration du valde redan har flera resurser kan du ange **contoso.com** i rutan **Filtrera efter namn...** när du ska hitta din DNS-zon.
 
-1. Hello överst i hello **DNS-zonen** bladet väljer **+ postuppsättningen** tooopen hello **lägga till postuppsättning** bladet.
+1. Välj **+ Postuppsättning** längst upp på bladet **DNS-zon** för att öppna bladet **Lägg till uppsättning av poster**.
 
-1. På hello **lägga till postuppsättning** bladet anger hello följande värden och klickar på **OK**. I det här exemplet skapar du en A-post.
+1. Ange följande värden på bladet **Lägg till uppsättning av poster** och klicka sedan på **OK**. I det här exemplet skapar du en A-post.
 
    |**Inställning** | **Värde** | **Detaljer** |
    |---|---|---|
-   |**Namn**|www|Namnet på hello-post|
-   |**Typ**|A| Typ av DNS-poster toocreate, giltiga värden är A, AAAA, CNAME, MX, NS, SRV, TXT och PTR.  Mer information om posttyper finns i [Översikt över DNS-zoner och poster](dns-zones-records.md)|
-   |**TTL**|1|Time-to-live för hello DNS-begäran.|
+   |**Namn**|www|Namnet på posten|
+   |**Typ**|A| Den typ av DNS-post som du vill skapa. Godkända värden är A, AAAA, CNAME, MX, NS, SRV, TXT och PTR.  Mer information om posttyper finns i [Översikt över DNS-zoner och poster](dns-zones-records.md)|
+   |**TTL**|1|Time-to-live för DNS-begäran.|
    |**TTL-enhet**|Timmar|Tidsmått för TTL-värde.|
-   |**IP-adress**|ipAddressValue| Det här värdet är hello IP-adress som löser hello DNS-post.|
+   |**IP-adress**|ipAddressValue| Det här värdet är den IP-adress som DNS-posten matchar till.|
 
 ## <a name="view-records"></a>Visa poster
 
-I hello längst ned på bladet för hello DNS-zonen ser du hello poster för hello DNS-zonen. Du bör se hello standard DNS- och SOA-poster, som skapas i varje zon, plus eventuella nya poster som du har skapat.
+På den nedre delen av bladet DNS-zon visas posterna för DNS-zonen. Du bör se DNS- och SOA-standardposterna (dessa skapas i varje zon) plus eventuella nya poster som du har skapat.
 
 ![zon](./media/dns-getstarted-portal/viewzone500.png)
 
 
 ## <a name="update-name-servers"></a>Uppdatera namnservrar
 
-När du är nöjd att din DNS-zonen och poster har ställts in korrekt behöver tooconfigure ditt domännamn toouse hello Azure DNS-namnservrar. Detta gör att andra användare i hello Internet toofind DNS-poster.
+När du är nöjd med konfigurationen av DNS-zonen och DNS-posterna måste du konfigurera ditt domännamn för användning med Azure DNS-namnservrarna. Det gör att andra användare på Internet kan hitta dina DNS-poster.
 
-hello namnservrar för zonen anges i hello Azure-portalen:
+Namnservrarna för din zon anges på Azure Portal:
 
 ![zon](./media/dns-getstarted-portal/viewzonens500.png)
 
-Dessa namnservrar ska konfigureras med hello domännamnsregistratorn (där du har köpt hello domännamn). Din registrator erbjuder hello alternativet tooset in hello namnservrar för hello domän. Mer information finns i [Delegera din domän tooAzure DNS](dns-domain-delegation.md).
+Dessa namnservrar ska konfigureras med domännamnsregistratorn (där du köpte domännamnet). Registratorn erbjuder möjligheten att konfigurera namnservrar för domänen. Mer information finns i [Delegera en domän till Azure DNS](dns-domain-delegation.md).
 
 ## <a name="delete-all-resources"></a>Ta bort alla resurser
 
-toodelete alla resurser skapas i den här artikeln, fullständig hello följande steg:
+Så här tar du bort alla resurser som skapats i den här artikeln:
 
-1. I hello Azure-portalen **Favoriter** rutan klickar du på **alla resurser**. Klicka på hello **MyResourceGroup** resursgrupp i hello bladet för alla resurser. Om hello-prenumeration som du har valt redan har flera resurser i den, kan du ange **MyResourceGroup** i hello **filtrera efter namn...** rutan tooeasily åtkomst hello resursgruppens namn.
-1. I hello **MyResourceGroup** bladet, klickar du på hello **ta bort** knappen.
-1. hello portalen måste du tootype hello namnet på hello resurs grupp tooconfirm som du vill toodelete den. Klicka på **ta bort**, typen *MyResourceGroup* hello resursgruppens namn, sedan klickar du på **ta bort**. Tar bort en resursgrupp alla resurser inom hello resursgrupp, så alltid att tooconfirm hello innehållet i en resursgrupp innan den tas bort. hello portal tar bort alla resurser som ingår i hello resursgrupp och sedan tar bort hello resursgruppen sig själv. Den här processen tar flera minuter.
+1. Klicka på **Alla resurser** i rutan **Favoriter** i Azure Portal. Klicka på resursgruppen **MyResourceGroup** på bladet Alla resurser. Om den prenumeration du valde redan har flera resurser kan du ange **MyResourceGroup** i rutan **Filtrera efter namn** när du ska hitta resursgruppen.
+1. Klicka på knappen **Ta bort** på bladet **MyResourceGroup**.
+1. Du måste ange namnet på resursgruppen i portalen som bekräftelse på att du vill ta bort den. Klicka på **Ta bort**, skriv *MyResourceGroup* som resursgruppnamn och klicka sedan på **Ta bort**. När du tar bort en resursgrupp så tas alla resurser i resursgruppen bort, så du måste alltid kontrollera innehållet i en resursgrupp innan du tar bort den. Portalen tar bort alla resurser som finns i resursgruppen och sedan tas själva resursgruppen bort. Den här processen tar flera minuter.
 
 
 ## <a name="next-steps"></a>Nästa steg
 
-toolearn mer om Azure DNS finns [översikt över Azure DNS](dns-overview.md).
+Läs mer om Azure DNS i [Översikt över Azure DNS](dns-overview.md).
 
-toolearn mer information om hur du hanterar DNS-poster i Azure DNS finns [hantera DNS-poster och postuppsättningar med hjälp av hello Azure-portalen](dns-operations-recordsets-portal.md).
+Mer information om hur du hanterar DNS-poster i Azure DNS finns i [Hantera DNS-poster och postuppsättningar med Azure Portal](dns-operations-recordsets-portal.md) (på engelska).
 

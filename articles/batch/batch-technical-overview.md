@@ -1,6 +1,6 @@
 ---
-title: "aaaAzure Batch körs storskaliga parallella databehandling lösningar i hello molntjänster | Microsoft Docs"
-description: "Lär dig mer om hur du använder hello Azure Batch-tjänsten för storskaliga parallellt och HPC-arbetsbelastning"
+title: "Azure Batch kör storskaliga parallella beräkningslösningar i molnet | Microsoft Docs"
+description: "Lär dig mer om hur du använder Azure Batch-tjänsten för storskaliga parallella arbetsbelastningar och HPC-arbetsbelastningar"
 services: batch
 documentationcenter: 
 author: tamram
@@ -15,17 +15,17 @@ ms.topic: get-started-article
 ms.date: 05/05/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: acc52e46330c465f81951441d9067371098cf63a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: a99f96db0c1e8bcd0cf29c564e5badf0eb728e56
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="run-intrinsically-parallel-workloads-with-batch"></a>Köra parallella arbetsbelastningar med Batch
 
-Azure Batch är en plattform för att köra storskaliga parallella och högpresterande datorbearbetning (HPC) program effektivt i hello molnet. Azure Batch schemalägger beräkningsintensiva arbete toorun på en hanterad samling av virtuella datorer och kan automatiskt skala beräkna resurser toomeet hello behoven hos dina jobb.
+Azure Batch är en plattformstjänst för att effektivt köra storskaliga parallella program och HPC-program (databehandling med höga prestanda) i molnet. Azure Batch schemalägger beräkningsintensivt arbete för körning i en hanterad samling virtuella datorer. Tjänsten kan automatiskt skala beräkningsresurser efter jobbens behov.
 
-Med Azure Batch, kan du enkelt definiera Azure compute resurser tooexecute dina program parallellt och i större skala. Det finns inget behov av toomanually skapa, konfigurera och hantera ett HPC-kluster, enskilda virtuella datorer, virtuella nätverk eller ett komplexa jobb och uppgift schemaläggning infrastruktur. Azure Batch automatiserar eller förenklar dessa uppgifter åt dig.
+Med Azure Batch kan du enkelt definiera Azure-beräkningsresurser för att köra dina program parallellt och i stor skala. Det finns inget behov av att manuellt skapa, konfigurera och hantera ett HPC-kluster, enskilda virtuella datorer, virtuella nätverk eller en komplex infrastruktur för jobb- och aktivitetsschemaläggning. Azure Batch automatiserar eller förenklar dessa uppgifter åt dig.
 
 ## <a name="use-cases-for-batch"></a>Användningsfall för Batch
 Batch är en hanterad Azure-tjänst som används för *batchbearbetning* eller *batchbehandling* – dvs. körning av ett stort antal liknande uppgifter för ett visst önskat resultat. Batchbehandling används framför allt av organisationer som regelbundet bearbetar, omvandlar och analyserar stora mängder data.
@@ -44,41 +44,41 @@ Några exempel på arbetsbelastningar som vanligtvis bearbetas med den här tekn
 * Analyser av teknisk spänning
 * Programvarutestning
 
-Batch kan också utföra parallella beräkningar med ett minska steg hello slutet och köra mer avancerade HPC-arbetsbelastning som [Message Passing Interface (MPI)](batch-mpi.md) program.
+Batch kan också utföra parallella beräkningar med ett reduceringssteg i slutet, samt köra mer komplexa HPC-arbetsbelastningar som [MPI-program (Message Passing Interface)](batch-mpi.md).
 
-En jämförelse mellan Batch och andra HPC-lösningsalternativ i Azure finns i [Batch- och HPC-lösningar](batch-hpc-solutions.md).
+En jämförelse mellan Batch och andra HPC-lösningsalternativ i Azure finns i [HPC, Batch, and Big Compute solutions](../virtual-machines/linux/high-performance-computing.md) (HPC-, Batch- och Big Compute-lösningar).
 
 [!INCLUDE [batch-pricing-include](../../includes/batch-pricing-include.md)]
 
 ## <a name="scenario-scale-out-a-parallel-workload"></a>Scenario: Skala ut en parallell arbetsbelastning
-En vanlig lösning som använder hello Batch-API: er toointeract med hello Batch-tjänsten innebär att skala ut filsystemen parallella arbete med till exempel hello återgivningen av avbildningar för 3D-bakgrunden--på en pool med compute-noder. Den här poolen för compute-noder kan vara servergruppen ”Visa” som innehåller flera hundratals eller tusentals kärnor tooyour återgivning jobb, t.ex.
+En vanlig lösning som använder Batch-API:erna för att interagera med Batch-tjänsten är att skala ut parallellt arbete – till exempel renderingen av bilder i 3D-scener – i en pool med beräkningsnoder. Den här poolen med beräkningsnoder kan vara din ”renderingsservergrupp” som till exempel tillhandahåller flera hundratals eller flera tusen kärnor till ditt återgivningsjobb.
 
-hello följande diagram visar ett vanligt Batch-arbetsflöde med ett klientprogram eller värdbaserade tjänsten med hjälp av Batch-toorun en parallell arbetsbelastning.
+Följande diagram illustrerar ett vanligt Batch-arbetsflöde med ett klientprogram eller en värdbaserad tjänst som använder Batch för att köra en parallell arbetsbelastning.
 
 ![Arbetsflöde för Batch-lösning][2]
 
-Det här vanliga scenariot bearbetar programmet eller tjänsten en beräkningar arbetsbelastning i Azure Batch genom att utföra hello följande steg:
+I det här vanliga scenariot bearbetar programmet eller tjänsten en beräkningsarbetsbelastning i Azure Batch genom att utföra följande steg:
 
-1. Överför hello **inkommande filer** och hello **programmet** som bearbetar dessa filer tooyour Azure Storage-konto. hello indatafiler kan vara alla data som programmet kommer att bearbetas, till exempel finansiella modellering data eller videofiler toobe kodas. hello-filer kan vara vilket program som används för bearbetning av hello data, till exempel ett program för 3D-återgivning eller transcoder media.
-2. Skapa en Batch **pool** av beräkningsnoder i Batch-kontot--dessa noder finns hello virtuella datorer som utför aktiviteterna. Du kan ange egenskaper för till exempel hello [nodstorlek](../cloud-services/cloud-services-sizes-specs.md), deras operativsystem och hello plats i Azure Storage för programmet hello tooinstall när hello noder ansluter hello pool (hello program som du laddade upp i steg #1). Du kan också konfigurera hello poolen för[skala automatiskt](batch-automatic-scaling.md) i svaret toohello arbetsbelastning som genererar dina uppgifter. Automatisk skalning dynamiskt justerar hello antalet compute-noder i hello pool.
-3. Skapa en Batch **jobbet** toorun hello arbetsbelastningen på hello-pool med compute-noder. När du skapar ett jobb kan du associera det med en Batch-pool.
-4. Lägg till **uppgifter** toohello jobb. När du lägger till aktiviteter tooa jobbet hello Batch-tjänsten automatiskt hello aktiviteter schemaläggs för körning på hello datornoder i hello pool. Varje aktivitet använder hello-program som du har överfört tooprocess hello indatafiler.
+1. Ladda upp **indatafilerna** och **programmen** som ska bearbeta dessa filer till ditt Azure Storage-konto. Indatafilerna kan vara data som ska bearbetas i ditt program, till exempel modellering av finansdata eller videofiler som ska kodas. Programfilerna kan vara program som används för databearbetning, till exempel ett program för 3D-rendering eller ett mediekodningsprogram.
+2. Skapa en Batch-**pool** med beräkningsnoder i ditt Batch-konto. Dessa noder är de virtuella datorer som ska köra dina uppgifter. Du kan ange egenskaper som [nodstorlek](../cloud-services/cloud-services-sizes-specs.md), operativsystem och platsen i Azure Storage för programmet som ska installeras när noderna ansluter till poolen (det program som du överförde i steg 1). Du kan också konfigurera poolen så att den [skalas automatiskt](batch-automatic-scaling.md) baserat på arbetsbelastningen som dina aktiviteter genererar. Automatisk skalning justerar antalet datornoder i poolen dynamiskt.
+3. Skapa ett Batch-**jobb** som ska köra arbetsbelastningen i poolen med beräkningsnoder. När du skapar ett jobb kan du associera det med en Batch-pool.
+4. Lägg till **aktiviteter** till jobbet. När du lägger till aktiviteter till ett jobb schemalägger Batch-tjänsten automatiskt aktiviteterna för körning på beräkningsnoderna i poolen. Varje aktivitet använder det program som du överförde för att bearbeta indatafilerna.
    
-   * 4a. Innan en aktivitet körs, kan den hämta hello data (hello inkommande filer) som är det tooprocess toohello compute-nod som den är tilldelad till. Om programmet hello inte redan har installerats på hello nod (se steg #2) du kan hämta här i stället. När hello hämtningar har slutförts kan köra hello uppgifter på sina tilldelade noder.
-5. Du kan fråga Batch toomonitor hello fortskrider hello jobb och dess uppgifter som hello aktiviteter körs. Klientprogrammet eller tjänsten kommunicerar med hello Batch-tjänsten via HTTPS. Eftersom du kan övervaka tusentals aktiviteter som körs på tusentals compute-noder kan vara säker på att för[fråga hello Batch-tjänsten effektivt](batch-efficient-list-queries.md).
-6. När hello uppgifter Slutför överför de sina resultatet data tooAzure lagring. Du kan också hämta filer direkt från hello filsystemet på en beräkningsnod.
-7. När övervakningen upptäcker att hello uppgifter i jobbet har slutförts, kan klientprogrammet eller tjänsten hämta hello utdata för vidare bearbetning eller utvärdering.
+   * 4a. Innan en aktivitet körs kan den hämta data (indatafilerna) som den ska bearbeta till den beräkningsnod som den är associerad med. Om programmet inte redan har installerats på noden (se steg 2) kan det hämtas här i stället. När nedladdningarna har slutförts körs aktiviteterna på deras tilldelade noder.
+5. När aktiviteterna utförs kan du köra frågor mot Batch för att övervaka jobbets och aktiviteternas förlopp. Ditt klientprogram eller -tjänst kommunicerar med Batch-tjänsten över HTTPS. Eftersom du kan övervaka tusentals aktiviteter som körs på tusentals beräkningsnoder, se till att [effektivt fråga Batch-tjänsten](batch-efficient-list-queries.md).
+6. När aktiviteterna slutförs kan de ladda upp resultatdata till Azure Storage. Du kan också hämta filer direkt från filsystemet på en beräkningsnod.
+7. När övervakningen upptäcker att aktiviteterna i jobbet har slutförts kan klientprogrammet eller tjänsten hämta utdata för vidare bearbetning eller utvärdering.
 
-Att tänka på detta är ett sätt toouse Batch och det här scenariot beskriver endast några av dess funktioner som är tillgängliga. Du kan till exempel köra [flera uppgifter parallellt](batch-parallel-node-tasks.md) på varje beräkningsnod, och du kan använda [jobbet förberedelse och slutförande av uppgifter](batch-job-prep-release.md) tooprepare hello noder för jobb och sedan rensa efteråt.
+Tänk på att det här bara är ett av många sätt att använda Batch på, och att det här scenariot bara beskriver några få av alla de tillgängliga funktionerna. Du kan till exempel köra [flera aktiviteter parallellt](batch-parallel-node-tasks.md) på varje beräkningsnod och du kan [köra särskilda aktiviteter](batch-job-prep-release.md) som förbereder noderna för jobben och som rensar upp när allt är klart.
 
 ## <a name="next-steps"></a>Nästa steg
-Nu när du har en översikt över hello Batch-tjänsten är det tid toodig djupare toolearn hur du kan använda den tooprocess beräkningsintensiva parallella arbetsbelastningar.
+Nu när du har en högnivåöversikt över Batch-tjänsten är det dags att gå vidare och se hur du kan använda den för att bearbeta dina beräkningsintensiva parallella arbetsbelastningar.
 
-* Läs hello [Batch funktionsöversikt för utvecklare](batch-api-basics.md), viktig information för alla förbereder toouse Batch. hello artikeln innehåller mer detaljerad information om Batch-tjänsten resurser som pooler, noder, jobb och uppgifter och hello många API-funktioner som du kan använda när du skapar Batch-program.
-* Lär dig mer om hello [Batch-API: er och verktyg](batch-apis-tools.md) tillgängliga för att skapa Batch-lösningar.
-* [Kom igång med hello Azure Batch-biblioteket för .NET](batch-dotnet-get-started.md) toolearn hur toouse C# och hello Batch .NET-biblioteket tooexecute en enkel arbetsbelastning med hjälp av en gemensam Batch-arbetsflöde. Den här artikeln ska vara någon av dina första stopp då du lär dig hur toouse hello Batch-tjänsten. Det finns också en [Python-versionen](batch-python-tutorial.md) hello kursen.
-* Hämta hello [kodexempel på GitHub] [ github_samples] toosee hur både C# och Python kan samverka med Batch tooschedule och processen exempel arbetsbelastningar.
-* Kolla in hello [Batch Utbildningsväg] [ learning_path] tooget en uppfattning om hello resurser tillgängliga tooyou som du lär dig toowork med Batch.
+* Läs [Översikt över Batch-funktioner för utvecklare](batch-api-basics.md). Här finns viktig information för alla som tänker använda Batch. Artikeln innehåller mer detaljerad information om Batch-tjänstresurser som pooler, noder, jobb och uppgifter, och de många API-funktioner som du kan använda när du skapar ett Batch-program.
+* Läs om tillgängliga [Batch-API:er och verktyg](batch-apis-tools.md) för att skapa Batch-lösningar.
+* [Komma igång med Azure Batch-biblioteket för .NET](batch-dotnet-get-started.md) innehåller information om hur du använder C# och Batch .NET-biblioteket för att köra en enkel arbetsbelastning med ett vanligt Batch-arbetsflöde. Den här artikeln bör vara en av dina självklara utgångspunkter när du lär dig hur man använder Batch-tjänsten. Det finns även en [Python-version](batch-python-tutorial.md) av självstudien.
+* Hämta [kodexemplet på GitHub][github_samples] om du vill se hur både C# och Python kan användas med Batch för att schemalägga och bearbeta exempelarbetsbelastningar.
+* Ta en titt på [utbildningsvägen för Batch][learning_path] om du vill veta mer om de tillgängliga resurserna när du lär dig hur du arbetar med Batch.
 
 
 [github_samples]: https://github.com/Azure/azure-batch-samples

@@ -1,6 +1,6 @@
 ---
 title: "Självstudier: Azure Active Directory-integrering med ScreenSteps | Microsoft Docs"
-description: "Lär dig hur tooconfigure enkel inloggning mellan Azure Active Directory och ScreenSteps."
+description: "Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och ScreenSteps."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,114 +14,114 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/14/2017
 ms.author: jeedes
-ms.openlocfilehash: fd041e5fe4552727eeda2dabc1773d8043d410f8
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: b6ded8ba1adf03fdccbdb7573c09fae1857c8b16
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-screensteps"></a>Självstudier: Azure Active Directory-integrering med ScreenSteps
 
-I kursen får du lära dig hur toointegrate ScreenSteps med Azure Active Directory (AD Azure).
+I kursen får lära du att integrera ScreenSteps med Azure Active Directory (AD Azure).
 
-Integrera ScreenSteps med Azure AD ger dig hello följande fördelar:
+Integrera ScreenSteps med Azure AD ger dig följande fördelar:
 
-- Du kan styra i Azure AD som har åtkomst till tooScreenSteps.
-- Du kan låta dina användare tooautomatically get inloggade tooScreenSteps (Single Sign-On) med sina Azure AD-konton.
-- Du kan hantera dina konton i en central plats - hello Azure-portalen.
+- Du kan styra i Azure AD som har åtkomst till ScreenSteps.
+- Du kan aktivera användarna att automatiskt hämta loggat in på ScreenSteps (Single Sign-On) med sina Azure AD-konton.
+- Du kan hantera dina konton i en central plats - Azure-portalen.
 
-Om du vill tooknow mer information om integrering av SaaS-app med Azure AD, se [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Om du vill veta mer information om integrering av SaaS-app med Azure AD finns [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Krav
 
-tooconfigure Azure AD-integrering med ScreenSteps, behöver du hello följande objekt:
+För att konfigurera Azure AD-integrering med ScreenSteps, behöver du följande:
 
 - En Azure AD-prenumeration
 - En ScreenSteps enkel inloggning aktiverad prenumeration
 
 > [!NOTE]
-> tootest hello stegen i den här självstudiekursen, rekommenderas inte med hjälp av en produktionsmiljö.
+> Om du vill testa stegen i den här kursen rekommenderar vi inte med hjälp av en produktionsmiljö.
 
-tootest hello steg i den här självstudiekursen, bör du följa dessa rekommendationer:
+Om du vill testa stegen i den här självstudiekursen, bör du följa dessa rekommendationer:
 
 - Använd inte i produktionsmiljön, om det är nödvändigt.
 - Om du inte har en utvärderingsversion Azure AD-miljö kan du [hämta en utvärderingsversion för en månad](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Scenariobeskrivning
-I kursen får testa du Azure AD enkel inloggning i en testmiljö. hello-scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
+I kursen får testa du Azure AD enkel inloggning i en testmiljö. Det scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
 
-1. Att lägga till ScreenSteps från hello-galleriet
+1. Att lägga till ScreenSteps från galleriet
 2. Konfigurera och testa Azure AD enkel inloggning
 
-## <a name="adding-screensteps-from-hello-gallery"></a>Att lägga till ScreenSteps från hello-galleriet
-tooconfigure hello integrering av ScreenSteps i Azure AD, behöver du tooadd ScreenSteps hello galleriet tooyour listan över hanterade SaaS-appar.
+## <a name="adding-screensteps-from-the-gallery"></a>Att lägga till ScreenSteps från galleriet
+Du måste lägga till ScreenSteps från galleriet i listan över hanterade SaaS-appar för att konfigurera integrering av ScreenSteps i Azure AD.
 
-**tooadd ScreenSteps från galleriet hello utför hello följande steg:**
+**Utför följande steg för att lägga till ScreenSteps från galleriet:**
 
-1. I hello  **[Azure-portalen](https://portal.azure.com)**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon. 
+1. I den  **[Azure-portalen](https://portal.azure.com)**, klicka på den vänstra navigeringspanelen **Azure Active Directory** ikon. 
 
-    ![hello Azure Active Directory-knappen][1]
+    ![Azure Active Directory-knappen][1]
 
-2. Navigera för**företagsprogram**. Gå sedan för**alla program**.
+2. Gå till **företagsprogram**. Gå till **alla program**.
 
-    ![hello Enterprise program bladet][2]
+    ![Bladet Enterprise program][2]
     
-3. tooadd nya program, klickar du på **nytt program** hello längst upp i dialogrutan.
+3. Om du vill lägga till nya programmet, klickar du på **nytt program** knappen överst i dialogrutan.
 
-    ![hello-knappen för nytt program][3]
+    ![Knappen Nytt program][3]
 
-4. Skriv i sökrutan hello **ScreenSteps**väljer **ScreenSteps** resultatet-panelen klickar **Lägg till** knappen tooadd hello program.
+4. I sökrutan skriver **ScreenSteps**väljer **ScreenSteps** resultatet-panelen klickar **Lägg till** för att lägga till programmet.
 
-    ![ScreenSteps i hello resultatlistan](./media/active-directory-saas-screensteps-tutorial/tutorial_screensteps_addfromgallery.png)
+    ![ScreenSteps i resultatlistan](./media/active-directory-saas-screensteps-tutorial/tutorial_screensteps_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa Azure AD enkel inloggning
 
 I det här avsnittet kan du konfigurera och testa Azure AD enkel inloggning med ScreenSteps baserat på en testanvändare som kallas ”Britta Simon”.
 
-För enkel inloggning toowork måste Azure AD tooknow vilka hello motsvarighet användaren i ScreenSteps är tooa i Azure AD. Med andra ord måste en länk mellan en Azure AD-användare och hello relaterade användare i ScreenSteps toobe upprättas.
+Azure AD måste du känna till användaren i ScreenSteps motsvarighet till en användare i Azure AD för enkel inloggning ska fungera. Med andra ord måste en länk förhållandet mellan en Azure AD-användare och relaterade användaren i ScreenSteps upprättas.
 
-I ScreenSteps, tilldela hello värdet för hello **användarnamn** i Azure AD som hello värde för hello **användarnamn** tooestablish hello länken relationen.
+I ScreenSteps, tilldela värdet för den **användarnamn** i Azure AD som värde för den **användarnamn** etablera länken relationen.
 
-tooconfigure och testa Azure AD enkel inloggning med ScreenSteps, behöver du toocomplete hello följande byggblock:
+Om du vill konfigurera och testa Azure AD enkel inloggning med ScreenSteps, måste du utföra följande byggblock:
 
-1. **[Konfigurera Azure AD enkel inloggning](#configure-azure-ad-single-sign-on)**  -tooenable användare-toouse den här funktionen.
-2. **[Skapa en Azure AD-testanvändare](#create-an-azure-ad-test-user)**  -tootest Azure AD enkel inloggning med Britta Simon.
-3. **[Skapa en testanvändare ScreenSteps](#create-a-screensteps-test-user)**  -toohave en motsvarighet för Britta Simon i ScreenSteps som är länkade toohello Azure AD-representation av användaren.
-4. **[Tilldela hello Azure AD-testanvändare](#assign-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD enkel inloggning.
-5. **[Testa enkel inloggning](#test-single-sign-on)**  -tooverify hello om konfigurationen fungerar.
+1. **[Konfigurera Azure AD enkel inloggning](#configure-azure-ad-single-sign-on)**  - om du vill att användarna kan använda den här funktionen.
+2. **[Skapa en Azure AD-testanvändare](#create-an-azure-ad-test-user)**  - om du vill testa Azure AD enkel inloggning med Britta Simon.
+3. **[Skapa en testanvändare ScreenSteps](#create-a-screensteps-test-user)**  – du har en motsvarighet för Britta Simon i ScreenSteps som är kopplad till Azure AD-representation av användaren.
+4. **[Tilldela Azure AD-testanvändare](#assign-the-azure-ad-test-user)**  - om du vill aktivera Britta Simon att använda Azure AD enkel inloggning.
+5. **[Testa enkel inloggning](#test-single-sign-on)**  - om du vill kontrollera om konfigurationen fungerar.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurera Azure AD enkel inloggning
 
-I det här avsnittet Aktivera Azure AD enkel inloggning i hello Azure-portalen och konfigurera enkel inloggning i ditt ScreenSteps program.
+I det här avsnittet Aktivera Azure AD enkel inloggning i Azure-portalen och konfigurera enkel inloggning i ditt ScreenSteps program.
 
-**Utför följande steg hello tooconfigure Azure AD enkel inloggning med ScreenSteps:**
+**Utför följande steg för att konfigurera Azure AD enkel inloggning med ScreenSteps:**
 
-1. I hello Azure-portalen på hello **ScreenSteps** integreringssidan för programmet, klickar du på **enkel inloggning**.
+1. I Azure-portalen på den **ScreenSteps** integreringssidan för programmet, klickar du på **enkel inloggning**.
 
     ![Konfigurera enkel inloggning länk][4]
 
-2. På hello **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** tooenable enkel inloggning.
+2. På den **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** att aktivera enkel inloggning.
  
     ![Enkel inloggning dialogrutan](./media/active-directory-saas-screensteps-tutorial/tutorial_screensteps_samlbase.png)
 
-3. På hello **ScreenSteps domän och URL: er** avsnittet, utföra hello följande steg:
+3. På den **ScreenSteps domän och URL: er** avsnittet, utför följande steg:
 
     ![URL: er och ScreenSteps domän med enkel inloggning information](./media/active-directory-saas-screensteps-tutorial/tutorial_screensteps_url.png)
 
-    I hello **inloggnings-URL** textruta, ange ett URL-Adressen med hello följer mönstret:`https://<tenantname>.ScreenSteps.com`
+    I den **inloggnings-URL** textruta Skriv en URL med följande mönster:`https://<tenantname>.ScreenSteps.com`
 
     > [!NOTE] 
-    > Det här värdet är inte verkliga. Uppdatera det här värdet med hello faktiska inloggnings-URL, som beskrivs senare i den här kursen. 
+    > Det här värdet är inte verkliga. Uppdatera det här värdet med det faktiska inloggnings-URL, som beskrivs senare i den här kursen. 
 
-4. På hello **SAML-signeringscertifikat** klickar du på **Certificate(Base64)** och spara sedan hello certifikat på datorn.
+4. På den **SAML-signeringscertifikat** klickar du på **Certificate(Base64)** och spara certifikatfilen på datorn.
 
-    ![länk för hämtning av hello-certifikat](./media/active-directory-saas-screensteps-tutorial/tutorial_screensteps_certificate.png) 
+    ![Länken hämta certifikatet](./media/active-directory-saas-screensteps-tutorial/tutorial_screensteps_certificate.png) 
 
 5. Klicka på **spara** knappen.
 
     ![Konfigurera enkel inloggning spara](./media/active-directory-saas-screensteps-tutorial/tutorial_general_400.png)
 
-6. På hello **ScreenSteps Configuration** klickar du på **konfigurera ScreenSteps** tooopen **konfigurera inloggning** fönster. Kopiera hello **Sign-Out Webbadressen och SAML enkel inloggning Service** från hello **Snabbreferens avsnitt.**
+6. På den **ScreenSteps Configuration** klickar du på **konfigurera ScreenSteps** att öppna **konfigurera inloggning** fönster. Kopiera den **Sign-Out Webbadressen och SAML enkel inloggning Service** från den **Snabbreferens avsnitt.**
 
     ![ScreenSteps konfiguration](./media/active-directory-saas-screensteps-tutorial/tutorial_screensteps_configure.png) 
 
@@ -139,105 +139,105 @@ I det här avsnittet Aktivera Azure AD enkel inloggning i hello Azure-portalen o
 
     ![Fjärrautentiseringen](./media/active-directory-saas-screensteps-tutorial/ic778525.png "Remote authentication")
 
-11. I hello **skapa enkel inloggning Endpoint** avsnittet, utföra hello följande steg:
+11. I den **skapa enkel inloggning Endpoint** avsnittet, utför följande steg:
 
     ![Skapa en slutpunkt för autentisering](./media/active-directory-saas-screensteps-tutorial/ic778526.png "skapa en slutpunkt för autentisering")
     
-    a. I hello **rubrik** textruta skriver du ett namn.
+    a. I den **rubrik** textruta skriver du ett namn.
     
-    b. Från hello **läge** väljer **SAML**.
+    b. Från den **läge** väljer **SAML**.
     
     c. Klicka på **Skapa**.
 
-12. **Redigera** hello ny slutpunkt.
+12. **Redigera** ny slutpunkt.
 
     ![Redigera endpoint](./media/active-directory-saas-screensteps-tutorial/ic778528.png "redigera slutpunkt")
 
-13. I hello **Redigera enkel inloggning Endpoint** avsnittet, utföra hello följande steg:
+13. I den **Redigera enkel inloggning Endpoint** avsnittet, utför följande steg:
 
     ![Remote autentiseringsslutpunkten](./media/active-directory-saas-screensteps-tutorial/ic778527.png "Remote authentication slutpunkt")
 
-    a. Klicka på **överför ny SAML certifikatfilen**, och sedan ladda upp hello certifikat som du har hämtat från Azure-portalen.
+    a. Klicka på **överför ny SAML certifikatfilen**, och sedan ladda upp certifikatet som du har hämtat från Azure-portalen.
     
-    b. Klistra in **SAML enkel inloggning Tjänstwebbadress** -värde som du har kopierat från hello Azure-portalen i hello **Remote inloggnings-URL** textruta.
+    b. Klistra in **SAML enkel inloggning Tjänstwebbadress** -värde som du har kopierat från Azure-portalen i den **Remote inloggnings-URL** textruta.
     
-    c. Klistra in **Sign-Out URL** -värde som du har kopierat från hello Azure-portalen i hello **URL för utloggning** textruta.
+    c. Klistra in **Sign-Out URL** -värde som du har kopierat från Azure-portalen i den **URL för utloggning** textruta.
     
-    d. Välj en **grupp** tooassign användare toowhen de har etablerats.
+    d. Välj en **grupp** att tilldela användare till när de har etablerats.
     
     e. Klicka på **uppdatering**.
 
-    f. Kopiera hello **konsument-URL för SAML** toohello Urklipp och klistra in i toohello **inloggnings-URL** TextBox-kontroll i **ScreenSteps domän och URL: er** avsnitt.
+    f. Kopiera den **konsument-URL för SAML** till Urklipp och klistra in till den **inloggnings-URL** TextBox-kontroll i **ScreenSteps domän och URL: er** avsnitt.
     
-    g. Returnera toohello **Redigera enkel inloggning Endpoint**.
+    g. Gå tillbaka till den **redigera slutpunkten för enkel inloggning**.
     
-    h. Klicka på hello **göra standard för kontot** knappen toouse den här slutpunkten för alla användare som loggar in i ScreenSteps. Du kan också klicka på hello **lägga till tooSite** knappen toouse specifika platser i den här slutpunkten **ScreenSteps**.
+    h. Klicka på den **göra standard för kontot** om du vill använda den här slutpunkten för alla användare som loggar in i ScreenSteps. Du kan också klicka på den **lägga till webbplatsen** om du vill använda den här slutpunkten för specifika platser i **ScreenSteps**.
 
 > [!TIP]
-> Du kan nu läsa en kortare version av dessa anvisningar i hello [Azure-portalen](https://portal.azure.com), medan du ställer in hello appen!  När du lägger till den här appen från hello **Active Directory > företagsprogram** avsnittet, klicka bara på hello **enkel inloggning** flik och åtkomst hello inbäddade dokumentationen via hello  **Konfigurationen** avsnittet längst ned hello. Du kan läsa mer om hello inbäddade dokumentationen funktionen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Du kan nu läsa en kortare version av instruktionerna i den [Azure-portalen](https://portal.azure.com), medan du installerar appen!  När du lägger till den här appen från den **Active Directory > företagsprogram** avsnittet, klickar du på den **enkel inloggning** fliken och få åtkomst till den inbäddade dokumentationen via den **Configuration** avsnittet längst ned. Du kan läsa mer om funktionen inbäddade dokumentationen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Skapa en testanvändare i Azure AD
 
-hello syftet med det här avsnittet är toocreate en testanvändare i hello Azure-portalen kallas Britta Simon.
+Syftet med det här avsnittet är att skapa en testanvändare i Azure-portalen kallas Britta Simon.
 
    ![Skapa en testanvändare i Azure AD][100]
 
-**toocreate en testanvändare i Azure AD kan utföra hello följande steg:**
+**Utför följande steg för att skapa en testanvändare i Azure AD:**
 
-1. Klicka på hello i hello Azure-portalen hello vänster **Azure Active Directory** knappen.
+1. I Azure-portalen i den vänstra rutan klickar du på den **Azure Active Directory** knappen.
 
-    ![hello Azure Active Directory-knappen](./media/active-directory-saas-screensteps-tutorial/create_aaduser_01.png)
+    ![Azure Active Directory-knappen](./media/active-directory-saas-screensteps-tutorial/create_aaduser_01.png)
 
-2. toodisplay hello lista över användare, gå för**användare och grupper**, och klicka sedan på **alla användare**.
+2. Om du vill visa en lista över användare, gå till **användare och grupper**, och klicka sedan på **alla användare**.
 
-    ![Hej ”användare och grupper” och ”alla användare” länkar](./media/active-directory-saas-screensteps-tutorial/create_aaduser_02.png)
+    ![”Användare och grupper” och ”alla användare” länkar](./media/active-directory-saas-screensteps-tutorial/create_aaduser_02.png)
 
-3. tooopen hello **användare** dialogrutan klickar du på **Lägg till** hello överst i hello **alla användare** dialogrutan.
+3. Öppna den **användare** dialogrutan klickar du på **Lägg till** överst i den **alla användare** dialogrutan.
 
-    ![hello webbinställningar](./media/active-directory-saas-screensteps-tutorial/create_aaduser_03.png)
+    ![Knappen Lägg till](./media/active-directory-saas-screensteps-tutorial/create_aaduser_03.png)
 
-4. I hello **användaren** dialogrutan utför hello följande steg:
+4. I den **användaren** dialogrutan utför följande steg:
 
-    ![hello användardialogrutan](./media/active-directory-saas-screensteps-tutorial/create_aaduser_04.png)
+    ![Dialogrutan användare](./media/active-directory-saas-screensteps-tutorial/create_aaduser_04.png)
 
-    a. I hello **namn** skriver **BrittaSimon**.
+    a. I den **namn** skriver **BrittaSimon**.
 
-    b. I hello **användarnamn** rutan typen hello användarens e-postadress Britta Simon.
+    b. I den **användarnamn** Skriv användarens Britta Simon e-postadress.
 
-    c. Välj hello **visa lösenordet** kryssrutan och sedan skriva ned hello-värde som visas i hello **lösenord** rutan.
+    c. Välj den **visa lösenordet** kryssrutan och sedan skriva ned det värde som visas i den **lösenord** rutan.
 
     d. Klicka på **Skapa**.
  
 ### <a name="create-a-screensteps-test-user"></a>Skapa en testanvändare ScreenSteps
 
-I det här avsnittet skapar du en användare som kallas Britta Simon i ScreenSteps. Arbeta med [ScreenSteps klienten supportteamet](https://www.screensteps.com/contact) att lägga till hello användare i hello ScreenSteps plattform. Användare måste skapas och aktiveras innan du använder enkel inloggning. 
+I det här avsnittet skapar du en användare som kallas Britta Simon i ScreenSteps. Arbeta med [ScreenSteps klienten supportteamet](https://www.screensteps.com/contact) att lägga till användare i ScreenSteps-plattformen. Användare måste skapas och aktiveras innan du använder enkel inloggning. 
 
-### <a name="assign-hello-azure-ad-test-user"></a>Tilldela användare hello Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändare
 
-I det här avsnittet kan aktivera du Britta Simon toouse Azure enkel inloggning genom att bevilja åtkomst tooScreenSteps.
+I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inloggning genom att bevilja åtkomst till ScreenSteps.
 
-![Tilldela hello användarroll][200] 
+![Tilldela rollen][200] 
 
-**tooassign Britta Simon tooScreenSteps utför hello följande steg:**
+**Om du vill tilldela ScreenSteps Britta Simon utför du följande steg:**
 
-1. I hello Azure-portalen, öppna hello program visa och navigera toohello directory vy och gå för**företagsprogram** Klicka **alla program**.
+1. Öppna vyn program i Azure-portalen och gå till vyn directory och gå till **företagsprogram** Klicka **alla program**.
 
     ![Tilldela användare][201] 
 
-2. Välj i listan med program hello **ScreenSteps**.
+2. Välj i listan med program **ScreenSteps**.
 
-    ![Hej ScreenSteps länken i listan med program hello](./media/active-directory-saas-screensteps-tutorial/tutorial_screensteps_app.png)  
+    ![Länken ScreenSteps i listan med program](./media/active-directory-saas-screensteps-tutorial/tutorial_screensteps_app.png)  
 
-3. Hello-menyn hello vänster **användare och grupper**.
+3. Klicka på menyn till vänster **användare och grupper**.
 
-    ![Hej ”användare och grupper” länk][202]
+    ![Länken ”användare och grupper”][202]
 
 4. Klicka på **Lägg till** knappen. Välj sedan **användare och grupper** på **Lägg uppdrag** dialogrutan.
 
-    ![hello Lägg uppdrag fönstret][203]
+    ![Fönstret Lägg till tilldelning][203]
 
-5. På **användare och grupper** markerar **Britta Simon** i hello användarlistan.
+5. På **användare och grupper** markerar **Britta Simon** på listan användare.
 
 6. Klicka på **Välj** knappen på **användare och grupper** dialogrutan.
 
@@ -245,14 +245,14 @@ I det här avsnittet kan aktivera du Britta Simon toouse Azure enkel inloggning 
     
 ### <a name="test-single-sign-on"></a>Testa enkel inloggning
 
-I det här avsnittet kan testa du Azure AD enkel inloggning konfigurationen med hello åtkomstpanelen.
+I det här avsnittet kan du testa Azure AD enkel inloggning konfigurationen med hjälp av panelen åtkomst.
 
-Du bör få automatiskt inloggade tooyour ScreenSteps programmet när du klickar på hello ScreenSteps panelen i hello åtkomstpanelen.
-Läs mer om åtkomstpanelen [introduktion toohello åtkomstpanelen](active-directory-saas-access-panel-introduction.md). 
+När du klickar på panelen ScreenSteps på åtkomstpanelen du bör få automatiskt loggat in på ditt ScreenSteps program.
+Läs mer om åtkomstpanelen [introduktion till åtkomstpanelen](active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-* [Lista över självstudier om hur tooIntegrate SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Vad är programåtkomst och enkel inloggning med Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->

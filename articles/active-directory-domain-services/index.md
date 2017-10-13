@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure Active Directory Domain Services-dokumentation – självstudier | Microsoft Docs"
-description: "Lär dig hur toouse Active Directory Domain Services toojoin Azure virtuella datorer tooa domän utan att använda domänkontrollanter och hantera dem med grupprinciper."
+title: "Dokumentation om Azure Active Directory Domain Services – Självstudier | Microsoft Docs"
+description: "Lär dig hur du använder Active Directory Domain Services för att ansluta virtuella Azure-datorer till en domän utan att använda domänkontrollanter och hantera dem med grupprinciper."
 services: active-directory-ds
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 5f1dcc57d92e1e950662c1f0cc1d00252e2fab50
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: a3eaf61fcfdc9dbb70561e9a81dc2b31d68d7c9d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="active-directory-domain-services-documentation"></a>Dokumentationen för Active Directory Domain Services
 
-Lär dig hur toouse Active Directory Domain Services toojoin Azure virtuella datorer tooa domän utan att använda domänkontrollanter. Självstudiekurser och andra dokumentationen visar hur toomanage virtuella datorer med hjälp av gruppera principer.
+Lär dig hur du använder Active Directory Domain Services för att ansluta virtuella Azure-datorer till en domän utan att använda domänkontrollanter. Självstudier och annan dokumentation visar hur du hanterar virtuella datorer med hjälp av grupprinciper.
 
 <ul class="panelContent cardsFTitle">
     <li>

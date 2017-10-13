@@ -1,6 +1,6 @@
 ---
-title: "aaaCreate nätverkssäkerhetsgrupper (klassisk) i Azure - PowerShell | Microsoft Docs"
-description: "Lär dig hur toocreate och distribuera NSG: er i klassiskt läge med hjälp av PowerShell"
+title: "Skapa säkerhetsgrupper (klassisk) för nätverk i Azure - PowerShell | Microsoft Docs"
+description: "Lär dig hur du skapar och distribuerar NSG: er i klassiskt läge med hjälp av PowerShell"
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -15,29 +15,29 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
-ms.openlocfilehash: 835097c9f23cdd551f97797e142c6c2a3c978cd8
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: e3f84e4757e3854fc63e3069e179446174f0c0bd
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="how-toocreate-nsgs-classic-in-powershell"></a>Hur toocreate NSG: er (klassisk) i PowerShell
+# <a name="how-to-create-nsgs-classic-in-powershell"></a>Hur du skapar NSG: er (klassisk) i PowerShell
 [!INCLUDE [virtual-networks-create-nsg-selectors-classic-include](../../includes/virtual-networks-create-nsg-selectors-classic-include.md)]
 
 [!INCLUDE [virtual-networks-create-nsg-intro-include](../../includes/virtual-networks-create-nsg-intro-include.md)]
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-Den här artikeln beskriver hello klassiska distributionsmodellen. Du kan också [skapa NSG: er i hello Resource Manager-distributionsmodellen](virtual-networks-create-nsg-arm-ps.md).
+Den här artikeln beskriver hur du gör om du använder den klassiska distributionsmodellen. Du kan också [skapa NSG: er i Resource Manager-distributionsmodellen](virtual-networks-create-nsg-arm-ps.md).
 
 [!INCLUDE [virtual-networks-create-nsg-scenario-include](../../includes/virtual-networks-create-nsg-scenario-include.md)]
 
-hello exempel PowerShell-kommandona nedan förväntar sig en enkel miljö som redan har skapats utifrån hello scenariot ovan. Om du vill toorun hello kommandon som de visas i det här dokumentet, först skapa hello testmiljö av [skapa ett virtuellt nätverk](virtual-networks-create-vnet-classic-netcfg-ps.md).
+Exempel PowerShell-kommandona nedan förväntar sig en enkel miljö som redan har skapats baserat på scenariot ovan. Om du vill köra kommandon som de visas i det här dokumentet först skapa testmiljö av [skapa ett virtuellt nätverk](virtual-networks-create-vnet-classic-netcfg-ps.md).
 
-## <a name="how-toocreate-hello-nsg-for-hello-front-end-subnet"></a>Hur toocreate hello NSG för hello frontend undernät
-toocreate en NSG med namnet med namnet **NSG-klientdel** utifrån hello scenariot ovan gör hello nedan:
+## <a name="how-to-create-the-nsg-for-the-front-end-subnet"></a>Hur du skapar NSG för undernätet frontend
+Om du vill skapa en NSG som heter heter **NSG-klientdel** baserat på scenariot ovan, Följ stegen nedan:
 
-1. Om du aldrig har använt Azure PowerShell, se [hur tooInstall och konfigurera Azure PowerShell](/powershell/azure/overview) och följer instruktionerna för hello alla hello sätt toohello avslutas toosign till Azure och välja din prenumeration.
+1. Om du aldrig använt Azure PowerShell tidigare, se [Installera och konfigurera Azure PowerShell](/powershell/azure/overview) och följ instruktionerna till slutet för att logga in på Azure och välja din prenumeration.
 2. Skapa en säkerhetsgrupp för nätverk med namnet **NSG-klientdel**.
    
         New-AzureNetworkSecurityGroup -Name "NSG-FrontEnd" -Location uswest `
@@ -49,7 +49,7 @@ toocreate en NSG med namnet med namnet **NSG-klientdel** utifrån hello scenario
         
         NSG-FrontEnd West US     Front end subnet NSG
 
-3. Skapa en säkerhetsregel tillåter åtkomst från hello Internet tooport 3389.
+3. Skapa en säkerhetsregel tillåter åtkomst från Internet till port 3389.
    
         Get-AzureNetworkSecurityGroup -Name "NSG-FrontEnd" `
         | Set-AzureNetworkSecurityRule -Name rdp-rule `
@@ -85,7 +85,7 @@ toocreate en NSG med namnet med namnet **NSG-klientdel** utifrån hello scenario
                    OUTBOUND                                                                                                      
                    DENY ALL OUTBOUND    65500     Deny     *               *             *                *              *
 
-1. Skapa en säkerhetsregel tillåter åtkomst från hello Internet tooport 80.
+1. Skapa en säkerhetsregel tillåter åtkomst från Internet till port 80.
    
         Get-AzureNetworkSecurityGroup -Name "NSG-FrontEnd" `
         | Set-AzureNetworkSecurityRule -Name web-rule `
@@ -123,7 +123,7 @@ toocreate en NSG med namnet med namnet **NSG-klientdel** utifrån hello scenario
                    OUTBOUND                                                                                                      
                    DENY ALL OUTBOUND    65500     Deny     *               *             *                *              *   
 
-## <a name="how-toocreate-hello-nsg-for-hello-back-end-subnet"></a>Hur toocreate hello NSG för hello tillbaka avslutas undernät
+## <a name="how-to-create-the-nsg-for-the-back-end-subnet"></a>Hur du skapar NSG för backend-undernät
 1. Skapa en säkerhetsgrupp för nätverk med namnet **NSG BackEnd**.
    
         New-AzureNetworkSecurityGroup -Name "NSG-BackEnd" -Location uswest `
@@ -134,7 +134,7 @@ toocreate en NSG med namnet med namnet **NSG-klientdel** utifrån hello scenario
         Name        Location   Label              
         
         NSG-BackEnd West US    Back end subnet NSG
-2. Skapa en säkerhetsregel tillåter åtkomst från hello klientdelen undernät tooport 1433 (standardporten som används av SQL Server).
+2. Skapa en säkerhetsregel att tillåta åtkomst från klientdelens undernät till port 1433 (standardporten som används av SQL Server).
    
         Get-AzureNetworkSecurityGroup -Name "NSG-FrontEnd" `
         | Set-AzureNetworkSecurityRule -Name rdp-rule `
@@ -170,7 +170,7 @@ toocreate en NSG med namnet med namnet **NSG-klientdel** utifrån hello scenario
                    OUTBOUND                                                                                                      
                    DENY ALL OUTBOUND    65500     Deny     *               *             *                *              *      
 
-1. Skapa en säkerhetsregel blockerar åtkomst från hello undernät toohello Internet.
+1. Skapa en säkerhetsregel blockerar åtkomst från undernätet till Internet.
    
         Get-AzureNetworkSecurityGroup -Name "NSG-BackEnd" `
         | Set-AzureNetworkSecurityRule -Name block-internet `

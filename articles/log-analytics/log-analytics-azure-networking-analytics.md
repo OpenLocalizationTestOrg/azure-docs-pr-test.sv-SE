@@ -1,6 +1,6 @@
 ---
-title: "aaaAzure nätverk Analytics lösning i Log Analytics | Microsoft Docs"
-description: "Du kan använda hello Azure nätverk Analytics lösning i gruppen för Log Analytics tooreview Azure-nätverk säkerhetsloggar och Azure Programgateway loggar."
+title: "Azure nätverk Analytics lösning i Log Analytics | Microsoft Docs"
+description: "Du kan använda Azure-nätverk Analytics-lösning i logganalys för att granska grupp säkerhetsloggar av Azure-nätverk och Azure Programgateway loggar."
 services: log-analytics
 documentationcenter: 
 author: richrundmsft
@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2017
 ms.author: richrund
-ms.openlocfilehash: 3674189786bacccc82e6708e78f14c92178e6676
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 06b67322b3812a668a515ecc357171ede1d85441
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="azure-networking-monitoring-solutions-in-log-analytics"></a>Azure nätverk övervakning lösningar i logganalys
 
-Logganalys erbjuder följande lösningar för att övervaka dina nätverk hello:
+Logganalys erbjuder följande lösningar för att övervaka dina nätverk:
 * Network Performance Monitor (NPM) till
- * Övervaka hello hälsotillstånd för nätverket
-* Azure Application Gateway analytics tooreview
+ * Övervaka hälsotillståndet hos ditt nätverk
+* Azure Application Gateway analyser för att granska
  * Azure Application Gateway-loggar
  * Azure Application Gateway-mått
-* Azure Network Security Group analytics tooreview
+* Azure Network Security Group analyser för att granska
  * Nätverkssäkerhetsgruppen för Azure-loggar
 
 ## <a name="network-performance-monitor-npm"></a>Network Performance Monitor (NPM)
 
-Hej [Network Performance Monitor](log-analytics-network-performance-monitor.md) hanteringslösning är ett nätverk övervakningslösning som övervakar hello hälsa, tillgänglighet och tillgänglighet av nätverk.  Det är används toomonitor anslutningen mellan:
+Den [Network Performance Monitor](log-analytics-network-performance-monitor.md) hanteringslösning är ett nätverk övervakningslösning som övervakar hälsa, tillgänglighet och tillgänglighet av nätverk.  Används för att övervaka anslutningen mellan:
 
 * offentliga molnet och lokalt
 * datacenter och användarplatser (avdelningskontor)
@@ -42,23 +42,23 @@ Hej [Network Performance Monitor](log-analytics-network-performance-monitor.md) 
 Mer information finns i [Network Performance Monitor](log-analytics-network-performance-monitor.md).
 
 ## <a name="azure-application-gateway-and-network-security-group-analytics"></a>Azure Application Gateway och Nätverkssäkerhetsgruppen analytics
-toouse hello lösningar:
-1. Lägg till hello management lösning tooLog analyser och
-2. Aktivera diagnostik toodirect hello diagnostik tooa logganalys-arbetsytan. Det är inte nödvändigt toowrite hello loggar tooAzure Blob storage.
+Använda lösningarna:
+1. Lägg till hanteringslösningen Log Analytics och
+2. Aktivera diagnostik för att dirigera diagnostik till logganalys-arbetsytan. Du behöver inte skriva loggarna till Azure Blob storage.
 
-Du kan aktivera diagnostik- och hello motsvarande lösning för en eller båda av Programgateway och nätverk säkerhetsgrupper.
+Du kan aktivera diagnostik- och motsvarande lösningen för en eller båda av Programgateway och nätverk säkerhetsgrupper.
 
-Om du inte aktivera diagnostikloggning för en viss resurstyp och installera hello lösning hello instrumentpanelen blad för den här resursen är tomma och ett felmeddelande visas.
+Om du inte aktivera diagnostikloggning för en viss resurstyp, men installerar lösningen, instrumentpanelen blad för den här resursen är tomma och ett felmeddelande visas.
 
 > [!NOTE]
-> Hello stöds i januari 2017 sätt att skicka loggar från Programgatewayer och Nätverkssäkerhetsgrupper tooLog Analytics har ändrats. Om du ser hello **Azure-nätverk Analytics (föråldrad)** lösningen finns för[migrera från hello gamla nätverk Analytics lösning](#migrating-from-the-old-networking-analytics-solution) för steg behöver du toofollow.
+> Sättet att skicka loggar från Programgatewayer och Nätverkssäkerhetsgrupper till logganalys ändras i januari 2017. Om du ser den **Azure-nätverk Analytics (föråldrad)** lösning, referera till [migrera från den gamla nätverk Analytics lösningen](#migrating-from-the-old-networking-analytics-solution) anvisningar för hur du ska följa.
 >
 >
 
 ## <a name="review-azure-networking-data-collection-details"></a>Granska Azure nätverk information för samlingen
-samla in diagnostik loggarna direkt från Azure Programgatewayer och Nätverkssäkerhetsgrupper hello Azure Programgateway analyser och hello Network Security Group management Analyslösningar. Det är inte nödvändigt toowrite hello loggar tooAzure Blob storage och ingen agent krävs för datainsamling.
+Samla in diagnostik loggarna direkt från Azure Programgatewayer och Nätverkssäkerhetsgrupper Azure Programgateway analyser och Nätverkssäkerhetsgruppen management Analyslösningar. Det är inte nödvändigt att skriva loggarna till Azure Blob storage och ingen agent krävs för datainsamling.
 
-hello följande tabell visar metoder för insamling av data och annan information om hur data samlas in för Azure Programgateway analyser och hello Nätverkssäkerhetsgruppen analytics.
+I följande tabell visar metoder för insamling av data och annan information om hur data samlas in för Azure Programgateway analyser och Nätverkssäkerhetsgruppen analytics.
 
 | Plattform | Styr agent | System Center Operations Manager-agenten | Azure | Operations Manager som krävs? | Operations Manager agent-data som skickas via management-grupp | Insamlingsfrekvens |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -69,40 +69,40 @@ hello följande tabell visar metoder för insamling av data och annan informatio
 
 ![Azure Application Gateway Analytics symbol](./media/log-analytics-azure-networking/azure-analytics-symbol.png)
 
-följande loggar hello stöds för Programgatewayer:
+Följande loggar stöds för Programgatewayer:
 
 * ApplicationGatewayAccessLog
 * ApplicationGatewayPerformanceLog
 * ApplicationGatewayFirewallLog
 
-hello följande mått stöds för Programgatewayer:
+Följande mått stöds för Programgatewayer:
 
 * 5 minut genomflöde
 
-### <a name="install-and-configure-hello-solution"></a>Installera och konfigurera hello lösning
-Använd följande instruktioner tooinstall hello och konfigurera hello Azure Programgateway analytics lösningen:
+### <a name="install-and-configure-the-solution"></a>Installera och konfigurera lösningen
+Använd följande instruktioner för att installera och konfigurera Azure Programgateway analytics lösningen:
 
-1. Aktivera hello Azure Programgateway analytics lösningar från [Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureAppGatewayAnalyticsOMS?tab=Overview) eller genom att använda hello process som beskrivs i [lägga till logganalys lösningar från hello lösningar galleriet](log-analytics-add-solutions.md).
-2. Aktivera diagnostikloggning för hello [Programgatewayer](../application-gateway/application-gateway-diagnostics.md) du vill toomonitor.
+1. Aktivera Azure Programgateway analytics-lösning från [Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureAppGatewayAnalyticsOMS?tab=Overview) eller genom att använda processen som beskrivs i [lägga till logganalys lösningar från galleriet lösningar](log-analytics-add-solutions.md).
+2. Aktivera diagnostik loggning för den [Programgatewayer](../application-gateway/application-gateway-diagnostics.md) du vill övervaka.
 
-#### <a name="enable-azure-application-gateway-diagnostics-in-hello-portal"></a>Aktivera Azure Programgateway diagnostik i hello-portalen
+#### <a name="enable-azure-application-gateway-diagnostics-in-the-portal"></a>Aktivera Azure Programgateway diagnostik i portalen
 
-1. Navigera i hello Azure-portalen, toohello Programgateway resurs toomonitor
-2. Välj *diagnostik loggar* tooopen hello följande sida
+1. Navigera till resursen Programgateway att övervaka i Azure-portalen
+2. Välj *diagnostik loggar* att öppna följande sida
 
    ![Bild av Azure Programgateway resurs](./media/log-analytics-azure-networking/log-analytics-appgateway-enable-diagnostics01.png)
-3. Klicka på *aktivera diagnostiken* tooopen hello följande sida
+3. Klicka på *aktivera diagnostiken* att öppna följande sida
 
    ![Bild av Azure Programgateway resurs](./media/log-analytics-azure-networking/log-analytics-appgateway-enable-diagnostics02.png)
-4. tooturn på diagnostik, klickar du på *på* under *Status*
-5. Klicka på hello kryssrutan för *skicka tooLog Analytics*
+4. Aktivera diagnostik, klicka på *på* under *Status*
+5. Klicka på kryssrutan för *skicka till logganalys*
 6. Välj en befintlig logganalys-arbetsyta eller skapa en arbetsyta
-7. Klicka på kryssrutan hello under **loggen** för varje hello loggen typer toocollect
-8. Klicka på *spara* tooenable hello loggning av diagnostik tooLog Analytics
+7. Klickar du på kryssrutan under **loggen** för varje logg att samla in
+8. Klicka på *spara* att aktivera loggning av diagnostik till logganalys
 
 #### <a name="enable-azure-network-diagnostics-using-powershell"></a>Aktivera Azure Nätverksdiagnostik med PowerShell
 
-hello följande PowerShell-skript innehåller ett exempel på hur tooenable loggning för programgatewayer.
+Följande PowerShell-skript innehåller ett exempel på hur du aktiverar loggning för programgatewayer.
 
 ```powershell
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
@@ -115,7 +115,7 @@ Set-AzureRmDiagnosticSetting -ResourceId $gateway.ResourceId  -WorkspaceId $work
 ### <a name="use-azure-application-gateway-analytics"></a>Använd Azure Programgateway analytics
 ![Bild av Azure Programgateway analytics panelen](./media/log-analytics-azure-networking/log-analytics-appgateway-tile.png)
 
-När du klickar på hello **Azure Programgateway analytics** panelen på hello översikt, kan du visa sammanfattningar av loggar och visa sedan detaljnivåerna i toodetails för hello följande kategorier:
+När du klickar på den **Azure Programgateway analytics** panelen på Översikt, kan du visa sammanfattningar av loggar och visa sedan detaljnivåerna till information i följande kategorier:
 
 * Programåtkomst för Gateway-loggar
   * Klient- och fel för åtkomstloggar för Programgateway
@@ -130,44 +130,44 @@ När du klickar på hello **Azure Programgateway analytics** panelen på hello �
 
 ![Bild av instrumentpanelen för Azure Programgateway](./media/log-analytics-azure-networking/log-analytics-appgateway02.png)
 
-På hello **Azure Programgateway analytics** instrumentpanel, granska hello sammanfattningsinformation i ett hello blad och klicka sedan på en tooview detaljerad information om hello söksidan för loggen.
+På den **Azure Programgateway analytics** instrumentpanel, Granska sammanfattningen i ett av bladen och klicka sedan på en om du vill visa detaljerad information på sidan logga.
 
-Du kan visa resultaten av tid, detaljerade resultat och Logghistoriken på någon av hello loggen söksidor. Du kan också filtrera efter facets toonarrow hello resultat.
+Du kan visa resultaten av tid, detaljerade resultat och Logghistoriken på någon av sidorna loggen sökning. Du kan också filtrera efter aspekter att begränsa resultaten.
 
 
 ## <a name="azure-network-security-group-analytics-solution-in-log-analytics"></a>Azure Network Security Group analytics lösning i logganalys
 
 ![Azure Network Security Group Analytics symbol](./media/log-analytics-azure-networking/azure-analytics-symbol.png)
 
-följande loggar hello stöds för nätverkssäkerhetsgrupper:
+Följande loggar stöds för nätverkssäkerhetsgrupper:
 
 * NetworkSecurityGroupEvent
 * NetworkSecurityGroupRuleCounter
 
-### <a name="install-and-configure-hello-solution"></a>Installera och konfigurera hello lösning
-Använd följande instruktioner tooinstall hello och konfigurera hello Azure nätverk Analytics lösning:
+### <a name="install-and-configure-the-solution"></a>Installera och konfigurera lösningen
+Använd följande instruktioner för att installera och konfigurera Azure-nätverk Analytics-lösningen:
 
-1. Aktivera hello Azure Network Security Group analytics lösningar från [Azure marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureNSGAnalyticsOMS?tab=Overview) eller genom att använda hello process som beskrivs i [lägga till logganalys lösningar från hello lösningar galleriet](log-analytics-add-solutions.md).
-2. Aktivera diagnostikloggning för hello [Nätverkssäkerhetsgruppen](../virtual-network/virtual-network-nsg-manage-log.md) resurser du vill toomonitor.
+1. Aktivera Azure Network Security Group analytics-lösning från [Azure marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureNSGAnalyticsOMS?tab=Overview) eller genom att använda processen som beskrivs i [lägga till logganalys lösningar från galleriet lösningar](log-analytics-add-solutions.md).
+2. Aktivera diagnostik loggning för den [Nätverkssäkerhetsgruppen](../virtual-network/virtual-network-nsg-manage-log.md) resurser som du vill övervaka.
 
-### <a name="enable-azure-network-security-group-diagnostics-in-hello-portal"></a>Aktivera diagnostik av gruppen för Azure-nätverk i hello-portalen
+### <a name="enable-azure-network-security-group-diagnostics-in-the-portal"></a>Aktivera diagnostik av gruppen för Azure-nätverk i portalen
 
-1. Navigera i hello Azure-portalen, toohello Nätverkssäkerhetsgruppen resurs toomonitor
-2. Välj *diagnostik loggar* tooopen hello följande sida
+1. Navigera till Nätverkssäkerhetsgruppen resursen ska övervaka i Azure-portalen
+2. Välj *diagnostik loggar* att öppna följande sida
 
    ![Bild av Azure Network Security Group resurs](./media/log-analytics-azure-networking/log-analytics-nsg-enable-diagnostics01.png)
-3. Klicka på *aktivera diagnostiken* tooopen hello följande sida
+3. Klicka på *aktivera diagnostiken* att öppna följande sida
 
    ![Bild av Azure Network Security Group resurs](./media/log-analytics-azure-networking/log-analytics-nsg-enable-diagnostics02.png)
-4. tooturn på diagnostik, klickar du på *på* under *Status*
-5. Klicka på hello kryssrutan för *skicka tooLog Analytics*
+4. Aktivera diagnostik, klicka på *på* under *Status*
+5. Klicka på kryssrutan för *skicka till logganalys*
 6. Välj en befintlig logganalys-arbetsyta eller skapa en arbetsyta
-7. Klicka på kryssrutan hello under **loggen** för varje hello loggen typer toocollect
-8. Klicka på *spara* tooenable hello loggning av diagnostik tooLog Analytics
+7. Klickar du på kryssrutan under **loggen** för varje logg att samla in
+8. Klicka på *spara* att aktivera loggning av diagnostik till logganalys
 
 ### <a name="enable-azure-network-diagnostics-using-powershell"></a>Aktivera Azure Nätverksdiagnostik med PowerShell
 
-hello följande PowerShell-skript innehåller ett exempel på hur tooenable loggning för nätverkssäkerhetsgrupper
+Följande PowerShell-skript innehåller ett exempel på hur du aktiverar loggning för nätverkssäkerhetsgrupper
 ```powershell
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
 
@@ -177,7 +177,7 @@ Set-AzureRmDiagnosticSetting -ResourceId $nsg.ResourceId  -WorkspaceId $workspac
 ```
 
 ### <a name="use-azure-network-security-group-analytics"></a>Använd Azure Network Security Group analytics
-När du klickar på hello **Azure Network Security Group analytics** panelen på hello översikt, kan du visa sammanfattningar av loggar och visa sedan detaljnivåerna i toodetails för hello följande kategorier:
+När du klickar på den **Azure Network Security Group analytics** panelen på Översikt, kan du visa sammanfattningar av loggar och visa sedan detaljnivåerna till information i följande kategorier:
 
 * Nätverkssäkerhetsgruppen blockeras flöden
   * Regler för nätverkssäkerhetsgrupper med blockerade flöden
@@ -190,24 +190,24 @@ När du klickar på hello **Azure Network Security Group analytics** panelen på
 
 ![Bild av instrumentpanelen för Azure Nätverkssäkerhetsgrupp](./media/log-analytics-azure-networking/log-analytics-nsg02.png)
 
-På hello **Azure Network Security Group analytics** instrumentpanel, granska hello sammanfattningsinformation i ett hello blad och klicka sedan på en tooview detaljerad information om hello söksidan för loggen.
+På den **Azure Network Security Group analytics** instrumentpanel, Granska sammanfattningen i ett av bladen och klicka sedan på en om du vill visa detaljerad information på sidan logga.
 
-Du kan visa resultaten av tid, detaljerade resultat och Logghistoriken på någon av hello loggen söksidor. Du kan också filtrera efter facets toonarrow hello resultat.
+Du kan visa resultaten av tid, detaljerade resultat och Logghistoriken på någon av sidorna loggen sökning. Du kan också filtrera efter aspekter att begränsa resultaten.
 
-## <a name="migrating-from-hello-old-networking-analytics-solution"></a>Migrera från hello gamla nätverk Analytics lösning
-Hello stöds i januari 2017 sätt att skicka loggar från Azure Programgatewayer och säkerhetsgrupper för Azure-nätverket tooLog Analytics har ändrats. Ändringarna ger hello följande fördelar:
-+ Loggarna skrivs direkt tooLog Analytics utan hello måste toouse ett lagringskonto
-+ Mindre fördröjning från hello tid när loggar är genereras toothem som är tillgängliga i logganalys
+## <a name="migrating-from-the-old-networking-analytics-solution"></a>Migrera från den gamla nätverk Analytics-lösningen
+Sättet att skicka loggar från Azure Programgatewayer och säkerhetsgrupper för Azure-nätverket till logganalys ändras i januari 2017. Ändringarna ger följande fördelar:
++ Loggarna skrivs direkt till Log Analytics utan att behöva använda ett lagringskonto
++ Mindre fördröjning från när loggar genereras till dem som finns i logganalys
 + Färre konfigurationssteg
 + Ett vanligt format för alla typer av Azure-diagnostik
 
-toouse hello uppdateras lösningar:
+Använda de uppdaterade lösningarna:
 
-1. [Konfigurera diagnostik toobe tooLog Analytics skickas direkt från Azure Programgatewayer](#enable-azure-application-gateway-diagnostics-in-the-portal)
-2. [Konfigurera diagnostik toobe tooLog Analytics skickas direkt från Azure Nätverkssäkerhetsgrupper](#enable-azure-network-security-group-diagnostics-in-the-portal)
-2. Aktivera hello *Azure Application Gateway Analytics* och hello *Azure Network Security Group Analytics* lösning genom att använda hello process beskrivs i [lägga till logganalys lösningar från hello lösningar galleri](log-analytics-add-solutions.md)
-3. Uppdatera alla sparade frågor, instrumentpaneler eller aviseringar toouse hello ny datatyp
-  + Typen är tooAzureDiagnostics. Du kan använda hello ResourceType toofilter tooAzure nätverk loggar.
+1. [Konfigurera diagnostik skickas direkt till Log Analytics från Azure Programgatewayer](#enable-azure-application-gateway-diagnostics-in-the-portal)
+2. [Konfigurera diagnostik skickas direkt till Log Analytics från Azure Nätverkssäkerhetsgrupper](#enable-azure-network-security-group-diagnostics-in-the-portal)
+2. Aktivera den *Azure Application Gateway Analytics* och *Azure Network Security Group Analytics* lösning med hjälp av den process som beskrivs i [lägga till logganalys lösningar från den Lösningar galleri](log-analytics-add-solutions.md)
+3. Uppdatera alla sparade frågor, instrumentpaneler eller aviseringar för att använda den nya datatypen
+  + Typen är att AzureDiagnostics. Du kan använda resurstypens för att filtrera till Azure-nätverk loggarna.
 
     | Istället för: | Användning: |
     | --- | --- |
@@ -215,15 +215,15 @@ toouse hello uppdateras lösningar:
     |`Type=NetworkApplicationgateways OperationName=ApplicationGatewayPerformance` | `Type=AzureDiagnostics ResourceType=APPLICATIONGATEWAYS OperationName=ApplicationGatewayPerformance` |
     | `Type=NetworkSecuritygroups` | `Type=AzureDiagnostics ResourceType=NETWORKSECURITYGROUPS` |
 
-   + För alla fält som har suffixet \_s, \_d, eller \_g i hello namn, ändra hello första toolower skiftlägeskänslighet
-   + För alla fält som har suffixet \_o i namn hello data delas upp i enskilda fält baserat på hello kapslade fältnamn.
-4. Ta bort hello *Azure nätverk Analytics (inaktuell)* lösning.
-  + Om du använder PowerShell använder du`Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that hello workspace is in> -WorkspaceName <name of hello log analytics workspace> -IntelligencePackName "AzureNetwork" -Enabled $false`
+   + För alla fält som har suffixet \_s, \_d, eller \_g i namnet, ändra det första tecknet till gemener
+   + För alla fält som har suffixet \_o i namn data delas upp i enskilda fält baserat på de kapslade fältnamn.
+4. Ta bort den *Azure nätverk Analytics (inaktuell)* lösning.
+  + Om du använder PowerShell använder du`Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that the workspace is in> -WorkspaceName <name of the log analytics workspace> -IntelligencePackName "AzureNetwork" -Enabled $false`
 
-Data som samlas in innan hello ändringen inte visas i hello ny lösning. Du kan fortsätta tooquery för den här data med hjälp av hello gamla typ och fältnamn.
+Data som samlas in innan ändringen inte visas i den nya lösningen. Du kan fortsätta att fråga efter data med hjälp av den gamla typen och fältnamn.
 
 ## <a name="troubleshooting"></a>Felsökning
 [!INCLUDE [log-analytics-troubleshoot-azure-diagnostics](../../includes/log-analytics-troubleshoot-azure-diagnostics.md)]
 
 ## <a name="next-steps"></a>Nästa steg
-* Använd [logga sökningar i logganalys](log-analytics-log-searches.md) tooview detaljerad Azure-diagnostikdata.
+* Använd [logga sökningar i logganalys](log-analytics-log-searches.md) att visa detaljerad Azure-diagnostikdata.

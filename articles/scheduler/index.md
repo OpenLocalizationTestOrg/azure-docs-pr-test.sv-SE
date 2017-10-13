@@ -1,6 +1,6 @@
 ---
-title: "aaaAzure Scheduler-dokumentation – självstudier, API-referens | Microsoft Docs"
-description: "Lär dig hur toouse Scheduler tooschedule och anropa jobb som återkommande åtgärder och rutinen programunderhåll. Självstudier, API-referenser och mycket annat."
+title: "Dokumentation om Azure Scheduler – Självstudier, API-referens | Microsoft Docs"
+description: "Lär dig hur du använder Scheduler för att schemalägga och anropa jobb, som återkommande programåtgärder och rutinunderhåll. Självstudier, API-referenser och mycket annat."
 services: scheduler
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: c9e67fc813939c31bb3cd38215293c98babe3838
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 4883e5689a639259ec1c0bcd31e1016f85af5d66
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/19/2017
 ---
 # <a name="scheduler-documentation"></a>Dokumentation om Scheduler
 
-Lär dig hur toouse Scheduler tooschedule och anropa automatiskt återkommande jobb i hello molnet. Självstudier, API-referenserna och andra dokumentationen visar hur tooschedule och övervaka jobb som återkommande åtgärder och rutinen programunderhåll.
+Lär dig hur du använder Scheduler för att schemalägga och automatiskt anropa återkommande jobb i molnet. Självstudier, API-referenser och annan dokumentationen som visar hur du schemalägger och övervakar jobb, som återkommande programåtgärder och rutinunderhåll.
 
 <ul class="panelContent cardsFTitle">
     <li>

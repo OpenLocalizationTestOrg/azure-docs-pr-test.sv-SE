@@ -1,6 +1,6 @@
 ---
 title: "Självstudier: Azure Active Directory-integrering med Wizergos produktivitetsprogram | Microsoft Docs"
-description: "Lär dig hur tooconfigure enkel inloggning mellan Azure Active Directory och Wizergos produktivitetsprogram."
+description: "Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Wizergos produktivitetsprogram."
 services: active-directory
 documentationcenter: 
 author: jeevansd
@@ -14,196 +14,196 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2017
 ms.author: jeedes
-ms.openlocfilehash: cdd186c38c426dde404ed8bb84700faf9c8c1a46
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 73b3bc05aeb337c12acb7e47c0dbebe6d0196530
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wizergos-productivity-software"></a>Självstudier: Azure Active Directory-integrering med Wizergos produktivitetsprogram
-hello syftet med den här kursen är tooshow du hur toointegrate Wizergos produktivitetsprogram med Azure Active Directory (AD Azure).
+Syftet med den här kursen är att visa dig hur du integrerar Wizergos produktivitetsprogram med Azure Active Directory (AD Azure).
 
-Integrera Wizergos produktivitetsprogram med Azure AD ger dig hello följande fördelar:
+Integrera Wizergos produktivitetsprogram med Azure AD ger dig följande fördelar:
 
-* Du kan styra i Azure AD som har åtkomst tooWizergos produktivitetsprogram
-* Du kan aktivera din användare tooautomatically get inloggade tooWizergos produktivitetsprogram enkel inloggning (SSO) med sina Azure AD-konton
-* Du kan hantera dina konton i en central plats - hello klassiska Azure-portalen
+* Du kan styra i Azure AD som har åtkomst till Wizergos produktivitetsprogram
+* Du kan aktivera användarna att automatiskt hämta loggat in på Wizergos produktivitetsprogram enkel inloggning (SSO) med sina Azure AD-konton
+* Du kan hantera dina konton i en central plats – den klassiska Azure-portalen
 
-Om du vill tooknow mer information om integrering av SaaS-app med Azure AD, se [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Om du vill veta mer information om integrering av SaaS-app med Azure AD finns [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Krav
-tooconfigure Azure AD-integrering med Wizergos produktivitetsprogram måste hello följande objekt:
+För att konfigurera Azure AD-integrering med Wizergos produktivitetsprogram, behöver du följande:
 
 * En Azure AD-prenumeration
 * En prenumeration Wizergos produktivitet programvara SSO aktiverad
 
 >[!NOTE]
->tootest hello stegen i den här självstudiekursen, rekommenderas inte med hjälp av en produktionsmiljö. 
+>Om du vill testa stegen i den här kursen rekommenderar vi inte med hjälp av en produktionsmiljö. 
 > 
 
-tootest hello steg i den här självstudiekursen, bör du följa dessa rekommendationer:
+Om du vill testa stegen i den här självstudiekursen, bör du följa dessa rekommendationer:
 
 * Du bör inte använda produktionsmiljön, om det inte är nödvändigt.
 * Om du inte har en utvärderingsversion Azure AD-miljö kan du få en [utvärderingsversion för en månad](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Scenariobeskrivning
-hello syftet med den här kursen är tooenable du tootest Azure AD SSO i en testmiljö.
+Syftet med den här kursen är att du ska testa Azure AD SSO i en testmiljö.
 
-hello-scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
+Det scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
 
-1. Att lägga till Wizergos produktivitetsprogram från hello-galleriet
+1. Att lägga till Wizergos produktivitetsprogram från galleriet
 2. Konfigurera och testa Azure AD-SSO
 
-## <a name="adding-wizergos-productivity-software-from-hello-gallery"></a>Att lägga till Wizergos produktivitetsprogram från hello-galleriet
-tooconfigure hello integrering av Wizergos produktivitetsprogram i Azure AD, behöver du tooadd Wizergos produktivitetsprogram hello galleriet tooyour listan över hanterade SaaS-appar.
+## <a name="adding-wizergos-productivity-software-from-the-gallery"></a>Att lägga till Wizergos produktivitetsprogram från galleriet
+Du måste lägga till Wizergos produktivitetsprogram från galleriet i listan över hanterade SaaS-appar för att konfigurera integrering av Wizergos produktivitetsprogram i Azure AD.
 
-**tooadd Wizergos produktivitetsprogram från galleriet hello utför hello följande steg:**
+**Utför följande steg för att lägga till Wizergos produktivitetsprogram från galleriet:**
 
-1. I hello **klassiska Azure-portalen**, på hello vänstra navigeringsfönstret, klicka på **Active Directory**. 
+1. I den **klassiska Azure-portalen**, klicka på det vänstra navigeringsfönstret **Active Directory**. 
    
     ![Active Directory][1]
-2. Från hello **Directory** listan, Välj hello katalog som du vill tooenable katalogintegrering.
-3. tooopen hello program i vyn hello directory vyn klickar du på **program** i hello huvudmenyn.
+2. Från den **Directory** listan, Välj den katalog som du vill aktivera katalogintegrering.
+3. Klicka för att öppna vyn program i vyn directory **program** på huvudmenyn.
    
     ![Program][2]
-4. Klicka på **Lägg till** på hello hello sidans nederkant.
+4. Klicka på **Lägg till** längst ned på sidan.
    
     ![Program][3]
-5. På hello **vad vill du vill toodo** dialogrutan klickar du på **lägga till ett program från galleriet hello**.
+5. På den **vad vill du göra** dialogrutan klickar du på **lägga till ett program från galleriet**.
    
     ![Program][4]
-6. Skriv i sökrutan hello **Wizergos produktivitetsprogram**.
+6. I sökrutan skriver **Wizergos produktivitetsprogram**.
    
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_01.png)
-7. Markera hello resultat på panelen **Wizergos produktivitetsprogram**, och klicka sedan på **Slutför** tooadd hello program.
+7. Välj i resultatpanelen **Wizergos produktivitetsprogram**, och klicka sedan på **Slutför** lägga till programmet.
    
-    ![Att välja hello app i hello-galleriet](./media/active-directory-saas-wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_001.png)
+    ![Markera appen i galleriet](./media/active-directory-saas-wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_001.png)
 
 ## <a name="configure-and-test-azure-ad-sso"></a>Konfigurera och testa Azure AD-SSO
-hello syftet med det här avsnittet är tooshow hur tooconfigure och testa Azure AD SSO med Wizergos produktivitetsprogram baserat på en testanvändare som kallas ”Britta Simon”.
+Syftet med det här avsnittet är att visa dig hur du konfigurerar och testa Azure AD SSO med Wizergos produktivitetsprogram baserat på en testanvändare som kallas ”Britta Simon”.
 
-För enkel inloggning toowork måste Azure AD tooknow vilka hello motsvarighet användaren i Wizergos produktivitetsprogram tooan användare i Azure AD. Med andra ord måste en länk mellan en Azure AD-användare och hello relaterade användare i Wizergos produktivitetsprogram toobe upprättas.
+För enkel inloggning ska fungera, måste Azure AD motsvarighet användaren i Wizergos produktivitetsprogram till en användare i Azure AD är okänt. Med andra ord måste en länk förhållandet mellan en Azure AD-användare och relaterade användaren i Wizergos produktivitetsprogram upprättas.
 
-Den här länken relationen upprättas genom att tilldela hello värdet för hello **användarnamn** i Azure AD som hello värde för hello **användarnamn** i Wizergos produktivitetsprogram.
+Den här länken relationen upprättas genom att tilldela värdet för den **användarnamn** i Azure AD som värde för den **användarnamn** i Wizergos produktivitetsprogram.
 
-tooconfigure och testa Azure AD enkel inloggning med BynWizergos produktivitet Softwareder, behöver du toocomplete hello följande byggblock:
+Om du vill konfigurera och testa Azure AD enkel inloggning med BynWizergos produktivitet Softwareder, måste du utföra följande byggblock:
 
-1. **[Konfigurera Azure AD enkel inloggning](#configuring-azure-ad-single-single-sign-on)**  -tooenable användare-toouse den här funktionen.
-2. **[Skapa en Azure AD-testanvändare](#creating-an-azure-ad-test-user)**  -tootest Azure AD enkel inloggning med Britta Simon.
-3. **[Skapa en testanvändare Wizergos produktivitetsprogram](#creating-a-wizergos-productivity-software-test-user)**  -toohave en motsvarighet för Britta Simon i Wizergos produktivitetsprogram som är länkade toohello Azure AD-representation av henne.
-4. **[Tilldela hello Azure AD-testanvändare](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD enkel inloggning.
-5. **[Testa enkel inloggning](#testing-single-sign-on)**  -tooverify hello om konfigurationen fungerar.
+1. **[Konfigurera Azure AD enkel inloggning](#configuring-azure-ad-single-single-sign-on)**  - om du vill att användarna kan använda den här funktionen.
+2. **[Skapa en Azure AD-testanvändare](#creating-an-azure-ad-test-user)**  - om du vill testa Azure AD enkel inloggning med Britta Simon.
+3. **[Skapa en testanvändare Wizergos produktivitetsprogram](#creating-a-wizergos-productivity-software-test-user)**  – har en motsvarighet för Britta Simon Wizergos produktivitetsprogram som är kopplad till Azure AD-representation av henne.
+4. **[Tilldela Azure AD-testanvändare](#assigning-the-azure-ad-test-user)**  - om du vill aktivera Britta Simon att använda Azure AD enkel inloggning.
+5. **[Testa enkel inloggning](#testing-single-sign-on)**  - om du vill kontrollera om konfigurationen fungerar.
 
 ### <a name="configuring-azure-ad-sso"></a>Konfigurera Azure AD för enkel inloggning
-I det här avsnittet Aktivera Azure AD enkel inloggning i hello klassiska portalen och konfigurera enkel inloggning i tillämpningsprogrammet Wizergos produktivitetsprogram.
+I det här avsnittet Aktivera Azure AD enkel inloggning i den klassiska portalen och konfigurera enkel inloggning i tillämpningsprogrammet Wizergos produktivitetsprogram.
 
-**tooconfigure Azure AD enkel inloggning med Wizergos produktivitetsprogram utför hello följande steg:**
+**Utför följande steg för att konfigurera Azure AD enkel inloggning med Wizergos produktivitetsprogram:**
 
-1. I hello klassiska portalen på hello **Wizergos produktivitetsprogram** integreringssidan för programmet, klickar du på **Konfigurera enkel inloggning** tooopen hello **Konfigurera enkel inloggning**dialogrutan.
+1. I den klassiska portalen på den **Wizergos produktivitetsprogram** integreringssidan för programmet, klickar du på **Konfigurera enkel inloggning** att öppna den **Konfigurera enkel inloggning**  dialogrutan.
    
     ![Konfigurera enkel inloggning][6] 
-2. På hello **hur skulle du som användare toosign på tooWizergos produktivitetsprogram** väljer **Azure AD enkel inloggning**, och klicka sedan på **nästa**:
+2. På den **hur vill du att användarna kan logga in på Wizergos produktivitetsprogram** väljer **Azure AD enkel inloggning**, och klicka sedan på **nästa**:
    
     ![Konfigurera enkel inloggning](./media/active-directory-saas-wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_03.png)
-3. På hello **konfigurera Appinställningar** dialogrutan sidan, klickar du på **nästa**:
+3. På den **konfigurera Appinställningar** dialogrutan sidan, klickar du på **nästa**:
    
     ![Konfigurera enkel inloggning](./media/active-directory-saas-wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_04.png)
-4. På hello **Konfigurera enkel inloggning på Wizergos produktivitetsprogram** klickar du på **hämta certifikat**, och spara sedan hello på datorn:
+4. På den **Konfigurera enkel inloggning på Wizergos produktivitetsprogram** klickar du på **hämta certifikat**, och sedan spara filen på datorn:
    
     ![Konfigurera enkel inloggning](./media/active-directory-saas-wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_05.png)
-5. I en annan webbläsarfönstret, inloggning tooyour Wizergos produktivitetsprogram klient som administratör.
-6. Hej hamburger-menyn, Välj **Admin**.
+5. I en annan webbläsarfönster inloggning till Wizergos produktivitetsprogram-klient som administratör.
+6. Välj menyn hamburger **Admin**.
    
     ![Konfigurera enkel inloggning på App-sida](./media/active-directory-saas-wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_000.png)
 7. Markera i Administrationssida på vänstra menyn **AUTENTISERING** och klicka på **Azure AD**.
    
     ![Konfigurera enkel inloggning på App-sida](./media/active-directory-saas-wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_002.png)
-8. Utför följande steg hello **AUTENTISERING** avsnitt.
+8. Utför följande steg på **AUTENTISERING** avsnitt.
    
     ![Konfigurera enkel inloggning på App-sida](./media/active-directory-saas-wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_003.png)
-  1. Klicka på **överför** knappen tooupload hello hämtat certifikat från Azure AD. 
-  2. I hello **utfärdar-URL** textruta placera hello värdet för **utfärdar-URL** från guiden Konfigurera program för Azure AD.
-  3. I hello **URL för enkel inloggning** textruta placera hello värdet för **inloggning tjänst-URL för enkel** från guiden Konfigurera program för Azure AD.
-  4. I hello **Sign-Out-URL för enkel** textruta placera hello värdet för **tjänst-URL för enkel Sign-out** från guiden Konfigurera program för Azure AD.
+  1. Klicka på **överför** för att ladda upp det hämta certifikatet från Azure AD. 
+  2. I den **utfärdar-URL** textruta ange värdet för **utfärdar-URL** från guiden Konfigurera program för Azure AD.
+  3. I den **URL för enkel inloggning** textruta ange värdet för **inloggning tjänst-URL för enkel** från guiden Konfigurera program för Azure AD.
+  4. I den **Sign-Out-URL för enkel** textruta ange värdet för **tjänst-URL för enkel Sign-out** från guiden Konfigurera program för Azure AD.
   5. Klicka på **spara** knappen.
-9. Välj hello konfiguration för enkel inloggning bekräftelse i hello klassiska portalen och klicka sedan på **nästa**.
+9. I den klassiska portalen markerar du konfigurationen för enkel inloggning bekräftelsen och klicka sedan på **nästa**.
    
     ![Azure AD-Single Sign-On][10]
-10. På hello **enkel inloggning bekräftelse** klickar du på **Slutför**.  
+10. På den **enkel inloggning bekräftelse** klickar du på **Slutför**.  
     
     ![Azure AD-Single Sign-On][11]
 
 ### <a name="create-an-azure-ad-test-user"></a>Skapa en testanvändare i Azure AD
-hello syftet med det här avsnittet är toocreate en testanvändare i hello klassiska portalen kallas Britta Simon.
+Syftet med det här avsnittet är att skapa en testanvändare i den klassiska portalen kallas Britta Simon.
 
 ![Skapa Azure AD-användare][20]
 
-**toocreate en testanvändare i Azure AD kan utföra hello följande steg:**
+**Utför följande steg för att skapa en testanvändare i Azure AD:**
 
-1. I hello **klassiska Azure-portalen**, på hello vänstra navigeringsfönstret, klicka på **Active Directory**.
+1. I den **klassiska Azure-portalen**, klicka på det vänstra navigeringsfönstret **Active Directory**.
    
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-wizergosproductivitysoftware-tutorial/create_aaduser_09.png)
-2. Från hello **Directory** listan, Välj hello katalog som du vill tooenable katalogintegrering.
-3. toodisplay hello lista över användare i hello menyn hello överst, klickar du på **användare**.
+2. Från den **Directory** listan, Välj den katalog som du vill aktivera katalogintegrering.
+3. Klicka för att visa en lista över användare, på menyn upp **användare**.
    
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-wizergosproductivitysoftware-tutorial/create_aaduser_03.png)
-4. tooopen hello **Lägg till användare** i hello verktygsfältet på hello längst ned i dialogrutan klickar du på **Lägg till användare**.
+4. Öppna den **Lägg till användare** i verktygsfältet längst ned i dialogrutan klickar du på **Lägg till användare**.
    
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-wizergosproductivitysoftware-tutorial/create_aaduser_04.png)
-5. På hello **berätta om den här användaren** dialogrutan utför hello följande steg:
+5. På den **berätta om den här användaren** dialogrutan utför följande steg:
    
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-wizergosproductivitysoftware-tutorial/create_aaduser_05.png) 
   1. Välj ny användare i din organisation som typ av användare.
-  2. I hello användarnamn **textruta**, typen **BrittaSimon**.
+  2. I användarnamnet **textruta**, typen **BrittaSimon**.
   3. Klicka på **Nästa**.
-6. På hello **användarprofil** dialogrutan utför hello följande steg:
+6. På den **användarprofil** dialogrutan utför följande steg:
    
    ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-wizergosproductivitysoftware-tutorial/create_aaduser_06.png)
-  1. I hello **Förnamn** textruta typen **Britta**.  
-  2. I hello **efternamn** textruta typ, **Simon**.
-  3. I hello **visningsnamn** textruta typen **Britta Simon**.
-  4. I hello **rollen** väljer **användaren**.
+  1. I den **Förnamn** textruta typen **Britta**.  
+  2. I den **efternamn** textruta typ, **Simon**.
+  3. I den **visningsnamn** textruta typen **Britta Simon**.
+  4. I den **rollen** väljer **användaren**.
   5. Klicka på **Nästa**.
-7. På hello **skaffa tillfälligt lösenord** dialogrutan sidan, klickar du på **skapa**.
+7. På den **skaffa tillfälligt lösenord** dialogrutan sidan, klickar du på **skapa**.
    
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-wizergosproductivitysoftware-tutorial/create_aaduser_07.png)
-8. På hello **skaffa tillfälligt lösenord** dialogrutan utför hello följande steg:
+8. På den **skaffa tillfälligt lösenord** dialogrutan utför följande steg:
    
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-wizergosproductivitysoftware-tutorial/create_aaduser_08.png)
-  1. Skriv ned hello värdet för hello **nytt lösenord**.
+  1. Anteckna värdet för den **nytt lösenord**.
   2. Klicka på **Complete** (Slutför).   
 
 ### <a name="create-a-wizergos-productivity-software-test-user"></a>Skapa en testanvändare Wizergos produktivitetsprogram
-I det här avsnittet skapar du en användare som kallas Britta Simon i Wizergos produktivitetsprogram. Se tillsammans med Wizergos produktivitetsprogram supportteamet via [ support@wizergos.com ](emailTo:support@wizergos.com) tooadd hello användare i hello Wizergos produktivitetsprogram plattform.
+I det här avsnittet skapar du en användare som kallas Britta Simon i Wizergos produktivitetsprogram. Se tillsammans med Wizergos produktivitetsprogram supportteamet via [ support@wizergos.com ](emailTo:support@wizergos.com) att lägga till användare i Wizergos produktivitetsprogram-plattformen.
 
-### <a name="assign-hello-azure-ad-test-user"></a>Tilldela användare hello Azure AD
-hello syftet med det här avsnittet är tooenabling Britta Simon toouse Azure SSO genom att ge sina access tooWizergos produktivitetsprogram.
+### <a name="assign-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändare
+Syftet med det här avsnittet är att aktivera Britta Simon att använda Azure SSO genom att bevilja sin åtkomst till Wizergos produktivitetsprogram.
 
   ![Tilldela användare][200]
 
-**tooassign Britta Simon tooWizergos produktivitetsprogram, utför följande steg hello:**
+**Om du vill tilldela Wizergos produktivitetsprogram Britta Simon utför du följande steg:**
 
-1. På hello klassiska portalen tooopen hello program i vyn hello directory vyn klickar du på **program** i hello huvudmenyn.
+1. På den klassiska portalen för att öppna vyn program i katalogen vyn klickar du på **program** på huvudmenyn.
    
     ![Tilldela användare][201]
-2. Välj i listan med program hello **Wizergos produktivitetsprogram**.
+2. Välj i listan med program **Wizergos produktivitetsprogram**.
    
     ![Konfigurera enkel inloggning](./media/active-directory-saas-wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_50.png)
-3. Hello-menyn överst hello **användare**.
+3. Klicka på menyn högst upp **användare**.
    
     ![Tilldela användare][203]
-4. Markera i hello användare **Britta Simon**.
-5. Klicka i hello verktygsfältet hello längst ned **tilldela**.
+4. Välj i listan användare **Britta Simon**.
+5. Klicka på i verktygsfältet längst ned i **tilldela**.
    
     ![Tilldela användare][205]
 
 ### <a name="test-single-sign-on"></a>Testa enkel inloggning
-hello syftet med det här avsnittet är tootest din Azure AD SSO konfiguration av hello åtkomstpanelen.
+Syftet med det här avsnittet är att testa Azure AD SSO-konfigurationen med hjälp av panelen åtkomst.
 
-Du bör få automatiskt inloggade tooyour Wizergos produktivitetsprogram programmet när du klickar på hello Wizergos produktivitetsprogram panelen i hello åtkomstpanelen.
+När du klickar på panelen Wizergos produktivitetsprogram på åtkomstpanelen du bör få automatiskt loggat in på ditt Wizergos produktivitetsprogram program.
 
 ## <a name="additional-resources"></a>Ytterligare resurser
-* [Lista över självstudier om hur tooIntegrate SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Vad är programåtkomst och enkel inloggning med Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->

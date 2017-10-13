@@ -1,6 +1,6 @@
 ---
 title: "Självstudier: Azure Active Directory-integrering med arbetsplats av Facebook | Microsoft Docs"
-description: "Lär dig hur tooconfigure enkel inloggning mellan Azure Active Directory och arbetsplats med Facebook."
+description: "Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och arbetsplats med Facebook."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,165 +14,165 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/18/2017
 ms.author: jeedes
-ms.openlocfilehash: fd19b3f178a2aee7dd2f204d6d3cf6df8fe6b444
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 27e62a00832484667117d8718db9f2fc05e2f4e2
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workplace-by-facebook"></a>Självstudier: Azure Active Directory-integrering med arbetsplats av Facebook
 
-I kursen får du lära dig hur toointegrate arbetsplats av Facebook med Azure Active Directory (AD Azure).
+I kursen får lära du att integrera arbetsplats av Facebook med Azure Active Directory (AD Azure).
 
-Integrera arbetsplats av Facebook med Azure AD ger dig hello följande fördelar:
+Integrera arbetsplats av Facebook med Azure AD ger dig följande fördelar:
 
-- Du kan styra i Azure AD som har åtkomst till tooWorkplace av Facebook.
-- Du kan aktivera användarna tooautomatically hämta inloggad tooWorkplace av Facebook (enkel inloggning) med sina Azure AD-konton.
-- Du kan hantera dina konton i en central plats: hello Azure-portalen.
+- Du kan styra i Azure AD som har åtkomst till arbetsplats med Facebook.
+- Du kan aktivera användarna att automatiskt hämta loggat in på arbetsplatsen av Facebook (enkel inloggning) med sina Azure AD-konton.
+- Du kan hantera dina konton i en central plats: Azure-portalen.
 
 Mer information om programvara som en tjänst (SaaS) appintegrering med Azure AD finns [vad är programåtkomst och enkel inloggning med Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Krav
 
-tooconfigure Azure AD-integrering med arbetsplats av Facebook, behöver du hello följande objekt:
+För att konfigurera Azure AD-integrering med arbetsplats av Facebook, behöver du följande:
 
 - En Azure AD-prenumeration
 - En arbetsplats av Facebook enkel inloggning (SSO) aktiverat prenumeration
 
-tootest hello stegen i den här självstudiekursen, Följ dessa rekommendationer:
+Följ dessa rekommendationer för att testa stegen i den här självstudiekursen:
 
 - Använd inte i produktionsmiljön, om det är nödvändigt.
 - Om du inte har en utvärderingsversion Azure AD-miljö kan du [hämta en utvärderingsversion för en månad](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Scenariobeskrivning
-I kursen får testa du Azure AD SSO i en testmiljö. hello-scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
+I kursen får testa du Azure AD SSO i en testmiljö. Det scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
 
-1. Lägg till arbetsplatsen av Facebook från hello-galleriet.
+1. Lägg till arbetsplatsen av Facebook från galleriet.
 2. Konfigurera och testa Azure AD enkel inloggning.
 
-## <a name="add-workplace-by-facebook-from-hello-gallery"></a>Lägg till arbetsplatsen av Facebook från hello-galleriet
-tooconfigure hello integrering av arbetsplatsen av Facebook i Azure AD, lägga till arbetsplatsen av Facebook från hello galleriet tooyour lista över hanterade SaaS-appar.
+## <a name="add-workplace-by-facebook-from-the-gallery"></a>Lägg till arbetsplatsen av Facebook från galleriet
+För att konfigurera integrering av arbetsplatsen av Facebook i Azure AD, lägga till arbetsplatsen av Facebook från galleriet i listan över hanterade SaaS-appar.
 
-1. I hello [Azure-portalen](https://portal.azure.com), i hello vänstra rutan, Välj **Azure Active Directory**. 
+1. I den [Azure-portalen](https://portal.azure.com), i den vänstra rutan, Välj **Azure Active Directory**. 
 
-    ![hello Azure Active Directory-knappen][1]
+    ![Azure Active Directory-knappen][1]
 
-2. Bläddra för**företagsprogram** > **alla program**.
+2. Bläddra till **företagsprogram** > **alla program**.
 
-    ![hello Enterprise program bladet][2]
+    ![Bladet Enterprise program][2]
     
-3. tooadd hello nya program, Välj **nytt program** överst hello hello dialogrutan.
+3. Om du vill lägga till det nya programmet, Välj **nytt program** överst i dialogrutan.
 
-    ![hello-knappen för nytt program][3]
+    ![Knappen Nytt program][3]
 
-4. Skriv i sökrutan hello **arbetsplats av Facebook**, och välj **arbetsplats av Facebook** resultaten. Välj sedan **Lägg till**, tooadd hello program.
+4. I sökrutan skriver **arbetsplats av Facebook**, och välj **arbetsplats av Facebook** resultaten. Välj sedan **Lägg till**, för att lägga till programmet.
 
-    ![Arbetsplats av Facebook i hello resultatlistan](./media/active-directory-saas-facebook-at-work-tutorial/tutorial_workplacebyfacebook_search.png)
+    ![Arbetsplats av Facebook i resultatlistan](./media/active-directory-saas-facebook-at-work-tutorial/tutorial_workplacebyfacebook_search.png)
 
 ##  <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa Azure AD enkel inloggning
 I det här avsnittet kan du konfigurera och testa Azure AD SSO till arbetsplats av Facebook, baserat på en testanvändare som kallas ”Britta Simon”.
 
-För enkel inloggning toowork måste Azure AD tooknow vilka hello motsvarighet användaren arbetsplatsen av Facebook är tooa i Azure AD. Med andra ord ska ett länkat förhållande mellan en Azure AD-användare och hello relaterade användare i arbetsplats av Facebook upprättas.
+För SSO ska fungera måste Azure AD du känna till motsvarande användaren i arbetsplats av Facebook till en användare i Azure AD. Med andra ord ska ett länkat förhållande mellan en Azure AD-användare och relaterade användaren arbetsplatsen av Facebook upprättas.
 
-Etablera den här relationen genom att tilldela hello värdet för hello **användarnamn** i Azure AD som hello värde för hello **användarnamn** arbetsplatsen av Facebook.
+Etablera den här relationen genom att tilldela värdet för den **användarnamn** i Azure AD som värde för den **användarnamn** arbetsplatsen av Facebook.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurera Azure AD enkel inloggning
 
-Du aktiverar Azure AD SSO i hello Azure-portalen i det här avsnittet och du konfigurerar enkel inloggning i din arbetsplats Facebook-programmet.
+Du aktiverar Azure AD SSO i Azure portal och du konfigurerar enkel inloggning i din arbetsplats Facebook-programmet i det här avsnittet.
 
-1. I hello Azure-portalen på hello **arbetsplats av Facebook** programmet integration anger **enkel inloggning**.
+1. I Azure-portalen på den **arbetsplats av Facebook** programmet integration anger **enkel inloggning**.
 
     ![Konfigurera enkel inloggning länk][4]
 
-2. I hello **enkel inloggning** dialogrutan **läge** som **SAML-baserade inloggning** tooenable enkel inloggning.
+2. I den **enkel inloggning** dialogrutan **läge** som **SAML-baserade inloggning** att aktivera enkel inloggning.
  
     ![Enkel inloggning dialogrutan](./media/active-directory-saas-facebook-at-work-tutorial/tutorial_workplacebyfacebook_samlbase.png)
 
-3. I hello **arbetsplats Facebook-domänen och URL: er** avsnittet, hello följande:
+3. I den **arbetsplats Facebook-domänen och URL: er** avsnittet, gör du följande:
 
-    a. I hello **inloggnings-URL** text skriver en URL som använder hello följande mönster:`https://<company subdomain>.facebook.com`
+    a. I den **inloggnings-URL** text skriver en URL som använder följande mönster:`https://<company subdomain>.facebook.com`
 
-    b. I hello **identifierare** text skriver en URL som använder hello följande mönster:`https://www.facebook.com/company/<scim company id>`
+    b. I den **identifierare** text skriver en URL som använder följande mönster:`https://www.facebook.com/company/<scim company id>`
 
     > [!NOTE]
-    > Dessa värden är bara ett exempel. Uppdatera dessa värden med hello faktiska inloggnings-URL och identifierare. Kontakta hello [arbetsplats av Facebook klienten supportteamet](https://workplace.fb.com/faq/) tooget dessa värden. 
+    > Dessa värden är bara ett exempel. Uppdatera dessa värden med den faktiska inloggnings-URL och identifierare. Kontakta den [arbetsplats av Facebook klienten supportteamet](https://workplace.fb.com/faq/) att hämta dessa värden. 
 
-4. I hello **SAML-signeringscertifikat** väljer **certifikat (Base64)**, och sedan spara hello certifikatfilen på datorn.
+4. I den **SAML-signeringscertifikat** väljer **certifikat (Base64)**, och sedan spara certifikatfilen på datorn.
 
-    ![länk för hämtning av hello-certifikat](./media/active-directory-saas-facebook-at-work-tutorial/tutorial_workplacebyfacebook_certificate.png) 
+    ![Länken hämta certifikatet](./media/active-directory-saas-facebook-at-work-tutorial/tutorial_workplacebyfacebook_certificate.png) 
 
 5. Välj **Spara**.
 
     ![Konfigurera enkel inloggning spara](./media/active-directory-saas-facebook-at-work-tutorial/tutorial_general_400.png)
 
-6. I hello **arbetsplats Facebook konfigurationen** väljer **konfigurera arbetsplats av Facebook** tooopen hello **konfigurera inloggning** fönster. Kopiera hello **Sign-Out URL, SAML enhets-ID och SAML enkel inloggning Tjänstwebbadress** från hello **Snabbreferens** avsnitt.
+6. I den **arbetsplats Facebook konfigurationen** väljer **konfigurera arbetsplats av Facebook** att öppna den **konfigurera inloggning** fönster. Kopiera den **Sign-Out URL, SAML enhets-ID och SAML enkel inloggning Tjänstwebbadress** från den **Snabbreferens** avsnitt.
 
     ![Arbetsplats av Facebook-konfiguration](./media/active-directory-saas-facebook-at-work-tutorial/config.png) 
 
-7. Logga in tooyour arbetsplats av Facebook företagets plats som en administratör i ett annat webbläsarfönster.
+7. I en annan webbläsarfönster inloggningen till din arbetsplats av Facebook företagets plats som administratör.
   
    > [!NOTE] 
-   > Som en del av hello SAML autentiseringsprocessen, kan arbetsplatsen använda frågesträngar för in too2.5 kilobyte i storlek i ordning toopass parametrar tooAzure AD.
+   > Som en del av processen för SAML-autentisering, kan arbetsplats använda frågesträngar upp till 2,5 kilobyte i storlek för att kunna skicka parametrar till Azure AD.
 
-8. I hello **företagets instrumentpanelen**, gå toohello **autentisering** fliken.
+8. I den **företagets instrumentpanelen**, gå till den **autentisering** fliken.
 
-9. Under **SAML-autentisering**väljer **SSO endast** hello nedrullningsbara listan.
+9. Under **SAML-autentisering**väljer **SSO endast** från den nedrullningsbara listan.
 
-10. Ange värden för hello kopieras från hello **arbetsplats Facebook konfigurationen** avsnitt i hello Azure-portalen i hello motsvarande fält:
+10. Ange de värden som kopieras från den **arbetsplats Facebook konfigurationen** på Azure portal till motsvarande fält:
 
-    *   I den **SAML URL** klistra in hello värdet för textrutan **inloggning tjänst-URL för enkel**, som du har kopierat från hello Azure-portalen.
-    *   I den **utfärdar-URL för SAML** klistra in hello värdet för textrutan **SAML enhets-ID**, som du har kopierat från hello Azure-portalen.
-    *   I **SAML logga ut omdirigera (valfritt)**, klistra in hello värdet för **Sign-Out URL**, som du har kopierat från hello Azure-portalen.
-    *   Öppna din **Base64-kodat certifikat** i anteckningar som hämtats från hello Azure-portalen. Kopiera hello innehållet i den till Urklipp och klistra in den toothe **SAML certifikat** textruta.
+    *   I den **SAML URL** text klistra in värdet för **inloggning tjänst-URL för enkel**, som du har kopierat från Azure-portalen.
+    *   I den **utfärdar-URL för SAML** text klistra in värdet för **SAML enhets-ID**, som du har kopierat från Azure-portalen.
+    *   I **SAML logga ut omdirigera (valfritt)**, klistra in värdet för **Sign-Out URL**, som du har kopierat från Azure-portalen.
+    *   Öppna din **Base64-kodat certifikat** i anteckningar, som hämtas från Azure-portalen. Kopiera innehållet i den till Urklipp och klistra in den till den **SAML certifikat** textruta.
 
-11. Du kan behöva tooenter hello målgruppen URL mottagande URL och ACS (Assertion konsumenten Service) URL som visas under hello **SAML-konfiguration** avsnitt.
+11. Du kan behöva ange Webbadressen till målgruppen mottagaren URL: en och URL för ACS (Assertion konsumenten Service), som visas under den **SAML-konfiguration** avsnitt.
 
-12. Rulla toohello längst ned i avsnittet hello och markera **Test SSO**. Ett popup-fönster visas med hello Azure AD-inloggningssida. tooauthenticate, ange dina autentiseringsuppgifter som vanligt. Kontrollera hello e-postadress returnerade tillbaka från Azure AD är hello samma som hello arbetsplatskonto som du är inloggad med.
+12. Bläddra längst ned i avsnittet och välj **Test SSO**. Ett popup-fönster visas med Azure AD-inloggningssida. Ange dina autentiseringsuppgifter för att autentisera, som vanligt. Kontrollera den e-postadress som returnerades från Azure AD är samma som arbetsplatskontot som du är inloggad med.
 
-13. Rulla toohello längst ned på sidan hello och välj om hello test har slutförts, **spara**.
+13. Om testet har slutförts, bläddra till längst ned på sidan och välj **spara**.
 
 14. Alla som använder arbetsplats kan nu se med Azure AD-inloggningssida för autentisering.
 
-Du kan välja tooconfigure SAML utloggning URL, vilket kan vara används toopoint vid utloggning hello Azure AD-sidan. När den här inställningen har aktiverats och konfigurerats, hello användaren är inte längre utloggning sidan för dirigerad toohello arbetsyta. I stället är hello användaren omdirigerade toohello URL som har lagts till i hello SAML utloggning omdirigering inställningen.
+Du kan välja att konfigurera en SAML-logga ut URL, vilket kan användas för att peka på sidan Azure AD utloggning. När den här inställningen har aktiverats och konfigurerats, omdirigeras inte längre användaren till sidan Arbetsyta utloggning. I stället omdirigeras användaren till den URL som har lagts till i inställningen SAML utloggning omdirigera.
 
 
 > [!TIP]
-> Du kan nu läsa en kortare version av dessa anvisningar i hello [Azure-portalen](https://portal.azure.com), medan du ställer in hello app. När du lägger till den här appen från hello **Active Directory** > **företagsprogram** väljer du helt enkelt hello **enkel inloggning** fliken och åtkomst hello inbäddade dokumentationen via hello **Configuration** avsnittet längst ned hello. Du kan läsa mer om hello inbäddade dokumentationen funktionen i hello [Azure AD inbäddade dokumentationen]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Du kan nu läsa en kortare version av instruktionerna i den [Azure-portalen](https://portal.azure.com), medan du installerar appen. När du lägger till den här appen från den **Active Directory** > **företagsprogram** bara väljer den **enkel inloggning** fliken och åtkomst till den inbäddade dokumentationen via den **Configuration** avsnittet längst ned. Du kan läsa mer om funktionen inbäddade dokumentationen i den [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
 
 ### <a name="configure-reauthentication-frequency"></a>Konfigurera omautentisering frekvens
 
-Du kan konfigurera arbetsplats tooprompt för SAML kontroll varje dag, tre dagar, en vecka, två veckor, en månad eller aldrig.
+Du kan konfigurera arbetsplats för att fråga efter en SAML kontroll varje dag, tre dagar, en vecka, två veckor, en månad eller aldrig.
 
 > [!NOTE] 
->hello minsta hello SAML-kontroll av mobila program värdet för tooone vecka.
+>Minsta värde för SAML-kontroll av mobila program anges till en vecka.
 
-Du kan också tvinga en SAML återställa för alla användare. toodo detta, Använd hello **kräver SAML-autentisering för alla användare nu** knappen.
+Du kan också tvinga en SAML återställa för alla användare. Det gör du genom att använda den **kräver SAML-autentisering för alla användare nu** knappen.
 
 
 ### <a name="create-an-azure-ad-test-user"></a>Skapa en testanvändare i Azure AD
-hello syftet med det här avsnittet är toocreate en testanvändare i hello Azure-portalen kallas Britta Simon.
+Syftet med det här avsnittet är att skapa en testanvändare i Azure-portalen kallas Britta Simon.
 
 ![Skapa Azure AD-användare][100]
 
-1. I hello **Azure-portalen**, i hello vänstra rutan, Välj **Azure Active Directory**.
+1. I den **Azure-portalen**, i den vänstra rutan, Välj **Azure Active Directory**.
 
-    ![hello Azure Active Directory-knappen](./media/active-directory-saas-facebook-at-work-tutorial/create_aaduser_01.png) 
+    ![Azure Active Directory-knappen](./media/active-directory-saas-facebook-at-work-tutorial/create_aaduser_01.png) 
 
-2. toodisplay hello lista över användare, gå för**användare och grupper**, och välj **alla användare**.
+2. Om du vill visa en lista över användare, gå till **användare och grupper**, och välj **alla användare**.
     
-    ![Hej ”användare och grupper” och ”alla användare” länkar](./media/active-directory-saas-facebook-at-work-tutorial/create_aaduser_02.png) 
+    ![”Användare och grupper” och ”alla användare” länkar](./media/active-directory-saas-facebook-at-work-tutorial/create_aaduser_02.png) 
 
-3. tooopen hello **användare** dialogrutan **Lägg till**.
+3. Öppna den **användare** dialogrutan **Lägg till**.
  
-    ![hello webbinställningar](./media/active-directory-saas-facebook-at-work-tutorial/create_aaduser_03.png) 
+    ![Knappen Lägg till](./media/active-directory-saas-facebook-at-work-tutorial/create_aaduser_03.png) 
 
-4. I hello **användaren** dialogrutan rutan, hello följande:
+4. I den **användaren** dialogrutan Gör följande:
  
-    ![hello användardialogrutan](./media/active-directory-saas-facebook-at-work-tutorial/create_aaduser_04.png) 
+    ![Dialogrutan användare](./media/active-directory-saas-facebook-at-work-tutorial/create_aaduser_04.png) 
 
-    a. I hello **namn** skriver **BrittaSimon**.
+    a. I den **namn** skriver **BrittaSimon**.
 
-    b. I hello **användarnamn** textruta, typen hello **e-postadress** av BrittaSimon.
+    b. I den **användarnamn** skriver den **e-postadress** av BrittaSimon.
 
     c. Välj **visa lösenordet**, och Skriv ned.
 
@@ -182,50 +182,50 @@ hello syftet med det här avsnittet är toocreate en testanvändare i hello Azur
 
 I det här avsnittet skapas en användare som kallas Britta Simon i arbetsplats med Facebook. Arbetsplats av Facebook stöder just-in-time-allokering som är aktiverad som standard.
 
-Det finns inga åtgärder i det här avsnittet. Om en användare inte finns i arbetsplats av Facebook, skapas en ny när du försöker tooaccess arbetsplats med Facebook.
+Det finns inga åtgärder i det här avsnittet. Om en användare inte finns i arbetsplats av Facebook, skapas en ny när du försöker komma åt arbetsplatsen av Facebook.
 
 >[!Note]
->Om du behöver toocreate en användare manuellt kan kontakta hello [arbetsplats av Facebook klienten supportteamet](https://workplace.fb.com/faq/).
+>Om du behöver skapa en användare manuellt kan kontakta den [arbetsplats av Facebook klienten supportteamet](https://workplace.fb.com/faq/).
 
-### <a name="assign-hello-azure-ad-test-user"></a>Tilldela användare hello Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändare
 
-I det här avsnittet kan aktivera du Britta Simon toouse Azure SSO genom att bevilja åtkomst tooWorkplace av Facebook.
+I det här avsnittet kan du aktivera Britta Simon att använda Azure SSO genom att bevilja åtkomst till arbetsplats med Facebook.
 
 ![Tilldela användare][200] 
 
-1. I hello Azure visas portal, öppna hello program. Gå toohello directory vyn finns för**företagsprogram**, och välj sedan **alla program**.
+1. Öppna program i Azure-portalen. Gå till vyn directory genom att gå till **företagsprogram**, och välj sedan **alla program**.
 
     ![Tilldela användare][201] 
 
-2. Välj i listan med program hello **arbetsplats av Facebook**.
+2. Välj i listan med program **arbetsplats av Facebook**.
 
-    ![hello arbetsplats av Facebook-länken i listan med program hello](./media/active-directory-saas-facebook-at-work-tutorial/tutorial_workplacebyfacebook_app.png) 
+    ![Arbetsplatsen av Facebook-länken i listan med program](./media/active-directory-saas-facebook-at-work-tutorial/tutorial_workplacebyfacebook_app.png) 
 
-3. Välj hello menyn hello vänster **användare och grupper**.
+3. Välj på menyn till vänster **användare och grupper**.
 
-    ![Hej ”användare och grupper” länk][202] 
+    ![Länken ”användare och grupper”][202] 
 
-4. Välj **Lägg till**. Sedan hello **Lägg uppdrag** väljer **användare och grupper**.
+4. Välj **Lägg till**. I den **Lägg uppdrag** väljer **användare och grupper**.
 
-    ![hello Lägg uppdrag fönstret][203]
+    ![Fönstret Lägg till tilldelning][203]
 
-5. I hello **användare och grupper** dialogrutan **Britta Simon** i hello användarlistan.
+5. I den **användare och grupper** dialogrutan **Britta Simon** på användarlistan.
 
-6. I hello **användare och grupper** dialogrutan **Välj**.
+6. I den **användare och grupper** dialogrutan **Välj**.
 
-7. I hello **Lägg uppdrag** dialogrutan **tilldela**.
+7. I den **Lägg uppdrag** dialogrutan **tilldela**.
     
 ### <a name="test-single-sign-on"></a>Testa enkel inloggning
 
-Om du vill tootest SSO-inställningarna, öppna hello åtkomstpanelen.
-Mer information finns i [introduktion toohello åtkomstpanelen](active-directory-saas-access-panel-introduction.md).
+Om du vill testa inställningarna för enkel inloggning, öppna åtkomstpanelen.
+Mer information finns i [Introduktion till åtkomstpanelen](active-directory-saas-access-panel-introduction.md).
 
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Se hello [lista över självstudier om hur toointegrate SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md).
+* Finns det [lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md).
 * Läs [vad är programåtkomst och enkel inloggning med Azure Active Directory?](active-directory-appssoaccess-whatis.md).
-* Läs mer om hur för[konfigurera användaretablering](active-directory-saas-facebook-at-work-provisioning-tutorial.md).
+* Mer information om hur du [konfigurera användaretablering](active-directory-saas-facebook-at-work-provisioning-tutorial.md).
 
 
 

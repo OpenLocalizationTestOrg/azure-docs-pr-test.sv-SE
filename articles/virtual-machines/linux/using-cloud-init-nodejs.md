@@ -1,6 +1,6 @@
 ---
-title: "aaaUsing moln init toocustomize en Linux VM när du skapar i Azure | Microsoft Docs"
-description: Hur toouse moln init toocustomize en Linux VM under genereringen av med hello Azure CLI 1.0
+title: "Med hjälp av molnet init för att anpassa en Linux VM under Skapa i Azure | Microsoft Docs"
+description: "Hur du använder molntjänster init för att anpassa en Linux VM under genereringen av med Azure CLI 1.0"
 services: virtual-machines-linux
 documentationcenter: 
 author: vlivech
@@ -15,27 +15,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/26/2016
 ms.author: v-livech
-ms.openlocfilehash: b9f480bd04029956d0593bbef931795733cbc2f6
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 0b6150bca333188666935b3c9aa02c4b33690db9
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="use-cloud-init-toocustomize-a-linux-vm-during-creation-with-hello-azure-cli-10"></a>Använda molnet init toocustomize en Linux VM under genereringen av med hello Azure CLI 1.0
-Den här artikeln visar hur toomake ett moln init skriptet tooset hello värdnamn, Uppdatera installerade paket och hantera användarkonton.  hello molnet init skript anropas under hello skapa en virtuell dator från Azure CLI.  hello artikel kräver:
+# <a name="use-cloud-init-to-customize-a-linux-vm-during-creation-with-the-azure-cli-10"></a>Använda molntjänster init för att anpassa en Linux VM under skapande av med Azure CLI 1.0
+Den här artikeln visar hur du gör ett moln init-skript för att ange värdnamnet, uppdateringspaket installeras och hanterar användarkonton.  Molnet init-skript anropas under den virtuella dator skapandet Azure CLI.  Artikeln kräver:
 
 * ett Azure-konto ([hämta en kostnadsfri utvärderingsversion](https://azure.microsoft.com/pricing/free-trial/)).
-* Hej [Azure CLI](../../cli-install-nodejs.md) loggat in med `azure login`.
-* hello Azure CLI *måste vara i* läget Azure Resource Manager `azure config mode arm`.
+* [Azure CLI](../../cli-install-nodejs.md) inloggad med `azure login`.
+* Azure CLI *måste vara i* Azure Resource Manager-läge `azure config mode arm`.
 
-## <a name="cli-versions-toocomplete-hello-task"></a>CLI versioner toocomplete hello aktivitet
-Du kan göra hello med hjälp av något av följande versioner av CLI hello:
+## <a name="cli-versions-to-complete-the-task"></a>CLI-versioner för att slutföra uppgiften
+Du kan slutföra uppgiften med någon av följande CLI-versioner:
 
-- [Azure CLI 1.0](#quick-commands) – våra CLI för hello klassisk och resurs management distributionsmodeller (den här artikeln)
-- [Azure CLI 2.0](using-cloud-init.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) -vår nästa generations CLI för hello resursdistributionsmodell för hantering
+- [Azure CLI 1.0](#quick-commands) – våra CLI för klassisk och resurs management på distributionsmodeller (den här artikeln)
+- [Azure CLI 2.0](using-cloud-init.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) – vår nästa generations CLI för distributionsmodellen resurshantering
 
 ## <a name="quick-commands"></a>Snabbkommandon
-Skapa ett moln init.txt skript som anger hello värdnamn, uppdaterar alla paket och lägger till en sudo användare tooLinux.
+Skapa ett moln init.txt skript som anger värdnamnet, uppdaterar alla paket och lägger till en användare med sudo Linux.
 
 ```sh
 #cloud-config
@@ -49,13 +49,13 @@ users:
     ssh-authorized-keys:
       - ssh-rsa AAAAB3<snip>==myAdminUser@myVM
 ```
-Skapa en resurs grupp toolaunch virtuella datorer i.
+Skapa en resursgrupp om du vill starta virtuella datorer i.
 
 ```azurecli
 azure group create myResourceGroup westus
 ```
 
-Skapa en Linux VM som använder molnet init tooconfigure vid start.
+Skapa en Linux VM som använder molnet init konfigureras under start.
 
 ```azurecli
 azure vm create \
@@ -76,23 +76,23 @@ azure vm create \
 
 ## <a name="detailed-walkthrough"></a>Detaljerad genomgång
 ### <a name="introduction"></a>Introduktion
-När du startar en ny Linux VM får du en standard Linux VM utan något anpassad eller redo för dina behov. [Molnet init](https://cloudinit.readthedocs.org) är ett standardiserat sätt tooinject ett skript eller konfiguration inställningar i den Linux VM som operativsystemet startas för hello första gången.
+När du startar en ny Linux VM får du en standard Linux VM utan något anpassad eller redo för dina behov. [Molnet init](https://cloudinit.readthedocs.org) är ett standardiserat sätt att mata in ett skript eller konfiguration inställningar i den Linux VM som startar för första gången.
 
-I Azure, det finns tre olika sätt toomake ändringar på en Linux VM när den distribuerats eller startas.
+I Azure, det finns tre olika sätt att göra ändringar på en Linux VM när den distribuerats eller startas.
 
 * Mata in skript med hjälp av molnet initiering.
-* Mata in skript med hjälp av hello Azure [VMAccess-tillägget](using-vmaccess-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+* Mata in skript med hjälp av Azure [VMAccess-tillägget](using-vmaccess-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 * En Azure-mall med hjälp av molnet initiering.
 * En Azure-mall med hjälp av [CustomScriptExtention](extensions-customscript.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-tooinject skript när som helst efter omstart:
+Att mata in skript när som helst efter omstart:
 
-* SSH toorun direkt kommandon
-* Mata in skript med hjälp av hello Azure [VMAccess-tillägget](using-vmaccess-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json), imperatively eller i en Azure-mall
+* SSH kan köra kommandon direkt
+* Mata in skript med hjälp av Azure [VMAccess-tillägget](using-vmaccess-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json), imperatively eller i en Azure-mall
 * Verktyg för konfigurationshantering som Ansible, Salt, Chef eller Puppet.
 
 > [!NOTE]
-> : VMAccess-tillägget körs ett skript som roten i hello samma sätt med hjälp av SSH.  Med hjälp av hello VM-tillägget kan dock flera funktioner som Azure-erbjudanden som kan vara användbara beroende på ditt scenario.
+> : VMAccess-tillägget körs ett skript som rot på samma sätt som med SSH kan.  Med hjälp av VM-tillägget kan dock flera funktioner som Azure-erbjudanden som kan vara användbara beroende på ditt scenario.
 > 
 > 
 
@@ -106,18 +106,18 @@ tooinject skript när som helst efter omstart:
 | RHEL |Redhat |RHEL |7.2 |senaste |Nej |
 | UbuntuLTS |Canonical |UbuntuServer |14.04.4-LTS |senaste |Ja |
 
-Microsoft kan arbeta med våra partners tooget moln initiering ingår och arbeta i hello bilder de ger tooAzure.
+Microsoft arbetar med våra partner att hämta molnet initiering ingår och arbeta med bilder som skickas till Azure.
 
-## <a name="adding-a-cloud-init-script-toohello-vm-creation-with-hello-azure-cli"></a>Lägga till ett moln init skriptet toohello skapa en virtuell dator med hello Azure CLI
-toolaunch ett moln init-skript när du skapar en virtuell dator i Azure, ange hello molnet init-fil med hello Azure CLI `--custom-data` växla.
+## <a name="adding-a-cloud-init-script-to-the-vm-creation-with-the-azure-cli"></a>Lägga till ett moln init-skript i Skapa Virtuella med Azure CLI
+Om du vill starta ett moln init-skript när du skapar en virtuell dator i Azure, ange molnet init-filen med hjälp av Azure CLI `--custom-data` växla.
 
-Skapa en resurs grupp toolaunch virtuella datorer i.
+Skapa en resursgrupp om du vill starta virtuella datorer i.
 
 ```azurecli
 azure group create myResourceGroup westus
 ```
 
-Skapa en Linux VM som använder molnet init tooconfigure vid start.
+Skapa en Linux VM som använder molnet init konfigureras under start.
 
 ```azurecli
 azure vm create \
@@ -136,8 +136,8 @@ azure vm create \
   --custom-data cloud-init.txt
 ```
 
-## <a name="creating-a-cloud-init-script-tooset-hello-hostname-of-a-linux-vm"></a>Skapa ett moln init skriptet tooset hello värdnamn för en Linux-VM
-En av hello enklaste och mest viktiga inställningar för alla Linux-VM är hello värdnamn. Vi kan enkelt ange molnet initiering med det här skriptet.  
+## <a name="creating-a-cloud-init-script-to-set-the-hostname-of-a-linux-vm"></a>Skapa ett moln init-skript för att ange värdnamnet för en Linux-VM
+En av de enklaste och mest viktiga inställningarna för alla Linux-VM är värdnamnet. Vi kan enkelt ange molnet initiering med det här skriptet.  
 
 ### <a name="example-cloud-init-script-named-cloudconfighostnametxt"></a>Exempel molnet init skript som heter `cloud_config_hostname.txt`.
 ```sh
@@ -145,7 +145,7 @@ En av hello enklaste och mest viktiga inställningar för alla Linux-VM är hell
 hostname: myservername
 ```
 
-Under hello första start av hello VM moln init skriptet anger hello värdnamn för`myservername`.
+Under den första starten av den virtuella datorn anger skriptet molnet init värdnamnet till `myservername`.
 
 ```azurecli
 azure vm create \
@@ -164,7 +164,7 @@ azure vm create \
   --custom-data cloud_config_hostname.txt
 ```
 
-Logga in och kontrollera hello värdnamnet för hello ny virtuell dator.
+Logga in och kontrollera värdnamnet för den nya virtuella datorn.
 
 ```bash
 ssh myVM
@@ -172,16 +172,16 @@ hostname
 myservername
 ```
 
-## <a name="creating-a-cloud-init-script-tooupdate-linux"></a>Skapa en moln-init skriptet tooupdate Linux
-För säkerhet kan du din Ubuntu VM tooupdate på hello första start.  Med hjälp av molnet init kan vi göra att med hello följer skript, beroende på hur du använder hello Linux-distribution.
+## <a name="creating-a-cloud-init-script-to-update-linux"></a>Skapa en moln-init-skript för att uppdatera Linux
+Av säkerhetsskäl vill du din Ubuntu VM att uppdatera startas första gången.  Med hjälp av molnet init vi kan göra det med följande skript, beroende på Linux-distribution som du använder.
 
-### <a name="example-cloud-init-script-cloudconfigaptupgradetxt-for-hello-debian-family"></a>Molnet init exempelskriptet `cloud_config_apt_upgrade.txt` för hello Debian-familjen
+### <a name="example-cloud-init-script-cloudconfigaptupgradetxt-for-the-debian-family"></a>Molnet init exempelskriptet `cloud_config_apt_upgrade.txt` Debian-familjen
 ```sh
 #cloud-config
 apt_upgrade: true
 ```
 
-Efter Linux har startats, alla hello installerade paket uppdateras `apt-get`.
+Efter Linux har startats, installerade paket uppdateras `apt-get`.
 
 ```azurecli
 azure vm create \
@@ -209,13 +209,13 @@ Reading package lists... Done
 Building dependency tree
 Reading state information... Done
 Calculating upgrade... Done
-hello following packages have been kept back:
+The following packages have been kept back:
   linux-generic linux-headers-generic linux-image-generic
-0 upgraded, 0 newly installed, 0 tooremove and 0 not upgraded.
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
 ```
 
-## <a name="creating-a-cloud-init-script-tooadd-a-user-toolinux"></a>Skapa en moln-init skriptet tooadd tooLinux för en användare
-En av hello första uppgifter på alla nya Linux-VM är tooadd en användare för dig själv eller tooavoid med `root`. SSH-nycklar är bästa praxis för säkerhet och användbarhet och de läggs toohello `~/.ssh/authorized_keys` fil med det här molnet init-skriptet.
+## <a name="creating-a-cloud-init-script-to-add-a-user-to-linux"></a>Skapa ett moln init-skript för att lägga till en användare till Linux
+En av de första uppgifterna på alla nya Linux-VM är att lägga till en användare själv eller Undvik att använda `root`. SSH-nycklar är bästa praxis för säkerhet och användbarhet och de läggs till i `~/.ssh/authorized_keys` fil med det här molnet init-skriptet.
 
 ### <a name="example-cloud-init-script-cloudconfigadduserstxt-for-debian-family"></a>Molnet init exempelskriptet `cloud_config_add_users.txt` Debian-familjen
 ```sh
@@ -229,7 +229,7 @@ users:
       - ssh-rsa AAAAB3<snip>==myAdminUser@myUbuntuVM
 ```
 
-Efter Linux har startats, är alla hello listas användare skapas och tillagda toohello sudo grupp.
+Efter Linux har startats, skapas och läggs till i sudo-gruppen Alla användare.
 
 ```azurecli
 azure vm create \
@@ -248,7 +248,7 @@ azure vm create \
   --custom-data cloud_config_add_users.txt
 ```
 
-Logga in och kontrollera hello nyligen skapade användaren.
+Logga in och kontrollera den nyligen skapade användaren.
 
 ```bash
 ssh myVM
@@ -266,9 +266,9 @@ myCloudInitAddedAdminUser:x:1000:
 ```
 
 ## <a name="next-steps"></a>Nästa steg
-Initiering molnet har blivit ett standardiserat sätt toomodify din Linux VM på Start. Azure har också VM-tillägg som gör att du toomodify din LinuxVM på Start eller medan den körs. Du kan till exempel använda hello Azure VMAccessExtension tooreset SSH eller användarinformation medan hello VM körs. Med molnet initiering behöver du en omstart tooreset hello lösenord.
+Initiering molnet har blivit ett sätt som standard för att ändra din Linux VM på Start. Azure har också VM-tillägg som gör att du kan ändra din LinuxVM på Start eller medan den körs. Du kan till exempel använda Azure-VMAccessExtension för att återställa SSH-eller medan den virtuella datorn körs. Med molnet initiering måste startas om för att återställa lösenordet.
 
 [Om virtuella datortillägg och funktioner](../windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-[Hantera användare, SSH och kontrollera eller reparera diskar på virtuella Azure Linux-datorer med hjälp av hello VMAccess-tillägget](using-vmaccess-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+[Hantera användare, SSH och kontrollera eller reparera diskar på virtuella Azure Linux-datorer med hjälp av VMAccess-tillägget](using-vmaccess-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 

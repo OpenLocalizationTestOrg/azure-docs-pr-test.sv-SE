@@ -1,5 +1,5 @@
 ---
-title: "aaaNAT krav för ExpressRoute-kretsar | Microsoft Docs"
+title: "NAT-krav för ExpressRoute-kretsar | Microsoft Docs"
 description: "Den här sidan innehåller detaljerade krav för att konfigurera och hantera NAT för ExpressRoute-kretsar."
 documentationcenter: na
 services: expressroute
@@ -14,64 +14,64 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/12/2017
 ms.author: cherylmc
-ms.openlocfilehash: 09a0e841235de3f6b85e32172d7f99f20b5baf54
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: d3de566ff2825ef0c41d88d4a86157dc23d9f46b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="expressroute-nat-requirements"></a>ExpressRoutes NAT-krav
-tooconnect tooMicrosoft molntjänster med hjälp av ExpressRoute, du behöver tooset in och hantera NAT-enheter. Vissa anslutningsleverantörer erbjuder konfigurering och hantering av NAT som en hanterad tjänst. Kontrollera med din anslutning providern toosee om de erbjuder dessa tjänster. Om inte, måste du följa toohello krav som beskrivs nedan. 
+För att kunna ansluta till Microsofts molntjänster med ExpressRoute måste du konfigurera och hantera NAT. Vissa anslutningsleverantörer erbjuder konfigurering och hantering av NAT som en hanterad tjänst. Fråga din anslutningsleverantör om de erbjuder denna tjänst. Om inte, måste du följa kraven som beskrivs nedan. 
 
-Granska hello [ExpressRoute kretsar och routningsdomäner](expressroute-circuit-peerings.md) sidan tooget en översikt över hello olika routningsdomäner. toomeet hello offentliga IP-adress krav för Azure offentliga och Microsoft-peering, rekommenderar vi att du konfigurerar NAT mellan ditt nätverk och Microsoft. Det här avsnittet innehåller en detaljerad beskrivning av hello NAT infrastruktur du behöver tooset upp.
+Läs sidan [ExpressRoute-kretsar och routningsdomäner](expressroute-circuit-peerings.md) om du vill få en översikt över de olika routningsdomänerna. För att uppfylla de offentliga IP-adresskraven för Azures offentliga och Microsofts peering, rekommenderar vi att du konfigurerar NAT mellan nätverket och Microsoft. Det här avsnittet innehåller en detaljerad beskrivning av den NAT-infrastruktur som du måste konfigurera.
 
 ## <a name="nat-requirements-for-azure-public-peering"></a>NAT-krav för Azures offentliga peering
-hello Azure offentlig peering sökvägen kan du tooconnect tooall tjänster i Azure via sina offentliga IP-adresser. Dessa inkluderar tjänsterna i hello [ExpessRoute vanliga frågor och svar](expressroute-faqs.md) och tjänster ISV: er på Microsoft Azure som värd. 
+Med Azures offentliga peeringsökväg kan du ansluta till alla tjänster som finns i Azure med deras offentliga IP-adresser. Det inkluderar tjänster som finns i listan [Vanliga frågor och svar om ExpressRoute](expressroute-faqs.md) och tjänster med ISV:er i Microsoft Azure. 
 
 > [!IMPORTANT]
-> Anslutningen tooMicrosoft Azure services på offentlig peering alltid initieras från nätverket till hello Microsoft-nätverk. Därför kan sessioner inte initieras från Microsoft Azure-tjänster tooyour nätverk via ExpressRoute. Om du använder, paket som skickats toothese annonserade IP-adresser kommer att använda hello internet i stället för ExpressRoute.
+> Anslutningen till Microsoft Azure-tjänster vid offentlig peering initieras alltid från ditt nätverk till Microsoft-nätverket. Därför kan du inte initiera sessioner från Microsoft Azure-tjänster till nätverket via ExpressRoute. Om du försöker göra det skickas paket till annonserade IP-adresser via internet istället för ExpressRoute.
 > 
 
-Trafik tooMicrosoft Azure på offentlig peering måste vara SNATed toovalid offentliga IPv4-adresser innan de kan ange hello Microsoft-nätverk. hello bilden nedan ger en övergripande bild av hur hello NAT kan ställas in toomeet hello ovan krav.
+Trafik till Microsoft Azure vid offentlig peering måste vara SNATed till giltiga offentliga IPv4-adresser innan de kommer in i Microsoft-nätverket. I bilden nedan ges en översiktlig bild av hur NAT kan vara konfigurerat för att uppfylla ovanstående krav.
 
 ![](./media/expressroute-nat/expressroute-nat-azure-public.png) 
 
 ### <a name="nat-ip-pool-and-route-advertisements"></a>NAT:s IP-pool och routningsmeddelanden
-Du måste se till att trafik kommer in hello Azure offentlig peering sökväg med en giltig offentlig IPv4-adress. Microsoft måste vara kan toovalidate hello ägarskap för hello IPv4-NAT-adresspoolen mot ett nationellt routning Internet-register (RIR) eller en routning Internet-register (IR). En kontroll utförs utifrån hello som tal som är peerkopplat med och hello IP-adresser som används för hello NAT. Se toohello [ExpressRoute routningskrav](expressroute-routing.md) sidan information om routning register.
+Du måste se till att trafiken som kommer in via Azures offentliga peeringsökväg har en giltig offentlig IPv4-adress. Microsoft måste kunna verifiera ägarskapet för IPv4 NAT-adresspoolen mot ett regionalt RIR (Routing Internet Registry) eller ett IRR (Internet Routing Registry). En kontroll utförs baserat på antalet AS-nummer som peerkopplas och de IP-adresser som används för NAT-enheten. Se sidan [ExpressRoute-routningskrav](expressroute-routing.md) för information om routningsregister.
 
-Det finns inga begränsningar för hello tidslängd hello NAT IP-adressprefixet annonserade via den här peering. Du måste övervaka hello NAT-pool och se till att du inte lite NAT-sessioner.
+Det finns inga begränsningar för längden på NAT:s IP-prefix som annonseras vid peeringen. Du måste övervaka NAT-poolen och se till att du inte har för få NAT-sessioner.
 
 > [!IMPORTANT]
-> hello NAT IP-pool annonserade tooMicrosoft inte får vara annonserade toohello Internet. Detta bryts anslutningen tooother Microsoft-tjänster.
+> NAT:s IP-pool som annonseras till Microsoft får inte annonseras till Internet. Detta bryter anslutningen till andra Microsoft-tjänster.
 > 
 > 
 
 ## <a name="nat-requirements-for-microsoft-peering"></a>NAT-krav för Microsoft-peering
-hello Microsoft peering sökvägen kan du ansluta tooMicrosoft molntjänster som inte stöds via hello Azure offentlig peering sökväg. hello lista över tjänster inkluderar Office 365-tjänster, till exempel Exchange Online, SharePoint Online, Skype för företag och Dynamics 365. Microsoft förväntar toosupport dubbelriktad anslutning på hello Microsoft-peering. Trafik tooMicrosoft molntjänster måste vara SNATed toovalid offentliga IPv4-adresser innan de kan ange hello Microsoft-nätverk. Trafik tooyour nätverket från Microsoft-molntjänster måste vara SNATed på din Internet-edge tooprevent [asymmetriska routning](expressroute-asymmetric-routing.md). hello bilden nedan ger en övergripande bild av hur hello NAT ska konfigureras för Microsoft-peering.
+Med Microsofts peeringsökväg kan du ansluta till Microsofts molntjänster som inte stöds via Azures offentliga peeringsökväg. Listan med tjänster innefattar Office 365-tjänster, till exempel Exchange Online, SharePoint Online, Skype för företag och Dynamics 365. Microsoft förväntas stödja dubbelriktad anslutning i Microsofts peering. Trafik till Microsofts molntjänster måste vara SNATed till giltiga offentliga IPv4-adresser innan de kommer in i Microsoft-nätverket. Trafik som är avsedd för ditt nätverk från Microsofts molntjänster måste vara SNATed i din Internet-anslutning för att förhindra [asymmetrisk routning](expressroute-asymmetric-routing.md). I bilden nedan ges en översiktlig bild av hur NAT ska vara konfigurerat för Microsoft-peering.
 
 ![](./media/expressroute-nat/expressroute-nat-microsoft.png) 
 
-### <a name="traffic-originating-from-your-network-destined-toomicrosoft"></a>Trafik från ditt nätverk avsedda tooMicrosoft
-* Du måste se till att trafiken är att ange hello Microsoft peering sökväg med en giltig offentlig IPv4-adress. Microsoft måste vara kan toovalidate hello ägare hello IPv4-NAT-adresspoolen mot hello nationellt routning internet-register (RIR) eller en routning internet-register (IR). En kontroll utförs utifrån hello som tal som är peerkopplat med och hello IP-adresser som används för hello NAT. Se toohello [ExpressRoute routningskrav](expressroute-routing.md) sidan information om routning register.
-* IP-adresser som används för hello Azure offentlig peering installationsprogrammet och andra ExpressRoute-kretsar får inte vara annonserade tooMicrosoft via hello BGP-sessionen. Det finns ingen begränsning för hello tidslängd hello NAT IP-adressprefixet annonserade via den här peering.
+### <a name="traffic-originating-from-your-network-destined-to-microsoft"></a>Trafik från nätverket till Microsoft
+* Du måste se till att trafiken som kommer till Microsofts peeringsökväg har en giltig offentlig IPv4-adress. Microsoft måste kunna verifiera ägaren till IPv4 NAT-adresspoolen mot ett regionalt RIR (Routing Internet Registry) eller ett IRR (Internet Routing Registry). En kontroll utförs baserat på antalet AS-nummer som peerkopplas och de IP-adresser som används för NAT-enheten. Se sidan [ExpressRoute-routningskrav](expressroute-routing.md) för information om routningsregister.
+* IP-adresser som används vid konfigurationen av Azures offentliga peering och andra ExpressRoute-kretsar får inte annonseras till Microsoft via BGP-sessionen. Det finns inga begränsningar för längden på NAT:s IP-prefix som annonseras via den här peeringen.
   
   > [!IMPORTANT]
-  > hello NAT IP-pool annonserade tooMicrosoft inte får vara annonserade toohello Internet. Detta bryts anslutningen tooother Microsoft-tjänster.
+  > NAT:s IP-pool som annonseras till Microsoft får inte annonseras till Internet. Detta bryter anslutningen till andra Microsoft-tjänster.
   > 
   > 
 
-### <a name="traffic-originating-from-microsoft-destined-tooyour-network"></a>Trafik som skickas från Microsoft avsedda tooyour nätverk
-* Vissa scenarier kräver Microsoft tooinitiate anslutning tooservice slutpunkter finns i nätverket. Ett typexempel på hello scenariot skulle vara anslutningen tooADFS servrar i nätverket från Office 365. I sådana fall måste du läcka ut rätt prefix från nätverket till hello Microsoft-peering. 
-* Du måste SNAT Microsoft-trafik i hello Internet kant slutpunkter i ditt nätverk tooprevent [asymmetriska routning](expressroute-asymmetric-routing.md). Begäranden **och svar** med en mål-IP-adress som matchar en väg som tagits emot via ExpressRoute skickas alltid till ExpressRoute. Asymmetrisk routning finns om hello begäran tas emot via hello Internet med hello svar skickades via ExpressRoute. SNATing hello inkommande Microsoft-trafik i hello Internet edge tvingar svar trafik tillbaka toohello Internet-gränsen, lösa problem med hello.
+### <a name="traffic-originating-from-microsoft-destined-to-your-network"></a>Trafik från Microsoft till ditt nätverk
+* Vissa scenarier kräver att Microsoft initierar anslutningen till tjänstens slutpunkter som finns i ditt nätverk. Ett typexempel på scenariot är anslutningen till ADFS-servrar i ditt nätverk från Office 365. I sådana fall måste du meddela lämpliga prefix från ditt nätverk till Microsofts peering. 
+* Du måste använda SNAT för Microsoft-trafik för din Internet-anslutning för tjänstens slutpunkter i nätverket för att förhindra [asymmetrisk routning](expressroute-asymmetric-routing.md). Begäranden **och svar** med en mål-IP-adress som matchar en väg som tagits emot via ExpressRoute skickas alltid till ExpressRoute. Asymmetrisk routning sker om en begäran tas emot via Internet när svaret skickas via ExpressRoute. Om du använder SNAT för den inkommande Microsoft-trafiken på Internet-anslutningen tvingas svarstrafiken tillbaka till Internet-anslutningen, vilket löser problemet.
 
 ![Asymmetrisk routning med ExpressRoute](./media/expressroute-asymmetric-routing/AsymmetricRouting2.png)
 
 ## <a name="next-steps"></a>Nästa steg
-* Se toohello krav för [routning](expressroute-routing.md) och [QoS](expressroute-qos.md).
+* Se kraven för [Routning](expressroute-routing.md) och [QoS](expressroute-qos.md).
 * Arbetsflödesinformation finns i [ExpressRoute-kretsens etablering av arbetsflöden och kretsstatus](expressroute-workflows.md).
 * Konfigurera ExpressRoute-anslutningen.
   
   * [Skapa en ExpressRoute-krets](expressroute-howto-circuit-classic.md)
   * [Konfigurera routning](expressroute-howto-routing-classic.md)
-  * [Länka ett VNet tooan ExpressRoute-krets](expressroute-howto-linkvnet-classic.md)
+  * [Länka ett VNet till en ExpressRoute-krets](expressroute-howto-linkvnet-classic.md)
 

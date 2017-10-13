@@ -1,6 +1,6 @@
 ---
-title: aaaMigrate ditt schema tooSQL Data Warehouse | Microsoft Docs
-description: "Tips för att migrera din schemat tooAzure SQL Data Warehouse för utveckling av lösningar."
+title: Migrera schemat till SQL Data Warehouse | Microsoft Docs
+description: "Tips för att migrera schemat till Azure SQL Data Warehouse för utveckling av lösningar."
 services: sql-data-warehouse
 documentationcenter: NA
 author: sqlmojo
@@ -15,59 +15,59 @@ ms.workload: data-services
 ms.custom: migrate
 ms.date: 10/31/2016
 ms.author: joeyong;barbkess
-ms.openlocfilehash: 1309b743b78564575695038a4856d9d25a2b18d1
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 07ca2321852e276502187e768177e7e82bdfd080
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="migrate-your-schemas-toosql-data-warehouse"></a>Migrera din scheman tooSQL Data Warehouse
-Riktlinjer för att migrera dina SQL-scheman tooSQL Data Warehouse. 
+# <a name="migrate-your-schemas-to-sql-data-warehouse"></a>Migrera dina scheman till SQL Data Warehouse
+Riktlinjer för att migrera dina SQL-scheman till SQL Data Warehouse. 
 
 ## <a name="plan-your-schema-migration"></a>Planera migrering av schemat
 
-När du planerar en migrering finns hello [tabell översikt] [ table overview] toobecome bekant med tabellen designöverväganden, till exempel statistik, distribution, partitionering och indexering.  Den listar också några [stöds inte i tabellen funktioner] [ unsupported table features] och sina lösningar.
+När du planerar en migrering finns i [tabell översikt] [ table overview] att bekanta dig med tabellen designöverväganden, till exempel statistik, distribution, partitionering och indexering.  Den listar också några [stöds inte i tabellen funktioner] [ unsupported table features] och sina lösningar.
 
-## <a name="use-user-defined-schemas-tooconsolidate-databases"></a>Använda anpassade scheman tooconsolidate databaser
+## <a name="use-user-defined-schemas-to-consolidate-databases"></a>Användardefinierade scheman används för att konsolidera databaser
 
 Din befintliga arbetsbelastning har antagligen mer än en databas. Ett informationslager i SQL Server kan exempelvis innehålla en fristående databas, en databas för datalager och vissa data mart-databaser. I den här topologin körs varje databas som en separat arbetsbelastning med separata säkerhetsprinciper.
 
-Däremot kör SQL Data Warehouse hello hela arbetsbelastningen för informationslager inom en databas. Mellan databasen tillåts inte kopplingar. SQL Data Warehouse förväntar därför alla tabeller som används av hello data warehouse toobe lagras i en hello-databas.
+Däremot kör SQL Data Warehouse hela arbetsbelastningen för informationslager inom en databas. Mellan databasen tillåts inte kopplingar. SQL Data Warehouse förväntar därför alla tabeller som används i datalagret lagras i en databas.
 
-Vi rekommenderar att du använder användardefinierade scheman tooconsolidate din befintliga arbetsbelastning i en databas. Exempel finns [användardefinierade scheman](sql-data-warehouse-develop-user-defined-schemas.md)
+Vi rekommenderar att du använder användardefinierade scheman för att konsolidera din befintliga arbetsbelastning i en databas. Exempel finns [användardefinierade scheman](sql-data-warehouse-develop-user-defined-schemas.md)
 
 ## <a name="use-compatible-data-types"></a>Använd kompatibla datatyper
-Ändra dina data typer toobe kompatibel med SQL Data Warehouse. En lista över datatyper som stöds respektive inte stöds, se [datatyper][data types]. Avsnittet ger lösningar för typer hello stöds inte. Det ger också en fråga tooidentify befintliga typer som inte stöds i SQL Data Warehouse.
+Ändra datatyper för att vara kompatibel med SQL Data Warehouse. En lista över datatyper som stöds respektive inte stöds, se [datatyper][data types]. Avsnittet ger lösningar för typer som inte stöds. Det ger också en fråga för att identifiera befintliga typer som inte stöds i SQL Data Warehouse.
 
 ## <a name="minimize-row-size"></a>Minimera Radstorleken
-Minimera hello radlängden tabeller för bästa prestanda. Eftersom kortare raden längder leda toobetter prestanda, kan du använda hello minsta datatyper som fungerar för dina data. 
+Minimera radlängden tabeller för bästa prestanda. Eftersom kortare raden längder leda till bättre prestanda, kan du använda de minsta datatyper som fungerar för dina data. 
 
-Tabellens rad bredd har PolyBase en gräns på 1 MB.  Om du planerar tooload data till SQL Data Warehouse med PolyBase uppdatera dina tabeller toohave största raden bredden på mindre än 1 MB. 
+Tabellens rad bredd har PolyBase en gräns på 1 MB.  Om du planerar att läsa in data till SQL Data Warehouse med PolyBase, uppdatera tabellerna om du vill ha maximal raden bredden på mindre än 1 MB. 
 
 <!--
-- For example, this table uses variable length data but hello largest possible size of hello row is still less than 1 MB. PolyBase will load data into this table.
+- For example, this table uses variable length data but the largest possible size of the row is still less than 1 MB. PolyBase will load data into this table.
 
-- This table uses variable length data and hello defined row width is less than one MB. When loading rows, PolyBase allocates hello full length of hello variable-length data. hello full length of this row is greater than one MB.  PolyBase will not load data into this table.  
+- This table uses variable length data and the defined row width is less than one MB. When loading rows, PolyBase allocates the full length of the variable-length data. The full length of this row is greater than one MB.  PolyBase will not load data into this table.  
 
 -->
 
-## <a name="specify-hello-distribution-option"></a>Ange hello distributionsalternativ
-SQL Data Warehouse är en distribuerad databas. Varje tabell distribueras eller replikeras över hello Compute-noder. Det finns ett Tabellalternativ som du kan ange hur toodistribute hello data. hello alternativ är resursallokering, replikeras, eller hash distribueras. Varje har- och nackdelar. Om du inte anger hello distributionsalternativ använder SQL Data Warehouse resursallokering som hello standard.
+## <a name="specify-the-distribution-option"></a>Ange distributionsalternativ för
+SQL Data Warehouse är en distribuerad databas. Varje tabell distribueras eller replikeras över Compute-noder. Det finns ett Tabellalternativ som du kan ange hur du distribuerar data. Alternativen är resursallokering, replikeras, eller hash distribueras. Varje har- och nackdelar. Om du inte anger distributionsalternativet använder SQL Data Warehouse resursallokering som standard.
 
-- Resursallokering är hello som standard. Är det enklaste hello-toouse och läser in hello data så snabbt som möjligt, men kopplingar kräver dataflyttning som minskar frågeprestanda.
-- Replikerade lagrar en kopia av hello tabellen på varje beräkningsnod. Replikerade tabeller är performant eftersom de inte kräver dataflyttning för kopplingar och aggregeringar. De kräver extra lagring och därför fungerar bäst för mindre tabeller.
-- Hash distribuerade distribuerar hello rader för alla hello noder via en hash-funktionen. Distribuerade hash-tabeller är hello hjärtat i SQL Data Warehouse eftersom de är utformad tooprovide hög frågeprestanda för stora tabeller. Det här alternativet kräver vissa planering tooselect hello bästa kolumn på vilka toodistribute hello data. Men om du inte väljer hello bästa kolumnen hello första gången, kan du enkelt nytt distribuera hello data på en annan kolumn. 
+- Resursallokering är standardinställningen. Den är enkel att använda och belastningar data så snabbt som möjligt och kopplingar kräver dataflyttning som minskar frågeprestanda.
+- Replikerade lagrar en kopia av tabellen på varje Compute-nod. Replikerade tabeller är performant eftersom de inte kräver dataflyttning för kopplingar och aggregeringar. De kräver extra lagring och därför fungerar bäst för mindre tabeller.
+- Hash distribuerade distribuerar rader för alla noder via en hash-funktionen. Distribuerad hash-tabeller är hjärtat i SQL Data Warehouse eftersom de har utformats för att tillhandahålla hög frågeprestanda för stora tabeller. Det här alternativet kräver vissa planerar att välja den bästa kolumn som ska distribuera data. Men om du inte väljer den bästa kolumnen första gången, kan du enkelt nytt distribuera data på en annan kolumn. 
 
-toochoose hello bästa distributionsalternativ för varje tabell finns [distribuerade tabeller](sql-data-warehouse-tables-distribute.md).
+Om du vill välja den bästa distributionsalternativ för varje tabell, se [distribuerade tabeller](sql-data-warehouse-tables-distribute.md).
 
 
 ## <a name="next-steps"></a>Nästa steg
-När du har migrerat dina databasen schemat tooSQL datalagret fortsätta tooone av hello följande artiklar:
+När du har migrerat dina databasschemat till SQL Data Warehouse, kan du gå vidare till någon av följande artiklar:
 
 * [Migrera dina data][Migrate your data]
 * [Migrera koden][Migrate your code]
 
-Mer information om metodtips för SQL Data Warehouse finns hello [metodtips] [ best practices] artikel.
+Mer information om metodtips för SQL Data Warehouse, finns det [metodtips] [ best practices] artikel.
 
 <!--Image references-->
 

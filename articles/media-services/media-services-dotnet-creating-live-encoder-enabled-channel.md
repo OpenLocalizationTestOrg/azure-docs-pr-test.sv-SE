@@ -1,6 +1,6 @@
 ---
-title: "aaaHow tooperform direktsänd strömning med Azure Media Services toocreate-dataströmmar i multibithastighet med .NET | Microsoft Docs"
-description: "Den här kursen får du hello steg som krävs för att skapa en kanal som tar emot en direktsänd dataström med enkel bithastighet och kodar den dataström med multibithastighet toomulti med .NET SDK."
+title: "Så här utför du en liveuppspelning med Azure Media Services för att skapa dataströmmar med flera bithastigheter med .NET  | Microsoft Docs"
+description: "Den här självstudien visar dig stegen för att skapa en kanal som tar emot en direktsänd dataström med enkel bithastighet och kodar den till en dataström med multibithastighet med hjälp av .NET SDK."
 services: media-services
 documentationcenter: 
 author: anilmur
@@ -14,99 +14,99 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.author: juliako;anilmur
-ms.openlocfilehash: 22088e6a78a49bd839575614a7c17a411ae8081c
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 22d63ff5e9fd33db8711b0c5125ab0882b9f6a74
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="how-tooperform-live-streaming-using-azure-media-services-toocreate-multi-bitrate-streams-with-net"></a>Hur tooperform direktsänd strömning med Azure Media Services toocreate multibithastighet dataströmmar med .NET
+# <a name="how-to-perform-live-streaming-using-azure-media-services-to-create-multi-bitrate-streams-with-net"></a>Så här utför du direktsänd strömning med Azure Media Services för att skapa dataströmmar i multibithastighet med .NET
 > [!div class="op_single_selector"]
 > * [Portal](media-services-portal-creating-live-encoder-enabled-channel.md)
 > * [.NET](media-services-dotnet-creating-live-encoder-enabled-channel.md)
-> * [REST-API](https://docs.microsoft.com/rest/api/media/operations/channel)
+> * [REST API](https://docs.microsoft.com/rest/api/media/operations/channel)
 > 
 > [!NOTE]
-> toocomplete den här självstudiekursen kommer du behöver ett Azure-konto. Mer information om den [kostnadsfria utvärderingsversionen av Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F).
+> För den här kursen behöver du ett Azure-konto. Mer information finns i [kostnadsfri utvärderingsversion av Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F).
 > 
 > 
 
 ## <a name="overview"></a>Översikt
-Den här självstudiekursen vägleder dig genom hello stegen för att skapa en **kanal** som tar emot en direktsänd dataström med enkel bithastighet och kodar den dataström med multibithastighet toomulti.
+Den här självstudien visar dig stegen för att skapa en **kanal** som tar emot en  direktsänd dataström med enkel bithastighet och kodar den till en dataström med multibithastighet.
 
-Mer information finns i Närliggande tooChannels som är aktiverade för live encoding [direktsänd strömning med Azure Media Services toocreate multibithastighet dataströmmar](media-services-manage-live-encoder-enabled-channels.md).
+Mer konceptinformation relaterad till kanaler som är aktiverade för Live Encoding finns i [Direktsänd strömning med Azure Media Services för att skapa dataströmmar i multibithastighet](media-services-manage-live-encoder-enabled-channels.md).
 
 ## <a name="common-live-streaming-scenario"></a>Vanligt scenario för direktsänd strömning
-hello följande steg beskriver uppgifter som ingår i att skapa vanliga program för direktsänd strömning.
+Följande steg beskriver uppgifter som ingår i att skapa vanliga program för direktsänd strömning.
 
 > [!NOTE]
-> Hej max är för närvarande rekommenderas varaktighet för en direktsänd händelse 8 timmar. Kontakta amslived på Microsoft.com om du behöver toorun en kanal under längre perioder.
+> Den rekommenderade maximala längden för en direktsänd händelse är för närvarande 8 timmar. Kontakta amslived på Microsoft.com om du behöver köra en kanal under längre tidsperioder.
 > 
 > 
 
-1. Anslut en videokamera tooa dator. Starta och konfigurera en lokal livekodare som kan mata ut en dataström med enkel bithastighet i något av hello följande protokoll: RTMP, Smooth Streaming eller RTP (MPEG-TS). Mer information finns i [Support och livekodare för Azure Media Services RTMP](http://go.microsoft.com/fwlink/?LinkId=532824).
+1. Anslut en videokamera till en dator. Starta och konfigurera en lokal livekodare som kan mata ut en dataström med enkel bithastighet i något av följande protokoll: RTMP, Smooth Streaming eller RTP (MPEG TS). Mer information finns i [Support och livekodare för Azure Media Services RTMP](http://go.microsoft.com/fwlink/?LinkId=532824).
 
     Det här steget kan också utföras när du har skapat din kanal.
 
 2. Skapa och starta en kanal.
-3. Hämta hello kanal infognings-URL.
+3. Hämta kanalens infognings-URL.
 
-    hello infognings-URL som används av hello livekodaren toosend hello dataströmmen toohello kanal.
+    Infognings-URL:en används av livekodaren för att skicka dataströmmen till kanalen.
 
-4. Hämta hello kanalens förhandsgransknings-URL.
+4. Hämta kanalens förhandsgransknings-URL.
 
-    Använd den här URL: en tooverify att din kanal är tar emot hello direktsänd dataström.
+    Använd denna URL för att kontrollera att din kanal tar emot den direktsända dataströmmen korrekt.
 
 5. Skapa en tillgång.
-6. Om du vill använda för hello tillgången toobe dynamiskt krypterad under uppspelningen hello följande:
+6. Om du vill att tillgången ska vara dynamiskt krypterad under uppspelningen gör du följande:
 7. Skapa en innehållsnyckel.
-8. Konfigurera hello innehållsnyckelns auktoriseringsprincip.
+8. Konfigurera en auktoriseringsprincip  för innehållsnyckeln.
 9. Konfigurera en princip för tillgångsleveranser (används av dynamisk paketering och dynamisk kryptering).
-10. Skapa ett program och ange toouse hello tillgång som du skapade.
-11. Publicera hello tillgången som är associerad med hello programmet genom att skapa en OnDemand-positionerare.
+10. Skapa ett program och ange att den tillgång som du skapade ska användas.
+11. Publicera tillgången som är associerad till programmet genom att skapa en OnDemand-positionerare.
 
     >[!NOTE]
-    >När AMS-kontot skapas en **standard** strömningsslutpunkt har lagts till tooyour konto i hello **stoppad** tillstånd. Hej strömningsslutpunkt från vilken du vill att toostream innehåll har toobe i hello **kör** tillstånd. 
+    >När ditt AMS-konto skapas läggs en **standard**-slutpunkt för direktuppspelning till på ditt konto med tillståndet **Stoppad**. Slutpunkten för direktuppspelning som du vill spela upp innehåll från måste ha tillståndet **Körs**. 
 
-12. Starta hello programmet när du är klar toostart strömning och arkivering.
-13. Du kan också kan hello livekodare vara signalerat toostart en annons. hello annonsen infogas i utdataströmmen hello.
-14. Stoppa programmet hello när du vill toostop strömningen och arkiveringen hello händelsen.
-15. Ta bort hello programmet (och ta eventuellt bort tillgången hello).
+12. Starta programmet när du är redo att påbörja strömning och arkivering.
+13. Som alternativ kan livekodaren få signal om att starta en annons. Annonsen infogas i utdataströmmen.
+14. Stoppa programmet när du vill stoppa strömningen och arkiveringen av händelsen.
+15. Ta bort programmet (och ta eventuellt bort tillgången).
 
 ## <a name="what-youll-learn"></a>Detta får du får lära dig
-Det här avsnittet beskrivs hur du tooexecute olika åtgärder i kanaler och program med hjälp av Media Services .NET SDK. Eftersom många åtgärder är långvariga används .NET-API:er som hanterar långvariga åtgärder.
+I det här avsnittet visas hur du utför olika åtgärder i kanaler och program med hjälp av Media Services .NET SDK. Eftersom många åtgärder är långvariga används .NET-API:er som hanterar långvariga åtgärder.
 
-Hej avsnittet visar hur toodo hello följande:
+I avsnittet visas hur du gör följande:
 
 1. Skapa och starta en kanal. Långvariga API:er används.
-2. Hämta infognings-hello kanaler (indataslutpunkten). Den här slutpunkten ska tillhandahållas toohello kodare som kan skicka en direktsänd dataström med enkel bithastighet.
-3. Hämta förhandsgranskningsslutpunkten hello. Den här slutpunkten är används toopreview strömmen.
-4. Skapa en tillgång som kommer att använda toostore ditt innehåll. hello principerna för tillgångsleverans ska också, som visas i det här exemplet konfigureras.
-5. Skapa ett program och ange toouse hello tillgång som du skapade tidigare. Starta programmet hello. Långvariga API:er används.
-6. Skapa en positionerare för tillgången hello, så hello innehållet publiceras och kan strömmas tooyour klienter.
+2. Hämta kanalernas infogningsslutpunkter (indata). Den här slutpunkten ska tillhandahållas till den kodare som kan skicka en direktsänd dataström med enkel bithastighet.
+3. Hämta förhandsgranskningsslutpunkten. Den här slutpunkten används för att förhandsgranska dataströmmen.
+4. Skapa en tillgång som ska användas för att lagra innehållet. Principerna för tillgångsleverans ska också konfigureras, så som visas i det här exemplet.
+5. Skapa ett program och ange att den tillgång som du skapade tidigare ska användas. Starta programmet. Långvariga API:er används.
+6. Skapa en positionerare för tillgången, så att innehållet publiceras och kan strömmas till dina klienter.
 7. Visa eller dölj pekdatorer. Starta och stoppa annonser. Långvariga API:er används.
-8. Rensa din kanal och alla hello associerade resurser.
+8. Rensa din kanal och alla associerade resurser.
 
 ## <a name="prerequisites"></a>Krav
-hello följande är obligatoriska toocomplete hello kursen.
+Följande krävs för att kunna genomföra självstudien.
 
-* Ett Azure-konto. Om du inte har något konto kan skapa du ett kostnadsfritt utvärderingskonto på bara några minuter. Mer information om den [kostnadsfria utvärderingsversionen av Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F). Du får då krediter som kan vara används tootry ut betald Azure-tjänster. Även efter hello krediten är slut, kan du hålla hello-konto och använda kostnadsfria Azure-tjänster och funktioner, till exempel hello Web Apps i Azure App Service.
-* Ett Media Services-konto. toocreate Media Services-konto finns [skapa konto](media-services-portal-create-account.md).
+* Ett Azure-konto. Om du inte har något konto kan skapa du ett kostnadsfritt utvärderingskonto på bara några minuter. Mer information finns i [kostnadsfri utvärderingsversion av Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F). Du får kredit som kan användas för att prova Azure-tjänster som normalt inte är kostnadsfria. Du kan behålla kontot även efter att krediten är slut och använda gratis Azure-tjänster och -funktioner som  Web Apps-funktionen i Azure App Service.
+* Ett Media Services-konto. Mer information om att skapa ett Media Services-konto finns i [Skapa konto](media-services-portal-create-account.md).
 * Visual Studio 2010 SP1 (Professional, Premium, Ultimate eller Express) eller senare versioner.
 * Du måste använda Media Services .NET SDK version 3.2.0.0 eller senare.
 * En webbkamera och en kodare som kan skicka en direktsänd dataström i enkel bithastighet.
 
 ## <a name="considerations"></a>Överväganden
-* Hej max är för närvarande rekommenderas varaktighet för en direktsänd händelse 8 timmar. Kontakta amslived på Microsoft.com om du behöver toorun en kanal under längre perioder.
-* Det finns en gräns på 1 000 000 principer för olika AMS-principer (till exempel för positionerarprincipen eller ContentKeyAuthorizationPolicy). Du bör använda hello samma princip-ID om du alltid använder hello samma dagar / åtkomstbehörigheter, till exempel principer för lokaliserare som är avsedda tooremain på plats för lång tid (icke-överföringen principer). Mer information finns i [detta](media-services-dotnet-manage-entities.md#limit-access-policies) avsnitt.
+* Den rekommenderade maximala längden för en direktsänd händelse är för närvarande 8 timmar. Kontakta amslived på Microsoft.com om du behöver köra en kanal under längre tidsperioder.
+* Det finns en gräns på 1 000 000 principer för olika AMS-principer (till exempel för positionerarprincipen eller ContentKeyAuthorizationPolicy). Du bör använda samma princip-ID om du alltid använder samma dagar/åtkomstbehörigheter, till exempel principer för positionerare som är avsedda att vara på plats under en längre tid (icke-överföringsprinciper). Mer information finns i [detta](media-services-dotnet-manage-entities.md#limit-access-policies) avsnitt.
 
 ## <a name="download-sample"></a>Hämta exempel
 
-Du kan hämta hello-exempel som beskrivs i det här avsnittet från [här](https://azure.microsoft.com/documentation/samples/media-services-dotnet-encode-live-stream-with-ams-clear/).
+Du kan hämta exemplet som beskrivs i artikeln [här](https://azure.microsoft.com/documentation/samples/media-services-dotnet-encode-live-stream-with-ams-clear/).
 
 ## <a name="set-up-for-development-with-media-services-sdk-for-net"></a>Konfigurera för utveckling med Media Services SDK för .NET
 
-Konfigurera utvecklingsmiljön och fylla hello app.config-fil med anslutningsinformation, enligt beskrivningen i [Media Services-utveckling med .NET](media-services-dotnet-how-to-use.md). 
+Konfigurera utvecklingsmiljön och fyll i filen app.config med anslutningsinformation, enligt beskrivningen i [Media Services-utveckling med .NET](media-services-dotnet-how-to-use.md). 
 
 ## <a name="code-example"></a>Kodexempel
 
@@ -127,7 +127,7 @@ Konfigurera utvecklingsmiljön och fylla hello app.config-fil med anslutningsinf
         private const string AssetlName = "asset001";
         private const string ProgramlName = "program001";
 
-        // Read values from hello App.config file.
+        // Read values from the App.config file.
         private static readonly string _AADTenantDomain =
         ConfigurationManager.AppSettings["AADTenantDomain"];
         private static readonly string _RESTAPIEndpoint =
@@ -144,21 +144,21 @@ Konfigurera utvecklingsmiljön och fylla hello app.config-fil med anslutningsinf
 
             IChannel channel = CreateAndStartChannel();
 
-            // hello channel's input endpoint:
+            // The channel's input endpoint:
             string ingestUrl = channel.Input.Endpoints.FirstOrDefault().Url.ToString();
 
             Console.WriteLine("Intest URL: {0}", ingestUrl);
 
 
-            // Use hello previewEndpoint toopreview and verify 
-            // that hello input from hello encoder is actually reaching hello Channel. 
+            // Use the previewEndpoint to preview and verify 
+            // that the input from the encoder is actually reaching the Channel. 
             string previewEndpoint = channel.Preview.Endpoints.FirstOrDefault().Url.ToString();
 
             Console.WriteLine("Preview URL: {0}", previewEndpoint);
 
-            // When Live Encoding is enabled, you can now get a preview of hello live feed as it reaches hello Channel. 
-            // This can be a valuable tool toocheck whether your live feed is actually reaching hello Channel. 
-            // hello thumbnail is exposed via hello same end-point as hello Channel Preview URL.
+            // When Live Encoding is enabled, you can now get a preview of the live feed as it reaches the Channel. 
+            // This can be a valuable tool to check whether your live feed is actually reaching the Channel. 
+            // The thumbnail is exposed via the same end-point as the Channel Preview URL.
             string thumbnailUri = new UriBuilder
             {
             Scheme = Uri.UriSchemeHttps,
@@ -176,7 +176,7 @@ Konfigurera utvecklingsmiljön och fylla hello app.config-fil med anslutningsinf
 
             ILocator locator = CreateLocatorForAsset(program.Asset, program.ArchiveWindowLength);
 
-            // You can use slates and ads only if hello channel type is Standard.  
+            // You can use slates and ads only if the channel type is Standard.  
             StartStopAdsSlates(channel);
 
             // Once you are done streaming, clean up your resources.
@@ -269,7 +269,7 @@ Konfigurera utvecklingsmiljön och fylla hello app.config-fil med anslutningsinf
             SystemPreset = "Default720p",
             IgnoreCea708ClosedCaptions = false,
             AdMarkerSource = AdMarkerSource.Api,
-            // You can only set audio if streaming protocol is set tooStreamingProtocol.RTPMPEG2TS.
+            // You can only set audio if streaming protocol is set to StreamingProtocol.RTPMPEG2TS.
             AudioStreams = new List<AudioStream> { new AudioStream { Index = 103, Language = "eng" } }.AsReadOnly()
             };
         }
@@ -293,7 +293,7 @@ Konfigurera utvecklingsmiljön och fylla hello app.config-fil med anslutningsinf
         }
 
         /// <summary>
-        /// Create a Program on hello Channel. You can have multiple Programs that overlap or are sequential;
+        /// Create a Program on the Channel. You can have multiple Programs that overlap or are sequential;
         /// however each Program must have a unique name within your Media Services account.
         /// </summary>
         /// <param name="channel"></param>
@@ -312,7 +312,7 @@ Konfigurera utvecklingsmiljön och fylla hello app.config-fil med anslutningsinf
         }
 
         /// <summary>
-        /// Create locators in order toobe able toopublish and stream hello video.
+        /// Create locators in order to be able to publish and stream the video.
         /// </summary>
         /// <param name="asset"></param>
         /// <param name="ArchiveWindowLength"></param>
@@ -375,7 +375,7 @@ Konfigurera utvecklingsmiljön och fylla hello app.config-fil med anslutningsinf
         }
 
         /// <summary>
-        /// Clean up resources associated with hello channel.
+        /// Clean up resources associated with the channel.
         /// </summary>
         /// <param name="channel"></param>
         public static void Cleanup(IChannel channel)
@@ -426,28 +426,28 @@ Konfigurera utvecklingsmiljön och fylla hello app.config-fil med anslutningsinf
             string entityId = null;
             bool isCompleted = false;
 
-            Log("starting tootrack ", null, operation.Id);
+            Log("starting to track ", null, operation.Id);
             while (isCompleted == false)
             {
             operation = _context.Operations.GetOperation(operation.Id);
             isCompleted = IsCompleted(operation, out entityId);
             System.Threading.Thread.Sleep(TimeSpan.FromSeconds(30));
             }
-            // If we got here, hello operation succeeded.
+            // If we got here, the operation succeeded.
             Log(description + " in completed", operation.TargetEntityId, operation.Id);
 
             return entityId;
         }
 
         /// <summary> 
-        /// Checks if hello operation has been completed. 
-        /// If hello operation succeeded, hello created entity Id is returned in hello out parameter.
+        /// Checks if the operation has been completed. 
+        /// If the operation succeeded, the created entity Id is returned in the out parameter.
         /// </summary> 
-        /// <param name="operationId">hello operation Id.</param> 
+        /// <param name="operationId">The operation Id.</param> 
         /// <param name="channel">
-        /// If hello operation succeeded, 
-        /// hello entity Id associated with hello sucessful operation is returned in hello out parameter.</param>
-        /// <returns>Returns false if hello operation is still in progress; otherwise, true.</returns> 
+        /// If the operation succeeded, 
+        /// the entity Id associated with the sucessful operation is returned in the out parameter.</param>
+        /// <returns>Returns false if the operation is still in progress; otherwise, true.</returns> 
         private static bool IsCompleted(IOperation operation, out string entityId)
         {
             bool completed = false;
@@ -457,9 +457,9 @@ Konfigurera utvecklingsmiljön och fylla hello app.config-fil med anslutningsinf
             switch (operation.State)
             {
             case OperationState.Failed:
-                // Handle hello failure. 
+                // Handle the failure. 
                 // For example, throw an exception. 
-                // Use hello following information in hello exception: operationId, operation.ErrorMessage.
+                // Use the following information in the exception: operationId, operation.ErrorMessage.
                 Log("operation failed", operation.TargetEntityId, operation.Id);
                 break;
             case OperationState.Succeeded:

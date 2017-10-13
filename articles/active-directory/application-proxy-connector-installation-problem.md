@@ -1,6 +1,6 @@
 ---
-title: installera aaaProblem hello Application Proxy Agent Connector | Microsoft Docs
-description: "Hur tootroubleshoot problem som du kan hello står inför när du installerar Application Proxy Agent Connector"
+title: Problem med att installera agenten Application Proxy Connector | Microsoft Docs
+description: "Felsökning av problem som kan uppstår när du installerar agenten Application Proxy Connector"
 services: active-directory
 documentationcenter: 
 author: ajamess
@@ -13,60 +13,60 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 07ac366a429083af0c9b87aa9df9cf3876132b90
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 91b3f6f3c8339647f568a509e9efd8e1fffb13dd
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="problem-installing-hello-application-proxy-agent-connector"></a>Problem med att installera hello Application Proxy Agent Connector
+# <a name="problem-installing-the-application-proxy-agent-connector"></a>Problem med att installera agenten Application Proxy Connector
 
-Microsoft AAD Application Proxy Connector är en intern domän-komponent som använder utgående anslutningar tooestablish hello anslutningen från hello molnet tillgängliga endpoint toohello interna domänen.
+Microsoft AAD Application Proxy Connector är en intern domän-komponent som använder utgående anslutningar för att upprätta en anslutning från molnet tillgängliga slutpunkten till den interna domänen.
 
 ## <a name="general-problem-areas-with-connector-installation"></a>Allmänna problemområden med kopplingsinstallationen
 
-När hello installationen av en anslutning misslyckas, är hello orsaken oftast en av hello följande områden:
+När installationen av en anslutning misslyckas är den grundläggande orsaken vanligtvis en av följande områden:
 
-1.  **Anslutningen** – toocomplete en lyckad installation hello nya connector måste tooregister och upprätta förtroende för framtida egenskaper. Detta görs genom att ansluta toohello AAD Application Proxy-Molntjänsten.
+1.  **Anslutningen** – för att slutföra installationen har lyckats ny koppling behov att registrera och upprätta förtroende för framtida egenskaper. Detta görs genom att ansluta till Molntjänsten AAD Application Proxy.
 
-2.  **Upprätta förtroende** – hello ny koppling skapar ett självsignerat certifikat och registrerar toohello Molntjänsten.
+2.  **Upprätta förtroende** – den nya kopplingen skapar ett självsignerat certifikat och registrerar till Molntjänsten.
 
-3.  **Autentisering av Hej administratör** – under installationen hello måste användaren ange administratörsautentiseringsuppgifter toocomplete hello Connector-installationen.
+3.  **Autentisering av administratören** – under installationen, måste användaren ange administratörsautentiseringsuppgifter för att slutföra installationen av koppling.
 
-## <a name="verify-connectivity-toohello-cloud-application-proxy-service-and-microsoft-login-page"></a>Kontrollera anslutningen toohello moln Application Proxy-tjänsten och Microsoft Login-sida
+## <a name="verify-connectivity-to-the-cloud-application-proxy-service-and-microsoft-login-page"></a>Kontrollera anslutningen till tjänsten för Webbprogramproxy för molnet och Microsoft Login-sida
 
-**Mål:** verifiera att hello connector datorn kan ansluta toohello AAD Application Proxy registrering slutpunkt som Microsoft-inloggningssidan.
+**Mål:** Kontrollera att connector-datorn kan ansluta till slutpunkt för registrering av AAD Application Proxy samt Microsoft inloggningssidan.
 
-1.  Öppna en webbläsare och gå toohello följande webbsida: <https://aadap-portcheck.connectorporttest.msappproxy.net> , och kontrollera att hello anslutningen tooCentral USA och östra USA datacenter med portarna 9090 och 9091 fungerar.
+1.  Öppna en webbläsare och gå till följande webbsida: <https://aadap-portcheck.connectorporttest.msappproxy.net> , och kontrollera att anslutningen till centrala USA och östra USA datacenter med portarna 9090 och 9091 fungerar.
 
-2.  Om någon av dessa portar inte lyckas (om du inte har en grön bock), verifiera att hello brandväggen eller backend-proxy har \*. msappproxy.net med portarna 9090 och 9091 definierats korrekt.
+2.  Om någon av dessa portar inte lyckas (om du inte har en grön bock), kontrollera att brandväggen eller backend-proxy har \*. msappproxy.net med portarna 9090 och 9091 definierats korrekt.
 
-3.  Öppna en webbläsare (separat flik) och gå toohello följande webbsida: <https://login.microsoftonline.com>, se till att du loggar in toothat sidan.
+3.  Öppna en webbläsare (separat flik) och gå till följande webbsida: <https://login.microsoftonline.com>, se till att du kan logga in på sidan.
 
 ## <a name="verify-machine-and-backend-components-support-for-application-proxy-trust-cert"></a>Kontrollera att dator-och backend-stöd för Application Proxy betrodda certifikat
 
-**Mål:** Kontrollera att hello connector datorn, backend-proxy och brandväggen stöder hello-certifikat som skapas av hello connector för framtida förtroende.
+**Mål:** Kontrollera att connector-datorn, backend-proxy och brandväggen har stöd för det certifikat som skapas av anslutningen för framtida förtroende.
 
 >[!NOTE]
->hello-koppling försöker toocreate ett SHA512 certifikat som stöds av TLS1.2. Om datorn hello eller hello backend brandväggar och proxyservrar inte stöder TLS1.2 hello installationen misslyckas.
+>Kopplingen försöker skapa ett SHA512 certifikat som stöds av TLS1.2. Installationen misslyckas om datorn eller backend brandväggar och proxyservrar inte stöder TLS1.2.
 >
 >
 
-**tooresolve hello problem:**
+**Så här löser du problemet:**
 
-1.  Kontrollera hello datorn stöder TLS1.2 – TLS 1.2 ska ha stöd för alla Windows-versioner när 2012 R2. Om datorn connector är från en version av 2012 R2 eller tidigare, kontrollerar du att hello följande KBs är installerade på datorn hello: <https://support.microsoft.com/help/2973337/sha512-is-disabled-in-windows-when-you-use-tls-1.2>
+1.  Kontrollera att datorn stöder TLS1.2 – TLS 1.2 ska ha stöd för alla Windows-versioner när 2012 R2. Om datorn connector är från en version av 2012 R2 eller tidigare, kontrollerar du att följande KBs är installerade på datorn: <https://support.microsoft.com/help/2973337/sha512-is-disabled-in-windows-when-you-use-tls-1.2>
 
-2.  Kontakta administratören för nätverket och be tooverify att hello backend proxy- och brandväggsinställningarna inte blockerar SHA512 för utgående trafik.
+2.  Kontakta administratören för nätverket och be att kontrollera att backend proxy- och brandväggsinställningarna inte blockerar SHA512 för utgående trafik.
 
-## <a name="verify-admin-is-used-tooinstall-hello-connector"></a>Kontrollera admin används tooinstall hello-koppling
+## <a name="verify-admin-is-used-to-install-the-connector"></a>Kontrollera att admin används för att installera connector
 
-**Mål:** kontrollerar du att hello-användaren som försöker tooinstall hello connector är en administratör med rätt autentiseringsuppgifter. För närvarande måste hello användaren vara en global administratör för hello installation toosucceed.
+**Mål:** Kontrollera att den användare som försöker installera connector är en administratör med rätt autentiseringsuppgifter. För närvarande måste användaren vara en global administratör för att installationen ska lyckas.
 
-**tooverify hello autentiseringsuppgifterna är korrekta:**
+**Kontrollera att autentiseringsuppgifterna är korrekta:**
 
-Ansluta för<https://login.microsoftonline.com> och använda hello samma autentiseringsuppgifter. Kontrollera att hello inloggningen är klar. Du kan kontrollera hello användarroll genom att gå för**Azure Active Directory**  - &gt; **användare och grupper**  - &gt; **alla användare**. 
+Ansluta till <https://login.microsoftonline.com> och använda samma autentiseringsuppgifter. Kontrollera att inloggningen är klar. Du kan kontrollera rollen genom att gå till **Azure Active Directory**  - &gt; **användare och grupper**  - &gt; **alla användare**. 
 
-Välj ditt användarkonto, sedan ”Directory roll” hello resulterande menyn. Verifiera den valda rollen hello är ”Global administratör”. Om du tooaccess någon hello sidor längs de här stegen kan är du inte en global administratör.
+Välj ditt användarkonto, sedan ”Directory roll” på menyn. Kontrollera att den valda rollen är ”Global administratör”. Om du inte går att komma åt någon av sidorna på de här stegen kan är du inte en global administratör.
 
 ## <a name="next-steps"></a>Nästa steg
 [Förstå Azure AD Application Proxy-kopplingar](application-proxy-understand-connectors.md)

@@ -1,6 +1,6 @@
 ---
-title: aaaH264 flera bithastighet 4 x 3 SD ljud 5.1 | Microsoft Docs
-description: "hello avsnittet ger en översikt över hello ** H264 Multibithastighet 4 x 3 SD ljud 5.1* * aktiviteten förinställda."
+title: H264 Flera bithastighet 4 x 3 SD ljud 5.1 | Microsoft Docs
+description: "Avsnittet ger en översikt över de ** H264 Multibithastighet 4 x 3 SD ljud 5.1* * aktiviteten förinställda."
 author: Juliako
 manager: cfowler
 editor: 
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: juliako
-ms.openlocfilehash: 894c89067f387ae3823df77a7ae9c4e64047dd31
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: ff918754b224b0ee9158d73d57aa514dbec595ed
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="h264-multiple-bitrate-4x3-sd-audio-51"></a>H264 Flera bithastighet 4 x 3 SD ljud 5.1
-`Media Encoder Standard`definierar en uppsättning kodning förinställningar som du kan använda när du skapar kodning jobb. Du kan använda en `preset name` toospecify i vilket format du vill att tooencode media-fil. Du kan också skapa egna JSON eller XML-baserade förinställningar (med hjälp av UTF-8- eller UTF-16-kodning. Du skulle sedan överföra hello anpassade förinställda toohello kodare. Hello lista över alla hello förinställningen namn som stöds av det här `Media Encoder Standard` kodare, se [aktivitet förinställningar för Media Encoder Standard](media-services-mes-presets-overview.md).  
+`Media Encoder Standard`definierar en uppsättning kodning förinställningar som du kan använda när du skapar kodning jobb. Du kan använda en `preset name` att ange i vilket format du vill koda media-fil. Du kan också skapa egna JSON eller XML-baserade förinställningar (med hjälp av UTF-8- eller UTF-16-kodning. Du skulle sedan överföra anpassad förinställning på kodaren. Lista över alla förvalda namn som stöds av det här `Media Encoder Standard` kodare, se [aktivitet förinställningar för Media Encoder Standard](media-services-mes-presets-overview.md).  
   
- Det här avsnittet visar hello `H264 Multiple Bitrate 4x3 SD Audio 5.1` förinställda XML och JSON-format.  
+ Det här avsnittet beskrivs de `H264 Multiple Bitrate 4x3 SD Audio 5.1` förinställda XML och JSON-format.  
   
- Den här förinställningen producerar en uppsättning 5 GOP-justerad MP4-filer från 1600 kbit/s too400 kbit/s och AAC 5.1 ljud. Detaljerad information om profilen bithastighet, provtagning hastighet, etc. Om detta förinställda ska undersöka hello XML- eller JSON som anges nedan. Förklaringar av vad varje element innebär och hello giltiga värden för varje element finns hello [Media Encoder Standard schemat](media-services-mes-schema.md)...  
+ Den här förinställningen producerar en uppsättning 5 GOP-justerad MP4-filer, allt från 1600 kbit/s till 400 kbit/s och AAC 5.1 ljud. Detaljerad information om profilen bithastighet, provtagning hastighet, etc. Om detta förinställda ska undersöka XML- eller JSON som anges nedan. Förklaringar av vad varje element betyder och giltiga värden för varje element finns i [Media Encoder Standard schemat](media-services-mes-schema.md)...  
   
 > [!NOTE]
->  När du ändrar hello `Width` och `Height` värden i lager, se till att hello proportionerna förblir konsekvent. Till exempel: 1 920 x 1 080, minst 1 280 x 720, 1080 x 576 640 x 360. Du bör inte använda en blandning av proportioner, exempelvis: minst 1 280 x 720, 720 x 480, 640 x 360.  
+>  När du ändrar den `Width` och `Height` värden i lager, se till att proportionerna förblir konsekvent. Till exempel: 1 920 x 1 080, minst 1 280 x 720, 1080 x 576 640 x 360. Du bör inte använda en blandning av proportioner, exempelvis: minst 1 280 x 720, 720 x 480, 640 x 360.  
   
  XML  
   

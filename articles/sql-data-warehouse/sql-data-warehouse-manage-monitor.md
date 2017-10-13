@@ -1,6 +1,6 @@
 ---
-title: 'aaaMonitor din arbetsbelastning med av DMV: er | Microsoft Docs'
-description: "Lär dig hur toomonitor din arbetsbelastning med av DMV: er."
+title: "Övervaka din arbetsbelastning med av DMV: er | Microsoft Docs"
+description: "Lär dig att övervaka din arbetsbelastning med av DMV: er."
 services: sql-data-warehouse
 documentationcenter: NA
 author: sqlmojo
@@ -15,24 +15,24 @@ ms.workload: data-services
 ms.custom: performance
 ms.date: 10/31/2016
 ms.author: joeyong;barbkess
-ms.openlocfilehash: acccf952d165ccec3de3b4b1c633b18bbbf78077
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 7ce6c2cdf1e28852da536414533ccdcdaeb437e5
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="monitor-your-workload-using-dmvs"></a>Övervaka din arbetsbelastning med DMV:er
-Den här artikeln beskriver hur toouse dynamiska hanteringsvyer (av DMV: er) toomonitor din arbetsbelastning och undersöka Frågekörningen i Azure SQL Data Warehouse.
+Den här artikeln beskriver hur du använder dynamiska hanteringsvyer (av DMV: er) för att övervaka din arbetsbelastning och undersöka Frågekörningen i Azure SQL Data Warehouse.
 
 ## <a name="permissions"></a>Behörigheter
-tooquery hello av DMV: er i den här artikeln behöver du antingen VISNINGSSTATUS för databasen eller behörighet. Beviljande VISNINGSSTATUS för databasen är vanligtvis hello önskad behörighet eftersom det är mycket mer restriktiva.
+Om du vill fråga de av DMV: er i den här artikeln behöver behörighet att visa status för databasen eller kontroll. Beviljande VISNINGSSTATUS för databasen är vanligtvis prioriterade behörigheten eftersom den är mycket mer restriktiva.
 
 ```sql
-GRANT VIEW DATABASE STATE toomyuser;
+GRANT VIEW DATABASE STATE TO myuser;
 ```
 
 ## <a name="monitor-connections"></a>Övervaka anslutningar
-Alla inloggningar tooSQL datalagret loggas för[sys.dm_pdw_exec_sessions][sys.dm_pdw_exec_sessions].  Den här DMV innehåller hello sista 10 000-inloggningar.  Hej session_id är hello primärnyckel och har tilldelats sekventiellt för varje ny inloggning.
+Alla inloggningar till SQL Data Warehouse loggas [sys.dm_pdw_exec_sessions][sys.dm_pdw_exec_sessions].  Den här DMV innehåller de senaste 10 000-inloggningar.  Session_id är den primära nyckeln och har tilldelats sekventiellt för varje ny inloggning.
 
 ```sql
 -- Other Active Connections
@@ -40,16 +40,16 @@ SELECT * FROM sys.dm_pdw_exec_sessions where status <> 'Closed' and session_id <
 ```
 
 ## <a name="monitor-query-execution"></a>Körning av övervakaren fråga
-Alla frågor som körs på SQL Data Warehouse loggas för[sys.dm_pdw_exec_requests][sys.dm_pdw_exec_requests].  Den här DMV innehåller hello sista 10 000 frågor som körs.  Hej request_id unikt identifierar varje fråga och är hello primärnyckeln för den här DMV.  Hej request_id tilldelas sekventiellt för varje ny fråga och med prefixet QID, vilket står för frågan-ID.  Frågor till den här DMV för en given session_id visas alla frågor för en viss inloggning.
+Alla frågor som körs på SQL Data Warehouse loggas [sys.dm_pdw_exec_requests][sys.dm_pdw_exec_requests].  Den här DMV innehåller de senaste 10 000 frågor som körs.  Request_id unikt identifierar varje fråga och är den primära nyckeln för den här DMV.  Request_id tilldelas sekventiellt för varje ny fråga och med prefixet QID, vilket står för frågan-ID.  Frågor till den här DMV för en given session_id visas alla frågor för en viss inloggning.
 
 > [!NOTE]
 > Lagrade procedurer använda flera begäran-ID: N.  Begäran-ID: N tilldelas i följd. 
 > 
 > 
 
-Här är körningen för steg toofollow tooinvestigate frågeplaner och tidpunkter för en viss fråga.
+Här följer stegen för att undersöka frågeplaner för körning och tid för en viss fråga.
 
-### <a name="step-1-identify-hello-query-you-wish-tooinvestigate"></a>STEG 1: Identifiera hello-fråga som du vill tooinvestigate
+### <a name="step-1-identify-the-query-you-wish-to-investigate"></a>STEG 1: Identifiera den fråga som du vill undersöka
 ```sql
 -- Monitor active queries
 SELECT * 
@@ -63,18 +63,18 @@ SELECT TOP 10 *
 FROM sys.dm_pdw_exec_requests 
 ORDER BY total_elapsed_time DESC;
 
--- Find a query with hello Label 'My Query'
--- Use brackets when querying hello label column, as it it a key word
+-- Find a query with the Label 'My Query'
+-- Use brackets when querying the label column, as it it a key word
 SELECT  *
 FROM    sys.dm_pdw_exec_requests
 WHERE   [label] = 'My Query';
 ```
 
-Från hello föregående resultatet och **Obs hello ID för begäran** av hello-fråga som du vill att tooinvestigate.
+Från föregående frågeresultaten **Observera begäran-ID** till den fråga som du vill undersöka.
 
-Frågorna i hello **pausad** tillstånd köas på grund av tooconcurrency gränser. De här frågorna visas också i hello sys.dm_pdw_waits väntar frågan med en typ av UserConcurrencyResourceType. Se [samtidighet och arbetsbelastningen] [ Concurrency and workload management] för mer information om samtidighet gränser. Frågor kan också vänta tills andra orsaker som för lås för objektet.  Om din fråga väntar på en resurs, se [undersöker frågor som väntar på resurser] [ Investigating queries waiting for resources] längre ned i den här artikeln.
+Frågor i den **pausad** tillstånd köas på grund av samtidiga gränser. De här frågorna visas också i sys.dm_pdw_waits väntar frågan med en typ av UserConcurrencyResourceType. Se [samtidighet och arbetsbelastningen] [ Concurrency and workload management] för mer information om samtidighet gränser. Frågor kan också vänta tills andra orsaker som för lås för objektet.  Om din fråga väntar på en resurs, se [undersöker frågor som väntar på resurser] [ Investigating queries waiting for resources] längre ned i den här artikeln.
 
-toosimplify hello sökning efter en fråga i hello sys.dm_pdw_exec_requests tabell, Använd [etikett] [ LABEL] tooassign en kommentar tooyour fråga som kan slås upp i hello sys.dm_pdw_exec_requests vy.
+För att förenkla sökning efter en fråga i tabellen sys.dm_pdw_exec_requests, Använd [etikett] [ LABEL] att tilldela en kommentar till din fråga kan sökas i vyn sys.dm_pdw_exec_requests.
 
 ```sql
 -- Query with Label
@@ -84,11 +84,11 @@ OPTION (LABEL = 'My Query')
 ;
 ```
 
-### <a name="step-2-investigate-hello-query-plan"></a>STEG 2: Undersöka hello frågeplan
-Använd hello ID för begäran tooretrieve hello frågans distribuerade SQL (DSQL) plan från [sys.dm_pdw_request_steps][sys.dm_pdw_request_steps].
+### <a name="step-2-investigate-the-query-plan"></a>STEG 2: Undersöka frågeplanen
+Använda begäran-ID för att hämta frågans distribuerade SQL (DSQL) plan från [sys.dm_pdw_request_steps][sys.dm_pdw_request_steps].
 
 ```sql
--- Find hello distributed query plan steps for a specific query.
+-- Find the distributed query plan steps for a specific query.
 -- Replace request_id with value from Step 1.
 
 SELECT * FROM sys.dm_pdw_request_steps
@@ -96,51 +96,51 @@ WHERE request_id = 'QID####'
 ORDER BY step_index;
 ```
 
-När en plan för DSQL tar längre tid än förväntat, kan hello orsak vara en komplicerad plan med många DSQL steg eller ett enda steg som tar lång tid.  Om hello plan många steg med flera move-åtgärder kan du optimera din tabell distributioner tooreduce dataflyttning. Hej [tabell distribution] [ Table distribution] artikel som förklarar varför data måste vara flyttade toosolve en fråga och förklarar vissa distribution strategier toominimize dataflyttning.
+När en plan för DSQL tar längre tid än förväntat, kan orsaken vara en komplicerad plan med många DSQL steg eller ett enda steg som tar lång tid.  Om planen många steg med flera move-åtgärder kan du optimera din tabell distributioner för att minska dataflyttning. Den [tabell distribution] [ Table distribution] artikel som förklarar varför data måste flyttas till att lösa en fråga och förklarar vissa distributionsstrategier för att minimera dataflyttning.
 
-tooinvestigate ytterligare information om ett enda steg hello *operation_type* kolumn i hello tidskrävande frågor steg och Observera hello **steg Index**:
+Att undersöka ytterligare information om ett enskilt steg i *operation_type* kolumnen tidskrävande frågesteg och den **steg Index**:
 
 * Fortsätt med steg 3a för **SQL-åtgärder**: OnOperation, RemoteOperation, ReturnOperation.
 * Fortsätt med steg 3b för **dataflyttning operations**: ShuffleMoveOperation, BroadcastMoveOperation, TrimMoveOperation, PartitionMoveOperation, MoveOperation, CopyOperation.
 
-### <a name="step-3a-investigate-sql-on-hello-distributed-databases"></a>STEG 3a: undersöka SQL på hello distribuerade databaser
-Använd hello ID för begäran och hello steg Index tooretrieve information från [sys.dm_pdw_sql_requests][sys.dm_pdw_sql_requests], som innehåller information om körning av hello frågesteg på alla hello distribuerade databaser.
+### <a name="step-3a-investigate-sql-on-the-distributed-databases"></a>STEG 3a: undersöka SQL på de distribuerade databaserna
+Använda begäran-ID och indexet steg för att hämta information från [sys.dm_pdw_sql_requests][sys.dm_pdw_sql_requests], som innehåller information om körningen av steget fråga på alla distribuerade databaser.
 
 ```sql
--- Find hello distribution run times for a SQL step.
+-- Find the distribution run times for a SQL step.
 -- Replace request_id and step_index with values from Step 1 and 3.
 
 SELECT * FROM sys.dm_pdw_sql_requests
 WHERE request_id = 'QID####' AND step_index = 2;
 ```
 
-När du kör hello frågesteg [DBCC PDW_SHOWEXECUTIONPLAN] [ DBCC PDW_SHOWEXECUTIONPLAN] kan vara används tooretrieve hello SQL Server uppskattade plan från hello SQL Server plancache för hello-steget körs på en viss distribution.
+När du kör steget frågan [DBCC PDW_SHOWEXECUTIONPLAN] [ DBCC PDW_SHOWEXECUTIONPLAN] kan användas för att hämta den uppskattade planen för SQL Server från SQL Server-plancache för steget körs på en viss distributionsplats.
 
 ```sql
--- Find hello SQL Server execution plan for a query running on a specific SQL Data Warehouse Compute or Control node.
+-- Find the SQL Server execution plan for a query running on a specific SQL Data Warehouse Compute or Control node.
 -- Replace distribution_id and spid with values from previous query.
 
 DBCC PDW_SHOWEXECUTIONPLAN(1, 78);
 ```
 
-### <a name="step-3b-investigate-data-movement-on-hello-distributed-databases"></a>STEG 3b: undersöka flytt av data på hello distribuerade databaser
-Använd hello ID för begäran och hello steg Index tooretrieve information om ett steg för flytt av data som körs på varje distributionsplats från [sys.dm_pdw_dms_workers][sys.dm_pdw_dms_workers].
+### <a name="step-3b-investigate-data-movement-on-the-distributed-databases"></a>STEG 3b: undersöka flytt av data på de distribuerade databaserna
+Använda begäran-ID och indexet steg för att hämta information om ett steg för flytt av data som körs på varje distributionsplats från [sys.dm_pdw_dms_workers][sys.dm_pdw_dms_workers].
 
 ```sql
--- Find hello information about all hello workers completing a Data Movement Step.
+-- Find the information about all the workers completing a Data Movement Step.
 -- Replace request_id and step_index with values from Step 1 and 3.
 
 SELECT * FROM sys.dm_pdw_dms_workers
 WHERE request_id = 'QID####' AND step_index = 2;
 ```
 
-* Kontrollera hello *total_elapsed_time* kolumnen toosee om en viss distributionsplats tar avsevärt längre tid än andra för dataförflyttning.
-* Kontrollera hello för hello tidskrävande distribution *rows_processed* kolumnen toosee om hello antalet rader som flyttas från den distributionsplatsen är betydligt större än andra. I så fall kan detta tyda skeva underliggande data.
+* Kontrollera den *total_elapsed_time* kolumnen att se om en viss distributionsplats tar betydligt längre än andra för dataförflyttning.
+* Långvariga-distribution Kontrollera den *rows_processed* kolumn om antalet rader som flyttas från den distributionsplatsen är betydligt större än andra. I så fall kan detta tyda skeva underliggande data.
 
-Om hello frågan körs [DBCC PDW_SHOWEXECUTIONPLAN] [ DBCC PDW_SHOWEXECUTIONPLAN] kan vara används tooretrieve hello SQL Server uppskattade plan från hello SQL Server-plancache för hello körs SQL steg inom en viss distribution.
+Om frågan körs [DBCC PDW_SHOWEXECUTIONPLAN] [ DBCC PDW_SHOWEXECUTIONPLAN] kan användas för att hämta den uppskattade planen för SQL Server från SQL Server-plancache för pågående SQL steg inom en viss distribution.
 
 ```sql
--- Find hello SQL Server estimated plan for a query running on a specific SQL Data Warehouse Compute or Control node.
+-- Find the SQL Server estimated plan for a query running on a specific SQL Data Warehouse Compute or Control node.
 -- Replace distribution_id and spid with values from previous query.
 
 DBCC PDW_SHOWEXECUTIONPLAN(55, 238);
@@ -149,7 +149,7 @@ DBCC PDW_SHOWEXECUTIONPLAN(55, 238);
 <a name="waiting"></a>
 
 ## <a name="monitor-waiting-queries"></a>Övervaka väntar frågor
-Om du upptäcker att frågan inte är framsteg eftersom den väntar på en resurs, är här en fråga som visar alla resurser som hello väntar på en fråga.
+Om du upptäcker att frågan inte är framsteg eftersom den väntar på en resurs, är här en fråga som visar alla resurser som väntar på en fråga.
 
 ```sql
 -- Find queries 
@@ -171,15 +171,15 @@ WHERE waits.request_id = 'QID####'
 ORDER BY waits.object_name, waits.object_type, waits.state;
 ```
 
-Om frågan hello aktivt väntar på resurser från en annan fråga och sedan hello tillstånd kommer att **AcquireResources**.  Om hello frågan har alla hello nödvändiga resurser och sedan hello tillstånd kommer att **beviljas**.
+Om frågan är aktivt väntar på resurser från en annan fråga, så kommer att vara i tillståndet **AcquireResources**.  Om frågan har alla nödvändiga resurser och tillståndet kommer att **beviljas**.
 
 ## <a name="monitor-tempdb"></a>Övervakaren tempdb
-Hög tempdb-användning kan vara hello orsaken för långsam prestanda och ut ur minnesproblem. Kontrollera om du har data skeva eller dålig rowgroups och vidta lämpliga åtgärder för hello först. Överväg att skala ditt informationslager om du hittar tempdb når gränsen vid körning av fråga. hello nedan beskrivs hur tooidentify tempdb användning per fråga på varje nod. 
+Hög tempdb-användning kan vara orsaken för långsam prestanda och ut ur minnesproblem. Kontrollera först att du har data skeva eller dålig rowgroups och vidta lämpliga åtgärder. Överväg att skala ditt informationslager om du hittar tempdb når gränsen vid körning av fråga. Nedan beskrivs hur du identifierar tempdb-användning per fråga på varje nod. 
 
-Skapa hello följande vy tooassociate hello lämplig nod-id för sys.dm_pdw_sql_requests. Detta aktiverar du tooleverage andra direkt av DMV: er och koppla de tabellerna med sys.dm_pdw_sql_requests.
+Skapa följande vy om du vill associera lämpliga nod-id för sys.dm_pdw_sql_requests. Detta kan du dra nytta av andra direkt av DMV: er och koppla de tabellerna med sys.dm_pdw_sql_requests.
 
 ```sql
--- sys.dm_pdw_sql_requests with hello correct node id
+-- sys.dm_pdw_sql_requests with the correct node id
 CREATE VIEW sql_requests AS
 (SELECT
        sr.request_id,
@@ -200,7 +200,7 @@ CREATE VIEW sql_requests AS
 FROM sys.pdw_distributions AS d
 RIGHT JOIN sys.dm_pdw_sql_requests AS sr ON d.distribution_id = sr.distribution_id)
 ```
-Kör följande fråga toomonitor tempdb hello:
+Kör följande fråga för att övervaka tempdb:
 
 ```sql
 -- Monitor tempdb
@@ -233,9 +233,9 @@ ORDER BY sr.request_id;
 ```
 ## <a name="monitor-memory"></a>Övervaka minne
 
-Minne kan vara hello orsaken för långsam prestanda och ut ur minnesproblem. Kontrollera om du har data skeva eller dålig rowgroups och vidta lämpliga åtgärder för hello först. Överväg att skala ditt informationslager om du hittar minnesanvändning för SQL Server når gränsen vid körning av fråga.
+Minne kan vara orsaken för långsam prestanda och ut ur minnesproblem. Kontrollera först att du har data skeva eller dålig rowgroups och vidta lämpliga åtgärder. Överväg att skala ditt informationslager om du hittar minnesanvändning för SQL Server når gränsen vid körning av fråga.
 
-hello följande fråga returnerar SQL Server och minnesbelastning per nod: 
+Följande fråga returnerar SQL Server och minnesbelastning per nod:   
 ```sql
 -- Memory consumption
 SELECT
@@ -258,7 +258,7 @@ pc1.counter_name = 'Total Server Memory (KB)'
 AND pc2.counter_name = 'Target Server Memory (KB)'
 ```
 ## <a name="monitor-transaction-log-size"></a>Övervaka transaktion loggfilens storlek
-hello returnerar följande fråga hello transaktion loggfilens storlek på varje distributionsplats. Kontrollera om du har data skeva eller dålig rowgroups och vidta lämpliga åtgärder för hello. Om en av hello loggfiler når 160GB, bör du skala upp din instans eller begränsa storleken på din transaktion. 
+Följande fråga returnerar storleken på transaktionsloggen på varje distributionsplats. Kontrollera om du har data skeva eller dålig rowgroups och vidta lämpliga åtgärder. Om en av filerna når 160GB, bör du skala upp din instans eller begränsa storleken på din transaktion. 
 ```sql
 -- Transaction log size
 SELECT
@@ -272,7 +272,7 @@ AND counter_name = 'Log File(s) Used Size (KB)'
 AND counter_name = 'Target Server Memory (KB)'
 ```
 ## <a name="monitor-transaction-log-rollback"></a>Övervaka logg transaktionsåterställning
-Om dina frågor misslyckas eller tar en lång tid tooproceed kan du kontrollera och övervaka om du har några transaktioner återställs.
+Om dina frågor misslyckas eller tar lång tid att fortsätta, kan du kontrollera och övervaka om du har några transaktioner återställs.
 ```sql
 -- Monitor rollback
 SELECT 

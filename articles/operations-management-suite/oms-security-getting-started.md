@@ -1,6 +1,6 @@
 ---
-title: "aaaGetting igång med Operations Management Suite säkerhet och granska lösningen | Microsoft Docs"
-description: "Det här dokumentet hjälper du tooget igång med Operations Management Suite säkerhet och granska lösningen funktioner toomonitor din hybridmoln."
+title: "Komma igång med säkerhets- och granskningslösningen i Operations Management Suite | Microsoft Docs"
+description: "Det här dokumentet beskriver hur du kommer igång med funktionerna i säkerhets- och granskningslösningen i Operations Management Suite för att övervaka ditt hybridmoln."
 services: operations-management-suite
 documentationcenter: na
 author: YuriDio
@@ -15,43 +15,43 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2017
 ms.author: yurid
-ms.openlocfilehash: 5cb3e5dbb3e60f9702a34c9413ddc1bf2b14b411
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: eb5283c8f32fddaa8a20a565e4b877821de979a4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="getting-started-with-operations-management-suite-security-and-audit-solution"></a>Komma igång med säkerhets- och granskningslösningen i Operations Management Suite
 Det här dokumentet hjälper dig att snabbt komma igång med funktionerna i säkerhets- och granskningslösningen i Operations Management Suite (OMS) genom att vägleda dig igenom de olika alternativen.
 
 ## <a name="what-is-oms"></a>Vad är OMS?
-Microsoft Operations Management Suite (OMS) är Microsofts molnbaserade IT-hanteringslösning som hjälper dig att hantera och skydda din lokala och molnbaserade infrastruktur. Mer information om OMS artikeln hello [Operations Management Suite](https://technet.microsoft.com/library/mt484091.aspx).
+Microsoft Operations Management Suite (OMS) är Microsofts molnbaserade IT-hanteringslösning som hjälper dig att hantera och skydda din lokala och molnbaserade infrastruktur. Mer information om OMS finns i artikeln [Operations Management Suite](https://technet.microsoft.com/library/mt484091.aspx).
 
 ## <a name="oms-security-and-audit-dashboard"></a>Instrumentpanelen för Säkerhet och granskning i OMS
-hello OMS säkerhet och granska lösningen innehåller en heltäckande översikt över din organisations IT säkerhetstillståndet med inbyggda sökfrågor för anmärkningsvärda problem som kräver din uppmärksamhet. Hej **säkerhet och granska** instrumentpanelen är hello startsidan för allt relaterade toosecurity i OMS. Det ger en övergripande inblick i hello säkerhetsstatus för dina datorer. Den omfattar också hello möjlighet tooview alla händelser från hello senaste 24 timmarna, 7 dagar eller andra anpassade tidsintervall. tooaccess hello **säkerhet och granska** instrumentpanel, gör du följande:
+Säkerhets- och granskningslösningen i OMS ger en heltäckande översikt över din organisations IT-säkerhetsstatus med inbyggda sökfrågor för viktiga problem som kräver din uppmärksamhet. Instrumentpanelen för **Säkerhet och granskning** är startsidan för allt som rör säkerheten i OMS. Den innehåller en översikt över säkerhetsstatusen för dina datorer. Här kan du också visa alla händelser från de senaste 24 timmarna, sju dagarna eller ett annat anpassat tidsintervall. Du öppnar instrumentpanelen för **Säkerhet och granskning** genom att följa dessa steg:
 
-1. I hello **Microsoft Operations Management Suite** huvudsakliga instrumentpanelen klickar du på **inställningar** panelen hello till vänster.
-2. I hello **inställningar** bladet under **lösningar** klickar du på **säkerhet och granska** alternativet.
-3. Hej **säkerhet och granska** instrumentpanelen visas:
+1. Klicka på panelen **Inställningar** till vänster på huvudinstrumentpanelen för **Microsoft Operations Management Suite**.
+2. Klicka på alternativet **Säkerhet och granskning** under **Lösningar** på bladet **Inställningar**.
+3. Instrumentpanelen för **Säkerhet och granskning** visas:
    
     ![Instrumentpanelen för Säkerhet och granskning i OMS](./media/oms-security-getting-started/oms-getting-started-fig1-ga.png)
 
-Om du ansluter till den här instrumentpanelen för hello första gången och du inte har enheter som övervakas av OMS, fylls inte hello paneler med data som hämtats från hello agent. När du har installerat agenten hello det kan ta viss tid toopopulate, därför ser du ursprungligen kan sakna vissa data som de överförs fortfarande toohello moln.  I det här fallet är det normala toosee vissa rutor utan konkreta information. Läs [ansluta Windows-datorer direkt tooOMS](https://technet.microsoft.com/library/mt484108.aspx) för mer information om hur tooinstall OMS-agent i ett Windows-system och [ansluta Linux-datorer tooOMS](https://technet.microsoft.com/library/mt622052.aspx) för mer information om hur tooperform den här aktiviteten i ett Linux-system.
+Om du använder den här instrumentpanelen för första gången och du inte har några enheter som övervakas av OMS så är inte panelerna ifyllda med data som hämtas från agenten. När du har installerat agenten kan det ta lite tid innan panelerna fylls i och det kan därför se ut som vissa data saknas eftersom de fortfarande laddas upp till molnet.  I detta fall är det normalt att vissa paneler visas utan någon användbar information. Läs [Ansluta Windows-datorer direkt till OMS](https://technet.microsoft.com/library/mt484108.aspx) om du vill ha mer information om hur du installerar OMS-agenten på en Windows-dator och [Ansluta Linux-datorer till OMS](https://technet.microsoft.com/library/mt622052.aspx) om du vill ha mer information om hur du gör på en Linux-dator.
 
 > [!NOTE]
-> hello agenten samlar in hello information baserat på hello aktuella händelser som är aktiverade, till exempel datornamn, IP-adress och användarens namn. Inga dokument/filer, databasnamn eller privata data samlas dock in.   
+> Agenten samlar in information baserat på de aktuella händelser som är aktiverade, till exempel datornamn, IP-adress och användarnamn. Inga dokument/filer, databasnamn eller privata data samlas dock in.   
 > 
 > 
 
-Lösningar är en samling logik, visualisering och datahämtningsregler som hjälper till att hantera viktiga kundutmaningar. Säkerhet och granskning är en lösning, andra kan läggas till separat. Läs hello artikel [lägga till lösningar](https://technet.microsoft.com/library/mt674635.aspx) för mer information om hur tooadd en ny lösning.
+Lösningar är en samling logik, visualisering och datahämtningsregler som hjälper till att hantera viktiga kundutmaningar. Säkerhet och granskning är en lösning, andra kan läggas till separat. Artikeln [Lägga till lösningar](https://technet.microsoft.com/library/mt674635.aspx) innehåller mer information om hur du lägger till en ny lösning.
 
-hello OMS säkerhet och granska instrumentpanelen är organiserat i fyra huvudsakliga kategorier:
+Instrumentpanelen för Säkerhet och granskning i OMS är ordnad i fyra huvudkategorier:
 
-* **Säkerhetsdomäner**: i det här området kommer du att kunna toofurther utforska säkerhetsposter över tid, gå till kontroll av skadlig kod, uppdatera assessment, nätverkssäkerhet, identitet och åtkomst, datorer med säkerhetshändelser och snabbt har instrumentpanelen för tooAzure Security Center.
-* **Anmärkningsvärda problem**: det här alternativet tillåter tooquickly identifiera hello antal aktiva problem och hello allvarlighetsgrad för de här problemen.
-* **Identifieringar (förhandsgranskning)**: du kan använda tooidentify angreppsmönster genom visualisera säkerhetsaviseringar som de ske mot dina resurser.
-* **Hot Intelligence**: du kan använda tooidentify angreppsmönster genom visualisera hello Totalt antal servrar med utgående skadlig IP-trafik, hello skadliga hot typ och en karta som visar var dessa IP-adresser kommer från. 
-* **Vanliga säkerhetsfrågor**: det här alternativet får du en lista över de vanligaste hello-säkerhet frågor som du kan använda toomonitor din miljö. När du klickar på någon av dessa frågor öppnas hello **Sök** bladet med hello resultat för frågan.
+* **Säkerhetsdomäner**: I det här området kan du fortsätta att utforska säkerhetsposter över tid, komma åt utvärderingar av program mot skadlig kod, kontrollera uppdateringar, nätverkssäkerhet, identitets- och åtkomstinformation, datorer med säkerhetshändelser och snabbt komma åt instrumentpanelen för Azure Security Center.
+* **Anmärkningsvärda problem**: Med det här alternativet kan du snabbt identifiera antalet aktiva problem och problemens allvarlighetsgrad.
+* **Identifieringar (förhandsversion)**: Med det här alternativet kan du identifiera angreppsmönster genom att visualisera säkerhetsvarningar som skapas för dina resurser.
+* **Hotinformation**: Med det här alternativet kan du identifiera angreppsmönster genom att visualisera det totala antalet servrar med utgående skadlig IP-trafik, typen av hot och en karta som visar var dessa IP-adresser kommer från. 
+* **Vanliga säkerhetsfrågor**: Det här alternativet visar en lista över de vanligaste säkerhetsfrågorna som du kan använda för att övervaka din miljö. När du klickar på någon av dessa frågor öppnas bladet **Sök** med resultatet från frågan.
 
 > [!NOTE]
 > Mer information om hur OMS skyddar dina data finns i Så här skyddas dina data med OMS.
@@ -59,24 +59,24 @@ hello OMS säkerhet och granska instrumentpanelen är organiserat i fyra huvudsa
 > 
 
 ## <a name="security-domains"></a>Säkerhetsdomäner
-När övervakning resurser, är det viktigt toobe kan tooquickly åtkomst hello aktuell status för din miljö. Dock är det också viktigt toobe kan tootrack tillbaka händelser som inträffade i hello senaste som kan leda till tooa bättre förståelse för vad som händer i din miljö på en viss punkt i tiden. 
+När du övervakar resurser är det viktigt att snabbt kunna komma åt miljöns aktuella tillstånd. Det är också viktigt att kunna spåra händelser som har inträffat tidigare och som kan göra det lättare att förstå vad som händer i miljön vid en viss tidpunkt. 
 
 > [!NOTE]
-> datalagring sker enligt toohello OMS prisavtal. Mer information finns i hello [Microsoft Operations Management Suite](https://www.microsoft.com/server-cloud/operations-management-suite/pricing.aspx) sida med priser.
+> Datakvarhållningen baseras på OMS-prisplanen. Mer information finns på prissidan för [Microsoft Operations Management Suite](https://www.microsoft.com/server-cloud/operations-management-suite/pricing.aspx).
 > 
 > 
 
-Incident svar och dataforensik undersökning scenarier direkt drar nytta av hello resultat är tillgängliga i hello **säkerhetsposter över tid** panelen.
+Incidenthanterings- och datautredningsscenarier kan dra nytta av resultaten som är tillgängliga på panelen **Säkerhetsposter över tid**.
 
 ![Säkerhetsposter över tid](./media/oms-security-getting-started/oms-getting-started-fig2.JPG)
 
-När du klickar på den här panelen hello **Sök** öppnas bladet, visar ett frågeresultat för **säkerhetshändelser** (typ = SecurityEvents) med data baserat på hello senaste sju dagarna, enligt nedan:
+När du klickar på den här panelen öppnas bladet **Sök** och visar ett frågeresultat för **Säkerhetshändelser** (Type=SecurityEvents) med data baserat på de senaste sju dagarna, som du ser här:
 
 [!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 ![Säkerhetsposter över tid](./media/oms-security-getting-started/oms-getting-started-fig3.JPG)
 
-hello sökresultatet är uppdelad i två rutor: hello vänster ger en detaljerad analys av hello antalet säkerhetshändelser som har hittats, hello datorer där händelserna hittades, hello antalet konton som har identifierats i dessa datorer och hello typer av aktiviteter. hello till höger innehåller hello totalt resultat och en kronologisk vy av hello säkerhetshändelser med hello datorns namn och en händelse aktivitet. Du kan också klicka på **visa fler** tooview mer information om den här händelsen, till exempel hello händelsedata, hello händelse-ID och hello händelsekälla.
+Sökresultatet är uppdelat på två paneler: den vänstra panelen innehåller en detaljerad analys av antalet säkerhetshändelser som hittades, de datorer som händelserna hittades på, antalet konton som identifierades på datorerna samt typen av aktivitet. Den högra panelen innehåller det sammanlagda resultatet och en kronologisk vy över säkerhetshändelserna med datorns namn och händelseaktivitet. Du kan också klicka på **Visa mer** om du vill visa mer information om händelsen, till exempel händelsedata, händelse-ID och händelsekälla.
 
 > [!NOTE]
 > Mer information om OMS-sökfrågor finns i [sökreferensen för OMS](https://technet.microsoft.com/library/mt450427.aspx).
@@ -84,23 +84,23 @@ hello sökresultatet är uppdelad i två rutor: hello vänster ger en detaljerad
 > 
 
 ### <a name="antimalware-assessment"></a>Utvärdering av program mot skadlig kod
-Det här alternativet kan du tooquickly identifiera datorer med otillräckligt skydd och datorer som har angripits av en typ av skadlig kod. Kontroll av skadlig kod status hot har identifierats på hello övervakade servrar är skrivskyddade och hello data skickas toohello OMS-tjänsten i hello molnet för bearbetning. Servrar med identifierade hot och servrar utan tillräckligt skydd visas i hello skadlig kod assessment instrumentpanelen, som är tillgänglig när du klickar på hello **program mot skadlig kod Assessment** panelen. 
+Med det här alternativet kan du snabbt identifiera datorer med otillräckligt skydd och datorer som har komprometterats av skadlig kod. Statusen för en utvärdering av skadlig kod och identifierade hot på de övervakade servrarna läses och informationen skickas till OMS-tjänsten i molnet för bearbetning. Servrar med identifierade hot och servrar med otillräckligt skydd visas på instrumentpanelen för utredning av skadlig kod, som du kommer till när du klickar på panelen **Utvärdering av program mot skadlig kod**. 
 
 ![utvärdering av skadlig kod](./media/oms-security-getting-started/oms-getting-started-fig4-ga.png)
 
-Precis som alla andra levande sida vid sida finns i OMS-instrumentpanelen, när du klickar på den hello **Sök** öppnas bladet hello frågeresultatet. För det här alternativet om du klickar i hello **inte rapporterar** alternativ **skyddsstatus**, har du hello frågeresultat som visar den här enda post som innehåller hello datornamnet och rangen som visas nedan:
+Precis som med alla andra levande paneler på OMS-instrumentpanelen öppnas bladet **Sök** med frågeresultatet när du klickar på panelen. Om du klickar på **Rapporterar inte** under **Skyddsstatus** för det här alternativet visas frågeresultatet som innehåller den här enstaka posten med datorns namn och dess rankning, som du ser här:
 
 ![sökresultat](./media/oms-security-getting-started/oms-getting-started-fig5.png)
 
 > [!NOTE]
-> *rangordning* är en klass som ger tooreflect hello status för hello skydd (på, avstängd, uppdatera, osv) och hot som hittas. Har som som en nummer hjälper toomake aggregeringar.
+> *Rankning* är en grad som tilldelas för att återspegla skyddets status (på, av, uppdaterat osv.) och hot som hittats. Med det här numret blir det lättare att göra aggregeringar.
 > 
 > 
 
-Om du klickar på hello datornamn, har du hello kronologisk vy över hello skyddsstatus för den här datorn. Detta är användbart för scenarier där du behöver toounderstand om hello program mot skadlig kod har varit installerat och det togs bort på någon punkt.   
+Om du klickar på datorns namn visas den kronologiska vyn över skyddsstatusen för datorn. Detta är väldigt användbart för scenarier då du behöver veta om programmet mot skadlig kod har tagits bort sedan det installerades.   
 
 ### <a name="update-assessment"></a>Kontroll av uppdateringar
-Det här alternativet kan du tooquickly fastställa hello exponeringen toopotential säkerhetsproblem, och huruvida eller hur kritiska de här uppdateringarna är för din miljö. OMS säkerhets- och granska lösningen och ge endast hello visualisering av dessa uppdateringar, hello verkliga data som kommer från [uppdatering hanteringslösningar](oms-solution-update-management.md), vilket är en annan modul i OMS. Ett exempel på hello uppdateringar här:
+Med det här alternativet kan du snabbt bedöma exponeringen för potentiella säkerhetsproblem, och se om och i så fall hur viktiga dessa uppdateringar är för din miljö. Säkerhets- och granskningslösningen i OMS visar bara visualiseringen av dessa uppdateringar. Den verkliga informationen kommer från [lösningar för uppdateringshantering](oms-solution-update-management.md), som är en annan modul i OMS. Här ett exempel på uppdateringarna:
 
 ![systemuppdateringar](./media/oms-security-getting-started/oms-getting-started-fig6-new.png)
 
@@ -110,93 +110,93 @@ Det här alternativet kan du tooquickly fastställa hello exponeringen toopotent
 > 
 
 ### <a name="identity-and-access"></a>Identitet och åtkomst
-Identiteten ska vara hello kontrollen plan för ditt företag, skydda din identitet ska vara din högsta prioritet. Även i hello som tidigare fanns ytgränser runt organisationer och dessa ytgränser har en hello primära defensiva gränser, blir Nuförtiden med mer data och fler appar flytta toohello moln hello identitet hello nya perimeternätverk. 
+Identiteten bör vara kontrollplanet för ditt företag, och din högsta prioritet bör vara att skydda din identitet. Tidigare fanns det gränser runt organisationerna och dessa utgjorde ett av de viktigaste skydden. I dag, då alltmer data och fler appar migreras till molnet, är identiteten dess nya motsvarighet. 
 
 > [!NOTE]
-> för närvarande hello baseras enbart på säkerhetshändelser inloggningsdata (händelse-ID 4624) i hello framtida Office365 inloggningar och Azure AD-data kommer att visas.
+> För närvarande baseras informationen endast på inloggningsdata för säkerhetshändelser (händelse-ID 4624). Längre fram kommer även Office365-inloggningar och Azure AD-data att ingå.
 > 
 > 
 
-Du kommer att kunna tootake förebyggande åtgärder innan en incident äger rum eller reaktiv åtgärder toostop ett angrepp försök genom att övervaka dina identity-aktiviteter. Hej **identitets- och** instrumentpanelen ger en översikt över din identitet tillstånd, inklusive hello antalet misslyckade försök toolog på hello-konto som användes vid sådana försök konton som har låst konton med ändrat eller återställt lösenord och antalet konton som är inloggad för närvarande. 
+Genom att övervaka identitetsaktiviteter kan du vidta proaktiva åtgärder innan en incident inträffar eller reaktiva åtgärder för att stoppa ett angreppsförsök. Instrumentpanelen för **Identitet och åtkomst** innehåller en översikt över din identitetsstatus, inklusive antalet misslyckade inloggningsförsök, det användarkonto som användes vid dessa försök, konton som har låsts, konton med ändrade eller återställda lösenord och antalet konton som är inloggade för tillfället. 
 
-Om du klickar på hello **identitets- och** panelen visas hello följande instrumentpanelen:
+När du klickar på panelen **Identitet och åtkomst** visas följande instrumentpanel:
 
 ![identitet och åtkomst](./media/oms-security-getting-started/oms-getting-started-fig7-ga.png)
 
-hello informationen i den här instrumentpanelen hjälper omedelbart tooidentify potentiella misstänkt aktivitet. Det är exempelvis 338 försök toolog på som **administratör** och 100% av dessa försök misslyckades. Detta kan bero på en råstyrkeattack mot kontot. Om du klickar på det här kontot kommer du få mer information som kan hjälpa dig toodetermine hello målresursen för potentiella angrepp:
+Med informationen på den här instrumentpanelen kan du snabbt identifiera en potentiell misstänkt aktivitet. Anta till exempel att 338 inloggningsförsök som **administratör** har gjorts och att samtliga av dessa försök misslyckades. Detta kan bero på en råstyrkeattack mot kontot. Om du klickar på det här kontot visas mer information som kan hjälpa dig att fastställa målresursen för det potentiella angreppet:
 
 ![sökresultat](./media/oms-security-getting-started/oms-getting-started-fig8.JPG)
 
-hello detaljerad rapport innehåller viktig information om den här händelsen, inklusive: hello måldatorn, hello typ av inloggning (i det här fallet nätverksinloggning), hello aktivitet (i det här fallet händelse 4625) och en omfattande tidslinjen för varje försök. 
+Den detaljerade rapporten innehåller viktig information om den här händelsen, bland annat: måldatorn, typen av inloggning (i det här fallet nätverksinloggning), aktiviteten (i det här fallet händelse 4625) samt en detaljerad tidslinje för varje försök. 
 
 ### <a name="computers"></a>Datorer
-Den här panelen kan vara används tooaccess alla datorer som aktivt har säkerhetshändelser. Om du klickar på den här panelen visas hello lista över datorer med säkerhetshändelser och hello antalet händelser på varje dator:
+Den här panelen kan användas för att få åtkomst till alla datorer som aktivt har säkerhetshändelser. När du klickar på den här panelen visas en lista över datorer med säkerhetshändelser och antalet händelser på varje dator:
 
 ![Datorer](./media/oms-security-getting-started/oms-getting-started-fig9.JPG)
 
-Du kan fortsätta undersökningen genom att klicka på varje dator och granska hello säkerhetshändelser som har flaggats.
+Du kan fortsätta din undersökning genom att klicka på varje dator och granska säkerhetshändelserna som flaggats.
 
 ### <a name="threat-intelligence"></a>Hotinformation
 
-Med hjälp av hello Hotinformation alternativ som finns i OMS-säkerhet och granska IT-administratörer identifierar säkerhetshot mot hello miljö, till exempel, identifiera om en viss dator är en del av ett botnät. Datorer kan bli noder i ett botnät när angripare otillåtet sätt installera skadlig kod som någon gång ansluter den här datorn toohello kommando och kontroll. Hotinformation kan också identifiera potentiella hot från kommunikationskanaler under marken, som darknet. Mer information om Hotinformation genom att läsa [övervaknings- och svarar toosecurity aviseringar i Operations Management Suite säkerhet och granska lösningen](oms-security-responding-alerts.md) artikel.
+När IT-administratörer använder alternativet Hotinformation som är tillgängligt i OMS Säkerhet och granskning kan de identifiera säkerhetshot mot miljön, till exempel identifiera om en specifik dator är en del av ett botnät. Datorer kan bli noder i ett botnät när angripare installerar otillåten skadlig kod som i hemlighet ansluter datorn till kommando och kontroll. Hotinformation kan också identifiera potentiella hot från kommunikationskanaler under marken, som darknet. Läs mer om hotinformation genom att läsa artikeln [Övervaka och svara på säkerhetsaviseringar i säkerhets- och granskningslösningen i Operations Management Suite](oms-security-responding-alerts.md).
 
 I vissa situationer kan finnas det en potentiellt skadlig IP-adress som öppnas från en övervakad dator:
 
 ![hotinformationkarta](./media/oms-security-responding-alerts/oms-security-responding-alerts-fig6.png)
 
-Den här aviseringen och andra inom Hej samma kategori, genereras via OMS säkerhet genom att utnyttja [Microsoft Hotinformation](https://youtu.be/O4WtxgUrDc8). Hej Hotinformation data är samlas in av Microsoft som köpts från inledande hot intelligence providers. Dessa data uppdateras ofta och anpassade toofast flytta hot. På grund av tooits karaktär, bör det kombineras med andra informationskällor säkerhet vid [undersöker](https://blogs.technet.microsoft.com/msoms/2016/12/08/investigating-suspicious-activity-in-a-hybrid-cloud-with-oms-security/) en säkerhetsavisering. 
+Den här aviseringen och andra inom samma kategori, skapas via OMS Security genom att använda [Microsoft Threat Intelligence](https://youtu.be/O4WtxgUrDc8). Hotinformationsdata samlas in av Microsoft samt köpts från ledande säkerhetsexperter. Dessa data uppdateras ofta och anpassade till snabbföränderliga hot. På grund av sin natur, bör det kombineras med andra säkerhetinformationskällor när du [undersöker](https://blogs.technet.microsoft.com/msoms/2016/12/08/investigating-suspicious-activity-in-a-hybrid-cloud-with-oms-security/) en säkerhetsavisering. 
 
 ### <a name="baseline-assessment"></a>Utvärdering av baslinje
 
 Microsoft definierar, i samarbete med branschspecifika och offentliga organisationer i hela världen, en Windows-konfiguration för mycket säkra serverinstallationer. Den här konfigurationen består av en uppsättning registernycklar, granskningsprincipinställningar och säkerhetsprincipinställningar tillsammans med Microsofts rekommenderade värden för dessa inställningar. Den här uppsättningen regler kallas för en säkerhetsbaslinje. Läs [bedömning av baslinjen i Operations Management Suite säkerhet och granska lösningen](oms-security-baseline.md) för mer information om det här alternativet.
 
 ### <a name="azure-security-center"></a>Azure Security Center
-Den här panelen är i princip en genväg tooaccess Azure Security Center instrumentpanel. Mer information om den här lösningen finns i [Komma igång med Azure Security Center](../security-center/security-center-get-started.md).
+Den här panelen är i grunden en genväg till instrumentpanelen för Azure Security Center. Mer information om den här lösningen finns i [Komma igång med Azure Security Center](../security-center/security-center-get-started.md).
 
 ## <a name="notable-issues"></a>Anmärkningsvärda problem
-hello huvudsakliga syftet med den här gruppen av alternativen är tooprovide en snabb överblick över hello problem som du har i din miljö genom att kategorisera dem i kritisk, varning och information. Hej aktivt ärende typen sida vid sida är det en visualisering av dessa fel, men den inte kan du tooexplore mer information om dem, som du behöver toouse hello nedre delen av den här panelen hello namnet hello-problemet (namn), hur många objekten hade detta (antal) och hur viktigt det är (ALLVARLIGHETSGRAD).
+Det huvudsakliga syftet med den här gruppen alternativ är att ge en snabb överblick över problemen i din miljö genom att dela in dem i kategorierna Kritiskt, Varning och Information. Panelen Aktiva problemtyper är en visualisering av dessa problem, men ger dig inte möjlighet att utforskar mer information om dem. För att göra det måste du använda den nedre delen av den här panelen som visar namnet på problemet (NAMN), hur många objekt som haft problemet (ANTAL) och hur kritiskt det är (ALLVARLIGHETSGRAD).
 
 ![Anmärkningsvärda problem](./media/oms-security-getting-started/oms-getting-started-fig10.JPG)
 
-Du kan se att de här problemen redan omfattas i olika områden av hello **säkerhetsdomäner** grupp som förstärker hello syftet med den här vyn: visualisera hello mest viktiga problem i miljön från en enda plats.
+Du kan se att de här problemen redan finns med i olika områden i gruppen **Säkerhetsdomäner**, vilket är i linje med syftet med den här vyn: att visualisera de viktigaste problemen i miljön från en enda plats.
 
 ## <a name="detections-preview"></a>Identifieringar (förhandsversion)
-hello huvudsakliga syftet med det här alternativet är tooallow IT tooquickly identifiera potentiella hot tootheir miljön via och hello allvarlighetsgrad för det här hotet.
+Det huvudsakliga syftet med det här alternativet är att IT-personalen snabbt ska kunna identifiera potentiella hot i miljön utifrån hotets allvarlighetsgrad.
 
 ![Hotinformation](./media/oms-security-getting-started/oms-getting-started-fig12.png)
 
-Det här alternativet kan också användas under en [incidenter undersökningen](https://blogs.msdn.microsoft.com/azuresecurity/2016/11/30/investigating-suspicious-activity-in-a-hybrid-cloud-with-oms-security/) tooperform hello bedömning och få mer information om hello-attack.
+Det här alternativet kan också användas vid en [incidenthanteringsundersökning](https://blogs.msdn.microsoft.com/azuresecurity/2016/11/30/investigating-suspicious-activity-in-a-hybrid-cloud-with-oms-security/) för att utvärdera och få mer information om attacken.
 
 > [!NOTE]
-> Mer information om hur toouse OMS för Incident svar, se den här videon: [hur tooLeverage hello Azure Security Center & Microsoft Operations Management Suite för en Incident svar](https://channel9.msdn.com/Blogs/Taste-of-Premier/ToP1703).
+> Mer information om hur du använder OMS för incidenthantering finns i den här videon: [Utnyttja Azure Security Center och Microsoft Operations Management Suite för incidenthantering](https://channel9.msdn.com/Blogs/Taste-of-Premier/ToP1703).
 > 
 > 
 
 ## <a name="threat-intelligence"></a>Hotinformation
-Hej nya hot intelligence avsnitt av hello säkerhet och granska lösningen visualizes hello möjliga angreppsmönster på flera sätt: Hej Totalt antal servrar med utgående skadlig IP-trafik, hello skadliga hot typ och en karta som visar var du dessa IP-adresser kommer från. Du kan interagera med hello kartan och klicka på hello IP-adresser för mer information.
+Det nya hotinformationsavsnittet i säkerhets- och granskningslösningen visualiserar möjliga attackmönster på flera sätt: det totala antalet servrar med utgående skadlig IP-trafik, typen av skadligt hot samt en karta som visar var dessa IP-adresser kommer från. Du kan interagera med kartan och klicka på IP-adresser om du vill ha mer information.
 
-Gult kartnålar på hello karta visar inkommande trafik från skadliga IP-adresser. Det är inte ovanligt för servrar som är exponerade toohello internet toosee inkommande skadlig trafik, men vi rekommenderar att du granskar dessa försök toomake att ingen av dem har slutförts. Dessa indikatorer baseras på IIS-loggar, WireData och loggar för Windows-brandväggen.  
+Gula kartnålar på kartan anger inkommande trafik från skadliga IP-adresser. Det är inte ovanligt att servrar som exponeras för Internet får skadlig inkommande trafik, men vi rekommenderar att du granskar dessa försök för att kontrollera att inget av dem lyckades. Dessa indikatorer baseras på IIS-loggar, WireData och loggar för Windows-brandväggen.  
 
 ![Hotinformation](./media/oms-security-getting-started/oms-getting-started-fig11-ga.png)
 
 ## <a name="common-security-queries"></a>Vanliga säkerhetsfrågor
-hello lista över vanliga säkerhetsfrågor kan vara användbart för du toorapidly åtkomst resursens information och anpassa den utifrån behoven i din miljö. Dessa vanliga frågor är:
+Du kan använda listan över vanliga säkerhetsfrågor för att snabbt komma åt resursens information och anpassa den baserat på kraven i din miljö. Dessa vanliga frågor är:
 
 * Alla säkerhetsaktiviteter
-* Säkerhetsaktiviteter på hello datorn \"computer01.contoso.com\” (Ersätt med namn på din dator)
-* Säkerhetsaktiviteter på hello dator ”computer01.contoso.com” för kontot ”Administratör” (Ersätt med namn på din dator och kontonamn)
+* Säkerhetsaktiviteter på datorn ”computer01.contoso.com” (ersätt namnet med ditt datornamn)
+* Säkerhetsaktiviteter på datorn ”computer01.contoso.com” för kontot ”Administratör” (ersätt namnen med dina dator- och kontonamn)
 * Inloggningsaktivitet per dator
 * Konton som avslutat Microsoft-program mot skadlig kod på en dator
-* Datorer där hello process för Microsoft mot skadlig kod avslutades
+* Datorer där processer för Microsoft-program mot skadlig kod har avslutats
 * Datorer där ”hash.exe” har körts (ersätt namnet med processnamnet)
 * Alla processnamn som körts
 * Inloggningsaktivitet per konto
-* Konton som har loggat in via fjärranslutning på hello datorn \"computer01.contoso.com\” (Ersätt med namn på din dator)
+* Konton som har loggat in på datorn ”computer01.contoso.com” via en fjärranslutning (ersätt namnet med ditt datornamn)
 
 ## <a name="see-also"></a>Se även
-I det här dokumentet har introducerades tooOMS säkerhet och granska lösningen. toolearn mer om OMS-säkerhet finns hello följande artiklar:
+I det här dokumentet introducerades säkerhets- och granskningslösningen i OMS. Mer information om säkerheten i OMS finns i följande artiklar:
 
 * [Översikt över Operations Management Suite (OMS)](operations-management-suite-overview.md)
-* [Övervakning och svarar tooSecurity varningar i Operations Management Suite säkerhet och granska lösning](oms-security-responding-alerts.md)
+* [Övervaka och svara på säkerhetsaviseringar i säkerhets- och granskningslösningen i Operations Management Suite](oms-security-responding-alerts.md)
 * [Övervaka resurser i säkerhets- och granskningslösningen i Operations Management Suite](oms-security-monitoring-resources.md)
 

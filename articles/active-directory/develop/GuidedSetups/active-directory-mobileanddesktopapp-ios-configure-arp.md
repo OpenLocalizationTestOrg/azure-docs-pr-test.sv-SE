@@ -1,5 +1,5 @@
 ---
-title: "aaaAzure AD v2 iOS komma igång - konfigurera ARP () | Microsoft Docs"
+title: "Azure AD v2 iOS komma igång - konfigurera ARP () | Microsoft Docs"
 description: "Hur iOS (Swift)-program kan anropa ett API som kräver åtkomst-token i Azure Active Directory v2 slutpunkten"
 services: active-directory
 documentationcenter: dev-center-name
@@ -13,27 +13,27 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andret
-ms.openlocfilehash: e5087e13160243d808b1d02771fa66fb332cfad6
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 50cb4a2803b6aebe8b39ec9fb02da2293c1065fa
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-## <a name="add-hello-applications-registration-information-tooyour-app"></a>Lägg till hello programmet registrering information tooyour app
+## <a name="add-the-applications-registration-information-to-your-app"></a>Lägg till programmets registreringsinformation i appen
 
-I det här steget måste tooadd hello program-Id tooyour projektet:
+I det här steget måste du lägga till det program-Id i projektet:
 
-1.  I `ViewController.swift`, Ersätt hello rad som börjar med '`let kClientID`' med:
+1.  I `ViewController.swift`, ersätter den rad som börjar med '`let kClientID`' med:
 ```swift
-let kClientID = "[Enter hello application Id here]"
+let kClientID = "[Enter the application Id here]"
 ```
 <!-- Workaround for Docs conversion bug -->
 <ol start="2">
 <li>
-CTRL + klicka <code>Info.plist</code> toobring upp hello popup-menyn och klicka sedan på: <code>Open As</code>> <code>Source Code</code>
+CTRL + klicka <code>Info.plist</code> öppna snabbmenyn och klicka sedan på: <code>Open As</code>> <code>Source Code</code>
 </li>
 <li>
-Under hello <code>dict</code> rot nod, lägga till hello följande:
+Under den <code>dict</code> rot nod, Lägg till följande:
 </li>
 </ol>
 
@@ -47,7 +47,7 @@ Under hello <code>dict</code> rot nod, lägga till hello följande:
         <string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
         <key>CFBundleURLSchemes</key>
         <array>
-            <string>msal[Enter hello application Id here]</string>
+            <string>msal[Enter the application Id here]</string>
             <string>auth</string>
         </array>
     </dict>

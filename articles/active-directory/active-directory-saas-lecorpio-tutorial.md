@@ -1,6 +1,6 @@
 ---
 title: "Självstudier: Azure Active Directory-integrering med Lecorpio | Microsoft Docs"
-description: "Lär dig hur tooconfigure enkel inloggning mellan Azure Active Directory och Lecorpio."
+description: "Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Lecorpio."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,111 +13,111 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/02/2017
 ms.author: jeedes
-ms.openlocfilehash: 963eb36678c589f942f63c7ab555161255324717
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 35c94e2d9d8a938971f85ea732a74a7e1655545e
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lecorpio"></a>Självstudier: Azure Active Directory-integrering med Lecorpio
 
-I kursen får du lära dig hur toointegrate Lecorpio med Azure Active Directory (AD Azure).
+I kursen får lära du att integrera Lecorpio med Azure Active Directory (AD Azure).
 
-Integrera Lecorpio med Azure AD ger dig hello följande fördelar:
+Integrera Lecorpio med Azure AD ger dig följande fördelar:
 
-- Du kan styra i Azure AD som har åtkomst till tooLecorpio
-- Du kan aktivera din användare tooautomatically get inloggade tooLecorpio (Single Sign-On) med sina Azure AD-konton
-- Du kan hantera dina konton i en central plats - hello Azure-portalen
+- Du kan styra i Azure AD som har åtkomst till Lecorpio
+- Du kan aktivera användarna att automatiskt hämta loggat in på Lecorpio (Single Sign-On) med sina Azure AD-konton
+- Du kan hantera dina konton i en central plats - Azure-portalen
 
-Om du vill tooknow mer information om integrering av SaaS-app med Azure AD, se [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Om du vill veta mer information om integrering av SaaS-app med Azure AD finns [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Krav
 
-tooconfigure Azure AD-integrering med Lecorpio, behöver du hello följande objekt:
+För att konfigurera Azure AD-integrering med Lecorpio, behöver du följande:
 
 - En Azure AD-prenumeration
 - En Lecorpio enkel inloggning på aktiverade prenumeration
 
 > [!NOTE]
-> tootest hello stegen i den här självstudiekursen, rekommenderas inte med hjälp av en produktionsmiljö.
+> Om du vill testa stegen i den här kursen rekommenderar vi inte med hjälp av en produktionsmiljö.
 
-tootest hello steg i den här självstudiekursen, bör du följa dessa rekommendationer:
+Om du vill testa stegen i den här självstudiekursen, bör du följa dessa rekommendationer:
 
 - Använd inte i produktionsmiljön, om det är nödvändigt.
 - Om du inte har en utvärderingsversion Azure AD-miljö kan du hämta en utvärderingsversion för en månad [här](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Scenariobeskrivning
-I kursen får testa du Azure AD enkel inloggning i en testmiljö. hello-scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
+I kursen får testa du Azure AD enkel inloggning i en testmiljö. Det scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
 
-1. Att lägga till Lecorpio från hello-galleriet
+1. Att lägga till Lecorpio från galleriet
 2. Konfigurera och testa Azure AD enkel inloggning
 
-## <a name="adding-lecorpio-from-hello-gallery"></a>Att lägga till Lecorpio från hello-galleriet
-tooconfigure hello integrering av Lecorpio i Azure AD, behöver du tooadd Lecorpio hello galleriet tooyour listan över hanterade SaaS-appar.
+## <a name="adding-lecorpio-from-the-gallery"></a>Att lägga till Lecorpio från galleriet
+Du måste lägga till Lecorpio från galleriet i listan över hanterade SaaS-appar för att konfigurera integrering av Lecorpio i Azure AD.
 
-**tooadd Lecorpio från galleriet hello utför hello följande steg:**
+**Utför följande steg för att lägga till Lecorpio från galleriet:**
 
-1. I hello  **[Azure-portalen](https://portal.azure.com)**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon. 
+1. I den  **[Azure-portalen](https://portal.azure.com)**, klicka på den vänstra navigeringspanelen **Azure Active Directory** ikon. 
 
     ![Active Directory][1]
 
-2. Navigera för**företagsprogram**. Gå sedan för**alla program**.
+2. Gå till **företagsprogram**. Gå till **alla program**.
 
     ![Program][2]
     
-3. Klicka på **nytt program** hello längst upp i hello dialogrutan.
+3. Klicka på **nytt program** knappen överst i dialogrutan.
 
     ![Program][3]
 
-4. Skriv i sökrutan hello **Lecorpio**.
+4. I sökrutan skriver **Lecorpio**.
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-lecorpio-tutorial/tutorial_lecorpio_search.png)
 
-5. Markera hello resultat på panelen **Lecorpio**, och klicka sedan på **Lägg till** knappen tooadd hello program.
+5. Välj i resultatpanelen **Lecorpio**, och klicka sedan på **Lägg till** för att lägga till programmet.
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-lecorpio-tutorial/tutorial_lecorpio_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurera och testa Azure AD enkel inloggning
 I det här avsnittet kan du konfigurera och testa Azure AD enkel inloggning med Lecorpio baserat på en testanvändare som kallas ”Britta Simon”.
 
-För enkel inloggning toowork måste Azure AD tooknow vilka hello motsvarighet användaren i Lecorpio är tooa i Azure AD. Med andra ord måste en länk mellan en Azure AD-användare och hello relaterade användare i Lecorpio toobe upprättas.
+Azure AD måste du känna till användaren i Lecorpio motsvarighet till en användare i Azure AD för enkel inloggning ska fungera. Med andra ord måste en länk förhållandet mellan en Azure AD-användare och relaterade användaren i Lecorpio upprättas.
 
-Den här länken relationen upprättas genom att tilldela hello värdet för hello **användarnamn** i Azure AD som hello värde för hello **användarnamn** i Lecorpio.
+Den här länken relationen upprättas genom att tilldela värdet för den **användarnamn** i Azure AD som värde för den **användarnamn** i Lecorpio.
 
-tooconfigure och testa Azure AD enkel inloggning med Lecorpio, behöver du toocomplete hello följande byggblock:
+Om du vill konfigurera och testa Azure AD enkel inloggning med Lecorpio, måste du utföra följande byggblock:
 
-1. **[Konfigurera Azure AD enkel inloggning](#configuring-azure-ad-single-sign-on)**  -tooenable användare-toouse den här funktionen.
-2. **[Skapa en Azure AD-testanvändare](#creating-an-azure-ad-test-user)**  -tootest Azure AD enkel inloggning med Britta Simon.
-3. **[Skapa en testanvändare Lecorpio](#creating-a-lecorpio-test-user)**  -toohave en motsvarighet för Britta Simon i Lecorpio som är länkade toohello Azure AD-representation av användaren.
-4. **[Tilldela hello Azure AD-testanvändare](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD enkel inloggning.
-5. **[Testa enkel inloggning](#testing-single-sign-on)**  -tooverify hello om konfigurationen fungerar.
+1. **[Konfigurera Azure AD enkel inloggning](#configuring-azure-ad-single-sign-on)**  - om du vill att användarna kan använda den här funktionen.
+2. **[Skapa en Azure AD-testanvändare](#creating-an-azure-ad-test-user)**  - om du vill testa Azure AD enkel inloggning med Britta Simon.
+3. **[Skapa en testanvändare Lecorpio](#creating-a-lecorpio-test-user)**  – du har en motsvarighet för Britta Simon i Lecorpio som är kopplad till Azure AD-representation av användaren.
+4. **[Tilldela Azure AD-testanvändare](#assigning-the-azure-ad-test-user)**  - om du vill aktivera Britta Simon att använda Azure AD enkel inloggning.
+5. **[Testa enkel inloggning](#testing-single-sign-on)**  - om du vill kontrollera om konfigurationen fungerar.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurera Azure AD enkel inloggning
 
-I det här avsnittet Aktivera Azure AD enkel inloggning i hello Azure-portalen och konfigurera enkel inloggning i ditt Lecorpio program.
+I det här avsnittet Aktivera Azure AD enkel inloggning i Azure-portalen och konfigurera enkel inloggning i ditt Lecorpio program.
 
-**Utför följande steg hello tooconfigure Azure AD enkel inloggning med Lecorpio:**
+**Utför följande steg för att konfigurera Azure AD enkel inloggning med Lecorpio:**
 
-1. I hello Azure-portalen på hello **Lecorpio** integreringssidan för programmet, klickar du på **enkel inloggning**.
+1. I Azure-portalen på den **Lecorpio** integreringssidan för programmet, klickar du på **enkel inloggning**.
 
     ![Konfigurera enkel inloggning][4]
 
-2. På hello **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** tooenable enkel inloggning.
+2. På den **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** att aktivera enkel inloggning.
  
     ![Konfigurera enkel inloggning](./media/active-directory-saas-lecorpio-tutorial/tutorial_lecorpio_samlbase.png)
 
-3. På hello **Lecorpio domän och URL: er** avsnittet, utföra hello följande steg:
+3. På den **Lecorpio domän och URL: er** avsnittet, utför följande steg:
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-lecorpio-tutorial/tutorial_lecorpio_url.png)
 
-    a. I hello **inloggnings-URL** textruta hello TYPVÄRDE med hello följande mönster:`https://<instance name>.lecorpio.com/<customer name>`
+    a. I den **inloggnings-URL** textruta Skriv det värde som använder följande mönster:`https://<instance name>.lecorpio.com/<customer name>`
 
-    b. I hello **identifierare** textruta, ange ett URL-Adressen med hello följer mönstret:`https://<instance name>.lecorpio.com/<customer name>`
+    b. I den **identifierare** textruta Skriv en URL med följande mönster:`https://<instance name>.lecorpio.com/<customer name>`
 
     > [!NOTE] 
-    > Dessa värden är inte hello verkliga. Uppdatera dessa värden med hello faktiska inloggnings-URL och identifierare. Vi rekommenderar här du toouse hello unikt värde i strängen i hello identifierare. Kontakta [Lecorpio klienten supportteamet](mailto:info@lecorpio.com) tooget dessa värden. 
+    > Dessa värden är inte verkligt. Uppdatera dessa värden med den faktiska inloggnings-URL och identifierare. Här rekommenderar vi att du om du vill använda det unika värdet på strängen i identifieraren. Kontakta [Lecorpio klienten supportteamet](mailto:info@lecorpio.com) att hämta dessa värden. 
  
-4. På hello **SAML-signeringscertifikat** klickar du på **XML-Metadata för** och spara sedan hello metadata på datorn.
+4. På den **SAML-signeringscertifikat** klickar du på **XML-Metadata för** och spara sedan metadatafilen på datorn.
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-lecorpio-tutorial/tutorial_lecorpio_certificate.png) 
 
@@ -125,39 +125,39 @@ I det här avsnittet Aktivera Azure AD enkel inloggning i hello Azure-portalen o
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-lecorpio-tutorial/tutorial_general_400.png)
 
-6. tooconfigure enkel inloggning på **Lecorpio** sida, behöver du toosend hello hämtas **XML-Metadata för** för[Lecorpio supportteamet](mailto:info@lecorpio.com).
+6. Konfigurera enkel inloggning på **Lecorpio** sida, måste du skicka den hämtade **XML-Metadata för** till [Lecorpio supportteamet](mailto:info@lecorpio.com).
 
 > [!TIP]
-> Du kan nu läsa en kortare version av dessa anvisningar i hello [Azure-portalen](https://portal.azure.com), medan du ställer in hello appen!  När du lägger till den här appen från hello **Active Directory > företagsprogram** avsnittet, klicka bara på hello **enkel inloggning** flik och åtkomst hello inbäddade dokumentationen via hello  **Konfigurationen** avsnittet längst ned hello. Du kan läsa mer om hello inbäddade dokumentationen funktionen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Du kan nu läsa en kortare version av instruktionerna i den [Azure-portalen](https://portal.azure.com), medan du installerar appen!  När du lägger till den här appen från den **Active Directory > företagsprogram** avsnittet, klickar du på den **enkel inloggning** fliken och få åtkomst till den inbäddade dokumentationen via den **Configuration** avsnittet längst ned. Du kan läsa mer om funktionen inbäddade dokumentationen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="creating-an-azure-ad-test-user"></a>Skapa en testanvändare i Azure AD
-hello syftet med det här avsnittet är toocreate en testanvändare i hello Azure-portalen kallas Britta Simon.
+Syftet med det här avsnittet är att skapa en testanvändare i Azure-portalen kallas Britta Simon.
 
 ![Skapa Azure AD-användare][100]
 
-**toocreate en testanvändare i Azure AD kan utföra hello följande steg:**
+**Utför följande steg för att skapa en testanvändare i Azure AD:**
 
-1. I hello **Azure-portalen**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon.
+1. I den **Azure-portalen**, klicka på det vänstra navigeringsfönstret **Azure Active Directory** ikon.
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-lecorpio-tutorial/create_aaduser_01.png) 
 
-2. Gå för**användare och grupper** och på **alla användare** toodisplay hello lista över användare.
+2. Gå till **användare och grupper** och på **alla användare** att visa en lista över användare.
     
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-lecorpio-tutorial/create_aaduser_02.png) 
 
-3. Hello överkant hello dialogrutan, klickar du på **Lägg till** tooopen hello **användaren** dialogrutan.
+3. Klicka på överst i dialogrutan **Lägg till** att öppna den **användaren** dialogrutan.
  
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-lecorpio-tutorial/create_aaduser_03.png) 
 
-4. På hello **användaren** dialogrutan utför hello följande steg:
+4. På den **användaren** dialogrutan utför följande steg:
  
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-lecorpio-tutorial/create_aaduser_04.png) 
 
-    a. I hello **namn** textruta typen **BrittaSimon**.
+    a. I den **namn** textruta typen **BrittaSimon**.
 
-    b. I hello **användarnamn** textruta typen hello **e-postadress** av BrittaSimon.
+    b. I den **användarnamn** textruta typ av **e-postadress** av BrittaSimon.
 
-    c. Välj **visa lösenordet** och Skriv ned hello värdet för hello **lösenord**.
+    c. Välj **visa lösenordet** och anteckna värdet för den **lösenord**.
 
     d. Klicka på **Skapa**.
  
@@ -165,25 +165,25 @@ hello syftet med det här avsnittet är toocreate en testanvändare i hello Azur
 
 I det här avsnittet skapar du en användare som kallas Britta Simon i Lecorpio. 
 
-Kontakta [Lecorpio klienten supportteamet](mailto:info@lecorpio.com) tooadd hello användare i hello Lecorpio program.
+Kontakta [Lecorpio klienten supportteamet](mailto:info@lecorpio.com) att lägga till användare i Lecorpio-programmet.
 
-### <a name="assigning-hello-azure-ad-test-user"></a>Tilldela användare hello Azure AD
+### <a name="assigning-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändare
 
-I det här avsnittet kan aktivera du Britta Simon toouse Azure enkel inloggning genom att bevilja åtkomst tooLecorpio.
+I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inloggning genom att bevilja åtkomst till Lecorpio.
 
 ![Tilldela användare][200] 
 
-**tooassign Britta Simon tooLecorpio utför hello följande steg:**
+**Om du vill tilldela Lecorpio Britta Simon utför du följande steg:**
 
-1. I hello Azure-portalen, öppna hello program visa och navigera toohello directory vy och gå för**företagsprogram** Klicka **alla program**.
+1. Öppna vyn program i Azure-portalen och gå till vyn directory och gå till **företagsprogram** Klicka **alla program**.
 
     ![Tilldela användare][201] 
 
-2. Välj i listan med program hello **Lecorpio**.
+2. Välj i listan med program **Lecorpio**.
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-lecorpio-tutorial/tutorial_lecorpio_app.png) 
 
-3. Hello-menyn hello vänster **användare och grupper**.
+3. Klicka på menyn till vänster **användare och grupper**.
 
     ![Tilldela användare][202] 
 
@@ -191,7 +191,7 @@ I det här avsnittet kan aktivera du Britta Simon toouse Azure enkel inloggning 
 
     ![Tilldela användare][203]
 
-5. På **användare och grupper** markerar **Britta Simon** i hello användarlistan.
+5. På **användare och grupper** markerar **Britta Simon** på listan användare.
 
 6. Klicka på **Välj** knappen på **användare och grupper** dialogrutan.
 
@@ -199,13 +199,13 @@ I det här avsnittet kan aktivera du Britta Simon toouse Azure enkel inloggning 
     
 ### <a name="testing-single-sign-on"></a>Testa enkel inloggning
 
-I det här avsnittet kan testa du Azure AD enkel inloggning konfigurationen med hello åtkomstpanelen.
+I det här avsnittet kan du testa Azure AD enkel inloggning konfigurationen med hjälp av panelen åtkomst.
 
-Du bör få automatiskt inloggade tooyour Lecorpio programmet när du klickar på hello Lecorpio panelen i hello åtkomstpanelen.
+När du klickar på panelen Lecorpio på åtkomstpanelen du bör få automatiskt loggat in på ditt Lecorpio program.
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-* [Lista över självstudier om hur tooIntegrate SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Vad är programåtkomst och enkel inloggning med Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

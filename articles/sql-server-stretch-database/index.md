@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure dokumentationen till SQL Server Stretch Database - självstudier | Microsoft Docs"
-description: "Lär dig hur toouse SQL Server Stretch Database toomigrate kalldata på ett säkert sätt tooAzure utan att ändra frågor eller program. Självstudier och annan dokumentation."
+title: "Dokumentation om Azure SQL Server Stretch Database – Självstudier | Microsoft Docs"
+description: "Läs om hur du använder SQL Server Stretch Database för att migrera kalla data säkert till Azure utan att behöva ändra frågor eller program. Självstudier och annan dokumentation."
 services: sql-server-stretch-database
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 2b009d80224a62d940ec8b11de22ad8c0865d869
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: cbdd210f2fe46228daa8c138815826df2b3b0fd7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 #<a name="sql-server-stretch-database-documentation"></a>Dokumentation till SQL Server Stretch Database
 
-Lär dig hur toouse SQLServer Stretch databasen toomigrate kalldata transparent och säkert toohello Azure cloud. Självstudiekurser och andra dokumentationen hjälper dig att du ställer in kostnadseffektiv tillgänglighet för databaser med sällan använda data utan ändringar tooexisting frågor eller program.
+Läs om hur du använder SQL Server Stretch Database för att migrera kalla data transparent och säkert till Azure-molnet. Med självstudier och annan dokumentation får du hjälp med att ange kostnadseffektiv tillgänglighet för databaser med sällan använda data utan att du behöver göra några ändringar i befintliga frågor eller program.
 
 
 <ul class="panelContent cardsFTitle">
@@ -89,7 +89,7 @@ Lär dig hur toouse SQLServer Stretch databasen toomigrate kalldata transparent 
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Komma igång med hello SQL Server Stretch Database-guiden</h3>
+                        <h3>Kom igång med guiden för SQL Server Stretch Database</h3>
                     </div>
                 </div>
             </div>

@@ -1,6 +1,6 @@
 ---
-title: aaaAzure distribution av virtuella datorer med Chef | Microsoft Docs
-description: "Lär dig hur toouse Chef toodo automatisk distribution av virtuella datorer och konfiguration på Microsoft Azure"
+title: Distribution av Azure virtuella datorer med Chef | Microsoft Docs
+description: "Lär dig hur du använder Chef för automatiserade virtuella distribution och konfiguration i Microsoft Azure"
 services: virtual-machines-windows
 documentationcenter: 
 author: diegoviso
@@ -15,149 +15,149 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: diviso
-ms.openlocfilehash: c5ea98c673b2ee75dd4cedf27e50330af05230d3
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: b6db0fbb4e0de896994954974ddcc39daad9c125
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="automating-azure-virtual-machine-deployment-with-chef"></a>Automatisera distribution av virtuella Azure-datorer med Chef
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 Chef är ett bra verktyg för att leverera automation och önskade tillstånd konfigurationer.
 
-Med vår senaste moln-api-versionen Chef ger sömlös integrering med Azure, så att du hello möjlighet tooprovision och distribuera konfigureringstillstånd via ett enda kommando.
+Med vår senaste moln-api-versionen tillhandahåller Chef sömlös integrering med Azure, ger dig möjlighet att tillhandahålla och distribuera konfigureringstillstånd via ett enda kommando.
 
-I den här artikeln jag lära dig hur tooset upp din Chef miljö tooprovision Azure virtuella datorer och beskriver hur du skapar en princip eller ”CookBook” och sedan distribuera den här cookbook tooan virtuella Azure-datorn.
+I den här artikeln kommer jag visar hur du konfigurerar miljön Chef att etablera virtuella Azure-datorer och beskriver hur du skapar en princip eller ”CookBook” och sedan distribuera den här cookbook till en virtuell Azure-dator.
 
 Vi börjar!
 
 ## <a name="chef-basics"></a>Chef grunderna
-Innan du börjar rekommenderar jag du granska hello grundläggande begrepp för Chef. Det är bra material <a href="http://www.chef.io/chef" target="_blank">här</a> och jag rekommenderar att du har en snabb läsning innan du utför den här genomgången. Jag kommer dock Sammanfattningsvis hello grunderna innan vi börjar.
+Innan du börjar rekommenderar jag du granska de grundläggande principerna för Chef. Det är bra material <a href="http://www.chef.io/chef" target="_blank">här</a> och jag rekommenderar att du har en snabb läsning innan du utför den här genomgången. Jag kommer dock Sammanfattningsvis grunderna innan vi börjar.
 
-hello följande diagram visar hello övergripande Chef arkitektur.
+Följande diagram visar den övergripande Chef-arkitekturen.
 
 ![][2]
 
 Chef har tre huvudkomponenter arkitektur: Chef servern, Chef klienten (nod) och Chef-arbetsstation.
 
-hello Chef Server är vår hanteringsplatsen och det finns två alternativ för hello Chef Server: en värdbaserad lösning eller en lokal lösning. Vi kommer att använda en värdbaserad lösning.
+Chef-servern är vår hanteringsplatsen och det finns två alternativ för Chef-Server: en värdbaserad lösning eller en lokal lösning. Vi kommer att använda en värdbaserad lösning.
 
-hello Chef klienten är (nod) hello-agent som placeras på hello-servrar som du hanterar.
+Chef-klienten (nod) är den agent som placeras på de servrar som du hanterar.
 
-hello Chef arbetsstation är vår arbetsstation där vi skapar våra principer och köra vår management-kommandon. Vi kör hello **kniv** kommandot från hello Chef arbetsstation toomanage vår infrastruktur.
+Chef arbetsstationen är vår arbetsstation där vi skapar våra principer och köra vår management-kommandon. Vi kör den **kniv** från Chef arbetsstationen för att hantera vår infrastruktur.
 
-Det finns också hello begreppet ”Cookbooks” och ”recept”. Dessa är effektivt hello principer som vi definiera och tillämpa tooour servrar.
+Det finns också begreppet ”Cookbooks” och ”recept”. Det här är ett effektivt sätt principer vi definiera och gäller för våra servrar.
 
-## <a name="preparing-hello-workstation"></a>Förbereda hello arbetsstation
-Först gör prep hello arbetsstation. Jag använder en standard Windows-arbetsstation. Vi behöver toocreate en directory toostore våra konfigurationsfiler och cookbooks.
+## <a name="preparing-the-workstation"></a>Förbereder arbetsstationen
+Först gör Förbered dig arbetsstationen. Jag använder en standard Windows-arbetsstation. Vi behöver skapa en katalog för lagring av våra konfigurationsfiler och cookbooks.
 
 Först skapa en katalog med namnet C:\chef.
 
 Skapa sedan den andra katalogen c:\chef\cookbooks.
 
-Vi behöver nu toodownload vårt Azure inställningsfilen så Chef kan kommunicera med våra Azure-prenumeration.
+Vi behöver nu hämta vårt Azure inställningsfilen så Chef kan kommunicera med våra Azure-prenumeration.
 
 <!--Download your publish settings from [here](https://manage.windowsazure.com/publishsettings/).-->
-Hämtar dina publiceringsinställningar med hello PowerShell Azure [Get-AzurePublishSettingsFile](https://docs.microsoft.com/en-us/powershell/module/azure/get-azurepublishsettingsfile?view=azuresmps-4.0.0) kommando. 
+Hämtar dina publiceringsinställningar med hjälp av PowerShell Azure [Get-AzurePublishSettingsFile](https://docs.microsoft.com/en-us/powershell/module/azure/get-azurepublishsettingsfile?view=azuresmps-4.0.0) kommando. 
 
-Spara hello inställningsfilen för publicering i C:\chef.
+Spara filen med publicera i C:\chef.
 
 ## <a name="creating-a-managed-chef-account"></a>Skapa ett hanterat konto Chef
 Registrera dig för en värdbaserad Chef konto [här](https://manage.chef.io/signup).
 
-Under hello registreringsprocessen du kommer att tillfrågas toocreate en ny organisation.
+Under registreringsprocessen, blir du ombedd att skapa en ny organisation.
 
 ![][3]
 
-När din organisation har skapats kan du hämta hello startpaket.
+När din organisation har skapats kan du hämta starter kit.
 
 ![][4]
 
 > [!NOTE]
-> Om du får ett meddelande som varnar dig om att dina nycklar ska återställas är ok tooproceed som vi har inga befintliga infrastruktur konfigurerad ännu.
+> Om du får ett meddelande som varnar dig om att dina nycklar återställs, är det ok om du vill fortsätta eftersom vi har inga befintliga infrastruktur konfigurerad ännu.
 > 
 > 
 
 Den här starter kit zip-filen innehåller din organisation konfigurationsfiler och nycklar.
 
-## <a name="configuring-hello-chef-workstation"></a>Konfigurera hello Chef arbetsstation
-Extrahera hello innehållet i hello chef starter.zip tooC:\chef.
+## <a name="configuring-the-chef-workstation"></a>Konfigurera Chef arbetsstationen
+Extrahera innehållet i chef-starter.zip till C:\chef.
 
-Kopiera alla filer under chef-starter\chef-lagringsplatsen\.chef tooyour c:\chef directory.
+Kopiera alla filer under chef-starter\chef-lagringsplatsen\.chef till c:\chef-katalogen.
 
-Din katalog bör nu se ut ungefär som följande exempel hello.
+Katalogen bör nu se ut ungefär som följande exempel.
 
 ![][5]
 
-Du bör nu ha fyra filer, inklusive hello Azure publishing filen i c:\chef hello rot.
+Du bör nu ha fyra filer, inklusive Azure publishing filen i roten av c:\chef.
 
-hello PEM-filer innehåller din organisation och admin privata nycklar för kommunikation medan hello knife.rb filen innehåller kniv konfigurationen. Vi behöver tooedit hello knife.rb fil.
+PEM-filer innehåller din organisation och admin privata nycklar för kommunikation medan knife.rb-filen innehåller kniv konfigurationen. Vi behöver du redigera filen knife.rb.
 
-Öppna hello-filen i redigeringsprogrammet väljer och ändra hello ”cookbook_path” genom att ta bort hello /... / från hello sökvägen så visas det på Nästa.
+Öppna filen i redigeringsprogrammet val och ändra ”cookbook_path” genom att ta bort den /... / från sökvägen så visas det på Nästa.
 
     cookbook_path  ["#{current_dir}/cookbooks"]
 
-Också lägga till hello följande rad reflekterande hello namnet på ditt Azure inställningsfilen för publicering.
+Lägg även till följande rad reflektion namnet på ditt Azure inställningsfilen för publicering.
 
     knife[:azure_publish_settings_file] = "yourfilename.publishsettings"
 
-Filen knife.rb bör nu se ut ungefär toohello följande exempel.
+Filen knife.rb bör nu se ut ungefär som följande exempel.
 
 ![][6]
 
-Dessa rader säkerställer att kniv refererar till hello cookbooks katalog under c:\chef\cookbooks och använder också vår Azure-publiceringsinställningsfil under åtgärder i Azure.
+Dessa rader säkerställer att kniv refererar till katalogen cookbooks under c:\chef\cookbooks och använder också vår Azure-publiceringsinställningsfil under åtgärder i Azure.
 
-## <a name="installing-hello-chef-development-kit"></a>Installera hello Chef Development Kit
-Nästa [ladda ned och installera](http://downloads.getchef.com/chef-dk/windows) hello ChefDK (Chef Development Kit) tooset upp arbetsstationen Chef.
+## <a name="installing-the-chef-development-kit"></a>Installera Chef Development Kit
+Nästa [ladda ned och installera](http://downloads.getchef.com/chef-dk/windows) ChefDK (Chef Development Kit) att ställa in din Chef arbetsstation.
 
 ![][7]
 
-Installera i hello standardplatsen för c:\opscode. Den här installationen tar cirka 10 minuter.
+Installera på standardplatsen för c:\opscode. Den här installationen tar cirka 10 minuter.
 
 Bekräfta din sökvägsvariabeln innehåller poster för C:\opscode\chefdk\bin; C:\opscode\chefdk\embedded\bin;c:\users\yourusername\.chefdk\gem\ruby\2.0.0\bin
 
 Om de inte är det, se till att du lägger till dessa sökvägar!
 
-*Obs hello ordning av hello sökväg är viktigt!* Om din opscode sökvägar inte kan i rätt ordning för hello har du problem.
+*OBSERVERA ATT SÖKVÄGEN ÄR VIKTIGT!* Om din opscode sökvägar inte kan i rätt ordning har du problem.
 
 Starta om arbetsstationen innan du fortsätter.
 
-Därefter installerar vi hello kniv Azure-tillägget. Detta ger kniv hello ”Azure plugin-program”.
+Därefter installerar vi kniv Azure-tillägget. Detta ger kniv med pluginprogrammet ”Azure”.
 
-Kör följande kommando hello.
+Kör följande kommando.
 
     chef gem install knife-azure ––pre
 
 > [!NOTE]
-> hello – pre argumentet säkerställer du tar emot hello senaste RC-versionen av hello kniv Azure plugin-program som ger åtkomst toohello senaste uppsättning API: er.
+> Argumentet – pre säkerställer du får den senaste RC-versionen av kniv Azure plugin-programmet som ger åtkomst till den senaste uppsättningen API: er.
 > 
 > 
 
-Det är troligt att installeras även ett antal beroenden på hello samtidigt.
+Det är troligt att installeras även ett antal beroenden på samma gång.
 
 ![][8]
 
-tooensure allt är konfigurerade korrekt, kör hello följande kommando.
+Kör följande kommando för att se till att allt är korrekt konfigurerad.
 
     knife azure image list
 
 Om allt är korrekt konfigurerad, visas en lista över tillgängliga Azure avbildningar rulla.
 
-Grattis! hello arbetsstation ställs in!
+Grattis. Arbetsstationen ställs in!
 
 ## <a name="creating-a-cookbook"></a>Skapa en Cookbook
-En Cookbook används av Chef toodefine en uppsättning kommandon som du vill tooexecute på en hanterad klient. Det är enkelt att skapa en Cookbook och vi använder hello **chef generera cookbook** kommandot toogenerate våra Cookbook mallen. Jag kommer att ringa upp webbservern Cookbook som jag vill att en princip som automatiskt distribuerar IIS.
+En Cookbook används av Chef för att definiera en uppsättning kommandon som du vill köra på en hanterad klient. Det är enkelt att skapa en Cookbook och vi använder den **chef generera cookbook** kommando för att generera våra Cookbook mallen. Jag kommer att ringa upp webbservern Cookbook som jag vill att en princip som automatiskt distribuerar IIS.
 
-Kör följande kommando hello under katalogen C:\Chef.
+Kör följande kommando under katalogen C:\Chef.
 
     chef generate cookbook webserver
 
-Detta genererar en uppsättning filer under hello katalog C:\Chef\cookbooks\webserver. Vi behöver nu toodefine hello uppsättning kommandon som vi vill gärna vår Chef klienten tooexecute på vår hanterade virtuella datorn.
+Detta genererar en uppsättning filer i katalogen C:\Chef\cookbooks\webserver. Vi nu måste du definiera en uppsättning kommandon som vi vill gärna Chef klient ska köras på vår hanterade virtuella datorn.
 
-hello kommandon lagras i hello filen default.rb. I den här filen ska jag definierar en uppsättning kommandon som installerar IIS, startar IIS och kopierar en mall toohello wwwroot mapp.
+Kommandon som lagras i filen default.rb. I den här filen ska jag definierar en uppsättning kommandon som installerar IIS, startar IIS och kopierar en mallfil till Wwwroot-mappen.
 
-Ändra hello C:\chef\cookbooks\webserver\recipes\default.rb filen och Lägg till följande rader hello.
+Ändra filen C:\chef\cookbooks\webserver\recipes\default.rb och Lägg till följande rader.
 
     powershell_script 'Install IIS' do
          action :run
@@ -173,55 +173,55 @@ hello kommandon lagras i hello filen default.rb. I den här filen ska jag defini
          rights :read, 'Everyone'
     end
 
-Spara hello-filen när du är klar.
+Spara filen när du är klar.
 
 ## <a name="creating-a-template"></a>Skapa en mall
-Som vi nämnt tidigare behöver vi toogenerate en mallfil som ska användas som sidan med våra default.html.
+Som vi nämnt tidigare behöver vi skapa en mallfil som ska användas som sidan med våra default.html.
 
-Hello kör följande kommando toogenerate hello mallen.
+Kör följande kommando för att skapa mallen.
 
     chef generate template webserver Default.htm
 
-Gå nu toohello C:\chef\cookbooks\webserver\templates\default\Default.htm.erb fil. Redigera hello-filen genom att lägga till vissa enkel ”Hello World” HTML-kod och spara hello-filen.
+Navigera till filen C:\chef\cookbooks\webserver\templates\default\Default.htm.erb. Redigera filen genom att lägga till vissa enkel ”Hello World” HTML-kod och spara sedan filen.
 
-## <a name="upload-hello-cookbook-toohello-chef-server"></a>Överför hello Cookbook toohello Chef Server
-I det här steget är vi tar en kopia av hello Cookbook som vi har skapat på våra lokala dator och överföra den toohello Chef Hosted Server. När du har överfört hello Cookbook visas under hello **princip** fliken.
+## <a name="upload-the-cookbook-to-the-chef-server"></a>Överför Cookbook till servern Chef
+I det här steget är vi tar en kopia av Cookbook som vi har skapat på våra lokala dator och överföra den till Chef Hosted Server. När du har överfört Cookbook visas under den **princip** fliken.
 
     knife cookbook upload webserver
 
 ![][9]
 
 ## <a name="deploy-a-virtual-machine-with-knife-azure"></a>Distribuera en virtuell dator med kniv Azure
-Vi kommer nu distribuera en virtuell Azure-dator och tillämpa hello ”webbserver” Cookbook som installerar våra IIS web service och standard webbsida.
+Vi kommer nu distribuera en virtuell Azure-dator och tillämpa ”webbserver”-Cookbook som installerar våra IIS web service och standard webbsida.
 
-I ordning toodo detta använder hello **kniv azure-servern skapa** kommando.
+För att kunna göra detta måste använda den **kniv azure-servern skapa** kommando.
 
-Är exempel på hello kommandot visas.
+Är exempel på kommandot visas.
 
     knife azure server create --azure-dns-name 'diegotest01' --azure-vm-name 'testserver01' --azure-vm-size 'Small' --azure-storage-account 'portalvhdsxxxx' --bootstrap-protocol 'cloud-api' --azure-source-image 'a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-Datacenter-201411.01-en.us-127GB.vhd' --azure-service-location 'Southeast Asia' --winrm-user azureuser --winrm-password 'myPassword123' --tcp-endpoints 80,3389 --r 'recipe[webserver]'
 
-hello parametrar är självförklarande. Ersätta viss variabler och kör.
+Parametrarna är självförklarande. Ersätta viss variabler och kör.
 
 > [!NOTE]
-> Via hello hello kommandoraden jag också automatisera min filterregler för slutpunkt-nätverk med hjälp av hello – tcp-slutpunkter parametern. Jag har öppnat portarna 80 och 3389 tooprovide åtkomst toomy webbsida och RDP-session.
+> Via den kommandoraden jag också automatisera filterregler min endpoint nätverk med hjälp av parametern – tcp-slutpunkter. Jag har öppnat portarna 80 och 3389 att ge åtkomst till min sida och RDP-session.
 > 
 > 
 
-När du kör kommandot hello gå toohello Azure portal och du kommer att se din dator börjar tooprovision.
+När du kör kommandot Gå till Azure-portalen och börja etablera datorn visas.
 
 ![][13]
 
-hello kommandotolken visas nästa.
+Kommandotolken visas.
 
 ![][10]
 
-När hello distributionen är klar kan vara vi kan tooconnect toohello webbtjänsten via port 80 som vi har öppnat hello port när vi etableras hello virtuell dator med hello kniv Azure-kommando. Eftersom den här virtuella datorn är hello virtuell dator i min Molntjänsten, kommer den ansluts med hello molnet tjänst-url.
+När installationen är klar, ska vi kunna ansluta till webbtjänsten via port 80 som vi har öppnat porten när vi etableras den virtuella datorn med kommandot kniv Azure. Eftersom den här virtuella datorn är den enda virtuella i min Molntjänsten, kommer den ansluts med molnet tjänst-url.
 
 ![][11]
 
 Som du ser fick jag kreativa med HTML-kod.
 
-Vi kan också ansluta via en RDP-session från hello Azure-portalen via port 3389 Glöm inte.
+Vi kan också ansluta via en RDP-session från Azure-portalen via port 3389 Glöm inte.
 
 Hoppas det här har bra! Gå och starta din infrastruktur som koden resa med Azure idag!
 

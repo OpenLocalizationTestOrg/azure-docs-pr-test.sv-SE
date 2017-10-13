@@ -1,6 +1,6 @@
 ---
 title: "Självstudier: Azure Active Directory-integrering med TOPdesk - offentliga | Microsoft Docs"
-description: "Lär dig hur tooconfigure enkel inloggning mellan Azure Active Directory och TOPdesk - allmänheten."
+description: "Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och TOPdesk - allmänheten."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,124 +14,124 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2017
 ms.author: jeedes
-ms.openlocfilehash: ef0dd06157ecc3b33814590039f5cbae64e8c916
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: f21fe0b363776974108ff460060e4c15a51a58a3
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---public"></a>Självstudier: Azure Active Directory-integrering med TOPdesk - offentliga
 
-I kursen får du lära dig hur toointegrate TOPdesk - offentliga med Azure Active Directory (AD Azure).
+I kursen får lära du att integrera TOPdesk - offentliga med Azure Active Directory (AD Azure).
 
-Integrera TOPdesk - offentliga med Azure AD ger dig hello följande fördelar:
+Integrera TOPdesk - offentliga med Azure AD ger dig följande fördelar:
 
-- Du kan styra i Azure AD som har åtkomst till tooTOPdesk - allmänheten.
-- Du kan låta dina användare tooautomatically get inloggade tooTOPdesk - offentlig (Single Sign-On) med sina Azure AD-konton.
-- Du kan hantera dina konton i en central plats - hello Azure-portalen.
+- Du kan styra i Azure AD som har åtkomst till TOPdesk - allmänheten.
+- Du kan aktivera användarna att automatiskt hämta loggat in på TOPdesk - offentlig (Single Sign-On) med sina Azure AD-konton.
+- Du kan hantera dina konton i en central plats - Azure-portalen.
 
-Om du vill tooknow mer information om integrering av SaaS-app med Azure AD, se [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Om du vill veta mer information om integrering av SaaS-app med Azure AD finns [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Krav
 
-tooconfigure Azure AD-integrering med TOPdesk - offentliga måste hello följande objekt:
+Konfigurera Azure AD-integrering med TOPdesk - offentliga, behöver du följande:
 
 - En Azure AD-prenumeration
 - En TOPdesk - offentliga enkel inloggning aktiverad prenumeration
 
 > [!NOTE]
-> tootest hello stegen i den här självstudiekursen, rekommenderas inte med hjälp av en produktionsmiljö.
+> Om du vill testa stegen i den här kursen rekommenderar vi inte med hjälp av en produktionsmiljö.
 
-tootest hello steg i den här självstudiekursen, bör du följa dessa rekommendationer:
+Om du vill testa stegen i den här självstudiekursen, bör du följa dessa rekommendationer:
 
 - Använd inte i produktionsmiljön, om det är nödvändigt.
 - Om du inte har en utvärderingsversion Azure AD-miljö kan du [hämta en utvärderingsversion för en månad](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Scenariobeskrivning
-I kursen får testa du Azure AD enkel inloggning i en testmiljö. hello-scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
+I kursen får testa du Azure AD enkel inloggning i en testmiljö. Det scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
 
-1. Lägger till TOPdesk - offentliga från hello-galleriet
+1. Lägger till TOPdesk - offentliga från galleriet
 2. Konfigurera och testa Azure AD enkel inloggning
 
-## <a name="adding-topdesk---public-from-hello-gallery"></a>Lägger till TOPdesk - offentliga från hello-galleriet
-tooconfigure hello integrering av TOPdesk - offentliga till Azure AD måste tooadd TOPdesk - offentliga hello galleriet tooyour listan över hanterade SaaS-appar.
+## <a name="adding-topdesk---public-from-the-gallery"></a>Lägger till TOPdesk - offentliga från galleriet
+Du måste lägga till TOPdesk - offentliga från galleriet i listan över hanterade SaaS-appar för att konfigurera TOPdesk - offentliga till Azure AD-integrering.
 
-**tooadd TOPdesk - offentliga från galleriet hello utför hello följande steg:**
+**Utför följande steg för att lägga till TOPdesk - offentliga från galleriet:**
 
-1. I hello  **[Azure-portalen](https://portal.azure.com)**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon. 
+1. I den  **[Azure-portalen](https://portal.azure.com)**, klicka på den vänstra navigeringspanelen **Azure Active Directory** ikon. 
 
-    ![hello Azure Active Directory-knappen][1]
+    ![Azure Active Directory-knappen][1]
 
-2. Navigera för**företagsprogram**. Gå sedan för**alla program**.
+2. Gå till **företagsprogram**. Gå till **alla program**.
 
-    ![hello Enterprise program bladet][2]
+    ![Bladet Enterprise program][2]
     
-3. tooadd nya program, klickar du på **nytt program** hello längst upp i dialogrutan.
+3. Om du vill lägga till nya programmet, klickar du på **nytt program** knappen överst i dialogrutan.
 
-    ![hello-knappen för nytt program][3]
+    ![Knappen Nytt program][3]
 
-4. Skriv i sökrutan hello **TOPdesk - offentliga**väljer **TOPdesk - offentliga** resultatet-panelen klickar **Lägg till** knappen tooadd hello program.
+4. I sökrutan skriver **TOPdesk - offentliga**väljer **TOPdesk - offentliga** resultatet-panelen klickar **Lägg till** för att lägga till programmet.
 
-    ![TOPdesk - allmänheten i hello resultatlistan](./media/active-directory-saas-topdesk-public-tutorial/tutorial_topdesk-public_addfromgallery.png)
+    ![TOPdesk - offentliga i resultatlistan](./media/active-directory-saas-topdesk-public-tutorial/tutorial_topdesk-public_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa Azure AD enkel inloggning
 
 I det här avsnittet kan du konfigurera och testa Azure AD enkel inloggning med TOPdesk - offentliga baserat på en testanvändare som kallas ”Britta Simon”.
 
-Azure AD måste tooknow vilka hello motsvarighet användare i TOPdesk för enkel inloggning toowork - offentliga är tooa användare i Azure AD. Med andra ord en länk relationen mellan en Azure AD-användare och hello relaterade användare i TOPdesk - offentliga måste toobe upprättas.
+Azure AD måste veta vilka motsvarande användaren i TOPdesk - offentliga är att en användare i Azure AD för enkel inloggning ska fungera. Med andra ord en länk förhållandet mellan en Azure AD-användare och relaterade användaren i TOPdesk - offentliga måste upprättas.
 
-I TOPdesk - offentliga, tilldela hello värdet för hello **användarnamn** i Azure AD som hello värde för hello **användarnamn** tooestablish hello länken relationen.
+I TOPdesk - offentliga, tilldela värdet för den **användarnamn** i Azure AD som värde för den **användarnamn** etablera länken relationen.
 
-tooconfigure och testa Azure AD enkel inloggning med TOPdesk - offentlig, måste du toocomplete hello följande byggblock:
+Konfigurera och testa Azure AD enkel inloggning med TOPdesk - offentlig, måste du utföra följande byggblock:
 
-1. **[Konfigurera Azure AD enkel inloggning](#configure-azure-ad-single-sign-on)**  -tooenable användare-toouse den här funktionen.
-2. **[Skapa en Azure AD-testanvändare](#create-an-azure-ad-test-user)**  -tootest Azure AD enkel inloggning med Britta Simon.
-3. **[Skapa en TOPdesk - offentliga testanvändare](#create-a-topdesk---public-test-user)**  - toohave en motsvarighet för Britta Simon i TOPdesk - offentliga som är länkade toohello Azure AD-representation av användaren.
-4. **[Tilldela hello Azure AD-testanvändare](#assign-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD enkel inloggning.
-5. **[Testa enkel inloggning](#test-single-sign-on)**  -tooverify hello om konfigurationen fungerar.
+1. **[Konfigurera Azure AD enkel inloggning](#configure-azure-ad-single-sign-on)**  - om du vill att användarna kan använda den här funktionen.
+2. **[Skapa en Azure AD-testanvändare](#create-an-azure-ad-test-user)**  - om du vill testa Azure AD enkel inloggning med Britta Simon.
+3. **[Skapa en TOPdesk - offentliga testanvändare](#create-a-topdesk---public-test-user)**  – har en motsvarighet för Britta Simon TOPdesk - offentliga som är kopplad till Azure AD-representation av användaren.
+4. **[Tilldela Azure AD-testanvändare](#assign-the-azure-ad-test-user)**  - om du vill aktivera Britta Simon att använda Azure AD enkel inloggning.
+5. **[Testa enkel inloggning](#test-single-sign-on)**  - om du vill kontrollera om konfigurationen fungerar.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurera Azure AD enkel inloggning
 
-I det här avsnittet Aktivera Azure AD enkel inloggning i hello Azure-portalen och konfigurera enkel inloggning i din TOPdesk - offentliga program.
+I det här avsnittet Aktivera Azure AD enkel inloggning i Azure-portalen och konfigurera enkel inloggning i din TOPdesk - offentliga program.
 
-**tooconfigure Azure AD enkel inloggning med TOPdesk - offentliga utföra hello följande steg:**
+**Konfigurera Azure AD enkel inloggning med TOPdesk - offentliga, utför följande steg:**
 
-1. I hello Azure-portalen på hello **TOPdesk - offentliga** integreringssidan för programmet, klickar du på **enkel inloggning**.
+1. I Azure-portalen på den **TOPdesk - offentliga** integreringssidan för programmet, klickar du på **enkel inloggning**.
 
     ![Konfigurera enkel inloggning länk][4]
 
-2. På hello **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** tooenable enkel inloggning.
+2. På den **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** att aktivera enkel inloggning.
  
     ![Enkel inloggning dialogrutan](./media/active-directory-saas-topdesk-public-tutorial/tutorial_topdesk-public_samlbase.png)
 
-3. På hello **TOPdesk - URL: er och den offentliga domänen** avsnittet, utföra hello följande steg:
+3. På den **TOPdesk - URL: er och den offentliga domänen** avsnittet, utför följande steg:
 
     ![TOPdesk - URL: er och den offentliga domänen enkel inloggning information](./media/active-directory-saas-topdesk-public-tutorial/tutorial_topdesk-public_url.png)
 
-    a. I hello **inloggnings-URL** textruta, ange ett URL-Adressen med hello följer mönstret:`https://<companyname>.topdesk.net`
+    a. I den **inloggnings-URL** textruta Skriv en URL med följande mönster:`https://<companyname>.topdesk.net`
     
-    b. I hello **identifierare** textruta, ange ett URL-Adressen med hello följer mönstret:`https://<companyname>.topdesk.net/tas/public/login/verify`
+    b. I den **identifierare** textruta Skriv en URL med följande mönster:`https://<companyname>.topdesk.net/tas/public/login/verify`
 
-    c. I hello **Reply URL** textruta, ange ett URL-Adressen med hello följer mönstret:`https://<companyname>.topdesk.net/tas/public/login/saml`
+    c. I den **Reply URL** textruta Skriv en URL med följande mönster:`https://<companyname>.topdesk.net/tas/public/login/saml`
      
     > [!NOTE] 
-    > Dessa värden är inte verkliga. Uppdatera dessa värden med hello faktiska identifierare, Reply URL och inloggnings-URL. Svars-URL är explaned senare i självstudiekursen. Kontakta [TOPdesk - offentliga klienten supportteamet](https://help.topdesk.com/saas/enterprise/user/) tooget dessa värden.  
+    > Dessa värden är inte verkliga. Uppdatera dessa värden med den faktiska identifierare Reply URL och inloggnings-URL. Svars-URL är explaned senare i självstudiekursen. Kontakta [TOPdesk - offentliga klienten supportteamet](https://help.topdesk.com/saas/enterprise/user/) att hämta dessa värden.  
 
-4. På hello **SAML-signeringscertifikat** klickar du på **XML-Metadata för** och spara sedan hello metadata på datorn.
+4. På den **SAML-signeringscertifikat** klickar du på **XML-Metadata för** och spara sedan metadatafilen på datorn.
 
-    ![länk för hämtning av hello-certifikat](./media/active-directory-saas-topdesk-public-tutorial/tutorial_topdesk-public_certificate.png) 
+    ![Länken hämta certifikatet](./media/active-directory-saas-topdesk-public-tutorial/tutorial_topdesk-public_certificate.png) 
 
 5. Klicka på **spara** knappen.
 
     ![Konfigurera enkel inloggning spara](./media/active-directory-saas-topdesk-public-tutorial/tutorial_general_400.png)
     
-6. På hello **TOPdesk - offentliga konfiguration** klickar du på **konfigurera TOPdesk - offentliga** tooopen **konfigurera inloggning** fönster. Kopiera hello **Sign-Out URL, SAML enhets-ID och SAML enkel inloggning Tjänstwebbadress** från hello **Snabbreferens avsnitt.**
+6. På den **TOPdesk - offentliga konfiguration** klickar du på **konfigurera TOPdesk - offentliga** att öppna **konfigurera inloggning** fönster. Kopiera den **Sign-Out URL, SAML enhets-ID och SAML enkel inloggning Tjänstwebbadress** från den **Snabbreferens avsnitt.**
 
     ![TOPdesk - offentliga konfiguration](./media/active-directory-saas-topdesk-public-tutorial/tutorial_topdesk-public_configure.png) 
 
-7. Logga in tooyour **TOPdesk - offentliga** företagets webbplats som administratör.
+7. Logga in på ditt **TOPdesk - offentliga** företagets webbplats som administratör.
 
-8. I hello **TOPdesk** -menyn klickar du på **inställningar**.
+8. I den **TOPdesk** -menyn klickar du på **inställningar**.
    
     ![Inställningar för](./media/active-directory-saas-topdesk-public-tutorial/ic790598.png "inställningar")
 
@@ -139,141 +139,141 @@ I det här avsnittet Aktivera Azure AD enkel inloggning i hello Azure-portalen o
    
     ![Inloggningsinställningar](./media/active-directory-saas-topdesk-public-tutorial/ic790599.png "inloggningsinställningar")
 
-10. Expandera hello **inloggningsinställningar** -menyn och klicka sedan på **allmänna**.
+10. Expandera den **inloggningsinställningar** -menyn och klicka sedan på **allmänna**.
    
     ![Allmän](./media/active-directory-saas-topdesk-public-tutorial/ic790600.png "Allmänt")
 
-11. I hello **offentliga** avsnitt i hello **SAML inloggningen** configuration avsnittet, utföra hello följande steg:
+11. I den **offentliga** avsnitt i den **SAML inloggningen** konfiguration och utför följande steg:
    
     ![Tekniska inställningar](./media/active-directory-saas-topdesk-public-tutorial/ic790601.png "tekniska inställningar")
    
-    a. Klicka på **hämta** toodownload hello offentliga metadatafil och sedan spara det lokalt på datorn.
+    a. Klicka på **hämta** att hämta metadatafilen offentliga och sedan spara det lokalt på datorn.
    
-    b. Öppna hello hämtas metadatafilen och leta upp hello **AssertionConsumerService** nod.
+    b. Öppna metadatafilen hämtade och leta upp den **AssertionConsumerService** nod.
 
     ![AssertionConsumerService](./media/active-directory-saas-topdesk-public-tutorial/ic790619.png "AssertionConsumerService")
    
-    c. Kopiera hello **AssertionConsumerService** värde, klistra in det här värdet i hello **Reply URL** TextBox-kontroll i **TOPdesk - URL: er och den offentliga domänen** avsnitt.      
+    c. Kopiera den **AssertionConsumerService** värde, klistra in det här värdet i den **Reply URL** TextBox-kontroll i **TOPdesk - URL: er och den offentliga domänen** avsnitt.      
    
-12. toocreate en certifikatfil utför hello följande steg:
+12. Utför följande steg för att skapa en certifikatfil:
     
     ![Certifikatet](./media/active-directory-saas-topdesk-public-tutorial/ic790606.png "certifikat")
     
-    a. Öppna hello ned metadatafil från Azure-portalen.
+    a. Öppna metadatafilen hämtas från Azure-portalen.
     
-    b. Expandera hello **RoleDescriptor** nod som har en **xsi: type** av **aggregeringsdesignprocessen: ApplicationServiceType**.
+    b. Expandera den **RoleDescriptor** nod som har en **xsi: type** av **aggregeringsdesignprocessen: ApplicationServiceType**.
     
-    c. Kopiera hello värdet för hello **X509Certificate** nod.
+    c. Kopiera värdet för den **X509Certificate** nod.
     
-    d. Spara hello kopieras **X509Certificate** värdet lokalt på din dator i en fil.
+    d. Spara den kopierade **X509Certificate** värdet lokalt på din dator i en fil.
 
-13. I hello **offentliga** klickar du på **Lägg till**.
+13. I den **offentliga** klickar du på **Lägg till**.
     
     ![SAML-inloggningen](./media/active-directory-saas-topdesk-public-tutorial/ic790625.png "SAML-inloggning")
 
-14. På hello **SAML configuration assistenten** dialogrutan utför hello följande steg:
+14. På den **SAML configuration assistenten** dialogrutan utför följande steg:
     
     ![SAML Configuration assistenten](./media/active-directory-saas-topdesk-public-tutorial/ic790608.png "assistenten för SAML-konfiguration")
     
-    a. tooupload hämtade metadata filen från Azure-portalen under **Federationsmetadata**, klickar du på **Bläddra**.
+    a. Att överföra metadatafilen hämtas från Azure-portalen under **Federationsmetadata**, klickar du på **Bläddra**.
 
-    b. ditt certifikat filen under tooupload **certifikat (RSA)**, klickar du på **Bläddra**.
+    b. Att överföra din certifikatfil under **certifikat (RSA)**, klickar du på **Bläddra**.
 
-    c. tooupload hello logotypfilen som du har fått från supportteamet för hello TOPdesk under **logotypen ikonen**, klickar du på **Bläddra**.
+    c. Att överföra logotypfilen som du har fått från supportteamet TOPdesk under **logotypen ikonen**, klickar du på **Bläddra**.
 
-    d. I hello **användarnamn** textruta typen `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
+    d. I den **användarnamn** textruta typen `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
 
-    e. I hello **visningsnamn** textruta, ange ett namn för din konfiguration.
+    e. I den **visningsnamn** textruta, ange ett namn för din konfiguration.
 
     f. Klicka på **Spara**.
 
 > [!TIP]
-> Du kan nu läsa en kortare version av dessa anvisningar i hello [Azure-portalen](https://portal.azure.com), medan du ställer in hello appen!  När du lägger till den här appen från hello **Active Directory > företagsprogram** avsnittet, klicka bara på hello **enkel inloggning** flik och åtkomst hello inbäddade dokumentationen via hello  **Konfigurationen** avsnittet längst ned hello. Du kan läsa mer om hello inbäddade dokumentationen funktionen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Du kan nu läsa en kortare version av instruktionerna i den [Azure-portalen](https://portal.azure.com), medan du installerar appen!  När du lägger till den här appen från den **Active Directory > företagsprogram** avsnittet, klickar du på den **enkel inloggning** fliken och få åtkomst till den inbäddade dokumentationen via den **Configuration** avsnittet längst ned. Du kan läsa mer om funktionen inbäddade dokumentationen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="create-an-azure-ad-test-user"></a>Skapa en testanvändare i Azure AD
 
-hello syftet med det här avsnittet är toocreate en testanvändare i hello Azure-portalen kallas Britta Simon.
+Syftet med det här avsnittet är att skapa en testanvändare i Azure-portalen kallas Britta Simon.
 
    ![Skapa en testanvändare i Azure AD][100]
 
-**toocreate en testanvändare i Azure AD kan utföra hello följande steg:**
+**Utför följande steg för att skapa en testanvändare i Azure AD:**
 
-1. Klicka på hello i hello Azure-portalen hello vänster **Azure Active Directory** knappen.
+1. I Azure-portalen i den vänstra rutan klickar du på den **Azure Active Directory** knappen.
 
-    ![hello Azure Active Directory-knappen](./media/active-directory-saas-topdesk-public-tutorial/create_aaduser_01.png)
+    ![Azure Active Directory-knappen](./media/active-directory-saas-topdesk-public-tutorial/create_aaduser_01.png)
 
-2. toodisplay hello lista över användare, gå för**användare och grupper**, och klicka sedan på **alla användare**.
+2. Om du vill visa en lista över användare, gå till **användare och grupper**, och klicka sedan på **alla användare**.
 
-    ![Hej ”användare och grupper” och ”alla användare” länkar](./media/active-directory-saas-topdesk-public-tutorial/create_aaduser_02.png)
+    ![”Användare och grupper” och ”alla användare” länkar](./media/active-directory-saas-topdesk-public-tutorial/create_aaduser_02.png)
 
-3. tooopen hello **användare** dialogrutan klickar du på **Lägg till** hello överst i hello **alla användare** dialogrutan.
+3. Öppna den **användare** dialogrutan klickar du på **Lägg till** överst i den **alla användare** dialogrutan.
 
-    ![hello webbinställningar](./media/active-directory-saas-topdesk-public-tutorial/create_aaduser_03.png)
+    ![Knappen Lägg till](./media/active-directory-saas-topdesk-public-tutorial/create_aaduser_03.png)
 
-4. I hello **användaren** dialogrutan utför hello följande steg:
+4. I den **användaren** dialogrutan utför följande steg:
 
-    ![hello användardialogrutan](./media/active-directory-saas-topdesk-public-tutorial/create_aaduser_04.png)
+    ![Dialogrutan användare](./media/active-directory-saas-topdesk-public-tutorial/create_aaduser_04.png)
 
-    a. I hello **namn** skriver **BrittaSimon**.
+    a. I den **namn** skriver **BrittaSimon**.
 
-    b. I hello **användarnamn** rutan typen hello användarens e-postadress Britta Simon.
+    b. I den **användarnamn** Skriv användarens Britta Simon e-postadress.
 
-    c. Välj hello **visa lösenordet** kryssrutan och sedan skriva ned hello-värde som visas i hello **lösenord** rutan.
+    c. Välj den **visa lösenordet** kryssrutan och sedan skriva ned det värde som visas i den **lösenord** rutan.
 
     d. Klicka på **Skapa**.
  
 ### <a name="create-a-topdesk---public-test-user"></a>Skapa en TOPdesk - offentliga testanvändare
 
-I ordning tooenable Azure AD-användare toolog i TOPdesk - offentliga de måste etableras i TOPdesk - allmänheten.  
-Hello gäller TOPdesk - offentliga etablering är en manuell aktivitet.
+För att aktivera Azure AD-användare att logga in på TOPdesk - offentliga de måste etableras i TOPdesk - allmänheten.  
+När det gäller TOPdesk - offentliga etablering är en manuell aktivitet.
 
-### <a name="tooconfigure-user-provisioning-perform-hello-following-steps"></a>tooconfigure användaretablering, utför följande steg hello:
-1. Logga in tooyour **TOPdesk - offentliga** företagets webbplats som administratör.
+### <a name="to-configure-user-provisioning-perform-the-following-steps"></a>Utför följande steg för att konfigurera användaretablering:
+1. Logga in på ditt **TOPdesk - offentliga** företagets webbplats som administratör.
 
-2. Hello-menyn överst hello **TOPdesk \> ny \> stödfiler \> Person**.
+2. Klicka på menyn högst upp **TOPdesk \> ny \> stödfiler \> Person**.
    
     ![Person](./media/active-directory-saas-topdesk-public-tutorial/ic790628.png "Person")
 
-3. Utför följande hello på hello ny Person dialogrutan:
+3. I dialogrutan Ny Person att utföra följande steg:
    
     ![Ny Person](./media/active-directory-saas-topdesk-public-tutorial/ic790629.png "ny Person")
    
-    a. Klicka på hello på fliken Allmänt.
+    a. Klicka på fliken Allmänt.
 
-    b. I hello **efternamn** textruta Ange efternamn hello användaren som Simon
+    b. I den **efternamn** textruta skriver ut Simon användarens efternamn
  
-    c. Välj en **plats** för hello-kontot.
+    c. Välj en **plats** för kontot.
  
     d. Klicka på **Spara**.
 
 > [!NOTE]
-> Du kan använda andra TOPdesk - offentliga användare skapa verktyg eller API: er som tillhandahålls av TOPdesk - offentliga tooprovision Azure AD-användarkonton.
+> Du kan använda alla andra TOPdesk - offentliga användare skapa verktyg eller API: er som tillhandahålls av TOPdesk - offentliga att etablera Azure AD-användarkonton.
 
-### <a name="assign-hello-azure-ad-test-user"></a>Tilldela användare hello Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändare
 
-I det här avsnittet kan aktivera du Britta Simon toouse Azure enkel inloggning genom att bevilja åtkomst tooTOPdesk - offentliga.
+I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inloggning genom att bevilja åtkomst till TOPdesk - allmänheten.
 
-![Tilldela hello användarroll][200] 
+![Tilldela rollen][200] 
 
-**tooassign Britta Simon tooTOPdesk - offentliga utföra hello följande steg:**
+**Att tilldela TOPdesk - Britta Simon offentliga, utför följande steg:**
 
-1. I hello Azure-portalen, öppna hello program visa och navigera toohello directory vy och gå för**företagsprogram** Klicka **alla program**.
+1. Öppna vyn program i Azure-portalen och gå till vyn directory och gå till **företagsprogram** Klicka **alla program**.
 
     ![Tilldela användare][201] 
 
-2. Välj i listan med program hello **TOPdesk - offentliga**.
+2. Välj i listan med program **TOPdesk - offentliga**.
 
-    ![Hej TOPdesk - offentliga länken i listan med program hello](./media/active-directory-saas-topdesk-public-tutorial/tutorial_topdesk-public_app.png)  
+    ![TOPdesk - offentliga länken i listan med program](./media/active-directory-saas-topdesk-public-tutorial/tutorial_topdesk-public_app.png)  
 
-3. Hello-menyn hello vänster **användare och grupper**.
+3. Klicka på menyn till vänster **användare och grupper**.
 
-    ![Hej ”användare och grupper” länk][202]
+    ![Länken ”användare och grupper”][202]
 
 4. Klicka på **Lägg till** knappen. Välj sedan **användare och grupper** på **Lägg uppdrag** dialogrutan.
 
-    ![hello Lägg uppdrag fönstret][203]
+    ![Fönstret Lägg till tilldelning][203]
 
-5. På **användare och grupper** markerar **Britta Simon** i hello användarlistan.
+5. På **användare och grupper** markerar **Britta Simon** på listan användare.
 
 6. Klicka på **Välj** knappen på **användare och grupper** dialogrutan.
 
@@ -281,14 +281,14 @@ I det här avsnittet kan aktivera du Britta Simon toouse Azure enkel inloggning 
     
 ### <a name="test-single-sign-on"></a>Testa enkel inloggning
 
-I det här avsnittet kan testa du Azure AD enkel inloggning konfigurationen med hello åtkomstpanelen.
+I det här avsnittet kan du testa Azure AD enkel inloggning konfigurationen med hjälp av panelen åtkomst.
 
-När du klickar på hello TOPdesk - ett offentligt panelen i hello åtkomstpanelen får du automatiskt inloggade tooyour TOPdesk - offentliga program.
-Läs mer om åtkomstpanelen [introduktion toohello åtkomstpanelen](active-directory-saas-access-panel-introduction.md). 
+När du klickar på TOPdesk - offentliga panelen i åtkomstpanelen, du bör få automatiskt loggat in på ditt TOPdesk - offentliga program.
+Läs mer om åtkomstpanelen [introduktion till åtkomstpanelen](active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-* [Lista över självstudier om hur tooIntegrate SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Vad är programåtkomst och enkel inloggning med Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->

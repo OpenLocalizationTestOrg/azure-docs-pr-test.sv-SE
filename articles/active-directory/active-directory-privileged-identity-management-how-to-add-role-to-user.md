@@ -1,6 +1,6 @@
 ---
-title: "aaaHow tooadd eller ta bort en användarroll | Microsoft Docs"
-description: "Lär dig hur hello tooadd roller tooprivileged identiteter med Azure Active Directory Privileged Identity Management-program."
+title: "Lägga till eller ta bort en användarroll | Microsoft Docs"
+description: "Lär dig mer om att lägga till roller för privilegierade identiteter med Azure Active Directory Privileged Identity Management-programmet."
 services: active-directory
 documentationcenter: 
 author: billmath
@@ -15,53 +15,53 @@ ms.workload: identity
 ms.date: 06/06/2017
 ms.author: billmath
 ms.custom: pim;oldportal;it-pro;
-ms.openlocfilehash: f84639757dd76061ea12ed6ea7ec9e62ad942109
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 3ac07bb7b070f44595c099a454b3d0dbc66126c9
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="azure-ad-privileged-identity-management-how-tooadd-or-remove-a-user-role"></a>Azure AD Privileged Identity Management: Hur tooadd eller ta bort en användarroll
-Med Azure Active Directory (AD), en global administratör (eller företagets administratör) kan uppdatera som användare kan **permanent** tilldelade tooroles i Azure AD. Detta görs med PowerShell-cmdlets som `Add-MsolRoleMember` och `Remove-MsolRoleMember`. De kan också använda hello klassiska Azure-portalen enligt beskrivningen i [Tilldela administratörsroller i Azure Active Directory](active-directory-assign-admin-roles.md).
+# <a name="azure-ad-privileged-identity-management-how-to-add-or-remove-a-user-role"></a>Azure AD Privileged Identity Management, lägg till eller ta bort en användarroll
+Med Azure Active Directory (AD), en global administratör (eller företagets administratör) kan uppdatera som användare kan **permanent** tilldelade roller i Azure AD. Detta görs med PowerShell-cmdlets som `Add-MsolRoleMember` och `Remove-MsolRoleMember`. De kan också använda den klassiska Azure-portalen enligt beskrivningen i [Tilldela administratörsroller i Azure Active Directory](active-directory-assign-admin-roles.md).
 
-hello programmet Azure AD Privileged Identity Management administratörer Privilegierade roller toomake permanent rolltilldelningar samt. Dessutom Privilegierade rollen administratörer kan utföra **berättigade** för administratörsroller. En berättigad administratör kan aktivera hello roll när det behövs och sedan deras behörigheter ut när de är klar.
+Programmet Azure AD Privileged Identity Management administratörer Privilegierade roller kan göra permanenta rolltilldelningar samt. Dessutom Privilegierade rollen administratörer kan utföra **berättigade** för administratörsroller. En berättigad administratör kan aktivera rollen när de behöver den och sedan deras behörigheter ut när de är klar.
 
-## <a name="manage-roles-with-pim-in-hello-azure-portal"></a>Hantera roller med PIM i hello Azure-portalen
-I din organisation, kan du tilldela användare toodifferent administrativa roller i Azure AD och Office 365 och andra Microsoft-tjänster och program.  Mer information om hello tillgängliga roller kan hittas på [roller i Azure AD PIM](active-directory-privileged-identity-management-roles.md).
+## <a name="manage-roles-with-pim-in-the-azure-portal"></a>Hantera roller med PIM i Azure-portalen
+I din organisation, kan du tilldela användare för olika administrativa roller i Azure AD och Office 365 och andra Microsoft-tjänster och program.  Mer information om tillgängliga roller kan hittas på [roller i Azure AD PIM](active-directory-privileged-identity-management-roles.md).
 
-tooadd eller ta bort en användare i en roll med hjälp av Privileged Identity Management registreringspunkter hello PIM-instrumentpanelen. Sedan antingen på hello **användare i administratörsroller** knappen eller väljer en viss roll (till exempel Global administratör) hello roller tabell.
+Om du vill lägga till eller ta bort en användare i en roll med hjälp av Privileged Identity Management, visa PIM-instrumentpanelen. Klicka sedan på den **användare i administratörsroller** knappen eller välj en specifik roll (till exempel Global administratör) från tabellen roller.
 
 > [!NOTE]
-> Om du inte har aktiverat PIM i hello Azure-portalen ännu går för[Kom igång med Azure AD PIM](active-directory-privileged-identity-management-getting-started.md) mer information.
+> Om du inte har aktiverat PIM i Azure portal ännu, går du till [Kom igång med Azure AD PIM](active-directory-privileged-identity-management-getting-started.md) mer information.
 
-Om du vill toogive till en annan användare åtkomst tooPIM hello roller som PIM kräver hello användaren toohave beskrivs ytterligare i själva [hur toogive åt tooPIM](active-directory-privileged-identity-management-how-to-give-access-to-pim.md).
+Om du vill ge en annan användare tillgång till PIM själva roller som PIM kräver att användaren har beskrivs ytterligare i [ge åtkomst till PIM](active-directory-privileged-identity-management-how-to-give-access-to-pim.md).
 
-## <a name="add-a-user-tooa-role"></a>Lägg till en användarroll för tooa
-1. I hello [Azure-portalen](https://portal.azure.com/)väljer hello **Azure AD Privileged Identity Management** rutan på hello instrumentpanel.
+## <a name="add-a-user-to-a-role"></a>Lägga till en användare till en roll
+1. I den [Azure-portalen](https://portal.azure.com/), Välj den **Azure AD Privileged Identity Management** panelen på instrumentpanelen.
 2. Välj **hantera Privilegierade roller**.
-3. I hello **Rollsammanfattning** tabell, Välj hello roll som du vill använda toomanage.
-4. Hello rollen bladet välj **Lägg till**.
-5. Klicka på **Välj användare** och Sök efter hello användare på hello **Välj användare** bladet.  
-6. Välj hello användaren hello sökresultatet och klicka på **klar**.
-7. Klicka på **OK** toosave valet. hello användare som du har valt visas i hello lista som är berättigade till hello roll.
+3. I den **Rollsammanfattning** tabell, väljer du den roll som du vill hantera.
+4. I bladet roll väljer **Lägg till**.
+5. Klicka på **Välj användare** och Sök efter användare på den **Välj användare** bladet.  
+6. Välj användaren från listan över sökresultat och klicka på **klar**.
+7. Klicka på **OK** att spara ditt val. Användare som du har valt visas i listan som är berättigade till rollen.
 
 > [!NOTE]
-> Nya användare i en roll är bara tillgängliga för hello roll som standard. Om du vill toomake hello rollen permanenta, klickar du på hello användare i hello listan. hello användarens information visas i ett nytt blad. Välj **Se behörighet** hello användaren information-menyn.  
-> Om en användare kan registrera dig för Azure Multi-Factor Authentication (MFA) eller använder ett Microsoft-konto (vanligtvis @outlook.com), behöver du toomake dem permanent i deras roller. Berättigad administratörer uppmanas tooregister MFA vid aktivering.
+> Nya användare i en roll är bara tillgängliga för rollen som standard. Klicka på användare i listan om du vill att rollen permanent. Användarens information visas i ett nytt blad. Välj **Se behörighet** i menyn användaren information.  
+> Om en användare kan registrera dig för Azure Multi-Factor Authentication (MFA) eller använder ett Microsoft-konto (vanligtvis @outlook.com), måste du se dem permanent i deras roller. Berättigad administratörer uppmanas att registrera sig för MFA vid aktivering.
 
-Nu när hello användaren är berättigad till en roll, meddela dem om att de kan aktivera den enligt toohello instruktionerna i [hur tooactivate eller inaktivera en roll](active-directory-privileged-identity-management-how-to-activate-role.md).
+Nu när användaren är berättigad till en roll, meddela dem om att de kan aktivera enligt anvisningarna i [så här aktiverar eller inaktiverar du en roll](active-directory-privileged-identity-management-how-to-activate-role.md).
 
 ## <a name="remove-a-user-from-a-role"></a>Ta bort en användare från en roll
 Du kan ta bort användare från berättigade rolltilldelningar, men kontrollera att det finns alltid minst en användare som är en permanent global administratör.
 
-Följ dessa steg tooremove en viss användare från en roll:
+Följ dessa steg om du vill ta bort en viss användare från en roll:
 
-1. Navigera toohello roll i hello rollen listan genom att välja en roll i hello Azure AD PIM instrumentpanelen eller genom att klicka på hello **användare i administratörsroller** knappen.
-2. Klicka på hello användare i hello användarlistan.
-3. Klicka på **ta bort**. Ett meddelande som ber dig tooconfirm.
-4. Klicka på **Ja** tooremove hello roll från hello användare.
+1. Navigera till rollen i listan roll genom att välja en roll i Azure AD PIM-instrumentpanelen eller genom att klicka på den **användare i administratörsroller** knappen.
+2. Klicka på användare i användarlistan.
+3. Klicka på **ta bort**. Ett meddelande som ber dig att bekräfta.
+4. Klicka på **Ja** att ta bort rollen från användaren.
 
-Om du inte vet vilka användarna måste fortfarande sina rolltilldelningar sedan kan du [startar en åtkomst-granskning för hello rollen](active-directory-privileged-identity-management-how-to-start-security-review.md).
+Om du inte vet vilka användarna måste fortfarande sina rolltilldelningar sedan kan du [startar en åtkomst-granskning för rollen](active-directory-privileged-identity-management-how-to-start-security-review.md).
 
 ## <a name="next-steps"></a>Nästa steg
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]

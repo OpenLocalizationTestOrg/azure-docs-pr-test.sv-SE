@@ -8,25 +8,25 @@ Virtuella nätverk (VNET) och undernät resurser hjälpa dig att definiera en s�
 
 ![Virtuella nätverk med flera undernät](./media/resource-groups-networking/Figure4.png)
 
-Vnet innehålla hello följande egenskaper.
+Vnet innehåller följande egenskaper.
 
 | Egenskap | Beskrivning | Exempelvärden |
 | --- | --- | --- |
-| **addressSpace** |Samling av adressprefix som utgör hello VNet i CIDR-notation |192.168.0.0/16 |
-| **undernät** |Samling av undernät som utgör hello VNet |Se [undernät](#Subnets) nedan. |
-| **IP-adress** |IP-adress som tilldelats tooobject. Det här är en skrivskyddad egenskap. |104.42.233.77 |
+| **addressSpace** |Samling av adressprefix som utgör VNet i CIDR-notation |192.168.0.0/16 |
+| **undernät** |Samling av undernät som utgör VNet |Se [undernät](#Subnets) nedan. |
+| **IP-adress** |IP-adress som tilldelats objekt. Det här är en skrivskyddad egenskap. |104.42.233.77 |
 
 ### <a name="subnets"></a>Undernät
-Ett undernät är en underordnad resurs i ett VNet och hjälper dig att definiera segmenten i adressutrymmen i CIDR-block med IP-adressprefix. Nätverkskort läggas toosubnets och anslutna tooVMs som man har anslutning för olika arbetsbelastningar.
+Ett undernät är en underordnad resurs i ett VNet och hjälper dig att definiera segmenten i adressutrymmen i CIDR-block med IP-adressprefix. Nätverkskorten kan läggas till i undernät och anslutna till virtuella datorer kan man har anslutning för olika arbetsbelastningar.
 
-Undernät innehålla hello följande egenskaper. 
+Undernät innehåller följande egenskaper. 
 
 | Egenskap | Beskrivning | Exempelvärden |
 | --- | --- | --- |
-| **addressPrefix** |Enkel adressprefixet som utgör hello undernät i CIDR-notation |192.168.1.0/24 |
-| **networkSecurityGroup** |NSG tillämpas toohello undernät |Se [NSG: er](#Network-Security-Group) |
-| **Migreringstillståndet** |Routningstabellen tillämpas toohello undernät |Se [UDR](#Route-table) |
-| **ipConfigurations** |Samling av IP-configruation objekt som används av nätverkskort anslutna toohello undernät |Se [UDR](#Route-table) |
+| **addressPrefix** |Enkel adressprefixet som utgör undernät i CIDR-notation |192.168.1.0/24 |
+| **networkSecurityGroup** |NSG tillämpas för undernätet |Se [NSG: er](#Network-Security-Group) |
+| **Migreringstillståndet** |Routningstabellen tillämpad på undernätet |Se [UDR](#Route-table) |
+| **ipConfigurations** |Samling av IP-configruation objekt som används av nätverkskort som är anslutna till undernätet |Se [UDR](#Route-table) |
 
 Exempel VNet i JSON-format:
 
@@ -74,6 +74,6 @@ Exempel VNet i JSON-format:
 
 ### <a name="additional-resources"></a>Ytterligare resurser
 * Hämta mer information [VNet](../articles/virtual-network/virtual-networks-overview.md).
-* Läs hello [REST API-referensdokumentation](https://msdn.microsoft.com/library/azure/mt163650.aspx) för Vnet.
-* Läs hello [REST API-referensdokumentation](https://msdn.microsoft.com/library/azure/mt163618.aspx) för undernät.
+* Läs den [REST API-referensdokumentation](https://msdn.microsoft.com/library/azure/mt163650.aspx) för Vnet.
+* Läs den [REST API-referensdokumentation](https://msdn.microsoft.com/library/azure/mt163618.aspx) för undernät.
 

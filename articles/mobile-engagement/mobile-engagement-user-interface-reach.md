@@ -1,6 +1,6 @@
 ---
-title: "aaaAzure användargränssnitt för Mobile Engagement - Reach"
-description: "Lär dig hur tooreach ut toohello användare på ditt program med push-meddelanden med Azure Mobile Engagement"
+title: "Användargränssnittet för Azure Mobile Engagement - Reach"
+description: "Lär dig att nå ut till användare av ditt program med push-meddelanden med Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: 
 author: piyushjo
@@ -14,67 +14,67 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 40d5162ddeccec82c2c9f5b0d72b4cb10c9ddc38
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: ce30456e41ff1a2f4824bcb64246ee115fdd1ef7
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="how-tooreach-out-toohello-users-of-your-application-with-push-notifications"></a>Hur tooreach ut toohello användare av ditt program med push-meddelanden
-Den här artikeln beskriver hello **NÅ** för hello **Mobile Engagement** portal. Du använder hello **Mobile Engagement** portal toomonitor och hantera dina mobila appar. Observera att toostart med hello-portalen måste du först toocreate en **Azure Mobile Engagement** konto. Mer information finns i [skapa ett Azure Mobile Engagement-konto](mobile-engagement-create.md).
+# <a name="how-to-reach-out-to-the-users-of-your-application-with-push-notifications"></a>Hur du nå ut till användare av ditt program med push-meddelanden
+Den här artikeln beskriver den **NÅ** för den **Mobile Engagement** portal. Du använder den **Mobile Engagement** portalen för att övervaka och hantera dina mobila appar. Observera att börja använda portalen måste du först skapa en **Azure Mobile Engagement** konto. Mer information finns i [skapa ett Azure Mobile Engagement-konto](mobile-engagement-create.md).
 
-hello nå avsnitt i Användargränssnittet är hello hello Push kampanj hanteringsverktyg som du kan skapa/redigera/aktivera/Slutför/Övervakare och få statistik på Push notification-kampanjer och funktioner som också kan komma åt via hello nå API (och vissa delar av hello låg nivå Push-API). Kom ihåg att om du använder hello API: er eller hello Användargränssnittet måste toointegrate räckvidd i programmet för varje plattform med hello SDK innan du kan använda och Azure Mobile Engagement nå kampanjer.
+Avsnittet Reach i Användargränssnittet är Push-kampanj hanteringsverktyg som du kan skapa/redigera/aktivera/Slutför/Övervakare och få statistik på Push notification-kampanjer och funktioner som kan även nås via API: et nå (och vissa delar av låga Push-API) . Kom ihåg att om du använder API: erna eller Användargränssnittet, behöver du integrera räckvidd i programmet för varje plattform med SDK innan du kan använda och Azure Mobile Engagement nå kampanjer.
 
 > [!NOTE]
-> Många avsnitt av hello **Mobile Engagement** portalens användargränssnitt innehåller hello **Visa hjälp** knappen. Tryck på den här knappen tooget mer detaljerad information om ett avsnitt.
+> Många avsnitt i den **Mobile Engagement** portal Användargränssnittet innehåller den **Visa hjälp** knappen. Tryck på knappen för att få mer information om ett avsnitt.
 > 
 > 
 
 ## <a name="four-types-of-push-notifications"></a>Fyra typer av Push-meddelanden
-1. Meddelanden - Tillåt toosend reklam meddelanden toousers som omdirigerar dem tooanother plats i din app eller toosend dem tooa webbsidan eller lagras utanför din app. 
-2. Omröstningar - Tillåt toogather information från slutanvändarna genom att ställa frågor till dem..
-3. Data-push - Tillåt toosend en binär fil eller base64-datafil. hello informationen som finns i en data-push skickas tooyour programmet toomodify användarnas aktuella upplevelse i din app. Programmet måste toobe kan tooprocess hello data i en data-push.
+1. Meddelanden – kan du skicka reklam meddelanden till användare som omdirigerar dem till en annan plats i din app och skicka dem till en webbsida eller store utanför din app. 
+2. Omröstningar - kan du samla in information från slutanvändarna genom att ställa frågor till dem..
+3. Data-push - kan du skicka en binär fil eller base64-datafil. Informationen i en data-push skickas till appen och ändra din aktuella användarupplevelsen i din app. Programmet måste kunna bearbeta data i en data-push.
 
 ## <a name="campaign-details"></a>Information om kampanjer
-Du kan redigera, klona, ta bort eller aktivera kampanjer som inte har aktiverats ännu hovrar över deras namn och du kan klicka på tooopen dem. Du kan också klona kampanjer som redan har aktiverats av användaren håller muspekaren över deras namn eller klicka tooopen dem. Du kan inte ändra en kampanj när den väl har aktiverats.
+Du kan redigera klona, ta bort eller aktivera kampanjer som inte har aktiverats ännu hovrar över deras namn eller kan du öppna dem.. Du kan också klona kampanjer som redan har aktiverats av användaren håller muspekaren över deras namn eller kan du öppna dem.. Du kan inte ändra en kampanj när den väl har aktiverats.
 
 ![Reach1][18]
 
 ## <a name="reach-feedback"></a>Nå Feedback
-Klicka på **statistik** toosee hello information om en Reach-kampanj. Hej **enkel** vyn innehåller en bild i hello form av stapeldiagram kolumn om vad som hänt efter en kampanj har aktiverats. Hej **Avancerat** vyn innehåller mer detaljerad information om hello push-kampanj. Dessa uppgifter är inte tillgängligt om du skickar ett testkampanj d.v.s. en push-skickade tooa testenhet. Här visas hur du ska tolka dessa uppgifter:
+Klicka på **statistik** visas detaljerad information om en Reach-kampanj. Den **enkel** vyn innehåller en bild i form av ett stapeldiagram i kolumnen om vad som hänt efter en kampanj har aktiverats. Den **Avancerat** vyn innehåller mer detaljerad information om push-kampanj. Dessa uppgifter är inte tillgängligt om du skickar ett testkampanj d.v.s. en push skickas till en testenhet. Här visas hur du ska tolka dessa uppgifter:
 
-1. **Pushas** – detta anger hello antal meddelanden som pushas toohello enheter. Det här antalet beror på hello målgrupp du angav när du skapar hello push-kampanj. Om du inte anger någon målgrupp, skickas den här push ut tooall hello registrerade enheter. Precis som alla andra push-tjänster, vi inte push-meddelanden hello direkt toohello enheter men i stället push-installera dem toohello respektive plattform specifika Push Notification Services (PNS - WNS-APN/GCM) så att de kan tillhandahålla hello meddelanden toohello enheter. 
-2. **Leverera** – detta anger hello antal meddelanden som har levererats av hello PNS toohello enhet och bekräftas som tagits emot av Mobile Engagement SDK. 
+1. **Pushas** – detta anger antalet meddelanden som har pushats till enheter. Det här antalet beror på den målgrupp som du angav när du skapar push-kampanj. Om du inte anger någon målgrupp, sedan skickas den här push till registrerade enheter. Precis som alla push-tjänster vi inte push-meddelanden direkt till enheter men i stället push-installera dem respektive plattforms specifika Push Notification Services (PNS - WNS-APN/GCM) så att de kan skicka meddelanden till enheterna. 
+2. **Leverera** – detta anger antalet meddelanden som har levererats av pns-systemet till enheten och bekräftas som tagits emot av Mobile Engagement SDK. 
    
    *Orsaker till levererade antalet är mindre än antalet intryckt:*
    
-   1. Om hello användaren har avinstallerats hello app från hello enhet men hello PNS inte känner till den för närvarande hello vi skicka hello push toohello PNS bort hello-meddelande.
-   2. Om hello enhet har hello app men hello enheter själva var offline under långa perioder misslyckas hello PNS toodeliver hello meddelandet toohello enhet. 
-   3. Om hello-meddelande levereras toohello enhet men hello Mobile Engagement SDK i hello app inte kan identifiera hello innehållet i hello-meddelande, släpper meddelandet. Detta kan inträffa om hello anpassning av hello-meddelande i hello app genererar ett undantag som vi fånga i hello SDK och släpp hello-meddelande. Detta kan också inträffa om hello appen på hello enhet med en version av hello Mobile Engagement SDK som inte kan toounderstand hello nyare version av hello push-meddelande skickas från hello plattform, men detta är endast när hello app uppgraderades efter hello-meddelande skickades från hello service plattform. Hej **Avancerat** fliken talar om hur många meddelanden har tagits bort. 
-   4. På iOS-enheter meddelanden ibland inte levereras om antingen hello-enheten är för låg batterinivå eller om hello app förbrukar för mycket energi vid bearbetning av fjärr-meddelanden. Detta är en begränsning av hello iOS-enheter.   
-3. **Visas** – detta anger hello antal meddelanden som har visas toohello app användaren på hello-enhet i hello form av en systemavisering push/out-för-app i hello meddelandecentret eller ett meddelande i appen i hello mobila App.  Hej **Avancerat** fliken talar om hur många har systemmeddelanden och hur många har meddelanden i appen. 
+   1. Om användaren har avinstalleras appen från enheten och pns-systemet inte känner till den när vi skickar push-meddelandet till pns-systemet bort meddelandet.
+   2. Om enheten har appen men själva enheterna var offline under långa tidsperioder, misslyckas pns-systemet att leverera meddelandet till enheten. 
+   3. Om meddelandet levereras till enheten men Mobile Engagement SDK i appen inte kan identifiera innehållet i meddelandet, släpper meddelandet. Detta kan inträffa om anpassning av meddelanden i appen genererar ett undantag som vi fånga i SDK och släpp meddelandet. Detta kan även uppstå om appen på enheten använder en version av Mobile Engagement SDK som inte kan förstå den nya versionen av push-meddelande som skickas från plattformen men detta är endast när appen har uppgraderats när meddelandet skickades från t han service plattform. Den **Avancerat** fliken talar om hur många meddelanden har tagits bort. 
+   4. På iOS-enheter meddelanden ibland inte levereras om antingen enheten är för låg batterinivå eller om appen förbrukar för mycket energi vid bearbetning av fjärr-meddelanden. Detta är en begränsning av iOS-enheter.   
+3. **Visas** – detta anger antalet meddelanden som har upp till app-användare på enheten i form av en systemavisering push/out-för-app i meddelandecentret eller ett meddelande i appen i mobilappen.  Den **Avancerat** fliken talar om hur många har systemmeddelanden och hur många har meddelanden i appen. 
    
-   *Orsaker till visas antalet är mindre än antalet levererade (väntar toobe visas)*
+   *Orsaker till visas antalet är mindre än levererade antal (väntar på att visas)*
    
-   1. Om hello meddelandekampanj hade ett slutdatum på det är möjligt att hello meddelandet levererades men när hello tid kommer tooopen och visa det toohello app användaren, har den gått så att det har aldrig visas.   
-   2. Om hello-meddelande är ett meddelande i appen sedan visas hello-meddelande bara när hello app användare öppnar hello app. I fall där hello app användaren inte har öppnat hello app hello SDK rapporterar att hello-meddelande kunde levereras men har ännu inte visas tills hello appen öppnas. 
-   3. Om hello-meddelande är ett meddelande i appen och konfigurerat toobe som visas på en specifik aktivitet/skärm och sedan också hello-meddelande kommer att rapporteras som levereras men ännu inte levereras till öppnar hello användare hello-appen på en viss skärm. 
-4. **Användarinteraktioner** – detta anger hello antal meddelanden som hello app användare har har åtgärdat med och ta hälsningsmeddelande som har hanterats eller stängts. 
+   1. Om meddelandekampanj hade ett slutdatum på det är det möjligt att meddelandet levererades men vid tiden kommer att öppna och visa det app-användaren kan det har gått så att det har aldrig visas.   
+   2. Om meddelandet är ett meddelande i appen och sedan meddelandet visas bara när app-användare öppnar appen. I fall där appen användaren inte har öppnat appen rapporterar SDK att meddelandet kunde levereras men har ännu inte visas förrän den har öppnats. 
+   3. Om meddelandet är ett meddelande i appen och konfigurerats för att visas på en specifik aktivitet/skärm och sedan också meddelandet kommer att rapporteras som levererats men ännu inte levereras till öppnar användaren appen på en viss skärm. 
+4. **Användarinteraktioner** – detta anger antalet meddelanden som appen användaren har har åtgärdat med och meddelanden som har hanterats eller stängts tas med. 
    
-   * *hello app användaren kan åtgärda ett meddelande i något av följande sätt hello:*
+   * *App-användaren kan åtgärda ett meddelande i något av följande sätt:*
      
-     1. Om hello meddelande är ett system/out-för-app-meddelande eller ett meddelande i appen skickas som endast meddelande och hello app användaren klickar på hello-meddelande.
-     2. Om hello-meddelande är ett meddelande i appen med en text eller en webbvy eller avsökningar hello sedan app användare klickar du på hello åtgärdsknappen i hello-meddelande.
-     3. Om hello-meddelande är ett meddelande i appen med en webbvy sedan hello app användaren klickar på en URL i hello webbvy [Android endast]
-   * *hello app användaren kan avsluta ett meddelande i något av följande sätt hello:*
+     1. Om meddelandet är ett system/out-för-app-meddelande eller en app meddelande meddelande endast sedan app användaren klickar på meddelandet.
+     2. Om meddelandet är ett meddelande i appen med en text eller Webbvy eller avsökningar sedan app användaren klickar på knappen åtgärd i meddelandet.
+     3. Om meddelandet är ett meddelande i appen med en webbvy app användaren klickar på en URL i webbvyn [Android endast]
+   * *App-användaren kan avsluta ett meddelande i något av följande sätt:*
      
-     1. Klicka hello Stäng i hello-meddelande direkt. 
-     2. Svepa in eller ta bort hello-meddelande. 
-     3. Meddelanden i appen med text/webbinnehåll och avsökningar är vanligtvis visas toohello app användare i två steg. Ett meddelande visas först och när de klickar på den de se hello efterföljande text/web/avsökning innehåll. hello app användaren kan avsluta ett meddelande i någon av de här stegen och hello information i Avancerat läge för hello samlar in det här. 
-5. **Åtgärdade** – detta anger hello antal meddelanden som uttryckligen åtgärdade av hello app användare. Detta är mest intressanta hello-nummer som det här visar hur många användare som appen har intresserad av du push-installeras i hello-meddelande hello-meddelande. 
+     1. Klicka på knappen Stäng på meddelandet direkt. 
+     2. Svepa in eller ta bort meddelandet. 
+     3. Meddelanden i appen med text/webbinnehåll och avsökningar visas vanligtvis till app-användare i två steg. Ett meddelande visas först och när de klickar på den de se efterföljande text/web/avsökning innehållet. App-användaren kan avsluta ett meddelande i någon av de här stegen och informationen i Avancerat läge samlar in det här. 
+5. **Åtgärdade** – detta anger antalet meddelanden som uttryckligen åtgärdade av app-användare. Detta är det mest intressanta antalet detta anger hur många användare som appen har intresse av du push-installeras i meddelandet för meddelandet. 
 
 > [!NOTE]
-> På iOS & Windows-plattformar om hello användare har hello app öppna och hello kampanj har kampanj ”när som helst” är det möjligt att både från appen och i appen meddelanden visas på hello samtidigt. Detta kan orsaka en högre än hello levererade visas antalet. Om hello användaren interagerar eller åtgärder hello-meddelande, sedan även hello användaren interaktioner/Actioned antalet kan vara större än levererade. 
+> På iOS & Windows-plattformar, om användaren har appen öppna och kampanjen var kampanj ”när som helst” och det är möjligt att båda utanför appen och meddelanden i appen visas på samma gång. Detta kan orsaka en högre än levererat visas antalet. Om användaren interagerar eller åtgärder meddelandet och även antalet användare interaktioner/Actioned kan vara större än levererade. 
 > 
 > 
 

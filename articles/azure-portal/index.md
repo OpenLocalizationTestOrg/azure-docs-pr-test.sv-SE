@@ -1,25 +1,25 @@
 ---
-title: "aaaAzure portaldokumentationen - självstudier, API-referens | Microsoft Docs"
-description: "Lär dig hur toodeploy och hantera resurser i hello Azure-portalen. Självstudier, API-referenser och annan dokumentation."
-services: 
+title: "Dokumentation om Azure Portal – självstudier, API-referens | Microsoft Docs"
+description: "Lär dig hur du distribuerar och hanterar resurser i Azure Portal. Självstudier, API-referenser och annan dokumentation."
+services: azure portal
 documentationcenter: 
-author: squillace
-manager: timlt
+author: czeumault
+manager: carolz
 editor: 
 tags: 
 ms.assetid: 3e12c488-9c8c-4d0d-9b07-e018dec42fc6
-ms.service: value
+ms.service: azure-portal
 ms.devlang: na
-ms.topic: article
+ms.topic: landing-page
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2017
-ms.author: tysonn
-ms.openlocfilehash: 10dbec2bab5c5f1de29a3125aeeb33f80d722282
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.author: carolz
+ms.openlocfilehash: 9b4352dbbec053ccc4a681886d86582adddf132c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-portal-documentation"></a>Dokumentation om Azure Portal
-Läs mer om hello funktioner du kan använda toodeploy resurser i hello Azure-portalen. Visar självstudier, API-referenserna och övrig dokumentation hur toodeploy, hantera och övervaka Azure-resurser.
+Läs om vilka funktioner du kan använda för att distribuera resurser i Azure Portal. Självstudier, API-referenser och annan dokumentation som visar hur du distribuerar, hanterar och övervakar Azure-resurser.

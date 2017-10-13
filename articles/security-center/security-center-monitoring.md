@@ -1,6 +1,6 @@
 ---
-title: "aaaSecurity övervakning i Azure Security Center | Microsoft Docs"
-description: "Den här artikeln hjälper tooget igång med övervakningsfunktionerna i Azure Security Center."
+title: "Säkerhetsövervakning i Azure Security Center | Microsoft Docs"
+description: "I den här artikeln får du hjälp att komma igång med övervakningsfunktionerna i Azure Security Center."
 services: security-center
 documentationcenter: na
 author: YuriDio
@@ -12,119 +12,128 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/09/2017
+ms.date: 09/07/2017
 ms.author: yurid
-ms.openlocfilehash: 43c2a8864d5fe27ba44b0d7bc979db970305ec17
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: d610a4ae97657013f6bb784790f073c3d986959f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="security-health-monitoring-in-azure-security-center"></a>Övervakning av säkerhetshälsa i Azure Security Center
-Den här artikeln kan du använda hello övervakningsfunktionerna i Azure Security Center toomonitor följer principerna.
+I den här artikeln berättar vi hur du använder övervakningsfunktionerna i Azure Security Center för att övervaka att fastställda principer efterlevs.
 
 ## <a name="what-is-security-health-monitoring"></a>Vad är övervakning av säkerhetshälsa?
-Ofta tänker vi övervakning och titta och vänta en händelse toooccur så att vi kan reagera toohello situation. Säkerhetsövervakning handlar toohaving en proaktiv strategi där granskningar dina resurser tooidentify system som inte uppfyller organisationens normer och bästa praxis.
+Ofta tänker vi oss att övervakning är att sitta och titta och vänta på att något ska hända som vi sedan ska åtgärda. Säkerhetsövervakning handlar om att ha en proaktiv strategi där resurserna hela tiden kontrolleras så att system som inte uppfyller organisationens normer och principer hittas.
 
 ## <a name="monitoring-security-health"></a>Övervakning av säkerhetshälsa
-När du har aktiverat [säkerhetsprinciper](security-center-policies.md) för en prenumeration resurser, Security Center analyserar hello säkerheten för dina resurser tooidentify potentiella säkerhetsproblem. Information om nätverkskonfigurationen är tillgänglig direkt. Det kan ta en timme eller mer information om konfiguration av virtuell dator, till exempel säkerhet uppdatera status och konfiguration av operativsystem, toobecome som är tillgängliga. Du kan visa hello säkerhetsstatus för dina resurser och eventuella problem i hello **förebyggande** avsnitt. Du kan också visa en lista över dessa problem på hello **rekommendationer** panelen.
+När du har aktiverat [säkerhetsprinciper](security-center-policies.md) för resurser i en prenumeration analyserar Security Center resursernas säkerhet för upptäckt av eventuella säkerhetsrisker. Information om nätverkskonfigurationen är tillgänglig direkt. Beroende på antalet virtuella datorer och datorer som du har med agenten installerad kan det ta en timme eller mer att samla in information om de virtuella datorerna och datorns konfiguration, t.ex. status för säkerhetsuppdatering och operativsystemkonfiguration, så att informationen blir tillgänglig. Du kan se säkerhetsstatus för dina resurser och eventuella problem i bladet **Prevention** (Skydd). Problemen visas även i en lista på panelen **Recommendations (Rekommendationer)**.
 
-Mer information om hur tooapply rekommendationer läsa [utföra säkerhetsrekommendationerna i Azure Security Center](security-center-recommendations.md).
+Mer information om hur du utför rekommendationerna finns i artikeln [Utföra säkerhetsrekommendationerna i Azure Security Center](security-center-recommendations.md).
 
-Under hello **förebyggande** avsnitt, kan du övervaka hello säkerhetsstatus för dina resurser. I följande exempel hello, ser du att varje resurs panelen (beräkning, nätverk, lagring och data och program) har hello Totalt antal problem som har identifierats.
+I avsnittet **Prevention** (Förebygga) kan du övervaka resursernas säkerhetsstatus. I följande exempel visas varje resurspanel (beräkning, nätverk, lagring data och program) med det totala antalet problem som har identifierats.
 
 ![Panelen resurssäkerhetshälsa](./media/security-center-monitoring/security-center-monitoring-fig1-newUI-2017.png)
 
 
 ### <a name="monitor-compute"></a>Övervaka beräkning
-När du klickar på **Compute** panelen, hello **Compute** bladet som öppnas visar tre flikar:
+Du kan se tre flikar när du klickar på panelen **Beräkna**:
 
-- **Översikt**: Övervakning och rekommendationer för virtuella datorer.
-- **Virtuella datorer**: Lista över alla virtuella datorer och det aktuella säkerhetstillståndet.
+- **Översikt**: Övervakning och rekommendationer.
+- **Virtuella datorer och datorer**: Lista över alla virtuella datorer, datorer och det aktuella säkerhetstillståndet.
 - **Cloud Services**: Lista över alla webb- och arbetsroller som övervakas av Security Center.
 
-![Systemuppdatering av den virtuella datorn saknas](./media/security-center-monitoring/security-center-monitoring-fig1-new002-2017.png)
+![Systemuppdatering av den virtuella datorn saknas](./media/security-center-monitoring/security-center-monitoring-fig1-sep2017.png)
 
-Du kan ha flera avsnitt på varje flik och i varje avsnitt kan du välja ett enskilt alternativ toosee mer information om hello rekommenderade steg tooaddress viss problemet. 
+På varje flik kan det finnas olika alternativ, och i de olika avsnitten kan du välja ett individuellt alternativ och visa mer information om de åtgärder som rekommenderas för att åtgärda problemet. 
 
 #### <a name="monitoring-recommendations"></a>Rekommendationer för övervakning
-Detta avsnitt visar hello Totalt antal virtuella datorer som initierats för datainsamling och deras aktuella status. När alla virtuella datorer datainsamling har initierats, kommer de att redo tooreceive säkerhetsprinciper från security Center. När du klickar på den här posten hello **VM-agenten saknas eller inte svarar** blad öppnas. 
+I det här avsnittet visas hur många virtuella datorer och datorer som har initierats för automatisk etablering och deras aktuella status. När du klickar på den här posten öppnas **Den virtuella datoragenten saknas eller svarar inte**. 
 
 ![Systemuppdatering av den virtuella datorn saknas](./media/security-center-monitoring/security-center-monitoring-fig1-new003-2017.png)
 
 
-#### <a name="virtual-machine-recommendations"></a>Rekommendationer för virtuella datorer
-I den här delen finns ett antal [rekommendationer för de virtuella datorer](security-center-virtual-machine-recommendations.md) som övervakas via Azure Security Center. hello första kolumnen visar hello rekommendation. hello andra kolumnen visar hello Totalt antal virtuella datorer som påverkas av aktuell rekommendation. hello tredje kolumnen visar hello allvarlighetsgraden hello problemet enligt beskrivningen i följande skärmbild hello.
+#### <a name="recommendations"></a>Rekommendationer
+I den här delen finns ett antal [rekommendationer för de virtuella datorer och datorer](security-center-virtual-machine-recommendations.md) som övervakas via Azure Security Center. Den första kolumnen visar rekommendationen. Den andra kolumnen visar det totala antalet virtuella datorer och datorer som påverkas av den här rekommendationen. Den tredje kolumnen visar hur allvarligt problemet är, såsom illustreras på följande skärmbild:
 
-![Rekommendationer för virtuella datorer](./media/security-center-monitoring/security-center-monitoring-fig1-new004-2017.png)
+![Rekommendationer för virtuella datorer](./media/security-center-monitoring/security-center-monitoring-fig2-sep2017.png)
 
 > [!NOTE]
-> Endast virtuella datorer som har minst en offentlig slutpunkt som visas i hello **nätverk hälsa** bladet i hello **nätverkstopologi** lista.
+> Endast virtuella datorer som har minst en offentlig slutpunkt visas för **Nätverkshälsa** i listan **Nätverkstopologi**.
 >
->
 
-Varje rekommendation har en uppsättning åtgärder som du kan utföra när du klickar på den. Till exempel om du klickar på **saknas systemuppdateringar**, hello **saknas systemuppdateringar** blad öppnas. Visar hello virtuella datorer som saknar korrigeringsfiler och hello allvarlighetsgraden hello saknad uppdatering som visas i hello följande skärmbild.
+Varje rekommendation har en uppsättning åtgärder som du kan utföra när du klickar på den. Om du till exempel klickar på **Systemuppdateringar saknas** visas en lista över virtuella datorer och datorer som saknar korrigeringsfiler samt allvarlighetsgrad för uppdateringen som saknas, på det sätt som visas i följande skärmbild:
 
-![Saknade systemuppdateringar för virtuella datorer](./media/security-center-monitoring/security-center-monitoring-fig5-ga.png)
+![Saknade systemuppdateringar för virtuella datorer](./media/security-center-monitoring/security-center-monitoring-fig9-sep2017.png)
 
-Hej **saknas systemuppdateringar** bladet visas en tabell med hello följande information:
+**Systemuppdateringar saknas** innehåller en sammanfattning av kritiska uppdateringar i diagramformat, en för Windows och en för Linux. Den andra delen har en tabell med följande information:
 
-* **VIRTUELLA**: hello namnet på hello virtuell dator som saknar uppdateringar.
-* **SYSTEMUPPDATERINGAR**: hello antalet systemuppdateringar som saknas.
-* **SENASTE GENOMSÖKNINGSTID**: hello tid att senast genomsöktes hello virtuella datorn efter uppdateringar.
-* **TILLSTÅND**: hello aktuell status för hello rekommendation:
-  * **Öppna**: hello rekommendation har ännu inte utförts.
-  * **Pågående**: hello rekommendationen håller tillämpade toothose resurser och ingen åtgärd krävs av dig.
-  * **Matcha**: hello rekommendationen har redan slutförts. (När hello problemet har lösts hello-posten är nedtonad).
-* **ALLVARLIGHETSGRAD**: Beskriver hello allvarlighetsgraden viktig rekommendationen:
+* **NAMN**: Namnet på den uppdatering som saknas.
+* **ANTAL VM:AR OCH DATORER**: Det totala antalet virtuella datorer och datorer som saknar denna uppdatering.
+* **STATE (STATUS)**: Här visas det aktuella tillståndet för rekommendationen:
+  * **Öppen**: Rekommendationen har inte utförts än.
+  * **Pågående**: Rekommendationen håller på att utföras och ingen åtgärd behövs från din sida.
+  * **Löst**: Rekommendation har redan slutförts. (När problemet har lösts, inaktiveras posten).
+* **SEVERITY (ALLVARLIGHETSGRAD)**: Här visas hur viktig rekommendationen är.
   * **Hög**: Det finns en säkerhetsrisk i en viktig resurs (program, virtuell dator eller nätverkssäkerhetsgrupp) som måste åtgärdas.
-  * **Medel**: icke-kritiska eller ytterligare steg är nödvändiga toocomplete en process eller åtgärda en säkerhetsrisk.
-  * **Low (Låg)**: Det finns en säkerhetsrisk som bör åtgärdas, men det måste inte göras omedelbart. (Som standard låg rekommendationer inte visas, men du kan filtrera på låg rekommendationer om du vill tooview dem.)
+  * **Medelhög**: Det behövs mindre viktiga eller ytterligare åtgärder för att slutföra en process eller åtgärda en säkerhetsrisk.
+  * **Low (Låg)**: Det finns en säkerhetsrisk som bör åtgärdas, men det måste inte göras omedelbart. (Rekommendationer med låg allvarlighetsgrad visas normalt inte, men du kan filtrera fram dem om du vill se dem.)
 
-tooview hello rekommendation information Klicka hello namnet på hello virtuell dator. Ett nytt blad för den virtuella datorn öppnar hello lista med uppdateringar som visas i följande skärmbild hello.
+Om du vill visa information om rekommendationen klickar du på namnet på den uppdatering som saknas. 
 
-![Uppdateringar för en specifik virtuell dator saknas](./media/security-center-monitoring/security-center-monitoring-fig6-ga.png)
+![Uppdateringar för en specifik virtuell dator saknas](./media/security-center-monitoring/security-center-monitoring-fig4-sep2017.png)
 
 > [!NOTE]
-> hello säkerhetsrekommendationerna här är hello samma som i hello **rekommendationer** bladet. Se hello [utföra säkerhetsrekommendationerna i Azure Security Center](security-center-recommendations.md) artikel för mer information om hur tooresolve rekommendationer. Detta gäller inte bara för virtuella datorer utan även för alla resurser som är tillgängliga i hello **Resource Health** panelen.
+> Säkerhetsrekommendationerna här är desamma som de som visas i alternativet **Rekommendationer**. Mer information om hur du utför rekommendationerna finns i artikeln [Utföra säkerhetsrekommendationerna i Azure Security Center](security-center-recommendations.md). Ovanstående gäller inte bara för virtuella datorer och datorer, utan för alla resurser på panelen **Resource Health**.
 >
->
 
-#### <a name="virtual-machines-section"></a>Delen Virtuella datorer
-hello virtuella datorer avsnittet ger en översikt över alla virtuella datorer och rekommendationer. Varje kolumn representerar en uppsättning rekommendationer som visas i följande skärmbild hello:
+#### <a name="vms--computers-section"></a>Avsnittet för virtuella datorer och datorer
+I delen med virtuella datorer och datorer får du en överblick över alla virtuella datorer och datorer och rekommendationer för dessa. Varje kolumn representerar en uppsättning rekommendationer såsom visas på följande skärmbild:
 
-![Översikt över alla virtuella datorer och rekommendationer](./media/security-center-monitoring/security-center-monitoring-fig1-new005-2017.png)
+![Översikt över alla virtuella datorer och rekommendationer](./media/security-center-monitoring/security-center-monitoring-fig5-sep2017.png)
 
-hello-ikon som visas under varje rekommendation hjälper du tooquickly identifiera hello virtuella datorer som behöver åtgärdas och hello typ av rekommendation.
+Det finns fyra typer av ikoner som visas i listan, dessa beskrivs i den här listan:
 
-I föregående exempel hello har en virtuell dator en viktig rekommendation angående endpoint protection. tooget mer information om hello virtuell dator, klicka på den. Ett nytt blad öppnas representerar den här virtuella datorn som visas i följande skärmbild hello.
+![icon1](./media/security-center-monitoring/security-center-monitoring-icon1.png) Icke-Azure-dator.
 
-![Säkerhetsdetaljer för virtuella datorer](./media/security-center-monitoring/security-center-monitoring-fig8-ga.png)
+![icon2](./media/security-center-monitoring/security-center-monitoring-icon2.png) Virtuell dator med Azure Resource Manager.
 
-Det här bladet har hello säkerhetsinformation för hello virtuella datorn. Du kan se hello rekommenderade åtgärder och hello allvarlighetsgraden varje problemet hello längst ned på bladet i.
+![icon3](./media/security-center-monitoring/security-center-monitoring-icon3.png) Virtuell dator med klassisk Azure.
+
+![icon4](./media/security-center-monitoring/security-center-monitoring-icon4.png) Virtuella datorer som endast identifieras från arbetsytan som är en del av visad prenumeration. Detta omfattar alla virtuella datorer från andra prenumerationer som rapporterar till arbetsytan i denna prenumeration, och virtuella datorer som installerades med SCOM-direktagent och som inte har något resurs-ID.
+
+Genom ikonerna under de olika rekommendationerna kan du snabbt se vilka virtuella datorer och datorer som behöver åtgärdas och typ av rekommendation. Du kan även använda alternativet **Filter** för att välja vilka alternativ du vill se på denna skärm.
+
+![Filter](./media/security-center-monitoring/security-center-monitoring-fig6-sep2017.png)
+
+I föregående exempel har en virtuell dator en kritisk rekommendation för slutpunktsskydd. Klicka på den för att få mer information om den virtuella datorn:
+
+![Säkerhetsdetaljer för virtuella datorer](./media/security-center-monitoring/security-center-monitoring-fig7-sep2017.png)
+
+Här ser du säkerhetsinformation om den virtuella datorn eller datorn. Längst ned ser du den rekommenderade åtgärden och allvarlighetsgraden på de olika problemen.
 
 #### <a name="cloud-services-section"></a>Avsnittet Molntjänster
-För molntjänster skapas en rekommendation när hello operativsystemets version är för gammal som visas i följande skärmbild hello:
+För molntjänster skapas en rekommendation när operativsystemets version är inaktuell, såsom visas på följande skärmbild:
 
 ![Hälsostatus för molntjänster](./media/security-center-monitoring/security-center-monitoring-fig1-new006-2017.png)
 
-I ett scenario där du har rekommendation (som inte är hello fallet för hello föregående exempel), måste toofollow hello stegen i hello rekommendation tooupdate hello operativsystemets version. När en uppdatering är tillgänglig, har du en avisering (röd eller orange - beror på hello allvarlighetsgraden hello problemet). När du klickar på den här aviseringen i hello WebRole1 (kör Windows Server med din web app distribueras automatiskt tooIIS) eller WorkerRole1 (kör Windows Server med din web app distribueras automatiskt tooIIS) rader öppnas ett nytt blad med mer information om detta rekommendation som visas i följande skärmbild hello:
+I ett scenario där du har en rekommendation (vilket inte är fallet i föregående exempel) måste du följa stegen i rekommendationen för att uppdatera versionen av operativsystemet. När en uppdatering är tillgänglig får du en avisering (röd eller orange beroende på hur allvarligt problemet är). Om du klickar på den här aviseringen på raden WebRole1 (kör Windows Server med din webbapp automatiskt distribuerad till IIS) eller WorkerRole1 (kör Windows Server med din webbapp automatiskt distribuerad till IIS) visas mer information om den här rekommendationen som i följande skärmbild:
 
 ![Molntjänstinformation](./media/security-center-monitoring/security-center-monitoring-fig8-new3.png)
 
-toosee en mer ingående förklaring av denna rekommendation klickar du på **uppdatering OS-version** under hello **beskrivning** kolumn. Hej **uppdatering OS-version (förhandsgranskning)** öppnas i blad med mer information.
+Om du vill få en mer ingående förklaring av den här rekommendationen klickar du på **Uppdatera OS-version** under kolumnen **BESKRIVNING**. 
 
 ![Molntjänstrekommendationer](./media/security-center-monitoring/security-center-monitoring-fig8-new4.png)  
 
 ### <a name="monitor-virtual-networks"></a>Övervakning av virtuella nätverk
-När du klickar på **nätverk** panelen, hello **nätverk** öppnas i blad med mer information som visas i följande skärmbild hello:
+Om du klickar på **Nätverk** öppnas bladet **Nätverk** med mer information som på följande skärmbild:
 
 ![Bladet Nätverk](./media/security-center-monitoring/security-center-monitoring-fig9-new3.png)
 
 #### <a name="networking-recommendations"></a>Nätverksrekommendationer
-Som hello hälsoinformation för virtuell dator resursen, innehåller det här bladet en sammanfattande lista över problem på hello överkant hello bladet och en lista med övervakade nätverk om hello längst ned.
+Liksom vid resurshälsoinformationen för virtuella datorer visas här en sammanfattande lista längst upp och en lista med övervakade nätverk längst ned.
 
-hello nätverk uppdelning i avsnittet status visas potentiella säkerhetsproblem och erbjuder [rekommendationer](security-center-network-recommendations.md). Följande säkerhetsproblem kan visas:
+I listan med detaljerad status för nätverk visas potentiella säkerhetsproblem och [rekommendationer](security-center-network-recommendations.md). Följande säkerhetsproblem kan visas:
 
 * Nästa generations brandvägg inte installerad
 * Nätverkssäkerhetsgrupper i undernät inte aktiverade
@@ -132,27 +141,25 @@ hello nätverk uppdelning i avsnittet status visas potentiella säkerhetsproblem
 * Begränsa extern åtkomst genom offentlig extern slutpunkt
 * Felfria internetuppkopplade slutpunkter
 
-När du klickar på en rekommendation öppnas ett nytt blad med mer information om hello rekommendation som visas i följande exempel hello.
+När du klickar på en rekommendation visas mer information om rekommendationen som i följande exempel:
 
-![Information om en rekommendation hello nätverk-bladet](./media/security-center-monitoring/security-center-monitoring-fig9-ga.png)
+![Information om en rekommendation i Nätverk](./media/security-center-monitoring/security-center-monitoring-fig9-ga.png)
 
-I det här exemplet hello **konfigurera saknade Nätverkssäkerhetsgrupper för undernät** bladet har en lista över undernät och virtuella datorer som saknas network security group skydd. Om du klickar på hello undernät toowhich som du vill tooapply hello nätverkssäkerhetsgruppen öppnas ett nytt blad.
-
-I hello **Välj nätverkssäkerhetsgrupp** bladet kan du välja hello mest lämpade nätverkssäkerhetsgruppen för undernätet hello eller du kan skapa en ny nätverkssäkerhetsgrupp.
+I det här exemplet har **Konfigurera saknade nätverkssäkerhetsgrupper för undernät** en lista med undernät och virtuella datorer som saknar skyddet som nätverkssäkerhetsgrupper ger. Om du klickar på det undernät som du vill använda för nätverkssäkerhetsgruppen visas **Välj nätverkssäkerhetsgrupp**. Här väljer du den mest lämpade nätverkssäkerhetsgruppen för undernätet eller skapar en ny grupp.
 
 #### <a name="internet-facing-endpoints-section"></a>Delen med internetuppkopplade slutpunkter
-I hello **Internet facing endpoints** avsnittet kan du se hello virtuella datorer som är konfigurerade med en Internetuppkopplad slutpunkt och aktuell status.
+I delen **Internetuppkopplade slutpunkter** ser du de virtuella datorer som är konfigurerade med en internetuppkopplad slutpunkt och aktuell status för dem.
 
 ![Virtuella datorer som konfigurerats med internetuppkopplad slutpunkt och status](./media/security-center-monitoring/security-center-monitoring-fig10-ga.png)
 
-Den här tabellen har namnet på slutpunkten hello som representerar hello virtuella hello IP-adress mot Internet och hello aktuell allvarlighetsgrad för nätverkssäkerhetsgruppen hello och hello nästa generations Brandvägg. hello tabellen är sorterad efter allvarlighetsgrad:
+Den här tabellen har det slutpunktsnamn som representerar den virtuella datorn, den internetuppkopplade IP-adressen och den aktuella statusen för allvarlighetsgrad för nätverkssäkerhetsgruppen och NGFW. Tabellen är sorterad efter allvarlighetsgrad:
 
 * Röd (högst upp): hög prioritet och bör åtgärdas omedelbart
 * Orange: medelhög prioritet och bör åtgärdas så snart som möjligt
 * Grön (längst ned): god status
 
 #### <a name="networking-topology-section"></a>Delen med nätverkstopologi
-Hej **nätverkstopologi** avsnitt innehåller en hierarkisk vy över hello resurser som visas i följande skärmbild hello:
+I delen **Nätverkstopologi** visas en hierarkisk vy över resurserna såsom visas på följande skärmbild:
 
 ![Hierarkisk visning över resurser i avsnittet om nätverkstopologi](./media/security-center-monitoring/security-center-monitoring-fig121-new4.png)
 
@@ -162,55 +169,55 @@ Den här tabellen är sorterad (virtuella datorer och undernät) efter allvarlig
 * Orange: medelhög prioritet och bör åtgärdas så snart som möjligt
 * Grön (längst ned): god status
 
-I den här topologiska vyn hello första nivån har [virtuella nätverk](../virtual-network/virtual-networks-overview.md), [virtuella nätverksgatewayerna](/vpn-gateway/vpn-gateway-site-to-site-create.md), och [virtuella nätverk (klassiskt)](/virtual-network/virtual-networks-create-vnet-classic-pportal.md). hello andra nivån har undernät och hello tredje nivån har hello virtuella datorer som tillhör toothose undernät. hello högra kolumnen innehåller hello aktuell status för hello nätverkssäkerhetsgruppen för de resurserna som visas i följande exempel hello:
+I den här topologiska vyn har du [virtuella nätverk](../virtual-network/virtual-networks-overview.md), [virtuella nätverksgatewayer](/vpn-gateway/vpn-gateway-site-to-site-create.md) och [virtuella nätverk (klassiska)](/virtual-network/virtual-networks-create-vnet-classic-pportal.md) på översta nivån. På andra nivån hittar du undernät och på den tredje de virtuella datorer som finns på dessa undernät. I den högra kolumnen visas aktuell status för resursernas nätverkssäkerhetsgrupper, som i följande exempel:
 
-![Status för hello nätverkssäkerhetsgruppen i delen med nätverkstopologi](./media/security-center-monitoring/security-center-monitoring-fig12-ga.png)
+![Status för nätverkssäkerhetsgruppen i avsnittet Nätverkstopologi](./media/security-center-monitoring/security-center-monitoring-fig12-ga.png)
 
-hello längst ned i det här bladet har hello rekommendationer för den virtuella datorn som är liknande toowhat beskrivs ovan. Du kan klicka på en rekommendation toolearn mer eller använda hello behövs säkerhetskontroll eller konfiguration.
+Längst ned på det här bladet finns rekommendationer för den här virtuella datorn som liknar vad som beskrivs ovan. Om du klickar på en av rekommendationerna får du mer information och kan utföra den säkerhetskontroll eller säkerhetskonfiguration som behövs.
 
 ### <a name="monitor-storage--data"></a>Övervaka lagring och data
 
-När du klickar på **lagring & data** i hello **förebyggande** avsnittet hello **dataresurser** blad öppnas med rekommendationer för SQL och lagring. Det har även [rekommendationer](security-center-sql-service-recommendations.md) för hello allmänna hälsotillstånd hello-databasen. Mer information om lagringskryptering finns i [Aktivera kryptering för Azure-lagringskontot i Azure Security Center](security-center-enable-encryption-for-storage-account.md).
+När du klickar på **Lagring och data** i avsnittet **Skydd** öppnas **Dataresurser** med rekommendationer för SQL och lagring. Här finns även [rekommendationer](security-center-sql-service-recommendations.md) gällande databasens allmänna hälsoläge. Mer information om lagringskryptering finns i [Aktivera kryptering för Azure-lagringskontot i Azure Security Center](security-center-enable-encryption-for-storage-account.md).
 
 ![Dataresurser](./media/security-center-monitoring/security-center-monitoring-fig13-newUI-2017.png)
 
-Under **SQL rekommendationer**, kan du klicka på en rekommendation och få mer information om ytterligare åtgärd tooresolve ett problem. hello följande exempel visar hello expandering av hello **Database Auditing & Threat detection på SQL-databaser** rekommendation.
+Under **SQL-rekommendationer**, kan du klicka på valfri rekommendation och få mer information om ytterligare åtgärder för att lösa ett problem. Följande exempel visar den expanderade rekommendationen **Databasgranskning och hotidentifiering på SQL-databaser**.
 
 ![Information om en SQL-rekommendation](./media/security-center-monitoring/security-center-monitoring-fig14-ga-new.png)
 
-Hej **aktivera Auditing & Threat detection på SQL-databaser** bladet har hello följande information:
+Under **Aktivera granskning på SQL-databaser** visas följande information:
 
 * en lista med SQL-databaser
-* hello-server där de är placerade
-* Information om huruvida inställningen har ärvts från hello server eller om det är unikt i den här databasen
-* hello aktuella tillstånd
-* hello allvarlighetsgraden hello problemet
+* vilken server de ligger på
+* information om huruvida inställningen har ärvts från servern eller om den är unik för databasen
+* aktuell status
+* problemets allvarlighetsgrad
 
-När du klickar på hello databasen tooaddress rekommendationen hello **Auditing & Threat detection** blad öppnas enligt hello följande skärm.
+När du klickar på databasen för att utföra rekommendationen öppnas **Granskning och hotidentifiering** som på följande skärmbild.
 
-![Bladet Granskning och hotidentifiering](./media/security-center-monitoring/security-center-monitoring-fig15-ga.png)
+![Granskning och hotidentifiering](./media/security-center-monitoring/security-center-monitoring-fig15-ga.png)
 
-tooenable granskning, Välj **ON** under hello **granskning** alternativet.
+Du aktiverar granskning genom att välja **PÅ** under alternativet **Granskning**.
 
 ### <a name="monitor-applications"></a>Övervakning av program
 
-Om din arbetsbelastning i Azure innehåller program som finns i [virtuella datorer (som skapats via Azure Resource Manager)](../azure-resource-manager/resource-manager-deployment-model.md) Security Center kan övervaka dessa tooidentify potentiella problem med exponerade webbportar (TCP-portarna 80 och 443) och rekommenderar steg. När du klickar på hello **program** panelen, hello **program** blad öppnas med ett antal rekommendationer i hello **programmet rekommendationer** avsnitt. Hello programmet uppdelning per värd för virtuell IP-adress visas också som visas i följande skärmbild hello.
+Om din arbetsbelastning i Azure innehåller program som ligger på [virtuella datorer (skapade via Azure Resource Manager)](../azure-resource-manager/resource-manager-deployment-model.md) med exponerade webbportar (TCP-portarna 80 och 443) kan de övervakas i Security Center. Då identifieras potentiella säkerhetsproblem och du får rekommendationer om hur problemen kan lösas. När du klickar på panelen **Program** öppnas **Program** där ett antal rekommendationer visas i avsnittet **Application recommendations** (Programrekommendationer). Här visas även programuppdelningen per värd, IP/domän och om det finns en WAF-lösning installerad:
 
-![Programsäkerhetshälsa](./media/security-center-monitoring/security-center-monitoring-fig16-ga.png)
+![Programsäkerhetshälsa](./media/security-center-monitoring/security-center-monitoring-fig8-sep2017.png)
 
-Precis som du med hello andra rekommendationer, du kan klicka på en rekommendation toosee mer information om hello problemet och hur tooremediate. hello hello följande bild visas ett exempel är ett program som identifierats som ett oskyddat webbprogram. När du väljer hello-program som klassats säker öppnas ett nytt blad med hello följande alternativ:
+Precis som med de andra rekommendationerna kan du klicka på en rekommendation för att få se mer information om problemet och om hur du kan åtgärda det. I exemplet på följande bild visas ett program som identifierats som en oskyddad webbapp. När du klickar på webbappen som klassats som oskyddad blir följande alternativ tillgängligt:
 
-![Information om en app som inte är säker](./media/security-center-monitoring/security-center-monitoring-fig17-ga.png)
+![Information](./media/security-center-monitoring/security-center-monitoring-fig17-ga.png)
 
-Det här bladet har en lista över alla rekommendationer för det här programmet. När du klickar på hello **lägga till en brandvägg för webbaserade program** rekommendation, hello **lägga till en brandvägg för webbaserade program** blad öppnas med alternativ för du tooinstall en brandvägg för webbaserade program (Brandvägg) från en partner som visas i följande skärmbild hello.
+Här finns en lista över alla rekommendationer för det här programmet. När du klickar på rekommendationen **Lägg till en brandvägg för webbaserade program** öppnas **Lägg till en brandvägg för webbaserade program** med alternativ för att installera en brandvägg för webbaserade program (WAF) från en partner såsom visas på följande skärmbild.
 
 ![Dialogrutan Lägg till en brandvägg för webbaserade program](./media/security-center-monitoring/security-center-monitoring-fig18-ga.png)
 
 ## <a name="see-also"></a>Se även
-I den här artikeln har du lärt dig hur toouse övervakningsfunktionerna i Azure Security Center. toolearn mer om Azure Security Center finns hello följande:
+I den här artikeln har du fått lära dig hur du använder övervakningsfunktionerna i Azure Security Center. I följande avsnitt kan du lära dig mer om Azure Security Center:
 
-* [Ange säkerhetsprinciper i Azure Security Center](security-center-policies.md): Lär dig hur tooconfigure säkerhetsinställningar i Azure Security Center.
-* [Hantera och svarar toosecurity aviseringar i Azure Security Center](security-center-managing-and-responding-alerts.md): Lär dig hur toomanage och svara toosecurity aviseringar.
-* [Övervaka partnerlösningar med Azure Security Center](security-center-partner-solutions.md): Lär dig hur toomonitor hello dina partnerlösningars hälsostatus.
-* [Vanliga frågor om Azure Security Center](security-center-faq.md): finns vanliga frågor om hur du använder hello-tjänsten.
+* [Ange säkerhetsprinciper i Azure Security Center](security-center-policies.md): Här får du lära dig hur du ställer in säkerhetsprinciper i Azure Security Center.
+* [Hantera och åtgärda säkerhetsaviseringar i Azure Security Center](security-center-managing-and-responding-alerts.md): Här får du lära dig hur du hanterar och åtgärdar säkerhetsaviseringar.
+* [Övervaka partnerlösningar med Azure Security Center](security-center-partner-solutions.md): Lär dig hur du övervakar dina partnerlösningars hälsostatus.
+* [Vanliga frågor och svar om Azure Security Center](security-center-faq.md): Här hittar du vanliga frågor och svar om tjänsten.
 * [Azures säkerhetsblogg](http://blogs.msdn.com/b/azuresecurity/): Här hittar du blogginlägg om säkerhet och regelefterlevnad i Azure.

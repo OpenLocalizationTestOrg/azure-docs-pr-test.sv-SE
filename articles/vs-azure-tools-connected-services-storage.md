@@ -1,6 +1,6 @@
 ---
-title: "aaaAdd Azure Storage med hjälp av anslutna Services i Visual Studio | Microsoft Docs"
-description: "Lägg till Azure Storage tooyour app med hjälp av dialogrutan för hello Visual Studio Lägg till anslutna tjänster"
+title: "Lägg till Azure Storage med hjälp av anslutna Services i Visual Studio | Microsoft Docs"
+description: "Lägg till Azure Storage i appen med hjälp av dialogrutan Visual Studio Lägg till anslutna tjänster"
 services: visual-studio-online
 documentationcenter: na
 author: kraigb
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2017
 ms.author: kraigb
-ms.openlocfilehash: 56b42063d86510b330e405108e28d50e6ba4da05
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 35638083cd75e1b751d00a9c8163a3bc7480f0cd
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="adding-azure-storage-by-using-visual-studio-connected-services"></a>Lägga till Azure storage med hjälp av Visual Studio anslutna Services
-Med Visual Studio kan du ansluta någon av följande tooAzure lagring med hjälp av hello hello **Lägg till anslutna tjänster** dialogrutan:
+Med Visual Studio, du kan ansluta något av följande till Azure Storage med hjälp av den **Lägg till anslutna tjänster** dialogrutan:
 
 - C#-Molntjänsten
 - .NET-serverdel Mobiltjänst
@@ -29,41 +29,41 @@ Med Visual Studio kan du ansluta någon av följande tooAzure lagring med hjälp
 - ASP.NET Core service
 - Azure Webjobs-tjänst 
 
-hello anslutna ytterligare funktioner läggs alla hello behövs referenser och anslutningen Kodprojekt tooyour och ändrar konfigurationsfilerna på lämpligt sätt. 
+Funktionen anslutna tjänsten lägger till alla nödvändiga referenser och anslutningen kod i ditt projekt och ändrar konfigurationsfilerna på lämpligt sätt. 
 
-När du har slutfört hello **Lägg till anslutna tjänster** dialogrutan visar dokumentationen om hello steg krävs toostart arbetar med blob storage, köer och tabeller automatiskt.
+När du har slutfört den **Lägg till anslutna tjänster** dialogrutan visar dokumentation med de steg som krävs för att börja arbeta med blob storage, köer och tabeller automatiskt.
 
-## <a name="connect-tooazure-storage-using-hello-connected-services-dialog"></a>Ansluta tooAzure lagring med hjälp av hello anslutna tjänster dialogrutan
+## <a name="connect-to-azure-storage-using-the-connected-services-dialog"></a>Ansluta till Azure Storage genom att använda dialogrutan anslutna tjänster
 1. Öppna projektet i Visual Studio
 
-1. I **Solution Explorer**, högerklicka på hello **anslutna tjänster** nod, och hello snabbmenyn och välj **Lägg till ansluten tjänst**.
+1. I **Solution Explorer**, högerklicka på den **anslutna tjänster** nod, och från snabbmenyn och välj **Lägg till ansluten tjänst**.
    
     ![Lägg till Azure ansluten tjänst](./media/vs-azure-tools-connected-services-storage/IC796702.png)
 
-1. I hello **anslutna tjänster** väljer **lagringsutrymmet i molnet med Azure Storage**.
+1. I den **anslutna tjänster** väljer **lagringsutrymmet i molnet med Azure Storage**.
    
     ![Lägg till Azure Storage](./media/vs-azure-tools-connected-services-storage/add-azure-storage.png)
 
-1. I hello **Azure Storage** dialogrutan, Välj ett befintligt lagringskonto och välj **Lägg till**.
+1. I den **Azure Storage** dialogrutan, Välj ett befintligt lagringskonto och välj **Lägg till**.
    
-    Om du behöver toocreate ett lagringskonto kan du gå toohello nästa steg. Annars fortsätter toostep 6.
+    Om du behöver skapa ett lagringskonto går du till nästa steg. Annars fortsätter du till steg 6.
     
-    ![Lägg till befintlig lagring konto tooproject](./media/vs-azure-tools-connected-services-storage/select-azure-storage-account.png)
+    ![Lägg till befintligt lagringskonto i projekt](./media/vs-azure-tools-connected-services-storage/select-azure-storage-account.png)
 
-1. toocreate ett lagringskonto: 
+1. Skapa ett lagringskonto: 
    
-   1. Välj **skapa ett nytt Lagringskonto** längst hello hello dialogrutan.
+   1. Välj **skapa ett nytt Lagringskonto** längst ned i dialogrutan.
 
-   1. Fyll i hello **skapa Lagringskonto** dialogrutan och välj **skapa**.
+   1. Fyll i den **skapa Lagringskonto** dialogrutan och välj **skapa**.
       
        ![Nya Azure storage-konto](./media/vs-azure-tools-connected-services-storage/create-storage-account.png)
       
-   1. När hello **Azure Storage** dialogrutan visas, visas hello nytt lagringskonto i hello-listan. Välj hello nytt lagringskonto hello listan och välj **Lägg till**.
+   1. När den **Azure Storage** dialogrutan visas, visas det nya lagringskontot i listan. Markera det nya lagringskontot i listan och välj **Lägg till**.
 
-1. Hej lagring ansluten visas under hello **referenser** nod i projektet.
+1. Lagring ansluten visas under den **referenser** nod i projektet.
    
 ## <a name="how-your-project-is-modified"></a>Hur projektet har ändrats
-När du är klar hello dialogrutan lägger till referenser i Visual Studio och ändrar vissa konfigurationsfiler. vissa ändringar för hello beror på hello projekttypen: 
+När du avslutar dialogrutan lägger till referenser i Visual Studio och ändrar vissa konfigurationsfiler. Vissa ändringar beror på projekttypen: 
 
 - ASP.NET-projekt - [vad hände – ASP.NET-projekt](http://go.microsoft.com/fwlink/p/?LinkId=513126)
 - ASP.NET Core projekt - [vad hände – ASP.NET 5 projekt](http://go.microsoft.com/fwlink/p/?LinkId=513124) 

@@ -1,6 +1,6 @@
 ---
-title: "aaaActions och NotActions - Azure rollbaserad åtkomstkontroll (RBAC) | Microsoft Docs"
-description: "Det här avsnittet beskriver hello inbyggda roller för rollbaserad åtkomstkontroll (RBAC). hello roller läggs kontinuerligt till, så kontrollera hello dokumentationen dokumentens."
+title: "Åtgärder och NotActions - Azure rollbaserad åtkomstkontroll (RBAC) | Microsoft Docs"
+description: "Det här avsnittet beskriver den inbyggda i roller för rollbaserad åtkomstkontroll (RBAC). Rollerna läggs till kontinuerligt, så kontrollera dokumentationen uppdateringen."
 services: active-directory
 documentationcenter: 
 author: andredm7
@@ -16,35 +16,35 @@ ms.date: 06/28/2017
 ms.author: andredm
 ms.reviewer: 
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0a4ef9923fe05ec38e968534951911eaa4440b88
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 9a5de00793621cfdecea887c53a22d482a25d1b8
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="built-in-roles-for-azure-role-based-access-control"></a>Inbyggda roller för rollbaserad åtkomstkontroll i Azure
-Azure rollbaserad åtkomstkontroll (RBAC) levereras med hello följande inbyggda roller som kan tilldelas toousers, grupper och tjänster. Du kan inte ändra hello definitioner av inbyggda roller. Du kan dock skapa [anpassade roller i Azure RBAC](role-based-access-control-custom-roles.md) toofit hello specifika behoven i din organisation.
+Azure rollbaserad åtkomstkontroll (RBAC) levereras med följande inbyggda roller som kan tilldelas användare, grupper och tjänster. Du kan inte ändra definitionerna av inbyggda roller. Du kan dock skapa [anpassade roller i Azure RBAC](role-based-access-control-custom-roles.md) så att den passar de specifika behoven i din organisation.
 
 ## <a name="roles-in-azure"></a>Roller i Azure
-hello innehåller följande tabell en kort beskrivning av hello inbyggda roller. Klicka på hello rollen namn toosee hello detaljerad lista över **åtgärder** och **notactions** för hello roll. Hej **åtgärder** egenskapen anger hello tillåtna åtgärder på Azure-resurser. Åtgärden strängar kan använda jokertecken. Hej **notactions** egenskapen anger hello-åtgärder som är exkluderade från hello tillåtna åtgärder.
+Följande tabell innehåller en kort beskrivning av de inbyggda rollerna. Klicka på rollnamnet att se en detaljerad lista över **åtgärder** och **notactions** för rollen. Den **åtgärder** egenskapen anger tillåtna åtgärder på Azure-resurser. Åtgärden strängar kan använda jokertecken. Den **notactions** egenskapen anger vilka åtgärder som är exkluderade från de tillåtna åtgärderna.
 
-hello åtgärd definierar vilken typ av åtgärder du kan utföra på en viss resurstyp. Exempel:
-- **Skriva** aktiverar du tooperform PUT, efter, KORRIGERA och DELETE-åtgärder.
-- **Läs** kan du tooperform GET-åtgärder.
+Åtgärden definierar vilken typ av åtgärder som du kan utföra på en viss resurstyp. Exempel:
+- **Skriva** kan du utföra PUT, POST, KORRIGERINGSFIL och DELETE-åtgärder.
+- **Läs** kan du utföra GET-åtgärder.
 
-Den här artikeln tar endast hello olika roller som finns idag. När du tilldelar en roll tooa användare, men kan du begränsa hello tillåtna åtgärder ytterligare genom att definiera ett omfång. Det här är användbart om du vill toomake någon webbplats deltagare, men endast för en resursgrupp.
+Den här artikeln tar endast de olika roller som finns idag. När du tilldelar en roll till en användare, men kan du begränsa de tillåtna åtgärderna ytterligare genom att definiera ett omfång. Det här är användbart om du vill ange någon webbplats deltagare, men endast för en resursgrupp.
 
 > [!NOTE]
-> hello Azure rolldefinitioner utvecklas hela tiden. Den här artikeln sparas som upp toodate som möjligt, men du hittar alltid hello senaste definitionerna för roller i Azure PowerShell. Använd hello [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) cmdlet toolist alla aktuella roller. Du kan sätta igång i tooa serverroll med hjälp av `(get-azurermroledefinition "<role name>").actions` eller `(get-azurermroledefinition "<role name>").notactions` i tillämpliga fall. Använd [Get-AzureRmProviderOperation](/powershell/module/azurerm.resources/get-azurermprovideroperation) toolist drift av specifika Azure resursleverantörer.
+> Azure rolldefinitioner utvecklas hela tiden. Den här artikeln är uppdaterade som som möjligt, men du kan alltid hitta de senaste definitionerna för roller i Azure PowerShell. Använd den [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) för att visa en lista över alla aktuella roller. Du kan sätta igång till en viss roll med hjälp av `(get-azurermroledefinition "<role name>").actions` eller `(get-azurermroledefinition "<role name>").notactions` i tillämpliga fall. Använd [Get-AzureRmProviderOperation](/powershell/module/azurerm.resources/get-azurermprovideroperation) till Liståtgärder av specifika Azure-resurs-providers.
 
 
 | Rollnamn | Beskrivning |
 | --- | --- |
-| [API Management-tjänsten deltagare](#api-management-service-contributor) |Kan hantera API Management-tjänsten och hello API: er |
-| [Operatörsrollen för API Management-tjänsten](#api-management-service-operator-role) | Kan hantera API Management-tjänsten, men inte hello API: er själva |
-| [Rollen för API Management-tjänsten läsare](#api-management-service-reader-role) | Skrivskyddad åtkomst tooAPI Management-tjänsten och API: er |
+| [API Management-tjänsten deltagare](#api-management-service-contributor) |Kan hantera API Management-tjänsten och de API: er |
+| [Operatörsrollen för API Management-tjänsten](#api-management-service-operator-role) | Kan hantera API Management-tjänsten, men inte själva API |
+| [Rollen för API Management-tjänsten läsare](#api-management-service-reader-role) | Skrivskyddad åtkomst till API Management-tjänsten och API: er |
 | [Application Insights Component Contributor](#application-insights-component-contributor) |Kan hantera Application Insights-komponenter |
-| [Automation-operatorn](#automation-operator) |Kan toostart, stoppa, pausa och återuppta jobb |
+| [Automation-operatorn](#automation-operator) |Kan starta, stoppa, pausa och återuppta jobb |
 | [Säkerhetskopiering deltagare](#backup-contributor) | Kan hantera säkerhetskopiering i Recovery Services-valvet |
 | [Ansvarig för säkerhetskopiering](#backup-operator) | Kan hantera säkerhetskopia, förutom att ta bort säkerhetskopieringen i Recovery Services-valvet |
 | [Säkerhetskopiering läsare](#backup-reader) | Kan visa alla tjänster för hantering av säkerhetskopiering  |
@@ -73,20 +73,20 @@ Den här artikeln tar endast hello olika roller som finns idag. När du tilldela
 | [Site Recovery-operatorn](#site-recovery-operator) | Kan hantera redundans och återställning efter fel åtgärder Site Recovery i Recovery Services-valvet |
 | [Site Recovery läsare](#site-recovery-reader) | Kan visa alla Site Recovery-hanteringsåtgärder  |
 | [SQL DB-deltagare](#sql-db-contributor) |Kan hantera SQL-databaser, men inte deras säkerhetsrelaterade principer |
-| [SQL-säkerhetsansvarig](#sql-security-manager) |Kan hantera hello säkerhetsrelaterade principer för SQL-servrar och databaser |
+| [SQL-säkerhetsansvarig](#sql-security-manager) |Kan hantera de säkerhetsrelaterade principerna för SQL-servrar och databaser |
 | [SQL Server-deltagare](#sql-server-contributor) |Kan hantera SQL-servrar och databaser, men inte deras säkerhetsrelaterade principer |
 | [Klassiska Storage-konto deltagare](#classic-storage-account-contributor) |Kan hantera klassiska lagringskonton |
 | [Storage-konto deltagare](#storage-account-contributor) |Kan hantera storage-konton |
 | [Stöd för begäran deltagare](#support-request-contributor) | Skapa och hantera supportärenden |
-| [Administratör för användaråtkomst](#user-access-administrator) |Kan hantera användare komma åt tooAzure resurser |
-| [Klassiska Virtual Machine-deltagare](#classic-virtual-machine-contributor) |Kan hantera klassiska virtuella datorer, men inte hello virtuellt nätverk eller storage-konto toowhich de är anslutna |
-| [Virtual Machine-deltagare](#virtual-machine-contributor) |Kan hantera virtuella datorer, men inte hello virtuella nätverks- eller lagringsdrivrutiner konto toowhich de är anslutna |
+| [Administratör för användaråtkomst](#user-access-administrator) |Kan hantera användarnas åtkomst till Azure-resurser |
+| [Klassiska Virtual Machine-deltagare](#classic-virtual-machine-contributor) |Kan hantera klassiska virtuella datorer, men inte den virtuella nätverks- eller konto som de är anslutna |
+| [Virtual Machine-deltagare](#virtual-machine-contributor) |Kan hantera virtuella datorer, men inte den virtuella nätverks- eller konto som de är anslutna |
 | [Klassisk nätverksdeltagare](#classic-network-contributor) |Kan hantera klassiska virtuella nätverk och reserverade IP-adresser |
 | [Web Plan deltagare](#web-plan-contributor) |Kan hantera web planer |
-| [Webbplatsen deltagare](#website-contributor) |Kan hantera webbplatser, men inte hello web planer toowhich de är anslutna |
+| [Webbplatsen deltagare](#website-contributor) |Kan hantera webbplatser, men inte alla web-planer som de är anslutna |
 
 ## <a name="role-permissions"></a>Rollbehörigheter
-hello beskrivs följande tabeller hello särskilda behörigheter tooeach rollen. Detta kan inkludera **åtgärder**, som ger behörigheter och **NotActions**, som begränsar dem.
+I följande tabeller beskrivs de specifika behörigheter som tilldelats varje roll. Detta kan inkludera **åtgärder**, som ger behörigheter och **NotActions**, som begränsar dem.
 
 ### <a name="api-management-service-contributor"></a>API Management-tjänsten deltagare
 Kan hantera API Management-tjänster
@@ -96,7 +96,7 @@ Kan hantera API Management-tjänster
 | Microsoft.ApiManagement/Service/* |Skapa och hantera API Management-tjänsten |
 | Microsoft.Authorization/*/read |Läsa tillstånd |
 | Microsoft.Insights/alertRules/* |Skapa och hantera aviseringsregler |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Läsa hello-resursers hälsa |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Läs hälsotillståndet för resurser |
 | Microsoft.Resources/deployments/* |Skapa och hantera distributionen av resursgrupper |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Läs roller och rolltilldelningar |
 | Microsoft.Support/* |Skapa och hantera supportärenden |
@@ -107,16 +107,16 @@ Kan hantera API Management-tjänster
 | **Åtgärder** |  |
 | --- | --- |
 | Microsoft.ApiManagement/Service/*/read | Läs API Management-tjänsten-instanser |
-| Microsoft.ApiManagement/Service/backup/action | Säkerhetskopiera API Management-tjänsten toohello angivna behållare i en användare har angett storage-konto |
+| Microsoft.ApiManagement/Service/backup/action | Säkerhetskopiera API Management-tjänsten till den angivna behållaren i en användare har angett storage-konto |
 | Microsoft.ApiManagement/Service/delete | Ta bort en instans för API Management-tjänsten |
 | Microsoft.ApiManagement/Service/managedeployments/action | Ändra SKU/enheter. Lägg till eller ta bort regionala distributioner av API Management-tjänsten |
 | Microsoft.ApiManagement/Service/read | Läsa in metadata för en instans för API Management-tjänsten |
-| Microsoft.ApiManagement/Service/restore/action | Återställa API Management-tjänsten från hello angivna behållare i en användare har angett storage-konto |
+| Microsoft.ApiManagement/Service/restore/action | Återställa API Management-tjänsten från den angivna behållaren i en användare har angett storage-konto |
 | Microsoft.ApiManagement/Service/updatehostname/action | Skapa, uppdatera eller ta bort anpassade domännamn för en API Management-tjänsten |
 | Microsoft.ApiManagement/Service/write | Skapa en ny instans av API Management-tjänsten |
 | Microsoft.Authorization/*/read |Läsa tillstånd |
 | Microsoft.Insights/alertRules/* |Skapa och hantera aviseringsregler |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Läsa hello-resursers hälsa |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Läs hälsotillståndet för resurser |
 | Microsoft.Resources/deployments/* |Skapa och hantera distributionen av resursgrupper |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Läs roller och rolltilldelningar |
 | Microsoft.Support/* |Skapa och hantera supportärenden |
@@ -130,7 +130,7 @@ Kan hantera API Management-tjänster
 | Microsoft.ApiManagement/Service/read | Läsa in metadata för en instans för API Management-tjänsten |
 | Microsoft.Authorization/*/read |Läsa tillstånd |
 | Microsoft.Insights/alertRules/* |Skapa och hantera aviseringsregler |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Läsa hello-resursers hälsa |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Läs hälsotillståndet för resurser |
 | Microsoft.Resources/deployments/* |Skapa och hantera distributionen av resursgrupper |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Läs roller och rolltilldelningar |
 | Microsoft.Support/* |Skapa och hantera supportärenden |
@@ -144,13 +144,13 @@ Kan hantera Application Insights-komponenter
 | Microsoft.Insights/alertRules/* |Skapa och hantera aviseringsregler |
 | Microsoft.Insights/components/* |Skapa och hantera Insights-komponenter |
 | Microsoft.Insights/webtests/* |Skapa och hantera webbtest |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Läsa hello-resursers hälsa |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Läs hälsotillståndet för resurser |
 | Microsoft.Resources/deployments/* |Skapa och hantera distributionen av resursgrupper |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Läs resursgrupper |
 | Microsoft.Support/* |Skapa och hantera supportärenden |
 
 ### <a name="automation-operator"></a>Automation-operatör
-Kan toostart, stoppa, pausa och återuppta jobb
+Kan starta, stoppa, pausa och återuppta jobb
 
 | **Åtgärder** |  |
 | --- | --- |
@@ -168,13 +168,13 @@ Kan toostart, stoppa, pausa och återuppta jobb
 | Microsoft.Automation/automationAccounts/schedules/read |Läs automation-konto scheman |
 | Microsoft.Automation/automationAccounts/schedules/write |Skriva automation konto scheman |
 | Microsoft.Insights/components/* |Skapa och hantera Insights-komponenter |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Läsa hello-resursers hälsa |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Läs hälsotillståndet för resurser |
 | Microsoft.Resources/deployments/* |Skapa och hantera distributionen av resursgrupper |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Läs resursgrupper |
 | Microsoft.Support/* |Skapa och hantera supportärenden |
 
 ### <a name="backup-contributor"></a>Säkerhetskopiering deltagare
-Kan hantera alla åtgärder för hantering av säkerhetskopiering, förutom att skapa Recovery Services-valvet och ger åtkomst till tooothers
+Kan hantera alla åtgärder för hantering av säkerhetskopiering, förutom att skapa Recovery Services-valvet och ge åtkomst till andra
 
 | **Åtgärder** | |
 | --- | --- |
@@ -183,14 +183,14 @@ Kan hantera alla åtgärder för hantering av säkerhetskopiering, förutom att 
 | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/* | Skapa och hantera säkerhetskopiering behållare i säkerhetskopiering finns hos Recovery Services-valvet |
 | Microsoft.RecoveryServices/Vaults/backupJobs/* | Skapa och hantera säkerhetskopieringsjobb |
 | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | Exportera säkerhetskopieringsjobb till excel |
-| Microsoft.RecoveryServices/Vaults/backupManagementMetaData/* | Skapa och hantera meta data relaterade toobackup management |
+| Microsoft.RecoveryServices/Vaults/backupManagementMetaData/* | Skapa och hantera meta-data som rör hantering av säkerhetskopiering |
 | Microsoft.RecoveryServices/Vaults/backupOperationResults/* | Skapa och hantera resultaten av säkerhetskopiering hanteringsåtgärder |
 | Microsoft.RecoveryServices/Vaults/backupPolicies/* | Skapa och hantera principer för säkerhetskopiering |
 | Microsoft.RecoveryServices/Vaults/backupProtectableItems/* | Skapa och hantera objekt som kan säkerhetskopieras |
 | Microsoft.RecoveryServices/Vaults/backupProtectedItems/* | Skapa och hantera säkerhetskopierade objekt |
 | Microsoft.RecoveryServices/Vaults/backupProtectionContainers/* | Skapa och hantera behållare Säkerhetskopiera objekt |
-| Microsoft.RecoveryServices/Vaults/certificates/* | Skapa och hantera certifikat relaterade toobackup i Recovery Services-valvet |
-| Microsoft.RecoveryServices/Vaults/extendedInformation/* | Skapa och hantera utökade info relaterade toovault |
+| Microsoft.RecoveryServices/Vaults/certificates/* | Skapa och hantera certifikat som relaterar till säkerhetskopiering i Recovery Services-valvet |
+| Microsoft.RecoveryServices/Vaults/extendedInformation/* | Skapa och hantera utökad information som rör valvet |
 | Microsoft.RecoveryServices/Vaults/read | Läsa recovery services-valv |
 | Microsoft.RecoveryServices/Vaults/refreshContainers/* | Hantera Identifieringsåtgärden för hämtning av nyskapad behållare |
 | Microsoft.RecoveryServices/Vaults/registeredIdentities/* | Skapa och hantera registrerade identiteter |
@@ -201,7 +201,7 @@ Kan hantera alla åtgärder för hantering av säkerhetskopiering, förutom att 
 | Microsoft.Support/* |Skapa och hantera supportärenden |
 
 ### <a name="backup-operator"></a>Ansvarig för säkerhetskopiering
-Kan hantera alla säkerhetskopiering hanteringsåtgärder förutom att skapa valv, ta bort säkerhetskopiering och ger åtkomst till tooothers
+Kan hantera alla säkerhetskopiering hanteringsåtgärder förutom att skapa valv, ta bort säkerhetskopiering och ger åtkomst till andra
 
 | **Åtgärder** | |
 | --- | --- |
@@ -218,21 +218,21 @@ Kan hantera alla säkerhetskopiering hanteringsåtgärder förutom att skapa val
 | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/read | Läs behållare på Säkerhetskopiera objekt |
 | Microsoft.RecoveryServices/Vaults/backupJobs/* | Skapa och hantera säkerhetskopieringsjobb |
 | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | Exportera säkerhetskopieringsjobb till excel |
-| Microsoft.RecoveryServices/Vaults/backupManagementMetaData/read | Läs metadata relaterade toobackup management |
+| Microsoft.RecoveryServices/Vaults/backupManagementMetaData/read | Läsa metadata som rör hantering av säkerhetskopiering |
 | Microsoft.RecoveryServices/Vaults/backupOperationResults/* | Skapa och hantera resultaten av säkerhetskopiering hanteringsåtgärder |
 | Microsoft.RecoveryServices/Vaults/backupPolicies/operationResults/read | Läs resultat av åtgärder som utförs på principer för säkerhetskopiering |
 | Microsoft.RecoveryServices/Vaults/backupPolicies/read | Läsa principer för säkerhetskopiering |
 | Microsoft.RecoveryServices/Vaults/backupProtectableItems/* | Skapa och hantera objekt som kan säkerhetskopieras |
 | Microsoft.RecoveryServices/Vaults/backupProtectedItems/read | Läs säkerhetskopierade objekt |
 | Microsoft.RecoveryServices/Vaults/backupProtectionContainers/read | Läs säkerhetskopierade behållare Säkerhetskopiera objekt |
-| Microsoft.RecoveryServices/Vaults/extendedInformation/read | Läsa utökade info relaterade toovault |
-| Microsoft.RecoveryServices/Vaults/extendedInformation/write | Skriv utökad info relaterade toovault |
+| Microsoft.RecoveryServices/Vaults/extendedInformation/read | Läsa utökade information som rör valvet |
+| Microsoft.RecoveryServices/Vaults/extendedInformation/write | Skriva utökad information som rör valvet |
 | Microsoft.RecoveryServices/Vaults/read | Läsa recovery services-valv |
 | Microsoft.RecoveryServices/Vaults/refreshContainers/* | Hantera Identifieringsåtgärden för hämtning av nyskapad behållare |
-| Microsoft.RecoveryServices/Vaults/registeredIdentities/operationResults/read | Läs resultatet av åtgärden utförs på registrerade objekt av hello valvet |
-| Microsoft.RecoveryServices/Vaults/registeredIdentities/read | Läsa registrerade objekt av hello valvet |
-| Microsoft.RecoveryServices/Vaults/registeredIdentities/write | Skriva registrerade artiklar toovault |
-| Microsoft.RecoveryServices/Vaults/usages/read | Läsa användning av hello Recovery Services-valvet |
+| Microsoft.RecoveryServices/Vaults/registeredIdentities/operationResults/read | Läs resultatet av åtgärden har utförts på objekten registrerad i valvet |
+| Microsoft.RecoveryServices/Vaults/registeredIdentities/read | Läsa registrerade artiklar på valvet |
+| Microsoft.RecoveryServices/Vaults/registeredIdentities/write | Skriva registrerade artiklar till valvet |
+| Microsoft.RecoveryServices/Vaults/usages/read | Läs användning av Recovery Services-valvet |
 | Microsoft.Resources/deployments/* | Skapa och hantera distributionen av resursgrupper |
 | Microsoft.Resources/subscriptions/resourceGroups/read | Läs resursgrupper |
 | Microsoft.Storage/storageAccounts/read | Läs storage-konton |
@@ -252,18 +252,18 @@ Kan övervaka säkerhetskopiering hantering i Recovery Services-valvet
 | Microsoft.RecoveryServices/Vaults/backupJobs/operationResults/read  | Läsa resultaten av säkerhetskopieringsjobb |
 | Microsoft.RecoveryServices/Vaults/backupJobs/read  | Läs säkerhetskopieringsjobb |
 | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | Exportera säkerhetskopieringsjobb till excel |
-| Microsoft.RecoveryServices/Vaults/backupManagementMetaData/read  | Läs metadata relaterade toobackup management |
+| Microsoft.RecoveryServices/Vaults/backupManagementMetaData/read  | Läsa metadata som rör hantering av säkerhetskopiering |
 | Microsoft.RecoveryServices/Vaults/backupOperationResults/read  | Läs säkerhetskopiering hantering Åtgärdsresultat |
 | Microsoft.RecoveryServices/Vaults/backupPolicies/operationResults/read  | Läs resultat av åtgärder som utförs på principer för säkerhetskopiering |
 | Microsoft.RecoveryServices/Vaults/backupPolicies/read  | Läsa principer för säkerhetskopiering |
 | Microsoft.RecoveryServices/Vaults/backupProtectedItems/read  |  Läs säkerhetskopierade objekt |
 | Microsoft.RecoveryServices/Vaults/backupProtectionContainers/read  | Läs säkerhetskopierade behållare Säkerhetskopiera objekt |
-| Microsoft.RecoveryServices/Vaults/extendedInformation/read  | Läsa utökade info relaterade toovault |
+| Microsoft.RecoveryServices/Vaults/extendedInformation/read  | Läsa utökade information som rör valvet |
 | Microsoft.RecoveryServices/Vaults/read  | Läsa recovery services-valv |
 | Microsoft.RecoveryServices/Vaults/refreshContainers/read  | Läsa resultatet av identifieringen för hämtning av nyskapad behållare |
-| Microsoft.RecoveryServices/Vaults/registeredIdentities/operationResults/read  | Läs resultatet av åtgärden utförs på registrerade objekt av hello valvet |
-| Microsoft.RecoveryServices/Vaults/registeredIdentities/read  | Läsa registrerade objekt av hello valvet |
-| Microsoft.RecoveryServices/Vaults/usages/read  |  Läsa användning av hello Recovery Services-valvet |
+| Microsoft.RecoveryServices/Vaults/registeredIdentities/operationResults/read  | Läs resultatet av åtgärden har utförts på objekten registrerad i valvet |
+| Microsoft.RecoveryServices/Vaults/registeredIdentities/read  | Läsa registrerade artiklar på valvet |
+| Microsoft.RecoveryServices/Vaults/usages/read  |  Läs användning av Recovery Services-valvet |
 
 ### <a name="billing-reader"></a>Fakturering läsare
 Kan visa all information om fakturering
@@ -282,7 +282,7 @@ Kan hantera BizTalk-tjänst
 | Microsoft.Authorization/*/read |Läs roller och rolltilldelningar |
 | Microsoft.BizTalkServices/BizTalk/* |Skapa och hantera BizTalk-tjänst |
 | Microsoft.Insights/alertRules/* |Skapa och hantera aviseringsregler |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Läsa hello-resursers hälsa |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Läs hälsotillståndet för resurser |
 | Microsoft.Resources/deployments/* |Skapa och hantera distributionen av resursgrupper |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Läs resursgrupper |
 | Microsoft.Support/* |Skapa och hantera supportärenden |
@@ -294,7 +294,7 @@ Kan hantera ClearDB MySQL-databaser
 | --- | --- |
 | Microsoft.Authorization/*/read |Läs roller och rolltilldelningar |
 | Microsoft.Insights/alertRules/* |Skapa och hantera aviseringsregler |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Läsa hello-resursers hälsa |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Läs hälsotillståndet för resurser |
 | Microsoft.Resources/deployments/* |Skapa och hantera distributionen av resursgrupper |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Läs resursgrupper |
 | Microsoft.Support/* |Skapa och hantera supportärenden |
@@ -320,7 +320,7 @@ Skapa och hantera datafabriker och underordnade resurser i dem.
 | Microsoft.Authorization/*/read |Läs roller och rollen tilldelningar |
 | Microsoft.DataFactory/dataFactories/* |Skapa och hantera datafabriker och underordnade resurser i dem. |
 | Microsoft.Insights/alertRules/* |Skapa och hantera aviseringsregler |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Läsa hello-resursers hälsa |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Läs hälsotillståndet för resurser |
 | Microsoft.Resources/deployments/* |Skapa och hantera distributionen av resursgrupper |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Läs resursgrupper |
 | Microsoft.Support/* |Skapa och hantera supportärenden |
@@ -331,13 +331,13 @@ Kan visa allt och ansluta, starta, -omstart och -avstängning virtuella datorer
 | **Åtgärder** |  |
 | --- | --- |
 | Microsoft.Authorization/*/read |Läs roller och rollen tilldelningar |
-| Microsoft.Compute/availabilitySets/read |Läsa hello-egenskaperna för tillgänglighetsuppsättningar |
-| Microsoft.Compute/virtualMachines/*/read |Läsa hello egenskaper för en virtuell dator (VM-storlekar, Körningsstatus, VM-tillägg, etc.) |
+| Microsoft.Compute/availabilitySets/read |Läsa egenskaperna för tillgänglighetsuppsättningar |
+| Microsoft.Compute/virtualMachines/*/read |Läsa egenskaperna för en virtuell dator (VM-storlekar, Körningsstatus, VM-tillägg, etc.) |
 | Microsoft.Compute/virtualMachines/deallocate/action |Frigöra virtuella datorer |
-| Microsoft.Compute/virtualMachines/read |Läsa hello-egenskaperna för en virtuell dator |
+| Microsoft.Compute/virtualMachines/read |Läsa egenskaperna för en virtuell dator |
 | Microsoft.Compute/virtualMachines/restart/action |Starta om virtuella datorer |
 | Microsoft.Compute/virtualMachines/start/action |Starta virtuella datorer |
-| Microsoft.DevTestLab/*/read |Läsa hello-egenskaperna för ett labb |
+| Microsoft.DevTestLab/*/read |Läsa egenskaperna för ett labb |
 | Microsoft.DevTestLab/labs/createEnvironment/action |Skapa en laboratoriemiljö |
 | Microsoft.DevTestLab/labs/formulas/delete |Ta bort formler |
 | Microsoft.DevTestLab/labs/formulas/read |Läs formler |
@@ -345,11 +345,11 @@ Kan visa allt och ansluta, starta, -omstart och -avstängning virtuella datorer
 | Microsoft.DevTestLab/labs/policySets/evaluatePolicies/action |Utvärdera principer för labbet |
 | Microsoft.Network/loadBalancers/backendAddressPools/join/action |Ansluta till en belastningsutjämnare adress serverdelspool |
 | Microsoft.Network/loadBalancers/inboundNatRules/join/action |Ansluta till en belastningsutjämnare inkommande NAT-regel |
-| Microsoft.Network/networkInterfaces/*/read |Läsa hello egenskaper för ett nätverksgränssnitt (till exempel alla hello belastningsutjämnare hello nätverksgränssnittet är en del av) |
-| Microsoft.Network/networkInterfaces/join/action |Ansluta till ett nätverksgränssnitt för virtuella tooa |
+| Microsoft.Network/networkInterfaces/*/read |Läsa egenskaperna för ett nätverksgränssnitt (till exempel alla belastningsutjämnare som nätverksgränssnittet tillhör) |
+| Microsoft.Network/networkInterfaces/join/action |Anslut en virtuell dator till ett nätverksgränssnitt |
 | Microsoft.Network/networkInterfaces/read |Läs nätverksgränssnitt |
 | Microsoft.Network/networkInterfaces/write |Skriva nätverksgränssnitt |
-| Microsoft.Network/publicIPAddresses/*/read |Läsa hello-egenskaperna för en offentlig IP-adress |
+| Microsoft.Network/publicIPAddresses/*/read |Läsa egenskaperna för en offentlig IP-adress |
 | Microsoft.Network/publicIPAddresses/join/action |Ansluta till en offentlig IP-adress |
 | Microsoft.Network/publicIPAddresses/read |Läs nätverket offentliga IP-adresser |
 | Microsoft.Network/virtualNetworks/subnets/join/action |Ansluta ett virtuellt nätverk |
@@ -366,7 +366,7 @@ Hantera DNS-zoner och poster.
 | Microsoft.Authorization/ \* /läsa |Läs roller och rolltilldelningar |
 | Microsoft.Insights/alertRules/\* |Skapa och hantera aviseringsregler |
 | Microsoft.Network/dnsZones/\* |Skapa och hantera DNS-zoner och poster |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Läsa hello hello-resursers hälsa |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Läsa hälsotillståndet för resurser |
 | Microsoft.Resources/deployments/\* |Skapa och hantera distributionen av resursgrupper |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Läs resursgrupper |
 | Microsoft.Support/\* |Skapa och hantera supportärenden |
@@ -379,7 +379,7 @@ Kan hantera Azure DB som Cosmos-konton
 | Microsoft.Authorization/*/read |Läs roller och rollen tilldelningar |
 | Microsoft.DocumentDb/databaseAccounts/* |Skapa och hantera DocumentDB-konton |
 | Microsoft.Insights/alertRules/* |Skapa och hantera aviseringsregler |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Läsa hello-resursers hälsa |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Läs hälsotillståndet för resurser |
 | Microsoft.Resources/deployments/* |Skapa och hantera distributionen av resursgrupper |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Läs resursgrupper |
 | Microsoft.Support/* |Skapa och hantera supportärenden |
@@ -392,7 +392,7 @@ Kan hantera intelligenta system konton
 | Microsoft.Authorization/*/read |Läs roller och rollen tilldelningar |
 | Microsoft.Insights/alertRules/* |Skapa och hantera aviseringsregler |
 | Microsoft.IntelligentSystems/accounts/* |Skapa och hantera intelligenta system konton |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Läsa hello-resursers hälsa |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Läs hälsotillståndet för resurser |
 | Microsoft.Resources/deployments/* |Skapa och hantera distributionen av resursgrupper |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Läs resursgrupper |
 | Microsoft.Support/* |Skapa och hantera supportärenden |
@@ -415,11 +415,11 @@ Kan läsa alla övervakningsdata och redigera inställningarna för övervakning
 | Microsoft.Insights/AlertRules/* |Läs/Skriv/ta bort Varningsregler. |
 | Microsoft.Insights/components/* |Läs/Skriv/ta bort Application Insights-komponenter. |
 | Microsoft.Insights/DiagnosticSettings/* |Diagnostikinställningar för Läs/Skriv/ta bort. |
-| Microsoft.Insights/eventtypes/* |Lista över aktivitetsloggen händelser (management-händelser) i en prenumeration. Den här behörigheten är tillämpliga tooboth programmässiga och portalen toohello aktivitetsloggen. |
-| Microsoft.Insights/LogDefinitions/* |Den här behörigheten krävs för användare som behöver åtkomst till tooActivity loggar via hello-portalen. Lista loggen kategorier i aktivitetsloggen. |
+| Microsoft.Insights/eventtypes/* |Lista över aktivitetsloggen händelser (management-händelser) i en prenumeration. Den här behörigheten gäller både programmässiga och portal åtkomst till aktivitetsloggen. |
+| Microsoft.Insights/LogDefinitions/* |Den här behörigheten krävs för användare som behöver åtkomst till aktivitetsloggar via portalen. Lista loggen kategorier i aktivitetsloggen. |
 | Microsoft.Insights/MetricDefinitions/* |Läs måttdefinitionerna (lista över tillgängliga mått typer för en resurs). |
 | Microsoft.Insights/Metrics/* |Läsa måtten för en resurs. |
-| Microsoft.Insights/Register/Action |Registrera hello Microsoft.Insights providern. |
+| Microsoft.Insights/Register/Action |Registrera providern Microsoft.Insights. |
 | Microsoft.Insights/webtests/* |Läs/Skriv/ta bort Application Insights web tester. |
 | Microsoft.OperationalInsights/workspaces/intelligencepacks/* |Läs/Skriv/ta bort logganalys-lösningen packs. |
 | Microsoft.OperationalInsights/workspaces/savedSearches/* |Läs/Skriv/ta bort logganalys sparade sökningar. |
@@ -435,7 +435,7 @@ Kan hantera alla nätverksresurser
 | Microsoft.Authorization/*/read |Läs roller och rollen tilldelningar |
 | Microsoft.Insights/alertRules/* |Skapa och hantera aviseringsregler |
 | Microsoft.Network/* |Skapa och hantera nätverk |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Läsa hello-resursers hälsa |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Läs hälsotillståndet för resurser |
 | Microsoft.Resources/deployments/* |Skapa och hantera distributionen av resursgrupper |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Läs resursgrupper |
 | Microsoft.Support/* |Skapa och hantera supportärenden |
@@ -447,7 +447,7 @@ Kan hantera nya Relic prestanda programhantering konton och program
 | --- | --- |
 | Microsoft.Authorization/*/read |Läs roller och rollen tilldelningar |
 | Microsoft.Insights/alertRules/* |Skapa och hantera aviseringsregler |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Läsa hello-resursers hälsa |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Läs hälsotillståndet för resurser |
 | Microsoft.Resources/deployments/* |Skapa och hantera distributionen av resursgrupper |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Läs resursgrupper |
 | Microsoft.Support/* |Skapa och hantera supportärenden |
@@ -475,7 +475,7 @@ Kan hantera Redis-cache
 | Microsoft.Authorization/*/read |Läs roller och rollen tilldelningar |
 | Microsoft.Cache/redis/* |Skapa och hantera Redis-cache |
 | Microsoft.Insights/alertRules/* |Skapa och hantera aviseringsregler |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Läsa hello-resursers hälsa |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Läs hälsotillståndet för resurser |
 | Microsoft.Resources/deployments/* |Skapa och hantera distributionen av resursgrupper |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Läs resursgrupper |
 | Microsoft.Support/* |Skapa och hantera supportärenden |
@@ -487,7 +487,7 @@ Kan hantera Scheduler-jobbsamlingar
 | --- | --- |
 | Microsoft.Authorization/*/read |Läs roller och rollen tilldelningar |
 | Microsoft.Insights/alertRules/* |Skapa och hantera aviseringsregler |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Läsa hello-resursers hälsa |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Läs hälsotillståndet för resurser |
 | Microsoft.Resources/deployments/* |Skapa och hantera distributionen av resursgrupper |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Läs resursgrupper |
 | Microsoft.Scheduler/jobcollections/* |Skapa och hantera jobbsamlingar |
@@ -500,7 +500,7 @@ Kan hantera Search-tjänster
 | --- | --- |
 | Microsoft.Authorization/*/read |Läs roller och rollen tilldelningar |
 | Microsoft.Insights/alertRules/* |Skapa och hantera aviseringsregler |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Läsa hello-resursers hälsa |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Läs hälsotillståndet för resurser |
 | Microsoft.Resources/deployments/* |Skapa och hantera distributionen av resursgrupper |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Läs resursgrupper |
 | Microsoft.Search/searchServices/* |Skapa och hantera search-tjänster |
@@ -516,23 +516,23 @@ Kan hantera säkerhetskomponenter, säkerhetsprinciper och virtuella datorer
 | Microsoft.ClassicCompute/virtualMachines/*/write |Spara konfigurationen för virtuella datorer |
 | Microsoft.ClassicNetwork/*/read |Läsa konfigurationsinformation om klassiska nätverket |
 | Microsoft.Insights/alertRules/* |Skapa och hantera aviseringsregler |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Läsa hello-resursers hälsa |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Läs hälsotillståndet för resurser |
 | Microsoft.Resources/deployments/* |Skapa och hantera distributionen av resursgrupper |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Läs resursgrupper |
 | Microsoft.Security/* |Skapa och hantera säkerhetskomponenter och principer |
 | Microsoft.Support/* |Skapa och hantera supportärenden |
 
 ### <a name="site-recovery-contributor"></a>Site Recovery-deltagare
-Kan hantera alla Site Recovery-hanteringsåtgärder, förutom att skapa Recovery Services-valvet och tilldela åtkomst tooother användare med rättigheter
+Kan hantera alla Site Recovery-hanteringsåtgärder, förutom att skapa Recovery Services-valvet och tilldela behörigheter till andra användare
 
 | **Åtgärder** | |
 | --- | --- |
 | Microsoft.Authorization/*/read | Läs roller och rolltilldelningar |
 | Microsoft.Insights/alertRules/* | Skapa och hantera aviseringsregler |
 | Microsoft.Network/virtualNetworks/read | Läs virtuella nätverk |
-| Microsoft.RecoveryServices/Vaults/certificates/write | Autentiseringscertifikatet för uppdateringar hello valvet |
-| Microsoft.RecoveryServices/Vaults/extendedInformation/* | Skapa och hantera utökade info relaterade toovault |
-| Microsoft.RecoveryServices/Vaults/monitoringAlerts/*  | Läsa aviseringar för hello Recovery services-valvet |
+| Microsoft.RecoveryServices/Vaults/certificates/write | Uppdaterar Autentiseringscertifikatet valvet |
+| Microsoft.RecoveryServices/Vaults/extendedInformation/* | Skapa och hantera utökad information som rör valvet |
+| Microsoft.RecoveryServices/Vaults/monitoringAlerts/*  | Läsa aviseringar för Recovery services-valvet |
 | Microsoft.RecoveryServices/Vaults/monitoringConfigurations/ notificationConfiguration/läsning  | Läs Recovery services-valvet meddelandekonfigurationen |
 | Microsoft.RecoveryServices/Vaults/read | Läs Recovery Services-valv |
 | Microsoft.RecoveryServices/Vaults/refreshContainers/read | Hantera Identifieringsåtgärden för hämtning av nyskapad behållare |
@@ -546,22 +546,22 @@ Kan hantera alla Site Recovery-hanteringsåtgärder, förutom att skapa Recovery
 | Microsoft.RecoveryServices/Vaults/storageConfig/* | Skapa och hantera konfigurationen av Recovery Services-valvet |
 | Microsoft.RecoveryServices/Vaults/tokenInfo/read | Läs Recovery Services-valvet tokeninformation |
 | Microsoft.RecoveryServices/Vaults/usages/read | Läs användningsinformation om Recovery Services-valvet |
-| Microsoft.ResourceHealth/availabilityStatuses/read | Läsa hello-resursers hälsa |
+| Microsoft.ResourceHealth/availabilityStatuses/read | Läs hälsotillståndet för resurser |
 | Microsoft.Resources/deployments/* | Skapa och hantera distributionen av resursgrupper |
 | Microsoft.Resources/subscriptions/resourceGroups/read | Läs resursgrupper |
 | Microsoft.Storage/storageAccounts/read | Läs storage-konton |
 | Microsoft.Support/* |Skapa och hantera supportärenden |
 
 ### <a name="site-recovery-operator"></a>Site Recovery-operatorn
-Kan redundans och återställning efter fel kan, men inte utföra andra åtgärder för hantering av Site Recovery eller tilldela åtkomst tooother användare
+Kan redundans och återställning efter fel kan, men inte utföra andra åtgärder för hantering av Site Recovery eller tilldela åtkomst till andra användare
 
 | **Åtgärder** | |
 | --- | --- |
 | Microsoft.Authorization/*/read | Läs roller och rolltilldelningar |
 | Microsoft.Insights/alertRules/* | Skapa och hantera aviseringsregler |
 | Microsoft.Network/virtualNetworks/read | Läs virtuella nätverk |
-| Microsoft.RecoveryServices/Vaults/extendedInformation/read | Läsa utökade info relaterade toovault |
-| Microsoft.RecoveryServices/Vaults/monitoringAlerts/*  | Läsa aviseringar för hello Recovery services-valvet |
+| Microsoft.RecoveryServices/Vaults/extendedInformation/read | Läsa utökade information som rör valvet |
+| Microsoft.RecoveryServices/Vaults/monitoringAlerts/*  | Läsa aviseringar för Recovery services-valvet |
 | Microsoft.RecoveryServices/Vaults/monitoringConfigurations/ notificationConfiguration/läsning  | Läs Recovery services-valvet meddelandekonfigurationen |
 | Microsoft.RecoveryServices/Vaults/read | Läs Recovery Services-valv |
 | Microsoft.RecoveryServices/Vaults/refreshContainers/read | Hantera Identifieringsåtgärden för hämtning av nyskapad behållare |
@@ -569,7 +569,7 @@ Kan redundans och återställning efter fel kan, men inte utföra andra åtgärd
 | Microsoft.RecoveryServices/Vaults/registeredIdentities/read | Läsa behållare som har registrerats för en resurs |
 | Microsoft.RecoveryServices/vaults/replicationAlertSettings/read | Läsa replikering aviseringsinställningar |
 | Microsoft.RecoveryServices/vaults/replicationEvents/read | Läsa replikeringshändelser |
-| Microsoft.RecoveryServices/vaults/replicationFabrics/checkConsistency/action | Kontrollera konsekvens av hello-infrastrukturer |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/checkConsistency/action | Kontrollera konsekvensen för fabric |
 | Microsoft.RecoveryServices/vaults/replicationFabrics/read | Läs replikering infrastrukturresurser |
 | Microsoft.RecoveryServices/vaults/replicationFabrics/ reassociateGateway/åtgärd | Koppla nytt replikerings-gateway |
 | Microsoft.RecoveryServices/vaults/replicationFabrics/renewcertificate/action | Förnya certifikat för replikering fabric |
@@ -587,7 +587,7 @@ Kan redundans och återställning efter fel kan, men inte utföra andra åtgärd
 | Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/testFailover/åtgärd | Starta testa redundans med ett skyddat objekt |
 | Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/testFailoverCleanup/åtgärd | Starta rensning av ett redundanstest |
 | Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/unplannedFailover/åtgärd | Starta oplanerad redundans för ett skyddat objekt |
-| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/updateMobilityService/åtgärd | Uppdatera hello mobilitetstjänsten |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/updateMobilityService/åtgärd | Uppdatera mobilitetstjänsten |
 | Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectionContainerMappings/läsning | Läsa skydd behållaren mappningar |
 | Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationRecoveryServicesProviders/läsning | Läs Recovery Services-providers |
 | Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationRecoveryServicesProviders/refreshProvider/åtgärd | Uppdatera Recovery Services-provider |
@@ -606,7 +606,7 @@ Kan redundans och återställning efter fel kan, men inte utföra andra åtgärd
 | Microsoft.RecoveryServices/Vaults/storageConfig/read | Läsa lagringskonfigurationen för av Recovery Services-valvet |
 | Microsoft.RecoveryServices/Vaults/tokenInfo/read | Läs Recovery Services-valvet tokeninformation |
 | Microsoft.RecoveryServices/Vaults/usages/read | Läs användningsinformation om Recovery Services-valvet |
-| Microsoft.ResourceHealth/availabilityStatuses/read | Läsa hello-resursers hälsa |
+| Microsoft.ResourceHealth/availabilityStatuses/read | Läs hälsotillståndet för resurser |
 | Microsoft.Resources/deployments/* | Skapa och hantera distributionen av resursgrupper |
 | Microsoft.Resources/subscriptions/resourceGroups/read | Läs resursgrupper |
 | Microsoft.Storage/storageAccounts/read | Läs storage-konton |
@@ -618,8 +618,8 @@ Kan övervaka status för Site Recovery i Recovery Services-valvet och aktivera 
 | **Åtgärder** | |
 | --- | --- |
 | Microsoft.Authorization/*/read | Läs roller och rolltilldelningar |
-| Microsoft.RecoveryServices/Vaults/extendedInformation/read  | Läsa utökade info relaterade toovault |
-| Microsoft.RecoveryServices/Vaults/monitoringAlerts/read  | Läsa aviseringar för hello Recovery services-valvet |
+| Microsoft.RecoveryServices/Vaults/extendedInformation/read  | Läsa utökade information som rör valvet |
+| Microsoft.RecoveryServices/Vaults/monitoringAlerts/read  | Läsa aviseringar för Recovery services-valvet |
 | Microsoft.RecoveryServices/Vaults/monitoringConfigurations/ notificationConfiguration/läsning  | Läs Recovery services-valvet meddelandekonfigurationen |
 | Microsoft.RecoveryServices/Vaults/read  | Läs Recovery Services-valv |
 | Microsoft.RecoveryServices/Vaults/refreshContainers/read  | Hantera Identifieringsåtgärden för hämtning av nyskapad behållare |
@@ -654,7 +654,7 @@ Kan hantera SQL-databaser, men inte deras säkerhetsrelaterade principer
 | --- | --- |
 | Microsoft.Authorization/*/read |Läs roller och rollen tilldelningar |
 | Microsoft.Insights/alertRules/* |Skapa och hantera aviseringsregler |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Läsa hello-resursers hälsa |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Läs hälsotillståndet för resurser |
 | Microsoft.Resources/deployments/* |Skapa och hantera distributionen av resursgrupper |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Läs resursgrupper |
 | Microsoft.Sql/servers/databases/* |Skapa och hantera SQL-databaser |
@@ -672,13 +672,13 @@ Kan hantera SQL-databaser, men inte deras säkerhetsrelaterade principer
 | Microsoft.Sql/servers/databases/securityMetrics/* |Det går inte att redigera säkerhet mått |
 
 ### <a name="sql-security-manager"></a>SQL-säkerhetsansvarig
-Kan hantera hello säkerhetsrelaterade principer för SQL-servrar och databaser
+Kan hantera de säkerhetsrelaterade principerna för SQL-servrar och databaser
 
 | **Åtgärder** |  |
 | --- | --- |
 | Microsoft.Authorization/*/read |Läs Microsoft auktorisering |
 | Microsoft.Insights/alertRules/* |Skapa och hantera insikter Varningsregler |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Läsa hello-resursers hälsa |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Läs hälsotillståndet för resurser |
 | Microsoft.Resources/deployments/* |Skapa och hantera distributionen av resursgrupper |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Läs resursgrupper |
 | Microsoft.Sql/servers/auditingPolicies/* |Skapa och hantera granskningsprinciper för SQL server |
@@ -705,7 +705,7 @@ Kan hantera SQL-servrar och databaser, men inte deras säkerhetsrelaterade princ
 | --- | --- |
 | Microsoft.Authorization/*/read |Läsa tillstånd |
 | Microsoft.Insights/alertRules/* |Skapa och hantera insikter Varningsregler |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Läsa hello-resursers hälsa |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Läs hälsotillståndet för resurser |
 | Microsoft.Resources/deployments/* |Skapa och hantera distributionen av resursgrupper |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Läs resursgrupper |
 | Microsoft.Sql/servers/* |Skapa och hantera SQL-servrar |
@@ -732,27 +732,27 @@ Kan hantera klassiska lagringskonton
 | Microsoft.Authorization/*/read |Läsa tillstånd |
 | Microsoft.ClassicStorage/storageAccounts/* |Skapa och hantera storage-konton |
 | Microsoft.Insights/alertRules/* |Skapa och hantera insikter Varningsregler |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Läsa hello-resursers hälsa |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Läs hälsotillståndet för resurser |
 | Microsoft.Resources/deployments/* |Skapa och hantera distributionen av resursgrupper |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Läs resursgrupper |
 | Microsoft.Support/* |Skapa och hantera supportärenden |
 
 ### <a name="storage-account-contributor"></a>Storage-konto deltagare
-Kan hantera storage-konton, men inte att komma åt toothem.
+Kan hantera storage-konton, men inte åtkomst till dem.
 
 | **Åtgärder** |  |
 | --- | --- |
 | Microsoft.Authorization/*/read |Läsa alla auktorisering |
 | Microsoft.Insights/alertRules/* |Skapa och hantera insikter Varningsregler |
 | Microsoft.Insights/diagnosticSettings/* |Hantera diagnostikinställningar |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Läsa hello-resursers hälsa |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Läs hälsotillståndet för resurser |
 | Microsoft.Resources/deployments/* |Skapa och hantera distributionen av resursgrupper |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Läs resursgrupper |
 | Microsoft.Storage/storageAccounts/* |Skapa och hantera storage-konton |
 | Microsoft.Support/* |Skapa och hantera supportärenden |
 
 ### <a name="support-request-contributor"></a>Stöd för begäran deltagare
-Skapa och hantera supportärenden hello prenumeration definitionsområdet
+Skapa och hantera supportärenden definitionsområdet prenumeration
 
 | **Åtgärder** |  |
 | --- | --- |
@@ -761,7 +761,7 @@ Skapa och hantera supportärenden hello prenumeration definitionsområdet
 | Microsoft.Resources/subscriptions/resourceGroups/read | Läs roller och rolltilldelningar |
 
 ### <a name="user-access-administrator"></a>Administratör för användaråtkomst
-Kan hantera användare komma åt tooAzure resurser
+Kan hantera användarnas åtkomst till Azure-resurser
 
 | **Åtgärder** |  |
 | --- | --- |
@@ -770,7 +770,7 @@ Kan hantera användare komma åt tooAzure resurser
 | Microsoft.Support/* |Skapa och hantera supportärenden |
 
 ### <a name="classic-virtual-machine-contributor"></a>Klassiska Virtual Machine-deltagare
-Kan hantera klassiska virtuella datorer men inte hello virtuellt nätverk eller storage-konto toowhich de är anslutna
+Kan hantera klassiska virtuella datorer, men inte den virtuella nätverks- eller konto som de är anslutna
 
 | **Åtgärder** |  |
 | --- | --- |
@@ -787,13 +787,13 @@ Kan hantera klassiska virtuella datorer men inte hello virtuellt nätverk eller 
 | Microsoft.ClassicStorage/storageAccounts/listKeys/action |Lista nycklar för lagringskonto |
 | Microsoft.ClassicStorage/storageAccounts/read |Läs klassiska lagringskonton |
 | Microsoft.Insights/alertRules/* |Skapa och hantera insikter Varningsregler |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Läsa hello-resursers hälsa |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Läs hälsotillståndet för resurser |
 | Microsoft.Resources/deployments/* |Skapa och hantera distributionen av resursgrupper |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Läs resursgrupper |
 | Microsoft.Support/* |Skapa och hantera supportärenden |
 
 ### <a name="virtual-machine-contributor"></a>Virtual Machine-deltagare
-Kan hantera virtuella datorer men inte hello virtuella nätverks- eller lagringsdrivrutiner konto toowhich de är anslutna
+Kan hantera virtuella datorer, men inte den virtuella nätverks- eller konto som de är anslutna
 
 | **Åtgärder** |  |
 | --- | --- |
@@ -816,7 +816,7 @@ Kan hantera virtuella datorer men inte hello virtuella nätverks- eller lagrings
 | Microsoft.Network/publicIPAddresses/read |Läs nätverket offentliga IP-adresser |
 | Microsoft.Network/virtualNetworks/read |Läs virtuella nätverk |
 | Microsoft.Network/virtualNetworks/subnets/join/action |Ansluta till virtuella undernät |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Läsa hello-resursers hälsa |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Läs hälsotillståndet för resurser |
 | Microsoft.Resources/deployments/* |Skapa och hantera distributionen av resursgrupper |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Läs resursgrupper |
 | Microsoft.Storage/storageAccounts/listKeys/action |Lista nycklar för lagringskonto |
@@ -831,7 +831,7 @@ Kan hantera klassiska virtuella nätverk och reserverade IP-adresser
 | Microsoft.Authorization/*/read |Läsa tillstånd |
 | Microsoft.ClassicNetwork/* |Skapa och hantera klassiska nätverk |
 | Microsoft.Insights/alertRules/* |Skapa och hantera insikter Varningsregler |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Läsa hello-resursers hälsa |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Läs hälsotillståndet för resurser |
 | Microsoft.Resources/deployments/* |Skapa och hantera distributionen av resursgrupper |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Läs resursgrupper |
 | Microsoft.Support/* |Skapa och hantera supportärenden |
@@ -843,32 +843,32 @@ Kan hantera web planer
 | --- | --- |
 | Microsoft.Authorization/*/read |Läsa tillstånd |
 | Microsoft.Insights/alertRules/* |Skapa och hantera insikter Varningsregler |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Läsa hello-resursers hälsa |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Läs hälsotillståndet för resurser |
 | Microsoft.Resources/deployments/* |Skapa och hantera distributionen av resursgrupper |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Läs resursgrupper |
 | Microsoft.Support/* |Skapa och hantera supportärenden |
 | Microsoft.Web/serverFarms/* |Skapa och hantera servergrupper |
 
 ### <a name="website-contributor"></a>Webbplatsen deltagare
-Kan hantera webbplatser men inte hello web planer toowhich de är anslutna
+Kan hantera webbplatser, men inte alla web-planer som de är anslutna
 
 | **Åtgärder** |  |
 | --- | --- |
 | Microsoft.Authorization/*/read |Läsa tillstånd |
 | Microsoft.Insights/alertRules/* |Skapa och hantera insikter Varningsregler |
 | Microsoft.Insights/components/* |Skapa och hantera Insights-komponenter |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Läsa hello-resursers hälsa |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Läs hälsotillståndet för resurser |
 | Microsoft.Resources/deployments/* |Skapa och hantera distributionen av resursgrupper |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Läs resursgrupper |
 | Microsoft.Support/* |Skapa och hantera supportärenden |
 | Microsoft.Web/certificates/* |Skapa och hantera webbplatscertifikat |
-| Microsoft.Web/listSitesAssignedToHostName/read |Läs platser tooa värdnamn |
+| Microsoft.Web/listSitesAssignedToHostName/read |Läs platser på ett värdnamn |
 | Microsoft.Web/serverFarms/join/action |Ansluta till servergrupper |
 | Microsoft.Web/serverFarms/read |Läs servergrupper |
-| Microsoft.Web/sites/* |Skapa och hantera webbplatser (för att skapa kräver också skriva behörigheter toohello associerade Apptjänstplan) |
+| Microsoft.Web/sites/* |Skapa och hantera webbplatser (för att skapa även kräver behörighet att skriva till den associerade Apptjänstplan) |
 
 ## <a name="see-also"></a>Se även
-* [Rollbaserad åtkomstkontroll](role-based-access-control-configure.md): komma igång med RBAC på hello Azure-portalen.
-* [Anpassade roller i Azure RBAC](role-based-access-control-custom-roles.md): Lär dig hur toocreate anpassade roller toofit din behövs.
+* [Rollbaserad åtkomstkontroll](role-based-access-control-configure.md): komma igång med RBAC på Azure-portalen.
+* [Anpassade roller i Azure RBAC](role-based-access-control-custom-roles.md): Lär dig att skapa anpassade roller som passar dina åtkomstbehov.
 * [Skapa en profil över åtkomständringshistorik](role-based-access-control-access-change-history-report.md): hålla reda på hur du ändrar rolltilldelningar i RBAC.
 * [Rollbaserad åtkomstkontroll felsökning](role-based-access-control-troubleshooting.md): få förslag om hur du löser vanliga problem.

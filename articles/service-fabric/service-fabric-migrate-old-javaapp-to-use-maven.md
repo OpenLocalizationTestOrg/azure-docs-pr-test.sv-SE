@@ -1,6 +1,6 @@
 ---
-title: "aaaMigrate från Java SDK tooMaven - uppdatera gamla Java-program för Azure Service Fabric toouse Maven | Microsoft Docs"
-description: "Uppdatera hello äldre Java-program som används för toouse hello Service Fabric Java SDK toofetch Service Fabric Java beroenden från Maven. När du har slutfört den här installationen är äldre Java-program kan toobuild."
+title: "Migrera från Java SDK till Maven – uppdatera gamla Azure Service Fabric Java-program för att använda Maven | Microsoft Docs"
+description: "Uppdatera de äldre Java-programmen som använde Service Fabric Java-SDK:n för att hämta Service Fabric Java-beroenden från Maven. När du har slutfört konfigurationen kan de äldre Java-programmen skapa."
 services: service-fabric
 documentationcenter: java
 author: sayantancs
@@ -14,36 +14,36 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/23/2017
 ms.author: saysa
-ms.openlocfilehash: 11b979facd7b3865141a6d3a035a6021dd06ca0c
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 2123c5f26d77045bd22af56a844fdbf222930e7b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="update-your-previous-java-service-fabric-application-toofetch-java-libraries-from-maven"></a>Uppdatera din tidigare Java Service Fabric application toofetch Java-bibliotek från Maven
-Vi har flyttat Service Fabric Java binärfiler nyligen hello Service Fabric Java SDK tooMaven vara värd för. Nu kan du använda **mavencentral** toofetch hello senaste Service Fabric Java beroenden. Den här Snabbkurs hjälper du uppdatera din befintliga Java-program som du tidigare har skapat toobe användas med Service Fabric Java SDK med hjälp av antingen Yeoman mall eller Eclipse toobe som är kompatibel med hello Maven baserat build.
+# <a name="update-your-previous-java-service-fabric-application-to-fetch-java-libraries-from-maven"></a>Uppdatera det tidigare Service Fabric Java-programmet för att hämta Java-bibliotek från Maven
+Vi har nyligen flyttat Service Fabric Java-binärfiler från Service Fabric Java-SDK:n till Maven-lagring. Nu kan du använda **mavencentral** för att hämta de senaste Service Fabric Java-beroendena. I den här snabbstarten får du hjälp att uppdatera dina befintliga Java-program, som du tidigare har skapat för användning med Service Fabric Java-SDK:n, med hjälp av en Yeoman-mall eller Eclipse, för att vara kompatibla med den Maven-baserade versionen.
 
 ## <a name="prerequisites"></a>Krav
-1. Du måste först toouninstall hello befintliga Java SDK.
+1. Först måste du avinstallera den befintliga Java-SDK:n.
 
   ```bash
   sudo dpkg -r servicefabricsdkjava
   ```
-2. Installera hello senaste Service Fabric CLI följande hello anvisningarna [här](service-fabric-cli.md).
+2. Installera senaste Service Fabric CLI enligt instruktionerna [här](service-fabric-cli.md).
 
-3. toobuild och arbete på hello Service Fabric Java-program, måste du tooensure att JDK 1.8 och Gradle är installerade. Om du ännu inte har installerats kan du köra hello följande tooinstall JDK 1.8 (openjdk-8-jdk) och Gradle -
+3. Om du vill skapa och arbeta med Service Fabric Java-programmen måste du se till att du har JDK 1.8 och Gradle installerade. Om de inte har installerats än kan du köra följande för att installera JDK 1.8 (openjdk-8-jdk) och Gradle -
 
  ```bash
  sudo apt-get install openjdk-8-jdk-headless
  sudo apt-get install gradle
  ```
-4. Hello installera eller avinstallera uppdateringsskript av ditt program toouse hello nya Service Fabric CLI följa anvisningarna hello [här](service-fabric-application-lifecycle-sfctl.md). Du kan se tooour Kom igång- [exempel](https://github.com/Azure-Samples/service-fabric-java-getting-started) referens.
+4. Uppdatera installations-/avinstallationsskripten för programmet så att de använder nya Service Fabric CLI enligt instruktionerna [här](service-fabric-application-lifecycle-sfctl.md). Du kan använda våra komma igång-[exempel](https://github.com/Azure-Samples/service-fabric-java-getting-started) som referens.
 
 >[!TIP]
-> När du har avinstallerat hello Service Fabric Java SDK fungerar inte Yeoman. Följ hello krav anges [här](service-fabric-create-your-first-linux-application-with-java.md) toohave Service Fabric Yeoman Java mallen generator upp och fungerar.
+> När du har avinstallerat Service Fabric Java-SDK:n fungerar inte Yeoman. Följ kraven [här](service-fabric-create-your-first-linux-application-with-java.md) för att få igång Service Fabric Yeoman Java-mallgeneratorn.
 
 ## <a name="service-fabric-java-libraries-on-maven"></a>Service Fabric Java-bibliotek på Maven
-Service Fabric Java-bibliotek har lagrats i Maven. Du kan lägga till hello beroenden i hello ``pom.xml`` eller ``build.gradle`` av projekt toouse Service Fabric Java-bibliotek från **mavenCentral**.
+Service Fabric Java-bibliotek har lagrats i Maven. Du kan lägga till beroendena i ``pom.xml`` eller ``build.gradle`` för dina projekt så att de använder Service Fabric Java-bibliotek från **mavenCentral**.
 
 ### <a name="actors"></a>Aktörer
 
@@ -90,7 +90,7 @@ Service Fabric-stöd för tillståndslös tjänst för ditt program.
 ### <a name="others"></a>Andra
 #### <a name="transport"></a>Transport
 
-Transportnivåstöd för Service Fabric Java-program. Du behöver inte tooexplicitly lägga till den här beroende tooyour tillförlitliga aktören eller tjänstprogram, såvida inte du programmerar på hello Transportskiktet.
+Transportnivåstöd för Service Fabric Java-program. Du behöver inte uttryckligen lägga till det här beroendet till tillförlitliga aktörer- eller tjänstprogram, om du inte programmerar på transportnivån.
 
   ```XML
   <dependency>
@@ -111,7 +111,7 @@ Transportnivåstöd för Service Fabric Java-program. Du behöver inte tooexplic
 
 #### <a name="fabric-support"></a>Fabric-stöd
 
-Nivån stöd för Service Fabric som nämns toonative Service Fabric runtime. Du behöver inte tooexplicitly lägga till det här beroendet tooyour tillförlitliga aktören eller tjänstprogram. Detta hämtar hämtats automatiskt från Maven, när du inkluderar hello andra beroenden som ovan.
+Systemnivåstöd för Service Fabric, som kommunicerar med ursprunglig Service Fabric-körning. Du behöver inte uttryckligen lägga till det här beroendet till tillförlitliga aktörer- eller tjänstprogram. Det hämtas automatiskt från Maven när du inkluderar de andra beroendena ovan.
 
   ```XML
   <dependency>
@@ -133,7 +133,7 @@ Nivån stöd för Service Fabric som nämns toonative Service Fabric runtime. Du
 
 ## <a name="migrating-service-fabric-stateless-service"></a>Migrera tillståndslös Service Fabric-tjänst
 
-toobe kan toobuild din befintliga Service Fabric tillståndslös Java tjänsten med hjälp av Service Fabric-beroenden som hämtats från Maven måste tooupdate hello ``build.gradle`` fil i hello Service. Tidigare har använts den toobe som följande-
+Om du vill kunna skapa en befintlig tillståndslös Service Fabric Java-tjänst med hjälp av Service Fabric-beroenden som hämtas från Maven, måste du uppdatera filen ``build.gradle`` i tjänsten. Tidigare såg det ut så här -
 ```
 dependencies {
     compile fileTree(dir: '/opt/microsoft/sdk/servicefabric/java/packages/lib', include: ['*.jar'])
@@ -166,7 +166,7 @@ task copyDeps <<{
     }
 }
 ```
-Nu toofetch hello beroenden från Maven, hello **uppdateras** ``build.gradle`` skulle ha hello motsvarande delar enligt följande -
+För att hämta beroendena från Maven skulle **uppdaterade** ``build.gradle`` nu ha motsvarande delar enligt följande -
 ```
 repositories {
         mavenCentral()
@@ -219,20 +219,20 @@ task copyDeps <<{
     }
 }
 ```
-I allmänhet tooget en allmän uppfattning om hur du skapar skript hello skulle se ut för en tillståndslös Java-tjänst för Service Fabric kan du kontrollera tooany exempel från våra Kom igång-exempel. Här är hello [build.gradle](https://github.com/Azure-Samples/service-fabric-java-getting-started/blob/master/Services/EchoServer/EchoServer1.0/EchoServerService/build.gradle) hello EchoServer exempel.
+I allmänhet kan du titta på något av våra komma igång-exempel för att få en uppfattning om hur byggskriptet skulle se ut för en tillståndslös Service Fabric Java-tjänst. Här är [build.gradle](https://github.com/Azure-Samples/service-fabric-java-getting-started/blob/master/Services/EchoServer/EchoServer1.0/EchoServerService/build.gradle) för EchoServer-exemplet.
 
 ## <a name="migrating-service-fabric-actor-service"></a>Migrera Service Fabric-aktörstjänst
 
-toobe kan toobuild din befintliga Service Fabric aktören Java-program med hjälp av Service Fabric-beroenden som hämtats från Maven måste tooupdate hello ``build.gradle`` filen inuti hello gränssnittet paketet och hello Service-paketet. Om du har ett TestClient-paket måste tooupdate som också. I så fall för din aktören ``Myactor``, hello följande skulle vara hello platser där du behöver tooupdate -
+Om du vill kunna skapa ett befintligt Service Fabric Java-aktörsprogram med hjälp av Service Fabric-beroenden som hämtas från Maven, måste du uppdatera filen ``build.gradle`` i gränssnittspaketet och i tjänstpaketet. Om du har ett TestClient-paket måste du uppdatera det också. Så för aktören ``Myactor`` behöver du uppdatera på följande platser -
 ```
 ./Myactor/build.gradle
 ./MyactorInterface/build.gradle
 ./MyactorTestClient/build.gradle
 ```
 
-#### <a name="updating-build-script-for-hello-interface-project"></a>Uppdatera build-skript för hello gränssnittet projekt
+#### <a name="updating-build-script-for-the-interface-project"></a>Uppdatera byggskript för gränssnittsprojektet
 
-Tidigare har använts den toobe som följande-
+Tidigare såg det ut så här -
 ```
 dependencies {
     compile fileTree(dir: '/opt/microsoft/sdk/servicefabric/java/packages/lib', include: ['*.jar'])
@@ -240,7 +240,7 @@ dependencies {
 .
 .
 ```
-Nu toofetch hello beroenden från Maven, hello **uppdateras** ``build.gradle`` skulle ha hello motsvarande delar enligt följande -
+För att hämta beroendena från Maven skulle **uppdaterade** ``build.gradle`` nu ha motsvarande delar enligt följande -
 ```
 repositories {
     mavenCentral()
@@ -271,9 +271,9 @@ compileJava.dependsOn(explodeDeps)
 .
 ```
 
-#### <a name="updating-build-script-for-hello-actor-project"></a>Uppdatera build-skript för hello aktören projekt
+#### <a name="updating-build-script-for-the-actor-project"></a>Uppdatera byggskript för aktörsprojektet
 
-Tidigare har använts den toobe som följande-
+Tidigare såg det ut så här -
 ```
 dependencies {
     compile fileTree(dir: '/opt/microsoft/sdk/servicefabric/java/packages/lib', include: ['*.jar'])
@@ -312,7 +312,7 @@ task copyDeps<< {
     }
 }
 ```
-Nu toofetch hello beroenden från Maven, hello **uppdateras** ``build.gradle`` skulle ha hello motsvarande delar enligt följande -
+För att hämta beroendena från Maven skulle **uppdaterade** ``build.gradle`` nu ha motsvarande delar enligt följande -
 ```
 repositories {
     mavenCentral()
@@ -370,9 +370,9 @@ task copyDeps<< {
 }
 ```
 
-#### <a name="updating-build-script-for-hello-test-client-project"></a>Uppdatera build-skript för hello test klientprojektet
+#### <a name="updating-build-script-for-the-test-client-project"></a>Uppdatera byggskript för testklientprojektet
 
-Här ändringar är liknande toohello ändringar som beskrivs i föregående avsnitt, det vill säga hello aktören projektet. Tidigare hello Gradle-skriptet som används toobe som följande-
+Ändringar här liknar de ändringar som beskrivs i föregående avsnitt, det vill säga aktörsprojektet. Tidigare såg Gradle-skriptet ut så här -
 ```
 dependencies {
     compile fileTree(dir: '/opt/microsoft/sdk/servicefabric/java/packages/lib', include: ['*.jar'])
@@ -412,7 +412,7 @@ task copyDeps<< {
         }
 }
 ```
-Nu toofetch hello beroenden från Maven, hello **uppdateras** ``build.gradle`` skulle ha hello motsvarande delar enligt följande -
+För att hämta beroendena från Maven skulle **uppdaterade** ``build.gradle`` nu ha motsvarande delar enligt följande -
 ```
 repositories {
     mavenCentral()
@@ -476,4 +476,4 @@ task copyDeps<< {
 
 * [Skapa och distribuera ditt första Service Fabric-program med Java i Linux med hjälp av Yeoman](service-fabric-create-your-first-linux-application-with-java.md)
 * [Skapa och distribuera ditt första Service Fabric-program med Java i Linux med Service Fabric-plugin-programmet för Eclipse](service-fabric-get-started-eclipse.md)
-* [Interagera med Service Fabric-kluster med hello Service Fabric CLI](service-fabric-cli.md)
+* [Interagera med Service Fabric-kluster med Service Fabric CLI](service-fabric-cli.md)

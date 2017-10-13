@@ -1,6 +1,6 @@
 ---
-title: aaaStorSimple virtuella matris disaster recovery och enheten redundans | Microsoft Docs
-description: "Läs mer om hur toofailover din virtuella StorSimple-matris."
+title: StorSimple virtuell matris disaster recovery och enheten redundans | Microsoft Docs
+description: Mer information om hur du redundans din virtuella StorSimple-matris.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,169 +15,169 @@ ms.workload: NA
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5f125efd1ffb94489cdfa7cfaafae7d57cc10131
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 12079f8dbc409afe5acc274fa08bda878c90b76e
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="disaster-recovery-and-device-failover-for-your-storsimple-virtual-array-via-azure-portal"></a>Disaster recovery och enheten redundans för din virtuella StorSimple-matrisen via Azure-portalen
 
 ## <a name="overview"></a>Översikt
-Den här artikeln beskriver hello katastrofåterställning för din Microsoft Azure StorSimple virtuell matris inklusive hello detaljerade steg toofail över tooanother virtuella matris. En redundansväxling kan du toomove dina data från en *källa* enhet i hello datacenter tooa *mål* enhet. hello målenhet kanske finns i hello samma eller en annan geografisk plats. hello enheten redundans är för hello hela enheten. Hello molndata för hello källenheten ändras under växling vid fel, ägarskap toothat av hello målenhet.
+Den här artikeln beskriver katastrofåterställning för din Microsoft Azure StorSimple virtuell matrisen inklusive detaljerade instruktioner att växla över till en annan virtuell matris. En redundansväxling kan du flytta data från en *källa* enheten i datacentret till en *mål* enhet. Målenheten kan finnas i samma eller en annan geografisk plats. Enhet för växling vid fel är för hela enheten. Under växling vid fel ändras molndata för källan ägarskap till som målenheten.
 
-Den här artikeln är tillämpliga tooStorSimple virtuella matriser. toofail över en 8000-serieenhet, gå för[enheten redundans och disaster recovery av StorSimple-enheten](storsimple-device-failover-disaster-recovery.md).
+Den här artikeln gäller bara för virtuella StorSimple-matriser. Om du vill växla över en 8000-serieenhet, gå till [enheten redundans och disaster recovery av StorSimple-enheten](storsimple-device-failover-disaster-recovery.md).
 
 ## <a name="what-is-disaster-recovery-and-device-failover"></a>Vad är disaster recovery och enheten redundans?
 
-I en (DR) katastrofåterställning, hello primära enhet slutar fungera. I det här scenariot kan du flytta hello molndata som är associerade med hello misslyckad enhet tooanother enhet. Du kan använda hello primära enhet som hello *källa* och ange en annan enhet som hello *mål*. Den här processen är refererad tooas hello *redundans*. Under växling vid fel, alla hello volymer eller hello resurser från hello källenheten ändra ägarskap och är överförda toohello målenhet. Ingen filtrering hello data är tillåten.
+I en (DR) katastrofåterställning, den primära enheten slutar fungera. I det här scenariot kan du flytta molndata som är associerade med den misslyckade enheten till en annan enhet. Du kan använda den primära enheten som den *källa* och ange en annan enhet som den *mål*. Den här processen kallas den *redundans*. Ändra ägarskap och överförs till målenheten under växling vid fel, alla volymer eller resurser från källan. Ingen filtrering av data är tillåten.
 
-DR modelleras som en fullständig enhet återställning med hjälp av hello termiska karta-baserade skiktning och spårning. En termisk karta definieras genom att tilldela en termiska värdet toohello data baserat på läsa och skriva mönster. Den här termiska mappa sedan nivåer hello först lägsta termiska data segment toohello molnet samtidigt som hello hög värme (används mest) datasegment i hello lokala nivån. Under en Katastrofåterställning StorSimple använder hello termiska karta toorestore och rehydrate hello data från hello molnet. hello enheten hämtar alla hello volymer/resurser i hello senaste senaste säkerhetskopieringen (vilket anges internt) och utför en återställning från säkerhetskopian. hello virtuella matris samordnar hello hela DR-processen.
+DR modelleras som en fullständig enhet återställning med hjälp av den termiska karta-baserade skiktning och spårning. En termisk karta definieras genom att tilldela värdet termiska data baserat på läsa och skriva mönster. Den här termiska mappa sedan nivåer lägsta värme-datasegment till molnet först samtidigt som datasegment hög värme (används mest) på den lokala nivån. Under en Katastrofåterställning använder StorSimple termisk karta för att återställa och rehydrate data från molnet. Enheten hämtar alla volymer/resurser i den senaste senaste säkerhetskopieringen (vilket anges internt) och utför en återställning från säkerhetskopian. Virtuella matrisen samordnar hela DR-processen.
 
 > [!IMPORTANT]
-> hello källenheten raderas hello slutet av enheten redundans och därför en återställning stöds inte.
+> På källenheten tas bort i slutet av enheten redundans och därför en återställning stöds inte.
 > 
 > 
 
-Katastrofåterställning är samordnade via funktionen för hello enheten växling vid fel och initieras från hello **enheter** bladet. Det här bladet tabulates alla hello StorSimple-enheter anslutna tooyour StorSimple Device Manager-tjänsten. Du kan se hello eget namn, status, etablerad och maximal kapacitet, typ och modell för varje enhet.
+Katastrofåterställning är samordnade via funktionen med redundans i enheten och initieras från den **enheter** bladet. Det här bladet tabulates alla StorSimple-enheter som är anslutna till din StorSimple Device Manager-tjänst. Du kan se eget namn, status, etablerad och maximal kapacitet, typ och modell för varje enhet.
 
 ## <a name="prerequisites-for-device-failover"></a>Krav för växling vid fel för enheten
 
 ### <a name="prerequisites"></a>Krav
 
-För en enhet växling, kontrollerar du att hello följande förutsättningar är uppfyllda:
+För en enhet växling, kontrollerar du att följande krav är uppfyllda:
 
-* hello källenheten måste toobe i en **inaktiverad** tillstånd.
-* hello målenhet måste tooshow upp som **klar tooset in** i hello Azure-portalen. Etablera en virtuell Målmatrisen av hello samma eller högre kapacitet. Använd hello lokala web UI tooconfigure och registreras hello virtuella Målmatrisen.
+* Källan måste finnas i en **inaktiverad** tillstånd.
+* Målenheten måste visas som **redo att konfigurera** i Azure-portalen. Etablera en virtuell Målmatrisen av samma eller högre kapacitet. Använda lokala webbgränssnittet för att konfigurera och registrera har virtuella Målmatrisen.
   
   > [!IMPORTANT]
-  > Försök inte tooconfigure hello registrerade virtuella enheten via hello-tjänsten. Ingen enhetskonfiguration ska utföras via hello-tjänsten.
+  > Försök inte konfigurera den registrerade virtuella enheten via tjänsten. Ingen enhetskonfiguration ska utföras via tjänsten.
   > 
   > 
-* hello målenhet kan inte ha samma namn som hello källenheten hello.
-* hello käll- och enheten har toobe hello samma typ. Du kan bara redundansväxla virtuella matriskonfiguration som en fil tooanother filserver. hello sak samma gäller för en iSCSI-server.
-* För en filserver DR rekommenderar vi att ansluta till hello mål enheten toohello samma domän som hello källa. Den här konfigurationen garanterar att hello resursbehörigheter löses automatiskt. Endast hello redundans tooa målenhet i hello samma domän.
-* hello tillgängliga målenheterna för Katastrofåterställning är enheter som har hello samma eller större kapacitet jämfört med toohello källenheten. hello enheter som är anslutna tooyour tjänsten men inte uppfyller hello kriterier tillräckligt utrymme är inte tillgängliga som målenheter.
+* Målenheten kan inte ha samma namn som källan.
+* Käll- och enheten måste vara av samma typ. Du kan bara redundansväxla virtuella matriskonfiguration som en filserver till en annan filserver. Detsamma gäller för en iSCSI-server.
+* För en filserver DR rekommenderar vi att du ansluter målenheten till samma domän som källa. Den här konfigurationen garanterar att behörigheter till resursen löses automatiskt. Endast redundans till en målenhet i samma domän.
+* De tillgängliga målenheterna för Katastrofåterställning är enheter som har samma eller större kapacitet jämfört med källan. De enheter som är anslutna till din tjänst men inte uppfyller villkoren för tillräckligt med utrymme är inte tillgängliga som målenheter.
 
 ### <a name="other-considerations"></a>Andra överväganden
 
 * För en planerad redundans 
   
-  * Vi rekommenderar att du vidtar alla hello volymer eller resurser på hello källenheten offline.
-  * Vi rekommenderar att du gör en säkerhetskopia av hello enhet och gå sedan vidare med hello redundans toominimize dataförlust. 
-* För en oplanerad redundans använder hello enhet hello senaste säkerhetskopiering toorestore hello data.
+  * Vi rekommenderar att du vidtar alla volymer eller resurser på källenheten offline.
+  * Vi rekommenderar att du gör en säkerhetskopia av enheten och fortsätt sedan med växling vid fel för att minimera dataförlust. 
+* En oplanerad redundans med enheten använder den senaste säkerhetskopian för att återställa data.
 
 ### <a name="device-failover-prechecks"></a>Enheten redundans prechecks
 
-Innan hello DR börjar, utför hello enheten prechecks. Dessa kontroller att säkerställa att inga fel inträffar när DR påbörjas. Hej prechecks omfattar:
+Innan DR börjar utför prechecks på enheten. Dessa kontroller att säkerställa att inga fel inträffar när DR påbörjas. Prechecks omfattar:
 
-* Verifiera hello storage-konto.
-* Kontrollerar hello molnet anslutning tooAzure.
-* Kontrollerar diskutrymme på hello målenhet.
+* Verifiera lagringskontot.
+* Kontrollerar anslutningen molnet till Azure.
+* Kontrollerar diskutrymme på målenheten.
 * Kontrollerar om en iSCSI-server enheten källvolymen har
   
   * giltiga ACR-namn.
   * giltig IQN (högst 220 tecken).
   * giltig CHAP-lösenord (12-16 tecken lång).
 
-Du kan inte fortsätta med hello DR om någon av hello föregående prechecks misslyckas. Lösa dessa problem och försök sedan DR.
+Du kan inte fortsätta med DR om något av föregående prechecks misslyckas. Lösa dessa problem och försök sedan DR.
 
-När hello DR har slutförts är hello ägarskap för hello molndata på hello källenheten överförda toohello målenhet. hello källenheten är inte längre tillgänglig i portalen hello sedan. Åtkomst tooall hello volymer/resurser på hello källenheten blockeras och hello målenhet blir aktiv.
+När ar har slutförts överförs ägarskapet till molndata på källan till målenheten. Källenhet är sedan inte längre i portalen. Blockeras åtkomst till alla volymer/resurser på källan och målenheten blir aktiv.
 
 > [!IMPORTANT]
-> Även om hello enheten inte är längre tillgänglig, förbrukar hello virtuell dator som du har etablerat hello värdsystemet fortfarande resurser. När hello DR har slutförts kan du ta bort den här virtuella datorn från värdsystemet.
+> Om enheten är inte längre tillgänglig, förbrukar den virtuella datorn som du har etablerats på värdsystemet fortfarande resurser. När ar har slutförts kan du ta bort den här virtuella datorn från värdsystemet.
 > 
 > 
 
-## <a name="fail-over-tooa-virtual-array"></a>Växla över tooa virtuella matris
+## <a name="fail-over-to-a-virtual-array"></a>Växla över till en virtuell matris
 
 Vi rekommenderar att etablera, konfigurera och registrera en annan virtuell StorSimple-matris med din StorSimple Device Manager-tjänsten innan du kör den här proceduren.
 
 > [!IMPORTANT]
 > 
-> * Du kan inte växla över från en StorSimple 8000-serien enheten tooa 1200 virtuell enhet.
-> * Du kan växla över från en FIPS Federal Information Processing Standard () aktiverade virtuella enheten tooanother FIPS-aktiverad enhet eller tooa inte FIPS-enhet som distribuerats i hello Government portal.
+> * Du kan inte växla över från en StorSimple 8000-serieenhet till en virtuell enhet 1200.
+> * Du kan växla över från en virtuell enhet FIPS Federal Information Processing Standard () aktiverade till en annan FIPS-aktiverad enhet eller till en icke-FIPS-enhet som har distribuerats i Government-portalen.
 
 
-Utföra hello följande steg toorestore hello enheten tooa mål virtuella StorSimple-enheten.
+Utför följande steg för att återställa enheten till en mål virtuella StorSimple-enheten.
 
-1. Etablera och konfigurera en målenhet som uppfyller hello [krav för växling vid fel för enheten](#prerequisites). Slutföra hello enhetskonfiguration via hello lokala webbgränssnittet och registrera den tooyour StorSimple enheten Manager-tjänsten. Om du skapar en filserver, gå toostep 1 av [som filserver](storsimple-virtual-array-deploy3-fs-setup.md#step-1-complete-the-local-web-ui-setup-and-register-your-device). Om du skapar en iSCSI-server går toostep 1 av [konfigurerats som server för iSCSI-](storsimple-virtual-array-deploy3-iscsi-setup.md#step-1-complete-the-local-web-ui-setup-and-register-your-device).
+1. Etablera och konfigurera en målenhet som uppfyller den [krav för växling vid fel för enheten](#prerequisites). Slutför enhetskonfiguration via lokala webbgränssnittet och registrera till din StorSimple Device Manager-tjänsten. Om du skapar en filserver, går du till steg 1 av [som filserver](storsimple-virtual-array-deploy3-fs-setup.md#step-1-complete-the-local-web-ui-setup-and-register-your-device). Om du skapar en iSCSI-server går du till steg 1 av [konfigurerats som server för iSCSI-](storsimple-virtual-array-deploy3-iscsi-setup.md#step-1-complete-the-local-web-ui-setup-and-register-your-device).
 
-2. Ta volymer/resurser offline på hello värden. tootake hello volymer/resurser offline finns toohello operativsystem – specifika anvisningar för hello värden. Om inte redan offline, måste tootake alla hello volymer/resurser offline på hello enheten hello följande.
+2. Ta volymer/resurser offline på värden. Om du vill koppla volymer/resurser finns i operativsystemet – specifika instruktionerna för värden. Om det inte redan offline, måste du ta alla volymer/resurser offline på enheten genom att göra följande.
    
-    1. Gå för**enheter** bladet och välj din enhet.
+    1. Gå till **enheter** bladet och välj din enhet.
    
-    2. Gå för**Inställningar > Hantera > resurser** (eller **Inställningar > Hantera > volymer**). 
+    2. Gå till **Inställningar > Hantera > resurser** (eller **Inställningar > Hantera > volymer**). 
    
     3. Välj en resurs/volym, högerklicka och välj **ta offline**. 
    
-    4. När du uppmanas att bekräfta att kontrollera **jag förstår hello effekten av att den här resursen tas offline.** 
+    4. När du uppmanas att bekräfta att kontrollera **jag förstår konsekvenserna av att ta resursen offline.** 
    
     5. Klicka på **ta offline**.
 
-3. I Enhetshanteraren för StorSimple-tjänsten går för**Management > enheter**. I hello **enheter** bladet Välj och klicka på din källenhet.
+3. I Enhetshanteraren för StorSimple-tjänsten går du till **Management > enheter**. I den **enheter** bladet Välj och klicka på din källenhet.
 
 4. I din **enheten instrumentpanelen** bladet, klickar du på **inaktivera**.
 
-5. I hello **inaktivera** bladet du uppmanas att bekräfta. Inaktivering av enheten är en *permanent* process som inte kan ångras. Du är också en påminnelse om tootake dina resurser/volymer offline på hello värden. Ange hello enheten namnet tooconfirm och klicka på **inaktivera**.
+5. I den **inaktivera** bladet du uppmanas att bekräfta. Inaktivering av enheten är en *permanent* process som inte kan ångras. Du har också en påminnelse om att ta dina resurser/volymer offline på värden. Skriv enhetsnamnet för att bekräfta och klicka på **inaktivera**.
    
     ![](./media/storsimple-virtual-array-failover-dr/failover1.png)
-6. inaktivering av hello startar. Du får ett meddelande när hello inaktiveringen har slutförts.
+6. Inaktiveringen startar. Du får ett meddelande när inaktiveringen har slutförts.
    
     ![](./media/storsimple-virtual-array-failover-dr/failover2.png)
-7. Hello enheter på sidan hello enhetens tillstånd kommer nu att ändras för**inaktiverad**.
+7. Enhetens tillstånd ändras på sidan enheter nu till **inaktiverad**.
     ![](./media/storsimple-virtual-array-failover-dr/failover3.png)
-8. I hello **enheter** bladet, väljer och klickar på hello inaktiverade källenheten för redundans. 
-9. I hello **enheten instrumentpanelen** bladet, klickar du på **växla över**. 
-10. I hello **växla över enhet** bladet hello följande:
+8. I den **enheter** bladet Välj och klicka på inaktiverad källenheten för redundans. 
+9. I den **enheten instrumentpanelen** bladet, klickar du på **växla över**. 
+10. I den **växla över enhet** bladet gör du följande:
     
-    1. hello källa enhetens fält fylls i automatiskt. Observera hello totala datastorleken för hello källenheten. hello Datastorleken måste vara mindre än hello tillgänglig kapacitet på hello målenhet. Granska hello information som är associerade med hello källenheten som enhetsnamn, total kapacitet och hello namnen på hello-resurser som har redundansväxlats.
+    1. Källan enhetens fält fylls i automatiskt. Observera den totala datastorleken för källan. Storleken på data ska vara mindre än den tillgängliga kapaciteten på målenheten. Granska informationen som är associerade med källenheten som enhetsnamn, total kapacitet och namnen på de resurser som har redundansväxlats.
 
-    2. Hello nedrullningsbara listan över tillgängliga enheter, väljer en **målenhet**. Endast hello-enheter som har tillräckligt med kapacitet visas i listrutan för hello.
+    2. Välj den nedrullningsbara listan över tillgängliga enheter en **målenhet**. Endast de enheter som har tillräcklig kapacitet för visas i listrutan.
 
-    3. Kontrollera att **jag förstår att den här åtgärden växlar över data toohello målenhet**. 
+    3. Kontrollera att **jag förstår att den här åtgärden växlar över data till målenheten**. 
 
     4. Klicka på **växla över**.
     
         ![](./media/storsimple-virtual-array-failover-dr/failover4.png)
-11. Initierar ett jobb för växling vid fel och du får ett meddelande. Gå för**enheter > jobb** toomonitor hello redundans.
+11. Initierar ett jobb för växling vid fel och du får ett meddelande. Gå till **enheter > jobb** att övervaka växling vid fel.
     
      ![](./media/storsimple-virtual-array-failover-dr/failover5.png)
-12. I hello **jobb** bladet du ser ett failover-jobb skapas för hello källenheten. Det här jobbet utför hello DR prechecks.
+12. I den **jobb** bladet du ser ett failover-jobb skapas för källan. Det här jobbet utför DR prechecks.
     
     ![](./media/storsimple-virtual-array-failover-dr/failover6.png)
     
-     När hello DR prechecks är lyckas, kommer hello beställningsjobbet starta återställningsjobb för varje resurs/volym som finns på källenheten.
+     När DR prechecks är lyckas, kommer beställningsjobbet starta återställningsjobb för varje resurs/volym som finns på källenheten.
     
     ![](./media/storsimple-virtual-array-failover-dr/failover7.png)
-13. När hello redundansväxlingen är klar, går toohello **enheter** bladet.
+13. När redundansväxlingen är klar, går du till den **enheter** bladet.
     
-    1. Välj och klicka på hello StorSimple-enhet som användes som hello målenhet för hello failover-processen.
-    2. Gå för**Inställningar > Management > resurser** (eller **volymer** om iSCSI-server). I hello **resurser** bladet du kan visa alla hello resurser (volymer) från hello gamla enhet.
+    1. Välj och klicka på den virtuella StorSimple-enheten som användes som målenhet för failover-processen.
+    2. Gå till **Inställningar > Management > resurser** (eller **volymer** om iSCSI-server). I den **resurser** bladet kan du visa alla resurser (volymer) från den gamla enheten.
         ![](./media/storsimple-virtual-array-failover-dr/failover9.png)
-14. Du behöver för[skapa en DNS-alias](https://support.microsoft.com/kb/168322) så att alla hello program som försöker tooconnect får omdirigerade toohello ny enhet.
+14. Du behöver [skapa en DNS-alias](https://support.microsoft.com/kb/168322) så att alla program som försöker ansluta till kan omdirigeras till den nya enheten.
 
 ## <a name="errors-during-dr"></a>Fel uppstod vid Katastrofåterställning
 
 **Molnet anslutningen avbrott under Katastrofåterställning**
 
-Om hello molnet anslutningen avbryts efter DR har startat och innan hello enheten återställningen är slutförd, hello DR misslyckas. Du får ett meddelande om failore. hello målenhet för Katastrofåterställning är markerad som *inte kan användas.* Du kan inte använda hello samma målenhet för framtida DRs.
+Om molnet anslutningen avbryts när DR har startats och innan enheten återställningen är slutförd, misslyckas DR. Du får ett meddelande om failore. Målenhet för Katastrofåterställning är markerad som *inte kan användas.* Du kan inte använda samma målenhet för framtida DRs.
 
 **Ingen kompatibel målenheter**
 
-Om hello tillgängliga målenheterna inte har tillräckligt med utrymme, ser du att det finns ingen kompatibel målenheterna fel toohello effekt.
+Om tillgängliga målservrar enheter inte har tillräckligt med utrymme, ser du ett fel i syfte att det finns ingen kompatibel målenheter.
 
 **Precheck fel**
 
-Om en av hello prechecks inte är uppfyllt, se precheck fel.
+Om en av prechecks inte är uppfyllt, se precheck fel.
 
 ## <a name="business-continuity-disaster-recovery-bcdr"></a>Katastrofåterställning för verksamhetskontinuitet (BCDR)
 
-En business continuity (BCDR) katastrofåterställning inträffar när hello hela Azure-datacenter slutar att fungera. Detta kan påverka din StorSimple Device Manager-tjänst och hello associerad StorSimple-enheter.
+En business continuity (BCDR) katastrofåterställning inträffar när hela Azure-datacentret slutar att fungera. Detta kan påverka din StorSimple Device Manager-tjänst och de associera StorSimple-enheterna.
 
-Om StorSimple-enheter som registrerats precis innan en katastrof inträffade måste dessa StorSimple-enheter toobe tas bort. Du kan återskapa och konfigurera enheterna efter hello katastrofåterställning.
+Om StorSimple-enheter som registrerats precis innan en katastrof inträffade behöva dessa StorSimple-enheter som ska tas bort. Efter en katastrof kan du återskapa och konfigurerar enheterna.
 
 ## <a name="next-steps"></a>Nästa steg
 
-Läs mer om hur för[administrera din virtuella StorSimple-matris med hello lokala webbgränssnittet](storsimple-ova-web-ui-admin.md).
+Mer information om hur du [administrera din virtuella StorSimple-matris med lokala webbgränssnittet](storsimple-ova-web-ui-admin.md).
 

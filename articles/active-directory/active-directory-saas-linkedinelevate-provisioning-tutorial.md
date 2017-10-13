@@ -1,6 +1,6 @@
 ---
 title: "Självstudier: Konfigurera LinkedIn höjer för automatisk användaretablering med Azure Active Directory | Microsoft Docs"
-description: "Lär dig hur tooconfigure Azure Active Directory tooautomatically etablera och avinstallation etablera användarkonton tooLinkedIn utöka."
+description: "Lär dig hur du konfigurerar Azure Active Directory för att etablera och avetablera användarkonton till LinkedIn höjer automatiskt."
 services: active-directory
 documentationcenter: 
 author: asmalser-msft
@@ -14,109 +14,109 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/15/2017
 ms.author: asmalser-msft
-ms.openlocfilehash: 08201c078ece0054e75ec0c004840e5186e0e704
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 526666301aad1e5284c621024649d9cd52c92d18
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-configuring-linkedin-elevate-for-automatic-user-provisioning"></a>Självstudier: Konfigurera LinkedIn höja för automatisk Användaretablering
 
 
-hello syftet med den här kursen är tooshow du hello stegen tooperform i LinkedIn höjer och Azure AD tooautomatically etablera och avinstallation etablera användarkonton från Azure AD tooLinkedIn utöka. 
+Syftet med den här kursen är att visa de steg som du behöver göra i LinkedIn höjer och Azure AD för att automatiskt etablera och avetablera användarkonton från Azure AD att upphöja LinkedIn. 
 
 ## <a name="prerequisites"></a>Krav
 
-hello-scenario som beskrivs i den här kursen förutsätter att du redan har hello följande objekt:
+Det scenario som beskrivs i den här kursen förutsätter att du redan har följande objekt:
 
 *   En Azure Active Directory-klient
 *   En LinkedIn höjer klient 
-*   Ett administratörskontot i LinkedIn höjer med åtkomst toohello LinkedIn Account Center
+*   Ett administratörskontot i LinkedIn höjer med åtkomst till LinkedIn Account Center
 
 > [!NOTE]
-> Azure Active Directory kan integreras med LinkedIn höjer med hjälp av hello [SCIM](http://www.simplecloud.info/) protokoll.
+> Azure Active Directory kan integreras med LinkedIn höjer med hjälp av den [SCIM](http://www.simplecloud.info/) protokoll.
 
-## <a name="assigning-users-toolinkedin-elevate"></a>Tilldela användare tooLinkedIn utöka
+## <a name="assigning-users-to-linkedin-elevate"></a>Tilldela användare till LinkedIn höjer
 
-Azure Active Directory använder ett begrepp som kallas ”tilldelningar” toodetermine som användarna ska få åtkomst till tooselected appar. Hello gäller automatisk konto användaretablering är kommer bara hello användare och grupper som har ”tilldelats” tooan program i Azure AD att synkroniseras. 
+Azure Active Directory använder ett begrepp som kallas ”tilldelningar” för att avgöra vilka användare ska få åtkomst till valda appar. I samband med automatisk konto användaretablering, kommer endast användare och grupper som har ”tilldelats” till ett program i Azure AD att synkroniseras. 
 
-Innan du konfigurerar och aktiverar hello etableras, behöver du toodecide vilka användare och/eller grupper i Azure AD som representerar hello-användare som behöver åtkomst till tooLinkedIn utöka. När du valt, kan du tilldela dessa användare tooLinkedIn utöka genom att följa hello anvisningarna här:
+Innan du konfigurerar och aktiverar tjänsten etablering, måste du bestämma vilka användare och/eller grupper i Azure AD representerar de användare som behöver åtkomst till LinkedIn höjer. När bestämt, kan du tilldela dessa användare till LinkedIn höjer genom att följa anvisningarna här:
 
-[Tilldela en användare eller grupp tooan enterprise app](active-directory-coreapps-assign-user-azure-portal.md)
+[Tilldela en användare eller grupp till en enterprise-app](active-directory-coreapps-assign-user-azure-portal.md)
 
-### <a name="important-tips-for-assigning-users-toolinkedin-elevate"></a>Viktiga tips för att tilldela användare tooLinkedIn utöka
+### <a name="important-tips-for-assigning-users-to-linkedin-elevate"></a>Viktiga tips för att tilldela användare till LinkedIn höjer
 
-*   Vi rekommenderar att en enda Azure AD-användare tilldelas tooLinkedIn utöka tootest hello etablering konfiguration. Ytterligare användare och/eller grupper kan tilldelas senare.
+*   Vi rekommenderar att en enda Azure AD-användare tilldelas LinkedIn höjer att testa allokering konfigurationen. Ytterligare användare och/eller grupper kan tilldelas senare.
 
-*   När du tilldelar en användare tooLinkedIn utöka, måste du välja hello **användaren** roll i dialogrutan för hello tilldelning. Hej ”standard” rollen fungerar inte för etablering.
-
-
-## <a name="configuring-user-provisioning-toolinkedin-elevate"></a>Konfigurera användaretablering tooLinkedIn utöka
-
-Det här avsnittet hjälper dig att ansluta din Azure AD tooLinkedIn utöka SCIM användarkonto API-etablering och konfigurerar hello etablering service toocreate, uppdatera och inaktivera tilldelade användarkonton i LinkedIn höjer baserat på användare och grupper tilldelning i Azure AD.
-
-**Tips:** du kan också välja tooenabled SAML-baserade enkel inloggning för LinkedIn höjer följa instruktionerna i hello [Azure-portalen](https://portal.azure.com). Enkel inloggning kan konfigureras oberoende av Automatisk etablering, även om dessa två funktioner kompletterar varandra.
+*   När du tilldelar en användare LinkedIn höjer, måste du välja den **användaren** roll i dialogrutan tilldelning. Rollen ”standard åtkomst” fungerar inte för etablering.
 
 
-### <a name="tooconfigure-automatic-user-account-provisioning-toolinkedin-elevate-in-azure-ad"></a>tooconfigure automatisk användarkonto etablering tooLinkedIn utöka i Azure AD:
+## <a name="configuring-user-provisioning-to-linkedin-elevate"></a>Konfigurering av användarförsörjning att upphöja LinkedIn
+
+Det här avsnittet hjälper dig att ansluta din Azure AD till LinkedIn höjer SCIM användarkonto API-etablering och konfigurera tjänsten etablering för att skapa, uppdatera och inaktivera tilldelade användarkonton i LinkedIn höjer baserat på användare och grupptilldelning i Azure AD.
+
+**Tips:** du kan också välja att aktiveras SAML-baserade enkel inloggning för LinkedIn höjer följa instruktionerna i [Azure-portalen](https://portal.azure.com). Enkel inloggning kan konfigureras oberoende av Automatisk etablering, även om dessa två funktioner kompletterar varandra.
 
 
-hello första steget är tooretrieve LinkedIn-åtkomsttoken. Om du är företagsadministratör kan etablera du själv en åtkomst-token. Gå för i din kontocenter**inställningar &gt; globala inställningar** och öppna hello **SCIM installationsprogrammet** panelen.
+### <a name="to-configure-automatic-user-account-provisioning-to-linkedin-elevate-in-azure-ad"></a>Konfigurera automatisk konto användaretablering att upphöja LinkedIn i Azure AD:
+
+
+Det första steget är att hämta LinkedIn-åtkomsttoken. Om du är företagsadministratör kan etablera du själv en åtkomst-token. Gå till i din kontocenter **inställningar &gt; globala inställningar** och öppna den **SCIM installationsprogrammet** panelen.
 
 > [!NOTE]
-> Om du öppnar hello kontocenter direkt i stället för via en länk, kan du nå den med hjälp av hello följande steg.
+> Om du ansluter till mitt konto direkt i stället för via en länk, kan du nå den med hjälp av följande steg.
 
-1)  Logga in tooAccount Center.
+1)  Logga in på kontot Center.
 
 2)  Välj **Admin &gt; administrationsinställningar** .
 
-3)  Klicka på **avancerade integreringar** på hello vänstra sidopanelen. Du är riktat toohello kontocenter.
+3)  Klicka på **avancerade integreringar** på vänster sidopanelen. Du dirigeras till mitt konto.
 
-4)  Klicka på **+ Lägg till ny SCIM konfiguration** och följa hello genom att fylla i varje fält.
+4)  Klicka på **+ Lägg till ny SCIM konfiguration** och följer du proceduren genom att fylla i varje fält.
 
 > När autoassign licenser inte är aktiverad, innebär det att endast användardata är synkroniserad.
 
 ![LinkedIn höjer etablering](./media/active-directory-saas-linkedin-elevate-provisioning-tutorial/linkedin_elevate1.PNG)
 
-> När autolicense tilldelning har aktiverats måste toonote programinstansen och licenstyp. Licenser är kopplade till en första komma, först hantera bas tills alla hello licenser tas.
+> När autolicense tilldelning har aktiverats måste du Observera programinstansen och licenstypen. Licenser är kopplade till en första komma, först hantera bas tills alla licenser tas.
 
 ![LinkedIn höjer etablering](./media/active-directory-saas-linkedin-elevate-provisioning-tutorial/linkedin_elevate2.PNG)
 
-5)  Klicka på **skapa token**. Du bör se bildskärmen åtkomst-token under hello **åtkomsttoken** fältet.
+5)  Klicka på **skapa token**. Du bör se din token visas under den **åtkomsttoken** fältet.
 
-6)  Spara din dator eller en åtkomst-token tooyour Urklipp innan de lämnar hello-sidan.
+6)  Spara åtkomst-token till Urklipp eller en dator innan du lämnar sidan.
 
-7) Logga sedan in toohello [Azure-portalen](https://portal.azure.com), och bläddra toohello **Azure Active Directory > Företagsappar > alla program** avsnitt.
+7) Logga sedan in till den [Azure-portalen](https://portal.azure.com), och bläddra till den **Azure Active Directory > Företagsappar > alla program** avsnitt.
 
-8) Om du redan har konfigurerat LinkedIn höjer för enkel inloggning, söka efter din instans av LinkedIn höjer med hjälp av hello sökfältet. Annars väljer **Lägg till** och Sök efter **LinkedIn höjer** i hello programgalleriet. Välj LinkedIn höjer hello sökresultat och Lägg den tooyour listan med program.
+8) Om du redan har konfigurerat LinkedIn höjer för enkel inloggning, söka efter din instans av LinkedIn höjer med hjälp av sökfältet. Annars väljer **Lägg till** och Sök efter **LinkedIn höjer** i programgalleriet. Välj LinkedIn höjer i sökresultatet och lägga till den i listan med program.
 
-9)  Välj din instans av LinkedIn höjer och sedan hello **etablering** fliken.
+9)  Välj din instans av LinkedIn höjer och sedan den **etablering** fliken.
 
-10) Ange hello **etablering läge** för**automatisk**.
+10) Ange den **Etableringsläge** till **automatisk**.
 
 ![LinkedIn höjer etablering](./media/active-directory-saas-linkedin-elevate-provisioning-tutorial/linkedin_elevate3.PNG)
 
-11)  Fyll i följande fält under hello **administratörsautentiseringsuppgifter** :
+11)  Fyll i följande fält under **administratörsautentiseringsuppgifter** :
 
-* I hello **klient URL** anger https://api.linkedin.com.
+* I den **klient URL** anger https://api.linkedin.com.
 
-* I hello **hemlighet Token** skriver hello åtkomst-token som du genererade i steg 1 och klicka på **Testanslutningen** .
+* I den **hemlighet Token** skriver den åtkomst-token som du genererade i steg 1 och klicka på **Testanslutningen** .
 
-* Du bör se ett meddelande om lyckade på hello upperright sida av portalen.
+* Du bör se ett meddelande om lyckade på upperright sida av portalen.
 
-12) Ange hello e-postadress för en person eller grupp som ska få meddelanden om etablering fel i hello **e-postmeddelande** fält och markera kryssrutan hello nedan.
+12) Ange e-postadressen för en person eller grupp som ska få meddelanden om etablering fel i den **e-postmeddelande** fält och markera kryssrutan nedan.
 
 13) Klicka på **Spara**. 
 
-14) I hello **attributmappning** avsnittet kan du granska hello användar- och Gruppattribut som ska synkroniseras från Azure AD tooLinkedIn utöka. Observera att hello attribut som valts som **matchande** egenskaper kommer att använda toomatch hello användarkonton och grupper i LinkedIn höjer för uppdateringsåtgärder. Välj hello spara knappen toocommit ändringar.
+14) I den **attributmappning** avsnittet kan du granska attributen användare och grupper som ska synkroniseras från Azure AD att upphöja LinkedIn. Observera att attribut som är markerade som **matchande** egenskaper som används för att matcha användarkonton och grupper i LinkedIn höjer för uppdateringsåtgärder. Välj knappen Spara för att genomföra ändringarna.
 
 ![LinkedIn höjer etablering](./media/active-directory-saas-linkedin-elevate-provisioning-tutorial/linkedin_elevate4.PNG)
 
-15) tooenable hello Azure AD-etablering tjänsten för LinkedIn höjer ändra hello **Status för etablering** för**på** i hello **inställningar** avsnitt
+15) Om du vill aktivera Azure AD etableras för LinkedIn höjer ändra den **Status för etablering** till **på** i den **inställningar** avsnitt
 
 16) Klicka på **Spara**. 
 
-Detta startar hello inledande synkronisering av alla användare och/eller grupper som har tilldelats tooLinkedIn utöka under hello användare och grupper. Observera att hello inledande synkronisering tar längre tid tooperform än efterföljande synkroniseringar som sker ungefär var tjugonde minut så länge hello-tjänsten körs. Du kan använda hello **synkroniseringsinformation** avsnittet toomonitor förlopp och följ länkarna tooprovisioning aktivitetsrapporter, som beskriver alla åtgärder som utförs av hello etableras LinkedIn höjer appen.
+Detta startar den första synkroniseringen av användare och/eller grupper som tilldelas till LinkedIn höjer i avsnittet användare och grupper. Observera att den första synkroniseringen ta längre tid än efterföljande synkroniseringar som sker ungefär var tjugonde minut så länge som tjänsten körs. Du kan använda den **synkroniseringsinformation** avsnittet för att övervaka förloppet och följ länkarna till att etablera aktivitetsrapporter som beskriver alla åtgärder som utförs av tjänsten etablering i appen LinkedIn höjer.
 
 
 ## <a name="additional-resources"></a>Ytterligare resurser

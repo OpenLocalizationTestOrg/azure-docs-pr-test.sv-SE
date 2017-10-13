@@ -1,5 +1,5 @@
 ---
-title: "aaaTroubleshoot BizTalk-tjänster med hjälp av åtgärdsloggar | Microsoft Docs"
+title: "Felsöka BizTalk-tjänster med hjälp av åtgärdsloggar | Microsoft Docs"
 description: "Felsöka BizTalk-tjänster med hjälp av åtgärdsloggar. MABS WABS"
 services: biztalk-services
 documentationcenter: 
@@ -14,51 +14,51 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: 102779ed6e29784f190c28e4102a7d9670614914
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: c0c83361f94ffd9c30d7fcc551ff4b85ad7d6fa5
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="biztalk-services-troubleshoot-using-operation-logs"></a>BizTalk-tjänst: Felsökning med åtgärdsloggar
 
 > [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
 
-## <a name="what-are-hello-operation-logs"></a>Vad är hello Åtgärdsloggar
-Åtgärdsloggar är en funktion för tjänster som är tillgängliga i hello klassiska Azure-portalen där du tooview historiska loggar av åtgärder som utförs på Azure-tjänster, inklusive BizTalk-tjänst. Detta gör att du tooview historiska data toomanagement åtgärder på prenumerationen BizTalk Service så långt tillbaka 180 dagar.
+## <a name="what-are-the-operation-logs"></a>Vad är den Åtgärdsloggar
+Åtgärdsloggar är en funktion för tjänster som är tillgängliga i den klassiska Azure-portalen där du kan visa historiska loggar av åtgärder som utförs på Azure-tjänster, inklusive BizTalk-tjänst. På så sätt kan du visa historiska data som rör hanteringsåtgärder på prenumerationen BizTalk Service så långt tillbaka 180 dagar.
 
 > [!NOTE]
-> Den här funktionen endast samlar in loggar för hanteringsåtgärder på BizTalk-tjänster, till exempel när hello-tjänsten har startats backas upp, och så vidare. Dessa åtgärder spåras oavsett om de utförs hello klassiska Azure-portalen eller med hjälp av hello [BizTalk Service REST API: er](http://msdn.microsoft.com/library/azure/dn232347.aspx). En fullständig lista över åtgärder som spåras använder tjänster finns [Operations spårade med hjälp av Azure hanteringstjänster](#bizops).<br/><br/>
-> Detta in inte hello loggar för aktiviteter relaterade tooBizTalk körtid (t.ex (meddelande bearbetas av bryggor osv.). tooview dessa loggar, Använd hello spårning vyn från hello BizTalk-Services-portalen. Mer information finns i [spårning av meddelanden](http://msdn.microsoft.com/library/azure/hh949805.aspx).
+> Den här funktionen endast samlar in loggar för hanteringsåtgärder på BizTalk-tjänster, till exempel när tjänsten startades backas upp, och så vidare. Dessa åtgärder spåras oavsett om de utförs från den klassiska Azure-portalen eller med hjälp av den [BizTalk Service REST API: er](http://msdn.microsoft.com/library/azure/dn232347.aspx). En fullständig lista över åtgärder som spåras använder tjänster finns [Operations spårade med hjälp av Azure hanteringstjänster](#bizops).<br/><br/>
+> Detta in inte loggar för aktiviteter som rör BizTalk Service runtime (t.ex (meddelande bearbetas av bryggor osv.). Om du vill visa loggarna använder du vyn spårning från BizTalk-Services-portalen. Mer information finns i [spårning av meddelanden](http://msdn.microsoft.com/library/azure/hh949805.aspx).
 > 
 > 
 
 ## <a name="view-biztalk-services-operation-logs"></a>Visa BizTalk Services Åtgärdsloggar
-1. Välj i hello klassiska Azure-portalen, **hanteringstjänster**, och välj sedan hello **Åtgärdsloggar** fliken.
-2. Du kan filtrera hello loggar baserat på olika parametrar som prenumeration, datumintervall, service-typen (t.ex. BizTalk-tjänst), tjänstnamn eller status för hello-åtgärd (lyckades, misslyckades).
-3. Välj hello markering tooview hello filtrerad lista. hello följande bild visar aktiviteter relaterade tootestbiztalkservice: ![visa åtgärdsloggar][ViewLogs] 
-4. tooview mer information om en specifik åtgärd, Välj hello raden och klicka på **information** i hello Aktivitetsfältet längst ned hello.
+1. I den klassiska Azure-portalen väljer **hanteringstjänster**, och välj sedan den **Åtgärdsloggar** fliken.
+2. Du kan filtrera loggarna baserat på olika parametrar som prenumeration, datumintervall, service-typen (t.ex. BizTalk-tjänst), tjänstnamn eller status för åtgärden (lyckades, misslyckades).
+3. Välj på bockmarkeringen för att visa en filtrerad lista. Följande bild visar aktiviteter relaterade till testbiztalkservice: ![visa åtgärdsloggar][ViewLogs] 
+4. Om du vill visa mer om en specifik åtgärd, Välj raden och klicka på **information** i Aktivitetsfältet längst ned.
 
 ## <a name="bizops"></a>Åtgärder som spåras med hjälp av Azure hanteringstjänster
-hello visas följande tabell hello-åtgärder som spåras med hello Azure Management Services:
+I följande tabell visas de åtgärder som spåras med Azure Management Services:
 
 | Åtgärdsnamn | Aktivitet |
 | --- | --- |
-| CreateBizTalkService |Åtgärden toocreate en ny BizTalk Service |
-| DeleteBizTalkService |Åtgärden toodelete en BizTalk Service |
-| RestartBizTalkService |Åtgärden toorestart en BizTalk Service |
-| StartBizTalkService |Åtgärden toostart en BizTalk Service |
-| StopBizTalkService |Åtgärden toostop en BizTalk Service |
-| DisableBizTalkService |Åtgärden toodisable en BizTalk Service |
-| EnableBizTalkService |Åtgärden tooenable en BizTalk Service |
-| BackupBizTalkService |Åtgärden tooback upp en BizTalk Service |
-| RestoreBizTalkService |Åtgärden toorestore en BizTalk Service från angivna säkerhetskopia |
-| SuspendBizTalkService |Åtgärden toosuspend en BizTalk Service |
-| ResumeBizTalkService |Åtgärden tooresume en BizTalk Service |
-| ScaleBizTalkService |Åtgärden tooscale en BizTalk Service uppåt eller nedåt |
-| ConfigUpdateBizTalkService |Åtgärden tooupdate hello konfigurationen av en BizTalk Service |
-| ServiceUpdateBizTalkService |Åtgärden tooupgrade eller nedgradering av en annan version för BizTalk Service-tooa |
-| PurgeBackupBizTalkService |Åtgärden toopurge säkerhetskopior av hello BizTalk Service utanför hello kvarhållningsperioden |
+| CreateBizTalkService |Åtgärden för att skapa en ny BizTalk Service |
+| DeleteBizTalkService |Åtgärden ta bort en BizTalk Service |
+| RestartBizTalkService |Åtgärden för att starta om en BizTalk Service |
+| StartBizTalkService |Åtgärden för att starta en BizTalk Service |
+| StopBizTalkService |Åtgärden för att stoppa en BizTalk Service |
+| DisableBizTalkService |Att inaktivera en BizTalk Service |
+| EnableBizTalkService |Åtgärden för att aktivera en BizTalk Service |
+| BackupBizTalkService |Åtgärden för att säkerhetskopiera en BizTalk Service |
+| RestoreBizTalkService |Åtgärden för att återställa en BizTalk Service från angivna säkerhetskopia |
+| SuspendBizTalkService |Åtgärden pausa en BizTalk Service |
+| ResumeBizTalkService |Åtgärden återuppta en BizTalk Service |
+| ScaleBizTalkService |Åtgärden att skala en BizTalk Service uppåt eller nedåt |
+| ConfigUpdateBizTalkService |Åtgärden för att uppdatera konfigurationen av en BizTalk Service |
+| ServiceUpdateBizTalkService |Åtgärd för att uppgradera eller nedgradera en BizTalk Service till en annan version |
+| PurgeBackupBizTalkService |Åtgärden för att rensa säkerhetskopior av BizTalk Service gjorts utanför kvarhållningsperioden |
 
 ## <a name="see-also"></a>Se även
 * [Säkerhetskopiera BizTalk-tjänst](http://go.microsoft.com/fwlink/p/?LinkID=325584)
@@ -69,7 +69,7 @@ hello visas följande tabell hello-åtgärder som spåras med hello Azure Manage
 * [BizTalk Services: Flikarna Instrumentpanel, Övervakare och Skalning](http://go.microsoft.com/fwlink/p/?LinkID=302281)
 * [BizTalk Services: Begränsning](http://go.microsoft.com/fwlink/p/?LinkID=302282)
 * [BizTalk Services: Utfärdarens namn och nyckel](http://go.microsoft.com/fwlink/p/?LinkID=303941)
-* [Hur jag börja använda hello Azure BizTalk Services SDK](http://go.microsoft.com/fwlink/p/?LinkID=302335)
+* [Hur gör jag för att börja använda Azure BizTalk Services SDK?](http://go.microsoft.com/fwlink/p/?LinkID=302335)
 
 [ViewLogs]: ./media/biztalk-troubleshoot-using-ops-logs/Operation-Logs.png
 

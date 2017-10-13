@@ -8,20 +8,20 @@ Latest Freshness check:  2015-09-02 , GeneMi.
 -->
 
 
-### <a name="obtain-hello-connection-string-from-hello-azure-portal"></a>Hämta hello anslutningssträngen från hello Azure-portalen
-Använd hello [Azure-portalen](https://portal.azure.com/) tooobtain hello anslutningssträng krävs för din klient programmet toointeract med Azure SQL Database: 
+### <a name="obtain-the-connection-string-from-the-azure-portal"></a>Hämta anslutningssträngen från Azure-portalen
+Använd den [Azure-portalen](https://portal.azure.com/) att hämta anslutningssträngen som behövs för att klienten ska interagera med Azure SQL Database: 
 
 1. Klicka på **Bläddra** > **SQL-databaser**.
-2. Ange hello namnet på databasen i hello filter-textrutan nära hello längst upp till vänster i hello **SQL-databaser** bladet.
-3. Klicka på hello raden för databasen.
-4. När hello bladet visas för databasen, minimera hello som standard i informationssyfte visual kan du klicka på kontroller toocollapse hello blad som du använde för sökning och filtrering av databasen. 
+2. Ange namnet på databasen i textrutan filter nästan längst upp till vänster i den **SQL-databaser** bladet.
+3. Klicka på raden för databasen.
+4. När det visas i bladet för din databas, visual i informationssyfte du kan klicka på standard minimera kontroller om du vill komprimera blad som du använde för sökning och filtrering av databasen. 
    
-    ![Filtrera tooisolate databasen][10-FilterDatabase]
-5. Klicka på hello bladet för din databas **visa databasanslutningssträngar**.
-6. Om du planerar toouse hello ADO.NET anslutningsbibliotek, kopiera hello sträng med etiketten **ADO**. 
+    ![Filter för att isolera din databas][10-FilterDatabase]
+5. Klicka på bladet för din databas **visa databasanslutningssträngar**.
+6. Om du tänker använda anslutningsbibliotek ADO.NET kopiera strängen med etiketten **ADO**. 
    
-    ![Kopiera hello ADO-anslutningssträng för databasen][20-CopyAdoConnectionString]
-7. Klistra in hello informationen i anslutningssträngen i din programkod för klienten i ett format eller någon annan.
+    ![Kopiera ADO anslutningssträngen för databasen][20-CopyAdoConnectionString]
+7. Klistra in informationen i anslutningssträngen i din programkod för klienten i ett format eller någon annan.
 
 Mer information finns i:<br/>[Anslutningssträngar och konfigurationsfiler](http://msdn.microsoft.com/library/ms254494.aspx).
 

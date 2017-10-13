@@ -4,13 +4,13 @@
 
 # Kom igång
 ## [Identifiera databaser och tabeller](/sql/sql-server/stretch-database/stretch-database-databases-and-tables-stretch-database-advisor)
-## [Kör guiden hello](/sql/sql-server/stretch-database/get-started-by-running-the-enable-database-for-stretch-wizard)
+## [Kör guiden](/sql/sql-server/stretch-database/get-started-by-running-the-enable-database-for-stretch-wizard)
 
 # Gör så här för att
 ## Aktivera
 ### [Aktivera en databas](/sql/sql-server/stretch-database/enable-stretch-database-for-a-database)
 ### [Aktivera en tabell](/sql/sql-server/stretch-database/enable-stretch-database-for-a-table)
-### [Välj rader toomigrate](/sql/sql-server/stretch-database/select-rows-to-migrate-by-using-a-filter-function-stretch-database)
+### [Välj rader att migrera](/sql/sql-server/stretch-database/select-rows-to-migrate-by-using-a-filter-function-stretch-database)
 ## Hantera
 ### [Övervaka migrering av data](/sql/sql-server/stretch-database/monitor-and-troubleshoot-data-migration-stretch-database)
 ### [Pausa och återuppta migrering](/sql/sql-server/stretch-database/pause-and-resume-data-migration-stretch-database)

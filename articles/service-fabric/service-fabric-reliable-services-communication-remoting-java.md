@@ -1,6 +1,6 @@
 ---
-title: "aaaService fjärrkommunikation i Azure Service Fabric | Microsoft Docs"
-description: "Service Fabric-fjärrkommunikation tillåter att klienter och tjänster toocommunicate med tjänster med hjälp av ett fjärranrop."
+title: "Tjänsten fjärrkommunikation i Azure Service Fabric | Microsoft Docs"
+description: "Service Fabric-fjärrkommunikation kan klienter och tjänster att kommunicera med tjänster med hjälp av ett fjärranrop."
 services: service-fabric
 documentationcenter: java
 author: PavanKunapareddyMSFT
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 06/30/2017
 ms.author: pakunapa
-ms.openlocfilehash: 1177a5ede91352dc61422f2df7424b0d5645147d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: dc4a362b5737bb424ca2c196c85f4c51b6ee5e30
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="service-remoting-with-reliable-services"></a>Tjänsten fjärrkommunikation med Reliable Services
 > [!div class="op_single_selector"]
@@ -26,15 +26,15 @@ ms.lasthandoff: 10/06/2017
 >
 >
 
-hello Reliable Services framework tillhandahåller en mekanism tooquickly för fjärrkommunikation och konfigurera enkelt fjärrproceduranrop för tjänster.
+Ramverket för Reliable Services innehåller en mekanism för fjärrkommunikation att snabbt och enkelt konfigurera fjärrproceduranrop för tjänster.
 
 ## <a name="set-up-remoting-on-a-service"></a>Ställa in fjärrstyrning för en tjänst
 Ställa in fjärrstyrning för en tjänst görs i två enkla steg:
 
-1. Skapa ett gränssnitt för service-tooimplement. Det här gränssnittet definierar hello-metoder som är tillgängliga för remote procedure call på din tjänst. hello-metoder måste vara åtgärdsreturnerande asynkrona metoder. hello gränssnittet måste implementera `microsoft.serviceFabric.services.remoting.Service` toosignal som hello tjänst har ett gränssnitt för fjärrkommunikation.
-2. Använd en lyssnare för fjärrkommunikation i din tjänst. Det här är en `CommunicationListener` implementering som tillhandahåller funktioner för fjärrkommunikation. `FabricTransportServiceRemotingListener`kan vara används toocreate en lyssnare för fjärrkommunikation med transportprotokollet för hello standard fjärrkommunikation.
+1. Skapa ett gränssnitt för tjänsten att implementera. Det här gränssnittet definierar metoder som är tillgängliga för remote procedure call på din tjänst. Metoderna måste vara åtgärdsreturnerande asynkrona metoder. Gränssnittet måste implementera `microsoft.serviceFabric.services.remoting.Service` att signalera att tjänsten har ett gränssnitt för fjärrkommunikation.
+2. Använd en lyssnare för fjärrkommunikation i din tjänst. Det här är en `CommunicationListener` implementering som tillhandahåller funktioner för fjärrkommunikation. `FabricTransportServiceRemotingListener`kan användas för att skapa en lyssnare för fjärrkommunikation med transportprotokollet standard fjärrkommunikation.
 
-Till exempel exponerar hello följande tillståndslösa tjänsten en enda metod tooget ”Hello World” över ett fjärranrop.
+Till exempel exponerar följande tillståndslösa tjänsten en metod för att få ”Hello World” över ett fjärranrop.
 
 ```java
 import java.util.ArrayList;
@@ -69,12 +69,12 @@ class MyServiceImpl extends StatelessService implements MyService {
 ```
 
 > [!NOTE]
-> hello argument och hello returnera typer i hello service-gränssnittet kan vara enkla, komplexa eller anpassade typer, men de måste kunna serialiseras.
+> Argumenten och returtyper i gränssnittet service kan vara enkla, komplexa eller anpassade typer, men de måste kunna serialiseras.
 >
 >
 
 ## <a name="call-remote-service-methods"></a>Anropa fjärrtjänsten metoder
-Anropar metoder för en tjänst med hjälp av hello fjärrkommunikation stack görs med hjälp av en lokal proxyserver toohello tjänst via hello `microsoft.serviceFabric.services.remoting.client.ServiceProxyBase` klass. Hej `ServiceProxyBase` metoden skapar en lokal proxyserver genom att använda samma gränssnitt som hello tjänsten implementerar hello. Med denna proxy, kan du bara fjärranropa metoder i hello gränssnitt.
+Anropar metoder för en tjänst med hjälp av fjärrkommunikation stacken görs med hjälp av en lokal proxyserver till tjänsten via den `microsoft.serviceFabric.services.remoting.client.ServiceProxyBase` klass. Den `ServiceProxyBase` metoden skapar en lokal proxyserver genom att använda samma gränssnitt som tjänsten implementerar. Med denna proxy, kan du bara fjärranropa metoder i gränssnittet.
 
 ```java
 
@@ -84,24 +84,24 @@ CompletableFuture<String> message = helloWorldClient.helloWorldAsync();
 
 ```
 
-hello fjärrkommunikation framework sprider undantag på klienten toohello hello-tjänsten. Så undantagshantering logik på hello-klient med hjälp av `ServiceProxyBase` direkt kan hantera undantag som hello tjänsten returnerar.
+Fjärr-framework sprider undantag på tjänsten till klienten. Så undantagshantering logik på klienten med hjälp av `ServiceProxyBase` direkt kan hantera undantag som genereras av tjänsten.
 
 ## <a name="service-proxy-lifetime"></a>Tjänsten Proxylivslängden
-ServiceProxy skapas en enkel åtgärd, så att användare kan skapa så många som de behöver den. Tjänstproxy kan återanvändas så länge användaren behöver den. Användaren kan återanvända hello samma proxy vid undantag. Varje ServiceProxy innehåller kommunikation klienten använde toosend meddelanden över hello-överföring. När du anropar API: T har vi interna kontrollen toosee om kommunikation klienten använde är giltig. Baserat på resultatet återskapar vi hello kommunikation klienten. Därför behöver inte användaren toorecreate serviceproxy vid undantag.
+ServiceProxy skapas en enkel åtgärd, så att användare kan skapa så många som de behöver den. Tjänstproxy kan återanvändas så länge användaren behöver den. Användaren kan återanvända samma proxy vid undantag. Varje ServiceProxy innehåller kommunikation klient används för att skicka meddelanden via kabel. När du anropar API: T har vi interna kontrollerar om kommunikation klienten använde är giltig. Baserat på resultatet återskapar vi klienten för kommunikation. Användaren behöver därför inte att återskapa serviceproxy vid undantag.
 
 ### <a name="serviceproxyfactory-lifetime"></a>ServiceProxyFactory livslängd
 [FabricServiceProxyFactory](https://docs.microsoft.com/en-us/java/api/microsoft.servicefabric.services.remoting.client._fabric_service_proxy_factory) är en fabrik som skapar proxy för olika fjärrkommunikation gränssnitt. Om du använder API `ServiceProxyBase.create` för att skapa proxy, framework skapar sedan en `FabricServiceProxyFactory`.
-Det är användbart toocreate en manuellt när du behöver toooverride [ServiceRemotingClientFactory](https://docs.microsoft.com/en-us/java/api/microsoft.servicefabric.services.remoting.client._service_remoting_client_factory) egenskaper.
+Det är praktiskt att skapa ett manuellt när du måste åsidosätta [ServiceRemotingClientFactory](https://docs.microsoft.com/en-us/java/api/microsoft.servicefabric.services.remoting.client._service_remoting_client_factory) egenskaper.
 Fabriken är en kostsam åtgärd. `FabricServiceProxyFactory`underhåller cache för klienter för kommunikation.
-Bästa praxis är toocache `FabricServiceProxyFactory` så länge som möjligt.
+Bästa praxis är att cacheminnet `FabricServiceProxyFactory` så länge som möjligt.
 
 ## <a name="remoting-exception-handling"></a>Fjärrkommunikation undantagshantering
-Alla hello remote undantagsfel från service API, skickas tillbaka toohello klienten som RuntimeException eller FabricException.
+Alla fjärranslutna undantag som uppstått i tjänsten API, skickas tillbaka till klienten som RuntimeException eller FabricException.
 
-ServiceProxy hanterar alla redundans undantag för hello service partition som skapats för. Hello slutpunkter löser igen om det finns Failover Exceptions(Non-Transient Exceptions) och försöker hello-anrop med hello korrekt slutpunkt. Antal återförsök för redundans undantag är obegränsad.
-Vid TransientExceptions, endast ett nytt försök hello-anrop.
+ServiceProxy hanterar alla Failover-undantag för service-partition som skapats för. Slutpunkterna löser igen om det finns Failover Exceptions(Non-Transient Exceptions) och försöker anropa med korrekt slutpunkt. Antal återförsök för redundans undantag är obegränsad.
+Vid TransientExceptions, endast ett nytt försök anropet.
 
-Försök standardparametrarna är etablerar av [OperationRetrySettings]. (https://docs.microsoft.com/en-us/java/api/microsoft.servicefabric.services.communication.client._operation_retry_settings) Användare kan konfigurera dessa värden genom att skicka OperationRetrySettings objektet tooServiceProxyFactory konstruktor.
+Försök standardparametrarna är etablerar av [OperationRetrySettings]. (https://docs.microsoft.com/en-us/java/api/microsoft.servicefabric.services.communication.client._operation_retry_settings) Användare kan konfigurera dessa värden genom att skicka OperationRetrySettings objekt till ServiceProxyFactory konstruktor.
 
 ## <a name="next-steps"></a>Nästa steg
 * [Att säkra kommunikationen för Reliable Services](service-fabric-reliable-services-secure-communication.md)

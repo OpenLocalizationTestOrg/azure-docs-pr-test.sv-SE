@@ -1,6 +1,6 @@
 ---
-title: "aaaNetwork Resource Provider översikt | Microsoft Docs"
-description: "Lär dig mer om hello nya Nätverksresursprovidern i Azure Resource Manager"
+title: "Resurs-providern: översikt | Microsoft Docs"
+description: "Lär dig mer om den nya Nätverksresursprovidern i Azure Resource Manager"
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -14,25 +14,25 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
-ms.openlocfilehash: 81b8f51fe8ee180d8f7885c6e04eb953904d7be5
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 2428c707ddeed281fddd1e57bc5574603f0b9b1c
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="network-resource-provider"></a>Provider för nätverksresurser
-Behovet av en gäller i dagens företag lyckade är hello möjlighet toobuild och hantera anpassade program i stor skala nätverk på ett flexibelt, flexibel, säker och repeterbara sätt. Azure Resource Manager kan du toocreate sådana program som en enda samling resursgrupper. Dessa resurser hanteras via olika resursproviders under Resource Manager.
+Behovet av en gäller i dagens företag lyckade är möjligheten att bygga och hantera anpassade program i stor skala nätverk på ett flexibelt, flexibel, säker och repeterbara sätt. Azure Resource Manager kan du skapa sådana program som en enda samling resursgrupper. Dessa resurser hanteras via olika resursproviders under Resource Manager.
 
-Azure Resource Manager förlitar sig på annan resurs providers tooprovide åtkomst tooyour resurser. Det finns tre huvudsakliga resursproviders: nätverk, lagring och beräkning. Det här dokumentet beskrivs hello egenskaper och fördelarna med hello Nätverksresursprovidern, inklusive:
+Azure Resource Manager förlitar sig på olika resursproviders att ge åtkomst till resurser. Det finns tre huvudsakliga resursproviders: nätverk, lagring och beräkning. Det här dokumentet beskriver egenskaper och fördelarna med Nätverksresursprovidern, inklusive:
 
-* **Metadata** – du kan lägga till information tooresources med hjälp av taggar. Dessa taggar kan vara används tootrack resursutnyttjande över resursgrupper och prenumerationer.
-* **Större kontroll över nätverket** - nätverksresurser är löst sammanfogade och du kan kontrollera dem på ett bättre sätt. Det innebär att du har mer flexibilitet för att hantera hello nätverksresurser.
+* **Metadata** – du kan lägga till information till resurser med hjälp av taggar. Dessa taggar kan användas för att spåra resursutnyttjande alla resursgrupper och prenumerationer.
+* **Större kontroll över nätverket** - nätverksresurser är löst sammanfogade och du kan kontrollera dem på ett bättre sätt. Det innebär att du har mer flexibilitet för att hantera nätverksresurser.
 * **Snabbare configuration** -eftersom nätverksresurser är löst sammansatta, kan du skapa och samordna nätverksresurser parallellt. Detta har kraftigt minska konfiguration.
-* **Rollbaserad åtkomstkontroll** -RBAC ger standardroller med specifika säkerhetsomfattning tillägg tooallowing hello att skapa anpassade roller för säker hantering.
-* **Enklare hantering och distribution** – det är enklare toodeploy och hantera program eftersom du kan skapa en hel programstack som en enda samling resurser i en resursgrupp. Och snabbare toodeploy, eftersom du kan distribuera genom att bara ange en mall för JSON-nyttolast.
-* **Snabb anpassning** -du kan använda mallar deklarativ typ tooenable repeterbara och snabb anpassning av distributioner.
-* **Anpassning av repeterbara** -du kan använda mallar deklarativ typ tooenable repeterbara och snabb anpassning av distributioner.
-* **Hanteringsgränssnitt** -du kan använda någon av följande gränssnitt toomanage hello dina resurser:
+* **Rollbaserad åtkomstkontroll** -RBAC ger standardroller med specifika säkerhetsomfattning, förutom att tillåta skapandet av anpassade roller för säker hantering.
+* **Enklare hantering och distribution** – det är enklare att distribuera och hantera program eftersom du kan skapa en hel programstack som en enda samling resurser i en resursgrupp. Och snabbare att distribuera, eftersom du kan distribuera genom att bara ange en mall för JSON-nyttolast.
+* **Snabb anpassning** -du kan använda mallar deklarativ typ för att aktivera repeterbara och snabb anpassning av distributioner.
+* **Anpassning av repeterbara** -du kan använda mallar deklarativ typ för att aktivera repeterbara och snabb anpassning av distributioner.
+* **Hanteringsgränssnitt** -du kan använda någon av följande gränssnitt för att hantera dina resurser:
   * REST-baserad API
   * PowerShell
   * .NET SDK
@@ -49,15 +49,15 @@ Nedan visas en översikt över en exempeldistribution med ett program med flera 
 
 ![Resursmodell för nätverk](./media/resource-groups-networking/Figure2.png)
 
-Alla resurser innehåller en gemensam uppsättning egenskaper och deras enskilda egenskapsuppsättning. hello gemensamma egenskaper är:
+Alla resurser innehåller en gemensam uppsättning egenskaper och deras enskilda egenskapsuppsättning. Gemensamma egenskaper är:
 
 | Egenskap | Beskrivning | Exempelvärden |
 | --- | --- | --- |
 | **Namn** |Unikt resursnamn. Varje resurs har sin egen namngivningsbegränsningar. |PIP01 VM01, NIC01 |
-| **Plats** |Azure-region i vilken hello resursen finns |westus eastus |
+| **Plats** |Azure-region där resursen finns |westus eastus |
 | **ID** |Unik URI baserad identifiering |/subscriptions/<subGUID>/resourceGroups/TestRG/providers/Microsoft.Network/publicIPAddresses/TestPIP |
 
-Du kan kontrollera hello enskilda egenskaper för resurser i hello avsnitten nedan.
+Du kan kontrollera enskilda egenskaper för resurserna i avsnitten nedan.
 
 [!INCLUDE [virtual-networks-nrp-pip-include](../../includes/virtual-networks-nrp-pip-include.md)]
 
@@ -85,26 +85,26 @@ Du kan hantera dina Azure-nätverk resurser med olika gränssnitt. I det här do
 ### <a name="rest-api"></a>REST API
 Som tidigare nämnts kan nätverksresurser hanteras via en mängd olika gränssnitt, inklusive REST API, .NET SDK, SDK för Node.JS, Java SDK, PowerShell, CLI, Azure-portalen och mallar.
 
-hello Rest API kraven toohello specifikationen för HTTP 1.1-protokollet. hello URI uppbyggnad i hello API visas nedan:
+Rest-API som stämmer överens med specifikationen för HTTP 1.1-protokollet. Den allmänna strukturen URI för API: et visas nedan:
 
     https://management.azure.com/subscriptions/{subscription-id}/providers/{resource-provider-namespace}/locations/{region-location}/register?api-version={api-version}
 
-Och hello parametrar i klammerparenteser representerar hello följande element:
+Och parametrar i klammerparenteser representerar följande element:
 
 * **prenumerations-id** -id för din Azure-prenumeration.
-* **resurs-providernamnrymden** -namnområde för hello-providern som används. hello-värdet för hello nätverksresursprovidern *Microsoft.Network*.
-* **regionsnamnet** -hello Azure-regionnamn
+* **resurs-providernamnrymden** -namnrymd för den leverantör som används. Värdet för nätverksresursprovidern *Microsoft.Network*.
+* **regionsnamnet** -namnet för Azure-region
 
-hello stöds följande HTTP-metoder när du gör anrop toohello REST-API:
+Följande HTTP-metoder stöds när du anropar REST-API:
 
-* **PLACERA** – används toocreate en resurs som tillhör en viss typ, ändra en resursegenskap eller ändra en association mellan resurser.
-* **Hämta** -tooretrieve information som används för en etablerad resurs.
-* **Ta bort** -används toodelete en befintlig resurs.
+* **PLACERA** – används för att skapa en resurs som tillhör en viss typ, ändra en resursegenskap eller ändra en association mellan resurser.
+* **Hämta** – används för att hämta information för en etablerad resurs.
+* **Ta bort** – används för att ta bort en befintlig resurs.
 
-Både hello förfrågan och svar kraven tooa JSON-nyttolast-format. Mer information finns i [Azure Resource Manager API: er](https://msdn.microsoft.com/library/azure/dn948464.aspx).
+Både begäran och svar uppfylla en JSON-nyttolast-format. Mer information finns i [Azure Resource Manager API: er](https://msdn.microsoft.com/library/azure/dn948464.aspx).
 
 ### <a name="resource-manager-template-language"></a>Språk för Resource Manager-mallen
-I tillägg toomanaging resurser imperatively (via API: er eller SDK), du också använda en deklarativ programmering style toobuild och hantera nätverksresurser med hjälp av hello språk för Resource Manager-mallen.
+Du kan också använda en deklarativ programmering stil att bygga och hantera nätverksresurser med hjälp av hanteraren för filserverresurser mallen språk utöver att hantera resurser imperatively (via API: er eller SDK).
 
 En exempel-representation av en mall som har angetts under –
 
@@ -117,7 +117,7 @@ En exempel-representation av en mall som har angetts under –
       "outputs": { <output-of-template> }    
     }
 
-hello mallen är i första hand en JSON-beskrivning av hello resurser och hello instansvärden matas in via parametrar. hello exemplet nedan kan vara används toocreate ett virtuellt nätverk med 2 undernät.
+Mallen är i första hand en JSON-beskrivning av resurserna och instans värdena matas in via parametrar. Exemplet nedan kan användas för att skapa ett virtuellt nätverk med 2 undernät.
 
     {
         "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/VNET.json",
@@ -205,7 +205,7 @@ hello mallen är i första hand en JSON-beskrivning av hello resurser och hello 
         ]
     }
 
-Du har hello möjlighet att ange parametervärden för hello manuellt när du använder en mall eller du kan använda en parameterfil. hello exemplet nedan visar möjliga uppsättning parametern värden toobe används med hello mallen ovan:
+Du har möjlighet att ange parametervärden manuellt när du använder en mall eller du kan använda en parameterfil. Exemplet nedan visar möjliga uppsättning parametervärden som ska användas med hjälp av mallen ovan:
 
     {
       "location": {
@@ -232,28 +232,28 @@ Du har hello möjlighet att ange parametervärden för hello manuellt när du an
     }
 
 
-hello huvudsakliga fördelarna med hjälp av mallar är:
+De huvudsakliga fördelarna med hjälp av mallar är:
 
-* Du kan skapa en komplicerad infrastruktur i en resursgrupp i en deklarativ stil. hello hanteras orchestration skapar hello resurser, inklusive beroende management av Resource Manager.
-* hello infrastruktur kan skapas på repeterbara sätt över olika regioner, och inom en region genom att ändra parametrar.
-* hello deklarativ format leder tooshorter ledtid i bygga hello mallar och lansera hello infrastruktur.
+* Du kan skapa en komplicerad infrastruktur i en resursgrupp i en deklarativ stil. Dirigering av skapar resurser, inklusive beroende management hanteras av Resource Manager.
+* Infrastrukturen kan skapas på repeterbara sätt över olika regioner, och inom en region genom att ändra parametrar.
+* Stilen deklarativ leder till kortare tid i Skapa mallar och lansera infrastrukturen.
 
 Exempelmallar, se [Azure snabbstartsmallar](https://github.com/Azure/azure-quickstart-templates).
 
-Mer information om hello språk för Resource Manager-mallen finns [språk för Azure Resource Manager-mallen](../azure-resource-manager/resource-group-authoring-templates.md).
+Mer information om språk för Resource Manager-mallen finns [språk för Azure Resource Manager-mallen](../azure-resource-manager/resource-group-authoring-templates.md).
 
-hello exempelmall ovan använder hello virtuella nätverk och nätverksresurser på undernätet. Det finns andra nätverksresurser som du kan använda enligt nedan:
+Mallen exempel använder virtuella nätverk och nätverksresurser på undernätet. Det finns andra nätverksresurser som du kan använda enligt nedan:
 
 ### <a name="using-a-template"></a>Använda en mall
-Du kan distribuera tjänster tooAzure från en mall med hjälp av PowerShell AzureCLI, eller genom att utföra en Klicka toodeploy från GitHub. toodeploy tjänster från en mall i GitHub, köra hello följande steg:
+Du kan distribuera tjänster till Azure från en mall med hjälp av PowerShell AzureCLI, eller genom att utföra en Klicka om du vill distribuera från GitHub. Utför följande steg för att distribuera tjänster från en mall i GitHub:
 
-1. Öppna hello template3 filen från GitHub. Exempelvis öppna [virtuella nätverk med två undernät](https://github.com/Azure/azure-quickstart-templates/tree/master/101-virtual-network).
-2. Klicka på **distribuera tooAzure**, och sedan logga in på toohello Azure-portalen med dina autentiseringsuppgifter.
-3. Verifiera hello mallen och klicka sedan på **spara**.
-4. Klicka på **redigera parametrar** och välja en plats, till exempel *västra USA*, för hello vnet och undernät.
-5. Om det behövs ändrar hello **ADDRESSPREFIX** och **SUBNETPREFIX** parametrar och klicka sedan på **OK**.
-6. Klicka på **välja en resursgrupp** och klicka sedan på hello resursgrupp tooadd hello vnet och undernät med. Du kan också skapa en ny resursgrupp genom att klicka på **eller skapa nya**.
-7. Klicka på **Skapa**. Lägg märke till hello panelen Visa **etablering malldistribution**. När hello distributionen är klar, visas en skärm liknande tooone nedan.
+1. Öppna filen template3 från GitHub. Exempelvis öppna [virtuella nätverk med två undernät](https://github.com/Azure/azure-quickstart-templates/tree/master/101-virtual-network).
+2. Klicka på **till Azure**, och sedan logga in Azure-portalen med dina autentiseringsuppgifter.
+3. Kontrollera mallen och klicka sedan på **spara**.
+4. Klicka på **redigera parametrar** och välja en plats, till exempel *västra USA*, för vnet och undernät.
+5. Om det behövs ändrar den **ADDRESSPREFIX** och **SUBNETPREFIX** parametrar och klicka sedan på **OK**.
+6. Klicka på **välja en resursgrupp** och klicka sedan på den resursgrupp som du vill lägga till vnet och undernät med. Du kan också skapa en ny resursgrupp genom att klicka på **eller skapa nya**.
+7. Klicka på **Skapa**. Lägg märke till panelen Visa **etablering malldistribution**. När distributionen är klar visas en skärm som liknar en nedan.
 
 ![Exempel malldistribution](./media/resource-groups-networking/Figure6.png)
 

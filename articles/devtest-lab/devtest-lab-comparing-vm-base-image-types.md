@@ -1,6 +1,6 @@
 ---
-title: aaaComparing anpassade avbildningar och formler i DevTest Labs | Microsoft Docs
-description: "Läs mer om hello skillnaderna mellan anpassade avbildningar och formler som VM baserar så att du kan bestämma vilket som passar din miljö."
+title: "Jämföra anpassade avbildningar och formler i DevTest Labs | Microsoft Docs"
+description: "Lär dig mer om skillnaderna mellan anpassade avbildningar och formler som VM baserar så att du kan bestämma vilket som passar din miljö."
 services: devtest-lab,virtual-machines
 documentationcenter: na
 author: tomarcher
@@ -14,35 +14,35 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: tarcher
-ms.openlocfilehash: 3c1d88dfe0ff94b8e825bb7a0b4aca3341c9330d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: ff771abc26c08f0adb977c29739d2f5c91924b21
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="comparing-custom-images-and-formulas-in-devtest-labs"></a>Jämföra anpassade avbildningar och formler i DevTest Labs
-Båda [anpassade avbildningar](devtest-lab-create-template.md) och [formler](devtest-lab-manage-formulas.md) kan användas som grund för [skapa nya virtuella datorer](devtest-lab-add-vm-with-artifacts.md). Hello viktiga åtskillnad mellan anpassade avbildningar och formler är dock att en anpassad avbildning är helt enkelt en avbildning baserat på en virtuell Hårddisk, medan en formel är en avbildning baserat på en virtuell Hårddisk *förutom* förkonfigurerade inställningar – till exempel VM-storlek, virtuella nätverk undernätet och artefakter. Inställningarna förinställda ställs in med standardvärden som kan åsidosättas när hello dags att skapa en virtuell dator. Den här artikeln förklarar några av fördelarna hello (tekniker) och nackdelar (nackdelar) toousing anpassade avbildningar jämfört med formler.
+Båda [anpassade avbildningar](devtest-lab-create-template.md) och [formler](devtest-lab-manage-formulas.md) kan användas som grund för [skapa nya virtuella datorer](devtest-lab-add-vm-with-artifacts.md). Dock viktiga skillnaden mellan anpassade avbildningar och formler är att en anpassad avbildning är helt enkelt en avbildning baserat på en virtuell Hårddisk, medan en formel är en avbildning baserat på en virtuell Hårddisk *förutom* förkonfigurerade inställningar – till exempel VM-storlek, virtuella nätverk, undernät och artefakter. Inställningarna förinställda ställs in med standardvärden som kan åsidosättas vid tidpunkten för att skapa en virtuell dator. Den här artikeln förklarar några av (tekniker) och nackdelar (nackdelar) till att använda anpassade avbildningar jämfört med formler.
 
 ## <a name="custom-image-pros-and-cons"></a>Anpassad bild- och nackdelar
-Anpassade avbildningar innehåller en statisk, ändras sätt toocreate virtuella datorer från en önskad miljö. 
+Anpassade avbildningar är statisk, ändras kan du skapa virtuella datorer från en önskad miljö. 
 
 **Tekniker**
 
-* Etablering från en anpassad avbildning av virtuell dator är snabb eftersom inget ändras efter hello VM är de från hello avbildningen. Det finns med andra ord inga inställningar tooapply som hello anpassad avbildning är en bild utan inställningar. 
+* Etablering av virtuell dator från en anpassad avbildning är snabb eftersom inget ändras när den virtuella datorn är de från avbildningen. Med andra ord, finns det inga inställningar att tillämpa den anpassade avbildningen är en bild utan inställningar. 
 * Virtuella datorer skapas från en anpassad bild är identiska.
 
 **Nackdelar**
 
-* Om du behöver tooupdate någon aspekt av hello anpassad avbildning måste du återskapa hello avbildningen.  
+* Om du behöver uppdatera viss aspekt av den anpassade avbildningen måste du återskapa avbildningen.  
 
 ## <a name="formula-pros-and-cons"></a>Formeln- och nackdelar
-Formler innehåller ett dynamiskt sätt toocreate virtuella datorer från hello önskad konfigurationsinställningar.
+Formler ger ett dynamiskt sätt att skapa virtuella datorer från önskade konfigurationsinställningarna.
 
 **Tekniker**
 
-* Ändringar i hello miljö kan hämtas på hello direkt via artefakter. Till exempel om du vill att en virtuell dator som installerats med hello senaste bits från din pipeline versionen eller registrera hello senaste koden från din lagringsplats du bara ange en artefakt som distribuerar hello senaste bitar eller anlitar hello senaste koden i hello formeln tillsammans med en mål basavbildning. När den här formeln används toocreate virtuella datorer är hello senaste bits/kod distribueras/registrerad toohello VM. 
+* Ändringar i miljön kan hämtas direkt via artefakter. Om du vill att en virtuell dator som installerats med den senaste bits från din pipeline versionen eller registrera senaste koden från din lagringsplats kan du bara ange en artefakt som distribuerar den senaste bits eller anlitar senaste koden i formeln tillsammans med en mål-basavbildning. När den här formeln används för att skapa virtuella datorer, är den senaste bits/kod distribueras/registrerad till den virtuella datorn. 
 * Formler kan definiera standardinställningar som anpassade avbildningar inte kan tillhandahålla - som VM-storlekar och inställningarna för virtuella nätverk. 
-* hello inställningarna sparas i en formel som standardvärden, men kan ändras när hello VM skapas. 
+* Inställningarna sparas i en formel som standardvärden, men kan ändras när den virtuella datorn skapas. 
 
 **Nackdelar**
 

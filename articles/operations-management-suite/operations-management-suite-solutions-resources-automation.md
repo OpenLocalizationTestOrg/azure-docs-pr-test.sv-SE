@@ -1,6 +1,6 @@
 ---
-title: "aaaAzure Automation resurser i OMS-lösningar | Microsoft Docs"
-description: "Lösningar i OMS inkluderar vanligtvis runbooks i Azure Automation tooautomate processer, till exempel att samla in och bearbetning av övervakningsdata.  Den här artikeln beskriver hur tooinclude runbooks och deras relaterade resurser i en lösning."
+title: "Azure Automation-resurser i OMS-lösningar | Microsoft Docs"
+description: "Lösningar i OMS inkluderar vanligtvis runbooks i Azure Automation för att automatisera processer, till exempel att samla in och bearbetning av övervakningsdata.  Den här artikeln beskriver hur du lägger till runbooks och deras relaterade resurser i en lösning."
 services: operations-management-suite
 documentationcenter: 
 author: bwren
@@ -15,42 +15,42 @@ ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 82a156f89bf77ce25e52e5e4596261ec07a24dae
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: c1909183a33ed03d8165671cff25cc8b83b77733
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="adding-azure-automation-resources-tooan-oms-management-solution-preview"></a>Lägga till Azure Automation resurser tooan OMS hanteringslösning (förhandsgranskning)
+# <a name="adding-azure-automation-resources-to-an-oms-management-solution-preview"></a>Lägga till Azure Automation-resurser för en OMS-hanteringslösning (förhandsgranskning)
 > [!NOTE]
-> Den här är dokumentationen preliminär för att skapa lösningar för hantering i OMS som för närvarande finns i förhandsgranskningen. Ett schema som beskrivs nedan är ämne toochange.   
+> Den här är dokumentationen preliminär för att skapa lösningar för hantering i OMS som för närvarande finns i förhandsgranskningen. Ett schema som beskrivs nedan kan ändras.   
 
 
-[Lösningar för hantering i OMS](operations-management-suite-solutions.md) inkluderar vanligtvis runbooks i Azure Automation tooautomate processer, till exempel att samla in och bearbetning av övervakningsdata.  Dessutom toorunbooks, Automation-konton innehåller tillgångar som variabler och scheman som stöder hello runbooks som används i hello-lösning.  Den här artikeln beskriver hur tooinclude runbooks och deras relaterade resurser i en lösning.
+[Lösningar för hantering i OMS](operations-management-suite-solutions.md) inkluderar vanligtvis runbooks i Azure Automation för att automatisera processer, till exempel att samla in och bearbetning av övervakningsdata.  Förutom runbooks, Automation-konton innehåller resurser, t.ex variabler och scheman som stöd för runbooks som används i lösningen.  Den här artikeln beskriver hur du lägger till runbooks och deras relaterade resurser i en lösning.
 
 > [!NOTE]
-> hello exempel i den här artikeln använder parametrar och variabler är antingen obligatorisk eller vanliga toomanagement lösningar som beskrivs i [och skapa lösningar för hantering i Operations Management Suite (OMS)](operations-management-suite-solutions-creating.md) 
+> Exemplen i den här artikeln använder parametrar och variabler som är obligatoriska eller vanligt att hanteringslösningar och beskrivs i [och skapa lösningar för hantering i Operations Management Suite (OMS)](operations-management-suite-solutions-creating.md) 
 
 
 ## <a name="prerequisites"></a>Krav
-Den här artikeln förutsätter att du redan är bekant med hello följande information.
+Den här artikeln förutsätter att du redan är bekant med följande information.
 
-- Hur för[skapar en lösning för](operations-management-suite-solutions-creating.md).
-- Hej struktur för en [lösningsfilen](operations-management-suite-solutions-solution-file.md).
-- Hur för[skapar Resource Manager-mallar](../azure-resource-manager/resource-group-authoring-templates.md)
+- Så här [skapar en lösning för](operations-management-suite-solutions-creating.md).
+- Struktur för en [lösningsfilen](operations-management-suite-solutions-solution-file.md).
+- Så här [skapar Resource Manager-mallar](../azure-resource-manager/resource-group-authoring-templates.md)
 
 ## <a name="automation-account"></a>Automation-konto
-Alla resurser i Azure Automation finns i en [Automation-konto](../automation/automation-security-overview.md#automation-account-overview).  Enligt beskrivningen i [OMS arbetsytan och Automation-konto](operations-management-suite-solutions.md#oms-workspace-and-automation-account) hello Automation-konto ingår inte i hello hanteringslösning men det måste finnas innan hello lösningen är installerad.  Hello lösning installationen misslyckas om den inte är tillgänglig.
+Alla resurser i Azure Automation finns i en [Automation-konto](../automation/automation-security-overview.md#automation-account-overview).  Enligt beskrivningen i [OMS arbetsytan och Automation-konto](operations-management-suite-solutions.md#oms-workspace-and-automation-account) Automation-kontot inte finns med i hanteringslösningen men måste finnas innan lösningen är installerad.  Lösning installationen misslyckas om det inte är tillgänglig.
 
-hello ingår varje Automation resurs hello namnet på dess Automation-konto.  Detta görs i hello lösningen med hello **accountName** parameter som hello följande exempel på en runbook-resurs.
+Namnet på varje Automation resursen innehåller namnet på dess Automation-konto.  Detta görs i lösningen med den **accountName** parameter som i följande exempel på en runbook-resurs.
 
     "name": "[concat(parameters('accountName'), '/MyRunbook'))]"
 
 
 ## <a name="runbooks"></a>Runbooks
-Du bör innehålla alla runbooks som används av hello lösning i hello lösningsfilen så att de skapas när hello lösningen är installerad.  Du får inte innehålla hello brödtext hello runbook i hello mallen, så du bör publicera hello runbook tooa allmän plats där den kan nås av alla användare som installerar din lösning.
+Du bör innehålla alla runbooks som används av lösningen i lösningsfilen så att de skapas när lösningen har installerats.  Du får inte innehålla innehållet i runbooken i mallen, så du bör publicera en runbook på en allmän plats där den kan nås av alla användare som installerar din lösning.
 
-[Azure Automation-runbook](../automation/automation-runbook-types.md) resurser har en typ av **Microsoft.Automation/automationAccounts/runbooks** och ha hello följande struktur. Detta inkluderar vanliga parametrarna och variablerna så att du kan kopiera och klistra in det här kodstycket i din lösningsfilen och ändra hello parameternamn. 
+[Azure Automation-runbook](../automation/automation-runbook-types.md) resurser har en typ av **Microsoft.Automation/automationAccounts/runbooks** och har följande struktur. Detta inkluderar vanliga parametrarna och variablerna så att du kan kopiera och klistra in det här kodstycket i din lösningsfilen och ändra parameternamn. 
 
     {
         "name": "[concat(parameters('accountName'), '/', variables('Runbook').Name)]",
@@ -73,21 +73,21 @@ Du bör innehålla alla runbooks som används av hello lösning i hello lösning
     }
 
 
-hello i den följande tabellen beskrivs hello egenskaper för runbooks.
+I följande tabell beskrivs egenskaperna för runbooks.
 
 | Egenskap | Beskrivning |
 |:--- |:--- |
-| runbookType |Anger hello hello runbook. <br><br> Skript - PowerShell-skript <br>PowerShell - PowerShell-arbetsflöde <br> GraphPowerShell - grafisk PowerShell-skriptet runbook <br> GraphPowerShellWorkflow - grafisk PowerShell-arbetsflödesrunbook |
-| logProgress |Anger om [vidare poster](../automation/automation-runbook-output-and-messages.md) ska genereras för hello runbook. |
-| logVerbose |Anger om [utförliga poster](../automation/automation-runbook-output-and-messages.md) ska genereras för hello runbook. |
-| description |Valfri beskrivning för hello runbook. |
-| publishContentLink |Anger hello innehållet i hello runbook. <br><br>URI - Uri toohello innehållet i hello runbook.  Det här är en .ps1-fil för PowerShell-skript och runbooks och en exporterade grafiska runbook-fil för en grafisk runbook.  <br> version - versionen av hello runbook för egna spårning. |
+| runbookType |Anger vilka typer av runbook. <br><br> Skript - PowerShell-skript <br>PowerShell - PowerShell-arbetsflöde <br> GraphPowerShell - grafisk PowerShell-skriptet runbook <br> GraphPowerShellWorkflow - grafisk PowerShell-arbetsflödesrunbook |
+| logProgress |Anger om [vidare poster](../automation/automation-runbook-output-and-messages.md) ska genereras för runbook. |
+| logVerbose |Anger om [utförliga poster](../automation/automation-runbook-output-and-messages.md) ska genereras för runbook. |
+| Beskrivning |Valfri beskrivning för runbook. |
+| publishContentLink |Anger innehållet i runbook. <br><br>URI - Uri för att innehållet i runbook.  Det här är en .ps1-fil för PowerShell-skript och runbooks och en exporterade grafiska runbook-fil för en grafisk runbook.  <br> version - versionen av runbook för egna spårning. |
 
 
 ## <a name="automation-jobs"></a>Automation-jobb
-När du startar en runbook i Azure Automation skapas ett automation-jobb.  Du kan lägga till en automation resurs tooyour lösning tooautomatically jobbstart en runbook när hello hanteringslösning installeras.  Den här metoden är brukar användas toostart runbooks som används för inledande konfiguration av hello lösning.  toostart en runbook med jämna mellanrum, skapa en [schema](#schedules) och en [Jobbschema](#job-schedules)
+När du startar en runbook i Azure Automation skapas ett automation-jobb.  Du kan lägga till en resurs för automation-jobb din lösning för att automatiskt starta en runbook när hanteringslösningen som är installerad.  Den här metoden används vanligtvis för att starta runbooks som används för inledande konfiguration av lösningen.  Om du vill starta en runbook med jämna mellanrum, skapa en [schema](#schedules) och en [Jobbschema](#job-schedules)
 
-Resurser för jobbet har en typ av **Microsoft.Automation/automationAccounts/jobs** och ha hello följande struktur.  Detta inkluderar vanliga parametrarna och variablerna så att du kan kopiera och klistra in det här kodstycket i din lösningsfilen och ändra hello parameternamn. 
+Resurser för jobbet har en typ av **Microsoft.Automation/automationAccounts/jobs** och har följande struktur.  Detta inkluderar vanliga parametrarna och variablerna så att du kan kopiera och klistra in det här kodstycket i din lösningsfilen och ändra parameternamn. 
 
     {
       "name": "[concat(parameters('accountName'), '/', parameters('Runbook').JobGuid)]",
@@ -109,20 +109,20 @@ Resurser för jobbet har en typ av **Microsoft.Automation/automationAccounts/job
       }
     }
 
-hello egenskaper för automation-jobb beskrivs i följande tabell hello.
+I följande tabell beskrivs egenskaperna för automation-jobb.
 
 | Egenskap | Beskrivning |
 |:--- |:--- |
-| runbook |Enda namn entitet med hello namnet på hello runbook toostart. |
-| parameters |Entitet för varje parametervärde som krävs av hello runbook. |
+| runbook |Namn på enkel enhet med namnet på runbook att starta. |
+| Parametrar |Entitet för varje parametervärde som krävs av runbook. |
 
-hello jobbet innehåller hello runbook-namn och eventuella parametern värden toobe skickas toohello runbook.  hello jobb bör [beror på](operations-management-suite-solutions-solution-file.md#resources) hello-runbook som startar sedan hello runbook måste skapas innan hello jobb.  Om du har flera runbooks som ska startas kan du definiera deras inbördes ordning genom att ett jobb är beroende av andra jobb som ska köras första.
+Jobbet innehåller runbook-namn och ett parametervärde som skickas till runbook.  Jobbet ska [beror på](operations-management-suite-solutions-solution-file.md#resources) runbook startar sedan runbook måste skapas innan jobbet.  Om du har flera runbooks som ska startas kan du definiera deras inbördes ordning genom att ett jobb är beroende av andra jobb som ska köras första.
 
-hello namnet på en resurs för jobbet måste innehålla en GUID som tilldelas vanligtvis av en parameter.  Du kan läsa mer om GUID-parametrar i [och skapa lösningar i Operations Management Suite (OMS)](operations-management-suite-solutions-solution-file.md#parameters).  
+Namnet på en resurs för jobbet måste innehålla en GUID som tilldelas vanligtvis av en parameter.  Du kan läsa mer om GUID-parametrar i [och skapa lösningar i Operations Management Suite (OMS)](operations-management-suite-solutions-solution-file.md#parameters).  
 
 
 ## <a name="certificates"></a>Certifikat
-[Azure Automation-certifikat](../automation/automation-certificates.md) har en typ av **Microsoft.Automation/automationAccounts/certificates** och ha hello följande struktur. Detta inkluderar vanliga parametrarna och variablerna så att du kan kopiera och klistra in det här kodstycket i din lösningsfilen och ändra hello parameternamn. 
+[Azure Automation-certifikat](../automation/automation-certificates.md) har en typ av **Microsoft.Automation/automationAccounts/certificates** och har följande struktur. Detta inkluderar vanliga parametrarna och variablerna så att du kan kopiera och klistra in det här kodstycket i din lösningsfilen och ändra parameternamn. 
 
     {
       "name": "[concat(parameters('accountName'), '/', variables('Certificate').Name)]",
@@ -140,17 +140,17 @@ hello namnet på en resurs för jobbet måste innehålla en GUID som tilldelas v
 
 
 
-hello egenskaper för certifikat resurser beskrivs i följande tabell hello.
+I följande tabell beskrivs egenskaperna för certifikat resurser.
 
 | Egenskap | Beskrivning |
 |:--- |:--- |
-| base64Value |Base 64-värde för hello certifikat. |
-| tumavtrycket |Tumavtryck för certifikat som hello. |
+| base64Value |Base 64-värde för certifikatet. |
+| tumavtrycket |Tumavtryck för certifikatet. |
 
 
 
 ## <a name="credentials"></a>Autentiseringsuppgifter
-[Autentiseringsuppgifter för Azure Automation](../automation/automation-credentials.md) har en typ av **Microsoft.Automation/automationAccounts/credentials** och ha hello följande struktur.  Detta inkluderar vanliga parametrarna och variablerna så att du kan kopiera och klistra in det här kodstycket i din lösningsfilen och ändra hello parameternamn. 
+[Autentiseringsuppgifter för Azure Automation](../automation/automation-credentials.md) har en typ av **Microsoft.Automation/automationAccounts/credentials** och har följande struktur.  Detta inkluderar vanliga parametrarna och variablerna så att du kan kopiera och klistra in det här kodstycket i din lösningsfilen och ändra parameternamn. 
 
 
     {
@@ -167,16 +167,16 @@ hello egenskaper för certifikat resurser beskrivs i följande tabell hello.
       }
     }
 
-i hello i den följande tabellen beskrivs hello egenskaper för autentiseringsuppgifter resurser.
+I följande tabell beskrivs egenskaperna för autentiseringsuppgifter resurser.
 
 | Egenskap | Beskrivning |
 |:--- |:--- |
-| Användarnamn |Användarnamn för hello autentiseringsuppgifter. |
-| lösenord |Lösenordet för hello autentiseringsuppgifter. |
+| Användarnamn |Användarnamn för autentiseringsuppgifter. |
+| lösenord |Lösenordet för autentiseringsuppgifterna. |
 
 
 ## <a name="schedules"></a>Scheman
-[Azure Automation-scheman](../automation/automation-schedules.md) har en typ av **Microsoft.Automation/automationAccounts/schedules** och ha hello hello följande struktur. Detta inkluderar vanliga parametrarna och variablerna så att du kan kopiera och klistra in det här kodstycket i din lösningsfilen och ändra hello parameternamn. 
+[Azure Automation-scheman](../automation/automation-schedules.md) har en typ av **Microsoft.Automation/automationAccounts/schedules** och har de följande struktur. Detta inkluderar vanliga parametrarna och variablerna så att du kan kopiera och klistra in det här kodstycket i din lösningsfilen och ändra parameternamn. 
 
     {
       "name": "[concat(parameters('accountName'), '/', variables('Schedule').Name)]",
@@ -195,26 +195,26 @@ i hello i den följande tabellen beskrivs hello egenskaper för autentiseringsup
       }
     }
 
-hello egenskaper för schema resurser beskrivs i hello i den följande tabellen.
+I följande tabell beskrivs egenskaperna för schemalägga resurser.
 
 | Egenskap | Beskrivning |
 |:--- |:--- |
-| description |Valfri beskrivning för hello schema. |
-| startTime |Anger hello starttiden för ett schema som ett DateTime-objekt. En sträng kan tillhandahållas om det kan vara konverterade tooa giltigt DateTime. |
-| IsEnabled |Anger om hello schema har aktiverats. |
-| interval |hello typ av intervall för hello schema.<br><br>dag<br>timme |
-| frequency |Frekvens som hello schemat ska utlösas i antal dagar eller timmar. |
+| Beskrivning |Valfri beskrivning för schemat. |
+| startTime |Anger starttiden för ett schema som ett DateTime-objekt. En sträng kan tillhandahållas om det kan konverteras till en giltig DateTime. |
+| IsEnabled |Anger om schemat har aktiverats. |
+| intervall |Typ av intervall för schemat.<br><br>dag<br>timme |
+| frekvens |Frekvensen som schemat ska utlösas i antal dagar eller timmar. |
 
-Måste ha en starttid med ett större värde än hello aktuell tid.  Du kan inte ange det här värdet med en variabel eftersom du har ingen möjlighet att veta när den är pågående toobe installerad.
+Måste ha en starttid med ett större värde än den aktuella tiden.  Du kan inte ange det här värdet till en variabel eftersom du har ingen möjlighet att veta när den ska installeras.
 
-Använd någon av följande två olika metoder när du använder schemalägga resurser i en lösning hello.
+Använd någon av följande två strategier när du använder schemalägga resurser i en lösning.
 
-- Använda en parameter för hello starttiden för hello schema.  Då hello användaren tooprovide ett värde när de installerar hello lösning.  Om du har flera scheman, kan du använda en enda parameter-värdet för fler än ett.
-- Skapa hello scheman med hjälp av en runbook som startar när hello lösningen är installerad.  Detta tar bort hello behovet av hello användaren toospecify en gång, men du inte kan innehålla hello schema i din lösning så tas den bort när hello lösningen tas bort.
+- Använda en parameter för starttiden för schemat.  Detta uppmanar användaren att ange ett värde när de installerar lösningen.  Om du har flera scheman, kan du använda en enda parameter-värdet för fler än ett.
+- Skapa schemat med en runbook som startar när lösningen har installerats.  Detta tar bort behovet av användaren som anger en tid, men du kan inte innehålla schemat i din lösning så tas den bort när lösningen tas bort.
 
 
 ### <a name="job-schedules"></a>Jobbscheman
-Jobbet schemalägga resurser länkar en runbook med ett schema.  De har en typ av **Microsoft.Automation/automationAccounts/jobSchedules** och ha hello hello följande struktur.  Detta inkluderar vanliga parametrarna och variablerna så att du kan kopiera och klistra in det här kodstycket i din lösningsfilen och ändra hello parameternamn. 
+Jobbet schemalägga resurser länkar en runbook med ett schema.  De har en typ av **Microsoft.Automation/automationAccounts/jobSchedules** och har de följande struktur.  Detta inkluderar vanliga parametrarna och variablerna så att du kan kopiera och klistra in det här kodstycket i din lösningsfilen och ändra parameternamn. 
 
     {
       "name": "[concat(parameters('accountName'), '/', variables('Schedule').LinkGuid)]",
@@ -238,17 +238,17 @@ Jobbet schemalägga resurser länkar en runbook med ett schema.  De har en typ a
     }
 
 
-hello egenskaper för jobbscheman beskrivs i hello i den följande tabellen.
+I följande tabell beskrivs egenskaperna för jobbscheman.
 
 | Egenskap | Beskrivning |
 |:--- |:--- |
-| namn på schema |Enskild **namn** entitet med hello namnet på hello schema. |
-| Runbook-namn  |Enskild **namn** entitet med hello namnet på hello runbook.  |
+| namn på schema |Enskild **namn** entitet med namnet på schemat. |
+| Runbook-namn  |Enskild **namn** entitet med namnet på runbook.  |
 
 
 
 ## <a name="variables"></a>Variabler
-[Azure Automation-variabler](../automation/automation-variables.md) har en typ av **Microsoft.Automation/automationAccounts/variables** och ha hello följande struktur.  Detta inkluderar vanliga parametrarna och variablerna så att du kan kopiera och klistra in det här kodstycket i din lösningsfilen och ändra hello parameternamn.
+[Azure Automation-variabler](../automation/automation-variables.md) har en typ av **Microsoft.Automation/automationAccounts/variables** och har följande struktur.  Detta inkluderar vanliga parametrarna och variablerna så att du kan kopiera och klistra in det här kodstycket i din lösningsfilen och ändra parameternamn.
 
     {
       "name": "[concat(parameters('accountName'), '/', variables('Variable').Name)]",
@@ -265,31 +265,31 @@ hello egenskaper för jobbscheman beskrivs i hello i den följande tabellen.
       }
     }
 
-hello egenskaper för variabeln resurser beskrivs i följande tabell hello.
+I följande tabell beskrivs egenskaperna för variabeln resurser.
 
 | Egenskap | Beskrivning |
 |:--- |:--- |
-| description | Valfri beskrivning för hello-variabeln. |
-| isEncrypted | Anger om hello variabeln ska krypteras. |
-| typ | Den här egenskapen har för närvarande ingen effekt.  hello datatypen för variabel hello bestäms av hello startvärde. |
-| värde | Värdet för hello variabel. |
+| Beskrivning | Valfri beskrivning för variabeln. |
+| isEncrypted | Anger om variabeln ska krypteras. |
+| typ | Den här egenskapen har för närvarande ingen effekt.  Datatypen för variabeln bestäms av det ursprungliga värdet. |
+| värde | Värdet för variabeln. |
 
 > [!NOTE]
-> Hej **typen** egenskapen för närvarande har ingen effekt på hello variabel skapas.  hello datatyp för hello variabel bestäms av hello värde.  
+> Den **typen** egenskapen för närvarande har ingen effekt på variabeln som skapas.  Datatypen för variabeln bestäms av värdet.  
 
-Om du ställer in hello ursprungligt värde för variabeln hello måste den konfigureras som hello rätt datatyp.  hello följande tabell innehåller hello olika datatyper tillåten och deras syntax.  Observera att värdena i JSON förväntade tooalways stå inom citattecken med några specialtecken inom hello citattecken.  Till exempel ett strängvärde skulle anges med citattecken runt hello sträng (med hjälp av hello escape-tecken (\\)) när ett numeriskt värde skulle anges med en uppsättning av citattecken.
+Om du anger det initiala värdet för variabeln, måste den konfigureras som rätt datatyp.  Följande tabell innehåller olika datatyper som är tillåtna och deras syntax.  Observera att värdena i JSON förväntas alltid stå inom citattecken med några specialtecken inom citattecken.  Till exempel ett strängvärde skulle anges med citattecken runt strängen (med hjälp av escape-tecken (\\)) när ett numeriskt värde skulle anges med en uppsättning av citattecken.
 
-| Datatyp | Beskrivning | Exempel | Löser för|
+| Datatyp | Beskrivning | Exempel | Matchar |
 |:--|:--|:--|:--|
 | Sträng   | Värdet omges av dubbla citattecken.  | ”\"Hello world\"” | ”Hello world” |
 | numeriskt  | Numeriskt värde med enkla citattecken.| "64" | 64 |
 | Booleskt värde  | **SANT** eller **FALSKT** inom citattecken.  Observera att det här värdet måste vara gemener. | ”true” | SANT |
-| Datum och tid | Serialiserad date-värde.<br>Du kan använda hello ConvertTo Json-cmdlet i PowerShell toogenerate värdet för ett visst datum.<br>Exempel: get-date ”2017-5/24 13:14:57” \| ConvertTo Json | ”\\/Date(1495656897378)\\/” | 2017-05-24 13:14:57 |
+| Datum och tid | Serialiserad date-värde.<br>Du kan använda cmdleten ConvertTo Json i PowerShell för att generera det här värdet för ett visst datum.<br>Exempel: get-date ”2017-5/24 13:14:57” \| ConvertTo Json | ”\\/Date(1495656897378)\\/” | 2017-05-24 13:14:57 |
 
 ## <a name="modules"></a>Moduler
-Management-lösningen behöver inte toodefine [global modul](../automation/automation-integration-modules.md) används av dina runbooks eftersom de alltid är tillgängliga i ditt Automation-konto.  Du behöver tooinclude en resurs för alla moduler som används av dina runbooks.
+Management-lösningen behöver inte definiera [global modul](../automation/automation-integration-modules.md) används av dina runbooks eftersom de alltid är tillgängliga i ditt Automation-konto.  Du behöver innehåller en resurs för alla moduler som används av dina runbooks.
 
-[Integreringsmoduler](../automation/automation-integration-modules.md) har en typ av **Microsoft.Automation/automationAccounts/modules** och ha hello följande struktur.  Detta inkluderar vanliga parametrarna och variablerna så att du kan kopiera och klistra in det här kodstycket i din lösningsfilen och ändra hello parameternamn.
+[Integreringsmoduler](../automation/automation-integration-modules.md) har en typ av **Microsoft.Automation/automationAccounts/modules** och har följande struktur.  Detta inkluderar vanliga parametrarna och variablerna så att du kan kopiera och klistra in det här kodstycket i din lösningsfilen och ändra parameternamn.
 
     {
       "name": "[concat(parameters('accountName'), '/', variables('Module').Name)]",
@@ -305,35 +305,35 @@ Management-lösningen behöver inte toodefine [global modul](../automation/autom
     }
 
 
-i hello i den följande tabellen beskrivs hello egenskaper för modulen resurser.
+I följande tabell beskrivs egenskaperna för modulen resurser.
 
 | Egenskap | Beskrivning |
 |:--- |:--- |
-| contentLink |Anger hello innehållet i hello-modulen. <br><br>URI - Uri toohello innehållet i hello-modulen.  Det här är en .ps1-fil för PowerShell-skript och runbooks och en exporterade grafiska runbook-fil för en grafisk runbook.  <br> version - Version av hello-modulen för egna spårning. |
+| contentLink |Anger innehållet i modulen. <br><br>URI - Uri för att innehållet i modulen.  Det här är en .ps1-fil för PowerShell-skript och runbooks och en exporterade grafiska runbook-fil för en grafisk runbook.  <br> version - versionen av modulen för egna spårning. |
 
-Hej runbook ska beror på hello modulen resurs tooensure som har skapats innan hello runbook.
+Runbook ska beror på resursen modulen så att den har skapats innan runbook.
 
 ### <a name="updating-modules"></a>Uppdatera moduler
-Om du uppdaterar en lösning som innehåller en runbook som använder ett schema och hello ny version av lösningen har en ny modul som används av denna runbook, använda hello runbook hello gammal version av hello-modulen.  Du bör inkludera hello följande runbooks i din lösning och skapa ett jobb toorun dem före andra runbooks.  Se till att alla moduler som är uppdaterade som krävs innan hello runbooks har lästs in.
+Om du uppdaterar en lösning som innehåller en runbook som använder ett schema, och den nya versionen av din lösning har en ny modul som används av denna runbook, kan runbook använda den gamla versionen av modulen.  Du bör inkludera följande runbooks i din lösning och skapar ett jobb för att köra dem före andra runbooks.  Detta säkerställer att alla moduler som är uppdaterade som krävs innan runbooks har lästs in.
 
-* [Uppdatera ModulesinAutomationToLatestVersion](https://www.powershellgallery.com/packages/Update-ModulesInAutomationToLatestVersion/1.03/DisplayScript) säkerställer att alla hello-moduler som används av runbooks i din lösning är hello senaste versionen.  
-* [ReRegisterAutomationSchedule-MS-Mgmt](https://www.powershellgallery.com/packages/ReRegisterAutomationSchedule-MS-Mgmt/1.0/DisplayScript) ska registrera om alla hello schema resurser tooensure att hello runbooks kopplade toothem med Använd hello senaste moduler.
+* [Uppdatera ModulesinAutomationToLatestVersion](https://www.powershellgallery.com/packages/Update-ModulesInAutomationToLatestVersion/1.03/DisplayScript) säkerställer att alla moduler som används av runbooks i din lösning är den senaste versionen.  
+* [ReRegisterAutomationSchedule-MS-Mgmt](https://www.powershellgallery.com/packages/ReRegisterAutomationSchedule-MS-Mgmt/1.0/DisplayScript) ska registrera om alla resurser som schemat så att runbooks kopplade till dem med använder de senaste modulerna.
 
 
 
 
 ## <a name="sample"></a>Exempel
-Följande är ett exempel på en lösning som omfattar som innehåller hello följande resurser:
+Följande är ett exempel på en lösning som omfattar som innehåller följande resurser:
 
 - Runbook.  Det här är en exempel-runbook som lagras i en offentlig GitHub-databas.
-- Automation-jobb som startar hello runbook när hello lösningen är installerad.
-- Schemat och jobb kan du schemalägga toostart hello runbook med jämna mellanrum.
+- Automation-jobb som startar runbook när lösningen har installerats.
+- Schemat och schema för att starta runbook med jämna mellanrum.
 - Certifikat.
 - Autentiseringsuppgifter.
 - Variabel.
-- Modul.  Detta är hello [OMSIngestionAPI modulen](https://www.powershellgallery.com/packages/OMSIngestionAPI/1.5) för att skriva data tooLog Analytics. 
+- Modul.  Det här är den [OMSIngestionAPI modulen](https://www.powershellgallery.com/packages/OMSIngestionAPI/1.5) för att skriva data till logganalys. 
 
-Hej exempel använder [standardlösningen parametrar](operations-management-suite-solutions-solution-file.md#parameters) variabler som ofta används i en lösning som motsats toohardcoding värdena i resursdefinitionerna hello.
+Används [standardlösningen parametrar](operations-management-suite-solutions-solution-file.md#parameters) variabler som ofta används i en lösning i stället för hardcoding värden i resursdefinitionerna.
 
 
     {
@@ -409,14 +409,14 @@ Hej exempel använder [standardlösningen parametrar](operations-management-suit
         "scheduleLinkGuid": {
           "type": "string",
           "metadata": {
-            "description": "GUID for hello schedule link toorunbook.",
+            "description": "GUID for the schedule link to runbook.",
             "control": "guid"
           }
         },
         "runbookJobGuid": {
           "type": "string",
           "metadata": {
-            "description": "GUID for hello runbook job.",
+            "description": "GUID for the runbook job.",
             "control": "guid"
           }
         }
@@ -650,4 +650,4 @@ Hej exempel använder [standardlösningen parametrar](operations-management-suit
 
 
 ## <a name="next-steps"></a>Nästa steg
-* [Lägg till en vy tooyour lösning](operations-management-suite-solutions-resources-views.md) toovisualize insamlade data.
+* [Lägga till en vy i lösningen](operations-management-suite-solutions-resources-views.md) visualisera insamlade data.

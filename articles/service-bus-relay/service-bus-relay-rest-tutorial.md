@@ -1,5 +1,5 @@
 ---
-title: "aaaService Bus REST-självstudiekurs med hjälp av Azure Relay | Microsoft Docs"
+title: "Service Bus REST-självstudiekurs med hjälp av Azure Relay | Microsoft Docs"
 description: "Skapa en enkel Azure Service Bus relay värdapp som visar ett REST-baserat gränssnitt."
 services: service-bus-relay
 documentationcenter: na
@@ -14,40 +14,40 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/17/2017
 ms.author: sethm
-ms.openlocfilehash: b68650993a0390e7cef891ccb4236095cd86d4c1
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 0db9dbd2d2743907e3f0b259228201d4f5d0c3c2
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="azure-wcf-relay-rest-tutorial"></a>Självstudiekurs för Azure WCF Relay REST
 
-Den här självstudiekursen beskrivs hur toobuild ett enkelt Azure-relä värd för program som visar ett REST-baserat gränssnitt. REST kan du ge en webbklient, till exempel en webbläsare, tooaccess hello Service Bus-API: er via HTTP-begäranden.
+Den här självstudiekursen beskrivs hur du skapar en enkel värdapp för Azure Relay som visar ett REST-baserat gränssnitt. Med hjälp av REST kan du ge en webbklient, till exempel en webbläsare, åtkomst till API:er för Service Bus via HTTP-förfrågningar.
 
-hello kursen använder hello Windows Communication Foundation (WCF) REST API modellen tooconstruct en REST-tjänst på Service Bus. Mer information finns i [programmeringsmodellen WCF REST](/dotnet/framework/wcf/feature-details/wcf-web-http-programming-model) och [utforma och implementera tjänster](/dotnet/framework/wcf/designing-and-implementing-services) i hello WCF-dokumentationen.
+I självstudiekursen används Windows Communication Foundation (WCF) RESTEN programmeringsmodell för att skapa ett REST-tjänst på Service Bus. Mer information finns i [Programmeringsmodellen WCF REST](/dotnet/framework/wcf/feature-details/wcf-web-http-programming-model) och [Utforma och implementera tjänster](/dotnet/framework/wcf/designing-and-implementing-services) i WCF-dokumentationen.
 
 ## <a name="step-1-create-a-namespace"></a>Steg 1: Skapa ett namnområde
 
-toobegin med Hej relay funktioner i Azure, måste du först skapa ett namnområde för tjänsten. Ett namnområde tillhandahåller en omfångsbehållare för adressering av Azure-resurser i ditt program. Följ hello [anvisningarna här](relay-create-namespace-portal.md) toocreate en Relay-namnrymd.
+För att komma igång med reläfunktionerna i Azure måste du först skapa ett namnområde för tjänsten. Ett namnområde tillhandahåller en omfångsbehållare för adressering av Azure-resurser i ditt program. Följ [anvisningarna här](relay-create-namespace-portal.md) för att skapa ett Relay-namnområde.
 
-## <a name="step-2-define-a-rest-based-wcf-service-contract-toouse-with-azure-relay"></a>Steg 2: Definiera en REST-baserat WCF-tjänsten kontraktet toouse med Azure-relä
+## <a name="step-2-define-a-rest-based-wcf-service-contract-to-use-with-azure-relay"></a>Steg 2: Definiera en REST-baserat WCF-tjänstekontrakt för användning med Azure-relä
 
-När du skapar en tjänst för WCF REST-format, måste du definiera hello kontraktet. hello kontraktet anger vilka åtgärder hello värden stöder. En tjänsteåtgärd kan anses vara en webbtjänstemetod. Kontrakt skapas genom att definiera ett gränssnitt för C++, C# eller Visual Basic. Varje metod i gränssnittet hello motsvarar tooa specifik tjänsteåtgärd. Hej [ServiceContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.servicecontractattribute.aspx) attribut måste vara tillämpade tooeach gränssnitt och hello [OperationContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.operationcontractattribute.aspx) attributet måste vara tillämpade tooeach igen. Om en metod i ett gränssnitt som har hello [ServiceContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.servicecontractattribute.aspx) saknar hello [OperationContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.operationcontractattribute.aspx), inte exponeras metoden. hello-kod som används för dessa aktiviteter visas i hello-exemplet som följer hello proceduren.
+När du skapar en tjänst för WCF REST-format, måste du definiera kontraktet. Kontraktet anger vilka åtgärder som värden stöder. En tjänsteåtgärd kan anses vara en webbtjänstemetod. Kontrakt skapas genom att definiera ett gränssnitt för C++, C# eller Visual Basic. Varje metod i gränssnittet motsvarar en viss tjänsteåtgärd. Attributet [ServiceContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.servicecontractattribute.aspx) måste tillämpas på varje gränssnitt och attributet [OperationContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.operationcontractattribute.aspx) måste tillämpas på varje åtgärd. Om en metod i ett gränssnitt som har [ServiceContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.servicecontractattribute.aspx) inte har [OperationContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.operationcontractattribute.aspx), är inte den metoden exponerad. Den kod som används för dessa aktiviteter visas i exemplet som följer efter proceduren.
 
-hello främsta skillnaden mellan en WCF-kontrakt och ett kontrakt i REST-format är hello lägga till en egenskap toohello [OperationContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.operationcontractattribute.aspx): [WebGetAttribute](https://msdn.microsoft.com/library/system.servicemodel.web.webgetattribute.aspx). Den här egenskapen gör toomap en metod i gränssnittet tooa metoden på hello andra sidan av hello-gränssnittet. I det här fallet vi använder [WebGetAttribute](https://msdn.microsoft.com/library/system.servicemodel.web.webgetattribute.aspx) toolink metod-tooHTTP GET. Detta gör att Service Bus tooaccurately hämta och tolka kommandon som skickas toohello gränssnitt.
+Den viktigaste skillnaden mellan en WCF-kontrakt och ett kontrakt i REST-format är att lägga till en egenskap för den [OperationContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.operationcontractattribute.aspx): [WebGetAttribute](https://msdn.microsoft.com/library/system.servicemodel.web.webgetattribute.aspx). Den här egenskapen gör att du kan mappa en metod i gränssnittet till en metod på andra sidan av gränssnittet. I det här fallet kommer vi att använda [WebGetAttribute](https://msdn.microsoft.com/library/system.servicemodel.web.webgetattribute.aspx) för att länka en metod och hämta HTTP GET. Detta gör att Service Bus kan hämta och tolka kommandon som skickas till gränssnittet på ett korrekt sätt.
 
-### <a name="toocreate-a-contract-with-an-interface"></a>toocreate ett kontrakt med ett gränssnitt
+### <a name="to-create-a-contract-with-an-interface"></a>Skapa ett kontrakt med ett gränssnitt
 
-1. Öppna Visual Studio som administratör: Högerklicka på hello programmet i hello **starta** -menyn och klicka sedan på **kör som administratör**.
-2. Skapa ett nytt konsolappsrojekt. Klicka på hello **filen** -menyn och välj **ny**och välj **projekt**. I hello **nytt projekt** dialogrutan klickar du på **Visual C#**väljer hello **konsolprogram** mall, och ger den namnet **ImageListener**. Använd hello standard **plats**. Klicka på **OK** toocreate hello projektet.
-3. Visual Studio skapar en `Program.cs`-fil för ett C#-projekt. Den här klassen innehåller en tom `Main()` metod som krävs för en konsol programmet projektet toobuild korrekt.
-4. Lägg till referenser tooService Bus och **System.ServiceModel.dll** toohello projektet genom att installera hello Service Bus NuGet-paketet. Det här paketet lägger automatiskt till referenser toohello Service Bus-bibliotek, samt hello WCF **System.ServiceModel**. I Solution Explorer högerklickar du på hello **ImageListener** projektet och klicka sedan på **hantera NuGet-paket**. Klicka på hello **Bläddra** fliken, och sök sedan efter `Microsoft Azure Service Bus`. Klicka på **installera**, och Godkänn hello villkor för användning.
-5. Du måste uttryckligen lägga till en referens för**System.ServiceModel.Web.dll** toohello projektet:
+1. Öppna Visual Studio som administratör: Högerklicka på programmet i **Start**-menyn och klicka sedan på **Kör som administratör**.
+2. Skapa ett nytt konsolapprojekt. Klicka på **Arkiv**-menyn, välj **Nytt** och sedan **Projekt**. I dialogrutan **Nytt projekt** klickar du på **Visual C#**, väljer mallen **Konsolprogram** och ger den namnet **ImageListener**. Använd standardinställningen **Plats**. Klicka på **OK** för att skapa projektet.
+3. Visual Studio skapar en `Program.cs`-fil för ett C#-projekt. Den här klassen innehåller en tom `Main()`-metod, ett krav för att ett konsolapprojekt ska kunna skapas på rätt sätt.
+4. Lägg till referenser till Service Bus och **System.ServiceModel.dll** till projektet genom att installera Service Bus NuGet-paketet. Det här paketet lägger automatiskt till referenser till Service Bus-bibliotek, samt även WCF **System.ServiceModel**. Högerklicka på projektet **ImageListener** i Solution Explorer och klicka sedan på **Hantera NuGet-paket**. Klicka på **Bläddra**-fliken och sök sedan efter `Microsoft Azure Service Bus`. Klicka på **Installera** och godkänn användningsvillkoren.
+5. Du måste uttryckligen lägga till en referens för **System.ServiceModel.Web.dll** i projektet:
    
-    a. I Solution Explorer högerklickar du på hello **referenser** mapp under hello projektmappen, och klicka sedan på **Lägg till referens**.
+    a. Högerklicka på mappen **Referenser** i Solution Explorer, under projektmappen, och klicka sedan på **Lägg till referens**.
    
-    b. I hello **Lägg till referens** dialogrutan klickar du på hello **Framework** fliken hello vänster och hello **Sök** skriver **System.ServiceModel.Web** . Välj hello **System.ServiceModel.Web** kryssrutan och klicka sedan på **OK**.
-6. Lägg till följande hello `using` instruktioner överst hello i hello Program.cs-filen.
+    b. I dialogrutan **Lägg till referens** klickar du på fliken **Framework** till vänster. Sedan skriver du in **System.ServiceModel.Web** i rutan **Sök**. Markera kryssrutan **System.ServiceModel.Web** och klicka sedan på **OK**.
+6. Lägg till följande `using`-uttryck högst upp i filen Program.cs.
    
     ```csharp
     using System.ServiceModel;
@@ -56,15 +56,15 @@ hello främsta skillnaden mellan en WCF-kontrakt och ett kontrakt i REST-format 
     using System.IO;
     ```
    
-    [System.ServiceModel](https://msdn.microsoft.com/library/system.servicemodel.aspx) är hello-namnområde som ger programmatisk åtkomst toobasic funktioner i WCF. Vidarebefordrande WCF använder många av hello objekt och attribut för WCF toodefine tjänstekontrakt. Du använder det här namnområdet i de flesta relay-appar. På liknande sätt [System.ServiceModel.Channels](https://msdn.microsoft.com/library/system.servicemodel.channels.aspx) hjälper dig att definiera hello kanalen, vilket är hello-objekt som du kommunicera med Azure Relay och hello klientens webbläsare. Slutligen [System.ServiceModel.Web](https://msdn.microsoft.com/library/system.servicemodel.web.aspx) innehåller hello-typer som gör att du toocreate webbaserade program.
-7. Byt namn på hello `ImageListener` namnområde för**Microsoft.ServiceBus.Samples**.
+    [System.ServiceModel](https://msdn.microsoft.com/library/system.servicemodel.aspx) är det namnområde som genom programmering ger åtkomst till grundläggande funktioner i WCF. Vidarebefordrande WCF använder många av objekt och attribut i WCF för att definiera tjänstekontrakt. Du använder det här namnområdet i de flesta relay-appar. På liknande sätt [System.ServiceModel.Channels](https://msdn.microsoft.com/library/system.servicemodel.channels.aspx) hjälper dig att definiera kanalen, vilket är det objekt som du kommunicera med Azure Relay och klientens webbläsare. Slutligen är det [System.ServiceModel.Web](https://msdn.microsoft.com/library/system.servicemodel.web.aspx) som innehåller de typer som gör att du kan skapa webbaserade appar.
+7. Byt namn på `ImageListener` namnområdet till **Microsoft.ServiceBus.Samples**.
    
     ```csharp
     namespace Microsoft.ServiceBus.Samples
     {
         ...
     ```
-8. Direkt efter hello öppna klammerparentesen för namnområdesdeklarationen hello, definiera ett nytt gränssnitt med namnet **IImageContract** och tillämpa hello **ServiceContractAttribute** attributet toohello gränssnitt med en värdet för `http://samples.microsoft.com/ServiceModel/Relay/`. Hej namnområdesvärdet skiljer sig från hello-namnområde som du använder under hela hello omfånget för din kod. hello namnområdesvärdet används som en unik identifierare för det här kontraktet och bör innehålla versionsinformation. Mer information finns i [Versionshantering för tjänster](http://go.microsoft.com/fwlink/?LinkID=180498). Att ange hello namnområdet uttryckligen förhindrar att hello standardvärdet för namnområdet som läggs till toohello kontraktnamn.
+8. Direkt efter den inledande klammerparentesen för namnområdesdeklarationen definierar du ett nytt gränssnitt med namnet **IImageContract** och sedan tillämpar du attributet **ServiceContractAttribute** på gränssnittet med ett värde av `http://samples.microsoft.com/ServiceModel/Relay/`. Namnområdesvärdet skiljer sig från det namnområde som du använder under hela intervallet för din kod. Namnområdesvärdet används som en unik identifierare för det här kontraktet och bör innehålla versionsinformation. Mer information finns i [Versionshantering för tjänster](http://go.microsoft.com/fwlink/?LinkID=180498). Genom att ange namnområdet uttryckligen förhindrar du att det förvalda namnområdesvärdet läggs till i kontraktnamnet.
    
     ```csharp
     [ServiceContract(Name = "ImageContract", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/RESTTutorial1")]
@@ -72,7 +72,7 @@ hello främsta skillnaden mellan en WCF-kontrakt och ett kontrakt i REST-format 
     {
     }
     ```
-9. Inom hello `IImageContract` gränssnitt, deklarera en metod för hello gång hello `IImageContract` kontrakt visar i hello gränssnitt och tillämpa hello `OperationContractAttribute` attributet toohello metod som du vill tooexpose som en del av hello offentliga Service Bus kontrakt.
+9. Inne i gränssnittet `IImageContract` deklarerar du en metod för den enkla åtgärd som `IImageContract`-kontraktet exponerar i gränssnittet. Sedan tillämpar du attributet `OperationContractAttribute` på den metod som du vill exponera som en del av det offentliga Service Bus-kontraktet.
    
     ```csharp
     public interface IImageContract
@@ -81,7 +81,7 @@ hello främsta skillnaden mellan en WCF-kontrakt och ett kontrakt i REST-format 
         Stream GetImage();
     }
     ```
-10. I hello **OperationContract** attribut, lägga till hello **WebGet** värde.
+10. Lägg till **WebGet**-värdet i attributet **OperationContract**.
     
     ```csharp
     public interface IImageContract
@@ -91,18 +91,18 @@ hello främsta skillnaden mellan en WCF-kontrakt och ett kontrakt i REST-format 
     }
     ```
     
-    Om du gör det möjliggör hello vidarebefordrande tjänsten tooroute HTTP GET-begäranden för`GetImage`, och tootranslate hello returnera värden av `GetImage` till en HTTP GETRESPONSE svaret. Senare i hello självstudiekursen ska du använda en web webbläsare tooaccess den här metoden och toodisplay hello avbildningen i hello webbläsare.
-11. Direkt efter hello `IImageContract` definition, deklarerar du en kanal som ärver från både hello `IImageContract` och `IClientChannel` gränssnitt.
+    Gör så gör den vidarebefordrande tjänsten på vägen HTTP GET-begäranden till `GetImage`, och översätta returvärdena för `GetImage` till en HTTP GETRESPONSE svaret. Lite längre fram i denna självstudiekurs kommer du att använda en webbläsare för att få tillgång till denna metod. Sedan visar du bilden i webbläsaren.
+11. Direkt efter definitionen `IImageContract` deklarerar du en kanal som ärver från både `IImageContract`- och `IClientChannel`-gränssnittet.
     
     ```csharp
     public interface IImageChannel : IImageContract, IClientChannel { }
     ```
     
-    En kanal är hello WCF-objekt via vilken hello-tjänsten och klienten skickar information tooeach andra. Senare skapar du hello kanalen i din värdapp. Azure Relay använder sedan den här kanalen toopass hello HTTP GET-förfrågningar från hello webbläsare tooyour **GetImage** implementering. hello relay använder också hello kanal tootake hello **GetImage** returvärde och omvandla det till en HTTP GETRESPONSE för hello klientens webbläsare.
-12. Från hello **skapa** -menyn klickar du på **skapa lösning** tooconfirm hello noggrannhet arbete hittills.
+    En kanal är det WCF-objekt via vilken tjänsten och klienten skickar information till varandra. Lite längre fram kommer du att skapa kanalen i din värdapp. Azure Relay sedan använder den här kanalen för att skicka HTTP GET-förfrågningar från webbläsaren till dina **GetImage** implementering. Vidarebefordran använder också kanalen för att ta den **GetImage** returvärde och omvandla det till en HTTP GETRESPONSE för klientens webbläsare.
+12. Från menyn **Skapa** klickar du på **Skapa lösning** för att bekräfta att det arbete du utfört hittills är korrekt.
 
 ### <a name="example"></a>Exempel
-hello följande kod visar ett grundläggande gränssnitt som definierar ett vidarebefordrande WCF-kontrakt.
+Följande kod visar ett grundläggande gränssnitt som definierar ett vidarebefordrande WCF-kontrakt.
 
 ```csharp
 using System;
@@ -135,21 +135,21 @@ namespace Microsoft.ServiceBus.Samples
 }
 ```
 
-## <a name="step-3-implement-a-rest-based-wcf-service-contract-toouse-service-bus"></a>Steg 3: Implementera ett kontrakt toouse för REST-baserat WCF-tjänsten Service Bus
-Skapa ett REST-format WCF vidarebefordrande tjänsten måste du först skapa hello kontrakt som definieras med hjälp av ett gränssnitt. hello nästa steg är tooimplement hello gränssnitt. Detta innebär att du skapar en klass som heter **ImageService** som implementerar hello användardefinierade **IImageContract** gränssnitt. När du implementerar hello kontraktet, konfigurerar du sedan hello-gränssnittet genom att använda en App.config-fil. hello konfigurationsfilen innehåller information som behövs för hello program, till exempel hello namnet på hello tjänst, hello namn hello kontraktet och hello typ av protokoll som används toocommunicate med hello vidarebefordrande tjänsten. hello-kod som används för dessa uppgifter finns i hello-exemplet som följer hello proceduren.
+## <a name="step-3-implement-a-rest-based-wcf-service-contract-to-use-service-bus"></a>Steg 3: Implementera ett REST-baserat WCF-tjänstekontrakt för användning av Service Bus
+Skapa ett REST-format WCF vidarebefordrande tjänsten måste du först skapa det kontrakt som definieras med hjälp av ett gränssnitt. Nästa steg är att implementera gränssnittet. Detta innebär att du skapar en klass som heter **ImageService** som implementerar det användardefinierade **IImageContract**-gränssnittet. Efter att du har implementerat kontraktet, konfigurerar du gränssnittet genom att använda en App.config-fil. Konfigurationsfilen innehåller information som behövs för programmet, till exempel namnet på tjänsten, namnet på kontraktet och vilken typ av protokoll som används för att kommunicera med den vidarebefordrande tjänsten. Den kod som används för dessa arbetsuppgifter visas i exemplet som följer efter proceduren.
 
-Som med hello föregående steg, det är mycket lite skillnad mellan att implementera ett kontrakt i REST-format och ett vidarebefordrande WCF-kontrakt.
+Det finns mycket lite skillnad mellan att implementera ett kontrakt i REST-format och ett vidarebefordrande WCF-kontrakt som föregående steg.
 
-### <a name="tooimplement-a-rest-style-service-bus-contract"></a>Service Bus-kontrakt tooimplement REST-format
-1. Skapa en ny klass med namnet **ImageService** direkt efter hello definition av hello **IImageContract** gränssnitt. Hej **ImageService** klassen implementerar hello **IImageContract** gränssnitt.
+### <a name="to-implement-a-rest-style-service-bus-contract"></a>Implementera ett Service Bus-kontrakt i REST-format
+1. Skapa en ny klass med namnet **ImageService** direkt efter definitionen av gränssnittet **IImageContract**. Klassen **ImageService** implementerar gränssnittet **IImageContract**.
    
     ```csharp
     class ImageService : IImageContract
     {
     }
     ```
-    Liknande tooother gränssnittsimplementationer du kan implementera hello definition i en annan fil. Men för den här självstudiekursen hello visas implementeringen i samma fil som gränssnittsdefinitionen hello hello och `Main()` metod.
-2. Tillämpa hello [ServiceBehaviorAttribute](https://msdn.microsoft.com/library/system.servicemodel.servicebehaviorattribute.aspx) attributet toohello **IImageService** klassen tooindicate som hello klassen är en implementering av ett WCF-kontrakt.
+    Precis som med andra gränssnittsimplementeringar kan du implementera definitionen i en annan fil. Men i den här självstudiekursen visas implementeringen i samma fil som gränssnittsdefinitionen och `Main()`-metoden.
+2. Tillämpa attributet [ServiceBehaviorAttribute](https://msdn.microsoft.com/library/system.servicemodel.servicebehaviorattribute.aspx) i klassen **IImageService** för att ange att klassen är en implementering av ett WCF-kontrakt.
    
     ```csharp
     [ServiceBehavior(Name = "ImageService", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
@@ -158,14 +158,14 @@ Som med hello föregående steg, det är mycket lite skillnad mellan att impleme
     }
     ```
    
-    Som tidigare nämnts är det här namnområdet inte ett traditionellt namnområde. I stället är den del av hello WCF-arkitekturen som identifierar hello kontraktet. Mer information finns i hello [datakontraktnamn](https://msdn.microsoft.com/library/ms731045.aspx) -avsnittet i hello WCF-dokumentationen.
-3. Lägg till en .jpg-bild tooyour projektet.  
+    Som tidigare nämnts är det här namnområdet inte ett traditionellt namnområde. Det är istället en del av WCF-arkitekturen som identifierar kontraktet. Mer information finns i [Datakontraktnamn](https://msdn.microsoft.com/library/ms731045.aspx) i WCF-dokumentationen.
+3. Lägg till en .jpg-bild i projektet.  
    
-    Det här är en bild som hello tjänsten visar i hello mottagning av webbläsaren. Högerklicka på ditt projekt och klicka sedan på **Lägg till**. Klicka därefter på **Befintligt objekt**. Använd hello **Lägg till befintligt objekt** dialogrutan rutan toobrowse tooan lämpliga .jpg och klicka sedan på **Lägg till**.
+    Det här är en bild som tjänsten visar i den mottagande webbläsaren. Högerklicka på ditt projekt och klicka sedan på **Lägg till**. Klicka därefter på **Befintligt objekt**. Använd dialogrutan **Lägg till befintligt objekt** för att bläddra till en lämplig .jpg-bild och klicka sedan på **Lägg till**.
    
-    När du lägger till hello-fil, se till att **alla filer** väljs i hello listrutan nästa toohello **filnamn:** fält. hello resten av den här kursen förutsätter att hello namn på hello bild är ”image.jpg”. Om du har en annan fil, kommer du ha toorename hello bild eller ändra toocompensate din kod.
-4. toomake till att hello kör tjänsten hittar hello bildfil i **Solution Explorer** Högerklicka hello image-filen och klicka på **egenskaper**. I hello **egenskaper** ställer du in **kopiera tooOutput Directory** för**kopiera om nyare**.
-5. Lägg till en referens toohello **System.Drawing.dll** sammansättningen toohello projekt och Lägg även till hello följande associerade `using` instruktioner.  
+    När du lägger till filen, måste du se till att **Alla filer** är markerad i listrutan bredvid fältet **Filnamn:**. I resten av den här självstudiekursen förutsätter vi att namnet på denna bild är ”image.jpg”. Om du har en annan fil måste du byta namn på bilden, eller ändra koden för att kompensera för detta.
+4. För att försäkra dig om att den tjänst som körs kan hitta bildfilen kan du högerklicka på bildfilen i **Solution Explorer** och sedan klicka på **Egenskaper**. I rutan **Egenskaper** ställer du in **Kopiera till utdatakatalog** på **Kopiera om nyare**.
+5. Lägg till en referens till sammansättningen **System.Drawing.dll** i projektet och lägg även till följande associerade `using`-uttryck.  
    
     ```csharp
     using System.Drawing;
@@ -173,7 +173,7 @@ Som med hello föregående steg, det är mycket lite skillnad mellan att impleme
     using Microsoft.ServiceBus;
     using Microsoft.ServiceBus.Web;
     ```
-6. I hello **ImageService** klassen, lägga till hello följande konstruktor att belastningar hello bitmappen och förbereder toosend den toohello klientens webbläsare.
+6. I klassen **ImageService** lägger du till följande konstruktor som läser in bitmappen och förbereder den för att skicka den till klientens webbläsare.
    
     ```csharp
     class ImageService : IImageContract
@@ -188,7 +188,7 @@ Som med hello föregående steg, det är mycket lite skillnad mellan att impleme
         }
     }
     ```
-7. Direkt efter föregående kod hello Lägg till följande hello **GetImage** metod i hello **ImageService** klassen tooreturn ett HTTP-meddelande som innehåller hello avbildningen.
+7. Direkt efter föregående kod lägger du till följande **GetImage**-metod i klassen **ImageService** för att returnera ett HTTP-meddelande som innehåller bilden.
    
     ```csharp
     public Stream GetImage()
@@ -203,14 +203,14 @@ Som med hello föregående steg, det är mycket lite skillnad mellan att impleme
     }
     ```
    
-    Den här implementeringen använder **MemoryStream** tooretrieve hello bilden och förbereda den för strömning toohello webbläsare. Den börjar hello strömningspositionen vid noll, deklarerar hello ströminnehållet som jpeg och strömmar hello information.
-8. Från hello **skapa** -menyn klickar du på **skapa lösning**.
+    Den här implementeringen använder **MemoryStream** för att hämta bilden och förbereda den för strömning till webbläsaren. Den startar strömningspositionen vid noll, deklarerar ströminnehållet som jpeg och strömmar sedan informationen.
+8. Klicka på **Skapa lösning** från **Skapa**-menyn.
 
-### <a name="toodefine-hello-configuration-for-running-hello-web-service-on-service-bus"></a>toodefine hello konfiguration för att köra hello webbtjänsten på Service Bus
-1. I **Solution Explorer**, dubbelklicka på **App.config** tooopen i hello Visual Studio-redigeraren.
+### <a name="to-define-the-configuration-for-running-the-web-service-on-service-bus"></a>Definiera konfigurationen för att köra webbtjänsten på Service Bus
+1. Dubbelklicka på filen **App.config** i **Solution Explorer** för att öppna den i Visual Studio-redigeraren.
    
-    Hej **App.config** filen innehåller hello tjänstnamn, slutpunkten (det vill säga hello plats som Azure Relay visar för klienter och värdar toocommunicate med varandra) och bindningen (hello typ av protokoll som används toocommunicate). hello största skillnaden här är den hello konfigurerade tjänstslutpunkten refererar tooa [WebHttpRelayBinding](/dotnet/api/microsoft.servicebus.webhttprelaybinding) bindning.
-2. Hej `<system.serviceModel>` XML-elementet är ett WCF-element som definierar en eller flera tjänster. Det kan använda toodefine hello tjänstenamnet och slutpunkten. Längst ned hello hello `<system.serviceModel>` element (men fortfarande inom `<system.serviceModel>`), Lägg till en `<bindings>` element som har hello följande innehåll. Detta definierar hello bindningar som används i hello program. Du kan definiera flera bindningar men i den här kursen definierar du bara en.
+    Den **App.config** filen innehåller tjänstnamn, slutpunkten (det vill säga den plats som Azure Relay visar för klienter och värdar att kommunicera med varandra) och bindningen (typ av protokoll som används för att kommunicera). Den största skillnaden är att den konfigurerade tjänstslutpunkten refererar till en [WebHttpRelayBinding](/dotnet/api/microsoft.servicebus.webhttprelaybinding) bindning.
+2. XML-elementet `<system.serviceModel>` är ett WCF-element som definierar en eller flera tjänster. Här används det för att definiera tjänstenamnet och slutpunkten. Längst ned i elementet `<system.serviceModel>` (men fortfarande i `<system.serviceModel>`), lägger du till ett `<bindings>`-element som har följande innehåll. Detta definierar de bindningar som används i appen. Du kan definiera flera bindningar men i den här kursen definierar du bara en.
    
     ```xml
     <bindings>
@@ -223,8 +223,8 @@ Som med hello föregående steg, det är mycket lite skillnad mellan att impleme
     </bindings>
     ```
    
-    hello föregående kod definierar en WCF-relä [WebHttpRelayBinding](/dotnet/api/microsoft.servicebus.webhttprelaybinding) bindning med **relayClientAuthenticationType** ställa in också**ingen**. Den här inställningen anger att en slutpunkt som använder den här bindningen inte kräver autentiseringsuppgifter för klienten.
-3. Efter hello `<bindings>` element, lägga till en `<services>` element. Liknande toohello bindningar kan du definiera flera tjänster i en enda konfigurationsfil. I den här självstudiekursen kommer du dock bara att definiera en.
+    Föregående kod definierar en WCF-relä [WebHttpRelayBinding](/dotnet/api/microsoft.servicebus.webhttprelaybinding) bindning med **relayClientAuthenticationType** inställd på **ingen**. Den här inställningen anger att en slutpunkt som använder den här bindningen inte kräver autentiseringsuppgifter för klienten.
+3. Lägg till ett `<services>`-element efter elementet `<bindings>`. På ett liknande sätt som med bindningarna kan du definiera flera tjänster i en enda konfigurationsfil. I den här självstudiekursen kommer du dock bara att definiera en.
    
     ```xml
     <services>
@@ -241,8 +241,8 @@ Som med hello föregående steg, det är mycket lite skillnad mellan att impleme
     </services>
     ```
    
-    Det här steget konfigurerar en tjänst som använder hello som tidigare definierats standard **webHttpRelayBinding**. Använder också hello standard **sbTokenProvider**, som har definierats i hello nästa steg.
-4. Efter hello `<services>` elementet, skapar en `<behaviors>` element med hello efter innehåll, Ersätt ”SAS_KEY” med hello *signatur för delad åtkomst* (SAS)-nyckel som du tidigare fick från hello [Azure-portalen ][Azure portal].
+    I det här steget konfigurerar vi en tjänst som använder den förvalda **webHttpRelayBinding** som definierats tidigare. Den använder också den förvalda **sbTokenProvider**, som definieras i nästa steg.
+4. Efter den `<services>` element, skapa en `<behaviors>` element med följande innehåll, Ersätt ”SAS_KEY” med den *signatur för delad åtkomst* nyckeln (SAS) du tidigare fick från den [Azure-portalen][Azure portal].
    
     ```xml
     <behaviors>
@@ -262,7 +262,7 @@ Som med hello föregående steg, det är mycket lite skillnad mellan att impleme
             </serviceBehaviors>
     </behaviors>
     ```
-5. Kvar i App.config i hello `<appSettings>` element, Ersätt hello hela anslutningen strängvärde med hello anslutningssträng som du tidigare fick från hello-portalen. 
+5. Medan du fortfarande är kvar i App.config, i elementet `<appSettings>`, byter du ut hela värdet för anslutningssträngen mot den sträng som du tidigare fick från portalen. 
    
     ```xml
     <appSettings>
@@ -271,10 +271,10 @@ Som med hello föregående steg, det är mycket lite skillnad mellan att impleme
            value="Endpoint=sb://yourNamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=YOUR_SAS_KEY"/>
     </appSettings>
     ```
-6. Från hello **skapa** -menyn klickar du på **skapa lösning** toobuild hello hela lösningen.
+6. Klicka på **Skapa lösning** för att skapa hela lösningen från menyn **Skapa**.
 
 ### <a name="example"></a>Exempel
-hello följande kod visar hello kontrakt- och tjänsteimplementeringen för en REST-baserad tjänst som körs på Service Bus använder hello **WebHttpRelayBinding** bindning.
+Följande kod visar kontrakt- och tjänsteimplementeringen för en REST-baserad tjänst som körs på Service Bus med hjälp av bindningen **WebHttpRelayBinding**.
 
 ```csharp
 using System;
@@ -336,7 +336,7 @@ namespace Microsoft.ServiceBus.Samples
 }
 ```
 
-hello visar följande exempel hello App.config-fil som är associerad med hello-tjänsten.
+I följande exempel visas den App.config-fil som är associerad med tjänsten.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -346,7 +346,7 @@ hello visar följande exempel hello App.config-fil som är associerad med hello-
     </startup>
     <system.serviceModel>
         <extensions>
-            <!-- In this extension section we are introducing all known service bus extensions. User can remove hello ones they don't need. -->
+            <!-- In this extension section we are introducing all known service bus extensions. User can remove the ones they don't need. -->
             <behaviorExtensions>
                 <add name="connectionStatusBehavior"
                     type="Microsoft.ServiceBus.Configuration.ConnectionStatusElement, Microsoft.ServiceBus, Culture=neutral, PublicKeyToken=31bf3856ad364e35"/>
@@ -429,54 +429,54 @@ hello visar följande exempel hello App.config-fil som är associerad med hello-
 </configuration>
 ```
 
-## <a name="step-4-host-hello-rest-based-wcf-service-toouse-azure-relay"></a>Steg 4: Värdbasera hello REST-baserat WCF-tjänsten toouse Azure Relay
-Det här steget beskriver hur toorun en tjänst med hjälp av ett konsolprogram med WCF Relay. En fullständig lista över hello-kod som skrivs i det här steget finns i hello-exemplet som följer hello proceduren.
+## <a name="step-4-host-the-rest-based-wcf-service-to-use-azure-relay"></a>Steg 4: Värdbasera REST-baserat WCF-tjänst om du vill använda Azure Relay
+Det här steget beskriver hur du kör en webbtjänst som använder ett konsolprogram med WCF Relay. En fullständig lista över den kod som skrivs i det här steget finns i det exempel som följer efter proceduren.
 
-### <a name="toocreate-a-base-address-for-hello-service"></a>toocreate en basadress för hello-tjänsten
-1. I hello `Main()` funktionsdeklarationen, skapa en variabel toostore hello namnområdet för ditt projekt. Se till att tooreplace `yourNamespace` med hello namnet hello Relay-namnområde som du skapade tidigare.
+### <a name="to-create-a-base-address-for-the-service"></a>Så här skapar du en basadress för tjänsten
+1. I den `Main()` funktionsdeklarationen, skapa en variabel för att lagra namnområdet för ditt projekt. Ersätt `yourNamespace` med namnet på namnområdet Relay som du skapade tidigare.
    
     ```csharp
     string serviceNamespace = "yourNamespace";
     ```
-    Service Bus använder hello namnet på ditt namnområde toocreate ett unikt URI.
-2. Skapa en `Uri` hello service som baseras på namnområdet hello-instans för hello basadress.
+    Service Bus använder namnet på ditt namnområde för att skapa ett unikt URI.
+2. Skapa en `Uri`-instans för tjänstens basadress som baseras på namnområdet.
    
     ```csharp
     Uri address = ServiceBusEnvironment.CreateServiceUri("https", serviceNamespace, "Image");
     ```
 
-### <a name="toocreate-and-configure-hello-web-service-host"></a>toocreate och konfigurera hello webbtjänstevärden
-* Skapa hello webbtjänstevärden med hjälp av hello URI-adress som skapade tidigare i det här avsnittet.
+### <a name="to-create-and-configure-the-web-service-host"></a>Så här skapar och konfigurerar du webbtjänstevärden
+* Skapa webbtjänstevärden med hjälp av den URI-adress som du skapade tidigare i det här avsnittet.
   
     ```csharp
     WebServiceHost host = new WebServiceHost(typeof(ImageService), address);
     ```
-    hello tjänstvärden är hello WCF-objekt som instantierar värdprogrammet hello. Det här exemplet skickar den hello typen värden som du vill toocreate (en **ImageService**), och även hello adress som du vill tooexpose hello värdprogrammet.
+    Tjänstevärden är det WCF-objekt som instantierar värdprogrammet. Det här exemplet överför den typ av värd som du vill skapa (en **ImageService**), och även adressen som du vill exponera värdprogrammet på.
 
-### <a name="toorun-hello-web-service-host"></a>toorun hello webbtjänstevärden
-1. Öppna hello-tjänsten.
+### <a name="to-run-the-web-service-host"></a>Så här kör du webbtjänstevärden
+1. Öppna tjänsten.
    
     ```csharp
     host.Open();
     ```
-    hello-tjänsten körs nu.
-2. Visa ett meddelande som anger att hello-tjänsten körs och hur toostop hello service.
+    Tjänsten körs nu.
+2. Visa ett meddelande som anger att tjänsten körs och hur du stoppar tjänsten.
    
     ```csharp
-    Console.WriteLine("Copy hello following address into a browser toosee hello image: ");
+    Console.WriteLine("Copy the following address into a browser to see the image: ");
     Console.WriteLine(address + "GetImage");
     Console.WriteLine();
-    Console.WriteLine("Press [Enter] tooexit");
+    Console.WriteLine("Press [Enter] to exit");
     Console.ReadLine();
     ```
-3. När du är klar stänger du hello tjänstvärden.
+3. Stäng tjänstevärden när du är klar.
    
     ```csharp
     host.Close();
     ```
 
 ## <a name="example"></a>Exempel
-hello följande exempel innehåller hello tjänstekontraktet och implementeringen från föregående steg i hello självstudier och värdar hello tjänsten i ett konsolprogram. Kompilera hello följande kod i en körbar fil med namnet ImageListener.exe.
+Följande exempel innehåller tjänstekontraktet och implementeringen från föregående steg i självstudiekursen och fungerar som värd för tjänsten i ett konsolprogram. Sammanställ följande kod i en körbar fil med namnet ImageListener.exe.
 
 ```csharp
 using System;
@@ -538,10 +538,10 @@ namespace Microsoft.ServiceBus.Samples
             WebServiceHost host = new WebServiceHost(typeof(ImageService), address);
             host.Open();
 
-            Console.WriteLine("Copy hello following address into a browser toosee hello image: ");
+            Console.WriteLine("Copy the following address into a browser to see the image: ");
             Console.WriteLine(address + "GetImage");
             Console.WriteLine();
-            Console.WriteLine("Press [Enter] tooexit");
+            Console.WriteLine("Press [Enter] to exit");
             Console.ReadLine();
 
             host.Close();
@@ -550,18 +550,18 @@ namespace Microsoft.ServiceBus.Samples
 }
 ```
 
-### <a name="compiling-hello-code"></a>Kompilera koden hello
-När du har skapat hello lösningen hello följande toorun hello program:
+### <a name="compiling-the-code"></a>Kompilera koden
+Gör följande för att köra appen när du har skapat lösningen:
 
-1. Tryck på **F5**, eller bläddra toohello körbara filplatsen (ImageListener\bin\Debug\ImageListener.exe) toorun hello-tjänsten. Behåll hello app körs, eftersom det är nödvändigt tooperform hello nästa steg.
-2. Kopiera och klistra in hello-adress från hello Kommandotolken i en webbläsare toosee hello avbildningen.
-3. När du är klar trycker du på **RETUR** i hello kommandotolk-fönster tooclose hello app.
+1. Tryck på **F5**, eller bläddra till den körbara filplatsen (ImageListener\bin\Debug\ImageListener.exe) för att köra tjänsten. Fortsätt att köra appen eftersom det är nödvändigt för att kunna utföra nästa steg.
+2. Kopiera och klistra in adressen från kommandotolken i en webbläsare för att se bilden.
+3. När du är klar trycker du på **Retur** i kommandotolken för att stänga appen.
 
 ## <a name="next-steps"></a>Nästa steg
-Nu när du har skapat ett program som använder hello Service Bus relay-tjänst finns i följande artiklar toolearn mer om Azure Relay hello:
+Nu när du har skapat ett program som använder tjänsten Service Bus relay finns i följande artiklar för att lära dig mer om Azure Relay:
 
 * [Azure Service Bus-Arkitekturöversikt](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md)
 * [Översikt över Azure Relay](relay-what-is-it.md)
-* [Hur toouse hello WCF vidarebefordrande tjänsten med .NET](relay-wcf-dotnet-get-started.md)
+* [Hur du använder tjänsten WCF relay med .NET](relay-wcf-dotnet-get-started.md)
 
 [Azure portal]: https://portal.azure.com

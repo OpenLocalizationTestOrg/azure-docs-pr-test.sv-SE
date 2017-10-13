@@ -1,6 +1,6 @@
 ---
-title: "aaaSet in Apache Tomcat på en Linux-dator | Microsoft Docs"
-description: "Lär dig hur tooset in Apache Tomcat7 med hjälp av Azure virtuella datorer som kör Linux."
+title: "Ställa in Apache Tomcat på en Linux-dator | Microsoft Docs"
+description: "Lär dig hur du ställer in Apache Tomcat7 med hjälp av Azure virtuella datorer som kör Linux."
 services: virtual-machines-linux
 documentationcenter: 
 author: NingKuang
@@ -15,27 +15,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: ningk
-ms.openlocfilehash: b837a73e91fcb25d5459d993a0e93ceef1a1fc8b
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: fa30c78a5a5d458ba8845c3c10b87538427786c9
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="set-up-tomcat7-on-a-linux-virtual-machine-with-azure"></a>Ställa in Tomcat7 på en Linux-dator med Azure
-Apache Tomcat (eller bara Tomcat kan också kallades Djakarta Tomcat) är en öppen källkod webbservern och servlet-behållare som utvecklats av hello Apache Software Foundation (ASF). Tomcat implementerar hello Java Servlet och hello JavaServer sidor (JSP) specifikationer från Sun Microsystems. Tomcat ger en ren Java HTTP web server-miljö i vilken toorun Java-kod. I hello enklaste konfigurationen körs Tomcat i en enda process. Den här processen körs en Java virtual machine (JVM). Varje HTTP-begäran från en webbläsare tooTomcat behandlas som en separat tråd hello Tomcat pågår.  
+Apache Tomcat (eller bara Tomcat kan också kallades Djakarta Tomcat) är en öppen källkod webbservern och servlet-behållare som utvecklats av Apache Software Foundation (ASF). Tomcat implementerar Java-Servlet och specifikationer för JavaServer sidor (JSP) från Sun Microsystems. Tomcat ger en ren Java HTTP web server-miljö där du kan köra Java-kod. I den enklaste konfigurationen körs Tomcat i en enda process. Den här processen körs en Java virtual machine (JVM). Alla HTTP-begäran från en webbläsare till Tomcat behandlas som en separat tråd i Tomcat-processen.  
 
 > [!IMPORTANT]
-> Azure har två olika distributionsmodeller för att skapa och arbeta med resurser: [Azure Resource Manager och klassisk](../../../resource-manager-deployment-model.md). Den här artikeln beskriver hur toouse hello klassiska distributionsmodellen. Vi rekommenderar att de flesta nya distributioner använder hello Resource Manager-modellen. toouse toodeploy en Resource Manager-mallen en Ubuntu VM med öppna JDK och Tomcat, se [i den här artikeln](https://azure.microsoft.com/documentation/templates/openjdk-tomcat-ubuntu-vm/).
+> Azure har två olika distributionsmodeller för att skapa och arbeta med resurser: [Azure Resource Manager och klassisk](../../../resource-manager-deployment-model.md). Den här artikeln beskriver hur du använder den klassiska distributionsmodellen. Vi rekommenderar att de flesta nya distributioner använder Resource Manager-modellen. Om du vill använda en Resource Manager-mall för att distribuera en VM Ubuntu med öppna JDK och Tomcat, se [i den här artikeln](https://azure.microsoft.com/documentation/templates/openjdk-tomcat-ubuntu-vm/).
 
 I den här artikeln får du installerar Tomcat7 på en Linux-avbildning och distribuera den i Azure.  
 
 Du kommer att lära dig:  
 
-* Hur toocreate en virtuell dator i Azure.
-* Hur hello tooprepare virtuell dator för Tomcat7.
-* Hur tooinstall Tomcat7.
+* Så här skapar du en virtuell dator i Azure.
+* Hur du förbereder den virtuella datorn för Tomcat7.
+* Så här installerar du Tomcat7.
 
-Det förutsätts att du redan har en Azure-prenumeration.  Om inte, du kan registrera dig för en kostnadsfri utvärderingsversion på [hello Azure-webbplatsen](https://azure.microsoft.com/). Om du har en MSDN-prenumeration, se [Microsoft särskilda priser för Azure: MSDN, MPN och BizSpark fördelar](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/?c=14-39). toolearn mer om Azure, se [vad är Azure?](https://azure.microsoft.com/overview/what-is-azure/).
+Det förutsätts att du redan har en Azure-prenumeration.  Om inte, du kan registrera dig för en kostnadsfri utvärderingsversion på [Azure-webbplatsen](https://azure.microsoft.com/). Om du har en MSDN-prenumeration, se [Microsoft särskilda priser för Azure: MSDN, MPN och BizSpark fördelar](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/?c=14-39). Läs mer om Azure i [vad är Azure?](https://azure.microsoft.com/overview/what-is-azure/).
 
 Den här artikeln förutsätter att du har grundläggande kunskaper om Tomcat- och Linux.  
 
@@ -45,220 +45,220 @@ I det här steget ska du skapa en virtuell dator med hjälp av en Linux-avbildni
 ### <a name="step-1-generate-an-ssh-authentication-key"></a>Steg 1: Skapa en SSH-nyckel för autentisering
 SSH är ett viktigt verktyg för administratörer. Dock rekommenderas konfigurera åtkomstsäkerhet baserat på ett fastställt mänskliga lösenord inte. Angripare kan dela upp i ditt system baserat på ett användarnamn och ett svagt lösenord.
 
-hello bra är att det finns ett sätt tooleave fjärråtkomst öppna och oroa dig inte om lösenord. Den här metoden består av autentisering med asymmetrisk kryptering. hello är användares privata nyckel hello som ger hello-autentisering. Du kan även låsa hello användarkonto toonot Tillåt lösenordsautentisering.
+Goda nyheter är att det är ett sätt att lämna fjärråtkomst öppen och oroa dig inte om lösenord. Den här metoden består av autentisering med asymmetrisk kryptering. Den privata nyckeln är den som ger autentisering. Du kan även låsa användarens konto för att inte tillåta lösenordsautentisering.
 
-En annan fördel med den här metoden är att du inte behöver olika lösenord toosign i toodifferent servrar. Du kan autentisera med hjälp av hello personliga privata nyckel på alla servrar som förhindrar att tooremember flera lösenord.
+En annan fördel med den här metoden är att du inte behöver olika lösenord för att logga in på olika servrar. Du kan autentisera med hjälp av den personliga privata nyckeln på alla servrar som förhindrar att behöva komma ihåg flera lösenord.
 
 
 
-Följ dessa steg toogenerate hello SSH-autentisering-nyckel.
+Följ dessa steg för att generera nyckeln SSH-autentisering.
 
-1. Hämta och installera PuTTYgen från hello följande plats: [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
+1. Hämta och installera PuTTYgen från följande plats: [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
 2. Kör Puttygen.exe.
-3. Klicka på **generera** toogenerate hello nycklar. Hello processen att du kan öka slumpmässighet genom glidande hello muspekaren över hello tomt område i hello-fönstret.  
-   ![PuTTY nyckel Generator skärmbild som visar hello genererar nya nycklar knappen][1]
-4. När hello generera process, visas Puttygen.exe den offentliga nyckeln.  
-   ![PuTTY nyckel Generator skärmbild som visar hello ny offentlig nyckel och hello Spara privat nyckel knapp][2]
-5. Markera och kopiera hello offentliga nyckeln och spara det i en fil med namnet publicKey.pem. Klicka inte på **spara offentlig nyckel**eftersom hello spara offentlig nyckel filformatet skiljer sig från hello offentlig nyckel som vi vill.
+3. Klicka på **generera** att generera nycklar. Du kan öka slumpmässighet genom att flytta musen över det tomma utrymmet i fönstret i processen.  
+   ![PuTTY nyckel Generator skärmbild som visar knappen Skapa ny nyckel][1]
+4. När processen generera visas Puttygen.exe den offentliga nyckeln.  
+   ![PuTTY nyckel Generator skärmbild som visar den offentliga nyckeln och Spara privat nyckel knappen][2]
+5. Markera och kopiera den offentliga nyckeln och spara det i en fil med namnet publicKey.pem. Klicka inte på **spara offentlig nyckel**, eftersom den sparade offentliga nyckeln filformatet skiljer sig från den offentliga nyckeln som vi vill.
 6. Klicka på **Spara privat nyckel**, och spara den i en fil med namnet privateKey.ppk.
 
-### <a name="step-2-create-hello-image-in-hello-azure-portal"></a>Steg 2: Skapa hello bild i hello Azure-portalen
-1. I hello [portal](https://portal.azure.com/), klickar du på **ny** i hello uppgift liggande toocreate en bild. Välj hello Linux bild är baserad på dina behov. hello används följande exempel hello Ubuntu 14.04 bild.
-![Skärmbild av hello portal som visar hello ny knapp][3]
+### <a name="step-2-create-the-image-in-the-azure-portal"></a>Steg 2: Skapa avbildningen i Azure-portalen
+1. I den [portal](https://portal.azure.com/), klickar du på **ny** i Aktivitetsfältet för att skapa en avbildning. Välj den Linux-avbildning som är baserad på dina behov. I följande exempel används Ubuntu 14.04 bilden.
+![Skärmbild av portalen som visar knappen Nytt][3]
 
-2. För **värdnamn**, ange hello namn för hello-URL att du och Internet-klienter kommer att använda tooaccess den här virtuella datorn. Definiera hello sista delen av hello DNS-namn, till exempel tomcatdemo. Azure skapar sedan hello URL som tomcatdemo.cloudapp.net.  
+2. För **värdnamn**, ange namnet på den URL som du och Internet-klienter använder för att komma åt den virtuella datorn. Definiera den sista delen av DNS-namn, till exempel tomcatdemo. Azure skapar sedan URL: en som tomcatdemo.cloudapp.net.  
 
-3. För **SSH autentiseringsnyckel**, kopiera hello nyckelvärde från hello publicKey.pem fil som innehåller hello offentliga nyckel som genererats av PuTTYgen.  
-![Autentiseringsnyckeln för SSH rutan i hello-portalen][4]
+3. För **SSH autentiseringsnyckel**, Kopiera värdet för nyckeln från filen publicKey.pem, som innehåller den offentliga nyckeln som genererats av PuTTYgen.  
+![SSH-autentiseringsnyckel rutan i portalen][4]
 
 4. Konfigurera övriga inställningar efter behov och klicka sedan på **skapa**.  
 
 ## <a name="phase-2-prepare-your-virtual-machine-for-tomcat7"></a>Fas 2: Förbereda den virtuella datorn för Tomcat7
-I det här steget kommer du konfigurerar en slutpunkt för Tomcat trafik och ansluter sedan tooyour ny virtuell dator.
+I det här steget kommer du konfigurerar en slutpunkt för Tomcat trafik och ansluter sedan till den nya virtuella datorn.
 
-### <a name="step-1-open-hello-http-port-tooallow-web-access"></a>Steg 1: Öppna hello HTTP port tooallow webbåtkomst
-Slutpunkter i Azure består av ett TCP- eller UDP-protokoll, tillsammans med en offentlig och privat port. hello privata porten är hello hello tjänsten lyssnar tooon hello virtuell dator. hello offentlig port är hello-port som hello Azure-molntjänst lyssnar tooexternally för inkommande, Internet-baserade trafik.  
+### <a name="step-1-open-the-http-port-to-allow-web-access"></a>Steg 1: Öppna HTTP-porten för att tillåta webbåtkomst
+Slutpunkter i Azure består av ett TCP- eller UDP-protokoll, tillsammans med en offentlig och privat port. Den privata porten är den port som tjänsten lyssnar på den virtuella datorn. Den offentliga porten är den port som Azure-Molntjänsten lyssnar på externt för inkommande, Internet-baserade trafik.  
 
-TCP-port 8080 är hello standardportnumret att Tomcat använder toolisten. Om den här porten är öppen med en Azure slutpunkt du och andra Internet-klienter kan komma åt Tomcat sidor.  
+TCP-port 8080 är standardportnumret som Tomcat använder för att lyssna. Om den här porten är öppen med en Azure slutpunkt du och andra Internet-klienter kan komma åt Tomcat sidor.  
 
-1. I hello-portalen klickar du på **Bläddra** > **virtuella datorer**, och klicka sedan på hello virtuell dator som du skapade.  
-   ![Skärmbild av hello virtuella datorer directory][5]
-2. tooadd en slutpunkt tooyour virtuell dator, klicka på hello **slutpunkter** rutan.
-   ![Skärmbild som visar hello slutpunkter rutan][6]
+1. I portalen klickar du på **Bläddra** > **virtuella datorer**, och klicka sedan på den virtuella datorn som du skapade.  
+   ![Skärmbild av katalogen virtuella datorer][5]
+2. Om du vill lägga till en slutpunkt till den virtuella datorn klickar du på den **slutpunkter** rutan.
+   ![Skärmbild som visar rutan slutpunkter][6]
 3. Klicka på **Lägg till**.  
 
-   1. För hello slutpunkt, ange ett namn för hello slutpunkt i **Endpoint**, och ange sedan 80 i **offentlig Port**.  
+   1. Ange ett namn för slutpunkten i för slutpunkten, **Endpoint**, och ange sedan 80 i **offentlig Port**.  
 
-      Om du anger det too80, behöver du inte tooinclude hello portnumret i hello URL-adress används tooaccess Tomcat. Till exempel http://tomcatdemo.cloudapp.net.    
+      Om du ställer in den 80, behöver du inte inkludera portnumret i den URL som används för att komma åt Tomcat. Till exempel http://tomcatdemo.cloudapp.net.    
 
-      Om du anger det tooanother värde, exempelvis 81, måste tooadd hello port number toohello URL tooaccess Tomcat. Till exempel http://tomcatdemo.cloudapp.net:81 /.
-   2. Ange 8080 i **privat Port**. Som standard lyssnar Tomcat på TCP-port 8080. Om du har ändrat hello standard lyssna port Tomcat bör du uppdatera **privat Port** toobe hello samma som hello lyssningsporten för Tomcat.  
+      Om du anger ett annat värde, till exempel 81, behöver du lägga till portnumret i URL: en för Tomcat. Till exempel http://tomcatdemo.cloudapp.net:81 /.
+   2. Ange 8080 i **privat Port**. Som standard lyssnar Tomcat på TCP-port 8080. Om du har ändrat standardinställningen lyssna port Tomcat, bör du uppdatera **privat Port** ska vara samma som Tomcat lyssningsport.  
       ![Skärmbild av Användargränssnittet som visar Lägg till kommandot offentlig Port och privat Port][7]
-4. Klicka på **OK** tooadd hello endpoint tooyour virtuella datorn.
+4. Klicka på **OK** att lägga till slutpunkten till den virtuella datorn.
 
-### <a name="step-2-connect-toohello-image-you-created"></a>Steg 2: Anslut toohello bilden som du skapat
-Du kan välja en SSH-verktyget tooconnect tooyour virtuell dator. I det här exemplet använder vi PuTTY.  
+### <a name="step-2-connect-to-the-image-you-created"></a>Steg 2: Anslut till den bild som du skapat
+Du kan välja ett SSH-verktyg för att ansluta till den virtuella datorn. I det här exemplet använder vi PuTTY.  
 
-1. Hämta hello DNS-namnet på den virtuella datorn från hello-portalen.
+1. Hämta DNS-namnet på den virtuella datorn från portalen.
     1. Klicka på **Bläddra** > **virtuella datorer**.
-    2. Välj hello namnet på den virtuella datorn och klicka sedan på **egenskaper**.
-    3. I hello **egenskaper** panelen, titta i hello **domännamn** rutan tooget hello DNS-namn.  
+    2. Välj namnet på den virtuella datorn och klicka sedan på **egenskaper**.
+    3. I den **egenskaper** panelen, titta i den **domännamn** om du vill hämta DNS-namn.  
 
-2. Hämta hello port för SSH-anslutningar från hello **SSH** rutan.  
-![Skärmbild som visar hello SSH anslutningsnummer port][8]
+2. Hämta porten för SSH-anslutningar från den **SSH** rutan.  
+![Skärmbild som visar portnumret för SSH-anslutning][8]
 
 3. Hämta [PuTTY](http://www.putty.org/).  
 
-4. Klicka på hello körbar fil Putty.exe efter hämtningen. PuTTY-konfiguration, konfigurera hello grundalternativ med hello värdnamn och portnummer som erhålls från hello egenskaperna för den virtuella datorn.   
-![Skärmbild som visar hello PuTTY configuration värden namn på och portnummer alternativ][9]
+4. Klicka på den körbara filen Putty.exe efter hämtningen. Konfigurera alternativen för grundläggande med värdnamn i PuTTY-konfiguration och portnumret som hämtas från egenskaperna för den virtuella datorn.   
+![Skärmbild som visar alternativ för namn på och portnummer för värden PuTTY-konfiguration][9]
 
-5. Hello vänster klickar du på **anslutning** > **SSH** > **Auth**, och klicka sedan på **Bläddra** toospecify hello sökväg till hello privateKey.ppk. Hej privateKey.ppk filen innehåller hello privata nyckeln som genereras av PuTTYgen tidigare i hello ”fas 1: skapa en avbildning” i den här artikeln.  
-![Skärmbild som visar hello anslutning directory-hierarkin och knappen Bläddra.][10]
+5. I den vänstra rutan klickar du på **anslutning** > **SSH** > **Auth**, och klicka sedan på **Bläddra** att ange den platsen för filen privateKey.ppk. PrivateKey.ppk-filen innehåller den privata nyckeln som genereras av PuTTYgen tidigare i det ”fas 1: skapa en avbildning” i den här artikeln.  
+![Skärmbild som visar anslutning directory-hierarkin och knappen Bläddra.][10]
 
-6. Klicka på **öppna**. Du kan bli aviserad genom en meddelanderuta. Om du har konfigurerat hello DNS-namn och portnummer korrekt, klickar du på **Ja**.
-![Skärmbild som visar hello-meddelande][11]
+6. Klicka på **öppna**. Du kan bli aviserad genom en meddelanderuta. Om du har konfigurerat DNS-namn och portnummer korrekt, klickar du på **Ja**.
+![Skärmbild som visar meddelandet][11]
 
-7. Du är tooenter ange ditt användarnamn.  
-![Skärmbild som visar var tooenter användarnamn][12]
+7. Du uppmanas att ange ditt användarnamn.  
+![Skärmbild som visar var du vill ange ett användarnamn][12]
 
-8. Ange hello användarnamn som du använt toocreate hello virtuell dator i hello ”fas 1: skapa en avbildning” tidigare i den här artikeln. Du ser något som liknar hello följande:  
-![Skärmbild som visar hello autentisering bekräftelse][13]
+8. Ange det användarnamn som du använde för att skapa den virtuella datorn i den ”fas 1: skapa en avbildning” tidigare i den här artikeln. Du ser något som liknar följande:  
+![Skärmbild som visar bekräftelse för autentisering][13]
 
 ## <a name="phase-3-install-software"></a>Fas 3: Installera programvara
-I det här steget installera hello Java runtime environment, Tomcat7 och andra Tomcat7-komponenter.  
+I det här steget installera Java runtime environment, Tomcat7 och andra Tomcat7-komponenter.  
 
 ### <a name="java-runtime-environment"></a>Java runtime environment
-Tomcat är skriven i Java. Det finns två typer av Java Development Kit (JDKs), OpenJDK och Oracle JDK. Du kan välja hello du.  
+Tomcat är skriven i Java. Det finns två typer av Java Development Kit (JDKs), OpenJDK och Oracle JDK. Du kan välja det du vill använda.  
 
 > [!NOTE]
-> Både JDKs har nästan hello samma Platskod för hello klasser i hello Java API, men hello koden för hello virtuell dator är olika. OpenJDK tenderar toouse öppna bibliotek, medan Oracle JDK tenderar toouse stängd viktiga. Oracle JDK har flera klasser och vissa fast buggar och Oracle JDK är mer stabilt än OpenJDK.
+> Båda JDKs har nästan samma kod för klasser i Java-API, men koden för den virtuella datorn är olika. OpenJDK tenderar att använda öppna bibliotek, medan Oracle JDK tenderar att använda stängd de. Oracle JDK har flera klasser och vissa fast buggar och Oracle JDK är mer stabilt än OpenJDK.
 
 #### <a name="install-openjdk"></a>Installera OpenJDK  
 
-Använd följande kommando toodownload OpenJDK hello.   
+Använd följande kommando för att hämta OpenJDK.   
 
     sudo apt-get update  
     sudo apt-get install openjdk-7-jre  
 
 
-* toocreate en directory toocontain hello JDK-filer:  
+* Att skapa en katalog innehåller JDK-filer:  
 
         sudo mkdir /usr/lib/jvm  
-* tooextract hello JDK filer i katalogen/usr/lib/jvm/hello:  
+* Extrahera JDK-filerna i katalogen/usr/lib/jvm:  
 
         sudo tar -zxf jdk-8u5-linux-x64.tar.gz  -C /usr/lib/jvm/
 
 #### <a name="install-oracle-jdk"></a>Installera Oracle JDK
 
 
-Använd hello efter kommandot toodownload Oracle JDK från hello Oracle webbplats.  
+Använda följande kommando för att hämta Oracle JDK från Oracle-webbplats.  
 
      wget --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u5-b13/jdk-8u5-linux-x64.tar.gz  
-* toocreate en directory toocontain hello JDK-filer:  
+* Att skapa en katalog innehåller JDK-filer:  
 
         sudo mkdir /usr/lib/jvm  
-* tooextract hello JDK filer i katalogen/usr/lib/jvm/hello:  
+* Extrahera JDK-filerna i katalogen/usr/lib/jvm:  
 
         sudo tar -zxf jdk-8u5-linux-x64.tar.gz  -C /usr/lib/jvm/  
-* tooset Oracle JDK som hello standard Java virtual machine:  
+* Att ställa in Oracle JDK som standard Java virtual machine:  
 
         sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk1.8.0_05/bin/java 100  
 
         sudo update-alternatives --install /usr/bin/javac javac /usr/lib/jvm/jdk1.8.0_05/bin/javac 100  
 
 #### <a name="confirm-that-java-installation-is-successful"></a>Bekräfta att Java-installationen har lyckats
-Du kan använda ett kommando som hello efter tootest om hello Java runtime environment har installerats på rätt sätt:  
+Du kan använda ett kommando som följande för att testa om Java runtime environment har installerats på rätt sätt:  
 
     java -version  
 
-Om du har installerat OpenJDK, bör du se ett meddelande som hello nedan: ![lyckade OpenJDK installationen visas][14]
+Om du har installerat OpenJDK, bör du se följande meddelande: ![lyckade OpenJDK installationen visas][14]
 
-Om du har installerat Oracle JDK, bör du se ett meddelande som hello nedan: ![lyckade Oracle JDK installationen visas][15]
+Om du har installerat Oracle JDK, bör du se följande meddelande: ![lyckade Oracle JDK installationen visas][15]
 
 ### <a name="install-tomcat7"></a>Installera Tomcat7
-Använd följande kommando tooinstall Tomcat7 hello.  
+Använd följande kommando för att installera Tomcat7.  
 
     sudo apt-get install tomcat7  
 
-Om du inte använder Tomcat7, använder du hello lämplig variation av det här kommandot.  
+Om du inte använder Tomcat7, använder du lämplig variation av det här kommandot.  
 
 #### <a name="confirm-that-tomcat7-installation-is-successful"></a>Bekräfta att Tomcat7 installationen har lyckats
-toocheck om Tomcat7 har installerats, bläddra tooyour Tomcat server DNS-namn. Hello exempel-URL är http://tomcatexample.cloudapp.net/ i den här artikeln. Om du ser ett meddelande som hello följande är Tomcat7 korrekt installerad.
+Bläddra till Tomcat-serverns DNS-namn om du vill kontrollera om Tomcat7 har installerats. Exempel-URL är http://tomcatexample.cloudapp.net/ i den här artikeln. Om du ser ett meddelande som följande Tomcat7 är korrekt installerad.
 ![Lyckad Tomcat7 installationen visas][16]
 
 ### <a name="install-other-tomcat7-components"></a>Installera komponenter för andra Tomcat7
 Det finns andra valfria Tomcat-komponenter som du kan installera.  
 
-Använd hello **sudo lgh cache-sökning tomcat7** kommandot toosee alla tillgängliga hello-komponenter. Använd följande kommandon tooinstall hello vissa användbara komponenter.  
+Använd den **sudo lgh cache-sökning tomcat7** kommandot för att se alla tillgängliga komponenter. Använd följande kommandon för att installera vissa användbara komponenter.  
 
     sudo apt-get install tomcat7-admin      #admin web applications
 
-    sudo apt-get install tomcat7-user         #tools toocreate user instances  
+    sudo apt-get install tomcat7-user         #tools to create user instances  
 
 ## <a name="phase-4-configure-tomcat7"></a>Steg 4: Konfigurera Tomcat7
 I det här steget kan du administrera Tomcat.
 
 ### <a name="start-and-stop-tomcat7"></a>Starta och stoppa Tomcat7
-Hej Tomcat7 servern startar automatiskt när du installerar den. Du kan också starta den med hello följande kommando:   
+Tomcat7 servern startar automatiskt när du installerar den. Du kan också starta den med följande kommando:   
 
     sudo /etc/init.d/tomcat7 start
 
-toostop Tomcat7:
+Så här stoppar Tomcat7:
 
     sudo /etc/init.d/tomcat7 stop
 
-tooview hello status för Tomcat7:
+Visa status för Tomcat7:
 
     sudo /etc/init.d/tomcat7 status
 
-toorestart Tomcat-tjänster: 
+Starta om Tomcat-tjänster: 
 
     sudo /etc/init.d/tomcat7 restart
 
 ### <a name="tomcat7-administration"></a>Tomcat7 administration
-Du kan redigera hello Tomcat användaren configuration file tooset in dina administratörsautentiseringsuppgifter. Använd hello följande kommando:  
+Du kan redigera konfigurationsfilen Tomcat användare att konfigurera dina administratörsautentiseringsuppgifter. Ange följande kommando:  
 
     sudo vi  /etc/tomcat7/tomcat-users.xml   
 
 Här är ett exempel:  
-![Skärmbild som visar hello sudo vi kommandoutdata][17]  
+![Skärmbild som visar sudo vi kommandoutdata][17]  
 
 > [!NOTE]
-> Skapa ett starkt lösenord för hello administratörsanvändarnamnet.  
+> Skapa ett starkt lösenord för administratörsanvändarnamnet.  
 
-När du redigerar filen, bör du starta om Tomcat7 tjänster med hello efter kommandot tooensure att hello ändringarna gälla:  
+När du redigerar filen, bör du starta om Tomcat7 tjänster med följande kommando för att säkerställa att ändringarna börjar gälla:  
 
     sudo /etc/init.d/tomcat7 restart  
 
-Öppna din webbläsare och ange **http://<your tomcat server DNS name>/manager/html** som hello URL. I den här artikeln hello exempelvis är hello URL http://tomcatexample.cloudapp.net/manager/html.  
+Öppna din webbläsare och ange **http://<your tomcat server DNS name>/manager/html** som URL. Till exempel i den här artikeln är URL: en http://tomcatexample.cloudapp.net/manager/html.  
 
-Efter anslutning, bör du se något liknande toohello följande:  
-![Skärmbild av hello Tomcat Web Application Manager][18]
+Efter anslutning, bör du se något som liknar följande:  
+![Skärmbild av Tomcat Web Application Manager][18]
 
 ## <a name="common-issues"></a>Vanliga problem
-### <a name="cant-access-hello-virtual-machine-with-tomcat-and-moodle-from-hello-internet"></a>Det går inte att komma åt hello virtuell dator med Tomcat och Moodle från hello Internet
+### <a name="cant-access-the-virtual-machine-with-tomcat-and-moodle-from-the-internet"></a>Det går inte att komma åt den virtuella datorn med Tomcat och Moodle från Internet
 #### <a name="symptom"></a>Symtom  
-  Tomcat körs men du kan inte se hello Tomcat standardsida med din webbläsare.
+  Tomcat körs men du kan inte se sidan Tomcat standard med din webbläsare.
 #### <a name="possible-root-cause"></a>Möjliga underliggande orsaker   
 
-  * Hej Tomcat lyssna port är inte hello samma som hello privat port för den virtuella datorns slutpunkten för Tomcat-trafik.  
+  * Tomcat lyssningsporten är inte samma som den privata porten för den virtuella datorns slutpunkten för Tomcat-trafik.  
 
-     Kontrollera din offentliga porten och privat portinställningarna endpoint och kontrollera hello privat port är hello samma som hello Tomcat lyssningsport. Se ”fas 1: skapa en avbildning” i den här artikeln för instruktioner om hur du konfigurerar slutpunkter för den virtuella datorn.  
+     Kontrollera offentliga porten och privat port endpoint-inställningar och kontrollera att den privata porten är samma som Tomcat lyssningsport. Se ”fas 1: skapa en avbildning” i den här artikeln för instruktioner om hur du konfigurerar slutpunkter för den virtuella datorn.  
 
-     toodetermine hello Tomcat lyssningsport, öppna /etc/httpd/conf/httpd.conf (Red Hat-version) eller /etc/tomcat7/server.xml (Debian-version). Som standard är hello Tomcat lyssna port 8080. Här är ett exempel:  
+     Öppna /etc/httpd/conf/httpd.conf (Red Hat-version) eller /etc/tomcat7/server.xml (Debian-version) för att fastställa lyssningsporten för Tomcat. Som standard är Tomcat lyssna port 8080. Här är ett exempel:  
 
         <Connector port="8080" protocol="HTTP/1.1"  connectionTimeout="20000"   URIEncoding="UTF-8"            redirectPort="8443" />  
 
-     Om du använder en virtuell dator som Debian och Ubuntu och du vill att toochange hello standard port för Tomcat lyssna (till exempel 8081) kan öppna du också hello port för hello-operativsystem. Öppna först hello-profil:  
+     Om du använder en virtuell dator som Debian och Ubuntu och du vill ändra den standard port för Tomcat lyssna (till exempel 8081) kan öppna du också porten för operativsystemet. Först öppna profilen:  
 
         sudo vi /etc/default/tomcat7  
 
-     Sedan ta bort kommentarerna hello sista raden och ändra ”Nej” för ”Ja”.  
+     Sedan Avkommentera den sista raden och ändra ”Nej” till ”Ja”.  
 
         AUTHBIND=yes
-  2. hello-brandväggen har inaktiverat hello lyssna port för Tomcat.
+  2. Brandväggen har inaktiverat lyssna port för Tomcat.
 
-     Du kan bara se hello Tomcat standardsida från hello lokala värden. hello problemet sannolikt att hello-port som lyssnar tooby Tomcat, blockeras av hello brandväggen. Du kan använda hello w3m verktyget toobrowse hello webbsidan. hello följande kommandon installera w3m och bläddra toohello Tomcat standardsida:  
+     Du kan bara se sidan Tomcat från den lokala värden. Problemet är sannolikt att den port som är öppna på Tomcat, blockeras av brandväggen. Du kan använda verktyget w3m för att söka på webbsidan. Följande kommandon installera w3m och gå till sidan med Tomcat:  
 
 
         sudo yum installera w3m w3m-img
@@ -267,48 +267,48 @@ Efter anslutning, bör du se något liknande toohello följande:
         w3m http://localhost: 8080  
 #### <a name="solution"></a>Lösning
 
-  * Om hello lyssningsporten för Tomcat inte är hello samma som hello privat port för hello slutpunkten för trafik toohello virtuell dator, behöver du ändra hello privat port toobe hello samma som hello lyssningsporten för Tomcat.   
-  2. Lägg till följande rader för/etc/sysconfig/iptables hello om hello problemet orsakas av brandvägg/iptables. hello andra raden krävs endast för https-trafik:  
+  * Om Tomcat lyssna porten är inte samma som den privata porten för slutpunkten för trafik till den virtuella datorn, behöver du ändra den privata porten för att vara samma som Tomcat lyssningsport.   
+  2. Om problemet orsakas av brandvägg/iptables, lägger du till följande rader /etc/sysconfig/iptables. Den andra raden krävs endast för https-trafik:  
 
       -A -p tcp -m tcp--datorer 80 -j ACCEPTERA indata
 
       -A -p tcp -m tcp--datorer 443 -j ACCEPTERA indata  
 
      > [!IMPORTANT]
-     > Kontrollera att hello tidigare rader placeras ovanför de rader som skulle globalt att begränsa åtkomsten till exempel hello följande: - A indata -j AVVISA--avvisa-med icmp värden förbjuden
+     > Kontrollera att tidigare raderna placeras ovanför de rader som skulle globalt att begränsa åtkomsten till exempel följande: - A indata -j AVVISA--avvisa-med icmp värden förbjuden
 
 
 
-tooreload hello iptables kör hello följande kommando:
+Kör följande kommando för att läsa in iptables:
 
     service iptables restart
 
 Det här har testats på CentOS 6.3.
 
-### <a name="permission-denied-when-you-upload-project-files-toovarlibtomcat7webapps"></a>Åtkomst nekad när du överför projektet filer för/var/lib/tomcat7/webbappar /
+### <a name="permission-denied-when-you-upload-project-files-to-varlibtomcat7webapps"></a>Åtkomst nekad när du överför projektfilerna till /var/lib/tomcat7/webapps /
 #### <a name="symptom"></a>Symtom
-  När du använder en SFTP (till exempel FileZilla) tooconnect tooyour virtuella klientdatorn och gå för/var/lib/tomcat7/webbappar/toopublish webbplatsen du får ett fel meddelande liknande toohello följande:  
+  När du använder en SFTP-klient (till exempel FileZilla) att ansluta till den virtuella datorn och navigera till /var/lib/tomcat7/webapps/publicera webbplatsen kan få du ett felmeddelande liknar följande:  
 
      status:    Listing directory /var/lib/tomcat7/webapps
      Command:    put "C:\Users\liang\Desktop\info.jsp" "info.jsp"
      Error:    /var/lib/tomcat7/webapps/info.jsp: open for write: permission denied
      Error:    File transfer failed
 #### <a name="possible-root-cause"></a>Möjliga underliggande orsaker
-  Du har inga behörigheter tooaccess hello /var/lib/tomcat7/webapps mapp.  
+  Du har inte åtkomstbehörighet till mappen /var/lib/tomcat7/webapps.  
 #### <a name="solution"></a>Lösning  
-  Du behöver tooget behörighet från hello rotkontot. Du kan ändra hello ägare till den mappen i roten toohello användarnamn som du använde när du har etablerat hello-datorn. Här är ett exempel med hello azureuser kontonamn:  
+  Du behöver få behörighet från rotkontot. Du kan ändra ägarskap för mappen från roten för användarnamnet som du använde när du har etablerat datorn. Här är ett exempel med azureuser kontonamn:  
 
      sudo chown azureuser -R /var/lib/tomcat7/webapps
 
-  Använd hello -R alternativet tooapply hello behörigheter för alla filer i en katalog för.  
+  Använd alternativet -R för att tillämpa behörigheter för alla filer i en katalog för.  
 
-  Det här kommandot fungerar även för kataloger. hello -R alternativet ändringar hello behörigheter för alla filer och kataloger i hello directory. Här är ett exempel:  
+  Det här kommandot fungerar även för kataloger. Alternativet -R ändrar behörigheter för alla filer och kataloger i katalogen. Här är ett exempel:  
 
      sudo chown -R username:group directory  
 
-  Det här kommandot ändrar ägarskap (både användare och grupper) för alla filer och mappar som finns inuti hello directory.  
+  Det här kommandot ändrar ägare (både användare och grupper) för alla filer och mappar som finns i katalogen.  
 
-  hello ändrar följande kommando bara hello behörighet för hello mappkatalog. hello filer och mappar i hello directory ändras inte.  
+  Följande kommando ändrar bara behörigheten för katalogen som mappen. Filer och mappar i katalogen ändras inte.  
 
      sudo chown username:group directory
 

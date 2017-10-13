@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure Data Catalog-dokumentation – självstudier, API-referens | Microsoft Docs"
-description: "Lär dig hur tooset upp en datakatalog där din organisation kan hitta, förstå och använda datakällor. Självstudier, API-referens och annan dokumentation."
+title: "Dokumentation om Azure Data Catalog – Självstudier, API-referens | Microsoft Docs"
+description: "Lär dig hur du konfigurerar en datakatalog där din organisation kan hitta, förstå och använda datakällor. Självstudier, API-referens och annan dokumentation."
 services: data-catalog
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 05/25/2017
 ms.author: carolz
-ms.openlocfilehash: eb2decd9e73531890b18497b5f39af77d6411a43
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: c901562753be86613ac4ca4dec1e727d1383e626
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 #<a name="data-catalog-documentation"></a>Dokumentation om Data Catalog
 
-Lär dig hur toouse Data Catalog toohelp din organisations- och identifiera, förstå och använda dina datakällor. Självstudier, REST API-referensen och andra dokumentationen visar hur tooplan och konfigurera databasen data där datakonsumenter kan identifiera tillgängliga datakällor och få kunskap bidragit ämnesexperter.
+Lär dig hur du använder Data Catalog för att hjälpa ditt team och din organisation att identifiera, förstå och använda dina datakällor. Självstudier, REST API-referens och annan dokumentation visar hur du planerar och konfigurerar ditt datalager, där datakonsumenterna kan identifiera tillgängliga datakällor och få kunskap av experter inom olika ämnen.
 
 <ul class="panelContent cardsFTitle">
     <li>

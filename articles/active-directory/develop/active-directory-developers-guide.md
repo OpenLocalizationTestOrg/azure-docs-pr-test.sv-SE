@@ -1,5 +1,5 @@
 ---
-title: "aaaAzure Active Directory för utvecklare | Microsoft Docs"
+title: "Azure Active Directory för utvecklare | Microsoft Docs"
 description: "Den här artikeln innehåller en översikt över inloggning med Microsofts arbets- och skolkonton med hjälp av Azure Active Directory."
 services: active-directory
 author: dstrockis
@@ -14,22 +14,22 @@ ms.workload: identity
 ms.date: 04/07/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 4dbbea6c1e0b8a70c0c36ddd1caec5658130a003
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: dce813b885d492343428428056a2e8aada27b461
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-for-developers"></a>Azure Active Directory för utvecklare
-Azure Active Directory är en tjänst i molnet identitet som gör att utvecklare toosecurely inloggning alla användare med ett arbets- eller skolkonto konto backas upp av Microsoft.  här hello dokumentationen visar hur tooadd Azure AD stöder tooyour program med hjälp av industry standard autentiseringsprotokollen OAuth & OpenID Connect.
+Azure Active Directory är en molnbaserad identitetstjänst som utvecklarna kan använda för att på ett säkert sätt logga in alla användare som har ett arbets- eller skolkonto hos Microsoft.  Den här dokumentationen innehåller information om hur du lägger till stöd för Azure AD i ditt program med hjälp av autentiseringsprotokoll av branschstandardtyp, OAuth och OpenID Connect.
 
 | | |
 | --- | --- |
-|[Grundläggande om Auth](active-directory-authentication-scenarios.md) | En introduktion tooauthentication med Azure AD |
-|[Typer av program](active-directory-authentication-scenarios.md#application-types-and-scenarios) | En översikt över hello autentiseringsscenarier som stöds av Azure AD |                                
+|[Grundläggande om Auth](active-directory-authentication-scenarios.md) | En introduktion till autentisering med Azure AD |
+|[Typer av program](active-directory-authentication-scenarios.md#application-types-and-scenarios) | En översikt över de autentiseringscenarier som stöds av Azure AD |                                
                                                                               
 ## <a name="get-started"></a>Kom igång
-Dessa interaktiv inställningar vägleder dig genom att använda våra bibliotek toosign för autentisering i Azure Active Directory-användare.
+Våra guider vägleder dig genom användningen av våra autentiseringsbibliotek för inloggning av Azure Active Directory-användare.
 
 |  |  |  |  |
 | --- | --- | --- | --- |
@@ -40,13 +40,13 @@ Dessa interaktiv inställningar vägleder dig genom att använda våra bibliotek
 | <center>![Tjänst-till-tjänst](./media/active-directory-developers-guide/Service_App.png)<br />Tjänst-till-tjänst</center> | [Översikt](active-directory-authentication-scenarios.md#daemon-or-server-application-to-web-api)<br /><br />[.NET](active-directory-code-samples.md#server-or-daemon-application-to-web-api)<br /><br />[Autentiseringsuppgifter för OAuth 2.0-klient](active-directory-protocols-oauth-service-to-service.md) |  |
 
 ## <a name="guides"></a>Guider
-Dessa artiklar informera hur tooperform vanliga uppgifter med Azure Active Directory.
+De här artiklarna innehåller information om hur du utför vanliga uppgifter med hjälp av Azure Active Directory.
 
 |                                                                           |  |
 |---------------------------------------------------------------------------| --- |
-|[Appregistrering](active-directory-integrating-applications.md)           | Hur tooregister en app i Azure AD |
-|[Appar för flera klienter](active-directory-devhowto-multi-tenant-overview.md)    | Hur toosign i ett Microsoft-arbetskonto |
-|[OAuth och OpenID Connect](active-directory-protocols-openid-connect-code.md)| Hur toosign i användare och anropa webb-API: er med hjälp av vår modern autentisering-protokoll |
+|[Appregistrering](active-directory-integrating-applications.md)           | Så här registrerar du en app i Azure AD |
+|[Appar för flera klienter](active-directory-devhowto-multi-tenant-overview.md)    | Så här loggar du in med valfritt Microsoft-arbetskonto |
+|[OAuth och OpenID Connect](active-directory-protocols-openid-connect-code.md)| Så här loggar du in användare och anropar webb-API:er med våra moderna autentiseringsprotokoll |
 |[Fler guider ...](active-directory-developers-guide-index.md#guides)        |     |
 
 ## <a name="reference"></a>Referens
@@ -54,13 +54,13 @@ De här artiklarna innehåller detaljerad information om API:er, protokollmeddel
 
 |                                                                                   | |
 | ----------------------------------------------------------------------------------| --- |
-| [Autentiseringsbibliotek (ADAL)](active-directory-authentication-libraries.md)   | En översikt över hello bibliotek & SDK: er som tillhandahålls av Azure AD |
+| [Autentiseringsbibliotek (ADAL)](active-directory-authentication-libraries.md)   | En översikt över de bibliotek och SDK:er som tillhandahålls av Azure AD |
 | [Kodexempel](active-directory-code-samples.md)                                  | En lista över alla Azure AD-kodexempel |
 | [Ordlista](active-directory-dev-glossary.md)                                      | Termer och definitioner av ord som används i den här dokumentationen |
 | [Mer referensmaterial ...](active-directory-developers-guide-index.md#reference)|     |
 
 ## <a name="help--support"></a>Hjälp och support
-Dessa är hello bästa platser tooget hjälp med att utveckla på Azure Active Directory.
+Det här är ett bra sätt att få hjälp med utveckling i Azure Active Directory.
 
 |  |  
 |---|
@@ -71,4 +71,4 @@ Dessa är hello bästa platser tooget hjälp med att utveckla på Azure Active D
 <br />
 
 > [!NOTE]
-> Om du behöver toosign i Microsoft personliga konton kan du behöva tooconsider med hello [Azure AD v2.0-slutpunkten](active-directory-appmodel-v2-overview.md).  hello Azure AD v2.0-slutpunkten är hello enandet av Microsoft personliga konton & Microsoft work konton (från Azure AD) i en enda autentiseringssystemet.
+> För inloggning med personliga Microsoft-konton bör du överväga användning av en [Azure AD v2.0-slutpunkt](active-directory-appmodel-v2-overview.md).  Azure AD v2.0-slutpunkten för samman personliga Microsoft-konton med Microsoft-arbetskonton (från Azure AD) och möjliggör ett enda autentiseringssystem.

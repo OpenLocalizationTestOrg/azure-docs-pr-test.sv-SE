@@ -1,6 +1,6 @@
 ---
 title: "Självstudier: Azure Active Directory-integrering med samarbetsfunktioner Innovation | Microsoft Docs"
-description: "Lär dig hur tooconfigure enkel inloggning mellan Azure Active Directory och samarbetsfunktioner Innovation."
+description: "Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och samarbetsfunktioner Innovation."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,115 +13,115 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: jeedes
-ms.openlocfilehash: e85fabfe11a380129f319a101aa7c7a9491260f4
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 5706ba9f4e7c92de77a0edc5146aa150de379c9f
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-collaborative-innovation"></a>Självstudier: Azure Active Directory-integrering med samarbetsfunktioner Innovation
 
-I kursen får du lära dig hur toointegrate samarbetsfunktioner Innovation med Azure Active Directory (AD Azure).
+I kursen får lära du att integrera samarbetsfunktioner Innovation med Azure Active Directory (AD Azure).
 
-Integrera samarbetsfunktioner Innovation med Azure AD ger dig hello följande fördelar:
+Integrera samarbetsfunktioner Innovation med Azure AD ger dig följande fördelar:
 
-- Du kan styra i Azure AD som har åtkomst tooCollaborative Innovation
-- Du kan aktivera din användare tooautomatically get inloggade tooCollaborative Innovation (Single Sign-On) med sina Azure AD-konton
-- Du kan hantera dina konton i en central plats - hello Azure-portalen
+- Du kan styra i Azure AD som har åtkomst till gemensamma Innovation
+- Du kan aktivera användarna att automatiskt hämta inloggade samarbetsfunktioner innovation (Single Sign-On) med sina Azure AD-konton
+- Du kan hantera dina konton i en central plats - Azure-portalen
 
-Om du vill tooknow mer information om integrering av SaaS-app med Azure AD, se [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Om du vill veta mer information om integrering av SaaS-app med Azure AD finns [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Krav
 
-tooconfigure Azure AD-integrering med samarbetsfunktioner Innovation, behöver du hello följande objekt:
+För att konfigurera Azure AD-integrering med samarbetsfunktioner Innovation, behöver du följande:
 
 - En Azure AD-prenumeration
 - En gemensam Innovation enkel inloggning på aktiverade prenumeration
 
 > [!NOTE]
-> tootest hello stegen i den här självstudiekursen, rekommenderas inte med hjälp av en produktionsmiljö.
+> Om du vill testa stegen i den här kursen rekommenderar vi inte med hjälp av en produktionsmiljö.
 
-tootest hello steg i den här självstudiekursen, bör du följa dessa rekommendationer:
+Om du vill testa stegen i den här självstudiekursen, bör du följa dessa rekommendationer:
 
 - Använd inte i produktionsmiljön, om det är nödvändigt.
 - Om du inte har en utvärderingsversion Azure AD-miljö kan du hämta en utvärderingsversion för en månad [här](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Scenariobeskrivning
-I kursen får testa du Azure AD enkel inloggning i en testmiljö. hello-scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
+I kursen får testa du Azure AD enkel inloggning i en testmiljö. Det scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
 
-1. Att lägga till samarbetsfunktioner Innovation från hello-galleriet
+1. Att lägga till samarbetsfunktioner Innovation från galleriet
 2. Konfigurera och testa Azure AD enkel inloggning
 
-## <a name="adding-collaborative-innovation-from-hello-gallery"></a>Att lägga till samarbetsfunktioner Innovation från hello-galleriet
-tooconfigure hello integrering av samarbetsfunktioner Innovation i Azure AD, behöver du tooadd samarbetsfunktioner Innovation hello galleriet tooyour listan över hanterade SaaS-appar.
+## <a name="adding-collaborative-innovation-from-the-gallery"></a>Att lägga till samarbetsfunktioner Innovation från galleriet
+Du måste lägga till samarbetsfunktioner Innovation från galleriet i listan över hanterade SaaS-appar för att konfigurera integrering av samarbetsfunktioner Innovation i Azure AD.
 
-**tooadd samarbetsfunktioner Innovation från galleriet hello utför hello följande steg:**
+**Utför följande steg för att lägga till samarbetsfunktioner Innovation från galleriet:**
 
-1. I hello  **[Azure-portalen](https://portal.azure.com)**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon. 
+1. I den  **[Azure-portalen](https://portal.azure.com)**, klicka på den vänstra navigeringspanelen **Azure Active Directory** ikon. 
 
     ![Active Directory][1]
 
-2. Navigera för**företagsprogram**. Gå sedan för**alla program**.
+2. Gå till **företagsprogram**. Gå till **alla program**.
 
     ![Program][2]
     
-3. tooadd nya program, klickar du på **nytt program** hello längst upp i dialogrutan.
+3. Om du vill lägga till nya programmet, klickar du på **nytt program** knappen överst i dialogrutan.
 
     ![Program][3]
 
-4. Skriv i sökrutan hello **samarbetsfunktioner Innovation**.
+4. I sökrutan skriver **samarbetsfunktioner Innovation**.
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-collaborativeinnovation-tutorial/tutorial_collaborativeinnovation_search.png)
 
-5. Markera hello resultat på panelen **samarbetsfunktioner Innovation**, och klicka sedan på **Lägg till** knappen tooadd hello program.
+5. Välj i resultatpanelen **samarbetsfunktioner Innovation**, och klicka sedan på **Lägg till** för att lägga till programmet.
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-collaborativeinnovation-tutorial/tutorial_collaborativeinnovation_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurera och testa Azure AD enkel inloggning
 I det här avsnittet kan du konfigurera och testa Azure AD enkel inloggning med samarbetsfunktioner Innovation baserat på en testanvändare som kallas ”Britta Simon”.
 
-För enkel inloggning toowork måste Azure AD tooknow vilka hello motsvarighet användaren samarbetsfunktioner innovation är tooa i Azure AD. Med andra ord måste en länk relationen mellan en Azure AD-användare och hello relaterade användare i samarbetsfunktioner Innovation toobe upprättas.
+Azure AD måste du känna till motsvarande användaren i samarbetsfunktioner Innovation till en användare i Azure AD för enkel inloggning ska fungera. Med andra ord måste en länk förhållandet mellan en Azure AD-användare och relaterade användaren i samarbetsfunktioner Innovation upprättas.
 
-Tilldela hello värdet hello samarbetsfunktioner innovation **användarnamn** i Azure AD som hello värde för hello **användarnamn** tooestablish hello länken relationen.
+I samarbetsfunktioner Innovation, tilldela värdet för den **användarnamn** i Azure AD som värde för den **användarnamn** etablera länken relationen.
 
-tooconfigure och testa Azure AD enkel inloggning med samarbetsfunktioner Innovation, behöver du toocomplete hello följande byggblock:
+Om du vill konfigurera och testa Azure AD enkel inloggning med samarbetsfunktioner Innovation, måste du utföra följande byggblock:
 
-1. **[Konfigurera Azure AD enkel inloggning](#configuring-azure-ad-single-sign-on)**  -tooenable användare-toouse den här funktionen.
-2. **[Skapa en Azure AD-testanvändare](#creating-an-azure-ad-test-user)**  -tootest Azure AD enkel inloggning med Britta Simon.
-3. **[Skapa en testanvändare samarbetsfunktioner Innovation](#creating-a-collaborative-innovation-test-user)**  -toohave en motsvarighet för Britta Simon samarbetsfunktioner innovation som är länkade toohello Azure AD-representation av användaren.
-4. **[Tilldela hello Azure AD-testanvändare](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD enkel inloggning.
-5. **[Testa enkel inloggning](#testing-single-sign-on)**  -tooverify hello om konfigurationen fungerar.
+1. **[Konfigurera Azure AD enkel inloggning](#configuring-azure-ad-single-sign-on)**  - om du vill att användarna kan använda den här funktionen.
+2. **[Skapa en Azure AD-testanvändare](#creating-an-azure-ad-test-user)**  - om du vill testa Azure AD enkel inloggning med Britta Simon.
+3. **[Skapa en testanvändare samarbetsfunktioner Innovation](#creating-a-collaborative-innovation-test-user)**  – du har en motsvarighet för Britta Simon samarbetsfunktioner innovation som är kopplad till Azure AD-representation av användaren.
+4. **[Tilldela Azure AD-testanvändare](#assigning-the-azure-ad-test-user)**  - om du vill aktivera Britta Simon att använda Azure AD enkel inloggning.
+5. **[Testa enkel inloggning](#testing-single-sign-on)**  - om du vill kontrollera om konfigurationen fungerar.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurera Azure AD enkel inloggning
 
-I det här avsnittet Aktivera Azure AD enkel inloggning i hello Azure-portalen och konfigurera enkel inloggning i tillämpningsprogrammet samarbetsfunktioner Innovation.
+I det här avsnittet Aktivera Azure AD enkel inloggning i Azure-portalen och konfigurera enkel inloggning i tillämpningsprogrammet samarbetsfunktioner Innovation.
 
-**Utför följande hello tooconfigure Azure AD enkel inloggning med samarbetsfunktioner Innovation:**
+**Utför följande steg för att konfigurera Azure AD enkel inloggning med samarbetsfunktioner Innovation:**
 
-1. I hello Azure-portalen på hello **samarbetsfunktioner Innovation** integreringssidan för programmet, klickar du på **enkel inloggning**.
+1. I Azure-portalen på den **samarbetsfunktioner Innovation** integreringssidan för programmet, klickar du på **enkel inloggning**.
 
     ![Konfigurera enkel inloggning][4]
 
-2. På hello **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** tooenable enkel inloggning.
+2. På den **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** att aktivera enkel inloggning.
  
     ![Konfigurera enkel inloggning](./media/active-directory-saas-collaborativeinnovation-tutorial/tutorial_collaborativeinnovation_samlbase.png)
 
-3. På hello **samarbetsfunktioner Innovation domän och URL: er** avsnittet, utföra hello följande steg:
+3. På den **samarbetsfunktioner Innovation domän och URL: er** avsnittet, utför följande steg:
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-collaborativeinnovation-tutorial/tutorial_collaborativeinnovation_url.png)
 
-    a. I hello **inloggnings-URL** textruta, ange ett URL-Adressen med hello följer mönstret:`https://<instancename>.foundry.<companyname>.com/`
+    a. I den **inloggnings-URL** textruta Skriv en URL med följande mönster:`https://<instancename>.foundry.<companyname>.com/`
 
-    b. I hello **identifierare** textruta, ange ett URL-Adressen med hello följer mönstret:`https://<instancename>.foundry.<companyname>.com`
+    b. I den **identifierare** textruta Skriv en URL med följande mönster:`https://<instancename>.foundry.<companyname>.com`
     
     > [!NOTE] 
-    > Dessa värden är inte verkliga. Uppdatera dessa värden med hello faktiska inloggnings-URL och identifierare. Kontakta [samarbetsfunktioner Innovation klienten supportteamet](https://www.unilever.com/contact/) tooget dessa värden.  
+    > Dessa värden är inte verkliga. Uppdatera dessa värden med den faktiska inloggnings-URL och identifierare. Kontakta [samarbetsfunktioner Innovation klienten supportteamet](https://www.unilever.com/contact/) att hämta dessa värden.  
 
-4. Samarbetsfunktioner Innovation program förväntar hello SAML intyg i ett specifikt format. Konfigurera hello följande anspråk för det här programmet. Du kan hantera hello värden för attributen från hello ”**användarattribut**” avsnitt på sidan för integrering av programmet. hello följande skärmbild visar ett exempel för det här.
+4. Samarbetsfunktioner Innovation program förväntar SAML-intyg i ett specifikt format. Konfigurera följande anspråk för det här programmet. Du kan hantera värden för attributen från den ”**användarattribut**” avsnitt på sidan för integrering av programmet. Följande skärmbild visar ett exempel för det här.
     
     ![Konfigurera enkel inloggning](./media/active-directory-saas-collaborativeinnovation-tutorial/attribute.png)
     
-5. Klicka på **visa och redigera andra användarattribut** kryssrutan i hello **användarattribut** avsnittet tooexpand hello attribut. Utför följande steg på varje hello visas attribut - hello
+5. Klicka på **visa och redigera andra användarattribut** kryssrutan i den **användarattribut** avsnittet för att expandera attribut. Utför följande steg på varje visas attribut-
 
     | Attributets namn | Attributvärdet |
     | ---------------| --------------- |    
@@ -130,15 +130,15 @@ I det här avsnittet Aktivera Azure AD enkel inloggning i hello Azure-portalen o
     | e-postadress | User.userPrincipalName |
     | namn | User.userPrincipalName |
 
-    a. Klicka på hello attributet tooopen hello **Redigera attribut** fönster.
+    a. Klicka på ett attribut för att öppna den **Redigera attribut** fönster.
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-collaborativeinnovation-tutorial/url_update.png)
 
-    b. Ta bort hello URL-värdet från hello **Namespace**.
+    b. Ta bort URL-värdet från den **Namespace**.
     
-    c. Klicka på **Ok** toosave hello inställningen.
+    c. Klicka på **Ok** spara inställningen.
 
-6. På hello **SAML-signeringscertifikat** klickar du på **XML-Metadata för** och spara sedan hello metadata på datorn.
+6. På den **SAML-signeringscertifikat** klickar du på **XML-Metadata för** och spara sedan metadatafilen på datorn.
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-collaborativeinnovation-tutorial/tutorial_collaborativeinnovation_certificate.png) 
 
@@ -146,66 +146,66 @@ I det här avsnittet Aktivera Azure AD enkel inloggning i hello Azure-portalen o
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-collaborativeinnovation-tutorial/tutorial_general_400.png)
 
-8. tooconfigure enkel inloggning på **samarbetsfunktioner Innovation** sida, behöver du toosend hello hämtas **XML-Metadata för** för[samarbetsfunktioner Innovation supportteamet](https://www.unilever.com/contact/). De kan ange den här inställningen toohave hello SAML SSO anslutningen korrekt på båda sidor.
+8. Konfigurera enkel inloggning på **samarbetsfunktioner Innovation** sida, måste du skicka den hämtade **XML-Metadata för** till [samarbetsfunktioner Innovation supportteamet](https://www.unilever.com/contact/). De kan ange den här inställningen att ha SAML SSO anslutningen korrekt på båda sidor.
 
 > [!TIP]
-> Du kan nu läsa en kortare version av dessa anvisningar i hello [Azure-portalen](https://portal.azure.com), medan du ställer in hello appen!  När du lägger till den här appen från hello **Active Directory > företagsprogram** avsnittet, klicka bara på hello **enkel inloggning** flik och åtkomst hello inbäddade dokumentationen via hello  **Konfigurationen** avsnittet längst ned hello. Du kan läsa mer om hello inbäddade dokumentationen funktionen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Du kan nu läsa en kortare version av instruktionerna i den [Azure-portalen](https://portal.azure.com), medan du installerar appen!  När du lägger till den här appen från den **Active Directory > företagsprogram** avsnittet, klickar du på den **enkel inloggning** fliken och få åtkomst till den inbäddade dokumentationen via den **Configuration** avsnittet längst ned. Du kan läsa mer om funktionen inbäddade dokumentationen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Skapa en testanvändare i Azure AD
-hello syftet med det här avsnittet är toocreate en testanvändare i hello Azure-portalen kallas Britta Simon.
+Syftet med det här avsnittet är att skapa en testanvändare i Azure-portalen kallas Britta Simon.
 
 ![Skapa Azure AD-användare][100]
 
-**toocreate en testanvändare i Azure AD kan utföra hello följande steg:**
+**Utför följande steg för att skapa en testanvändare i Azure AD:**
 
-1. I hello **Azure-portalen**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon.
+1. I den **Azure-portalen**, klicka på det vänstra navigeringsfönstret **Azure Active Directory** ikon.
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-collaborativeinnovation-tutorial/create_aaduser_01.png) 
 
-2. toodisplay hello lista över användare, gå för**användare och grupper** och på **alla användare**.
+2. Om du vill visa en lista över användare, gå till **användare och grupper** och på **alla användare**.
     
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-collaborativeinnovation-tutorial/create_aaduser_02.png) 
 
-3. tooopen hello **användare** dialogrutan klickar du på **Lägg till** på hello överkant hello dialogrutan.
+3. Öppna den **användare** dialogrutan klickar du på **Lägg till** överst i dialogrutan.
  
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-collaborativeinnovation-tutorial/create_aaduser_03.png) 
 
-4. På hello **användaren** dialogrutan utför hello följande steg:
+4. På den **användaren** dialogrutan utför följande steg:
  
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-collaborativeinnovation-tutorial/create_aaduser_04.png) 
 
-    a. I hello **namn** textruta typen **BrittaSimon**.
+    a. I den **namn** textruta typen **BrittaSimon**.
 
-    b. I hello **användarnamn** textruta typen hello **e-postadress** av BrittaSimon.
+    b. I den **användarnamn** textruta typ av **e-postadress** av BrittaSimon.
 
-    c. Välj **visa lösenordet** och Skriv ned hello värdet för hello **lösenord**.
+    c. Välj **visa lösenordet** och anteckna värdet för den **lösenord**.
 
     d. Klicka på **Skapa**.
  
 ### <a name="creating-a-collaborative-innovation-test-user"></a>Skapa en testanvändare samarbetsfunktioner Innovation
 
-tooenable Azure AD-användare toolog i tooCollaborative Innovation, måste de etableras i samarbetsfunktioner Innovation.  
+Om du vill aktivera Azure AD-användare kan logga in på samarbetsfunktioner Innovation, måste de etableras i samarbetsfunktioner Innovation.  
 
-Vid det här programmet är etablering automatisk eftersom programmet hello stöder bara i tid användaretablering. Så finns det inget behov av tooperform här några steg.
+Vid det här programmet är etablera automatisk eftersom programmet stöder bara i tid användaretablering. Det finns så behöver du inte utföra några steg här.
 
-### <a name="assigning-hello-azure-ad-test-user"></a>Tilldela användare hello Azure AD
+### <a name="assigning-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändare
 
-I det här avsnittet kan aktivera du Britta Simon toouse Azure enkel inloggning genom att bevilja åtkomst tooCollaborative Innovation.
+I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inloggning genom att bevilja åtkomst till gemensamma Innovation.
 
 ![Tilldela användare][200] 
 
-**tooassign Britta Simon tooCollaborative Innovation, utför följande steg hello:**
+**Om du vill tilldela samarbetsfunktioner Innovation Britta Simon utför du följande steg:**
 
-1. I hello Azure-portalen, öppna hello program visa och navigera toohello directory vy och gå för**företagsprogram** Klicka **alla program**.
+1. Öppna vyn program i Azure-portalen och gå till vyn directory och gå till **företagsprogram** Klicka **alla program**.
 
     ![Tilldela användare][201] 
 
-2. Välj i listan med program hello **samarbetsfunktioner Innovation**.
+2. Välj i listan med program **samarbetsfunktioner Innovation**.
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-collaborativeinnovation-tutorial/tutorial_collaborativeinnovation_app.png) 
 
-3. Hello-menyn hello vänster **användare och grupper**.
+3. Klicka på menyn till vänster **användare och grupper**.
 
     ![Tilldela användare][202] 
 
@@ -213,7 +213,7 @@ I det här avsnittet kan aktivera du Britta Simon toouse Azure enkel inloggning 
 
     ![Tilldela användare][203]
 
-5. På **användare och grupper** markerar **Britta Simon** i hello användarlistan.
+5. På **användare och grupper** markerar **Britta Simon** på listan användare.
 
 6. Klicka på **Välj** knappen på **användare och grupper** dialogrutan.
 
@@ -221,14 +221,14 @@ I det här avsnittet kan aktivera du Britta Simon toouse Azure enkel inloggning 
     
 ### <a name="testing-single-sign-on"></a>Testa enkel inloggning
 
-I det här avsnittet kan testa du Azure AD enkel inloggning konfigurationen med hello åtkomstpanelen.
+I det här avsnittet kan du testa Azure AD enkel inloggning konfigurationen med hjälp av panelen åtkomst.
 
-Du bör få inloggningssidan för samarbetsfunktioner Innovation program när du klickar på hello samarbetsfunktioner Innovation panelen i hello åtkomstpanelen.
-Läs mer om hello åtkomstpanelen [introduktion toohello åtkomstpanelen](active-directory-saas-access-panel-introduction.md). 
+Du bör få inloggningssidan för samarbetsfunktioner Innovation program när du klickar på panelen samarbetsfunktioner Innovation på åtkomstpanelen.
+Läs mer om åtkomstpanelen [introduktion till åtkomstpanelen](active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-* [Lista över självstudier om hur tooIntegrate SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Vad är programåtkomst och enkel inloggning med Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

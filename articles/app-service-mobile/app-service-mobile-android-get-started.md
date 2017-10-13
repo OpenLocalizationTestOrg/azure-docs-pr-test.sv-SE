@@ -1,6 +1,6 @@
 ---
-title: "aaaCreate en Android-app på Azure Apptjänst Mobilappar | Microsoft Docs"
-description: "Följ den här självstudiekursen tooget igång med att använda mobilappserverdelar för Android-utveckling"
+title: "Skapa en Android-app i Azure Apptjänst Mobile Apps | Microsoft Docs"
+description: "Följ den här kursen och kom igång med att använda mobilappserverdelar i Azure för Android-utveckling"
 services: app-service\mobile
 documentationcenter: android
 author: ggailey777
@@ -14,34 +14,34 @@ ms.devlang: java
 ms.topic: hero-article
 ms.date: 10/01/2016
 ms.author: glenga
-ms.openlocfilehash: 0af85a3a4de9fc265976bbe3f34d73effc3807df
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 418a5229a084d570bc6cab5925dbd8d30945a3c5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-android-app"></a>Skapa en Android-app
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
 
 ## <a name="overview"></a>Översikt
-Den här kursen visar hur tooadd en molnbaserad serverdel tjänsten tooan Android-mobilapp med hjälp av en mobilappsserverdel i Azure.  Du skapar både en ny mobilappsserverdel och en enkel Android-app med en *att göra-lista* som lagrar appdata i Azure.
+I den här kursen får du lära dig hur du lägger till en molnbaserad serverdelstjänst i en Android-mobilapp genom att använda en mobilappsserverdel i Azure.  Du skapar både en ny mobilappsserverdel och en enkel Android-app med en *att göra-lista* som lagrar appdata i Azure.
 
-Den här kursen är en förutsättning för alla andra Android självstudier om hur du använder funktionen för hello Mobile Apps i Azure App Service.
+Du måste slutföra den här kursen innan du påbörjar någon annan Androidkurs om att använda funktionen Mobile Apps i Azure Apptjänst.
 
 ## <a name="prerequisites"></a>Krav
-toocomplete den här kursen behöver du hello följande:
+För att kunna genomföra den här kursen behöver du följande:
 
-* [Android Developer Tools](https://developer.android.com/sdk/index.html), som innehåller hello Android Studio integrated development environment och hello senaste Android-plattformen.
-* Azure Mobile Android SDK, som refereras automatiskt som en del av hello snabbstartsprojekt du hämtar.
+* [Utvecklingsverktyg för Android](https://developer.android.com/sdk/index.html), vilket omfattar Android Studio Integrated Development Environment och den senaste Android-plattformen.
+* Azure Mobile Android SDK, som refereras automatiskt som en del av det snabbstartsprojekt du hämtar.
 * Ett [aktivt Azure-konto](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="create-a-new-azure-mobile-app-backend"></a>Skapa en ny mobilappsserverdel i Azure
 [!INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
-## <a name="configure-hello-server-project"></a>Konfigurera hello serverprojekt
+## <a name="configure-the-server-project"></a>Konfigurera serverprojektet
 [!INCLUDE [app-service-mobile-configure-new-backend.md](../../includes/app-service-mobile-configure-new-backend.md)]
 
-## <a name="download-and-run-hello-android-app"></a>Hämta och köra hello Android-app
+## <a name="download-and-run-the-android-app"></a>Hämta och köra Android-appen
 [!INCLUDE [app-service-mobile-android-run-app](../../includes/app-service-mobile-android-run-app.md)]
 
 <!-- URLs -->

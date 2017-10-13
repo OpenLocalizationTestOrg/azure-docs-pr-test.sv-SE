@@ -1,6 +1,6 @@
 ---
-title: "aaaAzure användargränssnitt för Mobile Engagement - mitt konto"
-description: "Lär dig hur toomanage ditt konto-profil och test-enheter med hjälp av Azure Mobile Engagement"
+title: "Användargränssnittet för Azure Mobile Engagement - mitt konto"
+description: "Lär dig att hantera dina konto-profil och test-enheter med Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: 
 author: piyushjo
@@ -14,45 +14,45 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 1d85f0e87c43605f59f6536ae42a7fb6a99ee36b
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 4e463e973dcfa1faa7b08e4738192161980b3aa2
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="how-toomanage-your-account-profile-and-test-devices"></a>Hur toomanage ditt konto profil och test-enheter
-Den här artikeln beskriver hello **Start** sidan hello **Mobile Engagement** portal. Du använder hello **Mobile Engagement** portal toomonitor och hantera dina mobila appar. 
+# <a name="how-to-manage-your-account-profile-and-test-devices"></a>Så här hanterar du ditt konto profil och test-enheter
+Den här artikeln beskriver den **Start** sida av den **Mobile Engagement** portal. Du använder den **Mobile Engagement** portalen för att övervaka och hantera dina mobila appar. 
 
-tooget toohello **mitt konto** klickar du på ditt konto på hello hello överst.
+För att nå den **mitt konto** klickar du på ditt konto överst på sidan.
 
-hello mitt konto avsnitt i hello Användargränssnittet är där du kan visa och ändra hello-inställningar som är associerade med ditt konto, inklusive profilinställningarna och testa enhets-ID. De här inställningarna innehåller objekt som kan även nås via hello Device API.
+Avsnittet mitt konto i Användargränssnittet är där du kan visa och ändra inställningarna som är associerade med ditt konto, inklusive profilinställningarna och testa enhets-ID. De här inställningarna innehåller objekt som också kan komma åt via Device API.
 
 ![MyAccount1][7]  
 
 ## <a name="profile"></a>Profil:
-Du kan visa eller ändra inställningarna för ditt konto som visas nedan. Du kan också ge en annan användare behörighet toouse appen baserat på deras e-postadress från hello [Start](mobile-engagement-user-interface-home.md).
+Du kan visa eller ändra inställningarna för ditt konto som visas nedan. Du kan också ge en annan användarbehörighet att använda appen baserat på deras e-postadress från den [Start](mobile-engagement-user-interface-home.md).
 
 ![MyAccount2][8]  
 
 ## <a name="devices"></a>Enheter:
-Du kan visa, lägga till eller ta bort testa enheten-ID: n för hello testenheter som du kan använda tootest din **nå** eller **push** kampanjer. Kontextuella instruktioner för hur toofind hello enhets-ID för enheter för varje plattform (iOS, Android, Windows Phone, etc.) visas när du klickar på ”ny enhet”. 
+Du kan visa, lägga till eller ta bort testa enheten-ID: n för testenheter som du kan använda för att testa din **nå** eller **push** kampanjer. Kontextuella instruktioner för hur du söker efter enhets-ID för enheter för varje plattform (iOS, Android, Windows Phone, etc.) visas när du klickar på ”ny enhet”. 
 
 ![MyAccount3][9]  
 
-toouse Push API eller Device API du behöver tooknow användarnas unikt enhets-ID (hello deviceid parametern). Det finns flera sätt tooretrieve den:
+Om du vill använda Push-API eller Device API behöver du dina användare unikt enhets-ID (parametern deviceid). Det finns flera sätt att hämta den:
 
-1. Du kan använda hello ”hämta” funktion i hello Device API tooget hello fullständig lista över enhetsidentifierare från din serverdel.
-2. Du kan använda hello SDK tooget från din app den. (Anropa hello getDeviceID() funktionen av hello agentklass på Android och IOS, läses hello deviceid-egenskapen för hello-agentklass.)
-3. Från en Reach-meddelande om hello åtgärds-URL som är associerade med hello-meddelande innehåller hello {deviceid} mönster ersätts den automatiskt av hello identifierare för hello enheten utlösa hello-åtgärd.
+1. Du kan använda funktionen ”Get” i Device API för att hämta en fullständig lista över enhetsidentifierare från din serverdel.
+2. Du kan använda SDK för att hämta det från din app. (På Android att anropa funktionen getDeviceID() i klassen Agent och IOS, läsa egenskapen deviceid Agent-klassen.)
+3. Från en Reach-meddelande om åtgärds-URL som är associerad med meddelandet innehåller {deviceid}-mönstret ersätts den automatiskt med identifierare för enheten utlöser åtgärden.
    http://<example>.com/registeruser? deviceid = {deviceid} & otherparam = myparamdata ersätts av: http://<example>.com/registeruser? deviceid = XXXXXXXXXXXXXXXX & otherparam = myparamdata 
-4. I en web Reach-meddelandet om hello HTML-kod för hello-meddelande innehåller hello {deviceid} mönster ersätts den automatiskt av hello identifierare för hello-enhet som visar hello web meddelande.
+4. I en web Reach-meddelandet om HTML-kod med meddelandet innehåller {deviceid}-mönstret ersätts den automatiskt med identifieraren för den enhet som visar web-meddelande.
    Här är enhets-ID: {deviceid} kommer att ersättas av: här är enhets-ID: XXXXXXXXXXXXXXXX
 5. Öppna programmet på din enhet och utföra en händelse i din app som har taggats.
-   Hitta hello händelse som du utförde i hello listan från ”UI - app - Monitor - händelserna - information”.
-   Klicka på toothis händelse i hello övervakaren.
-   Du bör hitta enhets-ID i hello lista över hello-enheter som har genomfört den här händelsen.
-   Sedan kan du kopiera detta ID för enheten och registrera det i hello ”UI - mitt konto - enheter – ny enhet – Välj din enhetsplattform”.
-   >(Tänk på att när IDFA inaktiveras för iOS hello enhets-ID ändras emellanåt hello om du avinstallerar och installerar om din app.)
+   Sök efter händelsen du utförde i listan ”UI - app - Monitor - händelserna - information”.
+   Klicka på den här händelsen i övervakaren.
+   Du bör hitta enhets-ID i listan över enheter som har genomfört den här händelsen.
+   Sedan kan du kopiera enhets-ID och registrera den i ”UI - mitt konto - enheter – ny enhet – Välj din enhetsplattform”.
+   >(Tänk på att när IDFA har inaktiverats för iOS, enhets-ID kan ändras över tiden om du avinstallerar och installerar om din app.)
 
 ## <a name="troubleshooting-guide"></a>Felsökningsguide för
 * [Felsökningsguide för - tjänsten][Link 24]

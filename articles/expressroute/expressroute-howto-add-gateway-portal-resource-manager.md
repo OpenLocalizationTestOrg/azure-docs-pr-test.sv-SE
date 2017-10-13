@@ -1,6 +1,6 @@
 ---
-title: "Lägga till ett virtuellt nätverk gateway tooa VNet för ExpressRoute: Portal: Azure | Microsoft Docs"
-description: "Den här artikeln vägleder dig genom att lägga till ett virtuellt nätverk gateway tooan redan skapat Resource Manager VNet expressroute."
+title: "Lägga till en virtuell nätverksgateway till ett virtuellt nätverk för ExpressRoute: Portal: Azure | Microsoft Docs"
+description: "Den här artikeln vägleder dig genom att lägga till en virtuell nätverksgateway till ett redan har skapat Resource Manager-VNet för ExpressRoute."
 documentationcenter: na
 services: expressroute
 author: cherylmc
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/17/2017
 ms.author: cherylmc
-ms.openlocfilehash: 9e922af1f3676eeebc569b57c3ae3a22d4e0b395
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 2bd0cf8be87937044ad515a2c6f253b1711bb2bf
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="configure-a-virtual-network-gateway-for-expressroute-using-hello-azure-portal"></a>Konfigurera en virtuell nätverksgateway för ExpressRoute med hello Azure-portalen
+# <a name="configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>Konfigurera en virtuell nätverksgateway för ExpressRoute med Azure-portalen
 > [!div class="op_single_selector"]
 > * [Resource Manager – Azure Portal](expressroute-howto-add-gateway-portal-resource-manager.md)
 > * [Resource Manager – PowerShell](expressroute-howto-add-gateway-resource-manager.md)
@@ -30,12 +30,12 @@ ms.lasthandoff: 10/06/2017
 > 
 > 
 
-Den här artikeln guidar dig igenom hello steg tooadd en virtuell nätverksgateway för ett befintligt virtuellt nätverk. Den här artikeln vägleder dig genom hello steg tooadd, ändra storlek på och ta bort en gateway för virtuellt nätverk (VNet) för en befintlig VNet. hello stegen för den här konfigurationen är specifikt för Vnet som har skapats med hello Resource Manager-distributionsmodellen som ska användas i en ExpressRoute-konfiguration. Mer information om gateways för virtuella datornätverk och gateway-konfigurationsinställningar för ExpressRoute finns [om virtuella nätverksgatewayerna expressroute](expressroute-about-virtual-network-gateways.md). 
+Den här artikeln vägleder dig genom stegen för att lägga till en virtuell nätverksgateway för ett befintligt virtuellt nätverk. Den här artikeln vägleder dig genom stegen för att lägga till, ändra storlek på och ta bort en gateway för virtuellt nätverk (VNet) för en befintlig VNet. Stegen för den här konfigurationen är specifikt för Vnet som har skapats med Resource Manager-distributionsmodellen som ska användas i en ExpressRoute-konfiguration. Mer information om gateways för virtuella datornätverk och gateway-konfigurationsinställningar för ExpressRoute finns [om virtuella nätverksgatewayerna expressroute](expressroute-about-virtual-network-gateways.md). 
 
 
 ## <a name="before-beginning"></a>Innan du börjar
 
-hello steg för den här aktiviteten används ett VNet baserat på hello värdena i hello följande konfiguration är en lista. Vi använder den här listan i vårt exempel steg. Du kan kopiera hello listan toouse som en referens, ersätter hello värden med dina egna.
+Stegen för den här aktiviteten använder ett VNet baserat på värdena i följande konfiguration är en lista. Vi använder den här listan i vårt exempel steg. Du kan kopiera listan om du vill använda som en referens, där du ersätter värdena med dina egna.
 
 **Referens för konfigurationslistan**
 
@@ -54,36 +54,36 @@ hello steg för den här aktiviteten används ett VNet baserat på hello värden
 
 Du kan visa en [Video](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-vpn-gateway-for-your-virtual-network) av de här stegen innan du börjar din konfiguration.
 
-## <a name="create-hello-gateway-subnet"></a>Skapa hello gateway-undernät
+## <a name="create-the-gateway-subnet"></a>Skapa gateway-undernätet
 
-1. I hello [portal](http://portal.azure.com), navigera toohello Resource Manager virtuella nätverk som du vill toocreate en virtuell nätverksgateway.
-2. I hello **inställningar** avsnitt i din VNet-bladet klickar du på **undernät** tooexpand hello undernät-bladet.
-3. På hello **undernät** bladet, klickar du på **+ gatewayundernät** tooopen hello **Lägg till undernät** bladet. 
+1. I [portalen](http://portal.azure.com) går du till det virtuella Resource Manager-nätverket för vilket du vill skapa en virtuell nätverksgateway.
+2. I avsnittet **Inställningar** i VNet-bladet klickar du på **Undernät** för att expandera bladet undernät.
+3. På bladet **Undernät** klickar du på **+Gateway-undernät** för att öppna bladet **Lägg till undernät**. 
    
-    ![Lägg till gateway-undernätet hello](./media/expressroute-howto-add-gateway-portal-resource-manager/addgwsubnet.png "lägga till hello gateway-undernät")
+    ![Lägg till gatewayundernätet](./media/expressroute-howto-add-gateway-portal-resource-manager/addgwsubnet.png "Lägg till gatewayundernätet")
 
 
-4. Hej **namn** för ditt undernät fylls i automatiskt med hello värdet 'GatewaySubnet'. Det här värdet krävs för Azure toorecognize hello undernät som hello gateway-undernätet. Justera automatiskt ifylld hello **adressintervall** värden toomatch konfigurationskrav. Vi rekommenderar att du skapar ett gateway-undernät med en minst/27 eller större (/ 26/25, etc.). Klicka på **OK** toosave hello värden och skapa hello gateway-undernätet.
+4. **Namnet** på undernätet fylls automatiskt i med värdet GatewaySubnet. Det här värdet krävs för att Azure ska kunna identifiera undernätet som gateway-undernätet. Justera de automatiskt ifyllda värdena för **adressintervall** så att de motsvarar dina konfigurationskrav. Vi rekommenderar att du skapar ett gateway-undernät med en minst/27 eller större (/ 26/25, etc.). Klicka på **OK** att spara värdena och skapa gateway-undernätet.
 
-    ![Lägg till undernät hello](./media/expressroute-howto-add-gateway-portal-resource-manager/addsubnetgw.png "hello undernätet")
+    ![Lägga till undernätet](./media/expressroute-howto-add-gateway-portal-resource-manager/addsubnetgw.png "Lägga till undernätet")
 
-## <a name="create-hello-virtual-network-gateway"></a>Skapa hello virtuell nätverksgateway
+## <a name="create-the-virtual-network-gateway"></a>Skapa den virtuella nätverksgatewayen
 
-1. I hello portal hello vänster, klickar du på  **+**  och Skriv virtuell nätverksgateway i sökningen. Leta upp **virtuell nätverksgateway** i hello sökningen gå tillbaka och klicka hello-post. På hello **virtuell nätverksgateway** bladet, klickar du på **skapa** längst hello hello-bladet. Då öppnas hello **Skapa virtuell nätverksgateway** bladet.
-2. På hello **Skapa virtuell nätverksgateway** bladet, Fyll i hello värden för din virtuella nätverksgateway.
+1. På vänstra sidan i portalen klickar du på **+** och skriver "Virtuell nätverksgateway" i sökningen. Hitta **Virtuell nätverksgateway** bland sökresultaten och klicka på det. På bladet **Virtuell nätverksgateway** klickar du på **Skapa** längst ned på bladet. Detta öppnar bladet **Skapa virtuell nätverksgateway**.
+2. På bladet **Skapa virtuell nätverksgateway** fyller du i värdena för din virtuella nätverksgateway.
 
     ![Bladet Skapa virtuell nätverksgateway](./media/expressroute-howto-add-gateway-portal-resource-manager/gw.png "Bladet Skapa virtuell nätverksgateway")
-3. **Namn**: namnge din gateway. Detta är inte hello samma som att namnge ett gateway-undernät. Det är hello namnet på hello gateway-objekt som du skapar.
+3. **Namn**: namnge din gateway. Det här är inte samma sak som att namnge ett gateway-undernät. Det här är namnet på det gatewayobjekt som du skapar.
 4. **Gateway-typ**: Välj **ExpressRoute**.
-5. **SKU**: Välj hello gateway SKU hello listrutan.
-6. **Plats**: justera hello **plats** fältet toopoint toohello plats där det virtuella nätverket finns. Om hello plats inte pekar toohello region där det virtuella nätverket finns, visas inte hello virtuellt nätverk i hello ”Välj ett virtuellt nätverk” listrutan.
-7. Välj hello virtuellt nätverk toowhich önskade tooadd denna gateway. Klicka på **för virtuella nätverk** tooopen hello **Välj ett virtuellt nätverk** bladet. Välj hello virtuella nätverk. Om du inte ser ditt VNet, se till att hello **plats** fältet pekar toohello region som det virtuella nätverket finns.
-9. Välj en offentlig IP-adress. Klicka på **offentliga IP-adressen** tooopen hello **Välj offentlig IP-adress** bladet. Klicka på **+ skapa nya** tooopen hello **skapa offentlig IP-adress-bladet**. Ange ett namn för din offentliga IP-adress. Det här bladet skapar en offentlig IP-adress objektet toowhich offentliga IP-adressen tilldelas dynamiskt. Klicka på **OK** toosave dina ändringar toothis bladet.
-10. **Prenumerationen**: Kontrollera att korrekt prenumeration har valts hello.
-11. **Resursgruppen**: den här inställningen bestäms av hello virtuella nätverk som du väljer.
-12. Justera inte hello **plats** när du har angett hello tidigare inställningar.
-13. Verifiera inställningarna för hello. Om du vill att din gateway tooappear på hello instrumentpanelen kan du välja **PIN-kod toodashboard** längst hello hello-bladet.
-14. Klicka på **skapa** toobegin skapar hello gateway. hello inställningarna verifieras och distribuerar hello gateway. Skapa virtuell nätverksgateway kan ta upp too45 minuter toocomplete.
+5. **SKU**: Välj en gateway-SKU från listrutan.
+6. **Plats**: Justera fältet **Plats** så att det anger platsen där ditt virtuella nätverk befinner sig. Om platsen inte pekar på regionen där det virtuella nätverket finns visas inte det virtuella nätverket i listrutan ”Välj ett virtuellt nätverk”.
+7. Välj i vilket virtuellt nätverk du vill lägga till denna gateway. Klicka på **Virtuella nätverk** för att öppna bladet **Välj ett virtuellt nätverk**. Välj VNet. Om du inte ser ditt VNet, kontrollera att fältet **plats** anger regionen där det virtuella nätverket befinner sig.
+9. Välj en offentlig IP-adress. Klicka på **Offentlig IP-adress** för att öppna bladet **Välj offentlig IP-adress**. Klicka på **+Skapa ny**, för att öppna bladet **Skapa offentlig IP-adress**. Ange ett namn för din offentliga IP-adress. Det här bladet skapar ett objekt för en offentlig IP-adress som en offentlig IP-adress tilldelas till dynamiskt. Klicka på **OK** att spara dina ändringar i det här bladet.
+10. **Prenumeration**: Kontrollera att rätt prenumerationen har valts.
+11. **Resursgrupp**: den här inställningen avgörs av vilket virtuella nätverk du väljer.
+12. Justera inte **platsen** när du har angett ovanstående inställningar.
+13. Verifiera inställningarna. Du kan välja **Fäst vid instrumentpanelen** längst ner på bladet om du vill att din gateway ska visas på instrumentpanelen.
+14. Klicka på **Skapa** för att börja skapa gatewayen. Inställningarna verifieras och gatewayen distribueras. Skapa virtuell nätverksgateway kan ta upp till 45 minuter att slutföra.
 
 ## <a name="next-steps"></a>Nästa steg
-När du har skapat hello VNet gateway kan länka du ditt VNet tooan ExpressRoute-kretsen. Se [länka ett virtuellt nätverk tooan ExpressRoute-krets](expressroute-howto-linkvnet-portal-resource-manager.md).
+När du har skapat en gateway för virtuellt nätverk kan du länka ditt VNet till en ExpressRoute-krets. Se [länka ett virtuellt nätverk till en ExpressRoute-krets](expressroute-howto-linkvnet-portal-resource-manager.md).

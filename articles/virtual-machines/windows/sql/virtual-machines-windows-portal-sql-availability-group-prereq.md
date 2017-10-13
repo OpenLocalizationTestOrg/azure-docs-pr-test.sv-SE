@@ -1,6 +1,6 @@
 ---
-title: "aaaSQL servertillgänglighet grupper - virtuella datorer i Azure - förutsättningar för | Microsoft Docs"
-description: "Den här kursen visar hur tooconfigure hello förutsättningar för att skapa en SQL Server alltid aktiverad tillgänglighet gruppen på Azure Virtual Machines."
+title: "Grupper tillgänglighet för SQL Server - virtuella datorer i Azure - förutsättningar för | Microsoft Docs"
+description: "Den här kursen visar hur du konfigurerar kraven för att skapa en SQL Server Always On availability group på virtuella Azure-datorer."
 services: virtual-machines
 documentationCenter: na
 authors: MikeRayMSFT
@@ -16,19 +16,19 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/09/2017
 ms.author: mikeray
-ms.openlocfilehash: eed0729ead25c7793bb17a04cd7fd996c7dc8c9d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 3d508877928e033f24dae62c1042745ea7250033
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="complete-hello-prerequisites-for-creating-always-on-availability-groups-on-azure-virtual-machines"></a>Slutföra hello förutsättningar för att skapa Always On-Tillgänglighetsgrupper på Azure virtual machines
+# <a name="complete-the-prerequisites-for-creating-always-on-availability-groups-on-azure-virtual-machines"></a>Uppfylla förutsättningar för att skapa Always On-Tillgänglighetsgrupper på virtuella Azure-datorer
 
-Den här kursen visar hur toocomplete hello förutsättningar för att skapa en [SQL Server Always On-tillgänglighetsgruppen på virtuella Azure-datorer (VM)](virtual-machines-windows-portal-sql-availability-group-tutorial.md). När du är klar hello krav har en domänkontrollant, två virtuella SQL Server-datorer och ett vittnesserver i en enskild resursgrupp.
+Den här kursen visar hur du utför de nödvändiga förutsättningarna för att skapa en [SQL Server Always On-tillgänglighetsgruppen på virtuella Azure-datorer (VM)](virtual-machines-windows-portal-sql-availability-group-tutorial.md). När du är klar kraven har en domänkontrollant, två virtuella SQL Server-datorer och ett vittnesserver i en enskild resursgrupp.
 
-**Tid uppskattning**: Det kan ta ett par timmar toocomplete hello krav. Mycket av den här tiden går åt för att skapa virtuella datorer.
+**Tid uppskattning**: Det kan ta ett par timmar att slutföra förutsättningarna. Mycket av den här tiden går åt för att skapa virtuella datorer.
 
-hello följande diagram visar vad du bygga hello kursen.
+Följande diagram illustrerar hur du skapar under kursen.
 
 ![Tillgänglighetsgruppen](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/00-EndstateSampleNoELB.png)
 
@@ -41,44 +41,44 @@ Den här kursen förutsätter att du har en grundläggande förståelse för SQL
 Du behöver ett Azure-konto. Du kan [öppna ett kostnadsfritt Azure-konto](/pricing/free-trial/?WT.mc_id=A261C142F) eller [aktivera Visual Studio-prenumerantförmåner](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F).
 
 ## <a name="create-a-resource-group"></a>Skapa en resursgrupp
-1. Logga in toohello [Azure-portalen](http://portal.azure.com).
-2. Klicka på  **+**  toocreate ett nytt objekt i hello-portalen.
+1. Logga in på [Azure Portal](http://portal.azure.com).
+2. Klicka på  **+**  att skapa ett nytt objekt i portalen.
 
    ![Nytt objekt](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/01-portalplus.png)
 
-3. Typen **resursgruppen** i hello **Marketplace** sökfönstret.
+3. Typen **resursgruppen** i den **Marketplace** sökfönstret.
 
    ![Resursgrupp](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/01-resourcegroupsymbol.png)
 4. Klicka på **resursgruppen**.
 5. Klicka på **Skapa**.
-6. På hello **resursgruppen** bladet under **resursgruppens namn**, Skriv ett namn för hello resursgruppen. Skriv till exempel **sql-hög tillgänglighet-rg**.
-7. Om du har flera Azure-prenumerationer måste du kontrollera att hello prenumeration är hello Azure-prenumeration som du vill ha toocreate hello-tillgänglighetsgruppen.
-8. Välj en plats. hello platsen är hello Azure-region där du vill att toocreate hello-tillgänglighetsgruppen. Den här självstudiekursen kommer vi toobuild alla resurser i en Azure-plats.
-9. Kontrollera att **PIN-kod toodashboard** är markerad. Den här valfria inställningen placerar en genväg för hello resursgrupp på hello Azure portalens instrumentpanel.
+6. På den **resursgruppen** bladet under **resursgruppens namn**, Skriv ett namn för resursgruppen. Skriv till exempel **sql-hög tillgänglighet-rg**.
+7. Kontrollera att prenumerationen är Azure-prenumeration som du vill skapa tillgänglighetsgruppen i om du har flera Azure-prenumerationer.
+8. Välj en plats. Platsen är Azure-regionen där du vill skapa tillgänglighetsgruppen. Den här självstudiekursen kommer vi att skapa alla resurser i en Azure-plats.
+9. Kontrollera att **fäst på instrumentpanelen** är markerad. Den här valfria inställningen placeras en genväg för resursgruppen på instrumentpanelen för Azure-portalen.
 
    ![Resursgrupp](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/01-resourcegroup.png)
 
-10. Klicka på **skapa** toocreate hello resursgruppen.
+10. Klicka på **skapa** att skapa resursgruppen.
 
-Azure skapar hello resursgrupp och PIN-koder som en genväg toohello resursgrupp hello-portalen.
+Azure skapar resursgruppen och PIN-koder som en genväg till resursgruppen i portalen.
 
-## <a name="create-hello-network-and-subnets"></a>Skapa hello nätverk och undernät
-hello nästa steg är toocreate hello nätverk och undernät i hello Azure-resursgrupp.
+## <a name="create-the-network-and-subnets"></a>Skapa nätverk och undernät
+Nästa steg är att skapa nätverk och undernät i Azure-resursgrupp.
 
-hello lösningen använder ett virtuellt nätverk med två undernät. Hej [översikt över virtuella nätverk](../../../virtual-network/virtual-networks-overview.md) innehåller mer information om nätverk i Azure.
+Lösningen använder ett virtuellt nätverk med två undernät. Den [översikt över virtuella nätverk](../../../virtual-network/virtual-networks-overview.md) innehåller mer information om nätverk i Azure.
 
-toocreate hello virtuellt nätverk:
+För att skapa det virtuella nätverket:
 
-1. Klicka på hello Azure-portalen i resursgruppen, **+ Lägg till**. Azure öppnas hello **allt** bladet.
+1. I Azure-portalen i resursgruppen, klickar du på **+ Lägg till**. Azure öppnas den **allt** bladet.
 
    ![Nytt objekt](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/02-newiteminrg.png)
 2. Sök efter **virtuellt nätverk**.
 
      ![Sökningen virtuellt nätverk](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/04-findvirtualnetwork.png)
 3. Klicka på **för virtuella nätverk**.
-4. På hello **för virtuella nätverk** bladet, klickar du på hello **Resource Manager** distributionsmodell och klicka sedan på **skapa**.
+4. På den **för virtuella nätverk** bladet, klickar du på den **Resource Manager** distributionsmodell och klicka sedan på **skapa**.
 
-    hello visar följande tabell hello inställningarna för hello-nätverket:
+    I följande tabell visas inställningarna för det virtuella nätverket:
 
    | **Fält** | Värde |
    | --- | --- |
@@ -86,61 +86,61 @@ toocreate hello virtuellt nätverk:
    | **Adressutrymme** |10.33.0.0/24 |
    | **Namn på undernät** |Admin |
    | **Adressintervall för undernätet** |10.33.0.0/29 |
-   | **Prenumeration** |Ange hello-prenumeration som du avser toouse. **Prenumerationen** är tom om du bara har en prenumeration. |
-   | **Resursgrupp** |Välj **använda befintliga** och välj hello namnet på hello resursgrupp. |
-   | **Plats** |Ange hello Azure-plats. |
+   | **Prenumeration** |Ange den prenumeration som du tänker använda. **Prenumerationen** är tom om du bara har en prenumeration. |
+   | **Resursgrupp** |Välj **använda befintliga** och välj namnet på resursgruppen. |
+   | **Plats** |Ange platsen för Azure. |
 
-   Adress adressutrymmet och undernätsegenskaperna adressintervallet kan skilja sig från hello tabell. Beroende på din prenumeration föreslår hello portal en tillgängliga adressutrymmet och motsvarande adressintervallet i undernätet. Om det finns inte tillräckligt med adressutrymme Använd en annan prenumeration.
+   Adress adressutrymmet och undernätsegenskaperna adressintervallet kan skilja sig från tabellen. Beroende på din prenumeration föreslår portalen en tillgängliga adressutrymmet och motsvarande adressintervallet i undernätet. Om det finns inte tillräckligt med adressutrymme Använd en annan prenumeration.
 
-   hello-exempel som använder hello undernätsnamn **Admin**. Det här undernätet är hello-domänkontrollanter.
+   I exemplet används undernätnamnet **Admin**. Det här undernätet är för domänkontrollanter.
 
 5. Klicka på **Skapa**.
 
-   ![Konfigurera hello virtuellt nätverk](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/06-configurevirtualnetwork.png)
+   ![Konfigurera det virtuella nätverket](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/06-configurevirtualnetwork.png)
 
-Azure returnerar toohello portalens instrumentpanel och meddelar dig när hello nytt nätverk skapas.
+Azure återgår till portalens instrumentpanel och meddelar dig när det nya nätverket har skapats.
 
 ### <a name="create-a-second-subnet"></a>Skapa ett andra undernät
-hello nytt virtuellt nätverk har ett undernät, med namnet **Admin**. hello domänkontrollanter använder det här undernätet. hello virtuella SQL Server-datorer använder ett andra undernät med namnet **SQL**. tooconfigure undernätet:
+Nytt virtuellt nätverk har ett undernät, med namnet **Admin**. Domänkontrollanter använder det här undernätet. Använda SQL Server-datorer ett andra undernät med namnet **SQL**. Konfigurera det här undernätet:
 
-1. Klicka på din instrumentpanel hello resursgrupp som du skapade **SQL-hög tillgänglighet-RG**. Hitta hello nätverk i hello resursgruppen under **resurser**.
+1. På instrumentpanelen, klickar du på den resursgrupp som du skapade **SQL-hög tillgänglighet-RG**. Leta upp nätverket i resursgruppen under **resurser**.
 
-    Om **SQL-hög tillgänglighet-RG** inte visas, hitta genom att klicka på **resursgrupper** och filtrering av hello resursgruppens namn.
-2. Klicka på **autoHAVNET** hello listan över resurser. Azure öppnas hello nätverksblad konfiguration.
-3. På hello **autoHAVNET** virtuellt nätverksblad under **inställningar** , klickar du på **undernät**.
+    Om **SQL-hög tillgänglighet-RG** inte visas, hitta genom att klicka på **resursgrupper** och filtrering av resursgruppens namn.
+2. Klicka på **autoHAVNET** i listan över resurser. Azure öppnas bladet nätverket konfiguration.
+3. På den **autoHAVNET** virtuellt nätverksblad under **inställningar** , klickar du på **undernät**.
 
-    Observera hello undernät som du redan skapat.
+    Observera att det undernät som du redan skapat.
 
-   ![Konfigurera hello virtuellt nätverk](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/07-addsubnet.png)
+   ![Konfigurera det virtuella nätverket](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/07-addsubnet.png)
 5. Skapa en andra undernät. Klicka på **+ undernät**.
-6. På hello **Lägg till undernät** bladet konfigurera hello-undernät genom att skriva **sqlsubnet** under **namn**. Azure automatiskt anger en giltig **adressintervall**. Kontrollera att detta adressintervall har minst 10 adresser i den. Du kan behöva flera adresser i en produktionsmiljö.
+6. På den **Lägg till undernät** bladet konfigurera undernätet genom att skriva **sqlsubnet** under **namn**. Azure automatiskt anger en giltig **adressintervall**. Kontrollera att detta adressintervall har minst 10 adresser i den. Du kan behöva flera adresser i en produktionsmiljö.
 7. Klicka på **OK**.
 
-    ![Konfigurera hello virtuellt nätverk](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/08-configuresubnet.png)
+    ![Konfigurera det virtuella nätverket](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/08-configuresubnet.png)
 
-hello följande tabell sammanfattas hello nätverksinställningar för konfiguration:
+I följande tabell sammanfattas inställningarna för nätverk:
 
 | **Fält** | Värde |
 | --- | --- |
 | **Namn** |**autoHAVNET** |
-| **Adressutrymme** |Det här värdet är beroende av hello tillgängliga adressutrymmen i din prenumeration. Ett vanligt värde är 10.0.0.0/16. |
+| **Adressutrymme** |Detta värde beror på tillgängliga adressutrymmen i din prenumeration. Ett vanligt värde är 10.0.0.0/16. |
 | **Namn på undernät** |**Admin** |
-| **Adressintervall för undernätet** |Det här värdet är beroende av hello tillgängliga adressintervall i din prenumeration. Ett vanligt värde är 10.0.0.0/24. |
+| **Adressintervall för undernätet** |Detta värde beror på tillgängliga adressintervallen i din prenumeration. Ett vanligt värde är 10.0.0.0/24. |
 | **Namn på undernät** |**sqlsubnet** |
-| **Adressintervall för undernätet** |Det här värdet är beroende av hello tillgängliga adressintervall i din prenumeration. Ett vanligt värde är 10.0.1.0/24. |
-| **Prenumeration** |Ange hello-prenumeration som du avser toouse. |
+| **Adressintervall för undernätet** |Detta värde beror på tillgängliga adressintervallen i din prenumeration. Ett vanligt värde är 10.0.1.0/24. |
+| **Prenumeration** |Ange den prenumeration som du tänker använda. |
 | **Resursgrupp** |**SQL-HÖG TILLGÄNGLIGHET-RG** |
-| **Plats** |Ange hello samma plats som du valde för hello resursgruppen. |
+| **Plats** |Ange samma plats som du valde för resursgruppen. |
 
 ## <a name="create-availability-sets"></a>Skapa tillgänglighetsuppsättningar
 
-Innan du skapar virtuella datorer måste toocreate tillgänglighetsuppsättningar. Tillgänglighetsuppsättningar minska hello driftstopp för planerat eller oplanerat underhållshändelser. En Azure tillgänglighetsuppsättning är en logisk grupp med resurser som Azure placerar fysiska feldomäner och update-domäner. En feldomän garanterar att hello medlemmar i hello tillgänglighetsuppsättning har separata power och nätverksresurser. En uppdateringsdomän garanterar att medlemmar i hello tillgänglighetsuppsättning inte återspeglas för underhåll på hello samma tid. Mer information finns i [hantera hello tillgängligheten för virtuella datorer](../manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Innan du skapar virtuella datorer måste du skapa tillgänglighetsuppsättningar. Tillgänglighetsuppsättningar minska avbrottstiden för planerat eller oplanerat underhållshändelser. En Azure tillgänglighetsuppsättning är en logisk grupp med resurser som Azure placerar fysiska feldomäner och update-domäner. En feldomän säkerställer att medlemmarna i tillgänglighetsuppsättningen separat power och nätverksresurser. En uppdateringsdomän säkerställer att medlemmar i tillgänglighetsuppsättningen inte återspeglas för underhåll på samma gång. Mer information finns i [hantera tillgängligheten för virtuella datorer](../manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-Du behöver två tillgänglighetsuppsättningar. En är hello-domänkontrollanter. hello gäller andra hello SQL Server-datorer.
+Du behöver två tillgänglighetsuppsättningar. En är för domänkontrollanter. Andra är för SQL Server-datorer.
 
-toocreate tillgänglighet ange går toohello resursgrupp och klicka på **Lägg till**. Filtrera hello resultat genom att skriva **tillgänglighetsuppsättning**. Klicka på **Tillgänglighetsuppsättning** i hello resultaten och klickar sedan på **skapa**.
+Om du vill skapa en tillgänglighetsuppsättning, gå till resursgruppen och klicka **Lägg till**. Filtrera resultaten genom att skriva **tillgänglighetsuppsättning**. Klicka på **Tillgänglighetsuppsättning** i resultaten och klickar sedan på **skapa**.
 
-Konfigurera två tillgänglighetsuppsättningar enligt toohello parametrar i den följande tabellen hello:
+Konfigurera två tillgänglighetsuppsättningar enligt parametrarna i följande tabell:
 
 | **Fält** | Domain controller tillgänglighetsuppsättning | Tillgänglighetsuppsättningen för SQL Server |
 | --- | --- | --- |
@@ -149,29 +149,29 @@ Konfigurera två tillgänglighetsuppsättningar enligt toohello parametrar i den
 | **Feldomäner** |3 |3 |
 | **Uppdatera domäner** |5 |3 |
 
-När du har skapat hello tillgänglighetsuppsättningar returnera toohello resursgrupp i hello Azure-portalen.
+När du har skapat tillgänglighetsuppsättningarna tillbaka till resursgruppen i Azure-portalen.
 
 ## <a name="create-domain-controllers"></a>Skapa domänkontrollanter
-När du har skapat hello nätverk, undernät, tillgänglighetsuppsättningar och en Internetriktade belastningsutjämnare, är du redo toocreate hello virtuella datorer för hello-domänkontrollanter.
+När du har skapat nätverket, undernät, tillgänglighetsuppsättningar och en Internetriktade belastningsutjämnare, är du redo att skapa de virtuella datorerna för domänkontrollanter.
 
-### <a name="create-virtual-machines-for-hello-domain-controllers"></a>Skapa virtuella datorer för hello-domänkontrollanter
-toocreate och konfigurera hello domänkontrollanter, returnera toohello **SQL-hög tillgänglighet-RG** resursgruppen.
+### <a name="create-virtual-machines-for-the-domain-controllers"></a>Skapa virtuella datorer för domänkontrollanter
+Om du vill skapa och konfigurera domänkontrollanterna kan återgå till den **SQL-hög tillgänglighet-RG** resursgruppen.
 
-1. Klicka på **Lägg till**. Hej **allt** blad öppnas.
+1. Klicka på **Lägg till**. Den **allt** blad öppnas.
 2. Typen **Windows Server 2016 Datacenter**.
-3. Klicka på **Windows Server 2016 Datacenter**. I hello **Windows Server 2016 Datacenter** bladet, kontrollera att hello distributionsmodell är **Resource Manager**, och klicka sedan på **skapa**. Azure öppnas hello **Skapa virtuell dator** bladet.
+3. Klicka på **Windows Server 2016 Datacenter**. I den **Windows Server 2016 Datacenter** bladet, kontrollera att distributionsmodellen är **Resource Manager**, och klicka sedan på **skapa**. Azure öppnas den **Skapa virtuell dator** bladet.
 
-Upprepa föregående steg toocreate två virtuella datorer hello. Namn hello två virtuella datorer:
+Upprepa föregående steg för att skapa två virtuella datorer. Namn på två virtuella datorer:
 
 * AD-primära-dc
 * AD-sekundär-dc
 
   > [!NOTE]
-  > Hej **ad-sekundär-dc** virtuella datorn är valfritt, tooprovide hög tillgänglighet för Active Directory Domain Services.
+  > Den **ad-sekundär-dc** virtuella datorn är valfritt att tillhandahålla hög tillgänglighet för Active Directory Domain Services.
   >
   >
 
-hello visar följande tabell hello inställningarna för dessa två datorer:
+I följande tabell visas inställningarna för dessa två datorer:
 
 | **Fält** | Värde |
 | --- | --- |
@@ -186,248 +186,248 @@ hello visar följande tabell hello inställningarna för dessa två datorer:
 | **Storage** | **Använda hanterade diskar** - **Ja** |
 | **Virtuellt nätverk** |autoHAVNET |
 | **Undernät** |Admin |
-| **Offentlig IP-adress** |*Samma namn som hello VM* |
-| **Nätverkssäkerhetsgrupp** |*Samma namn som hello VM* |
+| **Offentlig IP-adress** |*Samma namn som den virtuella datorn* |
+| **Nätverkssäkerhetsgrupp** |*Samma namn som den virtuella datorn* |
 | **Tillgänglighetsuppsättning** |adavailabilityset </br>**Fault domäner**: 2</br>**Uppdatera domäner**: 2|
 | **Diagnostik** |Enabled |
 | **Diagnostiklagringskonto** |*Skapas automatiskt* |
 
    >[!IMPORTANT]
-   >Du kan bara placera en virtuell dator i en tillgänglighetsuppsättning när du skapar den. Du kan inte ändra hello tillgänglighetsuppsättning när en virtuell dator skapas. Se [hantera hello tillgängligheten för virtuella datorer](../manage-availability.md).
+   >Du kan bara placera en virtuell dator i en tillgänglighetsuppsättning när du skapar den. Du kan inte ändra tillgänglighetsuppsättning när en virtuell dator skapas. Se [hantera tillgängligheten för virtuella datorer](../manage-availability.md).
 
-Azure skapar hello virtuella datorer.
+Azure skapar de virtuella datorerna.
 
-När hello virtuella datorer har skapats kan du konfigurera hello domänkontrollant.
+När de virtuella datorerna har skapats kan konfigurera en domänkontrollant.
 
-### <a name="configure-hello-domain-controller"></a>Konfigurera hello-domänkontrollant
-Följande steg, konfigurera hello hello **ad primär domänkontrollant** maskin som en domänkontrollant för corp.contoso.com.
+### <a name="configure-the-domain-controller"></a>Konfigurera en domänkontrollant
+I följande steg ska du konfigurera den **ad primär domänkontrollant** maskin som en domänkontrollant för corp.contoso.com.
 
-1. Öppna hello i hello portal **SQL-hög tillgänglighet-RG** resursgrupp och välj hello **ad primär domänkontrollant** datorn. På hello **ad primär domänkontrollant** bladet, klickar du på **Anslut** tooopen en RDP-filen för fjärråtkomst till skrivbordet.
+1. I portalen, öppna den **SQL-hög tillgänglighet-RG** resurs gruppen och välj den **ad primär domänkontrollant** datorn. På den **ad primär domänkontrollant** bladet, klickar du på **Anslut** att öppna en RDP-fil för fjärråtkomst till skrivbordet.
 
-    ![Ansluta tooa virtuell dator](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/20-connectrdp.png)
+    ![Ansluta till en virtuell dator](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/20-connectrdp.png)
 2. Logga in med ditt konfigurerade administratörskonto (**\DomainAdmin**) och lösenord (**Contoso! 0000**).
-3. Som standard hello **Serverhanteraren** instrumentpanelen ska visas.
-4. Klicka på hello **Lägg till roller och funktioner** länk på hello instrumentpanelen.
+3. Som standard den **Serverhanteraren** instrumentpanelen ska visas.
+4. Klicka på den **Lägg till roller och funktioner** länk på instrumentpanelen.
 
     ![Server Manager - Lägg till roller](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/22-addfeatures.png)
-5. Välj **nästa** tills toohello **serverroller** avsnitt.
-6. Välj hello **Active Directory Domain Services** och **DNS-Server** roller. När du uppmanas att lägga till eventuella ytterligare funktioner som krävs av rollerna.
+5. Välj **nästa** tills du kommer till den **serverroller** avsnitt.
+6. Välj den **Active Directory Domain Services** och **DNS-Server** roller. När du uppmanas att lägga till eventuella ytterligare funktioner som krävs av rollerna.
 
    > [!NOTE]
-   > Windows varnar dig om att det finns ingen statisk IP-adress. Om du testar hello-konfiguration klickar du på **Fortsätt**. Ange hello IP-adress toostatic för produktion scenarier i hello Azure-portalen eller [PowerShell tooset hello statisk IP-adress för hello domain controller datorn](../../../virtual-network/virtual-networks-reserved-private-ip.md).
+   > Windows varnar dig om att det finns ingen statisk IP-adress. Om du testar konfigurationen klickar du på **Fortsätt**. Ange IP-adress till statisk i Azure-portalen för produktion scenarier eller [använda PowerShell för att ange statiska IP-adressen för den domain controller datorn](../../../virtual-network/virtual-networks-reserved-private-ip.md).
    >
    >
 
     ![Lägg till roller dialogrutan](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/23-addroles.png)
-7. Klicka på **nästa** tills du når hello **bekräftelse** avsnitt. Välj hello **omstart hello-målservern automatiskt om det behövs** kryssrutan.
+7. Klicka på **nästa** tills du når den **bekräftelse** avsnitt. Välj den **starta om målservern automatiskt om det behövs** kryssrutan.
 8. Klicka på **Installera**.
-9. När hello funktioner Slutför installation, returnerar toohello **Serverhanteraren** instrumentpanelen.
-10. Välj ny hello **AD DS** alternativet på hello vänstra fönstret.
-11. Klicka på hello **mer** länk hello gul varning-fältet.
+9. När funktionerna är klar installerar du tillbaka till den **Serverhanteraren** instrumentpanelen.
+10. Välj den nya **AD DS** alternativet i den vänstra rutan.
+11. Klicka på den **mer** länk på den gula varning-fältet.
 
-    ![AD DS-dialogen för hello DNS Server VM](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/24-addsmore.png)
-12. I hello **åtgärd** kolumn i hello **alla Server aktivitetsinformation** dialogrutan klickar du på **befordra den här servern tooa domänkontrollanten**.
-13. I hello **konfigurationsguiden Active Directory Domain Services**, använda hello följande värden:
+    ![Dialogrutan för AD DS på den virtuella datorn DNS-Server](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/24-addsmore.png)
+12. I den **åtgärd** kolumnen i den **alla Server aktivitetsinformation** dialogrutan klickar du på **befordra servern till en domänkontrollant**.
+13. I den **konfigurationsguiden Active Directory Domain Services**, använder du följande värden:
 
     | **Sidan** | Inställning |
     | --- | --- |
     | **Distributionskonfiguration** |**Lägg till en ny skog**<br/> **Rotdomännamn** = corp.contoso.com |
     | **Alternativ för domänkontrollant** |**DSRM-lösenordet** = Contoso! 0000<br/>**Bekräfta lösenord** = Contoso! 0000 |
-14. Klicka på **nästa** toogo via hello andra sidor i guiden hello. På hello **Kravkontroll** kontrollerar du att du ser följande meddelande hello: **alla kravkontroller har lyckats**. Du kan granska alla meddelanden, men det är möjligt toocontinue med hello-installation.
-15. Klicka på **Installera**. Hej **ad primär domänkontrollant** virtuella datorn startar om automatiskt.
+14. Klicka på **nästa** gå igenom andra sidor i guiden. På den **Kravkontroll** kontrollerar du att du ser följande meddelande: **alla kravkontroller har lyckats**. Du kan granska alla meddelanden, men det är möjligt att fortsätta med installationen.
+15. Klicka på **Installera**. Den **ad primär domänkontrollant** virtuella datorn startar om automatiskt.
 
-### <a name="note-hello-ip-address-of-hello-primary-domain-controller"></a>Observera hello IP-adressen för primär domänkontrollant för hello
+### <a name="note-the-ip-address-of-the-primary-domain-controller"></a>Observera IP-adressen för den primära domänkontrollanten
 
-Använd hello primära domänkontrollanten för DNS. Observera hello primär domän controller IP-adress.
+Använd den primära domänkontrollanten för DNS. Observera controller IP-adressen för primär domän.
 
-Enkelriktade tooget hello primär domän controller IP-adress är via hello Azure-portalen.
+Ett sätt att hämta domänkontrollant IP-adressen för primär domän är via Azure-portalen.
 
-1. Öppna hello resursgruppen på hello Azure-portalen.
+1. Öppna resursgruppen på Azure-portalen.
 
-2. Klicka på hello primär domänkontrollant.
+2. Klicka på den primära domänkontrollanten.
 
-3. Klicka på hello primär domän controller bladet **nätverksgränssnitt**.
+3. Klicka på bladet primär domän controller **nätverksgränssnitt**.
 
 ![Nätverksgränssnitt](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/25-primarydcip.png)
 
-Observera hello privata IP-adressen för den här servern.
+Observera den privata IP-adressen för den här servern.
 
-### <a name="configure-hello-virtual-network-dns"></a>Konfigurera hello virtuellt nätverk DNS
-När du skapar hello första domänkontrollanten och aktivera DNS på hello första servern kan du konfigurera hello virtuellt nätverk toouse servern för DNS.
+### <a name="configure-the-virtual-network-dns"></a>Konfigurera det virtuella nätverket DNS
+När du skapar den första domänkontrollanten och aktivera DNS på den första servern, konfigurera det virtuella nätverket för att använda den här servern för DNS.
 
-1. Klicka på hello virtuellt nätverk i hello Azure-portalen.
+1. Klicka på det virtuella nätverket i Azure-portalen.
 
 2. Under **inställningar**, klickar du på **DNS-Server**.
 
-3. Klicka på **anpassade**, och Skriv hello privata IP-adressen för hello primära domänkontrollanten.
+3. Klicka på **anpassade**, och Skriv privata IP-adressen för den primära domänkontrollanten.
 
 4. Klicka på **Spara**.
 
-### <a name="configure-hello-second-domain-controller"></a>Konfigurera hello andra domänkontrollanter
-När hello primära domänkontrollanten startar om, kan du konfigurera hello andra domänkontrollanten. Det här valfria steget är för hög tillgänglighet. Följ dessa steg tooconfigure hello andra domänkontrollanten:
+### <a name="configure-the-second-domain-controller"></a>Konfigurera andra domänkontrollanter
+Du kan konfigurera andra domänkontrollanten när den primära domänkontrollanten startar om. Det här valfria steget är för hög tillgänglighet. Följ dessa steg för att konfigurera andra domänkontrollanten:
 
-1. Öppna hello i hello portal **SQL-hög tillgänglighet-RG** resursgrupp och välj hello **ad-sekundär-dc** datorn. På hello **ad-sekundär-dc** bladet, klickar du på **Anslut** tooopen en RDP-filen för fjärråtkomst till skrivbordet.
-2. Logga in toohello VM med dina konfigurerade administratörskonto (**BUILTIN\DomainAdmin**) och lösenord (**Contoso! 0000**).
-3. Ändra hello önskad DNS-adress toohello serveradress för hello-domänkontrollant.
-4. I **nätverks- och delningscenter**, klicka på hello nätverksgränssnitt.
+1. I portalen, öppna den **SQL-hög tillgänglighet-RG** resurs gruppen och välj den **ad-sekundär-dc** datorn. På den **ad-sekundär-dc** bladet, klickar du på **Anslut** att öppna en RDP-fil för fjärråtkomst till skrivbordet.
+2. Logga in på den virtuella datorn med hjälp av ditt konfigurerade administratörskonto (**BUILTIN\DomainAdmin**) och lösenord (**Contoso! 0000**).
+3. Ändra önskad DNS-serveradress till adressen för domänkontrollanten.
+4. I **nätverks- och delningscenter**, klickar du på nätverksgränssnittet.
    ![Nätverksgränssnitt](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/26-networkinterface.png)
 
 5. Klicka på **Egenskaper**.
 6. Välj **Internet Protocol Version 4 (TCP/IPv4)** och på **egenskaper**.
-7. Välj **Använd hello följande DNS-serveradresser** och ange hello-adressen för hello primära domänkontrollanten i **önskad DNS-server**.
-8. Klicka på **OK**, och sedan **Stäng** toocommit hello ändringar. Du är nu kan toojoin hello VM för**corp.contoso.com**.
+7. Välj **Använd följande DNS-serveradresser** och ange adressen till den primära domänkontrollanten i **önskad DNS-server**.
+8. Klicka på **OK**, och sedan **Stäng** att genomföra ändringarna. Du är nu kunna ansluta till den virtuella datorn till **corp.contoso.com**.
 
    >[!IMPORTANT]
-   >Om du förlorar anslutningen hello tooyour Fjärrskrivbord när du har ändrat hello DNS-inställningen går toohello virtuella Azure-portalen och starta om hello-datorn.
+   >Om du förlorar anslutningen till din Fjärrskrivbord när du har ändrat inställningen för DNS-gå till Azure-portalen och starta om den virtuella datorn.
 
-9. Hello remote desktop toohello sekundär domänkontrollant, öppna **instrumentpanelen Serverhanteraren**.
-10. Klicka på hello **Lägg till roller och funktioner** länk på hello instrumentpanelen.
+9. Fjärrskrivbord till den sekundära domänkontrollanten öppna **instrumentpanelen Serverhanteraren**.
+10. Klicka på den **Lägg till roller och funktioner** länk på instrumentpanelen.
 
     ![Server Manager - Lägg till roller](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/22-addfeatures.png)
-11. Välj **nästa** tills toohello **serverroller** avsnitt.
-12. Välj hello **Active Directory Domain Services** och **DNS-Server** roller. När du uppmanas att lägga till eventuella ytterligare funktioner som krävs av rollerna.
-13. När hello funktioner Slutför installation, returnerar toohello **Serverhanteraren** instrumentpanelen.
-14. Välj ny hello **AD DS** alternativet på hello vänstra fönstret.
-15. Klicka på hello **mer** länk hello gul varning-fältet.
-16. I hello **åtgärd** kolumn i hello **alla Server aktivitetsinformation** dialogrutan klickar du på **befordra den här servern tooa domänkontrollanten**.
-17. Under **distributionskonfigurationen**väljer **lägga till en befintlig domän för domain controller tooan**.
+11. Välj **nästa** tills du kommer till den **serverroller** avsnitt.
+12. Välj den **Active Directory Domain Services** och **DNS-Server** roller. När du uppmanas att lägga till eventuella ytterligare funktioner som krävs av rollerna.
+13. När funktionerna är klar installerar du tillbaka till den **Serverhanteraren** instrumentpanelen.
+14. Välj den nya **AD DS** alternativet i den vänstra rutan.
+15. Klicka på den **mer** länk på den gula varning-fältet.
+16. I den **åtgärd** kolumnen i den **alla Server aktivitetsinformation** dialogrutan klickar du på **befordra servern till en domänkontrollant**.
+17. Under **distributionskonfigurationen**väljer **lägger till en domänkontrollant i en befintlig domän**.
    ![Distributionskonfiguration](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/28-deploymentconfig.png)
 18. Klicka på **Välj**.
-19. Ansluta med hjälp av hello administratörskonto (**CORP. Contoso.COM\domainadmin**) och lösenord (**Contoso! 0000**).
-20. I **Välj en domän från hello skog**, klickar du på din domän och klicka sedan på **OK**.
-21. I **alternativ för domänkontrollant**, använda hello standardvärden och ange DSRM-lösenordet.
+19. Ansluta med hjälp av administratörskontot (**CORP. Contoso.COM\domainadmin**) och lösenord (**Contoso! 0000**).
+20. I **Välj en domän från skogen**, klickar du på din domän och klicka sedan på **OK**.
+21. I **alternativ för domänkontrollant**, Använd standardvärdena och ange DSRM-lösenordet.
 
    >[!NOTE]
-   >Hej **DNS-alternativ** sida kan varna dig att det inte går att skapa en delegering för den här DNS-servern. Du kan ignorera den här varningen i icke-produktionsmiljöer.
-22. Klicka på **nästa** tills hello dialogrutan hello **krav** kontrollera. Klicka på **Installera**.
+   >Den **DNS-alternativ** sida kan varna dig att det inte går att skapa en delegering för den här DNS-servern. Du kan ignorera den här varningen i icke-produktionsmiljöer.
+22. Klicka på **nästa** tills dialogrutan når den **krav** kontrollera. Klicka på **Installera**.
 
-Starta om hello server när hello server har slutförts hello konfigurationsändringar.
+Starta om servern när servern har slutförts ändringar i konfigurationen.
 
-### <a name="add-hello-private-ip-address-toohello-second-domain-controller-toohello-vpn-dns-server"></a>Lägg till hello privata IP-adressen toohello andra domain controller toohello VPN-DNS-Server
+### <a name="add-the-private-ip-address-to-the-second-domain-controller-to-the-vpn-dns-server"></a>Lägga till privata IP-adressen till den andra domänkontrollanten till VPN-DNS-Server
 
-Ändra hello DNS-Server tooinclude hello IP-adressen för hello sekundär domänkontrollant i hello Azure-portalen under virtuellt nätverk. Detta gör att hello DNS-tjänsten redundans.
+Ändra DNS-servern med IP-adressen för den sekundära domänkontrollanten i Azure-portalen under virtuellt nätverk. Detta gör att DNS-tjänsten redundans.
 
-### <a name=DomainAccounts></a>Konfigurera hello domänkonton
+### <a name=DomainAccounts></a>Konfigurera domänkontona
 
-I nästa steg för hello konfigurerar du hello Active Directory-konton. hello visar följande tabell hello konton:
+I nästa steg ska konfigurera du Active Directory-konton. I följande tabell visas kontona:
 
 | |Kontot för installation<br/> |SQLServer-0 <br/>Konto för SQL Server och SQL Agent-tjänsten |SQLServer-1<br/>Konto för SQL Server och SQL Agent-tjänsten
 | --- | --- | --- | ---
 |**Förnamn** |Installera |SQLSvc1 | SQLSvc2
 |**Användare SamAccountName** |Installera |SQLSvc1 | SQLSvc2
 
-Använd följande steg toocreate hello varje konto.
+Använd följande steg för att skapa varje konto.
 
-1. Logga in toohello **ad primär domänkontrollant** datorn.
+1. Logga in på den **ad primär domänkontrollant** datorn.
 2. I **Serverhanteraren**väljer **verktyg**, och klicka sedan på **Active Directory Administrationscenter**.   
-3. Välj **corp (lokal)** från hello till vänster.
-4. På hello rätt **uppgifter** väljer **ny**, och klicka sedan på **användaren**.
+3. Välj **corp (lokal)** i den vänstra rutan.
+4. Till höger **uppgifter** väljer **ny**, och klicka sedan på **användaren**.
    ![Active Directory Administrationscenter](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/29-addcnewuser.png)
 
    >[!TIP]
-   >Ange ett komplext lösenord för varje konto.<br/> För icke-produktionsmiljöer, ange hello användarens konto toonever upphöra att gälla.
+   >Ange ett komplext lösenord för varje konto.<br/> För icke-produktionsmiljöer, ange användarkontot som ska aldrig går ut.
 
-5. Klicka på **OK** toocreate hello användare.
-6. Upprepa föregående steg för varje hello tre konton hello.
+5. Klicka på **OK** att skapa användaren.
+6. Upprepa föregående steg för var och en av tre konton.
 
-### <a name="grant-hello-required-permissions-toohello-installation-account"></a>Ge hello krävs behörigheter toohello installationskonto
-1. I hello **Active Directory Administrationscenter**väljer **corp (lokal)** hello vänster. I högra hello **uppgifter** rutan klickar du på **egenskaper**.
+### <a name="grant-the-required-permissions-to-the-installation-account"></a>Bevilja behörighet till kontot för installation av
+1. I den **Active Directory Administrationscenter**väljer **corp (lokal)** i den vänstra rutan. I den högra **uppgifter** rutan klickar du på **egenskaper**.
 
     ![Egenskaper för CORP-användare](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/31-addcproperties.png)
-2. Välj **tillägg**, och klicka sedan på hello **Avancerat** hello-knappen **säkerhet** fliken.
-3. I hello **avancerade säkerhetsinställningar för corp** dialogrutan klickar du på **Lägg till**.
+2. Välj **tillägg**, och klicka sedan på den **Avancerat** knappen på den **säkerhet** fliken.
+3. I den **avancerade säkerhetsinställningar för corp** dialogrutan klickar du på **Lägg till**.
 4. Klicka på **Välj en huvudansvarig**, söka efter **CORP\Install**, och klicka sedan på **OK**.
-5. Välj hello **läsa alla egenskaper** kryssrutan.
+5. Välj den **läsa alla egenskaper** kryssrutan.
 
-6. Välj hello **skapa datorobjekt** kryssrutan.
+6. Välj den **skapa datorobjekt** kryssrutan.
 
      ![Corp användarbehörighet](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/33-addpermissions.png)
-7. Klicka på **OK**, och klicka sedan på **OK** igen. Stäng hello **corp** egenskapsfönstret.
+7. Klicka på **OK**, och klicka sedan på **OK** igen. Stäng den **corp** egenskapsfönstret.
 
-Nu när du har konfigurerat Active Directory och hello användarobjekt, skapa två virtuella SQL Server-datorer och en vittnesserver som VM. Ansluta alla tre toohello-domänen.
+Nu när du har konfigurerat Active Directory och användarobjekt, skapa två virtuella SQL Server-datorer och en vittnesserver som VM. Ansluta alla tre till domänen.
 
 ## <a name="create-sql-server-vms"></a>Skapa virtuella SQL Server-datorer
 
-Skapa tre ytterligare virtuella datorer. hello lösning kräver två virtuella datorer med SQL Server-instanser. En tredje virtuell dator fungerar som ett vittne. Windows Server 2016 kan använda en [molnet vittne](http://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness), men adressöverensstämmelse tidigare operativsystem för det här dokumentet använder en virtuell dator för ett vittne.  
+Skapa tre ytterligare virtuella datorer. Lösningen kräver två virtuella datorer med SQL Server-instanser. En tredje virtuell dator fungerar som ett vittne. Windows Server 2016 kan använda en [molnet vittne](http://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness), men adressöverensstämmelse tidigare operativsystem för det här dokumentet använder en virtuell dator för ett vittne.  
 
-Överväg följande beslut deisign hello innan du fortsätter.
+Överväg följande beslut deisign innan du fortsätter.
 
 * **Lagring – Azure hanterade diskar**
 
-   Använd Azure hanterade diskar för hello den virtuella datorns lagringsutrymme. Microsoft rekommenderar hanterade diskar för virtuella datorer för SQL Server. Hanterade diskar handtag lagring hello bakgrunden. Dessutom när virtuella datorer med hanterade diskar är i hello samma tillgänglighetsuppsättning, Azure distribuerar hello lagring resurser tooprovide lämplig redundans. Mer information finns i [Översikt över Azure Managed Disks](../managed-disks-overview.md). Närmare information om hanterade diskar i en tillgänglighetsuppsättning, se [använda hanterade diskar för virtuella datorer i en tillgänglighetsuppsättning](../manage-availability.md#use-managed-disks-for-vms-in-an-availability-set).
+   Använd Azure hanterade diskar för lagring för virtuell dator. Microsoft rekommenderar hanterade diskar för virtuella datorer för SQL Server. Managed Disks hanterar lagring i bakgrunden. När virtuella datorer med Managed Disks finns i samma tillgänglighetsuppsättning, distribuerar Azure dessutom lagringsresurser för att tillhandahålla rätt redundans. Mer information finns i [Översikt över Azure Managed Disks](../managed-disks-overview.md). Närmare information om hanterade diskar i en tillgänglighetsuppsättning, se [använda hanterade diskar för virtuella datorer i en tillgänglighetsuppsättning](../manage-availability.md#use-managed-disks-for-vms-in-an-availability-set).
 
 * **Nätverk - privata IP-adresser i produktion**
 
-   Den här kursen använder offentliga IP-adresser för hello virtuella datorer. Detta gör att fjärranslutning direkt toohello virtuella datorn via hello internet - det underlättar konfigurationssteg. I produktionsmiljöer rekommenderas endast privata IP-adresser i ordning tooreduce hello sårbarhet av hello SQL Server-instansen Virtuella datorresursen.
+   Den här kursen använder offentliga IP-adresser för de virtuella datorerna. Detta gör att fjärranslutning direkt till den virtuella datorn via internet - det underlättar konfigurationssteg. Microsoft rekommenderar endast privata IP-adresser i produktionsmiljöer, för att minska sårbarhet av SQL Server-instansen Virtuella datorresursen.
 
-### <a name="create-and-configure-hello-sql-server-vms"></a>Skapa och konfigurera hello SQL Server-datorer
-Skapa därefter tre virtuella datorer – två virtuella SQL Server-datorer och en virtuell dator för en ny klusternod. toocreate hello virtuella datorer, gå tillbaka toohello **SQL-hög tillgänglighet-RG** resursgrupp, klickar du på **Lägg till**, söka efter hello lämpliga galleriobjektet, klickar du på **virtuella**, och sedan Klicka på **från galleriet**. Använd hello information i följande tabell toohelp som du skapar virtuella datorer hello hello:
+### <a name="create-and-configure-the-sql-server-vms"></a>Skapa och konfigurera SQL Server-datorer
+Skapa därefter tre virtuella datorer – två virtuella SQL Server-datorer och en virtuell dator för en ny klusternod. Om du vill skapa var och en av de virtuella datorerna, gå tillbaka till den **SQL-hög tillgänglighet-RG** resursgrupp, klickar du på **Lägg till**, Sök efter lämplig galleriobjektet, klicka på **virtuella**, och klicka sedan på **från galleriet**. Använd informationen i följande tabell för att skapa de virtuella datorerna:
 
 
 | Sidan | VM1 | VM2 | VM3 |
 | --- | --- | --- | --- |
-| Välj hello lämpliga galleriobjektet |**Windows Server 2016 Datacenter** |**SQL Server 2016 SP1 Enterprise på Windows Server 2016** |**SQL Server 2016 SP1 Enterprise på Windows Server 2016** |
+| Välj lämplig galleriobjektet |**Windows Server 2016 Datacenter** |**SQL Server 2016 SP1 Enterprise på Windows Server 2016** |**SQL Server 2016 SP1 Enterprise på Windows Server 2016** |
 | Konfiguration av virtuell dator **grunderna** |**Namnet** = klustret fsw<br/>**Användarnamnet** = DomainAdmin<br/>**Lösenordet** = Contoso! 0000<br/>**Prenumerationen** = din prenumeration<br/>**Resursgruppen** = SQL-hög tillgänglighet-RG<br/>**Plats** = azure-plats |**Namnet** = sqlserver-0<br/>**Användarnamnet** = DomainAdmin<br/>**Lösenordet** = Contoso! 0000<br/>**Prenumerationen** = din prenumeration<br/>**Resursgruppen** = SQL-hög tillgänglighet-RG<br/>**Plats** = azure-plats |**Namnet** = sqlserver-1<br/>**Användarnamnet** = DomainAdmin<br/>**Lösenordet** = Contoso! 0000<br/>**Prenumerationen** = din prenumeration<br/>**Resursgruppen** = SQL-hög tillgänglighet-RG<br/>**Plats** = azure-plats |
-| Konfiguration av virtuell dator **storlek** |**STORLEK** = DS1\_V2 (1 kärna, 3.5 GB) |**STORLEK** = DS2\_V2 (2 kärnor, 7 GB)</br>hello storlek måste ha stöd för SSD-lagring (stöd för Premium-diskar. )) |**STORLEK** = DS2\_V2 (2 kärnor, 7 GB) |
+| Konfiguration av virtuell dator **storlek** |**STORLEK** = DS1\_V2 (1 kärna, 3.5 GB) |**STORLEK** = DS2\_V2 (2 kärnor, 7 GB)</br>Storleken måste ha stöd för SSD-lagring (stöd för Premium-diskar. )) |**STORLEK** = DS2\_V2 (2 kärnor, 7 GB) |
 | Konfiguration av virtuell dator **inställningar** |**Lagring**: Använd hanterade diskar.<br/>**Virtuellt nätverk** = autoHAVNET<br/>**Undernät** = sqlsubnet(10.1.1.0/24)<br/>**Offentliga IP-adressen** skapas automatiskt.<br/>**Nätverkssäkerhetsgruppen** = None<br/>**Övervaka diagnostik** = aktiverat<br/>**Diagnostiklagringskonto** = Använd en automatiskt genererad storage-konto<br/>**Tillgänglighetsuppsättningen** = sqlAvailabilitySet<br/> |**Lagring**: Använd hanterade diskar.<br/>**Virtuellt nätverk** = autoHAVNET<br/>**Undernät** = sqlsubnet(10.1.1.0/24)<br/>**Offentliga IP-adressen** skapas automatiskt.<br/>**Nätverkssäkerhetsgruppen** = None<br/>**Övervaka diagnostik** = aktiverat<br/>**Diagnostiklagringskonto** = Använd en automatiskt genererad storage-konto<br/>**Tillgänglighetsuppsättningen** = sqlAvailabilitySet<br/> |**Lagring**: Använd hanterade diskar.<br/>**Virtuellt nätverk** = autoHAVNET<br/>**Undernät** = sqlsubnet(10.1.1.0/24)<br/>**Offentliga IP-adressen** skapas automatiskt.<br/>**Nätverkssäkerhetsgruppen** = None<br/>**Övervaka diagnostik** = aktiverat<br/>**Diagnostiklagringskonto** = Använd en automatiskt genererad storage-konto<br/>**Tillgänglighetsuppsättningen** = sqlAvailabilitySet<br/> |
 | Konfiguration av virtuell dator **SQL Server-inställningar** |Inte tillämpligt |**SQL-anslutningen** = privat (inom Virtual Network)<br/>**Port** = 1433<br/>**SQL-autentisering** = inaktivera<br/>**Lagringskonfigurationen** = Allmänt<br/>**Automatisk uppdatering** = söndag 2:00<br/>**Automatisk säkerhetskopiering** = inaktiverad</br>**Azure Key Vault-integrering** = inaktiverad |**SQL-anslutningen** = privat (inom Virtual Network)<br/>**Port** = 1433<br/>**SQL-autentisering** = inaktivera<br/>**Lagringskonfigurationen** = Allmänt<br/>**Automatisk uppdatering** = söndag 2:00<br/>**Automatisk säkerhetskopiering** = inaktiverad</br>**Azure Key Vault-integrering** = inaktiverad |
 
 <br/>
 
 > [!NOTE]
-> Hej datorstorlekar föreslås här är avsedda för att testa Tillgänglighetsgrupper i virtuella Azure-datorer. Hello bästa prestanda på produktionsarbetsbelastningar finns hello rekommendationer för SQL Server-datorstorlekar och konfigurationen i [prestandarelaterade Metodtips för SQL Server på virtuella Azure-datorer](virtual-machines-windows-sql-performance.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+> Datorstorlekar som föreslås här är avsedda för att testa Tillgänglighetsgrupper i virtuella Azure-datorer. För bästa prestanda på produktionsarbetsbelastningar finns rekommendationer för SQL Server-datorstorlekar och konfigurationen i [prestandarelaterade Metodtips för SQL Server på virtuella Azure-datorer](virtual-machines-windows-sql-performance.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 >
 >
 
-När hello tre virtuella datorer är helt etablerad, måste toojoin dem toohello **corp.contoso.com** domän och bevilja CORP\Install administratörsbehörighet toohello datorer.
+När de tre virtuella datorerna är helt etablerad, måste du koppla dem till den **corp.contoso.com** domän och bevilja CORP\Install administratörsbehörighet till datorer.
 
-### <a name="joinDomain"></a>Anslut till hello servrar toohello domän
+### <a name="joinDomain"></a>Anslut servrarna till domänen
 
-Du är nu kan toojoin hello virtuella datorer för**corp.contoso.com**. Delar hello följande för både hello SQL Server-datorer och hello vittnesserver:
+Du är nu kunna ansluta till de virtuella datorerna till **corp.contoso.com**. Gör följande för både SQL Server-datorer och vittne för servern:
 
-1. Fjärransluta toohello virtuell dator med **BUILTIN\DomainAdmin**.
+1. Fjärransluta till den virtuella datorn med **BUILTIN\DomainAdmin**.
 2. I **Serverhanteraren**, klickar du på **lokal Server**.
-3. Klicka på hello **arbetsgrupp** länk.
-4. I hello **datornamn** klickar du på **ändra**.
-5. Välj hello **domän** kryssrutan och ange **corp.contoso.com** i hello textruta. Klicka på **OK**.
-6. I hello **Windows-säkerhet** popup dialogrutan Ange hello autentiseringsuppgifter för hello standard domänadministratörskonto (**CORP\DomainAdmin**) och hello lösenord (**Contoso! 0000**).
-7. När du ser ”Välkommen toohello corp.contoso.com domänen” hello-meddelande, klickar du på **OK**.
-8. Klicka på **Stäng**, och klicka sedan på **starta om nu** i dialogrutan för hello popup-fönster.
+3. Klicka på den **arbetsgrupp** länk.
+4. I den **datornamn** klickar du på **ändra**.
+5. Välj den **domän** kryssrutan och ange **corp.contoso.com** i textrutan. Klicka på **OK**.
+6. I den **Windows-säkerhet** popup dialogrutan Ange autentiseringsuppgifter för standardkontot för administratör (**CORP\DomainAdmin**) och lösenordet (**Contoso! 0000**).
+7. När meddelandet ”Välkommen till domänen corp.contoso.com”, klickar du på **OK**.
+8. Klicka på **Stäng**, och klicka sedan på **starta om nu** i dialogrutan popup-fönster.
 
-### <a name="add-hello-corpinstall-user-as-an-administrator-on-each-cluster-vm"></a>Lägg till hello Corp\Install användaren som administratör på varje kluster VM
+### <a name="add-the-corpinstall-user-as-an-administrator-on-each-cluster-vm"></a>Lägg till Corp\Install användaren som administratör på varje kluster VM
 
-Varje virtuell dator startar om som en medlem i hello domän och lägga till **CORP\Install** som medlem i gruppen lokala administratörer för hello.
+Varje virtuell dator startar om som en medlem i domänen och lägga till **CORP\Install** som medlem i gruppen lokala administratörer.
 
-1. Vänta tills hello VM har startats om och sedan starta hello RDP-filen igen från hello primär domän controller toosign i för**sqlserver-0** med hjälp av hello **CORP\DomainAdmin** konto.
+1. Vänta tills den virtuella datorn har startats om och sedan starta RDP-filen igen från den primära domänkontrollanten för att logga in på **sqlserver-0** med hjälp av den **CORP\DomainAdmin** konto.
    >[!TIP]
-   >Kontrollera att du loggar in med hello domänadministratörskonto. I föregående steg hello använde hello i inbyggda administratörskontot. Nu hello servern finns i hello domän, använda hello domänkonto. Ange i RDP-session *domän*\\*användarnamn*.
+   >Kontrollera att du loggar in med domänadministratörskontot. I de föregående stegen använde du SKAPAT i kontot. Nu när servern är i domänen, kan du använda domänkonto. Ange i RDP-session *domän*\\*användarnamn*.
 
 2. I **Serverhanteraren**väljer **verktyg**, och klicka sedan på **Datorhantering**.
-3. I hello **Datorhantering** fönstret expanderar **lokala användare och grupper**, och välj sedan **grupper**.
-4. Dubbelklicka på hello **administratörer** grupp.
-5. I hello **egenskaper för administratörer** dialogrutan klickar du på hello **Lägg till** knappen.
-6. Ange hello användare **CORP\Install**, och klicka sedan på **OK**.
-7. Klicka på **OK** tooclose hello **Administratörsegenskaper** dialogrutan.
-8. Upprepa föregående steg för hello på **sqlserver-1** och **klustret fsw**.
+3. I den **Datorhantering** fönstret expanderar **lokala användare och grupper**, och välj sedan **grupper**.
+4. Dubbelklicka på den **administratörer** grupp.
+5. I den **egenskaper för administratörer** dialogrutan klickar du på den **Lägg till** knappen.
+6. Ange användaren **CORP\Install**, och klicka sedan på **OK**.
+7. Klicka på **OK** att stänga den **Administratörsegenskaper** dialogrutan.
+8. Upprepa föregående steg på **sqlserver-1** och **klustret fsw**.
 
-### <a name="setServiceAccount"></a>Ange hello SQL Server-tjänstkonton
+### <a name="setServiceAccount"></a>Ange SQL Server-tjänstkonton
 
-Ange hello SQL Server-tjänstkontot på varje SQL Server-VM. Använd hello konton som du skapade när du [konfigurerats hello domänkonton](#DomainAccounts).
+Ange SQL Server-tjänstkontot på varje SQL Server-VM. Använd de konton som du skapade när du [konfigurerats-domänkonton](#DomainAccounts).
 
 1. Öppna **SQL Server Configuration Manager**.
-2. Högerklicka på hello SQL Server-tjänsten och klicka sedan på **egenskaper**.
-3. Ange hello konto och lösenord.
-4. Upprepa dessa steg på hello andra SQL Server-VM.  
+2. Högerklicka på SQL Server-tjänsten och klicka sedan på **egenskaper**.
+3. Ange konto och lösenord.
+4. Upprepa dessa steg på den andra SQL Server-VM.  
 
-För SQL Server-Tillgänglighetsgrupper måste varje SQL Server-VM toorun som ett domänkonto.
+Varje virtuell dator med SQL Server måste köras som ett domänkonto för SQL Server-Tillgänglighetsgrupper.
 
-### <a name="create-a-sign-in-on-each-sql-server-vm-for-hello-installation-account"></a>Skapa en inloggning på varje SQL Server-VM för kontot för installation av hello
+### <a name="create-a-sign-in-on-each-sql-server-vm-for-the-installation-account"></a>Skapa en inloggning på varje SQL Server-VM för kontot för installation av
 
-Använd hello installationen konto (CORP\install) tooconfigure hello-tillgänglighetsgruppen. Det här kontot måste toobe medlem i hello **sysadmin** fasta serverrollen på varje SQL Server-VM. hello följande steg skapar en inloggning för hello installationskonto:
+Använda kontot för installation av (CORP\install) för att konfigurera tillgänglighetsgruppen. Det här kontot måste vara medlem i den **sysadmin** fasta serverrollen på varje SQL Server-VM. Följande steg skapar en inloggning för kontot för installation:
 
-1. Ansluta toohello server via hello Remote Desktop Protocol (RDP) med hjälp av hello  *\<MachineName\>\DomainAdmin* konto.
+1. Ansluta till servern via Remote Desktop Protocol (RDP) med hjälp av den  *\<MachineName\>\DomainAdmin* konto.
 
-1. Öppna SQL Server Management Studio och Anslut toohello lokal instans av SQL Server.
+1. Öppna SQL Server Management Studio och Anslut till den lokala instansen av SQL Server.
 
 1. I **Object Explorer**, klickar du på **säkerhet**.
 
@@ -437,34 +437,34 @@ Använd hello installationen konto (CORP\install) tooconfigure hello-tillgängli
 
 1. Klicka på **platser**.
 
-1. Ange hello autentiseringsuppgifter som domänadministratör nätverk.
+1. Ange autentiseringsuppgifter som domänadministratör nätverk.
 
-1. Använd hello kontot för installation.
+1. Använda kontot för installation.
 
-1. Ange hello inloggning toobe medlem i hello **sysadmin** fasta serverrollen.
+1. Ange inloggning ska vara medlem i den **sysadmin** fasta serverrollen.
 
 1. Klicka på **OK**.
 
-Upprepa föregående steg på hello andra SQL Server-VM hello.
+Upprepa föregående steg på den andra SQL Server-VM.
 
-## <a name="add-failover-clustering-features-tooboth-sql-server-vms"></a>Lägg till redundanskluster funktioner tooboth virtuella SQL Server-datorer
+## <a name="add-failover-clustering-features-to-both-sql-server-vms"></a>Lägg till funktioner för redundanskluster i både SQL Server-datorer
 
-funktioner för tooadd redundanskluster, hello följa på både SQL Server-datorer:
+Om du vill lägga till funktioner för redundanskluster, gör du följande på både SQL Server-datorer:
 
-1. Ansluta toohello SQL Server-dator via hello Remote Desktop Protocol (RDP) med hjälp av hello *CORP\install* konto. Öppna **instrumentpanelen Serverhanteraren**.
-2. Klicka på hello **Lägg till roller och funktioner** länk på hello instrumentpanelen.
+1. Ansluta till SQL Server-dator via Remote Desktop Protocol (RDP) med hjälp av *CORP\install* konto. Öppna **instrumentpanelen Serverhanteraren**.
+2. Klicka på den **Lägg till roller och funktioner** länk på instrumentpanelen.
 
     ![Server Manager - Lägg till roller](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/22-addfeatures.png)
-3. Välj **nästa** tills toohello **serverfunktioner** avsnitt.
+3. Välj **nästa** tills du kommer till den **serverfunktioner** avsnitt.
 4. I **funktioner**väljer **redundanskluster**.
 5. Lägg till eventuella ytterligare funktioner som krävs.
-6. Klicka på **installera** tooadd hello funktioner.
+6. Klicka på **installera** att lägga till funktionerna.
 
-Upprepa hello steg på hello andra SQL Server-VM.
+Upprepa steg på den andra SQL Server-VM.
 
-## <a name="a-nameendpoint-firewall-configure-hello-firewall-on-each-sql-server-vm"></a><a name="endpoint-firewall">Konfigurera hello-brandväggen på varje virtuell dator med SQL Server
+## <a name="a-nameendpoint-firewall-configure-the-firewall-on-each-sql-server-vm"></a><a name="endpoint-firewall">Konfigurera brandväggen på varje virtuell dator med SQL Server
 
-hello lösning kräver hello följande TCP-portar toobe öppna i hello brandväggen:
+Lösningen kräver följande TCP-portar vara öppna i brandväggen:
 
 - **SQLServer VM**:<br/>
    Port 1433 för en standardinstans av SQL Server.
@@ -473,25 +473,25 @@ hello lösning kräver hello följande TCP-portar toobe öppna i hello brandväg
 - **Slutpunkten för databasspegling:** <br/>
    Alla tillgängliga portar. Exemplen använder ofta 5022.
 
-hello brandväggen portar måste toobe öppen på både SQL Server-datorer.
+Vilka brandväggsportar måste vara öppna på både SQL Server-datorer.
 
-hello metod för att öppna portar hello beror på hello brandvägg som du använder. hello nästa avsnitt beskrivs hur tooopen hello portar i Windows-brandväggen. Öppna portar hello krävs på alla virtuella din SQL Server-datorer.
+Metoden för att öppna portarna beror på brandvägg som du använder. I nästa avsnitt beskrivs hur du öppnar portar i Windows-brandväggen. Öppna portarna som krävs på alla virtuella din SQL Server-datorer.
 
-### <a name="open-a-tcp-port-in-hello-firewall"></a>Öppna en TCP-port i brandväggen för hello
+### <a name="open-a-tcp-port-in-the-firewall"></a>Öppna en TCP-port i brandväggen
 
-1. Hej första SQL Server på **starta** skärmen, starta **Windows-brandväggen med avancerad säkerhet**.
-2. Hello vänster, Välj **regler för inkommande trafik**. Hello högra rutan, klicka på **ny regel**.
+1. På den första SQL-servern **starta** skärmen, starta **Windows-brandväggen med avancerad säkerhet**.
+2. I den vänstra rutan, Välj **regler för inkommande trafik**. I den högra rutan, klickar du på **ny regel**.
 3. För **regeltyp**, Välj **Port**.
-4. Hello-port, ange **TCP** och typen hello lämpliga portnummer. Se följande exempel hello:
+4. Port, ange **TCP** och ange rätt portnummer. Se följande exempel:
 
    ![SQL-brandvägg](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/35-tcpports.png)
 
 5. Klicka på **Nästa**.
-6. På hello **åtgärd** behåller **Tillåt hello anslutning** markerad och klicka sedan på **nästa**.
-7. På hello **profil** , acceptera hello standardinställningar, och klickar sedan på **nästa**.
-8. På hello **namn** anger du ett namn för regeln (exempelvis **Azure LB avsökning**) i hello **namn** textrutan och klicka sedan på **Slutför**.
+6. På den **åtgärd** behåller **tillåter anslutningen** markerad och klicka sedan på **nästa**.
+7. På den **profil** , accepterar du standardinställningarna och klicka sedan på **nästa**.
+8. På den **namn** anger du ett namn för regeln (exempelvis **Azure LB avsökning**) i den **namn** textrutan och klicka sedan på **Slutför**.
 
-Upprepa dessa steg på hello andra SQL Server-VM.
+Upprepa dessa steg på den andra SQL Server-VM.
 
 ## <a name="next-steps"></a>Nästa steg
 

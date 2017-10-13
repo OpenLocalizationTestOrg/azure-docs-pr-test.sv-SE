@@ -1,6 +1,6 @@
 ---
 title: "Självstudier: Azure Active Directory-integrering med Clever | Microsoft Docs"
-description: "Lär dig hur tooconfigure enkel inloggning mellan Azure Active Directory och Clever."
+description: "Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Clever."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,118 +14,118 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 24430e1e6c750efa5787561aa151201b1fe7d428
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 84082ff567e37d7fff80be9e089c67cfab911861
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clever"></a>Självstudier: Azure Active Directory-integrering med Clever
 
-I kursen får du lära dig hur toointegrate Clever med Azure Active Directory (AD Azure).
+I kursen får lära du att integrera Clever med Azure Active Directory (AD Azure).
 
-Integrera Clever med Azure AD ger dig hello följande fördelar:
+Integrera Clever med Azure AD ger dig följande fördelar:
 
-- Du kan styra i Azure AD som har åtkomst till tooClever.
-- Du kan låta dina användare tooautomatically get inloggade tooClever (Single Sign-On) med sina Azure AD-konton.
-- Du kan hantera dina konton i en central plats - hello Azure-portalen.
+- Du kan styra i Azure AD som har åtkomst till Clever.
+- Du kan aktivera användarna att automatiskt hämta loggat in på Clever (Single Sign-On) med sina Azure AD-konton.
+- Du kan hantera dina konton i en central plats - Azure-portalen.
 
-Om du vill tooknow mer information om integrering av SaaS-app med Azure AD, se [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Om du vill veta mer information om integrering av SaaS-app med Azure AD finns [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Krav
 
-tooconfigure Azure AD-integrering med Clever, behöver du hello följande objekt:
+För att konfigurera Azure AD-integrering med Clever, behöver du följande:
 
 - En Azure AD-prenumeration
 - En smarta enkel inloggning aktiverad prenumeration
 
 > [!NOTE]
-> tootest hello stegen i den här självstudiekursen, rekommenderas inte med hjälp av en produktionsmiljö.
+> Om du vill testa stegen i den här kursen rekommenderar vi inte med hjälp av en produktionsmiljö.
 
-tootest hello steg i den här självstudiekursen, bör du följa dessa rekommendationer:
+Om du vill testa stegen i den här självstudiekursen, bör du följa dessa rekommendationer:
 
 - Använd inte i produktionsmiljön, om det är nödvändigt.
 - Om du inte har en utvärderingsversion Azure AD-miljö kan du [hämta en utvärderingsversion för en månad](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Scenariobeskrivning
-I kursen får testa du Azure AD enkel inloggning i en testmiljö. hello-scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
+I kursen får testa du Azure AD enkel inloggning i en testmiljö. Det scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
 
-1. Att lägga till Clever från hello-galleriet
+1. Att lägga till Clever från galleriet
 2. Konfigurera och testa Azure AD enkel inloggning
 
-## <a name="adding-clever-from-hello-gallery"></a>Att lägga till Clever från hello-galleriet
-tooconfigure hello integrering av Clever i Azure AD, behöver du tooadd Clever hello galleriet tooyour listan över hanterade SaaS-appar.
+## <a name="adding-clever-from-the-gallery"></a>Att lägga till Clever från galleriet
+Du måste lägga till Clever från galleriet i listan över hanterade SaaS-appar för att konfigurera integrering av Clever i Azure AD.
 
-**tooadd Clever från galleriet hello utför hello följande steg:**
+**Utför följande steg för att lägga till Clever från galleriet:**
 
-1. I hello  **[Azure-portalen](https://portal.azure.com)**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon. 
+1. I den  **[Azure-portalen](https://portal.azure.com)**, klicka på den vänstra navigeringspanelen **Azure Active Directory** ikon. 
 
-    ![hello Azure Active Directory-knappen][1]
+    ![Azure Active Directory-knappen][1]
 
-2. Navigera för**företagsprogram**. Gå sedan för**alla program**.
+2. Gå till **företagsprogram**. Gå till **alla program**.
 
-    ![hello Enterprise program bladet][2]
+    ![Bladet Enterprise program][2]
     
-3. tooadd nya program, klickar du på **nytt program** hello längst upp i dialogrutan.
+3. Om du vill lägga till nya programmet, klickar du på **nytt program** knappen överst i dialogrutan.
 
-    ![hello-knappen för nytt program][3]
+    ![Knappen Nytt program][3]
 
-4. Skriv i sökrutan hello **Clever**väljer **Clever** resultatet-panelen klickar **Lägg till** knappen tooadd hello program.
+4. I sökrutan skriver **Clever**väljer **Clever** resultatet-panelen klickar **Lägg till** för att lägga till programmet.
 
-    ![Smarta i hello resultatlistan](./media/active-directory-saas-clever-tutorial/tutorial_clever_addfromgallery.png)
+    ![Smarta i resultatlistan](./media/active-directory-saas-clever-tutorial/tutorial_clever_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa Azure AD enkel inloggning
 
 I det här avsnittet kan du konfigurera och testa Azure AD enkel inloggning med Clever baserat på en testanvändare som kallas ”Britta Simon”.
 
-För enkel inloggning toowork måste Azure AD tooknow vilka hello motsvarighet användaren i Clever är tooa i Azure AD. Med andra ord måste en länk mellan en Azure AD-användare och hello relaterade användare i Clever toobe upprättas.
+Azure AD måste du känna till användaren i Clever motsvarighet till en användare i Azure AD för enkel inloggning ska fungera. Med andra ord måste en länk förhållandet mellan en Azure AD-användare och relaterade användaren i Clever upprättas.
 
-I Clever, tilldela hello värdet för hello **användarnamn** i Azure AD som hello värde för hello **användarnamn** tooestablish hello länken relationen.
+I Clever, tilldela värdet för den **användarnamn** i Azure AD som värde för den **användarnamn** etablera länken relationen.
 
-tooconfigure och testa Azure AD enkel inloggning med Clever, behöver du toocomplete hello följande byggblock:
+Om du vill konfigurera och testa Azure AD enkel inloggning med Clever, måste du utföra följande byggblock:
 
-1. **[Konfigurera Azure AD enkel inloggning](#configure-azure-ad-single-sign-on)**  -tooenable användare-toouse den här funktionen.
-2. **[Skapa en Azure AD-testanvändare](#create-an-azure-ad-test-user)**  -tootest Azure AD enkel inloggning med Britta Simon.
-3. **[Skapa en smarta testanvändare](#create-a-clever-test-user)**  -toohave en motsvarighet för Britta Simon i Clever som är länkade toohello Azure AD-representation av användaren.
-4. **[Tilldela hello Azure AD-testanvändare](#assign-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD enkel inloggning.
-5. **[Testa enkel inloggning](#test-single-sign-on)**  -tooverify hello om konfigurationen fungerar.
+1. **[Konfigurera Azure AD enkel inloggning](#configure-azure-ad-single-sign-on)**  - om du vill att användarna kan använda den här funktionen.
+2. **[Skapa en Azure AD-testanvändare](#create-an-azure-ad-test-user)**  - om du vill testa Azure AD enkel inloggning med Britta Simon.
+3. **[Skapa en smarta testanvändare](#create-a-clever-test-user)**  – du har en motsvarighet för Britta Simon i Clever som är kopplad till Azure AD-representation av användaren.
+4. **[Tilldela Azure AD-testanvändare](#assign-the-azure-ad-test-user)**  - om du vill aktivera Britta Simon att använda Azure AD enkel inloggning.
+5. **[Testa enkel inloggning](#test-single-sign-on)**  - om du vill kontrollera om konfigurationen fungerar.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurera Azure AD enkel inloggning
 
-I det här avsnittet Aktivera Azure AD enkel inloggning i hello Azure-portalen och konfigurera enkel inloggning i smarta programmet.
+I det här avsnittet Aktivera Azure AD enkel inloggning i Azure-portalen och konfigurera enkel inloggning i smarta programmet.
 
-**Utför följande steg hello tooconfigure Azure AD enkel inloggning med Clever:**
+**Utför följande steg för att konfigurera Azure AD enkel inloggning med Clever:**
 
-1. I hello Azure-portalen på hello **Clever** integreringssidan för programmet, klickar du på **enkel inloggning**.
+1. I Azure-portalen på den **Clever** integreringssidan för programmet, klickar du på **enkel inloggning**.
 
     ![Konfigurera enkel inloggning länk][4]
 
-2. På hello **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** tooenable enkel inloggning.
+2. På den **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** att aktivera enkel inloggning.
  
     ![Enkel inloggning dialogrutan](./media/active-directory-saas-clever-tutorial/tutorial_clever_samlbase.png)
 
-3. På hello **smarta domän och URL: er** avsnittet, utföra hello följande steg:
+3. På den **smarta domän och URL: er** avsnittet, utför följande steg:
 
     ![URL: er och smarta domän med enkel inloggning information](./media/active-directory-saas-clever-tutorial/tutorial_clever_url.png)
 
-    a. I hello **inloggnings-URL** textruta, ange ett URL-Adressen med hello följer mönstret:`https://clever.com/in/<companyname>`
+    a. I den **inloggnings-URL** textruta Skriv en URL med följande mönster:`https://clever.com/in/<companyname>`
 
-    b. I hello **identifierare** textruta, ange ett URL-Adressen med hello följer mönstret:`https://clever.com/<companyname>`
+    b. I den **identifierare** textruta Skriv en URL med följande mönster:`https://clever.com/<companyname>`
 
     > [!NOTE] 
-    > Dessa värden är inte verkliga. Uppdatera dessa värden med hello faktiska inloggnings-URL och identifierare. Kontakta [smarta klienten supportteamet](https://clever.com/about/contact/) tooget dessa värden.
+    > Dessa värden är inte verkliga. Uppdatera dessa värden med den faktiska inloggnings-URL och identifierare. Kontakta [smarta klienten supportteamet](https://clever.com/about/contact/) att hämta dessa värden.
 
-4. På hello **SAML-signeringscertifikat** klickar du på **XML-Metadata för** och spara sedan hello metadata på datorn.
+4. På den **SAML-signeringscertifikat** klickar du på **XML-Metadata för** och spara sedan metadatafilen på datorn.
 
-    ![länk för hämtning av hello-certifikat](./media/active-directory-saas-clever-tutorial/tutorial_clever_certificate.png)
+    ![Länken hämta certifikatet](./media/active-directory-saas-clever-tutorial/tutorial_clever_certificate.png)
 
-5. hello smarta programmet förväntar hello SAML intyg i ett specifikt format, vilket kräver tooadd attributet mappningar tooyour **SAML-Token attribut** konfiguration.
+5. Smarta programmet förväntar SAML-intyg i ett specifikt format, vilket kräver att du kan lägga till attributmappningar till din **SAML-Token attribut** konfiguration.
 
-    hello följande skärmbild visar ett exempel för det här.
+    Följande skärmbild visar ett exempel för det här.
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-clever-tutorial/tutorial_clever_07.png) 
 
-6. I hello **användarattribut** avsnittet hello **enkel inloggning** dialogrutan Konfigurera SAML-token attribut som visas i hello bilden ovan och utföra hello följande steg:
+6. I den **användarattribut** avsnitt på den **enkel inloggning** dialogrutan Konfigurera attribut för SAML-token som visas i bilden ovan och utför följande steg:
     
     | Attributets namn  | Attributvärdet |
     | --------------- | -------------------- |    
@@ -133,17 +133,17 @@ I det här avsnittet Aktivera Azure AD enkel inloggning i hello Azure-portalen o
     | Förnamn  | User.givenName |
     | Efternamn  | User.surname |    
 
-    a. Klicka på **Lägg till attributet** tooopen hello **lägga till attributet** dialogrutan.
+    a. Klicka på **Lägg till attributet** att öppna den **lägga till attributet** dialogrutan.
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-clever-tutorial/tutorial_attribute_04.png)
     
     ![Konfigurera enkel inloggning](./media/active-directory-saas-clever-tutorial/tutorial_attribute_05.png)
     
-    b. I hello **namn** textruta hello attributnamn visas för den raden.
+    b. I den **namn** textruta ange attributets namn visas för den raden.
 
-    c. Från hello **värdet** listan attributvärde för typ hello visas för den raden.
+    c. Från den **värdet** listan, ange det attributvärde som visas för den raden.
 
-    d. Lämna hello **Namespace** textruta tomt.
+    d. Lämna den **Namespace** textruta tomt.
     
     d. Klicka på **OK**.     
 
@@ -151,117 +151,117 @@ I det här avsnittet Aktivera Azure AD enkel inloggning i hello Azure-portalen o
 
     ![Konfigurera enkel inloggning spara](./media/active-directory-saas-clever-tutorial/tutorial_general_400.png)
 
-8. toogenerate hello **Metadata** url, utföra hello följande steg:
+8. Att generera den **Metadata** url, utför följande steg:
 
     a. Klicka på **App registreringar**.
     
     ![Konfigurera enkel inloggning](./media/active-directory-saas-clever-tutorial/tutorial_clever_appregistrations.png)
    
-    b. Klicka på **slutpunkter** tooopen **slutpunkter** dialogrutan.  
+    b. Klicka på **slutpunkter** att öppna **slutpunkter** dialogrutan.  
     
     ![Konfigurera enkel inloggning](./media/active-directory-saas-clever-tutorial/tutorial_clever_endpointicon.png)
 
-    c. Klicka på hello Kopiera knappen toocopy **FEDERATION METADATADOKUMENTET** url och klistra in den i anteckningar.
+    c. Klicka på kopieringsknappen för att kopiera **FEDERATION METADATADOKUMENTET** url och klistra in den i anteckningar.
     
     ![Konfigurera enkel inloggning](./media/active-directory-saas-clever-tutorial/tutorial_clever_endpoint.png)
      
-    d. Gå nu toohello egenskapssida **Clever** och kopiera hello **program-Id** med **kopiera** knappen och klistra in den i anteckningar.
+    d. Gå till egenskapssidan för **Clever** och kopiera den **program-Id** med **kopiera** knappen och klistra in den i anteckningar.
  
     ![Konfigurera enkel inloggning](./media/active-directory-saas-clever-tutorial/tutorial_clever_appid.png)
 
-    e. Generera hello **URL för tjänstmetadata** med hello följande mönster:`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`   
+    e. Generera den **URL för tjänstmetadata** med hjälp av följande mönster:`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`   
 
-9. Logga in tooyour smarta företagets webbplats som en administratör i en annan webbläsarfönster.
+9. I en annan webbläsarfönster loggar du in på webbplatsen smarta företag som administratör.
 
-10. Klicka i verktygsfältet hello **Instant inloggningen**.
+10. I verktygsfältet klickar du på **Instant inloggningen**.
 
     ![Direkt inloggning](./media/active-directory-saas-clever-tutorial/ic798984.png "Instant inloggning")
 
-11. På hello **Instant inloggningen** utför hello följande steg:
+11. På den **Instant inloggningen** utför följande steg:
       
       ![Direkt inloggning](./media/active-directory-saas-clever-tutorial/ic798985.png "Instant inloggning")
       
-      a. Typen hello **Inloggningswebbadressen**.
+      a. Typ av **Inloggningswebbadressen**.
       
       >[!NOTE]
-      >Hej **Inloggningswebbadressen** är ett anpassat värde. Kontakta [smarta klienten supportteamet](https://clever.com/about/contact/) tooget det här värdet.
+      >Den **Inloggningswebbadressen** är ett anpassat värde. Kontakta [smarta klienten supportteamet](https://clever.com/about/contact/) att hämta det här värdet.
       
       b. Som **identitetssystem**väljer **ADFS**.
 
-      c. Typen hello **URL för tjänstmetadata** i hello **URL för tjänstmetadata** textruta.
+      c. Typ av **Metadata-URL** i den **URL för tjänstmetadata** textruta.
       
       d. Klicka på **Spara**.
 
 > [!TIP]
-> Du kan nu läsa en kortare version av dessa anvisningar i hello [Azure-portalen](https://portal.azure.com), medan du ställer in hello appen!  När du lägger till den här appen från hello **Active Directory > företagsprogram** avsnittet, klicka bara på hello **enkel inloggning** flik och åtkomst hello inbäddade dokumentationen via hello  **Konfigurationen** avsnittet längst ned hello. Du kan läsa mer om hello inbäddade dokumentationen funktionen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Du kan nu läsa en kortare version av instruktionerna i den [Azure-portalen](https://portal.azure.com), medan du installerar appen!  När du lägger till den här appen från den **Active Directory > företagsprogram** avsnittet, klickar du på den **enkel inloggning** fliken och få åtkomst till den inbäddade dokumentationen via den **Configuration** avsnittet längst ned. Du kan läsa mer om funktionen inbäddade dokumentationen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Skapa en testanvändare i Azure AD
 
-hello syftet med det här avsnittet är toocreate en testanvändare i hello Azure-portalen kallas Britta Simon.
+Syftet med det här avsnittet är att skapa en testanvändare i Azure-portalen kallas Britta Simon.
 
    ![Skapa en testanvändare i Azure AD][100]
 
-**toocreate en testanvändare i Azure AD kan utföra hello följande steg:**
+**Utför följande steg för att skapa en testanvändare i Azure AD:**
 
-1. Klicka på hello i hello Azure-portalen hello vänster **Azure Active Directory** knappen.
+1. I Azure-portalen i den vänstra rutan klickar du på den **Azure Active Directory** knappen.
 
-    ![hello Azure Active Directory-knappen](./media/active-directory-saas-clever-tutorial/create_aaduser_01.png)
+    ![Azure Active Directory-knappen](./media/active-directory-saas-clever-tutorial/create_aaduser_01.png)
 
-2. toodisplay hello lista över användare, gå för**användare och grupper**, och klicka sedan på **alla användare**.
+2. Om du vill visa en lista över användare, gå till **användare och grupper**, och klicka sedan på **alla användare**.
 
-    ![Hej ”användare och grupper” och ”alla användare” länkar](./media/active-directory-saas-clever-tutorial/create_aaduser_02.png)
+    ![”Användare och grupper” och ”alla användare” länkar](./media/active-directory-saas-clever-tutorial/create_aaduser_02.png)
 
-3. tooopen hello **användare** dialogrutan klickar du på **Lägg till** hello överst i hello **alla användare** dialogrutan.
+3. Öppna den **användare** dialogrutan klickar du på **Lägg till** överst i den **alla användare** dialogrutan.
 
-    ![hello webbinställningar](./media/active-directory-saas-clever-tutorial/create_aaduser_03.png)
+    ![Knappen Lägg till](./media/active-directory-saas-clever-tutorial/create_aaduser_03.png)
 
-4. I hello **användaren** dialogrutan utför hello följande steg:
+4. I den **användaren** dialogrutan utför följande steg:
 
-    ![hello användardialogrutan](./media/active-directory-saas-clever-tutorial/create_aaduser_04.png)
+    ![Dialogrutan användare](./media/active-directory-saas-clever-tutorial/create_aaduser_04.png)
 
-    a. I hello **namn** skriver **BrittaSimon**.
+    a. I den **namn** skriver **BrittaSimon**.
 
-    b. I hello **användarnamn** rutan typen hello användarens e-postadress Britta Simon.
+    b. I den **användarnamn** Skriv användarens Britta Simon e-postadress.
 
-    c. Välj hello **visa lösenordet** kryssrutan och sedan skriva ned hello-värde som visas i hello **lösenord** rutan.
+    c. Välj den **visa lösenordet** kryssrutan och sedan skriva ned det värde som visas i den **lösenord** rutan.
 
     d. Klicka på **Skapa**.
  
 ### <a name="create-a-clever-test-user"></a>Skapa en smarta testanvändare
 
-tooenable Azure AD-användare toolog i tooClever, måste de etableras i Clever.
+Om du vill aktivera Azure AD-användare kan logga in på Clever etableras de i Clever.
 
-Arbeta med vid Clever, [smarta klienten supportteamet](https://clever.com/about/contact/) att lägga till hello användare i hello smarta plattform. Användare måste skapas och aktiveras innan du använder enkel inloggning. 
+Arbeta med vid Clever, [smarta klienten supportteamet](https://clever.com/about/contact/) att lägga till användare i smarta plattformen. Användare måste skapas och aktiveras innan du använder enkel inloggning. 
 
 >[!NOTE]
->Du kan använda något annat smarta användarens konto skapas verktyg eller API: er som tillhandahålls av smarta tooprovision användarkonton i Azure AD.
+>Du kan använda något annat smarta användarens konto skapas verktyg eller API: er som tillhandahålls av Clever att etablera Azure AD-användarkonton.
 
-### <a name="assign-hello-azure-ad-test-user"></a>Tilldela användare hello Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändare
 
-I det här avsnittet kan aktivera du Britta Simon toouse Azure enkel inloggning genom att bevilja åtkomst tooClever.
+I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inloggning genom att bevilja åtkomst till Clever.
 
-![Tilldela hello användarroll][200] 
+![Tilldela rollen][200] 
 
-**tooassign Britta Simon tooClever utför hello följande steg:**
+**Om du vill tilldela Clever Britta Simon utför du följande steg:**
 
-1. I hello Azure-portalen, öppna hello program visa och navigera toohello directory vy och gå för**företagsprogram** Klicka **alla program**.
+1. Öppna vyn program i Azure-portalen och gå till vyn directory och gå till **företagsprogram** Klicka **alla program**.
 
     ![Tilldela användare][201] 
 
-2. Välj i listan med program hello **Clever**.
+2. Välj i listan med program **Clever**.
 
-    ![Hej Clever länken i listan med program hello](./media/active-directory-saas-clever-tutorial/tutorial_clever_app.png)  
+    ![Clever länken i listan med program](./media/active-directory-saas-clever-tutorial/tutorial_clever_app.png)  
 
-3. Hello-menyn hello vänster **användare och grupper**.
+3. Klicka på menyn till vänster **användare och grupper**.
 
-    ![Hej ”användare och grupper” länk][202]
+    ![Länken ”användare och grupper”][202]
 
 4. Klicka på **Lägg till** knappen. Välj sedan **användare och grupper** på **Lägg uppdrag** dialogrutan.
 
-    ![hello Lägg uppdrag fönstret][203]
+    ![Fönstret Lägg till tilldelning][203]
 
-5. På **användare och grupper** markerar **Britta Simon** i hello användarlistan.
+5. På **användare och grupper** markerar **Britta Simon** på listan användare.
 
 6. Klicka på **Välj** knappen på **användare och grupper** dialogrutan.
 
@@ -269,14 +269,14 @@ I det här avsnittet kan aktivera du Britta Simon toouse Azure enkel inloggning 
     
 ### <a name="test-single-sign-on"></a>Testa enkel inloggning
 
-I det här avsnittet kan testa du Azure AD enkel inloggning konfigurationen med hello åtkomstpanelen.
+I det här avsnittet kan du testa Azure AD enkel inloggning konfigurationen med hjälp av panelen åtkomst.
 
-När du klickar på hello smarta panelen i Hej åtkomstpanelen, du får automatiskt inloggade tooyour smarta programmet.
-Läs mer om åtkomstpanelen [introduktion toohello åtkomstpanelen](active-directory-saas-access-panel-introduction.md). 
+När du klickar på panelen smarta åtkomst på panelen du ska hämta automatiskt loggat in på smarta programmet.
+Läs mer om åtkomstpanelen [introduktion till åtkomstpanelen](active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-* [Lista över självstudier om hur tooIntegrate SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Vad är programåtkomst och enkel inloggning med Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->

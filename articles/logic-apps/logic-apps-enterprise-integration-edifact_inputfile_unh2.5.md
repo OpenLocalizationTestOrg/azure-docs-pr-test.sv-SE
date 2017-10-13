@@ -1,5 +1,5 @@
 ---
-title: "aaaLogic appar B2B edifact avkoda lösa UNH2.5 - Azure Logic Apps | Microsoft Docs"
+title: "Logic Apps B2B edifact avkoda lösa UNH2.5 - Azure Logic Apps | Microsoft Docs"
 description: "Azure Logic Apps B2B edifact avkoda lösa UNH2.5"
 services: logic-apps
 documentationcenter: .net,nodejs,java
@@ -14,40 +14,40 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 6d85242d0f828fa52cdc9689938f3ba1e51b1183
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 62ad8183cc6e9f56255b2729a04ee7710d00a21a
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="how-toohandle-edifact-documents-having-unh25-segment"></a>Hur toohandle EDIFACT-dokument med UNH2.5 segment
-Om UNH2.5 finns i hello EDIFACT dokumentet används för schemat sökning. 
+# <a name="how-to-handle-edifact-documents-having-unh25-segment"></a>Hantera EDIFACT-dokument med UNH2.5 segment
+Om UNH2.5 finns i dokumentet EDIFACT används för schemat sökning. 
 
-Exempel: hello UNH fältet är **EAN008** i hello EDIFACT-meddelande  
+Exempel: Fältet UNH är **EAN008** i EDIFACT-meddelande  
 UNH + SSDD1 + ORDER: D: 03B: FN:**EAN008**'  
 
-Steg toofollow toohandle hello-meddelande 
-1. Uppdatera hello schema
-2. Kontrollera inställningarna för hello-avtal  
+Åtgärder för att hantera meddelandet 
+1. Uppdatera schemat
+2. Kontrollera inställningarna för avtal  
 
-## <a name="update-hello-schema"></a>Uppdatera hello schema
-tooprocess hello-meddelande måste toodeploy ett schema med hello UNH2.5 rotnodens namn.  För ett exempel hello schemanamnet rot skulle vara **EFACT_D03B_ORDERS_EAN008**  
+## <a name="update-the-schema"></a>Uppdatera schemat
+Du behöver distribuera ett schema med UNH2.5 rotnodens namn för att bearbeta meddelandet.  För ett exempel är roten schemanamnet **EFACT_D03B_ORDERS_EAN008**  
 
-Du skulle ha en enskild schemat toodeploy för varje D03B_ORDERS med ett annat UNH2.5 segment.  
+För varje D03B_ORDERS med ett annat UNH2.5 segment, skulle du behöva distribuera en enskild schemat.  
 
-## <a name="add-schema-toohello-edifact-agreement"></a>Lägga till schemat toohello EDIFACT-avtal
+## <a name="add-schema-to-the-edifact-agreement"></a>Lägga till schemat i EDIFACT-avtal
 ### <a name="edifact-decode"></a>EDIFACT avkoda
-tooDecode Hej inkommande meddelande, konfigurera hello schemat i hello EDIFACT-avtal får inställningar
-1. Lägg till hello schemat toohello integrering konto    
-2. Konfigurera hello schemat i hello EDIFACT-avtal får inställningar. 
-3. Välj EDIFACT-avtal och klickar på **redigera som JSON**.  Lägg till UNH2.5 värde i hello Receive avtal **schemaReferences**
+Konfigurera schemat för att avkoda det inkommande meddelandet i EDIFACT avtalet tar emot inställningar
+1. Lägga till schemat integration-konto    
+2. Konfigurera schemat i EDIFACT avtal får inställningar. 
+3. Välj EDIFACT-avtal och klickar på **redigera som JSON**.  Lägg till UNH2.5 värde i avtalet får **schemaReferences**
 ![](./media/logic-apps-enterprise-integration-edifact_inputfile_unh2.5/image1.png)
 
 ### <a name="edifact-encode"></a>EDIFACT koda
-tooEncode Hej inkommande meddelande, konfigurera hello schemat i hello EDIFACT-avtal skicka inställningar
-1. Lägg till hello schemat toohello integrering konto    
-2. Konfigurera hello schemat i hello EDIFACT-avtal skicka inställningar. 
-3. Välj EDIFACT-avtal och klickar på **redigera som JSON**.  Lägg till UNH2.5 värde i hello skicka avtal **schemaReferences**
+Konfigurera schemat för att koda det inkommande meddelandet i EDIFACT-avtal skicka inställningar
+1. Lägga till schemat integration-konto    
+2. Konfigurera schemat i EDIFACT-avtal skicka inställningar. 
+3. Välj EDIFACT-avtal och klickar på **redigera som JSON**.  Lägg till UNH2.5 värde i avtalet skicka **schemaReferences**
 ![](./media/logic-apps-enterprise-integration-edifact_inputfile_unh2.5/image2.png)
 
 ## <a name="next-steps"></a>Nästa steg

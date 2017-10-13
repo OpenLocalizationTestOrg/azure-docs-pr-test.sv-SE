@@ -1,6 +1,6 @@
 ---
-title: "aaaiOS Push-meddelanden med Notification Hubs för Xamarin-appar | Microsoft Docs"
-description: "I kursen får du lära dig hur toouse Azure Notification Hubs toosend push-meddelanden tooa Xamarin iOS-program."
+title: "iOS-pushmeddelanden med Notification Hubs för Xamarin-appar | Microsoft Docs"
+description: "I den här självstudiekursen beskrivs hur du använder Azure Notification Hubs för att skicka push-meddelanden till en Xamarin-iOS-app."
 services: notification-hubs
 keywords: "push-meddelanden för ios, push-meddelanden, push-aviseringar, push-avisering"
 documentationcenter: xamarin
@@ -15,28 +15,28 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 06/29/2016
 ms.author: yuaxu
-ms.openlocfilehash: 8db60338047dd53074b4d3d4bb127aa6d9f13a25
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 72a81fa0deb34ace77b8fb9b1a4e6b24ee164b35
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="ios-push-notifications-with-notification-hubs-for-xamarin-apps"></a>iOS-pushmeddelanden med Notification Hubs för Xamarin-appar
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
 ## <a name="overview"></a>Översikt
 > [!IMPORTANT]
-> toocomplete den här självstudiekursen kommer du måste ha ett aktivt Azure-konto. Om du inte har något konto kan skapa du ett kostnadsfritt utvärderingskonto på bara några minuter. Mer information om den [kostnadsfria utvärderingsversionen av Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fpartner-xamarin-notification-hubs-ios-get-started).
+> Du måste ha ett aktivt Azure-konto för att slutföra den här kursen. Om du inte har något konto kan skapa du ett kostnadsfritt utvärderingskonto på bara några minuter. Mer information om den kostnadsfria utvärderingsversionen av Azure finns [Kostnadsfri utvärderingsversion av Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fpartner-xamarin-notification-hubs-ios-get-started).
 > 
 > 
 
-Den här kursen visar hur toouse Azure Notification Hubs toosend push-meddelanden tooan iOS-program.
-Du skapar en tom Xamarin.iOS-app som tar emot push-meddelanden med hjälp av hello [Apple Push Notification Service (APNs)](https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html). När du är klar, kommer du att kunna toouse din notification hub toobroadcast push-meddelanden tooall hello enheter som kör appen. hello färdiga koden finns i hello [NotificationHubs app] [ GitHub] exempel.
+I den här självstudiekursen beskrivs hur du använder Azure Notification Hubs för att skicka push-meddelanden till en iOS-app.
+Du skapar en tom Xamarin.iOS-app som tar emot push-meddelanden med hjälp av [Apple Push Notification Service (APNS)](https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html). När du är klar kan du använda meddelandehubben för att sända push-meddelanden till alla enheter som kör appen. Den färdiga koden finns tillgänglig i exemplet [NotificationHubs-app][GitHub].
 
-Den här kursen visar hello enkla push meddelandescenario för sändning med Notification Hubs.
+I den här självstudiekursen visas ett enkelt scenario för sändning av push-meddelanden med Notification Hubs.
 
 ## <a name="prerequisites"></a>Krav
-Den här kursen kräver hello följande:
+För den här kursen behöver du följande:
 
 * [Xcode 6.0][Install Xcode]
 * En enhet som är kompatibel med iOS 7.0 (eller senare version)
@@ -44,7 +44,7 @@ Den här kursen kräver hello följande:
 * [Xamarin Studio]
   
   > [!NOTE]
-  > På grund av konfigurationskrav för iOS push-meddelanden, måste du distribuera och testa hello exempelprogrammet på en fysisk iOS-enhet (iPhone eller iPad) i stället för i simulatorn hello.
+  > På grund av konfigurationskrav för iOS-pushmeddelanden måste du distribuera och testa exempelappen på en fysisk iOS-enhet (iPhone eller iPad) i stället för i simulatorn.
   > 
   > 
 
@@ -53,7 +53,7 @@ Du måste slutföra den här självstudiekursen innan du påbörjar någon annan
 [!INCLUDE [Notification Hubs Enable Apple Push Notifications](../../includes/notification-hubs-enable-apple-push-notifications.md)]
 
 ## <a name="configure-your-notification-hub"></a>Konfigurera meddelandehubben
-Det här avsnittet vägleder dig genom att skapa en ny meddelandehubb och konfigurerar autentisering med APNS med hello **.p12** push-certifikat som du skapade. Om du vill toouse en meddelandehubb som du redan har skapat kan du hoppa över toostep 5.
+I det här avsnittet går vi igenom hur du skapar en ny meddelandehubb och konfigurerar autentisering med APNS med **.p12**-pushcertifikatet som du skapade. Om du vill använda en meddelandehubb som du redan har skapat går du vidare till steg 5.
 
 [!INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
 
@@ -61,35 +61,35 @@ Det här avsnittet vägleder dig genom att skapa en ny meddelandehubb och konfig
 
 <li>
 
-<p>Vi vill tooconfigure hello APN-anslutningen i hello Azure-portalen, öppna inställningarna för Meddelandehubben, hubs och klicka på <b>Notification Services</b>, och klicka sedan på hello <b>Apple (APNS)</b> objekt i listan om hello. När du har gjort, klicka på <b>överför certifikat</b> och välj hello <b>.p12</b> certifikat som du exporterade tidigare, samt hello lösenordet för hello certifikatet.</p>
+<p>Eftersom du vill konfigurera APN-anslutningen i Azure Portal öppnar du inställningarna för Notification Hubs och klickar på <b>Notification Services</b> och sedan på objektet <b>Apple (APNS)</b> i listan. När du har gjort det klickar du på <b>Ladda upp certifikat</b> och väljer <b>.p12</b>-certifikatet som du exporterade tidigare, samt lösenordet för certifikatet.</p>
 
-<p>Se till att tooselect <b>Sandbox</b> läge eftersom du kommer att skicka push-meddelanden i en utvecklingsmiljö. Använd bara hello <b>produktion</b> inställningen om du vill toosend push-meddelanden toousers som redan har köpt din app hello butiken.</p>
+<p>Var noga med att välja <b>Begränsat läge</b> eftersom du kommer att skicka push-meddelanden i en utvecklingsmiljö. Använd bara inställningen <b>Produktion</b> om du vill skicka push-meddelanden till användare som redan har köpt din app i butiken.</p>
 </li>
 </ol>
 &emsp;&emsp;![](./media/notification-hubs-ios-get-started/notification-hubs-apns.png)
 
 &emsp;&emsp;![](./media/notification-hubs-ios-get-started/notification-hubs-sandbox.png)
 
-Din meddelandehubb är nu konfigurerad toowork med APNS och du har hello anslutning strängar tooregister din app och skicka push-meddelanden.
+Din meddelandehubb har nu konfigurerats för att fungera med APNS och du har anslutningssträngar för att registrera din app och skicka push-meddelanden.
 
-## <a name="connect-your-app-toohello-notification-hub"></a>Ansluta din app toohello notification hub
+## <a name="connect-your-app-to-the-notification-hub"></a>Anslut appen till meddelandehubben
 #### <a name="create-a-new-project"></a>Skapa ett nytt projekt
-1. Skapa ett nytt iOS-projekt i Xamarin Studio och välj hello **enhetligt API** > **program enkel vy** mall.
+1. Skapa ett nytt iOS-projekt i Xamarin Studio och välj mallen **Enhetligt API** > **App enkel vy**.
    
      ![Xamarin Studio – Välj apptyp][31]
-2. Lägg till en referens toohello Azure Messaging komponent. I hello vyn lösning högerklickar du på hello **komponenter** för ditt projekt och välj **få fler komponenter**. Sök efter hello **Azure Messaging** komponenten och Lägg till hello komponenten tooyour projekt.
-3. I **AppDelegate.cs**, lägga till hello följande med instruktionen:
+2. Lägg till en referens i Azure Messaging-komponenten. I vyn Lösning högerklickar du på mappen **Komponenter** för ditt projekt och väljer **Få fler komponenter**. Sök efter **Azure Messaging**-komponenten och lägg till den i projektet.
+3. Lägg till följande using-instruktion i **AppDelegate.cs**:
    
         using WindowsAzure.Messaging;
 4. Deklarera en instans av **SBNotificationHub**:
    
         private SBNotificationHub Hub { get; set; }
-5. Skapa en **Constants.cs** klass med hello följande variabler:
+5. Skapa en **Constants.cs**-klass med följande variabler:
    
         // Azure app-specific connection string and hub path
         public const string ConnectionString = "<Azure connection string>";
         public const string NotificationHubPath = "<Azure hub path>";
-6. I **AppDelegate.cs**, uppdatera **FinishedLaunching()** toomatch hello följande:
+6. I **AppDelegate.cs** uppdaterar du **FinishedLaunching()** så resultatet blir som följer:
    
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
@@ -107,7 +107,7 @@ Din meddelandehubb är nu konfigurerad toowork med APNS och du har hello anslutn
    
             return true;
         }
-7. Åsidosätt hello **RegisteredForRemoteNotifications()** metod i **AppDelegate.cs**:
+7. Åsidosätt metoden **RegisteredForRemoteNotifications()** i **AppDelegate.cs**:
    
         public override void RegisteredForRemoteNotifications(UIApplication application, NSData deviceToken)
         {
@@ -127,36 +127,36 @@ Din meddelandehubb är nu konfigurerad toowork med APNS och du har hello anslutn
                 });
             });
         }
-8. Åsidosätt hello **ReceivedRemoteNotification()** metod i **AppDelegate.cs**:
+8. Åsidosätt metoden **ReceivedRemoteNotification()** i **AppDelegate.cs**:
    
         public override void ReceivedRemoteNotification(UIApplication application, NSDictionary userInfo)
         {
             ProcessNotification(userInfo, false);
         }
-9. Skapa följande hello **ProcessNotification()** metod i **AppDelegate.cs**:
+9. Skapa följande **ProcessNotification()**-metod i **AppDelegate.cs**:
    
         void ProcessNotification(NSDictionary options, bool fromFinishedLaunching)
         {
-            // Check toosee if hello dictionary has hello aps key.  This is hello notification payload you would have sent
+            // Check to see if the dictionary has the aps key.  This is the notification payload you would have sent
             if (null != options && options.ContainsKey(new NSString("aps")))
             {
-                //Get hello aps dictionary
+                //Get the aps dictionary
                 NSDictionary aps = options.ObjectForKey(new NSString("aps")) as NSDictionary;
    
                 string alert = string.Empty;
    
-                //Extract hello alert text
-                // NOTE: If you're using hello simple alert by just specifying
+                //Extract the alert text
+                // NOTE: If you're using the simple alert by just specifying
                 // "  aps:{alert:"alert msg here"}  ", this will work fine.
                 // But if you're using a complex alert with Localization keys, etc.,
-                // your "alert" object from hello aps dictionary will be another NSDictionary.
-                // Basically hello JSON gets dumped right into a NSDictionary,
+                // your "alert" object from the aps dictionary will be another NSDictionary.
+                // Basically the JSON gets dumped right into a NSDictionary,
                 // so keep that in mind.
                 if (aps.ContainsKey(new NSString("alert")))
                     alert = (aps [new NSString("alert")] as NSString).ToString();
    
-                //If this came from hello ReceivedRemoteNotification while hello app was running,
-                // we of course need toomanually process things like hello sound, badge, and alert.
+                //If this came from the ReceivedRemoteNotification while the app was running,
+                // we of course need to manually process things like the sound, badge, and alert.
                 if (!fromFinishedLaunching)
                 {
                     //Manually show an alert
@@ -170,48 +170,48 @@ Din meddelandehubb är nu konfigurerad toowork med APNS och du har hello anslutn
         }
    
    > [!NOTE]
-   > Du kan välja toooverride **FailedToRegisterForRemoteNotifications()** toohandle situationer, till exempel någon nätverksanslutning. Detta är särskilt viktigt där hello användaren kan starta appen i offline-läge (t.ex. Flygplansläge) och du vill toohandle push-meddelanden scenarier specifika tooyour app.
+   > Du kan välja att åsidosätta **FailedToRegisterForRemoteNotifications()** för att hantera vissa situationer, till exempel om det inte finns någon nätverksanslutning. Detta är särskilt viktigt om användaren kan starta appen i offline-läge (t.ex. flygplansläge) och du vill hantera scenarier för push-meddelanden som är specifika för din app.
    > 
    > 
-10. Kör hello app på enheten.
+10. Kör appen på enheten.
 
 ## <a name="sending-push-notifications"></a>Skicka push-meddelanden
-Du kan testa att ta emot push-meddelanden i appen genom att skicka meddelanden i hello [Azure Portal] via hello **prova att skicka** funktionen hello **felsökning** verktygsuppsättningen, höger hello notification hub på sidan som visas i hello-skärmen nedan.
+Du kan testa att ta emot push-meddelanden i appen genom att skicka meddelanden i [Azure-portalen] via funktionen **Prova att skicka** i verktygsuppsättningen **Felsökning** till höger på sidan för meddelandehubben, så som visas på skärmen nedan.
 
 ![](./media/notification-hubs-ios-get-started/notification-hubs-test-send.png)
 
-Push-meddelanden skickas vanligtvis via en serverdelstjänst som Mobile Services eller ASP.NET med hjälp av ett kompatibelt bibliotek. Du kan också använda hello REST API direkt toosend push-meddelanden om ett bibliotek inte är tillgängligt i ditt scenario. 
+Push-meddelanden skickas vanligtvis via en serverdelstjänst som Mobile Services eller ASP.NET med hjälp av ett kompatibelt bibliotek. Du kan också använda REST-API:er direkt för att skicka push-meddelanden om ett bibliotek inte är tillgängligt i ditt scenario. 
 
-I den här självstudiekursen kommer vi enkelhet och hur du testar klientappen genom att skicka meddelanden med hello .NET SDK för meddelandehubbar i ett konsolprogram i stället för en serverdelstjänst. Vi rekommenderar hello [använda Notification Hubs toopush meddelanden toousers](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) självstudiekurs som hello nästa steg för att skicka meddelanden från en ASP.NET-serverdel. Hello följande metoder kan dock användas för att skicka meddelanden:
+I den här enkla självstudiekursen visas hur du testar klientappen genom att skicka meddelanden med .NET SDK för meddelandehubbar i en konsolapp i stället för med en serverdelstjänst. Vi rekommenderar att du går vidare med självstudiekursen [Använda Notification Hubs för att skicka push-meddelanden till användare](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) som nästa steg i att skicka meddelanden från en ASP.NET-serverdel. Följande åtgärder kan dock användas för att skicka meddelanden:
 
-* **REST-gränssnittet**: du kan använda push-meddelanden på alla backend-plattformar med hello [REST-gränssnittet](http://msdn.microsoft.com/library/windowsazure/dn223264.aspx).
-* **Microsoft Azure Notification Hubs .NET SDK**: hello Nuget Package Manager för Visual Studio, köra [Install-Package Microsoft.Azure.NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
-* **Node.js** : [hur toouse Notification Hubs från Node.js](notification-hubs-nodejs-push-notification-tutorial.md).
+* **REST-gränssnitt**: Du kan använda push-meddelanden på alla serverdelsplattformar med [REST-gränssnittet](http://msdn.microsoft.com/library/windowsazure/dn223264.aspx).
+* **Microsoft Azure Notification Hubs .NET SDK**: I pakethanteraren Nuget för Visual Studio kör du [Install-Package Microsoft.Azure.NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
+* **Node.js**: [Använda Notification Hubs från Node.js](notification-hubs-nodejs-push-notification-tutorial.md).
 
-**Mobile Apps**: ett exempel på hur toosend meddelanden från en serverdel för Azure Apptjänst Mobilappar som är integrerad med Notification Hubs finns [Lägg till push-meddelanden tooyour mobilappen](../app-service-mobile/app-service-mobile-ios-get-started-push.md).
+**Mobile Apps**: För ett exempel på hur man skickar meddelanden från en Azure App Service Mobile Apps-serverdel som är integrerad med Notification Hubs, kan du gå till [Lägg till push-meddelanden i din mobilapp](../app-service-mobile/app-service-mobile-ios-get-started-push.md).
 
-* **Java / PHP**: ett exempel på hur hello toosend push-meddelanden med hjälp av REST API: er, se ”hur toouse Notification Hubs från Java/PHP” ([Java](notification-hubs-java-push-notification-tutorial.md) | [PHP](notification-hubs-php-push-notification-tutorial.md)).
+* **Java/PHP**: Ett exempel på hur du skickar push-meddelanden med hjälp av REST-API:er finns i avsnittet Använda Notification Hubs från Java/PHP ([Java](notification-hubs-java-push-notification-tutorial.md) | [PHP](notification-hubs-php-push-notification-tutorial.md)).
 
 #### <a name="optional-send-push-notifications-from-a-net-console-app"></a>(Valfritt) Skicka push-meddelanden från en .NET-konsolapp
-I det här avsnittet skickar du meddelanden med en .NET-konsolapp. Hello enligt det här exemplet växlar vi tooa Windows-utvecklingsmiljö där Visual Studio som redan har installerats.
+I det här avsnittet skickar du meddelanden med en .NET-konsolapp. I det här exemplet växlar vi till en Windows-utvecklingsmiljö där Visual Studio redan har installerats.
 
 1. Skapa en ny Visual C#-konsolapp i Visual Studio:
    
        ![Visual Studio - Create a new console application][213]
 2. I Visual Studio klickar du på **Verktyg**, **NuGet Package Manager** och sedan på **Package Manager-konsolen**.
    
-    Hej pakethanterarkonsolen bör visas dockad toohello längst ned i Visual Studio-arbetsytan.
-3. Hello fönstret Package Manager-konsolen, ange hello **standardprojektet** tooyour nya konsolen projektet och sedan köra hello följande kommando i konsolfönstret hello:
+    Pakethanterarkonsolen bör visas dockad längst ned i Visual Studio-arbetsytan.
+3. I fönstret för pakethanterarkonsolen ställer du in **standardprojektet** till det nya projektet för konsolappen. Sedan kör du följande kommando i konsolfönstret:
    
         Install-Package Microsoft.Azure.NotificationHubs
    
-    Detta lägger till en referens toohello Azure Notification Hubs SDK med hjälp av hello <a href="http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/">Microsoft.Azure.Notification Hubs NuGet-paketet</a>.
+    Då läggs en referens till i Azure Notification Hubs SDK med hjälp av <a href="http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/">Microsoft.Azure.Notification Hubs-NuGet-paketet</a>.
    
     ![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-package-manager.png)
-4. Öppna hello `Program.cs` och Lägg till följande hello `using` instruktionen, se till att du kan använda Azure-klasser och funktioner i huvudklassen:
+4. Öppna `Program.cs`-filen och lägg till följande `using`-instruktion, vilket gör så att du kan använda Azure-klasser och -funktioner i huvudklassen:
    
         using Microsoft.Azure.NotificationHubs;
-5. I din `Program` klassen, Lägg till följande metod hello (Glöm inte tooreplace hello **anslutningssträngen** och **hubbnamn**):
+5. Lägg till följande metod i `Program`-klassen (glöm inte att ersätta **anslutningssträngen** och **hubbnamnet**):
    
         private static async void SendNotificationAsync()
         {
@@ -219,28 +219,28 @@ I det här avsnittet skickar du meddelanden med en .NET-konsolapp. Hello enligt 
             var alert = "{\"aps\":{\"alert\":\"Hello from .NET!\"}}";
             await hub.SendAppleNativeNotificationAsync(alert);
         }
-6. Lägg till följande rader i hello din `Main` metoden:
+6. Lägg till följande rader i `Main`-metoden:
    
          SendNotificationAsync();
          Console.ReadLine();
-7. Tryck på hello F5 viktiga toorun hello app. Inom några sekunder bör du se ett push-meddelande på enheten. Om du använder Wi-Fi eller ett mobilt nätverk, se till att du har en aktiv Internetanslutning på hello enhet.
+7. Kör appen genom att trycka på F5. Inom några sekunder bör du se ett push-meddelande på enheten. Oavsett om du använder Wi-Fi eller ett mobilt nätverk måste du ha en aktiv internetanslutning på enheten.
 
-Du hittar alla möjliga nyttolaster för hello i hello Apple [Push Notification Programmeringsguide för lokala och].
+Du hittar alla möjliga nyttolaster i Apples [programmeringsguide för lokala meddelanden och push-meddelanden].
 
 #### <a name="optional-send-notifications-from-a-mobile-service"></a>(Valfritt) Skicka meddelanden med en mobiltjänst
 I det här avsnittet skickar du push-meddelanden med en mobiltjänst via ett nodskript.
 
-Följ toosend ett meddelande med hjälp av en Mobiltjänst [komma igång med Mobile Services], och sedan:
+Följ [Komma igång med Mobile Services] för att skicka ett meddelande med en mobiltjänst. Gör sedan följande:
 
-1. Logga in toohello [klassiska Azure-portalen], och välj mobiltjänst.
-2. Välj hello **Scheduler** fliken hello längst upp.
+1. Logga in på den [Klassisk Azure-portal] och välj mobiltjänst.
+2. Välj fliken **Schemaläggaren** högst upp.
    
        ![Azure Classic Portal - Scheduler][215]
 3. Skapa ett nytt schemalagt jobb, infoga ett namn och välj **På begäran**.
    
        ![Azure Classic Portal - Create new job][216]
-4. Klicka på hello Jobbnamnet när hello jobb skapas. Klicka på hello **skriptet** fliken på hello översta raden.
-5. Infoga följande skript i schemaläggarfunktionen hello. Se till att tooreplace hello-platshållare med notification hub namn och hello anslutningssträngen för *DefaultFullSharedAccessSignature* som du fick tidigare. Klicka på **Spara**.
+4. Klicka på jobbnamnet när jobbet skapats. Klicka på fliken **Skript** i det översta fältet.
+5. Infoga följande skript i schemaläggarfunktionen. Ersätt platshållarna med namnet på din meddelandehubb och anslutningssträngen för *DefaultFullSharedAccessSignature* som du fick tidigare. Klicka på **Spara**.
    
         var azure = require('azure');
         var notificationHubService = azure.createNotificationHubService('<Hubname>', '<SAS Full access >');
@@ -258,10 +258,10 @@ Följ toosend ett meddelande med hjälp av en Mobiltjänst [komma igång med Mob
                 }
             }
         );
-6. Klicka på **kör en gång** på hello nedre fältet. Du bör få en avisering på enheten.
+6. Klicka på **Kör en gång** i det nedre fältet. Du bör få en avisering på enheten.
 
 ## <a name="next-steps"></a>Nästa steg
-I det här enkla exemplet skickade du push-meddelanden tooall iOS-enheter. I ordning tootarget specifika användare finns i självstudiekursen toohello [använda Notification Hubs toopush meddelanden toousers]. Om du vill att toosegment användarna efter intressegrupper, kan du läsa [använda Notification Hubs toosend senaste nytt]. Läs mer om hur toouse Meddelandehubbar i [riktlinjer om Notification Hubs] och i hello [Meddelandehubbar hur-toofor iOS].
+I det här enkla exemplet skickade du push-meddelanden till alla dina iOS-enheter. Mer information om hur du riktar in dig på specifika användare finns i självstudiekursen [Använda Notification Hubs för att skicka push-meddelanden till användare]. Om du vill dela in användarna efter intressegrupper läser du [Använda Notification Hubs för att skicka de senaste nyheterna]. Mer information om hur du använder Notification Hubs finns i [Riktlinjer för Notification Hubs] och i [Notification Hubs-instruktioner för iOS].
 
 <!-- Images. -->
 
@@ -282,21 +282,21 @@ I det här enkla exemplet skickade du push-meddelanden tooall iOS-enheter. I ord
 [My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Live SDK for Windows]: http://go.microsoft.com/fwlink/p/?LinkId=262253
 
-[komma igång med Mobile Services]: /develop/mobile/tutorials/get-started-xamarin-ios
-[klassiska Azure-portalen]: https://manage.windowsazure.com/
-[riktlinjer om Notification Hubs]: http://msdn.microsoft.com/library/jj927170.aspx
-[Meddelandehubbar hur-toofor iOS]: http://msdn.microsoft.com/library/jj927168.aspx
+[Komma igång med Mobile Services]: /develop/mobile/tutorials/get-started-xamarin-ios
+[Klassisk Azure-portal]: https://manage.windowsazure.com/
+[Riktlinjer för Notification Hubs]: http://msdn.microsoft.com/library/jj927170.aspx
+[Notification Hubs-instruktioner för iOS]: http://msdn.microsoft.com/library/jj927168.aspx
 [Install Xcode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
 [iOS Provisioning Portal]: http://go.microsoft.com/fwlink/p/?LinkId=272456
 
-[använda Notification Hubs toopush meddelanden toousers]: /manage/services/notification-hubs/notify-users-aspnet
-[använda Notification Hubs toosend senaste nytt]: /manage/services/notification-hubs/breaking-news-dotnet
+[Använda Notification Hubs för att skicka push-meddelanden till användare]: /manage/services/notification-hubs/notify-users-aspnet
+[Använda Notification Hubs för att skicka de senaste nyheterna]: /manage/services/notification-hubs/breaking-news-dotnet
 
-[Push Notification Programmeringsguide för lokala och]:https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/HandlingRemoteNotifications.html#//apple_ref/doc/uid/TP40008194-CH6-SW1
+[programmeringsguide för lokala meddelanden och push-meddelanden]:https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/HandlingRemoteNotifications.html#//apple_ref/doc/uid/TP40008194-CH6-SW1
 [Apple Push Notification Service]: http://go.microsoft.com/fwlink/p/?LinkId=272584
 
 [Azure Mobile Services Component]: http://components.xamarin.com/view/azure-mobile-services/
 [GitHub]: http://go.microsoft.com/fwlink/p/?LinkId=331329
 [Xamarin Studio]: http://xamarin.com/download
 [WindowsAzure.Messaging]: https://github.com/infosupport/WindowsAzure.Messaging.iOS
-[Azure Portal]: https://portal.azure.com
+[Azure-portalen]: https://portal.azure.com

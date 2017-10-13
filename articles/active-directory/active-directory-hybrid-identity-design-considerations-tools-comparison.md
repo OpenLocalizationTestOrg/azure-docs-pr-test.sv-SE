@@ -1,6 +1,6 @@
 ---
 title: "Hybrididentitet: Jämförelse av katalogintegreringsverktyg | Microsoft Docs"
-description: "Detta är innehåller en omfattande tabell som jämför hello olika katalogintegreringsverktyg som kan användas för katalogintegrering."
+description: "Den här sidan innehåller en detaljerad tabell som jämför olika katalogintegreringsverktyg som kan användas för katalogintegrering."
 services: active-directory
 documentationcenter: 
 author: billmath
@@ -14,45 +14,45 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 18ac0a0f58726eceb85510df516e8db71429b313
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: f87b5837c7a786c8b309a6a52e69b53c0ad4c9d8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="hybrid-identity-directory-integration-tools-comparison"></a>Hybrididentitet: Jämförelse av katalogintegreringsverktyg
-Hello års hello katalogintegreringsverktygen har vuxit och utvecklats.  Det här dokumentet är toohelp ger en samlad vy över dessa verktyg och en jämförelse av hello-funktioner som är tillgängliga i varje.
+Katalogintegreringsverktygen har vuxit och utvecklats med åren.  Avsikten med det här dokumentet är att ge dig en samlad vy över dessa verktyg och en jämförelse av de funktioner som är tillgängliga i vart och ett.
 
-<!-- hello hardcoded link is a workaround for campaign ids not working in acom links-->
+<!-- The hardcoded link is a workaround for campaign ids not working in acom links-->
 
 > [!NOTE]
-> Azure AD Connect innehåller hello komponenter och funktioner som tidigare lanserats som Dirsync och AAD Sync. Dessa verktyg är inte längre ut individuellt och alla framtida förbättringar tas med i uppdateringar tooAzure AD ansluta, så att du alltid vet var tooget hello senaste funktionerna.
+> Azure AD Connect innehåller komponenter och funktioner som tidigare gavs ut som DirSync och AAD Sync. Dessa verktyg ges inte längre ut individuellt. Alla framtida förbättringar tas med i Azure AD Connect-uppdateringarna så att du alltid vet var de senaste funktionerna finns.
 > 
 > DirSync och Azure AD Sync är föråldrade. Mer information finns [här](active-directory-aadconnect-dirsync-deprecated.md).
 > 
 > 
 
-Använd hello följande nyckel för varje hello register.
+Följande förkortningar och symboler används i tabellerna.
 
 ● = Tillgänglig nu  
 FR = Framtida version  
 PP = Offentlig granskning  
 
-## <a name="on-premises-toocloud-synchronization"></a>Lokala tooCloud synkronisering
+## <a name="on-premises-to-cloud-synchronization"></a>Synkronisering lokalt till molnet
 | Funktion | Azure Active Directory Connect | Azure Active Directory Sync Services (AAD Sync) | Verktyget Azure Active Directory Synchronization (DirSync) | Forefront Identity Manager 2010 R2 (FIM) | Microsoft Identity Manager 2016 (MIM) |
 |:--- |:---:|:---:|:---:|:---:|:---:|
-| Ansluta toosingle lokala AD-skog |● |● |● |● |● |
-| Ansluta toomultiple lokala AD-skogar |● |● | |● |● |
-| Ansluta toomultiple lokala Exchange-organisationer |● | | | | |
-| Ansluta toosingle lokala LDAP-katalogen |FR | | |● |● |
-| Ansluta toomultiple lokala LDAP-kataloger |FR | | |● |● |
-| Ansluta tooon lokala AD och lokala LDAP-kataloger |FR | | |● |● |
-| Ansluta toocustom system (d.v.s. SQL, Oracle, MySQL osv.) |FR | | |● |● |
+| Ansluta till en enda lokal AD-skog |● |● |● |● |● |
+| Ansluta till flera lokala AD-skogar |● |● | |● |● |
+| Ansluta till flera lokala Exchange-organisationer |● | | | | |
+| Ansluta till en enda lokal LDAP-katalog |FR | | |● |● |
+| Ansluta till flera lokala LDAP-kataloger |FR | | |● |● |
+| Ansluta till lokalt AD och lokala LDAP-kataloger |FR | | |● |● |
+| Ansluta till anpassade system (SQL, Oracle, MySQL osv.) |FR | | |● |● |
 | Synkronisera kunddefinierade attribut (katalogtillägg) |● | | | | |
-| Ansluta tooon lokalt HR (SAP, Oracle eBusiness, PeopleSoft osv.) |FR | | |● |● |
-| Stöder FIM-Synkroniseringsregler och kopplingar för etablering tooon lokala system. | | | |● |● |
+| Ansluta till lokalt HR (SAP, Oracle eBusiness, PeopleSoft osv.) |FR | | |● |● |
+| Stöder FIM-synkroniseringsregler och kopplingar för etablering i lokala system. | | | |● |● |
 
-## <a name="cloud-tooon-premises-synchronization"></a>Molnet tooOn lokala synkronisering
+## <a name="cloud-to-on-premises-synchronization"></a>Synkronisering molnet till lokalt
 | Funktion | Azure Active Directory Connect | Azure Active Directory Sync Services | Verktyget Azure Active Directory Synchronization (DirSync) | Forefront Identity Manager 2010 R2 (FIM) | Microsoft Identity Manager 2016 (MIM) |
 |:--- |:---:|:---:|:---:|:---:|:---:|
 | Tillbakaskrivning av enheter |● | |● | | |
@@ -74,8 +74,8 @@ PP = Offentlig granskning
 | Stöder installation på en domänkontrollant |● |● |● | |
 | Stöder installation med hjälp av SQL Express |● |● |● | |
 | Enkel uppgradering från DirSync |● | | | |
-| Lokalisering av administratörs-UX tooWindows serverspråk |● |● |● | |
-| Lokalisering av slutanvändaren UX tooWindows serverspråk | | | |● |
+| Lokalisering av administratörs-UX till Windows Server-språk |● |● |● | |
+| Lokalisering av slutanvändar-UX till Windows Server-språk | | | |● |
 | Stöd för Windows Server 2008 och Windows Server 2008 R2 |● för synkronisering, inte för federation |● |● |● |
 | Stöd för Windows Server 2012 och Windows Server 2012 R2 |● |● |● |● |
 
@@ -84,9 +84,9 @@ PP = Offentlig granskning
 |:--- |:---:|:---:|:---:|:---:|:---:|
 | Filtrera baserat på domäner och organisationsenheter |● |● |● |● |● |
 | Filtrera baserat på objektens attributvärden |● |● |● |● |● |
-| Tillåt minimal uppsättning attribut toobe synkroniseras (MinSync) |● |● | | | |
-| Tillåt olika mallar toobe används för attributflöden |● |● | | | |
-| Tillåt borttagning av attribut som flödar från AD tooAzure AD |● |● | | | |
+| Tillåt att en minimal uppsättning attribut synkroniseras (MinSync) |● |● | | | |
+| Tillåt att olika tjänstmallar används för attributflöden |● |● | | | |
+| Tillåt borttagning av attribut som flödar från AD till Azure AD |● |● | | | |
 | Tillåt avancerad anpassning av attributflöden |● |● | |● |● |
 
 ## <a name="next-steps"></a>Nästa steg

@@ -1,6 +1,6 @@
-## <a name="log-in-tooazure"></a>Logga in tooAzure
+## <a name="log-in-to-azure"></a>Logga in på Azure
 
-Du ska använda hello Azure CLI toocreate hello resurser som krävs för toohost din app i Azure. Om du kör Azure CLI-kommandona i hello molnet Shell är du redan inloggad. toorun Azure CLI-kommandona lokalt, logga in tooyour Azure-prenumeration med hello [az inloggningen](/cli/azure/#login) kommando och följ hello på skärmen riktningar.
+Du använder Azure CLI till att skapa de resurser som behövs när Azure ska vara värd för din app. Om du kör Azure CLI-kommandona i Cloud Shell är du redan inloggad. Om du vill köra Azure CLI-kommandona lokalt loggar du in på Azure-prenumerationen med kommandot [az login](/cli/azure/#login) och följer anvisningarna på skärmen.
 
 ```azurecli
 az login

@@ -1,6 +1,6 @@
 ---
-title: "aaaSend händelser tooAzure Händelsehubbar använder Java | Microsoft Docs"
-description: "Komma igång med att skicka tooEvent Hubs använder Java"
+title: "Skicka händelser till Azure Event Hubs använder Java | Microsoft Docs"
+description: "Kom igång skickar till Händelsehubbar som använder Java"
 services: event-hubs
 documentationcenter: 
 author: sethmanheim
@@ -14,28 +14,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: sethm
-ms.openlocfilehash: ec537b8849a0cb49855e76c0c0ef4093108fe83c
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: b31771001989e20b88bc8d7bca1afceb58ec197c
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
-# <a name="send-events-tooazure-event-hubs-using-java"></a>Skicka händelser tooAzure Händelsehubbar använder Java
+# <a name="send-events-to-azure-event-hubs-using-java"></a>Skicka händelser till Azure Event Hubs använder Java
 
 ## <a name="introduction"></a>Introduktion
-Händelsehubbar är en mycket skalbar införandet system som kan mata in miljontals händelser per sekund som aktiverar ett program tooprocess och analysera hello stora mängder data som produceras av dina anslutna enheter och program. När uppgifterna väl samlats i en händelsehubb kan du omvandla och lagra data med hjälp av en leverantör av realtidsanalys eller lagringskluster.
+Händelsehubbar är en mycket skalbar införandet system som kan mata in miljontals händelser per sekund, aktivera ett program för att bearbeta och analysera de enorma mängder data som produceras av dina anslutna enheter och program. När uppgifterna väl samlats i en händelsehubb kan du omvandla och lagra data med hjälp av en leverantör av realtidsanalys eller lagringskluster.
 
-Mer information finns i hello [översikt av Händelsehubbar][Event Hubs overview].
+Mer information finns i [översikt av Händelsehubbar][Event Hubs overview].
 
-Den här kursen visar hur toosend händelser tooan händelsehubb med hjälp av ett konsolprogram i Java. tooreceive händelser med hjälp av hello Java värd för händelsebearbetning bibliotek Se [i den här artikeln](event-hubs-java-get-started-receive-eph.md), eller klicka på hello mottagande språket i hello vänstra innehållsförteckning.
+Den här kursen visar hur du skickar händelser till en händelsehubb med hjälp av ett konsolprogram i Java. För att ta emot händelser med hjälp av värd för händelsebearbetning Java-bibliotek finns [i den här artikeln](event-hubs-java-get-started-receive-eph.md), eller klicka på det mottagande språket i den vänstra tabellen i innehållet.
 
-I ordning toocomplete den här kursen behöver du hello följande:
+För att kunna slutföra den här kursen behöver du följande:
 
 * Java development environment. Den här självstudiekursen förutsätter vi att [Eclipse](https://www.eclipse.org/).
 * Ett aktivt Azure-konto. <br/>Om du inte har något konto kan du skapa ett kostnadsfritt konto på bara några minuter. Mer information om den <a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">kostnadsfria utvärderingsversionen av Azure</a>.
 
-## <a name="send-messages-tooevent-hubs"></a>Skicka meddelanden tooEvent hubbar
-hello Java-klientbibliotek för Händelsehubbar är tillgänglig för användning i Maven-projekt från hello [Maven centrallager](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs%22). Du kan referera till det här biblioteket med följande beroende deklarationen i projektfilen Maven hello:    
+## <a name="send-messages-to-event-hubs"></a>Skicka meddelanden till Event Hubs
+Java-klientbibliotek för Händelsehubbar är tillgänglig för användning i Maven-projekt från den [Maven centrallager](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs%22). Du kan referera till det här biblioteket med följande beroende deklarationen i projektfilen Maven:    
 
 ```xml
 <dependency>
@@ -45,11 +45,11 @@ hello Java-klientbibliotek för Händelsehubbar är tillgänglig för användnin
 </dependency>
 ```
 
-För olika typer av versionsmiljöer du explicit kan hämta hello senaste publicerat JAR-filer från hello [Maven centrallager](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs%22).  
+För olika typer av versionsmiljöer du explicit kan hämta de senaste utgivna JAR-filerna från de [Maven centrallager](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs%22).  
 
-För en enkel händelse utgivare, importera hello *com.microsoft.azure.eventhubs* paketet för hello Händelsehubbar klientklasser och hello *com.microsoft.azure.servicebus* paketet för verktyget klasserna exempel som vanliga undantag som delas med hello Azure Service Bus-klientprogramvara. 
+En enkel händelse utgivare och importera den *com.microsoft.azure.eventhubs* paketet för Händelsehubbar klientklasser och *com.microsoft.azure.servicebus* paketet för verktygsklasser som vanliga undantag som delas med Azure Service Bus-klientprogramvara. 
 
-För hello följande exempel, skapa ett nytt Maven-projekt för ett program på konsolen-gränssnittet i din favorit Java-utvecklingsmiljö. Namnge hello klassen `Send`.     
+För följande exempel skapar du först ett nytt Maven-projekt för ett konsol-/gränssnittsprogram i din favorit Java Development Environment. Klassen namnet `Send`.     
 
 ```java
 import java.io.IOException;
@@ -67,7 +67,7 @@ public class Send
     {
 ```
 
-Ersätt hello namnområde och händelsen hub-namn med hello värden som ska användas när du skapade hello händelsehubb.
+Ersätt namnen på namnområde och händelsen hubb med de värden som används när du skapade händelsehubben.
 
 ```java
     final String namespaceName = "----ServiceBusNamespaceName-----";
@@ -77,7 +77,7 @@ Ersätt hello namnområde och händelsen hub-namn med hello värden som ska anv�
     ConnectionStringBuilder connStr = new ConnectionStringBuilder(namespaceName, eventHubName, sasKeyName, sasKey);
 ```
 
-Skapa sedan en enda händelse genom att omvandla en sträng i UTF-8 byte kodningen. Sedan skapa en ny instans av Händelsehubbar klienten från hello anslutningssträngen och skicka hello-meddelande.   
+Skapa sedan en enda händelse genom att omvandla en sträng i UTF-8 byte kodningen. Sedan skapar en ny instans av Händelsehubbar klienten från anslutningssträngen och skicka meddelandet.   
 
 ```java 
 
@@ -92,9 +92,9 @@ Skapa sedan en enda händelse genom att omvandla en sträng i UTF-8 byte kodning
 ``` 
 
 ## <a name="next-steps"></a>Nästa steg
-Mer information om Händelsehubbar genom att besöka hello följande länkar:
+Du kan lära dig mer om Event Hubs genom att gå till följande länkar:
 
-* [Ta emot händelser med hjälp av hello EventProcessorHost](event-hubs-java-get-started-receive-eph.md)
+* [Ta emot händelser med hjälp av EventProcessorHost](event-hubs-java-get-started-receive-eph.md)
 * [Översikt av händelsehubbar][Event Hubs overview]
 * [Skapa en Event Hub](event-hubs-create.md)
 * [Vanliga frågor och svar om Event Hubs](event-hubs-faq.md)

@@ -1,5 +1,5 @@
 ---
-title: aaaCreate en Oracle-databas i en Azure VM | Microsoft Docs
+title: Skapa en Oracle-databas i en Azure VM | Microsoft Docs
 description: "Snabbt en Oracle-databas 12c-databas och körs i Azure-miljön."
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,36 +15,36 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/17/2017
 ms.author: rclaus
-ms.openlocfilehash: 83205154c3275d5f57b46c8acfb0cb4e5c68a412
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 8683b016c4db2c66fb1dd994405b70c3d137a7fc
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="create-an-oracle-database-in-an-azure-vm"></a>Skapa en Oracle-databas i en virtuell dator i Azure
 
-Den här guiden information med hjälp av hello Azure CLI toodeploy en virtuell Azure-dator från hello [Oracle marketplace-avbildning i galleriet](https://azuremarketplace.microsoft.com/marketplace/apps/Oracle.OracleDatabase12102EnterpriseEdition?tab=Overview) ordning toocreate en Oracle 12 c-databas. När hello server har distribuerats, ansluter du via SSH i ordning tooconfigure hello Oracle-databas. 
+Den här guiden information som använder Azure CLI för att distribuera en virtuell Azure-dator från den [Oracle marketplace-avbildning i galleriet](https://azuremarketplace.microsoft.com/marketplace/apps/Oracle.OracleDatabase12102EnterpriseEdition?tab=Overview) för att skapa en Oracle 12 c-databas. När servern har distribuerats, ansluter du via SSH för att kunna konfigurera Oracle-databasen. 
 
 Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-Om du väljer tooinstall och använda hello CLI lokalt denna Snabbstart kräver att du kör hello Azure CLI version 2.0.4 eller senare. Kör `az --version` toofind hello version. Om du behöver tooinstall eller uppgradering, se [installera Azure CLI 2.0]( /cli/azure/install-azure-cli).
+Om du väljer att installera och använda CLI lokalt måste du köra Azure CLI version 2.0.4 eller senare. Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI 2.0]( /cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Skapa en resursgrupp
 
-Skapa en resursgrupp med hello [az gruppen skapa](/cli/azure/group#create) kommando. En Azure-resursgrupp är en logisk behållare där Azure-resurser distribueras och hanteras. 
+Skapa en resursgrupp med kommandot [az group create](/cli/azure/group#create). En Azure-resursgrupp är en logisk behållare där Azure-resurser distribueras och hanteras. 
 
-hello följande exempel skapar en resursgrupp med namnet *myResourceGroup* i hello *eastus* plats.
+I följande exempel skapas en resursgrupp med namnet *myResourceGroup* på platsen *eastus*.
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
 ```
 ## <a name="create-virtual-machine"></a>Skapa en virtuell dator
 
-toocreate en virtuell dator (VM), Använd hello [az vm skapa](/cli/azure/vm#create) kommando. 
+Du kan skapa en virtuell dator (VM) med den [az vm skapa](/cli/azure/vm#create) kommando. 
 
-hello följande exempel skapas en virtuell dator med namnet `myVM`. Det skapar också SSH-nycklar, om de inte redan finns på standardplatsen nyckel. toouse för en specifik uppsättning nycklar använder hello `--ssh-key-value` alternativet.  
+Följande exempel skapar en virtuell dator med namnet `myVM`. Det skapar också SSH-nycklar, om de inte redan finns på standardplatsen nyckel. Om du vill använda en specifik uppsättning nycklar använder du alternativet `--ssh-key-value`.  
 
 ```azurecli-interactive 
 az vm create \
@@ -56,7 +56,7 @@ az vm create \
     --generate-ssh-keys
 ```
 
-När du har skapat hello VM visar Azure CLI information liknande toohello följande exempel. Observera hello värde för `publicIpAddress`. Du kan använda den här adressen tooaccess hello VM.
+När du har skapat den virtuella datorn, visar Azure CLI information som liknar följande exempel. Anteckna värdet för `publicIpAddress`. Du kan använda den här adressen för att få åtkomst till den virtuella datorn.
 
 ```azurecli
 {
@@ -71,26 +71,26 @@ När du har skapat hello VM visar Azure CLI information liknande toohello följa
 }
 ```
 
-## <a name="connect-toohello-vm"></a>Ansluta toohello VM
+## <a name="connect-to-the-vm"></a>Anslut till VM:en
 
-toocreate en SSH-session med hello VM, använda hello följande kommando. Ersätt hello IP-adress med hello `publicIpAddress` värde för den virtuella datorn.
+Använd följande kommando för att skapa en SSH-session med den virtuella datorn. Ersätt IP-adressen med den `publicIpAddress` värde för den virtuella datorn.
 
 ```bash 
 ssh <publicIpAddress>
 ```
 
-## <a name="create-hello-database"></a>Skapa hello-databas
+## <a name="create-the-database"></a>Skapa en databas
 
-hello Oracle-programvara är installerad på hello Marketplace-avbildning. Skapa en exempeldatabas på följande sätt. 
+Oracle-programvara är installerad på Marketplace-avbildning. Skapa en exempeldatabas på följande sätt. 
 
-1.  Växla toohello *oracle* superanvändare och sedan initiera hello-lyssnare för loggning:
+1.  Växla till den *oracle* superanvändare och sedan initiera lyssnaren för loggning:
 
     ```bash
     $ sudo su - oracle
     $ lsnrctl start
     ```
 
-    hello-utdata är liknande toohello följande:
+    De utdata som genereras liknar följande:
 
     ```bash
     Copyright (c) 1991, 2014, Oracle.  All rights reserved.
@@ -98,11 +98,11 @@ hello Oracle-programvara är installerad på hello Marketplace-avbildning. Skapa
     Starting /u01/app/oracle/product/12.1.0/dbhome_1/bin/tnslsnr: please wait...
 
     TNSLSNR for Linux: Version 12.1.0.2.0 - Production
-    Log messages written too/u01/app/oracle/diag/tnslsnr/myVM/listener/alert/log.xml
+    Log messages written to /u01/app/oracle/diag/tnslsnr/myVM/listener/alert/log.xml
     Listening on: (DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=myVM.twltkue3xvsujaz1bvlrhfuiwf.dx.internal.cloudapp.net)(PORT=1521)))
 
-    Connecting too(ADDRESS=(PROTOCOL=tcp)(HOST=)(PORT=1521))
-    STATUS of hello LISTENER
+    Connecting to (ADDRESS=(PROTOCOL=tcp)(HOST=)(PORT=1521))
+    STATUS of the LISTENER
     ------------------------
     Alias                     LISTENER
     Version                   TNSLSNR for Linux: Version 12.1.0.2.0 - Production
@@ -114,11 +114,11 @@ hello Oracle-programvara är installerad på hello Marketplace-avbildning. Skapa
     Listener Log File         /u01/app/oracle/diag/tnslsnr/myVM/listener/alert/log.xml
     Listening Endpoints Summary...
     (DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=myVM.twltkue3xvsujaz1bvlrhfuiwf.dx.internal.cloudapp.net)(PORT=1521)))
-    hello listener supports no services
-    hello command completed successfully
+    The listener supports no services
+    The command completed successfully
     ```
 
-2.  Skapa databas för hello:
+2.  skapa databasen:
 
     ```bash
     dbca -silent \
@@ -140,17 +140,17 @@ hello Oracle-programvara är installerad på hello Marketplace-avbildning. Skapa
            -ignorePreReqs
     ```
 
-    Det tar några minuter toocreate hello-databasen.
+    Det tar några minuter att skapa databasen.
 
 3. Ange variabler för Oracle
 
-Innan du ansluter du behöver tooset två miljövariabler: *ORACLE_HOME* och *ORACLE_SID*.
+Innan du ansluter måste du ställa in två miljövariabler: *ORACLE_HOME* och *ORACLE_SID*.
 
 ```bash
 ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1; export ORACLE_HOME
 ORACLE_SID=cdb1; export ORACLE_SID
 ```
-Du kan också lägga till ORACLE_HOME och ORACLE_SID variabler toohello .bashrc fil. Detta skulle spara hello miljövariabler för framtida inloggningar. Bekräfta hello följande instruktioner har lagts till toohello `~/.bashrc` fil med valfri redigerare.
+Du kan också lägga till ORACLE_HOME och ORACLE_SID variabler i filen .bashrc. Detta skulle spara miljövariabler för framtida inloggningar. Bekräfta följande påståenden har lagts till i `~/.bashrc` fil med valfri redigerare.
 
 ```bash
 # Add ORACLE_HOME. 
@@ -161,27 +161,27 @@ export ORACLE_SID=cdb1
 
 ## <a name="oracle-em-express-connectivity"></a>Oracle EM snabb anslutning
 
-För ett GUI-hanteringsverktyg som du kan använda tooexplore hello databas, ställa in Oracle EM Express. tooconnect tooOracle EM Express, du måste först konfigurera hello port i Oracle. 
+För ett GUI-hanteringsverktyg som du kan använda för att utforska databasen, ställa in Oracle EM Express. Om du vill ansluta till Oracle EM Express, måste du först ställa in port i Oracle. 
 
-1. Anslut tooyour databasen med hjälp av sqlplus:
+1. Anslut till databasen med sqlplus:
 
     ```bash
     sqlplus / as sysdba
     ```
 
-2. När du är ansluten, ange hello port 5502 för EM Express
+2. När du är ansluten, anger du porten 5502 för EM Express
 
     ```bash
     exec DBMS_XDB_CONFIG.SETHTTPSPORT(5502);
     ```
 
-3. Öppna hello behållaren PDB1 om inte redan öppnad men första hello statusen:
+3. Öppna den behållaren PDB1 om den inte redan öppnad men första Kontrollera status:
 
     ```bash
     select con_id, name, open_mode from v$pdbs;
     ```
 
-    hello-utdata är liknande toohello följande:
+    De utdata som genereras liknar följande:
 
     ```bash
       CON_ID NAME                           OPEN_MODE 
@@ -190,55 +190,55 @@ För ett GUI-hanteringsverktyg som du kan använda tooexplore hello databas, st�
       3           PDB1                      MOUNT
     ```
 
-4. Om hello OPEN_MODE för `PDB1` är inte läsa skriva, köra hello följande kommandon tooopen PDB1:
+4. Om OPEN_MODE för `PDB1` är inte läsa skriva, kör du följande kommandon för att öppna PDB1:
 
    ```bash
     alter session set container=pdb1;
     alter database open;
    ```
 
-Du behöver tootype `quit` tooend hello sqlplus session och skriv `exit` toologout av hello oracle-användare.
+Du måste ange `quit` att avsluta sessionen sqlplus och typen `exit` logga ut för oracle-användare.
 
 ## <a name="automate-database-startup-and-shutdown"></a>Automatisera databasen start och stopp
 
-hello Oracle-databas som standard startas inte automatiskt när du startar om hello VM. tooset in hello Oracle-databasen toostart automatiskt, först logga in som rot. Sedan skapa och uppdatera vissa systemfiler.
+Oracle-databasen som standard startas inte automatiskt när du startar om den virtuella datorn. Om du vill ställa in Oracle-databasen för att starta automatiskt, först logga in som rot. Sedan skapa och uppdatera vissa systemfiler.
 
 1. Logga in som rot
     ```bash
     sudo su -
     ```
 
-2.  Med redigeringsprogram favorit redigerar hello filen `/etc/oratab` och ändra hello standard `N` för`Y`:
+2.  Med din favorit redigerare, redigerar du filen `/etc/oratab` och ändra standard `N` till `Y`:
 
     ```bash
     cdb1:/u01/app/oracle/product/12.1.0/dbhome_1:Y
     ```
 
-3.  Skapa en fil med namnet `/etc/init.d/dbora` och klistra in hello följande innehåll:
+3.  Skapa en fil med namnet `/etc/init.d/dbora` och klistra in följande innehåll:
 
     ```
     #!/bin/sh
     # chkconfig: 345 99 10
     # Description: Oracle auto start-stop script.
     #
-    # Set ORA_HOME toobe equivalent too$ORACLE_HOME.
+    # Set ORA_HOME to be equivalent to $ORACLE_HOME.
     ORA_HOME=/u01/app/oracle/product/12.1.0/dbhome_1
     ORA_OWNER=oracle
 
     case "$1" in
     'start')
-        # Start hello Oracle databases:
-        # hello following command assumes that hello Oracle sign-in
-        # will not prompt hello user for any values.
+        # Start the Oracle databases:
+        # The following command assumes that the Oracle sign-in
+        # will not prompt the user for any values.
         # Remove "&" if you don't want startup as a background process.
         su - $ORA_OWNER -c "$ORA_HOME/bin/dbstart $ORA_HOME" &
         touch /var/lock/subsys/dbora
         ;;
 
     'stop')
-        # Stop hello Oracle databases:
-        # hello following command assumes that hello Oracle sign-in
-        # will not prompt hello user for any values.
+        # Stop the Oracle databases:
+        # The following command assumes that the Oracle sign-in
+        # will not prompt the user for any values.
         su - $ORA_OWNER -c "$ORA_HOME/bin/dbshut $ORA_HOME" &
         rm -f /var/lock/subsys/dbora
         ;;
@@ -260,7 +260,7 @@ hello Oracle-databas som standard startas inte automatiskt när du startar om he
     ln -s /etc/init.d/dbora /etc/rc.d/rc5.d/S99dbora
     ```
 
-6.  tootest ändringarna, starta om hello VM:
+6.  Testa dina ändringar genom att starta om den virtuella datorn:
 
     ```bash
     reboot
@@ -268,9 +268,9 @@ hello Oracle-databas som standard startas inte automatiskt när du startar om he
 
 ## <a name="open-ports-for-connectivity"></a>Öppna portar för anslutning
 
-hello sista aktivitet är tooconfigure vissa externa slutpunkter. tooset in hello Azure Nätverkssäkerhetsgruppen som skyddar hello VM, avsluta SSH-sessionen i hello VM (bör ha har dessutom out-of-SSH när omstart i föregående steg). 
+Det sista steget är att konfigurera vissa externa slutpunkter. Avsluta SSH-sessionen på den virtuella datorn (bör ha har dessutom out-of-SSH när omstart i föregående steg) för att ställa in Azure Nätverkssäkerhetsgruppen som skyddar den virtuella datorn. 
 
-1.  tooopen hello endpoint att du använder tooaccess hello Oracle-databas, skapar en Nätverkssäkerhetsgrupp regel med [az nätverket nsg regeln skapa](/cli/azure/network/nsg/rule#create) på följande sätt: 
+1.  Om du vill öppna den slutpunkt som du använder för att få fjärråtkomst till Oracle-databasen, skapar du en Nätverkssäkerhetsgrupp regel med [az nätverket nsg regeln skapa](/cli/azure/network/nsg/rule#create) på följande sätt: 
 
     ```azurecli-interactive
     az network nsg rule create \
@@ -282,7 +282,7 @@ hello sista aktivitet är tooconfigure vissa externa slutpunkter. tooset in hell
         --destination-port-range 1521
     ```
 
-2.  tooopen hello endpoint att du använder tooaccess Oracle EM Express via fjärranslutning, skapar en Nätverkssäkerhetsgrupp regel med [az nätverket nsg regeln skapa](/cli/azure/network/nsg/rule#create) på följande sätt:
+2.  Om du vill öppna den slutpunkt som du använder för att fjärransluta till Oracle EM Express, skapar du en Nätverkssäkerhetsgrupp regel med [az nätverket nsg regeln skapa](/cli/azure/network/nsg/rule#create) på följande sätt:
 
     ```azurecli-interactive
     az network nsg rule create \
@@ -294,7 +294,7 @@ hello sista aktivitet är tooconfigure vissa externa slutpunkter. tooset in hell
         --destination-port-range 5502
     ```
 
-3. Om det behövs, hämta hello offentliga IP-adressen för den virtuella datorn igen med [az nätverket offentliga ip-visa](/cli/azure/network/public-ip#show) på följande sätt:
+3. Om det behövs kan hämta den offentliga IP-adressen på den virtuella datorn igen med [az nätverket offentliga ip-visa](/cli/azure/network/public-ip#show) på följande sätt:
 
     ```azurecli-interactive
     az network public-ip show \
@@ -310,13 +310,13 @@ hello sista aktivitet är tooconfigure vissa externa slutpunkter. tooset in hell
     https://<VM ip address or hostname>:5502/em
     ```
 
-Du kan logga in med hjälp av hello **SYS** konto och kontrollera hello **som sysdba** kryssrutan. Använd hello lösenord **OraPasswd1** som du anger under installationen. 
+Du kan logga in med hjälp av den **SYS** konto och kontrollera den **som sysdba** kryssrutan. Använd lösenord **OraPasswd1** som du anger under installationen. 
 
-![Skärmbild av inloggningssidan för hello Oracle OEM Express](./media/oracle-quick-start/oracle_oem_express_login.png)
+![Skärmbild av inloggningssidan Oracle OEM Express](./media/oracle-quick-start/oracle_oem_express_login.png)
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-När du är klar med att utforska din första Oracle-databas på Azure och hello VM inte längre behövs, kan du använda hello [ta bort grupp az](/cli/azure/group#delete) kommandot tooremove hello resursgrupp, virtuell dator och alla relaterade resurser.
+När du är klar med att utforska din första Oracle-databas på Azure och den virtuella datorn inte längre behövs kan du använda den [ta bort grupp az](/cli/azure/group#delete) kommandot för att ta bort resursgruppen VM, och alla relaterade resurser.
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup
@@ -326,4 +326,4 @@ az group delete --name myResourceGroup
 
 Lär dig mer om andra [Oracle-lösningar på Azure](oracle-considerations.md). 
 
-Försök hello [installera och konfigurera Oracle Automated lagringshantering](configure-oracle-asm.md) kursen.
+Försök i [installera och konfigurera Oracle Automated lagringshantering](configure-oracle-asm.md) kursen.

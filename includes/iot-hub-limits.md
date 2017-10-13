@@ -1,4 +1,4 @@
-hello visar följande tabell hello gränser som är associerade med hello olika tjänstnivåer (S1, S2, S3, F1). Information om hello kostnaden för varje *enhet* i varje nivå visas [IoT Hub-priser](https://azure.microsoft.com/pricing/details/iot-hub/).
+I följande tabell visas begränsningar för olika tjänstnivåer (S1, S2, S3, F1). Information om kostnaden för varje *enhet* i respektive nivå finns [Prisinformation för IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub/).
 
 | Resurs | S1 Standard | S2 Standard | S3 Standard | F1 Kostnadsfri |
 | --- | --- | --- | --- | --- |
@@ -10,7 +10,7 @@ hello visar följande tabell hello gränser som är associerade med hello olika 
 > 
 > 
 
-hello visas följande tabell hello gränser som gäller tooIoT hubb resurser:
+I följande tabell visas de begränsningar som gäller för IoT Hub-resurser:
 
 | Resurs | Gräns |
 | --- | --- |
@@ -24,8 +24,8 @@ hello visas följande tabell hello gränser som gäller tooIoT hubb resurser:
 | Maximal storlek för moln-till-enhet-meddelande |64 kB |
 | Maximalt TTL-värde för moln-till-enhet-meddelanden |2 dagar |
 | Maximalt antal leveranser för moln-till-enhet- <br/> meddelanden |100 |
-| Maximalt antal leveranser för feedbackmeddelanden <br/> i svarsmeddelandet tooa moln till enhet |100 |
-| Maximalt TTL-värde för meddelanden som <br/> svarsmeddelandet tooa moln till enhet |2 dagar |
+| Maximalt antal leveranser för feedbackmeddelanden <br/> som svar på ett moln-till-enhet-meddelande |100 |
+| Maximalt TTL-värde för meddelanden som <br/> svar på ett moln-till-enhet-meddelande |2 dagar |
 | Maximal storlek för enhetstvilling <br/> (taggar, rapporterade egenskaper och önskade egenskaper) | 8 kB |
 | Maximal storlek för strängvärde för enhetstvilling | 512 byte |
 | Maximalt djup för objekt i enhetstvilling | 5 |
@@ -41,9 +41,9 @@ hello visas följande tabell hello gränser som gäller tooIoT hubb resurser:
 
 
 > [!NOTE]
-> För närvarande hello maximalt antal enheter som du kan ansluta tooa enda IoT-hubben är 500 000. Om du vill tooincrease den här gränsen kan kontakta [Microsoft-supporten](https://azure.microsoft.com/en-us/support/options/).
+> Det maximala antalet enheter som du kan ansluta till en enda IoT-hubben är för närvarande 500 000. Om du vill höja denna gräns Kontakta [Microsoft-supporten](https://azure.microsoft.com/en-us/support/options/).
 
-Hej IoT-hubb service begränsar begäranden om hello efter kvoter överskrids:
+Tjänsten IoT Hub begränsar begärandena om följande kvoter överskrids:
 
 | Begränsning | Värde per hubb |
 | --- | --- |

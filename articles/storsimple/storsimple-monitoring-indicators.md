@@ -1,6 +1,6 @@
 ---
-title: "aaaStorSimple övervakning indikatorer | Microsoft Docs"
-description: "Beskriver hello lysdioder (led) och akustiska signaler används toomonitor hello status för hello StorSimple-enhet."
+title: "StorSimple övervakning indikatorer | Microsoft Docs"
+description: "Beskriver lysdioder (led) och akustiska larm som används för att övervaka status för StorSimple-enhet."
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,30 +14,30 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
-ms.openlocfilehash: e690b8f4727272f5fbb8886a594a046f794a1380
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 0d44f94719bff0cb58b3727050598e55f4774e66
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="use-storsimple-monitoring-indicators-toomanage-your-device"></a>Använda StorSimple övervakning indikatorer toomanage din enhet
+# <a name="use-storsimple-monitoring-indicators-to-manage-your-device"></a>Använda StorSimple övervakning indikatorer för att hantera din enhet
 ## <a name="overview"></a>Översikt
-StorSimple-enheten inkluderar lysdioder (led) och larm som du kan använda toomonitor hello-moduler och övergripande status för hello StorSimple-enhet. hello indikatorer för övervakningen kan hittas på hello maskinvarukomponenter hello enhetens primära höljet och hello EBOD hölje. hello indikatorer för övervakningen kan vara indikatorer eller hörbart larm.
+StorSimple-enheten inkluderar lysdioder (led) och automatlarm som du kan använda för att övervaka moduler och övergripande status för StorSimple-enhet. Övervakning indikatorer kan hittas på maskinvarukomponenter för enhetens primära höljet och EBOD höljet. Övervakning indikatorer kan vara indikatorer eller hörbart larm.
 
-Det finns tre Indikator tillstånd används tooindicate hello status för en modul: grön blinkande grön toored-gul eller röd gul.  
+Det finns tre Indikator tillstånd används för att visa status för en modul: grön blinkande grönt till rött gul eller röd gul.  
 
 * Grönt indikatorer representerar en operativ hälsostatus.  
-* Blinkande grön toored gul representerar indikatorer hello förekomst av icke-kritiska villkor som kan kräva åtgärder från användaren.  
-* Röd gul indikatorer betyda att det finns ett kritiskt fel finns i hello modul.  
+* Blinkande grönt till rött gul indikatorer representerar förekomsten av icke-kritiska villkor som kan kräva åtgärder från användaren.  
+* Röd gul indikatorer betyda att det finns ett allvarligt fel som finns i modulen.  
 
-hello resten av den här artikeln beskriver hello olika övervakning indikator led, deras platser på hello StorSimple-enhet, hello Enhetsstatus baserat på hello Indikator tillstånd och associerade hörbart larm.
+Resten av den här artikeln beskriver de olika övervakning indikator led, deras platser på StorSimple-enhet, enhetens status baserat på Indikator tillstånd och alla associerade hörbart larm.
 
 ## <a name="front-panel-indicator-leds"></a>Frontpanel indikator indikatorer
-hello frontpanel, även kallat hello *operations panelen* eller *ops panelen*, visar hello sammanlagd status för alla hello-moduler i hello system. hello frontpanel är identiska på hello StorSimple primära och hello EBOD höljet och visas nedan.  
+Framför panelen kallas även den *operations panelen* eller *ops panelen*, visar den sammanlagd statusen för alla moduler i systemet. Frontpanel är identiska på den primära StorSimple och EBOD höljet och visas nedan.  
 
    ![Enheten frontpanel][1]
 
-hello frontpanel innehåller hello följande symboler:  
+Frontpanel innehåller följande faktorer:  
 
 1. Ljud av
 2. Power indikator Indikator (grönt/Röd-gul)
@@ -45,14 +45,14 @@ hello frontpanel innehåller hello följande symboler:
 4. Logiska fel indikatorns LEDDE (på OFF-Röd-gul
 5. Enhet ID visas  
 
-hello största skillnaden mellan hello frontpanel indikatorer för hello enheten och de för hello EBOD hölje är hello **System enhetsnummer identifiering** visas hello Indikator visas. hello standardenheten-ID som visas på enheten hello är **00**, medan hello standard enhet-ID som visas på hello EBOD hölje är **01**. Detta gör att du tooquickly skilja hello enheten och hello EBOD hölje när hello enheten är påslagen. Om enheten är inaktiverad, använder hello informationen i [aktiverar en ny enhet](storsimple-turn-device-on-or-off.md#turn-on-a-new-device) toodifferentiate hello enhet från hello EBOD hölje.  
+Den största skillnaden mellan frontpanel indikatorer för enheten och de för höljet EBOD är den **System enhetsnummer identifiering** visas på skärmen Indikator. ID: T som visas på enheten är standardenheten **00**, medan standard enhets-ID visas på höljet EBOD är **01**. På så sätt kan du snabbt skilja mellan enheten och EBOD höljet när enheten är påslagen. Om enheten är inaktiverad, använder du informationen i [aktiverar en ny enhet](storsimple-turn-device-on-or-off.md#turn-on-a-new-device) att skilja enheten från EBOD höljet.  
 
 ## <a name="front-panel-led-status"></a>Frontpanel Indikator status
-Använd följande tabell tooidentify hello status visas med hello indikatorer på hello frontpanel för hello enhet eller hello EBOD hölje hello.  
+Använd följande tabell för att identifiera status visas med indikatorer på panelen för enheten eller EBOD höljet.  
 
 | System power | Modul-fel | Logiska fel | Larm | Status |
 | --- | --- | --- | --- | --- |
-| Röd gul |INAKTIVERA |INAKTIVERA |Saknas |AC power tappas bort arbetar på säkerhetskopiering power eller AC power och hello controller moduler har tagits bort. |
+| Röd gul |INAKTIVERA |INAKTIVERA |Saknas |AC power förlorad, arbetar på säkerhetskopiering power eller AC power och domänkontrollant moduler har tagits bort. |
 | Grön |ON |ON |Saknas |Testa tillstånd för OPS panelen slå på strömmen (5-tal) |
 | Grön |INAKTIVERA |INAKTIVERA |Saknas |Slå på alla funktioner som är bra |
 | Grön |ON |Saknas |PCM fel led, fläkt fel indikatorer |PCM begåtts, fläkt fel, över eller under temperatur |
@@ -61,15 +61,15 @@ Använd följande tabell tooidentify hello status visas med hello indikatorer p�
 | Grön |Flash |Saknas |Modulstatus Indikator för domänkontrollant modul. PCM fel led, fläkt fel indikatorer |Okänd controller modultypen installerat I2C bus fel, konfigurationsfel för domänkontrollant modulen vital product data (VPD) |
 
 ## <a name="power-cooling-module-pcm-indicator-leds"></a>Power kylning modul (PCM) indikator indikatorer
-Power kylning modul (PCM) indikator indikatorer kan hittas på hello baksidan hello primära hölje eller EBOD höljet på varje PCM-modul. Det här avsnittet beskrivs hur toouse hello efter indikatorer toomonitor hello status för din StorSimple-enhet.  
+Power kylning modul (PCM) indikator indikatorer finns på baksidan av den primära hölje eller EBOD höljet på varje PCM-modul. Det här avsnittet beskrivs hur du använder följande indikatorer för att övervaka status för din StorSimple-enhet.  
 
-* PCM indikatorer för hello primära enhet
-* PCM indikatorer för hello EBOD hölje
+* PCM indikatorer för primära höljet
+* PCM indikatorer för höljet EBOD
 
-## <a name="pcm-leds-for-hello-primary-enclosure"></a>PCM indikatorer för hello primära enhet
-Hej StorSimple-enhet har en 764W PCM modul med en extra batteri. hello visar följande bild hello Indikator panelen för hello enhet.  
+## <a name="pcm-leds-for-the-primary-enclosure"></a>PCM indikatorer för primära höljet
+StorSimple-enhet har en 764W PCM modul med en extra batteri. Följande bild visar panelen Indikator för enheten.  
 
-   ![PCM indikatorer på hello primära enhet][2]
+   ![PCM indikatorer på primära höljet][2]
 
 Indikator för förklaringen:
 
@@ -80,12 +80,12 @@ Indikator för förklaringen:
 5. DC-fel
 6. Bra batteri  
 
-hello status för hello PCM anges på hello VÄGLEDS panelen. hello enheten PCM Indikator panel har sex indikatorer. Fyra av dessa indikatorer visar hello status för hello strömförsörjning och hello-fläkt. hello återstående två indikatorer visar hello status av hello säkerhetskopiering batteri modul i hello PCM. Du kan använda följande tabeller toodetermine hello status för hello PCM hello.  
+Status för PCM anges på panelen Indikator. Panelen enheten PCM Indikator har sex indikatorer. Fyra av dessa indikatorer visar status för strömförsörjningen och fläkten. De återstående två indikatorer visar status för säkerhetskopiering batterimodulen i PCM. Du kan använda följande tabeller för att avgöra status för PCM.  
 
 ### <a name="pcm-indicator-leds-for-power-supply-and-fan"></a>PCM indikator indikatorer för strömförsörjning och -fläkt
 | Status | PCM bra (grönt) | AC misslyckas (gult) | Fläkt misslyckas (gult) | Domänkontrollanten misslyckas (gult) |
 | --- | --- | --- | --- | --- |
-| Ingen AC-ström (tooenclosure) |INAKTIVERA |INAKTIVERA |INAKTIVERA |INAKTIVERA |
+| Ingen AC-ström (för att hölje) |INAKTIVERA |INAKTIVERA |INAKTIVERA |INAKTIVERA |
 | Ingen AC-ström (denna PCM endast) |INAKTIVERA |ON |INAKTIVERA |ON |
 | AC finns på PCM - OK |ON |INAKTIVERA |INAKTIVERA |INAKTIVERA |
 | PCM misslyckas (fläkt misslyckas) |INAKTIVERA |INAKTIVERA |ON |Saknas |
@@ -94,7 +94,7 @@ hello status för hello PCM anges på hello VÄGLEDS panelen. hello enheten PCM 
 | Standby-läge |Blinkande |INAKTIVERA |INAKTIVERA |INAKTIVERA |
 | PCM hämtning av inbyggd programvara |INAKTIVERA |Blinkande |Blinkande |Blinkande |
 
-### <a name="pcm-indicator-leds-for-hello-backup-battery"></a>PCM indikator indikatorer för hello säkerhetskopiering batteri
+### <a name="pcm-indicator-leds-for-the-backup-battery"></a>PCM indikator indikatorer för säkerhetskopiering batteri
 | Status | Batteri bra (grönt) | Batteri fel (gul) |
 | --- | --- | --- |
 | Batteri finns inte |INAKTIVERA |INAKTIVERA |
@@ -104,16 +104,16 @@ hello status för hello PCM anges på hello VÄGLEDS panelen. hello enheten PCM 
 | Batteri ”hårt” fel (oåterkalleligt) |INAKTIVERA |ON |
 | Batteri disarmed |Blinkande |INAKTIVERA |
 
-## <a name="pcm-leds-for-hello-ebod-enclosure"></a>PCM indikatorer för hello EBOD hölje
-Hej EBOD hölje har en 580 w vid PCM och inget ytterligare batteri. hello PCM panelen för hello EBOD hölje har indikator indikatorer endast för hello strömkällor och hello-fläkt. hello följande bild visar dessa indikatorer.
+## <a name="pcm-leds-for-the-ebod-enclosure"></a>PCM indikatorer för höljet EBOD
+EBOD höljet har en 580 w vid PCM och inget ytterligare batteri. Panelen PCM för höljet EBOD har indikator indikatorer endast för strömförsörjningar och fläkten. Följande bild visar dessa indikatorer.
 
-   ![PCM indikatorer på hello EBOD hölje][3] 
+   ![PCM indikatorer på höljet EBOD][3] 
 
-Du kan använda följande tabell toodetermine hello status för hello PCM hello.  
+Du kan använda följande tabell för att avgöra status för PCM.  
 
 | Status | PCM bra (grönt) | AC misslyckas (gult) | Fläkt misslyckas (gult) | Domänkontrollanten misslyckas (gult) |
 | --- | --- | --- | --- | --- |
-| Ingen AC-ström (tooenclosure) |INAKTIVERA |INAKTIVERA |INAKTIVERA |INAKTIVERA |
+| Ingen AC-ström (för att hölje) |INAKTIVERA |INAKTIVERA |INAKTIVERA |INAKTIVERA |
 | Ingen AC-ström (denna PCM endast) |INAKTIVERA |ON |INAKTIVERA |ON |
 | AC presentera PCM ON – OK |ON |INAKTIVERA |INAKTIVERA |INAKTIVERA |
 | PCM misslyckas (fläkt misslyckas) |INAKTIVERA |INAKTIVERA |ON |X |
@@ -123,36 +123,36 @@ Du kan använda följande tabell toodetermine hello status för hello PCM hello.
 | PCM hämtning av inbyggd programvara |INAKTIVERA |Blinkande |Blinkande |Blinkande |
 
 ## <a name="controller-module-indicator-leds"></a>Domänkontrollanten modulen indikator indikatorer
-Hej StorSimple-enhet innehåller indikatorer för hello primär domänkontrollant och hello EBOD domänkontrollant moduler.   
+StorSimple-enheten innehåller indikatorer för den primära domänkontrollanten och EBOD domänkontrollant moduler.   
 
-### <a name="monitoring-leds-for-hello-primary-controller"></a>Övervakning indikatorer för hello primär domänkontrollant
-hello kan följande illustration du identifiera hello indikatorer på hello primär domänkontrollant. (Alla hello-komponenter är listade tooaid orientering.)  
+### <a name="monitoring-leds-for-the-primary-controller"></a>Övervakning indikatorer för den primära domänkontrollanten
+Följande bild kan du identifiera indikatorer på den primära domänkontrollanten. (Alla komponenter som visas för att underlätta orientering.)  
 
    ![Övervaka led - primär domänkontrollant][4]
 
-Använd hello följande tabell toodetermine om hello controller modulen fungerar korrekt.  
+Använd följande tabell för att avgöra om modulen domänkontrollanten fungerar korrekt.  
 
 ### <a name="controller-indicator-leds"></a>Domänkontrollanten indikator indikatorer
 | INDIKATOR | Beskrivning |
 | --- | --- |
-| Indikator för ID (blå) |Anger att hello modulen identifieras. Om hello blå Indikator blinkar på en domänkontrollant som körs, sedan hello controller hello aktiva styrenheten och hello andra är hello vänteläge domänkontrollant. Mer information finns i [identifiera hello aktiva styrenheten på enheten](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device). |
-| Fel Indikator (gul) |Anger om ett fel i hello controller. |
-| OK Indikator (grön) |Konstant grönt anger hello styrenheten är OK. Blinkande grönt anger en domänkontrollant VPD konfigurationsfel. |
-| SAS-aktivitet indikatorer (grön) |Konstant grönt anger en anslutning utan aktuell aktivitet. Blinkande grönt anger hello anslutningen har en pågående aktivitet. |
-| Status för Ethernet-indikatorer |Höger anger länken/nätverksaktivitet: (konstant grön) länken active (blinkande grönt) nätverksaktivitet. Vänster anger nätverkshastigheten: (gul) 1000 Mb/s och (grön) 100 Mb/s (OFF) 10 Mb/s. Beroende på hello komponenten modellen, kan den här ljus blinkar även om hello nätverksgränssnittet inte är aktiverad. |
-| EFTER indikatorer |Anger hello Start pågår när hello domänkontrollant är aktiverat. Om hello StorSimple-enhet misslyckas tooboot hjälper denna Indikator Microsoft-supporten identifiera hello i hello startprocessen hello ett fel inträffade vid. |
+| Indikator för ID (blå) |Anger att modulen som ska identifieras. Om blå Indikator blinkar på en domänkontrollant som körs på domänkontrollanten är den aktiva styrenheten och den andra är i vänteläge controller. Mer information finns i [identifiera den aktiva styrenheten på enheten](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device). |
+| Fel Indikator (gul) |Anger om ett fel på Kontrollpanelen. |
+| OK Indikator (grön) |Konstant grönt anger att kontrollanten är OK. Blinkande grönt anger en domänkontrollant VPD konfigurationsfel. |
+| SAS-aktivitet indikatorer (grön) |Konstant grönt anger en anslutning utan aktuell aktivitet. Blinkande grönt anger att anslutningen har en pågående aktivitet. |
+| Status för Ethernet-indikatorer |Höger anger länken/nätverksaktivitet: (konstant grön) länken active (blinkande grönt) nätverksaktivitet. Vänster anger nätverkshastigheten: (gul) 1000 Mb/s och (grön) 100 Mb/s (OFF) 10 Mb/s. Beroende på komponenten modellen, kan den här ljus blinkar även om nätverkskortet inte har aktiverats. |
+| EFTER indikatorer |Anger förloppet start när styrenheten är aktiverat. Om StorSimple-enheten inte kan starta är hjälper denna Indikator Microsoft-supporten identifiera punkten i startprocessen då felet inträffade. |
 
 > [!IMPORTANT]
-> Om hello fel Indikator upplysta, finns ett problem med hello controller modulen som kan lösas genom att starta om hello-styrenhet. Kontakta Microsoft Support om att starta om hello-domänkontrollant inte löser problemet.  
+> Om felet Indikator upplysta, finns ett problem med modulen domänkontrollanten som kan lösas genom att starta om registeransvarige. Kontakta Microsoft Support om omstart av domänkontrollanten inte löser problemet.  
 > 
 > 
 
-### <a name="monitoring-leds-for-hello-ebod-ebod-enclosure"></a>Övervakning indikatorer för hello EBOD (EBOD hölje)
-Varje hello 6 Gb/s SAS EBOD domänkontrollanter har indikatorer som anger dess status enligt följande illustration hello.  
+### <a name="monitoring-leds-for-the-ebod-ebod-enclosure"></a>Övervakning indikatorer för EBOD (EBOD hölje)
+Varje 6 Gbit/s SAS EBOD domänkontrollanter har indikatorer som anger dess status enligt följande bild.  
 
   ![Övervaka led - EBOD hölje][5]
 
-Använd hello följande tabell toodetermine om hello EBOD domänkontrollant modulen fungerar normalt.  
+Använd följande tabell för att avgöra om modulen EBOD domänkontrollanten fungerar normalt.  
 
 ### <a name="ebod-controller-module-indicator-leds"></a>EBOD domänkontrollant modulen indikator indikatorer
 | Status | I/o-modulen bra (grönt) | Fel i/o-modul (gul) | Värdaktivitet port (grön) |
@@ -164,16 +164,16 @@ Använd hello följande tabell toodetermine om hello EBOD domänkontrollant modu
 | Extern värd anslutningsport - aktivitet |- |- |Blinkande |
 | Metadata för domänkontrollanten modulfel |Blinkande |- |- |
 
-## <a name="disk-drive-indicator-leds-for-hello-primary-enclosure-and-ebod-enclosure"></a>Diskenhet indikator indikatorer för hello primära höljet och EBOD hölje
-Hej StorSimple-enhet har diskenheter som finns i både primära hello-höljet och hello EBOD hölje. Varje diskenhet innehåller övervakning indikator led, enligt beskrivningen i det här avsnittet. 
+## <a name="disk-drive-indicator-leds-for-the-primary-enclosure-and-ebod-enclosure"></a>Diskenhet indikator indikatorer för primära höljet och EBOD hölje
+StorSimple-enheten har diskenheter som finns i både primära höljet och EBOD höljet. Varje diskenhet innehåller övervakning indikator led, enligt beskrivningen i det här avsnittet. 
 
-För hello diskenheter hello Enhetsstatus anges med en grön Indikator och en röd gul Indikator monteras på hello framför varje enhet operatör modul. hello följande bild visar dessa indikatorer.
+För diskenheterna visas status för enheten med en grön Indikator och en röd gul Indikator monteras på varje enhet operatör modul framför. Följande bild visar dessa indikatorer.
 
   ![Diskenhet indikatorer][6]
 
-Använd hello efter tabellen toodetermine hello tillståndet för varje diskenhet, vilket i sin tur påverkar hello övergripande frontpanel Indikator status.  
+Använd följande tabell för att avgöra tillståndet för varje diskenhet, vilket i sin tur påverkar den övergripande frontpanelen Indikator status.  
 
-### <a name="disk-drive-indicator-leds-for-hello-ebod-enclosure"></a>Diskenhet indikator indikatorer för hello EBOD hölje
+### <a name="disk-drive-indicator-leds-for-the-ebod-enclosure"></a>Diskenhet indikator indikatorer för höljet EBOD
 | Status | Aktiviteten OK Indikator (grön) | Fel Indikator (röd gul) | Associerade ops panelen Indikator |
 | --- | --- | --- | --- |
 | Ingen installerad enhet |INAKTIVERA |INAKTIVERA |Ingen |
@@ -183,7 +183,7 @@ Använd hello efter tabellen toodetermine hello tillståndet för varje diskenhe
 | Strömavbrott kontrollen krets |INAKTIVERA |ON |Modul-fel (röd) |
 
 ## <a name="audible-alarms"></a>Akustiska signaler
-En StorSimple-enhet innehåller akustiska signaler som är associerade med både primära hello-höljet och hello EBOD hölje. Ett akustiskt larm finns på hello frontpanel (även kallat hello ops panelen) både höljen. hello akustiskt larm anger när ett fel finns. hello larm aktiveras för hello följande villkor:  
+En StorSimple-enhet innehåller akustiska signaler som är associerade med både primära höljet och EBOD höljet. Ett akustiskt larm finns på frontpanel (även kallat panelen ops) både höljen. Att ett larm anger när det finns ett fel. Larm aktiveras för följande villkor:  
 
 * Fläkt fel eller fel
 * Spänning utanför intervallet
@@ -194,26 +194,26 @@ En StorSimple-enhet innehåller akustiska signaler som är associerade med både
 * Ange Strömfel
 * Borttagning av en exponent kylning modul (PCM)  
 
-hello följande tabell beskrivs hello olika larm tillstånd.  
+I följande tabell beskrivs de olika lägena för larm.  
 
 ### <a name="alarm-states"></a>Larm tillstånd
 | Larm tillstånd | Åtgärd | Åtgärden med ljud av knappen trycks ned |
 | --- | --- | --- |
 | S0 |Normalt läge: tyst |Signal två gånger |
-| S1 |Fel-läge: 1 sekund på-1 sekund av |Övergång tooS2 eller S3 (se kommentarer) |
+| S1 |Fel-läge: 1 sekund på-1 sekund av |Övergång till S2 eller S3 (se kommentarer) |
 | S2 |Påminn läge: återkommande signal |Ingen |
 | S3 |Ljudet är avstängt läge: tyst |Ingen |
 | S4 |Kritiska fel läge: kontinuerlig larm |Inte tillgänglig: tyst läge inte aktiv |
 
 > [!NOTE]
-> * Tillståndet larm S1, om du inte trycker tyst inom 2 minuter övergår hello tillstånd automatiskt tooS2 eller S3.  
-> * Larm tillstånd S1 tooS4 tillbaka tooS0 när hello fel är avmarkerad.  
+> * Tillståndet larm S1, om du inte trycker tyst inom 2 minuter övergår tillståndet automatiskt till S2 och S3.  
+> * Larm tillstånd S1 till S4 tillbaka till S0 när villkoret fel är avmarkerad.  
 > * Kritiska fel tillstånd S4 kan anges från andra tillstånd.  
 
 
-Du kan stänga av hello akustiskt larm genom att trycka på hello ljud av knappen på hello ops panelen. Stänga av automatisk ljudet utförs efter två minuter om hello ljud av växeln inte drivs manuellt. När hello larm är avstängt, kommer att fortsätta toosound med kort återkommande PIP tooindicate som en problemet fortfarande kvarstår. hello larm blir tyst när alla hello problem är avmarkerad.
+Du kan stänga av att ett larm genom att trycka på knappen Ljud av på panelen ops. Stänga av automatisk ljudet utförs efter två minuter om växeln tyst inte drivs manuellt. När larmet är avstängt, fortsätter den att ljud med kort återkommande PIP att indikera att en problemet fortfarande kvarstår. Larm blir tyst när alla problem är avmarkerad.
 
-hello följande tabell beskrivs hello olika larm villkor.
+I följande tabell beskrivs de olika larm villkor.
 
 ### <a name="alarm-conditions"></a>Larm villkor
 | Status | Allvarsgrad | Larm | OPS panelen Indikator |

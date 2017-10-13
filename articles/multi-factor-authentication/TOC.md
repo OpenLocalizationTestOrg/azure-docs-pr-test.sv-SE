@@ -1,11 +1,11 @@
 # Översikt
 ## [Vad är Azure Multi-Factor Authentication?](multi-factor-authentication.md)
 ## [Hur det fungerar](multi-factor-authentication-how-it-works.md)
-## [Hur tooget Azure MFA](multi-factor-authentication-versions-plans.md)
+## [Så här skaffar du Azure MFA](multi-factor-authentication-versions-plans.md)
 
 # Kom igång
-## [Välj var toodeploy](multi-factor-authentication-get-started.md)
-## [MFA i molnet hello](multi-factor-authentication-get-started-cloud.md)
+## [Välj var du vill distribuera](multi-factor-authentication-get-started.md)
+## [MFA i molnet](multi-factor-authentication-get-started-cloud.md)
 ## [MFA lokalt](multi-factor-authentication-get-started-server.md)
 ## [MFA för O365-användare](https://support.office.com/article/Plan-for-multi-factor-authentication-for-Office-365-Deployments-043807b2-21db-4d5c-b430-c8a6dee0e6ba)
 ## [Metodtips för säkerhet](multi-factor-authentication-security-best-practices.md)
@@ -18,7 +18,7 @@
 #### [Avancerad konfiguration för NPS-tillägg](nps-extension-advanced-configuration.md)
 ### [Skapa en autentiseringsleverantör](multi-factor-authentication-get-started-auth-provider.md)
 ### Distribuera MFA lokalt
-#### [Installera hello-användarportal](multi-factor-authentication-get-started-portal.md)
+#### [Installera användarportalen](multi-factor-authentication-get-started-portal.md)
 #### [Avancerade VPN-konfigurationer](multi-factor-authentication-advanced-vpn-configurations.md)
 #### [Webbtjänsten för mobilappar](multi-factor-authentication-get-started-server-webservice.md)
 #### [Konfigurera hög tillgänglighet](mfa-server-high-availability.md)

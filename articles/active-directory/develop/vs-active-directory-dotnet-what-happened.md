@@ -1,6 +1,6 @@
 ---
-title: "aaaChanges görs tooa MVC projektet när du ansluter tooAzure AD | Microsoft Docs"
-description: "Beskriver vad som händer tooyour MVC-projektet när du ansluter tooAzure AD med hjälp av Visual Studio anslutna tjänster"
+title: "Ändringar i ett projekt med MVC när du ansluter till Azure AD | Microsoft Docs"
+description: "Beskriver vad som händer i projektet MVC när du ansluter till Azure AD med hjälp av Visual Studio anslutna tjänster"
 services: active-directory
 documentationcenter: na
 author: kraigb
@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 03/01/2017
 ms.author: kraigb
 ms.custom: aaddev
-ms.openlocfilehash: 5e6d4ce5331eacca5fc83429017ae454fadcc8e4
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 095411a7fc854f4dce11921adb0f57c5389a8e13
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="what-happened-toomy-mvc-project-visual-studio-azure-active-directory-connected-service"></a>Vad hände toomy MVC-projektet (Visual Studio Azure Active Directory ansluten service)?
+# <a name="what-happened-to-my-mvc-project-visual-studio-azure-active-directory-connected-service"></a>Vad hände med min MVC-projektet (Visual Studio Azure Active Directory ansluten service)?
 > [!div class="op_single_selector"]
 > * [Komma igång](vs-active-directory-dotnet-getting-started.md)
 > * [Vad hände](vs-active-directory-dotnet-what-happened.md)
@@ -52,28 +52,28 @@ ms.lasthandoff: 10/06/2017
 * **Avsnittsgruppen**
 
 ## <a name="code-has-been-added"></a>Koden har lagts till
-### <a name="code-files-were-added-tooyour-project"></a>Kodfiler har lagts till tooyour projekt
-En autentisering startklass **App_Start/Startup.Auth.cs** har lagts till tooyour projekt som innehåller Startlogik för Azure AD-autentisering. Dessutom lades en domänkontrollant klass, Controllers/AccountController.cs som innehåller **SignIn()** och **SignOut()** metoder. Slutligen en del av en vy, **Views/Shared/_LoginPartial.cshtml** har lagts till som innehåller en länk för åtgärden för inloggning/utloggning.
+### <a name="code-files-were-added-to-your-project"></a>Kodfiler har lagts till i ditt projekt
+En autentisering startklass **App_Start/Startup.Auth.cs** har lagts till i ditt projekt som innehåller Startlogik för Azure AD-autentisering. Dessutom lades en domänkontrollant klass, Controllers/AccountController.cs som innehåller **SignIn()** och **SignOut()** metoder. Slutligen en del av en vy, **Views/Shared/_LoginPartial.cshtml** har lagts till som innehåller en länk för åtgärden för inloggning/utloggning.
 
-### <a name="startup-code-was-added-tooyour-project"></a>Startkoden har lagts till tooyour projekt
-Om du redan har en startklass i projektet, hello **Configuration** metoden var uppdaterade tooinclude ett anrop för**ConfigureAuth(app)**. Annars en startklass har lagts till tooyour projekt.
+### <a name="startup-code-was-added-to-your-project"></a>Startkoden har lagts till i ditt projekt
+Om du redan har en startklass i projektet, den **Configuration** metod har uppdaterats med ett anrop till **ConfigureAuth(app)**. Annars en startklass har lagts till i projektet.
 
 ### <a name="your-appconfig-or-webconfig-has-new-configuration-values"></a>Din app.config eller web.config har nya konfigurationsvärden
-hello följande konfigurationsposter har lagts till.
+Följande konfigurationsposter har lagts till.
 
     <appSettings>
-        <add key="ida:ClientId" value="ClientId from hello new Azure AD App" />
+        <add key="ida:ClientId" value="ClientId from the new Azure AD App" />
         <add key="ida:AADInstance" value="https://login.microsoftonline.com/" />
-        <add key="ida:Domain" value="hello selected Azure AD Domain" />
-        <add key="ida:TenantId" value="hello Id of your selected Azure AD Tenant" />
+        <add key="ida:Domain" value="The selected Azure AD Domain" />
+        <add key="ida:TenantId" value="The Id of your selected Azure AD Tenant" />
         <add key="ida:PostLogoutRedirectUri" value="Your project start page" />
     </appSettings>
 
 ### <a name="an-azure-active-directory-ad-app-was-created"></a>En App i Azure Active Directory (AD) skapades
-En Azure AD-program har skapats i hello-katalog som du valde i guiden hello.
+En Azure AD-program har skapats i den katalog som du valde i guiden.
 
-## <a name="if-i-checked-disable-individual-user-accounts-authentication-what-additional-changes-were-made-toomy-project"></a>Om jag markerad *inaktivera enskilda användarkonton autentisering*, vilka ytterligare ändringar har gjorts toomy projekt?
-NuGet-paketet refererar till har tagits bort och filer har tagits bort och säkerhetskopieras. Beroende på hello tillstånd i ditt projekt kanske toomanually ta bort filer eller ytterligare referenser eller ändra koden efter behov.
+## <a name="if-i-checked-disable-individual-user-accounts-authentication-what-additional-changes-were-made-to-my-project"></a>Om jag markerad *inaktivera enskilda användarkonton autentisering*, vilka ytterligare ändringar har gjorts i projektet?
+NuGet-paketet refererar till har tagits bort och filer har tagits bort och säkerhetskopieras. Beroende på ditt projekt status kan du behöva manuellt ta bort filer eller ytterligare referenser eller ändra koden efter behov.
 
 ### <a name="nuget-package-references-removed-for-those-present"></a>NuGet-paketreferenser tas bort (för de finns)
 * **Microsoft.AspNet.Identity.Core**
@@ -81,7 +81,7 @@ NuGet-paketet refererar till har tagits bort och filer har tagits bort och säke
 * **Microsoft.AspNet.Identity.Owin**
 
 ### <a name="code-files-backed-up-and-removed-for-those-present"></a>Kodfiler säkerhetskopieras och ta bort (de finns)
-Var och en av följande filer säkerhetskopierades och tas bort från hello-projekt. Säkerhetskopiera filer finns i en ' säkerhetskopieringsmappen ' hello roten i hello projektkatalogen.
+Var och en av följande filer har säkerhetskopierats och tas bort från projektet. Säkerhetskopiera filer finns i en ”Backup”-mapp i roten på den projektkatalogen.
 
 * **App_Start\IdentityConfig.CS**
 * **Controllers\ManageController.CS**
@@ -89,14 +89,14 @@ Var och en av följande filer säkerhetskopierades och tas bort från hello-proj
 * **Models\ManageViewModels.CS**
 
 ### <a name="code-files-backed-up-for-those-present"></a>Kodfiler säkerhetskopieras (för de finns)
-Var och en av följande filer har säkerhetskopierats innan som ersätts. Säkerhetskopiera filer finns i en ' säkerhetskopieringsmappen ' hello roten i hello projektkatalogen.
+Var och en av följande filer har säkerhetskopierats innan som ersätts. Säkerhetskopiera filer finns i en ”Backup”-mapp i roten på den projektkatalogen.
 
 * **Startup.CS**
 * **App_Start\Startup.auth.CS**
 * **Controllers\AccountController.CS**
 * **Views\Shared\_LoginPartial.cshtml**
 
-## <a name="if-i-checked-read-directory-data-what-additional-changes-were-made-toomy-project"></a>Om jag markerad *läsa katalogdata*, vilka ytterligare ändringar har gjorts toomy projekt?
+## <a name="if-i-checked-read-directory-data-what-additional-changes-were-made-to-my-project"></a>Om jag markerad *läsa katalogdata*, vilka ytterligare ändringar har gjorts i projektet?
 Ytterligare referenser har lagts till.
 
 ### <a name="additional-nuget-package-references"></a>Ytterligare referenser för NuGet-paket
@@ -119,20 +119,20 @@ Ytterligare referenser har lagts till.
 * **Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms**
 * **System.Spatial**
 
-### <a name="additional-code-files-were-added-tooyour-project"></a>Ytterligare kodfiler har lagts till tooyour projekt
-Två filer har lagts till toosupport tokencachelagring: **Models\ADALTokenCache.cs** och **Models\ApplicationDbContext.cs**.  En ytterligare domänkontrollant och visa lades till tooillustrate åtkomst till användarens profilinformation som använder Azure graph API: er.  De här filerna är **Controllers\UserProfileController.cs** och **Views\UserProfile\Index.cshtml**.
+### <a name="additional-code-files-were-added-to-your-project"></a>Ytterligare kodfiler har lagts till i ditt projekt
+Två filer har lagts till stöd för tokencachelagring: **Models\ADALTokenCache.cs** och **Models\ApplicationDbContext.cs**.  En ytterligare domänkontrollant och visa har lagts till för att illustrera åtkomst till användarens profilinformation som använder Azure graph API: er.  De här filerna är **Controllers\UserProfileController.cs** och **Views\UserProfile\Index.cshtml**.
 
-### <a name="additional-startup-code-was-added-tooyour-project"></a>Ytterligare startkoden har lagts till tooyour projekt
-I hello **startup.auth.cs** -fil, en ny **OpenIdConnectAuthenticationNotifications** objekt lades toohello **meddelanden** tillhör hello  **OpenIdConnectAuthenticationOptions**.  Detta är tooenable ta emot hello OAuth-kod och byta ut den för en åtkomst-token.
+### <a name="additional-startup-code-was-added-to-your-project"></a>Ytterligare startkoden har lagts till i ditt projekt
+I den **startup.auth.cs** -fil, en ny **OpenIdConnectAuthenticationNotifications** objekt lades till i **meddelanden** medlem i den  **OpenIdConnectAuthenticationOptions**.  Detta är att ta emot OAuth-koden och byta ut den för en åtkomst-token.
 
-### <a name="additional-changes-were-made-tooyour-appconfig-or-webconfig"></a>Ytterligare ändringar har gjorts tooyour app.config eller web.config
-hello har följande ytterligare konfigurationsposter lagts till.
+### <a name="additional-changes-were-made-to-your-appconfig-or-webconfig"></a>Ytterligare ändringar har gjorts till web.config eller app.config
+Följande ytterligare konfigurationsposter har lagts till.
 
     <appSettings>
         <add key="ida:ClientSecret" value="Your Azure AD App's new client secret" />
     </appSettings>
 
-hello har följande avsnitt och anslutningssträngen lagts till.
+Följande avsnitt och anslutningssträngen har lagts till.
 
     <configSections>
         <!-- For more information on Entity Framework configuration, visit http://go.microsoft.com/fwlink/?LinkID=237468 -->
@@ -154,7 +154,7 @@ hello har följande avsnitt och anslutningssträngen lagts till.
 
 
 ### <a name="your-azure-active-directory-app-was-updated"></a>Din Azure Active Directory App har uppdaterats
-Din Azure Active Directory App har uppdaterats tooinclude hello *läsa katalogdata* behörighet och nyckeln skapades som användes sedan som hello *ida: ClientSecret* i hello  **Web.config** fil.
+Din Azure Active Directory App har uppdaterats med den *läsa katalogdata* behörighet och nyckeln skapades som användes som sedan den *ida: ClientSecret* i den  **Web.config** fil.
 
 ## <a name="next-steps"></a>Nästa steg
 - [Lär dig mer om Azure Active Directory](https://azure.microsoft.com/services/active-directory/)

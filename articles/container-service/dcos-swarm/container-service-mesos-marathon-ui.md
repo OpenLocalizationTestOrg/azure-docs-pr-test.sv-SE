@@ -1,6 +1,6 @@
 ---
-title: "aaaManage Azure DC/OS-kluster med Marathon-Gränssnittet | Microsoft Docs"
-description: "Distribuera behållare tooan Azure Container Service-klustertjänsten med hello Marathons webbgränssnitt."
+title: "Hantera Azure DC/OS-kluster med Marathon-Gränssnittet | Microsoft Docs"
+description: "Distribuera behållare till en klustertjänst i Azure Container Service med Marathons webbgränssnitt."
 services: container-service
 documentationcenter: 
 author: dlepow
@@ -16,40 +16,40 @@ ms.workload: na
 ms.date: 04/04/2017
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: a90180e1b4763e6d2ddfa699ed4b7269f209f728
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: b00088bb005519dc5d533433308c0e3e33c7f433
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
-# <a name="manage-an-azure-container-service-dcos-cluster-through-hello-marathon-web-ui"></a>Hantera en Azure Container Service DC/OS-klustret via hello Marathons webbgränssnitt
-DC/OS erbjuder en miljö för att distribuera och skala klustrade arbetsbelastningar samtidigt abstrahera hello underliggande maskinvara. Utöver DC/OS finns det ett ramverk som hanterar schemaläggning och beräkning av arbetsbelastningar.
+# <a name="manage-an-azure-container-service-dcos-cluster-through-the-marathon-web-ui"></a>Hantera ett Azure Container Service DC/OS-kluster via webbgränssnittet för Marathon
+DC/OS erbjuder en miljö för att distribuera och skala klustrade arbetsbelastningar samtidigt som den underliggande maskinvaran abstraheras. Utöver DC/OS finns det ett ramverk som hanterar schemaläggning och beräkning av arbetsbelastningar.
 
-Även om ramverk är tillgängliga för många populära arbetsbelastningar beskriver det här dokumentet hur tooget igång med att distribuera behållare med Marathon. 
+Även om ramverk är tillgängliga för många populära arbetsbelastningar beskriver det här dokumentet hur du kommer igång med att distribuera behållare med Marathon. 
 
 
 ## <a name="prerequisites"></a>Krav
-Innan du börjar med de här exemplen behöver du ett DC/OS-kluster som har konfigurerats i Azure Container Service. Du måste också toohave fjärranslutningar toothis klustret. Mer information om dessa objekt finns i hello följande artiklar:
+Innan du börjar med de här exemplen behöver du ett DC/OS-kluster som har konfigurerats i Azure Container Service. Du måste också kunna fjärransluta till det här klustret. Mer information finns i följande artiklar:
 
 * [Distribuera ett Azure Container Service-kluster](container-service-deployment.md)
-* [Ansluta tooan Azure Container Service-kluster](../container-service-connect.md)
+* [Ansluta till ett Azure Container Service-kluster](../container-service-connect.md)
 
 > [!NOTE]
-> Den här artikeln förutsätter att du använder tunneltrafik toohello DC/OS-klustret via en lokal port 80.
+> Den här artikeln förutsätter att du använder tunneltrafik DC/OS-klustret via en lokal port 80.
 >
 
-## <a name="explore-hello-dcos-ui"></a>Utforska hello DC/OS-gränssnitt
-Med en tunnel SSH (Secure Shell) [upprätta](../container-service-connect.md), bläddra toohttp://localhost/. Detta laddar hello DC/OS-webbgränssnittet och visar information om hello klustret, till exempel använda resurser, aktiva agenter och tjänster som körs.
+## <a name="explore-the-dcos-ui"></a>Utforska gränssnittet för DC/OS
+Gå till http://localhost/ via en [etablerad](../container-service-connect.md) SSH-tunnel (Secure Shell). Då läses webbgränssnittet för DC/OS in och du kan se information om klustret, till exempel använda resurser, aktiva agenter och tjänster som körs.
 
 ![DC/OS-gränssnitt:](./media/container-service-mesos-marathon-ui/dcos2.png)
 
-## <a name="explore-hello-marathon-ui"></a>Utforska hello Marathon-Gränssnittet
-toosee hello Användargränssnittet för Marathon Bläddra toohttp://localhost/marathon. Från den här skärmbilden kan starta du en ny behållare eller ett annat program på hello Azure Container Service DC/OS-klustret. Du kan även se information om att köra behållare och program.  
+## <a name="explore-the-marathon-ui"></a>Utforska Marathon-gränssnittet
+Om du vill visa Gränssnittet i Marathon, gå till http://localhost/marathon. Från den här skärmbilden kan du starta en ny behållare eller ett annat program på DC/OS-klustret för Azure Container Service. Du kan även se information om att köra behållare och program.  
 
 ![Gränssnittet i Marathon](./media/container-service-mesos-marathon-ui/dcos3.png)
 
 ## <a name="deploy-a-docker-formatted-container"></a>Distribuera en Docker-formaterad behållare
-toodeploy en ny behållare med Marathon, klickar du på **skapa program**, och ange följande information i hello formuläret flikar hello:
+Om du vill distribuera en ny behållare med hjälp av Marathon klickar du på **Skapa program** och anger följande information på flikarna i formuläret:
 
 | Fält | Värde |
 | --- | --- |
@@ -66,7 +66,7 @@ toodeploy en ny behållare med Marathon, klickar du på **skapa program**, och a
 
 ![Nytt programgränssnitt – portar och identifiering av tjänst](./media/container-service-mesos-marathon-ui/dcos6.png)
 
-Om du vill toostatically mappa hello behållaren port tooa port på hello-agenten måste toouse JSON-läget. toodo så växla hello guiden för nya program för**JSON-läget** med hjälp av hello växla. Ange följande inställningen under hello hello `portMappings` avsnitt i hello programmets definition. Det här exemplet Binder port 80 på hello behållaren tooport 80 av hello DC/OS-agenten. När du har gjort den här ändringen kan du växla ur guiden ur JSON-läget.
+Om du vill mappa behållarporten statiskt till en port på agenten måste du använda JSON-läget. För att göra det växlar du guiden för nya program till **JSON-läge** med hjälp av växlingsknappen. Ange sedan följande inställning under avsnittet `portMappings` i programdefinitionen. Det här exemplet binder behållarens port 80 till port 80 på DC/OS-agenten. När du har gjort den här ändringen kan du växla ur guiden ur JSON-läget.
 
 ```none
 "hostPort": 80,
@@ -74,42 +74,42 @@ Om du vill toostatically mappa hello behållaren port tooa port på hello-agente
 
 ![Nytt programgränssnitt – port 80-exempel](./media/container-service-mesos-marathon-ui/dcos13.png)
 
-Om du vill tooenable hälsokontroller, ange en sökväg på hello **hälsa kontrollerar** fliken.
+Om du vill aktivera hälsokontroller anger du en sökväg på fliken **Hälsokontroller**.
 
 ![Nytt programanvändargränssnitt – hälsokontroller](./media/container-service-mesos-marathon-ui/dcos_healthcheck.png)
 
-hello DC/OS-klustret distribueras med privata och offentliga agenter. För hello klustret toobe kan tooaccess program från hello Internet behöver du toodeploy hello program tooa offentlig agent. Välj toodo därför hello **valfritt** fliken hello nytt program guiden och ange **slave_public** för hello **accepterade resursroller**.
+DC/OS-klustret distribueras med privata och offentliga agenter. För att klustret ska kunna komma åt program från Internet måste du distribuera programmen till en offentlig agent. För att göra det väljer du fliken **Valfritt** i guiden Nytt program och anger **slave_public** för **Accepterade resursroller**.
 
 Klicka på **Skapa program**.
 
 ![Nytt programgränssnitt – inställning av offentlig agent](./media/container-service-mesos-marathon-ui/dcos14.png)
 
-Tillbaka på hello huvudsidan för Marathon ser du hello Distributionsstatus för hello behållare. Inledningsvis visas statusen **Distribuerar**. Efter en lyckad distribution hello status ändras för**kör**.
+Tillbaka på huvudsidan för Marathon kan du se distributionsstatusen för behållaren. Inledningsvis visas statusen **Distribuerar**. När distributionen är klar ändras statusen till **Kör**.
 
 ![Marathon-huvudsidans gränssnitt 0 behållarens distributionsstatus](./media/container-service-mesos-marathon-ui/dcos7.png)
 
-När du växlar tillbaka toohello DC/OS-webbgränssnittet (http://localhost/) ser du att en aktivitet (i det här fallet en Docker-formaterad behållare) körs på hello DC/OS-klustret.
+När du växlar tillbaka till webbgränssnittet för DC/OS (http://localhost/) ser du att en aktivitet (i det här fallet en Docker-formaterad behållare) körs i DC/OS-klustret.
 
-![DC/OS-webbgränssnitt – aktivitet som körs på klustret hello](./media/container-service-mesos-marathon-ui/dcos8.png)
+![DC/OS-webbgränssnitt – aktivitet som körs på klustret](./media/container-service-mesos-marathon-ui/dcos8.png)
 
-toosee hello nod i klustret som hello aktiviteten körs på, klicka på hello **noder** fliken.
+Du kan visa klusternoden som uppgiften körs på genom att klicka på fliken **Noder**.
 
 ![DC/OS-webbgränssnitt – klusternod](./media/container-service-mesos-marathon-ui/dcos9.png)
 
-## <a name="reach-hello-container"></a>Nå hello behållare
+## <a name="reach-the-container"></a>Nå behållaren
 
-I det här exemplet körs hello programmet på en offentlig agent-nod. Du når programmet hello från hello internet genom att bläddra toohello agent FQDN för hello kluster: `http://[DNSPREFIX]agents.[REGION].cloudapp.azure.com`, där:
+Programmet körs i detta exempel på en offentlig agent-nod. Du når programmet från internet genom att bläddra till agenten klustrets FQDN-namn: `http://[DNSPREFIX]agents.[REGION].cloudapp.azure.com`, där:
 
-* **DNSPREFIX** är hello DNS-prefix som du angav när du har distribuerat hello klustret.
-* **REGION** hello region där resursgruppen finns.
+* **DNSPREFIX** är det DNS-prefix som du angav när du distribuerade klustret.
+* **REGION** är den region där resursgruppen finns.
 
     ![Nginx från Internet](./media/container-service-mesos-marathon-ui/nginx.png)
 
 
 ## <a name="next-steps"></a>Nästa steg
-* [Arbeta med DC/OS och Marathon API hello](container-service-mesos-marathon-rest.md)
+* [Arbeta med API för DC/OS och Marathon API](container-service-mesos-marathon-rest.md)
 
-* Ingående om hello Azure Container Service med Mesos
+* Ingående om Azure Container Service med Mesos
 
     > [!VIDEO https://channel9.msdn.com/Events/Microsoft-Azure/AzureCon-2015/ACON203/player]
     > 

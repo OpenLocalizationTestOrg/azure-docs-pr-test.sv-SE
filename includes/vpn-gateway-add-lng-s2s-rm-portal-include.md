@@ -1,15 +1,15 @@
-1. Hello-portalen från **alla resurser**, klickar du på **+ Lägg till**. 
-2. I hello **allt** bladet sökrutan, Skriv **lokal nätverksgateway**, klicka på toosearch. Detta gör att en lista returneras. Klicka på **lokal nätverksgateway** tooopen hello bladet och klicka sedan på **skapa** tooopen hello **skapa lokal nätverksgateway** bladet.
+1. Klicka på **+Lägg till** från **Alla resurser** i portalen. 
+2. I bladsökrutan **Allt** skriver du **Lokal nätverksgateway** och klickar sedan för att söka. Detta gör att en lista returneras. Klicka på **Lokal nätverksgateway** för att öppna bladet och klicka sedan på **Skapa** för att öppna bladet**Skapa lokal nätverksgateway**.
 
   ![skapa lokal nätverksgateway](./media/vpn-gateway-add-lng-s2s-rm-portal-include/createlng.png)
 
-3. På hello **skapa lokal nätverksgateway-bladet**, ange hello värden för din lokala nätverksgateway.
+3. På **Skapa lokal nätverksgateway-bladet**, anger du värden för din lokala gateway.
 
   - **Namn:** Ange ett namn för ditt lokala gateway-objekt.
-  - **IP-adress:** hello offentliga IP-adress för hello VPN-enhet som du vill använda Azure tooconnect till. Ange en giltig offentlig IP-adress. hello IP-adress får inte vara bakom NAT och har toobe som kan nås av Azure. Om du inte har hello IP-adress nu, du kan använda hello värdena som visas i hello skärmdump, men du behöver toogo tillbaka och ersätta din platshållare IP-adress med hello offentliga IP-adressen för VPN-enhet. Annars blir inte Azure kan tooconnect.
-  - **Adressutrymmet** refererar toohello adressintervall för hello-nätverket som representerar den här lokala nätverket. Du kan lägga till flera adressintervall. Kontrollera att hello-intervall som du anger här inte överlappar intervallen för andra nätverk som du vill tooconnect till. Azure dirigerar hello-adressintervall som du anger toohello lokala VPN-enhetens IP-adress. *Använda egna värden här, inte hello värden som visas i skärmbilden hello*.
-  - **Prenumerationen:** Kontrollera att korrekt prenumeration visas hello.
-  - **Resursgrupp:** väljer hello resursgrupp som du vill toouse. Du kan antingen skapa en ny resursgrupp eller välja en som du redan har skapat.
-  - **Plats:** Välj hello-plats som det här objektet kommer att skapas i. Du kanske vill tooselect hello samma plats som din virtuella nätverk finns i, inte men du nödvändiga toodo så.
+  - **IP address:** Det här är den offentliga IP-adressen för den VPN-enhet som du vill att Azure ska ansluta till. Ange en giltig offentlig IP-adress. IP-adressen får inte vara bakom en NAT och måste kunna nås av Azure. Om du inte har IP-adress just nu, du kan använda de värden som visas i skärmbilden, men du behöver gå tillbaka och ersätta platshållar-IP-adressen med den offentliga IP-adressen för VPN-enheten. Azure kommer annars inte kunna ansluta.
+  - **Adressutrymme** refererar till adressintervallen för det nätverk som detta lokala nätverk representerar. Du kan lägga till flera adressintervall. Kontrollera att intervallen du anger här inte överlappar intervallen för andra nätverk som du vill ansluta till. Azure vidarebefordrar det adressintervall som du anger till den lokala VPN-enhetens IP-adress. *Använd dina egna värden här, inte värdena som visas i skärmbilden*.
+  - **Prenumeration:** Kontrollera att korrekt prenumeration visas.
+  - **Resursgrupp:** Välj den resursgrupp som du vill använda. Du kan antingen skapa en ny resursgrupp eller välja en som du redan har skapat.
+  - **Plats:** Välj den plats som det här objektet kommer att skapas i. Du kanske vill välja samma plats som din VNet finns i, men du behöver inte göra det.
 
-4. När du är klar med att ange värden för hello klickar du på **skapa** längst hello hello bladet toocreate hello lokala nätverkets gateway.
+4. När du är klar med att ange värden klickar du på **Skapa** längst ned på bladet för att skapa den lokala nätverksgatewayen.

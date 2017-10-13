@@ -1,6 +1,6 @@
 ---
-title: "aaaAdd ett Azure Active Directory B2B-samarbete användarrollen tooa | Microsoft Docs"
-description: "Lägg till en roll tooa gäst i Azure Active Directory"
+title: "Lägg till en Azure Active Directory B2B-samarbete användare till en roll | Microsoft Docs"
+description: "Lägg till en gästanvändare till en roll i Azure Active Directory"
 services: active-directory
 documentationcenter: 
 author: sasubram
@@ -16,15 +16,15 @@ ms.workload: identity
 ms.date: 03/15/2017
 ms.author: sasubram
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ccc58a0c8ecc73f8e79a8d827efdc0ff93846a96
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: e816349ea971c997f655b4d51672dba666bc3e89
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="grant-permissions-toousers-from-partner-organizations-in-your-azure-active-directory-tenant"></a>Bevilja behörigheter toousers från partnerorganisationer i Azure Active Directory-klient
+# <a name="grant-permissions-to-users-from-partner-organizations-in-your-azure-active-directory-tenant"></a>Bevilja behörigheter till användare från partnerorganisationer i Azure Active Directory-klient
 
-Azure Active Directory (AD Azure) B2B-samarbete användare läggs till som gäst användare toohello directory och gästbehörigheter i hello directory begränsas som standard. Ditt företag kanske måste vissa gäst användare toofill högre behörighet roller i din organisation. toosupport definiera högre behörighet roller gästanvändare kan vara tillagda tooany roller som du önskar, baserat på organisationens behov.
+Azure Active Directory (AD Azure) B2B-samarbete användare läggs till som gästanvändare i katalogen och gästbehörigheter i katalogen begränsas som standard. Ditt företag kanske måste vissa gästanvändare att fylla högre behörighet roller i din organisation. Gästanvändare kan läggas till några roller som du önskar, baserat på din organisations behov för att stödja definiera roller för högre behörighet.
 
 ## <a name="default-role"></a>standardroll
 

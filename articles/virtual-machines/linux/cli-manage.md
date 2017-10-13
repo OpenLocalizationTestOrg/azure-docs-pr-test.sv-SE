@@ -1,6 +1,6 @@
 ---
-title: aaaCommon Azure CLI 2.0 kommandon | Microsoft Docs
-description: "Lär dig några hello vanliga Azure CLI 2.0 kommandon tooget du igång med att hantera dina virtuella datorer i Azure Resource Manager-läge"
+title: "Vanliga kommandon för Azure CLI 2.0 | Microsoft Docs"
+description: "Lär dig några vanliga Azure CLI 2.0-kommandon för att komma igång med att hantera dina virtuella datorer i Azure Resource Manager-läge"
 services: virtual-machines-linux
 documentationcenter: 
 author: RicksterCDN
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/12/2017
 ms.author: rclaus
-ms.openlocfilehash: 31be426b601ef964f57016cc027b0b0079fc3680
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 091bba93bd9730f3fea0aa8667cfdcda2d7aa0ed
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="common-azure-cli-20-commands-for-managing-azure-resources"></a>Vanliga Azure CLI 2.0-kommandon för att hantera Azure-resurser
 [!INCLUDE [virtual-machines-common-cli-manage](../../../includes/virtual-machines-common-cli-manage.md)]

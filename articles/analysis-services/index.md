@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure Analysis Services-dokumentation – självstudier, API-referens | Microsoft Docs"
-description: "Lär dig hur tooset upp datamodellering med Analysis Services i hello cloud. Dokumentationen visar hur toocreate en företagslösning för BI med hjälp av data i tabellformat."
+title: "Dokumentation om Azure Analysis Services – Självstudier, API-referens | Microsoft Docs"
+description: "Lär dig hur du konfigurerar datamodellering med Analysis Services i molnet. Dokumentation som visar hur du skapar en företags-BI-lösning med hjälp av tabelldata."
 services: analysis-services
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 077b13f9eb6eea87b96833452382b8e019f09a6f
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 3f66f61651aab5f1cf0850cdbbd069b0a9a65543
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="analysis-services-documentation"></a>Dokumentation för Analysis Services
 
-Lär dig hur tooset och hantera datamodeller med Analysis Services. Självstudiekurser och andra dokumentationen visar hur toocreate en företagsklass BI-lösning med tabelldata i hello molnet eller lokalt.
+Lär dig hur du konfigurerar och hanterar datamodellering med Analysis Services. Självstudier och annan dokumentation visar hur du skapar en BI-lösning i företagsklass med hjälp av tabelldata i molnet eller på plats.
 
 <ul class="panelContent cardsFTitle">
     <li>

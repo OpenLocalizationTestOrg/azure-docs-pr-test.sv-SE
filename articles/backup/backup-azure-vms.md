@@ -1,5 +1,5 @@
 ---
-title: "aaaBack in klassiska distribuerade virtuella Azure-datorer tooa säkerhetskopieringsvalvet | Microsoft Docs"
+title: "Säkerhetskopiera klassisk distribuerade virtuella Azure-datorer till ett säkerhetskopieringsvalv | Microsoft Docs"
 description: "Identifiera, registrera och säkerhetskopiera virtuella datorer med de här procedurerna för virtuell dator i Azure-säkerhetskopiering."
 services: backup
 documentationcenter: 
@@ -15,84 +15,84 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: markgal;trinadhk;
-ms.openlocfilehash: 048e32d9b2bd5bdd7a125225a71a6d805bb4fbd4
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: e1da8bce96078a43c656f84005cefc8bbe81c9e3
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="back-up-azure-virtual-machines-classic-portal"></a>Säkerhetskopiera virtuella Azure-datorer (klassiska portal)
 > [!div class="op_single_selector"]
-> * [Säkerhetskopiera virtuella datorer tooRecovery Services-valvet](backup-azure-arm-vms.md)
-> * [Säkerhetskopiera virtuella datorer tooBackup valvet](backup-azure-vms.md)
+> * [Säkerhetskopiera virtuella datorer till Recovery Services-valvet](backup-azure-arm-vms.md)
+> * [Säkerhetskopiera virtuella datorer till Backup-valvet](backup-azure-vms.md)
 >
 >
 
-Den här artikeln innehåller hello procedurer för att säkerhetskopiera en distribuerade klassisk Azure-dator (VM) tooa Backup-valvet. Det finns några uppgifter som du måste tootake care av innan du kan säkerhetskopiera en virtuell Azure-dator. Om du inte redan gjort, fullständig hello [krav](backup-azure-vms-prepare.md) tooprepare din miljö för att säkerhetskopiera dina virtuella datorer.
+Den här artikeln innehåller procedurerna för att säkerhetskopiera en klassisk distribuerade Azure virtuell dator (VM) till en Backup-valvet. Det finns några uppgifter som du behöver ta hand om innan du kan säkerhetskopiera en virtuell Azure-dator. Om du inte redan har gjort Slutför den [krav](backup-azure-vms-prepare.md) att förbereda miljön för att säkerhetskopiera dina virtuella datorer.
 
-Mer information finns i hello artiklar på [planerar din infrastruktur för VM-säkerhetskopiering i Azure](backup-azure-vms-introduction.md) och [virtuella Azure-datorer](https://azure.microsoft.com/documentation/services/virtual-machines/).
+Mer information finns i artiklar på [planerar din infrastruktur för VM-säkerhetskopiering i Azure](backup-azure-vms-introduction.md) och [virtuella Azure-datorer](https://azure.microsoft.com/documentation/services/virtual-machines/).
 
 > [!NOTE]
-> Azure har två distributionsmodeller som används för att skapa och arbeta med resurser: [Resource Manager och den klassiska distributionsmodellen](../azure-resource-manager/resource-manager-deployment-model.md). Ett säkerhetskopieringsvalv kan bara skydda klassisk distribuerade virtuella datorer. Du kan inte skydda Hanteraren för filserverresurser distribuerade virtuella datorer med en Backup-valvet. Se [säkerhetskopiera virtuella datorer tooRecovery Services-valvet](backup-azure-arm-vms.md) mer information om hur du arbetar med Recovery Services-valv.
+> Azure har två distributionsmodeller som används för att skapa och arbeta med resurser: [Resource Manager och den klassiska distributionsmodellen](../azure-resource-manager/resource-manager-deployment-model.md). Ett säkerhetskopieringsvalv kan bara skydda klassisk distribuerade virtuella datorer. Du kan inte skydda Hanteraren för filserverresurser distribuerade virtuella datorer med en Backup-valvet. Se [säkerhetskopiera virtuella datorer till Recovery Services-valvet](backup-azure-arm-vms.md) mer information om hur du arbetar med Recovery Services-valv.
 >
 >
 
 Säkerhetskopiering av virtuella Azure-datorer omfattar tre viktiga steg:
 
-![Tre steg tooback upp en Azure IaaS-VM](./media/backup-azure-vms/3-steps-for-backup.png)
+![Tre steg för att säkerhetskopiera en Azure IaaS-VM](./media/backup-azure-vms/3-steps-for-backup.png)
 
 > [!NOTE]
-> Säkerhetskopieringen av virtuella datorer är en lokal process. Du kan säkerhetskopiera virtuella datorer i en region tooa säkerhetskopieringsvalvet i en annan region. Så du måste skapa ett säkerhetskopieringsvalv i varje Azure-region där det finns virtuella datorer som ska säkerhetskopieras.
+> Säkerhetskopieringen av virtuella datorer är en lokal process. Du kan säkerhetskopiera virtuella datorer i en region för säkerhetskopieringsvalvet i en annan region. Så du måste skapa ett säkerhetskopieringsvalv i varje Azure-region där det finns virtuella datorer som ska säkerhetskopieras.
 >
 > [!IMPORTANT]
-> Från mars 2017 kan använda du inte längre hello klassiska portal toocreate säkerhetskopieringsvalv.
-> Nu kan du uppgradera ditt valv tooRecovery Services säkerhetskopieringsvalv. Mer information finns i artikeln hello [uppgradera en Backup-valvet tooa Recovery Services-valvet](backup-azure-upgrade-backup-to-recovery-services.md). Microsoft rekommenderar att du tooupgrade din säkerhetskopieringsvalv tooRecovery Services-valv.<br/> Du kan inte använda PowerShell toocreate säkerhetskopieringsvalv efter 15 oktober 2017. **Från den 1 november 2017**:
->- Alla återstående säkerhetskopieringsvalv blir automatiskt uppgraderade tooRecovery Services-valv.
->- Du kommer inte att kunna tooaccess dina säkerhetskopierade data i hello klassiska portalen. Använd i stället hello Azure portal tooaccess dina säkerhetskopierade data i Recovery Services-valv.
+> Från och med mars 2017 kan du inte längre använda den klassiska portalen för att skapa säkerhetskopieringsvalv.
+> Nu kan du uppgradera dina säkerhetskopieringsvalv till Recovery Services-valv. Mer information finns i artikeln [Upgrade a Backup vault to a Recovery Services vault](backup-azure-upgrade-backup-to-recovery-services.md) (Uppgradera ett säkerhetskopieringsvalv till ett Recovery Services-valv). Microsoft rekommenderar att du uppgraderar dina säkerhetskopieringsvalv till Recovery Services-valv.<br/> Efter den 15 oktober 2017 kan du inte längre använda PowerShell för att skapa säkerhetskopieringsvalv. **Från den 1 november 2017**:
+>- Alla återstående säkerhetskopieringsvalv uppgraderas automatiskt till Recovery Services-valv.
+>- Du kan inte längre komma åt dina säkerhetskopierade data i den klassiska portalen. Använd i stället Azure Portal till att få åtkomst till dina säkerhetskopierade data i Recovery Services-valv.
 >
 
 ## <a name="step-1---discover-azure-virtual-machines"></a>Steg 1 – identifiera virtuella Azure-datorer
-tooensure alla nya virtuella datorer (VM) tillagda toohello abonnemang identifieras innan du registrerar, kör hello identifieringsprocessen. hello begär Azure hello listan över virtuella datorer i hello-prenumeration, tillsammans med ytterligare information som hello molntjänstnamnet och hello region.
+Om du vill se till att alla nya virtuella datorer (VM) lägga till prenumerationen identifieras innan du registrerar kör identifieringen. Under processen uppmanas Azure att returnera listan med virtuella datorer i prenumerationen, tillsammans med ytterligare information som molntjänstens namn och regionen.
 
-1. Logga in toohello [klassisk portal](http://manage.windowsazure.com/)
-2. Hello listan med Azure-tjänster, på **återställningstjänster** tooopen hello lista över säkerhetskopiering och Site Recovery-valv.
+1. Logga in på den [klassisk portal](http://manage.windowsazure.com/)
+2. I listan över Azure-tjänster, klickar du på **återställningstjänster** att öppna listan över säkerhetskopiering och Site Recovery-valv.
     ![Öppna valvet lista](./media/backup-azure-vms/choose-vault-list.png)
-3. Välj hello valvet tooback upp en virtuell dator i hello lista av säkerhetskopieringsvalv.
+3. Välj valvet för att säkerhetskopiera en virtuell dator i listan över säkerhetskopieringsvalv.
 
-    Om det här är en ny valvet hello portal öppnar toohello **Snabbstart** sidan.
+    Om det här är ett nytt valv portalen öppnas på den **Snabbstart** sidan.
 
     ![Öppna registrerade objekt-menyn](./media/backup-azure-vms/vault-quick-start.png)
 
-    Om hello valvet tidigare har konfigurerats, öppnar hello portal toohello som senast har använt-menyn.
-4. Hello valvet menyn (överst hello på hello sidan) och klicka på **registrerade objekt**.
+    Om valvet tidigare har konfigurerats, öppnar portalen senast använda-menyn.
+4. Klicka på menyn valvet (överst på sidan) **registrerade objekt**.
 
     ![Öppna registrerade objekt-menyn](./media/backup-azure-vms/vault-menu.png)
-5. Från hello **typen** väljer du **Azure virtuella**.
+5. Välj  **Virtuell Azure-dator** på **Typ**-menyn.
 
     ![Välja arbetsbelastning](./media/backup-azure-vms/discovery-select-workload.png)
-6. Klicka på **identifiera** på hello hello sidans nederkant.
+6. Klicka på **Identifiera** längst ned på sidan.
     ![Knappen Identifiera](./media/backup-azure-vms/discover-button-only.png)
 
-    hello identifieringen kan ta några minuter innan hello virtuella datorer visas som som en tabell. Det finns ett meddelande längst ned hello hello-skärmen där du vet att hello processen körs.
+    Identifieringen kan ta några minuter medan de virtuella datorerna visas i tabellformat. Ett meddelande visas längst ned på skärmen som anger att processen körs.
 
     ![Identifiera virtuella datorer](./media/backup-azure-vms/discovering-vms.png)
 
-    hello-meddelande ändras när hello processen har slutförts. Om hello identifieringsprocessen inte gick att hitta hello virtuella datorer, kontrollera först hello virtuella datorer finns. Om det finns virtuella datorer hello, kontrollera hello virtuella datorer är i hello samma region som hello säkerhetskopieringsvalvet. Om hello VMs finns och är i Hej samma region, kontrollera hello virtuella datorer inte är redan registrerad tooa säkerhetskopieringsvalvet. Om en virtuell dator är tilldelade tooa säkerhetskopieringsvalvet men det är inte tillgängliga toobe tilldelade tooother säkerhetskopieringsvalv.
+    Meddelandet ändras när processen är klar. Om identifieringen inte gick att hitta de virtuella datorerna, först se till att de virtuella datorerna finns. Om de virtuella datorerna finns, se till att de virtuella datorerna finns i samma region som säkerhetskopieringsvalvet. Om de virtuella datorerna finns och är i samma region, se till att de virtuella datorerna inte redan har registrerats ett säkerhetskopieringsvalv. Om en virtuell dator har tilldelats ett säkerhetskopieringsvalv som den inte är tillgänglig som ska tilldelas andra säkerhetskopieringsvalv.
 
     ![Identifieringen är klar](./media/backup-azure-vms/discovery-complete.png)
 
-    När du har identifierat hello nya objekt, gå tooStep 2 och registrera dina virtuella datorer.
+    När du har identifierat nya objekt, gå till steg 2 och registrera dina virtuella datorer.
 
 ## <a name="step-2---register-azure-virtual-machines"></a>Steg 2 – registrera virtuella Azure-datorer
-Registrerar du en virtuell dator i Azure-tooassociate med hello Azure Backup-tjänsten. Detta inträffar vanligtvis en gång.
+Registrerar du en virtuell Azure-dator för att associera den med Azure Backup-tjänsten. Detta inträffar vanligtvis en gång.
 
-1. Navigera toohello säkerhetskopieringsvalv under **återställningstjänster** i hello Azure-portalen och klicka sedan på **registrerade objekt**.
-2. Välj **Azure virtuella** hello nedrullningsbara menyn.
+1. Navigera till säkerhetskopieringsvalvet under **återställningstjänster** i Azure-portalen och klicka sedan på **registrerade objekt**.
+2. Välj **Virtuell Azure-dator** i listrutan.
 
     ![Välja arbetsbelastning](./media/backup-azure-vms/discovery-select-workload.png)
-3. Klicka på **registrera** på hello hello sidans nederkant.
+3. Klicka på **Registrera** längst ned på sidan.
     ![Knappen Registrera](./media/backup-azure-vms/register-button-only.png)
-4. I hello **registrera objekt** snabbmenyn, Välj hello virtuella datorer som du vill tooregister. Om det finns två eller flera virtuella datorer med hello samma, Använd hello cloud service toodistinguish mellan dem.
+4. På snabbmenyn **Registrera objekt** väljer du de virtuella datorer som du vill registrera. Om det finns två eller flera virtuella datorer med samma namn, kan du använda Molntjänsten för att skilja dem åt.
 
    > [!TIP]
    > Flera virtuella datorer kan registreras samtidigt.
@@ -100,32 +100,32 @@ Registrerar du en virtuell dator i Azure-tooassociate med hello Azure Backup-tj�
    >
 
     Ett jobb skapas för varje virtuell dator som du har valt.
-5. Klicka på **visa jobb** i hello meddelande toogo toohello **jobb** sidan.
+5. Klicka på **Visa jobb** i meddelandet för att gå till sidan **Jobb**.
 
     ![Registrera jobb](./media/backup-azure-vms/register-create-job.png)
 
-    hello virtuell dator visas också i hello lista över registrerade artiklar, tillsammans med hello status för hello registrering åtgärd.
+    Den virtuella datorn visas också i listan över registrerade objekt, tillsammans med statusen för registreringsåtgärden.
 
     ![Registreringsstatus 1](./media/backup-azure-vms/register-status01.png)
 
-    När hello har slutförts, hello status ändras tooreflect hello *registrerade* tillstånd.
+    När åtgärden har slutförts ändras statusen för att återspegla tillståndet för *registrerade objekt*.
 
     ![Registreringsstatus 2](./media/backup-azure-vms/register-status02.png)
 
 ## <a name="step-3---protect-azure-virtual-machines"></a>Steg 3 – skydda virtuella Azure-datorer
-Du kan nu konfigurera en princip för säkerhetskopiering och kvarhållning för hello virtuell dator. Flera virtuella datorer kan skyddas med hjälp av en enda skydda åtgärd.
+Du kan nu konfigurera en princip för säkerhetskopiering och kvarhållning för den virtuella datorn. Flera virtuella datorer kan skyddas med hjälp av en enda skydda åtgärd.
 
-Azure-säkerhetskopieringsvalv skapas efter maj 2015 medföljer en standardprincip inbyggda hello-valvet. Den här standardprincipen innehåller en Standardkvarhållning av 30 dagar och ett schema för säkerhetskopiering av en gång dagligen.
+Azure-säkerhetskopieringsvalv skapas efter maj 2015 medföljer en standardprincip inbyggda i valvet. Den här standardprincipen innehåller en Standardkvarhållning av 30 dagar och ett schema för säkerhetskopiering av en gång dagligen.
 
-1. Navigera toohello säkerhetskopieringsvalv under **återställningstjänster** i hello Azure-portalen och klicka sedan på **registrerade objekt**.
-2. Välj **Azure virtuella** hello nedrullningsbara menyn.
+1. Navigera till säkerhetskopieringsvalvet under **återställningstjänster** i Azure-portalen och klicka sedan på **registrerade objekt**.
+2. Välj **Virtuell Azure-dator** i listrutan.
 
     ![Välja arbetsbelastning på portalen](./media/backup-azure-vms/select-workload.png)
-3. Klicka på **skydda** på hello hello sidans nederkant.
+3. Klicka på **Skydda** längst ned på sidan.
 
-    Hej **skydda objekt guiden** visas. hello guiden visar endast virtuella datorer som registrerats och inte skyddas. Välj hello virtuella datorer som du vill tooprotect.
+    Den **skydda objekt guiden** visas. Guiden visar endast virtuella datorer som registrerats och inte skyddas. Välj de virtuella datorer som du vill skydda.
 
-    Om det finns två eller flera virtuella datorer med hello samma, Använd hello cloud service toodistinguish mellan hello virtuella datorer.
+    Om det finns två eller flera virtuella datorer med samma namn, kan du använda Molntjänsten för att skilja mellan de virtuella datorerna.
 
    > [!TIP]
    > Du kan skydda flera virtuella datorer samtidigt.
@@ -134,22 +134,22 @@ Azure-säkerhetskopieringsvalv skapas efter maj 2015 medföljer en standardprinc
 
     ![Konfigurera skydd i stor skala](./media/backup-azure-vms/protect-at-scale.png)
 
-4. Välj en **Säkerhetskopieringsschemat** tooback in hello virtuella datorer som du har valt. Du kan välja från en befintlig uppsättning principer eller definiera en ny.
+4. Välj en **Säkerhetskopieringsschemat** att säkerhetskopiera virtuella datorer som du har valt. Du kan välja från en befintlig uppsättning principer eller definiera en ny.
 
-    Flera virtuella datorer kan vara associerade med varje säkerhetskopieringspolicy. Dock kan hello virtuell dator bara vara kopplad till en princip vid en viss tidpunkt.
+    Flera virtuella datorer kan vara associerade med varje säkerhetskopieringspolicy. Den virtuella datorn kan dock bara vara kopplad till en princip vid en viss tidpunkt.
 
     ![Skydda med ny princip](./media/backup-azure-vms/policy-schedule.png)
 
    > [!NOTE]
-   > En princip för säkerhetskopiering finns ett kvarhållning system för hello schemalagda säkerhetskopieringar. Om du väljer en säkerhetskopieringsprincip kan ändra du inte alternativ för kvarhållning av hello i hello nästa steg.
+   > En säkerhetskopieringspolicy innehåller ett kvarhållningsschema för de schemalagda säkerhetskopieringarna. Om du väljer en säkerhetskopieringsprincip kan ändra du inte alternativ för kvarhållning i nästa steg.
    >
    >
 
-5. Välj en **Kvarhållningsintervall** tooassociate med hello säkerhetskopior.
+5. Välj en **Kvarhållningsintervall** ska associeras med säkerhetskopiorna.
 
     ![Skydda med flexibel kvarhållning](./media/backup-azure-vms/policy-retention.png)
 
-    Bevarandeprincip anger hello lång tid för att lagra en säkerhetskopia. Du kan ange olika bevarandeprinciper baserat på när hello säkerhetskopia görs. Exempelvis kan en säkerhetskopieringspunkt tas dagligen (som fungerar som en operativa återställningspunkt) bevaras i 90 dagar. Jämförelse behöva en säkerhetskopieringspunkt tas hello slutet av varje kvartal (som audit) toobe bevaras för många månader eller år.
+    Bevarandeprincipen anger hur länge en säkerhetskopia ska lagras. Du kan ange andra bevarandeprinciper baserat på när säkerhetskopieringen görs. Exempelvis kan en säkerhetskopieringspunkt tas dagligen (som fungerar som en operativa återställningspunkt) bevaras i 90 dagar. Jämförelse behöva en säkerhetskopieringspunkt vidtas i slutet av varje kvartal (som audit) bevaras för många månader eller år.
 
     ![Virtuella datorer säkerhetskopieras med återställningspunkter](./media/backup-azure-vms/long-term-retention.png)
 
@@ -157,44 +157,44 @@ Azure-säkerhetskopieringsvalv skapas efter maj 2015 medföljer en standardprinc
 
    * **Dagliga bevarandeprincip**: säkerhetskopieringar tas dagligen sparas i 30 dagar.
    * **Varje vecka bevarandeprincip**: säkerhetskopior som gjorts varje vecka på söndag bevaras i 104 veckor.
-   * **Månatliga bevarandeprincip**: säkerhetskopieringar som utförts hello sista söndagen i varje månad bevaras i 120 månader.
-   * **Årlig bevarandeprincip**: säkerhetskopieringar som utförts hello första söndagen i varje januari bevaras för 99 år.
+   * **Månatliga bevarandeprincip**: säkerhetskopieringar som utförts på den sista söndagen i varje månad bevaras i 120 månader.
+   * **Årlig bevarandeprincip**: säkerhetskopieringar som utförts på den första söndagen i varje januari bevaras för 99 år.
 
-     Ett jobb skapas tooconfigure hello protection-principen och associera hello virtuella datorer toothat princip för varje virtuell dator som du har valt.
-6. tooview hello lista över **Konfigurera skydd** jobb hello valv-menyn, klicka på **jobb** och välj **Konfigurera skydd** från hello **åtgärden**  filter.
+     Ett jobb skapas för att konfigurera protection-principen och koppla de virtuella datorerna till principen för varje virtuell dator som du har valt.
+6. Visa lista med **Konfigurera skydd** jobb valv-menyn klickar du på **jobb** och välj **Konfigurera skydd** från den **åtgärden** filter.
 
     ![Jobbet Konfigurera skydd](./media/backup-azure-vms/protect-configureprotection.png)
 
 ## <a name="initial-backup"></a>Den första säkerhetskopieringen
-När hello virtuella datorn är skyddad med en princip som det visas under hello **skyddade objekt** flik med hello status för *skyddade - (väntar på inledande säkerhetskopia)*. Som standard är hello första schemalagd säkerhetskopiering hello *första säkerhetskopian*.
+När den virtuella datorn är skyddad med en princip som det visas under den **skyddade objekt** flik med status för *skyddade - (väntar på inledande säkerhetskopia)*. Som standard är den första säkerhetskopieringen den *inledande säkerhetskopieringen*.
 
-tootrigger hello inledande säkerhetskopia omedelbart när du har konfigurerat skyddet:
+Utlöser den första säkerhetskopian omedelbart när du har konfigurerat skyddet:
 
-1. Längst ned hello hello **skyddade objekt** klickar du på **säkerhetskopiering nu**.
+1. Längst ned i den **skyddade objekt** klickar du på **säkerhetskopiering nu**.
 
-    hello Azure Backup-tjänsten skapar ett säkerhetskopieringsjobb för hello första säkerhetskopieringen.
-2. Klicka på hello **jobb** fliken tooview hello lista över jobb.
+    Tjänsten Azure Backup skapar ett säkerhetskopieringsjobb för den första säkerhetskopieringen.
+2. Klicka på fliken **Jobb** för att visa listan över jobb.
 
     ![Säkerhetskopiering pågår](./media/backup-azure-vms/protect-inprogress.png)
 
 > [!NOTE]
-> Vid säkerhetskopiering hello utfärdar hello Azure Backup service kommandot toohello säkerhetskopiering filnamnstillägget i varje virtuell dator tooflush alla skriva jobb och utför en programkonsekvent ögonblicksbild.
+> Under säkerhetskopieringen utfärdar tjänsten Azure Backup ett kommando till reservanknytning i varje virtuell dator att tömma alla jobb för skrivning och dra en programkonsekvent ögonblicksbild.
 >
 >
 
-När hello första säkerhetskopieringen är klar, hello hello virtuella datorns status för i hello **skyddade objekt** är *skyddade*.
+När den första säkerhetskopian är klar, status för den virtuella datorn i den **skyddade objekt** är *skyddade*.
 
 ![Virtuella datorer säkerhetskopieras med återställningspunkter](./media/backup-azure-vms/protect-backedupvm.png)
 
 ## <a name="viewing-backup-status-and-details"></a>Visa information och status för säkerhetskopiering
-När skyddade, ökar hello för antal virtuella datorer också i hello **instrumentpanelen** sidan Sammanfattning. Hej **instrumentpanelen** sidan visar också hello antalet jobb från hello senaste 24 timmarna som var *lyckade*, har *misslyckades*, och är *pågår*. På hello **jobb** använder hello **Status**, **åtgärden**, eller **från** och **till** menyer toofilter hello jobb.
+När skyddade, ökar antalet virtuella datorer även i den **instrumentpanelen** sidan Sammanfattning. Den **instrumentpanelen** också visar antalet jobb från de senaste 24 timmarna som var *lyckade*, har *misslyckades*, och är *pågår*. På den **jobb** använder den **Status**, **åtgärden**, eller **från** och **till** menyer att filtrera jobb.
 
 ![Status för säkerhetskopiering i instrumentpanelens sida](./media/backup-azure-vms/dashboard-protectedvms.png)
 
-Värdena i hello instrumentpanelen uppdateras var 24: e timme.
+Värdena i instrumentpanelen uppdateras var 24: e timme.
 
 ## <a name="troubleshooting-errors"></a>Felsökning av fel
-Om du stöter på problem under säkerhetskopieringen av virtuell dator granskar du hello [VM felsökningsartikel](backup-azure-vms-troubleshoot.md) för hjälp.
+Om du stöter på problem under säkerhetskopieringen av virtuell dator granskar du den [VM felsökningsartikel](backup-azure-vms-troubleshoot.md) för hjälp.
 
 ## <a name="next-steps"></a>Nästa steg
 * [Hantera och övervaka dina virtuella datorer](backup-azure-manage-vms.md)

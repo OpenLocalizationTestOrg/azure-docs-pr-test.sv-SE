@@ -1,6 +1,6 @@
 ---
-title: "aaaGet igång med att leverera innehåll på begäran som använder Java | Microsoft Docs"
-description: "Den här självstudiekursen vägleder dig genom hello stegen för att implementera en grundläggande Video-on-Demand (VoD) innehållsleverans tjänst med Azure Media Services (AMS)-program med hjälp av Java."
+title: "Komma igång med att leverera innehåll på begäran med hjälp av Java | Microsoft Docs"
+description: "Den här självstudien beskriver steg för steg hur du implementerar en enkel VoD-innehållsleveranstjänst (Video-on-Demand) med Azure Media Services-programmet (AMS) med hjälp av Java."
 services: media-services
 documentationcenter: java
 author: juliako
@@ -14,38 +14,38 @@ ms.devlang: java
 ms.topic: get-started-article
 ms.date: 01/10/2017
 ms.author: juliako
-ms.openlocfilehash: b13eb88e35fb0d7a1ec1a213293080bad8aa1806
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 2294f3de094389f8aa500c75472e753339b18358
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-java"></a>Komma igång med att leverera innehåll på begäran med hjälp av Java
 [!INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
 
-Den här självstudiekursen vägleder dig genom hello stegen för att implementera en grundläggande Video-on-Demand (VoD) innehållsleverans tjänst med Azure Media Services (AMS)-program med hjälp av Java.
+Den här självstudien beskriver steg för steg hur du implementerar en enkel VoD-innehållsleveranstjänst (Video-on-Demand) med Azure Media Services-programmet (AMS) med hjälp av Java.
 
 ## <a name="prerequisites"></a>Krav
 
-hello följande är obligatoriska toocomplete hello kursen:
+Följande krävs för att kunna genomföra vägledningen:
 
 * Ett Azure-konto. Mer information om den [kostnadsfria utvärderingsversionen av Azure](https://azure.microsoft.com/pricing/free-trial/). 
-* Ett Media Services-konto. toocreate Media Services-konto finns [hur tooCreate Media Services-konto](media-services-portal-create-account.md).
-* hello Azure-biblioteken för Java som du kan installera från hello [Azure Java Developer Center][Azure Java Developer Center].
+* Ett Media Services-konto. Information om hur du skapar ett Media Services-konto finns i [Så här skapar du ett Media Services-konto](media-services-portal-create-account.md).
+* Azure-biblioteken för Java, som du kan installera från [Azure Java-utvecklingscentret][Azure Java Developer Center].
 
 ## <a name="how-to-use-media-services-with-java"></a>Så här gör du för att: Använda Media Services med Java
 
 >[!NOTE]
->När AMS-kontot skapas en **standard** strömningsslutpunkt har lagts till tooyour konto i hello **stoppad** tillstånd. toostart strömning ditt innehåll och dra nytta av dynamisk paketering och dynamisk kryptering hello strömningsslutpunkt som du vill toostream innehåll har toobe i hello **kör** tillstånd. 
+>När ditt AMS-konto skapas läggs en **standard**-slutpunkt för direktuppspelning till på ditt konto med tillståndet **Stoppad**. Om du vill starta direktuppspelning av innehåll och dra nytta av dynamisk paketering och dynamisk kryptering måste slutpunkten för direktuppspelning som du vill spela upp innehåll från ha tillståndet **Körs**. 
 
 >[!NOTE]
->Det finns en gräns på 1 000 000 principer för olika AMS-principer (till exempel för positionerarprincipen eller ContentKeyAuthorizationPolicy). Du bör använda hello samma princip-ID om du alltid använder hello samma dagar / åtkomstbehörigheter, till exempel principer för lokaliserare som är avsedda tooremain på plats för lång tid (icke-överföringen principer). Mer information finns i [detta](media-services-dotnet-manage-entities.md#limit-access-policies) avsnitt.
+>Det finns en gräns på 1 000 000 principer för olika AMS-principer (till exempel för positionerarprincipen eller ContentKeyAuthorizationPolicy). Du bör använda samma princip-ID om du alltid använder samma dagar/åtkomstbehörigheter, till exempel principer för positionerare som är avsedda att vara på plats under en längre tid (icke-överföringsprinciper). Mer information finns i [detta](media-services-dotnet-manage-entities.md#limit-access-policies) avsnitt.
 
-hello följande kod visar hur toocreate en tillgång, överför en tillgång med media filen toohello kör ett jobb med en aktivitet tootransform hello tillgång och skapa en positionerare toostream videon.
+Följande kod visar hur du skapar en tillgång, överför en mediefil till tillgången, kör ett jobb med uppgiften att omvandla tillgången och skapar en positionerare för att strömma videon.
 
-Du måste tooset upp ett Media Services-konto innan du använder den här koden. Information om hur du konfigurerar ett konto finns i [hur tooCreate Media Services-konto](media-services-portal-create-account.md).
+Du måste upprätta ett Media Services-konto innan du använder den här koden. Information om hur du konfigurerar ett konto finns i [Så här skapar du ett Media Services-konto](media-services-portal-create-account.md).
 
-Ersätt värdena för variabler för hello 'clientId' och 'clientSecret'. hello koden förlitar sig även på en lokalt lagrad fil. Du behöver tooprovide egna filen toouse.
+Ersätt värdena för variablerna 'clientId' och 'clientSecret'. Koden förlitar sig även på en lokalt lagrad fil. Du måste ange en egen fil som ska användas.
 
     import java.io.*;
     import java.security.NoSuchAlgorithmException;
@@ -93,22 +93,22 @@ Ersätt värdena för variabler för hello 'clientId' och 'clientSecret'. hello 
         {
 
             try {
-                // Set up hello MediaContract object toocall into hello Media Services account
+                // Set up the MediaContract object to call into the Media Services account
                 Configuration configuration = MediaConfiguration.configureWithOAuthAuthentication(
                 mediaServiceUri, oAuthUri, clientId, clientSecret, scope);
                 mediaService = MediaService.create(configuration);
 
 
-                // Upload a local file tooan Asset
+                // Upload a local file to an Asset
                 AssetInfo uploadAsset = uploadFileAndCreateAsset("BigBuckBunny.mp4");
                 System.out.println("Uploaded Asset Id: " + uploadAsset.getId());
 
 
-                // Transform hello Asset
+                // Transform the Asset
                 AssetInfo encodedAsset = encode(uploadAsset);
                 System.out.println("Encoded Asset Id: " + encodedAsset.getId());
 
-                // Create hello Streaming Origin Locator
+                // Create the Streaming Origin Locator
                 String url = getStreamingOriginLocator(encodedAsset);
 
                 System.out.println("Origin Locator URL: " + url);
@@ -140,24 +140,24 @@ Ersätt värdena för variabler för hello 'clientId' och 'clientSecret'. hello 
             uploadAccessPolicy = mediaService
                 .create(AccessPolicy.create("uploadAccessPolicy", 15.0, EnumSet.of(AccessPolicyPermission.WRITE)));
 
-            // Create a Locator using hello AccessPolicy and Asset
+            // Create a Locator using the AccessPolicy and Asset
             uploadLocator = mediaService
                 .create(Locator.create(uploadAccessPolicy.getId(), resultAsset.getId(), LocatorType.SAS));
 
-            // Create hello Blob Writer using hello Locator
+            // Create the Blob Writer using the Locator
             uploader = mediaService.createBlobWriter(uploadLocator);
 
             File file = new File("BigBuckBunny.mp4"); 
 
-            // hello local file that will be uploaded tooyour Media Services account
+            // The local file that will be uploaded to your Media Services account
             InputStream input = new FileInputStream(file);
 
             System.out.println("Uploading " + fileName);
 
-            // Upload hello local file toohello asset
+            // Upload the local file to the asset
             uploader.createBlockBlob(fileName, input);
 
-            // Inform Media Services about hello uploaded files
+            // Inform Media Services about the uploaded files
             mediaService.action(AssetFile.createFileInfos(resultAsset.getId()));
             System.out.println("Uploaded Asset File " + fileName);
 
@@ -167,15 +167,15 @@ Ersätt värdena för variabler för hello 'clientId' och 'clientSecret'. hello 
             return resultAsset;
         }
 
-        // Create a Job that contains a Task tootransform hello Asset
+        // Create a Job that contains a Task to transform the Asset
         private static AssetInfo encode(AssetInfo assetToEncode)
             throws ServiceException, InterruptedException {
 
-            // Retrieve hello list of Media Processors that match hello name
+            // Retrieve the list of Media Processors that match the name
             ListResult<MediaProcessorInfo> mediaProcessors = mediaService
                             .list(MediaProcessor.list().set("$filter", String.format("Name eq '%s'", preferedEncoder)));
 
-            // Use hello latest version of hello Media Processor
+            // Use the latest version of the Media Processor
             MediaProcessorInfo mediaProcessor = null;
             for (MediaProcessorInfo info : mediaProcessors) {
                 if (null == mediaProcessor || info.getVersion().compareTo(mediaProcessor.getVersion()) > 0) {
@@ -185,7 +185,7 @@ Ersätt värdena för variabler för hello 'clientId' och 'clientSecret'. hello 
 
             System.out.println("Using Media Processor: " + mediaProcessor.getName() + " " + mediaProcessor.getVersion());
 
-            // Create a task with hello specified Media Processor
+            // Create a task with the specified Media Processor
             String outputAssetName = String.format("%s as %s", assetToEncode.getName(), encodingPreset);
             String taskXml = "<taskBody><inputAsset>JobInputAsset(0)</inputAsset>"
                     + "<outputAsset assetCreationOptions=\"0\"" // AssetCreationOptions.None
@@ -194,27 +194,27 @@ Ersätt värdena för variabler för hello 'clientId' och 'clientSecret'. hello 
             Task.CreateBatchOperation task = Task.create(mediaProcessor.getId(), taskXml)
                     .setConfiguration(encodingPreset).setName("Encoding");
 
-            // Create hello Job; this automatically schedules and runs it.
+            // Create the Job; this automatically schedules and runs it.
             Job.Creator jobCreator = Job.create()
-                    .setName(String.format("Encoding %s too%s", assetToEncode.getName(), encodingPreset))
+                    .setName(String.format("Encoding %s to %s", assetToEncode.getName(), encodingPreset))
                     .addInputMediaAsset(assetToEncode.getId()).setPriority(2).addTaskCreator(task);
             JobInfo job = mediaService.create(jobCreator);
 
             String jobId = job.getId();
             System.out.println("Created Job with Id: " + jobId);
 
-            // Check toosee if hello Job has completed
+            // Check to see if the Job has completed
             checkJobStatus(jobId);
-            // Done with hello Job
+            // Done with the Job
 
-            // Retrieve hello output Asset
+            // Retrieve the output Asset
             ListResult<AssetInfo> outputAssets = mediaService.list(Asset.list(job.getOutputAssetsLink()));
             return outputAssets.get(0);
         }
 
 
         public static String getStreamingOriginLocator(AssetInfo asset) throws ServiceException {
-            // Get hello .ISM AssetFile
+            // Get the .ISM AssetFile
             ListResult<AssetFileInfo> assetFiles = mediaService.list(AssetFile.list(asset.getAssetFilesLink()));
             AssetFileInfo streamingAssetFile = null;
             for (AssetFileInfo file : assetFiles) {
@@ -232,7 +232,7 @@ Ersätt värdena för variabler för hello 'clientId' och 'clientSecret'. hello 
             originAccessPolicy = mediaService.create(
                     AccessPolicy.create("Streaming policy", durationInMinutes, EnumSet.of(AccessPolicyPermission.READ)));
 
-            // Create a Locator using hello AccessPolicy and Asset
+            // Create a Locator using the AccessPolicy and Asset
             originLocator = mediaService
                     .create(Locator.create(originAccessPolicy.getId(), asset.getId(), LocatorType.OnDemandOrigin));
 
@@ -247,7 +247,7 @@ Ersätt värdena för variabler för hello 'clientId' och 'clientSecret'. hello 
                 // Sleep for 5 seconds
                 Thread.sleep(5000);
 
-                // Query hello updated Job state
+                // Query the updated Job state
                 jobState = mediaService.get(Job.get(jobId)).getState();
                 System.out.println("Job state: " + jobState);
 

@@ -1,6 +1,6 @@
 ---
-title: "aaaAzure vidarebefordrande WCF hybridprogram på lokalt/i molnet (.NET) | Microsoft Docs"
-description: "Lär dig hur toocreate en .NET på lokalt/i molnet hybridprogram med hjälp av Azure WCF Relay."
+title: Azure WCF Relay-hybridprogram lokalt/i molnet (.NET) | Microsoft Docs
+description: "Lär dig hur du skapar ett lokalt eller molnbaserat .NET-hybridprogram med hjälp av Azure WCF Relay."
 services: service-bus-relay
 documentationcenter: .net
 author: sethmanheim
@@ -14,78 +14,78 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 06/14/2017
 ms.author: sethm
-ms.openlocfilehash: aab8b1dbdc85c4edf7b0ccef0921b69524b2d306
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: d15c30dad9fb4bbe9082d6a3c72cd20ed42bbc3e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="net-on-premisescloud-hybrid-application-using-azure-wcf-relay"></a>Lokalt eller molnbaserat .NET-hybridprogram med hjälp av Azure WCF Relay
 ## <a name="introduction"></a>Introduktion
 
-Den här artikeln visar hur toobuild en hybrid cloud-program med Microsoft Azure och Visual Studio. hello kursen förutsätter att du har några tidigare erfarenheter av att använda Azure. På mindre än 30 minuter har du ett program som använder flera Azure-resurser och körs i hello moln.
+Den här artikeln visar hur du skapar ett hybridprogram i molnet med Microsoft Azure och Visual Studio. Den här självstudiekursen förutsätter att du inte har några tidigare erfarenheter av att använda Azure. På mindre än 30 minuter kommer du att ha ett program färdigt i molnet som använder en rad Azure-resurser.
 
 Du kommer att lära dig:
 
-* Hur toocreate eller anpassa en befintlig webbtjänst för användning av en webblösning.
-* Hur toouse hello Azure WCF Relay service tooshare data mellan ett Azure-program och en webbtjänst värdbaserad någon annanstans.
+* Hur du skapar eller anpassar en befintlig webbtjänst för att den ska kunna användas av en webblösning.
+* Lär dig hur du använder Azure WCF Relay-tjänsten för att dela data mellan ett Azure-program och en värdbaserad webbtjänst som finns någon annanstans.
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
 ## <a name="how-azure-relay-helps-with-hybrid-solutions"></a>Så här hjälper Azure Relay dig med hybridlösningar
 
-Företagslösningar består normalt av en kombination av anpassad kod som skrivs tootackle nya och unika affärsbehov och befintliga funktioner som tillhandahålls av lösningar och system som redan finns på plats.
+Företagslösningar består normalt av en kombination av anpassad kod – som skrivs för att ta itu med nya och unika verksamhetskrav – och befintliga funktioner som kommer från lösningar och system som redan finns på plats.
 
-Lösningsarkitekter har börjat toouse hello molnet för enklare hantering av skalkrav och lägre driftskostnader. På så sätt kan hitta de befintliga tjänstetillgångarna som de vill ha tooleverage som byggblock för sina lösningar är innanför företagets brandvägg för hello och utanför enkelt nå för av hello molnlösning. Många interna tjänster är inte inbyggda eller värdbaserade på ett sätt att de enkelt kan exponeras vid företagets nätverksgräns för hello.
+Lösningsarkitekter har börjat använda molnet för enklare hantering av skalkrav och lägre driftskostnader. När de gör detta upptäcker de att de befintliga tjänstetillgångarna, som de vill utnyttja som byggblock för sina lösningar, ligger innanför företagets brandvägg och därför är svåra att nå för de lösningar som ligger i molnet. Många interna tjänster är inte skapade eller värdbaserade på ett sätt som gör att de enkelt kan exponeras vid företagets nätverksgräns.
 
-[Azure Relay](https://azure.microsoft.com/services/service-bus/) är avsedd för hello användningsfall där man tar befintliga Windows Communication Foundation (WCF) webbtjänster och göra de tjänster på ett säkert sätt komma åt toosolutions som finns utanför företagets perimeter för hello utan störande ändringar toohello företagets nätverksinfrastruktur. Sådana relay-tjänster är fortfarande inhysta i sin befintliga miljö men de delegerar lyssnandet efter inkommande sessioner och förfrågningar toohello molnbaserade vidarebefordrande tjänsten. Azure Relay skyddar även tjänsterna mot obehörig åtkomst med hjälp av [signatur för delad åtkomst (SAS)](../service-bus-messaging/service-bus-sas.md)-autentisering.
+[Azure Relay](https://azure.microsoft.com/services/service-bus/) är avsett för användningsfall där befintliga WCF-webbtjänster (Windows Communication Foundation) på ett säkert sätt görs tillgängliga för lösningar som finns utanför företagets perimeter, utan behov av störande ändringar i företagets nätverksinfrastruktur. Sådana relätjänster finns fortfarande i deras befintliga miljö, men de delegerar lyssnandet efter inkommande sessioner och förfrågningar till relätjänsten i molnet. Azure Relay skyddar även tjänsterna mot obehörig åtkomst med hjälp av [signatur för delad åtkomst (SAS)](../service-bus-messaging/service-bus-sas.md)-autentisering.
 
 ## <a name="solution-scenario"></a>Lösningsscenario
-I den här självstudiekursen skapar du en ASP.NET-webbplats som gör att toosee en lista över produkter på hello produktsidan för inventering.
+I den här självstudiekursen kommer du att skapa en ASP.NET-webbplats som gör att du kan se en lista över produkter på sidan för inventarieförteckningar.
 
 ![][0]
 
-hello kursen förutsätter att du har produktinformation i ett befintligt lokalt system och använder Azure Relay tooreach till detta system. Det här simuleras av en webbtjänst som körs i ett enkelt konsolprogram och backas upp av en minnesintern uppsättning av produkter. Du kommer att kunna toorun detta konsolprogram på din dator och distribuera hello webbrollen till Azure. På så sätt, ser du hur hello-webbroll som körs i hello Azure-datacenter verkligen anropar din dator, även om datorn sannolikt ligger bakom en brandvägg och ett network address translation (NAT) lager.
+I självstudiekursen förutsätter vi att du har produktinformation i ett befintligt, lokalt system och använder Azure Relay för att få åtkomst till det systemet. Det här simuleras av en webbtjänst som körs i ett enkelt konsolprogram och backas upp av en minnesintern uppsättning av produkter. Du kommer att kunna köra detta konsolprogram på din dator och distribuera webbrollen till Azure. När du gör detta, kommer du att se hur den webbroll som körs i Azures datacenter verkligen anropar din datorn, även om datorn sannolikt ligger bakom en brandvägg och ett NAT-lager (Network Address Translation).
 
-## <a name="set-up-hello-development-environment"></a>Ställa in hello utvecklingsmiljö
+## <a name="set-up-the-development-environment"></a>Konfigurera utvecklingsmiljön
 
-Innan du kan börja utveckla Azure-program, hämta hello verktyg och ställa in din utvecklingsmiljö:
+Innan du kan börja utveckla Azure-program måste du hämta de verktyg som krävs och ställa in din utvecklingsmiljö:
 
-1. Installera hello Azure SDK för .NET från hello SDK [Nedladdningssida](https://azure.microsoft.com/downloads/).
-2. I hello **.NET** kolumn, och klicka på hello version av [Visual Studio](http://www.visualstudio.com) du använder. hello stegen i den här självstudiekursen används Visual Studio 2015, men de fungerar även med Visual Studio 2017.
-3. När du uppmanas toorun eller spara hello installer, klickar du på **kör**.
-4. I hello **installationsprogram för webbplattform**, klickar du på **installera** och fortsätta med installationen hello.
-5. När hello installationen är klar har du allt nödvändigt toostart toodevelop hello app. hello SDK inkluderar verktyg som låter dig utveckla Azure-program i Visual Studio.
+1. Installera Azure SDK för .NET från [hämtningssidan](https://azure.microsoft.com/downloads/) för SDK.
+2. Klicka på den version av [Visual Studio](http://www.visualstudio.com) du använder i kolumnen **.NET**. Stegen i den här handledningen använder Visual Studio 2015, men det går lika bra med Visual Studio 2017.
+3. När du uppmanas att köra eller spara installationsprogrammet, klickar du på **Kör**.
+4. I **Installationsprogram för webbplattform** klickar du på **Installera** och fortsätter med installationen.
+5. När installationen är klar har du allt som behövs för att börja utveckla appen. SDK inkluderar verktyg som låter dig utveckla Azure-program i Visual Studio på ett enkelt sätt.
 
 ## <a name="create-a-namespace"></a>Skapa ett namnområde
 
-toobegin med Hej relay funktioner i Azure, måste du först skapa ett namnområde för tjänsten. Ett namnområde tillhandahåller en omfångsbehållare för adressering av Azure-resurser i ditt program. Följ hello [anvisningarna här](relay-create-namespace-portal.md) toocreate en Relay-namnrymd.
+För att komma igång med reläfunktionerna i Azure måste du först skapa ett namnområde för tjänsten. Ett namnområde tillhandahåller en omfångsbehållare för adressering av Azure-resurser i ditt program. Följ [anvisningarna här](relay-create-namespace-portal.md) för att skapa ett Relay-namnområde.
 
 ## <a name="create-an-on-premises-server"></a>Skapa en lokal server
 
-Först ska du skapa ett lokalt produktkatalogsystem (ett fingerat sådant). Det kan vara ganska enkel; Du kan se detta som representerar ett faktiskt, lokalt produktkatalogsystem med en fullständig serviceyta som vi försöker toointegrate.
+Först ska du skapa ett lokalt produktkatalogsystem (ett fingerat sådant). Det kan vara ett ganska enkel system. Du kan se detta som en representation av ett faktiskt, lokalt produktkatalogsystem med en fullständig serviceyta som vi försöker integrera.
 
-Det här projektet är ett konsolprogram i Visual Studio och använder hello [Azure Service Bus NuGet-paketet](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) tooinclude hello Service Bus-bibliotek och konfigurationsinställningar.
+Det här projektet är ett konsolprogram för Visual Studio som använder [Azure Service Bus NuGet-paketet](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) för att inkludera Service Bus-bibliotek och -konfigurationsinställningar.
 
-### <a name="create-hello-project"></a>Skapa hello-projekt
+### <a name="create-the-project"></a>Skapa projektet
 
-1. Starta Microsoft Visual Studio med administratörsbehörighet. toodo så, högerklicka på programikonen för hello Visual Studio och klicka sedan på **kör som administratör**.
-2. I Visual Studio på hello **filen** -menyn klickar du på **ny**, och klicka sedan på **projekt**.
-3. Klicka på **Konsolprogram (.NET Framework** från **Installerade mallar** under **Visual C#**. I hello **namn** rutan, hello typnamn **ProductsServer**:
+1. Starta Microsoft Visual Studio med administratörsbehörighet. För att göra det högerklickar du på programikonen för Visual Studio och sedan på **Kör som administratör**.
+2. I Visual Studio klickar du på **Nytt** i menyn **Arkiv** och sedan på **Projekt**.
+3. Klicka på **Konsolprogram (.NET Framework** från **Installerade mallar** under **Visual C#**. I rutan **Namn** anger du namnet **ProductsServer**:
 
    ![][11]
-4. Klicka på **OK** toocreate hello **ProductsServer** projekt.
-5. Hoppa över toohello nästa steg om du redan har installerat hello NuGet package manager för Visual Studio. Annars går du till [NuGet][NuGet] och klickar på [Installera NuGet](http://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c). Följ hello prompter tooinstall hello NuGet-Pakethanteraren, och starta sedan om Visual Studio.
-6. I Solution Explorer högerklickar du på hello **ProductsServer** projektet och klicka sedan på **hantera NuGet-paket**.
-7. Klicka på hello **Bläddra** fliken, och sök sedan efter `Microsoft Azure Service Bus`. Välj hello **WindowsAzure.ServiceBus** paketet.
-8. Klicka på **installera**, och Godkänn hello villkor för användning.
+4. Klicka på **OK** för att skapa **ProductsServer**-projektet.
+5. Om du redan har installerat NuGet Package Manager för Visual Studio kan du hoppa över nästa steg. Annars går du till [NuGet][NuGet] och klickar på [Installera NuGet](http://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c). Följ anvisningarna för att installera NuGet Package Manager och starta sedan om Visual Studio.
+6. Högerklicka på projektet **ProductsServer** i Solution Explorer och klicka sedan på **Hantera NuGet-paket**.
+7. Klicka på **Bläddra**-fliken och sök sedan efter `Microsoft Azure Service Bus`. Välj paketet **WindowsAzure.ServiceBus**.
+8. Klicka på **Installera** och godkänn användningsvillkoren.
 
    ![][13]
 
-   Observera att hello krävs klientsammansättningarna nu refereras.
-8. Lägg till en ny klass för ditt produktkontrakt. I Solution Explorer högerklickar du på hello **ProductsServer** projektet och klicka på **Lägg till**, och klicka sedan på **klassen**.
-9. I hello **namn** rutan, hello typnamn **ProductsContract.cs**. Klicka sedan på **Lägg till**.
-10. I **ProductsContract.cs**, Ersätt hello definitionen för namnområdet med följande kod, som definierar hello kontraktet för tjänsten hello hello.
+   Observera att alla nödvändiga klientsammansättningar nu är refererade.
+8. Lägg till en ny klass för ditt produktkontrakt. Högerklicka på projektet **ProductsServer** i Solution Explorer. Klicka sedan på **Lägg till** och på **Klass**.
+9. I rutan **Namn** anger du namnet **ProductsServer.cs**. Klicka sedan på **Lägg till**.
+10. I **ProductsContract.cs** ersätter du definitionen för namnområdet med följande kod. Den definierar kontraktet för tjänsten.
 
     ```csharp
     namespace ProductsServer
@@ -94,9 +94,9 @@ Det här projektet är ett konsolprogram i Visual Studio och använder hello [Az
         using System.Runtime.Serialization;
         using System.ServiceModel;
 
-        // Define hello data contract for hello service
+        // Define the data contract for the service
         [DataContract]
-        // Declare hello serializable properties.
+        // Declare the serializable properties.
         public class ProductData
         {
             [DataMember]
@@ -107,7 +107,7 @@ Det här projektet är ett konsolprogram i Visual Studio och använder hello [Az
             public string Quantity { get; set; }
         }
 
-        // Define hello service contract.
+        // Define the service contract.
         [ServiceContract]
         interface IProducts
         {
@@ -121,7 +121,7 @@ Det här projektet är ett konsolprogram i Visual Studio och använder hello [Az
         }
     }
     ```
-11. Ersätt hello definitionen för namnområdet i Program.cs med hello följande kod, som lägger till hello profiltjänsten och hello värden för den.
+11. Ersätt definitionen för namnområdet i Program.cs med följande kod. Den lägger till profiltjänsten och värden för den.
 
     ```csharp
     namespace ProductsServer
@@ -131,7 +131,7 @@ Det här projektet är ett konsolprogram i Visual Studio och använder hello [Az
         using System.Collections.Generic;
         using System.ServiceModel;
 
-        // Implement hello IProducts interface.
+        // Implement the IProducts interface.
         class ProductsService : IProducts
         {
 
@@ -149,8 +149,8 @@ Det här projektet är ett konsolprogram i Visual Studio och använder hello [Az
                                          Quantity = "2500"},
                     };
 
-            // Display a message in hello service console application
-            // when hello list of products is retrieved.
+            // Display a message in the service console application
+            // when the list of products is retrieved.
             public IList<ProductData> GetProducts()
             {
                 Console.WriteLine("GetProducts called.");
@@ -161,13 +161,13 @@ Det här projektet är ett konsolprogram i Visual Studio och använder hello [Az
 
         class Program
         {
-            // Define hello Main() function in hello service application.
+            // Define the Main() function in the service application.
             static void Main(string[] args)
             {
                 var sh = new ServiceHost(typeof(ProductsService));
                 sh.Open();
 
-                Console.WriteLine("Press ENTER tooclose");
+                Console.WriteLine("Press ENTER to close");
                 Console.ReadLine();
 
                 sh.Close();
@@ -175,7 +175,7 @@ Det här projektet är ett konsolprogram i Visual Studio och använder hello [Az
         }
     }
     ```
-12. I Solution Explorer dubbelklickar du på hello **App.config** filen tooopen i hello Visual Studio-redigeraren. Längst ned hello hello `<system.ServiceModel>` element (men fortfarande inom `<system.ServiceModel>`), Lägg till hello följande XML-koden. Vara säker på att tooreplace *yourServiceNamespace* med hello namnet på ditt namnområdet och *yourKey* med hello SAS-nyckel som du tidigare hämtade från hello portal:
+12. Dubbelklicka på filen **App.config** i Solution Explorer för att öppna den i Visual Studio-redigeraren. Längst ned i elementet `<system.ServiceModel>` (men fortfarande i `<system.ServiceModel>`), lägger du till följande XML-kod. Se till att ersätta *yourServiceNamespace* med namnet på ditt namnområdet och *yourKey* med den SAS-nyckel som du tidigare hämtade från portalen:
 
     ```xml
     <system.serviceModel>
@@ -198,7 +198,7 @@ Det här projektet är ett konsolprogram i Visual Studio och använder hello [Az
       </behaviors>
     </system.serviceModel>
     ```
-13. Kvar i App.config i hello `<appSettings>` element, Ersätt hello anslutning strängvärde med hello anslutningssträng som du tidigare fick från hello-portalen.
+13. Medan du fortfarande är kvar i App.config, i elementet `<appSettings>`, byter du ut värdet för anslutningssträngen mot den sträng som du tidigare fick från portalen.
 
     ```xml
     <appSettings>
@@ -207,40 +207,40 @@ Det här projektet är ett konsolprogram i Visual Studio och använder hello [Az
            value="Endpoint=sb://yourNamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=yourKey"/>
     </appSettings>
     ```
-14. Tryck på **Ctrl + Skift + B** eller från hello **skapa** -menyn klickar du på **skapa lösning** toobuild hello program och kontrollera hello noggrannhet arbete hittills.
+14. Tryck på **Ctrl+Shift+B**, eller på **Skapa lösning** från menyn **Skapa**, för att skapa programmet och kontrollera att allt du gjort hittills är korrekt.
 
 ## <a name="create-an-aspnet-application"></a>Skapa ett ASP.NET-program
 
 I det här avsnittet skapar du ett enkelt ASP.NET-program som visar data som hämtats från din produkttjänst.
 
-### <a name="create-hello-project"></a>Skapa hello-projekt
+### <a name="create-the-project"></a>Skapa projektet
 
 1. Se till att Visual Studio körs med administratörsbehörighet.
-2. I Visual Studio på hello **filen** -menyn klickar du på **ny**, och klicka sedan på **projekt**.
-3. Klicka på **ASP.NET webbapp (.NET Framwork)** från **Installerade mallar** under **Visual C#**. Namnet hello projektet **ProductsPortal**. Klicka sedan på **OK**.
+2. I Visual Studio klickar du på **Nytt** i menyn **Arkiv** och sedan på **Projekt**.
+3. Klicka på **ASP.NET webbapp (.NET Framwork)** från **Installerade mallar** under **Visual C#**. Ge projektet namnet **ProductsPortal**. Klicka sedan på **OK**.
 
    ![][15]
 
-4. Från hello **ASP.NET mallar** listan i hello **nytt ASP.NET-webbprogram** dialogrutan klickar du på **MVC**.
+4. Från listan **ASP.NET-mallar** i dialogrutan **Nytt ASP.NET Web Application** dialogrutan klickar du på **MVC**.
 
    ![][16]
 
-6. Klicka på hello **ändra autentisering** knappen. I hello **ändra autentisering** dialogrutan kontrollerar du att **ingen autentisering** är markerad och klicka sedan på **OK**. För den här självstudiekursen distribuerar du en app som inte kräver någon användarinloggning.
+6. Klicka på knappen **Ändra autentisering**. I dialogrutan **Ändra autentisering** kontrollerar du att **Ingen autentisering** har markerats och klickar sedan på **OK**. För den här självstudiekursen distribuerar du en app som inte kräver någon användarinloggning.
 
     ![][18]
 
-7. Tillbaka i hello **nytt ASP.NET-webbprogram** dialogrutan klickar du på **OK** toocreate hello MVC-app.
-8. Nu måste du konfigurera Azure-resurserna för en ny webbapp. Åtgärderna i hello hello [publicera tooAzure avsnitt i den här artikeln](../app-service-web/app-service-web-get-started-dotnet.md). Sedan returnera toothis självstudier och fortsätta toohello nästa steg.
-10. I Solution Explorer högerklickar du på **Modeller**. Klicka sedan på **Lägg till** och på **Klass**. I hello **namn** rutan, hello typnamn **Product.cs**. Klicka sedan på **Lägg till**.
+7. I dialogrutan **Ny ASP.NET Web Application** klickar du på **OK** för att skapa MVC-app.
+8. Nu måste du konfigurera Azure-resurserna för en ny webbapp. Följ stegen i avsnittet [Publicera till Azure i den här artikeln](../app-service/app-service-web-get-started-dotnet.md). Gå sedan tillbaka till den här självstudien och gå vidare till nästa steg.
+10. I Solution Explorer högerklickar du på **Modeller**. Klicka sedan på **Lägg till** och på **Klass**. Ange namnet **Product.cs** i rutan **Namn**. Klicka sedan på **Lägg till**.
 
     ![][17]
 
-### <a name="modify-hello-web-application"></a>Ändra hello-webbprogram
+### <a name="modify-the-web-application"></a>Göra ändringar i webbprogrammet
 
-1. Ersätt hello befintliga definitionen för namnområdet med följande kod hello i hello Product.CS i Visual Studio.
+1. Ersätt den befintliga definitionen för namnområdet med följande kod i filen Product.cs i Visual Studio.
 
    ```csharp
-    // Declare properties for hello products inventory.
+    // Declare properties for the products inventory.
     namespace ProductsWeb.Models
     {
        public class Product
@@ -251,8 +251,8 @@ I det här avsnittet skapar du ett enkelt ASP.NET-program som visar data som hä
        }
     }
     ```
-2. I Solution Explorer expanderar du hello **domänkontrollanter** mapp, dubbelklicka på hello **HomeController.cs** filen tooopen den i Visual Studio.
-3. I **HomeController.cs**, Ersätt hello befintliga definitionen för namnområdet med följande kod hello.
+2. I Solution Explorer expanderar du mappen **Controllers** och sedan dubbelklickar du på filen **HomeController.cs** för att öppna den i Visual Studio.
+3. Ersätt den befintliga definitionen för namnområdet med följande kod i **HomeController.cs**.
 
     ```csharp
     namespace ProductsWeb.Controllers
@@ -263,7 +263,7 @@ I det här avsnittet skapar du ett enkelt ASP.NET-program som visar data som hä
 
         public class HomeController : Controller
         {
-            // Return a view of hello products inventory.
+            // Return a view of the products inventory.
             public ActionResult Index(string Identifier, string ProductName)
             {
                 var products = new List<Product>
@@ -273,13 +273,13 @@ I det här avsnittet skapar du ett enkelt ASP.NET-program som visar data som hä
          }
     }
     ```
-4. Expandera hello-mappen Views\Shared i Solution Explorer och dubbelklicka sedan på **_Layout.cshtml** tooopen i hello Visual Studio-redigeraren.
-5. Ändra alla förekomster av **My ASP.NET Application** för**LITWARE'S Products**.
-6. Ta bort hello **Start**, **om**, och **Kontakta** länkar. Ta bort hello markerade koden i hello som följande exempel.
+4. Expandera mappen Views\Shared i Solution Explorer och dubbelklicka sedan på **_Layout.cshtml** så att den öppnas i Visual Studio-redigeraren.
+5. Ändra alla förekomster av **My ASP.NET Application** till **LITWARE's Products**.
+6. Ta bort länkarna för **Start**, **Om** och **Kontakt**. Ta bort den markerade koden i följande exempel.
 
     ![][41]
 
-7. Expandera hello-mappen Views\Home i Solution Explorer och dubbelklicka sedan på **Index.cshtml** tooopen i hello Visual Studio-redigeraren. Ersätt hello hela innehållet i filen hello med hello följande kod.
+7. Expandera mappen Views\Home i Solution Explorer och dubbelklicka sedan på **Index.cshtml** så att den öppnas i Visual Studio-redigeraren. Ersätt hela innehållet i filen med följande kod.
 
    ```html
    @model IEnumerable<ProductsWeb.Models.Product>
@@ -314,31 +314,31 @@ I det här avsnittet skapar du ett enkelt ASP.NET-program som visar data som hä
 
    </table>
    ```
-8. tooverify hello noggrannhet arbete så länge du kan trycka på **Ctrl + Skift + B** toobuild hello projektet.
+8. För att kontrollera om det arbete du gjort hittills är korrekt trycker du på **Ctrl + Skift + B** att skapa projektet.
 
-### <a name="run-hello-app-locally"></a>Kör hello appen lokalt
+### <a name="run-the-app-locally"></a>Köra appen lokalt
 
-Kör hello programmet tooverify att det fungerar.
+Kör programmet för att kontrollera att det fungerar.
 
-1. Se till att **ProductsPortal** är hello aktiva projektet. Högerklicka på hello projektnamnet i Solution Explorer och markera **Set As Startup Project**.
+1. Se till att **ProductsPortal** är det aktiva projektet. Högerklicka på projektnamnet på i Solution Explorer och markera **Ställ in som startprojekt**.
 2. I Visual Studio trycker du på **F5**.
 3. Programmet bör visas och körs i en webbläsare.
 
    ![][21]
 
-## <a name="put-hello-pieces-together"></a>Samla hello delar
+## <a name="put-the-pieces-together"></a>Knyta ihop säcken
 
-hello nästa steg är toohook in hello lokala produktservern med hello ASP.NET-program.
+Nästa steg är att koppla samman den lokala produktservern med ASP.NET-programmet.
 
-1. Om den inte redan är öppen i Visual Studio öppnar den igen hello **ProductsPortal** projekt som du skapade i hello [skapa ett ASP.NET-program](#create-an-aspnet-application) avsnitt.
-2. Liknande toohello steg i avsnittet ”Skapa en lokal Server” hello lägga till hello NuGet-paketet toohello projektreferenser. I Solution Explorer högerklickar du på hello **ProductsPortal** projektet och klicka sedan på **hantera NuGet-paket**.
-3. Sök efter ”Service Bus” och välj hello **WindowsAzure.ServiceBus** objekt. Sedan slutföra hello installationen och Stäng den här dialogrutan.
-4. I Solution Explorer högerklickar du på hello **ProductsPortal** projektet och klicka sedan på **Lägg till**, sedan **befintlig artikel**.
-5. Navigera toohello **ProductsContract.cs** filen från hello **ProductsServer** console-projekt. Klicka på toohighlight ProductsContract.cs. Klicka på hello nedpilen bredvid för**Lägg till**, klicka på **Lägg till som länk**.
+1. Om programmet inte redan är öppet öppnar du det **ProductsPortal**-projekt som du skapade i avsnittet [Skapa ett ASP.NET-program](#create-an-aspnet-application) igen i Visual Studio.
+2. Lägg till NuGet-paketet i projektreferenserna på ett liknande sätt som i steget i avsnittet ”Skapa en lokal server”. Högerklicka på projektet **ProductsPortal** i Solution Explorer och klicka sedan på **Hantera NuGet-paket**.
+3. Sök efter "Service Bus" och markera posten **WindowsAzure Service Bus**. Slutför sedan installationen och stäng den här dialogrutan.
+4. Högerklicka på projektet **ProductsPortal** i Solution Explorer och klicka sedan på **Lägg till** och **Befintligt objekt**.
+5. Navigera till filen **ProductsContract.cs** från konsolprojektet **ProductsServer**. Klicka för att markera ProductsContract.cs. Klicka på nedåtpilen bredvid **Lägg till** och sedan på **Lägg till som länk**.
 
    ![][24]
 
-6. Öppna hello **HomeController.cs** filen i hello Visual Studio-redigeraren och Ersätt hello definitionen för namnområdet med följande kod hello. Vara säker på att tooreplace *yourServiceNamespace* med hello namnet på namnområdet för tjänsten och *yourKey* med SAS-nyckel. Detta aktiverar hello klienten toocall hello lokala tjänsten och returnera hello resultatet av hello-anrop.
+6. Öppna nu filen **HomeController.cs** i Visual Studio-redigeraren och ersätt definitionen för namnområde med följande kod. Se till att ersätta *yourServiceNamespace* med namnet på ditt namnområde för tjänsten och *yourKey* med din SAS-nyckel. Detta aktiverar klienten för att anropa den lokala tjänsten och returnera resultatet av anropet.
 
    ```csharp
    namespace ProductsWeb.Controllers
@@ -352,7 +352,7 @@ hello nästa steg är toohook in hello lokala produktservern med hello ASP.NET-p
 
        public class HomeController : Controller
        {
-           // Declare hello channel factory.
+           // Declare the channel factory.
            static ChannelFactory<IProductsChannel> channelFactory;
 
            static HomeController()
@@ -369,7 +369,7 @@ hello nästa steg är toohook in hello lokala produktservern med hello ASP.NET-p
            {
                using (IProductsChannel channel = channelFactory.CreateChannel())
                {
-                   // Return a view of hello products inventory.
+                   // Return a view of the products inventory.
                    return this.View(from prod in channel.GetProducts()
                                     select
                                         new Product { Id = prod.Id, Name = prod.Name,
@@ -379,83 +379,83 @@ hello nästa steg är toohook in hello lokala produktservern med hello ASP.NET-p
        }
    }
    ```
-7. I Solution Explorer högerklickar du på hello **ProductsPortal** lösning (se till att tooright klickar du på hello lösning, inte hello-projekt). Klicka på **Lägg till** och sedan på **Befintligt projekt**.
-8. Navigera toohello **ProductsServer** projektet och sedan dubbelklicka på hello **ProductsServer.csproj** lösning filen tooadd den.
-9. **ProductsServer** måste köras i ordning toodisplay hello data på **ProductsPortal**. I Solution Explorer högerklickar du på hello **ProductsPortal** lösningen och klicka på **egenskaper**. Hej **egenskapssidor** dialogrutan visas.
-10. Klicka på vänster sida hello, **Startprojekt**. Klicka på hello höger **flera Startprojekt**. Se till att **ProductsServer** och **ProductsPortal** visas i den ordningen med **starta** som hello åtgärden för båda.
+7. I Solution Explorer högerklickar du på lösningen **ProductsPortal** (se till att du högerklickar på lösningen, inte projektet). Klicka på **Lägg till** och sedan på **Befintligt projekt**.
+8. Navigera till projektet **ProductsServer** och dubbelklicka sedan på lösningsfilen **ProductsServer.csproj** för att lägga till den.
+9. **ProductsServer** måste köras för att kunna visa data på **ProductsPortal**. Högerklicka på lösningen **ProductsPortal** i Solution Explorer och klicka på **Egenskaper**. Dialogrutan **Egenskapssidor** visas.
+10. Klicka på **Startprojekt** på den vänstra sidan. Klicka på **Flera startprojekt** på den högra sidan. Se till att **ProductsServer** och **ProductsPortal** visas, och i den ordningen. Åtgärden för båda ska vara **Starta**.
 
       ![][25]
 
-11. Fortfarande i hello **egenskaper** dialogrutan klickar du på **projektberoenden** på hello vänster sida.
-12. I hello **projekt** klickar du på **ProductsServer**. Se till att **ProductsPortal** inte är markerat.
-13. I hello **projekt** klickar du på **ProductsPortal**. Se till att **ProductsServer** är markerat.
+11. Medan du fortfarande är kvar i dialogrutan **Egenskaper**, klickar du på **Projektberoenden** på den vänstra sidan.
+12. Klicka på **ProductsServer** i listan **Projekt**. Se till att **ProductsPortal** inte är markerat.
+13. Klicka på **ProductsPortal** i listan **Projekt**. Se till att **ProductsServer** är markerat.
 
     ![][26]
 
-14. Klicka på **OK** i hello **egenskapssidor** dialogrutan.
+14. Klicka på **OK** i dialogrutan **Egenskapssidor**.
 
-## <a name="run-hello-project-locally"></a>Kör hello projektet lokalt
+## <a name="run-the-project-locally"></a>Köra projektet lokalt
 
-tootest hello programmet lokalt, i Visual Studio trycker du på **F5**. hello lokal server (**ProductsServer**) bör starta först och sedan hello **ProductsPortal** bör programmet startas i ett webbläsarfönster. Den här gången ser du att hello produktinformation innehåller data som hämtats från hello produkten tjänsten lokalt system.
+Tryck på **F5** i Visual Studio för att testa programmet lokalt. Den lokala servern (**ProductsServer**) bör starta först och sedan ska programmet **ProductsPortal** starta i ett webbläsarfönster. Den här gången ser du att data för produktinventarielistorna hämtats från det lokala systemet för produkttjänster.
 
 ![][10]
 
-Tryck på **uppdatera** på hello **ProductsPortal** sidan. Varje gång du uppdaterar hello sidan ser du hello appservern visar ett meddelande när `GetProducts()` från **ProductsServer** anropas.
+Tryck på **Uppdatera** på sidan **ProductsPortal**. Varje gång du uppdaterar sidan kommer du att se att appservern visar ett meddelande när `GetProducts()` från **ProductsServer** anropas.
 
-Stänga båda programmen innan du fortsätter toohello nästa steg.
+Stäng båda programmen innan du fortsätter till nästa steg.
 
-## <a name="deploy-hello-productsportal-project-tooan-azure-web-app"></a>Distribuera hello ProductsPortal-projektet tooan Azure-webbapp
+## <a name="deploy-the-productsportal-project-to-an-azure-web-app"></a>Distribuera ProductsPortal-projektet till en Azure-webbapp
 
-hello nästa steg är toorepublish hello Azure Web app **ProductsPortal** klientdel. Hej du följande:
+Nästa steg är att publicera om klientdelen för **ProductsPortal** som en Azure-webbapp. Gör följande:
 
-1. I Solution Explorer högerklickar du på hello **ProductsPortal** projektet och klicka på **publicera**. Klicka på **publicera** på hello **publicera** sidan.
+1. Högerklicka på lösningen **ProductsPortal** i Solution Explorer och klicka på **Publicera**. Klicka på **Publicera** på **publiceringssidan**.
 
   > [!NOTE]
-  > Du kan se ett felmeddelande i webbläsarfönstret hello när hello **ProductsPortal** webbprojekt startas automatiskt efter hello-distribution. Detta är förväntat och beror på att hello **ProductsServer** programmet ännu inte körs.
+  > Du kanske får upp ett felmeddelande i webbläsarfönstret när webbprojektet **ProductsPortal** startas automatiskt efter distributionen. Detta är normalt och beror på att **ProductsServer**-programmet ännu inte körs.
 >
 >
 
-2. Kopiera hello URL för hello distribueras webbapp som du behöver hello URL: en i hello nästa steg. Du kan även hämta denna URL från hello Azure App Service aktivitetsfönstret i Visual Studio:
+2. Kopiera den distribuerade webbappens URL eftersom du kommer att behöva URL-adressen i nästa steg. Du kan även hämta denna URL från aktivitetsfönstret Azure App Service i Visual Studio:
 
   ![][9]
 
-3. Stäng hello webbläsare fönstret toostop hello program körs.
+3. Stäng webbläsarfönstret för att stoppa programmet som körs.
 
 ### <a name="set-productsportal-as-web-app"></a>Ställa in ProductsPortal som en webbapp
 
-Innan program som körs hello i hello molnet, måste du se till att **ProductsPortal** startas från Visual Studio som en webbapp.
+Innan du kör programmet i molnet måste du se till att **ProductsPortal** startas från Visual Studio som en webbapp.
 
-1. I Visual Studio högerklickar du på hello **ProductsPortal** projektet och klicka sedan på **egenskaper**.
-2. Klicka på hello vänstra kolumnen **Web**.
-3. I hello **Starta åtgärden** klickar du på hello **starta URL** och i textrutan för hello anger hello URL för ditt tidigare distribuerade webbprogram, till exempel `http://productsportal1234567890.azurewebsites.net/`.
+1. Högerklicka på projektet **ProductsPortal** i Visual Studio och klicka sedan på **Egenskaper**.
+2. Klicka på **Webb** i den vänstra kolumnen.
+3. I avsnittet **Starta åtgärden** klickar du på knappen **Starta URL**. Ange URL-adressen för den webbapp som du distribuerade i de föregående stegen i textrutan, till exempel `http://productsportal1234567890.azurewebsites.net/`.
 
     ![][27]
 
-4. Från hello **filen** -menyn i Visual Studio klickar du på **spara alla**.
-5. Hello Build-menyn i Visual Studio klickar du på **återskapa lösning**.
+4. Klicka på **Spara alla** från menyn **Arkiv** i Visual Studio.
+5. Klicka på **Återskapa lösning** från menyn Skapa i Visual Studio.
 
-## <a name="run-hello-application"></a>Kör programmet hello
+## <a name="run-the-application"></a>Köra programmet
 
-1. Tryck på F5 toobuild och kör programmet hello. hello lokal server (hello **ProductsServer** konsolprogrammet) bör starta först och sedan hello **ProductsPortal** program ska starta i ett webbläsarfönster som visas i följande skärmbild hello bild. Observera igen att hello produktinformation visar data som hämtats från hello produkten tjänsten lokalt system och data i hello webbapp. Kontrollera hello URL toomake att som **ProductsPortal** körs i hello molnet, som en Azure-webbapp.
+1. Tryck på F5 för att skapa och köra programmet. Den lokala servern (konsolprogrammet **ProductsServer**) bör starta först och sedan ska programmet **ProductsPortal** starta i ett webbläsarfönster, som visas på följande skärmdump. Återigen ser du att data för produktinventarielistorna hämtats från det lokala systemet för produkttjänster. Dessa data visas sedan i webbappen. Kontrollera URL:en för att se till att **ProductsPortal** körs i molnet, som en Azure-webbapp.
 
    ![][1]
 
    > [!IMPORTANT]
-   > Hej **ProductsServer** konsolprogram måste vara körs och kan tooserve hello data toohello **ProductsPortal** program. Om ett felmeddelande visas i webbläsaren hello Vänta några sekunder för **ProductsServer** tooload och visa hello följande meddelande. Tryck på **uppdatera** i hello webbläsare.
+   > Konsolprogrammet **ProductsServer** måste köras och det måste kunna skicka data till programmet **ProductsPortal**. Om ett felmeddelande visas i webbläsaren ska du vänta i några sekunder för att **ProductsServer** ska läsas in. Den visar sedan följande meddelande. Tryck sedan på **Uppdatera** i webbläsaren.
    >
    >
 
    ![][37]
-2. Tillbaka i hello webbläsaren trycker du på **uppdatera** på hello **ProductsPortal** sidan. Varje gång du uppdaterar hello sidan ser du hello appservern visar ett meddelande när `GetProducts()` från **ProductsServer** anropas.
+2. När du har gått tillbaka till webbläsaren trycker du på **Uppdatera** på sidan **ProductsPortal**. Varje gång du uppdaterar sidan kommer du att se att appservern visar ett meddelande när `GetProducts()` från **ProductsServer** anropas.
 
     ![][38]
 
 ## <a name="next-steps"></a>Nästa steg
 
-toolearn mer om Azure Relay finns hello följande resurser:  
+Mer information om Azure Relay finns i följande resurser:  
 
 * [Vad är Azure Relay?](relay-what-is-it.md)  
-* [Hur toouse relä](service-bus-dotnet-how-to-use-relay.md)  
+* [Använda vidarebefordran](service-bus-dotnet-how-to-use-relay.md)  
 
 [0]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/hybrid.png
 [1]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/App2.png

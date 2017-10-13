@@ -1,6 +1,6 @@
 ---
-title: "aaaCreate ett virtuellt nätverk | Azure Resource Manager-mall | Microsoft Docs"
-description: "Lär dig hur toocreate ett virtuellt nätverk med en Azure Resource Manager-mall."
+title: "Skapa ett virtuellt nätverk | Azure Resource Manager-mall | Microsoft Docs"
+description: "Lär dig hur du skapar ett virtuellt nätverk med en Azure Resource Manager-mall."
 services: virtual-network
 documentationcenter: 
 author: jimdial
@@ -16,19 +16,19 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b9c289433ff2a84bec19eac25fa28ab40d131c7d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 81602766848a91331c8d811ea1c8ec3ffae44b96
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="create-a-virtual-network-using-an-azure-resource-manager-template"></a>Skapa ett virtuellt nätverk med en Azure Resource Manager-mall
 
 [!INCLUDE [virtual-networks-create-vnet-intro](../../includes/virtual-networks-create-vnet-intro-include.md)]
 
-Azure har två distributionsmodeller: Azure Resource Manager och klassisk. Microsoft rekommenderar att skapa resurser via hello Resource Manager-modellen. Mer om toolearn hello skillnaderna mellan hello två modeller, läsa hello [förstå Azure distributionsmodeller](../azure-resource-manager/resource-manager-deployment-model.md) artikel.
+Azure har två distributionsmodeller: Azure Resource Manager och klassisk. Microsoft rekommenderar att skapa resurser med Resource Manager-distributionsmodellen. Mer information om skillnaderna mellan de två modellerna finns i artikeln [Understand Azure deployment models](../azure-resource-manager/resource-manager-deployment-model.md) (Förstå Azure-distributionsmodellerna).
  
-Den här artikeln förklarar hur toocreate ett VNet via hello Resource Manager distribution modellen med en Azure Resource Manager-mall. Du kan också skapa ett VNet via Resource Manager med andra verktyg eller skapa ett VNet via hello klassiska distributionsmodellen genom att välja ett annat alternativ hello följande lista:
+Den här artikeln förklaras hur du skapar ett VNet via Resource Manager-distributionsmodellen med hjälp av en Azure Resource Manager-mall. Du kan också skapa ett virtuellt nätverk med Resource Manager med hjälp av andra verktyg eller skapa ett virtuellt nätverk med hjälp av den klassiska distributionsmodellen genom att välja ett annat alternativ i följande lista:
 
 > [!div class="op_single_selector"]
 - [Portal](virtual-networks-create-vnet-arm-pportal.md)
@@ -39,44 +39,44 @@ Den här artikeln förklarar hur toocreate ett VNet via hello Resource Manager d
 - [PowerShell (klassisk)](virtual-networks-create-vnet-classic-netcfg-ps.md)
 - [CLI (klassisk)](virtual-networks-create-vnet-classic-cli.md)
 
-Du får lära dig hur toodownload och ändra befintliga ARM-mall från GitHub och distribuerar hello-mall från GitHub, PowerShell och hello Azure CLI.
+Du kommer lära dig hur man hämtar och ändrar en befintlig ARM-mall från GitHub och distribuerar mallen från GitHub, PowerShell och Azure CLI.
 
-Om du bara distribuerar hello ARM-mallen direkt från GitHub utan ändringar, hoppar du över för[distribuera en mall från github](#deploy-the-arm-template-by-using-click-to-deploy).
+Om du bara distribuerar ARM-mallen direkt från GitHub utan ändringar, kan du hoppa till [distribuera en mall från github](#deploy-the-arm-template-by-using-click-to-deploy).
 
 [!INCLUDE [virtual-networks-create-vnet-scenario-include](../../includes/virtual-networks-create-vnet-scenario-include.md)]
 
-## <a name="download-and-understand-hello-azure-resource-manager-template"></a>Hämta och förstå hello Azure Resource Manager-mall
-Du kan hämta hello befintlig mall för att skapa ett VNet och två undernät från GitHub, göra ändringar du vill och återanvända den. toodo slutföra så hello följande steg:
+## <a name="download-and-understand-the-azure-resource-manager-template"></a>Hämta och förstå Azure Resource Manager-mallen
+Du kan hämta den befintliga mallen för att skapa ett VNet och två undernät från GitHub, göra ändringar du vill och återanvända den. Om du vill göra det, gör du följande:
 
-1. Navigera för[hello exempelmallsidan](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vnet-two-subnets).
+1. Gå till [exempelmallsidan](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vnet-two-subnets).
 2. Klicka på **azuredeploy.json** och klicka sedan på **RAW**.
-3. Spara hello filen tooa en lokal mapp på datorn.
-4. Om du är bekant med mallar kan du hoppa över toostep 7.
-5. Öppna hello-filen som du just har sparat och titta på hello innehållet under **parametrar** på rad 5. ARM-mallparametrarna agerar platshållare för värden som kan anges under distributionen.
+3. Spara filen på en lokal mapp på datorn.
+4. Om du är bekant med mallar kan du gå vidare till steg 7.
+5. Öppna filen som du just har sparat och titta på innehållet i **parametrar** på rad 5. ARM-mallparametrarna agerar platshållare för värden som kan anges under distributionen.
    
    | Parameter | Beskrivning |
    | --- | --- |
-   | **Plats** |Azure-region där hello VNet kommer att skapas |
-   | **vnetName** |Namn för hello nya VNet |
-   | **addressPrefix** |Adressutrymmet för hello VNet, i CIDR-format |
-   | **subnet1Name** |Namn för hello första VNet |
-   | **subnet1Prefix** |CIDR-block för hello första undernätet |
-   | **subnet2Name** |Namn för hello andra VNet |
-   | **subnet2Prefix** |CIDR-block för hello andra undernätet |
+   | **Plats** |Azure-region där VNet kommer att skapas |
+   | **vnetName** |Namn för det nya VNet |
+   | **addressPrefix** |Adressutrymmet för VNet, i CIDR-format |
+   | **subnet1Name** |Namn för det första VNet |
+   | **subnet1Prefix** |CIDR-block för det första undernätet |
+   | **subnet2Name** |Namn för den andra VNet |
+   | **subnet2Prefix** |CIDR-block för andra undernätet |
    
    > [!IMPORTANT]
-   > Azure Resource Manager-mallar som finns på GitHub kan ändras med tiden. Kontrollera inställningarna i hello mallen innan du använder den.
+   > Azure Resource Manager-mallar som finns på GitHub kan ändras med tiden. Var noga med att kontrollera mallen innan den används.
    > 
    > 
-6. Kontrollera hello innehåll under **resurser** och notera hello följande:
+6. Kontrollera innehållet i **resurser** och observera följande:
    
-   * **type**. Typ av resurs som skapas av hello mallen. I det här fallet **Microsoft.Network/virtualNetworks**, vilket motsvarar ett VNet.
-   * **name**. Namnet för hello resurs. Meddelande hello användning av **[parameters('vnetName')]**, vilket innebär hello namn kommer att anges som indata av hello användare eller en parameterfil under distributionen.
-   * **properties**. Lista över egenskaper för hello resurs. Denna mall används hello egenskaper för adressutrymmet och undernätsegenskaperna vid skapandet av ett VNet.
-7. Gå tillbaka för[hello exempelmallsidan](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vnet-two-subnets).
+   * **type**. Typ av resurs som skapas av mallen. I det här fallet **Microsoft.Network/virtualNetworks**, vilket motsvarar ett VNet.
+   * **name**. Namn på den virtuella resursen. Observera användningen av **[parameters('vnetName')]**, vilket betyder att namnet kommer att anges som indata från användaren eller en parameterfil vid distributionen.
+   * **properties**. Lista över egenskaper för resursen. Den här mallen använder adressutrymmet och undernätsegenskaperna vid skapandet av ett VNet.
+7. Gå tillbaks till [exempelmallsidan](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vnet-two-subnets).
 8. Klicka på **azuredeploy-parameters.json** och klicka sedan på **RAW**.
-9. Spara hello filen tooa en lokal mapp på datorn.
-10. Öppna hello-filen som du just har sparat och redigera hello värden för hello parametrar. Använd följande värden under toodeploy hello VNet som beskrivs i scenariot hello hello:
+9. Spara filen i en lokal mapp på datorn.
+10. Öppna filen som du just har sparat och redigera värdena för parametrarna. Använd värdena nedan för att distribuera det VNet som beskrivs i scenariot:
 
     ```json
         {
@@ -104,21 +104,21 @@ Du kan hämta hello befintlig mall för att skapa ett VNet och två undernät fr
         }
     ```
 
-11. Spara hello-filen.
+11. Spara filen.
 
 
-## <a name="deploy-hello-template-using-powershell"></a>Distribuera hello-mallen med hjälp av PowerShell
+## <a name="deploy-the-template-using-powershell"></a>Distribuera mallen med hjälp av PowerShell
 
-Slutför hello följande steg toodeploy hello mallen som du hämtade med hjälp av PowerShell:
+Utför följande steg för att distribuera mallen som du hämtade med hjälp av PowerShell:
 
-1. Installera och konfigurera Azure PowerShell genom att slutföra hello stegen i hello [hur tooInstall och konfigurera Azure PowerShell](/powershell/azure/overview) artikel.
-2. Kör följande kommando toocreate hello en ny resursgrupp:
+1. Installera och konfigurera Azure PowerShell genom att slutföra stegen i den [installera och konfigurera Azure PowerShell](/powershell/azure/overview) artikel.
+2. Kör följande kommando för att skapa en ny resursgrupp:
 
     ```powershell
     New-AzureRmResourceGroup -Name TestRG -Location centralus
     ```
 
-    hello-kommando skapar en resursgrupp med namnet *TestRG* i hello *centrala USA* azure-region. Mer information om resursgrupper finns i [Översikt över Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
+    Kommandot skapar en resursgrupp med namnet *TestRG* i den *centrala USA* azure-region. Mer information om resursgrupper finns i [Översikt över Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
 
     Förväntad utdata:
 
@@ -132,7 +132,7 @@ Slutför hello följande steg toodeploy hello mallen som du hämtade med hjälp 
                             *
         ResourceId        : /subscriptions/[Id]/resourceGroups/TestRG
 
-3. Kör följande kommando toodeploy hello nya VNet med hjälp av hello mallen och parametern filer du hämtade och ändrade ovan hello:
+3. Kör följande kommando för att distribuera det nya VNet med hjälp av mallen och parametern filer du hämtade och ändrade ovan:
 
     ```powershell
     New-AzureRmResourceGroupDeployment -Name TestVNetDeployment -ResourceGroupName TestRG `
@@ -159,7 +159,7 @@ Slutför hello följande steg toodeploy hello mallen som du hämtade med hjälp 
                             subnet2Name      String                     BackEnd
    
         Outputs           :
-4. Hello kör följande kommando tooview hello egenskaper för hello nya VNet:
+4. Kör följande kommando för att visa egenskaperna för det nya VNet:
 
     ```powershell
     Get-AzureRmVirtualNetwork -ResourceGroupName TestRG -Name TestVNet
@@ -206,39 +206,39 @@ Slutför hello följande steg toodeploy hello mallen som du hämtade med hjälp 
                               }
                             ]
 
-## <a name="deploy-hello-template-using-click-to-deploy"></a>Distribuera hello mallen med Klicka för att distribuera
+## <a name="deploy-the-template-using-click-to-deploy"></a>Distribuera mallen med Klicka för att distribuera
 
-Du kan återanvända fördefinierade Azure Resource Manager mallar överförda tooa GitHub databas som hanteras av Microsoft och öppna toohello community. De här mallarna kan distribueras direkt från GitHub, eller hämtade och ändrade toofit dina behov. toodeploy en mall som skapar ett VNet med två undernät fullständig hello följande steg:
+Du kan återanvända fördefinierade Azure Resource Manager-mallar som har överförts till en GitHub-databas som hanteras av Microsoft och öppen för allmänheten. De här mallarna kan distribueras direkt från GitHub, eller hämtas och ändras så att de passar dina behov. Om du vill distribuera en mall som skapar ett VNet med två undernät, gör du följande:
 
-1. Från en webbläsare navigerar för[https://github.com/Azure/azure-quickstart-templates](https://github.com/Azure/azure-quickstart-templates).
-2. Bläddra nedåt hello listan över mallar och klickar på **101-vnet-two-subnets**. Kontrollera hello **README.md** filen enligt nedan.
+1. Från en webbläsare, navigerar du till [https://github.com/Azure/azure-quickstart-templates](https://github.com/Azure/azure-quickstart-templates).
+2. Bläddra ned i mallistan och klicka på **101-vnet-two-subnets**. Kontrollera **README.md**-filen enligt nedan.
 
     ![README.md-filen i GitHub](./media/virtual-networks-create-vnet-arm-template-click-include/figure1.png)
 
-3. Klicka på **distribuera tooAzure**. Ange dina inloggningsuppgifter för Azure vid behov. 
-4. I hello **parametrar** bladet ange hello värden du toouse toocreate ditt nya VNet, och klickar sedan på **OK**. hello visar följande bild hello värden för hello scenario:
+3. Klicka på **Distribuera till Azure**. Ange dina inloggningsuppgifter för Azure vid behov. 
+4. I bladet **Parametrar** anger du de värden som du vill använda för att skapa ditt nya VNet och klickar sedan på **OK**. Följande bild visar värdena för scenariot:
    
     ![ARM-mallparametrar](./media/virtual-networks-create-vnet-arm-template-click-include/figure2.png)
 
-5. Klicka på **resursgruppen** och välj en resurs grupp tooadd hello VNet till, eller klicka på **Skapa nytt** tooadd hello VNet tooa ny resursgrupp. hello följande bild visar hello resurs resursgruppsinställningarna för en ny resursgrupp som kallas **TestRG**:
+5. Klicka på **Resursgrupp** och välj en resursgrupp att lägga till VNet till, eller klicka på **Skapa ny** för att lägga till VNet till en ny resursgrupp. Följande bild visar resursen resursgruppsinställningarna för en ny resursgrupp som kallas **TestRG**:
 
     ![Resursgrupp](./media/virtual-networks-create-vnet-arm-template-click-include/figure3.png)
 
-6. Om det behövs ändrar hello **prenumeration** och **plats** inställningar för din VNet.
-7. Om du inte vill toosee hello VNet som en panel i hello **startsidan**, inaktivera **PIN-kod tooStartboard**.
-8. Klicka på **juridiska villkor**, Läs hello villkoren och klicka på **köpa** tooagree. 
-9. Klicka på **skapa** toocreate hello virtuella nätverk.
+6. Ändra vid behov inställningarna för **Prenumeration** och **Plats** för din VNet.
+7. Om du inte vill se VNet som en ikon på **Startsidan**, inaktiverar du **Fäst på startsidan**.
+8. Klicka på **juridiska villkor**, Läs villkoren och klicka på **köpa** accepterar. 
+9. Skapa VNet genom att klicka på **Skapa**.
    
     ![Ikonen för Skicka in distribution i preview-portalen](./media/virtual-networks-create-vnet-arm-template-click-include/figure4.png)
 
-10. När hello distributionen är klar i hello Azure-portalen klickar du på **fler tjänster**, typen *virtuella nätverk* hello filter i rutan som visas och klicka sedan på virtuella nätverk toosee hello virtuella nätverk bladet. Hello-bladet klickar du på *TestVNet*. I hello *TestVNet* bladet, klickar du på **undernät** toosee hello skapade undernät, som visas i följande bild hello:
+10. När installationen är klar i Azure portal klickar du på **fler tjänster**, typen *virtuella nätverk* i filterrutan och klicka sedan på virtuella nätverk för att se virtuella nätverk-bladet. I bladet, klickar du på *TestVNet*. I den *TestVNet* bladet, klickar du på **undernät** att se skapade undernät, som visas i följande bild:
     
      ![Skapa VNet i preview-portalen](./media/virtual-networks-create-vnet-arm-template-click-include/figure5.png)
 
 ## <a name="next-steps"></a>Nästa steg
 
-Lär dig hur tooconnect:
+Lär dig hur du ansluter:
 
-- En virtuell dator (VM) tooa virtuellt nätverk genom att läsa hello [skapa en virtuell Windows-dator](../virtual-machines/virtual-machines-windows-hero-tutorial.md) eller [skapa ett Linux VM](../virtual-machines/linux/quick-create-portal.md) artiklar. I stället för att skapa en VNet och undernät i hello steg hello artiklar, kan du välja ett befintligt VNet och undernät tooconnect en virtuell dator till.
-- Hej virtuellt nätverk tooother virtuella nätverk genom att läsa hello [ansluta Vnet](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md) artikel.
-- hello virtuellt nätverk tooan lokalt nätverk via ett plats-till-plats virtuellt privat nätverk (VPN) eller en ExpressRoute-kretsen. Lär dig hur genom att läsa hello [ansluta ett virtuellt nätverk tooan lokalt nätverk med hjälp av en plats-till-plats-VPN](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md) och [länka VNet-tooan ExpressRoute-krets](../expressroute/expressroute-howto-linkvnet-arm.md) artiklar.
+- En virtuell dator (VM) till ett virtuellt nätverk genom att läsa artiklarna om hur du [skapar en Windows-baserad virtuell dator](../virtual-machines/virtual-machines-windows-hero-tutorial.md) eller [en Linux-baserad virtuell dator](../virtual-machines/linux/quick-create-portal.md). I stället för att skapa ett virtuellt nätverk och undernät i stegen i artikeln kan du ansluta en virtuell dator till ett befintligt virtuellt nätverk och undernät.
+- Det virtuella nätverket till andra virtuella nätverk genom att läsa artikeln [Connect VNets](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md) (Ansluta virtuella nätverk).
+- Det virtuella nätverket till ett lokalt nätverk med hjälp av ett virtuellt privat nätverk (VPN) för plats till plats eller en ExpressRoute-krets. Mer information finns i artiklarna [Connect a VNet to an on-premises network using a site-to-site VPN](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md) (Ansluta ett virtuellt nätverk till ett lokalt nätverk med hjälp av VPN för plats till plats) och [Link a VNet to an ExpressRoute circuit](../expressroute/expressroute-howto-linkvnet-arm.md) (Länka ett virtuellt nätverk till en ExpressRoute-krets).

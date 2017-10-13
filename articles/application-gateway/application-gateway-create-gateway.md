@@ -1,9 +1,9 @@
 ---
-title: aaaCreate, starta, eller ta bort en Programgateway | Microsoft Docs
-description: "Den här sidan innehåller instruktioner toocreate, konfigurera, starta och ta bort en Azure Programgateway"
+title: Skapa, starta eller ta bort en programgateway | Microsoft Docs
+description: "Den här sidan innehåller anvisningar för hur du skapar, konfigurerar, startar och tar bort en programgateway i Azure"
 documentationcenter: na
 services: application-gateway
-author: georgewallace
+author: davidmu1
 manager: timlt
 editor: tysonn
 ms.assetid: 577054ca-8368-4fbf-8d53-a813f29dc3bc
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
-ms.author: gwallace
-ms.openlocfilehash: 3efef5b49880c9efdafad8b88d4bce5b749b82af
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.author: davidmu
+ms.openlocfilehash: 7fb54e96d20d34f453b7b016094b84504348335b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-start-or-delete-an-application-gateway-with-powershell"></a>Skapa, starta eller ta bort en programgateway med PowerShell 
 
@@ -30,47 +30,47 @@ ms.lasthandoff: 10/06/2017
 > * [Azure Resource Manager-mall](application-gateway-create-gateway-arm-template.md)
 > * [Azure CLI](application-gateway-create-gateway-cli.md)
 
-Azure Application Gateway är en Layer 7-belastningsutjämnare. Det ger redundans, prestanda-routing HTTP-begäranden mellan olika servrar, oavsett om de är på hello molnet eller lokalt. Application Gateway innehåller många ADC-funktioner (Application Delivery Controller), inklusive HTTP-belastningsutjämning, cookie-baserad sessionstilldelning, SSL-avlastning (Secure Sockets Layer), anpassade hälsoavsökningar, stöd för flera platser och mycket mer. toofind en fullständig lista över funktioner som stöds finns [Gateway Programöversikt](application-gateway-introduction.md)
+Azure Application Gateway är en Layer 7-belastningsutjämnare. Den tillhandahåller redundans och prestandabaserad routning av HTTP-begäranden mellan olika servrar, oavsett om de finns i molnet eller lokalt. Application Gateway innehåller många ADC-funktioner (Application Delivery Controller), inklusive HTTP-belastningsutjämning, cookie-baserad sessionstilldelning, SSL-avlastning (Secure Sockets Layer), anpassade hälsoavsökningar, stöd för flera platser och mycket mer. En fullständig lista över funktioner som stöds finns i [Översikt över Application Gateway](application-gateway-introduction.md)
 
-Den här artikeln vägleder dig genom hello steg toocreate, konfigurera, starta och ta bort en Programgateway.
+Den här artikeln beskriver steg för steg hur du skapar, konfigurerar, startar och tar bort en programgateway.
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
-1. Installera hello senaste versionen av hello Azure PowerShell-cmdlets med hello installationsprogram för webbplattform. Du kan hämta och installera hello senaste versionen från hello **Windows PowerShell** avsnitt i hello [Nedladdningssida](https://azure.microsoft.com/downloads/).
-2. Om du har ett befintligt virtuellt nätverk, Välj ett befintligt tomma undernät eller skapa ett nytt undernät i ett befintligt virtuellt nätverk enbart för användning med hello Programgateway. Du kan inte distribuera hello programmet gateway tooa annat virtuellt nätverk än hello resurser du avser toodeploy bakom hello Programgateway såvida inte vnet-peering används. toolearn finns mer [Vnet-Peering](../virtual-network/virtual-network-peering-overview.md)
-3. Kontrollera att du har ett fungerande virtuellt nätverk med ett giltigt undernät. Se till att inga virtuella datorer eller molndistributioner använder hello undernät. hello programmet gateway måste finnas ensamt i ett undernät för virtuellt nätverk.
-4. hello-servrar som du konfigurerar toouse hello Programgateway måste finnas eller tilldelats deras slutpunkter har skapats i hello virtuellt nätverk eller med en offentlig IP-adress/VIP.
+1. Installera den senaste versionen av Azure PowerShell-cmdlets med hjälp av installationsprogrammet för webbplattform. Du kan hämta och installera den senaste versionen från avsnittet om **Windows PowerShell** på [hämtningssidan](https://azure.microsoft.com/downloads/).
+2. Om du har ett befintligt virtuellt nätverk väljer du antingen ett befintligt tomt undernät eller skapar ett nytt undernät i det befintliga virtuella nätverket som enbart avsett för att användas av programgatewayen. Du kan inte distribuera programgatewayen till ett annat virtuellt nätverk än de resurser som du avser distribuera bakom programgatewayen om du inte använder vnet-peering. Läs mer under [Vnet-peering](../virtual-network/virtual-network-peering-overview.md)
+3. Kontrollera att du har ett fungerande virtuellt nätverk med ett giltigt undernät. Kontrollera att inga virtuella datorer eller molndistributioner använder undernätet. Programgatewayen måste vara fristående i ett virtuellt nätverks undernät.
+4. De servrar som du konfigurerar för användning av programgatewayen måste finnas i det virtuella nätverket eller ha slutpunkter som skapats där eller tilldelats en offentlig IP-/VIP-adress.
 
-## <a name="what-is-required-toocreate-an-application-gateway"></a>Vad är obligatoriska toocreate en Programgateway?
+## <a name="what-is-required-to-create-an-application-gateway"></a>Vad krävs för att skapa en programgateway?
 
-När du använder hello `New-AzureApplicationGateway` kommandot toocreate hello Programgateway, ingen konfiguration är nu och hello nyligen skapade resursen är konfigurerade antingen med hjälp av XML- eller ett konfigurationsobjekt.
+När du använder kommandot `New-AzureApplicationGateway` för att skapa programgatewayen görs ingen konfiguration vid denna tidpunkt och den nyligen skapade resursen konfigureras antingen med hjälp av XML eller med ett konfigurationsobjekt.
 
-hello-värden är:
+Värdena är:
 
-* **Backend-serverpoolen:** hello lista över IP-adresser för hello backend-servrar. hello IP-adresser som anges antingen ska tillhöra toohello undernät för virtuellt nätverk eller ska vara en offentlig IP-adress/VIP.
-* **Inställningar för backend-serverpool:** Varje pool har inställningar som port, protokoll och cookiebaserad tillhörighet. De här inställningarna är bundet tooa poolen och tillämpade tooall servrar inom hello poolen.
-* **Frontend-port:** den här porten är hello offentliga som öppnas på hello Programgateway. Trafik träffar den här porten och sedan hämtar omdirigeras tooone hello backend-servrar.
-* **Lyssnare:** hello-lyssnare har en frontend-port, ett protokoll (Http eller Https dessa värden är skiftlägeskänsligt), och hello SSL-certifikatnamn (om hur du konfigurerar SSL-avlastning).
-* **Regel:** hello regeln Binder hello-lyssnare och hello backend-serverpoolen och definierar vilken backend-server pool hello trafik ska vara riktad toowhen den når en viss lyssnare.
+* **Backend-serverpool:** Listan med IP-adresser för backend-servrarna. IP-adresserna som anges bör antingen tillhöra det virtuella undernätet eller vara en offentlig IP-/VIP-adress.
+* **Inställningar för backend-serverpool:** Varje pool har inställningar som port, protokoll och cookiebaserad tillhörighet. Dessa inställningar är knutna till en pool och tillämpas på alla servrar i poolen.
+* **Frontend-port:** Den här porten är den offentliga porten som är öppen på programgatewayen. Trafiken kommer till den här porten och omdirigeras till en av backend-servrarna.
+* **Lyssnare:** Lyssnaren har en frontend-port, ett protokoll (Http eller Https; dessa värden är skiftlägeskänsliga) och SSL-certifikatnamnet (om du konfigurerar SSL-avlastning).
+* **Regel:** Regeln binder lyssnaren och backend-serverpoolen och definierar vilken backend-serverpool som trafiken ska dirigeras till när den når en viss lyssnare.
 
 ## <a name="create-an-application-gateway"></a>Skapa en programgateway
 
-toocreate en Programgateway:
+Så här skapar du en programgateway:
 
 1. Skapa en resurs för en programgateway.
 2. Skapa en XML-konfigurationsfil eller ett konfigurationsobjekt.
-3. Bekräfta hello configuration toohello nyskapad programresursen gateway.
+3. Bekräfta konfigurationen för den nyligen skapade programgatewayresursen.
 
 > [!NOTE]
-> Om du behöver tooconfigure en anpassad avsökningsåtgärd för din Programgateway finns [skapa en Programgateway med anpassade avsökningar med hjälp av PowerShell](application-gateway-create-probe-classic-ps.md). Mer information finns i [Anpassade avsökningar och hälsoövervakning](application-gateway-probe-overview.md).
+> Om du behöver konfigurera en anpassad avsökning för din programgateway läser du [Skapa en programgateway med anpassade avsökningar med hjälp av PowerShell](application-gateway-create-probe-classic-ps.md). Mer information finns i [Anpassade avsökningar och hälsoövervakning](application-gateway-probe-overview.md).
 
 ![Exempel på ett scenario][scenario]
 
 ### <a name="create-an-application-gateway-resource"></a>Skapa en resurs för en programgateway
 
-Använd hello-toocreate hello gateway `New-AzureApplicationGateway` cmdlet, ersätter hello värden med dina egna. Fakturering för hello gatewayen startar inte nu. Fakturering börjar i ett senare steg när hello gateway har startat.
+Du skapar en gateway genom att köra cmdleten `New-AzureApplicationGateway`, där du ersätter värdena med dina egna. Faktureringen för gatewayen startar inte i det här läget. Faktureringen börjar i ett senare skede när gatewayen har startats.
 
-hello följande exempel skapas en Programgateway med hjälp av ett virtuellt nätverk kallas ”testvnet1” och ett undernät som kallas ”Undernät 1”:
+I följande exempel skapar vi en programgateway genom att använda ett virtuellt nätverk med namnet testvnet1 och undernätet subnet-1:
 
 ```powershell
 New-AzureApplicationGateway -Name AppGwTest -VnetName testvnet1 -Subnets @("Subnet-1")
@@ -78,7 +78,7 @@ New-AzureApplicationGateway -Name AppGwTest -VnetName testvnet1 -Subnets @("Subn
 
 *Description*, *InstanceCount* och *GatewaySize* är valfria parametrar.
 
-toovalidate som hello gateway har skapats kan du använda hello `Get-AzureApplicationGateway` cmdlet.
+Du kontrollerar att gatewayen har skapats genom att köra cmdleten `Get-AzureApplicationGateway`.
 
 ```powershell
 Get-AzureApplicationGateway AppGwTest
@@ -97,21 +97,21 @@ DnsName       :
 ```
 
 > [!NOTE]
-> Hej standardvärdet för *InstanceCount* är 2, med ett maximalt värde 10. Hej standardvärdet för *GatewaySize* är Medium. Du kan välja mellan Small, Medium eller Large.
+> Standardvärdet för *InstanceCount* är 2, och det högsta värdet är 10. Standardvärdet för *GatewaySize* är Medium. Du kan välja mellan Small, Medium eller Large.
 
-*Virtualip:* och *DnsName* visas som tomt eftersom hello gateway inte har startat ännu. Dessa skapas när hello gateway är i hello körs.
+*VirtualIPs* och *DnsName* är tomma eftersom gatewayen inte har startat än. De skapas när gatewayen är i körläge.
 
-## <a name="configure-hello-application-gateway"></a>Konfigurera hello Programgateway
+## <a name="configure-the-application-gateway"></a>Konfigurera progamgatewayen
 
-Du kan konfigurera hello Programgateway med hjälp av XML- eller ett konfigurationsobjekt.
+Du kan konfigurera programgatewayen med hjälp av XML eller ett konfigurationsobjekt.
 
-### <a name="configure-hello-application-gateway-by-using-xml"></a>Konfigurera hello Programgateway genom att använda XML
+### <a name="configure-the-application-gateway-by-using-xml"></a>Konfigurera programgatewayen med hjälp av XML
 
-I följande exempel hello, och använda en XML-filen tooconfigure alla inställningar för Programgateway och bekräfta dem toohello programresursen gateway.  
+I följande exempel använder vi en XML-fil för att konfigurera alla inställningar för programgatewayen och för att skicka dem till programgatewayresursen.  
 
 #### <a name="step-1"></a>Steg 1
 
-Kopiera följande text tooNotepad hello.
+Kopiera följande text till Anteckningar.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -158,12 +158,12 @@ Kopiera följande text tooNotepad hello.
 </ApplicationGatewayConfiguration>
 ```
 
-Redigera hello värden mellan hello parenteser för hello konfigurationsobjekt. Spara hello-filen med filnamnstillägget .xml.
+Redigera värdena mellan parenteserna för konfigurationsobjekten. Spara filen med filnamnstillägget .xml.
 
 > [!IMPORTANT]
-> hello protokollet objektet Http eller Https är skiftlägeskänsliga.
+> Protokollobjekten Http och Https är skiftlägeskänsliga.
 
-hello som följande exempel visar hur toouse en konfiguration filen tooset in hello Programgateway. hello exempel belastningen balanserar HTTP-trafik på offentlig port 80 och skickar nätverkstrafik tooback avslutande port 80 mellan två IP-adresser.
+I följande exempel visas hur du kan konfigurera programgatewayen med en konfigurationsfil. Exempelbelastningen balanserar HTTP-trafiken via den offentliga porten 80 och skickar nätverkstrafik till backend-porten 80 mellan två IP-adresser.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -212,24 +212,24 @@ hello som följande exempel visar hur toouse en konfiguration filen tooset in he
 
 #### <a name="step-2"></a>Steg 2
 
-Ange därefter hello Programgateway. Använd hello `Set-AzureApplicationGatewayConfig` med en XML-konfigurationsfilen.
+Nu ska vi konfigurera programgatewayen. Använd cmdleten `Set-AzureApplicationGatewayConfig` med en XML-konfigurationsfil.
 
 ```powershell
 Set-AzureApplicationGatewayConfig -Name AppGwTest -ConfigFile "D:\config.xml"
 ```
 
-### <a name="configure-hello-application-gateway-by-using-a-configuration-object"></a>Konfigurera hello Programgateway med hjälp av ett konfigurationsobjekt
+### <a name="configure-the-application-gateway-by-using-a-configuration-object"></a>Konfigurera programgatewayen med hjälp av ett konfigurationsobjekt
 
-hello som följande exempel visar hur tooconfigure hello Programgateway med hjälp av konfigurationsobjekt. Alla konfigurationsobjekt måste konfigureras individuellt och sedan läggs tooan programobjektet gateway-konfiguration. Efter att hello konfigurationsobjekt kan du använda hello `Set-AzureApplicationGateway` kommandot toocommit hello configuration toohello skapat programmet gatewayresursen.
+Följande exempel visar hur du konfigurerar programgatewayen med hjälp av konfigurationsobjekt. Alla konfigurationsobjekt måste konfigureras individuellt och sedan läggas till i ett konfigurationsobjekt för programgatewayen. När du har skapat konfigurationsobjektet använder du kommandot `Set-AzureApplicationGateway` för att tillämpa konfigurationen på den programgatewayresurs som du skapade tidigare.
 
 > [!NOTE]
-> Innan du tilldelar ett värde tooeach konfigurationsobjekt, måste du toodeclare vilken typ av objekt PowerShell använder för lagring. hello första rad toocreate hello enskilda objekt som definierar vad `Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model(object name)` används.
+> Innan du tilldelar ett värde till konfigurationsobjekten måste du deklarera vilken typ av objekt PowerShell använder för lagring. Den första raden skapar de enskilda objekt som definierar vilka `Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model(object name)` som används.
 
 #### <a name="step-1"></a>Steg 1
 
 Skapa alla enskilda konfigurationsobjekt.
 
-Skapa hello frontend IP som visas i följande exempel hello.
+Skapa frontend-IP-adressen (se exemplet nedan).
 
 ```powershell
 $fip = New-Object Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.FrontendIPConfiguration
@@ -238,7 +238,7 @@ $fip.Type = "Private"
 $fip.StaticIPAddress = "10.0.0.5"
 ```
 
-Skapa hello frontend-port som visas i följande exempel hello.
+Skapa frontend-porten (se exemplet nedan).
 
 ```powershell
 $fep = New-Object Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.FrontendPort
@@ -246,9 +246,9 @@ $fep.Name = "fep1"
 $fep.Port = 80
 ```
 
-Skapa hello backend-servern i serverpoolen.
+Skapa backend-serverpoolen.
 
-Definiera hello IP-adresser som har lagts till toohello backend-serverpoolen enligt hello nästa exempel.
+Definiera de IP-adresser som läggs till i backend-serverpoolen så som visas i nästa exempel.
 
 ```powershell
 $servers = New-Object Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.BackendServerCollection
@@ -256,7 +256,7 @@ $servers.Add("10.0.0.1")
 $servers.Add("10.0.0.2")
 ```
 
-Använda hello $server tooadd hello värden toohello backend-adresspool objekt ($pool).
+Använd $server-objektet för att lägga till värdena i backend-poolobjektet ($pool).
 
 ```powershell
 $pool = New-Object Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.BackendAddressPool
@@ -264,7 +264,7 @@ $pool.BackendServers = $servers
 $pool.Name = "pool1"
 ```
 
-Skapa hello backend-server pool inställning.
+Skapa inställningen för backend-serverpoolen.
 
 ```powershell
 $setting = New-Object Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.BackendHttpSettings
@@ -274,7 +274,7 @@ $setting.Port = 80
 $setting.Protocol = "http"
 ```
 
-Skapa hello lyssnare.
+Skapa lyssnaren.
 
 ```powershell
 $listener = New-Object Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.HttpListener
@@ -285,7 +285,7 @@ $listener.Protocol = "http"
 $listener.SslCert = ""
 ```
 
-Skapa hello regel.
+Skapa regeln.
 
 ```powershell
 $rule = New-Object Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.HttpLoadBalancingRule
@@ -298,9 +298,9 @@ $rule.BackendAddressPool = "pool1"
 
 #### <a name="step-2"></a>Steg 2
 
-Tilldela alla enskilda objekt tooan programmet gateway konfiguration konfigurationsobjektet ($appgwconfig).
+Tilldela alla konfigurationsobjekt till konfigurationsobjektet för programgatewayen ($appgwconfig).
 
-Lägg till hello frontend IP toohello konfiguration.
+Lägg till frontend-IP-adressen till konfigurationen.
 
 ```powershell
 $appgwconfig = New-Object Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.ApplicationGatewayConfiguration
@@ -308,34 +308,34 @@ $appgwconfig.FrontendIPConfigurations = New-Object "System.Collections.Generic.L
 $appgwconfig.FrontendIPConfigurations.Add($fip)
 ```
 
-Lägg till hello frontend toohello portkonfigurationen.
+Lägg till frontend-IP-porten till konfigurationen.
 
 ```powershell
 $appgwconfig.FrontendPorts = New-Object "System.Collections.Generic.List[Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.FrontendPort]"
 $appgwconfig.FrontendPorts.Add($fep)
 ```
-Lägg till hello backend-adresspool toohello serverkonfiguration.
+Lägg till backend-serverpoolen till konfigurationen.
 
 ```powershell
 $appgwconfig.BackendAddressPools = New-Object "System.Collections.Generic.List[Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.BackendAddressPool]"
 $appgwconfig.BackendAddressPools.Add($pool)
 ```
 
-Lägg till hello backend-adresspool inställningen toohello konfiguration.
+Lägg till backend-poolinställningen till konfigurationen.
 
 ```powershell
 $appgwconfig.BackendHttpSettingsList = New-Object "System.Collections.Generic.List[Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.BackendHttpSettings]"
 $appgwconfig.BackendHttpSettingsList.Add($setting)
 ```
 
-Lägg till hello lyssnare toohello konfiguration.
+Lägg till lyssnaren till konfigurationen.
 
 ```powershell
 $appgwconfig.HttpListeners = New-Object "System.Collections.Generic.List[Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.HttpListener]"
 $appgwconfig.HttpListeners.Add($listener)
 ```
 
-Lägg till hello toohello regelkonfigurationen.
+Lägga till regeln till konfigurationen.
 
 ```powershell
 $appgwconfig.HttpLoadBalancingRules = New-Object "System.Collections.Generic.List[Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.HttpLoadBalancingRule]"
@@ -343,28 +343,28 @@ $appgwconfig.HttpLoadBalancingRules.Add($rule)
 ```
 
 ### <a name="step-3"></a>Steg 3
-Genomför hello configuration-objekt toohello gateway programresursen med hjälp av `Set-AzureApplicationGatewayConfig`.
+Tillämpa konfigurationsobjektet på programgatewayresursen med hjälp av `Set-AzureApplicationGatewayConfig`.
 
 ```powershell
 Set-AzureApplicationGatewayConfig -Name AppGwTest -Config $appgwconfig
 ```
 
-## <a name="start-hello-gateway"></a>Starta hello gateway
+## <a name="start-the-gateway"></a>Starta gatewayen
 
-När hello gateway har konfigurerats kan du använda hello `Start-AzureApplicationGateway` cmdlet toostart hello gateway. Fakturering för en Programgateway startar när hello gatewayen har startats.
+När gatewayen har konfigurerats kan du använda cmdleten `Start-AzureApplicationGateway` för att starta gatewayen. Faktureringen för en programgateway börjar när gatewayen har startats.
 
 > [!NOTE]
-> Hej `Start-AzureApplicationGateway` cmdlet kan ta upp toofinish too15 20 minuter.
+> Cmdleten `Start-AzureApplicationGateway` kan ta upp till 15–20 minuter att slutföra.
 
 ```powershell
 Start-AzureApplicationGateway AppGwTest
 ```
 
-## <a name="verify-hello-gateway-status"></a>Verifiera hello gatewayens status
+## <a name="verify-the-gateway-status"></a>Kontrollera statusen för gatewayen
 
-Använd hello `Get-AzureApplicationGateway` cmdlet toocheck hello status för hello gateway. Om `Start-AzureApplicationGateway` lyckades hello föregående steg, *tillstånd* ska köras och *Vip* och *DnsName* ska ha giltiga poster.
+Använd cmdleten `Get-AzureApplicationGateway` för att kontrollera gatewayens status. Om `Start-AzureApplicationGateway` lyckades i det föregående steget bör *State* vara Running och *Vip* och *DnsName* bör ha giltiga poster.
 
-hello följande exempel visas en Programgateway som är tillgängliga, körs och är redo tootake trafik avsedd för `http://<generated-dns-name>.cloudapp.net`.
+Följande exempel visar en programgateway som är tillgänglig, körs och redo att ta emot trafik avsedd för `http://<generated-dns-name>.cloudapp.net`.
 
 ```powershell
 Get-AzureApplicationGateway AppGwTest
@@ -384,15 +384,15 @@ Vip           : 138.91.170.26
 DnsName       : appgw-1b8402e8-3e0d-428d-b661-289c16c82101.cloudapp.net
 ```
 
-## <a name="delete-hello-application-gateway"></a>Ta bort hello Programgateway
+## <a name="delete-the-application-gateway"></a>Ta bort programgatewayen
 
-toodelete hello Programgateway:
+Så här tar du bort programgatewayen:
 
-1. Använd hello `Stop-AzureApplicationGateway` cmdlet toostop hello gateway.
-2. Använd hello `Remove-AzureApplicationGateway` cmdlet tooremove hello gateway.
-3. Kontrollera att hello-gateway har tagits bort med hjälp av hello `Get-AzureApplicationGateway` cmdlet.
+1. Stoppa gatewayen med hjälp av cmdleten `Stop-AzureApplicationGateway`.
+2. Ta bort gatewayen med hjälp av cmdleten `Remove-AzureApplicationGateway`.
+3. Kontrollera att gatewayen har tagits bort med hjälp av cmdleten `Get-AzureApplicationGateway`.
 
-hello följande exempel visar hello `Stop-AzureApplicationGateway` cmdlet på hello första rad, följt av hello utdata.
+I följande exempel visas cmdleten `Stop-AzureApplicationGateway` på den första raden, följt av utdata.
 
 ```powershell
 Stop-AzureApplicationGateway AppGwTest
@@ -406,7 +406,7 @@ Name       HTTP Status Code     Operation ID                             Error
 Successful OK                   ce6c6c95-77b4-2118-9d65-e29defadffb8
 ```
 
-När hello Programgateway är i ett stoppat tillstånd, använder hello `Remove-AzureApplicationGateway` cmdlet tooremove hello-tjänsten.
+När programgatewayen är i ett stoppat läge använder du cmdleten `Remove-AzureApplicationGateway` för att ta bort tjänsten.
 
 ```powershell
 Remove-AzureApplicationGateway AppGwTest
@@ -420,7 +420,7 @@ Name       HTTP Status Code     Operation ID                             Error
 Successful OK                   055f3a96-8681-2094-a304-8d9a11ad8301
 ```
 
-tooverify som hello tjänsten har tagits bort kan du använda hello `Get-AzureApplicationGateway` cmdlet. Det här steget är inte obligatoriskt.
+Kontrollera att tjänsten har tagits bort med hjälp av cmdleten `Get-AzureApplicationGateway`. Det här steget är inte obligatoriskt.
 
 ```powershell
 Get-AzureApplicationGateway AppGwTest
@@ -429,15 +429,15 @@ Get-AzureApplicationGateway AppGwTest
 ```
 VERBOSE: 10:52:46 PM - Begin Operation: Get-AzureApplicationGateway
 
-Get-AzureApplicationGateway : ResourceNotFound: hello gateway does not exist.
+Get-AzureApplicationGateway : ResourceNotFound: The gateway does not exist.
 .....
 ```
 
 ## <a name="next-steps"></a>Nästa steg
 
-Om du vill tooconfigure SSL-avlastning, se [konfigurera en Programgateway för SSL-avlastning](application-gateway-ssl.md).
+Om du vill konfigurera SSL-avlastning läser du [Konfigurera en programgateway för SSL-avlastning](application-gateway-ssl.md).
 
-Om du vill tooconfigure ett program gateway toouse med en intern belastningsutjämnare, se [skapa en Programgateway med en intern belastningsutjämnare (ILB)](application-gateway-ilb.md).
+Om du vill konfigurera en programgateway för användning med en intern belastningsutjämnare läser du [Skapa en programgateway med en intern belastningsutjämnare (ILB)](application-gateway-ilb.md).
 
 Om du vill ha mer information om belastningsutjämningsalternativ i allmänhet läser du:
 

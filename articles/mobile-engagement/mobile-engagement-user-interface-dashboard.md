@@ -1,6 +1,6 @@
 ---
-title: "aaaAzure användargränssnitt för Mobile Engagement - instrumentpanelen"
-description: "Lär dig hur tooview och hantera diagram av data om ditt program med Azure Mobile Engagement"
+title: "Användargränssnittet för Azure Mobile Engagement - instrumentpanelen"
+description: "Lär dig att visa och hantera diagram av data om ditt program med Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: 
 author: piyushjo
@@ -14,26 +14,26 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: d834c01cb748a962d50006398b75b381fa6d8cef
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: eaf5a2f9fdfcec33e8b4e2ddf77505980cd37c5e
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="how-tooview-and-manage-charts-of-data-about-your-application"></a>Hur tooview och hantera diagram av data om ditt program
-hello instrumentpanelen avsnitt i hello UI kan kunder toocreate anpassade diagram toomaximize sin tid genom att tillhandahålla hello exakt den information som de vill i stället för att söka efter den i hello analytics avsnitt. En instrumentpanel som visar hello trender för programmet och hello aktiva användare räknar för hello olika versioner av ditt program under en given tidpunkt (timme/dag/vecka/månad/anpassat). hello trender som visas baseras på hello senaste 7 dagarna.
+# <a name="how-to-view-and-manage-charts-of-data-about-your-application"></a>Visa och hantera diagram av data om ditt program
+Avsnittet instrumentpanel för gränssnitt kan kunderna skapa anpassade diagram om du vill maximera sin tid genom att tillhandahålla exakt den information som de vill i stället för att söka efter den i avsnittet analytics. En instrumentpanel visar trender för ditt program och den aktiva användaren antalet för olika versioner av ditt program under en given tidpunkt (timme/dag/vecka/månad/anpassat). Trender som visas baseras på de senaste 7 dagarna.
 
 ### <a name="see-also"></a>Se även
 * [Felsökningsguide för - Analytics][Link 21]
 
 ## <a name="dashboard"></a>Instrumentpanel
-* Du kan lägga till diagram tooan tomma instrumentpanelen genom att välja hello ”skicka toodashboard” åtgärden hello växeln menyn för vilket diagram under hello Analytics hello användargränssnitt som du vill att toosee på en instrumentpanel.
+* Du kan lägga till diagram till en tom instrumentpanelen genom att välja åtgärden ”Skicka till instrumentpanel” växel-menyn för vilket diagram i avsnittet Analytics för gränssnitt som du skulle vilja se på en instrumentpanel.
 
 ## <a name="-add-a-dashboard"></a>+ (Lägg till en instrumentpanel)
-* Du kan använda hello ”+” band menyn objektet toocreate en ny instrumentpanel som visar hello menyfliksområdet menyn.
+* Du kan använda menyalternativet ”+” menyfliksområdet för att skapa en ny instrumentpanel som visas på menyn i menyfliksområdet.
 
 ## <a name="gear-menu"></a>Växeln-menyn
-* Du kan använda hello växeln-menyn i en instrumentpanel tooDelete, Byt namn, resurs eller schemat (e-mottagning) för din instrumentpanel. Du kan använda hello schema alternativet toodefine hello schema som du vill att tooreceive din anpassade instrumentpanel via e-post. Du kan schemalägga tooreceive den varje dag, vecka eller månad. Du kan välja hello tid hello, och hello dag av hello vecka, eller hello månaden när du vill tooreceive hello e-postmeddelandet. Din e-postadress och tidszon baseras på hello-inställningar som du har konfigurerat i hello mitt konto avsnitt i hello Användargränssnittet.
+* Du kan använda växeln-menyn i en instrumentpanel för att ta bort, byta namn på, resurs, eller schemat (e-mottagning) för din instrumentpanel. Du kan använda alternativet schema för att definiera schemat som du vill ta emot din anpassade instrumentpanel via e-post. Du kan schemalägga att ta emot varje dag, vecka eller månad. Du kan välja tid på dagen och dag i veckan eller dagen i månaden när du vill ta emot e-postmeddelandet. Din e-postadress och tidszon baseras på inställningarna i avsnittet mitt konto i Användargränssnittet.
   
   ![dashboard1][34]
 

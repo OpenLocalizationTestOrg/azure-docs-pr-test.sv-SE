@@ -1,6 +1,6 @@
 ---
-title: aaaAzure Service Fabric skillnaderna mellan Linux och Windows | Microsoft Docs
-description: "Skillnader mellan hello Azure Service Fabric Preview på Linux- och Azure Service Fabric i Windows."
+title: Skillnader mellan Azure Service Fabric i Linux och Windows | Microsoft Docs
+description: Skillnader mellan Azure Service Fabric i Linux och Azure Service Fabric i Windows.
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
@@ -12,35 +12,27 @@ ms.devlang: dotNet
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 8/9/2017
+ms.date: 09/19/2017
 ms.author: subramar
-ms.openlocfilehash: 7a16a440dfc8d9006e274f46951be1562e6f10d9
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 25976ba919454e26f1dd7965de5db7c4f80b9355
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="differences-between-service-fabric-on-linux-preview-and-windows-generally-available"></a>Skillnader mellan Service Fabric i Linux (förhandsversion) och Windows (allmänt tillgänglig)
+# <a name="differences-between-service-fabric-on-linux-and-windows"></a>Skillnader mellan Service Fabric i Linux och Windows
 
-Eftersom Service Fabric i Linux är en förhandsversion är det vissa funktioner som bara finns i Windows, inte ännu i Linux. Slutligen hello funktionsuppsättningar kommer att vara paritet när Service Fabric på Linux blir allmänt tillgänglig. Den här funktionsskillnaden kommer att krympa i kommande versioner. hello följande skillnader hello senaste tillgängliga versioner (det vill säga mellan version 5.6 på Windows och på Linux-version 5.5): 
+Det finns vissa funktioner som inte finns i Linux ännu, utan bara i Windows. Till slut kommer alla funktioner att finnas på båda plattformarna. Skillnaderna minskar med varje ny version. De senaste versionerna (det vill säga version 6.0 för Windows och version 6.0 för Linux) skiljer sig åt på följande sätt: 
 
-* Tillförlitliga samlingar (och tillförlitliga tillståndskänsliga tjänster) 
-* ReverseProxy 
-* Fristående installationsprogram 
-* XML-schemavalidering för manifestfiler 
-* Omdirigering av konsol 
-* hello fel Analysis Service (FAS)
-* Docker-skrivning, volym och loggdrivrutiner för behållare 
-* Resursstyrning för behållare och tjänster 
-* DNS-tjänst
-* Stöd för Azure Active Directory
-* CLI-kommandon som motsvarar vissa Powershell-kommandon 
-* Endast en del av Powershell-kommandon kan köras mot en Linux-kluster (som visas i nästa avsnitt om hello).
+* Alla programmeringsmodeller är förhandsversioner (Java/C# Reliable Actors, Reliable Stateless Services och Reliable Stateful Services)
+* Envoy (ReverseProxy) är förhandsversion i Linux
+* Fristående installationsprogram är inte tillgängligt ännu i Linux
+* Omdirigering av konsol (stöds inte i Linux- eller Windows-produktionskluster)
+* FAS (Fault Analysis Service) i Linux
+* DNS-tjänst för Service Fabric-tjänster (DNS-tjänst stöds för behållare i Linux)
+* Motsvarande CLI-kommandon för vissa Powershell-kommandon (se lista nedan, de flesta gäller endast fristående kluster)
 
->[!NOTE]
->Omdirigering av konsol stöds inte i produktionskluster (gäller även Windows).
-
-Utvecklingsverktygen skiljer sig också åt mellan Windows och Linux. VisualStudio, Powershell, VSTS och ETW används för Windows medan Yeoman, Eclipse, Jenkins och LTTng används med Linux.
+Utvecklingsverktygen skiljer sig också åt mellan Windows och Linux. Visual Studio, Powershell, VSTS och ETW används för Windows medan Yeoman, Eclipse, Jenkins och LTTng används i Linux.
 
 ## <a name="powershell-cmdlets-that-do-not-work-against-a-linux-service-fabric-cluster"></a>PowerShell-cmdletar som inte fungerar mot ett Linux Service Fabric-kluster
 
@@ -66,7 +58,6 @@ Utvecklingsverktygen skiljer sig också åt mellan Windows och Linux. VisualStud
 * Start-ServiceFabricPartitionRestart
 * Stop-ServiceFabricChaos
 * Stop-ServiceFabricTestCommand
-* Cmd
 * Get-ServiceFabricNodeConfiguration
 * Get-ServiceFabricClusterConfiguration
 * Get-ServiceFabricClusterConfigurationUpgradeStatus
@@ -106,4 +97,4 @@ Utvecklingsverktygen skiljer sig också åt mellan Windows och Linux. VisualStud
 * [Skapa och distribuera ditt första Service Fabric-program med Java i Linux med hjälp av Yeoman](service-fabric-create-your-first-linux-application-with-java.md)
 * [Skapa och distribuera ditt första Service Fabric-program med Java i Linux med Service Fabric-plugin-programmet för Eclipse](service-fabric-get-started-eclipse.md)
 * [Skapa ditt första CSharp-program i Linux](service-fabric-create-your-first-linux-application-with-csharp.md)
-* [Använd hello Service Fabric CLI toomanage dina program](service-fabric-application-lifecycle-sfctl.md)
+* [Använd Service Fabric CLI för att hantera dina program](service-fabric-application-lifecycle-sfctl.md)

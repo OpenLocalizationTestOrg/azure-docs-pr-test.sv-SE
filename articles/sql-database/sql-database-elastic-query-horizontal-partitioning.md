@@ -1,6 +1,6 @@
 ---
-title: "aaaReporting över databaser som skalats ut molntjänster | Microsoft Docs"
-description: "hur tooset elastisk frågor via horisontella partitioner"
+title: "Rapportering över databaser som skalats ut molntjänster | Microsoft Docs"
+description: "hur du ställer in elastisk frågor via horisontella partitioner"
 services: sql-database
 documentationcenter: 
 manager: jhubbard
@@ -14,29 +14,29 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2016
 ms.author: mlandzic
-ms.openlocfilehash: 78986c2040bf308195bf7c77e64d4f37273fcf36
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 62b5bcd26aa1ed219fb38970916e0e8847ceb577
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="reporting-across-scaled-out-cloud-databases-preview"></a>Rapportering över databaser som skalats ut molnet (förhandsgranskning)
 ![Fråga på shards][1]
 
-Delat databaser distribuera rader i en skaländras ut data nivå. hello-schemat är identiska för alla deltagande databaser, även kallat horisontell partitionering. Du kan skapa rapporter som omfattar alla databaser i en delat databas med en elastisk fråga.
+Delat databaser distribuera rader i en skaländras ut data nivå. Schemat är identiska för alla deltagande databaser, även kallat horisontell partitionering. Du kan skapa rapporter som omfattar alla databaser i en delat databas med en elastisk fråga.
 
 En Snabbstart Se [rapportering över databaser som skalats ut molnet](sql-database-elastic-query-getting-started.md).
 
 Icke-delat databaser finns [fråga över moln databaser med olika scheman](sql-database-elastic-query-vertical-partitioning.md). 
 
 ## <a name="prerequisites"></a>Krav
-* Skapa en Fragmentera karta med hello klientbibliotek för elastisk databas. Se [Fragmentera kartan management](sql-database-elastic-scale-shard-map-management.md). Eller Använd hello exempelapp i [Kom igång med elastiska Databasverktyg](sql-database-elastic-scale-get-started.md).
-* Du kan också se [migrera befintliga databaser tooscaled ut databaser](sql-database-elastic-convert-to-use-elastic-tools.md).
-* hello användare måste ha behörigheten ALTER ANY extern DATAKÄLLA. Den här behörigheten ingår i hello ALTER DATABASE-behörighet.
-* ALTER ANY extern DATAKÄLLA behörigheter är nödvändiga toorefer toohello underliggande datakällan.
+* Skapa en Fragmentera karta med hjälp av klientbiblioteket för elastisk databas. Se [Fragmentera kartan management](sql-database-elastic-scale-shard-map-management.md). Eller Använd exempelapp i [Kom igång med elastiska Databasverktyg](sql-database-elastic-scale-get-started.md).
+* Du kan också se [migrera befintliga databaser som skalats ut databaser](sql-database-elastic-convert-to-use-elastic-tools.md).
+* Användaren måste ha behörigheten ALTER ANY extern DATAKÄLLA. Den här behörigheten har behörigheten ALTER DATABASE.
+* ALTER ANY extern DATAKÄLLA behörighet att referera till den underliggande datakällan.
 
 ## <a name="overview"></a>Översikt
-De här uttrycken skapa hello metadata representation av shardade data-tier i hello elastisk fråga databas. 
+De här uttrycken skapa metadata-representation av shardade data-tier i elastisk fråga databas. 
 
 1. [SKAPA HUVUDNYCKEL](https://msdn.microsoft.com/library/ms174382.aspx)
 2. [SKAPA DATABASBEGRÄNSADE AUTENTISERINGSUPPGIFTER](https://msdn.microsoft.com/library/mt270260.aspx)
@@ -44,7 +44,7 @@ De här uttrycken skapa hello metadata representation av shardade data-tier i he
 4. [SKAPA EXTERN TABELL](https://msdn.microsoft.com/library/dn935021.aspx) 
 
 ## <a name="11-create-database-scoped-master-key-and-credentials"></a>1.1 Skapa huvudnyckel för databasen omfång och autentiseringsuppgifter
-hello autentiseringsuppgifter används av hello elastisk frågan tooconnect tooyour fjärranslutna databaser.  
+Autentiseringsuppgifterna används av elastisk frågan för att ansluta till din fjärranslutna databaser.  
 
     CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'password';
     CREATE DATABASE SCOPED CREDENTIAL <credential_name>  WITH IDENTITY = '<username>',  
@@ -52,7 +52,7 @@ hello autentiseringsuppgifter används av hello elastisk frågan tooconnect tooy
     [;]
 
 > [!NOTE]
-> Kontrollera att hello *”\<användarnamn\>”* innehåller inte några *”@servername”* suffix. 
+> Se till att den *”\<användarnamn\>”* innehåller inte några *”@servername”* suffix. 
 > 
 > 
 
@@ -79,11 +79,11 @@ Syntax:
         SHARD_MAP_NAME='ShardMap' 
     );
 
-Hämta hello lista över aktuella externa datakällor: 
+Hämta listan över aktuella externa datakällor: 
 
     select * from sys.external_data_sources; 
 
-hello extern datakälla refererar till Fragmentera kartan. En elastisk fråga använder sedan hello extern datakälla och hello underliggande Fragmentera kartan tooenumerate hello databaser som ingår i hello datanivå. hello samma autentiseringsuppgifter är används tooread hello Fragmentera kartan och tooaccess hello data på hello shards under hello bearbetningen av en elastisk fråga. 
+Den externa datakällan refererar till Fragmentera kartan. En elastisk fråga använder sedan den externa datakällan och underliggande Fragmentera kartan att räkna upp de databaser som ingår i datanivå. Samma autentiseringsuppgifter används för att läsa Fragmentera kartan och komma åt data på shards under bearbetning av en elastisk fråga. 
 
 ## <a name="13-create-external-tables"></a>1.3 skapa externa tabeller
 Syntax:  
@@ -122,34 +122,34 @@ Syntax:
         DISTRIBUTION=SHARDED(ol_w_id)
     ); 
 
-Hämta hello lista med externa tabeller från databasen för hello: 
+Hämta listan med externa tabeller från databasen: 
 
     SELECT * from sys.external_tables; 
 
-toodrop externa tabeller:
+Att släppa externa tabeller:
 
     DROP EXTERNAL TABLE [ database_name . [ schema_name ] . | schema_name. ] table_name[;]
 
 ### <a name="remarks"></a>Kommentarer
-hello DATA\_SOURCE-satsen definierar hello extern datakälla (en Fragmentera karta) som används för hello extern tabell.  
+DATA\_SOURCE-satsen definierar den externa datakällan (en Fragmentera karta) som används för den externa tabellen.  
 
-hello schemat\_namn och OBJEKTET\_namn satser mappa hello extern tabell definition tooa tabell i ett annat schema. Om det utelämnas antas hello schemat för hello fjärrobjektet toobe ”dbo” och dess namn antas toobe identiska toohello externa tabellnamn som definieras. Detta är användbart om hello namnet på din fjärrtabell redan är upptaget i hello databasen där du vill att toocreate hello extern tabell. Till exempel du vill toodefine en extern tabell tooget en aggregerad vy över katalogvyer eller nivån av DMV: er på dina data som skalats ut. Eftersom katalogvyer och av DMV: er redan finns lokalt och kan inte du använda namnen för hello externa tabelldefinitionen. I stället använda ett annat namn och använda vyn hello-katalog eller hello DMVS namn i hello schemat\_namn och/eller OBJEKTET\_namn-satser. (Se hello exemplet nedan.) 
+SCHEMAT\_namn och OBJEKTET\_namn satser mappa den externa tabelldefinitionen till en tabell i ett annat schema. Om det utelämnas används schemat för fjärrobjektet antas vara ”dbo” och dess namn antas vara identiskt med extern tabell som definieras. Detta är användbart om namnet på din fjärrtabell används redan i databasen där du vill skapa extern tabell. Till exempel du vill definiera en extern tabell för att få en aggregerad vy över katalogvyer eller nivån av DMV: er på dina data som skalats ut. Eftersom katalogvyer och av DMV: er redan finns lokalt och kan inte du använda deras namn för den externa tabelldefinitionen. I stället använda ett annat namn och använda katalogvyn eller DMV i schemat\_namn och/eller OBJEKTET\_namn-satser. (Se exemplet nedan.) 
 
-hello DISTRIBUTION satsen anger hello Datadistribution används för den här tabellen. hello frågeprocessorn använder hello informationen i hello DISTRIBUTION satsen toobuild hello effektivaste frågeplaner.  
+Instruktionen DISTRIBUTION anger fördelning data används för den här tabellen. Frågeprocessorn använder informationen i DISTRIBUTION-sats för att skapa de mest effektiva frågeplanerna.  
 
-1. **DELAT** innebär data vågrätt partitionerad över hello databaser. hello partitionering nyckel för hello Datadistribution är hello **< sharding_column_name >** parameter.
-2. **REPLIKERADE** innebär att identiska kopior av hello tabellen finns på varje databas. Det är ditt ansvar tooensure hello repliker är identiska över hello databaser.
-3. **AVRUNDAR\_ROBIN** innebär hello tabellen är partitionerad vågrätt med hjälp av en distributionsmetod för beroende program. 
+1. **DELAT** innebär data vågrätt partitionerad över databaser. Partitionsnyckel för Datadistribution är den **< sharding_column_name >** parameter.
+2. **REPLIKERADE** innebär att identiska kopior av tabellen finns på varje databas. Det är ditt ansvar att se till att replikerna är identiska mellan databaser.
+3. **AVRUNDAR\_ROBIN** innebär att tabellen vågrätt är partitionerad med hjälp av en distributionsmetod för beroende program. 
 
-**Data tjänstnivån referens**: hello externa DDL-tabellen hänvisar tooan extern datakälla. hello extern datakälla anger en Fragmentera karta som ger hello extern tabell med hello information behövs toolocate alla hello databaser i din datanivå. 
+**Data tjänstnivån referens**: den externa tabellen DDL refererar till en extern datakälla. Den externa datakällan anger en Fragmentera karta som ger den externa tabellen med informationen som behövs för att hitta alla databaser i din datanivå. 
 
 ### <a name="security-considerations"></a>Säkerhetsöverväganden
-Användare med åtkomst toohello extern tabell få automatiskt åtkomst toohello underliggande fjärrtabeller under hello autentiseringsuppgifter som anges i hello externa definitionen av datakällan. Undvik oönskad höjning av privilegier genom hello autentiseringsuppgifterna för hello extern datakälla. Använd GRANT eller REVOKE för en extern tabell precis som om det vore en vanlig tabell.  
+Användare med åtkomst till extern tabell få automatiskt åtkomst till de underliggande fjärrtabeller under autentiseringen i definitionen av externa datakällan. Undvik oönskad höjning av privilegier genom autentiseringsuppgifterna för den externa datakällan. Använd GRANT eller REVOKE för en extern tabell precis som om det vore en vanlig tabell.  
 
 När du har definierat den externa datakällan och externa tabeller kan använda du nu fullständig T-SQL via externa tabeller.
 
 ## <a name="example-querying-horizontal-partitioned-databases"></a>Exempel: frågar vågräta partitionerade databaser
-hello följande fråga utför en trevägs koppling mellan lager order rader, och och använder flera aggregeringar och selektiv filter. Det förutsätts att (1) horisontell partitionering (delning) och (2) att lager order rader, och är delat av hello datalager id-kolumnen hello elastisk frågan kan samordna relaterade hello kopplingar på hello shards och bearbeta hello dyra tillhör hello frågan på hello shards parallellt. 
+Följande fråga utför en trevägs koppling mellan lager order rader, och och använder flera aggregeringar och selektiv filter. Det förutsätts att (1) horisontell partitionering (delning) och (2) att lager order rader, och är delat av datalager ID-kolumnen och att elastisk frågan kan samordna relaterade kopplingar på shards och bearbeta dyra delen av frågan på shards i parallellt. 
 
     select  
          w_id as warehouse,
@@ -167,14 +167,14 @@ hello följande fråga utför en trevägs koppling mellan lager order rader, och
     group by w_id, o_c_id 
 
 ## <a name="stored-procedure-for-remote-t-sql-execution-spexecuteremote"></a>Lagrade proceduren för fjärrkörning av T-SQL: sp\_execute_remote
-Elastisk frågan introducerar också en lagrad procedur som ger direktåtkomst toohello delar. hello lagrade proceduren anropas [sp\_köra \_remote](https://msdn.microsoft.com/library/mt703714) och kan vara används tooexecute remote lagrade procedurer eller T-SQL-kod på fjärranslutna hello-databaser. Det tar hello följande parametrar: 
+Elastisk frågan introducerar också en lagrad procedur som ger direktåtkomst till shards. Den lagrade proceduren anropas [sp\_köra \_remote](https://msdn.microsoft.com/library/mt703714) och kan användas för att köra fjärråtkomst lagrade procedurer eller T-SQL-kod på den fjärranslutna databaser. Den använder följande parametrar: 
 
-* Namn på datakälla (nvarchar): hello namnet på hello extern datakälla av typen RDBMS. 
-* Fråga (nvarchar): hello T-SQL-fråga toobe utförs på varje Fragmentera. 
-* Parameterdeklaration (nvarchar) - valfritt: strängen med datatypdefinitioner för hello parametrar som används i hello frågeparameter (till exempel sp_executesql). 
+* Namn på datakälla (nvarchar): namnet på den externa datakällan av typen RDBMS. 
+* Fråga (nvarchar): T-SQL-frågan ska utföras på varje Fragmentera. 
+* Parameterdeklaration (nvarchar) - valfritt: strängen med definitioner av data för de parametrar som används i Frågeparametern (till exempel sp_executesql). 
 * Värdet parameterlista - valfritt: kommaavgränsad lista över parametervärden (till exempel sp_executesql).
 
-hello sp\_köra\_fjärråtkomst använder hello extern datakälla i hello anrop parametrar tooexecute hello ges T-SQL-instruktion för fjärranslutna hello-databaser. Den använder hello autentiseringsuppgifterna för hello externa data tooconnect toohello shardmap manager källdatabasen och hello fjärranslutna databaser.  
+En sp\_köra\_remote använder den externa datakällan i startparametrar för att köra den angivna T-SQL-instruktionen på fjärr-databaser. Autentiseringsuppgifterna för den externa datakällan används för att ansluta till shardmap manager-databasen och de fjärranslutna databaserna.  
 
 Exempel: 
 
@@ -183,13 +183,13 @@ Exempel:
         N'select count(w_id) as foo from warehouse' 
 
 ## <a name="connectivity-for-tools"></a>Anslutning för verktyg
-Använda reguljära SQL Server-anslutningen strängar tooconnect ditt program, data och BI integration verktyg toohello databasen med definitionerna extern tabell. Kontrollera att SQL Server stöds som en datakälla för verktyget du behöver. Referera hello elastisk fråga databas som andra SQL Server database anslutna toohello verktyg och använda externa tabeller från verktyget eller program som om de vore lokala tabeller. 
+Använda reguljära anslutningssträngar för SQL Server för att ansluta ditt program din integreringsverktyg för BI och till databasen med definitionerna extern tabell. Kontrollera att SQL Server stöds som en datakälla för verktyget du behöver. Sedan referens elastisk fråga-databas som andra SQL Server-databas ansluten till verktyget och Använd externa tabeller från verktyget eller program som om de vore lokala tabeller. 
 
 ## <a name="best-practices"></a>Bästa praxis
-* Kontrollera hello elastisk frågan endpoint databasen har fått åtkomst toohello shardmap databasen och alla shards via hello SQL DB brandväggar.  
-* Validera eller tillämpa hello Datadistribution definieras av hello extern tabell. Om din distribution för faktiska data skiljer sig från hello-distribution som anges i din tabelldefinitionen kan dina frågor ge oväntade resultat. 
-* Elastisk frågan för närvarande inte att utföra Fragmentera eliminering när predikat över hello horisontell partitionering nyckeln skulle låta den toosafely undanta vissa delar från bearbetning.
-* Elastisk frågan fungerar bäst för frågor där de flesta av hello beräkningsresurser kan göras på hello delar. Det uppstår vanligtvis hello bästa frågeprestanda med selektiv filter-predikat som kan utvärderas på hello shards eller kopplingar över hello partitionering nycklar som kan utföras på ett partitionsjusterade sätt på alla delar. Andra frågemönster behöva tooload stora mängder data från delar hello toohello huvudnod och kan fungera dåligt
+* Se till att elastisk fråga endpoint databas har behörighet till shardmap databasen och alla delar genom brandväggar för SQL-databas.  
+* Validera eller tillämpa Datadistribution som definieras av den externa tabellen. Om din distribution för faktiska data skiljer sig från distributionsplatsen som anges i din tabelldefinitionen kan dina frågor ge oväntade resultat. 
+* Elastisk frågan för närvarande inte att utföra Fragmentera eliminering när predikat över nyckeln för horisontell partitionering skulle göra det möjligt att på ett säkert sätt utesluta vissa delar bearbetning.
+* Elastisk frågan fungerar bäst för frågor där de flesta av beräkningen kan göras på shards. Det uppstår vanligtvis bästa frågeprestanda med selektiv filter-predikat som kan utvärderas på shards eller kopplingar över partitionering nycklar som kan utföras på ett partitionsjusterade sätt på alla delar. Andra frågemönster kan behöva läsa in stora mängder data från delar till huvudnod och kan fungera dåligt
 
 ## <a name="next-steps"></a>Nästa steg
 

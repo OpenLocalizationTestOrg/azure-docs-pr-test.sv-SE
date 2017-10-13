@@ -1,6 +1,6 @@
 ---
 title: "Azure AD B2C: Säkra ett webb-API med Node.js | Microsoft Docs"
-description: "Hur toobuild en Node.js webb-API accepterar som token från en B2C-klient"
+description: "Hur du skapar ett webb-API för Node.js som accepterar token från en B2C-klient"
 services: active-directory-b2c
 documentationcenter: 
 author: dstrockis
@@ -14,96 +14,96 @@ ms.devlang: javascript
 ms.topic: hero-article
 ms.date: 01/07/2017
 ms.author: xerners
-ms.openlocfilehash: 47f5bae025a9ba2f486e36acef36aa37cfb43543
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 2315f5d0ebb142561c65224cd9d06299466a7ee4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-b2c-secure-a-web-api-by-using-nodejs"></a>Azure AD B2C: Säkra ett webb-API med Node.js
 <!-- TODO [AZURE.INCLUDE [active-directory-b2c-devquickstarts-web-switcher](../../includes/active-directory-b2c-devquickstarts-web-switcher.md)]-->
 
-Med Azure Active Directory (Active AD) B2C kan du skydda ett webb-API med hjälp av OAuth 2.0-åtkomsttoken. Dessa token kan dina klientappar som använder Azure AD B2C tooauthenticate toohello API. Den här artikeln visar hur toocreate ett ”uppgiftslistan”-API som gör att användare tooadd och listan uppgifter. hello web API skyddas med Azure AD B2C och tillåter endast autentiserade användare toomanage sina att göra-lista.
+Med Azure Active Directory (Active AD) B2C kan du skydda ett webb-API med hjälp av OAuth 2.0-åtkomsttoken. Med hjälp av dessa token kan dina klientappar som använder Azure AD B2C autentisera mot API:et. Den här artikeln visar hur du skapar en "uppgiftslista" för API som tillåter användare att lägga till och göra en lista med aktiviteter. Webb-API:t skyddas med hjälp av Azure AD B2C och tillåter endast autentiserade användare att hantera sina att göra-listor.
 
 > [!NOTE]
-> Det här exemplet har skrivits toobe anslutna tooby vår [iOS B2C-exempelprogram](active-directory-b2c-devquickstarts-ios.md). Gör hello aktuella genomgången först och följ sedan det exemplet.
+> Det är tänkt att du ska ansluta till det här exemplet genom att använda vårt [iOS B2C-exempelprogram](active-directory-b2c-devquickstarts-ios.md). Gör den här genomgången först och följ sedan det exemplet.
 >
 >
 
-**Passport** är ett mellanprogram för autentisering för Node.js. Modulbaserade Passport är flexibelt och kan diskret installeras i alla Express-baserade webbappar eller Restify-webbappar. En omfattande uppsättning strategier stöder autentisering med användarnamn och lösenord, Facebook, Twitter och mycket mer. Vi har utvecklat en strategi för Azure Active Directory (Azure AD). Du installerar den här modulen och lägger sedan till hello Azure AD `passport-azure-ad` plugin-programmet.
+**Passport** är ett mellanprogram för autentisering för Node.js. Modulbaserade Passport är flexibelt och kan diskret installeras i alla Express-baserade webbappar eller Restify-webbappar. En omfattande uppsättning strategier stöder autentisering med användarnamn och lösenord, Facebook, Twitter och mycket mer. Vi har utvecklat en strategi för Azure Active Directory (Azure AD). Du installerar den här modulen och lägger sedan till Azure AD-plugin-programmet `passport-azure-ad`.
 
-toodo det här exemplet måste du:
+Om du vill göra det här exemplet måste du:
 
 1. Registrera ett program med Azure AD.
-2. Konfigurera ditt program toouse Passport's `azure-ad-passport` plugin-programmet.
-3. Konfigurera en klient programmet toocall hello ”uppgiftslistan” webb-API.
+2. Ställa in så att programmet använder plugin-programmet för Passport `passport-azure-ad`.
+3. Konfigurera ett klientprogram att anropa ett webb-API för ”uppgiftslistan”.
 
 ## <a name="get-an-azure-ad-b2c-directory"></a>Skaffa en Azure AD B2C-katalog
 Innan du kan använda Azure AD B2C måste du skapa en katalog eller klient.  En katalog är en behållare för alla användare, appar, grupper och mer.  Om du inte redan har en [skapar du en B2C-katalog](active-directory-b2c-get-started.md) innan du fortsätter.
 
 ## <a name="create-an-application"></a>Skapa ett program
-Sedan måste toocreate en app i B2C-katalogen som ger Azure AD information toosecurely måste kommunicera med din app. I det här fallet både hello-klientappen och webb-API som representeras av en enda **program-ID**eftersom de bildar en logisk app. toocreate en app, Följ [instruktionerna](active-directory-b2c-app-registration.md). Se till att:
+Därefter måste du skapa en app i B2C-katalogen som ger Azure AD information som krävs för säker kommunikation med din app. I det här fallet representeras både klientappen och webb-API av ett enda **Program-ID** eftersom de omfattar en logisk app. Du skapar en app genom att följa [dessa anvisningar](active-directory-b2c-app-registration.md). Se till att:
 
-* Inkludera en **webbapp/webb api** i hello program
-* Ange `http://localhost/TodoListService` som en **Reply URL**. Det är hello standard-URL för det här kodexemplet.
-* Skapa en **programhemlighet** för programmet och kopiera den. Du behöver dessa data senare. Observera att det här värdet måste toobe [ESC-XML](https://www.w3.org/TR/2006/REC-xml11-20060816/#dt-escape) innan du använder den.
-* Kopiera hello **program-ID** som är tilldelade tooyour app. Du behöver dessa data senare.
+* Inkludera en **webbapp/ett webb-api** i programmet
+* Ange `http://localhost/TodoListService` som en **Reply URL**. Den är standard-URL:en för det här kodexemplet.
+* Skapa en **programhemlighet** för programmet och kopiera den. Du behöver dessa data senare. Tänk på att det här värdet måste ha [ett XM-escape-tecken](https://www.w3.org/TR/2006/REC-xml11-20060816/#dt-escape) innan du använder det.
+* Kopiera **program-ID:t** som har tilldelats din app. Du behöver dessa data senare.
 
 [!INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
 
 ## <a name="create-your-policies"></a>Skapa principer
-I Azure AD B2C definieras varje användarupplevelse av en [princip](active-directory-b2c-reference-policies.md). Det här programmet innehåller två identitetsupplevelser: registrera sig och logga in. Du behöver toocreate en princip av varje typ, enligt beskrivningen i den [referensartikeln om principer](active-directory-b2c-reference-policies.md#create-a-sign-up-policy).  Tänk på följande när du skapar dina tre principer:
+I Azure AD B2C definieras varje användarupplevelse av en [princip](active-directory-b2c-reference-policies.md). Det här programmet innehåller två identitetsupplevelser: registrera sig och logga in. Du måste skapa en princip av varje typ. Mer information finns i [referensartikeln om principer](active-directory-b2c-reference-policies.md#create-a-sign-up-policy).  Tänk på följande när du skapar dina tre principer:
 
-* Välj hello **visningsnamn** och andra registreringsattribut i registreringsprincipen.
-* Välj hello **visningsnamn** och **objekt-ID** programanspråken i varje princip.  Du kan också välja andra anspråk.
-* Kopiera hello **namn** på varje princip när du har skapat den. Det bör ha hello prefixet `b2c_1_`.  Du behöver dem senare.
+* Välj **visningsnamnet** och andra registreringsattribut i registreringsprincipen.
+* Välj det **visningsnamn** och **objekt-ID** som programmet gör anspråk på i varje princip.  Du kan också välja andra anspråk.
+* Kopiera ned **namnet** för varje princip när du har skapat den. Det bör ha prefixet `b2c_1_`.  Du behöver dem senare.
 
 [!INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
 
-När du har skapat dina tre principer kan du är klar toobuild din app.
+När du har skapat dina tre principer, är du redo att bygga din app.
 
-toolearn om hur principer fungerar i Azure AD B2C, börja med hello [.NET komma igång med webbappen kursen](active-directory-b2c-devquickstarts-web-dotnet.md).
+Börja med [självstudierna för att komma igång med .NET-webbappar](active-directory-b2c-devquickstarts-web-dotnet.md) om du vill veta mer om hur principer fungerar i Azure AD B2C.
 
-## <a name="download-hello-code"></a>Hämta hello koden
-Hej koden för den här självstudiekursen [finns på GitHub](https://github.com/AzureADQuickStarts/B2C-WebAPI-NodeJS). toobuild hello exempel som du går du [ladda ned stommen av ett projekt som en .zip-fil](https://github.com/AzureADQuickStarts/B2C-WebAPI-NodeJS/archive/skeleton.zip). Du kan också klona stommen hello:
+## <a name="download-the-code"></a>Ladda ned koden
+Koden för den här självstudiekursen [finns på GitHub](https://github.com/AzureADQuickStarts/B2C-WebAPI-NodeJS). Om du vill bygga exemplet allteftersom kan du [ladda ned stommen av ett projekt som en ZIP-fil](https://github.com/AzureADQuickStarts/B2C-WebAPI-NodeJS/archive/skeleton.zip). Du kan också klona stommen:
 
 ```
 git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-WebAPI-NodeJS.git
 ```
 
-hello slutförts appen finns också [som en .zip-fil](https://github.com/AzureADQuickStarts/B2C-WebAPI-NodeJS/archive/complete.zip) eller på hello `complete` grenen av hello samma databas.
+Den färdiga appen finns också [som en ZIP-fil](https://github.com/AzureADQuickStarts/B2C-WebAPI-NodeJS/archive/complete.zip) eller i `complete`-grenen för samma centrallager.
 
 ## <a name="download-nodejs-for-your-platform"></a>Ladda ned Node.js för plattformen
-toosuccessfully använda det här exemplet måste du en fungerande installation av Node.js.
+Du behöver en fungerande installation av Node.js. för att kunna använda det här exemplet.
 
 Installera Node.js från [nodejs.org](http://nodejs.org).
 
 ## <a name="install-mongodb-for-your-platform"></a>Installera MongoDB för din plattform
-toosuccessfully använda det här exemplet måste du en fungerande installation av MongoDB. Vi använder MongoDB toomake REST-API beständiga över serverinstanser.
+Du behöver en fungerande installation av MongoDB för att kunna använda det här exemplet. Vi använder MongoDB för att göra dina REST-API:er beständiga över serverinstanser.
 
 Installera MongoDB från [mongodb.org](http://www.mongodb.org).
 
 > [!NOTE]
-> Den här genomgången förutsätter att du använder hello installation och server standardslutpunkterna för MongoDB, som när detta skrivs hello är `mongodb://localhost`.
+> Den här genomgången förutsätter att du använder standardslutpunkterna för MongoDB, vilket (när detta skrivs) är `mongodb://localhost`.
 >
 >
 
-## <a name="install-hello-restify-modules-in-your-web-api"></a>Installera hello Restify-modulerna i ditt webb-API
-Vi använder Restify toobuild REST-API. Restify är ett minimalt och flexibelt Node.js-program härlett från Express. Det har kraftfulla och stabila funktioner för att skapa REST API:er utöver Connect.
+## <a name="install-the-restify-modules-in-your-web-api"></a>Installera Restify-modulerna i ditt webb-API
+Vi använder Restify för att skapa REST-API. Restify är ett minimalt och flexibelt Node.js-program härlett från Express. Det har kraftfulla och stabila funktioner för att skapa REST API:er utöver Connect.
 
 ### <a name="install-restify"></a>Installera Restify
-Från kommandoraden hello ändra katalogen för`azuread`. Om hello `azuread` katalogen inte finns, skapar du den.
+Ändra katalogen till `azuread` från kommandoraden. Skapa `azuread`-katalogen om den inte finns.
 
 `cd azuread` eller `mkdir azuread;`
 
-Ange hello följande kommando:
+Ange följande kommando:
 
 `npm install restify`
 
 Restify installeras med det här kommandot.
 
 #### <a name="did-you-get-an-error"></a>Fick du ett felmeddelande?
-I vissa operativsystem, när du använder `npm`, felmeddelande hello `Error: EPERM, chmod '/usr/local/bin/..'` och en förfrågan om att du kör hello kontot som administratör. Om det här problemet inträffar kan använda hello `sudo` kommandot toorun `npm` på en högre Privilegienivå.
+När du använder `npm` kan du, i vissa operativsystem, få felmeddelandet `Error: EPERM, chmod '/usr/local/bin/..'` och en förfrågan om att köra kontot som administratör. Om detta problem inträffar använder du `sudo`-kommandot för att köra `npm` på en högre privilegienivå.
 
 #### <a name="did-you-get-a-dtrace-error"></a>Fick du ett felmeddelande om DTrace?
 När du installerar Restify kan du stöta på något som ser ut som den här texten:
@@ -127,7 +127,7 @@ npm WARN optional dep failed, continuing dtrace-provider@0.2.8
 
 Restify erbjuder en kraftfull mekanism för att spåra REST-anrop med DTrace. Men många operativsystem har inte DTrace tillgängligt. Du kan ignorera dessa fel utan att oroa dig.
 
-hello hello kommandots utdata ska se ut liknande toothis text:
+Resultatet av kommandot ska se ut ungefär som den här texten:
 
     restify@2.6.1 node_modules/restify
     ├── assert-plus@0.1.4
@@ -151,33 +151,33 @@ hello hello kommandots utdata ska se ut liknande toothis text:
     └── bunyan@0.22.0 (mv@0.0.5)
 
 ## <a name="install-passport-in-your-web-api"></a>Installera Passport i ditt webb-API
-Från kommandoraden hello ändra katalogen för`azuread`, om den inte redan finns där.
+Ändra katalogen till `azuread` från kommandoraden, om den inte redan finns där.
 
-Installera Passport med hello följande kommando:
+Installera Passport med följande kommando:
 
 `npm install passport`
 
-hello hello kommandots utdata ska vara liknande toothis text:
+Resultatet av kommandot ska se ut ungefär som den här texten:
 
     passport@0.1.17 node_modules\passport
     ├── pause@0.0.1
     └── pkginfo@0.2.3
 
-## <a name="add-passport-azuread-tooyour-web-api"></a>Lägg till passport-azuread tooyour webb-API
-Lägg till hello OAuth-strategin genom att använda `passport-azuread`, en uppsättning strategier som ansluter Azure AD med Passport. Använd den här strategin för ägar-token i hello REST API-exemplet.
+## <a name="add-passport-azuread-to-your-web-api"></a>Lägg till passport-azuread i ditt webb-API
+Lägg sedan till OAuth-strategin genom att använda `passport-azuread`, en uppsättning strategier som ansluter Azure AD med Passport. Använd den här strategin för ägar-token i REST API-exemplet.
 
 > [!NOTE]
-> Även om OAuth2 erbjuder ett ramverk där alla kända token-typer kan utfärdas, är det bara vissa token-typer som används ofta. hello-token som skyddar slutpunkter är ägar-token. Dessa typer av token är hello utfärdats oftast i OAuth2. Många olika implementeringar förutsätter att ägar-token hello enda typ av token som utfärdas.
+> Även om OAuth2 erbjuder ett ramverk där alla kända token-typer kan utfärdas, är det bara vissa token-typer som används ofta. De token som skyddar slutpunkter är ägar-token. Dessa typer av token är de mest utfärdade i OAuth2. Många olika implementeringar utgår ifrån att ägar-token är den enda typ av token som utfärdas.
 >
 >
 
-Från kommandoraden hello ändra katalogen för`azuread`, om den inte redan finns där.
+Ändra katalogen till `azuread` från kommandoraden, om den inte redan finns där.
 
-Installera hello Passport `passport-azure-ad` modul med hello följande kommando:
+Installera Passport `passport-azure-ad`-modulen genom att ange följande kommando:
 
 `npm install passport-azure-ad`
 
-hello hello kommandots utdata ska vara liknande toothis text:
+Resultatet av kommandot ska se ut ungefär som den här texten:
 
 ``
 passport-azure-ad@1.0.0 node_modules/passport-azure-ad
@@ -194,19 +194,19 @@ passport-azure-ad@1.0.0 node_modules/passport-azure-ad
 └── xml2js@0.4.9 (sax@0.6.1, xmlbuilder@2.6.4)
 ``
 
-## <a name="add-mongodb-modules-tooyour-web-api"></a>Lägg till MongoDB-moduler tooyour webb-API
+## <a name="add-mongodb-modules-to-your-web-api"></a>Lägga till MongoDB-moduler i ditt webb-API
 Det här exemplet använder MongoDB som datalager. Installera därför Mongoose, ett vanligt plugin-program för att hantera modeller och scheman.
 
 * `npm install mongoose`
 
 ## <a name="install-additional-modules"></a>Installera ytterligare moduler
-Installera hello resterande moduler som krävs.
+Installera sedan resterande moduler som krävs.
 
-Från kommandoraden hello ändra katalogen för`azuread`, om den inte redan finns där:
+Ändra katalogen till `azuread` från kommandoraden, om den inte redan finns där:
 
 `cd azuread`
 
-Installera hello moduler i din `node_modules` directory:
+Installera moduler i din `node_modules`-katalog:
 
 * `npm install assert-plus`
 * `npm install ejs`
@@ -215,13 +215,13 @@ Installera hello moduler i din `node_modules` directory:
 * `npm install bunyan`
 
 ## <a name="create-a-serverjs-file-with-your-dependencies"></a>Skapa en server.js-fil med dina beroenden
-Hej `server.js` filen innehåller hello merparten av hello funktioner för webb-API-server.
+`server.js`-filen innehåller de flesta funktioner för Webb-API-servern.
 
-Från kommandoraden hello ändra katalogen för`azuread`, om den inte redan finns där:
+Ändra katalogen till `azuread` från kommandoraden, om den inte redan finns där:
 
 `cd azuread`
 
-Skapa en `server.js`-fil i en textredigerare. Lägg till hello följande information:
+Skapa en `server.js`-fil i en textredigerare. Lägg till följande information:
 
 ```Javascript
 'use strict';
@@ -240,27 +240,27 @@ var passport = require('passport');
 var OIDCBearerStrategy = require('passport-azure-ad').BearerStrategy;
 ```
 
-Spara hello-filen. Tooit tillbaka senare.
+Spara filen. Du kommer tillbaka till den senare.
 
-## <a name="create-a-configjs-file-toostore-your-azure-ad-settings"></a>Skapa en config.js-fil toostore Azure AD-inställningar
-Den här kodfilen skickar hello konfigurationsparametrar från din Azure AD-portalen toohello `Passport.js` fil. Du har skapat konfigurationsvärdena när du lade till hello webbportalen API toohello hello första delen av hello hanteringspaketen. Vi förklarar vilka tooput i hello värdena för dessa parametrar när du har kopierat hello kod.
+## <a name="create-a-configjs-file-to-store-your-azure-ad-settings"></a>Skapa en config.js-fil för att lagra dina Azure AD-inställningar
+Den här kodfilen skickar konfigurationsparametrarna från din Azure AD-portal till `Passport.js`-filen. Du har skapat konfigurationsvärdena när du la till ditt webb-API i portalen under den första delen av genomgången. När du har kopierat koden förklarar vi vad du ska ange i värdena för dessa parametrar.
 
-Från kommandoraden hello ändra katalogen för`azuread`, om den inte redan finns där:
+Ändra katalogen till `azuread` från kommandoraden, om den inte redan finns där:
 
 `cd azuread`
 
-Skapa en `config.js`-fil i en textredigerare. Lägg till hello följande information:
+Skapa en `config.js`-fil i en textredigerare. Lägg till följande information:
 
 ```Javascript
-// Don't commit this file tooyour public repos. This config is for first-run
+// Don't commit this file to your public repos. This config is for first-run
 exports.creds = {
-clientID: <your client ID for this Web API you created in hello portal>
+clientID: <your client ID for this Web API you created in the portal>
 mongoose_auth_local: 'mongodb://localhost/tasklist', // Your mongo auth uri goes here
-audience: '<your audience URI>', // hello Client ID of hello application that is calling your API, usually a web API or native client
-identityMetadata: 'https://login.microsoftonline.com/<tenant name>/.well-known/openid-configuration', // Make sure you add hello B2C tenant name in hello <tenant name> area
+audience: '<your audience URI>', // the Client ID of the application that is calling your API, usually a web API or native client
+identityMetadata: 'https://login.microsoftonline.com/<tenant name>/.well-known/openid-configuration', // Make sure you add the B2C tenant name in the <tenant name> area
 tenantName:'<tenant name>',
-policyName:'b2c_1_<sign in policy name>' // This is hello policy you'll want toovalidate against in B2C. Usually this is your Sign-in policy (as users sign in toothis API)
-passReqToCallback: false // This is a node.js construct that lets you pass hello req all hello way back tooany upstream caller. We turn this off as there is no upstream caller.
+policyName:'b2c_1_<sign in policy name>' // This is the policy you'll want to validate against in B2C. Usually this is your Sign-in policy (as users sign in to this API)
+passReqToCallback: false // This is a node.js construct that lets you pass the req all the way back to any upstream caller. We turn this off as there is no upstream caller.
 };
 
 ```
@@ -268,40 +268,40 @@ passReqToCallback: false // This is a node.js construct that lets you pass hello
 [!INCLUDE [active-directory-b2c-devquickstarts-tenant-name](../../includes/active-directory-b2c-devquickstarts-tenant-name.md)]
 
 ### <a name="required-values"></a>Värden som krävs
-`clientID`: hello klient-ID för Web API-program.
+`clientID`: Klient-ID för programmet Web API.
 
-`IdentityMetadata`: Det är där `passport-azure-ad` letar efter konfigurationsdata för hello identitetsleverantör. Det verkar också för hello nycklar toovalidate hello JSON web token.
+`IdentityMetadata`: Det är där `passport-azure-ad` letar efter konfigurationsdata för din identitetsprovider. Den letar också efter nycklarna för att validera JSON-webb-token.
 
-`audience`: hello URI (uniform resource identifier) från hello-portalen som identifierar din anropande programmet.
+`audience`: Den URI (Uniform Resource Identifier) från portalen som identifierar ditt anropande program.
 
 `tenantName`: Ditt klientnamn (till exempel **contoso.onmicrosoft.com**).
 
-`policyName`: hello principen som du vill toovalidate hello token som kommer tooyour server. Den här principen ska vara hello samma princip som du använder på hello klientprogrammet för inloggning.
+`policyName`: Den princip som du vill använda för att validera token som kommer till servern. Det bör vara samma princip som du använder i klientprogrammet för inloggning.
 
 > [!NOTE]
-> För tillfället hello Använd samma principer för både klient och server-installationen. Om du redan har slutfört en genomgång och skapat dessa principer behöver du inte toodo så igen. Eftersom du har slutfört genomgången hello bör inte måste tooset in nya principer för klientgenomgångarna på hello platsen.
+> Använd samma principer för både klient- och serverinstallationen. Om du har redan gjort en genomgång och skapat dessa principer behöver du inte göra det igen. Eftersom du har gjort genomgången ska du inte behöva ställa in nya principer för klientgenomgångarna på webbplatsen.
 >
 >
 
-## <a name="add-configuration-tooyour-serverjs-file"></a>Lägg till konfigurationen tooyour server.js-fil
-tooread hello värden från hello `config.js` fil du skapade, lägga till hello `.config` filen som en nödvändig resurs i ditt program och ange sedan hello globala variabler toothose i hello `config.js` dokumentet.
+## <a name="add-configuration-to-your-serverjs-file"></a>Lägg till konfigurationen i din server.js-fil
+För att läsa värdena från `config.js`-filen du skapade, lägg till `.config`-filen som en nödvändig resurs i ditt program och sedan ange de globala variablerna till dem i `config.js`-dokumentet.
 
-Från kommandoraden hello ändra katalogen för`azuread`, om den inte redan finns där:
+Ändra katalogen till `azuread` från kommandoraden, om den inte redan finns där:
 
 `cd azuread`
 
-Öppna hello `server.js` fil i en textredigerare. Lägg till hello följande information:
+Öppna `server.js`-filen i en textredigerare. Lägg till följande information:
 
 ```Javascript
 var config = require('./config');
 ```
-Lägg till ett nytt avsnitt för`server.js` som innehåller hello följande kod:
+Lägg till ett nytt avsnitt i `server.js` som innehåller följande kod:
 
 ```Javascript
-// We pass these options in toohello ODICBearerStrategy.
+// We pass these options in to the ODICBearerStrategy.
 
 var options = {
-    // hello URL of hello metadata document for your app. We put hello keys for token validation from hello URL found in hello jwks_uri tag of hello in hello metadata.
+    // The URL of the metadata document for your app. We put the keys for token validation from the URL found in the jwks_uri tag of the in the metadata.
     identityMetadata: config.creds.identityMetadata,
     clientID: config.creds.clientID,
     tenantName: config.creds.tenantName,
@@ -313,10 +313,10 @@ var options = {
 };
 ```
 
-Nu ska vi lägga till platshållare för hello användare som vi får från våra anropa program.
+Sedan lägger vi till platshållare för de användare som vi får från våra anropande program.
 
 ```Javascript
-// array toohold logged in users and hello current logged in user (owner)
+// array to hold logged in users and the current logged in user (owner)
 var users = [];
 var owner = null;
 ```
@@ -330,32 +330,32 @@ var log = bunyan.createLogger({
 });
 ```
 
-## <a name="add-hello-mongodb-model-and-schema-information-by-using-mongoose"></a>Lägga till hello MongoDB-modellen och schemat genom att använda Mongoose
-hello betalar förberett tidigare när du för ihop dessa tre filer i en REST API-tjänsten.
+## <a name="add-the-mongodb-model-and-schema-information-by-using-mongoose"></a>Lägg till informationen om MongoDB-modellen och -schemat genom att använda Mongoose
+Det du har förberett tidigare kommer att vara till hjälp när du för ihop dessa tre filer i en REST API-tjänst.
 
-För den här genomgången Använd MongoDB toostore dina aktiviteter, enligt tidigare diskussion.
+Lagra dina uppgifter genom att använda MongoDB för den här genomgången, som beskrivits tidigare.
 
-I hello `config.js` fil, kallade du databasen **tasklist**. Det här namnet har också vad du placerar hello slutet av hello `mongoose_auth_local` anslutnings-URL. Du behöver inte toocreate databasen i förväg i MongoDB. Hello databasen skapas åt dig på hello första gången du kör serverprogrammet.
+I `config.js`-filen, kallade du databasen för **Aktivitetslista**. Detta namn var även det du angav i slutet av anslutnings-URL:en för `mongoose_auth_local`. Du behöver inte skapa den här databasen i förväg i MongoDB. Den skapar databasen på den första körningen av serverprogrammet.
 
-När du har talat hello servern vilken MongoDB databasen toouse, behöver du toowrite vissa ytterligare kod toocreate hello modellen och schemat för serveraktiviteterna.
+När du har talat om för servern vilken MongoDB-databas som ska användas, måste du skriva ytterligare kod för att skapa modellen och schemat för serveraktiviteterna.
 
-### <a name="expand-hello-model"></a>Expandera hello modellen
+### <a name="expand-the-model"></a>Expandera modellen
 Den här schemamodellen är enkel. Du kan expandera den efter behov.
 
-`owner`: Den som är tilldelad toohello aktivitet. Det här objektet är en **sträng**.  
+`owner`: Den som har tilldelats aktiviteten. Det här objektet är en **sträng**.  
 
-`Text`: själva hello-aktiviteten. Det här objektet är en **sträng**.
+`Text`: Själva aktiviteten. Det här objektet är en **sträng**.
 
-`date`: hello datum hello uppgiften förfaller. Det här objektet är en **datetime**.
+`date`: Det datum då aktiviteten ska vara klar. Det här objektet är en **datetime**.
 
-`completed`: Om hello uppgiften har slutförts. Det här objektet är en **boolesk**.
+`completed`: Om aktiviteten har slutförts. Det här objektet är en **boolesk**.
 
-### <a name="create-hello-schema-in-hello-code"></a>Skapa hello schema i hello kod
-Från kommandoraden hello ändra katalogen för`azuread`, om den inte redan finns där:
+### <a name="create-the-schema-in-the-code"></a>Skapa schemat i koden
+Ändra katalogen till `azuread` från kommandoraden, om den inte redan finns där:
 
 `cd azuread`
 
-Öppna hello `server.js` fil i en textredigerare. Lägg till följande information under hello konfigurationspost hello:
+Öppna `server.js`-filen i en textredigerare. Lägg till följande information under konfigurationsposten:
 
 ```Javascript
 // MongoDB setup
@@ -363,12 +363,12 @@ Från kommandoraden hello ändra katalogen för`azuread`, om den inte redan finn
 var serverPort = process.env.PORT || 3000; // Note we are hosting our API on port 3000
 var serverURI = (process.env.PORT) ? config.creds.mongoose_auth_mongohq : config.creds.mongoose_auth_local;
 
-// Connect tooMongoDB
+// Connect to MongoDB
 global.db = mongoose.connect(serverURI);
 var Schema = mongoose.Schema;
 log.info('MongoDB Schema loaded');
 
-// Here we create a schema toostore our tasks and users. Pretty simple schema for now.
+// Here we create a schema to store our tasks and users. Pretty simple schema for now.
 var TaskSchema = new Schema({
     owner: String,
     Text: String,
@@ -376,17 +376,17 @@ var TaskSchema = new Schema({
     date: Date
 });
 
-// Use hello schema tooregister a model
+// Use the schema to register a model
 mongoose.model('Task', TaskSchema);
 var Task = mongoose.model('Task');
 ```
-Du först skapa hello schemat och skapas ett modellobjekt som du använder toostore data i hela hello code när du definierar din **vägar**.
+Du skapar först schemat och sedan ett modellobjekt som du använder för att lagra data i hela koden när du definierar dina **vägar**.
 
 ## <a name="add-routes-for-your-rest-api-task-server"></a>Lägga till vägar för din REST API-aktivitetsserver
-Nu när du har en databas modellen toowork med lägger du till hello vägar som du använder för REST API-servern.
+Lägg till de vägar du ska använda för REST API-servern nu när du har en databasmodell att arbeta med.
 
 ### <a name="about-routes-in-restify"></a>Om vägar i Restify
-I Restify fungerar vägar i hello samma sätt som när de använder hello Express-stacken. Du definierar vägar genom att använda hello URI som du förväntar dig hello klienten program toocall.
+I Restify fungerar vägar på samma sätt som när de använder Express-stacken. Du definierar vägar genom att använda den URI som du förväntar dig att klientprogram anropar.
 
 Ett typiskt mönster för en Restify-väg är:
 
@@ -395,22 +395,22 @@ function createObject(req, res, next) {
 // do work on Object
 _object.name = req.params.object; // passed value is in req.params under object
 ///...
-return next(); // keep hello server going
+return next(); // keep the server going
 }
 ....
 server.post('/service/:add/:object', createObject); // calls createObject on routes that match this.
 ```
 
-Restify och Express kan ge mycket mer ingående funktioner, till exempel att definiera programtyper och göra komplex routning över olika slutpunkter. För hello i den här kursen är behåller vi vägarna enkla.
+Restify och Express kan ge mycket mer ingående funktioner, till exempel att definiera programtyper och göra komplex routning över olika slutpunkter. För dessa självstudier håller vi vägarna enkla.
 
-#### <a name="add-default-routes-tooyour-server"></a>Lägg till standard vägar tooyour server
-Du nu lägga till hello grundläggande CRUD-vägarna för **skapa** och **lista** för vårt REST-API. Andra vägar kan hittas i hello `complete` grenen av hello exempel.
+#### <a name="add-default-routes-to-your-server"></a>Lägga till standardvägar i servern
+Du lägger nu till grundläggande CRUD-vägar för **skapa** och **lista** för vår REST API. Andra vägar finns i `complete`-grenen av exemplet.
 
-Från kommandoraden hello ändra katalogen för`azuread`, om den inte redan finns där:
+Ändra katalogen till `azuread` från kommandoraden, om den inte redan finns där:
 
 `cd azuread`
 
-Öppna hello `server.js` fil i en textredigerare. Nedan hello databasposter gjorde du senare lägga till hello följande information:
+Öppna `server.js`-filen i en textredigerare. Lägg till följande information under de databasposter du gjorde ovan:
 
 ```Javascript
 /**
@@ -422,13 +422,13 @@ Från kommandoraden hello ändra katalogen för`azuread`, om den inte redan finn
 
 function createTask(req, res, next) {
 
-    // Resitify currently has a bug which doesn't allow you tooset default headers
-    // This headers comply with CORS and allow us toomongodbServer our response tooany origin
+    // Resitify currently has a bug which doesn't allow you to set default headers
+    // This headers comply with CORS and allow us to mongodbServer our response to any origin
 
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
 
-    // Create a new task model, fill it up and save it tooMongodb
+    // Create a new task model, fill it up and save it to Mongodb
     var _task = new Task();
 
     if (!req.params.Text) {
@@ -445,7 +445,7 @@ function createTask(req, res, next) {
 
     _task.save(function(err) {
         if (err) {
-            req.log.warn(err, 'createTask: unable toosave');
+            req.log.warn(err, 'createTask: unable to save');
             next(err);
         } else {
             res.send(201, _task);
@@ -459,11 +459,11 @@ function createTask(req, res, next) {
 ```
 
 ```Javascript
-/// Simple returns hello list of TODOs that were loaded.
+/// Simple returns the list of TODOs that were loaded.
 
 function listTasks(req, res, next) {
-    // Resitify currently has a bug which doesn't allow you tooset default headers
-    // This headers comply with CORS and allow us toomongodbServer our response tooany origin
+    // Resitify currently has a bug which doesn't allow you to set default headers
+    // This headers comply with CORS and allow us to mongodbServer our response to any origin
 
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
@@ -482,7 +482,7 @@ function listTasks(req, res, next) {
         }
 
         if (!data.length) {
-            log.warn(err, "There is no tasks in hello database. Add one!");
+            log.warn(err, "There is no tasks in the database. Add one!");
         }
 
         if (!owner) {
@@ -499,13 +499,13 @@ function listTasks(req, res, next) {
 ```
 
 
-#### <a name="add-error-handling-for-hello-routes"></a>Lägg till felhantering för vägarna hello
-Lägga till vissa felhantering så att du kan kommunicera problem tillbaka toohello klienten så att den kan förstå.
+#### <a name="add-error-handling-for-the-routes"></a>Lägg till felhantering för vägarna
+Lägg till viss felhantering, så att du kan informera klienten om eventuella problem på ett sätt som den kan förstå.
 
-Lägg till följande kod hello:
+Lägg till följande kod:
 
 ```Javascript
-///--- Errors for communicating something interesting back toohello client
+///--- Errors for communicating something interesting back to the client
 function MissingTaskError() {
 restify.RestError.call(this, {
 statusCode: 409,
@@ -542,9 +542,9 @@ util.inherits(TaskNotFoundError, restify.RestError);
 
 
 ## <a name="create-your-server"></a>Skapa servern
-Du har nu definierat databasen och placerat ut vägarna. hello sista för du toodo är tooadd hello serverinstansen som hanterar dina anrop.
+Du har nu definierat databasen och placerat ut vägarna. Det som är kvar är att lägga till serverinstansen som hanterar dina anrop.
 
-Restify och Express ger anpassa för en REST API-server, men vi använder här hello mest grundläggande installationen.
+Med Restify och Express kan anpassa för en REST API-server på en mycket ingående nivå, men här använder vi den mest grundläggande installationen.
 
 ```Javascript
 
@@ -570,21 +570,21 @@ server.pre(restify.pre.userAgentConnection());
 // Set a per request bunyan logger (with requestid filled in)
 server.use(restify.requestLogger());
 
-// Allow 5 requests/second by IP, and burst too10
+// Allow 5 requests/second by IP, and burst to 10
 server.use(restify.throttle({
     burst: 10,
     rate: 5,
     ip: true,
 }));
 
-// Use hello common stuff you probably want
+// Use the common stuff you probably want
 server.use(restify.acceptParser(server.acceptable));
 server.use(restify.dateParser());
 server.use(restify.queryParser());
 server.use(restify.gzipResponse());
 server.use(restify.bodyParser({
     mapParams: true
-})); // Allows for JSON mapping tooREST
+})); // Allows for JSON mapping to REST
 server.use(restify.authorizationParser()); // Looks for authorization headers
 
 // Let's start using Passport.js
@@ -594,7 +594,7 @@ server.use(passport.session()); // Provides session support
 
 
 ```
-## <a name="add-hello-routes-toohello-server-without-authentication"></a>Lägg till hello vägar toohello server (utan autentisering)
+## <a name="add-the-routes-to-the-server-without-authentication"></a>Lägg till vägar på servern (utan autentisering)
 ```Javascript
 server.get('/api/tasks', passport.authenticate('oauth-bearer', {
     session: false
@@ -655,9 +655,9 @@ server.listen(serverPort, function() {
     var consoleMessage = '\n Microsoft Azure Active Directory Tutorial';
     consoleMessage += '\n +++++++++++++++++++++++++++++++++++++++++++++++++++++';
     consoleMessage += '\n %s server is listening at %s';
-    consoleMessage += '\n Open your browser too%s/api/tasks\n';
+    consoleMessage += '\n Open your browser to %s/api/tasks\n';
     consoleMessage += '+++++++++++++++++++++++++++++++++++++++++++++++++++++ \n';
-    consoleMessage += '\n !!! why not try a $curl -isS %s | json tooget some ideas? \n';
+    consoleMessage += '\n !!! why not try a $curl -isS %s | json to get some ideas? \n';
     consoleMessage += '+++++++++++++++++++++++++++++++++++++++++++++++++++++ \n\n';
 
     //log.info(consoleMessage, server.name, server.url, server.url, server.url);
@@ -666,20 +666,20 @@ server.listen(serverPort, function() {
 
 ```
 
-## <a name="add-authentication-tooyour-rest-api-server"></a>Lägg till autentisering tooyour REST API-server
+## <a name="add-authentication-to-your-rest-api-server"></a>Lägg till autentisering i REST API-servern
 Nu när du har en aktiv REST API-server kan du använda den med Azure AD.
 
-Från kommandoraden hello ändra katalogen för`azuread`, om den inte redan finns där:
+Ändra katalogen till `azuread` från kommandoraden, om den inte redan finns där:
 
 `cd azuread`
 
-### <a name="use-hello-oidcbearerstrategy-that-is-included-with-passport-azure-ad"></a>Använd hello oidc-Ägarstrategi som ingår i passport-azure-ad
+### <a name="use-the-oidcbearerstrategy-that-is-included-with-passport-azure-ad"></a>Använd den OIDC-ägarstrategi som ingår i passport-azure-ad
 > [!TIP]
-> När du skriver att API: er, bör du alltid länka hello data toosomething unika från hello-token som hello användare inte kan förfalska. När hello-servern lagrar ToDo-objekt, sker det baserat på hello **oid** för hello användare i hello token (anropas via token.oid), som ska ingå i hello ”ägare”. Det här värdet garanterar att bara denna användaren kan komma åt sina egna ToDo-objekt. Exponeras aldrig i hello API för ”ägare”, så en extern användare kan begära andras ToDo-objekt, även om de autentiseras.
+> När du skriver API: er bör du alltid länka dina data till något unikt från token, något som användaren inte kan förfalska. När servern lagrar ToDo-objekt, sker det baserat på **oid** för användaren i token (anropas via token.oid). Det anges i fältet ”ägare”. Det här värdet garanterar att bara denna användaren kan komma åt sina egna ToDo-objekt. Ägarens API exponeras aldrig, så en extern användare kan begära andras ToDo-objekt, även om de autentiseras.
 >
 >
 
-Använd sedan hello ägarstrategi som medföljer `passport-azure-ad`.
+Använd sedan den ägarstrategi som kommer med `passport-azure-ad`.
 
 ```Javascript
 var findById = function(id, fn) {
@@ -696,8 +696,8 @@ var findById = function(id, fn) {
 
 var oidcStrategy = new OIDCBearerStrategy(options,
     function(token, done) {
-        log.info('verifying hello user');
-        log.info(token, 'was hello token retreived');
+        log.info('verifying the user');
+        log.info(token, 'was the token retreived');
         findById(token.sub, function(err, user) {
             if (err) {
                 return done(err);
@@ -718,21 +718,21 @@ var oidcStrategy = new OIDCBearerStrategy(options,
 passport.use(oidcStrategy);
 ```
 
-Passport använder hello samma mönster för alla sina strategier. Du skickar en `function()` som har `token` och `done` som parametrar. hello strategin kommer tillbaka tooyou när den har utfört allt sitt arbete. Du bör och sedan lagra hello användaren och spara hello token så att du inte behöver tooask för den igen.
+Passport använder samma mönster för alla strategier. Du skickar en `function()` som har `token` och `done` som parametrar. Strategin kommer tillbaka när den har utfört allt sitt arbete. Du bör då lagra användaren och spara token så att du inte behöver fråga efter den igen.
 
 > [!IMPORTANT]
-> hello koden ovan tar alla användare som tooauthenticate tooyour server. Denna process kallas autoregistrering. I produktionsservrar Låt inte i alla användare åtkomst hello API utan att behöva dem gå igenom registreringsprocessen. Den här processen är vanligtvis hello mönster du ser i konsumentappar som gör att du tooregister med hjälp av Facebook men sedan ber du toofill i ytterligare information. Om programmet inte var ett kommandoradsprogram, kunnat vi extrahera hello e-post från token hello-objekt som returneras och sedan bett användarna toofill i ytterligare information. Eftersom detta är ett exempel kan vi lägga till dem tooan minnesinterna databasen.
+> Koden ovan tar alla användare som autentiserar till servern. Denna process kallas autoregistrering. I produktionsservrar ska du inte ge alla användare åtkomst till API:en utan att de först går igenom en registreringsprocess. Denna process är oftast det mönster du ser i konsumentappar. Det gör att du kan registrera dig med hjälp av Facebook men du blir sedan uppmanad att fylla i ytterligare information. Om detta program inte var ett kommandoradsprogram hade vi kunnat extrahera mejladressen från det token-objekt som returneras och sedan bett användarna att fylla i ytterligare information. Eftersom det här är ett exempel, lägger vi till dem till en databas i minnet.
 >
 >
 
-## <a name="run-your-server-application-tooverify-that-it-rejects-you"></a>Kör tooverify din server-program avvisar att det dig
-Du kan använda `curl` toosee om du nu har OAuth2-skydd mot dina slutpunkter. hello rubriker som returneras bör vara tillräckligt med tootell att du inte på hello rätt sökväg.
+## <a name="run-your-server-application-to-verify-that-it-rejects-you"></a>Kör serverprogrammet för att verifiera att det avvisar dig
+Du kan använda `curl` om du vill kontrollera att du nu har OAuth2-skydd mot dina slutpunkter. De rubriker som returneras borde räcka för att se om att du är på rätt väg.
 
 Kontrollera att MongoDB-instansen körs:
 
     $sudo mongodb
 
-Ändra toohello directory och kör hello server:
+Gå till katalogen och kör servern:
 
     $ cd azuread
     $ node server.js
@@ -751,12 +751,12 @@ Date: Tue, 14 Jul 2015 05:45:03 GMT
 Transfer-Encoding: chunked
 ```
 
-Ett 401-fel är hello-svar som du vill ha. Anger det att hello Passport-lagret försöker tooredirect toohello auktorisera slutpunkt.
+Ett 401-fel är det svar du vill ha. Det visar att Passport-lagret försöker omdirigera till slutpunkten för auktorisering .
 
 ## <a name="you-now-have-a-rest-api-service-that-uses-oauth2"></a>Du har nu en REST API-tjänst som använder OAuth2
-Du har implementerat en REST API med Restify och OAuth! Nu har du tillräckligt med kod så att du kan fortsätta toodevelop din tjänst och bygga på det här exemplet. Du har gjort så mycket du kan med den här servern utan att använda en OAuth2-kompatibel klient. För att nästa steg att använda ytterligare en genomgång som våra [ansluta tooa webb-API med hjälp av iOS med B2C](active-directory-b2c-devquickstarts-ios.md) genomgången.
+Du har implementerat en REST API med Restify och OAuth! Du har nu tillräcklig kod så att du kan fortsätta att utveckla din tjänst och bygga på det här exemplet. Du har gjort så mycket du kan med den här servern utan att använda en OAuth2-kompatibel klient. För nästkommande steg använder du ytterligare en genomgång, såsom genomgången [Anslut till en webb-API med iOS har B2C](active-directory-b2c-devquickstarts-ios.md).
 
 ## <a name="next-steps"></a>Nästa steg
-Du kan nu flytta toomore avancerade ämnen, exempelvis:
+Du kan nu gå vidare  till mer avancerade ämnen, till exempel:
 
-[Ansluta tooa webb-API med hjälp av iOS med B2C](active-directory-b2c-devquickstarts-ios.md)
+[Ansluta till ett webb-API genom att använda iOS med B2C](active-directory-b2c-devquickstarts-ios.md)

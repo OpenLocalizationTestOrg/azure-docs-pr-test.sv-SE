@@ -1,5 +1,5 @@
 ---
-title: aaaAzure Active Directory reporting | Microsoft Docs
+title: Azure Active Directory-rapportering | Microsoft Docs
 description: "En allmän översikt över Azure Active Directory-rapportering."
 services: active-directory
 documentationcenter: 
@@ -15,22 +15,22 @@ ms.workload: identity
 ms.date: 07/13/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: c91813acbdc4b0bfcd164169b0b575accac227d3
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 738c8f4a56586b87f03973ec258b0a3023affa60
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-reporting"></a>Azure Active Directory-rapportering
 
 Med Azure Active Directory-rapportering kan du få insikter om din miljös prestanda.  
-hello som data kan du:
+Med dessa data kan du:
 
 - Avgör hur din app och dina tjänster används av dina användare
-- Identifiera potentiella risker som påverkar hello hälsotillståndet för din miljö
+- Identifiera potentiella risker som påverkar hälsotillståndet för din miljö
 - Felsöka problem som hindrar användare från att uträtta sitt arbete  
 
-hello reporting arkitektur förlitar sig på två huvudsakliga pelare:
+Rapportarkitekturen förlitar sig på två huvudsakliga pelare:
 
 - Säkerhetsrapporter
 - Aktivitetsrapporter
@@ -41,79 +41,79 @@ hello reporting arkitektur förlitar sig på två huvudsakliga pelare:
 
 ## <a name="security-reports"></a>Säkerhetsrapporter
 
-hello säkerhetsrapporter i Azure Active Directory kan du tooprotect din organisations identiteter.  
+Säkerhetsrapporter i Azure Active Directory hjälpa dig att skydda din organisations identiteter.  
 Det finns två typer av säkerhetsrapporter i Azure Active Directory:
 
-- **Användare som har flaggats för risk** - från hello [användare som har flaggats för risk säkerhetsrapporten](active-directory-reporting-security-user-at-risk.md), du få en översikt över användarkonton som kan ha drabbats.
+- **Användare som har flaggats för risk** - Från [användare som har flaggats för risksäkerhetsrapporten](active-directory-reporting-security-user-at-risk.md) får du en översikt över användarkonton som kan ha drabbats.
 
-- **Riskfyllda inloggningar** – med hello [riskfyllda inloggning säkerhetsrapporten](active-directory-reporting-security-risky-sign-ins.md), du får en indikator för inloggningsförsök som kan ha utförts av någon som är inte hello legitima ägaren till ett användarkonto. 
+- **Riskfyllda inloggningar** – med [ säkerhetsrapporten för riskfyllda inloggningar](active-directory-reporting-security-risky-sign-ins.md) får du en indikator för inloggningsförsök som kan ha utförts av någon som inte är tillförlitligt ägare för ett användarkonto. 
 
-**Vilka Azure AD-licens behöver du tooaccess en säkerhetsrapporten?**  
+**Vilka Azure AD-licens behöver komma åt en säkerhetsrapport?**  
 Alla utgåvor av Azure Active Directory ger rapporter över användare som har flaggats för risk och riskfyllda inloggningar.  
-Hello nivå av rapportens granularitet varierar dock mellan hello versioner: 
+Nivån av rapportens detaljrikedom varierar dock mellan versionerna: 
 
-- I hello **Azure Active Directory ledigt och grundläggande**, du redan ha en lista över användare som har flaggats för risk och riskfyllda inloggningar. 
+- I **versionerna Azure Active Directory Free och Basic** har du redan en lista över användare som har flaggats för risk och riskfyllda inloggningar. 
 
-- Hej **Azure Active Directory Premium 1** edition utökar den här modellen genom att du även tooexamine vissa hello underliggande riskhändelser som har identifierats för varje rapport. 
+- Utgåvan **Azure Active Directory Premium 1** har en utökad modell där du även kan utforska några av de underliggande riskhändelser som har identifierats för varje rapport. 
 
-- Hej **Azure Active Directory Premium 2** versionen ger dig med hello mest detaljerad information om hello underliggande riskhändelser och du kan också tooconfigure säkerhetsprinciper som automatiskt svarar tooconfigured risknivåer.
+- Utgåvan **Azure Active Directory Premium 2** ger den mest detaljerade informationen om de underliggande riskhändelser och du kan konfigurera säkerhetsprinciper som automatiskt svarar på konfigurerade risknivåer.
 
 
 ## <a name="activity-reports"></a>Aktivitetsrapporter
 
 Det finns två typer av aktivitetsrapporter i Azure Active Directory:
 
-- **Granskningsloggar** - hello [granskningsloggar aktivitetsrapport](active-directory-reporting-activity-audit-logs.md) ger dig åtkomst toohello historik för varje aktivitet i din klient.
+- **Granskningsloggar** – [aktivitetsrapport för granskningsloggar ](active-directory-reporting-activity-audit-logs.md) ger dig tillgång till historiken för varje aktivitet i din klient.
 
-- **Inloggningar** – med hello [inloggningar aktivitetsrapport](active-directory-reporting-activity-sign-ins.md), du kan bestämma vem som har genomfört hello uppgifter som rapporterats av hello kontrollrapport loggar.
-
-
-
-Hej **granskningsloggar rapporten** ger dig poster av systemaktiviteter för kompatibilitet.
-Bland annat tillhandahålls hello data kan du tooaddress vanliga scenarier som:
-
-- Någon i min klient fick åtkomst tooan administratörsgrupp. Vem som gav användaren åtkomst? 
-
-- Jag vill tooknow hello lista över användare som loggar in på en viss app sedan jag nyligen publicerats så hello app och vill tooknow om det fungerar bra
-
-- Jag vill tooknow hur många lösenord återställer sker i min klient
-
-
-**Vilka Azure AD-licens behöver du tooaccess hello granska loggarna rapporten?**  
-hello granska loggarna rapporten är tillgängligt för funktioner som du har licenser. Om du har en licens för en specifik funktion kan ha du också åtkomst toohello granska informationen i felloggen för den.
-
-Mer information finns i **jämföra allmänt tillgängliga funktioner i hello lediga, Basic eller Premium Edition** i [Azure Active Directory-funktioner som](https://www.microsoft.com/cloud-platform/azure-active-directory-features).   
+- **Inloggningar** – med [aktivitetsrapport för inloggningar ](active-directory-reporting-activity-sign-ins.md) kan du bestämma vem som har utfört de uppgifter som rapporteras i granskningsloggarna.
 
 
 
-Hej **inloggningar aktivitetsrapport** aktiverar tootoofind svar tooquestions som:
+**Granskningsloggarna** ger dokumentation över systemaktiviteter för kontroll av överensstämmelse.
+Dessa data gör att det möjligt att hantera vanliga scenarier, till exempel:
 
-- Vad är hello inloggning mönstret för en användare?
+- Någon i min klient har fått tillgång till en administratörsgrupp. Vem som gav användaren åtkomst? 
+
+- Jag vill ha en lista över användare som loggar in på en viss app eftersom jag nyss publicerade appen och vill veta om den fungerar bra
+
+- Jag vill veta hur många lösenordsåterställningar som sker i min klient
+
+
+**Vilken Azure AD-licens behöver du för att komma åt granskningsloggar?**  
+Granskningsloggarna är tillgängliga för funktioner som du har licenser för. Om du har en licens för en specifik funktion har du också åtkomst till dess granskningslogg.
+
+Mer information finns i **Jämför allmänt tillgängliga funktioner i Free, Basic och Premium-utgåvorna** i [Azure Active Directory-funktioner](https://www.microsoft.com/cloud-platform/azure-active-directory-features).   
+
+
+
+**Aktivitetsrapport för inloggningar**  gör det möjligt för att få svar på frågor som:
+
+- Vilket inloggningsmönster har en användare?
 - Hur många användare har en användare loggat in under en vecka?
-- Vad är hello statusen för dessa inloggningar?
+- Vad är status för dessa inloggningar?
 
 
-**Vilka Azure AD-licens gör du behöver tooaccess hello inloggningar Aktivitetsrapport?**  
-tooaccess Hej inloggningar aktivitetsrapport, din klient måste ha en Azure AD Premium-licens som är kopplade till den.
+**Vilken Azure AD-licens behöver du för att komma åt inloggningsaktiviteter?**  
+Din klient måste ha en associerad Azure AD Premium-licens för att det ska gå att se alla rapporter om inloggningsaktiviteter.
 
 
 ## <a name="programmatic-access"></a>Programmässig åtkomst
 
-I användargränssnittet för tillägg toohello Azure Active Directory reporting ger dig också med [Programmeringsåtkomst](active-directory-reporting-api-getting-started-azure-portal.md) toohello rapportdata. hello data för de här rapporterna kan vara användbar tooyour program, till exempel SIEM-system, granskning och business intelligence-verktyg. hello Azure AD reporting API: er ger Programmeringsåtkomst toohello data via en uppsättning REST-baserad API: er. Du kan anropa API: erna från en mängd olika programmeringsspråk och verktyg. 
+Utöver användargränssnittet, ger Azure Active Directory-rapportering också [programmässig åtkomst](active-directory-reporting-api-getting-started-azure-portal.md) till rapporteringsdata. Data för de här rapporterna kan vara användbara för dina program, till exempel SIEM-system, gransknings- och business intelligence-verktyg. Azure AD reporting API: er ger programmässig åtkomst till data via en uppsättning REST-baserade API: er. Du kan anropa API: erna från en mängd olika programmeringsspråk och verktyg. 
 
 
 ## <a name="next-steps"></a>Nästa steg
 
-Om du vill tooknow mer om hello olika rapporttyper i Azure Active Directory, se:
+Om du vill veta mer om de olika rapporttyperna i Azure Active Directory, se:
 
 - [Användare som har flaggats för risk](active-directory-reporting-security-user-at-risk.md)
 - [Rapport över riskfyllda inloggningar](active-directory-reporting-security-risky-sign-ins.md)
 - [Granskningsloggar](active-directory-reporting-activity-audit-logs.md)
 - [Inloggningsrapport](active-directory-reporting-activity-sign-ins.md)
 
-Om du vill tooknow mer om att komma åt hello hello reporting data med hjälp av hello reporting API, se: 
+Om du vill veta mer om åtkomst till rapporteringsdata med rapporterings-API, se: 
 
-- [Komma igång med hello Azure Active Directory reporting API](active-directory-reporting-api-getting-started-azure-portal.md)
+- [Kom igång med Azure Active Directory Reporting API:n](active-directory-reporting-api-getting-started-azure-portal.md)
 
 
 <!--Image references-->

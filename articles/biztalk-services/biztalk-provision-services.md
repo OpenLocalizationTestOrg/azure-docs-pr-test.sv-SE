@@ -1,6 +1,6 @@
 ---
-title: "aaaCreate Azure BizTalk-tjänst i hello Azure-portalen | Microsoft Docs"
-description: "Lär dig hur tooprovision eller skapa Azure BizTalk-tjänst i hello Azure-portalen; MABS WABS"
+title: Skapa Azure BizTalk Services i Azure-portalen | Microsoft Docs
+description: "Lär dig hur du etablerar eller skapar Azure BizTalk Services i Azure-portalen; MABS, WABS"
 services: biztalk-services
 documentationcenter: 
 author: MandiOhlinger
@@ -14,30 +14,30 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: 6781cadada8ac9c84e1fe045d2b0f995811f75b1
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: eca77b4a82eb67e1755717bb4429f8d450a64dc5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="create-biztalk-services-using-hello-azure-portal"></a>Skapa BizTalk-tjänster med hjälp av hello Azure-portalen
+# <a name="create-biztalk-services-using-the-azure-portal"></a>Skapa BizTalk Services med Azure-portalen
 
 > [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
 
 
 > [!TIP]
-> toosign i toohello Azure-portalen som du behöver ett Azure-konto och Azure-prenumeration. Om du inte har något konto kan du skapa ett kostnadsfritt utvärderingskonto på bara några minuter. Se [Kostnadsfri utvärderingsversion av Azure](http://go.microsoft.com/fwlink/p/?LinkID=239738).
+> Om du vill logga in på Azure-portalen behöver du ett Azure-konto och en Azure-prenumeration. Om du inte har något konto kan du skapa ett kostnadsfritt utvärderingskonto på bara några minuter. Se [Kostnadsfri utvärderingsversion av Azure](http://go.microsoft.com/fwlink/p/?LinkID=239738).
 
 
 ## <a name="CreateService"></a>Skapa en BizTalk-tjänst
-Beroende på hello Edition som du väljer, kanske inte alla BizTalk Service-inställningar är tillgängliga.
+Beroende på vilken utgåva du har är det inte säkert att alla BizTalk Services-inställningar finns tillgängliga.
 
-1. Logga in toohello [Azure-portalen](http://go.microsoft.com/fwlink/p/?LinkID=213885).
-2. Hello nedre navigeringsfönstret och välj **ny**:  
-   ![Välj ny hello-knapp][NEWButton]
+1. Logga in på [Azure-portalen](http://go.microsoft.com/fwlink/p/?LinkID=213885).
+2. I den nedre navigeringsrutan väljer du **NYTT**:  
+   ![Klicka på knappen Nytt][NEWButton]
 3. Välj **APPTJÄNSTER** > **BIZTALK-TJÄNST** > **SKAPA ANPASSAD**:  
    ![Välj BizTalk-tjänst och välj Skapa anpassad][NewBizTalkService]
-4. Ange inställningar för hello BizTalk-tjänst:
+4. Ange BizTalk-tjänstinställningarna:
    
     <table border="1">
     <tr>
@@ -45,21 +45,21 @@ Beroende på hello Edition som du väljer, kanske inte alla BizTalk Service-inst
     <td>Du kan ange ett namn, men var specifik. Några exempel är:<br/><br/>
     <em>mycompany</em>.biztalk.windows.net<br/>
     <em>mycompanymyapplication</em>.biztalk.windows.net<br/>
-    <em>myapplication</em>.biztalk.windows.net<br/><br/>”. biztalk.windows.net” är automatiskt tillagda toohello namn som du anger. Detta skapar en URL-adress används tooaccess din BizTalk-tjänst, som <strong>https://<em>myapplication</em>. biztalk.windows.net</strong>.
+    <em>myapplication</em>.biztalk.windows.net<br/><br/>”.biztalk.windows.net” läggs automatiskt till det namn som du anger. Detta skapar en URL som används för att komma åt din BizTalk-tjänst, som t.ex. <strong>https://<em>myapplication</em>.biztalk.windows.net</strong>.
     </td>
     </tr>
     <tr>
     <td><strong>Utgåva</strong></td>
-    <td>Om du är i hello testning/development fasen Välj <strong>Developer</strong>. Om du i hello produktionsfasen, använder hello <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=302279">BizTalk-tjänst: utgåvor diagram</a> toodetermine om <strong>Premium</strong>, <strong>Standard</strong>, eller <strong>Basic</strong>är hello rätt val för ditt affärsscenario.
+    <td>Om du är i testnings-/utvecklingsfasen väljer du <strong>Developer</strong>. Om du är i produktionsfasen använder du <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=302279">BizTalk Services: Diagram över utgåvor</a> för att se om <strong>Premium</strong>, <strong>Standard</strong> eller <strong>Basic</strong> är det rätta valet för ditt affärsscenario.
     </td>
     </tr>
     <tr>
     <td><strong>Region</strong></td>
-    <td>Välj hello geografiska region toohost BizTalk Service.</td>
+    <td>Välj ett geografiskt område som värd för din BizTalk-tjänst.</td>
     </tr>
     <tr>
     <td><strong>Domänens URL</strong></td>
-    <td><strong>Valfritt</strong>. Hello domän-URL är som standard <em>YourBizTalkServiceName</em>. biztalk.windows.net. Du kan även ange en anpassad domän. Om din domän till exempel är <em>contoso</em> kan du ange: <br/><br/>
+    <td><strong>Valfritt</strong>. Domän-URL:en är som standard <em>YourBizTalkServiceName</em>.biztalk.windows.net. Du kan även ange en anpassad domän. Om din domän till exempel är <em>contoso</em> kan du ange: <br/><br/>
     <em>MyCompany</em>.contoso.com<br/>
     <em>MyCompanyMyApplication</em>.contoso.com<br/>
     <em>MyApplication</em>.contoso.com<br/>
@@ -67,98 +67,98 @@ Beroende på hello Edition som du väljer, kanske inte alla BizTalk Service-inst
     </td>
     </tr>
     </table>
-Välj hello nästa-pilen.
-5. Ange hello lagring och databasinställningar:  <table border="1">
+Välj pilen NÄSTA.
+5. Ange inställningar för lagring och databas:  <table border="1">
     <tr>
     <td><strong>Övervaka/arkivera lagringskontot</strong></td>
-    <td>Välj ett befintligt lagringskonto eller skapa ett nytt lagringskonto. <br/><br/>Om du skapar ett nytt lagringskonto anger hello <strong>Lagringskontonamnet</strong>.</td>
+    <td>Välj ett befintligt lagringskonto eller skapa ett nytt lagringskonto. <br/><br/>Om du skapar ett nytt lagringskonto anger du <strong>lagringskontonamnet</strong>.</td>
     </tr>
     <tr>
     <td><strong>Spårning av databasen</strong></td>
-    <td>Om du använder en befintlig Azure SQL Database kan den inte användas av en annan BizTalk-tjänst. Du måste hello inloggningsnamnet och lösenordet som angavs när den Azure SQL-databasservern skapades.<br/><br/><strong>Tips</strong> skapa hello spårning databas och övervakning/arkivering storage-konto i hello samma region som hello BizTalk Service.</td>
+    <td>Om du använder en befintlig Azure SQL Database kan den inte användas av en annan BizTalk-tjänst. Du måste ha det inloggningsnamn och lösenord som angavs när Azure SQL Database-servern skapades.<br/><br/><strong>Tips</strong> Skapa spårning av databasen och övervakning/arkivering av lagringskontot i samma region som BizTalk-tjänsten.</td>
     </tr>
     </table>
-Välj hello nästa-pilen.
-6. Ange inställningar för hello:  <table border="1">
+Välj pilen NÄSTA.
+6. Ange inställningar för databasen:  <table border="1">
     <tr>
     <td><strong>Namn</strong></td>
-    <td>Tillgängligt när <strong>skapa en ny SQL Database-instans</strong> väljs i föregående hello-skärmen.
+    <td>Tillgängligt om <strong>Skapa en ny SQL Database-instans</strong> valdes i den föregående skärmbilden.
     <br/><br/>
-Ange en SQL-databas namnet toobe som används av BizTalk Service.</td>
+Ange ett namn för SQL Database som ska användas av din BizTalk-tjänst.</td>
     </tr>
     <tr>
     <td><strong>Server</strong></td>
-    <td>Tillgängligt när <strong>skapa en ny SQL Database-instans</strong> väljs i föregående hello-skärmen.
+    <td>Tillgängligt om <strong>Skapa en ny SQL Database-instans</strong> valdes i den föregående skärmbilden.
     <br/><br/>
 Välj en befintlig SQL Database-server eller skapa en ny SQL Database-server.</td>
     </tr>
     <tr>
     <td><strong>Serverns inloggningsnamn</strong></td>
-    <td>Ange hello inloggningsnamn för användaren.</td>
+    <td>Ange användarnamnet för inloggningen.</td>
     </tr>
     <tr>
     <td><strong>Lösenord för serverinloggning</strong></td>
-    <td>Ange hello inloggningslösenordet.</td>
+    <td>Ange inloggningslösenordet.</td>
     </tr>
     <tr>
     <td><strong>Region</strong></td>
-    <td>Tillgängligt om <strong>Skapa en ny SQL Database-instans</strong> har valts. Välj hello geografiska region toohost SQL-databasen.</td>
+    <td>Tillgängligt om <strong>Skapa en ny SQL Database-instans</strong> har valts. Välj den geografiska region som är värd för din SQL Database.</td>
     </tr>
     </table>
 
-Välj hello markerat toocomplete hello guiden. hello Förloppsikon visas:  
+Klicka på bockmarkeringen för att slutföra guiden. Förloppsikonen visas:  
 ![Förloppsikonen visar när du är klar][ProgressComplete]
 
-När du är färdig har hello Azure BizTalk-tjänst skapats och redo för dina program. hello standardinställningarna är tillräckliga. Om du vill toochange hello standardinställningarna väljer **BIZTALK-tjänst** i hello vänstra navigeringsfönstret och välj sedan BizTalk Service. Ytterligare inställningar visas i hello [instrumentpanelen, övervaka och skala flikar](biztalk-dashboard-monitor-scale-tabs.md) hello överst.
+När du är klar har Azure BizTalk-tjänsten skapats och är redo för dina program. Standardinställningarna är tillräckliga. Om du vill ändra standardinställningarna väljer du **BIZTALK SERVICES** i den vänstra navigeringsrutan och sedan din BizTalk-tjänst. Ytterligare inställningar visas på [flikarna Instrumentpanel, Övervakare och Skalning](biztalk-dashboard-monitor-scale-tabs.md) överst.
 
-Beroende på hello tillståndet för hello BizTalk Service finns det vissa åtgärder inte kan slutföras. En lista över de här åtgärderna gå för[BizTalk tjänster tillstånd diagram](biztalk-service-state-chart.md).
+Det finns vissa åtgärder som inte går att slutföra beroende på status för BizTalk-tjänsten. En lista över dessa åtgärder finns i [Statusdiagram för BizTalk Services](biztalk-service-state-chart.md).
 
 ## <a name="post-provisioning-steps"></a>Steg efter etableringen
-* [Installera hello certifikat på en lokal dator](#InstallCert)
+* [Installera certifikatet på en lokal dator](#InstallCert)
 * [Lägg till ett produktionsklart certifikat](#AddCert)
-* [Hämta hello åtkomstkontroll namnområde](#ACS)
+* [Hämta namnområdet Access Control](#ACS)
 
-#### <a name="InstallCert"></a>Installera hello certifikat på en lokal dator
-Som en del av etableringen av BizTalk-tjänsten skapas ett självsignerat certifikat som associeras med prenumerationen på BizTalk-tjänsten. Du måste hämta det här certifikatet och installera den på datorer där du distribuerar BizTalk Service program eller skicka meddelanden tooa BizTalk Service slutpunkt.
+#### <a name="InstallCert"></a>Installera certifikatet på en lokal dator
+Som en del av etableringen av BizTalk-tjänsten skapas ett självsignerat certifikat som associeras med prenumerationen på BizTalk-tjänsten. Du måste hämta certifikatet och installera det på de datorer som du antingen distribuerar BizTalk-tjänstprogram eller skickar meddelanden till en BizTalk-tjänstslutpunkt ifrån.
 
-1. Logga in toohello [Azure-portalen](http://go.microsoft.com/fwlink/p/?LinkID=213885).
-2. Välj **BIZTALK-tjänst** i hello vänstra navigeringsfönstret och välj sedan din BizTalk Service-prenumeration.
-3. Välj hello **instrumentpanelen** fliken.
+1. Logga in på [Azure-portalen](http://go.microsoft.com/fwlink/p/?LinkID=213885).
+2. Välj **BIZTALK SERVICES** i den vänstra navigeringsrutan och sedan din BizTalk-tjänstprenumeration.
+3. Välj fliken **Instrumentpanel**.
 4. Välj **Hämta SSL-certifikat**:  
    ![Ändra SSL-certifikat][QuickGlance]
-5. Dubbelklicka på hello certifikatet och kör genom hello guiden tooinstall hello certifikat. Kontrollera att du installerar hello certifikatet under hello **betrodda rotcertifikatutfärdare** lagras.
+5. Dubbelklicka på certifikatet och använd guiden för att installera det. Kontrollera att du installerar certifikatet under arkivet **Betrodda rotcertifikatutfärdare**.
 
 #### <a name="AddCert"></a>Lägg till ett produktionsklart certifikat
-hello självsignerat certifikat som skapas automatiskt när du skapar BizTalk-tjänst är avsedd att användas i utvecklingsmiljöer endast. I produktionsscenarier ersätter du det med ett produktionsklart certifikat.
+Det självsignerade certifikat som skapas automatiskt när du skapar BizTalk Services är endast avsett att användas i utvecklingsmiljöer. I produktionsscenarier ersätter du det med ett produktionsklart certifikat.
 
-1. På hello **instrumentpanelen** väljer **uppdatering SSL-certifikat**.
-2. Bläddra tooyour privata SSL-certifikat (*CertificateName*.pfx) som innehåller namnet på din BizTalk Service ange hello lösenord och klicka sedan på hello är markerat.
+1. På fliken **Instrumentpanel** väljer du **Uppdatera SSL-certifikat**.
+2. Bläddra till ditt privata SSL-certifikat (*CertificateName*.pfx) som innehåller namnet på din BizTalk-tjänst, ange lösenordet och klicka sedan på bockmarkeringen.
 
-#### <a name="ACS"></a>Hämta hello åtkomstkontroll namnområde
-1. Logga in toohello [Azure-portalen](http://go.microsoft.com/fwlink/p/?LinkID=213885).
-2. Välj **BIZTALK-tjänst** i hello vänstra navigeringsfönstret och välj sedan BizTalk Service.
-3. Markera i Aktivitetsfältet hello **anslutningsinformationen**:  
+#### <a name="ACS"></a>Hämta namnområdet Access Control
+1. Logga in på [Azure-portalen](http://go.microsoft.com/fwlink/p/?LinkID=213885).
+2. Välj **BIZTALK SERVICES** i den vänstra navigeringsrutan och sedan din BizTalk-tjänst.
+3. I aktivitetsfältet väljer du **Anslutningsinformation**:  
    ![Välj Anslutningsinformation][ACSConnectInfo]
-4. Kopiera hello åtkomstkontroll värden.
+4. Kopiera Access Control-värdena.
 
-När du distribuerar ett BizTalk-tjänstprojekt från Visual Studio anger du detta Access Control-namnområde. hello åtkomstkontroll namnområdet skapas automatiskt för BizTalk Service.
+När du distribuerar ett BizTalk-tjänstprojekt från Visual Studio anger du detta Access Control-namnområde. Access Control-namnområdet skapas automatiskt för din BizTalk-tjänst.
 
-hello åtkomstkontroll värden kan användas med alla program. När Azure BizTalk-tjänst skapas styr åtkomstkontroll namnområdet hello autentisering med BizTalk Service-distributionen. Om du vill toochange hello prenumerationen eller hantera hello namnområde, väljer **ACTIVE DIRECTORY** i hello vänstra navigeringsfönstret och välj sedan namnområdet. hello Aktivitetsfältet listar alternativen.
+Access Control-värden kan användas med alla program. När Azure BizTalk Services har skapats, kontrollerar Access Control-namnområdet autentiseringen med din distribution av BizTalk-tjänsten. Om du vill ändra prenumerationen eller hantera namnområdet väljer du **ACTIVE DIRECTORY** i den vänstra navigeringsrutan och sedan ditt namnområde. Alternativen visas i aktivitetsfältet.
 
-Klicka på **hantera** öppnas hello Access Control-hanteringsportalen. Hej BizTalk Service använder i hello Access Control-hanteringsportalen, **tjänsten identiteter**:  
-![ACS-tjänstidentiteter i hello Access Control Management Portal][ACSServiceIdentities]
+Klicka på **Hantera** för att öppna Access Control-hanteringsportalen. I Access Control-hanteringsportalen använder BizTalk-tjänsten **Tjänstidentiteter**:  
+![ACS-tjänstidentiteter i Access Control-hanteringsportalen][ACSServiceIdentities]
 
-hello tjänstidentiteten för åtkomstkontroll är en uppsättning autentiseringsuppgifter som gör att program eller klienter tooauthenticate direkt med åtkomstkontroll och ta emot en token.
+Tjänstidentiteten för Access Control är en uppsättning autentiseringsuppgifter som tillåter att program eller klienter autentiserar direkt med Access Control och tar emot en token.
 
 > [!IMPORTANT]
-> hello BizTalk Service använder **ägare** för hello standardidentiteten för tjänsten och hello **lösenord** värde. Om du använder hello symmetrisk nyckel värde i stället för hello lösenordsvärdet kan hello följande fel uppstå.<br/><br/>*Kunde inte ansluta toohello Access Control Management Service-kontot med hello angivna autentiseringsuppgifter*
+> BizTalk-tjänsten använder **Ägare** som standardtjänstens identitet och värdet **Lösenord**. Om du använder det symmetriska nyckelvärdet i stället för lösenordet kan följande fel uppstå.<br/><br/>*Det gick inte att ansluta till hanteringstjänstkontot för Access Control med de angivna autentiseringsuppgifterna*
 > 
 > 
 
 I [Hantera ditt ACS-namnområde](https://msdn.microsoft.com/library/azure/hh674478.aspx) visas några riktlinjer och rekommendationer.
 
 ## <a name="requirements-explained"></a>Kraven beskrivs
-Dessa krav gäller inte toohello Free Edition.
+Dessa krav gäller inte för Free-utgåvan.
 
 <table border="1">
 <tr bgcolor="FAF9F9">
@@ -167,48 +167,48 @@ Dessa krav gäller inte toohello Free Edition.
 </tr>
 <tr>
 <td>Azure-prenumeration</td>
-<td>hello prenumerationen anger vem som kan logga in toohello Azure-portalen. Hej kontoinnehavarens medgivande skapar hello prenumeration på <a HREF="https://account.windowsazure.com/Subscriptions"> Azure-prenumerationer</a>.
+<td>Prenumerationen styr vem som kan logga in på Azure-portalen. Kontoinnehavaren skapar prenumerationen i <a HREF="https://account.windowsazure.com/Subscriptions"> Azure-prenumerationer</a>.
 <br/><br/>
-hello Azure-konto kan ha flera prenumerationer och kan hanteras av vem som helst som är tillåtet. Till exempel Azure-konto-innehavaren skapas en prenumeration med namnet <em>BizTalkServiceSubscription</em> och ger hello BizTalk-administratörer inom företaget (till exempel ContosoBTSAdmins@live.com) åtkomst till toothis prenumeration. I det här scenariot hello BizTalk-administratörer för att logga in toohello Azure-portalen och har fullständig administratör rättigheter tooall hello värdbaserade tjänster i hello-prenumeration, inklusive Azure BizTalk-tjänst. hello BizTalk-administratörer inte hello Azure-konto innehavare och har därför inte åtkomst tooany faktureringsinformation.
+Azure-kontot kan ha flera prenumerationer och kan hanteras av vem som helst som är behörig. Till exempel kan din Azure-kontoinnehavare skapa en prenumeration med namnet <em>BizTalkServiceSubscription</em> och ge BizTalk-administratörerna i företaget (till exempel ContosoBTSAdmins@live.com) åtkomst till prenumerationen. I det här scenariot loggar BizTalk-administratörerna in på Azure-portalen och har fullständiga administratörsbehörigheter till alla värdtjänster i prenumerationen, inklusive Azure BizTalk Services. BizTalk-administratörerna är inte Azure-kontoinnehavare och har därför inte tillgång till någon faktureringsinformation.
 <br/><br/>
-<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=267577">Hantera prenumerationer och Storage-konton i hello Azure-portalen</a> innehåller mer information.
+<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=267577"> Hantera prenumerationer och lagringskonton i Azure-portalen</a> innehåller mer information.
 </td>
 </tr>
 <tr>
 <td>Azure SQL Database</td>
-<td>Lagrar hello tabeller, vyer och lagrade procedurer som används av hello BizTalk Service, inklusive hello spårningsdata.
+<td>Lagrar tabeller, vyer och sparade procedurer som används av BizTalk-tjänsten, inklusive spårning av data.
 <br/><br/>
 Du kan använda en befintlig Azure SQL Server, Azure SQL Database eller automatiskt skapa en ny server eller databas när du skapar en BizTalk-tjänst.
 <br/><br/>
-hello SQL Database skala konfigureras automatiskt. Normalt är hello standard skala tillräcklig för en BizTalk Service. Ändra hello skala påverkar priser. Se <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=234930"> Konton och fakturering i Azure SQL Database</a>
+SQL Database-skalan konfigureras automatiskt. Vanligtvis räcker standardskalan för en BizTalk-tjänst. Om du ändrar skalan påverkas prissättningen. Se <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=234930"> Konton och fakturering i Azure SQL Database</a>
 <br/><br/>
 <strong>Anteckningar</strong>
 <br/>
 <ul>
-<li> När du skapar en ny Azure SQL Server och databas, aktiveras automatiskt Azure-tjänsterna. hello BizTalk Service kräver Azure Services aktiveras.</li>
-<li>Om du skapar en ny Azure SQL-databas på en befintlig Azure SQL Server hello brandväggsregler i hello Server inte ändras. Det är därför möjligt andra Azure-tjänster inte är tillåtna åtkomst toohello Server-databaser.</li>
+<li> När du skapar en ny Azure SQL Server och databas, aktiveras automatiskt Azure-tjänsterna. BizTalk-tjänsten kräver att Azure-tjänster är aktiverade.</li>
+<li>Om du skapar en ny Azure SQL Database på en befintlig Azure SQL Server ändras inte brandväggsreglerna för servern. Det kan därför hända att andra Azure-tjänster inte har åtkomst till den serverns databaser.</li>
 </ul>
 </td>
 </tr>
 <tr>
 <td>Namnområdet Azure Access Control</td>
-<td>Autentiserar med Azure BizTalk Services. När du distribuerar ett BizTalk-tjänstprojekt från Visual Studio anger du detta Access Control-namnområde. När du skapar en BizTalk Service skapas automatiskt hello åtkomstkontroll namnområde.</td>
+<td>Autentiserar med Azure BizTalk Services. När du distribuerar ett BizTalk-tjänstprojekt från Visual Studio anger du detta Access Control-namnområde. När du skapar en BizTalk-tjänst skapas automatiskt Access Control-namnområdet.</td>
 </tr>
 
 <tr>
 <td>Azure-lagringskonto</td>
-<td>Ger åtkomst till tootables, blobbar och köer som används av din BizTalk Service toosave hello följande:
+<td>Ger åtkomst till tabeller, blobbar och köer som används av din BizTalk-tjänst för att spara följande:
 
 <ul>
-<li>Loggfiler för att övervaka hello BizTalk Service. hello övervakning utdata visas även i hello **övervakning** fliken i hello Azure-portalen.</li>
-<li>När du skapar en X12 eller AS2-avtal mellan partner kan aktivera du hello arkivering funktionen toostore meddelandeegenskaper. Informationen sparas i hello Storage-konto.</li>
+<li>Loggfiler som övervakar BizTalk-tjänsten. Övervakningens utdata visas även på fliken **Övervakning** i Azure-portalen.</li>
+<li>När du skapar ett X12- eller AS2-avtal mellan partners kan du aktivera arkiveringsfunktionen för att lagra meddelandeegenskaper. Informationen sparas i lagringskontot.</li>
 </ul>
 <br/>
 När du skapar en BizTalk-tjänst kan du använda ett befintligt lagringskonto eller automatiskt skapa ett nytt lagringskonto.
 <br/><br/>
-hello standardinställningarna för lagring är tillräckliga för en BizTalk Service.
+Vanligtvis är standardinställningarna för lagring tillräckliga för en BizTalk-tjänst.
 <br/><br/>
-När du skapar ett lagringskonto skapas automatiskt en primär nyckel och en sekundär nyckel. De här nycklarna styra åtkomst tooyour Storage-konto. hello BizTalk Service används automatiskt hello primärnyckel.
+När du skapar ett lagringskonto skapas automatiskt en primär nyckel och en sekundär nyckel. De här nycklarna styr åtkomsten till ditt lagringskonto. BizTalk-tjänsten använder automatiskt den primära nyckeln.
 <br/><br/>
 Se <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=285671"> Lagring</a> för mer information.
 </td>
@@ -217,42 +217,42 @@ Se <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=285671"> Lagring</a> för m
 <tr>
 <td>Privata SSL-certifikat</td>
 <td>
-När en Azure BizTalk-tjänst skapas, skapas också en HTTPS-URL som innehåller namnet på din BizTalk-tjänst. Den här URL: en är automatiskt konfigurerade toouse ett självsignerat certifikat endast för utveckling. För produktion behöver du ett privat SSL-certifikat.
+När en Azure BizTalk-tjänst skapas, skapas också en HTTPS-URL som innehåller namnet på din BizTalk-tjänst. URL:en konfigureras automatiskt till att använda ett självsignerat certifikat som endast gäller utveckling. För produktion behöver du ett privat SSL-certifikat.
 <br/><br/>
 <strong>Viktig SSL-certifikatsinformation</strong>
 
 <ul>
-<li>hello certifikatets förfallodatum måste vara mindre än 5 år.</li>
+<li>Certifikatets förfallodatum måste infalla inom 5 år.</li>
 <li>Alla privata certifikat kräver ett lösenord. Kom ihåg lösenordet och dela det med dina administratörer.</li>
-<li>Självsignerade certifikat används i test-/utvecklingsmiljöer. När du använder självsignerade certifikat, importera hello certifikatarkivet tooyour personliga certifikat och hello certifikatarkivet för betrodda rotcertifikatutfärdare.</li>
+<li>Självsignerade certifikat används i test-/utvecklingsmiljöer. När du använder självsignerade certifikat måste du importera certifikatet till det personliga certifikatarkivet och till certifikatarkivet Betrodda rotcertifikatutfärdare.</li>
 </ul>
-<br/>När du skickar hello produktion certifikat begäran tooyour certifikatutfärdare kan ge hello följande egenskaper för certifikat:
+<br/>När du skickar en begäran om produktionscertifikat till certifikatutfärdaren anger du följande egenskaper för certifikatet:
 <br/>
 
 <ul>
 <li><strong>Förbättrad nyckelanvändning</strong>: Azure BizTalk Services kräver minst serverautentisering.</li>
-<li><strong>Eget namn</strong>: Ange hello fullständigt kvalificerade domännamnet (FQDN) för Azure BizTalk-tjänst-URL. Se <a HREF="#CreateService">Skapa en BizTalk-tjänst</a> i den här artikeln.</li>
+<li><strong>Nätverksnamn</strong>: Ange det fullständiga domännamnet (FQDN) för Azure BizTalk-tjänstens URL. Se <a HREF="#CreateService">Skapa en BizTalk-tjänst</a> i den här artikeln.</li>
 </ul>
 <br/>
-Ett nytt eller annat certifikat kan läggas till efter hello BizTalk Service skapas.
+Ett nytt eller annat certifikat kan läggas till när BizTalk-tjänsten har skapats.
 </td>
 </tr>
 </table>
-<!---Loc Comment: Please, check link [Create a BizTalk Service] since it is not redirecting tooany location.--->
+<!---Loc Comment: Please, check link [Create a BizTalk Service] since it is not redirecting to any location.--->
 
 
 
 ## <a name="hybrid-connections"></a>Hybridanslutningar
-När du skapar ett Azure BizTalk-tjänst hello **Hybridanslutningar** är tillgänglig:
+När du skapar en Azure BizTalk-tjänst är fliken **Hybridanslutningar** tillgänglig:
 
 ![Fliken Hybridanslutningar][HybridConnectionTab]
 
-Hybridanslutningar har använt tooconnect en Azure-webbplats eller Azure-mobiltjänsten tooany lokala resursen som använder en statisk TCP-port, till exempel SQL Server, MySQL, http-webb-API: er, Mobile Services och de flesta anpassade webbtjänster.  Hybridanslutningar och hello BizTalk-tjänst för nätverkskort är olika. hello BizTalk-tjänst för nätverkskort är används tooconnect Azure BizTalk-tjänst tooan lokalt rad Affärsappar (LOB).
+Hybridanslutningar används för att ansluta en Azure-webbplats eller mobil Azure-tjänst till alla lokala resurser som använder en statisk TCP-port, ex.vis SQL Server, MySQL, HTTP-webb-API:er, Mobile Services och de flesta anpassade webbtjänster.  Hybridanslutningar och BizTalk Adapter-tjänsten skiljer sig åt. BizTalk Adapter-tjänsten använder Azure BizTalk Services för att ansluta till ett lokalt LOB-system (Line of Business).
 
- Se [Hybridanslutningar](integration-hybrid-connection-overview.md) toolearn mer, inklusive att skapa och hantera Hybridanslutningar.
+ Se [Hybridanslutningar](integration-hybrid-connection-overview.md) för mer information, inklusive att skapa och hantera hybridanslutningar.
 
 ## <a name="next-steps"></a>Nästa steg
-En BizTalk Service är skapat kan du bekanta dig med olika hello [BizTalk-tjänst: instrumentpanelen, övervaka och skala flikar](biztalk-dashboard-monitor-scale-tabs.md). Din BizTalk-tjänst är redo för dina program. för att skapa program, gå toostart[Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=235197).
+Nu när en BizTalk-tjänst har skapats kan du bekanta dig med [BizTalk Services: Flikarna Instrumentpanel, Övervakare och Skalning](biztalk-dashboard-monitor-scale-tabs.md). Din BizTalk-tjänst är redo för dina program. Om du vill börja skapa program går du till [Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=235197).
 
 ## <a name="see-also"></a>Se även
 * [BizTalk Services: Diagram över utgåvor](biztalk-editions-feature-chart.md)<br/>
@@ -260,7 +260,7 @@ En BizTalk Service är skapat kan du bekanta dig med olika hello [BizTalk-tjäns
 * [BizTalk Services: Säkerhetskopiering och återställning](biztalk-backup-restore.md)<br/>
 * [BizTalk Services: Begränsning](biztalk-throttling-thresholds.md)<br/>
 * [BizTalk Services: Utfärdarens namn och nyckel](biztalk-issuer-name-issuer-key.md)<br/>
-* [Hur jag börja använda hello Azure BizTalk Services SDK](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
+* [Hur gör jag för att börja använda Azure BizTalk Services SDK?](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
 * [Hybridanslutningar](integration-hybrid-connection-overview.md)
 
 [NewBizTalkService]: ./media/biztalk-provision-services/WABS_NewBizTalkService.png

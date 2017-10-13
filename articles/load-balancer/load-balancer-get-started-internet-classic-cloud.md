@@ -1,9 +1,9 @@
 ---
-title: "aaaCreate en Internetriktade belastningsutjämnare för Azure-molntjänster | Microsoft Docs"
-description: "Lär dig hur toocreate Internet-riktade belastningsutjämnare i klassiska distributionsmodellen för molntjänster"
+title: "Skapa en Internetaktiverad belastningsutjämnare för Azure-molntjänster | Microsoft Docs"
+description: "Lär dig hur du skapar en Internetuppkopplad belastningsutjämnare i den klassiska distributionsmodellen för molntjänster"
 services: load-balancer
 documentationcenter: na
-author: kumudd
+author: KumudD
 manager: timlt
 tags: azure-service-management
 ms.assetid: 0bb16f96-56a6-429f-88f5-0de2d0136756
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: kumud
-ms.openlocfilehash: d93cf76d417cbfc744cf07ba48c43a63cc14df69
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 52824d5c39bb821351650584c33f70e2e84749cb
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-creating-an-internet-facing-load-balancer-for-cloud-services"></a>Komma igång med att skapa en Internetuppkopplad belastningsutjämnare för molntjänster
 
@@ -31,17 +31,17 @@ ms.lasthandoff: 10/06/2017
 [!INCLUDE [load-balancer-get-started-internet-intro-include.md](../../includes/load-balancer-get-started-internet-intro-include.md)]
 
 > [!IMPORTANT]
-> Innan du börjar arbeta med Azure-resurser, är det viktigt toounderstand att Azure har två distributionsmodeller: Azure Resource Manager och klassisk. Se till att du förstår [distributionsmodeller och verktyg](../azure-classic-rm.md) innan du börjar arbeta med Azure-resurser. Du kan visa hello dokumentationen för olika verktyg genom att klicka på flikarna hello hello överst i den här artikeln. Den här artikeln beskriver hello klassiska distributionsmodellen. Du kan också [Lär dig hur toocreate Internet-riktade belastningsutjämnaren med Azure Resource Manager](load-balancer-get-started-internet-arm-ps.md).
+> Innan du börjar arbeta med Azure-resurser är det viktigt att du vet att Azure för närvarande har två distributionsmodeller: Azure Resource Manager och klassisk. Se till att du förstår [distributionsmodeller och verktyg](../azure-classic-rm.md) innan du börjar arbeta med Azure-resurser. Du kan granska dokumentationen för olika verktyg genom att klicka på flikarna överst i den här artikeln. Den här artikeln beskriver hur du gör om du använder den klassiska distributionsmodellen. Du kan också läsa artikeln om [hur du skapar en Internetuppkopplad belastningsutjämnare med hjälp av Azure Resource Manager](load-balancer-get-started-internet-arm-ps.md).
 
-Molntjänster konfigureras automatiskt med en belastningsutjämnare och kan anpassas via hello modell.
+Molntjänster konfigureras automatiskt med en belastningsutjämnare och kan anpassas via tjänstmodellen.
 
-## <a name="create-a-load-balancer-using-hello-service-definition-file"></a>Skapa en belastningsutjämnare med hello tjänstdefinitionsfilen
+## <a name="create-a-load-balancer-using-the-service-definition-file"></a>Skapa en belastningsutjämnare med hjälp av tjänstdefinitionsfilen
 
-Du kan utnyttja hello Azure SDK för .NET 2,5 tooupdate Molntjänsten. Slutpunktsinställningar för molntjänster görs i hello [service definition](https://msdn.microsoft.com/library/azure/gg557553.aspx) .csdef-filen.
+Du kan uppdatera dina molntjänster med hjälp av Azure SDK för .NET 2.5. Slutpunktsinställningarna för molntjänster görs i .csdef-[tjänstdefinitionsfilen](https://msdn.microsoft.com/library/azure/gg557553.aspx).
 
-hello följande exempel visas hur en servicedefinition.csdef-fil för en distribution konfigureras:
+Följande exempel visar hur en .csdef-tjänstdefinitionsfil för en molndistribution konfigureras:
 
-Kontrollerar hello fragment för hello .csdef-filen som genererats av en molndistribution visas hello extern slutpunkt som konfigurerats toouse portar HTTP på port 10000 10001 och 10002.
+Genom att granska kodfragmentet för .csdef-filen som genereras av en molndistribution kan du se att den externa slutpunkten har konfigurerats att använda HTTP på port 10000, 10001 och 10002.
 
 ```xml
 <ServiceDefinition name=“Tenant“>
@@ -66,7 +66,7 @@ Kontrollerar hello fragment för hello .csdef-filen som genererats av en molndis
 
 ## <a name="check-load-balancer-health-status-for-cloud-services"></a>Kontrollera hälsostatusen för belastningsutjämnaren för molntjänster
 
-hello följande är ett exempel på en hälsoavsökningen:
+Följande är ett exempel på en hälsoavsökning:
 
 ```xml
 <LoadBalancerProbes>
@@ -74,13 +74,13 @@ hello följande är ett exempel på en hälsoavsökningen:
 </LoadBalancerProbes>
 ```
 
-hello belastningsutjämnaren kombinerar hello information hello slutpunkt och hello av hello avsökningen toocreate en URL i formatet hello `http://{DIP of VM}:80/Probe.aspx` som kan vara används tooquery hello hälsotillståndet för hello-tjänsten.
+Belastningsutjämnaren kombinerar informationen om slutpunkten och informationen om avsökningen för att skapa en URL i formatet `http://{DIP of VM}:80/Probe.aspx` som kan användas för att köra frågor relaterade till tjänstens hälsotillstånd.
 
-hello-tjänsten identifierar regelbundna avsökningar från hello samma IP-adress. Detta är hello hälsa avsökningen begäran kommer från hello värden för hello nod där hello virtuella datorn körs. hello-tjänsten har toorespond med statuskod 200 HTTP för hello belastningen belastningsutjämnaren tooassume att hello-tjänsten är felfri. HTTP-status kod (till exempel 503) direkt tar hello virtuella datorn från rotation.
+Tjänsten identifierar regelbundna avsökningar från samma IP-adress. Den här är hälsoavsökningsbegäran kommer från värden för noden där den virtuella datorn körs. Tjänsten måste svara med en HTTP 200-statuskod för att belastningsutjämnaren ska tolka tjänstens hälsostatus som felfri. Vid andra HTTP-statuskoder (till exempel 503) tas den virtuella datorn direkt bort från roteringen.
 
-hello avsökningen definition kontrollerar även hello frekvensen av hello avsökning. I vårt fall hello belastningsutjämnaren avsökning hello endpoint var 5 sekunder. Om inget positivt svar har tagits emot för 10 sekunder (två avsökningen intervall), hello avsökningen antas ned och hello virtuell dator tas bort från rotationen. På liknande sätt, om hello tjänsten ligger utanför rotation och ett positivt svar tas emot, hello service återgår toorotation direkt. Om hello-tjänsten fluktuerar mellan felfritt och feltillstånd, bestämma hello belastningsutjämnaren toodelay hello ny införandet av hello service tillbaka toorotation tills det är felfri för ett antal avsökningar.
+Avsökningsdefinitionen kontrollerar även avsökningsfrekvensen. I exemplet ovan avsöker belastningsutjämnaren slutpunkten var femte sekund. Om inget positivt svar tas emot inom tio sekunder (två avsökningsintervall) tolkas det som att avsökningen misslyckades och den virtuella datorn tas bort från roteringen. På motsvarande sätt, om tjänsten inte ingår i roteringen och ett positivt svar tas emot, så läggs tjänsten genast till i roteringen igen. Om tjänsten växlar mellan felfritt och icke felfritt tillstånd kan belastningsutjämnaren besluta att vänta med att föra in tjänsten i roteringen igen tills den har varit felfri under ett visst antal avsökningar.
 
-Kontrollera hello service definition schemat för hello [hälsoavsökningen](https://msdn.microsoft.com/library/azure/jj151530.aspx) för mer information.
+Kontrollera tjänstdefinitionsschemat för [hälsotillståndsavsökning](https://msdn.microsoft.com/library/azure/jj151530.aspx) om du vill ha mer information.
 
 ## <a name="next-steps"></a>Nästa steg
 

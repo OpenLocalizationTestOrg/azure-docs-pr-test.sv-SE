@@ -1,6 +1,6 @@
 ---
-title: "aaaGet igång med Azure Cloud Services och ASP.NET | Microsoft Docs"
-description: "Lär dig hur toocreate en flernivåapp med ASP.NET MVC och Azure. hello appen körs i en molntjänst med webbroll och en arbetsroll. Appen använder Entity Framework, SQL Database och Azure Storage-köer och -blobbar."
+title: "Kom igång med Azure Cloud Services och ASP.NET | Microsoft Docs"
+description: "Lär dig hur du kan skapa en app för flera nivåer med ASP.NET MVC och Azure. Appen körs i en molntjänst med en webbroll och en arbetsroll. Appen använder Entity Framework, SQL Database och Azure Storage-köer och -blobbar."
 services: cloud-services, storage
 documentationcenter: .net
 author: Thraka
@@ -14,187 +14,187 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 05/15/2017
 ms.author: adegeo
-ms.openlocfilehash: 86271c29b79fad3f01f8ea0e88fd00c7aefc970c
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: bb5897a392e500de685421769c414441ddfeb6a3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Kom igång med Azure Cloud Services och ASP.NET
 
 ## <a name="overview"></a>Översikt
-Den här kursen visar hur toocreate en .NET-flernivåapp med en ASP.NET MVC frontend, och distribuerar den tooan [Azure-molntjänst](cloud-services-choose-me.md). Hej program använder [Azure SQL Database](http://msdn.microsoft.com/library/azure/ee336279), hello [Azure Blob-tjänsten](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage), och hello [Azure-kötjänsten](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern). Du kan [hämta hello Visual Studio-projekt](http://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4) från hello MSDN Code Gallery.
+Under den här kursen får du lära dig hur du skapar ett .NET-program på flera nivåer med en ASP.NET MVC-klientdel, samt att distribuera det till en [Azure-molntjänst](cloud-services-choose-me.md). Programmet använder [Azure SQL Database](http://msdn.microsoft.com/library/azure/ee336279), [Azure Blob-tjänsten](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage) och [Azure-kötjänsten](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern). Du kan [hämta Visual Studio-projektet](http://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4) från MSDN Code Gallery.
 
-hello kursen visar hur toobuild och kör hello programmet lokalt, hur toodeploy den tooAzure och kör i hello molnet, och hur toobuild det från grunden. Du kan börja med att skapa från grunden och sedan hello test och distributionsstegen efteråt om du föredrar.
+Under kursen får du lära dig hur du skapar och kör programmet lokalt, hur du distribuerar det till Azure och kör det i molnet, och hur du skapar det från grunden. Du kan börja med att skapa från grunden och sedan göra test- och distributionsstegen efteråt om du föredrar det.
 
 ## <a name="contoso-ads-application"></a>Contoso Ads-program
-hello program är en anslagstavla för annonser. Användare skapar en annons genom att skriva in text och ladda upp en bild. De kan se en lista över annonser med miniatyrbilder och de kan se hello bilden i full storlek när de väljer ett ad toosee hello information.
+Programmet är en anslagstavla för annonser. Användare skapar en annons genom att skriva in text och ladda upp en bild. De kan se en lista över annonser med miniatyrbilder, och de kan se bilden i full storlek när de markerar en annons för att se detaljerna.
 
 ![Annonslista](./media/cloud-services-dotnet-get-started/list.png)
 
-hello programmet använder hello [köcentriska mönster](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern) toooff belastningen hello processorintensiva arbetet med att skapa miniatyrbilder tooa backend-processen.
+Programmet använder det [köcentriska arbetsmönstret](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern) för att avlasta det processorintensiva arbetet med att skapa miniatyrbilder till en serverdelsprocess.
 
 ## <a name="alternative-architecture-websites-and-webjobs"></a>Alternativ arkitektur: Websites och WebJobs
-Den här kursen visar hur toorun både frontend och backend i ett Azure cloud service. Ett alternativ är toorun hello klientdelen i en [Azure-webbplatsen](/services/web-sites/) och använda hello [WebJobs](http://go.microsoft.com/fwlink/?LinkId=390226) funktionen (för närvarande under förhandsgranskning) för hello serverdel. En självstudiekurs som använder WebJobs finns [Kom igång med hello Azure WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk-get-started.md). För information om hur toochoose hello tjänster som bäst passar din situation, se [jämförelse mellan Azure Websites, Cloud Services och virtuella datorer](../app-service-web/choose-web-site-cloud-service-vm.md).
+Under den här kursen får du lära dig hur du kör både klient- och serverdelen i en Azure-molntjänst. Ett alternativ är att köra klientdelen i en [Azure-webbplats](/services/web-sites/) och använda [WebJobs](http://go.microsoft.com/fwlink/?LinkId=390226)-funktionen (för närvarande i förhandsversion) som serverdel. Om du vill följa en kurs som använder WebJobs går du till [Kom igång med Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki). Mer information om hur du väljer de tjänster som bäst passar din situation finns i [Jämförelse mellan Azure Websites, Cloud Services och Virtual Machines](../app-service/choose-web-site-cloud-service-vm.md).
 
-## <a name="what-youll-learn"></a>Detta får du får lära dig
-* Hur tooenable datorn för Azure-utveckling genom att installera hello Azure SDK.
-* Hur toocreate Visual Studio cloud service-projekt med en ASP.NET MVC-webbroll och en arbetsroll.
-* Hur hello tootest molntjänstprojektet lokalt med hjälp av hello Azure storage-emulatorn.
-* Hur toopublish hello molnet projektet tooan Azure cloud service och testa med Azure storage-konto.
-* Hur tooupload filer och lagrar dem i hello Azure Blob-tjänsten.
-* Hur toouse hello Azure-Kötjänsten för kommunikation mellan nivåerna.
+## <a name="what-youll-learn"></a>Det här får du lära du dig
+* Hur du aktiverar datorn för Azure-utveckling genom att installera Azure SDK.
+* Hur du skapar ett Visual Studio-molntjänstprojekt med en ASP.NET MVC-webbroll och en arbetsroll.
+* Hur du testar molntjänstprojektet lokalt med hjälp av Azure-lagringsemulatorn.
+* Hur du publicerar molnprojektet på en Azure-molntjänst och testar det med ett Azure-lagringskonto.
+* Hur du laddar upp filer och lagrar dem i Azure Blob-tjänsten.
+* Hur du använder Azure-kötjänsten för kommunikation mellan nivåer.
 
 ## <a name="prerequisites"></a>Krav
-hello kursen förutsätter att du förstår [grundläggande koncept om Azure-molntjänster](cloud-services-choose-me.md) som *webbroll* och *arbetsrollen* terminologi.  Det förutsätts även att du vet hur toowork med [ASP.NET MVC](http://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started) eller [Web Forms](http://www.asp.net/web-forms/tutorials/aspnet-45/getting-started-with-aspnet-45-web-forms/introduction-and-overview) projekt i Visual Studio. hello exempelprogrammet använder MVC, men de flesta av hello kursen gäller också tooWeb formulär.
+Kursen förutsätter att du förstår [grundläggande koncept om Azure-molntjänster](cloud-services-choose-me.md), t.ex. termerna *webbroll* och *arbetsroll*.  Det förutsätts även att du kan använda [ASP.NET MVC](http://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started)- eller [Web Forms](http://www.asp.net/web-forms/tutorials/aspnet-45/getting-started-with-aspnet-45-web-forms/introduction-and-overview)-projekt i Visual Studio. Exempelprogrammet använder MVC, men större delen av kursen gäller också Web Forms.
 
-Du kan köra hello appen lokalt utan en Azure-prenumeration, men du behöver ett toodeploy hello programmet toohello moln. Om du inte har ett konto kan du [aktivera MSDN-prenumerantförmåner](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A55E3C668) eller [registrera dig för en kostnadsfri utvärderingsversion](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A55E3C668).
+Du kan köra appen lokalt utan en Azure-prenumeration, men du behöver en prenumeration för att kunna distribuera programmet i molnet. Om du inte har ett konto kan du [aktivera MSDN-prenumerantförmåner](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A55E3C668) eller [registrera dig för en kostnadsfri utvärderingsversion](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A55E3C668).
 
-hello självstudiekursen instruktioner fungerar med antingen hello följande produkter:
+Anvisningarna i kursen gäller båda följande produkter:
 
 * Visual Studio 2013
 * Visual Studio 2015
 * Visual Studio 2017
 
-Om du inte har någon av dessa, kan Visual Studio installeras automatiskt när du installerar hello Azure SDK.
+Om du inte har någon av dessa kan Visual Studio installeras automatiskt när du installerar Azure SDK.
 
 ## <a name="application-architecture"></a>Programarkitektur
-hello appen lagrar annonser i en SQL-databas med hjälp av Entity Framework Code First toocreate hello tabellerna och komma åt hello data. För varje ad hello hello databasen lagrar två URL: er, en för bilden och en för hello miniatyr.
+Appen lagrar annonser i en SQL-databas och använder Entity Framework Code First för att skapa tabellerna och komma åt data. Databasen lagrar två URL:er för varje annons, en för bilden i full storlek och en för miniatyrbilden.
 
 ![Annonstabell](./media/cloud-services-dotnet-get-started/adtable.png)
 
-När en användare laddar upp en bild, hello klientdelen som körs i en webbroll lagrar hello bilden i en [Azure blob](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage), och den lagrar Hej ad i hello-databas med en URL som pekar toohello blob. AT hello samma time, skriver den ett meddelande tooan Azure kön. En serverdelsprocess som körs i en arbetsroll regelbundet avsöker hello kön efter nya meddelanden. När ett nytt meddelande visas hello arbetsrollen skapar en miniatyrbild för den bilden och uppdateringar hello miniatyrbildens URL-databasfält för den annonsen. hello följande diagram visar hur hello delar av programmet hello samverkar.
+När en användare laddar upp en bild, lagrar klientdelen som körs i en webbroll bilden i en [Azure-blob](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage), och den lagrar annonsinformationen i databasen med en URL som pekar på blobben. Samtidigt skriver den ett meddelande till en Azure-kö. En serverdelsprocess som körs i en arbetsroll söker regelbundet i kön efter nya meddelanden. När ett nytt meddelande dyker upp, skapar arbetsrollen en miniatyrbild för den bilden och uppdaterar miniatyrbildens URL-databasfält för den annonsen. I följande diagram visas hur programmets olika delar fungerar tillsammans.
 
 ![Contoso Ads-arkitektur](./media/cloud-services-dotnet-get-started/apparchitecture.png)
 
 [!INCLUDE [install-sdk](../../includes/install-sdk-2017-2015-2013.md)]
 
-## <a name="download-and-run-hello-completed-solution"></a>Hämta och kör hello färdiga lösningen
-1. Hämta och packa upp hello [färdiga lösningen](http://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4).
+## <a name="download-and-run-the-completed-solution"></a>Hämta och köra den färdiga lösningen
+1. Hämta och packa upp den [färdiga lösningen](http://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4).
 2. Starta Visual Studio.
-3. Från hello **filen** väljer du menyn **Open Project**, navigera toowhere som du hämtade hello lösningen och öppna sedan lösningsfilen hello.
-4. Tryck på CTRL + SKIFT + B toobuild hello lösning.
+3. Gå till **File** (Arkiv-menyn) och välj **Open project** (Öppna projekt), navigera till platsen där du sparade den hämtade lösningen och öppna sedan lösningsfilen.
+4. Tryck på CTRL+SKIFT+B för att skapa lösningen.
 
-    Som standard återställer Visual Studio automatiskt hello NuGet-paketinnehållet som inte ingick i hello *.zip* fil. Om inte Återställ hello paket installera dem manuellt genom att gå toohello **hantera NuGet-paket för lösningen** dialogrutan och klicka på hello **återställa** längst hello uppe till höger.
-5. I **Solution Explorer**, se till att **ContosoAdsCloudService** är markerad som hello Startprojekt.
-6. Om du använder Visual Studio 2015 eller högre, ändrar hello SQL Server-anslutningssträngen i programmet hello *Web.config* filen hello ContosoAdsWeb-projektet och i hello *ServiceConfiguration.Local.cscfg* -filen för hello ContosoAdsCloudService-projektet. I båda fallen kan du ändra ”(localdb) \v11.0” för ”(localdb) \MSSQLLocalDB”.
-7. Tryck på CTRL + F5 toorun hello program.
+    Som standard återställer Visual Studio automatiskt NuGet-paketinnehållet som inte ingick i *.zip*-filen. Om paketinnehållet inte återställs kan du installera det manuellt genom att öppna dialogrutan **Manage NuGet Packages for Solution** (Hantera NuGet-paket för lösningen) och klicka på knappen **Restore** (Återställ) högst upp till höger.
+5. I **Solution Explorer** ska du kontrollera att **ContosoAdsCloudService** har markerats som startprojekt.
+6. Om du använder Visual Studio 2015 eller högre, ska du ändra SQL Server-anslutningssträngen i filen *Web.config* i ContosoAdsWeb-projektet samt i filen *ServiceConfiguration.Local.cscfg* i ContosoAdsCloudService-projektet. I båda fallen ska du ändra ”(localdb)\v11.0” till ”(localdb)\MSSQLLocalDB”.
+7. Tryck på CTRL+F5 för att köra programmet.
 
-    När du kör ett molntjänstprojekt lokalt anropar Visual Studio automatiskt hello Azure *beräkningsemulatorn* och Azure *lagringsemulatorn*. hello compute emulator använder datorns resurser toosimulate hello webbroll och worker roll-miljöer. hello storage-emulatorn använder en [SQL Server Express LocalDB](http://msdn.microsoft.com/library/hh510202.aspx) databasen toosimulate Azure molnlagring.
+    När du kör ett molntjänstprojekt lokalt anropar Visual Studio automatiskt *beräkningsemulatorn* och *lagringsemulatorn* i Azure. Beräkningsemulatorn använder datorns resurser för att simulera webbrolls- och arbetsrollsmiljöerna. Lagringsemulatorn använder en [SQL Server Express LocalDB](http://msdn.microsoft.com/library/hh510202.aspx)-databas för att simulera Azure-molnlagring.
 
-    hello tar första gången du kör ett molntjänstprojekt en minut för hello emulatorerna toostart upp. När emulatorerna har startats öppnas standardwebbläsaren hello toohello programmets startsida.
+    Första gången du kör ett molntjänstprojekt tar det ungefär en minut för emulatorerna att starta. När emulatorerna har startats öppnas standardwebbläsaren med programmets startsida.
 
     ![Contoso Ads-arkitektur](./media/cloud-services-dotnet-get-started/home.png)
 8. Klicka på **Create an Ad** (Skapa en annons).
-9. Ange lite testdata och välj en *.jpg* bild tooupload och klicka sedan på **skapa**.
+9. Ange lite testdata och välj en *.jpg*-bild som ska laddas upp, och klicka sedan på **Create** (Skapa).
 
     ![Sidan Create (Skapa)](./media/cloud-services-dotnet-get-started/create.png)
 
-    hello appen går toohello indexsidan, men den visar inte en miniatyrbild för hello nya annonsen eftersom den bearbetningen inte har utförts än.
-10. Vänta en stund och uppdatera sedan hello Index toosee hello miniatyrbilden.
+    Appen går till indexsidan, men den visar inte en miniatyrbild för den nya annonsen eftersom den bearbetningen inte har utförts än.
+10. Vänta en stund och uppdatera sedan indexsidan om du vill se miniatyrbilden.
 
      ![Sidan Index](./media/cloud-services-dotnet-get-started/list.png)
-11. Klicka på **information** för bilden din ad toosee hello.
+11. Klicka på **Details** (Detaljer) för din annons om du vill se bilden i full storlek.
 
      ![Sidan Details (Detaljer)](./media/cloud-services-dotnet-get-started/details.png)
 
-Du har kört programmet hello helt på din lokala dator utan anslutning toohello moln. Hej lagringsemulatorn lagrar kö hello och blob-data i en SQL Server Express LocalDB-databas och hello programmet lagrar hello ad-data i en annan LocalDB-databas. Entity Framework Code First automatiskt skapade hello ad-databasen hello första gången hello webbappen försökte tooaccess den.
+Du har kört programmet helt på din lokala dator utan anslutning till molnet. Lagringsemulatorn lagrar kö- och blobbdata i en SQL Server Express LocalDB-databas, och programmet lagrar annonsdata i en annan LocalDB-databas. Entity Framework Code First skapade automatiskt annonsdatabasen första gången webbappen försökte få tillgång till den.
 
-I följande avsnitt hello får du konfigurera hello lösning toouse Azure-molnresurser för köer, blobbar och programdatabasen hello när den körs i molnet hello. Om du vill toocontinue toorun lokalt men använda molnet och databasresurser kan du göra det. Det är bara gäller att ställa in anslutningssträngar, som du ser hur toodo.
+I följande avsnitt får du konfigurera lösningen så att den använder Azure-molnresurser för köer, blobbar och programdatabasen när den körs i molnet. Om du vill fortsätta att köra lösningen lokalt men använda molnet och databasresurser kan du göra det. Det är bara att ställa in anslutningssträngar, vilket du får lära dig här.
 
-## <a name="deploy-hello-application-tooazure"></a>Distribuera hello programmet tooAzure
-Gör du hello följande steg toorun hello program i molnet hello:
+## <a name="deploy-the-application-to-azure"></a>Distribuera programmet till Azure
+Följ dessa steg för att köra programmet i molnet:
 
 * Skapa en Azure-molntjänst.
 * Skapa en Azure SQL Database.
 * Skapa ett Azure-lagringskonto.
-* Konfigurera hello lösning toouse Azure SQL database när den körs i Azure.
-* Konfigurera hello lösning toouse Azure storage-konto när den körs i Azure.
-* Distribuera hello projektet tooyour Azure-molntjänst.
+* Konfigurera lösningen så att den använder Azure SQL Database när den körs i Azure.
+* Konfigurera lösningen så att den använder ditt Azure-lagringskonto när den körs i Azure.
+* Distribuera projektet till Azure-molntjänsten.
 
 ### <a name="create-an-azure-cloud-service"></a>Skapa en Azure-molntjänst
-En Azure-molntjänst är hello miljö hello programmet ska köras.
+En Azure-molntjänst är den miljö som programmet kommer att köras i.
 
-1. Öppna i din webbläsare hello [Azure-portalen](https://portal.azure.com).
+1. Öppna [Azure-portalen](https://portal.azure.com) i webbläsaren.
 2. Klicka på **New > Compute > Cloud Service (Ny > Compute > Molntjänst**.
 
-3. Ange ett URL-prefix för hello Molntjänsten i hello DNS-namn på indata.
+3. Ange ett URL-prefix för molntjänsten i textrutan för DNS-namn.
 
-    Den här Webbadressen har toobe unikt.  Du får ett felmeddelande om hello prefix som du har valt används redan.
-4. Ange en ny resursgrupp för hello-tjänsten. Klicka på **Skapa nytt** och skriv sedan ett namn i hello resursen inkommande gruppruta, till exempel CS_contososadsRG.
+    Den här URL:en måste vara unik.  Du får ett felmeddelande om det prefix du har valt redan används.
+4. Ange en ny resursgrupp för tjänsten. Klicka på **Skapa nytt** och ange ett namn i textrutan för resursgruppen, till exempel CS_contososadsRG.
 
-5. Välj hello region där du vill att toodeploy hello.
+5. Välj den region där du vill distribuera programmet.
 
-    Det här fältet anger vilket datacenter som ska vara värd åt molntjänsten. För ett produktionsprogram väljer du hello region närmaste tooyour kunder. Välj hello region närmaste tooyou för den här kursen.
+    Det här fältet anger vilket datacenter som ska vara värd åt molntjänsten. Om det gäller ett produktionsprogram väljer du den region som ligger närmast dina kunder. Under den här kursen väljer du den region som ligger närmast dig.
 5. Klicka på **Skapa**.
 
-    I följande bild hello, skapas en molntjänst med hello URL CSvccontosoads.cloudapp.net.
+    I följande bild skapas en molntjänst med URL:en CSvccontosoads.cloudapp.net.
 
     ![Ny molntjänst](./media/cloud-services-dotnet-get-started/newcs.png)
 
 ### <a name="create-an-azure-sql-database"></a>Skapa en Azure SQL Database
-Om hello app körs i molnet hello, använder en molnbaserad databas.
+När appen körs i molnet använder den en molnbaserad databas.
 
-1. I hello [Azure-portalen](https://portal.azure.com), klickar du på **New > databaser > SQL Database**.
-2. I hello **databasnamnet** ange *contosoads*.
-3. I hello **resursgruppen**, klickar du på **använda befintliga** och välj hello resursgruppen som används för hello-Molntjänsten.
-4. Hello följande bild, klicka på **Server – konfigurera nödvändiga inställningar** och **skapa en ny server**.
+1. I [Azure-portalen](https://portal.azure.com) klickar du på **New > databaser > SQL Database**.
+2. Ange *contosoads* i rutan **Database Name** (Databasnamn).
+3. I **resursgruppen** klickar du på **använd befintliga** och markerar den resursgrupp som används för molntjänsten.
+4. I följande bild klickar du på **Server – konfigurera nödvändiga inställningar** och **Skapa en ny server**.
 
-    ![Tunnel toodatabase server](./media/cloud-services-dotnet-get-started/newdb.png)
+    ![Tunnel till databasservern](./media/cloud-services-dotnet-get-started/newdb.png)
 
-    Alternativt, om din prenumeration redan har en server, kan du välja den servern hello nedrullningsbara listan.
-5. I hello **servernamn** ange *csvccontosodbserver*.
+    Om din prenumeration redan har en server kan du istället välja den servern i listrutan.
+5. I rutan **Servernamn** anger du *csvccontosodbserver*.
 
 6. Ange ett **inloggningsnamn** och **lösenord** med administratörsbehörighet.
 
-    Om du har valt **Skapa en ny server** anger du inte ett befintligt namn och lösenord här. Du har angett ett nytt namn och lösenord som du definierar nu toouse senare när du använder hello-databasen. Om du valde en server som du skapade tidigare, uppmanas du ange hello lösenord toohello administrativt användarkonto du redan skapat.
-7. Välj hello samma **plats** som du valde för Molntjänsten hello.
+    Om du har valt **Skapa en ny server** anger du inte ett befintligt namn och lösenord här. Du har angett ett nytt namn och lösenord som du definierar nu för när du vill komma åt databasen i framtiden. Om du valde en server som du har skapat vid ett tidigare tillfälle, uppmanas du att ange lösenordet för det administrativa användarkontot som du redan har skapat.
+7. Välj samma **Plats** som du valde för molntjänsten.
 
-    När hello Molntjänsten och databasen är i olika datacenter (olika regioner), ökar svarstiden och du kommer att debiteras för bandbredden utanför hello datacenter. Bandbredd inom ett datacenter är kostnadsfri.
-8. Kontrollera **Tillåt azure-tjänster tooaccess server**.
-9. Klicka på **Välj** för nya hello-server.
+    När molntjänsten och databasen är i olika datacenter (olika regioner), ökar svarstiden och du debiteras för bandbredden utanför datacentret. Bandbredd inom ett datacenter är kostnadsfri.
+8. Markera **Ge Azure-tjänster åtkomst till servern**.
+9. Klicka på **Välj** för den nya servern.
 
     ![Ny SQL-databasserver](./media/cloud-services-dotnet-get-started/newdbserver.png)
 10. Klicka på **Skapa**.
 
 ### <a name="create-an-azure-storage-account"></a>Skapa ett Azure-lagringskonto
-Ett Azure storage-konto innehåller resurser för att lagra kö-och blobbdata i hello molnet.
+Ett Azure-lagringskonto tillhandahåller resurser för att lagra kö- och blobbdata i molnet.
 
 I ett riktigt program skapar du vanligtvis separata konton för programdata jämfört med loggningsdata, samt separata konton för testdata jämfört med produktionsdata. Under den här kursen använder du bara ett konto.
 
-1. I hello [Azure-portalen](https://portal.azure.com), klickar du på **New > Storage > lagringskonto - blob, fil, tabell, kö**.
-2. I hello **namn** ange ett URL-prefix.
+1. I [Azure-portalen](https://portal.azure.com) klickar du på **New > Storage > Storage Account - blob, file, table, queue**.
+2. Ange ett URL-prefix i **Namn**-rutan.
 
-    Det här prefixet och hello text som du ser under rutan hello blir hello unik URL tooyour storage-konto. Om hello-prefix du anger har redan använts av någon annan, har du toochoose ett annat prefix.
-3. Ange hello **distributionsmodellen** för*klassiska*.
+    Det här prefixet och texten som du ser under rutan utgör den unika URL:en till ditt lagringskonto. Om det prefix du anger redan har använts av någon annan, måste du välja ett annat prefix.
+3. Ange **distributionsmodellen** som *Klassisk*.
 
-4. Ange hello **replikering** nedrullningsbara listan för**lokalt redundant lagring**.
+4. Välj **Locally redundant storage** (Lokalt redundant) i listrutan **Replication** (Replikering).
 
-    När geo-replikering är aktiverat för ett lagringskonto, är hello lagras innehållet replikerade tooa sekundärt datacenter tooenable redundans om en större katastrof inträffar på hello primära platsen. Geo-replikering kan medföra ytterligare kostnader. För testning och utveckling konton vill du normalt inte toopay för geo-replikering. Mer information finns i [Skapa, hantera eller ta bort ett lagringskonto](../storage/common/storage-create-storage-account.md).
+    När geo-replikering har aktiverats för ett lagringskonto, replikeras det lagrade innehållet till ett sekundärt datacenter för att aktivera redundans om det skulle inträffa en större katastrof på den primära platsen. Geo-replikering kan medföra ytterligare kostnader. När det gäller test- och utvecklingskonton ska du vanligtvis inte betala för geo-replikering. Mer information finns i [Skapa, hantera eller ta bort ett lagringskonto](../storage/common/storage-create-storage-account.md).
 
-5. I hello **resursgruppen**, klickar du på **använda befintliga** och välj hello resursgruppen som används för hello-Molntjänsten.
-6. Ange hello **plats** listrutan toohello samma region som du valde för Molntjänsten hello.
+5. I **resursgruppen** klickar du på **använd befintliga** och markerar den resursgrupp som används för molntjänsten.
+6. Ställ in rullgardinsmenyn **Plats** i samma region som du skulle välja för en molntjänst.
 
-    När hello cloud service och lagringskontot tillhör i olika datacenter (olika regioner), ökar svarstiden och du kommer att debiteras för bandbredden utanför hello datacenter. Bandbredd inom ett datacenter är kostnadsfri.
+    När molntjänsten och lagringskontot är i olika datacenter (olika regioner), ökar svarstiden och du debiteras för bandbredden utanför datacentret. Bandbredd inom ett datacenter är kostnadsfri.
 
-    Azure-tillhörighetsgrupper tillhandahåller en mekanism toominimize hello avståndet mellan resurser i datacentret, vilket kan förkorta svarstiden. Under den här kursen används inte tillhörighetsgrupper. Mer information finns i [hur tooCreate tillhörighet gruppen i Azure](http://msdn.microsoft.com/library/jj156209.aspx).
+    Azure-tillhörighetsgrupper tillhandahåller en funktion som minskar avståndet mellan resurser i datacentret, vilket kan förkorta svarstiden. Under den här kursen används inte tillhörighetsgrupper. Mer information finns i [Skapa en tillhörighetsgrupp i Azure](http://msdn.microsoft.com/library/jj156209.aspx).
 7. Klicka på **Skapa**.
 
     ![Nytt lagringskonto](./media/cloud-services-dotnet-get-started/newstorage.png)
 
-    Hello bild skapas ett lagringskonto med hello URL `csvccontosoads.core.windows.net`.
+    I avbildningen skapas ett lagringskonto med URL:en `csvccontosoads.core.windows.net`.
 
-### <a name="configure-hello-solution-toouse-your-azure-sql-database-when-it-runs-in-azure"></a>Konfigurera hello lösning toouse Azure SQL database när den körs i Azure
-hello webbprojekt hello arbetsrollsprojektet varje har sin egen databasanslutningssträng och varje måste toopoint toohello Azure SQL database när hello app körs i Azure.
+### <a name="configure-the-solution-to-use-your-azure-sql-database-when-it-runs-in-azure"></a>Konfigurera lösningen så att den använder Azure SQL Database när den körs i Azure
+Webbprojektet och arbetsrollsprojektet har varsin databasanslutningssträng, och båda strängarna måste peka på Azure SQL Database när appen körs i Azure.
 
-Du använder en [Web.config-transformering](http://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/web-config-transformations) för hello-webbroll och en cloud service miljöinställning för hello worker-rollen.
+Du kommer att använda en [Web.config-transformering](http://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/web-config-transformations) för webbrollen och en inställning för molntjänstmiljö för arbetsrollen.
 
 > [!NOTE]
-> I det här avsnittet och hello nästa avsnitt kan lagra du autentiseringsuppgifter i projektfiler. [Lagra inte känsliga data i offentliga källkodslager](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control#secrets).
+> I det här och i nästa avsnitt får du lagra autentiseringsuppgifter i projektfiler. [Lagra inte känsliga data i offentliga källkodslager](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control#secrets).
 >
 >
 
-1. Öppna i ContosoAdsWeb-projektet hello hello *Web.Release.config* transformationsfil för programmet hello *Web.config* fil, ta bort hello kommentarblocket som innehåller en `<connectionStrings>` element, och klistra in hello följande kod i dess ställe.
+1. Öppna transformeringsfilen *Web.Release.config* i ContosoAdsWeb-projektet för programmets *Web.config*-fil, ta bort kommentarblocket som innehåller ett `<connectionStrings>`-element, och ersätt det med följande kod.
 
     ```xml
     <connectionStrings>
@@ -203,56 +203,56 @@ Du använder en [Web.config-transformering](http://www.asp.net/mvc/tutorials/dep
     </connectionStrings>
     ```
 
-    Lämna hello filen öppen för redigering.
-2. I hello [Azure-portalen](https://portal.azure.com), klickar du på **SQL-databaser** hello vänster klickar du på hello-databasen som du skapade för den här självstudiekursen och klicka sedan på **visa anslutningssträngar**.
+    Lämna filen öppen för redigering.
+2. I den [klassiska Azure-portalen](https://portal.azure.com) klickar du på **SQL Databases** i den vänstra rutan, klickar på databasen som du skapade för den här kursen och sedan på **Show connection strings** (Visa anslutningssträngar).
 
     ![Visa anslutningssträngar](./media/cloud-services-dotnet-get-started/showcs.png)
 
-    hello portalen visar anslutningssträngar med en platshållare för hello lösenord.
+    Portalen visar anslutningssträngar med en platshållare för lösenordet.
 
     ![Anslutningssträngar](./media/cloud-services-dotnet-get-started/connstrings.png)
-3. I hello *Web.Release.config* transformeringsfilen, ta bort `{connectionstring}` och klistra in i dess ställe hello ADO.NET-anslutningssträngen från hello Azure-portalen.
-4. I hello anslutningssträngen som du klistrade in hello *Web.Release.config* transformeringsfilen ersätter `{your_password_here}` med hello lösenordet du skapade för hello ny SQL-databas.
-5. Spara hello-filen.  
-6. Markera och kopiera hello anslutningssträngen (utan omgivande citattecken hello) för användning i hello följande steg för att konfigurera hello arbetsrollsprojektet.
-7. I **Solution Explorer**under **roller** i hello molntjänstprojektet och högerklickar du på **ContosoAdsWorker** och klicka sedan på **egenskaper**.
+3. I transformeringsfilen *Web.Release.config* tar du bort `{connectionstring}` och ersätter den med ADO.NET-anslutningssträngen från Azure-portalen.
+4. I anslutningssträngen som du klistrade in i transformeringsfilen *Web.Release.config* ska du ersätta `{your_password_here}` med lösenordet du skapade för den nya SQL-databasen.
+5. Spara filen.  
+6. Markera och kopiera anslutningssträngen (utan omgivande citattecken) och använd den i följande steg för att konfigurera arbetsrollsprojektet.
+7. I **Solution Explorer** går du till **Roles** (Roller) i molntjänstprojektet och högerklickar på **ContosoAdsWorker** och klickar sedan på **Properties** (Egenskaper).
 
     ![Rollegenskaper](./media/cloud-services-dotnet-get-started/rolepropertiesworker.png)
-8. Klicka på hello **inställningar** fliken.
-9. Ändra **tjänstkonfiguration** för**moln**.
-10. Välj hello **värdet** för hello `ContosoAdsDbConnectionString` inställningen och klistra in hello anslutningssträngen som du kopierade tidigare hello-delen av kursen hello.
+8. Klicka på fliken **Settings** (Inställningar).
+9. Ändra **Service Configuration** (Tjänstkonfiguration) till **Cloud** (Moln).
+10. Markera fältet **Value** (Värde) för inställningen `ContosoAdsDbConnectionString`, och klistra sedan in anslutningssträngen som du kopierade i kursens förra avsnitt.
 
      ![Databasanslutningssträng för arbetsrollen](./media/cloud-services-dotnet-get-started/workerdbcs.png)
 11. Spara ändringarna.  
 
-### <a name="configure-hello-solution-toouse-your-azure-storage-account-when-it-runs-in-azure"></a>Konfigurera hello lösning toouse Azure storage-konto när den körs i Azure
-Azure-lagringskontots anslutningssträngar för både hello webbrollsprojektet och arbetsrollsprojektet hello lagras i miljöinställningar i molntjänstprojektet hello. Det finns en separat uppsättning inställningar toobe används när hello programmet körs lokalt och när den körs i molnet hello för varje projekt. Du ska uppdatera hello molnmiljöinställningarna för både webb-och arbetsrollsprojektet.
+### <a name="configure-the-solution-to-use-your-azure-storage-account-when-it-runs-in-azure"></a>Konfigurera lösningen så att den använder ditt Azure-lagringskonto när den körs i Azure
+Azure-lagringskontots anslutningssträngar för både webbrollsprojektet och arbetsrollsprojektet lagras i miljöinställningar i molntjänstprojektet. Det finns en separat uppsättning inställningar som ska användas när programmet körs lokalt och när det körs i molnet för varje projekt. Du kommer att uppdatera molnmiljöinställningarna för både webb- och arbetsrollsprojektet.
 
-1. I **Solution Explorer**, högerklicka på **ContosoAdsWeb** under **roller** i hello **ContosoAdsCloudService** projektet och klicka sedan på **Egenskaper**.
+1. I **Solution Explorer** högerklickar du på **ContosoAdsWeb** under **Roles** (Roller) i **ContosoAdsCloudService**-projektet. Klicka sedan på **Properties** (Egenskaper).
 
     ![Rollegenskaper](./media/cloud-services-dotnet-get-started/roleproperties.png)
-2. Klicka på hello **inställningar** fliken. I hello **tjänstkonfiguration** listrutan väljer du **moln**.
+2. Klicka på fliken **Settings** (Inställningar). Välj **Cloud** (Moln) i listrutan **Service Configuration** (Tjänstkonfiguration).
 
     ![Molnkonfiguration](./media/cloud-services-dotnet-get-started/sccloud.png)
-3. Välj hello **StorageConnectionString** post, och sedan ser du en ellipsknapp (**...** ) längst hello högra ände hello rad. Klicka på hello ellips knappen tooopen hello **skapa Lagringsanslutningssträng för kontot** dialogrutan.
+3. Markera posten **StorageConnectionString** och sedan ser du en ellipsknapp (**...**) till höger om raden. Klicka på ellipsknappen för att öppna dialogrutan **Create Storage Connection String** (Skapa lagringsanslutningssträng).
 
     ![Öppna dialogrutan för att skapa anslutningssträng](./media/cloud-services-dotnet-get-started/opencscreate.png)
-4. I hello **skapa Lagringsanslutningssträng** dialogrutan klickar du på **prenumerationen**, väljer hello storage-konto som du skapade tidigare och klicka sedan på **OK**. Om du inte redan har loggat in uppmanas du ange dina Azure-autentiseringsuppgifter.
+4. I dialogrutan **Create Storage Connection String** (Skapa lagringsanslutningssträng) markerar du **Your subscription** (Din prenumeration), väljer det lagringskonto som du skapade tidigare och klickar sedan på **OK**. Om du inte redan har loggat in uppmanas du ange dina Azure-autentiseringsuppgifter.
 
     ![Skapa lagringsanslutningssträng](./media/cloud-services-dotnet-get-started/createstoragecs.png)
 5. Spara ändringarna.
-6. Följ hello samma procedur som du använde för hello `StorageConnectionString` anslutning sträng tooset hello `Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString` anslutningssträngen.
+6. Följ samma steg som du använde för anslutningssträngen `StorageConnectionString` för att ange anslutningssträngen `Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString`.
 
     Den här anslutningssträngen används för loggning.
-7. Följ hello samma procedur som du använde för hello **ContosoAdsWeb** rollen tooset båda anslutningssträngar för hello **ContosoAdsWorker** roll. Glöm inte tooset **tjänstkonfiguration** för**moln**.
+7. Följ samma steg som du använde för **ContosoAdsWeb**-rollen för att ange båda anslutningssträngarna för **ContosoAdsWorker**-rollen. Glöm inte att ställa in **Service Configuration** (Tjänstkonfiguration) till **Cloud** (Moln).
 
-Hej rollmiljöinställningarna som du har konfigurerat med hello Visual Studio-Gränssnittet lagras i följande filer i ContosoAdsCloudService-projektet hello hello:
+Rollmiljöinställningarna som du har konfigurerat i Visual Studio-gränssnittet lagras i följande filer i ContosoAdsCloudService-projektet:
 
-* *ServiceDefinition.csdef* -definierar hello inställningsnamnen.
-* *ServiceConfiguration.Cloud.cscfg* – tillhandahåller värden när hello appen körs i hello molnet.
-* *ServiceConfiguration.Local.cscfg* – tillhandahåller värden när hello appen körs lokalt.
+* *ServiceDefinition.csdef* – anger inställningsnamnen.
+* *ServiceConfiguration.Cloud.cscfg* – tillhandahåller värden när appen körs i molnet.
+* *ServiceConfiguration.Local.cscfg* – tillhandahåller värden när appen körs lokalt.
 
-Hej ServiceDefinition.csdef innehåller till exempel följande definitioner hello:
+ServiceDefinition.csdef innehåller till exempel följande definitioner:
 
 ```xml
 <ConfigurationSettings>
@@ -261,7 +261,7 @@ Hej ServiceDefinition.csdef innehåller till exempel följande definitioner hell
 </ConfigurationSettings>
 ```
 
-Och hello *ServiceConfiguration.Cloud.cscfg* filen innehåller hello värden för dessa inställningar i Visual Studio.
+Filen *ServiceConfiguration.Cloud.cscfg* innehåller värdena du angav för de inställningarna i Visual Studio.
 
 ```xml
 <Role name="ContosoAdsWorker">
@@ -277,42 +277,42 @@ Och hello *ServiceConfiguration.Cloud.cscfg* filen innehåller hello värden fö
 </Role>
 ```
 
-Hej `<Instances>` anger hello antalet virtuella datorer som Azure ska köras hello worker rollen koden på. Hej [nästa steg](#next-steps) avsnittet innehåller länkar toomore information om att skala ut en tjänst i molnet
+Inställningen `<Instances>` anger det antal virtuella datorer som Azure kommer att köra arbetsrollskoden på. I avsnittet [Nästa steg](#next-steps) hittar du länkar till mer information om att skala ut en molntjänst.
 
-### <a name="deploy-hello-project-tooazure"></a>Distribuera hello projekt tooAzure
-1. I **Solution Explorer**, högerklicka på hello **ContosoAdsCloudService** molnprojektet och väljer sedan **publicera**.
+### <a name="deploy-the-project-to-azure"></a>Distribuera projektet till Azure
+1. I **Solution Explorer** högerklickar du på **ContosoAdsCloudService**-molnprojektet och väljer sedan **Publish** (Publicera).
 
    ![Menyn Publish (Publicera)](./media/cloud-services-dotnet-get-started/pubmenu.png)
-2. I hello **logga in** steg i hello **publicera Azure-programmet** guiden, klickar du på **nästa**.
+2. Klicka på **Next** (Nästa) i **inloggningssteget** i **publiceringsguiden för Azure-program**.
 
     ![Inloggningssteg](./media/cloud-services-dotnet-get-started/pubsignin.png)
-3. I hello **inställningar** steg hello guiden klickar du på **nästa**.
+3. Klicka på **Next** (Nästa) i guidens **inställningssteg**.
 
     ![Inställningssteg](./media/cloud-services-dotnet-get-started/pubsettings.png)
 
-    Hej standardinställningarna i hello **Avancerat** är bra för den här självstudiekursen. Information om hello på fliken Avancerat finns [Publiceringsguiden för Azure-program](http://msdn.microsoft.com/library/hh535756.aspx).
-4. I hello **sammanfattning** , klicka på **publicera**.
+    Standardinställningarna på fliken **Advanced** (Avancerat) fungerar bra för den här kursen. Mer information om fliken Advanced (Avancerat) finns i [Publiceringsguide för Azure-program](http://msdn.microsoft.com/library/hh535756.aspx).
+4. Klicka på **Publish** (Publicera) i **sammanfattningssteget**.
 
     ![Sammanfattningssteg](./media/cloud-services-dotnet-get-started/pubsummary.png)
 
-   Hej **Azure-aktivitetsloggen** öppnas i Visual Studio.
-5. Klicka på hello högerpilen ikonen tooexpand hello distributionsinformation.
+   Fönstret med **Azure-aktivitetsloggen** öppnas i Visual Studio.
+5. Klicka på högerpilen för att visa distributionsinformationen.
 
-    hello distributionen kan ta upp too5 minuter eller mer toocomplete.
+    Distributionen kan ta upp till 5 minuter eller mer att slutföra.
 
     ![Fönstret med Azure-aktivitetsloggen](./media/cloud-services-dotnet-get-started/waal.png)
-6. När hello Distributionsstatus är klar klickar du på hello **Webbappens URL** toostart hello program.
-7. Nu kan du testa hello app genom att skapa, visa och redigera vissa annonser, som du gjorde när du körde hello programmet lokalt.
+6. När distributionen har slutförts ska du klicka på **webbappens URL** för att starta programmet.
+7. Nu kan du testa appen genom att skapa, visa och redigera vissa annonser, precis som du gjorde när du körde programmet lokalt.
 
 > [!NOTE]
-> När du är klar testa, ta bort eller stoppa hello-Molntjänsten. Även om du inte använder hello Molntjänsten uppstår avgifter eftersom virtuella datorresurser är reserverade för den. Om du låter den köra kan dessutom alla som hittar URL:en skapa och visa annonser. I hello [Azure-portalen](https://portal.azure.com), gå toohello **översikt** för Molntjänsten och klicka sedan på hello **ta bort** knappen hello överst på hello sidan. Om du bara vill tootemporarily förhindra andra från att komma åt hello plats, klickar du på **stoppa** i stället. I så fall fortsätter avgifterna tooaccrue. Du kan följa en liknande procedur toodelete hello SQL-databasen och storage-konto när du inte längre behöver.
+> När du har gjort dina tester kan du ta bort eller stoppa molntjänsten. Även om du inte använder molntjänsten uppstår avgifter eftersom det finns reserverade virtuella datorresurser som är avsedda för den. Om du låter den köra kan dessutom alla som hittar URL:en skapa och visa annonser. Gå till **översiktsfliken** för din molntjänst i [Azure-portalen](https://portal.azure.com), och klicka sedan på knappen **Delete** (Ta bort) längst upp på sidan. Om du bara tillfälligt vill förhindra andra från att komma åt webbplatsen klickar du på **Stop** (Stoppa) i stället. I så fall fortsätter avgifterna att tillkomma. Du kan följa en liknande procedur om du vill ta bort SQL-databasen och lagringskontot när du inte längre behöver dem.
 >
 >
 
-## <a name="create-hello-application-from-scratch"></a>Skapa hello programmet från grunden
-Om du inte redan har hämtat [hello slutförts programmet](http://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4), göra det nu. Du måste kopiera filer från hello hämtade projektet till hello nytt projekt.
+## <a name="create-the-application-from-scratch"></a>Skapa programmet från grunden
+Om du inte redan har hämtat [det färdiga programmet](http://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4) ska du göra det nu. Du kommer att kopiera filer från det hämtade projektet till det nya projektet.
 
-Skapa hello Contoso Ads-programmet omfattar hello följande steg:
+Contoso Ads-programmet skapas i följande steg:
 
 * Skapa en Visual Studio-lösning med molntjänst.
 * Uppdatera och lägg till NuGet-paket.
@@ -320,53 +320,53 @@ Skapa hello Contoso Ads-programmet omfattar hello följande steg:
 * Konfigurera anslutningssträngar.
 * Lägg till kodfiler.
 
-När du har skapat hello lösning ska du granska hello-kod som är unik toocloud service-projekt och Azure-blobbar och köer.
+När lösningen har skapats granskar du koden som är unik för molntjänstprojekt samt Azure-blobbar och -köer.
 
 ### <a name="create-a-cloud-service-visual-studio-solution"></a>Skapa en Visual Studio-lösning med molntjänst
-1. I Visual Studio väljer **nytt projekt** från hello **filen** menyn.
-2. Hello vänster i hello **nytt projekt** dialogrutan Expandera **Visual C#** och välj **moln** mallar, och välj sedan hello **Azure Cloud Service** mall.
-3. Namnge hello projektet och lösningen ContosoAdsCloudService och klicka sedan på **OK**.
+1. I Visual Studio väljer du **New Project** (Nytt projekt) på menyn **File** (Arkiv).
+2. Visa **Visual C#** i den vänstra rutan i dialogrutan **New Project** (Nytt projekt), och välj **molnmallar**. Välj sedan **Azure-molntjänstmallen**.
+3. Ange namnet ContosoAdsCloudService för projektet och lösningen, och klicka sedan på **OK**.
 
     ![Nytt projekt](./media/cloud-services-dotnet-get-started/newproject.png)
-4. I hello **nya Azure Cloud Service** dialogrutan Lägg till en webbroll och en arbetsroll. Namnge hello webbroll ContosoAdsWeb och namnet hello arbetsrollen ContosoAdsWorker. (Använd pennikonen hello i hello högra fönstret toochange hello standardnamnen hello roller.)
+4. Lägg till en webbroll och en arbetsroll i dialogrutan **New Azure Cloud Service** (Ny Azure-molntjänst). Ange namnet ContosoAdsWeb för webbrollen och ContosoAdsWorker för arbetsrollen. (Använd pennikonen i den högra rutan för att ändra standardnamnen på rollerna.)
 
     ![Nytt molntjänstprojekt](./media/cloud-services-dotnet-get-started/newcsproj.png)
-5. När du ser hello **nytt ASP.NET-projekt** dialogrutan för hello webbrollen, Välj hello MVC-mallen och klicka sedan på **ändra autentisering**.
+5. När du ser dialogrutan **New ASP.NET Project** (Nytt ASP.NET-projekt) för webbrollen, väljer du MVC-mallen och klickar sedan på **Change Authentication** (Ändra autentisering).
 
     ![Ändra autentisering](./media/cloud-services-dotnet-get-started/chgauth.png)
-6. I hello **ändra autentisering** dialogrutan Välj **ingen autentisering**, och klicka sedan på **OK**.
+6. I dialogrutan **Change Authentication** (Ändra autentisering) väljer du **No Authentication** (Ingen autentisering) och klickar sedan på **OK**.
 
     ![Ingen autentisering](./media/cloud-services-dotnet-get-started/noauth.png)
-7. I hello **nytt ASP.NET-projekt** dialogrutan klickar du på **OK**.
-8. I **Solution Explorer**, högerklicka på hello lösningen (inte en hello projekt) och välj **Lägg till – nytt projekt**.
-9. I hello **Lägg till nytt projekt** dialogrutan Välj **Windows** under **Visual C#** i hello till vänster och klicka sedan på hello **klassbiblioteket** mall.  
-10. Namnet hello projektet *ContosoAdsCommon*, och klicka sedan på **OK**.
+7. Klicka på **OK** i dialogrutan **New ASP.NET Project** (Nytt ASP.NET-projekt).
+8. I **Solution Explorer** högerklickar du på lösningen (inte på ett av projekten) och väljer **Add – New Project** (Lägg till – Nytt projekt).
+9. I dialogrutan **Add New Project** (Lägg till nytt projekt) väljer du **Windows** under **Visual C#** i den vänstra rutan, och klickar sedan på **klassbiblioteksmallen**.  
+10. Ange namnet *ContosoAdsCommon* på projektet och klicka sedan på **OK**.
 
-    Du måste tooreference hello Entity Framework kontexten och hello datamodellen från både webb-och arbetsrollsprojektet. Som ett alternativ kan du definiera hello EF-relaterade klasserna i webbrollsprojektet hello och referera till det projektet från arbetsrollsprojektet hello. Men i hello alternativa metoden måste arbetsrollsprojektet måste en tooweb för referenssammansättningar som inte behövs.
+    Du måste referera till Entity Framework-kontexten och datamodellen från både webb- och arbetsrollsprojektet. Alternativt kan du ange de EF-relaterade klasserna i webbrollsprojektet och referera till det projektet från arbetsrollsprojektet. Men i den alternativa metoden måste arbetsrollsprojektet ha en referens till webbsammansättningar som det inte behöver.
 
 ### <a name="update-and-add-nuget-packages"></a>Uppdatera och lägga till NuGet-paket
-1. Öppna hello **hantera NuGet-paket** dialogrutan för hello lösning.
-2. Överst hello i hello fönster, Välj **uppdateringar**.
-3. Leta efter hello *WindowsAzure.Storage* paketet, och om den är i hello listan markerar du den och välj hello webb- och arbetsroller projekt tooupdate det och klicka sedan på **uppdatering**.
+1. Öppna dialogrutan **Manage NuGet Packages** (Hantera NuGet-paket) för lösningen.
+2. Välj **Updates** (Uppdateringar) högst upp i fönstret.
+3. Leta efter paketet *WindowsAzure.Storage*, och om du hittar det i listan ska du markera det och välja de webb- och arbetsrollsprojekt där du vill uppdatera det. Klicka sedan på **Update** (Uppdatera).
 
-    hello lagringsklientbiblioteket uppdateras oftare än Visual Studio-projektmallar, så ofta hittar du den hello-versionen i ett projekt som nyligen skapats måste toobe uppdateras.
-4. Överst hello i hello fönster, Välj **Bläddra**.
-5. Hitta hello *EntityFramework* NuGet-paketet och installera det i alla tre projekt.
-6. Hitta hello *Microsoft.WindowsAzure.ConfigurationManager* NuGet-paketet och installera det i arbetsrollsprojektet hello.
+    Lagringsklientbiblioteket uppdateras oftare än Visual Studio-projektmallar, så det kan ofta hända att versionen i ett projekt som nyligen skapats måste uppdateras.
+4. Välj **Browse** (Bläddra) högst upp i fönstret.
+5. Leta upp NuGet-paketet *EntityFramework* och installera det i alla tre projekt.
+6. Leta upp NuGet-paketet *Microsoft.WindowsAzure.ConfigurationManager* och installera det i arbetsrollsprojektet.
 
 ### <a name="set-project-references"></a>Ange projektreferenser
-1. Ange en referens toohello ContosoAdsCommon-projektet i ContosoAdsWeb-projektet hello. Högerklicka på hello ContosoAdsWeb-projektet och klicka sedan på **referenser** - **Add References**. I hello **Reference Manager** dialogrutan **lösning – projekt** i hello vänster och välj **ContosoAdsCommon**, och klicka sedan på **OK**.
-2. Ange en referens toohello Contosoadscommon-projektet i ContosoAdsWorker-projektet hello.
+1. Ange en referens till ContosoAdsCommon-projektet i ContosoAdsWeb-projektet. Högerklicka på ContosoAdsWeb-projektet och klicka sedan på **References** - **Add References** (Referenser – Lägg till referenser. Välj **Solution – Projects** (Lösning – Projekt) i den vänstra rutan i dialogrutan **Reference Manager** (Referenshanterare). Välj sedan **ContosoAdsCommon** och klicka på **OK**.
+2. Ange en referens till ContosoAdsCommon-projektet i ContosoAdsWorker-projektet.
 
-    ContosoAdsCommon innehåller hello Entity Framework data modellen och -kontextklassen som kommer att användas av båda hello frontend- och.
-3. I hello ContosoAdsWorker-projektet, ange en referens för`System.Drawing`.
+    ContosoAdsCommon innehåller Entity Framework-datamodellen och -kontextklassen som kommer att användas både av klientdelen och serverdelen.
+3. Ange en referens till `System.Drawing` i ContosoAdsWorker-projektet.
 
-    Den här sammansättningen används av hello backend-tooconvert bilder toothumbnails.
+    Den här sammansättningen används av serverdelen för att konvertera bilder till miniatyrbilder.
 
 ### <a name="configure-connection-strings"></a>Konfigurera anslutningssträngar
-I det här avsnittet konfigurerar du Azure Storage- och SQL-anslutningssträngar för lokal testning. Hej distributionsanvisningarna tidigare i kursen hello förklarar hur tooset hello anslutning strängarna för när hello appen körs i hello molnet.
+I det här avsnittet konfigurerar du Azure Storage- och SQL-anslutningssträngar för lokal testning. Distributionsanvisningarna tidigare i kursen visar hur du anger anslutningssträngarna när appen körs i molnet.
 
-1. I hello ContosoAdsWeb-projektet, öppna hello webbprogrammets Web.config-fil och infoga hello följande `connectionStrings` elementet efter hello `configSections` element.
+1. Öppna programmets Web.config-file i ContosoAdsWeb-projektet och infoga följande `connectionStrings`-element efter `configSections`-elementet.
 
     ```xml
     <connectionStrings>
@@ -376,52 +376,52 @@ I det här avsnittet konfigurerar du Azure Storage- och SQL-anslutningssträngar
 
     Om du använder Visual Studio 2015 eller högre ersätter du ”v11.0” med ”MSSQLLocalDB”.
 2. Spara ändringarna.
-3. Hej ContosoAdsCloudService-projektet, högerklicka på ContosoAdsWeb under **roller**, och klicka sedan på **egenskaper**.
+3. Högerklicka på ContosoAdsWeb under **Roles** (Roller) i ContosoAdsCloudService-projektet, och klicka sedan på **Properties** (Egenskaper).
 
     ![Rollegenskaper](./media/cloud-services-dotnet-get-started/roleproperties.png)
-4. I hello **ContosAdsWeb [roll]** i fönstret klickar du på hello **inställningar** fliken och klicka sedan på **Lägg till inställning**.
+4. Klicka på fliken **Settings** (Inställningar) i egenskapsfönstret för  **ContosAdsWeb [roll]**, och klicka sedan på **Add Setting** (Lägg till inställning).
 
-    Lämna **tjänstkonfiguration** ställa in också**alla konfigurationer av**.
-5. Lägg till en inställning med namnet *StorageConnectionString*. Ange **typen** för*ConnectionString*, och ange **värdet** för*UseDevelopmentStorage = true*.
+    Lämna **Service Configuration** (Tjänstkonfiguration) inställd på **All Configurations** (Alla konfigurationer).
+5. Lägg till en inställning med namnet *StorageConnectionString*. Ange **typen** som *ConnectionString*, och ställ in **värdet** till *UseDevelopmentStorage=true*.
 
     ![Ny anslutningssträng](./media/cloud-services-dotnet-get-started/scall.png)
 6. Spara ändringarna.
-7. Följ hello samma procedur tooadd en lagringsanslutningssträng i ContosoAdsWorker-Rollegenskaperna hello.
-8. Fortfarande i hello **ContosoAdsWorker [roll]** i fönstret Lägg till ytterligare en anslutningssträng:
+7. Följ samma procedur för att lägga till en lagringsanslutningssträng i ContosoAdsWorker-rollegenskaperna.
+8. När du har egenskapsfönstret för **ContosoAdsWorker [roll]** öppet lägger du till ytterligare en anslutningssträng:
 
    * Namn: ContosoAdsDbConnectionString
    * Typ: Sträng
-   * Värde: Klistra in hello samma anslutningssträng som du använde för webbrollsprojektet hello. (följande exempel hello används för Visual Studio 2013. Glöm inte toochange hello datakälla om du kopierar det här exemplet och du använder Visual Studio 2015 eller högre.)
+   * Värde: Klistra in samma anslutningssträng som du använde för webbrollsprojektet. (Följande exempel gäller Visual Studio 2013. Glöm inte att ändra datakällan om du kopierar det här exemplet och använder Visual Studio 2015 eller högre.)
 
        ```
        Data Source=(localdb)\v11.0; Initial Catalog=ContosoAds; Integrated Security=True; MultipleActiveResultSets=True;
        ```
 
 ### <a name="add-code-files"></a>Lägga till kodfiler
-I det här avsnittet Kopiera kodfiler från hello hämtade lösningen till hello ny lösning. hello följande avsnitt visas och förklaras viktiga delar av den här koden.
+I det här avsnittet får du kopiera kodfiler från den hämtade lösningen till den nya lösningen. I följande avsnitt visas och förklaras viktiga delar av den här koden.
 
-tooadd filer tooa projekt eller en mapp, högerklickar du på hello projektet eller mappen och klicka på **Lägg till** - **befintlig artikel**. Markerar hello filer och klicka sedan på **Lägg till**. Om du blir tillfrågad om du vill tooreplace befintliga filer, klickar du på **Ja**.
+Om du vill lägga till filer i ett projekt eller i en mapp, högerklickar du på projektet eller mappen och klickar på **Add** - **Existing Item** (Lägg till – Befintligt objekt). Välj de filer du vill ha och klicka sedan på **Add** (Lägg till). Om du blir tillfrågad om du vill ersätta befintliga filer klickar du på **Yes** (Ja).
 
-1. Ta bort hello i hello ContosoAdsCommon-projektet *Class1.cs* och Lägg till i dess ställe hello *Ad.cs* och *ContosoAdscontext.cs* filer från hello hämtade projektet.
-2. Lägg till hello följande filer från hello hämtade projektet i ContosoAdsWeb-projektet hello.
+1. Ta bort filen *Class1.cs* i ContosoAdsCommon-projektet och lägg i stället till filerna *Ad.cs* och *ContosoAdscontext.cs* från det hämtade projektet.
+2. Lägg till följande filer från det hämtade projektet i ContosoAdsWeb-projektet.
 
    * *Global.asax.cs*.  
-   * I hello *Views\Shared* mapp:  *\_Layout.cshtml*.
-   * I hello *Views\Home* mapp: *Index.cshtml*.
-   * I hello *domänkontrollanter* mapp: *AdController.cs*.
-   * I hello *Views\Ad* mapp (skapa hello mappen först): fem *.cshtml* filer.
-3. Lägg till i ContosoAdsWorker-projektet hello *WorkerRole.cs* hello hämtat projektet.
+   * I mappen *Views\Shared*: *\_Layout.cshtml*.
+   * I mappen *Views\Home*: *Index.cshtml*.
+   * I mappen *Controllers*: *AdController.cs*.
+   * I mappen *Views\Ad* (skapa mappen först): fem *.cshtml*-filer.
+3. Lägg till *WorkerRole.cs* från det hämtade projektet i ContosoAdsWorker-projektet.
 
-Du kan nu skapa och köra programmet hello enligt anvisningarna tidigare i kursen hello och hello appen kommer att använda lokala databasen och storage-emulatorn-resurser.
+Du kan nu skapa och köra programmet enligt de tidigare anvisningarna i kursen, och appen använder lokala databas- och lagringsemulatorresurser.
 
-hello följande avsnitt beskrivs hello kod relaterade tooworking med hello Azure-miljön, blobbar och köer. Den här kursen förklaras inte hur toocreate MVC-kontrollanter och vyer med scaffold-teknik, hur toowrite Entity Framework-kod som fungerar med SQL Server-databaser eller hello grunderna för asynkron programmering i ASP.NET 4.5. Information om de här ämnena finns hello följande resurser:
+I de följande avsnitten beskrivs den kod som gäller när du arbetar med Azure-miljön, -blobbar och -köer. Under den här kursen förklaras inte hur du skapar MVC-kontrollanter och vyer med scaffold-teknik, hur du skriver Entity Framework-kod som fungerar med SQL Server-databaser eller grundläggande information om asynkron programmering i ASP.NET 4.5. Mer information om de här ämnena finns i följande resurser:
 
 * [Kom igång med MVC 5](http://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started)
 * [Kom igång med EF 6 och MVC 5](http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc)
-* [Introduktion tooasynchronous programmering i .NET 4.5](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices#async).
+* [Introduktion till asynkron programmering i .NET 4.5](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices#async).
 
 ### <a name="contosoadscommon---adcs"></a>ContosoAdsCommon – Ad.cs
-filen för hello Ad.cs definierar en uppräkning för annonskategorier och en POCO-entitetsklass för annonsinformation.
+Filen Ad.cs definierar en uppräkning för annonskategorier och en POCO-entitetsklass för annonsinformation.
 
 ```csharp
 public enum Category
@@ -465,7 +465,7 @@ public class Ad
 ```
 
 ### <a name="contosoadscommon---contosoadscontextcs"></a>ContosoAdsCommon – ContosoAdsContext.cs
-Hej ContosoAdsContext-klassen anger att hello annonsklassen används i en DbSet-samling som Entity Framework lagrar i en SQL-databas.
+ContosoAdsContext-klassen anger att annonsklassen används i en DbSet-samling som Entity Framework lagrar i en SQL-databas.
 
 ```csharp
 public class ContosoAdsContext : DbContext
@@ -481,19 +481,19 @@ public class ContosoAdsContext : DbContext
 }
 ```
 
-hello-klassen har två konstruktorer. Hej först av dem används av hello webbprojektet och anger en anslutningssträng som lagras i Web.config-filen för hello hello namn. hello andra konstruktorn gör toopass i faktiska hello anslutningssträngen som används av hello arbetsrollsprojektet eftersom det inte har en Web.config-fil. Du såg tidigare där den här anslutningssträngen lagras, och du ser hur hello koden hämtar anslutningssträngen hello när den instantierar DbContext-klassen hello.
+Klassen har två konstruktorer. Den första används av webbprojektet och anger namnet på en anslutningssträng som lagras i Web.config-filen. Den andra konstruktorn gör att du kan överföra den faktiska anslutningssträngen som används av arbetsrollsprojektet, eftersom det inte har en Web.config-fil. Du såg tidigare var den här anslutningssträngen lagras, och du kommer längre fram att få se hur koden hämtar anslutningssträngen när den instantierar DbContext-klassen.
 
 ### <a name="contosoadsweb---globalasaxcs"></a>ContosoAdsWeb – Global.asax.cs
-Kod som anropas från hello `Application_Start` metoden skapar en *bilder* blob-behållaren och en *bilder* kö om de inte redan finns. Detta säkerställer att när du börjar med ett nytt lagringskonto eller börjar använda lagringsemulatorn hello på en ny dator, hello nödvändiga blobbehållaren och kön skapas automatiskt.
+Kod som anropas från metoden `Application_Start` skapar en blobbehållare för *images* och en kö för *images* om dessa inte redan finns. Det innebär att när du börjar använda ett nytt lagringskonto eller börjar använda lagringsemulatorn på en ny dator, skapas den nödvändiga blobbehållaren och kön automatiskt.
 
-Hej kod hämtar åtkomst toohello storage-konto med hjälp av hello lagringsanslutningssträngen från hello *.cscfg* fil.
+Koden får tillgång till lagringskontot genom att använda lagringsanslutningssträngen från *.cscfg*-filen.
 
 ```csharp
 var storageAccount = CloudStorageAccount.Parse
     (RoleEnvironment.GetConfigurationSettingValue("StorageConnectionString"));
 ```
 
-Sedan hämtar den en referens toohello *bilder* , skapar hello behållaren om den inte redan finns och anger åtkomstbehörighet för hello ny behållare. Som standard tillåter nya behållare enbart klienter med lagringskonto autentiseringsuppgifter tooaccess blobbar. hello webbplats måste hello blobbar toobe offentliga så att den kan visa bilder med URL: er som punkt toohello bildblobbarna.
+Sedan hämtar den en referens till blobbehållaren för *images*, skapar behållaren om den inte redan finns, och anger åtkomstbehörighet för den nya behållaren. Som standard tillåter nya behållare enbart klienter med lagringskontouppgifter att få tillgång till blobbar. Webbplatsen kräver att blobbarna är offentliga så att den kan visa bilder med URL:er som pekar på bildblobbarna.
 
 ```csharp
 var blobClient = storageAccount.CreateCloudBlobClient();
@@ -508,7 +508,7 @@ if (imagesBlobContainer.CreateIfNotExists())
 }
 ```
 
-Liknande kod hämtar en referens toohello *bilder* kön och skapar en ny kö. I så fall krävs ingen ändring av behörigheter.
+Liknande kod hämtar en referens till *images*-kön och skapar en ny kö. I så fall krävs ingen ändring av behörigheter.
 
 ```csharp
 CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
@@ -517,10 +517,10 @@ imagesQueue.CreateIfNotExists();
 ```
 
 ### <a name="contosoadsweb---layoutcshtml"></a>ContosoAdsWeb – \_Layout.cshtml
-Hej *_Layout.cshtml* filen anger hello programnamn i hello sidhuvud och sidfot och skapar en menypost ”Ads”.
+Filen *_Layout.cshtml* anger appnamnet i sidhuvudet och sidfoten, och skapar en menypost som heter ”Ads”.
 
 ### <a name="contosoadsweb---viewshomeindexcshtml"></a>ContosoAdsWeb – Views\Home\Index.cshtml
-Hej *Views\Home\Index.cshtml* visar kategorilänkar på startsidan för hello. hello länkarna överför hello heltalsvärde hello `Category` uppräkning i en querystring-variabel toohello Ads-indexsidan.
+Filen *Views\Home\Index.cshtml* visar kategorilänkar på startsidan. Länkarna överför heltalsvärdet för uppräkningen `Category` i en QueryString-variabel till Ads-indexsidan. 
 
 ```razor
 <li>@Html.ActionLink("Cars", "Index", "Ad", new { category = (int)Category.Cars }, null)</li>
@@ -530,9 +530,9 @@ Hej *Views\Home\Index.cshtml* visar kategorilänkar på startsidan för hello. h
 ```
 
 ### <a name="contosoadsweb---adcontrollercs"></a>ContosoAdsWeb – AdController.cs
-I hello *AdController.cs* fil, hello konstruktorn anrop hello `InitializeStorage` metoden toocreate Azure Storage-klientbibliotek objekt som tillhandahåller en API för att arbeta med blobbar och köer.
+I filen *AdController.cs* anropar konstruktorn metoden `InitializeStorage` för att skapa Azure Storage-klientbiblioteksobjekt som tillhandahåller en API som kan användas för blobbar och köer.
 
-Sedan hello kod hämtar en referens toohello *bilder* blob-behållare som du såg tidigare i *Global.asax.cs*. När den gör det anger den en [standardpolicy för återförsök](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/transient-fault-handling) som är lämplig för en webbapp. hello standardprincipen exponentiell backoff försök kan hänga hello webbappen längre än en minut vid upprepade återförsök för ett tillfälligt fel. Hej återförsökspolicyn som anges här väntar tre sekunder efter varje försök i upp toothree försök.
+Sedan hämtar koden en referens till blobbehållaren för *images* som du såg tidigare i *Global.asax.cs*. När den gör det anger den en [standardpolicy för återförsök](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/transient-fault-handling) som är lämplig för en webbapp. Standardpolicyn för återförsök med exponentiell begränsning kan hänga webbappen längre än en minut vid upprepade återförsök för ett tillfälligt fel. Återförsökspolicyn som anges här väntar i tre sekunder efter varje försök i upp till tre försök.
 
 ```csharp
 var blobClient = storageAccount.CreateCloudBlobClient();
@@ -540,7 +540,7 @@ blobClient.DefaultRequestOptions.RetryPolicy = new LinearRetry(TimeSpan.FromSeco
 imagesBlobContainer = blobClient.GetContainerReference("images");
 ```
 
-Liknande kod hämtar en referens toohello *bilder* kön.
+Liknande kod hämtar en referens till *images*-kön.
 
 ```csharp
 CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
@@ -548,7 +548,7 @@ queueClient.DefaultRequestOptions.RetryPolicy = new LinearRetry(TimeSpan.FromSec
 imagesQueue = queueClient.GetQueueReference("images");
 ```
 
-De flesta hello kontrollantkoden är typisk när du arbetar med en Entity Framework-datamodell med en DbContext-klassen. Ett undantag är hello HttpPost `Create` metod som överför en fil och sparar den i blob storage. Hej modellbindaren tillhandahåller ett [HttpPostedFileBase](http://msdn.microsoft.com/library/system.web.httppostedfilebase.aspx) objekt toohello metod.
+Större delen av kontrollantkoden är typisk när du arbetar med en Entity Framework-datamodell med en DbContext-klass. Ett undantag är HttpPost-metoden `Create`, som laddar upp en fil och sparar den i Blob Storage. Modellbindaren tillhandahåller ett [HttpPostedFileBase](http://msdn.microsoft.com/library/system.web.httppostedfilebase.aspx)-objekt till metoden.
 
 ```csharp
 [HttpPost]
@@ -558,7 +558,7 @@ public async Task<ActionResult> Create(
     HttpPostedFileBase imageFile)
 ```
 
-Om hello användaren har valt en fil tooupload hello kod överför hello-fil, sparar den i en blob och uppdaterar hello Ad-databasposten med en URL som pekar toohello blob.
+Om användaren har valt en fil att ladda upp, laddar koden upp filen, sparar den i en blob och uppdaterar Ad-databasposten med en URL som pekar på blobben.
 
 ```csharp
 if (imageFile != null && imageFile.ContentLength != 0)
@@ -568,7 +568,7 @@ if (imageFile != null && imageFile.ContentLength != 0)
 }
 ```
 
-hello kod som hello uppladdningen är i hello `UploadAndSaveBlobAsync` metod. Den skapar ett Guidenamn för hello blob, överföringar och sparar hello fil och returnerar en referens toohello sparade blob.
+Koden som utför uppladdningen är i metoden `UploadAndSaveBlobAsync`. Den skapar ett GUID-namn för blobben, laddar upp och sparar filen, och returnerar en referens till den sparade blobben.
 
 ```csharp
 private async Task<CloudBlockBlob> UploadAndSaveBlobAsync(HttpPostedFileBase imageFile)
@@ -583,7 +583,7 @@ private async Task<CloudBlockBlob> UploadAndSaveBlobAsync(HttpPostedFileBase ima
 }
 ```
 
-Efter hello HttpPost `Create` metoden laddar upp en blob och uppdateringar Hej databas, skapar en kö meddelandet tooinform backend-processen att en bild är redo för konvertering tooa miniatyr.
+När HttpPost-metoden `Create` laddar upp en blob och uppdaterar databasen, skapar den ett kömeddelande för att informera den serverdelsprocessen att en bild är redo för konvertering till en miniatyrbild.
 
 ```csharp
 string queueMessageString = ad.AdId.ToString();
@@ -591,7 +591,7 @@ var queueMessage = new CloudQueueMessage(queueMessageString);
 await queue.AddMessageAsync(queueMessage);
 ```
 
-Hej koden för hello HttpPost `Edit` metoden är liknande, förutom att om hello användaren markerar en ny bildfil måste alla blobbar som redan finns tas bort.
+Koden för HttpPost-metoden `Edit` är liknande, förutom att om användaren väljer en ny bildfil måste alla blobbar som redan finns tas bort.
 
 ```csharp
 if (imageFile != null && imageFile.ContentLength != 0)
@@ -602,7 +602,7 @@ if (imageFile != null && imageFile.ContentLength != 0)
 }
 ```
 
-hello nästa exempel visar hello-kod som tar bort blobbar när du tar bort en annons.
+I nästa exempel visas den kod som tar bort blobbar när du tar bort en annons.
 
 ```csharp
 private async Task DeleteAdBlobsAsync(Ad ad)
@@ -627,45 +627,45 @@ private static async Task DeleteAdBlobAsync(Uri blobUri)
 ```
 
 ### <a name="contosoadsweb---viewsadindexcshtml-and-detailscshtml"></a>ContosoAdsWeb – Views\Ad\Index.cshtml och Details.cshtml
-Hej *Index.cshtml* visar miniatyrbilder med hello andra ad-data.
+Filen *Index.cshtml* visar miniatyrbilder med andra annonsdata.
 
 ```razor
 <img src="@Html.Raw(item.ThumbnailURL)" />
 ```
 
-Hej *Details.cshtml* visar hello bilden.
+Filen *Details.cshtml* visar bilden i full storlek.
 
 ```razor
 <img src="@Html.Raw(Model.ImageURL)" />
 ```
 
 ### <a name="contosoadsweb---viewsadcreatecshtml-and-editcshtml"></a>ContosoAdsWeb – Views\Ad\Create.cshtml och Edit.cshtml
-Hej *Create.cshtml* och *Edit.cshtml* filer ange kodningen som aktiverar hello controller tooget hello `HttpPostedFileBase` objekt.
+Filerna *Create.cshtml* och *Edit.cshtml* anger formkodning som gör att kontrollanten kan hämta objektet `HttpPostedFileBase`.
 
 ```razor
 @using (Html.BeginForm("Create", "Ad", FormMethod.Post, new { enctype = "multipart/form-data" }))
 ```
 
-En `<input>` element instruerar hello webbläsare tooprovide en dialogruta för filval.
+Ett `<input>`-element instruerar webbläsaren att tillhandahålla en dialogruta för filval.
 
 ```razor
 <input type="file" name="imageFile" accept="image/*" class="form-control fileupload" />
 ```
 
 ### <a name="contosoadsworker---workerrolecs---onstart-method"></a>ContosoAdsWorker – WorkerRole.cs – OnStart-metoden
-hello Azure worker-rollen miljö anropar hello `OnStart` metod i hello `WorkerRole` klassen när hello worker-rollen är igång och anropar hello `Run` metod när hello `OnStart` metod har avslutats.
+Azure-arbetsrollsmiljön anropar metoden `OnStart` i klassen `WorkerRole` när arbetsrollen påbörjas, och den anropar metoden `Run` när metoden `OnStart` avslutas.
 
-Hej `OnStart` metoden hämtar hello databasanslutningssträngen från hello *.cscfg* filen och skickar den toohello Entity Framework DbContext-klassen. hello SQLClient-leverantören används som standard så hello-providern inte har angetts toobe.
+Metoden `OnStart` hämtar databasanslutningssträngen från *.cscfg*-filen och skickar den till Entity Framework DbContext-klassen. SQLClient-leverantören används som standard så leverantören behöver inte anges.
 
 ```csharp
 var dbConnString = CloudConfigurationManager.GetSetting("ContosoAdsDbConnectionString");
 db = new ContosoAdsContext(dbConnString);
 ```
 
-Efter det hello metoden hämtar en referens toohello storage-konto och skapar hello blobbehållaren och kön om de inte finns. hello-koden för som är liknande toowhat som du redan har sett i hello webbroll `Application_Start` metod.
+Därefter hämtar metoden en referens till lagringskontot och skapar blobbehållaren och kön om de inte redan finns. Koden för den åtgärden liknar det du redan har sett i metoden `Application_Start` för webbrollen.
 
 ### <a name="contosoadsworker---workerrolecs---run-method"></a>ContosoAdsWorker – WorkerRole.cs – Run-metoden
-Hej `Run` metoden anropas när hello `OnStart` metod har avslutat initieringsarbetet. hello metoden Kör en oändlig loop som söker efter nya Kömeddelanden och bearbetar dem när de tas emot.
+Metoden `Run` anropas när metoden `OnStart` har avslutat initieringsarbetet. Metoden kör en oändlig loop som söker efter nya kömeddelanden och bearbetar dem när de kommer in.
 
 ```csharp
 public override void Run()
@@ -698,9 +698,9 @@ public override void Run()
 }
 ```
 
-Om inget kömeddelande hittades efter varje upprepning av loopen hello viloläge hello program i en sekund. Detta förhindrar att arbetsrollen hello medför överdriven CPU tid och lagring transaktionskostnader. hello Microsoft Customer Advisory Team berättar om en utvecklare som glömde bort tooinclude, distribuerats tooproduction, och åkte på semester. När han fick tillbaka kostade hans misstag mer än hello semester.
+Om inget kömeddelande hittas efter varje upprepning av loopen, försätts programmet i viloläge i en sekund. Det förhindrar att arbetsrollen använder orimlig processortid och orsakar lagringstransaktionskostnader. Microsoft Customer Advisory Team berättar om en utvecklare som glömde bort att ta med det här, distribuerade till produktion, och åkte på semester. När han fick tillbaka kostade hans misstag mer än semestern.
 
-Ibland orsakar hello innehållet i ett kömeddelande ett fel i bearbetningen. Detta kallas en *skadligt meddelande*, och om du precis har loggat ett fel och startas om hello loop, du oändlighet försöka tooprocess meddelandet.  Därför innehåller hello catch-blocket en if-sats som kontrollerar toosee hur många gånger hello appen har försökt tooprocess hello aktuella meddelandet och om den har mer än 5 gånger hello-meddelande tas bort från hello kö.
+Ibland orsakar innehållet i ett kömeddelande ett fel i bearbetningen. Det kallas för *meddelande om ej utförd åtgärd*, och om du precis har loggat ett fel och startat loopen igen kan du försöka bearbeta det meddelandet i oändlighet.  Därför innehåller catch-blocket en if-sats som kontrollerar hur många gånger appen har försökt att bearbeta det aktuella meddelandet, och om det har hänt fler än fem gånger, tas meddelandet bort från kön.
 
 `ProcessQueueMessage` anropas när ett kömeddelande hittas.
 
@@ -733,49 +733,49 @@ private void ProcessQueueMessage(CloudQueueMessage msg)
 }
 ```
 
-Den här koden läser hello databasen tooget hello bild-URL, konverterar hello bildens tooa miniatyrbild, sparar hello miniatyren i en blob, uppdaterar hello databasen med hello miniatyr blob URL och tar bort hälsningsmeddelande för kön.
+Den här koden läser databasen för att hämta bildens URL, konverterar bilden till en miniatyrbild, sparar miniatyren i en blob, uppdaterar databasen med URL:en för miniatyren i bloben och tar bort kömeddelandet.
 
 > [!NOTE]
-> Hej koden i hello `ConvertImageToThumbnailJPG` metoden använder klasser i namnområdet för hello System.Drawing för enkelhetens skull. Dock har hello klasser i det här namnområdet utformats för användning med Windows Forms. De stöds inte för användning i en Windows- eller ASP.NET-tjänst. Mer information om alternativ för bildbearbetning finns i [Dynamic Image Generation](http://www.hanselman.com/blog/BackToBasicsDynamicImageGenerationASPNETControllersRoutingIHttpHandlersAndRunAllManagedModulesForAllRequests.aspx) och [Deep Inside Image Resizing](http://www.hanselminutes.com/313/deep-inside-image-resizing-and-scaling-with-aspnet-and-iis-with-imageresizingnet-author-na).
+> Koden i metoden `ConvertImageToThumbnailJPG` använder klasser i namnområdet System.Drawing för enkelhetens skull. Klasserna i det här namnområdet har emellertid skapats för användning med Windows Forms. De stöds inte för användning i en Windows- eller ASP.NET-tjänst. Mer information om alternativ för bildbearbetning finns i [Dynamic Image Generation](http://www.hanselman.com/blog/BackToBasicsDynamicImageGenerationASPNETControllersRoutingIHttpHandlersAndRunAllManagedModulesForAllRequests.aspx) och [Deep Inside Image Resizing](http://www.hanselminutes.com/313/deep-inside-image-resizing-and-scaling-with-aspnet-and-iis-with-imageresizingnet-author-na).
 >
 >
 
 ## <a name="troubleshooting"></a>Felsökning
-Om något inte fungerar när du följer hello instruktioner i den här självstudiekursen, här är några vanliga fel och hur tooresolve dem.
+Om något inte fungerar när du följer anvisningarna i den här kursen visar vi här några exempel på vanliga fel och hur du kan lösa dem.
 
 ### <a name="serviceruntimeroleenvironmentexception"></a>ServiceRuntime.RoleEnvironmentException
-Hej `RoleEnvironment` tillhandahålls av Azure när du kör ett program i Azure eller när du kör lokalt med hjälp av hello Azure-beräkningsemulatorn.  Om du får detta felmeddelande när du kör lokalt, kontrollerar du att du har angett hello ContosoAdsCloudService-projektet som Startprojekt hello. Detta konfigurerar hello projektet toorun med hello Azure-beräkningsemulatorn.
+Objektet `RoleEnvironment` tillhandahålls av Azure när du kör ett program i Azure eller när du kör programmet lokalt med Azure-beräkningsemulatorn.  Om det här felet uppstår när du kör programmet lokalt ska du kontrollera att du har angett ContosoAdsCloudService-projektet som startprojekt. Då konfigureras projektet att köras med Azure-beräkningsemulatorn.
 
-Hello saker hello program använder hello Azure RoleEnvironment för är tooget hello anslutningssträngarnas värden som lagras i hello *.cscfg* filerna, så en annan orsak till det här undantaget är en anslutningssträng som saknas. Kontrollera att som du skapade hello StorageConnectionString-inställningen både för moln och lokala konfigurationer i ContosoAdsWeb-projektet hello och att du har skapat båda anslutningssträngar för båda konfigurationerna i ContosoAdsWorker-projektet hello. Om du gör en **Sök alla** Sök efter StorageConnectionString i hela hello-lösning bör du se den 9 gånger i 6-filer.
+En av de saker som programmet använder Azure RoleEnvironment till är att hämta anslutningssträngvärdena som lagras i *.cscfg*-filerna, så en annan möjlig orsak till det här undantaget är en anslutningssträng som saknas. Kontrollera att du har skapat StorageConnectionString-inställningen både för moln- och lokala konfigurationer i ContosoAdsWeb-projektet, samt att du har skapat båda anslutningssträngar för båda konfigurationerna i ContosoAdsWorker-projektet. Om du gör sökningen **Sök alla** efter StorageConnectionString i hela lösningen, bör du se den nio gånger i sex filer.
 
-### <a name="cannot-override-tooport-xxx-new-port-below-minimum-allowed-value-8080-for-protocol-http"></a>Det går inte att åsidosätta tooport xxx. New port below minimum allowed value 8080 for protocol http. (Ny port under minsta tillåtna värde 8080 för protokollet http.)
-Försök att ändra hello-portnumret som används av hello webbprojekt. Högerklicka på hello ContosoAdsWeb-projektet och klicka sedan på **egenskaper**. Klicka på hello **Web** fliken och sedan ändra hello portnumret i hello **Url för** inställningen.
+### <a name="cannot-override-to-port-xxx-new-port-below-minimum-allowed-value-8080-for-protocol-http"></a>Cannot override to port xxx. (Det går inte att åsidosätta till port xxx.) New port below minimum allowed value 8080 for protocol http. (Ny port under minsta tillåtna värde 8080 för protokollet http.)
+Försök att ändra portnumret som används av webbprojektet. Högerklicka på ContosoAdsWeb-projektet och klicka sedan på **Properties** (Egenskaper). Klicka på fliken **Web** (Webb) och ändra sedan portnumret i inställningen **Project Url** (Projekt-URL).
 
-Ett annat alternativ som kan lösa problemet hello finns hello efter avsnittet.
+Ett annat alternativ som eventuellt kan lösa problemet finns i följande avsnitt.
 
 ### <a name="other-errors-when-running-locally"></a>Andra fel när du kör programmet lokalt
-Serviceprojekt använder som standard för nya molntjänster hello Azure compute emulator express toosimulate hello Azure-miljön. Detta är en förenklad version av hello fullständiga beräkningsemulatorn och under vissa förhållanden hello fullständiga emulatorn fungerar när hello express-version som inte.  
+Som standard använder nya molntjänstprojekt expressversionen av Azure-beräkningsemulatorn för att simulera Azure-miljön. Detta är en förenklad version av den fullständiga beräkningsemulatorn, och under vissa förhållanden fungerar den fullständiga emulatorn men inte expressversionen.  
 
-toochange hello projektet toouse hello fullständiga emulatorn, högerklickar hello ContosoAdsCloudService-projektet och klicka sedan på **egenskaper**. I hello **egenskaper** fönstret klickar du på hello **Web** fliken och klicka sedan på hello **Använd fullständig Emulator** knappen.
+Om du vill ändra så att projektet använder den fullständiga emulatorn, högerklickar du på ContosoAdsCloudService-projektet och klickar sedan på **Properties** (Egenskaper). Klicka på fliken **Web** (Webb) i fönstret **Properties** (Egenskaper), och markera sedan alternativknappen **Use Full Emulator** (Använd fullständig emulator).
 
-I ordning toorun hello program med hello fullständiga emulatorn har du tooopen Visual Studio med administratörsbehörighet.
+Du måste öppna Visual Studio med administratörsbehörighet för att köra programmet med den fullständiga emulatorn.
 
 ## <a name="next-steps"></a>Nästa steg
-hello Contoso Ads-programmet har avsikt förenklats för en komma igång-kursen. Till exempel den implementerar inte [beroendeinmatning](http://www.asp.net/mvc/tutorials/hands-on-labs/aspnet-mvc-4-dependency-injection) eller hello [centrallager och arbetsenhetsmönster](http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/advanced-entity-framework-scenarios-for-an-mvc-web-application#repo), inte [används ett gränssnitt för loggning](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry#log), den använder inte [ EF Code First Migrations](http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application) toomanage datamodell ändringar eller [EF Connection Resiliency](http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/connection-resiliency-and-command-interception-with-the-entity-framework-in-an-asp-net-mvc-application) toomanage tillfälligt nätverksfel och så vidare.
+Contoso Ads-programmet har med avsikt förenklats för den här komma igång-kursen. Det implementerar exempelvis inte [beroendeinmatning](http://www.asp.net/mvc/tutorials/hands-on-labs/aspnet-mvc-4-dependency-injection) eller [centrallager och arbetsenhetsmönster](http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/advanced-entity-framework-scenarios-for-an-mvc-web-application#repo), det använder inte [ett gränssnitt för loggning](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry#log) och inte heller [EF Code First Migrations](http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application) för att hantera datamodelländringar eller [EF Connection Resiliency](http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/connection-resiliency-and-command-interception-with-the-entity-framework-in-an-asp-net-mvc-application) för att hantera tillfälliga nätverksfel osv.
 
-Här följer några exempelprogram för molntjänster som visar fler verklighetsbaserade kodningsexempel, i från mindre komplex toomore komplexa:
+Här följer några exempelprogram för molntjänster som visar fler verklighetsbaserade kodningsexempel, i ordningen från mindre till mer komplexa:
 
-* [PhluffyFotos](http://code.msdn.microsoft.com/PhluffyFotos-Sample-7ecffd31). Liknande koncept tooContoso Ads men implementerar flera funktioner och fler verklighetsbaserade kodningsexempel.
-* [Azure Cloud Service Multi-Tier Application with Tables, Queues, and Blobs](http://code.msdn.microsoft.com/windowsazure/Windows-Azure-Multi-Tier-eadceb36). Introducerar Azure Storage-tabeller samt blobbar och köer. Baserat på en äldre version av hello Azure SDK för .NET, kräver vissa ändringar toowork med hello nuvarande version.
-* [Cloud Service Fundamentals in Microsoft Azure](http://code.msdn.microsoft.com/Cloud-Service-Fundamentals-4ca72649). Ett omfattande exempel som visar ett stort urval med bästa arbetsmetoder som produceras av hello Microsoft Patterns and Practices-gruppen.
+* [PhluffyFotos](http://code.msdn.microsoft.com/PhluffyFotos-Sample-7ecffd31). Liknande koncept som i Contoso Ads men här finns fler funktioner och fler verklighetsbaserade kodningsexempel.
+* [Azure Cloud Service Multi-Tier Application with Tables, Queues, and Blobs](http://code.msdn.microsoft.com/windowsazure/Windows-Azure-Multi-Tier-eadceb36). Introducerar Azure Storage-tabeller samt blobbar och köer. Baserat på en äldre version av Azure SDK för .NET, kräver vissa ändringar för att fungera med den aktuella versionen.
+* [Cloud Service Fundamentals in Microsoft Azure](http://code.msdn.microsoft.com/Cloud-Service-Fundamentals-4ca72649). Ett omfattande exempel som visar ett stort urval med bästa arbetsmetoder som har tagits fram av Microsoft Patterns and Practices-gruppen.
 
-Allmän information om hur du utvecklar för molnet hello finns [skapa verkliga Molnappar med Azure](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/introduction).
+Allmän information om hur du utvecklar för molnet finns i [Skapa verkliga molnappar med Azure](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/introduction).
 
-Bästa metoder och mönster för en videopresentation tooAzure lagring, se [Microsoft Azure Storage – What's New, Best Practices and Patterns](http://channel9.msdn.com/Events/Build/2014/3-628).
+Om du vill se en videointroduktion till bästa metoder och mönster i Azure Storage, kan du se [Microsoft Azure Storage – What's New, Best Practices and Patterns](http://channel9.msdn.com/Events/Build/2014/3-628).
 
-Mer information finns i hello följande resurser:
+Mer information finns i följande resurser:
 
 * [Azure Cloud Services, del 1: Inledning](http://justazure.com/microsoft-azure-cloud-services-part-1-introduction/)
-* [Hur toomanage Cloud Services](cloud-services-how-to-manage.md)
+* [Hantera molntjänster](cloud-services-how-to-manage.md)
 * [Azure Storage](/documentation/services/storage/)
-* [Hur toochoose ett moln-leverantörer](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/)
+* [Hur man väljer molntjänstleverantör](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/)

@@ -1,5 +1,5 @@
 ---
-title: "aaaAzure virtuella datorer hög tillgänglighet för SAP NetWeaver på SUSE Linux Enterprise Server för SAP-program | Microsoft Docs"
+title: "Azure virtuella datorer hög tillgänglighet för SAP NetWeaver på SUSE Linux Enterprise Server för SAP-program | Microsoft Docs"
 description: "Hög tillgänglighet guide för SAP NetWeaver på SUSE Linux Enterprise Server för SAP-program"
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/27/2017
 ms.author: sedusch
-ms.openlocfilehash: e944103df92d5ffec9196189f138e25972bea79f
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 16e09797926f29bc18cb05671c986c74f9c2d4f8
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications"></a>Hög tillgänglighet för SAP NetWeaver på Azure Virtual Machines på SUSE Linux Enterprise Server för SAP-program
 
@@ -50,13 +50,13 @@ ms.lasthandoff: 10/06/2017
 
 [sap-hana-ha]:sap-hana-high-availability.md
 
-Den här artikeln beskrivs hur toodeploy hello virtuella datorer, konfigurera hello virtuella datorer, installera hello klustret framework och installera en högtillgänglig SAP NetWeaver 7,50.
-I hello exempelkonfigurationer installationskommandon osv. ASCS-instansnummer 00, ÄNDARE instansnummer 02 och SAP System-ID NWS används. hello namnen på de hello resurser (till exempel virtuella datorer, virtuella nätverk) i hello exemplet förutsätter att du har använt hello [konvergerat mallen] [ template-converged] med SAP ID NWS toocreate hello systemresurser.
+Den här artikeln beskriver hur du distribuerar virtuella datorer, konfigurera virtuella datorer, installera kluster framework och installera en högtillgänglig SAP NetWeaver 7,50.
+I exempelkonfigurationer installationskommandon osv. ASCS-instansnummer 00, ÄNDARE instansnummer 02 och SAP System-ID NWS används. Namnen på de resurser (till exempel virtuella datorer, virtuella nätverk) i exemplet förutsätter att du har använt den [konvergerat mallen] [ template-converged] med SAP system-ID NWS att skapa resurser.
 
-Läs hello först efter SAP anteckningar och dokument
+Läs följande SAP anteckningar och papper först
 
 * SAP-kommentar [1928533], som innehåller:
-  * Lista över Azure VM-storlekar som stöds för hello distributionen av program
+  * Lista över Azure VM-storlekar som stöds för distribution av program
   * Viktiga kapacitetsinformation för Azure VM-storlekar
   * Stöds SAP-programvara och operativsystem (OS) och kombinationer av databasen
   * SAP kernel version som krävs för Windows och Linux i Microsoft Azure
@@ -65,32 +65,32 @@ Läs hello först efter SAP anteckningar och dokument
 * SAP-kommentar [2205917] har rekommenderat OS-inställningar för SUSE Linux Enterprise Server för SAP-program
 * SAP-kommentar [1944799] har SAP HANA riktlinjer för SUSE Linux Enterprise Server för SAP-program
 * SAP-kommentar [2178632] innehåller detaljerad information om all övervakning mått som rapporterats för SAP i Azure.
-* SAP-kommentar [2191498] hello krävs SAP värden Agent-version för Linux i Azure.
+* SAP-kommentar [2191498] har Värdagenten för SAP-version som krävs för Linux i Azure.
 * SAP-kommentar [2243692] har licensieringsinformation SAP på Linux i Azure.
 * SAP-kommentar [1984787] har allmän information om SUSE Linux Enterprise Server 12.
-* SAP-kommentar [1999351] innehåller ytterligare felsökningsinformation för hello Azure förbättrad övervakning av tillägget för SAP.
+* SAP-kommentar [1999351] innehåller ytterligare felsökningsinformation för Azure förbättrad övervakning av tillägget för SAP.
 * [SAP Community WIKI](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) har alla nödvändiga SAP anteckningar för Linux.
 * [Azure virtuella datorer planering och implementering för SAP på Linux][planning-guide]
 * [Distribution av Azure virtuella datorer för SAP på Linux (den här artikeln)][deployment-guide]
 * [Azure virtuella datorer DBMS-distribution för SAP på Linux][dbms-guide]
 * [Prestanda för SAP HANA SR optimerade Scenario][suse-hana-ha-guide]  
-  hello-guiden innehåller all nödvändig information tooset SAP HANA System replikering på lokalt. Använd den här guiden som utgångspunkt.
-* [Hög NFS lagringsutrymme med DRBD och Pacemaker] [ suse-drbd-guide] hello guiden innehåller all nödvändig information tooset upp en NFS-server med hög tillgänglighet. Använd den här guiden som utgångspunkt.
+  Guiden innehåller all information som krävs för att ställa in SAP HANA System Replication lokala. Använd den här guiden som utgångspunkt.
+* [Hög NFS lagringsutrymme med DRBD och Pacemaker] [ suse-drbd-guide] guiden innehåller all nödvändig information för att ställa in en NFS-server med hög tillgänglighet. Använd den här guiden som utgångspunkt.
 
 
 ## <a name="overview"></a>Översikt
 
-tooachieve hög tillgänglighet, SAP NetWeaver kräver en NFS-server. hello NFS-servern är konfigurerad i separata kluster och kan användas av flera SAP-system.
+För att uppnå hög tillgänglighet kräver SAP NetWeaver NFS-servern. NFS-servern är konfigurerad i separata kluster och kan användas av flera SAP-system.
 
 ![Översikt över SAP NetWeaver hög tillgänglighet](./media/high-availability-guide-suse/img_001.png)
 
-hello NFS-servern, SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ÄNDARE och hello SAP HANA-databas använda virtuella värdnamn och virtuella IP-adresser. På Azure är en belastningsutjämning obligatoriska toouse en virtuell IP-adress. hello visar följande lista hello konfiguration av hello belastningsutjämnare.
+NFS-servern, SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ÄNDARE och SAP HANA-databas ska du använda virtuella värdnamn och virtuella IP-adresser. På Azure krävs en belastningsutjämnare för att använda en virtuell IP-adress. I följande lista visar konfigurationen av belastningsutjämnaren.
 
 ### <a name="nfs-server"></a>NFS-Server
 * Konfiguration för klientdel
   * IP-adressen 10.0.0.4
 * Backend-konfiguration
-  * Ansluten tooprimary nätverksgränssnitt för alla virtuella datorer som ska ingå i hello NFS-kluster
+  * Ansluten till primära nätverksgränssnitt för alla virtuella datorer som ska ingå i klustret för NFS
 * Avsökningsport
   * Port 61000
 * Regler för belastningsutjämning
@@ -101,7 +101,7 @@ hello NFS-servern, SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ÄNDARE 
 * Konfiguration för klientdel
   * IP-adress 10.0.0.10
 * Backend-konfiguration
-  * Anslutna tooprimary nätverksgränssnitt för alla virtuella datorer som ska ingå i klustret för hello (A) SCS/ÄNDARE
+  * Ansluten till primära nätverksgränssnitt för alla virtuella datorer som ska ingå i (A) SCS/ÄNDARE kluster
 * Avsökningsport
   * Port 620**&lt;nr&gt;**
 * Regler för belastningsutjämning
@@ -117,7 +117,7 @@ hello NFS-servern, SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ÄNDARE 
 * Konfiguration för klientdel
   * IP-adress 10.0.0.11
 * Backend-konfiguration
-  * Anslutna tooprimary nätverksgränssnitt för alla virtuella datorer som ska ingå i klustret för hello (A) SCS/ÄNDARE
+  * Ansluten till primära nätverksgränssnitt för alla virtuella datorer som ska ingå i (A) SCS/ÄNDARE kluster
 * Avsökningsport
   * Port 621**&lt;nr&gt;**
 * Regler för belastningsutjämning
@@ -130,7 +130,7 @@ hello NFS-servern, SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ÄNDARE 
 * Konfiguration för klientdel
   * IP-adressen 10.0.0.12
 * Backend-konfiguration
-  * Ansluten tooprimary nätverksgränssnitt för alla virtuella datorer som ska ingå i klustret för hello HANA
+  * Ansluten till primära nätverksgränssnitt för alla virtuella datorer som ska ingå i klustret HANA
 * Avsökningsport
   * Port 625**&lt;nr&gt;**
 * Regler för belastningsutjämning
@@ -141,23 +141,23 @@ hello NFS-servern, SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ÄNDARE 
 
 ### <a name="deploying-linux"></a>Distribuera Linux
 
-hello Azure Marketplace innehåller en bild för SUSE Linux Enterprise Server för SAP program 12 som du kan använda toodeploy nya virtuella datorer.
-Du kan använda någon av hello Snabbstart mallar på github toodeploy alla nödvändiga resurser. hello mallen distribuerar hello virtuella datorer, hello belastningsutjämnare, tillgänglighetsuppsättning osv. Följ dessa steg toodeploy hello mallen:
+Azure Marketplace innehåller en bild för SUSE Linux Enterprise Server för SAP program 12 som du kan använda för att distribuera nya virtuella datorer.
+Du kan använda en av Snabbstart mallar på github för att distribuera alla nödvändiga resurser. Mallen distribuerar virtuella datorer, belastningsutjämnare, tillgänglighetsuppsättning osv. Följ dessa steg om du vill distribuera mallen:
 
-1. Öppna hello [mall för SAP server] [ template-file-server] i hello Azure-portalen   
-1. Ange följande parametrar hello
+1. Öppna den [mall för SAP server] [ template-file-server] i Azure-portalen   
+1. Ange följande parametrar
    1. Resurs-Prefix  
-      Ange hello-prefix som du vill toouse. hello värdet används som ett prefix för hello resurser som distribueras.
+      Ange det prefix som du vill använda. Värdet används som ett prefix för de resurser som har distribuerats.
    2. OS-typen  
-      Välj en av hello Linux-distributioner. Det här exemplet väljer du SLES 12
+      Välj en av Linux-distributioner. Det här exemplet väljer du SLES 12
    3. Användarnamn och lösenord för Admin administratör  
-      En ny användare skapas som kan vara används toolog på toohello datorn.
+      En ny användare skapas som kan användas för att logga in på datorn.
    4. Undernät-Id  
-      hello-ID för virtuella datorer i hello undernät toowhich hello ska anslutas till. Lämna tomt om du vill toocreate ett nytt virtuellt nätverk eller välj hello undernätet för din VPN eller Expressroute virtuellt nätverk tooconnect hello tooyour lokalt nätverk för virtuella datorer. hello ID ser oftast ut så /subscriptions/**&lt;prenumerations-id&gt;**/resourceGroups/**&lt;resursgruppnamn&gt;**/providers/ Microsoft.Network/virtualNetworks/**&lt;virtuella nätverksnamnet&gt;**/subnets/**&lt;undernätsnamn&gt;**
+      ID för det undernät som de virtuella datorerna ska anslutas till. Lämna tomt om du vill skapa ett nytt virtuellt nätverk eller välj undernätet i ditt VPN eller Expressroute virtuella nätverk att ansluta den virtuella datorn till ditt lokala nätverk. ID som ser oftast ut så /subscriptions/**&lt;prenumerations-id&gt;**/resourceGroups/**&lt;resursgruppnamn&gt;**/providers/ Microsoft.Network/virtualNetworks/**&lt;virtuella nätverksnamnet&gt;**/subnets/**&lt;undernätsnamn&gt;**
 
 ### <a name="installation"></a>Installation
 
-hello följande föregås antingen **[A]** -tillämpliga tooall noder **[1]** -endast tillämpliga toonode 1 eller **[2]** -endast tillämpliga toonode 2.
+Följande objekt är prefixet antingen **[A]** - gäller för alla noder, **[1]** – gäller endast för nod 1 eller **[2]** – gäller endast för nod 2.
 
 1. **[A]**  Uppdatera SLES
 
@@ -170,11 +170,11 @@ hello följande föregås antingen **[A]** -tillämpliga tooall noder **[1]** -e
    <pre><code>
    sudo ssh-keygen -tdsa
    
-   # Enter file in which toosave hello key (/root/.ssh/id_dsa): -> ENTER
+   # Enter file in which to save the key (/root/.ssh/id_dsa): -> ENTER
    # Enter passphrase (empty for no passphrase): -> ENTER
    # Enter same passphrase again: -> ENTER
    
-   # copy hello public key
+   # copy the public key
    sudo cat /root/.ssh/id_dsa.pub
    </code></pre>
 
@@ -183,21 +183,21 @@ hello följande föregås antingen **[A]** -tillämpliga tooall noder **[1]** -e
    <pre><code>
    sudo ssh-keygen -tdsa
 
-   # insert hello public key you copied in hello last step into hello authorized keys file on hello second server
+   # insert the public key you copied in the last step into the authorized keys file on the second server
    sudo vi /root/.ssh/authorized_keys
    
-   # Enter file in which toosave hello key (/root/.ssh/id_dsa): -> ENTER
+   # Enter file in which to save the key (/root/.ssh/id_dsa): -> ENTER
    # Enter passphrase (empty for no passphrase): -> ENTER
    # Enter same passphrase again: -> ENTER
    
-   # copy hello public key   
+   # copy the public key   
    sudo cat /root/.ssh/id_dsa.pub
    </code></pre>
 
 1. **[1]**  Aktivera ssh-åtkomst
 
    <pre><code>
-   # insert hello public key you copied in hello last step into hello authorized keys file on hello first server
+   # insert the public key you copied in the last step into the authorized keys file on the first server
    sudo vi /root/.ssh/authorized_keys
    </code></pre>
 
@@ -209,17 +209,17 @@ hello följande föregås antingen **[A]** -tillämpliga tooall noder **[1]** -e
 
 1. **[A]**  Installationsprogrammet värdnamnsmatchning   
 
-   Du kan använda en DNS-server, eller så kan du ändra hello/etc/hosts på alla noder. Det här exemplet visar hur toouse hello/etc/hosts-filen.
-   Ersätt hello IP-adress och hello värdnamn i hello följande kommandon
+   Du kan använda en DNS-server, eller så kan du ändra de/etc/hosts på alla noder. Det här exemplet visar hur du använder/etc/hosts-filen.
+   Ersätt IP-adressen och värdnamnet i följande kommandon
 
    <pre><code>
    sudo vi /etc/hosts
    </code></pre>
    
-   Infoga hello följande rader för/etc/hosts. Ändra hello IP-adress och värddatornamn toomatch din miljö   
+   Infoga följande rader till/etc/hosts. Ändra IP-adressen och värdnamnet som matchar din miljö   
    
    <pre><code>
-   # IP address of hello load balancer frontend configuration for NFS
+   # IP address of the load balancer frontend configuration for NFS
    <b>10.0.0.4 nws-nfs</b>
    </code></pre>
 
@@ -228,39 +228,39 @@ hello följande föregås antingen **[A]** -tillämpliga tooall noder **[1]** -e
    <pre><code>
    sudo ha-cluster-init
    
-   # Do you want toocontinue anyway? [y/N] -> y
-   # Network address toobind too(for example: 192.168.1.0) [10.79.227.0] -> ENTER
+   # Do you want to continue anyway? [y/N] -> y
+   # Network address to bind to (for example: 192.168.1.0) [10.79.227.0] -> ENTER
    # Multicast address (for example: 239.x.x.x) [239.174.218.125] -> ENTER
    # Multicast port [5405] -> ENTER
-   # Do you wish toouse SBD? [y/N] -> N
-   # Do you wish tooconfigure an administration IP? [y/N] -> N
+   # Do you wish to use SBD? [y/N] -> N
+   # Do you wish to configure an administration IP? [y/N] -> N
    </code></pre>
 
-1. **[2]**  Lägg till nod toocluster
+1. **[2]**  Lägg till nod i klustret
    
    <pre><code> 
    sudo ha-cluster-join
 
-   # WARNING: NTP is not configured toostart at system boot.
-   # WARNING: No watchdog device found. If SBD is used, hello cluster will be unable toostart without a watchdog.
-   # Do you want toocontinue anyway? [y/N] -> y
+   # WARNING: NTP is not configured to start at system boot.
+   # WARNING: No watchdog device found. If SBD is used, the cluster will be unable to start without a watchdog.
+   # Do you want to continue anyway? [y/N] -> y
    # IP address or hostname of existing node (for example: 192.168.1.1) [] -> IP address of node 1 for example 10.0.0.10
    # /root/.ssh/id_dsa already exists - overwrite? [y/N] N
    </code></pre>
 
-1. **[A]**  Ändra hacluster lösenord toohello samma lösenord
+1. **[A]**  Ändra hacluster lösenord till samma lösenord
 
    <pre><code> 
    sudo passwd hacluster
    </code></pre>
 
-1. **[A]**  Och konfigurera corosync toouse andra transport och lägga till nodelist. Klustret fungerar inte på annat sätt.
+1. **[A]**  Konfigurera corosync om du vill använda andra transport och lägga till nodelist. Klustret fungerar inte på annat sätt.
    
    <pre><code> 
    sudo vi /etc/corosync/corosync.conf   
    </code></pre>
 
-   Lägg till följande fetstil innehåll toohello hello.
+   Lägg till följande fetstil innehåll i filen.
    
    <pre><code> 
    [...]
@@ -283,7 +283,7 @@ hello följande föregås antingen **[A]** -tillämpliga tooall noder **[1]** -e
      [...]
    </code></pre>
 
-   Starta om tjänsten för hello corosync
+   Starta om tjänsten corosync
 
    <pre><code>
    sudo service corosync restart
@@ -295,7 +295,7 @@ hello följande föregås antingen **[A]** -tillämpliga tooall noder **[1]** -e
    sudo zypper install drbd drbd-kmp-default drbd-utils
    </code></pre>
 
-1. **[A]**  Skapa en partition för hello drbd enhet
+1. **[A]**  Skapa en partition för drbd-enhet
 
    <pre><code>
    sudo sh -c 'echo -e "n\n\n\n\n\nw\n" | fdisk /dev/sdc'
@@ -309,13 +309,13 @@ hello följande föregås antingen **[A]** -tillämpliga tooall noder **[1]** -e
    sudo lvcreate -l 100%FREE -n <b>NWS</b> vg_NFS
    </code></pre>
 
-1. **[A]**  Skapa hello NFS drbd enhet
+1. **[A]**  Skapa NFS drbd enhet
 
    <pre><code>
    sudo vi /etc/drbd.d/<b>NWS</b>_nfs.res
    </code></pre>
 
-   Infoga hello konfiguration för hello ny drbd enhet och avsluta
+   Infoga konfigurationen för den nya drbd enheten och avsluta
 
    <pre><code>
    resource <b>NWS</b>_nfs {
@@ -338,7 +338,7 @@ hello följande föregås antingen **[A]** -tillämpliga tooall noder **[1]** -e
    }
    </code></pre>
 
-   Skapa hello drbd enheten och starta den
+   Skapa drbd enheten och starta den
 
    <pre><code>
    sudo drbdadm create-md <b>NWS</b>_nfs
@@ -351,13 +351,13 @@ hello följande föregås antingen **[A]** -tillämpliga tooall noder **[1]** -e
    sudo drbdadm new-current-uuid --clear-bitmap <b>NWS</b>_nfs
    </code></pre>
 
-1. **[1]**  Hello primära noden
+1. **[1]**  Anger den primära noden
 
    <pre><code>
    sudo drbdadm primary --force <b>NWS</b>_nfs
    </code></pre>
 
-1. **[1]**  Vänta tills hello nya drbd enheter som ska synkroniseras
+1. **[1]**  Vänta tills nya drbd enheter som ska synkroniseras
 
    <pre><code>
    sudo cat /proc/drbd
@@ -368,7 +368,7 @@ hello följande föregås antingen **[A]** -tillämpliga tooall noder **[1]** -e
    #    ns:0 nr:0 dw:0 dr:912 al:8 bm:0 lo:0 pe:0 ua:0 ap:0 ep:1 wo:f oos:0
    </code></pre>
 
-1. **[1]**  Skapa filsystem på hello drbd enheter
+1. **[1]**  Skapa filsystem på drbd-enheter
 
    <pre><code>
    sudo mkfs.xfs /dev/drbd0
@@ -377,7 +377,7 @@ hello följande föregås antingen **[A]** -tillämpliga tooall noder **[1]** -e
 
 ### <a name="configure-cluster-framework"></a>Konfigurera klustret Framework
 
-1. **[1]**  Ändra standardinställningarna för hello
+1. **[1]**  Ändra standardinställningarna
 
    <pre><code>
    sudo crm configure
@@ -388,7 +388,7 @@ hello följande föregås antingen **[A]** -tillämpliga tooall noder **[1]** -e
    crm(live)configure# exit
    </code></pre>
 
-1. **[1]**  Lägg till hello NFS drbd enhet toohello klusterkonfigurationen
+1. **[1]**  Lägger till NFS drbd enhet klusterkonfigurationen
 
    <pre><code>
    sudo crm configure
@@ -407,7 +407,7 @@ hello följande föregås antingen **[A]** -tillämpliga tooall noder **[1]** -e
    crm(live)configure# exit
    </code></pre>
 
-1. **[1]**  Skapa hello NFS-servern
+1. **[1]**  Skapa NFS-servern
 
    <pre><code>
    sudo crm configure
@@ -422,7 +422,7 @@ hello följande föregås antingen **[A]** -tillämpliga tooall noder **[1]** -e
    crm(live)configure# exit
    </code></pre>
 
-1. **[1]**  Skapa hello filsystem för NFS-resurser
+1. **[1]**  Skapa filsystem för NFS-resurser
 
    <pre><code>
    sudo crm configure
@@ -446,7 +446,7 @@ hello följande föregås antingen **[A]** -tillämpliga tooall noder **[1]** -e
    crm(live)configure# exit
    </code></pre>
 
-1. **[1]**  Skapa hello NFS export
+1. **[1]**  Skapa NFS exporterar
 
    <pre><code>
    sudo mkdir /srv/nfs/<b>NWS</b>/sidsys
@@ -469,7 +469,7 @@ hello följande föregås antingen **[A]** -tillämpliga tooall noder **[1]** -e
    crm(live)configure# exit
    </code></pre>
 
-1. **[1]**  Skapa en virtuell IP-resurs och hälsoavsökningen för hello intern belastningsutjämnare
+1. **[1]**  Skapa en virtuell IP-resurs och hälsoavsökningen för den interna belastningsutjämnaren
 
    <pre><code>
    sudo crm configure
@@ -491,39 +491,39 @@ hello följande föregås antingen **[A]** -tillämpliga tooall noder **[1]** -e
 
 ### <a name="create-stonith-device"></a>Skapa STONITH enhet
 
-Hej STONITH enhet använder ett huvudnamn för tjänsten tooauthorize mot Microsoft Azure. Följ dessa steg toocreate ett huvudnamn för tjänsten.
+STONITH enheten använder ett huvudnamn för tjänsten för att godkänna mot Microsoft Azure. Följ dessa steg om du vill skapa ett huvudnamn för tjänsten.
 
-1. Gå för<https://portal.azure.com>
-1. Öppna hello Azure Active Directory-bladet  
-   Gå tooProperties och anteckna hello Directory-Id. Detta är hello **klient-id**.
+1. Gå till <https://portal.azure.com>
+1. Öppna bladet Azure Active Directory  
+   Gå till egenskaperna och Skriv ned Directory-Id. Det här är den **klient-id**.
 1. Klicka på appen registreringar
 1. Klicka på Lägg till
 1. Ange ett namn, Välj typ av program ”Web app/API”, ange en inloggnings-URL (till exempel http://localhost) och klicka på Skapa
-1. hello inloggnings-URL används inte och kan vara en giltig URL
-1. Välj hello nya App och klicka på nycklarna i hello på fliken Inställningar
+1. URL för inloggning används inte och kan vara en giltig URL
+1. Välj den nya appen och klicka på nycklar på fliken Inställningar
 1. Ange en beskrivning för en ny nyckel, Välj ”upphör aldrig att gälla” och klicka på Spara
-1. Skriv ned hello värde. Den används som hello **lösenord** för hello tjänstens huvudnamn
-1. Skriv ned hello program-Id. Den används som hello användarnamn (**inloggnings-id** i hello stegen nedan) för hello tjänstens huvudnamn
+1. Anteckna värdet. Den används som den **lösenord** för tjänstens huvudnamn
+1. Skriv ned det program-Id. Den används som användarnamnet (**inloggnings-id** i stegen nedan) för tjänstens huvudnamn
 
-hello tjänstens huvudnamn har inte behörigheter tooaccess Azure-resurser som standard. Du behöver toogive hello tjänstens huvudnamn behörigheter toostart och stoppa (frigöra) alla virtuella datorer i hello klustret.
+Tjänstens huvudnamn har inte behörighet att komma åt Azure-resurser som standard. Du behöver ge behörighet att starta och stoppa tjänstens huvudnamn (frigöra) alla virtuella datorer i klustret.
 
-1. Gå toohttps://portal.azure.com
-1. Öppna hello bladet för alla resurser
-1. Välj hello virtuell dator
+1. Gå till https://portal.azure.com
+1. Öppna bladet alla resurser
+1. Välj den virtuella datorn
 1. Klicka på åtkomstkontroll (IAM)
 1. Klicka på Lägg till
-1. Välj hello roll ägare
-1. Ange hello namnet på hello-program som du skapade ovan
+1. Välj rollen ägare
+1. Ange namnet på programmet som du skapade ovan
 1. Klicka på OK
 
-#### <a name="1-create-hello-stonith-devices"></a>**[1]**  Skapa hello STONITH enheter
+#### <a name="1-create-the-stonith-devices"></a>**[1]**  Skapa STONITH-enheter
 
-När du har redigerat hello behörigheter för hello virtuella datorer kan du konfigurera hello STONITH enheter i hello kluster.
+När du har redigerat behörigheter för de virtuella datorerna kan du konfigurera STONITH-enheter i klustret.
 
 <pre><code>
 sudo crm configure
 
-# replace hello bold string with your subscription id, resource group, tenant id, service principal id and password
+# replace the bold string with your subscription id, resource group, tenant id, service principal id and password
 
 crm(live)configure# primitive rsc_st_azure_1 stonith:fence_azure_arm \
    params subscriptionId="<b>subscription id</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant id</b>" login="<b>login id</b>" passwd="<b>password</b>"
@@ -537,7 +537,7 @@ crm(live)configure# commit
 crm(live)configure# exit
 </code></pre>
 
-#### <a name="1-enable-hello-use-of-a-stonith-device"></a>**[1]**  Aktivera hello användning av en STONITH-enhet
+#### <a name="1-enable-the-use-of-a-stonith-device"></a>**[1]**  Aktivera användning av en STONITH-enhet
 
 <pre><code>
 sudo crm configure property stonith-enabled=true 
@@ -547,34 +547,34 @@ sudo crm configure property stonith-enabled=true
 
 ### <a name="deploying-linux"></a>Distribuera Linux
 
-hello Azure Marketplace innehåller en bild för SUSE Linux Enterprise Server för SAP program 12 som du kan använda toodeploy nya virtuella datorer. hello marketplace-avbildning innehåller hello resurs agent för SAP NetWeaver.
+Azure Marketplace innehåller en bild för SUSE Linux Enterprise Server för SAP program 12 som du kan använda för att distribuera nya virtuella datorer. Marketplace-avbildning innehåller resurs-agent för SAP NetWeaver.
 
-Du kan använda någon av hello Snabbstart mallar på github toodeploy alla nödvändiga resurser. hello mallen distribuerar hello virtuella datorer, hello belastningsutjämnare, tillgänglighetsuppsättning osv. Följ dessa steg toodeploy hello mallen:
+Du kan använda en av Snabbstart mallar på github för att distribuera alla nödvändiga resurser. Mallen distribuerar virtuella datorer, belastningsutjämnare, tillgänglighetsuppsättning osv. Följ dessa steg om du vill distribuera mallen:
 
-1. Öppna hello [ASCS/SCS Multi SID-mall] [ template-multisid-xscs] eller hello [konvergerat mallen] [ template-converged] på hello Azure portal hello ASCS/SCS mall skapar hello belastningsutjämning regler för hello SAP NetWeaver ASCS/SCS och ÄNDARE (endast Linux) instanser medan hello konvergerade mallen skapar också hello belastningsutjämning regler för en databas (till exempel Microsoft SQL Server eller SAP HANA). Om du planerar tooinstall ett SAP NetWeaver baserat system och du bör också tooinstall hello databasen på Hej samma datorer, Använd hello [konvergerat mallen][template-converged].
-1. Ange följande parametrar hello
+1. Öppna den [ASCS/SCS Multi SID-mall] [ template-multisid-xscs] eller [konvergerat mallen] [ template-converged] på Azure-portalen i ASCS/SCS endast skapas på belastningsutjämning regler för SAP NetWeaver ASCS/SCS och ÄNDARE (endast Linux) instanser medan mallen konvergerade skapar även reglerna för belastningsutjämning för en databas (till exempel Microsoft SQL Server eller SAP HANA). Om du planerar att installera ett SAP NetWeaver baserat system och du även vill installera databasen på samma datorer använder den [konvergerat mallen][template-converged].
+1. Ange följande parametrar
    1. Resursen Prefix (endast mall ASCS/SCS Multi SID)  
-      Ange hello-prefix som du vill toouse. hello värdet används som ett prefix för hello resurser som distribueras.
+      Ange det prefix som du vill använda. Värdet används som ett prefix för de resurser som har distribuerats.
    3. SAP System-Id (endast konvergerade mall)  
-      Ange hello SAP system Id hello SAP-system som du vill tooinstall. hello Id används som ett prefix för hello resurser som distribueras.
+      Ange SAP-systemet Id för SAP-system som du vill installera. Id som används som ett prefix för de resurser som har distribuerats.
    4. Stack-typ  
-      Ange hello SAP NetWeaver stack
+      Välj typ för SAP NetWeaver stack
    5. OS-typen  
-      Välj en av hello Linux-distributioner. Det här exemplet väljer du SLES 12 BYOS
+      Välj en av Linux-distributioner. Det här exemplet väljer du SLES 12 BYOS
    6. DB-typ  
       Välj HANA
    7. Storlek för SAP-System  
-      hello mängden SAP hello nya system ger. Om du inte är säker på hur många SAP hello systemet behöver be din SAP-teknikpartner eller systemintegreraren
+      Mängden SAP som innehåller det nya systemet. Om du inte vet hur många SAP systemet kräver, be din SAP-teknikpartner eller systemintegreraren
    8. Systemets tillgänglighet  
       Välj hög tillgänglighet
    9. Användarnamn och lösenord för Admin administratör  
-      En ny användare skapas som kan vara används toolog på toohello datorn.
+      En ny användare skapas som kan användas för att logga in på datorn.
    10. Undernät-Id  
-   hello-ID för virtuella datorer i hello undernät toowhich hello ska anslutas till.  Lämna tomt om du vill toocreate ett nytt virtuellt nätverk eller välj hello samma undernät som du användas eller skapas som en del av hello distribution för NFS-server. hello ID ser oftast ut så /subscriptions/**&lt;prenumerations-id&gt;**/resourceGroups/**&lt;resursgruppnamn&gt;**/providers/ Microsoft.Network/virtualNetworks/**&lt;virtuella nätverksnamnet&gt;**/subnets/**&lt;undernätsnamn&gt;**
+   ID för det undernät som de virtuella datorerna ska anslutas till.  Lämna tomt om du vill skapa ett nytt virtuellt nätverk eller Välj samma undernät som du användas eller skapas som en del av distributionen av NFS-servern. ID som ser oftast ut så /subscriptions/**&lt;prenumerations-id&gt;**/resourceGroups/**&lt;resursgruppnamn&gt;**/providers/ Microsoft.Network/virtualNetworks/**&lt;virtuella nätverksnamnet&gt;**/subnets/**&lt;undernätsnamn&gt;**
 
 ### <a name="installation"></a>Installation
 
-hello följande föregås antingen **[A]** -tillämpliga tooall noder **[1]** -endast tillämpliga toonode 1 eller **[2]** -endast tillämpliga toonode 2.
+Följande objekt är prefixet antingen **[A]** - gäller för alla noder, **[1]** – gäller endast för nod 1 eller **[2]** – gäller endast för nod 2.
 
 1. **[A]**  Uppdatera SLES
 
@@ -587,11 +587,11 @@ hello följande föregås antingen **[A]** -tillämpliga tooall noder **[1]** -e
    <pre><code>
    sudo ssh-keygen -tdsa
    
-   # Enter file in which toosave hello key (/root/.ssh/id_dsa): -> ENTER
+   # Enter file in which to save the key (/root/.ssh/id_dsa): -> ENTER
    # Enter passphrase (empty for no passphrase): -> ENTER
    # Enter same passphrase again: -> ENTER
    
-   # copy hello public key
+   # copy the public key
    sudo cat /root/.ssh/id_dsa.pub
    </code></pre>
 
@@ -600,21 +600,21 @@ hello följande föregås antingen **[A]** -tillämpliga tooall noder **[1]** -e
    <pre><code>
    sudo ssh-keygen -tdsa
 
-   # insert hello public key you copied in hello last step into hello authorized keys file on hello second server
+   # insert the public key you copied in the last step into the authorized keys file on the second server
    sudo vi /root/.ssh/authorized_keys
    
-   # Enter file in which toosave hello key (/root/.ssh/id_dsa): -> ENTER
+   # Enter file in which to save the key (/root/.ssh/id_dsa): -> ENTER
    # Enter passphrase (empty for no passphrase): -> ENTER
    # Enter same passphrase again: -> ENTER
    
-   # copy hello public key   
+   # copy the public key   
    sudo cat /root/.ssh/id_dsa.pub
    </code></pre>
 
 1. **[1]**  Aktivera ssh-åtkomst
 
    <pre><code>
-   # insert hello public key you copied in hello last step into hello authorized keys file on hello first server
+   # insert the public key you copied in the last step into the authorized keys file on the first server
    sudo vi /root/.ssh/authorized_keys
    </code></pre>
 
@@ -626,19 +626,19 @@ hello följande föregås antingen **[A]** -tillämpliga tooall noder **[1]** -e
 
 1. **[A]**  Uppdatering SAP resurs agenter  
    
-   En korrigering för hello resurs agenter paketet är obligatoriska toouse hello ny konfiguration, som beskrivs i den här artikeln. Du kan kontrollera, om hello korrigering har redan installerats med hello följande kommando
+   En korrigering för resurs-agenter paket krävs för att använda den nya konfigurationen som beskrivs i den här artikeln. Du kan kontrollera, om uppdateringen redan är installerad med följande kommando
 
    <pre><code>
    sudo grep 'parameter name="IS_ERS"' /usr/lib/ocf/resource.d/heartbeat/SAPInstance
    </code></pre>
 
-   hello utdata ska vara liknar
+   Resultatet bör likna
 
    <pre><code>
    &lt;parameter name="IS_ERS" unique="0" required="0"&gt;
    </code></pre>
 
-   Om hello grep kommando inte hittar hello IS_ERS parameter måste tooinstall hello korrigering som visas på [hello SUSE hämtningssidan](https://download.suse.com/patch/finder/#bu=suse&familyId=&productId=&dateRange=&startDate=&endDate=&priority=&architecture=&keywords=resource-agents)
+   Om kommandot grep inte hittar parametern IS_ERS, måste du installera uppdateringen på [SUSE hämtningssidan](https://download.suse.com/patch/finder/#bu=suse&familyId=&productId=&dateRange=&startDate=&endDate=&priority=&architecture=&keywords=resource-agents)
 
    <pre><code>
    # example for patch for SLES 12 SP1
@@ -649,23 +649,23 @@ hello följande föregås antingen **[A]** -tillämpliga tooall noder **[1]** -e
 
 1. **[A]**  Installationsprogrammet värdnamnsmatchning   
 
-   Du kan använda en DNS-server, eller så kan du ändra hello/etc/hosts på alla noder. Det här exemplet visar hur toouse hello/etc/hosts-filen.
-   Ersätt hello IP-adress och hello värdnamn i hello följande kommandon
+   Du kan använda en DNS-server, eller så kan du ändra de/etc/hosts på alla noder. Det här exemplet visar hur du använder/etc/hosts-filen.
+   Ersätt IP-adressen och värdnamnet i följande kommandon
 
    <pre><code>
    sudo vi /etc/hosts
    </code></pre>
    
-   Infoga hello följande rader för/etc/hosts. Ändra hello IP-adress och värddatornamn toomatch din miljö   
+   Infoga följande rader till/etc/hosts. Ändra IP-adressen och värdnamnet som matchar din miljö   
    
    <pre><code>
-   # IP address of hello load balancer frontend configuration for NFS
+   # IP address of the load balancer frontend configuration for NFS
    <b>10.0.0.4 nws-nfs</b>
-   # IP address of hello load balancer frontend configuration for SAP NetWeaver ASCS/SCS
+   # IP address of the load balancer frontend configuration for SAP NetWeaver ASCS/SCS
    <b>10.0.0.10 nws-ascs</b>
-   # IP address of hello load balancer frontend configuration for SAP NetWeaver ERS
+   # IP address of the load balancer frontend configuration for SAP NetWeaver ERS
    <b>10.0.0.11 nws-ers</b>
-   # IP address of hello load balancer frontend configuration for database
+   # IP address of the load balancer frontend configuration for database
    <b>10.0.0.12 nws-db</b>
    </code></pre>
 
@@ -674,39 +674,39 @@ hello följande föregås antingen **[A]** -tillämpliga tooall noder **[1]** -e
    <pre><code>
    sudo ha-cluster-init
    
-   # Do you want toocontinue anyway? [y/N] -> y
-   # Network address toobind too(for example: 192.168.1.0) [10.79.227.0] -> ENTER
+   # Do you want to continue anyway? [y/N] -> y
+   # Network address to bind to (for example: 192.168.1.0) [10.79.227.0] -> ENTER
    # Multicast address (for example: 239.x.x.x) [239.174.218.125] -> ENTER
    # Multicast port [5405] -> ENTER
-   # Do you wish toouse SBD? [y/N] -> N
-   # Do you wish tooconfigure an administration IP? [y/N] -> N
+   # Do you wish to use SBD? [y/N] -> N
+   # Do you wish to configure an administration IP? [y/N] -> N
    </code></pre>
 
-1. **[2]**  Lägg till nod toocluster
+1. **[2]**  Lägg till nod i klustret
    
    <pre><code> 
    sudo ha-cluster-join
 
-   # WARNING: NTP is not configured toostart at system boot.
-   # WARNING: No watchdog device found. If SBD is used, hello cluster will be unable toostart without a watchdog.
-   # Do you want toocontinue anyway? [y/N] -> y
+   # WARNING: NTP is not configured to start at system boot.
+   # WARNING: No watchdog device found. If SBD is used, the cluster will be unable to start without a watchdog.
+   # Do you want to continue anyway? [y/N] -> y
    # IP address or hostname of existing node (for example: 192.168.1.1) [] -> IP address of node 1 for example 10.0.0.10
    # /root/.ssh/id_dsa already exists - overwrite? [y/N] N
    </code></pre>
 
-1. **[A]**  Ändra hacluster lösenord toohello samma lösenord
+1. **[A]**  Ändra hacluster lösenord till samma lösenord
 
    <pre><code> 
    sudo passwd hacluster
    </code></pre>
 
-1. **[A]**  Och konfigurera corosync toouse andra transport och lägga till nodelist. Klustret fungerar inte på annat sätt.
+1. **[A]**  Konfigurera corosync om du vill använda andra transport och lägga till nodelist. Klustret fungerar inte på annat sätt.
    
    <pre><code> 
    sudo vi /etc/corosync/corosync.conf   
    </code></pre>
 
-   Lägg till följande fetstil innehåll toohello hello.
+   Lägg till följande fetstil innehåll i filen.
    
    <pre><code> 
    [...]
@@ -729,7 +729,7 @@ hello följande föregås antingen **[A]** -tillämpliga tooall noder **[1]** -e
      [...]
    </code></pre>
 
-   Starta om tjänsten för hello corosync
+   Starta om tjänsten corosync
 
    <pre><code>
    sudo service corosync restart
@@ -741,7 +741,7 @@ hello följande föregås antingen **[A]** -tillämpliga tooall noder **[1]** -e
    sudo zypper install drbd drbd-kmp-default drbd-utils
    </code></pre>
 
-1. **[A]**  Skapa en partition för hello drbd enhet
+1. **[A]**  Skapa en partition för drbd-enhet
 
    <pre><code>
    sudo sh -c 'echo -e "n\n\n\n\n\nw\n" | fdisk /dev/sdc'
@@ -756,13 +756,13 @@ hello följande föregås antingen **[A]** -tillämpliga tooall noder **[1]** -e
    sudo lvcreate -l 50%FREE -n <b>NWS</b>_ERS vg_<b>NWS</b>
    </code></pre>
 
-1. **[A]**  Skapa hello SCS drbd enhet
+1. **[A]**  Skapa SCS drbd enhet
 
    <pre><code>
    sudo vi /etc/drbd.d/<b>NWS</b>_ascs.res
    </code></pre>
 
-   Infoga hello konfiguration för hello ny drbd enhet och avsluta
+   Infoga konfigurationen för den nya drbd enheten och avsluta
 
    <pre><code>
    resource <b>NWS</b>_ascs {
@@ -785,20 +785,20 @@ hello följande föregås antingen **[A]** -tillämpliga tooall noder **[1]** -e
    }
    </code></pre>
 
-   Skapa hello drbd enheten och starta den
+   Skapa drbd enheten och starta den
 
    <pre><code>
    sudo drbdadm create-md <b>NWS</b>_ascs
    sudo drbdadm up <b>NWS</b>_ascs
    </code></pre>
 
-1. **[A]**  Skapa hello ÄNDARE drbd enhet
+1. **[A]**  Skapa ÄNDARE drbd enhet
 
    <pre><code>
    sudo vi /etc/drbd.d/<b>NWS</b>_ers.res
    </code></pre>
 
-   Infoga hello konfiguration för hello ny drbd enhet och avsluta
+   Infoga konfigurationen för den nya drbd enheten och avsluta
 
    <pre><code>
    resource <b>NWS</b>_ers {
@@ -821,7 +821,7 @@ hello följande föregås antingen **[A]** -tillämpliga tooall noder **[1]** -e
    }
    </code></pre>
 
-   Skapa hello drbd enheten och starta den
+   Skapa drbd enheten och starta den
 
    <pre><code>
    sudo drbdadm create-md <b>NWS</b>_ers
@@ -835,14 +835,14 @@ hello följande föregås antingen **[A]** -tillämpliga tooall noder **[1]** -e
    sudo drbdadm new-current-uuid --clear-bitmap <b>NWS</b>_ers
    </code></pre>
 
-1. **[1]**  Hello primära noden
+1. **[1]**  Anger den primära noden
 
    <pre><code>
    sudo drbdadm primary --force <b>NWS</b>_ascs
    sudo drbdadm primary --force <b>NWS</b>_ers
    </code></pre>
 
-1. **[1]**  Vänta tills hello nya drbd enheter som ska synkroniseras
+1. **[1]**  Vänta tills nya drbd enheter som ska synkroniseras
 
    <pre><code>
    sudo cat /proc/drbd
@@ -857,7 +857,7 @@ hello följande föregås antingen **[A]** -tillämpliga tooall noder **[1]** -e
    #     ns:5142732 nr:0 dw:5142732 dr:5133924 al:30 bm:0 lo:0 pe:0 ua:0 ap:0 ep:1 wo:f oos:0
    </code></pre>
 
-1. **[1]**  Skapa filsystem på hello drbd enheter
+1. **[1]**  Skapa filsystem på drbd-enheter
 
    <pre><code>
    sudo mkfs.xfs /dev/drbd0
@@ -867,7 +867,7 @@ hello följande föregås antingen **[A]** -tillämpliga tooall noder **[1]** -e
 
 ### <a name="configure-cluster-framework"></a>Konfigurera klustret Framework
 
-**[1]**  Ändra standardinställningarna för hello
+**[1]**  Ändra standardinställningarna
 
    <pre><code>
    sudo crm configure
@@ -880,7 +880,7 @@ hello följande föregås antingen **[A]** -tillämpliga tooall noder **[1]** -e
 
 ## <a name="prepare-for-sap-netweaver-installation"></a>Förbereda för SAP NetWeaver installation
 
-1. **[A]**  Skapa hello delade kataloger
+1. **[A]**  Skapa delade kataloger
 
    <pre><code>
    sudo mkdir -p /sapmnt/<b>NWS</b>
@@ -897,7 +897,7 @@ hello följande föregås antingen **[A]** -tillämpliga tooall noder **[1]** -e
    <pre><code>
    sudo vi /etc/auto.master
 
-   # Add hello following line toohello file, save and exit
+   # Add the following line to the file, save and exit
    +auto.master
    /- /etc/auto.direct
    </code></pre>
@@ -907,13 +907,13 @@ hello följande föregås antingen **[A]** -tillämpliga tooall noder **[1]** -e
    <pre><code>
    sudo vi /etc/auto.direct
 
-   # Add hello following lines toohello file, save and exit
+   # Add the following lines to the file, save and exit
    /sapmnt/<b>NWS</b> -nfsvers=4,nosymlink,sync <b>nws-nfs</b>:/sapmntsid
    /usr/sap/trans -nfsvers=4,nosymlink,sync <b>nws-nfs</b>:/trans
    /usr/sap/<b>NWS</b>/SYS -nfsvers=4,nosymlink,sync <b>nws-nfs</b>:/sidsys
    </code></pre>
 
-   Starta om autofs toomount hello nya resurser
+   Starta om autofs montera nya resurser
 
    <pre><code>
    sudo systemctl enable autofs
@@ -925,17 +925,17 @@ hello följande föregås antingen **[A]** -tillämpliga tooall noder **[1]** -e
    <pre><code>
    sudo vi /etc/waagent.conf
 
-   # Set hello property ResourceDisk.EnableSwap tooy
+   # Set the property ResourceDisk.EnableSwap to y
    # Create and use swapfile on resource disk.
    ResourceDisk.EnableSwap=<b>y</b>
 
-   # Set hello size of hello SWAP file with property ResourceDisk.SwapSizeMB
-   # hello free space of resource disk varies by virtual machine size. Make sure that you do not set a value that is too big. You can check hello SWAP space with command swapon
-   # Size of hello swapfile.
+   # Set the size of the SWAP file with property ResourceDisk.SwapSizeMB
+   # The free space of resource disk varies by virtual machine size. Make sure that you do not set a value that is too big. You can check the SWAP space with command swapon
+   # Size of the swapfile.
    ResourceDisk.SwapSizeMB=<b>2000</b>
    </code></pre>
 
-   Starta om hello Agent tooactivate hello ändring
+   Starta om agenten för att aktivera ändringen
 
    <pre><code>
    sudo service waagent restart
@@ -943,7 +943,7 @@ hello följande föregås antingen **[A]** -tillämpliga tooall noder **[1]** -e
 
 ### <a name="installing-sap-netweaver-ascsers"></a>Installera SAP NetWeaver ASCS/ÄNDARE
 
-1. **[1]**  Skapa en virtuell IP-resurs och hälsoavsökningen för hello intern belastningsutjämnare
+1. **[1]**  Skapa en virtuell IP-resurs och hälsoavsökningen för den interna belastningsutjämnaren
 
    <pre><code>
    sudo crm node standby <b>nws-cl-1</b>
@@ -987,7 +987,7 @@ hello följande föregås antingen **[A]** -tillämpliga tooall noder **[1]** -e
    crm(live)configure# exit
    </code></pre>
 
-   Se till att hello klusterstatus är det ok och att alla resurser har startats. Det är inte viktigt på vilka nod hello resurser körs.
+   Kontrollera att klustret status är ok och att alla resurser har startats. Det är inte viktigt i vilken nod som använder resurserna.
 
    <pre><code>
    sudo crm_mon -r
@@ -1008,15 +1008,15 @@ hello följande föregås antingen **[A]** -tillämpliga tooall noder **[1]** -e
 
 1. **[1]**  Installera SAP NetWeaver ASCS  
 
-   Installera SAP NetWeaver ASCS som rot på hello första nod med ett virtuellt värdnamn som till exempel mappar toohello IP-adressen för hello klientdel konfiguration av belastningsutjämning för hello ASCS <b>nws ascs</b>, <b>10.0.0.10</b>och hello-instansnummer som du använde för hello avsökning av hello belastningsutjämnare till exempel <b>00</b>.
+   Installera SAP NetWeaver ASCS som rot på den första noden med hjälp av ett virtuellt värdnamn som till exempel mappar till IP-adressen för klientdel belastningsutjämningskonfigurationen för ASCS <b>nws ascs</b>, <b>10.0.0.10</b> och instansen tal som du använde för avsökning av belastningsutjämnaren till exempel <b>00</b>.
 
-   Du kan använda hello sapinst parametern SAPINST_REMOTE_ACCESS_USER tooallow en icke-rotanvändaren tooconnect toosapinst.
+   Du kan använda parametern sapinst SAPINST_REMOTE_ACCESS_USER för att tillåta en rot-användare att ansluta till sapinst.
 
    <pre><code>
    sudo &lt;swpm&gt;/sapinst SAPINST_REMOTE_ACCESS_USER=<b>sapadmin</b>
    </code></pre>
 
-1. **[1]**  Skapa en virtuell IP-resurs och hälsoavsökningen för hello intern belastningsutjämnare
+1. **[1]**  Skapa en virtuell IP-resurs och hälsoavsökningen för den interna belastningsutjämnaren
 
    <pre><code>
    sudo crm node standby <b>nws-cl-0</b>
@@ -1058,13 +1058,13 @@ hello följande föregås antingen **[A]** -tillämpliga tooall noder **[1]** -e
    
    crm(live)configure# commit
    # WARNING: Resources nc_NWS_ASCS,nc_NWS_ERS,nc_NWS_nfs violate uniqueness for parameter "binfile": "/usr/bin/nc"
-   # Do you still want toocommit (y/n)? y
+   # Do you still want to commit (y/n)? y
 
    crm(live)configure# exit
    
    </code></pre>
  
-   Se till att hello klusterstatus är det ok och att alla resurser har startats. Det är inte viktigt på vilka nod hello resurser körs.
+   Kontrollera att klustret status är ok och att alla resurser har startats. Det är inte viktigt i vilken nod som använder resurserna.
 
    <pre><code>
    sudo crm_mon -r
@@ -1092,34 +1092,34 @@ hello följande föregås antingen **[A]** -tillämpliga tooall noder **[1]** -e
 
 1. **[2]**  Installera SAP NetWeaver ÄNDARE  
 
-   Installera SAP NetWeaver ÄNDARE som rot på hello andra nod med ett virtuellt värdnamn som till exempel mappar toohello IP-adressen för hello klientdel konfiguration av belastningsutjämning för hello ÄNDARE <b>nws ändare</b>, <b>10.0.0.11</b> och hello-instansnummer som du använde för hello avsökning av hello belastningsutjämnare till exempel <b>02</b>.
+   Installera SAP NetWeaver ÄNDARE som rot på den andra noden med hjälp av ett virtuellt värdnamn som mappar till IP-adressen för klientdel belastningsutjämningskonfigurationen för ÄNDARE exempelvis <b>nws ändare</b>, <b>10.0.0.11</b> och instansen tal som du använde för avsökning av belastningsutjämnaren till exempel <b>02</b>.
 
-   Du kan använda hello sapinst parametern SAPINST_REMOTE_ACCESS_USER tooallow en icke-rotanvändaren tooconnect toosapinst.
+   Du kan använda parametern sapinst SAPINST_REMOTE_ACCESS_USER för att tillåta en rot-användare att ansluta till sapinst.
 
    <pre><code>
    sudo &lt;swpm&gt;/sapinst SAPINST_REMOTE_ACCESS_USER=<b>sapadmin</b>
    </code></pre>
 
    > [!NOTE]
-   > Använd SWPM SP 20 PL 05 eller högre. Lägre versioner korrekt inte hello behörigheter och hello installationen misslyckas.
+   > Använd SWPM SP 20 PL 05 eller högre. Lägre versioner anger inte behörigheter på rätt sätt och installationen misslyckas.
    > 
 
-1. **[1]**  Anpassa hello ASCS/SCS och ÄNDARE instans-profiler
+1. **[1]**  Adapt ASCS/SCS och ÄNDARE instansen profiler
  
    * ASCS/SCS-profil
 
    <pre><code> 
    sudo vi /sapmnt/<b>NWS</b>/profile/<b>NWS</b>_<b>ASCS00</b>_<b>nws-ascs</b>
 
-   # Change hello restart command tooa start command
+   # Change the restart command to a start command
    #Restart_Program_01 = local $(_EN) pf=$(_PF)
    Start_Program_01 = local $(_EN) pf=$(_PF)
 
-   # Add hello following lines
+   # Add the following lines
    service/halib = $(DIR_CT_RUN)/saphascriptco.so
    service/halib_cluster_connector = /usr/bin/sap_suse_cluster_connector
 
-   # Add hello keep alive parameter
+   # Add the keep alive parameter
    enque/encni/set_so_keepalive = true
    </code></pre>
 
@@ -1128,7 +1128,7 @@ hello följande föregås antingen **[A]** -tillämpliga tooall noder **[1]** -e
    <pre><code> 
    sudo vi /sapmnt/<b>NWS</b>/profile/<b>NWS</b>_ERS<b>02</b>_<b>nws-ers</b>
 
-   # Add hello following lines
+   # Add the following lines
    service/halib = $(DIR_CT_RUN)/saphascriptco.so
    service/halib_cluster_connector = /usr/bin/sap_suse_cluster_connector
    </code></pre>
@@ -1136,32 +1136,32 @@ hello följande föregås antingen **[A]** -tillämpliga tooall noder **[1]** -e
 
 1. **[A]**  Konfigurera Keep-Alive
 
-   hello kommunikation mellan hello SAP NetWeaver programservern och hello ASCS/SCS dirigeras via en belastningsutjämnare för programvara. hello belastningsutjämnaren kopplar från inaktiva anslutningar efter en konfigurerbar tidsgräns. tooprevent det du behöver tooset en parameter i hello SAP NetWeaver ASCS/SCS profil och ändra inställningar för hello Linux-system. Läs [SAP Obs 1410736] [ 1410736] för mer information.
+   Kommunikationen mellan SAP NetWeaver programservern och ASCS/SCS dirigeras via en belastningsutjämnare för programvara. Belastningsutjämnaren kopplar från inaktiva anslutningar efter en konfigurerbar tidsgräns. För att förhindra detta måste du ange en parameter i profilen för SAP NetWeaver ASCS/SCS och ändra inställningar för Linux-system. Läs [SAP Obs 1410736] [ 1410736] för mer information.
    
-   Hej ASCS/SCS profil parametern placera/encni/set_so_keepalive har redan lagts till i hello sista steget.
+   Den ASCS/SCS profil parametern placera/encni/set_so_keepalive har redan lagts till i det sista steget.
 
    <pre><code> 
-   # Change hello Linux system configuration
+   # Change the Linux system configuration
    sudo sysctl net.ipv4.tcp_keepalive_time=120
    </code></pre>
 
-1. **[A]**  Konfigurera hello SAP användare efter hello installationen
+1. **[A]**  Konfigurera SAP-användare efter installationen
  
    <pre><code>
-   # Add sidadm toohello haclient group
+   # Add sidadm to the haclient group
    sudo usermod -aG haclient <b>nws</b>adm   
    </code></pre>
 
-1. **[1]**  Lägg till hello ASCS och ÄNDARE SAP services toohello sapservice-fil
+1. **[1]**  Lägg till ASCS och ÄNDARE SAP-tjänster i filen sapservice
 
-   Lägg till hello ASCS-posten toohello andra tjänstnoden och kopiera hello ÄNDARE service post toohello första noden.
+   Lägg till ASCS tjänsten post till den andra noden och kopiera posten ÄNDARE tjänsten till den första noden.
 
    <pre><code>
    cat /usr/sap/sapservices | grep ASCS<b>00</b> | sudo ssh <b>nws-cl-1</b> "cat >>/usr/sap/sapservices"
    sudo ssh <b>nws-cl-1</b> "cat /usr/sap/sapservices" | grep ERS<b>02</b> | sudo tee -a /usr/sap/sapservices
    </code></pre>
 
-1. **[1]**  Skapa hello SAP klusterresurser
+1. **[1]**  Skapa klusterresurser SAP
 
    <pre><code>
    sudo crm configure property maintenance-mode="true"
@@ -1195,7 +1195,7 @@ hello följande föregås antingen **[A]** -tillämpliga tooall noder **[1]** -e
    sudo crm node online <b>nws-cl-0</b>
    </code></pre>
 
-   Se till att hello klusterstatus är det ok och att alla resurser har startats. Det är inte viktigt på vilka nod hello resurser körs.
+   Kontrollera att klustret status är ok och att alla resurser har startats. Det är inte viktigt i vilken nod som använder resurserna.
 
    <pre><code>
    sudo crm_mon -r
@@ -1224,39 +1224,39 @@ hello följande föregås antingen **[A]** -tillämpliga tooall noder **[1]** -e
 
 ### <a name="create-stonith-device"></a>Skapa STONITH enhet
 
-Hej STONITH enhet använder ett huvudnamn för tjänsten tooauthorize mot Microsoft Azure. Följ dessa steg toocreate ett huvudnamn för tjänsten.
+STONITH enheten använder ett huvudnamn för tjänsten för att godkänna mot Microsoft Azure. Följ dessa steg om du vill skapa ett huvudnamn för tjänsten.
 
-1. Gå för<https://portal.azure.com>
-1. Öppna hello Azure Active Directory-bladet  
-   Gå tooProperties och anteckna hello Directory-Id. Detta är hello **klient-id**.
+1. Gå till <https://portal.azure.com>
+1. Öppna bladet Azure Active Directory  
+   Gå till egenskaperna och Skriv ned Directory-Id. Det här är den **klient-id**.
 1. Klicka på appen registreringar
 1. Klicka på Lägg till
 1. Ange ett namn, Välj typ av program ”Web app/API”, ange en inloggnings-URL (till exempel http://localhost) och klicka på Skapa
-1. hello inloggnings-URL används inte och kan vara en giltig URL
-1. Välj hello nya App och klicka på nycklarna i hello på fliken Inställningar
+1. URL för inloggning används inte och kan vara en giltig URL
+1. Välj den nya appen och klicka på nycklar på fliken Inställningar
 1. Ange en beskrivning för en ny nyckel, Välj ”upphör aldrig att gälla” och klicka på Spara
-1. Skriv ned hello värde. Den används som hello **lösenord** för hello tjänstens huvudnamn
-1. Skriv ned hello program-Id. Den används som hello användarnamn (**inloggnings-id** i hello stegen nedan) för hello tjänstens huvudnamn
+1. Anteckna värdet. Den används som den **lösenord** för tjänstens huvudnamn
+1. Skriv ned det program-Id. Den används som användarnamnet (**inloggnings-id** i stegen nedan) för tjänstens huvudnamn
 
-hello tjänstens huvudnamn har inte behörigheter tooaccess Azure-resurser som standard. Du behöver toogive hello tjänstens huvudnamn behörigheter toostart och stoppa (frigöra) alla virtuella datorer i hello klustret.
+Tjänstens huvudnamn har inte behörighet att komma åt Azure-resurser som standard. Du behöver ge behörighet att starta och stoppa tjänstens huvudnamn (frigöra) alla virtuella datorer i klustret.
 
-1. Gå toohttps://portal.azure.com
-1. Öppna hello bladet för alla resurser
-1. Välj hello virtuell dator
+1. Gå till https://portal.azure.com
+1. Öppna bladet alla resurser
+1. Välj den virtuella datorn
 1. Klicka på åtkomstkontroll (IAM)
 1. Klicka på Lägg till
-1. Välj hello roll ägare
-1. Ange hello namnet på hello-program som du skapade ovan
+1. Välj rollen ägare
+1. Ange namnet på programmet som du skapade ovan
 1. Klicka på OK
 
-#### <a name="1-create-hello-stonith-devices"></a>**[1]**  Skapa hello STONITH enheter
+#### <a name="1-create-the-stonith-devices"></a>**[1]**  Skapa STONITH-enheter
 
-När du har redigerat hello behörigheter för hello virtuella datorer kan du konfigurera hello STONITH enheter i hello kluster.
+När du har redigerat behörigheter för de virtuella datorerna kan du konfigurera STONITH-enheter i klustret.
 
 <pre><code>
 sudo crm configure
 
-# replace hello bold string with your subscription id, resource group, tenant id, service principal id and password
+# replace the bold string with your subscription id, resource group, tenant id, service principal id and password
 
 crm(live)configure# primitive rsc_st_azure_1 stonith:fence_azure_arm \
    params subscriptionId="<b>subscription id</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant id</b>" login="<b>login id</b>" passwd="<b>password</b>"
@@ -1270,9 +1270,9 @@ crm(live)configure# commit
 crm(live)configure# exit
 </code></pre>
 
-#### <a name="1-enable-hello-use-of-a-stonith-device"></a>**[1]**  Aktivera hello användning av en STONITH-enhet
+#### <a name="1-enable-the-use-of-a-stonith-device"></a>**[1]**  Aktivera användning av en STONITH-enhet
 
-Aktivera hello användning av en STONITH-enhet
+Aktivera användning av en STONITH-enhet
 
 <pre><code>
 sudo crm configure property stonith-enabled=true 
@@ -1280,16 +1280,16 @@ sudo crm configure property stonith-enabled=true
 
 ## <a name="install-database"></a>Installera databasen
 
-I det här exemplet är en SAP HANA System replikering installeras och konfigureras. SAP HANA körs i samma kluster som hello SAP NetWeaver ASCS/SCS och ÄNDARE hello. Du kan också installera SAP HANA på ett kluster. Se [hög tillgänglighet för SAP HANA på Azure Virtual Machines (virtuella datorer)] [ sap-hana-ha] för mer information.
+I det här exemplet är en SAP HANA System replikering installeras och konfigureras. SAP HANA körs i samma kluster som SAP NetWeaver ASCS/SCS och ÄNDARE. Du kan också installera SAP HANA på ett kluster. Se [hög tillgänglighet för SAP HANA på Azure Virtual Machines (virtuella datorer)] [ sap-hana-ha] för mer information.
 
 ### <a name="prepare-for-sap-hana-installation"></a>Förbereda för SAP HANA-installation
 
-Normalt bör du använda LVM för volymer som lagrar data och loggfiler. I testsyfte kan välja du också toostore hello data och loggfilen fil direkt på en vanlig disk.
+Normalt bör du använda LVM för volymer som lagrar data och loggfiler. I testsyfte kan välja du också att lagra data och loggfilen direkt på en vanlig disk.
 
 1. **[A]**  LVM  
-   hello exemplet nedan förutsätter att hello virtuella datorer har fyra datadiskar som är anslutna som ska använda toocreate två volymer.
+   Exemplet nedan förutsätter att de virtuella datorerna har fyra datadiskar som är anslutna som ska användas för att skapa två volymer.
    
-   Skapa fysiska volymer för alla diskar som du vill toouse.
+   Skapa fysiska volymer för alla diskar som du vill använda.
    
    <pre><code>
    sudo pvcreate /dev/sdd
@@ -1298,7 +1298,7 @@ Normalt bör du använda LVM för volymer som lagrar data och loggfiler. I tests
    sudo pvcreate /dev/sdg
    </code></pre>
    
-   Skapa en volym grupp för hello-datafiler, en volym grupp för hello loggfiler och en för hello delade katalogen för SAP HANA
+   Skapa en volym grupp för datafiler, en volym grupp för loggfilerna och en för den delade katalogen för SAP HANA
    
    <pre><code>
    sudo vgcreate vg_hana_data /dev/sdd /dev/sde
@@ -1306,7 +1306,7 @@ Normalt bör du använda LVM för volymer som lagrar data och loggfiler. I tests
    sudo vgcreate vg_hana_shared /dev/sdg
    </code></pre>
    
-   Skapa hello logiska volymer
+   Skapa logiska volymer
    
    <pre><code>
    sudo lvcreate -l 100%FREE -n hana_data vg_hana_data
@@ -1317,7 +1317,7 @@ Normalt bör du använda LVM för volymer som lagrar data och loggfiler. I tests
    sudo mkfs.xfs /dev/vg_hana_shared/hana_shared
    </code></pre>
    
-   Skapa hello montera kataloger och kopiera hello UUID för alla logiska volymer
+   Skapa mount-kataloger och kopiera alla logiska volymer UUID
    
    <pre><code>
    sudo mkdir -p /hana/data
@@ -1326,17 +1326,17 @@ Normalt bör du använda LVM för volymer som lagrar data och loggfiler. I tests
    sudo chattr +i /hana/data
    sudo chattr +i /hana/log
    sudo chattr +i /hana/shared
-   # write down hello id of /dev/vg_hana_data/hana_data, /dev/vg_hana_log/hana_log and /dev/vg_hana_shared/hana_shared
+   # write down the id of /dev/vg_hana_data/hana_data, /dev/vg_hana_log/hana_log and /dev/vg_hana_shared/hana_shared
    sudo blkid
    </code></pre>
    
-   Skapa autofs poster för hello tre logiska volymer
+   Skapa autofs poster för de tre logiska volymerna
    
    <pre><code>
    sudo vi /etc/auto.direct
    </code></pre>
    
-   Infoga den här raden toosudo vi /etc/auto.direct
+   Infoga raden till sudo vi /etc/auto.direct
    
    <pre><code>
    /hana/data -fstype=xfs :UUID=<b>&lt;UUID of /dev/vg_hana_data/hana_data&gt;</b>
@@ -1344,7 +1344,7 @@ Normalt bör du använda LVM för volymer som lagrar data och loggfiler. I tests
    /hana/shared -fstype=xfs :UUID=<b>&lt;UUID of /dev/vg_hana_shared/hana_shared&gt;</b>
    </code></pre>
    
-   Montera hello nya volymer
+   Montera nya volymer
    
    <pre><code>
    sudo service autofs restart 
@@ -1352,22 +1352,22 @@ Normalt bör du använda LVM för volymer som lagrar data och loggfiler. I tests
 
 1. **[A]**  Vanlig diskar  
 
-   För små eller demonstrera system, du kan placera HANA data och loggfilen filer på en disk. hello följande kommandon skapar en partition på /dev/sdc och formatera den med xfs.
+   För små eller demonstrera system, du kan placera HANA data och loggfilen filer på en disk. Följande kommandon skapar en partition på /dev/sdc och formatera den med xfs.
    ```bash
    sudo sh -c 'echo -e "n\n\n\n\n\nw\n" | fdisk /dev/sdd'
    sudo mkfs.xfs /dev/sdd1
    
-   # write down hello id of /dev/sdd1
+   # write down the id of /dev/sdd1
    sudo /sbin/blkid
    sudo vi /etc/auto.direct
    ```
    
-   Infoga den här raden too/etc/auto.direct
+   Infoga raden till /etc/auto.direct
    <pre><code>
    /hana -fstype=xfs :UUID=<b>&lt;UUID&gt;</b>
    </code></pre>
    
-   Skapa hello målkatalogen och montera hello disk.
+   Skapa målkatalogen och montera disken.
    
    <pre><code>
    sudo mkdir /hana
@@ -1377,9 +1377,9 @@ Normalt bör du använda LVM för volymer som lagrar data och loggfiler. I tests
 
 ### <a name="installing-sap-hana"></a>Installera SAP HANA
 
-hello följande baseras på kapitel 4 i hello [SAP HANA SR prestanda optimerade scenariot guiden] [ suse-hana-ha-guide] tooinstall SAP HANA System replikering. Läs den innan du fortsätter hello-installationen.
+Följande steg baseras på kapitel 4 i den [SAP HANA SR prestanda optimerade scenariot guiden] [ suse-hana-ha-guide] att installera SAP HANA System replikering. Läs den innan du fortsätter med installationen.
 
-1. **[A]**  Kör hdblcm från hello HANA DVD
+1. **[A]**  Kör hdblcm från DVD: n HANA
    
    <pre><code>
    sudo hdblcm --sid=<b>HDB</b> --number=<b>03</b> --action=install --batch --password=<b>&lt;password&gt;</b> --system_user_password=<b>&lt;password for system user&gt;</b>
@@ -1389,18 +1389,18 @@ hello följande baseras på kapitel 4 i hello [SAP HANA SR prestanda optimerade 
 
 1. **[A]**  Uppgradera SAP Värdagenten
 
-   Hämta hello senaste SAP Värdagenten Arkiv från hello [SAP Softwarecenter] [ sap-swcenter] och kör hello följande kommando tooupgrade hello agent. Ersätt hello sökvägen toohello toopoint toohello arkivfilen du laddade ned.
+   Hämta senaste SAP Värdagenten arkivet från den [SAP Softwarecenter] [ sap-swcenter] och kör följande kommando för att uppgradera agenten. Ersätt sökvägen till arkivet så att den pekar till den fil som du hämtat.
    <pre><code>
-   sudo /usr/sap/hostctrl/exe/saphostexec -upgrade -archive <b>&lt;path tooSAP Host Agent SAR&gt;</b> 
+   sudo /usr/sap/hostctrl/exe/saphostexec -upgrade -archive <b>&lt;path to SAP Host Agent SAR&gt;</b> 
    </code></pre>
 
 1. **[1]**  Skapa HANA replikering (som rot)  
 
-   Kör följande kommando hello. Kontrollera att tooreplace fetstil strängar (HANA System-ID HDB och instans antalet 03) med hello värdena för SAP HANA-installationen.
+   Kör följande kommando. Se till att ersätta fetstil strängar (HANA System-ID HDB och instans antalet 03) med värden för SAP HANA-installationen.
    <pre><code>
    PATH="$PATH:/usr/sap/<b>HDB</b>/HDB<b>03</b>/exe"
    hdbsql -u system -i <b>03</b> 'CREATE USER <b>hdb</b>hasync PASSWORD "<b>passwd</b>"' 
-   hdbsql -u system -i <b>03</b> 'GRANT DATA ADMIN too<b>hdb</b>hasync' 
+   hdbsql -u system -i <b>03</b> 'GRANT DATA ADMIN TO <b>hdb</b>hasync' 
    hdbsql -u system -i <b>03</b> 'ALTER USER <b>hdb</b>hasync DISABLE PASSWORD LIFETIME' 
    </code></pre>
 
@@ -1418,14 +1418,14 @@ hello följande baseras på kapitel 4 i hello [SAP HANA SR prestanda optimerade 
    hdbsql -u system -i <b>03</b> "BACKUP DATA USING FILE ('<b>initialbackup</b>')" 
    </code></pre>
 
-1. **[1]**  Växla toohello HANA sapsid användare och skapa hello primär plats.
+1. **[1]**  Växla till HANA sapsid användare och skapa den primära platsen.
 
    <pre><code>
    su - <b>hdb</b>adm
    hdbnsutil -sr_enable –-name=<b>SITE1</b>
    </code></pre>
 
-1. **[2]**  Växla toohello HANA sapsid användare och skapa hello sekundär plats.
+1. **[2]**  Växla till HANA sapsid användare och skapa en sekundär plats.
 
    <pre><code>
    su - <b>hdb</b>adm
@@ -1435,12 +1435,12 @@ hello följande baseras på kapitel 4 i hello [SAP HANA SR prestanda optimerade 
 
 1. **[1]**  Skapa SAP HANA klusterresurser
 
-   Först skapa hello-topologi.
+   Först skapa topologin.
    
    <pre><code>
    sudo crm configure
 
-   # replace hello bold string with your instance number and HANA system id
+   # replace the bold string with your instance number and HANA system id
    
    crm(live)configure# primitive rsc_SAPHanaTopology_<b>HDB</b>_HDB<b>03</b>   ocf:suse:SAPHanaTopology \
      operations $id="rsc_sap2_<b>HDB</b>_HDB<b>03</b>-operations" \
@@ -1456,12 +1456,12 @@ hello följande baseras på kapitel 4 i hello [SAP HANA SR prestanda optimerade 
    crm(live)configure# exit
    </code></pre>
    
-   Skapa sedan hello HANA resurser
+   Skapa sedan HANA-resurser
    
    <pre><code>
    sudo crm configure
 
-   # replace hello bold string with your instance number, HANA system id and hello frontend IP address of hello Azure load balancer. 
+   # replace the bold string with your instance number, HANA system id and the frontend IP address of the Azure load balancer. 
     
    crm(live)configure# primitive rsc_SAPHana_<b>HDB</b>_HDB<b>03</b> ocf:suse:SAPHana \
      operations $id="rsc_sap_<b>HDB</b>_HDB<b>03</b>-operations" \
@@ -1499,7 +1499,7 @@ hello följande baseras på kapitel 4 i hello [SAP HANA SR prestanda optimerade 
    crm(live)configure# exit
    </code></pre>
 
-   Se till att hello klusterstatus är det ok och att alla resurser har startats. Det är inte viktigt på vilka nod hello resurser körs.
+   Kontrollera att klustret status är ok och att alla resurser har startats. Det är inte viktigt i vilken nod som använder resurserna.
 
    <pre><code>
    sudo crm_mon -r
@@ -1536,11 +1536,11 @@ hello följande baseras på kapitel 4 i hello [SAP HANA SR prestanda optimerade 
    # rsc_st_azure_2  (stonith:fence_azure_arm):      <b>Started nws-cl-1</b>
    </code></pre>
 
-1. **[1]**  Installera hello SAP NetWeaver-databasinstans
+1. **[1]**  Installera databasinstansen SAP NetWeaver
 
-   Installera hello SAP NetWeaver-databasinstans som rot med hjälp av ett virtuellt värdnamn som mappar toohello IP-adressen för hello klientdel konfiguration av belastningsutjämning för hello databasen till exempel <b>nws-db</b> och <b>10.0.0.12</b>.
+   Installera SAP NetWeaver-databasinstans som rot med hjälp av ett virtuellt värdnamn som mappar till IP-adressen för klientdel belastningsutjämningskonfigurationen för databasen, till exempel <b>nws-db</b> och <b>10.0.0.12</b>.
 
-   Du kan använda hello sapinst parametern SAPINST_REMOTE_ACCESS_USER tooallow en icke-rotanvändaren tooconnect toosapinst.
+   Du kan använda parametern sapinst SAPINST_REMOTE_ACCESS_USER för att tillåta en rot-användare att ansluta till sapinst.
 
    <pre><code>
    sudo &lt;swpm&gt;/sapinst SAPINST_REMOTE_ACCESS_USER=<b>sapadmin</b>
@@ -1548,30 +1548,30 @@ hello följande baseras på kapitel 4 i hello [SAP HANA SR prestanda optimerade 
 
 ## <a name="sap-netweaver-application-server-installation"></a>SAP NetWeaver application server-installation
 
-Följ dessa steg tooinstall en SAP-programserver. hello stegen nedan förutsätter att du installerar hello Programserver på en annan server än hello ASCS/SCS och HANA servrar. Annars behövs några av hello stegen nedan (t.ex. Konfigurera värdnamnsmatchning) inte.
+Följ dessa steg om du vill installera en SAP-programserver. Stegen nedan förutsätter att du installerar application server på en annan server än ASCS/SCS och HANA-servrar. Annars behövs vissa av stegen nedan (t.ex. Konfigurera värdnamnsmatchning) inte.
 
 1. Konfigurera värdnamnsmatchning    
-   Du kan använda en DNS-server, eller så kan du ändra hello/etc/hosts på alla noder. Det här exemplet visar hur toouse hello/etc/hosts-filen.
-   Ersätt hello IP-adress och hello värdnamn i hello följande kommandon
+   Du kan använda en DNS-server, eller så kan du ändra de/etc/hosts på alla noder. Det här exemplet visar hur du använder/etc/hosts-filen.
+   Ersätt IP-adressen och värdnamnet i följande kommandon
    ```bash
    sudo vi /etc/hosts
    ```
-   Infoga hello följande rader för/etc/hosts. Ändra hello IP-adress och värddatornamn toomatch din miljö    
+   Infoga följande rader till/etc/hosts. Ändra IP-adressen och värdnamnet som matchar din miljö    
     
    <pre><code>
-   # IP address of hello load balancer frontend configuration for NFS
+   # IP address of the load balancer frontend configuration for NFS
    <b>10.0.0.4 nws-nfs</b>
-   # IP address of hello load balancer frontend configuration for SAP NetWeaver ASCS/SCS
+   # IP address of the load balancer frontend configuration for SAP NetWeaver ASCS/SCS
    <b>10.0.0.10 nws-ascs</b>
-   # IP address of hello load balancer frontend configuration for SAP NetWeaver ERS
+   # IP address of the load balancer frontend configuration for SAP NetWeaver ERS
    <b>10.0.0.11 nws-ers</b>
-   # IP address of hello load balancer frontend configuration for database
+   # IP address of the load balancer frontend configuration for database
    <b>10.0.0.12 nws-db</b>
-   # IP address of hello application server
+   # IP address of the application server
    <b>10.0.0.8 nws-di-0</b>
    </code></pre>
 
-1. Skapa hello sapmnt katalog
+1. Skapa katalogen sapmnt
 
    <pre><code>
    sudo mkdir -p /sapmnt/<b>NWS</b>
@@ -1586,7 +1586,7 @@ Följ dessa steg tooinstall en SAP-programserver. hello stegen nedan förutsätt
    <pre><code>
    sudo vi /etc/auto.master
 
-   # Add hello following line toohello file, save and exit
+   # Add the following line to the file, save and exit
    +auto.master
    /- /etc/auto.direct
    </code></pre>
@@ -1596,12 +1596,12 @@ Följ dessa steg tooinstall en SAP-programserver. hello stegen nedan förutsätt
    <pre><code>
    sudo vi /etc/auto.direct
 
-   # Add hello following lines toohello file, save and exit
+   # Add the following lines to the file, save and exit
    /sapmnt/<b>NWS</b> -nfsvers=4,nosymlink,sync <b>nws-nfs</b>:/sapmntsid
    /usr/sap/trans -nfsvers=4,nosymlink,sync <b>nws-nfs</b>:/trans
    </code></pre>
 
-   Starta om autofs toomount hello nya resurser
+   Starta om autofs montera nya resurser
 
    <pre><code>
    sudo systemctl enable autofs
@@ -1613,17 +1613,17 @@ Följ dessa steg tooinstall en SAP-programserver. hello stegen nedan förutsätt
    <pre><code>
    sudo vi /etc/waagent.conf
 
-   # Set hello property ResourceDisk.EnableSwap tooy
+   # Set the property ResourceDisk.EnableSwap to y
    # Create and use swapfile on resource disk.
    ResourceDisk.EnableSwap=<b>y</b>
 
-   # Set hello size of hello SWAP file with property ResourceDisk.SwapSizeMB
-   # hello free space of resource disk varies by virtual machine size. Make sure that you do not set a value that is too big. You can check hello SWAP space with command swapon
-   # Size of hello swapfile.
+   # Set the size of the SWAP file with property ResourceDisk.SwapSizeMB
+   # The free space of resource disk varies by virtual machine size. Make sure that you do not set a value that is too big. You can check the SWAP space with command swapon
+   # Size of the swapfile.
    ResourceDisk.SwapSizeMB=<b>2000</b>
    </code></pre>
 
-   Starta om hello Agent tooactivate hello ändring
+   Starta om agenten för att aktivera ändringen
 
    <pre><code>
    sudo service waagent restart
@@ -1633,7 +1633,7 @@ Följ dessa steg tooinstall en SAP-programserver. hello stegen nedan förutsätt
 
    Installera en primär eller ytterligare SAP NetWeaver programserver.
 
-   Du kan använda hello sapinst parametern SAPINST_REMOTE_ACCESS_USER tooallow en icke-rotanvändaren tooconnect toosapinst.
+   Du kan använda parametern sapinst SAPINST_REMOTE_ACCESS_USER för att tillåta en rot-användare att ansluta till sapinst.
 
    <pre><code>
    sudo &lt;swpm&gt;/sapinst SAPINST_REMOTE_ACCESS_USER=<b>sapadmin</b>
@@ -1641,7 +1641,7 @@ Följ dessa steg tooinstall en SAP-programserver. hello stegen nedan förutsätt
 
 1. Uppdatera SAP HANA säker lagringstjänst
 
-   Uppdatera hello SAP HANA säker lagra toopoint toohello virtuella namnet på hello SAP HANA System Replication installationen.
+   Uppdatera SAP HANA säker lagringstjänst att peka till det virtuella namnet på installationsprogrammet för SAP HANA System replikering.
    <pre><code>
    su - <b>nws</b>adm
    hdbuserstore SET DEFAULT <b>nws-db</b>:3<b>03</b>15 <b>SAPABAP1</b> <b>&lt;password of ABAP schema&gt;</b>
@@ -1651,5 +1651,5 @@ Följ dessa steg tooinstall en SAP-programserver. hello stegen nedan förutsätt
 * [Azure virtuella datorer planering och implementering för SAP][planning-guide]
 * [Distribution av Azure virtuella datorer för SAP][deployment-guide]
 * [Azure virtuella datorer DBMS-distribution för SAP][dbms-guide]
-* hur tooestablish hög tillgänglighet och planera för katastrofåterställning för SAP HANA i Azure (stora instanser), se toolearn [SAP HANA (stora instanser) hög tillgänglighet och katastrofåterställning recovery på Azure](hana-overview-high-availability-disaster-recovery.md).
-* hur tooestablish hög tillgänglighet och planera för katastrofåterställning för SAP HANA på Azure Virtual Machines, se toolearn [hög tillgänglighet för SAP HANA på Azure Virtual Machines (virtuella datorer)][sap-hana-ha]
+* Information om hur du upprättar och planera för katastrofåterställning för SAP HANA i Azure (stora instanser) med hög tillgänglighet finns [SAP HANA (stora instanser) hög tillgänglighet och katastrofåterställning recovery på Azure](hana-overview-high-availability-disaster-recovery.md).
+* Information om hur du upprättar och planera för katastrofåterställning för SAP HANA på virtuella Azure-datorer med hög tillgänglighet finns [hög tillgänglighet för SAP HANA på Azure Virtual Machines (virtuella datorer)][sap-hana-ha]

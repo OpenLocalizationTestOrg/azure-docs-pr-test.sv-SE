@@ -1,6 +1,6 @@
 ---
-title: "aaaAzure Site Recovery-distribution planner för VMware till Azure | Microsoft Docs"
-description: "Detta är hello Azure Site Recovery-distribution planner användarhandboken."
+title: "Azure Site Recovery-kapacitetsplaneraren för VMware till Azure| Microsoft Docs"
+description: "Det här är användarhandboken för Azure Site Recovery-kapacitetsplaneraren."
 services: site-recovery
 documentationcenter: 
 author: nsoneji
@@ -14,157 +14,157 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 08/28/2017
 ms.author: nisoneji
-ms.openlocfilehash: a8c13cd47850575769e0186528807bc525bdeec7
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 60b0641076c2fa8ed2feb5c64e7b119519f46cf4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-site-recovery-deployment-planner"></a>Kapacitetsplaneraren i Azure Site Recovery
-Den här artikeln är hello Azure Site Recovery-distribution Planner användarhandboken för VMware till Azure Produktionsdistribution.
+Den här artikeln utgör användarhandboken för Azure Site Recovery Deployment Planner för produktionsdistribution av VMware till Azure.
 
 ## <a name="overview"></a>Översikt
 
-Innan du börjar skydda alla virtuella VMware-datorer (VM) med hjälp av Site Recovery allokera tillräckligt med bandbredd, baserat på din dagliga data ändras, toomeet din önskade återställningspunktmål (RPO). Vara säker på att toodeploy hello rätt antal konfigurationsservrar och processen servrar lokalt.
+Innan du börjar skyddar virtuella VMware-datorer med hjälp av Site Recovery måste du allokera tillräckligt mycket bandbredd sett till din dagliga dataändringshastighet så att du når önskat mål för återställningspunkt. Du måste distribuera tillräckligt många konfigurationsservrar och processervrar lokalt.
 
-Du måste också toocreate hello rätt typ och antal mål Azure storage-konton. Du skapar antingen Standard Storage- eller Premium Storage-konton, och väger in tillväxt på källproduktionsservrarna på grund av ökad användning under en viss tid. Du väljer hello lagringstyp per VM, baserat på arbetsbelastning egenskaper (till exempel läsning och skrivning i/o-åtgärder per sekund [IOPS] eller dataomsättningen) och begränsar Site Recovery.
+Du måste också skapa rätt typ och antal Azure-mållagringskonton. Du skapar antingen Standard Storage- eller Premium Storage-konton, och väger in tillväxt på källproduktionsservrarna på grund av ökad användning under en viss tid. Du väljer lagringstyp per virtuell dator baserat på arbetsbelastningens egenskaper (exempelvis läs- och skrivbehörighet, i/o-åtgärder per sekund [IOPS] eller dataomsättningen) och Site Recovery-begränsningarna.
 
-förhandsversion av hello Site Recovery-distribution planner är ett kommandoradsverktyg som är för närvarande endast tillgängligt för hello VMware-Azure-scenario. Du kan via fjärranslutning profil din virtuella VMware-datorer med hjälp av det här verktyget (med inga produktion inverkan som helst) toounderstand hello bandbredd och krav för Azure Storage för replikering som lyckades och testa redundans. Du kan köra verktyget hello utan att installera alla Site Recovery-komponenter på lokala. Dock tooget korrekt uppnås genomströmning resultat, rekommenderar vi att du kör hello planner på en Windows-Server som uppfyller hello krav som finns i hello Site Recovery konfigurationsservern att så småningom måste toodeploy som ett första steg i hello i Produktionsdistribution.
+Site Recovery Deployment Planner Public Preview är ett kommandoradsverktyg som för närvarande bara är tillgängligt för scenariot med VMware till Azure. Du kan profilera dina virtuella VMware-datorer via fjärranslutning med det här verktyget (utan att produktionen påverkas alls) så att du får en uppfattning om vilken bandbredd och hur stort Azure Storage-lagringsutrymme som kommer att behövas för replikering och redundansväxling. Du kan köra verktyget utan att installera alla Site Recovery-komponenter lokalt. Du får dock bättre dataflödesresultat om du kör planeringsverktyget på en Windows-server som uppfyller minimikraven för den konfigurationsserver för Site Recovery som du kommer att ta i drift som ett av de första stegen i produktionsdistributionen.
 
-hello verktyget ger hello följande information:
+Du kan se följande information i verktyget:
 
 **Utvärdering av kompatibilitet**
 
 * En utvärdering av om den virtuella datorn stöds baserat på antal diskar, diskstorlek, IOPS, dataomsättninn och starttyp (EFI/BIOS)
-* Hej uppskattade bandbredd som krävs för deltareplikering
+* Beräknad nätverksbandbredd som krävs för deltareplikering
 
 **Nätverkets bandbreddsbehov kontra utvärdering av återställningspunktmål**
 
-* Hej uppskattade bandbredd som krävs för deltareplikering
-* hello dataflödet som Site Recovery kan hämta från lokala tooAzure
-* hello antalet virtuella datorer toobatch, baserat på hello Uppskattad bandbredd toocomplete inledande replikering i en viss tidsperiod
+* Beräknad nätverksbandbredd som krävs för deltareplikering
+* Dataflödet som Site Recovery kan få från lokala datorer till Azure
+* Antalet virtuella datorer att bearbeta per batch sett till den uppskattade bandbredd som krävs för att slutföra den inledande replikeringen inom viss tid
 
 **Krav på infrastruktur för Azure**
 
-* hello lagringsutrymmet typ (standard eller premium storage-konto) som krävs för varje virtuell dator
-* hello Totalt antal standard och premium storage-konton toobe ställts in för replikering
+* Typ av lagringsutrymme (Standard Storage- eller Premium Storage-konto) som krävs för varje virtuell dator
+* Totalt antal Standard Storage- och Premium Storage-konton som ska konfigureras för replikering
 * Namnförslag för lagringskonton baserade på riktlinjer för Azure Storage
-* Hej lagringskonto placering för alla virtuella datorer
-* hello antal Azure kärnor toobe ställa in innan du testa redundans eller växling vid fel på hello prenumeration
-* hello Azure VM-rekommenderade storleken för varje lokala VM
+* Lagringskontots placering för alla virtuella datorer
+* Antalet Azure-kärnor som ska etableras innan redundanstest/redundansväxling för prenumerationen
+* Den rekommenderade storleken på den virtuella Azure-datorn för varje lokal virtuell dator
 
 **Krav på lokal infrastruktur**
-* hello krävs antal konfigurationsservrar och processen servrar toobe distribueras lokalt
+* Antalet konfigurationsservrar och processervrar som måste distribueras lokalt
 
 >[!IMPORTANT]
 >
->Eftersom användning är sannolikt tooincrease över tid, alla hello föregående verktyget beräkningar utförs under förutsättning att ett 30 procent tillväxtfaktor arbetsbelastning egenskaper, och använder en 95 percentilvärdet för alla hello profilering mått (läsning och skrivning IOPS, omsättningsuppdateringar o.s.v. tillbaka). Båda parametrarna (tillväxtfaktorn och percentilberäkningen) kan konfigureras. toolearn mer om tillväxtfaktor, i avsnittet hello ”tillväxt faktorer”. toolearn mer om percentilvärdet, i avsnittet hello ”percentilvärdet används för beräkning av hello”.
+>Eftersom användningen troligtvis ökar med tiden utförs alla föregående verktygsberäkningar med förutsättningen att en 30-procentig tillväxtfaktor för arbetsbelastningen egenskaper och ett 95-procentigt percentilvärde används för alla profileringsmått (skrivbar IOPS, omsättning och så vidare). Båda parametrarna (tillväxtfaktorn och percentilberäkningen) kan konfigureras. Om du vill veta mer om tillväxtfaktor, se avsnittet ”Överväganden för tillväxtfaktorer”. Mer information om percentilvärdet finns i avsnittet ”Percentilvärdet som används för beräkningen”.
 >
 
 ## <a name="requirements"></a>Krav
-hello-verktyget har två huvudsakliga faser: profilering och rapportgenerering. Det finns också en tredje alternativet toocalculate genomströmning endast. hello kraven för hello server från vilken hello profilering och genomströmning mätning startas visas i hello följande tabell:
+Verktyget har två huvudfaser: profilering och rapportgenerering. Det finns också ett tredje alternativ som endast beräknar dataflödet. Kraven för servern som profilering och dataflödesmätning initieras från visas i följande tabell:
 
 | Serverkrav | Beskrivning|
 |---|---|
-|Profilering och mätning av dataflöde| <ul><li>Operativsystem: Microsoft Windows Server 2012 R2<br>(helst matchar minst hello [storlek rekommendationer för hello konfigurationsservern](https://aka.ms/asr-v2a-on-prem-components))</li><li>Datorkonfiguration: 8 virtuella processorer, 16 GB RAM-minne, 300 GB hårddisk</li><li>[Microsoft .NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[VMware vSphere PowerCLI 6.0 R3](https://aka.ms/download_powercli)</li><li>[Microsoft Visual C++ Redistributable for Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>TooAzure för Internet-åtkomst från den här servern</li><li>Azure Storage-konto</li><li>Administratörsbehörighet på hello-server</li><li>Minst 100 GB ledigt diskutrymme (förutsatt 1 000 virtuella datorer med ett medeltal av de tre diskar vardera, profilerade under 30 dagar)</li><li>VMware vCenter statistik inställningar ska ställas in too2 eller hög nivå</li><li>Tillåt port 443: ASR distribution Planner använder den här porten tooconnect toovCenter server/ESXi-värd</ul></ul>|
+|Profilering och mätning av dataflöde| <ul><li>Operativsystem: Microsoft Windows Server 2012 R2<br>(matchar helst åtminstone [storleksrekommendationerna för konfigurationsservern](https://aka.ms/asr-v2a-on-prem-components))</li><li>Datorkonfiguration: 8 virtuella processorer, 16 GB RAM-minne, 300 GB hårddisk</li><li>[Microsoft .NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[VMware vSphere PowerCLI 6.0 R3](https://aka.ms/download_powercli)</li><li>[Microsoft Visual C++ Redistributable for Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>Internetåtkomst till Azure från den här servern</li><li>Azure Storage-konto</li><li>Administratörsbehörighet till servern</li><li>Minst 100 GB ledigt diskutrymme (förutsatt 1 000 virtuella datorer med ett medeltal av de tre diskar vardera, profilerade under 30 dagar)</li><li>Nivåinställningarna för VMware vCenter-statistik bör anges till 2 eller hög nivå</li><li>Tillåt port 443: ASR Deployment Planner använder den här porten för att ansluta till vCenter-servern/ESXi-värden</ul></ul>|
 | Rapportgenerering | En Windows-dator eller Windows Server med Microsoft Excel 2013 eller senare |
-| Användarbehörigheter | Läsbehörighet för hello-användarkonto som har använt tooaccess hello VMware vCenter server/VMware vSphere ESXi-värd under profilering |
+| Användarbehörigheter | Läsbehörighet för det användarkonto som ska användas för åtkomst till VMware vCenter-servern/VMware vSphere ESXi-värden under profilering |
 
 > [!NOTE]
 >
->hello-verktyget kan profile endast virtuella datorer med VMDK och RDM diskar. Den kan inte profilera virtuella datorer med iSCSI- eller NFS-diskar. Site Recovery har stöd för iSCSI och NFS-diskar för VMware-servrar, men eftersom hello distribution planner finns inte i hello Gäst och den profiler med vCenter prestandaräknare, hello verktyget har inte insyn i dessa disktyper.
+>Verktyget kan enbart profilera virtuella datorer med VMDK- och RDM-diskar. Den kan inte profilera virtuella datorer med iSCSI- eller NFS-diskar. Även om Site Recovery har stöd för iSCSI- och NFS-diskar för VMware-servrar kan inte verktyget se dessa disktyper eftersom kapacitetsplaneraren inte körs i gästen och profileringen bara utförs med prestandaräknare för vCenter.
 >
 
-## <a name="download-and-extract-hello-public-preview"></a>Ladda ned och extrahera hello förhandsversion
-1. Hämta hello senaste versionen av hello [Site Recovery-distribution planner förhandsversion](https://aka.ms/asr-deployment-planner).  
-hello verktyget paketeras i en .zip-mapp. hello aktuella versionen av hello verktyget stöder bara VMware till Azure för hello-scenariot.
+## <a name="download-and-extract-the-public-preview"></a>Hämta och extrahera den offentliga förhandsutgåvan
+1. Ladda ned den senaste versionen av [Site Recovery Deployment Planner Public Preview](https://aka.ms/asr-deployment-planner).  
+Verktyget är paketerat i en komprimerad mapp. Den aktuella versionen av verktyget har endast stöd för scenariot med VMware till Azure.
 
-2. Kopiera hello .zip mappen toohello Windows server som du vill toorun hello-verktyget.  
-Du kan köra verktyget hello från Windows Server 2012 R2 om hello-servern har network access tooconnect toohello vCenter server/vSphere ESXi-värd som innehåller hello VMs toobe profileras startas. Vi rekommenderar dock att du kör hello verktyget på en server vars maskinvarukonfiguration uppfyller hello [configuration server sizing riktlinje](https://aka.ms/asr-v2a-on-prem-components). Om du redan har distribuerat Site Recovery-komponenter på lokala kör du verktyget hello från hello konfigurationsservern.
+2. Kopiera den komprimerade mappen till den Windows Server som du vill köra verktyget från.  
+Du kan köra verktyget från Windows Server 2012 R2 om servern har nätverksåtkomst för att ansluta till vCenter-servern/vSphere ESXi-värden som innehåller de virtuella datorer som ska profileras. Vi rekommenderar dock att du kör verktyget på en server vars maskinvarukonfiguration uppfyller [riktlinjen för förändring av storleken på konfigurationsservrar](https://aka.ms/asr-v2a-on-prem-components). Om du redan har distribuerat Site Recovery-komponenter lokalt bör du köra verktyget från konfigurationsservern.
 
- Vi rekommenderar att du har hello samma maskinvarukonfiguration som hello konfigurationsservern (som har en inbyggda processervern) på hello server där du kör hello-verktyget. En sådan konfiguration säkerställer att hello uppnås genomströmning som hello verktyget rapporter matchar hello faktiska dataflödet som Site Recovery kan uppnå vid replikering. hello genomströmning beräkningen beror på tillgänglig nätverksbandbredd på hello-servern och maskinvarukonfiguration (CPU, lagring och så vidare) av hello-server. Om du kör verktyget hello från någon annan server beräknas hello genomströmning från denna server tooMicrosoft Azure. Dessutom eftersom hello maskinvarukonfiguration hello-Server kan skilja sig från hello konfigurationsservern, kan hello uppnås dataflödet som hello verktyget rapporter vara felaktig.
+ Vi rekommenderar att du har samma maskinvarukonfiguration som konfigurationsservern (som har en inbyggd processerver) på den server där du kör verktyget. En sådan konfiguration garanterar att det uppnådda genomflödet som verktyget rapporterar matchar det faktiska dataflöde som Site Recovery kan uppnå under replikeringen. Dataflödesberäkningen är beroende av den tillgängliga nätverksbandbredden och maskinvarukonfigurationen (processor, lagringsutrymme och så vidare) på servern. Om du kör verktyget från andra servrar beräknas dataflödet från den här servern till Microsoft Azure. Också eftersom maskinvarukonfigurationen på servern kan skilja sig från konfigurationsservern kan det dataflöde som verktyget rapporterar vara felaktigt.
 
-3. Extrahera hello ZIP-mappen.  
-hello mappen innehåller flera filer och undermappar. hello körbara filen är ASRDeploymentPlanner.exe i hello överordnade mapp.
+3. Extrahera .zip-filen.  
+Mappen innehåller flera filer och undermappar. Den körbara filen är ASRDeploymentPlanner.exe i den överordnade mappen.
 
     Exempel:  
-    Kopiera hello ZIP-filen tooE: \-enheten och extraherar du det.
+    Kopiera .zip-filen till enhet E:\ och packa upp den.
    E:\ASR Deployment Planner-Preview_v1.2.zip
 
     E:\ASR Deployment Planner-Preview_v1.2\ ASR Deployment Planner-Preview_v1.2\ ASRDeploymentPlanner.exe
 
 ## <a name="capabilities"></a>Funktioner
-Du kan köra hello-kommandoradsverktyget (ASRDeploymentPlanner.exe) i något av följande tre lägen hello:
+Du kan köra kommandoradsverktyget (ASRDeploymentPlanner.exe) i någon av följande tre lägen:
 
 1. Profilering  
 2. Rapportgenerering
 3. Beräkna dataflöde
 
-Kör först hello-verktyget i profilering läge toogather VM dataomsättningen och IOPS. Kör hello verktyget toogenerate hello rapporten toofind hello bandbredd och lagring nätverkskrav.
+Först kör du verktyget i profileringsläge för att samla in uppgifter om den virtuella datorns dataomsättning och IOPS. Kör sedan verktyget för att generera rapporten för att bedöma kraven på nätverksbandbredd och lagring.
 
 ## <a name="profiling"></a>Profilering
-I profilering läge ansluter hello distribution kapacitetsplaneringsverktyget för toohello vCenter server/vSphere ESXi-värd toocollect prestandadata om hello VM.
+I profileringsläge ansluter distributionskapacitetsplaneraren till vCenter-servern/vSphere ESXi-värden och samlar in prestandadata om den virtuella datorn.
 
-* Profilering påverkar inte hello prestanda av hello virtuella datorer, eftersom ingen direkt anslutning upprättas toothem. Alla prestandadata samlas in från hello vCenter server/vSphere ESXi-värd.
-* tooensure att det finns en minimera effekten på hello-servern på grund av profilering hello verktyget frågor hello vCenter server/vSphere ESXi-värd var 15: e minut. Den här frågeintervall äventyrar inte profilering Precision, eftersom hello verktyget lagras prestandaräknardata för varje minut.
+* Profilering påverkar inte prestanda hos de virtuella produktionsdatorerna eftersom ingen direktanslutning upprättas till dem. Alla prestandadata samlas in från vCenter-servern/vSphere ESXi-värden.
+* Verktyget skickar frågor till vCenter-servern/vSphere EXSi-värden var 15:e minut, så att servern ska påverkas minimalt av profileringen. Frågeintervallet äventyrar dock inte profileringens noggrannhet eftersom verktyget lagrar prestandaräknardata varje minut.
 
-### <a name="create-a-list-of-vms-tooprofile"></a>Skapa en lista över virtuella datorer tooprofile
-Du måste först en lista över hello VMs toobe profileras startas. Du kan hämta alla hello namnen på virtuella datorer på en vCenter server/vSphere ESXi-värd med hjälp av hello VMware vSphere PowerCLI kommandon i hello nedan. Alternativt kan du ange ett eget namn för filen hello eller IP-adresser för hello virtuella datorer som du vill tooprofile manuellt.
+### <a name="create-a-list-of-vms-to-profile"></a>Skapa en lista över virtuella datorer att profilera
+Du behöver först en lista över de virtuella datorer som ska profileras. Du kan hämta namnen på alla virtuella datorer på en vCenter-server/vSphere ESXi-värd med hjälp av VMware vSphere PowerCLI-kommandon i följande procedur. Alternativt kan du lista de egna namnen eller IP-adresserna till de virtuella datorer som du vill profilera manuellt i en fil.
 
-1. Logga in toohello VM som VMware vSphere PowerCLI är installerad på.
-2. Öppna hello VMware vSphere PowerCLI-konsolen.
-3. Kontrollera att hello körningsprincipen är aktiverat för hello skript. Om den är inaktiverad, starta hello VMware vSphere PowerCLI konsolen i administratörsläge och aktivera det genom att köra följande kommando hello:
+1. Logga in till den virtuella dator som VMware vSphere PowerCLI är installerad på.
+2. Öppna VMware vSphere PowerCLI-konsolen.
+3. Se till att körningsprincipen är aktiverad för skriptet. Om den är inaktiverad startar du VMware vSphere PowerCLI-konsolen i administratörsläge och aktiverar den med följande kommando:
 
             Set-ExecutionPolicy –ExecutionPolicy AllSigned
 
-4. Du kan optionly måste toorun hello följande kommando om Anslut VIServer inte är giltig hello namnet på cmdlet.
+4. Du kan alternativt behöva köra följande kommando om Connect-VIServer inte identifieras som cmdletens namn.
  
             Add-PSSnapin VMware.VimAutomation.Core 
 
-5. tooget alla hello namnen på virtuella datorer på en vCenter server/vSphere ESXi värd och lagra hello listan i en txt-fil, kör hello två kommandon som visas här.
+5. Kör de två kommandona i listan här för att hämta alla namnen på virtuella datorer på en vCenter-server/sShere ESXi-värd och spara den i en txt-fil.
 Ersätt &lsaquo;servernamn&rsaquo;, &lsaquo;användarnamn&rsaquo;, &lsaquo;lösenord&rsaquo; och &lsaquo;utdatafil.txt&rsaquo; med egna värden.
 
             Connect-VIServer -Server <server name> -User <user name> -Password <password>
 
             Get-VM |  Select Name | Sort-Object -Property Name >  <outputfile.txt>
 
-6. Öppna utdatafilen hello i anteckningar och kopiera hello namnen på alla virtuella datorer som du vill tooprofile tooanother fil (till exempel ProfileVMList.txt) namn på en virtuell dator per rad. Den här filen används som indata toohello *- VMListFile* parametern för hello-kommandoradsverktyget.
+6. Öppna utdatafilen i Anteckningar och kopiera sedan namnen på alla virtuella datorer som du vill profilera till en annan fil (till exempel ProfileVMList.txt), med ett namn på en virtuell dator per rad. Den här filen används som indata för parametern *-VMListFile* i kommandoradsverktyget.
 
-    ![Lista med VM i hello distribution planner](./media/site-recovery-deployment-planner/profile-vm-list.png)
+    ![Lista med namn på virtuella datorer i kapacitetsplaneraren](./media/site-recovery-deployment-planner/profile-vm-list.png)
 
 ### <a name="start-profiling"></a>Starta profilering
-När du har hello lista över virtuella datorer toobe profileras startas, kan du köra verktyget hello i profilering läge. Här är hello listan över obligatoriska och valfria parametrar för hello verktyget toorun i profilering läge.
+När du har skapat listan med virtuella datorer att profilera kan du köra verktyget i profileringsläge. Här är listan med obligatoriska och valfria parametrar när du ska köra verktyget i profileringsläge.
 
 ASRDeploymentPlanner.exe -Operation StartProfiling /?
 
 | Parameternamn | Beskrivning |
 |---|---|
 | -Operation | StartProfiling |
-| -Server | hello fullständigt domännamn eller IP-adressen för hello vCenter server/vSphere ESXi-värd vars är toobe profileras startas.|
-| -User | hello användaren namnet tooconnect toohello vCenter server/vSphere ESXi-värd. hello användare behöver toohave läsbehörighet, åtminstone.|
-| -VMListFile | hello-fil som innehåller hello lista över virtuella datorer toobe profileras startas. hello-sökvägen kan vara absolut eller relativ. hello-filen ska innehålla en VM namn eller IP-adress per rad. Virtuellt datornamn som angetts i hello-filen ska hello samma som hello VM-namnet på hello vCenter server/vSphere ESXi-värd.<br>Hello filen VMList.txt innehåller till exempel hello följande virtuella datorer:<ul><li>virtuell_dator_A</li><li>10.150.29.110</li><li>virtuell_dator_B</li><ul> |
-| -NoOfDaysToProfile | hello antal dagar som profilering är toobe körning. Vi rekommenderar att du kör profilering mer än 15 dagar tooensure som hello arbetsbelastning mönster i din miljö över hello angivna period observeras och används tooprovide en korrekt rekommendation. |
-| -Directory | (Valfritt) hello universal naming convention (UNC) eller lokal katalog sökvägen toostore profilering data som genereras under profilering. Om ett katalognamn inte anges används hello katalog med namnet 'ProfiledData' under hello aktuella sökvägen som hello standardkatalogen. |
-| -Password | (Valfritt) hello lösenord toouse tooconnect toohello vCenter server/vSphere ESXi-värd. Om du inte anger något nu, att du uppmanas den när hello kommandot körs.|
-| -StorageAccountName | (Valfritt) hello lagringskonto namn som används toofind hello genomströmning hastigheterna för replikering av data från lokalt tooAzure. hello verktyget överföringar test toothis storage-konto toocalculate datagenomströmning.|
-| -StorageAccountKey | (Valfritt) hello lagringskonto nyckel som har använt tooaccess hello storage-konto. Gå toohello Azure-portalen > lagringskonton ><*lagringskontonamnet*>> Inställningar > åtkomstnycklar > Key1 (eller primärnyckeln för klassiska storage-konto). |
-| -Environment | (Valfritt) Det här är din målmiljö för Azure Storage-kontot. Detta kan vara ett av tre värden – AzureCloud, AzureUSGovernment eller AzureChinaCloud. Standardvärdet är AzureCloud. Använd hello parametern när mål-Azure-regionen är Azure som tillhör amerikanska myndigheter eller Azure Kina moln. |
+| -Server | Fullständigt domännamn eller IP-adress för den vCenter-server/vSphere ESXi-värd vars virtuella datorer ska profileras.|
+| -User | Användarnamn för anslutning till vCenter-servern/vSphere ESXi-värden. Användaren måste minst ha läsbehörighet.|
+| -VMListFile | En fil som innehåller en lista över virtuella datorer som ska profileras. Filsökvägen kan vara absolut eller relativ. Den här filen ska innehålla ett virtuellt datornamn/en IP-adress per rad. Namnen på de virtuella datorerna i filen ska vara detsamma som namnen på de virtuella datorerna på vCenter-servern/vSphere ESXi-värden.<br>Filen VMList.txt innehåller exempelvis följande virtuella datorer:<ul><li>virtuell_dator_A</li><li>10.150.29.110</li><li>virtuell_dator_B</li><ul> |
+| -NoOfDaysToProfile | Antal dagar som profileringen ska köras. Du bör köra profileringen i minst 15 dagar så att du fångar upp mönster för arbetsbelastningen i din miljö under den angivna perioden och kan generera en korrekt rekommendation. |
+| -Directory | (Valfritt) UNC (Universal Naming Convention) eller lokal katalogsökväg för lagring av de profildata som genereras under profileringen. Om inget katalognamn anges används katalogen ”ProfiledData” under den aktuella sökvägen som standardkatalog. |
+| -Password | (Valfritt) Lösenord för att ansluta till vCenter-servern/vSphere ESXi-värden. Om du inte anger något värde nu uppmanas du att ange det när kommandot körs.|
+| -StorageAccountName | (Valfritt) Namnet på det lagringskonto som används för beräkning av dataflödet som kan uppnås för datareplikering lokalt till Azure. Verktyget överför testdata till det här lagringskontot när dataflödet ska beräknas.|
+| -StorageAccountKey | (Valfritt) Den lagringskontonyckel som används för åtkomst till lagringskontot. Gå till Azure Portal > Lagringskonton > <*[lagringskontots namn]*> > Inställningar > Åtkomstnycklar > Key1 (eller primär åtkomstnyckel för det klassiska lagringskontot). |
+| -Environment | (Valfritt) Det här är din målmiljö för Azure Storage-kontot. Detta kan vara ett av tre värden – AzureCloud, AzureUSGovernment eller AzureChinaCloud. Standardvärdet är AzureCloud. Använd parametern när din Azure-målregion är antingen Azure för amerikanska myndigheter eller Azure-moln för Kina. |
 
 
-Vi rekommenderar att du profil dina virtuella datorer för minst 15 too30 dagar. Under hello profilering period, körs ASRDeploymentPlanner.exe. hello verktyget tar profilering tid indata i dagar. Om du vill tooprofile några timmar eller minuter om ett kort test hello-verktyget i hello förhandsversion behöver tooconvert hello tid till hello motsvarande mått på dagar. Till exempel tooprofile i 30 minuter hello inmatningen måste vara 30/(60*24) = 0.021 dagar. hello minsta tillåtna profilering tid är 30 minuter.
+Vi rekommenderar att du profilerar dina virtuella datorer under minst 15 till 30 dagar. ASRDeploymentPlanner.exe körs under hela profileringsperioden. Profileringstiden anges i dagar i verktyget. Om du vill profilera i några timmar eller minuter för att snabbtesta verktyget måste du omvandla tiden till motsvarande antal dagar i den offentliga förhandsutgåvan. Om du till exempel vill profilera i 30 minuter ska du ange 30/(60 * 24) = 0,021 dagar. Minsta tillåtna profileringstid är 30 minuter.
 
-Under profilering, kan du kan också skickas ett lagringskonto namn och nyckel toofind hello dataflödet som Site Recovery kan uppnå för närvarande hello av replikeringen från hello konfigurationsservern eller processen server tooAzure. Om inte hello lagring-kontonamnet och nyckeln skickas under profilering beräknas hello verktyget inte möjligt genomflöde.
+Under profileringen kan du välja att skicka namn och nyckel för ett lagringskonto om du vill se vilket dataflöde som Site Recovery kan uppnå för replikeringen från konfigurationsservern/processervern till Azure. Om du inte skickar namn och nyckel för ett lagringskonto under profileringen beräknar inte verktyget det dataflöde som kan uppnås.
 
-Du kan köra flera instanser av hello-verktyget för olika uppsättningar av virtuella datorer. Se till att hello VM namn inte upprepas i någon av hello profilering uppsättningar. Om du har profileras startas tio VMs exempelvis (VM1 via VM10) och efter några dagar du vill tooprofile en annan fem virtuella datorer (VM11 via VM15), kan du köra hello verktyget från en annan kommandoradskonsol för hello andra virtuella datorer (VM11 via VM15). Se till att hello andra uppsättning virtuella datorer har inte någon VM-namn från hello första profilering instansen du använder en annan målkatalogen för hello andra kör. Om två instanser av hello verktyget används för profilering hello samma virtuella datorer och Använd Hej samma målkatalogen, hello genereras rapporten kan vara felaktig.
+Du kan köra flera instanser av verktyget för olika uppsättningar av virtuella datorer. Se till att det inte finns dubbletter av namn på virtuella datorer i profileringsuppsättningarna. Till exempel kanske du har profilerat tio virtuella datorer (VM1–VM10). Efter några dagar vill du profilera ytterligare fem virtuella datorer (VM11–VM15), och då kan du köra verktyget från en annan kommandotolk för den andra uppsättningen av virtuella datorer (VM11–VM15). Se till att den andra uppsättningen av virtuella datorer inte innehåller något av namnen på de virtuella datorerna från den första profileringsinstansen, eller använd en annan utdatakatalog för den andra körningen. Om två instanser av verktyget används för profilering av samma virtuella datorer och samma utdatakatalog används kommer den genererade rapporten att vara felaktig.
 
-Konfigurationer för virtuell dator skapas en gång hello början av hello profilering åtgärd och lagras i en fil med namnet VMDetailList.xml. Den här informationen används när hello rapporten genereras. Ändringar i VM-konfiguration (till exempel ett ökat antal kärnor, diskar och nätverkskort) från hello början toohello slutet av profilering samlas inte in. Om en profilerad VM-konfiguration har ändrats under hello profilering i hello förhandsversion, är här hello lösning tooget senaste VM information vid generering av hello rapporten:
+Den virtuella datorns konfiguration inhämtas en gång i början av profileringsåtgärden och lagras i en fil med namnet VMDetailList.xml. Den här informationen används när rapporten genereras. Ändringar i den virtuella datorkonfigurationen (till exempel ett ökat antal kärnor, diskar och nätverkskort) från början till slutet av profileringen registreras inte. Om konfigurationen för en profilerad virtuell dator ändrats under profileringen finns det en lösning i den offentliga förhandsutgåvan för att hämta den senaste virtuella datorinformationen när rapporten ska genereras:
 
-* Säkerhetskopiera VMdetailList.xml och ta bort hello-filen från dess aktuella plats.
-* Skicka - argumenten för användare och -lösenord när hello rapportgenerering.
+* Säkerhetskopiera filen VMdetailList.xml och ta bort den från dess nuvarande plats.
+* Skicka argumenten -User och -Password när rapporten ska genereras.
 
-hello profilering kommandot genererar flera filer i hello profilering directory. Ta inte bort några av hello filer eftersom detta påverkar så rapportgenerering.
+Profileringskommandot genererar flera filer i profileringskatalogen. Ta inte bort några filer, eftersom detta påverkar rapportgenereringen.
 
-#### <a name="example-1-profile-vms-for-30-days-and-find-hello-throughput-from-on-premises-tooazure"></a>Exempel 1: Profil VMs för 30 dagar och hitta hello genomströmning från lokala tooAzure
+#### <a name="example-1-profile-vms-for-30-days-and-find-the-throughput-from-on-premises-to-azure"></a>Exempel 1: Profilera virtuella datorer i 30 dagar och beräkna dataflödet från lokala datorer till Azure
 ```
 ASRDeploymentPlanner.exe -Operation StartProfiling -Directory “E:\vCenter1_ProfiledData” -Server vCenter1.contoso.com -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt”  -NoOfDaysToProfile  30  -User vCenterUser1 -StorageAccountName  asrspfarm1 -StorageAccountKey Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==
 ```
@@ -175,63 +175,63 @@ ASRDeploymentPlanner.exe -Operation StartProfiling -Directory “E:\vCenter1_Pro
 ASRDeploymentPlanner.exe -Operation StartProfiling -Directory “E:\vCenter1_ProfiledData” -Server vCenter1.contoso.com -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt”  -NoOfDaysToProfile  15  -User vCenterUser1
 ```
 
-#### <a name="example-3-profile-vms-for-1-hour-for-a-quick-test-of-hello-tool"></a>Exempel 3: Profil VMs för timmen för en snabb hello-verktyget
+#### <a name="example-3-profile-vms-for-1-hour-for-a-quick-test-of-the-tool"></a>Exempel 3: Profilera virtuella datorer under 1 timme för ett snabbtest av verktyget
 ```
 ASRDeploymentPlanner.exe -Operation StartProfiling -Directory “E:\vCenter1_ProfiledData” -Server vCenter1.contoso.com -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt”  -NoOfDaysToProfile  0.04  -User vCenterUser1
 ```
 
 >[!NOTE]
 >
->* Om hello servern hello verktyget körs på startas om eller har kraschat, eller om du stänger hello verktyget genom att använda Ctrl + C, hello profileras startas data bevaras. Det finns dock en risken för saknade hello senaste 15 minuterna profilerad data. I en instans, kör du hello-verktyget i profilering läge när hello servern startas om.
->* När hello lagring-kontonamnet och nyckeln skickas, hello verktyget åtgärder hello genomströmning vid hello sista steget i profilering. Om hello-verktyget är stängd innan profilering slutförs beräknas inte hello genomflöde. toofind hello genomströmning innan du genererar Hej rapport, kan du köra hello GetThroughput åtgärden från hello kommandoradskonsol. Annars innehåller hello genereras rapporten inte hello genomströmning information.
+>* Om servern där verktyget körs startas om eller kraschar, eller om du avslutar verktyget med Ctrl + C, bevaras profileringsdata. Du riskerar dock att förlora de senaste 15 minuternas profileringsdata. I en sådan instans måste du köra om verktyget i profileringsläge när servern startas igen.
+>* När du skickar namn och nyckel för ett lagringskonto mäter verktyget dataflödet vid profileringens sista steg. Om verktyget avslutas innan profileringen har slutförts normalt beräknas inte dataflödet. Du kan hitta dataflödet innan du genererar rapporten genom att köra åtgärden GetThroughput från kommandotolken. Annars innehåller inte den genererade rapporten dataflödesinformationen.
 
 
 ## <a name="generate-a-report"></a>Generera en rapport
-hello verktyget genererar en makron Microsoft Excel-fil (XLSM-fil) som hello rapportutdata som sammanfattar alla rekommendationer för distribution av hello. hello rapporten har namnet DeploymentPlannerReport_ <*Unik numerisk identifierare*> .xlsm och placeras i hello anges directory.
+Verktyget genererar en makroaktiverad Microsoft Excel-fil (XLSM) som rapportutdata med en sammanfattning av alla distributionsrekommendationer. Rapporten har namnet DeploymentPlannerReport_<*unik numerisk identifierare*>.xlsm och placeras i den angivna katalogen.
 
-När profilering är klar kan köra du hello-verktyget i rapportgenerering läge. hello följande tabell innehåller en lista över verktyg för obligatoriska och valfria parametrar toorun i rapportgenerering läge.
+När profileringen är färdig kan köra du verktyget i läget för rapportgenerering. Följande tabell innehåller en lista med obligatoriska och valfria verktygsparametrar som ska köras i läget för rapportgenerering.
 
 `ASRDeploymentPlanner.exe -Operation GenerateReport /?`
 
 |Parameternamn | Beskrivning |
 |-|-|
 | -Operation | GenerateReport |
-| -Server |  Hej vCenter/vSphere-serverns fullständigt kvalificerade domännamn eller IP-adress (Använd hello samma namn eller IP-adress som du använde när hello profilering) där hello profileras startas virtuella datorer vars rapporten är toobe genereras finns. Observera att om du använde en vCenter-server när hello profilering av du inte använda en vSphere-server för rapportgenerering och vice versa.|
-| -VMListFile | hello-filen som innehåller hello lista över profilerad virtuella datorer som hello rapporten är toobe genereras för. hello-sökvägen kan vara absolut eller relativ. hello-filen ska innehålla ett VM-namn eller IP-adress per rad. hello VM-namn som anges i hello-filen ska hello samma som hello VM namn på hello vCenter server/vSphere ESXi-värd och matchar det du använde under profilering.|
-| -Directory | (Valfritt) hello UNC eller lokal sökväg där hello profileras startas data (filer som genereras under profilering) lagras. Den här informationen krävs för att generera rapporten hello. Om du inte anger något namn används katalogen ProfiledData. |
-| -GoalToCompleteIR | (Valfritt) hello antalet timmar i vilka hello inledande replikering av hello profileras startas virtuella datorer måste toobe slutförts. hello genereras rapporten innehåller hello antal virtuella datorer som den första replikeringen kan utföras på hello angetts tid. hello standardvärdet är 72 timmar. |
-| -User | (Valfritt) hello användaren namnet toouse tooconnect toohello vCenter/vSphere-server. hello heter används toofetch hello senaste konfigurationsinformation för hello virtuella datorer, till exempel hello antalet diskar, antalet kärnor och antal nätverkskort, toouse i hello rapporten. Om hello namn inte tillhandahålls används hello konfigurationsinformation som samlas in hello början av hello profilering kickoff. |
-| -Password | (Valfritt) hello lösenord toouse tooconnect toohello vCenter server/vSphere ESXi-värd. Om hello lösenord har inte angetts som en parameter, att du uppmanas det senare när hello kommandot körs. |
-| -DesiredRPO | (Valfritt) hello önskat mål för återställningspunkt, i minuter. hello standardvärdet är 15 minuter.|
-| -Bandwidth | Bandbredd i Mbit/s. hello parametern toouse toocalculate hello Återställningspunktmål som kan uppnås för hello angetts bandbredd. |
-| -StartDate | (Valfritt) hello starta datum och tid i MM-DD-YYYY:HH:MM (24-timmarsformat). *StartDate* måste anges tillsammans med *EndDate*. Om du har angett StartDate genereras hello rapporten för hello profileras startas data som samlas in mellan StartDate och EndDate. |
-| -EndDate | (Valfritt) hello slutdatum och sluttid i MM-DD-YYYY:HH:MM (24-timmarsformat). *EndDate* måste anges tillsammans med *StartDate*. Om du har angett EndDate genereras hello rapporten för hello profileras startas data som samlas in mellan StartDate och EndDate. |
-| -GrowthFactor | (Valfritt) hello tillväxtfaktor, uttryckt i procent. hello standardvärdet är 30 procent. |
-| -UseManagedDisks | (Valfritt) UseManagedDisks - Ja/Nej. Standardvärdet är Ja. hello antalet virtuella datorer som kan placeras i ett enda lagringskonto beräknas med tanke på om växling vid fel och testning av redundansväxling görs på hanterade diskar i stället för ohanterade disk. |
+| -Server |  Fullständigt domännamn eller IP-adress för vCenter-/vSphere-servern (använd samma namn eller IP-adress som du använde vid profileringen) där de profilerade virtuella datorer som rapporten ska gälla finns. Tänk på att om du har använt en vCenter-server vid profileringen kan du inte använda en vSphere-server till rapportgenerering och tvärtom.|
+| -VMListFile | Den fil som innehåller listan över profilerade virtuella datorer som rapporten ska genereras för. Filsökvägen kan vara absolut eller relativ. Den här filen ska innehålla ett virtuellt datornamn eller en IP-adress per rad. Namnen på de virtuella datorerna i filen ska vara identiska med namnen på de virtuella datorerna på vCenter-servern/vSphere ESXi-värden, och vara desamma som vid profileringen.|
+| -Directory | (Valfritt) UNC eller lokal katalogsökväg där profileringsdata (filer som genererats under profileringen) lagras. Dessa data krävs när rapporten ska genereras. Om du inte anger något namn används katalogen ProfiledData. |
+| -GoalToCompleteIR | (Valfritt) Antalet timmar som den inledande replikeringen av de profilerade virtuella datorerna måste slutföras på. I den genererade rapporten anges det hur många virtuella datorer som den inledande replikeringen kan slutföras på inom den angivna tiden. Standardvärdet är 72 timmar. |
+| -User | (Valfritt) Användarnamn som ska användas för anslutning till vCenter-/vSphere-servern. Namnet används för att hämta den senaste konfigurationsinformationen för de virtuella datorerna, exempelvis antal diskar, antal kärnor och antal nätverkskort som ska användas i rapporten. Om du inte anger något namn används den konfigurationsinformation som samlades in i början av profileringen. |
+| -Password | (Valfritt) Lösenord för att ansluta till vCenter-servern/vSphere ESXi-värden. Om inget lösenord anges som parameter uppmanas du att ange lösenordet senare när kommandot körs. |
+| -DesiredRPO | (Valfritt) Önskat mål för återställningspunkt (RPO) i minuter. Standardvärdet är 15 minuter.|
+| -Bandwidth | Bandbredd i Mbit/s. Det här värdet används till att beräkna det RPO som kan uppnås för den angivna bandbredden. |
+| -StartDate | (Valfritt) Startdatum och tidpunkt i formatet MM-DD-ÅÅÅÅ:HH:MM (24-timmarsformat). *StartDate* måste anges tillsammans med *EndDate*. När StartDate anges genereras rapporten för de profileringsdata som samlats in mellan StartDate och EndDate. |
+| -EndDate | (Valfritt) Slutdatum och tidpunkt i formatet MM-DD-ÅÅÅÅ:HH:MM (24-timmarsformat). *EndDate* måste anges tillsammans med *StartDate*. När du anger EndDate genereras rapporten för profileringsdata som samlats in mellan StartDate och EndDate. |
+| -GrowthFactor | (Valfritt) Tillväxtfaktor, uttryckt i procent. Standardvärdet är 30 procent. |
+| -UseManagedDisks | (Valfritt) UseManagedDisks - Ja/Nej. Standardvärdet är Ja. Antalet virtuella datorer som kan placeras i ett enda lagringskonto beräknas utifrån om redundans/redundanstest för virtuella datorer görs på en hanterad disk istället för en ohanterad disk. |
 
-#### <a name="example-1-generate-a-report-with-default-values-when-hello-profiled-data-is-on-hello-local-drive"></a>Exempel 1: Skapa en rapport med standardvärden när hello profileras startas data på hello lokal enhet
+#### <a name="example-1-generate-a-report-with-default-values-when-the-profiled-data-is-on-the-local-drive"></a>Exempel 1: Generera en rapport med standardvärden när profileringsdata ligger på den lokala enheten
 ```
 ASRDeploymentPlanner.exe -Operation GenerateReport -Server vCenter1.contoso.com -Directory “\\PS1-W2K12R2\vCenter1_ProfiledData” -VMListFile “\\PS1-W2K12R2\vCenter1_ProfiledData\ProfileVMList1.txt”
 ```
 
-#### <a name="example-2-generate-a-report-when-hello-profiled-data-is-on-a-remote-server"></a>Exempel 2: Skapa en rapport när hello profileras startas data på en fjärrserver
-Du bör ha läs-/ skrivbehörighet på hello fjärrkatalog.
+#### <a name="example-2-generate-a-report-when-the-profiled-data-is-on-a-remote-server"></a>Exempel 2: Generera en rapport när profileringsdata ligger på en fjärrserver
+Användaren ska ha läs-/skrivbehörighet för fjärrkatalogen.
 ```
 ASRDeploymentPlanner.exe -Operation GenerateReport -Server vCenter1.contoso.com -Directory “\\PS1-W2K12R2\vCenter1_ProfiledData” -VMListFile “\\PS1-W2K12R2\vCenter1_ProfiledData\ProfileVMList1.txt”
 ```
 
-#### <a name="example-3-generate-a-report-with-a-specific-bandwidth-and-goal-toocomplete-ir-within-specified-time"></a>Exempel 3: Skapa en rapport med en viss bandbredd och målet toocomplete IR inom angiven tid
+#### <a name="example-3-generate-a-report-with-a-specific-bandwidth-and-goal-to-complete-ir-within-specified-time"></a>Exempel 3: Generera en rapport med specifik bandbredd och specifikt mål för att slutföra IR inom angiven tid
 ```
 ASRDeploymentPlanner.exe -Operation GenerateReport -Server vCenter1.contoso.com -Directory “E:\vCenter1_ProfiledData” -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt” -Bandwidth 100 -GoalToCompleteIR 24
 ```
 
-#### <a name="example-4-generate-a-report-with-a-5-percent-growth-factor-instead-of-hello-default-30-percent"></a>Exempel 4: Skapa en rapport med en 5 procent tillväxtfaktor i stället för hello standard 30 procent
+#### <a name="example-4-generate-a-report-with-a-5-percent-growth-factor-instead-of-the-default-30-percent"></a>Exempel 4: Generera en rapport med 5 procents tillväxtfaktor i stället för standardvärdet 30 procent
 ```
 ASRDeploymentPlanner.exe -Operation GenerateReport -Server vCenter1.contoso.com -Directory “E:\vCenter1_ProfiledData” -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt” -GrowthFactor 5
 ```
 
 #### <a name="example-5-generate-a-report-with-a-subset-of-profiled-data"></a>Exempel 5: Generera en rapport med en delmängd av profileringsdata
-Exempelvis har 30 dagar profilerad data och vill toogenerate en rapport för endast 20 dagar.
+Anta exempelvis att du har profileringsdata för 30 dagar och bara vill generera rapporten för 20 dagar.
 ```
 ASRDeploymentPlanner.exe -Operation GenerateReport -Server vCenter1.contoso.com -Directory “E:\vCenter1_ProfiledData” -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt” -StartDate  01-10-2017:12:30 -EndDate 01-19-2017:12:30
 ```
@@ -241,12 +241,12 @@ ASRDeploymentPlanner.exe -Operation GenerateReport -Server vCenter1.contoso.com 
 ASRDeploymentPlanner.exe -Operation GenerateReport -Server vCenter1.contoso.com -Directory “E:\vCenter1_ProfiledData” -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt”  -DesiredRPO 5
 ```
 
-## <a name="percentile-value-used-for-hello-calculation"></a>Percentilvärdet som används för beräkning av hello
-**Vilka percentil standardvärdet hello prestandamått samlas in under profilering har hello verktyget används när den skapar en rapport?**
+## <a name="percentile-value-used-for-the-calculation"></a>Percentilvärdet som används för beräkningen
+**Vilket standardvärde för percentilen för resultatmåtten som samlas in under profileringen använder verktyget när en rapport genereras?**
 
-hello verktyget standardvärden toohello 95 percentil värdena för läsning och skrivning IOPS, skriva IOPS och dataomsättningen som samlas in under profilering av alla hello virtuella datorer. Det här måttet garanterar att hello 100: e percentilen topp dina virtuella datorer kan se på grund av tillfälliga händelser är används inte toodetermine dina mål-lagringskontot och källa bandbredd krav. Till exempel kan en tillfällig händelse vara ett säkerhetskopieringsjobb som körs en gång om dagen, periodisk databasindexering eller en analysrapportgenereringsaktivitet eller andra liknande kortvariga händelser vid vissa tidpunkter.
+Standardvärdet i verktyget är den 95:e percentilen för läs/skriv-IOPS och dataomsättningar som samlas in när alla de virtuella datorerna profileras. Det här måttet garanterar att den topp vid den 100:e percentilen som de virtuella datorerna kan nå eftersom de tillfälliga händelserna inte används för att fastställa mållagringskontot och kraven på källbandbredd. Till exempel kan en tillfällig händelse vara ett säkerhetskopieringsjobb som körs en gång om dagen, periodisk databasindexering eller en analysrapportgenereringsaktivitet eller andra liknande kortvariga händelser vid vissa tidpunkter.
 
-Med hjälp av 95 percentilvärden hello ger en riktig bild av verkliga arbetsbelastning egenskaper och det ger dig bästa prestanda när hello arbetsbelastningar körs på Azure. Vi räknar med att du behöver toochange numret. Om du ändrar hello-värde (toohello 90: e percentilen, till exempel), kan du uppdatera konfigurationsfilen för hello *ASRDeploymentPlanner.exe.config* i hello standardmapp och spara den toogenerate en ny rapport i hello befintliga profileras startas data.
+Med värden från den 95:e percentilen får du en korrekt bild av den faktiska arbetsbelastningen, och då får du bästa möjliga prestanda när dessa arbetsbelastningar sedan körs på Azure. Vi tror inte att du kommer att behöva ändra det här antalet. Om du inte ändrar det här värdet (till 90:e percentilen exempelvis) kan du uppdatera konfigurationsfilen *ASRDeploymentPlanner.exe.config*i standardmappen, spara den och generera en ny rapport för befintliga profileringsdata.
 ```
 <add key="WriteIOPSPercentile" value="95" />      
 <add key="ReadWriteIOPSPercentile" value="95" />      
@@ -256,17 +256,17 @@ Med hjälp av 95 percentilvärden hello ger en riktig bild av verkliga arbetsbel
 ## <a name="growth-factor-considerations"></a>Överväganden för tillväxtfaktorer
 **Varför bör jag överväga för tillväxtfaktor när jag planerar distributioner?**
 
-Det är kritiska tooaccount tillväxt i din arbetsbelastning egenskaper, förutsatt att en potentiell ökning av användning över tid. När skydd är på plats, om din arbetsbelastning egenskaper ändrar kan inte du växla tooa annat lagringskonto för skydd utan att inaktivera och återaktivera hello skydd.
+Det är viktigt att ge utrymme för ökande arbetsbelastning eftersom dataanvändningen tenderar att öka med tiden. När du väl har skyddat dina data kan du inte byta till ett annat lagringskonto för skydd om arbetsbelastningen skulle förändras utan att inaktivera och sedan återaktivera skyddet.
 
-Anta exempelvis att din virtuella dator i dag passar på ett standardlagringskonto för replikering. Över hello kommande tre månaderna flera ändringar är sannolikt toooccur:
+Anta exempelvis att din virtuella dator i dag passar på ett standardlagringskonto för replikering. Under de kommande tre månaderna kan flera ändringar förekomma:
 
-* hello antalet användare av hello-program som körs på hello VM ökar.
-* hello resulterande ökad omsättning på hello VM kräver hello VM toogo toopremium lagring så att Site Recovery replikering kan hålla jämna steg.
-* Därför måste du ha toodisable och återaktivera skydd tooa premium storage-konto.
+* Antalet användare av program som körs på den virtuella datorn kommer att öka.
+* Den resulterande ökade omsättning på den virtuella datorn kräver att den virtuella datorn ska gå över till Premium Storage så att Site Recovery-replikering kan hålla jämna steg.
+* Därför måste du inaktivera och återaktivera skyddet för ett Premium Storage-konto.
 
-Vi rekommenderar starkt att du planerar för tillväxt under distributionsplanering och medan hello standardvärdet är 30 procent. Du är hello expert på ditt program användning mönster och tillväxt projektioner och du kan ändra antalet därefter vid generering av en rapport. Dessutom kan du generera flera rapporter med olika tillväxt faktorer med hello samma data i listan och ta reda på vilka mål lagrings- och bandbredd rekommendationer fungerar bäst för dig.
+Vi rekommenderar starkt att du planerar för tillväxt vid distributionsplanering och medan standardvärdet är 30 procent. Det är du som är expert på användningsmönster och tillväxtprognoser i dina program, och du kan ändra det här värdet när du genererar rapporter. Du kan i själva verket skapa flera rapporter med olika tillväxtfaktorer för samma profileringsdata och se vilka rekommendationer för mållagring och källbandbredd som fungerar bäst för dig.
 
-hello genereras Microsoft Excel-rapport innehåller hello följande information:
+Den genererade rapporten i Microsoft Excel innehåller följande information:
 
 * [Indata](site-recovery-deployment-planner.md#input)
 * [Rekommendationer](site-recovery-deployment-planner.md#recommendations-with-desired-rpo-as-input)
@@ -279,24 +279,24 @@ hello genereras Microsoft Excel-rapport innehåller hello följande information:
 
 ## <a name="get-throughput"></a>Beräkna dataflöde
 
-tooestimate hello dataflödet som Site Recovery kan få ut från en lokal tooAzure under körning hello-verktyget i GetThroughput läge. hello verktyget beräknar hello genomströmning från hello-server som hello verktyget körs på. Vi rekommenderar är den här servern baserad på hello server sizing konfigurationsguiden. Om du redan har distribuerat Site Recovery-infrastruktur komponenter på lokala kör du verktyget hello på hello konfigurationsservern.
+Om du vill få en uppskattning av vilket dataflöde som Site Recovery kan uppnå från de lokala datorerna till Azure under replikeringen ska du köra verktyget i GetThroughput-läget. Verktyget beräknar dataflödet från den server som verktyget körs på. Den här servern ska helst vara baserad på guiden för storleksändring av konfigurationsservern. Om du redan har distribuerat infrastrukturkomponenter för Site Recovery lokalt kör du verktyget på konfigurationsservern.
 
-Öppna en kommandoradskonsol och gå toohello Site Recovery distributionsplanering Verktygsmapp. Kör ASRDeploymentPlanner.exe med följande parametrar.
+Öppna en kommandotolk och gå till mappen för planeringsverktyget för Site Recovery. Kör ASRDeploymentPlanner.exe med följande parametrar.
 
 `ASRDeploymentPlanner.exe -Operation GetThroughput /?`
 
 |Parameternamn | Beskrivning |
 |-|-|
 | -Operation | GetThroughput |
-| -Directory | (Valfritt) hello UNC eller lokal sökväg där hello profileras startas data (filer som genereras under profilering) lagras. Den här informationen krävs för att generera rapporten hello. Om namnet på en katalog inte anges används katalogen ProfiledData. |
-| -StorageAccountName | namn på hello-lagringskonto som har använt toofind hello bandbredd för replikering av data från lokalt tooAzure. hello verktyget överföringar test data toothis storage-konto toofind hello bandbredd. |
-| -StorageAccountKey | Hej lagringskonto nyckel som har använt tooaccess hello storage-konto. Gå toohello Azure-portalen > lagringskonton ><*lagringskontonamnet*>> Inställningar > åtkomstnycklar > Key1 (eller en primärnyckeln för klassiska lagringskonto). |
-| -VMListFile | hello-fil som innehåller hello lista över virtuella datorer toobe profileras startas för beräkning av hello bandbredd. hello-sökvägen kan vara absolut eller relativ. hello-filen ska innehålla en VM namn eller IP-adress per rad. hello VM-namn som angetts i hello-filen ska hello samma som hello VM namn på hello vCenter server/vSphere ESXi-värd.<br>Hello filen VMList.txt innehåller till exempel hello följande virtuella datorer:<ul><li>VM_A</li><li>10.150.29.110</li><li>VM_B</li></ul>|
-| -Environment | (Valfritt) Det här är din målmiljö för Azure Storage-kontot. Detta kan vara ett av tre värden – AzureCloud, AzureUSGovernment eller AzureChinaCloud. Standardvärdet är AzureCloud. Använd hello parametern när mål-Azure-regionen är Azure som tillhör amerikanska myndigheter eller Azure Kina moln. |
+| -Directory | (Valfritt) UNC eller lokal katalogsökväg där profileringsdata (filer som genererats under profileringen) lagras. Dessa data krävs när rapporten ska genereras. Om namnet på en katalog inte anges används katalogen ProfiledData. |
+| -StorageAccountName | Namnet på det lagringskonto som används för beräkning av den bandbredd som används för datareplikering lokalt till Azure. Verktyget överför testdata till det här lagringskontot när bandbredden ska beräknas. |
+| -StorageAccountKey | Den lagringskontonyckel som används för åtkomst till lagringskontot. Gå till Azure Portal > Lagringskonton > <*[lagringskontots namn]*> Inställningar > Åtkomstnycklar > Key1 (eller en primär åtkomstnyckel för ett klassiskt lagringskonto). |
+| -VMListFile | En fil som innehåller listan med virtuella datorer som ska profileras när den förbrukade bandbredden ska beräknas. Filsökvägen kan vara absolut eller relativ. Den här filen ska innehålla ett virtuellt datornamn/en IP-adress per rad. Namnen på de virtuella datorerna i filen ska vara samma som namnen på de virtuella datorerna på vCenter-servern/vSphere ESXi-värden.<br>Filen VMList.txt innehåller exempelvis följande virtuella datorer:<ul><li>VM_A</li><li>10.150.29.110</li><li>VM_B</li></ul>|
+| -Environment | (Valfritt) Det här är din målmiljö för Azure Storage-kontot. Detta kan vara ett av tre värden – AzureCloud, AzureUSGovernment eller AzureChinaCloud. Standardvärdet är AzureCloud. Använd parametern när din Azure-målregion är antingen Azure för amerikanska myndigheter eller Azure-moln för Kina. |
 
-hello verktyget skapar flera 64 MB asrvhdfile <> # VHD filer (där är ”#” hello antal filer) på hello angiven katalog. hello verktyget filöverföringar hello filer toohello konto toofind hello genomflödet. Hello genomströmning mäts bort hello verktyget när alla hello-filer från hello storage-konto och hello lokal server. Om hello verktyget avslutas av någon anledning medan den beräknar dataflöde, bort inte hello filer från hello lagring eller hello lokal server. Du måste toodelete dem manuellt.
+Verktyget skapar flera 64 MB stora filer med namnet asrvhdfile<#>.vhd (där # är antalet filer) i den angivna katalogen. Verktyget överför filerna till lagringskontot när dataflödet ska beräknas. När dataflödet har beräknats tar verktyget bort alla filer både från lagringskontot och från den lokala servern. Om verktyget avslutas av någon anledning medan det beräknar dataflödet tar det inte bort filerna från lagringsutrymmet eller från den lokala servern. Du måste ta bort dem manuellt.
 
-hello genomströmning mäts vid en angiven tidpunkt, och det är hello maximalt dataflöde Site Recovery kan uppnå vid replikering, förutsatt att alla andra faktorer förblir hello samma. Till exempel om alla program börjar förbruka mer bandbredd på hello samma nätverk, hello faktiska genomströmning varierar vid replikering. Om du kör hello GetThroughput kommando från en server configuration är hello-verktyget medveten om alla skyddade virtuella datorerna och pågående replikering. hello skiljer resultatet av hello uppmätta genomströmning sig om hello GetThroughput operationen körs när hello skyddade virtuella datorer har hög data omsättningsuppdateringar. Vi rekommenderar att du kör verktyget hello vid olika tillfällen under profilering toounderstand vilken genomflödet nivåer kan ske vid olika tidpunkter. Hello-verktyget visar hello senaste uppmätta genomflöde i hello rapport.
+Dataflödet beräknas för en viss tidpunkt och är största möjliga dataflöde som Site Recovery kan uppnå under replikeringen givet att alla andra faktorer är oförändrade. Om ett annat program till exempel börjar förbruka mer bandbredd i samma nätverk kommer det faktiska dataflödet att variera under replikeringen. Om du kör kommandot GetThroughput från en konfigureringsserver så kommer verktyget inte att ha någon information om skyddade virtuella datorer eller pågående replikering. Resultatet av det uppmätta dataflödet ser annorlunda ut om GetThroughput-åtgärden körs när de skyddade virtuella datorerna har hög dataomsättning. Du bör därför köra verktyget flera gånger under profileringen så att du får förståelse för vilka dataflödesnivåer som kan uppnås vid olika tidpunkter. I rapporten visas det senaste uppmätta dataflödet.
 
 ### <a name="example"></a>Exempel
 ```
@@ -305,98 +305,98 @@ ASRDeploymentPlanner.exe -Operation GetThroughput -Directory  E:\vCenter1_Profil
 
 >[!NOTE]
 >
-> Kör hello verktyget på en server som har hello samma lagrings- och CPU-egenskaper som hello konfigurationsservern.
+> Kör verktyget på en server som har samma lagringsutrymme och processoregenskaper som konfigurationsservern.
 >
-> Ange hello rekommenderade bandbredd toomeet hello Återställningspunktmål 100 procent hello tid för replikering. När du ställer in hello rätt bandbredd, om du inte ser öka hello uppnås genomflödet som rapporterats av hello-verktyget i hello följande:
+> Ange den rekommenderade bandbredden för att uppfylla återställningspunktmålet 100 procent av tiden för replikering. Om verktyget inte rapporterar en ökning av uppnådda dataflöden trots att du har konfigurerat rätt mängd bandbredd kan du göra följande:
 >
->  1. Kontrollera toodetermine om det inte finns något nätverk tjänstkvalitet (QoS) som är att begränsa Site Recovery genomflöde.
+>  1. Kontrollera om det finns någon tjänstkvalitet (QoS) för nätverket som begränsar dataflödet för Site Recovery.
 >
->  2. Kontrollera toodetermine om Site Recovery-valvet hello närmsta fysiskt stöds Microsoft Azure-region toominimize Nätverksfördröjningen.
+>  2. Kontrollera om valvet för Site Recovery ligger i den närmaste fysiska Microsoft Azure-region som stöds, så att svarstiden i nätverket minimeras.
 >
->  3. Kontrollera din lokal lagring egenskaper toodetermine om du kan förbättra hello maskinvara (till exempel HDD tooSSD).
+>  3. Kontrollera de lokala lagringsegenskaperna för att avgöra om du kan förbättra maskinvaran (till exempel hårddisk till SSD).
 >
->  4. Ändra hello Site Recovery-inställningarna i hello processervern också[öka hello mängden nätverksbandbredd som används för replikering](./site-recovery-plan-capacity-vmware.md#control-network-bandwidth).
+>  4. Ändra inställningarna på processervern för Site Recovery och [öka mängden bandbredd i nätverket som används till replikering](./site-recovery-plan-capacity-vmware.md#control-network-bandwidth).
 
 ## <a name="recommendations-with-desired-rpo-as-input"></a>Rekommendationer med önskat RPO-mål som indata
 
 ### <a name="profiled-data"></a>Profileringsdata
 
-![hello profileras startas data vyn i hello distribution planner](./media/site-recovery-deployment-planner/profiled-data-period.png)
+![Den profilerade datavyn i kapacitetsplaneraren](./media/site-recovery-deployment-planner/profiled-data-period.png)
 
-**Profilerad Dataperiod**: hello period under vilken hello profilering kördes. Som standard innehåller hello verktyget alla profilerad data hello beräkning, såvida inte hello rapporten genereras för en viss period med hjälp av StartDate och EndDate alternativ under rapportgenerering av.
+**Profiled data period** (Profileringsdataperiod): Den period då profileringen kördes. Som standard innehåller verktyget alla profileringsdata i beräkningen, om inte rapporten genereras för en viss tidsperiod med hjälp av parametrarna StartDate och EndDate.
 
-**Servernamnet**: hello namn eller IP-adressen för hello VMware vCenter eller ESXi-värd vars VMs rapporten genereras.
+**Server Name** (Servernamn): Är namnet eller IP-adressen för den VMware vCenter-server eller ESXi-värd vars virtuella datorer rapporten genereras för.
 
-**Önskad Återställningspunktmål**: hello återställningspunktmål för din distribution. Som standard krävs hello nätverksbandbredd beräknas för värden på 15, 30 och 60 minuter. Baserat på val av hello uppdateras hello påverkas värdena för hello-blad. Om du har använt hello *DesiredRPOinMin* parameter när genererades hello rapporten, det värde som visas i hello önskad Återställningspunktmål resultat.
+**Desired RPO** (Önskat återställningspunktmål): Återställningspunktmålet för din distribution. Som standard beräknas vilken nätverksbandbredd som krävs för RPO-värden på 15, 30 respektive 60 minuter. De aktuella värdena på bladet uppdateras baserat på vad du väljer. Om du använde parametern *DesiredRPOinMin* när du genererade rapporten så visas det här värdet i resultatet Desired RPO (Önskat RPO-mål).
 
 ### <a name="profiling-overview"></a>Profileringsöversikt
 
-![Profilering resulterar i hello distribution planner](./media/site-recovery-deployment-planner/profiling-overview.png)
+![Profilering av resultat i kapacitetsplaneraren](./media/site-recovery-deployment-planner/profiling-overview.png)
 
-**Totalt antal profileras startas virtuella datorer**: hello antalet virtuella datorer vars profilerad data är tillgängliga. Om hello VMListFile har namnen på virtuella datorer som inte har profileras startas, dessa virtuella datorer räknas inte med i hello rapportgenerering och undantas hello totala profilerad VMs antalet.
+**Total Profiled Virtual Machines** (Totalt antal profilerade virtuella datorer): Det totala antalet virtuella datorer som det finns profileringsdata för. Om VMListFile innehåller namn på virtuella datorer som inte har profilerats så beaktas inte dessa virtuella datorer i rapporten och de ingår inte i värdet för antalet virtuella datorer som har profilerats.
 
-**Kompatibla virtuella datorer**: hello antal virtuella datorer som kan vara skyddade tooAzure genom att använda Site Recovery. Det är hello antalet kompatibla virtuella datorer för vilka hello krävs nätverksbandbredd, antal lagringskonton, antal Azure kärnor och antalet konfigurationsservrar och ytterligare servrar beräknas. hello information om varje kompatibel VM är tillgängliga i hello ”kompatibla virtuella datorer” avsnittet.
+**Compatible Virtual Machines** (Kompatibla virtuella datorer): Det antal virtuella datorer som kan skyddas i Azure med Site Recovery. Det här är det totala antalet kompatibla virtuella datorer som nödvändig nätverksbandbredd, antal lagringskonton, antal Azure-kärnor samt antal konfigurationsservrar och ytterligare processervrar beräknas för. Information om varje kompatibel virtuell dator finns i avsnittet ”Kompatibla virtuella datorer”.
 
-**Inkompatibel virtuella datorer**: hello antal profilerad virtuella datorer som är inkompatibla för skydd med Site Recovery. hello orsakerna till inkompatibilitet anges i hello ”inkompatibla VMs” avsnittet. Om hello VMListFile har namnen på virtuella datorer som inte har profileras startas, är dessa virtuella datorer undantagna från hello inkompatibla VMs count. Dessa virtuella datorer listas som ”Data kunde inte hittas” hello slutet av hello ”inkompatibla VMs” avsnittet.
+**Incompatible Virtual Machines** (Inkompatibla virtuella datorer): Antalet profilerade virtuella datorer som inte kan skyddas med Site Recovery. Orsaken till inkompatibiliteten beskrivs i avsnittet Inkompatibla virtuella datorer. Om VMListFile innehåller namnen på virtuella datorer som inte har profilerats undantas dessa virtuella datorer från antalet inkompatibla virtuella datorer. Dessa virtuella datorer visas under Data not found (Inga data hittades) i slutet av avsnittet Incompatible VMs (Inkompatibla virtuella datorer).
 
-**Desired RPO** (Önskat återställningspunktmål): Önskat mål för återställningspunkten (RPO) i minuter. hello rapporten genereras för tre värden: 15 (standard), 30 och 60 minuter. hello bandbredd rekommendation i hello rapporten ändras baserat på ditt val i hello önskad Återställningspunktmål nedrullningsbara listan hello upp till höger i hello-bladet. Om du har genererat hello rapport med hjälp av hello *- DesiredRPO* parameter med ett anpassat värde anpassade värdet visas som standard hello i hello önskad Återställningspunktmål nedrullningsbara listan.
+**Desired RPO** (Önskat återställningspunktmål): Önskat mål för återställningspunkten (RPO) i minuter. Rapporten genereras för tre värden för återställningspunktmål: 15 (standard), 30 respektive 60 minuter. Rekommendationen angående bandbredd i rapporten förändras baserat på vilket alternativ du väljer i listrutan Desired RPO (Önskat RPO-mål) uppe till höger på bladet. Om du har genererat rapporten med ett anpassat värde för parametern *-DesiredRPO* visas det här anpassade värdet som standardvärde i listrutan Desired RPO (Önskat återställningspunktmål).
 
 ### <a name="required-network-bandwidth-mbps"></a>Required Network Bandwidth (Mbps) (Nödvändig nätverksbandbredd (Mbit/s))
 
-![Nödvändiga nätverkets bandbredd i hello distribution planner](./media/site-recovery-deployment-planner/required-network-bandwidth.png)
+![Nödvändig nätverksbandbredd i kapacitetsplaneraren](./media/site-recovery-deployment-planner/required-network-bandwidth.png)
 
-**toomeet Återställningspunktmål 100 procent hello tid:** hello rekommenderas bandbredd i Mbit/s toobe allokerade toomeet din önskade Återställningspunktmål 100 procent hello tid. Den här mängden bandbredd måste vara dedikerade stabilitet deltareplikering för alla dina kompatibel VMs-tooavoid eventuella överträdelser för Återställningspunktmål.
+**To meet RPO 100 percent of the time** (För att nå RPO-målet 100 procent av gångerna): Det här är den rekommenderade bandbredd i mbit/s som du bör allokera om RPO-målet ska nås 100 procent av tiden. Den här mängden bandbredd måste vara reserverad för stabil deltareplikering av samtliga kompatibla virtuella datorer om du helt ska undvika överträdelser av RPO-målet.
 
-**toomeet Återställningspunktmål 90 procent av hello tid**: på grund av bredband priser eller av någon annan anledning, om du inte kan ange hello bandbredden som behövs för toomeet din önskade Återställningspunktmål 100 procent hello tid, kan du välja toogo med en mindre bandbredd som kan uppfylla dina önskade Återställningspunktmål 90 procent av hello tid. toounderstand hello följderna av att ställa in den här mindre bandbredd, hello rapporten innehåller en konsekvensanalys på hello tal och varaktighet för Återställningspunktmål överträdelser tooexpect.
+**To meet RPO 90 percent of the time** (För att nå RPO-målet 90 procent av gångerna): Om bandbreddspriserna är för höga eller om du av någon annan anledning inte kan tilldela den bandbredd som krävs för att uppnå RPO-målet 100 procent av tiden kan du välja en lägre bandbreddsinställning som gör att du uppnår önskat RPO 90 procent av tiden. I rapporten ges även en ”tänk om”-analys av hur många RPO-överträdelser du kan förvänta dig och deras varaktighet, så att du bättre ska förstå vad som kan hända om du tilldelar den här lägre bandbredden.
 
-**Uppnådd genomströmning:** hello genomströmning från hello-server som du har kört hello GetThroughput kommandot toohello Microsoft Azure-region där hello storage-konto finns. Det här genomströmning talet anger hello beräknad nivå som du kan få när du skyddar hello hello kompatibla virtuella datorer med hjälp av Site Recovery, förutsatt att din konfigurationsservern eller processen server lagring och nätverk Egenskaper förblir densamma som för hello-server som du har kört hello-verktyget.
+**Achieved Throughput** (Uppnått dataflöde): Dataflödet från servern där du körde kommandot GetThroughput till den Microsoft Azure-region där lagringskontot finns. Dataflödesvärdet är en uppskattning av den nivå du kan uppnå när du skyddar de kompatibla virtuella datorerna med Site Recovery, förutsatt att lagrings- och nätverksegenskaperna för konfigurationsservern/processervern förblir desamma som för den server där du körde verktyget.
 
-Du bör ange hello rekommenderade bandbredd toomeet hello Återställningspunktmål 100 procent hello tid för replikering. När du ställer in hello bandbredd, om du inte ser en ökning i hello uppnås dataflöde som rapporteras av hello verktyget gör du följande hello:
+Du bör ange den rekommenderade bandbredden för att uppfylla återställningspunktmålet 100 procent av tiden för replikering. Om inte verktyget rapporterar ökade dataflöden trots att du har ställt in bandbredden gör du följande:
 
-1. Kontrollera toosee om det inte finns något nätverk tjänstkvalitet (QoS) som är att begränsa Site Recovery genomflöde.
+1. Kontrollera om det finns någon tjänstkvalitet (QoS) för nätverket som begränsar dataflödet för Site Recovery.
 
-2. Kontrollera toosee om Site Recovery-valvet hello närmsta fysiskt stöds Microsoft Azure-region toominimize Nätverksfördröjningen.
+2. Kontrollera om valvet för Site Recovery ligger i den närmaste Microsoft Azure-region som stöds fysiskt, så att du minimerar svarstiden i nätverket.
 
-3. Kontrollera din lokal lagring egenskaper toodetermine om du kan förbättra hello maskinvara (till exempel HDD tooSSD).
+3. Kontrollera de lokala lagringsegenskaperna för att avgöra om du kan förbättra maskinvaran (till exempel hårddisk till SSD).
 
-4. Ändra hello Site Recovery-inställningarna i hello processervern också[öka hello mängden nätverksbandbredd som används för replikering](./site-recovery-plan-capacity-vmware.md#control-network-bandwidth).
+4. Ändra inställningarna för Site Recovery på processervern och [öka den mängd bandbredd i nätverket som används till replikering](./site-recovery-plan-capacity-vmware.md#control-network-bandwidth).
 
-Om du kör hello verktyget på en konfiguration eller processerver som redan har skyddat virtuella datorer, kör du verktyget för hello några gånger. hello uppnås genomströmning ändras beroende på hello mängden omsättning bearbetas samtidigt i tid.
+Om du kör verktyget på en konfigurations- eller processerver som redan har skyddade virtuella datorer bör du köra verktyget några gånger. Det uppnådda antalet dataflödesändringar beror på mängden omsättningsuppdateringar som bearbetas vid den aktuella tidpunkten.
 
 För alla företagsdistributioner av Site Recovery bör du använda [ExpressRoute](https://aka.ms/expressroute).
 
 ### <a name="required-storage-accounts"></a>Nödvändiga lagringskonton
-följande diagram visar hello Totalt antal storage-konton (standard och premium) som är nödvändiga tooprotect alla hello hello kompatibla virtuella datorer. toolearn vilket konto toouse för varje virtuell dator i avsnittet hello ”VM-storage placering”.
+I följande diagram visas hur många lagringskonton (standard och premium) som behövs för att skydda alla kompatibla virtuella datorer. Om du vill veta vilket lagringskonto som ska användas för varje virtuell dator kan du läsa avsnittet ”Placering av VM-lagring”.
 
-![Nödvändiga storage-konton i hello distribution planner](./media/site-recovery-deployment-planner/required-azure-storage-accounts.png)
+![Nödvändiga lagringskonton i kapacitetsplaneraren](./media/site-recovery-deployment-planner/required-azure-storage-accounts.png)
 
 ### <a name="required-number-of-azure-cores"></a>Nödvändigt antal Azure-kärnor
-Resultatet är hello Totalt antal kärnor toobe ställa in innan redundans eller testa redundans för alla hello kompatibla virtuella datorer. Om det finns för få kärnor i prenumerationen hello Site Recovery misslyckas toocreate VMs när hello testa redundans eller växling vid fel.
+Resultatet är det totala antalet kärnor som ska konfigureras före redundansväxling eller redundanstest av alla kompatibla virtuella datorer. Om det inte finns tillräckligt många kärnor tillgängliga i prenumerationen kan inte Site Recovery skapa virtuella datorer vid redundanstestet eller redundansväxlingen.
 
-![Antal Azure kärnor i hello distribution planner](./media/site-recovery-deployment-planner/required-number-of-azure-cores.png)
+![Nödvändigt antal Azure-kärnor i kapacitetsplaneraren](./media/site-recovery-deployment-planner/required-number-of-azure-cores.png)
 
 ### <a name="required-on-premises-infrastructure"></a>Krav på lokal infrastruktur
-Den här bilden är hello Totalt antal konfigurationsservrar och ytterligare processer servrar toobe konfigurerats som skulle vara tillräckligt tooprotect hello alla kompatibla virtuella datorer. Beroende på hello stöds [storlek rekommendationer för hello konfigurationsservern](https://aka.ms/asr-v2a-on-prem-components), hello verktyget rekommendera ytterligare servrar. hello rekommendation baseras på hello större hello per dag omsättning eller hello maximalt antal skyddade virtuella datorerna (under förutsättning att ett genomsnitt av tre diskar per VM), som är träffar första på hello konfigurationsservern eller hello ytterligare processervern. Du hittar hello information om totala omsättningen per dag och antalet skyddade diskar i hello ”Input”-avsnittet.
+Det här är det totala antalet konfigurationsservrar och ytterligare processervrar som måste konfigureras för att skydda alla kompatibla virtuella datorer. Beroende på vilka [storleksrekommendationer för konfigurationsservern som stöds](https://aka.ms/asr-v2a-on-prem-components), kan verktyget rekommendera ytterligare servrar. Rekommendationen bygger på det största värdet för antingen dataomsättning per dag eller det största antal skyddade virtuella datorer (förutsatt i genomsnitt tre diskar per virtuell dator), beroende på vilken gräns som uppnås först på konfigurationsservern eller den kompletterande processervern. Du hittar detaljerad information om den totala dataomsättningen per dag och det totala antalet skyddade diskar i avsnittet Input (Indata).
 
-![Lokala infrastrukturen i hello distribution planner](./media/site-recovery-deployment-planner/required-on-premises-infrastructure.png)
+![Lokal infrastruktur som krävs för kapacitetsplaneraren](./media/site-recovery-deployment-planner/required-on-premises-infrastructure.png)
 
 ### <a name="what-if-analysis"></a>Konsekvensanalys
-Den här analysen beskrivs hur många överträdelser kan inträffa under hello profilering period när du anger en mindre bandbredd för hello önskad Återställningspunktmål toobe uppfyllda endast 90 procent av hello tid. En eller flera överträdelser av återställningspunktmålen kan inträffa på en viss dag. hello diagrammet visar hello belastning Återställningspunktmålet för hello dag.
-Baserat på denna analys, kan du bestämma om hello antalet överträdelser av Återställningspunktsmål över alla dagar och belastning Återställningspunktmål träffar per dag är acceptabel med hello angetts låg bandbredd. Om du accepterar du kan allokera hello låg bandbredd för replikering, annars allokera hello högre bandbredd som föreslagna toomeet hello önskad Återställningspunktmål 100 procent hello tid.
+I den här analysen beskrivs hur många överträdelser som kan inträffa under profileringsperioden när du tilldelar en lägre bandbredd för att önskat RPO-mål ska uppfyllas 90 procent av gångerna. En eller flera överträdelser av återställningspunktmålen kan inträffa på en viss dag. Grafen visar toppåterställningspunktmålet för dagen.
+Utifrån den här analysen kan du avgöra om du kan godta antalet RPO-överträdelser och dagens största RPO-överträdelse sett till den lägre bandbredden. Om värdena är godtagbara kan du allokera den lägre bandbredden för replikering. Annars allokerar du den högre bandbredd som rekommenderas för att du ska uppnå önskat RPO-mål 100 % av gångerna.
 
-![Konsekvensanalys i hello distribution planner](./media/site-recovery-deployment-planner/what-if-analysis.png)
+![Konsekvensanalys i kapacitetsplaneraren](./media/site-recovery-deployment-planner/what-if-analysis.png)
 
 ### <a name="recommended-vm-batch-size-for-initial-replication"></a>Recommended VM batch size for initial replication (Rekommenderad VM-batchstorlek för den initiala replikeringen)
-I det här avsnittet rekommenderar vi hello antal virtuella datorer som kan skyddas i parallella toocomplete hello inledande replikering inom 72 timmar med hello förslag bandbredd toomeet önskad Återställningspunktmål 100 procent hello tid har angetts. Det här värdet är ett konfigurerbart värde. toochange den för närvarande skapade rapporter, Använd hello *GoalToCompleteIR* parameter.
+I det här avsnittet rekommenderar vi det antal virtuella datorer som kan skyddas parallellt för att slutföra den inledande replikeringen inom 72 timmar med den föreslagna bandbredden för att uppfylla önskade återställningspunktmål 100 procent av den tid som anges. Det här värdet är ett konfigurerbart värde. Du kan ändra värdet då rapporten skapas med parametern *GoalToCompleteIR*.
 
-hello här diagrammet visar ett intervall med värden för bandbredd och en beräknade VM batch storlek antal toocomplete inledande replikering 72 timmar baserat på hello medelvärde upptäckte VM storlek för alla hello kompatibla virtuella datorer.
+I diagrammet här visas olika bandbreddsvärden och beräknad batchstorlek för virtuella datorer där den initiala replikeringen kan slutföras inom 72 timmar baserat på den genomsnittliga identifierade storleken för de virtuella datorerna bland alla kompatibla virtuella datorer.
 
-Hello tillgänglig som förhandsversion ange hello rapporten inte vilka virtuella datorer som ska tas med i en batch. Du kan använda hello diskstorleken visas i hello ”kompatibla virtuella datorer” avsnittet toofind varje VM-storlek och markera dem för en grupp eller välja hello virtuella datorer baserat på arbetsbelastning kända egenskaper. tid för slutförande av hello hello inledande replikering ändringar proportionellt, baserat på hello faktiska VM diskens storlek, används diskutrymme och tillgängliga genomflödet.
+I den offentliga förhandsutgåvan anger inte rapporten vilka virtuella datorer som ska ingå i en batch. Du kan använda diskstorleken som visas i avsnittet Compatible VMs (Kompatibla virtuella datorer) för att se de virtuella datorernas storlek och välja virtuella datorer till en batch, eller så kan du välja virtuella datorer sett till kända arbetsbelastningsegenskaper. Tidsåtgången för den inledande replikeringen förändras proportionellt med avseende på faktisk diskstorlek på den virtuella datorn, förbrukat diskutrymme och tillgängligt dataflöde i nätverket.
 
 ![Rekommenderad batchstorlek för virtuella datorer](./media/site-recovery-deployment-planner/recommended-vm-batch-size.png)
 
 ### <a name="growth-factor-and-percentile-values-used"></a>Tillväxtfaktor och percentilvärde som används
-Det här avsnittet längst ned hello hello sheet visar hello percentilvärdet används för alla hello prestandaräknare hello profileras startas virtuella datorer (standard är 95: e percentilen) och hello tillväxtfaktor (standardvärdet är 30 procent) som används i alla hello beräkningar.
+I det här avsnittet längst ned på bladet visas vilket percentilvärde som använts för prestandaräknarna för de profilerade virtuella datorerna (standardvärdet är den 95:e percentilen) och vilken tillväxtfaktor som använts i alla beräkningar (standardvärdet är 30 procent).
 
 ![Tillväxtfaktor och percentilvärde som används](./media/site-recovery-deployment-planner/max-iops-and-data-churn-setting.png)
 
@@ -404,129 +404,129 @@ Det här avsnittet längst ned hello hello sheet visar hello percentilvärdet an
 
 ![Rekommendationer med tillgänglig bandbredd som indata](./media/site-recovery-deployment-planner/profiling-overview-bandwidth-input.png)
 
-Du kan ha en situation där du vet att du inte kan ange en bandbredd på mer än x Mbit/s för Site Recovery-replikering. hello-verktyget kan du tooinput tillgänglig bandbredd (med hjälp av hello - bandbredd parametern under rapportgenerering) och få hello hastigheterna Återställningspunktmål i minuter. Med detta är möjligt värde för Återställningspunktsmål, kan du bestämma om du behöver tooset upp ytterligare bandbredd eller om det är OK att ha en lösning för katastrofåterställning med den här Återställningspunktmål.
+Du kan ha en situation där du vet att du inte kan ange en bandbredd på mer än x Mbit/s för Site Recovery-replikering. Du kan välja att ange tillgänglig bandbredd i verktyget (med parametern -Bandwidth när du genererar rapporten) och då få se vilket RPO-mål i minuter du kan uppnå. Utifrån det här möjliga RPO-värdet kan du avgöra om du måste konfigurera ytterligare bandbredd eller om du nöjer dig med en lösning för haveriberedskap med det aktuella RPO-värdet.
 
 ![Möjligt återställningspunktmål för 500 Mbit/s bandbredd](./media/site-recovery-deployment-planner/achievable-rpos.png)
 
 ## <a name="input"></a>Indata
-hello indata kalkylbladet innehåller en översikt över hello profileras startas VMware-miljön.
+På sidan Input (Indata) visas en översikt över den profilerade VMware-miljön.
 
-![Översikt över hello profileras startas VMware-miljön](./media/site-recovery-deployment-planner/Input.png)
+![Översikt över den profilerade VMware-miljön](./media/site-recovery-deployment-planner/Input.png)
 
-**Startdatum** och **slutdatum**: hello start- och slutdatum för hello profildata för skapa rapporter. Som standard är hello startdatum hello datum då profilering påbörjas, och hello slutdatum är hello datum när profilering slutar. Detta kan vara hello 'StartDate' och 'EndDate' värden om hello rapporten genereras med följande parametrar.
+**Startdatum** och **Slutdatum**: Start- och slutdatum för de profileringsdata som ingår i rapportgenereringen. Som standard är startdatumet det datum då profileringen startades och slutdatumet är det datum när profileringen avslutades. Om du angav parametrarna -StartDate och -EndDate när du genererade rapporten visas dessa värden.
 
-**Totalt antal profilering dagar**: hello Totalt antal dagar som profilering mellan hello start- och slutdatum för vilka hello rapporten genereras.
+**Total number of profiling days** (Totalt antal dagar för profilering): Det totala antalet profileringsdagar mellan start- och slutdatumen som rapporten genererats för.
 
-**Antal kompatibla virtuella datorer**: hello antalet kompatibla virtuella datorer för vilka hello krävs nätverkets bandbredd, antalet lagring krävs konton, Microsoft Azure kärnor, konfigurationsservrar och ytterligare servrar är Beräkna.
+**Number of compatible virtual machines** (Antal kompatibla virtuella datorer): Det totala antalet kompatibla virtuella datorer som nödvändig nätverksbandbredd, nödvändigt antal lagringskonton, antal Microsoft Azure-kärnor, konfigurationsservrar och ytterligare processervrar beräknas för.
 
-**Totalt antal diskar för alla kompatibla virtuella datorer**: hello-nummer som används som en hello inmatningar toodecide hello antalet konfigurationsservrar och ytterligare processer servrar toobe används i hello distributionen.
+**Total number of disks across all compatible virtual machines** (Totalt antal diskar för alla kompatibla virtuella datorer): Det här värdet används som en av indatauppgifterna för att bestämma antalet konfigurationsservrar och ytterligare processervrar som ska användas i distributionen.
 
-**Genomsnittligt antal diskar per kompatibla virtuella**: hello Genomsnittligt antal diskar har beräknats över alla kompatibla virtuella datorer.
+**Average number of disks per compatible virtual machine** (Genomsnittligt antal diskar per kompatibel virtuell dator): Det genomsnittliga antalet diskar beräknat för samtliga kompatibla virtuella datorer.
 
-**Genomsnittlig diskens storlek (GB)**: hello genomsnittlig diskstorleken beräknats över alla kompatibla virtuella datorer.
+**Average disk size (GB)** (Genomsnittlig diskstorlek (GB)): Den genomsnittliga diskstorleken beräknad för samtliga kompatibla virtuella datorer.
 
-**Önskad Återställningspunktmål (minuter)**: antingen hello recovery punkt mål eller hello standardvärdet skickades för hello 'DesiredRPO' parametern när rapporten generation tooestimate krävs hello bandbredd.
+**Desired RPO (minutes)** (Önskat RPO-mål (minuter)): Antingen standardvärdet för RPO-mål eller det värde som angavs för parametern ”DesiredRPO” när rapporten genererades för att uppskatta nödvändig bandbredd.
 
-**Önskad bandbredd (Mbps)**: hello-värde som du har överfört för hello 'bandbredd-parametern när rapporten generation tooestimate hello hastigheterna Återställningspunktmål.
+**Desired bandwidth (Mbps)** (Önskad bandbredd (Mbit/s)): Det värde du angav för parametern ”Bandwidth” när du genererade rapporten för att uppskatta vilket RPO-mål som kan uppnås.
 
-**Observerade vanliga dataomsättningen per dag (GB)**: hello genomsnittlig omsättning observeras i alla profilering dagar. Numret används som indata hello toodecide hello flera konfigurationsservrar och ytterligare processer servrar toobe används i hello distributionen.
+**Observed typical data churn per day (GB)** (Observerad normal dataomsättning per dag (GB)) är den genomsnittliga dataomsättning som observerats under alla profileringsdagar. Det här värdet används som ett av invärdena i rekommendationen för att fastställa antalet konfigurationsservrar och ytterligare processervrar som ska användas i distributionen.
 
 
 ## <a name="vm-storage-placement"></a>Placering av VM-lagring
 
 ![Placering av VM-lagring](./media/site-recovery-deployment-planner/vm-storage-placement.png)
 
-**Disken lagringstyp**: antingen en standard- eller premium storage konto, vilket är används tooreplicate alla hello motsvarande virtuella datorer som nämns i hello **VMs tooPlace** kolumn.
+**Disk Storage Type** (Typ av disklagring): Är antingen Standard eller Premium och avser det lagringskonto som ska användas för replikering av motsvarande virtuella datorer i kolumnen **VMs to Place** (Virtuella datorer att placera ut).
 
-**Föreslagen prefixet**: hello föreslagna tre tecken prefix som kan användas för att namnge hello storage-konto. Du kan använda din egen prefix men hello verktyget förslag följer hello [partitions namngivningskonvention för lagringskonton](https://aka.ms/storage-performance-checklist).
+**Suggested Prefix** (Föreslaget prefix): Det föreslagna prefixet på tre tecken som du kan använda för att namnge lagringskontot. Du kan använda ditt eget prefix, men verktygets förslag följer [namngivningskonventionen för partitioner av lagringskonton](https://aka.ms/storage-performance-checklist).
 
-**Föreslagen kontonamn**: hello lagringskonto namnet när du använder hello föreslagna prefix. Ersätt hello namn inom hakparenteser hello (< och >) med dina egna indata.
+**Suggested Account Name** (Föreslaget kontonamn): Namnet på lagringskontot när du inkluderar det föreslagna prefixet. Ersätt namnet inom hakparenteser (< och >) med egna indata.
 
-**Logga Lagringskonto**: alla hello replikeringsloggar lagras i ett standardlagringskonto. För virtuella datorer som replikerar tooa premium storage-konto kan du konfigurera en ytterligare ett standardlagringskonto för att lagra loggen. Flera lagringskonton för premiumreplikering kan använda samma standardkonto för logglagring. Virtuella datorer som är replikerade toostandard lagring konton använder hello samma lagringskonto för loggar.
+**Log Storage Account** (Lagringskonto för loggar): alla replikeringsloggar lagras på ett lagringskonto av standardtyp. För virtuella datorer som replikerar till ett Premium Storage-konto konfigurerar du ytterligare ett Standard Storage-konto för logglagringsutrymme. Flera lagringskonton för premiumreplikering kan använda samma standardkonto för logglagring. Virtuella datorer som replikeras till lagringskonton av standardtyp använder samma lagringskonto för loggarna.
 
-**Förslag på loggen kontonamn**: Logga namnet på ditt lagringskonto när du använder hello föreslagna prefix. Ersätt hello namn inom hakparenteser hello (< och >) med dina egna indata.
+**Suggested Log Account Name** (Föreslaget loggkontonamn): Namnet på lagringsloggkontot när du inkluderar det föreslagna prefixet. Ersätt namnet inom hakparenteser (< och >) med egna indata.
 
-**Placering sammanfattning**: en sammanfattning av hello Totalt antal virtuella datorer belastningen på hello storage-konto när hello replikering och testa redundans eller växling vid fel. Den omfattar hello Totalt antal virtuella datorer mappade toohello storage-konto, totalt antal läsning och skrivning IOPS över alla virtuella datorer placeras i det här lagringskontot totala skriva (replikering) IOPS, installationsprogrammet för total storlek för alla diskar och Totalt antal diskar.
+**Placement Summary** (Placeringsöversikt): En översikt över den totala virtuella datorbelastningen på lagringskontot vid replikeringen samt vid redundanstest/redundansväxling. I översikten ingår det totala antalet virtuella datorer som har mappats till lagringskontot, totalt antal läs- och skrivåtgärder (IOPS) för de virtuella datorer som placerats på lagringskontot, totalt antal skrivoperationer (replikering), total etablerad storlek sett till alla diskar och det totala antalet diskar.
 
-**Virtuella datorer tooPlace**: en lista över alla hello virtuella datorer som ska placeras på hello angivna storage-konto för optimala prestanda och användning.
+**Virtual Machines to Place** (Virtuella datorer att placera ut): En lista över de virtuella datorer som ska placeras på det angivna lagringskontot för att prestanda och användningsgrad ska vara optimala.
 
 ## <a name="compatible-vms"></a>Compatible VMs (Kompatibla virtuella datorer)
 ![Excel-kalkylblad med kompatibla virtuella datorer](./media/site-recovery-deployment-planner/compatible-vms.png)
 
-**Namn på virtuell**: hello VM-namn eller IP-adress som används i hello VMListFile när en rapport skapas. Den här kolumnen visar också hello-diskar (VMDKs) som är bifogade toohello virtuella datorer. toodistinguish vCenter virtuella datorer med samma namn eller IP-adresser, hello namn inkluderar hello ESXi värdnamn. hello är listade ESXi-värd hello en där hello VM placerades när hello verktyget identifieras under hello profilering period.
+**VM Name** (Namn på virtuell dator): Den virtuella datorns namn eller den IP-adress som används i VMListFile när en rapport skapas. I den här kolumnen visas även de diskar (VMDK:er) som är kopplade till de virtuella datorerna. För att skilja virtuella vCenter-datorer med samma namn eller IP-adresser åt innefattar namnen ESXi-värdnamnet. Den angivna ESXi-värden är den värd där den virtuella datorn har placerats när verktyget identifierades under profileringsperioden.
 
-**VM-kompatibilitet**: Värdena är **Ja** och **Ja**\*. **Ja** \* avser instanser i vilka hello VM är en anpassning för [Azure Premium Storage](https://aka.ms/premium-storage-workload). Här hello profileras startas hög omsättning eller IOPS disk passar i hello P20 eller P30 kategori, men hello hello diskens storlek gör att den mappade ned tooa P10 eller P20 toobe. Hej lagringskonto beslutar premium storage disk skriver toomap en disk till, baserat på dess storlek. Exempel:
+**VM-kompatibilitet**: Värdena är **Ja** och **Ja**\*. **Ja**\* för instanser där den virtuella datorn är en anpassning för [Azure Premium Storage](https://aka.ms/premium-storage-workload). Här passar den profilerade högomsättnings- eller IOPS-disken i kategorin P20 eller P30, men storleken på disken gör att den mappas ned till en P10 eller P20. Lagringskontot avgör vilken Premium Storage-disktyp som en disk ska mappas till, baserat på dess storlek. Exempel:
 * < 128 GB är en P10.
-* 128 GB too512 GB är en P20.
-* 512 GB too1024 GB är en P30.
-* 1025 GB too2048 GB är en P40.
-* 2049 GB too4095 GB är en p 50.
+* 128 till 512 GB är en P20.
+* 512 till 1 024 GB är en P30.
+* 1 025 till 2 048 GB är en P40.
+* 2 049 till 4 095 GB är en P50.
 
-Om hello arbetsbelastning egenskaperna för en disk placera den i hello P20 eller P30 kategori, men hello storlek mappar den ned tooa lägre premium storage disktyp, hello verktyget markerar den virtuella datorn som **Ja**\*. hello verktyget rekommenderar också att du antingen ändra hello källa disk storlek toofit till hello rekommenderas disktyp för premium-lagring eller ändra hello mål disk typen postredundans.
+Om arbetsbelastningsegenskaperna för en disk placerar den i kategorin P20 eller P30, men storleken mappar den till en lägre Premium Storage-disktyp, markerar verktyget den här virtuella datorn som **Ja**\*. Verktyget rekommenderar också att du antingen ändrar källdiskens storlek så att den passar den rekommenderade Premium Storage-disktypen eller ändrar måldisktypen efter redundansväxling.
 
 **Lagringstyp**: Standard eller premium.
 
-**Föreslagen prefixet**: hello tre tecken lagringskonto prefix.
+**Suggested Prefix** (Föreslaget prefix): Ett prefix på tre tecken för lagringskontot.
 
-**Lagringskontot**: hello-namnet som använder hello föreslagna lagringskonto prefix.
+**Lagringskontot**: Namnet med prefixet till det föreslagna lagringskontot.
 
-**Läs-/ skrivåtkomst IOPS (med tillväxtfaktor)**: hello belastning arbetsbelastning läsning och skrivning IOPS på hello disk (standard är 95: e percentilen), inklusive hello framtida tillväxtfaktor (standardvärdet är 30 procent). Observera att hello totala läsning och skrivning IOPS för en virtuell dator är inte alltid hello summan av hello VM individuella diskar läsning och skrivning IOPS, eftersom hello belastning läsning och skrivning IOPS för hello VM är hello belastning av hello summan av dess enskilda diskar läsning och skrivning IOPS under minuten hello profilering period.
+**R/W IOPS (with Growth Factor)** (R/W IOPS (med tillväxtfaktor)): Den högsta IOPS-arbetsbelastningen för läsning/skrivning på disken (standardvärdet är den 95:e percentilen), inklusive faktorn för framtida tillväxt (standardvärdet är 30 procent). Observera att det totala antalet läs/skriv-IOPS för en virtuell dator inte alltid är summan av de enskilda diskarnas läs/skriv-IOPS, eftersom den virtuella datorns högsta läs/skriv-IOPS är den högsta summan av de enskilda diskarnas läs/skriv-IOPS under varje minut av profileringsperioden.
 
-**Data Omsättningsuppdateringar i Mbit/s (med tillväxtfaktor)**: hello belastning omsättningen på hello disk (standard är 95: e percentilen), inklusive hello framtida tillväxtfaktor (standardvärdet är 30 procent). Observera att hello totala dataomsättningen av hello VM är inte alltid hello summan av hello VM individuella diskar dataomsättningen eftersom hello belastning dataomsättningen av hello VM är hello belastning av hello summan av dess enskilda diskar omsättning under minuten hello profilering period.
+**Data Churn in Mbps (with Growth Factor)** (Dataomsättning i Mbit/s (med tillväxtfaktor)): Den högsta dataomsättningsfrekvensen på disken (standardvärdet är den 95:e percentilen) inklusive faktorn för framtida tillväxt (standardvärdet är 30 procent). Observera att den totala dataomsättningen för den virtuella datorn inte alltid är summan av de enskilda diskarnas dataomsättning, eftersom den virtuella datorns högsta dataomsättning är den högsta summan av de enskilda diskarnas dataomsättning under varje minut av profileringsperioden.
 
-**Azure VM-storlek**: hello perfekt mappade Azure Cloud Services virtuella datorer storleken för det lokala VM. hello mappning baseras på hello lokala VM-minne, antalet diskar-kärnor-nätverkskort och läsning/skrivning IOPS. hello rekommendation är alltid hello lägsta Azure VM-storlek som matchar alla hello lokala VM egenskaper.
+**Azure VM Size** (Storlek för virtuell Azure-dator): Lämplig mappad storlek på den virtuella Azure Cloud Services-datorn för den här lokala virtuella datorn. Mappningen baseras på det lokala virtuella datorminnet, antalet diskar/kärnor/nätverkskort och läs- och skrivåtgärder, IOPS. Rekommendationen är alltid den lägsta virtuella Azure-datorstorlek som matchar alla lokala virtuella datoregenskaper.
 
-**Antal diskar**: hello Totalt antal virtuella diskar (VMDKs) på hello VM.
+**Number of Disks** (Antal diskar): Det totala antalet virtuella datordiskar (VMDK:er) på den virtuella datorn.
 
-**Diskstorlek (GB)**: hello totala installationsprogrammet storleken på alla diskar på hello VM. hello-verktyget visar också hello diskstorleken för hello individuella diskar i hello VM.
+**Disk size (GB)** (Diskstorlek (GB)): Total installationsstorlek för alla diskar på den virtuella datorn. Storleken för de enskilda diskarna i den virtuella datorn visas också i verktyget.
 
-**Kärnor**: hello antalet CPU-kärnor på hello VM.
+**Kärnor**: Antalet processorkärnor i den virtuella datorn.
 
-**Minne (MB)**: hello RAM-minne på hello VM.
+**Minne (MB)**: Den virtuella datorns RAM-minne.
 
-**Nätverkskort**: hello antalet nätverkskort på hello VM.
+**Nätverkskort**: Antalet nätverkskort på den virtuella datorn.
 
-**Starta typen**: det är Start typ av hello VM. Den kan vara BIOS eller EFI. Azure Site Recovery stöder för närvarande endast starttypen BIOS. Alla hello virtuella datorer i EFI-Start typ visas i kalkylbladet för inkompatibla virtuella datorer.
+**Starttyp**: Den virtuella datorns starttyp. Den kan vara BIOS eller EFI. Azure Site Recovery stöder för närvarande endast starttypen BIOS. Alla virtuella datorer för starttypen EFI visas i kalkylbladet över inkompatibla virtuella datorer.
 
-**OS-typen**: hello är hello VM OS-typen. Typen kan vara Windows, Linux eller någon annan typ.
+**OS-typ**: Den virtuella datorns typ av operativsystem. Typen kan vara Windows, Linux eller någon annan typ.
 
 ## <a name="incompatible-vms"></a>Incompatible VMs (Inkompatibla virtuella datorer)
 
 ![Excel-ark med inkompatibla virtuella datorer](./media/site-recovery-deployment-planner/incompatible-vms.png)
 
-**Namn på virtuell**: hello VM-namn eller IP-adress som används i hello VMListFile när en rapport skapas. Den här kolumnen visar också hello VMDKs som är bifogade toohello virtuella datorer. toodistinguish vCenter virtuella datorer med samma namn eller IP-adresser, hello namn inkluderar hello ESXi värdnamn. hello är listade ESXi-värd hello en där hello VM placerades när hello verktyget identifieras under hello profilering period.
+**VM Name** (Namn på virtuell dator): Den virtuella datorns namn eller den IP-adress som används i VMListFile när en rapport skapas. I den här kolumnen visas även de diskar (VMDK:er) som är kopplade till de virtuella datorerna. För att skilja virtuella vCenter-datorer med samma namn eller IP-adresser åt innefattar namnen ESXi-värdnamnet. Den angivna ESXi-värden är den värd där den virtuella datorn har placerats när verktyget identifierades under profileringsperioden.
 
-**VM-kompatibilitet**: anger varför hello angivna VM är inkompatibla för användning med Site Recovery. hello orsaker beskrivs för varje inkompatibla hello VM och, baserat på publicerade [Lagringsgränser](https://aka.ms/azure-storage-scalbility-performance), kan vara något av följande hello:
+**VM Compatibility** (VM-kompatibilitet): Anger varför den här virtuella datorn inte kan skyddas med Site Recovery. Anledningarna beskrivs för varje inkompatibel disk av den virtuella datorn och kan, baserat på publicerade [lagringsgränser](https://aka.ms/azure-storage-scalbility-performance), vara något av följande:
 
 * Diskstorleken är > 4 095 GB. Azure Storage har för närvarande inte stöd för diskar som är större än 4 095 GB.
 * Operativsystemets disk är > 2 048 GB. Azure Storage har för närvarande inte stöd för operativsystemdiskar som är större än 2 048 GB.
 * Starttypen är EFI. Azure Site Recovery stöder för närvarande endast starttypen BIOS för virtuella datorer.
 
-* Total VM-storlek (replikering + TFO) överskrider storleksgränsen för hello stöds storage-konto (35 TB). Den här inkompatibiliteten sker vanligtvis när en enskild disk i hello VM har en prestanda-egenskap som överskrider hello stöds Azure eller Site Recovery gränsvärden för standardlagring. Denna instans push-meddelanden hello VM till hello premium storage zon. Hello maximalt stöds av ett premiumlagringskonto är 35 TB och en enda skyddade virtuella datorn kan inte skyddas över flera lagringskonton. Observera även att när ett redundanstest körs på en skyddad virtuell dator körs i hello samma lagringskonto där replikering pågår. Ställ in 2 x hello diskens för replikering tooprogress hello storlek och testa redundans toosucceed parallellt i den här instansen.
+* Total storlek för den virtuella datorn (replikering + TFO) överskrider den gräns för lagringskontostorlek som stöds (35 TB). Den här inkompatibiliteten uppstår vanligen när en enskild disk i den virtuella datorn har en prestandaegenskap som överskrider den maxgräns som stöds av Azure- eller Site Recovery-gränserna för standardlagring. Denna instans skickar den virtuella datorn till Premium Storage-zonen. Maxgränsen för ett lagringskonto av premiumtyp är däremot 35 TB, och det går inte att skydda en enda virtuell dator över flera lagringskonton. Tänk också på att när ett redundanstest körs på en skyddad virtuell dator körs det på samma lagringskonto där replikeringen körs. I den här instansen ställer du in 2 ggr storleken på disken för att replikeringen ska fortskrida samtidigt som redundanstestningen genomförs.
 * Käll-IOPS överskrider IOPS-gränsen för lagring på 5 000 per disk.
 * Käll-IOPS överskrider IOPS-gränsen för lagring på 80 000 per virtuell dator.
-* Genomsnittlig omsättning överskrider stöds Site Recovery data omsättning gränsen på 10 Mbit/s för genomsnittlig i/o-storlek för hello disken.
-* Totalt antal dataomsättningen över alla diskar på hello VM längre än hello maximala stöds Site Recovery data omsättning 54 Mbit/s per VM.
-* Genomsnittlig effektiv skrivåtgärder IOPS längre än hello stöds Site Recovery IOPS 840 för disken.
-* Lagring beräknade ögonblicksbilder överskrider hello stöds ögonblicksbild lagringsgräns på 10 TB.
+* Den genomsnittliga dataomsättningen överskrider den dataomsättningsgräns som stöds av Site Recovery på 10 Mbit/s för den genomsnittliga I/O-storleken för disken.
+* Den totala dataomsättningen för alla diskar i den virtuella datorn överskrider högsta gränsen i Site Recovery på 54 Mbit/s per virtuell dator.
+* Genomsnittligt antal effektiva skrivåtgärder (IOPS) överskrider gränsen i Site Recovery på 840 per disk.
+* Beräknat lagringsutrymme för ögonblicksbilder överskrider gränsen på 10 TB.
 
-**Läs-/ skrivåtkomst IOPS (med tillväxtfaktor)**: hello belastning arbetsbelastningen IOPS för disk hello (standard är 95: e percentilen), inklusive hello framtida tillväxtfaktor (standardvärdet är 30 procent). Observera att hello totala läsning och skrivning IOPS för hello VM är inte alltid hello summan av hello VM individuella diskar läsning och skrivning IOPS, eftersom hello belastning läsning och skrivning IOPS för hello VM är hello belastning av hello summan av dess enskilda diskar läsning och skrivning IOPS under minuten hello profilering period.
+**R/W IOPS (with Growth Factor)** (R/W IOPS (med tillväxtfaktor)): Den högsta IOPS-arbetsbelastningen på disken (standardvärdet är den 95:e percentilen), inklusive faktorn för framtida tillväxt (standardvärdet är 30 procent). Observera att det totala antalet läs/skriv-IOPS för den virtuella datorn inte alltid är summan av de enskilda diskarnas läs/skriv-IOPS, eftersom den virtuella datorns högsta läs/skriv-IOPS är den högsta summan av de enskilda diskarnas läs/skriv-IOPS under varje minut av profileringsperioden.
 
-**Data Omsättningsuppdateringar i Mbit/s (med tillväxtfaktor)**: hello belastning omsättningen på hello disk (standard 95: e percentilen), inklusive hello framtida tillväxtfaktor (standard 30 procent). Observera att hello totala dataomsättningen av hello VM är inte alltid hello summan av hello VM individuella diskar dataomsättningen eftersom hello belastning dataomsättningen av hello VM är hello belastning av hello summan av dess enskilda diskar omsättning under minuten hello profilering period.
+**Data Churn in Mbps (with Growth Factor)** (Dataomsättning i Mbit/s (med tillväxtfaktor)) Den högsta dataomsättningsfrekvensen på disken (standardvärdet är den 95:e percentilen) inklusive faktorn för framtida tillväxt (standardvärdet är 30 procent). Observera att den totala dataomsättningen för den virtuella datorn inte alltid är summan av de enskilda diskarnas dataomsättning, eftersom den virtuella datorns högsta dataomsättning är den högsta summan av de enskilda diskarnas dataomsättning under varje minut av profileringsperioden.
 
-**Antal diskar**: hello Totalt antal VMDKs på hello VM.
+**Number of Disks** (Antal diskar): Det totala antalet VMDK:er på den virtuella datorn.
 
-**Diskstorlek (GB)**: hello totala installationsprogrammet storleken på alla diskar på hello VM. hello-verktyget visar också hello diskstorleken för hello individuella diskar i hello VM.
+**Disk size (GB)** (Diskstorlek (GB)): Total installationsstorlek för alla diskar på den virtuella datorn. Storleken för de enskilda diskarna i den virtuella datorn visas också i verktyget.
 
-**Kärnor**: hello antalet CPU-kärnor på hello VM.
+**Kärnor**: Antalet processorkärnor i den virtuella datorn.
 
-**Minne (MB)**: hello mängden RAM-minne på hello VM.
+**Minne (MB)**: Mängden RAM-minne på den virtuella datorn.
 
-**Nätverkskort**: hello antalet nätverkskort på hello VM.
+**Nätverkskort**: Antalet nätverkskort på den virtuella datorn.
 
-**Starta typen**: det är Start typ av hello VM. Den kan vara BIOS eller EFI. Azure Site Recovery stöder för närvarande endast starttypen BIOS. Alla hello virtuella datorer i EFI-Start typ visas i kalkylbladet för inkompatibla virtuella datorer.
+**Starttyp**: Den virtuella datorns starttyp. Den kan vara BIOS eller EFI. Azure Site Recovery stöder för närvarande endast starttypen BIOS. Alla virtuella datorer för starttypen EFI visas i kalkylbladet över inkompatibla virtuella datorer.
 
-**OS-typen**: hello är hello VM OS-typen. Typen kan vara Windows, Linux eller någon annan typ.
+**OS-typ**: Den virtuella datorns typ av operativsystem. Typen kan vara Windows, Linux eller någon annan typ.
 
 
 ## <a name="site-recovery-limits"></a>Gränser för Site Recovery
@@ -540,28 +540,28 @@ Premium P10-disk | 32 kB eller mer | 8 Mbit/s | 672 GB per disk
 P20- eller P30-premiumdisk | 8 kB  | 5 Mbit/s | 421 GB per disk
 P20- eller P30-premiumdisk | minst 16 kB |10 Mbit/s | 842 GB per disk
 
-Det här är genomsnittliga värden baserade på en I/O-överlappning på 30 procent. Site Recovery kan hantera högre dataflöden med annan överlappning, större skrivningsstorlek och verkligt I/O-beteende under arbetsbelastningen. hello förutsätter föregående siffror en typisk eftersläpning fem minuter. Det vill säga, när data har överförts bearbetas de och en återställningspunkt skapas inom fem minuter.
+Det här är genomsnittliga värden baserade på en I/O-överlappning på 30 procent. Site Recovery kan hantera högre dataflöden med annan överlappning, större skrivningsstorlek och verkligt I/O-beteende under arbetsbelastningen. Föregående antal antar en typisk eftersläpning på cirka fem minuter. Det vill säga, när data har överförts bearbetas de och en återställningspunkt skapas inom fem minuter.
 
-Dessa gränser är baserade på våra tester, men de täcker inte alla möjliga kombinationer av program-I/O. De faktiska resultaten kan variera beroende på blandningen av I/O i ditt program. För bästa resultat bör rekommenderar även efter att planera distribution, alltid vi att du genomför omfattande program testa med hjälp av en växling vid fel tooget hello true prestanda testbild.
+Dessa gränser är baserade på våra tester, men de täcker inte alla möjliga kombinationer av program-I/O. De faktiska resultaten kan variera beroende på blandningen av I/O i ditt program. För bästa resultat även efter distributionsplaneringen rekommenderar vi alltid att du kör omfattande programtester med redundanstest för att få en bild av verklig prestanda.
 
-## <a name="updating-hello-deployment-planner"></a>Uppdatera hello distribution planner
-tooupdate hello distribution planner hello följande:
+## <a name="updating-the-deployment-planner"></a>Uppdatera kapacitetsplaneraren
+Så här gör du om du vill uppdatera kapacitetsplaneraren:
 
-1. Hämta hello senaste versionen av hello [Azure Site Recovery-distribution planner](https://aka.ms/asr-deployment-planner).
+1. Ladda ned den senaste versionen av [Azure Site Recovery-kapacitetsplaneraren](https://aka.ms/asr-deployment-planner).
 
-2. Kopiera hello .zip mappen tooa server som du vill toorun på.
+2. Kopiera .zip-mappen till en server som du vill köra den på.
 
-3. Extrahera hello ZIP-mappen.
+3. Extrahera .zip-filen.
 
-4. Gör något av följande hello:
- * Om hello senaste versionen innehåller inte en profilering korrigering och profilering är redan pågår på din nuvarande version av hello planner, Fortsätt hello profilering.
- * Om hello senaste versionen innehåller en profilering korrigering, rekommenderar vi att du stoppar profilering på din nuvarande version och starta om hello profilering med hello ny version.
+4. Gör något av följande:
+ * Om den senaste versionen innehåller inte en profileringskorrigering och profileringen pågår redan på den aktuella versionen av planeringsverktyget fortsätter du profileringen.
+ * Om den senaste versionen innehåller en profileringskorrigering rekommenderar vi att du stoppar profileringen av din aktuella version och startar om profileringen med den nya versionen.
 
   >[!NOTE]
   >
-  >När du startar profilering med hello ny version, pass hello samma utdata katalogsökväg så att hello lägger verktyget till profildata på hello befintliga filer. En fullständig uppsättning profilerad data kommer att användas toogenerate hello rapporten. Om du skickar ett annat målkatalogen nya filer skapas och gamla profileras startas data används inte toogenerate hello rapporten.
+  >När du startar profilering med den nya versionen skickar du samma sökväg för utdatakatalogen så att verktyget lägger till profildata i de befintliga filerna. En fullständig uppsättning profilerade data används för att generera rapporten. Om du skickar en annan utdatakatalog kommer nya filer att skapas och gamla profildata använda inte för att skapa rapporten.
   >
-  >Varje ny distribution planner är en ackumulerad uppdatering av hello ZIP-filen. Du behöver inte toocopy hello senaste toohello tidigare-mappen. Du kan skapa och använda en ny mapp.
+  >Varje ny kapacitetsplanerare är en ackumulerad uppdatering av .zip-filen. Du behöver inte kopiera de senaste filerna till föregående mapp. Du kan skapa och använda en ny mapp.
 
 
 ## <a name="version-history"></a>Versionshistorik
@@ -571,7 +571,7 @@ Senast uppdaterad: 19 juli 2017
 
 En ny funktion har lagts till:
 
-* Tillagt stöd för stora diskar (> 1 TB) under rapportgenerering. Du kan nu använda distribution planner tooplan replikering för virtuella datorer som har storlekar för diskar som är större än 1 TB (upp till 4095 GB).
+* Tillagt stöd för stora diskar (> 1 TB) under rapportgenerering. Nu kan du använda distributionsplaneraren för att planera replikering av virtuella datorer som har diskstorlekar större än 1 TB (upp till 4 095 GB).
 Läs mer om [stöd för stora diskar i Azure Site Recovery](https://azure.microsoft.com/en-us/blog/azure-site-recovery-large-disks/)
 
 
@@ -580,7 +580,7 @@ Uppdaterad: 9 maj 2017
 
 En ny funktion har lagts till:
 
-* Stöd för hanterad disk i rapportgenerering. hello antalet virtuella datorer kan placeras tooa enda storage-kontot är beräknade baserat på om hanteras disk har valts för växling vid fel/testa redundans.        
+* Stöd för hanterad disk i rapportgenerering. Antalet virtuella datorer som kan placeras i ett enda lagringskonto beräknas baserat på om den hanterade disken har valts för redundans/redundanstest.        
 
 
 ### <a name="12"></a>1.2
@@ -588,26 +588,26 @@ Uppdaterat: 7 april 2017
 
 Lade till följande korrigeringar:
 
-* Tillagda Start Skriv (BIOS eller EFI) kontrollera att varje virtuell dator toodetermine om hello virtuella datorn är kompatibel eller inkompatibel för hello skydd.
-* Tillagda OS ange information för varje virtuell dator i hello kompatibla virtuella datorer och virtuella datorer som inkompatibel kalkylblad.
-* Hej GetThroughput åtgärden stöds nu i hello som tillhör amerikanska myndigheter och Kina Microsoft Azure-regioner.
+* Lade till kontroll av starttyp (BIOS eller EFI) för varje virtuell dator för att avgöra om den virtuella datorn är kompatibel eller inkompatibel för skyddet.
+* Lade till information om typ av operativsystem för varje virtuell dator på kalkylbladen över kompatibla och inkompatibla virtuella datorer.
+* Åtgärden GetThroughput stöds nu i Microsoft Azure-regionerna US Government och Kina.
 * Lade till några fler nödvändiga kontroller för vCenter- och ESXi-Server.
-* Hämtning av felaktig rapporten genererades när nationella inställningar har angetts toonon engelska.
+* Felaktig rapport genererades när nationella inställningar var angivna till annat värde än engelska.
 
 
 ### <a name="11"></a>1.1
 Uppdaterad: 9 mars 2017
 
-Fast hello följande problem:
+Åtgärdat följande problem:
 
-* hello-verktyget kan inte profilen virtuella datorer om hello vCenter har två eller flera virtuella datorer med hello samma namn eller IP-adress på olika ESXi-värdar.
-* Kopiera och söka efter är inaktiverad för hello kompatibla virtuella datorer och virtuella datorer som inkompatibel kalkylblad.
+* Verktyget kan inte profilera virtuella datorer om vCenter har två eller fler virtuella datorer med samma namn eller IP-adress hos olika ESXi-värdar.
+* Kopiering och sökning har inaktiverats för arbetsblad för kompatibla virtuella datorer och inkompatibla virtuella datorer.
 
 ### <a name="10"></a>1.0
 Uppdaterat: 23 februari 2017
 
-Azure Site Recovery-distribution Planner förhandsversion 1.0 har hello följande kända problem (toobe åtgärdas i kommande uppdateringar):
+Azure Site Recovery Deployment Planner Public Preview 1.0 har följande kända problem (kommer att åtgärdas i senare uppdateringar):
 
-* hello verktyget fungerar endast för scenarier med VMware till Azure, inte för Hyper-V-till-Azure-distributioner. Scenarier med Hyper-V-till-Azure använder hello [kapacitetsplaneringsverktyget för Hyper-V](./site-recovery-capacity-planning-for-hyper-v-replication.md).
-* Hej GetThroughput åtgärden stöds inte i hello som tillhör amerikanska myndigheter och Kina Microsoft Azure-regioner.
-* hello-verktyget kan inte profilen virtuella datorer om hello vCenter-servern har två eller flera virtuella datorer med hello samma namn eller IP-adress på olika ESXi-värdar. I den här versionen hoppar hello verktyget profilering för samma VM-namn eller IP-adresser i hello VMListFile. hello-lösningen är tooprofile hello virtuella datorer med hjälp av en ESXi-värd i stället för hello vCenter-servern. Du måste köra en instans för varje ESXi-värd.
+* Verktyget fungerar bara för scenariot VMware till Azure, inte för distributioner med Hyper-V till Azure. För scenarier av typen Hyper-V till Azure ska du använda [kapacitetsplaneringsverktyget för Hyper-V](./site-recovery-capacity-planning-for-hyper-v-replication.md).
+* Åtgärden GetThroughput stöds inte i Microsoft Azure-regionerna US Government och Kina.
+* Verktyget kan inte profilera virtuella datorer om vCenter-servern har två eller flera virtuella datorer med samma namn eller IP-adress i olika ESXi-värdar. I den här versionen hoppar verktyget över profilering för dubbletter av namn på virtuella datorer eller IP-adresser i VMListFile. Lösningen är att profilera de virtuella datorerna med hjälp av en ESXi-värd i stället för vCenter-servern. Du måste köra en instans för varje ESXi-värd.

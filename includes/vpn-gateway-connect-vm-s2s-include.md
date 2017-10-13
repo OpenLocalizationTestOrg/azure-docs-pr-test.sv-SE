@@ -1,10 +1,10 @@
-Du kan ansluta tooa virtuell dator som är distribuerade tooyour VNet genom att skapa en anslutning till fjärrskrivbord tooyour VM. hello bästa sätt tooinitially Kontrollera att du kan ansluta tooyour VM är tooconnect genom att använda sin privata IP-adress i stället för datornamn. På så sätt kan du testar toosee om du kan ansluta inte om namnmatchning är korrekt konfigurerat.
+Du kan ansluta till en virtuell dator som är distribuerad till ditt VNet genom att skapa en anslutning till fjärrskrivbord till den virtuella datorn. Det bästa sättet att först kontrollera att du kan ansluta till den virtuella datorn är att ansluta via dess privata IP-adress snarare än datornamnet. På så sätt kan du testa om du kan ansluta, men inte om namnmatchningen är korrekt konfigurerad.
 
-1. Leta upp hello privat IP-adress. Du hittar hello privata IP-adressen för en virtuell dator på flera olika sätt. Nedan, visar vi hello steg för hello Azure portal och PowerShell.
+1. Leta upp den privata IP-adressen. Du hittar den privata IP-adressen för en virtuell dator på flera olika sätt. Nedan visar vi stegen för Azure-portalen och PowerShell.
 
-  - Azure portal – Leta upp den virtuella datorn i hello Azure-portalen. Visa hello egenskaper för hello VM. hello privat IP-adress anges.
+  - Azure Portal – Leta upp din första virtuella dator på Azure Portal. Visa egenskaperna för den virtuella datorn. Den privata IP-adressen är angiven.
 
-  - PowerShell - Använd hello exempel tooview en lista över virtuella datorer och den privata IP-adresser från resursgrupperna. Du behöver inte toomodify det här exemplet innan du använder den.
+  - PowerShell – Använd exemplet för att visa en lista över virtuella datorer och privata IP-adresser från dina resursgrupper. Du behöver inte ändra exemplet innan du använder det.
 
     ```powershell
     $VMs = Get-AzureRmVM
@@ -19,15 +19,15 @@ Du kan ansluta tooa virtuell dator som är distribuerade tooyour VNet genom att 
     }
     ```
 
-2. Kontrollera att du är ansluten tooyour VNet med hello VPN-anslutning.
-3. Öppna **anslutning till fjärrskrivbord** genom att skriva ”RDP” eller ”anslutning till fjärrskrivbord” i sökrutan för hello hello Aktivitetsfältet, välj sedan anslutning till fjärrskrivbord. Du kan också öppna anslutning till fjärrskrivbord använda hello 'mstsc'-kommando i PowerShell. 
-4. Ange hello privata IP-adressen för hello VM i anslutning till fjärrskrivbord. Du kan klicka på ”Visa alternativ” tooadjust ytterligare inställningar och sedan ansluta.
+2. Kontrollera att du är ansluten till ditt VNet med VPN-anslutning.
+3. Öppna **fjärrskrivbordsanslutningen** genom att skriva "RDP" eller "Anslutning till fjärrskrivbord" i sökrutan i Aktivitetsfältet och välj sedan Anslutning till fjärrskrivbord. Du kan även öppna Anslutning till fjärrskrivbord med hjälp av kommandot ”mstsc” i PowerShell. 
+4. I fjärrskrivbordsanslutningen anger du den virtuella datorns privata IP-adress. Du kan klicka på "Visa alternativ" för att justera inställningar och sedan ansluta.
 
-### <a name="tootroubleshoot-an-rdp-connection-tooa-vm"></a>tootroubleshoot en RDP-anslutning tooa VM
+### <a name="to-troubleshoot-an-rdp-connection-to-a-vm"></a>Felsöka en RDP-anslutning till en virtuell dator
 
-Om du har problem med anslutning tooa virtuella datorn via VPN-anslutning, kontrollerar du hello följande:
+Om du har problem med att ansluta till en virtuell dator via VPN-anslutningen kan du kontrollera följande:
 
 - Kontrollera att VPN-anslutningen har genomförts.
-- Kontrollera att du ansluter toohello privata IP-adress för hello VM.
-- Om du kan ansluta toohello VM använder hello privat IP-adress, men inte hello datornamn, kontrollera att du har konfigurerat DNS korrekt. Mer information om hur namnmatchningen fungerar för virtuella datorer finns i [Namnmatchning för virtuella datorer](../articles/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
-- Mer information om RDP-anslutningar finns [Felsöka fjärrskrivbord anslutningar tooa VM](../articles/virtual-machines/windows/troubleshoot-rdp-connection.md).
+- Kontrollera att du ansluter till den virtuella datorns privata IP-adress.
+- Om du kan ansluta till den virtuella datorn med hjälp av den privata IP-adressen, men inte med namnet på datorn, kontrollerar du att du har konfigurerat DNS korrekt. Mer information om hur namnmatchningen fungerar för virtuella datorer finns i [Namnmatchning för virtuella datorer](../articles/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
+- Mer information finns i [Felsöka fjärrskrivbordsanslutningar till en virtuell dator](../articles/virtual-machines/windows/troubleshoot-rdp-connection.md).

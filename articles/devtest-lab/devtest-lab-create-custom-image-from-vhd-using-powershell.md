@@ -1,5 +1,5 @@
 ---
-title: "aaaCreate en anpassad avbildning Azure DevTest Labs från en VHD-fil med hjälp av PowerShell | Microsoft Docs"
+title: "Skapa en anpassad avbildning i Azure DevTest Labs från en VHD-fil med hjälp av PowerShell | Microsoft Docs"
 description: "Automatisera genereringen av en anpassad avbildning i Azure DevTest Labs från en VHD-fil med hjälp av PowerShell"
 services: devtest-lab,virtual-machines
 documentationcenter: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2017
 ms.author: tarcher
-ms.openlocfilehash: 39b4005fa46cdf86cf0800ca376128134bcfb650
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: a4729f70aae80a13233fbe96a5d8a56c0c9d01d3
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="create-a-custom-image-from-a-vhd-file-using-powershell"></a>Skapa en anpassad avbildning från en VHD-fil med hjälp av PowerShell
 
@@ -30,22 +30,22 @@ ms.lasthandoff: 10/06/2017
 
 ## <a name="step-by-step-instructions"></a>Stegvisa instruktioner
 
-hello följande steg beskriver hur du skapar en anpassad avbildning från en VHD-fil med hjälp av PowerShell:
+Följande steg beskriver hur du skapar en anpassad avbildning från en VHD-fil med hjälp av PowerShell:
 
-1. Logga in tooyour Azure-konto i PowerShell-Kommandotolken med hello följa anropet toohello **Login-AzureRmAccount** cmdlet.  
+1. I PowerShell-Kommandotolken logga in på ditt Azure-konto med följande anrop till den **Login-AzureRmAccount** cmdlet.  
     
     ```PowerShell
     Login-AzureRmAccount
     ```
 
-1.  Välj hello önskvärt Azure-prenumeration genom att anropa hello **Select-AzureRmSubscription** cmdlet. Ersätt följande platshållare för hello hello **$subscriptionId** variabeln med ett giltigt Azure-prenumerations-ID. 
+1.  Välj önskad Azure-prenumerationen genom att anropa den **Select-AzureRmSubscription** cmdlet. Ersätt följande platshållare för de **$subscriptionId** variabeln med ett giltigt Azure-prenumerations-ID. 
 
     ```PowerShell
     $subscriptionId = '<Specify your subscription ID here>'
     Select-AzureRmSubscription -SubscriptionId $subscriptionId
     ```
 
-1.  Hämta hello lab objekt genom att anropa hello **Get-AzureRmResource** cmdlet. Ersätt följande platshållare för hello hello **$labRg** och **$labName** variabler med hello lämpliga värden för din miljö. 
+1.  Hämta lab objektet genom att anropa den **Get-AzureRmResource** cmdlet. Ersätt följande platshållare för de **$labRg** och **$labName** variabler med lämpliga värden för din miljö. 
 
     ```PowerShell
     $labRg = '<Specify your lab resource group name here>'
@@ -53,62 +53,62 @@ hello följande steg beskriver hur du skapar en anpassad avbildning från en VHD
     $lab = Get-AzureRmResource -ResourceId ('/subscriptions/' + $subscriptionId + '/resourceGroups/' + $labRg + '/providers/Microsoft.DevTestLab/labs/' + $labName)
     ```
  
-1.  Hämta hello labblagringskontot och labblagringskontot nyckelvärden från hello lab objekt. 
+1.  Hämta labbet storage-konto och lab lagring konto nyckelvärden från labb-objektet. 
 
     ```PowerShell
     $labStorageAccount = Get-AzureRmResource -ResourceId $lab.Properties.defaultStorageAccount 
     $labStorageAccountKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $labStorageAccount.ResourceGroupName -Name $labStorageAccount.ResourceName)[0].Value
     ```
 
-1.  Ersätt följande platshållare för hello hello **$vhdUri** variabeln med hello URI tooyour överföra VHD-filen. Du kan hämta filen hello-VHD-URI från hello lagringskontots blob-bladet i hello Azure-portalen.
+1.  Ersätt följande platshållare för de **$vhdUri** variabeln med URI i överförda VHD-filen. Du kan hämta VHD-filen URI från bladet med blob storage-konto i Azure-portalen.
 
     ```PowerShell
-    $vhdUri = '<Specify hello VHD URI here>'
+    $vhdUri = '<Specify the VHD URI here>'
     ```
 
-1.  Skapa hello anpassad avbildning med hjälp av hello **ny AzureRmResourceGroupDeployment** cmdlet. Ersätt följande platshållare för hello hello **$customImageName** och **$customImageDescription** variabler toomeaningful namn för din miljö.
+1.  Skapa en anpassad avbildning med hjälp av den **ny AzureRmResourceGroupDeployment** cmdlet. Ersätt följande platshållare för de **$customImageName** och **$customImageDescription** variabler till beskrivande namn för din miljö.
 
     ```PowerShell
-    $customImageName = '<Specify hello custom image name>'
-    $customImageDescription = '<Specify hello custom image description>'
+    $customImageName = '<Specify the custom image name>'
+    $customImageDescription = '<Specify the custom image description>'
 
     $parameters = @{existingLabName="$($lab.Name)"; existingVhdUri=$vhdUri; imageOsType='windows'; isVhdSysPrepped=$false; imageName=$customImageName; imageDescription=$customImageDescription}
 
     New-AzureRmResourceGroupDeployment -ResourceGroupName $lab.ResourceGroupName -Name CreateCustomImage -TemplateUri 'https://raw.githubusercontent.com/Azure/azure-devtestlab/master/Samples/201-dtl-create-customimage-from-vhd/azuredeploy.json' -TemplateParameterObject $parameters
     ```
 
-## <a name="powershell-script-toocreate-a-custom-image-from-a-vhd-file"></a>PowerShell-skriptet toocreate en anpassad avbildning från en VHD-fil
+## <a name="powershell-script-to-create-a-custom-image-from-a-vhd-file"></a>PowerShell-skript för att skapa en anpassad avbildning från en VHD-fil
 
-hello följande PowerShell-skript kan vara används toocreate en anpassad avbildning från en VHD-fil. Ersätt platshållarna för hello (börjar och slutar med hakparenteser) med hello lämpliga värden för dina behov. 
+Följande PowerShell-skript kan användas för att skapa en anpassad avbildning från en VHD-fil. Ersätt platshållarna (börjar och slutar med hakparenteser) med lämpliga värden för dina behov. 
 
 ```PowerShell
-# Log in tooyour Azure account.  
+# Log in to your Azure account.  
 Login-AzureRmAccount
 
-# Select hello desired Azure subscription. 
+# Select the desired Azure subscription. 
 $subscriptionId = '<Specify your subscription ID here>'
 Select-AzureRmSubscription -SubscriptionId $subscriptionId
 
-# Get hello lab object.
+# Get the lab object.
 $labRg = '<Specify your lab resource group name here>'
 $labName = '<Specify your lab name here>'
 $lab = Get-AzureRmResource -ResourceId ('/subscriptions/' + $subscriptionId + '/resourceGroups/' + $labRg + '/providers/Microsoft.DevTestLab/labs/' + $labName)
 
-# Get hello lab storage account and lab storage account key values.
+# Get the lab storage account and lab storage account key values.
 $labStorageAccount = Get-AzureRmResource -ResourceId $lab.Properties.defaultStorageAccount 
 $labStorageAccountKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $labStorageAccount.ResourceGroupName -Name $labStorageAccount.ResourceName)[0].Value
 
-# Set hello URI of hello VHD file.  
-$vhdUri = '<Specify hello VHD URI here>'
+# Set the URI of the VHD file.  
+$vhdUri = '<Specify the VHD URI here>'
 
-# Set hello custom image name and description values.
-$customImageName = '<Specify hello custom image name>'
-$customImageDescription = '<Specify hello custom image description>'
+# Set the custom image name and description values.
+$customImageName = '<Specify the custom image name>'
+$customImageDescription = '<Specify the custom image description>'
 
-# Set up hello parameters object.
+# Set up the parameters object.
 $parameters = @{existingLabName="$($lab.Name)"; existingVhdUri=$vhdUri; imageOsType='windows'; isVhdSysPrepped=$false; imageName=$customImageName; imageDescription=$customImageDescription}
 
-# Create hello custom image. 
+# Create the custom image. 
 New-AzureRmResourceGroupDeployment -ResourceGroupName $lab.ResourceGroupName -Name CreateCustomImage -TemplateUri 'https://raw.githubusercontent.com/Azure/azure-devtestlab/master/Samples/201-dtl-create-customimage-from-vhd/azuredeploy.json' -TemplateParameterObject $parameters
 ```
 
@@ -119,4 +119,4 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName $lab.ResourceGroupName -Na
 
 ##<a name="next-steps"></a>Nästa steg
 
-- [Lägga till ett VM tooyour labb](./devtest-lab-add-vm-with-artifacts.md)
+- [Lägga till en virtuell dator i labbet](./devtest-lab-add-vm-with-artifacts.md)

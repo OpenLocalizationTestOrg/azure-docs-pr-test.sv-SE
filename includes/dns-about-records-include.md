@@ -1,24 +1,24 @@
 ### <a name="record-names"></a>Registrera namn
 
-DNS-poster i Azure anges med relativa namn. En *fullständigt kvalificerade* domännamn (FQDN) omfattar hello zonnamnet, medan en *relativa* namn inte. Till exempel ger hello relativa postnamnet www om du i hello zonen ”contoso.com” hello fullständigt kvalificerade postnamnet ”www.contoso.com”.
+DNS-poster i Azure anges med relativa namn. Ett *fullständigt kvalificerat* domännamn (FQDN), inkluderar zonnamnet, medan ett *relativt* namn inte gör det. Det relativa postnamnet ”www” i zonen ”contoso.com” skapar till exempel det fullständigt kvalificerade postnamnet ”www.contoso.com”.
 
-En *apex* posten är en DNS-post i roten för hello (eller *apex*) för en DNS-zon. Till exempel i hello DNS-zonen ”contoso.com” en post för apex också har hello fullständigt kvalificerade namnet ”contoso.com” (kallas ibland ett *asbestgaller* domän).  Brukligt hello relativa namnet ”@” är används toorepresent apex poster.
+En *topp*post är en DNS-post vid roten (eller *toppen*) av en DNS-zon. I till exempel DNS-zonen "contoso.com" har en toppost också det fullständigt kvalificerade namnet "contoso.com" (kallas ibland en *naken* domän).  Enligt konventionen används det relativa namnet '@' för att representera topposter.
 
 ### <a name="record-types"></a>Typer av poster
 
-Varje DNS-post har ett namn och en typ. Posterna är indelade i olika typer enligt toohello data de innehåller. hello vanligaste typen är en ”A” post som mappar ett namn tooan IPv4-adress. En annan vanliga typ är en 'MX-post som mappar ett namn tooa e-postserver.
+Varje DNS-post har ett namn och en typ. Posterna är indelade i olika typer beroende på den data de innehåller. Den vanligaste typen är en ”A”-post som mappar ett namn till en IPv4-adress. En annan vanlig typ är en ”MX”-post som mappar ett namn till en e-postserver.
 
 Azure DNS stöder alla vanliga DNS-posttyper: A, AAAA, CNAME, MX, NS, PTR, SOA, SRV och TXT. Observera att [SPF-poster representeras med hjälp av TXT-poster](../articles/dns/dns-zones-records.md#spf-records).
 
 ### <a name="record-sets"></a>Postuppsättningar
 
-Ibland behöver toocreate mer än en DNS-post med ett visst namn och typen. Anta exempelvis att hello ”www.contoso.com” webbplats finns på två olika IP-adresser. hello webbplatsen kräver då två olika poster, en för varje IP-adress. Här är ett exempel på en postuppsättning:
+Ibland måste du skapa fler än en DNS-post av ett visst namn och typ. Anta exempelvis att webbplatsen ”www.contoso.com” finns på två olika IP-adresser. Webbplatsen kräver då två olika A-poster, en för varje IP-adress. Här är ett exempel på en postuppsättning:
 
     www.contoso.com.        3600    IN    A    134.170.185.46
     www.contoso.com.        3600    IN    A    134.170.188.221
 
-Azure DNS hanterar DNS-poster med hjälp av *postuppsättningar*. En uppsättning poster (även kallat en *resurs* postuppsättningen) är hello samling av DNS-poster i en zon som har hello samma namn och är av hello samma typ. De flesta postuppsättningar innehåller en enda post. Exempel som hello en ovan, i vilket en postuppsättning innehåller fler än en post, är inte ovanliga.
+Azure DNS hanterar DNS-poster med hjälp av *postuppsättningar*. En postuppsättning (även kallat en *resurs*postuppsättning)är en samling DNS-poster i en zon som har samma namn och är av samma typ. De flesta postuppsättningar innehåller en enda post. Men exempel som det ovanstående, där en postuppsättning innehåller fler än en post, är inte ovanliga.
 
-Till exempel anta att du redan har skapat en A-post ”www” i hello zonen ”contoso.com” pekar toohello IP-adress '134.170.185.46' (hello första posten ovan).  toocreate hello nästa post lägger du till posten toohello befintlig post, utan att skapa en ytterligare poster.
+Anta till exempel att du redan har skapat en A-post "www" i zonen "contoso.com" som pekar på IP-adressen ”134.170.185.46” (första posten ovan).  För att skapa den andra posten skulle du lägga till posten i den befintliga postuppsättningen i stället för att skapa ytterligare en post.
 
-hello SOA- och CNAME-posttyper är undantag. hello DNS-standarden tillåter inte flera poster med hello samma namn för dessa typer, därför dessa postuppsättningar kan bara innehålla en enskild post.
+Postuppsättningarna SOA och CNAME är undantag. DNS-standarden tillåter inte flera poster med samma namn för dessa typer, därför kan dessa postuppsättningar endast innehålla en enda post.

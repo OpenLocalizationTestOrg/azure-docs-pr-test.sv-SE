@@ -1,6 +1,6 @@
 ---
-title: "aaaPoint ett företags Internet domän tooa Traffic Manager-domännamn | Microsoft Docs"
-description: "Den här artikeln hjälper dig peka företagets namn tooa Traffic Manager-domän domännamn."
+title: "Peka företagets Internetdomän mot ett Traffic Manager-domännamn | Microsoft Docs"
+description: "Den här artikeln beskriver hur du pekar ditt företags domännamn på ett Traffic Manager-domännamn."
 services: traffic-manager
 documentationcenter: 
 author: kumudd
@@ -14,24 +14,24 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/11/2016
 ms.author: kumud
-ms.openlocfilehash: 84c428f60a1dc70452bf957d98a68c95e0b51715
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 0322b3510cfd4f94031d8c1db8f1cc032b997fa8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="point-a-company-internet-domain-tooan-azure-traffic-manager-domain"></a>Peka företagets domän tooan Azure Traffic Manager Internetdomän
+# <a name="point-a-company-internet-domain-to-an-azure-traffic-manager-domain"></a>Peka företagets Internetdomän mot en Azure Traffic Manager-domän
 
-När du skapar en Traffic Manager-profil, tilldelar Azure automatiskt ett DNS-namn för profilen. toouse ett namn från DNS-zon skapa en CNAME DNS-post som mappar toohello domännamnet för Traffic Manager-profilen. Du hittar hello Traffic Manager-domännamnet i hello **allmänna** avsnitt på sidan för konfiguration av hello i hello Traffic Manager-profilen.
+När du skapar en Traffic Manager-profil, tilldelar Azure automatiskt ett DNS-namn för profilen. För att använda ett namn från din DNS-zon, skapar du en CNAME DNS-post som mappar till domännamnet för din Traffic Manager-profil. Du hittar Traffic Manager-domännamnet i **Allmänt**-avsnittet på konfigurationssidan för Traffic Manager-profilen.
 
-Till exempel toopoint namnet www.contoso.com toohello contoso.trafficmanager.net för Traffic Manager-DNS-namn, du skulle skapa hello följande DNS-resursposten:
+Om du till exempel vill peka namnet www.contoso.com mot Traffic Manager DNS-namnet contoso.trafficmanager.net så skapar du följande DNS-resurspost:
 
     www.contoso.com IN CNAME contoso.trafficmanager.net
 
-Alla trafikförfrågningar för*www.contoso.com* hämta dirigeras för*contoso.trafficmanager.net*.
+Alla trafikbegäranden för *www.contoso.com* kommer nu att dirigeras till *contoso.trafficmanager.net*.
 
 > [!IMPORTANT]
-> Du kan inte peka en andranivådomän, t.ex *contoso.com*, toohello Traffic Manager-domän. DNS-protokollstandarder tillåter inte CNAME-poster för andra nivåns domännamn.
+> Du kan inte peka en andranivådomän, t.ex. *contoso.com*, på Traffic Manager-domänen. DNS-protokollstandarder tillåter inte CNAME-poster för andra nivåns domännamn.
 
 ## <a name="next-steps"></a>Nästa steg
 

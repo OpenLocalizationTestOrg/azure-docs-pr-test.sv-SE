@@ -1,6 +1,6 @@
 ---
-title: aaaPublish appar med Azure AD Application Proxy | Microsoft Docs
-description: Publicera lokala program toohello moln med Azure AD Application Proxy i hello klassiska portalen.
+title: Publicera appar med Azure AD Application Proxy | Microsoft Docs
+description: "Publicera lokala program till molnet med Azure AD Application Proxy på den klassiska portalen."
 services: active-directory
 documentationcenter: 
 author: kgremban
@@ -15,11 +15,11 @@ ms.date: 07/14/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro; oldportal
-ms.openlocfilehash: 7926998314c65521ae48aebcceb33cb0c67e0b87
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 96490c0d060fe5486a7235a5aa76380c8d9b5d4f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="publish-applications-using-azure-ad-application-proxy"></a>Publicera program med Azure AD Application Proxy
 
@@ -27,72 +27,72 @@ ms.lasthandoff: 10/06/2017
 > * [Azure Portal](application-proxy-publish-azure-portal.md)
 > * [Klassisk Azure-portal](active-directory-application-proxy-publish.md)
 
-Azure AD Application Proxy hjälper dig att stöd för fjärranvändare genom att publicera lokala program toobe nås via hello internet. Med den här punkten, bör du redan har [aktiverade Application Proxy i hello klassiska Azure-portalen](active-directory-application-proxy-enable.md). Den här artikeln vägleder dig genom hello steg toopublish program som körs på nätverket och ge säker fjärråtkomst utanför nätverket. När du har slutfört den här artikeln kommer du att redo tooconfigure hello program med personlig information eller säkerhetskrav.
+Azure AD-programproxyn hjälper dig att stödja fjärranvändare genom att publicera lokala program som kan nås via Internet. I det här läget bör du redan ha [aktiverat programproxyn i den klassiska Azure-portalen](active-directory-application-proxy-enable.md). Den här artikeln beskriver hur du publicerar program som körs i nätverket och hur du tillhandahåller säker fjärråtkomst utanför nätverket. När du är klar med den här artikeln kan du konfigurera programmet med personlig information eller säkerhetskrav.
 
 > [!NOTE]
-> Application Proxy är en funktion som är bara tillgängligt om du har uppgraderat toohello Premium eller Basic-versionen av Azure Active Directory. Mer information finns i [Azure Active Directory-versioner](active-directory-editions.md). Om du vill toouse Application Proxy kan du [publicera program i hello Azure-portalen](application-proxy-publish-azure-portal.md).
+> Application Proxy är en funktion som bara är tillgänglig om du har uppgraderat till Premium- eller Basic-versionen av Azure Active Directory. Mer information finns i [Azure Active Directory-versioner](active-directory-editions.md). Om du vill använda Application Proxy kan du [Publicera program i Azure Portal](application-proxy-publish-azure-portal.md).
 
-## <a name="publish-an-app-using-hello-wizard"></a>Publicera en app med hello-guiden
-1. Logga in som administratör i hello [klassiska Azure-portalen](https://manage.windowsazure.com/).
-2. Gå tooActive Directory och välj hello katalog där du aktiverade Application Proxy.
+## <a name="publish-an-app-using-the-wizard"></a>Publicera en app med hjälp av guiden
+1. Logga in som administratör på [den klassiska Azure-portalen](https://manage.windowsazure.com/).
+2. Gå till Active Directory och välj den katalog där du aktiverade Application Proxy.
    
     ![Active Directory – ikon](./media/active-directory-application-proxy-publish/ad_icon.png)
-3. Klicka på hello **program** fliken och klicka sedan på hello **Lägg till** knappen längst ned hello hello-skärmen
+3. Klicka på fliken **Program** och sedan på knappen **Lägg till** längst ned på skärmen
    
     ![Lägga till ett program](./media/active-directory-application-proxy-publish/aad_appproxy_selectdirectory.png)
 4. Välj **Publicera ett program som ska vara tillgängligt utanför ditt nätverk**.
    
     ![Publicera ett program som ska vara tillgängligt utanför ditt nätverk](./media/active-directory-application-proxy-publish/aad_appproxy_addapp.png)
-5. Ange följande information om programmet hello:
+5. Ange följande information om ditt program:
    
-   * **Namnet**: hello användarvänligt namn för ditt program. Det måste vara unikt i din katalog.
-   * **Intern URL**: hello-adress som hello Application Proxy Connector använder tooaccess hello programmet inifrån ditt privata nätverk. Du kan ange en specifik sökväg på hello backend-servern toopublish medan hello resten av hello-servern är opublicerad. På så sätt kan du publicera olika platser på hello samma server och ge vart och ett eget namn och regler.
+   * **Namn**: Programmets användarvänliga namn. Det måste vara unikt i din katalog.
+   * **Intern URL**: Adressen som Application Proxy Connector använder för att komma åt programmet inifrån ditt privata nätverk. Du kan ange en specifik sökväg på backend-servern som du vill publicera, medan resten av servern är opublicerad. På så sätt kan du publicera olika webbplatser på samma server och ge varje webbplats sitt eget namn och sina egna åtkomstregler.
      
      > [!TIP]
-     > Om du publicerar en sökväg, kontrollerar du att den innehåller alla nödvändiga hello-avbildningar, skript och formatmallar för ditt program. Till exempel om din app på https://yourapp/app och använder avbildningar som finns på https://yourapp/media, bör du publicera https://yourapp/ som hello sökväg.
+     > Om du publicerar en sökväg, så se till att den innehåller alla bilder, skript och formatmallar som krävs för ditt program. Om din app t.ex. finns på https://yourapp/app och använder bilder som finns på https://yourapp/media, så bör du publicera https://yourapp/ som sökväg.
      > 
      > 
-   * **Förautentiseringsmetod**: hur Application Proxy verifierar användare innan du ger dem åtkomst tooyour program. Välj något av alternativen hello hello nedrullningsbara menyn.
+   * **Förautentiseringsmetoden**: Hur programproxyn verifierar användare innan de ges åtkomst till ditt program. Välj något av alternativen i den nedrullningsbara menyn.
      
-     * Azure Active Directory: Application Proxy dirigerar användarna toosign med Azure AD, som autentiserar deras behörigheter för hello katalog och program.
-     * Genomströmning: Användarna har inte tooauthenticate tooaccess hello program.
+     * Azure Active Directory: Programproxyn omdirigerar användarna till att logga in med Azure AD, som autentiserar deras katalog- och programbehörigheter.
+     * Genomströmning: Användarna behöver inte autentisera sig för att få åtkomst till programmet.
      
      ![Egenskaper för program](./media/active-directory-application-proxy-publish/aad_appproxy_appproperties.png)  
-6. toofinish hello guiden klickar du på hello bockmarkeringen längst ned hello hello-skärmen. Nu har programmet hello definierats i Azure AD.
+6. Slutför guiden genom att klicka på bockmarkeringen längst ned på skärmen. Nu har programmet definierats i Azure AD.
 
-## <a name="assign-users-and-groups-toohello-application"></a>Tilldela användare och grupper toohello program
-I ordning för dina användare tooaccess ditt publicerade program måste du tooassign dem antingen individuellt eller i grupper. (Kom ihåg tooassign själv åtkomst för.) Varje användare som du tilldelar behöver en licens för Azure Basic eller högre. Du kan tilldela licenser individuellt eller toogroups. Mer information finns i [och tilldela användare tooan programmet](active-directory-applications-guiding-developers-assigning-users.md). 
+## <a name="assign-users-and-groups-to-the-application"></a>Tilldela användare och grupper till programmet
+För att dina användare ska få åtkomst till ditt publicerade program måste du tilldela dem antingen individuellt eller i grupper. (Kom ihåg att även tilldela dig själv åtkomst.) Varje användare som du tilldelar behöver en licens för Azure Basic eller högre. Du kan tilldela licenser individuellt eller till grupper. Mer information finns i [Tilldela användare till ett program](active-directory-applications-guiding-developers-assigning-users.md). 
 
-För appar som kräver förautentisering ger tilldela en användare behörighet toouse hello program. För appar som inte kräver förautentisering, tilldela en användare innebär hello användaren kan komma åt programmet hello via hello åtkomstpanelen.
+För appar som kräver förautentisering ger användartilldelningen behörighet att använda programmet. För appar som inte kräver förautentisering innebär användartilldelningen att användaren kan komma åt programmet via åtkomstpanelen.
 
-1. Efter färdigställa hello Lägg till App-guiden kan se du hello Snabbstart för ditt program. toomanage som har åtkomst toohello appen, Välj **användare och grupper**.
+1. När du har slutfört guiden Lägg till app visas sidan Snabbstart för ditt program. Du kan hantera vem som har tillgång till appen genom att välja **Användare och grupper**.
    
     ![Snabbstart för att tilldela användare för Application Proxy – skärmbild](./media/active-directory-application-proxy-publish/aad_appproxy_usersgroups.png)
-2. Sök efter specifika grupper i katalogen, eller visa alla användare. toodisplay hello sökresultaten klickar du på hello är markerat.
+2. Sök efter specifika grupper i katalogen, eller visa alla användare. Visa sökresultatet genom att klicka på kryssmarkeringen.
    
       ![Söka efter grupper eller användare – skärmbild](./media/active-directory-application-proxy-publish/aad_appproxy_search.png)
-3. Välj alla användare eller grupp som du vill tooassign toothis appen och klicka på **tilldela**. Du tillfrågas tooconfirm den här åtgärden.
+3. Välj alla användare eller grupper som du vill tilldela den här appen och klicka på **Tilldela**. Du ombeds att bekräfta åtgärden.
 
 > [!NOTE]
-> För appar med integrerad Windows-autentisering kan du endast tilldela användare och grupper som synkroniseras från din lokala Active Directory. Användare som loggar in med ett Microsoft-konto och gäster kan inte tilldelas appar som publiceras med Azure Active Directory Application Proxy. Kontrollera att dina användare logga in med autentiseringsuppgifterna som ingår i hello samma domän som hello-app som du publicerar.
+> För appar med integrerad Windows-autentisering kan du endast tilldela användare och grupper som synkroniseras från din lokala Active Directory. Användare som loggar in med ett Microsoft-konto och gäster kan inte tilldelas appar som publiceras med Azure Active Directory Application Proxy. Se till att dina användare loggar in med autentiseringsuppgifter för samma domän som appen som du publicerar.
 > 
 > 
 
 ## <a name="test-your-published-application"></a>Testa ditt publicerade program
-När du har publicerat programmet kan testa du den genom att gå toohello URL som du har publicerat. Kontrollera att du har åtkomst till det, att det återges korrekt och att allt fungerar som förväntat. Om du har problem med eller får ett felmeddelande, försök hello [felsökningsguide för](active-directory-application-proxy-troubleshoot.md).
+När du har publicerat programmet kan du testa det genom att navigera till den URL som du har publicerat. Kontrollera att du har åtkomst till det, att det återges korrekt och att allt fungerar som förväntat. Om det uppstår problem eller om ett felmeddelande visas, så gå till [felsökningsguiden](active-directory-application-proxy-troubleshoot.md).
 
 ## <a name="configure-your-application"></a>Konfigurera ditt program
-Du kan ändra publicerade appar eller konfigurera avancerade alternativ på sidan för hello konfigurera. Du kan anpassa din app genom att ändra hello namn eller ladda upp en logotyp på den här sidan. Du kan också hantera åtkomstregler som hello förautentiseringsmetoden eller Multi-Factor authentication.
+Du kan ändra publicerade appar eller konfigurera avancerade alternativ på sidan Konfigurera. På den här sidan kan du anpassa din app genom att ändra namnet eller genom att ladda upp en logotyp. Du kan också hantera åtkomstregler som förautentiseringsmetoden eller Multi-Factor Authentication.
 
 ![Avancerad konfiguration](./media/active-directory-application-proxy-publish/aad_appproxy_configure.png)
 
-När du publicerar program med hjälp av Azure Active Directory Application Proxy, de visas i listan med program hello i Azure AD och du kan hantera dem där.
+När du har publicerat program med hjälp av Azure Active Directory Application Proxy visas de i programlistan i Azure AD och du kan hantera dem där.
 
-Om du inaktiverar Application Proxy-tjänster när du har publicerat program hello program inte längre tillgängligt utanför ditt privata nätverk. Användarna kan fortfarande åtkomst hello program lokalt som vanligt.
+Om du inaktiverar programproxytjänsterna när du har publicerat program, så är programmen inte längre tillgängliga utanför ditt privata nätverk. Användarna kan fortfarande komma åt programmen lokalt precis som vanligt.
 
-tooview ett program och se till att den är tillgänglig genom att dubbelklicka på hello hello programmets namn. Om hello Application Proxy-tjänsten är inaktiverad och programmet hello är inte tillgängligt, visas ett varningsmeddelande hello överst i hello-skärmen.
+Om du vill visa ett program och förvissa dig om att det är tillgängligt dubbelklickar du på programnamnet. Om Application Proxy-tjänsten är inaktiverad och programmet inte är tillgängligt visas ett varningsmeddelande längst upp på skärmen.
 
-toodelete ett program, Välj ett program i hello listan och klicka sedan på **ta bort**.
+Om du vill ta bort ett program markerar du programmet i listan och klickar sedan på **Ta bort**.
 
 ## <a name="next-steps"></a>Nästa steg
 * [Publicera program med ditt domännamn](active-directory-application-proxy-custom-domains.md)
@@ -100,5 +100,5 @@ toodelete ett program, Välj ett program i hello listan och klicka sedan på **t
 * [Aktivera villkorlig åtkomst](active-directory-application-proxy-conditional-access.md)
 * [Arbeta med anspråksmedvetna program](active-directory-application-proxy-claims-aware-apps.md)
 
-Hello senaste nyheterna och uppdateringarna finns på hello [bloggen om Application Proxy](http://blogs.technet.com/b/applicationproxyblog/)
+Läs mer om de senaste nyheterna och uppdateringarna i [bloggen om Application Proxy](http://blogs.technet.com/b/applicationproxyblog/)
 

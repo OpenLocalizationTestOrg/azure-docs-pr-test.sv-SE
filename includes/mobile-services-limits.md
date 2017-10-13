@@ -3,8 +3,8 @@
 | --- | --- | --- | --- |
 | API-anrop |500 KB |1.5 M / enhet |15 M / enhet |
 | Aktiva enheter |500 |Obegränsat |Obegränsat |
-| Skala |Saknas |Too6 enheter |Obegränsade enheter |
-| Push-meddelanden |Notification Hubs kostnadsfria nivån ingår dig miljon push-meddelanden för too1 |Notification Hubs grundläggande nivån ingår dig miljon push-meddelanden för too10 |Notification Hubs standardnivån ingår dig miljon push-meddelanden för too10 |
+| Skala |Saknas |Upp till 6 enheter |Obegränsade enheter |
+| Push-meddelanden |Notification Hubs kostnadsfria nivån ingår, upp till 1 miljon push-meddelanden |Notification Hubs grundläggande nivån ingår, upp till 10 M push-meddelanden |Notification Hubs standardnivån ingår, upp till 10 M push-meddelanden |
 | Messaging realtid /<br/>Web Sockets |Begränsad |350 / mobila tjänsten |Obegränsat |
 | Synkroniseringar offline |Begränsad |Ingår |Ingår |
 | Schemalagda jobb |Begränsad |Ingår |Ingår |

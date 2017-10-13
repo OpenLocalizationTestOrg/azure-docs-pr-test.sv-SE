@@ -1,6 +1,6 @@
 ---
-title: "aaaGet igång med Azure Mobile Engagement för Unity Android-distribution"
-description: "Lär dig hur toouse Azure Mobile Engagement med analyser och Push-meddelanden för Unity-appar som distribueras tooiOS enheter."
+title: "Kom igång med Azure Mobile Engagement för Unity Android-distribution"
+description: "Lär dig hur du använder Azure Mobile Engagement med analyser och push-meddelanden för Unity-appar som distribueras till iOS-enheter."
 services: mobile-engagement
 documentationcenter: unity
 author: piyushjo
@@ -14,73 +14,73 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: c4d34691daeb7544b11c2d6895b2474af0f902b4
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: bf0b758159d475b4ed7eadb84227e4824e11ba86
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-mobile-engagement-for-unity-android-deployment"></a>Kom igång med Azure Mobile Engagement för Unity Android-distribution
 [!INCLUDE [Hero tutorial switcher](../../includes/mobile-engagement-hero-tutorial-switcher.md)]
 
-Det här avsnittet beskrivs hur du toouse Azure Mobile Engagement toounderstand appanvändningen och hur toosend skicka meddelanden toosegmented användare i ett Unity-program när du distribuerar tooan Android-enhet.
-Den här självstudiekursen använder hello klassiska kursen Unity Roll kulan självstudiekursen som hello som startpunkt. Du bör följa hello stegen i den här [kursen](mobile-engagement-unity-roll-a-ball.md) innan du fortsätter med hello Mobile Engagement-integreringen som visas i hello kursen nedan. 
+I den här artikeln beskrivs hur du använder Azure Mobile Engagement för att förstå appanvändningen, och hur du skickar push-meddelanden till segmenterade användare i ett Unity-program när du distribuerar till en Android-enhet.
+Den här kursen använder den klassiska kursen Unity Roll a Ball som startpunkt. Följ stegen i den här [kursen](mobile-engagement-unity-roll-a-ball.md) innan du fortsätter med Mobile Engagement-integreringen som visas i kursen nedan. 
 
-Den här kursen kräver hello följande:
+Följande krävs för den här självstudiekursen:
 
 * [Unity Editor](http://unity3d.com/get-unity)
 * [Mobile Engagement Unity SDK](https://aka.ms/azmeunitysdk)
 * Google Android SDK
 
 > [!NOTE]
-> toocomplete den här självstudiekursen kommer du måste ha ett aktivt Azure-konto. Om du inte har något konto kan skapa du ett kostnadsfritt utvärderingskonto på bara några minuter. Mer information om den [kostnadsfria utvärderingsversionen av Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-engagement-unity-android-get-started).
+> Du måste ha ett aktivt Azure-konto för att slutföra den här kursen. Om du inte har något konto kan skapa du ett kostnadsfritt utvärderingskonto på bara några minuter. Mer information om den [kostnadsfria utvärderingsversionen av Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-engagement-unity-android-get-started).
 > 
 > 
 
 ## <a id="setup-azme"></a>Konfigurera Mobile Engagement för din Android-app
 [!INCLUDE [Create Mobile Engagement App in Portal](../../includes/mobile-engagement-create-app-in-portal-new.md)]
 
-## <a id="connecting-app"></a>Ansluta appen toohello Mobile Engagement-serverdelen
-### <a name="import-hello-unity-package"></a>Importera hello Unity-paketet
-1. Hämta hello [Mobile Engagement Unity-paketet](https://aka.ms/azmeunitysdk) och spara den tooyour lokal dator. 
-2. Gå för**tillgångar -> Importera paket -> anpassat paket** och välj hello-paket som du hämtade i hello senare steg. 
+## <a id="connecting-app"></a>Anslut appen till Mobile Engagement-serverdelen
+### <a name="import-the-unity-package"></a>Importera Unity-paketet
+1. Hämta [Mobile Engagement Unity-paketet](https://aka.ms/azmeunitysdk) och spara det på din lokala dator. 
+2. Gå till **Assets -> Import Package -> Custom Package** (Tillgångar -> Importera paket -> Anpassat paket) och välj paketet som du hämtade i steget ovan. 
    
     ![][70] 
 3. Kontrollera att alla filer har markerats och klicka på knappen **Import** (Importera). 
    
     ![][71] 
-4. När importen är klar visas hello importerade SDK-filerna i projektet.  
+4. När importen är klar visas de importerade SDK-filerna i projektet.  
    
     ![][72] 
 
-### <a name="update-hello-engagementconfiguration"></a>Uppdatera hello EngagementConfiguration
-1. Öppna hello **EngagementConfiguration** skriptfilen hello SDK-mappen och uppdatera hello **ANDROID\_anslutning\_sträng** med hello anslutningssträng som du hämtade tidigare från hello Azure-portalen.  
+### <a name="update-the-engagementconfiguration"></a>Uppdatera EngagementConfiguration
+1. Öppna skriptfilen **EngagementConfiguration** i SDK-mappen och uppdatera **ANDROID\_CONNECTION\_STRING** med den anslutningssträng som du hämtade tidigare i Azure Portal.  
    
     ![][73]
-2. Spara filen med hello 
-3. Kör **File -> Engagement -> Generate Android Manifest** (Arkiv -> Engagement -> Generera Android-manifest). Detta är hello plugin-program läggs till av hello Mobile Engagement SDK och klicka på det uppdateras automatiskt dina Projektinställningar. 
+2. Spara filen 
+3. Kör **File -> Engagement -> Generate Android Manifest** (Arkiv -> Engagement -> Generera Android-manifest). Det här är plugin-programmet som läggs till av Mobile Engagement SDK. När du klickar på det uppdateras automatiskt dina projektinställningar. 
    
     ![][74]
 
 > [!IMPORTANT]
-> Se till att tooexecute detta varje gång du uppdaterar hello **EngagementConfiguration** filen annars inte visas ändringarna i hello app. 
+> Var noga med att köra programmet varje gång du uppdaterar filen **EngagementConfiguration**, annars återspeglas inte dina ändringar i appen. 
 > 
 > 
 
-### <a name="configure-hello-app-for-basic-tracking"></a>Konfigurera hello appen för grundläggande spårning
-1. Öppna hello **PlayerController** skript kopplat toohello Player-objektet för redigering. 
-2. Lägg till hello följande med instruktionen:
+### <a name="configure-the-app-for-basic-tracking"></a>Konfigurera appen för grundläggande spårning
+1. Öppna **PlayerController**-skriptet som är kopplat till Player-objektet för redigering. 
+2. Lägg till följande med instruktionen:
    
         using Microsoft.Azure.Engagement.Unity;
-3. Lägg till följande toohello hello `Start()` metod
+3. Lägg till följande i metoden `Start()`
    
         EngagementAgent.Initialize();
         EngagementAgent.StartActivity("Home");
 
-### <a name="deploy-and-run-hello-app"></a>Distribuera och köra hello app
-Kontrollera att du har Android SDK är installerat på datorn innan du försöker utföra toodeploy Unity app tooyour enheten. 
+### <a name="deploy-and-run-the-app"></a>Distribuera och kör appen
+Kontrollera att Android SDK är installerat på datorn innan du försöker distribuera den här Unity-appen till din enhet. 
 
-1. Anslut en Android-enhet tooyour dator. 
+1. Anslut en Android-enhet till datorn. 
 2. Öppna **File -> Build Settings** (Arkiv -> Inställningar för byggande). 
    
     ![][40]
@@ -95,8 +95,8 @@ Kontrollera att du har Android SDK är installerat på datorn innan du försöke
 5. Klicka slutligen på **Build And Run** (Bygg och kör).
    
     ![][54]
-6. Du tillfrågas tooprovide en mapp namn toostore hello Android-paketet. 
-7. Om allt går bra, hello paketet ska vara distribuerade tooyour anslutna bör enheter och du se Unity-spelet på din telefon! 
+6. Du kan bli ombedd att ange ett mappnamn där Android-paketet ska lagras. 
+7. Om allt går bra distribueras paketet till den anslutna enheten. Sedan kan du se Unity-spelet på din mobil. 
 
 ## <a id="monitor"></a>Anslut appen med realtidsövervakning
 [!INCLUDE [Connect app with real-time monitoring](../../includes/mobile-engagement-connect-app-with-monitor.md)]
@@ -104,21 +104,21 @@ Kontrollera att du har Android SDK är installerat på datorn innan du försöke
 ## <a id="integrate-push"></a>Aktivera push-meddelanden och meddelanden i appen
 [!INCLUDE [Enable Google Cloud Messaging](../../includes/mobile-engagement-enable-google-cloud-messaging.md)]
 
-### <a name="update-hello-engagementconfiguration"></a>Uppdatera hello EngagementConfiguration
-1. Öppna hello **EngagementConfiguration** skriptfilen hello SDK-mappen och uppdatera hello **ANDROID\_GOOGLE\_nummer** med hello **Google-projekt Antal** du tidigare hämtade från hello Google Cloud Developer-portalen. Detta är en sträng som värde så se till att tooenclose den med dubbla citattecken. 
+### <a name="update-the-engagementconfiguration"></a>Uppdatera EngagementConfiguration
+1. Öppna skriptfilen **EngagementConfiguration** i SDK-mappen och uppdatera **ANDROID\_GOOGLE\_NUMBER** med det **Google-projektnummer** som du tidigare hämtade från Google Cloud Developer-portalen. Det här är ett strängvärde så var noga med att omge det med dubbla citattecken. 
    
     ![][75]
-2. Spara hello-filen. 
-3. Kör **File -> Engagement -> Generate Android Manifest** (Arkiv -> Engagement -> Generera Android-manifest). Detta är hello plugin-program läggs till av hello Mobile Engagement SDK och klicka på det uppdateras automatiskt dina Projektinställningar. 
+2. Spara filen. 
+3. Kör **File -> Engagement -> Generate Android Manifest** (Arkiv -> Engagement -> Generera Android-manifest). Det här är plugin-programmet som läggs till av Mobile Engagement SDK. När du klickar på det uppdateras automatiskt dina projektinställningar. 
    
     ![][74]
 
-### <a name="configure-hello-app-tooreceive-notifications"></a>Konfigurera hello app tooreceive meddelanden
-1. Öppna hello **PlayerController** skript kopplat toohello Player-objektet för redigering. 
-2. Lägg till följande toohello hello `Start()` metod
+### <a name="configure-the-app-to-receive-notifications"></a>Konfigurera appen för att ta emot meddelanden
+1. Öppna **PlayerController**-skriptet som är kopplat till Player-objektet för redigering. 
+2. Lägg till följande i metoden `Start()`
    
         EngagementReachAgent.Initialize();
-3. Nu när hello appen har uppdaterats, distribuera och köra hello app på en enhet enligt hello anvisningarna nedan. 
+3. Nu när appen har uppdaterats kan du distribuera och köra appen på en enhet enligt anvisningarna nedan. 
 
 [!INCLUDE [Send notification from portal](../../includes/mobile-engagement-android-send-push-from-portal.md)]
 

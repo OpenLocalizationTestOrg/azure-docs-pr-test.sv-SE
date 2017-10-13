@@ -14,37 +14,37 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: bcfc710861b19d8f86f094ced0d1c691e0911f08
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: cbf8f729d0ebfb271bb0d8702ac043442b42c262
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="more-details-about-features-in-preview"></a>Mer information om funktionerna i förhandsversionen
-Det här avsnittet beskrivs hur toouse funktioner för närvarande under förhandsgranskning.
+Det här avsnittet beskriver hur du använder funktioner för närvarande under förhandsgranskning.
 
 ## <a name="group-writeback"></a>Tillbakaskrivning av grupp
-hello-alternativet för tillbakaskrivning av grupp i valfria funktioner kan du toowriteback **Office 365-grupper** tooa skog med Exchange installerad. Det här är en grupp som alltid lärt dig i hello molnet. Om du har Exchange lokalt kan sedan du skriva tillbaka dessa grupper tooon lokala så att användare med en lokal Exchange-postlåda kan skicka och ta emot e-post från dessa grupper.
+Alternativet för tillbakaskrivning av grupp i valfria funktioner kan du tillbakaskrivning **Office 365-grupper** till en skog med Exchange installerad. Det här är en grupp som alltid lärt dig i molnet. Om du har Exchange lokalt kan sedan du skriva tillbaka grupperna till lokalt så att användare med en lokal Exchange-postlåda kan skicka och ta emot e-post från dessa grupper.
 
-Mer information om Office 365-grupper och hur toouse dem hittar [här](http://aka.ms/O365g).
+Mer information om Office 365-grupper och hur de används finns [här](http://aka.ms/O365g).
 
-En grupp för Office 365 representeras som en distributionsgrupp i lokala AD DS. Lokal Exchange-server måste vara i Exchange 2013 cumulative update 8 (ut i mars 2015) eller Exchange 2016 toorecognize den här nya grupptypen.
+En grupp för Office 365 representeras som en distributionsgrupp i lokala AD DS. Lokal Exchange-server måste vara i Exchange 2013 cumulative update 8 (ut i mars 2015) eller Exchange 2016 att identifiera den här nya grupptypen.
 
-**Anteckningar hello förhandsversionen**
+**Anteckningar under förhandsgranskningen**
 
-* hello-bok postattributet för närvarande inte har fyllts i i hello preview. Utan det här attributet visas inte hello grupp i hello GAL. Hej enklaste sättet toopopulate detta attribut är toouse hello Exchange PowerShell-cmdleten `update-recipient`.
-* Endast skogar med hello Exchange-schemat är ogiltigt mål för grupper. Om ingen Exchange upptäcktes sedan är tillbakaskrivning av grupp inte möjliga tooenable.
-* Endast sammanhållna Exchange-organisation distributioner stöds för närvarande. Om du har mer än ett Exchange organisation lokalt, måste en lokal GALSync lösning för dessa grupper tooappear i din andra skogar.
-* hello grupp tillbakaskrivning funktionen hanterar inte säkerhetsgrupper eller distributionsgrupper.
+* -Bok postattributet för närvarande inte har fyllts i i förhandsgranskningen. Utan det här attributet visas inte gruppen i den globala Adresslistan. Det enklaste sättet att fylla i det här attributet är att använda Exchange PowerShell-cmdleten `update-recipient`.
+* Endast skogar med Exchange-schemat är ogiltigt mål för grupper. Tillbakaskrivning av grupp är inte möjligt att aktivera om ingen Exchange upptäcktes.
+* Endast sammanhållna Exchange-organisation distributioner stöds för närvarande. Om du har mer än ett Exchange organisation lokalt, måste en lokal GALSync lösning för dessa grupper visas i din andra skogar.
+* Funktionen för tillbakaskrivning av grupp hanteras inte säkerhetsgrupper eller distributionsgrupper.
 
 > [!NOTE]
-> Det krävs en prenumeration tooAzure AD Premium för tillbakaskrivning av grupp.
+> Det krävs en prenumeration på Azure AD Premium för tillbakaskrivning av grupp.
 > 
 >
 
 ## <a name="user-writeback"></a>Tillbakaskrivning av användare
 > [!IMPORTANT]
-> hello användaren tillbakaskrivning förhandsgranskningsfunktion togs bort i hello augusti 2015 update tooAzure AD Connect. Om du har aktiverat det, bör du inaktivera den här funktionen.
+> Förhandsgranskningsfunktionen för tillbakaskrivning av användare har tagits bort i augusti 2015-uppdateringen till Azure AD Connect. Om du har aktiverat det, bör du inaktivera den här funktionen.
 >
 >
 

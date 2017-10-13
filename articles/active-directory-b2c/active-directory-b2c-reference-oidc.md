@@ -1,6 +1,6 @@
 ---
 title: Webb-inloggning med OpenID Connect - Azure AD B2C | Microsoft Docs
-description: "Skapa webbprogram med hjälp av hello Azure Active Directory-implementeringen av autentiseringsprotokollet för hello OpenID Connect"
+description: "Skapa webbprogram med hjälp av Azure Active Directory-implementeringen av autentiseringsprotokollet OpenID Connect"
 services: active-directory-b2c
 documentationcenter: 
 author: saeedakhter-msft
@@ -14,28 +14,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: saeedakhter-msft
-ms.openlocfilehash: 89e9cfa28e4e5c34304aea355cca2dd0c4b42abc
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: b0c33a47dd0cae79eab32ac578448fae8bf59be5
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="azure-active-directory-b2c-web-sign-in-with-openid-connect"></a>Azure Active Directory B2C: Web inloggning med OpenID Connect
-OpenID Connect är ett autentiseringsprotokoll som bygger på OAuth 2.0 genom att använda toosecurely logga användare i tooweb program. Du kan flytta över registrering, inloggning med hjälp av hello Azure Active Directory B2C (Azure AD B2C) implementering av OpenID Connect och andra Identitetshantering upplever i ditt webbprogram program tooAzure Active Directory (AD Azure). Den här guiden visar hur toodo så på ett språkoberoende sätt. Beskriver hur toosend och ta emot HTTP-meddelanden utan att använda någon av våra bibliotek med öppen källkod.
+OpenID Connect är ett autentiseringsprotokoll som bygger på OAuth 2.0 som kan användas för säker inloggning användare till webbprogram. Med hjälp av Azure Active Directory B2C (Azure AD B2C) implementering av OpenID Connect, du kan flytta över registrering, inloggning och andra Identitetshantering upplever i ditt webbprogram till Azure Active Directory (AD Azure). Den här guiden visar hur du gör en språkoberoende sätt. Det beskriver hur du skickar och tar emot HTTP-meddelanden utan att använda någon av våra bibliotek med öppen källkod.
 
-[OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) utökar hello OAuth 2.0 *auktorisering* protokoll som ska användas som en *autentisering* protokoll. Detta ger dig tooperform enkel inloggning med hjälp av OAuth. Hello begreppet införs en *ID token*, vilket är en säkerhetstoken som gör hello klienten tooverify hello hello användares identitet och få grundläggande profilinformation om hello användare.
+[OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) utökar OAuth 2.0 *auktorisering* protokoll som ska användas som en *autentisering* protokoll. På så sätt kan du utföra enkel inloggning med hjälp av OAuth. Den introducerar konceptet för en *ID token*, vilket är en säkerhetstoken som gör att klienten kan verifiera användarens identitet och få grundläggande profilinformation om användaren.
 
-Eftersom den utökar OAuth 2.0 kan också appar toosecurely hämta *åtkomst till token*. Du kan använda access_tokens tooaccess resurser som skyddas av en [auktorisering server](active-directory-b2c-reference-protocols.md#the-basics). Vi rekommenderar OpenID Connect om du utvecklar ett program som finns på en server och öppnas via en webbläsare. Om du vill tooadd identity management tooyour mobila eller stationära program med hjälp av Azure AD B2C kan du använda [OAuth 2.0](active-directory-b2c-reference-oauth-code.md) i stället för OpenID Connect.
+Eftersom den utökar OAuth 2.0 kan också appar att på ett säkert sätt hämta *åtkomst till token*. Du kan använda access_tokens åtkomst till resurser som skyddas av en [auktorisering server](active-directory-b2c-reference-protocols.md#the-basics). Vi rekommenderar OpenID Connect om du utvecklar ett program som finns på en server och öppnas via en webbläsare. Om du vill lägga till Identitetshantering i dina mobila eller stationära program med Azure AD B2C, bör du använda [OAuth 2.0](active-directory-b2c-reference-oauth-code.md) i stället för OpenID Connect.
 
-Azure AD B2C utökar hello standard OpenID Connect protokollet toodo över enkel autentisering och auktorisering. Det inför hello [parametern](active-directory-b2c-reference-policies.md), vilket gör att du toouse OpenID Connect tooadd användarupplevelser--som registrering, inloggning och profilhantering--tooyour app. Här kan vi hur du toouse OpenID Connect och principer tooimplement var och en av dessa funktioner i dina webbprogram. Vi också lära dig hur tooget åtkomst-token för åtkomst till webb-API: er.
+Azure AD B2C utökar OpenID Connect standardprotokollet för att göra mer än enkel autentisering och auktorisering. Det inför den [parametern](active-directory-b2c-reference-policies.md), som gör att du kan använda OpenID Connect för att lägga till användarupplevelser – till exempel registrering, inloggning och profilhantering--till din app. Här kan hur vi du använder OpenID Connect och principer för att implementera var och en av dessa upplevelser i ditt webbprogram. Vi också lära dig hur du kan få åtkomst-token för åtkomst till webb-API: er.
 
-hello exempel HTTP-begäranden i nästa avsnitt om hello använda våra exempel B2C-katalog, fabrikamb2c.onmicrosoft.com, samt våra exempelprogrammet, https://aadb2cplayground.azurewebsites.net och principer. Du är ledig tootry ut hello begäranden själv med hjälp av dessa värden eller ersätta dem med dina egna.
-Lär dig hur för[kommer B2C-klient, program och principer](#use-your-own-b2c-directory).
+Exempel HTTP-förfrågningar i nästa avsnitt använda våra exempel B2C-katalog, fabrikamb2c.onmicrosoft.com, samt våra exempelprogrammet, https://aadb2cplayground.azurewebsites.net och principer. Kan du prova att använda begäranden själv med hjälp av dessa värden eller kan du ersätta dem med din egen.
+Lär dig hur du [kommer B2C-klient, program och principer](#use-your-own-b2c-directory).
 
 ## <a name="send-authentication-requests"></a>Skicka autentiseringsbegäranden
-När ditt webbprogram måste tooauthenticate hello användare och köra en princip, den kan dirigera hello användaren toohello `/authorize` slutpunkt. Detta är hello interaktiva delen av hello flödet där hello användaren vidtar åtgärder beroende på hello princip.
+När ditt webbprogram måste autentisera användaren och köra en princip, den kan dirigera användare till den `/authorize` slutpunkt. Det här är den interaktiva delen av flödet, där användaren vidtar åtgärder beroende på principen.
 
-I den här förfrågan hello-klienten anger hello behörigheter måste tooacquire hello användaren i hello `scope` parametern och hello princip tooexecute i hello `p` parameter. Tre exempel tillhandahålls i hello följande avsnitt (med radbrytningar för att läsa), var och en med hjälp av en annan princip. tooget en känsla för hur fungerar varje begäran, försök klistra in hello i en webbläsare och körs.
+I den här förfrågan klienten anger de behörigheter som krävs för att hämta för användaren i den `scope` parameter och principen för att köras i den `p` parameter. Tre exemplen finns i följande avsnitt (med radbrytningar för att läsa), varje med hjälp av en annan princip. Att få en bild av hur fungerar varje begäran, försök att klistra in begäran i en webbläsare och kör den.
 
 #### <a name="use-a-sign-in-policy"></a>Använda en princip för inloggning
 ```
@@ -78,19 +78,19 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 
 | Parameter | Krävs? | Beskrivning |
 | --- | --- | --- |
-| client_id |Krävs |hello program-ID som hello [Azure-portalen](https://portal.azure.com/) tilldelade tooyour app. |
-| response_type |Krävs |hello svarstyp som måste innehålla en ID-token för OpenID Connect. Om ditt webbprogram måste också token för att anropa ett webb-API, kan du använda `code+id_token`eftersom vi har gjort här. |
-| redirect_uri |Rekommenderas |Hej `redirect_uri` parameter för din app, där autentisering svar kan skickas och tas emot av din app. Den måste matcha en hello `redirect_uri` parametrar som du har registrerat i hello portal, förutom att det måste vara URL-kodade. |
-| Omfång |Krävs |En blankstegsavgränsad lista över scope. Ett enda scope-värde som anger tooAzure AD både behörigheter som krävs. Hej `openid` omfång anger en behörighet toosign i hello användar- och hämta data om hello användaren i hello form av ID-token (mer toocome på den här hello nedan). Hej `offline_access` scope är valfritt för webbprogram. Anger det att din app måste en *uppdateringstoken* för långlivade åtkomst tooresources. |
-| response_mode |Rekommenderas |hello-metod som ska använda toosend hello resulterande auktorisering kod tillbaka tooyour app. Det kan vara antingen `query`, `form_post`, eller `fragment`.  Hej `form_post` svar läge rekommenderas för bästa säkerhet. |
-| state |Rekommenderas |Ett värde som ingår i hello-begäran som returneras också hello token svar. Det kan vara en sträng med innehåll som du vill använda. Ett slumpmässigt genererat unikt värde används vanligtvis för att förhindra attacker med förfalskning av begäran. hello tillstånd är också används tooencode information om hello användarens tillstånd i hello app innan hello autentiseringsbegäran inträffade, exempelvis hello sidan de befann sig i. |
-| temporärt ID |Krävs |Ett värde som ingår i hello-begäran (genereras av hello app) som ska tas med i hello resulterande ID-token som ett anspråk. hello app kan kontrollera det här värdet toomitigate token replay-attacker. hello-värdet är vanligtvis en slumpmässig unik sträng som kan använda tooidentify hello ursprung hello-begäran. |
-| P |Krävs |hello-princip som kommer att utföras. Det är hello namnet på en princip som skapas i din B2C-klient. hello principvärdet namn måste börja med `b2c\_1\_`. Lär dig mer om principer och hello [expanderbara principramverk](active-directory-b2c-reference-policies.md). |
-| kommandotolk |Valfri |hello typ av användarinteraktion som krävs. hello enda giltiga värdet just nu är `login`, vilket framtvingar hello användaren tooenter sina autentiseringsuppgifter på begäran. Enkel inloggning börjar inte gälla. |
+| client_id |Krävs |Programmet ID som den [Azure-portalen](https://portal.azure.com/) tilldelats din app. |
+| response_type |Krävs |Svarstyp som måste innehålla en ID-token för OpenID Connect. Om ditt webbprogram måste också token för att anropa ett webb-API, kan du använda `code+id_token`eftersom vi har gjort här. |
+| redirect_uri |Rekommenderas |Den `redirect_uri` parameter för din app, där autentisering svar kan skickas och tas emot av din app. Den måste matcha en av de `redirect_uri` parametrar som du har registrerat i portalen, förutom att det måste vara URL-kodade. |
+| Omfång |Krävs |En blankstegsavgränsad lista över scope. Ett enda scope-värde som anger till Azure AD både behörigheter som krävs. Den `openid` omfång anger behörighet att logga in användaren och hämta data om användaren i form av ID-token (mer komma på den här senare i artikeln). Den `offline_access` scope är valfritt för webbprogram. Anger det att din app måste en *uppdateringstoken* för långlivade åtkomst till resurser. |
+| response_mode |Rekommenderas |Den metod som ska användas för att skicka den resulterande Auktoriseringskoden tillbaka till din app. Det kan vara antingen `query`, `form_post`, eller `fragment`.  Den `form_post` svar läge rekommenderas för bästa säkerhet. |
+| state |Rekommenderas |Ett värde som ingår i denna begäran returneras också token svar. Det kan vara en sträng med innehåll som du vill använda. Ett slumpmässigt genererat unikt värde används vanligtvis för att förhindra attacker med förfalskning av begäran. Tillståndet används också för att koda information om användarens tillstånd i appen innan autentiseringsbegäran inträffade, exempelvis de var på sidan. |
+| temporärt ID |Krävs |Ett värde som ingår i denna begäran (genereras av appen) som ska tas med i den resulterande ID-token som ett anspråk. Appen kan sedan kontrollera värdet för att minimera token replay-attacker. Värdet är vanligtvis en slumpmässig unik sträng som används för att identifiera ursprunget för begäran. |
+| P |Krävs |Den princip som kommer att utföras. Det är namnet på en princip som skapas i din B2C-klient. Princip för namn-värde ska inledas med `b2c\_1\_`. Mer information om principer och [expanderbara principramverk](active-directory-b2c-reference-policies.md). |
+| kommandotolk |Valfri |Typ av användarinteraktion som krävs. Det enda giltiga värdet för tillfället är `login`, som tvingar användaren att ange sina autentiseringsuppgifter på begäran. Enkel inloggning börjar inte gälla. |
 
-Nu uppmanas användaren hello toocomplete hello princip arbetsflöde. Detta kan omfatta hello användaren att ange sina användarnamn och lösenord, logga in med en sociala identitet registrerar sig för hello directory eller ett annat nummer av steg, beroende på hur hello princip har definierats.
+Nu uppmanas användaren att slutföra arbetsflödet för den principen. Detta kan handla om användaren att ange sina användarnamn och lösenord, logga in med en sociala identitet registrerar sig för katalogen, eller en annan siffra av steg, beroende på hur principen har definierats.
 
-När hello användaren Slutför hello princip, Azure AD tillbaka ett svar tooyour app på hello anges `redirect_uri` parameter med hello-metod som har angetts i hello `response_mode` parameter. hello svar är hello samma för alla hello föregående fall, oberoende av hello-princip som körs.
+När användaren uppfyller principen, Azure AD tillbaka ett svar på din app på den angivna `redirect_uri` parameter med hjälp av metoden som anges i den `response_mode` parameter. Svaret är samma för var och en av de föregående fall, oberoende av den princip som körs.
 
 Ett lyckat svar med `response_mode=fragment` skulle se ut:
 
@@ -103,11 +103,11 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
 
 | Parameter | Beskrivning |
 | --- | --- |
-| id_token |Hej ID-token som hello app som begärdes. Du kan använda hello ID token tooverify hello användarens identitet och starta en session med hello användare. Mer information om ID-token och deras innehåll ingår i hello [Azure AD B2C tokenreferens](active-directory-b2c-reference-tokens.md). |
-| Koden |hello auktorisering code hello appen begärs, om du har använt `response_type=code+id_token`. hello app kan använda hello auktorisering koden toorequest en åtkomst-token för en målresurs. Auktoriseringskoder är mycket tillfällig. Vanligtvis de går ut efter 10 minuter. |
-| state |Om en `state` parametern ingår i hello begäran hello samma värde som ska visas i hello svar. hello app bör kontrollera att hello `state` värden i hello förfrågan och svar är identiska. |
+| id_token |ID-token som appen har begärt. Du kan använda ID-token för att verifiera användarens identitet och starta en session med användaren. Mer information om ID-token och deras innehåll ingår i den [Azure AD B2C tokenreferens](active-directory-b2c-reference-tokens.md). |
+| Koden |Auktoriseringskoden som appen har begärt, om du har använt `response_type=code+id_token`. Appen kan använda Auktoriseringskoden för att begära en åtkomst-token för en målresurs. Auktoriseringskoder är mycket tillfällig. Vanligtvis de går ut efter 10 minuter. |
+| state |Om en `state` parametern ingår i begäran, samma värde som ska visas i svaret. Appen bör kontrollera att den `state` värden i förfrågan och svar är identiska. |
 
-Felsvar kan även skickas toohello `redirect_uri` parameter så hello appen kan hantera dem på rätt sätt:
+Felsvar kan också skickas till den `redirect_uri` parametern så att appen kan hantera dem på rätt sätt:
 
 ```
 GET https://aadb2cplayground.azurewebsites.net/#
@@ -118,48 +118,48 @@ error=access_denied
 
 | Parameter | Beskrivning |
 | --- | --- |
-| fel |En felkod sträng som kan använda tooclassify typer av fel som inträffar och som kan vara används tooreact tooerrors. |
-| error_description |Ett felmeddelande som kan hjälpa utvecklare identifiera hello grundorsaken till ett autentiseringsfel. |
-| state |Se hello fullständig beskrivning i hello första tabellen i det här avsnittet. Om en `state` parametern ingår i hello begäran hello samma värde som ska visas i hello svar. hello app bör kontrollera att hello `state` värden i hello förfrågan och svar är identiska. |
+| fel |En felkod sträng som kan användas för att klassificera typer av fel som inträffar och som kan användas för att ta hänsyn till fel. |
+| error_description |Ett felmeddelande som kan hjälpa utvecklare identifiera orsaken till ett autentiseringsfel. |
+| state |Se den fullständiga beskrivningen i den första tabellen i det här avsnittet. Om en `state` parametern ingår i begäran, samma värde som ska visas i svaret. Appen bör kontrollera att den `state` värden i förfrågan och svar är identiska. |
 
-## <a name="validate-hello-id-token"></a>Validera hello-ID-token
-Bara tar emot en token med ID: T är inte tillräckligt med tooauthenticate hello-användare. Du måste verifiera signaturen för hello-ID-token och kontrollera hello anspråk i hello token per krav som din app. Azure AD B2C använder [JSON Web token (JWTs)](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) och offentlig nyckel kryptografi toosign token och kontrollera att de är giltiga.
+## <a name="validate-the-id-token"></a>Verifiera ID-token
+Bara tar emot en token med ID: T är inte tillräckligt för att autentisera användaren. Du måste verifiera signaturen för ID-token och kontrollera anspråk i token per krav som din app. Azure AD B2C använder [JSON Web token (JWTs)](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) och kryptering med offentlig nyckel att signera token och kontrollera att de är giltiga.
 
-Det finns många öppen källkod bibliotek som är tillgängliga för att validera JWTs, beroende på ditt språk preferensordning. Vi rekommenderar att utforska alternativen i stället för att implementera din egen valideringslogik. hello information här kan vara användbart i räkna ut hur tooproperly använder dessa bibliotek.
+Det finns många öppen källkod bibliotek som är tillgängliga för att validera JWTs, beroende på ditt språk preferensordning. Vi rekommenderar att utforska alternativen i stället för att implementera din egen valideringslogik. Den här informationen kan vara användbart i räkna ut hur du använder dessa bibliotek korrekt.
 
-Azure AD B2C har OpenID Connect metadata slutpunkt, vilket gör att en app toofetch information om Azure AD B2C vid körning. Informationen omfattar slutpunkter, token innehåll och nycklar för tokensignering. Det finns en JSON-dokumentet för metadata för varje princip i din B2C-klient. Till exempel hello Metadatadokumentet för hello `b2c_1_sign_in` princip i `fabrikamb2c.onmicrosoft.com` finns på:
+Azure AD B2C har OpenID Connect metadata slutpunkt, vilket gör att en app att hämta information om Azure AD B2C vid körning. Informationen omfattar slutpunkter, token innehåll och nycklar för tokensignering. Det finns en JSON-dokumentet för metadata för varje princip i din B2C-klient. Till exempel Metadatadokumentet för den `b2c_1_sign_in` princip i `fabrikamb2c.onmicrosoft.com` finns på:
 
 `https://login.microsoftonline.com/fabrikamb2c.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=b2c_1_sign_in`
 
-En av hello egenskaperna för den här konfigurationsdokument är `jwks_uri`, vars värde för hello samma princip skulle vara:
+En av egenskaperna för den här konfigurationsdokument är `jwks_uri`, vars värde för samma princip skulle vara:
 
 `https://login.microsoftonline.com/fabrikamb2c.onmicrosoft.com/discovery/v2.0/keys?p=b2c_1_sign_in`.
 
-toodetermine vilken princip som användes i en ID-token-signering (och från där toofetch hello metadata), har du två alternativ. Först hello principnamn ingår i hello `acr` anspråk i hello-ID-token. Information om hur tooparse hello anspråk från en ID-token finns hello [Azure AD B2C tokenreferens](active-directory-b2c-reference-tokens.md). Ett annat alternativ är tooencode hello princip i hello värdet för hello `state` parameter när du skickar hello begäran och sedan avkoda toodetermine vilken princip som har använts. Antingen metoden är giltig.
+För att avgöra vilken princip som har använts i ett ID-signering token (och varifrån att hämta metadata), har du två alternativ. Först principnamnet ingår i den `acr` anspråk i ID-token. Information om hur du Parsar anspråk från en ID-token, finns det [Azure AD B2C tokenreferens](active-directory-b2c-reference-tokens.md). Ett annat alternativ är att koda principen i värdet för den `state` parameter när du skickar en begäran och avkoda det för att avgöra vilken princip som har använts. Antingen metoden är giltig.
 
-När du har skaffat hello Metadatadokumentet från hello OpenID Connect metadataslutpunkten kan du använda hello 256 RSA-offentliga nycklar (som finns i den här slutpunkten) toovalidate hello signaturen för hello-ID-token. Det kan finnas flera nycklar som anges i den här slutpunkten vid en viss tidpunkt, alla identifierade med ett `kid` anspråk. hello rubriken för hello-ID-token innehåller också en `kid` anspråk, som anger vilken av dessa nycklar används toosign hello-ID-token. Mer information finns i hello [Azure AD B2C tokenreferens](active-directory-b2c-reference-tokens.md) (hello avsnitt på [verifiera token](active-directory-b2c-reference-tokens.md#token-validation), i synnerhet).
-<!--TODO: Improve hello information on this-->
+När du har skaffat Metadatadokumentet från metadataslutpunkten OpenID Connect, kan du använda de offentliga nycklarna för RSA-256 (som finns i den här slutpunkten) att verifiera signaturen för ID-token. Det kan finnas flera nycklar som anges i den här slutpunkten vid en viss tidpunkt, alla identifierade med ett `kid` anspråk. Rubriken för ID-token innehåller också en `kid` anspråk, vilket anger vilken av dessa nycklar användes för att signera ID-token. Mer information finns i [Azure AD B2C tokenreferens](active-directory-b2c-reference-tokens.md) (avsnittet [verifiera token](active-directory-b2c-reference-tokens.md#token-validation), i synnerhet).
+<!--TODO: Improve the information on this-->
 
-När du har verifierats hello signaturen för hello-ID-token, finns det flera anspråk som du behöver tooverify. Exempel:
+När du har verifierats signaturen för ID-token, finns det flera anspråk som du behöver verifiera. Exempel:
 
-* Du bör verifiera hello `nonce` anspråk tooprevent token replay-attacker. Värdet ska du angav i hello inloggning begäran.
-* Du bör verifiera hello `aud` anspråk tooensure som hello-ID-token har utfärdats för din app. Värdet ska vara hello program-ID för din app.
-* Du bör verifiera hello `iat` och `exp` anspråk tooensure som hello-ID-token inte har upphört att gälla.
+* Du bör verifiera den `nonce` anspråk att förhindra att token replay-attacker. Värdet ska du angav i begäran inloggning.
+* Du bör verifiera den `aud` anspråk så att det ID-token har utfärdats för din app. Värdet ska vara program-ID för din app.
+* Du bör verifiera den `iat` och `exp` utger sig för att säkerställa att ID-token inte har gått ut.
 
-Det finns också flera mer verifieringar som ska utföras. Dessa beskrivs i detalj i hello [OpenID Connect Core Spec](http://openid.net/specs/openid-connect-core-1_0.html).  Du kan också toovalidate ytterligare anspråk, beroende på ditt scenario. Några vanliga verifieringar inkluderar:
+Det finns också flera mer verifieringar som ska utföras. Dessa beskrivs i detalj i den [OpenID Connect Core Spec](http://openid.net/specs/openid-connect-core-1_0.html).  Du kanske också vill validera ytterligare anspråk, beroende på ditt scenario. Några vanliga verifieringar inkluderar:
 
-* Säkerställa som hello användare/organisation har registrerat dig för hello app.
-* Säkerställa hello användaren har rätt behörighet/privilegier.
+* Se till att användarorganisation har registrerat dig för appen.
+* Se till att användaren har rätt behörighet/privilegier.
 * Se till att en viss styrkan hos autentisering har inträffat, till exempel Azure Multi-Factor Authentication.
 
-Mer information om hello anspråk i en ID-token finns hello [Azure AD B2C tokenreferens](active-directory-b2c-reference-tokens.md).
+Mer information om anspråk i en token med ID: T finns på [Azure AD B2C tokenreferens](active-directory-b2c-reference-tokens.md).
 
-När du har validerat hello-ID-token kan du börja en session med hello användare. Du kan använda hello anspråk i hello ID token tooobtain information om hello användare i din app. Användningsområden för den här informationen omfattar bildskärm, poster och auktorisering.
+När du har validerat ID-token kan du börja en session med användaren. Du kan använda anspråken i ID-token för att hämta information om användaren i din app. Användningsområden för den här informationen omfattar bildskärm, poster och auktorisering.
 
 ## <a name="get-a-token"></a>Hämta en token
-Om du behöver din web app tooonly köra principer, kan du hoppa över hello följande avsnitten. Dessa avsnitt är tillämpliga endast tooweb appar som behöver toomake autentiserade anrop tooa webb-API och också skyddas av Azure AD B2C.
+Om du behöver ditt webbprogram till att bara köra principer kan du hoppa över de följande avsnitten. Dessa avsnitt gäller endast för appar som behöver göra autentiserade anrop till ett webb-API och också skyddas av Azure AD B2C.
 
-Du kan lösa hello auktoriseringskod som du har köpt (med hjälp av `response_type=code+id_token`) för en token toohello önskad resursen genom att skicka en `POST` begära toohello `/token` slutpunkt. Är för närvarande hello resursen som du kan begära en token för ditt Apps egen backend-webb-API. hello-konventionen för att begära en token tooyourself är toouse appens klient-ID som hello omfattning:
+Du kan lösa Auktoriseringskoden som du har köpt (med hjälp av `response_type=code+id_token`) för en token för en resurs genom att skicka en `POST` begäran om att den `/token` slutpunkt. För närvarande är den enda resursen som du kan begära en token för din Apps egen backend-webb-API. Konventionen för att begära en token till dig själv är att använda appens klient-ID som scope:
 
 ```
 POST fabrikamb2c.onmicrosoft.com/oauth2/v2.0/token?p=b2c_1_sign_in HTTP/1.1
@@ -172,13 +172,13 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 
 | Parameter | Krävs? | Beskrivning |
 | --- | --- | --- |
-| P |Krävs |Hej princip som har använt tooacquire hello auktorisering kod. Du kan inte använda en annan princip i den här förfrågan. Observera att du lägger till den här parametern toohello frågesträng, inte toohello `POST` brödtext. |
-| client_id |Krävs |hello program-ID som hello [Azure-portalen](https://portal.azure.com/) tilldelade tooyour app. |
-| grant_type |Krävs |Hej typ av bevilja som måste vara `authorization_code` för hello-auktoriseringskodflödet. |
-| Omfång |Rekommenderas |En blankstegsavgränsad lista över scope. Ett enda scope-värde som anger tooAzure AD både behörigheter som krävs. Hej `openid` omfång anger en behörighet toosign i hello användar- och hämta data om hello användaren i hello form av id_token parametrar. Det kan vara används tooget token tooyour Apps egen backend-webb-API, som representeras av hello samma program-ID som hello-klient. Hej `offline_access` omfång anger att din app behöver en uppdateringstoken för långlivade åtkomst tooresources. |
-| Koden |Krävs |hello auktoriseringskod som du har införskaffade i hello första del av hello flödet. |
-| redirect_uri |Krävs |Hej `redirect_uri` parametern för hello program som du fick hello auktoriseringskod. |
-| client_secret |Krävs |Hej programhemlighet som du genererade på hello [Azure-portalen](https://portal.azure.com/). Den här programhemligheten är en viktig säkerhetsuppgift artefakt. Du bör lagra den på ett säkert sätt på din server. Du bör också rotera denna klienthemlighet regelbundet. |
+| P |Krävs |Den princip som användes för att hämta Auktoriseringskoden. Du kan inte använda en annan princip i den här förfrågan. Observera att du lägger inte till den här parametern frågesträngen den `POST` brödtext. |
+| client_id |Krävs |Programmet ID som den [Azure-portalen](https://portal.azure.com/) tilldelats din app. |
+| grant_type |Krävs |Typ av bevilja som måste vara `authorization_code` för auktoriseringskodflödet. |
+| Omfång |Rekommenderas |En blankstegsavgränsad lista över scope. Ett enda scope-värde som anger till Azure AD både behörigheter som krävs. Den `openid` omfång anger behörighet att logga in användaren och hämta data om användaren i form av id_token parametrar. Det kan användas för att hämta token till din Apps egen backend-webb-API, som representeras av samma program-ID som klienten. Den `offline_access` omfång anger att din app måste en uppdateringstoken för långlivade åtkomst till resurser. |
+| Koden |Krävs |Auktoriseringskoden som du har införskaffade i den första del av flödet. |
+| redirect_uri |Krävs |Den `redirect_uri` parametern för programmet som du fick Auktoriseringskoden. |
+| client_secret |Krävs |Den hemlighet som programmet som du skapade i den [Azure-portalen](https://portal.azure.com/). Den här programhemligheten är en viktig säkerhetsuppgift artefakt. Du bör lagra den på ett säkert sätt på din server. Du bör också rotera denna klienthemlighet regelbundet. |
 
 Det ser ut som ett lyckat token svar:
 
@@ -194,29 +194,29 @@ Det ser ut som ett lyckat token svar:
 ```
 | Parameter | Beskrivning |
 | --- | --- |
-| not_before |hello tid vid vilken hello token betraktas som giltigt epok tidpunkt. |
-| token_type |hello tokentypen värde. Hej typ som har stöd för Azure AD är `Bearer`. |
-| access_token |hello signerade JWT-token som du har begärt. |
-| Omfång |hello scope för vilka hello token är giltig. Dessa kan användas för att cachelagra token för senare användning. |
-| expires_in |hello tidslängd som hello åtkomst-token är giltig (i sekunder). |
-| refresh_token |En token för uppdatering av OAuth 2.0. hello app kan använda den här token tooacquire ytterligare token när hello aktuella token upphör att gälla. Uppdatera token är långlivade och kan inte används tooretain åtkomst tooresources under längre tid. Mer information finns i toohello [B2C tokenreferens](active-directory-b2c-reference-tokens.md). Observera att du måste ha använt hello scope `offline_access` i både hello auktorisering och token begäranden i ordning tooreceive en uppdateringstoken. |
+| not_before |Den tid då token betraktas som giltigt epok tidpunkt. |
+| token_type |Tokentypen-värde. Den enda typen som har stöd för Azure AD är `Bearer`. |
+| access_token |Den signera JWT-token som du begärde. |
+| Omfång |Scope token är giltig. Dessa kan användas för att cachelagra token för senare användning. |
+| expires_in |Hur lång tid som den åtkomst-token är giltig (i sekunder). |
+| refresh_token |En token för uppdatering av OAuth 2.0. Appen kan använda denna token för att hämta ytterligare token när den aktuella token upphör att gälla. Uppdatera token är långlivade och kan användas för att få åtkomst till resurser för längre tid. Mer information finns i den [B2C tokenreferens](active-directory-b2c-reference-tokens.md). Observera att du måste ha använt omfånget `offline_access` i auktoriserings- och token-förfrågningar för att kunna ta emot en uppdateringstoken. |
 
 Felsvar som liknar:
 
 ```
 {
     "error": "access_denied",
-    "error_description": "hello user revoked access toohello app.",
+    "error_description": "The user revoked access to the app.",
 }
 ```
 
 | Parameter | Beskrivning |
 | --- | --- |
-| fel |En felkod sträng som kan använda tooclassify typer av fel som inträffar och som kan vara används tooreact tooerrors. |
-| error_description |Ett felmeddelande som kan hjälpa utvecklare identifiera hello grundorsaken till ett autentiseringsfel. |
+| fel |En felkod sträng som kan användas för att klassificera typer av fel som inträffar och som kan användas för att ta hänsyn till fel. |
+| error_description |Ett felmeddelande som kan hjälpa utvecklare identifiera orsaken till ett autentiseringsfel. |
 
-## <a name="use-hello-token"></a>Använd hello-token
-Nu när du har har skaffat ett åtkomsttoken, du kan använda hello token i begäranden tooyour backend-webb-API: er genom att inkludera i hello `Authorization` huvud:
+## <a name="use-the-token"></a>Använda token
+Nu när du har har skaffat ett åtkomsttoken, kan du använda token i begäranden till din backend-webb-API: er genom att inkludera den i den `Authorization` huvud:
 
 ```
 GET /tasks
@@ -224,8 +224,8 @@ Host: https://mytaskwebapi.com
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
 ```
 
-## <a name="refresh-hello-token"></a>Uppdatera hello-token
-ID-token är tillfällig. Du måste uppdatera dem när de upphör att gälla toocontinue som kan tooaccess resurser. Du kan göra det genom att skicka in en annan `POST` begära toohello `/token` slutpunkt. Den här tiden kan ge hello `refresh_token` parameter i stället för hello `code` parameter:
+## <a name="refresh-the-token"></a>Uppdatera token
+ID-token är tillfällig. Du måste uppdatera dem när de går ut om du vill fortsätta att kunna komma åt resurser. Du kan göra det genom att skicka in en annan `POST` begäran om att den `/token` slutpunkt. Den här gången den `refresh_token` parameter i stället för den `code` parameter:
 
 ```
 POST fabrikamb2c.onmicrosoft.com/oauth2/v2.0/token?p=b2c_1_sign_in HTTP/1.1
@@ -237,13 +237,13 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=op
 
 | Parameter | Krävs | Beskrivning |
 | --- | --- | --- |
-| P |Krävs |hello-princip som har använt tooacquire hello ursprungliga uppdateringstoken. Du kan inte använda en annan princip i den här förfrågan. Observera att du lägger till den här parametern toohello frågesträng, inte toohello POST brödtext. |
-| client_id |Krävs |hello program-ID som hello [Azure-portalen](https://portal.azure.com/) tilldelade tooyour app. |
-| grant_type |Krävs |bevilja som måste vara en uppdateringstoken för denna del av hello auktoriseringskodflödet hello typ. |
-| Omfång |Rekommenderas |En blankstegsavgränsad lista över scope. Ett enda scope-värde som anger tooAzure AD både behörigheter som krävs. Hej `openid` omfång anger en behörighet toosign i hello användar- och hämta data om hello användaren i hello form av ID-token. Det kan vara används tooget token tooyour Apps egen backend-webb-API, som representeras av hello samma program-ID som hello-klient. Hej `offline_access` omfång anger att din app behöver en uppdateringstoken för långlivade åtkomst tooresources. |
-| redirect_uri |Rekommenderas |Hej `redirect_uri` parametern för hello program som du fick hello auktoriseringskod. |
-| refresh_token |Krävs |hello ursprungliga uppdateringstoken som du har införskaffade i hello andra ben hello flödet. Observera att du måste ha använt hello scope `offline_access` i både hello auktorisering och token begäranden i ordning tooreceive en uppdateringstoken. |
-| client_secret |Krävs |Hej programhemlighet som du genererade på hello [Azure-portalen](https://portal.azure.com/). Den här programhemligheten är en viktig säkerhetsuppgift artefakt. Du bör lagra den på ett säkert sätt på din server. Du bör också rotera denna klienthemlighet regelbundet. |
+| P |Krävs |Den princip som användes för att hämta den ursprungliga uppdateringstoken. Du kan inte använda en annan princip i den här förfrågan. Observera att du lägger till den här parametern frågesträngen, inte efter innehållet. |
+| client_id |Krävs |Programmet ID som den [Azure-portalen](https://portal.azure.com/) tilldelats din app. |
+| grant_type |Krävs |Typ av bevilja som måste vara en uppdateringstoken för denna del av auktoriseringskodflödet. |
+| Omfång |Rekommenderas |En blankstegsavgränsad lista över scope. Ett enda scope-värde som anger till Azure AD både behörigheter som krävs. Den `openid` omfång anger behörighet att logga in användaren och hämta data om användaren i form av ID-token. Det kan användas för att hämta token till din Apps egen backend-webb-API, som representeras av samma program-ID som klienten. Den `offline_access` omfång anger att din app måste en uppdateringstoken för långlivade åtkomst till resurser. |
+| redirect_uri |Rekommenderas |Den `redirect_uri` parametern för programmet som du fick Auktoriseringskoden. |
+| refresh_token |Krävs |Den ursprungliga uppdateringstoken som du har införskaffade i andra del av flödet. Observera att du måste ha använt omfånget `offline_access` i auktoriserings- och token-förfrågningar för att kunna ta emot en uppdateringstoken. |
+| client_secret |Krävs |Den hemlighet som programmet som du skapade i den [Azure-portalen](https://portal.azure.com/). Den här programhemligheten är en viktig säkerhetsuppgift artefakt. Du bör lagra den på ett säkert sätt på din server. Du bör också rotera denna klienthemlighet regelbundet. |
 
 Det ser ut som ett lyckat token svar:
 
@@ -259,31 +259,31 @@ Det ser ut som ett lyckat token svar:
 ```
 | Parameter | Beskrivning |
 | --- | --- |
-| not_before |hello tid vid vilken hello token betraktas som giltigt epok tidpunkt. |
-| token_type |hello tokentypen värde. Hej typ som har stöd för Azure AD är `Bearer`. |
-| access_token |hello signerade JWT-token som du har begärt. |
-| Omfång |hello omfattning som hello token är giltig för, som kan användas för att cachelagra token för senare användning. |
-| expires_in |hello tidslängd som hello åtkomst-token är giltig (i sekunder). |
-| refresh_token |En token för uppdatering av OAuth 2.0. hello app kan använda den här token tooacquire ytterligare token när hello aktuella token upphör att gälla.  Uppdatera token är långlivade och kan inte används tooretain åtkomst tooresources under längre tid. Mer information finns i toohello [B2C tokenreferens](active-directory-b2c-reference-tokens.md). |
+| not_before |Den tid då token betraktas som giltigt epok tidpunkt. |
+| token_type |Tokentypen-värde. Den enda typen som har stöd för Azure AD är `Bearer`. |
+| access_token |Den signera JWT-token som du begärde. |
+| Omfång |Omfattningen som token är giltig för, som kan användas för att cachelagra token för senare användning. |
+| expires_in |Hur lång tid som den åtkomst-token är giltig (i sekunder). |
+| refresh_token |En token för uppdatering av OAuth 2.0. Appen kan använda denna token för att hämta ytterligare token när den aktuella token upphör att gälla.  Uppdatera token är långlivade och kan användas för att få åtkomst till resurser för längre tid. Mer information finns i den [B2C tokenreferens](active-directory-b2c-reference-tokens.md). |
 
 Felsvar som liknar:
 
 ```
 {
     "error": "access_denied",
-    "error_description": "hello user revoked access toohello app.",
+    "error_description": "The user revoked access to the app.",
 }
 ```
 
 | Parameter | Beskrivning |
 | --- | --- |
-| fel |En felkod sträng som kan använda tooclassify typer av fel som inträffar och som kan vara används tooreact tooerrors. |
-| error_description |Ett felmeddelande som kan hjälpa utvecklare identifiera hello grundorsaken till ett autentiseringsfel. |
+| fel |En felkod sträng som kan användas för att klassificera typer av fel som inträffar och som kan användas för att ta hänsyn till fel. |
+| error_description |Ett felmeddelande som kan hjälpa utvecklare identifiera orsaken till ett autentiseringsfel. |
 
 ## <a name="send-a-sign-out-request"></a>Skicka en begäran om utloggning
-Om du vill toosign hello användare utanför hello appen är inte tillräckligt med tooclear appens cookies eller annars avsluta hello-session med hello användare. Du måste också omdirigera hello användaren tooAzure AD toosign ut. Om du inte toodo så kanske hello användaren kan tooreauthenticate tooyour app utan att ange sina autentiseringsuppgifter igen. Det beror på att de har en giltig inloggning session med Azure AD.
+När du vill logga ut från appen användaren räcker det inte att rensa din app cookies eller på annat sätt slutet sessionen med användaren. Du måste också dirigerar användaren till Azure AD för att logga ut. Om du inte göra det, kanske användaren kan autentiseras i appen utan att ange sina autentiseringsuppgifter igen. Det beror på att de har en giltig inloggning session med Azure AD.
 
-Du kan bara omdirigera hello användaren toohello `end_session` slutpunkt som anges i hello OpenID Connect Metadatadokumentet som beskrivits tidigare i hello ”verifiera hello-ID-token” avsnittet:
+Du kan bara dirigera användare till den `end_session` slutpunkt som anges i Metadatadokumentet OpenID Connect beskrivs tidigare i det ”verifiera ID-token” avsnittet:
 
 ```
 GET https://login.microsoftonline.com/fabrikamb2c.onmicrosoft.com/oauth2/v2.0/logout?
@@ -293,18 +293,18 @@ p=b2c_1_sign_in
 
 | Parameter | Krävs? | Beskrivning |
 | --- | --- | --- |
-| P |Krävs |hello-princip som du vill toouse toosign hello användare utanför tillämpningsprogrammet. |
-| post_logout_redirect_uri |Rekommenderas |hello Webbadress hello användaren måste vara omdirigerade tooafter lyckade utloggning. Om det inte finns, visar Azure AD B2C hello användaren ett allmänt meddelande. |
+| P |Krävs |Den princip som du vill använda för att signera användare utanför tillämpningsprogrammet. |
+| post_logout_redirect_uri |Rekommenderas |Den URL som användaren ska omdirigeras till efter lyckad utloggning. Om det inte finns, Azure AD B2C visar användaren ett allmänt meddelande. |
 
 > [!NOTE]
-> Även om dirigera hello användaren toohello `end_session` endpoint raderar vissa hello användarens inloggning tillstånd med Azure AD B2C, signerar inte hello användare utanför sin sociala identitet provider (IDP)-session. Om hello användaren väljer hello samma IDP under en efterföljande inloggning, de kommer att autentisera, utan att behöva ange sina autentiseringsuppgifter. Om en användare toosign utanför tillämpningsprogrammet B2C, den inte nödvändigtvis de vill toosign utanför deras Facebook-konto. Men i hello fallet för lokala konton avslutas hello användarens session korrekt.
+> Även om dirigera användare till den `end_session` endpoint tar bort vissa av användarens inloggning tillstånd med Azure AD B2C, signerar inte användaren utanför sin sociala identitet provider (IDP)-session. Om användaren väljer samma IDP under en efterföljande inloggning, kommer de att autentisera, utan att behöva ange sina autentiseringsuppgifter. Om en användare vill logga ut från tillämpningsprogrammet B2C betyder den inte de vill logga ut från sitt Facebook-konto. Men för lokala konton avslutas användarens session korrekt.
 > 
 > 
 
 ## <a name="use-your-own-b2c-tenant"></a>Använda en egen B2C-klient
-Om du vill tootry dessa begäranden själv, måste du först utför de här tre stegen och Skriv hello exempelvärden som beskrivs ovan med dina egna:
+Om du vill prova dessa begäranden på egen hand måste du först göra följande tre steg och Ersätt exempelvärden som beskrivs ovan med dina egna:
 
-1. [Skapa en B2C-klient](active-directory-b2c-get-started.md), och använder hello namn för din klient i hello begäranden.
-2. [Skapa ett program](active-directory-b2c-app-registration.md) tooobtain ett-ID. Inkludera en web app/webb-API i din app. Du kan också skapa ett programhemlighet.
-3. [Skapa dina principer](active-directory-b2c-reference-policies.md) tooobtain principens namn.
+1. [Skapa en B2C-klient](active-directory-b2c-get-started.md), och använda namnet på din klient i begäranden.
+2. [Skapa ett program](active-directory-b2c-app-registration.md) att hämta ett-ID. Inkludera en web app/webb-API i din app. Du kan också skapa ett programhemlighet.
+3. [Skapa dina principer](active-directory-b2c-reference-policies.md) att hämta principens namn.
 

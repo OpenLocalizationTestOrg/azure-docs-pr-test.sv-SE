@@ -1,14 +1,14 @@
-#### <a name="toocreate-public-endpoints-on-hello-virtual-device"></a>toocreate offentliga slutpunkter på hello virtuell enhet
+#### <a name="to-create-public-endpoints-on-the-virtual-device"></a>Skapa offentliga slutpunkter på den virtuella enheten
 
-1. Logga in toohello klassiska Azure-portalen.
-2. Klicka på **virtuella datorer**, och sedan väljer hello virtuell dator som används som din virtuella enhet.
-3. Klicka på **Slutpunkter**. Hej **slutpunkter** sidan listar alla slutpunkter för hello virtuella datorn.
-4. Klicka på **Lägg till**. Hej **Lägg till slutpunkt** dialogrutan visas. Klicka på hello pilen toocontinue.
-5. För hello **namn**, typen hello följande namn för hello slutpunkt: **WinRMHttps**.
-6. För hello **protokollet**, ange **TCP**.
-7. För hello **offentlig Port**, Skriv hello-portnummer som du vill toouse för hello-anslutning.
-8. För hello **privat Port**, typen **5986**.
-9. Klicka på hello markerat toocreate hello slutpunkt.
+1. Logga in på den klassiska Azure-portalen.
+2. Klicka på **Virtual Machines** och välj sedan den virtuella datorn som används som din virtuella enhet.
+3. Klicka på **Slutpunkter**. **Slutpunkter**-sidan listar alla slutpunkter för den virtuella datorn.
+4. Klicka på **Lägg till**. Dialogrutan **Lägg till slutpunkt** visas. Klicka på pilen för att fortsätta.
+5. Som **namn** anger du följande namn för slutpunkten: **WinRMHttps**.
+6. Som **protokoll**, anger du **TCP**.
+7. Som **offentlig port**, anger du de portnummer som du vill använda för anslutningen.
+8. Som **privat port**, anger du **5986**.
+9. Klicka på kryssmarkeringen för att skapa slutpunkten.
 
-När hello slutpunkten har skapats kan visa du dess information toodetermine hello offentliga virtuella IP-adresser (VIP)-adress. Anteckna den adressen.
+När slutpunkten har skapats kan du se information om den för att avgöra den offentliga virtuella IP-adressen (VIP). Anteckna den adressen.
 

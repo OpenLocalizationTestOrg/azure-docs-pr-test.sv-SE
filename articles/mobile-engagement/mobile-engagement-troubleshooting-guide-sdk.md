@@ -1,5 +1,5 @@
 ---
-title: aaaAzure Mobile Engagement Troubleshooting Guide - SDK
+title: "Azure Mobile Engagement felsökningsguide för - SDK"
 description: "Felsökning av problem med SDK integration i Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: 
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 1c082b81d898f4bdb47b8efe6cfbacfd83fe9279
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 4d9d6165deb4bd0c65f1841aa7c457363a1f2865
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="troubleshooting-guide-for-sdk-integration-issues"></a>Felsökningsguide för SDK-integrationsproblem
-hello följande är möjliga problem som kan uppstå med hur Azure Mobile Engagement ska integreras i ditt program.
+Följande är möjliga problem som kan uppstå med hur Azure Mobile Engagement ska integreras i ditt program.
 
 ## <a name="sdk-issues-discovered-by-a-failure-in-another-area-of-your-application"></a>SDK-problem som identifieras av ett fel i en annan del av ditt program
 ### <a name="issue"></a>Problem
@@ -32,9 +32,9 @@ hello följande är möjliga problem som kan uppstå med hur Azure Mobile Engage
 * Tjänstrelaterade (ingen av Azure Mobile Engagement fungerar för tillämpningsprogrammet).
 
 ### <a name="causes"></a>Orsaker
-* De flesta problem som måste matchas med hello Azure Mobile Engagement SDK toobe identifieras av ett fel i ditt program (till exempel ett UI data collection fel, push-fel, avancerad funktion fel, API-fel, programkrascher eller tydligt service avbrott).  
-* Om en viss funktion i Azure Mobile Engagement har aldrig fungerat appen innan, behöver toocomplete hello-integration. 
-* Om en viss funktion i Azure Mobile Engagement fungerade och stoppas kommer behöva du tooupgrade toohello senaste versionen med hello Azure Mobile Engagement SDK. Kom ihåg att det finns en annan version av hello Azure Mobile Engagement SDK för varje plattform som stöds av Azure Mobile Engagement (Android, iOS, Windows och Windows Phone).
+* De flesta problem som behöver lösas med Azure Mobile Engagement SDK identifieras av ett fel i ditt program (till exempel ett UI data collection fel push-fel, avancerad funktion fel, API-fel, programkrascher eller tydligt avbrott).  
+* Om en viss funktion i Azure Mobile Engagement har aldrig fungerat appen innan, behöver du slutföra integrationen. 
+* Om en viss funktion i Azure Mobile Engagement fungerade och stoppas, kan du behöva uppgradera till den senaste versionen med Azure Mobile Engagement SDK. Kom ihåg att det finns en annan version av Azure Mobile Engagement SDK för varje plattform som stöds av Azure Mobile Engagement (Android, iOS, Windows och Windows Phone).
 
 #### <a name="sdk-integration"></a>SDK-integrering
 * Azure Mobile Engagement integrerad inte korrekt i SDK (Analytics).
@@ -50,8 +50,8 @@ hello följande är möjliga problem som kan uppstå med hur Azure Mobile Engage
 * [Felsökningsguide för - Push][Link 23]
 
 #### <a name="sdk-upgrade"></a>SDK-uppgradering
-* Måste tooupgrade SDK tooresolve problem med äldre versioner av hello SDK (ofta relaterade toonewer versioner av hello enhetens operativsystem).
-* Avinstallera alla tidigare versioner av appen från din enhet och installera om hello senaste versionen av appen, hello registrera ditt enhets-ID från hello Azure Mobile Engagement UI tooconfirm att enheten använder hello senaste versionen av din app.
+* Om du behöver uppgradera SDK för att lösa problem med äldre versioner av SDK (ofta relaterade till senare versioner av enhetens operativsystem).
+* Avinstallera alla tidigare versioner av appen från din enhet och installera om den senaste versionen av din app på registrera ditt enhets-ID från Azure Mobile Engagement Gränssnittet för att bekräfta att enheten använder den senaste versionen av din app.
 
 **Se även:**
 
@@ -59,8 +59,8 @@ hello följande är möjliga problem som kan uppstå med hur Azure Mobile Engage
 * [SDK-dokumentation – uppgradera guider](http://go.microsoft.com/fwlink/?LinkId= 525554)
 
 #### <a name="sdk-other"></a>Andra SDK
-* Fel i programmets Manifest ”AndroidManifest.xml” kan orsaka Azure Mobile Engagement inte toowork (endast Android).
-* Ett vanligt problem med SDK-integration och API-användning är tooconfuse hello SDK-nyckeln och hello API-nyckel.
+* Fel i programmets Manifest ”AndroidManifest.xml” kan orsaka Azure Mobile Engagement inte ska fungera (endast Android).
+* Ett vanligt problem med SDK-integration och API-användning är försvåra SDK-nyckeln och API-nyckeln.
 
 **Se även:**
 
@@ -68,15 +68,15 @@ hello följande är möjliga problem som kan uppstå med hur Azure Mobile Engage
 
 ## <a name="advanced-coding-issues"></a>Avancerade kodning problem
 ### <a name="issue"></a>Problem
-* Specifika plattformskod relaterat inte direkt tooAzure Mobile Engagement kan orsaka problem på iOS, Android och Windows Phone.
+* Specifika plattformskod inte direkt relaterar till Azure Mobile Engagement kan orsaka problem på iOS, Android och Windows Phone.
 
 ### <a name="causes"></a>Orsaker
-* Många avancerade kodning problem med Azure Mobile Engagement på grund av felaktigt skrivet plattformen specifik kod inte är direkt relaterat tooAzure Mobile Engagement. Du behöver tooconsult dokumentationen specifika toohello plattform som du utvecklar för dessutom tooAzure Mobile Engagement dokumentationen (Android, iOS, webbprogram, Windows och Windows Phone).
-* Konfigurera inte korrekt ”kategorier”, förhindrar länka från en avisering tooanother plats i eller utanför hello app (endast Android). 
-* Inte inställningen ”UIKit.framework” för ”valfritt” i din iOS-kod, visas en ”det gick inte att hitta symbolen” och/eller kraschar på äldre iOS-enheter (endast iOS).
-* Utgångna certifikat eller inte korrekt använder hello DEV eller produktprenumeration version av hello certifikat, orsaker push utfärdar (endast iOS).
-* Det finns vissa begränsningar inbyggd tooa plattform som Azure Mobile Engagement inte kan styra (t.ex. hur hello systemcenter fungerar för utanför appen push-meddelanden i Android och iOS).
-* Azure Mobile Engagement publicerar en fullständig lista över hello interna paket som används av Azure Mobile Engagement för iOS och Android som referens. Tänk på att vissa funktioner i Azure Mobile Engagement är särskilda toohello plattform (Android, iOS, webbprogram, Windows och Windows Phone).
+* Många avancerade kodning problem med Azure Mobile Engagement orsakas av felaktigt skrivet specifika plattformskod inte direkt relaterar till Azure Mobile Engagement. Behöver du dokumentationen som är specifika för den plattform som du utvecklar för utöver Azure Mobile Engagement-dokumentation (Android, iOS, webbprogram, Windows och Windows Phone).
+* Konfigurera inte korrekt ”kategorier”, förhindrar länkar från ett meddelande till en annan plats i eller utanför appen (endast Android). 
+* Inte ställa in ”UIKit.framework” till ”valfritt” i din iOS-kod, visas en ”det gick inte att hitta symbolen” och/eller kraschar på äldre iOS-enheter (endast iOS).
+* Utgångna certifikat eller inte korrekt med utvecklings- eller produktprenumeration-versionen av certifikat, orsaker push utfärdar (endast iOS).
+* Det finns vissa begränsningar som ingår i en plattform som Azure Mobile Engagement inte kan styra (t.ex. hur systemcenter fungerar för utanför appen push-meddelanden i Android och iOS).
+* Azure Mobile Engagement publicerar en fullständig lista över de interna paket som används av Azure Mobile Engagement för iOS och Android för referens. Tänk på att vissa funktioner i Azure Mobile Engagement är specifika för plattformen (Android, iOS, webbprogram, Windows och Windows Phone).
 
 ### <a name="see-also"></a>Se även
 * [Felsökningsguide för - Push][Link 23] 
@@ -85,12 +85,12 @@ hello följande är möjliga problem som kan uppstå med hur Azure Mobile Engage
 
 ## <a name="application-crashes"></a>Programkrascher
 ### <a name="issue"></a>Problem
-* Programmet kraschar på hello slutanvändarens enhet.
+* Programmet kraschar på slutanvändarens enhet.
 
 ### <a name="causes"></a>Orsaker
-* Information om kraschen uppges kan visas i hello *Analytics UI* eller hello *Analytics API*
-* Du kan hitta hello enhets-ID för enheten test och vidta hello samma åtgärd som har orsakat ditt program toocrash för en slutanvändare toohelp identifiera hello orsaken till din krascher.
-* Kända problem med hello Azure Mobile Engagement SDK som orsakar program toocrash matchas ibland genom att uppgradera toohello senaste versionen av hello SDK. Se till att toocheck hello viktig information om din plattform när du undersöker kraschar.
+* Information om kraschen uppges kan visas i den *Analytics UI* eller *Analytics API*
+* Du kan hitta enhets-ID för enheten test och dra samma åtgärd som gjorde att programmet kraschar för en användare för att identifiera orsaken till din krascher.
+* Kända problem med Azure Mobile Engagement SDK som medför att kraschar matchas ibland genom att uppgradera till den senaste versionen av SDK. Se till att kontrollera viktig information om din plattform när du undersöker kraschar.
 
 ### <a name="see-also"></a>Se även
 * [SDK-dokumentation – viktig information][Link 5]
@@ -98,11 +98,11 @@ hello följande är möjliga problem som kan uppstå med hur Azure Mobile Engage
 
 ## <a name="app-store-upload-failures"></a>App store Överför fel
 ### <a name="issue"></a>Problem
-* Fel relaterade toouploading hello senaste versionen av din app tooApple, Google, eller hello App för Windows store.
+* Fel som rör överföra den senaste versionen av din app till Apple eller Google App för Windows store.
 
 ### <a name="causes"></a>Orsaker
-* Appen lagrar ibland blockera appar med vissa funktioner som aktiveras (t.ex. hello Apple Store förhindrar hello användningen av IDFV i appar i store hello och hello GooglePlay store förhindrar hello delning av programinformationen mellan appar). 
-* Kontrollera att du kontrollerar hello viktig information om din plattform och den aktuella versionen av hello SDK om du har svårt att ladda upp en toohello appbutik.
+* Appen lagrar ibland blockera appar med vissa funktioner som aktiveras (t.ex. Apple Store hindrar användningen av IDFV i appar i store och arkivet GooglePlay förhindrar delning av programinformationen mellan appar). 
+* Kontrollera att du viktig information om din plattform och den aktuella versionen av SDK om du har svårt att överföra en app till arkivet.
 
 <!--Link references-->
 [Link 1]: mobile-engagement-user-interface.md

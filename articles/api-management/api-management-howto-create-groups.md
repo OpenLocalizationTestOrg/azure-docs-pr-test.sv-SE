@@ -1,6 +1,6 @@
 ---
-title: "aaaManage developer konton med hjälp av grupper i Azure API Management | Microsoft Docs"
-description: "Lär dig hur toomanage developer användarkonton med grupper i Azure API Management"
+title: "Hantera konton för utvecklare med hjälp av grupper i Azure API Management | Microsoft Docs"
+description: "Lär dig att hantera developer konton med hjälp av grupper i Azure API Management"
 services: api-management
 documentationcenter: 
 author: steved0x
@@ -14,85 +14,85 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
-ms.openlocfilehash: c46e010e41d9705ae161dcd60d734a76d19c9e93
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: b4d71cdfbab535b02542fbb26c7555265e5f9c37
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="how-toocreate-and-use-groups-toomanage-developer-accounts-in-azure-api-management"></a>Hur toocreate och Använd grupper toomanage developer konton i Azure API Management
-Grupper finns i API Management används toomanage hello synligheten för produkter toodevelopers. Produkter är första gjorts synliga toogroups och utvecklare i dessa grupper kan sedan visa och prenumerera toohello produkter som är associerade med hello grupper. 
+# <a name="how-to-create-and-use-groups-to-manage-developer-accounts-in-azure-api-management"></a>Hur du skapar och använda grupper för att hantera developer konton i Azure API Management
+I API Management används grupper för att hantera hur produkter visas för utvecklare. Produkter görs först synliga för grupper och sedan utvecklare i dessa grupper kan visa och prenumerera på de produkter som är kopplade till grupperna. 
 
-API Management har hello följande ändras system grupper.
+API Management har följande systemgrupper som inte kan ändras.
 
-* **Administratörer** – Administratörer av Azure-prenumerationer är medlemmar i den här gruppen. Administratörer hantera API Management-tjänstinstanser skapar hello-API: er, åtgärder och produkter som används av utvecklare.
-* **Utvecklare** – Autentiserade användare av utvecklarportalen hör till den här gruppen. Utvecklare är hello-kunder som skapar program med hjälp av dina API: er. Utvecklare har beviljats åtkomst toohello developer-portalen och bygga program som anropar hello driften av ett API.
-* **Gäster** -oautentiserad developer portal användare, till exempel potentiella kunder som besöker hello developer-portalen för en API-hantering instans återgång till den här gruppen. De kan beviljas vissa skrivskyddad åtkomst till exempel hello möjlighet tooview API: er men anropa inte dem.
+* **Administratörer** – Administratörer av Azure-prenumerationer är medlemmar i den här gruppen. Administratörer hanterar API Management-tjänstinstanser genom att skapa API:er, åtgärder och produkter som används av utvecklare.
+* **Utvecklare** – Autentiserade användare av utvecklarportalen hör till den här gruppen. Utvecklare är de kunder som utvecklar program med hjälp av dina API:er. Utvecklare beviljas åtkomst till utvecklarportalen och bygger program som anropar åtgärderna i ett API.
+* **Gäster** – Oautentiserade användare av utvecklarportalen. Potentiella kunder som besöker utvecklarportalen för en API Management-instans hör t.ex. till den här gruppen. De kan beviljas viss skrivskyddad åtkomst, t.ex. möjligheten att visa API:er men inte anropa dem.
 
-Administratörer kan skapa anpassade grupper i tillägg toothese system grupper eller [utnyttja externa grupper i associerade Azure Active Directory-klienter][leverage external groups in associated Azure Active Directory tenants]. Anpassad och externa grupper kan användas tillsammans med system-grupper i vilket ger utvecklare synlighet och komma åt tooAPI produkter. Du kan till exempel skapa en anpassad grupp för utvecklare som är kopplad till en specifik kontopartner-organisation och ge dem åtkomst toohello API: er från en produkt som innehåller relevant API. En användare kan tillhöra mer än en grupp.
+Förutom grupperna system kan administratörer skapa anpassade grupper eller [utnyttja externa grupper i associerade Azure Active Directory-klienter][leverage external groups in associated Azure Active Directory tenants]. Anpassade och externa grupper kan användas tillsammans med systemgrupper för att välja vilka utvecklare som kan se och komma åt API-produkter. Du kan till exempel skapa en anpassad grupp för utvecklare som hör till en specifik partnerorganisation och ge dem åtkomst till API:erna från en produkt som endast innehåller relevanta API:er. En användare kan tillhöra mer än en grupp.
 
 Den här guiden visar hur administratörer av en instans för API-hantering kan lägga till nya grupper och koppla dem till produkter och utvecklare.
 
 > [!NOTE]
-> Dessutom toocreating och hantera grupper i hello publisher portal, du kan skapa och hantera grupper med hello API Management REST API [grupp](https://msdn.microsoft.com/library/azure/dn776329.aspx) entitet.
+> Förutom att skapa och hantera grupper i publisher portal, du kan skapa och hantera grupper med hjälp av API Management REST API [grupp](https://msdn.microsoft.com/library/azure/dn776329.aspx) entitet.
 > 
 > 
 
 ## <a name="create-group"></a>Skapar du en grupp
-toocreate en ny grupp klickar du på **Publisher portal** i hello Azure-portalen för API Management-tjänsten. Då kommer du toohello API Management publisher portal.
+Klicka för att skapa en ny grupp **Publisher portal** i Azure Portal för API Management-tjänsten. När du gör det kommer du till utgivarportalen för API Management.
 
 ![Utgivarportalen][api-management-management-console]
 
-> Om du inte har skapat en instans för API Management-tjänsten finns [skapa en instans för API Management-tjänsten] [ Create an API Management service instance] i hello [Kom igång med Azure API Management] [ Get started with Azure API Management] kursen.
+> Om du inte har skapat en API Management-tjänstinstans än läser du [Skapa en API Management-tjänstinstans][Create an API Management service instance] i självstudiekursen [Komma igång med Azure API Management][Get started with Azure API Management].
 > 
 > 
 
-Klicka på **grupper** från hello **API Management** menyn på hello vänster och klicka sedan på **Lägg till grupp**.
+Klicka på **grupper** från den **API Management** menyn till vänster och klicka sedan på **Lägg till grupp**.
 
 ![Lägg till ny grupp][api-management-add-group]
 
-Ange ett unikt namn för hello grupp och en valfri beskrivning och klicka på **spara**.
+Ange ett unikt namn för gruppen och en valfri beskrivning och klicka på **spara**.
 
 ![Lägg till ny grupp][api-management-add-group-window]
 
-hello nya gruppen visas i hello grupper fliken tooedit hello **namn** eller **beskrivning** hello-gruppen, klicka hello namn hello i hello-listan. toodelete hello-gruppen, klicka på **ta bort**.
+Den nya gruppen visas i fliken grupper. Så här redigerar du den **namn** eller **beskrivning** i gruppen, klicka på namnet på gruppen i listan. Ta bort gruppen, klicka på **ta bort**.
 
 ![Grupp som har lagts till][api-management-new-group]
 
-Nu när hello grupp har skapats kan vara den associerad med produkter och utvecklare.
+Nu när gruppen skapas kan det vara associerat med produkter och utvecklare.
 
 ## <a name="associate-group-product"></a>Associera en grupp med en produkt
-tooassociate en grupp med en produkt, klicka på **produkter** från hello **API Management** menyn på hello vänster och klicka sedan på hello namnet på hello önskade produkt.
+Koppla en grupp med en produkt genom att klicka på **produkter** från den **API Management** menyn till vänster och klicka sedan på namnet på den önskade produkten.
 
 ![Ange synlighet][api-management-add-group-to-product]
 
-Välj hello **synlighet** fliken tooadd och ta bort grupper och tooview hello aktuella grupper för hello produkten. tooadd eller ta bort grupper, markera eller avmarkera kryssrutorna för hello för hello önskad grupper och klicka på **spara**.
+Välj den **synlighet** fliken att lägga till och ta bort grupper och för att visa de aktuella grupperna för produkten. Om du vill lägga till eller ta bort grupper, markera eller avmarkera kryssrutorna för de önskade grupperna och klicka på **spara**.
 
 ![Ange synlighet][api-management-add-group-to-product-visibility]
 
 > [!NOTE]
-> tooadd Azure Active Directory-grupper, se [hur tooauthorize developer användarkonton med Azure Active Directory på Azure API Management](api-management-howto-aad.md).
+> Om du vill lägga till Azure Active Directory-grupper, se [så att auktorisera developer konton med hjälp av Azure Active Directory i Azure API Management](api-management-howto-aad.md).
 > 
-> tooconfigure grupper från hello **synlighet** för en produkt klickar du på **hantera grupper**.
+> Så här konfigurerar du grupper från den **synlighet** för en produkt klickar du på **hantera grupper**.
 > 
 > 
 
-När en produkt är associerad med en grupp kan kan utvecklare i gruppen visa och prenumerera toohello produkten.
+När en produkt är associerad med en grupp kan kan utvecklare i gruppen visa och prenumerera på produkten.
 
 ## <a name="associate-group-developer"></a>Associera grupper med utvecklare
-tooassociate grupper med utvecklare, klickar på **användare** från hello **API Management** menyn på hello vänster och sedan hello kryssrutan bredvid hello utvecklare gärna tooassociate med en grupp.
+Om du vill associera grupper med utvecklare, klickar du på **användare** från den **API Management** menyn till vänster och sedan markera kryssrutan bredvid de utvecklare som du vill associera med en grupp.
 
-![Lägg till toogroup för utvecklare][api-management-add-group-to-developer]
+![Lägga till utvecklaren i grupp][api-management-add-group-to-developer]
 
-När hello önskad utvecklare kontrolleras, klickar du på önskad hello-grupp i hello **lägga till tooGroup** listrutan. Utvecklare kan tas bort från grupper med hjälp av hello **ta bort från gruppen** listrutan. 
+När önskade utvecklare kontrolleras klickar du på önskad grupp i den **lägga till i gruppen** listrutan. Utvecklare kan tas bort från grupper med hjälp av den **ta bort från gruppen** listrutan. 
 
 ![Utvecklare][api-management-add-group-to-developer-saved]
 
-När hello association läggs mellan hello utvecklare och hello grupp, du kan visa i hello **användare** fliken.
+När kopplingen har lagts till mellan utvecklare och gruppen, kan du visa den i den **användare** fliken.
 
 ## <a name="next-steps"> </a>Nästa steg
-* När en utvecklare har lagts till tooa grupp, kan de visa och prenumerera toohello produkter som är associerade med gruppen. Mer information finns i [hur skapa och publicera en produkt i Azure API Management][How create and publish a product in Azure API Management],
-* Dessutom toocreating och hantera grupper i hello publisher portal, du kan skapa och hantera grupper med hello API Management REST API [grupp](https://msdn.microsoft.com/library/azure/dn776329.aspx) entitet.
+* När en utvecklare har lagts till i en grupp, kan de visa och prenumerera på de produkter som är kopplade till den gruppen. Mer information finns i [hur skapa och publicera en produkt i Azure API Management][How create and publish a product in Azure API Management],
+* Förutom att skapa och hantera grupper i publisher portal, du kan skapa och hantera grupper med hjälp av API Management REST API [grupp](https://msdn.microsoft.com/library/azure/dn776329.aspx) entitet.
 
 [api-management-management-console]: ./media/api-management-howto-create-groups/api-management-management-console.png
 [api-management-add-group]: ./media/api-management-howto-create-groups/api-management-add-group.png

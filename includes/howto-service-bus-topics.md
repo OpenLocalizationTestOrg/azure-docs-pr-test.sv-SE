@@ -3,35 +3,35 @@ Service Bus-ämnen och -prenumerationer stöder en *publicera/prenumerera*-model
 
 ![TopicConcepts](./media/howto-service-bus-topics/sb-topics-01.png)
 
-Till skillnad från Service Bus-köer, där varje meddelande bearbetas av en enskild konsument så ger ämnen och prenumerationer en ”ett till många”-kommunikation med hjälp av ett publicera/prenumerera-mönster. Det är möjligt att registrera flera prenumerationer tooa avsnittet. När ett meddelande skickas tooa avsnittet, görs sedan tillgänglig tooeach prenumeration toohandle/bearbeta oberoende av varandra.
+Till skillnad från Service Bus-köer, där varje meddelande bearbetas av en enskild konsument så ger ämnen och prenumerationer en ”ett till många”-kommunikation med hjälp av ett publicera/prenumerera-mönster. Det är möjligt att registrera flera prenumerationer för ett ämne. När ett meddelande skickas till ett ämne så görs det tillgängligt för varje prenumeration för oberoende hantering/bearbetning.
 
-Ett prenumeration tooa ämne liknar en virtuell kö som tar emot kopior av hello-meddelanden som skickades toohello avsnittet. Alternativt kan du registrera filterregler för ett ämne på grundval av per prenumeration, vilket gör att du toofilter eller begränsa vilka meddelanden tooa avsnittet tas emot av vilka ämnesprenumerationer.
+En prenumeration på ett ämne liknar en virtuell kö som tar emot kopior av meddelanden som har skickats till ämnet. Alternativt kan du registrera filterregler för ett ämne på prenumerationsbasis, vilket låter dig filtrera eller begränsa vilka meddelanden till ett ämne som tas emot av vilka ämnesprenumerationer.
 
-Service Bus-ämnen och prenumerationer du tooscale och bearbeta ett mycket stort antal meddelanden för många användare och program.
+Service Bus-ämnen och -prenumerationer låter dig skala och bearbeta ett stort antal meddelanden för många användare och program.
 
 ## <a name="create-a-namespace"></a>Skapa ett namnområde
-toobegin som använder Service Bus-ämnen och prenumerationer i Azure, måste du först skapa en *namnområde för tjänsten*. Ett namnområde innehåller en omfattningsbehållare för adressering av Service Bus-resurser i ditt program.
+För att komma igång med Service Bus-ämnen och -prenumerationer så måste du först skapa ett *namnområde för tjänsten*. Ett namnområde innehåller en omfattningsbehållare för adressering av Service Bus-resurser i ditt program.
 
-toocreate ett namnområde:
+Så här skapar du ett namnområde:
 
-1. Logga in toohello [Azure-portalen][Azure portal].
-2. Hello vänstra navigeringsfönstret hello-portalen, klicka på **ny**, klicka på **Enterprise Integration**, och klicka sedan på **Service Bus**.
-3. I hello **skapa namnområdet** dialogrutan, ange ett namn för namnområdet. hello systemet kontrollerar omedelbart toosee om hello namn är tillgängligt.
-4. När gör att hello namnområdesnamnet är tillgänglig, kan du välja hello prisnivån (Basic, Standard och Premium).
-5. I hello **prenumeration** , Välj en Azure-prenumeration i vilka toocreate hello-namnområdet.
-6. I hello **resursgruppen** , Välj en befintlig resursgrupp i vilka hello namnområdet ska live eller skapa en ny.      
-7. I **plats**, Välj hello land eller region där namnområdet ska finnas.
+1. Logga in på [Azure portal][Azure portal].
+2. I det vänstra navigationsfältet i portalen klickar du på **Nytt**, på **Enterprise Integration** och sedan på **Service Bus**.
+3. I dialogrutan **Skapa namnområde** anger du ett namn för namnområdet. Systemet kontrollerar omedelbart om namnet är tillgängligt.
+4. När du har kontrollerat att namnet för namnområdet är tillgängligt, väljer du prisnivå (Basic, Standard eller Premium).
+5. I fältet **Prenumeration** väljer du en Azure-prenumeration för vilken du vill skapa namnområdet.
+6. I fältet **Resursgrupp** väljer du en befintlig resursgrupp där namnområdet ska finnas eller skapar en ny.      
+7. I **Plats** väljer du land eller region där namnområdet ska finnas.
    
     ![Skapa namnområde][create-namespace]
-8. Klicka på hello **skapa** knappen. hello systemet skapar namnområdet och aktiverar den. Du kanske toowait några minuter medan hello systemet tilldelar resurser för ditt konto.
+8. Klicka på knappen **Skapa**. Systemet skapar namnområdet och aktiverar det. Du kan behöva vänta några minuter medan systemet tilldelar resurser till ditt konto.
 
-### <a name="obtain-hello-credentials"></a>Hämta hello autentiseringsuppgifter
-1. Hello nyskapad namnområdesnamnet på hello listan namnområden.
-2. I hello **Service Bus-namnrymd** bladet, klickar du på **principer för delad åtkomst**.
-3. I hello **principer för delad åtkomst** bladet, klickar du på **RootManageSharedAccessKey**.
+### <a name="obtain-the-credentials"></a>Hämta autentiseringsuppgifterna
+1. I listan över namnområden, klickar du på det nyligen skapade namnområdet.
+2. På bladet **Service Bus-namnområde** klickar du på **Principer för delad åtkomst**.
+3. På bladet **Principer för delad åtkomst** klickar du på **RootManageSharedAccessKey**.
    
     ![connection-info][connection-info]
-4. I hello **princip: RootManageSharedAccessKey** bladet Klicka hello kopiera bredvid för**sträng – primära anslutningsnyckel**, toocopy hello anslutning sträng tooyour Urklipp för senare användning.
+4. På bladet **Princip: RootManageSharedAccessKey** klickar du på kopieringsknappen bredvid **Anslutningssträng – Primärnyckel** för att kopiera anslutningssträngen till Urklipp för senare användning.
    
     ![connection-string][connection-string]
 

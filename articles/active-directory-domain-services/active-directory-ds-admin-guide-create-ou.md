@@ -14,65 +14,65 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: maheshu
-ms.openlocfilehash: ce7539e5d5c7c1bf9505ef229f2d31d84c00da05
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 017a8cabe81743af4c0cbb694098df799a904468
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="create-an-organizational-unit-ou-on-an-azure-ad-domain-services-managed-domain"></a>Skapa en organisationsenhet (OU) på en Azure AD Domain Services-hanterad domän
-Azure AD Domain Services-hanterade domäner omfatta två inbyggda behållare som kallas för respektive AADDC-datorer och AADDC-användare. hello anslutit 'AADDC datorer' behållaren har datorobjekt för alla datorer som har toohello hanterade domän. hello ' AADDC' användarbehållaren innehåller användare och grupper i hello Azure AD-klient. Ibland kan vara det nödvändigt toocreate tjänstkonton på hello hanterade domänen toodeploy arbetsbelastningar. Du kan skapa en egen organisationsenhet (OU) på hello-hanterad domän och skapa tjänstkonton i denna Organisationsenhet för detta ändamål. Den här artikeln beskrivs hur du toocreate en Organisationsenhet i din hanterade domän.
+Azure AD Domain Services-hanterade domäner omfatta två inbyggda behållare som kallas för respektive AADDC-datorer och AADDC-användare. Behållaren AADDC-datorer har datorobjekt för alla datorer som är anslutna till den hanterade domänen. ' AADDC' i användarbehållaren innehåller användare och grupper i Azure AD-klient. Ibland kan vara det nödvändigt att skapa tjänstkonton på den hanterade domänen att distribuera arbetsbelastningar. Du kan skapa en egen organisationsenhet (OU) på den hanterade domänen och skapa tjänstkonton i denna Organisationsenhet för detta ändamål. Den här artikeln visar hur du skapar en Organisationsenhet i din hanterade domän.
 
 ## <a name="before-you-begin"></a>Innan du börjar
-tooperform hello uppgifterna som listas i den här artikeln, behöver du:
+Om du vill utföra åtgärderna i den här artikeln behöver du:
 
 1. En giltig **Azure-prenumeration**.
 2. En **Azure AD-katalog** -antingen synkroniseras med en lokal katalog eller en molnbaserad katalog.
-3. **Azure AD Domain Services** måste vara aktiverat för hello Azure AD-katalogen. Om du inte gjort det, följ alla hello uppgifter som beskrivs i hello [Kom igång-guiden](active-directory-ds-getting-started.md).
-4. En domänansluten virtuell dator från vilken du administrerar hello Azure AD Domain Services hanterade domän. Om du inte har sådan en virtuell dator, följ alla hello uppgifter som beskrivs i artikeln hello [ansluta till en hanterad domän för Windows virtuella tooa](active-directory-ds-admin-guide-join-windows-vm.md).
-5. Du behöver hello autentiseringsuppgifterna för en **kontot tillhör toohello AAD DC-administratörer användargrupp** i katalogen toocreate en anpassad Organisationsenhet på din hanterade domän.
+3. **Azure AD Domain Services** måste vara aktiverat för Azure AD-katalog. Om du inte gjort det, följer du de uppgifter som beskrivs i den [Kom igång-guiden](active-directory-ds-getting-started.md).
+4. En domänansluten virtuell dator där du administrera Azure AD Domain Services hanterade domän. Om du inte har sådan en virtuell dator, följer du de uppgifter som beskrivs i artikel med titeln [Anslut en Windows-dator till en hanterad domän](active-directory-ds-admin-guide-join-windows-vm.md).
+5. Du måste autentiseringsuppgifterna för en **användarkontot som hör till gruppen ”AAD DC-administratörer”** i katalogen för att skapa en anpassad Organisationsenhet på din hanterade domän.
 
 ## <a name="install-ad-administration-tools-on-a-domain-joined-virtual-machine-for-remote-administration"></a>Installera AD Administrationsverktyg på en domänansluten dator för fjärradministration
-Azure AD Domain Services-hanterade domäner kan hanteras med vanliga Active Directory administrativa verktyg som hello Active Directory administrativa Center (ADAC) eller AD PowerShell. Innehavaradministratörer har inte privilegier tooconnect toodomain domänkontrollanter på hello hanterade domänen via fjärrskrivbord. tooadminister Hej hanterad domän, installera hello AD administration tools-funktionen på en virtuell dator kopplade toohello hanterad domän. Läs artikeln toohello [administrera en Azure AD Domain Services-hanterad domän](active-directory-ds-admin-guide-administer-domain.md) anvisningar.
+Azure AD Domain Services-hanterade domäner kan hanteras från en fjärrdator med hjälp av välbekanta Active Directory administrativa verktyg, till exempel Active Directory administrativa Center (ADAC) eller AD PowerShell. Innehavaradministratörer har inte behörighet att ansluta till domänkontrollanter på den hanterade domänen via fjärrskrivbord. Installera funktionen AD administration tools på en virtuell dator som är ansluten till den hanterade domänen för att administrera den hanterade domänen. Finns i artikeln [administrera en Azure AD Domain Services-hanterad domän](active-directory-ds-admin-guide-administer-domain.md) anvisningar.
 
-## <a name="create-an-organizational-unit-on-hello-managed-domain"></a>Skapa en organisationsenhet på hello-hanterad domän
-Hello AD Administrationsverktyg är installerat på hello domänanslutna virtuell dator, vi kan använda dessa verktyg toocreate en organisationsenhet i hello hanterade domän. Utför följande steg hello:
+## <a name="create-an-organizational-unit-on-the-managed-domain"></a>Skapa en organisationsenhet i den hanterade domänen
+Nu när AD Administrationsverktyg är installerade på domänanslutna virtuell dator, vi kan använda dessa verktyg för att skapa en organisationsenhet i den hanterade domänen. Utför följande steg:
 
 > [!NOTE]
-> Bara medlemmar i hello AAD DC-administratörer har behörighet som krävs för toocreate hello en anpassad Organisationsenhet. Se till att du utför följande steg som en användare som tillhör gruppen toothis hello.
+> Endast medlemmar i gruppen AAD DC-administratörer har de behörigheter som krävs för att skapa en anpassad Organisationsenhet. Se till att du utför följande steg som en användare som tillhör den här gruppen.
 >
 >
 
-1. Från startskärmen hello klickar du på **Administrationsverktyg**. Du bör se hello AD administrativa verktyg som är installerad på hello virtuell dator.
+1. Klicka på startskärmen **Administrationsverktyg**. Du bör se AD administrativa verktyg som installerats på den virtuella datorn.
 
     ![Administrativa verktyg som installerats på servern](./media/active-directory-domain-services-admin-guide/install-rsat-admin-tools-installed.png)
 2. Klicka på **Active Directory Administrationscenter**.
 
     ![Active Directory Administrationscenter](./media/active-directory-domain-services-admin-guide/adac-overview.png)
-3. tooview hello domän, klickar du på domännamnet för hello hello vänster (till exempel ”contoso100.com”).
+3. Om du vill visa domänen, klickar du på domännamnet i den vänstra rutan (till exempel ”contoso100.com”).
 
     ![ADAC - Visa domän](./media/active-directory-domain-services-admin-guide/create-ou-adac-overview.png)
-4. Hello höger **uppgifter** rutan klickar du på **ny** under hello domännod namn. I det här exemplet vi klickar du på **ny** under hello 'contoso100(local)'-nod hello höger **uppgifter** fönstret.
+4. På höger sida **uppgifter** rutan klickar du på **ny** under noden domänens namn. I det här exemplet vi klickar du på **ny** under noden 'contoso100(local)' på höger sida **uppgifter** fönstret.
 
     ![ADAC - ny Organisationsenhet](./media/active-directory-domain-services-admin-guide/create-ou-adac-new-ou.png)
-5. Du bör se hello alternativet toocreate en organisationsenhet. Klicka på **organisationsenhet** toolaunch hello **skapa organisationsenhet** dialogrutan.
-6. I hello **skapa organisationsenhet** dialogrutan, ange en **namn** för hello ny Organisationsenhet. Ange en kort beskrivning för hello Organisationsenhet. Du kan också ange hello **hanterad av** för hello Organisationsenhet. toocreate Hej anpassad Organisationsenhet, klicka på **OK**.
+5. Du bör se alternativet för att skapa en organisationsenhet. Klicka på **organisationsenhet** att starta den **skapa organisationsenhet** dialogrutan.
+6. I den **skapa organisationsenhet** dialogrutan, ange en **namn** för den nya Organisationsenheten. Ange en kort beskrivning för OU: N. Du kan också ange den **hanterad av** för Organisationsenheten. Klicka för att skapa anpassade Organisationsenheten **OK**.
 
     ![ADAC - OU dialogrutan Skapa](./media/active-directory-domain-services-admin-guide/create-ou-dialog.png)
-7. hello nyskapad OU: N bör nu visas i hello AD Administrative Center (ADAC).
+7. Nyligen skapade OU: N bör nu visas i AD administrativa Center (ADAC).
 
     ![ADAC - Organisationsenhet som har skapats](./media/active-directory-domain-services-admin-guide/create-ou-done.png)
 
 ## <a name="permissionssecurity-for-newly-created-ous"></a>Behörigheter/säkerhet för nyskapade organisationsenheter
-Som standard hello hello användare (medlem hello ' AAD DC-administratörsgruppen) som skapade hello anpassad Organisationsenhet beviljas administrativa privilegier (fullständig behörighet) över Organisationsenhet. hello-användare kan sedan gå vidare och bevilja behörighet tooother användare eller toohello ' AAD DC-administratörsgruppen efter behov. Som det visas i följande skärmbild hello hello användaren 'bob@domainservicespreview.onmicrosoft.com' som skapade hello ny 'MyCustomOU' organisationsenhet beviljas fullständig kontroll över den.
+Som standard beviljas användaren (medlem i gruppen AAD DC-administratörer) som skapade den anpassa Organisationsenheten administratörsbehörighet (fullständig behörighet) över Organisationsenheten. Användaren kan sedan gå vidare och ge behörighet till andra användare eller AAD DC-administratörer grupp som du vill. Som det visas i följande skärmbild användaren 'bob@domainservicespreview.onmicrosoft.com' vem som skapade den nya 'MyCustomOU' organisationsenheten beviljas fullständig kontroll över den.
 
  ![ADAC - säkerhet för ny Organisationsenhet](./media/active-directory-domain-services-admin-guide/create-ou-permissions.png)
 
 ## <a name="notes-on-administering-custom-ous"></a>Information om hur du administrerar anpassade organisationsenheter
-Nu när du har skapat en anpassad Organisationsenhet kan du gå vidare och skapa användare, grupper, datorer och tjänstkonton i Organisationsenheten. Du kan inte flytta användare eller grupper från hello AADDC-användare OU toocustom organisationsenheter.
+Nu när du har skapat en anpassad Organisationsenhet kan du gå vidare och skapa användare, grupper, datorer och tjänstkonton i Organisationsenheten. Du kan inte flytta användare eller grupper från Organisationsenheten AADDC användare till anpassade organisationsenheterna.
 
 > [!WARNING]
-> Användarkonton, grupper, tjänstkonton och datorobjekt som du skapar under anpassade organisationsenheter är inte tillgängliga i Azure AD-klienten. Dessa objekt visas med andra ord inte konfigurera med hello Azure AD Graph API eller hello Azure AD-Gränssnittet. Objekten är bara tillgängliga i din Azure AD Domain Services-hanterad domän.
+> Användarkonton, grupper, tjänstkonton och datorobjekt som du skapar under anpassade organisationsenheter är inte tillgängliga i Azure AD-klienten. Dessa objekt visas med andra ord inte upp med hjälp av Azure AD Graph API eller i Azure AD-Gränssnittet. Objekten är bara tillgängliga i din Azure AD Domain Services-hanterad domän.
 >
 >
 

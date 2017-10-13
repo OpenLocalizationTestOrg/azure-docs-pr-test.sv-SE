@@ -1,6 +1,6 @@
 ---
-title: 'aaaAuthenticate med Mobile Engagement REST API: er'
-description: 'Beskriver hur tooauthenticate med Azure Mobile Engagement REST API: er'
+title: 'Autentisera med Mobile Engagement REST API: er'
+description: 'Beskriver hur du autentiserar med Azure Mobile Engagement REST API: er'
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
@@ -14,22 +14,22 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 10/05/2016
 ms.author: wesmc;ricksal
-ms.openlocfilehash: 9b54aa5ec3da4bcf55ffe5b7e8d1759095d0c486
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: b05181d9252c0a804648e01b4058019278ae5abe
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="authenticate-with-mobile-engagement-rest-apis"></a>Autentisera med Mobile Engagement REST API: er
 ## <a name="overview"></a>Översikt
-Det här dokumentet beskriver hur tooget en giltig AAD-Oauth token tooauthenticate med hello Mobile Engagement REST API: er. 
+Det här dokumentet beskriver hur du skaffa en giltig AAD-Oauth-token för autentisering med Mobile Engagement REST-API: er. 
 
 Det förutsätts att du har en giltig Azure-prenumeration och du har skapat en Mobile Engagement-app med en av våra [Developer självstudier](mobile-engagement-windows-store-dotnet-get-started.md).
 
 ## <a name="authentication"></a>Autentisering
 Microsoft Azure Active Directory baserat OAuth-token används för autentisering. 
 
-Ordning tooauthentication en API-begäran, måste ett authorization-huvud läggas tooevery begäran som är av hello följande format:
+För att en API autentiseringsbegäran måste ett authorization-huvud läggas till varje begäran som har följande format:
 
     Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGmJlNmV2ZWJPamg2TTNXR1E...
 
@@ -38,64 +38,64 @@ Ordning tooauthentication en API-begäran, måste ett authorization-huvud lägga
 > 
 > 
 
-Det finns flera sätt tooget en token. Eftersom hello API: er kallas vanligtvis från en molnbaserad tjänst, vill du toouse en API-nyckel. En API-nyckel i Azure-terminologi kallas Service principal lösenord. hello följande procedur beskriver ett sätt toosetting den upp manuellt.
+Det finns flera sätt att hämta en token. Eftersom API: erna kallas vanligtvis från en molnbaserad tjänst, som du vill använda en API-nyckel. En API-nyckel i Azure-terminologi kallas Service principal lösenord. Följande procedur beskriver ett sätt att ställa in manuellt.
 
 ### <a name="one-time-setup-using-script"></a>Enstaka installationen (med hjälp av skript)
-Du bör följa hello uppsättningen anvisningar nedan tooperform hello installationen med hjälp av ett PowerShell-skript som tar hello Minimitiden för installationen, men använder hello mest tillåtna standardvärden. Alternativt kan du kan även följa hello instruktionerna i hello [manuell installation](mobile-engagement-api-authentication-manual.md) för att göra detta från hello Azure-portalen direkt och vill ha bättre konfiguration. 
+Du bör följa anvisningarna nedan för att utföra installationen med hjälp av ett PowerShell-skript som tar Minimitiden för installationen, men använder mest tillåtna standardvärdena uppsättning. Alternativt kan du också följa instruktionerna i den [manuell installation](mobile-engagement-api-authentication-manual.md) för att göra detta från Azure-portalen direkt och vill ha bättre konfiguration. 
 
-1. Hämta hello senaste versionen av Azure PowerShell från [här](http://aka.ms/webpi-azps). Mer information om hello Hämtningsinstruktioner kan du se detta [länk](/powershell/azure/overview).  
-2. När du har installerat Azure PowerShell Använd hello följande kommandon för att du har hello tooensure **Azure-modulen** installerad:
+1. Hämta den senaste versionen av Azure PowerShell från [här](http://aka.ms/webpi-azps). Mer information om anvisningarna kan se detta [länk](/powershell/azure/overview).  
+2. När Azure PowerShell har installerats kan använda följande kommandon för att säkerställa att du har den **Azure-modulen** installerad:
    
-    a. Kontrollera att hello Azure PowerShell-modulen är tillgängliga i hello listan över tillgängliga moduler. 
+    a. Kontrollera att Azure PowerShell-modulen finns i listan över tillgängliga moduler. 
    
         Get-Module –ListAvailable 
    
     ![Tillgängliga Azure moduler][1]
    
-    b. Om du inte hittar hello Azure PowerShell-modulen i hello ovanför listan måste toorun hello följande:
+    b. Om du inte hittar Azure PowerShell-modulen i listan ovan måste du köra följande:
    
         Import-Module Azure 
-3. Inloggningen toohello Azure Resource Manager från PowerShell genom att köra hello följande kommando och ange ditt användarnamn och lösenord för kontot: 
+3. Logga in till Azure Resource Manager från PowerShell genom att köra följande kommando och ditt användarnamn och lösenord för kontot: 
    
         Login-AzureRmAccount
-4. Om du har flera prenumerationer bör du köra hello följande:
+4. Om du har flera prenumerationer bör du köra följande:
    
-    a. Hämta en lista över alla prenumerationer och kopiera hello prenumerations-ID för hello-prenumeration som du vill toouse. Kontrollera att den här prenumerationen är hello samma som har hello Mobile Engagement-App som du kommer toointeract med hello API: er. 
+    a. Hämta en lista över alla prenumerationer och kopiera prenumerations-ID för den prenumeration som du vill använda. Kontrollera att den här prenumerationen är samma som har Mobile Engagement-App som du kommer att interagera med hjälp av API: erna. 
    
         Get-AzureRmSubscription
    
-    b. Hello kör följande kommando med hello SubscriptionId tooconfigure hello prenumeration toobe används.
+    b. Kör följande kommando för att tillhandahålla SubscriptionId att konfigurera prenumerationen som ska användas.
    
         Select-AzureRmSubscription –SubscriptionId <subscriptionId>
-5. Kopiera hello text för hello [ny AzureRmServicePrincipalOwner.ps1](https://raw.githubusercontent.com/matt-gibbs/azbits/master/src/New-AzureRmServicePrincipalOwner.ps1) skript tooyour lokala dator och spara den som en PowerShell-cmdlet (t.ex. `APIAuth.ps1`) och kör den `.\APIAuth.ps1`. 
-6. hello skript ber dig tooprovide en indata för **huvudkontot**. Ange ett lämpligt namn som du vill toouse toocreate Active Directory-program (t.ex. APIAuth). 
-7. När hello skriptet har slutförts visas följande fyra värden som du behöver hello tooauthenticate programmässigt med AD så se till att toocopy dem. 
+5. Kopiera texten för den [ny AzureRmServicePrincipalOwner.ps1](https://raw.githubusercontent.com/matt-gibbs/azbits/master/src/New-AzureRmServicePrincipalOwner.ps1) skript till din lokala dator och spara den som en PowerShell-cmdlet (t.ex. `APIAuth.ps1`) och kör den `.\APIAuth.ps1`. 
+6. Skriptet blir du ombedd att ange indata för **huvudkontot**. Ange ett lämpligt namn som du vill använda för att skapa Active Directory-program (t.ex. APIAuth). 
+7. När skriptet har slutförts visas följande fyra värden som du behöver för att autentisera programmässigt med AD så se till att kopiera dem. 
    
     **TenantId**, **SubscriptionId**, **ApplicationId**, och **hemlighet**.
    
     Du kommer att använda TenantId som `{TENANT_ID}`, ApplicationId som `{CLIENT_ID}` och hemliga som `{CLIENT_SECRET}`.
    
    > [!NOTE]
-   > Säkerhetsprinciperna standard kan blockeras från att köra ett PowerShell-skript. I så fall, konfigurera tillfälligt din körning princip tooallow skriptkörningen med hello följande kommando:
+   > Säkerhetsprinciperna standard kan blockeras från att köra ett PowerShell-skript. I så fall, konfigurerar du tillfälligt din körningsprincipen för att tillåta körning av skript med hjälp av följande kommando:
    > 
    > Set-ExecutionPolicy RemoteSigned
    > 
    > 
-8. Här är hur hello uppsättning PS-cmdlets skulle se ut. 
+8. Här är hur uppsättning PS-cmdlets skulle se ut. 
    
     ![][3]
-9. Kontrollera i hello Azure Management portal att ett nytt AD-program har skapats med hello namn du angivna toohello skript kallas **Principalnamnet** under **Visa program som företaget äger**.
+9. Kontrollera i Azure-hanteringsportalen att ett nytt AD-program har skapats med det namn du angav i skriptet som kallas **Principalnamnet** under **Visa program som företaget äger**.
    
     ![][4]
 
-#### <a name="steps-tooget-a-valid-token"></a>Steg tooget en giltig token
-1. Anropa API för hello med hello följande parametrar och se till att tooreplace hello klient\_, klient-ID\_-ID och klienten\_HEMLIGHET:
+#### <a name="steps-to-get-a-valid-token"></a>Steg för att hämta en giltig token
+1. Anropa API: et med följande parametrar och Ersätt INNEHAVAREN\_, klient-ID\_-ID och klienten\_HEMLIGHET:
    
    * **URL-begäran** som *https://login.microsoftonline.com/ {klient\_ID} / oauth2/token*
    * **HTTP-innhållstyphuvud** som *program/x-www-formuläret-urlencoded*
    * **Brödtext i HTTP-begäran** som *bevilja\_typ = klient\_autentiseringsuppgifter & client_id = {klienten\_ID} & client_secret = {klienten\_HEMLIGHET} & resource=https%3A%2F%2Fmanagement.core.windows.net%2F*
      
-     hello följande är en exempelbegäran:
+     Följande är en exempelbegäran:
      
        POST / {TENANT_ID} / oauth2/token HTTP/1.1 värden: login.microsoftonline.com Content-Type: program/x-www-formuläret-urlencoded grant_type = client_credentials & client_id = {CLIENT_ID} & client_secret = {CLIENT_SECRET} & sammanstä spänningskälla = https % 3A % 2F%2Fmanagement.Core.Windows.NET%2F
      
@@ -105,41 +105,41 @@ Du bör följa hello uppsättningen anvisningar nedan tooperform hello installat
      
        {”token_type”: ”ägar”, ”expires_in”: ”3599”, ”expires_on”: ”1445395811”, ”not_before” ”: 144 5391911” ”, resurs”: ”https://management.core.windows.net/”, ”access_token”: {ACCESS_TOKEN}}
      
-     Det här exemplet ingår URL-kodning av hello POST-parametrar, `resource` värdet är `https://management.core.windows.net/`. Var noga med att koda tooalso URL `{CLIENT_SECRET}` som den kan innehålla specialtecken.
+     Det här exemplet ingår URL-kodning av parametrarna efter `resource` värdet är `https://management.core.windows.net/`. Var noga med att även URL koda `{CLIENT_SECRET}` som den kan innehålla specialtecken.
      
      > [!NOTE]
      > För att testa, kan du använda en HTTP-klientverktyg som [Fiddler](http://www.telerik.com/fiddler) eller [Chrome Postman tillägg](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop) 
      > 
      > 
-2. I varje API-anrop som innehåller nu hello authorization-huvud för begäran:
+2. Innehåller nu begärandehuvudet auktorisering i varje API-anrop:
    
         Authorization: Bearer {ACCESS_TOKEN}
    
-    Om du får ett 401 returnerade statuskoden, kontrollera svarstexten hello, kan den informera hello token har upphört att gälla. I så fall får en ny token.
+    Om du får ett 401 statuskoden Kontrollera svarstexten, den kan informera om token har upphört att gälla. I så fall får en ny token.
 
-## <a name="using-hello-apis"></a>Med hjälp av hello API: er
-Nu när du har en giltig token är klar toomake hello API-anrop.
+## <a name="using-the-apis"></a>Med hjälp av API: er
+Nu när du har en giltig token är du redo att göra API-anrop.
 
-1. I varje API-begäran måste toopass en giltiga token som du fick i hello föregående avsnitt.
-2. Du behöver tooplug i vissa parametrar i hello Begärd URI som identifierar ditt program. hello URI-begäran som ser ut som följande hello
+1. I varje API-begäran behöver du ange en giltiga token som du hämtade i föregående avsnitt.
+2. Behöver du ansluter vissa parametrar i URI som identifierar ditt program. Förfrågan URI ser ut ungefär så här
    
         https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/
         providers/Microsoft.MobileEngagement/appcollections/{app-collection}/apps/{app-resource-name}/
    
-    tooget hello parametrar, klicka på programmets namn och klicka på instrumentpanelen och visas en sida som hello följande med alla hello 3 parametrar.
+    Hämta parametrar, klicka på programmets namn och klicka på instrumentpanelen och du ser en sida som följande med parametrarna som 3.
    
    * **1** `{subscription-id}`
    * **2** `{app-collection}`
    * **3** `{app-resource-name}`
-   * **4** din resursgruppens namn kommer toobe **MobileEngagement** om du har skapat en ny. 
+   * **4** din resursgruppens namn kommer att vara **MobileEngagement** om du har skapat en ny. 
      
      ![Mobile Engagement API URI-parametrar][2]
 
 > [!NOTE]
 > <br/>
 > 
-> 1. Ignorera hello API rot-adress som det var för hello tidigare API: er.<br/>
-> 2. Om du har skapat hello-app med den klassiska Azure-portalen måste toouse hello programresursen namn som skiljer sig från hello programnamn sig själv. Om du har skapat hello app i hello Azure Portal bör du använda hello Appnamn sig själv (det finns ingen skillnad mellan programmets resursnamn och programnamn för appar som har skapats i hello nya portal).  
+> 1. Ignorera API rot-adress som det var för tidigare API: er.<br/>
+> 2. Om du har skapat programmet med den klassiska Azure-portalen måste du använda programmet resursnamnet som skiljer sig från namnet på programmet sig själv. Om du skapade appen i Azure Portal bör du använda namnet på appen sig själv (det finns ingen skillnad mellan programmets resursnamn och programnamn för appar som har skapats i den nya portalen).  
 > 
 > 
 

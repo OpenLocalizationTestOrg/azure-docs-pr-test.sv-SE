@@ -1,6 +1,6 @@
 ---
-title: "aaaAzure AD .NET Protokollöversikt | Microsoft Docs"
-description: "Hur åt toouse HTTP meddelanden tooauthorize tooweb program och webb-API: er i din klient med hjälp av Azure AD."
+title: "Azure AD .NET-protokollöversikt | Microsoft Docs"
+description: "Använd HTTP-meddelanden för att auktorisera åtkomst till webbappar och webb-API:er i din klient med hjälp av Azure AD."
 services: active-directory
 documentationcenter: .net
 author: priyamohanram
@@ -13,21 +13,21 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/21/2016
 ms.author: priyamo
-ms.openlocfilehash: 5bd54af028c445afd3f35d67d47d7c84b476c757
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 42ce8dfd30cda7d4085778954350550fd9fdf13d
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 ## Registrera ditt program med din AD-klient
-Först måste tooregister ditt program med Azure Active Directory (Azure AD)-klient. Detta kommer ger dig ett program-ID för ditt program, samt aktivera det tooreceive token.
+Först måste du registrera ditt program med din Azure Active Directory (Azure AD)-klient. Det ger dig en program-ID för ditt program och låter det ta emot tokens.
 
-* Logga in toohello [Azure Portal](https://portal.azure.com).
-* Välj Azure AD-klienten genom att klicka på ditt konto i hello övre högra hörnet av hello-sidan.
-* Hello vänstra navigeringsfönstret och klicka på **Azure Active Directory**.
+* Logga in på [Azure Portal](https://portal.azure.com).
+* Välj din Azure AD-klient genom att klicka på ditt konto i det övre högra hörnet på sidan.
+* I det vänstra navigeringsfönstret, klickar du på **Azure Active Directory**.
 * Klicka på **Appregistreringar** och klicka på **Lägg till**.
-* Följ anvisningarna för hello och skapa ett nytt program. För den här kursen, spelar det ingen roll om det är en webbapp eller ett internt program, men om du behöver specifika exempel på webbprogram eller interna program kan du kolla vår [snabbstart](../articles/active-directory/develop/active-directory-developers-guide.md).
-  * Ange hello för webbprogram, **inloggnings-URL** som är hello bas-URL för din app, där användarna kan logga in t.ex `http://localhost:12345`.
-<!--TODO: add once App ID URI is configurable: hello **App ID URI** is a unique identifier for your application. hello convention is toouse `https://<tenant-domain>/<app-name>`, e.g. `https://contoso.onmicrosoft.com/my-first-aad-app`-->
-  * Interna program, ange en **omdirigerings-URI**, vilka Azure AD används tooreturn token svar. Ange ett värde specifika tooyour program. t.ex.`http://MyFirstAADApp`
-* När du har slutfört registreringen, ska Azure AD tilldela en unik klient-ID för ditt program, hello program-ID. Du behöver det här värdet i nästa avsnitt hello så kopiera den från hello appen på sidan.
+* Följ anvisningarna och skapa ett nytt program. För den här kursen, spelar det ingen roll om det är en webbapp eller ett internt program, men om du behöver specifika exempel på webbprogram eller interna program kan du kolla vår [snabbstart](../articles/active-directory/develop/active-directory-developers-guide.md).
+  * För webbappar, anger du **inloggnings-URL** som är bas-URL:en för din app, där användare loggar in exempelvis `http://localhost:12345`.
+<!--TODO: add once App ID URI is configurable: The **App ID URI** is a unique identifier for your application. The convention is to use `https://<tenant-domain>/<app-name>`, e.g. `https://contoso.onmicrosoft.com/my-first-aad-app`-->
+  * För interna program, anger du en **omdirigerings-URI**, som Azure AD använder för att returnera tokensvar. Ange ett värde som är specifikt för ditt program, till exempel `http://MyFirstAADApp`
+* När du har slutfört registreringen, tilldelar Azure AD ditt program en unik klientidentifierare, program-ID:t. Du behöver det här värdet i nästa avsnitt, så kopiera det från programsidan.

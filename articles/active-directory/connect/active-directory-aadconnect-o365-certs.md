@@ -1,6 +1,6 @@
 ---
-title: "aaaCertificate förnyelse för Office 365 och Azure AD-användare | Microsoft Docs"
-description: "Den här artikeln förklarar tooOffice 365 användare hur tooresolve problem med e-postmeddelanden som meddelar dem om att förnya ett certifikat."
+title: "Certifikat förnyas för Office 365 och Azure AD-användare | Microsoft Docs"
+description: "Den här artikeln förklarar hur du löser problem med e-postmeddelanden som meddelar dem om att förnya ett certifikat till Office 365-användare."
 services: active-directory
 documentationcenter: 
 author: billmath
@@ -14,40 +14,40 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: b9b309e06949dc5488cd628650be413f366ed347
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 7f1a3303eff9c413602e745b702baa659343eba6
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="renew-federation-certificates-for-office-365-and-azure-active-directory"></a>Förnya federationscertifikat för Office 365 och Azure Active Directory
 ## <a name="overview"></a>Översikt
-För lyckad federation mellan Azure Active Directory (Azure AD) och Active Directory Federation Services (AD FS) matchar hello-certifikat som används av AD FS toosign säkerhet token tooAzure AD det som har konfigurerats i Azure AD. Några matchningsfel kan leda toobroken förtroende. Azure AD ser till att den här informationen hålls synkroniserade när du distribuerar AD FS och Webbprogramproxy (för åtkomst till extranät).
+För lyckad federation mellan Azure Active Directory (Azure AD) och Active Directory Federation Services (AD FS) matchar de certifikat som används av AD FS för att signera säkerhetstoken till Azure AD det som har konfigurerats i Azure AD. Några matchningsfel kan leda till brutet förtroende. Azure AD ser till att den här informationen hålls synkroniserade när du distribuerar AD FS och Webbprogramproxy (för åtkomst till extranät).
 
-Den här artikeln innehåller ytterligare information toomanage certifikat för tokensignering och hålla dem synkroniserade med Azure AD i hello följande fall:
+Den här artikeln innehåller ytterligare information för att hantera certifikat för tokensignering och hålla dem synkroniserade med Azure AD i följande fall:
 
-* Du distribuerar inte hello Web Application Proxy och därför hello federationsmetadata är inte tillgänglig i hello extranät.
-* Du använder inte hello standardkonfigurationen av AD FS för certifikat för tokensignering.
+* Du distribuerar inte Web Application Proxy och federationsmetadata är därför inte tillgänglig i extranätet.
+* Du använder inte standardkonfigurationen för AD FS för certifikat för tokensignering.
 * Du använder en tredjeparts identitetsprovider.
 
 ## <a name="default-configuration-of-ad-fs-for-token-signing-certificates"></a>Standardkonfigurationen för AD FS för certifikat för tokensignering
-hello tokensignering token dekryptera certifikat är vanligtvis självsignerade certifikat och är bra för ett år. Som standard AD FS innehåller en automatisk förnyelse process som kallas **AutoCertificateRollover**. Om du använder AD FS 2.0 eller senare, Office 365 och Azure AD automatiskt uppdatera ditt certifikat innan den upphör.
+Certifikat för tokensignering och token-dekryptering certifikat är vanligtvis självsignerade certifikat och är bra för ett år. Som standard AD FS innehåller en automatisk förnyelse process som kallas **AutoCertificateRollover**. Om du använder AD FS 2.0 eller senare, Office 365 och Azure AD automatiskt uppdatera ditt certifikat innan den upphör.
 
-### <a name="renewal-notification-from-hello-office-365-portal-or-an-email"></a>Förnyelse meddelande från hello Office 365-portalen eller ett e-postmeddelande
+### <a name="renewal-notification-from-the-office-365-portal-or-an-email"></a>Förnyelse meddelande från Office 365-portalen eller ett e-postmeddelande
 > [!NOTE]
-> Om du har fått ett e-postmeddelande eller en portal meddelande som ber dig toorenew ditt certifikat för Office, se [hantera ändras tootoken signeringscertifikat](#managecerts) toocheck om du behöver tootake något. Microsoft är medveten om ett eventuellt problem som kan leda till toonotifications för förnyelse av certifikat som skickas, även om ingen åtgärd krävs.
+> Om du har fått ett e-postmeddelande eller en portal meddelande som ber dig att förnya certifikatet för Office finns [hantera ändringar i certifikat för tokensignering](#managecerts) att kontrollera om du behöver göra något. Microsoft är medveten om ett eventuellt problem som kan leda till meddelanden för förnyelse av certifikat som skickas, även om ingen åtgärd krävs.
 >
 >
 
-Azure AD försöker toomonitor hello federationsmetadata och uppdatera hello certifikaten för tokensignering som anges av dessa metadata. 30 dagar före hello förfallodatum för certifikat för tokensignering hello kontrollerar Azure AD om nya certifikat är tillgängliga genom att avsöka hello federationsmetadata.
+Azure AD försöker övervaka federationsmetadata och uppdatera certifikaten för tokensignering, som anges av dessa metadata. 30 dagar före förfallodatum för certifikat för tokensignering kontrollerar Azure AD om nya certifikat är tillgängliga genom att avsöka federationsmetadata.
 
-* Om den kan har avsöka hello federationsmetadata och hämta hello nya certifikat, utfärdas utan e-postmeddelande eller en varning i hello Office 365-portalen toohello användare.
-* Om det går inte att hämta hello nya certifikaten för tokensignering, antingen eftersom hello federationsmetadata kan inte nås eller automatisk förnyelse inte är aktiverat Azure AD utfärdar ett e-postmeddelande och en varning i hello Office 365-portalen.
+* Om den kan har avsöka federationsmetadata och hämta de nya certifikaten, utfärdas utan e-postmeddelande eller en varning i Office 365-portalen för användaren.
+* Om det går inte att hämta nya certifikat för tokensignering, antingen eftersom federationsmetadata kan inte nås eller automatisk förnyelse inte är aktiverat Azure AD utfärdar ett e-postmeddelande och en varning i Office 365-portalen.
 
 ![Office 365-portalen meddelande](./media/active-directory-aadconnect-o365-certs/notification.png)
 
 > [!IMPORTANT]
-> Om du använder AD FS, tooensure affärskontinuitet, kontrollerar du att servrarna har hello efter uppdateringar så att autentiseringsfel för kända problem, inte sker. Detta minskar kända AD FS-proxy serverproblem för förnyelse och framtida förnyelse punkter:
+> Om du använder AD FS för att garantera kontinuitet för företag, kontrollerar du att servrarna har följande uppdateringar så att autentiseringsfel för kända problem, inte sker. Detta minskar kända AD FS-proxy serverproblem för förnyelse och framtida förnyelse punkter:
 >
 > Server 2012 R2 - [Windows Server kan 2014-uppdateringen](http://support.microsoft.com/kb/2955164)
 >
@@ -55,9 +55,9 @@ Azure AD försöker toomonitor hello federationsmetadata och uppdatera hello cer
 >
 >
 
-## Kontrollera om hello certifikat måste toobe uppdateras<a name="managecerts"></a>
-### <a name="step-1-check-hello-autocertificaterollover-state"></a>Steg 1: Kontrollera hello AutoCertificateRollover tillstånd
-Öppna PowerShell på AD FS-servern. Kontrollera att hello AutoCertificateRollover har värdet tooTrue.
+## Kontrollera om certifikat som behöver uppdateras<a name="managecerts"></a>
+### <a name="step-1-check-the-autocertificaterollover-state"></a>Steg 1: Kontrollera AutoCertificateRollover tillstånd
+Öppna PowerShell på AD FS-servern. Kontrollera att värdet för AutoCertificateRollover har angetts till True.
 
     Get-Adfsproperties
 
@@ -67,7 +67,7 @@ Azure AD försöker toomonitor hello federationsmetadata och uppdatera hello cer
 >Om du använder AD FS 2.0 kan du först köra Add-Pssnapin Microsoft.Adfs.Powershell.
 
 ### <a name="step-2-confirm-that-ad-fs-and-azure-ad-are-in-sync"></a>Steg 2: Kontrollera att AD FS och Azure AD är synkroniserade
-Öppna hello Azure AD PowerShell-Kommandotolken på AD FS-servern och Anslut tooAzure AD.
+Öppna Azure AD PowerShell-Kommandotolken på AD FS-servern och Anslut till Azure AD.
 
 > [!NOTE]
 > Du kan ladda ned Azure AD PowerShell [här](https://technet.microsoft.com/library/jj151815.aspx).
@@ -76,16 +76,16 @@ Azure AD försöker toomonitor hello federationsmetadata och uppdatera hello cer
 
     Connect-MsolService
 
-Kontrollera hello certifikat i AD FS och Azure AD-förtroende egenskaper för hello angiven domän.
+Kontrollera de certifikat som konfigurerats i AD FS och Azure AD litar på egenskaperna för den angivna domänen.
 
     Get-MsolFederationProperty -DomainName <domain.name> | FL Source, TokenSigningCertificate
 
 ![Get-MsolFederationProperty](./media/active-directory-aadconnect-o365-certs/certsync.png)
 
-Om hello tumavtryck i både hello utdata matchning certifikaten är synkroniserade med Azure AD.
+Om tumavtrycken i båda utdata matchar är ditt certifikat synkroniserade med Azure AD.
 
-### <a name="step-3-check-if-your-certificate-is-about-tooexpire"></a>Steg 3: Kontrollera om ditt certifikat är om tooexpire
-Hello utdata av Get-MsolFederationProperty eller Get-AdfsCertificate och kontrollera hello datum under ”inte efter”. Om hello datum är mindre än 30 dagar direkt, bör du vidta åtgärder.
+### <a name="step-3-check-if-your-certificate-is-about-to-expire"></a>Steg 3: Kontrollera om ditt certifikat upphör snart att gälla
+I resultatet av Get-MsolFederationProperty eller Get-AdfsCertificate, kontrollera datum under ”inte efter”. Om datumet är mindre än 30 dagar direkt, bör du vidta åtgärder.
 
 | AutoCertificateRollover | Certifikat som är synkroniserade med Azure AD | Federationsmetadata är offentligt tillgänglig | Giltighetsperiod | Åtgärd |
 |:---:|:---:|:---:|:---:|:---:|
@@ -95,43 +95,43 @@ Hello utdata av Get-MsolFederationProperty eller Get-AdfsCertificate och kontrol
 
 \[-] Spelar ingen roll
 
-## Förnya hello certifikatet för tokensignering automatiskt (rekommenderas)<a name="autorenew"></a>
-Du behöver inte tooperform alla manuella steg om båda hello följande är sant:
+## Förnya certifikatet för tokensignering automatiskt (rekommenderas)<a name="autorenew"></a>
+Du behöver inte utföra några manuella steg om båda av följande stämmer:
 
-* Du har distribuerat Web Application Proxy, vilket kan ge åtkomst toohello federationsmetadata från hello extranät.
-* Du använder standardkonfigurationen för hello AD FS (AutoCertificateRollover är aktiverat).
+* Du har distribuerat Web Application Proxy som kan ge åtkomst till federationsmetadata från extranätet.
+* Du använder standardkonfigurationen för AD FS (AutoCertificateRollover är aktiverat).
 
-Kontrollera hello följande tooconfirm som hello certifikat kan uppdateras automatiskt.
+Kontrollera följande för att bekräfta att certifikatet kan uppdateras automatiskt.
 
-**1. hello AD FS-egenskapen AutoCertificateRollover måste anges tooTrue.** Detta anger att AD FS kommer automatiskt att generera nya certifikat för tokensignering och tokendekryptering certifikat innan hello gamla de som går ut.
+**1. AD FS-egenskapen AutoCertificateRollover måste anges till True.** Detta anger att AD FS kommer automatiskt att generera nya certifikat för tokensignering och tokendekryptering certifikat, innan gammalt de som går ut.
 
-**2. hello AD FS-federationsmetadata är allmänt tillgänglig.** Kontrollera att din federationsmetadata är offentligt tillgänglig genom att gå toohello följande URL: en från en dator hello offentliga internet (från hello företagsnätverket):
+**2. Metadata för AD FS-federation är offentligt tillgänglig.** Kontrollera att din federationsmetadata är offentligt tillgänglig genom att navigera till följande URL från en dator på internet (utanför företagsnätverket):
 
 https:// (your_FS_name) /federationmetadata/2007-06/federationmetadata.xml
 
-där `(your_FS_name) `ersätts med hello federation service värdnamn används i din organisation, till exempel fs.contoso.com.  Om du kan tooverify båda av de här inställningarna, behöver du inte toodo någonting annat.  
+där `(your_FS_name) `ersätts med värden federationstjänstnamnet används i din organisation, till exempel fs.contoso.com.  Om du ska kunna kontrollera båda av de här inställningarna, du behöver inte göra något annat.  
 
 Exempel: https://fs.contoso.com/federationmetadata/2007-06/federationmetadata.xml
 
-## Förnya hello certifikatet för tokensignering manuellt<a name="manualrenew"></a>
-Du kan välja toorenew hello certifikat för tokensignering manuellt. Till exempel kan hello följande scenarier fungera bättre för manuell förnyelse:
+## Förnya certifikatet för tokensignering manuellt<a name="manualrenew"></a>
+Du kan välja att förnya certifikaten för tokensignering manuellt. Till exempel kan följande scenarier fungera bättre för manuell förnyelse:
 
-* Token signera certifikat är inte självsignerade certifikat. hello vanligaste anledningen är att din organisation hanterar AD FS-certifikat som registrerats från en organisations certifikatutfärdare.
-* Nätverkssäkerhet tillåter inte hello federation metadata toobe offentligt tillgängliga.
+* Token signera certifikat är inte självsignerade certifikat. Den vanligaste orsaken till detta är att din organisation hanterar AD FS-certifikat som registrerats från en organisations certifikatutfärdare.
+* Nätverkssäkerhet tillåter inte federationsmetadata ska vara offentligt tillgängliga.
 
-I dessa scenarier varje gång du uppdaterar hello-certifikat för tokensignering måste du uppdatera din Office 365-domän med hjälp av hello PowerShell-kommando uppdatering MsolFederatedDomain.
+I dessa scenarier varje gång du uppdaterar certifikat för tokensignering måste du uppdatera din Office 365-domän med hjälp av PowerShell-kommando, Update-MsolFederatedDomain.
 
 ### <a name="step-1-ensure-that-ad-fs-has-new-token-signing-certificates"></a>Steg 1: Kontrollera att AD FS har nya certifikat för tokensignering
 **Icke-standardkonfigurationen**
 
-Om du använder en icke-förvalt konfiguration av AD FS (där **AutoCertificateRollover** har angetts för**FALSKT**), använder du troligtvis anpassade certifikat (inte självsignerade). Mer information om hur toorenew hello AD FS-tokensignering certifikat finns [vägledning för kunder som inte använder AD FS självsignerade certifikat](https://msdn.microsoft.com/library/azure/JJ933264.aspx#BKMK_NotADFSCert).
+Om du använder en icke-förvalt konfiguration av AD FS (där **AutoCertificateRollover** är inställd på **FALSKT**), använder du troligtvis anpassade certifikat (inte självsignerade). Mer information om hur du förnyar AD FS-certifikat för tokensignering finns [vägledning för kunder som inte använder AD FS självsignerade certifikat](https://msdn.microsoft.com/library/azure/JJ933264.aspx#BKMK_NotADFSCert).
 
 **Federationsmetadata är inte tillgänglig**
 
-Hej å andra sidan, om **AutoCertificateRollover** har angetts för**SANT**, men din federationsmetadata är inte offentligt tillgänglig, kontrollera först att nya certifikat för tokensignering har genererats av AD FS. Bekräfta att du har nya certifikaten för tokensignering av tar hello följande steg:
+Å andra sidan, om **AutoCertificateRollover** är inställd på **SANT**, men din federationsmetadata är inte offentligt tillgänglig, kontrollera först att nya certifikat för tokensignering har genererats av AD FS. Bekräfta att du har nya certifikaten för tokensignering genom att utföra följande steg:
 
-1. Kontrollera att du är inloggad på toohello primär AD FS-servern.
-2. Kontrollera hello aktuella signeringscertifikat i AD FS genom att öppna ett PowerShell-kommandofönster och kör följande kommando hello:
+1. Kontrollera att du har loggat in till den primära AD FS-servern.
+2. Kontrollera de aktuella signeringscertifikat i AD FS genom att öppna ett PowerShell-kommandofönster och köra följande kommando:
 
     PS C:\>Get-ADFSCertificate – CertificateType certifikat för tokensignering
 
@@ -139,28 +139,28 @@ Hej å andra sidan, om **AutoCertificateRollover** har angetts för**SANT**, men
    > Om du använder AD FS 2.0, bör du köra Add-Pssnapin Microsoft.Adfs.Powershell först.
    >
    >
-3. Titta på hello kommandoutdata på alla certifikat i listan. Om AD FS har genererat ett nytt certifikat, bör du se två certifikat i hello utdata: en för vilka hello **IsPrimary** värdet är **SANT** och hello **NotAfter** datum är inom fem dagar och ett som **IsPrimary** är **FALSKT** och **NotAfter** handlar om ett år i hello framtida.
-4. Om du bara finns ett certifikat och hello **NotAfter** datumet ligger inom fem dagar, måste du toogenerate ett nytt certifikat.
-5. toogenerate ett nytt certifikat, kör följande kommando i Kommandotolken PowerShell hello: `PS C:\>Update-ADFSCertificate –CertificateType token-signing`.
-6. Kontrollera hello uppdateringen genom att köra följande kommando igen hello: PS C:\>Get-ADFSCertificate – CertificateType certifikat för tokensignering
+3. Granska kommandoutdata på alla certifikat i listan. Om AD FS har genererat ett nytt certifikat, bör du se två certifikat i utdata: för vilka den **IsPrimary** värdet är **True** och **NotAfter** datumet ligger inom fem dagar och ett som **IsPrimary** är **FALSKT** och **NotAfter** handlar om ett år i framtiden.
+4. Om du bara ser ett certifikat och **NotAfter** datumet ligger inom fem dagar, måste du generera ett nytt certifikat.
+5. Om du vill skapa ett nytt certifikat kör du följande kommando i Kommandotolken PowerShell: `PS C:\>Update-ADFSCertificate –CertificateType token-signing`.
+6. Kontrollera uppdateringen genom att köra följande kommando igen: PS C:\>Get-ADFSCertificate – CertificateType certifikat för tokensignering
 
-Två certifikat ska visas nu, ett som har en **NotAfter** datum ungefär ett år i hello framtida och för vilka hello **IsPrimary** värdet är **FALSKT**.
+Två certifikat ska visas nu, ett som har en **NotAfter** datumet ungefär ett år i framtiden, och som den **IsPrimary** värdet är **FALSKT**.
 
-### <a name="step-2-update-hello-new-token-signing-certificates-for-hello-office-365-trust"></a>Steg 2: Uppdatera hello nya certifikaten för tokensignering för hello Office 365-förtroende
-Uppdatera Office 365 med hello nya token signering certifikat toobe används för hello förtroende på följande sätt.
+### <a name="step-2-update-the-new-token-signing-certificates-for-the-office-365-trust"></a>Steg 2: Uppdatera den nya token som signerar certifikat för Office 365-förtroende
+Uppdatera Office 365 med den nya token som signerar certifikat som ska användas för förtroendet på följande sätt.
 
-1. Öppna hello Microsoft Azure Active Directory-modulen för Windows PowerShell.
+1. Öppna Microsoft Azure Active Directory-modulen för Windows PowerShell.
 2. Kör $cred = Get-Credential. När denna cmdlet efterfrågar autentiseringsuppgifter, skriver du cloud service administratörskontots autentiseringsuppgifter.
-3. Kör Anslut MsolService – autentiseringsuppgifter $cred. Denna cmdlet ansluter toohello Molntjänsten. Skapa en kontext som ansluter du toohello Molntjänsten krävs innan du kör hello ytterligare cmdlets som installerats av hello-verktyget.
-4. Om du kör kommandona på en dator som inte är primär hello AD FS-federationsserver, kör Set-MSOLAdfscontext-datorn <AD FS primary server>, där <AD FS primary server> är hello interna FQDN-namnet för hello primär AD FS-servern. Denna cmdlet skapar en kontext som ansluter du tooAD FS.
-5. Kör Update MSOLFederatedDomain – DomainName <domain>. Denna cmdlet hello inställningar från AD FS i hello Molntjänsten för uppdateringar och konfigurerar hello förtroenderelation mellan hello två.
+3. Kör Anslut MsolService – autentiseringsuppgifter $cred. Denna cmdlet ansluter till Molntjänsten. Skapa en kontext som ansluter till Molntjänsten krävs innan du kör ytterligare cmdlets som installerats av verktyget.
+4. Om du kör kommandona på en dator som inte är den primära federationsservern i AD FS, kör Set-MSOLAdfscontext-datorn <AD FS primary server>, där <AD FS primary server> är det interna FQDN-namnet på den primära AD FS-servern. Denna cmdlet skapar en kontext som ansluter till AD FS.
+5. Kör Update MSOLFederatedDomain – DomainName <domain>. Denna cmdlet uppdaterar inställningarna från AD FS i Molntjänsten och konfigurerar en förtroenderelation mellan två.
 
 > [!NOTE]
-> Om du behöver toosupport flera toppnivådomäner, till exempel contoso.com och fabrikam.com, måste du använda hello **SupportMultipleDomain** växel med alla cmdlets. Mer information finns i [stöd för flera domäner på översta nivån](active-directory-aadconnect-multiple-domains.md).
+> Om du behöver stöd för flera toppnivådomäner, till exempel contoso.com och fabrikam.com, måste du använda den **SupportMultipleDomain** växel med alla cmdlets. Mer information finns i [stöd för flera domäner på översta nivån](active-directory-aadconnect-multiple-domains.md).
 >
 >
 
 ## Reparera Azure AD-förtroende med hjälp av Azure AD Connect<a name="connectrenew"></a>
-Om du har konfigurerat dina AD FS-servergrupp och Azure AD-förtroende med hjälp av Azure AD Connect kan du använda Azure AD Connect toodetect om du behöver tootake någon åtgärd för certifikat för tokensignering. Om du behöver toorenew hello certifikat kan använda du Azure AD Connect toodo så.
+Om du har konfigurerat dina AD FS-servergrupp och Azure AD-förtroende med hjälp av Azure AD Connect kan du använda Azure AD Connect för att identifiera om du behöver vidta några åtgärder för certifikat för tokensignering. Du kan använda Azure AD Connect för att göra det om du behöver förnya certifikat.
 
-Mer information finns i [reparera hello förtroende](active-directory-aadconnect-federation-management.md).
+Mer information finns i [reparera förtroendet](active-directory-aadconnect-federation-management.md).

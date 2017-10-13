@@ -1,6 +1,6 @@
 ---
-title: "Azure AD Connect-synkronisering: ändra hello Azure AD Connect Sync-tjänstkontot | Microsoft Docs"
-description: "Här avsnittet beskrivs hello krypteringsnyckeln och hur tooabandon det efter hello lösenord har ändrats."
+title: "Azure AD Connect-synkronisering: ändra tjänstkontot för Azure AD Connect Sync | Microsoft Docs"
+description: "Här avsnittet beskrivs krypteringsnyckeln och hur du avbryta den när lösenordet ändras."
 services: active-directory
 keywords: "Azure AD-synkroniseringstjänstkontot, lösenord"
 documentationcenter: 
@@ -15,96 +15,96 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: 11948ac4662f722e4f684ef6c9b9ccdc6387e60f
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: bf6234d0810f870909957ee1c1e33c225a4922b9
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="changing-hello-azure-ad-connect-sync-service-account-password"></a>Ändra hello Azure AD Connect sync kontolösenord
-Om du ändrar hello Azure AD Connect sync kontolösenord kommer hello-synkroniseringstjänsten inte att kunna starta korrekt förrän du har avbrutna hello krypteringsnyckeln och initieras hello Azure AD Connect sync kontolösenord. 
+# <a name="changing-the-azure-ad-connect-sync-service-account-password"></a>Ändra lösenord för tjänstkonto i Azure AD Connect-synkronisering
+Om du ändrar lösenord för tjänstkonto i Azure AD Connect sync kommer synkroniseringstjänsten inte att kunna starta korrekt förrän du har avbrutna krypteringsnyckeln och initieras på nytt lösenord för tjänstkonto i Azure AD Connect-synkronisering. 
 
-Azure AD Connect, som en del av hello synkroniseringstjänster använder en kryptering viktiga toostore hello lösenord hello AD DS och Azure AD-tjänstkonton.  Dessa konton krypteras innan de lagras i hello-databasen. 
+Azure AD Connect, som en del av Synkroniseringstjänsterna använder en krypteringsnyckel för att lagra lösenord i AD DS och AD Azure-tjänstkonton.  Dessa konton krypteras innan de lagras i databasen. 
 
-hello krypteringsnyckeln är säkrad via [Windows Data Protection (DPAPI)](https://msdn.microsoft.com/library/ms995355.aspx). DPAPI skyddar hello krypteringsnyckeln med hjälp av hello **lösenordet för tjänstkontot för hello Azure AD Connect sync**. 
+Krypteringsnyckeln är säkrad via [Windows Data Protection (DPAPI)](https://msdn.microsoft.com/library/ms995355.aspx). DPAPI skyddar en kryptering nyckel med hjälp av den **lösenordet för tjänstkontot för Azure AD Connect sync**. 
 
-Om du behöver toochange hello tjänstkontots lösenord kan du använda hello procedurer i [Abandoning hello Azure AD Connect Sync krypteringsnyckeln](#abandoning-the-azure-ad-connect-sync-encryption-key) tooaccomplish detta.  De här procedurerna bör också användas om du behöver tooabandon hello krypteringsnyckeln av någon anledning.
+Om du behöver ändra tjänstkontots lösenord du kan använda procedurerna i [överges krypteringsnyckeln Azure AD Connect Sync](#abandoning-the-azure-ad-connect-sync-encryption-key) att åstadkomma detta.  De här procedurerna bör också användas om du behöver avbryta krypteringsnyckeln av någon anledning.
 
-##<a name="issues-that-arise-from-changing-hello-password"></a>Problem som uppstår när du ändrar hello lösenord
-Det finns två saker som behöver toobe när du ändrar hello kontolösenord.
+##<a name="issues-that-arise-from-changing-the-password"></a>Problem som uppstår när du ändrar lösenordet
+Det finns två saker som behöver göras när du ändrar tjänstkontots lösenord.
 
-Du måste först toochange hello lösenord under hello Windows Service Control Manager.  Tills problemet är löst visas följande fel:
+Du måste först ändra lösenordet under Windows Service Control Manager.  Tills problemet är löst visas följande fel:
 
 
-- Om du försöker toostart hello synkroniseringstjänsten i Windows Service Control Manager felmeddelandet hello ”**Windows kunde inte starta hello Microsoft Azure AD Sync-tjänsten på den lokala datorn**”. **Fel 1069: hello-tjänsten kunde inte starta på grund av tooa misslyckades.** "
-- Under Windows Loggboken hello systemets händelselogg innehåller ett fel med **händelse-ID 7038** och meddelandet ”**hello ADSync-tjänsten har toolog på som hello konfigurerat lösenord på grund av toohello följande fel: hello-användarnamnet eller lösenordet är felaktigt.** "
+- Om du försöker starta synkroniseringstjänsten i Windows Service Control Manager felmeddelandet ”**Windows kunde inte starta tjänsten Microsoft Azure AD Sync på lokal dator**”. **Fel 1069: Tjänsten kunde inte starta på grund av ett inloggningsfel.** "
+- Under Windows Loggboken systemets händelselogg innehåller ett fel med **händelse-ID 7038** och meddelandet ”**i ADSync-tjänsten kunde inte logga in som med aktuellt konfigurerat lösenord på grund av följande fel: användarnamnet eller lösenordet är felaktigt.**”
 
-Andra kan vissa villkor kan om hello lösenordet uppdateras hello synkroniseringstjänsten inte längre hämta hello krypteringsnyckeln via DPAPI. Utan hello krypteringsnyckel hello synkroniseringstjänsten inte kan dekryptera hello lösenord krävs toosynchronize till och från lokala AD och Azure AD.
+Andra kan vissa villkor kan om lösenordet uppdateras synkroniseringstjänsten inte längre hämta krypteringsnyckeln via DPAPI. Synkroniseringstjänsten kan inte dekryptera lösenord krävs för att synkronisera till och från lokala AD och Azure AD utan krypteringsnyckeln.
 Du ser fel som:
 
-- Under Windows Service Control Manager om du försöker toostart hello-synkroniseringstjänsten och det går inte att hämta hello krypteringsnyckeln misslyckas med felet ”** Windows kunde inte starta hello Microsoft Azure AD Sync på den lokala datorn. Mer information finns i händelseloggen för hello System. Om detta är en icke-Microsoft-tjänst, kontakta leverantören för hello-tjänsten och hittar tooservice-specifika felkoden **-21451857952 *** ”.
-- Under Windows Loggboken hello programmets händelselogg innehåller ett fel med **händelse-ID 6028** och felmeddelande *”**hello krypteringsnyckeln på servern kan inte nås.* *”*
+- Under Windows Service Control Manager om du försöker starta synkroniseringstjänsten och det går inte att hämta krypteringsnyckeln misslyckas med felet ”** Windows kunde inte starta Microsoft Azure AD Sync på den lokala datorn. Mer information finns i händelseloggen System. Om detta är en icke-Microsoft-tjänst Kontakta leverantören för tjänsten och tjänstspecifika felkoden **-21451857952 *** ”.
+- Under Windows Loggboken i programmets händelselogg innehåller ett fel med **händelse-ID 6028** och felmeddelande *”**krypteringsnyckeln server kan inte nås.* *”*
 
-tooensure att du inte får dessa fel följa hello procedurerna i [Abandoning hello Azure AD Connect Sync krypteringsnyckeln](#abandoning-the-azure-ad-connect-sync-encryption-key) när du ändrar hello lösenord.
+För att säkerställa att du inte får dessa fel, följer du procedurerna i [överges krypteringsnyckeln Azure AD Connect Sync](#abandoning-the-azure-ad-connect-sync-encryption-key) när du ändrar lösenordet.
  
-## <a name="abandoning-hello-azure-ad-connect-sync-encryption-key"></a>Överges hello Azure AD Connect Sync-krypteringsnyckeln
+## <a name="abandoning-the-azure-ad-connect-sync-encryption-key"></a>Överges krypteringsnyckeln Azure AD Connect Sync
 >[!IMPORTANT]
->hello följande procedurer gäller endast tooAzure AD Connect build 1.1.443.0 eller äldre.
+>Följande procedurer gäller endast för Azure AD Connect build 1.1.443.0 eller äldre.
 
-Använd följande procedurer tooabandon hello krypteringsnyckeln hello.
+Använd följande procedurer för att undvika krypteringsnyckeln.
 
-### <a name="what-toodo-if-you-need-tooabandon-hello-encryption-key"></a>Vilka toodo om du behöver tooabandon hello krypteringsnyckeln
+### <a name="what-to-do-if-you-need-to-abandon-the-encryption-key"></a>Vad du gör om du behöver avbryta krypteringsnyckeln
 
-Om du behöver tooabandon hello krypteringsnyckeln används hello följande procedurer tooaccomplish.
+Om du behöver avbryta krypteringsnyckeln kan du använda följande procedurer för att åstadkomma detta.
 
-1. [Avbryt hello befintliga krypteringsnyckel](#abandon-the-existing-encryption-key)
+1. [Avbryt befintliga krypteringsnyckeln](#abandon-the-existing-encryption-key)
 
-2. [Ange hello lösenord för hello AD DS-konto](#provide-the-password-of-the-ad-ds-account)
+2. [Ange lösenordet för AD DS-konto](#provide-the-password-of-the-ad-ds-account)
 
-3. [Initiera om hello lösenordet för hello Azure AD sync-kontot](#reinitialize-the-password-of-the-azure-ad-sync-account)
+3. [Initiera om lösenordet för Azure AD sync-kontot](#reinitialize-the-password-of-the-azure-ad-sync-account)
 
-4. [Starta hello-synkroniseringstjänsten](#start-the-synchronization-service)
+4. [Starta synkroniseringstjänsten](#start-the-synchronization-service)
 
-#### <a name="abandon-hello-existing-encryption-key"></a>Avbryt hello befintliga krypteringsnyckel
-Avbryt hello befintliga krypteringsnyckel så att nya krypteringsnyckeln kan skapas:
+#### <a name="abandon-the-existing-encryption-key"></a>Avbryt befintliga krypteringsnyckeln
+Avbryt den befintliga krypteringsnyckeln så att nya krypteringsnyckeln kan skapas:
 
-1. Logga in tooyour Azure AD Connect-servern som administratör.
+1. Logga in på ditt Azure AD Connect-servern som administratör.
 
 2. Starta en ny PowerShell-session.
 
-3. Navigera toofolder:`$env:Program Files\Microsoft Azure AD Sync\bin\`
+3. Navigera till mappen:`$env:Program Files\Microsoft Azure AD Sync\bin\`
 
-4. Kör hello-kommando:`./miiskmu.exe /a`
+4. Kör kommandot:`./miiskmu.exe /a`
 
 ![Azure AD Connect Sync kryptering viktiga verktyg](media/active-directory-aadconnectsync-encryption-key/key5.png)
 
-#### <a name="provide-hello-password-of-hello-ad-ds-account"></a>Ange hello lösenord för hello AD DS-konto
-Som hello befintliga lösenord som lagrats i hello databasen kan inte längre dekrypteras så behöver tooprovide hello synkroniseringstjänsten med hello lösenord för hello AD DS-konto. hello synkroniseringstjänsten krypterar hello lösenord med hello nya krypteringsnyckeln:
+#### <a name="provide-the-password-of-the-ad-ds-account"></a>Ange lösenordet för AD DS-konto
+Som de befintliga lösenord som lagrats i databasen kan inte längre dekrypteras så behöver du ge synkroniseringstjänsten lösenordet för AD DS-konto. Synkroniseringstjänsten krypterar lösenord med hjälp av den nya krypteringsnyckeln:
 
-1. Starta hello Synchronization Service Manager (START → synkroniseringstjänsten).
+1. Starta hanteraren för synkroniseringstjänsten (START → synkroniseringstjänsten).
 </br>![Synkronisering av Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/startmenu.png)  
-2. Gå toohello **kopplingar** fliken.
-3. Välj hello **AD-koppling** som motsvarar tooyour lokala AD. Upprepa hello följande steg för dem om du har flera AD-koppling.
+2. Gå till den **kopplingar** fliken.
+3. Välj den **AD-koppling** som motsvarar dina lokala AD. Upprepa följande steg för dem om du har flera AD-koppling.
 4. Under **åtgärder**väljer **egenskaper**.
-5. I popup-dialogrutan hello väljer **ansluta tooActive Directory-skog**:
-6. Ange hello lösenord för hello AD DS-konto i hello **lösenord** textruta. Om du inte vet lösenordet måste du ange den tooa känt värde innan du utför det här steget.
-7. Klicka på **OK** toosave hello nytt lösenord och Stäng hello popup-fönstret.
+5. I popup-fönstret väljer **Anslut till Active Directory-skog**:
+6. Ange lösenordet för AD DS-konto i den **lösenord** textruta. Om du inte vet lösenordet måste du ange den till ett känt värde innan du utför det här steget.
+7. Klicka på **OK** att spara det nya lösenordet och stänga popup-fönstret.
 ![Azure AD Connect Sync kryptering viktiga verktyg](media/active-directory-aadconnectsync-encryption-key/key6.png)
 
-#### <a name="reinitialize-hello-password-of-hello-azure-ad-sync-account"></a>Initiera om hello lösenordet för hello Azure AD sync-kontot
-Du kan inte direkt ange hello lösenordet för hello Azure AD-tjänsten konto toohello synkroniseringstjänsten. I så fall måste toouse hello cmdlet **Lägg till ADSyncAADServiceAccount** tooreinitialize hello Azure AD-tjänstkontot. hello cmdlet återställer lösenordet för hello och gör den tillgänglig toohello synkroniseringstjänsten:
+#### <a name="reinitialize-the-password-of-the-azure-ad-sync-account"></a>Initiera om lösenordet för Azure AD sync-kontot
+Du kan inte direkt ange lösenordet för Azure AD-tjänstkontot till synkroniseringstjänsten. I stället måste du använda cmdlet **Lägg till ADSyncAADServiceAccount** att initiera om Azure AD-tjänstkontot. Cmdlet: en återställer kontolösenordet och gör den tillgänglig för synkroniseringstjänsten:
 
-1. Starta en ny PowerShell-session på hello Azure AD Connect-servern.
+1. Starta en ny PowerShell-session på Azure AD Connect-servern.
 2. Kör cmdlet `Add-ADSyncAADServiceAccount`.
-3. I hello popup-fönstret, anger du autentiseringsuppgifter för hello Azure AD Global administratör för Azure AD-klienten.
+3. Ange autentiseringsuppgifter för Azure AD-Global administratör för Azure AD-klienten i popup-fönstret.
 ![Azure AD Connect Sync kryptering viktiga verktyg](media/active-directory-aadconnectsync-encryption-key/key7.png)
-4. Om det lyckas visas hello PowerShell-Kommandotolken.
+4. Om det lyckas visas PowerShell-Kommandotolken.
 
-#### <a name="start-hello-synchronization-service"></a>Starta hello-synkroniseringstjänsten
-Hello synkroniseringstjänsten har åtkomst toohello krypteringsnyckel och alla hello lösenord som behövs, kan du starta om tjänsten hello i hello Windows Service Control Manager:
+#### <a name="start-the-synchronization-service"></a>Starta synkroniseringstjänsten
+Nu när synkroniseringstjänsten har åtkomst till krypteringsnyckeln och alla lösenord som behövs, du kan starta om tjänsten i Windows Service Control Manager:
 
 
-1. Gå tooWindows Service Control Manager (START → Services).
+1. Gå till Windows Service Control Manager (START → Services).
 2. Välj **Microsoft Azure AD Sync** och klickar på Starta om.
 
 ## <a name="next-steps"></a>Nästa steg

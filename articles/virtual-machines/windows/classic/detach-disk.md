@@ -1,6 +1,6 @@
 ---
-title: "aaaDetach en disk från en virtuell Windows-dator | Microsoft Docs"
-description: "Lär dig toodetach en disk från en virtuell dator i Azure med hjälp av hello klassiska distributionsmodellen."
+title: "Koppla bort en disk från en virtuell Windows-dator | Microsoft Docs"
+description: "Lär dig att koppla bort en disk från en virtuell dator i Azure med hjälp av den klassiska distributionsmodellen."
 services: virtual-machines-windows
 documentationcenter: 
 author: cynthn
@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/24/2017
 ms.author: cynthn
-ms.openlocfilehash: 6f4fda46b13ec83aed6051dd3c6459a9979de131
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 650c7e10150b95a6ad7cd455746f7c1d77b9b34c
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="how-toodetach-a-disk-from-a-windows-virtual-machine"></a>Hur toodetach en disk från en Windows-dator
+# <a name="how-to-detach-a-disk-from-a-windows-virtual-machine"></a>Så här kopplar du bort en disk från en virtuell Windows-dator
 > [!IMPORTANT]
-> Azure har två olika distributionsmodeller för att skapa och arbeta med resurser: [Resource Manager och klassisk](../../../resource-manager-deployment-model.md). Den här artikeln täcker hello klassiska distributionsmodellen. Microsoft rekommenderar att de flesta nya distributioner använder hello Resource Manager-modellen. Mer information om hur toodetach en disk med hello Resource Manager objektmodellen, se [här](../../virtual-machines-windows-detach-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+> Azure har två olika distributionsmodeller för att skapa och arbeta med resurser: [Resource Manager och klassisk](../../../resource-manager-deployment-model.md). Den här artikeln täcker den klassiska distributionsmodellen. Microsoft rekommenderar att de flesta nya distributioner använder Resource Manager-modellen. Information om hur du koppla från en disk med hjälp av Resource Manager-modellen finns [här](../../virtual-machines-windows-detach-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 [!INCLUDE [howto-detach-disk-windows-linux](../../../../includes/howto-detach-disk-windows-linux.md)]
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 [Om diskar och virtuella hårddiskar för virtuella datorer](../about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
-[Hur tooattach data disk tooa Windows-dator](attach-disk.md)
+[Hur du kopplar en datadisk till en virtuell Windows-dator](attach-disk.md)

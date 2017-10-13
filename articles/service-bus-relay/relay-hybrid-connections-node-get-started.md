@@ -1,5 +1,5 @@
 ---
-title: "aaaGet igång med Azure Relay Hybridanslutningar i noden | Microsoft Docs"
+title: "Komma igång med Azure Relay-hybridanslutningar i Node | Microsoft Docs"
 description: "Skriv ett Node.js-konsolprogram för Azure Relay-hybridanslutningar."
 services: service-bus-relay
 documentationcenter: node
@@ -14,26 +14,26 @@ ms.tgt_pltfrm: node
 ms.workload: na
 ms.date: 07/07/2017
 ms.author: sethm
-ms.openlocfilehash: 235548399570074f7fd160fec28de8d3633625c5
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: c3bfc45969f250059988129f532edd12dfe3dcfe
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-relay-hybrid-connections"></a>Kom igång med Relay hybridanslutningar
 
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
 
-Den här självstudiekursen innehåller en introduktion för[Azure Relay Hybridanslutningar](relay-what-is-it.md#hybrid-connections), och visar hur toouse Node.js toocreate ett klientprogram som skickar meddelanden tooa motsvarande lyssnarprogram. 
+I den här självstudien ger dig en introduktion till [Azure Relay-hybridanslutningar](relay-what-is-it.md#hybrid-connections) och visar hur du använder Node.js för att skapa ett klientprogram som skickar meddelanden till motsvarande lyssnarprogram. 
 
 ## <a name="what-will-be-accomplished"></a>Detta kommer att utföras
 
-Eftersom hybridanslutningar kräver både en klient och en serverkomponent, kommer vi att skapa två konsolprogram i den här självstudien. Här är hello steg:
+Eftersom hybridanslutningar kräver både en klient och en serverkomponent, kommer vi att skapa två konsolprogram i den här självstudien. Här är stegen:
 
-1. Skapa en Relay-namnområde med hello Azure-portalen.
-2. Skapa en hybridanslutning med hello Azure-portalen.
-3. Skriv en server konsolen tooreceive programmeddelanden.
-4. Skriv en klient konsolen toosend programmeddelanden.
+1. Skapa ett Relay-namnområde med Azure Portal.
+2. Skapa en hybridanslutning med Azure Portal.
+3. Skriv ett serverkonsolprogram för att ta emot meddelanden.
+4. Skriv ett klientkonsolprogram för att ta emot meddelanden.
 
 ## <a name="prerequisites"></a>Krav
 
@@ -42,35 +42,35 @@ Eftersom hybridanslutningar kräver både en klient och en serverkomponent, komm
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-## <a name="1-create-a-namespace-using-hello-azure-portal"></a>1. Skapa ett namnområde med hello Azure-portalen
+## <a name="1-create-a-namespace-using-the-azure-portal"></a>1. Skapa ett namnområde med Azure Portal
 
-Om du redan har en Relay-namnområdet som skapade hoppa toohello [skapa en hybridanslutning med hello Azure-portalen](#2-create-a-hybrid-connection-using-the-azure-portal) avsnitt.
+Om du redan har skapat ett Relay-namnområde, går du vidare till avsnittet [Skapa en hybridanslutning med Azure Portal](#2-create-a-hybrid-connection-using-the-azure-portal).
 
 [!INCLUDE [relay-create-namespace-portal](../../includes/relay-create-namespace-portal.md)]
 
-## <a name="2-create-a-hybrid-connection-using-hello-azure-portal"></a>2. Skapa en hybridanslutning med hello Azure-portalen
+## <a name="2-create-a-hybrid-connection-using-the-azure-portal"></a>2. Skapa en hybridanslutning med Azure Portal
 
-Om du redan har en hybridanslutning skapade hoppa toohello [skapa ett serverprogram](#3-create-a-server-application-listener) avsnitt.
+Om du redan har skapat en hybridanslutning, går du vidare till avsnittet [skapa ett serverprogram](#3-create-a-server-application-listener).
 
 [!INCLUDE [relay-create-hybrid-connection-portal](../../includes/relay-create-hybrid-connection-portal.md)]
 
 ## <a name="3-create-a-server-application-listener"></a>3. Skapa ett serverprogram (lyssnare)
 
-toolisten och ta emot meddelanden från hello Relay, kommer vi att skriva ett Node.js-konsolprogram.
+För att lyssna på och ta emot meddelanden från Relay skriver du ett Node.js-konsolprogram.
 
 [!INCLUDE [relay-hybrid-connections-node-get-started-server](../../includes/relay-hybrid-connections-node-get-started-server.md)]
 
 ## <a name="4-create-a-client-application-sender"></a>4. Skapa ett klientprogram (avsändare)
 
-toosend meddelanden toohello Relay, kommer vi att skriva ett Node.js-konsolprogram.
+För att skicka meddelanden till Relay skriver du ett Node.js-konsolprogram.
 
 [!INCLUDE [relay-hybrid-connections-node-get-started-client](../../includes/relay-hybrid-connections-node-get-started-client.md)]
 
-## <a name="5-run-hello-applications"></a>5. Köra hello program
+## <a name="5-run-the-applications"></a>5. Köra programmen
 
-1. Kör serverprogrammet hello: från en kommandotolk Node.js-typ `node listener.js`.
-2. Köra hello-klientprogram: från en Node.js-Kommandotolken skriver `node sender.js`, och ange lite text.
-3. Se till att servern hello programmet konsolen utdata hello text som angetts i hello-klientprogrammet.
+1. Kör serverprogrammet: i en Node.js-kommandotolk skriver du in `node listener.js`.
+2. Kör klientprogrammet: från en Node.js-kommandotolken skriver du in `node sender.js` och anger lite text.
+3. Se till att serverprogramkonsolen matar ut den text som angavs i klientprogrammet.
 
 ![running-applications](./media/relay-hybrid-connections-node-get-started/running-applications.png)
 

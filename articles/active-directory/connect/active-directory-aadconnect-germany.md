@@ -1,7 +1,7 @@
 ---
-title: aaaAzure AD Connect i Microsoft Cloud Tyskland
-description: "Azure AD Connect integrerar dina lokala kataloger med Azure Active Directory. Detta gör att du tooprovide en gemensam identitet för Office 365 och Azure SaaS-program som är integrerade med Azure AD."
-keywords: "Introduktion tooAzure AD Connect, Azure AD Connect översikt över vad är Azure AD Connect, installera active directory, Tyskland svart skog"
+title: Azure AD Connect i Microsoft Cloud Tyskland
+description: "Azure AD Connect integrerar dina lokala kataloger med Azure Active Directory. På så sätt kan du tillhandahålla en gemensam identitet för Office 365-, Azure- och SaaS-program som är integrerade med Azure AD."
+keywords: "introduktion till Azure AD Connect, översikt över Azure AD Connect, vad är Azure AD Connect, installera Active Directory, Tyskland, Schwarzwald"
 services: active-directory
 documentationcenter: 
 author: billmath
@@ -15,52 +15,52 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: f32194fa6c365614f68e5d1ddcf0dac44d223292
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 4c55b116c0dc080ae316caca873a7b693caa793b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-connect-in-microsoft-cloud-germany---public-preview"></a>Azure AD Connect i Microsoft Cloud Tyskland –offentlig förhandsversion
 ## <a name="introduction"></a>Introduktion
 Azure AD Connect tillhandahåller synkronisering mellan din lokala Active Directory och Azure Active Directory.
-För närvarande många hello scenarier i [Microsoft Cloud Tyskland](https://www.microsoft.com/de-de/cloud/deutschland/default.aspx) måste utföras av hello-operator. När du använder Microsoft Cloud Tyskland måste du vara medveten om följande hello:
+För närvarande måste många scenarier i [Microsoft Cloud Tyskland](https://www.microsoft.com/de-de/cloud/deutschland/default.aspx) utföras av operatören. När du använder Microsoft Cloud Tyskland måste du vara medveten om följande:
 
-* hello måste följande URL: er vara öppna på en proxyserver för synkronisering toooccur har:
+* Följande URL: er måste vara öppna på en proxyserver för att synkroniseringen ska lyckas:
   
   * *.microsoftonline.de
   * *.windows.net
   * * Listor över återkallade certifikat
-* När du loggar in tooyour Azure AD-katalog måste du använda ett konto i hello onmicrosoft.de domän.
-* hello följande funktioner är inte tillgängliga:
+* När du loggar in på din Azure AD-katalog måste du använda ett konto i domänen onmicrosoft.de.
+* Följande funktioner är inte tillgängliga:
   * Azure AD Connect Health
   * Automatiska uppdateringar
  
 ## <a name="download"></a>Ladda ned
-Du kan hämta Azure AD Connect från hello Azure AD Connect-bladet i hello-portalen.  Använd hello instruktionerna nedan toolocate hello Azure AD Connect-bladet.
+Du kan hämta Azure AD Connect från Azure AD Connect-bladet på portalen.  Följ anvisningarna nedan för att hitta Azure AD Connect-bladet.
 
-### <a name="hello-azure-ad-connect-blade"></a>hello Azure AD Connect-bladet
-När du har loggat in toohello Azure-portalen, hello följande:
+### <a name="the-azure-ad-connect-blade"></a>Azure AD Connect-bladet
+När du har loggat in på Azure-portalen gör du följande:
 
-1. Gå tooBrowse
+1. Gå till Bläddra
 2. Välj Azure Active Directory
 3. Välj sedan Azure AD Connect
 
-Du bör se hello följande:
+Du bör se följande:
 
 ![Azure AD Connect-bladet](media/active-directory-aadconnect-germany/germany1.png)
 
-hello följande tabell beskrivs hello-funktioner som visas i hello-bladet.
+I följande tabell beskrivs de funktioner som visas på bladet.
 
 | Rubrik | Beskrivning |
 | --- | --- |
 | SYNKRONISERINGSSTATUS |Visar om synkronisering är aktiverat eller inaktiverat. |
-| SENASTE SYNKRONISERING |Hej senast en lyckad synkronisering har slutförts. |
-| FEDERERADE DOMÄNER |Visar hello antal externa domäner som har konfigurerats. |
+| SENASTE SYNKRONISERING |Senast tidpunkten då en lyckad synkronisering slutfördes. |
+| FEDERERADE DOMÄNER |Visar antalet federerade domäner som är konfigurerade för tillfället. |
 
 ## <a name="installation"></a>Installation
-tooinstall Azure AD Connect, kan du använda hello dokumentationen [här](active-directory-aadconnect.md#install-azure-ad-connect).
+Du kan använda dokumentationen [här](active-directory-aadconnect.md#install-azure-ad-connect) för att installera Azure AD Connect.
 
 ## <a name="advanced-features-and-additional-information"></a>Avancerade funktioner och ytterligare information
-För ytterligare information och riktlinjer för anpassade inställningar eller avancerade konfigurationer kan du börja med [Integrera dina lokala identiteter med Azure Active Directory](active-directory-aadconnect.md).  Den här sidan innehåller information och länkar tooadditional vägledning.
+För ytterligare information och riktlinjer för anpassade inställningar eller avancerade konfigurationer kan du börja med [Integrera dina lokala identiteter med Azure Active Directory](active-directory-aadconnect.md).  Den här sidan innehåller information och länkar till ytterligare vägledning.
 

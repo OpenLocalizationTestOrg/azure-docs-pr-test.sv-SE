@@ -1,6 +1,6 @@
 ---
 pageTitle: Synonyms in Azure Search (preview) | Microsoft Docs
-description: "Preliminär dokumentation för hello synonymer (förhandsgranskning)-funktionen som exponeras i hello Azure Search REST API."
+description: "Preliminär dokumentation för funktionen synonymer (förhandsgranskning), visas i Azure Search REST API."
 services: search
 documentationCenter: 
 authors: mhko
@@ -13,43 +13,43 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 07/07/2016
 ms.author: nateko
-ms.openlocfilehash: 2695139d2b298fa2e7c1814715fdf96729f594ce
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 739a0ad77c68ea74ec25bc80c7539ac8b3f18201
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="synonyms-in-azure-search-preview"></a>Synonymer i Azure Search (förhandsgranskning)
 
-Synonymer i sökmotorer associera motsvarande termer som utökar implicit hello omfattningen av en fråga utan hello användare med tooactually ange hello termen. Till exempel kommer angivna hello termen ”hund” och synonymen associationer i ”hunddjur” och ”Hundvalp”, alla dokument som innehåller ”hund”, ”hunddjur” eller ”Hundvalp” ligga inom hello omfånget för hello-fråga.
+Synonymer i sökmotorer associera motsvarande termer som implicit expanderar omfattningen av en fråga, utan att användaren behöver ange faktiskt termen. Till exempel ska angivna termen ”hund” och synonymen kopplingarna ”hunddjur” och ”Hundvalp” alla dokument som innehåller ”hund”, ”hunddjur” eller ”Hundvalp” omfattas av frågan.
 
-I Azure Search görs synonymen expansion när databasfrågan. Du kan lägga till synonymen maps tooa tjänsten med inga avbrott tooexisting åtgärder. Du kan lägga till en **synonymMaps** egenskapsdefinition tooa fält utan toorebuild hello index. Mer information finns i [uppdatera Index](https://docs.microsoft.com/rest/api/searchservice/update-index).
+I Azure Search görs synonymen expansion när databasfrågan. Du kan lägga till synonymen mappar till en tjänst utan några avbrott befintliga drift. Du kan lägga till en **synonymMaps** egenskapen till en fältdefinition av utan att behöva återskapa indexet. Mer information finns i [uppdatera Index](https://docs.microsoft.com/rest/api/searchservice/update-index).
 
 ## <a name="feature-availability"></a>Funktionstillgänglighet
 
-hello synonymer funktionen är för närvarande i Förhandsgranska och stöds i endast hello senaste api-förhandsversionen (api-version = 2016-09-01-Preview). Funktionen stöds för närvarande inte på Azure Portal. Eftersom hello API-version anges i hello begäran, är det möjligt toocombine allmänt tillgänglig (GA) och förhandsgranska API: er i hello samma app. Dock kan preview API: er inte är under SLA och funktioner ändras, så vi inte rekommenderar att använda dem i program i produktion.
+Funktionen synonymer är för närvarande under förhandsgranskning och stöds bara i den senaste api-förhandsversionen (api-version = 2016-09-01-Preview). Funktionen stöds för närvarande inte på Azure Portal. Eftersom API-version anges i begäran, är det möjligt att kombinera allmänt tillgänglig (GA) och förhandsgranska API: er i samma app. Dock kan preview API: er inte är under SLA och funktioner ändras, så vi inte rekommenderar att använda dem i program i produktion.
 
-## <a name="how-toouse-synonyms-in-azure-search"></a>Hur söka toouse synonymer i Azure
+## <a name="how-to-use-synonyms-in-azure-search"></a>Hur du använder synonymer i Azure search
 
-I Azure Search baseras synonymen stöd på synonymen maps du definierar och ladda upp tooyour service. Dessa mappningar utgör en oberoende resurs (till exempel index eller datakällor) och kan användas av alla sökbara fält i ett index i din söktjänst.
+I Azure Search baseras synonymen stöd på synonymen mappningar som du definierar och ladda upp till din tjänst. Dessa mappningar utgör en oberoende resurs (till exempel index eller datakällor) och kan användas av alla sökbara fält i ett index i din söktjänst.
 
-Synonymen mappar och index hanteras oberoende av varandra. När du definierar en synonym karta och överföra den tooyour service kan du kan aktivera hello synonymen funktionen på ett fält genom att lägga till den nya egenskapen **synonymMaps** i hello fältdefinition. Skapa, uppdatera och ta bort en synonym karta är alltid en åtgärd för hela dokumentet, vilket innebär att du inte kan skapa, uppdatera eller ta bort delar av hello synonymen kartan inkrementellt. Uppdatering av även en enda post kräver en Läs in igen.
+Synonymen mappar och index hanteras oberoende av varandra. När du definierar en synonym karta och överföra den till din tjänst kan du aktivera funktionen synonymen på ett fält genom att lägga till den nya egenskapen **synonymMaps** i fältdefinitionen. Skapa, uppdatera och ta bort en synonym karta är alltid en åtgärd för hela dokumentet, vilket innebär att du inte går att skapa, uppdatera eller ta bort delar av synonymen kartan inkrementellt. Uppdatering av även en enda post kräver en Läs in igen.
 
 Integrera synonymer i tillämpningsprogrammet search är en tvåstegsprocess:
 
-1.  Lägg till en synonym kartan tooyour search-tjänsten via hello API: er nedan.  
+1.  Lägga till en synonym karta till din söktjänst via API: er nedan.  
 
-2.  Konfigurera en sökbar toouse hello synonymen mappning i hello indexdefinitionen.
+2.  Konfigurera ett sökbara fält om du vill använda synonymen kartan i indexdefinitionen.
 
 ### <a name="synonymmaps-resource-apis"></a>SynonymMaps Resource API: er
 
 #### <a name="add-or-update-a-synonym-map-under-your-service-using-post-or-put"></a>Lägga till eller uppdatera en synonym karta under din tjänst, med hjälp av bokför eller PLACERA.
 
-Synonymen maps överförs toohello tjänsten via POST eller PUT. Varje regel måste avgränsas med hello radbrytning (\n). Du kan definiera too5, 000 regler per synonymen kartan i en kostnadsfri tjänst och 10 000 regler i alla andra SKU: er. Varje regel kan ha upp too20 expansion.
+Synonymen maps överförs till tjänsten via POST eller PUT. Varje regel måste avgränsas med ett tecken för ny rad (\n). Du kan ange upp till 5 000 regler per synonymen kartan i en kostnadsfri tjänst och 10 000 regler i alla andra SKU: er. Varje regel kan ha upp till 20 expansion.
 
-I den här förhandsgranskningen måste synonymen maps ha formatet hello Apache Solr som förklaras nedan. Om du har en befintlig synonymen ordlista i ett annat format och vill toouse den direkt, meddela oss på [UserVoice](https://feedback.azure.com/forums/263029-azure-search).
+I den här förhandsgranskningen måste synonymen mappningar vara i formatet Apache Solr som förklaras nedan. Om du har en befintlig synonymen ordlista i ett annat format och vill använda den direkt, meddela oss på [UserVoice](https://feedback.azure.com/forums/263029-azure-search).
 
-Du kan skapa en ny synonymen karta med hjälp av HTTP POST, som i följande exempel hello:
+Du kan skapa en ny synonymen karta med hjälp av HTTP POST, som i följande exempel:
 
     POST https://[servicename].search.windows.net/synonymmaps?api-version=2016-09-01-Preview
     api-key: [admin key]
@@ -62,7 +62,7 @@ Du kan skapa en ny synonymen karta med hjälp av HTTP POST, som i följande exem
           Washington, Wash., WA => WA\n"
     }
 
-Du kan också använda PUT och ange hello synonymen mappningsnamn på hello URI. Om hello synonymen mappningen inte finns, kommer att skapas.
+Du kan också använda PUT och ange mappningsnamn synonymen på URI: N. Om synonymen mappningen inte finns, kommer att skapas.
 
     PUT https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2016-09-01-Preview
     api-key: [admin key]
@@ -76,14 +76,14 @@ Du kan också använda PUT och ange hello synonymen mappningsnamn på hello URI.
 
 ##### <a name="apache-solr-synonym-format"></a>Apache Solr synonymen format
 
-Hej Solr format stöder motsvarande och explicit synonymen mappningar. Mappningsregler följa toohello öppen källkod synonymen filter specificering av Apache Solr, beskrivs i detta dokument: [SynonymFilter](https://cwiki.apache.org/confluence/display/solr/Filter+Descriptions#FilterDescriptions-SynonymFilter). Nedan finns en Exempelregel för motsvarande synonymer.
+Solr format stöder motsvarande och explicit synonymen mappningar. Mappningsregler följa öppen källkod synonymen filter specificering av Apache Solr, beskrivs i detta dokument: [SynonymFilter](https://cwiki.apache.org/confluence/display/solr/Filter+Descriptions#FilterDescriptions-SynonymFilter). Nedan finns en Exempelregel för motsvarande synonymer.
 ```
               USA, United States, United States of America
 ```
 
-Med hello regel ovan, utökar en sökning frågan ”USA” för ”USA” eller ”USA” eller ”USA”.
+Med regeln ovan, en sökfråga utökas ”USA” till ”USA” eller ”USA” eller ”USA”.
 
-Explicit mappning markeras med en pil ”= >”. Om du angett en term sekvens med en sökfråga som matchar hello vänster sida av ”= >” ersätts med hello alternativ hello höger. Angivna hello regel nedan sökfrågor ”Washington”, ”Wash.” eller ”WA” kommer alla skrivas för ”WA”. Explicit mappning endast gäller i hello riktningen som anges och inte omarbetning hello frågan ”WA” för ”Washington” i det här fallet.
+Explicit mappning markeras med en pil ”= >”. Om du angett en term sekvens med en sökfråga som matchar den vänstra sidan av ”= >” ersätts med alternativen på höger sida. Angivna regel nedan sökfrågor ”Washington”, ”Wash.” eller ”WA” kommer alla skrivas till ”WA”. Explicit mappning endast gäller i riktningen som anges och skriv om inte frågan ”WA” till ”Washington” i det här fallet.
 ```
               Washington, Wash., WA => WA
 ```
@@ -103,9 +103,9 @@ Explicit mappning markeras med en pil ”= >”. Om du angett en term sekvens me
     DELETE https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2016-09-01-Preview
     api-key: [admin key]
 
-### <a name="configure-a-searchable-field-toouse-hello-synonym-map-in-hello-index-definition"></a>Konfigurera en sökbar toouse hello synonymen mappning i hello indexdefinitionen.
+### <a name="configure-a-searchable-field-to-use-the-synonym-map-in-the-index-definition"></a>Konfigurera ett sökbara fält om du vill använda synonymen kartan i indexdefinitionen.
 
-En ny fältegenskap **synonymMaps** kan vara används toospecify en synonym kartan toouse för ett sökbara fält. Synonymen maps är tjänsten Utjämna resurser och kan refereras till av varje fält i ett index under hello-tjänst.
+En ny fältegenskap **synonymMaps** kan användas för att ange en synonym karta ska användas i en sökbara fält. Synonymen maps är tjänsten Utjämna resurser och kan refereras till av varje fält i ett index under tjänsten.
 
     POST https://[servicename].search.windows.net/indexes?api-version=2016-09-01-Preview
     api-key: [admin key]
@@ -139,29 +139,29 @@ En ny fältegenskap **synonymMaps** kan vara används toospecify en synonym kart
        ]
     }
 
-**synonymMaps** kan anges för sökbara fält av hello typ 'Edm.String' eller 'Collection(Edm.String)'.
+**synonymMaps** kan anges för sökbara fält av typen 'Edm.String' eller 'Collection(Edm.String)'.
 
 > [!NOTE]
-> Du kan bara ha en synonym mappa per fält i den här förhandsgranskningen. Om du vill toouse flera synonymen maps, meddela oss på [UserVoice](https://feedback.azure.com/forums/263029-azure-search).
+> Du kan bara ha en synonym mappa per fält i den här förhandsgranskningen. Om du vill använda flera synonymen maps berätta på [UserVoice](https://feedback.azure.com/forums/263029-azure-search).
 
 ## <a name="impact-of-synonyms-on-other-search-features"></a>Effekten av synonymer på andra sökfunktioner
 
-hello synonymer funktionen skriver om hello ursprungliga frågan med synonymer med hello OR-operator. Därför träffar syntaxmarkering och bedömningen profiler hello ursprungliga termen och behandlas synonymer som likvärdiga.
+Funktionen synonymer skrivs den ursprungliga frågan med synonymer med OR-operator. Därför hanterar träffar syntaxmarkering och bedömningen profiler du de ursprungliga termen och synonymer som likvärdiga.
 
-Synonymen funktion gäller toosearch frågor och gäller inte toofilters eller facets. På liknande sätt baseras förslag endast på hello ursprungliga sikt. synonymen matchar visas inte i hello svar.
+Synonymen funktionen gäller för att söka efter frågor och gäller inte för filter eller facets. På liknande sätt baseras förslag endast på den ursprungliga sikt. synonymen matchar visas inte i svaret.
 
-Synonymen expansion gäller inte toowildcard söktermer; prefix, fuzzy, och villkor för regex är inte expanderas.
+Synonymen expansion gäller inte för jokertecken söktermer; prefix, fuzzy, och villkor för regex är inte expanderas.
 
 ## <a name="tips-for-building-a-synonym-map"></a>Tips för att skapa en synonym karta
 
-- En kortfattad, väl utformad synonymen karta är effektivare än en komplett lista över möjliga matchningar. Alltför stora eller komplexa ordlistor ta längre tooparse och påverka hello svarstid om hello frågan utökas toomany synonymer. I stället för att gissa då villkoren kan användas, kan du hello faktiska villkoren via en [söka trafik analysrapporten](search-traffic-analytics.md).
+- En kortfattad, väl utformad synonymen karta är effektivare än en komplett lista över möjliga matchningar. Alltför stora eller komplexa ordlistor ta längre tid att tolka och påverkar svarstiden fråga om frågan utökas till många synonymer. I stället för att gissa då villkoren kan användas, kan du faktiskt villkoren via en [söka trafik analysrapporten](search-traffic-analytics.md).
 
-- Som en preliminär och validering övningen aktivera och sedan använda den här rapporten tooprecisely bestämma vilka villkor ska dra nytta av en synonym matchning och fortsätt sedan toouse den som verifiering synonymen kartan ger ett bättre resultat. I hello fördefinierade rapporten hello panelerna ”vanligaste sökfrågor” och ”noll resultatet sökfrågor” ger dig hello nödvändig information.
+- Som både en preliminär och validering utöva aktivera och sedan använda rapporten för att exakt avgöra vilka villkor ska dra nytta av en synonym matchning och sedan fortsätta att använda den som verifiering synonymen kartan ger ett bättre resultat. I rapporten fördefinierade ger paneler ”vanligaste sökfrågor” och ”noll resultatet sökfrågor” dig informationen som behövs.
 
 - Du kan skapa flera synonymen mappningar för search-program (till exempel efter språk om programmet stöder en flerspråkig kundbas). Ett fält kan för närvarande kan bara använda en av dem. Du kan uppdatera synonymMaps-egenskapen för ett fält när som helst.
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Om du har ett befintligt index i en utvecklingsmiljö (icke-produktion) experimentera med en liten ordlista toosee hur hello lägga till synonymer ändras hello sökinställningar, inklusive påverkan på bedömningen profiler, träffar syntaxmarkering och förslag.
+- Om du har ett befintligt index i en utvecklingsmiljö (icke-produktion) kan du experimentera med en liten ordlista nådde Markera om du vill se hur för att lägga till synonymer ändras sökinställningar, inklusive påverkan på bedömningen profiler och förslag.
 
-- [Aktivera sökning trafik analytics](search-traffic-analytics.md) och Använd hello fördefinierade Power BI-rapport toolearn vilka villkor används i de flesta och som de som returnerar hello noll dokument. Tillsammans med dessa insikter, revidera hello ordlista tooinclude synonymer för improduktiva frågor som ska matchas toodocuments i ditt index.
+- [Aktivera sökning trafik analytics](search-traffic-analytics.md) och använda fördefinierade Power BI-rapport för att veta vilka villkor som används mest och vilka som returnerar noll dokument. Tillsammans med dessa insikter, revidera ordlistan om du vill inkludera synonymer för improduktiva frågor som ska matchas till dokument i ditt index.

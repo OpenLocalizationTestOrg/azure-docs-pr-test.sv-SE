@@ -1,5 +1,5 @@
 ---
-title: "aaaTroubleshooting Windows VM-tillägget fel | Microsoft Docs"
+title: "Felsöka Windows VM-tillägget fel | Microsoft Docs"
 description: "Lär dig mer om hur du felsöker Azure Windows VM-tillägget fel"
 services: virtual-machines-windows
 documentationcenter: 
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/29/2016
 ms.author: kundanap
-ms.openlocfilehash: d24544743d9e0cb1a68ec9ab7718716f918054f8
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 4dba196e1b838f2092b30972fb070514bd2a4b25
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="troubleshooting-azure-windows-vm-extension-failures"></a>Felsöka Azure Windows VM-tillägget fel
 [!INCLUDE [virtual-machines-common-extensions-troubleshoot](../../../includes/virtual-machines-common-extensions-troubleshoot.md)]
 
 ## <a name="viewing-extension-status"></a>Visa Tilläggsstatus för
-Azure Resource Manager-mallar kan köras från Azure PowerShell. När hello mallen körs visas hello tillståndets status från Azure Resursläsaren eller hello kommandoradsverktyg.
+Azure Resource Manager-mallar kan köras från Azure PowerShell. När mallen körs visas tilläggets status från Azure Resursläsaren eller kommandoradsverktyg.
 
 Här är ett exempel:
 
@@ -33,7 +33,7 @@ Azure PowerShell:
 
       Get-AzureRmVM -ResourceGroupName $RGName -Name $vmName -Status
 
-Här är exempel på utdata från hello:
+Här är exempel på utdata:
 
       Extensions:  {
       "ExtensionType": "Microsoft.Compute.CustomScriptExtension",
@@ -59,12 +59,12 @@ Här är exempel på utdata från hello:
   ]
 
 ## <a name="troubleshooting-extension-failures"></a>Felsökning av tillägget fel
-### <a name="re-running-hello-extension-on-hello-vm"></a>Köra hello tillägg på hello VM
-Om du kör skript på hello VM som använder tillägget för anpassat skript kan du ibland stöter på ett fel där VM skapades men hello skriptet har misslyckats. Under dessa villkor hello rekommenderat sätt toorecover från det här felet är tooremove hello tillägg och kör hello mallen igen.
-Obs: I framtiden kan den här funktionen är utökad tooremove hello behöver för att avinstallera hello-tillägget.
+### <a name="re-running-the-extension-on-the-vm"></a>Köra tillägget på den virtuella datorn
+Om du kör skript på den virtuella datorn med hjälp av tillägget för anpassat skript, kan du ibland stöter på ett fel där VM skapades men inte det gick att skriptet. Under dessa villkor är det rekommenderade sättet att åtgärda felet för att tillägget tas bort och kör mallen igen.
+Obs: I framtiden kommer den här funktionen skulle förbättras för att ta bort behovet av att avinstallera tillägget.
 
-#### <a name="remove-hello-extension-from-azure-powershell"></a>Hello tillägget tas bort från Azure PowerShell
+#### <a name="remove-the-extension-from-azure-powershell"></a>Ta bort tillägget från Azure PowerShell
     Remove-AzureRmVMExtension -ResourceGroupName $RGName -VMName $vmName -Name "myCustomScriptExtension"
 
-När hello tillägget har tagits bort, kan hello mallen vara gång toorun hello skript på hello VM.
+När tillägget har tagits bort går kan mallen köras igen att köra skript på den virtuella datorn.
 

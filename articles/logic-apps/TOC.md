@@ -7,7 +7,7 @@
 ## [Skapa din första logiska app](logic-apps-create-a-logic-app.md)
 ## [Mallar till Logic Apps](logic-apps-use-logic-app-templates.md)
 ## [Skapa Logic Apps från mallar](logic-apps-arm-provision.md)
-## [Flytta MABS appar toologic appar](logic-apps-move-from-mabs.md)
+## [Flytta MABS-appar till Logic Apps](logic-apps-move-from-mabs.md)
 
 # Gör så här för att
 ## Utveckla
@@ -19,8 +19,19 @@
 ### [Meddelanden om batchbearbetning](logic-apps-batch-process-send-receive-messages.md)
 ### [Skapa Logic App-definitioner](logic-apps-author-definitions.md)
 ### [Anropa, utlösa eller kapsla logikappar](logic-apps-http-endpoint.md)
-### [Skapa anpassade API:er för logikappar](logic-apps-create-api-app.md)
-### [Anropa anpassade API:er för Logic Apps](logic-apps-custom-hosted-api.md)
+### Utveckla anpassade anslutningsappar
+#### [Översikt över anpassade anslutningsappar](custom-connector-overview.md)
+#### [Skapa anslutningsappar från Web API:er](custom-connector-build-web-api-app-tutorial.md)
+#### [Säkra anslutningsappar med Azure AD](custom-connector-azure-active-directory-authentication.md)
+#### [Beskriv API:er med Postman](custom-connector-api-postman-collection.md)
+#### [Utöka OpenAPI för anpassade anslutningsappar](custom-connector-openapi-extensions.md)
+#### [Registrera din anslutningsapp](logic-apps-custom-connector-register.md)
+#### [Certifiera din anslutningsapp](custom-connector-submit-certification.md)
+#### [Vanliga frågor och svar för anpassade anslutningsappar](custom-connector-faq.md)
+### Utveckla anpassade API:er
+#### [Skapa anpassade API:er för logikappar](logic-apps-create-api-app.md)
+#### [Säkra anrop till anpassade API:er](logic-apps-custom-api-authentication.md)
+#### [Distribuera och anropa anpassade API:er](logic-apps-custom-api-host-deploy-call.md)
 ### [Hantera fel och undantag](logic-apps-exception-handling.md)
 ### [Hantera innehållstyper](logic-apps-content-type.md)
 ### [Skydda dina Logic Apps](logic-apps-securing-a-logic-app.md)
@@ -32,6 +43,7 @@
 ### [Partner](logic-apps-enterprise-integration-partners.md)
 ### [Avtal](logic-apps-enterprise-integration-agreements.md)
 ### [B2B-bearbetning](logic-apps-enterprise-integration-b2b.md)
+### [Skicka EDI-meddelanden som batch](logic-apps-scenario-edi-send-batch-messages.md)
 ### [XML-bearbetning](logic-apps-enterprise-integration-xml.md)
 ### [Flatfilsbearbetning](logic-apps-enterprise-integration-flatfile.md)
 ### [Validera XML](logic-apps-enterprise-integration-xml-validation.md)
@@ -46,7 +58,7 @@
 ### [EDIFACT Enterprise-integration](logic-apps-enterprise-integration-edifact.md)
 ### [EDIFACT-kodning](logic-apps-enterprise-integration-edifact-encode.md)
 ### [EDIFACT-avkodning](logic-apps-enterprise-integration-edifact-decode.md)
-### [Hur toohandle EDIFACT-dokument med ett UNH2.5 segment](logic-apps-enterprise-integration-edifact_inputfile_unh2.5.md)
+### [Hantera EDIFACT-dokument med ett UNH2.5-segment](logic-apps-enterprise-integration-edifact_inputfile_unh2.5.md)
 ### [X12 Enterprise-integration](logic-apps-enterprise-integration-x12.md)
 ### [X12-kodning](logic-apps-enterprise-integration-x12-encode.md)
 ### [X12-avkodning](logic-apps-enterprise-integration-x12-decode.md)
@@ -54,7 +66,7 @@
 ### [Fel och lösningar](logic-apps-enterprise-integration-b2b-list-errors-solutions.md)
 
 ## Komma åt lokala data
-### [Ansluta tooon lokala data](logic-apps-gateway-connection.md)
+### [Ansluta till lokala data](logic-apps-gateway-connection.md)
 ### [Installera datagateway](logic-apps-gateway-install.md)
 
 ## Automatisera och distribuera
@@ -73,12 +85,11 @@
 #### [X12-spårningsschema](logic-apps-track-integration-account-x12-tracking-schema.md)
 #### [Anpassat spårningsschema](logic-apps-track-integration-account-custom-tracking-schema.md)
 
-## Exempel, scenarier och genomgångar
-### [Översikt](logic-apps-examples-and-scenarios.md)
+## [Exempel, scenarier och genomgångar](logic-apps-examples-and-scenarios.md)
 ### [Skapa en social instrumentpanel utan server](logic-apps-scenario-social-serverless.md)
 ### [Anropa Logic Apps med Azure Functions](logic-apps-scenario-function-sb-trigger.md)
 ### [Lägga till fel- och undantagshantering](logic-apps-scenario-error-and-exception-handling.md)
-### [B2B-bearbetning](logic-apps-enterprise-integration-b2b.md)
+### [B2B-bearbetning](logic-apps-enterprise-integration-b2b.md) 
 
 ## Priser och fakturering
 ### [Prissättning](https://azure.microsoft.com/pricing/details/logic-apps/)
@@ -98,7 +109,7 @@
 ## [Definitionsspråk för arbetsflöde](logic-apps-workflow-definition-language.md)
 ## [Åtgärder och utlösare för arbetsflöde](logic-apps-workflow-actions-triggers.md)
 ## [REST-API](/rest/api/logic/)
-## [PowerShell](/powershell/module/azurerm.logicapp)
+## [Azure PowerShell](/powershell/module/azurerm.logicapp)
 ## Anslutningsappar: ämnesfördjupning
 ### [AS2](logic-apps-enterprise-integration-as2.md)
 ### [Azure Blob Storage](../connectors/connectors-create-api-azureblobstorage.md)

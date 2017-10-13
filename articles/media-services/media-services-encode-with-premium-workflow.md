@@ -1,6 +1,6 @@
 ---
-title: "aaaAdvanced encoding med Media Encoder Premium arbetsflödet | Microsoft Docs"
-description: "Lär dig hur tooencode med Media Encoder Premium arbetsflöde. Kodexemplen är skrivna i C# och använder hello Media Services SDK för .NET."
+title: "Avancerade encoding med Media Encoder Premium arbetsflödet | Microsoft Docs"
+description: "Lär dig mer om att koda med Media Encoder Premium arbetsflöde. Kodexemplen är skrivna i C# och använder Media Services SDK för .NET."
 services: media-services
 documentationcenter: 
 author: juliako
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: juliako
-ms.openlocfilehash: 5a1c3d019a5c8fbf9bda2da751a7eff4c4907d97
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 2b03853bf07e05c07fd730d5e8a8563963887921
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="advanced-encoding-with-media-encoder-premium-workflow"></a>Avancerade encoding med Media Encoder Premium arbetsflöde
 > [!NOTE]
@@ -29,47 +29,47 @@ ms.lasthandoff: 10/06/2017
 E-mepd på Microsoft.com för premium-kodare frågor.
 
 ## <a name="overview"></a>Översikt
-Microsoft Azure Media Services presenterar hello **Media Encoder Premium arbetsflöde** medieprocessor. Detta processor erbjudanden förskott kodning funktioner för arbetsflöden din premium på begäran.
+Microsoft Azure Media Services presenterar den **Media Encoder Premium arbetsflöde** medieprocessor. Detta processor erbjudanden förskott kodning funktioner för arbetsflöden din premium på begäran.
 
-hello följande avsnitt beskriver information som rör för**Media Encoder Premium arbetsflöde**:
+Följande avsnitt beskriver information som rör **Media Encoder Premium arbetsflöde**:
 
-* [Formaterar stöds av hello Media Encoder Premium arbetsflöde](media-services-premium-workflow-encoder-formats.md) – beskriver hello filformat och codec som stöds av **Media Encoder Premium arbetsflöde**.
-* [Översikt över och jämförelse av Azure på begäran mediet kodare](media-services-encode-asset.md) jämför hello kodning funktionerna i **Media Encoder Premium arbetsflöde** och **Media Encoder Standard**.
+* [Formaterar stöds av Media Encoder Premium arbetsflödet](media-services-premium-workflow-encoder-formats.md) – Discusses filen formaterar och codec-rutiner som stöds av **Media Encoder Premium arbetsflöde**.
+* [Översikt över och jämförelse av Azure på begäran mediet kodare](media-services-encode-asset.md) jämför kodning funktionerna i **Media Encoder Premium arbetsflöde** och **Media Encoder Standard**.
 
-Det här avsnittet visar hur tooencode med **Media Encoder Premium arbetsflöde** med hjälp av .NET.
+Det här avsnittet visar hur du kodar med **Media Encoder Premium arbetsflöde** med hjälp av .NET.
 
-Kodningsuppgifter för hello **Media Encoder Premium arbetsflöde** kräver en separat konfigurationsfil, kallas för ett arbetsflödesfil. Filerna har filnamnstillägget .workflow och skapas med hjälp av hello [Arbetsflödesdesignern](media-services-workflow-designer.md) verktyget.
+Kodning uppgifter för den **Media Encoder Premium arbetsflöde** kräver en separat konfigurationsfil, kallas för ett arbetsflödesfil. Filerna har filnamnstillägget .workflow och skapas med hjälp av den [Arbetsflödesdesignern](media-services-workflow-designer.md) verktyget.
 
-Du kan också få hello standard Arbetsflödesfiler [här](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows). hello mappen innehåller också hello beskrivning av dessa filer.
+Du kan också få standard Arbetsflödesfiler [här](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows). Mappen innehåller också en beskrivning av dessa filer.
 
-hello Arbetsflödesfiler måste toobe upp tooyour Media Services-konto som en tillgång och tillgången ska skickas i toohello kodning aktivitet.
+Arbetsflödesfiler måste överföras till Media Services-kontot som en tillgång och tillgången ska skickas till aktiviteten kodning.
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Skapa och konfigurera ett Visual Studio-projekt
 
-Konfigurera utvecklingsmiljön och fylla hello app.config-fil med anslutningsinformation, enligt beskrivningen i [Media Services-utveckling med .NET](media-services-dotnet-how-to-use.md). 
+Konfigurera utvecklingsmiljön och fyll i filen app.config med anslutningsinformation, enligt beskrivningen i [Media Services-utveckling med .NET](media-services-dotnet-how-to-use.md). 
 
 ## <a name="encoding-example"></a>Kodning exempel
 
-hello exemplet nedan visar hur tooencode med **Media Encoder Premium arbetsflöde**.
+I följande exempel visar hur du kodar med **Media Encoder Premium arbetsflöde**.
 
-hello följande steg utförs:
+Utför följande steg:
 
 1. Skapa en tillgång och överför en arbetsflödesfil.
 2. Skapa en tillgång och överför en mediefil källa.
-3. Hämta hello ”Media Encoder Premium arbetsflöde” media processor.
+3. Hämta media-processorn ”Media Encoder Premium arbetsflöde”.
 4. Skapa ett jobb och en aktivitet.
 
-    I de flesta fall hello konfigurationssträngen för hello aktivitet är tom (som i följande exempel hello). Vissa avancerade scenarier (som kräver att du tootooset runtime egenskaper dynamiskt) i så fall skulle du ange en XML-strängen toohello kodning uppgift. Exempel på sådana scenarier är: skapa en överlägget, parallella och sekventiella media att gå till, textning.
-5. Lägga till två inkommande tillgångar toohello aktivitet.
+    I de flesta fall konfigurationssträngen för aktiviteten är tom (som i följande exempel). Vissa avancerade scenarier (som kräver att du att ange egenskaper för runtime dynamiskt) i så fall skulle du ange en XML-sträng kodning aktiviteten. Exempel på sådana scenarier är: skapa en överlägget, parallella och sekventiella media att gå till, textning.
+5. Lägga till två inkommande tillgångar i aktiviteten.
 
-    1. 1 – hello arbetsflödet tillgången.
-    2. 2 – hello videotillgång.
+    1. 1 – arbetsflöde tillgången.
+    2. 2 – video tillgången.
 
     >[!NOTE]
-    >hello arbetsflödet tillgångsinformation måste läggas till toohello aktivitet innan hello media tillgången.
-   hello konfigurationssträngen för den här uppgiften ska vara tomt.
+    >Arbetsflödet tillgången måste läggas till aktivitet innan media tillgången.
+   Konfigurationssträngen för den här uppgiften ska vara tomt.
    
-6. Skicka hello kodningsjobbet.
+6. Skicka kodningsjobbet.
 
         using System;
         using System.Linq;
@@ -136,42 +136,42 @@ hello följande steg utförs:
                 {
                     // Declare a new job.
                     IJob job = _context.Jobs.Create("Premium Workflow encoding job");
-                    // Get a media processor reference, and pass tooit hello name of the
-                    // processor toouse for hello specific task.
+                    // Get a media processor reference, and pass to it the name of the
+                    // processor to use for the specific task.
                     IMediaProcessor processor = GetLatestMediaProcessorByName("Media Encoder Premium Workflow");
 
-                    // Create a task with hello encoding details, using a string preset.
+                    // Create a task with the encoding details, using a string preset.
                     ITask task = job.Tasks.AddNew("Premium Workflow encoding task",
                         processor,
                         "",
                         TaskOptions.None);
 
-                    // Specify hello input asset toobe encoded.
+                    // Specify the input asset to be encoded.
                     task.InputAssets.Add(workflow);
                     task.InputAssets.Add(video); // we add one asset
-                                                 // Add an output asset toocontain hello results of hello job.
+                                                 // Add an output asset to contain the results of the job.
                                                  // This output is specified as AssetCreationOptions.None, which
-                                                 // means hello output asset is not encrypted.
+                                                 // means the output asset is not encrypted.
                     task.OutputAssets.AddNew("Output asset",
                         AssetCreationOptions.None);
 
-                    // Use hello following event handler toocheck job progress.  
+                    // Use the following event handler to check job progress.  
                     job.StateChanged += new
                             EventHandler<JobStateChangedEventArgs>(StateChanged);
 
-                    // Launch hello job.
+                    // Launch the job.
                     job.Submit();
 
-                    // Check job execution and wait for job toofinish.
+                    // Check job execution and wait for job to finish.
                     Task progressJobTask = job.GetExecutionProgressTask(CancellationToken.None);
                     progressJobTask.Wait();
 
-                    // If job state is Error hello event handling
+                    // If job state is Error the event handling
                     // method for job progress should log errors.  Here we check
                     // for error state and exit if needed.
                     if (job.State == JobState.Error)
                     {
-                        throw new Exception("\nExiting method due toojob error.");
+                        throw new Exception("\nExiting method due to job error.");
                     }
 
                     return job.OutputMediaAssets[0];

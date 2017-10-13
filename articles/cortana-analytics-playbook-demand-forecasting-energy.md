@@ -1,5 +1,5 @@
 ---
-title: "aaaCortana Intelligence lösning mallen Playbook för begäran Prognosticering energi | Microsoft Docs"
+title: "Cortana Intelligence lösning mallen Playbook för begäran Prognosticering energi | Microsoft Docs"
 description: "En Lösningsmall med Microsoft Cortana Intelligence som hjälper till att begäran för ett företag för energiförbrukning för en prognos."
 services: cortana-analytics
 documentationcenter: 
@@ -14,71 +14,71 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2016
 ms.author: ilanr9;yijichen;garye
-ms.openlocfilehash: 32fc6ece7e24ced34282baf107548039694a38b4
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 275e387878900154660d044b26ff5ac03a17a65a
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="cortana-intelligence-solution-template-playbook-for-demand-forecasting-of-energy"></a>Cortana Intelligence lösning mallen Playbook för begäran Prognosticering energi
 ## <a name="executive-summary"></a>Sammanfattning
-I hello senaste åren har Sakernas Internet (IoT), alternativa energi och stordata ha en sammanfogad toocreate stora affärsmöjligheter i hello verktyget och energi domän. Vid hello har samtidigt, hello verktyget och hello hela energisektorn sett förbrukning förenkla med konsumenter krävande bättre sätt toocontrol användningen av energi. Därför hello verktyget och smarta rutnätet företag är i behov av bra tooinnovate och förnya sig själva. Dessutom många kraft och utility rutnät blir inaktuella och dyra toomaintain och hantera. Hello team har arbetat på ett antal Användarsegmentet inom hello energi domän under hello senaste året. Vi har påträffat ofta i vilka hello verktyg eller ISV: er (oberoende programvaruleverantörer) har söker i prognoser för framtida energiförbrukning under dessa åtaganden. Dessa prognoser spelar en viktig roll i verksamheten aktuella och framtida och har blivit hello grunden för olika användningsfall. Dessa inkluderar kortsiktiga och långsiktiga power belastningen prognos, handel, belastningsutjämning, rutnätet optimering osv. Stordata och avancerade analyser AA-metoder, till exempel Machine Learning (ML) är hello viktiga aktiverarna för produktion korrekt och tillförlitlig prognoser.  
+I de senaste åren har Sakernas Internet (IoT), alternativa energi och stordata samman för att skapa stora möjligheter för verktyget och energi domänen. Verktyget och hela energisektorn har sett förbrukning förenkla med konsumenter krävande bättre sätt att kontrollera användningen av energi på samma gång. Verktyget och smarta rutnätet företag är därför i stor måste förnya och förnya sig själva. Dessutom blir många kraft och utility rutnät inaktuella och dyra att underhålla och hantera. Teamet har arbetat på ett antal Användarsegmentet inom domänen energi under det senaste året. Vi har påträffat många fall där verktyg eller ISV: er (oberoende programvaruleverantörer) har söker i prognoser för framtida energiförbrukning under dessa åtaganden. Dessa prognoser spelar en viktig roll i verksamheten aktuella och framtida och har blivit grunden för olika användningsfall. Dessa inkluderar kortsiktiga och långsiktiga power belastningen prognos, handel, belastningsutjämning, rutnätet optimering osv. Stordata och avancerade analyser AA-metoder, till exempel Machine Learning (ML) är de viktiga aktiverarna för produktion korrekt och tillförlitlig prognoser.  
 
-I den här playbook vi samlat hello företag och analytiska riktlinjer som behövs för en lyckad utveckling och distribution av energiförbrukning prognos lösning. Dessa föreslagna riktlinjer hjälper verktyg, dataanalytiker och data engineers vid upprättandet av fullständigt operationalized molnbaserade, begäran prognoser lösningar. För företag som precis har börjat sina stordata och avancerade analyser resa representera sådan lösning hello inledande startvärdet i sina långsiktig strategi för smart rutnätet.
+I den här playbook vi samlat affärs- och analytiska riktlinjer som behövs för en lyckad utveckling och distribution av energiförbrukning prognos lösning. Dessa föreslagna riktlinjer hjälper verktyg, dataanalytiker och data engineers vid upprättandet av fullständigt operationalized molnbaserade, begäran prognoser lösningar. För företag som precis har börjat sina stordata och avancerade analyser resa representera sådan lösning inledande startvärdet i sina långsiktig strategi för smart rutnätet.
 
 > [!TIP]
-> toodownload ett diagram som ger en översikt över arkitekturen för den här mallen finns [Cortana Intelligence Lösningsmall arkitektur för begäran Prognosticering energi](cortana-analytics-architecture-demand-forecasting-energy.md).  
+> Du kan hämta ett diagram som ger en översikt över arkitekturen för den här mallen finns [Cortana Intelligence Lösningsmall arkitektur för begäran Prognosticering energi](cortana-analytics-architecture-demand-forecasting-energy.md).  
 > 
 > 
 
 ## <a name="overview"></a>Översikt
-Det här dokumentet beskriver hello företag, data och tekniska aspekter av med hjälp av Cortana Intelligence och i särskilda Azure Machine Learning (AML) för hello implementering och distribution av energi prognoser lösningar. hello dokumentet består av tre delar:  
+Det här dokumentet beskriver företag, data och tekniska aspekter av med hjälp av Cortana Intelligence och i särskilda Azure Machine Learning (AML) för implementering och distribution av energi prognoser lösningar. Dokumentet består av tre delar:  
 
 1. Förståelse för verksamheten  
 2. Förstå data  
 3. Teknisk implementering
 
-Hej **företag att förstå** del hello business aspekt en behov toounderstand och Överväg att tidigare toomaking en investering beslut. Den förklarar hur tooqualify hello affärsproblem på hand tooensure att förutsägelseanalyser och maskininlärning är verkligen effektiva och tillämpliga. ytterligare hello dokumentet förklarar hello grunderna i machine learning och hur den används tooaddress energi prognoser problem. Det visar hello förutsättningar och hello kriterier för användningsfall. Vissa exempel använda fall och företag fallet scenarier ingår också.
+Den **företag att förstå** del beskrivs business-aspekt måste du förstå och överväga innan investering beslut. Den förklarar hur att kvalificera affärsproblem till hands för att säkerställa att förutsägelseanalyser och maskininlärning är verkligen effektiva och tillämpliga. Dokumentet ytterligare förklarar grunderna i machine learning och hur den används för att åtgärda problem med energi prognoser. Det beskrivs kraven och kriteriet kriterier i ett användningsfall. Vissa exempel använda fall och företag fallet scenarier ingår också.
 
-Data är hello huvudsakliga beståndsdel för någon lösning för maskininlärning. Hej **Data förstå** en del av det här dokumentet beskriver vissa viktiga aspekter av hello data. Det visar hello typ av data som behövs för energi prognoser data kvalitetskrav och vilka datakällor som vanligtvis finns. Vi förklarar också hur hello rådata är används tooprepare datafunktioner som faktiskt enhet hello modeling del.
+Data är den viktigaste komponenten för en lösning för maskininlärning. Den **Data förstå** en del av det här dokumentet beskriver vissa viktiga aspekter av data. Det visar vilken typ av data som behövs för energi prognoser data kvalitetskrav och vilka datakällor som vanligtvis finns. Vi förklarar också hur rådata för att förbereda datafunktioner som faktiskt enhet modellering del.
 
-hello tredje delen av hello dokument beskriver hello **teknisk implementering** aspekt av en lösning. Funktionen tekniker och modellering på hello kärnan i hello av vetenskapliga data och är därför som diskuteras i viss detalj. Den omfattar hello begreppet webbtjänster som är ett viktigt fordon för distribution av förutsägelseanalyslösningar. Vi beskriver också en typisk arkitektur operationalized slutpunkt till slutpunkt-lösning.
+Den tredje delen av dokumentet innehåller de **teknisk implementering** aspekt av en lösning. Funktionen tekniker och modellering är kärnan i vetenskap av data och är därför som diskuteras i viss detalj. Den omfattar begreppet webbtjänster som är ett viktigt fordon för distribution av förutsägelseanalyslösningar. Vi beskriver också en typisk arkitektur operationalized slutpunkt till slutpunkt-lösning.
 
-Hello-dokumentet innehåller dessutom referensmaterialet som du kan använda toogain ytterligare förståelse av hello domän- och teknikbehov.
+Dokumentet innehåller dessutom referensmaterialet som du kan använda för att få ytterligare förståelse för domän- och teknikbehov.
 
-Det är viktigt toonote att vi inte avser toocover i det här dokumentet hello djupare datavetenskap process, dess matematiska och tekniska aspekter. Dessa uppgifter finns i [Azure ML-dokumentationen](http://azure.microsoft.com/services/machine-learning/) och [bloggar](http://blogs.microsoft.com/blog/tag/azure-machine-learning/).
+Det är viktigt att Observera att vi inte tänker i det här dokumentet beskriver djupare vetenskap av data, dess matematiska och tekniska aspekter. Dessa uppgifter finns i [Azure ML-dokumentationen](http://azure.microsoft.com/services/machine-learning/) och [bloggar](http://blogs.microsoft.com/blog/tag/azure-machine-learning/).
 
 ### <a name="target-audience"></a>Målgrupp
-hello målgrupp för det här dokumentet är både företag och tekniska personal som vill toogain kunskap och förståelse av Machine Learning-baserade lösningar och hur de används specifikt inom hello energi prognoser domän.
+Målgruppen för det här dokumentet är både företag och tekniska personal som vill få kunskap och förståelse av Machine Learning-baserade lösningar och hur de används specifikt inom energi prognoser-domän.
 
-Datavetare kan också dra nytta av läsning av det här dokumentet toogain en bättre förståelse för hello hög nivå processen att enheter hello distribution av en energi prognoser lösning. Det kan också vara används tooestablish utgångspunkt bra startpunkt mer detaljerad och avancerade material i den här kontexten.
+Datavetare kan också dra nytta i det här dokumentet för att få en bättre förståelse för högnivåprocessen som enheter distributionen av en energi prognoser lösning. I den här kontexten den kan också användas för att upprätta en baslinje för bra och startpunkten för mer detaljerad och avancerade material.
 
 ### <a name="industry-trends"></a>Världen
-I hello senaste åren, IoT, alternativa energi och stordata ha en sammanfogad toocreate stora affärsmöjligheter hello verktyget och energi. Vid hello har samtidigt, hello verktyget och hello hela energi sektorer sett förbrukning förenkla med konsumenter krävande bättre sätt toocontrol användningen av energi.
+I de senaste åren har IoT, alternativa energi och stordata samman för att skapa stora möjligheter för verktyget och energi utrymme. Verktyget och hela energi sektorer har sett förbrukning förenkla med konsumenter krävande bättre sätt att kontrollera användningen av energi på samma gång.
 
-Många verktyg och smarta elbolag har pioneering hello [smart rutnätet](https://en.wikipedia.org/wiki/Smart_grid) genom att distribuera ett antal Använd fall som gör att användning av hello data som genereras av hello rutnätet. Många användningsområden omfångsfasen handlar om hello sina egenskaper elektricitet produktion: inte ackumulerade eller lagrade tagits ur bruk som inventering. Därför måste tillverkas är användas. Verktyg som vill toobecome effektivare måste tooforecast strömförbrukningen bara eftersom som ger dem större möjlighet för**balansera tillgång och efterfrågan**, vilket gör energi svinn **minska växthusgaser gas utsläpp**, och kontrollera kostnaden.
+Många verktyg och smarta elbolag pioneering den [smart rutnätet](https://en.wikipedia.org/wiki/Smart_grid) genom att distribuera ett antal Använd fall som gör att användning av data som genereras av rutnätet. Många användningsområden omfångsfasen handlar om elektricitet produktion sina egenskaper: inte ackumulerade eller lagrade tagits ur bruk som inventering. Därför måste tillverkas är användas. Verktyg som vill bli mer effektiv måste prognos strömförbrukningen bara eftersom som ger dem större möjlighet att **balansera tillgång och efterfrågan**, vilket gör energi svinn **minska växthusgaser gas utsläpp**, och kontrollera kostnaden.
 
-När man talar kostnader, finns det en annan viktig aspekt som är pris. Nya möjligheter tootrade power mellan verktyg har hämtat i en bra måste för**göra prognoser för framtida behov och framtida pris elektricitet**. Detta kan hjälpa företag att fastställa sina produktionsvolymer.
+När man talar kostnader, finns det en annan viktig aspekt som är pris. Nya möjligheter för handel mellan verktyg har hämtat i en bra måste **göra prognoser för framtida behov och framtida pris elektricitet**. Detta kan hjälpa företag att fastställa sina produktionsvolymer.
 
-När vi använder hello ordet ”smart' refererar vi faktiskt tooa rutnät som kan lära sig och sedan göra förutsägelser. Den kan förutsäga när ändringar i förbrukning samt **förutse tillfällig överbelastning situationer och justeras automatiskt för den**. Genom kontroll distans (med hello hjälp av dessa smarta mätare), kan lokaliserade överlagring situationer hanteras. **Genom att förutsäga först och sedan fungerar**, hello rutnätet gör själva smartare över tid.
+När vi använder ordet ”smart' refererar vi faktiskt till ett rutnät som kan lära sig och sedan göra förutsägelser. Den kan förutsäga när ändringar i förbrukning samt **förutse tillfällig överbelastning situationer och justeras automatiskt för den**. Genom kontroll distans förbrukning (med hjälp av dessa smarta mätare), kan lokaliserade överlagring situationer hanteras. **Genom att förutsäga först och sedan fungerar**, rutnätet gör själva smartare över tid.
 
-Hello resten av det här dokumentet fokuseras på en specifik familj av användningsområden som täcker Skapa prognoser för framtida, kortsiktiga och långsiktiga energiförbrukning. Vi har arbetat inom följande områden för några månader och har fått vissa kunskap och kunskaper som möjliggör tooproduce branschen klass resultat. Andra användningsfall omfattas samt i hello dokument i hello nära framtid.
+I resten av det här dokumentet fokuseras på en specifik familj av användningsområden som täcker Skapa prognoser för framtida, kortsiktiga och långsiktiga energiförbrukning. Vi har arbetat inom följande områden för några månader och har fått vissa kunskap och kunskaper som ger oss möjlighet att ge branschen klass resultat. Andra användningsfall beskrivs också i dokumentet inom en snar framtid.
 
 ## <a name="business-understanding"></a>Förståelse för verksamheten
 ### <a name="business-goals"></a>Affärsmål
-Hej **energi Demo** målet är toodemonstrate en typisk förutsägelseanalyser och maskininlärning lösning som kan distribueras i en mycket kort tidsperiod. Vår fokus är särskilt när du aktiverar energi begäran prognosen lösningar så att dess affärsvärde kan snabbt insåg och utnyttjas på. hello informationen i den här playbook hjälper hello kunden uppnå hello följande mål:
+Den **energi Demo** målet är att visa en typisk förutsägelseanalyser och maskininlärning lösning som kan distribueras i en mycket kort tidsperiod. Vår fokus är särskilt när du aktiverar energi begäran prognosen lösningar så att dess affärsvärde kan snabbt insåg och utnyttjas på. Med hjälp av informationen i det här playbook kan kunden uppnå följande mål:
 
-* Kort tid toovalue av machine learning baserad lösning
-* Möjlighet tooexpand en pilot Använd case tooother använda fall eller tooa bredare scope baserat på deras affärsbehov
+* Kort tid att värdet för maskininlärning baserad lösning
+* Möjligheten att expandera en pilot användningsfall till andra användningsfall eller en bredare omfattning baserat på deras affärsbehov
 * Snabbt få Cortana Intelligence Suite produktinformation
 
-Med dessa mål i åtanke syftar denna playbook till att leverera hello företag och teknisk kunskap som hjälper att uppnå dessa mål.
+Med dessa mål i åtanke syftar denna playbook till att leverera affärs- och teknisk kunskap som hjälper att uppnå dessa mål.
 
 ### <a name="power-load-and-demand-forecasting"></a>Power belastning och begäran prognoser
-Inom hello energi sektor, kan det finnas många sätt tillgång och efterfrågan prognoser kan hjälpa dig med allvarliga problem. I själva verket kan begäran prognoser ses hello grunden för många core användningsområden i hello bransch. I allmänhet Vi anser att två typer av energi begäran prognoser: kortsiktigt och långsiktigt. Var och en kan ett annat syfte och använda en annan metod. hello största skillnaden mellan hello två är hello prognoser horizon, vilket innebär att hello tidsintervall i hello framtida vi skulle prognos.
+Inom sektorn energiförbrukning, kan det finnas tillgång och efterfrågan prognoser kan hjälpa dig med allvarliga problem på många olika sätt. I själva verket kan begäran prognoser ses grunden för många core användningsområden i branschen. I allmänhet Vi anser att två typer av energi begäran prognoser: kortsiktigt och långsiktigt. Var och en kan ett annat syfte och använda en annan metod. Den största skillnaden mellan två är prognosmodellen horizon, vilket innebär att tidsintervallet för när vi skulle göra prognoser som i framtiden.
 
 #### <a name="short-term-load-forecasting"></a>Kort sikt belastningen prognoser
-Inom hello kontext av energiförbrukning definieras kort sikt ladda prognoser (STLF) som hello aggregerade belastning som prognostiserat i hello nära framtiden på olika delar av hello rutnätet (eller hello rutnät som helhet). I den här kontexten är kortvarigt definierade toobe tidsrymd inom hello 1 timme too24 timmar. I vissa fall kan också en horizon 48 timmar. Därför är STLF väldigt vanligt i drift fall av hello rutnät. Här följer några exempel på STLF drivs användningsområden:
+Inom ramen för energiförbrukning definieras kort sikt ladda prognoser (STLF) som aggregerade belastningen prognostiserat inom en nära framtid på olika delarna i rutnätet (eller rutnät som helhet). I den här kontexten definieras kortvarigt tidsrymd inom intervallet 1 timme till 24 timmar. I vissa fall kan också en horizon 48 timmar. Därför är STLF väldigt vanligt i en operativa användningsfall i rutnätet. Här följer några exempel på STLF drivs användningsområden:
 
 * Tillgång och efterfrågan belastningsutjämning
 * Stöd för energisparfunktioner handel
@@ -92,126 +92,126 @@ Inom hello kontext av energiförbrukning definieras kort sikt ladda prognoser (S
 * Identifiering av fel och avvikelseidentifiering
 * Utjämning av belastning/reducering 
 
-STLF modellen främst baseras på hello nära tidigare (sista dag eller vecka) uppgifter och Använd prognostiserat temperatur som en viktig ge prognoser. Hämta korrekt temperatur prognos hello nästa timma och uppåt too24 timmar blir mindre en utmaning nu dagar. Dessa modeller är mindre känsliga tooseasonal mönster eller trender för långsiktig användning.
+STLF modellen främst baseras på nära tidigare (sista dag eller vecka) uppgifter och Använd prognostiserat temperatur som en viktig ge prognoser. Att hämta korrekt temperatur för nästa timma och upp till 24 timmar blir mindre en utmaning nu dagar. Dessa modeller är mindre känsliga för säsongsbaserade mönster eller trender för långsiktig användning.
 
-SLTF lösningar är också troligt toogenerate stor volym med förutsägelse anrop (tjänstbegäranden) eftersom de är anropas timme och i vissa fall även med högre frekvens. Det är också mycket vanligt toosee implantation där varje enskild understation eller transformatorn representeras som en fristående modell och är därför hello volymen av begäranden för förutsägelse ännu större.
+SLTF lösningar sannolikt kommer att generera en stor volym med förutsägelse anrop (tjänstbegäranden) eftersom de är anropas timme och i vissa fall även med högre frekvens. Det är också mycket vanligt att implantation där varje enskild understation eller transformatorn representeras som en fristående modell och är därför volymen av begäranden för förutsägelse ännu större.
 
 #### <a name="long-term-load-forecasting"></a>Långsiktigt belastningen prognoser
-hello-målet på lång sikt belastningen prognoser (LTLF) är tooforecast power begäran med en tidsrymd som sträcker sig från 1 vecka toomultiple månader (och i vissa fall för ett antal år). Det här intervallet för horizon gäller främst för planering och investering användningsfall.
+Målet på lång sikt belastningen prognoser (LTLF) är att förutsäga power begäran med en tidsrymd mellan 1 vecka till flera månader (och i vissa fall för ett antal år). Det här intervallet för horizon gäller främst för planering och investering användningsfall.
 
-För långsiktig scenarier är det viktigt toohave hög kvalitet data som beskriver ett intervall av flera år (lägsta 3 år). Dessa modeller vanligtvis extraheras säsongsvärdet mönster från hello historiska data och använda externa predicators sådana som väder och klimatförändringar mönster.
+Beständigt scenarier är det viktigt att få hög kvalitet data som beskriver ett intervall av flera år (lägsta 3 år). Dessa modeller vanligtvis extraheras säsongsvärdet mönster från historiska data och använda externa predicators sådana som väder och klimatförändringar mönster.
 
-Det är viktigt tooclarify som hello längre hello prognoser horizon är hello mindre exakt hello prognos kanske. Det är därför viktigt tooproduce vissa förtroende intervall tillsammans med faktiska hello prognos som skulle låta människor toofactor hello möjliga variationen i sina planeringsprocessen.
+Det är viktigt att klargöra att ju längre tid den prognosmodellen är, desto mindre exakt kanske prognosen. Det är därför viktigt att skapa vissa förtroende intervall tillsammans med faktiska prognosen som skulle låta människor att dela upp möjliga variationen i sina planeringsprocessen.
 
-Eftersom hello förbrukningen för LTLF främst planering, kan vi räknar med mycket lägre förutsägelse volymer (som jämfört med tooSTLF). Vi skulle normalt finns dessa förutsägelser bädda in i visualiseringsverktyg som Excel eller PowerBI och skötas manuellt av användaren hello.
+Eftersom förbrukning scenario för LTLF främst planering, kan vi räknar med mycket lägre förutsägelse volymer (jämfört med STLF). Vi skulle normalt finns dessa förutsägelser bädda in i visualiseringsverktyg som Excel eller PowerBI och skötas manuellt av användaren.
 
 ### <a name="short-term-vs-long-term-prediction"></a>Kort sikt vs. Långsiktigt förutsägelse
-hello följande tabell jämförs STLF och LTLF i avseende toohello viktigaste attribut:
+I följande tabell jämförs STLF och LTLF i fråga om de viktigaste attribut:
 
 | Attribut | Kort sikt belastning vid en prognos | Långsiktigt belastningen prognos |
 | --- | --- | --- |
-| Prognos Horizon |1 timme too48 timmar |Från 1 too6 månader eller mer |
+| Prognos Horizon |Från 1 timme 48 timmar |Från 1 till 6 månader eller mer |
 | Data granularitet |Varje timme |Varje timme eller varje dag |
 | Vanliga användningsområden |<ul><li>/ Efterfrågan belastningsutjämning</li><li>Välj timme prognoser</li><li>Svaret på begäran</li></ul> |<ul><li>Långsiktigt planering</li><li>Rutnätet tillgångar planering</li><li>Resursplanering</li></ul> |
 | Vanliga predictors |<ul><li>Dag eller vecka</li><li>Timme på dagen</li><li>Varje timme temperatur</li></ul> |<ul><li>Månad</li><li>Dagen i månaden</li><li>Långsiktigt temperatur- och klimatförändringar</li></ul> |
-| Historiska dataintervall |Två toothree års data |Fem too10 års data |
+| Historiska dataintervall |Två till tre års data |Fem 10 års data |
 | Vanliga noggrannhet |MAPE * 5% eller lägre |MAPE * 25% eller lägre |
 | Prognosen frekvens |Varje timme eller var 24: e timme |Genereras när varje månad, kvartal eller år |
 
 \*[MAPE](https://en.wikipedia.org/wiki/Mean_absolute_percentage_error) – innebär genomsnittlig procent fel
 
-Kan ses från den här tabellen, är det mycket viktigt toodistinguish mellan hello kort och hello långsiktiga prognoser scenarier då dessa representerar olika affärsbehov och kan ha olika distribution och användningsmönster.
+Det är mycket viktigt att skilja mellan kort och lång sikt prognoser scenarier då dessa representerar olika affärsbehov och kan ha olika distribution och användningsmönster som kan ses från den här tabellen.
 
 ### <a name="example-use-case-1-esmart-systems--overload-optimization"></a>Exempel användningsfall 1: eSmart system – överlagring optimering
-En viktig roll i en [smart rutnätet](https://en.wikipedia.org/wiki/Smart_grid) är toodynamically och ständigt optimera och justera för hello ändra förbrukning mönster. Strömförbrukningen kan påverkas av kortsiktig ändringar som beror huvudsakligen på temperatur variationer (*t.ex.*, mer kraft används för luften villkors- eller uppvärmning). AT hello samma tid, power förbrukning påverkas även av långsiktiga trender. Dessa kan innehålla säsongsvärdet effekter, helgdagar, långsiktig förbrukning tillväxt och även ekonomiska faktorer, till exempel konsumenten index, olja pris och BNP.
+En viktig roll i en [smart rutnätet](https://en.wikipedia.org/wiki/Smart_grid) är att dynamiskt ständigt optimera och justera för ändra förbrukning mönster. Strömförbrukningen kan påverkas av kortsiktig ändringar som beror huvudsakligen på temperatur variationer (*t.ex.*, mer kraft används för luften villkors- eller uppvärmning). På samma gång påverkas också strömförbrukningen av långsiktiga trender. Dessa kan innehålla säsongsvärdet effekter, helgdagar, långsiktig förbrukning tillväxt och även ekonomiska faktorer, till exempel konsumenten index, olja pris och BNP.
 
-I det här fallet används [eSmart](http://www.esmartsystems.com/) vill toodeploy en molnbaserad lösning som gör att förutsäga hello benägenheten av en överlagring situation på alla angivna understation hello rutnätet. I synnerhet ville eSmart tooidentify omformarstationer som är sannolikt toooverload inom hello nästa timma, så en omedelbar åtgärd kan vidtas tooavoid eller lösa denna situation.
+I det här fallet används [eSmart](http://www.esmartsystems.com/) ville distribuera en molnbaserad lösning som gör att förutsäga benägenheten av en överlagring på alla angivna understation i rutnätet. I synnerhet ville eSmart identifiera omformarstationer som sannolikt kommer att överlagra inom nästa timma, så en omedelbar åtgärd kan vidtas för att undvika eller lösa denna situation.
 
 En korrekt och snabb göra förutsägelse kräver implementering av tre förutsägelsemodeller:
 
-* Långt termen modellen som aktiverar prognoser energiförbrukningen på varje understation under hello nästa några veckor eller månader
-* Kort sikt modellen som gör att förutsägelser av överlagring situationen på en viss understation under hello nästa timma
+* Lång sikt modellen som gör det möjligt att skapa prognoser för strömförbrukningen på varje understation under nästa några veckor eller månader
+* Kort sikt modellen som gör att förutsägelser av överlagring situationen på en viss understation under nästa timma
 * Temperatur-modell som ger prognoser för framtida temperatur över flera scenarier
 
-hello syftar hello långsiktiga modellen toorank hello omformarstationer av deras benägenheten toooverload (anges sin kapacitet för överföring av power) under hello nästa vecka eller månad. Detta gör att hello skapandet av en kort lista med omformarstationer som skulle användas som indata för hello kortsiktig förutsägelse. Som temperaturen är ett viktigt ge prognoser för långsiktig hello-modellen, finns en måste tooconstantly skapa flera scenariot temperatur införs och feed dem som indata till toohello långsiktiga modell. hello kortvarigt prognos anropas sedan toopredict vilka understation är sannolikt toooverload över hello nästa timma.
+Syftet med den långsiktiga modellen är att rangordnas omformarstationer av sina benägenheten för överlagring (beroende på deras Strömkapaciteten överföring) under nästa vecka eller månad. Detta gör att skapa en kort lista med omformarstationer som skulle användas som indata för kortsiktig förutsägelse. Temperatur är ett viktigt ge prognoser för långsiktig modellen, krävs en ständigt producera flera scenariot temperatur prognoser och feed dem som indata till långsiktig modellen. Kort sikt prognosen anropas sedan för att förutsäga vilken understation sannolikt kommer att överlagra under nästa timma.
 
-hello kort och lång sikt modeller distribueras separat per varje understation. Hello praktiska körning av dessa modeller kräver därför omfattande orchestration. varje timme på dagen hello dedikerade toogain högre förutsägelsefunktionen hello kort sikt en mer detaljerad modell. Dessa modeller utförs varje timme och slutför körs inom några minuter tooallow tillräcklig tid toorespond och vidta förebyggande åtgärder om det behövs. Den här samlingen av modeller hålls uppdaterad av periodiska via programmering med hjälp av hello senaste data.
+Kort och lång sikt modeller distribueras separat per varje understation. Praktiska körningen av dessa modeller kräver därför omfattande orchestration. En mer detaljerad modell är dedikerad för varje timme på dagen för att få högre förutsägelsefunktionen på kort sikt. Dessa modeller utförs varje timme och Slutför körning inom några minuter så att tillräckligt länge för att svara och vidta förebyggande åtgärder om det behövs. Den här samlingen av modeller hålls uppdaterad med periodiska omtränings den senaste informationen.
 
 Mer information om den här användningsfall hittar [här](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18945).
 
 #### <a name="use-case-qualification-criteria--prerequisites"></a>Använd Case kriterier – krav
-hello huvudsakliga styrkan hos Cortana Intelligence är kraftfull möjlighet toodeploy och skala machine learning central lösningar. Det är utformad toosupport tusentalsavgränsare i förutsägelser som körs samtidigt. Kan anpassas automatiskt toomeet ett ändra förbrukning mönster. Det är därför en lösning fokus på beräkningar prestanda. Till exempel är ett verktyg för företag intresserad av att producera korrekta energiförbrukning för hello nästa timma och för varje timme på dagen hello. Hej på andra sidan, vi vill mindre besvaras hello frågan om varför hello-begäran är förväntade toobe (hello modellen själva ta hand om).
+Huvudsakliga styrkan hos Cortana Intelligence har kraftfulla möjligheten att distribuera och skalanpassa machine learning central lösningar. Det är utformat för att stödja tusentalsavgränsare förutsägelser som körs samtidigt. Det kan automatiskt anpassas efter ett ändra förbrukning mönster. Det är därför en lösning fokus på beräkningar prestanda. Till exempel är ett verktyg för företag intresserad av att producera korrekta energiförbrukning för nästa timma och för varje timme på dagen. Å andra sidan vi är mindre intresserade besvaras av varför efterfrågan prognoser att vara som den är (modellen själva ta hand om).
 
-Det är därför viktigt toorealize att inte alla användningsfall och företagsproblem kan lösas effektivt använder maskininlärning.
+Det är därför viktigt att tänka på att inte alla användningsfall och företagsproblem kan lösas effektivt använder maskininlärning.
 
-Cortana Intelligence och maskininlärning kan vara mycket effektivt lösa affärsproblem angivna när hello följande villkor är uppfyllda:
+Cortana Intelligence och maskininlärning kan vara mycket effektivt lösa affärsproblem angivna när följande villkor är uppfyllda:
 
-* hello affärsproblem i hand är **förutsägande** till sin natur. En förutsägbar användning case exempel är ett verktyg för företag som vill toopredict power belastningen på en viss understation under hello nästa timma. Hej på andra sidan, analysera och rangordning drivrutiner historiska behovet att **beskrivande** natur och därför mindre tillämplig.
-* Det finns en Rensa **sökvägen för åtgärden** toobe tas en gång hello förutsägelse är tillgänglig. Till exempel kan att förutsäga en överlagring på en understation under hello nästa timma utlösa en proaktiv åtgärd för att minska belastning som är associerad med den understation och vilket potentiellt gör en överlagring.
-* hello användningsfall representerar en **vanliga typ av problem** så att när löst kan det få hello sätt toosolving andra liknande användningsfall.
-* hello-kund kan ange **kvantitativa och kvalitativa mål** toodemonstrate en för lyckad lösningsimplementering. Till exempel ett bra kvantitativt mål för energi begäran prognos skulle vara hello krävs noggrannhet tröskelvärdet (*t.ex.*, in too5% fel tillåts) eller när förutsäga understation överlagring sedan hello precision (antal true positiva identifieringar) och återkalla (omfattningen av SANT positiva identifieringar) ska vara överskrider ett visst tröskelvärde. Dessa mål måste härledas från hello kundens affärsmål.
-* Det finns en Rensa **integrering scenariot** med hello företagets business arbetsflöde. Hello understation belastningen prognos kan till exempel integreras i hello rutnätet kontrollen tooallow överlagring förebyggande aktiviteter.
-* hello kunden har redo toouse **data med tillräckligt hög kvalitet** toosupport hello användningsfall (se mer i hello nästa avsnitt, **Data Quality**, för den här playbook).
-* Hej kunden omfattar central data molnarkitektur eller **molnbaserade maskininlärning**, inklusive Azure ML och andra komponenter i Cortana Intelligence Suite.
-* hello kunden är villigt tooestablish **dataflöde en end tooend** att verksamhet hello överföringen av data i hello moln kontinuerligt och är villigt för**operationalisera** hello lösning.
-* hello kunden är redo för**dedikerar resurser** som kommer att aktiverats och blivit engagerade vid första pilotprojekt hello-implementeringen så att kunskap och ägare av hello-lösning kan överföras toohello kunden vid lyckades slutförande.
-* hello kunden resursen ska vara en **skicklig data professional**, helst en data-forskare.
+* Problem i verksamheten i hand är **förutsägande** till sin natur. En förutsägbar användning case exempel är ett verktyg för företag som vill förutsäga power belastningen på en viss understation under nästa timma. Å andra sidan, analysera och betygsätta drivrutiner till historiska begäran skulle vara **beskrivande** natur och därför mindre tillämplig.
+* Det finns en Rensa **sökvägen för åtgärden** som ska vidtas när förutsägelser är tillgänglig. Till exempel kan att förutsäga en överlagring på en understation under nästa timma utlösa en proaktiv åtgärd för att minska belastning som är associerad med den understation och vilket potentiellt gör en överlagring.
+* Användningsfallet representerar en **vanliga typ av problem** så att när löst den kan kunna få till följd att lösa andra liknande användningsfall.
+* Kunden kan ange **kvantitativa och kvalitativa mål** att visa en lyckad lösningsimplementering. Till exempel ett bra kvantitativt mål för energi begäran prognos skulle vara nödvändiga noggrannhet tröskelvärdet (*t.ex.*, upp till 5% fel tillåts) eller när förutsäga understation överlagra sedan precision (antal true positiva identifieringar) och återkalla (omfattningen av SANT positiva identifieringar) ska vara överskrider ett visst tröskelvärde. Dessa mål måste härledas från kundens affärsmål.
+* Det finns en Rensa **integrering scenariot** med företagets business arbetsflöde. Till exempel kan understation belastningen prognosen integreras i rutnätet kontrollcenter att överlagring förebyggande aktiviteter.
+* Kunden har klart att använda **data med tillräckligt hög kvalitet** att stödja användningsfallet (finns i nästa avsnitt, **Data Quality**, för den här playbook).
+* Kunden omfattar cloud central data arkitektur eller **molnbaserade maskininlärning**, inklusive Azure ML och andra komponenter i Cortana Intelligence Suite.
+* Kunden är villigt att upprätta **en slutpunkt till slutpunkt dataflöde** som verksamhet distribution av data i molnet på kontinuerligt och är villigt att **operationalisera** lösningen.
+* Kunden är redo att **dedikerar resurser** som ska vara aktivt ägnar åt vid den första pilotprojekt implementeringen så att kunskap och ägarskap för lösningen kan överföras till kunden vid slutförande.
+* Kunden resursen ska vara en **skicklig data professional**, helst en data-forskare.
 
-Kriteriet av användningsfall baserat på hello villkoren ovan kan avsevärt förbättra hello slutförandefrekvenser för användningsfall och upprätta en bra beachhead för hello implementering för framtida användning.
+Kriteriet av användningsfall baserat på ovanstående villkor kan kraftigt förbättra slutförandefrekvenser för användningsfall och upprätta en bra beachhead för implementeringen av framtida användningsområden.
 
 ### <a name="cloud-based-solutions"></a>Molnbaserade lösningar
-Cortana Intelligence Suite i Azure är en integrerad miljö som finns i hello molnet. hello distribution av en lösning för avancerade analyser i en molnmiljö innehåller betydande fördelar för företag och på hello samtidigt kan innebära stor förändring för företag att fortfarande använda lokala IT-lösningar. Inom hello energisektorn finns en tydlig trend över stegvis migrering av åtgärder i hello moln. Denna trend går hand i hand tillsammans med hello utvecklingen av hello smart rutnät som beskrivs ovan, i **världen**. Den här playbook fokuserar på en molnbaserad lösning i hello energi domän, är det viktigt tooexplain hello fördelar och andra överväganden för att distribuera en molnbaserad lösning.
+Cortana Intelligence Suite i Azure är en integrerad miljö som finns i molnet. Distributionen av en lösning för avancerade analyser i en molnmiljö innehåller betydande fördelar för företag och samtidigt kan innebära stor förändring för företag att fortfarande använda lokala IT-lösningar. Inom sektorn energiförbrukning finns en tydlig trend över stegvis migrering av åtgärder i molnet. Denna trend går hand i hand tillsammans med utvecklingen av smart rutnätet som beskrivs ovan, i **världen**. Eftersom den här playbook fokuserar på en molnbaserad lösning i domänen energiförbrukning, är det viktigt att förklarar fördelarna och andra överväganden för att distribuera en molnbaserad lösning.
 
-Kanske är hello största fördelen med en molnbaserad lösning hello kostnaden. Som en lösning använder molnet distribuerade komponenter, det finns ingen direktkostnader eller kostnad för sålda varor (kostnader för sålda varor) Komponentkostnader som är kopplade till den. Det innebär att det finns inget behov av tooinvest av maskinvara, programvara och IT-underhåll och det finns därför en betydande minskning av företag risk.
+Kanske är den största fördelen med en molnbaserad lösning kostnaden. Som en lösning använder molnet distribuerade komponenter, det finns ingen direktkostnader eller kostnad för sålda varor (kostnader för sålda varor) Komponentkostnader som är kopplade till den. Det innebär att det behövs ingen ska investera i maskinvara, programvara och IT-underhåll och det finns därför en betydande minskning av företag risk.
 
-En annan viktig fördel är hello betalning per användning kostnaden strukturen för molnbaserade lösningar. Molnbaserad servrar för datoranvändning eller lagring kan distribueras och skalas på en just-efter behov. Detta representerar hello kostnaden effektivitet nytta av en molnbaserad lösning.
+En annan viktig fördel är strukturen betalning per användning kostnaden för molnbaserade lösningar. Molnbaserad servrar för datoranvändning eller lagring kan distribueras och skalas på en just-efter behov. Detta motsvarar kostnaden effektivitet fördelen med en molnbaserad lösning.
 
-Slutligen är det inget behov av att investera i IT-underhåll eller för framtida infrastrukturutveckling, eftersom detta är en del av hello molnbaserat erbjudande. toothat utsträckning, Cortana Intelligence Suite innehåller hello bäst i klassen tjänster och dess översikt över håller utvecklas. Nya funktioner, komponenter och funktioner introduceras hela tiden och utvecklas.
+Slutligen behövs det ingen investera i IT-underhåll eller för framtida infrastrukturutveckling, eftersom detta är en del av molnbaserat erbjudande. I den utsträckning Cortana Intelligence Suite innehåller bäst i klassen services och dess översikt över håller utvecklas. Nya funktioner, komponenter och funktioner introduceras hela tiden och utvecklas.
 
-För ett företag som precis har startats dess övergång i hello moln rekommenderar hög vi tootake en stegvis metod genom att implementera ett moln migrering översikt över. Vi tror att hello användningsområden som beskrivs i den här playbook representerar en utmärkt möjlighet för testkörning förutsägelseanalyslösningar i molnet hello för verktyg och företag i hello energi domän.
+För ett företag som precis har startats dess övergång till molnet, rekommenderar vi starkt för att vidta en stegvis metod genom att implementera ett moln migrering översikt över. Vi tror att användningsområden som beskrivs i den här playbook för verktyg och företag i domänen energi representerar en utmärkt möjlighet för testkörning förutsägelseanalyslösningar i molnet.
 
 #### <a name="business-case-justification-considerations"></a>Business-Case motivering överväganden
-I många fall kan hello kund vara intresserad av att göra en motivering för ett givet användningsfall där en molnbaserad lösning och Machine Learning är viktiga komponenter. Till skillnad från en lokal lösning i hello fallet med en molnbaserad lösning hello summa kostnad komponenten är minimal och de flesta hello kostnadselement är associerad med den faktiska användningen. När det gäller toodeploying en energi prognoser lösning på Cortana Intelligence Suite kan flera tjänster integreras med en enda gemensam kostnadsstruktur. Exempelvis databaser (*t.ex.*, SQL Azure) kan vara används toostore hello rådata och sedan för hello faktiska införs Azure ML är används toohost hello prognoser tjänster. I det här exemplet kan hello kostnad struktur omfatta lagring och komponenter.
+Kunden kan vara intresserad av att göra en motivering för ett givet användningsfall där en molnbaserad lösning och Machine Learning är viktiga komponenter i många fall. Till skillnad från en lokal lösning för en molnbaserad lösning komponenten summa kostnaden är minimal och de flesta element kostnader som är associerade med faktiska användningen. När det gäller att distribuera en energi prognoser lösning på Cortana Intelligence Suite kan flera tjänster integreras med en enda gemensam kostnadsstruktur. Exempelvis databaser (*t.ex.*, SQL Azure) kan användas för lagring av rådata och för den faktiska införs Azure ML används som värd för prognosmodellen tjänsterna. I det här exemplet kan kostnaden strukturen omfatta lagring och komponenter.
 
-På hello däremot bör ett ha en god förståelse av hello affärsvärde drift ett energiförbrukning prognoser (kort eller lång sikt). I själva verket är det viktigt toorealize hello affärsvärde för varje prognosen åtgärd. Till exempel korrekt prognoser power belastning för hello nästkommande 24 timmar kan förhindra overproduction eller kan förhindra överlagringar på hello rutnätet och detta kan vara möjligt vad gäller finansiella besparingar dagligen.
+Å andra sidan bör ett ha en god förståelse av affärsvärde drift ett energiförbrukning prognoser (kort eller lång sikt). I själva verket är det viktigt att Observera värdet av varje prognosen åtgärd. Till exempel korrekt Prognosticering power belastningen för det närmaste dygnet kan förhindra overproduction eller kan förhindra överlagringar i rutnätet och det kan vara möjligt vad gäller finansiella besparingar dagligen.
 
-En grundläggande formel för beräkning av hello finansiella fördelen begäran prognos lösning är: ![grundläggande formel för beräkning av hello finansiella fördelen begäran prognos lösning](media/cortana-analytics-playbook-demand-forecasting-energy/financial-benefit-formula.png)
+En grundläggande formel för beräkning av ekonomiska fördelen att begäran prognos lösning är: ![grundläggande formel för beräkning av ekonomiska fördelen att begäran prognos lösning](media/cortana-analytics-playbook-demand-forecasting-energy/financial-benefit-formula.png)
 
-Eftersom Cortana Intelligence Suite ger en betalning per användning prismodellen så behövs det ingen medför en fast kostnad komponenten toothis formel. Den här formeln kan beräknas för varje dag, varje månad eller årlig.
+Eftersom Cortana Intelligence Suite ger en betalning per användning prismodellen så behövs det ingen medför en fast kostnadskomponent på den här formeln. Den här formeln kan beräknas för varje dag, varje månad eller årlig.
 
 Aktuella Cortana Intelligence Suite och Azure ML prissättning finns [här](http://azure.microsoft.com/pricing/details/machine-learning/).
 
 ### <a name="solution-development-process"></a>Lösning utvecklingsprocessen
-Hej utvecklingscykeln av en energiförbrukning prognoser lösningen innebär vanligtvis 4 faser, som vi göra utnyttjar molnbaserad teknik och tjänster inom hello Cortana Intelligence Suite.
+Utvecklingscykel för av en energiförbrukning prognoser lösningen innebär vanligtvis 4 faser, som vi göra utnyttjar molnbaserad teknik och tjänster i Cortana Intelligence Suite.
 
-Detta illustreras i följande diagram hello:
+Detta illustreras i följande diagram:
 
 ![Smart rutnätet cykel](media/cortana-analytics-playbook-demand-forecasting-energy/smart-grid-cycle.png)
 
-hello följande stycke beskrivs processen steg 4:
+Följande punkt beskrivs processen steg 4:
 
-1. **Datainsamling** – alla avancerade analyser baserade lösningen är beroende av data (se **Data förstå**). Mer specifikt när det gäller toopredictive analyser och prognoser vi förlitar sig på pågående, dynamiska flödet av data. Hello gäller energi begäran prognoser, dessa data kan hämtas direkt från smart mätare eller aggregeras redan på en lokal databas. Vi använder sig också av andra externa datakällor, till exempel väder och temperatur. Den här pågående flödet av data måste styrd, schemalagd och lagras. [Azure Data Factory](http://azure.microsoft.com/services/data-factory/) (ADM) är vår huvudsakliga bestämmer hög grad för att utföra den här uppgiften.
-2. **Modeling** – för korrekt och tillförlitlig energi prognoser en utveckla (tåg) och upprätthålla en bra modell som möjliggör användning av hello historiska data och extrakt hello beskrivande och förutsägbara mönster i hello data. hello område för Machine Learning (ML) har växt snabbt med mer avancerade algoritmer utvecklas regelbundet. Azure ML Studio ger en bättre användarupplevelse som hjälper till att använda hello mest avancerade algoritmer ML inom en fullständig arbetsflöde. Det här arbetsflödet illustreras i en intuitiv flödesdiagram och innehåller hello förberedelse av data, funktionen extrahering, modellering och utvärdering av modellen. hello användare kan dra på hundratals olika modeller som ingår i den här miljön. Hello slutet av den här fasen har en data-forskare en aktiv-modell som har utvärderats och är klar för distribution.
+1. **Datainsamling** – alla avancerade analyser baserade lösningen är beroende av data (se **Data förstå**). Mer specifikt när det gäller att förutsägelseanalyser och skapa prognoser vi förlitar sig på pågående, dynamiska flödet av data. När det gäller energi prognoser för begäran, dessa data kan hämtas direkt från smart mätare eller aggregeras redan på en lokal databas. Vi använder sig också av andra externa datakällor, till exempel väder och temperatur. Den här pågående flödet av data måste styrd, schemalagd och lagras. [Azure Data Factory](http://azure.microsoft.com/services/data-factory/) (ADM) är vår huvudsakliga bestämmer hög grad för att utföra den här uppgiften.
+2. **Modeling** – för korrekt och tillförlitlig energi prognoser en utveckla (tåg) och upprätthålla en bra modell som gör använder av historiska data och extraherar meningsfull och förutsägbara mönster i data. Området för Machine Learning (ML) har växt snabbt med mer avancerade algoritmer utvecklas regelbundet. Azure ML Studio ger en bättre användarupplevelse som hjälper till att använda de mest avancerade algoritmerna ML inom en fullständig arbetsflöde. Det här arbetsflödet illustreras i en intuitiv flödesdiagram och innehåller förberedelse av data, funktionen extrahering, modellering och utvärdering av modellen. Användaren kan dra på hundratals olika modeller som ingår i den här miljön. I slutet av den här fasen har en data-forskare en aktiv-modell som har utvärderats och är klar för distribution.
    
-   följande diagram hello är en illustration av ett vanligt arbetsflöde:
+   Följande diagram är en illustration av ett vanligt arbetsflöde:
    
    ![Modellera arbetsflödet](media/cortana-analytics-playbook-demand-forecasting-energy/modeling-workflow.png)
-3. **Distribution** – med en aktiv-modell, hello nästa steg är distribution. Här omvandlas hello modellen till en webbtjänst som Exponerar en RESTful-API som kan anropas samtidigt över hello Internet från olika klienter för användning. Azure ML ger ett enkelt sätt att distribuera en modell direkt från hello Azure ML Studio med ett enda klick på en knapp. hello hela distributionsprocessen sker under huven hello. Den här lösningen kan anpassas automatiskt toomeet hello krävs förbrukning.
-4. **Förbrukning** – i det här steget ska vi faktiskt göra användning av hello prognoser modellen tooproduce förutsägelser. hello förbrukningen kan köras från en användarprogram (*t.ex.*, instrumentpanel) eller direkt från ett system som fungerar som/efterfrågan NLB system eller en lösning för optimering av rutnätet. Flera användningsområden kan köras från en modell.
+3. **Distribution** – med en aktiv-modell i nästa steg är distributionen. Här omvandlas modellen till en webbtjänst som Exponerar en RESTful-API som kan anropas samtidigt från olika förbrukning klienter via Internet. Azure ML ger ett enkelt sätt att distribuera en modell direkt från Azure ML Studio med ett enda klick på en knapp. Hela distributionsprocessen sker under huven. Den här lösningen kan anpassas automatiskt för att uppfylla nödvändiga förbrukningen.
+4. **Förbrukning** – i det här steget ska vi faktiskt göra för att producera förutsägelser i prognosmodellen. Förbrukningen kan köras från en användarprogram (*t.ex.*, instrumentpanel) eller direkt från ett system som fungerar som/efterfrågan NLB system eller en lösning för optimering av rutnätet. Flera användningsområden kan köras från en modell.
 
 ## <a name="data-understanding"></a>Förstå data
-Efter täcker hello business överväganden (se **företag att förstå**) en efterfrågan på energi prognoser lösning, vi är nu redo toodiscuss hello datadel. Alla förutsägelseanalys är beroende av tillförlitliga data. För energi prognoser för begäran, vi förlitar sig på av historiska förbrukningsdata med olika detaljnivåer. Den historiska data används som hello raw material. Den kommer att göras en noggrann analys i vilken hello data forskare identifierar predictors (även hänvisade tooas funktioner) som kan placeras i en modell som slutligen skapar prognoser hello krävs.
+Efter täcker business överväganden (se **företag att förstå**) en efterfrågan på energi prognoser lösning, vi är nu redo att diskutera datadel. Alla förutsägelseanalys är beroende av tillförlitliga data. För energi prognoser för begäran, vi förlitar sig på av historiska förbrukningsdata med olika detaljnivåer. Den historiska data används som raw materialet. Den kommer att göras en noggrann analys där data forskare identifierar predictors (kallas även funktioner) som kan placeras i en modell som slutligen genererar krävs prognoser.
 
-I hello resten av det här avsnittet, kommer vi beskriver hello olika åtgärder och överväganden för att förstå hello data och hur toobring den tooa användbart format.
+I resten av det här avsnittet beskriver vi olika åtgärder och överväganden för att förstå data och hur du gör ett användbart format.
 
-### <a name="hello-model-development-cycle"></a>hello modellen utvecklingscykeln
-Produktion av bra prognoser modeller kräver vissa förberedelser för noggrann planering och. Bryta ned hello modellera processen i flera steg och fokuserar på ett steg i taget kan kraftigt förbättra hello resultatet av hello hela processen.
+### <a name="the-model-development-cycle"></a>Utvecklingscykeln modellen
+Produktion av bra prognoser modeller kräver vissa förberedelser för noggrann planering och. Bryta ned modelleringsprocessen i flera steg och fokuserar på ett steg i taget kan kraftigt förbättra resultatet av hela processen.
 
-hello följande diagram illustrerar hur hello modellera processen kan delas upp i flera steg:
+Följande diagram illustrerar hur modelleringsprocessen kan delas upp i flera steg:
 
 ![Modellen utvecklingscykeln](media/cortana-analytics-playbook-demand-forecasting-energy/model-development-cycle.png)
 
-Som kan ses hello cykeln består av sex steg:
+Som framgår cykeln består av sex steg:
 
 * Problemet formulering
 * Datapåfyllning och datagranskning
@@ -220,37 +220,37 @@ Som kan ses hello cykeln består av sex steg:
 * Modellen utvärdering
 * Utveckling
 
-I hello resten av det här avsnittet beskriver vi hello enskilda steg och tooconsider objekt i varje steg.
+I resten av det här avsnittet beskriver vi enskilda stegen och sakerna att tänka på vid varje steg.
 
 ### <a name="problem-formulation"></a>Problemet formulering
-Vi kan överväga hello problemet formulering hello viktigaste steg ett behov tootake tidigare tooimplementing alla förutsägelseanalys. Vi skulle här transformeringen hello affärsproblem och dela upp den toospecific element som kan lösas med hjälp av data och modellering tekniker. Detta är ett bra tooformulate hello problem som en uppsättning frågor som vi vill gärna tooanswer. Här följer några möjliga frågor som kan användas inom hello omfång energi begäran prognoser:
+Vi kan du överväga att problemet formulering som mest kritiska steg måste du vidta innan du implementerar en förutsägelseanalys. Vi skulle här transformeringen problem i verksamheten och dela upp det specifika element som kan lösas med hjälp av data och modellering tekniker. Det är en bra idé att formulera problemet som en uppsättning frågor som vi vill att svara. Här följer några möjliga frågor som kan användas inom omfånget för energi begäran prognoser:
 
-* Vad är hello förväntade belastningen på en enskild understation i hello nästa timmar eller dagar?
-* Vid vilken tid på dagen hello min rutnät får belastning begäran?
-* Hur troligt är min rutnätet toosustain hello förväntad belastning?
-* Hur mycket energi bör hello power station generera under varje timme på dagen hello?
+* Vad är den förväntade belastningen på en enskild understation nästa timmar eller dagar?
+* Vid vilken tidpunkt på dagen min rutnät får belastning begäran?
+* Hur troligt är min rutnätet för att hantera förväntad belastning?
+* Hur mycket energi bör power station generera under varje timme på dagen?
 
-Utformningen av dessa frågor kan vi toofocus på komma hello rätt data och implementera en lösning som är fullständigt justerad med hello affärsproblem till hands. Dessutom kan vi ange vissa viktiga mått som ger oss tooevaluate hello prestanda för hello modellen. Till exempel hur exakt bör hello prognos vara och vad är hello antal fel som är godkända av hello företag?
+Utformningen av dessa frågor kan vi fokusera på att få rätt data och implementera en lösning som är fullständigt justerad med affärsproblem till hands. Dessutom kan vi ange vissa viktiga mått som ger oss möjlighet att utvärdera modellen. Till exempel hur exakt prognosen ska och vad är intervallet för fel som är godkända av företaget?
 
 ### <a name="data-sources"></a>Datakällor
-hello moderna smart rutnätet samlar in data från olika delar och komponenter i hello rutnätet. Dessa data representerar olika aspekter av hello igen och hello användning av hello power rutnätet. Vi är att begränsa hello diskussion om datakällor som visar hello faktiska begäran förbrukning inom hello omfattning hello energiförbrukning prognos. En viktig källa för energiförbrukning är smart mätare. Verktyg runt hello världen distribuerar snabbt smart mätare för sina kunder. Smart mätare registrera hello faktiska energiförbrukningen och ständigt vidarebefordra data tillbaka toohello för företaget. Data samlas in och skickas tillbaka på ett fast intervall mellan timmen too1 5 minuter. Mer avancerade smart mätare programmerad via fjärranslutning toocontrol och balans hello faktisk förbrukning inom ett hushåll. Smart mätaren data är relativt tillförlitlig och innehåller en tidsstämpel. Det gör en viktig beståndsdel för begäran vid en prognos. Mätaren data kan sammanställas (samlade in) på olika nivåer inom hello rutnätet topologi: transformatorn, understation, region, *etc*. Vi kan sedan välja hello krävs aggregering nivå toobuild en prognosmodell för den. Till exempel om hello för företag skulle som tooforecast framtida belastning på var och en av dess rutnätet omformarstationer kan sedan alla mätare data sammanställs för varje enskild understation och används som indata för hello prognoser modellen. Vi refererar toosmart mätare som en intern datakälla.
+Moderna smart rutnätet samlar in data från olika delar och komponenter i rutnätet. Dessa data representerar olika aspekter av åtgärden och användning av power rutnätet. Vi är att begränsa diskussion om datakällor som motsvarar den faktiska begärd förbrukningen inom omfånget för energiförbrukning prognos. En viktig källa för energiförbrukning är smart mätare. Verktyg över hela världen distribuerar snabbt smart mätare för sina kunder. Smart mätare registrera den faktiska strömförbrukningen och ständigt relä informationen tillbaka till verktyget företaget. Data samlas in och skickas tillbaka på ett fast intervall mellan var 5: e minut och 1 timme. Mer avancerade smart mätare kan via fjärranslutning vara programmerad att styra och balansera faktisk förbrukning inom ett hushåll. Smart mätaren data är relativt tillförlitlig och innehåller en tidsstämpel. Det gör en viktig beståndsdel för begäran vid en prognos. Mätaren data kan sammanställas (samlade in) på olika nivåer i rutnätet topologin: transformatorn, understation, region, *etc*. Vi kan sedan välja nivån aggregering krävs att skapa en prognosmodell för den. Till exempel om verktyget företaget vill göra prognoser för framtida belastningen på var och en av dess rutnätet omformarstationer kan sedan alla mätare data därefter för varje enskild understation och används som indata för prognosmodellen. Vi kallar smart mätare en intern datakälla.
 
-En tillförlitlig energi begäran prognos förlitar sig även på andra externa datakällor. En viktig faktor som påverkar strömförbrukningen är hello väder- eller mer exakt hello temperatur. Historiska data visar stark korrelation mellan utanför temperatur- och strömförbrukning. Under varm sommar dagar användare se sina luftkonditionering och under hello vinter slå på systemet. En pålitlig källa för historiska temperaturer på hello rutnätet plats är därför nyckel. Dessutom vi också förlitar sig på rättvisande prognos av temperatur som en ge prognoser energiförbrukningen.
+En tillförlitlig energi begäran prognos förlitar sig även på andra externa datakällor. En viktig faktor som påverkar strömförbrukningen är väder eller mer exakt temperatur. Historiska data visar stark korrelation mellan utanför temperatur- och strömförbrukning. Under varm sommar dagar användare se sina luftkonditionering och under vinter power på systemet. En pålitlig källa för historiska temperaturer på rutnätet plats är därför nyckel. Dessutom vi också förlitar sig på rättvisande prognos av temperatur som en ge prognoser energiförbrukningen.
 
 Andra externa datakällor kan också skapa energi begäran prognosmodeller. Dessa kan innehålla långsiktiga klimatförändringar ändringar, ekonomiska index (*t.ex.*, BNP), med mera. I det här dokumentet innehåller vi inte dessa andra datakällor.
 
 ### <a name="data-structure"></a>Datastruktur
-När du identifierar hello krävs datakällor, skulle vi som tooensure att rådata som har samlats in innehåller hello rätta datafunktioner. toobuild en tillförlitlig begäran prognosmodell måste vi skulle tooensure som hello data som samlas in innehåller dataelement som kan hjälpa dig att förutsäga framtida hello-begäran. Här följer några grundläggande kraven hello datastruktur (schema) för hello rådata.
+När du har identifierat de nödvändiga datakällorna vill vi se till att rådata som har samlats in innehåller korrekta data-funktioner. För att skapa en tillförlitlig begäran prognosmodell behöver vi säkerställa att insamlade data innehåller dataelement som kan hjälpa dig att förutsäga framtida behovet. Här följer några grundläggande kraven datastruktur (schema) av rådata.
 
-hello rådata består av rader och kolumner. Varje mått representeras som en enda rad med data. Varje rad med data innehåller flera kolumner (även hänvisade tooas funktioner eller fält).
+Rådata består av rader och kolumner. Varje mått representeras som en enda rad med data. Varje rad med data innehåller flera kolumner (även kallat funktioner eller fält).
 
-1. **Tidsstämpeln** – hello tidsstämpelsfält representerar hello faktiska tid när hello mätning registrerades. Det måste uppfylla något av hello vanliga datum/tid-format. Både datum och tid delar ska tas med. I de flesta fall det behövs ingen för hello tid toobe registreras hello andra nivå. Det är viktigt toospecify hello tidszon som hello data registreras.
-2. **Läsa ID** -fältet identifierar hello mätaren eller hello mätning enhet. Det är en kategoriska variabel och kan vara en kombination av siffror och tecken.
-3. **Värdet för förbrukning** – detta är hello faktisk förbrukning vid ett angivet datum/tid. hello förbrukningen kan mätas i kWh (kilowatt-hour) eller andra önskade enheter. Det är viktigt toonote som hello måttenhet måste vara konsekvent över alla mått i hello data. I vissa fall kan förbrukning gav över 3 power faser. I så fall skulle måste toocollect alla hello oberoende förbrukning faser.
-4. **Temperatur** – hello temperatur vanligtvis samlas in från en oberoende källa. Det bör dock vara kompatibel med hello förbrukningsdata. Den ska innehålla en tidsstämpel som beskrivs ovan, så att programmet toobe synkroniseras med hello faktisk förbrukningsdata. hello temperatur värdet kan anges i grader eller Fahrenheit men ska vara konsekvent över alla mått.
-5. **Plats –** hello Platsfältet associeras vanligtvis med hello plats där hello temperatur data har samlats in. Det kan representeras som en zip-nummer eller latituden/longitud (lat/långt)-format.
+1. **Tidsstämpeln** – tidsstämpelfältet motsvarar den faktiska tiden när mätningen registrerades. Det måste uppfylla något av de vanliga datum/tid-format. Både datum och tid delar ska tas med. I de flesta fall behövs det ingen tid registreras till andra nivå av granularitet. Det är viktigt att ange den tidszon som data registreras.
+2. **Läsa ID** -fältet identifierar mätaren eller mätning enheten. Det är en kategoriska variabel och kan vara en kombination av siffror och tecken.
+3. **Värdet för förbrukning** – detta är den faktiska förbrukningen på ett angivet datum/tid. Förbrukningen kan mätas i kWh (kilowatt-hour) eller andra önskade enheter. Det är viktigt att notera att måttenheten måste vara konsekvent över alla mått i data. I vissa fall kan förbrukning gav över 3 power faser. I så fall behöver vi samla in alla oberoende förbrukning faser.
+4. **Temperatur** – temperaturen vanligtvis samlas in från en oberoende källa. Det bör dock vara kompatibel med förbrukningsdata. Den ska innehålla en tidsstämpel som beskrivs ovan som gör att den synkroniseras med faktisk förbrukningsdata. Temperatur-värdet kan anges i grader eller Fahrenheit men ska vara konsekvent över alla mått.
+5. **Plats –** Platsfältet är vanligtvis kopplad till den plats där temperatur data har samlats in. Det kan representeras som en zip-nummer eller latituden/longitud (lat/långt)-format.
 
-hello följande tabeller visar exempel på ett bra förbrukning och temperatur dataformat:
+Följande tabeller visar exempel på ett bra förbrukning och temperatur dataformat:
 
 | **Datum** | **Tid** | **Mätaren ID** | **Fas 1** | **Fas 2** | **Fas 3** |
 | --- | --- | --- | --- | --- | --- |
@@ -264,140 +264,140 @@ hello följande tabeller visar exempel på ett bra förbrukning och temperatur d
 | 7/1/2015 |10:00:01 |11242 |24.4 |
 | 7/1/2015 |10:00:02 |11242 |24.5 |
 
-Som visas ovan, innehåller det här exemplet 3 olika värden för användning som är associerade med 3 power faser. Observera också att hello datum och tid fälten avgränsas, men de kan också slås samman till en kolumn. I det här fallet representeras hello plats kolumn i en formatet 5-siffriga postnummer och hello temperatur i grader Celsius format.
+Som visas ovan, innehåller det här exemplet 3 olika värden för användning som är associerade med 3 power faser. Observera också att datum och tid fälten avgränsas, men de kan också slås samman till en kolumn. I det här fallet representeras kolumnen plats i formatet 5-siffriga postnummer och temperatur i grader Celsius format.
 
 ### <a name="data-format"></a>Dataformatet
-Cortana Intelligence Suite kan stödja hello vanligaste dataformat som CSV, TVS, JSON, *etc*. Det är viktigt att hello dataformat hålls konsekvent för hello hela livscykeln för hello-projekt.
+Cortana Intelligence Suite stöder de vanligaste dataformat som CSV, TVS, JSON, *etc*. Det är viktigt att dataformatet förblir konsekventa för hela livscykeln för projektet.
 
 ### <a name="data-ingestion"></a>Datainhämtning
-Eftersom energi begäran prognos är kontinuerligt och ofta förutsade, måste vi Kontrollera att hello rådata flödar med hjälp av en heltäckande och tillförlitlig införandet av data. hello införandet processen måste garantera att hello rådata är tillgänglig för hello prognoser processen hello som krävs för närvarande. Innebär att hello data införandet frekvensen måste vara större än hello prognoser frekvens.
+Eftersom energi begäran prognos är kontinuerligt och ofta förutsade, måste vi Kontrollera att rådata flödar med hjälp av en heltäckande och tillförlitlig införandet av data. Införandet processen måste garantera att rådata är tillgänglig för prognosmodellen processen vid den här tiden. Innebär att data införandet frekvensen måste vara större än frekvensen prognosmodellen.
 
-Exempel: om våra begäran prognoser lösning skulle Generera en ny prognos på 8:00:00 dagligen och vi behöver tooensure alla hello-data som har samlats in under hello senast 24 timmar har fullständigt inhämtas till den tidpunkten och har tooeven inkluderar hello senaste timmen av data.
+Exempel: om våra begäran prognoser lösning skulle Generera en ny prognos på 8:00:00 dagligen så vi måste se till att alla data som har samlats in under de senaste 24 timmarna har fullständigt inhämtas till den tidpunkten och måste även inkludera den senaste timmen av data.
 
-I ordning tooaccomplish, Cortana Intelligence Suite ger olika sätt toosupport en tillförlitlig införandet av data. Detta diskuteras ytterligare i hello **distribution** i det här dokumentet.
+För att kunna göra detta, erbjuder Cortana Intelligence Suite olika sätt att stödja en tillförlitlig införandet av data. Detta diskuteras ytterligare i den **distribution** i det här dokumentet.
 
 ### <a name="data-quality"></a>Data Quality
-hello raw-datakälla som krävs för att utföra prognoser tillförlitliga och korrekta begäran måste uppfylla vissa grundläggande Datakriterier. Avancerade statistiska metoder kan vara används toocompensate för vissa möjliga data quality problemet, men vi behöver fortfarande tooensure att vi passerande vissa grundläggande data quality tröskelvärde när du vill föra in nya data. Här följer några överväganden om rådata kvalitet:
+Rådata datakällan som krävs för att utföra prognoser tillförlitliga och korrekta begäran måste uppfylla vissa grundläggande Datakriterier. Även om avancerade statistiska metoder kan användas för att kompensera för vissa möjliga data quality problemet, måste vi se till att vi passerande vissa grundläggande data quality tröskelvärde när du vill föra in nya data. Här följer några överväganden om rådata kvalitet:
 
-* **Värde saknas** – refererar detta toohello situation när specifikt mått inte samlades in. hello här grundläggande krav är att hello saknas värdet hastighet inte får vara större än 10% för en viss tidsperiod. I fall att ett värde saknas det bör anges med ett fördefinierat (till exempel: '9999') och inte '0' som kan vara ett giltigt mått.
-* **Mätningsnoggrannhet** – hello faktiska värdet för förbrukning eller temperatur redovisas korrekt. Felaktiga mätningar genererar felaktiga prognoser. Normalt vara hello mätning fel lägre än 1% relativa toohello true-värde.
-* **Tid för mätning** – det krävs hello faktiska tidsstämpeln hello uppgifter som samlas in kommer inte avvika med mer än 10 sekunder relativa toohello SANT tiden för hello faktiska mått.
-* **Synkronisering** – när flera datakällor som används (*t.ex.*, förbrukning och temperatur) vi måste se till att det inte finns några tidssynkronisering problem mellan dem. Det betyder att hello tid skillnaden mellan tidsstämpel hello samlas in från alla två oberoende datakällor inte får överstiga mer än 10 sekunder.
-* **Latens** – som beskrivs ovan, i **Datapåfyllning**, vi är beroende av en tillförlitlig trafikflöde och införandet av data. toocontrol att vi måste se till att vi styra hello datafördröjning. Det har angetts som hello tidsskillnaden mellan hello som hello verkliga mätningen togs och hello tid då det har lästs in i hello Cortana Intelligence Suite lagring och är redo för användning. För kortsiktigt får prognosmodellen hello totala svarstiden inte vara större än 30 minuter. För lång sikt får prognosmodellen hello totala svarstiden inte vara större än 1 dag.
+* **Värde saknas** – avser situationen när specifikt mått inte samlades in. Det grundläggande kravet är att frekvensen saknas värdet inte får vara större än 10% för en viss tidsperiod. I fall att ett värde saknas det bör anges med ett fördefinierat (till exempel: '9999') och inte '0' som kan vara ett giltigt mått.
+* **Mätningsnoggrannhet** – det faktiska värdet för förbrukning eller temperatur redovisas korrekt. Felaktiga mätningar genererar felaktiga prognoser. Normalt måste mätning felet vara lägre än 1% i förhållande till värdet true.
+* **Tid för mätning** – det krävs att faktiska tidsstämpel för data som samlas in kommer inte avvika med mer än 10 sekunder i förhållande till true tiden för den verkliga mätningen.
+* **Synkronisering** – när flera datakällor som används (*t.ex.*, förbrukning och temperatur) vi måste se till att det inte finns några tidssynkronisering problem mellan dem. Det innebär att tidsskillnaden mellan insamlade tidsstämpeln från alla två oberoende datakällor inte får överstiga mer än 10 sekunder.
+* **Latens** – som beskrivs ovan, i **Datapåfyllning**, vi är beroende av en tillförlitlig trafikflöde och införandet av data. Att kontrollera att vi måste vi kontrollera data svarstiden. Det har angetts som tidsskillnaden mellan den tid som den verkliga mätningen togs och den tidpunkt då det har lästs in i Cortana Intelligence Suite lagring och är redo för användning. För kortsiktigt prognoser den totala svarstiden får inte vara större än 30 minuter. För lång sikt prognoser den totala svarstiden får inte vara större än 1 dag.
 
 ### <a name="data-preparation-and-feature-engineering"></a>Förberedelse av data och funktionen konstruktion
-När hello rådata har tagits inhämtas (se **Datapåfyllning**) och har på ett säkert sätt lagras, är det redo toobe bearbetas. hello förberedelsefasen data i grunden tar hello rådata och konvertera (omvandla, är Omforma) till ett formulär för hello modeling fasen. Som kan innehålla enkla åtgärder som att använda hello rådata kolumn som är med dess faktiska mätvärdet, standardiserade värden, mer komplexa åtgärder som [tid eftersläpande](https://en.wikipedia.org/wiki/Lag_operator), med mera. hello nyskapad datakolumner är refererad tooas datafunktioner hello processen för att generera dessa är refererad tooas funktionen tekniker. Hello slutet av den här processen har vi en ny datauppsättning som erhållits från hello rådata och kan användas för förutsägelsemodellering. Dessutom hello data förberedelsefasen måste tootake vård saknade värden (se **Data Quality**) och kompensera för dem. I vissa fall måste vi också toonormalize hello data tooensure alla värden som representeras i hello samma skala.
+När rådata har tagits inhämtas (se **Datapåfyllning**) och har på ett säkert sätt lagras, är den redo att bearbetas. Förberedelsefasen data i grunden tar rådata och konvertera (omvandla, är Omforma) till ett formulär för modellering fasen. Som kan innehålla enkla åtgärder som att använda kolumnen rådata som med dess faktiska mätvärdet, standardiserade värden, mer komplexa åtgärder som [tid eftersläpande](https://en.wikipedia.org/wiki/Lag_operator), med mera. Den nyligen skapade kolumner kallas datafunktioner och att generera dessa kallas funktionen tekniker. I slutet av den här processen har vi en ny datauppsättning som erhållits från rådata och kan användas för förutsägelsemodellering. Dessutom förberedelsefasen data behöver ta hand om saknade värden (se **Data Quality**) och kompensera för dem. I vissa fall kan vi också behöva normalisera data för att säkerställa att alla värden som representeras i samma skala.
 
-I det här avsnittet vi listor över hello vanliga funktioner som ingår i hello energi prognosmodeller begäran.
+I det här avsnittet vi listas några av de vanliga data-funktionerna som ingår i energin prognosmodeller begäran.
 
-**Tid som drivs funktioner:** funktionerna härleds från hello datum/timestamp data. Dessa extraheras och konverteras till kategoriska funktioner som:
+**Tid som drivs funktioner:** funktionerna härleds från datum/tidsstämpel. Dessa extraheras och konverteras till kategoriska funktioner som:
 
-* Tid på dagen – detta är hello timme av hello dag tar värden från 0 too23
-* Dag i veckan – detta representerar hello hello veckodag och tar värden från 1 (söndag) too7 (lördag)
-* Dag i månaden – detta representerar hello faktiska datum och kan ta värden från 1 too31
-* Månaden på året – detta representerar hello månad och tar värden från 1 (januari) too12 (December)
-* Lördag – detta är en funktion för binärvärde som tar hello värdet 0 för veckodagar eller 1 för lördag
-* Helgdag - detta är ett binärt värde funktion som tar hello värdet 0 för en vanlig dag eller 1 för en helgdag
-* Fourier villkor – hello Fourier är vikter som härleds från Hej, tidsstämpel och är används toocapture hello säsongsvärdet (cycles) i hello data. Eftersom vi kan ha flera säsonger på våra data kan vi behöver flera Fourier termer. Begäran värden kan till exempel ha årlig, varje vecka och dag säsonger/cykler vilket leder till 3 Fourier villkoren.
+* Tid på dagen – detta är timme på dagen som tar värden från 0 till 23
+* Dag i veckan – detta representerar dag i veckan och tar värden från 1 (söndag) till 7 (lördag)
+* Dag i månaden – detta motsvarar det faktiska datumet och kan ta värden mellan 1 och 31
+* Månaden på året – detta motsvarar månaden och det tar värden från 1 (januari) och 12 (December)
+* Lördag – detta är ett binärt värde funktion som tar värdet 0 för veckodagar eller 1 för lördag
+* Helgdag - detta är ett binärt värde funktion som tar värdet 0 för en vanlig dag eller 1 för en helgdag
+* Fourier – Fourier villkoren är vikterna härleds från tidstämpeln som används för att avbilda säsongsvärdet (cycles) i data. Eftersom vi kan ha flera säsonger på våra data kan vi behöver flera Fourier termer. Begäran värden kan till exempel ha årlig, varje vecka och dag säsonger/cykler vilket leder till 3 Fourier villkoren.
 
-**Oberoende mätning funktioner:** hello oberoende innefattar alla hello dataelement som vi vill att toouse som predictors i vår modell. Här utesluts hello beroende funktionen som vi måste toopredict.
+**Oberoende mätning funktioner:** oberoende funktioner omfattar alla dataelement som vi vill använda som predictors i vår modell. Här exkludera vi funktionen beroende som vi vill förutsäga.
 
-* Funktionen lag – dessa är flyttat tid värdena för hello faktiska begäran. Fördröjning 1-funktioner ska innehålla hello begäran värdet i hello föregående Timma (förutsatt att per timme) relativa toohello aktuell tidsstämpel. På liknande sätt kan vi kan lägga till fördröjning 2, lag 3, *etc*. hello faktiska kombination av fördröjning funktioner som används fastställs under hello modeling fas av utvärderingen av hello modellen resultat.
-* Långsiktigt trender – den här funktionen representerar hello linjär ökning efterfrågan mellan år.
+* Funktionen lag – dessa är flyttat tid värdena för den faktiska efterfrågan. Fördröjning 1-funktioner ska innehålla värdet för begäran i föregående Timma (förutsatt att per timme) i förhållande till aktuell tidsstämpel. På liknande sätt kan vi kan lägga till fördröjning 2, lag 3, *etc*. Under fasen modellering bestäms faktiska kombinationen av fördröjning funktioner som används av utvärdering av modellen resultaten.
+* Långsiktigt trender – den här funktionen representerar en linjär ökning efterfrågan mellan år.
 
-**Funktionen för beroende:** hello beroende funktionen är hello datakolumnen som vi vill gärna vår modell toopredict. Med [övervakad maskininlärning](https://en.wikipedia.org/wiki/Supervised_learning), vi måste först träna hello-modell med hello beroende funktioner (som också är refererad tooas etiketter). Detta tillåter hello modellen toolearn hello mönster i hello data som är associerade med beroende hello-funktionen. Vi vill förmodligen toopredict hello faktiska begäran och därför kan vi använda den som hello beroende funktion energi efterfrågan vid en prognos.
+**Funktionen för beroende:** funktionen beroende är datakolumnen som vi vill gärna vår modell ska förutsäga. Med [övervakad maskininlärning](https://en.wikipedia.org/wiki/Supervised_learning), vi måste först träna modellen med beroende funktioner (som även kallas etiketter). Detta gör att modellen för att lära dig mönster i data som är associerade med funktionen beroende. Energiförbrukning prognos vi vanligtvis vill förutsäga den faktiska begäran och därför kan vi använda den som funktionen beroende.
 
-**Hantering av värden som saknas:** under förberedelsefasen för hello data, behöver vi toodetermine hello bästa strategi toohandle värden som saknas. Detta är mest med hjälp av hello olika statistiska [uppräkning datametoder](https://en.wikipedia.org/wiki/Imputation_\(statistics\)). Hello gäller energiförbrukning prognoser, vi vanligtvis sedan imputera saknade värden med hjälp av glidande medelvärde från föregående tillgängliga datapunkter.
+**Hantering av värden som saknas:** under förberedelsefasen data som behöver avgöra den bästa strategin för att hantera värden som saknas. Detta görs med hjälp av olika statistiska främst [uppräkning datametoder](https://en.wikipedia.org/wiki/Imputation_\(statistics\)). När det gäller energi prognoser för begäran, vi vanligtvis sedan imputera saknade värden med hjälp av glidande medelvärde från föregående tillgängliga datapunkter.
 
-**Databasnormalisering:** databasnormalisering är en annan typ av transformation som används toobring alla numeriska data, till exempel begäran prognos i liknande omfattning. Detta ger vanligtvis bättre hello modellen noggrannhet och precision. Vi vanligtvis gör du genom att dividera hello faktiskt värde med hello dataområde hello.
-Hello originalvärdet skalar till ett mindre intervall, vanligtvis mellan 1 och 1.
+**Databasnormalisering:** databasnormalisering är en annan typ av transformation som används för att sätta alla numeriska data, till exempel begäran prognos i liknande omfattning. Detta hjälper vanligtvis det förbättra modellen precision. Vi vanligtvis gör du genom att dividera det faktiska värdet med en uppsättning data.
+Det ursprungliga värdet skalar till ett mindre intervall, vanligtvis mellan 1 och 1.
 
 ## <a name="modeling"></a>Modellering
-hello modeling fas är där hello hello data till en modell konverteringen. I hello är kärnan i den här processen det avancerade algoritmer som skanna hello historiska data (utbildningsdata), extrahera mönster och skapa en modell. Att modellen kan vara senare används toopredict på nya data som inte har använt toobuild hello modellen.
+Fasen modellering är om konvertering av data till en modell äger rum. Är i grunden i den här processen det avancerade algoritmer som skanna historiska data (utbildningsdata), extrahera mönster och skapa en modell. Att modellen kan senare användas för att förutsäga på nya data som inte har använts för att skapa modellen.
 
-När vi har en fungerande tillförlitliga krävs modellen vi kan sedan använda datorn tooscore nya data är strukturerade tooinclude hello funktioner (X). Hej riskpoängprocessen gör användning av beständiga hello-modellen (objekt från hello utbildning fasen) och förutsäga hello målvariabel som markerats med Ŷ.
+När vi har en fungerande tillförlitlig modell vi kan sedan använda den för att samla in nya data som är strukturerade för att inkludera de nödvändiga funktionerna (X). Användning av beständiga modellen (objekt från fasen utbildning) och förutsäga en målvariabel som markerats med Ŷ gör bedömningsprofil processen.
 
 ### <a name="demand-forecasting-modeling-techniques"></a>Begäran prognoser Modeling tekniker
-Begäran prognoser vi göra hello gäller användning av historiska data som är sorterade efter tid. Det används vanligtvis toodata som innehåller hello time-dimension som [time series](https://en.wikipedia.org/wiki/Time_series). hello mål i tid serien modellering toofind tid relaterade trender säsongsvärdet automatiskt korrelation (korrelation över tid) och formulera de till en modell.
+Om begäran prognoser vi göra användning av historiska data som är sorterade efter tid. Vi vanligtvis refererar till data som innehåller time-dimension som [time series](https://en.wikipedia.org/wiki/Time_series). Målet i tid serien modellering är att hitta tid relaterade trender, säsongsvärdet, automatisk korrelation (korrelation över tid) och formulera de till en modell.
 
-Under de senaste åren har avancerade algoritmer utvecklade tooaccommodate tid serien prognoser och tooimprove prognoser noggrannhet. Kort diskuterar vi några av dem här.
+Under de senaste åren har avancerade algoritmer utvecklats för tid serien prognoser och prognosmodellen noggrannhet kan förbättras. Kort diskuterar vi några av dem här.
 
 > [!NOTE]
-> Det här avsnittet är inte avsedda toobe som används som en machine learning och skapa prognoser översikt utan istället som en kort undersökning av modeling tekniker som ofta används för begäran Prognosticering. Mer information och utbildningsmaterial om tid serien prognoser rekommenderar vi starkt hello online book [Prognosticering: principer och praxis](https://www.otexts.org/book/fpp).
+> Det här avsnittet är inte avsedd att användas som en machine learning och skapa prognoser översikt utan istället som en kort undersökning av modeling tekniker som ofta används för begäran Prognosticering. Mer information och utbildningsmaterial om tid serien prognoser rekommenderar vi starkt online book [Prognosticering: principer och praxis](https://www.otexts.org/book/fpp).
 > 
 > 
 
 #### <a name="ma-moving-averagehttpswwwotextsorgfpp62"></a>[**MA (glidande medelvärde)**](https://www.otexts.org/fpp/6/2)
-Glidande medelvärde är en hello första analytiska tekniker som har använts för tid serien Prognosticering och det är fortfarande ett av de vanligaste hello tekniker per dag. Det är också hello grunden för mer avancerade prognoser tekniker. Vi prognoser hello nästa datapunkt som medelvärdet över senaste punkterna hello K, där K anger hello ordningen för glidande medelvärde hello med glidande medelvärde.
+Glidande medelvärde är en av de första analytiska tekniker som har använts för tid serien Prognosticering och det är en av mest vanliga tekniker per dag. Det är också grunden för mer avancerade prognoser tekniker. Med glidande medelvärde vi prognoser nästa datapunkt som medelvärdet under de senaste punkterna K, där K anger ordningen för glidande medelvärde.
 
-hello glidande medelvärde tekniken har hello effekten av Utjämning hello prognos och därför inte kan hantera även stora volatil i hello data.
+Glidande medelvärde tekniken innebär Utjämning prognosen och därför inte kan hantera även stora volatil i data.
 
 #### <a name="ets-exponential-smoothinghttpswwwotextsorgfpp75"></a>[**ETS (exponentiell utjämning)**](https://www.otexts.org/fpp/7/5)
-Exponentiell utjämning ETS är en familj av olika metoder som använder viktat medelvärde för senaste datapunkter i ordning toopredict hello nästa datapunkt. hello idé är tooassign högre vikterna toomore senaste värdena och minska gradvis denna vikt för äldre uppmätta värden. Det finns ett antal olika metoder med den här serien, dem bland hantering av säsongsvärdet i hello data som [Holt somrar vad gäller såväl när metoden](https://www.otexts.org/fpp/7/5).
+Exponentiell utjämning ETS är en familj av olika metoder som använder viktat medelvärde för senaste datapunkter för att förutsäga nästa datapunkten. Tanken är att tilldela högre vikter till nyare värden och minska gradvis denna vikt för äldre uppmätta värden. Det finns ett antal olika metoder med den här serien, dem bland hantering av säsongsvärdet i data som [Holt somrar vad gäller såväl när metoden](https://www.otexts.org/fpp/7/5).
 
-Vissa av dessa metoder även ta hänsyn till hello säsongsvärdet hello data.
+Vissa av dessa metoder även ta hänsyn till säsongsvärdet av data.
 
 #### <a name="arima-auto-regression-integrated-moving-averagehttpswwwotextsorgfpp8"></a>[**ARIMA (automatisk Regression integrerat glidande medelvärde)**](https://www.otexts.org/fpp/8)
-Automatisk Regression integrerad glidande medelvärde (ARIMA) är en annan familj av metoder som används för tidsserier prognoser. Det kombinerar praktiskt taget automatiskt regression metoder med glidande medelvärde. Automatisk regression metoder använda regression modeller genom att göra tidigare time series-värden i ordning toocompute hello nästa datum punkt. ARIMA metoder kan du också använda differentierande metoder som omfattar beräkna hello skillnaden mellan datapunkter och använda dem i stället för hello ursprungliga uppmätta värdet. Slutligen ARIMA också använder hello glidande medelvärde tekniker som beskrivs ovan. hello kombinationen av alla dessa metoder på olika sätt är vilka konstruktioner hello familj av ARIMA-metoder.
+Automatisk Regression integrerad glidande medelvärde (ARIMA) är en annan familj av metoder som används för tidsserier prognoser. Det kombinerar praktiskt taget automatiskt regression metoder med glidande medelvärde. Automatisk regression metoder Använd regression modeller med tidigare time series-värden för att beräkna nästa datum punkt. ARIMA metoder kan du också använda differentierande metoder som omfattar att skillnaden mellan datapunkter och använda dem i stället för det ursprungliga uppmätta värdet. Slutligen ARIMA också använder glidande medelvärde tekniker som beskrivs ovan. Kombinationen av alla dessa metoder på olika sätt är vad konstruktioner familj av ARIMA-metoder.
 
-ETS och ARIMA används brett idag för energi begäran prognoser och många andra prognosmodellen problem. I många fall kombineras dessa tillsammans toodeliver mycket korrekta resultat.
+ETS och ARIMA används brett idag för energi begäran prognoser och många andra prognosmodellen problem. I många fall dessa kombineras tillsammans för att leverera mycket korrekta resultat.
 
-**Allmän multipel Regression** Regression modeller kunde hello viktigaste sätt att modellera inom hello domänen för machine learning och statistik. Hello gäller tidsserier vi använder regression toopredict hello framtida värden (*t.ex.*, på begäran). I regression vi tar en linjär kombination av hello predictors och Läs hello vikter (även hänvisade tooas koefficienter) för de predictors under hello utbildning processen. hello målet är tooproduce regressionslinjen som kommer prognos våra förutsägelsevärdet. Regression metoder är lämplig när hello målvariabel är numeriska och därför passar också tid serien prognoser. Det finns en mängd olika metoder för regression inklusive väldigt enkelt regression modeller som [linjär Regression](https://en.wikipedia.org/wiki/Linear_regression) och mer avancerade de som till exempel beslutsträd, [slumpmässiga skogar](https://en.wikipedia.org/wiki/Random_forest), [Neurala nätverk](https://en.wikipedia.org/wiki/Artificial_neural_network), och förstärkta beslutsträd.
+**Allmän multipel Regression** Regression modeller kan vara den viktigaste modellering-metoden i domänen för machine learning och statistik. I samband med tidsserier vi använder regression för att förutsäga framtida värden (*t.ex.*, på begäran). I regression vi tar en linjär kombination av predictors och Läs vikterna (kallas även koefficienter) av dessa predictors under utbildning. Målet är att skapa en regressionslinjen som kommer prognos våra förutsägelsevärdet. Regression metoder är lämplig när en målvariabel är numeriska och därför passar också tid serien prognoser. Det finns en mängd olika metoder för regression inklusive väldigt enkelt regression modeller som [linjär Regression](https://en.wikipedia.org/wiki/Linear_regression) och mer avancerade de som till exempel beslutsträd, [slumpmässiga skogar](https://en.wikipedia.org/wiki/Random_forest), [Neurala nätverk](https://en.wikipedia.org/wiki/Artificial_neural_network), och förstärkta beslutsträd.
 
-Konstruera energiförbrukning prognoser som regression problem ger oss mycket flexibilitet för att välja våra datafunktioner som kan kombineras hello faktiska begäran tidsdata serien och externa faktorer, till exempel temperatur. Mer information om hello valda funktioner beskrivs i funktionen Engineering hello (se **förberedelse av Data och funktionen Engineering**) avsnitt i den här playbook.
+Konstruera energiförbrukning prognoser som regression problem ger oss en stor flexibilitet vid val av våra datafunktioner som kan kombineras från den faktiska begäran tid series-data och externa faktorer, till exempel temperatur. Mer information om de valda funktionerna beskrivs i funktionen Engineering (se **förberedelse av Data och funktionen Engineering**) avsnitt i den här playbook.
 
-Från våra erfarenhet av implementering och distribution av energi begäran prognoser pilot vi har hittat som hello avancerade regression modeller som är tillgängliga i Azure ML tenderar tooproduce hello bäst resultat och vi använder dem.
+Från våra erfarenhet av implementering och distribution av energi begäran prognoser pilot vi har hittat som avancerade regression modeller som är tillgängliga i Azure ML tenderar att ge bästa resultat och vi använder dem.
 
 ## <a name="model-evaluation"></a>Modellen utvärdering
-Utvärdering av modellen har en viktig roll i hello **modellen utvecklingscykeln**. I det här steget ser vi till att verifierar hello modellen och dess prestanda med verkliga data. Under hello modeling steg använder vi en del av hello tillgängliga data för hello modell. Under utvärderingsfasen för hello vidtar vi hello resten av hello tootest hello datamodellen. Praktiskt taget innebär det att vi mata hello modellen nya data som har varit omstruktureras och innehåller samma funktioner som hello utbildning dataset hello. Dock under hello verifieringsprocessen vi använder hello modellen toopredict hello målvariabel i stället ange hello tillgängliga målvariabel. Det används ofta toothis process som poängsättning av modellen. Vi använder sedan hello true målvärden och jämför dem med hello förutsade viktiga. hello avsikten är toomeasure och minimera hello förutsägelse fel, vilket innebär att hello skillnaden mellan hello förutsägelser och hello true-värde. Kvantifiera hello fel mått är nyckeln eftersom vi skulle som toofine finjustera hello modellen och validera om hello fel faktiskt minskar. Justera hello modell kan göras genom att ändra Modellparametrar som styr hello learning process eller genom att lägga till eller ta bort funktioner (som anges tooas [parametrar Svep](https://channel9.msdn.com/Blogs/Azure/Data-Science-Series-Building-an-Optimal-Model-With-Parameter-Sweep)). Praktiskt taget som innebär att vi kan måste tooiterate mellan hello funktionen konstruktion, modellering, och modellen utvärdering faser flera gånger tills det är kan tooreduce hello Felnivån toohello krävs.
+Utvärdering av modellen har en viktig roll i den **modellen utvecklingscykeln**. I det här steget ser vi till att verifiering av modellen och dess prestanda med verkliga data. Under steget modellering använder vi en del av tillgängliga data för att träna modellen. Under utvärderingsfasen vidtar vi resten av data till testa modellen. Praktiskt taget innebär det att vi mata modellen nya data som har varit omstruktureras och innehåller samma funktioner som utbildning dataset. Dock under verifieringsprocessen använder vi modellen att förutsäga målet variabeln i stället för att ange variabeln tillgängliga målservrar. Vi refererar ofta till den här processen som poängsättning av modellen. Vi skulle sedan true målvärden och jämför dem med de förväntade. Avsikten är att mäta och minimera förutsägelse fel, vilket innebär att skillnaden mellan förutsägelser och värdet true. Kvantifiera fel måttet är nyckeln eftersom vi vill finjustera modellen och validera om felet faktiskt minskar. Finjustera modellen kan göras genom att ändra Modellparametrar som styr hur learning eller genom att lägga till eller ta bort funktioner (kallas [parametrar Svep](https://channel9.msdn.com/Blogs/Azure/Data-Science-Series-Building-an-Optimal-Model-With-Parameter-Sweep)). Praktiskt taget som innebär att vi kan behöva upprepa funktionen konstruktion, modellering, och modell utvärdering faser flera gånger innan vi kan minska felet till önskad nivå.
 
-Det är viktigt tooemphasis hello förutsägelse fel kommer aldrig att noll eftersom det aldrig är en modell som perfekt förutsäga var resultatet. Det finns dock omfattning fel som kan accepteras av hello företag. Vi vill gärna tooensure att vår modell förutsägelse fel vid hello nivå eller bättre än hello business tolerans nivå under hello verifieringsprocessen. Det är därför viktigt tooset hello andelen hello tillåtna fel hello början av hello växla under hello **problemet formulering** fasen.
+Det är viktigt att betoning förutsägelse felet kommer aldrig att noll som aldrig är en modell som perfekt förutsäga var resultatet. Det finns dock omfattning fel som kan accepteras av företaget. Under verifieringsprocessen, vill vi se till att vår modell förutsägelse fel är på nivå eller bättre än företag toleransnivån. Det är därför viktigt att ställa in den tillåtna avvikelse i början av cykel under den **problemet formulering** fasen.
 
 ### <a name="typical-evaluation-techniques"></a>Utvärdering av vanliga tekniker
-Det finns olika sätt i vilka förutsägelse fel kan mätas och möjligt. I det här avsnittet fokuseras hello diskussion utvärdering tekniker relevanta tootime serie och som är specifika för energiförbrukning prognos.
+Det finns olika sätt i vilka förutsägelse fel kan mätas och möjligt. I det här avsnittet fokuserar vi diskussion om utvärdering tekniker som är relevanta tidsserier och som är specifika för energiförbrukning prognos.
 
 #### <a name="mapehttpsenwikipediaorgwikimeanabsolutepercentageerror"></a>[**MAPE**](https://en.wikipedia.org/wiki/Mean_absolute_percentage_error)
-MAPE står för innebär absoluta procentandel fel. Med MAPE vi beräknar hello skillnaden mellan varje prognostiserat punkt och hello faktiska värdet för den punkten. Vi sedan kvantifiera hello fel per punkt genom en beräkning hello andelen hello skillnaden relativa toohello faktiskt värde. I det sista steget genomsnittlig vi dessa värden. hello matematisk formel används för MAPE är hello följande:
+MAPE står för innebär absoluta procentandel fel. Med MAPE vi computing skillnaden mellan varje prognostiserat punkt och det faktiska värdet för den tidpunkten. Vi sedan kvantifiera fel per punkt genom att beräkna andelen skillnaden i förhållande till det faktiska värdet. I det sista steget genomsnittlig vi dessa värden. Matematiska formeln som används för MAPE är följande:
 
 ![MAPE formeln](media/cortana-analytics-playbook-demand-forecasting-energy/mape-formula.png)
-*där A<sub>t</sub> är hello faktiskt värde, F<sub>t</sub> är hello förutsägelsevärdet och n är hello prognos horizon.*
+*där A<sub>t</sub> är det faktiska värdet F<sub>t</sub> är det förväntade värdet och n är prognosen horizon.*
 
 ## <a name="deployment"></a>Distribution
-När vi har lagt hello modeling fasen och verifiera hello modellen prestanda är vi klara toogo till hello distributionsfasen. I den här kontexten distribution innebär att aktivera hello kunden tooconsume hello modellen genom att köra faktiska förutsägelser på den i stor skala. hello begreppet distribution är nyckeln i Azure ML eftersom vårt huvudmål är tooconstantly anropa förutsägelser som skillnad från toojust hämta hello insikter från hello data. Hej distributionsfasen ingår hello där vi aktivera hello modellen toobe används i stor skala.
+När vi har lagt fasen modellering och godkänts modellen prestanda vi är redo att gå till distributionsfasen av. I den här kontexten distribution innebär att aktivera kunden att konsumera modellen genom att köra faktiska förutsägelser på den i stor skala. Distributionen är nyckeln i Azure ML eftersom vårt huvudmål är att ständigt anropa förutsägelser i stället för bara hämta kunskaper från data. Distribueringsfasen är del där vi aktivera modellen som ska förbrukas i stor skala.
 
-Inom hello kontext för energiförbrukning prognos, är vårt mål tooinvoke kontinuerliga och periodiska prognoser samtidigt säkerställa att nya data är tillgängliga för hello modellen och att hello prognostiserat data skickas tillbaka toohello konsumerande klienten.
+Våra målet är att anropa kontinuerliga och periodiska prognoser samtidigt säkerställa att nya data är tillgänglig för modellen och att prognosdata skickas tillbaka till konsumerande klienten inom ramen för energi begäran prognos.
 
 ### <a name="web-services-deployment"></a>Distribution av Web Services
-hello huvudsakliga distribuerbara byggblock i Azure ML är hello-webbtjänst. Detta är hello mest effektiva sättet tooenable förbrukning av en förutsägelsemodell i hello molnet. hello webbtjänsten kapslar hello modellen och kapslar in den i en [RESTful](http://www.restapitutorial.com/) API (Application Programming Interface). hello API kan användas som en del av alla klientkod enligt beskrivningen i hello diagrammet nedan.
+Det huvudsakliga distribuerbara byggblocket i Azure ML är webbtjänsten. Detta är det mest effektiva sättet att aktivera förbrukning av en förutsägelsemodell i molnet. Webbtjänsten kapslar modellen och kapslar in den i en [RESTful](http://www.restapitutorial.com/) API (Application Programming Interface). API: et kan användas som en del av alla klientkod som visas i diagrammet nedan.
 
 ![Vi Tjänstdistribution och användning](media/cortana-analytics-playbook-demand-forecasting-energy/web-service-deployment-and-consumption.png)
 
-Som kan ses hello webbtjänsten distribueras i hello Cortana Intelligence Suite molnet och kan anropas via dess exponerade REST API-slutpunkten. Olika typer av klienter i olika domäner kan anropa hello tjänsten via hello Web API samtidigt. hello-webbtjänsten kan även skala för att stödja tusentals samtidiga anrop.
+Som kan ses webbtjänsten har distribuerats i Cortana Intelligence Suite molnet och kan anropas via dess exponerade REST API-slutpunkten. Olika typer av klienter i olika domäner kan anropa tjänsten via Web API samtidigt. Webbtjänsten kan även skala för att stödja tusentals samtidiga anrop.
 
 ### <a name="a-typical-solution-architecture"></a>En typisk lösningsarkitektur
-När du distribuerar en energiförbrukning prognoser lösningen är vi intresserade av att distribuera en tooend lösning som är mer omfattande än hello förutsägelse webbtjänsten och underlättar hello hela dataflöde. För närvarande hello vi anropa en ny prognos, behöver vi toomake till den hello modellen matas med funktioner för aktuella data. Som innebär att hello nyligen insamlade rådata ständigt inhämtas, bearbetas och omvandlas till hello nödvändiga funktioner på vilken hello modell har skapats. AT hello samma tid och vi vill toomake hello prognostiserat data är tillgängliga för hello avslutas konsumerande klienter. Ett exempel data flödet cykel (eller data pipeline) visas i hello diagrammet nedan:
+När du distribuerar en energiförbrukning prognoser lösningen är vi intresserade av att distribuera en heltäckande lösning som är mer omfattande än förutsägelse webbtjänsten och underlättar hela dataflödet. När vi anropa en ny prognos, måste vi Kontrollera att modellen matas med funktioner för aktuella data. Innebär att rådata nyligen insamlade är ständigt inhämtas, bearbetas och omvandlas till de nödvändiga funktionerna på modellen har skapats. På samma gång vill vi göra prognosticerade data tillgängliga för end förbrukar klienter. Ett exempel data flödet cykel (eller data pipeline) visas i diagrammet nedan:
 
-![Energiförbrukning prognos slutet tooEnd dataflöde](media/cortana-analytics-playbook-demand-forecasting-energy/energy-demand-forecase-end-data-flow.png)
+![Energiförbrukning prognos slutpunkt till slutpunkt-dataflöde](media/cortana-analytics-playbook-demand-forecasting-energy/energy-demand-forecase-end-data-flow.png)
 
-Dessa är hello steg som äger rum som en del av hello energi begäran prognosen cykel:
+Dessa är de steg som äger rum som en del av energi begäran prognosen cykel:
 
 1. Miljontals distribuerade data mätare som ofta genererar strömförbrukningsdata i realtid.
 2. Den här informationen samlas in och överförs till en databas i molnet (*t.ex.*, Azure Blob).
-3. Innan den kan bearbetas är hello rådata aggregerade tooa understation eller regionsnivån som definieras av hello företag.
-4. hello funktionen bearbetning (se **förberedelse av Data och bearbetning av funktionen**) sedan sker och ger hello som krävs för datamodell utbildning eller bedömningen – hello funktionen uppsättning data lagras i en databas (*t.ex.*, SQL Azure).
-5. hello återkommande utbildning tjänsten anropas toore train hello prognoser modellen – som uppdaterad version av modellen hello sparas så att den kan användas av hello poängsättning av webbtjänsten.
-6. hello bedömningen webbtjänst anropas enligt ett schema som passar hello krävs prognosen frekvens.
-7. hello prognostiserat data lagras i en databas som kan användas av hello slutet förbrukning av klienten.
-8. hello förbrukning klienten hämtar hello prognoser, gäller den tillbaka till hello rutnätet och förbrukar i enlighet med hello krävs användningsfall.
+3. Innan den kan bearbetas slås rådata samman till en understation eller regionsnivån som definieras av företaget.
+4. Funktionen bearbetningen (se **förberedelse av Data och bearbetning av funktionen**) sedan sker och ger de data som krävs för att modellera utbildning eller bedömningen – funktionen uppsättning data lagras i en databas (*t.ex.*, SQL Azure).
+5. Tjänsten igen utbildning anropas för att träna nytt prognosmodellen – den uppdaterade versionen av modellen sparas så att den kan användas av bedömningsprofil webbtjänsten.
+6. Bedömningsprofil webbtjänsten anropas enligt ett schema som passar krävs prognosen frekvensen.
+7. Prognosticerade data lagras i en databas som kan användas av slutet förbrukning av klienten.
+8. Förbrukning klienten hämtar prognoser gäller i rutnätet och förbrukar i enlighet med det obligatoriska användningsfallet.
 
-Det är viktigt toonote som den här hela livscykel helt automatiserad och körs enligt ett schema. hello hela orchestration av data cykeln kan göras med hjälp av verktyg som [Azure Data Factory](http://azure.microsoft.com/services/data-factory/).
+Det är viktigt att Observera att hela cykeln helt automatiserad och körs enligt ett schema. Hela orchestration av data cykeln kan göras med hjälp av verktyg som [Azure Data Factory](http://azure.microsoft.com/services/data-factory/).
 
-### <a name="end-tooend-deployment-architecture"></a>Avsluta tooEnd arkitektur för distribution
-Distribuera en energi begäran prognosen lösning på Cortana Intelligence i ordning toopractically, behöver vi tooensure att hello nödvändiga komponenter har upprättats och korrekt konfigurerad.
+### <a name="end-to-end-deployment-architecture"></a>Arkitektur för slutpunkt till slutpunkt-distribution
+Vi behöver säkerställa att de nödvändiga komponenterna är etablerad och korrekt konfigurerad för att distribuera en energi begäran prognosen lösning på Cortana Intelligence praktiskt taget.
 
-hello illustrerar följande diagram en typisk Cortana Intelligence-baserad arkitektur som implementerar och samordnar hello flödet datacykel som beskrivs ovan:
+Följande diagram illustrerar en typisk Cortana Intelligence-baserad arkitektur som implementerar och samordnar flödet datacykel som beskrivs ovan:
 
-![Avsluta tooEnd arkitektur för distribution](media/cortana-analytics-playbook-demand-forecasting-energy/architecture.png)
+![Arkitektur för slutpunkt till slutpunkt-distribution](media/cortana-analytics-playbook-demand-forecasting-energy/architecture.png)
 
-Mer information om varje hello komponenter och hello hela arkitektur finns toohello energi Lösningsmall.
+Mer information om de olika komponenterna och hela arkitekturen finns energi Lösningsmall.
 

@@ -1,6 +1,6 @@
 ---
-title: aaaAzure Application Insights skorstenar
-description: "Lär dig hur du kan använda skorstenar toodiscover hur kunder interagerar med programmet."
+title: Azure Application Insights skorstenar
+description: "Lär dig hur du kan använda skorstenar för att identifiera hur kunder interagerar med programmet."
 services: application-insights
 documentationcenter: 
 author: CFreemanwa
@@ -12,32 +12,32 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: bwren
-ms.openlocfilehash: 2a6125cf596570cfaee30bb3ff757916e90d7676
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 59c4dfafc102b26e3b9873f433065715f4aec9ec
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
-# <a name="discover-how-customers-are-using-your-application-with-hello-application-insights-funnels"></a>Identifiera hur kunder använder ditt program med hello Application Insights skorstenar
+# <a name="discover-how-customers-are-using-your-application-with-the-application-insights-funnels"></a>Identifiera hur kunder använder ditt program med Application Insights skorstenar
 
-Förstå kundupplevelsen är hello yttersta vikt tooyour verksamhet. Om ditt program innefattar flera faser, behöver tooknow om de flesta kunder fortskrider via hello hela processen, eller om de avslutande hello processen vid något tillfälle. hello förlopp i en serie steg i ett webbprogram kallas ”Trattens”. Du kan använda hello Application Insights skorstenar toogain insikter om dina användare och övervaka stegvisa konvertering priser. 
+Förstå kundupplevelsen är av yttersta vikt för företaget. Om ditt program innefattar flera faser, kommer du behöver veta om de flesta kunder fortskrider genom hela processen, eller om de avslutar processen vid något tillfälle. Förlopp i en serie steg i ett webbprogram kallas ”Trattens”. Du kan använda Application Insights skorstenar och få insikter om dina användare och övervaka stegvisa konvertering priser. 
 
-## <a name="get-started-with-hello-funnels-blade"></a>Kom igång med hello skorstenar bladet
-hello enklaste sättet toolearn om skorstenar är toowalk även om ett exempel. hello visar följande bilder hello steg ägarna av en e-handel tar toolearn hur kunderna samverkar med deras webbprogram.  
+## <a name="get-started-with-the-funnels-blade"></a>Kom igång med bladet skorstenar
+Det enklaste sättet att lära dig om skorstenar är att gå via ett exempel. Följande bilder visar stegen ägarna av en e-handel tar att lära dig hur kunderna samverkar med deras webbprogram.  
 
 ### <a name="create-your-funnel"></a>Skapa din tratten
-Innan du skapar din Trattens måste toodecide hello frågan ska tooanswer. Du kanske exempelvis vill tooknow hur många kunder visa startsidan-Klicka på en annons. I det här exemplet vill hello ägare av hello Fabrikam Fiber företagets tooknow hello procentandelen kunder som gör ett inköp när du lägger till objekt tootheir kundvagn under hello senaste månaden.
+Innan du skapar din Trattens måste du bestämma om du vill att besvara frågan. Du kanske vill veta hur många kunder visa startsidan-Klicka på en annons. I det här exemplet vill ägarna av företaget Fabrikam Fiber veta procentandelen kunder som gör ett inköp när du lägger till objekt till deras kundvagn under den senaste månaden.
 
-Här är hello åtgärder de toocreate sina tratten.
+Här är de steg som de vidtar för att skapa deras tratten.
 
-1. Klicka på hello-knappen på hello skorstenar bladet på nytt.
-1. Välj hello tidsintervall för ”senaste månad” Hej **tidsintervall** listrutan. 
-1. Välj hello **produktsidan** händelse från hello **steg 1** listrutan. 
-1. Välj hello **Lägg till tooshopping kundvagn** händelse från hello **steg 2** listrutan.
-1. Välj hello **Klicka på Köp** händelse från hello **steg3** listrutan.
-1. Lägga till ett namn toohello Trattens och på **spara**.
+1. Klicka på knappen Nytt i bladet skorstenar.
+1. Ange tidsintervall för ”senaste månad” från den **tidsintervall** listrutan. 
+1. Välj den **produktsidan** händelse från den **steg 1** listrutan. 
+1. Välj den **Lägg till i kundvagn** händelse från den **steg 2** listrutan.
+1. Välj den **Klicka på Köp** händelse från den **steg3** listrutan.
+1. Lägg till ett namn i tratten och klicka på **spara**.
 
-hello följande bild visar hello data hello skorstenar bladet genererar. Här hello Se Fabrikam ägare att 22.7% av sina kunder som lagts till ett objekt tootheir shopping under hello föregående vecka, kundvagn slutförda hello inköp. De kan också se att 1% av hello kunder klickat på en annons innan besöker hello produktsidan och 20% av sina kunder loggas när du har slutfört sin inköp.
+Följande bild visar data bladet skorstenar genererar. Härifrån Fabrikam ser ägare att 22.7% av sina kunder som lagts till ett objekt till deras kundvagn slutfört köpet under den senaste veckan. De kan också se att 1% av kunderna klickat på en annons innan besöka produktsidan och 20% av sina kunder loggas när du har slutfört sin inköp.
 
 
 ![Skorstenar bladet med data](./media/app-insights-understand-usage-patterns/funnel1.png)

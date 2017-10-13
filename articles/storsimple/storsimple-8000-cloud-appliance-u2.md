@@ -1,6 +1,6 @@
 ---
-title: aaaStorSimple moln enhet uppdatering 3 | Microsoft Docs
-description: "Lär dig hur toocreate, distribuera och hantera en enhet med StorSimple molntjänster i ett virtuellt nätverk i Microsoft Azure. (Gäller tooStorSimple uppdatering 3 och senare)."
+title: StorSimple Cloud Appliance Uppdatering 3| Microsoft Docs
+description: "Lär dig hur du skapar, distribuerar och hanterar en StorSimple-molninstallation i ett virtuellt Microsoft Azure-nätverk. (Gäller StorSimple uppdatering 3 och senare)."
 services: storsimple
 documentationcenter: 
 author: alkohli
@@ -14,253 +14,253 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/10/2017
 ms.author: alkohli
-ms.openlocfilehash: ba60a629f1f4b8f0d4566eeb45bae8696f50d0af
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: e7f58c8c1414f41d1d43e98b2faa327165f6eb75
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>Distribuera och hantera en StorSimple Cloud Appliance-installation i Azure (Uppdatering 3 eller senare)
 
 ## <a name="overview"></a>Översikt
 
-Hej StorSimple 8000-serien molnet installation är en ytterligare funktion som ingår i din Microsoft Azure StorSimple-lösning. hello StorSimple moln installation körs på en virtuell dator i ett virtuellt nätverk i Microsoft Azure och du kan använda den tooback upp och klona data från värdar.
+StorSimple 8000 Series Cloud Appliance är en ytterligare funktion som medföljer din Microsoft Azure StorSimple-lösning. StorSimple-molninstallationen körs på en virtuell dator i ett virtuellt Microsoft Azure-nätverk och du kan använda den för att säkerhetskopiera och klona data från värdar.
 
-Den här artikeln beskriver hello stegvis processen toodeploy och hantera en enhet med StorSimple moln i Azure. När du har läst den här artikeln, kommer du att:
+Den här artikeln beskriver steg för steg hur du distribuerar och hanterar en StorSimple Cloud Appliance-installation i Azure. När du har läst den här artikeln, kommer du att:
 
-* Förstå hur hello molnet installation skiljer sig från hello fysisk enhet.
-* Att kunna toocreate och konfigurera hello molnet installation.
-* Ansluta toohello moln installation.
-* Lär dig hur toowork med hello cloud installation.
+* Förstå hur molninstallationen skiljer sig från den fysiska enheten.
+* Kunna skapa och konfigurera molninstallationen.
+* Kunna ansluta till molninstallationen.
+* Förstå hur du arbetar med molninstallationen.
 
-Den här självstudien gäller tooall hello StorSimple moln installationer med uppdatering 3 och senare.
+Den här självstudiekursen gäller för alla StorSimple Cloud Appliance-installationer som kör uppdatering 3 eller senare.
 
 #### <a name="cloud-appliance-model-comparison"></a>Jämförelse av molninstallationsmodeller
 
-Hej StorSimple moln installation finns i två modeller, en standardmodell, 8010 (kallades tidigare hello 1100), och premiummodellen 8020 (introducerad i uppdatering 2). hello följande tabell visar en jämförelse av hello två modeller.
+StorSimple-molninstallationen finns i två modeller, standardmodellen 8010 (kallades tidigare 1100) och premiummodellen 8020 (introducerades i Update 2). Följande tabell innehåller en jämförelse av de två modellerna.
 
 | Enhetsmodell | 8010<sup>1</sup> | 8020 |
 | --- | --- | --- |
 | **Maximal kapacitet** |30 TB |64 TB |
 | **Virtuell Azure-dator** |Standard_A3 (4 kärnor, 7 GB minne)| Standard_DS3 (4 kärnor, 14 GB minne)|
-| **Regional tillgänglighet** |Alla Azure-regioner |Azure-regioner som har stöd för Premium Storage och virtuella Azure-datorer, DS3<br></br>Använd [listan](https://azure.microsoft.com/regions/services/) toosee om båda **virtuella datorer > DS-serien** och **lagring > disklagring** är tillgängliga i din region. |
-| **Lagringstyp** |Använder Azure Standardlagring för lokala diskar<br></br> Lär dig hur för[skapar ett standardlagringskonto](../storage/common/storage-create-storage-account.md) |Använder Azure Premium Storage för lokala diskar<sup>2</sup> <br></br>Lär dig hur för[skapar en Premium Storage-konto](../storage/common/storage-premium-storage.md) |
+| **Regional tillgänglighet** |Alla Azure-regioner |Azure-regioner som har stöd för Premium Storage och virtuella Azure-datorer, DS3<br></br>Använd [listan](https://azure.microsoft.com/regions/services/) för att se om både **virtuella datorer > DS-serien** och **lagring > disklagring** är tillgängligt i din region. |
+| **Lagringstyp** |Använder Azure Standardlagring för lokala diskar<br></br> Lär dig hur du [skapar ett Standardlagringskonto](../storage/common/storage-create-storage-account.md) |Använder Azure Premium Storage för lokala diskar<sup>2</sup> <br></br>Lär dig hur du [skapar ett Premiumkonto för lagring](../storage/common/storage-premium-storage.md) |
 | **Riktlinjer för arbetsbelastning** |Hämtning av filer från säkerhetskopior på objektnivå |Utvecklings- och testscenarier i molnet <br></br>Arbetsbelastningar med kortare svarstider och högre prestanda<br></br>Sekundär enhet för katastrofåterställning |
 
-<sup>1</sup> *kallades hello 1100*.
+<sup>1</sup> *Kallades tidigare 1100*.
 
-<sup>2</sup> *både hello 8010 och 8020 använder Azure standardlagring för hello molnet nivån. hello skillnaden finns endast på hello lokala nivån i hello enheten*.
+<sup>2</sup> *Både 8010 och 8020 använder Azure Standardlagring för molnnivån. Skillnaden finns endast på den lokala nivån i enheten*.
 
-## <a name="how-hello-cloud-appliance-differs-from-hello-physical-device"></a>Hur hello molnet installation skiljer sig från hello fysisk enhet
+## <a name="how-the-cloud-appliance-differs-from-the-physical-device"></a>Så här skiljer sig molninstallationen från den fysiska enheten
 
-Hej StorSimple moln installation är en programvarubaserad version av StorSimple som körs på en nod i en Microsoft Azure-dator. hello molnet enhet stöder disaster recovery scenarier där den fysiska enheten inte är tillgänglig. hello molnet installation är lämplig för användning i objektsnivå från säkerhetskopior, lokal katastrofåterställning och scenarier för utveckling och testning.
+StorSimple-installationen är en programvaruversion av StorSimple som körs på en enskild nod på en virtuell Microsoft Azure-dator. Molninstallationen har stöd för scenarier för haveriberedskap där den fysiska enheten inte är tillgänglig. Molninstallationen är lämpad att användas för hämtning på objektnivå från säkerhetskopior, för lokal haveriberedskap samt för molnbaserade utvecklings- och testscenarier.
 
-#### <a name="differences-from-hello-physical-device"></a>Skillnader från hello fysisk enhet
+#### <a name="differences-from-the-physical-device"></a>Hur den skiljer sig från den fysiska enheten
 
-hello visas följande tabell några huvudsakliga skillnader mellan hello StorSimple-enhet för molnet och fysiska hello StorSimple-enheten.
+I följande tabell beskrivs några huvudsakliga skillnader mellan StorSimple-molninstallationen och den fysiska StorSimple-enheten.
 
 |  | Fysisk enhet | Molninstallation |
 | --- | --- | --- |
-| **Plats** |Finns i hello datacenter. |Körs i Azure. |
+| **Plats** |Finns i datacentret. |Körs i Azure. |
 | **Nätverksgränssnitt** |Har sex nätverksgränssnitt: DATA 0 till DATA 5. |Har bara ett nätverksgränssnitt: DATA 0. |
-| **Registrering** |Registrerad under hello inledande konfigurationssteg. |Registreringen är en separat åtgärd. |
-| **Krypteringsnyckel för tjänstdata** |Återskapa på hello fysisk enhet och uppdatera sedan hello molnet installation med hello ny nyckel. |Det går inte att återskapa från hello molnet installation. |
+| **Registrering** |Registreras i det inledande konfigurationssteget. |Registreringen är en separat åtgärd. |
+| **Krypteringsnyckel för tjänstdata** |Återskapa på den fysiska enheten och uppdatera sedan molninstallationen med den nya nyckeln. |Det går inte att återskapa från molninstallationen. |
 | **Volymtyper som stöds** |Har stöd både för lokalt fixerade och nivåindelade volymer. |Har stöd endast för nivåindelade volymer. |
 
-## <a name="prerequisites-for-hello-cloud-appliance"></a>Krav för hello för molnet
+## <a name="prerequisites-for-the-cloud-appliance"></a>Krav för molninstallationen
 
-hello följande avsnitt beskrivs kraven för din StorSimple-enhet för molnet hello-konfiguration. Innan du distribuerar en moln-installation, granska hello säkerhetsöverväganden vid användning av en moln-installation.
+I följande avsnitt beskrivs konfigurationskraven för StorSimple-molninstallationen. Gå igenom säkerhetsövervägandena för användningen av en molninstallation innan du distribuerar molninstallationen.
 
 [!INCLUDE [StorSimple Cloud Appliance security](../../includes/storsimple-8000-cloud-appliance-security.md)]
 
 #### <a name="azure-requirements"></a>Krav för Azure
 
-Innan du etablerar hello moln-enhet behöver du toomake hello följande förberedelser i Azure-miljön:
+Innan du etablerar molninstallationen måste du göra följande förberedelser i Azure-miljön:
 
-* Se till att du har en fysisk StorSimple 8000 series-enhet (modell 8100 eller 8600) distribuerad och körandes i ditt datacenter. Registrera enheten med hello samma Enhetshanteraren för StorSimple-tjänst som du avser toocreate en StorSimple molnet program för.
-* För för hello molnet, [konfigurera ett virtuellt nätverk i Azure](../virtual-network/virtual-networks-create-vnet-arm-pportal.md). Om du använder Premiumlagring, måste du skapa ett virtuellt nätverk i en Azure-region som har stöd för Premiumlagring. hello Premium Storage-regioner är regioner som motsvarar toohello rad för disklagring i hello [lista över tjänster per Region](https://azure.microsoft.com/regions/services/).
-* Vi rekommenderar att du använder hello standard DNS-servern från Azure istället för att ange dina egna DNS-servernamnet. Om DNS-servernamnet inte är giltig eller om hello DNS-server inte kan tooresolve IP-adresser korrekt misslyckas hello hello molnet enhetens.
+* Se till att du har en fysisk StorSimple 8000 series-enhet (modell 8100 eller 8600) distribuerad och körandes i ditt datacenter. Registrera enheten med samma StorSimple Device Manager-tjänst som du vill skapa en StorSimple Cloud Appliance-installation för.
+* [Konfigurera ett virtuellt nätverk i Azure](../virtual-network/virtual-networks-create-vnet-arm-pportal.md) för molninstallationen. Om du använder Premiumlagring, måste du skapa ett virtuellt nätverk i en Azure-region som har stöd för Premiumlagring. Premium Storage-regioner är regioner som motsvarar raden för disklagring i [listan över Azure-tjänster baserat på region](https://azure.microsoft.com/regions/services/).
+* Vi rekommenderar att du använder DNS-standardservern från Azure i stället för att ange ett eget DNS-servernamn. Om DNS-servernamnet inte är giltigt eller om DNS-servern inte kan matcha IP-adresser korrekt går det inte att skapa molninstallationen.
 * Punkt-till-plats och plats-till-plats går att välja, men är inget krav. Om du vill kan du konfigurera dessa alternativ för mer avancerade scenarier.
-* Du kan skapa [Azure Virtual Machines](../virtual-machines/virtual-machines-windows-quick-create-portal.md) (värdservrar) i hello virtuella nätverk som kan använda hello volymer som exponeras av hello molnet installation. Servrarna måste uppfylla följande krav hello:
+* Du kan skapa [Azure Virtual Machines](../virtual-machines/virtual-machines-windows-quick-create-portal.md) (värdservrar) i det virtuella nätverket som kan använda de volymer som exponeras av molninstallationen. Servrarna måste uppfylla följande krav:
 
   * Vara virtuella Windows eller Linux-datorer som har installerad programvara med iSCSI-initierare.
-  * Körs i hello samma virtuella nätverk som hello molnet utrustning.
-  * Vara kan tooconnect toohello iSCSI-målet hello molnet enhetens via hello interna IP-adress hello molnet installation.
-  * Kontrollera att du har konfigurerat stöd för iSCSI- och trafik på hello samma virtuella nätverk.
+  * Köras i samma virtuella nätverk som molninstallationen.
+  * Kunna ansluta till iSCSI-målet för molninstallationen via molninstallationens interna IP-adress.
+  * Kontrollera att du har konfigurerat stöd för iSCSI och molntrafik på samma virtuella nätverk.
 
 #### <a name="storsimple-requirements"></a>Krav för StorSimple
 
-Att Hej följande uppdateringar tooyour StorSimple enheten Manager-tjänsten innan du skapar en moln-installation:
+Gör följande uppdateringar i StorSimple Device Manager-tjänsten innan du skapar en molninstallation:
 
-* Lägg till [åtkomstkontrollposter](storsimple-8000-manage-acrs.md) för hello virtuella datorer som är pågående toobe hello värdservrar för din enhet i molnet.
-* Använd en [lagringskonto](storsimple-8000-manage-storage-accounts.md#add-a-storage-account) i hello samma region som hello molnet utrustning. Lagringskonton i olika regioner kan resultera i sämre prestanda. Du kan använda ett konto som Standard eller Premium-lagring med hello molnet installation. Mer information om hur toocreate en [standardlagringskonto](../storage/common/storage-create-storage-account.md) eller en [Premium Storage-konto](../storage/common/storage-premium-storage.md)
-* Använd ett annat lagringskonto för att skapa en moln-enhet från hello som används för dina data. Med hjälp av hello samma lagringskonto kan resultera i sämre prestanda.
+* Lägg till [åtkomstkontrollposter](storsimple-8000-manage-acrs.md) för de virtuella datorer som ska vara värdservrar för molninstallationen.
+* Använd ett [lagringskonto](storsimple-8000-manage-storage-accounts.md#add-a-storage-account) i samma region som molninstallationen. Lagringskonton i olika regioner kan resultera i sämre prestanda. Du kan använda ett Standard- eller Premium Storage-konto med molninstallationen. Mer information om hur du skapar ett [Standardlagringskonto](../storage/common/storage-create-storage-account.md) eller ett [Premiumlagringskonto](../storage/common/storage-premium-storage.md)
+* Använd ett annat lagringskonto när du skapar molninstallationen än det som används för dina data. Om samma lagringskonto används kan det resultera i sämre prestanda.
 
-Kontrollera att du har hello följande information innan du börjar:
+Kontrollera att du har följande information innan du börjar:
 
 * Ditt Azure Portal-konto med autentiseringsuppgifter.
-* En kopia av hello krypteringsnyckel för tjänstdata från den fysiska enheten registrerad toohello StorSimple enheten Manager-tjänsten.
+* En kopia av krypteringsnyckeln för tjänstdata från den fysiska enheten som är registrerad i StorSimple Device Manager-tjänsten.
 
-## <a name="create-and-configure-hello-cloud-appliance"></a>Skapa och konfigurera hello molnet installation
+## <a name="create-and-configure-the-cloud-appliance"></a>Skapa och konfigurera molninstallationen
 
-Innan du utför de här procedurerna bör du kontrollera att du har uppfyllt hello [krav för hello för molnet](#prerequisites-for-the-cloud-appliance).
+Kontrollera att [kraven för molninstallationen](#prerequisites-for-the-cloud-appliance) är uppfyllda innan du genomför de här procedurerna.
 
-Utföra hello följande steg toocreate en StorSimple-enhet för molnet.
+Du skapar en StorSimple-molninstallation genom att följa stegen nedan.
 
 ### <a name="step-1-create-a-cloud-appliance"></a>Steg 1: Skapa en molninstallation
 
-Utföra hello följande steg toocreate hello StorSimple-enhet för molnet.
+Du skapar StorSimple-molninstallationen genom att följa stegen nedan.
 
 [!INCLUDE [Create a cloud appliance](../../includes/storsimple-8000-create-cloud-appliance-u2.md)]
 
-Om hello hello molnet enhetens misslyckas i det här steget, kan du inte har anslutning toohello Internet. Mer information finns för[Felsök anslutningsfel till Internet](#troubleshoot-internet-connectivity-errors) när du skapar en moln-installation.
+Om det inte går att skapa molninstallationen i det här steget kan det bero på att du inte har någon Internetanslutning. Om du behöver mer information går du till [Felsöka problem med Internetanslutning](#troubleshoot-internet-connectivity-errors) när du skapar en molninstallation.
 
-### <a name="step-2-configure-and-register-hello-cloud-appliance"></a>Steg 2: Konfigurera och registrera hello molnet installation
+### <a name="step-2-configure-and-register-the-cloud-appliance"></a>Steg 2: Konfigurera och registrera molninstallationen
 
-Innan du börjar den här proceduren måste du kontrollera att du har en kopia av krypteringsnyckeln för tjänstdata hello. krypteringsnyckel för tjänstdata hello skapas när du har registrerat din första fysiska StorSimple-enhet med hello StorSimple enheten Manager-tjänsten. Du har fått instruktioner toosave den på en säker plats. Om du inte har en kopia av krypteringsnyckeln för tjänstdata hello måste du kontakta Microsoft Support för hjälp.
+Kontrollera att du har en kopia av krypteringsnyckeln för tjänstdata innan du påbörjar den här proceduren. Krypteringsnyckeln för tjänstdata skapades när du registrerade din första fysiska StorSimple-enhet med StorSimple Device Manager-tjänsten. Du uppmanades att spara den på en säker plats. Om du inte har en kopia av krypteringsnyckeln för tjänstdata ska du kontakta Microsoft Support för att få hjälp.
 
-Utför följande steg tooconfigure hello och registrera ditt moln StorSimple-enhet.
+Konfigurera och registrera StorSimple-molninstallationen genom att utföra stegen nedan.
 
 [!INCLUDE [Configure and register a cloud appliance](../../includes/storsimple-8000-configure-register-cloud-appliance.md)]
 
-### <a name="step-3-optional-modify-hello-device-configuration-settings"></a>Steg 3: (Valfritt) Ändra hello konfigurationsinställningar
+### <a name="step-3-optional-modify-the-device-configuration-settings"></a>Steg 3: (Valfritt) ändra konfigurationsinställningarna för enheten
 
-hello beskrivs följande avsnitt hello konfigurationsinställningar som behövs för hello StorSimple moln installation om du vill toouse CHAP, StorSimple Snapshot Manager eller ändra hello enhetens administratörslösenord.
+I följande avsnitt beskrivs de enhetskonfigurationsinställningar som krävs för StorSimple-molninstallationen om du vill använda CHAP, StorSimple Snapshot Manager eller ändra administratörslösenordet för enheten.
 
-#### <a name="configure-hello-chap-initiator"></a>Konfigurera hello CHAP-initieraren
+#### <a name="configure-the-chap-initiator"></a>Konfigurera CHAP-initieraren
 
-Den här parametern innehåller hello-autentiseringsuppgifter som din moln-enhet (målet) förväntar sig från hello initierarna (servrarna) som försöker tooaccess hello volymer. hello initierare anger ett CHAP-användarnamn och ett CHAP-lösenord tooidentify själva tooyour enheten under den här autentiseringen. Detaljerade anvisningar finns för[konfigurera CHAP för din enhet](storsimple-8000-configure-chap.md#unidirectional-or-one-way-authentication).
+Den här parametern innehåller de autentiseringsuppgifter som molninstallationen (målet) förväntar sig från initierarna (servrarna) som försöker få åtkomst till volymerna. Initierarna skapar ett CHAP-användarnamn och ett CHAP-lösenord för att identifiera sig själva på din enhet under den här autentiseringen. Detaljerade anvisningar finns i [Konfigurera CHAP för din enhet](storsimple-8000-configure-chap.md#unidirectional-or-one-way-authentication).
 
-#### <a name="configure-hello-chap-target"></a>Konfigurera hello CHAP-målet
+#### <a name="configure-the-chap-target"></a>Konfigurera CHAP-målet
 
-Den här parametern innehåller hello-autentiseringsuppgifter som din moln-enhet använder när en CHAP-aktiverad initierare begär ömsesidig eller dubbelriktad autentisering. Moln-enhet använder användarnamn omvänd CHAP och omvänd CHAP lösenord tooidentify själva toohello initieraren under den här autentiseringsprocessen.
-
-> [!NOTE]
-> Inställningarna för CHAP-målet är globala inställningar. När de här inställningarna tillämpas anslutet alla hello volymer toohello moln enheten använda CHAP-autentisering.
-
-Detaljerade anvisningar finns för[konfigurera CHAP för din enhet](storsimple-8000-configure-chap.md#bidirectional-or-mutual-authentication).
-
-#### <a name="configure-hello-storsimple-snapshot-manager-password"></a>Konfigurera hello lösenordet för StorSimple Snapshot Manager
-
-Programvaran StorSimple Manager finns på din Windows-värd och kan administratörer toomanage säkerhetskopior av StorSimple-enheten i hello form av lokala och molnögonblicksbilder.
+Den här parametern innehåller de autentiseringsuppgifter som molninstallationen använder när en CHAP-aktiverad initierare begär ömsesidig eller dubbelriktad autentisering. Molninstallationen använder ett omvänt CHAP-användarnamn och lösenord för att identifiera sig för initieraren under den här autentiseringsprocessen.
 
 > [!NOTE]
-> För hello molnet installation är din Windows-värd en virtuell Azure-dator.
+> Inställningarna för CHAP-målet är globala inställningar. När de här inställningarna tillämpas använder alla volymer som är anslutna till molninstallationen CHAP-autentisering.
 
-När du konfigurerar en enhet i hello StorSimple Snapshot Manager uppmanas du tooprovide hello StorSimple enheten IP-adress och lösenord tooauthenticate lagringsenheten. Detaljerade anvisningar finns för[lösenordet konfigurera StorSimple Snapshot Manager](storsimple-8000-change-passwords.md#set-the-storsimple-snapshot-manager-password).
+Detaljerade anvisningar finns i [Konfigurera CHAP för din enhet](storsimple-8000-configure-chap.md#bidirectional-or-mutual-authentication).
 
-#### <a name="change-hello-device-administrator-password"></a>Ändra hello enhetens administratörslösenord
+#### <a name="configure-the-storsimple-snapshot-manager-password"></a>Konfigurera lösenordet för StorSimple Snapshot Manager
 
-När du använder hello Windows PowerShell-gränssnittet tooaccess hello molnet installation är du obligatoriska tooenter administratörslösenord för enheten. För hello säkerheten för dina data, måste du ändra lösenordet innan hello moln-enhet kan användas. Detaljerade anvisningar finns för[konfigurera enhetens administratörslösenord](../storsimple/storsimple-8000-change-passwords.md#change-the-device-administrator-password).
+Programvaran StorSimple Manager finns på din Windows-värd och ger administratörer möjlighet att hantera säkerhetskopiering av din StorSimple-enhet i form av lokala och molnbaserade ögonblicksbilder.
 
-## <a name="connect-remotely-toohello-cloud-appliance"></a>Fjärransluta toohello moln-enhet
+> [!NOTE]
+> För molninstallationen är din Windows-värd en virtuell Azure-dator.
 
-Fjärråtkomst tooyour moln installation via hello Windows PowerShell-gränssnittet är inte aktiverad som standard. Måste du aktivera fjärrhantering på hello molnet enheten först och sedan på hello klienten användas tooaccess hello molnet installation.
+När du konfigurerar en enhet i StorSimple Snapshot Manager uppmanas du att ange StorSimple-enhetens IP-adress och lösenord för att autentisera lagringsenheten. Detaljerade anvisningar finns i [Konfigurera lösenordet för StorSimple Snapshot Manager](storsimple-8000-change-passwords.md#set-the-storsimple-snapshot-manager-password).
 
-Hej tvåstegsverifiering nedan beskriver hur tooconnect via fjärranslutning tooyour cloud installation.
+#### <a name="change-the-device-administrator-password"></a>Ändra enhetens administratörslösenord
+
+Om du använder Windows PowerShell-gränssnittet för att komma åt molninstallationen måste du ange ett administratörslösenord för enheten. För att skydda dina data måste du ändra det här lösenordet innan molninstallationen kan användas. Detaljerade anvisningar finns i [Konfigurera administratörslösenord för enheten](../storsimple/storsimple-8000-change-passwords.md#change-the-device-administrator-password).
+
+## <a name="connect-remotely-to-the-cloud-appliance"></a>Fjärransluta till molninstallationen
+
+Fjärråtkomst till molninstallationen via Windows PowerShell-gränssnittet är inte aktiverat som standard. Du måste aktivera fjärrhantering i molninstallationen först, och sedan på klienten som används för att komma åt molninstallationen.
+
+Följande tvåstegsprocedur beskriver hur du fjärransluter till molninstallationen.
 
 ### <a name="step-1-configure-remote-management"></a>Steg 1: Konfigurera fjärrhantering
 
-Utföra hello följande steg tooconfigure fjärrhantering för din StorSimple-enhet för molnet.
+Du konfigurerar fjärrhantering för StorSimple-molninstallationen genom att följa stegen nedan.
 
 [!INCLUDE [Configure remote management via HTTP for cloud appliance](../../includes/storsimple-8000-configure-remote-management-http-device.md)]
 
-### <a name="step-2-remotely-access-hello-cloud-appliance"></a>Steg 2: Fjärråtkomst till hello molnet installation
+### <a name="step-2-remotely-access-the-cloud-appliance"></a>Steg 2: Fjärransluta till molninstallationen
 
-När du aktiverar fjärrhantering på hello moln-enhet, kan du använda Windows PowerShell-fjärrkommunikation tooconnect toohello installation från en annan virtuell dator i hello samma virtuella nätverk. Du kan till exempel ansluta från hello värden VM att du konfigurerat och använt tooconnect iSCSI. I de flesta distributioner öppnas du en offentlig slutpunkt tooaccess värden VM som du kan använda för att komma åt hello molnet installation.
+När du har aktiverat fjärrhantering för molninstallationen använder du Windows PowerShell-fjärrkommunikation för att ansluta till installationen från en annan virtuell dator i samma virtuella nätverk. Du kan till exempel ansluta från den värd-VM som du konfigurerade och använde för att ansluta iSCSI. I de flesta distributioner öppnar du en offentlig slutpunkt för att komma åt din virtuella värddator som du kan använda för att komma åt molninstallationen.
 
 > [!WARNING]
-> **Förbättrad säkerhet rekommenderar vi att du använder HTTPS när du ansluter toohello slutpunkter och ta sedan bort hello slutpunkter när du har slutfört din PowerShell-fjärrsession.**
+> **För ökad säkerhet rekommenderar vi starkt att du använder HTTPS för att ansluta till slutpunkterna och sedan tar bort slutpunkterna när din PowerShell-fjärrsession är slutförd.**
 
-Du måste följa hello procedurer i [fjärranslutning tooyour StorSimple-enhet](storsimple-8000-remote-connect.md) tooset in fjärrstyrning för din enhet i molnet.
+Du måste följa procedurerna i [Fjärransluta till din StorSimple-enhet](storsimple-8000-remote-connect.md) när du konfigurerar fjärrstyrning för molninstallationen.
 
-## <a name="connect-directly-toohello-cloud-appliance"></a>Anslut direkt toohello moln-enhet
+## <a name="connect-directly-to-the-cloud-appliance"></a>Ansluta direkt till molninstallationen
 
-Du kan också ansluta direkt toohello moln installation. tooconnect direkt toohello molnet installation från en annan dator utanför Hej virtuellt nätverk eller utanför hello Microsoft Azure-miljön, måste du skapa ytterligare slutpunkter.
+Du kan också ansluta direkt till molninstallationen. Om du vill ansluta direkt till molninstallationen från en annan dator utanför det virtuella nätverket eller utanför Microsoft Azure-miljön måste du skapa ytterligare slutpunkter.
 
-Utföra hello följande steg toocreate en offentlig slutpunkt på hello moln-enhet.
+Du skapar en offentlig slutpunkt för molninstallationen genom att följa stegen nedan.
 
 [!INCLUDE [Create public endpoints on a cloud appliance](../../includes/storsimple-8000-create-public-endpoints-cloud-appliance.md)]
 
-Vi rekommenderar att du ansluter från en annan virtuell dator i hello samma virtuella nätverket eftersom den här metoden minimerar hello antalet offentliga slutpunkter i ditt virtuella nätverk. I det här fallet ansluter toohello virtuella datorn via en fjärrskrivbordssession och sedan konfigurera den virtuella datorn för användning som alla andra Windows-klienter i ett lokalt nätverk. Du behöver inte tooappend hello offentliga portnumret eftersom hello port redan är känd.
+Vi rekommenderar att du ansluter från en annan virtuell dator i samma virtuella nätverk eftersom den här metoden minimerar antalet offentliga slutpunkter i ditt virtuella nätverk. I detta fall ansluter du den virtuella datorn via en fjärrskrivbordssession och konfigurerar sedan den virtuella datorn på samma sätt som andra Windows-klienter i ett lokalt nätverk. Du behöver inte lägga till det offentliga portnumret eftersom porten redan är känd.
 
-## <a name="work-with-hello-storsimple-cloud-appliance"></a>Arbeta med hello StorSimple-enhet för molnet
+## <a name="work-with-the-storsimple-cloud-appliance"></a>Arbeta med StorSimple-molninstallationen
 
-Nu när du har skapat och konfigurerat hello StorSimple-enhet för moln, är klar toostart arbeta med den. Du kan arbeta med volymbehållare, volymer och säkerhetskopieringspolicyer i en molninstallation på samma sätt som på en fysisk StorSimple-enhet. hello enda skillnaden är att du måste du markera hello molnet installation från din enhetslista toomake. Se för[använda hello StorSimple Enhetshanteraren service toomanage en moln-installation](storsimple-8000-manager-service-administration.md) stegvisa anvisningar för hello olika administrationsuppgifter för hello för molnet.
+Nu när du har skapat och konfigurerat StorSimple-molninstallationen är det dags att börja arbeta med den. Du kan arbeta med volymbehållare, volymer och säkerhetskopieringspolicyer i en molninstallation på samma sätt som på en fysisk StorSimple-enhet. Den enda skillnaden är att du måste vara noga med att välja molninstallationen från enhetslistan. Stegvisa anvisningar som beskriver de olika hanteringsaktiviteterna för molninstallationen finns i [Use the StorSimple Device Manager service to manage a cloud appliance](storsimple-8000-manager-service-administration.md) (Hantera en molninstallation med hjälp av StorSimple Device Manager-tjänsten).
 
-hello följande avsnitt beskrivs några av hello skillnader som du får när du arbetar med hello molnet installation.
+I följande avsnitt beskrivs några av de skillnader som du kommer att upptäcka när du arbetar med molninstallationen.
 
 ### <a name="maintain-a-storsimple-cloud-appliance"></a>Underhålla en StorSimple-molninstallation
 
-Eftersom det är en programvarubaserad enhet, underhåll för hello för molnet är minimal när jämfört med toomaintenance för hello fysisk enhet.
+Eftersom molninstallationen är en helt programvarubaserad enhet kräver den minimalt med underhåll jämfört med den fysiska enheten.
 
-Du kan inte uppdatera en molninstallation. Använd hello senaste versionen av programvaran toocreate en ny installation av molnet.
+Du kan inte uppdatera en molninstallation. Använd den senaste versionen av programvaran för att skapa en ny molninstallation.
 
 
 ### <a name="storage-accounts-for-a-cloud-appliance"></a>Lagringskonton för en molninstallation
 
-Lagringskonton skapas för användning av hello StorSimple Device Manager service, hello molnet installation och hello fysisk enhet. När du skapar dina lagringskonton rekommenderar vi att du använder en regionsidentifierare i hello eget namn. Detta säkerställer att hello regionen är konsekvent på alla systemkomponenter hello. För en för moln, är det viktigt att alla hello-komponenter finns i hello samma region tooprevent prestandaproblem.
+Lagringskonton skapas för användning av StorSimple Device Manager-tjänsten, av molninstallationen och av den fysiska enheten. Vi rekommenderar att du använder en regionsidentifierare i det egna namnet när du skapar dina lagringskonton. På så sätt blir det lättare att säkerställa att regionen är konsekvent mellan alla systemkomponenter. För att undvika prestandaproblem med en molninstallation är det viktigt att alla komponenter finns i samma region.
 
-Stegvisa anvisningar finns för[Lägg till ett lagringskonto](storsimple-8000-manage-storage-accounts.md#add-a-storage-account).
+Stegvisa anvisningar finns i [Lägg till ett lagringskonto](storsimple-8000-manage-storage-accounts.md#add-a-storage-account).
 
 ### <a name="deactivate-a-storsimple-cloud-appliance"></a>Inaktivera en StorSimple-molninstallation
 
-När du inaktiverar en enhet i molnet hello åtgärden tar bort hello VM och hello resurser som skapades när den etablerades. När hello molnet installation inaktiveras, kan den inte återställas tooits tidigare tillstånd. Innan du inaktiverar hello molnet installation Se till att toostop eller ta bort klienter och värdar som är beroende av den.
+När du inaktiverar en molninstallation tas den virtuella datorn och resursen som skapades när installationen etablerades bort. När molninstallationen har inaktiverats kan den inte återställas till sitt tidigare tillstånd. Stoppa eller ta bort klienter och värdar som är beroende av molninstallationen innan du inaktiverar den.
 
-Inaktivera en enhet i molnet resulterar i hello följande åtgärder:
+Följande åtgärder utförs när du inaktiverar en molninstallation:
 
-* hello molnet enheten tas bort.
-* hello OS-disk- och datadiskar som skapats för hello för molnet tas bort.
-* hello värdbaserade tjänsten och virtuella nätverk som skapades under etableringen bevaras. Om du inte använder dem, bör du ta bort dem manuellt.
-* Molnögonblicksbilder som skapats för hello för molnet bevaras.
+* Molninstallationen tas bort.
+* Operativsystemdisken och datadiskarna som skapades för molninstallationen tas bort.
+* Den värdbaserade tjänsten och virtuella nätverk som skapades under etableringen bevaras. Om du inte använder dem, bör du ta bort dem manuellt.
+* Ögonblicksbilder av molndata som har skapats för molninstallationen sparas.
 
-Stegvisa anvisningar finns för[inaktivera och ta bort din StorSimple-enhet](storsimple-8000-deactivate-and-delete-device.md).
+Stegvisa anvisningar finns i [Inaktivera och ta bort din virtuella StorSimple-enhet](storsimple-8000-deactivate-and-delete-device.md).
 
-Så snart hello moln-enhet visas som inaktiverad på hello StorSimple Enhetshanteraren service blad, du kan ta bort hello moln-enhet från listan över enheter på hello **enheter** bladet.
+När molninstallationen visas som inaktiverad på bladet för StorSimple Device Manager-tjänsten kan du ta bort den från enhetslistan på bladet **Enheter**.
 
 ### <a name="start-stop-and-restart-a-cloud-appliance"></a>Starta, stoppa och starta om en molninstallation
-Till skillnad från hello fysiska StorSimple-enheten finns det ingen ström på eller power av knappen toopush på en StorSimple-enhet för molnet. Det kan dock finnas tillfällen där du behöver toostop och starta om hello molnet installation.
+Till skillnad från den fysiska StorSimple-enheten finns det ingen strömbrytare på en StorSimple-molninstallation. Det kan dock finnas tillfällen när du behöver stoppa och starta om molninstallationen.
 
-Hej enklast för du toostart, stoppa och starta om en installation med molnet via hello service bladet för virtuella datorer. Gå hello virtuella service. Hello listan över virtuella datorer och identifiera hello VM motsvarande tooyour moln-enhet (samma namn) och på hello VM-namn. När du tittar på din virtuella bladet hello molnet installation status är **kör** eftersom den startas som standard när den har skapats. Du kan starta, stoppa och starta om en virtuell dator när som helst.
+Det enklaste sättet att starta, stoppa och starta om en molninstallation är via bladet för Virtual Machines-tjänsten. Gå till tjänsten Virtual Machines. I listan med virtuella datorer letar du upp den virtuella dator som är kopplad till din molninstallation (samma namn) och klickar på namnet på den virtuella datorn. På bladet för den virtuella datorn visas molninstallationens status som **Körs** eftersom molninstallationen startas som standard när den har skapats. Du kan starta, stoppa och starta om en virtuell dator när som helst.
 
 [!INCLUDE [Stop and restart cloud appliance](../../includes/storsimple-8000-stop-restart-cloud-appliance.md)]
 
-### <a name="reset-toofactory-defaults"></a>Återställ toofactory inställningar
-Om du bestämmer dig för toostart över med din enhet i molnet, inaktivera och ta bort den och skapa en ny.
+### <a name="reset-to-factory-defaults"></a>Återställa till fabriksinställningarna
+Om du bestämmer dig för att börja om med molninstallationen inaktiverar du den och tar bort den och skapar sedan en ny.
 
-## <a name="fail-over-toohello-cloud-appliance"></a>Växla över toohello moln-enhet
-Katastrofåterställning (DR) är en av hello viktiga scenarier som hello StorSimple-enhet för molnet har utformats för. I det här scenariot hello fysiska StorSimple-enheten eller hela datacentret inte tillgängliga. Lyckligtvis kan du använda ett moln installation toorestore åtgärder på en annan plats. Under Katastrofåterställning hello volymbehållarna från hello källenheten ändra ägarskap och är överförda toohello moln installation.
+## <a name="fail-over-to-the-cloud-appliance"></a>Växla över till molninstallationen
+Haveriberedskap är ett av de scenarier som StorSimple Cloud Appliance utvecklades för. Under dessa scenarier kan det hända att den fysiska StorSimple-enheten eller hela datacentret inte tillgängliga. Som tur är kan du använda molninstallationen för att återställa åtgärder på en annan plats. Under en katastrofåterställning byter volymbehållarna från källenheten ägarskap och överförs till molninstallationen.
 
-hello kraven för Katastrofåterställning är:
+Följande krav måste vara uppfyllda för att katastrofåterställningen ska lyckas:
 
-* hello molnet installation har skapats och konfigurerats.
-* Alla hello volymer inom hello volymbehållare är offline.
-* Hej volymbehållare som växlar du över, har en associerad ögonblicksbild i molnet.
+* Molninstallationen har skapats och konfigurerats.
+* Alla volymer i volymbehållaren är offline.
+* Den volymbehållare som du redundansväxlar har en tillhörande ögonblicksbild av molndata.
 
 > [!NOTE]
-> * När du använder en moln-installation som hello sekundär enhet för Katastrofåterställning, Kom ihåg att hello 8010 har 30 TB standardlagring och 8020 har 64 TB premiumlagring. hello högre kapacitet 8020 moln installation kan vara mer lämpad för katastrofåterställning.
+> * När du använder en molninstallation som en sekundär enhet för katastrofåterställning är det viktigt att komma ihåg att 8010 har 30 TB standardlagring, och 8020 64 TB Premium Storage. 8020-molninstallationer med högre kapacitet kan passa bättre i ett katastrofåterställningsscenario.
 
-Stegvisa anvisningar finns för[växla över tooa moln installation](storsimple-8000-device-failover-cloud-appliance.md).
+Stegvisa anvisningar finns i avsnittet [Växla över till en molninstallation](storsimple-8000-device-failover-cloud-appliance.md).
 
-## <a name="delete-hello-cloud-appliance"></a>Ta bort hello molnet installation
-Om du tidigare har konfigurerat och använt en molnet StorSimple-enhet men nu vill toostop debiteringarna för dess användning måste du stoppa hello molnet installation. Stoppa hello molnet installation tar bort hello VM. Om du stoppar molninstallationen ackumuleras inte längre kostnader för dess användning mot din prenumeration. hello lagringskostnaderna för hello OS- och datadiskar kommer dock fortsätta.
+## <a name="delete-the-cloud-appliance"></a>Ta bort molninstallationen
+Om du tidigare har konfigurerat och använt en StorSimple-molninstallation men inte vill fortsätta att ackumulera beräkningskostnader för dess användning, måste du stoppa molninstallationen. Om du stoppar molninstallationen avallokeras den virtuella datorn. Om du stoppar molninstallationen ackumuleras inte längre kostnader för dess användning mot din prenumeration. Lagringskostnaderna för operativsystem- och datadiskarna fortsätter dock att ackumuleras.
 
-toostop alla hello debiterar, måste du ta bort hello molnet installation. toodelete hello säkerhetskopior som skapats av hello moln-enhet, kan du inaktivera eller ta bort hello enhet. Mer information finns i [Inaktivera och ta bort en StorSimple-enhet](storsimple-8000-deactivate-and-delete-device.md).
+Om du vill stoppa alla kostnader måste du ta bort molninstallationen. Om du vill ta bort de säkerhetskopior som har skapats av molninstallationen kan du inaktivera eller ta bort enheten. Mer information finns i [Inaktivera och ta bort en StorSimple-enhet](storsimple-8000-deactivate-and-delete-device.md).
 
 [!INCLUDE [Delete a cloud appliance](../../includes/storsimple-8000-delete-cloud-appliance.md)]
 
 ## <a name="troubleshoot-internet-connectivity-errors"></a>Felsöka problem med Internetanslutning
-Under hello skapandet av en moln-installation, om det finns ingen anslutning toohello Internet, hello skapa steget misslyckas. tootroubleshoot anslutningsfel till Internet, utför hello följa stegen i hello Azure-portalen:
+Om det inte finns någon Internetanslutning när molninstallationen skapas, så misslyckas åtgärden. Du kan felsöka problem med Internetanslutningen genom att utföra följande steg i Azure Portal:
 
-1. [Skapa en virtuell dator med Windows Server 2012 i Azure](/articles/virtual-machines/windows/quick-create-portal.md). Den här virtuella datorn ska använda hello samma lagringskonto, VNet och undernät som används av din enhet i molnet. Om det finns en befintlig Windows Server-värd i Azure med hjälp av Hej samma lagringskonto, VNet och undernät, du kan också använda den tootroubleshoot hello Internet-anslutning.
-2. Fjärråtkomst logga in på hello virtuell dator som skapats i hello föregående steg.
-3. Öppna ett kommandofönster inuti hello virtuella datorn (Win + R och skriv sedan `cmd`).
-4. Kör följande kommando i Kommandotolken hello hello.
+1. [Skapa en virtuell dator med Windows Server 2012 i Azure](/articles/virtual-machines/windows/quick-create-portal.md). Den virtuella datorn måste använda samma lagringskonto, virtuella nätverk och undernät som används av molninstallationen. Om det finns en befintlig Windows Server-värd i Azure som använder samma lagringskonto, virtuella nätverk och undernät, kan du även använda den för att felsöka Internetanslutningen.
+2. Logga in via fjärrinloggning på den virtuella datorn som skapades i föregående steg.
+3. Öppna ett kommandofönster i den virtuella datorn (Win + R och skriv sedan `cmd`).
+4. Kör följande cmd i prompten.
 
     `nslookup windows.net`
-5. Om `nslookup` misslyckas, och sedan Internet-anslutningsfel förhindrar hello molnet installation registrerar toohello StorSimple enheten Manager-tjänsten.
-6. Ändra hello krävs tooyour virtuellt nätverk tooensure som hello molnet installation är kan tooaccess Azure platser som _windows.net_.
+5. Om `nslookup` misslyckas hindrar problemet med Internetanslutningen molninstallationen från att registrera sig för StorSimple Manager-tjänsten.
+6. Gör nödvändiga ändringar i ditt virtuella nätverk så att molninstallationen kan komma åt Azure-webbplatser, till exempel _windows.net_.
 
 ## <a name="next-steps"></a>Nästa steg
-* Lär dig hur för[använda hello StorSimple Enhetshanteraren service toomanage en moln-installation](storsimple-8000-manager-service-administration.md).
-* Förstå hur för[återställer en StorSimple-volym från en säkerhetskopia](storsimple-8000-restore-from-backup-set-u2.md).
+* Lär dig hur du [hanterar en molninstallation med hjälp av StorSimple Device Manager-tjänsten](storsimple-8000-manager-service-administration.md).
+* Förstå hur du [återställer en StorSimple-volym från en säkerhetskopia](storsimple-8000-restore-from-backup-set-u2.md).

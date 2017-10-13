@@ -1,6 +1,6 @@
 ---
-title: "aaaCreate nätverkssäkerhetsgrupper - Azure PowerShell | Microsoft Docs"
-description: "Lär dig hur toocreate och distribuera nätverkssäkerhetsgrupper med hjälp av PowerShell."
+title: "Skapa nätverkssäkerhetsgrupper - Azure PowerShell | Microsoft Docs"
+description: "Lär dig hur du skapar och distribuerar nätverkssäkerhetsgrupper med hjälp av PowerShell."
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/23/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1c8db773febb163d9cb010d23f2913b5ebe0fa94
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 26fe67b43d63c6685d8ae7644dd7df6931a4d2a5
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="create-network-security-groups-using-powershell"></a>Skapa nätverk med hjälp av PowerShell-säkerhetsgrupper
 
@@ -28,17 +28,17 @@ ms.lasthandoff: 10/06/2017
 
 [!INCLUDE [virtual-networks-create-nsg-intro-include](../../includes/virtual-networks-create-nsg-intro-include.md)]
 
-Azure har två distributionsmodeller: Azure Resource Manager och klassisk. Microsoft rekommenderar att skapa resurser via hello Resource Manager-modellen. Mer om toolearn hello skillnaderna mellan hello två modeller, läsa hello [förstå Azure distributionsmodeller](../azure-resource-manager/resource-manager-deployment-model.md) artikel. Den här artikeln beskriver hello Resource Manager-modellen. Du kan också [skapa NSG: er i hello klassiska distributionsmodellen](virtual-networks-create-nsg-classic-ps.md).
+Azure har två distributionsmodeller: Azure Resource Manager och klassisk. Microsoft rekommenderar att skapa resurser med Resource Manager-distributionsmodellen. Mer information om skillnaderna mellan de två modellerna finns i artikeln [Understand Azure deployment models](../azure-resource-manager/resource-manager-deployment-model.md) (Förstå Azure-distributionsmodellerna). Den här artikeln beskriver Resource Manager-distributionsmodellen. Du kan också [skapa NSG: er i den klassiska distributionsmodellen](virtual-networks-create-nsg-classic-ps.md).
 
 [!INCLUDE [virtual-networks-create-nsg-scenario-include](../../includes/virtual-networks-create-nsg-scenario-include.md)]
 
-hello exempel PowerShell-kommandona nedan förväntar sig en enkel miljö som redan har skapats utifrån hello scenariot ovan. Om du vill toorun hello kommandon som de visas i det här dokumentet, först skapa hello testmiljö genom att distribuera [mallen](http://github.com/telmosampaio/azure-templates/tree/master/201-IaaS-WebFrontEnd-SQLBackEnd), klickar du på **distribuera tooAzure**, Ersätt hello Standardparametervärden Om nödvändigt och hello anvisningar i hello portal.
+Exempel PowerShell-kommandona nedan förväntar sig en enkel miljö som redan har skapats baserat på scenariot ovan. Om du vill köra kommandon som de visas i det här dokumentet, först skapa testmiljön genom att distribuera [mallen](http://github.com/telmosampaio/azure-templates/tree/master/201-IaaS-WebFrontEnd-SQLBackEnd), klickar du på **till Azure**, ersätta Standardparametervärden om det behövs och följ instruktionerna i portalen.
 
-## <a name="how-toocreate-hello-nsg-for-hello-front-end-subnet"></a>Hur toocreate hello NSG för hello klientdelens undernät
-toocreate en NSG som heter *NSG-klientdel* baserat på scenariot hello slutföra hello följande steg:
+## <a name="how-to-create-the-nsg-for-the-front-end-subnet"></a>Hur du skapar NSG för undernätet frontend
+Så här skapar du en NSG som heter *NSG-klientdel* baserat på scenariot, gör du följande:
 
-1. Om du aldrig har använt Azure PowerShell, se [hur tooInstall och konfigurera Azure PowerShell](/powershell/azure/overview) och följer instruktionerna för hello alla hello sätt toohello avslutas toosign till Azure och välja din prenumeration.
-2. Skapa en säkerhetsregel tillåter åtkomst från hello Internet tooport 3389.
+1. Om du aldrig använt Azure PowerShell tidigare, se [Installera och konfigurera Azure PowerShell](/powershell/azure/overview) och följ instruktionerna till slutet för att logga in på Azure och välja din prenumeration.
+2. Skapa en säkerhetsregel tillåter åtkomst från Internet till port 3389.
 
     ```powershell
     $rule1 = New-AzureRmNetworkSecurityRuleConfig -Name rdp-rule -Description "Allow RDP" `
@@ -47,7 +47,7 @@ toocreate en NSG som heter *NSG-klientdel* baserat på scenariot hello slutföra
     -DestinationAddressPrefix * -DestinationPortRange 3389
     ```
 
-3. Skapa en säkerhetsregel tillåter åtkomst från hello Internet tooport 80.
+3. Skapa en säkerhetsregel tillåter åtkomst från Internet till port 80.
 
     ```powershell
     $rule2 = New-AzureRmNetworkSecurityRuleConfig -Name web-rule -Description "Allow HTTP" `
@@ -56,20 +56,20 @@ toocreate en NSG som heter *NSG-klientdel* baserat på scenariot hello slutföra
     -DestinationPortRange 80
     ```
 
-4. Lägg till hello regler skapade ovan tooa ny NSG med namnet **NSG-klientdel**.
+4. Lägg till regler som skapade ovan till en ny NSG med namnet **NSG-klientdel**.
 
     ```powershell
     $nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName TestRG -Location westus `
     -Name "NSG-FrontEnd" -SecurityRules $rule1,$rule2
     ```
 
-5. Kontrollera hello regler som skapats i hello NSG genom att skriva hello följande:
+5. Kontrollera reglerna som skapas i NSG: N genom att skriva följande:
 
     ```powershell
     $nsg
     ```
    
-    Utdata visar bara hello säkerhetsregler:
+    Utdata visar bara säkerhetsregler:
    
         SecurityRules        : [
                                  {
@@ -103,7 +103,7 @@ toocreate en NSG som heter *NSG-klientdel* baserat på scenariot hello slutföra
                                    "ProvisioningState": "Succeeded"
                                  }
                                ]
-6. Associera hello NSG skapade ovan toohello *klientdel* undernät.
+6. Koppla NSG skapade ovan till den *klientdel* undernät.
 
     ```powershell
     $vnet = Get-AzureRmVirtualNetwork -ResourceGroupName TestRG -Name TestVNet
@@ -111,7 +111,7 @@ toocreate en NSG som heter *NSG-klientdel* baserat på scenariot hello slutföra
     -AddressPrefix 192.168.1.0/24 -NetworkSecurityGroup $nsg
     ```
 
-    Utdata visar endast hello *klientdel* undernätsinställningar meddelande hello värde för hello **NetworkSecurityGroup** egenskapen:
+    Utdata visar endast den *klientdel* undernätsinställningar, Lägg märke till värdet för den **NetworkSecurityGroup** egenskapen:
    
                     Subnets           : [
                                           {
@@ -135,25 +135,25 @@ toocreate en NSG som heter *NSG-klientdel* baserat på scenariot hello slutföra
                                           }
    
    > [!WARNING]
-   > hello utdata för hello ovanstående kommando visar hello innehållet för hello virtuellt nätverk konfigurationsobjekt, som endast finns på hello datorn där du kör PowerShell. Du behöver toorun hello `Set-AzureRmVirtualNetwork` cmdlet toosave tooAzure dessa inställningar.
+   > Utdata för ovanstående kommando visar innehållet för konfigurationsobjektet virtuella nätverk som endast finns på datorn där du kör PowerShell. Du måste köra den `Set-AzureRmVirtualNetwork` för att spara inställningarna till Azure.
    > 
    > 
-7. Spara hello nya VNet inställningar tooAzure.
+7. Spara de nya VNet-inställningarna i Azure.
 
     ```powershell
     Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
     ```
 
-    Utdata visar bara hello NSG del:
+    Utdata visar bara NSG del:
    
         "NetworkSecurityGroup": {
           "Id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/networkSecurityGroups/NSG-FrontEnd"
         }
 
-## <a name="how-toocreate-hello-nsg-for-hello-back-end-subnet"></a>Hur toocreate hello NSG för hello backend-undernät
-toocreate en NSG som heter *NSG BackEnd* utifrån hello scenariot ovan kan slutföra hello följande steg:
+## <a name="how-to-create-the-nsg-for-the-back-end-subnet"></a>Hur du skapar NSG för backend-undernät
+Så här skapar du en NSG som heter *NSG BackEnd* baserat på scenariot ovan, gör du följande:
 
-1. Skapa en säkerhetsregel tillåter åtkomst från hello frontend undernät tooport 1433 (standardporten som används av SQL Server).
+1. Skapa en säkerhetsregel tillåter åtkomst från klientdelen undernätet till port 1433 (standardporten som används av SQL Server).
 
     ```powershell
     $rule1 = New-AzureRmNetworkSecurityRuleConfig -Name frontend-rule `
@@ -163,7 +163,7 @@ toocreate en NSG som heter *NSG BackEnd* utifrån hello scenariot ovan kan slutf
     -DestinationAddressPrefix * -DestinationPortRange 1433
     ```
 
-2. Skapa en säkerhetsregel blockerar åtkomst toohello Internet.
+2. Skapa en säkerhetsregel blockerar åtkomst till Internet.
 
     ```powershell
     $rule2 = New-AzureRmNetworkSecurityRuleConfig -Name web-rule `
@@ -173,7 +173,7 @@ toocreate en NSG som heter *NSG BackEnd* utifrån hello scenariot ovan kan slutf
     -DestinationAddressPrefix Internet -DestinationPortRange *
     ```
 
-3. Lägg till hello regler skapade ovan tooa ny NSG med namnet **NSG BackEnd**.
+3. Lägg till regler som skapade ovan till en ny NSG med namnet **NSG BackEnd**.
 
     ```powershell
     $nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName TestRG `
@@ -181,14 +181,14 @@ toocreate en NSG som heter *NSG BackEnd* utifrån hello scenariot ovan kan slutf
     -SecurityRules $rule1,$rule2
     ```
 
-4. Associera hello NSG skapade ovan toohello *BackEnd* undernät.
+4. Koppla NSG skapade ovan till den *BackEnd* undernät.
 
     ```powershell
     Set-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name BackEnd ` 
     -AddressPrefix 192.168.2.0/24 -NetworkSecurityGroup $nsg
     ```
 
-    Utdata visar endast hello *BackEnd* undernätsinställningar meddelande hello värde för hello **NetworkSecurityGroup** egenskapen:
+    Utdata visar endast den *BackEnd* undernätsinställningar, Lägg märke till värdet för den **NetworkSecurityGroup** egenskapen:
    
         Subnets           : [
                       {
@@ -203,16 +203,16 @@ toocreate en NSG som heter *NSG BackEnd* utifrån hello scenariot ovan kan slutf
                         "RouteTable": null,
                         "ProvisioningState": "Succeeded"
                       }
-5. Spara hello nya VNet inställningar tooAzure.
+5. Spara de nya VNet-inställningarna i Azure.
 
     ```powershell
     Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
     ```
 
-## <a name="how-tooremove-an-nsg"></a>Hur tooremove en NSG
-toodelete en befintlig NSG kallas *NSG-klientdel* i detta fall följer hello steg nedan:
+## <a name="how-to-remove-an-nsg"></a>Ta bort en NSG
+Ta bort en befintlig NSG kallas *NSG-klientdel* i det här fallet, följ instruktionerna nedan:
 
-Kör hello **ta bort AzureRmNetworkSecurityGroup** visas nedan och vara säker tooinclude hello resurs grupp hello NSG tillhör.
+Kör den **ta bort AzureRmNetworkSecurityGroup** visas nedan och se till att ta NSG: N finns i resursgruppen.
 
 ```powershell
 Remove-AzureRmNetworkSecurityGroup -Name "NSG-FrontEnd" -ResourceGroupName "TestRG"

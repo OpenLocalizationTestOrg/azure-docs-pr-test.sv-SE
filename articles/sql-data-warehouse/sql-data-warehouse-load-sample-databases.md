@@ -1,5 +1,5 @@
 ---
-title: aaaLoad exempeldata i SQL Data Warehouse | Microsoft Docs
+title: "Läs in exempeldata i SQL Data Warehouse | Microsoft Docs"
 description: "läs in exempeldata i SQL Data Warehouse"
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,19 +15,19 @@ ms.workload: data-services
 ms.custom: loading
 ms.date: 10/31/2016
 ms.author: cakarst;barbkess
-ms.openlocfilehash: 3459c42f3aae51c27fd35db7874faf99e1e577e5
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 1e0df958a2f18fe1e988168918e5cfd293f84e64
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="load-sample-data-into-sql-data-warehouse"></a>läs in exempeldata i SQL Data Warehouse
-Följ dessa enkla steg tooload och fråga hello Adventure Works exempeldatabasen. Dessa skript använder först sqlcmd toorun SQL som kommer att skapa tabeller och vyer. När du har skapat tabeller använder hello skript bcp tooload data.  Om du inte redan har sqlcmd och bcp installerat kan du följa dessa länkar för[installera bcp] [ install bcp] och för[installera sqlcmd][install sqlcmd].
+Följ dessa enkla steg för att läsa in och fråga exempeldatabasen för Adventure Works. Dessa skript använder sqlcmd först för att köra SQL som kommer att skapa tabeller och vyer. När tabeller har skapats, använder skripten bcp för att läsa in data.  Om du inte redan har sqlcmd och bcp installerat kan du följa dessa länkar till [installera bcp] [ install bcp] och [installera sqlcmd][install sqlcmd].
 
 ## <a name="load-sample-data"></a>Läs in exempeldata
-1. Hämta hello [Adventure Works-exempelskript för SQL Data Warehouse] [ Adventure Works Sample Scripts for SQL Data Warehouse] zip-filen.
-2. Extrahera hello filer från hämtade zip tooa katalog på din lokala dator.
-3. Redigera hello extraheras filen aw_create.bat och ange följande variabler som finns hello överst i filen hello hello.  Vara säker på att tooleave inga blanksteg mellan hello ”=” och hello-parametern.  Nedan följer exempel på hur redigeringarna kan se ut.
+1. Hämta den [Adventure Works-exempelskript för SQL Data Warehouse] [ Adventure Works Sample Scripts for SQL Data Warehouse] zip-filen.
+2. Extrahera filerna från hämtade zip till en katalog på din lokala dator.
+3. Redigera den hämtade filen aw_create.bat och ange följande variabler som finns längst upp i filen.  Se till att lämna inga blanksteg mellan den ”=” och parametern.  Nedan följer exempel på hur redigeringarna kan se ut.
    
     ```
     server=mylogicalserver.database.windows.net
@@ -35,25 +35,25 @@ Följ dessa enkla steg tooload och fråga hello Adventure Works exempeldatabasen
     password=Mydwpassw0rd
     database=mydwdatabase
     ```
-4. Kör hello redigeras aw_create.bat från en Windows-kommandotolk.  Var noga med att du befinner dig i hello katalog där du sparade den redigerade versionen av aw_create.bat.
+4. Kör den redigerade aw_create.bat från en Windows-kommandotolk.  Var noga med att du är i katalogen där du sparade den redigerade versionen av aw_create.bat.
    Det här skriptet kommer...
    
    * Ta bort alla Adventure Works tabeller eller vyer som redan finns i databasen
-   * Skapa hello Adventure Works tabeller och vyer
+   * Skapa Adventure Works-tabeller och vyer
    * Läsa in varje Adventure Works-tabell med bcp
-   * Validera hello radantal för varje Adventure Works-tabell
+   * Validera radantal för varje Adventure Works-tabell
    * Samla in statistik på varje kolumn för varje Adventure Works-tabell
 
 ## <a name="query-sample-data"></a>Fråga exempeldata
-När du har läst in exempeldata i SQL Data Warehouse, kan du snabbt köra några frågor.  toorun en fråga ansluta tooyour nyskapad Adventure Works-databasen i Azure SQL DW med hjälp av Visual Studio och SSDT, enligt beskrivningen i hello [fråga med Visual Studio] [ query with Visual Studio] dokumentet.
+När du har läst in exempeldata i SQL Data Warehouse, kan du snabbt köra några frågor.  Om du vill köra en fråga, ansluta till din nyskapade Adventure Works-databas i Azure SQL DW med hjälp av Visual Studio och SSDT, enligt beskrivningen i den [fråga med Visual Studio] [ query with Visual Studio] dokumentet.
 
-Exempel på enkla Välj instruktionen tooget alla hello info för hello anställda:
+Exempel på enkla select-instruktion att hämta informationen som anställda:
 
 ```sql
 SELECT * FROM DimEmployee;
 ```
 
-Exempel på en mer komplex fråga med konstruktioner, till exempel GROUP BY toolook på hello totalbelopp för all försäljning varje dag:
+Exempel på en mer komplex fråga med konstruktioner, till exempel GRUPPEN genom att titta på totalsumman för alla försäljning varje dag:
 
 ```sql
 SELECT OrderDateKey, SUM(SalesAmount) AS TotalSales
@@ -62,7 +62,7 @@ GROUP BY OrderDateKey
 ORDER BY OrderDateKey;
 ```
 
-Exempel på en väljer med en WHERE-satsen toofilter ut order från före ett visst datum:
+Exempel på en väljer med en WHERE-sats för att filtrera ut order från före ett visst datum:
 
 ```
 SELECT OrderDateKey, SUM(SalesAmount) AS TotalSales
@@ -75,7 +75,7 @@ ORDER BY OrderDateKey;
 SQL Data Warehouse stöder nästan alla T-SQL-konstruktioner som har stöd för SQL Server.  Eventuella skillnader som finns dokumenterade i vår [Migrera koden] [ migrate code] dokumentation.
 
 ## <a name="next-steps"></a>Nästa steg
-Nu när du har haft en chansen tootry några frågor med exempeldata, kolla hur för[utveckla][develop], [ladda][load], eller [ Migrera] [ migrate] tooSQL Data Warehouse.
+Nu när du har haft möjlighet att prova några frågor med exempeldata, kolla hur man [utveckla][develop], [ladda][load], eller [ Migrera] [ migrate] till SQL Data Warehouse.
 
 <!--Image references-->
 

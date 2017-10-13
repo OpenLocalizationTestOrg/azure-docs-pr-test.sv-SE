@@ -1,118 +1,136 @@
 ---
-Rubrik: aaa ”Azure Analysis Services självstudiekursen lektionen 5: skapa beräknade kolumner | Microsoft Docs ”beskrivning: Beskriver hur toocreate beräknade kolumner i självstudiekursen hello Azure Analysis Services-projekt. tjänster: analysis services dokumentationcenter: '' författare: minewiskan manager: erikre editor: '' taggar: ''
-
-MS.AssetID: ms.service: analysis services ms.devlang: NA ms.topic: get-started-article ms.tgt_pltfrm: NA ms.workload: na ms.date: 06/01/2017 ms.author: owend
+title: "Azure Analysis Services självstudiekurs 5: Skapa beräknade kolumner | Microsoft Docs"
+description: "Beskriver hur du skapar beräknade kolumner i Azure Analysis Services-självstudieprojektet."
+services: analysis-services
+documentationcenter: 
+author: Minewiskan
+manager: erikre
+editor: 
+tags: 
+ms.assetid: 
+ms.service: analysis-services
+ms.devlang: NA
+ms.topic: get-started-article
+ms.tgt_pltfrm: NA
+ms.workload: na
+ms.date: 09/20/2017
+ms.author: owend
+ms.openlocfilehash: eab74fbadc6a143ca5a2bc57a1762539a6d489c1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: sv-SE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="lesson-5-create-calculated-columns"></a>Lektion 5: Skapa beräknade kolumner
 
 [!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
-Under den här lektionen skapar du data i modellen genom att lägga till beräknade kolumner. Du kan skapa beräknade kolumner (som anpassade kolumner) när du använder hämta Data med hjälp av hello Query Editor eller senare i hello modellen designer liknande gör du här. Det finns fler toolearn [beräknade kolumner](https://docs.microsoft.com/sql/analysis-services/tabular-models/ssas-calculated-columns).
+Under den här lektionen skapar du data i modellen genom att lägga till beräknade kolumner. Du kan skapa beräknade kolumner (som anpassade kolumner) när du använder Hämta Data med hjälp av frågeredigeraren, eller senare i modelldesignern, på samma sätt som du gör här. Läs mer i [Skapa beräknade kolumner](https://docs.microsoft.com/sql/analysis-services/tabular-models/ssas-calculated-columns).
   
-Du kan skapa fem nya beräknade kolumner i tre olika tabeller. hello stegen är något annorlunda för varje aktivitet som visar att det finns flera sätt toocreate kolumner, byta namn på dem och placerar dem på olika platser i en tabell.  
+Du kan skapa fem nya beräknade kolumner i tre olika tabeller. Stegen för att göra detta är något annorlunda för varje uppgift, vilket visar att det finns flera sätt att skapa kolumner, byta namn på dem och placera dem på olika platser i en tabell.  
 
-Det är även den här lektionen där du först använder dataanalysuttryck (DAX). DAX är ett särskilt språk för att skapa mycket anpassningsbara formeluttryck för tabellmodeller. I den här kursen använder du DAX toocreate beräknade kolumner, mått och filter för rollen. Det finns fler toolearn [DAX i tabellmodeller](https://docs.microsoft.com/sql/analysis-services/tabular-models/understanding-dax-in-tabular-models-ssas-tabular). 
+Det är även den här lektionen där du först använder dataanalysuttryck (DAX). DAX är ett särskilt språk för att skapa mycket anpassningsbara formeluttryck för tabellmodeller. I den här självstudien använder du DAX för att skapa beräknade kolumner, mått och filter för roller. Läs mer i [DAX in tabular models](https://docs.microsoft.com/sql/analysis-services/tabular-models/understanding-dax-in-tabular-models-ssas-tabular) (DAX i tabellmodeller). 
   
-Uppskattad tid toocomplete lektionen: **15 minuter**  
+Uppskattad tidsåtgång för den här lektionen: **15 minuter**  
   
 ## <a name="prerequisites"></a>Krav  
-Det här avsnittet ingår i självstudiekursen för tabellmodellering som bör slutföras i rätt ordning. Innan du utför hello uppgifter i den här lektionen bör du slutfört hello föregående lektionen: [lektionen 4: skapa relationer](../tutorials/aas-lesson-4-create-relationships.md). 
+Det här avsnittet ingår i självstudiekursen för tabellmodellering som bör slutföras i rätt ordning. Innan du utför uppgifterna under den här lektionen bör du ha slutfört föregående lektion: [Lektion 4: Skapa relationer](../tutorials/aas-lesson-4-create-relationships.md). 
   
 ## <a name="create-calculated-columns"></a>Skapa beräknade kolumner  
   
-#### <a name="create-a-monthcalendar-calculated-column-in-hello-dimdate-table"></a>Skapa en beräknad kolumn MonthCalendar i hello DimDate tabell  
+#### <a name="create-a-monthcalendar-calculated-column-in-the-dimdate-table"></a>Skapa en beräknad MonthCalendar-kolumn i DimDate-tabellen  
   
-1.  Klicka på hello **modellen** menyn > **Model-View** > **datavy**.  
+1.  Klicka på menyn **Modell** > **Modellvy** > **Datavy**.  
   
-    Beräknade kolumner kan endast skapas med hjälp av hello modellen designer i datavyn.  
+    Beräknade kolumner kan endast skapas med hjälp av modelldesignern i datavyn.  
   
-2.  Klicka på hello i hello modellen designer **DimDate** tabellen (fliken).  
+2.  Klicka på tabellen **DimDate** i modelldesignern (flik).  
   
-3.  Högerklicka på hello **CalendarQuarter** kolumnrubriken och klicka sedan på **Infoga kolumn**.  
+3.  Högerklicka på kolumnrubriken **CalendarQuarter** och sedan på **Infoga kolumn**.  
   
-    En ny kolumn med namnet **beräknad kolumn 1** är infogade toohello till vänster i hello **kvartal** kolumn.  
+    En ny kolumn med namnet **Beräknad kolumn 1** infogas till vänster om kolumnen **Kalenderkvartal**.  
   
-4.  Skriv i hello formelfältet ovanför hello tabell hello följande DAX-formel: AutoComplete hjälper till att du skriver hello fullständiga namn på kolumner och tabeller och visar hello funktioner som är tillgängliga.  
+4.  Ange följande DAX-formel i formelfältet ovanför tabellen: AutoComplete hjälper dig att ange de fullständiga namnen på kolumnerna och tabellerna och visar en lista över de funktioner som är tillgängliga.  
   
     ```  
     =RIGHT(" " & FORMAT([MonthNumberOfYear],"#0"), 2) & " - " & [EnglishMonthName]  
     ``` 
   
-    Värden fylls sedan för alla hello rader i hello beräknad kolumn. Om du rulla hello tabellen, visas rader kan ha olika värden för den här kolumnen baserat på hello data på varje rad.    
+    Värden fylls sedan i för alla rader i den beräknade kolumnen. Om du bläddrar ner i tabellen ser du att rader kan ha olika värden för den här kolumnen baserat på data i varje rad.    
   
-5.  Byt namn på den här kolumnen för**MonthCalendar**. 
+5.  Byt namn på den här kolumnen till **MonthCalendar**. 
 
     ![aas-lesson5-newcolumn](../tutorials/media/aas-lesson5-newcolumn.png) 
   
-hello MonthCalendar beräknade kolumnen innehåller en sorterbar för månad.  
+Den beräknade MonthCalendar-kolumnen innehåller ett sorterbart namn för Månad.  
   
-#### <a name="create-a-dayofweek-calculated-column-in-hello-dimdate-table"></a>Skapa en beräknad kolumn DayOfWeek i hello DimDate tabell  
+#### <a name="create-a-dayofweek-calculated-column-in-the-dimdate-table"></a>Skapa en beräknad DayOfWeek-kolumn i DimDate-tabellen  
   
-1.  Med hello **DimDate** tabell fortfarande aktiv klickar du på hello **kolumnen** -menyn och klicka sedan på **Add Column**.  
+1.  När **DimDate**-tabellen fortfarande är aktiv klickar du på menyn **Kolumn** och sedan på **Lägg till kolumn**.  
   
-2.  Skriv i formelfältet hello hello följande formel:  
+2.  I formelfältet anger du följande formel:  
     
     ```
     =RIGHT(" " & FORMAT([DayNumberOfWeek],"#0"), 2) & " - " & [EnglishDayNameOfWeek]  
     ```
     
-    Tryck på RETUR när du har skapat hello formel. hello nya kolumn läggs toohello längst till höger i hello tabell.  
+    Tryck på RETUR när du är klar med att skapa formeln. Den nya kolumnen läggs till längst till höger i tabellen.  
   
-3.  Byt namn på hello kolumnen för**DayOfWeek**.  
+3.  Byt namn på kolumnen till **DayOfWeek**.  
   
-4.  Klicka på kolumnrubriken hello och dra sedan hello kolumnen mellan hello **EnglishDayNameOfWeek** kolumn och hello **DayNumberOfMonth** kolumn.  
+4.  Klicka på kolumnrubriken och dra sedan kolumnen mellan kolumnen **EnglishDayNameOfWeek** och kolumnen **DayNumberOfMonth**.  
   
     > [!TIP]  
-    > Flytta kolumner i tabellen gör det enklare toonavigate.  
+    > Genom att flytta kolumner i tabellen gör du det enklare att navigera.  
   
-hello DayOfWeek beräknade kolumnen innehåller ett sorterbar namn för hello dagen i veckan.  
+Den beräknade DayOfWeek-kolumnen innehåller ett sorterbart namn för veckodagen.  
   
-#### <a name="create-a-productsubcategoryname-calculated-column-in-hello-dimproduct-table"></a>Skapa en beräknad kolumn ProductSubcategoryName i hello DimProduct tabell  
+#### <a name="create-a-productsubcategoryname-calculated-column-in-the-dimproduct-table"></a>Skapa en beräknad ProductSubcategoryName-kolumn i tabellen DimProduct  
   
   
-1.  I hello **DimProduct** tabell, rulla toohello långt till höger i hello tabell. Meddelande hello längst till höger kolumn heter **Add Column** (kursiv), klicka på hello kolumnrubriken.  
+1.  I tabellen **DimProduct** bläddrar du längst till höger i tabellen. Observera att kolumnen längst till höger heter **Lägg till kolumn** (kursiv) och klicka på kolumnens rubrik.  
   
-2.  Skriv i formelfältet hello hello följande formel:  
+2.  I formelfältet anger du följande formel:  
     
     ```
     =RELATED('DimProductSubcategory'[EnglishProductSubcategoryName])  
     ```
   
-3.  Byt namn på hello kolumnen för**ProductSubcategoryName**.  
+3.  Byt namn på kolumnen till **ProductSubcategoryName**.  
   
-Hej ProductSubcategoryName beräknad kolumn är används toocreate en hierarki i hello DimProduct tabellen som innehåller data från hello EnglishProductSubcategoryName kolumnen i hello DimProductSubcategory tabell. Hierarkier kan inte finnas i mer än en tabell. Du kan skapa hierarkier senare i lektion 9.  
+Den beräknade kolumnen ProductSubcategoryName används för att skapa en hierarki i tabellen DimProduct som innehåller data från kolumnen EnglishProductSubcategoryName i tabellen DimProductSubcategory. Hierarkier kan inte finnas i mer än en tabell. Du kan skapa hierarkier senare i lektion 9.  
   
-#### <a name="create-a-productcategoryname-calculated-column-in-hello-dimproduct-table"></a>Skapa en beräknad kolumn ProductCategoryName i hello DimProduct tabell  
+#### <a name="create-a-productcategoryname-calculated-column-in-the-dimproduct-table"></a>Skapa en beräknad ProductCategoryName-kolumn i tabellen DimProduct  
   
-1.  Med hello **DimProduct** tabell fortfarande aktiv klickar du på hello **kolumnen** -menyn och klicka sedan på **Add Column**.  
+1.  När **DimProduct**-tabellen fortfarande är aktiv klickar du på menyn **Kolumn** och sedan på **Lägg till kolumn**.  
   
-2.  Skriv i formelfältet hello hello följande formel:  
+2.  I formelfältet anger du följande formel:  
   
     ```
     =RELATED('DimProductCategory'[EnglishProductCategoryName]) 
     ```
     
-3.  Byt namn på hello kolumnen för**ProductCategoryName**.  
+3.  Byt namn på kolumnen till **ProductCategoryName**.  
   
-Hej ProductCategoryName beräknad kolumn är används toocreate en hierarki i hello DimProduct tabellen som innehåller data från hello EnglishProductCategoryName kolumnen i hello DimProductCategory tabell. Hierarkier kan inte finnas i mer än en tabell.  
+Den beräknade kolumnen ProductCategoryName används för att skapa en hierarki i tabellen DimProduct som innehåller data från kolumnen EnglishProductCategoryName i tabellen DimProductCategory. Hierarkier kan inte finnas i mer än en tabell.  
   
-#### <a name="create-a-margin-calculated-column-in-hello-factinternetsales-table"></a>Skapa en beräknad kolumn marginal i hello FactInternetSales tabell  
+#### <a name="create-a-margin-calculated-column-in-the-factinternetsales-table"></a>Skapa en beräknad kolumn för marginaler i tabellen FactInternetSales  
   
-1.  Välj hello i hello modellen designer **FactInternetSales** tabell.  
+1.  Välj tabellen **FactInternetSales** i modelldesignern.  
   
-2.  Skapa en ny beräknad kolumn mellan hello **SalesAmount** kolumn och hello **TaxAmt** kolumn.  
+2.  Skapa en ny beräknad kolumn mellan kolumnen **SalesAmount** och kolumnen **TaxAmt**.  
   
-3.  Skriv i formelfältet hello hello följande formel:  
+3.  I formelfältet anger du följande formel:  
   
     ```
     =[SalesAmount]-[TotalProductCost]
     ``` 
 
-4.  Byt namn på hello kolumnen för**marginal**.  
+4.  Byt namn på kolumnen till **Marginal**.  
  
       ![aas-lesson5-newmargin](../tutorials/media/aas-lesson5-newmargin.png)
       
-    hello marginal beräknad kolumn är används tooanalyze vinstmarginaler för varje försäljning.  
+    Den beräknade marginal-kolumnen används för att analysera vinstmarginaler för varje försäljning.  
   
 ## <a name="whats-next"></a>Nästa steg
 [Lektion 6: Skapa mått](../tutorials/aas-lesson-6-create-measures.md).
