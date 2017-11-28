@@ -6,4 +6,3 @@
 > * [Ruby](active-directory-b2c-devquickstarts-graph-ruby.md)
 > 
 > 
-
