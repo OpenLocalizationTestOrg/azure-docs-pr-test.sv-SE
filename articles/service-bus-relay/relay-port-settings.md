@@ -1,0 +1,54 @@
+---
+title: "aaaAzure Relay portinställningar | Microsoft Docs"
+description: Information om Azure Relay-portarna.
+services: service-bus-relay
+documentationcenter: na
+author: sethmanheim
+manager: timlt
+editor: 
+ms.assetid: 
+ms.service: service-bus-relay
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 07/03/2017
+ms.author: sethm
+ms.openlocfilehash: e66785f786ee241c974d250f9ec29dfcc1fdc3fe
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.translationtype: MT
+ms.contentlocale: sv-SE
+ms.lasthandoff: 10/06/2017
+---
+# <a name="azure-relay-port-settings"></a><span data-ttu-id="04364-103">Azure Relay-portinställningar</span><span class="sxs-lookup"><span data-stu-id="04364-103">Azure Relay port settings</span></span>
+
+<span data-ttu-id="04364-104">hello beskrivs följande tabell hello nödvändig konfiguration av portarna för Azure Relay.</span><span class="sxs-lookup"><span data-stu-id="04364-104">hello following table describes hello required configuration for port values for Azure Relay.</span></span>
+
+## <a name="hybrid-connections"></a><span data-ttu-id="04364-105">Hybridanslutningar</span><span class="sxs-lookup"><span data-stu-id="04364-105">Hybrid Connections</span></span>
+<span data-ttu-id="04364-106">Hybridanslutningar använder WebSockets som hello underliggande transportmekanismen som använder **HTTPS** endast.</span><span class="sxs-lookup"><span data-stu-id="04364-106">Hybrid Connections uses WebSockets as hello underlying transport mechanism, which uses **HTTPS** only.</span></span> 
+
+## <a name="wcf-relays"></a><span data-ttu-id="04364-107">WCF-reläer</span><span class="sxs-lookup"><span data-stu-id="04364-107">WCF Relays</span></span>
+  
+|<span data-ttu-id="04364-108">Bindning</span><span class="sxs-lookup"><span data-stu-id="04364-108">Binding</span></span>|<span data-ttu-id="04364-109">Transportsäkerhet</span><span class="sxs-lookup"><span data-stu-id="04364-109">Transport Security</span></span>|<span data-ttu-id="04364-110">Port</span><span class="sxs-lookup"><span data-stu-id="04364-110">Port</span></span>|  
+|-------------|------------------------|----------|  
+|<span data-ttu-id="04364-111">[BasicHttpRelayBinding klassen](/dotnet/api/microsoft.servicebus.basichttprelaybinding) (klient)</span><span class="sxs-lookup"><span data-stu-id="04364-111">[BasicHttpRelayBinding Class](/dotnet/api/microsoft.servicebus.basichttprelaybinding) (client)</span></span>|<span data-ttu-id="04364-112">Ja</span><span class="sxs-lookup"><span data-stu-id="04364-112">Yes</span></span>|<span data-ttu-id="04364-113">HTTPS</span><span class="sxs-lookup"><span data-stu-id="04364-113">HTTPS</span></span>| 
+| |<span data-ttu-id="04364-114">"</span><span class="sxs-lookup"><span data-stu-id="04364-114">"</span></span> |<span data-ttu-id="04364-115">Nej</span><span class="sxs-lookup"><span data-stu-id="04364-115">No</span></span>|<span data-ttu-id="04364-116">HTTP</span><span class="sxs-lookup"><span data-stu-id="04364-116">HTTP</span></span>|  
+|<span data-ttu-id="04364-117">[BasicHttpRelayBinding klassen](/dotnet/api/microsoft.servicebus.basichttprelaybinding) (service)</span><span class="sxs-lookup"><span data-stu-id="04364-117">[BasicHttpRelayBinding Class](/dotnet/api/microsoft.servicebus.basichttprelaybinding) (service)</span></span>|<span data-ttu-id="04364-118">Antingen</span><span class="sxs-lookup"><span data-stu-id="04364-118">Either</span></span>|<span data-ttu-id="04364-119">9351/HTTP</span><span class="sxs-lookup"><span data-stu-id="04364-119">9351/HTTP</span></span>|  
+|<span data-ttu-id="04364-120">[NetEventRelayBinding klassen](/dotnet/api/microsoft.servicebus.neteventrelaybinding) (klient)</span><span class="sxs-lookup"><span data-stu-id="04364-120">[NetEventRelayBinding Class](/dotnet/api/microsoft.servicebus.neteventrelaybinding) (client)</span></span>|<span data-ttu-id="04364-121">Ja</span><span class="sxs-lookup"><span data-stu-id="04364-121">Yes</span></span>|<span data-ttu-id="04364-122">9351/HTTPS</span><span class="sxs-lookup"><span data-stu-id="04364-122">9351/HTTPS</span></span>|  
+||<span data-ttu-id="04364-123">"</span><span class="sxs-lookup"><span data-stu-id="04364-123">"</span></span> |<span data-ttu-id="04364-124">Nej</span><span class="sxs-lookup"><span data-stu-id="04364-124">No</span></span>|<span data-ttu-id="04364-125">9350/HTTP</span><span class="sxs-lookup"><span data-stu-id="04364-125">9350/HTTP</span></span>|  
+|<span data-ttu-id="04364-126">[NetEventRelayBinding klassen](/dotnet/api/microsoft.servicebus.neteventrelaybinding) (service)</span><span class="sxs-lookup"><span data-stu-id="04364-126">[NetEventRelayBinding Class](/dotnet/api/microsoft.servicebus.neteventrelaybinding) (service)</span></span>|<span data-ttu-id="04364-127">Antingen</span><span class="sxs-lookup"><span data-stu-id="04364-127">Either</span></span>|<span data-ttu-id="04364-128">9351/HTTP</span><span class="sxs-lookup"><span data-stu-id="04364-128">9351/HTTP</span></span>|  
+|<span data-ttu-id="04364-129">[NetTcpRelayBinding klassen](/dotnet/api/microsoft.servicebus.nettcprelaybinding) (klienttjänsten)</span><span class="sxs-lookup"><span data-stu-id="04364-129">[NetTcpRelayBinding Class](/dotnet/api/microsoft.servicebus.nettcprelaybinding) (client/service)</span></span>|<span data-ttu-id="04364-130">Antingen</span><span class="sxs-lookup"><span data-stu-id="04364-130">Either</span></span>|<span data-ttu-id="04364-131">HTTP-5671/9352 (9352/9353, om du använder hybrid)</span><span class="sxs-lookup"><span data-stu-id="04364-131">5671/9352/HTTP (9352/9353 if using hybrid)</span></span>|  
+|<span data-ttu-id="04364-132">[NetOnewayRelayBinding klassen](/dotnet/api/microsoft.servicebus.netonewayrelaybinding) (klient)</span><span class="sxs-lookup"><span data-stu-id="04364-132">[NetOnewayRelayBinding Class](/dotnet/api/microsoft.servicebus.netonewayrelaybinding) (client)</span></span>|<span data-ttu-id="04364-133">Ja</span><span class="sxs-lookup"><span data-stu-id="04364-133">Yes</span></span>|<span data-ttu-id="04364-134">9351/HTTPS</span><span class="sxs-lookup"><span data-stu-id="04364-134">9351/HTTPS</span></span>|  
+||<span data-ttu-id="04364-135">"</span><span class="sxs-lookup"><span data-stu-id="04364-135">"</span></span> |<span data-ttu-id="04364-136">Nej</span><span class="sxs-lookup"><span data-stu-id="04364-136">No</span></span>|<span data-ttu-id="04364-137">9350/HTTP</span><span class="sxs-lookup"><span data-stu-id="04364-137">9350/HTTP</span></span>|  
+|<span data-ttu-id="04364-138">[NetOnewayRelayBinding klassen](/dotnet/api/microsoft.servicebus.netonewayrelaybinding) (service)</span><span class="sxs-lookup"><span data-stu-id="04364-138">[NetOnewayRelayBinding Class](/dotnet/api/microsoft.servicebus.netonewayrelaybinding) (service)</span></span>|<span data-ttu-id="04364-139">Antingen</span><span class="sxs-lookup"><span data-stu-id="04364-139">Either</span></span>|<span data-ttu-id="04364-140">9351/HTTP</span><span class="sxs-lookup"><span data-stu-id="04364-140">9351/HTTP</span></span>|  
+|<span data-ttu-id="04364-141">[WebHttpRelayBinding klassen](/dotnet/api/microsoft.servicebus.webhttprelaybinding) (klient)</span><span class="sxs-lookup"><span data-stu-id="04364-141">[WebHttpRelayBinding Class](/dotnet/api/microsoft.servicebus.webhttprelaybinding) (client)</span></span>|<span data-ttu-id="04364-142">Ja</span><span class="sxs-lookup"><span data-stu-id="04364-142">Yes</span></span>|<span data-ttu-id="04364-143">HTTPS</span><span class="sxs-lookup"><span data-stu-id="04364-143">HTTPS</span></span>|  
+||<span data-ttu-id="04364-144">"</span><span class="sxs-lookup"><span data-stu-id="04364-144">"</span></span> |<span data-ttu-id="04364-145">Nej</span><span class="sxs-lookup"><span data-stu-id="04364-145">No</span></span>|<span data-ttu-id="04364-146">HTTP</span><span class="sxs-lookup"><span data-stu-id="04364-146">HTTP</span></span>|  
+|<span data-ttu-id="04364-147">[WebHttpRelayBinding klassen](/dotnet/api/microsoft.servicebus.webhttprelaybinding) (service)</span><span class="sxs-lookup"><span data-stu-id="04364-147">[WebHttpRelayBinding Class](/dotnet/api/microsoft.servicebus.webhttprelaybinding) (service)</span></span>|<span data-ttu-id="04364-148">Antingen</span><span class="sxs-lookup"><span data-stu-id="04364-148">Either</span></span>|<span data-ttu-id="04364-149">9351/HTTP</span><span class="sxs-lookup"><span data-stu-id="04364-149">9351/HTTP</span></span>|  
+|<span data-ttu-id="04364-150">[WS2007HttpRelayBinding klassen](/dotnet/api/microsoft.servicebus.ws2007httprelaybinding) (klient)</span><span class="sxs-lookup"><span data-stu-id="04364-150">[WS2007HttpRelayBinding Class](/dotnet/api/microsoft.servicebus.ws2007httprelaybinding) (client)</span></span>|<span data-ttu-id="04364-151">Ja</span><span class="sxs-lookup"><span data-stu-id="04364-151">Yes</span></span>|<span data-ttu-id="04364-152">HTTPS</span><span class="sxs-lookup"><span data-stu-id="04364-152">HTTPS</span></span>|  
+||<span data-ttu-id="04364-153">"</span><span class="sxs-lookup"><span data-stu-id="04364-153">"</span></span> |<span data-ttu-id="04364-154">Nej</span><span class="sxs-lookup"><span data-stu-id="04364-154">No</span></span>|<span data-ttu-id="04364-155">HTTP</span><span class="sxs-lookup"><span data-stu-id="04364-155">HTTP</span></span>|  
+|<span data-ttu-id="04364-156">[WS2007HttpRelayBinding klassen](/dotnet/api/microsoft.servicebus.ws2007httprelaybinding) (service)</span><span class="sxs-lookup"><span data-stu-id="04364-156">[WS2007HttpRelayBinding Class](/dotnet/api/microsoft.servicebus.ws2007httprelaybinding) (service)</span></span>|<span data-ttu-id="04364-157">Antingen</span><span class="sxs-lookup"><span data-stu-id="04364-157">Either</span></span>|<span data-ttu-id="04364-158">9351/HTTP</span><span class="sxs-lookup"><span data-stu-id="04364-158">9351/HTTP</span></span>|
+
+## <a name="next-steps"></a><span data-ttu-id="04364-159">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="04364-159">Next steps</span></span>
+<span data-ttu-id="04364-160">toolearn mer om Azure Relay finns i följande länkar:</span><span class="sxs-lookup"><span data-stu-id="04364-160">toolearn more about Azure Relay, visit these links:</span></span>
+* [<span data-ttu-id="04364-161">Vad är Azure Relay?</span><span class="sxs-lookup"><span data-stu-id="04364-161">What is Azure Relay?</span></span>](relay-what-is-it.md)
+* [<span data-ttu-id="04364-162">Vanliga frågor och svar om Relay</span><span class="sxs-lookup"><span data-stu-id="04364-162">Relay FAQ</span></span>](relay-faq.md)

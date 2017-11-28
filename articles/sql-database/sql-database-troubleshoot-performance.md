@@ -1,0 +1,70 @@
+---
+title: aaaMonitoring & prestandajustering - Azure SQL Database | Microsoft Docs
+description: "Tips för prestandajustering i Azure SQL Database via utvärdera och förbättra."
+services: sql-database
+documentationcenter: 
+author: v-shysun
+manager: felixwu
+editor: 
+keywords: "prestandajustering för SQL, prestandajustering för databasen, sql prestandajustering tips, prestandajustering för sql-databas"
+ms.assetid: eb7b3f66-3b33-4e1b-84fb-424a928a6672
+ms.service: sql-database
+ms.custom: monitor & tune
+ms.workload: data-management
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 06/13/2017
+ms.author: v-shysun
+ms.openlocfilehash: 9e196831902aa6ea841ef14caf5713e82ebfc62d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.translationtype: MT
+ms.contentlocale: sv-SE
+ms.lasthandoff: 10/06/2017
+---
+# <a name="monitoring-and-performance-tuning"></a><span data-ttu-id="70313-104">Övervaka och justera prestanda</span><span class="sxs-lookup"><span data-stu-id="70313-104">Monitoring and performance tuning</span></span>
+
+<span data-ttu-id="70313-105">Azure SQL Database hanteras automatiskt och flexibel datatjänst där du kan lätt övervaka användningen, lägga till eller ta bort resurser (processor, minne, i/o), hitta rekommendationer som kan förbättra prestandan för din databas eller låt databasen anpassa tooyour arbetsbelastning och automatiskt optimera prestanda.</span><span class="sxs-lookup"><span data-stu-id="70313-105">Azure SQL Database is automatically managed and flexible data service where you can easily monitor usage, add or remove resources (CPU, memory, io), find recommendations that can improve performance of your database, or let database adapt tooyour workload and automatically optimize performance.</span></span>
+
+<span data-ttu-id="70313-106">Den här artikeln innehåller en översikt över övervakning och prestandajustering alternativ som är tillgängliga i Azure SQL Database.</span><span class="sxs-lookup"><span data-stu-id="70313-106">This article provides overview of monitoring and performance tuning options that are available in Azure SQL Database.</span></span>
+
+[!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
+
+## <a name="monitoring-and-troubleshooting-database-performance"></a><span data-ttu-id="70313-107">Övervakning och felsökning databasprestanda</span><span class="sxs-lookup"><span data-stu-id="70313-107">Monitoring and troubleshooting database performance</span></span>
+
+<span data-ttu-id="70313-108">Azure SQL Database aktiverar du tooeasily övervaka din databasanvändningen och identifiera frågor som kan orsaka prestandaproblem hello.</span><span class="sxs-lookup"><span data-stu-id="70313-108">Azure SQL Database enables you tooeasily monitor your database usage and identify queries that might cause hello performance issues.</span></span> <span data-ttu-id="70313-109">Du kan övervaka databasprestanda med hjälp av Azure portal eller system vyer.</span><span class="sxs-lookup"><span data-stu-id="70313-109">You can monitor database performance using Azure portal or system views.</span></span> <span data-ttu-id="70313-110">Du har följande alternativ för övervakning och felsökning databasprestanda hello:</span><span class="sxs-lookup"><span data-stu-id="70313-110">You have hello following options for monitoring and troubleshooting database performance:</span></span>
+
+1. <span data-ttu-id="70313-111">I hello [Azure-portalen](https://portal.azure.com), klickar du på **SQL-databaser**hello databasen och välj sedan använda hello övervakning diagram toolook för resurser som närmar sig sin högsta.</span><span class="sxs-lookup"><span data-stu-id="70313-111">In hello [Azure portal](https://portal.azure.com), click **SQL databases**, select hello database, and then use hello Monitoring chart toolook for resources approaching their maximum.</span></span> <span data-ttu-id="70313-112">DTU-förbrukning visas som standard.</span><span class="sxs-lookup"><span data-stu-id="70313-112">DTU consumption is shown by default.</span></span> <span data-ttu-id="70313-113">Klicka på **redigera** toochange hello tidsintervall och värden som visas.</span><span class="sxs-lookup"><span data-stu-id="70313-113">Click **Edit** toochange hello time range and values shown.</span></span>
+2. <span data-ttu-id="70313-114">Använd [Query Performance Insight](sql-database-query-performance.md) tooidentify hello frågor som tillbringar hello mest resurser.</span><span class="sxs-lookup"><span data-stu-id="70313-114">Use [Query Performance Insight](sql-database-query-performance.md) tooidentify hello queries that spend hello most of resources.</span></span>
+3. <span data-ttu-id="70313-115">Du kan använda dynamiska hanteringsvyer (av DMV: er), Extended Events (`XEvents`), och hello Query Store i SSMS tooget prestandaparametrar i realtid.</span><span class="sxs-lookup"><span data-stu-id="70313-115">You can use dynamic management views (DMVs), Extended Events (`XEvents`), and hello Query Store in SSMS tooget performance parameters in real time.</span></span>
+
+<span data-ttu-id="70313-116">Se hello [prestanda vägledning avsnittet](sql-database-performance-guidance.md) toofind tekniker som du kan använda tooimprove prestanda i Azure SQL Database om du identifierar vissa problem med att använda dessa rapporter eller vyer.</span><span class="sxs-lookup"><span data-stu-id="70313-116">See hello [performance guidance topic](sql-database-performance-guidance.md) toofind techniques that you can use tooimprove performance of Azure SQL Database if you identify some issue using these reports or views.</span></span>
+
+> [!IMPORTANT] 
+> <span data-ttu-id="70313-117">Det rekommenderas att du alltid använder hello senaste versionen av Management Studio tooremain synkroniseras med uppdateringar tooMicrosoft Azure och SQL-databas.</span><span class="sxs-lookup"><span data-stu-id="70313-117">It is recommended that you always use hello latest version of Management Studio tooremain synchronized with updates tooMicrosoft Azure and SQL Database.</span></span> <span data-ttu-id="70313-118">[Uppdatera SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).</span><span class="sxs-lookup"><span data-stu-id="70313-118">[Update SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).</span></span>
+>
+
+## <a name="optimize-database-tooimprove-performance"></a><span data-ttu-id="70313-119">Optimera databasprestanda för tooimprove</span><span class="sxs-lookup"><span data-stu-id="70313-119">Optimize database tooimprove performance</span></span>
+
+<span data-ttu-id="70313-120">Azure SQL-databas kan du tooidentify affärsmöjligheter tooimprove och optimera frågeprestanda utan att ändra resurser genom att granska [rekommendationer för prestandajustering](sql-database-advisor.md).</span><span class="sxs-lookup"><span data-stu-id="70313-120">Azure SQL Database enables you tooidentify opportunities tooimprove and optimize query performance without changing resources by reviewing [performance tuning recommendations](sql-database-advisor.md).</span></span> <span data-ttu-id="70313-121">Index som saknas och dåligt optimerade frågor är vanliga orsaker till dåliga databasprestanda.</span><span class="sxs-lookup"><span data-stu-id="70313-121">Missing indexes and poorly optimized queries are common reasons for poor database performance.</span></span> <span data-ttu-id="70313-122">Du kan använda dessa prestandajustering rekommendationer tooimprove prestandan för din arbetsbelastning.</span><span class="sxs-lookup"><span data-stu-id="70313-122">You can apply these tuning recommendations tooimprove performance of your workload.</span></span>
+<span data-ttu-id="70313-123">Du kan också låta Azure SQL-databas för[automatiskt optimera prestanda för dina frågor](sql-database-automatic-tuning.md) genom att använda alla identifierade rekommendationer och verifiering av att de förbättras databasens prestanda.</span><span class="sxs-lookup"><span data-stu-id="70313-123">You can also let Azure SQL database too[automatically optimize performance of your queries](sql-database-automatic-tuning.md) by applying all identified recommendations and verifying that they improve database performance.</span></span> <span data-ttu-id="70313-124">Du kan använda följande alternativ tooimprove prestandan för din databas hello:</span><span class="sxs-lookup"><span data-stu-id="70313-124">You can use hello following options tooimprove performance of your database:</span></span>
+
+1. <span data-ttu-id="70313-125">Använd [SQL Database Advisor](sql-database-advisor-portal.md) tooview rekommendationer för att skapa och släppa index, Parameterisera frågor och åtgärda problem med schemat.</span><span class="sxs-lookup"><span data-stu-id="70313-125">Use [SQL Database Advisor](sql-database-advisor-portal.md) tooview recommendations for creating and dropping indexes, parameterizing queries, and fixing schema issues.</span></span>
+2. <span data-ttu-id="70313-126">[Aktivera automatisk justering](sql-database-automatic-tuning-enable.md) och låta Azure SQL-databasen automatiskt korrigera identifieras prestandaproblem.</span><span class="sxs-lookup"><span data-stu-id="70313-126">[Enable automatic tuning](sql-database-automatic-tuning-enable.md) and let Azure SQL database automatically fix identified performance issues.</span></span>
+
+## <a name="improving-database-performance-with-more-resources"></a><span data-ttu-id="70313-127">Förbättrad databasprestanda med mer resurser</span><span class="sxs-lookup"><span data-stu-id="70313-127">Improving database performance with more resources</span></span>
+
+<span data-ttu-id="70313-128">Slutligen, om det finns ingen tillämplig objekt som kan förbättra prestandan för din databas, kan du ändra hello mängden tillgängliga resurser i Azure SQL Database.</span><span class="sxs-lookup"><span data-stu-id="70313-128">Finally, if there are no actionable items that can improve performance of your database, you can change hello amount of resources available in Azure SQL Database.</span></span> <span data-ttu-id="70313-129">Du kan tilldela fler resurser genom att ändra hello [tjänstnivån](sql-database-service-tiers.md) av en fristående databas eller öka hello edtu: er för en elastisk pool när som helst.</span><span class="sxs-lookup"><span data-stu-id="70313-129">You can assign more resources by changing hello [service tier](sql-database-service-tiers.md) of a standalone database or increase hello eDTUs of an elastic pool at any time.</span></span>
+1. <span data-ttu-id="70313-130">För fristående databaser, kan du [ändra tjänstnivå](sql-database-service-tiers.md) på begäran tooimprove databasens prestanda.</span><span class="sxs-lookup"><span data-stu-id="70313-130">For standalone databases, you can [change service tiers](sql-database-service-tiers.md) on-demand tooimprove database performance.</span></span>
+2. <span data-ttu-id="70313-131">Överväg att använda för flera databaser [elastiska pooler](sql-database-elastic-pool-guidance.md) tooscale resurser automatiskt.</span><span class="sxs-lookup"><span data-stu-id="70313-131">For multiple databases, consider using [elastic pools](sql-database-elastic-pool-guidance.md) tooscale resources automatically.</span></span>
+
+## <a name="tune-and-refactor-application-or-database-code"></a><span data-ttu-id="70313-132">Finjustera och flytta program eller databas</span><span class="sxs-lookup"><span data-stu-id="70313-132">Tune and refactor application or database code</span></span>
+
+<span data-ttu-id="70313-133">Du kan ändra program kod toomore optimalt använder hello-databas, ändra index, tvinga planer eller använda tips toomanually anpassa hello databasen tooyour arbetsbelastning.</span><span class="sxs-lookup"><span data-stu-id="70313-133">You can change application code toomore optimally use hello database, change indexes, force plans, or use hints toomanually adapt hello database tooyour workload.</span></span> <span data-ttu-id="70313-134">Hitta vissa råd och tips för manuell justering och skriva om hello koden i hello [prestanda vägledning avsnittet](sql-database-performance-guidance.md) artikel.</span><span class="sxs-lookup"><span data-stu-id="70313-134">Find some guidance and tips for manual tuning and rewriting hello code in hello [performance guidance topic](sql-database-performance-guidance.md) article.</span></span>
+
+
+## <a name="next-steps"></a><span data-ttu-id="70313-135">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="70313-135">Next steps</span></span>
+
+- <span data-ttu-id="70313-136">tooenable automatisk justering i Azure SQL Database och gör att automatisk justering funktion fullständigt hantera din arbetsbelastning, se [aktivera automatisk justering](sql-database-automatic-tuning-enable.md).</span><span class="sxs-lookup"><span data-stu-id="70313-136">tooenable automatic tuning in Azure SQL Database and let automatic tuning feature fully manage your workload, see [Enable automatic tuning](sql-database-automatic-tuning-enable.md).</span></span>
+- <span data-ttu-id="70313-137">toouse manuell inställning, kan du granska [justera rekommendationerna i Azure-portalen](sql-database-advisor-portal.md) och tillämpa manuellt hello som förbättra prestanda för dina frågor.</span><span class="sxs-lookup"><span data-stu-id="70313-137">toouse manual tuning, you can review [Tuning recommendations in Azure portal](sql-database-advisor-portal.md) and manually apply hello ones that improve performance of your queries.</span></span>
+- <span data-ttu-id="70313-138">Ändra resurser som är tillgängliga i databasen genom att ändra [Azure SQL Database servicenivåer](sql-database-performance-guidance.md)</span><span class="sxs-lookup"><span data-stu-id="70313-138">Change resources that are available in your database by changing [Azure SQL Database service tiers](sql-database-performance-guidance.md)</span></span>

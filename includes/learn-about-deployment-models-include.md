@@ -1,0 +1,2 @@
+> [!IMPORTANT]
+> <span data-ttu-id="95c36-101">Innan du börjar arbeta med Azure-resurser, bekanta dig med distributionsmodellerna: [Resource Manager och klassisk](../articles/azure-resource-manager/resource-manager-deployment-model.md).</span><span class="sxs-lookup"><span data-stu-id="95c36-101">Before you work with Azure resources, get familiar with the deployment models: [Resource Manager, and classic](../articles/azure-resource-manager/resource-manager-deployment-model.md).</span></span>

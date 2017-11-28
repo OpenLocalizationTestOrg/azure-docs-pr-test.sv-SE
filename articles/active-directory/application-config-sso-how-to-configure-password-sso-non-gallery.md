@@ -1,0 +1,191 @@
+---
+title: "aaaHow tooconfigure lösenord enkel inloggning för en icke-galleriet applicationn | Microsoft Docs"
+description: "Hur tooconfigure ett anpassat program icke-galleriet för säkra lösenordsbaserade enkel inloggning när det inte finns med i hello Azure AD Application Gallery"
+services: active-directory
+documentationcenter: 
+author: ajamess
+manager: femila
+ms.assetid: 
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 07/11/2017
+ms.author: asteen
+ms.openlocfilehash: e3d0e658f792a0a63110a198811edc66acd6ccf4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.translationtype: MT
+ms.contentlocale: sv-SE
+ms.lasthandoff: 10/06/2017
+---
+# <a name="how-tooconfigure-password-single-sign-on-for-a-non-gallery-application"></a><span data-ttu-id="228df-103">Hur tooconfigure lösenord enkel inloggning för ett program för icke-galleriet</span><span class="sxs-lookup"><span data-stu-id="228df-103">How tooconfigure password single sign-on for a non-gallery application</span></span>
+
+<span data-ttu-id="228df-104">Dessutom toohello alternativ hittades inom hello Azure AD Application Gallery hello alternativet tooadd har också en **icke-galleriet programmet** när hello-program som du vill använda inte finns.</span><span class="sxs-lookup"><span data-stu-id="228df-104">In addition toohello choices found within hello Azure AD Application Gallery, you also have hello option tooadd a **non-gallery application** when hello application you want is not listed there.</span></span> <span data-ttu-id="228df-105">Med den här funktionen kan du kan lägga till alla program som redan finns i din organisation eller något tredje parts-program som du kan använda från en leverantör som inte är en del av hello [Azure AD Application Gallery](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#get-started-with-the-azure-ad-application-gallery).</span><span class="sxs-lookup"><span data-stu-id="228df-105">Using this capability, you can add any application that already exists in your organization, or any third-party application that you might use from a vendor who is not already part of hello [Azure AD Application Gallery](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#get-started-with-the-azure-ad-application-gallery).</span></span>
+
+<span data-ttu-id="228df-106">När du lägger till ett icke-galleriet program kan du konfigurera hello enkel inloggning programmet använder genom att välja hello **enkel inloggning** navigeringsobjektet på ett affärsprogram i hello [Azure-portalen ](https://portal.azure.com/).</span><span class="sxs-lookup"><span data-stu-id="228df-106">Once you add a non-gallery application, you can then configure hello Single sign-on method this application uses by selecting hello **Single Sign-on** navigation item on an Enterprise Application in hello [Azure Portal](https://portal.azure.com/).</span></span>
+
+<span data-ttu-id="228df-107">En av hello enkel inloggning metoder tillgängliga tooyou är hello [lösenordsbaserade enkel inloggning](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) alternativet.</span><span class="sxs-lookup"><span data-stu-id="228df-107">One of hello Single Sign-on methods available tooyou is hello [Password-Based Single Sign-on](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) option.</span></span> <span data-ttu-id="228df-108">Med hello **lägga till ett icke-galleriet program** upplevelse, kan du integrera alla program som visas med ett HTML-baserad användarnamn och lösenord för ingående fält, även om den inte är i vår uppsättning redan integrerade program.</span><span class="sxs-lookup"><span data-stu-id="228df-108">With hello **add a non-gallery application** experience, you can integrate any application that renders an HTML-based username and password input field, even if it is not in our set of pre-integrated applications.</span></span>
+
+<span data-ttu-id="228df-109">Hej hur detta fungerar är av en sida skrapning teknik som är en del av hello åtkomstpanelen tillägg som gör att vi tooauto-identifiera inkommande fälten användarnamn och lösenord, lagra dem på ett säkert sätt för dina specifika programinstansen.</span><span class="sxs-lookup"><span data-stu-id="228df-109">hello way this works is by a page scraping technology that is part of hello Access Panel extension that allows us tooauto-detect username and password input fields, store them securely for your specific application instance.</span></span> <span data-ttu-id="228df-110">På ett säkert sätt replay användarnamn och lösenord toothose fält när en användare navigerar toothat programmet på åtkomstpanelen för hello program.</span><span class="sxs-lookup"><span data-stu-id="228df-110">Then securely replay usernames and passwords toothose fields when a user navigates toothat application on hello application access panel.</span></span>
+
+<span data-ttu-id="228df-111">Detta är ett bra sätt tooget igång snabbt integrera alla slags program i Azure AD, och du kan:</span><span class="sxs-lookup"><span data-stu-id="228df-111">This is a great way tooget started integrating any kind of application into Azure AD quickly, and allows you to:</span></span>
+
+-   <span data-ttu-id="228df-112">Integrera **alla program i hello world** med Azure AD-klienten, så länge den återger en HTML-användarnamn och lösenord inmatningsfält</span><span class="sxs-lookup"><span data-stu-id="228df-112">Integrate **any application in hello world** with your Azure AD tenant, so long as it renders an HTML username and password input field</span></span>
+
+-   <span data-ttu-id="228df-113">Aktivera **enkel inloggning för användarnas** genom att lagra och spela upp användarnamn och lösenord för hello programmet på ett säkert sätt som du har integrerat med Azure AD</span><span class="sxs-lookup"><span data-stu-id="228df-113">Enable **Single Sign-on for your users** by securely storing and replaying usernames and passwords for hello application you’ve integrated with Azure AD</span></span>
+
+-   <span data-ttu-id="228df-114">**Automatisk identifiering av indata** fält för alla program och att du toomanually identifiera dessa fält med hello webbläsartillägget för åtkomst till Kontrollpanelen, om automatisk identifiering inte hittar dem.</span><span class="sxs-lookup"><span data-stu-id="228df-114">**Auto-detect input** fields for any application and allow you toomanually detect those fields using hello Access Panel Browser Extension, in case auto-detection does not find them</span></span>
+
+-   <span data-ttu-id="228df-115">**Stöd för program som kräver flera inloggning fält** för program som kräver mer än bara användarnamn och lösenord fält toosign i</span><span class="sxs-lookup"><span data-stu-id="228df-115">**Support applications that require multiple sign-in fields** for applications that require more than just username and password fields toosign in</span></span>
+
+-   <span data-ttu-id="228df-116">**Anpassa hello etiketter** av hello användarnamn och lösenord indatafält användarna ser på hello [programmet åtkomstpanelen](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) när de anger sina autentiseringsuppgifter</span><span class="sxs-lookup"><span data-stu-id="228df-116">**Customize hello labels** of hello username and password input fields your users see on hello [Application Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) when they enter their credentials</span></span>
+
+-   <span data-ttu-id="228df-117">Tillåt din **användare** tooprovide användarnamn och lösenord för alla program-konton som de skriver manuellt på hello [åtkomstpanelen för programmet](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)</span><span class="sxs-lookup"><span data-stu-id="228df-117">Allow your **users** tooprovide their own usernames and passwords for any existing application accounts they are typing in manually on hello [Application Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)</span></span>
+
+-   <span data-ttu-id="228df-118">Tillåt en **tillhör hello affärsgrupp** toospecify hello användarnamn och lösenord tilldelad tooa användare med hjälp av hello [Self-Service programåtkomst](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) funktion</span><span class="sxs-lookup"><span data-stu-id="228df-118">Allow a **member of hello business group** toospecify hello usernames and passwords assigned tooa user by using hello [Self-Service Application Access](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) feature</span></span>
+
+-   <span data-ttu-id="228df-119">Tillåt en **administratör** toospecify hello användarnamn och lösenord som tilldelats tooa användare med hjälp av referenser för uppdatering av hello funktionen när [tilldela en tooan-användarprogram](#_How_to_configure_1)</span><span class="sxs-lookup"><span data-stu-id="228df-119">Allow an **administrator** toospecify hello usernames and passwords assigned tooa user by using hello Update Credentials feature when [assigning a user tooan application](#_How_to_configure_1)</span></span>
+
+-   <span data-ttu-id="228df-120">Tillåt en **administratör** toospecify hello delade användarnamnet eller lösenordet som används av en grupp människor med hjälp av autentiseringsuppgifter för uppdatering av hello funktionen när [tilldela en grupp tooan program](#assign-an-application-to-a-group-directly)</span><span class="sxs-lookup"><span data-stu-id="228df-120">Allow an **administrator** toospecify hello shared username or password used by a group of people by using hello Update Credentials feature when [assigning a group tooan application](#assign-an-application-to-a-group-directly)</span></span>
+
+<span data-ttu-id="228df-121">Nedan beskrivs hur du kan aktivera [lösenordsbaserade enkel inloggning](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) tooany program som du lägger till med hjälp av hello **lägga till ett icke-galleriet program** upplevelse.</span><span class="sxs-lookup"><span data-stu-id="228df-121">Below describes how you can enable [Password-Based Single Sign-on](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) tooany application that you add using hello **add a non-gallery application** experience.</span></span>
+
+## <a name="overview-of-steps-required"></a><span data-ttu-id="228df-122">Översikt över steg som krävs</span><span class="sxs-lookup"><span data-stu-id="228df-122">Overview of steps required</span></span>
+
+<span data-ttu-id="228df-123">tooconfigure ett program från hello Azure AD-galleriet måste du:</span><span class="sxs-lookup"><span data-stu-id="228df-123">tooconfigure an application from hello Azure AD gallery you need to:</span></span>
+
+-   [<span data-ttu-id="228df-124">Lägga till ett icke-galleriet program</span><span class="sxs-lookup"><span data-stu-id="228df-124">Add a non-gallery application</span></span>](#add-a-non-gallery-application)
+
+-   [<span data-ttu-id="228df-125">Konfigurera hello program för lösenord för enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="228df-125">Configure hello application for password single sign-on</span></span>](#configure-the-application-for-password-single-sign-on)
+
+-   [<span data-ttu-id="228df-126">Tilldela hello programmet tooa användare eller grupp</span><span class="sxs-lookup"><span data-stu-id="228df-126">Assign hello application tooa user or a group</span></span>](#assign-the-application-to-a-user-or-a-group)
+
+    -   [<span data-ttu-id="228df-127">Tilldela en användare tooan program direkt</span><span class="sxs-lookup"><span data-stu-id="228df-127">Assign a user tooan application directly</span></span>](#assign-a-user-to-an-application-directly)
+
+    -   [<span data-ttu-id="228df-128">Tilldela en programgrupp tooa direkt</span><span class="sxs-lookup"><span data-stu-id="228df-128">Assign an application tooa group directly</span></span>](#assign-an-application-to-a-group-directly)
+
+## <a name="add-a-non-gallery-application"></a><span data-ttu-id="228df-129">Lägga till ett icke-galleriet program</span><span class="sxs-lookup"><span data-stu-id="228df-129">Add a non-gallery application</span></span>
+
+<span data-ttu-id="228df-130">tooadd ett program från hello Azure AD-galleriet så hello nedan:</span><span class="sxs-lookup"><span data-stu-id="228df-130">tooadd an application from hello Azure AD Gallery, follow hello steps below:</span></span>
+
+1.  <span data-ttu-id="228df-131">Öppna hello [Azure Portal](https://portal.azure.com) och logga in som en **Global administratör** eller **medadministratör**</span><span class="sxs-lookup"><span data-stu-id="228df-131">Open hello [Azure Portal](https://portal.azure.com) and sign in as a **Global Administrator** or **Co-admin**</span></span>
+
+2.  <span data-ttu-id="228df-132">Öppna hello **Azure Active Directory-tillägget** genom att klicka på **fler tjänster** längst hello hello huvudsakliga vänstra navigeringsmenyn.</span><span class="sxs-lookup"><span data-stu-id="228df-132">Open hello **Azure Active Directory Extension** by clicking **More services** at hello bottom of hello main left hand navigation menu.</span></span>
+
+3.  <span data-ttu-id="228df-133">Skriv i **”Azure Active Directory**” i sökrutan för hello filter och väljer hello **Azure Active Directory** objekt.</span><span class="sxs-lookup"><span data-stu-id="228df-133">Type in **“Azure Active Directory**” in hello filter search box and select hello **Azure Active Directory** item.</span></span>
+
+4.  <span data-ttu-id="228df-134">Klicka på **företagsprogram** från hello Azure Active Directory vänstra navigeringsmenyn.</span><span class="sxs-lookup"><span data-stu-id="228df-134">click **Enterprise Applications** from hello Azure Active Directory left hand navigation menu.</span></span>
+
+5.  <span data-ttu-id="228df-135">Klicka på hello **Lägg till** längst hello övre högra hörnet på hello **företagsprogram** bladet</span><span class="sxs-lookup"><span data-stu-id="228df-135">click hello **Add** button at hello top-right corner on hello **Enterprise Applications** blade</span></span>
+
+6.  <span data-ttu-id="228df-136">Klicka på **icke-galleriet program.**</span><span class="sxs-lookup"><span data-stu-id="228df-136">click **Non-gallery application.**</span></span>
+
+7.  <span data-ttu-id="228df-137">Ange hello namnet på ditt program i hello **namn** textruta.</span><span class="sxs-lookup"><span data-stu-id="228df-137">Enter hello name of your application in hello **Name** textbox.</span></span> <span data-ttu-id="228df-138">Välj **lägga till.**</span><span class="sxs-lookup"><span data-stu-id="228df-138">Select **Add.**</span></span>
+
+<span data-ttu-id="228df-139">Efter en kort period vara kan toosee hello programmets konfiguration bladet.</span><span class="sxs-lookup"><span data-stu-id="228df-139">After a short period, you be able toosee hello application’s configuration blade.</span></span>
+
+## <a name="configure-hello-application-for-password-single-sign-on"></a><span data-ttu-id="228df-140">Konfigurera hello program för lösenord för enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="228df-140">Configure hello application for password single sign-on</span></span>
+
+<span data-ttu-id="228df-141">tooconfigure enkel inloggning för ett program gör hello nedan:</span><span class="sxs-lookup"><span data-stu-id="228df-141">tooconfigure single sign-on for an application, follow hello steps below:</span></span>
+
+1.  <span data-ttu-id="228df-142">Öppna hello [ **Azure Portal** ](https://portal.azure.com/) och logga in som en **Global administratör** eller **Co-administratör.**</span><span class="sxs-lookup"><span data-stu-id="228df-142">Open hello [**Azure Portal**](https://portal.azure.com/) and sign in as a **Global Administrator** or **Co-admin.**</span></span>
+
+2.  <span data-ttu-id="228df-143">Öppna hello **Azure Active Directory-tillägget** genom att klicka på **fler tjänster** längst hello hello huvudsakliga vänstra navigeringsmenyn.</span><span class="sxs-lookup"><span data-stu-id="228df-143">Open hello **Azure Active Directory Extension** by clicking **More services** at hello bottom of hello main left hand navigation menu.</span></span>
+
+3.  <span data-ttu-id="228df-144">Skriv i **”Azure Active Directory**” i sökrutan för hello filter och väljer hello **Azure Active Directory** objekt.</span><span class="sxs-lookup"><span data-stu-id="228df-144">Type in **“Azure Active Directory**” in hello filter search box and select hello **Azure Active Directory** item.</span></span>
+
+4.  <span data-ttu-id="228df-145">Klicka på **företagsprogram** från hello Azure Active Directory vänstra navigeringsmenyn.</span><span class="sxs-lookup"><span data-stu-id="228df-145">click **Enterprise Applications** from hello Azure Active Directory left hand navigation menu.</span></span>
+
+5.  <span data-ttu-id="228df-146">Klicka på **alla program** tooview en lista över alla program.</span><span class="sxs-lookup"><span data-stu-id="228df-146">click **All Applications** tooview a list of all your applications.</span></span>
+
+  * <span data-ttu-id="228df-147">Om du inte ser hello-program som du vill visa här använder du hello **Filter** kontroll hello överst i hello **listan med alla program** och ange hello **visa** alternativ för** Alla program.**</span><span class="sxs-lookup"><span data-stu-id="228df-147">If you do not see hello application you want show up here, use hello **Filter** control at hello top of hello **All Applications List** and set hello **Show** option too**All Applications.**</span></span>
+
+6.  <span data-ttu-id="228df-148">Välj hello-program som du vill tooconfigure enkel inloggning.</span><span class="sxs-lookup"><span data-stu-id="228df-148">Select hello application you want tooconfigure single sign-on.</span></span>
+
+7.  <span data-ttu-id="228df-149">När programmet hello läses in klickar du på hello **enkel inloggning** från hello programmet vänstra navigeringsmenyn.</span><span class="sxs-lookup"><span data-stu-id="228df-149">Once hello application loads, click hello **Single sign-on** from hello application’s left hand navigation menu.</span></span>
+
+8.  <span data-ttu-id="228df-150">Välj hello läge **lösenordsbaserade inloggning.**</span><span class="sxs-lookup"><span data-stu-id="228df-150">Select hello mode **Password-based Sign-on.**</span></span>
+
+9.  <span data-ttu-id="228df-151">Ange hello **inloggnings-URL**.</span><span class="sxs-lookup"><span data-stu-id="228df-151">Enter hello **Sign-on URL**.</span></span> <span data-ttu-id="228df-152">Det här är hello URL där användarna anger sina användarnamn och lösenord toosign i till.</span><span class="sxs-lookup"><span data-stu-id="228df-152">This is hello URL where users enter their username and password toosign in to.</span></span> <span data-ttu-id="228df-153">Kontrollera hello inloggning fält är synliga på hello-URL.</span><span class="sxs-lookup"><span data-stu-id="228df-153">Ensure hello sign in fields are visible at hello URL.</span></span>
+
+10. <span data-ttu-id="228df-154">Tilldela användare toohello program.</span><span class="sxs-lookup"><span data-stu-id="228df-154">Assign users toohello application.</span></span>
+
+11. <span data-ttu-id="228df-155">Du kan dessutom också ange autentiseringsuppgifter för hello användares räkning genom att markera rader hello hello användare och klicka på **referenser uppdatering** och ange hello användarnamn och lösenord för åt hello användare.</span><span class="sxs-lookup"><span data-stu-id="228df-155">Additionally, you can also provide credentials on behalf of hello user by selecting hello rows of hello users and clicking on **Update Credentials** and entering hello username and password on behalf of hello users.</span></span> <span data-ttu-id="228df-156">Annars kommer att användare tillfrågas tooenter hello autentiseringsuppgifter sig vid start.</span><span class="sxs-lookup"><span data-stu-id="228df-156">Otherwise, users be prompted tooenter hello credentials themselves upon launch.</span></span>
+
+## <a name="assign-a-user-tooan-application-directly"></a><span data-ttu-id="228df-157">Tilldela en användare tooan program direkt</span><span class="sxs-lookup"><span data-stu-id="228df-157">Assign a user tooan application directly</span></span>
+
+<span data-ttu-id="228df-158">tooassign en eller flera användare tooan programmet direkt, gör hello nedan:</span><span class="sxs-lookup"><span data-stu-id="228df-158">tooassign one or more users tooan application directly, follow hello steps below:</span></span>
+
+1.  <span data-ttu-id="228df-159">Öppna hello [ **Azure Portal** ](https://portal.azure.com/) och logga in som en **Global administratör.**</span><span class="sxs-lookup"><span data-stu-id="228df-159">Open hello [**Azure Portal**](https://portal.azure.com/) and sign in as a **Global Administrator.**</span></span>
+
+2.  <span data-ttu-id="228df-160">Öppna hello **Azure Active Directory-tillägget** genom att klicka på **fler tjänster** längst hello hello huvudsakliga vänstra navigeringsmenyn.</span><span class="sxs-lookup"><span data-stu-id="228df-160">Open hello **Azure Active Directory Extension** by clicking **More services** at hello bottom of hello main left hand navigation menu.</span></span>
+
+3.  <span data-ttu-id="228df-161">Skriv i **”Azure Active Directory**” i sökrutan för hello filter och väljer hello **Azure Active Directory** objekt.</span><span class="sxs-lookup"><span data-stu-id="228df-161">Type in **“Azure Active Directory**” in hello filter search box and select hello **Azure Active Directory** item.</span></span>
+
+4.  <span data-ttu-id="228df-162">Klicka på **företagsprogram** från hello Azure Active Directory vänstra navigeringsmenyn.</span><span class="sxs-lookup"><span data-stu-id="228df-162">click **Enterprise Applications** from hello Azure Active Directory left hand navigation menu.</span></span>
+
+5.  <span data-ttu-id="228df-163">Klicka på **alla program** tooview en lista över alla program.</span><span class="sxs-lookup"><span data-stu-id="228df-163">click **All Applications** tooview a list of all your applications.</span></span>
+
+  * <span data-ttu-id="228df-164">Om du inte ser hello-program som du vill visa här använder du hello **Filter** kontroll hello överst i hello **listan med alla program** och ange hello **visa** alternativ för** Alla program.**</span><span class="sxs-lookup"><span data-stu-id="228df-164">If you do not see hello application you want show up here, use hello **Filter** control at hello top of hello **All Applications List** and set hello **Show** option too**All Applications.**</span></span>
+
+6.  <span data-ttu-id="228df-165">Välj hello-program som du vill tooassign en toofrom hello-användarlistan.</span><span class="sxs-lookup"><span data-stu-id="228df-165">Select hello application you want tooassign a user toofrom hello list.</span></span>
+
+7.  <span data-ttu-id="228df-166">När programmet hello läses in klickar du på **användare och grupper** från hello programmet vänstra navigeringsmenyn.</span><span class="sxs-lookup"><span data-stu-id="228df-166">Once hello application loads, click **Users and Groups** from hello application’s left hand navigation menu.</span></span>
+
+8.  <span data-ttu-id="228df-167">Klicka på hello **Lägg till** knappen ovanpå hello **användare och grupper** lista tooopen hello **Lägg uppdrag** bladet.</span><span class="sxs-lookup"><span data-stu-id="228df-167">Click hello **Add** button on top of hello **Users and Groups** list tooopen hello **Add Assignment** blade.</span></span>
+
+9.  <span data-ttu-id="228df-168">Klicka på hello **användare och grupper** selector från hello **Lägg uppdrag** bladet.</span><span class="sxs-lookup"><span data-stu-id="228df-168">click hello **Users and groups** selector from hello **Add Assignment** blade.</span></span>
+
+10. <span data-ttu-id="228df-169">Typen i hello **fullständigt namn** eller **e-postadress** för hello-användare som du vill tilldela till hello **Sök efter namn eller e-postadress** sökrutan.</span><span class="sxs-lookup"><span data-stu-id="228df-169">Type in hello **full name** or **email address** of hello user you are interested in assigning into hello **Search by name or email address** search box.</span></span>
+
+11. <span data-ttu-id="228df-170">Hovra över hello **användare** i hello listan tooreveal en **kryssrutan**.</span><span class="sxs-lookup"><span data-stu-id="228df-170">Hover over hello **user** in hello list tooreveal a **checkbox**.</span></span> <span data-ttu-id="228df-171">Klicka på hello kryssrutan nästa toohello användarens profil foto eller logotypen tooadd användaren-toohello **valda** lista.</span><span class="sxs-lookup"><span data-stu-id="228df-171">Click hello checkbox next toohello user’s profile photo or logo tooadd your user toohello **Selected** list.</span></span>
+
+12. <span data-ttu-id="228df-172">**Valfritt:** om du vill ha för**lägga till fler än en användare**, typ i en annan **fullständigt namn** eller **e-postadress** till hello **Sök efter namn eller e-postadress** sökrutan och klicka på hello kryssrutan tooadd den här användaren toohello **valda** lista.</span><span class="sxs-lookup"><span data-stu-id="228df-172">**Optional:** If you would like too**add more than one user**, type in another **full name** or **email address** into hello **Search by name or email address** search box, and click hello checkbox tooadd this user toohello **Selected** list.</span></span>
+
+13. <span data-ttu-id="228df-173">När du har valt användare klickar du på hello **Välj** knappen tooadd dem toohello lista över användare och grupper toobe tilldelat toohello program.</span><span class="sxs-lookup"><span data-stu-id="228df-173">When you are finished selecting users, click hello **Select** button tooadd them toohello list of users and groups toobe assigned toohello application.</span></span>
+
+14. <span data-ttu-id="228df-174">**Valfritt:** klickar du på hello **Välj roll** Väljaren i hello **Lägg uppdrag** bladet tooselect en roll tooassign toohello användare som du har valt.</span><span class="sxs-lookup"><span data-stu-id="228df-174">**Optional:** click hello **Select Role** selector in hello **Add Assignment** blade tooselect a role tooassign toohello users you have selected.</span></span>
+
+15. <span data-ttu-id="228df-175">Klicka på hello **tilldela** knappen tooassign hello programmet toohello markerade användare.</span><span class="sxs-lookup"><span data-stu-id="228df-175">Click hello **Assign** button tooassign hello application toohello selected users.</span></span>
+
+## <a name="assign-an-application-tooa-group-directly"></a><span data-ttu-id="228df-176">Tilldela en programgrupp tooa direkt</span><span class="sxs-lookup"><span data-stu-id="228df-176">Assign an application tooa group directly</span></span>
+
+<span data-ttu-id="228df-177">tooassign en eller flera grupper tooan programmet direkt, följ hello stegen nedan:</span><span class="sxs-lookup"><span data-stu-id="228df-177">tooassign one or more groups tooan application directly, follow hello steps below:</span></span>
+
+1.  <span data-ttu-id="228df-178">Öppna hello [ **Azure Portal** ](https://portal.azure.com/) och logga in som en **Global administratör.**</span><span class="sxs-lookup"><span data-stu-id="228df-178">Open hello [**Azure Portal**](https://portal.azure.com/) and sign in as a **Global Administrator.**</span></span>
+
+2.  <span data-ttu-id="228df-179">Öppna hello **Azure Active Directory-tillägget** genom att klicka på **fler tjänster** längst hello hello huvudsakliga vänstra navigeringsmenyn.</span><span class="sxs-lookup"><span data-stu-id="228df-179">Open hello **Azure Active Directory Extension** by clicking **More services** at hello bottom of hello main left hand navigation menu.</span></span>
+
+3.  <span data-ttu-id="228df-180">Skriv i **”Azure Active Directory**” i sökrutan för hello filter och väljer hello **Azure Active Directory** objekt.</span><span class="sxs-lookup"><span data-stu-id="228df-180">Type in **“Azure Active Directory**” in hello filter search box and select hello **Azure Active Directory** item.</span></span>
+
+4.  <span data-ttu-id="228df-181">Klicka på **företagsprogram** från hello Azure Active Directory vänstra navigeringsmenyn.</span><span class="sxs-lookup"><span data-stu-id="228df-181">click **Enterprise Applications** from hello Azure Active Directory left hand navigation menu.</span></span>
+
+5.  <span data-ttu-id="228df-182">Klicka på **alla program** tooview en lista över alla program.</span><span class="sxs-lookup"><span data-stu-id="228df-182">click **All Applications** tooview a list of all your applications.</span></span>
+
+  * <span data-ttu-id="228df-183">Om du inte ser hello-program som du vill visa här använder du hello **Filter** kontroll hello överst i hello **listan med alla program** och ange hello **visa** alternativ för** Alla program.**</span><span class="sxs-lookup"><span data-stu-id="228df-183">If you do not see hello application you want show up here, use hello **Filter** control at hello top of hello **All Applications List** and set hello **Show** option too**All Applications.**</span></span>
+
+6.  <span data-ttu-id="228df-184">Välj hello-program som du vill tooassign en toofrom hello-användarlistan.</span><span class="sxs-lookup"><span data-stu-id="228df-184">Select hello application you want tooassign a user toofrom hello list.</span></span>
+
+7.  <span data-ttu-id="228df-185">När programmet hello läses in klickar du på **användare och grupper** från hello programmet vänstra navigeringsmenyn.</span><span class="sxs-lookup"><span data-stu-id="228df-185">Once hello application loads, click **Users and Groups** from hello application’s left hand navigation menu.</span></span>
+
+8.  <span data-ttu-id="228df-186">Klicka på hello **Lägg till** knappen ovanpå hello **användare och grupper** lista tooopen hello **Lägg uppdrag** bladet.</span><span class="sxs-lookup"><span data-stu-id="228df-186">Click hello **Add** button on top of hello **Users and Groups** list tooopen hello **Add Assignment** blade.</span></span>
+
+9.  <span data-ttu-id="228df-187">Klicka på hello **användare och grupper** selector från hello **Lägg uppdrag** bladet.</span><span class="sxs-lookup"><span data-stu-id="228df-187">click hello **Users and groups** selector from hello **Add Assignment** blade.</span></span>
+
+10. <span data-ttu-id="228df-188">Typen i hello **fullständig gruppnamn** av hello-grupp som du vill tilldela till hello **Sök efter namn eller e-postadress** sökrutan.</span><span class="sxs-lookup"><span data-stu-id="228df-188">Type in hello **full group name** of hello group you are interested in assigning into hello **Search by name or email address** search box.</span></span>
+
+11. <span data-ttu-id="228df-189">Hovra över hello **grupp** i hello listan tooreveal en **kryssrutan**.</span><span class="sxs-lookup"><span data-stu-id="228df-189">Hover over hello **group** in hello list tooreveal a **checkbox**.</span></span> <span data-ttu-id="228df-190">Klicka på hello kryssrutan nästa toohello gruppens profil foto eller logotypen tooadd användaren-toohello **valda** lista.</span><span class="sxs-lookup"><span data-stu-id="228df-190">Click hello checkbox next toohello group’s profile photo or logo tooadd your user toohello **Selected** list.</span></span>
+
+12. <span data-ttu-id="228df-191">**Valfritt:** om du vill ha för**lägga till fler än en grupp**, typ i en annan **fullständig gruppnamn** till hello **Sök efter namn eller e-postadress** sökrutan och klicka på hello kryssrutan tooadd den här gruppen toohello **valda** lista.</span><span class="sxs-lookup"><span data-stu-id="228df-191">**Optional:** If you would like too**add more than one group**, type in another **full group name** into hello **Search by name or email address** search box, and click hello checkbox tooadd this group toohello **Selected** list.</span></span>
+
+13. <span data-ttu-id="228df-192">När du har valt grupper klickar du på hello **Välj** knappen tooadd dem toohello lista över användare och grupper toobe tilldelat toohello program.</span><span class="sxs-lookup"><span data-stu-id="228df-192">When you are finished selecting groups, click hello **Select** button tooadd them toohello list of users and groups toobe assigned toohello application.</span></span>
+
+14. <span data-ttu-id="228df-193">**Valfritt:** klickar du på hello **Välj roll** Väljaren i hello **Lägg uppdrag** bladet tooselect en roll tooassign toohello grupper som du har valt.</span><span class="sxs-lookup"><span data-stu-id="228df-193">**Optional:** click hello **Select Role** selector in hello **Add Assignment** blade tooselect a role tooassign toohello groups you have selected.</span></span>
+
+15. <span data-ttu-id="228df-194">Klicka på hello **tilldela** knappen tooassign hello programmet toohello valda grupper.</span><span class="sxs-lookup"><span data-stu-id="228df-194">Click hello **Assign** button tooassign hello application toohello selected groups.</span></span>
+
+<span data-ttu-id="228df-195">Efter en kort period hello-användare som du har valt att kan toolaunch programmen i hello åtkomstpanelen.</span><span class="sxs-lookup"><span data-stu-id="228df-195">After a short period, hello users you have selected be able toolaunch these applications in hello Access Panel.</span></span>
+
+## <a name="next-steps"></a><span data-ttu-id="228df-196">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="228df-196">Next steps</span></span>
+[<span data-ttu-id="228df-197">Tillhandahålla enkel inloggning tooyour appar med Application Proxy</span><span class="sxs-lookup"><span data-stu-id="228df-197">Provide single sign-on tooyour apps with Application Proxy</span></span>](active-directory-application-proxy-sso-using-kcd.md)

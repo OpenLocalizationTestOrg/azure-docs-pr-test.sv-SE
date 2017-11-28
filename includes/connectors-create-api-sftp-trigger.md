@@ -1,0 +1,18 @@
+<span data-ttu-id="6d87b-101">Lägg till en utlösare.</span><span class="sxs-lookup"><span data-stu-id="6d87b-101">Let's add a trigger.</span></span>
+
+1. <span data-ttu-id="6d87b-102">Ange *sftp* i sökrutan på logic apps designer väljer den **SFTP - när en fil har lagts till eller ändrats** utlösare</span><span class="sxs-lookup"><span data-stu-id="6d87b-102">Enter *sftp* in the search box on the logic apps designer then select the **SFTP - When a file is added or modified**  trigger</span></span>   
+   <span data-ttu-id="6d87b-103">![SFTP utlösarbild 1](./media/connectors-create-api-sftp/trigger-1.png)</span><span class="sxs-lookup"><span data-stu-id="6d87b-103">![SFTP trigger image 1](./media/connectors-create-api-sftp/trigger-1.png)</span></span>  
+2. <span data-ttu-id="6d87b-104">Den **när en fil har lagts till eller ändrats** kontrollen öppnas</span><span class="sxs-lookup"><span data-stu-id="6d87b-104">The **When a file is added or modified** control opens up</span></span>  
+   <span data-ttu-id="6d87b-105">![Bild 2 till SFTP utlösare](./media/connectors-create-api-sftp/trigger-2.png)</span><span class="sxs-lookup"><span data-stu-id="6d87b-105">![SFTP trigger image 2](./media/connectors-create-api-sftp/trigger-2.png)</span></span>  
+3. <span data-ttu-id="6d87b-106">Välj den **...**  finns på höger sida av kontrollen.</span><span class="sxs-lookup"><span data-stu-id="6d87b-106">Select the **...** located on the right side of the control.</span></span> <span data-ttu-id="6d87b-107">Då öppnas väljarkontrollen mapp</span><span class="sxs-lookup"><span data-stu-id="6d87b-107">This opens the folder picker control</span></span>  
+   <span data-ttu-id="6d87b-108">![Bild 3 till SFTP utlösare](./media/connectors-create-api-sftp/action-1.png)</span><span class="sxs-lookup"><span data-stu-id="6d87b-108">![SFTP trigger image 3](./media/connectors-create-api-sftp/action-1.png)</span></span>  
+4. <span data-ttu-id="6d87b-109">Välj den **SFTP** välja rotmappen som mappen för att övervaka för nya eller ändrade filer.</span><span class="sxs-lookup"><span data-stu-id="6d87b-109">Select the **SFTP** to select the root folder as the folder to monitor for new or modified files.</span></span> <span data-ttu-id="6d87b-110">Meddelande rotmappen visas nu i den **mappen** kontroll.</span><span class="sxs-lookup"><span data-stu-id="6d87b-110">Notice the root folder is now displayed in the **Folder** control.</span></span>  
+   <span data-ttu-id="6d87b-111">![Bild 4 till SFTP utlösare](./media/connectors-create-api-sftp/action-2.png)</span><span class="sxs-lookup"><span data-stu-id="6d87b-111">![SFTP trigger image 4](./media/connectors-create-api-sftp/action-2.png)</span></span>   
+
+<span data-ttu-id="6d87b-112">Din logikapp har nu konfigurerats med en utlösare som börjar på andra utlösare och åtgärder i arbetsflödet körs när en fil ändras eller skapas i mappen specifika SFTP.</span><span class="sxs-lookup"><span data-stu-id="6d87b-112">At this point, your logic app has been configured with a trigger that will begin a run of the other triggers and actions in the workflow when a file is either modified or created in the specific SFTP folder.</span></span> 
+
+> [!NOTE]
+> <span data-ttu-id="6d87b-113">Det måste innehålla minst en utlösare och en åtgärd för en logikapp ska fungera.</span><span class="sxs-lookup"><span data-stu-id="6d87b-113">For a logic app to be functional, it must contain at least one trigger and one action.</span></span> <span data-ttu-id="6d87b-114">Följ stegen i nästa avsnitt för att lägga till en åtgärd.</span><span class="sxs-lookup"><span data-stu-id="6d87b-114">Follow the steps in the next section to add an action.</span></span>  
+> 
+> 
+

@@ -1,0 +1,4 @@
+| <span data-ttu-id="aa35d-101">Resurs</span><span class="sxs-lookup"><span data-stu-id="aa35d-101">Resource</span></span> | <span data-ttu-id="aa35d-102">Gräns</span><span class="sxs-lookup"><span data-stu-id="aa35d-102">Limit</span></span> |
+| --- | --- |
+| <span data-ttu-id="aa35d-103">Händelseprenumerationer per region</span><span class="sxs-lookup"><span data-stu-id="aa35d-103">Event Subscriptions per region</span></span> |<span data-ttu-id="aa35d-104">1000</span><span class="sxs-lookup"><span data-stu-id="aa35d-104">1000</span></span> |
+| <span data-ttu-id="aa35d-105">Anpassade ämnen per region</span><span class="sxs-lookup"><span data-stu-id="aa35d-105">Custom Topics per region</span></span> |<span data-ttu-id="aa35d-106">20</span><span class="sxs-lookup"><span data-stu-id="aa35d-106">20</span></span> |

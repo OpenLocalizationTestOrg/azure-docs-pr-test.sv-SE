@@ -1,0 +1,88 @@
+---
+title: "aaaAzure hög tillgänglighet för Advisor-rekommendationer | Microsoft Docs"
+description: "Använd Azure Advisor tooimprove hög tillgänglighet för din Azure-distributioner."
+services: advisor
+documentationcenter: NA
+author: kumudd
+manager: carmonm
+editor: 
+ms.assetid: 
+ms.service: advisor
+ms.devlang: NA
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: NA
+ms.date: 11/16/2016
+ms.author: kumud
+ms.openlocfilehash: 3ac75ce401271f0212d198d7a7dc75ab702b6eda
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.translationtype: MT
+ms.contentlocale: sv-SE
+ms.lasthandoff: 10/06/2017
+---
+# <a name="advisor-high-availability-recommendations"></a><span data-ttu-id="4dedd-103">Advisor-rekommendationer för hög tillgänglighet</span><span class="sxs-lookup"><span data-stu-id="4dedd-103">Advisor High Availability recommendations</span></span>
+
+<span data-ttu-id="4dedd-104">Azure Advisor hjälper dig att kontrollera och förbättra hello kontinuiteten i dina verksamhetskritiska program.</span><span class="sxs-lookup"><span data-stu-id="4dedd-104">Azure Advisor helps you ensure and improve hello continuity of your business-critical applications.</span></span> <span data-ttu-id="4dedd-105">Du kan få rekommendationer för hög tillgänglighet av Advisor från hello **hög tillgänglighet** fliken hello Advisor instrumentpanelen.</span><span class="sxs-lookup"><span data-stu-id="4dedd-105">You can get high availability recommendations by Advisor from hello **High Availability** tab of hello Advisor dashboard.</span></span>
+
+![Hög tillgänglighet knappen hello Advisor instrumentpanelen](./media/advisor-high-availability-recommendations/advisor-high-availability-tab.png)
+
+
+## <a name="ensure-virtual-machine-fault-tolerance"></a><span data-ttu-id="4dedd-107">Se till att virtuella feltolerans</span><span class="sxs-lookup"><span data-stu-id="4dedd-107">Ensure virtual machine fault tolerance</span></span>
+
+<span data-ttu-id="4dedd-108">Advisor identifierar virtuella datorer som inte är en del av en tillgänglighetsuppsättning och rekommenderar flytta dem till en tillgänglighetsuppsättning.</span><span class="sxs-lookup"><span data-stu-id="4dedd-108">Advisor identifies virtual machines that are not part of an availability set and recommends moving them into an availability set.</span></span> <span data-ttu-id="4dedd-109">För att ge redundans tooyour program, rekommenderar vi att du grupperar två eller flera virtuella datorer i en tillgänglighetsuppsättning.</span><span class="sxs-lookup"><span data-stu-id="4dedd-109">To provide redundancy tooyour application, we recommend that you group two or more virtual machines in an availability set.</span></span> <span data-ttu-id="4dedd-110">Den här konfigurationen garanterar att under antingen en planerad eller oplanerad underhållshändelse, minst en virtuell dator är tillgänglig och uppfyller hello Azure virtuella SLA.</span><span class="sxs-lookup"><span data-stu-id="4dedd-110">This configuration ensures that during either a planned or unplanned maintenance event, at least one virtual machine is available and meets hello Azure virtual machine SLA.</span></span> <span data-ttu-id="4dedd-111">Du kan välja antingen toocreate en tillgänglighetsuppsättning för hello virtuell dator eller tooadd hello virtuella tooan befintlig tillgänglighetsuppsättning.</span><span class="sxs-lookup"><span data-stu-id="4dedd-111">You can choose either toocreate an availability set for hello virtual machine or tooadd hello virtual machine tooan existing availability set.</span></span>
+
+> [!NOTE]
+> <span data-ttu-id="4dedd-112">Om du väljer toocreate tillgänglighet, du måste lägga till minst en mer virtuella datorn till den.</span><span class="sxs-lookup"><span data-stu-id="4dedd-112">If you choose toocreate an availability set, you must add at least one more virtual machine into it.</span></span> <span data-ttu-id="4dedd-113">Vi rekommenderar att du grupperar två eller flera virtuella datorer i en tillgänglighetsgrupp anger tooensure som minst en dator som är tillgänglig under ett avbrott.</span><span class="sxs-lookup"><span data-stu-id="4dedd-113">We recommend that you group two or more virtual machines in an availability set tooensure that at least one machine is available during an outage.</span></span>
+
+![Advisor-rekommendationer: Använd tillgänglighetsuppsättningar för redundans för virtuell dator,](./media/advisor-high-availability-recommendations/advisor-high-availability-create-availability-set.png)
+
+## <a name="ensure-availability-set-fault-tolerance"></a><span data-ttu-id="4dedd-115">Kontrollera tillgänglighet feltolerans</span><span class="sxs-lookup"><span data-stu-id="4dedd-115">Ensure availability set fault tolerance</span></span> 
+
+<span data-ttu-id="4dedd-116">Advisor identifierar tillgänglighetsuppsättningar som innehåller en enda virtuell dator och att du lägger till en eller flera virtuella datorer tooit.</span><span class="sxs-lookup"><span data-stu-id="4dedd-116">Advisor identifies availability sets that contain a single virtual machine and recommends adding one or more virtual machines tooit.</span></span> <span data-ttu-id="4dedd-117">För att ge redundans tooyour program, rekommenderar vi att du grupperar två eller flera virtuella datorer i en tillgänglighetsuppsättning.</span><span class="sxs-lookup"><span data-stu-id="4dedd-117">To provide redundancy tooyour application, we recommend that you group two or more virtual machines in an availability set.</span></span> <span data-ttu-id="4dedd-118">Den här konfigurationen garanterar att under antingen en planerad eller oplanerad underhållshändelse, minst en virtuell dator är tillgänglig och uppfyller hello Azure virtuella SLA.</span><span class="sxs-lookup"><span data-stu-id="4dedd-118">This configuration ensures that during either a planned or unplanned maintenance event, at least one virtual machine is available and meets hello Azure virtual machine SLA.</span></span> <span data-ttu-id="4dedd-119">Du kan välja antingen toocreate en virtuell dator eller toouse en befintlig virtuell dator och tooadd den toohello tillgänglighetsuppsättning.</span><span class="sxs-lookup"><span data-stu-id="4dedd-119">You can choose either toocreate a virtual machine or toouse an existing virtual machine, and tooadd it toohello availability set.</span></span>  
+
+![Advisor-rekommendationer: Lägg till en eller flera virtuella datorer toothis tillgänglighetsuppsättning](./media/advisor-high-availability-recommendations/advisor-high-availability-add-vm-to-availability-set.png)
+
+
+## <a name="ensure-application-gateway-fault-tolerance"></a><span data-ttu-id="4dedd-121">Se till att programmet gateway feltolerans</span><span class="sxs-lookup"><span data-stu-id="4dedd-121">Ensure application gateway fault tolerance</span></span>
+<span data-ttu-id="4dedd-122">tooensure hello affärskontinuitet av verksamhetskritiska program som tillhandahålls av programgatewayer, Advisor identifierar programmet gateway-instanser som inte är konfigurerade för feltolerans och förslag åtgärder som du kan vidta .</span><span class="sxs-lookup"><span data-stu-id="4dedd-122">tooensure hello business continuity of mission-critical applications that are powered by application gateways, Advisor identifies application gateway instances that are not configured for fault tolerance, and it suggests remediation actions that you can take.</span></span> <span data-ttu-id="4dedd-123">Advisor identifierar medelstora eller stora enkelinstansprogram gateways och rekommenderar att lägga till minst en mer instansen.</span><span class="sxs-lookup"><span data-stu-id="4dedd-123">Advisor identifies medium or large single-instance application gateways, and it recommends adding at least one more instance.</span></span> <span data-ttu-id="4dedd-124">Den identifierar en eller flera instance små programgatewayer och rekommenderar migrera toomedium eller stora SKU: er.</span><span class="sxs-lookup"><span data-stu-id="4dedd-124">It also identifies single- or multi-instance small application gateways and recommends migrating toomedium or large SKUs.</span></span> <span data-ttu-id="4dedd-125">Advisor rekommenderar dessa åtgärder tooensure att ditt program gateway-instanserna är konfigurerade toosatisfy hello SLA krav som ställs för dessa resurser.</span><span class="sxs-lookup"><span data-stu-id="4dedd-125">Advisor recommends these actions tooensure that your application gateway instances are configured toosatisfy hello current SLA requirements for these resources.</span></span>
+
+![Advisor-rekommendationer: distribuera minst två medelstora eller stora storlek gateway programinstanser](./media/advisor-high-availability-recommendations/advisor-high-availability-application-gateway.png)
+
+## <a name="improve-hello-performance-and-reliability-of-virtual-machine-disks"></a><span data-ttu-id="4dedd-127">Förbättra hello prestanda och tillförlitlighet för virtuella diskar</span><span class="sxs-lookup"><span data-stu-id="4dedd-127">Improve hello performance and reliability of virtual machine disks</span></span>
+
+<span data-ttu-id="4dedd-128">Advisor identifierar virtuella datorer med standarddiskar och rekommenderar att du uppgraderar toopremium diskar.</span><span class="sxs-lookup"><span data-stu-id="4dedd-128">Advisor identifies virtual machines with standard disks and recommends upgrading toopremium disks.</span></span>
+ 
+<span data-ttu-id="4dedd-129">Azure Premium Storage ger stöd för virtuella datorer som körs I/O-intensiva arbetsbelastningar diskar med hög prestanda, låg latens.</span><span class="sxs-lookup"><span data-stu-id="4dedd-129">Azure Premium Storage delivers high-performance, low-latency disk support for virtual machines that run I/O-intensive workloads.</span></span> <span data-ttu-id="4dedd-130">Virtuella diskar som använder premiumlagringskonton data som lagras på SSD-enheter (SSD).</span><span class="sxs-lookup"><span data-stu-id="4dedd-130">Virtual machine disks that use premium storage accounts store data on solid-state drives (SSDs).</span></span> <span data-ttu-id="4dedd-131">För hello bästa prestanda för ditt program rekommenderar vi att du migrerar alla virtuella diskar som kräver hög IOPS toopremium lagring.</span><span class="sxs-lookup"><span data-stu-id="4dedd-131">For hello best performance for your application, we recommend that you migrate any virtual machine disks requiring high IOPS toopremium storage.</span></span> 
+
+<span data-ttu-id="4dedd-132">Om diskarna inte behöver höga IOPS, kan du begränsa kostnader genom att hålla dem i standardlagring.</span><span class="sxs-lookup"><span data-stu-id="4dedd-132">If your disks do not require high IOPS, you can limit costs by maintaining them in standard storage.</span></span> <span data-ttu-id="4dedd-133">Standardlagring lagrar data för virtuell disk på hårddiskar (HDD) i stället för SSD-enheter.</span><span class="sxs-lookup"><span data-stu-id="4dedd-133">Standard storage stores virtual machine disk data on hard disk drives (HDDs) instead of SSDs.</span></span> <span data-ttu-id="4dedd-134">Du kan välja toomigrate virtuella diskar toopremium diskar.</span><span class="sxs-lookup"><span data-stu-id="4dedd-134">You can choose toomigrate your virtual machine disks toopremium disks.</span></span> <span data-ttu-id="4dedd-135">Premiumdiskar stöds i de flesta virtuella SKU: er.</span><span class="sxs-lookup"><span data-stu-id="4dedd-135">Premium disks are supported on most virtual machine SKUs.</span></span> <span data-ttu-id="4dedd-136">I vissa fall, om du vill toouse premiumdiskar kan du dock behöva tooupgrade din virtuella dator SKU: er samt.</span><span class="sxs-lookup"><span data-stu-id="4dedd-136">However, in some cases, if you want toouse premium disks, you might need tooupgrade your virtual machine SKUs as well.</span></span>
+
+![Advisor-rekommendationer: förbättra hello tillförlitlighet för virtuella diskar genom att uppgradera toopremium diskar](./media/advisor-high-availability-recommendations/advisor-high-availability-upgrade-to-premium-disks.png)
+
+## <a name="protect-your-virtual-machine-data-from-accidental-deletion"></a><span data-ttu-id="4dedd-138">Skydda dina data för virtuell dator tas bort av misstag</span><span class="sxs-lookup"><span data-stu-id="4dedd-138">Protect your virtual machine data from accidental deletion</span></span>
+<span data-ttu-id="4dedd-139">Advisor identifierar virtuella datorer där säkerhetskopiering inte har aktiverats och rekommenderar att aktivera säkerhetskopiering.</span><span class="sxs-lookup"><span data-stu-id="4dedd-139">Advisor identifies virtual machines where backup is not enabled, and it recommends enabling backup.</span></span> <span data-ttu-id="4dedd-140">Konfigurera säkerhetskopiering av virtuella datorer garanterar hello tillgängligheten för affärskritiska data och ger skydd mot oavsiktlig borttagning eller skadade data.</span><span class="sxs-lookup"><span data-stu-id="4dedd-140">Setting up virtual machine backup ensures hello availability of your business-critical data and offers protection against accidental deletion or corruption.</span></span>
+
+![Advisor-rekommendationer: Konfigurera virtuella säkerhetskopiering tooprotect dina kritiska data](./media/advisor-high-availability-recommendations/advisor-high-availability-virtual-machine-backup.png)
+
+## <a name="access-high-availability-recommendations-in-advisor"></a><span data-ttu-id="4dedd-142">Rekommendationer för åtkomst med hög tillgänglighet i Advisor</span><span class="sxs-lookup"><span data-stu-id="4dedd-142">Access high availability recommendations in Advisor</span></span>
+
+1. <span data-ttu-id="4dedd-143">Logga in toohello [Azure-portalen](https://portal.azure.com).</span><span class="sxs-lookup"><span data-stu-id="4dedd-143">Sign in toohello [Azure portal](https://portal.azure.com).</span></span>
+
+2. <span data-ttu-id="4dedd-144">Hello vänster klickar du på **fler tjänster**.</span><span class="sxs-lookup"><span data-stu-id="4dedd-144">In hello left pane, click **More services**.</span></span>
+
+3. <span data-ttu-id="4dedd-145">I hello tjänsten menyn rutan under **övervakning och hantering av**, klickar du på **Azure Advisor**.</span><span class="sxs-lookup"><span data-stu-id="4dedd-145">In hello service menu pane, under **Monitoring and Management**, click **Azure Advisor**.</span></span>  
+ <span data-ttu-id="4dedd-146">hello Advisor instrumentpanelen visas.</span><span class="sxs-lookup"><span data-stu-id="4dedd-146">hello Advisor dashboard is displayed.</span></span>
+
+4. <span data-ttu-id="4dedd-147">Klicka på hello Advisor instrumentpanelen hello **hög tillgänglighet** och välj hello prenumeration som du vill tooreceive rekommendationer.</span><span class="sxs-lookup"><span data-stu-id="4dedd-147">On hello Advisor dashboard, click hello **High Availability** tab, and then select hello subscription for which you want tooreceive recommendations.</span></span>
+
+> [!NOTE]
+> <span data-ttu-id="4dedd-148">tooaccess Advisor-rekommendationer, måste du först *registrera prenumerationen* med Advisor.</span><span class="sxs-lookup"><span data-stu-id="4dedd-148">tooaccess Advisor recommendations, you must first *register your subscription* with Advisor.</span></span> <span data-ttu-id="4dedd-149">En prenumeration registreras när en *prenumeration ägare* startar hello Advisor instrumentpanelen och klickar på hello **få rekommendationer** knappen.</span><span class="sxs-lookup"><span data-stu-id="4dedd-149">A subscription is registered when a *subscription Owner* launches hello Advisor dashboard and clicks hello **Get recommendations** button.</span></span> <span data-ttu-id="4dedd-150">Det här är en *engångsåtgärd*.</span><span class="sxs-lookup"><span data-stu-id="4dedd-150">This is a *one-time operation*.</span></span> <span data-ttu-id="4dedd-151">När hello prenumeration har registrerats kan du komma åt Advisor-rekommendationer som *ägare*, *deltagare*, eller *Reader* för en prenumeration, resursgrupp eller en viss resurs.</span><span class="sxs-lookup"><span data-stu-id="4dedd-151">After hello subscription is registered, you can access Advisor recommendations as *Owner*, *Contributor*, or *Reader* for a subscription, a resource group, or a specific resource.</span></span>
+
+## <a name="next-steps"></a><span data-ttu-id="4dedd-152">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="4dedd-152">Next steps</span></span>
+
+<span data-ttu-id="4dedd-153">Mer information om Advisor-rekommendationer finns:</span><span class="sxs-lookup"><span data-stu-id="4dedd-153">For more information about Advisor recommendations, see:</span></span>
+* [<span data-ttu-id="4dedd-154">Introduktion tooAzure Advisor</span><span class="sxs-lookup"><span data-stu-id="4dedd-154">Introduction tooAzure Advisor</span></span>](advisor-overview.md)
+* [<span data-ttu-id="4dedd-155">Kom igång med Advisor</span><span class="sxs-lookup"><span data-stu-id="4dedd-155">Get started with Advisor</span></span>](advisor-get-started.md)
+* [<span data-ttu-id="4dedd-156">Kostnad Advisor-rekommendationer</span><span class="sxs-lookup"><span data-stu-id="4dedd-156">Advisor Cost recommendations</span></span>](advisor-performance-recommendations.md)
+* [<span data-ttu-id="4dedd-157">Advisor-rekommendationer</span><span class="sxs-lookup"><span data-stu-id="4dedd-157">Advisor Performance recommendations</span></span>](advisor-performance-recommendations.md)
+* [<span data-ttu-id="4dedd-158">Advisor säkerhetsrekommendationer</span><span class="sxs-lookup"><span data-stu-id="4dedd-158">Advisor Security recommendations</span></span>](advisor-security-recommendations.md)
+

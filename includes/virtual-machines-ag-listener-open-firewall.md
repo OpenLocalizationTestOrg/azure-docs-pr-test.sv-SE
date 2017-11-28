@@ -1,0 +1,18 @@
+<span data-ttu-id="23b40-101">I det här steget kan du skapa en brandväggsregel för att öppna avsökningsport för slutpunkten för Utjämning av nätverksbelastning (59999 som angavs tidigare) och en annan regel för att öppna porten för tillgänglighetsgruppens lyssnare.</span><span class="sxs-lookup"><span data-stu-id="23b40-101">In this step, you create a firewall rule to open the probe port for the load-balanced endpoint (59999, as specified earlier) and another rule to open the availability group listener port.</span></span> <span data-ttu-id="23b40-102">Eftersom du har skapat belastningsutjämnade-slutpunkten på virtuella datorer som innehåller tillgänglighetsgrupprepliker måste du öppna porten avsökning och lyssningsport på respektive virtuella datorer.</span><span class="sxs-lookup"><span data-stu-id="23b40-102">Because you created the load-balanced endpoint on the VMs that contain availability group replicas, you need to open the probe port and the listener port on the respective VMs.</span></span>
+
+1. <span data-ttu-id="23b40-103">Starta på virtuella datorer som är värdar för repliker, **Windows-brandväggen med avancerad säkerhet**.</span><span class="sxs-lookup"><span data-stu-id="23b40-103">On VMs that host replicas, start **Windows Firewall with Advanced Security**.</span></span>
+
+2. <span data-ttu-id="23b40-104">Högerklicka på **regler för inkommande trafik**, och klicka sedan på **ny regel**.</span><span class="sxs-lookup"><span data-stu-id="23b40-104">Right-click **Inbound Rules**, and then click **New Rule**.</span></span>
+
+3. <span data-ttu-id="23b40-105">På den **regeltyp** väljer **Port**, och klicka sedan på **nästa**.</span><span class="sxs-lookup"><span data-stu-id="23b40-105">On the **Rule Type** page, select **Port**, and then click **Next**.</span></span>
+
+4. <span data-ttu-id="23b40-106">På den **protokoll och portar** väljer **TCP**, typen **59999** i den **specifika lokala portar** rutan och klicka på  **Nästa**.</span><span class="sxs-lookup"><span data-stu-id="23b40-106">On the **Protocol and Ports** page, select **TCP**, type **59999** in the **Specific local ports** box, and then click **Next**.</span></span>
+
+5. <span data-ttu-id="23b40-107">På den **åtgärd** behåller **tillåter anslutningen** markerad och klicka sedan på **nästa**.</span><span class="sxs-lookup"><span data-stu-id="23b40-107">On the **Action** page, keep **Allow the connection** selected, and then click **Next**.</span></span>
+
+6. <span data-ttu-id="23b40-108">På den **profil** , accepterar du standardinställningarna och klicka sedan på **nästa**.</span><span class="sxs-lookup"><span data-stu-id="23b40-108">On the **Profile** page, accept the default settings, and then click **Next**.</span></span>
+
+7. <span data-ttu-id="23b40-109">På den **namn** sidan den **namn** text anger du ett namn för regeln som **alltid på avsökning lyssningsport**, och klicka sedan på **Slutför**.</span><span class="sxs-lookup"><span data-stu-id="23b40-109">On the **Name** page, in the **Name** text box, specify a rule name, such as **Always On Listener Probe Port**, and then click **Finish**.</span></span>
+
+8. <span data-ttu-id="23b40-110">Upprepa föregående steg för porten för tillgänglighetsgruppens lyssnare (som anges tidigare i parametern $EndpointPort av skriptet) och anger ett lämpligt namn, till exempel **alltid på lyssningsport**.</span><span class="sxs-lookup"><span data-stu-id="23b40-110">Repeat the preceding steps for the availability group listener port (as specified earlier in the $EndpointPort parameter of the script), and then specify an appropriate rule name, such as **Always On Listener Port**.</span></span>
+

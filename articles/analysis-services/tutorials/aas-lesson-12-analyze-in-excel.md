@@ -1,0 +1,66 @@
+---
+<span data-ttu-id="aef5b-101">Rubrik: aaa ”Azure Analysis Services självstudiekursen lektionen 12: Analysera i Excel | Microsoft Docs ”beskrivning: Beskriver hur toouse analysera i Excel i hello Azure Analysis Services-självstudiekurs projektet.</span><span class="sxs-lookup"><span data-stu-id="aef5b-101">title: aaa"Azure Analysis Services tutorial lesson 12: Analyze in Excel | Microsoft Docs" description: Describes how toouse Analyze in Excel in hello Azure Analysis Services tutorial project.</span></span> <span data-ttu-id="aef5b-102">tjänster: analysis services dokumentationcenter: '' författare: minewiskan manager: erikre editor: '' taggar: ''</span><span class="sxs-lookup"><span data-stu-id="aef5b-102">services: analysis-services documentationcenter: '' author: minewiskan manager: erikre editor: '' tags: ''</span></span>
+
+<span data-ttu-id="aef5b-103">MS.AssetID: ms.service: analysis services ms.devlang: NA ms.topic: get-started-article ms.tgt_pltfrm: NA ms.workload: na ms.date: 2017-05/26 ms.author: owend</span><span class="sxs-lookup"><span data-stu-id="aef5b-103">ms.assetid: ms.service: analysis-services ms.devlang: NA ms.topic: get-started-article ms.tgt_pltfrm: NA ms.workload: na ms.date: 05/26/2017 ms.author: owend</span></span>
+---
+# <a name="lesson-12-analyze-in-excel"></a><span data-ttu-id="aef5b-104">Lektion 12: Analysera i Excel</span><span class="sxs-lookup"><span data-stu-id="aef5b-104">Lesson 12: Analyze in Excel</span></span>
+
+[!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
+
+<span data-ttu-id="aef5b-105">I kursen använder hello analysera i Excel funktionen tooopen Microsoft Excel, skapa automatiskt en anslutning toohello modellen arbetsyta och lägga till automatiskt en pivottabell toohello kalkylblad.</span><span class="sxs-lookup"><span data-stu-id="aef5b-105">In this lesson, you use hello Analyze in Excel feature tooopen Microsoft Excel, automatically create a connection toohello model workspace, and automatically add a PivotTable toohello worksheet.</span></span> <span data-ttu-id="aef5b-106">hello analysera i Excel-funktionen är avsedd tooprovide snabbt och enkelt sätt tootest hello effekt av modellen utforma tidigare toodeploying din modell.</span><span class="sxs-lookup"><span data-stu-id="aef5b-106">hello Analyze in Excel feature is meant tooprovide a quick and easy way tootest hello efficacy of your model design prior toodeploying your model.</span></span> <span data-ttu-id="aef5b-107">Du utför inte någon dataanalys under den här lektionen.</span><span class="sxs-lookup"><span data-stu-id="aef5b-107">You do not perform any data analysis in this lesson.</span></span> <span data-ttu-id="aef5b-108">hello syftet med den här lektionen är toofamiliarize, hello modellen skriva, med hello verktyg du kan använda tootest modelldesignen.</span><span class="sxs-lookup"><span data-stu-id="aef5b-108">hello purpose of this lesson is toofamiliarize you, hello model author, with hello tools you can use tootest your model design.</span></span>   
+  
+<span data-ttu-id="aef5b-109">toocomplete kursen Excel måste vara installerad på hello samma dator som SSDT.</span><span class="sxs-lookup"><span data-stu-id="aef5b-109">toocomplete this lesson, Excel must be installed on hello same computer as SSDT.</span></span>
+  
+<span data-ttu-id="aef5b-110">Uppskattad tid toocomplete lektionen: **fem minuter**</span><span class="sxs-lookup"><span data-stu-id="aef5b-110">Estimated time toocomplete this lesson: **Five minutes**</span></span>  
+  
+## <a name="prerequisites"></a><span data-ttu-id="aef5b-111">Krav</span><span class="sxs-lookup"><span data-stu-id="aef5b-111">Prerequisites</span></span>  
+<span data-ttu-id="aef5b-112">Det här avsnittet ingår i självstudiekursen för tabellmodellering som bör slutföras i rätt ordning.</span><span class="sxs-lookup"><span data-stu-id="aef5b-112">This topic is part of a tabular modeling tutorial, which should be completed in order.</span></span> <span data-ttu-id="aef5b-113">Innan du utför hello uppgifter i den här lektionen bör du slutfört hello föregående lektionen: [lektionen 11: skapa roller](../tutorials/aas-lesson-11-create-roles.md).</span><span class="sxs-lookup"><span data-stu-id="aef5b-113">Before performing hello tasks in this lesson, you should have completed hello previous lesson: [Lesson 11: Create roles](../tutorials/aas-lesson-11-create-roles.md).</span></span>  
+  
+## <a name="browse-using-hello-default-and-internet-sales-perspectives"></a><span data-ttu-id="aef5b-114">Bläddra med hello standard och Internet försäljning perspektiv</span><span class="sxs-lookup"><span data-stu-id="aef5b-114">Browse using hello Default and Internet Sales perspectives</span></span>  
+<span data-ttu-id="aef5b-115">Dessa första uppgifter du bläddra i din modell med hjälp av både hello standard perspektiv, som innehåller alla modellobjekt, och med hjälp av hello Internet försäljning perspektiv du tidigare.</span><span class="sxs-lookup"><span data-stu-id="aef5b-115">In these first tasks, you browse your model by using both hello default perspective, which includes all model objects, and also by using hello Internet Sales perspective you earlier.</span></span> <span data-ttu-id="aef5b-116">hello Internet försäljning perspektiv undantar hello tabellobjekt för kunden.</span><span class="sxs-lookup"><span data-stu-id="aef5b-116">hello Internet Sales perspective excludes hello Customer table object.</span></span>  
+  
+#### <a name="toobrowse-by-using-hello-default-perspective"></a><span data-ttu-id="aef5b-117">toobrowse med hjälp av hello standard perspektiv</span><span class="sxs-lookup"><span data-stu-id="aef5b-117">toobrowse by using hello Default perspective</span></span>  
+  
+1.  <span data-ttu-id="aef5b-118">Klicka på hello **modellen** menyn > **analysera i Excel**.</span><span class="sxs-lookup"><span data-stu-id="aef5b-118">Click hello **Model** menu > **Analyze in Excel**.</span></span>  
+  
+2.  <span data-ttu-id="aef5b-119">I hello **analysera i Excel** dialogrutan klickar du på **OK**.</span><span class="sxs-lookup"><span data-stu-id="aef5b-119">In hello **Analyze in Excel** dialog box, click **OK**.</span></span>  
+  
+    <span data-ttu-id="aef5b-120">Excel öppnas med en ny arbetsbok.</span><span class="sxs-lookup"><span data-stu-id="aef5b-120">Excel opens with a new workbook.</span></span> <span data-ttu-id="aef5b-121">Anslutning till en datakälla skapas med hjälp av hello det aktuella användarkontot och hello standardperspektivet är synlig används toodefine-fält.</span><span class="sxs-lookup"><span data-stu-id="aef5b-121">A data source connection is created using hello current user account and hello Default perspective is used toodefine viewable fields.</span></span> <span data-ttu-id="aef5b-122">En pivottabell läggs automatiskt toohello kalkylblad.</span><span class="sxs-lookup"><span data-stu-id="aef5b-122">A PivotTable is automatically added toohello worksheet.</span></span>  
+  
+3.  <span data-ttu-id="aef5b-123">I hello i Excel **Fältlista**, meddelande hello **DimDate** och **FactInternetSales** måttgrupper visas.</span><span class="sxs-lookup"><span data-stu-id="aef5b-123">In Excel, in hello **PivotTable Field List**, notice hello **DimDate** and **FactInternetSales** measure groups appear.</span></span> <span data-ttu-id="aef5b-124">Hej **DimCustomer**, **DimDate**, **DimGeography**, **DimProduct**, **DimProductCategory**, **DimProductSubcategory**, och **FactInternetSales** tabeller med sina respektive kolumner visas också.</span><span class="sxs-lookup"><span data-stu-id="aef5b-124">hello **DimCustomer**, **DimDate**, **DimGeography**, **DimProduct**, **DimProductCategory**, **DimProductSubcategory**, and **FactInternetSales** tables with their respective columns also appear.</span></span>  
+  
+4.  <span data-ttu-id="aef5b-125">Stäng Excel utan att spara hello arbetsboken.</span><span class="sxs-lookup"><span data-stu-id="aef5b-125">Close Excel without saving hello workbook.</span></span>  
+  
+#### <a name="toobrowse-by-using-hello-internet-sales-perspective"></a><span data-ttu-id="aef5b-126">toobrowse med hjälp av hello Internet försäljning perspektiv</span><span class="sxs-lookup"><span data-stu-id="aef5b-126">toobrowse by using hello Internet Sales perspective</span></span>  
+  
+1.  <span data-ttu-id="aef5b-127">Klicka på hello **modellen** -menyn och klicka sedan på **analysera i Excel**.</span><span class="sxs-lookup"><span data-stu-id="aef5b-127">Click hello **Model** menu, and then click **Analyze in Excel**.</span></span>  
+  
+2.  <span data-ttu-id="aef5b-128">I hello **analysera i Excel** dialogrutan lämna **aktuella Windows-användaren** markerade, i hello **perspektiv** nedrullningsbara listrutan för väljer **Internet försäljning** , och klicka sedan på **OK**.</span><span class="sxs-lookup"><span data-stu-id="aef5b-128">In hello **Analyze in Excel** dialog box, leave **Current Windows User** selected, then in hello **Perspective** drop-down listbox, select **Internet Sales**, and then click **OK**.</span></span> 
+    
+    ![aas-lesson12-perspective](../tutorials/media/aas-lesson12-perspective.png)
+    
+3.  <span data-ttu-id="aef5b-130">I Excel i **PivotTable-Fields**, Lägg märke till hello DimCustomer tabeller tas inte hello fältlistan.</span><span class="sxs-lookup"><span data-stu-id="aef5b-130">In Excel, in **PivotTable Fields**, notice hello DimCustomer table is excluded from hello field list.</span></span>  
+    
+    ![aas-lesson12-fields](../tutorials/media/aas-lesson12-fields.png)
+    
+4.  <span data-ttu-id="aef5b-132">Stäng Excel utan att spara hello arbetsboken.</span><span class="sxs-lookup"><span data-stu-id="aef5b-132">Close Excel without saving hello workbook.</span></span>  
+  
+## <a name="browse-by-using-roles"></a><span data-ttu-id="aef5b-133">Bläddra med hjälp av roller</span><span class="sxs-lookup"><span data-stu-id="aef5b-133">Browse by using roles</span></span>  
+<span data-ttu-id="aef5b-134">Roller är en viktig del av alla tabellmodeller.</span><span class="sxs-lookup"><span data-stu-id="aef5b-134">Roles are an important part of any tabular model.</span></span> <span data-ttu-id="aef5b-135">Utan minst en roll läggs toowhich användare till som medlemmar och användare inte kan komma åt och analysera data med hjälp av din modell.</span><span class="sxs-lookup"><span data-stu-id="aef5b-135">Without at least one role toowhich users are added as members, users cannot access and analyze data using your model.</span></span> <span data-ttu-id="aef5b-136">hello analysera i Excel-funktionen kan du tootest hello roller som du har definierat.</span><span class="sxs-lookup"><span data-stu-id="aef5b-136">hello Analyze in Excel feature provides a way for you tootest hello roles you have defined.</span></span>  
+  
+#### <a name="toobrowse-by-using-hello-sales-manager-user-role"></a><span data-ttu-id="aef5b-137">toobrowse med hjälp av hello försäljningschef användarroll</span><span class="sxs-lookup"><span data-stu-id="aef5b-137">toobrowse by using hello Sales Manager user role</span></span>  
+  
+1.  <span data-ttu-id="aef5b-138">Klicka på hello i SSDT, **modellen** -menyn och klicka sedan på **analysera i Excel**.</span><span class="sxs-lookup"><span data-stu-id="aef5b-138">In SSDT, click hello **Model** menu, and then click **Analyze in Excel**.</span></span>  
+  
+2.  <span data-ttu-id="aef5b-139">I **ange hello namn eller roll toouse tooconnect toohello användarmodellen**väljer **rollen**, och välj sedan i den nedrullningsbara listrutan för hello **försäljningschef**, och klicka sedan på  **OK**.</span><span class="sxs-lookup"><span data-stu-id="aef5b-139">In **Specify hello user name or role toouse tooconnect toohello model**, select **Role**, and then in hello drop-down listbox, select **Sales Manager**, and then click **OK**.</span></span>  
+  
+    <span data-ttu-id="aef5b-140">Excel öppnas med en ny arbetsbok.</span><span class="sxs-lookup"><span data-stu-id="aef5b-140">Excel opens with a new workbook.</span></span> <span data-ttu-id="aef5b-141">En pivottabell skapas automatiskt.</span><span class="sxs-lookup"><span data-stu-id="aef5b-141">A PivotTable is automatically created.</span></span> <span data-ttu-id="aef5b-142">hello fältlistan för pivottabell tabellen innehåller alla hello data tillgängliga fält i din nya modell.</span><span class="sxs-lookup"><span data-stu-id="aef5b-142">hello Pivot Table Field List includes all hello data fields available in your new model.</span></span>  
+      
+3.  <span data-ttu-id="aef5b-143">Stäng Excel utan att spara hello arbetsboken.</span><span class="sxs-lookup"><span data-stu-id="aef5b-143">Close Excel without saving hello workbook.</span></span>  
+  
+## <a name="whats-next"></a><span data-ttu-id="aef5b-144">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="aef5b-144">What's next?</span></span>
+<span data-ttu-id="aef5b-145">Gå toohello kursen: [lektionen 13: distribuera](../tutorials/aas-lesson-13-deploy.md).</span><span class="sxs-lookup"><span data-stu-id="aef5b-145">Go toohello next lesson: [Lesson 13: Deploy](../tutorials/aas-lesson-13-deploy.md).</span></span>
+
+  
+  
+  

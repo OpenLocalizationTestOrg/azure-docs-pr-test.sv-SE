@@ -1,0 +1,5 @@
+### <a name="need-some-help"></a><span data-ttu-id="846ed-101">Behöver du hjälp?</span><span class="sxs-lookup"><span data-stu-id="846ed-101">Need some help?</span></span>
+<span data-ttu-id="846ed-102">Ställ dina frågor i Azure-forumen.</span><span class="sxs-lookup"><span data-stu-id="846ed-102">Post questions in the Azure forums.</span></span><span data-ttu-id="846ed-103"> - [Besök MSDN](http://go.microsoft.com/fwlink/?LinkId=780719)</span><span class="sxs-lookup"><span data-stu-id="846ed-103"> - [Visit MSDN](http://go.microsoft.com/fwlink/?LinkId=780719)</span></span>
+
+<span data-ttu-id="846ed-104">Tagga frågorna med nyckelordet `azure-functions`.</span><span class="sxs-lookup"><span data-stu-id="846ed-104">Tag questions with the keyword `azure-functions`.</span></span><span data-ttu-id="846ed-105"> - [Besök Stack Overflow](http://stackoverflow.com/questions/tagged/azure-functions)</span><span class="sxs-lookup"><span data-stu-id="846ed-105"> - [Visit Stack Overflow](http://stackoverflow.com/questions/tagged/azure-functions)</span></span>
+

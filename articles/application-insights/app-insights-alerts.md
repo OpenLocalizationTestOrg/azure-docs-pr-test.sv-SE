@@ -1,0 +1,113 @@
+---
+title: aaaSet aviseringar i Azure Application Insights | Microsoft Docs
+description: "Håll dig informerad om långa svarstider, undantag, andra prestanda och användning av ändringar i ditt webbprogram."
+services: application-insights
+documentationcenter: 
+author: CFreemanwa
+manager: carmonm
+ms.assetid: f8ebde72-f819-4ba5-afa2-31dbd49509a5
+ms.service: application-insights
+ms.workload: tbd
+ms.tgt_pltfrm: ibiza
+ms.devlang: na
+ms.topic: article
+ms.date: 03/14/2017
+ms.author: bwren
+ms.openlocfilehash: e160cb173e68fda2e6d97f29da342c46b7ac4f19
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.translationtype: MT
+ms.contentlocale: sv-SE
+ms.lasthandoff: 10/06/2017
+---
+# <a name="set-alerts-in-application-insights"></a><span data-ttu-id="3f5a9-103">Ställ in aviseringar i Application Insights</span><span class="sxs-lookup"><span data-stu-id="3f5a9-103">Set Alerts in Application Insights</span></span>
+<span data-ttu-id="3f5a9-104">[Azure Application Insights] [ start] kan meddela dig toochanges i prestanda eller användningsområden mätvärden i ditt webbprogram.</span><span class="sxs-lookup"><span data-stu-id="3f5a9-104">[Azure Application Insights][start] can alert you toochanges in performance or usage metrics in your web app.</span></span> 
+
+<span data-ttu-id="3f5a9-105">Application Insights övervakar din aktiva app på en [flera olika plattformar] [ platforms] toohelp du diagnostisera prestandaproblem och förstå användningsmönster.</span><span class="sxs-lookup"><span data-stu-id="3f5a9-105">Application Insights monitors your live app on a [wide variety of platforms][platforms] toohelp you diagnose performance issues and understand usage patterns.</span></span>
+
+<span data-ttu-id="3f5a9-106">Det finns tre typer av aviseringar:</span><span class="sxs-lookup"><span data-stu-id="3f5a9-106">There are three kinds of alerts:</span></span>
+
+* <span data-ttu-id="3f5a9-107">**Mått aviseringar** berättar när ett mått överskrider ett tröskelvärde för vissa punkt - till exempel svarstider, antalet undantag, CPU-användning eller sidvisningar.</span><span class="sxs-lookup"><span data-stu-id="3f5a9-107">**Metric alerts** tell you when a metric crosses a threshold value for some period - such as response times, exception counts, CPU usage, or page views.</span></span> 
+* <span data-ttu-id="3f5a9-108">[**Webbtester** ] [ availability] berättar när platsen är inte tillgänglig på hello internet eller svarar långsamt.</span><span class="sxs-lookup"><span data-stu-id="3f5a9-108">[**Web tests**][availability] tell you when your site is unavailable on hello internet, or responding slowly.</span></span> <span data-ttu-id="3f5a9-109">[Lär dig mer][availability].</span><span class="sxs-lookup"><span data-stu-id="3f5a9-109">[Learn more][availability].</span></span>
+* <span data-ttu-id="3f5a9-110">[**Proaktiv diagnostik** ](app-insights-proactive-diagnostics.md) konfigureras automatiskt toonotify du om ovanliga prestandamönster.</span><span class="sxs-lookup"><span data-stu-id="3f5a9-110">[**Proactive diagnostics**](app-insights-proactive-diagnostics.md) are configured automatically toonotify you about unusual performance patterns.</span></span>
+
+<span data-ttu-id="3f5a9-111">Vi fokusera på mått aviseringar i den här artikeln.</span><span class="sxs-lookup"><span data-stu-id="3f5a9-111">We focus on metric alerts in this article.</span></span>
+
+## <a name="set-a-metric-alert"></a><span data-ttu-id="3f5a9-112">Ange en avisering om mått</span><span class="sxs-lookup"><span data-stu-id="3f5a9-112">Set a Metric alert</span></span>
+<span data-ttu-id="3f5a9-113">Öppna hello Varningsregler bladet och Använd hello knappen Lägg till.</span><span class="sxs-lookup"><span data-stu-id="3f5a9-113">Open hello Alert rules blade, and then use hello add button.</span></span> 
+
+![Välj Lägg till avisering i hello Varningsregler bladet.](./media/app-insights-alerts/01-set-metric.png)
+
+* <span data-ttu-id="3f5a9-116">Ange hello resursen innan hello andra egenskaper.</span><span class="sxs-lookup"><span data-stu-id="3f5a9-116">Set hello resource before hello other properties.</span></span> <span data-ttu-id="3f5a9-117">**Välj hello ”(komponenter)” resurs** om du vill tooset aviseringar om prestanda- eller mått.</span><span class="sxs-lookup"><span data-stu-id="3f5a9-117">**Choose hello "(components)" resource** if you want tooset alerts on performance or usage metrics.</span></span>
+* <span data-ttu-id="3f5a9-118">hello-namn som du ger toohello avisering måste vara unika inom hello resursgrupp (inte bara program).</span><span class="sxs-lookup"><span data-stu-id="3f5a9-118">hello name that you give toohello alert must be unique within hello resource group (not just your application).</span></span>
+* <span data-ttu-id="3f5a9-119">Vara försiktig toonote hello enheter där du uppmanas tooenter hello tröskelvärdet.</span><span class="sxs-lookup"><span data-stu-id="3f5a9-119">Be careful toonote hello units in which you're asked tooenter hello threshold value.</span></span>
+* <span data-ttu-id="3f5a9-120">Om du kryssrutan hello ”e-ägare...”, skickas aviseringar med e-tooeveryone som har åtkomst toothis resursgruppen.</span><span class="sxs-lookup"><span data-stu-id="3f5a9-120">If you check hello box "Email owners...", alerts are sent by email tooeveryone who has access toothis resource group.</span></span> <span data-ttu-id="3f5a9-121">tooexpand detta in personer, lägga till dem toohello [resursgrupp eller prenumeration](app-insights-resources-roles-access-control.md) (inte hello resurs).</span><span class="sxs-lookup"><span data-stu-id="3f5a9-121">tooexpand this set of people, add them toohello [resource group or subscription](app-insights-resources-roles-access-control.md) (not hello resource).</span></span>
+* <span data-ttu-id="3f5a9-122">Om du anger ”ytterligare e-postmeddelanden” skickas aviseringar toothose enskilda användare eller grupper (om du har markerat hello ”e-ägare...” rutan).</span><span class="sxs-lookup"><span data-stu-id="3f5a9-122">If you specify "Additional emails", alerts are sent toothose individuals or groups (whether or not you checked hello "email owners..." box).</span></span> 
+* <span data-ttu-id="3f5a9-123">Ange en [webhook adress](../monitoring-and-diagnostics/insights-webhooks-alerts.md) om du har skapat ett webbprogram som svarar tooalerts.</span><span class="sxs-lookup"><span data-stu-id="3f5a9-123">Set a [webhook address](../monitoring-and-diagnostics/insights-webhooks-alerts.md) if you have set up a web app that responds tooalerts.</span></span> <span data-ttu-id="3f5a9-124">Det kallas både när hello avisering aktiveras och när den är löst.</span><span class="sxs-lookup"><span data-stu-id="3f5a9-124">It is called both when hello alert is Activated and when it is Resolved.</span></span> <span data-ttu-id="3f5a9-125">(Men Observera att för närvarande, frågeparametrar skickas inte via webhook-egenskaper.)</span><span class="sxs-lookup"><span data-stu-id="3f5a9-125">(But note that at present, query parameters are not passed through as webhook properties.)</span></span>
+* <span data-ttu-id="3f5a9-126">Du kan inaktivera eller aktivera hello varning: Se hello knappar hello överst i hello-bladet.</span><span class="sxs-lookup"><span data-stu-id="3f5a9-126">You can Disable or Enable hello alert: see hello buttons at hello top of hello blade.</span></span>
+
+<span data-ttu-id="3f5a9-127">*Hello Lägg till avisering om visas inte.*</span><span class="sxs-lookup"><span data-stu-id="3f5a9-127">*I don't see hello Add Alert button.*</span></span> 
+
+* <span data-ttu-id="3f5a9-128">Använder du ett organisationskonto?</span><span class="sxs-lookup"><span data-stu-id="3f5a9-128">Are you using an organizational account?</span></span> <span data-ttu-id="3f5a9-129">Du kan ställa in varningar om resurser programmet toothis för ägare eller deltagare.</span><span class="sxs-lookup"><span data-stu-id="3f5a9-129">You can set alerts if you have owner or contributor access toothis application resource.</span></span> <span data-ttu-id="3f5a9-130">Ta en titt på hello Access Control-bladet.</span><span class="sxs-lookup"><span data-stu-id="3f5a9-130">Take a look at hello Access Control blade.</span></span> <span data-ttu-id="3f5a9-131">[Lär dig mer om åtkomstkontroll][roles].</span><span class="sxs-lookup"><span data-stu-id="3f5a9-131">[Learn about access control][roles].</span></span>
+
+> [!NOTE]
+> <span data-ttu-id="3f5a9-132">I hello aviseringar bladet du se att det finns redan en avisering uppsättning: [Proactive Diagnostics](app-insights-proactive-failure-diagnostics.md).</span><span class="sxs-lookup"><span data-stu-id="3f5a9-132">In hello alerts blade, you see that there's already an alert set up: [Proactive Diagnostics](app-insights-proactive-failure-diagnostics.md).</span></span> <span data-ttu-id="3f5a9-133">hello automatisk avisering övervakar ett viss mått, misslyckandegrad.</span><span class="sxs-lookup"><span data-stu-id="3f5a9-133">hello automatic alert monitors one particular metric, request failure rate.</span></span> <span data-ttu-id="3f5a9-134">Om du inte toodisable hello proaktiv avisering behöver du inte tooset aviseringen på misslyckandegrad.</span><span class="sxs-lookup"><span data-stu-id="3f5a9-134">Unless you decide toodisable hello proactive alert, you don't need tooset your own alert on request failure rate.</span></span> 
+> 
+> 
+
+## <a name="see-your-alerts"></a><span data-ttu-id="3f5a9-135">Se aviseringar</span><span class="sxs-lookup"><span data-stu-id="3f5a9-135">See your alerts</span></span>
+<span data-ttu-id="3f5a9-136">Du får ett e-postmeddelande när en avisering ändrar tillstånd mellan inaktivt och aktivt.</span><span class="sxs-lookup"><span data-stu-id="3f5a9-136">You get an email when an alert changes state between inactive and active.</span></span> 
+
+<span data-ttu-id="3f5a9-137">hello aktuell status för varje avisering visas i hello Varningsregler bladet.</span><span class="sxs-lookup"><span data-stu-id="3f5a9-137">hello current state of each alert is shown in hello Alert rules blade.</span></span>
+
+<span data-ttu-id="3f5a9-138">Det finns en sammanfattning av de senaste aktivitet i hello aviseringar listrutan:</span><span class="sxs-lookup"><span data-stu-id="3f5a9-138">There's a summary of recent activity in hello alerts drop-down:</span></span>
+
+![Aviseringar listrutan](./media/app-insights-alerts/010-alert-drop.png)
+
+<span data-ttu-id="3f5a9-140">hello historik över tillståndsändringar har hello aktivitetsloggen:</span><span class="sxs-lookup"><span data-stu-id="3f5a9-140">hello history of state changes is in hello Activity Log:</span></span>
+
+![Klicka på inställningar, granskningsloggar på hello översikt bladet](./media/app-insights-alerts/09-alerts.png)
+
+## <a name="how-alerts-work"></a><span data-ttu-id="3f5a9-142">Så fungerar aviseringar</span><span class="sxs-lookup"><span data-stu-id="3f5a9-142">How alerts work</span></span>
+* <span data-ttu-id="3f5a9-143">En avisering har tre lägen: ”aldrig aktiverats”, ”aktiverad” och ”löst”.</span><span class="sxs-lookup"><span data-stu-id="3f5a9-143">An alert has three states: "Never activated", "Activated", and "Resolved."</span></span> <span data-ttu-id="3f5a9-144">Aktiverad innebär hello villkor du anger var true när den senast utvärderades.</span><span class="sxs-lookup"><span data-stu-id="3f5a9-144">Activated means hello condition you specified was true, when it was last evaluated.</span></span>
+* <span data-ttu-id="3f5a9-145">En avisering genereras när en avisering ändrar tillstånd.</span><span class="sxs-lookup"><span data-stu-id="3f5a9-145">A notification is generated when an alert changes state.</span></span> <span data-ttu-id="3f5a9-146">(Om hello varningsvillkor var redan sant när du skapade hello avisering kan du kanske inte får ett meddelande tills hello villkor går false.)</span><span class="sxs-lookup"><span data-stu-id="3f5a9-146">(If hello alert condition was already true when you created hello alert, you might not get a notification until hello condition goes false.)</span></span>
+* <span data-ttu-id="3f5a9-147">Varje meddelande genererar ett e-postmeddelande om du markerat hello e-postmeddelanden rutan eller angivna e-postadresser.</span><span class="sxs-lookup"><span data-stu-id="3f5a9-147">Each notification generates an email if you checked hello emails box, or provided email addresses.</span></span> <span data-ttu-id="3f5a9-148">Du kan också titta på hello aviseringar listrutan.</span><span class="sxs-lookup"><span data-stu-id="3f5a9-148">You can also look at hello Notifications drop-down list.</span></span>
+* <span data-ttu-id="3f5a9-149">En avisering utvärderas för varje gång ett mått tas emot, men inte på annat sätt.</span><span class="sxs-lookup"><span data-stu-id="3f5a9-149">An alert is evaluated each time a metric arrives, but not otherwise.</span></span>
+* <span data-ttu-id="3f5a9-150">hello utvärderingen aggregerar hello mått över hello föregående period och sedan jämförs toohello tröskelvärdet toodetermine hello nya statusen.</span><span class="sxs-lookup"><span data-stu-id="3f5a9-150">hello evaluation aggregates hello metric over hello preceding period, and then compares it toohello threshold toodetermine hello new state.</span></span>
+* <span data-ttu-id="3f5a9-151">hello period som du anger hello intervallet över vilket mått aggregeras.</span><span class="sxs-lookup"><span data-stu-id="3f5a9-151">hello period that you choose specifies hello interval over which metrics are aggregated.</span></span> <span data-ttu-id="3f5a9-152">Det påverkar inte hur ofta hello avisering utvärderas: som beror på hello ofta ankomsten av mått.</span><span class="sxs-lookup"><span data-stu-id="3f5a9-152">It doesn't affect how often hello alert is evaluated: that depends on hello frequency of arrival of metrics.</span></span>
+* <span data-ttu-id="3f5a9-153">Om inga data tas emot för ett viss mått under en viss tid har hello mellanrummet mellan olika effekter på aviseringen utvärdering och hello diagram i mått explorer.</span><span class="sxs-lookup"><span data-stu-id="3f5a9-153">If no data arrives for a particular metric for some time, hello gap has different effects on alert evaluation and on hello charts in metric explorer.</span></span> <span data-ttu-id="3f5a9-154">I mått explorer om inga data visas under längre tid än hello diagrammets insamlingsintervall hello diagrammet visar värdet 0.</span><span class="sxs-lookup"><span data-stu-id="3f5a9-154">In metric explorer, if no data is seen for longer than hello chart's sampling interval, hello chart shows a value of 0.</span></span> <span data-ttu-id="3f5a9-155">Men en avisering baserat på hello samma mått inte är vara reevaluated och hello aviseringens status förblir oförändrad.</span><span class="sxs-lookup"><span data-stu-id="3f5a9-155">But an alert based on hello same metric is not be reevaluated, and hello alert's state remains unchanged.</span></span> 
+  
+    <span data-ttu-id="3f5a9-156">När data kommer så småningom, hoppar hello diagram tillbaka tooa annat värde än noll.</span><span class="sxs-lookup"><span data-stu-id="3f5a9-156">When data eventually arrives, hello chart jumps back tooa non-zero value.</span></span> <span data-ttu-id="3f5a9-157">hello avisering utvärderar baserat på hello data är tillgängliga för hello period som du angett.</span><span class="sxs-lookup"><span data-stu-id="3f5a9-157">hello alert evaluates based on hello data available for hello period you specified.</span></span> <span data-ttu-id="3f5a9-158">Om hello nya datapunkt är hello endast en tillgänglig i hello period, baseras hello sammanställd bara att datapunkt.</span><span class="sxs-lookup"><span data-stu-id="3f5a9-158">If hello new data point is hello only one available in hello period, hello aggregate is based just on that data point.</span></span>
+* <span data-ttu-id="3f5a9-159">En avisering flimra ofta mellan varning och felfritt tillstånd, även om du anger en längre tid.</span><span class="sxs-lookup"><span data-stu-id="3f5a9-159">An alert can flicker frequently between alert and healthy states, even if you set a long period.</span></span> <span data-ttu-id="3f5a9-160">Detta kan inträffa om hello måttvärdet håller muspekaren runt hello tröskelvärdet.</span><span class="sxs-lookup"><span data-stu-id="3f5a9-160">This can happen if hello metric value hovers around hello threshold.</span></span> <span data-ttu-id="3f5a9-161">Det finns inga betraktas i hello tröskelvärdet: hello övergången tooalert sker på samma värde som hello övergången toohealthy hello.</span><span class="sxs-lookup"><span data-stu-id="3f5a9-161">There is no hysteresis in hello threshold: hello transition tooalert happens at hello same value as hello transition toohealthy.</span></span>
+
+## <a name="what-are-good-alerts-tooset"></a><span data-ttu-id="3f5a9-162">Vad är bra aviseringar tooset?</span><span class="sxs-lookup"><span data-stu-id="3f5a9-162">What are good alerts tooset?</span></span>
+<span data-ttu-id="3f5a9-163">Det beror på ditt program.</span><span class="sxs-lookup"><span data-stu-id="3f5a9-163">It depends on your application.</span></span> <span data-ttu-id="3f5a9-164">toostart med, det bäst inte tooset för många mått.</span><span class="sxs-lookup"><span data-stu-id="3f5a9-164">toostart with, it's best not tooset too many metrics.</span></span> <span data-ttu-id="3f5a9-165">Lägg ned lite tid tittar på dina mått diagram medan appen körs tooget en känsla för hur den fungerar normalt.</span><span class="sxs-lookup"><span data-stu-id="3f5a9-165">Spend some time looking at your metric charts while your app is running, tooget a feel for how it behaves normally.</span></span> <span data-ttu-id="3f5a9-166">Det hjälper dig att hitta sätt tooimprove dess prestanda.</span><span class="sxs-lookup"><span data-stu-id="3f5a9-166">This practice helps you find ways tooimprove its performance.</span></span> <span data-ttu-id="3f5a9-167">Ställa in aviseringar tootell du när hello mått går utanför normal hello-zon.</span><span class="sxs-lookup"><span data-stu-id="3f5a9-167">Then set up alerts tootell you when hello metrics go outside hello normal zone.</span></span> 
+
+<span data-ttu-id="3f5a9-168">Populära aviseringar är:</span><span class="sxs-lookup"><span data-stu-id="3f5a9-168">Popular alerts include:</span></span>
+
+* <span data-ttu-id="3f5a9-169">[Webbläsaren mått][client], särskilt webbläsare **sidan laddningstider**, är bra för webbprogram.</span><span class="sxs-lookup"><span data-stu-id="3f5a9-169">[Browser metrics][client], especially Browser **page load times**, are good for web applications.</span></span> <span data-ttu-id="3f5a9-170">Om sidan har många skript, ska du leta efter **webbläsarundantag**.</span><span class="sxs-lookup"><span data-stu-id="3f5a9-170">If your page has many scripts, you should look for **browser exceptions**.</span></span> <span data-ttu-id="3f5a9-171">I ordning tooget dessa mätvärden och aviseringar, har du tooset [webbsida övervakning][client].</span><span class="sxs-lookup"><span data-stu-id="3f5a9-171">In order tooget these metrics and alerts, you have tooset up [web page monitoring][client].</span></span>
+* <span data-ttu-id="3f5a9-172">**Serversvarstid** för hello serversidan av webbprogram.</span><span class="sxs-lookup"><span data-stu-id="3f5a9-172">**Server response time** for hello server side of web applications.</span></span> <span data-ttu-id="3f5a9-173">Hålla ett öga på den här mått toosee samt att konfigurera aviseringar om den oproportionerligt varierar med hög begäran priser: variationen kan tyda på att din app körs slut på resurser.</span><span class="sxs-lookup"><span data-stu-id="3f5a9-173">As well as setting up alerts, keep an eye on this metric toosee if it varies disproportionately with high request rates: variation might indicate that your app is running out of resources.</span></span> 
+* <span data-ttu-id="3f5a9-174">**Undantag för** -toosee dem du har toodo vissa [ytterligare inställningar](app-insights-asp-net-exceptions.md).</span><span class="sxs-lookup"><span data-stu-id="3f5a9-174">**Server exceptions** - toosee them, you have toodo some [additional setup](app-insights-asp-net-exceptions.md).</span></span>
+
+<span data-ttu-id="3f5a9-175">Glöm inte som [proaktiv fel hastighet diagnostik](app-insights-proactive-failure-diagnostics.md) automatiskt övervakaren hello hastighet med vilken din app svarar toorequests med felkoder.</span><span class="sxs-lookup"><span data-stu-id="3f5a9-175">Don't forget that [proactive failure rate diagnostics](app-insights-proactive-failure-diagnostics.md) automatically monitor hello rate at which your app responds toorequests with failure codes.</span></span> 
+
+## <a name="automation"></a><span data-ttu-id="3f5a9-176">Automation</span><span class="sxs-lookup"><span data-stu-id="3f5a9-176">Automation</span></span>
+* [<span data-ttu-id="3f5a9-177">Använd PowerShell tooautomate ställa in aviseringar</span><span class="sxs-lookup"><span data-stu-id="3f5a9-177">Use PowerShell tooautomate setting up alerts</span></span>](app-insights-powershell-alerts.md)
+* [<span data-ttu-id="3f5a9-178">Använd webhooks tooautomate svarar tooalerts</span><span class="sxs-lookup"><span data-stu-id="3f5a9-178">Use webhooks tooautomate responding tooalerts</span></span>](../monitoring-and-diagnostics/insights-webhooks-alerts.md)
+
+## <a name="video"></a><span data-ttu-id="3f5a9-179">Video</span><span class="sxs-lookup"><span data-stu-id="3f5a9-179">Video</span></span>
+
+> [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
+
+## <a name="see-also"></a><span data-ttu-id="3f5a9-180">Se även</span><span class="sxs-lookup"><span data-stu-id="3f5a9-180">See also</span></span>
+* [<span data-ttu-id="3f5a9-181">Tillgänglighetstester för webbprogram</span><span class="sxs-lookup"><span data-stu-id="3f5a9-181">Availability web tests</span></span>](app-insights-monitor-web-app-availability.md)
+* [<span data-ttu-id="3f5a9-182">Automatisera ställa in aviseringar</span><span class="sxs-lookup"><span data-stu-id="3f5a9-182">Automate setting up alerts</span></span>](app-insights-powershell-alerts.md)
+* [<span data-ttu-id="3f5a9-183">Proaktiv diagnostik</span><span class="sxs-lookup"><span data-stu-id="3f5a9-183">Proactive diagnostics</span></span>](app-insights-proactive-diagnostics.md) 
+
+<!--Link references-->
+
+[availability]: app-insights-monitor-web-app-availability.md
+[client]: app-insights-javascript.md
+[platforms]: app-insights-platforms.md
+[roles]: app-insights-resources-roles-access-control.md
+[start]: app-insights-overview.md
+

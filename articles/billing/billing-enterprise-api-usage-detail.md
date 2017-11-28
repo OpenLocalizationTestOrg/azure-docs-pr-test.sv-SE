@@ -1,0 +1,141 @@
+---
+title: "aaaAzure fakturering Enterprise API - användningsinformation | Microsoft Docs"
+description: "Läs mer om Azure Billing användnings- och RateCard APIs som används tooprovide insikter om Azure resursförbrukning och trender."
+services: 
+documentationcenter: 
+author: aedwin
+manager: aedwin
+editor: 
+tags: billing
+ms.assetid: 3e817b43-0696-400c-a02e-47b7817f9b77
+ms.service: billing
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: billing
+ms.date: 04/25/2017
+ms.author: aedwin
+ms.openlocfilehash: def0805008261df5872f015db3d2b26e47d25569
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.translationtype: MT
+ms.contentlocale: sv-SE
+ms.lasthandoff: 10/06/2017
+---
+# <a name="reporting-apis-for-enterprise-customers---usage-details"></a><span data-ttu-id="2cb12-103">Reporting API: er för företagskunder - användningsinformation</span><span class="sxs-lookup"><span data-stu-id="2cb12-103">Reporting APIs for Enterprise customers - Usage Details</span></span>
+
+<span data-ttu-id="2cb12-104">hello användning detalj API erbjuder en daglig sammanställning av förbrukade antalen och beräknade kostnader genom en registrering.</span><span class="sxs-lookup"><span data-stu-id="2cb12-104">hello Usage Detail API offers a daily breakdown of consumed quantities and estimated charges by an Enrollment.</span></span> <span data-ttu-id="2cb12-105">hello resultatet innehåller också information om instanser, mätare och avdelningar.</span><span class="sxs-lookup"><span data-stu-id="2cb12-105">hello result also includes information on instances, meters and departments.</span></span> <span data-ttu-id="2cb12-106">hello API kan efterfrågas med fakturering punkt eller genom att start- och slutdatum.</span><span class="sxs-lookup"><span data-stu-id="2cb12-106">hello API can be queried by Billing period or by a specified start and end date.</span></span> 
+## <a name="consumption-apis"></a><span data-ttu-id="2cb12-107">API: er för förbrukning</span><span class="sxs-lookup"><span data-stu-id="2cb12-107">Consumption APIs</span></span>
+
+
+##<a name="request"></a><span data-ttu-id="2cb12-108">Förfrågan</span><span class="sxs-lookup"><span data-stu-id="2cb12-108">Request</span></span> 
+<span data-ttu-id="2cb12-109">Allmänna sidhuvudegenskaper för som behöver toobe läggs anges [här](billing-enterprise-api.md).</span><span class="sxs-lookup"><span data-stu-id="2cb12-109">Common header properties that need toobe added are specified [here](billing-enterprise-api.md).</span></span> <span data-ttu-id="2cb12-110">Om en faktureringsperiod anges sedan returneras data för hello aktuella fakturering tidsperiod.</span><span class="sxs-lookup"><span data-stu-id="2cb12-110">If a billing period is not specified, then data for hello current billing period is returned.</span></span> <span data-ttu-id="2cb12-111">Anpassade tidsintervall kan anges med hello start och sluta datum parametrarna i hello formatet ÅÅÅÅ-MM-dd.</span><span class="sxs-lookup"><span data-stu-id="2cb12-111">Custom time ranges can be specified with hello start and end date parameters that are in hello format yyyy-MM-dd.</span></span> <span data-ttu-id="2cb12-112">hello är maximal tid som stöds 36 månader.</span><span class="sxs-lookup"><span data-stu-id="2cb12-112">hello maximum supported time range is 36 months.</span></span>  
+
+|<span data-ttu-id="2cb12-113">Metod</span><span class="sxs-lookup"><span data-stu-id="2cb12-113">Method</span></span> | <span data-ttu-id="2cb12-114">URI-begäran</span><span class="sxs-lookup"><span data-stu-id="2cb12-114">Request URI</span></span>|
+|-|-|
+|<span data-ttu-id="2cb12-115">HÄMTA</span><span class="sxs-lookup"><span data-stu-id="2cb12-115">GET</span></span>|<span data-ttu-id="2cb12-116">https://consumption.Azure.com/v2/enrollments/ {enrollmentNumber} / usagedetails</span><span class="sxs-lookup"><span data-stu-id="2cb12-116">https://consumption.azure.com/v2/enrollments/{enrollmentNumber}/usagedetails</span></span> 
+|<span data-ttu-id="2cb12-117">HÄMTA</span><span class="sxs-lookup"><span data-stu-id="2cb12-117">GET</span></span>|<span data-ttu-id="2cb12-118">https://consumption.Azure.com/v2/enrollments/ {enrollmentNumber} /billingPeriods/ {billingPeriod} / usagedetails</span><span class="sxs-lookup"><span data-stu-id="2cb12-118">https://consumption.azure.com/v2/enrollments/{enrollmentNumber}/billingPeriods/{billingPeriod}/usagedetails</span></span>|
+|<span data-ttu-id="2cb12-119">HÄMTA</span><span class="sxs-lookup"><span data-stu-id="2cb12-119">GET</span></span>|<span data-ttu-id="2cb12-120">https://consumption.Azure.com/v2/enrollments/ {enrollmentNumber} / usagedetailsbycustomdate? startTime = 2017-01-01 & endTime = 10-01-2017</span><span class="sxs-lookup"><span data-stu-id="2cb12-120">https://consumption.azure.com/v2/enrollments/{enrollmentNumber}/usagedetailsbycustomdate?startTime=2017-01-01&endTime=2017-01-10</span></span>|
+
+> [!Note]
+> <span data-ttu-id="2cb12-121">toouse hello förhandsversionen av API, Ersätt v2 med v1 hello ovan URL.</span><span class="sxs-lookup"><span data-stu-id="2cb12-121">toouse hello preview version of API, replace v2 with v1 in hello above URL.</span></span>
+>
+
+## <a name="response"></a><span data-ttu-id="2cb12-122">Svar</span><span class="sxs-lookup"><span data-stu-id="2cb12-122">Response</span></span>
+
+> <span data-ttu-id="2cb12-123">På grund av toohello potentiellt stora mängder data hello resultatet mängd växlingsbart minne.</span><span class="sxs-lookup"><span data-stu-id="2cb12-123">Due toohello potentially large volume of data hello result set is paged.</span></span> <span data-ttu-id="2cb12-124">hello nextLink egenskap, anger om den finns, hello länk för hello nästa sida i data.</span><span class="sxs-lookup"><span data-stu-id="2cb12-124">hello nextLink property, if present, specifies hello link for hello next page of data.</span></span> <span data-ttu-id="2cb12-125">Om hello länken är tom, anger det som är hello sista sidan.</span><span class="sxs-lookup"><span data-stu-id="2cb12-125">If hello link is empty, it denotes that is hello last page.</span></span> 
+<br/>
+
+    {
+        "id": "string",
+        "data": [
+            {                       
+            "accountId": 0,
+            "productId": 0,
+            "resourceLocationId": 0,
+            "consumedServiceId": 0,
+            "departmentId": 0,
+            "accountOwnerEmail": "string",
+            "accountName": "string",
+            "serviceAdministratorId": "string",
+            "subscriptionId": 0,
+            "subscriptionGuid": "string",
+            "subscriptionName": "string",
+            "date": "2017-04-27T23:01:43.799Z",
+            "product": "string",
+            "meterId": "string",
+            "meterCategory": "string",
+            "meterSubCategory": "string",
+            "meterRegion": "string",
+            "meterName": "string",
+            "consumedQuantity": 0,
+            "resourceRate": 0,
+            "Cost": 0,
+            "resourceLocation": "string",
+            "consumedService": "string",
+            "instanceId": "string",
+            "serviceInfo1": "string",
+            "serviceInfo2": "string",
+            "additionalInfo": "string",
+            "tags": "string",
+            "storeServiceIdentifier": "string",
+            "departmentName": "string",
+            "costCenter": "string",
+            "unitOfMeasure": "string",
+            "resourceGroup": "string"
+            }
+        ],
+        "nextLink": "string"
+    }
+
+<br/><span data-ttu-id="2cb12-126">
+**Svaret egenskapsdefinitioner**</span><span class="sxs-lookup"><span data-stu-id="2cb12-126">
+**Response property definitions**</span></span>
+
+|<span data-ttu-id="2cb12-127">Egenskapsnamn</span><span class="sxs-lookup"><span data-stu-id="2cb12-127">Property Name</span></span>| <span data-ttu-id="2cb12-128">Typ</span><span class="sxs-lookup"><span data-stu-id="2cb12-128">Type</span></span>| <span data-ttu-id="2cb12-129">Beskrivning</span><span class="sxs-lookup"><span data-stu-id="2cb12-129">Description</span></span>
+|-|-|-|
+|<span data-ttu-id="2cb12-130">id</span><span class="sxs-lookup"><span data-stu-id="2cb12-130">id</span></span>| <span data-ttu-id="2cb12-131">Sträng</span><span class="sxs-lookup"><span data-stu-id="2cb12-131">string</span></span>| <span data-ttu-id="2cb12-132">hello unikt Id för hello API-anrop.</span><span class="sxs-lookup"><span data-stu-id="2cb12-132">hello unique Id for hello API call.</span></span> |
+|<span data-ttu-id="2cb12-133">Data</span><span class="sxs-lookup"><span data-stu-id="2cb12-133">data</span></span>| <span data-ttu-id="2cb12-134">JSON-matris</span><span class="sxs-lookup"><span data-stu-id="2cb12-134">JSON array</span></span>| <span data-ttu-id="2cb12-135">hello matris med daglig användningsinformation för varje instance\meter.</span><span class="sxs-lookup"><span data-stu-id="2cb12-135">hello Array of daily usage details for every instance\meter.</span></span>|
+|<span data-ttu-id="2cb12-136">nextLink</span><span class="sxs-lookup"><span data-stu-id="2cb12-136">nextLink</span></span>| <span data-ttu-id="2cb12-137">Sträng</span><span class="sxs-lookup"><span data-stu-id="2cb12-137">string</span></span>| <span data-ttu-id="2cb12-138">När det finns mer data hello nextLink punkter toohello URL tooreturn hello nästa sida i data-sidor.</span><span class="sxs-lookup"><span data-stu-id="2cb12-138">When there are more pages of data hello nextLink points toohello URL tooreturn hello next page of data.</span></span> |
+|<span data-ttu-id="2cb12-139">accountId</span><span class="sxs-lookup"><span data-stu-id="2cb12-139">accountId</span></span>| <span data-ttu-id="2cb12-140">int</span><span class="sxs-lookup"><span data-stu-id="2cb12-140">int</span></span>| <span data-ttu-id="2cb12-141">Föråldrad fält.</span><span class="sxs-lookup"><span data-stu-id="2cb12-141">Obsolete field.</span></span> <span data-ttu-id="2cb12-142">Finns för bakåtkompatibilitet.</span><span class="sxs-lookup"><span data-stu-id="2cb12-142">Present for backward compatibility.</span></span> |
+|<span data-ttu-id="2cb12-143">ProductId</span><span class="sxs-lookup"><span data-stu-id="2cb12-143">productId</span></span>| <span data-ttu-id="2cb12-144">int</span><span class="sxs-lookup"><span data-stu-id="2cb12-144">int</span></span>| <span data-ttu-id="2cb12-145">Föråldrad fält.</span><span class="sxs-lookup"><span data-stu-id="2cb12-145">Obsolete field.</span></span> <span data-ttu-id="2cb12-146">Finns för bakåtkompatibilitet.</span><span class="sxs-lookup"><span data-stu-id="2cb12-146">Present for backward compatibility.</span></span> |
+|<span data-ttu-id="2cb12-147">resourceLocationId</span><span class="sxs-lookup"><span data-stu-id="2cb12-147">resourceLocationId</span></span>| <span data-ttu-id="2cb12-148">int</span><span class="sxs-lookup"><span data-stu-id="2cb12-148">int</span></span>| <span data-ttu-id="2cb12-149">Föråldrad fält.</span><span class="sxs-lookup"><span data-stu-id="2cb12-149">Obsolete field.</span></span> <span data-ttu-id="2cb12-150">Finns för bakåtkompatibilitet.</span><span class="sxs-lookup"><span data-stu-id="2cb12-150">Present for backward compatibility.</span></span> |
+|<span data-ttu-id="2cb12-151">consumedServiceID</span><span class="sxs-lookup"><span data-stu-id="2cb12-151">consumedServiceID</span></span>| <span data-ttu-id="2cb12-152">int</span><span class="sxs-lookup"><span data-stu-id="2cb12-152">int</span></span>| <span data-ttu-id="2cb12-153">Föråldrad fält.</span><span class="sxs-lookup"><span data-stu-id="2cb12-153">Obsolete field.</span></span> <span data-ttu-id="2cb12-154">Finns för bakåtkompatibilitet.</span><span class="sxs-lookup"><span data-stu-id="2cb12-154">Present for backward compatibility.</span></span> |
+|<span data-ttu-id="2cb12-155">departmentId</span><span class="sxs-lookup"><span data-stu-id="2cb12-155">departmentId</span></span>| <span data-ttu-id="2cb12-156">int</span><span class="sxs-lookup"><span data-stu-id="2cb12-156">int</span></span>| <span data-ttu-id="2cb12-157">Föråldrad fält.</span><span class="sxs-lookup"><span data-stu-id="2cb12-157">Obsolete field.</span></span> <span data-ttu-id="2cb12-158">Finns för bakåtkompatibilitet.</span><span class="sxs-lookup"><span data-stu-id="2cb12-158">Present for backward compatibility.</span></span> |
+|<span data-ttu-id="2cb12-159">accountOwnerEmail</span><span class="sxs-lookup"><span data-stu-id="2cb12-159">accountOwnerEmail</span></span>| <span data-ttu-id="2cb12-160">Sträng</span><span class="sxs-lookup"><span data-stu-id="2cb12-160">string</span></span>| <span data-ttu-id="2cb12-161">E-postkonto för hello Kontoägare.</span><span class="sxs-lookup"><span data-stu-id="2cb12-161">Email account of hello account owner.</span></span> |
+|<span data-ttu-id="2cb12-162">Kontonamn</span><span class="sxs-lookup"><span data-stu-id="2cb12-162">accountName</span></span>| <span data-ttu-id="2cb12-163">Sträng</span><span class="sxs-lookup"><span data-stu-id="2cb12-163">string</span></span>| <span data-ttu-id="2cb12-164">Har angett kundnamnet på hello-kontot.</span><span class="sxs-lookup"><span data-stu-id="2cb12-164">Customer entered name of hello account.</span></span> |
+|<span data-ttu-id="2cb12-165">serviceAdministratorId</span><span class="sxs-lookup"><span data-stu-id="2cb12-165">serviceAdministratorId</span></span>| <span data-ttu-id="2cb12-166">Sträng</span><span class="sxs-lookup"><span data-stu-id="2cb12-166">string</span></span>| <span data-ttu-id="2cb12-167">E-postadress av tjänstadministratör.</span><span class="sxs-lookup"><span data-stu-id="2cb12-167">Email Address of Service Administrator.</span></span> |
+|<span data-ttu-id="2cb12-168">subscriptionId</span><span class="sxs-lookup"><span data-stu-id="2cb12-168">subscriptionId</span></span>| <span data-ttu-id="2cb12-169">int</span><span class="sxs-lookup"><span data-stu-id="2cb12-169">int</span></span>| <span data-ttu-id="2cb12-170">Föråldrad fält.</span><span class="sxs-lookup"><span data-stu-id="2cb12-170">Obsolete field.</span></span> <span data-ttu-id="2cb12-171">Finns för bakåtkompatibilitet.</span><span class="sxs-lookup"><span data-stu-id="2cb12-171">Present for backward compatibility.</span></span> |
+|<span data-ttu-id="2cb12-172">subscriptionGuid</span><span class="sxs-lookup"><span data-stu-id="2cb12-172">subscriptionGuid</span></span>| <span data-ttu-id="2cb12-173">Sträng</span><span class="sxs-lookup"><span data-stu-id="2cb12-173">string</span></span>| <span data-ttu-id="2cb12-174">Global unik identifierare för hello prenumeration.</span><span class="sxs-lookup"><span data-stu-id="2cb12-174">Global Unique Identifier for hello subscription.</span></span> |
+|<span data-ttu-id="2cb12-175">SubscriptionName</span><span class="sxs-lookup"><span data-stu-id="2cb12-175">subscriptionName</span></span>| <span data-ttu-id="2cb12-176">Sträng</span><span class="sxs-lookup"><span data-stu-id="2cb12-176">string</span></span>| <span data-ttu-id="2cb12-177">Namnet på hello prenumeration.</span><span class="sxs-lookup"><span data-stu-id="2cb12-177">Name of hello subscription.</span></span> |
+|<span data-ttu-id="2cb12-178">Datum</span><span class="sxs-lookup"><span data-stu-id="2cb12-178">date</span></span>| <span data-ttu-id="2cb12-179">Sträng</span><span class="sxs-lookup"><span data-stu-id="2cb12-179">string</span></span>| <span data-ttu-id="2cb12-180">hello datum då förbrukning inträffade.</span><span class="sxs-lookup"><span data-stu-id="2cb12-180">hello date on which consumption occurred.</span></span> |
+|<span data-ttu-id="2cb12-181">Produkten</span><span class="sxs-lookup"><span data-stu-id="2cb12-181">product</span></span>| <span data-ttu-id="2cb12-182">Sträng</span><span class="sxs-lookup"><span data-stu-id="2cb12-182">string</span></span>| <span data-ttu-id="2cb12-183">Ytterligare information om hello mätaren.</span><span class="sxs-lookup"><span data-stu-id="2cb12-183">Additional details on hello meter.</span></span> <span data-ttu-id="2cb12-184">Exempel: A1 (VM) Windows - Asien/Stillahavsområdet, Öst</span><span class="sxs-lookup"><span data-stu-id="2cb12-184">Example: A1(VM)Windows - AP East</span></span>|
+|<span data-ttu-id="2cb12-185">meterId</span><span class="sxs-lookup"><span data-stu-id="2cb12-185">meterId</span></span>| <span data-ttu-id="2cb12-186">Sträng</span><span class="sxs-lookup"><span data-stu-id="2cb12-186">string</span></span>| <span data-ttu-id="2cb12-187">hello identifierare för hello mätaren som orsakat användning.</span><span class="sxs-lookup"><span data-stu-id="2cb12-187">hello identifier for hello meter which emitted usage.</span></span> |
+|<span data-ttu-id="2cb12-188">meterCategory</span><span class="sxs-lookup"><span data-stu-id="2cb12-188">meterCategory</span></span>| <span data-ttu-id="2cb12-189">Sträng</span><span class="sxs-lookup"><span data-stu-id="2cb12-189">string</span></span>| <span data-ttu-id="2cb12-190">hello Azure platform-tjänsten som användes.</span><span class="sxs-lookup"><span data-stu-id="2cb12-190">hello Azure platform service that was used.</span></span> |
+|<span data-ttu-id="2cb12-191">meterSubCategory</span><span class="sxs-lookup"><span data-stu-id="2cb12-191">meterSubCategory</span></span>| <span data-ttu-id="2cb12-192">Sträng</span><span class="sxs-lookup"><span data-stu-id="2cb12-192">string</span></span>| <span data-ttu-id="2cb12-193">Definierar hello Azure service-typen som kan påverka hello hastighet.</span><span class="sxs-lookup"><span data-stu-id="2cb12-193">Defines hello Azure service type that can affect hello rate.</span></span> <span data-ttu-id="2cb12-194">Exempel: A1 VM (ej Windows</span><span class="sxs-lookup"><span data-stu-id="2cb12-194">Example: A1 VM (Non-Windows</span></span>|
+|<span data-ttu-id="2cb12-195">meterRegion</span><span class="sxs-lookup"><span data-stu-id="2cb12-195">meterRegion</span></span>| <span data-ttu-id="2cb12-196">Sträng</span><span class="sxs-lookup"><span data-stu-id="2cb12-196">string</span></span>| <span data-ttu-id="2cb12-197">Identifierar hello platsen för hello datacenter för vissa tjänster som är mest baserat på plats för datacenter.</span><span class="sxs-lookup"><span data-stu-id="2cb12-197">Identifies hello location of hello datacenter for certain services that are priced based on datacenter location.</span></span> |
+|<span data-ttu-id="2cb12-198">meterName</span><span class="sxs-lookup"><span data-stu-id="2cb12-198">meterName</span></span>| <span data-ttu-id="2cb12-199">Sträng</span><span class="sxs-lookup"><span data-stu-id="2cb12-199">string</span></span>| <span data-ttu-id="2cb12-200">Namnet på hello mätaren.</span><span class="sxs-lookup"><span data-stu-id="2cb12-200">Name of hello meter.</span></span> |
+|<span data-ttu-id="2cb12-201">consumedQuantity</span><span class="sxs-lookup"><span data-stu-id="2cb12-201">consumedQuantity</span></span>| <span data-ttu-id="2cb12-202">dubbla</span><span class="sxs-lookup"><span data-stu-id="2cb12-202">double</span></span>| <span data-ttu-id="2cb12-203">hello mängden hello mätaren som har förbrukats.</span><span class="sxs-lookup"><span data-stu-id="2cb12-203">hello amount of hello meter that has been consumed.</span></span> |
+|<span data-ttu-id="2cb12-204">resourceRate</span><span class="sxs-lookup"><span data-stu-id="2cb12-204">resourceRate</span></span>| <span data-ttu-id="2cb12-205">dubbla</span><span class="sxs-lookup"><span data-stu-id="2cb12-205">double</span></span>| <span data-ttu-id="2cb12-206">hello som gäller per fakturerbar enhet.</span><span class="sxs-lookup"><span data-stu-id="2cb12-206">hello rate applicable per billable unit.</span></span> |
+|<span data-ttu-id="2cb12-207">Kostnad</span><span class="sxs-lookup"><span data-stu-id="2cb12-207">cost</span></span>| <span data-ttu-id="2cb12-208">dubbla</span><span class="sxs-lookup"><span data-stu-id="2cb12-208">double</span></span>| <span data-ttu-id="2cb12-209">hello kostnad som uppkommit av hello mätaren.</span><span class="sxs-lookup"><span data-stu-id="2cb12-209">hello charge that has been incurred for hello meter.</span></span> |
+|<span data-ttu-id="2cb12-210">resourceLocation</span><span class="sxs-lookup"><span data-stu-id="2cb12-210">resourceLocation</span></span>| <span data-ttu-id="2cb12-211">Sträng</span><span class="sxs-lookup"><span data-stu-id="2cb12-211">string</span></span>| <span data-ttu-id="2cb12-212">Identifierar hello datacenter där hello mätaren körs.</span><span class="sxs-lookup"><span data-stu-id="2cb12-212">Identifies hello datacenter where hello meter is running.</span></span> |
+|<span data-ttu-id="2cb12-213">consumedService</span><span class="sxs-lookup"><span data-stu-id="2cb12-213">consumedService</span></span>| <span data-ttu-id="2cb12-214">Sträng</span><span class="sxs-lookup"><span data-stu-id="2cb12-214">string</span></span>| <span data-ttu-id="2cb12-215">hello Azure platform-tjänsten som användes.</span><span class="sxs-lookup"><span data-stu-id="2cb12-215">hello Azure platform service that was used.</span></span> |
+|<span data-ttu-id="2cb12-216">InstanceId</span><span class="sxs-lookup"><span data-stu-id="2cb12-216">instanceId</span></span>| <span data-ttu-id="2cb12-217">Sträng</span><span class="sxs-lookup"><span data-stu-id="2cb12-217">string</span></span>| <span data-ttu-id="2cb12-218">Den här identifieraren är hello namnet på hello resurs eller hello ett fullständigt resurs-ID.</span><span class="sxs-lookup"><span data-stu-id="2cb12-218">This identifier is hello name of hello resource or hello fully qualified Resource ID.</span></span> <span data-ttu-id="2cb12-219">Mer information finns i [Azure Resource Manager API](https://docs.microsoft.com/rest/api/resources/resources)</span><span class="sxs-lookup"><span data-stu-id="2cb12-219">For more information, see [Azure Resource Manager API](https://docs.microsoft.com/rest/api/resources/resources)</span></span> |
+|<span data-ttu-id="2cb12-220">serviceInfo1</span><span class="sxs-lookup"><span data-stu-id="2cb12-220">serviceInfo1</span></span>| <span data-ttu-id="2cb12-221">Sträng</span><span class="sxs-lookup"><span data-stu-id="2cb12-221">string</span></span>| <span data-ttu-id="2cb12-222">Intern Azure-tjänstens Metadata.</span><span class="sxs-lookup"><span data-stu-id="2cb12-222">Internal Azure Service Metadata.</span></span> |
+|<span data-ttu-id="2cb12-223">serviceInfo2</span><span class="sxs-lookup"><span data-stu-id="2cb12-223">serviceInfo2</span></span>| <span data-ttu-id="2cb12-224">Sträng</span><span class="sxs-lookup"><span data-stu-id="2cb12-224">string</span></span>| <span data-ttu-id="2cb12-225">Till exempel en bildtyp för en virtuell dator och Internet-namn för ExpressRoute.</span><span class="sxs-lookup"><span data-stu-id="2cb12-225">For example, an image type for a virtual machine and ISP name for ExpressRoute.</span></span> |
+|<span data-ttu-id="2cb12-226">additionalInfo</span><span class="sxs-lookup"><span data-stu-id="2cb12-226">additionalInfo</span></span>| <span data-ttu-id="2cb12-227">Sträng</span><span class="sxs-lookup"><span data-stu-id="2cb12-227">string</span></span>| <span data-ttu-id="2cb12-228">Tjänstspecifika metadata.</span><span class="sxs-lookup"><span data-stu-id="2cb12-228">Service-specific metadata.</span></span> <span data-ttu-id="2cb12-229">Till exempel en bildtyp för en virtuell dator.</span><span class="sxs-lookup"><span data-stu-id="2cb12-229">For example, an image type for a virtual machine.</span></span> |
+|<span data-ttu-id="2cb12-230">tags</span><span class="sxs-lookup"><span data-stu-id="2cb12-230">tags</span></span>| <span data-ttu-id="2cb12-231">Sträng</span><span class="sxs-lookup"><span data-stu-id="2cb12-231">string</span></span>| <span data-ttu-id="2cb12-232">Kunden lägga till taggar.</span><span class="sxs-lookup"><span data-stu-id="2cb12-232">Customer added tags.</span></span> <span data-ttu-id="2cb12-233">Mer information finns i [ordna dina Azure-resurser med taggar](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-using-tags).</span><span class="sxs-lookup"><span data-stu-id="2cb12-233">For more information, see [Organize your Azure resources with tags](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-using-tags).</span></span> |
+|<span data-ttu-id="2cb12-234">storeServiceIdentifier</span><span class="sxs-lookup"><span data-stu-id="2cb12-234">storeServiceIdentifier</span></span>| <span data-ttu-id="2cb12-235">Sträng</span><span class="sxs-lookup"><span data-stu-id="2cb12-235">string</span></span>| <span data-ttu-id="2cb12-236">Den här kolumner används inte.</span><span class="sxs-lookup"><span data-stu-id="2cb12-236">This columns is not used.</span></span> <span data-ttu-id="2cb12-237">Finns för bakåtkompatibilitet.</span><span class="sxs-lookup"><span data-stu-id="2cb12-237">Present for backward compatibility.</span></span> |
+|<span data-ttu-id="2cb12-238">DepartmentName</span><span class="sxs-lookup"><span data-stu-id="2cb12-238">departmentName</span></span>| <span data-ttu-id="2cb12-239">Sträng</span><span class="sxs-lookup"><span data-stu-id="2cb12-239">string</span></span>| <span data-ttu-id="2cb12-240">Namnet på hello-avdelningen.</span><span class="sxs-lookup"><span data-stu-id="2cb12-240">Name of hello department.</span></span> |
+|<span data-ttu-id="2cb12-241">CostCenter</span><span class="sxs-lookup"><span data-stu-id="2cb12-241">costCenter</span></span>| <span data-ttu-id="2cb12-242">Sträng</span><span class="sxs-lookup"><span data-stu-id="2cb12-242">string</span></span>| <span data-ttu-id="2cb12-243">hello kostnadsställe som hello användning är kopplad till.</span><span class="sxs-lookup"><span data-stu-id="2cb12-243">hello cost center that hello usage is associated with.</span></span> |
+|<span data-ttu-id="2cb12-244">unitOfMeasure</span><span class="sxs-lookup"><span data-stu-id="2cb12-244">unitOfMeasure</span></span>| <span data-ttu-id="2cb12-245">Sträng</span><span class="sxs-lookup"><span data-stu-id="2cb12-245">string</span></span>| <span data-ttu-id="2cb12-246">Identifierar hello-enhet som hello service debiteras i.</span><span class="sxs-lookup"><span data-stu-id="2cb12-246">Identifies hello unit that hello service is charged in.</span></span> <span data-ttu-id="2cb12-247">Exempel: GB, timmar, 10 000 s.</span><span class="sxs-lookup"><span data-stu-id="2cb12-247">Example: GB, hours, 10,000 s.</span></span> |
+|<span data-ttu-id="2cb12-248">resourceGroup</span><span class="sxs-lookup"><span data-stu-id="2cb12-248">resourceGroup</span></span>| <span data-ttu-id="2cb12-249">Sträng</span><span class="sxs-lookup"><span data-stu-id="2cb12-249">string</span></span>| <span data-ttu-id="2cb12-250">hello resursgrupp i vilka hello distribuerade mätaren körs i.</span><span class="sxs-lookup"><span data-stu-id="2cb12-250">hello resource group in which hello deployed meter is running in.</span></span> <span data-ttu-id="2cb12-251">Mer information finns i [Översikt över Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).</span><span class="sxs-lookup"><span data-stu-id="2cb12-251">For more information, see [Azure Resource Manager overview](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).</span></span> |
+<br/>
+## <a name="see-also"></a><span data-ttu-id="2cb12-252">Se även</span><span class="sxs-lookup"><span data-stu-id="2cb12-252">See also</span></span>
+
+* [<span data-ttu-id="2cb12-253">Fakturering punkter API</span><span class="sxs-lookup"><span data-stu-id="2cb12-253">Billing Periods API</span></span>](billing-enterprise-api-billing-periods.md)
+
+* [<span data-ttu-id="2cb12-254">Belastningsutjämning och sammanfattning API</span><span class="sxs-lookup"><span data-stu-id="2cb12-254">Balance and Summary API</span></span>](billing-enterprise-api-balance-summary.md)
+
+* [<span data-ttu-id="2cb12-255">Marketplace Store kostnad API</span><span class="sxs-lookup"><span data-stu-id="2cb12-255">Marketplace Store Charge API</span></span>](billing-enterprise-api-marketplace-storecharge.md) 
+
+* [<span data-ttu-id="2cb12-256">Price Sheet API</span><span class="sxs-lookup"><span data-stu-id="2cb12-256">Price Sheet API</span></span>](billing-enterprise-api-pricesheet.md)

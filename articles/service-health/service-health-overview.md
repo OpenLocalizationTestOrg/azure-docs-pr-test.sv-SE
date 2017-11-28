@@ -1,0 +1,62 @@
+---
+title: "Översikt över Azure tjänstens hälsa | Microsoft Docs"
+description: "Anpassad information om hur dina Azure appar påverkas av problem med aktuella och framtida Azure-tjänsten och underhåll."
+services: Resource health
+documentationcenter: 
+author: rboucher
+manager: 
+editor: 
+ms.assetid: 
+ms.service: service-health
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: Supportability
+ms.date: 07/07/2017
+ms.author: robb
+ms.openlocfilehash: 001dc1fa2a0fd7e132101944a87be3f8552d8738
+ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
+ms.translationtype: MT
+ms.contentlocale: sv-SE
+ms.lasthandoff: 07/29/2017
+---
+# <a name="azure-service-health"></a><span data-ttu-id="2013d-103">Azure Service Health</span><span class="sxs-lookup"><span data-stu-id="2013d-103">Azure Service Health</span></span>
+<span data-ttu-id="2013d-104">Tjänstens hälsa för Azure ger lämplig och personlig information när problem i Azure-tjänster påverkar dina tjänster.</span><span class="sxs-lookup"><span data-stu-id="2013d-104">Azure Service Health provides timely and personalized information when problems in Azure services impact your services.</span></span>  <span data-ttu-id="2013d-105">Det hjälper dig också för kommande planerat underhåll.</span><span class="sxs-lookup"><span data-stu-id="2013d-105">It also helps you prepare for upcoming planned maintenance.</span></span>
+
+## <a name="service-health-events"></a><span data-ttu-id="2013d-106">Hälsa av tjänsten-händelser</span><span class="sxs-lookup"><span data-stu-id="2013d-106">Service Health Events</span></span>
+<span data-ttu-id="2013d-107">Tjänstens hälsa spårar tre typer av hälsotillstånd händelser som kan påverka dina resurser:</span><span class="sxs-lookup"><span data-stu-id="2013d-107">Service Health tracks three types of health events that may impact your resources:</span></span>
+1. <span data-ttu-id="2013d-108">**Tjänsten problem** -problem i Azure-tjänster som påverkar dig just nu.</span><span class="sxs-lookup"><span data-stu-id="2013d-108">**Service issues** - Problems in the Azure services that affect you right now.</span></span> 
+2. <span data-ttu-id="2013d-109">**Planerat underhåll** -kommande underhåll som kan påverka tillgängligheten för dina tjänster i framtiden.</span><span class="sxs-lookup"><span data-stu-id="2013d-109">**Planned maintenance** - Upcoming maintenance that can affect the availability of your services in the future.</span></span>  
+3. <span data-ttu-id="2013d-110">**Hälsotillstånd rekommendationerna** -ändringar i Azure-tjänster som kräver din uppmärksamhet.</span><span class="sxs-lookup"><span data-stu-id="2013d-110">**Health advisories** - Changes in Azure services that require your attention.</span></span> <span data-ttu-id="2013d-111">Exempel är när Azure-funktioner är inaktuella eller om du överskrider en kvot.</span><span class="sxs-lookup"><span data-stu-id="2013d-111">Examples include when Azure features are deprecated or if you exceed a usage quota.</span></span>
+
+    ![Händelser för Hälsotjänst](./media/service-health-overview/azure-service-health-overview-7.png)
+
+## <a name="get-started-with-service-health"></a><span data-ttu-id="2013d-113">Kom igång med tjänstens hälsa</span><span class="sxs-lookup"><span data-stu-id="2013d-113">Get started with Service Health</span></span>
+<span data-ttu-id="2013d-114">Välj panelen tjänstens hälsa på instrumentpanelen i portalen om du vill starta instrumentpanelen tjänstens hälsa.</span><span class="sxs-lookup"><span data-stu-id="2013d-114">To launch your Service Health dashboard, select the Service Health tile on your portal dashboard.</span></span> <span data-ttu-id="2013d-115">Om du tidigare har tagit bort panelen eller om du använder anpassade instrumentpanel, söka efter tjänstens hälsa för tjänsten i ”fler tjänster” (nedre vänstra på instrumentpanelen).</span><span class="sxs-lookup"><span data-stu-id="2013d-115">If you have previously removed the tile or you're using custom dashboard, search for Service Health service in "More services" (bottom left on your dashboard).</span></span>
+<span data-ttu-id="2013d-116">![Kom igång med tjänstens hälsa](./media/service-health-overview/azure-service-health-overview-1.png)</span><span class="sxs-lookup"><span data-stu-id="2013d-116">![Get started with Service Health](./media/service-health-overview/azure-service-health-overview-1.png)</span></span>
+
+## <a name="see-current-issues-which-impact-your-services"></a><span data-ttu-id="2013d-117">Visa aktuella problem som påverkar dina tjänster</span><span class="sxs-lookup"><span data-stu-id="2013d-117">See current issues which impact your services</span></span>
+<span data-ttu-id="2013d-118">Den **tjänsten problem** pågående problem visas i Azure-tjänster som som påverkar dina resurser.</span><span class="sxs-lookup"><span data-stu-id="2013d-118">The **Service issues** view shows any ongoing problems in Azure services that are impacting your resources.</span></span> <span data-ttu-id="2013d-119">Du kan förstå när problemet började och vilka tjänster och regioner som påverkas.</span><span class="sxs-lookup"><span data-stu-id="2013d-119">You can understand when the issue began, and what services and regions are impacted.</span></span> <span data-ttu-id="2013d-120">Du kan också läsa den senaste uppdateringen för att förstå vad Azure gör för att lösa problemet.</span><span class="sxs-lookup"><span data-stu-id="2013d-120">You can also read the most recent update to understand what Azure is doing to resolve the issue.</span></span> 
+<span data-ttu-id="2013d-121">![Hantera serviceproblem](./media/service-health-overview/azure-service-health-overview-2.png)</span><span class="sxs-lookup"><span data-stu-id="2013d-121">![Manage service issue](./media/service-health-overview/azure-service-health-overview-2.png)</span></span>
+
+<span data-ttu-id="2013d-122">Välj den **potentiella påverkan** fliken för att se listan över resurser som du äger och som kan påverkas av problemet.</span><span class="sxs-lookup"><span data-stu-id="2013d-122">Choose the **Potential impact** tab to see the specific list of resources you own that might be impacted by the issue.</span></span> <span data-ttu-id="2013d-123">Du kan hämta en CSV-lista över dessa resurser för att dela med ditt team.</span><span class="sxs-lookup"><span data-stu-id="2013d-123">You can  download a CSV list of these resources to share with your team.</span></span>
+<span data-ttu-id="2013d-124">![Hantera problem med tjänsten - påverkan](./media/service-health-overview/azure-service-health-overview-4.png)</span><span class="sxs-lookup"><span data-stu-id="2013d-124">![Manage service issue - Impact](./media/service-health-overview/azure-service-health-overview-4.png)</span></span>
+
+## <a name="get-links-and-downloadable-explanations"></a><span data-ttu-id="2013d-125">Hämta länkar och nedladdningsbara förklaringar</span><span class="sxs-lookup"><span data-stu-id="2013d-125">Get links and downloadable explanations</span></span> 
+<span data-ttu-id="2013d-126">Du kan hämta en länk för problemet ska användas i det problem hanteringssystemet.</span><span class="sxs-lookup"><span data-stu-id="2013d-126">You can get a link for the issue to use in your problem management system.</span></span> <span data-ttu-id="2013d-127">Du kan hämta PDF och ibland CSV-filer för att dela med användare som inte har åtkomst till Azure-portalen.</span><span class="sxs-lookup"><span data-stu-id="2013d-127">You can download PDF and sometimes CSV files to share with people who don’t have access to the Azure portal.</span></span>   
+![Hantera problem med tjänsten - problemhantering](./media/service-health-overview/azure-service-health-overview-3.png)
+
+## <a name="get-support-from-microsoft"></a><span data-ttu-id="2013d-129">Få support från Microsoft</span><span class="sxs-lookup"><span data-stu-id="2013d-129">Get support from Microsoft</span></span>
+<span data-ttu-id="2013d-130">Kontakta supporten om din resurs lämnas i felaktigt tillstånd, även när problemet är löst.</span><span class="sxs-lookup"><span data-stu-id="2013d-130">Contact support if your resource is left in a bad state even after the issue is resolved.</span></span>  <span data-ttu-id="2013d-131">Använd länkarna stöd till höger på sidan.</span><span class="sxs-lookup"><span data-stu-id="2013d-131">Use the support links on the right of the page.</span></span>  
+
+## <a name="pin-a-personalized-health-map-to-your-dashboard"></a><span data-ttu-id="2013d-132">Fästa en anpassad hälsa karta till din instrumentpanel</span><span class="sxs-lookup"><span data-stu-id="2013d-132">Pin a personalized health map to your dashboard</span></span>
+<span data-ttu-id="2013d-133">Filtrera tjänstens hälsa för att visa dina verksamhetskritiska prenumerationer, regioner och resurstyper.</span><span class="sxs-lookup"><span data-stu-id="2013d-133">Filter Service Health to show your business-critical subscriptions, regions, and resource types.</span></span> <span data-ttu-id="2013d-134">Spara filtret och fästa en anpassad hälsa world karta till instrumentpanelen i portalen.</span><span class="sxs-lookup"><span data-stu-id="2013d-134">Save the filter and pin a personalized health world map to your portal dashboard.</span></span> 
+<span data-ttu-id="2013d-135">![Filter anpassade hälsa kartan](./media/service-health-overview/azure-service-health-overview-6a.png)
+![fästa en anpassad hälsa karta](./media/service-health-overview/azure-service-health-overview-6b.png)</span><span class="sxs-lookup"><span data-stu-id="2013d-135">![Filter personalized health map](./media/service-health-overview/azure-service-health-overview-6a.png)
+![Pin a personalized health map](./media/service-health-overview/azure-service-health-overview-6b.png)</span></span>
+
+## <a name="configure-service-health-alerts"></a><span data-ttu-id="2013d-136">Konfigurera aviseringar för tjänstens hälsa</span><span class="sxs-lookup"><span data-stu-id="2013d-136">Configure Service Health alerts</span></span>
+<span data-ttu-id="2013d-137">Tjänstens hälsa för Azure integreras med Azure-Övervakaren för att meddela dig via e-post och textmeddelanden webhook meddelanden när resurserna verksamhetskritiska påverkas.</span><span class="sxs-lookup"><span data-stu-id="2013d-137">Azure Service Health integrates with Azure Monitor to alert you via emails, text messages, and webhook notifications when your business-critical resources are impacted.</span></span> <span data-ttu-id="2013d-138">Konfigurera en varning för logg för tjänstens hälsa för händelsen.</span><span class="sxs-lookup"><span data-stu-id="2013d-138">Set up an activity log alert for the appropriate Service Health event.</span></span> <span data-ttu-id="2013d-139">Vidarebefordra den här aviseringen till rätt personer i organisationen med hjälp av åtgärdsgrupper.</span><span class="sxs-lookup"><span data-stu-id="2013d-139">Route that alert to the appropriate people in your organization using Action Groups.</span></span> <span data-ttu-id="2013d-140">Mer information finns i [konfigurera aviseringar för tjänstens hälsa](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md)</span><span class="sxs-lookup"><span data-stu-id="2013d-140">For more information, see [Configure Alerts for Service Health](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md)</span></span>
+
+# <a name="next-steps"></a><span data-ttu-id="2013d-141">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="2013d-141">Next Steps</span></span>
+<span data-ttu-id="2013d-142">Ställa in aviseringar så meddelas du om hälsotillstånd.</span><span class="sxs-lookup"><span data-stu-id="2013d-142">Set up alerts so you are notified of health issues.</span></span> <span data-ttu-id="2013d-143">Mer information finns i [konfigurera aviseringar för tjänstens hälsa](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md).</span><span class="sxs-lookup"><span data-stu-id="2013d-143">For more information, see [Configure Alerts for Service Health](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md).</span></span> 

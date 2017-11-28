@@ -1,0 +1,3 @@
+> [!IMPORTANT]
+> <span data-ttu-id="c5316-101">Enhets-ID kanske visas i loggarna som samlas in för support och felsökning, så se till att undvika känslig information när du namnger det.</span><span class="sxs-lookup"><span data-stu-id="c5316-101">The device ID may be visible in the logs collected for customer support and troubleshooting, so make sure to avoid any sensitive information while naming it.</span></span>
+>

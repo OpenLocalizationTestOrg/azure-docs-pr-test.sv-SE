@@ -1,0 +1,14 @@
+### <a name="prerequisites"></a><span data-ttu-id="9c43e-101">Krav</span><span class="sxs-lookup"><span data-stu-id="9c43e-101">Prerequisites</span></span>
+* <span data-ttu-id="9c43e-102">En [RSS](https://wikipedia.org/wiki/RSS) konto</span><span class="sxs-lookup"><span data-stu-id="9c43e-102">An [RSS](https://wikipedia.org/wiki/RSS) account</span></span>  
+
+<span data-ttu-id="9c43e-103">Innan du kan använda RSS-konto i en logikapp, måste du godkänna logik för att ansluta till ditt RSS-konto. Lyckligtvis kan du göra detta direkt i din logikapp på Azure Portal.</span><span class="sxs-lookup"><span data-stu-id="9c43e-103">Before you can use your RSS account in a Logic app, you must authorize the Logic app to connect to your RSS account.Fortunately, you can do this easily from within your Logic app on the Azure Portal.</span></span>  
+
+<span data-ttu-id="9c43e-104">Här följer stegen för att verifiera din logikapp för att ansluta till ditt konto med RSS:</span><span class="sxs-lookup"><span data-stu-id="9c43e-104">Here are the steps to authorize your Logic app to connect to your RSS account:</span></span>  
+
+1. <span data-ttu-id="9c43e-105">Om du vill skapa en anslutning till RSS, i logik app designer **visa Microsoft hanterade API: er** i nedrullningsbara listan anger *RSS* i sökrutan.</span><span class="sxs-lookup"><span data-stu-id="9c43e-105">To create a connection to RSS, in the Logic app designer, select **Show Microsoft managed APIs** in the drop down list then enter *RSS* in the search box.</span></span> <span data-ttu-id="9c43e-106">Välj utlösaren eller åtgärd du vill använda:</span><span class="sxs-lookup"><span data-stu-id="9c43e-106">Select the trigger or action you'll like to use:</span></span>  
+   <span data-ttu-id="9c43e-107">![RSS-anslutning, skapa steg](./media/connectors-create-api-rss/rss-1.png)</span><span class="sxs-lookup"><span data-stu-id="9c43e-107">![RSS connection creation step](./media/connectors-create-api-rss/rss-1.png)</span></span>  
+2. <span data-ttu-id="9c43e-108">Välj **Skapa anslutning** :</span><span class="sxs-lookup"><span data-stu-id="9c43e-108">Select **Create connection** :</span></span>  
+   <span data-ttu-id="9c43e-109">![RSS-anslutning, skapa steg](./media/connectors-create-api-rss/rss-2.png)</span><span class="sxs-lookup"><span data-stu-id="9c43e-109">![RSS connection creation step](./media/connectors-create-api-rss/rss-2.png)</span></span>  
+3. <span data-ttu-id="9c43e-110">Observera att anslutningen har skapats och du kan nu välja att fortsätta med andra steg i din logikapp:</span><span class="sxs-lookup"><span data-stu-id="9c43e-110">Notice the connection has been created and you are now free to proceed with the other steps in your Logic app:</span></span>  
+   ![RSS-anslutning, skapa steg](./media/connectors-create-api-rss/rss-3.png)  
+

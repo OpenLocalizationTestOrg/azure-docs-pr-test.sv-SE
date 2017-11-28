@@ -1,0 +1,2 @@
+>[!NOTE]
+><span data-ttu-id="6c4b6-101">WebJobs SDK stöder inte .NET Core ännu.</span><span class="sxs-lookup"><span data-stu-id="6c4b6-101">The WebJobs SDK does not yet support .NET Core.</span></span>

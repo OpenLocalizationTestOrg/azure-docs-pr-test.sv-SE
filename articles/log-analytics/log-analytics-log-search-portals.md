@@ -1,0 +1,53 @@
+---
+title: "aaaPortals för att skapa och redigera loggen frågor i Azure Log Analytics | Microsoft Docs"
+description: "Den här artikeln beskriver hello portaler att du kan använda i Azure Log Analytics toocreate och redigera loggen sökningar."
+services: log-analytics
+documentationcenter: 
+author: bwren
+manager: carmonm
+editor: 
+ms.service: log-analytics
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 07/25/2017
+ms.author: bwren
+ms.openlocfilehash: 7a2657574a132b2c4298511bb31259e68113ac91
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.translationtype: MT
+ms.contentlocale: sv-SE
+ms.lasthandoff: 10/06/2017
+---
+# <a name="portals-for-creating-and-editing-log-queries-in-azure-log-analytics"></a><span data-ttu-id="961cc-103">Portaler för att skapa och redigera loggen frågor i Azure Log Analytics</span><span class="sxs-lookup"><span data-stu-id="961cc-103">Portals for creating and editing log queries in Azure Log Analytics</span></span>
+
+> [!NOTE]
+> <span data-ttu-id="961cc-104">Den här artikeln beskriver portaler i Azure Log Analytics med hjälp av hello nya frågespråk.</span><span class="sxs-lookup"><span data-stu-id="961cc-104">This article describes portals in Azure Log Analytics using hello new query language.</span></span>  <span data-ttu-id="961cc-105">Du lär dig mer om hello nytt språk och få hello proceduren tooupgrade ditt arbetsområde på [uppgradera sökningen Azure logganalys arbetsytan toonew loggen](log-analytics-log-search-upgrade.md).</span><span class="sxs-lookup"><span data-stu-id="961cc-105">You can learn more about hello new language and get hello procedure tooupgrade your workspace at [Upgrade your Azure Log Analytics workspace toonew log search](log-analytics-log-search-upgrade.md).</span></span>  
+>
+> <span data-ttu-id="961cc-106">Om ditt arbetsområde inte har varit uppgraderade toohello nya frågespråk, bör du läsa för[söka efter data med hjälp av loggen sökningar i logganalys](log-analytics-log-searches.md) information om hello nuvarande version av hello loggen Sök-portalen.</span><span class="sxs-lookup"><span data-stu-id="961cc-106">If your workspace hasn't been upgraded toohello new query language, you should refer too[Find data using log searches in Log Analytics](log-analytics-log-searches.md) for information on hello current version of hello Log Search portal.</span></span>
+
+<span data-ttu-id="961cc-107">Du kan använda loggen sökningar på olika ställen i logganalys tooretrieve data från hello arbetsyta.</span><span class="sxs-lookup"><span data-stu-id="961cc-107">You use log searches in a variety of places throughout Log Analytics tooretrieve data from hello workspace.</span></span>  <span data-ttu-id="961cc-108">Dessutom tooworking interaktivt med returnerade data om för att skapa och redigera frågor, har du två alternativ som beskrivs nedan.</span><span class="sxs-lookup"><span data-stu-id="961cc-108">For actually creating and editing queries in addition tooworking interactively with returned data though, you have two options that are described below.</span></span>  
+
+## <a name="log-search-portal"></a><span data-ttu-id="961cc-109">Loggen sökportal</span><span class="sxs-lookup"><span data-stu-id="961cc-109">Log search portal</span></span>
+<span data-ttu-id="961cc-110">hello loggen Sök portal är åtkomlig från hello Azure-portalen eller hello OMS-portalen.</span><span class="sxs-lookup"><span data-stu-id="961cc-110">hello Log Search portal is accessible from hello Azure portal or hello OMS portal.</span></span>  <span data-ttu-id="961cc-111">Det är lämpligt för att skapa grundläggande frågor som kan skapas på en enda rad.</span><span class="sxs-lookup"><span data-stu-id="961cc-111">It's suitable for creating basic queries that can be created on a single line.</span></span>  <span data-ttu-id="961cc-112">hello loggen Sök portal kan användas utan att starta en extern portal och du kan använda den tooperform en mängd funktioner med loggen söker bland annat skapa Varningsregler, skapar datorgrupper och exportera hello resultaten av hello-frågan.</span><span class="sxs-lookup"><span data-stu-id="961cc-112">hello Log Search portal can be used without launching an external portal, and you can use it tooperform a variety of functions with log searches including creating alert rules, creating computer groups, and exporting hello results of hello query.</span></span>  
+
+<span data-ttu-id="961cc-113">hello loggen Sök portal innehåller flera funktioner för redigerar hello fråga utan att ha fullständiga kunskaper om hello frågespråk.</span><span class="sxs-lookup"><span data-stu-id="961cc-113">hello Log Search portal provides multiple features for editing hello query without having a full knowledge of hello query language.</span></span>  <span data-ttu-id="961cc-114">Du kan få en översikt över funktionerna i [skapa loggen söker i Azure Log Analytics med hjälp av hello loggen Sök portal](log-analytics-log-search-log-search-portal.md).</span><span class="sxs-lookup"><span data-stu-id="961cc-114">You can get a summary of these features in [Create log searches in Azure Log Analytics using hello Log Search portal](log-analytics-log-search-log-search-portal.md).</span></span>
+
+
+![Logga sökportal](media/log-analytics-log-search-portals/log-search-portal.png)
+
+## <a name="advanced-analytics-portal"></a><span data-ttu-id="961cc-116">Avancerade Analytics-portalen</span><span class="sxs-lookup"><span data-stu-id="961cc-116">Advanced Analytics portal</span></span>
+<span data-ttu-id="961cc-117">hello avancerade analyser portal är en dedikerad portal som ger avancerade funktioner som är inte tillgänglig i hello loggen Sök-portalen.</span><span class="sxs-lookup"><span data-stu-id="961cc-117">hello Advanced Analytics portal is a dedicated portal that provides advanced functionality not available in hello Log Search portal.</span></span>  <span data-ttu-id="961cc-118">Funktioner omfattar hello möjlighet tooedit en fråga på flera rader, köra selektivt kod, sammanhangsberoende Intellisense och smarta Analytics.</span><span class="sxs-lookup"><span data-stu-id="961cc-118">Features include hello ability tooedit a query on multiple lines, selectively execute code, context sensitive Intellisense, and Smart Analytics.</span></span>  <span data-ttu-id="961cc-119">hello Advanced Analytics-portalen är mest lämpliga för att utforma komplexa frågor som antingen sparas som en logg sökning eller kopieras och klistras in i andra logganalys-element.</span><span class="sxs-lookup"><span data-stu-id="961cc-119">hello Advanced Analytics portal is most suitable for designing complex queries that are either saved as a log search or copied and pasted into other Log Analytics elements.</span></span>  <span data-ttu-id="961cc-120">Du kan starta hello Advanced Analytics-portalen från en länk i hello loggen Sök portal.</span><span class="sxs-lookup"><span data-stu-id="961cc-120">You launch hello Advanced Analytics portal from a link in hello Log Search portal.</span></span>
+
+![Avancerade Analytics-portalen](media/log-analytics-log-search-portals/advanced-analytics-portal.png)
+
+
+<span data-ttu-id="961cc-122">På grund av dess avancerade funktioner använder vanligtvis du hello avancerade analyser portal som din primära verktyget för att skapa och redigera frågor.</span><span class="sxs-lookup"><span data-stu-id="961cc-122">Because of its advanced features, you'll usually use hello Advanced Analytics portal as your primary tool for creating and editing queries.</span></span>  <span data-ttu-id="961cc-123">När du har bestämt att hello frågan fungerar som förväntat och sedan du kopierar och klistrar in den någon annanstans, till exempel hello loggen Sök portalen eller View Designer.</span><span class="sxs-lookup"><span data-stu-id="961cc-123">Once you've determined that hello query works as expected, then you'll copy and paste it elsewhere such as hello Log Search portal or View Designer.</span></span>  <span data-ttu-id="961cc-124">Eftersom hello Advanced Analytics portal stöder dock frågor med flera rader, måste tootake hello följande i åtanke när du kopierar en fråga från den här portalen.</span><span class="sxs-lookup"><span data-stu-id="961cc-124">Because hello Advanced Analytics portal supports queries with multiple lines though, you need tootake hello following into consideration when copying a query from this portal.</span></span>
+
+- <span data-ttu-id="961cc-125">Kommentarer måste tas bort från hello fråga innan den har kopieras och klistras in i en annan plats.</span><span class="sxs-lookup"><span data-stu-id="961cc-125">Comments must be removed from hello query before it's copied and pasted into another location.</span></span>  <span data-ttu-id="961cc-126">Du kan kommentera en rad genom att låta det med två snedstreck (/ /).</span><span class="sxs-lookup"><span data-stu-id="961cc-126">You can comment a line by preceding it with two slashes (//).</span></span>  <span data-ttu-id="961cc-127">När du klistrar in en flera rad-fråga till en enda rad tas radbrytningar bort.</span><span class="sxs-lookup"><span data-stu-id="961cc-127">When you paste a multiple line query into a single line, line breaks are removed.</span></span>  <span data-ttu-id="961cc-128">Om kommentarer ingår betraktas alla tecken efter hello första kommentaren som en del av hello-kommentaren.</span><span class="sxs-lookup"><span data-stu-id="961cc-128">If comments are included, all characters after hello first comment are considered part of hello comment.</span></span>
+
+
+## <a name="next-steps"></a><span data-ttu-id="961cc-129">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="961cc-129">Next steps</span></span>
+
+- <span data-ttu-id="961cc-130">Gå igenom en självstudiekurs om hur du använder hello [loggen Sök portal](log-analytics-log-search-log-search-portal.md) eller hello [Advanced Analytics portal](https://go.microsoft.com/fwlink/?linkid=856587) toocreate frågor.</span><span class="sxs-lookup"><span data-stu-id="961cc-130">Walk through a tutorial on using hello [Log Search portal](log-analytics-log-search-log-search-portal.md) or hello [Advanced Analytics portal](https://go.microsoft.com/fwlink/?linkid=856587) toocreate queries.</span></span>
+- <span data-ttu-id="961cc-131">Checka ut en [självstudier om hur du skriver frågor](https://go.microsoft.com/fwlink/?linkid=856078) med hello nya frågespråk.</span><span class="sxs-lookup"><span data-stu-id="961cc-131">Check out a [tutorial on writing queries](https://go.microsoft.com/fwlink/?linkid=856078) using hello new query language.</span></span>

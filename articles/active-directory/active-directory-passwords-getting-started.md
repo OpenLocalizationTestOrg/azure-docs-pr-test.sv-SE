@@ -1,0 +1,100 @@
+---
+title: 'Snabbstart: Azure AD SSPR | Microsoft Docs'
+description: "Distribuera återställning av lösenord för självbetjäning i Azure AD snabbt"
+services: active-directory
+keywords: 
+documentationcenter: 
+author: MicrosoftGuyJFlo
+manager: femila
+ms.reviewer: gahug
+ms.assetid: bde8799f-0b42-446a-ad95-7ebb374c3bec
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: get-started-article
+ms.date: 08/07/2017
+ms.author: joflore
+ms.custom: it-pro
+ms.openlocfilehash: 4fed3a1c690fd6423ee5d3e5baef690d8896fbe9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.translationtype: MT
+ms.contentlocale: sv-SE
+ms.lasthandoff: 10/06/2017
+---
+# <a name="quickstart-azure-ad-self-service-password-reset"></a><span data-ttu-id="edfe0-103">Snabbstart: återställning av lösenord för Azure AD-självbetjäning</span><span class="sxs-lookup"><span data-stu-id="edfe0-103">Quickstart: Azure AD self-service password reset</span></span>
+
+> [!IMPORTANT]
+> <span data-ttu-id="edfe0-104">**Är du här eftersom du har problem med att logga in?**</span><span class="sxs-lookup"><span data-stu-id="edfe0-104">**Are you here because you're having problems signing in?**</span></span> <span data-ttu-id="edfe0-105">I så fall är det [här som du ser hur du kan ändra och återställa ditt eget lösenord](active-directory-passwords-update-your-own-password.md).</span><span class="sxs-lookup"><span data-stu-id="edfe0-105">If so, [here's how you can change and reset your own password](active-directory-passwords-update-your-own-password.md).</span></span>
+
+## <a name="rapidly-deploy-self-service-password-reset"></a><span data-ttu-id="edfe0-106">Distribuera återställning av lösenord för självbetjäning snabbt</span><span class="sxs-lookup"><span data-stu-id="edfe0-106">Rapidly deploy self-service password reset</span></span>
+
+<span data-ttu-id="edfe0-107">Självbetjäning för lösenordsåterställning (SSPR) erbjuder ett enkelt sätt för IT-administratörer tooempower användare tooreset eller låsa upp sitt lösenord eller konton.</span><span class="sxs-lookup"><span data-stu-id="edfe0-107">Self-service password reset (SSPR) offers a simple means for IT administrators tooempower users tooreset or unlock their passwords or accounts.</span></span> <span data-ttu-id="edfe0-108">hello system innehåller detaljerade reporting tootrack när användare använder hello system tillsammans med meddelanden tooalert du toomisuse eller missbruk.</span><span class="sxs-lookup"><span data-stu-id="edfe0-108">hello system includes detailed reporting tootrack when users use hello system along with notifications tooalert you toomisuse or abuse.</span></span>
+
+<span data-ttu-id="edfe0-109">I den här handboken förutsätts att du redan har en aktiv utvärderingsversion eller licensierad Azure AD-klient.</span><span class="sxs-lookup"><span data-stu-id="edfe0-109">This guide assumes you already have a working trial or licensed Azure AD tenant.</span></span> <span data-ttu-id="edfe0-110">Om du behöver hjälp med att konfigurera Azure AD finns i artikeln hello [komma igång med Azure AD](https://azure.microsoft.com/trial/get-started-active-directory/).</span><span class="sxs-lookup"><span data-stu-id="edfe0-110">If you need help setting up Azure AD, see hello article [Getting Started with Azure AD](https://azure.microsoft.com/trial/get-started-active-directory/).</span></span>
+
+1. <span data-ttu-id="edfe0-111">Från din befintliga Azure AD-klient väljer du **"Återställning av lösenord"**</span><span class="sxs-lookup"><span data-stu-id="edfe0-111">From your existing Azure AD tenant, select **"Password reset"**</span></span>
+
+2. <span data-ttu-id="edfe0-112">Från hello **”egenskaper”** skärmen under hello alternativet ”Self Service lösenord återställa aktiverat” Välj något av följande hello</span><span class="sxs-lookup"><span data-stu-id="edfe0-112">From hello **"Properties"** screen, under hello option "Self Service Password Reset Enabled" choose one of hello following</span></span>
+    * <span data-ttu-id="edfe0-113">Ingen - Inga en är kan toouse SSPR-funktioner</span><span class="sxs-lookup"><span data-stu-id="edfe0-113">Nobody - No one is able toouse SSPR functionality</span></span>
+    * <span data-ttu-id="edfe0-114">En grupp - gruppen endast medlemmar i en specifik Azure AD att du väljer är kan toouse SSPR-funktioner</span><span class="sxs-lookup"><span data-stu-id="edfe0-114">A group - Only members of a specific Azure AD group that you choose are able toouse SSPR functionality</span></span>
+    * <span data-ttu-id="edfe0-115">Alla - alla användare med konton i Azure AD-klienten är kan toouse SSPR-funktioner</span><span class="sxs-lookup"><span data-stu-id="edfe0-115">Everybody - All users with accounts in your Azure AD tenant are able toouse SSPR functionality</span></span>
+
+3. <span data-ttu-id="edfe0-116">Från hello **”autentiseringsmetoder”** skärmen väljer</span><span class="sxs-lookup"><span data-stu-id="edfe0-116">From hello **"Authentication methods"** screen choose</span></span>
+    * <span data-ttu-id="edfe0-117">Antal metoder obligatoriskt tooreset – vi stöder minst en eller två</span><span class="sxs-lookup"><span data-stu-id="edfe0-117">Number of methods required tooreset - We support a minimum of one or a maximum of two</span></span>
+    * <span data-ttu-id="edfe0-118">Metoder tillgängliga toousers - vi behöver minst en men den hurts aldrig toohave en extra alternativ som är tillgängligt</span><span class="sxs-lookup"><span data-stu-id="edfe0-118">Methods available toousers - We need at least one but it never hurts toohave an extra choice available</span></span>
+        * <span data-ttu-id="edfe0-119">**E-post** skickar ett e-postmeddelande med en kod toohello användare konfigurerade e-postadress för autentisering</span><span class="sxs-lookup"><span data-stu-id="edfe0-119">**Email** sends an email with a code toohello user's configured authentication email address</span></span>
+        * <span data-ttu-id="edfe0-120">**Mobiltelefon** ger hello användaren hello val tooreceive ett samtal eller text med en kod tootheir konfigurerad mobila telefonnummer</span><span class="sxs-lookup"><span data-stu-id="edfe0-120">**Mobile Phone** gives hello user hello choice tooreceive a call or text with a code tootheir configured mobile phone number</span></span>
+        * <span data-ttu-id="edfe0-121">**Arbetstelefon** anrop hello användare med en kod tootheir konfigurerat telefonnummer till arbetet</span><span class="sxs-lookup"><span data-stu-id="edfe0-121">**Office Phone** calls hello user with a code tootheir configured office phone number</span></span>
+        * <span data-ttu-id="edfe0-122">**Säkerhetsfrågor** kräver toochoose</span><span class="sxs-lookup"><span data-stu-id="edfe0-122">**Security Questions** requires you toochoose</span></span>
+            * <span data-ttu-id="edfe0-123">Antal frågor som krävs för tooregister - hello minimum för lyckad registrering, vilket innebär att en användare kan välja tooanswer mer toocreate en pool av frågor toopull från.</span><span class="sxs-lookup"><span data-stu-id="edfe0-123">Number of questions required tooregister - hello minimum for successful registration, meaning a user can choose tooanswer more toocreate a pool of questions toopull from.</span></span> <span data-ttu-id="edfe0-124">Det här alternativet måste kan anges från 3-5 och vara större än eller lika med toohello antalet nödvändiga tooreset för frågor.</span><span class="sxs-lookup"><span data-stu-id="edfe0-124">This option can be set from 3-5 and must be greater than or equal toohello number of questions required tooreset.</span></span>
+                * <span data-ttu-id="edfe0-125">Anpassade frågor kan läggas till genom att klicka på knappen för hello ”anpassad” när du väljer säkerhetsfrågor</span><span class="sxs-lookup"><span data-stu-id="edfe0-125">Custom questions can be added by clicking hello "Custom" button when selecting security questions</span></span>
+            * <span data-ttu-id="edfe0-126">Antal frågor som krävs tooreset - kan anges från 3-5 frågor toobe besvaras korrekt innan du tillåter en användare lösenord toobe återställa eller olåst.</span><span class="sxs-lookup"><span data-stu-id="edfe0-126">Number of questions required tooreset - Can be set from 3-5 questions toobe answered correctly before allowing a users password toobe reset or unlocked.</span></span>
+
+4. <span data-ttu-id="edfe0-127">REKOMMENDERAS: **”anpassning”** kan du toochange hello ”kontaktar du administratören” länken toopoint tooa sidan eller e-postadress du definiera</span><span class="sxs-lookup"><span data-stu-id="edfe0-127">RECOMMENDED: **"Customization"** allows you toochange hello "Contact your administrator" link toopoint tooa page or email address you define</span></span>
+
+5. <span data-ttu-id="edfe0-128">Valfritt: hello **”registrering”** skärmen ger administratörer hello alternativ för:</span><span class="sxs-lookup"><span data-stu-id="edfe0-128">OPTIONAL: hello **"Registration"** screen provides administrators hello options for:</span></span>
+    * <span data-ttu-id="edfe0-129">Kräv användare tooregister när du loggar in</span><span class="sxs-lookup"><span data-stu-id="edfe0-129">Require users tooregister when signing in</span></span>
+    * <span data-ttu-id="edfe0-130">Antal dagar innan användarna uppmanas ange tooreconfirm sina autentiseringsinformation</span><span class="sxs-lookup"><span data-stu-id="edfe0-130">Number of days before users are asked tooreconfirm their authentication information</span></span>
+
+6. <span data-ttu-id="edfe0-131">Valfritt: hello **”meddelanden”** skärmen ger administratörer hello alternativ för att:</span><span class="sxs-lookup"><span data-stu-id="edfe0-131">OPTIONAL: hello **"Notification"** screen provides administrators hello options to:</span></span>
+    * <span data-ttu-id="edfe0-132">Meddela användare om lösenordsåterställning</span><span class="sxs-lookup"><span data-stu-id="edfe0-132">Notify users on password resets</span></span>
+    * <span data-ttu-id="edfe0-133">Meddela alla administratörer när andra administratörer återställer sina lösenord</span><span class="sxs-lookup"><span data-stu-id="edfe0-133">Notify all admins when other admins reset their password</span></span>
+
+<span data-ttu-id="edfe0-134">**Nu har du konfigurerat SSPR för din Azure AD-klient**.</span><span class="sxs-lookup"><span data-stu-id="edfe0-134">**At this point, you have configured SSPR for your Azure AD tenant**.</span></span> <span data-ttu-id="edfe0-135">Du kan stoppa här eller fortsätta med tooconfigure synkronisering av lösenord tooan lokala AD-domän.</span><span class="sxs-lookup"><span data-stu-id="edfe0-135">You can stop here or continue on tooconfigure synchronization of passwords tooan on-premises AD domain.</span></span>
+
+> [!NOTE]
+> <span data-ttu-id="edfe0-136">Testa SSPR med en användare och inte en administratör eftersom Microsoft tillämpar starka autentiseringskrav för Azure-konton av administratörstyp.</span><span class="sxs-lookup"><span data-stu-id="edfe0-136">Test SSPR with a user and not an administrator as Microsoft enforces strong authentication requirements for Azure administrator type accounts.</span></span> <span data-ttu-id="edfe0-137">Mer information om Hej administratör lösenordsprincip finns i vår [lösenord princip artikel](active-directory-passwords-policy.md#administrator-password-policy-differences).</span><span class="sxs-lookup"><span data-stu-id="edfe0-137">For more information regarding hello administrator password policy, see our [password policy article](active-directory-passwords-policy.md#administrator-password-policy-differences).</span></span>
+
+## <a name="configure-synchronization-tooexisting-identity-source"></a><span data-ttu-id="edfe0-138">Konfigurera synkroniseringskällan tooexisting identitet</span><span class="sxs-lookup"><span data-stu-id="edfe0-138">Configure synchronization tooexisting identity source</span></span>
+
+<span data-ttu-id="edfe0-139">tooenable lokalt identitet synkronisering tooAzure AD, du behöver tooinstall och konfigurera [Azure AD Connect](./connect/active-directory-aadconnect.md) på en server i din organisation.</span><span class="sxs-lookup"><span data-stu-id="edfe0-139">tooenable on-premises identity synchronization tooAzure AD, you need tooinstall and configure [Azure AD Connect](./connect/active-directory-aadconnect.md) on a server in your organization.</span></span> <span data-ttu-id="edfe0-140">Det här programmet hanterar synkronisera användare och grupper från din befintliga identitet källa tooyour Azure AD-klient.</span><span class="sxs-lookup"><span data-stu-id="edfe0-140">This application handles synchronizing users and groups from your existing identity source tooyour Azure AD tenant.</span></span>
+
+* [<span data-ttu-id="edfe0-141">Uppgradera från DirSync eller Azure AD Sync tooAzure AD Connect</span><span class="sxs-lookup"><span data-stu-id="edfe0-141">Upgrade from DirSync or Azure AD Sync tooAzure AD Connect</span></span>](./connect/active-directory-aadconnect-dirsync-deprecated.md)
+* [<span data-ttu-id="edfe0-142">Komma igång med Azure AD Connect med standardinställningar</span><span class="sxs-lookup"><span data-stu-id="edfe0-142">Getting started with Azure AD Connect using express settings</span></span>](./connect/active-directory-aadconnect-get-started-express.md)
+* <span data-ttu-id="edfe0-143">[Konfigurera tillbakaskrivning av lösenord](active-directory-passwords-writeback.md#configuring-password-writeback) toowrite lösenord från Azure AD tillbaka tooyour lokala katalog.</span><span class="sxs-lookup"><span data-stu-id="edfe0-143">[Configure password writeback](active-directory-passwords-writeback.md#configuring-password-writeback) toowrite passwords from Azure AD back tooyour on-premises directory.</span></span>
+
+## <a name="disabling-self-service-password-reset"></a><span data-ttu-id="edfe0-144">Inaktivera självbetjäningsfunktionen för återställning av lösenord</span><span class="sxs-lookup"><span data-stu-id="edfe0-144">Disabling self-service password reset</span></span>
+
+<span data-ttu-id="edfe0-145">Inaktivera lösenordsåterställning via självbetjäning är så enkelt som att öppna Azure AD-klienten och gå för**för återställning av lösenord > Egenskaper** > Välj **ingen** under **Self för återställning av lösenord Aktiverad**</span><span class="sxs-lookup"><span data-stu-id="edfe0-145">Disabling self-service password reset is as simple as opening your Azure AD tenant and going too**Password Reset > Properties** > choose **None** under **Self Service Password Reset Enabled**</span></span>
+
+### <a name="learn-more"></a><span data-ttu-id="edfe0-146">Läs mer</span><span class="sxs-lookup"><span data-stu-id="edfe0-146">Learn more</span></span>
+<span data-ttu-id="edfe0-147">hello följande länkar ger ytterligare information om lösenordsåterställning med hjälp av Azure AD</span><span class="sxs-lookup"><span data-stu-id="edfe0-147">hello following links provide additional information regarding password reset using Azure AD</span></span>
+
+* <span data-ttu-id="edfe0-148">[**Licensiering**](active-directory-passwords-licensing.md) – Konfigurera Azure AD-licensiering</span><span class="sxs-lookup"><span data-stu-id="edfe0-148">[**Licensing**](active-directory-passwords-licensing.md) - Configure your Azure AD Licensing</span></span>
+* <span data-ttu-id="edfe0-149">[**Data** ](active-directory-passwords-data.md) – förstå hello data som krävs och hur de används för lösenordshantering</span><span class="sxs-lookup"><span data-stu-id="edfe0-149">[**Data**](active-directory-passwords-data.md) - Understand hello data that is required and how it is used for password management</span></span>
+* <span data-ttu-id="edfe0-150">[**Distributionen** ](active-directory-passwords-best-practices.md) -planera och distribuera SSPR tooyour användare som använder hello vägledning finns här</span><span class="sxs-lookup"><span data-stu-id="edfe0-150">[**Rollout**](active-directory-passwords-best-practices.md) - Plan and deploy SSPR tooyour users using hello guidance found here</span></span>
+* <span data-ttu-id="edfe0-151">[**Anpassa** ](active-directory-passwords-customize.md) -anpassa hello utseende och känslan av hello SSPR upplevelse för ditt företag.</span><span class="sxs-lookup"><span data-stu-id="edfe0-151">[**Customize**](active-directory-passwords-customize.md) - Customize hello look and feel of hello SSPR experience for your company.</span></span>
+* <span data-ttu-id="edfe0-152">[**Princip**](active-directory-passwords-policy.md) – Förstå och ange principer för Azure AD-lösenord</span><span class="sxs-lookup"><span data-stu-id="edfe0-152">[**Policy**](active-directory-passwords-policy.md) - Understand and set Azure AD password policies</span></span>
+* <span data-ttu-id="edfe0-153">[**Rapportering**](active-directory-passwords-reporting.md) – Identifiera om, när och var dina användare kommer åt SSPR-funktioner</span><span class="sxs-lookup"><span data-stu-id="edfe0-153">[**Reporting**](active-directory-passwords-reporting.md) - Discover if, when, and where your users are accessing SSPR functionality</span></span>
+* <span data-ttu-id="edfe0-154">[**Tekniska ingående** ](active-directory-passwords-how-it-works.md) -gå bakom hello gardinen toounderstand hur det fungerar</span><span class="sxs-lookup"><span data-stu-id="edfe0-154">[**Technical Deep Dive**](active-directory-passwords-how-it-works.md) - Go behind hello curtain toounderstand how it works</span></span>
+* <span data-ttu-id="edfe0-155">[**Vanliga frågor och svar**](active-directory-passwords-faq.md) – Hur gör man?</span><span class="sxs-lookup"><span data-stu-id="edfe0-155">[**Frequently Asked Questions**](active-directory-passwords-faq.md) - How?</span></span> <span data-ttu-id="edfe0-156">Varför?</span><span class="sxs-lookup"><span data-stu-id="edfe0-156">Why?</span></span> <span data-ttu-id="edfe0-157">Vad?</span><span class="sxs-lookup"><span data-stu-id="edfe0-157">What?</span></span> <span data-ttu-id="edfe0-158">Var?</span><span class="sxs-lookup"><span data-stu-id="edfe0-158">Where?</span></span> <span data-ttu-id="edfe0-159">Vem?</span><span class="sxs-lookup"><span data-stu-id="edfe0-159">Who?</span></span> <span data-ttu-id="edfe0-160">När?</span><span class="sxs-lookup"><span data-stu-id="edfe0-160">When?</span></span> <span data-ttu-id="edfe0-161">-Svar tooquestions du alltid vill ha tooask</span><span class="sxs-lookup"><span data-stu-id="edfe0-161">- Answers tooquestions you always wanted tooask</span></span>
+* <span data-ttu-id="edfe0-162">[**Felsöka** ](active-directory-passwords-troubleshoot.md) – Lär dig hur tooresolve vanliga problem att vi se med SSPR</span><span class="sxs-lookup"><span data-stu-id="edfe0-162">[**Troubleshoot**](active-directory-passwords-troubleshoot.md) - Learn how tooresolve common issues that we see with SSPR</span></span>
+
+## <a name="next-steps"></a><span data-ttu-id="edfe0-163">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="edfe0-163">Next steps</span></span>
+
+<span data-ttu-id="edfe0-164">I den här snabbstarten du har lärt dig hur tooconfigure Självbetjäning för återställning av lösenord för dina användare.</span><span class="sxs-lookup"><span data-stu-id="edfe0-164">In this quickstart, you’ve learned how tooconfigure self-service password reset for your users.</span></span> <span data-ttu-id="edfe0-165">toocontinue toohello Azure portal toocomplete följer du dessa steg hello länken nedan toohello portal.</span><span class="sxs-lookup"><span data-stu-id="edfe0-165">toocontinue toohello Azure portal toocomplete these steps follow hello link below toohello portal.</span></span>
+
+> [!div class="nextstepaction"]
+> [<span data-ttu-id="edfe0-166">Aktivera lösenordsåterställning via självbetjäning</span><span class="sxs-lookup"><span data-stu-id="edfe0-166">Enable self-service password reset</span></span>](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/PasswordReset)
+
