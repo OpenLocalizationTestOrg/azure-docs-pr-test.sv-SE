@@ -1,64 +1,64 @@
 ## <a name="set-up-your-development-environment"></a>Ställ in din utvecklingsmiljö
-Härnäst ska du ställa in din utvecklingsmiljö i Visual Studio så att du är klar tootry hello kodexemplen i den här guiden.
+Konfigurera sedan din utvecklingsmiljö i Visual Studio så att du är redo att testa kodexemplen i den här guiden.
 
 ### <a name="create-a-windows-console-application-project"></a>Skapa ett Windows-konsolprogramprojekt
-Skapa ett nytt Windows-konsolprogram i Visual Studio. hello följande steg visar hur toocreate ett konsolprogram i Visual Studio 2017 dock hello stegen är ungefär i andra versioner av Visual Studio.
+Skapa ett nytt Windows-konsolprogram i Visual Studio. Följande steg visar hur du skapar ett konsolprogram i Visual Studio 2017. Stegen är ungefär som i andra versioner av Visual Studio.
 
-1. Välj **Arkiv** > **Nytt** > **Projekt**
-2. Välj **Installerat** > **Mallar** > **Visual C#** > **Windows Classic Desktop**
-3. Välj **Konsolprogram (.NET Framework)**
-4. Ange ett namn för ditt program i hello **Name:** fält
-5. Välj **OK**
+1. Välj **Arkiv** > **Nytt** > **Projekt**.
+2. Välj **Installerat** > **Mallar** > **Visual C#** > **Windows Classic Desktop**.
+3. Välj **Konsolprogram (.NET Framework)**.
+4. Ange ett namn för ditt program i fältet **Namn**.
+5. Välj **OK**.
 
-![Dialogruta för att skapa projekt i Visual Studio](./media/storage-development-environment-include/storage-development-environment-include-1.png)
+![Skärmbild av dialogrutan Nytt projekt i Visual Studio](./media/storage-development-environment-include/storage-development-environment-include-1.png)
 
-Alla kodexempel i den här kursen kan läggas till toohello `Main()` -metoden i konsolen programmets `Program.cs` fil.
+Alla kodexempel i den här självstudiekursen kan läggas till i `Main()`-metoden i konsolprogrammets `Program.cs`-fil.
 
-Du kan använda hello Azure Storage-klientbibliotek för någon typ av .NET-program, inklusive en Azure cloud service eller web app, och stationära och mobila program. I den här guiden använder vi oss av en konsolapp för enkelhetens skull.
+Du kan använda Azure Storage-klientbiblioteket i alla typer av .NET-program, t.ex. en Azure-molntjänst eller webbapp, eller i dator- och mobilprogram. I den här guiden använder vi oss av en konsolapp för enkelhetens skull.
 
-### <a name="use-nuget-tooinstall-hello-required-packages"></a>Använd NuGet tooinstall krävs hello-paket
-Det finns två paket som du behöver tooreference i ditt projekt toocomplete för den här kursen:
+### <a name="use-nuget-to-install-the-required-packages"></a>Använd NuGet för att installera de paket som behövs
+Det finns två paket som du måste referera till i ditt projekt för att slutföra den här kursen:
 
-* [Microsoft Azure Storage-klientbibliotek för .NET](https://www.nuget.org/packages/WindowsAzure.Storage/): det här paketet ger programmatisk åtkomst toodata resurser i ditt lagringskonto.
+* [Microsoft Azure Storage-klientbibliotek för .NET](https://www.nuget.org/packages/WindowsAzure.Storage/): det här paketet ger programmatisk åtkomst till dataresurser i ditt lagringskonto.
 * [Microsoft Azure Configuration Manager-biblioteket för .NET](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/): det här paketet tillhandahåller en klass för parsning av en anslutningssträng i en konfigurationsfil, oavsett var ditt program körs.
 
-Du kan använda NuGet tooobtain båda paketen. Följ de här stegen:
+Du kan använda NuGet för att hämta båda paketen. Följ de här stegen:
 
 1. Högerklicka på ditt projekt i **Solution Explorer** och välj **Hantera NuGet-paket**.
-2. Sök online efter ”WindowsAzure.Storage” och klicka på **installera** tooinstall hello Storage-klientbiblioteket och dess beroenden.
-3. Sök online efter ”WindowsAzure.ConfigurationManager” och klicka på **installera** tooinstall hello Azure Configuration Manager.
+2. Sök online efter ”WindowsAzure.Storage” och markera **Installera** för att installera Storage-klientbiblioteket och alla dess beroenden.
+3. Sök online efter ”WindowsAzure.ConfigurationManager” och markera på **Installera** för att installera Azure Configuration Manager.
 
 > [!NOTE]
-> hello Storage-klientbibliotek paketet ingår också i hello [Azure SDK för .NET](https://azure.microsoft.com/downloads/). Vi rekommenderar dock att du även installerar hello Storage-klientbiblioteket från NuGet tooensure att du alltid har hello senaste versionen av klientbiblioteket hello.
+> Storage-klientbibliotekspaketet finns också inkluderat i [Azure SDK för .NET](https://azure.microsoft.com/downloads/). Vi rekommenderar dock att du även installerar Storage-klientbiblioteket från NuGet för att säkerställa att du alltid har den senaste versionen av klientbiblioteket.
 > 
-> Hej ODataLib-beroenden i hello Storage-klientbibliotek för .NET matchas genom hello ODataLib-paket som är tillgängliga på NuGet inte från WCF Data Services. Hej ODataLib-biblioteken kan hämtas direkt eller refereras till i ditt Kodprojekt via NuGet. hello specifika ODataLib-paket som används av hello Storage-klientbiblioteket är [OData](http://nuget.org/packages/Microsoft.Data.OData/), [Edm](http://nuget.org/packages/Microsoft.Data.Edm/), och [Spatial](http://nuget.org/packages/System.Spatial/). De här biblioteken används av hello Azure Table storage-klasser är de nödvändiga beroenden för programmering med hello Storage-klientbibliotek.
+> ODataLib-beroenden i lagringsklientbiblioteket för .NET kan matchas med ODataLib-paketen som är tillgängliga på NuGet, inte från WCF Data Services. ODataLib-biblioteken kan hämtas direkt eller refereras till i ditt kodprojekt via NuGet. De specifika ODataLib-paket som används av Storage-klientbiblioteket är [OData](http://nuget.org/packages/Microsoft.Data.OData/), [Edm](http://nuget.org/packages/Microsoft.Data.Edm/) och [Spatial](http://nuget.org/packages/System.Spatial/). Även om de här biblioteken används av Azure-tabellagringsklasserna så är de nödvändiga beroenden för programmering med Storage-klientbiblioteket.
 > 
 > 
 
 ### <a name="determine-your-target-environment"></a>Fastställ målmiljön
-Du har två miljöalternativ för att köra hello exemplen i den här guiden:
+Du har två miljöalternativ för att köra exemplen i den här guiden:
 
-* Du kan köra din kod mot ett Azure Storage-konto i hello molnet. 
-* Du kan köra din kod mot hello Azure storage-emulatorn. hello storage-emulatorn är en lokal miljö som emulerar ett Azure Storage-konto i hello molnet. hello-emulatorn är ett kostnadsfritt alternativ för att testa och felsöka din kod medan ditt program är under utveckling. hello-emulatorn använder ett välkänt konto och nyckel. Mer information finns i [Använd hello Azure Storage-emulatorn för utveckling och testning](../articles/storage/common/storage-use-emulator.md)
+* Du kan köra din kod mot ett Azure Storage-konto i molnet. 
+* Du kan köra din kod mot en Azure-lagringsemulator. Lagringsemulatorn är en lokal miljö som emulerar ett Azure Storage-konto i molnet. Emulatorn är ett kostnadsfritt alternativ för att testa och felsöka din kod medan ditt program är under utveckling. Emulatorn använder sig av ett välkänt konto och nyckel. Mer information finns i [Använd Azure Storage-emulatorn för utveckling och testning](../articles/storage/common/storage-use-emulator.md).
 
-Om du utvecklar ett lagringskonto i molnet hello kopiera hello primärnyckeln för ditt lagringskonto från hello Azure-portalen. Mer information finns i [Visa och kopiera åtkomstnycklar för lagring](../articles/storage/common/storage-create-storage-account.md#view-and-copy-storage-access-keys).
+Om målet är ett lagringskonto i molnet kopierar du den primära åtkomstnyckeln för ditt lagringskonto från Azure Portal. Mer information finns i [Visa och kopiera åtkomstnycklar för lagring](../articles/storage/common/storage-create-storage-account.md#view-and-copy-storage-access-keys).
 
 > [!NOTE]
-> Du kan rikta hello storage-emulatorn tooavoid kostnader associerade med Azure Storage. Om du väljer tootarget ett Azure storage-konto i hello molnet, kommer kostnader för att utföra den här självstudiekursen dock försumbar.
+> Du kan använda lagringsemulatorn för att undvika kostnader associerade med Azure Storage. Men även om du väljer att använda ett Azure-lagringskonto i molnet, kommer kostnaderna för att genomföra den här guiden vara minimala.
 > 
 > 
 
 ### <a name="configure-your-storage-connection-string"></a>Konfigurera anslutningssträngen för lagring
-hello Azure Storage-klientbibliotek för .NET stöder användning av en lagring sträng tooconfigure slutpunkter och autentiseringsuppgifter för åtkomst till lagringstjänster. hello bästa sätt toomaintain anslutningssträngen för lagring är i en konfigurationsfil. 
+Azure Storage-klientbiblioteket för .NET stöder användning av en anslutningssträng för lagring för att konfigurera slutpunkter och autentiseringsuppgifter för åtkomst till lagringstjänster. Det bästa sättet att underhålla anslutningssträngen för lagring är i en konfigurationsfil. 
 
-Mer information om anslutningssträngar finns [konfigurera en anslutningssträng tooAzure lagring](../articles/storage/common/storage-configure-connection-string.md).
+Mer information om anslutningssträngar finns i [Konfigurera en anslutningssträng för Azure Storage](../articles/storage/common/storage-configure-connection-string.md).
 
 > [!NOTE]
-> Din lagringskontonyckel är liknande toohello rotlösenordet för lagringskontot. Alltid vara försiktig tooprotect din lagringskontonyckel. Undvik att distribuera den tooother användare, hårdkoda den eller spara den i en oformaterad textfil som är tillgänglig tooothers. Återskapa din nyckel med hjälp av hello Azure-portalen om du tror att den komprometterats.
+> Din nyckel för lagringskontot liknar rotlösenordet för lagringskontot. Var alltid noga med att skydda din lagringskontonyckel. Undvik att dela ut den till andra användare, hårdkoda den eller spara den i en oformaterad textfil som andra har åtkomst till. Återskapa din nyckel med hjälp av Azure Portal om du misstänker att den komprometterats.
 > 
 > 
 
-tooconfigure ditt anslutningssträngen, öppna hello `app.config` filen i Solutions Explorer i Visual Studio. Lägg till hello innehållet i hello `<appSettings>` elementet enligt nedan. Ersätt `account-name` med hello namnet på ditt lagringskonto och `account-key` med din åtkomstnyckel:
+För att konfigurera din anslutningssträng öppnar du `app.config`-filen i Solutions Explorer i Visual Studio. Lägg till innehållet i `<appSettings>`-elementet enligt nedan. Ersätt `account-name` med namnet på ditt lagringskonto och `account-key` med din åtkomstnyckel:
 
 ```xml
 <configuration>
@@ -77,7 +77,7 @@ Din konfigurationsinställning kan till exempel se ut så här:
 <add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=storagesample;AccountKey=GMuzNHjlB3S9itqZJHHCnRkrokLkcSyW7yK9BRbGp0ENePunLPwBgpxV1Z/pVo9zpem/2xSHXkMqTHHLcx8XRA==" />
 ```
 
-Du kan använda ett kortkommando som mappar toohello välkända kontonamnet och nyckeln tootarget hello storage-emulatorn. I så fall är din inställning för anslutningssträngen:
+För att använda lagringsemulatorn kan du använda ett kortkommando som mappar till det välkända kontonamnet och nyckeln. I så fall är din inställning för anslutningssträngen:
 
 ```xml
 <add key="StorageConnectionString" value="UseDevelopmentStorage=true;" />

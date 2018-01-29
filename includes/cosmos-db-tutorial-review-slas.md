@@ -1,7 +1,11 @@
-Nu när din app är igång, ska du tooensure business continuity och titta på användaren åtkomst tooensure hög tillgänglighet. Du kan använda hello Azure portal tooreview hello tillgänglighet, svarstid, genomflöde och konsekvens i samlingen. 
+Dataflöde, lagring, tillgänglighet, svarstid och konsekvenskontroll av resurser i ditt konto övervakas i Azure-portalen. Låt oss ta en titt på de här måtten. 
 
-Varje diagram som är kopplad till hello [Azure Cosmos DB servicenivåavtal (SLA)](https://azure.microsoft.com/support/legal/sla/documentdb/) innehåller en rad som visar hello kvoten krävs toomeet hello serviceavtalet och din faktiska användning, ger en klar bild i databasens prestanda. Ytterligare mätvärden, till exempel användning av lagringsutrymme och antal begäranden per minut, ingår även i hello-portalen.
+1. Klicka på **mått** på navigeringsmenyn.
 
-* I hello Azure-portalen, i hello vänstra fönstret, under **övervakning**, klickar du på **mått**.
+   ![Mått i Azure-portalen](./media/cosmos-db-tutorial-review-slas/metrics.png)
 
-   ![Att göra-app med exempeldata](./media/cosmos-db-tutorial-review-slas/azure-cosmosdb-portal-metrics-slas.png)
+2. Klicka här för var och en av flikarna så att du är medveten om mått som ger Azure Cosmos DB. 
+
+    Varje diagram som är associerad med den [Azure Cosmos DB servicenivåavtal (SLA)](https://azure.microsoft.com/support/legal/sla/cosmos-db/) innehåller en rad som visar om någon av SLA: er har överskridits. Azure Cosmos-DB kan du övervaka dina transparent med den här serien mått SLA: er. 
+
+   ![Azure DB Cosmos mått suite](./media/cosmos-db-tutorial-review-slas/metrics-suite.png)

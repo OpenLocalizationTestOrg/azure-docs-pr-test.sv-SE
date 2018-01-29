@@ -54,7 +54,7 @@ Nej. De virtuella datorerna i en tillgänglighetsuppsättning måste använda al
 
 **Är standardalternativet i Azure-portalen för hanterade diskar?**
 
-För närvarande inte, men det blir standardvärdet i framtiden.
+Ja. 
 
 **Kan jag skapa en tom disk som hanterade?**
 
@@ -101,6 +101,10 @@ Azure-hanterade diskar stöder för närvarande endast lokalt redundant lagring 
 
 Nej. Den här funktionen stöds inte för närvarande. 
 
+**Kan jag dela ett lån på disken?**
+
+Nej. Detta stöds inte för närvarande eftersom ett lån är att förhindra oavsiktlig borttagning när disken används.
+
 **Kan jag ändra egenskapen name för datorn när en särskild (inte skapats med hjälp av systemförberedelseverktyget eller generaliserad) operativsystemdisk används för att etablera en virtuell dator?**
 
 Nej. Du kan inte uppdatera egenskapen name för datorn. Den nya virtuella datorn ärver den från överordnat virtuella datorn som användes för att skapa operativsystemets disk. 
@@ -108,6 +112,40 @@ Nej. Du kan inte uppdatera egenskapen name för datorn. Den nya virtuella datorn
 **Var hittar jag exempel Azure Resource Manager-mallar för att skapa virtuella datorer med hanterade diskar?**
 * [Lista över mallar med hjälp av hanterade diskar](https://github.com/Azure/azure-quickstart-templates/blob/master/managed-disk-support-list.md)
 * https://github.com/chagarw/MDPP
+
+## <a name="migrate-to-managed-disks"></a>Migrera till Managed Disks 
+
+**Vilka ändringar som krävs i en befintlig Azure Backup service configuration före/efter migrering till hanterade diskar?**
+
+Inga ändringar krävs. 
+
+**Min VM-säkerhetskopior som har skapats via Azure Backup-tjänsten före migreringen kommer fortsätta att fungera?**
+
+Ja, säkerhetskopieringen fungerar sömlöst.
+
+**Vilka ändringar som krävs i en befintlig Azure-diskar Encryption configuration före/efter migrering till hanterade diskar?**
+
+Inga ändringar krävs. 
+
+**Är automatisk migrering av en befintlig VM Scale uppsättningar (VMSS) från ohanterade diskar till hanterade diskar stöds?**
+
+Nej. Du kan skapa en ny VMSS med hanterade diskar med hjälp av bilden från ditt gamla VMSS med ohanterad diskar. 
+
+**Kan jag skapa en Disk som hanteras från en sida blob ögonblicksbild som togs innan du migrerar till hanterade diskar?**
+
+Nej. Du kan exportera en ögonblicksbild av sidan blob som en sidblobb och sedan skapa en Disk som hanteras från den exporterade sidblob. 
+
+**Kan jag växla över min lokala datorer som skyddas av Azure Site Recovery till en virtuell dator med hanterade diskar?**
+
+Ja, du kan välja att gå över till en virtuell dator med hanterade diskar.
+
+**Finns det någon effekt av migrering på virtuella Azure-datorer skyddas av Azure Site Recovery (ASR) via Azure Azure replikering?**
+
+Ja. ASR Azure till Azure-skydd stöds inte för virtuella datorer med hanterade diskar. Den kommer att stödjas i slutet av F1 CY2018. 
+
+**Kan jag migrera virtuella datorer med ohanterad diskar som finns på lagringskonton som är eller krypterats till hanterade diskar?**
+
+Ja
 
 ## <a name="managed-disks-and-storage-service-encryption"></a>Hanterade diskar och Storage Service-kryptering 
 

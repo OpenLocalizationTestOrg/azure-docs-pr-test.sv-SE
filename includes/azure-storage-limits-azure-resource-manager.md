@@ -1,4 +1,4 @@
-hello följande begränsningar gäller endast när du använder hello Azure Resource Manager och Azure-resursgrupper.
+Följande begränsningar gäller när du utför hanteringsåtgärder med Azure Resource Manager enbart.
 
 | Resurs | Standardgräns |
 | --- | --- |

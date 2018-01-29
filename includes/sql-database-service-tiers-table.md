@@ -1,52 +1,73 @@
 <!--
 Used in:
-sql-database-performance-guidance.md  
-sql-database-resource-limits.md
-sql-database-service-tiers.md  
+sql-database-performance-guidance.md 
+sql-database-single-database-resources.md 
 -->
 
 ### <a name="basic-service-tier"></a>Grundläggande tjänstenivå
 | **Prestandanivå** | **Basic** |
-| --- | :---: |
+| :--- | --: |
 | Maximala DTU:er | 5 |
-| Maximal databasstorlek* |2 GB|
-| Maximal InMemory-OLTP-lagring |Saknas |
-| Maximalt antal samtidiga arbetare (antal begäranden) |30 |
-| Maximalt antal samtidiga inloggningar |30 |
-| Maximalt antal samtidiga sessioner |300 |
+| Ingår lagringsutrymme (GB) | 2 |
+| Maximalt antal lagringsalternativ (GB) | 2 |
+| Maximal InMemory-OLTP-lagring (GB) |Gäller inte |
+| Maximalt antal samtidiga arbetare (antal begäranden) | 30 |
+| Maximalt antal samtidiga inloggningar | 30 |
+| Maximalt antal samtidiga sessioner | 300 |
 |||
 
 ### <a name="standard-service-tier"></a>Standardtjänstenivå
 | **Prestandanivå** | **S0** | **S1** | **S2** | **S3** |
-| --- |---:| ---:|---:|---:|---:|
-| Maximala DTU:er | 10 | 20 | 50 | 100 |
-| Maximal databasstorlek* | 250 GB| 250 GB | 250 GB | 250 GB |
-| Maximal InMemory-OLTP-lagring | Saknas | Saknas | Saknas | Saknas |
+| :--- |---:| ---:|---:|---:|---:|
+| Max dtu: er ** | 10 | 20 | 50 | 100 |
+| Ingår lagringsutrymme (GB) | 250 | 250 | 250 | 250 |
+| Maximalt antal lagringsalternativ (GB) * | 250 | 250 | 250 | 250, 500, 750, 1024 |
+| Maximal InMemory-OLTP-lagring (GB) | Gäller inte | Gäller inte | Gäller inte | Gäller inte |
 | Maximalt antal samtidiga arbetare (antal begäranden)| 60 | 90 | 120 | 200 |
 | Maximalt antal samtidiga inloggningar | 60 | 90 | 120 | 200 |
 | Maximalt antal samtidiga sessioner |600 | 900 | 1200 | 2400 |
 ||||||
 
+### <a name="standard-service-tier-continued"></a>Standard-tjänstnivå (fortsättning)
+| **Prestandanivå** | **S4** | **S6** | **S7** | **S9** | **S12 FÖRPACKNINGEN** |
+| :--- |---:| ---:|---:|---:|---:|---:|
+| Max dtu: er ** | 200 | 400 | 800 | 1600 | 3000 |
+| Ingår lagringsutrymme (GB) | 250 | 250 | 250 | 250 | 250 |
+| Maximalt antal lagringsalternativ (GB) * | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 |
+| Maximal InMemory-OLTP-lagring (GB) | Gäller inte | Gäller inte | Gäller inte | Gäller inte |Gäller inte |
+| Maximalt antal samtidiga arbetare (antal begäranden)| 400 | 800 | 1600 | 3200 |6000 |
+| Maximalt antal samtidiga inloggningar | 400 | 800 | 1600 | 3200 |6000 |
+| Maximalt antal samtidiga sessioner |4800 | 9600 | 19200 | 30000 |30000 |
+|||||||
+
 ### <a name="premium-service-tier"></a>Premium tjänstenivån 
 | **Prestandanivå** | **P1** | **P2** | **P4** | **P6** | **P11** | **P15** | 
-| --- |---:|---:|---:|---:|---:|---:|
+| :--- |---:|---:|---:|---:|---:|---:|
 | Maximala DTU:er | 125 | 250 | 500 | 1000 | 1750 | 4000 |
-| Maximal databasstorlek* | 500 GB | 500 GB | 500 GB | 500 GB | 4 TB | 4 TB |
-| Maximal InMemory-OLTP-lagring | 1 GB | 2 GB | 4 GB | 8 GB | 14 GB | 32 GB |
+| Ingår lagringsutrymme (GB) | 500 | 500 | 500 | 500 | 4096 | 4096 |
+| Maximalt antal lagringsalternativ (GB) * | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 4096 | 4096 |
+| Maximal InMemory-OLTP-lagring (GB) | 1 | 2 | 4 | 8 | 14 | 32 |
 | Maximalt antal samtidiga arbetare (antal begäranden)| 200 | 400 | 800 | 1600 | 2400 | 6400 |
-| Maximalt antal samtidiga inloggningar | 200 | 400| 800| 1600| 2400| 6400 |
-| Maximalt antal samtidiga sessioner | 30000| 30000| 30000| 30000| 30000| 30000 |
+| Maximalt antal samtidiga inloggningar | 200 | 400 | 800 | 1600 | 2400 | 6400 |
+| Maximalt antal samtidiga sessioner | 30000 | 30000 | 30000 | 30000 | 30000 | 30000 |
 |||||||
 
 ### <a name="premium-rs-service-tier"></a>Premiumnivån för RS 
 | **Prestandanivå** | **PRS1** | **PRS2** | **PRS4** | **PRS6** |
-| --- |---:|---:|---:|---:|---:|---:|
+| :--- |---:|---:|---:|---:|---:|---:|
 | Maximala DTU:er | 125 | 250 | 500 | 1000 |
-| Maximal databasstorlek* | 500 GB | 500 GB | 500 GB | 500 GB |
-| Maximal InMemory-OLTP-lagring | 1 GB | 2 GB | 4 GB | 8 GB |
+| Ingår lagringsutrymme (GB) | 500 | 500 | 500 | 500 |
+| Maximalt antal lagringsalternativ (GB) * | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 |
+| Maximal InMemory-OLTP-lagring (GB) | 1 | 2 | 4 | 8 |
 | Maximalt antal samtidiga arbetare (antal begäranden)| 200 | 400 | 800 | 1600 |
-| Maximalt antal samtidiga inloggningar | 200 | 400| 800| 1600|
-| Maximalt antal samtidiga sessioner | 30000| 30000| 30000| 30000|
+| Maximalt antal samtidiga inloggningar | 200 | 400 | 800 | 1600 |
+| Maximalt antal samtidiga sessioner | 30000 | 30000 | 30000 | 30000 |
 |||||||
 
-\*Maxstorlek för databasen refererar toohello maxstorleken för hello data i hello-databas. 
+> [!IMPORTANT]
+> \*Lagringsstorlekar som är större än mängden lagringsutrymme som ingår finns i förhandsversionen, och extra kostnader tillkommer. Mer information finns i [Priser för SQL Database](https://azure.microsoft.com/pricing/details/sql-database/). 
+>
+>\*Premium-nivån mer än 1 TB lagringsutrymme är tillgängliga i följande regioner: Östra Australien, sydost, Kanada Central, Kanada Öst, Frankrike Central, Tyskland centrala östra Japan, centrala Korea södra centrala USA, södra Östasien, USA East2 , USA, västra USA Gov Virginia och västra Europa. Se [sidan 11-15 i Aktuella begränsningar](../articles/sql-database/sql-database-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+> 
+>\*\*Max Dtu per databas startar 200 dtu: er och högre i Standard finns i förhandsgranskningen.
+>

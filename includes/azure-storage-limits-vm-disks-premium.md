@@ -6,7 +6,7 @@
 | Total kapacitet för ögonblicksbilder per konto |10 TB |
 | Högsta bandbredd per konto (ingående + utgående<sup>1</sup>) |<= 50 Gbit/s |
 
-<sup>1</sup>*ingång* refererar tooall data (antal begäranden) som skickas tooa storage-konto. *Utgående* refererar tooall data (svar) tas emot från ett lagringskonto.
+<sup>1</sup>*Ingående* syftar på alla data (förfrågningar) som skickas till ett lagringskonto. *Utgående* syftar på alla data (svar) som tas emot från ett lagringskonto.
 
 **Ohanterade virtuella Premium-datordiskar: gränser per disk**
 
@@ -21,8 +21,6 @@
 
 | Resurs | Standardgräns |
 | --- | --- |
-| Högsta IOPS per virtuell dator |80 000 IOPS med virtuell GS5-dator<sup>1</sup> |
-| Högsta dataflöde per virtuell dator |2 000 MB/s med virtuell GS5-dator<sup>1</sup> |
-
-<sup>1</sup>finns för[VM-storlek](../articles/virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) för gränserna för andra storlekar på VM. 
+| Högsta IOPS per virtuell dator |80 000 IOPS med GS5 VM |
+| Högsta dataflöde per virtuell dator |2 000 MB/s med GS5 VM |
 

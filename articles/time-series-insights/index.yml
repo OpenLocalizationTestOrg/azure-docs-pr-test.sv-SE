@@ -1,0 +1,42 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Dokumentation om Azure Time Series Insights
+metadata:
+  title: "Dokumentation om Azure Time Series Insights – självstudier, API-referens | Microsoft Docs"
+  description: "Lär dig hur du kör IoT-analys i molnet med fullständigt hanterad händelsebearbetning. Analysera data i realtid från program, sensorer, enheter och många fler."
+  services: time-series-insights
+  author: kfile
+  manager: jhubbard
+  ms.service: time-series-insights
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 11/13/2017
+  ms.author: kfile
+  ms.openlocfilehash: 8ccc0fe8ca23fabb6d2cb697836e8f402dbaf672
+  ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+  ms.translationtype: HT
+  ms.contentlocale: sv-SE
+  ms.lasthandoff: 01/12/2018
+abstract:
+  description: "Lär dig hur du konfigurerar en Time Series Insights-miljö samt utforskar och analyserar Time Series-data i IoT-lösningarna eller anslutna objekt. I dokumentationen finns information om förhandskrav, anvisningar, API-referenser och andra artiklar som hjälper dig att komma igång på några minuter."
+sections:
+- title: "Snabbstarter på 5 minuter"
+  items:
+  - type: paragraph
+    text: "Lär dig hur du distribuerar Log Analytics och konfigurerar insamling av data från Azure, andra molntjänstleverantörer och lokala resurser."
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: https://docs.microsoft.com/azure/time-series-insights/media/index/time-series-insights.svg
+      text: Utforska Azure Time Series Insights
+      href: /azure/time-series-insights/time-series-quickstart
+- title: Referens
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: API:er
+      html: "<p><a href=\"/rest/api/time-series-insights-management\">API för resurshantering</a></p>   <p><a href=\"/rest/api/time-series-insights/time-series-insights-reference-queryapi\">Fråge-API</a></p><p><a href=\"/rest/api/time-series-insights/time-series-insights-reference-query-syntax\">Frågesyntax</a></p>"

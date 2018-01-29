@@ -1,0 +1,289 @@
+- name: Azure Log Analytics-dokumentation
+  href: index.yml
+- name: "Översikt\r\n"
+  items:
+    - name: Vad är Log Analytics?
+      href: log-analytics-overview.md
+- name: Snabbstarter
+  expanded: true
+  items:
+    - name: Samla in – virtuella Azure-datorer
+      href: log-analytics-quick-collect-azurevm.md
+    - name: Samla in – Linux-dator
+      href: log-analytics-quick-collect-linux-computer.md
+    - name: Samla in – Windows-dator
+      href: log-analytics-quick-collect-windows-computer.md
+- name: Självstudier
+  items:
+    - name: 1 – Analysera data
+      href: log-analytics-tutorial-viewdata.md
+    - name: 2 – Visualisera data
+      href: log-analytics-tutorial-dashboards.md
+    - name: 3 – Avisering för data
+      href: log-analytics-tutorial-response.md
+- name: Exempel
+  items:
+    - name: Azure PowerShell
+      href: powershell-samples.md
+- name: Begrepp
+  items:
+    - name: Uppgradering av arbetsyta
+      items:
+        - name: Översikt över uppgradering
+          href: log-analytics-log-search-upgrade.md
+        - name: Sammanfattning av ändringar
+          href: log-analytics-log-search-upgrade-changes.md
+        - name: Vanliga frågor och svar om uppgraderingar
+          href: log-analytics-log-search-faq.md
+    - name: Vanliga frågor och svar om Log Analytics
+      href: log-analytics-faq.md
+    - name: Dataförbrukning
+      href: log-analytics-usage.md
+    - name: Hantera åtkomst
+      href: log-analytics-manage-access.md
+    - name: Övervaka hybridmiljöer
+      href: log-analytics-concept-hybrid.md
+    - name: Funktioner för tjänstleverantörer
+      href: log-analytics-service-providers.md
+    - name: Loggsökning
+      items:
+        - name: Översikt över loggsökningar
+          href: log-analytics-log-search-new.md
+        - name: Loggsökningsportaler
+          href: log-analytics-log-search-portals.md
+- name: Instruktionsguider
+  items:
+    - name: Skapa Log Analytics-arbetsyta
+      href: log-analytics-quick-create-workspace.md
+    - name: Samla in data
+      items:
+        - name: Anslutna källor
+          items:
+            - name: Windows-agenter
+              href: log-analytics-agent-windows.md
+            - name: Azure-resurser
+              href: log-analytics-azure-storage.md
+            - name: Azure PaaS-resurser
+              href: log-analytics-collect-azurepass-posh.md
+            - name: Diagnostik- eller loggdata från Azure Storage
+              href: log-analytics-azure-storage-iis-table.md
+            - name: Operations Manager
+              href: log-analytics-om-agents.md
+            - name: Configuration Manager
+              href: log-analytics-sccm.md
+            - name: OMS-gateway
+              href: log-analytics-oms-gateway.md
+        - name: Datakällor
+          items:
+            - name: Översikt över datakällor
+              href: log-analytics-data-sources.md
+            - name: Windows-händelser
+              href: log-analytics-data-sources-windows-events.md
+            - name: Anpassade JSON-data
+              href: log-analytics-data-sources-json.md
+            - name: Insamlade prestandadata
+              href: log-analytics-data-sources-collectd.md
+            - name: Nagios- och Zabbix-aviseringar
+              href: log-analytics-data-sources-alerts-nagios-zabbix.md
+            - name: Syslog
+              href: log-analytics-data-sources-syslog.md
+            - name: Prestandaräknare
+              href: log-analytics-data-sources-performance-counters.md
+            - name: Programprestanda på Linux
+              href: log-analytics-data-sources-linux-applications.md
+            - name: IIS-loggar
+              href: log-analytics-data-sources-iis-logs.md
+            - name: Anpassade loggar
+              href: log-analytics-data-sources-custom-logs.md
+            - name: Anpassade fält
+              href: log-analytics-custom-fields.md
+            - name: API för datainsamling
+              href: log-analytics-data-collector-api.md
+    - name: Frågedata
+      items:
+        - name: Språkdokumentation
+          href: 'https://docs.loganalytics.io'
+        - name: Övergång från äldre språk
+          href: log-analytics-log-search-transition.md
+        - name: Sökningar över arbetsytor
+          href: log-analytics-cross-workspace-search.md
+        - name: Utför åtgärder från sökresultat
+          href: log-analytics-log-search-takeaction.md
+        - name: Använda datorgrupper
+          href: log-analytics-computer-groups.md
+        - name: Flödesanslutning
+          href: log-analytics-flow-tutorial.md
+        - name: Loggsöknings-API
+          href: 'https://dev.loganalytics.io/'
+    - name: Äldre loggsökning
+      items:
+        - name: Översikt över loggsökningar
+          href: log-analytics-log-searches.md
+        - name: Sökreferens
+          href: log-analytics-search-reference.md
+          items:
+            - name: Reguljära uttryck
+              href: log-analytics-log-searches-regex.md
+        - name: Loggsöknings-API
+          href: log-analytics-log-search-api.md
+          items:
+            - name: Python
+              href: log-analytics-log-search-api-python.md
+    - name: Analysera data
+      items:
+        - name: Instrumentpaneler
+          href: log-analytics-dashboards.md
+        - name: Vydesigner
+          items:
+            - name: "Översikt\r\n"
+              href: log-analytics-view-designer.md
+            - name: Panelreferens
+              href: log-analytics-view-designer-tiles.md
+            - name: Referens för visualiseringsdel
+              href: log-analytics-view-designer-parts.md
+            - name: Filter
+              href: log-analytics-view-designer-filters.md
+        - name: Power BI
+          href: log-analytics-powerbi.md
+    - name: Skapa aviseringar
+      items:
+        - name: Förstå aviseringar
+          href: log-analytics-alerts.md
+        - name: Aviseringsåtgärder
+          href: log-analytics-alerts-actions.md
+        - name: Skapa aviseringsregler
+          items:
+            - name: OMS-portalen
+              href: log-analytics-alerts-creating.md
+            - name: REST-API
+              href: log-analytics-api-alerts.md
+            - name: Resource Manager-mall
+              href: ../operations-management-suite/operations-management-suite-solutions-resources-searches-alerts.md
+        - name: Webhook-åtgärdsexempel
+          href: log-analytics-alerts-webhooks.md
+        - name: Lösning för aviseringshantering
+          href: log-analytics-solution-alert-management.md
+    - name: Hantera
+      items:
+        - name: Agenthantering
+          href: log-analytics-agent-manage.md
+        - name: Hantera arbetsytekostnader
+          href: log-analytics-manage-cost-storage.md
+        - name: Ta bort en arbetsyta
+          href: log-analytics-manage-del-workspace.md
+    - name: Felsöka
+      items:
+        - name: Felsök tillägg för virtuella dator
+          href: log-analytics-azure-vmext-troubleshoot.md
+        - name: Felsökning av Linux-agent
+          href: log-analytics-agent-linux-support.md
+    - name: Använd lösningar
+      items:
+        - name: Översikt över lösningar
+          href: log-analytics-add-solutions.md
+        - name: Mållösningar
+          href: ../operations-management-suite/operations-management-suite-solution-targeting.md?toc=%2fazure%2flog-analytics%2ftoc.json
+        - name: Azure-aktivitetsloggar
+          items:
+            - name: Analys
+              href: log-analytics-activity.md
+            - name: Samla in i olika prenumerationer
+              href: log-analytics-activity-logs-subscriptions.md
+        - name: AD-bedömning
+          href: log-analytics-ad-assessment.md
+        - name: AD-replikeringsstatus
+          href: log-analytics-ad-replication-status.md
+        - name: Agenthälsa
+          href: ../operations-management-suite/oms-solution-agenthealth.md?toc=%2fazure%2flog-analytics%2ftoc.json
+        - name: Varningshantering
+          href: log-analytics-solution-alert-management.md
+        - name: Application Insights-anslutningsprogram
+          href: log-analytics-app-insights-connector.md
+        - name: Azure SQL-analys
+          href: log-analytics-azure-sql.md
+        - name: Azure Web Apps-analys
+          href: log-analytics-azure-web-apps-analytics.md
+        - name: Kapacitet och prestanda
+          href: log-analytics-capacity.md
+        - name: Spårning av ändringar
+          href: log-analytics-change-tracking.md
+        - name: Behållare
+          href: log-analytics-containers.md
+        - name: DNS-analys
+          href: log-analytics-dns.md
+        - name: IT Service Management Connector
+          href: log-analytics-itsmc-overview.md
+          items:
+            - name: IT Service Management-anslutningar
+              href: log-analytics-itsmc-connections.md
+        - name: Key Vault
+          href: log-analytics-azure-key-vault.md
+        - name: Logic Apps B2B-meddelanden
+          items:
+            - name: Lösning för Logic Apps B2B-meddelanden
+              href: ../logic-apps/logic-apps-track-b2b-messages-omsportal.md?toc=%2fazure%2flog-analytics%2ftoc.json
+            - name: Anpassat Logic Apps B2B-spårningsschema
+              href: ../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md?toc=%2fazure%2flog-analytics%2ftoc.json
+        - name: Utvärdering av skadlig kod
+          href: log-analytics-malware.md
+        - name: Nätverksanalys
+          href: log-analytics-azure-networking-analytics.md
+        - name: Övervakning av nätverksprestanda
+          href: log-analytics-network-performance-monitor.md
+        - name: Office 365
+          href: ../operations-management-suite/oms-solution-office-365.md?toc=%2fazure%2flog-analytics%2ftoc.json
+        - name: SCOM-hälsokontroll
+          href: log-analytics-scom-assessment.md
+        - name: Säkerhetsgranskning
+          href: ../operations-management-suite/oms-security-getting-started.md?toc=%2fazure%2flog-analytics%2ftoc.json
+        - name: Service Fabric med Azure PowerShell
+          href: log-analytics-service-fabric.md
+          items:
+            - name: Service Fabric med Azure Resource Manager
+              href: log-analytics-service-fabric-azure-resource-manager.md
+        - name: Tjänstkarta
+          href: ../operations-management-suite/operations-management-suite-service-map.md?toc=%2fazure%2flog-analytics%2ftoc.json
+        - name: SQL-hälsokontroll
+          href: log-analytics-sql-assessment.md
+        - name: Surface Hub
+          href: log-analytics-surface-hubs.md
+        - name: Uppdateringshantering
+          href: ../operations-management-suite/oms-solution-update-management.md
+        - name: VMware
+          href: log-analytics-vmware.md
+        - name: Windows Analytics
+          items:
+            - name: Uppdateringsefterlevnad
+              href: 'https://technet.microsoft.com/itpro/windows/manage/update-compliance-get-started'
+            - name: Uppgraderingsberedskap
+              href: 'https://technet.microsoft.com/itpro/windows/deploy/upgrade-readiness-get-started'
+        - name: Wire Data
+          href: log-analytics-wire-data.md
+    - name: Utveckla
+      items:
+        - name: PowerShell-cmdletar
+          href: log-analytics-powershell-workspace-configuration.md
+        - name: Mallar för Resurshanteraren
+          href: log-analytics-template-workspace-configuration.md
+        - name: Aviserings-API
+          href: log-analytics-api-alerts.md
+- name: Referens
+  items:
+    - name: Språkreferens
+      href: 'https://docs.loganalytics.io/docs/Language-Reference'
+    - name: Azure PowerShell
+      href: /powershell/module/azurerm.operationalinsights
+    - name: REST
+      href: /rest/api/loganalytics
+- name: Resurser
+  items:
+    - name: Azure-översikt
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Prissättning
+      href: 'https://azure.microsoft.com/pricing/details/log-analytics/'
+    - name: Priskalkylator
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Tjänstuppdateringar
+      href: 'https://azure.microsoft.com/updates/?product=log-analytics'
+    - name: Windows Analytics
+      href: 'https://www.microsoft.com/en-us/WindowsForBusiness/windows-analytics'

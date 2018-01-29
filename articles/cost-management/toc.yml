@@ -1,0 +1,45 @@
+- name: Azure Cost Management-dokumentation
+  href: index.yml
+- name: Översikt
+  items:
+    - name: Vad är kostnadshantering?
+      href: overview.md
+- name: Snabbstarter
+  expanded: true
+  items:
+    - name: Visa kostnadsdata
+      href: quick-register-azure-sub.md
+    - name: Visa kostnadsdata – EA
+      href: quick-register-ea.md
+    - name: Visa kostnadsdata – CSP
+      href: quick-register-csp.md
+- name: Självstudier
+  items:
+    - name: 1 – Granska användning och kostnader
+      href: tutorial-review-usage.md
+    - name: 2 – Styra åtkomsten till data
+      href: tutorial-user-access.md
+    - name: 3 – Prognostisera utgifter
+      href: tutorial-forecast-spending.md
+    - name: 4 – Hantera kostnader
+      href: tutorial-manage-costs.md
+- name: Koncept
+  items:
+    - name: Förstå kostnadsrapporter
+      href: understading-cost-reports.md
+- name: Instruktionsguider
+  items:
+    - name: Använda Cost Management-rapporter
+      href: use-reports.md
+- name: Resurser
+  items:
+    - name: Kostnadshanteringsvideor
+      href: ref-videos.md
+    - name: Azure-översikt
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Prissättning
+      href: 'https://azure.microsoft.com/pricing/details/cost-management'
+    - name: Regional tillgänglighet
+      href: 'https://azure.microsoft.com/en-us/regions/services/'
+    - name: VANLIGA FRÅGOR OCH SVAR
+      href: cost-mgt-faq.md

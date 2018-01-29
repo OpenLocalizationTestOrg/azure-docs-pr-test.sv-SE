@@ -1,0 +1,127 @@
+- name: Dokumentation om Azure IoT Hub Device Provisioning-tjänsten
+  href: index.yml
+- name: "Översikt\r\n"
+  items:
+    - name: Om IoT Device Provisioning
+      href: about-iot-dps.md
+- name: Snabbstarter
+  expanded: true
+  items:
+    - name: Konfigurera automatisk etablering
+      href: quick-setup-auto-provision.md
+    - name: Skapa simulerad enhet
+      items:
+        - name: TPM
+          items:
+            - name: C
+              href: quick-create-simulated-device.md
+            - name: Java
+              href: quick-create-simulated-device-tpm-java.md
+            - name: 'C#'
+              href: quick-create-simulated-device-tpm-csharp.md
+            - name: Python
+              href: quick-create-simulated-device-tpm-python.md
+        - name: X.509
+          items:
+            - name: C
+              href: quick-create-simulated-device-x509.md
+            - name: Java
+              href: quick-create-simulated-device-x509-java.md
+            - name: 'C#'
+              href: quick-create-simulated-device-x509-csharp.md
+            - name: Python
+              href: quick-create-simulated-device-x509-python.md
+    - name: Registrera enhet
+      items:
+        - name: TPM
+          items:
+            - name: Java
+              href: quick-enroll-device-tpm-java.md
+            - name: Node.js
+              href: quick-enroll-device-tpm-node.md
+        - name: X.509
+          items:
+            - name: Java
+              href: quick-enroll-device-x509-java.md
+            - name: Node.js
+              href: quick-enroll-device-x509-node.md
+- name: Självstudier
+  items:
+    - name: 1 – Konfigurera molnresurser
+      href: tutorial-set-up-cloud.md
+    - name: 2 – Konfigurera enhet
+      href: tutorial-set-up-device.md
+    - name: 3 - Etablera en enhet till en IoT-hubb
+      items:
+        - name: C
+          href: tutorial-provision-device-to-hub.md
+        - name: 'C#'
+          href: tutorial-net-provision-device-to-hub.md
+    - name: 4 - Etablera enheter till flera hubbar
+      href: tutorial-provision-multiple-hubs.md
+    - name: 5 – etablera gruppregistreringar
+      href: tutorial-group-enrollments.md
+- name: Begrepp
+  items:
+    - name: Enhetskoncept
+      href: concepts-device.md
+    - name: Tjänstkoncept
+      href: concepts-service.md
+    - name: Säkerhetskoncept
+      href: concepts-security.md
+- name: Instruktionsguider
+  items:
+    - name: Hantera enhetsregistreringar
+      items:
+        - name: Hantera enhetsregistreringar med Azure Portal
+          href: how-to-manage-enrollments.md
+        - name: 'Hantera enhetsregistreringar med tjänst-SDK:er'
+          href: how-to-manage-enrollments-sdks.md
+    - name: Återkalla enhetsåtkomst
+      href: how-to-revoke-device-access-portal.md
+    - name: Avetablera enheter
+      href: how-to-unprovision-devices.md
+    - name: Använda HSM med SDK
+      href: use-hsm-with-sdk.md
+    - name: Styra åtkomsten till etableringstjänsten
+      href: how-to-control-access.md
+    - name: Använd Azure CLI för att hantera enhetsetableringstjänsten
+      href: how-to-manage-dps-with-cli.md
+    - name: Använd SDK-verktyg för att utveckla
+      href: how-to-use-sdk-tools.md
+- name: Referens
+  items:
+    - name: REST
+      href: /rest/api/iot-dps
+- name: Resurser
+  items:
+    - name: Azure IoT Hub
+      href: 'https://azure.microsoft.com/services/iot-hub/'
+    - name: Azure Certified for IoT-enhetskatalog
+      href: 'https://catalog.azureiotsuite.com/'
+    - name: Azure IoT Developer Center
+      href: 'https://azure.microsoft.com/develop/iot/'
+    - name: Azure-översikt
+      href: 'https://azure.microsoft.com/roadmap/?category=internet-of-things'
+    - name: Device Explorer-verktyg
+      href: 'https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer'
+    - name: iothub-diagnostics tool
+      href: 'https://github.com/Azure/iothub-diagnostics'
+    - name: Verktyget iothub-explorer
+      href: 'https://github.com/Azure/iothub-explorer'
+    - name: Utbildningsväg
+      href: 'https://azure.microsoft.com/documentation/learning-paths/iot-hub/'
+    - name: MSDN-forum
+      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureiothub'
+    - name: Prissättning
+      href: 'https://azure.microsoft.com/pricing/details/iot-hub/'
+    - name: Priskalkylator
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Tjänstuppdateringar
+      href: 'https://azure.microsoft.com/updates/?product=iot-hub'
+    - name: Stack Overflow
+      href: 'http://stackoverflow.com/questions/tagged/azure-iot-hub'
+    - name: Tekniska fallstudier
+      href: 'https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured'
+    - name: Videoklipp
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=iot-hub'

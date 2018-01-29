@@ -1,14 +1,14 @@
-Skapa en apptjänstplan med hello [az programtjänstplan skapa](/cli/azure/appservice/plan#create) kommando.
+Skapa en App Service-plan i Cloud Shell med kommandot [az appservice plan create](/cli/azure/appservice/plan?view=azure-cli-latest#az_appservice_plan_create).
 
 [!INCLUDE [app-service-plan](app-service-plan.md)]
 
-hello följande exempel skapas en apptjänstplan med namnet `myAppServicePlan` i hello **lediga** prisnivån:
+I följande exempel skapas en App Service-plan med namnet `myAppServicePlan` på prisnivån **Kostnadsfri**:
 
 ```azurecli-interactive
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku FREE
 ```
 
-När hello programtjänstplanen har skapats, visar hello Azure CLI information liknande toohello följande exempel:
+När App Service-planen har skapats visas information av Azure CLI. Informationen ser ut ungefär som i följande exempel:
 
 ```json
 { 

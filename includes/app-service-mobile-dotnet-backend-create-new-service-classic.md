@@ -1,19 +1,19 @@
-1. Logga in på hello [Azure Portal].
+1. Logga in på [Azure Portal].
 2. Klicka på **+NY** > **Webb + Mobil** > **Mobilapp** och ange sedan ett namn för din serverdel för mobilappen.
-3. För hello **resursgruppen**, Välj en befintlig resursgrupp eller skapa en ny (med hjälp av hello samma namn som din app.) 
+3. För **Resursgrupp** väljer du en befintlig resursgrupp, eller skapar en ny (med samma namn som din app). 
    
-    Du kan antingen välja en annan App Service-plan eller skapa en ny. Mer information om App Service-planer och hur toocreate en ny plan i en annan prisnivå på datanivå och på din önskade plats finns [Azure App Service-planer djupgående översikt över](../articles/app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md).
-4. För hello **programtjänstplanen**, hello standardplanen (i hello [standardnivån](https://azure.microsoft.com/pricing/details/app-service/)) är markerad. Du kan också välja en annan plan eller [skapa en ny](../articles/app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md#create-an-app-service-plan). hello App Service-planens inställningar avgör hello [plats, funktioner, kostnad och beräkningsresurser](https://azure.microsoft.com/pricing/details/app-service/) som är associerade med din app. 
+    Du kan antingen välja en annan App Service-plan eller skapa en ny. Mer information om App Service-planer och hur du skapar en ny plan i en annan prisnivå på din önskade plats finns i [Djupgående översikt över Azure App Service-planer](../articles/app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md).
+4. För **App Service-plan** är standardplanen (i [standardnivån](https://azure.microsoft.com/pricing/details/app-service/)) vald. Du kan också välja en annan plan eller [skapa en ny](../articles/app-service/app-service-plan-manage.md#create-an-app-service-plan). App Service-planens inställningar avgör [plats, funktioner, kostnad och beräkningsresurser](https://azure.microsoft.com/pricing/details/app-service/) som associeras med din app. 
    
-    När du bestämmer dig för hello planen klickar du på **skapa**. Detta skapar hello mobilappsserverdel. 
-5. I hello **inställningar** bladet för hello ny mobilappsserverdel och klicka på **Snabbstart** > din klientapplattform > **ansluta en databas**. 
+    Efter att du har valt planen klickar du på **Skapa**. Serverdelen för mobilappen skapas. 
+5. På **Inställningar**-bladet för den nya mobilappen klickar du på **Snabbstart** > din klientapplattform > **Anslut en databas**. 
    
     ![](./media/app-service-mobile-dotnet-backend-create-new-service/dotnet-backend-create-data-connection.png)
-6. I hello **Lägg till dataanslutning** bladet, klickar du på **SQL-databas** > **skapa en ny databas**, typen hello databasen **namnet**, Välj prisnivå och klicka sedan på **Server**.  Du kan återanvända den nya databasen. Om du redan har en databas i hello samma plats kan du istället välja **Använd en befintlig databas**. hello användning av en databas på en annan plats rekommenderas inte på grund av toobandwidth kostnader och högre latens.
+6. På **Lägg till dataanslutning**-bladet klickar du på **SQL Database** > **Skapa en ny databas**, anger **Namn** på databasen, väljer en prisnivå och klickar sedan på **Server**.  Du kan återanvända den nya databasen. Om du redan har en databas på samma plats kan du istället välja **Använd en befintlig databas**. Det rekommenderas inte att använda en databas på en annan plats, på grund av bandbreddskostnader och högre latens.
    
     ![](./media/app-service-mobile-dotnet-backend-create-new-service/dotnet-backend-create-db.png)
-7. I hello **ny server** bladet, Skriv ett unikt servernamn i hello **servernamn** anger ett inloggningsnamn och lösenord, kontrollera **Tillåt azure-tjänster tooaccess server**, och klicka på **OK**. Detta skapar nya hello-databasen.
-8. Tillbaka i hello **Lägg till dataanslutning** bladet klickar du på **anslutningssträngen**, ange värden för hello inloggningsnamn och lösenord för din databas och på **OK**. Vänta några minuter tills hello databasen toobe distribuerats innan du fortsätter.
+7. På **Ny server**-bladet anger du ett unikt servernamn i fältet **Servernamn**, anger ett inloggningsnamn och lösenord, markerar **Ge Azure-tjänster åtkomst till servern** och klickar på **OK**. Den nya databasen skapas.
+8. Tillbaka på **Lägg till dataanslutning**-bladet klickar du på **Anslutningssträng**, anger inloggningsnamn och lösenord för din databas och klickar på **OK**. Vänta några minuter på att databasen distribueras innan du fortsätter.
 
 <!-- URLs. -->
 [Azure Portal]: https://portal.azure.com/

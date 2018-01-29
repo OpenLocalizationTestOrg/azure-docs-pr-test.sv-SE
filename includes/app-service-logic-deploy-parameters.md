@@ -1,13 +1,10 @@
-Med Azure Resource Manager kan du definiera parametrar för värden som du vill toospecify när hello mallen distribueras. hello mallen innehåller ett avsnitt som heter parametrar som innehåller alla hello parametervärden.
-Du bör definiera en parameter för de värden som varierar baserat på hello-projekt som du distribuerar eller på hello-miljö som du distribuerar till. Definiera inte parametrar för värden som behålls alltid hello samma. Varje parametervärdet används i hello mallen toodefine hello resurser som distribueras. 
+Du kan definiera parametrar för värdena som ska användas när du distribuerar mallen med Azure Resource Manager. Mallen innehåller en `parameters` avsnitt som innehåller alla parametervärden. Varje parametervärdet används av mallen för att definiera de resurser som du vill distribuera.
 
-När du definierar parametrar, använda hello **allowedValues** fältet toospecify som värden en användare kan ange under distributionen. Använd hello **defaultValue** fältet tooassign värdet toohello parameter, om inget värde anges under distributionen.
+> [!NOTE]
+> Definiera inte parametrar för värden som aldrig ändras. Definiera parametrar endast för värden som varierar baserat på projektet som du distribuerar eller baserat på miljön där du distribuerar.
 
-Vi beskriver varje parameter i hello mallen.
+När du definierar parametrar:
 
-### <a name="logicappname"></a>logicAppName
-hello namnet på hello logik app toocreate.
+* Ange de tillåtna värdena som en användare kan ange under distributionen av **allowedValues** fältet.
 
-    "logicAppName": {
-        "type": "string"
-    }
+* Om du vill tilldela värden till parametern när inga värden anges under distributionen, Använd den **defaultValue** fältet. 

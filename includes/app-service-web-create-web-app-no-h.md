@@ -1,16 +1,15 @@
-Skapa en [webbapp](../articles/app-service-web/app-service-web-overview.md) i hello `myAppServicePlan` App Service-plan med hello [az webapp skapa](/cli/azure/webapp#create) kommando. 
+I Cloud Shell skapar du en [webbapp](../articles/app-service/app-service-web-overview.md) i `myAppServicePlan` App Service-planen med kommandot [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create). 
 
-hello webbprogrammet här värd för din kod och ger en URL tooview hello distribuerad app.
-
-Följande kommando, Ersätt i hello  *\<appnamn >* med ett unikt namn (giltiga tecken är `a-z`, `0-9`, och `-`). Om `<app_name>` är inte unikt felmeddelande hello ”webbplats med namnet < programnamn > finns redan”. Hej standard webbadressen hello webbprogrammet `https://<app_name>.azurewebsites.net`. 
+Ersätt *\<app_name>* med ett globalt unikt appnamn (giltiga tecken är `a-z`, `0-9` och `-`) i följande exempel. 
 
 ```azurecli-interactive
-az webapp create --name <app_name> --resource-group myResourceGroup --plan myAppServicePlan
+az webapp create --name <app_name> --resource-group myResourceGroup --plan myAppServicePlan --deployment-local-git
 ```
 
-När hello webbprogrammet har skapats, visar hello Azure CLI information liknande toohello följande exempel:
+När webbappen har skapats visar Azure CLI information liknande den i följande exempel:
 
 ```json
+Local git is configured with url of 'https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git'
 {
   "availabilityState": "Normal",
   "clientAffinityEnabled": true,
@@ -19,26 +18,19 @@ När hello webbprogrammet har skapats, visar hello Azure CLI information liknand
   "containerSize": 0,
   "dailyMemoryTimeQuota": 0,
   "defaultHostName": "<app_name>.azurewebsites.net",
+  "deploymentLocalGitUrl": "https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git",
   "enabled": true,
-  "enabledHostNames": [
-    "<app_name>.azurewebsites.net",
-    "<app_name>.scm.azurewebsites.net"
-  ],
-  "gatewaySiteName": null,
-  "hostNameSslStates": [
-    {
-      "hostType": "Standard",
-      "name": "<app_name>.azurewebsites.net",
-      "sslState": "Disabled",
-      "thumbprint": null,
-      "toUpdate": null,
-      "virtualIp": null
-    }
-    < JSON data removed for brevity. >
+  < JSON data removed for brevity. >
 }
 ```
 
-Bläddra toohello plats toosee ditt nyligen skapade webbprogram.
+Du har skapat en tom webbapp med git-distribution aktiverad.
+
+> [!NOTE]
+> URL för fjärransluten Git visas i egenskapen `deploymentLocalGitUrl` med formatet `https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git`. Spara den här URL:en, eftersom du behöver den senare.
+>
+
+Bläddra till webbappen som precis skapades.
 
 ```bash
 http://<app_name>.azurewebsites.net

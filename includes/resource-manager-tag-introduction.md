@@ -1,11 +1,17 @@
-Du lägger till taggar tooyour Azure-resurser toologically organisera dem efter kategorier. Varje tagg består av ett namn och ett värde. Du kan till exempel använda hello namn ”miljö” och hello värdet ”produktion” tooall hello resurser i produktionen. Utan taggen kan det vara svårt att identifiera om en resurs är avsedd för utveckling, testning eller produktion. "Miljö" och "produktion" är bara ett exempel. Du kan definiera hello namn och värden som gör hello bäst för att ordna din prenumeration.
+Du kan ordna Azure-resurser i kategorier genom att lägga till taggar. Varje tagg består av ett namn och ett värde. Du kan till exempel använda namnet ”Miljö” och värdet ”Produktion” för alla resurser i produktionsmiljön. Utan taggen kan det vara svårt att identifiera om en resurs är avsedd för utveckling, testning eller produktion. "Miljö" och "produktion" är bara ett exempel. Du anger de namn och värden som passar bäst för din prenumeration.
 
-När du har tillämpat taggar kan du hämta alla hello resurser i din prenumeration med samma taggnamn och värde. Taggar aktivera du tooretrieve relaterade resurser som finns i olika resursgrupper. Den här metoden är användbar när du behöver tooorganize resurser för fakturerings- eller hantering.
+När du har lagt till taggar kan du hämta alla resurserna i din prenumeration med det taggnamnet och taggvärdet. Taggarna gör att du kan hämta relaterade resurser som finns i olika resursgrupper. Den här metoden är användbar när du behöver organisera resurser för fakturering eller hantering.
 
-hello följande begränsningar gäller tootags:
+Följande begränsningar gäller för taggar:
 
-* Varje resurs eller resursgrupp kan innehålla upp till 15 taggnamn-/taggvärdepar. Den här begränsningen gäller endast tootags tillämpas direkt toohello resursgrupp eller resurs. En resursgrupp kan innehålla många resurser som var och en har 15 taggnamn-/taggvärdepar. 
-* hello taggnamn är begränsad too512 tecken och hello Taggvärdet är begränsad too256 tecken. Hello taggnamn är begränsad too128 tecken för storage-konton och hello Taggvärdet är begränsad too256 tecken.
-* Märkningar toohello resursgruppen ärvs inte av hello resurser i resursgruppen. 
-
-Om du har mer än 15 värden som du behöver tooassociate med en resurs kan du använda en JSON-sträng för hello taggvärde. hello JSON-strängen kan innehålla flera värden som är kopplade tooa enda taggnamn. Den här artikeln visar ett exempel för att tilldela en JSON-strängen toohello tagg.
+* Varje resurs eller resursgrupp kan innehålla upp till 15 taggnamn-/taggvärdepar. Den här begränsningen gäller endast för taggar som tillämpas direkt på resursgruppen eller resursen. En resursgrupp kan innehålla många resurser som var och en har 15 taggnamn-/taggvärdepar. Om du har fler än 15 värden som du vill koppla till en resurs använder du en JSON-sträng för taggvärdet. JSON-strängen kan innehålla många värden som tillämpas på ett enda taggnamn. Den här artikeln innehåller ett exempel som illustrerar hur du tilldelar en JSON-sträng till taggen.
+* Taggnamnet är begränsat till 512 tecken och taggvärdet är begränsat till 256 tecken. För lagringskonton är taggnamnet begränsat till 128 tecken och taggvärdet till 256 tecken.
+* Taggar som lagts till för en resursgrupp ärvs inte av resurserna i den resursgruppen.
+* Dessa tecken stöds inte:
+  * `<`
+  * `>`
+  * `%`
+  * `&`
+  * `\\`
+  * `?`
+  * `/`

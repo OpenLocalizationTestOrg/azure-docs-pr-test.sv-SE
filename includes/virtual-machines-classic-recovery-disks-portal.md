@@ -1,61 +1,62 @@
-Om den virtuella datorn (VM) i Azure påträffar ett fel vid start- eller disk, eventuellt tooperform felsökning i hello virtuell hårddisk sig själv. Ett vanligt exempel är en uppdatering av program med fel som förhindrar att hello VM Start har. Den här artikeln beskriver hur toouse Azure portal tooconnect din virtuella hårddisk tooanother VM toofix eventuella fel och skapa den ursprungliga virtuella datorn igen.
+Om din virtuella Azure-dator (VM) får start- eller diskproblem kan du behöva utföra felsökningssteg direkt på den virtuella hårddisken. Ett vanligt exempel är en misslyckad programuppdatering som förhindrar att den virtuella datorn startar korrekt. Den här artikeln beskriver hur du använder Azure Portal för att ansluta den virtuella hårddisken till en annan virtuell dator för att åtgärda eventuella fel och sedan återskapa den ursprungliga virtuella datorn.
+
 
 ## <a name="recovery-process-overview"></a>Översikt över återställningsprocessen
-hello felsökningsprocessen är följande:
+Så här ser felsökningsprocessen ut:
 
-1. Ta bort hello virtuell dator som det har uppstått problem, men behålla hello virtuella hårddiskar.
-2. Anslut och montera hello virtuell hårddisk tooanother VM för felsökning.
-3. Ansluta toohello felsökning VM. Redigera filer eller köra verktyg toofix fel på hello ursprungliga virtuella hårddisken.
-4. Demontera och koppla från hello virtuella hårddiskarna från hello felsökning VM.
-5. Skapa en virtuell dator med hjälp av hello ursprungliga virtuella hårddisken.
+1. Ta bort den virtuella datorn som har problem, men behåll de virtuella hårddiskarna.
+2. Anslut och montera den virtuella hårddisken på en annan virtuell dator för felsökning.
+3. Anslut till den virtuella felsökningsdatorn. Redigera filer eller kör verktyg för att åtgärda fel på den ursprungliga virtuella hårddisken.
+4. Demontera och koppla från den virtuella hårddisken från den virtuella felsökningsdatorn.
+5. Skapa en virtuell dator med hjälp av den ursprungliga virtuella hårddisken.
 
-## <a name="delete-hello-original-vm"></a>Ta bort hello ursprungliga VM
-Virtuella hårddiskar och virtuella datorer är två separata resurser i Azure. En virtuell hårddisk är där hello operativsystem, program och konfigurationer lagras. hello VM är bara metadata som definierar hello storlek eller plats och som refererar till resurser, till exempel en virtuell hårddisk eller virtuella nätverksgränssnittskortet (NIC). Varje virtuell hårddisk hämtar ett lån som tilldelas när disken är anslutna tooa VM. Även om datadiskar kan anslutas och oberoende även när hello VM körs, kan inte frånkopplas hello OS-disk om hello Virtuella datorresursen tas bort. hello lån fortsätter tooassociate hello OS disk tooa VM även om den virtuella datorn är i tillståndet stoppad och frigjord.
+## <a name="delete-the-original-vm"></a>Ta bort den ursprungliga virtuella datorn
+Virtuella hårddiskar och virtuella datorer är två separata resurser i Azure. En virtuell hårddisk är den virtuella disk där operativsystemet, program och konfigurationer lagras. Den virtuella datorn är bara metadata som definierar storleken eller platsen och som refererar till resurser, till exempel en virtuell hårddisk eller ett virtuellt nätverksgränssnittskort (NIC). Varje virtuell hårddisk tilldelas ett lån när disken kopplas till en virtuell dator. Datadiskar kan anslutas och kopplas från när den virtuella datorn körs, men operativsystemdisken kan inte kopplas från om inte den virtuella datorresursen tagits bort. Lånet fortsätter att associera operativsystemdisken med en virtuell dator även om den virtuella datorn är i stoppat eller frigjort läge.
 
-Hej första steg toorecovering den virtuella datorn är toodelete hello Virtuella datorresursen sig själv. Ta bort hello VM lämnar hello virtuella hårddiskar i ditt lagringskonto. Efter hello VM tas bort, kan du bifoga hello virtuell hårddisk tooanother VM tootroubleshoot och åtgärda hello-fel. 
+Det första steget när du återställer en virtuell dator är att ta bort den virtuella datorresursen. När du tar bort den virtuella datorn hamnar de virtuella hårddiskarna på ditt lagringskonto. När den virtuella datorn har tagits bort kan du koppla den virtuella hårddisken till en annan virtuell dator för att felsöka och lösa problemen. 
 
-1. Logga in toohello [Azure-portalen](https://portal.azure.com). 
-2. På menyn hello hello vänster **virtuella datorer (klassisk)**.
-3. Klicka på Välj hello virtuell dator som har problem med hello, **diskar**, och sedan identifiera hello namn hello virtuell hårddisk. 
-4. Välj hello OS virtuell hårddisk och kontrollera hello **plats** tooidentify hello storage-konto som innehåller den virtuella hårddisken. I följande exempel hello, hello sträng omedelbart före ”. blob.core.windows.net” är hello lagringskontonamn.
+1. Logga in på [Azure Portal](https://portal.azure.com). 
+2. Klicka på **Virtuella datorer (klassiska)** på menyn till vänster.
+3. Välj den virtuella dator där problemet har uppstått, klicka på **Diskar** och identifiera namnet på den virtuella hårddisken. 
+4. Välj den virtuella hårddisk som operativsystemet finns på och kontrollera **platsen** för att identifiera lagringskontot som innehåller den virtuella hårddisken. I följande exempel är strängen direkt före ”.blob.core.windows.net” namnet på lagringskontot.
 
     ```
     https://portalvhds73fmhrw5xkp43.blob.core.windows.net/vhds/SCCM2012-2015-08-28.vhd
     ```
 
-    ![hello bilden om Virtuella datorns plats](./media/virtual-machines-classic-recovery-disks-portal/vm-location.png)
+    ![Bild som visar den virtuella datorns plats](./media/virtual-machines-classic-recovery-disks-portal/vm-location.png)
 
-5. Högerklicka på hello VM och välj sedan **ta bort**. Kontrollera att hello diskarna inte är markerade när du tar bort hello VM.
-6. Skapa en ny virtuell återställningsdator. Den här virtuella datorn måste vara i hello samma region och resurs grupp (Molntjänsten) som hello problemet VM.
-7. Välj hello recovery VM och välj sedan **diskar** > **koppla befintliga**.
-8. tooselect befintliga virtuella hårddisken, klickar du på **VHD-filen**:
+5. Högerklicka på den virtuella datorn och välj sedan **Ta bort**. Kontrollera att diskarna inte är markerade när du tar bort den virtuella datorn.
+6. Skapa en ny virtuell återställningsdator. Den här virtuella datorn måste finnas i samma region och resursgrupp (Cloud Services) som den virtuella dator som problemet finns på.
+7. Välj den virtuella återställningsdatorn och välj sedan **Diskar** > **Koppla befintlig**.
+8. Välj din befintliga virtuella hårddisk genom att klicka på **VHD-fil**:
 
     ![Bläddra till den befintliga virtuella hårddisken](./media/virtual-machines-classic-recovery-disks-portal/select-vhd-location.png)
 
-9. Välj lagringskonto för hello > VHD-behållare > Hej virtuell hårddisk, klicka på hello **Välj** knappen tooconfirm valet.
+9. Välj lagringskontot > VHD-behållaren > den virtuella hårddisken och bekräfta valet genom att klicka på **Välj**.
 
     ![Välj din befintliga virtuella hårddisk](./media/virtual-machines-classic-recovery-disks-portal/select-vhd.png)
 
-10. Med den virtuella Hårddisken nu markerat, Välj **OK** tooattach hello befintlig virtuell hårddisk.
-11. Efter några sekunder hello **diskar** fönstret för den virtuella datorn visas en befintlig virtuell hårddisk ansluten som en datadisk:
+10. När du har valt den virtuella hårddisken väljer du **OK** för att koppla den befintliga virtuella hårddisken.
+11. Efter några sekunder visas din befintliga virtuella hårddisk ansluten som en datadisk i fönstret **Diskar** för din virtuella dator:
 
     ![Befintlig virtuell hårddisk ansluten som en datadisk](./media/virtual-machines-classic-recovery-disks-portal/attached-disk.png)
 
-## <a name="fix-issues-on-hello-original-virtual-hard-disk"></a>Åtgärda problem på hello ursprungliga virtuell hårddisk
-Du kan nu utföra eventuella underhåll och felsökning efter behov när hello befintlig virtuell hårddisk är monterad. När du har åtgärdat hello problem, fortsätter du med hello följande steg.
+## <a name="fix-issues-on-the-original-virtual-hard-disk"></a>Åtgärda problem på den ursprungliga virtuella hårddisken
+När den befintliga virtuella hårddisken har monterats kan du utföra underhålls- och felsökningssteg efter behov. När du har åtgärdat problemen fortsätter du med följande steg.
 
-## <a name="unmount-and-detach-hello-original-virtual-hard-disk"></a>Demontera och koppla från hello ursprungliga virtuella hårddisken
-När eventuella fel har åtgärdats, demontera och koppla från hello befintlig virtuell hårddisk från den virtuella datorn med felsökning. Du kan inte använda din virtuella hårddisk tillsammans med andra Virtuella förrän hello lån som kopplar hello virtuell hårddisk toohello felsökning VM släpps.  
+## <a name="unmount-and-detach-the-original-virtual-hard-disk"></a>Demontera och koppla från den ursprungliga virtuella hårddisken
+När eventuella fel har åtgärdats demonterar du och kopplar från den befintliga virtuella hårddisken från den virtuella felsökningsdatorn. Du kan inte använda den virtuella hårddisken med en annan virtuell dator förrän lånet som kopplar den virtuella hårddisken till den virtuella felsökningsdatorn har frisläppts.  
 
-1. Logga in toohello [Azure-portalen](https://portal.azure.com). 
-2. Välj på menyn hello hello vänster **virtuella datorer (klassisk)**.
-3. Leta upp hello recovery VM. Välj diskar, högerklicka på hello disk, och välj sedan **Detach**.
+1. Logga in på [Azure Portal](https://portal.azure.com). 
+2. Välj **Virtuella datorer (klassiska)** på menyn till vänster.
+3. Leta upp den virtuella återställningsdatorn. Välj Diskar, högerklicka på disken och välj sedan **Koppla från**.
 
-## <a name="create-a-vm-from-hello-original-hard-disk"></a>Skapa en virtuell dator från hello ursprungliga hårddisken
+## <a name="create-a-vm-from-the-original-hard-disk"></a>Skapa en virtuell dator från den ursprungliga hårddisken
 
-toocreate en virtuell dator från den ursprungliga virtuella hårddisken använder [klassiska Azure-portalen](https://manage.windowsazure.com).
+Så här skapar du en virtuell dator från den ursprungliga virtuella hårddisken [Azure-portalen](https://portal.azure.com).
 
-1. Logga in på [den klassiska Azure-portalen](https://manage.windowsazure.com).
-2. Längst ned hello hello portal, Välj **ny** > **Compute** > **virtuella** > **från galleriet** .
-3. I hello **Välj en bild** väljer **min diskar**, och sedan väljer hello ursprungliga virtuella hårddisken. Kontrollera hello platsinformation. Detta är hello region där hello VM måste distribueras. Välj hello nästa.
-4. I hello **konfiguration av virtuell dator** avsnittet skriver hello VM namnet och välja en storlek för hello VM.
+1. Logga in på [Azure-portalen](https://portal.azure.com).
+2. Längst upp till vänster i portalen, Välj **ny** > **Compute** > **virtuella** > **från galleriet**.
+3. Välj **My disks** (Mina diskar) i avsnittet **Choose an Image** (Välj en avbildning) och välj sedan den ursprungliga virtuella hårddisken. Kontrollera platsinformationen. Det här är den region där den virtuella datorn måste distribueras. Klicka på Nästa.
+4. I avsnittet **Konfiguration av virtuell dator** skriver du namnet på den virtuella datorn och väljer en storlek för den virtuella datorn.

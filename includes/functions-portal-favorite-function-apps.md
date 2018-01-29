@@ -1,17 +1,17 @@
-## <a name="add-function-apps-tooyour-portal-favorites"></a>Lägg till funktionen appar tooyour portal Favoriter 
+## <a name="favorite-functions-in-the-portal"></a>Favorit funktioner i portalen 
 
-Om du inte redan gjort det, kan du lägga till funktionen appar tooyour Favoriter i hello Azure-portalen. Detta gör det enklare toofind funktionen-appar. Om du redan har gjort det, kan du hoppa över toohello nästa avsnitt. 
+Om du inte redan gjort det kan du lägga till funktionsappar i dina favoriter på Azure Portal. På så sätt blir det lättare att hitta dina funktionsappar. Om du redan har gjort det här kan du hoppa till nästa avsnitt. 
 
-1. Logga in toohello [Azure-portalen](https://portal.azure.com/).
+1. Logga in på [Azure-portalen](https://portal.azure.com/).
 
-2. Klicka på hello pilen i hello nedre vänstra tooexpand alla tjänster, skriver `Functions` i hello **Filter** fält och klicka på stjärna hello bredvid för**funktionen appar**.  
+2. Klicka på pilen längst ned till vänster för att expandera alla tjänster, skriv `Functions` i fältet **Filter** och klicka sedan på stjärnan bredvid **Funktionsappar**.  
  
-    ![Skapa funktionsapp i hello Azure-portalen](./media/functions-portal-favorite-function-apps/functions-favorite-function-apps.png)
+    ![Skapa en funktionsapp i Azure Portal](./media/functions-portal-favorite-function-apps/functions-favorite-function-apps.png)
 
-    Detta lägger till hello funktioner ikonen toohello menyn hello till vänster i hello-portalen.
+    Detta gör att funktionsikonen läggs till på menyn till vänster på portalen.
 
-3. Stäng hello-menyn och sedan rullar toohello nedre toosee hello funktioner ikon. Klicka på den här ikonen toosee en lista över alla dina appar i funktionen. Klicka på din funktion app toowork med funktioner i den här appen. 
+3. Stäng menyn och bläddra ned till slutet så att du ser funktionsikonen. Klicka på ikonen för att visa alla dina funktionsappar. Klicka på funktionsappen för att arbeta med funktionerna i den här appen. 
  
-    ![](./media/functions-portal-favorite-function-apps/functions-function-apps-hub.png)
+    ![Funktionen appar i Favoriter](./media/functions-portal-favorite-function-apps/functions-function-apps-hub.png)
  
      

@@ -33,8 +33,7 @@ Ett Azure-lagringskonto innehåller lagringsutrymme för operativsystemsdisken o
 ## <a name="which-virtual-hard-disk-types-can-i-use"></a>Vilka typer av virtuella hårddiskar kan jag använda?
 Azure har bara stöd för fasta virtuella hårddiskar i VHD-format. Om du har en VHDX-disk som du vill använda i Azure måste du först konvertera den med hjälp av Hyper-V Manager eller cmdleten [convert-VHD](http://go.microsoft.com/fwlink/p/?LinkId=393656). När du har gjort det använder du cmdleten [Add-AzureVHD](https://msdn.microsoft.com/library/azure/dn495173.aspx) (i Service Management-läge) för att ladda upp VHD-disken till ett lagringskonto i Azure så att du kan använda den med virtuella datorer.
 
-* Linux-instruktioner finns i [Skapa och ladda upp en virtuell hårddisk som innehåller operativsystemet Linux](../articles/virtual-machines/linux/classic/create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
-* Windows-instruktioner finns i [Skapa och ladda upp en virtuell Windows Server-hårddisk till Azure](../articles/virtual-machines/windows/classic/createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+* Linux-instruktioner finns i [Skapa och ladda upp en virtuell hårddisk som innehåller operativsystemet Linux](../articles/virtual-machines/linux/classic/create-upload-vhd-classic.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
 
 ## <a name="are-these-virtual-machines-the-same-as-hyper-v-virtual-machines"></a>Är de här virtuella datorerna samma sak som virtuella Hyper-V-datorer?
 På många sätt liknar de virtuella Hyper-V-datorer i ”Generation 1”, men de är inte exakt samma. Båda typerna tillhandahåller virtualiserad maskinvara och de virtuella hårddiskarna i VHD-format är kompatibla. Det innebär att du kan flytta dem mellan Hyper-V och Azure. Det finns tre huvudsakliga skillnader som ibland överraskar Hyper-V-användare:
@@ -58,7 +57,7 @@ Om du har problem med Fjärrskrivbord eller SSH kan du åtgärda problemet genom
 
 Ytterligare alternativ för virtuella Windows-datorer:
 
-* Leta reda på den virtuella datorn i den klassiska Azure-portalen och klicka sedan på **Återställ fjärråtkomst** i kommandofältet.
+* Hitta den virtuella datorn i Azure-portalen och klicka sedan på **Återställ fjärråtkomst** från kommandofältet.
 * Läs [Felsöka fjärrskrivbordsanslutningar till en Windows-baserad virtuell Azure-dator](../articles/virtual-machines/windows/troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 * Använd Windows PowerShell-fjärrkommunikation för att ansluta till den virtuella datorn eller skapa ytterligare slutpunkter så att andra resurser kan ansluta till den virtuella datorn. Mer information finns i [Konfigurera slutpunkter till en virtuell dator](../articles/virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
@@ -85,7 +84,7 @@ Om du har glömt användarnamnet eller lösenordet och har installerat den virtu
 
 Ytterligare information:
 
-* För Linux-avbildningarna anges 'azureuser' som standardanvändarnamn om du använder den klassiska Azure-portalen, men du kan ändra det genom att använda 'Från galleri' i stället för 'Snabbregistrering' som sätt att skapa den virtuella datorn. Med 'Från galleri' kan du också ange om du vill använda ett lösenord, en SSH-nyckel eller båda för att logga in. Användarkontot är en icke-privilegierad användare som har 'sudo'-åtkomst att köra privilegierade kommandon. 'Root'-kontot är inaktiverat.
+* För Linux-bilder om du använder Azure portal 'azureuser' anges som en Standardanvändarnamnet, men du kan ändra detta genom att använda 'Från galleriet' i stället för ”snabbt skapa” sätt att skapa den virtuella datorn. Med 'Från galleri' kan du också ange om du vill använda ett lösenord, en SSH-nyckel eller båda för att logga in. Användarkontot är en icke-privilegierad användare som har 'sudo'-åtkomst att köra privilegierade kommandon. 'Root'-kontot är inaktiverat.
 * För Windows-avbildningar måste du ange ett användarnamn och lösenord när du skapar den virtuella datorn. Kontot läggs till i gruppen Administratörer.
 
 ## <a name="can-azure-run-anti-virus-on-my-virtual-machines"></a>Kan Azure köra antivirus på mina virtuella datorer?
@@ -96,7 +95,7 @@ Azure erbjuder flera alternativ för antiviruslösningar, men det är upp till d
 * [Distribuera lösningar för skydd mot skadlig kod i Azure Virtual Machines](https://azure.microsoft.com/blog/2014/05/13/deploying-antimalware-solutions-on-azure-virtual-machines/)
 
 ## <a name="what-are-my-options-for-backup-and-recovery"></a>Vad har jag för alternativ för säkerhetskopiering och återställning?
-Azure Backup finns som förhandsversion i vissa regioner. Mer information finns i [Säkerhetskopiera virtuella Azure-datorer](../articles/backup/backup-azure-vms.md). Det finns andra lösningar från certifierade partner. Om du vill ta reda på vad som finns för närvarande kan du söka på Azure Marketplace.
+Azure Backup finns som förhandsversion i vissa regioner. Mer information finns i [Säkerhetskopiera virtuella Azure-datorer](../articles/backup/backup-azure-arm-vms.md). Det finns andra lösningar från certifierade partner. Om du vill ta reda på vad som finns för närvarande kan du söka på Azure Marketplace.
 
 Ett ytterligare alternativ är att använda funktionerna för ögonblicksbilder för blob-lagring. Om du vill göra det måste du stänga av den virtuella datorn före en åtgärd som är beroende av en blob-ögonblicksbild. Det sparar väntande dataskrivningar och sätter filsystemet i ett konsekvent tillstånd.
 
@@ -105,7 +104,7 @@ Azure debiterar ett pris per timme baserat på storleken och operativsystemet f�
 
 Du debiteras när VM-statusen är Körs eller Stoppad, men du debiteras inte när VM-statusen är Stoppad (Avallokerad). Om du vill sätta en virtuell dator i tillståndet Stoppad (Avallokerad) gör du något av följande:
 
-* Stäng av eller ta bort den virtuella datorn från den klassiska Azure-portalen.
+* Stänga av eller ta bort den virtuella datorn från Azure-portalen.
 * Använd cmdleten Stop-AzureVM, som finns i Azure PowerShell-modulen.
 * Använd åtgärden för att stänga av roll i Service Management REST-API:t och ange StoppedDeallocated för PostShutdownAction-elementet.
 
@@ -118,7 +117,7 @@ Oplanerade underhållshändelser kan inträffa när Azure upptäcker ett allvarl
 
 För en fristående virtuell dator (vilket innebär att den virtuella datorn inte ingår i en tillgänglighetsuppsättning) meddelar Azure prenumerationens tjänstadministratör via e-post minst en vecka före planerat underhåll eftersom de virtuella datorerna kan startas om under uppdateringen. Program som körs på de virtuella datorerna kan råka ut för avbrott.
 
-Du kan också använda den klassiska Azure-portalen eller Azure PowerShell för att visa omstartsloggarna när omstarten inträffat på grund av planerat underhåll. Mer information finns i [Visa VM-omstartsloggar](https://azure.microsoft.com/blog/2015/04/01/viewing-vm-reboot-logs/).
+Du kan också använda Azure-portalen eller Azure PowerShell om du vill visa omstart loggar när omstarten uppstod på grund av planerat underhåll. Mer information finns i [Visa VM-omstartsloggar](https://azure.microsoft.com/blog/2015/04/01/viewing-vm-reboot-logs/).
 
 För redundans kan du placera två eller flera virtuella datorer med liknande konfiguration i samma tillgänglighetsuppsättning. På så sätt ser du till att minst en virtuell dator är tillgänglig under planerat eller oplanerat underhåll. Azure garanterar vissa nivåer av VM-tillgänglighet för den här konfigurationen. Mer information finns i [Hantera tillgängligheten av virtuella datorer](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 

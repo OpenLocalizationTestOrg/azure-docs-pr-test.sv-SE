@@ -1,0 +1,41 @@
+- name: Dokumentation om Azure Policy
+  href: index.yml
+- name: Översikt
+  items:
+    - name: Översikt över Azure Policy
+      href: azure-policy-introduction.md
+- name: Snabbstarter
+  expanded: true
+  items:
+    - name: Tilldela en princip – Portal
+      href: assign-policy-definition.md
+    - name: Tilldela en princip – PowerShell
+      href: assign-policy-definition-ps.md
+    - name: Tilldela en princip – Azure CLI
+      href: assign-policy-definition-cli.md
+- name: Självstudier
+  items:
+    - name: Skapa och hantera Azure Policy
+      href: create-manage-policy.md
+- name: Exempel
+  items:
+    - name: Principmallar
+      href: json-samples.md
+- name: Koncept
+  items:
+    - name: Azure Policy-definitionsstruktur
+      href: policy-definition.md
+- name: Referens
+  items:
+    - name: Azure CLI
+      href: /cli/azure/policy
+    - name: Azure PowerShell
+      href: '/powershell/module/azurerm.resources/#policies'
+- name: Resurser
+  items:
+    - name: Azure-översikt
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Prissättning
+      href: 'https://azure.microsoft.com/pricing/details/azure-policy/'
+    - name: Priskalkylator
+      href: 'https://azure.microsoft.com/pricing/calculator/'

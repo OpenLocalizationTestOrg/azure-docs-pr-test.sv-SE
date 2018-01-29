@@ -1,25 +1,25 @@
 
-1. Hej MainPage.xaml.cs projektfilen, lägga till följande hello **med** instruktioner:
+1. Lägg till följande i filen MainPage.xaml.cs projekt **med** instruktioner:
    
         using System.Linq;        
         using Windows.Security.Credentials;
-2. Ersätt hello **AuthenticateAsync** metod med hello följande kod:
+2. Ersätt den **AuthenticateAsync** metod med följande kod:
    
         private async System.Threading.Tasks.Task<bool> AuthenticateAsync()
         {
             string message;
             bool success = false;
    
-            // This sample uses hello Facebook provider.
+            // This sample uses the Facebook provider.
             var provider = MobileServiceAuthenticationProvider.Facebook;
    
-            // Use hello PasswordVault toosecurely store and access credentials.
+            // Use the PasswordVault to securely store and access credentials.
             PasswordVault vault = new PasswordVault();
             PasswordCredential credential = null;
    
             try
             {
-                // Try tooget an existing credential from hello vault.
+                // Try to get an existing credential from the vault.
                 credential = vault.FindAllByResource(provider.ToString()).FirstOrDefault();
             }
             catch (Exception)
@@ -29,15 +29,15 @@
    
             if (credential != null)
             {
-                // Create a user from hello stored credentials.
+                // Create a user from the stored credentials.
                 user = new MobileServiceUser(credential.UserName);
                 credential.RetrievePassword();
                 user.MobileServiceAuthenticationToken = credential.Password;
    
-                // Set hello user from hello stored credentials.
+                // Set the user from the stored credentials.
                 App.MobileService.CurrentUser = user;
    
-                // Consider adding a check toodetermine if hello token is 
+                // Consider adding a check to determine if the token is 
                 // expired, as shown in this post: http://aka.ms/jww5vp.
    
                 success = true;
@@ -47,11 +47,11 @@
             {
                 try
                 {
-                    // Login with hello identity provider.
+                    // Login with the identity provider.
                     user = await App.MobileService
-                        .LoginAsync(provider);
+                        .LoginAsync(provider, "{url_scheme_of_your_app}");
    
-                    // Create and store hello user credentials.
+                    // Create and store the user credentials.
                     credential = new PasswordCredential(provider.ToString(),
                         user.UserId, user.MobileServiceAuthenticationToken);
                     vault.Add(credential);
@@ -72,13 +72,13 @@
             return success;
         }
    
-    I den här versionen av **AuthenticateAsync**, hello app försöker toouse autentiseringsuppgifter lagras i hello **PasswordVault** tooaccess hello service. En vanlig inloggning också utförs när det finns inga lagrade autentiseringsuppgifter.
+    I den här versionen av **AuthenticateAsync**, appen försöker använda autentiseringsuppgifter som lagras i den **PasswordVault** komma åt tjänsten. En vanlig inloggning också utförs när det finns inga lagrade autentiseringsuppgifter.
    
    > [!NOTE]
-   > En cachelagrad token kan ha gått och token upphör att gälla kan även uppstå efter autentisering när hello appen används. hur toodetermine om en token har upphört att gälla, se toolearn [söka efter utgångna autentiseringstoken](http://aka.ms/jww5vp). En lösning toohandling auktorisering fel relaterade tooexpiring token finns hello efter [cachelagring och hantering av utgångna token i Azure Mobile Services hanteras SDK](http://blogs.msdn.com/b/carlosfigueira/archive/2014/03/13/caching-and-handling-expired-tokens-in-azure-mobile-services-managed-sdk.aspx). 
+   > En cachelagrad token kan ha gått och token upphör att gälla kan även uppstå efter autentisering när appen används. Information om hur du avgör om en token har upphört att gälla finns [söka efter utgångna autentiseringstoken](http://aka.ms/jww5vp). En lösning för att hantera auktorisering fel som rör token upphör att gälla, finns i inlägg [cachelagring och hantering av utgångna token i Azure Mobile Services hanteras SDK](http://blogs.msdn.com/b/carlosfigueira/archive/2014/03/13/caching-and-handling-expired-tokens-in-azure-mobile-services-managed-sdk.aspx). 
    > 
    > 
-3. Starta om hello app två gånger.
+3. Starta om appen.
    
-    Observera att på hello första start, logga in med hello-providern krävs igen. Men på hello andra omstarten hello cachelagrade autentiseringsuppgifter som ska användas och logga in kringgås. 
+    Observera att på första start, logga in med providern krävs igen. Dock på andra omstarten cachelagrade autentiseringsuppgifter används och logga in kringgås. 
 

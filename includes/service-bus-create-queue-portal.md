@@ -1,17 +1,17 @@
 Se till att du redan har skapat ett Service Bus-namnområde så som det visas [här][namespace-how-to].
 
-1. Logga in toohello [Azure-portalen][azure-portal].
-2. Hello vänstra navigeringsfönstret hello-portalen, klicka på **Service Bus** (om du inte ser **Service Bus**, klickar du på **fler tjänster**).
-3. Klicka på hello-namnområde som du vill att toocreate hello kön. I det här fallet är det **nstest1**.
+1. Logga in på [Azure portal][azure-portal].
+2. I det vänstra navigeringsfönstret i portalen klickar du på **Service Bus** (om du inte ser **Service Bus** klickar du på **More services** (Fler tjänster)).
+3. Klicka på det namnområde du vill skapa kön i. I det här fallet är det **sbnstest1**.
    
     ![Skapa en kö][createqueue1]
-4. I hello **Service Bus-namnrymd** bladet väljer **köer**, klicka på **Lägg till kön**.
+4. I namnområdesfönstret klickar du på **Köer**. I fönstret **Köer** klickar du sedan på **+ Kö**.
    
     ![Välj köer][createqueue2]
-5. Ange hello **könamnet** och lämna hello andra värden med standardvärden.
+5. Ange ett **namn** för kön och lämna de andra värdena med standardvärdena.
    
     ![Välj ny][createqueue3]
-6. Hello längst ned på hello-bladet, klickar du på **skapa**.
+6. Klicka på **Skapa** längst ned i fönstret.
 
 [createqueue1]: ./media/service-bus-create-queue-portal/create-queue1.png
 [createqueue2]: ./media/service-bus-create-queue-portal/create-queue2.png

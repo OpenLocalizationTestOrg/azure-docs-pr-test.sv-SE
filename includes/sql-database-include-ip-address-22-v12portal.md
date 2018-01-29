@@ -4,36 +4,43 @@ includes/sql-database-include-ip-address-22-v12portal.md
 
 Latest Freshness check:  2016-03-21 , daleche.
 
-As of circa 2015-09-04, hello following topics might include this include:
+As of circa 2015-09-04, the following topics might include this include:
 articles/sql-database/sql-database-configure-firewall-settings.md
 articles/sql-database/sql-database-connect-query.md
 
 
 ## Server-level firewall rules
 
-### Add a server-level firewall rule through hello new Azure portal
+### Add a server-level firewall rule through the new Azure portal
 -->
 
 
-1. Logga in toohello [Azure-portalen](https://portal.azure.com/) på http://portal.azure.com/.
-2. I hello vänstra banderoll, klickar du på **Bläddra bland alla**. Hej **Bläddra** bladet visas.
-3. Bläddra och klicka på **SQL-servrar**. Hej **SQL-servrar** bladet visas.
+1. Logga in på [Azure Portal](https://portal.azure.com/).
+
+2. Välj i listan till vänster **Bläddra**. 
+
+3. Bläddra och välj **SQL-servrar**. 
    
-    ![Hitta din Azure SQL Database-server i hello-portalen][b21-FindServerInPortal]
-4. För enkelhetens skull klickar du på hello minimera kontrollen i hello tidigare **Bläddra** bladet.
-5. Börja skriva hello namnet på din server hello-filtret i textrutan. Raden visas.
-6. Klicka på hello rad för servern. Ett blad för servern visas.
-7. Klicka på din server-bladet **inställningar**. Hej **inställningar** bladet visas.
-8. Klicka på **brandväggen**. Hej **brandväggsinställningar** bladet visas.
+    ![Hitta din Azure SQL Database-server i portalen][b21-FindServerInPortal]
+4. Av praktiska skäl kan minimera den **Bläddra** bladet.
+
+5. Börja skriva namnet på servern i filter-textrutan. Raden visas.
+
+6. Välj raden för servern. Ett blad för servern visas.
+
+7. På din server-bladet välj **inställningar**. 
+
+8. Välj **brandväggen**. 
    
-    ![Klicka på Inställningar > brandväggen][b31-SettingsFirewallNavig]
-9. Klicka på **Lägg till klient IP**. Ange ett namn för den nya regeln till hello första textrutan.
-10. Typen i hello låg och hög IP-adressen värden för hello-intervall som du vill tooenable.
+    ![Välj Inställningar > brandväggen][b31-SettingsFirewallNavig]
+9. Välj **Lägg till klient IP**. Ange ett namn för din nya regel i den första textrutan.
+
+10. Ange de lägsta och högsta IP-adressvärdena för intervallet som du vill aktivera.
     
-    * Det kan vara praktisk toohave hello lågt värde för end med **.0** och hello hög med **.255**.
+    * Det kan vara praktiskt att ha lågt värde för end med **.0** och högt värde avslutas med **.255**.
     
-    ![Lägg till en IP-adressintervallet tooallow][b41-AddRange]
-11. Klicka på **Spara**.
+    ![Lägg till ett IP-adressintervall för att tillåta][b41-AddRange]
+11. Välj **Spara**.
 
 <!-- Image references. -->
 

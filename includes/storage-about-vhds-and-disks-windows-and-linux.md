@@ -1,15 +1,15 @@
 
 ## <a name="about-vhds"></a>Om virtuella hårddiskar
 
-hello virtuella hårddiskar som används i Azure är VHD-filer som lagras som sidblobbar i en standard- eller premium storage-konto i Azure. Mer information om sidblobar finns [Understanding block blobs and page blobs](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs/) (Förstå blockblobar och sidblobar). Mer information om premium-lagring finns i [High-performance premium storage and Azure VMs](../articles/storage/common/storage-premium-storage.md) (Premium-lagring och virtuella Azure-datorer med hög prestanda).
+De virtuella hårddiskarna i Azure är .vhd-filer som lagras som sidblobar i standard- eller premium-lagringskonton i Azure. Mer information om sidblobar finns [Understanding block blobs and page blobs](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs/) (Förstå blockblobar och sidblobar). Mer information om premium-lagring finns i [High-performance premium storage and Azure VMs](../articles/virtual-machines/windows/premium-storage.md) (Premium-lagring och virtuella Azure-datorer med hög prestanda).
 
-Azure stöder hello fast disk VHD-format. hello fast format skapar hello logisk disk ut linjärt i hello-fil, så att disken förskjutningen X lagras på blob-offset X. En liten sidfot hello slutet av hello blob beskriver hello egenskaper för hello VHD. Ofta slösar hello fast format utrymme eftersom de flesta diskar med stora oanvända intervall i. Dock Azure lagrar VHD-filer i en sparse-format så får du hello fördelarna med båda hello fast och dynamiska diskar på hello samma tid. Mer information finns i [Komma igång med virtuella hårddiskar](https://technet.microsoft.com/library/dd979539.aspx).
+Azure stöder det fasta formatet för virtuella hårddiskar (VHD). Det fasta format lägger ut den logiska disken linjärt i filen så att diskförskjutning X lagras vid blob-förskjutning X. En liten sidfot i slutet av bloben beskriver den virtuella hårddiskens egenskaper. Det fasta formatet slösar ofta med utrymme eftersom de flesta diskar har stora utrymmen som är oanvända. Men Azure lagrar .vhd-filer i ett begränsat format så att du kan dra nytta av fördelarna med både fasta och dynamiska diskar på samma gång. Mer information finns i [Komma igång med virtuella hårddiskar](https://technet.microsoft.com/library/dd979539.aspx).
 
-Alla VHD-filer i Azure som du vill toouse som en källa toocreate diskar eller avbildningar är skrivskyddade. När du skapar en disk eller avbildning gör Azure kopior av hello VHD-filer. Dessa kopior kan vara skrivskyddade eller och-skrivskyddad, beroende på hur du använder hello VHD.
+VHD-filer i Azure som du vill använda som källa för att skapa diskar eller avbildningar är skrivskyddade, utom VHD-filer har överförts eller kopieras till Azure-lagring av användaren (som kan vara skrivskyddad eller skrivskyddad). När du skapar en disk eller avbildning gör Azure kopior av källan VHD-filer. Dessa kopior kan vara skrivskyddade eller läs och skriv, beroende på hur du använder den virtuella hårddisken.
 
-När du skapar en virtuell dator från en avbildning skapar Azure en disk för hello virtuell dator som är en kopia av hello käll-VHD-filen. tooprotect oavsiktlig borttagning Azure placerar ett lån på alla käll-VHD-filen som har använt toocreate en bild, en operativsystemdisk eller en datadisk.
+När du skapar en virtuell dator från en avbildning skapar Azure en disk för den virtuella datorn som är en kopia av .vhd-filen som används som källa. För att skydda dig mot att du råkar radera dem av misstag placerar Azure en livslängd på alla .vhd-filer som används som källor för att skapa en avbildning, en operativsystemdisk eller en datadisk.
 
-Innan du kan ta bort en käll-VHD-filen måste tooremove hello lån genom att ta bort hello disk eller avbildningen. toodelete en VHD-fil som används av en virtuell dator som en operativsystemdisk, du kan ta bort hello virtuell dator och hello operativsystemdisk hello käll-VHD-filen på en gång genom att ta bort hello virtuella datorn och ta bort alla associerade diskar. Men det krävs att du genomför ett antal steg i en viss ordning för att ta bort en .vhd-fil som är en källa för en datadisk. Först du koppla från hello disk från hello virtuell dator och sedan ta bort hello disken och ta sedan bort hello VHD-filen.
+Innan du kan ta bort en .vhd-fil som används som källa måste du ta bort livslängden genom att ta bort disken eller avbildningen. Om du vill ta bort en .vhd-fil som används av en virtuell dator som en operativsystemdisk kan du ta bort den virtuella datorn, operativsystemdisken, och .vhd-filen som används som källa på en gång genom att ta bort den virtuella datorn och alla associerade diskar. Men det krävs att du genomför ett antal steg i en viss ordning för att ta bort en .vhd-fil som är en källa för en datadisk. Först kopplar du bort disken från den virtuella datorn, sedan tar du bort disken och sist tar du bort .vhd-filen.
 
 > [!WARNING]
 > Om du tar bort en .vhd-fil som används som källa från lagringen eller tar bort ditt lagringskonto kan Microsoft inte återställa dessa data åt dig.
@@ -26,27 +26,27 @@ Det finns två prestandanivåer för lagring som du kan välja när du skapar di
 
 Standard Storage stöds av hårddiskar och levererar kostnadseffektiv lagring samtidigt som det är högpresterande. Standard Storage kan replikeras lokalt i ett datacenter eller vara geo-redundant med primära och sekundära datacenter. Mer information om lagringsreplikeringsalternativ finns i [Azure Storage-replikering](../articles/storage/common/storage-redundancy.md). 
 
-Mer information om hur du använder Standard Storage med VM-diskar finns i [Standard Storage and Disks](../articles/storage/common/storage-standard-storage.md) (Standard Storage och diskar).
+Mer information om hur du använder Standard Storage med VM-diskar finns i [Standard Storage and Disks](../articles/virtual-machines/windows/standard-storage.md) (Standard Storage och diskar).
 
 ### <a name="premium-storage"></a>Premium Storage 
 
-Premium Storage stöds av solid state-hårddiskar och levererar högpresterande disksupport med låg fördröjning för virtuella datorer som kör I/O-intensiva arbetsbelastningar. Du kan använda Premium-lagring med DS, DSv2, GS, Ls eller FS serien Azure virtuella datorer. Mer information finns i [Premium Storage](../articles/storage/common/storage-premium-storage.md).
+Premium Storage stöds av solid state-hårddiskar och levererar högpresterande disksupport med låg fördröjning för virtuella datorer som kör I/O-intensiva arbetsbelastningar. Du kan använda Premium-lagring med DS, DSv2, GS, Ls eller FS serien Azure virtuella datorer. Mer information finns i [Premium Storage](../articles/virtual-machines/windows/premium-storage.md).
 
 ### <a name="unmanaged-disks"></a>Ohanterade diskar
 
-Ohanterad diskar är hello vanlig typ av diskar som har använts av virtuella datorer. Med dessa kan du skapa egna storage-konto och ange detta lagringskonto när du skapar hello disk. Du har för många diskar inte placera toomake hello samma lagringskonto, eftersom du kan överskrida hello [skalbarhetsmål](../articles/storage/common/storage-scalability-targets.md) av hello lagringskonto (20 000 IOPS, till exempel), vilket resulterar i hello VMs begränsas. Med ohanterad diskar har toofigure ut hur toomaximize hello användning av en eller flera konton tooget hello bästa lagringsprestanda utanför din virtuella dator.
+Ohanterade diskar är den traditionella typen av diskar som används av virtuella datorer. Med dem kan du skapa ett eget lagringskonto och ange det lagringskontot när du skapar disken. Du måste se till att du inte lägger till för många diskar i samma lagringskonto eftersom du kan överskrida lagringskontots [skalbarhetsmål](../articles/storage/common/storage-scalability-targets.md) (20 000 IOPS, till exempel), vilket resulterar i att de virtuella datorerna begränsas. Du måste lista ut hur du optimerar användningen av en eller flera lagringskonton för att få ut den bästa prestandan av dina virtuella datorer med ohanterade diskar.
 
 ### <a name="managed-disks"></a>Hanterade diskar 
 
-Hanterade diskar handtag hello lagring utgör skapande och hantering i hello bakgrund och garanterar att du inte har tooworry om hello skalbarhetsbegränsningar av hello storage-konto. Du bara ange hello diskstorleken och hello prestandanivån (Standard/Premium) och Azure skapar och hanterar hello disk åt dig. Även om du lägger till diskar eller skala upp eller ned hello VM, kan du inte har tooworry om hello lagring som används. 
+Managed Disks hanterar skapandet/hanterandet av lagringskontot i bakgrunden och säkerställer att du inte behöver bekymra dig om lagringskontots skalbarhetsgränser. Du anger bara diskens storlek och prestandanivå (Standard/Premium) så skapar och hanterar Azure disken åt dig. Även om du lägger till diskar eller skalar upp eller ned den virtuella datorn behöver du inte oroa dig om lagringsutrymmet som används. 
 
-Du kan också hantera egna, anpassade avbildningar i ett lagringskonto per Azure-region och använda dem toocreate hundratals för virtuella datorer i hello samma prenumeration. Mer information om hanterade diskar finns hello [översikt för hanterade diskar](../articles/virtual-machines/windows/managed-disks-overview.md).
+Du kan även hantera dina anpassade avbildningar i ett lagringskonto per Azure-region och använda dem för att skapa hundratals virtuella datorer i samma prenumeration. Mer information om Managed Disks finns i [Översikt över Azure Managed Disks](../articles/virtual-machines/windows/managed-disks-overview.md).
 
-Vi rekommenderar att du använder Azure hanterade diskar för nya virtuella datorer och att du konverterar tidigare ohanterade diskar toomanaged diskarna, tootake nytta av hello många funktioner som är tillgängliga i hanterade diskar.
+Vi rekommenderar att du använder Azure Managed Disks för nya virtuella datorer och att du konverterar tidigare ohanterade diskar till hanterade diskar för att dra nytta av de många funktionerna som finns i Managed Disks.
 
 ### <a name="disk-comparison"></a>Diskjämförelse
 
-hello följande tabell innehåller en jämförelse av Premium vs Standard för både ohanterade och hanterade diskar toohelp du bestämma vilka toouse.
+Följande tabell innehåller en jämförelse av Premium och Standard för både ohanterade och hanterade diskar, för att hjälpa dig att avgöra vad som passar dig bäst.
 
 |    | Azure Premium-disk | Azure Standard-disk |
 |--- | ------------------ | ------------------- |

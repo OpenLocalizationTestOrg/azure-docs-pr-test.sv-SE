@@ -1,2 +1,2 @@
 >[!Note]
-> Vi rekommenderar att du använder ett Azure Storage-konto när du utvecklar lokalt. Användning av hello Azure Storage-emulatorn stöds inte av Azure Functions verktyg.
+> Funktionen appen kan använda Azure Storage-emulatorn för den **AzureWebJobsStorage** och **AzureWebJobsDashboard** anslutningsinställningar som krävs av projektet. Ange värdena för dessa nycklar till om du vill använda emulatorn `UseDevelopmentStorage=true`. 

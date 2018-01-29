@@ -1,11 +1,11 @@
-Skapa en resursgrupp med hello [az gruppen skapa](/cli/azure/group#create) kommando.
+Skapa en resursgrupp i Cloud Shell med kommandot [az group create](/cli/azure/group?view=azure-cli-latest#az_group_create).
 
 [!INCLUDE [resource group intro text](resource-group.md)]
 
-hello följande exempel skapar en resursgrupp med namnet *myResourceGroup* i hello *westeurope* plats.
+I följande exempel skapas en resursgrupp med namnet *myResourceGroup* på platsen *Europa, västra*. Om du vill se alla stöds platser för Apptjänst, kör den `az appservice list-locations` kommando.
 
 ```azurecli-interactive
-az group create --name myResourceGroup --location westeurope
+az group create --name myResourceGroup --location "West Europe"
 ```
 
-Du vanligtvis skapa resurs grupp och hello resurser i en region nära dig. toosee alla stöds platser för Azure Web Apps kör hello `az appservice list-locations` kommando. 
+Du skapar vanligtvis din resursgrupp och resurserna i en region nära dig. 

@@ -4,7 +4,7 @@ description: "Hur du skapar ett webb-API för Node.js som accepterar token från
 services: active-directory-b2c
 documentationcenter: 
 author: dstrockis
-manager: mbaldwin
+manager: mtillman
 editor: 
 ms.assetid: fc2b9af8-fbda-44e0-962a-8b963449106a
 ms.service: active-directory-b2c
@@ -14,11 +14,11 @@ ms.devlang: javascript
 ms.topic: hero-article
 ms.date: 01/07/2017
 ms.author: xerners
-ms.openlocfilehash: 6480be75c314ede1b786e959a79c0385dd2edea8
-ms.sourcegitcommit: 73f159cdbc122ffe42f3e1f7a3de05f77b6a4725
-ms.translationtype: MT
+ms.openlocfilehash: 3a0249f2f7dfd76d89cbf497376f53fe06c250c3
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="azure-ad-b2c-secure-a-web-api-by-using-nodejs"></a>Azure AD B2C: Säkra ett webb-API med Node.js
 <!-- TODO [AZURE.INCLUDE [active-directory-b2c-devquickstarts-web-switcher](../../includes/active-directory-b2c-devquickstarts-web-switcher.md)]-->
@@ -35,7 +35,7 @@ Med Azure Active Directory (Active AD) B2C kan du skydda ett webb-API med hjälp
 Om du vill göra det här exemplet måste du:
 
 1. Registrera ett program med Azure AD.
-2. Ställa in så att programmet använder plugin-programmet för Passport `azure-ad-passport`.
+2. Ställa in så att programmet använder plugin-programmet för Passport `passport-azure-ad`.
 3. Konfigurera ett klientprogram att anropa ett webb-API för ”uppgiftslistan”.
 
 ## <a name="get-an-azure-ad-b2c-directory"></a>Skaffa en Azure AD B2C-katalog
@@ -48,8 +48,6 @@ Därefter måste du skapa en app i B2C-katalogen som ger Azure AD information so
 * Ange `http://localhost/TodoListService` som en **Reply URL**. Den är standard-URL:en för det här kodexemplet.
 * Skapa en **programhemlighet** för programmet och kopiera den. Du behöver dessa data senare. Tänk på att det här värdet måste ha [ett XM-escape-tecken](https://www.w3.org/TR/2006/REC-xml11-20060816/#dt-escape) innan du använder det.
 * Kopiera **program-ID:t** som har tilldelats din app. Du behöver dessa data senare.
-
-[!INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
 
 ## <a name="create-your-policies"></a>Skapa principer
 I Azure AD B2C definieras varje användarupplevelse av en [princip](active-directory-b2c-reference-policies.md). Det här programmet innehåller två identitetsupplevelser: registrera sig och logga in. Du måste skapa en princip av varje typ. Mer information finns i [referensartikeln om principer](active-directory-b2c-reference-policies.md#create-a-sign-up-policy).  Tänk på följande när du skapar dina tre principer:

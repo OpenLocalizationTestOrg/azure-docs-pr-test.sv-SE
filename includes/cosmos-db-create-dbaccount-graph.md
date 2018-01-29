@@ -1,31 +1,27 @@
-1. Ett nytt fönster och logga in toohello [Azure-portalen](https://portal.azure.com/).
-2. Hello vänster klickar du på **ny**, klickar du på **databaser**, och sedan under **Azure Cosmos DB**, klickar du på **skapa**.
+1. Ett nytt fönster i webbläsaren, logga in på [Azure-portalen](https://portal.azure.com/).
+
+2. Klicka på **nya** > **databaser** > **Cosmos Azure DB**.
    
-   ![Azure Portal databasfönstret](./media/cosmos-db-create-dbaccount-graph/create-nosql-db-databases-json-tutorial-1.png)
+   ![Azure portal ”-databaser fönstret](./media/cosmos-db-create-dbaccount-graph/create-nosql-db-databases-json-tutorial-1.png)
 
-3. I hello **nytt konto** bladet anger hello-konfiguration som du vill använda för det här kontot i Azure Cosmos DB. 
-
-    Med Azure Cosmos DB kan du välja någon av fyra programmeringsmodeller: Gremlin (graf), MongoDB, SQL (DocumentDB) och Tabell (nyckelvärde), som var och en kräver ett separat konto.
-       
-    I den här artikeln Snabbkurs, vi programmerar mot hello Graph API, så Välj **Gremlin (diagram)** som du anger i hello formulär. Om du har dokumentdata från en katalogapp, nyckelvärdedata (tabell) eller data som har migrerats från en MongoDB-app ska du tänka på att Azure Cosmos DB kan tillhandahålla en mycket tillgänglig, globalt distribuerad databastjänstplattform för alla dina verksamhetskritiska program.
-
-    Hello fält på hello **nytt konto** bladet med hello information i hello följande skärmbild som guide - värdena kan skilja sig hello värden i hello skärmbild.
- 
-    ![hello nytt kontoblad för Azure Cosmos DB](./media/cosmos-db-create-dbaccount-graph/create-nosql-db-databases-json-tutorial-2.png)
+3. I den **nytt konto** anger du inställningarna för det nya kontot i Azure Cosmos DB. 
 
     Inställning|Föreslaget värde|Beskrivning
     ---|---|---
-    ID|*Unikt värde*|Ett unikt namn du väljer för att identifiera Azure Cosmos DB-kontot. Eftersom *documents.azure.com* är tillagda toohello ID som du anger toocreate URI: N, Använd en unik men identifierbar-ID. hello-ID måste innehålla endast små bokstäver, siffror och hello bindestreck (-) och det måste innehålla från 3 too50 tecken.
-    API|Gremlin (graf)|Vi programmerar mot hello [Graph API](../articles/cosmos-db/graph-introduction.md) senare i den här artikeln.|
-    Prenumeration|*Din prenumeration*|hello Azure-prenumeration som du vill toouse för det här kontot i Azure Cosmos DB. 
-    Resursgrupp|*hello samma värde som ID*|hello namn på ny resursgrupp för ditt konto. För enkelhetens skull kan du använda hello samma namn som ditt ID. 
-    Plats|*hello region närmaste tooyour användare*|Hej geografisk plats i vilka toohost Azure DB som Cosmos-konto. Välj hello plats närmaste tooyour användare toogive dem hello snabbast åtkomst toohello data.
+    ID|*Ange ett unikt namn*|Ange ett unikt namn som identifierar det här kontot i Azure Cosmos DB. Eftersom*documents.azure.com* läggs till det ID du anger för att skapa din URI ska du använda ett unikt men identifierbart ID.<br><br>Ditt id får bara innehålla gemener, siffror och bindestreck och måste innehålla mellan 3 och 50 tecken.
+    API|Gremlin (graf)|API: et avgör vilken typ av konto för att skapa. Azure Cosmos-DB innehåller fem-API: er som passar bäst för ditt program: SQL (dokumentdatabasen), Gremlin (graph-databas), MongoDB (dokumentdatabasen), Azure Table och Cassandra, varje som för närvarande kräver ett särskilt konto. <br><br>Välj **Gremlin (diagram)** eftersom denna Snabbstart du skapar ett diagram som är frågbar med Gremlin syntax.<br><br>[Mer information om Graph-API](../articles/cosmos-db/graph-introduction.md)
+    Prenumeration|*Din prenumeration*|Välj Azure-prenumeration som du vill använda för det här kontot i Azure Cosmos DB. 
+    Resursgrupp|*Ange samma unika namn som anges ovan i ID: T*|Ange ett nytt resursgrupp namn för ditt konto. För enkelhetens skull kan du använda samma namn som för ditt ID. 
+    Plats|*Välj regionen som är närmast dina användare*|Välj geografisk plats som värd för ditt Azure DB som Cosmos-konto. Använd den plats som är närmast dina användare att ge dem snabbast åtkomst till data.
+    Aktivera geo-redundans| Lämna tomt | Detta skapar en replikerad version av databasen i en region för andra (parad). Lämna tomt.  
+    Fäst vid instrumentpanelen | Välj | Markera den här kryssrutan så att ditt nya konto har lagts till på portalen instrumentpanelen för enkel åtkomst.
 
-4. Klicka på **skapa** toocreate hello-konto.
-5. Hello på hello översta verktygsfältet **meddelanden** ikonen ![hello meddelandeikonen](./media/cosmos-db-create-dbaccount-graph/notification-icon.png) toomonitor hello distributionsprocessen.
+    Klicka sedan på **Skapa**.
 
-    ![hello Azure portal meddelanden fönstret](./media/cosmos-db-create-dbaccount-graph/notification.png)
+    ![Det nya kontobladet för Azure Cosmos DB](./media/cosmos-db-create-dbaccount-graph/create-nosql-db-databases-json-tutorial-2.png)
 
-6.  När hello meddelanden visar hello distribution har slutförts, Stäng hello meddelandefönstret och öppna hello nytt konto från hello **alla resurser** panelen på hello instrumentpanelen. 
+4. Skapa konto tar några minuter. När kontot skapas i portalen visas den **distribuerar Azure Cosmos DB** panelen till höger kan du behöva rulla åt höger på instrumentpanelen för att se panelen. Det finns också en förloppsindikator som visas längst upp på skärmen. Du kan titta på antingen området för pågår.
 
-    ![DocumentDB-konto på hello panelen alla resurser](./media/cosmos-db-create-dbaccount-graph/azure-documentdb-all-resources.png)
+    ![Meddelandefönstret i Azure-portalen](./media/cosmos-db-create-dbaccount-graph/deploying-cosmos-db.png)
+
+    När kontot har skapats kan den **Grattis! Azure DB som Cosmos-kontot skapades** visas. 
