@@ -1,9 +1,9 @@
 <!--author=SharS last changed: 9/16/15-->
 
-#### <a name="toodelete-a-volume-container"></a>toodelete en volymbehållare
-1. På hello **enheter** sidan Välj hello enheten, dubbelklicka på den, och klicka sedan på hello **volymbehållare** fliken.
-2. Välj hello volymbehållare som du vill toodelete.
-3. Om en volymbehållare har ingen associerad volymer kan tas bort. Klicka på **ta bort** på hello längst ned på hello sidan toodelete den här behållaren. Klicka på **Ja** när du uppmanas att bekräfta åtgärden. Detta tar bort hello volymbehållare.
+#### <a name="to-delete-a-volume-container"></a>Ta bort en volymbehållare
+1. På den **enheter** sidan, Välj enheten, dubbelklicka på den och klicka sedan på den **volymbehållare** fliken.
+2. Välj volymbehållare som du vill ta bort.
+3. Om en volymbehållare har ingen associerad volymer kan tas bort. Klicka på **ta bort** längst ned på sidan för att ta bort den här behållaren. Klicka på **Ja** när du uppmanas att bekräfta åtgärden. Detta tar bort volymbehållaren.
 
-Om hello volymbehållare har associerade volymer, kommer måste du först tootake volymerna offline genom att följa stegen hello i [kopplar från en volym](../articles/storsimple/storsimple-manage-volumes.md#take-a-volume-offline). När hello volymer är offline kan du ta bort dem. När hello volymbehållare har ingen associerad volymer, ta bort hello volymbehållare enligt beskrivningen ovan.
+Om volymbehållaren har associerade volymer, måste du först ta volymerna offline genom att följa stegen i [kopplar från en volym](../articles/storsimple/storsimple-manage-volumes.md#take-a-volume-offline). När volymerna som är offline kan du ta bort dem. När volymbehållaren har ingen associerad volymer, ta bort volymbehållaren som beskrivs ovan.
 
