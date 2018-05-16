@@ -1,3 +1,0 @@
-## <a name="whats-changed"></a><span data-ttu-id="12c42-101">Nyheter</span><span class="sxs-lookup"><span data-stu-id="12c42-101">What's changed</span></span>
-* <span data-ttu-id="12c42-102">En guide toohello övergången från webbplatser tooApp tjänsten finns: [Azure App Service och dess påverkan på befintliga Azure-tjänster](http://go.microsoft.com/fwlink/?LinkId=529714)</span><span class="sxs-lookup"><span data-stu-id="12c42-102">For a guide toohello change from Websites tooApp Service see: [Azure App Service and Its Impact on Existing Azure Services](http://go.microsoft.com/fwlink/?LinkId=529714)</span></span>
-
