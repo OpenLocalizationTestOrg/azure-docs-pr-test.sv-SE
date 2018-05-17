@@ -1,6 +1,6 @@
 {
     "redirections": [{
-            "source_path": "SIPI/articles/search/search-howto-index-documentdb.md",
+            "source_path": "articles/search/search-howto-index-documentdb.md",
             "redirect_url": "/azure/search/search-howto-index-cosmosdb",
             "redirect_document_id": true
         },
